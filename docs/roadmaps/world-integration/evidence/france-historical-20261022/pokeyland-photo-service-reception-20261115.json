@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+    "sourcePageKey": "metz-convention-pokeyland",
+    "file": "venue-2.jpg",
+    "accessedAtUtc": "2026-11-15T12:39:37.800750Z",
+    "status": 200,
+    "bytes": 643999,
+    "sha256": "d7f5a8f01e3a95ea45763e3002a08c903e0abd632fd3f46875920591fde4773e",
+    "contentType": "image/jpeg",
+    "dimensions": [
+      1600,
+      1067
+    ],
+    "personallyInspected": true,
+    "localCropResizeRetouch": false,
+    "captureDate": null,
+    "photographer": null,
+    "credit": "© Pokeyland, publié par le Bureau des Congrès de Metz",
+    "decision": "Qualified wider source of same exposure as salle.jpg; no duplicate import",
+    "observation": "Room below a blue/pink glazed roof, dark branching structure, high tables, buffet, wood panelling and adjoining terrace.",
+    "sourcePage": "https://www.congres-metz.com/pokeyland/",
+    "rootVisuallyReviewed": true,
+    "sameExposureVariantsExcluded": [
+      "salle.jpg"
+    ]
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-2.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-service-reception-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-service-reception-import-result.json"
+  },
+  "metadata": {
+    "description": "La verrière colorée de l’espace de réception de Pokeyland.",
+    "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des tables hautes et un buffet occupent un espace vitré au toit rose et bleu, traversé de grandes poutres sombres."
+      },
+      {
+        "languageCode": "en",
+        "value": "High tables and a buffet fill a glazed space beneath a pink and blue roof crossed by large dark beams."
+      },
+      {
+        "languageCode": "de",
+        "value": "Stehtische und ein Buffet stehen in einem verglasten Raum unter einem rosa-blauen Dach mit großen dunklen Trägern."
+      },
+      {
+        "languageCode": "es",
+        "value": "Mesas altas y un bufé ocupan un espacio acristalado bajo un techo rosa y azul cruzado por grandes vigas oscuras."
+      },
+      {
+        "languageCode": "it",
+        "value": "Tavoli alti e un buffet occupano uno spazio vetrato sotto un tetto rosa e blu attraversato da grandi travi scure."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Hoge tafels en een buffet staan in een glazen ruimte onder een roze en blauw dak met grote donkere balken."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wysokie stoliki i bufet zajmują przeszkloną przestrzeń pod różowo-niebieskim dachem przeciętym dużymi ciemnymi belkami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Mesas altas e um bufete ocupam um espaço envidraçado sob um teto rosa e azul atravessado por grandes vigas escuras."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La verrière colorée de l’espace de réception de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The coloured glazed roof of Pokeyland’s reception space."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das farbige Glasdach im Empfangsbereich von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "El techo acristalado de colores del espacio de recepción de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "La copertura vetrata colorata dello spazio ricevimenti di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het gekleurde glazen dak van de ontvangstruimte in Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolorowy przeszklony dach przestrzeni recepcyjnej Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A cobertura envidraçada colorida do espaço de receção do Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Pokeyland. Source : Bureau des Congrès de Metz."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Pokeyland. Source: Metz Convention Bureau."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Pokeyland. Quelle: Convention Bureau Metz."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Pokeyland. Fuente: Oficina de Congresos de Metz."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Pokeyland. Fonte: Ufficio Congressi di Metz."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Pokeyland. Bron: congresbureau van Metz."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Pokeyland. Źródło: Biuro Kongresowe w Metz."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Pokeyland. Fonte: Gabinete de Congressos de Metz."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T12:51:02.5766175Z",
+    "result": {
+      "id": "e502a87696b443d88727981f41303c0d",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "path": "park_item/e502a87696b443d88727981f41303c0d",
+      "description": "La verrière colorée de l’espace de réception de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1067,
+      "sizeInBytes": 643999,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des tables hautes et un buffet occupent un espace vitré au toit rose et bleu, traversé de grandes poutres sombres."
+        },
+        {
+          "languageCode": "en",
+          "value": "High tables and a buffet fill a glazed space beneath a pink and blue roof crossed by large dark beams."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stehtische und ein Buffet stehen in einem verglasten Raum unter einem rosa-blauen Dach mit großen dunklen Trägern."
+        },
+        {
+          "languageCode": "es",
+          "value": "Mesas altas y un bufé ocupan un espacio acristalado bajo un techo rosa y azul cruzado por grandes vigas oscuras."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tavoli alti e un buffet occupano uno spazio vetrato sotto un tetto rosa e blu attraversato da grandi travi scure."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Hoge tafels en een buffet staan in een glazen ruimte onder een roze en blauw dak met grote donkere balken."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wysokie stoliki i bufet zajmują przeszkloną przestrzeń pod różowo-niebieskim dachem przeciętym dużymi ciemnymi belkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mesas altas e um bufete ocupam um espaço envidraçado sob um teto rosa e azul atravessado por grandes vigas escuras."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La verrière colorée de l’espace de réception de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The coloured glazed roof of Pokeyland’s reception space."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das farbige Glasdach im Empfangsbereich von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El techo acristalado de colores del espacio de recepción de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La copertura vetrata colorata dello spazio ricevimenti di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het gekleurde glazen dak van de ontvangstruimte in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolorowy przeszklony dach przestrzeni recepcyjnej Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cobertura envidraçada colorida do espaço de receção do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Pokeyland. Source : Bureau des Congrès de Metz."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Pokeyland. Source: Metz Convention Bureau."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Pokeyland. Quelle: Convention Bureau Metz."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Pokeyland. Fuente: Oficina de Congresos de Metz."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Pokeyland. Fonte: Ufficio Congressi di Metz."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Pokeyland. Bron: congresbureau van Metz."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Pokeyland. Źródło: Biuro Kongresowe w Metz."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Pokeyland. Fonte: Gabinete de Congressos de Metz."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:51:05.338Z",
+      "updatedAt": "2026-11-15T12:51:08.864Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:51:11.9651552Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

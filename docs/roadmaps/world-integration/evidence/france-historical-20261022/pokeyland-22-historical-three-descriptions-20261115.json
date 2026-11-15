@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-22-historical-three-descriptions",
+        "step": "04-items",
+        "notes": "Trois identités historiques distinctes. Sources personnellement relues : Lukylud 20 mai 2021 (personnalisation du Rotor Jump), Direct FM nouveauté 2021, Loractu nouveautés 2017, plan photographié et galerie L’Est Républicain 2017. Originaux Rotor / Big Air / chèvres examinés. Aucun statut actuel, date de fermeture ou jour d’ouverture déduit ; Unknown et visibilité privée préservés. Big Air : format court de deux paragraphes documenté, sans remplissage ni détail mécanique du Saut dans le vide. Photo Rotor dans une cour fournisseur, pas décor du parc. Relation Lukylud sourcée mais référence constructeur structurée encore à rapprocher par le workflow officiel. Aucun montant ou dimension générique transféré."
+      },
+      "items": [
+        {
+          "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+          "key": "pokeyland-historical-rotor-jump",
+          "name": "Rotor Jump",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’orange et le brun de Pokeyland</h2><p>Le Rotor Jump porte les couleurs du parc jusque sur les bordures de son aire gonflable. Le nom Pokeyland apparaît sur les parois orange, tandis que de grands numéros blancs ponctuent les places autour du centre.</p><p>La faucheuse transforme la partie en défi d’équilibre : chacun tente d’éviter le bras et de rester le dernier debout. Le duel se déroule au ras du coussin, entre sauts et esquives.</p><h2>Une commande personnalisée en 2021</h2><p>Lukylud présente cette réalisation pour Pokeyland en mai 2021. Le fournisseur explique avoir travaillé avec le parc sur les couleurs et les marquages de cette nouveauté annoncée la même année.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Pokeyland’s orange and brown</h2><p>Rotor Jump carries the park’s colours right around its inflatable arena. The Pokeyland name appears on the orange sides, while large white numbers mark the positions around the centre.</p><p>The sweeper turns the game into a test of balance: each player tries to avoid the arm and be the last one standing. Jumps and dodges unfold just above the padded surface.</p><h2>A bespoke commission in 2021</h2><p>Lukylud presents this creation for Pokeyland in May 2021. The supplier describes working with the park on the colours and graphics for this addition announced that same year.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Orange und Braun für Pokeyland</h2><p>Der Rotor Jump trägt die Parkfarben bis an die Ränder seiner aufblasbaren Spielfläche. Auf den orangefarbenen Seiten steht Pokeyland; große weiße Nummern markieren die Plätze rund um die Mitte.</p><p>Der rotierende Balken macht das Spiel zur Gleichgewichtsprobe: Alle versuchen, ihm auszuweichen und zuletzt noch aufrecht zu stehen. Sprünge und Ausweichbewegungen spielen sich direkt über dem Luftkissen ab.</p><h2>Ein Sonderauftrag von 2021</h2><p>Im Mai 2021 stellt Lukylud diese Ausführung für Pokeyland vor. Der Lieferant beschreibt die Zusammenarbeit mit dem Park bei Farben und Beschriftungen der im selben Jahr angekündigten Neuheit.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El naranja y el marrón de Pokeyland</h2><p>Rotor Jump luce los colores del parque hasta en los bordes de su arena hinchable. El nombre Pokeyland aparece en las paredes naranjas, mientras grandes números blancos señalan las posiciones alrededor del centro.</p><p>El brazo giratorio convierte la partida en un reto de equilibrio: cada jugador intenta esquivarlo y ser el último en pie. Saltos y movimientos evasivos se suceden justo sobre la superficie acolchada.</p><h2>Un encargo personalizado en 2021</h2><p>Lukylud presenta esta creación para Pokeyland en mayo de 2021. El proveedor explica su trabajo con el parque sobre los colores y los rótulos de esta novedad anunciada ese mismo año.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>L’arancione e il marrone di Pokeyland</h2><p>Rotor Jump porta i colori del parco fino ai bordi della sua arena gonfiabile. Il nome Pokeyland compare sulle pareti arancioni, mentre grandi numeri bianchi segnano le postazioni intorno al centro.</p><p>Il braccio rotante trasforma la partita in una sfida di equilibrio: ogni giocatore cerca di evitarlo e restare l’ultimo in piedi. Salti e schivate si svolgono appena sopra la superficie imbottita.</p><h2>Una commissione personalizzata nel 2021</h2><p>Lukylud presenta questa realizzazione per Pokeyland nel maggio 2021. Il fornitore racconta il lavoro con il parco sui colori e sulle scritte di questa novità annunciata nello stesso anno.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Het oranje en bruin van Pokeyland</h2><p>Rotor Jump draagt de parkkleuren tot aan de randen van zijn opblaasbare speelveld. De naam Pokeyland staat op de oranje zijkanten; grote witte nummers markeren de plaatsen rond het midden.</p><p>De draaiende arm maakt van het spel een evenwichtsproef: iedere speler probeert hem te ontwijken en als laatste overeind te blijven. Sprongen en ontwijkende bewegingen spelen zich vlak boven het luchtkussen af.</p><h2>Een opdracht op maat in 2021</h2><p>Lukylud presenteert deze uitvoering voor Pokeyland in mei 2021. De leverancier beschrijft de samenwerking met het park aan kleuren en opschriften voor deze in hetzelfde jaar aangekondigde nieuwigheid.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pomarańcz i brąz Pokeyland</h2><p>Rotor Jump nosi barwy parku aż po brzegi dmuchanej areny. Na pomarańczowych bokach widnieje nazwa Pokeyland, a duże białe cyfry oznaczają stanowiska wokół środka.</p><p>Obrotowe ramię zmienia zabawę w próbę równowagi: każdy stara się go uniknąć i najdłużej utrzymać na nogach. Podskoki i uniki rozgrywają się tuż nad miękką powierzchnią.</p><h2>Indywidualne zamówienie z 2021 roku</h2><p>Lukylud prezentuje realizację dla Pokeyland w maju 2021 roku. Dostawca opisuje współpracę z parkiem przy doborze kolorów i oznaczeń tej nowości zapowiedzianej w tym samym roku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O laranja e o castanho do Pokeyland</h2><p>O Rotor Jump apresenta as cores do parque até às bordas da sua arena insuflável. O nome Pokeyland surge nas paredes laranja, enquanto grandes números brancos assinalam as posições em redor do centro.</p><p>O braço giratório transforma a partida num desafio de equilíbrio: cada jogador tenta evitá-lo e ser o último a ficar de pé. Saltos e esquivas desenrolam-se mesmo acima da superfície almofadada.</p><h2>Uma encomenda personalizada em 2021</h2><p>A Lukylud apresenta esta realização para o Pokeyland em maio de 2021. O fornecedor explica o trabalho com o parque nas cores e inscrições desta novidade anunciada nesse mesmo ano.</p>"
+            }
+          ]
+        },
+        {
+          "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+          "key": "pokeyland-historical-big-air-jump",
+          "name": "Big Air Jump",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un saut face à la forêt</h2><p>Le Big Air Jump s’inscrit dans le paysage boisé de Pokeyland avec sa plateforme bordeaux et ses garde-corps jaunes. L’escalier et le point de départ se détachent devant les arbres, au-dessus d’un grand coussin gonflable. Le coussin associe de larges bords noirs à une partie jaune.</p><h2>La vague de nouveautés de 2017</h2><p>Le Big Air Jump est annoncé cette année-là aux côtés de la mini-ferme et du labyrinthe géant. Son nom apparaît séparément du Saut dans le vide sur le plan de l’époque.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A jump facing the forest</h2><p>Big Air Jump stands in Pokeyland’s wooded landscape with a burgundy platform and yellow guardrails. The stairs and departure point rise before the trees above a large inflatable cushion. The cushion combines broad black edges with a yellow section.</p><h2>The new additions of 2017</h2><p>Big Air Jump is announced that year alongside the mini-farm and giant maze. Its name appears separately from Saut dans le vide on the contemporary park map.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Sprung vor dem Wald</h2><p>Der Big Air Jump steht mit bordeauxroter Plattform und gelben Geländern in der Waldlandschaft von Pokeyland. Treppe und Absprungpunkt ragen vor den Bäumen über einem großen Luftkissen auf. Das Kissen verbindet breite schwarze Ränder mit einem gelben Bereich.</p><h2>Die Neuheiten von 2017</h2><p>Big Air Jump wird in diesem Jahr zusammen mit der Mini-Ferme und dem Riesenlabyrinth angekündigt. Sein Name steht auf dem damaligen Parkplan getrennt vom Saut dans le vide.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un salto frente al bosque</h2><p>Big Air Jump se integra en el paisaje arbolado de Pokeyland con su plataforma burdeos y sus barandillas amarillas. La escalera y el punto de partida destacan ante los árboles, sobre un gran colchón hinchable. El colchón combina anchos bordes negros con una zona amarilla.</p><h2>Las novedades de 2017</h2><p>Big Air Jump se anuncia ese año junto a la minigranja y el laberinto gigante. Su nombre aparece separado de Saut dans le vide en el plano de la época.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un salto davanti al bosco</h2><p>Big Air Jump si inserisce nel paesaggio boschivo di Pokeyland con la piattaforma bordeaux e i parapetti gialli. La scala e il punto di partenza risaltano davanti agli alberi, sopra un grande cuscino gonfiabile. Il cuscino combina larghi bordi neri e una parte gialla.</p><h2>Le novità del 2017</h2><p>Big Air Jump viene annunciato quell’anno insieme alla mini-fattoria e al labirinto gigante. Il suo nome compare separatamente dal Saut dans le vide sulla mappa dell’epoca.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een sprong voor het bos</h2><p>Big Air Jump staat met een bordeauxrood platform en gele leuningen in het boslandschap van Pokeyland. De trap en het vertrekpunt steken voor de bomen uit boven een groot luchtkussen. Het kussen combineert brede zwarte randen met een geel gedeelte.</p><h2>De nieuwigheden van 2017</h2><p>Big Air Jump wordt dat jaar aangekondigd naast de kinderboerderij en het reuzendoolhof. Op de toenmalige parkkaart staat de naam apart van Saut dans le vide.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Skok na tle lasu</h2><p>Big Air Jump wpisuje się w leśny krajobraz Pokeyland bordową platformą i żółtymi barierkami. Schody i miejsce startu wyróżniają się na tle drzew nad dużą poduszką powietrzną. Poduszka łączy szerokie czarne brzegi z żółtą częścią.</p><h2>Nowości z 2017 roku</h2><p>Big Air Jump zostaje zapowiedziany w tym roku obok minifarmy i wielkiego labiryntu. Jego nazwa figuruje na ówczesnej mapie oddzielnie od Saut dans le vide.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um salto diante do bosque</h2><p>O Big Air Jump integra-se na paisagem arborizada do Pokeyland com a plataforma bordô e os guarda-corpos amarelos. A escada e o ponto de partida destacam-se diante das árvores, sobre uma grande almofada insuflável. A almofada combina bordas pretas largas com uma parte amarela.</p><h2>As novidades de 2017</h2><p>O Big Air Jump é anunciado nesse ano juntamente com a miniquinta e o labirinto gigante. O seu nome surge separado do Saut dans le vide no mapa da época.</p>"
+            }
+          ]
+        },
+        {
+          "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+          "key": "pokeyland-historical-mini-ferme",
+          "name": "Mini-ferme",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des chèvres entre les arbres</h2><p>La mini-ferme fait partie des nouveautés annoncées à Pokeyland en 2017. Son enclos boisé accueille notamment des chèvres, avec des clôtures de planches qui suivent les espaces entre les troncs.</p><p>Les vues de cette période montrent un sol de terre et de paille, des rochers clairs et des animaux noirs ou blancs. Les branches feuillues couvrent une grande partie de l’enclos.</p><h2>Un volet animalier dans le parc</h2><p>Cette présence complète les activités de plein air développées autour du paintball. La mini-ferme rejoint alors le programme de nouveautés qui comprend aussi le labyrinthe géant et le Big Air Jump.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Goats among the trees</h2><p>The mini-farm is among Pokeyland’s announced additions in 2017. Its wooded enclosure houses goats, with plank fences following the spaces between the trunks.</p><p>Views from this period show earth and straw underfoot, pale rocks and black or white animals. Leafy branches cover much of the enclosure.</p><h2>An animal attraction in the park</h2><p>The mini-farm adds an animal element to the outdoor activities developed around paintball. It joins the programme of new additions that also includes the giant maze and Big Air Jump.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ziegen zwischen den Bäumen</h2><p>Die Mini-Ferme gehört zu den 2017 angekündigten Neuheiten von Pokeyland. In ihrem bewaldeten Gehege leben unter anderem Ziegen; Bretterzäune verlaufen durch die Zwischenräume der Baumstämme.</p><p>Bilder aus dieser Zeit zeigen Erde und Stroh am Boden, helle Felsen sowie schwarze und weiße Tiere. Belaubte Äste überdecken einen großen Teil des Geheges.</p><h2>Tiere im Freizeitpark</h2><p>Die Mini-Ferme ergänzt die rund um Paintball entwickelten Freiluftaktivitäten um ein Tierangebot. Sie gehört zum damaligen Neuheitenprogramm, das auch das Riesenlabyrinth und den Big Air Jump umfasst.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Cabras entre los árboles</h2><p>La minigranja forma parte de las novedades anunciadas por Pokeyland en 2017. Su recinto arbolado alberga cabras, con cercas de tablones que siguen los espacios entre los troncos.</p><p>Las vistas de aquella época muestran un suelo de tierra y paja, rocas claras y animales negros o blancos. Las ramas frondosas cubren buena parte del recinto.</p><h2>Animales en el parque</h2><p>Esta presencia añade un componente animal a las actividades al aire libre desarrolladas en torno al paintball. La minigranja se incorpora al programa de novedades que también incluye el laberinto gigante y Big Air Jump.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Capre tra gli alberi</h2><p>La mini-fattoria fa parte delle novità annunciate da Pokeyland nel 2017. Il recinto alberato ospita capre, con staccionate di assi che seguono gli spazi tra i tronchi.</p><p>Le vedute di quel periodo mostrano terra e paglia al suolo, rocce chiare e animali neri o bianchi. I rami frondosi coprono gran parte del recinto.</p><h2>Gli animali nel parco</h2><p>Questa presenza aggiunge una componente animale alle attività all’aperto sviluppate intorno al paintball. La mini-fattoria entra nel programma di novità che comprende anche il labirinto gigante e Big Air Jump.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Geiten tussen de bomen</h2><p>De kinderboerderij behoort tot de in 2017 aangekondigde nieuwigheden van Pokeyland. In het beboste verblijf leven onder meer geiten; plankenhekken volgen de ruimtes tussen de boomstammen.</p><p>Beelden uit die periode tonen aarde en stro op de grond, lichte rotsen en zwarte of witte dieren. Bladerrijke takken bedekken een groot deel van het verblijf.</p><h2>Dieren in het park</h2><p>De kinderboerderij voegt dieren toe aan de buitenactiviteiten die rond paintball zijn ontwikkeld. Ze maakt deel uit van het toenmalige nieuwighedenprogramma, samen met het reuzendoolhof en Big Air Jump.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kozy wśród drzew</h2><p>Minifarma należy do nowości zapowiedzianych przez Pokeyland w 2017 roku. W zalesionym wybiegu żyją między innymi kozy, a płoty z desek biegną pomiędzy pniami.</p><p>Widoki z tego okresu pokazują ziemię i słomę na podłożu, jasne skały oraz czarne i białe zwierzęta. Ulistnione gałęzie osłaniają dużą część wybiegu.</p><h2>Zwierzęta w parku</h2><p>Minifarma wprowadza zwierzęcy akcent do aktywności plenerowych rozwijanych wokół paintballu. Wchodzi do ówczesnego programu nowości obok wielkiego labiryntu i Big Air Jump.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Cabras entre as árvores</h2><p>A miniquinta faz parte das novidades anunciadas pelo Pokeyland em 2017. O recinto arborizado acolhe cabras, com vedações de tábuas que seguem os espaços entre os troncos.</p><p>As vistas desse período mostram terra e palha no chão, rochas claras e animais pretos ou brancos. Os ramos frondosos cobrem grande parte do recinto.</p><h2>Animais no parque</h2><p>Esta presença acrescenta uma componente animal às atividades ao ar livre desenvolvidas em torno do paintball. A miniquinta integra o programa de novidades que também inclui o labirinto gigante e o Big Air Jump.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "df74f06d-41a0-4607-b0d0-e24188ec6cdc",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:54:46.3619149Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Orange und Braun für Pokeyland</h2><p>Der Rotor Jump trägt die Parkfarben bis an die Ränder seiner aufblasbaren Spielfläche. Auf den orangefarbenen Seiten steht Pokeyland; große weiße Nummern markieren die Plätze rund um die Mitte.</p><p>Der rotierende Balken macht das Spiel zur Gleichgewichtsprobe: Alle versuchen, ihm auszuweichen und zuletzt noch aufrecht zu stehen. Sprünge und Ausweichbewegungen spielen sich direkt über dem Luftkissen ab.</p><h2>Ein Sonderauftrag von 2021</h2><p>Im Mai 2021 stellt Lukylud diese Ausführung für Pokeyland vor. Der Lieferant beschreibt die Zusammenarbeit mit dem Park bei Farben und Beschriftungen der im selben Jahr angekündigten Neuheit.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Pokeyland’s orange and brown</h2><p>Rotor Jump carries the park’s colours right around its inflatable arena. The Pokeyland name appears on the orange sides, while large white numbers mark the positions around the centre.</p><p>The sweeper turns the game into a test of balance: each player tries to avoid the arm and be the last one standing. Jumps and dodges unfold just above the padded surface.</p><h2>A bespoke commission in 2021</h2><p>Lukylud presents this creation for Pokeyland in May 2021. The supplier describes working with the park on the colours and graphics for this addition announced that same year.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El naranja y el marrón de Pokeyland</h2><p>Rotor Jump luce los colores del parque hasta en los bordes de su arena hinchable. El nombre Pokeyland aparece en las paredes naranjas, mientras grandes números blancos señalan las posiciones alrededor del centro.</p><p>El brazo giratorio convierte la partida en un reto de equilibrio: cada jugador intenta esquivarlo y ser el último en pie. Saltos y movimientos evasivos se suceden justo sobre la superficie acolchada.</p><h2>Un encargo personalizado en 2021</h2><p>Lukylud presenta esta creación para Pokeyland en mayo de 2021. El proveedor explica su trabajo con el parque sobre los colores y los rótulos de esta novedad anunciada ese mismo año.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’orange et le brun de Pokeyland</h2><p>Le Rotor Jump porte les couleurs du parc jusque sur les bordures de son aire gonflable. Le nom Pokeyland apparaît sur les parois orange, tandis que de grands numéros blancs ponctuent les places autour du centre.</p><p>La faucheuse transforme la partie en défi d’équilibre : chacun tente d’éviter le bras et de rester le dernier debout. Le duel se déroule au ras du coussin, entre sauts et esquives.</p><h2>Une commande personnalisée en 2021</h2><p>Lukylud présente cette réalisation pour Pokeyland en mai 2021. Le fournisseur explique avoir travaillé avec le parc sur les couleurs et les marquages de cette nouveauté annoncée la même année.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>L’arancione e il marrone di Pokeyland</h2><p>Rotor Jump porta i colori del parco fino ai bordi della sua arena gonfiabile. Il nome Pokeyland compare sulle pareti arancioni, mentre grandi numeri bianchi segnano le postazioni intorno al centro.</p><p>Il braccio rotante trasforma la partita in una sfida di equilibrio: ogni giocatore cerca di evitarlo e restare l’ultimo in piedi. Salti e schivate si svolgono appena sopra la superficie imbottita.</p><h2>Una commissione personalizzata nel 2021</h2><p>Lukylud presenta questa realizzazione per Pokeyland nel maggio 2021. Il fornitore racconta il lavoro con il parco sui colori e sulle scritte di questa novità annunciata nello stesso anno.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het oranje en bruin van Pokeyland</h2><p>Rotor Jump draagt de parkkleuren tot aan de randen van zijn opblaasbare speelveld. De naam Pokeyland staat op de oranje zijkanten; grote witte nummers markeren de plaatsen rond het midden.</p><p>De draaiende arm maakt van het spel een evenwichtsproef: iedere speler probeert hem te ontwijken en als laatste overeind te blijven. Sprongen en ontwijkende bewegingen spelen zich vlak boven het luchtkussen af.</p><h2>Een opdracht op maat in 2021</h2><p>Lukylud presenteert deze uitvoering voor Pokeyland in mei 2021. De leverancier beschrijft de samenwerking met het park aan kleuren en opschriften voor deze in hetzelfde jaar aangekondigde nieuwigheid.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pomarańcz i brąz Pokeyland</h2><p>Rotor Jump nosi barwy parku aż po brzegi dmuchanej areny. Na pomarańczowych bokach widnieje nazwa Pokeyland, a duże białe cyfry oznaczają stanowiska wokół środka.</p><p>Obrotowe ramię zmienia zabawę w próbę równowagi: każdy stara się go uniknąć i najdłużej utrzymać na nogach. Podskoki i uniki rozgrywają się tuż nad miękką powierzchnią.</p><h2>Indywidualne zamówienie z 2021 roku</h2><p>Lukylud prezentuje realizację dla Pokeyland w maju 2021 roku. Dostawca opisuje współpracę z parkiem przy doborze kolorów i oznaczeń tej nowości zapowiedzianej w tym samym roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O laranja e o castanho do Pokeyland</h2><p>O Rotor Jump apresenta as cores do parque até às bordas da sua arena insuflável. O nome Pokeyland surge nas paredes laranja, enquanto grandes números brancos assinalam as posições em redor do centro.</p><p>O braço giratório transforma a partida num desafio de equilíbrio: cada jogador tenta evitá-lo e ser o último a ficar de pé. Saltos e esquivas desenrolam-se mesmo acima da superfície almofadada.</p><h2>Uma encomenda personalizada em 2021</h2><p>A Lukylud apresenta esta realização para o Pokeyland em maio de 2021. O fornecedor explica o trabalho com o parque nas cores e inscrições desta novidade anunciada nesse mesmo ano.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Sprung vor dem Wald</h2><p>Der Big Air Jump steht mit bordeauxroter Plattform und gelben Geländern in der Waldlandschaft von Pokeyland. Treppe und Absprungpunkt ragen vor den Bäumen über einem großen Luftkissen auf. Das Kissen verbindet breite schwarze Ränder mit einem gelben Bereich.</p><h2>Die Neuheiten von 2017</h2><p>Big Air Jump wird in diesem Jahr zusammen mit der Mini-Ferme und dem Riesenlabyrinth angekündigt. Sein Name steht auf dem damaligen Parkplan getrennt vom Saut dans le vide.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A jump facing the forest</h2><p>Big Air Jump stands in Pokeyland’s wooded landscape with a burgundy platform and yellow guardrails. The stairs and departure point rise before the trees above a large inflatable cushion. The cushion combines broad black edges with a yellow section.</p><h2>The new additions of 2017</h2><p>Big Air Jump is announced that year alongside the mini-farm and giant maze. Its name appears separately from Saut dans le vide on the contemporary park map.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un salto frente al bosque</h2><p>Big Air Jump se integra en el paisaje arbolado de Pokeyland con su plataforma burdeos y sus barandillas amarillas. La escalera y el punto de partida destacan ante los árboles, sobre un gran colchón hinchable. El colchón combina anchos bordes negros con una zona amarilla.</p><h2>Las novedades de 2017</h2><p>Big Air Jump se anuncia ese año junto a la minigranja y el laberinto gigante. Su nombre aparece separado de Saut dans le vide en el plano de la época.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un saut face à la forêt</h2><p>Le Big Air Jump s’inscrit dans le paysage boisé de Pokeyland avec sa plateforme bordeaux et ses garde-corps jaunes. L’escalier et le point de départ se détachent devant les arbres, au-dessus d’un grand coussin gonflable. Le coussin associe de larges bords noirs à une partie jaune.</p><h2>La vague de nouveautés de 2017</h2><p>Le Big Air Jump est annoncé cette année-là aux côtés de la mini-ferme et du labyrinthe géant. Son nom apparaît séparément du Saut dans le vide sur le plan de l’époque.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un salto davanti al bosco</h2><p>Big Air Jump si inserisce nel paesaggio boschivo di Pokeyland con la piattaforma bordeaux e i parapetti gialli. La scala e il punto di partenza risaltano davanti agli alberi, sopra un grande cuscino gonfiabile. Il cuscino combina larghi bordi neri e una parte gialla.</p><h2>Le novità del 2017</h2><p>Big Air Jump viene annunciato quell’anno insieme alla mini-fattoria e al labirinto gigante. Il suo nome compare separatamente dal Saut dans le vide sulla mappa dell’epoca.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een sprong voor het bos</h2><p>Big Air Jump staat met een bordeauxrood platform en gele leuningen in het boslandschap van Pokeyland. De trap en het vertrekpunt steken voor de bomen uit boven een groot luchtkussen. Het kussen combineert brede zwarte randen met een geel gedeelte.</p><h2>De nieuwigheden van 2017</h2><p>Big Air Jump wordt dat jaar aangekondigd naast de kinderboerderij en het reuzendoolhof. Op de toenmalige parkkaart staat de naam apart van Saut dans le vide.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skok na tle lasu</h2><p>Big Air Jump wpisuje się w leśny krajobraz Pokeyland bordową platformą i żółtymi barierkami. Schody i miejsce startu wyróżniają się na tle drzew nad dużą poduszką powietrzną. Poduszka łączy szerokie czarne brzegi z żółtą częścią.</p><h2>Nowości z 2017 roku</h2><p>Big Air Jump zostaje zapowiedziany w tym roku obok minifarmy i wielkiego labiryntu. Jego nazwa figuruje na ówczesnej mapie oddzielnie od Saut dans le vide.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um salto diante do bosque</h2><p>O Big Air Jump integra-se na paisagem arborizada do Pokeyland com a plataforma bordô e os guarda-corpos amarelos. A escada e o ponto de partida destacam-se diante das árvores, sobre uma grande almofada insuflável. A almofada combina bordas pretas largas com uma parte amarela.</p><h2>As novidades de 2017</h2><p>O Big Air Jump é anunciado nesse ano juntamente com a miniquinta e o labirinto gigante. O seu nome surge separado do Saut dans le vide no mapa da época.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ziegen zwischen den Bäumen</h2><p>Die Mini-Ferme gehört zu den 2017 angekündigten Neuheiten von Pokeyland. In ihrem bewaldeten Gehege leben unter anderem Ziegen; Bretterzäune verlaufen durch die Zwischenräume der Baumstämme.</p><p>Bilder aus dieser Zeit zeigen Erde und Stroh am Boden, helle Felsen sowie schwarze und weiße Tiere. Belaubte Äste überdecken einen großen Teil des Geheges.</p><h2>Tiere im Freizeitpark</h2><p>Die Mini-Ferme ergänzt die rund um Paintball entwickelten Freiluftaktivitäten um ein Tierangebot. Sie gehört zum damaligen Neuheitenprogramm, das auch das Riesenlabyrinth und den Big Air Jump umfasst.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Goats among the trees</h2><p>The mini-farm is among Pokeyland’s announced additions in 2017. Its wooded enclosure houses goats, with plank fences following the spaces between the trunks.</p><p>Views from this period show earth and straw underfoot, pale rocks and black or white animals. Leafy branches cover much of the enclosure.</p><h2>An animal attraction in the park</h2><p>The mini-farm adds an animal element to the outdoor activities developed around paintball. It joins the programme of new additions that also includes the giant maze and Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cabras entre los árboles</h2><p>La minigranja forma parte de las novedades anunciadas por Pokeyland en 2017. Su recinto arbolado alberga cabras, con cercas de tablones que siguen los espacios entre los troncos.</p><p>Las vistas de aquella época muestran un suelo de tierra y paja, rocas claras y animales negros o blancos. Las ramas frondosas cubren buena parte del recinto.</p><h2>Animales en el parque</h2><p>Esta presencia añade un componente animal a las actividades al aire libre desarrolladas en torno al paintball. La minigranja se incorpora al programa de novedades que también incluye el laberinto gigante y Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des chèvres entre les arbres</h2><p>La mini-ferme fait partie des nouveautés annoncées à Pokeyland en 2017. Son enclos boisé accueille notamment des chèvres, avec des clôtures de planches qui suivent les espaces entre les troncs.</p><p>Les vues de cette période montrent un sol de terre et de paille, des rochers clairs et des animaux noirs ou blancs. Les branches feuillues couvrent une grande partie de l’enclos.</p><h2>Un volet animalier dans le parc</h2><p>Cette présence complète les activités de plein air développées autour du paintball. La mini-ferme rejoint alors le programme de nouveautés qui comprend aussi le labyrinthe géant et le Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Capre tra gli alberi</h2><p>La mini-fattoria fa parte delle novità annunciate da Pokeyland nel 2017. Il recinto alberato ospita capre, con staccionate di assi che seguono gli spazi tra i tronchi.</p><p>Le vedute di quel periodo mostrano terra e paglia al suolo, rocce chiare e animali neri o bianchi. I rami frondosi coprono gran parte del recinto.</p><h2>Gli animali nel parco</h2><p>Questa presenza aggiunge una componente animale alle attività all’aperto sviluppate intorno al paintball. La mini-fattoria entra nel programma di novità che comprende anche il labirinto gigante e Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Geiten tussen de bomen</h2><p>De kinderboerderij behoort tot de in 2017 aangekondigde nieuwigheden van Pokeyland. In het beboste verblijf leven onder meer geiten; plankenhekken volgen de ruimtes tussen de boomstammen.</p><p>Beelden uit die periode tonen aarde en stro op de grond, lichte rotsen en zwarte of witte dieren. Bladerrijke takken bedekken een groot deel van het verblijf.</p><h2>Dieren in het park</h2><p>De kinderboerderij voegt dieren toe aan de buitenactiviteiten die rond paintball zijn ontwikkeld. Ze maakt deel uit van het toenmalige nieuwighedenprogramma, samen met het reuzendoolhof en Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kozy wśród drzew</h2><p>Minifarma należy do nowości zapowiedzianych przez Pokeyland w 2017 roku. W zalesionym wybiegu żyją między innymi kozy, a płoty z desek biegną pomiędzy pniami.</p><p>Widoki z tego okresu pokazują ziemię i słomę na podłożu, jasne skały oraz czarne i białe zwierzęta. Ulistnione gałęzie osłaniają dużą część wybiegu.</p><h2>Zwierzęta w parku</h2><p>Minifarma wprowadza zwierzęcy akcent do aktywności plenerowych rozwijanych wokół paintballu. Wchodzi do ówczesnego programu nowości obok wielkiego labiryntu i Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cabras entre as árvores</h2><p>A miniquinta faz parte das novidades anunciadas pelo Pokeyland em 2017. O recinto arborizado acolhe cabras, com vedações de tábuas que seguem os espaços entre os troncos.</p><p>As vistas desse período mostram terra e palha no chão, rochas claras e animais pretos ou brancos. Os ramos frondosos cobrem grande parte do recinto.</p><h2>Animais no parque</h2><p>Esta presença acrescenta uma componente animal às atividades ao ar livre desenvolvidas em torno do paintball. A miniquinta integra o programa de novidades que também inclui o labirinto gigante e o Big Air Jump.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "114d8cd3-e3e4-4bcf-9afc-5041f58dfb62",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:55:10.8315152Z",
+    "appliedAtUtc": "2026-11-15T12:55:10.8315168Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Orange und Braun für Pokeyland</h2><p>Der Rotor Jump trägt die Parkfarben bis an die Ränder seiner aufblasbaren Spielfläche. Auf den orangefarbenen Seiten steht Pokeyland; große weiße Nummern markieren die Plätze rund um die Mitte.</p><p>Der rotierende Balken macht das Spiel zur Gleichgewichtsprobe: Alle versuchen, ihm auszuweichen und zuletzt noch aufrecht zu stehen. Sprünge und Ausweichbewegungen spielen sich direkt über dem Luftkissen ab.</p><h2>Ein Sonderauftrag von 2021</h2><p>Im Mai 2021 stellt Lukylud diese Ausführung für Pokeyland vor. Der Lieferant beschreibt die Zusammenarbeit mit dem Park bei Farben und Beschriftungen der im selben Jahr angekündigten Neuheit.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Pokeyland’s orange and brown</h2><p>Rotor Jump carries the park’s colours right around its inflatable arena. The Pokeyland name appears on the orange sides, while large white numbers mark the positions around the centre.</p><p>The sweeper turns the game into a test of balance: each player tries to avoid the arm and be the last one standing. Jumps and dodges unfold just above the padded surface.</p><h2>A bespoke commission in 2021</h2><p>Lukylud presents this creation for Pokeyland in May 2021. The supplier describes working with the park on the colours and graphics for this addition announced that same year.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El naranja y el marrón de Pokeyland</h2><p>Rotor Jump luce los colores del parque hasta en los bordes de su arena hinchable. El nombre Pokeyland aparece en las paredes naranjas, mientras grandes números blancos señalan las posiciones alrededor del centro.</p><p>El brazo giratorio convierte la partida en un reto de equilibrio: cada jugador intenta esquivarlo y ser el último en pie. Saltos y movimientos evasivos se suceden justo sobre la superficie acolchada.</p><h2>Un encargo personalizado en 2021</h2><p>Lukylud presenta esta creación para Pokeyland en mayo de 2021. El proveedor explica su trabajo con el parque sobre los colores y los rótulos de esta novedad anunciada ese mismo año.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’orange et le brun de Pokeyland</h2><p>Le Rotor Jump porte les couleurs du parc jusque sur les bordures de son aire gonflable. Le nom Pokeyland apparaît sur les parois orange, tandis que de grands numéros blancs ponctuent les places autour du centre.</p><p>La faucheuse transforme la partie en défi d’équilibre : chacun tente d’éviter le bras et de rester le dernier debout. Le duel se déroule au ras du coussin, entre sauts et esquives.</p><h2>Une commande personnalisée en 2021</h2><p>Lukylud présente cette réalisation pour Pokeyland en mai 2021. Le fournisseur explique avoir travaillé avec le parc sur les couleurs et les marquages de cette nouveauté annoncée la même année.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>L’arancione e il marrone di Pokeyland</h2><p>Rotor Jump porta i colori del parco fino ai bordi della sua arena gonfiabile. Il nome Pokeyland compare sulle pareti arancioni, mentre grandi numeri bianchi segnano le postazioni intorno al centro.</p><p>Il braccio rotante trasforma la partita in una sfida di equilibrio: ogni giocatore cerca di evitarlo e restare l’ultimo in piedi. Salti e schivate si svolgono appena sopra la superficie imbottita.</p><h2>Una commissione personalizzata nel 2021</h2><p>Lukylud presenta questa realizzazione per Pokeyland nel maggio 2021. Il fornitore racconta il lavoro con il parco sui colori e sulle scritte di questa novità annunciata nello stesso anno.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het oranje en bruin van Pokeyland</h2><p>Rotor Jump draagt de parkkleuren tot aan de randen van zijn opblaasbare speelveld. De naam Pokeyland staat op de oranje zijkanten; grote witte nummers markeren de plaatsen rond het midden.</p><p>De draaiende arm maakt van het spel een evenwichtsproef: iedere speler probeert hem te ontwijken en als laatste overeind te blijven. Sprongen en ontwijkende bewegingen spelen zich vlak boven het luchtkussen af.</p><h2>Een opdracht op maat in 2021</h2><p>Lukylud presenteert deze uitvoering voor Pokeyland in mei 2021. De leverancier beschrijft de samenwerking met het park aan kleuren en opschriften voor deze in hetzelfde jaar aangekondigde nieuwigheid.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pomarańcz i brąz Pokeyland</h2><p>Rotor Jump nosi barwy parku aż po brzegi dmuchanej areny. Na pomarańczowych bokach widnieje nazwa Pokeyland, a duże białe cyfry oznaczają stanowiska wokół środka.</p><p>Obrotowe ramię zmienia zabawę w próbę równowagi: każdy stara się go uniknąć i najdłużej utrzymać na nogach. Podskoki i uniki rozgrywają się tuż nad miękką powierzchnią.</p><h2>Indywidualne zamówienie z 2021 roku</h2><p>Lukylud prezentuje realizację dla Pokeyland w maju 2021 roku. Dostawca opisuje współpracę z parkiem przy doborze kolorów i oznaczeń tej nowości zapowiedzianej w tym samym roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O laranja e o castanho do Pokeyland</h2><p>O Rotor Jump apresenta as cores do parque até às bordas da sua arena insuflável. O nome Pokeyland surge nas paredes laranja, enquanto grandes números brancos assinalam as posições em redor do centro.</p><p>O braço giratório transforma a partida num desafio de equilíbrio: cada jogador tenta evitá-lo e ser o último a ficar de pé. Saltos e esquivas desenrolam-se mesmo acima da superfície almofadada.</p><h2>Uma encomenda personalizada em 2021</h2><p>A Lukylud apresenta esta realização para o Pokeyland em maio de 2021. O fornecedor explica o trabalho com o parque nas cores e inscrições desta novidade anunciada nesse mesmo ano.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Sprung vor dem Wald</h2><p>Der Big Air Jump steht mit bordeauxroter Plattform und gelben Geländern in der Waldlandschaft von Pokeyland. Treppe und Absprungpunkt ragen vor den Bäumen über einem großen Luftkissen auf. Das Kissen verbindet breite schwarze Ränder mit einem gelben Bereich.</p><h2>Die Neuheiten von 2017</h2><p>Big Air Jump wird in diesem Jahr zusammen mit der Mini-Ferme und dem Riesenlabyrinth angekündigt. Sein Name steht auf dem damaligen Parkplan getrennt vom Saut dans le vide.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A jump facing the forest</h2><p>Big Air Jump stands in Pokeyland’s wooded landscape with a burgundy platform and yellow guardrails. The stairs and departure point rise before the trees above a large inflatable cushion. The cushion combines broad black edges with a yellow section.</p><h2>The new additions of 2017</h2><p>Big Air Jump is announced that year alongside the mini-farm and giant maze. Its name appears separately from Saut dans le vide on the contemporary park map.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un salto frente al bosque</h2><p>Big Air Jump se integra en el paisaje arbolado de Pokeyland con su plataforma burdeos y sus barandillas amarillas. La escalera y el punto de partida destacan ante los árboles, sobre un gran colchón hinchable. El colchón combina anchos bordes negros con una zona amarilla.</p><h2>Las novedades de 2017</h2><p>Big Air Jump se anuncia ese año junto a la minigranja y el laberinto gigante. Su nombre aparece separado de Saut dans le vide en el plano de la época.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un saut face à la forêt</h2><p>Le Big Air Jump s’inscrit dans le paysage boisé de Pokeyland avec sa plateforme bordeaux et ses garde-corps jaunes. L’escalier et le point de départ se détachent devant les arbres, au-dessus d’un grand coussin gonflable. Le coussin associe de larges bords noirs à une partie jaune.</p><h2>La vague de nouveautés de 2017</h2><p>Le Big Air Jump est annoncé cette année-là aux côtés de la mini-ferme et du labyrinthe géant. Son nom apparaît séparément du Saut dans le vide sur le plan de l’époque.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un salto davanti al bosco</h2><p>Big Air Jump si inserisce nel paesaggio boschivo di Pokeyland con la piattaforma bordeaux e i parapetti gialli. La scala e il punto di partenza risaltano davanti agli alberi, sopra un grande cuscino gonfiabile. Il cuscino combina larghi bordi neri e una parte gialla.</p><h2>Le novità del 2017</h2><p>Big Air Jump viene annunciato quell’anno insieme alla mini-fattoria e al labirinto gigante. Il suo nome compare separatamente dal Saut dans le vide sulla mappa dell’epoca.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een sprong voor het bos</h2><p>Big Air Jump staat met een bordeauxrood platform en gele leuningen in het boslandschap van Pokeyland. De trap en het vertrekpunt steken voor de bomen uit boven een groot luchtkussen. Het kussen combineert brede zwarte randen met een geel gedeelte.</p><h2>De nieuwigheden van 2017</h2><p>Big Air Jump wordt dat jaar aangekondigd naast de kinderboerderij en het reuzendoolhof. Op de toenmalige parkkaart staat de naam apart van Saut dans le vide.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skok na tle lasu</h2><p>Big Air Jump wpisuje się w leśny krajobraz Pokeyland bordową platformą i żółtymi barierkami. Schody i miejsce startu wyróżniają się na tle drzew nad dużą poduszką powietrzną. Poduszka łączy szerokie czarne brzegi z żółtą częścią.</p><h2>Nowości z 2017 roku</h2><p>Big Air Jump zostaje zapowiedziany w tym roku obok minifarmy i wielkiego labiryntu. Jego nazwa figuruje na ówczesnej mapie oddzielnie od Saut dans le vide.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um salto diante do bosque</h2><p>O Big Air Jump integra-se na paisagem arborizada do Pokeyland com a plataforma bordô e os guarda-corpos amarelos. A escada e o ponto de partida destacam-se diante das árvores, sobre uma grande almofada insuflável. A almofada combina bordas pretas largas com uma parte amarela.</p><h2>As novidades de 2017</h2><p>O Big Air Jump é anunciado nesse ano juntamente com a miniquinta e o labirinto gigante. O seu nome surge separado do Saut dans le vide no mapa da época.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ziegen zwischen den Bäumen</h2><p>Die Mini-Ferme gehört zu den 2017 angekündigten Neuheiten von Pokeyland. In ihrem bewaldeten Gehege leben unter anderem Ziegen; Bretterzäune verlaufen durch die Zwischenräume der Baumstämme.</p><p>Bilder aus dieser Zeit zeigen Erde und Stroh am Boden, helle Felsen sowie schwarze und weiße Tiere. Belaubte Äste überdecken einen großen Teil des Geheges.</p><h2>Tiere im Freizeitpark</h2><p>Die Mini-Ferme ergänzt die rund um Paintball entwickelten Freiluftaktivitäten um ein Tierangebot. Sie gehört zum damaligen Neuheitenprogramm, das auch das Riesenlabyrinth und den Big Air Jump umfasst.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Goats among the trees</h2><p>The mini-farm is among Pokeyland’s announced additions in 2017. Its wooded enclosure houses goats, with plank fences following the spaces between the trunks.</p><p>Views from this period show earth and straw underfoot, pale rocks and black or white animals. Leafy branches cover much of the enclosure.</p><h2>An animal attraction in the park</h2><p>The mini-farm adds an animal element to the outdoor activities developed around paintball. It joins the programme of new additions that also includes the giant maze and Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cabras entre los árboles</h2><p>La minigranja forma parte de las novedades anunciadas por Pokeyland en 2017. Su recinto arbolado alberga cabras, con cercas de tablones que siguen los espacios entre los troncos.</p><p>Las vistas de aquella época muestran un suelo de tierra y paja, rocas claras y animales negros o blancos. Las ramas frondosas cubren buena parte del recinto.</p><h2>Animales en el parque</h2><p>Esta presencia añade un componente animal a las actividades al aire libre desarrolladas en torno al paintball. La minigranja se incorpora al programa de novedades que también incluye el laberinto gigante y Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des chèvres entre les arbres</h2><p>La mini-ferme fait partie des nouveautés annoncées à Pokeyland en 2017. Son enclos boisé accueille notamment des chèvres, avec des clôtures de planches qui suivent les espaces entre les troncs.</p><p>Les vues de cette période montrent un sol de terre et de paille, des rochers clairs et des animaux noirs ou blancs. Les branches feuillues couvrent une grande partie de l’enclos.</p><h2>Un volet animalier dans le parc</h2><p>Cette présence complète les activités de plein air développées autour du paintball. La mini-ferme rejoint alors le programme de nouveautés qui comprend aussi le labyrinthe géant et le Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Capre tra gli alberi</h2><p>La mini-fattoria fa parte delle novità annunciate da Pokeyland nel 2017. Il recinto alberato ospita capre, con staccionate di assi che seguono gli spazi tra i tronchi.</p><p>Le vedute di quel periodo mostrano terra e paglia al suolo, rocce chiare e animali neri o bianchi. I rami frondosi coprono gran parte del recinto.</p><h2>Gli animali nel parco</h2><p>Questa presenza aggiunge una componente animale alle attività all’aperto sviluppate intorno al paintball. La mini-fattoria entra nel programma di novità che comprende anche il labirinto gigante e Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Geiten tussen de bomen</h2><p>De kinderboerderij behoort tot de in 2017 aangekondigde nieuwigheden van Pokeyland. In het beboste verblijf leven onder meer geiten; plankenhekken volgen de ruimtes tussen de boomstammen.</p><p>Beelden uit die periode tonen aarde en stro op de grond, lichte rotsen en zwarte of witte dieren. Bladerrijke takken bedekken een groot deel van het verblijf.</p><h2>Dieren in het park</h2><p>De kinderboerderij voegt dieren toe aan de buitenactiviteiten die rond paintball zijn ontwikkeld. Ze maakt deel uit van het toenmalige nieuwighedenprogramma, samen met het reuzendoolhof en Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kozy wśród drzew</h2><p>Minifarma należy do nowości zapowiedzianych przez Pokeyland w 2017 roku. W zalesionym wybiegu żyją między innymi kozy, a płoty z desek biegną pomiędzy pniami.</p><p>Widoki z tego okresu pokazują ziemię i słomę na podłożu, jasne skały oraz czarne i białe zwierzęta. Ulistnione gałęzie osłaniają dużą część wybiegu.</p><h2>Zwierzęta w parku</h2><p>Minifarma wprowadza zwierzęcy akcent do aktywności plenerowych rozwijanych wokół paintballu. Wchodzi do ówczesnego programu nowości obok wielkiego labiryntu i Big Air Jump.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cabras entre as árvores</h2><p>A miniquinta faz parte das novidades anunciadas pelo Pokeyland em 2017. O recinto arborizado acolhe cabras, com vedações de tábuas que seguem os espaços entre os troncos.</p><p>As vistas desse período mostram terra e palha no chão, rochas claras e animais pretos ou brancos. Os ramos frondosos cobrem grande parte do recinto.</p><h2>Animais no parque</h2><p>Esta presença acrescenta uma componente animal às atividades ao ar livre desenvolvidas em torno do paintball. A miniquinta integra o programa de novidades que também inclui o labirinto gigante e o Big Air Jump.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Trois identités historiques distinctes. Sources personnellement relues : Lukylud 20 mai 2021 (personnalisation du Rotor Jump), Direct FM nouveauté 2021, Loractu nouveautés 2017, plan photographié et galerie L’Est Républicain 2017. Originaux Rotor / Big Air / chèvres examinés. Aucun statut actuel, date de fermeture ou jour d’ouverture déduit ; Unknown et visibilité privée préservés. Big Air : format court de deux paragraphes documenté, sans remplissage ni détail mécanique du Saut dans le vide. Photo Rotor dans une cour fournisseur, pas décor du parc. Relation Lukylud sourcée mais référence constructeur structurée encore à rapprocher par le workflow officiel. Aucun montant ou dimension générique transféré.",
+    "wordCounts": {
+      "Rotor Jump": {
+        "fr": 109,
+        "en": 98,
+        "de": 94,
+        "es": 108,
+        "it": 102,
+        "nl": 102,
+        "pl": 85,
+        "pt": 106
+      },
+      "Big Air Jump": {
+        "fr": 89,
+        "en": 76,
+        "de": 75,
+        "es": 84,
+        "it": 79,
+        "nl": 75,
+        "pl": 68,
+        "pt": 83
+      },
+      "Mini-ferme": {
+        "fr": 103,
+        "en": 86,
+        "de": 84,
+        "es": 98,
+        "it": 91,
+        "nl": 90,
+        "pl": 75,
+        "pt": 93
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

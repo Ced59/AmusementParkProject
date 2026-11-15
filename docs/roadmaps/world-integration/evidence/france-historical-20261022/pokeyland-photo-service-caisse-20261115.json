@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+    "file": "press-caisse-2021.jpg",
+    "accessedAtUtc": "2026-11-15T12:37:38.662519Z",
+    "status": 200,
+    "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 537098,
+    "sha256": "f09d87087ccb3d78ad59a7c36748be48310d7779d56dcdecdff5bf0abea02831",
+    "dimensions": [
+      1600,
+      1067
+    ],
+    "personallyInspected": true,
+    "captureDate": null,
+    "publicationDate": "2021-08-04",
+    "credit": "ER / Emma Facchetti",
+    "watermarkVisible": false,
+    "localCropResizeRetouch": false,
+    "decision": "Qualified historical cash-desk photo; CAISSES sign explicit. No claim of the configuration in 2026.",
+    "openLicenseClaimed": false,
+    "sourcePage": "https://www.estrepublicain.fr/culture-loisirs/2021/08/04/le-pass-sanitaire-vide-les-allees-du-parc-de-loisirs-pokeyland-a-fey",
+    "rootVisuallyReviewed": true,
+    "sameExposureVariantsExcluded": []
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/press-caisse-2021.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "00739144-e99b-45a1-8694-3594553ca3a2",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-service-caisse-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-service-caisse-import-result.json"
+  },
+  "metadata": {
+    "description": "Les caisses de Pokeyland dans un reportage publié en août 2021.",
+    "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un renard orange domine un portail au décor de rochers et de tronc ; derrière, le chalet porte l’enseigne CAISSES."
+      },
+      {
+        "languageCode": "en",
+        "value": "An orange fox stands above a gateway decorated as rocks and a trunk; behind it, a chalet bears the sign CAISSES."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein orangefarbener Fuchs steht über einem Tor mit Fels- und Baumstammdekor; dahinter trägt ein Holzhaus das Schild CAISSES."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un zorro naranja domina un portal decorado con rocas y un tronco; detrás, una caseta lleva el letrero CAISSES."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una volpe arancione sovrasta un portale decorato con rocce e un tronco; dietro, uno chalet reca l’insegna CAISSES."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een oranje vos staat boven een poort met rots- en boomstamdecor; daarachter draagt een chalet het bord CAISSES."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pomarańczowy lis góruje nad bramą ze skalną dekoracją i pniem; za nią drewniany budynek ma napis CAISSES."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma raposa laranja domina um portal decorado com rochas e um tronco; atrás, um chalé tem o letreiro CAISSES."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les caisses de Pokeyland dans un reportage publié en août 2021."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pokeyland’s ticket desks in a report published in August 2021."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Kassen von Pokeyland in einem im August 2021 veröffentlichten Bericht."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las taquillas de Pokeyland en un reportaje publicado en agosto de 2021."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le casse di Pokeyland in un reportage pubblicato nell’agosto 2021."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kassa’s van Pokeyland in een reportage uit augustus 2021."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kasy Pokeyland w reportażu opublikowanym w sierpniu 2021 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As bilheteiras do Pokeyland numa reportagem publicada em agosto de 2021."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "en",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "de",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "es",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "it",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "nl",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "pl",
+        "value": "ER / Emma Facchetti."
+      },
+      {
+        "languageCode": "pt",
+        "value": "ER / Emma Facchetti."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T12:50:39.9477493Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "d2dbeaed1375446e93c0ed1833d7395d",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "00739144-e99b-45a1-8694-3594553ca3a2",
+      "path": "park_item/d2dbeaed1375446e93c0ed1833d7395d",
+      "description": "Les caisses de Pokeyland dans un reportage publié en août 2021.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1067,
+      "sizeInBytes": 537098,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un renard orange domine un portail au décor de rochers et de tronc ; derrière, le chalet porte l’enseigne CAISSES."
+        },
+        {
+          "languageCode": "en",
+          "value": "An orange fox stands above a gateway decorated as rocks and a trunk; behind it, a chalet bears the sign CAISSES."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein orangefarbener Fuchs steht über einem Tor mit Fels- und Baumstammdekor; dahinter trägt ein Holzhaus das Schild CAISSES."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un zorro naranja domina un portal decorado con rocas y un tronco; detrás, una caseta lleva el letrero CAISSES."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una volpe arancione sovrasta un portale decorato con rocce e un tronco; dietro, uno chalet reca l’insegna CAISSES."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een oranje vos staat boven een poort met rots- en boomstamdecor; daarachter draagt een chalet het bord CAISSES."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowy lis góruje nad bramą ze skalną dekoracją i pniem; za nią drewniany budynek ma napis CAISSES."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma raposa laranja domina um portal decorado com rochas e um tronco; atrás, um chalé tem o letreiro CAISSES."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les caisses de Pokeyland dans un reportage publié en août 2021."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland’s ticket desks in a report published in August 2021."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Kassen von Pokeyland in einem im August 2021 veröffentlichten Bericht."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las taquillas de Pokeyland en un reportaje publicado en agosto de 2021."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le casse di Pokeyland in un reportage pubblicato nell’agosto 2021."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kassa’s van Pokeyland in een reportage uit augustus 2021."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kasy Pokeyland w reportażu opublikowanym w sierpniu 2021 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As bilheteiras do Pokeyland numa reportagem publicada em agosto de 2021."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "en",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "de",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "es",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "it",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "nl",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "pl",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "pt",
+          "value": "ER / Emma Facchetti."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:50:43.696Z",
+      "updatedAt": "2026-11-15T12:50:47.483Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:50:50.5726137Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

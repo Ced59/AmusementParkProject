@@ -2429,7 +2429,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
       },
-      "id": "00739144-e99b-45a1-8694-3594553ca3a2"
+      "id": "00739144-e99b-45a1-8694-3594553ca3a2",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Sous le renard de Pokeyland</h2><p>En 2021, l’entrée des caisses se reconnaît à un grand portail de rochers sculptés et à une traverse en forme de tronc. Un renard orange et blanc y accueille les visiteurs, les bras ouverts au-dessus du passage.</p><p>Derrière cette silhouette, le chalet à l’enseigne verte « CAISSES » aligne ses guichets sous un petit auvent. Des potelets reliés par des cordes dessinent les files devant les panneaux d’information.</p><h2>Les guichets du parc</h2><p>Le plan de 2026 conserve un point « Caisse accueil » au numéro zéro. L’ancienne carte le désignait déjà comme lieu de vente des activités, distinct de l’accueil accrobranche.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Beneath Pokeyland’s fox</h2><p>In 2021, the approach to the ticket desks is marked by a large gateway of sculpted rocks and a crosspiece shaped like a tree trunk. An orange and white fox welcomes visitors with outstretched arms above the passage.</p><p>Behind it, a chalet with a green “CAISSES” sign has ticket windows beneath a small awning. Posts linked by ropes define the queues in front of the information boards.</p><h2>The park’s ticket desks</h2><p>The 2026 map retains a “Caisse accueil” point numbered zero. The older map already identified it as the place to buy activities, separate from the treetop-course reception.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Unter dem Fuchs von Pokeyland</h2><p>2021 kennzeichnet ein großes Tor aus skulptierten Felsen und einem Querbalken in Baumstammform den Zugang zu den Kassen. Darüber begrüßt ein orange-weißer Fuchs die Besucher mit ausgebreiteten Armen.</p><p>Dahinter liegen die Schalter eines Holzhauses mit grünem Schild „CAISSES“ unter einem kleinen Vordach. Durch Seile verbundene Pfosten begrenzen die Warteschlangen vor den Informationstafeln.</p><h2>Die Kassen des Parks</h2><p>Der Plan von 2026 führt weiterhin einen Punkt „Caisse accueil“ mit der Nummer null. Schon die ältere Karte bezeichnete ihn als Verkaufsstelle für Aktivitäten, getrennt vom Empfang der Kletterparcours.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Bajo el zorro de Pokeyland</h2><p>En 2021, el acceso a las taquillas se reconoce por un gran portal de rocas esculpidas y un travesaño en forma de tronco. Un zorro naranja y blanco recibe a los visitantes con los brazos abiertos sobre el paso.</p><p>Detrás, la caseta con el letrero verde «CAISSES» alinea sus ventanillas bajo un pequeño alero. Postes unidos por cuerdas delimitan las colas ante los paneles informativos.</p><h2>Las taquillas del parque</h2><p>El plano de 2026 conserva el punto «Caisse accueil» con el número cero. El plano anterior ya lo identificaba como lugar de venta de actividades, separado de la recepción de los circuitos entre árboles.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Sotto la volpe di Pokeyland</h2><p>Nel 2021 l’accesso alle casse si riconosce da un grande portale di rocce scolpite e da una traversa a forma di tronco. Una volpe arancione e bianca accoglie i visitatori a braccia aperte sopra il passaggio.</p><p>Alle sue spalle, lo chalet con l’insegna verde «CAISSES» allinea gli sportelli sotto una piccola tettoia. Paletti collegati da corde delimitano le file davanti ai pannelli informativi.</p><h2>Le casse del parco</h2><p>La mappa del 2026 mantiene il punto «Caisse accueil» al numero zero. La mappa precedente lo indicava già come luogo di vendita delle attività, distinto dall’accoglienza dei percorsi sugli alberi.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Onder de vos van Pokeyland</h2><p>In 2021 is de toegang tot de kassa’s herkenbaar aan een grote poort van gebeeldhouwde rotsen met een dwarsbalk in de vorm van een boomstam. Een oranje-witte vos verwelkomt bezoekers met open armen boven de doorgang.</p><p>Daarachter liggen de loketten van een chalet met een groen bord “CAISSES” onder een kleine luifel. Paaltjes met touwen vormen de wachtrijen voor de informatieborden.</p><h2>De kassa’s van het park</h2><p>De kaart van 2026 vermeldt nog steeds “Caisse accueil” met nummer nul. De oudere kaart duidde dit al aan als verkooppunt voor activiteiten, apart van de ontvangst bij de klimparcoursen.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pod lisem Pokeyland</h2><p>W 2021 roku wejście do kas wyróżnia duża brama ze skalnymi rzeźbami i poprzeczką w kształcie pnia. Nad przejściem pomarańczowo-biały lis wita gości z rozłożonymi ramionami.</p><p>Za nim znajduje się drewniany budynek z zielonym napisem „CAISSES” i okienkami pod niewielkim daszkiem. Słupki połączone linami wyznaczają kolejki przed tablicami informacyjnymi.</p><h2>Kasy parku</h2><p>Plan z 2026 roku nadal oznacza punkt „Caisse accueil” numerem zero. Starsza mapa wskazywała go już jako miejsce sprzedaży aktywności, odrębne od recepcji tras w koronach drzew.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Sob a raposa do Pokeyland</h2><p>Em 2021, a entrada das bilheteiras distingue-se por um grande portal de rochas esculpidas e uma travessa em forma de tronco. Uma raposa laranja e branca recebe os visitantes de braços abertos sobre a passagem.</p><p>Atrás, o chalé com o letreiro verde «CAISSES» alinha os seus guichés sob um pequeno alpendre. Postes ligados por cordas delimitam as filas diante dos painéis informativos.</p><h2>As bilheteiras do parque</h2><p>O mapa de 2026 mantém o ponto «Caisse accueil» com o número zero. O mapa anterior já o identificava como local de venda de atividades, separado da receção dos percursos nas árvores.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-salle-seminaire",
@@ -2442,7 +2476,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
       },
-      "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07"
+      "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le bois et la lumière colorée</h2><p>La salle de séminaire de Pokeyland occupe deux niveaux et se prolonge par une terrasse couverte. Les parements de bois et les grands cadres sombres des fenêtres donnent au lieu une continuité avec les arbres visibles dehors.</p><p>Dans l’espace de réception, une verrière aux panneaux colorés éclaire les tables hautes et le buffet. Les poutres sombres dessinent de grandes diagonales sous cette toiture, tandis que les baies ouvrent sur la terrasse.</p><h2>Réunions au milieu des loisirs</h2><p>L’espace de conférence associe plafond de bois, rideaux et écran de projection. Le parc propose la location à la journée ou à la demi-journée, avec mobilier et sonorisation, dans ce bâtiment consacré aux rencontres professionnelles.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Wood and coloured light</h2><p>Pokeyland’s seminar venue occupies two levels and extends onto a covered terrace. Timber wall coverings and dark window frames connect its interior with the trees visible outside.</p><p>In the reception area, a glazed roof with coloured panels lights the high tables and buffet. Dark beams form broad diagonals beneath the roof, while the windows overlook the terrace.</p><h2>Meetings among the leisure attractions</h2><p>The conference space combines a wooden ceiling, curtains and a projection screen. The park offers full-day or half-day hire with furniture and sound equipment in this building devoted to professional gatherings.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Holz und farbiges Licht</h2><p>Der Seminarbereich von Pokeyland erstreckt sich über zwei Ebenen und eine überdachte Terrasse. Holzverkleidungen und dunkle Fensterrahmen verbinden den Innenraum optisch mit den Bäumen draußen.</p><p>Im Empfangsbereich beleuchtet ein Glasdach mit farbigen Scheiben die Stehtische und das Buffet. Dunkle Träger zeichnen große Diagonalen unter das Dach, während die Fenster den Blick auf die Terrasse öffnen.</p><h2>Tagungen zwischen Freizeitattraktionen</h2><p>Der Konferenzraum verbindet eine Holzdecke mit Vorhängen und Projektionsleinwand. Das Gebäude für berufliche Zusammenkünfte lässt sich beim Park ganz- oder halbtags mit Mobiliar und Tontechnik mieten.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Madera y luz de colores</h2><p>La sala de seminarios de Pokeyland ocupa dos niveles y se prolonga con una terraza cubierta. Los revestimientos de madera y los grandes marcos oscuros de las ventanas conectan visualmente el interior con los árboles del exterior.</p><p>En el espacio de recepción, un techo acristalado de paneles coloreados ilumina las mesas altas y el bufé. Las vigas oscuras dibujan grandes diagonales bajo la cubierta, mientras los ventanales se abren hacia la terraza.</p><h2>Reuniones entre las atracciones</h2><p>El espacio de conferencias combina techo de madera, cortinas y pantalla de proyección. El parque ofrece alquiler por jornada completa o media jornada, con mobiliario y sonido, en este edificio dedicado a encuentros profesionales.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Legno e luce colorata</h2><p>La sala seminari di Pokeyland si sviluppa su due livelli e prosegue con una terrazza coperta. I rivestimenti di legno e i grandi telai scuri delle finestre creano una continuità visiva con gli alberi all’esterno.</p><p>Nello spazio di ricevimento, una copertura vetrata con pannelli colorati illumina i tavoli alti e il buffet. Le travi scure disegnano ampie diagonali sotto il tetto, mentre le vetrate si affacciano sulla terrazza.</p><h2>Riunioni tra le attrazioni</h2><p>Lo spazio conferenze abbina soffitto di legno, tende e schermo di proiezione. Il parco propone l’affitto per un’intera giornata o mezza giornata, con arredi e impianto audio, in questo edificio dedicato agli incontri professionali.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Hout en gekleurd licht</h2><p>De seminarzaal van Pokeyland beslaat twee niveaus en sluit aan op een overdekt terras. Houten wandbekleding en donkere raamkozijnen verbinden het interieur met de bomen die buiten zichtbaar zijn.</p><p>In de ontvangstruimte valt licht door gekleurde panelen in het glazen dak op de hoge tafels en het buffet. Donkere balken tekenen grote diagonalen onder het dak; de ramen kijken uit op het terras.</p><h2>Vergaderen tussen de attracties</h2><p>De conferentieruimte combineert een houten plafond met gordijnen en een projectiescherm. Het park verhuurt dit gebouw voor zakelijke bijeenkomsten per hele of halve dag, met meubilair en geluidsapparatuur.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Drewno i barwne światło</h2><p>Sala seminaryjna Pokeyland zajmuje dwa poziomy i łączy się z zadaszonym tarasem. Drewniane okładziny i duże ciemne ramy okien tworzą wizualną ciągłość z drzewami widocznymi na zewnątrz.</p><p>W przestrzeni recepcyjnej przeszklony dach z kolorowymi panelami oświetla wysokie stoliki i bufet. Ciemne belki układają się pod nim w szerokie przekątne, a okna wychodzą na taras.</p><h2>Spotkania wśród atrakcji</h2><p>Przestrzeń konferencyjna łączy drewniany sufit, zasłony i ekran projekcyjny. Park wynajmuje ten budynek na spotkania zawodowe na cały dzień lub pół dnia, wraz z meblami i nagłośnieniem.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Madeira e luz colorida</h2><p>A sala de seminários do Pokeyland ocupa dois níveis e prolonga-se por um terraço coberto. Os revestimentos de madeira e os grandes caixilhos escuros das janelas criam uma continuidade visual com as árvores no exterior.</p><p>Na área de receção, uma cobertura envidraçada com painéis coloridos ilumina as mesas altas e o bufete. As vigas escuras desenham grandes diagonais sob o telhado, enquanto as janelas dão para o terraço.</p><h2>Reuniões entre as atrações</h2><p>O espaço de conferências combina teto de madeira, cortinas e ecrã de projeção. O parque disponibiliza o aluguer por dia inteiro ou meio dia, com mobiliário e som, neste edifício dedicado a encontros profissionais.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-peche-pokey",
@@ -2573,7 +2641,41 @@
         "status": "Unknown",
         "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
       },
-      "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599"
+      "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>L’orange et le brun de Pokeyland</h2><p>Le Rotor Jump porte les couleurs du parc jusque sur les bordures de son aire gonflable. Le nom Pokeyland apparaît sur les parois orange, tandis que de grands numéros blancs ponctuent les places autour du centre.</p><p>La faucheuse transforme la partie en défi d’équilibre : chacun tente d’éviter le bras et de rester le dernier debout. Le duel se déroule au ras du coussin, entre sauts et esquives.</p><h2>Une commande personnalisée en 2021</h2><p>Lukylud présente cette réalisation pour Pokeyland en mai 2021. Le fournisseur explique avoir travaillé avec le parc sur les couleurs et les marquages de cette nouveauté annoncée la même année.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Pokeyland’s orange and brown</h2><p>Rotor Jump carries the park’s colours right around its inflatable arena. The Pokeyland name appears on the orange sides, while large white numbers mark the positions around the centre.</p><p>The sweeper turns the game into a test of balance: each player tries to avoid the arm and be the last one standing. Jumps and dodges unfold just above the padded surface.</p><h2>A bespoke commission in 2021</h2><p>Lukylud presents this creation for Pokeyland in May 2021. The supplier describes working with the park on the colours and graphics for this addition announced that same year.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Orange und Braun für Pokeyland</h2><p>Der Rotor Jump trägt die Parkfarben bis an die Ränder seiner aufblasbaren Spielfläche. Auf den orangefarbenen Seiten steht Pokeyland; große weiße Nummern markieren die Plätze rund um die Mitte.</p><p>Der rotierende Balken macht das Spiel zur Gleichgewichtsprobe: Alle versuchen, ihm auszuweichen und zuletzt noch aufrecht zu stehen. Sprünge und Ausweichbewegungen spielen sich direkt über dem Luftkissen ab.</p><h2>Ein Sonderauftrag von 2021</h2><p>Im Mai 2021 stellt Lukylud diese Ausführung für Pokeyland vor. Der Lieferant beschreibt die Zusammenarbeit mit dem Park bei Farben und Beschriftungen der im selben Jahr angekündigten Neuheit.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El naranja y el marrón de Pokeyland</h2><p>Rotor Jump luce los colores del parque hasta en los bordes de su arena hinchable. El nombre Pokeyland aparece en las paredes naranjas, mientras grandes números blancos señalan las posiciones alrededor del centro.</p><p>El brazo giratorio convierte la partida en un reto de equilibrio: cada jugador intenta esquivarlo y ser el último en pie. Saltos y movimientos evasivos se suceden justo sobre la superficie acolchada.</p><h2>Un encargo personalizado en 2021</h2><p>Lukylud presenta esta creación para Pokeyland en mayo de 2021. El proveedor explica su trabajo con el parque sobre los colores y los rótulos de esta novedad anunciada ese mismo año.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>L’arancione e il marrone di Pokeyland</h2><p>Rotor Jump porta i colori del parco fino ai bordi della sua arena gonfiabile. Il nome Pokeyland compare sulle pareti arancioni, mentre grandi numeri bianchi segnano le postazioni intorno al centro.</p><p>Il braccio rotante trasforma la partita in una sfida di equilibrio: ogni giocatore cerca di evitarlo e restare l’ultimo in piedi. Salti e schivate si svolgono appena sopra la superficie imbottita.</p><h2>Una commissione personalizzata nel 2021</h2><p>Lukylud presenta questa realizzazione per Pokeyland nel maggio 2021. Il fornitore racconta il lavoro con il parco sui colori e sulle scritte di questa novità annunciata nello stesso anno.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het oranje en bruin van Pokeyland</h2><p>Rotor Jump draagt de parkkleuren tot aan de randen van zijn opblaasbare speelveld. De naam Pokeyland staat op de oranje zijkanten; grote witte nummers markeren de plaatsen rond het midden.</p><p>De draaiende arm maakt van het spel een evenwichtsproef: iedere speler probeert hem te ontwijken en als laatste overeind te blijven. Sprongen en ontwijkende bewegingen spelen zich vlak boven het luchtkussen af.</p><h2>Een opdracht op maat in 2021</h2><p>Lukylud presenteert deze uitvoering voor Pokeyland in mei 2021. De leverancier beschrijft de samenwerking met het park aan kleuren en opschriften voor deze in hetzelfde jaar aangekondigde nieuwigheid.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pomarańcz i brąz Pokeyland</h2><p>Rotor Jump nosi barwy parku aż po brzegi dmuchanej areny. Na pomarańczowych bokach widnieje nazwa Pokeyland, a duże białe cyfry oznaczają stanowiska wokół środka.</p><p>Obrotowe ramię zmienia zabawę w próbę równowagi: każdy stara się go uniknąć i najdłużej utrzymać na nogach. Podskoki i uniki rozgrywają się tuż nad miękką powierzchnią.</p><h2>Indywidualne zamówienie z 2021 roku</h2><p>Lukylud prezentuje realizację dla Pokeyland w maju 2021 roku. Dostawca opisuje współpracę z parkiem przy doborze kolorów i oznaczeń tej nowości zapowiedzianej w tym samym roku.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>O laranja e o castanho do Pokeyland</h2><p>O Rotor Jump apresenta as cores do parque até às bordas da sua arena insuflável. O nome Pokeyland surge nas paredes laranja, enquanto grandes números brancos assinalam as posições em redor do centro.</p><p>O braço giratório transforma a partida num desafio de equilíbrio: cada jogador tenta evitá-lo e ser o último a ficar de pé. Saltos e esquivas desenrolam-se mesmo acima da superfície almofadada.</p><h2>Uma encomenda personalizada em 2021</h2><p>A Lukylud apresenta esta realização para o Pokeyland em maio de 2021. O fornecedor explica o trabalho com o parque nas cores e inscrições desta novidade anunciada nesse mesmo ano.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-historical-segway",
@@ -2638,7 +2740,41 @@
         "status": "Unknown",
         "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
       },
-      "id": "077229e9-6ff0-4b25-94f9-0858f11d9655"
+      "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des chèvres entre les arbres</h2><p>La mini-ferme fait partie des nouveautés annoncées à Pokeyland en 2017. Son enclos boisé accueille notamment des chèvres, avec des clôtures de planches qui suivent les espaces entre les troncs.</p><p>Les vues de cette période montrent un sol de terre et de paille, des rochers clairs et des animaux noirs ou blancs. Les branches feuillues couvrent une grande partie de l’enclos.</p><h2>Un volet animalier dans le parc</h2><p>Cette présence complète les activités de plein air développées autour du paintball. La mini-ferme rejoint alors le programme de nouveautés qui comprend aussi le labyrinthe géant et le Big Air Jump.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Goats among the trees</h2><p>The mini-farm is among Pokeyland’s announced additions in 2017. Its wooded enclosure houses goats, with plank fences following the spaces between the trunks.</p><p>Views from this period show earth and straw underfoot, pale rocks and black or white animals. Leafy branches cover much of the enclosure.</p><h2>An animal attraction in the park</h2><p>The mini-farm adds an animal element to the outdoor activities developed around paintball. It joins the programme of new additions that also includes the giant maze and Big Air Jump.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ziegen zwischen den Bäumen</h2><p>Die Mini-Ferme gehört zu den 2017 angekündigten Neuheiten von Pokeyland. In ihrem bewaldeten Gehege leben unter anderem Ziegen; Bretterzäune verlaufen durch die Zwischenräume der Baumstämme.</p><p>Bilder aus dieser Zeit zeigen Erde und Stroh am Boden, helle Felsen sowie schwarze und weiße Tiere. Belaubte Äste überdecken einen großen Teil des Geheges.</p><h2>Tiere im Freizeitpark</h2><p>Die Mini-Ferme ergänzt die rund um Paintball entwickelten Freiluftaktivitäten um ein Tierangebot. Sie gehört zum damaligen Neuheitenprogramm, das auch das Riesenlabyrinth und den Big Air Jump umfasst.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Cabras entre los árboles</h2><p>La minigranja forma parte de las novedades anunciadas por Pokeyland en 2017. Su recinto arbolado alberga cabras, con cercas de tablones que siguen los espacios entre los troncos.</p><p>Las vistas de aquella época muestran un suelo de tierra y paja, rocas claras y animales negros o blancos. Las ramas frondosas cubren buena parte del recinto.</p><h2>Animales en el parque</h2><p>Esta presencia añade un componente animal a las actividades al aire libre desarrolladas en torno al paintball. La minigranja se incorpora al programa de novedades que también incluye el laberinto gigante y Big Air Jump.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Capre tra gli alberi</h2><p>La mini-fattoria fa parte delle novità annunciate da Pokeyland nel 2017. Il recinto alberato ospita capre, con staccionate di assi che seguono gli spazi tra i tronchi.</p><p>Le vedute di quel periodo mostrano terra e paglia al suolo, rocce chiare e animali neri o bianchi. I rami frondosi coprono gran parte del recinto.</p><h2>Gli animali nel parco</h2><p>Questa presenza aggiunge una componente animale alle attività all’aperto sviluppate intorno al paintball. La mini-fattoria entra nel programma di novità che comprende anche il labirinto gigante e Big Air Jump.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Geiten tussen de bomen</h2><p>De kinderboerderij behoort tot de in 2017 aangekondigde nieuwigheden van Pokeyland. In het beboste verblijf leven onder meer geiten; plankenhekken volgen de ruimtes tussen de boomstammen.</p><p>Beelden uit die periode tonen aarde en stro op de grond, lichte rotsen en zwarte of witte dieren. Bladerrijke takken bedekken een groot deel van het verblijf.</p><h2>Dieren in het park</h2><p>De kinderboerderij voegt dieren toe aan de buitenactiviteiten die rond paintball zijn ontwikkeld. Ze maakt deel uit van het toenmalige nieuwighedenprogramma, samen met het reuzendoolhof en Big Air Jump.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kozy wśród drzew</h2><p>Minifarma należy do nowości zapowiedzianych przez Pokeyland w 2017 roku. W zalesionym wybiegu żyją między innymi kozy, a płoty z desek biegną pomiędzy pniami.</p><p>Widoki z tego okresu pokazują ziemię i słomę na podłożu, jasne skały oraz czarne i białe zwierzęta. Ulistnione gałęzie osłaniają dużą część wybiegu.</p><h2>Zwierzęta w parku</h2><p>Minifarma wprowadza zwierzęcy akcent do aktywności plenerowych rozwijanych wokół paintballu. Wchodzi do ówczesnego programu nowości obok wielkiego labiryntu i Big Air Jump.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Cabras entre as árvores</h2><p>A miniquinta faz parte das novidades anunciadas pelo Pokeyland em 2017. O recinto arborizado acolhe cabras, com vedações de tábuas que seguem os espaços entre os troncos.</p><p>As vistas desse período mostram terra e palha no chão, rochas claras e animais pretos ou brancos. Os ramos frondosos cobrem grande parte do recinto.</p><h2>Animais no parque</h2><p>Esta presença acrescenta uma componente animal às atividades ao ar livre desenvolvidas em torno do paintball. A miniquinta integra o programa de novidades que também inclui o labirinto gigante e o Big Air Jump.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-historical-boutique-historique",
@@ -2744,7 +2880,41 @@
         "status": "Unknown",
         "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
       },
-      "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c"
+      "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un saut face à la forêt</h2><p>Le Big Air Jump s’inscrit dans le paysage boisé de Pokeyland avec sa plateforme bordeaux et ses garde-corps jaunes. L’escalier et le point de départ se détachent devant les arbres, au-dessus d’un grand coussin gonflable. Le coussin associe de larges bords noirs à une partie jaune.</p><h2>La vague de nouveautés de 2017</h2><p>Le Big Air Jump est annoncé cette année-là aux côtés de la mini-ferme et du labyrinthe géant. Son nom apparaît séparément du Saut dans le vide sur le plan de l’époque.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A jump facing the forest</h2><p>Big Air Jump stands in Pokeyland’s wooded landscape with a burgundy platform and yellow guardrails. The stairs and departure point rise before the trees above a large inflatable cushion. The cushion combines broad black edges with a yellow section.</p><h2>The new additions of 2017</h2><p>Big Air Jump is announced that year alongside the mini-farm and giant maze. Its name appears separately from Saut dans le vide on the contemporary park map.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Sprung vor dem Wald</h2><p>Der Big Air Jump steht mit bordeauxroter Plattform und gelben Geländern in der Waldlandschaft von Pokeyland. Treppe und Absprungpunkt ragen vor den Bäumen über einem großen Luftkissen auf. Das Kissen verbindet breite schwarze Ränder mit einem gelben Bereich.</p><h2>Die Neuheiten von 2017</h2><p>Big Air Jump wird in diesem Jahr zusammen mit der Mini-Ferme und dem Riesenlabyrinth angekündigt. Sein Name steht auf dem damaligen Parkplan getrennt vom Saut dans le vide.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un salto frente al bosque</h2><p>Big Air Jump se integra en el paisaje arbolado de Pokeyland con su plataforma burdeos y sus barandillas amarillas. La escalera y el punto de partida destacan ante los árboles, sobre un gran colchón hinchable. El colchón combina anchos bordes negros con una zona amarilla.</p><h2>Las novedades de 2017</h2><p>Big Air Jump se anuncia ese año junto a la minigranja y el laberinto gigante. Su nombre aparece separado de Saut dans le vide en el plano de la época.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un salto davanti al bosco</h2><p>Big Air Jump si inserisce nel paesaggio boschivo di Pokeyland con la piattaforma bordeaux e i parapetti gialli. La scala e il punto di partenza risaltano davanti agli alberi, sopra un grande cuscino gonfiabile. Il cuscino combina larghi bordi neri e una parte gialla.</p><h2>Le novità del 2017</h2><p>Big Air Jump viene annunciato quell’anno insieme alla mini-fattoria e al labirinto gigante. Il suo nome compare separatamente dal Saut dans le vide sulla mappa dell’epoca.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een sprong voor het bos</h2><p>Big Air Jump staat met een bordeauxrood platform en gele leuningen in het boslandschap van Pokeyland. De trap en het vertrekpunt steken voor de bomen uit boven een groot luchtkussen. Het kussen combineert brede zwarte randen met een geel gedeelte.</p><h2>De nieuwigheden van 2017</h2><p>Big Air Jump wordt dat jaar aangekondigd naast de kinderboerderij en het reuzendoolhof. Op de toenmalige parkkaart staat de naam apart van Saut dans le vide.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Skok na tle lasu</h2><p>Big Air Jump wpisuje się w leśny krajobraz Pokeyland bordową platformą i żółtymi barierkami. Schody i miejsce startu wyróżniają się na tle drzew nad dużą poduszką powietrzną. Poduszka łączy szerokie czarne brzegi z żółtą częścią.</p><h2>Nowości z 2017 roku</h2><p>Big Air Jump zostaje zapowiedziany w tym roku obok minifarmy i wielkiego labiryntu. Jego nazwa figuruje na ówczesnej mapie oddzielnie od Saut dans le vide.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um salto diante do bosque</h2><p>O Big Air Jump integra-se na paisagem arborizada do Pokeyland com a plataforma bordô e os guarda-corpos amarelos. A escada e o ponto de partida destacam-se diante das árvores, sobre uma grande almofada insuflável. A almofada combina bordas pretas largas com uma parte amarela.</p><h2>As novidades de 2017</h2><p>O Big Air Jump é anunciado nesse ano juntamente com a miniquinta e o labirinto gigante. O seu nome surge separado do Saut dans le vide no mapa da época.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-historical-labyrinthe-geant",
@@ -5819,6 +5989,411 @@
       "updatedAt": "2026-11-15T12:45:07.163Z",
       "key": "31ea2b41b90045bfa7114af9567f39d0",
       "imageId": "31ea2b41b90045bfa7114af9567f39d0"
+    },
+    {
+      "id": "d2dbeaed1375446e93c0ed1833d7395d",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "00739144-e99b-45a1-8694-3594553ca3a2",
+      "path": "park_item/d2dbeaed1375446e93c0ed1833d7395d",
+      "description": "Les caisses de Pokeyland dans un reportage publié en août 2021.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1067,
+      "sizeInBytes": 537098,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un renard orange domine un portail au décor de rochers et de tronc ; derrière, le chalet porte l’enseigne CAISSES."
+        },
+        {
+          "languageCode": "en",
+          "value": "An orange fox stands above a gateway decorated as rocks and a trunk; behind it, a chalet bears the sign CAISSES."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein orangefarbener Fuchs steht über einem Tor mit Fels- und Baumstammdekor; dahinter trägt ein Holzhaus das Schild CAISSES."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un zorro naranja domina un portal decorado con rocas y un tronco; detrás, una caseta lleva el letrero CAISSES."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una volpe arancione sovrasta un portale decorato con rocce e un tronco; dietro, uno chalet reca l’insegna CAISSES."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een oranje vos staat boven een poort met rots- en boomstamdecor; daarachter draagt een chalet het bord CAISSES."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowy lis góruje nad bramą ze skalną dekoracją i pniem; za nią drewniany budynek ma napis CAISSES."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma raposa laranja domina um portal decorado com rochas e um tronco; atrás, um chalé tem o letreiro CAISSES."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les caisses de Pokeyland dans un reportage publié en août 2021."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland’s ticket desks in a report published in August 2021."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Kassen von Pokeyland in einem im August 2021 veröffentlichten Bericht."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las taquillas de Pokeyland en un reportaje publicado en agosto de 2021."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le casse di Pokeyland in un reportage pubblicato nell’agosto 2021."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kassa’s van Pokeyland in een reportage uit augustus 2021."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kasy Pokeyland w reportażu opublikowanym w sierpniu 2021 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As bilheteiras do Pokeyland numa reportagem publicada em agosto de 2021."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "en",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "de",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "es",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "it",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "nl",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "pl",
+          "value": "ER / Emma Facchetti."
+        },
+        {
+          "languageCode": "pt",
+          "value": "ER / Emma Facchetti."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:50:43.696Z",
+      "updatedAt": "2026-11-15T12:50:47.483Z",
+      "key": "d2dbeaed1375446e93c0ed1833d7395d",
+      "imageId": "d2dbeaed1375446e93c0ed1833d7395d"
+    },
+    {
+      "id": "5667ff7a32794956bb10fe963ad96af0",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "path": "park_item/5667ff7a32794956bb10fe963ad96af0",
+      "description": "Une conférence dans l’espace de séminaire de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1067,
+      "sizeInBytes": 608734,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un public assis assiste à une présentation dans une salle à plafond et murs de bois, avec de grandes fenêtres et un écran."
+        },
+        {
+          "languageCode": "en",
+          "value": "A seated audience watches a presentation in a room with wooden walls and ceiling, large windows and a screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein sitzendes Publikum verfolgt eine Präsentation in einem Raum mit Holzwänden und Holzdecke, großen Fenstern und Leinwand."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un público sentado asiste a una presentación en una sala con paredes y techo de madera, grandes ventanas y pantalla."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un pubblico seduto segue una presentazione in una sala con pareti e soffitto di legno, grandi finestre e schermo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een zittend publiek volgt een presentatie in een zaal met houten wanden en plafond, grote ramen en een scherm."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Siedząca publiczność ogląda prezentację w sali z drewnianymi ścianami i sufitem, dużymi oknami oraz ekranem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um público sentado assiste a uma apresentação numa sala com paredes e teto de madeira, janelas grandes e ecrã."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une conférence dans l’espace de séminaire de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "A conference in Pokeyland’s seminar venue."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Konferenz im Seminarbereich von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una conferencia en el espacio de seminarios de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una conferenza nello spazio seminari di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een conferentie in de seminarzaal van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Konferencja w sali seminaryjnej Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma conferência no espaço de seminários do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Pokeyland. Source : Bureau des Congrès de Metz."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Pokeyland. Source: Metz Convention Bureau."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Pokeyland. Quelle: Convention Bureau Metz."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Pokeyland. Fuente: Oficina de Congresos de Metz."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Pokeyland. Fonte: Ufficio Congressi di Metz."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Pokeyland. Bron: congresbureau van Metz."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Pokeyland. Źródło: Biuro Kongresowe w Metz."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Pokeyland. Fonte: Gabinete de Congressos de Metz."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:50:54.411Z",
+      "updatedAt": "2026-11-15T12:50:57.99Z",
+      "key": "5667ff7a32794956bb10fe963ad96af0",
+      "imageId": "5667ff7a32794956bb10fe963ad96af0"
+    },
+    {
+      "id": "e502a87696b443d88727981f41303c0d",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "path": "park_item/e502a87696b443d88727981f41303c0d",
+      "description": "La verrière colorée de l’espace de réception de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1067,
+      "sizeInBytes": 643999,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-11.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des tables hautes et un buffet occupent un espace vitré au toit rose et bleu, traversé de grandes poutres sombres."
+        },
+        {
+          "languageCode": "en",
+          "value": "High tables and a buffet fill a glazed space beneath a pink and blue roof crossed by large dark beams."
+        },
+        {
+          "languageCode": "de",
+          "value": "Stehtische und ein Buffet stehen in einem verglasten Raum unter einem rosa-blauen Dach mit großen dunklen Trägern."
+        },
+        {
+          "languageCode": "es",
+          "value": "Mesas altas y un bufé ocupan un espacio acristalado bajo un techo rosa y azul cruzado por grandes vigas oscuras."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tavoli alti e un buffet occupano uno spazio vetrato sotto un tetto rosa e blu attraversato da grandi travi scure."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Hoge tafels en een buffet staan in een glazen ruimte onder een roze en blauw dak met grote donkere balken."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wysokie stoliki i bufet zajmują przeszkloną przestrzeń pod różowo-niebieskim dachem przeciętym dużymi ciemnymi belkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Mesas altas e um bufete ocupam um espaço envidraçado sob um teto rosa e azul atravessado por grandes vigas escuras."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La verrière colorée de l’espace de réception de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The coloured glazed roof of Pokeyland’s reception space."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das farbige Glasdach im Empfangsbereich von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "El techo acristalado de colores del espacio de recepción de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La copertura vetrata colorata dello spazio ricevimenti di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het gekleurde glazen dak van de ontvangstruimte in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolorowy przeszklony dach przestrzeni recepcyjnej Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cobertura envidraçada colorida do espaço de receção do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Pokeyland. Source : Bureau des Congrès de Metz."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Pokeyland. Source: Metz Convention Bureau."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Pokeyland. Quelle: Convention Bureau Metz."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Pokeyland. Fuente: Oficina de Congresos de Metz."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Pokeyland. Fonte: Ufficio Congressi di Metz."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Pokeyland. Bron: congresbureau van Metz."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Pokeyland. Źródło: Biuro Kongresowe w Metz."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Pokeyland. Fonte: Gabinete de Congressos de Metz."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:51:05.338Z",
+      "updatedAt": "2026-11-15T12:51:08.864Z",
+      "key": "e502a87696b443d88727981f41303c0d",
+      "imageId": "e502a87696b443d88727981f41303c0d"
     }
   ],
   "history": {
@@ -6206,7 +6781,7 @@
     "currencyCode": "EUR",
     "sourceUrl": "https://www.pokeyland.com/tarifs-2026/",
     "purchaseUrl": null,
-    "lastVerifiedAtUtc": "2026-11-15T11:40:14.568558Z",
+    "lastVerifiedAtUtc": "2026-11-15T11:40:14.568Z",
     "notes": [
       {
         "languageCode": "fr",

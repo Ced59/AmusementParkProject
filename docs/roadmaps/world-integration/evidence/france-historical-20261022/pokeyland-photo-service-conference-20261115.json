@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+    "sourcePageKey": "metz-convention-pokeyland",
+    "file": "venue-1.jpg",
+    "accessedAtUtc": "2026-11-15T12:39:37.025098Z",
+    "status": 200,
+    "bytes": 608734,
+    "sha256": "82058f374863491e663a3d8a92e85272be6efbabc5fd1b08eba019730dd3a3f7",
+    "contentType": "image/jpeg",
+    "dimensions": [
+      1600,
+      1067
+    ],
+    "personallyInspected": true,
+    "localCropResizeRetouch": false,
+    "captureDate": null,
+    "photographer": null,
+    "credit": "© Pokeyland, publié par le Bureau des Congrès de Metz",
+    "decision": "Qualified wider source of the same exposure as formation.jpg; do not import as an additional photograph",
+    "observation": "Conference audience in wood-panelled room, black framing, screen, curtains and staircase; May 2019 indicator text visible on the projected slide, but exact capture date unknown.",
+    "sourcePage": "https://www.congres-metz.com/pokeyland/",
+    "rootVisuallyReviewed": true,
+    "sameExposureVariantsExcluded": [
+      "formation.jpg"
+    ]
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/services-descriptive-followup/venue-1.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-service-conference-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-service-conference-import-result.json"
+  },
+  "metadata": {
+    "description": "Une conférence dans l’espace de séminaire de Pokeyland.",
+    "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un public assis assiste à une présentation dans une salle à plafond et murs de bois, avec de grandes fenêtres et un écran."
+      },
+      {
+        "languageCode": "en",
+        "value": "A seated audience watches a presentation in a room with wooden walls and ceiling, large windows and a screen."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein sitzendes Publikum verfolgt eine Präsentation in einem Raum mit Holzwänden und Holzdecke, großen Fenstern und Leinwand."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un público sentado asiste a una presentación en una sala con paredes y techo de madera, grandes ventanas y pantalla."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un pubblico seduto segue una presentazione in una sala con pareti e soffitto di legno, grandi finestre e schermo."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een zittend publiek volgt een presentatie in een zaal met houten wanden en plafond, grote ramen en een scherm."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Siedząca publiczność ogląda prezentację w sali z drewnianymi ścianami i sufitem, dużymi oknami oraz ekranem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um público sentado assiste a uma apresentação numa sala com paredes e teto de madeira, janelas grandes e ecrã."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une conférence dans l’espace de séminaire de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "A conference in Pokeyland’s seminar venue."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Konferenz im Seminarbereich von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una conferencia en el espacio de seminarios de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una conferenza nello spazio seminari di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een conferentie in de seminarzaal van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Konferencja w sali seminaryjnej Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma conferência no espaço de seminários do Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Pokeyland. Source : Bureau des Congrès de Metz."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Pokeyland. Source: Metz Convention Bureau."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Pokeyland. Quelle: Convention Bureau Metz."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Pokeyland. Fuente: Oficina de Congresos de Metz."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Pokeyland. Fonte: Ufficio Congressi di Metz."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Pokeyland. Bron: congresbureau van Metz."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Pokeyland. Źródło: Biuro Kongresowe w Metz."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Pokeyland. Fonte: Gabinete de Congressos de Metz."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T12:50:52.4358384Z",
+    "result": {
+      "id": "5667ff7a32794956bb10fe963ad96af0",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "path": "park_item/5667ff7a32794956bb10fe963ad96af0",
+      "description": "Une conférence dans l’espace de séminaire de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1067,
+      "sizeInBytes": 608734,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.congres-metz.com/app/uploads/2026/04/Pokeyland-SNCF-5.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un public assis assiste à une présentation dans une salle à plafond et murs de bois, avec de grandes fenêtres et un écran."
+        },
+        {
+          "languageCode": "en",
+          "value": "A seated audience watches a presentation in a room with wooden walls and ceiling, large windows and a screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein sitzendes Publikum verfolgt eine Präsentation in einem Raum mit Holzwänden und Holzdecke, großen Fenstern und Leinwand."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un público sentado asiste a una presentación en una sala con paredes y techo de madera, grandes ventanas y pantalla."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un pubblico seduto segue una presentazione in una sala con pareti e soffitto di legno, grandi finestre e schermo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een zittend publiek volgt een presentatie in een zaal met houten wanden en plafond, grote ramen en een scherm."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Siedząca publiczność ogląda prezentację w sali z drewnianymi ścianami i sufitem, dużymi oknami oraz ekranem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um público sentado assiste a uma apresentação numa sala com paredes e teto de madeira, janelas grandes e ecrã."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une conférence dans l’espace de séminaire de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "A conference in Pokeyland’s seminar venue."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Konferenz im Seminarbereich von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una conferencia en el espacio de seminarios de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una conferenza nello spazio seminari di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een conferentie in de seminarzaal van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Konferencja w sali seminaryjnej Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma conferência no espaço de seminários do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Pokeyland. Source : Bureau des Congrès de Metz."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Pokeyland. Source: Metz Convention Bureau."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Pokeyland. Quelle: Convention Bureau Metz."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Pokeyland. Fuente: Oficina de Congresos de Metz."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Pokeyland. Fonte: Ufficio Congressi di Metz."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Pokeyland. Bron: congresbureau van Metz."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Pokeyland. Źródło: Biuro Kongresowe w Metz."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Pokeyland. Fonte: Gabinete de Congressos de Metz."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:50:54.411Z",
+      "updatedAt": "2026-11-15T12:50:57.99Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:51:01.1179848Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-21-reception-venue-descriptions",
+        "step": "04-items",
+        "notes": "Sources relues : plan officiel 2026, ancien plan sans millésime inventé, L’Est Républicain du 4 août 2021 et photo d’Emma Facchetti portant l’enseigne CAISSES, site officiel Séminaires, Convention Bureau de Metz et deux photos natives 1600 × 1067 personnellement vues. Apparence des caisses explicitement datée de 2021, sans continuité en 2026 inventée ; deux niveaux et terrasse de la salle confirmés par la source institutionnelle. Aucun matériau réel déduit des rochers décoratifs, aucune capacité additionnée, aucune date de photo inventée. Deux intertitres et trois paragraphes par langue ; relecture personnelle des huit langues."
+      },
+      "items": [
+        {
+          "id": "00739144-e99b-45a1-8694-3594553ca3a2",
+          "key": "pokeyland-accueil",
+          "name": "Caisse d’accueil",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Sous le renard de Pokeyland</h2><p>En 2021, l’entrée des caisses se reconnaît à un grand portail de rochers sculptés et à une traverse en forme de tronc. Un renard orange et blanc y accueille les visiteurs, les bras ouverts au-dessus du passage.</p><p>Derrière cette silhouette, le chalet à l’enseigne verte « CAISSES » aligne ses guichets sous un petit auvent. Des potelets reliés par des cordes dessinent les files devant les panneaux d’information.</p><h2>Les guichets du parc</h2><p>Le plan de 2026 conserve un point « Caisse accueil » au numéro zéro. L’ancienne carte le désignait déjà comme lieu de vente des activités, distinct de l’accueil accrobranche.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Beneath Pokeyland’s fox</h2><p>In 2021, the approach to the ticket desks is marked by a large gateway of sculpted rocks and a crosspiece shaped like a tree trunk. An orange and white fox welcomes visitors with outstretched arms above the passage.</p><p>Behind it, a chalet with a green “CAISSES” sign has ticket windows beneath a small awning. Posts linked by ropes define the queues in front of the information boards.</p><h2>The park’s ticket desks</h2><p>The 2026 map retains a “Caisse accueil” point numbered zero. The older map already identified it as the place to buy activities, separate from the treetop-course reception.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Unter dem Fuchs von Pokeyland</h2><p>2021 kennzeichnet ein großes Tor aus skulptierten Felsen und einem Querbalken in Baumstammform den Zugang zu den Kassen. Darüber begrüßt ein orange-weißer Fuchs die Besucher mit ausgebreiteten Armen.</p><p>Dahinter liegen die Schalter eines Holzhauses mit grünem Schild „CAISSES“ unter einem kleinen Vordach. Durch Seile verbundene Pfosten begrenzen die Warteschlangen vor den Informationstafeln.</p><h2>Die Kassen des Parks</h2><p>Der Plan von 2026 führt weiterhin einen Punkt „Caisse accueil“ mit der Nummer null. Schon die ältere Karte bezeichnete ihn als Verkaufsstelle für Aktivitäten, getrennt vom Empfang der Kletterparcours.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Bajo el zorro de Pokeyland</h2><p>En 2021, el acceso a las taquillas se reconoce por un gran portal de rocas esculpidas y un travesaño en forma de tronco. Un zorro naranja y blanco recibe a los visitantes con los brazos abiertos sobre el paso.</p><p>Detrás, la caseta con el letrero verde «CAISSES» alinea sus ventanillas bajo un pequeño alero. Postes unidos por cuerdas delimitan las colas ante los paneles informativos.</p><h2>Las taquillas del parque</h2><p>El plano de 2026 conserva el punto «Caisse accueil» con el número cero. El plano anterior ya lo identificaba como lugar de venta de actividades, separado de la recepción de los circuitos entre árboles.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Sotto la volpe di Pokeyland</h2><p>Nel 2021 l’accesso alle casse si riconosce da un grande portale di rocce scolpite e da una traversa a forma di tronco. Una volpe arancione e bianca accoglie i visitatori a braccia aperte sopra il passaggio.</p><p>Alle sue spalle, lo chalet con l’insegna verde «CAISSES» allinea gli sportelli sotto una piccola tettoia. Paletti collegati da corde delimitano le file davanti ai pannelli informativi.</p><h2>Le casse del parco</h2><p>La mappa del 2026 mantiene il punto «Caisse accueil» al numero zero. La mappa precedente lo indicava già come luogo di vendita delle attività, distinto dall’accoglienza dei percorsi sugli alberi.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Onder de vos van Pokeyland</h2><p>In 2021 is de toegang tot de kassa’s herkenbaar aan een grote poort van gebeeldhouwde rotsen met een dwarsbalk in de vorm van een boomstam. Een oranje-witte vos verwelkomt bezoekers met open armen boven de doorgang.</p><p>Daarachter liggen de loketten van een chalet met een groen bord “CAISSES” onder een kleine luifel. Paaltjes met touwen vormen de wachtrijen voor de informatieborden.</p><h2>De kassa’s van het park</h2><p>De kaart van 2026 vermeldt nog steeds “Caisse accueil” met nummer nul. De oudere kaart duidde dit al aan als verkooppunt voor activiteiten, apart van de ontvangst bij de klimparcoursen.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pod lisem Pokeyland</h2><p>W 2021 roku wejście do kas wyróżnia duża brama ze skalnymi rzeźbami i poprzeczką w kształcie pnia. Nad przejściem pomarańczowo-biały lis wita gości z rozłożonymi ramionami.</p><p>Za nim znajduje się drewniany budynek z zielonym napisem „CAISSES” i okienkami pod niewielkim daszkiem. Słupki połączone linami wyznaczają kolejki przed tablicami informacyjnymi.</p><h2>Kasy parku</h2><p>Plan z 2026 roku nadal oznacza punkt „Caisse accueil” numerem zero. Starsza mapa wskazywała go już jako miejsce sprzedaży aktywności, odrębne od recepcji tras w koronach drzew.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Sob a raposa do Pokeyland</h2><p>Em 2021, a entrada das bilheteiras distingue-se por um grande portal de rochas esculpidas e uma travessa em forma de tronco. Uma raposa laranja e branca recebe os visitantes de braços abertos sobre a passagem.</p><p>Atrás, o chalé com o letreiro verde «CAISSES» alinha os seus guichés sob um pequeno alpendre. Postes ligados por cordas delimitam as filas diante dos painéis informativos.</p><h2>As bilheteiras do parque</h2><p>O mapa de 2026 mantém o ponto «Caisse accueil» com o número zero. O mapa anterior já o identificava como local de venda de atividades, separado da receção dos percursos nas árvores.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+          "key": "pokeyland-salle-seminaire",
+          "name": "Salle de séminaire",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le bois et la lumière colorée</h2><p>La salle de séminaire de Pokeyland occupe deux niveaux et se prolonge par une terrasse couverte. Les parements de bois et les grands cadres sombres des fenêtres donnent au lieu une continuité avec les arbres visibles dehors.</p><p>Dans l’espace de réception, une verrière aux panneaux colorés éclaire les tables hautes et le buffet. Les poutres sombres dessinent de grandes diagonales sous cette toiture, tandis que les baies ouvrent sur la terrasse.</p><h2>Réunions au milieu des loisirs</h2><p>L’espace de conférence associe plafond de bois, rideaux et écran de projection. Le parc propose la location à la journée ou à la demi-journée, avec mobilier et sonorisation, dans ce bâtiment consacré aux rencontres professionnelles.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Wood and coloured light</h2><p>Pokeyland’s seminar venue occupies two levels and extends onto a covered terrace. Timber wall coverings and dark window frames connect its interior with the trees visible outside.</p><p>In the reception area, a glazed roof with coloured panels lights the high tables and buffet. Dark beams form broad diagonals beneath the roof, while the windows overlook the terrace.</p><h2>Meetings among the leisure attractions</h2><p>The conference space combines a wooden ceiling, curtains and a projection screen. The park offers full-day or half-day hire with furniture and sound equipment in this building devoted to professional gatherings.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Holz und farbiges Licht</h2><p>Der Seminarbereich von Pokeyland erstreckt sich über zwei Ebenen und eine überdachte Terrasse. Holzverkleidungen und dunkle Fensterrahmen verbinden den Innenraum optisch mit den Bäumen draußen.</p><p>Im Empfangsbereich beleuchtet ein Glasdach mit farbigen Scheiben die Stehtische und das Buffet. Dunkle Träger zeichnen große Diagonalen unter das Dach, während die Fenster den Blick auf die Terrasse öffnen.</p><h2>Tagungen zwischen Freizeitattraktionen</h2><p>Der Konferenzraum verbindet eine Holzdecke mit Vorhängen und Projektionsleinwand. Das Gebäude für berufliche Zusammenkünfte lässt sich beim Park ganz- oder halbtags mit Mobiliar und Tontechnik mieten.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Madera y luz de colores</h2><p>La sala de seminarios de Pokeyland ocupa dos niveles y se prolonga con una terraza cubierta. Los revestimientos de madera y los grandes marcos oscuros de las ventanas conectan visualmente el interior con los árboles del exterior.</p><p>En el espacio de recepción, un techo acristalado de paneles coloreados ilumina las mesas altas y el bufé. Las vigas oscuras dibujan grandes diagonales bajo la cubierta, mientras los ventanales se abren hacia la terraza.</p><h2>Reuniones entre las atracciones</h2><p>El espacio de conferencias combina techo de madera, cortinas y pantalla de proyección. El parque ofrece alquiler por jornada completa o media jornada, con mobiliario y sonido, en este edificio dedicado a encuentros profesionales.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Legno e luce colorata</h2><p>La sala seminari di Pokeyland si sviluppa su due livelli e prosegue con una terrazza coperta. I rivestimenti di legno e i grandi telai scuri delle finestre creano una continuità visiva con gli alberi all’esterno.</p><p>Nello spazio di ricevimento, una copertura vetrata con pannelli colorati illumina i tavoli alti e il buffet. Le travi scure disegnano ampie diagonali sotto il tetto, mentre le vetrate si affacciano sulla terrazza.</p><h2>Riunioni tra le attrazioni</h2><p>Lo spazio conferenze abbina soffitto di legno, tende e schermo di proiezione. Il parco propone l’affitto per un’intera giornata o mezza giornata, con arredi e impianto audio, in questo edificio dedicato agli incontri professionali.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Hout en gekleurd licht</h2><p>De seminarzaal van Pokeyland beslaat twee niveaus en sluit aan op een overdekt terras. Houten wandbekleding en donkere raamkozijnen verbinden het interieur met de bomen die buiten zichtbaar zijn.</p><p>In de ontvangstruimte valt licht door gekleurde panelen in het glazen dak op de hoge tafels en het buffet. Donkere balken tekenen grote diagonalen onder het dak; de ramen kijken uit op het terras.</p><h2>Vergaderen tussen de attracties</h2><p>De conferentieruimte combineert een houten plafond met gordijnen en een projectiescherm. Het park verhuurt dit gebouw voor zakelijke bijeenkomsten per hele of halve dag, met meubilair en geluidsapparatuur.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Drewno i barwne światło</h2><p>Sala seminaryjna Pokeyland zajmuje dwa poziomy i łączy się z zadaszonym tarasem. Drewniane okładziny i duże ciemne ramy okien tworzą wizualną ciągłość z drzewami widocznymi na zewnątrz.</p><p>W przestrzeni recepcyjnej przeszklony dach z kolorowymi panelami oświetla wysokie stoliki i bufet. Ciemne belki układają się pod nim w szerokie przekątne, a okna wychodzą na taras.</p><h2>Spotkania wśród atrakcji</h2><p>Przestrzeń konferencyjna łączy drewniany sufit, zasłony i ekran projekcyjny. Park wynajmuje ten budynek na spotkania zawodowe na cały dzień lub pół dnia, wraz z meblami i nagłośnieniem.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Madeira e luz colorida</h2><p>A sala de seminários do Pokeyland ocupa dois níveis e prolonga-se por um terraço coberto. Os revestimentos de madeira e os grandes caixilhos escuros das janelas criam uma continuidade visual com as árvores no exterior.</p><p>Na área de receção, uma cobertura envidraçada com painéis coloridos ilumina as mesas altas e o bufete. As vigas escuras desenham grandes diagonais sob o telhado, enquanto as janelas dão para o terraço.</p><h2>Reuniões entre as atrações</h2><p>O espaço de conferências combina teto de madeira, cortinas e ecrã de projeção. O parque disponibiliza o aluguer por dia inteiro ou meio dia, com mobiliário e som, neste edifício dedicado a encontros profissionais.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "363e384b-8829-4e99-b055-c0ca64ae7659",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:48:20.9957725Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "pokeyland-accueil",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Unter dem Fuchs von Pokeyland</h2><p>2021 kennzeichnet ein großes Tor aus skulptierten Felsen und einem Querbalken in Baumstammform den Zugang zu den Kassen. Darüber begrüßt ein orange-weißer Fuchs die Besucher mit ausgebreiteten Armen.</p><p>Dahinter liegen die Schalter eines Holzhauses mit grünem Schild „CAISSES“ unter einem kleinen Vordach. Durch Seile verbundene Pfosten begrenzen die Warteschlangen vor den Informationstafeln.</p><h2>Die Kassen des Parks</h2><p>Der Plan von 2026 führt weiterhin einen Punkt „Caisse accueil“ mit der Nummer null. Schon die ältere Karte bezeichnete ihn als Verkaufsstelle für Aktivitäten, getrennt vom Empfang der Kletterparcours.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Beneath Pokeyland’s fox</h2><p>In 2021, the approach to the ticket desks is marked by a large gateway of sculpted rocks and a crosspiece shaped like a tree trunk. An orange and white fox welcomes visitors with outstretched arms above the passage.</p><p>Behind it, a chalet with a green “CAISSES” sign has ticket windows beneath a small awning. Posts linked by ropes define the queues in front of the information boards.</p><h2>The park’s ticket desks</h2><p>The 2026 map retains a “Caisse accueil” point numbered zero. The older map already identified it as the place to buy activities, separate from the treetop-course reception.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Bajo el zorro de Pokeyland</h2><p>En 2021, el acceso a las taquillas se reconoce por un gran portal de rocas esculpidas y un travesaño en forma de tronco. Un zorro naranja y blanco recibe a los visitantes con los brazos abiertos sobre el paso.</p><p>Detrás, la caseta con el letrero verde «CAISSES» alinea sus ventanillas bajo un pequeño alero. Postes unidos por cuerdas delimitan las colas ante los paneles informativos.</p><h2>Las taquillas del parque</h2><p>El plano de 2026 conserva el punto «Caisse accueil» con el número cero. El plano anterior ya lo identificaba como lugar de venta de actividades, separado de la recepción de los circuitos entre árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sous le renard de Pokeyland</h2><p>En 2021, l’entrée des caisses se reconnaît à un grand portail de rochers sculptés et à une traverse en forme de tronc. Un renard orange et blanc y accueille les visiteurs, les bras ouverts au-dessus du passage.</p><p>Derrière cette silhouette, le chalet à l’enseigne verte « CAISSES » aligne ses guichets sous un petit auvent. Des potelets reliés par des cordes dessinent les files devant les panneaux d’information.</p><h2>Les guichets du parc</h2><p>Le plan de 2026 conserve un point « Caisse accueil » au numéro zéro. L’ancienne carte le désignait déjà comme lieu de vente des activités, distinct de l’accueil accrobranche.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sotto la volpe di Pokeyland</h2><p>Nel 2021 l’accesso alle casse si riconosce da un grande portale di rocce scolpite e da una traversa a forma di tronco. Una volpe arancione e bianca accoglie i visitatori a braccia aperte sopra il passaggio.</p><p>Alle sue spalle, lo chalet con l’insegna verde «CAISSES» allinea gli sportelli sotto una piccola tettoia. Paletti collegati da corde delimitano le file davanti ai pannelli informativi.</p><h2>Le casse del parco</h2><p>La mappa del 2026 mantiene il punto «Caisse accueil» al numero zero. La mappa precedente lo indicava già come luogo di vendita delle attività, distinto dall’accoglienza dei percorsi sugli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Onder de vos van Pokeyland</h2><p>In 2021 is de toegang tot de kassa’s herkenbaar aan een grote poort van gebeeldhouwde rotsen met een dwarsbalk in de vorm van een boomstam. Een oranje-witte vos verwelkomt bezoekers met open armen boven de doorgang.</p><p>Daarachter liggen de loketten van een chalet met een groen bord “CAISSES” onder een kleine luifel. Paaltjes met touwen vormen de wachtrijen voor de informatieborden.</p><h2>De kassa’s van het park</h2><p>De kaart van 2026 vermeldt nog steeds “Caisse accueil” met nummer nul. De oudere kaart duidde dit al aan als verkooppunt voor activiteiten, apart van de ontvangst bij de klimparcoursen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pod lisem Pokeyland</h2><p>W 2021 roku wejście do kas wyróżnia duża brama ze skalnymi rzeźbami i poprzeczką w kształcie pnia. Nad przejściem pomarańczowo-biały lis wita gości z rozłożonymi ramionami.</p><p>Za nim znajduje się drewniany budynek z zielonym napisem „CAISSES” i okienkami pod niewielkim daszkiem. Słupki połączone linami wyznaczają kolejki przed tablicami informacyjnymi.</p><h2>Kasy parku</h2><p>Plan z 2026 roku nadal oznacza punkt „Caisse accueil” numerem zero. Starsza mapa wskazywała go już jako miejsce sprzedaży aktywności, odrębne od recepcji tras w koronach drzew.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Sob a raposa do Pokeyland</h2><p>Em 2021, a entrada das bilheteiras distingue-se por um grande portal de rochas esculpidas e uma travessa em forma de tronco. Uma raposa laranja e branca recebe os visitantes de braços abertos sobre a passagem.</p><p>Atrás, o chalé com o letreiro verde «CAISSES» alinha os seus guichés sob um pequeno alpendre. Postes ligados por cordas delimitam as filas diante dos painéis informativos.</p><h2>As bilheteiras do parque</h2><p>O mapa de 2026 mantém o ponto «Caisse accueil» com o número zero. O mapa anterior já o identificava como local de venda de atividades, separado da receção dos percursos nas árvores.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "pokeyland-salle-seminaire",
+        "displayName": "Salle de séminaire",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Holz und farbiges Licht</h2><p>Der Seminarbereich von Pokeyland erstreckt sich über zwei Ebenen und eine überdachte Terrasse. Holzverkleidungen und dunkle Fensterrahmen verbinden den Innenraum optisch mit den Bäumen draußen.</p><p>Im Empfangsbereich beleuchtet ein Glasdach mit farbigen Scheiben die Stehtische und das Buffet. Dunkle Träger zeichnen große Diagonalen unter das Dach, während die Fenster den Blick auf die Terrasse öffnen.</p><h2>Tagungen zwischen Freizeitattraktionen</h2><p>Der Konferenzraum verbindet eine Holzdecke mit Vorhängen und Projektionsleinwand. Das Gebäude für berufliche Zusammenkünfte lässt sich beim Park ganz- oder halbtags mit Mobiliar und Tontechnik mieten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Wood and coloured light</h2><p>Pokeyland’s seminar venue occupies two levels and extends onto a covered terrace. Timber wall coverings and dark window frames connect its interior with the trees visible outside.</p><p>In the reception area, a glazed roof with coloured panels lights the high tables and buffet. Dark beams form broad diagonals beneath the roof, while the windows overlook the terrace.</p><h2>Meetings among the leisure attractions</h2><p>The conference space combines a wooden ceiling, curtains and a projection screen. The park offers full-day or half-day hire with furniture and sound equipment in this building devoted to professional gatherings.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Madera y luz de colores</h2><p>La sala de seminarios de Pokeyland ocupa dos niveles y se prolonga con una terraza cubierta. Los revestimientos de madera y los grandes marcos oscuros de las ventanas conectan visualmente el interior con los árboles del exterior.</p><p>En el espacio de recepción, un techo acristalado de paneles coloreados ilumina las mesas altas y el bufé. Las vigas oscuras dibujan grandes diagonales bajo la cubierta, mientras los ventanales se abren hacia la terraza.</p><h2>Reuniones entre las atracciones</h2><p>El espacio de conferencias combina techo de madera, cortinas y pantalla de proyección. El parque ofrece alquiler por jornada completa o media jornada, con mobiliario y sonido, en este edificio dedicado a encuentros profesionales.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le bois et la lumière colorée</h2><p>La salle de séminaire de Pokeyland occupe deux niveaux et se prolonge par une terrasse couverte. Les parements de bois et les grands cadres sombres des fenêtres donnent au lieu une continuité avec les arbres visibles dehors.</p><p>Dans l’espace de réception, une verrière aux panneaux colorés éclaire les tables hautes et le buffet. Les poutres sombres dessinent de grandes diagonales sous cette toiture, tandis que les baies ouvrent sur la terrasse.</p><h2>Réunions au milieu des loisirs</h2><p>L’espace de conférence associe plafond de bois, rideaux et écran de projection. Le parc propose la location à la journée ou à la demi-journée, avec mobilier et sonorisation, dans ce bâtiment consacré aux rencontres professionnelles.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Legno e luce colorata</h2><p>La sala seminari di Pokeyland si sviluppa su due livelli e prosegue con una terrazza coperta. I rivestimenti di legno e i grandi telai scuri delle finestre creano una continuità visiva con gli alberi all’esterno.</p><p>Nello spazio di ricevimento, una copertura vetrata con pannelli colorati illumina i tavoli alti e il buffet. Le travi scure disegnano ampie diagonali sotto il tetto, mentre le vetrate si affacciano sulla terrazza.</p><h2>Riunioni tra le attrazioni</h2><p>Lo spazio conferenze abbina soffitto di legno, tende e schermo di proiezione. Il parco propone l’affitto per un’intera giornata o mezza giornata, con arredi e impianto audio, in questo edificio dedicato agli incontri professionali.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hout en gekleurd licht</h2><p>De seminarzaal van Pokeyland beslaat twee niveaus en sluit aan op een overdekt terras. Houten wandbekleding en donkere raamkozijnen verbinden het interieur met de bomen die buiten zichtbaar zijn.</p><p>In de ontvangstruimte valt licht door gekleurde panelen in het glazen dak op de hoge tafels en het buffet. Donkere balken tekenen grote diagonalen onder het dak; de ramen kijken uit op het terras.</p><h2>Vergaderen tussen de attracties</h2><p>De conferentieruimte combineert een houten plafond met gordijnen en een projectiescherm. Het park verhuurt dit gebouw voor zakelijke bijeenkomsten per hele of halve dag, met meubilair en geluidsapparatuur.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Drewno i barwne światło</h2><p>Sala seminaryjna Pokeyland zajmuje dwa poziomy i łączy się z zadaszonym tarasem. Drewniane okładziny i duże ciemne ramy okien tworzą wizualną ciągłość z drzewami widocznymi na zewnątrz.</p><p>W przestrzeni recepcyjnej przeszklony dach z kolorowymi panelami oświetla wysokie stoliki i bufet. Ciemne belki układają się pod nim w szerokie przekątne, a okna wychodzą na taras.</p><h2>Spotkania wśród atrakcji</h2><p>Przestrzeń konferencyjna łączy drewniany sufit, zasłony i ekran projekcyjny. Park wynajmuje ten budynek na spotkania zawodowe na cały dzień lub pół dnia, wraz z meblami i nagłośnieniem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Madeira e luz colorida</h2><p>A sala de seminários do Pokeyland ocupa dois níveis e prolonga-se por um terraço coberto. Os revestimentos de madeira e os grandes caixilhos escuros das janelas criam uma continuidade visual com as árvores no exterior.</p><p>Na área de receção, uma cobertura envidraçada com painéis coloridos ilumina as mesas altas e o bufete. As vigas escuras desenham grandes diagonais sob o telhado, enquanto as janelas dão para o terraço.</p><h2>Reuniões entre as atrações</h2><p>O espaço de conferências combina teto de madeira, cortinas e ecrã de projeção. O parque disponibiliza o aluguer por dia inteiro ou meio dia, com mobiliário e som, neste edifício dedicado a encontros profissionais.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "2d53971f-a63d-4d08-b70b-2e16084452f8",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:48:40.9546063Z",
+    "appliedAtUtc": "2026-11-15T12:48:40.9546075Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "pokeyland-accueil",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Unter dem Fuchs von Pokeyland</h2><p>2021 kennzeichnet ein großes Tor aus skulptierten Felsen und einem Querbalken in Baumstammform den Zugang zu den Kassen. Darüber begrüßt ein orange-weißer Fuchs die Besucher mit ausgebreiteten Armen.</p><p>Dahinter liegen die Schalter eines Holzhauses mit grünem Schild „CAISSES“ unter einem kleinen Vordach. Durch Seile verbundene Pfosten begrenzen die Warteschlangen vor den Informationstafeln.</p><h2>Die Kassen des Parks</h2><p>Der Plan von 2026 führt weiterhin einen Punkt „Caisse accueil“ mit der Nummer null. Schon die ältere Karte bezeichnete ihn als Verkaufsstelle für Aktivitäten, getrennt vom Empfang der Kletterparcours.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Beneath Pokeyland’s fox</h2><p>In 2021, the approach to the ticket desks is marked by a large gateway of sculpted rocks and a crosspiece shaped like a tree trunk. An orange and white fox welcomes visitors with outstretched arms above the passage.</p><p>Behind it, a chalet with a green “CAISSES” sign has ticket windows beneath a small awning. Posts linked by ropes define the queues in front of the information boards.</p><h2>The park’s ticket desks</h2><p>The 2026 map retains a “Caisse accueil” point numbered zero. The older map already identified it as the place to buy activities, separate from the treetop-course reception.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Bajo el zorro de Pokeyland</h2><p>En 2021, el acceso a las taquillas se reconoce por un gran portal de rocas esculpidas y un travesaño en forma de tronco. Un zorro naranja y blanco recibe a los visitantes con los brazos abiertos sobre el paso.</p><p>Detrás, la caseta con el letrero verde «CAISSES» alinea sus ventanillas bajo un pequeño alero. Postes unidos por cuerdas delimitan las colas ante los paneles informativos.</p><h2>Las taquillas del parque</h2><p>El plano de 2026 conserva el punto «Caisse accueil» con el número cero. El plano anterior ya lo identificaba como lugar de venta de actividades, separado de la recepción de los circuitos entre árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sous le renard de Pokeyland</h2><p>En 2021, l’entrée des caisses se reconnaît à un grand portail de rochers sculptés et à une traverse en forme de tronc. Un renard orange et blanc y accueille les visiteurs, les bras ouverts au-dessus du passage.</p><p>Derrière cette silhouette, le chalet à l’enseigne verte « CAISSES » aligne ses guichets sous un petit auvent. Des potelets reliés par des cordes dessinent les files devant les panneaux d’information.</p><h2>Les guichets du parc</h2><p>Le plan de 2026 conserve un point « Caisse accueil » au numéro zéro. L’ancienne carte le désignait déjà comme lieu de vente des activités, distinct de l’accueil accrobranche.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sotto la volpe di Pokeyland</h2><p>Nel 2021 l’accesso alle casse si riconosce da un grande portale di rocce scolpite e da una traversa a forma di tronco. Una volpe arancione e bianca accoglie i visitatori a braccia aperte sopra il passaggio.</p><p>Alle sue spalle, lo chalet con l’insegna verde «CAISSES» allinea gli sportelli sotto una piccola tettoia. Paletti collegati da corde delimitano le file davanti ai pannelli informativi.</p><h2>Le casse del parco</h2><p>La mappa del 2026 mantiene il punto «Caisse accueil» al numero zero. La mappa precedente lo indicava già come luogo di vendita delle attività, distinto dall’accoglienza dei percorsi sugli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Onder de vos van Pokeyland</h2><p>In 2021 is de toegang tot de kassa’s herkenbaar aan een grote poort van gebeeldhouwde rotsen met een dwarsbalk in de vorm van een boomstam. Een oranje-witte vos verwelkomt bezoekers met open armen boven de doorgang.</p><p>Daarachter liggen de loketten van een chalet met een groen bord “CAISSES” onder een kleine luifel. Paaltjes met touwen vormen de wachtrijen voor de informatieborden.</p><h2>De kassa’s van het park</h2><p>De kaart van 2026 vermeldt nog steeds “Caisse accueil” met nummer nul. De oudere kaart duidde dit al aan als verkooppunt voor activiteiten, apart van de ontvangst bij de klimparcoursen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pod lisem Pokeyland</h2><p>W 2021 roku wejście do kas wyróżnia duża brama ze skalnymi rzeźbami i poprzeczką w kształcie pnia. Nad przejściem pomarańczowo-biały lis wita gości z rozłożonymi ramionami.</p><p>Za nim znajduje się drewniany budynek z zielonym napisem „CAISSES” i okienkami pod niewielkim daszkiem. Słupki połączone linami wyznaczają kolejki przed tablicami informacyjnymi.</p><h2>Kasy parku</h2><p>Plan z 2026 roku nadal oznacza punkt „Caisse accueil” numerem zero. Starsza mapa wskazywała go już jako miejsce sprzedaży aktywności, odrębne od recepcji tras w koronach drzew.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Sob a raposa do Pokeyland</h2><p>Em 2021, a entrada das bilheteiras distingue-se por um grande portal de rochas esculpidas e uma travessa em forma de tronco. Uma raposa laranja e branca recebe os visitantes de braços abertos sobre a passagem.</p><p>Atrás, o chalé com o letreiro verde «CAISSES» alinha os seus guichés sob um pequeno alpendre. Postes ligados por cordas delimitam as filas diante dos painéis informativos.</p><h2>As bilheteiras do parque</h2><p>O mapa de 2026 mantém o ponto «Caisse accueil» com o número zero. O mapa anterior já o identificava como local de venda de atividades, separado da receção dos percursos nas árvores.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "pokeyland-salle-seminaire",
+        "displayName": "Salle de séminaire",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Holz und farbiges Licht</h2><p>Der Seminarbereich von Pokeyland erstreckt sich über zwei Ebenen und eine überdachte Terrasse. Holzverkleidungen und dunkle Fensterrahmen verbinden den Innenraum optisch mit den Bäumen draußen.</p><p>Im Empfangsbereich beleuchtet ein Glasdach mit farbigen Scheiben die Stehtische und das Buffet. Dunkle Träger zeichnen große Diagonalen unter das Dach, während die Fenster den Blick auf die Terrasse öffnen.</p><h2>Tagungen zwischen Freizeitattraktionen</h2><p>Der Konferenzraum verbindet eine Holzdecke mit Vorhängen und Projektionsleinwand. Das Gebäude für berufliche Zusammenkünfte lässt sich beim Park ganz- oder halbtags mit Mobiliar und Tontechnik mieten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Wood and coloured light</h2><p>Pokeyland’s seminar venue occupies two levels and extends onto a covered terrace. Timber wall coverings and dark window frames connect its interior with the trees visible outside.</p><p>In the reception area, a glazed roof with coloured panels lights the high tables and buffet. Dark beams form broad diagonals beneath the roof, while the windows overlook the terrace.</p><h2>Meetings among the leisure attractions</h2><p>The conference space combines a wooden ceiling, curtains and a projection screen. The park offers full-day or half-day hire with furniture and sound equipment in this building devoted to professional gatherings.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Madera y luz de colores</h2><p>La sala de seminarios de Pokeyland ocupa dos niveles y se prolonga con una terraza cubierta. Los revestimientos de madera y los grandes marcos oscuros de las ventanas conectan visualmente el interior con los árboles del exterior.</p><p>En el espacio de recepción, un techo acristalado de paneles coloreados ilumina las mesas altas y el bufé. Las vigas oscuras dibujan grandes diagonales bajo la cubierta, mientras los ventanales se abren hacia la terraza.</p><h2>Reuniones entre las atracciones</h2><p>El espacio de conferencias combina techo de madera, cortinas y pantalla de proyección. El parque ofrece alquiler por jornada completa o media jornada, con mobiliario y sonido, en este edificio dedicado a encuentros profesionales.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le bois et la lumière colorée</h2><p>La salle de séminaire de Pokeyland occupe deux niveaux et se prolonge par une terrasse couverte. Les parements de bois et les grands cadres sombres des fenêtres donnent au lieu une continuité avec les arbres visibles dehors.</p><p>Dans l’espace de réception, une verrière aux panneaux colorés éclaire les tables hautes et le buffet. Les poutres sombres dessinent de grandes diagonales sous cette toiture, tandis que les baies ouvrent sur la terrasse.</p><h2>Réunions au milieu des loisirs</h2><p>L’espace de conférence associe plafond de bois, rideaux et écran de projection. Le parc propose la location à la journée ou à la demi-journée, avec mobilier et sonorisation, dans ce bâtiment consacré aux rencontres professionnelles.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Legno e luce colorata</h2><p>La sala seminari di Pokeyland si sviluppa su due livelli e prosegue con una terrazza coperta. I rivestimenti di legno e i grandi telai scuri delle finestre creano una continuità visiva con gli alberi all’esterno.</p><p>Nello spazio di ricevimento, una copertura vetrata con pannelli colorati illumina i tavoli alti e il buffet. Le travi scure disegnano ampie diagonali sotto il tetto, mentre le vetrate si affacciano sulla terrazza.</p><h2>Riunioni tra le attrazioni</h2><p>Lo spazio conferenze abbina soffitto di legno, tende e schermo di proiezione. Il parco propone l’affitto per un’intera giornata o mezza giornata, con arredi e impianto audio, in questo edificio dedicato agli incontri professionali.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hout en gekleurd licht</h2><p>De seminarzaal van Pokeyland beslaat twee niveaus en sluit aan op een overdekt terras. Houten wandbekleding en donkere raamkozijnen verbinden het interieur met de bomen die buiten zichtbaar zijn.</p><p>In de ontvangstruimte valt licht door gekleurde panelen in het glazen dak op de hoge tafels en het buffet. Donkere balken tekenen grote diagonalen onder het dak; de ramen kijken uit op het terras.</p><h2>Vergaderen tussen de attracties</h2><p>De conferentieruimte combineert een houten plafond met gordijnen en een projectiescherm. Het park verhuurt dit gebouw voor zakelijke bijeenkomsten per hele of halve dag, met meubilair en geluidsapparatuur.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Drewno i barwne światło</h2><p>Sala seminaryjna Pokeyland zajmuje dwa poziomy i łączy się z zadaszonym tarasem. Drewniane okładziny i duże ciemne ramy okien tworzą wizualną ciągłość z drzewami widocznymi na zewnątrz.</p><p>W przestrzeni recepcyjnej przeszklony dach z kolorowymi panelami oświetla wysokie stoliki i bufet. Ciemne belki układają się pod nim w szerokie przekątne, a okna wychodzą na taras.</p><h2>Spotkania wśród atrakcji</h2><p>Przestrzeń konferencyjna łączy drewniany sufit, zasłony i ekran projekcyjny. Park wynajmuje ten budynek na spotkania zawodowe na cały dzień lub pół dnia, wraz z meblami i nagłośnieniem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Madeira e luz colorida</h2><p>A sala de seminários do Pokeyland ocupa dois níveis e prolonga-se por um terraço coberto. Os revestimentos de madeira e os grandes caixilhos escuros das janelas criam uma continuidade visual com as árvores no exterior.</p><p>Na área de receção, uma cobertura envidraçada com painéis coloridos ilumina as mesas altas e o bufete. As vigas escuras desenham grandes diagonais sob o telhado, enquanto as janelas dão para o terraço.</p><h2>Reuniões entre as atrações</h2><p>O espaço de conferências combina teto de madeira, cortinas e ecrã de projeção. O parque disponibiliza o aluguer por dia inteiro ou meio dia, com mobiliário e som, neste edifício dedicado a encontros profissionais.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Sources relues : plan officiel 2026, ancien plan sans millésime inventé, L’Est Républicain du 4 août 2021 et photo d’Emma Facchetti portant l’enseigne CAISSES, site officiel Séminaires, Convention Bureau de Metz et deux photos natives 1600 × 1067 personnellement vues. Apparence des caisses explicitement datée de 2021, sans continuité en 2026 inventée ; deux niveaux et terrasse de la salle confirmés par la source institutionnelle. Aucun matériau réel déduit des rochers décoratifs, aucune capacité additionnée, aucune date de photo inventée. Deux intertitres et trois paragraphes par langue ; relecture personnelle des huit langues.",
+    "wordCounts": {
+      "Caisse d’accueil": {
+        "fr": 106,
+        "en": 101,
+        "de": 90,
+        "es": 108,
+        "it": 102,
+        "nl": 101,
+        "pl": 81,
+        "pt": 103
+      },
+      "Salle de séminaire": {
+        "fr": 117,
+        "en": 97,
+        "de": 88,
+        "es": 115,
+        "it": 110,
+        "nl": 99,
+        "pl": 88,
+        "pt": 110
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

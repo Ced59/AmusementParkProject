@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T12:45:03.606Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T12:55:10.8315168Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue 42 remaining item descriptions and photographs; write developed sourced history article and item milestones. Four park facts private, two season2026 passes with actual expired validity. No full audit or publication. Preserve unresolved calendar representation and day-ticket channel gaps.",
+  "nextAction": "Continue Pokeyland: developed history article and item milestones, remaining 37 descriptions, qualified actual photographs and structured reference reconciliation. Four historical candidate photos (Rotor, Saut dans le vide, Mini-ferme, Big Air) personally viewed by root but not imported. Twenty Apply and 27 imports already reconciled; no full audit or publication.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -211,16 +211,26 @@
       "proof": "pokeyland-20-waterjump-description-20261115.json",
       "operationId": "534ca85e-40d9-49e4-9494-f23f4bc7e8f3",
       "appliedAtUtc": "2026-11-15T12:41:21.5862478Z"
+    },
+    {
+      "proof": "pokeyland-21-reception-venue-descriptions-20261115.json",
+      "operationId": "2d53971f-a63d-4d08-b70b-2e16084452f8",
+      "appliedAtUtc": "2026-11-15T12:48:40.9546075Z"
+    },
+    {
+      "proof": "pokeyland-22-historical-three-descriptions-20261115.json",
+      "operationId": "114d8cd3-e3e4-4bcf-9afc-5041f58dfb62",
+      "appliedAtUtc": "2026-11-15T12:55:10.8315168Z"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 24,
+    "media": 27,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 32,
+    "itemsDescribed": 37,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17,
     "zonesDescribed": 3,
@@ -350,9 +360,24 @@
       "proof": "pokeyland-photo-adventure-09-20261115.json",
       "imageId": "31ea2b41b90045bfa7114af9567f39d0",
       "createdAtUtc": "2026-11-15T12:45:03.606Z"
+    },
+    {
+      "proof": "pokeyland-photo-service-caisse-20261115.json",
+      "imageId": "d2dbeaed1375446e93c0ed1833d7395d",
+      "createdAtUtc": "2026-11-15T12:50:43.696Z"
+    },
+    {
+      "proof": "pokeyland-photo-service-conference-20261115.json",
+      "imageId": "5667ff7a32794956bb10fe963ad96af0",
+      "createdAtUtc": "2026-11-15T12:50:54.411Z"
+    },
+    {
+      "proof": "pokeyland-photo-service-reception-20261115.json",
+      "imageId": "e502a87696b443d88727981f41303c0d",
+      "createdAtUtc": "2026-11-15T12:51:05.338Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T12:46:03.007908+00:00",
+  "updatedAtUtc": "2026-11-15T12:57:35.012925+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -700,5 +725,13 @@
     "proof": "pokeyland-season-pass-pricing-20261115.json",
     "season2026Only": true,
     "mainAdmissionOffersNotApplied": "Official amounts lack a verified sales channel; linked official ticket shop under maintenance. No gate/online equality invented."
+  },
+  "latestRecentIdempotence": {
+    "proof": "pokeyland-recent-idempotence-20261115.json",
+    "unchanged": 17,
+    "mutations": 0
+  },
+  "sourceCatalogCorrections": {
+    "gallery2017": "Le catalogue historique indique 7 août par ancienne lecture de l’URL ; le texte public de la galerie indique 11 août 2017. Conserver la preuve antérieure et cette correction, ne pas en déduire une date de prise de vue."
   }
 }

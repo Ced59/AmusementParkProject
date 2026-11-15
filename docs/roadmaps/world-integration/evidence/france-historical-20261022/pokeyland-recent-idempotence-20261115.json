@@ -1,0 +1,366 @@
+{
+  "scope": "11 notices, 4 faits et tarification de Pokeyland déjà intégrés, rapprochement sans mutation.",
+  "initialPreview": {
+    "operationId": "16a53c56-1554-4fb8-bde7-e2dce2ab1296",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:56:23.4128319Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 16,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "pricing",
+        "displayName": "Pokeyland pricing",
+        "changeType": "Updated",
+        "matchedBy": "pricing",
+        "fields": [
+          {
+            "field": "pricing.lastVerifiedAtUtc",
+            "oldValue": "2026-11-15T11:40:14.568Z",
+            "newValue": "2026-11-15T11:40:14.568558Z"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "pokeyland-accueil",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "pokeyland-salle-seminaire",
+        "displayName": "Salle de séminaire",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "401b9c6e-09de-47a7-88dc-93642d649e07",
+        "entityKey": "pokeyland-history-construction-2013",
+        "displayName": "Le chantier commence dans la forêt de Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "0899d0b0-7aa2-4d26-bc5e-541cd299b873",
+        "entityKey": "pokeyland-history-reorganisation-2026",
+        "displayName": "L’exploitant entre en redressement judiciaire",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "timestampPrecisionDecision": "Le serveur conserve pricing.lastVerifiedAtUtc à la milliseconde (.568Z). La valeur source .568558Z est conservée dans les reçus ; seul le working-state local a été normalisé à la valeur réellement persistée. Aucun Apply supplémentaire.",
+  "finalPreview": {
+    "operationId": "30367989-1acd-42e9-b5cb-7ca14647f019",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:57:16.4500723Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 17,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "pricing",
+        "displayName": "Pokeyland pricing",
+        "changeType": "Unchanged",
+        "matchedBy": "pricing",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00739144-e99b-45a1-8694-3594553ca3a2",
+        "entityKey": "pokeyland-accueil",
+        "displayName": "Caisse d’accueil",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+        "entityKey": "pokeyland-salle-seminaire",
+        "displayName": "Salle de séminaire",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "401b9c6e-09de-47a7-88dc-93642d649e07",
+        "entityKey": "pokeyland-history-construction-2013",
+        "displayName": "Le chantier commence dans la forêt de Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f28f4138-dbbc-43ec-b4e9-8d33437e3277",
+        "entityKey": "pokeyland-history-sale-2023",
+        "displayName": "Cession du fonds à BERNARD-AMUSEMENT",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "0899d0b0-7aa2-4d26-bc5e-541cd299b873",
+        "entityKey": "pokeyland-history-reorganisation-2026",
+        "displayName": "L’exploitant entre en redressement judiciaire",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newIntegration": false,
+  "finalAudit": false
+}

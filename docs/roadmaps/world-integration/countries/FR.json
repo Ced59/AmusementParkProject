@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T12:45:03.606Z",
+      "lastDataIntegrationAt": "2026-11-15T12:55:10.831Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33438,6 +33438,56 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-adventure-09-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland : photo officielle réelle de Waterjump importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Identité par bloc officiel nommé, source intacte, capture inconnue, aucune publication."
+        },
+        {
+          "eventId": "apply-2d53971f-a63d-4d08-b70b-2e16084452f8",
+          "appliedAt": "2026-11-15T12:48:40.954Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-21-reception-venue-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 2 notices (Caisse d’accueil, Salle de séminaire) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-d2dbeaed1375446e93c0ed1833d7395d",
+          "appliedAt": "2026-11-15T12:50:43.696Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-service-caisse-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Caisse d’accueil importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-5667ff7a32794956bb10fe963ad96af0",
+          "appliedAt": "2026-11-15T12:50:54.411Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-service-conference-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Salle de séminaire importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-e502a87696b443d88727981f41303c0d",
+          "appliedAt": "2026-11-15T12:51:05.338Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-service-reception-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Salle de séminaire importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "apply-114d8cd3-e3e4-4bcf-9afc-5041f58dfb62",
+          "appliedAt": "2026-11-15T12:55:10.831Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-22-historical-three-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 3 notices (Rotor Jump, Big Air Jump, Mini-ferme) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

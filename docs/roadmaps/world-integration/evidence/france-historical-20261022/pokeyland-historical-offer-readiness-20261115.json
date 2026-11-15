@@ -1,0 +1,758 @@
+{
+  "createdAtUtc": "2026-11-15T12:47:08.444285+00:00",
+  "scope": "Public research only, mapping all 17 existing private historical offers; no API, Git, registry, imports, state edits or final multilingual notices.",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "workingStateInspected": {
+    "path": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+    "sha256": "00080ed68a0e45e041a3e29536209bb319cb9deb2c5c8cebdfd72daa8aa79f97",
+    "historicalItems": 17,
+    "privateHistoricalItems": 17
+  },
+  "summary": {
+    "strongSourcePlusPhoto": [
+      "Rotor Jump",
+      "Saut dans le vide",
+      "Big Air Jump",
+      "Mini-ferme"
+    ],
+    "ownerReviewRequiredPhoto": [
+      "Checkpoint"
+    ],
+    "specificPhysicalContentButNoAdmissibleSeparatePhoto": [
+      "Segway",
+      "Mini-buggy"
+    ],
+    "limitedFunctionOrIdentityOnly": [
+      "Le Petit Robin",
+      "Clairière de jeux",
+      "Boutique",
+      "Mini-Jeep",
+      "Pédalo",
+      "Terrains de pétanque",
+      "Lancer de hache",
+      "Labyrinthe géant",
+      "Quad ados",
+      "Balade en quad"
+    ],
+    "newPrimaryResult": "Lukylud explicitly documents bespoke sweeper/rotor for Pokeyland, article 20 May 2021 modified 28 February 2022, with real unwatermarked native 640×480 photo.",
+    "scopeCaution": "These are research-readiness categories, not integration/audit/publication completion. All currently inspected historical items remain private and Unknown."
+  },
+  "items": [
+    {
+      "name": "Rotor Jump",
+      "readiness": "Precise historical source and admissible real native photo; strongest new result.",
+      "supportedDetails": [
+        "Inflatable sweeper game manufactured/customised for Pokeyland according to supplier Lukylud, with orange/brown PVC colours and park branding.",
+        "Real supplier photo shows a circular padded bed divided into sectors, peripheral numbered positions, a central rotating padded arm and Pokeyland logos.",
+        "Up to eight players and avoiding the rotating sweeper are supported by the 2021 announcement/2023 brochure; the supplier image alone does not establish operational rules."
+      ],
+      "sources": [
+        "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+        "../historical-inventory-followup/directfm-rotor-2020.html",
+        "../official-brochure-2023.pdf"
+      ],
+      "photoFiles": [
+        "lukylud-rotor-native.jpg"
+      ],
+      "limits": [
+        "Photo was taken in a supplier-type yard, not proven at Pokeyland; do not describe background buildings as park scenery.",
+        "Article publication 20 May 2021 is not a delivery or opening date.",
+        "Lukylud relationship is primary evidence, but no reference/entity creation or model assignment performed.",
+        "Separate branding illustration is a commercial rendering and excluded."
+      ],
+      "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "key": "pokeyland-historical-rotor-jump",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Segway",
+      "readiness": "Precise historical function/physical appearance available, but no admissible separate original photo found.",
+      "supportedDetails": [
+        "Guided gyropode trips through the park, including alongside paintball areas, are described in 2015.",
+        "Le Lorrain 2017 composite shows standing riders, two broad wheels, a central handlebar and helmets on a gravel path bordered by timber."
+      ],
+      "sources": [
+        "../news-toutmetz-opening-2015.html",
+        "../historical-inventory-followup/estrepublicain-visit-2016.html",
+        "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+        "https://ottonville.fr/wp-content/uploads/2022/08/N%C2%B030.pdf"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "lorrain-segway-2017.jpg combines two different photos; excluded, no crop.",
+        "Ottonville page 14 mentions Segway but photographs child quads/pedal karts, not a Segway.",
+        "The reporter’s own 2016 route duration/distance is not an official fixed itinerary.",
+        "No model, current operation or present-day limits established."
+      ],
+      "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+      "key": "pokeyland-historical-segway",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Le Petit Robin",
+      "readiness": "Historical function supported by a secondary-host reproduction of the official 2021 brochure; no physical stand photo.",
+      "supportedDetails": [
+        "Children’s crossbow activity on adapted stands, separately listed from Tir à l’arc."
+      ],
+      "sources": [
+        "../historical-photos-followup/historical-priority-photos-and-descriptions-20261115.json",
+        "https://fr.scribd.com/document/513775350/Pokeyland-BROCHURE-2021-4-2",
+        "../official-map-2022.pdf"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "Need original primary brochure or direct park text for stronger provenance.",
+        "AI-generated Scribd title says 2023 while brochure body says 2021; use body year.",
+        "No named photograph, material, target design, projectile type, stand count or current restrictions."
+      ],
+      "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+      "key": "pokeyland-historical-petit-robin",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Saut dans le vide",
+      "readiness": "Precise source and admissible real photo already retained; no redownload.",
+      "supportedDetails": [
+        "Supplier Amazone explicitly names Pokeyland and the QUICKjump XL + Ripcord apparatus.",
+        "Photo shows a harnessed participant at the elevated departure platform, yellow mesh guardrails and burgundy metal tower; nominal 2017 caption also locates the jump on the climbing tower."
+      ],
+      "sources": [
+        "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+        "../historical-photos-followup/historical-priority-photos-and-descriptions-20261115.json"
+      ],
+      "photoFiles": [
+        "../historical-photos-followup/amazone-free-fall.jpeg"
+      ],
+      "limits": [
+        "18 m tourism/reportage, 20 m device caption and 23 m tower caption measure different or unresolved things; omit exact height unless reconciled.",
+        "No exact opening/capture date, current operation or merged identity with Escalade."
+      ],
+      "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "key": "pokeyland-historical-saut-vide",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Clairière de jeux",
+      "readiness": "Historical identity and year-of-announcement improved; still no equipment-specific photograph or inventory.",
+      "supportedDetails": [
+        "Official 2022 map distinguishes Clairière de jeux from Aire de jeux, barefoot path and Mini-ferme.",
+        "New full-page contextual check places the Clairière aux Jeux explicitly among Pokeyland’s 2019 novelties, described as a large family play area."
+      ],
+      "sources": [
+        "../official-map-2022.pdf",
+        "lorraine-opening-2019.html",
+        "lorraine-opening-2019-cp1252.txt"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "2019 is a novelty announcement, not independently proven first operating day.",
+        "6 April 2019 is the announced park season opening; do not assign that day to the Clairière.",
+        "No specific games, materials or layout safely identified.",
+        "Do not equate it to current playgrounds or individual giant games."
+      ],
+      "id": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+      "key": "pokeyland-historical-clairiere-jeux",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Mini-ferme",
+      "readiness": "Precise historical visual content and admissible real photo already retained; root attribution review remains appropriate.",
+      "supportedDetails": [
+        "2017 image shows goats within a wooded enclosure bounded by plank fences, with rocks and bare ground/straw.",
+        "Contemporary 2017 novelty reporting and current official group page separately name the Mini-ferme."
+      ],
+      "sources": [
+        "../historical-inventory-followup/loractu-2017.html",
+        "../historical-inventory-followup/official-groups.html",
+        "../historical-photos-followup/historical-priority-photos-and-descriptions-20261115.json"
+      ],
+      "photoFiles": [
+        "../historical-inventory-followup/estrepublicain-gallery-11-2017.jpg"
+      ],
+      "limits": [
+        "Gallery context supports mini-farm, but individual image lacks a nominal caption.",
+        "No assertion that these goats/layout persist now; no exhaustive species list.",
+        "Background net play structures are not part of the animal enclosure."
+      ],
+      "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "key": "pokeyland-historical-mini-ferme",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Boutique",
+      "readiness": "Historical service identity only; source-specific location/use but no identified facade/interior.",
+      "supportedDetails": [
+        "Mainstreet shop described in 2017; mask sales mentioned in 2020; official 2022 map lists Boutique as an activity sales point distinct from entrance cashdesk."
+      ],
+      "sources": [
+        "../historical-inventory-followup/loractu-2017.html",
+        "../historical-inventory-followup/lorraine-season-2020.html",
+        "../official-map-2022.pdf"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "New er2016-03.jpg and er2016-11.jpg show PokeyPaint welcome/store complex, not established as mainstreet Boutique.",
+        "No souvenirs/clothes inventory inferred.",
+        "Same map number in a later edition is not proof of renaming to La Pêche de Pokey."
+      ],
+      "id": "58bc03b5-9202-4940-bbdc-c83973300b42",
+      "key": "pokeyland-historical-boutique-historique",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Checkpoint",
+      "readiness": "Specific historical notice supported; unsigned photo candidates require explicit parent attribution decision.",
+      "supportedDetails": [
+        "Nominal 2015 report identifies woodland trenches and an underground command post.",
+        "New 2016 view clearly shows plank walkways, branch-woven retaining edges, earth berms and covered low entrances.",
+        "2017 view shows the same type of trenches/covered post and a curved corrugated shelter also seen in the nominal 2015 picture."
+      ],
+      "sources": [
+        "../news-toutmetz-opening-2015.html",
+        "../historical-inventory-followup/estrepublicain-visit-2016.html",
+        "../historical-photos-followup/historical-priority-photos-and-descriptions-20261115.json"
+      ],
+      "photoFiles": [
+        "er2016-08.jpg",
+        "../historical-photos-followup/estrepublicain-2017-17.jpg",
+        "../historical-photos-followup/estrepublicain-2017-18.jpg"
+      ],
+      "limits": [
+        "No Checkpoint sign in unsigned candidates; owner match is an inference from the named 2015 unique trench setting and repeated structural details.",
+        "2015 nominal image is visibly signed and excluded from import.",
+        "Do not infer replacement by Cemetery; 2016 gallery also shows a physically different cemetery scenery.",
+        "Props are not demonstrated functional weapons or authentic military artefacts."
+      ],
+      "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+      "key": "pokeyland-historical-checkpoint",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Mini-buggy",
+      "readiness": "Physical notice possible from nominal 2015 image/text, but only signed photo located.",
+      "supportedDetails": [
+        "Small black buggy with low seat, steering wheel, roll bar, four knobby tyres, red rear components and metal step; separate small quads behind.",
+        "The opening report describes paths among trees and distinguishes Buggy enfant/Mini-buggy from Mini-Jeep and children’s quad."
+      ],
+      "sources": [
+        "../news-toutmetz-opening-2015.html",
+        "../historical-inventory-followup/toutmetz-tracks.jpg"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "Thierry Hauuy/Tout-Metz signature means research only; no crop.",
+        "No proven alias to current Crazy Kart, Kids Racer or Les as du volant.",
+        "No fuel/power/maker/model inferred."
+      ],
+      "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+      "key": "pokeyland-historical-mini-buggy",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Mini-Jeep",
+      "readiness": "Historically established offer, but vehicle appearance not qualified.",
+      "supportedDetails": [
+        "2015 price list specifies adult/child two-seat format, distinct from buggy/quad; official tourism school guide published in 2020 repeats mini-jeep trips."
+      ],
+      "sources": [
+        "../news-toutmetz-opening-2015.html",
+        "../historical-inventory-followup/mosl-school-2020.pdf"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "No photograph tied specifically to this offer.",
+        "Do not borrow La Jeepy/Willys supplier specs from unrelated web results.",
+        "No current-status or later ride alias."
+      ],
+      "id": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+      "key": "pokeyland-historical-mini-jeep",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Pédalo",
+      "readiness": "Identity and historical commercial presence only; no equipment-specific photo.",
+      "supportedDetails": [
+        "Pedalo listed in 2015 and official 2020 tourism school guide."
+      ],
+      "sources": [
+        "../news-toutmetz-opening-2015.html",
+        "../historical-inventory-followup/mosl-school-2020.pdf"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "No shape, colour, capacity, number or exact waterside placement established.",
+        "Not an alias of electric Bumper Boat; no replacement established.",
+        "Search results for Lac de Madine and other venues excluded."
+      ],
+      "id": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+      "key": "pokeyland-historical-pedalo",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Terrains de pétanque",
+      "readiness": "Short historical location/count fact supported; no actual courts visually identified.",
+      "supportedDetails": [
+        "2015 report names two courts beside relaxation/food space; 2016 reporter mentions free-use pétanque."
+      ],
+      "sources": [
+        "../news-toutmetz-opening-2015.html",
+        "../historical-inventory-followup/estrepublicain-visit-2016.html",
+        "../historical-inventory-followup/toutmetz-relaxation.jpg"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "No surface, dimensions or fence material inferred from general relaxation image.",
+        "No invented names for separate courts.",
+        "No current continuity or relationship to Clairière de jeux proved."
+      ],
+      "id": "2a23aa94-01ba-4cda-be85-653e60589c24",
+      "key": "pokeyland-historical-petanque",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Lancer de hache",
+      "readiness": "Identity on official map only; no specific installation evidence.",
+      "supportedDetails": [
+        "Official 2022 map lists Lancer de hache as number 4, separate from archery and Petit Robin."
+      ],
+      "sources": [
+        "../official-map-2022.pdf",
+        "../historical-inventory-followup/historical-inventory-residual-five-20261115.json"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "No target material, lane layout, axe type, supervision or age inferred.",
+        "Search hits Lumberjack/Les Cognées/Diebling concern other venues."
+      ],
+      "id": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+      "key": "pokeyland-historical-lancer-hache",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Big Air Jump",
+      "readiness": "Precise nominal source and admissible real photo already retained; no redownload.",
+      "supportedDetails": [
+        "2017 gallery caption explicitly names Big Air Jump and shows a participant jumping above the inflatable landing.",
+        "Stairs/guardrails and wooded setting visible; 2017 plan distinguishes this number 26 from Saut dans le vide number 24."
+      ],
+      "sources": [
+        "../historical-inventory-followup/historical-inventory-residual-five-20261115.json",
+        "../historical-inventory-followup/loractu-2017.html"
+      ],
+      "photoFiles": [
+        "../historical-inventory-followup/estrepublicain-big-air-jump-2017.jpg"
+      ],
+      "limits": [
+        "Promotional heights conflict; do not reuse 18 m of the other jump.",
+        "2017 novelty documented, exact opening day not.",
+        "No present operation, device maker or retirement date established."
+      ],
+      "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "key": "pokeyland-historical-big-air-jump",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Labyrinthe géant",
+      "readiness": "Historical identity/year and visitor use established; no physical form or admissible photograph.",
+      "supportedDetails": [
+        "2017 map number 7 and two contemporary reports identify the novelty; dated visitor testimony later that summer confirms a labyrinth visit."
+      ],
+      "sources": [
+        "../historical-inventory-followup/historical-inventory-residual-five-20261115.json",
+        "../historical-inventory-followup/loractu-2017.html",
+        "../historical-inventory-followup/lorraine-season-2017.html"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "No hedge/maize/wood walls or thematic decoration proved.",
+        "Halloween haunted maze not explicitly identified as same permanent installation.",
+        "Exclude adjacent tourism listings for Vigy/Breidenbach and school schedules for other venues."
+      ],
+      "id": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+      "key": "pokeyland-historical-labyrinthe-geant",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Quad ados",
+      "readiness": "Distinct historical offer established; vehicle/circuit details unavailable.",
+      "supportedDetails": [
+        "2017 official map distinguishes Quad ados 34, Quad enfant 14 and Balade en quad 35; contemporary commercial offers also separate them."
+      ],
+      "sources": [
+        "../historical-inventory-followup/historical-inventory-residual-five-20261115.json",
+        "../historical-inventory-followup/estrepublicain-gallery-16-2017.jpg"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "New 2022 municipal photos depict child quads, not evidence for this entity.",
+        "No inferred engine, cc, model, circuit, age threshold or current alias."
+      ],
+      "id": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+      "key": "pokeyland-historical-quad-ados",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    },
+    {
+      "name": "Balade en quad",
+      "readiness": "Distinct historical guided-trip offer established; no named vehicle photograph or exact route.",
+      "supportedDetails": [
+        "2017 map names Balade en quad 35 separately from Quad ados; 2017/2018 promotion describes paid quad excursions.",
+        "2019 visitor report mentions adult quad trips but supplies no authoritative technical rules."
+      ],
+      "sources": [
+        "../historical-inventory-followup/historical-inventory-residual-five-20261115.json",
+        "../historical-inventory-followup/lorraine-season-2017.html"
+      ],
+      "photoFiles": [],
+      "limits": [
+        "Do not equate Balade/Randonnée to a later ride by inference.",
+        "No route, duration, model, fuel, licence or current state inferred from visitors."
+      ],
+      "id": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+      "key": "pokeyland-historical-balade-quad",
+      "isVisibleInInspectedState": false,
+      "statusInInspectedState": "Unknown",
+      "existingLocalizedDescriptionCount": 0
+    }
+  ],
+  "photos": [
+    {
+      "url": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+      "accessedAtUtc": "2026-11-15T12:39:40.059530+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 124864,
+      "sha256": "9afb0464a773193fc9b97ddde0fba08c8d566864cef6c3516c520fd5b5fb51f0",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-rotor-native.jpg",
+      "subject": "Rotor Jump",
+      "decision": "Admissible candidate after parent review: real photo, no visible watermark, under 960 KiB.",
+      "observations": "Orange/brown sector mat, outer numbered pads, central padded sweeper arm, applied park logos; yard outside a metal-clad building.",
+      "dimensions": [
+        640,
+        480
+      ],
+      "sourcePage": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "sourcePublicationDate": "2021-05-20",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "personallyViewed": true,
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-pokeyland.jpg",
+      "accessedAtUtc": "2026-11-15T12:39:40.434231+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-pokeyland.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 68248,
+      "sha256": "86480383b383dc81c9375ba1fed45bfbfd908185cbb9411dce51cc02f65c4d37",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-pokeyland-branding-native.jpg",
+      "subject": "Rotor Jump commercial branding rendering",
+      "decision": "Excluded: synthetic/commercial annotated illustration, not a real photo.",
+      "observations": "Perspective design rendering with arrows, logos and inserted figure.",
+      "dimensions": [
+        640,
+        402
+      ],
+      "sourcePage": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "sourcePublicationDate": "2021-05-20",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "personallyViewed": true,
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.le-lorrain.fr/files/uploads/2017/07/segway-tour-pokeland.jpg",
+      "accessedAtUtc": "2026-11-15T12:42:23.831451+00:00",
+      "status": 200,
+      "finalUrl": "https://www.le-lorrain.fr/files/uploads/2017/07/segway-tour-pokeland.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 190176,
+      "sha256": "a699419cf11260c3ced1fdedd22ddd4ae901bb18d40f552ff67b617226b5d7fe",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lorrain-segway-2017.jpg",
+      "subject": "Segway plus jump tower composite",
+      "decision": "Excluded from import: two-image montage, no crop.",
+      "observations": "Left depicts gyropode users; right depicts the tower; visual evidence for historical appearance only.",
+      "dimensions": [
+        990,
+        640
+      ],
+      "sourcePage": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+      "sourcePublicationDate": "2017-07-12",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "personallyViewed": true,
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/B7992592-E2E4-4DF7-A274-30CF1D3C5F5E/NW_raw/title-1471118245.jpg",
+      "accessedAtUtc": "2026-11-15T12:38:09.187827+00:00",
+      "status": 200,
+      "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/B7992592-E2E4-4DF7-A274-30CF1D3C5F5E/NW_raw/title-1471118245.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 522111,
+      "sha256": "a04e0e753e7210b1f68c78549f8d89098583635beb3868a829012379c9918744",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/er2016-08.jpg",
+      "subject": "Trench paintball area, probable Checkpoint",
+      "decision": "Technically admissible real original; nominal owner needs parent review.",
+      "observations": "Plank trench floor, branch-woven retaining walls, low covered entrances, surrounding mature trees; no name sign.",
+      "dimensions": [
+        1600,
+        1065
+      ],
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2016/08/13/fey-un-renard-dans-les-arbres",
+      "sourcePublicationDate": "2016-08-14",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "personallyViewed": true,
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+      "accessedAtUtc": "2026-11-15T11:44:46.936845+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 675727,
+      "sha256": "942b30b28e3fbb1a70cb8c145c890cc06afa22c45b60da9513429f2267359962",
+      "file": "amazone-free-fall.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/amazone-free-fall.jpeg",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "sourcePublicationDate": null,
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Saut dans le vide",
+      "observations": "Harnessed participant at a yellow guarded platform on the burgundy steel tower; green overhead QUICKjump device and red lanyard; Pokeyland fox backdrop. Supplier caption explicitly says Free Fall Jump | QUICKjump XL + Ripcord — 20 m high — Pokeyland, France.",
+      "decision": "Strong nominated candidate; root visual and duplicate review required.",
+      "limits": [
+        "1000 × 1500 / 675727 bytes; image naturally served with these dimensions despite URL containing 1200.",
+        "No capture date or individual photographer identified.",
+        "20 m supplier specification diverges from the 18 m description used by tourism/reportage sources; do not silently choose one.",
+        "The supplier page establishes equipment identification, not a current operational or safety certification."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false,
+      "reusedWithoutRedownload": true
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:06.104760+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 659175,
+      "sha256": "9c21ac79a5f925ed6b3d1875d617aafe68756889c5aeed8acb4bf77c336c3fc5",
+      "file": "estrepublicain-gallery-11-2017.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-11-2017.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Mini-ferme",
+      "observations": "Goats in a wooded enclosure bounded by plank fencing, pale rocky blocks, bare earth/straw and mature trees. Raised net play structure visible behind the fencing.",
+      "decision": "Historical mini-farm candidate after root attribution review.",
+      "limits": [
+        "Gallery introduction explicitly names mini-fermes, but this image lacks an individual nominal caption.",
+        "Goat presence and enclosure appearance belong to the photographed historical scene; no claim about present-day animals or layout.",
+        "Do not assign net structure in background to mini-farm itself."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false,
+      "reusedWithoutRedownload": true
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/8F5BA17B-13EB-4135-A4A4-75962E59AA33/NW_raw/sept-terrains-de-paintball-sont-aussi-accessibles-tous-thematises-ici-sur-les-tranchees-de-14-18-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:14.979401+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 747140,
+      "sha256": "1b9f3bd6c456c35a1c99465c6254a75801bee7622a209b9354052075446982ca",
+      "file": "estrepublicain-2017-17.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/estrepublicain-2017-17.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Trench-themed paintball terrain; likely Checkpoint",
+      "observations": "Woodland trenches with timber paths, branch-lined edges and an entrance into a covered earth shelter. Gallery caption explicitly says trenches of 14–18 but does not name Checkpoint.",
+      "decision": "Potential historical photo; named-owner match remains to be accepted by root.",
+      "limits": [
+        "Similar trench/underground-post setting to nominal Checkpoint 2015 source, but no Checkpoint sign visible.",
+        "Do not assign to another terrain or infer current status."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false,
+      "reusedWithoutRedownload": true
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/BA0C8477-F7FF-4D07-956B-05C6C22CE01D/NW_raw/le-paintball-de-pokeyland-est-considere-comme-l-un-des-plus-beaux-de-france-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:17.610182+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 793731,
+      "sha256": "6ea1251bfd039359ea86d49f3e534328a001c8f23578d426fc1a2770eea9ae2d",
+      "file": "estrepublicain-2017-18.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/estrepublicain-2017-18.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Trench-themed paintball terrain; likely Checkpoint",
+      "observations": "Woodland trenches with plank paths, a tank-shaped play obstacle and other military-theme props.",
+      "decision": "Potential historical photo; named-owner match remains to be accepted by root.",
+      "limits": [
+        "Adjacent gallery photo and same trench setting, but only generic paintball caption.",
+        "Tank-shaped prop is not established as a real military vehicle."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false,
+      "reusedWithoutRedownload": true
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:20:05.582852+00:00",
+      "status": 200,
+      "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 306194,
+      "sha256": "961fe33bc07378cfd21311c058adc9a854a55bc9a47b2970c376983ae667f8f1",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-big-air-jump-2017.jpg",
+      "subject": "Big Air Jump",
+      "decision": "Previously retained nominated real photo; reused without redownload.",
+      "observations": "Participant above inflatable landing, platform stairs/guardrails in wooded surroundings.",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "personallyViewed": true,
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    }
+  ],
+  "newSourceEvidence": [
+    {
+      "url": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-rotor-pokeyland.html",
+      "publicationUtc": "2021-05-20T10:00:48+00:00",
+      "modifiedUtc": "2022-02-28T13:29:27+00:00",
+      "dateSource": "JSON-LD article fields",
+      "shortQuote": "Notre client, le parc de loisirs Pokeyland souhaitait qu’elle soit à son image.",
+      "supplierClaim": "Lukylud says it worked with designers on PVC colours and markings for the bespoke rotor/faucheuse.",
+      "dateLimit": "Publication/modification only, not physical installation or photo capture dates."
+    },
+    {
+      "url": "https://ottonville.fr/wp-content/uploads/2022/08/N%C2%B030.pdf",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/ottonville-bulletin30-2022.pdf",
+      "page": 14,
+      "publicationPeriod": "2022 municipal bulletin 30; precise publication day unknown",
+      "visitDate": "2022-06-25",
+      "shortQuote": "SORTIE EXTRA-SCOLAIRE À POKEYLAND LE 25 JUIN",
+      "finding": "Primary organiser reports 66 participants. Page names Segway but photos show children on quads, pedal karts, ropes, climbing, barefoot path and bumper boats.",
+      "exclusion": "No separate photo for the 17 target offers identified. Page montage is research-only; not an attraction photo candidate. Children’s quad is not Quad ados."
+    },
+    {
+      "url": "https://www.lorraineaucoeur.com/evt-27715/ouverture-des-parcs-et-bases-de-loisirs-en-lorraine/meurthe-et-moselle-meuse-moselle-et-vosges/promo-sortie",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lorraine-opening-2019.html",
+      "decodedText": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lorraine-opening-2019-cp1252.txt",
+      "finding": "Full context explicitly places Clairière aux Jeux among Pokeyland novelties 2019, rather than under a neighbouring park.",
+      "shortQuote": "une balade en Petit Train et la Clairière aux Jeux",
+      "dateLimit": "A seasonal novelty announcement. The nearby 6 April 2019 is park reopening, not independent proof of first day for this zone."
+    }
+  ],
+  "newAccessLog": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/source-access.jsonl",
+  "previousReportsPreserved": [
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-inventory-followup-20261115.json",
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-inventory-residual-five-20261115.json",
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-map-2017-additional-identities-20261115.json",
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/historical-priority-photos-and-descriptions-20261115.json",
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-residual-identities/historical-residual-identities-report.json"
+  ],
+  "additionalPhotoReview": {
+    "er2016-02.jpg": "Cabanes/Village des lutins, already separately researched; do not duplicate.",
+    "er2016-03.jpg": "PokeyPaint welcome building, not proven mainstreet Boutique.",
+    "er2016-04.jpg": "Ejector sign; current entity already handled, no duplicate.",
+    "er2016-05.jpg": "Stripped bus in woodland paintball; no attribution among these 17.",
+    "er2016-07.jpg": "Military-theme tent; no nominal owner.",
+    "er2016-09.jpg": "Construction crane/truck scenery; not a target offer.",
+    "er2016-10.jpg": "Cemetery-type paintball scenery, physically distinct from trenches; no successor inference.",
+    "er2016-11.jpg": "PokeyPaint entrance, not established mainstreet Boutique.",
+    "er2016-12.jpg": "Unnamed ropes bridge; do not attach to current numbered course."
+  },
+  "methodAndLimits": [
+    "All downloaded originals preserved unmodified, no crop or composite removal.",
+    "No new operational status or closure inferred from absence on current map.",
+    "No exact opening/capture dates invented; all access times are retrieval times only.",
+    "No current offer alias assigned from map numbers or generic resemblance.",
+    "Supplier references require root duplicate/identity review before any server linkage.",
+    "2023 brochure and old reports are preserved; Big Air/Mini-ferme images were not redownloaded.",
+    "Le Lorrain page existed already and was inadvertently downloaded again once in this separate research folder; no image import, existing evidence unchanged.",
+    "No social login, paywall or archive 429 bypass attempted.",
+    "LorraineAUcoeur HTML is Windows-1252; native bytes retained, corrected decoding saved as separate text file."
+  ]
+}
