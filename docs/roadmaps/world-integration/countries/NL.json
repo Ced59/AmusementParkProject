@@ -3983,36 +3983,50 @@
       "entryId": "NL-candidate-7e8301aa1074bc",
       "name": "SkyView Rotterdam",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Stadsdriehoek , Rotterdam",
+      "proposedEntityKind": "ToQualify",
+      "category": "Grande roue historique démontée",
+      "locality": "Markthal, Rotterdam",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Grande roue démontée fin juillet 2019 après expiration du permis ; aucun retour de cette installation à Rotterdam confirmé le 2026-11-15.",
+      "identityConfidence": "Article local daté du 30 juillet 2019 annonçant le démontage du reuzenrad près de la Markthal ; la source initiale de liste est historique.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne historique sans créer de fiche active. Réexaminer uniquement si l’exploitant fournit une preuve d’une nouvelle installation stable à Rotterdam ; ne pas confondre avec Beelen Eye ou 360 View, deux roues distinctes mises en service en 2026.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "De Havenloods — démontage de la roue près de Markthal en juillet 2019",
+          "url": "https://www.dehavenloods.nl/nieuws/algemeen/25827/reuzenrad-weg-bij-markthal-maar-hoop-op-nieuwe-rotterdamse-plek",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "SkyView Rotterdam",
+            "source": "De Havenloods",
+            "url": "https://www.dehavenloods.nl/nieuws/algemeen/25827/reuzenrad-weg-bij-markthal-maar-hoop-op-nieuwe-rotterdamse-plek",
+            "family": "Grande roue",
+            "sourceVenueName": "Markthal Rotterdam",
+            "sourceLifecycleSignal": "Démontée en 2019"
+          }
+        ],
+        "rationale": "L’installation de Markthal était une grande roue distincte, mais son permis a pris fin et elle a été démontée en juillet 2019 ; elle ne constitue pas une création actuelle."
       }
     },
     {

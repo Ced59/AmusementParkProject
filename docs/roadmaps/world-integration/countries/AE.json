@@ -1161,37 +1161,53 @@
       "entryId": "AE-candidate-86e0331b70ace2",
       "name": "Eye of the Emirates",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "proposedEntityKind": "ToQualify",
+      "category": "Attraction interne à un parc",
       "locality": "Al Qasba, Sharjah",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction incluse dans le parc parent ; aucune création standalone autonome.",
+      "identityConfidence": "Grande roue déplacée en 2018 de Al Qasba à Al Montazah Parks ; elle appartient désormais à l’Island of Legends dans le complexe de parcs. Examiner l’identité précise de la ligne Al Montazah Water Park lors de la reprise du parc.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne de découverte. Reprendre Eye of the Emirates comme attraction interne dans AE-candidate-243b018a221f27, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sharjah Tourism — Eye of the Emirates à Al Montazah",
+          "url": "https://www.sharjahtourism.ae/wp-content/uploads/2025/11/SCTDA-General-Factsheet_Updated-2025.pdf",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Eye of the Emirates",
+            "source": "Sharjah Tourism — Eye of the Emirates à Al Montazah",
+            "url": "https://www.sharjahtourism.ae/wp-content/uploads/2025/11/SCTDA-General-Factsheet_Updated-2025.pdf",
+            "family": "Grande roue",
+            "sourceVenueName": "Al Montazah Water Park"
+          }
+        ],
+        "rationale": "Grande roue déplacée en 2018 de Al Qasba à Al Montazah Parks ; elle appartient désormais à l’Island of Legends dans le complexe de parcs. Examiner l’identité précise de la ligne Al Montazah Water Park lors de la reprise du parc."
+      },
+      "possibleBacklogEntries": [
+        "AE-candidate-243b018a221f27"
+      ]
     },
     {
       "entryId": "AE-candidate-f65e7de1279174",

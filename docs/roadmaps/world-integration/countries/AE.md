@@ -14,12 +14,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 25 |
-| À qualifier | 65 |
+| À qualifier | 64 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 3 |
 | Publié, date inconnue | 4 |
-| Hors périmètre enregistré | 3 |
+| Hors périmètre enregistré | 4 |
 | Doublon conservé | 0 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **117**. Sources : AZA, Aerophile — références constructeur, AmusementForce, Découverte complémentaire — site officiel, EAZA, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, Site officiel (attraction autonome), WAZA, Wiegand — références constructeur, Wikipédia (découverte).
@@ -28,9 +28,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **4 publiés**, **25 masqués à intégrer**, **3 masqués NotRelevant à réexaminer**, **53 candidats sans fiche**.
 
-Standalone : **3 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **3 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **9 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **5 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **1 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **4 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -62,7 +62,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | AE-candidate-47ac10b97bb24b | Dubai Safari Park | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#United_Arab_Emirates) · [EAZA](https://www.eaza.net/membership/) · [Site officiel référencé](https://dubaisafari.ae) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://dubaisafari.ae/) |
 | AE-candidate-134a14ee302532 | Emirates Park Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#United_Arab_Emirates) · [WAZA](https://www.waza.org/members/waza-members/) · [Site officiel référencé](https://www.emiratesparkzooandresort.com/) |
 | AE-candidate-5b36e2dc146533 | Encounter Zone | Dubai , Dubai | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/5444.htm) |
-| AE-candidate-86e0331b70ace2 | Eye of the Emirates | Al Qasba, Sharjah | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| AE-candidate-86e0331b70ace2 | Eye of the Emirates | Al Qasba, Sharjah | À qualifier ; proposé : ToQualify | PossibleExisting | Hors périmètre enregistré | Inconnue — non inventée | — | Conserver cette ligne de découverte. Reprendre Eye of the Emirates comme attraction interne dans AE-candidate-243b018a221f27, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée. Qualification standalone : InsidePark. Grande roue déplacée en 2018 de Al Qasba à Al Montazah Parks ; elle appartient désormais à l’Island of Legends dans le complexe de parcs. Examiner l’identité précise de la ligne Al Montazah Water Park lors de la reprise du parc. Installations référencées : Eye of the Emirates. Signal source : Attraction incluse dans le parc parent ; aucune création standalone autonome.. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [Sharjah Tourism — Eye of the Emirates à Al Montazah](https://www.sharjahtourism.ae/wp-content/uploads/2025/11/SCTDA-General-Factsheet_Updated-2025.pdf) |
 | AE-candidate-f65e7de1279174 | F1-X Dubai | Dubai , Dubai | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/18304.htm) |
 | AE-candidate-88df58e4ff3678 | F1-X Dubai project was suspended by 2016 | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#United_Arab_Emirates) |
 | AE-park-97226d13-554a-4bca-9aeb-6014be06250c | Ferrari World Abu Dhabi | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/6302.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#United_Arab_Emirates) |

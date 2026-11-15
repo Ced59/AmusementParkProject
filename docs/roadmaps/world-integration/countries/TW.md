@@ -15,12 +15,12 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 6 |
-| À qualifier | 43 |
+| À qualifier | 42 |
 | En cours | 0 |
 | Bloqué | 0 |
 | Intégration achevée | 4 |
 | Publié, date inconnue | 0 |
-| Hors périmètre enregistré | 0 |
+| Hors périmètre enregistré | 1 |
 | Doublon conservé | 0 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **65**. Sources : Aerophile — références constructeur, Brogent — projet constructeur, Intamin — référence constructeur, RCDB, Wiegand — références constructeur, Wikipédia (découverte).
@@ -29,9 +29,9 @@ Pays proposé par rapprochement pour **6** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **6 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **36 candidats sans fiche**.
 
-Standalone : **4 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **5 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **4 publiées**, **0 masquées**, **2 candidates sans fiche**. Autres dossiers : **0 types à décider**, **4 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **3 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **2 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -73,7 +73,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | TW-candidate-d1cf7328aff5a3 | Shoushan Zoo | — | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_zoos_by_country#Taiwan) |
 | TW-candidate-5b68e8e31c9afb | SKM Park | Cianjhen District , Kaohsiung | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Taiwan) |
 | TW-candidate-de14722d6df1fa | Sky Dream | Lihpao Land , Taichung | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
-| TW-candidate-59d3818b8227da | Sky Wheel | Janfusun Fancyworld , Gukeng | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| TW-candidate-59d3818b8227da | Sky Wheel | Janfusun Fancyworld , Gukeng | À qualifier ; proposé : ToQualify | PossibleExisting | Hors périmètre enregistré | Inconnue — non inventée | — | Conserver cette ligne de découverte. Reprendre Sky Wheel comme attraction interne dans TW-park-b7c167b6-0c1c-405b-94c7-67eed22b5f27, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée. Qualification standalone : InsidePark. Grande roue Sky Wheel située au sein de Janfusun Fancyworld, déjà suivie comme fiche Park masquée. Installations référencées : Sky Wheel. Signal source : Attraction incluse dans le parc parent ; aucune création standalone autonome.. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [Janfusun Fancyworld — attractions officielles](https://www.janfusun.com.tw/fancyworld.php?lang=en) |
 | TW-candidate-8b0d722267f86d | Taichung Aquarium - Taichung | Taiwan | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Taiwan) |
 | TW-park-7c9ecc7a-87d0-4d59-b0c6-b302fe728cef | Taipei Children's Amusement Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Pays non renseigné dans le site au relevé ; rattachement proposé par source à confirmer. Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/12563.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Taiwan) |
 | TW-candidate-95fab0e37c7408 | Taipei Childrens Recreation Center | Taipei , Taipei | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/9936.htm) |

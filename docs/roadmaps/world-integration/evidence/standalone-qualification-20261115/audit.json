@@ -1,0 +1,69 @@
+{
+  "work": "Source-backed qualification of seven standalone discovery records: four park-internal wheels, one dismantled wheel and two duplicate Wiegand references for already integrated standalone runs. All original rows retained. No park data was integrated and no lastDataIntegrationAt was invented.",
+  "reviewedAt": "2026-11-15",
+  "records": [
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-b0d45dd6c85596",
+      "name": "Big-O",
+      "parkEntryId": "JP-park-db97b745-3aff-49c9-be98-9d88b6d0afcb",
+      "decision": "InsidePark; excluded from standalone creation queue",
+      "source": "https://en.www.at-raku.com/attractions/laqua/big-o/",
+      "rationale": "Grande roue au sein de Tokyo Dome City Attractions. La fiche Park masquée doit être intégrée éditorialement ; Big-O relève de ses attractions internes."
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-942b94531c67e7",
+      "name": "Cosmo Clock 21",
+      "parkEntryId": "JP-park-47306738-7e9f-4abd-a259-efe0c754a191",
+      "decision": "InsidePark; excluded from standalone creation queue",
+      "source": "https://cosmoworld.jp/cosmoclock21/?lang=en",
+      "rationale": "Grande roue présentée comme attraction de Yokohama Cosmoworld ; la fiche Park masquée doit être intégrée avec sa grande roue."
+    },
+    {
+      "countryCode": "TW",
+      "entryId": "TW-candidate-59d3818b8227da",
+      "name": "Sky Wheel",
+      "parkEntryId": "TW-park-b7c167b6-0c1c-405b-94c7-67eed22b5f27",
+      "decision": "InsidePark; excluded from standalone creation queue",
+      "source": "https://www.janfusun.com.tw/fancyworld.php?lang=en",
+      "rationale": "Grande roue Sky Wheel située au sein de Janfusun Fancyworld, déjà suivie comme fiche Park masquée."
+    },
+    {
+      "countryCode": "AE",
+      "entryId": "AE-candidate-86e0331b70ace2",
+      "name": "Eye of the Emirates",
+      "parkEntryId": "AE-candidate-243b018a221f27",
+      "decision": "InsidePark; excluded from standalone creation queue",
+      "source": "https://www.sharjahtourism.ae/wp-content/uploads/2025/11/SCTDA-General-Factsheet_Updated-2025.pdf",
+      "rationale": "Grande roue déplacée en 2018 de Al Qasba à Al Montazah Parks ; elle appartient désormais à l’Island of Legends dans le complexe de parcs. Examiner l’identité précise de la ligne Al Montazah Water Park lors de la reprise du parc."
+    },
+    {
+      "countryCode": "NL",
+      "entryId": "NL-candidate-7e8301aa1074bc",
+      "name": "SkyView Rotterdam",
+      "decision": "Historic installation dismantled; excluded from current creation queue",
+      "source": "https://www.dehavenloods.nl/nieuws/algemeen/25827/reuzenrad-weg-bij-markthal-maar-hoop-op-nieuwe-rotterdamse-plek"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-656009ff5e3a31",
+      "name": "Luge Wiegand — Oberwiesenthal",
+      "publishedEntryId": "DE-candidate-2ae1371b43102d",
+      "decision": "Retained duplicate of an integrated standalone attraction; no extra site entry",
+      "source": "http://sommerrodelbahn-oberwiesenthal.de"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-d95b6a111a30ad",
+      "name": "Luge Wiegand — Kohren-Sahlis",
+      "publishedEntryId": "DE-candidate-04a04741efdfd7",
+      "decision": "Retained duplicate of an integrated standalone attraction; no extra site entry",
+      "source": "https://www.sommerrodelbahn-kohren-sahlis.de/"
+    }
+  ],
+  "limitations": [
+    "Al Montazah backlog parent row currently says Water Park; verify the amusement park identity and scope before park integration.",
+    "For SkyView Rotterdam, a different future wheel at another location requires a new identity decision; Beelen Eye and 360 View are not this installation."
+  ]
+}
