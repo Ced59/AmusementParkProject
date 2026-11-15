@@ -37957,7 +37957,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -37966,7 +37966,7 @@
       "aliases": [
         "Vulcania Saint-Ours-les-Roches, France"
       ],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
       "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",

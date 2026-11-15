@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "name": "Vulcania",
+  "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
+  "assignedTo": "Conversation France",
+  "status": "InProgress",
+  "lastDataIntegrationAt": null,
+  "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
+  "search": {
+    "action": "SearchParks",
+    "result": {
+      "data": [
+        {
+          "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "name": "Vulcania",
+          "countryCode": "FR",
+          "type": null,
+          "audienceClassification": null,
+          "status": "Operating",
+          "openingDate": null,
+          "closingDate": null,
+          "openingDateText": null,
+          "closingDateText": null,
+          "founderId": null,
+          "operatorId": null,
+          "latitude": 45.8137601,
+          "longitude": 2.9415905,
+          "descriptions": [],
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "isFeaturedOnHome": false,
+          "featuredHomeOrder": null,
+          "isFeaturedOnHomeSponsored": false,
+          "webSiteUrl": null,
+          "street": null,
+          "city": null,
+          "postalCode": null,
+          "currentLogoImageId": null,
+          "parkItemsTotalCount": 1,
+          "parkItemsVisibleCount": 0,
+          "openingHours": {
+            "hasOpeningHours": false,
+            "status": "NotConfigured",
+            "timeZoneId": null,
+            "firstDate": null,
+            "lastDate": null,
+            "completeUntilDate": null,
+            "completeForDays": null,
+            "warningThresholdDays": 30,
+            "lastVerifiedAtUtc": null,
+            "updatedAtUtc": null
+          },
+          "dataCompleteness": {
+            "completenessScore": 49,
+            "dataQualityLevel": "Weak",
+            "applicableMaxPoints": 79,
+            "earnedPoints": 39,
+            "publicationBlockers": [],
+            "formulaicPublicTextIssue": null
+          }
+        }
+      ],
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    "receivedAtUtc": "2026-11-15T14:08:52.1658937Z",
+    "startedAtUtc": "2026-11-15T14:08:51.4103156Z"
+  },
+  "standaloneSearch": {
+    "startedAtUtc": "2026-11-15T14:09:01.5388309Z",
+    "action": "SearchStandaloneAttractions",
+    "receivedAtUtc": "2026-11-15T14:09:02.1861683Z",
+    "result": {
+      "data": [],
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    }
+  },
+  "completeness": {
+    "result": {
+      "completenessScore": 49,
+      "dataQualityLevel": "Weak",
+      "applicableMaxPoints": 79,
+      "earnedPoints": 39,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T14:09:13.6025979Z",
+    "startedAtUtc": "2026-11-15T14:09:12.9797500Z"
+  },
+  "targetedIntakeExportReceipt": {
+    "action": "ExportPark",
+    "receivedAtUtc": "2026-11-15T14:09:53.6104320Z",
+    "startedAtUtc": "2026-11-15T14:09:47.1643540Z",
+    "result": "/workspace/france-historical-20261114/vulcania/targeted-intake-export.json"
+  },
+  "targetedSections": [
+    "ParkBasics",
+    "References",
+    "Zones",
+    "Items",
+    "Images",
+    "History"
+  ],
+  "exportPurpose": "Recover legacy Namazu item/manufacturer IDs and reference/media dependencies absent from SearchParks.",
+  "existingCoverage": {
+    "items": 1,
+    "itemDescriptions8Languages": 0,
+    "parkDescriptions": 0,
+    "zones": 0,
+    "ownParkItemMedia": 0,
+    "sharedReferenceMedia": 4,
+    "historyEvents": 0
+  },
+  "preserve": [
+    "Namazu 8fd86b67-7e42-4eed-89ee-11c9e718d996",
+    "Intamin a917c228-e220-4234-a6ff-603e13365607 public shared reference and its existing media",
+    "Existing park coordinates"
+  ],
+  "gaps": [
+    "Namazu legacy opening 2021-10-07 to verify day/month before correction.",
+    "Current/historical inventory and annual maps to reconcile.",
+    "All editorial contents, logo, own photos, calendar, pricing and history required.",
+    "Founders and operator roles not interchangeable.",
+    "Hawai replaces Abyss; identity/version relationship to qualify before creation."
+  ],
+  "finalAuditCompleted": false,
+  "fullFinalExportPerformed": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "realApplyCount": 0,
+  "realImportCount": 0
+}
