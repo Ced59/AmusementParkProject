@@ -1,0 +1,147 @@
+{
+  "entryId": "NP-candidate-discovery-6fb59a2e521b2a",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+  "name": "Bungy Nepal — The Last Resort",
+  "countryCode": "NP",
+  "auditAtUtc": "2026-11-15T12:22:17.217Z",
+  "qualification": "Saut fixe sur le pont du Last Resort, vendu séparément du Canyon Swing et des hébergements. Recherches officielles Park et StandaloneAttraction sur Last Resort, Bhote Kosi et Bungy Nepal sans résultat.",
+  "operatorSources": [
+    "https://www.thelastresort.com.np/bungy-nepal/",
+    "https://www.thelastresort.com.np/faq/",
+    "https://www.thelastresort.com.np/bookings/bungy-only/",
+    "https://www.thelastresort.com.np/bookings/bungy-jump-day-trip/",
+    "https://www.thelastresort.com.np/canyon-swing/"
+  ],
+  "geoSource": "https://www.openstreetmap.org/node/14316048001",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/0283c6f1-038d-4693-8019-c30c086a4a39/bungy-nepal-the-last-resort",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "6f9e0e4020034786931f11f545315974",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Last_resort_nepal_bridge.JPG",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Last_resort_nepal_bridge.JPG/960px-Last_resort_nepal_bridge.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Pujan",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Last_resort_nepal_bridge.JPG",
+      "photographedAt": "2008",
+      "uploadedAtUtc": "2026-11-15T12:16:29.77Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:06.648Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "786e150f133041209194d511d1d1e68b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungee_Jump,_The_Last_Resort,_Nepal2.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Bungee_Jump%2C_The_Last_Resort%2C_Nepal2.jpg/960px-Bungee_Jump%2C_The_Last_Resort%2C_Nepal2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "No Lands Too Foreign",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "photographedAt": "2010",
+      "uploadedAtUtc": "2026-11-15T12:18:27.64Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:31.272Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "78e8b46ca58d4563abdc7ae2a64be212",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:To_jump_or....jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/To_jump_or....jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "creator": "sluj78 from Bangkok, Thailand",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "photographedAt": "2005",
+      "uploadedAtUtc": "2026-11-15T12:18:45.646Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:49.208Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Boutique officielle consultée le 15 novembre 2026 : 92 USD pour le saut sans transport et 108 USD pour le day trip avec transport depuis Katmandou. La nationalité est demandée à l’achat ; prix final à confirmer. Transport collectif actuellement indiqué seulement le samedi.",
+  "openingHoursAssessment": "Réservation officielle : saut sur place mercredi, vendredi, samedi et dimanche ; aucun horaire d’horloge sur place publié. Départ de Thamel à 06:00 indiqué pour le bus, mais transport collectif actuellement limité au samedi selon le produit day trip. Les autres jours ou créneaux spéciaux sont à confirmer avec l’exploitant ; aucun calendrier horaire fabriqué.",
+  "accessAssessment": "FAQ officielle : poids 40–98 kg, mineurs de moins de 18 ans avec parents présents et signature de décharge ; pas d’âge minimum chiffré donné. Chaussures de sport ou de randonnée obligatoires ; déclarer grossesse, épilepsie, maladie cardiaque, opération récente et autres conditions pertinentes. Prépaiement demandé.",
+  "geoAssessment": "OpenStreetMap node 14316048001 à 27.8765906,85.8923724 représente The Last Resort à Bhotekoshi-05, Sindhupalchok, Bagmati ; point de resort voisin du pont, pas prétendu être le point exact du saut.",
+  "historyAssessment": "Année d’ouverture du saut non établie dans les sources officielles consultées. La mention de copyright 2001 du site ne sert pas de date d’ouverture. Les photos historiques datent de 2005, 2008 et 2010.",
+  "mediaRecovery": "Le premier import a téléversé et lié l’image puis s’est arrêté car le fichier de métadonnées manquait. L’image initiale 6f9e0e4020034786931f11f545315974 a été complétée avec UpdatePhotoMetadata le 15 novembre 2026 à 12:18:06.648Z ; aucune image orpheline ni suppression.",
+  "qualityLimitation": "Score 81/100 Publishable, sans blocage. Horaires sur place et année d’ouverture inconnus ; trois photos anciennes sont légendées avec leurs dates.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127451467424431",
+    "publishedAtUtc": "2026-11-15T12:20:50.1221534Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T12:19:23.528Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "adc3175b-16b0-4dd4-96e0-7cd35e1dcf34",
+      "appliedAtUtc": "2026-11-15T12:14:39.6368666Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "f035d29c-c9b9-4fcd-8fa2-25b952de3837",
+      "appliedAtUtc": "2026-11-15T12:15:47.5987541Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "payment",
+      "operationId": "421df1f6-7af7-404f-a8a8-af927fc53c6c",
+      "appliedAtUtc": "2026-11-15T12:19:23.5284885Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "6f9e0e4020034786931f11f545315974",
+      "uploadedAtUtc": "2026-11-15T12:16:29.77Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:06.648Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "786e150f133041209194d511d1d1e68b",
+      "uploadedAtUtc": "2026-11-15T12:18:27.64Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:31.272Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "78e8b46ca58d4563abdc7ae2a64be212",
+      "uploadedAtUtc": "2026-11-15T12:18:45.646Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:18:49.208Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "79d98905-8fe1-456c-bc11-9f2a9ea104c2",
+    "appliedAtUtc": "2026-11-15T12:20:10.78027Z"
+  },
+  "nextAction": "Conserver la ligne. Recontrôler tarif selon la nationalité, jours de saut, bus et conditions sous 90 jours. Trouver des horaires sur place et des photos plus récentes exactes sous licence réutilisable ; les photos actuelles datent de 2005–2010. Ne pas inférer l’année d’ouverture. Qualifier Canyon Swing séparément avec une photo exacte. Ne pas republier Facebook pour une simple actualisation."
+}
