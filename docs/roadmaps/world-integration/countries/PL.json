@@ -360,7 +360,7 @@
       "entryId": "PL-candidate-standalone-3a177fd1574266",
       "name": "Alpine Coaster Wiegand — Równica, Ustroń",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
       "locality": "Równica, Ustroń",
       "siteId": null,
@@ -371,9 +371,11 @@
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Référence constructeur identifiée ; activité actuelle, prix et horaires de Równica encore à vérifier.",
-      "identityConfidence": "Référence Wiegand location-id-1072 et opérateur rownica.pl ; piste distincte du tor saneczkowy Czantoria désormais publié.",
+      "identityConfidence": "L’exploitant Górski Park Równica décrit cette piste comme l’une de ses attractions ; le parc parent possède déjà une fiche masquée PL-park-ea305737-1b51-4cfc-9a55-2371c1113939.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "PL-park-ea305737-1b51-4cfc-9a55-2371c1113939"
+      ],
       "aliases": [
         "Ustron",
         "Równica",
@@ -382,7 +384,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Qualifier l’alpine coaster de Równica auprès de son exploitant ; rechercher les fiches existantes et une photo exacte réutilisable. La piste Czantoria est suivie séparément sous PL-candidate-standalone-9c584f7e2403327e, sans effacer ce candidat.",
+      "nextAction": "Intégrer la piste alpine comme attraction du parc PL-park-ea305737-1b51-4cfc-9a55-2371c1113939 lors de l’enrichissement de sa fiche masquée. Rechercher les horaires, prix et photos exactes dans ce contexte ; ne pas créer de fiche standalone Równica.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -393,10 +395,15 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rownica.pl",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Górski Park Równica — tor saneczkowy parmi les attractions du parc",
+          "url": "https://www.rownica.pl/?p=106",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
+        "relation": "InsidePark",
         "reviewedAt": "2026-11-15",
         "attractions": [
           {
@@ -408,7 +415,7 @@
             "referenceId": "location-id-1072"
           }
         ],
-        "rationale": "La référence Wiegand location-id-1072 renvoie à l’alpine coaster de Równica et à rownica.pl. La référence location-id-1364 du tor saneczkowy Czantoria a été transférée vers une ligne dédiée publiée ; ce sont deux sites distincts à Ustroń."
+        "rationale": "Le tor saneczkowy de Równica est présenté comme attraction du Górski Park Równica, qui possède une fiche Park masquée. Il relève de son intégration éditoriale comme attraction interne ; Czantoria est une piste autonome distincte."
       }
     },
     {
@@ -3197,13 +3204,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park masquée existante ; l’exploitant Górski Park Równica présente le tor saneczkowy comme attraction interne. Le candidat Wiegand PL-candidate-standalone-3a177fd1574266 est rattaché à cette fiche.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche masquée du vrai Górski Park Równica et ses attractions, dont le tor saneczkowy Wiegand. Rechercher données officielles, tarifs, horaires et photos du parc et de la piste ; conserver le candidat interne PL-candidate-standalone-3a177fd1574266 pour suivi.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3219,6 +3226,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13275.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Górski Park Równica — piste de luge du parc",
+          "url": "https://www.rownica.pl/?p=106",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "PL",
@@ -3238,7 +3250,7 @@
             "sourceOpenedYear": "2006"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant du Górski Park Równica présente le tor saneczkowy comme l’une de ses attractions ; il s’agit d’un vrai parc avec fiche Park masquée à compléter, pas d’une migration autonome."
       }
     },
     {
@@ -9832,7 +9844,7 @@
           "summary": "Audit final après la dernière intégration de métadonnées : fiche visible, huit pages et trois photos HTTP 200, Facebook Published."
         }
       ],
-      "nextAction": "Conserver la ligne et sa date réelle. Vérifier les tarifs et horaires officiels propres à la piste avant de les ajouter ; conserver Równica comme candidat distinct.",
+      "nextAction": "Conserver la ligne et sa date réelle. Vérifier les tarifs et horaires officiels propres à la piste avant de les ajouter ; suivre Równica comme attraction du parc masqué PL-park-ea305737-1b51-4cfc-9a55-2371c1113939.",
       "sources": [
         {
           "label": "Exploitant Czantoria — piste, longueur et règles de visite",
@@ -9894,7 +9906,7 @@
             "referenceId": "location-id-1364"
           }
         ],
-        "rationale": "Piste de luge d’été avec billet propre près de la gare supérieure du télésiège ; distincte de l’alpine coaster de Równica mentionné dans la ligne d’origine."
+        "rationale": "Piste de luge d’été avec billet propre près de la gare supérieure du télésiège ; distincte de l’alpine coaster interne au Górski Park Równica."
       }
     }
   ]

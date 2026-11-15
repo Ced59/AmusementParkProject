@@ -1,6 +1,6 @@
 {
   "work": "Separated the conflated Ustroń Wiegand backlog observation into the Czantoria summer toboggan run and the separate Równica alpine coaster; created and published Czantoria as a standalone attraction with three exact credited images and a Facebook announcement.",
-  "qualification": "The operator places a separately ticketed summer toboggan course at the upper Czantoria chairlift station on Polana Stokłosica, while the other Wiegand reference points to Równica and its own operator. Park and Standalone searches in the editor for Czantoria, Ustroń and Stokłosica returned no matching existing fiche. The original backlog row combined both Wiegand references; this audit splits them without deleting the original row.",
+  "qualification": "The operator places a separately ticketed summer toboggan course at the upper Czantoria chairlift station on Polana Stokłosica. The other Wiegand reference is the coaster inside Górski Park Równica, a genuine park with an existing hidden Park fiche. Park and Standalone searches in the editor for Czantoria, Ustroń and Stokłosica returned no matching Czantoria fiche. The original backlog row combined both Wiegand references; this audit splits them without deleting the original row.",
   "sources": {
     "operatorRide": "https://www.czantoria.net/top-7-atrakcji/",
     "operatorHome": "https://www.czantoria.net/",
@@ -12,7 +12,8 @@
       "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_02.JPG",
       "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_03.JPG"
     ],
-    "cityTicketEvidence": "https://kartamieszkanca.ustron.pl/pl/partnerzy/kolej-linowa-%E2%80%9Eczantoria%E2%80%9D-sp.-z-o.o.-8442"
+    "cityTicketEvidence": "https://kartamieszkanca.ustron.pl/pl/partnerzy/kolej-linowa-%E2%80%9Eczantoria%E2%80%9D-sp.-z-o.o.-8442",
+    "rownicaParkOperator": "https://www.rownica.pl/?p=106"
   },
   "facts": {
     "country": "PL",
@@ -30,7 +31,7 @@
     "The operator lists the ride but does not publish a verified current ride-specific weekly timetable or fare on the accessed page. Neither was invented; the chairlift timetable is not treated as the ride timetable.",
     "The three Wikimedia Commons photographs are from August 2006. Their captions identify the date and must not be presented as a current condition report.",
     "The operator website appears to list the attraction as active; day-of-visit operation and weather may change.",
-    "Równica alpine coaster remains to qualify separately under the retained original row."
+    "Równica alpine coaster is an internal attraction of the existing hidden Górski Park Równica fiche and remains to be integrated with that park."
   ],
   "editorSearch": {
     "parkQueries": [
@@ -153,6 +154,6 @@
   "lastDataIntegrationAt": "2026-11-15T01:37:54.599Z",
   "remainingGaps": [
     "Verify current ride-specific official ticket price and hours when operator publishes them.",
-    "Review the separate Równica alpine coaster row and add an exact reusable photo before integration."
+    "Integrate Równica as an attraction of its existing hidden park fiche, with current operator facts and exact reusable photos."
   ]
 }
