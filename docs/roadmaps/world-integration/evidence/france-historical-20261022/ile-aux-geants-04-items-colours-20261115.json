@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "aea30a09040719df5a582b8b3ca3e71293f9e2ed4294fcedcc22843d5505e91b",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "629ed7de-03cb-4ea9-8fb2-2a5f68e4a81b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:49:33.695839Z",
+    "appliedAtUtc": "2026-11-15T00:49:33.6958403Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3c9ff19a-b5f7-4d2c-8b91-439ddfaedb8d",
+        "entityKey": "3c9ff19a-b5f7-4d2c-8b91-439ddfaedb8d",
+        "displayName": "Kangourou",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Sprünge mit wechselndem Rhythmus</h2><p>Kangourou verrät seinen Charakter schon im Namen: eine energievolle Runde mit vertikalen Bewegungen. Bunte Gondeln machen jede Fahrt zu einer Reihe gemeinsamer Sprünge um die Mitte.</p><p>Die Verbindung aus Drehung und Höhenwechseln erzeugt ein lebhaftes Gefühl ohne langes Warten. Die Bewegungen folgen im Takt und geben dem Fahrgeschäft eine verspielte, fast unvorhersehbare Persönlichkeit.</p><h2>Das lebhafte Spiel einer hüpfenden Runde</h2><p>Kangourou gehört zu den dynamischeren Attraktionen. Sein Charakter entsteht weniger durch eine lange Fahrt als durch die fröhliche Wiederholung der Sprünge, die eine vertraute Runde voller Überraschungen macht.</p>",
+            "newValue": "<h2>Kängurus mit Boxhandschuhen</h2><p>Kangourou versammelt rosa, grüne und blaue Figuren mit langen Ohren, Boxhandschuhen und Krawatten. Ein gelbes Känguru überragt die Mitte des Karussells über dem bunten Schriftzug „Kangaroo“.</p><p>Mit ihrem breiten Grinsen sehen die Tiere wie Zeichentrickfiguren aus. Die hüpfenden Bewegungen des Karussells erwecken diese fantasievolle Boxertruppe zwischen den Kiefern des Parks zum Leben.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Bounces that change the rhythm</h2><p>Kangourou declares its character in its name: an energetic circle punctuated by vertical movement. Colourful gondolas turn each cycle into a series of shared bounces around the centre.</p><p>Combining rotation with changes in height creates a lively feeling without long suspense. The shifts arrive in rhythm, giving the ride a playful, almost unpredictable personality.</p><h2>The lively play of a bouncing circle</h2><p>Kangourou belongs among the siteʼs more dynamic rides. Its character comes less from a long journey than from the cheerful repetition of bounces, turning a familiar circle into an experience full of surprises.</p>",
+            "newValue": "<h2>Kangaroos wearing boxing gloves</h2><p>Kangourou brings together pink, green and blue characters with long ears, boxing gloves and ties. A yellow kangaroo stands high in the centre of the ride, above the colourful ‘Kangaroo’ sign.</p><p>The animals wear broad smiles and have a cartoon look. The ride’s bouncing brings this fanciful band of boxers to life, with the park’s pine trees around them.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Saltos que cambian el ritmo</h2><p>Kangourou anuncia su carácter desde el nombre: una ronda enérgica marcada por movimientos verticales. Las cabinas de colores convierten cada vuelta en una serie de saltos compartidos.</p><p>La combinación de rotación y cambios de altura crea una sensación viva sin larga espera. Las variaciones llegan con ritmo y dan a la atracción una personalidad juguetona, casi imprevisible.</p><h2>El juego vivo de una ronda saltarina</h2><p>Kangourou figura entre las atracciones más dinámicas. Su carácter nace menos de un largo recorrido que de la repetición alegre de los saltos, que transforma una ronda familiar en sorpresa.</p>",
+            "newValue": "<h2>Canguros con guantes de boxeo</h2><p>Kangourou reúne personajes rosas, verdes y azules de largas orejas, con guantes de boxeo y corbatas. Un canguro amarillo se alza en el centro de la atracción, sobre el rótulo multicolor «Kangaroo».</p><p>Los animales lucen grandes sonrisas y un aspecto de dibujos animados. Los saltos de la atracción dan vida a esta pandilla de boxeadores fantásticos, rodeada de los pinos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des bonds qui changent le rythme</h2><p>Kangourou annonce son caractère dès son nom : une ronde énergique ponctuée de mouvements verticaux. Les nacelles colorées transforment chaque passage en série de bonds partagés autour du centre.</p><p>La combinaison de la rotation et des variations de hauteur crée une sensation vive sans long suspense. Les changements arrivent en cadence et donnent au manège une personnalité joueuse, presque imprévisible.</p><h2>Le jeu vif dʼune ronde bondissante</h2><p>Kangourou rejoint les attractions les plus dynamiques du site. Sa personnalité vient moins dʼun long parcours que de la répétition joyeuse des bonds, qui transforme une ronde familière en expérience pleine de surprises.</p>",
+            "newValue": "<h2>Des kangourous en gants de boxe</h2><p>Kangourou rassemble des personnages roses, verts et bleus aux longues oreilles, affublés de gants de boxe et de cravates. Un kangourou jaune domine le centre du manège, au-dessus de l’enseigne multicolore « Kangaroo ».</p><p>Les animaux affichent de grands sourires et un air de dessin animé. Les bonds du manège donnent vie à cette bande de boxeurs fantaisistes, entourée des pins du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Balzi che cambiano il ritmo</h2><p>Kangourou rivela il suo carattere fin dal nome: un giro energico scandito da movimenti verticali. Le gondole colorate trasformano ogni passaggio in una serie di balzi condivisi.</p><p>La combinazione di rotazione e cambi dʼaltezza crea una sensazione vivace senza lunga attesa. Le variazioni arrivano in cadenza e danno alla giostra una personalità giocosa, quasi imprevedibile.</p><h2>Il gioco vivace di un giro saltellante</h2><p>Kangourou rientra tra le attrazioni più dinamiche. Il carattere nasce meno da un lungo percorso che dalla ripetizione allegra dei balzi, capace di trasformare un giro familiare in una sorpresa continua.</p>",
+            "newValue": "<h2>Canguri con i guantoni da boxe</h2><p>Kangourou riunisce personaggi rosa, verdi e blu dalle lunghe orecchie, con guantoni da boxe e cravatte. Un canguro giallo svetta al centro della giostra, sopra l’insegna multicolore «Kangaroo».</p><p>Gli animali sfoggiano grandi sorrisi e sembrano usciti da un cartone animato. I sobbalzi della giostra danno vita a questa fantasiosa banda di pugili, circondata dai pini del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Sprongen die het ritme veranderen</h2><p>Kangourou verraadt zijn karakter al in de naam: een energieke ronde met verticale bewegingen. Kleurrijke gondels maken elke rit tot een reeks gedeelde sprongen rond het midden.</p><p>De combinatie van draaien en hoogteverschillen zorgt voor een levendig gevoel zonder lange spanning. De veranderingen volgen elkaar ritmisch op en geven de attractie een speels, bijna onvoorspelbaar karakter.</p><h2>Het levendige spel van een springende ronde</h2><p>Kangourou hoort bij de dynamischere attracties. Het karakter komt minder van een lange route dan van vrolijk herhaalde sprongen, die een vertrouwde ronde vol verrassingen maken.</p>",
+            "newValue": "<h2>Kangoeroes met bokshandschoenen</h2><p>Kangourou brengt roze, groene en blauwe figuren samen met lange oren, bokshandschoenen en stropdassen. Een gele kangoeroe staat hoog in het midden van de attractie, boven het kleurrijke opschrift ‘Kangaroo’.</p><p>De dieren hebben brede glimlachen en zien eruit als tekenfilmfiguren. De sprongen van de attractie brengen dit fantasierijke gezelschap boksers tot leven, tussen de dennen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Podskoki zmieniające rytm</h2><p>Kangourou zdradza charakter już w nazwie: to energiczny krąg przerywany pionowymi ruchami. Kolorowe gondole zmieniają przejazd w serię wspólnych podskoków wokół środka.</p><p>Połączenie obrotu ze zmianami wysokości daje żywe wrażenie bez długiego oczekiwania. Ruchy pojawiają się rytmicznie, nadając atrakcji zabawny, niemal nieprzewidywalny charakter.</p><h2>Żywa zabawa podskakującego kręgu</h2><p>Kangourou należy do bardziej dynamicznych atrakcji. Charakter wynika nie z długiej trasy, lecz z radosnego powtarzania podskoków, które zmienia znajomy obrót w doświadczenie pełne niespodzianek.</p>",
+            "newValue": "<h2>Kangury w rękawicach bokserskich</h2><p>Kangourou skupia różowe, zielone i niebieskie postacie o długich uszach, w rękawicach bokserskich i krawatach. Nad kolorowym napisem „Kangaroo”, w środku karuzeli, góruje żółty kangur.</p><p>Zwierzęta mają szerokie uśmiechy i wyglądają jak bohaterowie kreskówki. Podskoki karuzeli ożywiają tę fantazyjną grupę bokserów, otoczoną parkowymi sosnami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Saltos que mudam o ritmo</h2><p>O Kangourou revela o seu caráter desde o nome: uma roda enérgica marcada por movimentos verticais. As cabinas coloridas transformam cada volta numa série de saltos partilhados.</p><p>A combinação da rotação com mudanças de altura cria uma sensação viva sem longa espera. As variações chegam em cadência e dão à diversão uma personalidade brincalhona, quase imprevisível.</p><h2>O jogo vivo de uma roda saltitante</h2><p>O Kangourou integra as diversões mais dinâmicas. O caráter nasce menos de um longo percurso do que da repetição alegre dos saltos, que transforma uma volta familiar numa experiência cheia de surpresas.</p>",
+            "newValue": "<h2>Cangurus com luvas de boxe</h2><p>O Kangourou reúne personagens cor-de-rosa, verdes e azuis, de orelhas compridas, com luvas de boxe e gravatas. Um canguru amarelo ergue-se no centro da diversão, acima do letreiro multicolorido «Kangaroo».</p><p>Os animais exibem grandes sorrisos e parecem saídos de desenhos animados. Os saltos da diversão dão vida a este grupo de pugilistas imaginários, rodeado pelos pinheiros do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4a3b5ae7-6995-431c-b5b5-4d9e955bfae0",
+        "entityKey": "4a3b5ae7-6995-431c-b5b5-4d9e955bfae0",
+        "displayName": "Samba Ballon",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Ballonrunde am Himmel</h2><p>Samba Ballon ordnet rund um seine Mitte Gondeln in Form von Heißluftballons an. Farben und Luftfahrtthema schaffen schon vor dem Start eine Fantasiereise.</p><p>Die Drehung hebt die Ballons und verändert nach und nach den Blick auf den Park. Die Gefühle bleiben gemäßigt, doch Höhe und gemeinsame Bewegung verleihen der Runde Lebendigkeit.</p><h2>Ein erster Eindruck von Höhe</h2><p>Samba Ballon bildet den Übergang zwischen kleinen bodennahen Fahrgeschäften und luftigeren Erlebnissen. Die Höhe erscheint in einer fröhlichen Welt, ohne die Sanftheit einer Familienrunde zu verlieren.</p>",
+            "newValue": "<h2>Ballons um eine riesige Tanne</h2><p>Samba Ballon vereint bunte, mit Sternen geschmückte Ballons. Sie umgeben eine große künstliche Tanne mit einem lächelnden Gesicht am Stamm, mitten zwischen den echten Kiefern des Parks.</p><p>Am Eingang erinnert ein kleines Häuschen an Lebkuchen: ein rotes Dach, braune Wände und blau-weiße Ränder wie aus Zuckerguss. Diese Märchenkulisse begleitet die Ballons auf ihrer Fahrt durch die Luft.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A circle of balloons in the sky</h2><p>Samba Ballon arranges a circle of hot-air-balloon gondolas around its centre. Colour and the airborne theme create an imagined voyage before the movement even begins.</p><p>Rotation raises the balloons and gradually changes the view over the park. Sensations remain moderate, yet height and shared movement give the circle a cheerful, lively character.</p><h2>A first taste of height</h2><p>Samba Ballon forms a transition between small ground-level rides and more airborne experiences. It introduces height in a cheerful world without losing the gentleness of a family circle.</p>",
+            "newValue": "<h2>Balloons around a giant fir tree</h2><p>Samba Ballon gathers brightly coloured balloons covered in stars. They surround a tall sculpted fir tree with a smiling face on its trunk, amid the park’s real pine trees.</p><p>By the entrance, a little cottage suggests gingerbread: a red roof, brown walls and blue-and-white edges shaped like icing. This storybook scenery accompanies the balloons on their journey through the air.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una ronda de globos en el cielo</h2><p>Samba Ballon despliega alrededor de su centro una ronda de cabinas con forma de globo. Los colores y el tema aéreo crean un viaje imaginario antes de empezar.</p><p>La rotación eleva los globos y cambia poco a poco la vista del parque. Las sensaciones siguen siendo moderadas, pero la altura y el movimiento compartido dan alegría a la ronda.</p><h2>Un primer sabor de altura</h2><p>Samba Ballon forma una transición entre las pequeñas atracciones cercanas al suelo y las experiencias más aéreas. Descubre la altura en un mundo alegre sin perder la suavidad de una ronda familiar.</p>",
+            "newValue": "<h2>Globos alrededor de un abeto gigante</h2><p>Samba Ballon reúne globos de vivos colores cubiertos de estrellas. Rodean un gran abeto esculpido con una cara sonriente en el tronco, entre los pinos de verdad del parque.</p><p>Junto a la entrada, una casita recuerda al pan de jengibre: tejado rojo, paredes marrones y bordes azules y blancos dibujados como glaseado. Este decorado de cuento acompaña el paseo aéreo de los globos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une ronde de ballons dans le ciel</h2><p>Samba Ballon déploie autour de son centre une ronde de nacelles en forme de montgolfières. Les couleurs et le thème aérien installent un voyage imaginaire avant même que le mouvement ne commence.</p><p>La rotation fait monter les ballons et transforme progressivement la vue sur le parc. Les sensations restent modérées, mais la hauteur et le mouvement partagé donnent à la ronde un caractère joyeux et vivant.</p><h2>Un premier goût de hauteur</h2><p>Samba Ballon constitue une transition entre les petits manèges proches du sol et les expériences plus aériennes. Il fait découvrir la hauteur dans un univers souriant, sans perdre la douceur dʼune ronde familiale.</p>",
+            "newValue": "<h2>Des montgolfières autour d’un sapin géant</h2><p>Samba Ballon réunit des montgolfières aux couleurs vives, couvertes d’étoiles. Elles entourent un grand sapin sculpté dont le tronc porte un visage souriant, au milieu des véritables pins du parc.</p><p>Près de l’entrée, une petite maisonnette évoque le pain d’épices : toit rouge, murs bruns et bordures bleues et blanches dessinées comme du glaçage. Ce décor de conte accompagne la promenade aérienne des ballons.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un giro di palloni nel cielo</h2><p>Samba Ballon dispone attorno al centro una corona di gondole a forma di mongolfiera. Colori e tema aereo creano un viaggio immaginario ancora prima del movimento.</p><p>La rotazione solleva i palloni e cambia gradualmente la vista sul parco. Le sensazioni restano moderate, ma altezza e movimento condiviso danno al giro un carattere allegro.</p><h2>Un primo assaggio di altezza</h2><p>Samba Ballon crea un passaggio tra le piccole giostre vicine al suolo e le esperienze più aeree. Fa scoprire lʼaltezza in un mondo sorridente senza perdere la dolcezza del giro familiare.</p>",
+            "newValue": "<h2>Mongolfiere intorno a un abete gigante</h2><p>Samba Ballon riunisce mongolfiere dai colori vivaci, ricoperte di stelle. Circondano un grande abete scolpito con un volto sorridente sul tronco, tra i veri pini del parco.</p><p>Vicino all’ingresso, una casetta ricorda il pan di zenzero: tetto rosso, pareti marroni e bordi bianchi e blu che sembrano glassa. Questo scenario da fiaba accompagna le mongolfiere nella loro passeggiata in aria.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een kring van ballonnen in de lucht</h2><p>Samba Ballon plaatst gondels in de vorm van luchtballonnen in een kring rond het midden. Kleur en luchtthema roepen al vóór de start een denkbeeldige reis op.</p><p>De draaiing tilt de ballonnen op en verandert geleidelijk het uitzicht over het park. De sensaties blijven gematigd, maar hoogte en gedeelde beweging geven de ronde een levendig karakter.</p><h2>Een eerste gevoel van hoogte</h2><p>Samba Ballon vormt een overgang tussen kleine attracties dicht bij de grond en meer luchtige ervaringen. Hoogte verschijnt in een vrolijke wereld zonder de zachtheid van een familieronde te verliezen.</p>",
+            "newValue": "<h2>Ballonnen rond een reuzenspar</h2><p>Samba Ballon heeft felgekleurde ballonnen vol sterren. Ze omringen een grote kunstspar met een glimlachend gezicht op de stam, tussen de echte dennen van het park.</p><p>Bij de ingang doet een klein huisje aan peperkoek denken: een rood dak, bruine muren en blauwe en witte randen die op glazuur lijken. Dit sprookjesdecor begeleidt de ballonnen tijdens hun tocht door de lucht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Krąg balonów na niebie</h2><p>Samba Ballon ustawia wokół środka gondole w kształcie balonów. Kolory i powietrzny motyw tworzą wyobrażoną podróż jeszcze przed rozpoczęciem ruchu.</p><p>Obrót unosi balony i stopniowo zmienia widok na park. Wrażenia pozostają umiarkowane, lecz wysokość i wspólny ruch nadają przejażdżce radosny charakter.</p><h2>Pierwszy smak wysokości</h2><p>Samba Ballon stanowi przejście między małymi atrakcjami przy ziemi a bardziej powietrznymi doświadczeniami. Odkrywa wysokość w pogodnym świecie bez utraty łagodności rodzinnego obrotu.</p>",
+            "newValue": "<h2>Balony wokół olbrzymiej jodły</h2><p>Samba Ballon tworzą jaskrawe balony pokryte gwiazdami. Otaczają wielką sztuczną jodłę z uśmiechniętą twarzą na pniu, stojącą wśród prawdziwych parkowych sosen.</p><p>Przy wejściu mały domek przypomina piernikową chatkę: czerwony dach, brązowe ściany oraz niebiesko-białe brzegi wyglądające jak lukier. Ta bajkowa sceneria towarzyszy podniebnej przejażdżce balonów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma roda de balões no céu</h2><p>O Samba Ballon dispõe em redor do centro cabinas em forma de balão. As cores e o tema aéreo criam uma viagem imaginária antes mesmo do movimento.</p><p>A rotação eleva os balões e muda gradualmente a vista sobre o parque. As sensações permanecem moderadas, mas a altura e o movimento partilhado dão alegria à volta.</p><h2>Um primeiro gosto de altura</h2><p>O Samba Ballon faz a transição entre pequenas diversões junto ao chão e experiências mais aéreas. Apresenta a altura num mundo alegre sem perder a suavidade de uma volta familiar.</p>",
+            "newValue": "<h2>Balões à volta de um abeto gigante</h2><p>O Samba Ballon reúne balões de cores vivas cobertos de estrelas. Rodeiam um grande abeto esculpido com um rosto sorridente no tronco, entre os verdadeiros pinheiros do parque.</p><p>Junto à entrada, uma casinha lembra pão de gengibre: telhado vermelho, paredes castanhas e rebordos azuis e brancos desenhados como cobertura de açúcar. Este cenário de conto acompanha o passeio dos balões pelo ar.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9305488c-b270-4c11-8256-1080202ce347",
+        "entityKey": "9305488c-b270-4c11-8256-1080202ce347",
+        "displayName": "La Chenille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Raupe zwischen den Bäumen</h2><p>La Chenille nutzt das fröhliche Bild einer bunten Raupe für eine Familienachterbahn. Ihre Fahrt belebt die grüne Umgebung mit Kurven, sanften Höhenwechseln und der Rückkehr zur Station.</p><p>Die Strecke setzt auf einen gut nachvollziehbaren Rhythmus und zugängliche Gefühle. Richtungswechsel verleihen ihr Charakter, ohne den einladenden Familiengeist zu verlieren.</p><h2>Eine Familienachterbahn</h2><p>La Chenille dient als Einstieg in die Welt der Achterbahnen: in einer einladenden Form, die mehrere Generationen in einem gemeinsamen Abenteuer zusammenführt.</p>",
+            "newValue": "<h2>Ein Garten voller Riesenblumen</h2><p>Große rosa und gelbe Blumen sowie glockenförmige Lampen bilden einen Fantasiegarten um La Chenille. Darüber steht der Schriftzug „Brucomela“. Das Rosa der kleinen Achterbahn hebt sich vor dem Gerüst des benachbarten Grand 8 ab.</p><p>Die Malereien am Bahnsteig zeigen Gräser und Blumen aus Insektenperspektive. Dieser erdachte Maßstab macht die Fahrt mit der Raupe zu einem Ausflug durch einen riesig gewordenen Garten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A caterpillar winding among the trees</h2><p>La Chenille uses the cheerful image of a colourful creature for a family roller coaster. Its passage animates the wooded setting through curves, gentle changes of level and returns to the station.</p><p>The route favours a readable rhythm and approachable sensations. Changes of direction give the course character without losing its welcoming spirit, making it suited to a shared discovery.</p><h2>A family roller coaster</h2><p>La Chenille acts as a bridge into roller coasters, offering a welcoming form designed to bring several generations together around the same adventure.</p>",
+            "newValue": "<h2>A garden of giant flowers</h2><p>Large pink and yellow flowers and bell-shaped lamps form a fanciful garden around La Chenille. The ‘Brucomela’ sign stands above it, while the small coaster’s pink colour contrasts with the framework of neighbouring Le Grand 8.</p><p>Paintings along the platform show grass and flowers from an insect’s viewpoint. That imagined scale makes a ride on the caterpillar feel like an outing through a garden grown enormous.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una oruga que ondula entre los árboles</h2><p>La Chenille adopta la imagen alegre de una criatura de colores para una montaña rusa familiar. Su recorrido anima el entorno arbolado con curvas, suaves cambios de altura y regresos a la estación.</p><p>El recorrido apuesta por un ritmo fácil de seguir y sensaciones accesibles. Los cambios de dirección le dan carácter sin perder su espíritu acogedor, ideal para descubrirlo en compañía.</p><h2>Una montaña rusa familiar</h2><p>La Chenille funciona como puerta de entrada al mundo de las montañas rusas, con una forma acogedora pensada para reunir generaciones en una misma aventura.</p>",
+            "newValue": "<h2>Un jardín de flores gigantes</h2><p>Grandes flores rosas y amarillas y lámparas con forma de campanilla crean un jardín fantástico alrededor de La Chenille. El rótulo «Brucomela» lo corona, mientras el rosa de la pequeña montaña rusa destaca ante la estructura del vecino Grand 8.</p><p>Las pinturas del andén muestran hierba y flores desde la perspectiva de un insecto. Esa escala imaginaria convierte el paseo en la oruga en una escapada por un jardín que se ha vuelto inmenso.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une chenille qui ondule entre les arbres</h2><p>La Chenille reprend lʼimage joyeuse dʼune créature colorée pour abriter une montagne russe familiale. Son passage anime le sous-bois et fait alterner courbes, reliefs et retrouvailles avec le quai.</p><p>Le trajet privilégie un rythme lisible et des sensations accessibles. Les changements de direction donnent du caractère au parcours sans effacer son esprit accueillant, propice à une découverte partagée.</p><h2>Des montagnes russes familiales</h2><p>La Chenille joue un rôle de passerelle : elle fait découvrir lʼunivers des montagnes russes dans une forme accueillante, pensée pour réunir plusieurs générations autour dʼune même aventure.</p>",
+            "newValue": "<h2>Un jardin de fleurs géantes</h2><p>Autour de La Chenille, de grandes fleurs roses et jaunes et des lampes en forme de clochettes composent un jardin de fantaisie. L’enseigne « Brucomela » surplombe ce décor, où le rose de la petite montagne russe se détache devant la charpente du Grand 8 voisin.</p><p>Les peintures du quai reprennent les herbes et les fleurs à hauteur d’insecte. Cette échelle imaginaire donne à la promenade en chenille l’allure d’une escapade dans un jardin devenu immense.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un bruco che ondeggia tra gli alberi</h2><p>La Chenille adotta lʼimmagine allegra di una creatura colorata per una montagna russa familiare. Il passaggio anima lʼambiente alberato con curve, dolci cambi di quota e ritorni in stazione.</p><p>Il percorso privilegia un ritmo comprensibile e sensazioni accessibili. I cambi di direzione danno carattere senza cancellare lo spirito accogliente, ideale per una scoperta condivisa.</p><h2>Una montagna russa familiare</h2><p>La Chenille è una porta verso il mondo delle montagne russe, in una forma accogliente pensata per riunire più generazioni nella stessa avventura.</p>",
+            "newValue": "<h2>Un giardino di fiori giganti</h2><p>Grandi fiori rosa e gialli e lampade a forma di campanula creano un giardino fantastico intorno a La Chenille. L’insegna «Brucomela» sovrasta il decoro, mentre il rosa della piccola montagna russa risalta davanti all’intelaiatura del vicino Grand 8.</p><p>I dipinti lungo la banchina mostrano erba e fiori dalla prospettiva di un insetto. Questa scala immaginaria trasforma il giro sul bruco in un’escursione in un giardino diventato enorme.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een rups die tussen de bomen golft</h2><p>La Chenille gebruikt het vrolijke beeld van een kleurrijke rups voor een familieachtbaan. De rit brengt de groene omgeving tot leven met bochten, zachte hoogteverschillen en terugkeer naar het station.</p><p>Het parcours kiest voor een duidelijk ritme en toegankelijke sensaties. Richtingswisselingen geven de baan karakter zonder haar uitnodigende familiesfeer te verliezen.</p><h2>Een familieachtbaan</h2><p>La Chenille vormt een brug naar de wereld van achtbanen, in een uitnodigende vorm die generaties rond hetzelfde avontuur samenbrengt.</p>",
+            "newValue": "<h2>Een tuin vol reuzenbloemen</h2><p>Grote roze en gele bloemen en klokvormige lampen vormen een fantasietuin rond La Chenille. Het opschrift ‘Brucomela’ staat erboven, terwijl de roze kleur van de kleine achtbaan afsteekt tegen het geraamte van de naburige Grand 8.</p><p>De schilderingen langs het perron tonen gras en bloemen vanuit het perspectief van een insect. Die denkbeeldige schaal maakt van de rit op de rups een uitstapje door een reusachtig geworden tuin.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Gąsienica wijąca się między drzewami</h2><p>La Chenille wykorzystuje pogodny obraz kolorowej gąsienicy jako rodzinną kolejkę górską. Przejazd ożywia zielone otoczenie zakrętami, łagodnymi zmianami wysokości i powrotami na stację.</p><p>Trasa stawia na czytelny rytm i przystępne emocje. Zmiany kierunku nadają jej charakter, nie odbierając przyjaznego ducha odpowiedniego do wspólnego odkrywania.</p><h2>Rodzinna kolejka górska</h2><p>La Chenille jest pomostem do świata kolejek górskich: ma przyjazną formę, która łączy różne pokolenia we wspólnej przygodzie.</p>",
+            "newValue": "<h2>Ogród olbrzymich kwiatów</h2><p>Wielkie różowe i żółte kwiaty oraz lampy w kształcie dzwonków tworzą fantazyjny ogród wokół La Chenille. Góruje nad nim napis „Brucomela”, a różowa mała kolejka wyróżnia się na tle konstrukcji sąsiedniego Grand 8.</p><p>Malowidła wzdłuż peronu przedstawiają trawy i kwiaty z perspektywy owada. Ta wyobrażona skala nadaje przejażdżce gąsienicą charakter wyprawy przez ogród, który urósł do ogromnych rozmiarów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma lagarta que ondula entre as árvores</h2><p>A La Chenille usa a imagem alegre de uma criatura colorida numa montanha-russa familiar. A passagem anima o ambiente arborizado com curvas, suaves mudanças de altura e regressos à estação.</p><p>O percurso privilegia um ritmo fácil de acompanhar e sensações acessíveis. As mudanças de direção dão-lhe caráter sem perder o espírito acolhedor, propício a uma descoberta partilhada.</p><h2>Uma montanha-russa familiar</h2><p>A La Chenille funciona como porta de entrada para as montanhas-russas, numa forma acolhedora pensada para reunir várias gerações na mesma aventura.</p>",
+            "newValue": "<h2>Um jardim de flores gigantes</h2><p>Grandes flores cor-de-rosa e amarelas e candeeiros em forma de campainha criam um jardim imaginário à volta da La Chenille. O letreiro «Brucomela» ergue-se sobre o cenário, enquanto o rosa da pequena montanha-russa se destaca diante da estrutura do Grand 8 vizinho.</p><p>As pinturas junto à plataforma mostram ervas e flores da perspetiva de um inseto. Esta escala imaginária transforma o passeio na lagarta numa escapadela por um jardim que se tornou enorme.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "entityKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "displayName": "Le Grand 8",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die lebhafteste Fahrt des Parks</h2><p>Le Grand 8 zeigt seinen Charakter als intensive Achterbahn mit einer Strecke aus Höhenwechseln und Kurven. Die Struktur verspricht im Park Geschwindigkeit und wechselnde Richtungen.</p><p>Der Schwung trägt die Fahrgäste von Abschnitt zu Abschnitt, ohne dass die Strecke unübersichtlich wird. Kurven führen die Bahn nah an den Boden und öffnen sie erneut zu einer kompakten, direkten Fahrt.</p><h2>Ein direkter, kraftvoller Charakter</h2><p>Le Grand 8 gehört zu den stärkeren Erlebnissen von LʼÎle aux Géants. Während La Chenille einen Familieneinstieg bietet, setzt diese Fahrt Kurven und Höhenwechsel mit größerer Direktheit in Szene.</p>",
+            "newValue": "<h2>Superhelden unter rosa Schienen</h2><p>Le Grand 8 ist an seinem hohen weißen Gerüst und den rosa Schienen über den Palmen zu erkennen. Die Tafeln am Bahnsteig tragen den Schriftzug „Avengers“; blaue und rote Wagen greifen die Superheldenmotive auf.</p><p>Vor dem offenen Himmel von Dissay zeigt die Achterbahn ihre weiten Kurven, ohne dass ein Gebäude sie verdeckt. Der Comicschmuck bleibt am Fuß der Attraktion, während sich die Fahrt vor einer Kulisse aus Himmel und Palmen abspielt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The parkʼs liveliest run</h2><p>Le Grand 8 asserts its thrill-coaster identity through a course of rises and turns. Its structure draws a promise of speed and changing direction across the park.</p><p>Momentum carries riders from one sequence to the next while the route remains readable. Curves bring the track close to the ground before opening it again, creating a compact, direct run.</p><h2>A direct and energetic signature</h2><p>Le Grand 8 stands among the stronger experiences at LʼÎle aux Géants. Where La Chenille offers a family introduction, it delivers a more direct run that gives turns and changes of level their full intensity.</p>",
+            "newValue": "<h2>Superheroes beneath pink rails</h2><p>Le Grand 8 is recognisable by its tall white framework and pink rails, visible above the palms. Panels along the platform bear the ‘Avengers’ name, and the blue and red cars carry the same superhero imagery.</p><p>Against Dissay’s open sky, the coaster shows its sweeping curves without a building hiding them. The comic-book decoration remains at the foot of the ride, while the ride unfolds against a backdrop of sky and palms.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La carrera más viva del parque</h2><p>Le Grand 8 afirma su identidad de montaña rusa intensa con un recorrido de desniveles y curvas. Su estructura dibuja en el parque una promesa de velocidad y cambios de dirección.</p><p>El impulso lleva a los pasajeros de una secuencia a la siguiente sin perder la lectura del recorrido. Las curvas acercan la vía al suelo y vuelven a abrirla, creando una carrera compacta y directa.</p><h2>Un carácter directo y enérgico</h2><p>Le Grand 8 figura entre las experiencias fuertes de LʼÎle aux Géants. Mientras La Chenille ofrece una iniciación familiar, esta carrera expresa curvas y desniveles con mayor contundencia.</p>",
+            "newValue": "<h2>Superhéroes bajo raíles rosas</h2><p>Le Grand 8 se reconoce por su alta estructura blanca y sus raíles rosas, visibles sobre las palmeras. Los paneles del andén llevan el rótulo «Avengers»; los coches azules y rojos repiten ese imaginario de superhéroes.</p><p>Contra el cielo abierto de Dissay, la montaña rusa deja ver sus grandes curvas sin ningún edificio que las oculte. La decoración de cómic permanece al pie de la atracción, mientras la carrera se desarrolla con el cielo y las palmeras de fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La course la plus vive du parc</h2><p>Le Grand 8 affirme son identité de montagne russe à sensations avec un tracé qui enchaîne reliefs et virages. Sa structure dessine dans le parc une promesse de vitesse et de changements de direction.</p><p>Lʼélan porte les passagers dʼune séquence à la suivante sans effacer la lecture du parcours. Les courbes rapprochent la voie du sol puis lʼouvrent à nouveau, créant une course compacte au caractère direct.</p><h2>Une signature directe et nerveuse</h2><p>Le Grand 8 se place parmi les expériences fortes de LʼÎle aux Géants. Là où La Chenille accueille une découverte familiale, il affirme une course plus franche qui donne aux virages et aux reliefs leur pleine intensité.</p>",
+            "newValue": "<h2>Les super-héros sous les rails roses</h2><p>Le Grand 8 se reconnaît à sa grande charpente blanche et à ses rails roses, visibles au-dessus des palmiers. Les panneaux du quai portent l’enseigne « Avengers » ; les voitures bleues et rouges reprennent cet imaginaire de super-héros.</p><p>Sur le ciel ouvert de Dissay, la montagne russe expose ses grandes courbes sans bâtiment pour les dissimuler. Le décor de bande dessinée reste au pied de l’attraction, tandis que la course se déroule sur fond de ciel et de palmiers.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La corsa più vivace del parco</h2><p>Le Grand 8 afferma la propria identità di montagna russa intensa con un percorso di rilievi e curve. La struttura disegna nel parco una promessa di velocità e cambi di direzione.</p><p>Lo slancio porta i passeggeri da una sequenza alla successiva mantenendo leggibile il percorso. Le curve avvicinano la via al suolo e poi la riaprono, creando una corsa compatta e diretta.</p><h2>Un carattere diretto ed energico</h2><p>Le Grand 8 rientra tra le esperienze forti di LʼÎle aux Géants. Dove La Chenille offre una scoperta familiare, questa corsa esprime curve e rilievi con maggiore decisione.</p>",
+            "newValue": "<h2>Supereroi sotto i binari rosa</h2><p>Le Grand 8 si riconosce dall’alta intelaiatura bianca e dai binari rosa visibili sopra le palme. I pannelli della banchina portano l’insegna «Avengers»; le vetture blu e rosse riprendono lo stesso immaginario di supereroi.</p><p>Contro il cielo aperto di Dissay, la montagna russa mostra le sue ampie curve senza edifici a nasconderle. Il decoro da fumetto resta ai piedi dell’attrazione, mentre la corsa si svolge sullo sfondo del cielo e delle palme.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De levendigste rit van het park</h2><p>Le Grand 8 toont zijn karakter als spannende achtbaan met een parcours van hoogteverschillen en bochten. De constructie belooft snelheid en richtingswisselingen in het park.</p><p>De vaart draagt bezoekers van de ene fase naar de volgende terwijl het parcours leesbaar blijft. Bochten brengen de baan dicht bij de grond en openen haar opnieuw tot een compacte, directe rit.</p><h2>Een direct en energiek karakter</h2><p>Le Grand 8 hoort bij de krachtigere ervaringen van LʼÎle aux Géants. Waar La Chenille een familiekennismaking biedt, zet deze rit bochten en hoogteverschillen veel directer in.</p>",
+            "newValue": "<h2>Superhelden onder roze rails</h2><p>Le Grand 8 herken je aan het hoge witte geraamte en de roze rails boven de palmbomen. De panelen langs het perron dragen de naam ‘Avengers’; de blauwe en rode karretjes hebben dezelfde superheldenafbeeldingen.</p><p>Tegen de open lucht van Dissay toont de achtbaan zijn grote bochten, zonder gebouw dat ze verbergt. Het stripdecor blijft onderaan de attractie, terwijl de rit zich afspeelt tegen een achtergrond van lucht en palmbomen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Najżywszy przejazd w parku</h2><p>Le Grand 8 podkreśla charakter mocnej kolejki górskiej trasą pełną wzniesień i zakrętów. Konstrukcja zapowiada w parku prędkość i zmiany kierunku.</p><p>Pęd przenosi pasażerów między kolejnymi sekwencjami, a trasa pozostaje czytelna. Zakręty zbliżają tor do ziemi i ponownie go otwierają, tworząc zwarty, bezpośredni przejazd.</p><h2>Bezpośredni i energiczny charakter</h2><p>Le Grand 8 należy do mocniejszych doświadczeń LʼÎle aux Géants. Podczas gdy La Chenille oferuje rodzinne wprowadzenie, ta jazda wyraźniej pokazuje siłę zakrętów i zmian wysokości.</p>",
+            "newValue": "<h2>Superbohaterowie pod różowymi szynami</h2><p>Le Grand 8 można rozpoznać po wysokiej białej konstrukcji i różowych szynach widocznych nad palmami. Na panelach peronu znajduje się napis „Avengers”, a niebieskie i czerwone wagoniki nawiązują do tych samych superbohaterów.</p><p>Na tle otwartego nieba nad Dissay kolejka pokazuje swoje rozległe zakręty, których nie zasłania żaden budynek. Komiksowe dekoracje pozostają u stóp atrakcji, a przejażdżka rozgrywa się na tle nieba i palm.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>A corrida mais viva do parque</h2><p>O Le Grand 8 afirma a sua identidade de montanha-russa intensa com um percurso de relevos e curvas. A estrutura desenha no parque uma promessa de velocidade e mudanças de direção.</p><p>O impulso leva os passageiros de uma sequência à seguinte sem perder a leitura do percurso. As curvas aproximam a via do chão e voltam a abri-la, criando uma corrida compacta e direta.</p><h2>Um caráter direto e enérgico</h2><p>O Le Grand 8 integra as experiências fortes da LʼÎle aux Géants. Enquanto La Chenille oferece uma descoberta familiar, esta corrida exprime curvas e relevos com maior intensidade.</p>",
+            "newValue": "<h2>Super-heróis sob carris cor-de-rosa</h2><p>O Grand 8 distingue-se pela alta estrutura branca e pelos carris cor-de-rosa, visíveis acima das palmeiras. Os painéis da plataforma apresentam o nome «Avengers»; os carrinhos azuis e vermelhos retomam o mesmo imaginário de super-heróis.</p><p>Contra o céu aberto de Dissay, a montanha-russa mostra as suas grandes curvas, sem edifícios que as escondam. A decoração de banda desenhada fica ao pé da atração, enquanto a corrida decorre com o céu e as palmeiras como pano de fundo.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

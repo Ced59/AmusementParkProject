@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "684d2602f8fc9d88708847dad5c18306fba8b109327029e84e73e52208afc697",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "e45f85c0-1749-4c92-935a-8cd20fdf4682",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:54:13.0049155Z",
+    "appliedAtUtc": "2026-11-15T00:54:13.004917Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Jahrmarktstimmung in Dissay</h2><p>In L’Île aux Géants stehen die Fahrgeschäfte zwischen Kiefern und Palmen. Das Riesenrad mit seinen weißen Gondeln überragt das Jahrmarktsbild. Unter bemalten Tafeln und vergoldeten Verzierungen drehen sich die Pferde des Carrousel 1900.</p><p>Auch die kleineren Attraktionen sind farbenfroh: Zu den Kängurus von Kangourou gesellen sich die sternengeschmückten Ballons von Samba Ballon und die Pferde der Randonnée fantastique unter einem Vordach in gemalter Holzoptik.</p><h2>Zwei Achterbahnen und hohe Türme</h2><p>Le Grand 8 und La Chenille sind die Achterbahnen des Parks. Rosa Schienen und weiße Stützen kennzeichnen die erste; große bunte Blumen verleihen der zweiten das Aussehen eines Fantasiegartens. Über den Fahrgeschäften trägt Star Flyer seine Sessel durch die Luft, während Star Tower einen weiteren senkrechten Blickfang bildet.</p><h2>Spiele und ein Restaurant namens Iros</h2><p>Labyrinthe, Trampoline und der Toboggan des Géants stehen neben den Fahrgeschäften. Mit Bateau du Colorado und dem Planschbecken gehört auch Wasser zum Park.</p><p>O’resto d’Iros serviert unter anderem einen nach dem Restaurant benannten Burger mit Kartoffelpuffer. Überdachte oder schattige Picknickplätze bieten außerdem Raum für mitgebrachte Mahlzeiten.</p>",
+            "newValue": "<h2>Jahrmarktstimmung in Dissay</h2><p>In L’Île aux Géants stehen die Fahrgeschäfte zwischen Kiefern und Palmen. Das Riesenrad mit seinen weißen Gondeln überragt das Jahrmarktsbild. Unter bemalten Tafeln und vergoldeten Verzierungen drehen sich die Pferde des Carrousel 1900.</p><p>Auch die kleineren Attraktionen sind farbenfroh: Zu den Kängurus von Kangourou gesellen sich die sternengeschmückten Ballons von Samba Ballon und die Pferde der Randonnée fantastique unter einem Vordach in gemalter Holzoptik.</p><h2>Zwei Achterbahnen und hohe Türme</h2><p>Le Grand 8 und La Chenille sind die Achterbahnen des Parks. Rosa Schienen und weiße Stützen kennzeichnen die erste; große bunte Blumen verleihen der zweiten das Aussehen eines Fantasiegartens. Star Tower trägt seine Kettenkarussellsessel hoch über den Park, während Star Flyer seine bunten Gondeln mit Flügeln ausbreitet.</p><h2>Spiele und ein Restaurant namens Iros</h2><p>Labyrinthe, Trampoline und der Toboggan des Géants stehen neben den Fahrgeschäften. Mit Bateau du Colorado und dem Planschbecken gehört auch Wasser zum Park.</p><p>O’resto d’Iros serviert unter anderem einen nach dem Restaurant benannten Burger mit Kartoffelpuffer. Überdachte oder schattige Picknickplätze bieten außerdem Raum für mitgebrachte Mahlzeiten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A fairground in Dissay</h2><p>At L’Île aux Géants, rides stand among pine trees and palms. The Ferris wheel’s white gondolas rise above this fairground scene, while the horses of Carrousel 1900 turn beneath painted panels and gilded ornament.</p><p>The smaller attractions carry the same bright colours: Kangourou’s kangaroos stand alongside Samba Ballon’s star-covered balloons and the horses of La Randonnée fantastique, sheltered by a porch painted to resemble timber.</p><h2>Two roller coasters and towering rides</h2><p>Le Grand 8 and La Chenille are the park’s roller coasters. The former is recognisable by its pink rails and white supports; the latter evokes a fanciful garden with oversized, colourful flowers. Above the rides, Star Flyer carries its chairs into the air, while Star Tower adds another vertical landmark.</p><h2>Games and a restaurant named Iros</h2><p>Mazes, trampolines and Toboggan des Géants share the grounds with the rides. Bateau du Colorado and the paddling pool bring water into the picture too.</p><p>O’resto d’Iros serves a signature burger with a potato patty, among other dishes. Covered or shaded picnic spaces also accommodate food brought into the park.</p>",
+            "newValue": "<h2>A fairground in Dissay</h2><p>At L’Île aux Géants, rides stand among pine trees and palms. The Ferris wheel’s white gondolas rise above this fairground scene, while the horses of Carrousel 1900 turn beneath painted panels and gilded ornament.</p><p>The smaller attractions carry the same bright colours: Kangourou’s kangaroos stand alongside Samba Ballon’s star-covered balloons and the horses of La Randonnée fantastique, sheltered by a porch painted to resemble timber.</p><h2>Two roller coasters and towering rides</h2><p>Le Grand 8 and La Chenille are the park’s roller coasters. The former is recognisable by its pink rails and white supports; the latter evokes a fanciful garden with oversized, colourful flowers. Star Tower raises its flying chairs above the park, while Star Flyer spreads its colourful winged gondolas.</p><h2>Games and a restaurant named Iros</h2><p>Mazes, trampolines and Toboggan des Géants share the grounds with the rides. Bateau du Colorado and the paddling pool bring water into the picture too.</p><p>O’resto d’Iros serves a signature burger with a potato patty, among other dishes. Covered or shaded picnic spaces also accommodate food brought into the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un parque de aire ferial en Dissay</h2><p>En L’Île aux Géants, las atracciones se alzan entre pinos y palmeras. La noria de cabinas blancas domina este paisaje de feria, mientras los caballos del Carrousel 1900 giran bajo paneles pintados y adornos dorados.</p><p>El color también distingue a las atracciones pequeñas: los canguros de Kangourou comparten el recinto con los globos estrellados de Samba Ballon y los caballos de La Randonnée fantastique, resguardados bajo un porche que imita la madera.</p><h2>Dos montañas rusas y altas torres</h2><p>Le Grand 8 y La Chenille son las montañas rusas del parque. La primera se reconoce por sus raíles rosas y soportes blancos; la segunda evoca un jardín fantástico con grandes flores de colores. Por encima de las atracciones, Star Flyer lleva sus sillas al aire y Star Tower añade otra silueta vertical.</p><h2>Juegos y una mesa llamada Iros</h2><p>Los laberintos, las camas elásticas y Toboggan des Géants acompañan a las atracciones. El agua también está presente con Bateau du Colorado y la piscina infantil.</p><p>O’resto d’Iros sirve, entre otros platos, una hamburguesa con tortita de patata que lleva el nombre del restaurante. Las zonas de pícnic cubiertas o a la sombra también acogen la comida traída de fuera.</p>",
+            "newValue": "<h2>Un parque de aire ferial en Dissay</h2><p>En L’Île aux Géants, las atracciones se alzan entre pinos y palmeras. La noria de cabinas blancas domina este paisaje de feria, mientras los caballos del Carrousel 1900 giran bajo paneles pintados y adornos dorados.</p><p>El color también distingue a las atracciones pequeñas: los canguros de Kangourou comparten el recinto con los globos estrellados de Samba Ballon y los caballos de La Randonnée fantastique, resguardados bajo un porche que imita la madera.</p><h2>Dos montañas rusas y altas torres</h2><p>Le Grand 8 y La Chenille son las montañas rusas del parque. La primera se reconoce por sus raíles rosas y soportes blancos; la segunda evoca un jardín fantástico con grandes flores de colores. Star Tower eleva sus sillas voladoras sobre el parque, mientras Star Flyer despliega sus góndolas aladas multicolores.</p><h2>Juegos y una mesa llamada Iros</h2><p>Los laberintos, las camas elásticas y Toboggan des Géants acompañan a las atracciones. El agua también está presente con Bateau du Colorado y la piscina infantil.</p><p>O’resto d’Iros sirve, entre otros platos, una hamburguesa con tortita de patata que lleva el nombre del restaurante. Las zonas de pícnic cubiertas o a la sombra también acogen la comida traída de fuera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une fête foraine à Dissay</h2><p>À L’Île aux Géants, les manèges s’installent entre les pins et les palmiers. La grande roue aux nacelles blanches domine ce paysage de fête foraine, tandis que les chevaux du Carrousel 1900 tournent sous des panneaux peints et des ornements dorés.</p><p>Les couleurs se retrouvent jusque dans les petites attractions : les kangourous du manège Kangourou côtoient les montgolfières étoilées de Samba Ballon et les chevaux de La Randonnée fantastique, abrités par un porche imitant le bois.</p><h2>Deux montagnes russes et des tours</h2><p>Le Grand 8 et La Chenille donnent au parc ses montagnes russes. Le premier se reconnaît à ses rails roses et à sa charpente blanche ; la seconde évoque un jardin fantaisiste avec ses grandes fleurs colorées. Au-dessus des manèges, Star Flyer emporte ses chaises dans les airs et Star Tower ajoute une silhouette verticale.</p><h2>Des jeux et une table nommée Iros</h2><p>Les labyrinthes, les trampolines et le Toboggan des Géants côtoient les manèges. L’eau est également présente avec le Bateau du Colorado et la pataugeoire.</p><p>Le restaurant O’resto d’Iros sert notamment un burger à la galette de pomme de terre qui porte son nom. Des emplacements de pique-nique couverts ou ombragés accueillent aussi les repas apportés dans le parc.</p>",
+            "newValue": "<h2>Une fête foraine à Dissay</h2><p>À L’Île aux Géants, les manèges s’installent entre les pins et les palmiers. La grande roue aux nacelles blanches domine ce paysage de fête foraine, tandis que les chevaux du Carrousel 1900 tournent sous des panneaux peints et des ornements dorés.</p><p>Les couleurs se retrouvent jusque dans les petites attractions : les kangourous du manège Kangourou côtoient les montgolfières étoilées de Samba Ballon et les chevaux de La Randonnée fantastique, abrités par un porche imitant le bois.</p><h2>Deux montagnes russes et des tours</h2><p>Le Grand 8 et La Chenille donnent au parc ses montagnes russes. Le premier se reconnaît à ses rails roses et à sa charpente blanche ; la seconde évoque un jardin fantaisiste avec ses grandes fleurs colorées. Star Tower élève ses chaises volantes au-dessus du parc, tandis que Star Flyer déploie ses nacelles ailées multicolores.</p><h2>Des jeux et une table nommée Iros</h2><p>Les labyrinthes, les trampolines et le Toboggan des Géants côtoient les manèges. L’eau est également présente avec le Bateau du Colorado et la pataugeoire.</p><p>Le restaurant O’resto d’Iros sert notamment un burger à la galette de pomme de terre qui porte son nom. Des emplacements de pique-nique couverts ou ombragés accueillent aussi les repas apportés dans le parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un luna park a Dissay</h2><p>A L’Île aux Géants le giostre sorgono tra pini e palme. La ruota panoramica dalle cabine bianche domina questo paesaggio da luna park, mentre i cavalli del Carrousel 1900 girano sotto pannelli dipinti e decorazioni dorate.</p><p>I colori caratterizzano anche le attrazioni più piccole: ai canguri di Kangourou si affiancano le mongolfiere stellate di Samba Ballon e i cavalli della Randonnée fantastique, riparati da una tettoia con venature del legno dipinte.</p><h2>Due montagne russe e alte torri</h2><p>Le Grand 8 e La Chenille sono le montagne russe del parco. La prima si riconosce dai binari rosa e dai sostegni bianchi; la seconda richiama un giardino fantastico con grandi fiori colorati. Sopra le giostre, Star Flyer porta le sue seggioline in aria, mentre Star Tower aggiunge un’altra sagoma verticale.</p><h2>Giochi e un ristorante chiamato Iros</h2><p>Labirinti, trampolini e Toboggan des Géants affiancano le giostre. Anche l’acqua trova posto nel parco, con Bateau du Colorado e la piscina per bambini.</p><p>O’resto d’Iros serve, tra gli altri piatti, un hamburger con frittella di patate che porta il nome del ristorante. Aree picnic coperte o ombreggiate accolgono anche i pasti portati da casa.</p>",
+            "newValue": "<h2>Un luna park a Dissay</h2><p>A L’Île aux Géants le giostre sorgono tra pini e palme. La ruota panoramica dalle cabine bianche domina questo paesaggio da luna park, mentre i cavalli del Carrousel 1900 girano sotto pannelli dipinti e decorazioni dorate.</p><p>I colori caratterizzano anche le attrazioni più piccole: ai canguri di Kangourou si affiancano le mongolfiere stellate di Samba Ballon e i cavalli della Randonnée fantastique, riparati da una tettoia con venature del legno dipinte.</p><h2>Due montagne russe e alte torri</h2><p>Le Grand 8 e La Chenille sono le montagne russe del parco. La prima si riconosce dai binari rosa e dai sostegni bianchi; la seconda richiama un giardino fantastico con grandi fiori colorati. Star Tower porta i suoi seggiolini volanti sopra il parco, mentre Star Flyer dispiega le sue gondole alate multicolori.</p><h2>Giochi e un ristorante chiamato Iros</h2><p>Labirinti, trampolini e Toboggan des Géants affiancano le giostre. Anche l’acqua trova posto nel parco, con Bateau du Colorado e la piscina per bambini.</p><p>O’resto d’Iros serve, tra gli altri piatti, un hamburger con frittella di patate che porta il nome del ristorante. Aree picnic coperte o ombreggiate accolgono anche i pasti portati da casa.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een kermis in Dissay</h2><p>In L’Île aux Géants staan de attracties tussen dennen en palmbomen. Het reuzenrad met zijn witte gondels torent boven het kermistafereel uit. De paarden van Carrousel 1900 draaien onder beschilderde panelen en vergulde versieringen.</p><p>Ook de kleinere attracties hebben uitgesproken kleuren: de kangoeroes van Kangourou staan naast de met sterren versierde ballonnen van Samba Ballon en de paarden van La Randonnée fantastique, onder een afdak met geschilderde houtnerf.</p><h2>Twee achtbanen en hoge torens</h2><p>Le Grand 8 en La Chenille zijn de achtbanen van het park. De eerste herken je aan de roze rails en witte steunen; de tweede doet met zijn grote, kleurrijke bloemen denken aan een fantasietuin. Boven de attracties voert Star Flyer zijn stoeltjes de lucht in, terwijl Star Tower nog een verticale blikvanger vormt.</p><h2>Spel en een restaurant met de naam Iros</h2><p>Doolhoven, trampolines en de Toboggan des Géants staan tussen de attracties. Ook water hoort erbij, met Bateau du Colorado en het peuterbad.</p><p>O’resto d’Iros serveert onder meer een burger met aardappelkoek die de naam van het restaurant draagt. Overdekte of schaduwrijke picknickplekken bieden ook ruimte voor meegebracht eten.</p>",
+            "newValue": "<h2>Een kermis in Dissay</h2><p>In L’Île aux Géants staan de attracties tussen dennen en palmbomen. Het reuzenrad met zijn witte gondels torent boven het kermistafereel uit. De paarden van Carrousel 1900 draaien onder beschilderde panelen en vergulde versieringen.</p><p>Ook de kleinere attracties hebben uitgesproken kleuren: de kangoeroes van Kangourou staan naast de met sterren versierde ballonnen van Samba Ballon en de paarden van La Randonnée fantastique, onder een afdak met geschilderde houtnerf.</p><h2>Twee achtbanen en hoge torens</h2><p>Le Grand 8 en La Chenille zijn de achtbanen van het park. De eerste herken je aan de roze rails en witte steunen; de tweede doet met zijn grote, kleurrijke bloemen denken aan een fantasietuin. Star Tower brengt zijn zweefstoeltjes hoog boven het park, terwijl Star Flyer zijn kleurrijke gondels met vleugels uitspreidt.</p><h2>Spel en een restaurant met de naam Iros</h2><p>Doolhoven, trampolines en de Toboggan des Géants staan tussen de attracties. Ook water hoort erbij, met Bateau du Colorado en het peuterbad.</p><p>O’resto d’Iros serveert onder meer een burger met aardappelkoek die de naam van het restaurant draagt. Overdekte of schaduwrijke picknickplekken bieden ook ruimte voor meegebracht eten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Lunapark w Dissay</h2><p>W L’Île aux Géants atrakcje stoją między sosnami i palmami. Nad lunaparkowym krajobrazem góruje diabelski młyn z białymi gondolami, a konie Carrousel 1900 krążą pod malowanymi panelami i złoconymi ozdobami.</p><p>Kolory wyróżniają również mniejsze atrakcje: obok kangurów z Kangourou stoją balony Samba Ballon ozdobione gwiazdami oraz konie La Randonnée fantastique, osłonięte daszkiem z namalowanym rysunkiem drewna.</p><h2>Dwie kolejki i wysokie wieże</h2><p>Le Grand 8 i La Chenille to kolejki górskie parku. Pierwszą można rozpoznać po różowych szynach i białych podporach, a druga przywodzi na myśl fantazyjny ogród z wielkimi, kolorowymi kwiatami. Nad atrakcjami krążą w powietrzu krzesełka Star Flyer, a Star Tower tworzy kolejną pionową sylwetkę.</p><h2>Zabawa i restauracja o imieniu Iros</h2><p>Labirynty, trampoliny i Toboggan des Géants sąsiadują z karuzelami. Bateau du Colorado i brodzik wprowadzają do parku także wodne zabawy.</p><p>O’resto d’Iros podaje między innymi firmowego burgera z plackiem ziemniaczanym. Zadaszone lub zacienione miejsca piknikowe służą również do jedzenia posiłków przyniesionych ze sobą.</p>",
+            "newValue": "<h2>Lunapark w Dissay</h2><p>W L’Île aux Géants atrakcje stoją między sosnami i palmami. Nad lunaparkowym krajobrazem góruje diabelski młyn z białymi gondolami, a konie Carrousel 1900 krążą pod malowanymi panelami i złoconymi ozdobami.</p><p>Kolory wyróżniają również mniejsze atrakcje: obok kangurów z Kangourou stoją balony Samba Ballon ozdobione gwiazdami oraz konie La Randonnée fantastique, osłonięte daszkiem z namalowanym rysunkiem drewna.</p><h2>Dwie kolejki i wysokie wieże</h2><p>Le Grand 8 i La Chenille to kolejki górskie parku. Pierwszą można rozpoznać po różowych szynach i białych podporach, a druga przywodzi na myśl fantazyjny ogród z wielkimi, kolorowymi kwiatami. Star Tower unosi krzesełka karuzeli łańcuchowej ponad parkiem, a Star Flyer rozpościera kolorowe gondole ze skrzydłami.</p><h2>Zabawa i restauracja o imieniu Iros</h2><p>Labirynty, trampoliny i Toboggan des Géants sąsiadują z karuzelami. Bateau du Colorado i brodzik wprowadzają do parku także wodne zabawy.</p><p>O’resto d’Iros podaje między innymi firmowego burgera z plackiem ziemniaczanym. Zadaszone lub zacienione miejsca piknikowe służą również do jedzenia posiłków przyniesionych ze sobą.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um ambiente de feira em Dissay</h2><p>Na L’Île aux Géants, as diversões erguem-se entre pinheiros e palmeiras. A roda-gigante de cabines brancas domina este cenário de feira, enquanto os cavalos do Carrousel 1900 giram sob painéis pintados e ornamentos dourados.</p><p>As cores também marcam as atrações mais pequenas: aos cangurus do Kangourou juntam-se os balões estrelados do Samba Ballon e os cavalos da Randonnée fantastique, abrigados por um alpendre pintado a imitar madeira.</p><h2>Duas montanhas-russas e torres altas</h2><p>Le Grand 8 e La Chenille são as montanhas-russas do parque. A primeira distingue-se pelos carris cor-de-rosa e suportes brancos; a segunda evoca um jardim imaginário com flores grandes e coloridas. Acima das diversões, o Star Flyer leva as suas cadeiras pelo ar, enquanto o Star Tower acrescenta outra silhueta vertical.</p><h2>Jogos e um restaurante chamado Iros</h2><p>Os labirintos, os trampolins e o Toboggan des Géants juntam-se às diversões. A água também está presente, com o Bateau du Colorado e a piscina infantil.</p><p>O’resto d’Iros serve, entre outros pratos, um hambúrguer com uma tortinha de batata que tem o nome do restaurante. Os espaços de piquenique cobertos ou à sombra também acolhem refeições trazidas de fora.</p>",
+            "newValue": "<h2>Um ambiente de feira em Dissay</h2><p>Na L’Île aux Géants, as diversões erguem-se entre pinheiros e palmeiras. A roda-gigante de cabines brancas domina este cenário de feira, enquanto os cavalos do Carrousel 1900 giram sob painéis pintados e ornamentos dourados.</p><p>As cores também marcam as atrações mais pequenas: aos cangurus do Kangourou juntam-se os balões estrelados do Samba Ballon e os cavalos da Randonnée fantastique, abrigados por um alpendre pintado a imitar madeira.</p><h2>Duas montanhas-russas e torres altas</h2><p>Le Grand 8 e La Chenille são as montanhas-russas do parque. A primeira distingue-se pelos carris cor-de-rosa e suportes brancos; a segunda evoca um jardim imaginário com flores grandes e coloridas. O Star Tower eleva as suas cadeiras voadoras sobre o parque, enquanto o Star Flyer abre as suas gôndolas aladas multicoloridas.</p><h2>Jogos e um restaurante chamado Iros</h2><p>Os labirintos, os trampolins e o Toboggan des Géants juntam-se às diversões. A água também está presente, com o Bateau du Colorado e a piscina infantil.</p><p>O’resto d’Iros serve, entre outros pratos, um hambúrguer com uma tortinha de batata que tem o nome do restaurante. Os espaços de piquenique cobertos ou à sombra também acolhem refeições trazidas de fora.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+        "entityKey": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+        "displayName": "Star Flyer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine schwebende Runde über dem Park</h2><p>Star Flyer führt seine Sitze in einer luftigen Drehung um einen hohen Mast. Mit der Bewegung weichen die Ketten nach außen und öffnen den Kreis zum Himmel und zur Landschaft.</p><p>Die Höhe verwandelt die klassische Runde in einen Panoramaflug. Wind begleitet die Drehung, Parksilhouetten ziehen unter den Füßen vorbei und Freiheit ersetzt das bloße Kreisen.</p><h2>Die Landschaft wird zur Bewegung</h2><p>Star Flyer ergänzt die stärkeren Erlebnisse von LʼÎle aux Géants durch eine Fahrt, in der Höhe, Wind und Aussicht die Hauptrollen spielen. Die Landschaft wird nicht nur betrachtet, sondern begleitet jede Runde.</p>",
+            "newValue": "<h2>Bunte Flügel vor dem Himmel</h2><p>Star Flyer in L’Île aux Géants ist an seinen roten, grünen, blauen und orangefarbenen Gondeln mit Flügeln zu erkennen. Sie umgeben eine gelbe Mitte über einer Rückwand mit grünen Landschaften und Flugszenen.</p><p>Die gelben Buchstaben des Schriftzugs und blaue Geländer setzen die leuchtenden Farben fort. Jede Gondel erinnert an ein kleines Fluggerät. In dieser Luftfahrtkulisse treten Flügel an die Stelle der Pferde oder Boote anderer Karussells.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A circle suspended above the park</h2><p>Star Flyer carries its seats through an airborne rotation around a tall mast. The chains spread with the movement, gradually opening the circle towards the sky and surrounding landscape.</p><p>Height turns a classic circle into a panoramic flight. Wind accompanies the rotation, park silhouettes pass beneath the feet and a sense of freedom overtakes the simple circular movement.</p><h2>The landscape becomes movement</h2><p>Star Flyer completes the stronger experiences at LʼÎle aux Géants with a ride led by altitude, wind and view. The landscape is no longer merely observed; it accompanies every circle.</p>",
+            "newValue": "<h2>Colourful wings against the sky</h2><p>Star Flyer at L’Île aux Géants is recognisable by its red, green, blue and orange winged gondolas. They surround a yellow centre above a backdrop painted with green landscapes and flying scenes.</p><p>The sign’s yellow letters and the blue railings continue the bright colour scheme. Each gondola suggests a little flying craft, in an aviation setting where wings take the place of the horses or boats seen on other rides.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una ronda suspendida sobre el parque</h2><p>Star Flyer lleva sus asientos en una rotación aérea alrededor de un alto mástil. Las cadenas se abren con el movimiento y amplían poco a poco el círculo hacia el cielo y el paisaje.</p><p>La altura transforma la ronda clásica en un vuelo panorámico. El viento acompaña la rotación, las siluetas del parque pasan bajo los pies y la libertad supera el simple movimiento circular.</p><h2>El paisaje se convierte en movimiento</h2><p>Star Flyer completa las experiencias fuertes de LʼÎle aux Géants con una atracción protagonizada por altura, viento y vistas. El paisaje ya no se observa solamente: acompaña cada vuelta.</p>",
+            "newValue": "<h2>Alas de colores contra el cielo</h2><p>El Star Flyer de L’Île aux Géants se reconoce por sus góndolas aladas rojas, verdes, azules y naranjas. Rodean un centro amarillo, sobre un fondo pintado con paisajes verdes y escenas de vuelo.</p><p>Las letras amarillas del rótulo y las vallas azules prolongan esta paleta viva. Cada góndola recuerda a una pequeña aeronave, en un decorado de aviación donde las alas sustituyen a los caballos o barcos de otras atracciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une ronde suspendue au-dessus du parc</h2><p>Star Flyer emporte ses sièges dans une rotation aérienne autour dʼun haut mât. Les chaînes sʼécartent avec le mouvement et ouvrent peu à peu le cercle vers le ciel et le paysage.</p><p>La hauteur transforme la ronde classique en vol panoramique. Le vent accompagne la rotation, les silhouettes du parc passent sous les pieds et la sensation de liberté prend le pas sur le simple mouvement circulaire.</p><h2>Le paysage devient mouvement</h2><p>Star Flyer complète les sensations fortes de LʼÎle aux Géants par une expérience où lʼaltitude, le vent et la vue tiennent les premiers rôles. Le paysage nʼest plus seulement observé : il accompagne chaque cercle.</p>",
+            "newValue": "<h2>Des ailes colorées sur un fond de ciel</h2><p>Le Star Flyer de L’Île aux Géants se reconnaît à ses nacelles ailées rouges, vertes, bleues et orangées. Elles entourent un centre jaune, au-dessus d’une façade peinte de paysages verdoyants et de scènes de vol.</p><p>Les lettres jaunes de l’enseigne et les barrières bleues prolongent cette palette vive. Chaque nacelle évoque un petit engin volant, dans un décor aéronautique où les ailes remplacent les silhouettes de chevaux ou de bateaux des autres manèges.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un giro sospeso sopra il parco</h2><p>Star Flyer porta i sedili in una rotazione aerea attorno a un alto pilone. Le catene si allargano con il movimento e aprono gradualmente il cerchio verso il cielo e il paesaggio.</p><p>Lʼaltezza trasforma il giro classico in un volo panoramico. Il vento accompagna la rotazione, le sagome del parco passano sotto i piedi e la libertà supera il semplice moto circolare.</p><h2>Il paesaggio diventa movimento</h2><p>Star Flyer completa le esperienze forti di LʼÎle aux Géants con una giostra guidata da altezza, vento e panorama. Il paesaggio non viene soltanto osservato: accompagna ogni giro.</p>",
+            "newValue": "<h2>Ali colorate sullo sfondo del cielo</h2><p>Lo Star Flyer di L’Île aux Géants si riconosce dalle gondole alate rosse, verdi, blu e arancioni. Circondano un centro giallo, sopra una facciata dipinta con paesaggi verdi e scene di volo.</p><p>Le lettere gialle dell’insegna e le transenne blu riprendono questa vivace tavolozza. Ogni gondola ricorda un piccolo velivolo, in uno scenario aeronautico dove le ali sostituiscono le sagome di cavalli o barche delle altre giostre.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een zwevende ronde boven het park</h2><p>Star Flyer neemt zijn stoelen mee in een hoge draaiing rond een mast. De kettingen waaieren door de beweging uit en openen de cirkel geleidelijk naar de lucht en het landschap.</p><p>De hoogte verandert een klassieke ronde in een panoramische vlucht. Wind begeleidt de draaiing, parksilhouetten schuiven onder de voeten voorbij en vrijheid krijgt de overhand.</p><h2>Het landschap wordt beweging</h2><p>Star Flyer vult de krachtigere ervaringen van LʼÎle aux Géants aan met een rit waarin hoogte, wind en uitzicht de hoofdrol spelen. Het landschap wordt niet alleen bekeken maar reist mee in elke ronde.</p>",
+            "newValue": "<h2>Kleurrijke vleugels tegen de lucht</h2><p>Star Flyer in L’Île aux Géants herken je aan de rode, groene, blauwe en oranje gondels met vleugels. Ze staan rond een geel middendeel, boven een achterwand met groene landschappen en vliegscènes.</p><p>De gele letters van het opschrift en de blauwe hekken zetten het felle kleurenpalet voort. Elke gondel lijkt op een klein vliegtoestel, in een luchtvaartdecor waar vleugels de plaats innemen van de paarden of boten op andere attracties.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Krąg zawieszony nad parkiem</h2><p>Star Flyer unosi siedzenia w powietrzny obrót wokół wysokiego masztu. Łańcuchy odchylają się wraz z ruchem, stopniowo otwierając krąg ku niebu i krajobrazowi.</p><p>Wysokość zmienia klasyczny obrót w panoramiczny lot. Wiatr towarzyszy ruchowi, sylwetki parku przesuwają się pod stopami, a poczucie swobody wychodzi na pierwszy plan.</p><h2>Krajobraz staje się ruchem</h2><p>Star Flyer uzupełnia mocniejsze doświadczenia LʼÎle aux Géants atrakcją, w której główne role grają wysokość, wiatr i widok. Krajobraz nie jest tylko oglądany, lecz towarzyszy każdemu obrotowi.</p>",
+            "newValue": "<h2>Kolorowe skrzydła na tle nieba</h2><p>Star Flyer w L’Île aux Géants wyróżniają czerwone, zielone, niebieskie i pomarańczowe gondole ze skrzydłami. Otaczają żółty środek nad malowanym tłem z zielonymi krajobrazami i scenami lotu.</p><p>Żółte litery szyldu i niebieskie barierki uzupełniają tę żywą paletę. Każda gondola przypomina mały statek powietrzny. W tej lotniczej scenerii skrzydła zastępują sylwetki koni czy łodzi znane z innych karuzel.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma roda suspensa sobre o parque</h2><p>A Star Flyer leva os assentos numa rotação aérea em redor de um mastro alto. As correntes afastam-se com o movimento e abrem gradualmente o círculo para o céu e a paisagem.</p><p>A altura transforma a volta clássica num voo panorâmico. O vento acompanha a rotação, as silhuetas do parque passam sob os pés e a liberdade supera o simples movimento circular.</p><h2>A paisagem torna-se movimento</h2><p>A Star Flyer completa as experiências fortes da LʼÎle aux Géants com uma diversão protagonizada pela altitude, vento e vista. A paisagem deixa de ser apenas observada e acompanha cada volta.</p>",
+            "newValue": "<h2>Asas coloridas contra o céu</h2><p>O Star Flyer da L’Île aux Géants distingue-se pelas suas gôndolas aladas vermelhas, verdes, azuis e cor de laranja. Rodeiam um centro amarelo, acima de um painel pintado com paisagens verdes e cenas de voo.</p><p>As letras amarelas do letreiro e as grades azuis prolongam esta paleta viva. Cada gôndola lembra uma pequena aeronave, num cenário de aviação onde as asas substituem os cavalos ou barcos de outras diversões.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b344e698-e8b0-4598-9c26-3929e7d1c383",
+        "entityKey": "b344e698-e8b0-4598-9c26-3929e7d1c383",
+        "displayName": "Star Tower",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "DropTower",
+            "newValue": "FlatRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Aufsteigen, warten, abwärts</h2><p>Star Tower fällt durch ihre über die Nachbarattraktionen ragende Säule auf. Die Sitze steigen an der vertikalen Silhouette hinauf und öffnen nach und nach einen weiteren Blick über den Park.</p><p>Das Erlebnis lebt vom Kontrast zwischen Aufstieg und den vom Park angekündigten schnellen Abwärtsbewegungen. Vertikale Wechsel überraschen den Körper und machen jede Rückkehr nach unten unverwechselbar.</p><h2>Die Vertikale erzählt die Geschichte</h2><p>Star Tower erzählt keine lange Reise; ihre Kraft liegt im Dialog zwischen Himmel und Boden. Die Höhe öffnet die Landschaft, dann lenkt jeder Wechsel die Aufmerksamkeit zurück auf das vertikale Gefühl.</p>",
+            "newValue": "<h2>Blaue Sessel über den Kiefern</h2><p>Star Tower erhebt seinen blau-weißen Turm mitten im Park. Hellblaue Kettenkarussellsessel umkreisen den oberen Bereich unter der Flagge von L’Île aux Géants. Ihre Silhouetten zeichnen sich hoch über Kiefern und Palmen am Himmel ab.</p><p>Von den Sesseln reicht der Blick über Fahrgeschäfte, Dächer und benachbarte Felder. Die freie Aussicht und die baumelnden Beine erzeugen das Gefühl zu fliegen, hoch über der kleinen bunten Welt des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Rise, pause, descend</h2><p>Star Tower draws the eye with a column rising above nearby rides. Seats climb along its vertical silhouette and gradually open a broader view over the park.</p><p>The experience plays on the contrast between ascent and the rapid descents announced by the park. Vertical changes surprise the body and make each return downward instantly recognisable.</p><h2>Vertical movement tells the story</h2><p>Star Tower does not tell a long journey; its strength lies in the dialogue between sky and ground. Height opens the landscape, then every change draws attention straight back to the vertical sensation.</p>",
+            "newValue": "<h2>Blue chairs above the pines</h2><p>Star Tower raises a blue-and-white tower in the middle of the park. Pale-blue flying chairs circle near its top beneath the L’Île aux Géants flag, their silhouettes outlined against the sky far above the pines and palms.</p><p>From the chairs, the view opens across the rides, shelter roofs and neighbouring fields. The sense of flight comes from this open outlook and dangling legs, high above the park’s little world of colour.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Subir, esperar y bajar</h2><p>Star Tower llama la atención con una columna que se eleva sobre las atracciones cercanas. Los asientos ascienden por su silueta vertical y abren poco a poco una vista más amplia del parque.</p><p>La experiencia juega con el contraste entre la subida y los descensos rápidos anunciados por el parque. Los cambios verticales sorprenden al cuerpo y hacen reconocible cada regreso hacia abajo.</p><h2>La vertical cuenta la historia</h2><p>Star Tower no cuenta un viaje largo: su fuerza está en el diálogo entre cielo y suelo. La altura abre el paisaje y cada variación devuelve la atención a la sensación vertical.</p>",
+            "newValue": "<h2>Sillas azules sobre los pinos</h2><p>Star Tower alza su torre azul y blanca en medio del parque. Unas sillas voladoras azul claro rodean la parte superior bajo la bandera de L’Île aux Géants; sus siluetas se recortan contra el cielo, muy por encima de pinos y palmeras.</p><p>Desde las sillas, la vista abarca las atracciones, los tejados de las zonas cubiertas y los campos vecinos. El paisaje abierto y las piernas en el aire crean la sensación de volar sobre el pequeño mundo de colores del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Monter, attendre, redescendre</h2><p>Star Tower attire le regard par sa colonne dressée au-dessus des attractions voisines. Les sièges sʼélèvent le long de cette silhouette verticale et donnent progressivement accès à une vue plus ouverte sur le parc.</p><p>Lʼexpérience joue sur le contraste entre lʼascension et les descentes rapides annoncées par le parc. Les changements verticaux surprennent le corps et font de chaque retour vers le bas un moment immédiatement reconnaissable.</p><h2>La verticale comme seule histoire</h2><p>Star Tower ne cherche pas à raconter un long voyage : sa force tient au dialogue entre ciel et sol. La hauteur ouvre le paysage, puis chaque variation ramène immédiatement lʼattention vers la sensation verticale.</p>",
+            "newValue": "<h2>Des chaises bleues au-dessus des pins</h2><p>Star Tower dresse sa tour bleue et blanche au milieu du parc. Des chaises volantes bleu clair entourent le sommet, sous le drapeau de L’Île aux Géants ; leurs silhouettes se détachent sur le ciel, très au-dessus des pins et des palmiers.</p><p>Depuis les chaises, le paysage s’ouvre sur les manèges, les toits des abris et les champs voisins. L’impression de vol tient à cette vue dégagée et aux jambes dans le vide, au-dessus du petit monde coloré du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Salire, attendere, scendere</h2><p>Star Tower attira lo sguardo con la colonna che si alza sopra le attrazioni vicine. I sedili salgono lungo la sagoma verticale e aprono gradualmente una vista più ampia sul parco.</p><p>Lʼesperienza gioca sul contrasto tra salita e discese rapide annunciate dal parco. I cambi verticali sorprendono il corpo e rendono immediatamente riconoscibile ogni ritorno verso il basso.</p><h2>La verticale racconta la storia</h2><p>Star Tower non racconta un lungo viaggio: la sua forza sta nel dialogo tra cielo e terra. Lʼaltezza apre il paesaggio, poi ogni variazione riporta lʼattenzione sulla sensazione verticale.</p>",
+            "newValue": "<h2>Seggiolini azzurri sopra i pini</h2><p>Star Tower innalza la sua torre bianca e blu al centro del parco. Seggiolini volanti azzurri circondano la sommità sotto la bandiera di L’Île aux Géants; le loro sagome si stagliano nel cielo, molto al di sopra di pini e palme.</p><p>Dai seggiolini lo sguardo si apre sulle giostre, sui tetti delle tettoie e sui campi vicini. La vista libera e le gambe nel vuoto danno la sensazione di volare, sopra il piccolo mondo colorato del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Stijgen, wachten, dalen</h2><p>Star Tower trekt de aandacht met een kolom die boven de omliggende attracties uitsteekt. De stoelen stijgen langs de verticale vorm en geven geleidelijk een ruimer uitzicht over het park.</p><p>De ervaring speelt met het contrast tussen de stijging en de snelle dalingen die het park aankondigt. Verticale wisselingen verrassen het lichaam en maken elke neerwaartse beweging herkenbaar.</p><h2>De verticale beweging vertelt het verhaal</h2><p>Star Tower vertelt geen lange reis; de kracht ligt in het gesprek tussen lucht en grond. De hoogte opent het landschap en elke wisseling brengt de aandacht terug naar het verticale gevoel.</p>",
+            "newValue": "<h2>Blauwe stoeltjes boven de dennen</h2><p>Star Tower verrijst als een blauw-witte toren midden in het park. Lichtblauwe zweefstoeltjes cirkelen bovenaan, onder de vlag van L’Île aux Géants. Hun silhouetten tekenen zich hoog boven de dennen en palmbomen tegen de lucht af.</p><p>Vanuit de stoeltjes kijk je uit over de attracties, de daken van de overkappingen en de omliggende velden. Het vrije uitzicht en de bungelende benen geven het gevoel te vliegen, hoog boven het kleine kleurrijke park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wznieść się, zaczekać, opaść</h2><p>Star Tower przyciąga wzrok kolumną wznoszącą się nad sąsiednimi atrakcjami. Siedzenia unoszą się wzdłuż pionowej sylwetki i stopniowo otwierają szerszy widok na park.</p><p>Doświadczenie opiera się na kontraście między wznoszeniem a szybkimi opadaniami zapowiadanymi przez park. Pionowe zmiany zaskakują ciało i nadają każdemu powrotowi w dół wyraźny charakter.</p><h2>Pionowy ruch opowiada historię</h2><p>Star Tower nie opowiada długiej podróży; jej siła leży w dialogu nieba z ziemią. Wysokość otwiera krajobraz, a każda zmiana przywraca uwagę do pionowego odczucia.</p>",
+            "newValue": "<h2>Niebieskie krzesełka ponad sosnami</h2><p>Star Tower wznosi niebiesko-białą wieżę pośrodku parku. Jasnoniebieskie krzesełka karuzeli łańcuchowej krążą w jej górnej części, pod flagą L’Île aux Géants. Ich sylwetki rysują się na niebie wysoko ponad sosnami i palmami.</p><p>Z krzesełek widać atrakcje, dachy zadaszeń i sąsiednie pola. Otwarty widok oraz swobodnie zwisające nogi dają poczucie lotu wysoko ponad małym, kolorowym światem parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Subir, esperar e descer</h2><p>A Star Tower chama a atenção com uma coluna que se ergue acima das diversões vizinhas. Os assentos sobem pela silhueta vertical e abrem gradualmente uma vista mais ampla sobre o parque.</p><p>A experiência joga com o contraste entre a subida e as descidas rápidas anunciadas pelo parque. As mudanças verticais surpreendem o corpo e tornam reconhecível cada regresso para baixo.</p><h2>A vertical conta a história</h2><p>A Star Tower não conta uma longa viagem: a força está no diálogo entre céu e chão. A altura abre a paisagem e cada variação devolve a atenção à sensação vertical.</p>",
+            "newValue": "<h2>Cadeiras azuis acima dos pinheiros</h2><p>O Star Tower ergue a sua torre azul e branca no meio do parque. Cadeiras voadoras azul-claras rodeiam a parte superior, sob a bandeira da L’Île aux Géants; as suas silhuetas destacam-se no céu, muito acima dos pinheiros e das palmeiras.</p><p>Das cadeiras, a vista abre-se sobre as diversões, os telhados dos abrigos e os campos vizinhos. A paisagem desimpedida e as pernas suspensas dão a sensação de voar sobre o pequeno mundo colorido do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "15382cc4ae5544b7b728a6fb327a5ac1",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les chaises suspendues de Star Flyer tournent autour dʼun haut mât.",
+            "newValue": "Nacelles ailées multicolores de Star Flyer devant une façade peinte de scènes de vol."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Hängesitze von Star Flyer kreisen um einen hohen Mast.",
+            "newValue": "Bunte Gondeln mit Flügeln vor der mit Flugszenen bemalten Rückwand von Star Flyer."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Star Flyerʼs suspended chairs circle a tall mast.",
+            "newValue": "Star Flyer’s colourful winged gondolas in front of a backdrop painted with flying scenes."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Las sillas suspendidas de Star Flyer giran alrededor de un alto mástil.",
+            "newValue": "Góndolas aladas multicolores de Star Flyer ante un fondo pintado con escenas de vuelo."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les chaises suspendues de Star Flyer tournent autour dʼun haut mât.",
+            "newValue": "Nacelles ailées multicolores de Star Flyer devant une façade peinte de scènes de vol."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "I seggiolini sospesi di Star Flyer ruotano attorno a un alto pilone.",
+            "newValue": "Gondole alate multicolori di Star Flyer davanti a una facciata dipinta con scene di volo."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De hangende stoelen van Star Flyer draaien rond een hoge mast.",
+            "newValue": "Kleurrijke gondels met vleugels voor de achterwand met vliegscènes van Star Flyer."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Podwieszane krzesełka Star Flyer krążą wokół wysokiego masztu.",
+            "newValue": "Kolorowe gondole ze skrzydłami w Star Flyer na tle malowanych scen lotu."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "As cadeiras suspensas da Star Flyer giram em redor de um mastro alto.",
+            "newValue": "Gôndolas aladas multicoloridas do Star Flyer diante de um painel pintado com cenas de voo."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Ketten, Himmel und Bewegung prägen das Bild dieses luftigen Fahrgeschäfts.",
+            "newValue": "Bunte Flügel, gelbe Buchstaben und blaue Geländer bilden die Luftfahrtkulisse von Star Flyer."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Chains, sky and motion shape the view of this aerial ride.",
+            "newValue": "Colourful wings, yellow lettering and blue railings give Star Flyer its aviation setting."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Cadenas, cielo y movimiento componen la imagen de esta atracción aérea.",
+            "newValue": "Alas de colores, letras amarillas y vallas azules forman el decorado de aviación de Star Flyer."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Chaînes, ciel et mouvement composent le panorama de ce manège aérien.",
+            "newValue": "Ailes colorées, lettres jaunes et barrières bleues donnent à Star Flyer son décor aéronautique."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Catene, cielo e movimento compongono il panorama di questa giostra aerea.",
+            "newValue": "Ali colorate, lettere gialle e transenne blu creano lo scenario aeronautico di Star Flyer."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Kettingen, lucht en beweging bepalen het beeld van deze hoge zweefmolen.",
+            "newValue": "Kleurrijke vleugels, gele letters en blauwe hekken vormen het luchtvaartdecor van Star Flyer."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Łańcuchy, niebo i ruch tworzą obraz tej powietrznej karuzeli.",
+            "newValue": "Kolorowe skrzydła, żółte litery i niebieskie barierki tworzą lotniczą scenerię Star Flyer."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Correntes, céu e movimento compõem a imagem desta diversão aérea.",
+            "newValue": "Asas coloridas, letras amarelas e grades azuis formam o cenário de aviação do Star Flyer."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "761b88f1451a415ebffd89f05484e4ad",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "La colonne de Star Tower domine les attractions voisines.",
+            "newValue": "Chaises volantes bleues autour du sommet de Star Tower, au-dessus du parc et des champs."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Säule von Star Tower überragt die benachbarten Fahrgeschäfte.",
+            "newValue": "Blaue Kettenkarussellsessel am oberen Teil von Star Tower, über dem Park und den Feldern."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The Star Tower column rises above the neighbouring rides.",
+            "newValue": "Blue flying chairs around the top of Star Tower, above the park and fields."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "La columna de Star Tower domina las atracciones cercanas.",
+            "newValue": "Sillas voladoras azules en lo alto de Star Tower, sobre el parque y los campos."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "La colonne de Star Tower domine les attractions voisines.",
+            "newValue": "Chaises volantes bleues autour du sommet de Star Tower, au-dessus du parc et des champs."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "La colonna di Star Tower domina le giostre vicine.",
+            "newValue": "Seggiolini volanti azzurri intorno alla sommità di Star Tower, sopra il parco e i campi."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De kolom van Star Tower steekt boven de omliggende attracties uit.",
+            "newValue": "Blauwe zweefstoeltjes bovenaan Star Tower, boven het park en de velden."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Kolumna Star Tower góruje nad sąsiednimi atrakcjami.",
+            "newValue": "Niebieskie krzesełka karuzeli łańcuchowej u szczytu Star Tower, ponad parkiem i polami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "A coluna da Star Tower domina as diversões vizinhas.",
+            "newValue": "Cadeiras voadoras azuis em redor do topo do Star Tower, acima do parque e dos campos."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die beweglichen Sitze betonen die klare Vertikale des Turms.",
+            "newValue": "Die Parkflagge weht über den Sesseln von Star Tower; Felder reichen bis zum Horizont."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Moving seats emphasise the towerʼs strong vertical line.",
+            "newValue": "The park’s flag flies above Star Tower’s chairs, with fields stretching towards the horizon."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Los asientos móviles subrayan la verticalidad de la torre.",
+            "newValue": "La bandera del parque ondea sobre las sillas de Star Tower, con campos en el horizonte."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les sièges mobiles soulignent la verticalité de cette tour.",
+            "newValue": "Le drapeau du parc flotte au-dessus des chaises de Star Tower ; les champs s’étendent à l’horizon."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "I sedili mobili sottolineano la verticalità della torre.",
+            "newValue": "La bandiera del parco sventola sopra i seggiolini di Star Tower, con i campi all’orizzonte."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De bewegende stoelen benadrukken de verticale lijn van de toren.",
+            "newValue": "De parkvlag wappert boven de stoeltjes van Star Tower; velden strekken zich uit tot de horizon."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Ruchome siedzenia podkreślają pionową linię wieży.",
+            "newValue": "Flaga parku powiewa nad krzesełkami Star Tower, a pola ciągną się ku horyzontowi."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Os assentos móveis sublinham a verticalidade da torre.",
+            "newValue": "A bandeira do parque ondula acima das cadeiras do Star Tower, com campos no horizonte."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "observedAtUtc": "2026-11-15T00:55:42.691853+00:00",
+  "outcome": "partial",
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "initialCompleteness": {
+    "completenessScore": 98,
+    "dataQualityLevel": "Excellent",
+    "applicableMaxPoints": 102,
+    "earnedPoints": 100,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "identity": {
+    "status": "Operating",
+    "operatorId": "545cb39c-ae35-45f6-a208-72fdd7e08bec",
+    "operatorName": "OFE / OUVRARD FIOT ET SES ENFANTS",
+    "founderId": null,
+    "noDuplicateCreated": true
+  },
+  "reconciliation": {
+    "search": {
+      "query": "Géants",
+      "matchedParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+      "note": "Search matched 8 records including Adventure World; record selected strictly by park ID, never data[0]."
+    },
+    "targetedExport": {
+      "result": "/workspace/france-historical-20261114/ile-aux-geants/targeted-recovery-export.json",
+      "startedAtUtc": "2026-11-15T00:35:49.3552886Z",
+      "receivedAtUtc": "2026-11-15T00:35:57.5742812Z",
+      "action": "ExportPark"
+    },
+    "targetedExportSha256": "4af0a81bb175d2ca2ea47029c6ed9be3c1a58d17d89bf05e9668f1646c5e34b5",
+    "sections": [
+      "ParkBasics",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History"
+    ],
+    "fullFinalAuditExportPerformed": false
+  },
+  "counts": {
+    "items": 21,
+    "publicItems": 21,
+    "itemsWithDescriptionEightLanguages": 21,
+    "itemDescriptionsPersonallyRewrittenThisRun": 9,
+    "parkDescriptionLanguagesRewritten": 8,
+    "images": 19,
+    "ownPhotoOrCutoutImagesOfItems": 16,
+    "parkPromotionalMontages": 2,
+    "logo": 1,
+    "existingHistoryEvents": 1,
+    "existingArticles": 1,
+    "fixedItemCoordinates": 0
+  },
+  "acceptedApplies": [
+    {
+      "operationId": "021c7c49-3a37-4b11-ac74-160837a53be2",
+      "appliedAtUtc": "2026-11-15T00:45:13.5841751Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-park-description-20261115.json"
+    },
+    {
+      "operationId": "5ce1a9bc-1ea2-44e1-9bd1-639b909438d5",
+      "appliedAtUtc": "2026-11-15T00:46:00.4074568Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-items-factual-corrections-20261115.json"
+    },
+    {
+      "operationId": "629ed7de-03cb-4ea9-8fb2-2a5f68e4a81b",
+      "appliedAtUtc": "2026-11-15T00:49:33.6958403Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-items-colours-20261115.json"
+    },
+    {
+      "operationId": "e45f85c0-1749-4c92-935a-8cd20fdf4682",
+      "appliedAtUtc": "2026-11-15T00:54:13.004917Z",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-flight-identities-20261115.json"
+    }
+  ],
+  "reviewedItems": [
+    "Pouss-Pouss",
+    "Bateau du Colorado",
+    "La Randonnée fantastique",
+    "Kangourou",
+    "Samba Ballon",
+    "La Chenille",
+    "Le Grand 8",
+    "Star Flyer",
+    "Star Tower"
+  ],
+  "remainingItemsToReview": [
+    "Aires de pique-nique",
+    "Bateau Pirate",
+    "Carrousel 1900",
+    "Grande roue",
+    "Labyrinthes",
+    "Manège enchanté",
+    "O'resto d'Iros",
+    "Pataugeoire",
+    "Petit train",
+    "Toboggan des Géants",
+    "Trampolines",
+    "Trampolines n° 2"
+  ],
+  "criticalCorrection": {
+    "StarTower": "Chair swing tower confirmed by official star-tower-chevauchee-Copie.jpg; old DropTower corrected to FlatRide.",
+    "StarFlyer": "Winged gondolas and Star Flyer sign visible on official IMG_0676.jpg; no guessed manufacturer.",
+    "parkDescription": "Initial description Apply retained old incorrect Star Flyer chairs sentence; the fourth Apply corrects that sentence in all 8 languages. Replaying prepare-first-descriptions.py would restore an obsolete proposal: never reapply it.",
+    "imageTexts": "Both relevant images corrected through graph; imageId, owner, bytes and publication unchanged. Preview ownerKey omission produced warnings, never applied; corrected ownerKey produced warning-free Preview then Apply."
+  },
+  "sourceEvidence": {
+    "browserOfficialPages": [
+      {
+        "name": "attractions",
+        "url": "https://ileauxgeants.fr/attractions/",
+        "status": 200,
+        "sha256": "d48ad0abc35aa23d9f5fcceffcf8f31d8624fe4220f51752225ec46d431c1701",
+        "retrievedAtUtc": "2026-11-15T00:39:34.833529+00:00"
+      },
+      {
+        "name": "calendar",
+        "url": "https://ileauxgeants.fr/calendriers-horaires/",
+        "status": 200,
+        "sha256": "866f20caad4a4471959902a35b8b818a4829b502c7687e80d332f82eef08b286",
+        "retrievedAtUtc": "2026-11-15T00:39:37.646144+00:00"
+      },
+      {
+        "name": "prices",
+        "url": "https://ileauxgeants.fr/tarifs/",
+        "status": 200,
+        "sha256": "a3d0d7a1aee7cabf10283e34d6b522135d7208db0ec1ac5d812183129abbd971",
+        "retrievedAtUtc": "2026-11-15T00:39:39.129537+00:00"
+      },
+      {
+        "name": "legal",
+        "url": "https://ileauxgeants.fr/mentions-legales/",
+        "status": 200,
+        "sha256": "27ee055dbface18601189d7dd91bf0ac4d9f203696f63fad2b5fb16bc2b27136",
+        "retrievedAtUtc": "2026-11-15T00:39:40.663421+00:00"
+      },
+      {
+        "name": "food",
+        "url": "https://ileauxgeants.fr/restauration/",
+        "status": 200,
+        "sha256": "45c852aee6621447a9cff97ebc36ac2925c6ded5b2dd022b3200e8ec26882d0b",
+        "retrievedAtUtc": "2026-11-15T00:39:42.254699+00:00"
+      },
+      {
+        "name": "practical",
+        "url": "https://ileauxgeants.fr/infos-pratiques/",
+        "status": 200,
+        "sha256": "441c4a07b762b7a455ef99f562fbfc9c080da8863e05dde9bf896240e13f1dd7",
+        "retrievedAtUtc": "2026-11-15T00:39:43.860568+00:00"
+      }
+    ],
+    "sourceImageHashes": [
+      {
+        "imageId": "39f4dbe31e854dc0a0c552e2f96cea38",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/ile-aux-geants-banniere-web-2000x740px-scaled.jpg",
+        "status": 200,
+        "sha256": "cc28d183828294d97ed2b65d3d9ead52403768f838f2c3bdb75f3e97b866069d"
+      },
+      {
+        "imageId": "a3ec565c0a334f5db285e05ecebe9cb5",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/ile-aux-geants-banniere-web-1700x630px-.jpg",
+        "status": 200,
+        "sha256": "d129bb04bc8884f0cc8fe10350984d03d4db8ab0f74165a1e87848d512e67885"
+      },
+      {
+        "imageId": "73ad5b0ae1c04a4caeca8cb9088dfd7b",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/06/LILE-AUX-GEANTS-LOGO-long-2.png",
+        "status": 200,
+        "sha256": "7aa0c59cf05bd7ccbc808af32ff57a00332c861738f6633dc7789697b522fc9c"
+      },
+      {
+        "imageId": "4f183c91d4834462ae2c31bd38ef346e",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2024/04/unnamed-1.webp",
+        "status": 200,
+        "sha256": "a34aafe66e85ec65392f05e9498ddc67cf2d4f98cb1eff902416abfb8dff82fe"
+      },
+      {
+        "imageId": "401a5d56edd542e99f8089d862e1cddf",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/Trampolines-.jpg",
+        "status": 200,
+        "sha256": "e6cfa7f188781e837e3c146fcd9f6a9ed041371c27d1616bb7ed1b0dc0df9f00"
+      },
+      {
+        "imageId": "9ad259ed2aaf41c9a112503acc6dd201",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/5-Grand-8.jpg",
+        "status": 200,
+        "sha256": "e202604cfc3c73e78b9cbfed97d935360d2dcea390ab42c2d153d765cb53f965"
+      },
+      {
+        "imageId": "734f1164cd18439a9bbe6cfc9fa9a43d",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/09/3-kangourou.jpg",
+        "status": 200,
+        "sha256": "2f8907260a9a2aa25e4ad4e1c293247fbc6085eaf3794ee77914f311f5c3c9b3"
+      },
+      {
+        "imageId": "1bee00dfe8cc44da8c4e0cab255d0b95",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/IMG_0673-Copie.jpg",
+        "status": 200,
+        "sha256": "dc8ba89f1da99d31a3bdaf34d9593fcfdf6bb2a8fa8c74c3e944225cd8cf0bc0"
+      },
+      {
+        "imageId": "15382cc4ae5544b7b728a6fb327a5ac1",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/IMG_0676.jpg",
+        "status": 200,
+        "sha256": "da06fa7758c0ea31a76642f250fb166fc90901b7ff382ab0ef8215b086e742da"
+      },
+      {
+        "imageId": "b2b6cb85314d45aea85c7c56e4d13eff",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/11/RANDONNEE-FANTASTIQUE-scaled.jpg",
+        "status": 200,
+        "sha256": "65722778748ae9435c6223e4a707cbc96e8bafb5700b550d838288653c19e5af"
+      },
+      {
+        "imageId": "4c56d24e2acf4eb9be298a2f419587d3",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/Pouss-Pouss.jpg",
+        "status": 200,
+        "sha256": "fc6c1877d927eb53d64c3eb607e088e0f50101b2619dbf97398cf20b02c68938"
+      },
+      {
+        "imageId": "c74966a1f0b64b4faaad471c4c1353fe",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/15-labyrinthes.jpg",
+        "status": 200,
+        "sha256": "312691c32985527b0cdd5b16602da4210edd58349b7afe740e767309ad422b45"
+      },
+      {
+        "imageId": "9a8f42dd0ee04195adc14ac6309a8f90",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/7-Bateau-du-Colorado.jpg",
+        "status": 200,
+        "sha256": "1725c3835bf1c4f7a6ad1233a3808a19b95888d4e706b1dd17f646d9b35b906c"
+      },
+      {
+        "imageId": "590f9f146fdb424fbcc4eebed49611d9",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/09/13-Toboggan-geants.jpg",
+        "status": 200,
+        "sha256": "72d39af2f3cd298fb5ecf1faa54ddbc59675ce9b604e92fc97d3ff8231e87221"
+      },
+      {
+        "imageId": "cda036d71e924ce4a468741eb04e7349",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/6-Chenille.jpg",
+        "status": 200,
+        "sha256": "fc69d5aabc6d8495408d20070d9b7560d050a3d003215add9c59147b2b130abc"
+      },
+      {
+        "imageId": "8c2043fcfcf643bf99cc0498324a48f2",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2022/05/IMG_0700-1.jpg",
+        "status": 200,
+        "sha256": "0dc13a5ed1dcd004a5ac905d38a3d85aed76743ee603a146b6a5472aa3452b87"
+      },
+      {
+        "imageId": "67fd211d2c464f5da75fc6d2d33a8bfb",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/09/1-Caroussel.jpg",
+        "status": 200,
+        "sha256": "832d7f50f8dec88afb5d7a847a755086db97ec74bd0e3a024422bf797c2ab70e"
+      },
+      {
+        "imageId": "761b88f1451a415ebffd89f05484e4ad",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/star-tower-chevauchee-Copie.jpg",
+        "status": 200,
+        "sha256": "b79ce1c02557dec0e0bf6e55729f74debf36edd5c75f6e3bf4f764c82c155d8a"
+      },
+      {
+        "imageId": "361e07dd6fb449ae856edf00fb33fe9f",
+        "url": "https://ileauxgeants.fr/wp-content/uploads/2021/10/Trampoline-.jpg",
+        "status": 200,
+        "sha256": "82d010284183b94d3d9ed36c042e691538b08727905abab6b54bcc84b0df32bf"
+      }
+    ],
+    "officialFacebookPage": "https://www.facebook.com/ileauxgeants"
+  },
+  "gaps": {
+    "watermarkedExistingImageIds": [
+      "401a5d56edd542e99f8089d862e1cddf",
+      "9ad259ed2aaf41c9a112503acc6dd201",
+      "734f1164cd18439a9bbe6cfc9fa9a43d",
+      "4c56d24e2acf4eb9be298a2f419587d3",
+      "c74966a1f0b64b4faaad471c4c1353fe",
+      "9a8f42dd0ee04195adc14ac6309a8f90",
+      "590f9f146fdb424fbcc4eebed49611d9",
+      "cda036d71e924ce4a468741eb04e7349",
+      "67fd211d2c464f5da75fc6d2d33a8bfb",
+      "361e07dd6fb449ae856edf00fb33fe9f"
+    ],
+    "watermarkPolicy": "10 old original item photos visibly carry Coasterrider watermark; retained existing images, no new watermark import or cropping. Need proper replacements; not a rights-consent question.",
+    "parkPhotoMislabel": "2 old park images are promotional composites, not actual leafy panoramas. Existing captions and generic article require correction.",
+    "noOwnImageItems": [
+      "Aires de pique-nique",
+      "Manège enchanté",
+      "O'resto d'Iros",
+      "Pataugeoire",
+      "Petit train"
+    ],
+    "noGeolocationItems": [
+      "Aires de pique-nique",
+      "Bateau du Colorado",
+      "Bateau Pirate",
+      "Carrousel 1900",
+      "Grande roue",
+      "Kangourou",
+      "La Chenille",
+      "La Randonnée fantastique",
+      "Labyrinthes",
+      "Le Grand 8",
+      "Manège enchanté",
+      "O'resto d'Iros",
+      "Pataugeoire",
+      "Petit train",
+      "Pouss-Pouss",
+      "Samba Ballon",
+      "Star Flyer",
+      "Star Tower",
+      "Toboggan des Géants",
+      "Trampolines",
+      "Trampolines n° 2"
+    ],
+    "history": "2013 article needs full rewrite/review; 2022 planning litigation, fire 23 Feb2024, appellate decision10 Jul2024 and actual2025 reopening found, not yet integrated. Decision does not prove permanent closure.",
+    "additionalCandidates": "Official old galleries name entrance/souvenir shop, duck fishing and games room; current status following2024 reception fire needs qualification. No items created.",
+    "calendar": "Official2026 image: June weekends and July4–Aug31; no2027dates found. Website advertises10:30–18:00, officialFacebook says10:30–18:30 fromJuly4; discrepancy preserved, no schedule edited.",
+    "maps": "No official dated interior plan found. Unrelated Canadian Île aux Géants and communityOSM are not substitutes.",
+    "facebookPhotos": "Public page shows5 genuine thumbnails160px; individual photo routes returned login screen. Downloaded1240px images were generic Facebook login illustrations, visually rejected, never imported. Do not treat HTTP200 or dimensions as a relevant photo."
+  },
+  "facebook": {
+    "observedAtUtc": "2026-11-15T00:50:17.2712322Z",
+    "id": "fbf2f557cf0b4593b115477b6fe831df",
+    "status": "Published",
+    "url": "https://www.facebook.com/1285475681307050/posts/122120998467424431",
+    "newAnnouncementSent": false
+  },
+  "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-geants",
+  "workingStateSha256": "8be093d730c6695a8aab1d4e622b55ea0273d9f0d1186ad88d9b1285a76a51d1",
+  "nextAction": "Continue 12 remaining item descriptions and all old image texts; reconcile founder/global aliases, qualify extra official-gallery entities and history, find usable photos/maps and validate pricing/full official future calendar. Only then final full export/audit. No completion merely at98."
+}

@@ -12831,9 +12831,50 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T00:54:13.004Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-021c7c49-3a37-4b11-ac74-160837a53be2",
+          "appliedAt": "2026-11-15T00:45:13.584Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-park-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Description du parc réécrite et relue dans les huit langues : décor vérifié visuellement, horaires et conseils de visite retirés. Correction ciblée, intégration globale encore en cours."
+        },
+        {
+          "eventId": "apply-5ce1a9bc-1ea2-44e1-9bd1-639b909438d5",
+          "appliedAt": "2026-11-15T00:46:00.407Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-items-factual-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pouss-Pouss corrigé en chaises volantes, Bateau du Colorado décrit d’après le bassin réel, Randonnée fantastique recentrée sur ses chevaux et son décor ; 24 textes rédigés et relus. Aucun item ni média recréé ; audit global restant."
+        },
+        {
+          "eventId": "apply-629ed7de-03cb-4ea9-8fb2-2a5f68e4a81b",
+          "appliedAt": "2026-11-15T00:49:33.695Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-items-colours-20261115.json",
+          "auditEvidence": null,
+          "summary": "Réécriture personnelle des huit langues de Kangourou, Samba Ballon, La Chenille et Grand 8 à partir des décors réellement observés ; prose mécanique et générique remplacée. 32 textes appliqués, état global partial."
+        },
+        {
+          "eventId": "apply-e45f85c0-1749-4c92-935a-8cd20fdf4682",
+          "appliedAt": "2026-11-15T00:54:13.004Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-flight-identities-20261115.json",
+          "auditEvidence": null,
+          "summary": "Star Tower reconnu comme chaises volantes et Star Flyer comme nacelles ailées : types, 16 descriptions, 32 textes d’images et phrase parc huit langues corrigés après examen des originaux. La correction remplace la phrase du premier lot, sans réimport ni changement de visibilité."
+        }
+      ],
+      "nextAction": "Continue 12 remaining item descriptions and all old image texts; reconcile founder/global aliases, qualify extra official-gallery entities and history, find usable photos/maps and validate pricing/full official future calendar. Only then final full export/audit. No completion merely at98.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -12857,7 +12898,14 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "latestProgressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-current-20261115.json",
+      "facebook": {
+        "status": "Published",
+        "publicationId": "fbf2f557cf0b4593b115477b6fe831df",
+        "url": "https://www.facebook.com/1285475681307050/posts/122120998467424431",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-current-20261115.json"
+      }
     },
     {
       "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",

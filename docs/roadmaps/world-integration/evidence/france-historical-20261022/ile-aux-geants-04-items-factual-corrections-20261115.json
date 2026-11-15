@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "af00519c17b4c980c455d33d881d339d4e92b06fa716edb2d928388a205ecdd9",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "5ce1a9bc-1ea2-44e1-9bd1-639b909438d5",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:46:00.4074553Z",
+    "appliedAtUtc": "2026-11-15T00:46:00.4074568Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "entityKey": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "displayName": "Pouss-Pouss",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die ersten Momente am Steuer</h2><p>Pouss-Pouss stellt Kleinkinder in den Mittelpunkt eines einfachen, bunten Bewegungsspiels. Kleine Fahrzeuge bewegen sich durch einen passenden Bereich, in dem jede Bewegung zur Entdeckung wird.</p><p>Die Nähe zum Boden und das ruhige Tempo fördern Beobachtung ebenso wie Bewegung. Kinder verfolgen ihren Weg, passen ihre Gesten an und genießen den Stolz, selbst voranzukommen.</p><h2>Erste Selbstständigkeit in Bewegung</h2><p>Pouss-Pouss hat eine klare Rolle im Park: ein erstes aktives Erlebnis, bei dem Kleinkinder selbst handeln. Das Spiel stärkt ihre Initiative vor Fahrgeschäften mit größeren Bewegungen.</p>",
+            "newValue": "<h2>Fliegende Sessel um einen Märchenturm</h2><p>Pouss-Pouss ist ein kleines Kettenkarussell. Seine Mitte erinnert an einen bunten Burgturm: Rote und gelbe Ziegel, ein blaues Dach und gemalte Wappenschilde schaffen eine Märchenkulisse zwischen den Kiefern.</p><p>Die kleinen hängenden Sessel umgeben den Turm unter einem mit Glühlampen und Wappen geschmückten Kranz. Im Kinderformat verbindet das Karussell das Bild der großen Kettenflieger mit einer kleinen Burgkulisse.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>First moments as a driver</h2><p>Pouss-Pouss places toddlers at the centre of a simple, colourful movement game. Small vehicles travel through a suitable space where every motion becomes a discovery at their scale.</p><p>The closeness to the ground and gentle pace encourage observation as much as action. Children can watch their path, adjust their movements and enjoy the pride of moving by themselves.</p><h2>Early independence in motion</h2><p>Pouss-Pouss has a precise role in the park: an early active experience where toddlers can act for themselves. The game values their initiative before rides designed for broader sensations.</p>",
+            "newValue": "<h2>Flying chairs around a storybook tower</h2><p>Pouss-Pouss is a small chair-swing ride. Its centre resembles a colourful castle tower: red and yellow brickwork, a blue roof and painted shields create a storybook setting among the pines.</p><p>The little suspended chairs surround the tower beneath a crown decorated with bulbs and heraldic shields. Scaled to children, the ride brings the image of a large chair swing into a miniature castle setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Los primeros gestos de piloto</h2><p>Pouss-Pouss sitúa a los más pequeños en el centro de un juego de movimiento sencillo y colorido. Los vehículos avanzan en un espacio adaptado donde cada gesto se convierte en un descubrimiento a su escala.</p><p>La cercanía al suelo y el ritmo tranquilo favorecen tanto la observación como la acción. Los niños siguen su recorrido, ajustan los gestos y disfrutan del orgullo de avanzar por sí mismos.</p><h2>Una primera autonomía en movimiento</h2><p>Pouss-Pouss ocupa un lugar preciso en el parque: una primera actividad dinámica donde los pequeños actúan por sí mismos. El juego valora su iniciativa antes de las atracciones con movimientos más amplios.</p>",
+            "newValue": "<h2>Sillas voladoras alrededor de una torre de cuento</h2><p>Pouss-Pouss es una pequeña atracción de sillas voladoras. Su centro recuerda a la torre de un castillo multicolor: ladrillos rojos y amarillos, un tejado azul y escudos pintados crean un decorado de cuento entre los pinos.</p><p>Las pequeñas sillas suspendidas rodean la torre bajo una corona adornada con bombillas y blasones. A escala infantil, la atracción recrea la imagen de las grandes sillas voladoras en un castillo en miniatura.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les premiers gestes de pilote</h2><p>Pouss-Pouss place les tout-petits au cœur dʼun jeu de déplacement simple et coloré. Les petits véhicules avancent dans un espace adapté où chaque mouvement devient une découverte à leur mesure.</p><p>La proximité du sol et le rythme tranquille favorisent lʼobservation autant que lʼaction. Les enfants peuvent regarder leur trajectoire, ajuster leurs gestes et savourer la fierté dʼavancer par eux-mêmes.</p><h2>Une première autonomie en mouvement</h2><p>Pouss-Pouss occupe une place précise dans le parc : celle dʼune première activité dynamique où les tout-petits peuvent agir eux-mêmes. Le jeu valorise leur initiative avant les manèges destinés à des expériences plus amples.</p>",
+            "newValue": "<h2>Des chaises volantes autour d’une tour de conte</h2><p>Pouss-Pouss est un petit manège de chaises volantes. Son centre ressemble à une tour de château multicolore : briques rouges et jaunes, toit bleu et écussons peints composent un décor de conte au milieu des pins.</p><p>Les petites chaises suspendues entourent cette tour, sous une couronne ornée d’ampoules et de blasons. À hauteur des enfants, le manège reprend l’image des grandes chaises volantes dans un décor de château miniature.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>I primi gesti da pilota</h2><p>Pouss-Pouss mette i più piccoli al centro di un gioco di movimento semplice e colorato. I piccoli veicoli avanzano in uno spazio adatto, dove ogni gesto diventa una scoperta alla loro misura.</p><p>La vicinanza al suolo e il ritmo tranquillo favoriscono lʼosservazione quanto lʼazione. I bambini seguono la traiettoria, adattano i gesti e assaporano lʼorgoglio di avanzare da soli.</p><h2>Una prima autonomia in movimento</h2><p>Pouss-Pouss ha un ruolo preciso nel parco: una prima attività dinamica in cui i più piccoli agiscono da soli. Il gioco valorizza la loro iniziativa prima delle giostre con movimenti più ampi.</p>",
+            "newValue": "<h2>Seggiolini volanti intorno a una torre da fiaba</h2><p>Pouss-Pouss è una piccola giostra a seggiolini volanti. Il centro ricorda una torre di castello variopinta: mattoni rossi e gialli, tetto blu e scudi dipinti creano uno scenario da fiaba tra i pini.</p><p>I piccoli seggiolini sospesi circondano la torre sotto una corona ornata di lampadine e stemmi. A misura di bambino, la giostra riprende l’immagine delle grandi giostre volanti in un castello in miniatura.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De eerste momenten als bestuurder</h2><p>Pouss-Pouss zet peuters centraal in een eenvoudig, kleurrijk bewegingsspel. Kleine voertuigen rijden door een passende ruimte waar elke beweging een ontdekking op hun maat wordt.</p><p>De nabijheid van de grond en het rustige tempo stimuleren zowel kijken als doen. Kinderen volgen hun route, passen hun bewegingen aan en genieten van de trots om zelf vooruit te gaan.</p><h2>Een eerste zelfstandigheid in beweging</h2><p>Pouss-Pouss heeft een duidelijke plaats in het park: een eerste actieve ervaring waarin peuters zelf handelen. Het spel waardeert hun initiatief vóór attracties met ruimere bewegingen.</p>",
+            "newValue": "<h2>Zweefstoeltjes rond een sprookjestoren</h2><p>Pouss-Pouss is een kleine zweefmolen. Het middendeel lijkt op een kleurrijke kasteeltoren: rode en gele bakstenen, een blauw dak en beschilderde wapenschilden vormen een sprookjesdecor tussen de dennen.</p><p>De kleine hangstoeltjes omringen de toren onder een krans met lampjes en wapenschilden. Op kinderformaat brengt de attractie het beeld van een grote zweefmolen samen met een miniatuurkasteel.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Pierwsze chwile za kierownicą</h2><p>Pouss-Pouss stawia najmłodszych w centrum prostej, kolorowej zabawy ruchem. Małe pojazdy poruszają się po dostosowanej przestrzeni, w której każdy gest staje się odkryciem na ich miarę.</p><p>Bliskość ziemi i spokojne tempo sprzyjają zarówno obserwacji, jak i działaniu. Dzieci śledzą trasę, dopasowują ruchy i cieszą się dumą z samodzielnego przemieszczania.</p><h2>Pierwsza samodzielność w ruchu</h2><p>Pouss-Pouss ma wyraźną rolę w parku: to pierwsze aktywne doświadczenie, w którym najmłodsi działają samodzielnie. Zabawa docenia ich inicjatywę przed atrakcjami o większym ruchu.</p>",
+            "newValue": "<h2>Latające krzesełka wokół bajkowej wieży</h2><p>Pouss-Pouss to niewielka karuzela łańcuchowa. Jej środek przypomina kolorową wieżę zamkową: czerwone i żółte cegły, niebieski dach oraz malowane tarcze herbowe tworzą bajkową scenerię między sosnami.</p><p>Małe podwieszane krzesełka otaczają wieżę pod obręczą ozdobioną żarówkami i herbami. Dostosowana wielkością do dzieci karuzela łączy obraz dużych latających krzesełek z miniaturowym zamkiem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Os primeiros gestos de condutor</h2><p>O Pouss-Pouss coloca os mais pequenos no centro de um jogo de movimento simples e colorido. Os pequenos veículos avançam num espaço adequado, onde cada gesto se torna uma descoberta à sua escala.</p><p>A proximidade do chão e o ritmo tranquilo favorecem tanto a observação como a ação. As crianças acompanham o percurso, ajustam os gestos e saboreiam o orgulho de avançar sozinhas.</p><h2>Uma primeira autonomia em movimento</h2><p>O Pouss-Pouss ocupa um lugar preciso no parque: uma primeira atividade dinâmica em que os mais pequenos agem sozinhos. O jogo valoriza a iniciativa antes das diversões com movimentos mais amplos.</p>",
+            "newValue": "<h2>Cadeiras voadoras à volta de uma torre de conto</h2><p>O Pouss-Pouss é um pequeno carrossel de cadeiras voadoras. O centro lembra uma torre de castelo multicolorida: tijolos vermelhos e amarelos, telhado azul e escudos pintados criam um cenário de conto entre os pinheiros.</p><p>As pequenas cadeiras suspensas rodeiam a torre sob uma coroa decorada com lâmpadas e brasões. À escala das crianças, a diversão recria a imagem dos grandes carrosséis de cadeiras num castelo em miniatura.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "entityKey": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "displayName": "Bateau du Colorado",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Fahrt durch ein erdachtes Colorado</h2><p>Bateau du Colorado lädt Kinder in ein Boot vor einer Kulisse des amerikanischen Grenzlands ein. Wasser, Farben und Bewegung schaffen ein Abenteuer, das an Flüsse des Westens erinnert.</p><p>Das Fahren auf dem Wasser bildet den Kern des Erlebnisses. Junge Passagiere folgen ihrem Weg, sehen die Kulisse näher kommen und wieder zurückweichen und teilen das sanfte Gefühl einer Reise.</p><h2>Eine Expedition für junge Seeleute</h2><p>Bateau du Colorado besitzt eine eigene Identität: eine Kinderexpedition, bei der Wasser und Kulisse wichtiger sind als Intensität. Junge Seeleute werden zu den Helden dieser kleinen Überfahrt.</p>",
+            "newValue": "<h2>Ein blaues Becken mit gemalten Blumen</h2><p>Bateau du Colorado liegt in einem Becken im Freien, dessen blaue Seiten große Margeriten schmücken. Ein kleines blaues Dach kennzeichnet den Einstieg. In der Nähe stehen Palmen, dahinter zeichnen sich Achterbahnen ab.</p><p>Bunte Boote lassen das Becken wie einen kleinen Spielhafen wirken. Obwohl der Name an den amerikanischen Westen erinnert, besteht die Kulisse vor allem aus blauem Wasser, gemalten Blumen und den Bäumen des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A voyage through an imagined Colorado</h2><p>Bateau du Colorado invites children aboard a boat framed by American frontier scenery. Water, colour and movement create an adventure that recalls rivers of the West.</p><p>Navigation is the heart of the experience. Young passengers follow their path close to the water, watch the scenery approach and recede, and share the gentle feeling of a journey.</p><h2>An expedition for young sailors</h2><p>Bateau du Colorado has an identity of its own: a childrenʼs expedition where water and scenery matter more than intensity. Young sailors become the true heroes of this miniature crossing.</p>",
+            "newValue": "<h2>A blue pool edged with painted flowers</h2><p>Bateau du Colorado occupies an outdoor pool whose blue sides are decorated with large daisies. A small blue roof marks the boarding area, with palms nearby and the outlines of roller coasters in the surrounding grounds.</p><p>Colourful boats give the pool the appearance of a little play harbour. Despite a name evoking the American West, its scenery is chiefly a blend of blue water, painted flowers and the park’s trees.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una navegación por un Colorado imaginario</h2><p>Bateau du Colorado invita a los niños a embarcar en un entorno de frontera americana. Agua, colores y movimiento crean una aventura que recuerda los ríos del Oeste.</p><p>La navegación es el centro de la experiencia. Los jóvenes pasajeros siguen su camino junto al agua, ven acercarse y alejarse el decorado y comparten una suave sensación de viaje.</p><h2>Una expedición para jóvenes marineros</h2><p>Bateau du Colorado tiene identidad propia: una expedición infantil donde el agua y el decorado importan más que la intensidad. Los jóvenes marineros son los héroes de esta pequeña travesía.</p>",
+            "newValue": "<h2>Un estanque azul con flores pintadas</h2><p>Bateau du Colorado ocupa un estanque al aire libre cuyos bordes azules están decorados con grandes margaritas. Un pequeño tejado azul señala el embarque, con palmeras cerca y las siluetas de las montañas rusas en las inmediaciones.</p><p>Los barcos de colores dan al estanque el aspecto de un pequeño puerto de juegos. Aunque su nombre evoca el Oeste americano, el decorado reúne sobre todo agua azul, flores pintadas y los árboles del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une navigation dans le Colorado imaginaire</h2><p>Le Bateau du Colorado invite les enfants à prendre place dans une embarcation au décor de frontière américaine. Lʼeau, les couleurs et le mouvement composent une aventure qui évoque les rivières de lʼOuest.</p><p>Le parcours fait de la navigation le cœur de lʼexpérience. Les jeunes passagers suivent leur chemin au ras de lʼeau, observent le décor se rapprocher puis sʼéloigner et partagent une sensation douce de voyage.</p><h2>Une expédition pensée pour les jeunes marins</h2><p>Bateau du Colorado possède une identité bien à lui : une expédition enfantine où lʼeau et le décor priment sur les fortes sensations. Les jeunes marins deviennent les véritables héros de cette traversée miniature.</p>",
+            "newValue": "<h2>Un bassin bleu bordé de fleurs peintes</h2><p>Le Bateau du Colorado occupe un bassin de plein air dont les rebords bleus sont décorés de grandes marguerites. Une petite toiture bleue signale l’embarquement, avec des palmiers à proximité et les silhouettes des montagnes russes dans le voisinage.</p><p>Des bateaux colorés donnent à ce bassin l’allure d’un petit port de jeu. Malgré son nom évoquant l’Ouest américain, son décor mêle surtout l’eau bleue, les fleurs peintes et les arbres du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una navigazione in un Colorado immaginario</h2><p>Bateau du Colorado invita i bambini su unʼimbarcazione immersa in un ambiente di frontiera americana. Acqua, colori e movimento evocano unʼavventura sui fiumi del West.</p><p>La navigazione è il cuore dellʼesperienza. I giovani passeggeri seguono il percorso vicino allʼacqua, vedono il paesaggio avvicinarsi e allontanarsi e condividono una dolce sensazione di viaggio.</p><h2>Una spedizione per giovani marinai</h2><p>Bateau du Colorado ha unʼidentità propria: una spedizione infantile in cui acqua e scenario contano più dellʼintensità. I giovani marinai diventano i veri eroi della piccola traversata.</p>",
+            "newValue": "<h2>Una vasca blu bordata di fiori dipinti</h2><p>Bateau du Colorado occupa una vasca all’aperto con grandi margherite dipinte sui bordi blu. Una piccola tettoia azzurra indica l’imbarco, con palme nelle vicinanze e le sagome delle montagne russe poco lontano.</p><p>Barche colorate danno alla vasca l’aspetto di un piccolo porto per giocare. Nonostante il nome evochi il West americano, lo scenario è fatto soprattutto di acqua blu, fiori dipinti e alberi del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een vaart door een denkbeeldig Colorado</h2><p>Bateau du Colorado nodigt kinderen uit in een boot met decor van de Amerikaanse frontier. Water, kleur en beweging vormen een avontuur dat aan rivieren in het Westen doet denken.</p><p>Varen vormt de kern van de ervaring. Jonge passagiers volgen hun weg vlak boven het water, zien het decor dichterbij komen en weer verdwijnen en delen een zacht reisgevoel.</p><h2>Een expeditie voor jonge zeelieden</h2><p>Bateau du Colorado heeft een eigen identiteit: een kinderexpeditie waarin water en decor belangrijker zijn dan spanning. Jonge zeelieden worden de helden van deze kleine overtocht.</p>",
+            "newValue": "<h2>Een blauw bassin met geschilderde bloemen</h2><p>Bateau du Colorado ligt in een openluchtbassin waarvan de blauwe randen met grote margrieten zijn beschilderd. Een klein blauw dak markeert de instapplaats, met palmbomen vlakbij en de contouren van achtbanen in de omgeving.</p><p>Kleurrijke bootjes geven het bassin iets van een kleine speelhaven. Hoewel de naam aan het Amerikaanse Westen doet denken, bestaat het decor vooral uit blauw water, geschilderde bloemen en de bomen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Rejs po wyobrażonym Kolorado</h2><p>Bateau du Colorado zaprasza dzieci do łodzi w scenerii amerykańskiego pogranicza. Woda, kolory i ruch tworzą przygodę przywołującą rzeki Zachodu.</p><p>Pływanie jest sercem doświadczenia. Młodzi pasażerowie podążają drogą tuż nad wodą, obserwują zbliżającą i oddalającą się scenerię oraz dzielą łagodne wrażenie podróży.</p><h2>Wyprawa dla młodych żeglarzy</h2><p>Bateau du Colorado ma własną tożsamość: to dziecięca wyprawa, w której woda i sceneria są ważniejsze od intensywności. Młodzi żeglarze stają się bohaterami małej przeprawy.</p>",
+            "newValue": "<h2>Niebieski basen z malowanymi kwiatami</h2><p>Bateau du Colorado zajmuje odkryty basen z dużymi margerytkami namalowanymi na niebieskich brzegach. Miejsce wsiadania oznacza mały niebieski daszek; obok stoją palmy, a w pobliżu widać sylwetki kolejek górskich.</p><p>Kolorowe łódki nadają basenowi wygląd małego portu do zabawy. Choć nazwa przywołuje amerykański Dziki Zachód, scenerię tworzą przede wszystkim niebieska woda, malowane kwiaty i parkowe drzewa.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma navegação por um Colorado imaginário</h2><p>O Bateau du Colorado convida as crianças para uma embarcação num cenário de fronteira americana. Água, cores e movimento criam uma aventura que lembra os rios do Oeste.</p><p>A navegação é o centro da experiência. Os jovens passageiros seguem o caminho junto à água, veem o cenário aproximar-se e afastar-se e partilham uma suave sensação de viagem.</p><h2>Uma expedição para jovens marinheiros</h2><p>O Bateau du Colorado tem identidade própria: uma expedição infantil onde a água e o cenário importam mais do que a intensidade. Os jovens marinheiros são os heróis desta pequena travessia.</p>",
+            "newValue": "<h2>Um tanque azul com flores pintadas</h2><p>O Bateau du Colorado ocupa um tanque ao ar livre com grandes margaridas pintadas nas bordas azuis. Um pequeno telhado azul assinala o embarque, com palmeiras por perto e as silhuetas das montanhas-russas nas imediações.</p><p>Os barcos coloridos dão ao tanque o aspeto de um pequeno porto para brincar. Apesar de o nome evocar o Oeste americano, o cenário reúne sobretudo água azul, flores pintadas e as árvores do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "638da404-8a4d-4ec6-af68-68dc5d66a576",
+        "entityKey": "638da404-8a4d-4ec6-af68-68dc5d66a576",
+        "displayName": "La Randonnée fantastique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Fahrt mit Wildwest-Flair</h2><p>La Randonnée fantastique führt Familien durch eine vom Wilden Westen inspirierte Kulisse. Felsen, Grenzlandfassaden und Figuren machen die Fahrt zu einer kleinen Geschichte im Park.</p><p>Der Reiz liegt im Weg und in seinen Details, nicht in großer Intensität. Jede Kurve enthüllt ein neues Kulissenelement und lässt Zeit für eine eigene Abenteuergeschichte.</p><h2>Eine Geschichte für die Familie</h2><p>Die Fahrt lebt ihren generationenübergreifenden Charakter. Jüngere entdecken in der Kulisse eine neue Welt, während Erwachsene das ruhige Tempo und kleine Details mit ihnen teilen.</p>",
+            "newValue": "<h2>Die Pferde des Wilden Westens</h2><p>La Randonnée fantastique ist ein Ausritt auf künstlichen Pferden. Weiß, braun oder grau warten sie unter einem rot gedeckten Vordach mit Holzzäunen. Auf den grünen Eingangstafeln steht der Name des Ausritts in roten Buchstaben.</p><p>Bemaltes Holz und kleine bunte Sättel erinnern an einen Westernstall. Das Thema des Wilden Westens begleitet diesen Ausritt durch das Grün des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A ride with a Wild West flavour</h2><p>La Randonnée fantastique carries families through scenery inspired by the Wild West. Rocks, frontier façades and figures turn the ride into a miniature story within the park.</p><p>The pleasure comes from the path and its details rather than high intensity. Each turn reveals another scenic element and leaves passengers time to imagine their own adventure.</p><h2>A story to share as a family</h2><p>This ride fully embraces its intergenerational character. Younger visitors read the scenery as a new world, while adults share its peaceful pace and small details with them.</p>",
+            "newValue": "<h2>The horses of the Wild West</h2><p>La Randonnée fantastique is a ride on model horses. White, brown or grey, they wait beneath a red-roofed porch enclosed by wooden fencing. Green entrance panels carry the ride’s name in red letters.</p><p>Painted timber and small, colourful saddles suggest a western stable. The Wild West theme continues through this horseback outing among the park’s greenery.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un paseo con sabor a Lejano Oeste</h2><p>La Randonnée fantastique lleva a las familias por un decorado inspirado en el Lejano Oeste. Rocas, fachadas fronterizas y figuras convierten el paseo en un relato en miniatura.</p><p>El placer nace del camino y sus detalles, no de una gran intensidad. Cada giro revela un nuevo elemento del decorado y deja tiempo para imaginar una aventura propia.</p><h2>Un relato para vivir en familia</h2><p>El paseo asume plenamente su carácter intergeneracional. Los pequeños ven un mundo nuevo en el decorado y los adultos comparten con ellos el ritmo tranquilo y los pequeños detalles.</p>",
+            "newValue": "<h2>Los caballos del Lejano Oeste</h2><p>La Randonnée fantastique es un paseo en caballos de atracción. Blancos, marrones o grises, esperan bajo un porche de tejado rojo, rodeado de vallas de madera. Los paneles verdes de la entrada muestran el nombre del paseo en letras rojas.</p><p>La madera pintada y las pequeñas monturas de colores evocan una cuadra del Oeste. El tema del Lejano Oeste acompaña esta cabalgata entre la vegetación del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une promenade au parfum de Far West</h2><p>La Randonnée fantastique emmène les familles dans un décor inspiré du Far West. Rochers, façades et figures de frontière transforment la promenade en récit miniature au milieu du parc.</p><p>Le plaisir vient du chemin et des détails rencontrés plutôt que dʼune forte intensité. Chaque détour révèle un nouvel élément de décor et laisse aux passagers le temps dʼimaginer leur propre aventure.</p><h2>Un récit à vivre en famille</h2><p>Cette promenade assume pleinement son caractère intergénérationnel. Les plus jeunes lisent le décor comme un monde nouveau, tandis que les adultes partagent avec eux le rythme paisible et les petits détails du voyage.</p>",
+            "newValue": "<h2>Les chevaux du Far West</h2><p>La Randonnée fantastique prend la forme d’une promenade sur des chevaux de manège. Blancs, bruns ou gris, ils attendent sous un porche au toit rouge, entouré de barrières en bois. Les panneaux verts de l’entrée portent le nom de la balade en lettres rouges.</p><p>Le décor évoque une écurie de western, avec du bois peint et de petites selles colorées. Le thème du Far West se prolonge dans cette chevauchée parmi la végétation du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una passeggiata dal sapore western</h2><p>La Randonnée fantastique conduce le famiglie in un ambiente ispirato al Far West. Rocce, facciate di frontiera e personaggi trasformano la passeggiata in un racconto in miniatura.</p><p>Il piacere nasce dal percorso e dai dettagli, non dallʼintensità. Ogni svolta rivela un nuovo elemento scenografico e lascia il tempo di immaginare la propria avventura.</p><h2>Un racconto da vivere in famiglia</h2><p>La passeggiata esprime pienamente il suo carattere intergenerazionale. I più piccoli leggono il paesaggio come un mondo nuovo, mentre gli adulti condividono ritmo sereno e piccoli dettagli.</p>",
+            "newValue": "<h2>I cavalli del Far West</h2><p>La Randonnée fantastique è una passeggiata su cavalli da giostra. Bianchi, marroni o grigi, aspettano sotto un portico dal tetto rosso, circondato da staccionate in legno. I pannelli verdi all’ingresso riportano il nome della passeggiata in lettere rosse.</p><p>Il legno dipinto e le piccole selle colorate evocano una scuderia western. Il tema del Far West accompagna questa cavalcata tra la vegetazione del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een rit met de sfeer van het Wilde Westen</h2><p>La Randonnée fantastique voert gezinnen door een decor dat op het Wilde Westen is geïnspireerd. Rotsen, frontiergevels en figuren maken van de rit een klein verhaal in het park.</p><p>Het plezier zit in de route en de details, niet in grote spanning. Elke bocht onthult een nieuw decorelement en geeft passagiers tijd om hun eigen avontuur te bedenken.</p><h2>Een verhaal voor het hele gezin</h2><p>De rit is echt generatieoverschrijdend. Jonge bezoekers zien een nieuwe wereld in het decor, terwijl volwassenen het rustige tempo en kleine details met hen delen.</p>",
+            "newValue": "<h2>De paarden van het Wilde Westen</h2><p>La Randonnée fantastique is een rit op kunstpaarden. Wit, bruin of grijs staan ze onder een afdak met een rood dak, omgeven door houten hekken. Op groene panelen bij de ingang staat de naam van de rit in rode letters.</p><p>Beschilderd hout en kleine, kleurrijke zadels doen denken aan een westernstal. Het thema van het Wilde Westen loopt door in deze paardenrit tussen het groen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Przejażdżka w klimacie Dzikiego Zachodu</h2><p>La Randonnée fantastique prowadzi rodziny przez scenerię inspirowaną Dzikim Zachodem. Skały, fasady pogranicza i postacie zmieniają przejażdżkę w miniaturową opowieść.</p><p>Przyjemność płynie z drogi i napotykanych szczegółów, a nie z dużej intensywności. Każdy zakręt odsłania nowy element scenerii i daje czas na własną przygodę.</p><h2>Opowieść przeżywana z rodziną</h2><p>Przejażdżka w pełni zachowuje międzypokoleniowy charakter. Najmłodsi widzą w scenerii nowy świat, a dorośli dzielą z nimi spokojny rytm i drobne szczegóły podróży.</p>",
+            "newValue": "<h2>Konie Dzikiego Zachodu</h2><p>La Randonnée fantastique to przejażdżka na sztucznych konikach. Białe, brązowe i szare czekają pod czerwonym dachem, w otoczeniu drewnianych ogrodzeń. Na zielonych tablicach przy wejściu widnieje nazwa przejażdżki zapisana czerwonymi literami.</p><p>Malowane drewno i małe kolorowe siodła przywodzą na myśl stajnię z westernu. Motyw Dzikiego Zachodu towarzyszy tej konnej wyprawie wśród parkowej zieleni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um passeio com ambiente de Oeste americano</h2><p>A La Randonnée fantastique conduz as famílias por um cenário inspirado no Oeste americano. Rochas, fachadas de fronteira e figuras transformam o passeio numa narrativa em miniatura.</p><p>O prazer nasce do caminho e dos seus detalhes, não de uma forte intensidade. Cada curva revela um novo elemento do cenário e deixa tempo para imaginar uma aventura própria.</p><h2>Uma história para viver em família</h2><p>O passeio assume plenamente o caráter intergeracional. Os mais novos veem no cenário um mundo novo, enquanto os adultos partilham o ritmo tranquilo e os pequenos detalhes.</p>",
+            "newValue": "<h2>Os cavalos do Faroeste</h2><p>A Randonnée fantastique é um passeio em cavalos mecânicos. Brancos, castanhos ou cinzentos, esperam sob um alpendre de telhado vermelho, rodeado de cercas de madeira. Os painéis verdes da entrada apresentam o nome do passeio em letras vermelhas.</p><p>A madeira pintada e as pequenas selas coloridas evocam uma cavalariça de western. O tema do Faroeste acompanha esta cavalgada entre a vegetação do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}
