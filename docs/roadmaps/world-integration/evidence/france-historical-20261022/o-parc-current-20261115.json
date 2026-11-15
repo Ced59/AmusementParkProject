@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T05:01:03.271034Z",
+  "observedAtUtc": "2026-11-15T05:25:34.418594Z",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -153,6 +153,26 @@
       "operationId": "5e89323d-f775-48c3-9e68-960fea396165",
       "appliedAtUtc": "2026-11-15T04:55:30.2754534Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-two-verified-park-facts-20261115.json"
+    },
+    {
+      "operationId": "02564049-f647-45f8-ba14-53c407444717",
+      "appliedAtUtc": "2026-11-15T05:05:07.8081258Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-four-meadow-games-20261115.json"
+    },
+    {
+      "operationId": "8b42839e-3518-47b5-a8e1-5549ada40165",
+      "appliedAtUtc": "2026-11-15T05:10:04.2459772Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-four-inflatable-identities-20261115.json"
+    },
+    {
+      "operationId": "bb134271-3a41-405c-8700-dc0fb800488f",
+      "appliedAtUtc": "2026-11-15T05:17:27.183227Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-baby-zone-notices-20261115.json"
+    },
+    {
+      "operationId": "23d1c5f8-e859-4098-aac0-6c4b7bc28885",
+      "appliedAtUtc": "2026-11-15T05:24:35.9295371Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-services-photo-corrections-20261115.json"
     }
   ],
   "acceptedImports": [
@@ -175,14 +195,49 @@
       "imageId": "e0f48f45039b4d06a10d8153d6eb705e",
       "serverIntegrationAtUtc": "2026-11-15T04:35:59.148Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-hammock-meadow-20261115.json"
+    },
+    {
+      "imageId": "3b0ed553df9e43e294f3b23d63e587a7",
+      "serverIntegrationAtUtc": "2026-11-15T05:14:43.406Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-konga-2020-20261115.json"
+    },
+    {
+      "imageId": "26ae6a5a3e5d47ac883f63e16089edb2",
+      "serverIntegrationAtUtc": "2026-11-15T05:14:52.793Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-trampolines-2020-20261115.json"
+    },
+    {
+      "imageId": "955672abe0e942bcba38bf146c4ba96f",
+      "serverIntegrationAtUtc": "2026-11-15T05:15:02.504Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chairs-front-2020-20261115.json"
+    },
+    {
+      "imageId": "9fe7c4c0634d49b1af7f53709763619c",
+      "serverIntegrationAtUtc": "2026-11-15T05:15:11.708Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chenille-first-season-20261115.json"
+    },
+    {
+      "imageId": "aae9deb7df2c4f49932e0ee1c0223ae9",
+      "serverIntegrationAtUtc": "2026-11-15T05:15:20.961Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-meadow-octopus-2020-20261115.json"
+    },
+    {
+      "imageId": "ad051cad0785452d93d515619bacea17",
+      "serverIntegrationAtUtc": "2026-11-15T05:15:30.368Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-meadow-blue-slide-2020-20261115.json"
+    },
+    {
+      "imageId": "8976847a7add4386a59e30a020a80270",
+      "serverIntegrationAtUtc": "2026-11-15T05:15:39.163Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-minigolf-entrance-panorama-2020-20261115.json"
     }
   ],
   "counts": {
     "items": 34,
-    "itemDescriptionsRewrittenEightLanguages": 18,
-    "itemDescriptionsStillToReview": 16,
-    "images": 16,
-    "newImagesPrivate": 5,
+    "itemDescriptionsRewrittenEightLanguages": 34,
+    "itemDescriptionsStillToReview": 0,
+    "images": 23,
+    "newImagesPrivate": 12,
     "zones": 2,
     "historyEvents": 8,
     "articles": 1,
@@ -319,7 +374,20 @@
     ],
     "safariPhoto": "Variante native 768×576 du média9117 fourni par Le Magazine du Berry, 719134octets, inspectée sans retouche. Crédit ©DR conservé ; import privé avec huit langues relues. Aucun jour de prise de vue inventé.",
     "olderMap": "Tourism gallery image4,undated official plan with eight additional historic names. Not imported as an annual map without year.",
-    "promotionalImages": "Visuels2025Tasses/Safari et2024Pirates sont montages promotionnels, pas photos prisesdansleparc ; nonimportés comme photos."
+    "promotionalImages": "Visuels2025Tasses/Safari et2024Pirates sont montages promotionnels, pas photos prisesdansleparc ; nonimportés comme photos.",
+    "visitor2020": {
+      "reviewedOriginals": 9,
+      "newPrivateImports": 7,
+      "sourceAuthor": "Renard60La",
+      "experienceMonth": "2020-06",
+      "exactCaptureDayKnown": false,
+      "nativeAndCdnVariantVisuallyCompared": true,
+      "newOwnPhotoCoverage": [
+        "Chaises Volantes : 3 vues distinctes",
+        "La Chenille : 3 vues distinctes"
+      ],
+      "generalParkPhotos": 5
+    }
   },
   "inventoryToQualify": [
     "Le géant des mers",
@@ -327,7 +395,9 @@
     "Baby pirate",
     "Bac à sable",
     "Pêche aux canards",
-    "Twister géant (mention Koikispass 2017, identité à rapprocher)"
+    "Twister géant (mention Koikispass 2017, identité à rapprocher)",
+    "Gonflable pieuvre orange visible avec le grand toboggan bleu en 2020",
+    "Château jaune visible en 2020 : identité à rapprocher"
   ],
   "aliasToCheck": "Saloon corrigé gonflable en huitlangues ; TassesMagiques aliascartographique deValseTasses, aucune fiche doublon.",
   "sourceWarnings": [
@@ -342,7 +412,7 @@
     "SeasonOpening documenté mais refusé en Preview par modèle HIST canonique ; requête3faits nonappliquée, nouveau lot2faits2025/fermeture séparé. Source directe du4avril2026 resteàétayer, anciennepageofficielle404 etextraitindexé conservé.",
     "Références fondateurs et exploitant relues et corrigées par Apply5a3caae1 ; closedYear exploitant null faute de preuve de dissolution, parc ClosedDefinitively préservé."
   ],
-  "nextAction": "Poursuivre les 16 notices anciennes, les cinq identités historiques et le Twister géant mentionné en 2017 ; réviser les jalons des items et les médias. 18/34 notices réécrites, article et deux faits de parc appliqués. Aucun export complet final, audit global ou clôture.",
+  "nextAction": "Les 34 lieux déjà identifiés sont relus en huit langues. Poursuivre les identités historiques encore non rapprochées, puis zones, anciens médias et faits des items. Aucun export complet final, audit global ou clôture. Ne pas réimporter les 7 photos de visiteurs 2020 ; 23 médias au total dont 12 nouveaux privés.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
@@ -549,5 +619,6 @@
     "startedAtUtc": "2026-11-15T04:56:04.3840676Z",
     "receivedAtUtc": "2026-11-15T04:56:05.1331637Z",
     "action": "HistoryDiagnostics"
-  }
+  },
+  "additionalResearchEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-source-photos-followup-20261115.json"
 }

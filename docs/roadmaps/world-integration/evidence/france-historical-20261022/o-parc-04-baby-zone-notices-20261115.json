@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "490269e051561becdd517140ec1d831da032b4ec020a5830cb8fdbbc5e1d5dc0",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "bb134271-3a41-405c-8700-dc0fb800488f",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:17:27.1832259Z",
+    "appliedAtUtc": "2026-11-15T05:17:27.183227Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bf459997-db22-423d-8933-432580c3c724",
+        "entityKey": "bf459997-db22-423d-8933-432580c3c724",
+        "displayName": "Aire de jeux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Aire de jeux</h2><p>Der Spielplatz verband Holzgerüst, Brücke, Spielhaus und kleine Module im schattigen Teil der Baby Zone.</p><h2>Brücken und Spielhäuser für kleine Kinder</h2><p>Geringe Höhen förderten selbstständiges Erkunden, wiederholte Wege und gemeinsam erfundene Spiele.</p><p>Unter den Bäumen ergänzte sie die Hüpfanlagen der Zone durch feste Geräte aus Holz nahe am Boden.</p>",
+            "newValue": "<h2>Ein Holzgerüst zwischen den Bäumen</h2><p>Aire de jeux lag in der bewaldeten Ecke der Baby Zone. Auf dem Plan von 2026 verliehen ein Holzgerüst und große bunte Würfel dem Spielplatz eine andere Silhouette als dem benachbarten Saloon.</p><h2>Neben dem Hühnerstall</h2><p>Der Plan zeigte ihn beim Poulailler und den Tischen am Ende der Reihe kleiner Spielbereiche. Der Name erschien auch auf der Ausgabe von 2025.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Aire de jeux</h2><p>The playground combined a timber structure, bridge, playhouse and small modules in the shaded part of the Baby Zone.</p><h2>Bridges and playhouses for young children</h2><p>Modest heights encouraged independent exploration, repeated passages and games invented by several children together.</p><p>Its place beneath the trees complemented the zoneʼs inflatables with fixed equipment connected to timber and ground.</p>",
+            "newValue": "<h2>A timber frame among the trees</h2><p>Aire de jeux occupied part of the wooded corner of the Baby Zone. On the 2026 map, a timber frame and large colourful cubes gave it a different outline from the neighbouring Saloon.</p><h2>Beside the henhouse</h2><p>The map placed it near the Poulailler and tables, at the end of the row of small play areas. Its name also appeared on the 2025 edition.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Aire de jeux</h2><p>La zona de juegos reunía una estructura de madera, pasarela, casita y pequeños módulos en la parte sombreada de la Baby Zone.</p><h2>Puentes y casitas para los más pequeños</h2><p>Las alturas moderadas favorecían la exploración autónoma, los recorridos repetidos y los juegos inventados en grupo.</p><p>Bajo los árboles complementaba los hinchables con un equipo fijo ligado a la madera y al suelo.</p>",
+            "newValue": "<h2>Una estructura de madera entre los árboles</h2><p>Aire de jeux ocupaba parte del rincón arbolado de la Baby Zone. En el plano de 2026 una estructura de madera y grandes cubos de colores le daban una silueta distinta de la del Saloon vecino.</p><h2>Junto al gallinero</h2><p>El plano la situaba cerca del Poulailler y las mesas, al final de la fila de pequeños juegos. Su nombre también aparecía en la edición de 2025.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Aire de jeux</h2><p>LʼAire de jeux réunissait une structure de bois avec passerelle, cabane et petits modules dans la partie ombragée de la Baby Zone.</p><h2>Ponts et cabanes pour les plus jeunes</h2><p>Les hauteurs modestes favorisaient lʼexploration autonome, les passages répétés et les jeux inventés entre plusieurs enfants.</p><p>Sa position sous les arbres complétait les installations gonflables de la zone par un équipement fixe au contact du bois et du sol.</p>",
+            "newValue": "<h2>Un portique parmi les arbres</h2><p>L’Aire de jeux occupait une partie du coin boisé de la Baby Zone. Sur le plan de 2026, un portique de bois et de grands cubes colorés lui donnaient une silhouette différente de celle du Saloon voisin.</p><h2>À côté du poulailler</h2><p>Le plan la plaçait près du Poulailler et des tables, au bout de la rangée des petits jeux. Ce nom figurait aussi sur l’édition de 2025.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Aire de jeux</h2><p>Lʼarea giochi riuniva struttura in legno, passerella, casetta e piccoli moduli nella parte ombreggiata della Baby Zone.</p><h2>Ponti e casette per i più piccoli</h2><p>Le altezze contenute favorivano esplorazione autonoma, passaggi ripetuti e giochi inventati fra più bambini.</p><p>Sotto gli alberi completava i gonfiabili della zona con attrezzature fisse a contatto con legno e terreno.</p>",
+            "newValue": "<h2>Una struttura di legno fra gli alberi</h2><p>Aire de jeux occupava parte dell’angolo alberato della Baby Zone. Nella mappa del 2026 una struttura di legno e grandi cubi colorati le davano una sagoma diversa dal vicino Saloon.</p><h2>Accanto al pollaio</h2><p>La mappa la collocava vicino al Poulailler e ai tavoli, alla fine della fila dei piccoli giochi. Il nome figurava anche nell’edizione del 2025.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Aire de jeux</h2><p>De speelplek bracht een houten structuur, brug, huisje en kleine onderdelen samen in het schaduwrijke deel van de Baby Zone.</p><h2>Bruggen en speelhuisjes voor jonge kinderen</h2><p>De beperkte hoogtes stimuleerden zelfstandig ontdekken, herhaalde doorgangen en spel dat kinderen samen bedachten.</p><p>Onder de bomen vulde ze de springstructuren aan met vast materiaal van hout en dicht bij de grond.</p>",
+            "newValue": "<h2>Een houten speelrek tussen de bomen</h2><p>Aire de jeux lag in de boomrijke hoek van de Baby Zone. Op de kaart van 2026 gaven een houten speelrek en grote gekleurde blokken de plek een ander silhouet dan de Saloon ernaast.</p><h2>Naast het kippenhok</h2><p>De kaart plaatste de speelplek bij de Poulailler en de tafels, aan het einde van de rij kleine speelruimtes. De naam stond ook op de editie van 2025.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Aire de jeux</h2><p>Plac zabaw łączył drewnianą konstrukcję, kładkę, domek i małe moduły w zacienionej części Baby Zone.</p><h2>Mostki i domki dla najmłodszych</h2><p>Niewielkie wysokości sprzyjały samodzielnemu odkrywaniu, powtarzaniu przejść i wspólnym wymyślonym zabawom.</p><p>Położenie pod drzewami uzupełniało dmuchańce stałym wyposażeniem związanym z drewnem i podłożem.</p>",
+            "newValue": "<h2>Drewniana konstrukcja wśród drzew</h2><p>Aire de jeux zajmowało część zadrzewionego zakątka Baby Zone. Na planie z 2026 roku drewniana konstrukcja i duże kolorowe klocki nadawały mu inną sylwetkę niż sąsiedniemu Saloonowi.</p><h2>Obok kurnika</h2><p>Plan umieszczał plac przy Poulailler i stołach, na końcu szeregu niewielkich miejsc zabaw. Nazwa widniała także w edycji z 2025 roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Aire de jeux</h2><p>O parque infantil reunia estrutura de madeira, passadiço, casinha e pequenos módulos na parte sombreada da Baby Zone.</p><h2>Pontes e casinhas para os mais novos</h2><p>As alturas modestas favoreciam exploração autónoma, passagens repetidas e jogos inventados entre várias crianças.</p><p>Sob as árvores, completava os insufláveis com equipamento fixo ligado à madeira e ao solo.</p>",
+            "newValue": "<h2>Uma estrutura de madeira entre as árvores</h2><p>A Aire de jeux ocupava parte do canto arborizado da Baby Zone. No mapa de 2026, uma estrutura de madeira e grandes cubos coloridos davam-lhe uma silhueta diferente da do Saloon vizinho.</p><h2>Ao lado do galinheiro</h2><p>O mapa situava-a perto do Poulailler e das mesas, no fim da fila dos pequenos jogos. O nome também figurava na edição de 2025.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+        "entityKey": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+        "displayName": "Baby Volcan",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan war eine kleine Hüpfanlage in warmen Farben im eigens für Kinder unter fünf Jahren gestalteten Bereich.</p><h2>Ein Vulkan für kleine Kinder</h2><p>Die niedrigen Formen ermöglichten Klettern und Rutschen, ohne die Dimensionen der großen Anlagen des Parks zu übernehmen.</p><p>Auf dem letzten Plan stand der Vulkan am Eingang der Baby Zone nahe Sanitäranlagen und Familientischen.</p>",
+            "newValue": "<h2>Palmen um eine kleine Rutsche</h2><p>Der ältere Plan mit Fotos zeigte Baby Volcan als blau-gelbe Hüpfanlage mit einer kleinen hellen Rutsche unter Dekopalmen. Der Name stand bei den Spielen der Baby Zone.</p><h2>Nachbar des Poulailler</h2><p>Auf den Plänen von 2025 und 2026 lag Baby Volcan nahe den Toiletten und dem Poulailler. Die Palmwedel seiner Illustration blieben am Rand dieses kleinen baumbestandenen Bereichs sichtbar.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan was a small inflatable in warm colours within the area designed specifically for children under five.</p><h2>A volcano scaled for young children</h2><p>Its low shapes allowed climbing and sliding without copying the scale of the parkʼs larger structures.</p><p>On the final map, the volcano stood at the entrance to the Baby Zone near the facilities and family tables.</p>",
+            "newValue": "<h2>Palms around a small slide</h2><p>The older photographic map showed Baby Volcan as a blue-and-yellow inflatable with a small pale slide beneath decorative palms. Its name appeared among the Baby Zone’s play areas.</p><h2>The Poulailler’s neighbour</h2><p>On the 2025 and 2026 maps, Baby Volcan stood near the toilets and Poulailler. The palm fronds in its illustration remained visible at the edge of this small wooded area.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan era un pequeño hinchable de colores cálidos dentro de la zona diseñada para menores de cinco años.</p><h2>Un volcán a escala infantil</h2><p>Los relieves bajos permitían trepar y deslizarse sin adoptar las proporciones de las grandes estructuras del parque.</p><p>En el plano final, el volcán estaba a la entrada de la Baby Zone, cerca de los servicios y de las mesas familiares.</p>",
+            "newValue": "<h2>Palmeras alrededor de un pequeño tobogán</h2><p>El antiguo plano fotográfico mostraba Baby Volcan como un hinchable azul y amarillo, con un pequeño tobogán claro bajo palmeras decorativas. Su nombre acompañaba los juegos de la Baby Zone.</p><h2>El vecino del Poulailler</h2><p>En los planos de 2025 y 2026 Baby Volcan estaba cerca de los aseos y del Poulailler. Las hojas de su ilustración seguían visibles al borde de este pequeño espacio arbolado.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan était un petit gonflable aux couleurs chaudes, intégré à la zone spécialement conçue pour les enfants de moins de cinq ans.</p><h2>Un volcan à lʼéchelle des petits</h2><p>Les reliefs bas permettaient de grimper et de glisser sans reprendre les proportions des grandes structures du reste du parc.</p><p>Sur le plan final, le volcan se trouvait à lʼentrée de la Baby Zone, près des sanitaires et des tables familiales.</p>",
+            "newValue": "<h2>Des palmiers autour d’une petite glissade</h2><p>Baby Volcan apparaissait sur l’ancien plan photographique comme un gonflable bleu et jaune, avec une petite glissade claire sous un décor de palmiers. Son nom accompagnait les jeux de la Baby Zone.</p><h2>Le voisin du Poulailler</h2><p>Sur les plans de 2025 et 2026, Baby Volcan se trouvait près des sanitaires et du Poulailler. Les palmes de son illustration restaient visibles au bord de ce petit espace arboré.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan era un piccolo gonfiabile dai colori caldi nella zona concepita per i bambini sotto i cinque anni.</p><h2>Un vulcano a misura di piccoli</h2><p>I rilievi bassi permettevano di arrampicarsi e scivolare senza riprendere le proporzioni delle grandi strutture del parco.</p><p>Nella mappa finale, il vulcano si trovava allʼingresso della Baby Zone, vicino ai servizi e ai tavoli familiari.</p>",
+            "newValue": "<h2>Palme attorno a un piccolo scivolo</h2><p>La vecchia mappa fotografica mostrava Baby Volcan come un gonfiabile blu e giallo, con un piccolo scivolo chiaro sotto palme decorative. Il nome accompagnava i giochi della Baby Zone.</p><h2>Il vicino del Poulailler</h2><p>Sulle mappe del 2025 e del 2026 Baby Volcan si trovava vicino ai servizi igienici e al Poulailler. Le fronde dell’illustrazione restavano visibili al margine di questo piccolo spazio alberato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan was een kleine springstructuur in warme kleuren binnen de zone speciaal voor kinderen jonger dan vijf jaar.</p><h2>Een vulkaan op kindermaat</h2><p>De lage vormen maakten klimmen en glijden mogelijk zonder de schaal van de grote structuren elders over te nemen.</p><p>Op de laatste kaart stond de vulkaan aan de ingang van de Baby Zone, bij de voorzieningen en familietafels.</p>",
+            "newValue": "<h2>Palmen rond een kleine glijbaan</h2><p>De oudere kaart met foto’s toonde Baby Volcan als een blauw-geel springkussen met een kleine lichte glijbaan onder decoratieve palmen. De naam stond bij de spelen van de Baby Zone.</p><h2>De buur van de Poulailler</h2><p>Op de kaarten van 2025 en 2026 lag Baby Volcan bij de toiletten en de Poulailler. De getekende palmbladeren bleven zichtbaar aan de rand van dit kleine boomrijke gebied.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Baby Volcan</h2><p>Baby Volcan był niewielką dmuchaną konstrukcją w ciepłych barwach, w strefie dla dzieci poniżej piątego roku życia.</p><h2>Wulkan dla najmłodszych</h2><p>Niskie kształty pozwalały wspinać się i zjeżdżać bez skali dużych konstrukcji z pozostałej części parku.</p><p>Na końcowej mapie wulkan stał przy wejściu do Baby Zone, obok zaplecza i rodzinnych stołów.</p>",
+            "newValue": "<h2>Palmy wokół małej zjeżdżalni</h2><p>Starszy plan ze zdjęciami pokazywał Baby Volcan jako niebiesko-żółty dmuchaniec z małą jasną zjeżdżalnią pod dekoracyjnymi palmami. Nazwa towarzyszyła zabawom w Baby Zone.</p><h2>Sąsiad Poulailler</h2><p>Na planach z 2025 i 2026 roku Baby Volcan znajdował się przy toaletach i Poulailler. Liście palm na ilustracji nadal wyróżniały się na skraju tego niewielkiego zadrzewionego obszaru.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Baby Volcan</h2><p>O Baby Volcan era um pequeno insuflável de cores quentes na zona pensada para crianças com menos de cinco anos.</p><h2>Um vulcão à escala dos pequenos</h2><p>Os relevos baixos permitiam subir e escorregar sem repetir as proporções das grandes estruturas do resto do parque.</p><p>No mapa final, o vulcão ficava à entrada da Baby Zone, perto das instalações e das mesas familiares.</p>",
+            "newValue": "<h2>Palmeiras à volta de um pequeno escorrega</h2><p>O antigo mapa fotográfico mostrava o Baby Volcan como um insuflável azul e amarelo, com um pequeno escorrega claro sob palmeiras decorativas. O nome acompanhava os jogos da Baby Zone.</p><h2>O vizinho do Poulailler</h2><p>Nos mapas de 2025 e 2026, o Baby Volcan ficava perto das instalações sanitárias e do Poulailler. As folhas de palmeira da ilustração continuavam visíveis na margem deste pequeno espaço arborizado.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "336dc675-0619-4024-be24-f793ed3f721a",
+        "entityKey": "336dc675-0619-4024-be24-f793ed3f721a",
+        "displayName": "Piscine à balles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Piscine à balles</h2><p>Das Bällebad lag in einem niedrigen Hüpfmodul unter einem kleinen Dach, das den Spielraum klar begrenzte.</p><h2>Ein trockenes Farbenbad</h2><p>Leichte Bälle machten jede Bewegung zu einer wandelnden Fläche für taktile Entdeckung und erste gemeinsame Spiele.</p><p>Am Ende der Baby Zone schloss sie den Bereich für unter Fünfjährige mit einer vollständig begrenzten Aktivität ab.</p>",
+            "newValue": "<h2>Das kleine Dach der Baby Zone</h2><p>Auf dem Plan von 2026 fiel Piscine à balles als runder gelb-oranger Unterstand neben dem Saloon auf. Das Bällebad gehörte zu den kleinen Spielbereichen unter den Bäumen.</p><h2>Am Ende der Reihe</h2><p>Schon der Plan von 2025 zeigte es nahe Aire de jeux. Sein kleines Dach bildete den letzten Orientierungspunkt dieser Gruppe, abseits der hohen Rutschen auf der Wiese.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Piscine à balles</h2><p>The ball pool sat inside a low inflatable module beneath a small roof that clearly defined the play space.</p><h2>A dry pool of colour</h2><p>Lightweight balls turned every movement into shifting material suited to tactile discovery and early shared play.</p><p>At the end of the Baby Zone, it completed the under-five area with an entirely enclosed activity.</p>",
+            "newValue": "<h2>The Baby Zone’s small shelter</h2><p>On the 2026 map, Piscine à balles stood out as a round yellow-and-orange shelter beside the Saloon. It was one of the small play spaces grouped beneath the trees.</p><h2>At the end of the row</h2><p>The 2025 map already placed it near Aire de jeux. Its small roof formed the last landmark in this group, away from the meadow’s tall slides.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Piscine à balles</h2><p>La piscina de bolas estaba en un módulo hinchable bajo, bajo un pequeño techo que delimitaba claramente el espacio.</p><h2>Una piscina seca de colores</h2><p>Las bolas ligeras convertían cada movimiento en materia cambiante, adecuada para la exploración táctil y los primeros juegos colectivos.</p><p>Al final de la Baby Zone, completaba el espacio para menores de cinco años con una actividad totalmente contenida.</p>",
+            "newValue": "<h2>El pequeño refugio de la Baby Zone</h2><p>En el plano de 2026 Piscine à balles destacaba por un refugio redondo amarillo y naranja junto al Saloon. Formaba parte de los pequeños espacios de juego reunidos bajo los árboles.</p><h2>Al final de la fila</h2><p>El plano de 2025 ya la situaba cerca de Aire de jeux. Su pequeño techo dibujaba el último punto de referencia de este grupo, lejos de los altos toboganes de la pradera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Piscine à balles</h2><p>La Piscine à balles était installée dans un module gonflable bas, sous un petit toit qui délimitait clairement lʼespace de jeu.</p><h2>Un bassin sec de couleurs</h2><p>Les balles légères transformaient chaque déplacement en matière mouvante, adaptée aux explorations tactiles et aux premiers jeux collectifs.</p><p>À lʼextrémité de la Baby Zone, elle fermait le parcours des moins de cinq ans par une activité entièrement contenue.</p>",
+            "newValue": "<h2>Le petit abri de la Baby Zone</h2><p>La Piscine à balles se distinguait sur le plan de 2026 par un abri rond jaune et orange, aux côtés du Saloon. Elle faisait partie des petits espaces de jeu rassemblés sous les arbres.</p><h2>Au bout de la rangée</h2><p>Le plan de 2025 l’inscrivait déjà près de l’Aire de jeux. Son petit toit dessinait le dernier repère de ce groupe, à l’écart des hauts toboggans de la prairie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Piscine à balles</h2><p>La piscina di palline era inserita in un modulo gonfiabile basso, sotto un piccolo tetto che delimitava lo spazio di gioco.</p><h2>Una vasca asciutta di colori</h2><p>Le palline leggere trasformavano ogni movimento in materia mobile, adatta alla scoperta tattile e ai primi giochi collettivi.</p><p>Allʼestremità della Baby Zone, chiudeva il percorso per i minori di cinque anni con unʼattività interamente contenuta.</p>",
+            "newValue": "<h2>Il piccolo riparo della Baby Zone</h2><p>Nella mappa del 2026 Piscine à balles si distingueva per un riparo rotondo giallo e arancione accanto al Saloon. Faceva parte dei piccoli spazi di gioco raccolti sotto gli alberi.</p><h2>Alla fine della fila</h2><p>La mappa del 2025 la collocava già vicino ad Aire de jeux. Il piccolo tetto formava l’ultimo riferimento di questo gruppo, lontano dagli alti scivoli nel prato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Piscine à balles</h2><p>Het ballenbad lag in een lage springmodule onder een klein dak dat de speelruimte duidelijk afbakende.</p><h2>Een droog bad vol kleur</h2><p>Lichte ballen veranderden elke beweging in een verschuivend materiaal voor tastontdekking en eerste gezamenlijke spelletjes.</p><p>Aan het einde van de Baby Zone sloot ze het gebied voor kinderen onder vijf af met een volledig omsloten activiteit.</p>",
+            "newValue": "<h2>De kleine overkapping van de Baby Zone</h2><p>Op de kaart van 2026 viel Piscine à balles op als een ronde geel-oranje overkapping naast de Saloon. Het ballenbad maakte deel uit van de kleine speelplekken onder de bomen.</p><h2>Aan het einde van de rij</h2><p>De kaart van 2025 plaatste het al bij Aire de jeux. Het kleine dak vormde het laatste herkenningspunt van deze groep, op afstand van de hoge glijbanen op het grasveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Piscine à balles</h2><p>Basen z piłeczkami mieścił się w niskim dmuchanym module pod małym dachem wyraźnie oddzielającym strefę zabawy.</p><h2>Suchy basen kolorów</h2><p>Lekkie piłeczki zmieniały każdy ruch w przesuwającą się materię, odpowiednią do dotykowego odkrywania i pierwszych wspólnych zabaw.</p><p>Na końcu Baby Zone zamykał strefę dla dzieci poniżej pięciu lat całkowicie ograniczoną aktywnością.</p>",
+            "newValue": "<h2>Małe zadaszenie Baby Zone</h2><p>Na planie z 2026 roku Piscine à balles wyróżniało okrągłe żółto-pomarańczowe zadaszenie obok Saloonu. Basen z piłeczkami należał do niewielkich miejsc zabaw skupionych pod drzewami.</p><h2>Na końcu szeregu</h2><p>Plan z 2025 roku umieszczał go już przy Aire de jeux. Mały dach stanowił ostatni punkt orientacyjny tej grupy, z dala od wysokich zjeżdżalni na łące.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Piscine à balles</h2><p>A piscina de bolas ficava num módulo insuflável baixo, sob um pequeno teto que delimitava claramente o espaço.</p><h2>Uma piscina seca de cores</h2><p>As bolas leves transformavam cada movimento em matéria móvel, adequada à descoberta tátil e aos primeiros jogos partilhados.</p><p>Na extremidade da Baby Zone, fechava a área para menores de cinco anos com uma atividade totalmente contida.</p>",
+            "newValue": "<h2>O pequeno abrigo da Baby Zone</h2><p>No mapa de 2026, a Piscine à balles distinguia-se por um abrigo redondo amarelo e laranja junto ao Saloon. Fazia parte dos pequenos espaços de brincadeira reunidos sob as árvores.</p><h2>No fim da fila</h2><p>O mapa de 2025 já a situava perto da Aire de jeux. O pequeno teto marcava o último ponto deste grupo, afastado dos altos escorregas no prado.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+        "entityKey": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+        "displayName": "Poulailler",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Poulailler</h2><p>Im Hühnerstall lebten echte Hühner in einem kleinen Holzgehege zwischen Kleinkinderspielen und Ruhetischen.</p><h2>Tiere in der Baby Zone</h2><p>Die ruhige Beobachtung der Vögel brachte eine lebendige Erfahrung, ganz anders als Fahrgeschäfte, Rutschen und Bewegungsaufgaben.</p><p>Dieses einfache Element zeigte, dass die Baby Zone Entdeckung, Rollenspiel und Bewegung verband, statt nur eine Freizeitform anzubieten.</p>",
+            "newValue": "<h2>Die Hühner der Baby Zone</h2><p>Der Poulailler bildete die Tierecke der Baby Zone. Der ältere Plan kennzeichnete ihn mit Hahn und Henne nahe dem Sandkasten und den kleinen Hüpfanlagen.</p><h2>Weiterhin auf den letzten Plänen</h2><p>Er erschien noch auf den Ausgaben von 2025 und 2026, nun zwischen Baby Volcan und Aire de jeux. Die Hühner blieben damit dem baumbestandenen Teil des Parks zugeordnet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Poulailler</h2><p>The henhouse kept real chickens in a small timber enclosure between the youngest childrenʼs games and the resting tables.</p><h2>Animals within the Baby Zone</h2><p>Quietly watching the birds introduced a living presence very different from the surrounding rides, slides and physical challenges.</p><p>This simple feature showed how the Baby Zone combined discovery, imaginative play and movement rather than relying on a single activity.</p>",
+            "newValue": "<h2>The Baby Zone’s chickens</h2><p>Poulailler formed the Baby Zone’s animal corner. The older map marked it with a rooster and a hen near the sandpit and small inflatables.</p><h2>Still on the final maps</h2><p>It remained on the 2025 and 2026 editions, now between Baby Volcan and Aire de jeux. The chickens thus stayed associated with the wooded part of the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Poulailler</h2><p>El gallinero alojaba gallinas reales en un pequeño recinto de madera entre los juegos infantiles y las mesas de descanso.</p><h2>Animales en la Baby Zone</h2><p>Observar las aves con calma aportaba una relación con lo vivo muy distinta de las atracciones, toboganes y retos físicos.</p><p>Este elemento sencillo mostraba que la Baby Zone combinaba descubrimiento, juego simbólico y movimiento, no una sola actividad.</p>",
+            "newValue": "<h2>Las gallinas de la Baby Zone</h2><p>El Poulailler formaba el rincón de animales de la Baby Zone. El plano antiguo lo señalaba con un gallo y una gallina junto al arenero y los pequeños hinchables.</p><h2>Todavía en los últimos planos</h2><p>Seguía en las ediciones de 2025 y 2026, esta vez entre Baby Volcan y Aire de jeux. Las gallinas continuaban así vinculadas a la parte arbolada del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Poulailler</h2><p>Le Poulailler installait de véritables poules dans un petit enclos en bois, entre les jeux des plus jeunes et les tables de repos.</p><h2>Une présence animale dans la Baby Zone</h2><p>Lʼobservation calme des oiseaux apportait un rapport au vivant très différent des manèges, glissades et défis physiques environnants.</p><p>Cet élément simple rappelait que la Baby Zone associait découverte, jeu symbolique et motricité plutôt quʼune seule forme de loisir.</p>",
+            "newValue": "<h2>Les poules de la Baby Zone</h2><p>Le Poulailler formait le coin animalier de la Baby Zone. L’ancien plan le signalait par un coq et une poule, près du bac à sable et des petits gonflables.</p><h2>Une place conservée dans les derniers plans</h2><p>Il figurait encore dans les éditions de 2025 et 2026, cette fois entre Baby Volcan et l’Aire de jeux. Les poules restaient ainsi associées à la partie boisée du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Poulailler</h2><p>Il Poulailler ospitava vere galline in un piccolo recinto di legno fra i giochi dei più piccoli e i tavoli di riposo.</p><h2>Animali nella Baby Zone</h2><p>Osservare con calma gli uccelli introduceva un rapporto con il vivente molto diverso da giostre, scivoli e sfide fisiche.</p><p>Questo elemento semplice mostrava come la Baby Zone unisse scoperta, gioco simbolico e movimento anziché una sola attività.</p>",
+            "newValue": "<h2>Le galline della Baby Zone</h2><p>Il Poulailler formava l’angolo degli animali della Baby Zone. La vecchia mappa lo indicava con un gallo e una gallina vicino alla sabbiera e ai piccoli gonfiabili.</p><h2>Ancora sulle ultime mappe</h2><p>Compariva ancora nelle edizioni del 2025 e del 2026, questa volta fra Baby Volcan e Aire de jeux. Le galline restavano così associate alla parte alberata del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Poulailler</h2><p>Het kippenhok huisvestte echte kippen in een kleine houten omheining tussen de spelletjes voor jonge kinderen en de rusttafels.</p><h2>Dieren in de Baby Zone</h2><p>Het rustig bekijken van de vogels bracht een levende ervaring die sterk verschilde van attracties, glijbanen en fysieke uitdagingen.</p><p>Dit eenvoudige onderdeel liet zien dat de Baby Zone ontdekking, fantasiespel en beweging combineerde, niet één enkele activiteit.</p>",
+            "newValue": "<h2>De kippen van de Baby Zone</h2><p>De Poulailler vormde het dierenhoekje van de Baby Zone. De oudere kaart gaf het aan met een haan en een kip bij de zandbak en de kleine springkussens.</p><h2>Nog op de laatste kaarten</h2><p>Het bleef op de edities van 2025 en 2026 staan, nu tussen Baby Volcan en Aire de jeux. Zo bleven de kippen bij het boomrijke deel van het park horen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Poulailler</h2><p>Kurnik mieścił prawdziwe kury w niewielkim drewnianym wybiegu między zabawami najmłodszych a stołami wypoczynkowymi.</p><h2>Zwierzęta w Baby Zone</h2><p>Spokojna obserwacja ptaków wnosiła kontakt z żywymi zwierzętami, zupełnie inny niż karuzele, zjeżdżalnie i ruchowe wyzwania.</p><p>Ten prosty element pokazywał, że Baby Zone łączyła odkrywanie, zabawę wyobraźni i ruch, a nie jedną formę rozrywki.</p>",
+            "newValue": "<h2>Kury w Baby Zone</h2><p>Poulailler tworzył zwierzęcy zakątek Baby Zone. Starszy plan oznaczał go kogutem i kurą przy piaskownicy oraz małych dmuchańcach.</p><h2>Obecny na ostatnich planach</h2><p>Widniał również w edycjach z 2025 i 2026 roku, tym razem między Baby Volcan a Aire de jeux. Kury pozostały więc związane z zadrzewioną częścią parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Poulailler</h2><p>O galinheiro alojava galinhas verdadeiras num pequeno recinto de madeira entre os jogos dos mais novos e as mesas de descanso.</p><h2>Animais na Baby Zone</h2><p>A observação calma das aves trazia uma presença viva muito diferente das diversões, escorregas e desafios físicos em redor.</p><p>Este elemento simples mostrava como a Baby Zone juntava descoberta, jogo simbólico e movimento, em vez de uma única atividade.</p>",
+            "newValue": "<h2>As galinhas da Baby Zone</h2><p>O Poulailler formava o canto dos animais da Baby Zone. O mapa antigo assinalava-o com um galo e uma galinha perto da caixa de areia e dos pequenos insufláveis.</p><h2>Ainda nos últimos mapas</h2><p>Continuava nas edições de 2025 e 2026, desta vez entre Baby Volcan e Aire de jeux. As galinhas permaneciam assim associadas à parte arborizada do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

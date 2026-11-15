@@ -1,0 +1,697 @@
+{
+  "schemaVersion": 1,
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "observedAtUtc": "2026-11-15T05:25:34.418594Z",
+  "sourceAccess": [
+    {
+      "name": "infoptimum-mobile",
+      "url": "https://m.bourges.infoptimum.com/pro/bannay/parc-de-loisirs-et-dattractions-en-plein-air/o-parc-999.html",
+      "atUtc": "2026-11-15T05:09:40.946160+00:00",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "tripadvisor-konga",
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887290-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "finalUrl": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887290-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "atUtc": "2026-11-15T05:09:42.932473+00:00",
+      "bytes": 321306,
+      "sha256": "93d4d8e9712c1905e643e55220a9afa5a357d0c053cc60182e0ad9bb6e3c2b5a"
+    }
+  ],
+  "visitorPhotoSelection": {
+    "stems": [
+      "konga-2020",
+      "trampolines-2020",
+      "chairs-front-2020",
+      "chenille-first-season",
+      "meadow-octopus-2020",
+      "meadow-blue-slide-2020",
+      "minigolf-entrance-panorama-2020"
+    ],
+    "excluded": [
+      {
+        "hex": "1b789483",
+        "reason": "Vue trop proche des autres panoramas2020 sélectionnés."
+      },
+      {
+        "hex": "13a8fda5",
+        "reason": "Vue2018 valide auteurmalice58, conservée recherche ; troisième photoChaises atteinte avecfront2020, pas besoin de multiplier les vues frontales."
+      }
+    ],
+    "unqualifiedVisibleObjects": [
+      "Gonflable pieuvre orange",
+      "Grand toboggan bleu décor marin : rapprocher Géantdesmers",
+      "Château jaune visible2020 : nom à qualifier"
+    ],
+    "watermarkFound": false
+  },
+  "visitorPhotoPages": [
+    {
+      "hex": "1b78947a",
+      "id": 460887162,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887162-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 302912,
+      "sha256": "c342beb11a8f57d5c8d42625a4091b7985ab429a32da7785f23454b2b39e426d",
+      "atUtc": "2026-11-15T05:12:16.044522+00:00"
+    },
+    {
+      "hex": "1b789488",
+      "id": 460887176,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887176-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 306486,
+      "sha256": "279ca71876dd63c8b052ef6f18f9d099cbe6a16521e6e914d8f19fb5747750b2",
+      "atUtc": "2026-11-15T05:12:16.891214+00:00"
+    },
+    {
+      "hex": "1b78948d",
+      "id": 460887181,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887181-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 308321,
+      "sha256": "3dc0f7af494783886e031a4827bbedce8f0f619fb66486cc021115dda198bd3b",
+      "atUtc": "2026-11-15T05:12:17.596974+00:00"
+    },
+    {
+      "hex": "1b7894e7",
+      "id": 460887271,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887271-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 314874,
+      "sha256": "a664a09aa010295dd634d4942a2a5656be53b6ad38473b7207cb163da23a8149",
+      "atUtc": "2026-11-15T05:12:18.151852+00:00"
+    },
+    {
+      "hex": "1b7894f6",
+      "id": 460887286,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887286-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 321361,
+      "sha256": "61b8f77b2f2c05250bfc31125c0aa29f0571663bc722b2c62d35d2d2d5461c6b",
+      "atUtc": "2026-11-15T05:12:18.615752+00:00"
+    },
+    {
+      "hex": "1b7894fc",
+      "id": 460887292,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887292-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 321359,
+      "sha256": "ecac0aad1245f2e43995a4b6fc990d9601c8492aa0a8eee443b021b14a2b0c94",
+      "atUtc": "2026-11-15T05:12:19.026952+00:00"
+    },
+    {
+      "hex": "13a8fda5",
+      "id": 329842085,
+      "url": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i329842085-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "status": 200,
+      "bytes": 318673,
+      "sha256": "9e9906be255949d0cf5d0638accbfde13c643be414d33e8c5fae0c8632432c90",
+      "atUtc": "2026-11-15T05:12:19.537681+00:00"
+    }
+  ],
+  "nativeDownloads": [
+    {
+      "id": 460887162,
+      "hex": "1b/78/94/7a",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/7a/toboggan.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78947a.jpg",
+      "status": 200,
+      "bytes": 2539512,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "76c1947b5033fef328d4ffe2513cb329ca2eb9c4a05aed25561bf34352e5359c",
+      "atUtc": "2026-11-15T05:10:22.028927+00:00"
+    },
+    {
+      "id": 460887171,
+      "hex": "1b/78/94/83",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/83/jeux.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b789483.jpg",
+      "status": 200,
+      "bytes": 2390717,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "ac33aade226c5f52480e77216435f999d52b03460974cc2809f2fe573d796930",
+      "atUtc": "2026-11-15T05:10:22.876089+00:00"
+    },
+    {
+      "id": 460887176,
+      "hex": "1b/78/94/88",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/88/toboggan-et-autres.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b789488.jpg",
+      "status": 200,
+      "bytes": 2766691,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "914e39d53b616978741b8226d49a82a8f6ca6247e32ef59179a388a2dfee235f",
+      "atUtc": "2026-11-15T05:10:23.533088+00:00"
+    },
+    {
+      "id": 460887181,
+      "hex": "1b/78/94/8d",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/8d/toboggan-et-circuit.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78948d.jpg",
+      "status": 200,
+      "bytes": 3276829,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "d158e2109ae5324a6f506e26769d572d1085dea60c6469d88045e0a83d429375",
+      "atUtc": "2026-11-15T05:10:24.247439+00:00"
+    },
+    {
+      "id": 460887271,
+      "hex": "1b/78/94/e7",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/e7/manege.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894e7.jpg",
+      "status": 200,
+      "bytes": 3199578,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "6b9c4ce4191b85c1e79ab2d648df67ca9d3ae843d51c6dabcfc29e2cdaaf09d9",
+      "atUtc": "2026-11-15T05:10:24.917185+00:00"
+    },
+    {
+      "id": 460887286,
+      "hex": "1b/78/94/f6",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/f6/trampoline.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894f6.jpg",
+      "status": 200,
+      "bytes": 2643137,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "b9dcb3d5c9b02203fff11d65ea12bffd2ea5222069a9ec09e6ab6d2fa90a06ce",
+      "atUtc": "2026-11-15T05:10:25.466963+00:00"
+    },
+    {
+      "id": 460887290,
+      "hex": "1b/78/94/fa",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/fa/toboggan.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fa.jpg",
+      "status": 200,
+      "bytes": 2910458,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "d6fe6facad8ce7aea2b743ff07f872ca3aea964188c514d89f53b9b15c1c4e8a",
+      "atUtc": "2026-11-15T05:10:25.898726+00:00"
+    },
+    {
+      "id": 460887292,
+      "hex": "1b/78/94/fc",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/fc/chenille.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fc.jpg",
+      "status": 200,
+      "bytes": 2702856,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "37bec2b846cb75322ff0052eae2156a78e57efa8af610817b85d3824385b4cc7",
+      "atUtc": "2026-11-15T05:10:26.592586+00:00"
+    },
+    {
+      "id": 329842085,
+      "hex": "13/a8/fd/a5",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/13/a8/fd/a5/oparc-mai-2018.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-13a8fda5.jpg",
+      "status": 200,
+      "bytes": 196482,
+      "size": [
+        652,
+        1156
+      ],
+      "sha256": "58ecb29acd21798ec7cfc53021cbc7652452dc348e8663ad9bbe522a73bba834",
+      "atUtc": "2026-11-15T05:10:27.013331+00:00"
+    }
+  ],
+  "nativeDisplayVariantComparison": [
+    {
+      "id": 460887162,
+      "meanAbsolutePixelDifference": 3.2764600118001304,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887171,
+      "meanAbsolutePixelDifference": 3.146455976698134,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887176,
+      "meanAbsolutePixelDifference": 3.6082818773057728,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887181,
+      "meanAbsolutePixelDifference": 4.389220343695746,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887271,
+      "meanAbsolutePixelDifference": 4.613293965657552,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887286,
+      "meanAbsolutePixelDifference": 3.5991528828938804,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887290,
+      "meanAbsolutePixelDifference": 4.000677744547526,
+      "sameAspectRatio": true
+    },
+    {
+      "id": 460887292,
+      "meanAbsolutePixelDifference": 3.7459466722276473,
+      "sameAspectRatio": true
+    }
+  ],
+  "acceptedPhotoManifest": [
+    {
+      "name": "tourism-1",
+      "url": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/1/desktop.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "retrievedAtUtc": "2026-11-15T03:55:12.847575+00:00",
+      "sha256": "c2a7807c4b21554851089540772b16036ef5923b7ceb31d7b06e38326591fa38",
+      "bytes": 365829,
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/tourism-1.jpg",
+      "stem": "chairs-passengers",
+      "sourcePage": "https://www.tourisme-sancerre.com/equipements-de-loisirs/parc-de-loisirs-o-parc-bannay/",
+      "sourceLabel": "Chaises-volante1",
+      "photographer": "Not individually named by the tourist office page",
+      "rights": "Owner authorized use of researched photographs; no open licence claimed",
+      "review": "Photographie distincte de la vue générale du manège déjà publique ; vrai cadrage de passagers, aucune date de prise de vue inventée, pas de filigrane, image source intacte. Relecture personnelle huit langues."
+    },
+    {
+      "name": "safari-2025-768",
+      "url": "https://lemagazineduberry.fr/wp-content/uploads/2025/03/image2-768x576.png",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/safari-2025-768.png",
+      "status": 200,
+      "bytes": 719134,
+      "sha256": "fdbf5d3269c6aef2bbab90a80fd9a09c7f0165bddaa697e3f9cc035034b619ae",
+      "width": 768,
+      "height": 576,
+      "retrievedAtUtc": "2026-11-15T04:03:12.097579+00:00",
+      "sourcePage": "https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/",
+      "sourceMediaMetadata": "https://lemagazineduberry.fr/wp-json/wp/v2/media/9117",
+      "sourceCredit": "© DR",
+      "selection": "Largest uncropped 4:3 variant listed by publisher under960KiB; file untouched locally. Larger original and1024variant retained asresearch, notuploaded.",
+      "stem": "safari-2025",
+      "photographer": "Source credits © DR, without an individual photographer name",
+      "rights": "Owner authorized researched photographs; publisher credit © DR preserved, no open licence claimed",
+      "review": "Original2340 et variante native768 inspectés personnellement. Identité Safari Buggy et décors distincts Konga/Pirates vérifiés. Aucun filigrane visible, retouche ou jour de prise de vue inventé. Huit langues relues personnellement."
+    },
+    {
+      "stem": "chenille-wide",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/themeparkfreaks-closure.webp",
+      "sourcePage": "https://themeparkfreaks.eu/2026/09/o-parc-sluit-voor-het-laatst-de-deuren/",
+      "url": "https://themeparkfreaks.eu/wp-content/uploads/2026/09/O-Parc.webp",
+      "photographer": "Bob Van Dyck — Themeparkfreaks; explicit page credit Foto: TPF- Bob Van Dyck",
+      "sha256": "5a3cd76bab60b15d0635b614bacb782b6244155a2a3bc700b4f3f59cb7f579fa",
+      "review": "Original inspecté personnellement, distinct des médias existants, sans filigrane, intact ; huit langues rédigées et relues. Prise de vue non datée, privée, noncourante. Aucun usage de la date de publication comme date de photo.",
+      "rights": "Owner authorized researched photographs; no open licence asserted",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1"
+    },
+    {
+      "stem": "hammock-meadow",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/koikispass-o-parc-1.jpg",
+      "sourcePage": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+      "url": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-1.jpg",
+      "photographer": "Photographer not individually credited; source Koikispass. Page originally published2017,updated2024, image URL2020 does not establish capturedate.",
+      "sha256": "e6fd467afe2a99a34ea8d7a74199dbc4023916b68ca59620a63a168e8ec6bb97",
+      "review": "Original inspecté personnellement, distinct des médias existants, sans filigrane, intact ; huit langues rédigées et relues. Prise de vue non datée, privée, noncourante. Aucun usage de la date de publication comme date de photo.",
+      "rights": "Owner authorized researched photographs; no open licence asserted",
+      "ownerType": "PARK",
+      "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4"
+    },
+    {
+      "stem": "founders-steeve-guillaume",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/koikispass-o-parc-8-1.jpg",
+      "sourcePage": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+      "url": "https://www.koikispass.com/wp-content/uploads/2020/10/o-parc-8-1.jpg",
+      "photographer": "Photographer not individually credited; source Koikispass explicitly captions Steeve et Guillaume. No left/right identification; photograph shows2of3collectivefounders, notCharles.",
+      "sha256": "4e125fe4505f3457ec2adc91a66623238cb8e2d1039ba2533917a37e7069fe7a",
+      "review": "Original inspecté personnellement, distinct des médias existants, sans filigrane, intact ; huit langues rédigées et relues. Prise de vue non datée, privée, noncourante. Aucun usage de la date de publication comme date de photo.",
+      "rights": "Owner authorized researched photographs; no open licence asserted",
+      "ownerType": "PARK_FOUNDER",
+      "ownerId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab"
+    },
+    {
+      "stem": "konga-2020",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887290-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fa/toboggan.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887290,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fa/toboggan.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fa-w.jpg",
+        "bytes": 198914,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "36a53c2e89c2bd8dfb0effb21dfd99f60429882cb4af41b221b23b54d2636e7d",
+        "atUtc": "2026-11-15T05:11:08.951632+00:00"
+      },
+      "originalFile": {
+        "id": 460887290,
+        "hex": "1b/78/94/fa",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/fa/toboggan.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fa.jpg",
+        "status": 200,
+        "bytes": 2910458,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "d6fe6facad8ce7aea2b743ff07f872ca3aea964188c514d89f53b9b15c1c4e8a",
+        "atUtc": "2026-11-15T05:10:25.898726+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+      "generalParkView": false
+    },
+    {
+      "stem": "trampolines-2020",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887286-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/f6/trampoline.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887286,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/f6/trampoline.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894f6-w.jpg",
+        "bytes": 188576,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "2f51b40a91792996b9c3379927099a6583834e57f988c93ae0bbae14133ddbe6",
+        "atUtc": "2026-11-15T05:11:08.574201+00:00"
+      },
+      "originalFile": {
+        "id": 460887286,
+        "hex": "1b/78/94/f6",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/f6/trampoline.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894f6.jpg",
+        "status": 200,
+        "bytes": 2643137,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "b9dcb3d5c9b02203fff11d65ea12bffd2ea5222069a9ec09e6ab6d2fa90a06ce",
+        "atUtc": "2026-11-15T05:10:25.466963+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+      "generalParkView": false
+    },
+    {
+      "stem": "chairs-front-2020",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887271-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/e7/manege.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887271,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/e7/manege.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894e7-w.jpg",
+        "bytes": 232877,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "451c1a1c534b67ff3c682527d727eb3be87ee30b53be719c4279e8f310d6740e",
+        "atUtc": "2026-11-15T05:11:08.270127+00:00"
+      },
+      "originalFile": {
+        "id": 460887271,
+        "hex": "1b/78/94/e7",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/e7/manege.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894e7.jpg",
+        "status": 200,
+        "bytes": 3199578,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "6b9c4ce4191b85c1e79ab2d648df67ca9d3ae843d51c6dabcfc29e2cdaaf09d9",
+        "atUtc": "2026-11-15T05:10:24.917185+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+      "generalParkView": false
+    },
+    {
+      "stem": "chenille-first-season",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887292-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fc/chenille.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887292,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fc/chenille.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fc-w.jpg",
+        "bytes": 180821,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "92fac59d392a39dacf647fff4e98a49e7cd5c1bf443143315b60c0b46f20831b",
+        "atUtc": "2026-11-15T05:11:09.147159+00:00"
+      },
+      "originalFile": {
+        "id": 460887292,
+        "hex": "1b/78/94/fc",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/fc/chenille.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fc.jpg",
+        "status": 200,
+        "bytes": 2702856,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "37bec2b846cb75322ff0052eae2156a78e57efa8af610817b85d3824385b4cc7",
+        "atUtc": "2026-11-15T05:10:26.592586+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+      "generalParkView": false
+    },
+    {
+      "stem": "meadow-octopus-2020",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887162-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/7a/toboggan.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887162,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/7a/toboggan.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78947a-w.jpg",
+        "bytes": 169174,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "f8d36001e8275b906dbce57cf73668e15c911ae25bfda52f7d65aa220d6c925d",
+        "atUtc": "2026-11-15T05:11:06.935284+00:00"
+      },
+      "originalFile": {
+        "id": 460887162,
+        "hex": "1b/78/94/7a",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/7a/toboggan.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78947a.jpg",
+        "status": 200,
+        "bytes": 2539512,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "76c1947b5033fef328d4ffe2513cb329ca2eb9c4a05aed25561bf34352e5359c",
+        "atUtc": "2026-11-15T05:10:22.028927+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "generalParkView": true
+    },
+    {
+      "stem": "meadow-blue-slide-2020",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887176-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/88/toboggan-et-autres.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887176,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/88/toboggan-et-autres.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b789488-w.jpg",
+        "bytes": 185644,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "853696dc369b25a7d5153e29b735a9de31d53c2a00b3a5b0f40dbcaa45ebbdfd",
+        "atUtc": "2026-11-15T05:11:07.519886+00:00"
+      },
+      "originalFile": {
+        "id": 460887176,
+        "hex": "1b/78/94/88",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/88/toboggan-et-autres.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b789488.jpg",
+        "status": 200,
+        "bytes": 2766691,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "914e39d53b616978741b8226d49a82a8f6ca6247e32ef59179a388a2dfee235f",
+        "atUtc": "2026-11-15T05:10:23.533088+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "generalParkView": true
+    },
+    {
+      "stem": "minigolf-entrance-panorama-2020",
+      "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887181-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+      "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/8d/toboggan-et-circuit.jpg",
+      "author": "Renard60La",
+      "sourcePlatform": "Tripadvisor",
+      "visitMonth": "2020-06",
+      "exactCaptureDate": null,
+      "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+      "sourceFile": {
+        "id": 460887181,
+        "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/8d/toboggan-et-circuit.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78948d-w.jpg",
+        "bytes": 240672,
+        "size": [
+          1024,
+          768
+        ],
+        "status": 200,
+        "sha256": "b1c35c5266ddd0011c88662ff5caf65a0105c1cddedcbaf983becdf220de8d43",
+        "atUtc": "2026-11-15T05:11:07.913615+00:00"
+      },
+      "originalFile": {
+        "id": 460887181,
+        "hex": "1b/78/94/8d",
+        "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/8d/toboggan-et-circuit.jpg",
+        "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78948d.jpg",
+        "status": 200,
+        "bytes": 3276829,
+        "size": [
+          4608,
+          3456
+        ],
+        "sha256": "d158e2109ae5324a6f506e26769d572d1085dea60c6469d88045e0a83d429375",
+        "atUtc": "2026-11-15T05:10:24.247439+00:00"
+      },
+      "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+      "ownerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "generalParkView": true
+    }
+  ],
+  "ambiguousApplyReconciliation": {
+    "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "action": "Apply response lost with HTTP503 upstream connection termination",
+    "status": {
+      "action": "Status",
+      "receivedAtUtc": "2026-11-15T05:08:24.5419615Z",
+      "result": {
+        "serverTimeUtc": "2026-11-15T05:08:24.4121989Z",
+        "isBusy": false,
+        "hasActiveExport": false,
+        "canStartResourceIntensiveOperation": true,
+        "activeRequestCount": 0,
+        "activeExportCount": 0,
+        "maxConcurrentRequests": 2,
+        "maxConcurrentResourceIntensiveOperations": 1,
+        "recommendedPollIntervalSeconds": 5,
+        "retryAfterSeconds": 5,
+        "activeRequests": [],
+        "activeExports": []
+      },
+      "startedAtUtc": "2026-11-15T05:08:23.7010055Z"
+    },
+    "targetedExportMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T05:08:54.479223Z"
+    },
+    "targetedExportSections": [
+      "ParkAdministration",
+      "Items"
+    ],
+    "targetedExportSha256": "cc0aa54cbe8f309ecf9ad44befb488ad5732b0f8ba9aae1ce334667d38a772b0",
+    "checks": [
+      {
+        "id": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+        "name": "La Boule",
+        "allEightDescriptionsMatchPreApplyState": true,
+        "desiredChangesPresent": false
+      },
+      {
+        "id": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+        "name": "Bulle de savon",
+        "allEightDescriptionsMatchPreApplyState": true,
+        "desiredChangesPresent": false
+      },
+      {
+        "id": "e10a994d-4972-41a4-879e-352738ce47d4",
+        "name": "Fun Slide",
+        "allEightDescriptionsMatchPreApplyState": true,
+        "desiredChangesPresent": false
+      },
+      {
+        "id": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "name": "Parcours de la Jungle",
+        "allEightDescriptionsMatchPreApplyState": true,
+        "desiredChangesPresent": false
+      }
+    ],
+    "conclusion": "No desired description was applied; all32values match localpreApplystate. A freshPreview is required before retry. No integrationdate recorded forfailedattempt."
+  },
+  "finalAuditCompleted": false
+}

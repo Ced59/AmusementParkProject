@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "766e8d832ac2ad3e2e6f6767930585b24b27a14d7e0f64624fb79db189612f19",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "8b42839e-3518-47b5-a8e1-5549ada40165",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:10:04.2459761Z",
+    "appliedAtUtc": "2026-11-15T05:10:04.2459772Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+        "entityKey": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+        "displayName": "La Boule",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>La Boule</h2><p>La Boule war eine kompakte Hüpfanlage, erkennbar an ihrem gerundeten Oberteil und der mehrfarbigen Front.</p><h2>Ein kompakter Hüpfraum</h2><p>Der umschlossene Innenraum bot Bewegung auf kleinerem Raum und unterschied sich von den langen Parcours und hohen Rutschen in der Nähe.</p><p>Im letzten Inventar stand sie nahe Échelles Dingos und ergänzte die Hüpfangebote mit einem eigenen Format.</p>",
+            "newValue": "<h2>Orange Bögen auf der Wiese</h2><p>La Boule war an ihrer kleinen grün-gelben aufblasbaren Einfassung unter orangefarbenen Bögen zu erkennen.</p><h2>Zwei Namen, zwei Silhouetten</h2><p>Die Pläne unterschieden sie von Bulle de savon, dem großen gewölbten Kissen in der Nähe. 2026 lag La Boule neben Échelles Dingos, etwas abseits der Seilrutschen und der Tassen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>La Boule</h2><p>La Boule was a compact inflatable, recognisable by its rounded upper section and multicoloured front.</p><h2>A compact inflatable to explore</h2><p>Its enclosed interior offered active play on a smaller scale, distinct from the long courses and tall slides nearby.</p><p>Placed beside Échelles Dingos in the final inventory, it completed the inflatable collection without repeating their format.</p>",
+            "newValue": "<h2>Orange arches in the meadow</h2><p>La Boule was recognisable by its small green-and-yellow inflatable enclosure beneath orange arches.</p><h2>Two names, two shapes</h2><p>The maps distinguished it from Bulle de savon, the large rounded cushion nearby. In 2026, La Boule appeared beside Échelles Dingos, with the zip lines and cups a little farther away.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La Boule</h2><p>La Boule era una estructura hinchable compacta, reconocible por su parte superior redondeada y su fachada multicolor.</p><h2>Un pequeño hinchable para explorar</h2><p>Su interior ofrecía juego de movimiento a pequeña escala, distinto de los largos recorridos y altos toboganes cercanos.</p><p>Situada junto a Échelles Dingos en el inventario final, completaba los hinchables sin repetir su formato.</p>",
+            "newValue": "<h2>Arcos naranjas en la pradera</h2><p>La Boule se reconocía por su pequeño recinto hinchable verde y amarillo coronado por arcos naranjas.</p><h2>Dos nombres, dos siluetas</h2><p>Los planos la distinguían de Bulle de savon, el gran cojín abombado vecino. En 2026 La Boule aparecía junto a Échelles Dingos, con las tirolinas y las tazas algo más lejos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La Boule</h2><p>La Boule était une structure gonflable compacte, reconnaissable à sa partie supérieure arrondie et à sa façade multicolore.</p><h2>Un petit volume gonflable à explorer</h2><p>Son espace intérieur proposait un jeu de mouvement contenu, différent des longs parcours et des hauts toboggans voisins.</p><p>Placée près des Échelles Dingos dans lʼinventaire final, elle complétait la série de jeux gonflables sans reproduire leur format.</p>",
+            "newValue": "<h2>Des arches orange dans la prairie</h2><p>La Boule se reconnaissait à sa petite enceinte gonflable verte et jaune, surmontée d’arches orange.</p><h2>Deux noms, deux silhouettes</h2><p>Les plans la distinguaient de Bulle de savon, le grand coussin bombé voisin. En 2026, La Boule figurait à côté des Échelles Dingos, avec les Tyroliennes et les Tasses un peu plus loin.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La Boule</h2><p>La Boule era una struttura gonfiabile compatta, riconoscibile dalla parte superiore arrotondata e dalla facciata multicolore.</p><h2>Un volume gonfiabile da esplorare</h2><p>Lo spazio interno offriva gioco motorio su scala raccolta, diverso dai lunghi percorsi e dagli alti scivoli vicini.</p><p>Collocata vicino a Échelles Dingos nellʼinventario finale, completava la serie di gonfiabili senza ripeterne il formato.</p>",
+            "newValue": "<h2>Archi arancioni nel prato</h2><p>La Boule si riconosceva dal piccolo recinto gonfiabile verde e giallo sovrastato da archi arancioni.</p><h2>Due nomi, due sagome</h2><p>Le mappe la distinguevano da Bulle de savon, il grande cuscino bombato vicino. Nel 2026 La Boule compariva accanto a Échelles Dingos, con le teleferiche e le tazze poco più lontano.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>La Boule</h2><p>La Boule was een compacte springstructuur, herkenbaar aan de afgeronde bovenzijde en veelkleurige voorkant.</p><h2>Een compacte springruimte</h2><p>De omsloten binnenruimte bood beweging op kleine schaal, anders dan de lange parcours en hoge glijbanen ernaast.</p><p>In de laatste inventaris lag ze naast Échelles Dingos en vulde ze de springstructuren aan met een ander formaat.</p>",
+            "newValue": "<h2>Oranje bogen op het grasveld</h2><p>La Boule was herkenbaar aan de kleine groen-gele opblaasbare omheining onder oranje bogen.</p><h2>Twee namen, twee vormen</h2><p>De kaarten onderscheidden de attractie van Bulle de savon, het grote bolle kussen ernaast. In 2026 stond La Boule bij Échelles Dingos, met de kabelbanen en theekopjes iets verderop.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>La Boule</h2><p>La Boule była zwartą dmuchaną konstrukcją, rozpoznawalną po zaokrąglonej górze i wielobarwnym froncie.</p><h2>Niewielka dmuchana przestrzeń</h2><p>Wnętrze zapewniało ruchową zabawę w mniejszej skali, odmienną od długich tras i wysokich zjeżdżalni w pobliżu.</p><p>W końcowym zestawieniu znajdowała się obok Échelles Dingos i uzupełniała dmuchane zabawy inną formą.</p>",
+            "newValue": "<h2>Pomarańczowe łuki na łące</h2><p>La Boule wyróżniała się niewielkim zielono-żółtym dmuchanym ogrodzeniem pod pomarańczowymi łukami.</p><h2>Dwie nazwy, dwie sylwetki</h2><p>Plany odróżniały ją od Bulle de savon, pobliskiej dużej wypukłej poduszki. W 2026 roku La Boule znajdowała się przy Échelles Dingos, a nieco dalej były tyrolki i filiżanki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>La Boule</h2><p>La Boule era uma estrutura insuflável compacta, reconhecível pela parte superior arredondada e pela frente multicolorida.</p><h2>Um pequeno volume insuflável</h2><p>O interior proporcionava brincadeira em movimento numa escala mais contida, diferente dos longos percursos e altos escorregas próximos.</p><p>Colocada junto a Échelles Dingos no inventário final, completava os insufláveis sem repetir o seu formato.</p>",
+            "newValue": "<h2>Arcos laranja no prado</h2><p>La Boule reconhecia-se pelo pequeno recinto insuflável verde e amarelo sob arcos laranja.</p><h2>Dois nomes, duas silhuetas</h2><p>Os mapas distinguiam-na da Bulle de savon, a grande almofada abaulada próxima. Em 2026 La Boule aparecia junto a Échelles Dingos, com as tirolesas e as chávenas um pouco mais afastadas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+        "entityKey": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+        "displayName": "Bulle de savon",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon war eine breite, niedrige Hüpfanlage in kräftigen Farben, ohne hohen Turm oder geschlossenen Parcours.</p><h2>Eine offene Spielfläche</h2><p>Der Bereich setzte auf Sprünge, Richtungswechsel und freies Spiel statt auf einen vorgegebenen Ablauf.</p><p>Der letzte Plan zeigte sie zwischen Piratenleuchtturm und Kettenfliegern, umgeben von einigen der höchsten Parkformen.</p>",
+            "newValue": "<h2>Ein großes gewölbtes Kissen</h2><p>Bulle de savon lag mit ihrer niedrigen Silhouette zwischen den hohen Figuren und Fahrgeschäften auf der Wiese. Der ältere Plan zeigte ein breites blaues Kissen mit gelbem Rand, deutlich getrennt von der kleinen Bogenanlage La Boule.</p><h2>Die Blase der letzten Saison</h2><p>Auf dem illustrierten Plan von 2026 erschien die Oberseite orange mit blauen und grünen Rändern. Die Anlage lag weiterhin nahe den Chaises Volantes und Le Phare des Pirates.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon occupied a broad low inflatable in bright colours, without a tall tower or enclosed course.</p><h2>An open play surface</h2><p>The space focused on bouncing, changes of direction and free play rather than a prescribed sequence.</p><p>The final map placed it between the pirate lighthouse and the flying chairs, amid some of the parkʼs tallest silhouettes.</p>",
+            "newValue": "<h2>A large rounded cushion</h2><p>Bulle de savon spread its low shape across the meadow among tall figures and rides. The older map showed a broad blue cushion edged in yellow, distinct from the small arched inflatable called La Boule.</p><h2>The final season’s bubble</h2><p>On the illustrated 2026 map, its top appeared orange within blue and green edges. The bubble remained near Chaises Volantes and Le Phare des Pirates.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon ocupaba una amplia superficie hinchable baja de colores vivos, sin torre alta ni recorrido cerrado.</p><h2>Una superficie de juego abierta</h2><p>El espacio se centraba en saltos, cambios de dirección y juego libre, no en una secuencia impuesta.</p><p>El plano final la situaba entre el faro pirata y las sillas voladoras, rodeada de algunas de las siluetas más altas del parque.</p>",
+            "newValue": "<h2>Un gran cojín abombado</h2><p>Bulle de savon extendía su silueta baja por la pradera entre grandes figuras y atracciones. El plano antiguo mostraba un amplio cojín azul con borde amarillo, distinto del pequeño hinchable de arcos llamado La Boule.</p><h2>La burbuja de la última temporada</h2><p>En el plano ilustrado de 2026 la parte superior aparecía naranja, rodeada de bordes azules y verdes. La burbuja seguía junto a Chaises Volantes y Le Phare des Pirates.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon occupait une large surface gonflable basse aux couleurs vives, sans haute tour ni parcours fermé.</p><h2>Une surface de jeu ouverte</h2><p>Cet espace mettait lʼaccent sur les bonds, les changements de direction et le jeu libre plutôt que sur une progression imposée.</p><p>Le plan final la plaçait entre le phare pirate et les Chaises Volantes, au milieu des silhouettes les plus hautes du parc.</p>",
+            "newValue": "<h2>Un grand coussin bombé</h2><p>Bulle de savon étalait sa silhouette basse dans la prairie, au milieu des hautes figures et des manèges. L’ancien plan la montrait comme un large coussin bleu bordé de jaune, distinct du petit gonflable à arches appelé La Boule.</p><h2>La bulle de la dernière saison</h2><p>Sur le plan illustré de 2026, le dessus devenait orange, entouré de bords bleus et verts. La bulle restait placée près des Chaises Volantes et du Phare des Pirates.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon occupava unʼampia superficie gonfiabile bassa dai colori vivaci, senza torre alta né percorso chiuso.</p><h2>Una superficie di gioco aperta</h2><p>Lo spazio privilegiava salti, cambi di direzione e gioco libero invece di una progressione obbligata.</p><p>La mappa finale la collocava fra il faro dei pirati e le sedie volanti, tra alcune delle sagome più alte del parco.</p>",
+            "newValue": "<h2>Un grande cuscino bombato</h2><p>Bulle de savon distendeva la sua sagoma bassa nel prato fra grandi figure e giostre. La vecchia mappa mostrava un largo cuscino blu bordato di giallo, distinto dal piccolo gonfiabile ad archi chiamato La Boule.</p><h2>La bolla dell’ultima stagione</h2><p>Nella mappa illustrata del 2026 la parte superiore appariva arancione, circondata da bordi blu e verdi. La bolla restava vicino a Chaises Volantes e Le Phare des Pirates.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon was een breed, laag springvlak in felle kleuren, zonder hoge toren of gesloten parcours.</p><h2>Een open speelvlak</h2><p>De ruimte draaide om springen, van richting veranderen en vrij spel, niet om een opgelegde volgorde.</p><p>Op de laatste kaart lag ze tussen de piratenvuurtoren en de zweefmolen, tussen enkele van de hoogste silhouetten van het park.</p>",
+            "newValue": "<h2>Een groot bol kussen</h2><p>Bulle de savon lag laag op het grasveld tussen hoge figuren en attracties. De oudere kaart toonde een breed blauw kussen met een gele rand, los van het kleine springkussen met bogen dat La Boule heette.</p><h2>De bubbel van het laatste seizoen</h2><p>Op de getekende kaart van 2026 was de bovenkant oranje, met blauwe en groene randen. De bubbel bleef bij Chaises Volantes en Le Phare des Pirates liggen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon zajmowała szeroką, niską dmuchaną powierzchnię w żywych barwach, bez wysokiej wieży i zamkniętej trasy.</p><h2>Otwarta powierzchnia zabawy</h2><p>Przestrzeń stawiała na skoki, zmiany kierunku i swobodną zabawę zamiast narzuconej kolejności.</p><p>Końcowa mapa umieszczała ją między piracką latarnią a latającymi krzesełkami, pośród najwyższych sylwetek parku.</p>",
+            "newValue": "<h2>Duża wypukła poduszka</h2><p>Bulle de savon rozciągała niską sylwetkę na łące wśród wysokich postaci i karuzel. Starszy plan pokazywał szeroką niebieską poduszkę z żółtym brzegiem, odrębną od małego dmuchańca z łukami o nazwie La Boule.</p><h2>Bańka z ostatniego sezonu</h2><p>Na ilustrowanym planie z 2026 roku górna część była pomarańczowa, otoczona niebieskimi i zielonymi brzegami. Bańka nadal znajdowała się blisko Chaises Volantes i Le Phare des Pirates.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Bulle de savon</h2><p>Bulle de savon ocupava uma ampla superfície insuflável baixa de cores vivas, sem torre alta ou percurso fechado.</p><h2>Uma superfície de jogo aberta</h2><p>O espaço privilegiava saltos, mudanças de direção e brincadeira livre, em vez de uma sequência imposta.</p><p>O mapa final colocava-a entre o farol dos piratas e as cadeiras voadoras, entre algumas das silhuetas mais altas do parque.</p>",
+            "newValue": "<h2>Uma grande almofada abaulada</h2><p>A Bulle de savon estendia a silhueta baixa pelo prado entre grandes figuras e diversões. O mapa antigo mostrava uma almofada azul larga com borda amarela, distinta do pequeno insuflável com arcos chamado La Boule.</p><h2>A bolha da última época</h2><p>No mapa ilustrado de 2026 a parte superior surgia laranja, rodeada de bordas azuis e verdes. A bolha continuava perto de Chaises Volantes e Le Phare des Pirates.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e10a994d-4972-41a4-879e-352738ce47d4",
+        "entityKey": "e10a994d-4972-41a4-879e-352738ce47d4",
+        "displayName": "Fun Slide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide verband mehrere bunt gestreifte Bahnen mit einem schmaleren Hüpf-Turm, alle auf das Becken ausgerichtet.</p><h2>Wasserrutschen nebeneinander</h2><p>Die nahen Starts ließen mehrere Abfahrten gleichzeitig stattfinden und gaben dem Bereich einen fortlaufenden Rhythmus.</p><p>Mit Planschbecken und Méga Slide vervollständigte die farbige Anlage das Wassertrio auf dem Plan von 2026.</p>",
+            "newValue": "<h2>Die hohen Streifen der Aqua Zone</h2><p>Fun Slide reihte hohe bunte Streifen am Rand des Wasserbereichs aneinander. Daneben zeigte Méga Slide seine breite blaue Schräge; beide Silhouetten hoben sich hinter dem Zaun der Aqua Zone ab.</p><h2>Palmen bei den Rutschen</h2><p>Der ältere Plan mit Fotos umgab Fun Slide mit kleinen Dekopalmen und kennzeichnete ihn als Neuheit. Auf den Plänen von 2025 und 2026 stand er weiterhin nahe dem Planschbecken und den Tischen auf der Wiese.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide paired several brightly striped lanes with a narrower inflatable tower, all facing the pool.</p><h2>Water lanes side by side</h2><p>Closely spaced starts allowed several descents to unfold together and gave the area a continuous rhythm.</p><p>Together with the paddling pool and Méga Slide, this multicoloured set completed the aquatic trio shown on the 2026 map.</p>",
+            "newValue": "<h2>The Aqua Zone’s tall stripes</h2><p>Fun Slide lined up tall multicoloured bands beside the water area. Next to it, Méga Slide displayed its broad blue slope; the two distinct shapes rose behind the Aqua Zone’s fence.</p><h2>Palms beside the slides</h2><p>The older photographic map surrounded Fun Slide with small decorative palms and marked it as new. It remained on the 2025 and 2026 maps, near the paddling pool and meadow tables.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide combinaba varios carriles de rayas vivas con una torre hinchable más estrecha, todos orientados hacia la piscina.</p><h2>Carriles acuáticos contiguos</h2><p>Las salidas cercanas permitían varios descensos a la vez y daban a la zona un ritmo continuo.</p><p>Con la piscina y el Méga Slide, el conjunto multicolor completaba el trío acuático del plano de 2026.</p>",
+            "newValue": "<h2>Las grandes franjas de la Aqua Zone</h2><p>Fun Slide alineaba altas franjas multicolores al borde de la zona acuática. A su lado, Méga Slide mostraba su amplia pendiente azul; las dos siluetas se distinguían tras la valla de la Aqua Zone.</p><h2>Palmeras junto a los toboganes</h2><p>El antiguo plano fotográfico rodeaba Fun Slide de pequeñas palmeras decorativas y lo señalaba como novedad. Seguía en los planos de 2025 y 2026, junto a la piscina infantil y las mesas de la pradera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide associait plusieurs pistes rayées de couleurs vives à une tour gonflable plus étroite, toutes orientées vers le bassin.</p><h2>Des couloirs aquatiques côte à côte</h2><p>Les départs rapprochés permettaient de suivre plusieurs descentes en même temps et donnaient à la zone un rythme continu.</p><p>Avec la pataugeoire et le Méga Slide, cet ensemble multicolore complétait le triangle aquatique représenté sur le plan 2026.</p>",
+            "newValue": "<h2>Les grandes rayures de l’Aqua Zone</h2><p>Fun Slide alignait de hautes bandes multicolores au bord du secteur aquatique. À côté, le Méga Slide montrait sa grande pente bleue ; leurs deux silhouettes se distinguaient derrière la clôture de l’Aqua Zone.</p><h2>Des palmiers au pied des glissades</h2><p>L’ancien plan photographique entourait Fun Slide de petits palmiers décoratifs et le signalait comme une nouveauté. Il figurait toujours sur les plans de 2025 et 2026, près de la pataugeoire et des tables de la prairie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide accostava più piste a strisce vivaci a una torre gonfiabile più stretta, tutte rivolte verso la vasca.</p><h2>Corsie acquatiche affiancate</h2><p>Le partenze ravvicinate permettevano più discese contemporanee e davano alla zona un ritmo continuo.</p><p>Con la piscina e il Méga Slide, lʼinsieme multicolore completava il trio acquatico rappresentato nella mappa del 2026.</p>",
+            "newValue": "<h2>Le grandi strisce dell’Aqua Zone</h2><p>Fun Slide allineava alte fasce multicolori al margine dell’area acquatica. Accanto, Méga Slide mostrava la sua ampia discesa blu; le due sagome si distinguevano dietro la recinzione dell’Aqua Zone.</p><h2>Palme accanto agli scivoli</h2><p>La vecchia mappa fotografica circondava Fun Slide di piccole palme decorative e lo segnalava come novità. Compariva ancora sulle mappe del 2025 e del 2026, vicino alla piscina bassa e ai tavoli nel prato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide combineerde verschillende fel gestreepte banen met een smallere opblaastoren, allemaal naar het bad gericht.</p><h2>Waterbanen naast elkaar</h2><p>De dicht bij elkaar liggende vertrekken maakten gelijktijdige afdalingen mogelijk en gaven de zone een voortdurend ritme.</p><p>Samen met het peuterbad en Méga Slide voltooide deze veelkleurige opstelling het watertrio van de kaart uit 2026.</p>",
+            "newValue": "<h2>De hoge strepen van de Aqua Zone</h2><p>Fun Slide zette hoge veelkleurige banen naast elkaar aan de rand van de waterzone. Ernaast lag de brede blauwe helling van Méga Slide; beide vormen waren te onderscheiden achter het hek van de Aqua Zone.</p><h2>Palmen bij de glijbanen</h2><p>De oudere kaart met foto’s omringde Fun Slide met kleine decoratieve palmen en duidde hem als nieuw aan. Hij bleef op de kaarten van 2025 en 2026 staan, bij het peuterbad en de tafels op het grasveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Fun Slide</h2><p>Fun Slide łączył kilka jaskrawo pasiastych torów z węższą dmuchaną wieżą, wszystkie skierowane ku basenowi.</p><h2>Wodne tory obok siebie</h2><p>Blisko położone starty pozwalały na kilka zjazdów jednocześnie i nadawały strefie ciągły rytm.</p><p>Wraz z brodzikiem i Méga Slide wielobarwny zestaw dopełniał wodne trio pokazane na mapie z 2026 roku.</p>",
+            "newValue": "<h2>Wysokie pasy Aqua Zone</h2><p>Fun Slide ustawiał wysokie wielobarwne pasy obok siebie na skraju strefy wodnej. Obok Méga Slide prezentował szeroką niebieską pochyłość; obie sylwetki wyróżniały się za ogrodzeniem Aqua Zone.</p><h2>Palmy przy zjeżdżalniach</h2><p>Starszy plan ze zdjęciami otaczał Fun Slide małymi dekoracyjnymi palmami i oznaczał go jako nowość. Atrakcja pozostała na planach z 2025 i 2026 roku, przy brodziku i stołach na łące.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Fun Slide</h2><p>O Fun Slide juntava várias pistas de riscas vivas a uma torre insuflável mais estreita, todas orientadas para a piscina.</p><h2>Pistas aquáticas lado a lado</h2><p>As partidas próximas permitiam várias descidas ao mesmo tempo e davam à zona um ritmo contínuo.</p><p>Com a piscina e o Méga Slide, o conjunto multicolor completava o trio aquático representado no mapa de 2026.</p>",
+            "newValue": "<h2>As grandes faixas da Aqua Zone</h2><p>O Fun Slide alinhava faixas altas e multicolores à beira da zona aquática. Ao lado, o Méga Slide mostrava a sua grande encosta azul; as duas silhuetas distinguiam-se atrás da vedação da Aqua Zone.</p><h2>Palmeiras junto aos escorregas</h2><p>O antigo mapa fotográfico rodeava o Fun Slide de pequenas palmeiras decorativas e assinalava-o como novidade. Continuava nos mapas de 2025 e 2026, perto da piscina infantil e das mesas do prado.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "entityKey": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "displayName": "Parcours de la Jungle",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle war eine lange grün-orange Hüpfanlage mit Palmen und tropischen Tieren.</p><h2>Ein Parcours zwischen Lianen und Palmen</h2><p>Niedrige Hindernisse, Durchgänge und kleine Rutschen verbanden mehrere Bewegungen in derselben Expeditionskulisse.</p><p>Der letzte Plan zeigte ihn neben Toboggan Konga; gemeinsam bildeten sie den Dschungelbereich am Südrand.</p>",
+            "newValue": "<h2>Ein Weg zwischen Palmen</h2><p>Parcours de la Jungle erstreckte sich in Grün und Orange unter großen aufblasbaren Palmen. Seine tropische Kulisse lag am Rand der Wiese nahe den beiden großen Figurenrutschen.</p><h2>Der Dschungel von 2025</h2><p>Der Plan von 2025 stellte ihn neben Safari Buggy und Les Tasses Magiques als Neuheit vor. Diese Landschaft aus Palmwedeln und bunten Hindernissen erschien noch an derselben Stelle auf dem Plan der letzten Saison 2026.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle was a long green-and-orange inflatable decorated with palms and tropical animals.</p><h2>A course among vines and palms</h2><p>Low obstacles, passages and short slides linked several movements without leaving the same expedition scenery.</p><p>The final map showed it beside Toboggan Konga, together forming the jungle cluster along the parkʼs southern edge.</p>",
+            "newValue": "<h2>A passage among the palms</h2><p>Parcours de la Jungle stretched its green-and-orange shape beneath large inflatable palms. Its tropical setting occupied the meadow’s edge near the two large character slides.</p><h2>The jungle added in 2025</h2><p>The 2025 map presented it as a new addition alongside Safari Buggy and Les Tasses Magiques. This scene of palm fronds and colourful obstacles remained in the same place on the final season’s map in 2026.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle era una larga estructura hinchable verde y naranja decorada con palmeras y animales tropicales.</p><h2>Un recorrido entre lianas y palmeras</h2><p>Obstáculos bajos, pasos y pequeños toboganes enlazaban varios movimientos dentro del mismo decorado de expedición.</p><p>El plano final lo mostraba junto a Toboggan Konga, formando el área de selva del borde sur.</p>",
+            "newValue": "<h2>Un paso entre palmeras</h2><p>Parcours de la Jungle extendía su silueta verde y naranja bajo grandes palmeras hinchables. Su decorado tropical ocupaba el borde de la pradera cerca de los dos grandes toboganes con personajes.</p><h2>La selva de 2025</h2><p>El plano de 2025 lo presentaba como novedad junto a Safari Buggy y Les Tasses Magiques. Este paisaje de hojas de palmera y obstáculos de colores seguía en el mismo lugar en el plano de la última temporada, en 2026.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Le Parcours de la Jungle était une longue structure gonflable verte et orange, décorée de palmiers et dʼanimaux tropicaux.</p><h2>Un parcours entre lianes et palmiers</h2><p>Les obstacles bas, passages et petites glissades enchaînaient plusieurs gestes sans quitter le même décor dʼexpédition.</p><p>Le plan final le montrait près de Toboggan Konga, composant avec lui le pôle jungle du bord sud du parc.</p>",
+            "newValue": "<h2>Un passage au milieu des palmiers</h2><p>Le Parcours de la Jungle étirait sa silhouette verte et orange sous de grands palmiers gonflables. Son décor tropical occupait le bord de la prairie, près des deux grands toboggans à personnages.</p><h2>La jungle de 2025</h2><p>Le plan de 2025 le présentait comme une nouveauté, aux côtés du Safari Buggy et des Tasses Magiques. Ce paysage de palmes et d’obstacles colorés figurait encore au même endroit sur le plan de la dernière saison, en 2026.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle era una lunga struttura gonfiabile verde e arancione decorata con palme e animali tropicali.</p><h2>Un percorso fra liane e palme</h2><p>Ostacoli bassi, passaggi e piccoli scivoli collegavano più gesti senza abbandonare lo stesso scenario di spedizione.</p><p>La mappa finale lo mostrava accanto al Toboggan Konga, formando con esso il polo giungla sul margine meridionale.</p>",
+            "newValue": "<h2>Un passaggio fra le palme</h2><p>Parcours de la Jungle allungava la sua sagoma verde e arancione sotto grandi palme gonfiabili. Il paesaggio tropicale occupava il margine del prato vicino ai due grandi scivoli con personaggi.</p><h2>La giungla del 2025</h2><p>La mappa del 2025 lo presentava come novità insieme a Safari Buggy e Les Tasses Magiques. Questo scenario di fronde e ostacoli colorati compariva ancora nello stesso punto sulla mappa dell’ultima stagione, nel 2026.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle was een lange groen-oranje springstructuur met palmen en tropische dieren.</p><h2>Een parcours tussen lianen en palmen</h2><p>Lage obstakels, doorgangen en korte glijbanen verbonden verschillende bewegingen binnen hetzelfde expeditiedecor.</p><p>Op de laatste kaart lag het naast Toboggan Konga; samen vormden ze de junglecluster aan de zuidrand.</p>",
+            "newValue": "<h2>Een doorgang tussen de palmen</h2><p>Parcours de la Jungle strekte zijn groen-oranje vorm uit onder grote opblaasbare palmen. Het tropische decor lag aan de rand van het grasveld bij de twee grote glijbanen met figuren.</p><h2>De jungle van 2025</h2><p>De kaart van 2025 presenteerde het parcours als nieuwigheid naast Safari Buggy en Les Tasses Magiques. Dit decor van palmbladeren en kleurrijke obstakels stond nog op dezelfde plek op de kaart van het laatste seizoen in 2026.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle był długą zielono-pomarańczową dmuchaną konstrukcją z palmami i tropikalnymi zwierzętami.</p><h2>Trasa wśród lian i palm</h2><p>Niskie przeszkody, przejścia i krótkie zjeżdżalnie łączyły kolejne ruchy w tej samej scenerii wyprawy.</p><p>Na ostatniej mapie leżał obok Toboggan Konga, tworząc z nim dżunglową strefę przy południowej granicy.</p>",
+            "newValue": "<h2>Przejście wśród palm</h2><p>Parcours de la Jungle rozciągał zielono-pomarańczową sylwetkę pod wielkimi dmuchanymi palmami. Tropikalna sceneria zajmowała skraj łąki w pobliżu dwóch dużych zjeżdżalni z postaciami.</p><h2>Dżungla z 2025 roku</h2><p>Plan z 2025 roku przedstawiał go jako nowość obok Safari Buggy i Les Tasses Magiques. Ta sceneria z palmowymi liśćmi i kolorowymi przeszkodami widniała w tym samym miejscu na planie ostatniego sezonu w 2026 roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Parcours de la Jungle</h2><p>Parcours de la Jungle era uma longa estrutura insuflável verde e laranja decorada com palmeiras e animais tropicais.</p><h2>Um percurso entre lianas e palmeiras</h2><p>Obstáculos baixos, passagens e pequenos escorregas ligavam vários movimentos sem sair do mesmo cenário de expedição.</p><p>O mapa final mostrava-o junto ao Toboggan Konga, formando com ele o núcleo de selva no limite sul.</p>",
+            "newValue": "<h2>Uma passagem entre palmeiras</h2><p>O Parcours de la Jungle estendia a silhueta verde e laranja sob grandes palmeiras insufláveis. O cenário tropical ocupava a margem do prado perto dos dois grandes escorregas com personagens.</p><h2>A selva de 2025</h2><p>O mapa de 2025 apresentava-o como novidade ao lado do Safari Buggy e de Les Tasses Magiques. Esta paisagem de folhas de palmeira e obstáculos coloridos continuava no mesmo local no mapa da última época, em 2026.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

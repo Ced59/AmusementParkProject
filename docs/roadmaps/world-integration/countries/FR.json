@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T04:55:30.275Z",
+      "lastDataIntegrationAt": "2026-11-15T05:24:35.929Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -21911,6 +21911,116 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-two-verified-park-facts-20261115.json",
           "auditEvidence": null,
           "summary": "Deux faits de parc corrigés en huit langues : ensemble des nouveautés de 2025 incluant Jungle et fermeture définitive du 31 août 2026 annoncée le 7 septembre. Sources vérifiées, dates et images conservées ; correction SeasonOpening non appliquée car refus API."
+        },
+        {
+          "eventId": "apply-02564049-f647-45f8-ba14-53c407444717",
+          "appliedAt": "2026-11-15T05:05:07.808Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-four-meadow-games-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre notices réécrites et relues huit langues : Home-ball, Course Ô Sac, Tyroliennes et Échelles Dingos. Sources 2017 et plans officiels rapprochés ; détails non étayés et remplissage retirés, visibilité conservée."
+        },
+        {
+          "eventId": "apply-8b42839e-3518-47b5-a8e1-5549ada40165",
+          "appliedAt": "2026-11-15T05:10:04.245Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-four-inflatable-identities-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre notices de gonflables réécrites et relues huit langues : La Boule distincte de Bulle de savon, Fun Slide et Parcours de la Jungle annoncé nouveau en 2025. Réponse perdue rapprochée par export ciblé avant nouvelle Preview ; aucun doublon ni date inventée."
+        },
+        {
+          "eventId": "image-3b0ed553df9e43e294f3b23d63e587a7",
+          "appliedAt": "2026-11-15T05:14:43.406Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-konga-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée konga-2020, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-26ae6a5a3e5d47ac883f63e16089edb2",
+          "appliedAt": "2026-11-15T05:14:52.793Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-trampolines-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée trampolines-2020, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-955672abe0e942bcba38bf146c4ba96f",
+          "appliedAt": "2026-11-15T05:15:02.504Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chairs-front-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée chairs-front-2020, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-9fe7c4c0634d49b1af7f53709763619c",
+          "appliedAt": "2026-11-15T05:15:11.708Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chenille-first-season-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée chenille-first-season, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-aae9deb7df2c4f49932e0ee1c0223ae9",
+          "appliedAt": "2026-11-15T05:15:20.961Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-meadow-octopus-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée meadow-octopus-2020, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-ad051cad0785452d93d515619bacea17",
+          "appliedAt": "2026-11-15T05:15:30.368Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-meadow-blue-slide-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée meadow-blue-slide-2020, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-8976847a7add4386a59e30a020a80270",
+          "appliedAt": "2026-11-15T05:15:39.163Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-minigolf-entrance-panorama-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée minigolf-entrance-panorama-2020, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "apply-bb134271-3a41-405c-8700-dc0fb800488f",
+          "appliedAt": "2026-11-15T05:17:27.183Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-baby-zone-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre notices de la Baby Zone relues huit langues : Aire de jeux, Baby Volcan, Piscine à balles et Poulailler. Décors confrontés aux plans ; retrait des généralités pédagogiques et détails non sourcés, visibilité et identifiants conservés."
+        },
+        {
+          "eventId": "apply-23d1c5f8-e859-4098-aac0-6c4b7bc28885",
+          "appliedAt": "2026-11-15T05:24:35.929Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-services-photo-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre dernières notices existantes relues et réécrites en huit langues ; Konga, Trampolines et Home-ball affinés par les photos réelles et la relecture. Inventaire historique et audit final encore en cours."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

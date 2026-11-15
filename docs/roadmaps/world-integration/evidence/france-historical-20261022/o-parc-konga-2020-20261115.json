@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T05:14:43.406Z",
+  "result": {
+    "id": "3b0ed553df9e43e294f3b23d63e587a7",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+    "path": "park_item/3b0ed553df9e43e294f3b23d63e587a7",
+    "description": "Le Toboggan Konga et son décor de jungle en 2020.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1024,
+    "height": 768,
+    "sizeInBytes": 198914,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fa/toboggan.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Konga, son grand gorille au ventre clair et ses pentes vertes bordées de palmiers."
+      },
+      {
+        "languageCode": "en",
+        "value": "Konga, with its large pale-bellied gorilla and green slopes lined with palms."
+      },
+      {
+        "languageCode": "de",
+        "value": "Konga mit seinem großen Gorilla mit hellem Bauch und grünen, von Palmen gesäumten Hängen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Konga met de grote gorilla met lichte buik en groene hellingen langs palmen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Konga con il grande gorilla dal ventre chiaro e le discese verdi bordate di palme."
+      },
+      {
+        "languageCode": "es",
+        "value": "Konga con su gran gorila de vientre claro y sus pendientes verdes bordeadas de palmeras."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Konga z wielkim gorylem o jasnym brzuchu i zielonymi zboczami otoczonymi palmami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Konga com o grande gorila de barriga clara e as encostas verdes ladeadas de palmeiras."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le Toboggan Konga et son décor de jungle en 2020."
+      },
+      {
+        "languageCode": "en",
+        "value": "Toboggan Konga and its jungle scenery in 2020."
+      },
+      {
+        "languageCode": "de",
+        "value": "Toboggan Konga und seine Dschungelkulisse im Jahr 2020."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Toboggan Konga en het jungledecor in 2020."
+      },
+      {
+        "languageCode": "it",
+        "value": "Toboggan Konga e il suo scenario di giungla nel 2020."
+      },
+      {
+        "languageCode": "es",
+        "value": "Toboggan Konga y su decorado de selva en 2020."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Toboggan Konga i jego sceneria dżungli w 2020 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Toboggan Konga e o seu cenário de selva em 2020."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Renard60La — Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T05:14:39.677Z",
+    "updatedAt": "2026-11-15T05:14:43.406Z"
+  },
+  "sourceEvidence": {
+    "stem": "konga-2020",
+    "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887290-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+    "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fa/toboggan.jpg",
+    "author": "Renard60La",
+    "sourcePlatform": "Tripadvisor",
+    "visitMonth": "2020-06",
+    "exactCaptureDate": null,
+    "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+    "sourceFile": {
+      "id": 460887290,
+      "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fa/toboggan.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fa-w.jpg",
+      "bytes": 198914,
+      "size": [
+        1024,
+        768
+      ],
+      "status": 200,
+      "sha256": "36a53c2e89c2bd8dfb0effb21dfd99f60429882cb4af41b221b23b54d2636e7d",
+      "atUtc": "2026-11-15T05:11:08.951632+00:00"
+    },
+    "originalFile": {
+      "id": 460887290,
+      "hex": "1b/78/94/fa",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/fa/toboggan.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fa.jpg",
+      "status": 200,
+      "bytes": 2910458,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "d6fe6facad8ce7aea2b743ff07f872ca3aea964188c514d89f53b9b15c1c4e8a",
+      "atUtc": "2026-11-15T05:10:25.898726+00:00"
+    },
+    "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+    "ownerId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+    "generalParkView": false
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

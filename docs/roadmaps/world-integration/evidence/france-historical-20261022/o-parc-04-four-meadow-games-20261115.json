@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "6de8b68f35bc3fdf9a72a1048a325b52f582c4eae7428573b3f6a7fc0529691d",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "02564049-f647-45f8-ba14-53c407444717",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:05:07.8081237Z",
+    "appliedAtUtc": "2026-11-15T05:05:07.8081258Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+        "entityKey": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+        "displayName": "Home-ball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball war ein rechteckiger Sportkäfig, in dem farbige Öffnungen in den Wänden als Ziele dienten.</p><h2>Ein Spielfeld im Netz</h2><p>Der Ball blieb im Feld, während Teams Bewegung, Pässe und Würfe auf die markierten Bereiche verbanden.</p><p>Zwischen Minigolf und Zentrum brachte das Mannschaftsspiel einen sportlichen Akzent in den vor allem spielerisch geprägten Park.</p>",
+            "newValue": "<h2>Rote und gelbe Ziele</h2><p>Home-ball bildete einen Netzwürfel auf der Wiese. Rote und gelbe Ziele verteilten sich auf seinen Seiten rund um ein kleines Spielfeld, auf dem der Ball im Mittelpunkt stand.</p><h2>Neben der Minigolfanlage</h2><p>Der Plan der letzten Saison zeigte das Gehege neben den roten Minigolfbahnen, mit den Chaises Volantes im Hintergrund. Auch die touristischen Beschreibungen des Parks nannten Home-ball unter den Spielen im Freien.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball took the form of a rectangular sports cage whose coloured wall openings became targets.</p><h2>A court enclosed by netting</h2><p>The ball stayed inside the enclosure while teams combined movement, passing and shots towards the marked zones.</p><p>Set between miniature golf and the central area, this team game brought a sporting vocabulary to a park focused mainly on leisure play.</p>",
+            "newValue": "<h2>Red and yellow targets</h2><p>Home-ball formed a cube of netting in the meadow. Red and yellow targets dotted its sides around a small court where the ball took centre stage.</p><h2>Beside the mini-golf</h2><p>The final season’s map placed this enclosure beside the mini-golf’s red lanes, with Chaises Volantes behind it. Tourist descriptions of the park also listed Home-ball among its outdoor games.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball adoptaba la forma de una jaula deportiva rectangular cuyas aberturas de colores servían como objetivos.</p><h2>Un campo cerrado por redes</h2><p>El balón permanecía dentro mientras los equipos combinaban movimientos, pases y lanzamientos hacia las zonas marcadas.</p><p>Entre el minigolf y la zona central, este juego de equipo aportaba un lenguaje deportivo a un parque orientado sobre todo al ocio.</p>",
+            "newValue": "<h2>Blancos rojos y amarillos</h2><p>Home-ball formaba un cubo de redes en la pradera. Blancos rojos y amarillos salpicaban sus paredes alrededor de una pequeña pista donde el balón era protagonista.</p><h2>Junto al minigolf</h2><p>El plano de la última temporada situaba este recinto junto a las pistas rojas del minigolf, con Chaises Volantes al fondo. Las descripciones turísticas también incluían Home-ball entre los juegos al aire libre del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball prenait la forme dʼune cage sportive rectangulaire où les ouvertures colorées des parois devenaient des cibles.</p><h2>Un terrain enfermé dans ses filets</h2><p>Le ballon restait dans lʼenceinte tandis que les équipes combinaient déplacements, passes et tirs vers les zones marquées.</p><p>Positionné entre le mini-golf et la zone centrale, ce jeu collectif apportait un langage sportif à un parc surtout tourné vers les loisirs.</p>",
+            "newValue": "<h2>Des cibles rouges et jaunes</h2><p>Le Home-ball dessinait un cube de filets dans la prairie. Des cibles rouges et jaunes ponctuaient ses parois, autour d’un petit terrain où le ballon tenait la première place.</p><h2>Près du mini-golf</h2><p>Le plan de la dernière saison situait cette enceinte près des pistes rouges du mini-golf, avec les Chaises Volantes en arrière-plan. Le Home-ball figurait aussi dans les présentations touristiques du parc, parmi les jeux de plein air.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball aveva la forma di una gabbia sportiva rettangolare, con aperture colorate nelle pareti usate come bersagli.</p><h2>Un campo racchiuso dalle reti</h2><p>La palla restava nel recinto mentre le squadre combinavano spostamenti, passaggi e tiri verso le zone segnate.</p><p>Fra minigolf e zona centrale, questo gioco di squadra portava un linguaggio sportivo in un parco dedicato soprattutto al tempo libero.</p>",
+            "newValue": "<h2>Bersagli rossi e gialli</h2><p>Home-ball disegnava un cubo di reti nel prato. Bersagli rossi e gialli punteggiavano le pareti attorno a un piccolo campo dove la palla era protagonista.</p><h2>Accanto al minigolf</h2><p>La mappa dell’ultima stagione collocava questo recinto vicino alle piste rosse del minigolf, con Chaises Volantes sullo sfondo. Anche le presentazioni turistiche del parco citavano Home-ball fra i giochi all’aperto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball was een rechthoekige sportkooi waarin gekleurde openingen in de wanden als doelen dienden.</p><h2>Een speelveld in netten</h2><p>De bal bleef binnen de kooi terwijl teams bewegen, passen en mikken op de gemarkeerde zones combineerden.</p><p>Tussen minigolf en het centrum gaf dit teamspel een sportief accent aan een park dat vooral op vrijetijdsspel gericht was.</p>",
+            "newValue": "<h2>Rode en gele doelen</h2><p>Home-ball vormde een kubus van netten op het grasveld. Rode en gele doelen zaten in de wanden rond een klein speelveld waar de bal centraal stond.</p><h2>Naast de minigolf</h2><p>De kaart van het laatste seizoen plaatste deze omheinde speelplek naast de rode minigolfbanen, met Chaises Volantes op de achtergrond. Ook toeristische beschrijvingen noemden Home-ball bij de buitenspelen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Home-ball</h2><p>Home-ball miało formę prostokątnej klatki sportowej, w której kolorowe otwory w ścianach stawały się celami.</p><h2>Boisko zamknięte w siatkach</h2><p>Piłka pozostawała wewnątrz, a zespoły łączyły ruch, podania i rzuty do oznaczonych stref.</p><p>Między minigolfem a centrum gra zespołowa wnosiła sportowy język do parku skupionego głównie na rekreacji.</p>",
+            "newValue": "<h2>Czerwone i żółte cele</h2><p>Home-ball tworzył na łące sześcian z siatek. Czerwone i żółte cele rozmieszczono na jego ścianach wokół niewielkiego boiska, na którym najważniejsza była piłka.</p><h2>Obok minigolfa</h2><p>Plan ostatniego sezonu umieszczał tę ogrodzoną przestrzeń przy czerwonych torach minigolfa, z Chaises Volantes w tle. Opisy turystyczne parku również wymieniały Home-ball wśród zabaw na świeżym powietrzu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Home-ball</h2><p>O Home-ball tinha a forma de uma jaula desportiva retangular cujas aberturas coloridas nas paredes serviam de alvos.</p><h2>Um campo fechado por redes</h2><p>A bola permanecia no recinto enquanto as equipas combinavam movimento, passes e remates para as zonas marcadas.</p><p>Entre o minigolfe e a zona central, este jogo de equipa trazia uma linguagem desportiva a um parque sobretudo dedicado ao lazer.</p>",
+            "newValue": "<h2>Alvos vermelhos e amarelos</h2><p>O Home-ball desenhava um cubo de redes no prado. Alvos vermelhos e amarelos pontuavam as paredes à volta de um pequeno campo onde a bola era protagonista.</p><h2>Ao lado do minigolfe</h2><p>O mapa da última época situava este recinto junto às pistas vermelhas do minigolfe, com Chaises Volantes ao fundo. As apresentações turísticas também incluíam o Home-ball entre os jogos ao ar livre do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "aba7141a-dbb3-40e1-9696-2501297f46e9",
+        "entityKey": "aba7141a-dbb3-40e1-9696-2501297f46e9",
+        "displayName": "Course Ô Sac",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac übertrug das gemeinsame Sackhüpfen auf eine offene Fläche, ohne Maschine oder große Kulisse.</p><h2>Ein absichtlich wackliges Rennen</h2><p>Kurze Sprünge, verlorenes Gleichgewicht und das gemeinsame Ziel machten den Wettkampf ebenso lustig zum Zuschauen wie zum Mitmachen.</p><p>Der Plan von 2026 zeigte sie nahe schattigen Tischen und der Baby Zone, am Übergang zwischen Ruhe und Spiel.</p>",
+            "newValue": "<h2>Säcke auf der Wiese</h2><p>Course Ô Sac gehörte schon in der ersten Saison zu den Spielen im Freien von Ô Parc. Der Koikispass-Bericht von 2017 nannte das Sackhüpfen neben den Pedalkarts und dem Riesen-Twister.</p><h2>Weiterhin auf dem Parkplan</h2><p>Noch 2026 stellten zwei kleine Piraten in Säcken das Spiel auf dem Parkplan dar. Es lag im baumbestandenen Bereich nahe den Tischen und der Baby Zone, abseits des großen Gesichts von La Chenille.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac brought the group sack race to an open area, without machinery or an imposing set.</p><h2>A deliberately unbalanced race</h2><p>Short hops, lost balance and the shared finish made the contest as amusing to watch as it was to run.</p><p>The 2026 map placed it near shaded tables and the Baby Zone, where rest spaces met active play.</p>",
+            "newValue": "<h2>Sacks on the meadow</h2><p>Course Ô Sac was among Ô Parc’s outdoor games from its first season. Koikispass’s 2017 report mentioned it alongside the pedal karts and giant Twister.</p><h2>A game still on the map</h2><p>In 2026, two small pirates in sacks still represented the race on the park map. It occupied the tree-lined area near the tables and Baby Zone, away from La Chenille’s large face.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac recuperaba la carrera de sacos colectiva en una zona abierta, sin máquinas ni grandes decorados.</p><h2>Una carrera deliberadamente inestable</h2><p>Los saltos cortos, la pérdida de equilibrio y la llegada compartida hacían la competición tan divertida de ver como de correr.</p><p>El plano de 2026 la situaba cerca de mesas sombreadas y de la Baby Zone, donde se encontraban descanso y juego activo.</p>",
+            "newValue": "<h2>Los sacos en la pradera</h2><p>Course Ô Sac formaba parte de los juegos al aire libre de Ô Parc desde su primera temporada. El reportaje de Koikispass de 2017 citaba la carrera de sacos junto a los karts a pedales y el Twister gigante.</p><h2>Un juego que seguía en el plano</h2><p>En 2026 dos pequeños piratas dentro de sus sacos seguían representando la carrera en el plano. Ocupaba la zona arbolada junto a las mesas y la Baby Zone, lejos del gran rostro de La Chenille.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac reprenait le jeu collectif de la course en sac dans une zone ouverte, sans machine ni décor imposant.</p><h2>Une course volontairement déséquilibrée</h2><p>Les bonds courts, les pertes dʼéquilibre et lʼarrivée commune faisaient de la compétition un spectacle aussi drôle à regarder quʼà courir.</p><p>Le plan de 2026 lʼinstallait près des tables ombragées et de la Baby Zone, au croisement des espaces de repos et de jeu.</p>",
+            "newValue": "<h2>Les sacs dans la prairie</h2><p>La Course Ô Sac faisait partie des jeux de plein air d’Ô Parc dès sa première saison. Le reportage de Koikispass publié en 2017 la citait aux côtés des karts à pédales et du Twister géant.</p><h2>Un jeu resté sur le plan</h2><p>En 2026, deux petits pirates dans leurs sacs représentaient encore cette course sur le plan du parc. Elle occupait la partie arborée près des tables et de la Baby Zone, loin du grand visage de La Chenille.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac riproponeva il gioco collettivo della corsa nei sacchi in uno spazio aperto, senza macchine o scenografie imponenti.</p><h2>Una corsa volutamente instabile</h2><p>Saltelli, equilibri perduti e arrivo condiviso rendevano la gara divertente da guardare quanto da correre.</p><p>La mappa del 2026 la collocava vicino ai tavoli ombreggiati e alla Baby Zone, fra riposo e gioco attivo.</p>",
+            "newValue": "<h2>I sacchi nel prato</h2><p>Course Ô Sac faceva parte dei giochi all’aperto di Ô Parc fin dalla prima stagione. Il reportage di Koikispass del 2017 citava la corsa nei sacchi accanto ai kart a pedali e al Twister gigante.</p><h2>Un gioco ancora sulla mappa</h2><p>Nel 2026 due piccoli pirati nei sacchi rappresentavano ancora la corsa sulla mappa del parco. Occupava l’area alberata vicino ai tavoli e alla Baby Zone, lontano dal grande volto di La Chenille.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac bracht de gezamenlijke zakloop naar een open plek, zonder machine of groot decor.</p><h2>Een bewust wankele race</h2><p>Korte sprongen, verloren evenwicht en de gezamenlijke finish maakten de wedstrijd even grappig om te bekijken als om te lopen.</p><p>Op de kaart van 2026 lag ze bij schaduwtafels en de Baby Zone, waar rust en actief spel samenkwamen.</p>",
+            "newValue": "<h2>Zakken op het grasveld</h2><p>Course Ô Sac behoorde vanaf het eerste seizoen tot de buitenspelen van Ô Parc. Het verslag van Koikispass uit 2017 noemde het zaklopen naast de skelters en de reuzentwister.</p><h2>Nog steeds op de kaart</h2><p>In 2026 stelden twee kleine piraten in zakken de wedstrijd nog altijd voor op de parkkaart. De plek lag tussen de bomen bij de tafels en de Baby Zone, op afstand van het grote gezicht van La Chenille.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac przenosiło zespołowy wyścig w workach na otwartą przestrzeń, bez maszyn i rozbudowanej scenografii.</p><h2>Celowo chwiejny wyścig</h2><p>Krótkie skoki, utrata równowagi i wspólna meta sprawiały, że wyścig bawił zarówno uczestników, jak i widzów.</p><p>Mapa z 2026 roku umieszczała ją przy zacienionych stołach i Baby Zone, na styku odpoczynku i aktywnej zabawy.</p>",
+            "newValue": "<h2>Worki na łące</h2><p>Course Ô Sac należała do zabaw na świeżym powietrzu w Ô Parc już w pierwszym sezonie. Reportaż Koikispass z 2017 roku wymieniał wyścig w workach obok gokartów na pedały i wielkiego Twistera.</p><h2>Zabawa obecna na ostatnim planie</h2><p>W 2026 roku dwaj mali piraci w workach nadal przedstawiali wyścig na planie parku. Znajdował się on wśród drzew przy stołach i Baby Zone, z dala od wielkiej twarzy La Chenille.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Course Ô Sac</h2><p>Course Ô Sac levava a corrida de sacos em grupo para uma zona aberta, sem máquinas ou cenários imponentes.</p><h2>Uma corrida deliberadamente instável</h2><p>Saltos curtos, desequilíbrios e uma chegada partilhada tornavam a competição tão divertida de ver como de correr.</p><p>O mapa de 2026 colocava-a perto de mesas à sombra e da Baby Zone, no encontro entre descanso e brincadeira ativa.</p>",
+            "newValue": "<h2>Os sacos no prado</h2><p>A Course Ô Sac fazia parte dos jogos ao ar livre do Ô Parc desde a primeira época. A reportagem da Koikispass de 2017 citava a corrida de sacos ao lado dos karts a pedais e do Twister gigante.</p><h2>Um jogo que continuava no mapa</h2><p>Em 2026 dois pequenos piratas dentro dos sacos ainda representavam a corrida no mapa. Ocupava a zona arborizada perto das mesas e da Baby Zone, afastada do grande rosto da La Chenille.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "612bb456-e15e-4768-bd59-c4563ec14611",
+        "entityKey": "612bb456-e15e-4768-bd59-c4563ec14611",
+        "displayName": "Tyroliennes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Tyroliennes</h2><p>Die Seilrutschen führten auf zwei parallelen Linien durch den baumbestandenen Bereich, abseits der großen Hüpfanlagen.</p><h2>Zwei Linien zwischen Bäumen</h2><p>Vom erhöhten Start begann eine kurze Querung, deren Tempo aus Gefälle und Schwung des Seils entstand.</p><p>Ihre Lage am Ostrand des letzten Plans bildete einen bewaldeten Gegenpol zu den Angeboten auf der zentralen Wiese.</p>",
+            "newValue": "<h2>Unter den Bäumen bei den Hängematten</h2><p>Die Seilrutschen lagen am baumbestandenen Rand der Wiese. Auf dem älteren Plan standen ihre Holzstützen bei den gestreiften Hängematten und der kleinen Eisenbahn, in einem Bereich mit weniger großen Hüpfanlagen.</p><h2>Von den ersten Spielen bis zur letzten Saison</h2><p>Koikispass erwähnte die Seilrutschen bereits 2017. Auf dem Plan von 2026 erschienen sie weiterhin, nun neben La Valse des Tasses, als Teil der Spiele im Freien von Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Tyroliennes</h2><p>The zip lines stretched two parallel routes through the wooded section, apart from the large inflatables.</p><h2>Two lines among the trees</h2><p>The raised start began a short crossing whose speed came from the slope and the cableʼs momentum.</p><p>Their position on the eastern edge of the final map provided a wooded counterpoint to the activities clustered in the central meadow.</p>",
+            "newValue": "<h2>Beneath the trees, near the hammocks</h2><p>The zip lines occupied the tree-lined edge of the meadow. On the older map, their timber supports appeared beside the striped hammocks and small train, in an area with fewer large inflatables.</p><h2>From the first games to the final season</h2><p>Koikispass mentioned the zip lines in 2017. They still appeared on the 2026 map, now beside La Valse des Tasses, retaining their place among Ô Parc’s outdoor games.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Tyroliennes</h2><p>Las tirolinas trazaban dos líneas paralelas en la zona arbolada, apartadas de los grandes hinchables.</p><h2>Dos líneas entre los árboles</h2><p>La salida elevada iniciaba una breve travesía cuya velocidad nacía de la pendiente y del impulso del cable.</p><p>Su ubicación en el borde oriental del plano final ofrecía un contrapunto arbolado a las actividades de la pradera central.</p>",
+            "newValue": "<h2>Bajo los árboles, junto a las hamacas</h2><p>Las tirolinas ocupaban el borde arbolado de la pradera. En el plano antiguo sus soportes de madera aparecían junto a las hamacas de rayas y el trenecito, en una zona con menos grandes hinchables.</p><h2>Desde los primeros juegos hasta la última temporada</h2><p>Koikispass mencionaba las tirolinas ya en 2017. Seguían en el plano de 2026, esta vez junto a La Valse des Tasses, conservando su lugar entre los juegos al aire libre de Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Tyroliennes</h2><p>Les Tyroliennes tendaient deux lignes parallèles dans la partie arborée, à lʼécart des grandes structures gonflables.</p><h2>Deux lignes dans les arbres</h2><p>Le départ en hauteur lançait une traversée brève où la vitesse venait de la pente et de lʼélan du câble.</p><p>Leur emplacement au bord est du plan final offrait une respiration boisée face aux activités concentrées dans la prairie centrale.</p>",
+            "newValue": "<h2>Sous les arbres, près des hamacs</h2><p>Les Tyroliennes occupaient le bord arboré de la prairie. Sur l’ancien plan, leurs supports de bois apparaissaient près des hamacs rayés et du petit train, dans une partie moins chargée en grands gonflables.</p><h2>Des premiers jeux à la dernière saison</h2><p>Koikispass mentionnait les tyroliennes dès 2017. Elles figuraient encore sur le plan de 2026, cette fois à côté de la Valse des Tasses, conservant leur place parmi les jeux de plein air d’Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Tyroliennes</h2><p>Le teleferiche tendevano due linee parallele nella parte alberata, separate dai grandi gonfiabili.</p><h2>Due linee fra gli alberi</h2><p>La partenza rialzata avviava una breve traversata, con velocità data dalla pendenza e dallo slancio del cavo.</p><p>La posizione sul margine orientale della mappa finale offriva un contrappunto alberato alle attività concentrate nel prato centrale.</p>",
+            "newValue": "<h2>Sotto gli alberi, vicino alle amache</h2><p>Le teleferiche occupavano il margine alberato del prato. Sulla mappa più vecchia i loro sostegni di legno comparivano vicino alle amache a righe e al trenino, in una zona con meno grandi gonfiabili.</p><h2>Dai primi giochi all’ultima stagione</h2><p>Koikispass menzionava le teleferiche già nel 2017. Figuravano ancora sulla mappa del 2026, questa volta accanto a La Valse des Tasses, restando fra i giochi all’aperto di Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Tyroliennes</h2><p>De tokkelbanen liepen met twee parallelle lijnen door het beboste deel, weg van de grote springstructuren.</p><h2>Twee lijnen tussen de bomen</h2><p>Vanaf het verhoogde vertrek begon een korte oversteek, waarbij helling en kabel voor de snelheid zorgden.</p><p>Hun plek aan de oostrand van de laatste kaart vormde een bosrijk tegenpunt voor de activiteiten op de centrale weide.</p>",
+            "newValue": "<h2>Onder de bomen bij de hangmatten</h2><p>De kabelbanen lagen aan de boomrijke rand van het grasveld. Op de oudere kaart stonden hun houten steunen bij de gestreepte hangmatten en het treintje, in een deel met minder grote springkussens.</p><h2>Van de eerste spelen tot het laatste seizoen</h2><p>Koikispass vermeldde de kabelbanen al in 2017. Ze stonden nog op de kaart van 2026, nu naast La Valse des Tasses, en bleven deel uitmaken van de buitenspelen van Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Tyroliennes</h2><p>Tyrolki prowadziły dwiema równoległymi liniami przez zadrzewioną część, z dala od dużych dmuchanych konstrukcji.</p><h2>Dwie trasy wśród drzew</h2><p>Podwyższony start rozpoczynał krótki przejazd, którego prędkość wynikała z nachylenia i rozpędu liny.</p><p>Położenie przy wschodniej granicy końcowej mapy dawało zadrzewiony kontrapunkt dla atrakcji skupionych na centralnej łące.</p>",
+            "newValue": "<h2>Pod drzewami, obok hamaków</h2><p>Zjazdy tyrolskie zajmowały zadrzewiony skraj łąki. Na starszym planie ich drewniane podpory znajdowały się przy pasiastych hamakach i małym pociągu, w części z mniejszą liczbą dużych dmuchańców.</p><h2>Od pierwszych zabaw do ostatniego sezonu</h2><p>Koikispass wspominał o tyrolkach już w 2017 roku. Widniały też na planie z 2026 roku, tym razem obok La Valse des Tasses, pozostając częścią zabaw na świeżym powietrzu w Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Tyroliennes</h2><p>As tirolesas estendiam duas linhas paralelas pela zona arborizada, afastadas dos grandes insufláveis.</p><h2>Duas linhas entre as árvores</h2><p>A partida elevada iniciava uma travessia curta cuja velocidade vinha da inclinação e do impulso do cabo.</p><p>A posição no limite oriental do mapa final oferecia um contraponto arborizado às atividades concentradas no relvado central.</p>",
+            "newValue": "<h2>Sob as árvores, perto das redes</h2><p>As tirolesas ocupavam a margem arborizada do prado. No mapa mais antigo, os suportes de madeira apareciam perto das redes de descanso às riscas e do pequeno comboio, numa área com menos insufláveis de grandes dimensões.</p><h2>Dos primeiros jogos à última época</h2><p>A Koikispass mencionava as tirolesas já em 2017. Continuavam no mapa de 2026, desta vez junto à La Valse des Tasses, mantendo o seu lugar entre os jogos ao ar livre do Ô Parc.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e6da3884-fb1d-4f45-845f-d0ff4550f8de",
+        "entityKey": "e6da3884-fb1d-4f45-845f-d0ff4550f8de",
+        "displayName": "Échelles Dingos",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos bestand aus mehreren farbigen Schrägbahnen für eine kurze Herausforderung nebeneinander.</p><h2>Aufstiege nebeneinander</h2><p>Gefragt waren Tritte und Gleichgewicht am Hang, nicht nur Geschwindigkeit auf dem Weg nach oben.</p><p>Auf dem Plan von 2026 lagen die Bahnen zwischen Course Ô Sac und La Boule in einem Bereich körperlicher Herausforderungen.</p>",
+            "newValue": "<h2>Leitern auf einer bunten Hüpfanlage</h2><p>Die Échelles Dingos zeigten gelbe, orange und blaue Streifen über einem aufblasbaren Untergrund. Auf dem älteren Plan mit Fotos waren Teilnehmer auf den am Hang gespannten Leitern zu sehen.</p><h2>Zwischen Leuchtturm und Wiesenspielen</h2><p>Ihr Name blieb auf den Plänen von 2025 und 2026 erhalten. Die letzte Ausgabe zeigte sie nahe Le Phare des Pirates und La Boule am Weg zu den Tischen unter den Bäumen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos presented several colourful sloping lanes, designed as a short challenge that could be tackled side by side.</p><h2>Side-by-side climbs</h2><p>The activity called for footholds and balance on the slope rather than relying on speed alone to reach the top.</p><p>On the 2026 map, the lanes sat between Course Ô Sac and La Boule in an area devoted to physical challenges.</p>",
+            "newValue": "<h2>Ladders on a colourful inflatable</h2><p>Échelles Dingos raised yellow, orange and blue bands above an inflatable base. The older photographic map showed participants on the ladders stretched up the slope.</p><h2>Between the lighthouse and meadow games</h2><p>Their name remained on the 2025 and 2026 maps. The final edition placed them near Le Phare des Pirates and La Boule, beside the path leading to the tables beneath the trees.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos presentaba varios carriles inclinados y coloridos, pensados como una prueba breve en paralelo.</p><h2>Subidas lado a lado</h2><p>La actividad exigía encontrar apoyos y equilibrio en la pendiente, no solo velocidad para alcanzar la parte alta.</p><p>En el plano de 2026, los carriles estaban entre Course Ô Sac y La Boule, en un área dedicada a los retos físicos.</p>",
+            "newValue": "<h2>Escaleras sobre un hinchable multicolor</h2><p>Échelles Dingos levantaba franjas amarillas, naranjas y azules sobre una base hinchable. El antiguo plano fotográfico mostraba participantes en las escaleras tendidas sobre la pendiente.</p><h2>Entre el faro y los juegos de pradera</h2><p>Su nombre seguía en los planos de 2025 y 2026. La última edición situaba la atracción cerca de Le Phare des Pirates y La Boule, junto al camino hacia las mesas bajo los árboles.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos présentait plusieurs couloirs inclinés et colorés, conçus comme une épreuve courte à partager en parallèle.</p><h2>Des ascensions côte à côte</h2><p>Lʼactivité demandait de trouver appuis et équilibre sur la pente plutôt que de simplement atteindre le sommet par la vitesse.</p><p>Sur le plan 2026, les couloirs se trouvaient entre la Course Ô Sac et La Boule, dans un secteur consacré aux défis physiques.</p>",
+            "newValue": "<h2>Des échelles sur un gonflable multicolore</h2><p>Les Échelles Dingos dressaient leurs bandes jaunes, orange et bleues au-dessus d’une base gonflable. Sur l’ancien plan photographique, des participants apparaissaient sur les échelles tendues dans la pente.</p><h2>Entre le phare et les jeux de prairie</h2><p>Leur nom restait sur les plans de 2025 et 2026. La dernière édition les plaçait près du Phare des Pirates et de La Boule, au pied de l’allée menant aux tables sous les arbres.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos proponeva più corsie inclinate e colorate, pensate come una breve sfida da affrontare fianco a fianco.</p><h2>Salite fianco a fianco</h2><p>Lʼattività richiedeva appoggi ed equilibrio sulla pendenza, non soltanto velocità per raggiungere la sommità.</p><p>Nella mappa del 2026, le corsie si trovavano fra Course Ô Sac e La Boule, in un settore dedicato alle sfide fisiche.</p>",
+            "newValue": "<h2>Scale su un gonfiabile multicolore</h2><p>Échelles Dingos innalzava fasce gialle, arancioni e blu sopra una base gonfiabile. Nella vecchia mappa fotografica comparivano partecipanti sulle scale tese lungo il pendio.</p><h2>Fra il faro e i giochi nel prato</h2><p>Il nome restava sulle mappe del 2025 e del 2026. L’ultima edizione collocava l’attrazione vicino a Le Phare des Pirates e La Boule, accanto al sentiero che portava ai tavoli sotto gli alberi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos bestond uit verschillende gekleurde schuine banen voor een korte uitdaging naast elkaar.</p><h2>Klimmen naast elkaar</h2><p>De activiteit vroeg om steunpunten en evenwicht op de helling, niet alleen om snelheid naar de top.</p><p>Op de kaart van 2026 lagen de banen tussen Course Ô Sac en La Boule, in een zone voor fysieke uitdagingen.</p>",
+            "newValue": "<h2>Ladders op een kleurrijk springkussen</h2><p>Échelles Dingos had gele, oranje en blauwe banen boven een opblaasbare ondergrond. De oudere kaart met foto’s toonde deelnemers op de ladders die langs de helling waren gespannen.</p><h2>Tussen de vuurtoren en de buitenspelen</h2><p>De naam bleef op de kaarten van 2025 en 2026 staan. De laatste editie plaatste de attractie bij Le Phare des Pirates en La Boule, langs het pad naar de tafels onder de bomen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos składało się z kilku kolorowych, pochyłych torów do krótkiej rywalizacji obok siebie.</p><h2>Wspinaczka obok siebie</h2><p>Zadanie wymagało szukania podparcia i równowagi na pochyłości, a nie wyłącznie szybkości w drodze na górę.</p><p>Na mapie z 2026 roku tory leżały między Course Ô Sac a La Boule, w sektorze poświęconym ruchowym wyzwaniom.</p>",
+            "newValue": "<h2>Drabinki na kolorowym dmuchańcu</h2><p>Échelles Dingos wznosiło żółte, pomarańczowe i niebieskie pasy nad dmuchaną podstawą. Starszy plan ze zdjęciami pokazywał uczestników na drabinkach rozpiętych wzdłuż pochyłości.</p><h2>Między latarnią a zabawami na łące</h2><p>Nazwa pozostała na planach z 2025 i 2026 roku. Ostatnia edycja umieszczała atrakcję przy Le Phare des Pirates i La Boule, obok ścieżki prowadzącej do stołów pod drzewami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Échelles Dingos</h2><p>Échelles Dingos apresentava várias pistas inclinadas e coloridas, pensadas como um desafio curto lado a lado.</p><h2>Subidas lado a lado</h2><p>A atividade exigia apoios e equilíbrio na inclinação, e não apenas velocidade para chegar ao topo.</p><p>No mapa de 2026, as pistas ficavam entre Course Ô Sac e La Boule, numa área dedicada a desafios físicos.</p>",
+            "newValue": "<h2>Escadas sobre um insuflável multicolor</h2><p>Échelles Dingos erguia faixas amarelas, laranja e azuis sobre uma base insuflável. No antigo mapa fotográfico viam-se participantes nas escadas esticadas ao longo da encosta.</p><h2>Entre o farol e os jogos no prado</h2><p>O nome permanecia nos mapas de 2025 e 2026. A última edição situava a atração perto de Le Phare des Pirates e La Boule, junto ao caminho para as mesas sob as árvores.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

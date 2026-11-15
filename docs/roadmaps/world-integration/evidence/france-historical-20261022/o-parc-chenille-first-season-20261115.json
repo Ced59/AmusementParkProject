@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T05:15:11.708Z",
+  "result": {
+    "id": "9fe7c4c0634d49b1af7f53709763619c",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+    "path": "park_item/9fe7c4c0634d49b1af7f53709763619c",
+    "description": "La Chenille lors de sa première saison, en 2020.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1024,
+    "height": 768,
+    "sizeInBytes": 180821,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fc/chenille.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La Chenille, son enseigne verte et ses grandes fleurs décoratives derrière le mini-golf."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Chenille, with its green sign and oversized decorative flowers behind the mini-golf."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Chenille mit ihrem grünen Schild und großen Dekorationsblumen hinter der Minigolfanlage."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Chenille met het groene naambord en grote decoratieve bloemen achter de minigolf."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Chenille con l’insegna verde e i grandi fiori decorativi dietro il minigolf."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Chenille con su letrero verde y sus grandes flores decorativas detrás del minigolf."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Chenille z zielonym szyldem i dużymi dekoracyjnymi kwiatami za minigolfem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Chenille com o letreiro verde e grandes flores decorativas atrás do minigolfe."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La Chenille lors de sa première saison, en 2020."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Chenille during its first season in 2020."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Chenille in ihrer ersten Saison 2020."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Chenille tijdens het eerste seizoen in 2020."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Chenille nella sua prima stagione, nel 2020."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Chenille durante su primera temporada, en 2020."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Chenille podczas pierwszego sezonu w 2020 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Chenille durante a sua primeira época, em 2020."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Renard60La — Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Renard60La — Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T05:15:08.163Z",
+    "updatedAt": "2026-11-15T05:15:11.708Z"
+  },
+  "sourceEvidence": {
+    "stem": "chenille-first-season",
+    "sourcePage": "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887292-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+    "sourceImage": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fc/chenille.jpg",
+    "author": "Renard60La",
+    "sourcePlatform": "Tripadvisor",
+    "visitMonth": "2020-06",
+    "exactCaptureDate": null,
+    "reuseBasis": "Autorisation explicite du propriétaire de la campagne France pour les photos ; aucune licence libre ni autorisation du photographe inventée.",
+    "sourceFile": {
+      "id": 460887292,
+      "url": "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/fc/chenille.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fc-w.jpg",
+      "bytes": 180821,
+      "size": [
+        1024,
+        768
+      ],
+      "status": 200,
+      "sha256": "92fac59d392a39dacf647fff4e98a49e7cd5c1bf443143315b60c0b46f20831b",
+      "atUtc": "2026-11-15T05:11:09.147159+00:00"
+    },
+    "originalFile": {
+      "id": 460887292,
+      "hex": "1b/78/94/fc",
+      "url": "https://media-cdn.tripadvisor.com/media/photo-o/1b/78/94/fc/chenille.jpg",
+      "file": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b7894fc.jpg",
+      "status": 200,
+      "bytes": 2702856,
+      "size": [
+        4608,
+        3456
+      ],
+      "sha256": "37bec2b846cb75322ff0052eae2156a78e57efa8af610817b85d3824385b4cc7",
+      "atUtc": "2026-11-15T05:10:26.592586+00:00"
+    },
+    "review": "Original inspecté personnellement, sans filigrane. Variante photo-w publiée par le CDN, non retouchée localement, même photographie et cadrage. Photos2020 historiques ; pas de jour de prise de vue inventé.",
+    "ownerId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+    "generalParkView": false
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

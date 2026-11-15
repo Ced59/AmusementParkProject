@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "4d2ed5cb5c6f58a7705d8321a078a34806de8475df3482b2136454e7b5f187cd",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "23d1c5f8-e859-4098-aac0-6c4b7bc28885",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:24:35.9295352Z",
+    "appliedAtUtc": "2026-11-15T05:24:35.9295371Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b9f88323-62c3-4043-8ec1-08955e172ab5",
+        "entityKey": "b9f88323-62c3-4043-8ec1-08955e172ab5",
+        "displayName": "Caisse & souvenirs",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>Kasse und Souvenirverkauf befanden sich im kleinen Empfangsgebäude nahe dem Minigolf, wo der Besuch begann.</p><h2>Eingang und Erinnerung</h2><p>Der Tresen verband den Eintritt mit einigen Gegenständen, die an Löwe, Logo und Familienwelten des Parks erinnerten.</p><p>Auf dem Plan von 2026 lag der Informationspunkt gegenüber dem Parkplatz und führte direkt in die Wege der letzten Saison.</p>",
+            "newValue": "<h2>Der gelbe Eingangskiosk</h2><p>Die Kasse von Ô Parc befand sich in einem kleinen gelben Kiosk am Eingang zur Wiese. Das Foto von 2020 zeigt den offenen Verkaufstresen und das Eingangsschild hinter der Minigolfanlage.</p><h2>Gegenüber dem Parkplatz</h2><p>Der Plan von 2026 nannte diesen Empfangspunkt „Caisse & souvenirs“ und zeigte ihn nahe Minigolf gegenüber dem Parkplatz. Das Eingangsschild zeigte den Namen Ô Parc mit seinem kleinen Löwen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>The ticket and souvenir counter occupied the small reception building near miniature golf where a visit began.</p><h2>The parkʼs threshold and keepsakes</h2><p>The counter combined admission with a selection of objects recalling the parkʼs lion, logo and family worlds.</p><p>On the 2026 map, this information point faced the parking area and led directly into the paths of the final season.</p>",
+            "newValue": "<h2>The yellow entrance kiosk</h2><p>Ô Parc’s ticket desk occupied a small yellow kiosk at the meadow’s entrance. The 2020 photograph shows its open counter and entrance sign behind the mini-golf.</p><h2>Facing the parking area</h2><p>The 2026 map called this reception point “Caisse & souvenirs” and placed it near the mini-golf, facing the parking area. The entrance sign displayed the name Ô Parc with its small lion.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>La taquilla y los recuerdos ocupaban el pequeño edificio de recepción cerca del minigolf, donde comenzaba la visita.</p><h2>La entrada y los recuerdos</h2><p>El mostrador reunía la entrada y algunos objetos que recordaban el león, el logotipo y los mundos familiares del parque.</p><p>En el plano de 2026, este punto de información estaba frente al aparcamiento y daba paso directo a las sendas de la última temporada.</p>",
+            "newValue": "<h2>El quiosco amarillo de entrada</h2><p>La taquilla de Ô Parc estaba en un pequeño quiosco amarillo a la entrada de la pradera. La fotografía de 2020 muestra el mostrador abierto y el letrero de entrada detrás del minigolf.</p><h2>Frente al aparcamiento</h2><p>El plano de 2026 llamaba a este punto de recepción «Caisse & souvenirs» y lo situaba cerca del minigolf, frente al aparcamiento. El letrero de entrada mostraba el nombre Ô Parc con su pequeño león.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>La Caisse & souvenirs occupait le petit bâtiment dʼaccueil proche du mini-golf, à lʼendroit où commençait la visite.</p><h2>Le seuil et la mémoire du parc</h2><p>Le comptoir réunissait lʼentrée dans le parc et quelques objets rappelant son lion, son logo et ses univers familiaux.</p><p>Sur le plan de 2026, ce point dʼinformation faisait face au stationnement et introduisait directement les allées de la dernière saison.</p>",
+            "newValue": "<h2>Le kiosque jaune de l’entrée</h2><p>La caisse d’Ô Parc se trouvait dans un petit kiosque jaune, à l’entrée de la prairie. La photographie de 2020 montre son comptoir ouvert et son enseigne d’entrée derrière le mini-golf.</p><h2>Face au stationnement</h2><p>Le plan de 2026 nommait cet accueil « Caisse & souvenirs » et le représentait près du mini-golf, face au parking. L’enseigne d’accueil portait le nom Ô Parc avec son petit lion.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>La cassa e i souvenir occupavano il piccolo edificio dʼaccoglienza vicino al minigolf, dove iniziava la visita.</p><h2>La soglia e i ricordi del parco</h2><p>Il banco riuniva lʼingresso e alcuni oggetti che richiamavano il leone, il logo e gli universi familiari del parco.</p><p>Nella mappa del 2026, il punto informazioni era di fronte al parcheggio e introduceva direttamente ai vialetti dellʼultima stagione.</p>",
+            "newValue": "<h2>Il chiosco giallo dell’ingresso</h2><p>La biglietteria di Ô Parc occupava un piccolo chiosco giallo all’ingresso del prato. La fotografia del 2020 mostra il banco aperto e l’insegna d’ingresso dietro il minigolf.</p><h2>Di fronte al parcheggio</h2><p>La mappa del 2026 chiamava questo punto di accoglienza « Caisse & souvenirs » e lo collocava vicino al minigolf, di fronte al parcheggio. L’insegna d’ingresso riportava il nome Ô Parc con il piccolo leone.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>De kassa en souvenirs zaten in het kleine ontvangstgebouw bij de minigolf, waar het bezoek begon.</p><h2>De toegang en herinneringen</h2><p>De toonbank combineerde toegang met enkele voorwerpen die verwezen naar de leeuw, het logo en de familiewerelden van het park.</p><p>Op de kaart van 2026 lag dit informatiepunt tegenover de parking en gaf het rechtstreeks toegang tot de paden van het laatste seizoen.</p>",
+            "newValue": "<h2>De gele toegangskiosk</h2><p>De kassa van Ô Parc zat in een kleine gele kiosk aan de ingang van het grasveld. De foto uit 2020 toont de open balie en het toegangsbord achter de minigolf.</p><h2>Tegenover de parkeerplaats</h2><p>De kaart van 2026 noemde dit ontvangstpunt “Caisse & souvenirs” en plaatste het bij de minigolf, tegenover de parkeerplaats. Het toegangsbord droeg de naam Ô Parc met het kleine leeuwtje.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>Kasa i pamiątki mieściły się w małym budynku przyjęć obok minigolfa, w miejscu rozpoczęcia wizyty.</p><h2>Wejście i pamiątki</h2><p>Lada łączyła obsługę wejścia z przedmiotami nawiązującymi do lwa, logo i rodzinnych światów parku.</p><p>Na mapie z 2026 roku punkt informacyjny znajdował się naprzeciw parkingu i prowadził prosto na alejki ostatniego sezonu.</p>",
+            "newValue": "<h2>Żółty kiosk wejściowy</h2><p>Kasa Ô Parc znajdowała się w małym żółtym kiosku przy wejściu na łąkę. Zdjęcie z 2020 roku pokazuje otwartą ladę i szyld wejściowy za minigolfem.</p><h2>Naprzeciw parkingu</h2><p>Plan z 2026 roku nazywał ten punkt „Caisse & souvenirs” i umieszczał go przy minigolfie, naprzeciw parkingu. Szyld wejściowy nosił nazwę Ô Parc z małym lwem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Caisse & souvenirs</h2><p>A bilheteira e as lembranças ocupavam o pequeno edifício de acolhimento perto do minigolfe, onde começava a visita.</p><h2>A entrada e as lembranças</h2><p>O balcão reunia a entrada e alguns objetos que recordavam o leão, o logótipo e os universos familiares do parque.</p><p>No mapa de 2026, este ponto de informação ficava diante do estacionamento e introduzia diretamente nos caminhos da última época.</p>",
+            "newValue": "<h2>O quiosque amarelo da entrada</h2><p>A bilheteira do Ô Parc ficava num pequeno quiosque amarelo à entrada do prado. A fotografia de 2020 mostra o balcão aberto e o letreiro de entrada atrás do minigolfe.</p><h2>Em frente ao estacionamento</h2><p>O mapa de 2026 chamava a este ponto de acolhimento «Caisse & souvenirs» e situava-o perto do minigolfe, em frente ao estacionamento. O letreiro da entrada apresentava o nome Ô Parc com o pequeno leão.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "866d7199-ce94-4b42-a6c9-21fb695e883f",
+        "entityKey": "866d7199-ce94-4b42-a6c9-21fb695e883f",
+        "displayName": "Jeux dʼadresse",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>Die Geschicklichkeitsspiele bestanden aus kleinen Aufgaben in Holzbuden nahe den Picknicktischen und der Aqua Zone.</p><h2>Herausforderungen im Zentrum</h2><p>Hier entstand der Reiz weniger durch einen festen Ablauf als durch einen genauen Wurf, ein Ziel oder einen vergleichbaren Punktestand.</p><p>Die zentrale Lage machte sie in der letzten Saison zu einem spontanen Zwischenstopp zwischen Fahrgeschäften, Wasser- und Hüpfangeboten.</p>",
+            "newValue": "<h2>Kleine Buden beim Chalet</h2><p>Der Plan von 2026 stellte Jeux d’adresse als kleine Buden neben Chalet Gourmand dar. Die Illustration verband eine niedrige Hütte mit Spielständen, deren Vorderseiten wie Tresen aussahen.</p><h2>Bei den Picknicktischen</h2><p>Die Gruppe grenzte an die Picknicktische zwischen Aqua Zone und Baby Zone. Auf dem letzten Parkplan trug sie die Nummer 2.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>The skill games brought together small challenges in timber stalls near the picnic tables and the Aqua Zone.</p><h2>Challenges at the heart of the grounds</h2><p>Here, enjoyment came less from a fixed course than from a precise gesture, a target to hit or a score to compare.</p><p>Their central position made them a spontaneous pause between the mechanical, water and inflatable activities of the final season.</p>",
+            "newValue": "<h2>Small stalls beside the chalet</h2><p>The 2026 map depicted Jeux d’adresse as small stalls lined up beside Chalet Gourmand. The illustration combined a low hut with game fronts resembling counters.</p><h2>Beside the picnic tables</h2><p>This group stood along the picnic tables between the Aqua Zone and Baby Zone. It bore number 2 on the park’s final map.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>Los juegos de destreza reunían pequeñas pruebas en casetas de madera cerca de las mesas de pícnic y de la Aqua Zone.</p><h2>Retos en el centro del recinto</h2><p>Aquí la diversión dependía menos de un recorrido fijo que de un gesto preciso, una diana o una puntuación que comparar.</p><p>Su posición central las convertía en una parada espontánea entre las actividades mecánicas, acuáticas e hinchables de la última temporada.</p>",
+            "newValue": "<h2>Pequeños puestos junto al chalet</h2><p>El plano de 2026 representaba Jeux d’adresse como pequeños puestos alineados junto a Chalet Gourmand. La ilustración combinaba una caseta baja con fachadas de juegos parecidas a mostradores.</p><h2>Junto a las mesas de pícnic</h2><p>Este conjunto bordeaba las mesas de pícnic entre Aqua Zone y Baby Zone. Llevaba el número 2 en el último plano del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>Les Jeux dʼadresse réunissaient de petites épreuves sous des échoppes en bois, à proximité des tables de pique-nique et de lʼAqua Zone.</p><h2>Des défis au centre du domaine</h2><p>Ici, le plaisir venait moins dʼun parcours imposé que dʼun geste précis, dʼune cible à viser ou dʼun score à comparer.</p><p>Leur position centrale en faisait une halte spontanée entre les activités mécaniques, aquatiques et gonflables de la dernière saison.</p>",
+            "newValue": "<h2>Les petites échoppes près du chalet</h2><p>Les Jeux d’adresse figuraient sur le plan de 2026 sous la forme de petites échoppes, alignées près du Chalet Gourmand. Leur illustration mêlait une cabane basse et des façades de jeu à l’aspect de comptoirs.</p><h2>Au bord de la place des tables</h2><p>Cet ensemble bordait les tables de pique-nique, entre les deux secteurs Aqua Zone et Baby Zone. Il portait le numéro 2 sur le dernier plan du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>I giochi di abilità riunivano piccole prove in chioschi di legno vicino ai tavoli da picnic e allʼAqua Zone.</p><h2>Sfide nel cuore del parco</h2><p>Qui il divertimento nasceva meno da un percorso prestabilito che da un gesto preciso, un bersaglio o un punteggio da confrontare.</p><p>La posizione centrale ne faceva una sosta spontanea fra attrazioni meccaniche, acquatiche e gonfiabili nellʼultima stagione.</p>",
+            "newValue": "<h2>Piccoli chioschi vicino allo chalet</h2><p>La mappa del 2026 rappresentava Jeux d’adresse come piccoli chioschi allineati vicino a Chalet Gourmand. L’illustrazione univa una bassa casetta e facciate di giochi simili a banconi.</p><h2>Accanto ai tavoli da picnic</h2><p>Questo insieme costeggiava i tavoli da picnic fra Aqua Zone e Baby Zone. Portava il numero 2 sull’ultima mappa del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>De behendigheidsspellen brachten korte uitdagingen samen in houten kraampjes bij de picknicktafels en de Aqua Zone.</p><h2>Uitdagingen in het hart van het terrein</h2><p>Hier draaide het minder om een vast parcours dan om een precieze beweging, een doelwit of een score om te vergelijken.</p><p>Door hun centrale ligging vormden ze in het laatste seizoen een spontane tussenstop tussen mechanische, water- en springactiviteiten.</p>",
+            "newValue": "<h2>Kleine kraampjes bij het chalet</h2><p>De kaart van 2026 beeldde Jeux d’adresse af als kleine kraampjes naast Chalet Gourmand. De illustratie combineerde een laag hutje met spelkramen die op balies leken.</p><h2>Langs de picknicktafels</h2><p>Deze groep grensde aan de picknicktafels tussen de Aqua Zone en de Baby Zone. Op de laatste parkkaart droeg ze nummer 2.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>Gry zręcznościowe obejmowały krótkie wyzwania w drewnianych budkach obok stołów piknikowych i Aqua Zone.</p><h2>Wyzwania w sercu terenu</h2><p>Tutaj zabawa polegała nie na wyznaczonej trasie, lecz na precyzyjnym ruchu, trafieniu w cel albo porównaniu wyniku.</p><p>Centralne położenie sprawiało, że w ostatnim sezonie były naturalnym przystankiem między atrakcjami mechanicznymi, wodnymi i dmuchanymi.</p>",
+            "newValue": "<h2>Małe budki przy Chalet Gourmand</h2><p>Plan z 2026 roku przedstawiał Jeux d’adresse jako niewielkie budki ustawione przy Chalet Gourmand. Ilustracja łączyła niski domek z frontami stanowisk do gry przypominającymi lady.</p><h2>Przy stołach piknikowych</h2><p>Zespół sąsiadował ze stołami piknikowymi między Aqua Zone a Baby Zone. Na ostatnim planie parku miał numer 2.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Jeux dʼadresse</h2><p>Os jogos de destreza reuniam pequenos desafios em bancas de madeira perto das mesas de piquenique e da Aqua Zone.</p><h2>Desafios no centro do recinto</h2><p>Aqui, a diversão vinha menos de um percurso fixo do que de um gesto preciso, um alvo ou uma pontuação para comparar.</p><p>A posição central tornava-os uma paragem espontânea entre atividades mecânicas, aquáticas e insufláveis na última época.</p>",
+            "newValue": "<h2>Pequenas bancas junto ao chalet</h2><p>O mapa de 2026 representava Jeux d’adresse como pequenas bancas alinhadas junto ao Chalet Gourmand. A ilustração reunia uma cabana baixa e frentes de jogos semelhantes a balcões.</p><h2>Junto às mesas de piquenique</h2><p>Este conjunto ladeava as mesas de piquenique entre a Aqua Zone e a Baby Zone. Tinha o número 2 no último mapa do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7d5591a1-f7b7-4a27-8019-aa58df889b4f",
+        "entityKey": "7d5591a1-f7b7-4a27-8019-aa58df889b4f",
+        "displayName": "Zone Arcade",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Zone Arcade</h2><p>Die Arcade-Zone versammelte mehrere Geräte in einem offenen Unterstand im Zentrum nahe dem Piratenbereich.</p><h2>Elektronische Spiele unter Dach</h2><p>Bildschirme, Steuerungen und kurze Partien bildeten einen Gegensatz zu den Bewegungsspielen auf der Wiese.</p><p>Das leichte Dach schützte die Geräte und ließ zugleich freie Blicke auf die benachbarten Attraktionen der letzten Saison.</p>",
+            "newValue": "<h2>Spiele unter einem offenen Dach</h2><p>Zone Arcade versammelte ihre Spiele unter einem zur Wiese offenen Dach. Der ältere Plan mit Fotos zeigte ein Holzgerüst über den Spielgeräten, ohne die Wände einer geschlossenen Halle.</p><h2>Nahe Le Phare des Pirates</h2><p>Auf den Plänen von 2025 und 2026 lag Zone Arcade nahe Le Phare des Pirates und Bulle de savon. Ihr kleines Dach bildete einen unauffälligeren Orientierungspunkt zwischen den großen aufblasbaren Kulissen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Zone Arcade</h2><p>The arcade area gathered several machines in an open-sided shelter at the centre of the grounds near the pirate area.</p><h2>Electronic games under cover</h2><p>Screens, controls and short sessions offered a contrast to the physical games spread across the meadow.</p><p>Its light roof protected the machines while keeping direct views towards the neighbouring attractions of the final season.</p>",
+            "newValue": "<h2>Games beneath an open shelter</h2><p>Zone Arcade grouped its games beneath a shelter open towards the meadow. The older photographic map showed a timber frame above the games, without the walls of an enclosed hall.</p><h2>Near Le Phare des Pirates</h2><p>On the 2025 and 2026 maps, Zone Arcade stood near Le Phare des Pirates and Bulle de savon. Its small roof formed a quieter landmark among the large inflatable settings.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Zone Arcade</h2><p>La Zone Arcade reunía varias máquinas en un quiosco abierto en el centro del recinto, cerca de la zona pirata.</p><h2>Juegos electrónicos bajo cubierta</h2><p>Pantallas, controles y partidas breves ofrecían un contraste con los juegos físicos repartidos por la pradera.</p><p>La cubierta ligera protegía las máquinas y mantenía vistas directas hacia las atracciones vecinas de la última temporada.</p>",
+            "newValue": "<h2>Juegos bajo un refugio abierto</h2><p>Zone Arcade reunía sus juegos bajo un refugio abierto hacia la pradera. El antiguo plano fotográfico mostraba una estructura de madera sobre los juegos, sin las paredes de una sala cerrada.</p><h2>Cerca de Le Phare des Pirates</h2><p>En los planos de 2025 y 2026 Zone Arcade estaba cerca de Le Phare des Pirates y Bulle de savon. Su pequeño techo era un punto de referencia más discreto entre los grandes decorados hinchables.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Zone Arcade</h2><p>La Zone Arcade regroupait plusieurs bornes dans un kiosque ouvert, au centre du terrain et à proximité de lʼespace pirate.</p><h2>Des jeux électroniques sous abri</h2><p>Écrans, commandes et parties courtes offraient une parenthèse différente des jeux physiques répartis dans la prairie.</p><p>Sa toiture légère protégeait le matériel tout en gardant des vues directes vers les attractions voisines de la dernière saison.</p>",
+            "newValue": "<h2>Des jeux sous un abri ouvert</h2><p>La Zone Arcade rassemblait ses jeux sous un abri ouvert sur la prairie. L’ancien plan photographique montrait un portique de bois au-dessus d’équipements de jeu, sans les murs d’une salle fermée.</p><h2>Près du Phare des Pirates</h2><p>Sur les plans de 2025 et 2026, la Zone Arcade se trouvait près du Phare des Pirates et de Bulle de savon. Son petit toit formait un repère plus discret au milieu des grands décors gonflables.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Zone Arcade</h2><p>La Zone Arcade riuniva diverse macchine in un chiosco aperto al centro del terreno, vicino allʼarea piratesca.</p><h2>Giochi elettronici al coperto</h2><p>Schermi, comandi e partite brevi offrivano una pausa diversa dai giochi fisici distribuiti nel prato.</p><p>La copertura leggera proteggeva le macchine mantenendo viste dirette sulle attrazioni vicine dellʼultima stagione.</p>",
+            "newValue": "<h2>Giochi sotto una copertura aperta</h2><p>Zone Arcade riuniva i giochi sotto una copertura aperta verso il prato. La vecchia mappa fotografica mostrava una struttura di legno sopra le attrezzature, senza le pareti di una sala chiusa.</p><h2>Vicino a Le Phare des Pirates</h2><p>Sulle mappe del 2025 e del 2026 Zone Arcade si trovava vicino a Le Phare des Pirates e Bulle de savon. Il piccolo tetto era un riferimento più discreto fra le grandi scenografie gonfiabili.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Zone Arcade</h2><p>De arcadezone bracht verschillende automaten samen in een open paviljoen midden op het terrein, bij de piratenzone.</p><h2>Elektronische spellen onder een afdak</h2><p>Schermen, bediening en korte spelrondes vormden een afwisseling op de fysieke spellen verspreid over de weide.</p><p>Het lichte dak beschermde de automaten en liet tegelijk rechtstreeks zicht op de omliggende attracties van het laatste seizoen.</p>",
+            "newValue": "<h2>Spelen onder een open afdak</h2><p>Zone Arcade groepeerde de spelen onder een afdak dat open was naar het grasveld. De oudere kaart met foto’s toonde een houten frame boven de speeltoestellen, zonder muren van een afgesloten hal.</p><h2>Bij Le Phare des Pirates</h2><p>Op de kaarten van 2025 en 2026 lag Zone Arcade bij Le Phare des Pirates en Bulle de savon. Het kleine dak vormde een bescheiden herkenningspunt tussen de grote opblaasbare decors.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zone Arcade</h2><p>Zone Arcade skupiała kilka automatów w otwartym pawilonie pośrodku terenu, obok strefy pirackiej.</p><h2>Gry elektroniczne pod dachem</h2><p>Ekrany, sterowanie i krótkie rozgrywki stanowiły odmianę od ruchowych zabaw rozmieszczonych na łące.</p><p>Lekki dach chronił automaty, pozostawiając bezpośredni widok na sąsiednie atrakcje ostatniego sezonu.</p>",
+            "newValue": "<h2>Gry pod otwartym zadaszeniem</h2><p>Zone Arcade skupiała gry pod zadaszeniem otwartym na łąkę. Starszy plan ze zdjęciami pokazywał drewnianą konstrukcję nad urządzeniami do gry, bez ścian zamkniętej sali.</p><h2>Blisko Le Phare des Pirates</h2><p>Na planach z 2025 i 2026 roku Zone Arcade znajdowała się przy Le Phare des Pirates i Bulle de savon. Mały dach był skromniejszym punktem orientacyjnym pośród wielkich dmuchanych dekoracji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Zone Arcade</h2><p>A Zone Arcade reunia várias máquinas num quiosque aberto no centro do recinto, perto da zona pirata.</p><h2>Jogos eletrónicos abrigados</h2><p>Ecrãs, comandos e partidas curtas ofereciam um contraste com os jogos físicos espalhados pelo relvado.</p><p>A cobertura leve protegia as máquinas e mantinha vistas diretas para as atrações vizinhas da última época.</p>",
+            "newValue": "<h2>Jogos sob um abrigo aberto</h2><p>A Zone Arcade reunia os jogos sob um abrigo aberto para o prado. O antigo mapa fotográfico mostrava uma estrutura de madeira sobre os equipamentos, sem as paredes de uma sala fechada.</p><h2>Perto de Le Phare des Pirates</h2><p>Nos mapas de 2025 e 2026, a Zone Arcade ficava perto de Le Phare des Pirates e da Bulle de savon. O pequeno teto era uma referência mais discreta entre os grandes cenários insufláveis.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cb149211-44b6-43dd-98a1-44acd27811cd",
+        "entityKey": "cb149211-44b6-43dd-98a1-44acd27811cd",
+        "displayName": "Ô Corner Glacé",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé war ein gelber Kiosk neben Chalet Gourmand, erkennbar an farbigen Geräten und offener Front.</p><h2>Der kühle Stand an der Wiese</h2><p>Kalte Getränke, Eis und Süßes ergänzten die warmen Speisen des Chalets durch ein kleineres, sofort sichtbares Angebot.</p><p>Durch die Nähe zu schattigen Tischen gehörte der Stand zum zentralen Treffpunkt und lag nicht abseits der Aktivitäten.</p>",
+            "newValue": "<h2>Der Eistresen</h2><p>Ô Corner Glacé ergänzte Chalet Gourmand im kleinen Gastronomiebereich des Parks. Der Plan von 2026 stellte ihn als gelben Tresen mit großen Eis- und Lutscherfiguren dar.</p><h2>Süßes bei den Tischen</h2><p>Schon der ältere Plan kündigte Eis und Granita in diesem Bereich an. Die Tische vor den Tresen blickten auf die Wiese und die Spiele von Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé was a yellow kiosk beside Chalet Gourmand, recognisable by its colourful machines and open frontage.</p><h2>The meadowʼs chilled counter</h2><p>Cold drinks, ice creams and sweet treats complemented the chaletʼs hot food with a shorter, highly visible offer.</p><p>Its proximity to shaded tables made it part of the central gathering place rather than an outlet isolated from the activities.</p>",
+            "newValue": "<h2>The ice-cream counter</h2><p>Ô Corner Glacé stood alongside Chalet Gourmand in the park’s small food area. The 2026 map represented it as a yellow counter topped by large ice-cream and lollipop shapes.</p><h2>Sweet treats beside the tables</h2><p>The older map already advertised ice creams and slush drinks in this area. Tables gathered in front of the counters looked out over Ô Parc’s meadow and games.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé era un quiosco amarillo junto a Chalet Gourmand, reconocible por sus máquinas de colores y su frente abierto.</p><h2>El mostrador fresco de la pradera</h2><p>Bebidas frías, helados y dulces completaban la cocina caliente del chalet con una oferta breve y muy visible.</p><p>La cercanía de las mesas sombreadas lo integraba en la plaza central, no como un comercio aislado de las actividades.</p>",
+            "newValue": "<h2>El mostrador de helados</h2><p>Ô Corner Glacé acompañaba a Chalet Gourmand en la pequeña zona de restauración del parque. El plano de 2026 lo representaba como un mostrador amarillo coronado por grandes siluetas de helados y piruletas.</p><h2>Dulces junto a las mesas</h2><p>El plano antiguo ya anunciaba helados y granizados en este sector. Las mesas reunidas frente a los mostradores daban a la pradera y los juegos de Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé était un kiosque jaune placé à côté du Chalet Gourmand, reconnaissable à ses machines colorées et à son enseigne ouverte.</p><h2>Le comptoir frais de la prairie</h2><p>Boissons très fraîches, glaces et douceurs complétaient la cuisine chaude du chalet par une offre plus courte et immédiatement visible.</p><p>La proximité des tables ombragées en faisait un élément de la place centrale plutôt quʼun commerce isolé du reste des activités.</p>",
+            "newValue": "<h2>Le comptoir des glaces</h2><p>Ô Corner Glacé accompagnait le Chalet Gourmand dans le petit ensemble de restauration du parc. Le plan de 2026 le représentait par un comptoir jaune surmonté de grandes silhouettes de glaces et de sucettes.</p><h2>Les douceurs près des tables</h2><p>L’ancien plan annonçait déjà des glaces et des granités dans ce secteur. Les tables rassemblées devant les comptoirs ouvraient sur la prairie et les jeux d’Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé era un chiosco giallo accanto a Chalet Gourmand, riconoscibile dalle macchine colorate e dal fronte aperto.</p><h2>Il banco fresco del prato</h2><p>Bevande fredde, gelati e dolci completavano la cucina calda dello chalet con unʼofferta breve e subito visibile.</p><p>La vicinanza ai tavoli ombreggiati ne faceva parte della piazza centrale, non un punto vendita isolato dalle attività.</p>",
+            "newValue": "<h2>Il banco dei gelati</h2><p>Ô Corner Glacé affiancava Chalet Gourmand nel piccolo spazio di ristorazione del parco. La mappa del 2026 lo rappresentava come un banco giallo sormontato da grandi sagome di gelati e lecca-lecca.</p><h2>Dolci vicino ai tavoli</h2><p>La vecchia mappa annunciava già gelati e granite in questa zona. I tavoli riuniti davanti ai banconi si affacciavano sul prato e sui giochi di Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé was een gele kiosk naast Chalet Gourmand, herkenbaar aan kleurrijke machines en de open voorkant.</p><h2>Het koele loket aan de weide</h2><p>Koude dranken, ijsjes en zoetigheden vulden de warme keuken van het chalet aan met een kort en zichtbaar aanbod.</p><p>Door de nabijheid van schaduwtafels maakte het loket deel uit van de centrale ontmoetingsplek, niet van een afgelegen winkelpunt.</p>",
+            "newValue": "<h2>De ijsbalie</h2><p>Ô Corner Glacé stond naast Chalet Gourmand in het kleine eetgedeelte van het park. De kaart van 2026 stelde het voor als een gele balie met grote ijsjes en lolly’s erboven.</p><h2>Zoetigheden bij de tafels</h2><p>De oudere kaart kondigde in dit gebied al ijs en slushdrankjes aan. De tafels voor de balies keken uit over het grasveld en de spelen van Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>Ô Corner Glacé był żółtym kioskiem obok Chalet Gourmand, rozpoznawalnym po kolorowych urządzeniach i otwartym froncie.</p><h2>Chłodny punkt przy łące</h2><p>Zimne napoje, lody i słodkości uzupełniały ciepłą kuchnię domku krótszą, dobrze widoczną ofertą.</p><p>Bliskość zacienionych stołów włączała punkt w centralne miejsce spotkań, zamiast oddzielać go od atrakcji.</p>",
+            "newValue": "<h2>Lada z lodami</h2><p>Ô Corner Glacé sąsiadował z Chalet Gourmand w niewielkiej strefie gastronomicznej parku. Plan z 2026 roku przedstawiał go jako żółtą ladę z wielkimi sylwetkami lodów i lizaków.</p><h2>Słodkości przy stołach</h2><p>Starszy plan już zapowiadał lody i granitę w tej części. Stoły ustawione przed ladami wychodziły na łąkę i miejsca zabaw Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Ô Corner Glacé</h2><p>O Ô Corner Glacé era um quiosque amarelo junto ao Chalet Gourmand, reconhecível pelas máquinas coloridas e pela frente aberta.</p><h2>O balcão fresco do relvado</h2><p>Bebidas frias, gelados e doces completavam a cozinha quente do chalet com uma oferta curta e muito visível.</p><p>A proximidade das mesas à sombra integrava o balcão na praça central, em vez de o isolar das atividades.</p>",
+            "newValue": "<h2>O balcão dos gelados</h2><p>O Ô Corner Glacé acompanhava o Chalet Gourmand na pequena zona de restauração do parque. O mapa de 2026 representava-o como um balcão amarelo encimado por grandes silhuetas de gelados e chupa-chupas.</p><h2>Doces junto às mesas</h2><p>O mapa antigo já anunciava gelados e granizados nesta zona. As mesas reunidas diante dos balcões davam para o prado e os jogos do Ô Parc.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+        "entityKey": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+        "displayName": "Toboggan Konga",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Konga über dem Dschungel</h2><p>Ein großer brauner Gorilla mit hellem Bauch thronte über den grünen Hängen des Toboggan Konga. Seine Arme ragten über eine Palmenkulisse und verliehen der Hüpfanlage ihre erkennbare Silhouette zwischen den anderen Riesenfiguren auf der Wiese.</p><h2>Benachbarte große Rutschen</h2><p>Auf den Plänen von 2025 und 2026 lag Konga nahe dem Toboggan des pirates und La Chenille. Der ältere Tourismusplan zeigte Le Gorille als gesonderte kleinere Hüpfanlage; Konga war eine eigenständige Attraktion.</p>",
+            "newValue": "<h2>Konga über dem Dschungel</h2><p>Ein großer Gorilla mit hellem Bauch thronte über den grünen Hängen des Toboggan Konga. Seine Arme ragten über eine Palmenkulisse und verliehen der Hüpfanlage ihre erkennbare Silhouette zwischen den anderen Riesenfiguren auf der Wiese.</p><h2>Benachbarte große Rutschen</h2><p>Auf den Plänen von 2025 und 2026 lag Konga nahe dem Toboggan des pirates und La Chenille. Der ältere Tourismusplan zeigte Le Gorille als gesonderte kleinere Hüpfanlage; Konga war eine eigenständige Attraktion.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Konga above the jungle</h2><p>A large brown gorilla with a pale belly towered over Toboggan Konga’s green slopes. Its arms stretched above a palm-tree setting, giving the inflatable its recognisable silhouette among the meadow’s other giant figures.</p><h2>Neighbouring giant slides</h2><p>On the 2025 and 2026 maps, Konga stood near Toboggan des pirates and La Chenille. The older tourist map showed Le Gorille, a separate smaller inflatable, so Konga was a distinct attraction.</p>",
+            "newValue": "<h2>Konga above the jungle</h2><p>A large gorilla with a pale belly towered over Toboggan Konga’s green slopes. Its arms stretched above a palm-tree setting, giving the inflatable its recognisable silhouette among the meadow’s other giant figures.</p><h2>Neighbouring giant slides</h2><p>On the 2025 and 2026 maps, Konga stood near Toboggan des pirates and La Chenille. The older tourist map showed Le Gorille, a separate smaller inflatable, so Konga was a distinct attraction.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Konga sobre la selva</h2><p>Un gran gorila marrón, con el vientre claro, dominaba las pendientes verdes del Toboggan Konga. Sus brazos se extendían sobre un decorado de palmeras y daban al hinchable una silueta reconocible entre las otras grandes figuras de la pradera.</p><h2>Dos grandes toboganes vecinos</h2><p>En los planos de 2025 y 2026, Konga estaba cerca del Toboggan des pirates y de La Chenille. El antiguo plano turístico mostraba por separado Le Gorille, otro hinchable más pequeño: Konga era una atracción distinta.</p>",
+            "newValue": "<h2>Konga sobre la selva</h2><p>Un gran gorila, con el vientre claro, dominaba las pendientes verdes del Toboggan Konga. Sus brazos se extendían sobre un decorado de palmeras y daban al hinchable una silueta reconocible entre las otras grandes figuras de la pradera.</p><h2>Dos grandes toboganes vecinos</h2><p>En los planos de 2025 y 2026, Konga estaba cerca del Toboggan des pirates y de La Chenille. El antiguo plano turístico mostraba por separado Le Gorille, otro hinchable más pequeño: Konga era una atracción distinta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Konga au-dessus de la jungle</h2><p>Un grand gorille brun, au ventre clair, dominait les pentes vertes du Toboggan Konga. Ses bras s’étendaient au-dessus d’un décor de palmiers et donnaient au gonflable sa silhouette reconnaissable, visible entre les autres grandes figures de la prairie.</p><h2>Deux grands toboggans voisins</h2><p>Sur les plans de 2025 et 2026, Konga se trouvait près du Toboggan des pirates et de La Chenille. L’ancien plan touristique représentait séparément Le Gorille, un autre gonflable plus petit : Konga était bien une attraction distincte.</p>",
+            "newValue": "<h2>Konga au-dessus de la jungle</h2><p>Un grand gorille, au ventre clair, dominait les pentes vertes du Toboggan Konga. Ses bras s’étendaient au-dessus d’un décor de palmiers et donnaient au gonflable sa silhouette reconnaissable, visible entre les autres grandes figures de la prairie.</p><h2>Deux grands toboggans voisins</h2><p>Sur les plans de 2025 et 2026, Konga se trouvait près du Toboggan des pirates et de La Chenille. L’ancien plan touristique représentait séparément Le Gorille, un autre gonflable plus petit : Konga était bien une attraction distincte.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Konga sopra la giungla</h2><p>Un grande gorilla marrone dal ventre chiaro dominava i pendii verdi del Toboggan Konga. Le braccia si protendevano sopra un paesaggio di palme, dando al gonfiabile una sagoma riconoscibile fra le altre grandi figure del prato.</p><h2>Due grandi scivoli vicini</h2><p>Sulle mappe del 2025 e del 2026, Konga si trovava vicino al Toboggan des pirates e a La Chenille. La vecchia mappa turistica mostrava separatamente Le Gorille, un altro gonfiabile più piccolo: Konga era un’attrazione distinta.</p>",
+            "newValue": "<h2>Konga sopra la giungla</h2><p>Un grande gorilla dal ventre chiaro dominava i pendii verdi del Toboggan Konga. Le braccia si protendevano sopra un paesaggio di palme, dando al gonfiabile una sagoma riconoscibile fra le altre grandi figure del prato.</p><h2>Due grandi scivoli vicini</h2><p>Sulle mappe del 2025 e del 2026, Konga si trovava vicino al Toboggan des pirates e a La Chenille. La vecchia mappa turistica mostrava separatamente Le Gorille, un altro gonfiabile più piccolo: Konga era un’attrazione distinta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Konga boven de jungle</h2><p>Een grote bruine gorilla met een lichte buik torende boven de groene hellingen van Toboggan Konga uit. Zijn armen strekten zich boven een palmendecor uit en gaven het springkussen een herkenbaar silhouet tussen de andere reuzenfiguren op het grasveld.</p><h2>Twee grote glijbanen bij elkaar</h2><p>Op de kaarten van 2025 en 2026 stond Konga bij Toboggan des pirates en La Chenille. De oudere toeristische kaart toonde Le Gorille als een apart, kleiner springkussen; Konga was een afzonderlijke attractie.</p>",
+            "newValue": "<h2>Konga boven de jungle</h2><p>Een grote gorilla met een lichte buik torende boven de groene hellingen van Toboggan Konga uit. Zijn armen strekten zich boven een palmendecor uit en gaven het springkussen een herkenbaar silhouet tussen de andere reuzenfiguren op het grasveld.</p><h2>Twee grote glijbanen bij elkaar</h2><p>Op de kaarten van 2025 en 2026 stond Konga bij Toboggan des pirates en La Chenille. De oudere toeristische kaart toonde Le Gorille als een apart, kleiner springkussen; Konga was een afzonderlijke attractie.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Konga ponad dżunglą</h2><p>Duży brązowy goryl z jasnym brzuchem górował nad zielonymi zboczami Toboggan Konga. Jego ramiona rozpościerały się nad palmową scenerią, nadając dmuchańcowi rozpoznawalną sylwetkę wśród innych wielkich postaci na łące.</p><h2>Dwie sąsiadujące duże zjeżdżalnie</h2><p>Na planach z 2025 i 2026 roku Konga znajdował się przy Toboggan des pirates i La Chenille. Starszy plan turystyczny pokazywał osobno Le Gorille, inny, mniejszy dmuchaniec: Konga był odrębną atrakcją.</p>",
+            "newValue": "<h2>Konga ponad dżunglą</h2><p>Duży goryl z jasnym brzuchem górował nad zielonymi zboczami Toboggan Konga. Jego ramiona rozpościerały się nad palmową scenerią, nadając dmuchańcowi rozpoznawalną sylwetkę wśród innych wielkich postaci na łące.</p><h2>Dwie sąsiadujące duże zjeżdżalnie</h2><p>Na planach z 2025 i 2026 roku Konga znajdował się przy Toboggan des pirates i La Chenille. Starszy plan turystyczny pokazywał osobno Le Gorille, inny, mniejszy dmuchaniec: Konga był odrębną atrakcją.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Konga sobre a selva</h2><p>Um grande gorila castanho, de barriga clara, dominava as encostas verdes do Toboggan Konga. Os braços estendiam-se sobre um cenário de palmeiras e davam ao insuflável uma silhueta reconhecível entre as outras grandes figuras do prado.</p><h2>Dois grandes escorregas vizinhos</h2><p>Nos mapas de 2025 e 2026, Konga ficava perto do Toboggan des pirates e da La Chenille. O antigo mapa turístico mostrava separadamente Le Gorille, outro insuflável mais pequeno: Konga era uma atração distinta.</p>",
+            "newValue": "<h2>Konga sobre a selva</h2><p>Um grande gorila, de barriga clara, dominava as encostas verdes do Toboggan Konga. Os braços estendiam-se sobre um cenário de palmeiras e davam ao insuflável uma silhueta reconhecível entre as outras grandes figuras do prado.</p><h2>Dois grandes escorregas vizinhos</h2><p>Nos mapas de 2025 e 2026, Konga ficava perto do Toboggan des pirates e da La Chenille. O antigo mapa turístico mostrava separadamente Le Gorille, outro insuflável mais pequeno: Konga era uma atração distinta.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "displayName": "Trampolines",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Das große gelb-grüne Rechteck</h2><p>Die Trampoline standen auf einer erhöhten Plattform mit einem grünen Streifen auf gelbem Unterbau. Ein weißes Netz umgab die Sprungflächen und ließ den Blick auf Himmel und Wiese frei.</p><h2>Neben den Chaises Volantes</h2><p>Eine kleine Treppe führte auf den Rasen, wo Schuhe am Fuß des Netzes lagen. Auf den Fotografien waren die Chaises Volantes direkt hinter den Springenden zu sehen; auch der letzte Parkplan zeigte beide Anlagen nebeneinander in der Parkmitte.</p>",
+            "newValue": "<h2>Das große gelb-grüne Rechteck</h2><p>Die Trampoline standen auf einer erhöhten Plattform mit einem grünen Streifen auf gelbem Unterbau. Ein weißes Netz umgab die Sprungflächen und ließ den Blick auf Himmel und Wiese frei.</p><h2>Neben den Chaises Volantes</h2><p>Eine kleine Treppe führte auf den Rasen, wo Schuhe am Fuß des Netzes lagen. Auf den Fotografien waren die Chaises Volantes direkt hinter den Springenden zu sehen; auch der letzte Parkplan zeigte beide Anlagen nebeneinander in der Parkmitte.</p><p>Ein Foto vom Juni 2020 zeigt eine andere Form: große runde Trampoline mit blauem Rand und hohen schwarzen Netzen bei den Bäumen und Tischen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The large yellow-and-green rectangle</h2><p>Trampolines occupied a raised platform with a green stripe across its yellow base. White netting enclosed the jumping areas, with open views of the sky and meadow.</p><h2>Beside Chaises Volantes</h2><p>A small set of steps led down to the grass, where shoes were left at the foot of the netting. Chaises Volantes appeared directly behind the jumpers in photographs; the final park map retained these neighbouring positions in the centre of the grounds.</p>",
+            "newValue": "<h2>The large yellow-and-green rectangle</h2><p>Trampolines occupied a raised platform with a green stripe across its yellow base. White netting enclosed the jumping areas, with open views of the sky and meadow.</p><h2>Beside Chaises Volantes</h2><p>A small set of steps led down to the grass, where shoes were left at the foot of the netting. Chaises Volantes appeared directly behind the jumpers in photographs; the final park map retained these neighbouring positions in the centre of the grounds.</p><p>A photograph from June 2020 shows a different shape: large round trampolines with blue edges and tall black nets beside the trees and tables.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El gran rectángulo amarillo y verde</h2><p>Los Trampolines ocupaban una plataforma elevada con una franja verde sobre la base amarilla. Una red blanca rodeaba las zonas de salto, con vistas abiertas al cielo y a la pradera.</p><h2>Junto a las Chaises Volantes</h2><p>Una pequeña escalera bajaba al césped, donde quedaban los zapatos al pie de la red. En las fotografías las Chaises Volantes aparecen justo detrás de quienes saltan; el último plano conservaba esta proximidad en el centro del parque.</p>",
+            "newValue": "<h2>El gran rectángulo amarillo y verde</h2><p>Los Trampolines ocupaban una plataforma elevada con una franja verde sobre la base amarilla. Una red blanca rodeaba las zonas de salto, con vistas abiertas al cielo y a la pradera.</p><h2>Junto a las Chaises Volantes</h2><p>Una pequeña escalera bajaba al césped, donde quedaban los zapatos al pie de la red. En las fotografías las Chaises Volantes aparecen justo detrás de quienes saltan; el último plano conservaba esta proximidad en el centro del parque.</p><p>Una fotografía de junio de 2020 muestra otra silueta: grandes trampolines redondos de bordes azules y altas redes negras junto a los árboles y las mesas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le grand rectangle jaune et vert</h2><p>Les Trampolines formaient une plateforme surélevée dont le soubassement jaune était traversé d’une bande verte. Un filet blanc entourait les espaces de saut, largement ouverts sur le ciel et la prairie.</p><h2>Auprès des Chaises Volantes</h2><p>Un petit escalier descendait sur l’herbe, où les chaussures étaient déposées au pied du filet. Les Chaises Volantes apparaissaient juste derrière les sauteurs sur les photographies ; le plan final conservait ce voisinage au centre du parc.</p>",
+            "newValue": "<h2>Le grand rectangle jaune et vert</h2><p>Les Trampolines formaient une plateforme surélevée dont le soubassement jaune était traversé d’une bande verte. Un filet blanc entourait les espaces de saut, largement ouverts sur le ciel et la prairie.</p><h2>Auprès des Chaises Volantes</h2><p>Un petit escalier descendait sur l’herbe, où les chaussures étaient déposées au pied du filet. Les Chaises Volantes apparaissaient juste derrière les sauteurs sur les photographies ; le plan final conservait ce voisinage au centre du parc.</p><p>Une photographie de juin 2020 montre une autre silhouette : de grands trampolines ronds à bord bleu et hauts filets noirs, installés près des arbres et des tables.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Il grande rettangolo giallo e verde</h2><p>I Trampolines occupavano una piattaforma rialzata con una fascia verde sulla base gialla. Una rete bianca circondava le aree di salto, lasciando aperta la vista sul cielo e sul prato.</p><h2>Accanto alle Chaises Volantes</h2><p>Una piccola scala scendeva sull’erba, dove le scarpe venivano lasciate ai piedi della rete. Nelle fotografie le Chaises Volantes compaiono subito dietro chi salta; anche l’ultima mappa manteneva questa vicinanza al centro del parco.</p>",
+            "newValue": "<h2>Il grande rettangolo giallo e verde</h2><p>I Trampolines occupavano una piattaforma rialzata con una fascia verde sulla base gialla. Una rete bianca circondava le aree di salto, lasciando aperta la vista sul cielo e sul prato.</p><h2>Accanto alle Chaises Volantes</h2><p>Una piccola scala scendeva sull’erba, dove le scarpe venivano lasciate ai piedi della rete. Nelle fotografie le Chaises Volantes compaiono subito dietro chi salta; anche l’ultima mappa manteneva questa vicinanza al centro del parco.</p><p>Una fotografia del giugno 2020 mostra una sagoma diversa: grandi trampolini rotondi con bordi blu e alte reti nere, vicino agli alberi e ai tavoli.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De grote geel-groene rechthoek</h2><p>De Trampolines stonden op een verhoogd platform met een groene streep over de gele onderkant. Een wit net omsloot de springvlakken, met vrij zicht op de lucht en het grasveld.</p><h2>Naast de Chaises Volantes</h2><p>Een klein trapje kwam uit op het gras, waar schoenen aan de voet van het net lagen. Op de foto’s stonden de Chaises Volantes vlak achter de springende bezoekers; ook de laatste parkplattegrond toonde beide attracties naast elkaar in het midden van het terrein.</p>",
+            "newValue": "<h2>De grote geel-groene rechthoek</h2><p>De Trampolines stonden op een verhoogd platform met een groene streep over de gele onderkant. Een wit net omsloot de springvlakken, met vrij zicht op de lucht en het grasveld.</p><h2>Naast de Chaises Volantes</h2><p>Een klein trapje kwam uit op het gras, waar schoenen aan de voet van het net lagen. Op de foto’s stonden de Chaises Volantes vlak achter de springende bezoekers; ook de laatste parkplattegrond toonde beide attracties naast elkaar in het midden van het terrein.</p><p>Een foto uit juni 2020 toont een andere vorm: grote ronde trampolines met blauwe randen en hoge zwarte netten bij de bomen en tafels.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Duży żółto-zielony prostokąt</h2><p>Trampoliny zajmowały podwyższoną platformę z zielonym pasem na żółtej podstawie. Biała siatka otaczała miejsca do skakania, pozostawiając widok na niebo i łąkę.</p><h2>Obok Chaises Volantes</h2><p>Małe schodki prowadziły na trawę, gdzie u stóp siatki leżały buty. Na fotografiach Chaises Volantes widać tuż za skaczącymi osobami; ostatni plan parku również umieszczał obie atrakcje obok siebie pośrodku terenu.</p>",
+            "newValue": "<h2>Duży żółto-zielony prostokąt</h2><p>Trampoliny zajmowały podwyższoną platformę z zielonym pasem na żółtej podstawie. Biała siatka otaczała miejsca do skakania, pozostawiając widok na niebo i łąkę.</p><h2>Obok Chaises Volantes</h2><p>Małe schodki prowadziły na trawę, gdzie u stóp siatki leżały buty. Na fotografiach Chaises Volantes widać tuż za skaczącymi osobami; ostatni plan parku również umieszczał obie atrakcje obok siebie pośrodku terenu.</p><p>Zdjęcie z czerwca 2020 roku pokazuje inną sylwetkę: duże okrągłe trampoliny z niebieskimi brzegami i wysokimi czarnymi siatkami przy drzewach i stołach.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O grande retângulo amarelo e verde</h2><p>Os Trampolines ocupavam uma plataforma elevada com uma faixa verde sobre a base amarela. Uma rede branca rodeava as áreas de salto, deixando a vista aberta para o céu e o prado.</p><h2>Ao lado das Chaises Volantes</h2><p>Uma pequena escada descia até à relva, onde os sapatos ficavam junto à base da rede. Nas fotografias, as Chaises Volantes surgem logo atrás de quem salta; o último mapa mantinha esta proximidade no centro do parque.</p>",
+            "newValue": "<h2>O grande retângulo amarelo e verde</h2><p>Os Trampolines ocupavam uma plataforma elevada com uma faixa verde sobre a base amarela. Uma rede branca rodeava as áreas de salto, deixando a vista aberta para o céu e o prado.</p><h2>Ao lado das Chaises Volantes</h2><p>Uma pequena escada descia até à relva, onde os sapatos ficavam junto à base da rede. Nas fotografias, as Chaises Volantes surgem logo atrás de quem salta; o último mapa mantinha esta proximidade no centro do parque.</p><p>Uma fotografia de junho de 2020 mostra outra silhueta: grandes trampolins redondos com bordas azuis e redes pretas altas junto às árvores e mesas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+        "entityKey": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+        "displayName": "Home-ball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Rote und gelbe Ziele</h2><p>Home-ball bildete einen Netzwürfel auf der Wiese. Rote und gelbe Ziele verteilten sich auf seinen Seiten rund um ein kleines Spielfeld, auf dem der Ball im Mittelpunkt stand.</p><h2>Neben der Minigolfanlage</h2><p>Der Plan der letzten Saison zeigte das Gehege neben den roten Minigolfbahnen, mit den Chaises Volantes im Hintergrund. Auch die touristischen Beschreibungen des Parks nannten Home-ball unter den Spielen im Freien.</p>",
+            "newValue": "<h2>Rote und gelbe Ziele</h2><p>Home-ball bildete einen Netzwürfel auf der Wiese. Rote und gelbe Ziele verteilten sich auf seinen Seiten rund um ein kleines Spielfeld.</p><h2>Neben der Minigolfanlage</h2><p>Der Plan der letzten Saison zeigte dieses Spielfeld neben den roten Minigolfbahnen, mit den Chaises Volantes im Hintergrund. Auch die touristischen Beschreibungen des Parks nannten Home-ball unter den Spielen im Freien.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Red and yellow targets</h2><p>Home-ball formed a cube of netting in the meadow. Red and yellow targets dotted its sides around a small court where the ball took centre stage.</p><h2>Beside the mini-golf</h2><p>The final season’s map placed this enclosure beside the mini-golf’s red lanes, with Chaises Volantes behind it. Tourist descriptions of the park also listed Home-ball among its outdoor games.</p>",
+            "newValue": "<h2>Red and yellow targets</h2><p>Home-ball formed a cube of netting in the meadow. Red and yellow targets dotted its sides around a small court.</p><h2>Beside the mini-golf</h2><p>The final season’s map placed this enclosure beside the mini-golf’s red lanes, with Chaises Volantes behind it. Tourist descriptions of the park also listed Home-ball among its outdoor games.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Blancos rojos y amarillos</h2><p>Home-ball formaba un cubo de redes en la pradera. Blancos rojos y amarillos salpicaban sus paredes alrededor de una pequeña pista donde el balón era protagonista.</p><h2>Junto al minigolf</h2><p>El plano de la última temporada situaba este recinto junto a las pistas rojas del minigolf, con Chaises Volantes al fondo. Las descripciones turísticas también incluían Home-ball entre los juegos al aire libre del parque.</p>",
+            "newValue": "<h2>Blancos rojos y amarillos</h2><p>Home-ball formaba un cubo de redes en la pradera. Blancos rojos y amarillos salpicaban sus paredes alrededor de una pequeña pista.</p><h2>Junto al minigolf</h2><p>El plano de la última temporada situaba este recinto junto a las pistas rojas del minigolf, con Chaises Volantes al fondo. Las descripciones turísticas también incluían Home-ball entre los juegos al aire libre del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des cibles rouges et jaunes</h2><p>Le Home-ball dessinait un cube de filets dans la prairie. Des cibles rouges et jaunes ponctuaient ses parois, autour d’un petit terrain où le ballon tenait la première place.</p><h2>Près du mini-golf</h2><p>Le plan de la dernière saison situait cette enceinte près des pistes rouges du mini-golf, avec les Chaises Volantes en arrière-plan. Le Home-ball figurait aussi dans les présentations touristiques du parc, parmi les jeux de plein air.</p>",
+            "newValue": "<h2>Des cibles rouges et jaunes</h2><p>Le Home-ball dessinait un cube de filets dans la prairie. Des cibles rouges et jaunes ponctuaient ses parois, autour d’un petit terrain.</p><h2>Près du mini-golf</h2><p>Le plan de la dernière saison situait cette enceinte près des pistes rouges du mini-golf, avec les Chaises Volantes en arrière-plan. Le Home-ball figurait aussi dans les présentations touristiques du parc, parmi les jeux de plein air.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Bersagli rossi e gialli</h2><p>Home-ball disegnava un cubo di reti nel prato. Bersagli rossi e gialli punteggiavano le pareti attorno a un piccolo campo dove la palla era protagonista.</p><h2>Accanto al minigolf</h2><p>La mappa dell’ultima stagione collocava questo recinto vicino alle piste rosse del minigolf, con Chaises Volantes sullo sfondo. Anche le presentazioni turistiche del parco citavano Home-ball fra i giochi all’aperto.</p>",
+            "newValue": "<h2>Bersagli rossi e gialli</h2><p>Home-ball disegnava un cubo di reti nel prato. Bersagli rossi e gialli punteggiavano le pareti attorno a un piccolo campo.</p><h2>Accanto al minigolf</h2><p>La mappa dell’ultima stagione collocava questo recinto vicino alle piste rosse del minigolf, con Chaises Volantes sullo sfondo. Anche le presentazioni turistiche del parco citavano Home-ball fra i giochi all’aperto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Rode en gele doelen</h2><p>Home-ball vormde een kubus van netten op het grasveld. Rode en gele doelen zaten in de wanden rond een klein speelveld waar de bal centraal stond.</p><h2>Naast de minigolf</h2><p>De kaart van het laatste seizoen plaatste deze omheinde speelplek naast de rode minigolfbanen, met Chaises Volantes op de achtergrond. Ook toeristische beschrijvingen noemden Home-ball bij de buitenspelen van het park.</p>",
+            "newValue": "<h2>Rode en gele doelen</h2><p>Home-ball vormde een kubus van netten op het grasveld. Rode en gele doelen zaten in de wanden rond een klein speelveld.</p><h2>Naast de minigolf</h2><p>De kaart van het laatste seizoen plaatste deze omheinde speelplek naast de rode minigolfbanen, met Chaises Volantes op de achtergrond. Ook toeristische beschrijvingen noemden Home-ball bij de buitenspelen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Czerwone i żółte cele</h2><p>Home-ball tworzył na łące sześcian z siatek. Czerwone i żółte cele rozmieszczono na jego ścianach wokół niewielkiego boiska, na którym najważniejsza była piłka.</p><h2>Obok minigolfa</h2><p>Plan ostatniego sezonu umieszczał tę ogrodzoną przestrzeń przy czerwonych torach minigolfa, z Chaises Volantes w tle. Opisy turystyczne parku również wymieniały Home-ball wśród zabaw na świeżym powietrzu.</p>",
+            "newValue": "<h2>Czerwone i żółte cele</h2><p>Home-ball tworzył na łące sześcian z siatek. Czerwone i żółte cele rozmieszczono na jego ścianach wokół niewielkiego boiska.</p><h2>Obok minigolfa</h2><p>Plan ostatniego sezonu umieszczał tę ogrodzoną przestrzeń przy czerwonych torach minigolfa, z Chaises Volantes w tle. Opisy turystyczne parku również wymieniały Home-ball wśród zabaw na świeżym powietrzu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Alvos vermelhos e amarelos</h2><p>O Home-ball desenhava um cubo de redes no prado. Alvos vermelhos e amarelos pontuavam as paredes à volta de um pequeno campo onde a bola era protagonista.</p><h2>Ao lado do minigolfe</h2><p>O mapa da última época situava este recinto junto às pistas vermelhas do minigolfe, com Chaises Volantes ao fundo. As apresentações turísticas também incluíam o Home-ball entre os jogos ao ar livre do parque.</p>",
+            "newValue": "<h2>Alvos vermelhos e amarelos</h2><p>O Home-ball desenhava um cubo de redes no prado. Alvos vermelhos e amarelos pontuavam as paredes à volta de um pequeno campo.</p><h2>Ao lado do minigolfe</h2><p>O mapa da última época situava este recinto junto às pistas vermelhas do minigolfe, com Chaises Volantes ao fundo. As apresentações turísticas também incluíam o Home-ball entre os jogos ao ar livre do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}
