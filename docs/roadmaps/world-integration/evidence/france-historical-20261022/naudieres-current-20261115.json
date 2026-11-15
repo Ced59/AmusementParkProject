@@ -1,0 +1,101 @@
+{
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-15T08:32:29.153080Z",
+  "status": "partial",
+  "lastActualIntegrationAtUtc": "2026-11-15T08:30:32.1634788Z",
+  "lastApplyOperationId": "ad34eb09-de1c-46f6-815e-9aa102612630",
+  "localDirectory": "/workspace/france-historical-20261114/naudieres",
+  "scope": "Reprise ciblée de l’acquisition 2020 et rapprochement de dix-sept Apply historiques ; aucun audit complet nouveau ni publication.",
+  "counts": {
+    "items": 84,
+    "publicItems": 48,
+    "legacyHistoryEvents": 31,
+    "canonicalPublishedFacts": 29,
+    "canonicalDraftFacts": 2,
+    "canonicalRetractedRevisions": 75
+  },
+  "currentCompleteness": {
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 108,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T08:24:38.7495463Z",
+    "receivedAtUtc": "2026-11-15T08:24:40.2786556Z",
+    "action": "Completeness"
+  },
+  "currentAmecoContradiction": {
+    "url": "https://www.lesnaudieres.com/printemps-au-parc-des-naudieres/",
+    "finalUrl": "https://www.lesnaudieres.com/printemps-au-parc-des-naudieres/",
+    "status": 200,
+    "retrievedAtUtc": "2026-11-15T08:31:52.955690Z",
+    "sha256": "c6ba8095bc942c4fd15f00e87d4bcef672df76cd2c691918eaa58bd05a1edf73",
+    "observation": "La page de printemps classe encore Maison Ameco parmi les moins de cinq ans. Le catalogue Exploration indique dix ans minimum. Contradiction actuelle confirmée ; aucun âge certain fabriqué, fiche maintenue privée."
+  },
+  "sourceAccess": [
+    {
+      "name": "wikiparks-acquisition",
+      "url": "https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/",
+      "finalUrl": "https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:39.919143+00:00",
+      "bytes": 43127,
+      "sha256": "78eb8e2f67229fccfb8707d3bfdb8c18bdce33db67ead6739e61cb3efc4f967b"
+    },
+    {
+      "name": "park-acquisition",
+      "url": "https://www.lesnaudieres.com/parc-naudieres-wikiparks/",
+      "finalUrl": "https://www.lesnaudieres.com/parc-naudieres-wikiparks/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:42.790132+00:00",
+      "bytes": 65275,
+      "sha256": "f7ee5dbfbf95df784798c4e70ea999649d6395c726e5ade06bee2e0e89ef432f"
+    },
+    {
+      "name": "exploration-current",
+      "url": "https://www.lesnaudieres.com/univers/exploration/",
+      "finalUrl": "https://www.lesnaudieres.com/univers/exploration/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:44.920271+00:00",
+      "bytes": 90231,
+      "sha256": "972a5e367c8967b3a427b0cbb78af67ac274cea744fc382bbbba6553957c3288"
+    },
+    {
+      "name": "ij-july2020",
+      "url": "https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf",
+      "finalUrl": "https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:48.911063+00:00",
+      "bytes": 6534321,
+      "sha256": "6d26fa2a320f5d80f6819aba008974d548193b22955bc8100b88b7e95a8e1ab5"
+    },
+    {
+      "name": "park-context-photo",
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/gonflables-la-dome-600xauto_0_1.jpg",
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/gonflables-la-dome-600xauto_0_1.jpg",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:49.483929+00:00",
+      "bytes": 61138,
+      "sha256": "9496763119fba019d191cdf2b3b999e2fd23050e347d7179cfdf0a117ed0531e"
+    }
+  ],
+  "proofs": [
+    "naudieres-prior-operations-recovered-20261115.json",
+    "naudieres-acquisition-2020-20261115.json",
+    "naudieres-recovered-state-20261115.json"
+  ],
+  "remaining": [
+    "Maison Ameco : pages officielles contradictoires sur l’âge ; rester privée tant que le contrôle n’est pas résolu.",
+    "Trente-cinq autres lieux privés au cycle de vie à qualifier ; ne pas clôturer sur le seul score100.",
+    "Sept images de parc récupérées seulement ; les quarante-quatre photos des items et les huit plans antérieurement intégrés restent à retrouver par leurs IDs si nécessaire, jamais réimporter.",
+    "Acquisition2020 privée à publier après contrôle du périmètre ; ne pas dupliquer le programme d’investissement déjà public.",
+    "Ancien Facebook Published connu ; résoudre officiellement avant toute décision, jamais renvoyer une annonce existante."
+  ],
+  "fullAuditExportPerformedThisRecovery": false,
+  "facebookPublicationPerformed": false
+}

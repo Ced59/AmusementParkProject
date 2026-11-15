@@ -27737,9 +27737,190 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Reprendre le fait Acquisition de 2020 et auditer le dossier ; conserver la Maison Ameco privée tant que les indications officielles d’accès restent contradictoires.",
+      "lastDataIntegrationAt": "2026-11-15T08:30:32.163Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-800058f1-a0d9-4e68-8856-771632577322",
+          "appliedAt": "2026-10-20T00:34:00.291Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-800058f1-a0d9-4e68-8856-771632577322",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 7 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-01d96117-235b-49ba-9704-4968df1aea0c",
+          "appliedAt": "2026-10-20T00:38:54.897Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-01d96117-235b-49ba-9704-4968df1aea0c",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 3 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-20b43ae0-c650-49f6-ae78-273ff53c29eb",
+          "appliedAt": "2026-10-20T00:41:34.296Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-20b43ae0-c650-49f6-ae78-273ff53c29eb",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-4f304564-eae7-4100-9d25-96cc846cfda2",
+          "appliedAt": "2026-10-20T00:43:50.430Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-4f304564-eae7-4100-9d25-96cc846cfda2",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-2bc0e24d-7e78-461b-849c-87b05512e89a",
+          "appliedAt": "2026-10-20T00:46:20.143Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-2bc0e24d-7e78-461b-849c-87b05512e89a",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-8dab6a4b-02c1-4cf4-b3ca-cbfc388aedce",
+          "appliedAt": "2026-10-20T00:47:22.855Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-8dab6a4b-02c1-4cf4-b3ca-cbfc388aedce",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-e3d92d41-6a8f-4bc2-926b-20fa27128b5b",
+          "appliedAt": "2026-10-20T00:49:09.879Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-e3d92d41-6a8f-4bc2-926b-20fa27128b5b",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-7025940c-c479-4f5d-beb2-11076d37000e",
+          "appliedAt": "2026-10-20T00:52:39.961Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-7025940c-c479-4f5d-beb2-11076d37000e",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 6 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-379464b9-fab0-416b-8790-9d7ba769ebae",
+          "appliedAt": "2026-10-20T00:53:40.793Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-379464b9-fab0-416b-8790-9d7ba769ebae",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-3e67a044-cbae-4252-a197-238c450126f5",
+          "appliedAt": "2026-10-20T01:02:53.234Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-3e67a044-cbae-4252-a197-238c450126f5",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-f6e60e41-4835-471e-8578-b2aab6c1a71b",
+          "appliedAt": "2026-10-21T23:40:40.884Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-f6e60e41-4835-471e-8578-b2aab6c1a71b",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 5 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-89370280-a712-4bd7-84bc-4048ada5ec34",
+          "appliedAt": "2026-10-21T23:46:15.087Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-89370280-a712-4bd7-84bc-4048ada5ec34",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 59 mise(s) à jour, 34 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-9cc2caf3-bbb5-4b0e-92fd-d32e8ac33f96",
+          "appliedAt": "2026-10-21T23:47:29.983Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-9cc2caf3-bbb5-4b0e-92fd-d32e8ac33f96",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 83 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-affe4bc5-59fe-455e-957c-380157f15a68",
+          "appliedAt": "2026-10-21T23:52:31.679Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-affe4bc5-59fe-455e-957c-380157f15a68",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 7 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-f6197caa-ffaa-41fe-9412-04f36a400839",
+          "appliedAt": "2026-10-21T23:57:05.274Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-f6197caa-ffaa-41fe-9412-04f36a400839",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-52abd4f1-4749-42ae-b401-5c3215f31746",
+          "appliedAt": "2026-10-21T23:58:01.493Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-52abd4f1-4749-42ae-b401-5c3215f31746",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 0 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-f4259300-8fc2-46b5-8040-24ec1b9dbeac",
+          "appliedAt": "2026-10-21T23:59:49.560Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-prior-operations-recovered-20261115.json#apply-f4259300-8fc2-46b5-8040-24ec1b9dbeac",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 29 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-ad34eb09-de1c-46f6-815e-9aa102612630",
+          "appliedAt": "2026-11-15T08:30:32.163Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-acquisition-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Acquisition par Wikiparks en février 2020 intégrée en brouillon privé, huit langues personnellement relues, propriétaire nommé et trois sources ; distincte du programme d’investissement existant. Zéro warning/erreur, aucune publication ou réimport."
+        }
+      ],
+      "nextAction": "Acquisition Wikiparks février2020 appliquée privée8langues le15novembre08:30:32UTC, idempotence2inchangées et diagnostics0bloqueur. Publier après audit du périmètre ; qualifier Maison Ameco (sources officielles encore contradictoires) et35lieux privés. Dix-sept anciensApply rapprochés aux vraiesdates sansrejeu.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

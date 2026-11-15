@@ -1,0 +1,554 @@
+{
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "newEventVisibility": "private",
+  "personalEightLanguageReview": true,
+  "dateQualification": "Acquisition en février 2020 explicitement attestée par IJ n°7001 p.25. Le communiqué du 13 février annonce la reprise ; sa republication sur le site du parc le 13 mai ne date pas la transaction. Aucun jour juridique inventé.",
+  "eventSeparation": "Acquisition distincte du fait existant sur le programme d’investissement. Historique et état ciblé rapprochés avant création, aucun fait d’acquisition existant retrouvé. Référence opérateur inchangée.",
+  "imageChoice": {
+    "imageId": "457a3953036c404c88852f67a976048c",
+    "selection": "Photographie existante du parc utilisée comme contexte, non comme scène de signature. Original officiel relu ; aucune photographie de la transaction trouvée dans les communiqués consultés. Aucun réimport.",
+    "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/gonflables-la-dome-600xauto_0_1.jpg"
+  },
+  "document": {
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "name": "Parc des Naudières",
+        "countryCode": "FR"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "naudieres-history-acquisition-wikiparks-2020",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+            "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+            "year": 2020,
+            "month": 2,
+            "day": null,
+            "datePrecision": "Month",
+            "eventType": "Acquisition",
+            "isMajor": true,
+            "isVisible": false,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Wikiparks devient propriétaire des Naudières"
+              },
+              {
+                "languageCode": "en",
+                "value": "Wikiparks takes ownership of Les Naudières"
+              },
+              {
+                "languageCode": "de",
+                "value": "Wikiparks wird Eigentümer von Les Naudières"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Wikiparks wordt eigenaar van Les Naudières"
+              },
+              {
+                "languageCode": "it",
+                "value": "Wikiparks diventa proprietario di Les Naudières"
+              },
+              {
+                "languageCode": "es",
+                "value": "Wikiparks adquiere Les Naudières"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Wikiparks przejmuje Les Naudières"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Wikiparks torna-se proprietária de Les Naudières"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En février 2020, le parc de Sautron rejoint Wikiparks, déjà présent à Labenne-Océan avec Aquatic-Landes. Le groupe présente cette reprise comme sa deuxième acquisition. Ce changement d’actionnaire engage Les Naudières dans la stratégie de développement de parcs de loisirs régionaux portée par Arnaud Coste et François Boisroux."
+              },
+              {
+                "languageCode": "en",
+                "value": "In February 2020, the Sautron park joins Wikiparks, which already operates Aquatic-Landes in Labenne-Océan. The group describes the takeover as its second acquisition. The change of shareholder brings Les Naudières into the regional leisure park development strategy led by Arnaud Coste and François Boisroux."
+              },
+              {
+                "languageCode": "de",
+                "value": "Im Februar 2020 kommt der Park in Sautron zu Wikiparks, das bereits Aquatic-Landes in Labenne-Océan betreibt. Die Gruppe bezeichnet die Übernahme als ihre zweite Akquisition. Mit dem neuen Anteilseigner wird Les Naudières Teil der von Arnaud Coste und François Boisroux getragenen Entwicklungsstrategie für regionale Freizeitparks."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In februari 2020 sluit het park in Sautron zich aan bij Wikiparks, dat al Aquatic-Landes in Labenne-Océan exploiteert. De groep noemt de aankoop haar tweede overname. Met deze aandeelhouderswissel wordt Les Naudières onderdeel van de ontwikkelingsstrategie voor regionale recreatieparken van Arnaud Coste en François Boisroux."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel febbraio 2020 il parco di Sautron entra in Wikiparks, già presente a Labenne-Océan con Aquatic-Landes. Il gruppo presenta l’operazione come la sua seconda acquisizione. Con il nuovo azionista, Les Naudières entra nella strategia di sviluppo dei parchi ricreativi regionali promossa da Arnaud Coste e François Boisroux."
+              },
+              {
+                "languageCode": "es",
+                "value": "En febrero de 2020, el parque de Sautron pasa a formar parte de Wikiparks, ya presente en Labenne-Océan con Aquatic-Landes. El grupo presenta la operación como su segunda adquisición. El cambio de accionista incorpora Les Naudières a la estrategia de desarrollo de parques de ocio regionales impulsada por Arnaud Coste y François Boisroux."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W lutym 2020 roku park w Sautron dołącza do Wikiparks, które prowadzi już Aquatic-Landes w Labenne-Océan. Grupa przedstawia zakup jako swoje drugie przejęcie. Zmiana akcjonariusza włącza Les Naudières w strategię rozwoju regionalnych parków rekreacyjnych realizowaną przez Arnauda Coste’a i François Boisroux."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em fevereiro de 2020, o parque de Sautron passa a integrar a Wikiparks, já presente em Labenne-Océan com o Aquatic-Landes. O grupo apresenta a operação como a sua segunda aquisição. A mudança de acionista enquadra Les Naudières na estratégia de desenvolvimento de parques de lazer regionais promovida por Arnaud Coste e François Boisroux."
+              }
+            ],
+            "newOwnerName": "Wikiparks",
+            "previousOwnerName": null,
+            "mainImageId": "457a3953036c404c88852f67a976048c",
+            "sources": [
+              {
+                "label": "Wikipark Management — acquisition des Naudières annoncée le 13 février 2020",
+                "url": "https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "L’Informateur judiciaire n°7001, 24 juillet 2020, p.25 — acquisition en février 2020",
+                "url": "https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Les Naudières — communiqué de reprise publié le 13 mai 2020",
+                "url": "https://www.lesnaudieres.com/parc-naudieres-wikiparks/",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — changement de propriétaire documenté, distinct du programme d’investissement déjà publié. Date du mois de reprise, pas date juridique au jour inventée."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "6c971264-22e9-4a8b-bad8-aa12d29c1ee8",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T08:26:54.5920436Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "50a9dfde-5d61-48e3-ae14-0ca6e321f4ab",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "naudieres-history-acquisition-wikiparks-2020"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2020"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Acquisition"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "457a3953036c404c88852f67a976048c"
+          },
+          {
+            "field": "newOwnerName",
+            "oldValue": null,
+            "newValue": "Wikiparks"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Wikiparks wird Eigentümer von Les Naudières, en:Wikiparks takes ownership of Les Naudières, es:Wikiparks adquiere Les Naudières, fr:Wikiparks devient propriétaire des Naudières, it:Wikiparks diventa proprietario di Les Naudières, nl:Wikiparks wordt eigenaar van Les Naudières, pl:Wikiparks przejmuje Les Naudières, pt:Wikiparks torna-se proprietária de Les Naudières"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Februar 2020 kommt der Park in Sautron zu Wikiparks, das bereits Aquatic-Landes in Labenne-Océan betreibt. Die Gruppe bezeichnet die Übernahme als ihre zweite Akquisition. Mit dem neuen Anteilseigner wird Les Naudières Teil der von Arnaud Coste und François Boisroux getragenen Entwicklungsstrategie für regionale Freizeitparks., en:In February 2020, the Sautron park joins Wikiparks, which already operates Aquatic-Landes in Labenne-Océan. The group describes the takeover as its second acquisition. The change of shareholder brings Les Naudières into the regional leisure park development strategy led by Arnaud Coste and François Boisroux., es:En febrero de 2020, el parque de Sautron pasa a formar parte de Wikiparks, ya presente en Labenne-Océan con Aquatic-Landes. El grupo presenta la operación como su segunda adquisición. El cambio de accionista incorpora Les Naudières a la estrategia de desarrollo de parques de ocio regionales impulsada por Arnaud Coste y François Boisroux., fr:En février 2020, le parc de Sautron rejoint Wikiparks, déjà présent à Labenne-Océan avec Aquatic-Landes. Le groupe présente cette reprise comme sa deuxième acquisition. Ce changement d’actionnaire engage Les Naudières dans la stratégie de développement de parcs de loisirs régionaux portée par Arnaud Coste et François Boisroux., it:Nel febbraio 2020 il parco di Sautron entra in Wikiparks, già presente a Labenne-Océan con Aquatic-Landes. Il gruppo presenta l’operazione come la sua seconda acquisizione. Con il nuovo azionista, Les Naudières entra nella strategia di sviluppo dei parchi ricreativi regionali promossa da Arnaud Coste e François Boisroux., nl:In februari 2020 sluit het park in Sautron zich aan bij Wikiparks, dat al Aquatic-Landes in Labenne-Océan exploiteert. De groep noemt de aankoop haar tweede overname. Met deze aandeelhouderswissel wordt Les Naudières onderdeel van de ontwikkelingsstrategie voor regionale recreatieparken van Arnaud Coste en François Boisroux., pl:W lutym 2020 roku park w Sautron dołącza do Wikiparks, które prowadzi już Aquatic-Landes w Labenne-Océan. Grupa przedstawia zakup jako swoje drugie przejęcie. Zmiana akcjonariusza włącza Les Naudières w strategię rozwoju regionalnych parków rekreacyjnych realizowaną przez Arnauda Coste’a i François Boisroux., pt:Em fevereiro de 2020, o parque de Sautron passa a integrar a Wikiparks, já presente em Labenne-Océan com o Aquatic-Landes. O grupo apresenta a operação como a sua segunda aquisição. A mudança de acionista enquadra Les Naudières na estratégia de desenvolvimento de parques de lazer regionais promovida por Arnaud Coste e François Boisroux."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"L\\u2019Informateur judiciaire n\\u00B07001, 24 juillet 2020, p.25 \\u2014 acquisition en f\\u00E9vrier 2020\",\"Url\":\"https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Les Naudi\\u00E8res \\u2014 communiqu\\u00E9 de reprise publi\\u00E9 le 13 mai 2020\",\"Url\":\"https://www.lesnaudieres.com/parc-naudieres-wikiparks/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Wikipark Management \\u2014 acquisition des Naudi\\u00E8res annonc\\u00E9e le 13 f\\u00E9vrier 2020\",\"Url\":\"https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ad34eb09-de1c-46f6-815e-9aa102612630",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T08:30:32.1634711Z",
+    "appliedAtUtc": "2026-11-15T08:30:32.1634788Z",
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f56ec4a1-8c18-45a4-a5ab-2a1bf6876571",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "naudieres-history-acquisition-wikiparks-2020"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2020"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Acquisition"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "457a3953036c404c88852f67a976048c"
+          },
+          {
+            "field": "newOwnerName",
+            "oldValue": null,
+            "newValue": "Wikiparks"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Wikiparks wird Eigentümer von Les Naudières, en:Wikiparks takes ownership of Les Naudières, es:Wikiparks adquiere Les Naudières, fr:Wikiparks devient propriétaire des Naudières, it:Wikiparks diventa proprietario di Les Naudières, nl:Wikiparks wordt eigenaar van Les Naudières, pl:Wikiparks przejmuje Les Naudières, pt:Wikiparks torna-se proprietária de Les Naudières"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Februar 2020 kommt der Park in Sautron zu Wikiparks, das bereits Aquatic-Landes in Labenne-Océan betreibt. Die Gruppe bezeichnet die Übernahme als ihre zweite Akquisition. Mit dem neuen Anteilseigner wird Les Naudières Teil der von Arnaud Coste und François Boisroux getragenen Entwicklungsstrategie für regionale Freizeitparks., en:In February 2020, the Sautron park joins Wikiparks, which already operates Aquatic-Landes in Labenne-Océan. The group describes the takeover as its second acquisition. The change of shareholder brings Les Naudières into the regional leisure park development strategy led by Arnaud Coste and François Boisroux., es:En febrero de 2020, el parque de Sautron pasa a formar parte de Wikiparks, ya presente en Labenne-Océan con Aquatic-Landes. El grupo presenta la operación como su segunda adquisición. El cambio de accionista incorpora Les Naudières a la estrategia de desarrollo de parques de ocio regionales impulsada por Arnaud Coste y François Boisroux., fr:En février 2020, le parc de Sautron rejoint Wikiparks, déjà présent à Labenne-Océan avec Aquatic-Landes. Le groupe présente cette reprise comme sa deuxième acquisition. Ce changement d’actionnaire engage Les Naudières dans la stratégie de développement de parcs de loisirs régionaux portée par Arnaud Coste et François Boisroux., it:Nel febbraio 2020 il parco di Sautron entra in Wikiparks, già presente a Labenne-Océan con Aquatic-Landes. Il gruppo presenta l’operazione come la sua seconda acquisizione. Con il nuovo azionista, Les Naudières entra nella strategia di sviluppo dei parchi ricreativi regionali promossa da Arnaud Coste e François Boisroux., nl:In februari 2020 sluit het park in Sautron zich aan bij Wikiparks, dat al Aquatic-Landes in Labenne-Océan exploiteert. De groep noemt de aankoop haar tweede overname. Met deze aandeelhouderswissel wordt Les Naudières onderdeel van de ontwikkelingsstrategie voor regionale recreatieparken van Arnaud Coste en François Boisroux., pl:W lutym 2020 roku park w Sautron dołącza do Wikiparks, które prowadzi już Aquatic-Landes w Labenne-Océan. Grupa przedstawia zakup jako swoje drugie przejęcie. Zmiana akcjonariusza włącza Les Naudières w strategię rozwoju regionalnych parków rekreacyjnych realizowaną przez Arnauda Coste’a i François Boisroux., pt:Em fevereiro de 2020, o parque de Sautron passa a integrar a Wikiparks, já presente em Labenne-Océan com o Aquatic-Landes. O grupo apresenta a operação como a sua segunda aquisição. A mudança de acionista enquadra Les Naudières na estratégia de desenvolvimento de parques de lazer regionais promovida por Arnaud Coste e François Boisroux."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"L\\u2019Informateur judiciaire n\\u00B07001, 24 juillet 2020, p.25 \\u2014 acquisition en f\\u00E9vrier 2020\",\"Url\":\"https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Les Naudi\\u00E8res \\u2014 communiqu\\u00E9 de reprise publi\\u00E9 le 13 mai 2020\",\"Url\":\"https://www.lesnaudieres.com/parc-naudieres-wikiparks/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Wikipark Management \\u2014 acquisition des Naudi\\u00E8res annonc\\u00E9e le 13 f\\u00E9vrier 2020\",\"Url\":\"https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sourceAccess": [
+    {
+      "name": "wikiparks-acquisition",
+      "url": "https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/",
+      "finalUrl": "https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:39.919143+00:00",
+      "bytes": 43127,
+      "sha256": "78eb8e2f67229fccfb8707d3bfdb8c18bdce33db67ead6739e61cb3efc4f967b"
+    },
+    {
+      "name": "park-acquisition",
+      "url": "https://www.lesnaudieres.com/parc-naudieres-wikiparks/",
+      "finalUrl": "https://www.lesnaudieres.com/parc-naudieres-wikiparks/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:42.790132+00:00",
+      "bytes": 65275,
+      "sha256": "f7ee5dbfbf95df784798c4e70ea999649d6395c726e5ade06bee2e0e89ef432f"
+    },
+    {
+      "name": "exploration-current",
+      "url": "https://www.lesnaudieres.com/univers/exploration/",
+      "finalUrl": "https://www.lesnaudieres.com/univers/exploration/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:44.920271+00:00",
+      "bytes": 90231,
+      "sha256": "972a5e367c8967b3a427b0cbb78af67ac274cea744fc382bbbba6553957c3288"
+    },
+    {
+      "name": "ij-july2020",
+      "url": "https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf",
+      "finalUrl": "https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:48.911063+00:00",
+      "bytes": 6534321,
+      "sha256": "6d26fa2a320f5d80f6819aba008974d548193b22955bc8100b88b7e95a8e1ab5"
+    },
+    {
+      "name": "park-context-photo",
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/gonflables-la-dome-600xauto_0_1.jpg",
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/gonflables-la-dome-600xauto_0_1.jpg",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T08:24:49.483929+00:00",
+      "bytes": 61138,
+      "sha256": "9496763119fba019d191cdf2b3b999e2fd23050e347d7179cfdf0a117ed0531e"
+    }
+  ],
+  "reconciliation": {
+    "historyReadAtUtc": "2026-11-15T06:43:26.5191088Z",
+    "operationCount": 50,
+    "matches": []
+  },
+  "actualDateSource": "apply.appliedAtUtc",
+  "idempotence": {
+    "operationId": "5ea277b1-35bd-4d2e-a2cd-61565ed27459",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T08:31:19.0708213Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f56ec4a1-8c18-45a4-a5ab-2a1bf6876571",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T08:31:49.4949013Z",
+    "result": {
+      "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+      "parkName": "Parc des Naudières",
+      "factCount": 106,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1970,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 23,
+          "sourcedResourceCount": 23,
+          "publishedResourceCount": 22,
+          "subjectCount": 16,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 2
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 29
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 75
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 29,
+        "sourcedFactCount": 29,
+        "majorFactCount": 17,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T08:31:50.4134397Z"
+  }
+}

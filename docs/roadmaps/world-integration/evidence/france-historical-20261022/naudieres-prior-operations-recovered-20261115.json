@@ -1,0 +1,546 @@
+{
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "recoveredAtUtc": "2026-11-15T06:43:26.5191088Z",
+  "source": "Historique officiel GET admin/park-graph-upserts/history via le transport du client officiel inchangé.",
+  "historyResponseRows": 50,
+  "acceptedApplyCount": 17,
+  "actualDateField": "result.appliedAtUtc ; createdAtUtc du journal non substitué.",
+  "newServerMutationPerformed": false,
+  "publicationRepeated": false,
+  "historyCompleteness": "Fenêtre récente de50opérations renvoyée par le serveur, dont17Apply ; aucune prétention de retrouver toutes les opérations antérieures ou tous les imports.",
+  "operations": [
+    {
+      "historyRecordId": "dbd37cc0-83fa-4154-bbef-9c1d7ba4e4f6",
+      "historyCreatedAtUtc": "2026-10-20T00:34:00.644Z",
+      "rawDocumentSha256": "0059a7678fe33248f2e917804b4f34bf304831f768f82b4a2183476904fe0185",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "800058f1-a0d9-4e68-8856-771632577322",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:34:00.2910093Z",
+        "appliedAtUtc": "2026-10-20T00:34:00.2910101Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 7,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "d45799e8-dbb4-4c4b-8a43-81987fcdb28e",
+      "historyCreatedAtUtc": "2026-10-20T00:38:54.945Z",
+      "rawDocumentSha256": "098caf51d0674a340736c27c61017e9c4c2d441f93466932f0ea27f0672b267a",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "01d96117-235b-49ba-9704-4968df1aea0c",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:38:54.8979032Z",
+        "appliedAtUtc": "2026-10-20T00:38:54.8979038Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 3,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "d39580ba-3191-499d-a127-ab88a6682794",
+      "historyCreatedAtUtc": "2026-10-20T00:41:34.433Z",
+      "rawDocumentSha256": "0f6d949e8f79da26ffab08435e20d973f3d52cb9967377d976a2be76b8b79640",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "20b43ae0-c650-49f6-ae78-273ff53c29eb",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:41:34.296986Z",
+        "appliedAtUtc": "2026-10-20T00:41:34.2969869Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "905505b4-fc01-4312-a994-e2aef75a9749",
+      "historyCreatedAtUtc": "2026-10-20T00:43:50.486Z",
+      "rawDocumentSha256": "5b6980f38e2b11a929967d30959a55135d4c4f8b2bfab92ac9fed0716c39dabe",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "4f304564-eae7-4100-9d25-96cc846cfda2",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:43:50.4301928Z",
+        "appliedAtUtc": "2026-10-20T00:43:50.4301937Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "a34a21b9-e9f0-47da-905a-5676fb8c9ed8",
+      "historyCreatedAtUtc": "2026-10-20T00:46:20.234Z",
+      "rawDocumentSha256": "e06738ffab309ab001a6b9788c5e00ece89318a8fd3f382e0c6f445ebb97684d",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "2bc0e24d-7e78-461b-849c-87b05512e89a",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:46:20.1437241Z",
+        "appliedAtUtc": "2026-10-20T00:46:20.1437248Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "bd71d1b9-dfe5-4900-bb2d-350f7621b103",
+      "historyCreatedAtUtc": "2026-10-20T00:47:22.898Z",
+      "rawDocumentSha256": "32edc6484adca4008104d098c73b646cb7902868bd340e55120f4b4ec4bb9de0",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "8dab6a4b-02c1-4cf4-b3ca-cbfc388aedce",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:47:22.8552588Z",
+        "appliedAtUtc": "2026-10-20T00:47:22.8552595Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "259b85d0-282d-4857-b0de-f69e07d6318b",
+      "historyCreatedAtUtc": "2026-10-20T00:49:09.951Z",
+      "rawDocumentSha256": "f10d96897312456281814b3e95fd597cd2494e65e5277c6674c4bcd20da57a49",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "e3d92d41-6a8f-4bc2-926b-20fa27128b5b",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:49:09.8798678Z",
+        "appliedAtUtc": "2026-10-20T00:49:09.8798686Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "2c725274-09ee-474a-b753-bff54027d250",
+      "historyCreatedAtUtc": "2026-10-20T00:52:40.119Z",
+      "rawDocumentSha256": "547ebd5d6bde9f32bc435e75d59862079ffb4e0ff0b97dcb4cc296cabafe19ee",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "7025940c-c479-4f5d-beb2-11076d37000e",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:52:39.9616227Z",
+        "appliedAtUtc": "2026-10-20T00:52:39.9616233Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 6,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "29810d3b-f3a0-403a-b847-4422f0bdc8bf",
+      "historyCreatedAtUtc": "2026-10-20T00:53:40.843Z",
+      "rawDocumentSha256": "9d6f18d03b3db737c2b3b5f7cc5324fcc04943ed2c9098c132c023f40d6a7458",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "379464b9-fab0-416b-8790-9d7ba769ebae",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T00:53:40.7938973Z",
+        "appliedAtUtc": "2026-10-20T00:53:40.793898Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "22e757d0-b160-4b02-b460-2db8aed7711a",
+      "historyCreatedAtUtc": "2026-10-20T01:02:53.297Z",
+      "rawDocumentSha256": "bf9ba4be913b9d72385efc0cb9507e9b05df00bcd6780aee9c92f7415057f986",
+      "documentSections": [
+        "pricing"
+      ],
+      "result": {
+        "operationId": "3e67a044-cbae-4252-a197-238c450126f5",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T01:02:53.2346809Z",
+        "appliedAtUtc": "2026-10-20T01:02:53.2346817Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "75cd7e80-0c23-4249-b3a8-c0ed63754f92",
+      "historyCreatedAtUtc": "2026-10-21T23:40:41.242Z",
+      "rawDocumentSha256": "05e896e1dda7a7e8a22642050180b374f4db7c46e46ce76529afe2e281c4d43f",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "f6e60e41-4835-471e-8578-b2aab6c1a71b",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:40:40.8847128Z",
+        "appliedAtUtc": "2026-10-21T23:40:40.8847138Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 5,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "474175c3-ee23-40b0-9f85-1c977fbe7b8c",
+      "historyCreatedAtUtc": "2026-10-21T23:46:15.405Z",
+      "rawDocumentSha256": "f7db65b4cff1eb439906236942a086bb6d0560d8eb2da7a6d77df2d4ddad60e9",
+      "documentSections": [
+        "park",
+        "items",
+        "images"
+      ],
+      "result": {
+        "operationId": "89370280-a712-4bd7-84bc-4048ada5ec34",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:46:15.0874634Z",
+        "appliedAtUtc": "2026-10-21T23:46:15.0874644Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 59,
+          "deleted": 0,
+          "unchanged": 34,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "84585c66-5ec6-453d-86b3-484a681ce5ff",
+      "historyCreatedAtUtc": "2026-10-21T23:47:42.304Z",
+      "rawDocumentSha256": "eaaa99b0b9d7bb209973b8e22965d14de682c0b88ffd836db7001dc40ee6ca61",
+      "documentSections": [
+        "zones",
+        "items",
+        "history"
+      ],
+      "result": {
+        "operationId": "9cc2caf3-bbb5-4b0e-92fd-d32e8ac33f96",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:47:29.9834625Z",
+        "appliedAtUtc": "2026-10-21T23:47:29.9834635Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 83,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "15775faf-b70d-4309-abd9-eb9744479f07",
+      "historyCreatedAtUtc": "2026-10-21T23:52:32.176Z",
+      "rawDocumentSha256": "8528f9175911332176db3be5cd4fed2b83084590580614891b1b475cdc1ebb84",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "affe4bc5-59fe-455e-957c-380157f15a68",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:52:31.6796472Z",
+        "appliedAtUtc": "2026-10-21T23:52:31.6796481Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 7,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "25b90433-1d53-496c-be81-5822ae6dfe3a",
+      "historyCreatedAtUtc": "2026-10-21T23:57:05.364Z",
+      "rawDocumentSha256": "e6d662013b31973abe26c573245163f8a685eae0f506fdcf737e608477cac536",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "f6197caa-ffaa-41fe-9412-04f36a400839",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:57:05.274963Z",
+        "appliedAtUtc": "2026-10-21T23:57:05.2749639Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "aa868363-d408-47d9-a163-85030a93deb6",
+      "historyCreatedAtUtc": "2026-10-21T23:58:21.464Z",
+      "rawDocumentSha256": "6a24877a65202aa573db13ebe43462cb08c0718717b40500263dbcd396111f8b",
+      "documentSections": [
+        "park"
+      ],
+      "result": {
+        "operationId": "52abd4f1-4749-42ae-b401-5c3215f31746",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:58:01.4935115Z",
+        "appliedAtUtc": "2026-10-21T23:58:01.4935128Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 0,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "3a7370e6-abd6-4d02-875d-70f0609dd81a",
+      "historyCreatedAtUtc": "2026-10-21T23:59:56.803Z",
+      "rawDocumentSha256": "4486be1ce024c7a018a9e4866355c522b1a03241d847a1eeb25504c272b649f5",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "f4259300-8fc2-46b5-8040-24ec1b9dbeac",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:59:49.5608165Z",
+        "appliedAtUtc": "2026-10-21T23:59:49.5608177Z",
+        "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "targetParkName": "Parc des Naudières",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 29,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    }
+  ]
+}
