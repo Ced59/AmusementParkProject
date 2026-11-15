@@ -1,0 +1,46 @@
+{
+  "entryId": "DE-standalone-46a57823-75cd-4ff3-9fde-495ad0204b1b",
+  "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+  "integrationHistory": [
+    {
+      "eventId": "apply-63715f39-64fc-4d1f-8b10-629ab0c87629",
+      "appliedAt": "2026-11-15T12:28:03.127Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "evidence": "PARK_DATA_EDITOR:apply:63715f39-64fc-4d1f-8b10-629ab0c87629",
+      "auditEvidence": null,
+      "summary": "Révision des huit descriptions : récit des lieux conservé, chiffres techniques et formulations méta-éditoriales retirés du texte public ; blocage de qualité levé."
+    },
+    {
+      "eventId": "apply-d188c17e-c1fa-4c23-8da2-d48b0c4c73a5",
+      "appliedAt": "2026-11-15T12:29:46.743Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "evidence": "PARK_DATA_EDITOR:apply:d188c17e-c1fa-4c23-8da2-d48b0c4c73a5",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-hasenhorn-refresh-20261115/audit.json",
+      "summary": "Conditions d’âge et de taille, fermeture météorologique, tarifs été 2026 vendus uniquement sur place et statut saisonnier ajoutés en huit langues."
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127452451424431",
+    "publishedAtUtc": "2026-11-15T12:30:27.8349132Z",
+    "note": "Annonce publiée lors de la première intégration éditoriale documentée de cette fiche préexistante."
+  },
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "copy",
+      "operationId": "63715f39-64fc-4d1f-8b10-629ab0c87629",
+      "appliedAtUtc": "2026-11-15T12:28:03.1270434Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "d188c17e-c1fa-4c23-8da2-d48b0c4c73a5",
+      "appliedAtUtc": "2026-11-15T12:29:46.7437793Z"
+    }
+  ]
+}
