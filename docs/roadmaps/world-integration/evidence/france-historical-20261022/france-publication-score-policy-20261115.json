@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-15T14:36:19.371701+00:00",
+  "scope": "Campagne France autorisée, parcs déjà préparés et audités, y compris actifs",
+  "instructionExacte": "Faut publier ceux fait même si note insuffisante. On peut faire impasse sur les horaires et date d'ouverture dans le score actuellement car ils ne sont pas tous documentés (période hivernale avec beaucoup de parcs fermés dans l'hémisphère Nord)",
+  "decision": "La note insuffisante ne bloque plus à elle seule la publication des dossiers audités de cette campagne. Horaires et dates d’ouverture non documentés restent inconnus, sans valeur de substitution. Documenter pour chaque parc la note réelle, les lacunes et cette autorisation.",
+  "preservedRequirements": [
+    "Audit du contenu effectivement publié et preuve du périmètre.",
+    "Aucun contournement de bloqueur API.",
+    "Aucune date, plage horaire, description ou identité inventée.",
+    "Inventaire incomplet conservé partial ; publication du contenu audité distincte de clôture.",
+    "Facebook officiel après publication, sans doublon et avec visibilité externe distinguée du statut Published.",
+    "Anciennes suppressions et recadrages en attente non autorisés par cette instruction."
+  ],
+  "apiMutationsByThisEvidence": 0
+}

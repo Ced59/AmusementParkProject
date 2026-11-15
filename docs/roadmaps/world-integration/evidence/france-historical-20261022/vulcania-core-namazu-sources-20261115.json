@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "createdAtUtc": "2026-11-15T14:37:40.847210+00:00",
+  "sourceAccess": [
+    {
+      "key": "region-history",
+      "url": "https://www.vulcania.com/vulcania-et-la-region-auvergne-rhone-alpes/",
+      "file": "region-history.html",
+      "accessedAtUtc": "2026-11-15T14:10:30.888950+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/vulcania-et-la-region-auvergne-rhone-alpes/",
+      "bytes": 131234,
+      "sha256": "7a4f86aaefd2b79cb26882b4f43d84ee940dec158a2b31ae2c51f8ce01d56d4f",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "crc2018",
+      "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+      "file": "crc2018.pdf",
+      "accessedAtUtc": "2026-11-15T14:10:31.889345+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+      "bytes": 2413655,
+      "sha256": "b8c9e2b7d36e38187edf92d33867895836a869881af023c65196eb9f57718f2e",
+      "contentType": "application/pdf"
+    },
+    {
+      "key": "crc2010",
+      "url": "https://www.ccomptes.fr/sites/default/files/EzPublish/JF00106506_JF_INTERNET1.pdf",
+      "file": "crc2010.pdf",
+      "accessedAtUtc": "2026-11-15T14:10:34.439230+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ccomptes.fr/sites/default/files/EzPublish/JF00106506_JF_INTERNET1.pdf",
+      "bytes": 604241,
+      "sha256": "a967df0c5c76d9733cdedfd190b1ea041e3117055b4dc120ec6d83a05887f9c9",
+      "contentType": "application/pdf"
+    },
+    {
+      "key": "krafft-family",
+      "url": "https://www.volcanokrafft.com/team/",
+      "file": "krafft-family.html",
+      "accessedAtUtc": "2026-11-15T14:10:34.847738+00:00",
+      "status": 200,
+      "finalUrl": "https://www.volcanokrafft.com/team/",
+      "bytes": 87378,
+      "sha256": "c381fcc180ef73086dd5096f3ba15dfc1672bfa55b2ce42d0545f0db8665fd1a",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "ladepeche2002",
+      "url": "https://www.ladepeche.fr/article/2002/03/05/397829-vulcania-booste-la-ligne-toulouse-clermont.html",
+      "file": "ladepeche2002.html",
+      "accessedAtUtc": "2026-11-15T14:10:36.997473+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ladepeche.fr/article/2002/03/05/397829-vulcania-booste-la-ligne-toulouse-clermont.html",
+      "bytes": 86816,
+      "sha256": "3344ec9df86a449f4477c0b9107657d45ea54888262ff97f7797c8481c466eaa",
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "key": "batiactu2002",
+      "url": "https://www.batiactu.com/edito/vulcania-sort-enfin-terre-11847.php",
+      "file": "batiactu2002.html",
+      "accessedAtUtc": "2026-11-15T14:10:38.698185+00:00",
+      "status": 200,
+      "finalUrl": "https://www.batiactu.com/edito/vulcania-sort-enfin-terre-11847.php",
+      "bytes": 75749,
+      "sha256": "7cf0f922624a427cf9b406937ce3d94307e0016db8ffbf2a1f5e6ca14277cbc3",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "key": "regional-sem2025",
+      "url": "https://edelib.auvergnerhonealpes.fr/webdelibplus/jsp/showFile.jsp?datePub=27%2F01%2F2025&dateRetLega=27%2F01%2F2025&pdf=0cBwlciopEGtjBusVJX4%2F4jb6AOKFJ94tta2qSUXnb5%2FpmMXYOIgYTkOvlqgVv48061itaC5HWJBGjDX9eblI1PtDGXQFE1Syry2YghFHw%2BEAscbW9Ft7ZFJVAeJXYRd2%2FUjtLgIJQjGsrkxFHC8kg%3D%3D",
+      "file": "regional-sem2025.html",
+      "accessedAtUtc": "2026-11-15T14:10:41.287668+00:00",
+      "status": 200,
+      "finalUrl": "https://edelib.auvergnerhonealpes.fr/webdelibplus/jsp/showFile.jsp?datePub=27%2F01%2F2025&dateRetLega=27%2F01%2F2025&pdf=0cBwlciopEGtjBusVJX4%2F4jb6AOKFJ94tta2qSUXnb5%2FpmMXYOIgYTkOvlqgVv48061itaC5HWJBGjDX9eblI1PtDGXQFE1Syry2YghFHw%2BEAscbW9Ft7ZFJVAeJXYRd2%2FUjtLgIJQjGsrkxFHC8kg%3D%3D",
+      "bytes": 44,
+      "sha256": "638f4d870669ba599582b742514c79055b0798c6392c14a627d2a766736aa09f",
+      "contentType": "text/html;charset=ISO-8859-1"
+    },
+    {
+      "key": "cantal-sem2025",
+      "url": "https://www.cantal.fr/wp-content/uploads/2025/09/cd-2-pv-reunion-du-20-juin-2025-publication.pdf",
+      "file": "cantal-sem2025.pdf",
+      "accessedAtUtc": "2026-11-15T14:11:22.197054+00:00",
+      "status": 200,
+      "finalUrl": "https://www.cantal.fr/wp-content/uploads/2025/09/cd-2-pv-reunion-du-20-juin-2025-publication.pdf",
+      "bytes": 2693852,
+      "sha256": "a2671116f8714aee795038e08f235f0100bd920ebc1a28043bb0d2e15d39a8e1",
+      "contentType": "application/pdf"
+    },
+    {
+      "key": "persee-project2000",
+      "url": "https://www.persee.fr/doc/asgn_0767-7367_2000_num_7_4_6443",
+      "file": "persee-project2000.html",
+      "accessedAtUtc": "2026-11-15T14:11:24.640116+00:00",
+      "status": 200,
+      "finalUrl": "https://www.persee.fr/doc/asgn_0767-7367_2000_num_7_4_6443",
+      "bytes": 67671,
+      "sha256": "0090fd8e9eb45408c1862b7ae9b017f1784cc55eb6897ba5923b37ea0e843b8d",
+      "contentType": "text/html;charset=UTF-8"
+    },
+    {
+      "key": "tazieff-vulcania2014",
+      "url": "https://www.parkstrip.fr/2014/05/haroun-tazieff-une-vie-sur-les-volcans.html",
+      "file": "tazieff-vulcania2014.html",
+      "accessedAtUtc": "2026-11-15T14:11:26.340950+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parkstrip.fr/2014/05/haroun-tazieff-une-vie-sur-les-volcans.html",
+      "bytes": 215112,
+      "sha256": "09e2d8bf1e39900f2bf11a05b762ac3a8ef96b70995a146212f3a0db21e70397",
+      "contentType": "text/html; charset=UTF-8"
+    }
+  ],
+  "namazuAccess": [
+    {
+      "file": "intamin-opening.html",
+      "url": "https://www.intamin.com/2021/07/14/opening-of-namazu/",
+      "resolvedUrl": "https://www.intamin.com/2021/07/14/opening-of-namazu/",
+      "http": 200,
+      "bytes": 250907,
+      "sha256": "bc51e376239184075a3f0cc2c429f4b6bc20ded499f44be11a78f2e42956a121",
+      "accessedAtUtc": "2026-11-15T14:10:50.085962+00:00"
+    },
+    {
+      "file": "intamin-project.html",
+      "url": "https://www.intamin.com/project/namazu/",
+      "resolvedUrl": "https://www.intamin.com/project/namazu/",
+      "http": 200,
+      "bytes": 247565,
+      "sha256": "9d202956f521e3b459ec9a06d13427698a40b643480daa0dfd0ed71e17bdae69",
+      "accessedAtUtc": "2026-11-15T14:10:50.674743+00:00"
+    },
+    {
+      "file": "rcdb-namazu.html",
+      "url": "https://rcdb.com/16720.htm",
+      "resolvedUrl": "https://rcdb.com/16720.htm",
+      "http": 200,
+      "bytes": 103774,
+      "sha256": "2ad67b89c1d5096bdac2fbaaa9013a2d53241d92324b2af2927ce03386fb0552",
+      "accessedAtUtc": "2026-11-15T14:10:51.361951+00:00"
+    },
+    {
+      "file": "captain-namazu-fr.html",
+      "url": "https://captaincoaster.com/fr/coasters/3076/namazu-vulcania",
+      "resolvedUrl": "https://captaincoaster.com/fr/coasters/3076/namazu-vulcania",
+      "http": 200,
+      "bytes": 124691,
+      "sha256": "9fbabfc29711e63ac48b386c552c7050fc4351dd3d851545b22154f7803ff10e",
+      "accessedAtUtc": "2026-11-15T14:10:52.154197+00:00"
+    },
+    {
+      "file": "namazu-inauguration-specialist.html",
+      "url": "https://www.parc-attraction-loisirs.fr/2021/07/06/namazu-vulcania-2021/",
+      "resolvedUrl": "https://www.parc-attraction-loisirs.fr/2021/07/06/namazu-vulcania-2021/",
+      "http": 200,
+      "bytes": 158699,
+      "sha256": "442421b5a6ce3abd5dae77c668050e7caa7b61a7adf4fb2d4182bdc3c272aec1",
+      "accessedAtUtc": "2026-11-15T14:10:54.713769+00:00"
+    }
+  ],
+  "decisions": [
+    "Vulcania opening stored at month precision2002-02: official retrospective20February differs from contemporarypublic21February; inauguration20February separatelydocumented.",
+    "Namazu publicopening10July2021explicitIntamin,not7October.",
+    "SEMVolcans constituted28June1999 and registered15July1999: year1999applied, notparkopening.",
+    "Krafft initialscientificproject, VGEpoliticalrealisation, Regionowner, SEMoperator remain distinct. No founderexclusive yet.",
+    "No zones invented from menu themes or map levels.",
+    "No new media imported; officiallegalreuseconditions and absencepermission must be reviewed before anyphotopublication."
+  ],
+  "researchContinuation": "Four publicresearchagents interrupted by usage limit; collected sourcefiles preserved, no assumption their reports were completed."
+}

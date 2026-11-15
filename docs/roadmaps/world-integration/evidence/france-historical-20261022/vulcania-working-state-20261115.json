@@ -1,0 +1,677 @@
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-09-05",
+  "mode": "merge",
+  "identity": {
+    "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "name": "Vulcania",
+    "countryCode": "FR"
+  },
+  "park": {
+    "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "name": "Vulcania",
+    "countryCode": "FR",
+    "type": "ThemePark",
+    "status": "Operating",
+    "openingDate": null,
+    "closingDate": null,
+    "openingDateText": "2002-02",
+    "closingDateText": null,
+    "founderId": null,
+    "founderKey": null,
+    "operatorId": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+    "operatorKey": "sem-volcans-vulcania",
+    "websiteUrl": "https://www.vulcania.com/",
+    "latitude": 45.8137601,
+    "longitude": 2.9415905,
+    "isVisible": false,
+    "adminReviewStatus": "ToReview",
+    "audienceClassification": "National",
+    "street": "2 route de Mazayes",
+    "city": "Saint-Ours-les-Roches",
+    "postalCode": "63230"
+  },
+  "references": {
+    "founders": [],
+    "operators": [
+      {
+        "id": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "key": "sem-volcans-vulcania",
+        "name": "SEM Volcans",
+        "legalName": "Société d’économie mixte des Volcans",
+        "foundedYear": 1999,
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "contactDetails": {
+          "websiteUrl": "https://www.vulcania.com/la-sem-volcans/",
+          "city": "Saint-Ours-les-Roches",
+          "countryCode": "FR"
+        }
+      }
+    ],
+    "manufacturers": [
+      {
+        "key": "a917c228-e220-4234-a6ff-603e13365607",
+        "id": "a917c228-e220-4234-a6ff-603e13365607",
+        "name": "Intamin",
+        "legalName": "Intamin Amusement Rides Int. Corp. Est.",
+        "foundedYear": 1967,
+        "closedYear": null,
+        "contactDetails": {
+          "websiteUrl": "https://www.intamin.com/",
+          "email": "info@intamin.com",
+          "phoneNumber": "+423 237 03 43",
+          "street": "Landstrasse 126",
+          "city": "Schaan",
+          "postalCode": "9494",
+          "countryCode": "LI",
+          "latitude": null,
+          "longitude": null
+        },
+        "biography": [
+          {
+            "languageCode": "de",
+            "value": "<h2>Von Bern in die internationale Freizeitparkwelt</h2><p>Intamin wurde 1967 in Bern gegründet. Drei Partner nutzten zunächst eine kleine Wohnung als Büro. Aus dem Schweizer Unternehmen entstanden mehrere auf Fahrgeschäfte spezialisierte Gesellschaften. Bounty-Schiffe, Looping Starships und Riesenräder gehörten zu den Baureihen, die diese Entwicklung begleiteten.</p><h2>Wildwasserflüsse und Freifalltürme</h2><p>Gemeinsam mit Six Flags AstroWorld entwickelte Intamin Thunder River, der 1980 in Houston eröffnete. Auf diese Wildwasseranlage folgten weitere Flussfahrten in anderen Six-Flags-Parks. 1982 erhielt Magic Mountain die erste Free-Fall-Anlage des Herstellers.</p><p>Auch Kingda Ka in New Jersey und Formula Rossa in Abu Dhabi tragen den Namen Intamin. Neben diesen Achterbahnen gehören beschauliche Bootsfahrten, Aussichtstürme und immersive Attraktionen zum Schaffen des Unternehmens.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>From Bern to parks around the world</h2><p>Intamin began in Bern in 1967, with three partners sharing a small apartment as their office. The Swiss business later developed into several companies specialising in amusement rides. Bounty ships, Looping Starships and observation wheels were among the families that accompanied its expansion.</p><h2>River rapids and drop towers</h2><p>Working with Six Flags AstroWorld, Intamin developed Thunder River, which opened in Houston in 1980. The rapids ride began a series of water attractions adopted by other Six Flags parks. Magic Mountain received Intamin’s first Free Fall in 1982.</p><p>Intamin’s name also appears behind Kingda Ka in New Jersey and Formula Rossa in Abu Dhabi. Alongside these roller coasters, its work includes scenic boat rides, observation towers and immersive attractions.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>De Berna a los parques internacionales</h2><p>Intamin nace en Berna en 1967, con tres socios que comparten un pequeño apartamento como oficina. La empresa suiza se desarrolla después en varias sociedades especializadas en atracciones. Los barcos Bounty, los Looping Starship y las norias forman parte de las familias que acompañan su expansión.</p><h2>Rápidos y torres de caída</h2><p>Junto con Six Flags AstroWorld, Intamin desarrolla Thunder River, inaugurado en Houston en 1980. Esta atracción acuática da origen a una serie de recorridos por rápidos incorporados a otros parques Six Flags. En 1982, Magic Mountain recibe el primer Free Fall del fabricante.</p><p>Intamin también está detrás de Kingda Ka, en Nueva Jersey, y Formula Rossa, en Abu Dabi. Junto a estas montañas rusas, la empresa crea paseos en barco, torres panorámicas y atracciones inmersivas.</p>"
+          },
+          {
+            "languageCode": "fr",
+            "value": "<h2>De Berne aux parcs internationaux</h2><p>Intamin naît en 1967 à Berne, où trois associés partagent un petit appartement utilisé comme bureau. L’entreprise suisse développe ensuite plusieurs sociétés spécialisées dans les attractions. Les bateaux Bounty, les Looping Starship et les grandes roues figurent parmi les familles qui ont accompagné son expansion.</p><h2>Des rivières rapides aux tours de chute</h2><p>Avec Six Flags AstroWorld, Intamin prépare Thunder River, ouvert en 1980 à Houston. Cette rivière rapide marque le début d’une lignée aquatique reprise dans d’autres parcs Six Flags. En 1982, Magic Mountain accueille son premier Free Fall, autre jalon du constructeur.</p><p>Le nom Intamin accompagne aussi Kingda Ka au New Jersey et Formula Rossa à Abu Dhabi. À côté de ces montagnes russes, l’entreprise développe des bateaux de promenade, des tours panoramiques et des attractions immersives.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Da Berna ai parchi internazionali</h2><p>Intamin nasce a Berna nel 1967, quando tre soci condividono un piccolo appartamento adibito a ufficio. L’impresa svizzera si sviluppa poi in diverse società specializzate nelle attrazioni. Le navi Bounty, i Looping Starship e le ruote panoramiche accompagnano questa espansione.</p><h2>Rapide e torri di caduta</h2><p>In collaborazione con Six Flags AstroWorld, Intamin realizza Thunder River, inaugurato a Houston nel 1980. Da questa attrazione acquatica nasce una famiglia di percorsi sulle rapide adottata da altri parchi Six Flags. Nel 1982 Magic Mountain riceve il primo Free Fall del costruttore.</p><p>Il nome Intamin è legato anche a Kingda Ka, nel New Jersey, e a Formula Rossa, ad Abu Dhabi. Accanto a queste montagne russe, l’azienda sviluppa gite panoramiche in barca, torri di osservazione e attrazioni immersive.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>Van Bern naar parken over de hele wereld</h2><p>Intamin werd in 1967 opgericht in Bern. Drie partners deelden er een klein appartement dat als kantoor diende. Uit het Zwitserse bedrijf groeiden verschillende ondernemingen die zich op attracties toelegden. Bounty-schepen, Looping Starships en reuzenraden maakten deel uit van die ontwikkeling.</p><h2>Wildwaterbanen en vrijevaltorens</h2><p>Samen met Six Flags AstroWorld ontwikkelde Intamin Thunder River, dat in 1980 in Houston opende. Deze wildwaterbaan kreeg navolging in andere Six Flags-parken. In 1982 ontving Magic Mountain de eerste Free Fall van de fabrikant.</p><p>Ook Kingda Ka in New Jersey en Formula Rossa in Abu Dhabi zijn verbonden met Intamin. Naast zulke achtbanen bouwt het bedrijf rondvaartattracties, uitkijktorens en attracties met een meeslepende enscenering.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Z Berna do parków na całym świecie</h2><p>Intamin powstał w Bernie w 1967 roku. Trzej wspólnicy korzystali początkowo z niewielkiego mieszkania służącego za biuro. Szwajcarskie przedsiębiorstwo rozwinęło się następnie w kilka firm specjalizujących się w urządzeniach dla parków rozrywki. W jego ofercie pojawiły się między innymi statki Bounty, Looping Starship i diabelskie młyny.</p><h2>Od rwących rzek do wież swobodnego spadania</h2><p>Wspólnie z Six Flags AstroWorld Intamin stworzył Thunder River, otwarty w Houston w 1980 roku. Kolejne atrakcje tego rodzaju trafiły do innych parków Six Flags. W 1982 roku Magic Mountain otrzymał pierwszy Free Fall tego producenta.</p><p>Z nazwą Intamin wiążą się również Kingda Ka w New Jersey i Formula Rossa w Abu Zabi. Poza tymi kolejkami firma tworzy spokojne przejażdżki łodziami, wieże widokowe i atrakcje z rozbudowaną scenografią.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>De Berna aos parques internacionais</h2><p>A Intamin nasceu em Berna em 1967, quando três sócios partilhavam um pequeno apartamento usado como escritório. A empresa suíça deu depois origem a várias sociedades especializadas em atrações. Os barcos Bounty, os Looping Starship e as rodas panorâmicas acompanharam esta expansão.</p><h2>Rápidos e torres de queda</h2><p>Em conjunto com o Six Flags AstroWorld, a Intamin desenvolveu o Thunder River, inaugurado em Houston em 1980. Esta atração aquática deu origem a outros percursos de rápidos em parques Six Flags. Em 1982, o Magic Mountain recebeu o primeiro Free Fall do fabricante.</p><p>O nome Intamin está também ligado à Kingda Ka, em Nova Jérsia, e à Formula Rossa, em Abu Dhabi. Além destas montanhas-russas, a empresa desenvolve passeios de barco, torres de observação e atrações imersivas.</p>"
+          }
+        ],
+        "isVisible": true,
+        "adminReviewStatus": "Validated"
+      }
+    ]
+  },
+  "zones": [],
+  "items": [
+    {
+      "key": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "id": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "name": "Namazu",
+      "category": "Attraction",
+      "type": "RollerCoaster",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [],
+      "attractionDetails": {
+        "manufacturerId": "a917c228-e220-4234-a6ff-603e13365607",
+        "manufacturerKey": "a917c228-e220-4234-a6ff-603e13365607",
+        "model": "Multi Dimension Launch Coaster",
+        "externalSource": "CaptainCoaster",
+        "externalId": "3076",
+        "sourceUrl": "https://captaincoaster.com/fr/coasters/3076/namazu-vulcania",
+        "status": "Operating",
+        "materialType": "Steel",
+        "seatingType": "Sit Down",
+        "launchType": "Propulsion à pneus",
+        "restraintType": "Lap Bar",
+        "isLaunched": true,
+        "openingDate": "2021-07-10",
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": 52.49,
+        "heightInMeters": 16,
+        "lengthInFeet": 1916.01,
+        "lengthInMeters": 584,
+        "speedInMph": 42.87,
+        "speedInKmH": 69,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": 0,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": []
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    }
+  ],
+  "images": [
+    {
+      "imageId": "0bd4e325d2c540d7b9b748270b837a72",
+      "id": "0bd4e325d2c540d7b9b748270b837a72",
+      "ownerType": "AttractionManufacturer",
+      "ownerId": "a917c228-e220-4234-a6ff-603e13365607",
+      "ownerKey": "manufacturer:a917c228-e220-4234-a6ff-603e13365607",
+      "category": "Manufacturer",
+      "isPublished": true,
+      "isCurrent": false,
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "isWatermarked": false,
+      "sourceUrl": "https://www.intamin.com/wp-content/uploads/2020/06/intamin-amusement-home-news-tradeshows-560x560.jpg",
+      "internalUrl": "/images/0bd4e325d2c540d7b9b748270b837a72",
+      "description": "Des rails entrecroisés dans une photographie Intamin aux tons bleus.",
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Courbes de rails de montagne russe sous une teinte bleue."
+        },
+        {
+          "languageCode": "en",
+          "value": "Curving roller coaster track in blue tones."
+        },
+        {
+          "languageCode": "de",
+          "value": "Achterbahnschienen in Kurven, in Blautönen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Gebogen achtbaanrails in blauwe tinten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Curve di binari di montagne russe in tonalità blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Curvas de vías de montaña rusa en tonos azules."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zakrzywione tory kolejki górskiej w odcieniach błękitu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Curvas de carris de montanha-russa em tons azuis."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des rails entrecroisés dans une photographie Intamin aux tons bleus."
+        },
+        {
+          "languageCode": "en",
+          "value": "Intersecting tracks in an Intamin photograph with blue tones."
+        },
+        {
+          "languageCode": "de",
+          "value": "Sich kreuzende Schienen auf einem blau getönten Foto von Intamin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Elkaar kruisende rails op een blauw getinte foto van Intamin."
+        },
+        {
+          "languageCode": "it",
+          "value": "Binari che si incrociano in una fotografia Intamin dai toni blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vías entrecruzadas en una fotografía de Intamin teñida de azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Krzyżujące się tory na utrzymanym w błękitach zdjęciu Intaminu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Carris que se cruzam numa fotografia da Intamin em tons azuis."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Intamin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Intamin."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Intamin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Intamin."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Intamin."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Intamin."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Intamin."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Intamin."
+        }
+      ],
+      "tagIds": [],
+      "geoLocation": null,
+      "originalFileName": "intamin-amusement-home-news-tradeshows-560x560.jpg",
+      "contentType": "image/jpeg",
+      "width": 560,
+      "height": 560,
+      "sizeInBytes": 55802
+    },
+    {
+      "imageId": "d152dd3984b0472f9a660258fa1e465d",
+      "id": "d152dd3984b0472f9a660258fa1e465d",
+      "ownerType": "AttractionManufacturer",
+      "ownerId": "a917c228-e220-4234-a6ff-603e13365607",
+      "ownerKey": "manufacturer:a917c228-e220-4234-a6ff-603e13365607",
+      "category": "Manufacturer",
+      "isPublished": true,
+      "isCurrent": false,
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "isWatermarked": false,
+      "sourceUrl": "https://www.intamin.com/wp-content/uploads/2020/06/intamin-amusement-home-products-560x560.jpg",
+      "internalUrl": "/images/d152dd3984b0472f9a660258fa1e465d",
+      "description": "Des passagers les jambes suspendues dans une photographie Intamin aux tons bleus.",
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Passagers d’une attraction aux jambes dans le vide, sous une teinte bleue."
+        },
+        {
+          "languageCode": "en",
+          "value": "Riders with their legs dangling, pictured in blue tones."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fahrgäste mit frei hängenden Beinen, in Blautönen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers met vrij hangende benen, in blauwe tinten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Passeggeri con le gambe sospese, in tonalità blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pasajeros con las piernas colgando, en tonos azules."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pasażerowie atrakcji z nogami zwisającymi w powietrzu, w odcieniach błękitu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Passageiros com as pernas suspensas, em tons azuis."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des passagers les jambes suspendues dans une photographie Intamin aux tons bleus."
+        },
+        {
+          "languageCode": "en",
+          "value": "Riders with dangling legs in a blue-toned Intamin photograph."
+        },
+        {
+          "languageCode": "de",
+          "value": "Fahrgäste mit frei hängenden Beinen auf einem blau getönten Intamin-Foto."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers met hangende benen op een blauw getinte foto van Intamin."
+        },
+        {
+          "languageCode": "it",
+          "value": "Passeggeri con le gambe sospese in una fotografia Intamin dai toni blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pasajeros con las piernas al aire en una fotografía de Intamin teñida de azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pasażerowie ze swobodnie zwisającymi nogami na błękitnym zdjęciu Intaminu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Passageiros com as pernas suspensas numa fotografia da Intamin em tons azuis."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Intamin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Intamin."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Intamin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Intamin."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Intamin."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Intamin."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Intamin."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Intamin."
+        }
+      ],
+      "tagIds": [],
+      "geoLocation": null,
+      "originalFileName": "intamin-amusement-home-products-560x560.jpg",
+      "contentType": "image/jpeg",
+      "width": 560,
+      "height": 560,
+      "sizeInBytes": 64032
+    },
+    {
+      "imageId": "e942f66706524acf87ae621c6610a947",
+      "id": "e942f66706524acf87ae621c6610a947",
+      "ownerType": "AttractionManufacturer",
+      "ownerId": "a917c228-e220-4234-a6ff-603e13365607",
+      "ownerKey": "manufacturer:a917c228-e220-4234-a6ff-603e13365607",
+      "category": "Manufacturer",
+      "isPublished": true,
+      "isCurrent": false,
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "isWatermarked": false,
+      "sourceUrl": "https://www.intamin.com/wp-content/uploads/2020/06/intamin-amusement-home-service-560x560.jpg",
+      "internalUrl": "/images/e942f66706524acf87ae621c6610a947",
+      "description": "Roues et pièces métalliques d’attractions réunies dans une photographie Intamin.",
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Pièces métalliques, roues et roulements dans une composition bleutée."
+        },
+        {
+          "languageCode": "en",
+          "value": "Metal parts, wheels and bearings in a blue-toned arrangement."
+        },
+        {
+          "languageCode": "de",
+          "value": "Metallteile, Räder und Lager in einer blau getönten Anordnung."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Metalen onderdelen, wielen en lagers in een blauwe compositie."
+        },
+        {
+          "languageCode": "it",
+          "value": "Componenti metallici, ruote e cuscinetti in una composizione blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Piezas metálicas, ruedas y rodamientos en una composición azulada."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Metalowe części, koła i łożyska w niebieskiej kompozycji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Peças metálicas, rodas e rolamentos numa composição azulada."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Roues et pièces métalliques d’attractions réunies dans une photographie Intamin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Ride wheels and metal components gathered in an Intamin photograph."
+        },
+        {
+          "languageCode": "de",
+          "value": "Räder und Metallbauteile von Fahrgeschäften auf einem Foto von Intamin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Attractiewielen en metalen onderdelen op een foto van Intamin."
+        },
+        {
+          "languageCode": "it",
+          "value": "Ruote e componenti metallici di attrazioni in una fotografia Intamin."
+        },
+        {
+          "languageCode": "es",
+          "value": "Ruedas y componentes metálicos de atracciones en una fotografía de Intamin."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Koła i metalowe elementy urządzeń rozrywkowych na zdjęciu Intaminu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Rodas e componentes metálicos de atrações numa fotografia da Intamin."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Intamin."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Intamin."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Intamin."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Intamin."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Intamin."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Intamin."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Intamin."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Intamin."
+        }
+      ],
+      "tagIds": [],
+      "geoLocation": null,
+      "originalFileName": "intamin-amusement-home-service-560x560.jpg",
+      "contentType": "image/jpeg",
+      "width": 560,
+      "height": 560,
+      "sizeInBytes": 56748
+    },
+    {
+      "imageId": "5ab406bc20de4c9ebcbca278d8785ddc",
+      "id": "5ab406bc20de4c9ebcbca278d8785ddc",
+      "ownerType": "AttractionManufacturer",
+      "ownerId": "a917c228-e220-4234-a6ff-603e13365607",
+      "ownerKey": "manufacturer:a917c228-e220-4234-a6ff-603e13365607",
+      "category": "Logo",
+      "isPublished": true,
+      "isCurrent": true,
+      "setAsCurrent": true,
+      "withWatermark": false,
+      "isWatermarked": false,
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Intamin_Amusement_Rides_logo.svg/250px-Intamin_Amusement_Rides_logo.svg.png",
+      "internalUrl": "/images/5ab406bc20de4c9ebcbca278d8785ddc",
+      "description": "Logo Intamin Amusement Rides.",
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Logo Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "en",
+          "value": "Intamin Amusement Rides logo."
+        },
+        {
+          "languageCode": "de",
+          "value": "Logo von Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Logo van Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo di Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo de Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Logo Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo da Intamin Amusement Rides."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Logo Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "en",
+          "value": "Intamin Amusement Rides logo."
+        },
+        {
+          "languageCode": "de",
+          "value": "Logo von Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Logo van Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo di Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo de Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Logo Intamin Amusement Rides."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo da Intamin Amusement Rides."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Wikimedia Commons."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Wikimedia Commons."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Wikimedia Commons."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Wikimedia Commons."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Wikimedia Commons."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Wikimedia Commons."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Wikimedia Commons."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Wikimedia Commons."
+        }
+      ],
+      "tagIds": [],
+      "geoLocation": null,
+      "originalFileName": "Intamin_Amusement_Rides_logo.svg.png",
+      "contentType": "image/png",
+      "width": 250,
+      "height": 51,
+      "sizeInBytes": 10579
+    }
+  ],
+  "history": {
+    "events": []
+  },
+  "metadata": {
+    "source": "admin-bulk-park-graph-export",
+    "exportedAtUtc": "2026-11-15T14:09:47.8274098Z"
+  }
+}

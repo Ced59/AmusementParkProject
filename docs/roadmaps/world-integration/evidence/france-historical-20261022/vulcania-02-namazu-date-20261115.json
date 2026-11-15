@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-namazu",
+        "step": "03-park-items",
+        "notes": "Intamin Opening of Namazu,14juillet2021, dit explicitement opened to the public on July10th2021. CaptainCoasterfr10/07/2021 corrobore. Ancienne2021-10-07 corrigée sans nouvelle identité. Dimensions584m/69kmh et Intamin ID préservés; modèle officiel Multi Dimension Launch Coaster, pas nomenclature RCDB substituée. Fiche privée, aucune revue éditoriale finale. Étape2 évaluée: univers du menu sont catégories thématiques et niveaux A-D ne prouvent pas des zones officielles; aucun zoneKey inventé."
+      },
+      "items": [
+        {
+          "id": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "key": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "name": "Namazu",
+          "category": "Attraction",
+          "type": "RollerCoaster",
+          "attractionDetails": {
+            "openingDate": "2021-07-10",
+            "model": "Multi Dimension Launch Coaster"
+          },
+          "isVisible": false,
+          "adminReviewStatus": "ToReview"
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "fc40e6ec-f5a1-490e-83ed-c41874ed93b9",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:36:42.1740793Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.model",
+            "oldValue": "Intamin Multi Dimension Coaster",
+            "newValue": "Multi Dimension Launch Coaster"
+          },
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2021-10-07",
+            "newValue": "2021-07-10"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2021-07-10"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "a2322d06-a575-48de-9f8b-4ce06599503c",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:37:00.7314495Z",
+    "appliedAtUtc": "2026-11-15T14:37:00.7314505Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.model",
+            "oldValue": "Intamin Multi Dimension Coaster",
+            "newValue": "Multi Dimension Launch Coaster"
+          },
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2021-10-07",
+            "newValue": "2021-07-10"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2021-07-10"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Namazu privé : ouverture corrigée au10juillet2021 et modèle Multi Dimension Launch Coaster selon Intamin14juillet2021 ; ancien ID, constructeur et dimensions conservés. Aucun audit final ni publication.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Intamin Opening of Namazu,14juillet2021, dit explicitement opened to the public on July10th2021. CaptainCoasterfr10/07/2021 corrobore. Ancienne2021-10-07 corrigée sans nouvelle identité. Dimensions584m/69kmh et Intamin ID préservés; modèle officiel Multi Dimension Launch Coaster, pas nomenclature RCDB substituée. Fiche privée, aucune revue éditoriale finale. Étape2 évaluée: univers du menu sont catégories thématiques et niveaux A-D ne prouvent pas des zones officielles; aucun zoneKey inventé."
+}

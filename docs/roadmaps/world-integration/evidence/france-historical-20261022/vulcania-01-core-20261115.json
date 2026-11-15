@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-core",
+        "step": "01-park-core",
+        "notes": "Parc scientifique et thématique national en activité saisonnière. Histoire officielle et CRC donnent20février2002; presse contemporaine distingue inauguration20/public21: conserver février2002 sans fauxjour résolu. Adresse officielle2route deMazayes. SEMVolcans exploitante sous DSP, Région propriétaire distincte. ConstitutionSEM28juin1999 CRC2018, immatriculation15juillet distincte. Rôle des Krafft/VGE à documenter sans fondateur exclusif. Coordonnées existantes préservées; privéToReview, aucun audit final."
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR",
+        "type": "ThemePark",
+        "audienceClassification": "National",
+        "status": "Operating",
+        "openingDate": "2002-02",
+        "websiteUrl": "https://www.vulcania.com/",
+        "street": "2 route de Mazayes",
+        "city": "Saint-Ours-les-Roches",
+        "postalCode": "63230",
+        "operatorKey": "sem-volcans-vulcania",
+        "isVisible": false,
+        "adminReviewStatus": "ToReview"
+      },
+      "references": {
+        "operators": [
+          {
+            "key": "sem-volcans-vulcania",
+            "name": "SEM Volcans",
+            "legalName": "Société d’économie mixte des Volcans",
+            "foundedYear": 1999,
+            "isVisible": false,
+            "adminReviewStatus": "ToReview",
+            "contactDetails": {
+              "websiteUrl": "https://www.vulcania.com/la-sem-volcans/",
+              "city": "Saint-Ours-les-Roches",
+              "countryCode": "FR"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "154524ab-2a52-4d33-8d6d-092d69fbff64",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:34:33.9751372Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "1a9158a2-2d6c-4be2-bd24-c1cd273516f0",
+        "entityKey": "sem-volcans-vulcania",
+        "displayName": "SEM Volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "legalName",
+            "oldValue": null,
+            "newValue": "Société d’économie mixte des Volcans"
+          },
+          {
+            "field": "foundedYear",
+            "oldValue": null,
+            "newValue": "1999"
+          },
+          {
+            "field": "contactDetails",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/la-sem-volcans/ | Saint-Ours-les-Roches | FR"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": null,
+            "newValue": "ThemePark"
+          },
+          {
+            "field": "audienceClassification",
+            "oldValue": null,
+            "newValue": "National"
+          },
+          {
+            "field": "openingDateText",
+            "oldValue": null,
+            "newValue": "2002-02"
+          },
+          {
+            "field": "websiteUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/"
+          },
+          {
+            "field": "street",
+            "oldValue": null,
+            "newValue": "2 route de Mazayes"
+          },
+          {
+            "field": "city",
+            "oldValue": null,
+            "newValue": "Saint-Ours-les-Roches"
+          },
+          {
+            "field": "postalCode",
+            "oldValue": null,
+            "newValue": "63230"
+          },
+          {
+            "field": "operatorId",
+            "oldValue": null,
+            "newValue": "1a9158a2-2d6c-4be2-bd24-c1cd273516f0"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "c1232224-ed9a-4c70-8b54-baa5e85c579b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T14:35:15.603151Z",
+    "appliedAtUtc": "2026-11-15T14:35:15.6031518Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "entityKey": "sem-volcans-vulcania",
+        "displayName": "SEM Volcans",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "legalName",
+            "oldValue": null,
+            "newValue": "Société d’économie mixte des Volcans"
+          },
+          {
+            "field": "foundedYear",
+            "oldValue": null,
+            "newValue": "1999"
+          },
+          {
+            "field": "contactDetails",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/la-sem-volcans/ | Saint-Ours-les-Roches | FR"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": null,
+            "newValue": "ThemePark"
+          },
+          {
+            "field": "audienceClassification",
+            "oldValue": null,
+            "newValue": "National"
+          },
+          {
+            "field": "openingDateText",
+            "oldValue": null,
+            "newValue": "2002-02"
+          },
+          {
+            "field": "websiteUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/"
+          },
+          {
+            "field": "street",
+            "oldValue": null,
+            "newValue": "2 route de Mazayes"
+          },
+          {
+            "field": "city",
+            "oldValue": null,
+            "newValue": "Saint-Ours-les-Roches"
+          },
+          {
+            "field": "postalCode",
+            "oldValue": null,
+            "newValue": "63230"
+          },
+          {
+            "field": "operatorId",
+            "oldValue": null,
+            "newValue": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania privé : fiche générale, adresse officielle et exploitant SEM Volcans résolu. Ouverture février 2002 conservée sans jour arbitraire entre inauguration le20 et accès public le21 ; parc thématique national Operating. Aucun audit final ni publication.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Parc scientifique et thématique national en activité saisonnière. Histoire officielle et CRC donnent20février2002; presse contemporaine distingue inauguration20/public21: conserver février2002 sans fauxjour résolu. Adresse officielle2route deMazayes. SEMVolcans exploitante sous DSP, Région propriétaire distincte. ConstitutionSEM28juin1999 CRC2018, immatriculation15juillet distincte. Rôle des Krafft/VGE à documenter sans fondateur exclusif. Coordonnées existantes préservées; privéToReview, aucun audit final."
+}

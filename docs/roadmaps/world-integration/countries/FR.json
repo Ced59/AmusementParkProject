@@ -37967,9 +37967,30 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-15T14:37:00.731Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
+          "appliedAt": "2026-11-15T14:35:15.603Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania privé : fiche générale, adresse officielle et exploitant SEM Volcans résolu. Ouverture février 2002 conservée sans jour arbitraire entre inauguration le20 et accès public le21 ; parc thématique national Operating. Aucun audit final ni publication."
+        },
+        {
+          "eventId": "apply-a2322d06-a575-48de-9f8b-4ce06599503c",
+          "appliedAt": "2026-11-15T14:37:00.731Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
+          "auditEvidence": null,
+          "summary": "Namazu privé : ouverture corrigée au10juillet2021 et modèle Multi Dimension Launch Coaster selon Intamin14juillet2021 ; ancien ID, constructeur et dimensions conservés. Aucun audit final ni publication."
+        }
+      ],
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -38019,7 +38040,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-a2322d06-a575-48de-9f8b-4ce06599503c ; conserver les références de découverte."
       }
     },
     {
