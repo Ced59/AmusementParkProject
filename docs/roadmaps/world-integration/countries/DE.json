@@ -12787,20 +12787,31 @@
         "89cde038-d947-4c23-8fb8-f22abb554b6c"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:16:13.942Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermé pour la saison depuis le 20 octobre 2026 ; reprise 2027 non annoncée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Jauden"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:14:37.694Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6e030a2c-7442-468a-83f3-fc805ceebbbb",
+          "appliedAt": "2026-11-15T16:14:37.694Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+          "evidence": "PARK_DATA_EDITOR:apply:6e030a2c-7442-468a-83f3-fc805ceebbbb",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-jauden-20261115/audit.json",
+          "summary": "Huit descriptions, six tarifs, conditions d’âge et fermeture de saison corrigés ; cinq photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier l’annonce de réouverture 2027 et les tarifs auprès de l’exploitant ; auditer les droits des cinq photos existantes et chercher une image exacte supplémentaire sous licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -12826,6 +12837,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/12986.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Jauden — annonce de fermeture saisonnière",
+          "url": "https://www.jauden.de/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
