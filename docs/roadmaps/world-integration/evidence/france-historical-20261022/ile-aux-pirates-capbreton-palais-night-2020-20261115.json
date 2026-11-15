@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:18:18.429Z",
+  "result": {
+    "id": "1fa861940b604db8be8a2c6282a994dc",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "295a3460-71b5-4453-a3a7-b9266f508dd1",
+    "path": "park_item/1fa861940b604db8be8a2c6282a994dc",
+    "description": "Les étages du Palais du rire dominent l’allée du parc en août 2020.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1536,
+    "height": 2048,
+    "sizeInBytes": 596998,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/d2/91/85/photo1jpg.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade du palais du rire avec enseigne multicolore, fresques de pirates et passerelle en filet éclairées la nuit."
+      },
+      {
+        "languageCode": "en",
+        "value": "Funhouse façade with a multicoloured sign, pirate murals and a net bridge lit at night."
+      },
+      {
+        "languageCode": "de",
+        "value": "Nächtlich beleuchtete Fassade des Laufgeschäfts mit buntem Schild, Piratenbildern und Netzbrücke."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Gevel van het funhouse met een veelkleurig bord, piratenschilderingen en een netbrug, ’s nachts verlicht."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata della casa del divertimento con insegna multicolore, murali di pirati e ponte di rete illuminati di notte."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada de la casa de la risa con letrero multicolor, murales de piratas y puente de red iluminados de noche."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fasada pałacu śmiechu z wielobarwnym szyldem, malowidłami piratów i siatkowym mostem oświetlonymi nocą."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada da casa dos risos com letreiro multicolor, pinturas de piratas e ponte de rede iluminados à noite."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les étages du Palais du rire dominent l’allée du parc en août 2020."
+      },
+      {
+        "languageCode": "en",
+        "value": "The funhouse’s upper floors tower over the park’s lane in August 2020."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Geschosse des Laufgeschäfts ragen im August 2020 über die Parkgasse."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De verdiepingen van het funhouse steken in augustus 2020 boven het parkpad uit."
+      },
+      {
+        "languageCode": "it",
+        "value": "I piani della casa del divertimento dominano il viale del parco nell’agosto 2020."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los pisos de la casa de la risa dominan el paseo del parque en agosto de 2020."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Piętra pałacu śmiechu górują nad parkową alejką w sierpniu 2020 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os pisos da casa dos risos dominam o caminho do parque em agosto de 2020."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fredkawa4619 / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:18:12.917Z",
+    "updatedAt": "2026-11-15T02:18:18.429Z"
+  },
+  "sourceEvidence": {
+    "stem": "palais-night-2020",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/d2/91/85/photo1jpg.jpg",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g641840-d4742129-r766044401-L_ile_aux_pirates-Capbreton_Landes_Nouvelle_Aquitaine.html",
+    "author": "fredkawa4619",
+    "visitPeriod": "août 2020",
+    "captureDay": null,
+    "ownerId": "295a3460-71b5-4453-a3a7-b9266f508dd1",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/ta-24.jpg",
+    "sha256": "89c7e09da873a52f517bf1bc85a9f56270189eb8a9e2cd1c3f5505b884806120",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Photographie de visiteur, auteur et page vérifiés. Autorisation générale du propriétaire pour les photos de cette campagne ; aucune licence ouverte ni permission personnelle de l’auteur revendiquée.",
+    "review": "Original sans retouche, sauf variante1200px fournie par le CDN de la source pour la crêperie, même cadrage inspecté. Vue propre du lieu, non recadrée et non générée."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

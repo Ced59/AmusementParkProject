@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "694923cb1eb97f4e5211c1baa3bbeb86af1a59ba94114aba73641fbe3f9300c7",
+  "review": "16 descriptions huit langues personnellement rédigées et relues. Deux attractions internes privées qualifiées : Palais du rire et Treasure Club. Espace de jeux gratuit2004 distinct de l’arcade, aucun doublon ni suppression ni fusion d’identité incertaine. Preview et Apply identiques horsIDs nouveaux.",
+  "result": {
+    "operationId": "099544d6-068c-412d-a868-e48b87f923e9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:14:34.0439478Z",
+    "appliedAtUtc": "2026-11-15T02:14:34.0439489Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "295a3460-71b5-4453-a3a7-b9266f508dd1",
+        "entityKey": "capbreton-palais-du-rire",
+        "displayName": "L’Île aux Pirates — Palais du rire",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Festung mit den Laufstegen</h2><p>Das Laufgeschäft L’Île aux Pirates besitzt eine hohe Festungsfassade, über der sein Name in Leuchtbuchstaben steht. Gemalte Piraten bevölkern die Mauern; Kanonen, Schädel, ein Papagei und ein aufgehängter Hai reichen als Kulisse bis vor die Laufwege. Von den offenen Balkonen aus sind die Besucher hinter den Seilen zu sehen.</p><h2>Über der Parkgasse</h2><p>Eine Netzbrücke führt im Obergeschoss zwischen Raumöffnungen und einem runden Käfig über die Fassade. Darunter mischen sich grüne Geländer mit braunen Balustern und Seilbrücken. Nach Einbruch der Dunkelheit zeichnen Lichterketten die Ebenen in Rot, Grün und Violett über der Parkgasse nach.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The fortress with its walkways</h2><p>L’Île aux Pirates funhouse has a tall fortress façade crowned by its name in illuminated letters. Painted pirates occupy the walls, with cannons, skulls, a parrot and a hanging shark extending the scenery out towards the walkways. The open balconies reveal visitors making their way behind the ropes.</p><h2>Above the park’s lane</h2><p>A net bridge crosses the upper façade between room openings and a rounded cage. Below it, green railings mingle with brown balusters and rope bridges. After dark, strings of lights outline the funhouse’s levels in red, green and purple above the park’s lane.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La fortaleza de las pasarelas</h2><p>La casa de la risa L’Île aux Pirates presenta una gran fachada de fortaleza coronada por su nombre en letras luminosas. Piratas pintados ocupan las murallas; cañones, calaveras, un loro y un tiburón suspendido extienden el decorado hasta los pasillos exteriores. Los balcones abiertos dejan ver a los visitantes avanzando detrás de las cuerdas.</p><h2>Sobre el paseo del parque</h2><p>Un puente de red cruza la fachada en el piso superior, entre las entradas a las salas y una jaula redondeada. Más abajo, las barandillas verdes se mezclan con balaustres marrones y puentes de cuerda. Al anochecer, las guirnaldas dibujan los niveles en rojo, verde y violeta sobre el paseo del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La forteresse aux passerelles</h2><p>Le palais du rire L’Île aux Pirates se présente comme une grande façade de forteresse, surmontée de son nom en lettres lumineuses. Des pirates peints occupent les murailles ; canons, crânes, perroquet et requin suspendu composent un décor qui déborde jusque devant les passages. Les balcons ouverts laissent voir les visiteurs avançant derrière les cordages.</p><h2>Au-dessus de l’allée</h2><p>Une passerelle en filet traverse la façade à l’étage, entre les ouvertures des salles et une cage arrondie. Plus bas, des rambardes vertes se mêlent aux balustres bruns et aux ponts de cordes. À la nuit tombée, les guirlandes dessinent les niveaux du palais en rouge, vert et violet, au-dessus de l’allée du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La fortezza delle passerelle</h2><p>La casa del divertimento L’Île aux Pirates presenta un’alta facciata da fortezza, sormontata dal nome in lettere luminose. Pirati dipinti occupano le mura; cannoni, teschi, un pappagallo e uno squalo sospeso estendono la scenografia fin davanti ai passaggi. I balconi aperti lasciano vedere i visitatori che avanzano dietro le corde.</p><h2>Sopra il viale del parco</h2><p>Un ponte di rete attraversa la facciata al piano superiore, tra gli accessi alle sale e una gabbia arrotondata. Più in basso, ringhiere verdi si mescolano a balaustre marroni e ponti di corda. Al calare della notte, fili di luci disegnano i livelli in rosso, verde e viola sopra il viale del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De vesting met loopbruggen</h2><p>Het funhouse L’Île aux Pirates heeft een hoge vestinggevel met zijn naam in lichtletters erboven. Geschilderde piraten bevolken de muren; kanonnen, schedels, een papegaai en een hangende haai trekken het decor door tot voor de doorgangen. Op de open balkons zijn bezoekers achter de touwen te zien.</p><h2>Boven het parkpad</h2><p>Een netbrug loopt over de bovenverdieping, tussen openingen naar de zalen en een ronde kooi. Daaronder mengen groene leuningen zich met bruine balusters en touwbruggen. Na zonsondergang tekenen lichtsnoeren de verdiepingen rood, groen en paars af boven het parkpad.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Forteca z kładkami</h2><p>Pałac śmiechu L’Île aux Pirates ma wysoką fasadę fortecy zwieńczoną nazwą z podświetlanych liter. Malowani piraci zajmują mury, a armaty, czaszki, papuga i zawieszony rekin dopełniają dekoracji przed przejściami. Na otwartych balkonach widać gości poruszających się za linami.</p><h2>Nad parkową alejką</h2><p>Siatkowy most przecina fasadę na piętrze, między wejściami do sal a zaokrągloną klatką. Niżej zielone barierki mieszają się z brązowymi tralkami i mostkami linowymi. Po zmroku girlandy świateł obrysowują poziomy czerwienią, zielenią i fioletem nad alejką parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A fortaleza das passagens</h2><p>A casa dos risos L’Île aux Pirates apresenta uma grande fachada de fortaleza, coroada pelo nome em letras luminosas. Piratas pintados ocupam as muralhas; canhões, caveiras, um papagaio e um tubarão suspenso prolongam o cenário até às passagens exteriores. As varandas abertas deixam ver os visitantes a avançar por trás das cordas.</p><h2>Acima do caminho do parque</h2><p>Uma ponte de rede atravessa a fachada no piso superior, entre as entradas das salas e uma gaiola arredondada. Mais abaixo, grades verdes misturam-se com balaústres castanhos e pontes de corda. Ao anoitecer, grinaldas de luzes desenham os níveis em vermelho, verde e violeta por cima do caminho do parque.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-palais-du-rire"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+        "entityKey": "capbreton-treasure-club",
+        "displayName": "Treasure Club",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Schatz unter gemalten Blättern</h2><p>Der Treasure Club öffnet sich unter einem großen Schild in Pergamentform, umgeben von Piraten, Segelschiffen und gemalten grünen Blättern. Reihen von Plüschtieren, Greifautomaten und leuchtende Spiele füllen den Raum unter der tropischen Fassade.</p><p>Münzspiele, Airhockey-Tische und Basketballautomaten stehen zwischen den Geräten. Ihre Lichter setzen die Beleuchtung der Außenattraktionen fort; die große Piratenszene ist vom Becken von Aquanimal aus sichtbar.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Treasure beneath painted leaves</h2><p>Treasure Club opens beneath a large parchment-shaped sign surrounded by pirates, sailing ships and painted green leaves. Rows of plush toys, claw-machine cabinets and illuminated games fill the space beneath the tropical façade.</p><p>Coin games, air-hockey tables and basketball machines stand among the cabinets. Their lights continue those of the outdoor attractions, while the large pirate scene remains visible from Aquanimal’s pool.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El tesoro bajo las hojas pintadas</h2><p>El Treasure Club abre su sala bajo un gran letrero en forma de pergamino, rodeado de piratas, veleros y hojas verdes pintadas. Filas de peluches, vitrinas de máquinas de pinza y juegos luminosos ocupan el espacio bajo esta fachada tropical.</p><p>Juegos de monedas, mesas de hockey de aire y máquinas de baloncesto se mezclan entre los aparatos. Sus luces prolongan las de las atracciones exteriores, mientras la gran escena de piratas sigue visible desde la piscina de Aquanimal.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le trésor sous les feuillages peints</h2><p>Le Treasure Club ouvre sa salle sous une grande enseigne de parchemin, entourée de pirates, de voiliers et de feuilles vertes peintes. Les rangées de peluches, les vitrines des machines à pinces et les jeux lumineux occupent le dessous de cette façade tropicale.</p><p>Jeux à pièces, tables de palets et bornes de basket se côtoient parmi les machines. Leurs lumières prolongent celles des attractions extérieures, tandis que la grande scène de pirates reste visible depuis le bassin d’Aquanimal.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il tesoro sotto le foglie dipinte</h2><p>Il Treasure Club apre la sua sala sotto una grande insegna a pergamena, circondata da pirati, velieri e foglie verdi dipinte. File di peluche, vetrine delle macchine a pinza e giochi luminosi occupano lo spazio sotto questa facciata tropicale.</p><p>Giochi a moneta, tavoli da air hockey e macchine da basket si affiancano tra gli apparecchi. Le loro luci prolungano quelle delle attrazioni all’aperto, mentre la grande scena di pirati rimane visibile dalla vasca di Aquanimal.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De schat onder geschilderde bladeren</h2><p>Treasure Club opent onder een groot perkamentvormig bord, omringd door piraten, zeilschepen en geschilderde groene bladeren. Rijen knuffels, grijpmachines en verlichte spellen vullen de ruimte onder deze tropische gevel.</p><p>Muntspellen, airhockeytafels en basketbalautomaten staan tussen de machines. Hun lichten sluiten aan op die van de buitenattracties; het grote piratentafereel blijft zichtbaar vanaf het bassin van Aquanimal.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skarb pod malowanymi liśćmi</h2><p>Sala Treasure Club otwiera się pod wielkim szyldem w kształcie pergaminu, otoczonym piratami, żaglowcami i malowanymi zielonymi liśćmi. Rzędy pluszaków, witryny automatów z chwytakiem i podświetlane gry wypełniają przestrzeń pod tropikalną fasadą.</p><p>Obok siebie stoją gry na monety, stoły do cymbergaja i automaty do koszykówki. Ich światła łączą się z oświetleniem atrakcji na zewnątrz, a wielką piracką scenę widać z basenu Aquanimal.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O tesouro sob as folhas pintadas</h2><p>O Treasure Club abre a sua sala sob um grande letreiro em forma de pergaminho, rodeado de piratas, veleiros e folhas verdes pintadas. Filas de peluches, vitrinas de máquinas de garra e jogos luminosos ocupam o espaço por baixo desta fachada tropical.</p><p>Jogos de moedas, mesas de hóquei de ar e máquinas de basquetebol misturam-se entre os equipamentos. As luzes prolongam as das atrações exteriores, enquanto a grande cena de piratas permanece visível a partir da piscina do Aquanimal.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-treasure-club"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

@@ -13099,7 +13099,7 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T02:09:04.496Z",
+      "lastDataIntegrationAt": "2026-11-15T02:20:19.910Z",
       "integrationHistory": [
         {
           "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
@@ -13120,6 +13120,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-mine-safari-piste-20261115.json",
           "auditEvidence": null,
           "summary": "Train de la Mine, Parcours Safari et Piste des As :24 notices relues8langues ; précision2024 restaurée sans fauxjour. Intégration partielle, aucune publication nouvelle."
+        },
+        {
+          "eventId": "099544d6-068c-412d-a868-e48b87f923e9",
+          "appliedAt": "2026-11-15T02:14:34.043Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-palais-treasure-club-20261115.json",
+          "auditEvidence": null,
+          "summary": "Palais du rire et Treasure Club créés privés avec16descriptions relues8langues ; attractions internes qualifiées, aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-0ae6761a9e6b410abe4c24919df7b340",
+          "appliedAt": "2026-11-15T02:17:32.759Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-treasure-club-night-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée treasure-club-night-2020, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-1fa861940b604db8be8a2c6282a994dc",
+          "appliedAt": "2026-11-15T02:18:18.429Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-palais-night-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée palais-night-2020, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-69297892944b4b0abe250404266bdf1a",
+          "appliedAt": "2026-11-15T02:19:15.383Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-piste-rock-arch-2020-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée piste-rock-arch-2020, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-e1484c0336ee4cf78a4e0bface74cce2",
+          "appliedAt": "2026-11-15T02:19:43.447Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-creperie-counter-2018-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée creperie-counter-2018, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "apply-ad715532-cda2-400a-93fc-6f2664cb190e",
+          "appliedAt": "2026-11-15T02:20:19.910Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-01-park-history-setting-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : description du parc relue dans huit langues et présence documentaire corrigée à août2004 ; ouverture exacte inconnue, audit final non réalisé."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

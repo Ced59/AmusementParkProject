@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:19:15.383Z",
+  "result": {
+    "id": "69297892944b4b0abe250404266bdf1a",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+    "path": "park_item/69297892944b4b0abe250404266bdf1a",
+    "description": "La piste longe la palissade et le pont Notre-Dame en juillet 2020.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 640,
+    "height": 480,
+    "sizeInBytes": 91418,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/87/d7/7e/l-ile-aux-pirates.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Petite voiture rouge et moto bleue devant l’arche de faux rochers de la Piste des As."
+      },
+      {
+        "languageCode": "en",
+        "value": "A little red car and blue motorbike in front of Piste des As’s artificial rock arch."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein kleines rotes Auto und ein blaues Motorrad vor dem künstlichen Felsbogen der Piste des As."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een kleine rode auto en blauwe motorfiets voor de namaakrotsboog van Piste des As."
+      },
+      {
+        "languageCode": "it",
+        "value": "Piccola auto rossa e moto blu davanti all’arco di rocce artificiali della Piste des As."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pequeño coche rojo y moto azul ante el arco de rocas artificiales de la Piste des As."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mały czerwony samochód i niebieski motocykl przed łukiem ze sztucznych skał na Piste des As."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pequeno carro vermelho e mota azul diante do arco de rochas artificiais da Piste des As."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La piste longe la palissade et le pont Notre-Dame en juillet 2020."
+      },
+      {
+        "languageCode": "en",
+        "value": "The track runs beside the palisade and Pont Notre-Dame in July 2020."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Piste verläuft im Juli 2020 an der Palisade und der Pont Notre-Dame entlang."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De baan loopt in juli 2020 langs de schutting en de Pont Notre-Dame."
+      },
+      {
+        "languageCode": "it",
+        "value": "La pista costeggia la palizzata e il Pont Notre-Dame nel luglio 2020."
+      },
+      {
+        "languageCode": "es",
+        "value": "La pista discurre junto a la empalizada y el Pont Notre-Dame en julio de 2020."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Tor biegnie przy palisadzie i Pont Notre-Dame w lipcu 2020 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A pista acompanha a paliçada e a Pont Notre-Dame em julho de 2020."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Cihan D / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Cihan D / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:19:11.927Z",
+    "updatedAt": "2026-11-15T02:19:15.383Z"
+  },
+  "sourceEvidence": {
+    "stem": "piste-rock-arch-2020",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/87/d7/7e/l-ile-aux-pirates.jpg",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g641840-d4742129-r759571995-L_ile_aux_pirates-Capbreton_Landes_Nouvelle_Aquitaine.html",
+    "author": "Cihan D",
+    "visitPeriod": "juillet 2020",
+    "captureDay": null,
+    "ownerId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/ta-1.jpg",
+    "sha256": "154c6e5ca6b3c6b4ae3d889bc22c3a76a5cbd67118a48fd76bb00726e563df2b",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Photographie de visiteur, auteur et page vérifiés. Autorisation générale du propriétaire pour les photos de cette campagne ; aucune licence ouverte ni permission personnelle de l’auteur revendiquée.",
+    "review": "Original sans retouche, sauf variante1200px fournie par le CDN de la source pour la crêperie, même cadrage inspecté. Vue propre du lieu, non recadrée et non générée."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

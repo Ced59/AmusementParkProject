@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:17:32.759Z",
+  "result": {
+    "id": "0ae6761a9e6b410abe4c24919df7b340",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+    "path": "park_item/0ae6761a9e6b410abe4c24919df7b340",
+    "description": "Soirée d’août 2020 devant le Treasure Club et le petit kiosque voisin.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1536,
+    "height": 2048,
+    "sizeInBytes": 554669,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/d2/91/84/photo0jpg.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade illuminée du Treasure Club, machines à pinces et petit carrousel Happy Childhood sous une enseigne de pirates."
+      },
+      {
+        "languageCode": "en",
+        "value": "Illuminated Treasure Club façade, claw machines and the small Happy Childhood carousel beneath a pirate sign."
+      },
+      {
+        "languageCode": "de",
+        "value": "Beleuchtete Fassade des Treasure Club, Greifautomaten und das kleine Karussell Happy Childhood unter einem Piratenschild."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Verlichte gevel van Treasure Club, grijpmachines en het kleine Happy Childhood-carrousel onder een piratenbord."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata illuminata del Treasure Club, macchine a pinza e piccola giostra Happy Childhood sotto un’insegna di pirati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada iluminada del Treasure Club, máquinas de pinza y pequeño carrusel Happy Childhood bajo un letrero de piratas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oświetlona fasada Treasure Club, automaty z chwytakiem i mała karuzela Happy Childhood pod pirackim szyldem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada iluminada do Treasure Club, máquinas de garra e pequeno carrossel Happy Childhood sob um letreiro de piratas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Soirée d’août 2020 devant le Treasure Club et le petit kiosque voisin."
+      },
+      {
+        "languageCode": "en",
+        "value": "An August 2020 evening outside Treasure Club and the small neighbouring kiosk."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Abend im August 2020 vor dem Treasure Club und dem kleinen benachbarten Kiosk."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een avond in augustus 2020 voor Treasure Club en de kleine naburige kiosk."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una serata di agosto 2020 davanti al Treasure Club e al piccolo chiosco vicino."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una noche de agosto de 2020 frente al Treasure Club y al pequeño quiosco vecino."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sierpniowy wieczór w 2020 roku przed Treasure Club i małym sąsiednim kioskiem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma noite de agosto de 2020 diante do Treasure Club e do pequeno quiosque vizinho."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fredkawa4619 / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fredkawa4619 / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:17:28.63Z",
+    "updatedAt": "2026-11-15T02:17:32.759Z"
+  },
+  "sourceEvidence": {
+    "stem": "treasure-club-night-2020",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/d2/91/84/photo0jpg.jpg",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g641840-d4742129-r766044401-L_ile_aux_pirates-Capbreton_Landes_Nouvelle_Aquitaine.html",
+    "author": "fredkawa4619",
+    "visitPeriod": "août 2020",
+    "captureDay": null,
+    "ownerId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/ta-0.jpg",
+    "sha256": "52c8347427746c895c45cd7e5ed4e556b4f80b02ed569fa1d80e524062b44c61",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Photographie de visiteur, auteur et page vérifiés. Autorisation générale du propriétaire pour les photos de cette campagne ; aucune licence ouverte ni permission personnelle de l’auteur revendiquée.",
+    "review": "Original sans retouche, sauf variante1200px fournie par le CDN de la source pour la crêperie, même cadrage inspecté. Vue propre du lieu, non recadrée et non générée."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

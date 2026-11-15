@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:19:43.447Z",
+  "result": {
+    "id": "e1484c0336ee4cf78a4e0bface74cce2",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+    "path": "park_item/e1484c0336ee4cf78a4e0bface74cce2",
+    "description": "Le chalet photographié près du bassin d’Aquanimal en juillet 2018.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1200,
+    "height": 900,
+    "sizeInBytes": 277815,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/eb/ef/47/l-ile-aux-pirates.jpg?w=1200&h=-1&s=1",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Comptoir du chalet de restauration, bocaux de bonbons, sucettes et machine à barbe à papa éclairés le soir."
+      },
+      {
+        "languageCode": "en",
+        "value": "The food chalet’s counter, sweet jars, lollipops and candyfloss machine lit in the evening."
+      },
+      {
+        "languageCode": "de",
+        "value": "Abendlich beleuchtete Theke des Imbisschalets mit Bonbongläsern, Lutschern und Zuckerwattemaschine."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De ’s avonds verlichte toonbank van het eetkraampje met snoeppotten, lolly’s en een suikerspinmachine."
+      },
+      {
+        "languageCode": "it",
+        "value": "Bancone dello chalet di ristoro, barattoli di caramelle, lecca-lecca e macchina dello zucchero filato illuminati di sera."
+      },
+      {
+        "languageCode": "es",
+        "value": "Mostrador del chalé de comida, tarros de caramelos, piruletas y máquina de algodón de azúcar iluminados por la noche."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oświetlona wieczorem lada drewnianego kiosku gastronomicznego ze słojami cukierków, lizakami i maszyną do waty cukrowej."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Balcão do chalé de restauração, frascos de rebuçados, chupa-chupas e máquina de algodão-doce iluminados à noite."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le chalet photographié près du bassin d’Aquanimal en juillet 2018."
+      },
+      {
+        "languageCode": "en",
+        "value": "The chalet photographed beside Aquanimal’s pool in July 2018."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Chalet neben dem Becken von Aquanimal, aufgenommen im Juli 2018."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het chalet naast het bassin van Aquanimal, gefotografeerd in juli 2018."
+      },
+      {
+        "languageCode": "it",
+        "value": "Lo chalet fotografato accanto alla vasca di Aquanimal nel luglio 2018."
+      },
+      {
+        "languageCode": "es",
+        "value": "El chalé fotografiado junto a la piscina de Aquanimal en julio de 2018."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Drewniany kiosk obok basenu Aquanimal, sfotografowany w lipcu 2018 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O chalé fotografado junto à piscina do Aquanimal em julho de 2018."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Mickael M / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Mickael M / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:19:40.013Z",
+    "updatedAt": "2026-11-15T02:19:43.447Z"
+  },
+  "sourceEvidence": {
+    "stem": "creperie-counter-2018",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/eb/ef/47/l-ile-aux-pirates.jpg?w=1200&h=-1&s=1",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g641840-d4742129-r601234968-L_ile_aux_pirates-Capbreton_Landes_Nouvelle_Aquitaine.html",
+    "author": "Mickael M",
+    "visitPeriod": "juillet 2018",
+    "captureDay": null,
+    "ownerId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/ta-31-1200.jpg",
+    "sha256": "68cdb32cc0503c7825934f7bd9db949bca06c9836a18fe1edd814ba2bc5f6cf7",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Photographie de visiteur, auteur et page vérifiés. Autorisation générale du propriétaire pour les photos de cette campagne ; aucune licence ouverte ni permission personnelle de l’auteur revendiquée.",
+    "review": "Original sans retouche, sauf variante1200px fournie par le CDN de la source pour la crêperie, même cadrage inspecté. Vue propre du lieu, non recadrée et non générée."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}
