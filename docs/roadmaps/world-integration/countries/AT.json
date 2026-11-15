@@ -5837,7 +5837,7 @@
           "summary": "Audit final 88/100 sans blocage ; site et Facebook publiés."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; trouver une photographie réutilisable de la piste, renouveler calendrier et prix après le 31 octobre 2026, puis contrôler les conditions exactes des carnets. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Chercher une vue exacte de la Speed-Gleit-Bahn de Stoaninger Alm avec droits de réutilisation vérifiables ; importer, contrôler les huit pages et dater le reçu réel. Vérifier aussi le calendrier de la prochaine saison.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5926,7 +5926,7 @@
         "publicationBlockers": [],
         "gapCount": 4
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
     },
     {
       "entryId": "AT-candidate-f6b80dea57a125",
