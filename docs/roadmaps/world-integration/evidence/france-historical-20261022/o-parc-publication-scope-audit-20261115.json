@@ -1,0 +1,5701 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "auditedAtUtc": "2026-11-15T06:07:41.357506Z",
+  "decision": "Audited scope ready for publication; overall integration remains partial",
+  "finalAuditPerformed": true,
+  "finalAuditCompleted": false,
+  "scopeAuditPassed": true,
+  "overallInventoryQualified": false,
+  "fullAuditExport": {
+    "exportedAtUtc": "2026-11-15T05:51:36.2702944Z",
+    "sha256": "3ce693a93eca2ab9a0eb7f6ba13e7d7841b111067f703926e693c17ef8c692ed",
+    "evidence": "o-parc-final-audit-export-20261115.json"
+  },
+  "auditedStateSha256": "ea51346aa97e6293ff78835f8c94a7563c4a81ebf9ccd39d80b7e611d8f3eefa",
+  "completeness": {
+    "receivedAtUtc": "2026-11-15T06:04:05.0986769Z",
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 96,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 104,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T06:04:03.3541513Z"
+  },
+  "coverage": {
+    "items": 43,
+    "attractions": 35,
+    "publicItemsBefore": 31,
+    "privateItemsReady": 12,
+    "describedInEightLanguages": 43,
+    "itemsWithOwnPhoto": 11,
+    "itemsWithoutOwnPhoto": 32,
+    "attractionsWithPhoto": 10,
+    "importantAttractionsConservativeDenominator": 35,
+    "importantAttractionsWithThreePhotos": 2,
+    "media": 23,
+    "privateMediaReady": 12,
+    "generalParkPhotographs": 5,
+    "officialLogo": true,
+    "founderPortrait": true,
+    "officialMapYears": [
+      2025,
+      2026
+    ],
+    "positionsProven": 0,
+    "zones": 2,
+    "canonicalFactsPublishedBefore": 6,
+    "canonicalFactsToPublish": 2,
+    "legacyDraftsExcluded": 2,
+    "articles": 1
+  },
+  "itemCoverageAndExceptions": [
+    {
+      "id": "bf459997-db22-423d-8933-432580c3c724",
+      "name": "Aire de jeux",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+      "name": "Baby Volcan",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+      "name": "Bulle de savon",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "b9f88323-62c3-4043-8ec1-08955e172ab5",
+      "name": "Caisse & souvenirs",
+      "category": "Shop",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+      "name": "Chaises Volantes",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "955672abe0e942bcba38bf146c4ba96f",
+        "6b98288bb740472f9380b57f16f436da",
+        "d20fc9ef7f384abf92e26eaa80e8f938"
+      ],
+      "photoCount": 3,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": null
+    },
+    {
+      "id": "aba7141a-dbb3-40e1-9696-2501297f46e9",
+      "name": "Course Ô Sac",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "e10a994d-4972-41a4-879e-352738ce47d4",
+      "name": "Fun Slide",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+      "name": "Hamacs",
+      "category": "Service",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+      "name": "Home-ball",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "866d7199-ce94-4b42-a6c9-21fb695e883f",
+      "name": "Jeux dʼadresse",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+      "name": "Karts à pédales",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "1b43c59784c6432ba29f654df31a31ee"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+      "name": "La Boule",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+      "name": "La Chenille",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "9fe7c4c0634d49b1af7f53709763619c",
+        "bddcd54627fe42c98abadc171f53b5cb",
+        "090be65c19e84417b676e4d458181e0a"
+      ],
+      "photoCount": 3,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": null
+    },
+    {
+      "id": "2265a05c-9519-4086-856f-1f26f4ac9756",
+      "name": "La Valse des Tasses",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "66672916-7314-4c65-ae4b-95d56c40fd49",
+      "name": "Le Phare des Pirates",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+      "name": "Mini-Golf",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "b8d5ff109c904f81923056e5fe148f82"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+      "name": "Méga Slide",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "a9255a5214dc40c5ac2d24522796ea9c"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+      "name": "Parcours de la Jungle",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "42e01028-c743-47e0-8dbf-427f67cba865",
+      "name": "Parking",
+      "category": "Service",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+      "name": "Pataugeoire Géante",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "24125fa7aa394658b8bc61c3e3143acd"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "336dc675-0619-4024-be24-f793ed3f721a",
+      "name": "Piscine à balles",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+      "name": "Poulailler",
+      "category": "Animal",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+      "name": "Safari Buggy",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "9dd30bfd5ef34dd39d697238e1d220ae"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "495fea26-5385-456e-beab-b875c69e7d95",
+      "name": "Saloon",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+      "name": "Sanitaires et table à langer",
+      "category": "Service",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+      "name": "Tables de pique-nique",
+      "category": "Service",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+      "name": "Toboggan des pirates",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "7ab8178f09e6410d975911782f40df7b"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+      "name": "Toboggan Konga",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "3b0ed553df9e43e294f3b23d63e587a7"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+      "name": "Trampolines",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "26ae6a5a3e5d47ac883f63e16089edb2",
+        "ece8b4584df94a5cb90508cf87d96c2d"
+      ],
+      "photoCount": 2,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "612bb456-e15e-4768-bd59-c4563ec14611",
+      "name": "Tyroliennes",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "7d5591a1-f7b7-4a27-8019-aa58df889b4f",
+      "name": "Zone Arcade",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "e6da3884-fb1d-4f45-845f-d0ff4550f8de",
+      "name": "Échelles Dingos",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+      "name": "Ô Chalet Gourmand",
+      "category": "Restaurant",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [
+        "372481fd0cd6474298eac52cf6f47562"
+      ],
+      "photoCount": 1,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "cb149211-44b6-43dd-98a1-44acd27811cd",
+      "name": "Ô Corner Glacé",
+      "category": "Restaurant",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "86bf248f-070a-4b95-b4d2-962375788eb3",
+      "name": "Ô Pirates",
+      "category": "Attraction",
+      "publicBefore": true,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    },
+    {
+      "id": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "category": "Attraction",
+      "publicBefore": false,
+      "descriptionLanguages": [
+        "de",
+        "en",
+        "es",
+        "fr",
+        "it",
+        "nl",
+        "pl",
+        "pt"
+      ],
+      "imageIds": [],
+      "photoCount": 0,
+      "positionProven": false,
+      "positionGap": "Installations saisonnières puis démontées ; plans illustrés sans points géographiques individuels fiables.",
+      "photoGap": "Recherche du site officiel, relais touristiques, Infoptimum, Magazine du Berry, Koikispass, Themeparkfreaks, Coasterfriends et Tripadvisor ; conserver les seuls clichés identifiés, distincts et sans filigrane ajouté. Plans et montages exclus des photographies."
+    }
+  ],
+  "manualEightLanguageReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "complete": true,
+    "includes": [
+      "parc",
+      "zones",
+      "43 notices",
+      "restrictions sourcées et localisées",
+      "références",
+      "faits retenus",
+      "article et blocs",
+      "23 descriptions médias",
+      "alternatives, légendes et crédits",
+      "deux plans"
+    ],
+    "method": "Rédaction et relecture personnelle, corrections ciblées confrontées aux Preview/Apply ; contrôle des corps sans titres/noms, de chaque langue, des séquences communes entre champs et des chaînes JSON brutes. Aucune génération de traduction externe utilisée comme copie finale.",
+    "mechanicalVocabularyReview": "Termes physiques ponctuels décrivent la scène photographiée ; pas de succession opératoire ni chiffres de capacité/vitesse dans les descriptions."
+  },
+  "corpus": {
+    "sourceSha256": "ea51346aa97e6293ff78835f8c94a7563c4a81ebf9ccd39d80b7e611d8f3eefa",
+    "publicLocalizedFields": 1208,
+    "encodingIssues": [],
+    "exactParagraphDuplicates": [],
+    "distributions": {
+      "park-fr": {
+        "count": 1,
+        "min": 289,
+        "p10": 289,
+        "median": 289,
+        "p90": 289,
+        "max": 289
+      },
+      "park-en": {
+        "count": 1,
+        "min": 247,
+        "p10": 247,
+        "median": 247,
+        "p90": 247,
+        "max": 247
+      },
+      "park-de": {
+        "count": 1,
+        "min": 234,
+        "p10": 234,
+        "median": 234,
+        "p90": 234,
+        "max": 234
+      },
+      "park-nl": {
+        "count": 1,
+        "min": 250,
+        "p10": 250,
+        "median": 250,
+        "p90": 250,
+        "max": 250
+      },
+      "park-it": {
+        "count": 1,
+        "min": 261,
+        "p10": 261,
+        "median": 261,
+        "p90": 261,
+        "max": 261
+      },
+      "park-es": {
+        "count": 1,
+        "min": 280,
+        "p10": 280,
+        "median": 280,
+        "p90": 280,
+        "max": 280
+      },
+      "park-pl": {
+        "count": 1,
+        "min": 226,
+        "p10": 226,
+        "median": 226,
+        "p90": 226,
+        "max": 226
+      },
+      "park-pt": {
+        "count": 1,
+        "min": 282,
+        "p10": 282,
+        "median": 282,
+        "p90": 282,
+        "max": 282
+      },
+      "zones-fr": {
+        "count": 2,
+        "min": 87,
+        "p10": 87,
+        "median": 91.5,
+        "p90": 87,
+        "max": 96
+      },
+      "zones-en": {
+        "count": 2,
+        "min": 78,
+        "p10": 78,
+        "median": 79.5,
+        "p90": 78,
+        "max": 81
+      },
+      "zones-de": {
+        "count": 2,
+        "min": 79,
+        "p10": 79,
+        "median": 79.5,
+        "p90": 79,
+        "max": 80
+      },
+      "zones-nl": {
+        "count": 2,
+        "min": 82,
+        "p10": 82,
+        "median": 83.0,
+        "p90": 82,
+        "max": 84
+      },
+      "zones-it": {
+        "count": 2,
+        "min": 84,
+        "p10": 84,
+        "median": 86.0,
+        "p90": 84,
+        "max": 88
+      },
+      "zones-es": {
+        "count": 2,
+        "min": 84,
+        "p10": 84,
+        "median": 89.5,
+        "p90": 84,
+        "max": 95
+      },
+      "zones-pl": {
+        "count": 2,
+        "min": 65,
+        "p10": 65,
+        "median": 66.5,
+        "p90": 65,
+        "max": 68
+      },
+      "zones-pt": {
+        "count": 2,
+        "min": 87,
+        "p10": 87,
+        "median": 88.5,
+        "p90": 87,
+        "max": 90
+      },
+      "items-Attraction-fr": {
+        "count": 35,
+        "min": 51,
+        "p10": 58,
+        "median": 78,
+        "p90": 92,
+        "max": 103
+      },
+      "items-Attraction-en": {
+        "count": 35,
+        "min": 41,
+        "p10": 53,
+        "median": 68,
+        "p90": 82,
+        "max": 101
+      },
+      "items-Attraction-de": {
+        "count": 35,
+        "min": 46,
+        "p10": 52,
+        "median": 69,
+        "p90": 78,
+        "max": 100
+      },
+      "items-Attraction-nl": {
+        "count": 35,
+        "min": 45,
+        "p10": 52,
+        "median": 73,
+        "p90": 84,
+        "max": 110
+      },
+      "items-Attraction-it": {
+        "count": 35,
+        "min": 45,
+        "p10": 54,
+        "median": 72,
+        "p90": 83,
+        "max": 98
+      },
+      "items-Attraction-es": {
+        "count": 35,
+        "min": 49,
+        "p10": 60,
+        "median": 76,
+        "p90": 87,
+        "max": 106
+      },
+      "items-Attraction-pl": {
+        "count": 35,
+        "min": 39,
+        "p10": 46,
+        "median": 59,
+        "p90": 70,
+        "max": 82
+      },
+      "items-Attraction-pt": {
+        "count": 35,
+        "min": 49,
+        "p10": 52,
+        "median": 74,
+        "p90": 85,
+        "max": 105
+      },
+      "items-Shop-fr": {
+        "count": 1,
+        "min": 71,
+        "p10": 71,
+        "median": 71,
+        "p90": 71,
+        "max": 71
+      },
+      "items-Shop-en": {
+        "count": 1,
+        "min": 66,
+        "p10": 66,
+        "median": 66,
+        "p90": 66,
+        "max": 66
+      },
+      "items-Shop-de": {
+        "count": 1,
+        "min": 65,
+        "p10": 65,
+        "median": 65,
+        "p90": 65,
+        "max": 65
+      },
+      "items-Shop-nl": {
+        "count": 1,
+        "min": 67,
+        "p10": 67,
+        "median": 67,
+        "p90": 67,
+        "max": 67
+      },
+      "items-Shop-it": {
+        "count": 1,
+        "min": 70,
+        "p10": 70,
+        "median": 70,
+        "p90": 70,
+        "max": 70
+      },
+      "items-Shop-es": {
+        "count": 1,
+        "min": 76,
+        "p10": 76,
+        "median": 76,
+        "p90": 76,
+        "max": 76
+      },
+      "items-Shop-pl": {
+        "count": 1,
+        "min": 56,
+        "p10": 56,
+        "median": 56,
+        "p90": 56,
+        "max": 56
+      },
+      "items-Shop-pt": {
+        "count": 1,
+        "min": 74,
+        "p10": 74,
+        "median": 74,
+        "p90": 74,
+        "max": 74
+      },
+      "items-Service-fr": {
+        "count": 4,
+        "min": 68,
+        "p10": 68,
+        "median": 77.0,
+        "p90": 81,
+        "max": 83
+      },
+      "items-Service-en": {
+        "count": 4,
+        "min": 63,
+        "p10": 63,
+        "median": 67.0,
+        "p90": 67,
+        "max": 68
+      },
+      "items-Service-de": {
+        "count": 4,
+        "min": 60,
+        "p10": 60,
+        "median": 62.0,
+        "p90": 63,
+        "max": 66
+      },
+      "items-Service-nl": {
+        "count": 4,
+        "min": 64,
+        "p10": 64,
+        "median": 66.0,
+        "p90": 67,
+        "max": 68
+      },
+      "items-Service-it": {
+        "count": 4,
+        "min": 66,
+        "p10": 66,
+        "median": 71.0,
+        "p90": 74,
+        "max": 79
+      },
+      "items-Service-es": {
+        "count": 4,
+        "min": 72,
+        "p10": 72,
+        "median": 76.0,
+        "p90": 80,
+        "max": 82
+      },
+      "items-Service-pl": {
+        "count": 4,
+        "min": 53,
+        "p10": 53,
+        "median": 56.0,
+        "p90": 58,
+        "max": 63
+      },
+      "items-Service-pt": {
+        "count": 4,
+        "min": 66,
+        "p10": 66,
+        "median": 72.5,
+        "p90": 75,
+        "max": 76
+      },
+      "items-Animal-fr": {
+        "count": 1,
+        "min": 72,
+        "p10": 72,
+        "median": 72,
+        "p90": 72,
+        "max": 72
+      },
+      "items-Animal-en": {
+        "count": 1,
+        "min": 61,
+        "p10": 61,
+        "median": 61,
+        "p90": 61,
+        "max": 61
+      },
+      "items-Animal-de": {
+        "count": 1,
+        "min": 62,
+        "p10": 62,
+        "median": 62,
+        "p90": 62,
+        "max": 62
+      },
+      "items-Animal-nl": {
+        "count": 1,
+        "min": 69,
+        "p10": 69,
+        "median": 69,
+        "p90": 69,
+        "max": 69
+      },
+      "items-Animal-it": {
+        "count": 1,
+        "min": 64,
+        "p10": 64,
+        "median": 64,
+        "p90": 64,
+        "max": 64
+      },
+      "items-Animal-es": {
+        "count": 1,
+        "min": 68,
+        "p10": 68,
+        "median": 68,
+        "p90": 68,
+        "max": 68
+      },
+      "items-Animal-pl": {
+        "count": 1,
+        "min": 52,
+        "p10": 52,
+        "median": 52,
+        "p90": 52,
+        "max": 52
+      },
+      "items-Animal-pt": {
+        "count": 1,
+        "min": 64,
+        "p10": 64,
+        "median": 64,
+        "p90": 64,
+        "max": 64
+      },
+      "items-Restaurant-fr": {
+        "count": 2,
+        "min": 70,
+        "p10": 70,
+        "median": 73.0,
+        "p90": 70,
+        "max": 76
+      },
+      "items-Restaurant-en": {
+        "count": 2,
+        "min": 65,
+        "p10": 65,
+        "median": 70.0,
+        "p90": 65,
+        "max": 75
+      },
+      "items-Restaurant-de": {
+        "count": 2,
+        "min": 59,
+        "p10": 59,
+        "median": 64.5,
+        "p90": 59,
+        "max": 70
+      },
+      "items-Restaurant-nl": {
+        "count": 2,
+        "min": 65,
+        "p10": 65,
+        "median": 69.0,
+        "p90": 65,
+        "max": 73
+      },
+      "items-Restaurant-it": {
+        "count": 2,
+        "min": 66,
+        "p10": 66,
+        "median": 69.5,
+        "p90": 66,
+        "max": 73
+      },
+      "items-Restaurant-es": {
+        "count": 2,
+        "min": 70,
+        "p10": 70,
+        "median": 74.0,
+        "p90": 70,
+        "max": 78
+      },
+      "items-Restaurant-pl": {
+        "count": 2,
+        "min": 55,
+        "p10": 55,
+        "median": 58.0,
+        "p90": 55,
+        "max": 61
+      },
+      "items-Restaurant-pt": {
+        "count": 2,
+        "min": 66,
+        "p10": 66,
+        "median": 72.5,
+        "p90": 66,
+        "max": 79
+      },
+      "timeline-fr": {
+        "count": 10,
+        "min": 34,
+        "p10": 34,
+        "median": 40.5,
+        "p90": 42,
+        "max": 49
+      },
+      "timeline-en": {
+        "count": 10,
+        "min": 30,
+        "p10": 30,
+        "median": 34.0,
+        "p90": 38,
+        "max": 44
+      },
+      "timeline-de": {
+        "count": 10,
+        "min": 25,
+        "p10": 25,
+        "median": 32.5,
+        "p90": 38,
+        "max": 43
+      },
+      "timeline-nl": {
+        "count": 10,
+        "min": 27,
+        "p10": 27,
+        "median": 35.0,
+        "p90": 38,
+        "max": 43
+      },
+      "timeline-it": {
+        "count": 10,
+        "min": 29,
+        "p10": 29,
+        "median": 35.0,
+        "p90": 42,
+        "max": 43
+      },
+      "timeline-es": {
+        "count": 10,
+        "min": 32,
+        "p10": 32,
+        "median": 37.5,
+        "p90": 42,
+        "max": 47
+      },
+      "timeline-pl": {
+        "count": 10,
+        "min": 26,
+        "p10": 26,
+        "median": 31.0,
+        "p90": 34,
+        "max": 38
+      },
+      "timeline-pt": {
+        "count": 10,
+        "min": 31,
+        "p10": 31,
+        "median": 36.0,
+        "p90": 40,
+        "max": 48
+      },
+      "reference-operators-fr": {
+        "count": 1,
+        "min": 55,
+        "p10": 55,
+        "median": 55,
+        "p90": 55,
+        "max": 55
+      },
+      "reference-operators-en": {
+        "count": 1,
+        "min": 56,
+        "p10": 56,
+        "median": 56,
+        "p90": 56,
+        "max": 56
+      },
+      "reference-operators-de": {
+        "count": 1,
+        "min": 53,
+        "p10": 53,
+        "median": 53,
+        "p90": 53,
+        "max": 53
+      },
+      "reference-operators-nl": {
+        "count": 1,
+        "min": 57,
+        "p10": 57,
+        "median": 57,
+        "p90": 57,
+        "max": 57
+      },
+      "reference-operators-it": {
+        "count": 1,
+        "min": 53,
+        "p10": 53,
+        "median": 53,
+        "p90": 53,
+        "max": 53
+      },
+      "reference-operators-es": {
+        "count": 1,
+        "min": 59,
+        "p10": 59,
+        "median": 59,
+        "p90": 59,
+        "max": 59
+      },
+      "reference-operators-pl": {
+        "count": 1,
+        "min": 49,
+        "p10": 49,
+        "median": 49,
+        "p90": 49,
+        "max": 49
+      },
+      "reference-operators-pt": {
+        "count": 1,
+        "min": 61,
+        "p10": 61,
+        "median": 61,
+        "p90": 61,
+        "max": 61
+      },
+      "article-fr": {
+        "count": 1,
+        "min": 492,
+        "p10": 492,
+        "median": 492,
+        "p90": 492,
+        "max": 492
+      },
+      "article-en": {
+        "count": 1,
+        "min": 452,
+        "p10": 452,
+        "median": 452,
+        "p90": 452,
+        "max": 452
+      },
+      "article-de": {
+        "count": 1,
+        "min": 435,
+        "p10": 435,
+        "median": 435,
+        "p90": 435,
+        "max": 435
+      },
+      "article-nl": {
+        "count": 1,
+        "min": 466,
+        "p10": 466,
+        "median": 466,
+        "p90": 466,
+        "max": 466
+      },
+      "article-it": {
+        "count": 1,
+        "min": 469,
+        "p10": 469,
+        "median": 469,
+        "p90": 469,
+        "max": 469
+      },
+      "article-es": {
+        "count": 1,
+        "min": 500,
+        "p10": 500,
+        "median": 500,
+        "p90": 500,
+        "max": 500
+      },
+      "article-pl": {
+        "count": 1,
+        "min": 394,
+        "p10": 394,
+        "median": 394,
+        "p90": 394,
+        "max": 394
+      },
+      "article-pt": {
+        "count": 1,
+        "min": 501,
+        "p10": 501,
+        "median": 501,
+        "p90": 501,
+        "max": 501
+      }
+    },
+    "measurements": {
+      "park-fr": [
+        {
+          "owner": "park",
+          "words": 289,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-en": [
+        {
+          "owner": "park",
+          "words": 247,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-de": [
+        {
+          "owner": "park",
+          "words": 234,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-nl": [
+        {
+          "owner": "park",
+          "words": 250,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-it": [
+        {
+          "owner": "park",
+          "words": 261,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-es": [
+        {
+          "owner": "park",
+          "words": 280,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-pl": [
+        {
+          "owner": "park",
+          "words": 226,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "park-pt": [
+        {
+          "owner": "park",
+          "words": 282,
+          "h2": 3,
+          "p": 5
+        }
+      ],
+      "zones-fr": [
+        {
+          "owner": "Aqua Zone",
+          "words": 96,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-en": [
+        {
+          "owner": "Aqua Zone",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-de": [
+        {
+          "owner": "Aqua Zone",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-nl": [
+        {
+          "owner": "Aqua Zone",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-it": [
+        {
+          "owner": "Aqua Zone",
+          "words": 88,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-es": [
+        {
+          "owner": "Aqua Zone",
+          "words": 95,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-pl": [
+        {
+          "owner": "Aqua Zone",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "zones-pt": [
+        {
+          "owner": "Aqua Zone",
+          "words": 90,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Zone",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-fr": [
+        {
+          "owner": "Aire de jeux",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 51,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 55,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 58,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 94,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 92,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 86,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 83,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 86,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 58,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 96,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 103,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 94,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 91,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-en": [
+        {
+          "owner": "Aire de jeux",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 57,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 44,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 57,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 49,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 53,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 77,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 41,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 85,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 101,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-de": [
+        {
+          "owner": "Aire de jeux",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 55,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 46,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 55,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 49,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 60,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 61,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 46,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 83,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 100,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 85,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-nl": [
+        {
+          "owner": "Aire de jeux",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 83,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 48,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 56,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 51,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 92,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 83,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 45,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 88,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 110,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 77,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 86,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 77,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-it": [
+        {
+          "owner": "Aire de jeux",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 60,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 45,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 58,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 54,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 85,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 77,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 83,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 50,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 85,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 98,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 60,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-es": [
+        {
+          "owner": "Aire de jeux",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 86,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 49,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 60,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 56,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 96,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 88,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 88,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 106,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-pl": [
+        {
+          "owner": "Aire de jeux",
+          "words": 54,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 57,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 46,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 40,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 51,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 39,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 47,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 57,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 54,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 57,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 53,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 58,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 39,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 82,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 56,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 51,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Attraction-pt": [
+        {
+          "owner": "Aire de jeux",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby pirate",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Baby Volcan",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bac à sable",
+          "words": 60,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Bulle de savon",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Chaises Volantes",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Course Ô Sac",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Fun Slide",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Home-ball",
+          "words": 49,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Jeux dʼadresse",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Karts à pédales",
+          "words": 50,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Boule",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Chenille",
+          "words": 87,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "La Valse des Tasses",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Gorille",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Géant des mers",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Le Phare des Pirates",
+          "words": 86,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Mini-Golf",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Méga Slide",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de la Jungle",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parcours de l’extrême",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pataugeoire Géante",
+          "words": 84,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Piscine à balles",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Pêche aux canards",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Safari Buggy",
+          "words": 88,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Saloon",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan des pirates",
+          "words": 85,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Toboggan Konga",
+          "words": 77,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Trampolines",
+          "words": 105,
+          "h2": 2,
+          "p": 3
+        },
+        {
+          "owner": "Tyroliennes",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Zone Arcade",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Échelles Dingos",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Petit Train",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Pirates",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô p’tits quads",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-fr": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 71,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-en": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-de": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-nl": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-it": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-es": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-pl": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 56,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Shop-pt": [
+        {
+          "owner": "Caisse & souvenirs",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-fr": [
+        {
+          "owner": "Hamacs",
+          "words": 81,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 83,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-en": [
+        {
+          "owner": "Hamacs",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-de": [
+        {
+          "owner": "Hamacs",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 60,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 61,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-nl": [
+        {
+          "owner": "Hamacs",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 67,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-it": [
+        {
+          "owner": "Hamacs",
+          "words": 74,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-es": [
+        {
+          "owner": "Hamacs",
+          "words": 82,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 80,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-pl": [
+        {
+          "owner": "Hamacs",
+          "words": 63,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 54,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 53,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 58,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Service-pt": [
+        {
+          "owner": "Hamacs",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Parking",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Sanitaires et table à langer",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Tables de pique-nique",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-fr": [
+        {
+          "owner": "Poulailler",
+          "words": 72,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-en": [
+        {
+          "owner": "Poulailler",
+          "words": 61,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-de": [
+        {
+          "owner": "Poulailler",
+          "words": 62,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-nl": [
+        {
+          "owner": "Poulailler",
+          "words": 69,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-it": [
+        {
+          "owner": "Poulailler",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-es": [
+        {
+          "owner": "Poulailler",
+          "words": 68,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-pl": [
+        {
+          "owner": "Poulailler",
+          "words": 52,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Animal-pt": [
+        {
+          "owner": "Poulailler",
+          "words": 64,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-fr": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 76,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-en": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 75,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-de": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 59,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-nl": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 65,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-it": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 73,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-es": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 78,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 70,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-pl": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 61,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 55,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "items-Restaurant-pt": [
+        {
+          "owner": "Ô Chalet Gourmand",
+          "words": 79,
+          "h2": 2,
+          "p": 2
+        },
+        {
+          "owner": "Ô Corner Glacé",
+          "words": 66,
+          "h2": 2,
+          "p": 2
+        }
+      ],
+      "timeline-fr": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 40
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 41
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 42
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 42
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 42
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 35
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 49
+        }
+      ],
+      "timeline-en": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 30
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 33
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 31
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 38
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 36
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 35
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 44
+        }
+      ],
+      "timeline-de": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 26
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 31
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 25
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 33
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 33
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 38
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 26
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 43
+        }
+      ],
+      "timeline-nl": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 30
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 27
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 36
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 38
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 43
+        }
+      ],
+      "timeline-it": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 29
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 35
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 35
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 42
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 35
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 30
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 43
+        }
+      ],
+      "timeline-es": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 41
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 39
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 38
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 42
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 33
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 47
+        }
+      ],
+      "timeline-pl": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 26
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 27
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 27
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 31
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 31
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 33
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 34
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 32
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 27
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 38
+        }
+      ],
+      "timeline-pt": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 31
+        },
+        {
+          "owner": "o-parc-chenille-2020",
+          "words": 36
+        },
+        {
+          "owner": "o-parc-chenille-opening-2020",
+          "words": 33
+        },
+        {
+          "owner": "o-parc-pirates-opening-2024",
+          "words": 36
+        },
+        {
+          "owner": "o-parc-jungle-opening-2025",
+          "words": 38
+        },
+        {
+          "owner": "o-parc-new-rides-2025",
+          "words": 37
+        },
+        {
+          "owner": "o-parc-safari-buggy-opening-2025",
+          "words": 40
+        },
+        {
+          "owner": "o-parc-valse-tasses-opening-2025",
+          "words": 35
+        },
+        {
+          "owner": "o-parc-final-season-2026",
+          "words": 36
+        },
+        {
+          "owner": "o-parc-closure-2026",
+          "words": 48
+        }
+      ],
+      "reference-operators-fr": [
+        {
+          "owner": "Ô Parc",
+          "words": 55,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-en": [
+        {
+          "owner": "Ô Parc",
+          "words": 56,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-de": [
+        {
+          "owner": "Ô Parc",
+          "words": 53,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-nl": [
+        {
+          "owner": "Ô Parc",
+          "words": 57,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-it": [
+        {
+          "owner": "Ô Parc",
+          "words": 53,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-es": [
+        {
+          "owner": "Ô Parc",
+          "words": 59,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-pl": [
+        {
+          "owner": "Ô Parc",
+          "words": 49,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "reference-operators-pt": [
+        {
+          "owner": "Ô Parc",
+          "words": 61,
+          "h2": 0,
+          "p": 1
+        }
+      ],
+      "article-fr": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 492,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-en": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 452,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-de": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 435,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-nl": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 466,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-it": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 469,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-es": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 500,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-pl": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 394,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ],
+      "article-pt": [
+        {
+          "owner": "o-parc-opening-2017",
+          "words": 501,
+          "headings": 3,
+          "paragraphs": 6
+        }
+      ]
+    },
+    "manualReviewComplete": true
+  },
+  "rawEncoding": {
+    "checkedAtUtc": "2026-11-15T06:03:55.533822+00:00",
+    "sourceSha256": "ea51346aa97e6293ff78835f8c94a7563c4a81ebf9ccd39d80b7e611d8f3eefa",
+    "rawPublicStringsChecked": 1835,
+    "technicalStringsSeparated": 2073,
+    "localizedEditorialFields": 1231,
+    "encodingIssues": [],
+    "exactCrossEntityMatches": [],
+    "nearCrossEntityMatches": [],
+    "manualReviewRequired": true
+  },
+  "crossFieldNineWordSequences": [],
+  "idempotence": [
+    {
+      "operationId": "34f6437c-d9d5-4c3e-93d0-57cab27693a8",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T06:05:10.7434405Z",
+      "appliedAtUtc": null,
+      "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "targetParkName": "Ô Parc",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 50,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+          "entityKey": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+          "displayName": "Steeve, Charles et Guillaume",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "c24f0c34-e5c9-4cd4-9919-bca752583450",
+          "entityKey": "c24f0c34-e5c9-4cd4-9919-bca752583450",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "o-parc-final-map-2026",
+          "entityKey": "o-parc-final-map-2026",
+          "displayName": "Carte officielle 2026 (fr, Image)",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOfficialMap",
+          "entityId": "o-parc-map-2025",
+          "entityKey": "o-parc-map-2025",
+          "displayName": "Carte officielle 2025 (fr, Image)",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "entityKey": "park",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "4a1c7f06-323a-4fa9-80db-fdffea4cb93f",
+          "entityKey": "4a1c7f06-323a-4fa9-80db-fdffea4cb93f",
+          "displayName": "Aqua Zone",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkZone",
+          "entityId": "8793ed77-cad4-4610-9a15-17dc82595586",
+          "entityKey": "8793ed77-cad4-4610-9a15-17dc82595586",
+          "displayName": "Baby Zone",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "bf459997-db22-423d-8933-432580c3c724",
+          "entityKey": "bf459997-db22-423d-8933-432580c3c724",
+          "displayName": "Aire de jeux",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+          "entityKey": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+          "displayName": "Baby pirate",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+          "entityKey": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+          "displayName": "Baby Volcan",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+          "entityKey": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+          "displayName": "Bac à sable",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+          "entityKey": "2aee0336-0409-4f5d-a0f5-6d8d8cc002f2",
+          "displayName": "Bulle de savon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "b9f88323-62c3-4043-8ec1-08955e172ab5",
+          "entityKey": "b9f88323-62c3-4043-8ec1-08955e172ab5",
+          "displayName": "Caisse & souvenirs",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+          "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+          "displayName": "Chaises Volantes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "aba7141a-dbb3-40e1-9696-2501297f46e9",
+          "entityKey": "aba7141a-dbb3-40e1-9696-2501297f46e9",
+          "displayName": "Course Ô Sac",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e10a994d-4972-41a4-879e-352738ce47d4",
+          "entityKey": "e10a994d-4972-41a4-879e-352738ce47d4",
+          "displayName": "Fun Slide",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+          "entityKey": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+          "displayName": "Hamacs",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+          "entityKey": "69ee63cd-8188-4b97-8d23-a593420d7d32",
+          "displayName": "Home-ball",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "866d7199-ce94-4b42-a6c9-21fb695e883f",
+          "entityKey": "866d7199-ce94-4b42-a6c9-21fb695e883f",
+          "displayName": "Jeux dʼadresse",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+          "entityKey": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+          "displayName": "Karts à pédales",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+          "entityKey": "cc4a0552-04ba-46be-87c2-d66617f6ef3a",
+          "displayName": "La Boule",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "displayName": "La Chenille",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2265a05c-9519-4086-856f-1f26f4ac9756",
+          "entityKey": "2265a05c-9519-4086-856f-1f26f4ac9756",
+          "displayName": "La Valse des Tasses",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "87d59498-a481-46ba-9a52-475cca5b161c",
+          "entityKey": "87d59498-a481-46ba-9a52-475cca5b161c",
+          "displayName": "Le Gorille",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+          "entityKey": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+          "displayName": "Le Géant des mers",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "66672916-7314-4c65-ae4b-95d56c40fd49",
+          "entityKey": "66672916-7314-4c65-ae4b-95d56c40fd49",
+          "displayName": "Le Phare des Pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+          "entityKey": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+          "displayName": "Mini-Golf",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+          "entityKey": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+          "displayName": "Méga Slide",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+          "entityKey": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+          "displayName": "Parcours de la Jungle",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+          "entityKey": "5d420723-34b1-472f-b4c7-d412c365eb11",
+          "displayName": "Parcours de l’extrême",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "42e01028-c743-47e0-8dbf-427f67cba865",
+          "entityKey": "42e01028-c743-47e0-8dbf-427f67cba865",
+          "displayName": "Parking",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+          "entityKey": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+          "displayName": "Pataugeoire Géante",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "336dc675-0619-4024-be24-f793ed3f721a",
+          "entityKey": "336dc675-0619-4024-be24-f793ed3f721a",
+          "displayName": "Piscine à balles",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+          "entityKey": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+          "displayName": "Poulailler",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+          "entityKey": "3f5145d6-bfad-4178-96f4-aee63661909f",
+          "displayName": "Pêche aux canards",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "displayName": "Safari Buggy",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "495fea26-5385-456e-beab-b875c69e7d95",
+          "entityKey": "495fea26-5385-456e-beab-b875c69e7d95",
+          "displayName": "Saloon",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+          "entityKey": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+          "displayName": "Sanitaires et table à langer",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+          "entityKey": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+          "displayName": "Tables de pique-nique",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+          "entityKey": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+          "displayName": "Toboggan des pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+          "entityKey": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+          "displayName": "Toboggan Konga",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+          "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+          "displayName": "Trampolines",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "612bb456-e15e-4768-bd59-c4563ec14611",
+          "entityKey": "612bb456-e15e-4768-bd59-c4563ec14611",
+          "displayName": "Tyroliennes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "7d5591a1-f7b7-4a27-8019-aa58df889b4f",
+          "entityKey": "7d5591a1-f7b7-4a27-8019-aa58df889b4f",
+          "displayName": "Zone Arcade",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "e6da3884-fb1d-4f45-845f-d0ff4550f8de",
+          "entityKey": "e6da3884-fb1d-4f45-845f-d0ff4550f8de",
+          "displayName": "Échelles Dingos",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+          "entityKey": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+          "displayName": "Ô Chalet Gourmand",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "cb149211-44b6-43dd-98a1-44acd27811cd",
+          "entityKey": "cb149211-44b6-43dd-98a1-44acd27811cd",
+          "displayName": "Ô Corner Glacé",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3907da4a-6351-420f-ac42-953e8814da0b",
+          "entityKey": "3907da4a-6351-420f-ac42-953e8814da0b",
+          "displayName": "Ô Petit Train",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+          "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+          "displayName": "Ô Pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+          "entityKey": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+          "displayName": "Ô p’tits quads",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "fe95880e-fd6d-43b3-8d17-a40bb1624999",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T06:05:29.5326682Z",
+      "appliedAtUtc": null,
+      "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "targetParkName": "Ô Parc",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 37,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "ParkFounder",
+          "entityId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+          "entityKey": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+          "displayName": "Steeve, Charles et Guillaume",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkOperator",
+          "entityId": "c24f0c34-e5c9-4cd4-9919-bca752583450",
+          "entityKey": "c24f0c34-e5c9-4cd4-9919-bca752583450",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "entityKey": "park",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+          "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+          "displayName": "Chaises Volantes",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+          "entityKey": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+          "displayName": "Karts à pédales",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "displayName": "La Chenille",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+          "entityKey": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+          "displayName": "Mini-Golf",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+          "entityKey": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+          "displayName": "Méga Slide",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+          "entityKey": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+          "displayName": "Pataugeoire Géante",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "displayName": "Safari Buggy",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+          "entityKey": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+          "displayName": "Toboggan des pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+          "entityKey": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+          "displayName": "Toboggan Konga",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+          "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+          "displayName": "Trampolines",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+          "entityKey": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+          "displayName": "Ô Chalet Gourmand",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "8976847a7add4386a59e30a020a80270",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "ad051cad0785452d93d515619bacea17",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "aae9deb7df2c4f49932e0ee1c0223ae9",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "e0f48f45039b4d06a10d8153d6eb705e",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "5bbfbad268de44458d6c706ba70add6f",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "7b8a30b154c34801a74f9d4cce98ba99",
+          "entityKey": null,
+          "displayName": "codex-import.webp",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d88725b539ed461cb3de15199120b365",
+          "entityKey": null,
+          "displayName": "o-parc-8-1.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9dd30bfd5ef34dd39d697238e1d220ae",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "1b43c59784c6432ba29f654df31a31ee",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "7ab8178f09e6410d975911782f40df7b",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "9fe7c4c0634d49b1af7f53709763619c",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "bddcd54627fe42c98abadc171f53b5cb",
+          "entityKey": null,
+          "displayName": "codex-import.webp",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "090be65c19e84417b676e4d458181e0a",
+          "entityKey": null,
+          "displayName": "codex-import.webp",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "26ae6a5a3e5d47ac883f63e16089edb2",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "ece8b4584df94a5cb90508cf87d96c2d",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "955672abe0e942bcba38bf146c4ba96f",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "6b98288bb740472f9380b57f16f436da",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "d20fc9ef7f384abf92e26eaa80e8f938",
+          "entityKey": null,
+          "displayName": "codex-import.webp",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "a9255a5214dc40c5ac2d24522796ea9c",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "24125fa7aa394658b8bc61c3e3143acd",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "b8d5ff109c904f81923056e5fe148f82",
+          "entityKey": null,
+          "displayName": "codex-import.png",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "372481fd0cd6474298eac52cf6f47562",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3b0ed553df9e43e294f3b23d63e587a7",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Unchanged",
+          "matchedBy": "imageId",
+          "fields": []
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "6767e341-6982-4e3a-a03d-c795917acefa",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T06:05:53.562933Z",
+      "appliedAtUtc": null,
+      "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "targetParkName": "Ô Parc",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 14,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "entityKey": "park",
+          "displayName": "Ô Parc",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+          "displayName": "La Chenille",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "2265a05c-9519-4086-856f-1f26f4ac9756",
+          "entityKey": "2265a05c-9519-4086-856f-1f26f4ac9756",
+          "displayName": "La Valse des Tasses",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+          "entityKey": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+          "displayName": "Parcours de la Jungle",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+          "displayName": "Safari Buggy",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+          "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+          "displayName": "Ô Pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "23a722eb-f02f-4c9a-80b3-92bae27a696a",
+          "entityKey": "o-parc-opening-2017",
+          "displayName": "Ô Parc ouvre sur lʼîle de Cosne",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "f4b5de89-2e9a-4077-9ab7-bf43fb56930c",
+          "entityKey": "o-parc-chenille-opening-2020",
+          "displayName": "La Chenille ouvre à Bannay",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "17a343b3-eb0c-47fb-993b-f3b33eb818fe",
+          "entityKey": "o-parc-pirates-opening-2024",
+          "displayName": "Ô Pirates arrive en 2024",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5e2e8be3-f24a-4f99-a5d0-0947becc6408",
+          "entityKey": "o-parc-jungle-opening-2025",
+          "displayName": "Le Parcours de la Jungle rejoint le plan 2025",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "c3018a37-139e-456c-af8c-0f6858c8fb6d",
+          "entityKey": "o-parc-new-rides-2025",
+          "displayName": "Safari Buggy et La Valse des Tasses rejoignent le parc",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "efa7ed22-3d1c-47af-844a-395f2d9766db",
+          "entityKey": "o-parc-safari-buggy-opening-2025",
+          "displayName": "Safari Buggy rejoint la saison 2025",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "c59c5f22-764e-4ad4-a9ed-cf736f1281e6",
+          "entityKey": "o-parc-valse-tasses-opening-2025",
+          "displayName": "La Valse des Tasses apparaît parmi les nouveautés",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "faf88237-0a3d-4e70-81b6-78b2182f6d78",
+          "entityKey": "o-parc-closure-2026",
+          "displayName": "Ô Parc ferme définitivement après dix saisons",
+          "changeType": "Unchanged",
+          "matchedBy": "ownerKey",
+          "fields": []
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+      "owners": [
+        "o-parc-opening-2017"
+      ],
+      "checkedAtUtc": "2026-11-15T05:55:54.148371+00:00",
+      "status": 200,
+      "finalUrl": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+      "bytes": 462711,
+      "sha256": "5fb2f6d59e27e7e39b093b63e93ec46b0dfc5c99e2691c301228dfcf674e67db",
+      "title": "8 escapades insolites dans la Nièvre en dehors des sentiers battues"
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-5090.html",
+      "owners": [
+        "o-parc-opening-2017",
+        "o-parc-pirates-opening-2024"
+      ],
+      "checkedAtUtc": "2026-11-15T05:55:55.370224+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-5090.html",
+      "bytes": 36603,
+      "sha256": "fdc81ba95cd2cba776cef13d2e500c73bb315c68e49ae4bcc2b2a4b626960c36",
+      "title": "Spécial Loisirs : Ô PARC, site de loisirs et d'attractions en plein air à Bannay - 15/08/2024 - Infoptimum"
+    },
+    {
+      "url": "https://coasterfriends.de/joomla/parkcheckpoint/achterbahn/Parc/Chenille",
+      "owners": [
+        "o-parc-chenille-opening-2020",
+        "o-parc-opening-2017"
+      ],
+      "checkedAtUtc": "2026-11-15T05:55:56.076205+00:00",
+      "status": 200,
+      "finalUrl": "https://coasterfriends.de/joomla/parkcheckpoint/achterbahn/Parc/Chenille",
+      "bytes": 61539,
+      "sha256": "aa1db82db01e2cbc034646d5c35cacd4e853b308eeb1cb4aee9d5223f665a09c",
+      "title": "Chenille im Parkcheckpoint für Freizeitparks und Achterbahnen"
+    },
+    {
+      "url": "https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/",
+      "owners": [
+        "o-parc-new-rides-2025",
+        "o-parc-opening-2017",
+        "o-parc-safari-buggy-opening-2025",
+        "o-parc-valse-tasses-opening-2025"
+      ],
+      "checkedAtUtc": "2026-11-15T05:55:57.980679+00:00",
+      "status": 200,
+      "finalUrl": "https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/",
+      "bytes": 1144840,
+      "sha256": "0544706614b0e91f69f0a9134f5ce00e5c5327dc38cc18f21f885c0c24d0a1fa",
+      "title": "Bannay : Ô Parc, le parc d’attractions rouvre ses portes le samedi 5 avril avec des nouveautés - Le Magazine du Berry"
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html",
+      "owners": [
+        "o-parc-jungle-opening-2025",
+        "o-parc-new-rides-2025",
+        "o-parc-opening-2017",
+        "o-parc-safari-buggy-opening-2025",
+        "o-parc-valse-tasses-opening-2025"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:00.318954+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html",
+      "bytes": 36949,
+      "sha256": "42aa7efd6790cb4365c4b720c53bab3104f219118e92de4155e61e5b32ec218f",
+      "title": "Ô PARC : Réouverture 2025 du parc de loisirs en plein air à Bannay (18) ! - 03/04/2025 - Infoptimum"
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html",
+      "owners": [
+        "o-parc-closure-2026",
+        "o-parc-opening-2017"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:01.151882+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html",
+      "bytes": 39297,
+      "sha256": "2551b4c5ceb926cea0e58031cc096c3918178a9a50baf3e650d877bed2167637",
+      "title": "Spécial Loisirs : dernière semaine pour profiter d'Ô PARC à Bannay avant la fermeture de la saison ! - 24/08/2026 - Infoptimum"
+    },
+    {
+      "url": "https://radiono1.fr/news/o-parc-a-bannay-c-est-fini-1243",
+      "owners": [
+        "o-parc-closure-2026",
+        "o-parc-opening-2017"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:01.934810+00:00",
+      "status": 200,
+      "finalUrl": "https://radiono1.fr/news/o-parc-a-bannay-c-est-fini-1243",
+      "bytes": 96013,
+      "sha256": "a1d09da07d9f5c6d0f5bb3f2d94afa4791d32fb44aaa182856d962b7a0f09b91",
+      "title": "Ô Parc à Bannay, c’est fini ! - Radio Numéro 1 - Écoutez plus de musique pop dans le Cher, la Nièvre et le Loiret"
+    },
+    {
+      "url": "https://themeparkfreaks.eu/2026/09/o-parc-sluit-voor-het-laatst-de-deuren/",
+      "owners": [
+        "o-parc-opening-2017"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:03.467586+00:00",
+      "status": 200,
+      "finalUrl": "https://themeparkfreaks.eu/2026/09/o-parc-sluit-voor-het-laatst-de-deuren/",
+      "bytes": 81596,
+      "sha256": "db6163a864945dfad8695ac66bdfcfd33c85d7b18da599071c6d3bd058288f79",
+      "title": "Ô Parc sluit voor het laatst de deuren – Themeparkfreaks"
+    },
+    {
+      "url": "https://captaincoaster.com/fr/coasters/3751/chenille-o-parc",
+      "owners": [
+        "o-parc-chenille-2020"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:05.016220+00:00",
+      "status": 200,
+      "finalUrl": "https://captaincoaster.com/fr/coasters/3751/chenille-o-parc",
+      "bytes": 90415,
+      "sha256": "c24b3376204c71f45436ee27de53a44f62de0d511fbe4392a94d59d74d0a9d96",
+      "title": "Chenille • Ô Parc • Captain Coaster"
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-parc-de-loisirs-en-plein-air-a-bannay--5524.html",
+      "owners": [
+        "o-parc-pirates-opening-2024"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:05.798012+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-parc-de-loisirs-en-plein-air-a-bannay--5524.html",
+      "bytes": 37726,
+      "sha256": "0a09f2a63041fe155afd5dc42deea0a5ef524f02076f44abac9fc138157e6237",
+      "title": "Spécial Loisirs : Ô PARC, parc de loisirs en plein air à Bannay ! - 29/07/2025 - Infoptimum"
+    },
+    {
+      "url": "https://www.o-parc.fr/le-parc/",
+      "owners": [
+        "o-parc-final-season-2026"
+      ],
+      "checkedAtUtc": "2026-11-15T05:56:06.197175+00:00",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "historyDiagnostics": {
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T05:52:49.9998928Z",
+    "result": {
+      "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "parkName": "Ô Parc",
+      "factCount": 35,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 9,
+          "sourcedResourceCount": 9,
+          "publishedResourceCount": 5,
+          "subjectCount": 6,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 4
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 6
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 25
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 6,
+        "sourcedFactCount": 6,
+        "majorFactCount": 2,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T05:52:49.4794512Z"
+  },
+  "historyScope": {
+    "excludedKeys": [
+      "o-parc-chenille-2020",
+      "o-parc-final-season-2026"
+    ],
+    "reason": "Ancien doublon parc Chenille et ancien brouillon de saison 2026 sans source actuellement accessible/type canonique accepté ; ils ne sont pas publiés dans HIST et ne seront pas inclus dans les mutations de visibilité.",
+    "publicNavigationBefore": {
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc/history",
+      "status": 200,
+      "receivedAtUtc": "2026-11-15T05:44:37.581992+00:00",
+      "sha256": "e07d5cb6ed33e8d564fb7a749433fe175affe513a8d9489a87a5368adeed038d"
+    },
+    "plannedSafariImage": "9dd30bfd5ef34dd39d697238e1d220ae : vraie photographie du Safari Buggy publiée avec la nouveauté 2025, à rattacher au jalon après publication de son média.",
+    "articleImageFallback": "Vue générale réelle du site pour le récit des dix saisons ; aucune photographie d’inauguration ou de fermeture disponible après recherche. Le portrait de deux fondateurs reste identifié comme tel.",
+    "unillustratedEvents": [
+      "Ô Pirates 2024 : montage promotionnel exclu, pas de photographie événementielle admissible retrouvée.",
+      "Parcours de la Jungle 2025 : illustration cartographique seulement, pas de photographie assimilée à un plan.",
+      "La Valse des Tasses 2025 : montage promotionnel exclu, pas de photographie autonome réutilisable trouvée."
+    ]
+  },
+  "remainingWork": [
+    "Twister géant cité en 2017 : forme et éventuel alias non établis.",
+    "Gonflable à pieuvre orange et château jaune visibles en 2020 : identité nominale non rapprochée.",
+    "Photographies propres absentes ou sous trois, positions GPS non prouvées, plans annuels avant 2025 introuvables.",
+    "Notices courtes justifiées par les photographies et plans disponibles ; aucune matière spécifique supplémentaire trouvée, pas de remplissage générique.",
+    "Intervalles taille/accompagnement du petit texte du plan 2026 insuffisamment lisibles ; seules tailles explicitement minimales de 2025 conservées avec millésime.",
+    "Deux anciens brouillons HIST non publiés conservés pour reprise séparée."
+  ],
+  "calendarPricing": {
+    "openingHours": null,
+    "pricing": null,
+    "reason": "Parc définitivement fermé le 31 août 2026 ; aucun calendrier futur ou tarif courant inventé. Prix historiques 2025 non transposés en 2026."
+  },
+  "ownerAuthorization": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs français. Pas seulement les définitivement fermés.",
+  "publicationPerformed": false,
+  "facebookExisting": "b7460ad400174cf8a0496fdc1fe3386c Published ; résoudre à nouveau après publication, aucun doublon autorisé."
+}

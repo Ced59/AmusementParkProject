@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "659310f8ec6c1d376f6c6df450410e080c9be01fde5d4873e0197730056add5c",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "4c455f3d-4b89-416e-9b4c-95ddb9015ddb",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:51:22.6489511Z",
+    "appliedAtUtc": "2026-11-15T05:51:22.6489526Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "displayName": "Chaises Volantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||de:Auf dem Plan von 2025 angegebene Mindestgröße, en:Minimum height shown on the 2025 map, es:Estatura mínima indicada en el plano de 2025, fr:Taille minimale indiquée sur le plan de 2025, it:Altezza minima indicata sulla mappa del 2025, nl:Minimumlengte vermeld op de kaart van 2025, pl:Minimalny wzrost podany na planie z 2025 roku, pt:Altura mínima indicada no mapa de 2025||1|1|Official|https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html|Plan officiel 2025, légende : attraction accessible à partir de ; seuil associé au nom. Source historique 2025, pas de plage d’accompagnement déduite du petit texte 2026.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e10a994d-4972-41a4-879e-352738ce47d4",
+        "entityKey": "e10a994d-4972-41a4-879e-352738ce47d4",
+        "displayName": "Fun Slide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "Custom|Custom|true|aqua-zone-swimwear|de:Badekleidung, en:Swimwear, es:Bañador, fr:Tenue de bain, it:Costume da bagno, nl:Badkleding, pl:Strój kąpielowy, pt:Fato de banho|||||de:Badekleidung in der Aqua Zone vorgeschrieben, en:Swimwear required in the Aqua Zone, es:Bañador obligatorio en Aqua Zone, fr:Tenue de bain obligatoire dans l’Aqua Zone, it:Costume da bagno obbligatorio nell’Aqua Zone, nl:Badkleding verplicht in de Aqua Zone, pl:Strój kąpielowy obowiązkowy w Aqua Zone, pt:Fato de banho obrigatório na Aqua Zone||2|1|Official|https://www.bourges.infoptimum.com/photos/69ce8f6e050b7_capture-d%27ecran_2-4-2026_174619_.jpeg|Plans officiels 2025 et 2026 : Aqua Zone, tenue de bain obligatoire.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "displayName": "La Chenille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||de:Auf dem Plan von 2025 angegebene Mindestgröße, en:Minimum height shown on the 2025 map, es:Estatura mínima indicada en el plano de 2025, fr:Taille minimale indiquée sur le plan de 2025, it:Altezza minima indicata sulla mappa del 2025, nl:Minimumlengte vermeld op de kaart van 2025, pl:Minimalny wzrost podany na planie z 2025 roku, pt:Altura mínima indicada no mapa de 2025||1|1|Official|https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html|Plan officiel 2025, légende : attraction accessible à partir de ; seuil associé au nom. Source historique 2025, pas de plage d’accompagnement déduite du petit texte 2026.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+        "entityKey": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+        "displayName": "Méga Slide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "MinHeight|||||100|Centimeter|||||1|1|Official|https://www.o-parc.fr/les-activites/aqua-zone-parc-de-loisirs/|La page officielle du Méga Slide indiquait une taille minimale dʼun mètre.|2026-10-05T20:10:00.0000000Z|2026-10-05T20:10:00.0000000Z|fr||High|Attraction|||",
+            "newValue": "MinHeight|||||100|Centimeter|||de:Auf dem Plan von 2025 angegebene Mindestgröße, en:Minimum height shown on the 2025 map, es:Estatura mínima indicada en el plano de 2025, fr:Taille minimale indiquée sur le plan de 2025, it:Altezza minima indicata sulla mappa del 2025, nl:Minimumlengte vermeld op de kaart van 2025, pl:Minimalny wzrost podany na planie z 2025 roku, pt:Altura mínima indicada no mapa de 2025||1|1|Official|https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html|Plan officiel 2025, légende : attraction accessible à partir de ; seuil associé au nom. Source historique 2025, pas de plage d’accompagnement déduite du petit texte 2026.|2026-10-05T20:10:00.0000000Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction||| || Custom|Custom|true|aqua-zone-swimwear|de:Badekleidung, en:Swimwear, es:Bañador, fr:Tenue de bain, it:Costume da bagno, nl:Badkleding, pl:Strój kąpielowy, pt:Fato de banho|||||de:Badekleidung in der Aqua Zone vorgeschrieben, en:Swimwear required in the Aqua Zone, es:Bañador obligatorio en Aqua Zone, fr:Tenue de bain obligatoire dans l’Aqua Zone, it:Costume da bagno obbligatorio nell’Aqua Zone, nl:Badkleding verplicht in de Aqua Zone, pl:Strój kąpielowy obowiązkowy w Aqua Zone, pt:Fato de banho obrigatório na Aqua Zone||2|1|Official|https://www.bourges.infoptimum.com/photos/69ce8f6e050b7_capture-d%27ecran_2-4-2026_174619_.jpeg|Plans officiels 2025 et 2026 : Aqua Zone, tenue de bain obligatoire.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+        "entityKey": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+        "displayName": "Pataugeoire Géante",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "Custom|Custom|true|aqua-zone-swimwear|de:Badekleidung, en:Swimwear, es:Bañador, fr:Tenue de bain, it:Costume da bagno, nl:Badkleding, pl:Strój kąpielowy, pt:Fato de banho|||||de:Badekleidung in der Aqua Zone vorgeschrieben, en:Swimwear required in the Aqua Zone, es:Bañador obligatorio en Aqua Zone, fr:Tenue de bain obligatoire dans l’Aqua Zone, it:Costume da bagno obbligatorio nell’Aqua Zone, nl:Badkleding verplicht in de Aqua Zone, pl:Strój kąpielowy obowiązkowy w Aqua Zone, pt:Fato de banho obrigatório na Aqua Zone||2|1|Official|https://www.bourges.infoptimum.com/photos/69ce8f6e050b7_capture-d%27ecran_2-4-2026_174619_.jpeg|Plans officiels 2025 et 2026 : Aqua Zone, tenue de bain obligatoire.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "displayName": "Safari Buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||90|Centimeter|||de:Auf dem Plan von 2025 angegebene Mindestgröße, en:Minimum height shown on the 2025 map, es:Estatura mínima indicada en el plano de 2025, fr:Taille minimale indiquée sur le plan de 2025, it:Altezza minima indicata sulla mappa del 2025, nl:Minimumlengte vermeld op de kaart van 2025, pl:Minimalny wzrost podany na planie z 2025 roku, pt:Altura mínima indicada no mapa de 2025||1|1|Official|https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html|Plan officiel 2025, légende : attraction accessible à partir de ; seuil associé au nom. Source historique 2025, pas de plage d’accompagnement déduite du petit texte 2026.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "displayName": "Ô Pirates",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "",
+            "newValue": "MinHeight|||||110|Centimeter|||de:Auf dem Plan von 2025 angegebene Mindestgröße, en:Minimum height shown on the 2025 map, es:Estatura mínima indicada en el plano de 2025, fr:Taille minimale indiquée sur le plan de 2025, it:Altezza minima indicata sulla mappa del 2025, nl:Minimumlengte vermeld op de kaart van 2025, pl:Minimalny wzrost podany na planie z 2025 roku, pt:Altura mínima indicada no mapa de 2025||1|1|Official|https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html|Plan officiel 2025, légende : attraction accessible à partir de ; seuil associé au nom. Source historique 2025, pas de plage d’accompagnement déduite du petit texte 2026.|2026-11-15T05:50:59.5137560Z|2026-11-15T05:50:59.5137560Z|fr||High|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

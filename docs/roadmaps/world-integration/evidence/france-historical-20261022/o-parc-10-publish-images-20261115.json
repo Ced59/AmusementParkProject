@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "9d469af57da0f46dd106b8e6461dc38cf8252c1c17ebb6af724a6d2d5df1241b",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "24d70554-7e1d-4950-81fc-469b38f1cabc",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T06:08:53.849904Z",
+    "appliedAtUtc": "2026-11-15T06:08:53.8499047Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 12,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+        "entityKey": "f21cfdb7-c97c-4617-bfba-a3a9515ef3ab",
+        "displayName": "Steeve, Charles et Guillaume",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "displayName": "Chaises Volantes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "displayName": "La Chenille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "displayName": "Safari Buggy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+        "entityKey": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+        "displayName": "Toboggan Konga",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "displayName": "Trampolines",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "8976847a7add4386a59e30a020a80270",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "ad051cad0785452d93d515619bacea17",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "aae9deb7df2c4f49932e0ee1c0223ae9",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e0f48f45039b4d06a10d8153d6eb705e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d88725b539ed461cb3de15199120b365",
+        "entityKey": null,
+        "displayName": "o-parc-8-1.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9dd30bfd5ef34dd39d697238e1d220ae",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9fe7c4c0634d49b1af7f53709763619c",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "bddcd54627fe42c98abadc171f53b5cb",
+        "entityKey": null,
+        "displayName": "codex-import.webp",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "26ae6a5a3e5d47ac883f63e16089edb2",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "955672abe0e942bcba38bf146c4ba96f",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "6b98288bb740472f9380b57f16f436da",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "3b0ed553df9e43e294f3b23d63e587a7",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopeAuditPassed": true,
+  "overallInventoryQualified": false,
+  "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-scope-audit-20261115.json"
+}

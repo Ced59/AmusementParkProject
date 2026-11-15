@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "f9aa72e90a04d15a29fd1636b59d83ec722dcf38335f4c0e6297194d3499fd4d",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "1e4b63e5-6367-4b51-be96-25a7e554a329",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:43:34.6271522Z",
+    "appliedAtUtc": "2026-11-15T05:43:34.627154Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bf459997-db22-423d-8933-432580c3c724",
+        "entityKey": "bf459997-db22-423d-8933-432580c3c724",
+        "displayName": "Aire de jeux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "Custom|||||4|Year|||||1|1|Official|https://www.nievre-tourisme.com/handicap/o-parc|La présentation touristique officielle réservait la Baby Zone aux enfants de moins de cinq ans.|2026-10-05T20:10:00.0000000Z|2026-10-05T20:10:00.0000000Z|fr||High|Attraction|||",
+            "newValue": "Custom|Custom|true|baby-zone-under-five|de:Zugang zur Baby Zone, en:Baby Zone access, es:Acceso a Baby Zone, fr:Accès à la Baby Zone, it:Accesso alla Baby Zone, nl:Toegang tot de Baby Zone, pl:Wstęp do Baby Zone, pt:Acesso à Baby Zone||Year|||de:Für Kinder unter fünf Jahren, en:For children under five, es:Reservado a menores de cinco años, fr:Réservé aux enfants de moins de cinq ans, it:Riservato ai bambini sotto i cinque anni, nl:Voor kinderen jonger dan vijf jaar, pl:Dla dzieci poniżej pięciu lat, pt:Reservado a crianças com menos de cinco anos||1|1|Official|https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html|Infoptimum, dernière semaine2026 : espace Baby Zone réservé aux enfants de moins de5ans. Ne pas convertir en seuil numérique inclusif4ans.|2026-10-05T20:10:00.0000000Z|2026-11-15T05:42:53.0807280Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+        "entityKey": "1d29b123-8524-4fa3-b697-fd744e1e2628",
+        "displayName": "Baby Volcan",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "Custom|||||4|Year|||||1|1|Official|https://www.nievre-tourisme.com/handicap/o-parc|La présentation touristique officielle réservait la Baby Zone aux enfants de moins de cinq ans.|2026-10-05T20:10:00.0000000Z|2026-10-05T20:10:00.0000000Z|fr||High|Attraction|||",
+            "newValue": "Custom|Custom|true|baby-zone-under-five|de:Zugang zur Baby Zone, en:Baby Zone access, es:Acceso a Baby Zone, fr:Accès à la Baby Zone, it:Accesso alla Baby Zone, nl:Toegang tot de Baby Zone, pl:Wstęp do Baby Zone, pt:Acesso à Baby Zone||Year|||de:Für Kinder unter fünf Jahren, en:For children under five, es:Reservado a menores de cinco años, fr:Réservé aux enfants de moins de cinq ans, it:Riservato ai bambini sotto i cinque anni, nl:Voor kinderen jonger dan vijf jaar, pl:Dla dzieci poniżej pięciu lat, pt:Reservado a crianças com menos de cinco anos||1|1|Official|https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html|Infoptimum, dernière semaine2026 : espace Baby Zone réservé aux enfants de moins de5ans. Ne pas convertir en seuil numérique inclusif4ans.|2026-10-05T20:10:00.0000000Z|2026-11-15T05:42:53.0807280Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "336dc675-0619-4024-be24-f793ed3f721a",
+        "entityKey": "336dc675-0619-4024-be24-f793ed3f721a",
+        "displayName": "Piscine à balles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "Custom|||||4|Year|||||1|1|Official|https://www.nievre-tourisme.com/handicap/o-parc|La présentation touristique officielle réservait la Baby Zone aux enfants de moins de cinq ans.|2026-10-05T20:10:00.0000000Z|2026-10-05T20:10:00.0000000Z|fr||High|Attraction|||",
+            "newValue": "Custom|Custom|true|baby-zone-under-five|de:Zugang zur Baby Zone, en:Baby Zone access, es:Acceso a Baby Zone, fr:Accès à la Baby Zone, it:Accesso alla Baby Zone, nl:Toegang tot de Baby Zone, pl:Wstęp do Baby Zone, pt:Acesso à Baby Zone||Year|||de:Für Kinder unter fünf Jahren, en:For children under five, es:Reservado a menores de cinco años, fr:Réservé aux enfants de moins de cinq ans, it:Riservato ai bambini sotto i cinque anni, nl:Voor kinderen jonger dan vijf jaar, pl:Dla dzieci poniżej pięciu lat, pt:Reservado a crianças com menos de cinco anos||1|1|Official|https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html|Infoptimum, dernière semaine2026 : espace Baby Zone réservé aux enfants de moins de5ans. Ne pas convertir en seuil numérique inclusif4ans.|2026-10-05T20:10:00.0000000Z|2026-11-15T05:42:53.0807280Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+        "entityKey": "4f70d138-7e80-4703-aa2f-02e9f56d296e",
+        "displayName": "Poulailler",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "Custom|||||4|Year|||||1|1|Official|https://www.nievre-tourisme.com/handicap/o-parc|La présentation touristique officielle réservait la Baby Zone aux enfants de moins de cinq ans.|2026-10-05T20:10:00.0000000Z|2026-10-05T20:10:00.0000000Z|fr||High|Attraction|||",
+            "newValue": "Custom|Custom|true|baby-zone-under-five|de:Zugang zur Baby Zone, en:Baby Zone access, es:Acceso a Baby Zone, fr:Accès à la Baby Zone, it:Accesso alla Baby Zone, nl:Toegang tot de Baby Zone, pl:Wstęp do Baby Zone, pt:Acesso à Baby Zone||Year|||de:Für Kinder unter fünf Jahren, en:For children under five, es:Reservado a menores de cinco años, fr:Réservé aux enfants de moins de cinq ans, it:Riservato ai bambini sotto i cinque anni, nl:Voor kinderen jonger dan vijf jaar, pl:Dla dzieci poniżej pięciu lat, pt:Reservado a crianças com menos de cinco anos||1|1|Official|https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html|Infoptimum, dernière semaine2026 : espace Baby Zone réservé aux enfants de moins de5ans. Ne pas convertir en seuil numérique inclusif4ans.|2026-10-05T20:10:00.0000000Z|2026-11-15T05:42:53.0807280Z|fr||High|Attraction|||"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "495fea26-5385-456e-beab-b875c69e7d95",
+        "entityKey": "495fea26-5385-456e-beab-b875c69e7d95",
+        "displayName": "Saloon",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.accessConditions",
+            "oldValue": "Custom|||||4|Year|||||1|1|Official|https://www.nievre-tourisme.com/handicap/o-parc|La présentation touristique officielle réservait la Baby Zone aux enfants de moins de cinq ans.|2026-10-05T20:10:00.0000000Z|2026-10-05T20:10:00.0000000Z|fr||High|Attraction|||",
+            "newValue": "Custom|Custom|true|baby-zone-under-five|de:Zugang zur Baby Zone, en:Baby Zone access, es:Acceso a Baby Zone, fr:Accès à la Baby Zone, it:Accesso alla Baby Zone, nl:Toegang tot de Baby Zone, pl:Wstęp do Baby Zone, pt:Acesso à Baby Zone||Year|||de:Für Kinder unter fünf Jahren, en:For children under five, es:Reservado a menores de cinco años, fr:Réservé aux enfants de moins de cinq ans, it:Riservato ai bambini sotto i cinque anni, nl:Voor kinderen jonger dan vijf jaar, pl:Dla dzieci poniżej pięciu lat, pt:Reservado a crianças com menos de cinco anos||1|1|Official|https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html|Infoptimum, dernière semaine2026 : espace Baby Zone réservé aux enfants de moins de5ans. Ne pas convertir en seuil numérique inclusif4ans.|2026-10-05T20:10:00.0000000Z|2026-11-15T05:42:53.0807280Z|fr||High|Attraction|||"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

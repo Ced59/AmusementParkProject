@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "7ce8bf95b20758f3671beeb1c8ad5f001f68be1a2042a1cfa0f02c890e9d5818",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "3bd52b4c-91ba-46c4-b719-e1d137a70972",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T06:09:29.8408241Z",
+    "appliedAtUtc": "2026-11-15T06:09:29.8408252Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 13,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "o-parc-map-2025",
+        "entityKey": "o-parc-map-2025",
+        "displayName": "Carte officielle 2025 (fr, Image)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+        "entityKey": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+        "displayName": "Baby pirate",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+        "entityKey": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+        "displayName": "Bac à sable",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+        "entityKey": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+        "displayName": "Hamacs",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87d59498-a481-46ba-9a52-475cca5b161c",
+        "entityKey": "87d59498-a481-46ba-9a52-475cca5b161c",
+        "displayName": "Le Gorille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+        "entityKey": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+        "displayName": "Le Géant des mers",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+        "entityKey": "5d420723-34b1-472f-b4c7-d412c365eb11",
+        "displayName": "Parcours de l’extrême",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "42e01028-c743-47e0-8dbf-427f67cba865",
+        "entityKey": "42e01028-c743-47e0-8dbf-427f67cba865",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+        "entityKey": "3f5145d6-bfad-4178-96f4-aee63661909f",
+        "displayName": "Pêche aux canards",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+        "entityKey": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+        "displayName": "Sanitaires et table à langer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+        "entityKey": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+        "displayName": "Tables de pique-nique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3907da4a-6351-420f-ac42-953e8814da0b",
+        "entityKey": "3907da4a-6351-420f-ac42-953e8814da0b",
+        "displayName": "Ô Petit Train",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+        "entityKey": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+        "displayName": "Ô p’tits quads",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopeAuditPassed": true,
+  "overallInventoryQualified": false,
+  "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-scope-audit-20261115.json"
+}

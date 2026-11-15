@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "f0aea420a0d2d40d9bbd60fd5ce547fb9f1f457c38ead2fa4d5eaddcbd6d18fd",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "8dcdcd13-f0ed-4c24-b382-11c523634a72",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:50:09.573289Z",
+    "appliedAtUtc": "2026-11-15T05:50:09.5732901Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "42e01028-c743-47e0-8dbf-427f67cba865",
+        "entityKey": "o-parc-parking",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Vor dem Eingang von Ô Parc</h2><p>Der Parkplatz lag auf dem äußeren Streifen zwischen dem Eingang von Ô Parc und der Straße D955. Die Pläne zeigten Autos gegenüber Kasse und Mini-Golf; die Brücke von Cosne-sur-Loire war in der Nähe vermerkt.</p><h2>Am Rand der Wiese</h2><p>Der ältere Plan mit Fotos platzierte das Willkommensschild zwischen Parkplatz und Spielen. Die Ausgaben von 2025 und 2026 bezeichneten das Parken hier als kostenlos.</p>",
+            "newValue": "<h2>Vor dem Eingang von Ô Parc</h2><p>Der Parkplatz lag auf dem äußeren Streifen zwischen dem Eingang von Ô Parc und der Straße D955. Die Pläne zeigten Autos gegenüber Kasse und Mini-Golf; die Brücke von Cosne-sur-Loire war in der Nähe vermerkt.</p><h2>Am Rand der Wiese</h2><p>Der ältere Plan mit Fotos platzierte das Willkommensschild zwischen Parkplatz und Spielen. Der Plan von 2025 bezeichnete das Parken hier als kostenlos.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>In front of Ô Parc’s entrance</h2><p>The parking area occupied the outer strip between Ô Parc’s entrance and the D955 road. The maps showed cars lined up opposite the ticket desk and Mini-Golf, with the Cosne-sur-Loire bridge indicated nearby.</p><h2>At the meadow’s edge</h2><p>The older photographic map placed the welcome sign between parking and the games. The 2025 and 2026 editions presented this parking area as free of charge.</p>",
+            "newValue": "<h2>In front of Ô Parc’s entrance</h2><p>The parking area occupied the outer strip between Ô Parc’s entrance and the D955 road. The maps showed cars lined up opposite the ticket desk and Mini-Golf, with the Cosne-sur-Loire bridge indicated nearby.</p><h2>At the meadow’s edge</h2><p>The older photographic map placed the welcome sign between parking and the games. The 2025 map described this parking area as free of charge.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Delante de la entrada de Ô Parc</h2><p>El aparcamiento ocupaba la franja exterior entre la entrada de Ô Parc y la carretera D955. Los planos mostraban coches alineados frente a la taquilla y Mini-Golf, con el puente de Cosne-sur-Loire indicado cerca.</p><h2>En el borde de la pradera</h2><p>El antiguo plano fotográfico situaba el letrero de bienvenida entre el aparcamiento y los juegos. Las ediciones de 2025 y 2026 indicaban que este aparcamiento era gratuito.</p>",
+            "newValue": "<h2>Delante de la entrada de Ô Parc</h2><p>El aparcamiento ocupaba la franja exterior entre la entrada de Ô Parc y la carretera D955. Los planos mostraban coches alineados frente a la taquilla y Mini-Golf, con el puente de Cosne-sur-Loire indicado cerca.</p><h2>En el borde de la pradera</h2><p>El antiguo plano fotográfico situaba el letrero de bienvenida entre el aparcamiento y los juegos. El plano de 2025 indicaba que este aparcamiento era gratuito.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Devant l’entrée d’Ô Parc</h2><p>Le parking occupait la bande extérieure entre l’entrée d’Ô Parc et la route départementale 955. Sur les plans, les voitures étaient alignées face à la caisse et au Mini-Golf, avec le pont de Cosne-sur-Loire indiqué à proximité.</p><h2>Le seuil de la prairie</h2><p>L’ancien plan photographique plaçait l’enseigne de bienvenue entre le stationnement et les jeux. Ce parking était présenté comme gratuit sur les éditions de 2025 et de 2026.</p>",
+            "newValue": "<h2>Devant l’entrée d’Ô Parc</h2><p>Le parking occupait la bande extérieure entre l’entrée d’Ô Parc et la route départementale 955. Sur les plans, les voitures étaient alignées face à la caisse et au Mini-Golf, avec le pont de Cosne-sur-Loire indiqué à proximité.</p><h2>Le seuil de la prairie</h2><p>L’ancien plan photographique plaçait l’enseigne de bienvenue entre le stationnement et les jeux. Le plan de 2025 présentait ce parking comme gratuit.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Davanti all’ingresso di Ô Parc</h2><p>Il parcheggio occupava la fascia esterna fra l’ingresso di Ô Parc e la strada D955. Le mappe mostravano le auto allineate di fronte alla cassa e al Mini-Golf, con il ponte di Cosne-sur-Loire indicato nelle vicinanze.</p><h2>Al margine del prato</h2><p>La vecchia mappa fotografica collocava l’insegna di benvenuto fra parcheggio e giochi. Le edizioni del 2025 e del 2026 presentavano il parcheggio come gratuito.</p>",
+            "newValue": "<h2>Davanti all’ingresso di Ô Parc</h2><p>Il parcheggio occupava la fascia esterna fra l’ingresso di Ô Parc e la strada D955. Le mappe mostravano le auto allineate di fronte alla cassa e al Mini-Golf, con il ponte di Cosne-sur-Loire indicato nelle vicinanze.</p><h2>Al margine del prato</h2><p>La vecchia mappa fotografica collocava l’insegna di benvenuto fra parcheggio e giochi. La mappa del 2025 presentava il parcheggio come gratuito.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Voor de ingang van Ô Parc</h2><p>De parkeerplaats lag op de buitenstrook tussen de ingang van Ô Parc en de D955. De kaarten toonden auto’s tegenover de kassa en Mini-Golf, met de brug van Cosne-sur-Loire vlakbij aangegeven.</p><h2>Aan de rand van het grasveld</h2><p>De oudere kaart met foto’s plaatste het welkomstbord tussen de parkeerplaats en de spelen. De edities van 2025 en 2026 vermeldden dat parkeren hier gratis was.</p>",
+            "newValue": "<h2>Voor de ingang van Ô Parc</h2><p>De parkeerplaats lag op de buitenstrook tussen de ingang van Ô Parc en de D955. De kaarten toonden auto’s tegenover de kassa en Mini-Golf, met de brug van Cosne-sur-Loire vlakbij aangegeven.</p><h2>Aan de rand van het grasveld</h2><p>De oudere kaart met foto’s plaatste het welkomstbord tussen de parkeerplaats en de spelen. De kaart van 2025 vermeldde dat parkeren hier gratis was.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Przed wejściem do Ô Parc</h2><p>Parking zajmował zewnętrzny pas między wejściem do Ô Parc a drogą D955. Plany pokazywały samochody ustawione naprzeciw kasy i Mini-Golf, z mostem w Cosne-sur-Loire oznaczonym w pobliżu.</p><h2>Na skraju łąki</h2><p>Starszy plan ze zdjęciami umieszczał szyld powitalny między parkingiem a zabawami. Wydania z 2025 i 2026 roku przedstawiały parking jako bezpłatny.</p>",
+            "newValue": "<h2>Przed wejściem do Ô Parc</h2><p>Parking zajmował zewnętrzny pas między wejściem do Ô Parc a drogą D955. Plany pokazywały samochody ustawione naprzeciw kasy i Mini-Golf, z mostem w Cosne-sur-Loire oznaczonym w pobliżu.</p><h2>Na skraju łąki</h2><p>Starszy plan ze zdjęciami umieszczał szyld powitalny między parkingiem a zabawami. Plan z 2025 roku przedstawiał parking jako bezpłatny.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Diante da entrada do Ô Parc</h2><p>O estacionamento ocupava a faixa exterior entre a entrada do Ô Parc e a estrada D955. Os mapas mostravam carros alinhados em frente à bilheteira e ao Mini-Golf, com a ponte de Cosne-sur-Loire indicada nas proximidades.</p><h2>Na margem do prado</h2><p>O antigo mapa fotográfico situava o letreiro de boas-vindas entre o estacionamento e os jogos. As edições de 2025 e 2026 apresentavam este estacionamento como gratuito.</p>",
+            "newValue": "<h2>Diante da entrada do Ô Parc</h2><p>O estacionamento ocupava a faixa exterior entre a entrada do Ô Parc e a estrada D955. Os mapas mostravam carros alinhados em frente à bilheteira e ao Mini-Golf, com a ponte de Cosne-sur-Loire indicada nas proximidades.</p><h2>Na margem do prado</h2><p>O antigo mapa fotográfico situava o letreiro de boas-vindas entre o estacionamento e os jogos. O mapa de 2025 apresentava este estacionamento como gratuito.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

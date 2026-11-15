@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "d89a376e9d232000862f20b703e18320a286a8a06ed86208ca39e1bd4a10d3e5",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "83320c4b-1d69-489b-a4b8-e223e97e00db",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:41:32.9807092Z",
+    "appliedAtUtc": "2026-11-15T05:41:32.9807104Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "42e01028-c743-47e0-8dbf-427f67cba865",
+        "entityKey": "o-parc-parking",
+        "displayName": "Parking",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Parking"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vor dem Eingang von Ô Parc</h2><p>Der Parkplatz lag auf dem äußeren Streifen zwischen dem Eingang von Ô Parc und der Straße D955. Die Pläne zeigten Autos gegenüber Kasse und Mini-Golf; die Brücke von Cosne-sur-Loire war in der Nähe vermerkt.</p><h2>Am Rand der Wiese</h2><p>Der ältere Plan mit Fotos platzierte das Willkommensschild zwischen Parkplatz und Spielen. Die Ausgaben von 2025 und 2026 bezeichneten das Parken hier als kostenlos.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>In front of Ô Parc’s entrance</h2><p>The parking area occupied the outer strip between Ô Parc’s entrance and the D955 road. The maps showed cars lined up opposite the ticket desk and Mini-Golf, with the Cosne-sur-Loire bridge indicated nearby.</p><h2>At the meadow’s edge</h2><p>The older photographic map placed the welcome sign between parking and the games. The 2025 and 2026 editions presented this parking area as free of charge.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Delante de la entrada de Ô Parc</h2><p>El aparcamiento ocupaba la franja exterior entre la entrada de Ô Parc y la carretera D955. Los planos mostraban coches alineados frente a la taquilla y Mini-Golf, con el puente de Cosne-sur-Loire indicado cerca.</p><h2>En el borde de la pradera</h2><p>El antiguo plano fotográfico situaba el letrero de bienvenida entre el aparcamiento y los juegos. Las ediciones de 2025 y 2026 indicaban que este aparcamiento era gratuito.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Devant l’entrée d’Ô Parc</h2><p>Le parking occupait la bande extérieure entre l’entrée d’Ô Parc et la route départementale 955. Sur les plans, les voitures étaient alignées face à la caisse et au Mini-Golf, avec le pont de Cosne-sur-Loire indiqué à proximité.</p><h2>Le seuil de la prairie</h2><p>L’ancien plan photographique plaçait l’enseigne de bienvenue entre le stationnement et les jeux. Ce parking était présenté comme gratuit sur les éditions de 2025 et de 2026.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Davanti all’ingresso di Ô Parc</h2><p>Il parcheggio occupava la fascia esterna fra l’ingresso di Ô Parc e la strada D955. Le mappe mostravano le auto allineate di fronte alla cassa e al Mini-Golf, con il ponte di Cosne-sur-Loire indicato nelle vicinanze.</p><h2>Al margine del prato</h2><p>La vecchia mappa fotografica collocava l’insegna di benvenuto fra parcheggio e giochi. Le edizioni del 2025 e del 2026 presentavano il parcheggio come gratuito.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Voor de ingang van Ô Parc</h2><p>De parkeerplaats lag op de buitenstrook tussen de ingang van Ô Parc en de D955. De kaarten toonden auto’s tegenover de kassa en Mini-Golf, met de brug van Cosne-sur-Loire vlakbij aangegeven.</p><h2>Aan de rand van het grasveld</h2><p>De oudere kaart met foto’s plaatste het welkomstbord tussen de parkeerplaats en de spelen. De edities van 2025 en 2026 vermeldden dat parkeren hier gratis was.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przed wejściem do Ô Parc</h2><p>Parking zajmował zewnętrzny pas między wejściem do Ô Parc a drogą D955. Plany pokazywały samochody ustawione naprzeciw kasy i Mini-Golf, z mostem w Cosne-sur-Loire oznaczonym w pobliżu.</p><h2>Na skraju łąki</h2><p>Starszy plan ze zdjęciami umieszczał szyld powitalny między parkingiem a zabawami. Wydania z 2025 i 2026 roku przedstawiały parking jako bezpłatny.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Diante da entrada do Ô Parc</h2><p>O estacionamento ocupava a faixa exterior entre a entrada do Ô Parc e a estrada D955. Os mapas mostravam carros alinhados em frente à bilheteira e ao Mini-Golf, com a ponte de Cosne-sur-Loire indicada nas proximidades.</p><h2>Na margem do prado</h2><p>O antigo mapa fotográfico situava o letreiro de boas-vindas entre o estacionamento e os jogos. As edições de 2025 e 2026 apresentavam este estacionamento como gratuito.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "db3309fb-8986-4dd1-a54d-7e49bd4f0ca3",
+        "entityKey": "o-parc-sanitaires",
+        "displayName": "Sanitaires et table à langer",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Toilets"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Nahe Chalet Gourmand</h2><p>Die Toiletten lagen im Bereich von Chalet Gourmand und den Tischen neben der Baby Zone. Ihr Symbol erschien auf den Plänen von Ô Parc am Ende der Verkaufstresen.</p><h2>Auf aufeinanderfolgenden Plänen verzeichnet</h2><p>Der ältere Plan nannte bei den Toiletten ausdrücklich einen Wickeltisch. Die Ausgaben von 2025 und 2026 behielten das Toilettensymbol nahe Gastronomie und kleinen Spielbereichen bei.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Near Chalet Gourmand</h2><p>The toilets stood in the Chalet Gourmand and picnic-table area beside the Baby Zone. Their symbol appeared at the end of the counters on Ô Parc’s maps.</p><h2>A landmark on successive maps</h2><p>The older map explicitly paired the toilets with a baby-changing table. The 2025 and 2026 editions kept the toilet symbol near the food area and small play spaces.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cerca de Chalet Gourmand</h2><p>Los aseos estaban en el sector de Chalet Gourmand y las mesas, junto a Baby Zone. Su símbolo aparecía al final de los mostradores en los planos de Ô Parc.</p><h2>Un punto señalado en planos sucesivos</h2><p>El plano antiguo asociaba explícitamente los aseos a un cambiador para bebés. Las ediciones de 2025 y 2026 conservaban el símbolo de los aseos cerca de la restauración y los pequeños juegos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Près du Chalet Gourmand</h2><p>Les sanitaires se trouvaient dans le secteur du Chalet Gourmand et des tables, à côté de la Baby Zone. Leur pictogramme apparaissait au bout des comptoirs sur les plans d’Ô Parc.</p><h2>Un repère sur les plans successifs</h2><p>L’ancien plan associait explicitement les WC à une table à langer. Les éditions de 2025 et de 2026 conservaient le symbole des sanitaires près des espaces de restauration et des petits jeux.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Vicino a Chalet Gourmand</h2><p>I servizi igienici si trovavano nella zona di Chalet Gourmand e dei tavoli, accanto alla Baby Zone. Il loro simbolo appariva in fondo ai banconi sulle mappe di Ô Parc.</p><h2>Un riferimento sulle mappe successive</h2><p>La vecchia mappa associava esplicitamente i servizi a un fasciatoio. Le edizioni del 2025 e del 2026 conservavano il simbolo dei servizi vicino al ristoro e ai piccoli giochi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Bij Chalet Gourmand</h2><p>De toiletten lagen in het gebied van Chalet Gourmand en de tafels, naast de Baby Zone. Hun pictogram stond op de kaarten van Ô Parc aan het einde van de balies.</p><h2>Een herkenningspunt op opeenvolgende kaarten</h2><p>De oudere kaart noemde bij de toiletten uitdrukkelijk een verschoontafel. De edities van 2025 en 2026 behielden het toiletpictogram bij het eetgedeelte en de kleine speelplekken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przy Chalet Gourmand</h2><p>Toalety znajdowały się w części z Chalet Gourmand i stołami, obok Baby Zone. Ich symbol widniał na planach Ô Parc na końcu zespołu lad.</p><h2>Punkt na kolejnych planach</h2><p>Starszy plan wymieniał przy toaletach także przewijak. Wydania z 2025 i 2026 roku zachowywały symbol toalet przy gastronomii i małych miejscach zabaw.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Perto do Chalet Gourmand</h2><p>Os sanitários ficavam na zona do Chalet Gourmand e das mesas, ao lado da Baby Zone. O seu símbolo surgia no fim dos balcões nos mapas do Ô Parc.</p><h2>Um ponto nos mapas sucessivos</h2><p>O mapa antigo associava explicitamente os sanitários a um muda-fraldas. As edições de 2025 e 2026 conservavam o símbolo dos sanitários perto da restauração e dos pequenos jogos.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f4a73774-cd01-4b0b-bbf0-cb09cffb8da6",
+        "entityKey": "o-parc-pique-nique",
+        "displayName": "Tables de pique-nique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Tische zwischen Bäumen und Wiese</h2><p>Die Picknicktische verteilten sich auf mehrere Ecken von Ô Parc. Holztische standen bei den Hängematten unter Bäumen; weitere gruppierten sich vor Chalet Gourmand neben der Baby Zone.</p><h2>Unter türkisfarbenen Pavillons</h2><p>Gesamtansichten zeigen außerdem Tische unter türkisfarbenen Pavillons zwischen den Spielen. Die Pläne kennzeichneten diese Plätze mit einem Tischsymbol; Parkbeschreibungen bestätigten, dass Besucher ein Picknick mitbringen konnten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Tables between trees and meadow</h2><p>Picnic tables were spread around several parts of Ô Parc. Wooden tables stood near the hammocks beneath the trees, while others gathered in front of Chalet Gourmand beside the Baby Zone.</p><h2>Beneath turquoise canopies</h2><p>General views also show tables beneath turquoise canopies among the games. Maps marked these spots with a table symbol, and park descriptions confirmed that visitors could bring a picnic.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Mesas entre árboles y pradera</h2><p>Las mesas de pícnic estaban repartidas por varios rincones de Ô Parc. Había mesas de madera cerca de las hamacas bajo los árboles, y otras se agrupaban delante de Chalet Gourmand, junto a Baby Zone.</p><h2>Bajo los cenadores turquesas</h2><p>Las vistas generales muestran también mesas bajo cenadores turquesas entre los juegos. Los planos señalaban estos lugares con un símbolo de mesa y las presentaciones del parque confirmaban que se podía llevar comida para un pícnic.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les tables entre arbres et prairie</h2><p>Les tables de pique-nique étaient réparties dans plusieurs coins d’Ô Parc. Des tables en bois se trouvaient près des hamacs, sous les arbres ; d’autres se rassemblaient devant le Chalet Gourmand, à côté de la Baby Zone.</p><h2>Sous les tonnelles turquoise</h2><p>Les vues générales montrent également des tables sous des tonnelles turquoise au milieu des jeux. Les plans signalaient ces emplacements par un pictogramme de table, et les présentations du parc confirmaient la possibilité d’apporter son pique-nique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Tavoli fra alberi e prato</h2><p>I tavoli da picnic erano distribuiti in diversi angoli di Ô Parc. Tavoli di legno si trovavano vicino alle amache sotto gli alberi; altri erano riuniti davanti a Chalet Gourmand, accanto alla Baby Zone.</p><h2>Sotto i gazebo turchesi</h2><p>Le vedute generali mostrano anche tavoli sotto gazebo turchesi fra i giochi. Le mappe segnalavano questi spazi con il simbolo di un tavolo e le presentazioni del parco confermavano la possibilità di portare il proprio picnic.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Tafels tussen bomen en grasveld</h2><p>De picknicktafels stonden verspreid over verschillende hoeken van Ô Parc. Houten tafels stonden bij de hangmatten onder de bomen; andere waren gegroepeerd voor Chalet Gourmand naast de Baby Zone.</p><h2>Onder turquoise partytenten</h2><p>Overzichtsfoto’s tonen ook tafels onder turquoise partytenten tussen de spelen. De kaarten markeerden die plekken met een tafelpictogram; parkbeschrijvingen bevestigden dat bezoekers een eigen picknick mochten meebrengen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Stoły między drzewami a łąką</h2><p>Stoły piknikowe były rozstawione w kilku zakątkach Ô Parc. Drewniane stoły stały przy hamakach pod drzewami; inne skupiały się przed Chalet Gourmand obok Baby Zone.</p><h2>Pod turkusowymi altanami</h2><p>Widoki ogólne pokazują również stoły pod turkusowymi altanami między miejscami zabaw. Plany oznaczały te punkty symbolem stołu, a opisy parku potwierdzały możliwość przyniesienia własnego pikniku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Mesas entre árvores e prado</h2><p>As mesas de piquenique estavam distribuídas por vários cantos do Ô Parc. Havia mesas de madeira perto das redes sob as árvores; outras agrupavam-se diante do Chalet Gourmand, ao lado da Baby Zone.</p><h2>Sob os toldos turquesa</h2><p>As vistas gerais mostram também mesas sob toldos turquesa entre os jogos. Os mapas assinalavam esses locais com um símbolo de mesa e as apresentações do parque confirmavam a possibilidade de levar um piquenique.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3e84e9fe-51e1-424b-a731-50c14a663ecc",
+        "entityKey": "o-parc-hamacs",
+        "displayName": "Hamacs",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Streifen im Schatten der Bäume</h2><p>Die Hängematten von Ô Parc standen in einer schattigen Ecke der Wiese. Das von Koikispass veröffentlichte Foto zeigt ein großes rot-gelb-grün gestreiftes Tuch auf seinem Gestell, dahinter Holztische.</p><h2>Hüpfanlagen hinter dem Laub</h2><p>Von diesem Leseplatz aus blieben Rutschen und aufblasbare Parcours zwischen den Bäumen sichtbar. Hängematten erschienen bis zur letzten Saison auf dem Plan und in den Parkbeschreibungen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Stripes in the shade of trees</h2><p>Ô Parc’s hammocks stood in a shaded corner of the meadow. The photograph published by Koikispass shows a large red-, yellow- and green-striped fabric on its stand, with wooden tables behind.</p><h2>Inflatables beyond the leaves</h2><p>From this reading spot, slides and inflatable courses remained visible between the trees. Hammocks appeared on the map and in park descriptions through its final season.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Rayas a la sombra de los árboles</h2><p>Las hamacas de Ô Parc se instalaban en un rincón sombreado de la pradera. La fotografía publicada por Koikispass muestra una gran tela a rayas rojas, amarillas y verdes sobre su soporte, con mesas de madera detrás.</p><h2>Los hinchables más allá del follaje</h2><p>Desde este rincón de lectura seguían viéndose entre los árboles los perfiles de toboganes y recorridos hinchables. Las hamacas aparecían en el plano y las presentaciones del parque hasta su última temporada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les rayures à l’ombre des arbres</h2><p>Les hamacs d’Ô Parc s’installaient dans un coin ombragé de la prairie. La photographie publiée par Koikispass montre une grande toile rayée rouge, jaune et verte sur son support, avec des tables en bois derrière.</p><h2>Les gonflables au-delà du feuillage</h2><p>Depuis ce coin de lecture, les silhouettes des toboggans et des parcours gonflables restaient visibles entre les arbres. Les hamacs figuraient sur le plan et dans les présentations du parc jusque dans sa dernière saison.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Righe all’ombra degli alberi</h2><p>Le amache di Ô Parc erano sistemate in un angolo ombreggiato del prato. La fotografia pubblicata da Koikispass mostra una grande tela a righe rosse, gialle e verdi sul supporto, con tavoli di legno dietro.</p><h2>I gonfiabili oltre le foglie</h2><p>Da questo angolo di lettura restavano visibili fra gli alberi le sagome di scivoli e percorsi gonfiabili. Le amache figuravano sulla mappa e nelle presentazioni del parco fino all’ultima stagione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Strepen in de schaduw van de bomen</h2><p>De hangmatten van Ô Parc stonden in een schaduwrijke hoek van het grasveld. De door Koikispass gepubliceerde foto toont een groot rood-geel-groen gestreept doek op een standaard, met houten tafels erachter.</p><h2>Springkussens achter de bladeren</h2><p>Vanaf deze leesplek bleven glijbanen en opblaasbare parcoursen zichtbaar tussen de bomen. De hangmatten stonden tot in het laatste seizoen op de kaart en in parkbeschrijvingen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pasy w cieniu drzew</h2><p>Hamaki Ô Parc stały w zacienionym zakątku łąki. Zdjęcie opublikowane przez Koikispass pokazuje dużą tkaninę w czerwone, żółte i zielone pasy na stelażu, z drewnianymi stołami za nią.</p><h2>Dmuchańce za liśćmi</h2><p>Z tego miejsca do czytania nadal było widać między drzewami sylwetki zjeżdżalni i dmuchanych torów. Hamaki pojawiały się na planie i w opisach parku aż do ostatniego sezonu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Riscas à sombra das árvores</h2><p>As redes do Ô Parc ficavam num canto sombreado do prado. A fotografia publicada pela Koikispass mostra um grande tecido às riscas vermelhas, amarelas e verdes sobre o suporte, com mesas de madeira atrás.</p><h2>Os insufláveis para lá da folhagem</h2><p>Deste canto de leitura continuavam visíveis, entre as árvores, as silhuetas dos escorregas e percursos insufláveis. As redes figuravam no mapa e nas apresentações do parque até à última época.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "ddcb93e03f51b66bb0113961a81ba1fdcb96f2d8290f934ded9f5659e2d64877",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "64892bd3-3d16-4bff-8ee0-c11b3e1b3d30",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T06:09:54.0516308Z",
+    "appliedAtUtc": "2026-11-15T06:09:54.0516313Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 4,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "entityKey": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "displayName": "Parcours de la Jungle",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "displayName": "Safari Buggy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "displayName": "Ô Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "17a343b3-eb0c-47fb-993b-f3b33eb818fe",
+        "entityKey": "o-parc-pirates-opening-2024",
+        "displayName": "Ô Pirates arrive en 2024",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5e2e8be3-f24a-4f99-a5d0-0947becc6408",
+        "entityKey": "o-parc-jungle-opening-2025",
+        "displayName": "Le Parcours de la Jungle rejoint le plan 2025",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "efa7ed22-3d1c-47af-844a-395f2d9766db",
+        "entityKey": "o-parc-safari-buggy-opening-2025",
+        "displayName": "Safari Buggy rejoint la saison 2025",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "9dd30bfd5ef34dd39d697238e1d220ae"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopeAuditPassed": true,
+  "overallInventoryQualified": false,
+  "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-scope-audit-20261115.json"
+}

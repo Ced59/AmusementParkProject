@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T05:36:35.997Z",
+      "lastDataIntegrationAt": "2026-11-15T06:09:54.051Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -22051,6 +22051,106 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-five-item-timelines-20261115.json",
           "auditEvidence": null,
           "summary": "Chronologies propres aux attractions : trois résumés existants corrigés en huit langues et deux faits privés sourcés (Ô Pirates 2024, Jungle 2025). Dates exactes préservées ou précision annuelle sans jour inventé ; aucun doublon de fait créé dans la frise du parc."
+        },
+        {
+          "eventId": "apply-83320c4b-1d69-489b-a4b8-e223e97e00db",
+          "appliedAt": "2026-11-15T05:41:32.980Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-four-visitor-services-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre services internes nommés par les plans et les photographies : parking, sanitaires/table à langer, tables de pique-nique et hamacs. Fiches privées avec huit langues relues, sans coordonnées ou dates inventées."
+        },
+        {
+          "eventId": "apply-1e4b63e5-6367-4b51-be96-25a7e554a329",
+          "appliedAt": "2026-11-15T05:43:34.627Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-baby-zone-access-precision-20261115.json",
+          "auditEvidence": null,
+          "summary": "Cinq conditions héritées de la Baby Zone corrigées : formulation exacte moins de cinq ans en huit langues, suppression de la valeur numérique ambiguë 4, source touristique 2026 vérifiée ; autres données préservées."
+        },
+        {
+          "eventId": "apply-8dcdcd13-f0ed-4c24-b382-11c523634a72",
+          "appliedAt": "2026-11-15T05:50:09.573Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-parking-source-year-precision-20261115.json",
+          "auditEvidence": null,
+          "summary": "Parking : référence à la gratuité limitée au plan 2025 qui la mentionne explicitement, huit langues relues ; aucune nouvelle publication."
+        },
+        {
+          "eventId": "apply-4c455f3d-4b89-416e-9b4c-95ddb9015ddb",
+          "appliedAt": "2026-11-15T05:51:22.648Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-verified-access-20261115.json",
+          "auditEvidence": null,
+          "summary": "Conditions historiques : cinq tailles minimales explicites du plan 2025 et tenue de bain de trois lieux aquatiques, libellés huit langues ; plages accompagnées illisibles non inventées."
+        },
+        {
+          "eventId": "apply-13e9f1da-be72-425e-8bde-9fff38df608c",
+          "appliedAt": "2026-11-15T05:55:02.630Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-09-editorial-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Audit : retrait des phrases génériques et répétitions, descriptions de sept lieux et Baby Zone précisées, résumé historique réécrit en huit langues ; visibilité inchangée."
+        },
+        {
+          "eventId": "apply-98e7f85b-7f08-4117-ace0-7aa675d07c35",
+          "appliedAt": "2026-11-15T05:57:27.742Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-09-article-context-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Article : contexte introductif et phrases historiques différenciés des notices, faits et huit langues préservés ; reprise ciblée après unique export d’audit."
+        },
+        {
+          "eventId": "apply-94b434dd-a9b8-49a4-abbf-027a0c65afd0",
+          "appliedAt": "2026-11-15T06:03:35.781Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-09-final-phrasing-20261115.json",
+          "auditEvidence": null,
+          "summary": "Relecture finale : descriptions Trampolines et Zone Arcade différenciées des légendes et notices voisines en huit langues ; formulation néerlandaise de l’île corrigée, sans changement factuel ni de visibilité."
+        },
+        {
+          "eventId": "apply-24d70554-7e1d-4950-81fc-469b38f1cabc",
+          "appliedAt": "2026-11-15T06:08:53.849Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-10-publish-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "Publication ciblée des douze médias existants relus après audit : aucune création ni réimport ; rattachements, crédits et visibilité des onze médias antérieurs conservés. Dossier global toujours partial."
+        },
+        {
+          "eventId": "apply-3bd52b4c-91ba-46c4-b719-e1d137a70972",
+          "appliedAt": "2026-11-15T06:09:29.840Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-11-publish-items-map-20261115.json",
+          "auditEvidence": null,
+          "summary": "Publication ciblée de douze lieux identifiés et du plan officiel 2025 déjà intégré ; contrôle Preview/Apply identique, sans création ni suppression. Inventaire historique global conservé partial."
+        },
+        {
+          "eventId": "apply-64892bd3-3d16-4bff-8ee0-c11b3e1b3d30",
+          "appliedAt": "2026-11-15T06:09:54.051Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-12-publish-item-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Publication des jalons Ô Pirates 2024 et Parcours de la Jungle 2025 ; photographie réelle de la nouveauté 2025 rattachée au fait Safari Buggy. Deux anciens brouillons exclus préservés, aucun doublon historique créé."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
