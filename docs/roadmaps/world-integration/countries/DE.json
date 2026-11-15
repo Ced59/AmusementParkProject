@@ -7089,7 +7089,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), avec leurs photos et informations officielles. Ne pas migrer ces attractions vers des fiches standalone en doublon.",
+      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), sans créer de standalone en doublon. Correction du 15 novembre 2026 : la fiche standalone créée par erreur (93f0eb22-735b-430f-82d4-58de8dd5154b) est masquée et renvoie 404 ; supprimer sa publication Facebook 122127402903424431 depuis un compte ADMIN, puis traiter la suppression administrative éventuelle de la fiche technique masquée. Voir l’audit lié.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7145,7 +7145,8 @@
           }
         ],
         "rationale": "L’export officiel du parc confirme deux parkItems existants et masqués : BocksBergBob et Drachenblitz. Compléter le parc et ses attractions sans créer de standalone en doublon."
-      }
+      },
+      "duplicateCorrectionEvidence": "docs/roadmaps/world-integration/evidence/bocksbergbob-duplicate-correction-20261115/audit.json"
     },
     {
       "entryId": "DE-park-f952a087-82d0-4e59-a071-e6acd32edf1b",
@@ -33858,6 +33859,135 @@
         "facebookPublishedAtUtc": "2026-11-15T03:21:49.646Z",
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127402075424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/receipts.json"
+      }
+    },
+    {
+      "entryId": "DE-duplicate-bocksbergbob-20261115",
+      "name": "BocksBergBob — doublon masqué",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
+      "category": "Doublon technique d’un ParkItem",
+      "locality": "Hahnenklee, Goslar, Basse-Saxe",
+      "siteId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-15T03:35:44.045Z",
+      "editorialStatus": "Duplicate",
+      "duplicateOf": "DE-park-815bb3f3-9fb9-4bfd-aac1-472af9e18700",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Le vrai BocksBergBob est le ParkItem 5e38b880-dbe2-4f74-8742-9ab1e40917ee du Park masqué ErlebnisBocksBerg.",
+      "identityConfidence": "Doublon confirmé par export officiel du Park et par la qualification InsidePark du 1er novembre 2026.",
+      "possibleMatches": [],
+      "aliases": [
+        "BocksBergBob",
+        "Sommerrodelbahn Bocksberg"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T03:35:44.045Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3f673705-a584-4288-a6f0-dc44a9fb017b",
+          "appliedAt": "2026-11-15T03:27:45.497Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:3f673705-a584-4288-a6f0-dc44a9fb017b",
+          "auditEvidence": null,
+          "summary": "Création erronée d’une standalone alors que le Park masqué contient déjà le ParkItem BocksBergBob."
+        },
+        {
+          "eventId": "apply-b7bd15e8-7971-4c8d-8100-fb800f86baef",
+          "appliedAt": "2026-11-15T03:28:52.595Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:b7bd15e8-7971-4c8d-8100-fb800f86baef",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès ajoutées avant identification du doublon."
+        },
+        {
+          "eventId": "image-f2db348624c349099df9edcc05e0c206",
+          "appliedAt": "2026-11-15T03:30:40.020Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:image:f2db348624c349099df9edcc05e0c206",
+          "auditEvidence": null,
+          "summary": "Image exacte 4 importée sur la fiche doublon ; conservée masquée avec la fiche."
+        },
+        {
+          "eventId": "image-bc01476a45cf46e68b9e01f3d18e2385",
+          "appliedAt": "2026-11-15T03:31:03.219Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:image:bc01476a45cf46e68b9e01f3d18e2385",
+          "auditEvidence": null,
+          "summary": "Image exacte 1 importée sur la fiche doublon ; conservée masquée avec la fiche."
+        },
+        {
+          "eventId": "image-a0bdd8a8ee4c418ba2e8735fd78572fb",
+          "appliedAt": "2026-11-15T03:31:27.188Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:image:a0bdd8a8ee4c418ba2e8735fd78572fb",
+          "auditEvidence": null,
+          "summary": "Image exacte 5 importée sur la fiche doublon ; conservée masquée avec la fiche."
+        },
+        {
+          "eventId": "apply-85916302-6250-4c3e-8aa6-4dadcdf7bd99",
+          "appliedAt": "2026-11-15T03:32:47.461Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:85916302-6250-4c3e-8aa6-4dadcdf7bd99",
+          "auditEvidence": null,
+          "summary": "Textes corrigés avant identification du doublon."
+        },
+        {
+          "eventId": "apply-66b099b8-256b-42d0-9787-deea9b30b01b",
+          "appliedAt": "2026-11-15T03:33:38.861Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:66b099b8-256b-42d0-9787-deea9b30b01b",
+          "auditEvidence": null,
+          "summary": "Fiche rendue publique brièvement avant identification du doublon."
+        },
+        {
+          "eventId": "apply-95b99b21-ddec-422e-afb4-3eb8eb4fc4f9",
+          "appliedAt": "2026-11-15T03:35:44.045Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:95b99b21-ddec-422e-afb4-3eb8eb4fc4f9",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/bocksbergbob-duplicate-correction-20261115/audit.json",
+          "summary": "Correction : fiche standalone masquée, page publique vérifiée HTTP 404 ; post Facebook erroné encore à supprimer par un administrateur."
+        }
+      ],
+      "nextAction": "Ne pas republier cette fiche. Un compte ADMIN doit supprimer le post Facebook émis par erreur, puis déterminer la suppression administrative de la fiche technique masquée. Intégrer l’attraction sur son ParkItem existant et conserver cette ligne avec ses reçus.",
+      "sources": [
+        {
+          "label": "RCDB — BocksBergBob dans ErlebnisBocksBerg",
+          "url": "https://rcdb.com/13161.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — BocksBergBob",
+          "url": "https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "duplicateCorrectionEvidence": "docs/roadmaps/world-integration/evidence/bocksbergbob-duplicate-correction-20261115/audit.json",
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-15T03:33:38.861Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/93f0eb22-735b-430f-82d4-58de8dd5154b/bocksbergbob",
+        "facebookPublishedAtUtc": "2026-11-15T03:34:20.931Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127402903424431",
+        "facebookRemovalPending": true,
+        "siteHiddenAtUtc": "2026-11-15T03:35:44.045Z"
       }
     }
   ]

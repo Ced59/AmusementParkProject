@@ -1,0 +1,32 @@
+{
+  "countryCode": "DE",
+  "parkEntryId": "DE-park-815bb3f3-9fb9-4bfd-aac1-472af9e18700",
+  "parkId": "815bb3f3-9fb9-4bfd-aac1-472af9e18700",
+  "existingParkItemId": "5e38b880-dbe2-4f74-8742-9ab1e40917ee",
+  "existingParkItemName": "BocksBergBob",
+  "classification": "InsidePark",
+  "accidentalStandaloneId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+  "accidentalPublicUrl": "https://amusement-parks.fun/fr/attraction/93f0eb22-735b-430f-82d4-58de8dd5154b/bocksbergbob",
+  "correctionAtUtc": "2026-11-15T03:35:44.0456881Z",
+  "unpublishReceipt": {
+    "operationId": "95b99b21-ddec-422e-afb4-3eb8eb4fc4f9",
+    "isApplied": true,
+    "isVisible": false,
+    "adminReviewStatus": "ToReview"
+  },
+  "publicUrlHttpStatusAfterCorrection": 404,
+  "facebookPublication": {
+    "id": "7feb757b9e1a4951aaacc94db5a846e2",
+    "url": "https://www.facebook.com/1285475681307050/posts/122127402903424431",
+    "statusAtPublication": "Published",
+    "publishedAtUtc": "2026-11-15T03:34:20.9315354Z",
+    "adminDeleteAttemptHttpStatus": 403,
+    "removalPending": true
+  },
+  "rootCause": "Qualification faite sur la présence d’un billet propre sans relire la décision InsidePark du backlog national et l’export du Park contenant déjà le ParkItem identique.",
+  "nextAction": "Un administrateur doit supprimer le post Facebook erroné via la gestion des publications sociales. Vérifier ensuite si la fiche standalone masquée peut être supprimée par le processus administratif, en conservant les reçus d’audit. Poursuivre la vraie intégration sur le Park et ses deux ParkItems existants.",
+  "lastDataIntegrationAtOfExistingPark": null,
+  "note": "Aucune date d’intégration n’est imputée au Park existant car ses données n’ont pas été modifiées.",
+  "duplicateEntryId": "DE-duplicate-bocksbergbob-20261115",
+  "duplicateLastDataIntegrationAt": "2026-11-15T03:35:44.045Z"
+}
