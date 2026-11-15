@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "owner": "Conversation France",
+  "observedAtUtc": "2026-11-15T10:46:00.767500+00:00",
+  "status": "intake-in-progress",
+  "search": {
+    "result": {
+      "data": [
+        {
+          "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "name": "Pokeyland",
+          "countryCode": "FR",
+          "type": null,
+          "audienceClassification": null,
+          "status": "Operating",
+          "openingDate": null,
+          "closingDate": null,
+          "openingDateText": null,
+          "closingDateText": null,
+          "founderId": null,
+          "operatorId": null,
+          "latitude": 49.021498699411,
+          "longitude": 6.101178861292,
+          "descriptions": [],
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "isFeaturedOnHome": false,
+          "featuredHomeOrder": null,
+          "isFeaturedOnHomeSponsored": false,
+          "webSiteUrl": null,
+          "street": null,
+          "city": null,
+          "postalCode": null,
+          "currentLogoImageId": null,
+          "parkItemsTotalCount": 1,
+          "parkItemsVisibleCount": 0,
+          "openingHours": {
+            "hasOpeningHours": false,
+            "status": "NotConfigured",
+            "timeZoneId": null,
+            "firstDate": null,
+            "lastDate": null,
+            "completeUntilDate": null,
+            "completeForDays": null,
+            "warningThresholdDays": 30,
+            "lastVerifiedAtUtc": null,
+            "updatedAtUtc": null
+          },
+          "dataCompleteness": {
+            "completenessScore": 49,
+            "dataQualityLevel": "Weak",
+            "applicableMaxPoints": 79,
+            "earnedPoints": 39,
+            "publicationBlockers": [],
+            "formulaicPublicTextIssue": null
+          }
+        }
+      ],
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    "startedAtUtc": "2026-11-15T10:42:30.6551986Z",
+    "receivedAtUtc": "2026-11-15T10:42:31.5039990Z",
+    "action": "SearchParks"
+  },
+  "standaloneSearch": {
+    "action": "SearchStandaloneAttractions",
+    "startedAtUtc": "2026-11-15T10:42:49.3038976Z",
+    "receivedAtUtc": "2026-11-15T10:42:49.7592568Z",
+    "result": {
+      "data": [],
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    }
+  },
+  "targetedRecovery": {
+    "sections": [
+      "ParkBasics",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History"
+    ],
+    "exportedAtUtc": "2026-11-15T10:44:59.126788Z",
+    "reason": "Recover existing Pomme item ID, manufacturer dependency and determine existing media/history before any creation.",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/targeted-intake-export.json"
+  },
+  "existingEntities": {
+    "privatePark": true,
+    "items": [
+      {
+        "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "name": "Pomme",
+        "type": "RollerCoaster",
+        "manufacturerId": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "openingDate": "2025-05-04T00:00:00Z",
+        "sourceUrl": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme"
+      }
+    ],
+    "media": 0,
+    "historyEvents": 0,
+    "descriptions": 0
+  },
+  "lastActualIntegrationAtUtc": null,
+  "newApplyPerformed": false,
+  "newPhotoImported": false,
+  "fullAuditExportPerformed": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "localDirectory": "/workspace/france-historical-20261114/pokeyland",
+  "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
+  "nextAction": "Confirm identity, legal operator and aliases; source October2026 receivership without inferring permanent closure. Check Pomme date2025-05-04 and manufacturer before modifying. Reconcile official inventory/maps/calendar/pricing; preserve existing item ID."
+}
