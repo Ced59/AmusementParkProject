@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "kind": "public-research-only",
+  "createdAtUtc": "2026-11-15T09:33:14.300470+00:00",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkName": "Parc de la Récréation (Monts/Sorigny)",
+  "separateFromFamilyParkId": "2f436a73-8a36-4adc-9723-f14d569ed4f8",
+  "mutationPerformed": false,
+  "apiCalled": false,
+  "importsPerformed": 0,
+  "registryOrGitModified": false,
+  "previousState": "partial; 30 items, 22 publics décrits et 8 notices privées non documentées, dernière intégration réelle 2026-11-15T00:25:11.722Z",
+  "baselineFilesRead": [
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-followup-20261114.json",
+      "sha256": "dd72367adfa1f2f9bebd22b24824154a7d00a0dcee57548f8103e4458bb8c934",
+      "bytes": 10839
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-publication-followup-20261115.json",
+      "sha256": "b6fe5cfaf1a6f363d6dd3227b6ec8a16519541da4400101d463049cab98a5cf8",
+      "bytes": 73576
+    },
+    {
+      "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-inventory-sources.json",
+      "sha256": "5a63cf388b466d03cb1f3fcf548657614419297b53979b07edbd81612ac98d0e",
+      "bytes": 17609
+    },
+    {
+      "path": "/workspace/france-historical-20261022/parc-de-la-recreation/publication-20261115/published-working-state.json",
+      "sha256": "4e0ced2e6f6f4a9333fd9904e65939e58dbba76309efe79a2bb3c50cd0f032a8",
+      "bytes": 403828
+    },
+    {
+      "path": "/workspace/france-historical-20261022/parc-de-la-recreation/recovery-20261114/gallery.html",
+      "sha256": "4b077314ca05c507af9a53164ee5af707766829108f9379177fa522761a2054b",
+      "bytes": 41680
+    },
+    {
+      "path": "/workspace/france-historical-20261022/parc-de-la-recreation/recovery-20261114/gallery-image-links.json",
+      "sha256": "548b1673a81d57946b3032b689f71a2feb72e564af1bb09417f6c85cd9692b7d",
+      "bytes": 6453
+    },
+    {
+      "path": "/workspace/france-historical-20261022/parc-de-la-recreation/recovery-20261114/old-games.html",
+      "sha256": "05189d2331b4ce58c22e281ff7e10bfc6123ccd5c03f3f0abdcae88320841ba0",
+      "bytes": 9896
+    },
+    {
+      "path": "/workspace/france-historical-20261022/parc-de-la-recreation/recovery-20261114/cdx-images.json",
+      "sha256": "983aba9fed389c1d333072be7513f5135a34b49572328e39b7e5fbbcf0530710",
+      "bytes": 1027
+    },
+    {
+      "path": "/workspace/france-historical-20261022/parc-de-la-recreation/recovery-20261114/live-cdn-probes.json",
+      "sha256": "3fb3fa1a234903c0179544efb9681385f04dcebb4514b026f37d22451538a9b1",
+      "bytes": 482
+    }
+  ],
+  "newSources": [
+    {
+      "url": "https://asmjudo.blogspot.com/2013/06/",
+      "finalUrl": "https://asmjudo.blogspot.com/2013/06/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:25:13.658646+00:00",
+      "sha256": "8be0fdfda22dda377e643d606f97e93660aecbf8192605c88be0b7d503589759",
+      "bytes": 102084,
+      "receiptPath": "asm-2013-06-fetch.json"
+    },
+    {
+      "url": "https://asmjudo.blogspot.com/2017/06/",
+      "finalUrl": "https://asmjudo.blogspot.com/2017/06/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:25:14.965931+00:00",
+      "sha256": "0f7621f223d58f232c2e527ce8a32a1630375fc62f34111663bd534cc41a8193",
+      "bytes": 84366,
+      "receiptPath": "asm-2017-06-fetch.json"
+    },
+    {
+      "url": "https://goo.gl/photos/4TgnH44npMpdBRnE9",
+      "finalUrl": "https://photos.google.com/share/AF1QipNkm1MeVjd7OYhyrpIzwjgr6ocLsH04FfrHNLq_4c2r2mFPZbx2j6KNCpJa_heO2A?key=X3BscmlyQ0EwTWRYUC1vWnpHRExqbDF2LS05bVJ3",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:25:31.945932+00:00",
+      "sha256": "0fdc49537950f5660294d218a92956cf45b3e537c1a3e0b3d915fc14ef162050",
+      "bytes": 1257002,
+      "receiptPath": "asm-album-2010-fetch.json"
+    },
+    {
+      "url": "https://goo.gl/photos/ueghpKrDUN2CvS5u9",
+      "finalUrl": "https://photos.google.com/share/AF1QipNqc_mhrPPPL2xcezfREuQZO94nyZqS4WH04eYXshb-ODd2ArgbSz74jevhfnG65Q?key=Snl6YkdLWlBOTWphWlJFdnZGVDNsLWt6TGY5dnBB",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:25:29.550668+00:00",
+      "sha256": "6ee68b76ac24678be3e042f706f4aca2a8f77e534e59c1af054bc79f53394114",
+      "bytes": 1278521,
+      "receiptPath": "asm-album-2012-fetch.json"
+    },
+    {
+      "url": "https://goo.gl/photos/CCcoE1fTZAVnkrNj6",
+      "finalUrl": "https://photos.google.com/share/AF1QipP2gKGohZfxFuoJbocg_dWR8KzwxnS5T6d2WbeLgai6WHXBcZI5K5C6ttvBRQW96w?key=ZXBsSTF1MFpVMXhfTjUxTDBsZVRvTDJieTlkdW9B",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:25:27.194090+00:00",
+      "sha256": "ac001a0cf8530b1ffa2d19ce9187a599bdc8901c0a46874540b863ba2d7896af",
+      "bytes": 1263851,
+      "receiptPath": "asm-album-2013-fetch.json"
+    },
+    {
+      "url": "https://asmjudo.blogspot.com/2017/05/",
+      "finalUrl": "https://asmjudo.blogspot.com/2017/05/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:24:41.474329+00:00",
+      "sha256": "b27cb800372b0d478a5cbdb4a9bae31486721d9d97362eac4e27adfacae74ea8",
+      "bytes": 102534,
+      "receiptPath": "asm-judo-2017-05-fetch.json"
+    },
+    {
+      "url": "https://asmjudo.blogspot.com/p/blog-page.html",
+      "finalUrl": "https://asmjudo.blogspot.com/p/blog-page.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:25:12.945905+00:00",
+      "sha256": "60a23e176801abcd550bb1262e351997fba33feaea48c37bcddbc8fc99575e1d",
+      "bytes": 154368,
+      "receiptPath": "asm-photos-fetch.json"
+    },
+    {
+      "url": "https://mairie-sorigny.com/wp-content/uploads/37159-rp-1-DP-Monts-28-05-18.pdf",
+      "finalUrl": "https://mairie-sorigny.com/wp-content/uploads/37159-rp-1-DP-Monts-28-05-18.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:27:54.665153+00:00",
+      "sha256": "b2f3364e3b2f666df87b7e9d74ec0c6ac6223cb73b0b68d134159058a6f663b8",
+      "bytes": 4785218,
+      "receiptPath": "monts-plu-2018-fetch.json"
+    },
+    {
+      "receiptPath": "nibelle-2009-07-fetch.json",
+      "result": {
+        "url": "https://nibelle.blogspot.com/2009/07/",
+        "finalUrl": "https://nibelle.blogspot.com/2009/07/",
+        "status": 200,
+        "retrievedAtUtc": "2026-11-15T09:33:47.877410+00:00",
+        "sha256": "25dbcbcb0525f5b324fcfdcff9bd04ed41b679c051750efce7657789231fe2cc",
+        "bytes": 242171
+      }
+    },
+    {
+      "receiptPath": "nibelle-slide-image-fetch.json",
+      "result": [
+        {
+          "url": "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_ty-Ywqbwdt58nKR3t4CES5QpMS8zUSFyCwal3nTX9UqmbuWxjCa11-0ktr5xJ9ethnAEFUfZlmIVziSIZgo6pBGkOlkJs9RBIAUwp01PLRyRkJlmBHka68WhWoArEVxCElwcbYD34s22n0WeuZ5tbJO7bde94PeOejrIiI=s0-d",
+          "retrievedAtUtc": "2026-11-15T09:33:59.193396+00:00",
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "https://lh3.googleusercontent.com/blogger_img_proxy/AEn0k_ub0opg6NyMnJihBC4uIW1ObRM3Xn_PoQ5p_Hc6jIC38oUaHSw7Tj9Hs77ePec_Z7QI1cqY-LIVEziEiAzlHyEFeb3l-8ODS-Xfmg1GX3-Yc-x-0zSz4fK2OhxdeWvBKptrnUncsUR4tc20cyQFRGp1l-sUh5eSeU7FMCVR=s0-d",
+          "retrievedAtUtc": "2026-11-15T09:33:59.539756+00:00",
+          "error": "HTTP Error 404: Not Found"
+        }
+      ]
+    }
+  ],
+  "principalFinding": {
+    "type": "ambiguous-historical-visual-lead",
+    "albumLinkFromPublisher": "https://asmjudo.blogspot.com/p/blog-page.html",
+    "publisherLinkLabel": "sortie La Récrée 2010",
+    "shortLink": "https://goo.gl/photos/4TgnH44npMpdBRnE9",
+    "photoPageUrl": "https://photos.google.com/share/AF1QipNkm1MeVjd7OYhyrpIzwjgr6ocLsH04FfrHNLq_4c2r2mFPZbx2j6KNCpJa_heO2A/photo/AF1QipO5pXN7GlUCmEEU3OsGo_izJwOVPuVDoXPG0_fl?key=X3BscmlyQ0EwTWRYUC1vWnpHRExqbDF2LS05bVJ3",
+    "browserCheckedAtUtc": "2026-11-15T09:29:31.928572+00:00",
+    "download": {
+      "url": "https://lh3.googleusercontent.com/pw/AP1GczN65Z-xOem7GNyavtpuOl441829AVXhIcmK67Wv1BDiHoc5eSyFaiO4RCwVFk9hDENP4IETakdNaUKOoHuzjFCC8KtaAqsIVGur-cSQZp4BSuyko5w2Sb2GIGUGrKe9Ke5gmwV3WqyspeQ9m19yFn7j=w1440-h1080-s-no-gm",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:31:19.975264+00:00",
+      "sha256": "06db2a9582b656eebd30b9994b9fb696e200adcf72ce6100ccc70dfa5079be49",
+      "bytes": 390085,
+      "path": "asm-2010-detail-candidate-0.jpg"
+    },
+    "infoText": "Press question mark to see available shortcut keys\nZoom\nInfo\nMore options\nInfo\nDetails\nJun 13, 2010\nSun, 5:40 PM\nLG Electronics GD510\nƒ/2.8\n3.55mm\nP130610_13.36_[01].jpg\n3.1MP\n2048 × 1536\nShared by AS Montlouis Judo",
+    "publisher": "AS Montlouis Judo",
+    "individualPhotographer": null,
+    "license": null,
+    "licenseNote": "Album public ne constitue pas une licence ouverte ; aucune autorisation nouvelle demandée ni revendiquée.",
+    "visualObservations": [
+      "Un enfant est suspendu sous une suspente rouge dans une zone boisée.",
+      "Une corde verte pend vers le sol ; un arbre enveloppé de protection jaune est visible.",
+      "Sol couvert de matière végétale, pneus rouges en bordure et trampoline en arrière-plan.",
+      "La scène est floue, sans nom lisible. Le câble porteur ou dispositif de translation n’est pas suffisamment lisible pour identifier une tyrolienne avec certitude."
+    ],
+    "notEstablished": [
+      "Dimensions ou vitesse",
+      "Fabricant",
+      "Restriction d’âge ou de taille",
+      "Date d’ouverture ou de retrait",
+      "GPS",
+      "Photo de la grande tyrolienne ou lien nominal avec le libellé officiel Descente en câble",
+      "Règle de sécurité à déduire de la présence d’un enfant",
+      "Identification tyrolienne plutôt qu’un autre jeu suspendu"
+    ],
+    "recommendation": "Piste ambiguë seulement : ne pas importer ni rédiger une notice de tyrolienne sur cette image. Il manque une seconde vue du câble/dispositif ou une légende nominative.",
+    "parentReview": "Examen personnel du parent : suspension rouge/corde verte/pneus/arbres visibles ; pas de dispositif de translation lisible. Identification tyrolienne non établie."
+  },
+  "perItem": [
+    {
+      "itemId": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+      "name": "Balades en carriole",
+      "newConclusion": "Pas de description précise nouvelle. Les remorques de vélos des albums 2010/2012 recoupent les vélos fantaisie déjà connus ; elles ne prouvent pas une identité avec cette ancienne balade. Ne pas inférer cheval, traction, circuit ou alias.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+      "name": "Billard hollandais",
+      "newConclusion": "Nom et lien image officiels archivés conservés ; aucun nouveau binaire clairement attribué ni règles spécifiques trouvés. Ne pas remplir avec les règles génériques du sjoelbak.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "afd4c643-feb5-44bc-9c98-942b2388208a",
+      "name": "Mur d’escalade",
+      "newConclusion": "La face à prises visible en 2010 appartient à la structure de pneus. Aucune preuve nouvelle que cette face soit l’item Mur distinct ; ne pas transférer cette description arbitrairement.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+      "name": "Pétanque",
+      "newConclusion": "Mention historique conservée ; albums principalement volley ne prouvent aucun terrain de pétanque, surface, dimension ou nombre.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+      "name": "Pêche à la ligne",
+      "newConclusion": "Aucun équipement nouveau identifié. Mention de remplacement avant 2017 conservée ; ne pas transformer en pêche aux canards ou bassin sans preuve.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+      "name": "Totem-ball",
+      "newConclusion": "Légende officielle et URL Jimdo connues ; pas de vue identifiée dans les albums ni règles confirmées. Ne pas déduire un ballon captif autour d’un mât du nom seul.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+      "name": "Tourni-pneu",
+      "newConclusion": "Légende officielle et URL Jimdo connues ; pas de nouvelle vue identifiée. Ne pas confondre avec tour de pneus ou obstacle de pneus enterrés.",
+      "qualifiedForCompletion": false
+    },
+    {
+      "itemId": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+      "name": "Tyroliennes",
+      "newConclusion": "Photo 2010 de jeu suspendu retrouvée via ASM Judo, mais câble/dispositif non lisible et aucune légende nominative. Après revue parent, cette piste est ambiguë et ne débloque pas la notice. Aucun import ni nouvelle description recommandés sans seconde vue explicite.",
+      "qualifiedForCompletion": false
+    }
+  ],
+  "otherFindings": [
+    "Le PLU municipal Monts du 28 mai 2018 confirme La Récréation implantée depuis 1994 à cheval sur Monts/Sorigny et le projet de remplacement par Family Park ; il ne décrit pas les huit jeux.",
+    "Les albums 2010, 2012 et 2013 sont consultables sans connexion. Les vues examinées montrent surtout pique-nique, volley, toboggans, tour de pneus, vélos et voitures à pédales ; aucun alias nouveau pour les sept autres items.",
+    "La page de mai 2017 du club annonce une sortie le 18 juin au parc de Monts et renvoie à l’album juin 2013 ; contexte recoupé par le décor des photos avec les sources officielles.",
+    "Recherche complémentaire : Nibelle et Baudouin, 29 juillet 2009, sortie du centre aéré à La Récréation. Texte reprend la liste officielle des jeux ; diaporama Slide.com intégré, deux images liées observées retournent 404. Aucun visuel nouveau récupéré, aucune correspondance nominative avec la photo ASM 2010."
+  ],
+  "screenshotReview": [
+    "asm-album-2013-browser.png",
+    "asm-album-2013-screen-01.png",
+    "asm-album-2013-screen-02.png",
+    "asm-album-2013-screen-03.png",
+    "asm-album-2013-screen-06.png",
+    "asm-album-2012-screen-01.png",
+    "asm-album-2012-screen-02.png",
+    "asm-album-2012-screen-03.png",
+    "asm-album-2012-screen-05.png",
+    "asm-album-2012-screen-07.png",
+    "asm-album-2010-screen-01.png",
+    "asm-album-2010-screen-02.png",
+    "asm-album-2010-screen-03.png",
+    "asm-2010-zipline-view.png",
+    "asm-2010-detail-candidate-0.jpg"
+  ],
+  "knownExclusionsPreserved": [
+    "la-recreation.com réutilisé après 2021 exclu",
+    "Plan2009 routier, pas carte intérieure",
+    "Photo old-38 doublon existant exclue",
+    "Photos associatives 2017 petites, encadrées/reflets non réhabilitées",
+    "Pas de répétition des sondes Jimdo 403, pas de contournement",
+    "Pas de connexion Google, pas de commentaire/like/join/save, consultation publique seulement"
+  ],
+  "remainingActions": [
+    "Chercher une seconde vue montrant le câble/dispositif ou une légende nominative du jeu suspendu 2010 avant toute attribution aux Tyroliennes.",
+    "Chercher les originaux correspondant aux légendes officielles Billard hollandais/Totem-ball/Tourni-pneu ; aucun nouvel URL inventé.",
+    "Conserver les sept notices encore non qualifiées ; ne pas compléter un inventaire avec les règles usuelles des jeux."
+  ],
+  "updatedAtUtc": "2026-11-15T09:34:32.861648+00:00",
+  "searchQueriesSupplemental": [
+    "\"la recreation\" \"Monts\" \"tyrolienne\" photo",
+    "\"la recreation\" \"descente\" \"câble\" \"photo\"",
+    "\"asmjudo\" \"récréation\" \"tyrolienne\""
+  ]
+}

@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "updatedAtUtc": "2026-11-15T09:40:11.968461+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "scopePublicationVerified": true,
+  "actualApplyOperationId": "98ae8924-7032-4b34-9d56-09edc591cc02",
+  "actualAppliedAtUtc": "2026-11-15T09:36:56.6979091Z",
+  "scopeAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-scope-audit-20261115.json",
+  "receiptEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-20261115.json",
+  "publishedStateEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-published-state-20261115.json",
+  "idempotence": {
+    "operationId": "ceec64a9-2b13-42c3-a7a9-498f61e24aae",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:37:51.8122479Z",
+    "appliedAtUtc": null,
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "entityKey": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "displayName": "Jeu de dames géant",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "entityKey": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "displayName": "Ping-pong",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "actualCompleteness": {
+    "receivedAtUtc": "2026-11-15T09:37:53.0146664Z",
+    "startedAtUtc": "2026-11-15T09:37:52.1636352Z",
+    "result": {
+      "completenessScore": 92,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 103,
+      "earnedPoints": 95,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness"
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T09:37:53.7379721Z",
+    "result": {
+      "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "parkName": "Acqua Gliss Porticcio",
+      "factCount": 17,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1980,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 2,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 5
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 12
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 5,
+        "sourcedFactCount": 5,
+        "majorFactCount": 4,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T09:37:53.2686858Z",
+    "action": "HistoryDiagnostics"
+  },
+  "facebook": {
+    "startedAtUtc": "2026-11-15T09:37:53.9713091Z",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Acqua Gliss Porticcio ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Acqua Gliss Porticcio! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Acqua Gliss Porticcio",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "8543f61911b545f29e4159e39351d2ae",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125630275424431",
+      "images": {
+        "data": [
+          {
+            "id": "1cb49aa9a061474ea83373112c5c36cf",
+            "label": "Une démonstration de danse anime la plage du bassin pendant les années d’activité d’Acqua Gliss.",
+            "isCurrent": false,
+            "width": 400,
+            "height": 268
+          },
+          {
+            "id": "dc5fa7d9803245aca4af80970b2b5897",
+            "label": "Les toboggans occupent la pente arborée ; les bassins et les terrasses se déploient devant les bâtiments d’entrée.",
+            "isCurrent": false,
+            "width": 634,
+            "height": 484
+          },
+          {
+            "id": "a5c6bdb968fd45e1bce242aa72f592c0",
+            "label": "Le jardin aquatique et ses bassins, dans une photographie de l’ancien site d’Acqua Gliss.",
+            "isCurrent": true,
+            "width": 800,
+            "height": 600
+          },
+          {
+            "id": "f54ddf5aaa6f496d84f0423675e30b7a",
+            "label": "L’emprise du parc dans la couverture aérienne IGN de 2006–2010.",
+            "isCurrent": false,
+            "width": 1100,
+            "height": 900
+          },
+          {
+            "id": "dab0dfe9879741a68368354d31fe5ade",
+            "label": "« Parc de loisirs en Corse » : l’identité visuelle d’Acqua Gliss diffusée en 2012.",
+            "isCurrent": false,
+            "width": 984,
+            "height": 286
+          }
+        ],
+        "pagination": {
+          "totalItems": 5,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "action": "ResolveFacebookPublication",
+    "receivedAtUtc": "2026-11-15T09:37:54.4279965Z"
+  },
+  "newFacebookPublicationPerformed": false,
+  "facebookVisibilityCaveat": "Official Published receipt reconfirmed; five other campaign announcements are unavailable anonymously. Current external FB visibility is not inferred from server status, owner logged-in check still pending.",
+  "publicChecks": [
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:10.531912+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1681
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:13.033076+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1678
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:15.162582+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1559
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:17.170327+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1525
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:19.270080+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1691
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:21.165325+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1661
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:23.178805+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1660
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:25.180805+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1631
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:27.181269+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1732
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:29.044388+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1683
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:31.067502+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1725
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:32.956444+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1702
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:34.923232+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1562
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:36.741738+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1534
+    },
+    {
+      "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/1b79e713-27eb-4db2-9fde-cc111fbccddb/jeu-de-dames-geant",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:38.722238+00:00",
+      "h1": [
+        "Jeu de dames géant"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1688
+    },
+    {
+      "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/c7424f36-e352-49c9-bc32-91bf357e30ea/ping-pong",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T09:38:40.550026+00:00",
+      "h1": [
+        "Ping-pong"
+      ],
+      "missingParagraphs": [],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1653
+    }
+  ],
+  "normalNavigation": "Public French park→Lieux du parc→existingitem links discovered;16localizedpages directlyfollowed.",
+  "screenshotsPersonallyViewed": [
+    "Jeu de dames géant — mobile français",
+    "Ping-pong — mobile français"
+  ],
+  "coverage": {
+    "items": 14,
+    "publicItems": 13,
+    "itemsDescribedInEightLanguages": 13,
+    "publicMedia": 17,
+    "newMediaImports": 0,
+    "factsPublished": 5,
+    "articles": 1,
+    "privateUnqualifiedItemIds": [
+      "088de2d8-2bf7-49fb-b2e6-d7cfc732d120"
+    ]
+  },
+  "remaining": "Volley remains private without specific physical description; prior map/photo/location gaps and old history OTHER/galleryalt observations retained. No false globalcompletion.",
+  "exportSequence": {
+    "priorUniqueAuditExport": "2026-11-14T23:56:40.525024Z",
+    "newAuditExportPerformed": false,
+    "distinctPublicationExport": "2026-11-15T09:35:07.7161768Z",
+    "exactReconciliation": {
+      "expectedSha256": "317fd36fe7e0e2374f654fea6ea583ea59602bd88993541e6155049b762775fb",
+      "publicationExportSha256": "c24d8a970c3817aa9989828e3c2335308c1f3d81e8543b53e22f074a2923ede3",
+      "metadata": {
+        "source": "admin-bulk-park-graph-export",
+        "exportedAtUtc": "2026-11-15T09:35:07.7161768Z"
+      },
+      "differences": [],
+      "ignored": "metadata and localization list order only"
+    },
+    "interruptedEarlierReadOnlyLaunch": {
+      "recordedAtUtc": "2026-11-15T09:29:51.901882+00:00",
+      "reason": "Publication-export wrapper started while prior read-only idempotence wrapper had not returned. Secondary local process stopped; no further PDE request until first process ends. Must inspect global status and any export job before a new export; no visibility mutation was requested.",
+      "stoppedPid": 63137,
+      "priorPid": 63110,
+      "publicationMutationPerformed": false,
+      "reconciliationStatus": {
+        "result": {
+          "serverTimeUtc": "2026-11-15T09:34:22.5614305Z",
+          "isBusy": false,
+          "hasActiveExport": false,
+          "canStartResourceIntensiveOperation": true,
+          "activeRequestCount": 0,
+          "activeExportCount": 0,
+          "maxConcurrentRequests": 2,
+          "maxConcurrentResourceIntensiveOperations": 1,
+          "recommendedPollIntervalSeconds": 5,
+          "retryAfterSeconds": 5,
+          "activeRequests": [],
+          "activeExports": []
+        },
+        "startedAtUtc": "2026-11-15T09:34:22.1784702Z",
+        "receivedAtUtc": "2026-11-15T09:34:22.7296127Z",
+        "action": "Status"
+      },
+      "reconciliation": "Prior idempotence completed successfully09:33:53.4884781Z; all local request processes finished, officialStatus09:34:22 shows zero active requests/exports. No export result/job receipt or partial file exists from interrupted local process. Only a fresh publication-flow export will now be requested; no new audit export and no competing job."
+    }
+  }
+}

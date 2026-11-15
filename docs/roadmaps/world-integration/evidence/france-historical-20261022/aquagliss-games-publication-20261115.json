@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "completed": false,
+  "scopeAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-scope-audit-20261115.json",
+  "document": {
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "id": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "name": "Acqua Gliss Porticcio",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+          "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+          "name": "Jeu de dames géant",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "key": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+          "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+          "name": "Ping-pong",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        }
+      ],
+      "metadata": {
+        "source": "Conversation France — publier uniquement deux notices8langues personnellement rédigées/revues depuis des photos/catalogues officiels. Volley reste privé, historique et médias inchangés. Tolérance des parcs fermés autorisée par le propriétaire14novembre."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "5232307b-2c21-43a1-98f7-bc1fa3db2a1b",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:36:25.8659615Z",
+    "appliedAtUtc": null,
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "entityKey": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "displayName": "Jeu de dames géant",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "entityKey": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "displayName": "Ping-pong",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "98ae8924-7032-4b34-9d56-09edc591cc02",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:36:56.6979079Z",
+    "appliedAtUtc": "2026-11-15T09:36:56.6979091Z",
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "entityKey": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "displayName": "Jeu de dames géant",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "entityKey": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "displayName": "Ping-pong",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "actualDateSource": "apply.appliedAtUtc",
+  "newFacebookPublicationPerformed": false,
+  "publicPageChecksPending": false,
+  "remaining": "Volley unqualified; historical gaps and overall partial state retained.",
+  "publicCheckEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-followup-20261115.json"
+}

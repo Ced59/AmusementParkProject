@@ -1830,7 +1830,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T09:28:15.341Z",
+      "lastDataIntegrationAt": "2026-11-15T09:36:56.697Z",
       "integrationHistory": [
         {
           "eventId": "apply-6e4cf8e8-6052-4566-b368-dc3bf0b3cb2e",
@@ -2141,9 +2141,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-qualification-20261115.json",
           "auditEvidence": null,
           "summary": "Dames géant et ping-pong existants qualifiés par les photos/catalogues officiels : seize descriptions personnelles8langues appliquées privées, sans création ni import. Volley demeure sans notice précise."
+        },
+        {
+          "eventId": "apply-98ae8924-7032-4b34-9d56-09edc591cc02",
+          "appliedAt": "2026-11-15T09:36:56.697Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-publication-20261115.json",
+          "auditEvidence": null,
+          "summary": "Publication ciblée Dames géant et Ping-pong après audit des16notices personnelles8langues,92/100 toléré sansbloqueur.14lieux13publics13décrits,17médias conservés. Volley reste privé, aucun nouvel envoiFacebook. Contrôles publics à consigner séparément."
         }
       ],
-      "nextAction": "Dames géant et ping-pong : seize notices8langues appliquées privées le15novembre09:28:15.3417568UTC, photos/catalogues officiels relus. Finir contrôle et publication ciblée ; volley toujours privé sans matière précise.14lieux13décrits11publics,17médias, aucune réimportation. Facebook existant Published ; visibilité externe à distinguer. Voir aquagliss-current-20261115.json.",
+      "nextAction": "Dames géant et ping-pong publiés après audit le15novembre09:36:56.6979091UTC ;16pages huitlangues vérifiées,92/100 toléré0bloqueur.14lieux13publics13décrits,17médias ; volley seul privé sansnoticeprécise, ancienneslacunes conservées. Facebook existantPublished sansdoublon ;visibilitéexterne àdistinguer. Voir aquagliss-current-20261115.json.",
       "sources": [
         {
           "label": "Backlog national existant",
