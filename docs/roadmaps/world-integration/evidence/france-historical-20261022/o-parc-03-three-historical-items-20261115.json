@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "7b70af6275e030a10e066f4d26fdf3e7a4dbc9177d7175d85b8bbcf6a0e9b9e9",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "4875ae6a-0d76-4581-b057-c566a627d503",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:22:17.3680279Z",
+    "appliedAtUtc": "2026-11-15T04:22:17.3680294Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3907da4a-6351-420f-ac42-953e8814da0b",
+        "entityKey": "o-parc-petit-train",
+        "displayName": "Ô Petit Train",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die kleine rote Lokomotive</h2><p>Ô Petit Train war in Ô Parc eine eigenständige Attraktion neben La Chenille. Der Plan von 2025 stellte ihn als rote Lokomotive mit schwarzem Schornstein nahe Home-ball und den Trampolinen dar.</p><h2>Auf mehreren Parkplänen vertreten</h2><p>Die Bahn erschien auch auf einem älteren Plan mit einer kleinen Schleife vor den Spielen auf der Wiese. Ihr Name wurde noch in der Vorstellung der letzten Parksaison genannt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The little red locomotive</h2><p>Ô Petit Train was a separate attraction from La Chenille at Ô Parc. The 2025 map depicted it as a red locomotive with a black chimney, near Home-ball and Trampolines.</p><h2>A ride on several park maps</h2><p>The train also appeared on an older map, with a small loop in front of the meadow’s games. Its name still featured in the presentation of the park’s final season.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La pequeña locomotora roja</h2><p>Ô Petit Train era una atracción distinta de La Chenille en Ô Parc. El plano de 2025 lo representaba mediante una locomotora roja con chimenea negra, cerca de Home-ball y los Trampolines.</p><h2>Una atracción en varios planos</h2><p>El trenecito también aparecía en un plano anterior, con un pequeño circuito delante de los juegos de la pradera. Su nombre seguía figurando en la presentación de la última temporada del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La petite locomotive rouge</h2><p>Ô Petit Train occupait une place distincte de La Chenille dans les attractions d’Ô Parc. Le plan de 2025 le représentait par une locomotive rouge à cheminée noire, à proximité du Home-ball et des Trampolines.</p><h2>Un manège présent sur plusieurs plans</h2><p>Le train figurait aussi sur un plan plus ancien, avec une petite boucle devant les jeux de la prairie. Son nom apparaissait encore dans la présentation de la dernière saison du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La piccola locomotiva rossa</h2><p>Ô Petit Train era un’attrazione distinta da La Chenille a Ô Parc. La mappa del 2025 lo rappresentava con una locomotiva rossa dal fumaiolo nero, vicino a Home-ball e ai Trampolines.</p><h2>Una giostra presente su più mappe</h2><p>Il trenino compariva anche su una mappa più vecchia, con un piccolo anello davanti ai giochi del prato. Il suo nome figurava ancora nella presentazione dell’ultima stagione del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De kleine rode locomotief</h2><p>Ô Petit Train was in Ô Parc een aparte attractie naast La Chenille. De plattegrond van 2025 beeldde hem af als een rode locomotief met een zwarte schoorsteen, bij Home-ball en de Trampolines.</p><h2>Een attractie op meerdere plattegronden</h2><p>Het treintje stond ook op een oudere kaart, met een kleine lus voor de spelen op het grasveld. Zijn naam werd nog genoemd in de presentatie van het laatste parkseizoen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Mała czerwona lokomotywa</h2><p>Ô Petit Train był w Ô Parc odrębną atrakcją od La Chenille. Plan z 2025 roku przedstawiał go jako czerwoną lokomotywę z czarnym kominem, w pobliżu Home-ball i trampolin.</p><h2>Atrakcja na kilku planach</h2><p>Pociąg pojawiał się również na starszym planie, z małą pętlą przed zabawami na łące. Jego nazwę wymieniano jeszcze w opisie ostatniego sezonu parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A pequena locomotiva vermelha</h2><p>O Ô Petit Train era uma atração distinta da La Chenille no Ô Parc. O mapa de 2025 representava-o por uma locomotiva vermelha com chaminé preta, perto do Home-ball e dos Trampolines.</p><h2>Uma atração em vários mapas</h2><p>O pequeno comboio também aparecia num mapa mais antigo, com uma pequena volta diante dos jogos do prado. O seu nome ainda figurava na apresentação da última época do parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+        "entityKey": "o-parc-ptits-quads",
+        "displayName": "Ô p’tits quads",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Quads auf der Wiese</h2><p>Ô p’tits quads gehörte zu den Fahrangeboten von Ô Parc. Auf dem älteren Plan hatten die kleinen Quads einen eigenen Bereich, getrennt von der Tretkartbahn und nahe La Chenille.</p><h2>Eine weitere Rennkulisse</h2><p>Die Zeichnung zeigte eine ovale Bahn mit dunklen und hellen Begrenzungen sowie Quads vor dem Eingang. Die Parkbeschreibungen nannten sie neben Tretkarts und Seilrutschen als Angebot unter freiem Himmel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Quads in the meadow</h2><p>Ô p’tits quads was one of Ô Parc’s driving attractions. On the older map, the small quads had their own area, separate from the pedal-kart track and close to La Chenille.</p><h2>Another racing setting</h2><p>The drawing showed an oval track with dark and pale edging and quads in front of the entrance. Park presentations listed them among the outdoor activities, alongside pedal karts and zip lines.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los quads de la pradera</h2><p>Ô p’tits quads formaba parte de las atracciones de conducción de Ô Parc. En el plano anterior, los pequeños quads tenían su propio espacio, separado del circuito de karts de pedales y cerca de La Chenille.</p><h2>Otro escenario de carreras</h2><p>El dibujo mostraba una pista ovalada con bordes oscuros y claros, con los quads delante de la entrada. Las presentaciones del parque los citaban entre las actividades al aire libre, junto a los karts de pedales y las tirolinas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les quads de la prairie</h2><p>Ô p’tits quads faisait partie des jeux de conduite d’Ô Parc. Sur l’ancien plan, les petits quads avaient leur propre espace, séparé du circuit des Karts à pédales et installé près de La Chenille.</p><h2>Un autre décor de course</h2><p>Le dessin montrait une piste ovale aux bordures sombres et claires, avec les quads devant l’entrée. Les présentations du parc citaient ces engins parmi les activités de plein air, aux côtés des karts et des tyroliennes.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I quad del prato</h2><p>Ô p’tits quads faceva parte delle attrazioni di guida di Ô Parc. Sulla mappa più vecchia, i piccoli quad avevano un proprio spazio, separato dalla pista dei kart a pedali e vicino a La Chenille.</p><h2>Un altro scenario da corsa</h2><p>Il disegno mostrava una pista ovale dai bordi scuri e chiari, con i quad davanti all’ingresso. Le presentazioni del parco li elencavano tra le attività all’aperto, accanto ai kart a pedali e alle teleferiche.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Quads op het grasveld</h2><p>Ô p’tits quads hoorde bij de rijattracties van Ô Parc. Op de oudere plattegrond hadden de kleine quads een eigen plek, los van de trapkartbaan en dicht bij La Chenille.</p><h2>Nog een racedecor</h2><p>De tekening toonde een ovale baan met donkere en lichte randen en quads voor de ingang. In parkbeschrijvingen stonden ze tussen de buitenactiviteiten, naast trapkarts en tokkelbanen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Quady na łące</h2><p>Ô p’tits quads należało do atrakcji Ô Parc związanych z prowadzeniem pojazdów. Na starszym planie małe quady miały własny teren, oddzielony od toru gokartów na pedały i położony blisko La Chenille.</p><h2>Kolejna wyścigowa sceneria</h2><p>Rysunek pokazywał owalny tor z ciemnymi i jasnymi obrzeżami oraz quady przed wejściem. Opisy parku wymieniały je wśród zabaw na świeżym powietrzu, obok gokartów na pedały i tyrolek.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os quads do prado</h2><p>O Ô p’tits quads fazia parte das atrações de condução do Ô Parc. No mapa mais antigo, os pequenos quads tinham um espaço próprio, separado da pista dos karts a pedais e perto da La Chenille.</p><h2>Outro cenário de corrida</h2><p>O desenho mostrava uma pista oval com margens escuras e claras e os quads diante da entrada. As apresentações do parque incluíam-nos nas atividades ao ar livre, a par dos karts a pedais e das tirolesas.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87d59498-a481-46ba-9a52-475cca5b161c",
+        "entityKey": "o-parc-le-gorille",
+        "displayName": "Le Gorille",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine kleine Hüpfanlage mit Tiermotiv</h2><p>Le Gorille erschien auf einem älteren Plan von Ô Parc unter den Hüpfanlagen auf der Wiese. Die Abbildung zeigte einen kleinen überdachten Spielbereich mit gelben und grünen Pfosten und einer Gorillafigur darüber.</p><h2>Vom großen Konga getrennt</h2><p>Das Spiel stand an einem anderen Platz als Toboggan Konga, der ebenfalls auf demselben Plan erschien. Seine kompakte Form unterschied sich von den großen Rutschflächen unter Kongas Affenfigur.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A small animal-themed inflatable</h2><p>Le Gorille appeared on an older Ô Parc map among the meadow’s inflatable games. Its illustration showed a small covered play space with yellow and green supports, topped by a gorilla figure.</p><h2>Separate from the large Konga</h2><p>This game occupied a separate spot from Toboggan Konga, which also appeared on the same map. Its compact shape contrasted with the large slopes beneath Konga’s ape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un pequeño hinchable de temática animal</h2><p>Le Gorille figuraba en un plano antiguo de Ô Parc entre los juegos hinchables de la pradera. Su ilustración mostraba un pequeño espacio cubierto, con soportes amarillos y verdes y una figura de gorila encima.</p><h2>Distinto del gran Konga</h2><p>Este juego ocupaba un lugar separado de Toboggan Konga, que también aparecía en el mismo plano. Su forma compacta contrastaba con las grandes pendientes dominadas por el simio de Konga.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un petit gonflable à thème animalier</h2><p>Le Gorille figurait sur l’ancien plan d’Ô Parc parmi les jeux gonflables de la prairie. Son illustration montrait un petit espace couvert, aux montants jaunes et verts, surmonté d’une silhouette de gorille.</p><h2>Distinct du grand Konga</h2><p>Ce jeu occupait un emplacement séparé de Toboggan Konga, lui aussi présent sur le même plan. Sa forme compacte contrastait avec les grandes pentes dominées par le singe de Konga.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un piccolo gonfiabile a tema animale</h2><p>Le Gorille compariva su una vecchia mappa di Ô Parc tra i giochi gonfiabili del prato. L’illustrazione mostrava un piccolo spazio coperto, con montanti gialli e verdi e una sagoma di gorilla in cima.</p><h2>Distinto dal grande Konga</h2><p>Questo gioco occupava un posto separato da Toboggan Konga, anch’esso presente sulla stessa mappa. La forma compatta contrastava con le grandi discese dominate dalla scimmia di Konga.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een klein springkussen met dierendecor</h2><p>Le Gorille stond op een oudere plattegrond van Ô Parc tussen de springkussens op het grasveld. De afbeelding toonde een kleine overdekte speelruimte met gele en groene staanders en een gorillafiguur erboven.</p><h2>Los van de grote Konga</h2><p>Dit speeltoestel stond op een andere plek dan Toboggan Konga, die ook op dezelfde kaart voorkwam. De compacte vorm contrasteerde met de grote glijbanen onder de aap van Konga.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Mały dmuchaniec z motywem zwierzęcym</h2><p>Le Gorille widniał na starszym planie Ô Parc wśród dmuchanych zabaw na łące. Ilustracja przedstawiała małą zadaszoną przestrzeń z żółtymi i zielonymi słupkami, zwieńczoną sylwetką goryla.</p><h2>Odrębny od dużego Konga</h2><p>Ta zabawa zajmowała inne miejsce niż Toboggan Konga, również obecny na tym samym planie. Jej zwarta forma kontrastowała z dużymi zjazdami pod małpą Kongi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um pequeno insuflável com tema animal</h2><p>Le Gorille aparecia num mapa antigo do Ô Parc entre os jogos insufláveis do prado. A ilustração mostrava um pequeno espaço coberto, com pilares amarelos e verdes e uma figura de gorila no topo.</p><h2>Distinto do grande Konga</h2><p>Este jogo ocupava um lugar separado do Toboggan Konga, também presente no mesmo mapa. A forma compacta contrastava com as grandes descidas dominadas pelo macaco do Konga.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

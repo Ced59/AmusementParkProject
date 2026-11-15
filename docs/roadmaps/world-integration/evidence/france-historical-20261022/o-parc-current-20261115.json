@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T04:19:04.208488+00:00",
+  "observedAtUtc": "2026-11-15T04:23:59.950241+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -118,6 +118,11 @@
       "operationId": "207a781b-8420-475f-b174-34b03056c906",
       "appliedAtUtc": "2026-11-15T04:18:04.5445132Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-map-2025-association-20261115.json"
+    },
+    {
+      "operationId": "4875ae6a-0d76-4581-b057-c566a627d503",
+      "appliedAtUtc": "2026-11-15T04:22:17.3680294Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-three-historical-items-20261115.json"
     }
   ],
   "acceptedImports": [
@@ -133,15 +138,17 @@
     }
   ],
   "counts": {
-    "items": 31,
-    "itemDescriptionsRewrittenEightLanguages": 9,
+    "items": 34,
+    "itemDescriptionsRewrittenEightLanguages": 12,
     "itemDescriptionsStillToReview": 22,
     "images": 13,
     "newImagesPrivate": 2,
     "zones": 2,
     "historyEvents": 8,
     "articles": 1,
-    "officialMaps": 2
+    "officialMaps": 2,
+    "publicItems": 31,
+    "privateItems": 3
   },
   "sources": [
     {
@@ -268,11 +275,8 @@
     "promotionalImages": "Visuels2025Tasses/Safari et2024Pirates sont montages promotionnels, pas photos prisesdansleparc ; nonimportés comme photos."
   },
   "inventoryToQualify": [
-    "Ô p’tits quads",
-    "Ô petit train",
     "Le géant des mers",
     "Parcours de l’extrême",
-    "Le Gorille",
     "Baby pirate",
     "Bac à sable",
     "Pêche aux canards"
@@ -283,13 +287,36 @@
     "Infoptimum directory404,its last-week2026article200; tourist office gallery and2025Berryarticle200.",
     "Map2026isillustrated, cannot prove centimetricGPS or every real building material.",
     "Several legacy paragraphs describe generic play benefits or unproved rider feelings; whole corpus review remains.",
-    "Founder collective / legal operator identity and closingYear require source review; no global-reference mutation yet."
+    "Founder collective / legal operator identity and closingYear require source review; no global-reference mutation yet.",
+    "Wayback CDX returned42publicpageURLs; first archived2019ridespage returned429, stoppedretrieval. Currentactivitiespage404. No bypass.",
+    "BerryProvincegallery personallyinspected: fiveimages duplicateprevious touristgallery; noimport. Credit©ÔParcexplicit onsource, usefulforChaisescreditsenrichment.",
+    "HistoricGorille andKonga aredistinctsameoldmap; quadsandkartsdistinct; trainandChenilledistinct2025andoldermap. Noindividualopening/closingdatesinvented."
   ],
-  "nextAction": "Poursuivre qualification inventaire historique,22notices et autresfamilles de texte huitlangues. Plan2025 privé ajouté,2026 publicconservé. Aucunfullauditexport, aucuneclôture/publicationnouvelle.",
+  "nextAction": "Poursuivre22notices anciennes et5identités historiques restantes ; corrigerSaloonfausseconstructionbois/Piratescharpentebois, tasses chocolat,donnéesparc/histoire/références. Nouveaux3itemsprivés,2photosprivées,plan2025privé ; pasfullauditexport/publicationnouvelle.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
       "year": 2025,
+      "private": true
+    }
+  ],
+  "newHistoricalItems": [
+    {
+      "key": "o-parc-petit-train",
+      "id": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "private": true
+    },
+    {
+      "key": "o-parc-ptits-quads",
+      "id": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "private": true
+    },
+    {
+      "key": "o-parc-le-gorille",
+      "id": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
       "private": true
     }
   ]

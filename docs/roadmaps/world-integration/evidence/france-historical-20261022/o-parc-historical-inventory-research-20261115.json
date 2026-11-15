@@ -1,0 +1,134 @@
+{
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "reviewedAtUtc": "2026-11-15T04:23:59.950241+00:00",
+  "sourcePages": [
+    {
+      "name": "tourism-nievre",
+      "url": "https://www.nievre-tourisme.com/handicap/o-parc",
+      "retrievedAtUtc": "2026-11-15T04:13:52.687616+00:00",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "local-tourism-2017",
+      "url": "https://lajosephine.fr/chambre-hote-activite-5.php",
+      "retrievedAtUtc": "2026-11-15T04:13:55.444575+00:00",
+      "status": 200,
+      "finalUrl": "https://lajosephine.fr/chambre-hote-activite-5.php",
+      "bytes": 20336,
+      "sha256": "4698b3104d15f54f45ed7decde0dac506b5dbacafafd9bbc628d690218022264"
+    },
+    {
+      "name": "reopening-2025",
+      "url": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html",
+      "retrievedAtUtc": "2026-11-15T04:13:56.560596+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html",
+      "bytes": 36983,
+      "sha256": "0ca5874eca8241919d05428748f8edb0068e894791caaaa7169545ca4fc261fb"
+    },
+    {
+      "name": "summer-2024",
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-5090.html",
+      "retrievedAtUtc": "2026-11-15T04:13:57.358697+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-5090.html",
+      "bytes": 36630,
+      "sha256": "b15ca1cff1ff8cf6d296b0ab12edf55c9f855506bd75efd93c7fc6f6a8c36532"
+    }
+  ],
+  "media": [
+    {
+      "name": "reopening-2025-0",
+      "url": "https://www.bourges.infoptimum.com/photos/67efcef5c9740_67e51dcc1a00a_screenshot-2025-03-27-at-10-43-24-activites-et-attractions---o-parc.png",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/reopening-2025-0.png",
+      "status": 200,
+      "bytes": 949726,
+      "sha256": "e8139e8dc77f6371a8ed33e897c39cae6034a18becea927f061f93f09b58f0a2",
+      "retrievedAtUtc": "2026-11-15T04:14:51.916043+00:00"
+    },
+    {
+      "name": "reopening-2025-1",
+      "url": "https://www.bourges.infoptimum.com/photos/67efd00d4f5f2_67e51d5be29f0_plaquette.jpg",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/reopening-2025-1.jpg",
+      "status": 200,
+      "bytes": 1866222,
+      "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+      "retrievedAtUtc": "2026-11-15T04:14:53.318533+00:00"
+    },
+    {
+      "name": "reopening-2025-2",
+      "url": "https://www.bourges.infoptimum.com/photos/67efcf859fa11_5391_bannay.png",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/reopening-2025-2.png",
+      "status": 200,
+      "bytes": 2348242,
+      "sha256": "cbdfbebbf487dfad2015f34721864403e9febc0ef835deec0c39e7abc65ef934",
+      "retrievedAtUtc": "2026-11-15T04:14:54.665681+00:00"
+    },
+    {
+      "name": "summer-2024-0",
+      "url": "https://www.bourges.infoptimum.com/photos/66a26c3830e6b_65db71632e7f4_oparc_2024.jpg",
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/summer-2024-0.jpg",
+      "status": 200,
+      "bytes": 446357,
+      "sha256": "e667a31bbfd5232481d19ae7aa8e68d421825f2934d7730fb40e6c1cf3ed7d6f",
+      "retrievedAtUtc": "2026-11-15T04:14:55.717036+00:00"
+    }
+  ],
+  "maps": {
+    "undatedTourismMap": "tourism-7.jpg",
+    "dated2025Map": "reopening-2025-1.jpg",
+    "known2026Map": "official-map-2026.jpg",
+    "noInventedMapYear": true
+  },
+  "identityDecisions": [
+    {
+      "key": "o-parc-petit-train",
+      "id": "3907da4a-6351-420f-ac42-953e8814da0b",
+      "name": "Ô Petit Train",
+      "private": true
+    },
+    {
+      "key": "o-parc-ptits-quads",
+      "id": "a8ce4072-d1bb-47ec-a1f0-07b868014782",
+      "name": "Ô p’tits quads",
+      "private": true
+    },
+    {
+      "key": "o-parc-le-gorille",
+      "id": "87d59498-a481-46ba-9a52-475cca5b161c",
+      "name": "Le Gorille",
+      "private": true
+    }
+  ],
+  "remainingNames": [
+    "Le géant des mers",
+    "Parcours de l’extrême",
+    "Baby pirate",
+    "Bac à sable",
+    "Pêche aux canards"
+  ],
+  "archiveAccess": [
+    {
+      "name": "archive-parc-de-loisirs-maneges",
+      "url": "https://web.archive.org/web/20190720202035id_/https://www.o-parc.fr/les-activites/parc-de-loisirs-maneges/",
+      "original": "https://www.o-parc.fr/les-activites/parc-de-loisirs-maneges/",
+      "captureTimestamp": "20190720202035",
+      "retrievedAtUtc": "2026-11-15T04:19:20.026674+00:00",
+      "error": "HTTP Error 429: Too Many Requests"
+    }
+  ],
+  "currentOfficialActivities": {
+    "url": "https://www.o-parc.fr/les-activites/activites-et-attractions/",
+    "retrievedAtUtc": "2026-11-15T04:19:47.220479+00:00",
+    "error": "HTTP Error 404: Not Found"
+  },
+  "berryGallerySource": {
+    "url": "https://www.berryprovince.com/loisir/parc-de-loisirs-o-parc/",
+    "retrievedAtUtc": "2026-11-15T04:20:27.962173+00:00",
+    "status": 200,
+    "bytes": 279353,
+    "sha256": "391f1a41e944f35e92fda17216f3835d7813fb0e58cb9c192bdca90865874ca3"
+  },
+  "berryGalleryDecision": "Allfivephotographs/mapduplicatedexistinggallery, personallyinspected; noreimport. Copyright©ÔParc inpage."
+}

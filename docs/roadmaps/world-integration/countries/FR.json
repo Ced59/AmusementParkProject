@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T04:18:04.544Z",
+      "lastDataIntegrationAt": "2026-11-15T04:22:17.368Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -21821,6 +21821,16 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-map-2025-association-20261115.json",
           "auditEvidence": null,
           "summary": "Ô Parc : plan officiel 2025 rattaché en privé avec titres et alternatives huit langues, source datée du 3 avril 2025 ; édition 2026 conservée, ancien plan indaté non antidaté."
+        },
+        {
+          "eventId": "apply-4875ae6a-0d76-4581-b057-c566a627d503",
+          "appliedAt": "2026-11-15T04:22:17.368Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-three-historical-items-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : trois anciennes attractions internes qualifiées et créées privées, Ô Petit Train, Ô p’tits quads et Le Gorille ; 24 descriptions relues, dates individuelles et constructeur inconnus laissés vides."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
