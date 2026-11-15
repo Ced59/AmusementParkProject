@@ -27961,26 +27961,28 @@
     },
     {
       "entryId": "US-candidate-a5e1bad7252f6e",
-      "name": "Gunstock Mountain Resort",
+      "name": "Gunstock Mountain Coaster",
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Gilford , New Hampshire",
+      "category": "Mountain coaster",
+      "locality": "719 Cherry Valley Road, Gilford, New Hampshire 03249",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitant actif en saison estivale 2026 ; dates de prochaine saison à confirmer.",
+      "identityConfidence": "Billet propre à une session de Mountain Coaster confirmé par Gunstock ; aucune fiche correspondante trouvée dans les recherches officielles Park et StandaloneAttraction. Photo exacte réutilisable encore manquante.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Mountain Coaster — Gunstock"
+      ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Trouver et vérifier au moins une photo montrant exactement le coaster, sous licence ou autorisation compatible ; puis vérifier les prochaines dates/prix, créer la fiche, publier et annoncer sur Facebook. Conserver lastDataIntegrationAt à null avant import.",
       "sources": [
         {
           "label": "RCDB",
@@ -27996,24 +27998,29 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13829.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Gunstock — séance propre, conditions et adresse",
+          "url": "https://www.gunstock.com/summer/mountain-coaster/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13829.htm",
+            "name": "Gunstock Mountain Coaster",
+            "source": "Gunstock — Mountain Coaster",
+            "url": "https://www.gunstock.com/summer/mountain-coaster/",
             "family": "Mountain coaster",
             "sourceVenueName": "Gunstock Mountain Resort",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Gilford , New Hampshire",
+            "sourceLifecycleSignal": "Seasonal operation",
+            "sourceLocality": "Gilford, New Hampshire",
             "sourceOpenedYear": "2016"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Séance payante propre confirmée ; photo exacte réutilisable manquante avant publication."
       }
     },
     {

@@ -1,0 +1,17 @@
+{
+  "work": "Gunstock Mountain Coaster qualifié comme autonome ; publication suspendue faute de photo exacte à droit de réutilisation établi.",
+  "checkedAtUtc": "2026-11-15T23:30:00Z",
+  "findings": [
+    "Gunstock vend une session de deux heures propre au Mountain Coaster pour 2026, séparée des autres activités.",
+    "Le site officiel publie les conditions de chaussures, le paiement sans espèces et l’adresse de la station.",
+    "La saison 2026 est passée ; le calendrier de la prochaine saison reste à confirmer.",
+    "La recherche Wikimedia Commons et Flickr sous Gunstock Mountain Coaster, Gunstock Mountain Resort et Alpine Coaster Gunstock n’a pas révélé de photo exacte sous licence compatible. Elle ne prouve pas l’absence de toutes les images réutilisables.",
+    "Aucune création ni publication Facebook sans au moins une photo exacte créditée."
+  ],
+  "sources": {
+    "Exploitant — coaster et billet": "https://www.gunstock.com/summer/mountain-coaster/",
+    "RCDB — coaster": "https://rcdb.com/13829.htm",
+    "Licence requise dans le workflow": "docs/roadmaps/world-integration/WORKFLOW.md"
+  },
+  "decision": "Conserver la candidature bloquée et poursuivre la recherche d’une photo exacte autorisée ; ne pas inventer de date d’intégration."
+}
