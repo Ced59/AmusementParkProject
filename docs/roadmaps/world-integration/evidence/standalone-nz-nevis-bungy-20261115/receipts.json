@@ -1,0 +1,94 @@
+{
+  "entryId": "NZ-candidate-discovery-40a68098840cd0",
+  "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+  "integrationHistory": [
+    {
+      "eventId": "apply-c103691b-b587-4551-86a3-5f895f1f1b1a",
+      "appliedAt": "2026-11-15T11:51:19.180Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "evidence": "PARK_DATA_EDITOR:apply:c103691b-b587-4551-86a3-5f895f1f1b1a",
+      "auditEvidence": null,
+      "summary": "Création du saut dans le canyon de Nevis, point OSM et huit descriptions éditoriales."
+    },
+    {
+      "eventId": "apply-8654f6db-e4dd-41cb-a160-117bcc4e001a",
+      "appliedAt": "2026-11-15T11:52:51.522Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "evidence": "PARK_DATA_EDITOR:apply:8654f6db-e4dd-41cb-a160-117bcc4e001a",
+      "auditEvidence": null,
+      "summary": "Tarif officiel à partir de 395 NZD, règles d’âge, poids, santé et transport, note honnête sur les horaires variables, en huit langues."
+    },
+    {
+      "eventId": "image-97346b168b5d4ca0a204981f4594e0e6",
+      "appliedAt": "2026-11-15T11:53:42.578Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "evidence": "PARK_DATA_EDITOR:image:97346b168b5d4ca0a204981f4594e0e6",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, CC BY-SA 3.0."
+    },
+    {
+      "eventId": "image-15e609e356dc4e0f84a81093c3c706a0",
+      "appliedAt": "2026-11-15T11:54:10.477Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "evidence": "PARK_DATA_EDITOR:image:15e609e356dc4e0f84a81093c3c706a0",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, Public domain."
+    },
+    {
+      "eventId": "image-9c2058de98aa4991a2a0e03bebae7979",
+      "appliedAt": "2026-11-15T11:54:27.314Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "evidence": "PARK_DATA_EDITOR:image:9c2058de98aa4991a2a0e03bebae7979",
+      "auditEvidence": null,
+      "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, Public domain."
+    },
+    {
+      "eventId": "apply-831496f8-43cd-4520-bd23-987447677b03",
+      "appliedAt": "2026-11-15T11:55:53.746Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "evidence": "PARK_DATA_EDITOR:apply:831496f8-43cd-4520-bd23-987447677b03",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-nevis-bungy-20261115/audit.json",
+      "summary": "Révision des descriptions pour supprimer les chiffres techniques proscrits dans le texte public ; données et sources inchangées."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "c8dc3090-b411-4a86-afe9-45b5716d639d",
+    "appliedAtUtc": "2026-11-15T11:57:17.4734777Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127448755424431",
+    "publishedAtUtc": "2026-11-15T11:57:53.786439Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "97346b168b5d4ca0a204981f4594e0e6",
+      "appliedAtUtc": "2026-11-15T11:53:42.578Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "15e609e356dc4e0f84a81093c3c706a0",
+      "appliedAtUtc": "2026-11-15T11:54:10.477Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "9c2058de98aa4991a2a0e03bebae7979",
+      "appliedAtUtc": "2026-11-15T11:54:27.314Z"
+    }
+  ]
+}
