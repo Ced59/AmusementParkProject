@@ -1,0 +1,205 @@
+{
+  "createdAtUtc": "2026-11-15T10:08:15.316971+00:00",
+  "scope": "Public-source and existing-local-file research only; no PDE, Git, registry, publication or working-state mutation.",
+  "park": "Parc Fenestre, La Bourboule",
+  "previousReport": "../parallel-inventory-research/inventory-findings.json",
+  "items": [
+    {
+      "id": "0f5f6630-8784-431e-b123-46dda636f359",
+      "name": "Les Tapis Volants",
+      "identityConclusion": "Historical spinning ride with rigid suspended gondolas decorated as magic carpets, yellow arms and genie figures; distinct from L’Envol de Fenestine and its chain-suspended chairs. Historical identity and two location-specific photographs now qualified.",
+      "supportedFacts": [
+        {
+          "fact": "Introduced at Fenestre in 2019; exact opening day not established.",
+          "sourceFile": "official-home-20190518.html",
+          "evidence": "Official homepage states En 2019, 2 nouvelles attractions, le Niouk Pearl et les tapis volants; individual Tapis card marked Nouveauté. April 6 elsewhere is park season opening, not a ride-specific opening proof."
+        },
+        {
+          "fact": "Known earlier as Aladin at Parc du Bocasse, transferred to Fenestre for 2019.",
+          "sourceFiles": [
+            "parkerlebnis-20190412.html",
+            "airtimenews-bocasse-2019.html",
+            "tapis-archive-20250425.html"
+          ],
+          "evidence": "Parkerlebnis dated April 12 2019 explicitly names Aladin from Bocasse as the second new Fenestre ride. Its former-location photo exactly matches the official Fenestre gallery aladin-1 scene. AirtimeNews also names this transfer. An earlier Bocasse opening date is not established here."
+        },
+        {
+          "fact": "Documented at Fenestre in official photo originals dated July 5 2021 by EXIF.",
+          "sourceFiles": [
+            "tapis-IMG_1662.JPG",
+            "tapis-IMG_1666.JPG"
+          ],
+          "evidence": "Fenes Tower is clearly visible behind the carpets. DateTimeOriginal and DateTimeDigitized agree; no timezone. This is capture metadata, not API UTC or park/ride opening date."
+        },
+        {
+          "fact": "Official Tapis page still present in archived April 25 and December 23 2025 pages.",
+          "sourceFiles": [
+            "tapis-archive-20250425.html",
+            "tapis-archive-20251223.html"
+          ],
+          "evidence": "Page names Les tapis volants, gives family ride description, photos and historical restrictions. Archive day is not a last operating day."
+        },
+        {
+          "fact": "Historical access rule on 2025 page: above 1.20 m alone; below 1.20 m accompanied by adult over 18.",
+          "sourceFile": "tapis-archive-20251223.html",
+          "evidence": "Exact French +1.20 m / -1.20 m leaves equality ambiguous; do not normalize into an invented inclusive boundary or apply as 2026 rule."
+        },
+        {
+          "fact": "2026 URL now reused for Envol; this is not proof of renaming or same hardware.",
+          "sourceFiles": [
+            "../tapis-current.html",
+            "../parallel-inventory-research/official-envol.html",
+            "../parallel-inventory-research/official-2026-leaflet.jpg"
+          ],
+          "evidence": "New Envol rendering shows chained chairs, unlike photographed carpet gondolas. 2024 map separately names Tapis; 2026 map names new Envol."
+        }
+      ],
+      "supportedProposedFields": {
+        "keepExistingId": true,
+        "name": "Les Tapis Volants",
+        "category": "Attraction",
+        "type": "FlatRide",
+        "status": "Unknown",
+        "openingYear": 2019,
+        "openingDatePrecision": "Year only",
+        "openingMonth": null,
+        "openingDay": null,
+        "closingDate": null,
+        "historicalFormerName": "Aladin (at Parc du Bocasse)",
+        "currentAliasToEnvol": false,
+        "model": null,
+        "manufacturer": "Technical Park explicitly named by AirtimeNews; proposal for root verification, not independently confirmed by manufacturer in this research",
+        "sourceUrl": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/"
+      },
+      "unresolved": [
+        "Current 2026 operating/removal status",
+        "Last operating season and actual closure/removal date",
+        "Exact first day at Fenestre",
+        "Manufacturer/model primary corroboration if required before linking",
+        "Whether two closely timed Fenestre images both add enough value"
+      ],
+      "photoManifest": "tapis-photo-candidates.json",
+      "frenchCopyDraft": "Les Tapis Volants ont rejoint Fenestre en 2019, après avoir porté le nom Aladin au Parc du Bocasse. Les passagers prennent place dans des nacelles en forme de tapis ornées de génies colorés. Suspendues à des bras jaunes rigides, elles tournent autour d’un mât rouge et orange coiffé d’un bulbe décoratif. Les photos prises à Fenestre montrent le manège installé à proximité de Fenes Tower.\n\nL’attraction était encore présentée sous ce nom sur le site officiel à la fin de 2025. Elle est distincte de L’Envol de Fenestine, le manège de chaises volantes annoncé pour 2026. Sa date de retrait éventuelle n’est pas établie."
+    },
+    {
+      "id": "253af2e3-2583-49e0-97de-441cb056157f",
+      "name": "Parcours botanique",
+      "identityConclusion": "Named historical botanical discovery route confirmed, distinct from Jardin des vivaces. Nominal existence strengthened by archived operator prose from 2019. No precise route, date or specific photograph established.",
+      "supportedFacts": [
+        {
+          "fact": "The operator’s nature presentation in the May 14 2019 archive explicitly calls the experience a parcours botanique with old/exceptionally large tree specimens.",
+          "sourceFile": "official-nature-archive2019.html",
+          "sourceUrl": "https://web.archive.org/web/20190514063717/http://www.parcfenestre.com/nature-jeux/",
+          "caution": "Text describes the park-wide botanical walk; it does not give an inauguration date, route length, signs count or mapped circuit."
+        },
+        {
+          "fact": "Official 2024 map identifies Départ parcours botanique, nature legend number 6, separate from Jardin des vivaces number 2.",
+          "sourceFile": "../parallel-inventory-research/official-2024.pdf",
+          "evidence": "Start marker in lower park near lower entry/sequoia sector. No surveyed GPS inferred from the stylized map."
+        },
+        {
+          "fact": "Current municipal and operator nature pages discuss trees, lawns, vivaces and stream but do not establish current maintenance or closure of the named route.",
+          "sourceFiles": [
+            "municipal-tourism.html",
+            "nature-archive-20240530.html",
+            "../parallel-inventory-research/official-nature-details.html"
+          ]
+        },
+        {
+          "fact": "2026 map omits the route from its shortened Nature list.",
+          "sourceFile": "../parallel-inventory-research/official-2026-leaflet.jpg",
+          "caution": "An omission is not evidence of closure, merger with Jardin des vivaces or removal."
+        }
+      ],
+      "supportedProposedFields": {
+        "keepExistingId": true,
+        "name": "Parcours botanique",
+        "category": "Other",
+        "type": "WalkThrough",
+        "status": "Unknown",
+        "openingDate": null,
+        "closingDate": null,
+        "latitude": null,
+        "longitude": null,
+        "aliasToJardinDesVivaces": false,
+        "sourceUrl": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf"
+      },
+      "unresolved": [
+        "Actual route/alignment and length",
+        "Current signage and operating/maintenance status",
+        "Creation date",
+        "Specific true photo showing named route/start, rather than an unrelated garden feature"
+      ],
+      "photoConclusion": "Fifteen official nature-gallery images visually inspected (large originals via exact official renditions when needed). They show gardens, lawns, trees, pond, entry, sculpture and insect hotel, but no readable Parcours botanique sign or nominal route identification. Do not assign generic trees, Jardin des vivaces or pond to this item merely to add a photo.",
+      "frenchCopyDraft": "Le Parcours botanique est signalé par un point de départ sur le plan officiel de Fenestre de 2024, dans le bas du parc. Il est distingué du Jardin des vivaces, qui possède son propre repère. L’ancienne présentation du parc le décrit comme une promenade parmi des arbres âgés et de grandes dimensions, dans le cadre paysager créé à la fin du XIXe siècle. Son tracé précis et son balisage actuel ne sont pas documentés par les sources consultées."
+    }
+  ],
+  "cautions": [
+    "Parkerlebnis attributes the pirate ship manufacturer differently from AirtimeNews; this assignment does not adjudicate that unrelated ride, and those boat specifications must not be copied.",
+    "Apidae syndications mix 2026 Envol with inherited Tapis prose; not independent proof of simultaneous operation.",
+    "coaster.cloud Operating status is undated secondary data and cannot resolve the conflicting 2026 state.",
+    "The 2019 map PDF link returned 404; no substitute map/year inferred.",
+    "Three small official Tapis JPGs are excluded as Fenestre photography because at least aladin-1 is explicitly photographed at Bocasse and the others share the same old session.",
+    "No secret, authentication, private endpoint or messaging was used."
+  ],
+  "sourceManifest": "source-access.json",
+  "newPhotoManifest": "tapis-photo-candidates.json",
+  "newSourceHashes": [
+    {
+      "file": "tapis-archive-20250425.html",
+      "url": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+      "status": 200,
+      "sha256": "a28dd33f61345b8dc169687572b969a189592fad46f70a5c8862f90dcbfd0909",
+      "fetchedAtUtc": "2026-11-15T09:57:59.515386+00:00"
+    },
+    {
+      "file": "municipal-tourism.html",
+      "url": "https://villedelabourboule.fr/tourisme-et-activites",
+      "status": 200,
+      "sha256": "efadf6493501c50723172b37ec0317835003efd3cd0fa9b8983119a4e5c0a79a",
+      "fetchedAtUtc": "2026-11-15T10:01:49.738898+00:00"
+    },
+    {
+      "file": "tapis-archive-20251223.html",
+      "url": "https://web.archive.org/web/20251223133746/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+      "status": 200,
+      "sha256": "412c8350691459ee593f57ee34d8054caefa171da587467a251e3307c4ac5e49",
+      "fetchedAtUtc": "2026-11-15T10:01:51.237967+00:00"
+    },
+    {
+      "file": "nature-archive-20240530.html",
+      "url": "https://web.archive.org/web/20240530223221/https://www.parcfenestre.com/nature",
+      "status": 200,
+      "sha256": "37899890c40d2131463530001ff163822ab2214c92a5e2ae838f5dc60ac48f06",
+      "fetchedAtUtc": "2026-11-15T10:02:11.778304+00:00"
+    },
+    {
+      "file": "parkerlebnis-20190412.html",
+      "url": "https://www.parkerlebnis.de/parc-fenestre-2019-piratenschiff_82390.html",
+      "status": 200,
+      "sha256": "487a4399fe6a34c355a89994036cce3e2eb04c9d3ccfc47d527a99a2a52bda15",
+      "fetchedAtUtc": "2026-11-15T10:03:05.564067+00:00"
+    },
+    {
+      "file": "airtimenews-bocasse-2019.html",
+      "url": "https://airtimenews.org/2019/04/06/nouveautes-2019-2/",
+      "status": 200,
+      "sha256": "e0036b46b09e121ee9dc06a84296ab42fde6c7c93ec1e96a1642806c76b507f9",
+      "fetchedAtUtc": "2026-11-15T10:03:04.904058+00:00"
+    },
+    {
+      "file": "official-home-20190518.html",
+      "url": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/",
+      "status": 200,
+      "sha256": "8da2bdfa2b0a2e4b9510da09aae2a1b41893a7bf06714fbfeb6e131fb34e5647",
+      "fetchedAtUtc": "2026-11-15T10:05:12.605889+00:00"
+    },
+    {
+      "file": "official-nature-archive2019.html",
+      "url": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com/nature-jeux/",
+      "status": 200,
+      "sha256": "d25ad73be921fdae19467a50cab9f6436450994f74c190630c664f6d69a728e8",
+      "fetchedAtUtc": "2026-11-15T10:05:44.666193+00:00"
+    }
+  ]
+}

@@ -1,0 +1,1006 @@
+{
+  "schemaVersion": 1,
+  "preparedAtUtc": "2026-11-15T10:06:52.790195Z",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "scope": "Recherche publique et classement des 36 items privés ; aucun PDE, Git, registre ou texte final pour import.",
+  "workingState": {
+    "path": "/workspace/france-historical-20261114/naudieres/working-state.json",
+    "sha256": "c5842b14dc1f78a7f79cdbc72a4d22b14ce2f840d18d8b4c99a1bc222b7443f6",
+    "fileModifiedAtUtc": "2026-11-15T10:06:36.852348Z",
+    "itemCount": 84,
+    "privateCount": 36
+  },
+  "categoryCounts": {
+    "ambiguite_reelle": 28,
+    "source_suffisante_pour_texte_physique_date": 1,
+    "description_deja_disponible": 7
+  },
+  "importantLimits": [
+    "Le working-state a avancé pendant la recherche : La Dune, Les Échasses et Tricycles possèdent maintenant huit descriptions, soit sept privés décrits au total. Le rapport les classe sans refaire leur travail.",
+    "Source suffisante signifie matière datée proposée à la relecture personnelle de root ; ne vaut ni audit, ni état Operating, ni publication.",
+    "Pas de nouvelle tentative sur Wayback après le replay Crazy 429 sans Retry-After.",
+    "Les illustrations de plans établissent des noms et leur repérage, pas des matériaux, tailles, mécanismes ou identités physiques inventés.",
+    "Dates d’article, de collecte ou de chemin de fichier distinctes des dates de prise de vue et d’ouverture. Aucune nouvelle licence ouverte revendiquée."
+  ],
+  "items": [
+    {
+      "itemId": "ff1c9527-ade5-46a4-b4bf-b61c3b0ac320",
+      "name": "Adresse basket",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "La liste officielle Aventure atteste le nom. Pas de photo nommée de cet équipement trouvée dans les galeries consultées. Ne pas attribuer un panier aperçu au terrain multisports sans preuve.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "f823100e-4b96-46cf-bea7-cc7a4f909983",
+      "name": "Aire des Bambinos",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2017",
+      "category": "ambiguite_reelle",
+      "finding": "La brochure 2017 place une aire des moins de trois ans et la marque nouvelle ; année déjà enregistrée. Le pictogramme du plan ne constitue pas une photographie physique. Aucune équivalence démontrée avec Kids Land ou Aire des p’tits bouts.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+      "name": "Baby-foot humain",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "source_suffisante_pour_texte_physique_date",
+      "finding": "Nom attesté par la liste officielle Gonflables et usage réel nommé par les Ateliers des 2 rives dans leur récit Été 2026. Sur la photo primaire de reportage 2022, à gauche des trampolines, un terrain rectangulaire entouré de panneaux verts est traversé par des barres tenues par les joueurs. Cela permet un texte physique limité explicitement à cette vue ; aucune preuve de dimensions, nombre de joueurs, restriction ou permanence de cette configuration en 2026. Vue trop petite dans le cadre pour recommander une nouvelle photo dédiée.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-434.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-314.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/a2r-2026.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "90cbfc3c-9098-4f83-a963-a0d65818eabb",
+      "name": "Balançoire horizontale",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "La liste officielle mentionne à la fois Balançoire horizontale 4 places et Balançoire horizontale. La visite 2018 montre quatre sièges en pneus suspendus autour d’un axe et une commande centrale, légendés seulement Chaises. Le rattachement précis parmi les portiques et Tournesol reste non prouvé.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9967.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "8c47d5b8-6a85-44d5-88b7-8024f557cb6e",
+      "name": "Bumper Ball",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": "2016",
+      "category": "description_deja_disponible",
+      "finding": "Huit descriptions existent déjà. La brochure 2017 comporte une vraie photo nominative des bulles transparentes avec éléments rouges et bleus sur un terrain vert. Le statut actuel Unknown ne devient pas Operating du seul fait de ce document historique ; 2016 est déjà enregistré.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": [
+        {
+          "imageId": "18d32a3a3b11430a911be1091ef31b2b",
+          "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/03/bumper-ball.jpg",
+          "isPublished": false,
+          "internalUrl": "/images/18d32a3a3b11430a911be1091ef31b2b"
+        }
+      ]
+    },
+    {
+      "itemId": "1c8046d0-110b-4680-a6ea-61235f12f558",
+      "name": "Coupe du monde",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom seul dans la liste officielle Aventure ; aucune photographie liée au nom. Ne pas fusionner avec Baby-foot humain, Adresse basket ou Terrain multisports par le seul thème sportif.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "85a1d9ff-0caf-410f-8e82-961221d66e3b",
+      "name": "Crazy",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom et position figurent aux plans 2017/2018. CDX retrouve des pages officielles dédiées s03p14_crazy.php en 2008 et s03p20_crazy.php en 2011, mais le premier replay renvoie 429 sans Retry-After ; recherche arrêtée conformément aux consignes. Les pages indexées ne donnent pas encore une description physique récupérée. Un tunnel de cordes photographié en 2018 ne peut lui être attribué sur simple supposition.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_0047.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9951.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/historic-html-cdx.json",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/crazy-2008.html.metadata.json"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "596974eb-3483-44ff-9ec4-cdaa9ee2b7f4",
+      "name": "Gyrosat",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom seul dans la liste officielle Aventure. Aucun cliché nominatif ne confirme un gyroscope, son nombre d’anneaux ou sa configuration ; ne pas partir du sens générique du nom.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "6323ac60-3a4e-40cf-9774-dcddc1d8bad1",
+      "name": "Home Ball",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2017",
+      "category": "ambiguite_reelle",
+      "finding": "Identité attestée aux plans 2017 et 2018, mais pas de photographie dédiée examinée. Le document 2017 indique nouveauté 2017 ; le plan photographié 2018 indique nouveauté 2018 : conserver le conflit, sans écraser l’année 2017 déjà enregistrée. Les règles d’un produit Homeball générique ne suffisent pas à décrire l’installation locale.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "3cf07ecb-f439-4951-a7c2-eed606835a08",
+      "name": "Jeux à ressorts",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom collectif dans la liste officielle Exploration. Des petits équipements de jeux sont visibles dans Kids Land, mais aucune photo nominative isolée ne permet de décider s’il s’agit du même ensemble que cette entrée privée, ni combien de jeux lui appartiennent.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-315.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tripsnpics.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+      "name": "La Dune",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": null,
+      "category": "description_deja_disponible",
+      "finding": "Déjà traitée par root ; huit descriptions désormais présentes au dernier working-state lu. Les preuves nominales et la distinction avec Le Dôme restent dans le rapport précédent. Aucune nouvelle recherche sur cette identité.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/naudieres-identity-photo-findings-20261115.json"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": [
+        {
+          "imageId": "341b0e55a14f422fb4262d7c9aaf6e9e",
+          "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+          "isPublished": false,
+          "internalUrl": "/images/341b0e55a14f422fb4262d7c9aaf6e9e"
+        },
+        {
+          "imageId": "373575c2d2fb421b8b154cb99742af48",
+          "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+          "isPublished": false,
+          "internalUrl": "/images/373575c2d2fb421b8b154cb99742af48"
+        }
+      ]
+    },
+    {
+      "itemId": "53c53c88-20cc-412a-b2ab-8cc0f39cc48a",
+      "name": "La Gueule du loup",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2017",
+      "category": "ambiguite_reelle",
+      "finding": "Nom et nouveauté 2017 attestés par brochure/plan. Aucun cliché portant ce nom retrouvé ; ne pas utiliser les photos actuelles du Renard pour en faire un alias, un remplacement ou une réouverture sans preuve.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg",
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "92eb785b-1d68-40a5-9f8a-c386bb368e27",
+      "name": "La Jungle",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom officiel dans la liste Gonflables. Plusieurs structures vertes ou à décor de forêt sont visibles ; aucune étiquette nominale sûre ne permet de rattacher la grande structure verte au bord droit du reportage 2022 à cette entrée.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-428.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9972.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "21552030-a787-458a-8b8b-7650e0b616e1",
+      "name": "La Pyramide gonflable",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "La liste officielle Gonflables nomme la pyramide. Le plan 2018 photographié par une visiteuse indique La Pyramide, nouveauté 2018, avec son propre repère ; date absente de l’entrée lue. Cela ne qualifie pas sa silhouette ni ses parcours. Ne pas confondre Double pyramide ou Grand Pyraccord, tous deux structures de cordes publiques.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html",
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "024c0d4b-8167-47f6-8e15-6ca22810c1fb",
+      "name": "Le Chapiteau des clowns",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom seul dans la liste officielle ; aucun visuel nominatif sûr. Ne pas attribuer le Carrousel gonflable ou une tente de restauration par ressemblance avec un chapiteau.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "19344a2e-b190-4cf9-8b86-3727f7de34d4",
+      "name": "Le Cheval gonflable",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Liste officielle Gonflables : Le cheval. Deux photographies primaires 2022 montrent derrière Grand Frisson une grande silhouette gonflable brune de cheval dressé encadrant une pente jaune. Candidat physique solide, distinct de Poney Trek sur rail, mais enseigne du cheval non lisible et pas de galerie nominative trouvée. Le rattachement à l’ID privé reste à valider personnellement par root ; aucune date d’installation ou fabricant prouvé.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-312.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-428.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tripsnpics.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "ac51141b-bbec-429c-afa2-cd17c8e2cadb",
+      "name": "Le Duel",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2016",
+      "category": "ambiguite_reelle",
+      "finding": "Nom et nouveauté 2016 dans brochure officielle, année déjà enregistrée. Le pictogramme du plan ne dit pas s’il s’agit de combat, parcours à deux ou jeu d’adresse ; aucun matériel photographié sous ce nom. Ne pas assimiler au Tir à l’élastique.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "b9d252b7-4f98-4841-ab5a-e843f1c22ce7",
+      "name": "Le Grand Défi",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2017",
+      "category": "ambiguite_reelle",
+      "finding": "Nom et nouveauté 2017 attestés, date déjà enregistrée. La phrase actuelle Réussirez-vous le grand défi ? sous Pont suspendu est une formule de présentation, pas une preuve de changement de nom de cette entrée historique.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+      "name": "Les Échasses",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": null,
+      "category": "description_deja_disponible",
+      "finding": "Déjà traitées par root ; huit descriptions désormais présentes. Preuve primaire tnp-314 revue par root, ne pas refaire le traitement.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/naudieres-identity-photo-findings-20261115.json"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "bae597bd-4afe-47e3-b76e-05bd0bb838c6",
+      "name": "L’Arche des bambins",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2017",
+      "category": "ambiguite_reelle",
+      "finding": "Nom et nouveauté 2017 attestés, année déjà enregistrée. Aucune photo portant cette identité ; ne pas confondre une arche décorative, Aire des Bambinos ou Maison Ameco.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "52db5589-2c4c-4d21-bebd-c7eac7e03218",
+      "name": "L’Écureuil",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom seul dans la liste officielle Gonflables. Aucun cliché nominatif ; les petits animaux ou décors vus ailleurs ne prouvent pas le rattachement.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "6ee6d026-a18b-417e-a6da-3abb8af95984",
+      "name": "L’Équalizer",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom présent dans les listes actuelles et les deux plans. La structure verte/brune photographiée en 2018, sans nom visible, ne suffit pas à attribuer une forme ou un mécanisme à L’Équalizer. Ne pas inventer la règle d’un jeu bungee générique.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9972.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/inventory-20261115/inflatable-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "fb84e11a-e735-40c2-ad0f-6a8055cbe456",
+      "name": "Maison Ameco",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Operating",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": null,
+      "category": "description_deja_disponible",
+      "finding": "Huit descriptions existantes et photos examinées précédemment. Contradiction des restrictions des pages officielles toujours séparée ; exclusion de nouvelles recherches dans ce tour selon root. La présence d’un texte ne vaut pas autorisation de publication ou validation de l’âge.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/naudieres-identity-photo-findings-20261115.json",
+        "/workspace/france-historical-20261114/naudieres/ameco-current-contradiction.json"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": [
+        {
+          "imageId": "8054a1303e614554bd107b5572cab755",
+          "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/DSC02244-scaled-600xauto_0_1.jpg",
+          "isPublished": false,
+          "internalUrl": "/images/8054a1303e614554bd107b5572cab755"
+        }
+      ]
+    },
+    {
+      "itemId": "ee138650-efee-471a-bb89-90f00f8bc84a",
+      "name": "Pont de corde",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": null,
+      "category": "description_deja_disponible",
+      "finding": "Huit descriptions existent mais l’identité historique doit encore être rapprochée du Pont suspendu public et du Kiosque aquatique. La brochure 2017 nomme Pont de corde avec photo du même secteur, sans preuve de cessation. Photo primaire mai 2018 : grande traversée en cordes et kiosque à quatre passages simultanément. La continuité, le remplacement ou la séparation avec le pont actuel n’est pas documentée ; ne pas publier l’adjectif ancien comme preuve de fermeture, ni fusionner/supprimer une entrée.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9960.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-435.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-pont1.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-pont2.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-kiosque1.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html",
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "aca35bfa-65b4-4bf3-861f-62893b848cf7",
+      "name": "Portique Alexia",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "La liste officielle précise Alexia 1 place. Photographies des portiques de Kids Land disponibles mais aucun panneau Alexia lisible ; le nombre de sièges ou un modèle de catalogue ne suffit pas à nommer le dispositif local.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-315.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "c0f09a62-f888-4099-98b8-aa3812961f91",
+      "name": "Portique double",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom officiel, mais plusieurs cadres de balançoires dans les vues générales ; aucun pont nominal fiable entre cette entrée et un cadre précis.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-315.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "23544d2e-492f-46db-8bca-7af04a8ec0ed",
+      "name": "Portique mixte",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "La liste officielle précise mixte 2 places. Composition des sièges non documentée nominalement ; ne pas reprendre deux sièges arbitraires de Kids Land.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-315.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "78b34278-731e-4688-b906-dee02bced803",
+      "name": "Portique nacelle",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom officiel uniquement. Aucun visuel nominatif du panier ou de la nacelle ; le matériel générique et les vues éloignées ne suffisent pas.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-315.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "085052b9-541a-49e4-9741-8605888961ad",
+      "name": "Tapis volant",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom officiel Exploration, aucun visuel nommé. Ne pas déduire une attraction mécanique de fête foraine, un tapis de saut ou une balançoire uniquement du nom.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "f404a7f6-befa-4d31-a1a9-0d992bdfcc74",
+      "name": "Terrain multisports",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom attesté par la liste officielle Aventure. Aucun terrain photographié avec ce nom ; le terrain à barres visibles du baby-foot humain reste distinct, sans assimilation au terrain multisports.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "3ef9ddde-c942-4c89-92d1-c1ec838f54ba",
+      "name": "Tonneau hamster",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom attesté. Deux cylindres en lattes cerclés de métal sont visibles derrière le carrousel mécanique sur la photo 2022, et un tunnel avec cordages internes apparaît chez la visiteuse 2018. Aucune légende ne les nomme Tonneau hamster ; impossible de décider s’il s’agit du même équipement ou d’un autre parcours. Ne pas conclure au mode de rotation.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-429.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_0047.jpg",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9951.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "61162355-809c-4119-b15a-d23fa9a387b6",
+      "name": "Tourelle",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom officiel Exploration ; aucune tour/structure photographiée avec ce nom dans les sources examinées.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "5bdb095a-5264-415f-af0c-eb5663024c99",
+      "name": "Tournesol",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": null,
+      "category": "ambiguite_reelle",
+      "finding": "Nom officiel ; la structure tournante à quatre pneus photographiée en 2018 pourrait être un candidat, mais sa légende est seulement Chaises et le panneau lisible indique une action, pas Tournesol. Reste ambigu face aux balançoires horizontales.",
+      "candidatePhotos": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9967.jpg"
+      ],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/exploration-current.html",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+      "name": "Tricycles",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": null,
+      "category": "description_deja_disponible",
+      "finding": "Déjà traités par root ; huit descriptions désormais présentes. Le rapport nominal précédent distingue les tricycles portant un panneau des Vélos drôles. Aucun nouveau traitement.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/naudieres-tricycles-distinction-followup-20261115.json"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "b5b35100-ae8e-47c8-a8df-925257e13d12",
+      "name": "Vélos drôles",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 8,
+      "openingDateTextAtRead": null,
+      "category": "description_deja_disponible",
+      "finding": "Huit descriptions existent déjà, avec selles/guidons inversés, distincts des tricycles. Une page officielle historique vélos drôles apparaît dans CDX mais aucun replay n’est tenté après la limite 429 constatée.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/historic-html-cdx.json",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/naudieres-tricycles-distinction-followup-20261115.json"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    },
+    {
+      "itemId": "53c88722-be00-44e4-bc11-624624d97220",
+      "name": "Zone 51",
+      "isVisibleAtRead": false,
+      "statusAtRead": "Unknown",
+      "descriptionLanguageCountAtRead": 0,
+      "openingDateTextAtRead": "2016",
+      "category": "ambiguite_reelle",
+      "finding": "Nom et nouveauté 2016 attestés dans brochure/plan, année déjà enregistrée. Aucun cliché portant ce nom ; ne pas associer au hasard une aire de jeux ou une structure spatiale.",
+      "candidatePhotos": [],
+      "evidenceFiles": [
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+        "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg"
+      ],
+      "publicationOrMutationAuthorizedByThisReport": false,
+      "existingMediaInTargetedRecovery": []
+    }
+  ],
+  "bridgeCrossCheck": {
+    "publicItemId": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+    "privateItemId": "ee138650-efee-471a-bb89-90f00f8bc84a",
+    "kioskItemId": "d59c099b-f293-4ffb-a7ed-19c19742e7ac",
+    "findings": [
+      "La galerie nominative officielle du Pont Suspendu montre une traversée souple à fond et côtés en filet noir, suspendue entre deux cadres verts, à côté du bassin et d’un toboggan jaune ; elle ne montre pas le petit pont piéton rigide en arche aperçu plus haut sur la berge.",
+      "Les photos de mai 2018 et du reportage avril 2022 montrent déjà une grande traversée en cordes à côté du kiosque ; le cheminement comporte alors des couleurs différentes. Cela établit un antécédent physique, pas à lui seul une continuité administrative ou un remplacement.",
+      "La photo officielle du Kiosque montre un pavillon au toit gris et à bordure rouge, quatre chemins d’équilibre ; sa galerie associe explicitement cette image au Kiosque aquatique. La teinte blanche de la description existante est historique, non conforme à cette photo actuelle sans dater la vue.",
+      "Le repère 2023 est maintenant appuyé par le PDF officiel, page 2 : Pont suspendu NEW. Cela prouve la nouveauté annoncée et non la première présence du franchissement. Lire pont-dependencies-review.json avant toute correction historique.",
+      "Aucune proposition de fusion, suppression ou changement de visibilité ; garder les IDs jusqu’au rapprochement décidé par root."
+    ]
+  },
+  "dateObservations": [
+    {
+      "itemId": "21552030-a787-458a-8b8b-7650e0b616e1",
+      "observation": "La Pyramide est marquée nouveauté 2018 sur le plan 2018 photographié par la visiteuse ; année absente dans le working-state lu. Matériel physique toujours non qualifié.",
+      "evidence": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg"
+    },
+    {
+      "itemId": "6323ac60-3a4e-40cf-9774-dcddc1d8bad1",
+      "observation": "Home Ball est marqué nouveauté 2017 sur la brochure 2017 et nouveauté 2018 sur le plan photographié 2018. Ne pas remplacer 2017 sans explication du conflit."
+    }
+  ],
+  "negativeResearch": [
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/municipal-BJDS6.pdf",
+      "result": "Page 7 : témoignage scolaire général de châteaux gonflables, balançoire et vélos. Aucun nom individuel ni description précise supplémentaire. La méthode décrite page 3 peut utiliser des images Internet : illustration non considérée photo personnelle de la sortie."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html",
+      "result": "Reportage primaire utile pour les vues du complexe de ponts, du baby-foot humain et du cheval en arrière-plan. Ne pas importer ses jugements négatifs ni transposer les attractions des autres parcs du même reportage."
+    }
+  ],
+  "evidence": [
+    {
+      "url": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+      "attemptedAtUtc": "2026-11-15T09:40:00.046256Z",
+      "status": 200,
+      "finalUrl": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+      "contentType": "application/pdf",
+      "bytes": 13287847,
+      "sha256": "9829a212ef04ca56991c9c86c6a01b35b276dc214fb99bf8d33272213f19f1c4",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+      "actualLocalSha256": "9829a212ef04ca56991c9c86c6a01b35b276dc214fb99bf8d33272213f19f1c4"
+    },
+    {
+      "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihp1NTb1lNr_GxQ71I9GMmYQEw9vvxvDPIAHFGdMnY9oM7RMX5OKk1Kt0X61woUzCBMTDSUCor2jlEs-a2AsGZsQYK7qhnDyiTCIcOb9k5O4pMh7hyphenhyphenyHFzjvOYSlpgbHPyDjAoyUBsPlL1/s1600/plan2018.jpg",
+      "attemptedAtUtc": "2026-11-15T09:47:55.403533Z",
+      "status": 200,
+      "finalUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihp1NTb1lNr_GxQ71I9GMmYQEw9vvxvDPIAHFGdMnY9oM7RMX5OKk1Kt0X61woUzCBMTDSUCor2jlEs-a2AsGZsQYK7qhnDyiTCIcOb9k5O4pMh7hyphenhyphenyHFzjvOYSlpgbHPyDjAoyUBsPlL1/s1600/plan2018.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 225647,
+      "sha256": "adf6fcf675609f5f8228011095d7558000a52246efde244a2753611a262442b1",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-plan2018.jpg",
+      "actualLocalSha256": "adf6fcf675609f5f8228011095d7558000a52246efde244a2753611a262442b1"
+    },
+    {
+      "url": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "attemptedAtUtc": "2026-11-15T09:47:14.821887Z",
+      "status": 200,
+      "finalUrl": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 49557,
+      "sha256": "ae1bd3b8fadffbf3ddad3508a8880bbcf7aad9b1f470021f182c8cbe5b1daf8c",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html",
+      "actualLocalSha256": "ae1bd3b8fadffbf3ddad3508a8880bbcf7aad9b1f470021f182c8cbe5b1daf8c"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/parc-des-naudiegraveres.html",
+      "attemptedAtUtc": "2026-11-15T09:47:25.902098Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/parc-des-naudiegraveres.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62682,
+      "sha256": "5df51b9772d4de95fb2a84372020449c5a4ee15ce427d607503531c38004e70b",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tripsnpics.html",
+      "actualLocalSha256": "5df51b9772d4de95fb2a84372020449c5a4ee15ce427d607503531c38004e70b"
+    },
+    {
+      "url": "https://www.lesnaudieres.com/univers/attraction-aventure/",
+      "attemptedAtUtc": "2026-11-15T09:45:13.192825Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/univers/attraction-aventure/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77343,
+      "sha256": "3ce155fd3f9ffb909b81f9d13911d135f798264924046f39d389dd06e3b13442",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-adventure.html",
+      "actualLocalSha256": "3ce155fd3f9ffb909b81f9d13911d135f798264924046f39d389dd06e3b13442"
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/naudieres-aventure-pont-suspendu-1920xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T10:01:22.092536Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/naudieres-aventure-pont-suspendu-1920xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 770677,
+      "sha256": "e394e9927b58ed45f0fe1465a0628c29de48b605af0134763b123012d73c08ff",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-pont1.jpg",
+      "actualLocalSha256": "e394e9927b58ed45f0fe1465a0628c29de48b605af0134763b123012d73c08ff"
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/pont-suspendu-1920xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T10:01:22.112423Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/pont-suspendu-1920xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 822693,
+      "sha256": "895c9f7f66aebb9ed829ce2e3ee0fde6f803fd63060f03a2bb21ee39e82e7ce3",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-pont2.jpg",
+      "actualLocalSha256": "895c9f7f66aebb9ed829ce2e3ee0fde6f803fd63060f03a2bb21ee39e82e7ce3"
+    },
+    {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/Pont-suspendu-point-eau-1-scaled-1920xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:31.827359Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/Pont-suspendu-point-eau-1-scaled-1920xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 497484,
+      "sha256": "1aece00fd39d738ec9fe655689974effb9ba8c2b35fc7148989ebc15c3608dd0",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-kiosque1.jpg",
+      "actualLocalSha256": "1aece00fd39d738ec9fe655689974effb9ba8c2b35fc7148989ebc15c3608dd0"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/2022---tnp-agrave-lrsquoouest.html",
+      "attemptedAtUtc": "2026-11-15T10:01:22.103481Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/2022---tnp-agrave-lrsquoouest.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 183320,
+      "sha256": "320b01bed9d55f80cb91b592a287ac3618b5d8696cd3a1c8ac705bd242882f73",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-2022.html",
+      "actualLocalSha256": "320b01bed9d55f80cb91b592a287ac3618b5d8696cd3a1c8ac705bd242882f73"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-428_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.141592Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-428_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 415033,
+      "sha256": "86e5269a9c3e02f5be9c69d3c779cc151f1de2a118af101e7d6ef0cfdf6d4ca0",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-428.jpg",
+      "actualLocalSha256": "86e5269a9c3e02f5be9c69d3c779cc151f1de2a118af101e7d6ef0cfdf6d4ca0"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-429_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.164392Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-429_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 388675,
+      "sha256": "390c5a487c5115583f0a70001ca7788abeffbf5b8b0aac08614f2bd01c4916da",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-429.jpg",
+      "actualLocalSha256": "390c5a487c5115583f0a70001ca7788abeffbf5b8b0aac08614f2bd01c4916da"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-430_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.124518Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-430_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 317102,
+      "sha256": "5c573e0819a6508db0149841ae910df274c9b117c90553da2a4991a56a8b0f9d",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-430.jpg",
+      "actualLocalSha256": "5c573e0819a6508db0149841ae910df274c9b117c90553da2a4991a56a8b0f9d"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-434_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.098172Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-434_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 407806,
+      "sha256": "658d48ca0c89086b12a72b075379850b8538d87bd7c666a9e4c2969abf90d33b",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-434.jpg",
+      "actualLocalSha256": "658d48ca0c89086b12a72b075379850b8538d87bd7c666a9e4c2969abf90d33b"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-435_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.122302Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-435_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 428854,
+      "sha256": "70984657af1efefd0da627a1f2d807ac28fdd727c0a0a722c197c726b1df617c",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-435.jpg",
+      "actualLocalSha256": "70984657af1efefd0da627a1f2d807ac28fdd727c0a0a722c197c726b1df617c"
+    },
+    {
+      "url": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-436_orig.jpg",
+      "attemptedAtUtc": "2026-11-15T10:02:40.099672Z",
+      "status": 200,
+      "finalUrl": "https://www.trips-n-pics.com/uploads/3/7/0/2/37020851/2022-tr2-436_orig.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 402367,
+      "sha256": "be179bcac90818abc6084907b6f8cd7be1b40590a80d3d7996100992bc96c3cb",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-436.jpg",
+      "actualLocalSha256": "be179bcac90818abc6084907b6f8cd7be1b40590a80d3d7996100992bc96c3cb"
+    },
+    {
+      "url": "https://nantes.a2r-insertion.fr/actualite/actualites-2026/",
+      "attemptedAtUtc": "2026-11-15T09:41:07.926758Z",
+      "status": 200,
+      "finalUrl": "https://nantes.a2r-insertion.fr/actualite/actualites-2026/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 145783,
+      "sha256": "bc4314fbea6cbbd255e50a6a907e8b455d55bd14492e9c07bf428d6edd8b109b",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/a2r-2026.html",
+      "actualLocalSha256": "bc4314fbea6cbbd255e50a6a907e8b455d55bd14492e9c07bf428d6edd8b109b"
+    },
+    {
+      "url": "https://pel.lachapellesurerdre.fr/wp-content/uploads/2015/06/BJDS6.pdf",
+      "attemptedAtUtc": "2026-11-15T10:01:22.124370Z",
+      "status": 200,
+      "finalUrl": "https://pel.lachapellesurerdre.fr/wp-content/uploads/2015/06/BJDS6.pdf",
+      "contentType": "application/pdf",
+      "bytes": 1393844,
+      "sha256": "f8105e1d26ad5c61258e26a5424c61f4d9363114de4335d603471d778e8a01f2",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/municipal-BJDS6.pdf",
+      "actualLocalSha256": "f8105e1d26ad5c61258e26a5424c61f4d9363114de4335d603471d778e8a01f2"
+    },
+    {
+      "url": "https://www.parktrips.fr/blog/article-2613.html",
+      "attemptedAtUtc": "2026-11-15T10:03:23.726955Z",
+      "status": 200,
+      "finalUrl": "https://www.parktrips.fr/blog/article-2613.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 81659,
+      "sha256": "c8696a5c1365bc55c1876d1fbf5e426be283820518e72527ad52c913f54ff194",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/parktrips-2023.html",
+      "actualLocalSha256": "c8696a5c1365bc55c1876d1fbf5e426be283820518e72527ad52c913f54ff194"
+    },
+    {
+      "url": "https://img.parktrips.fr/post/les-naudieres-attraction-2023.jpg",
+      "attemptedAtUtc": "2026-11-15T10:04:20.333219Z",
+      "status": 200,
+      "finalUrl": "https://img.parktrips.fr/post/les-naudieres-attraction-2023.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 309213,
+      "sha256": "6bd75de6a619e3a8499b75c10b8346de5eb2557fcbf90f3a31cc8dce7f8292a8",
+      "retryAfter": null,
+      "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/parktrips-naudieres-2023.jpg",
+      "actualLocalSha256": "6bd75de6a619e3a8499b75c10b8346de5eb2557fcbf90f3a31cc8dce7f8292a8"
+    }
+  ],
+  "targetedMediaReconciliation": {
+    "reviewedAtUtc": "2026-11-15T10:07:51.971454Z",
+    "file": "/workspace/france-historical-20261114/naudieres/media-dependency-recovery-export.json",
+    "sha256": "24360c0b32c5fc8f618f25c46bc9bffdb1101ec1899a5cbfefce9b2ddaa70351",
+    "exportedAtUtc": "2026-11-15T10:04:31.2400264Z",
+    "imageCount": 56,
+    "officialMapCount": 8,
+    "privateItemsWithImages": 3,
+    "notes": [
+      "Export obtenu par root ; aucun appel API de cet agent.",
+      "Bumper Ball, Maison Ameco et La Dune seulement ont des médias parmi les 36 privés ; aucune photo des autres privés à traiter ne vient résoudre une attribution.",
+      "Pont suspendu public possède déjà image bbea5da86bcb450fb513b6eee9b922e1, source pont-suspendu-600xauto_0_1.jpg. La variante officielle-pont2.jpg représente le même original ; aucune proposition de réimport.",
+      "Kiosque public possède déjà 068b1ea2cf5d4204ba3571f6143cf3cf, source Pont-suspendu-point-eau-3-scaled-600xauto_0_1.jpg. La présente recherche garde les images de comparaison, sans proposer de duplication."
+    ],
+    "existingPublicBridgeImages": [
+      {
+        "imageId": "bbea5da86bcb450fb513b6eee9b922e1",
+        "ownerId": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+        "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/pont-suspendu-600xauto_0_1.jpg"
+      },
+      {
+        "imageId": "068b1ea2cf5d4204ba3571f6143cf3cf",
+        "ownerId": "d59c099b-f293-4ffb-a7ed-19c19742e7ac",
+        "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2020/04/Pont-suspendu-point-eau-3-scaled-600xauto_0_1.jpg"
+      }
+    ]
+  },
+  "bridgeSourceFollowup": {
+    "report": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/pont-dependencies-review.json",
+    "verified2023Source": {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/flyer-naudieres-2023.pdf",
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-brochure-2023.pdf",
+      "sha256": "23742913f8e75f43753f7446d6b57236535081fd3cb3a7b399ad13c5d0a8c085",
+      "page": 2,
+      "literalLabel": "24 - Pont suspendu NEW",
+      "occursInLegendAndMap": true,
+      "screenshot": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-brochure-2023-page2.png",
+      "scopeOfProof": "Annonce officielle de nouveauté pour la saison 2023 ; ne documente ni démolition de l’ancien dispositif, ni fabricant, ni réouverture précise."
+    },
+    "supersedesEarlierAbsenceOfProofConcern": true,
+    "conclusion": "La nouveauté 2023 est bien annoncée par le parc dans sa brochure, mais les sources ne distinguent pas première création, rénovation ou remplacement d’une grande traversée en cordes déjà photographiée en 2018. La silhouette peut être corrigée avec certitude sans trancher la continuité historique."
+  }
+}

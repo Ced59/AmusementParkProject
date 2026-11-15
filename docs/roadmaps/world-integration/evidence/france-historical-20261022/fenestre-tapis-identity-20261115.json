@@ -1,0 +1,619 @@
+{
+  "schemaVersion": 1,
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "0f5f6630-8784-431e-b123-46dda636f359",
+          "id": "0f5f6630-8784-431e-b123-46dda636f359",
+          "name": "Les Tapis Volants",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": false,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des génies parmi les conifères</h2><p>Bleus ou violets, de grands génies accompagnent les passagers des Tapis Volants. Les nacelles dessinent des tapis rouges aux bords clairs, garnis de personnages aux vêtements éclatants. Au-dessus, les croissants et les arabesques dorées prolongent ce petit univers de conte oriental.</p><p>Le mât rouge et orange se termine par un bulbe jaune. Autour de lui, les tapis passent devant les grands conifères du jardin ; la silhouette orange de Fenes Tower apparaît derrière le manège.</p><h2>D’Aladin aux Tapis Volants</h2><p>L’attraction a rejoint Fenestre en 2019, après avoir porté le nom Aladin au Parc du Bocasse. Son décor coloré a ainsi trouvé un nouveau cadre dans le jardin d’attractions de La Bourboule, où le site officiel la présentait encore sous le nom Les Tapis Volants à la fin de 2025.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Genies among the conifers</h2><p>Large blue and purple genies accompany the passengers on Les Tapis Volants. The gondolas resemble red carpets with pale edges, decorated with figures in brightly coloured clothes. Above them, golden crescents and scrollwork extend this little world of Arabian tales.</p><p>The red-and-orange mast ends in a yellow onion-shaped finial. Around it, the carpets pass in front of the garden’s tall conifers, with the orange outline of Fenes Tower rising behind the ride.</p><h2>From Aladin to Les Tapis Volants</h2><p>The attraction came to Fenestre in 2019 after operating as Aladin at Parc du Bocasse. Its colourful setting found a new home in La Bourboule’s amusement garden, where the official website still presented it as Les Tapis Volants at the end of 2025.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Flaschengeister zwischen den Nadelbäumen</h2><p>Große blaue und violette Flaschengeister begleiten die Fahrgäste von Les Tapis Volants. Die Gondeln gleichen roten Teppichen mit hellen Rändern und Figuren in leuchtend bunten Kleidern. Darüber setzen goldene Halbmonde und Arabesken die kleine orientalische Märchenwelt fort.</p><p>Den rot-orangefarbenen Mast krönt eine gelbe zwiebelförmige Spitze. Um ihn herum ziehen die Teppiche vor den hohen Nadelbäumen des Gartens vorbei; hinter dem Fahrgeschäft ragt die orangefarbene Fenes Tower auf.</p><h2>Von Aladin zu Les Tapis Volants</h2><p>Die Attraktion kam 2019 nach Fenestre, nachdem sie im Parc du Bocasse Aladin geheißen hatte. Ihre farbenfrohe Kulisse fand im Vergnügungsgarten von La Bourboule ein neues Zuhause. Ende 2025 stellte die offizielle Website sie dort weiterhin als Les Tapis Volants vor.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Geesten tussen de naaldbomen</h2><p>Grote blauwe en paarse geesten vergezellen de passagiers van Les Tapis Volants. De gondels lijken op rode tapijten met lichte randen, versierd met figuren in felgekleurde kleding. Daarboven zetten gouden halve manen en arabesken de kleine oosterse sprookjeswereld voort.</p><p>De rood-oranje mast eindigt in een gele uivormige spits. Daaromheen passeren de tapijten de hoge naaldbomen van de tuin, terwijl achter de attractie de oranje Fenes Tower oprijst.</p><h2>Van Aladin naar Les Tapis Volants</h2><p>De attractie kwam in 2019 naar Fenestre, nadat zij in Parc du Bocasse de naam Aladin had gedragen. Het kleurrijke decor kreeg een nieuwe plek in de attractietuin van La Bourboule. Eind 2025 presenteerde de officiële website de attractie nog altijd als Les Tapis Volants.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Geni tra le conifere</h2><p>Grandi geni blu e viola accompagnano i passeggeri dei Tapis Volants. Le gondole disegnano tappeti rossi dai bordi chiari, decorati con personaggi dagli abiti vivaci. In alto, mezzelune e arabeschi dorati prolungano questo piccolo mondo da fiaba orientale.</p><p>L’albero centrale rosso e arancione termina con una punta gialla a bulbo. Attorno, i tappeti passano davanti alle alte conifere del giardino; dietro la giostra si scorge la sagoma arancione della Fenes Tower.</p><h2>Da Aladin ai Tapis Volants</h2><p>L’attrazione è arrivata a Fenestre nel 2019, dopo aver portato il nome Aladin al Parc du Bocasse. Il suo scenario colorato ha così trovato una nuova cornice nel giardino di divertimenti di La Bourboule, dove il sito ufficiale la presentava ancora come Les Tapis Volants alla fine del 2025.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Genios entre las coníferas</h2><p>Grandes genios azules y violetas acompañan a los pasajeros de Les Tapis Volants. Las góndolas dibujan alfombras rojas de bordes claros, adornadas con personajes de ropa vistosa. En lo alto, medias lunas y arabescos dorados prolongan este pequeño mundo de cuento oriental.</p><p>El mástil rojo y naranja termina en un remate amarillo en forma de bulbo. A su alrededor, las alfombras pasan ante las altas coníferas del jardín; detrás de la atracción aparece la silueta naranja de Fenes Tower.</p><h2>De Aladin a Les Tapis Volants</h2><p>La atracción llegó a Fenestre en 2019, después de llamarse Aladin en Parc du Bocasse. Su decorado colorido encontró así un nuevo marco en el jardín de atracciones de La Bourboule, donde la web oficial seguía presentándola como Les Tapis Volants a finales de 2025.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Dżiny wśród drzew iglastych</h2><p>Wielkie niebieskie i fioletowe dżiny towarzyszą pasażerom Les Tapis Volants. Gondole przypominają czerwone dywany o jasnych brzegach, ozdobione postaciami w barwnych strojach. Nad nimi złote półksiężyce i arabeski rozwijają ten niewielki świat orientalnej baśni.</p><p>Czerwono-pomarańczowy maszt wieńczy żółta cebulasta ozdoba. Wokół niego dywany przesuwają się na tle wysokich drzew iglastych ogrodu, a za atrakcją wznosi się pomarańczowa sylwetka Fenes Tower.</p><h2>Od Aladina do Les Tapis Volants</h2><p>Atrakcja trafiła do Fenestre w 2019 roku, wcześniej nosząc nazwę Aladin w Parc du Bocasse. Jej kolorowa sceneria znalazła nowe miejsce w ogrodzie rozrywki La Bourboule. Pod koniec 2025 roku oficjalna strona nadal przedstawiała ją jako Les Tapis Volants.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Génios entre as coníferas</h2><p>Grandes génios azuis e violetas acompanham os passageiros de Les Tapis Volants. As gôndolas desenham tapetes vermelhos de rebordos claros, decorados com figuras de roupas vistosas. Acima, crescentes e arabescos dourados prolongam este pequeno mundo de conto oriental.</p><p>O mastro vermelho e laranja termina num remate amarelo em forma de bolbo. À sua volta, os tapetes passam diante das altas coníferas do jardim; por trás da atração surge a silhueta laranja da Fenes Tower.</p><h2>De Aladin a Les Tapis Volants</h2><p>A atração chegou a Fenestre em 2019, depois de se ter chamado Aladin no Parc du Bocasse. O seu cenário colorido encontrou assim um novo enquadramento no jardim de diversões de La Bourboule, onde o sítio oficial ainda a apresentava como Les Tapis Volants no final de 2025.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/",
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": "2019",
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          }
+        }
+      ],
+      "metadata": {
+        "source": "Conversation France — archive officielle18mai2019 nouveautéTapis, Parkerlebnis12avril2019 transfertAladinBocasse, photosFenestre2021identifiéesFenesTower, archive2025. Year2019only, pas6avrilouvertureparc. Fabricant/modèle etstatut2026nontranchés, Unknown etprivéconservés."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "0bb4884e-fe32-4c2b-a491-358137cafb27",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:12:42.6817439Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Teppiche aus dem früheren Fahrgeschäftsangebot</h2><p>Les Tapis Volants brachten die Vorstellung magischer Teppiche zu den Fahrgeschäften von Fenestre. Sie standen nahe dem Carrousel 1900 und der Fenes’Tower in der kleinen Attraktionsgruppe im oberen Garten.</p><p>Ihr Name bleibt mit diesem früheren Freizeitangebot von La Bourboule verbunden. Les Tapis Volants ist eine eigenständige Attraktion und von L’Envol de Fenestine zu unterscheiden, dem später angekündigten Kettenkarussellprojekt.</p>",
+            "newValue": "<h2>Flaschengeister zwischen den Nadelbäumen</h2><p>Große blaue und violette Flaschengeister begleiten die Fahrgäste von Les Tapis Volants. Die Gondeln gleichen roten Teppichen mit hellen Rändern und Figuren in leuchtend bunten Kleidern. Darüber setzen goldene Halbmonde und Arabesken die kleine orientalische Märchenwelt fort.</p><p>Den rot-orangefarbenen Mast krönt eine gelbe zwiebelförmige Spitze. Um ihn herum ziehen die Teppiche vor den hohen Nadelbäumen des Gartens vorbei; hinter dem Fahrgeschäft ragt die orangefarbene Fenes Tower auf.</p><h2>Von Aladin zu Les Tapis Volants</h2><p>Die Attraktion kam 2019 nach Fenestre, nachdem sie im Parc du Bocasse Aladin geheißen hatte. Ihre farbenfrohe Kulisse fand im Vergnügungsgarten von La Bourboule ein neues Zuhause. Ende 2025 stellte die offizielle Website sie dort weiterhin als Les Tapis Volants vor.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Carpets from the former ride collection</h2><p>Les Tapis Volants brought the imagery of magic carpets to Fenestre’s rides. They stood near Carrousel 1900 and Fenes’Tower, within the small cluster of attractions in the upper garden.</p><p>Their name remains associated with this earlier leisure offering in La Bourboule. Les Tapis Volants is a separate attraction from L’Envol de Fenestine, the chair swing project announced later for the park.</p>",
+            "newValue": "<h2>Genies among the conifers</h2><p>Large blue and purple genies accompany the passengers on Les Tapis Volants. The gondolas resemble red carpets with pale edges, decorated with figures in brightly coloured clothes. Above them, golden crescents and scrollwork extend this little world of Arabian tales.</p><p>The red-and-orange mast ends in a yellow onion-shaped finial. Around it, the carpets pass in front of the garden’s tall conifers, with the orange outline of Fenes Tower rising behind the ride.</p><h2>From Aladin to Les Tapis Volants</h2><p>The attraction came to Fenestre in 2019 after operating as Aladin at Parc du Bocasse. Its colourful setting found a new home in La Bourboule’s amusement garden, where the official website still presented it as Les Tapis Volants at the end of 2025.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Alfombras de las antiguas atracciones</h2><p>Les Tapis Volants llevaban el imaginario de las alfombras mágicas a las atracciones de Fenestre. Estaban cerca de Carrousel 1900 y Fenes’Tower, en el pequeño conjunto de atracciones de la parte alta del jardín.</p><p>Su nombre sigue vinculado a esta antigua oferta de ocio de La Bourboule. Les Tapis Volants es una atracción distinta de L’Envol de Fenestine, el proyecto de sillas voladoras anunciado después para el parque.</p>",
+            "newValue": "<h2>Genios entre las coníferas</h2><p>Grandes genios azules y violetas acompañan a los pasajeros de Les Tapis Volants. Las góndolas dibujan alfombras rojas de bordes claros, adornadas con personajes de ropa vistosa. En lo alto, medias lunas y arabescos dorados prolongan este pequeño mundo de cuento oriental.</p><p>El mástil rojo y naranja termina en un remate amarillo en forma de bulbo. A su alrededor, las alfombras pasan ante las altas coníferas del jardín; detrás de la atracción aparece la silueta naranja de Fenes Tower.</p><h2>De Aladin a Les Tapis Volants</h2><p>La atracción llegó a Fenestre en 2019, después de llamarse Aladin en Parc du Bocasse. Su decorado colorido encontró así un nuevo marco en el jardín de atracciones de La Bourboule, donde la web oficial seguía presentándola como Les Tapis Volants a finales de 2025.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les tapis de l’ancien jardin d’attractions</h2><p>Les Tapis Volants donnaient une place à l’imaginaire des tapis magiques parmi les manèges de Fenestre. Ils figuraient près du Carrousel 1900 et de Fenes’Tower, dans le petit rassemblement d’attractions installé en haut du jardin.</p><p>Leur nom reste lié à cette ancienne offre de loisirs de La Bourboule. Les Tapis Volants constituent une attraction distincte de L’Envol de Fenestine, le projet de chaises volantes annoncé plus tard pour le parc.</p>",
+            "newValue": "<h2>Des génies parmi les conifères</h2><p>Bleus ou violets, de grands génies accompagnent les passagers des Tapis Volants. Les nacelles dessinent des tapis rouges aux bords clairs, garnis de personnages aux vêtements éclatants. Au-dessus, les croissants et les arabesques dorées prolongent ce petit univers de conte oriental.</p><p>Le mât rouge et orange se termine par un bulbe jaune. Autour de lui, les tapis passent devant les grands conifères du jardin ; la silhouette orange de Fenes Tower apparaît derrière le manège.</p><h2>D’Aladin aux Tapis Volants</h2><p>L’attraction a rejoint Fenestre en 2019, après avoir porté le nom Aladin au Parc du Bocasse. Son décor coloré a ainsi trouvé un nouveau cadre dans le jardin d’attractions de La Bourboule, où le site officiel la présentait encore sous le nom Les Tapis Volants à la fin de 2025.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Tappeti delle attrazioni di un tempo</h2><p>Les Tapis Volants portavano l’immaginario dei tappeti magici tra le giostre di Fenestre. Si trovavano vicino al Carrousel 1900 e alla Fenes’Tower, nel piccolo gruppo di attrazioni della parte alta del giardino.</p><p>Il loro nome resta legato a questa precedente offerta di divertimenti di La Bourboule. Les Tapis Volants è un’attrazione distinta da L’Envol de Fenestine, il progetto di seggiolini volanti annunciato in seguito per il parco.</p>",
+            "newValue": "<h2>Geni tra le conifere</h2><p>Grandi geni blu e viola accompagnano i passeggeri dei Tapis Volants. Le gondole disegnano tappeti rossi dai bordi chiari, decorati con personaggi dagli abiti vivaci. In alto, mezzelune e arabeschi dorati prolungano questo piccolo mondo da fiaba orientale.</p><p>L’albero centrale rosso e arancione termina con una punta gialla a bulbo. Attorno, i tappeti passano davanti alle alte conifere del giardino; dietro la giostra si scorge la sagoma arancione della Fenes Tower.</p><h2>Da Aladin ai Tapis Volants</h2><p>L’attrazione è arrivata a Fenestre nel 2019, dopo aver portato il nome Aladin al Parc du Bocasse. Il suo scenario colorato ha così trovato una nuova cornice nel giardino di divertimenti di La Bourboule, dove il sito ufficiale la presentava ancora come Les Tapis Volants alla fine del 2025.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Tapijten uit het vroegere attractieaanbod</h2><p>Les Tapis Volants brachten de verbeelding van magische tapijten naar de attracties van Fenestre. Ze stonden bij Carrousel 1900 en Fenes’Tower, in het kleine groepje attracties in de hoge tuin.</p><p>Hun naam blijft verbonden met dit vroegere vrijetijdsaanbod van La Bourboule. Les Tapis Volants is een afzonderlijke attractie naast L’Envol de Fenestine, het later aangekondigde plan voor een zweefmolen.</p>",
+            "newValue": "<h2>Geesten tussen de naaldbomen</h2><p>Grote blauwe en paarse geesten vergezellen de passagiers van Les Tapis Volants. De gondels lijken op rode tapijten met lichte randen, versierd met figuren in felgekleurde kleding. Daarboven zetten gouden halve manen en arabesken de kleine oosterse sprookjeswereld voort.</p><p>De rood-oranje mast eindigt in een gele uivormige spits. Daaromheen passeren de tapijten de hoge naaldbomen van de tuin, terwijl achter de attractie de oranje Fenes Tower oprijst.</p><h2>Van Aladin naar Les Tapis Volants</h2><p>De attractie kwam in 2019 naar Fenestre, nadat zij in Parc du Bocasse de naam Aladin had gedragen. Het kleurrijke decor kreeg een nieuwe plek in de attractietuin van La Bourboule. Eind 2025 presenteerde de officiële website de attractie nog altijd als Les Tapis Volants.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Dywany z dawnej kolekcji atrakcji</h2><p>Les Tapis Volants wprowadzały motyw magicznych dywanów do atrakcji Fenestre. Stały niedaleko Carrousel 1900 i Fenes’Tower, w małej grupie urządzeń w górnej części ogrodu.</p><p>Ich nazwa pozostaje związana z dawną ofertą rozrywki La Bourboule. Les Tapis Volants jest osobną atrakcją względem L’Envol de Fenestine, projektu karuzeli łańcuchowej zapowiedzianego później dla parku.</p>",
+            "newValue": "<h2>Dżiny wśród drzew iglastych</h2><p>Wielkie niebieskie i fioletowe dżiny towarzyszą pasażerom Les Tapis Volants. Gondole przypominają czerwone dywany o jasnych brzegach, ozdobione postaciami w barwnych strojach. Nad nimi złote półksiężyce i arabeski rozwijają ten niewielki świat orientalnej baśni.</p><p>Czerwono-pomarańczowy maszt wieńczy żółta cebulasta ozdoba. Wokół niego dywany przesuwają się na tle wysokich drzew iglastych ogrodu, a za atrakcją wznosi się pomarańczowa sylwetka Fenes Tower.</p><h2>Od Aladina do Les Tapis Volants</h2><p>Atrakcja trafiła do Fenestre w 2019 roku, wcześniej nosząc nazwę Aladin w Parc du Bocasse. Jej kolorowa sceneria znalazła nowe miejsce w ogrodzie rozrywki La Bourboule. Pod koniec 2025 roku oficjalna strona nadal przedstawiała ją jako Les Tapis Volants.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Tapetes das atrações de outros tempos</h2><p>Les Tapis Volants traziam o imaginário dos tapetes mágicos aos divertimentos de Fenestre. Ficavam perto do Carrousel 1900 e da Fenes’Tower, no pequeno conjunto de atrações da parte alta do jardim.</p><p>O nome continua ligado a esta antiga oferta de lazer de La Bourboule. Les Tapis Volants é uma atração distinta de L’Envol de Fenestine, o projeto de cadeiras voadoras anunciado mais tarde para o parque.</p>",
+            "newValue": "<h2>Génios entre as coníferas</h2><p>Grandes génios azuis e violetas acompanham os passageiros de Les Tapis Volants. As gôndolas desenham tapetes vermelhos de rebordos claros, decorados com figuras de roupas vistosas. Acima, crescentes e arabescos dourados prolongam este pequeno mundo de conto oriental.</p><p>O mastro vermelho e laranja termina num remate amarelo em forma de bolbo. À sua volta, os tapetes passam diante das altas coníferas do jardim; por trás da atração surge a silhueta laranja da Fenes Tower.</p><h2>De Aladin a Les Tapis Volants</h2><p>A atração chegou a Fenestre em 2019, depois de se ter chamado Aladin no Parc du Bocasse. O seu cenário colorido encontrou assim um novo enquadramento no jardim de diversões de La Bourboule, onde o sítio oficial ainda a apresentava como Les Tapis Volants no final de 2025.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf",
+            "newValue": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2019"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "da68db60-f798-42dc-8b46-57d1874206d9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:13:21.7286092Z",
+    "appliedAtUtc": "2026-11-15T10:13:21.7286106Z",
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Teppiche aus dem früheren Fahrgeschäftsangebot</h2><p>Les Tapis Volants brachten die Vorstellung magischer Teppiche zu den Fahrgeschäften von Fenestre. Sie standen nahe dem Carrousel 1900 und der Fenes’Tower in der kleinen Attraktionsgruppe im oberen Garten.</p><p>Ihr Name bleibt mit diesem früheren Freizeitangebot von La Bourboule verbunden. Les Tapis Volants ist eine eigenständige Attraktion und von L’Envol de Fenestine zu unterscheiden, dem später angekündigten Kettenkarussellprojekt.</p>",
+            "newValue": "<h2>Flaschengeister zwischen den Nadelbäumen</h2><p>Große blaue und violette Flaschengeister begleiten die Fahrgäste von Les Tapis Volants. Die Gondeln gleichen roten Teppichen mit hellen Rändern und Figuren in leuchtend bunten Kleidern. Darüber setzen goldene Halbmonde und Arabesken die kleine orientalische Märchenwelt fort.</p><p>Den rot-orangefarbenen Mast krönt eine gelbe zwiebelförmige Spitze. Um ihn herum ziehen die Teppiche vor den hohen Nadelbäumen des Gartens vorbei; hinter dem Fahrgeschäft ragt die orangefarbene Fenes Tower auf.</p><h2>Von Aladin zu Les Tapis Volants</h2><p>Die Attraktion kam 2019 nach Fenestre, nachdem sie im Parc du Bocasse Aladin geheißen hatte. Ihre farbenfrohe Kulisse fand im Vergnügungsgarten von La Bourboule ein neues Zuhause. Ende 2025 stellte die offizielle Website sie dort weiterhin als Les Tapis Volants vor.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Carpets from the former ride collection</h2><p>Les Tapis Volants brought the imagery of magic carpets to Fenestre’s rides. They stood near Carrousel 1900 and Fenes’Tower, within the small cluster of attractions in the upper garden.</p><p>Their name remains associated with this earlier leisure offering in La Bourboule. Les Tapis Volants is a separate attraction from L’Envol de Fenestine, the chair swing project announced later for the park.</p>",
+            "newValue": "<h2>Genies among the conifers</h2><p>Large blue and purple genies accompany the passengers on Les Tapis Volants. The gondolas resemble red carpets with pale edges, decorated with figures in brightly coloured clothes. Above them, golden crescents and scrollwork extend this little world of Arabian tales.</p><p>The red-and-orange mast ends in a yellow onion-shaped finial. Around it, the carpets pass in front of the garden’s tall conifers, with the orange outline of Fenes Tower rising behind the ride.</p><h2>From Aladin to Les Tapis Volants</h2><p>The attraction came to Fenestre in 2019 after operating as Aladin at Parc du Bocasse. Its colourful setting found a new home in La Bourboule’s amusement garden, where the official website still presented it as Les Tapis Volants at the end of 2025.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Alfombras de las antiguas atracciones</h2><p>Les Tapis Volants llevaban el imaginario de las alfombras mágicas a las atracciones de Fenestre. Estaban cerca de Carrousel 1900 y Fenes’Tower, en el pequeño conjunto de atracciones de la parte alta del jardín.</p><p>Su nombre sigue vinculado a esta antigua oferta de ocio de La Bourboule. Les Tapis Volants es una atracción distinta de L’Envol de Fenestine, el proyecto de sillas voladoras anunciado después para el parque.</p>",
+            "newValue": "<h2>Genios entre las coníferas</h2><p>Grandes genios azules y violetas acompañan a los pasajeros de Les Tapis Volants. Las góndolas dibujan alfombras rojas de bordes claros, adornadas con personajes de ropa vistosa. En lo alto, medias lunas y arabescos dorados prolongan este pequeño mundo de cuento oriental.</p><p>El mástil rojo y naranja termina en un remate amarillo en forma de bulbo. A su alrededor, las alfombras pasan ante las altas coníferas del jardín; detrás de la atracción aparece la silueta naranja de Fenes Tower.</p><h2>De Aladin a Les Tapis Volants</h2><p>La atracción llegó a Fenestre en 2019, después de llamarse Aladin en Parc du Bocasse. Su decorado colorido encontró así un nuevo marco en el jardín de atracciones de La Bourboule, donde la web oficial seguía presentándola como Les Tapis Volants a finales de 2025.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les tapis de l’ancien jardin d’attractions</h2><p>Les Tapis Volants donnaient une place à l’imaginaire des tapis magiques parmi les manèges de Fenestre. Ils figuraient près du Carrousel 1900 et de Fenes’Tower, dans le petit rassemblement d’attractions installé en haut du jardin.</p><p>Leur nom reste lié à cette ancienne offre de loisirs de La Bourboule. Les Tapis Volants constituent une attraction distincte de L’Envol de Fenestine, le projet de chaises volantes annoncé plus tard pour le parc.</p>",
+            "newValue": "<h2>Des génies parmi les conifères</h2><p>Bleus ou violets, de grands génies accompagnent les passagers des Tapis Volants. Les nacelles dessinent des tapis rouges aux bords clairs, garnis de personnages aux vêtements éclatants. Au-dessus, les croissants et les arabesques dorées prolongent ce petit univers de conte oriental.</p><p>Le mât rouge et orange se termine par un bulbe jaune. Autour de lui, les tapis passent devant les grands conifères du jardin ; la silhouette orange de Fenes Tower apparaît derrière le manège.</p><h2>D’Aladin aux Tapis Volants</h2><p>L’attraction a rejoint Fenestre en 2019, après avoir porté le nom Aladin au Parc du Bocasse. Son décor coloré a ainsi trouvé un nouveau cadre dans le jardin d’attractions de La Bourboule, où le site officiel la présentait encore sous le nom Les Tapis Volants à la fin de 2025.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Tappeti delle attrazioni di un tempo</h2><p>Les Tapis Volants portavano l’immaginario dei tappeti magici tra le giostre di Fenestre. Si trovavano vicino al Carrousel 1900 e alla Fenes’Tower, nel piccolo gruppo di attrazioni della parte alta del giardino.</p><p>Il loro nome resta legato a questa precedente offerta di divertimenti di La Bourboule. Les Tapis Volants è un’attrazione distinta da L’Envol de Fenestine, il progetto di seggiolini volanti annunciato in seguito per il parco.</p>",
+            "newValue": "<h2>Geni tra le conifere</h2><p>Grandi geni blu e viola accompagnano i passeggeri dei Tapis Volants. Le gondole disegnano tappeti rossi dai bordi chiari, decorati con personaggi dagli abiti vivaci. In alto, mezzelune e arabeschi dorati prolungano questo piccolo mondo da fiaba orientale.</p><p>L’albero centrale rosso e arancione termina con una punta gialla a bulbo. Attorno, i tappeti passano davanti alle alte conifere del giardino; dietro la giostra si scorge la sagoma arancione della Fenes Tower.</p><h2>Da Aladin ai Tapis Volants</h2><p>L’attrazione è arrivata a Fenestre nel 2019, dopo aver portato il nome Aladin al Parc du Bocasse. Il suo scenario colorato ha così trovato una nuova cornice nel giardino di divertimenti di La Bourboule, dove il sito ufficiale la presentava ancora come Les Tapis Volants alla fine del 2025.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Tapijten uit het vroegere attractieaanbod</h2><p>Les Tapis Volants brachten de verbeelding van magische tapijten naar de attracties van Fenestre. Ze stonden bij Carrousel 1900 en Fenes’Tower, in het kleine groepje attracties in de hoge tuin.</p><p>Hun naam blijft verbonden met dit vroegere vrijetijdsaanbod van La Bourboule. Les Tapis Volants is een afzonderlijke attractie naast L’Envol de Fenestine, het later aangekondigde plan voor een zweefmolen.</p>",
+            "newValue": "<h2>Geesten tussen de naaldbomen</h2><p>Grote blauwe en paarse geesten vergezellen de passagiers van Les Tapis Volants. De gondels lijken op rode tapijten met lichte randen, versierd met figuren in felgekleurde kleding. Daarboven zetten gouden halve manen en arabesken de kleine oosterse sprookjeswereld voort.</p><p>De rood-oranje mast eindigt in een gele uivormige spits. Daaromheen passeren de tapijten de hoge naaldbomen van de tuin, terwijl achter de attractie de oranje Fenes Tower oprijst.</p><h2>Van Aladin naar Les Tapis Volants</h2><p>De attractie kwam in 2019 naar Fenestre, nadat zij in Parc du Bocasse de naam Aladin had gedragen. Het kleurrijke decor kreeg een nieuwe plek in de attractietuin van La Bourboule. Eind 2025 presenteerde de officiële website de attractie nog altijd als Les Tapis Volants.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Dywany z dawnej kolekcji atrakcji</h2><p>Les Tapis Volants wprowadzały motyw magicznych dywanów do atrakcji Fenestre. Stały niedaleko Carrousel 1900 i Fenes’Tower, w małej grupie urządzeń w górnej części ogrodu.</p><p>Ich nazwa pozostaje związana z dawną ofertą rozrywki La Bourboule. Les Tapis Volants jest osobną atrakcją względem L’Envol de Fenestine, projektu karuzeli łańcuchowej zapowiedzianego później dla parku.</p>",
+            "newValue": "<h2>Dżiny wśród drzew iglastych</h2><p>Wielkie niebieskie i fioletowe dżiny towarzyszą pasażerom Les Tapis Volants. Gondole przypominają czerwone dywany o jasnych brzegach, ozdobione postaciami w barwnych strojach. Nad nimi złote półksiężyce i arabeski rozwijają ten niewielki świat orientalnej baśni.</p><p>Czerwono-pomarańczowy maszt wieńczy żółta cebulasta ozdoba. Wokół niego dywany przesuwają się na tle wysokich drzew iglastych ogrodu, a za atrakcją wznosi się pomarańczowa sylwetka Fenes Tower.</p><h2>Od Aladina do Les Tapis Volants</h2><p>Atrakcja trafiła do Fenestre w 2019 roku, wcześniej nosząc nazwę Aladin w Parc du Bocasse. Jej kolorowa sceneria znalazła nowe miejsce w ogrodzie rozrywki La Bourboule. Pod koniec 2025 roku oficjalna strona nadal przedstawiała ją jako Les Tapis Volants.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Tapetes das atrações de outros tempos</h2><p>Les Tapis Volants traziam o imaginário dos tapetes mágicos aos divertimentos de Fenestre. Ficavam perto do Carrousel 1900 e da Fenes’Tower, no pequeno conjunto de atrações da parte alta do jardim.</p><p>O nome continua ligado a esta antiga oferta de lazer de La Bourboule. Les Tapis Volants é uma atração distinta de L’Envol de Fenestine, o projeto de cadeiras voadoras anunciado mais tarde para o parque.</p>",
+            "newValue": "<h2>Génios entre as coníferas</h2><p>Grandes génios azuis e violetas acompanham os passageiros de Les Tapis Volants. As gôndolas desenham tapetes vermelhos de rebordos claros, decorados com figuras de roupas vistosas. Acima, crescentes e arabescos dourados prolongam este pequeno mundo de conto oriental.</p><p>O mastro vermelho e laranja termina num remate amarelo em forma de bolbo. À sua volta, os tapetes passam diante das altas coníferas do jardim; por trás da atração surge a silhueta laranja da Fenes Tower.</p><h2>De Aladin a Les Tapis Volants</h2><p>A atração chegou a Fenestre em 2019, depois de se ter chamado Aladin no Parc du Bocasse. O seu cenário colorido encontrou assim um novo enquadramento no jardim de diversões de La Bourboule, onde o sítio oficial ainda a apresentava como Les Tapis Volants no final de 2025.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf",
+            "newValue": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2019"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalEightLanguageReview": true,
+  "sources": {
+    "createdAtUtc": "2026-11-15T10:08:15.316971+00:00",
+    "scope": "Public-source and existing-local-file research only; no PDE, Git, registry, publication or working-state mutation.",
+    "park": "Parc Fenestre, La Bourboule",
+    "previousReport": "../parallel-inventory-research/inventory-findings.json",
+    "items": [
+      {
+        "id": "0f5f6630-8784-431e-b123-46dda636f359",
+        "name": "Les Tapis Volants",
+        "identityConclusion": "Historical spinning ride with rigid suspended gondolas decorated as magic carpets, yellow arms and genie figures; distinct from L’Envol de Fenestine and its chain-suspended chairs. Historical identity and two location-specific photographs now qualified.",
+        "supportedFacts": [
+          {
+            "fact": "Introduced at Fenestre in 2019; exact opening day not established.",
+            "sourceFile": "official-home-20190518.html",
+            "evidence": "Official homepage states En 2019, 2 nouvelles attractions, le Niouk Pearl et les tapis volants; individual Tapis card marked Nouveauté. April 6 elsewhere is park season opening, not a ride-specific opening proof."
+          },
+          {
+            "fact": "Known earlier as Aladin at Parc du Bocasse, transferred to Fenestre for 2019.",
+            "sourceFiles": [
+              "parkerlebnis-20190412.html",
+              "airtimenews-bocasse-2019.html",
+              "tapis-archive-20250425.html"
+            ],
+            "evidence": "Parkerlebnis dated April 12 2019 explicitly names Aladin from Bocasse as the second new Fenestre ride. Its former-location photo exactly matches the official Fenestre gallery aladin-1 scene. AirtimeNews also names this transfer. An earlier Bocasse opening date is not established here."
+          },
+          {
+            "fact": "Documented at Fenestre in official photo originals dated July 5 2021 by EXIF.",
+            "sourceFiles": [
+              "tapis-IMG_1662.JPG",
+              "tapis-IMG_1666.JPG"
+            ],
+            "evidence": "Fenes Tower is clearly visible behind the carpets. DateTimeOriginal and DateTimeDigitized agree; no timezone. This is capture metadata, not API UTC or park/ride opening date."
+          },
+          {
+            "fact": "Official Tapis page still present in archived April 25 and December 23 2025 pages.",
+            "sourceFiles": [
+              "tapis-archive-20250425.html",
+              "tapis-archive-20251223.html"
+            ],
+            "evidence": "Page names Les tapis volants, gives family ride description, photos and historical restrictions. Archive day is not a last operating day."
+          },
+          {
+            "fact": "Historical access rule on 2025 page: above 1.20 m alone; below 1.20 m accompanied by adult over 18.",
+            "sourceFile": "tapis-archive-20251223.html",
+            "evidence": "Exact French +1.20 m / -1.20 m leaves equality ambiguous; do not normalize into an invented inclusive boundary or apply as 2026 rule."
+          },
+          {
+            "fact": "2026 URL now reused for Envol; this is not proof of renaming or same hardware.",
+            "sourceFiles": [
+              "../tapis-current.html",
+              "../parallel-inventory-research/official-envol.html",
+              "../parallel-inventory-research/official-2026-leaflet.jpg"
+            ],
+            "evidence": "New Envol rendering shows chained chairs, unlike photographed carpet gondolas. 2024 map separately names Tapis; 2026 map names new Envol."
+          }
+        ],
+        "supportedProposedFields": {
+          "keepExistingId": true,
+          "name": "Les Tapis Volants",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "status": "Unknown",
+          "openingYear": 2019,
+          "openingDatePrecision": "Year only",
+          "openingMonth": null,
+          "openingDay": null,
+          "closingDate": null,
+          "historicalFormerName": "Aladin (at Parc du Bocasse)",
+          "currentAliasToEnvol": false,
+          "model": null,
+          "manufacturer": "Technical Park explicitly named by AirtimeNews; proposal for root verification, not independently confirmed by manufacturer in this research",
+          "sourceUrl": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/"
+        },
+        "unresolved": [
+          "Current 2026 operating/removal status",
+          "Last operating season and actual closure/removal date",
+          "Exact first day at Fenestre",
+          "Manufacturer/model primary corroboration if required before linking",
+          "Whether two closely timed Fenestre images both add enough value"
+        ],
+        "photoManifest": "tapis-photo-candidates.json",
+        "frenchCopyDraft": "Les Tapis Volants ont rejoint Fenestre en 2019, après avoir porté le nom Aladin au Parc du Bocasse. Les passagers prennent place dans des nacelles en forme de tapis ornées de génies colorés. Suspendues à des bras jaunes rigides, elles tournent autour d’un mât rouge et orange coiffé d’un bulbe décoratif. Les photos prises à Fenestre montrent le manège installé à proximité de Fenes Tower.\n\nL’attraction était encore présentée sous ce nom sur le site officiel à la fin de 2025. Elle est distincte de L’Envol de Fenestine, le manège de chaises volantes annoncé pour 2026. Sa date de retrait éventuelle n’est pas établie."
+      },
+      {
+        "id": "253af2e3-2583-49e0-97de-441cb056157f",
+        "name": "Parcours botanique",
+        "identityConclusion": "Named historical botanical discovery route confirmed, distinct from Jardin des vivaces. Nominal existence strengthened by archived operator prose from 2019. No precise route, date or specific photograph established.",
+        "supportedFacts": [
+          {
+            "fact": "The operator’s nature presentation in the May 14 2019 archive explicitly calls the experience a parcours botanique with old/exceptionally large tree specimens.",
+            "sourceFile": "official-nature-archive2019.html",
+            "sourceUrl": "https://web.archive.org/web/20190514063717/http://www.parcfenestre.com/nature-jeux/",
+            "caution": "Text describes the park-wide botanical walk; it does not give an inauguration date, route length, signs count or mapped circuit."
+          },
+          {
+            "fact": "Official 2024 map identifies Départ parcours botanique, nature legend number 6, separate from Jardin des vivaces number 2.",
+            "sourceFile": "../parallel-inventory-research/official-2024.pdf",
+            "evidence": "Start marker in lower park near lower entry/sequoia sector. No surveyed GPS inferred from the stylized map."
+          },
+          {
+            "fact": "Current municipal and operator nature pages discuss trees, lawns, vivaces and stream but do not establish current maintenance or closure of the named route.",
+            "sourceFiles": [
+              "municipal-tourism.html",
+              "nature-archive-20240530.html",
+              "../parallel-inventory-research/official-nature-details.html"
+            ]
+          },
+          {
+            "fact": "2026 map omits the route from its shortened Nature list.",
+            "sourceFile": "../parallel-inventory-research/official-2026-leaflet.jpg",
+            "caution": "An omission is not evidence of closure, merger with Jardin des vivaces or removal."
+          }
+        ],
+        "supportedProposedFields": {
+          "keepExistingId": true,
+          "name": "Parcours botanique",
+          "category": "Other",
+          "type": "WalkThrough",
+          "status": "Unknown",
+          "openingDate": null,
+          "closingDate": null,
+          "latitude": null,
+          "longitude": null,
+          "aliasToJardinDesVivaces": false,
+          "sourceUrl": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf"
+        },
+        "unresolved": [
+          "Actual route/alignment and length",
+          "Current signage and operating/maintenance status",
+          "Creation date",
+          "Specific true photo showing named route/start, rather than an unrelated garden feature"
+        ],
+        "photoConclusion": "Fifteen official nature-gallery images visually inspected (large originals via exact official renditions when needed). They show gardens, lawns, trees, pond, entry, sculpture and insect hotel, but no readable Parcours botanique sign or nominal route identification. Do not assign generic trees, Jardin des vivaces or pond to this item merely to add a photo.",
+        "frenchCopyDraft": "Le Parcours botanique est signalé par un point de départ sur le plan officiel de Fenestre de 2024, dans le bas du parc. Il est distingué du Jardin des vivaces, qui possède son propre repère. L’ancienne présentation du parc le décrit comme une promenade parmi des arbres âgés et de grandes dimensions, dans le cadre paysager créé à la fin du XIXe siècle. Son tracé précis et son balisage actuel ne sont pas documentés par les sources consultées."
+      }
+    ],
+    "cautions": [
+      "Parkerlebnis attributes the pirate ship manufacturer differently from AirtimeNews; this assignment does not adjudicate that unrelated ride, and those boat specifications must not be copied.",
+      "Apidae syndications mix 2026 Envol with inherited Tapis prose; not independent proof of simultaneous operation.",
+      "coaster.cloud Operating status is undated secondary data and cannot resolve the conflicting 2026 state.",
+      "The 2019 map PDF link returned 404; no substitute map/year inferred.",
+      "Three small official Tapis JPGs are excluded as Fenestre photography because at least aladin-1 is explicitly photographed at Bocasse and the others share the same old session.",
+      "No secret, authentication, private endpoint or messaging was used."
+    ],
+    "sourceManifest": "source-access.json",
+    "newPhotoManifest": "tapis-photo-candidates.json",
+    "newSourceHashes": [
+      {
+        "file": "tapis-archive-20250425.html",
+        "url": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+        "status": 200,
+        "sha256": "a28dd33f61345b8dc169687572b969a189592fad46f70a5c8862f90dcbfd0909",
+        "fetchedAtUtc": "2026-11-15T09:57:59.515386+00:00"
+      },
+      {
+        "file": "municipal-tourism.html",
+        "url": "https://villedelabourboule.fr/tourisme-et-activites",
+        "status": 200,
+        "sha256": "efadf6493501c50723172b37ec0317835003efd3cd0fa9b8983119a4e5c0a79a",
+        "fetchedAtUtc": "2026-11-15T10:01:49.738898+00:00"
+      },
+      {
+        "file": "tapis-archive-20251223.html",
+        "url": "https://web.archive.org/web/20251223133746/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+        "status": 200,
+        "sha256": "412c8350691459ee593f57ee34d8054caefa171da587467a251e3307c4ac5e49",
+        "fetchedAtUtc": "2026-11-15T10:01:51.237967+00:00"
+      },
+      {
+        "file": "nature-archive-20240530.html",
+        "url": "https://web.archive.org/web/20240530223221/https://www.parcfenestre.com/nature",
+        "status": 200,
+        "sha256": "37899890c40d2131463530001ff163822ab2214c92a5e2ae838f5dc60ac48f06",
+        "fetchedAtUtc": "2026-11-15T10:02:11.778304+00:00"
+      },
+      {
+        "file": "parkerlebnis-20190412.html",
+        "url": "https://www.parkerlebnis.de/parc-fenestre-2019-piratenschiff_82390.html",
+        "status": 200,
+        "sha256": "487a4399fe6a34c355a89994036cce3e2eb04c9d3ccfc47d527a99a2a52bda15",
+        "fetchedAtUtc": "2026-11-15T10:03:05.564067+00:00"
+      },
+      {
+        "file": "airtimenews-bocasse-2019.html",
+        "url": "https://airtimenews.org/2019/04/06/nouveautes-2019-2/",
+        "status": 200,
+        "sha256": "e0036b46b09e121ee9dc06a84296ab42fde6c7c93ec1e96a1642806c76b507f9",
+        "fetchedAtUtc": "2026-11-15T10:03:04.904058+00:00"
+      },
+      {
+        "file": "official-home-20190518.html",
+        "url": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com:80/",
+        "status": 200,
+        "sha256": "8da2bdfa2b0a2e4b9510da09aae2a1b41893a7bf06714fbfeb6e131fb34e5647",
+        "fetchedAtUtc": "2026-11-15T10:05:12.605889+00:00"
+      },
+      {
+        "file": "official-nature-archive2019.html",
+        "url": "https://web.archive.org/web/20190518022425/http://www.parcfenestre.com/nature-jeux/",
+        "status": 200,
+        "sha256": "d25ad73be921fdae19467a50cab9f6436450994f74c190630c664f6d69a728e8",
+        "fetchedAtUtc": "2026-11-15T10:05:44.666193+00:00"
+      }
+    ]
+  },
+  "photoReview": {
+    "createdAtUtc": "2026-11-15T10:08:15.316971+00:00",
+    "noImportPerformed": true,
+    "candidates": [
+      {
+        "itemId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "original": {
+          "url": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/IMG_1662.JPG",
+          "file": "tapis-IMG_1662.JPG",
+          "sourcePage": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+          "status": 200,
+          "finalUrl": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/IMG_1662.JPG",
+          "bytes": 7320519,
+          "sha256": "98e364905425312da537a0cd4fcfad96c5ee40ef019087c9b209fa61b7c303e1",
+          "fetchedAtUtc": "2026-11-15T09:58:25.801183+00:00"
+        },
+        "officialRendition": {
+          "url": "https://www.parcfenestre.com/images/gallery/bagallery/gallery-3/thumbnail/category-1/IMG_1662.JPG?1636038413",
+          "file": "tapis-thumbnail-IMG_1662.JPG",
+          "status": 200,
+          "bytes": 777628,
+          "sha256": "91053ab7cbb7c9ece8d587a544ad864ac841bdd86d49ad1a7f6bc66850de2cc4",
+          "fetchedAtUtc": "2026-11-15T10:00:56.122646+00:00",
+          "source": "exact img src observed in archived official HTML; current origin rendition"
+        },
+        "dimensionsOriginal": [
+          6000,
+          4000
+        ],
+        "dimensionsRendition": [
+          900,
+          600
+        ],
+        "sourcePage": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+        "sourcePublisher": "Parc Fenestre",
+        "individualPhotographer": null,
+        "copyrightLicense": null,
+        "captureMetadata": {
+          "DateTimeOriginal": "2021:07:05 17:16:35",
+          "DateTimeDigitized": "2021:07:05 17:16:35",
+          "timezone": null,
+          "source": "EXIF of original, not archive/access date",
+          "captureYearSupported": 2021
+        },
+        "personallyInspectedFile": "tapis-thumbnail-IMG_1662.JPG",
+        "inspection": "Complete official 900x600 rendition inspected; original retained unchanged. Fenestre location established by Fenes Tower behind this ride. No visible watermark. Do not claim the rendition has been locally edited.",
+        "status": "eligible candidate for private import after root duplicate reconciliation",
+        "priority": 2,
+        "nearDuplicateCaution": "The two photos are 10 seconds apart from nearby viewpoints. Prefer IMG_1666 if only one useful view is needed; do not import both merely to reach a photo count.",
+        "suggestedFrenchCaption": "Nacelles décorées de tapis et de génies autour du mât rouge et orange des Tapis Volants ; Fenes Tower est visible derrière le manège.",
+        "isCurrentProposed": false
+      },
+      {
+        "itemId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "original": {
+          "url": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/IMG_1666.JPG",
+          "file": "tapis-IMG_1666.JPG",
+          "sourcePage": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+          "status": 200,
+          "finalUrl": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/IMG_1666.JPG",
+          "bytes": 7811105,
+          "sha256": "9aaa4205634bdaf2e46ea3d577701d8e4cbad28dd22fe3db75e25ec0ba601661",
+          "fetchedAtUtc": "2026-11-15T09:58:25.945486+00:00"
+        },
+        "officialRendition": {
+          "url": "https://www.parcfenestre.com/images/gallery/bagallery/gallery-3/thumbnail/category-1/IMG_1666.JPG?1636038413",
+          "file": "tapis-thumbnail-IMG_1666.JPG",
+          "status": 200,
+          "bytes": 804383,
+          "sha256": "65023fdf0f0debc323296359d9ea81f21a5bb73e2b14902e54df406709b46020",
+          "fetchedAtUtc": "2026-11-15T10:00:56.849363+00:00",
+          "source": "exact img src observed in archived official HTML; current origin rendition"
+        },
+        "dimensionsOriginal": [
+          6000,
+          4000
+        ],
+        "dimensionsRendition": [
+          900,
+          600
+        ],
+        "sourcePage": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+        "sourcePublisher": "Parc Fenestre",
+        "individualPhotographer": null,
+        "copyrightLicense": null,
+        "captureMetadata": {
+          "DateTimeOriginal": "2021:07:05 17:16:45",
+          "DateTimeDigitized": "2021:07:05 17:16:45",
+          "timezone": null,
+          "source": "EXIF of original, not archive/access date",
+          "captureYearSupported": 2021
+        },
+        "personallyInspectedFile": "tapis-thumbnail-IMG_1666.JPG",
+        "inspection": "Complete official 900x600 rendition inspected; original retained unchanged. Fenestre location established by Fenes Tower behind this ride. No visible watermark. Do not claim the rendition has been locally edited.",
+        "status": "eligible candidate for private import after root duplicate reconciliation",
+        "priority": 1,
+        "nearDuplicateCaution": "The two photos are 10 seconds apart from nearby viewpoints. Prefer IMG_1666 if only one useful view is needed; do not import both merely to reach a photo count.",
+        "suggestedFrenchCaption": "Les Tapis Volants en mouvement à Fenestre, avec leurs bras jaunes, leurs nacelles colorées et Fenes Tower à l’arrière-plan.",
+        "isCurrentProposed": false
+      }
+    ],
+    "excluded": [
+      {
+        "file": "tapis-aladin-1.jpg",
+        "reason": "Exact scene matches Parkerlebnis photograph explicitly credited Parc du Bocasse and captioned still at old location. Not a photo taken at Fenestre."
+      },
+      {
+        "file": "tapis-Les tapis volants.jpg",
+        "reason": "Same old photo session/participants and backdrop as aladin-1; Fenestre location not established. Excluded as Fenestre photo."
+      },
+      {
+        "file": "tapis-aladin-2.jpg",
+        "reason": "Same old photo session/participants and backdrop as aladin-1; Fenestre location not established. Excluded as Fenestre photo."
+      }
+    ]
+  },
+  "decision": "Root personally reviewed official2019 novelty text and Parkerlebnis2019 transfer, archived2025page and both Fenestre photos. Three paragraphs/2headings each language rewritten from visual/history facts. Only year2019, no April6 date; current lifecycleUnknown/private preserved, model/manufacturer not inferred.",
+  "newPublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

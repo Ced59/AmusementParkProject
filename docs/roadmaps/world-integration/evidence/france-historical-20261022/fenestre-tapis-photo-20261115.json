@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T10:14:39.766Z",
+  "private": true,
+  "sourceEvidence": {
+    "itemId": "0f5f6630-8784-431e-b123-46dda636f359",
+    "original": {
+      "url": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/IMG_1666.JPG",
+      "file": "tapis-IMG_1666.JPG",
+      "sourcePage": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+      "status": 200,
+      "finalUrl": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/IMG_1666.JPG",
+      "bytes": 7811105,
+      "sha256": "9aaa4205634bdaf2e46ea3d577701d8e4cbad28dd22fe3db75e25ec0ba601661",
+      "fetchedAtUtc": "2026-11-15T09:58:25.945486+00:00"
+    },
+    "officialRendition": {
+      "url": "https://www.parcfenestre.com/images/gallery/bagallery/gallery-3/thumbnail/category-1/IMG_1666.JPG?1636038413",
+      "file": "tapis-thumbnail-IMG_1666.JPG",
+      "status": 200,
+      "bytes": 804383,
+      "sha256": "65023fdf0f0debc323296359d9ea81f21a5bb73e2b14902e54df406709b46020",
+      "fetchedAtUtc": "2026-11-15T10:00:56.849363+00:00",
+      "source": "exact img src observed in archived official HTML; current origin rendition"
+    },
+    "dimensionsOriginal": [
+      6000,
+      4000
+    ],
+    "dimensionsRendition": [
+      900,
+      600
+    ],
+    "sourcePage": "https://web.archive.org/web/20250425230252/https://www.parcfenestre.com/les-attractions/45-attractions/131-les-tapis-volants",
+    "sourcePublisher": "Parc Fenestre",
+    "individualPhotographer": null,
+    "copyrightLicense": null,
+    "captureMetadata": {
+      "DateTimeOriginal": "2021:07:05 17:16:45",
+      "DateTimeDigitized": "2021:07:05 17:16:45",
+      "timezone": null,
+      "source": "EXIF of original, not archive/access date",
+      "captureYearSupported": 2021
+    },
+    "personallyInspectedFile": "tapis-thumbnail-IMG_1666.JPG",
+    "inspection": "Complete official 900x600 rendition inspected; original retained unchanged. Fenestre location established by Fenes Tower behind this ride. No visible watermark. Do not claim the rendition has been locally edited.",
+    "status": "eligible candidate for private import after root duplicate reconciliation",
+    "priority": 1,
+    "nearDuplicateCaution": "The two photos are 10 seconds apart from nearby viewpoints. Prefer IMG_1666 if only one useful view is needed; do not import both merely to reach a photo count.",
+    "suggestedFrenchCaption": "Les Tapis Volants en mouvement à Fenestre, avec leurs bras jaunes, leurs nacelles colorées et Fenes Tower à l’arrière-plan.",
+    "isCurrentProposed": false,
+    "rootReview": {
+      "selected": "IMG_1666 only, alternate nearby view IMG_1662 not imported to pad coverage",
+      "exactPlace": "Fenes Tower visible; exclude three Bocasse/old-site images",
+      "date": "2021 year in caption from original EXIF, no timezone/server UTC conflation",
+      "noLocalEditing": true,
+      "existingMediaSourceAndOwnerCheck": "No prior Tapis-owned image or IMG1666/1662 source among76 consolidated media",
+      "eightLanguagesPersonallyWrittenAndReviewed": true,
+      "officialNativeRenditionPersonallyInspected": true,
+      "originalExifPersonallyChecked": "6000x4000; DateTimeOriginal and Digitized 2021:07:05 17:16:45, timezone absent"
+    }
+  },
+  "result": {
+    "id": "822bb5768eb7442ca737386adb185775",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "0f5f6630-8784-431e-b123-46dda636f359",
+    "path": "park_item/822bb5768eb7442ca737386adb185775",
+    "description": "En 2021, les tapis rouges passent entre les bras jaunes du manège, devant les conifères de Fenestre.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 900,
+    "height": 600,
+    "sizeInBytes": 804383,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.parcfenestre.com/images/gallery/bagallery/gallery-3/thumbnail/category-1/IMG_1666.JPG?1636038413",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Les Tapis Volants et leurs génies colorés à Fenestre, avec Fenes Tower à l’arrière-plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "Les Tapis Volants and their colourful genies at Fenestre, with Fenes Tower in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Les Tapis Volants mit ihren bunten Flaschengeistern in Fenestre; im Hintergrund steht Fenes Tower."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Les Tapis Volants met hun kleurrijke geesten in Fenestre, met Fenes Tower op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Les Tapis Volants e i loro geni colorati a Fenestre, con Fenes Tower sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Les Tapis Volants y sus genios de colores en Fenestre, con Fenes Tower al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Les Tapis Volants z kolorowymi dżinami w Fenestre, z Fenes Tower w tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Les Tapis Volants e os seus génios coloridos em Fenestre, com a Fenes Tower ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "En 2021, les tapis rouges passent entre les bras jaunes du manège, devant les conifères de Fenestre."
+      },
+      {
+        "languageCode": "en",
+        "value": "In 2021, the red carpets pass between the ride’s yellow arms in front of Fenestre’s conifers."
+      },
+      {
+        "languageCode": "de",
+        "value": "2021 ziehen die roten Teppiche zwischen den gelben Armen des Fahrgeschäfts vor Fenestres Nadelbäumen vorbei."
+      },
+      {
+        "languageCode": "nl",
+        "value": "In 2021 passeren de rode tapijten de gele armen van de attractie, voor de naaldbomen van Fenestre."
+      },
+      {
+        "languageCode": "it",
+        "value": "Nel 2021 i tappeti rossi passano tra i bracci gialli della giostra, davanti alle conifere di Fenestre."
+      },
+      {
+        "languageCode": "es",
+        "value": "En 2021, las alfombras rojas pasan entre los brazos amarillos de la atracción, ante las coníferas de Fenestre."
+      },
+      {
+        "languageCode": "pl",
+        "value": "W 2021 roku czerwone dywany przesuwają się między żółtymi ramionami karuzeli na tle drzew iglastych Fenestre."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Em 2021, os tapetes vermelhos passam entre os braços amarelos da atração, diante das coníferas de Fenestre."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Parc Fenestre — site officiel"
+      },
+      {
+        "languageCode": "en",
+        "value": "Parc Fenestre — official website"
+      },
+      {
+        "languageCode": "de",
+        "value": "Parc Fenestre — offizielle Website"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Parc Fenestre — officiële website"
+      },
+      {
+        "languageCode": "it",
+        "value": "Parc Fenestre — sito ufficiale"
+      },
+      {
+        "languageCode": "es",
+        "value": "Parc Fenestre — sitio oficial"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Parc Fenestre — oficjalna strona"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Parc Fenestre — sítio oficial"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T10:14:36.175Z",
+    "updatedAt": "2026-11-15T10:14:39.766Z"
+  },
+  "review": "Official native rendition personally inspected, original EXIFchecked; Fenestre location established by Fenes Tower, eightlanguagealt/caption/credit personallyauthoredandreviewed; sourcecredit preserved, no photographernamed or openlicenseclaimed, no retouch/crop/capturedateinvented.",
+  "newPublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

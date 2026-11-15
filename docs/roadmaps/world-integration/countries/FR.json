@@ -29221,7 +29221,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T08:57:39.078Z",
+      "lastDataIntegrationAt": "2026-11-15T10:14:39.766Z",
       "integrationHistory": [
         {
           "eventId": "apply-be93f3de-28f8-478f-a238-be12fb6cebab",
@@ -29462,9 +29462,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-cacahuete-birthday-20261115.json",
           "auditEvidence": null,
           "summary": "Fenestre : photo privée cacahuete-birthday, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "apply-da68db60-f798-42dc-8b46-57d1874206d9",
+          "appliedAt": "2026-11-15T10:13:21.728Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-tapis-identity-20261115.json",
+          "auditEvidence": null,
+          "summary": "Tapis Volants privés : huit notices personnelles réécrites, arrivée2019 sourcée officiellement et provenance Aladin/Bocasse rapprochée ; aucune date complète, fabricant ou statut2026 inventé. Zéro warning/erreur."
+        },
+        {
+          "eventId": "image-822bb5768eb7442ca737386adb185775",
+          "appliedAt": "2026-11-15T10:14:39.766Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-tapis-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Les Tapis Volants : photographie officielle tapis importée privée, localisation Fenestre vérifiée, année2021issueEXIF et huitlangues relues. Aucun horodatageUTCcapturé inventé, ni publication/Facebook nouveau."
         }
       ],
-      "nextAction": "Municipalisation1972, qualification Cacahuète sur réservation et gonflable : nouvelles données privées relues8langues ; photo anniversaire importée privée à08:57:39.078UTC. Auditer et publier ce périmètre, poursuivre Guignol et les statuts inconnus. Calendrier2027 vérifié sans mutation, plans2023/2024/2026 conservés. Facebook existant Published confirmé ; visibilité externe à distinguer.",
+      "nextAction": "Tapis Volants qualifiés année2019 et8notices réécrites, photoFenestre2021privée importée15nov10:14:39UTC;56lieux51publics77médias. Parcoursbotanique/Guignol/statutsprivés et auditfinal restent;preuves fenestre-tapis-followup-20261115.json. Aucun site/Facebook nouveau.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

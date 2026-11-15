@@ -1,0 +1,341 @@
+{
+  "preparedAtUtc": "2026-11-15T10:10:50.455323Z",
+  "scope": "Rapprochement documentaire et dépendances locales, aucun appel PDE/Git/mutation/import.",
+  "workingState": {
+    "path": "/workspace/france-historical-20261114/naudieres/working-state.json",
+    "sha256": "c5842b14dc1f78a7f79cdbc72a4d22b14ce2f840d18d8b4c99a1bc222b7443f6"
+  },
+  "conclusion": "La nouveauté 2023 est bien annoncée par le parc dans sa brochure, mais les sources ne distinguent pas première création, rénovation ou remplacement d’une grande traversée en cordes déjà photographiée en 2018. La silhouette peut être corrigée avec certitude sans trancher la continuité historique.",
+  "verified2023Source": {
+    "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/flyer-naudieres-2023.pdf",
+    "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-brochure-2023.pdf",
+    "sha256": "23742913f8e75f43753f7446d6b57236535081fd3cb3a7b399ad13c5d0a8c085",
+    "page": 2,
+    "literalLabel": "24 - Pont suspendu NEW",
+    "occursInLegendAndMap": true,
+    "screenshot": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-brochure-2023-page2.png",
+    "scopeOfProof": "Annonce officielle de nouveauté pour la saison 2023 ; ne documente ni démolition de l’ancien dispositif, ni fabricant, ni réouverture précise."
+  },
+  "physicalEvidence": [
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-pont2.jpg",
+      "page": "https://www.lesnaudieres.com/univers/attraction-aventure/",
+      "observation": "Galerie nominative Le Pont Suspendu : fond souple et garde-corps en filet noir, ouverture entre cadres métalliques verts arrondis, franchissement au-dessus de l’eau. Une petite glissière jaune descend de la plateforme opposée.",
+      "sameOriginalAlreadyImportedAs": "bbea5da86bcb450fb513b6eee9b922e1",
+      "doNotReimport": true
+    },
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/official-pont1.jpg",
+      "page": "https://www.lesnaudieres.com/univers/attraction-aventure/",
+      "observation": "Visiteurs dans la traversée souple ; berge et passerelle de rive visibles sous le filet."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9960.jpg",
+      "page": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "observation": "Visiteuse indique une sortie en mai dernier dans article de juillet 2018. Photo avec grande traversée en cordes, supports colorés et petit toboggan jaune, à côté du kiosque à quatre passages.",
+      "datePrecision": "Month",
+      "photoDate": "2018-05",
+      "exactDayUnknown": true
+    },
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/tnp-report-435.jpg",
+      "page": "https://www.trips-n-pics.com/2022---tnp-agrave-lrsquoouest.html",
+      "observation": "Reportage avril 2022 : kiosque bleu à toit blanc/rouge et chemins rayonnants, grande traversée de cordes à droite ; petit pont piéton rigide arqué visible tout en haut à gauche. Ce dernier est distinct du pont de jeu au-dessus de l’eau.",
+      "datePrecision": "Month",
+      "reportDate": "2022-04",
+      "exactPhotoDayUnknown": true
+    },
+    {
+      "file": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/brochure-2017.pdf",
+      "page": 2,
+      "observation": "Le Pont de corde est nommé et illustré dans le secteur du bassin. L’image petite ne suffit pas à établir une identité administrative ou la date de retrait du dispositif."
+    }
+  ],
+  "dependencies": [
+    {
+      "entityType": "ParkItem",
+      "id": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+      "name": "Pont suspendu",
+      "jsonPointer": "/items/60/attractionDetails/openingDateText",
+      "currentValue": "2023",
+      "sourceUrlField": "https://www.lesnaudieres.com/univers-parc/",
+      "risk": "La chaîne simple 2023 ne distingue pas première ouverture et nouveauté/rénovation. Ne pas la remplacer arbitrairement par 2018 : présence à cette date seulement."
+    },
+    {
+      "entityType": "HistoryEvent",
+      "key": "naudieres-history-pont-suspendu-2023",
+      "id": null,
+      "jsonPointer": "/history/events/22",
+      "year": 2023,
+      "eventType": "Opening",
+      "isVisible": true,
+      "mainImageId": "bbea5da86bcb450fb513b6eee9b922e1",
+      "article": null,
+      "sources": [
+        {
+          "label": "Parc des Naudières — brochure officielle 2023",
+          "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/flyer-naudieres-2023.pdf",
+          "accessedAt": "2026-10-20"
+        }
+      ],
+      "titlePaths": [
+        {
+          "languageCode": "fr",
+          "jsonPointer": "/history/events/22/titles/0/value"
+        },
+        {
+          "languageCode": "en",
+          "jsonPointer": "/history/events/22/titles/1/value"
+        },
+        {
+          "languageCode": "de",
+          "jsonPointer": "/history/events/22/titles/2/value"
+        },
+        {
+          "languageCode": "nl",
+          "jsonPointer": "/history/events/22/titles/3/value"
+        },
+        {
+          "languageCode": "it",
+          "jsonPointer": "/history/events/22/titles/4/value"
+        },
+        {
+          "languageCode": "es",
+          "jsonPointer": "/history/events/22/titles/5/value"
+        },
+        {
+          "languageCode": "pl",
+          "jsonPointer": "/history/events/22/titles/6/value"
+        },
+        {
+          "languageCode": "pt",
+          "jsonPointer": "/history/events/22/titles/7/value"
+        }
+      ],
+      "summaryPaths": [
+        {
+          "languageCode": "fr",
+          "jsonPointer": "/history/events/22/summaries/0/value"
+        },
+        {
+          "languageCode": "en",
+          "jsonPointer": "/history/events/22/summaries/1/value"
+        },
+        {
+          "languageCode": "de",
+          "jsonPointer": "/history/events/22/summaries/2/value"
+        },
+        {
+          "languageCode": "nl",
+          "jsonPointer": "/history/events/22/summaries/3/value"
+        },
+        {
+          "languageCode": "it",
+          "jsonPointer": "/history/events/22/summaries/4/value"
+        },
+        {
+          "languageCode": "es",
+          "jsonPointer": "/history/events/22/summaries/5/value"
+        },
+        {
+          "languageCode": "pl",
+          "jsonPointer": "/history/events/22/summaries/6/value"
+        },
+        {
+          "languageCode": "pt",
+          "jsonPointer": "/history/events/22/summaries/7/value"
+        }
+      ],
+      "currentFrenchSummary": "Le plan 2023 ajoute le Pont suspendu dans la partie sud du parc, près de la Luge et du Pentagliss. Le franchissement au-dessus du terrain boisé rejoint les jeux d’aventure et possède sa propre entrée dans l’inventaire des nouveautés.",
+      "review": "Titre « parmi les nouveautés 2023 » directement étayé. Type Opening relève de la qualification historique et ne prouve pas la première création. Le passage « au-dessus du terrain boisé » est à corriger visuellement : la photo montre l’eau. Ne pas retirer le fait public sans workflow/autorisation appropriés."
+    },
+    {
+      "entityType": "HistoryEvent",
+      "key": "naudieres-history-envol-2023",
+      "id": null,
+      "jsonPointer": "/history/events/21",
+      "year": 2023,
+      "eventType": "Opening",
+      "isVisible": true,
+      "summaryPaths": [
+        {
+          "languageCode": "fr",
+          "jsonPointer": "/history/events/21/summaries/0/value"
+        },
+        {
+          "languageCode": "en",
+          "jsonPointer": "/history/events/21/summaries/1/value"
+        },
+        {
+          "languageCode": "de",
+          "jsonPointer": "/history/events/21/summaries/2/value"
+        },
+        {
+          "languageCode": "nl",
+          "jsonPointer": "/history/events/21/summaries/3/value"
+        },
+        {
+          "languageCode": "it",
+          "jsonPointer": "/history/events/21/summaries/4/value"
+        },
+        {
+          "languageCode": "es",
+          "jsonPointer": "/history/events/21/summaries/5/value"
+        },
+        {
+          "languageCode": "pl",
+          "jsonPointer": "/history/events/21/summaries/6/value"
+        },
+        {
+          "languageCode": "pt",
+          "jsonPointer": "/history/events/21/summaries/7/value"
+        }
+      ],
+      "currentFrenchSummary": "L’Envol d’Holly devient la nouveauté phare de la brochure 2023. Les chaises volantes installent la mascotte dans le nom d’une attraction à sensations, au milieu d’une saison qui apporte aussi Le Renard, le Pont suspendu et Aquaslide.",
+      "review": "Les huit résumés énumèrent le Pont suspendu dans les apports de 2023. L’énumération comme nouveautés annoncées est étayée ; ne pas en déduire absence d’un pont avant 2023. Le fait propre aux chaises volantes et son image ne nécessitent pas de suppression."
+    },
+    {
+      "entityType": "ArticleBlock",
+      "parentEventKey": "naudieres-history-investment-plan-2020",
+      "articleSlug": "naudieres-du-parc-de-plein-air-a-hollyween",
+      "articleIsPublished": true,
+      "blockId": "naudieres-overview-10",
+      "blockType": "Paragraph",
+      "sortOrder": 100,
+      "jsonPointer": "/history/events/11/article/blocks/9",
+      "textPaths": [
+        {
+          "languageCode": "fr",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/0/value"
+        },
+        {
+          "languageCode": "en",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/1/value"
+        },
+        {
+          "languageCode": "de",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/2/value"
+        },
+        {
+          "languageCode": "nl",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/3/value"
+        },
+        {
+          "languageCode": "it",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/4/value"
+        },
+        {
+          "languageCode": "es",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/5/value"
+        },
+        {
+          "languageCode": "pl",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/6/value"
+        },
+        {
+          "languageCode": "pt",
+          "jsonPointer": "/history/events/11/article/blocks/9/texts/7/value"
+        }
+      ],
+      "currentFrenchText": "La saison 2023 donne un autre visage à Holly avec L’Envol d’Holly, ses nouvelles chaises volantes. Le Renard rejoint les gonflables, un Pont suspendu apparaît et Aquaslide enrichit la zone aquatique. La mascotte, déjà liée au jeu d’énigmes, donne désormais son nom à une attraction à sensations.",
+      "review": "Huit langues du même paragraphe disent qu’un pont apparaît en 2023. Qualifier l’annonce/rénovation sans affirmer la première présence, si root choisit cette correction ; garder bloc, slug, publication et autres sujets."
+    }
+  ],
+  "otherFieldsToReviewWithoutChanging2023": [
+    {
+      "entityType": "ParkItem",
+      "id": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+      "paths": [
+        {
+          "languageCode": "fr",
+          "jsonPointer": "/items/60/descriptions/0/value"
+        },
+        {
+          "languageCode": "en",
+          "jsonPointer": "/items/60/descriptions/1/value"
+        },
+        {
+          "languageCode": "de",
+          "jsonPointer": "/items/60/descriptions/2/value"
+        },
+        {
+          "languageCode": "nl",
+          "jsonPointer": "/items/60/descriptions/3/value"
+        },
+        {
+          "languageCode": "it",
+          "jsonPointer": "/items/60/descriptions/4/value"
+        },
+        {
+          "languageCode": "es",
+          "jsonPointer": "/items/60/descriptions/5/value"
+        },
+        {
+          "languageCode": "pl",
+          "jsonPointer": "/items/60/descriptions/6/value"
+        },
+        {
+          "languageCode": "pt",
+          "jsonPointer": "/items/60/descriptions/7/value"
+        }
+      ],
+      "review": "Huit textes emploient arche/passerelle courbe/forme arquée et associent la silhouette jaune à la Luge. Décrire le filet souple au-dessus de l’eau et les cadres verts. Ne pas assimiler la glissière jaune de sortie du pont à la piste Luge ni inventer un sol boisé franchi."
+    },
+    {
+      "entityType": "ParkItem",
+      "id": "ee138650-efee-471a-bb89-90f00f8bc84a",
+      "name": "Pont de corde",
+      "isVisible": false,
+      "status": "Unknown",
+      "openingDateText": null,
+      "closingDateText": null,
+      "descriptionPaths": [
+        {
+          "languageCode": "fr",
+          "jsonPointer": "/items/59/descriptions/0/value"
+        },
+        {
+          "languageCode": "en",
+          "jsonPointer": "/items/59/descriptions/1/value"
+        },
+        {
+          "languageCode": "de",
+          "jsonPointer": "/items/59/descriptions/2/value"
+        },
+        {
+          "languageCode": "nl",
+          "jsonPointer": "/items/59/descriptions/3/value"
+        },
+        {
+          "languageCode": "it",
+          "jsonPointer": "/items/59/descriptions/4/value"
+        },
+        {
+          "languageCode": "es",
+          "jsonPointer": "/items/59/descriptions/5/value"
+        },
+        {
+          "languageCode": "pl",
+          "jsonPointer": "/items/59/descriptions/6/value"
+        },
+        {
+          "languageCode": "pt",
+          "jsonPointer": "/items/59/descriptions/7/value"
+        }
+      ],
+      "review": "Huit textes le qualifient d’ancien ; absence de fermeture datée ou de source établissant retrait/remplacement. Il faut distinguer l’attestation historique de l’affirmation d’une attraction disparue. Pas de fait ni article possédé par cet item dans working-state."
+    }
+  ],
+  "uncertain": [
+    "Continuité de Pont de corde historique vers Pont suspendu actuel, renommage, remplacement ou seconde installation.",
+    "Première ouverture de la traversée ; 2018 est une présence photographiée, 2017 une attestation nominale, 2023 une nouveauté annoncée.",
+    "Étendue et date précise des changements de filets, plateformes ou cadres entre les photographies."
+  ],
+  "safeConclusions": [
+    "Corriger la description physique du pont public à partir de sa photo officielle déjà liée.",
+    "Le marquage NEW 2023 existe : la précédente réserve d’absence de preuve est dépassée par la lecture du PDF.",
+    "Conserver les deux IDs et leurs médias ; aucune fusion ou suppression proposée.",
+    "Aucune nouvelle donnée de fabricant, dimensions, GPS, jour d’ouverture ou restriction historique ne découle de ces comparaisons."
+  ],
+  "noBridgeYearDependenciesFoundElsewhere": "Quatre articles examinés ; seul le bloc naudieres-overview-10 de l’article de synthèse dépend de l’assertion Pont suspendu/2023. Le plan officiel 2023 et le segment /2023/02/ de l’URL image sont des dates documentaires et ne sont pas à corriger."
+}
