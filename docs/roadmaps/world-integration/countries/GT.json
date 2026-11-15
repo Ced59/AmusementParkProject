@@ -356,7 +356,7 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
@@ -372,14 +372,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Rapproché le 15/11/2026 à la fiche Park existante ZZ-park-ac45c555-083f-41af-b99e-686ca20441a0 (ac45c555-083f-41af-b99e-686ca20441a0) sur le site officiel IRTRA et RCDB. Conserver l'entrée de découverte ; ne pas créer un deuxième parc. Revalider l'API avant toute publication.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/17062.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "IRTRA — fiche officielle Xejuyup",
+          "url": "https://irtra.org.gt/parques/?pid=93",
+          "accessedAt": "2026-11-15"
         }
-      ]
+      ],
+      "duplicateOf": "ZZ-park-ac45c555-083f-41af-b99e-686ca20441a0"
     },
     {
       "entryId": "GT-candidate-5c5fa4e5c822dc",
@@ -392,7 +398,7 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -402,14 +408,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Rapproché le 15/11/2026 à la fiche Park existante ZZ-park-ac45c555-083f-41af-b99e-686ca20441a0 (ac45c555-083f-41af-b99e-686ca20441a0) sur le site officiel IRTRA et RCDB. Conserver l'entrée de découverte ; ne pas créer un deuxième parc. Revalider l'API avant toute publication.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Guatemala",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "IRTRA — fiche officielle Xejuyup",
+          "url": "https://irtra.org.gt/parques/?pid=93",
+          "accessedAt": "2026-11-15"
         }
-      ]
+      ],
+      "duplicateOf": "ZZ-park-ac45c555-083f-41af-b99e-686ca20441a0"
     },
     {
       "entryId": "GT-candidate-1933dd2fbfe30f",
@@ -422,7 +434,7 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Operating",
@@ -438,14 +450,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Rapproché le 15/11/2026 à la fiche Park existante ZZ-park-eaa15c7a-2544-4f36-99c7-17f3205ac685 (eaa15c7a-2544-4f36-99c7-17f3205ac685) sur le site officiel IRTRA et RCDB. Conserver l'entrée de découverte ; ne pas créer un deuxième parc. Revalider l'API avant toute publication.",
       "sources": [
         {
           "label": "RCDB",
           "url": "https://rcdb.com/5148.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "IRTRA — fiche officielle Xetulul",
+          "url": "https://irtra.org.gt/parques/?pid=54",
+          "accessedAt": "2026-11-15"
         }
-      ]
+      ],
+      "duplicateOf": "ZZ-park-eaa15c7a-2544-4f36-99c7-17f3205ac685"
     },
     {
       "entryId": "GT-candidate-6d9d34ac1b9e14",
@@ -458,7 +476,7 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -474,14 +492,20 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création.",
+      "nextAction": "Rapproché le 15/11/2026 à la fiche Park existante ZZ-park-eaa15c7a-2544-4f36-99c7-17f3205ac685 (eaa15c7a-2544-4f36-99c7-17f3205ac685) sur le site officiel IRTRA et RCDB. Conserver l'entrée de découverte ; ne pas créer un deuxième parc. Revalider l'API avant toute publication.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_amusement_parks_in_the_Americas#Guatemala",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "IRTRA — fiche officielle Xetulul",
+          "url": "https://irtra.org.gt/parques/?pid=54",
+          "accessedAt": "2026-11-15"
         }
-      ]
+      ],
+      "duplicateOf": "ZZ-park-eaa15c7a-2544-4f36-99c7-17f3205ac685"
     },
     {
       "entryId": "GT-candidate-67d35910006ac1",
@@ -512,6 +536,122 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "ZZ-park-eaa15c7a-2544-4f36-99c7-17f3205ac685",
+      "name": "Xetulul",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": "San Martín Zapotitlán, Retalhuleu",
+      "siteId": "eaa15c7a-2544-4f36-99c7-17f3205ac685",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays GT confirmé documentairement (IRTRA, 15/11/2026). Rapprocher la fiche Park masquée via PARK_DATA_EDITOR, contrôler l'identité et les parkItems, puis intégrer éditorialement. Aucun Apply ni publication effectués par ce changement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "IRTRA — fiche officielle Xetulul",
+          "url": "https://irtra.org.gt/parques/?pid=54",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "RCDB — lieu et ville",
+          "url": "https://rcdb.com/5148.htm",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement documentaire avec les dossiers GT et l’exploitant officiel IRTRA ; code pays de production non modifié.",
+        "countryCode": "GT",
+        "confidence": "Pays confirmé sur source primaire ; correspondance API et parkItems à revalider avant intégration.",
+        "sources": [
+          {
+            "label": "IRTRA — fiche officielle Xetulul",
+            "url": "https://irtra.org.gt/parques/?pid=54",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "RCDB — lieu et ville",
+            "url": "https://rcdb.com/5148.htm",
+            "accessedAt": "2026-11-15"
+          }
+        ]
+      }
+    },
+    {
+      "entryId": "ZZ-park-ac45c555-083f-41af-b99e-686ca20441a0",
+      "name": "Xejuyup",
+      "entityKind": "Park",
+      "proposedEntityKind": "Park",
+      "category": null,
+      "locality": "San Martín Zapotitlán, Retalhuleu",
+      "siteId": "ac45c555-083f-41af-b99e-686ca20441a0",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-10-22",
+      "editorialStatus": "ToIntegrate",
+      "siteReviewStatusAtInventory": "ToReview",
+      "lifecycleAtInventory": "Operating",
+      "sourceLifecycleSignal": "Non vérifié",
+      "identityConfidence": "Identifiant du site",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Pays GT confirmé documentairement (IRTRA, 15/11/2026). Rapprocher la fiche Park masquée via PARK_DATA_EDITOR, contrôler l'identité et les parkItems, puis intégrer éditorialement. Aucun Apply ni publication effectués par ce changement.",
+      "sources": [
+        {
+          "label": "Relevé du site — méthode",
+          "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md",
+          "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "IRTRA — fiche officielle Xejuyup",
+          "url": "https://irtra.org.gt/parques/?pid=93",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "RCDB — lieu et ville",
+          "url": "https://rcdb.com/17062.htm",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": null,
+      "countryResolution": {
+        "method": "Rapprochement documentaire avec les dossiers GT et l’exploitant officiel IRTRA ; code pays de production non modifié.",
+        "countryCode": "GT",
+        "confidence": "Pays confirmé sur source primaire ; correspondance API et parkItems à revalider avant intégration.",
+        "sources": [
+          {
+            "label": "IRTRA — fiche officielle Xejuyup",
+            "url": "https://irtra.org.gt/parques/?pid=93",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "RCDB — lieu et ville",
+            "url": "https://rcdb.com/17062.htm",
+            "accessedAt": "2026-11-15"
+          }
+        ]
+      }
     }
   ]
 }

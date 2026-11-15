@@ -65,6 +65,40 @@ Pour terminer : `--outcome completed --audit reference-audit-final`, avec la dat
 
 Le script refuse les dates futures/invalides, les dates antérieures au dernier événement, les preuves manquantes et la réutilisation contradictoire d’un événement. Il conserve l’ancien UUID lors d’une migration, met à jour la date et régénère la vue nationale et le résumé. Une création passe en présence connue mais visibilité à vérifier ; consigner ensuite la visibilité réellement retournée par la recherche officielle, sans la déduire du seul statut Integrated. Pour actualiser la visibilité ou rouvrir une qualification, modifier le JSON avec une preuve datée, puis régénérer les vues.
 
+## Pilotage qualité mondial P0 à P3
+
+Le [bilan de reprise du 15 novembre 2026](QUALITY-COVERAGE-20261115.md) distingue les
+corrections documentaires sourcées, les recherches locales à poursuivre et les
+intégrations réelles. Le diagnostic suivant est **en lecture seule** et ne modifie
+aucun JSON, aucune vue ni aucune date d'intégration :
+
+```bash
+node --test tools/codex/world-integration-quality.test.mjs
+node tools/codex/world-integration-quality.mjs --format markdown --as-of 2026-11-15 --output /tmp/world-backlog-quality.md
+node tools/codex/world-integration-quality.mjs --format csv --scope triage --as-of 2026-11-15 --output /tmp/world-backlog-triage.csv
+node tools/codex/world-integration-quality.mjs --format csv --scope countries --as-of 2026-11-15 --output /tmp/world-backlog-countries.csv
+```
+
+- **P0 — géographie :** les pays sans observation externe restent « à chercher »,
+  jamais « aucun parc », même si l'annuaire RCDB a été parcouru. Résoudre ZZ
+  uniquement sur des preuves géographiques ; conserver chaque identifiant et
+  l'historique lors d'un déplacement entre registres.
+- **P1 — qualification :** `PossibleExisting`, `ToQualify`, les homonymes et les
+  rattachements standalone restent des dossiers de vérification, et non des
+  créations certaines. L'outil signale localités manquantes, provenances
+  insuffisantes et sources à réexaminer sans déduire de nouvelles vérités.
+- **P2 — intégrations :** les dossiers `NotFound` nécessitent une nouvelle recherche
+  via `PARK_DATA_EDITOR` avant toute création ; les Park masqués, legacy et
+  `NotRelevant` conservent leurs propres traitements, preuves et statuts.
+- **P3 — fraîcheur :** `sources[].accessedAt` désigne la consultation de la
+  référence, pas la date de validation du parc ni la dernière intégration.
+  Ne jamais remplacer `lastDataIntegrationAt` par une date d'inventaire,
+  d'audit documentaire ou de rafraîchissement.
+
+Les fichiers de résultats générés sont des vues de pilotage et **ne remplacent
+pas** les JSON nationaux. Réactualiser la recherche et les preuves sources dans
+le pays concerné avant de modifier les statuts.
+
 ## Vérification et livraison
 
 ```bash

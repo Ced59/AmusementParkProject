@@ -12,7 +12,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 
 | État éditorial | Nombre |
 | --- | ---: |
-| À intégrer | 34 |
+| À intégrer | 32 |
 | À qualifier | 0 |
 | En cours | 0 |
 | Bloqué | 0 |
@@ -25,7 +25,7 @@ Couverture : **Recherche nationale ou locale à compléter**. Observations exter
 
 Pays proposé par rapprochement pour **0** fiches du site sans code pays au relevé ; **0** code(s) déjà renseigné(s) corrigé(s) sur source. Confirmation à effectuer avant modification de production.
 
-Parcs : **0 publiés**, **34 masqués à intégrer**, **37 masqués NotRelevant à réexaminer**, **0 candidats sans fiche**.
+Parcs : **0 publiés**, **32 masqués à intégrer**, **37 masqués NotRelevant à réexaminer**, **0 candidats sans fiche**.
 
 Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **0 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
@@ -103,6 +103,4 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | ZZ-park-8cb0d98e-501a-4323-aef4-cb6f32857455 | William Bird | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | ZZ-park-bb9c8726-0e4a-4ce1-9135-00946da2e7bd | Window on China Theme Park | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | ZZ-park-305ae321-02ae-4181-a9b0-e02e1d764710 | Wonder Land Cairo | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
-| ZZ-park-ac45c555-083f-41af-b99e-686ca20441a0 | Xejuyup | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
-| ZZ-park-eaa15c7a-2544-4f36-99c7-17f3205ac685 | Xetulul | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | ZZ-park-8ba437eb-bff5-4105-b2db-f87da27336d6 | Zabavni Park Maksimovic | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |

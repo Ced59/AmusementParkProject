@@ -5,15 +5,86 @@
   "inventoryDate": "2026-10-22",
   "geographicScope": "Amérique du Nord, centrale et Caraïbes — périmètre national/territorial des sources",
   "geographicGroup": "Amérique du Nord, centrale et Caraïbes",
-  "coverageStatus": "Recherche nationale ou locale à compléter",
-  "sourceObservationCount": 0,
-  "sourceFamilies": [],
+  "coverageStatus": "Pistes sourcées ; compléments locaux requis",
+  "sourceObservationCount": 3,
+  "sourceFamilies": [
+    "Le Tapeur — exploitant officiel",
+    "Zoo de Guadeloupe — site partenaire",
+    "Akropark — exploitant officiel"
+  ],
   "rcdbCountryDirectory": null,
   "notes": [
     "Les fiches publiées sont un repère de présence, pas un audit de complétude effectué aujourd’hui. Leur date d’intégration antérieure reste inconnue.",
     "Les lignes sans fiche sont des dossiers candidats, à confirmer avant création ; un zéro ne prouve pas l’absence de lieux dans le pays.",
     "NotRelevant est conservé avec son motif hérité ; ce classement ne suffit pas à exclure définitivement un vrai lieu. Les doublons legacy ne sont pas comptés deux fois.",
-    "Couverture : Recherche nationale ou locale à compléter. Un pays sans ligne n’est jamais déclaré terminé."
+    "Couverture : pistes sourcées le 15/11/2026 ; compléments locaux requis. Aucun taux de complétude du pays n'est démontré.",
+    "Découverte du 15/11/2026 : pistes issues d'exploitants et offices de tourisme. Absence de vérification du catalogue via PARK_DATA_EDITOR dans ce lot documentaire ; ne pas interpréter PossibleExisting comme une création garantie."
   ],
-  "entries": []
+  "entries": [
+    {
+      "entryId": "GP-candidate-discovery-le-tapeur-20261115",
+      "name": "Le Tapeur — Parc aventure des Mamelles",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "Park",
+      "category": "Parc aventure structuré / accrobranche",
+      "locality": "Bouillante, Guadeloupe",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": null,
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Présenté par une source externe en novembre 2026 ; statut réel à confirmer avant intégration",
+      "identityConfidence": "Exploitant ou office de tourisme sourcé ; absence du catalogue non vérifiée",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher via PARK_DATA_EDITOR les parcs visibles/masqués et attractions standalone, contrôler adresse et parkItems ; qualifier le modèle Park ou standalone, la pertinence et le cycle de vie ; n'intégrer qu'après élimination des doublons. Recherche locale du pays à poursuivre.",
+      "sources": [
+        {
+          "label": "Le Tapeur — exploitant officiel",
+          "url": "https://www.letapeur.fr/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Zoo de Guadeloupe — site partenaire",
+          "url": "https://www.zoodeguadeloupe.com/le-tapeur",
+          "accessedAt": "2026-11-15"
+        }
+      ]
+    },
+    {
+      "entryId": "GP-candidate-discovery-akropark-20261115",
+      "name": "Akropark",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "Park",
+      "category": "Parc aventure familial / accrobranche",
+      "locality": "Petit-Bourg, Guadeloupe",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "PossibleExisting",
+      "presenceObservedAt": null,
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Présenté par une source externe en novembre 2026 ; statut réel à confirmer avant intégration",
+      "identityConfidence": "Exploitant ou office de tourisme sourcé ; absence du catalogue non vérifiée",
+      "possibleMatches": [],
+      "aliases": [],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher via PARK_DATA_EDITOR les parcs visibles/masqués et attractions standalone, contrôler adresse et parkItems ; qualifier le modèle Park ou standalone, la pertinence et le cycle de vie ; n'intégrer qu'après élimination des doublons. Recherche locale du pays à poursuivre.",
+      "sources": [
+        {
+          "label": "Akropark — exploitant officiel",
+          "url": "https://www.akropark.fr/",
+          "accessedAt": "2026-11-15"
+        }
+      ]
+    }
+  ]
 }

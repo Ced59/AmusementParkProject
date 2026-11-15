@@ -7,6 +7,7 @@ on:
       - docs/roadmaps/world-integration/**
       - docs/roadmaps/europe-integration/**
       - tools/codex/integration-backlog*
+      - tools/codex/world-integration-quality*
       - .github/workflows/integration-backlog.yml
   push:
     branches: [master]
@@ -14,6 +15,7 @@ on:
       - docs/roadmaps/world-integration/**
       - docs/roadmaps/europe-integration/**
       - tools/codex/integration-backlog*
+      - tools/codex/world-integration-quality*
       - .github/workflows/integration-backlog.yml
 
 permissions:
@@ -32,6 +34,8 @@ jobs:
           node-version: 24.x
       - name: Test integration tracking
         run: node --test tools/codex/integration-backlog.test.mjs
+      - name: Test world backlog quality diagnostics
+        run: node --test tools/codex/world-integration-quality.test.mjs
       - name: Read previous registry
         uses: actions/checkout@v7
         if: github.event_name == 'pull_request' || github.event.before != '0000000000000000000000000000000000000000'

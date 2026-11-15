@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12343 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12349 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -10,18 +10,18 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 
 Compléments datés du relevé : [créations standalone candidates](CREATIONS-STANDALONE.md), [couverture des alpine / mountain coasters](ALPINE-COASTER-COVERAGE.md), [contrôle de la découverte externe](DISCOVERY-COVERAGE.md) et [prompts France / Portugal](PROMPTS-FR-PT.md). Le nombre de créations candidates ne représente pas le nombre mondial d’installations. Les JSON et les compteurs régénérés ci-dessous prévalent après les intégrations ultérieures.
 
-**Pays manquants dans la base :** 275 fiches sont rattachées ici par rapprochement avec des sources, à confirmer pendant leur reprise. Ce classement documentaire ne modifie pas leur pays dans le site. 1 autre(s) fiche(s) ont un code pays renseigné mais corrigé ici sur source, avec leur identifiant stable conservé. Les cas non résolus restent dans [ZZ](countries/ZZ.md). Les compteurs européens corrigent donc la première photographie qui se limitait aux codes pays renseignés.
+**Pays manquants dans la base :** 277 fiches sont rattachées ici par rapprochement avec des sources, à confirmer pendant leur reprise. Ce classement documentaire ne modifie pas leur pays dans le site. 1 autre(s) fiche(s) ont un code pays renseigné mais corrigé ici sur source, avec leur identifiant stable conservé. Les cas non résolus restent dans [ZZ](countries/ZZ.md). Les compteurs européens corrigent donc la première photographie qui se limitait aux codes pays renseignés.
 
 ## Totaux mondiaux
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 324 | 1871 | 7551 |
+| Parcs | 324 | 1871 | 7550 |
 | Standalone | 246 | 1 | 120 |
 
 **Reprise standalone :** en plus des 120 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **559 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **72** types à décider, **1273** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **72** types à décider, **1276** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -675,8 +675,8 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [États-Unis](countries/US.md) | 38 | 232 | 21 | 1526 | 2621 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 |
-| [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 |
-| [Guatemala](countries/GT.md) | 0 | 1 | 0 | 11 | 16 |
+| [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 3 |
+| [Guatemala](countries/GT.md) | 0 | 3 | 0 | 10 | 16 |
 | [Haïti](countries/HT.md) | 1 | 0 | 0 | 2 | 5 |
 | [Honduras](countries/HN.md) | 0 | 0 | 0 | 4 | 6 |
 | [Îles Caïmans](countries/KY.md) | 0 | 0 | 0 | 0 | 0 |
@@ -684,7 +684,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Îles Vierges britanniques](countries/VG.md) | 0 | 0 | 0 | 0 | 0 |
 | [Îles Vierges des États-Unis](countries/VI.md) | 0 | 0 | 0 | 0 | 0 |
 | [Jamaïque](countries/JM.md) | 0 | 1 | 0 | 3 | 8 |
-| [Martinique](countries/MQ.md) | 0 | 0 | 0 | 0 | 0 |
+| [Martinique](countries/MQ.md) | 0 | 0 | 0 | 0 | 2 |
 | [Mexique](countries/MX.md) | 2 | 6 | 1 | 87 | 139 |
 | [Montserrat](countries/MS.md) | 0 | 0 | 0 | 0 | 0 |
 | [Nicaragua](countries/NI.md) | 0 | 0 | 0 | 1 | 1 |
@@ -701,7 +701,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 1 | 1 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 3 | 4 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 3 | 3 |
-| **Total** | **41** | **265** | **24** | **1770** | **3039** |
+| **Total** | **41** | **267** | **24** | **1769** | **3044** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -722,8 +722,8 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [États-Unis](countries/US.md) | 31 | 0 | 30 | 2 | 174 | 0 |
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Guatemala](countries/GT.md) | 0 | 0 | 0 | 0 | 3 | 0 |
+| [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 2 | 0 |
+| [Guatemala](countries/GT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Haïti](countries/HT.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Honduras](countries/HN.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Îles Caïmans](countries/KY.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -731,7 +731,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Îles Vierges britanniques](countries/VG.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Îles Vierges des États-Unis](countries/VI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Jamaïque](countries/JM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
-| [Martinique](countries/MQ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Martinique](countries/MQ.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Mexique](countries/MX.md) | 0 | 0 | 1 | 0 | 8 | 0 |
 | [Montserrat](countries/MS.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Nicaragua](countries/NI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -895,15 +895,15 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Nouvelle-Zélande](countries/NZ.md) | 0 | 1 | 0 | 24 | 33 |
 | [Palaos](countries/PW.md) | 0 | 0 | 0 | 1 | 1 |
 | [Papouasie-Nouvelle-Guinée](countries/PG.md) | 0 | 0 | 0 | 2 | 2 |
-| [Polynésie française](countries/PF.md) | 0 | 0 | 0 | 0 | 0 |
+| [Polynésie française](countries/PF.md) | 0 | 0 | 0 | 0 | 3 |
 | [Samoa](countries/WS.md) | 0 | 0 | 0 | 0 | 0 |
 | [Samoa américaines](countries/AS.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tokelau](countries/TK.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tonga](countries/TO.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tuvalu](countries/TV.md) | 0 | 0 | 0 | 0 | 0 |
-| [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 0 |
+| [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 2 |
 | [Wallis-et-Futuna](countries/WF.md) | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **2** | **14** | **2** | **89** | **174** |
+| **Total** | **2** | **14** | **2** | **89** | **179** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -927,15 +927,15 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Nouvelle-Zélande](countries/NZ.md) | 5 | 0 | 3 | 0 | 1 | 0 |
 | [Palaos](countries/PW.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Papouasie-Nouvelle-Guinée](countries/PG.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Polynésie française](countries/PF.md) | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Polynésie française](countries/PF.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Samoa](countries/WS.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Samoa américaines](countries/AS.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tokelau](countries/TK.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tonga](countries/TO.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tuvalu](countries/TV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 0 | 0 |
+| [Vanuatu](countries/VU.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Wallis-et-Futuna](countries/WF.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **7** | **0** | **4** | **0** | **12** | **0** |
+| **Total** | **7** | **0** | **4** | **0** | **15** | **0** |
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **7**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
@@ -1017,8 +1017,8 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 
 | Pays / territoire | Publiés¹ | Masqués à intégrer | Masqués NotRelevant à réexaminer | Sans fiche : candidats parcs | Observations externes |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| [Pays à déterminer](countries/ZZ.md) | 0 | 34 | 37 | 0 | 0 |
-| **Total** | **0** | **34** | **37** | **0** | **0** |
+| [Pays à déterminer](countries/ZZ.md) | 0 | 32 | 37 | 0 | 0 |
+| **Total** | **0** | **32** | **37** | **0** | **0** |
 
 ### Attractions standalone et dossiers à trancher
 
