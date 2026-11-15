@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "12b82f659a84a6dc554d9d40e9c760f3d922c25e73dfdacf12dff53ab5417bab",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "f7e99d0b-8c1e-47e5-9433-e9663ac78602",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:08:54.3557101Z",
+    "appliedAtUtc": "2026-11-15T01:08:54.3557108Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+        "entityKey": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+        "displayName": "O'resto d'Iros",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Der Tisch des Parks</h2><p>Oʼresto dʼIros bündelt die Gastronomie des Parks an einem klar erkennbaren Ort. Das Angebot reicht vom schnellen Imbiss bis zur größeren Mahlzeit mit Burgern, Panini, Hotdogs, Gerichten und Pommes.</p><p>Waffeln und Getränke ergänzen die Karte um eine süße oder erfrischende Pause. So begleitet das Restaurant verschiedene Tagesmomente und bewahrt die gesellige Atmosphäre.</p><h2>Eine Pause mitten in LʼÎle aux Géants</h2><p>Das Restaurant gehört zur Identität des Parks und ermöglicht eine Pause in der grünen Umgebung. Die veröffentlichte Karte zeigt das Angebot, ohne bei wechselnder Verfügbarkeit ein bestimmtes Produkt zu versprechen.</p>",
+            "newValue": "<h2>Die gelbe Fassade von Iros</h2><p>O’resto d’Iros erkennt man an seiner langen gelben Front mit Blumen, Schlangen und einer schelmischen Figur mit Bratpfanne. Die breiten Theken öffnen sich zu einer Terrasse mit grünem Boden, Flechtsesseln und roten Sonnenschirmen.</p><h2>Vom Iros-Burger zu Waffeln</h2><p>Der namensgebende Iros-Burger verbindet einen Kartoffelpuffer mit Rindfleisch, Salatgemüse, Käse und Speck. Beim Montagnard ergänzt Raclettekäse die herzhafte Karte, zu der auch Panini und Hotdogs gehören. An der süßen Theke werden Waffeln als Tüten oder flache Portionen gezeigt; ihre bunten Beläge greifen die appetitliche Bemalung der Fassade auf.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The parkʼs dining spot</h2><p>Oʼresto dʼIros brings the parkʼs food offer together at an identifiable stop during the visit. Its menu covers quick cravings and fuller meals with burgers, paninis, hot dogs, dishes and chips.</p><p>Waffles and drinks extend the menu towards a sweet or refreshing break. That variety lets the restaurant suit different moments of the day while keeping the siteʼs welcoming atmosphere.</p><h2>A break within LʼÎle aux Géants</h2><p>The restaurant is fully part of the parkʼs identity, allowing guests to remain in its leafy environment between experiences. The published menu outlines the offer without promising a particular item when availability changes.</p>",
+            "newValue": "<h2>Iros’s yellow frontage</h2><p>O’resto d’Iros is recognisable by its long yellow frontage, decorated with flowers, snakes and a mischievous character holding a frying pan. Its broad counters open onto a green-floored terrace with woven chairs and red parasols.</p><h2>From the Iros burger to waffles</h2><p>The menu’s namesake Iros burger combines a potato patty with beef, salad vegetables, cheese and bacon. The Montagnard brings raclette cheese to the savoury menu, alongside paninis and hot dogs. At the sweet counter, waffles are displayed as cones or flat portions, their colourful toppings echoing the food-themed decoration outside.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La mesa del parque</h2><p>Oʼresto dʼIros reúne la restauración del parque en un punto reconocible de la visita. Su oferta abarca tentempiés y comidas más completas con hamburguesas, paninis, perritos, platos y patatas fritas.</p><p>Los gofres y las bebidas amplían la carta hacia una pausa dulce o refrescante. Esa variedad permite al restaurante acompañar distintos momentos del día manteniendo el ambiente acogedor.</p><h2>Una pausa dentro de LʼÎle aux Géants</h2><p>El restaurante forma parte de la identidad del parque y permite permanecer en su entorno arbolado entre experiencias. La carta publicada presenta la oferta sin prometer un producto concreto cuando cambia la disponibilidad.</p>",
+            "newValue": "<h2>La fachada amarilla de Iros</h2><p>O’resto d’Iros se reconoce por su larga fachada amarilla, adornada con flores, serpientes y un personaje travieso que lleva una sartén. Sus amplios mostradores dan a una terraza de suelo verde, con sillones trenzados y sombrillas rojas.</p><h2>De la hamburguesa Iros a los gofres</h2><p>La hamburguesa Iros combina una tortita de patata con carne de vacuno, hortalizas crudas, queso y beicon. La Montagnard incorpora raclette a la carta salada, que también incluye paninis y perritos calientes. En el mostrador dulce se exhiben gofres en forma de cono o planos, con coberturas de colores que prolongan la decoración gastronómica de la fachada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La table du parc</h2><p>Oʼresto dʼIros réunit la restauration du parc dans un point identifiable au milieu de la visite. Son offre couvre les envies rapides comme les repas plus complets, avec burgers, paninis, hot-dogs, plats et frites.</p><p>Les gaufres et les boissons prolongent la carte vers une pause sucrée ou rafraîchissante. Cette variété permet au restaurant dʼaccompagner différents moments de la journée sans changer lʼatmosphère conviviale du site.</p><h2>Une pause intégrée à LʼÎle aux Géants</h2><p>Le restaurant appartient pleinement à lʼidentité du parc : il permet de rester dans son environnement arboré entre deux expériences. La carte publiée donne un aperçu de lʼoffre, sans promettre un produit précis lorsque les disponibilités évoluent.</p>",
+            "newValue": "<h2>La façade jaune d’Iros</h2><p>O’resto d’Iros se reconnaît à sa longue devanture jaune, ornée de fleurs, de serpents et d’un personnage malicieux muni d’une poêle. Les grands comptoirs s’ouvrent sur une terrasse au sol vert, avec des fauteuils tressés et des parasols rouges.</p><h2>Du burger Iros aux gaufres</h2><p>La carte donne son nom au burger Iros, composé d’une galette de pomme de terre, de steak, de crudités, de fromage et de bacon. Le Montagnard ajoute la raclette aux saveurs de la carte salée, qui comprend aussi paninis et hot-dogs. Au comptoir sucré, les gaufres s’affichent en cornets ou à plat, avec des garnitures colorées qui prolongent le décor gourmand de la devanture.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La tavola del parco</h2><p>Oʼresto dʼIros riunisce la ristorazione del parco in un punto riconoscibile della visita. La proposta comprende spuntini e pasti più completi con hamburger, panini, hot dog, piatti e patatine.</p><p>Cialde e bevande completano la carta per una pausa dolce o rinfrescante. Questa varietà permette al ristorante di accompagnare momenti diversi conservando lʼatmosfera conviviale.</p><h2>Una pausa dentro LʼÎle aux Géants</h2><p>Il ristorante fa pienamente parte dellʼidentità del parco e permette di restare nellʼambiente verde tra due esperienze. La carta pubblicata illustra lʼofferta senza promettere un prodotto specifico quando cambia la disponibilità.</p>",
+            "newValue": "<h2>La facciata gialla di Iros</h2><p>O’resto d’Iros si riconosce dalla lunga facciata gialla, decorata con fiori, serpenti e un personaggio birichino con una padella. Gli ampi banconi si aprono su una terrazza dal pavimento verde, con poltroncine intrecciate e ombrelloni rossi.</p><h2>Dal burger Iros ai waffle</h2><p>Il burger Iros unisce una schiacciatina di patate a carne bovina, verdure crude, formaggio e bacon. Il Montagnard aggiunge la raclette alla proposta salata, che comprende anche panini e hot dog. Al banco dei dolci, i waffle sono presentati a cono o distesi, con guarnizioni colorate che richiamano le golose decorazioni della facciata.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De eetplek van het park</h2><p>Oʼresto dʼIros brengt de horeca van het park samen op een herkenbare plek. Het aanbod loopt van een snelle hap tot een vollere maaltijd met burgers, paniniʼs, hotdogs, gerechten en friet.</p><p>Wafels en dranken vullen de kaart aan voor een zoete of verfrissende pauze. Dankzij die variatie past het restaurant bij verschillende momenten van de dag en blijft de sfeer gezellig.</p><h2>Een pauze binnen LʼÎle aux Géants</h2><p>Het restaurant hoort bij de identiteit van het park en laat bezoekers tussen ervaringen in de groene omgeving blijven. De gepubliceerde kaart schetst het aanbod zonder bij wisselende beschikbaarheid één product te beloven.</p>",
+            "newValue": "<h2>De gele gevel van Iros</h2><p>O’resto d’Iros is herkenbaar aan de lange gele gevel met bloemen, slangen en een ondeugend figuurtje met een koekenpan. De brede balies komen uit op een terras met een groene vloer, gevlochten stoelen en rode parasols.</p><h2>Van de Iros-burger tot wafels</h2><p>De gelijknamige Iros-burger combineert een aardappelkoek met rundvlees, rauwkost, kaas en spek. De Montagnard voegt raclettekaas toe aan de hartige kaart, waarop ook panini’s en hotdogs staan. Bij de zoete balie worden wafels als hoorntjes of platte porties getoond, met kleurrijke toppings die aansluiten op de beschilderde lekkernijen aan de gevel.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Parkowa jadalnia</h2><p>Oʼresto dʼIros skupia gastronomię parku w rozpoznawalnym punkcie wizyty. Oferta obejmuje szybką przekąskę i pełniejszy posiłek: burgery, panini, hot dogi, dania oraz frytki.</p><p>Gofry i napoje rozszerzają kartę o słodką lub orzeźwiającą przerwę. Ta różnorodność pozwala restauracji pasować do różnych pór dnia i zachować przyjazną atmosferę.</p><h2>Przerwa wewnątrz LʼÎle aux Géants</h2><p>Restauracja jest częścią tożsamości parku i pozwala pozostać w zielonym otoczeniu między atrakcjami. Opublikowana karta przedstawia ofertę bez obiecywania konkretnego produktu przy zmiennej dostępności.</p>",
+            "newValue": "<h2>Żółta fasada Iros</h2><p>O’resto d’Iros wyróżnia długa żółta fasada ozdobiona kwiatami, wężami i figlarną postacią z patelnią. Szerokie lady wychodzą na taras z zieloną podłogą, plecionymi fotelami i czerwonymi parasolami.</p><h2>Od burgera Iros po gofry</h2><p>Burger Iros łączy placek ziemniaczany z wołowiną, surowymi warzywami, serem i bekonem. Montagnard wzbogaca słoną kartę o ser raclette; są w niej także panini i hot dogi. Przy ladzie ze słodyczami prezentowane są gofry zwinięte w rożki lub płaskie, a ich kolorowe dodatki nawiązują do apetycznych malowideł na fasadzie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>A mesa do parque</h2><p>Oʼresto dʼIros reúne a restauração do parque num ponto reconhecível da visita. A oferta abrange desejos rápidos e refeições mais completas com hambúrgueres, paninis, cachorros, pratos e batatas fritas.</p><p>Os waffles e as bebidas prolongam a ementa para uma pausa doce ou refrescante. Esta variedade permite ao restaurante acompanhar diferentes momentos do dia mantendo o ambiente acolhedor.</p><h2>Uma pausa dentro da LʼÎle aux Géants</h2><p>O restaurante faz parte da identidade do parque e permite permanecer no ambiente arborizado entre experiências. A ementa publicada apresenta a oferta sem prometer um produto específico quando a disponibilidade muda.</p>",
+            "newValue": "<h2>A fachada amarela de Iros</h2><p>O’resto d’Iros reconhece-se pela longa fachada amarela, decorada com flores, serpentes e uma personagem traquina com uma frigideira. Os largos balcões abrem para uma esplanada de chão verde, com cadeiras entrançadas e chapéus de sol vermelhos.</p><h2>Do hambúrguer Iros aos waffles</h2><p>O hambúrguer Iros combina uma tortinha de batata com carne de vaca, legumes crus, queijo e bacon. O Montagnard acrescenta raclette à ementa salgada, que inclui também paninis e cachorros-quentes. No balcão dos doces, os waffles apresentam-se em cones ou planos, com coberturas coloridas que prolongam a decoração gastronómica da fachada.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

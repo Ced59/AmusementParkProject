@@ -3,7 +3,7 @@
   "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T00:55:42.691853+00:00",
+  "observedAtUtc": "2026-11-15T01:10:22.579724+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -50,15 +50,16 @@
     "items": 21,
     "publicItems": 21,
     "itemsWithDescriptionEightLanguages": 21,
-    "itemDescriptionsPersonallyRewrittenThisRun": 9,
+    "itemDescriptionsPersonallyRewrittenThisRun": 17,
     "parkDescriptionLanguagesRewritten": 8,
-    "images": 19,
-    "ownPhotoOrCutoutImagesOfItems": 16,
+    "images": 21,
+    "ownPhotoOrCutoutImagesOfItems": 18,
     "parkPromotionalMontages": 2,
     "logo": 1,
     "existingHistoryEvents": 1,
     "existingArticles": 1,
-    "fixedItemCoordinates": 0
+    "fixedItemCoordinates": 0,
+    "newPrivateImages": 2
   },
   "acceptedApplies": [
     {
@@ -112,6 +113,45 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-flight-identities-20261115.json"
+    },
+    {
+      "operationId": "b8b889a9-de1d-49f4-ad08-e10fcc72fd12",
+      "appliedAtUtc": "2026-11-15T00:59:58.4631488Z",
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-play-areas-20261115.json"
+    },
+    {
+      "operationId": "29ce9c9b-2137-412a-bd3d-b0284e5bb339",
+      "appliedAtUtc": "2026-11-15T01:05:25.5852868Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-fairground-classics-20261115.json"
+    },
+    {
+      "operationId": "f7e99d0b-8c1e-47e5-9433-e9663ac78602",
+      "appliedAtUtc": "2026-11-15T01:08:54.3557108Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-restaurant-20261115.json"
     }
   ],
   "reviewedItems": [
@@ -123,21 +163,21 @@
     "La Chenille",
     "Le Grand 8",
     "Star Flyer",
-    "Star Tower"
-  ],
-  "remainingItemsToReview": [
-    "Aires de pique-nique",
+    "Star Tower",
+    "Trampolines",
+    "Trampolines n° 2",
+    "Labyrinthes",
+    "Toboggan des Géants",
     "Bateau Pirate",
     "Carrousel 1900",
     "Grande roue",
-    "Labyrinthes",
+    "O'resto d'Iros"
+  ],
+  "remainingItemsToReview": [
+    "Aires de pique-nique",
     "Manège enchanté",
-    "O'resto d'Iros",
     "Pataugeoire",
-    "Petit train",
-    "Toboggan des Géants",
-    "Trampolines",
-    "Trampolines n° 2"
+    "Petit train"
   ],
   "criticalCorrection": {
     "StarTower": "Chair swing tower confirmed by official star-tower-chevauchee-Copie.jpg; old DropTower corrected to FlatRide.",
@@ -306,7 +346,29 @@
         "sha256": "82d010284183b94d3d9ed36c042e691538b08727905abab6b54bcc84b0df32bf"
       }
     ],
-    "officialFacebookPage": "https://www.facebook.com/ileauxgeants"
+    "officialFacebookPage": "https://www.facebook.com/ileauxgeants",
+    "restaurantPhotos": [
+      {
+        "stem": "restaurant-facade",
+        "sourcePageUrl": "https://ileauxgeants.fr/restauration/",
+        "sourceUrl": "https://ileauxgeants.fr/wp-content/uploads/2021/10/252966433_416572776804087_8371912321317464438_n-scaled.jpg",
+        "sha256": "b6bd4e105af3a1f9962d17a7081b794bd0585ae5a01201a75f101e72776082ad",
+        "visuallyInspected": true,
+        "watermark": false,
+        "captureDate": null,
+        "review": "Photographie originale examinée personnellement ; deuxième photo montrant des modèles de présentation de gaufres, non des plats prétendus servis. Pas de millésime inventé ; fichiers distincts des 19 médias précédents."
+      },
+      {
+        "stem": "restaurant-counter",
+        "sourcePageUrl": "https://ileauxgeants.fr/restauration/",
+        "sourceUrl": "https://ileauxgeants.fr/wp-content/uploads/2021/10/255961232_2009621439211199_2137361256606232977_n-scaled.jpg",
+        "sha256": "e83a3bc65d7f39de6907da46a9bcf57b9007988481fe854cd54e160ce007e547",
+        "visuallyInspected": true,
+        "watermark": false,
+        "captureDate": null,
+        "review": "Photographie originale examinée personnellement ; deuxième photo montrant des modèles de présentation de gaufres, non des plats prétendus servis. Pas de millésime inventé ; fichiers distincts des 19 médias précédents."
+      }
+    ]
   },
   "gaps": {
     "watermarkedExistingImageIds": [
@@ -326,7 +388,6 @@
     "noOwnImageItems": [
       "Aires de pique-nique",
       "Manège enchanté",
-      "O'resto d'Iros",
       "Pataugeoire",
       "Petit train"
     ],
@@ -367,6 +428,22 @@
     "newAnnouncementSent": false
   },
   "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-geants",
-  "workingStateSha256": "8be093d730c6695a8aab1d4e622b55ea0273d9f0d1186ad88d9b1285a76a51d1",
-  "nextAction": "Continue 12 remaining item descriptions and all old image texts; reconcile founder/global aliases, qualify extra official-gallery entities and history, find usable photos/maps and validate pricing/full official future calendar. Only then final full export/audit. No completion merely at98."
+  "workingStateSha256": "8c9242290d37c6b370dbe223ade13a06dfd421570a83eac76cc5713ba87fa55d",
+  "nextAction": "Poursuivre les quatre dernières notices, les textes images, les photos, les références et histoire, puis horaires/tarifs. Deux photos restaurant privées à inclure dans audit/publication. Aucun export complet final ni clôture.",
+  "acceptedImports": [
+    {
+      "imageId": "c5ea8c26cbd547008c1db3708c3290cf",
+      "ownerId": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+      "serverIntegrationAtUtc": "2026-11-15T01:09:23.427Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-restaurant-facade-20261115.json"
+    },
+    {
+      "imageId": "d1c04f7ed27f4fc4995e0f541591c566",
+      "ownerId": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+      "serverIntegrationAtUtc": "2026-11-15T01:09:44.663Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-restaurant-counter-20261115.json"
+    }
+  ]
 }

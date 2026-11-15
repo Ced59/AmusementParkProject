@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "8063162350bb9daa7b5a710292f2c717ac28ad22755aff7e2fb7512bf75a037c",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "b8b889a9-de1d-49f4-ad08-e10fcc72fd12",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:59:58.4631476Z",
+    "appliedAtUtc": "2026-11-15T00:59:58.4631488Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06eb4048-eadc-4095-a8a7-74ef63c2dff1",
+        "entityKey": "06eb4048-eadc-4095-a8a7-74ef63c2dff1",
+        "displayName": "Trampolines",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein Raum zum Abspringen</h2><p>Die Trampoline bieten Kindern einen Bereich für Sprünge und Gleichgewicht. Jede Bewegung wird zu einem kleinen Flug in der offenen, grünen Atmosphäre des Parks.</p><p>Eine Folge von Sprüngen lädt zum Ausprobieren ein: Halt finden und mit wachsender Sicherheit erneut starten. Keine vorgegebene Geschichte bestimmt das Erlebnis; sein Rhythmus entsteht aus der Energie jedes Kindes.</p><h2>Ein Spielraum voller eigener Energie</h2><p>Der Bereich besitzt eine klare Identität: aktives Spiel, bei dem junge Gäste Höhe und Rhythmus selbst gestalten. Diese Bewegungsfreiheit unterscheidet sich deutlich von Fahrgeschäften mit festem Ablauf.</p>",
+            "newValue": "<h2>Jumpy und seine gezeichneten Kängurus</h2><p>Die Trampolines liegen hinter einem großen „Jumpy“-Schild. Auf den oberen Tafeln springen gezeichnete Kängurus zwischen Palmen, über einem von Netzen umgebenen Bereich.</p><p>Rosa, Gelb und Blau finden sich an den gepolsterten Pfosten und bunten Taschen der Vorderseite wieder. So greift die Gestaltung dieses Sprungbereichs bis zum Eingang die hüpfenden Tiere auf.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A space to build momentum</h2><p>The trampolines give children an area devoted to bouncing and balance. Each jump turns a simple movement into a brief flight amid the parkʼs open, leafy setting.</p><p>A sequence of bounces lets children experiment, regain their footing and try again with greater confidence. There is no imposed story: the rhythm comes directly from each childʼs energy.</p><h2>A play space with its own energy</h2><p>This area has a clear identity: active play where younger visitors create the height and rhythm themselves. It offers a freedom of movement very different from rides that set their own course.</p>",
+            "newValue": "<h2>Jumpy and its cartoon kangaroos</h2><p>The Trampolines stand behind a large ‘Jumpy’ sign. Cartoon kangaroos leap among palms on the upper panels, above an area enclosed by netting.</p><p>Pink, yellow and blue appear on the padded uprights and colourful pockets across the front. The jumping area’s scenery echoes the animals’ leaps right down to its entrance.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un espacio para tomar impulso</h2><p>Las camas elásticas ofrecen a los niños un espacio dedicado al salto y al equilibrio. Cada movimiento se convierte en un pequeño vuelo dentro del ambiente abierto y arbolado del parque.</p><p>La sucesión de saltos permite probar, recuperar el apoyo y volver a empezar con más confianza. No hay una historia impuesta: el ritmo nace directamente de la energía de cada niño.</p><h2>Un espacio de juego con energía propia</h2><p>El espacio tiene una identidad clara: juego activo donde los jóvenes visitantes crean por sí mismos altura y ritmo. Ofrece una libertad de movimiento muy distinta de las atracciones con recorrido fijado.</p>",
+            "newValue": "<h2>Jumpy y sus canguros dibujados</h2><p>Los Trampolines se encuentran detrás de un gran rótulo «Jumpy». En los paneles superiores, unos canguros dibujados saltan entre palmeras sobre un espacio rodeado de redes.</p><p>El rosa, el amarillo y el azul se repiten en los postes acolchados y los bolsillos de colores de la fachada. El decorado de esta zona de salto evoca así los brincos de los animales desde la entrada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un espace pour prendre son élan</h2><p>Les Trampolines offrent aux enfants un terrain consacré au rebond et à lʼéquilibre. Chaque saut transforme un geste simple en petite envolée, au milieu de lʼambiance ouverte et arborée du parc.</p><p>La succession des bonds permet dʼessayer, de retrouver son appui puis de recommencer avec davantage dʼassurance. Lʼexpérience ne suit pas une histoire imposée : son rythme naît directement de lʼénergie de chaque enfant.</p><h2>Un terrain dʼénergie bien à lui</h2><p>Cet espace possède une identité claire : un jeu actif où les jeunes visiteurs créent eux-mêmes la hauteur et le rythme. Il offre une liberté de mouvement très différente des manèges qui imposent leur trajectoire.</p>",
+            "newValue": "<h2>Jumpy et ses kangourous dessinés</h2><p>Les Trampolines se cachent derrière une grande enseigne « Jumpy ». Des kangourous dessinés bondissent parmi des palmiers sur les panneaux supérieurs, au-dessus d’un espace entouré de filets.</p><p>Le rose, le jaune et le bleu se retrouvent sur les montants rembourrés et les poches colorées de la façade. Le décor de cette aire de saut reprend ainsi les bonds des animaux jusque dans son entrée.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Uno spazio per prendere slancio</h2><p>I trampolini offrono ai bambini uno spazio dedicato a salti ed equilibrio. Ogni gesto diventa un piccolo volo nellʼatmosfera aperta e verde del parco.</p><p>Una sequenza di salti permette di provare, ritrovare lʼappoggio e ripartire con maggiore sicurezza. Nessuna storia imposta guida lʼesperienza: il ritmo nasce dallʼenergia di ogni bambino.</p><h2>Uno spazio di gioco con energia propria</h2><p>Lo spazio ha unʼidentità precisa: gioco attivo in cui i giovani visitatori creano da soli altezza e ritmo. Offre una libertà di movimento molto diversa dalle giostre con percorso stabilito.</p>",
+            "newValue": "<h2>Jumpy e i suoi canguri disegnati</h2><p>I Trampolines si trovano dietro una grande insegna «Jumpy». Sui pannelli superiori, canguri disegnati saltano tra le palme sopra uno spazio circondato da reti.</p><p>Rosa, giallo e blu ricompaiono sui montanti imbottiti e sulle tasche colorate della facciata. Il decoro di quest’area per saltare richiama così i balzi degli animali fin dall’ingresso.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een plek om af te zetten</h2><p>De trampolines geven kinderen een plek voor sprongen en evenwicht. Elke beweging wordt een korte vlucht in de open, groene sfeer van het park.</p><p>Een reeks sprongen laat kinderen proberen, opnieuw steun vinden en met meer vertrouwen verdergaan. Er is geen opgelegd verhaal: het ritme ontstaat uit de energie van ieder kind.</p><h2>Een speelplek met een eigen energie</h2><p>Deze plek heeft een duidelijke identiteit: actief spel waarin jonge bezoekers zelf hoogte en ritme bepalen. Die bewegingsvrijheid verschilt sterk van attracties met een vast parcours.</p>",
+            "newValue": "<h2>Jumpy en zijn getekende kangoeroes</h2><p>De Trampolines staan achter een groot bord met ‘Jumpy’. Op de bovenste panelen springen getekende kangoeroes tussen palmbomen, boven een ruimte die door netten is omgeven.</p><p>Roze, geel en blauw komen terug op de beklede palen en kleurrijke opbergvakken aan de voorkant. Zo sluit het decor van deze springplek tot bij de ingang aan op de sprongen van de dieren.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Miejsce do nabierania rozpędu</h2><p>Trampoliny dają dzieciom przestrzeń poświęconą podskokom i równowadze. Każdy ruch zmienia się w krótki lot w otoczeniu otwartego, zielonego parku.</p><p>Seria podskoków pozwala próbować, odzyskiwać równowagę i zaczynać ponownie z większą pewnością. Nie ma narzuconej opowieści: rytm tworzy energia każdego dziecka.</p><h2>Przestrzeń zabawy z własną energią</h2><p>Ta przestrzeń ma wyraźną tożsamość: aktywna zabawa, w której młodzi goście sami tworzą wysokość i rytm. Swoboda ruchu mocno różni ją od atrakcji z wyznaczonym przebiegiem.</p>",
+            "newValue": "<h2>Jumpy i rysunkowe kangury</h2><p>Trampolines znajdują się za dużym szyldem „Jumpy”. Na górnych panelach rysunkowe kangury skaczą między palmami, ponad przestrzenią otoczoną siatkami.</p><p>Róż, żółć i błękit powracają na miękko osłoniętych słupkach oraz kolorowych kieszeniach z przodu. Wystrój tej strefy skoków nawiązuje więc do podskakujących zwierząt już przy wejściu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um espaço para ganhar impulso</h2><p>Os trampolins oferecem às crianças um espaço dedicado aos saltos e ao equilíbrio. Cada movimento transforma-se num pequeno voo no ambiente aberto e arborizado do parque.</p><p>A sucessão de saltos permite experimentar, recuperar o apoio e recomeçar com mais confiança. Não existe uma história imposta: o ritmo nasce diretamente da energia de cada criança.</p><h2>Um espaço de jogo com energia própria</h2><p>Este espaço tem uma identidade clara: jogo ativo em que os jovens visitantes criam a altura e o ritmo. Oferece uma liberdade de movimento muito diferente das diversões com percurso definido.</p>",
+            "newValue": "<h2>Jumpy e os seus cangurus desenhados</h2><p>Os Trampolines ficam atrás de um grande letreiro «Jumpy». Nos painéis superiores, cangurus desenhados saltam entre palmeiras, acima de um espaço rodeado de redes.</p><p>O rosa, o amarelo e o azul reaparecem nos postes almofadados e nas bolsas coloridas da fachada. O cenário desta zona de saltos evoca assim os pulos dos animais logo à entrada.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4e66050-5f12-4324-97d8-81586b7b9ab6",
+        "entityKey": "e4e66050-5f12-4324-97d8-81586b7b9ab6",
+        "displayName": "Trampolines n° 2",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Sprünge für größere Kinder</h2><p>Trampolines Nr. 2 setzt die Freude am Springen in einem Bereich für ältere Kinder fort. Die Sprünge schaffen eine energievolle Pause, in der Höhe, Rhythmus und Gleichgewicht zusammenspielen.</p><p>Wiederholung hilft jedem Kind, den Stand zu verbessern und ohne vorgegebenen Ablauf sicherer zu werden. Das Erlebnis entsteht aus selbst gewählten Bewegungen und dem leichten Gefühl bei jeder Landung.</p><h2>Ein Bereich für neue Herausforderungen</h2><p>Dieser zweite Bereich ergänzt die ersten Trampoline mit einem Ort, an dem sicherere Kinder ihre Sprünge weiter ausbauen können. Seine eigene Rolle macht den Fortschritt im Spiel sichtbar.</p>",
+            "newValue": "<h2>Ein Sprungbereich in Gelb und Türkis</h2><p>Trampolines Nr. 2 ist ein Sprungbereich unter freiem Himmel. Netze an türkisfarbenen Pfosten umgeben die Sprungtücher; eine gelbe Verkleidung mit dem Kangui-Zeichen bedeckt den unteren Teil.</p><p>Eine kurze graue Treppe führt zum Eingang neben einem Holzunterstand und Kiefern. Weiße springende Figuren auf bunten Tafeln unterscheiden diese zweite Anlage von der „Jumpy“-Gestaltung der anderen Trampoline.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Bounces for older children</h2><p>Trampolines No. 2 extends the pleasure of jumping in an area for older children. Each bounce creates an energetic interlude where height, rhythm and balance meet.</p><p>Repetition lets each child refine their footing and build confidence without an imposed route. The experience grows from movements they choose and the light feeling that accompanies every return to the surface.</p><h2>A space that extends the challenge</h2><p>This second area complements the first trampolines with a place where more confident children can give greater breadth to their bounces. Its distinct role makes the progression of play visible.</p>",
+            "newValue": "<h2>A yellow and turquoise jumping area</h2><p>Trampolines No. 2 is a jumping area open to the sky. Netting on turquoise uprights surrounds the beds, while a yellow skirt bearing the Kangui emblem covers the lower part.</p><p>A short grey staircase leads to the entrance beside a wooden shelter and pine trees. White jumping figures on coloured panels distinguish this second set from the other trampolines’ ‘Jumpy’ scenery.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Saltos para niños mayores</h2><p>Trampolines n.º 2 prolonga el placer del salto en un espacio para niños mayores. Los rebotes crean un momento enérgico donde se encuentran altura, ritmo y equilibrio.</p><p>La repetición permite mejorar los apoyos y ganar confianza sin un recorrido impuesto. La experiencia nace de los movimientos elegidos por el niño y de la ligereza de cada regreso al suelo.</p><h2>Un espacio que amplía el reto</h2><p>Este segundo espacio complementa las primeras camas elásticas con un lugar donde los niños más seguros pueden dar mayor amplitud a sus saltos. Su papel propio hace visible la progresión del juego.</p>",
+            "newValue": "<h2>Una zona amarilla y turquesa</h2><p>Trampolines n° 2 es una zona de salto a cielo abierto. Unas redes sostenidas por postes turquesas rodean las camas elásticas, mientras una lona amarilla con el emblema Kangui cubre la parte inferior.</p><p>Una pequeña escalera gris conduce a la entrada, junto a un cobertizo de madera y los pinos. Las siluetas blancas de saltadores sobre paneles de colores distinguen este segundo conjunto del decorado «Jumpy» de las otras camas elásticas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des rebonds pour les enfants plus grands</h2><p>Trampolines n° 2 prolonge le plaisir du saut dans un espace destiné aux enfants plus âgés. Les rebonds ouvrent une parenthèse énergique où hauteur, rythme et équilibre se répondent.</p><p>La répétition permet à chacun dʼaffiner ses appuis et de prendre confiance sans parcours imposé. Lʼexpérience naît des mouvements choisis par lʼenfant et de la sensation légère qui accompagne chaque retour au sol.</p><h2>Un espace qui prolonge le défi</h2><p>Ce second espace complète les premiers trampolines en proposant un terrain où les enfants plus assurés peuvent donner davantage dʼampleur à leurs bonds. Sa place distincte rend visible la progression du jeu.</p>",
+            "newValue": "<h2>Une aire jaune et turquoise</h2><p>Les Trampolines n° 2 forment une aire de saut ouverte sur le ciel. Des filets à montants turquoise entourent les toiles, tandis qu’une jupe jaune portant l’emblème Kangui habille la partie basse.</p><p>Un petit escalier gris rejoint l’entrée, près d’un abri en bois et des pins. Les silhouettes blanches de sauteurs sur les panneaux colorés distinguent ce second ensemble du décor « Jumpy » des autres trampolines.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Salti per i bambini più grandi</h2><p>Trampolines n. 2 prolunga il piacere del salto in uno spazio per bambini più grandi. I rimbalzi creano un momento energico in cui altezza, ritmo ed equilibrio si incontrano.</p><p>La ripetizione permette di affinare gli appoggi e acquistare fiducia senza un percorso imposto. Lʼesperienza nasce dai movimenti scelti dal bambino e dalla leggerezza di ogni ritorno a terra.</p><h2>Uno spazio che prolunga la sfida</h2><p>Questo secondo spazio completa i primi trampolini con un luogo in cui i bambini più sicuri possono dare maggiore ampiezza ai salti. Il ruolo distinto rende visibile la progressione del gioco.</p>",
+            "newValue": "<h2>Un’area gialla e turchese</h2><p>Trampolines n° 2 è un’area per saltare a cielo aperto. Reti sostenute da montanti turchesi circondano i tappeti, mentre un rivestimento giallo con l’emblema Kangui copre la parte inferiore.</p><p>Una breve scala grigia conduce all’ingresso, vicino a una tettoia in legno e ai pini. Sagome bianche di persone che saltano, su pannelli colorati, distinguono questo secondo insieme dal decoro «Jumpy» degli altri trampolini.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Sprongen voor oudere kinderen</h2><p>Trampolines nr. 2 zet het springplezier voort in een ruimte voor oudere kinderen. De sprongen vormen een energiek moment waarin hoogte, ritme en evenwicht samenkomen.</p><p>Door herhaling verfijnt ieder kind zijn steun en groeit het vertrouwen zonder opgelegd parcours. De ervaring ontstaat uit zelfgekozen bewegingen en het lichte gevoel bij elke landing.</p><h2>Een plek die de uitdaging vergroot</h2><p>Deze tweede ruimte vult de eerste trampolines aan met een plek waar zelfverzekerde kinderen hun sprongen ruimer kunnen maken. De aparte rol maakt de ontwikkeling in het spel zichtbaar.</p>",
+            "newValue": "<h2>Een springplek in geel en turquoise</h2><p>Trampolines nr. 2 is een springplek onder de open hemel. Netten aan turquoise palen omringen de springmatten, terwijl een gele onderbekleding met het Kangui-embleem de onderkant bedekt.</p><p>Een kort grijs trapje leidt naar de ingang, naast een houten afdak en dennen. Witte springfiguren op gekleurde panelen onderscheiden deze tweede opstelling van het ‘Jumpy’-decor van de andere trampolines.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Skoki dla starszych dzieci</h2><p>Trampolines nr 2 rozwija radość ze skakania w przestrzeni dla starszych dzieci. Podskoki tworzą energiczną chwilę, w której łączą się wysokość, rytm i równowaga.</p><p>Powtarzanie pozwala doskonalić oparcie i budować pewność bez narzuconej trasy. Doświadczenie rodzi się z ruchów wybieranych przez dziecko i lekkości każdego lądowania.</p><h2>Przestrzeń rozwijająca wyzwanie</h2><p>Ta druga przestrzeń uzupełnia pierwsze trampoliny miejscem, gdzie pewniejsze siebie dzieci mogą nadawać skokom większy rozmach. Odrębna rola pokazuje rozwój zabawy.</p>",
+            "newValue": "<h2>Strefa w żółci i turkusie</h2><p>Trampolines n° 2 to strefa skoków pod otwartym niebem. Siatki na turkusowych słupkach otaczają maty, a żółta osłona z emblematem Kangui zakrywa dolną część.</p><p>Krótkie szare schodki prowadzą do wejścia przy drewnianym zadaszeniu i sosnach. Białe sylwetki skaczących postaci na kolorowych panelach odróżniają ten drugi zestaw od dekoracji „Jumpy” przy pozostałych trampolinach.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Saltos para crianças mais velhas</h2><p>Trampolines n.º 2 prolonga o prazer dos saltos num espaço para crianças mais velhas. Os impulsos criam um momento enérgico onde altura, ritmo e equilíbrio se encontram.</p><p>A repetição permite aperfeiçoar os apoios e ganhar confiança sem percurso imposto. A experiência nasce dos movimentos escolhidos pela criança e da leveza de cada regresso ao chão.</p><h2>Um espaço que prolonga o desafio</h2><p>Este segundo espaço completa os primeiros trampolins com um local onde crianças mais confiantes podem dar maior amplitude aos saltos. O papel distinto torna visível a progressão do jogo.</p>",
+            "newValue": "<h2>Uma área amarela e turquesa</h2><p>Os Trampolines n° 2 formam uma área de saltos a céu aberto. Redes presas a postes turquesa rodeiam as telas, enquanto uma cobertura amarela com o emblema Kangui reveste a parte inferior.</p><p>Uma pequena escada cinzenta conduz à entrada, junto de um abrigo de madeira e dos pinheiros. Silhuetas brancas de pessoas a saltar, em painéis coloridos, distinguem este segundo conjunto do cenário «Jumpy» dos outros trampolins.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "74c8d08e-2382-461e-bade-53609111a1f2",
+        "entityKey": "74c8d08e-2382-461e-bade-53609111a1f2",
+        "displayName": "Labyrinthes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Den eigenen Weg anders finden</h2><p>Die Labyrinthe ersetzen Maschinenbewegung durch die Freude am Suchen. Wege laden zum Beobachten, Entscheiden und Umkehren ein, wenn eine Spur nicht zum Ausgang führt.</p><p>Der Park beschreibt sie als spielerische und lehrreiche Wege. Orientierung, Gedächtnis und Neugier werden zu den eigentlichen Antrieben eines Erlebnisses, das mit jeder Entscheidung entsteht.</p><h2>Ein Abenteuer ohne veröffentlichte Einschränkung</h2><p>Auf der offiziellen Seite wird keine genauere Alters- oder Größenbedingung genannt. Die Identität der Labyrinthe beruht daher auf dem Erkunden und der Freude, Umwege gemeinsam zu lösen.</p>",
+            "newValue": "<h2>Scooby-Doos gemalte Abenteuer</h2><p>Labyrinthes zeigt eine lange Jahrmarktsfassade mit Scooby-Doo und seinen Freunden. Ihr Lieferwagen, Monster und Verfolgungsszenen füllen die Tafeln unter dem Schriftzug „L’Aventure“.</p><p>Rosa, blaue und gelbe Markisen säumen die Eingänge zum überdachten Parcours. Hinter den bunten Geländern liegt eine Welt aus Durchgängen und Hindernissen, die die Rätsel und lustigen Schreckmomente der Fassadenbilder fortsetzt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Finding another way through</h2><p>The mazes replace mechanical movement with the pleasure of searching. Their passages invite visitors to observe, choose a direction and retrace their steps when a route does not reach the exit.</p><p>The park presents them as playful and educational courses. Orientation, memory and curiosity become the true engines of an experience built through each decision.</p><h2>An adventure with no published restriction</h2><p>The official page gives no more specific age or height condition. The identity of the mazes therefore rests on exploration itself and the pleasure of solving the routeʼs turns together.</p>",
+            "newValue": "<h2>Scooby-Doo’s painted adventures</h2><p>Labyrinthes presents a long fairground façade illustrated with Scooby-Doo and his companions. Their van, monsters and chase scenes fill the panels beneath a sign reading ‘L’Aventure’.</p><p>Pink, blue and yellow awnings line the entrances to the covered course. Behind the colourful railings lies a world of passages and obstacles, continuing the mysteries and playful scares painted across the front.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Encontrar el camino de otra manera</h2><p>Los Labyrinthes sustituyen el movimiento de una máquina por el placer de buscar. Los pasos invitan a observar, elegir una dirección y volver atrás cuando un camino no lleva a la salida.</p><p>El parque los presenta como recorridos lúdicos y educativos. Orientación, memoria y curiosidad se convierten en los motores de una experiencia que se construye con cada decisión.</p><h2>Una aventura sin restricción publicada</h2><p>La página oficial no indica condiciones más precisas de edad o altura. La identidad de los Labyrinthes se basa así en explorar y resolver juntos los desvíos del recorrido.</p>",
+            "newValue": "<h2>Las aventuras pintadas de Scooby-Doo</h2><p>Labyrinthes presenta una larga fachada de feria ilustrada con Scooby-Doo y sus compañeros. Su furgoneta, monstruos y escenas de persecución ocupan los paneles bajo el rótulo «L’Aventure».</p><p>Toldos rosas, azules y amarillos bordean las entradas del recorrido cubierto. Tras las vallas de colores se abre un mundo de pasadizos y obstáculos que prolonga los misterios y los sustos divertidos pintados en la fachada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Trouver son chemin autrement</h2><p>Les Labyrinthes remplacent le mouvement dʼune machine par le plaisir de chercher. Les passages invitent à observer, choisir une direction puis revenir sur ses pas lorsquʼune piste ne mène pas à la sortie.</p><p>Le parc les présente comme des parcours ludiques et éducatifs. Lʼorientation, la mémoire et la curiosité deviennent les véritables moteurs dʼune expérience qui se construit au fil des décisions.</p><h2>Une aventure sans restriction publiée</h2><p>Aucune condition dʼâge ou de taille plus précise nʼest indiquée sur la page officielle. Lʼidentité des Labyrinthes repose donc sur lʼexploration elle-même et sur le plaisir de résoudre ensemble les détours du parcours.</p>",
+            "newValue": "<h2>Les aventures peintes de Scooby-Doo</h2><p>Les Labyrinthes présentent une longue façade de fête foraine illustrée par Scooby-Doo et ses compagnons. Leur camionnette, des monstres et des scènes de poursuite occupent les panneaux, sous une enseigne « L’Aventure ».</p><p>Des auvents roses, bleus et jaunes bordent les entrées du parcours couvert. Derrière les barrières colorées se dessine un univers de passages et d’obstacles, dans le prolongement des énigmes et des frayeurs amusantes peintes sur la façade.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Trovare il proprio cammino</h2><p>I Labyrinthes sostituiscono il movimento di una macchina con il piacere della ricerca. I passaggi invitano a osservare, scegliere una direzione e tornare indietro quando una strada non conduce allʼuscita.</p><p>Il parco li presenta come percorsi ludici ed educativi. Orientamento, memoria e curiosità diventano i veri motori di unʼesperienza costruita attraverso le decisioni.</p><h2>Unʼavventura senza restrizioni pubblicate</h2><p>La pagina ufficiale non indica condizioni più precise di età o altezza. Lʼidentità dei Labyrinthes poggia quindi sullʼesplorazione e sul piacere di risolvere insieme le deviazioni.</p>",
+            "newValue": "<h2>Le avventure dipinte di Scooby-Doo</h2><p>Labyrinthes presenta una lunga facciata da luna park illustrata con Scooby-Doo e i suoi compagni. Il loro furgone, mostri e scene d’inseguimento occupano i pannelli sotto l’insegna «L’Aventure».</p><p>Tende rosa, blu e gialle bordano gli ingressi del percorso coperto. Dietro le transenne colorate si apre un mondo di passaggi e ostacoli, in continuità con i misteri e gli spaventi divertenti dipinti sulla facciata.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Op een andere manier de weg vinden</h2><p>De doolhoven vervangen machinale beweging door het plezier van zoeken. De gangen nodigen uit om te kijken, een richting te kiezen en terug te keren als een route niet naar de uitgang leidt.</p><p>Het park presenteert ze als speelse en leerzame routes. Oriëntatie, geheugen en nieuwsgierigheid worden de echte motoren van een ervaring die bij elke keuze groeit.</p><h2>Een avontuur zonder gepubliceerde beperking</h2><p>De officiële pagina vermeldt geen preciezere leeftijds- of lengtevoorwaarde. De identiteit van de doolhoven draait daarom om verkennen en samen de omwegen oplossen.</p>",
+            "newValue": "<h2>De geschilderde avonturen van Scooby-Doo</h2><p>Labyrinthes heeft een lange kermisfaçade met Scooby-Doo en zijn vrienden. Hun busje, monsters en achtervolgingen vullen de panelen onder het opschrift ‘L’Aventure’.</p><p>Roze, blauwe en gele luifels omlijsten de ingangen van het overdekte parcours. Achter de kleurrijke hekken ligt een wereld van doorgangen en obstakels, aansluitend op de mysteries en grappige schrikmomenten die op de gevel zijn geschilderd.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Odnajdywanie drogi inaczej</h2><p>Labyrinthes zastępują ruch maszyny przyjemnością poszukiwania. Przejścia zachęcają do obserwacji, wyboru kierunku i cofnięcia się, gdy ścieżka nie prowadzi do wyjścia.</p><p>Park przedstawia je jako trasy zabawowe i edukacyjne. Orientacja, pamięć i ciekawość stają się prawdziwymi siłami doświadczenia budowanego przez kolejne decyzje.</p><h2>Przygoda bez opublikowanych ograniczeń</h2><p>Oficjalna strona nie podaje dokładniejszego warunku wieku ani wzrostu. Tożsamość Labyrinthes opiera się więc na odkrywaniu i wspólnym rozwiązywaniu zakrętów trasy.</p>",
+            "newValue": "<h2>Malowane przygody Scooby-Doo</h2><p>Labyrinthes ma długą lunaparkową fasadę z wizerunkami Scooby-Doo i jego przyjaciół. Ich samochód, potwory i sceny pościgów wypełniają panele pod napisem „L’Aventure”.</p><p>Różowe, niebieskie i żółte markizy otaczają wejścia do zadaszonej trasy. Za kolorowymi barierkami rozciąga się świat przejść i przeszkód, nawiązujący do zagadek oraz zabawnych strachów namalowanych na fasadzie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Encontrar o caminho de outra forma</h2><p>Os Labyrinthes substituem o movimento de uma máquina pelo prazer da procura. As passagens convidam a observar, escolher uma direção e voltar atrás quando um caminho não leva à saída.</p><p>O parque apresenta-os como percursos lúdicos e educativos. Orientação, memória e curiosidade tornam-se os verdadeiros motores de uma experiência construída com cada decisão.</p><h2>Uma aventura sem restrição publicada</h2><p>A página oficial não indica condições mais precisas de idade ou altura. A identidade dos Labyrinthes assenta assim na exploração e no prazer de resolver em conjunto os desvios.</p>",
+            "newValue": "<h2>As aventuras pintadas de Scooby-Doo</h2><p>Os Labyrinthes apresentam uma longa fachada de feira ilustrada com Scooby-Doo e os seus companheiros. A carrinha, os monstros e as cenas de perseguição ocupam os painéis sob o letreiro «L’Aventure».</p><p>Toldos cor-de-rosa, azuis e amarelos ladeiam as entradas do percurso coberto. Atrás das grades coloridas encontra-se um mundo de passagens e obstáculos, prolongando os mistérios e os sustos divertidos pintados na fachada.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "85b8602f-ef65-468c-b577-7a6cf73a9ea7",
+        "entityKey": "85b8602f-ef65-468c-b577-7a6cf73a9ea7",
+        "displayName": "Toboggan des Géants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die große bunte Abfahrt</h2><p>Toboggan des Géants führt seine Bahnen hoch über den Park und anschließend in langen parallelen Hängen hinab. Die bunte Silhouette verspricht ein einfaches Erlebnis: hinaufsteigen, Spur wählen und abwärts gleiten.</p><p>Oben entsteht ein kurzer Erwartungsmoment, dann nimmt die Abfahrt Fahrt auf. Nebeneinanderliegende Spuren ermöglichen eine gemeinsame Rutschpartie und den direkten Vergleich der Ankunft.</p><h2>Die Freude an der nächsten Abfahrt</h2><p>Toboggan des Géants setzt auf Selbstständigkeit: Alle erreichen den Start, wählen eine Spur und erleben die Abfahrt ganz für sich. Unten wandert der Blick sofort wieder hinauf zur nächsten Rutschpartie.</p>",
+            "newValue": "<h2>Große Wellen in Pastellfarben</h2><p>Toboggan des Géants bildet lange gewellte Bahnen in Hellblau, Gelb und Rosa. Weiße Ränder betonen die Wellen über einem mit grünem Kunstrasen bedeckten Auslauf.</p><p>Die Silhouetten der Rutschenden zeichnen sich oben kurz ab, bevor sie in den Mulden verschwinden. Am Fuß der Rutsche treffen die sanften Bahnfarben auf die Netze und leuchtenden Tafeln der benachbarten Spielbereiche.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The great colourful descent</h2><p>Toboggan des Géants raises its lanes above the park before bringing them down in long parallel slopes. Its bright silhouette promises a simple experience: climb, choose a lane and let gravity carry the descent.</p><p>The top brings a brief moment of anticipation before the slope gathers speed. Neighbouring lanes make it possible to descend side by side and enjoy comparing each arrival.</p><h2>The pleasure of descending again</h2><p>Toboggan des Géants celebrates independence: each visitor reaches the start, chooses a lane and owns the descent. Arrival immediately draws the eye back to the top and suggests another slide.</p>",
+            "newValue": "<h2>Big waves in pastel colours</h2><p>Toboggan des Géants forms long, undulating slopes in pale blue, yellow and pink. White edges outline their waves above a landing area covered in green artificial grass.</p><p>Riders’ silhouettes briefly stand out at the top before disappearing into the slide’s dips. At the foot of the descent, the lanes’ soft colours echo the netting and bright panels of the nearby play areas.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El gran descenso de colores</h2><p>Toboggan des Géants eleva sus pistas sobre el parque y las devuelve al suelo por largas pendientes paralelas. Su silueta colorida promete algo sencillo: subir, elegir carril y dejarse llevar.</p><p>En lo alto llega un breve instante de expectación antes de que la pendiente aporte velocidad. Los carriles vecinos permiten bajar lado a lado y comparar con alegría las llegadas.</p><h2>El placer de volver a bajar</h2><p>Toboggan des Géants valora la autonomía: cada visitante llega a la salida, elige carril y vive plenamente su descenso. Al llegar, la mirada vuelve de inmediato a la cima para imaginar otra bajada.</p>",
+            "newValue": "<h2>Grandes olas de colores pastel</h2><p>Toboggan des Géants dibuja largas pendientes onduladas en azul claro, amarillo y rosa pálido. Los bordes blancos resaltan sus olas sobre una zona de llegada cubierta de césped artificial verde.</p><p>Las siluetas de quienes se deslizan destacan un instante en la cima antes de desaparecer en los valles del tobogán. Al pie de la bajada, los tonos suaves de las pistas dialogan con las redes y los paneles vivos de los juegos cercanos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La grande descente colorée</h2><p>Le Toboggan des Géants dresse ses pistes au-dessus du parc avant de les ramener en longues pentes parallèles. Sa silhouette vive promet une expérience simple : grimper, choisir sa voie et se laisser porter vers le bas.</p><p>Le sommet offre un instant dʼanticipation puis la pente accélère le mouvement. Les couloirs voisins permettent de vivre la descente côte à côte, avec le plaisir immédiat de comparer les arrivées.</p><h2>Le plaisir de recommencer la descente</h2><p>Le Toboggan des Géants valorise lʼautonomie : chacun rejoint le départ, choisit sa piste puis assume pleinement sa glissade. Lʼarrivée donne immédiatement envie de regarder le sommet et dʼimaginer une nouvelle descente.</p>",
+            "newValue": "<h2>De grandes vagues aux couleurs pastel</h2><p>Le Toboggan des Géants dessine de longues pentes ondulées en bleu, jaune et rose pâle. Des rebords blancs soulignent leurs vagues, au-dessus d’une arrivée recouverte de gazon synthétique vert.</p><p>Les silhouettes des glisseurs se détachent un instant au sommet avant de disparaître dans les creux du toboggan. Au pied de la descente, les couleurs douces des pistes répondent aux filets et aux panneaux vifs des jeux voisins.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La grande discesa colorata</h2><p>Toboggan des Géants innalza le piste sopra il parco e le riporta a terra lungo pendii paralleli. La sagoma vivace promette unʼesperienza semplice: salire, scegliere la corsia e lasciarsi scivolare.</p><p>In cima nasce un breve momento di attesa, poi la pendenza aumenta la velocità. Le corsie vicine permettono di scendere fianco a fianco e confrontare con allegria gli arrivi.</p><h2>Il piacere di scendere ancora</h2><p>Toboggan des Géants valorizza lʼautonomia: ciascuno raggiunge la partenza, sceglie la corsia e vive pienamente la discesa. Allʼarrivo lo sguardo torna subito in alto, verso unʼaltra scivolata.</p>",
+            "newValue": "<h2>Grandi onde dai colori pastello</h2><p>Toboggan des Géants disegna lunghe discese ondulate in azzurro, giallo e rosa pallido. Bordi bianchi ne sottolineano le onde sopra un’area d’arrivo rivestita di erba sintetica verde.</p><p>Le sagome di chi scivola si stagliano per un attimo in cima prima di scomparire negli avvallamenti. Ai piedi della discesa, i colori delicati delle piste richiamano le reti e i pannelli vivaci dei giochi vicini.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De grote kleurrijke afdaling</h2><p>Toboggan des Géants tilt zijn banen boven het park op en voert ze via lange evenwijdige hellingen naar beneden. Het kleurrijke silhouet belooft iets eenvoudigs: klimmen, een baan kiezen en afdalen.</p><p>Boven ontstaat een kort moment van verwachting, waarna de helling snelheid brengt. Naast elkaar gelegen banen maken een afdaling zij aan zij en een vrolijke vergelijking bij de finish mogelijk.</p><h2>Het plezier van opnieuw afdalen</h2><p>Toboggan des Géants draait om zelfstandigheid: iedereen bereikt de start, kiest een baan en beleeft de afdaling zelf. Beneden gaat de blik meteen weer naar de top voor een nieuwe glijpartij.</p>",
+            "newValue": "<h2>Grote golven in pastelkleuren</h2><p>Toboggan des Géants vormt lange, golvende hellingen in lichtblauw, geel en roze. Witte randen benadrukken de golven boven een uitloop met groen kunstgras.</p><p>De silhouetten van de glijders tekenen zich even bovenaan af voordat ze in de dalen van de glijbaan verdwijnen. Onderaan sluiten de zachte kleuren van de banen aan bij de netten en felle panelen van de naburige speelplekken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wielki kolorowy zjazd</h2><p>Toboggan des Géants wynosi tory nad park, a potem prowadzi je w dół długimi równoległymi zboczami. Barwna sylwetka zapowiada prostą przygodę: wejść, wybrać tor i ruszyć w dół.</p><p>Na szczycie pojawia się chwila oczekiwania, a potem zbocze nadaje prędkość. Sąsiednie tory pozwalają zjeżdżać obok siebie i radośnie porównywać dotarcie na dół.</p><h2>Radość kolejnego zjazdu</h2><p>Toboggan des Géants podkreśla samodzielność: każdy dociera na start, wybiera tor i w pełni przeżywa zjazd. Na dole wzrok od razu wraca ku szczytowi i kolejnej ślizgawce.</p>",
+            "newValue": "<h2>Wielkie fale w pastelowych kolorach</h2><p>Toboggan des Géants tworzy długie faliste zjazdy w jasnym błękicie, żółci i różu. Białe brzegi podkreślają fale ponad miejscem dojazdu pokrytym zieloną sztuczną trawą.</p><p>Sylwetki zjeżdżających przez chwilę odcinają się na szczycie, po czym znikają w zagłębieniach zjeżdżalni. U dołu delikatne kolory torów sąsiadują z siatkami i jaskrawymi panelami pobliskich stref zabawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>A grande descida colorida</h2><p>O Toboggan des Géants eleva as pistas sobre o parque e fá-las descer por longas rampas paralelas. A silhueta colorida promete uma experiência simples: subir, escolher a pista e deixar-se deslizar.</p><p>No topo surge um breve momento de antecipação, depois a inclinação aumenta a velocidade. As pistas vizinhas permitem descer lado a lado e comparar alegremente as chegadas.</p><h2>O prazer de voltar a descer</h2><p>O Toboggan des Géants valoriza a autonomia: cada pessoa chega à partida, escolhe a pista e vive plenamente a descida. À chegada, o olhar volta logo ao topo para imaginar outro deslize.</p>",
+            "newValue": "<h2>Grandes ondas em tons pastel</h2><p>O Toboggan des Géants desenha longas descidas onduladas em azul-claro, amarelo e rosa-pálido. Os rebordos brancos acentuam as ondas acima de uma zona de chegada coberta de relva sintética verde.</p><p>As silhuetas de quem desliza destacam-se por um instante no topo antes de desaparecerem nas depressões do escorrega. Ao pé da descida, os tons suaves das pistas encontram as redes e os painéis vivos dos jogos vizinhos.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

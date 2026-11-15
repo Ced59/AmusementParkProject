@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "d1c04f7ed27f4fc4995e0f541591c566",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+    "path": "park_item/d1c04f7ed27f4fc4995e0f541591c566",
+    "description": "Cornets, nappages et garnitures colorées composent la vitrine gourmande du comptoir.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1920,
+    "height": 2560,
+    "sizeInBytes": 873782,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://ileauxgeants.fr/wp-content/uploads/2021/10/255961232_2009621439211199_2137361256606232977_n-scaled.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Modèles de gaufres garnies exposés au comptoir d’O’resto d’Iros, devant le réfrigérateur à boissons."
+      },
+      {
+        "languageCode": "en",
+        "value": "Display models of topped waffles on the O’resto d’Iros counter in front of the drinks fridge."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ausstellungsmodelle belegter Waffeln an der Theke von O’resto d’Iros vor dem Getränkekühlschrank."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Showmodellen van wafels met toppings op de balie van O’resto d’Iros, voor de drankenkoelkast."
+      },
+      {
+        "languageCode": "it",
+        "value": "Modelli espositivi di waffle guarniti sul banco di O’resto d’Iros, davanti al frigorifero delle bevande."
+      },
+      {
+        "languageCode": "es",
+        "value": "Modelos de exposición de gofres con coberturas en el mostrador de O’resto d’Iros, ante el frigorífico de bebidas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Modele gofrów z dodatkami na ladzie O’resto d’Iros, przed lodówką z napojami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Modelos de exposição de waffles com coberturas no balcão do O’resto d’Iros, diante do frigorífico de bebidas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Cornets, nappages et garnitures colorées composent la vitrine gourmande du comptoir."
+      },
+      {
+        "languageCode": "en",
+        "value": "Cones, sauces and colourful toppings make up the counter’s sweet display."
+      },
+      {
+        "languageCode": "de",
+        "value": "Waffeltüten, Soßen und bunte Beläge bilden die süße Auslage der Theke."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Hoorntjes, sauzen en kleurrijke toppings vormen de zoete uitstalling op de balie."
+      },
+      {
+        "languageCode": "it",
+        "value": "Coni, salse e guarnizioni colorate compongono la golosa esposizione del banco."
+      },
+      {
+        "languageCode": "es",
+        "value": "Conos, salsas y coberturas de colores componen el escaparate dulce del mostrador."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Rożki, polewy i kolorowe dodatki tworzą słodką ekspozycję na ladzie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cones, molhos e coberturas coloridas compõem a exposição doce do balcão."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "L’Île aux Géants — photographie publiée sur le site officiel, rubrique Restauration ; droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "L’Île aux Géants — photograph published on the official website’s dining page; all rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "L’Île aux Géants — auf der Gastronomieseite der offiziellen Website veröffentlichtes Foto; alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "L’Île aux Géants — foto gepubliceerd op de horecapagina van de officiële website; alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’Île aux Géants — fotografia pubblicata nella pagina Ristorazione del sito ufficiale; tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "L’Île aux Géants — fotografía publicada en la página de restauración del sitio oficial; todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "L’Île aux Géants — fotografia opublikowana w dziale gastronomii oficjalnej strony; wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "L’Île aux Géants — fotografia publicada na página de restauração do sítio oficial; todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T01:09:41.158Z",
+    "updatedAt": "2026-11-15T01:09:44.663Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-15T01:09:44.663Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://ileauxgeants.fr/wp-content/uploads/2021/10/255961232_2009621439211199_2137361256606232977_n-scaled.jpg"
+}

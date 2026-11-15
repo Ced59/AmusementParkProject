@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "c5ea8c26cbd547008c1db3708c3290cf",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+    "path": "park_item/c5ea8c26cbd547008c1db3708c3290cf",
+    "description": "Le personnage d’Iros brandit sa poêle entre les fleurs et les serpents de la devanture.",
+    "isCurrent": true,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 2560,
+    "height": 1920,
+    "sizeInBytes": 907947,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://ileauxgeants.fr/wp-content/uploads/2021/10/252966433_416572776804087_8371912321317464438_n-scaled.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade jaune d’O’resto d’Iros, comptoirs ouverts et terrasse aux parasols rouges."
+      },
+      {
+        "languageCode": "en",
+        "value": "Yellow frontage of O’resto d’Iros, open counters and terrace with red parasols."
+      },
+      {
+        "languageCode": "de",
+        "value": "Gelbe Fassade von O’resto d’Iros, offene Theken und Terrasse mit roten Sonnenschirmen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Gele gevel van O’resto d’Iros, open balies en terras met rode parasols."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata gialla di O’resto d’Iros, banconi aperti e terrazza con ombrelloni rossi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada amarilla de O’resto d’Iros, mostradores abiertos y terraza con sombrillas rojas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Żółta fasada O’resto d’Iros, otwarte lady i taras z czerwonymi parasolami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada amarela do O’resto d’Iros, balcões abertos e esplanada com chapéus de sol vermelhos."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le personnage d’Iros brandit sa poêle entre les fleurs et les serpents de la devanture."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Iros character brandishes a frying pan among the flowers and snakes decorating the frontage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Iros-Figur schwingt ihre Pfanne zwischen den Blumen und Schlangen an der Fassade."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het Iros-figuurtje zwaait met een koekenpan tussen de bloemen en slangen op de gevel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il personaggio di Iros brandisce la padella tra i fiori e i serpenti della facciata."
+      },
+      {
+        "languageCode": "es",
+        "value": "El personaje de Iros blande su sartén entre las flores y serpientes de la fachada."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Postać Iros wymachuje patelnią wśród kwiatów i węży zdobiących fasadę."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A personagem de Iros ergue a frigideira entre as flores e serpentes da fachada."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "L’Île aux Géants — photographie publiée sur le site officiel, rubrique Restauration ; droits réservés."
+      },
+      {
+        "languageCode": "en",
+        "value": "L’Île aux Géants — photograph published on the official website’s dining page; all rights reserved."
+      },
+      {
+        "languageCode": "de",
+        "value": "L’Île aux Géants — auf der Gastronomieseite der offiziellen Website veröffentlichtes Foto; alle Rechte vorbehalten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "L’Île aux Géants — foto gepubliceerd op de horecapagina van de officiële website; alle rechten voorbehouden."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’Île aux Géants — fotografia pubblicata nella pagina Ristorazione del sito ufficiale; tutti i diritti riservati."
+      },
+      {
+        "languageCode": "es",
+        "value": "L’Île aux Géants — fotografía publicada en la página de restauración del sitio oficial; todos los derechos reservados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "L’Île aux Géants — fotografia opublikowana w dziale gastronomii oficjalnej strony; wszelkie prawa zastrzeżone."
+      },
+      {
+        "languageCode": "pt",
+        "value": "L’Île aux Géants — fotografia publicada na página de restauração do sítio oficial; todos os direitos reservados."
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T01:09:19.874Z",
+    "updatedAt": "2026-11-15T01:09:23.427Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-15T01:09:23.427Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://ileauxgeants.fr/wp-content/uploads/2021/10/252966433_416572776804087_8371912321317464438_n-scaled.jpg"
+}

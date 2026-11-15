@@ -12831,7 +12831,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T00:54:13.004Z",
+      "lastDataIntegrationAt": "2026-11-15T01:09:44.663Z",
       "integrationHistory": [
         {
           "eventId": "apply-021c7c49-3a37-4b11-ac74-160837a53be2",
@@ -12872,9 +12872,59 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-flight-identities-20261115.json",
           "auditEvidence": null,
           "summary": "Star Tower reconnu comme chaises volantes et Star Flyer comme nacelles ailées : types, 16 descriptions, 32 textes d’images et phrase parc huit langues corrigés après examen des originaux. La correction remplace la phrase du premier lot, sans réimport ni changement de visibilité."
+        },
+        {
+          "eventId": "apply-b8b889a9-de1d-49f4-ad08-e10fcc72fd12",
+          "appliedAt": "2026-11-15T00:59:58.463Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-play-areas-20261115.json",
+          "auditEvidence": null,
+          "summary": "Trampolines Jumpy, Trampolines n°2, Labyrinthes et Toboggan des Géants :32textes relus et appliqués, fondés sur les décors photographiés ; restrictions retirées du récit, aucun média recréé. Dossier toujours partial."
+        },
+        {
+          "eventId": "apply-29ce9c9b-2137-412a-bd3d-b0284e5bb339",
+          "appliedAt": "2026-11-15T01:05:25.585Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-fairground-classics-20261115.json",
+          "auditEvidence": null,
+          "summary": "Trois notices Bateau Pirate, Carrousel 1900 et Grande roue réécrites et relues dans huit langues depuis leurs décors photographiés ; aucune création ni publication nouvelle."
+        },
+        {
+          "eventId": "apply-f7e99d0b-8c1e-47e5-9433-e9663ac78602",
+          "appliedAt": "2026-11-15T01:08:54.355Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-restaurant-20261115.json",
+          "auditEvidence": null,
+          "summary": "O’resto d’Iros : huit notices rédigées et relues depuis la carte et les photographies officielles de la façade et du comptoir ; aucune nouvelle publication."
+        },
+        {
+          "eventId": "image-c5ea8c26cbd547008c1db3708c3290cf",
+          "appliedAt": "2026-11-15T01:09:23.427Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-restaurant-facade-20261115.json",
+          "auditEvidence": null,
+          "summary": "Import privé de la première photographie propre d’O’resto d’Iros : façade officielle sans filigrane, huit textes alternatifs, légendes et crédits relus."
+        },
+        {
+          "eventId": "image-d1c04f7ed27f4fc4995e0f541591c566",
+          "appliedAt": "2026-11-15T01:09:44.663Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-restaurant-counter-20261115.json",
+          "auditEvidence": null,
+          "summary": "Import privé de la photographie officielle distincte du comptoir sucré d’O’resto d’Iros : modèles de gaufres identifiés, huit langues relues, aucun doublon."
         }
       ],
-      "nextAction": "Continue 12 remaining item descriptions and all old image texts; reconcile founder/global aliases, qualify extra official-gallery entities and history, find usable photos/maps and validate pricing/full official future calendar. Only then final full export/audit. No completion merely at98.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

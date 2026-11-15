@@ -54,7 +54,7 @@ Aucune fiche ne reste dans cette catégorie.
 - [x] Kid Parc — `a48caf8e-871b-40cc-8b98-9faff4219e96` — clôture conservée ; voir le registre mondial et le bilan ci-dessous.
 - [x] Kingoland — `900ceb7b-7bb8-40c0-9e4a-6340d019a6d8` — clôture conservée ; voir le registre mondial et les preuves ci-dessous.
 - [x] Koaland — `a01011e8-b400-40c7-bbe2-5635d7dd24f7` — clôture conservée le 2 novembre 2026 ; audit final 98/100, site et annonce Facebook existante Published vérifiés.
-- [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586` — reprise active 15 novembre : fiche déjà publique,98/100 initial ; parc et9lieux réécrits huit langues, confusions Pouss-Pouss/Star Tower/Star Flyer corrigées,4Apply réels. Facebook existant Published reconfirmé. Audit global,12notices, médias et histoire à poursuivre ; [preuve](world-integration/evidence/france-historical-20261022/ile-aux-geants-current-20261115.json).
+- [ ] L'Île aux Géants — `29a2498e-9b6c-4c55-a2ac-e521dc6e4586` — reprise active 15 novembre : fiche déjà publique,98/100 initial ; parc et 17 lieux réécrits dans huit langues, confusions Pouss-Pouss/Star Tower/Star Flyer corrigées, 7 Apply réels et 2 photos officielles du restaurant importées privées. Facebook existant Published reconfirmé. Audit global, 4 notices, médias et histoire à poursuivre ; [preuve](world-integration/evidence/france-historical-20261022/ile-aux-geants-current-20261115.json).
 - [ ] L'Île aux Pirates, Capbreton — candidats `efac8649-a15b-4ed6-866c-2e926579d6de` et `5e9e6a61-3d74-49cd-9c3a-8ca107edd018` à réconcilier avant intégration
 - [ ] La Coccinelle — `e1fa4656-8011-4908-a1bf-e7d581285a83`
 - [ ] Le Pal — `1675e96c-6361-48ff-862b-43218167facd`

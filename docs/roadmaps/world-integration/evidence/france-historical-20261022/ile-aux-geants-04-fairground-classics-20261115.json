@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "3533a3a7a49b1d05cc3db98c755d2c533f524482d3be83f2aee811333f43c025",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "29ce9c9b-2137-412a-bd3d-b0284e5bb339",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:05:25.5852858Z",
+    "appliedAtUtc": "2026-11-15T01:05:25.5852868Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "entityKey": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "displayName": "Bateau Pirate",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die große Piratenschaukel</h2><p>Bateau Pirate macht jede Runde zu einer bewegten Überfahrt. Die Silhouette einer Galeone schafft sofort Abenteuerstimmung, bevor die Schaukelbewegung abwechselnd Bug und Heck anhebt.</p><p>Die Bewegung wird weiter und findet anschließend wieder zur Ruhe. So entsteht eine Folge von Anstiegen und Rückkehrmomenten, die im Bauch ebenso spürbar ist wie im wechselnden Ausblick. Alle Reihen teilen denselben Rhythmus.</p><h2>Ein Abenteuer für Größere</h2><p>Bateau Pirate ist lebhafter als die ruhigen Fahrgeschäfte und bleibt doch ein gemeinsames Erlebnis: Alle erleben dieselben Anstiege, sehen den Horizont kippen und kehren zusammen zum Einstieg zurück.</p>",
+            "newValue": "<h2>Piraten über den Fässern</h2><p>Bateau Pirate trägt einen Rumpf in gemalter Holzoptik, gesäumt von schwarzen und roten Tafeln. An den Enden stehen Piratenfiguren in Fässern und verleihen dem Schiff das Aussehen einer Zeichentrickgaleone.</p><p>Rote Rosetten schmücken die Tafeln am Rumpf. Die beiden Piraten, einer blau und der andere grün gekleidet, stehen sich über den Fahrgästen gegenüber wie Figuren einer Jahrmarktsbühne.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The piratesʼ great swing</h2><p>Bateau Pirate turns every cycle into a lively crossing. Its galleon silhouette immediately creates a sense of adventure before the swinging motion lifts each end in turn.</p><p>The movement grows before settling again, creating a succession of climbs and returns felt as much in the stomach as in the changing view. Every row shares the same rhythm and laughter.</p><h2>An adventure for taller riders</h2><p>Livelier than the gentler rides, Bateau Pirate still has a collective character: passengers face the same climbs, watch the same horizons tilt and return to the platform together.</p>",
+            "newValue": "<h2>Pirates above the barrels</h2><p>Bateau Pirate has a hull painted to resemble timber, edged with black and red panels. At either end, pirate figures perched in barrels give the ship the look of a cartoon galleon.</p><p>Red rosettes punctuate the panels along the hull. The two pirates, one dressed in blue and the other in green, face each other above the riders like characters on a fairground theatre set.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El gran balanceo pirata</h2><p>Bateau Pirate convierte cada vuelta en una travesía movida. La silueta del galeón crea de inmediato una atmósfera aventurera antes de que el balanceo eleve alternativamente cada extremo.</p><p>El movimiento gana amplitud y después recupera la calma, dibujando una sucesión de subidas y regresos que se siente tanto en el estómago como en el paisaje. Todas las filas comparten el mismo ritmo.</p><h2>Una aventura para los más altos</h2><p>Más movido que las atracciones tranquilas, Bateau Pirate mantiene un carácter colectivo: los pasajeros afrontan las mismas subidas, ven inclinarse el horizonte y regresan juntos al embarque.</p>",
+            "newValue": "<h2>Piratas sobre los barriles</h2><p>Bateau Pirate luce un casco pintado a imitación de la madera, bordeado de paneles negros y rojos. En los extremos, unas figuras de piratas encaramadas en barriles dan al barco aspecto de galeón de dibujos animados.</p><p>Unas rosetas rojas adornan los paneles del casco. Los dos piratas, uno vestido de azul y el otro de verde, se miran por encima de los pasajeros como personajes de un escenario de feria.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le grand balancier des pirates</h2><p>Le Bateau Pirate transforme chaque passage en traversée mouvementée. Sa silhouette de galion installe immédiatement un décor dʼaventure, avant que les oscillations ne soulèvent tour à tour chaque extrémité.</p><p>Le mouvement gagne en amplitude puis revient vers le calme, dessinant une succession de montées et de retours qui se vit autant dans le ventre que dans le paysage. Les rangées partagent le même rythme et les mêmes éclats de rire.</p><h2>Une aventure pour les plus grands</h2><p>Plus remuant que les manèges tranquilles, le Bateau Pirate garde pourtant une dimension collective : les passagers affrontent les mêmes montées, voient les mêmes horizons basculer et reviennent ensemble vers le quai.</p>",
+            "newValue": "<h2>Des pirates au-dessus des tonneaux</h2><p>Le Bateau Pirate arbore une coque peinte à l’imitation du bois, bordée de panneaux noirs et rouges. Aux extrémités, des figures de pirates perchées dans des tonneaux donnent au navire son allure de galion de dessin animé.</p><p>Des rosaces rouges ponctuent les panneaux de la coque. Les deux pirates, l’un vêtu de bleu et l’autre de vert, se font face au-dessus des passagers, comme les personnages d’un décor de théâtre forain.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La grande oscillazione dei pirati</h2><p>Bateau Pirate trasforma ogni giro in una traversata movimentata. La sagoma del galeone crea subito unʼatmosfera dʼavventura, prima che lʼoscillazione sollevi a turno le due estremità.</p><p>Il movimento cresce e poi torna gradualmente alla calma, creando una successione di salite e ritorni che si avverte nello stomaco e nel paesaggio. Tutte le file condividono lo stesso ritmo e le stesse risate.</p><h2>Unʼavventura per i più grandi</h2><p>Più movimentato delle giostre tranquille, Bateau Pirate conserva un carattere collettivo: i passeggeri affrontano le stesse salite, vedono inclinarsi lʼorizzonte e tornano insieme alla banchina.</p>",
+            "newValue": "<h2>Pirati sopra le botti</h2><p>Bateau Pirate sfoggia uno scafo dipinto a imitazione del legno, bordato di pannelli neri e rossi. Alle estremità, figure di pirati appollaiate nelle botti danno alla nave l’aspetto di un galeone da cartone animato.</p><p>Rosette rosse punteggiano i pannelli dello scafo. I due pirati, uno vestito di blu e l’altro di verde, si fronteggiano sopra i passeggeri come personaggi di un palcoscenico da luna park.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De grote piratenschommel</h2><p>Bateau Pirate maakt van elke ronde een bewogen overtocht. Het silhouet van een galjoen roept meteen avontuur op, waarna de schommelbeweging beide uiteinden om beurten optilt.</p><p>De beweging wordt steeds ruimer en keert daarna terug naar rust. Zo ontstaat een reeks stijgingen en terugzwaaien die je zowel in je buik als in het wisselende uitzicht voelt. Alle rijen delen hetzelfde ritme.</p><h2>Een avontuur voor grotere bezoekers</h2><p>Bateau Pirate is levendiger dan de rustige attracties maar blijft een gezamenlijke ervaring: passagiers beleven dezelfde stijgingen, zien de horizon kantelen en keren samen naar het perron terug.</p>",
+            "newValue": "<h2>Piraten boven de tonnen</h2><p>Bateau Pirate heeft een romp met geschilderde houtnerf, afgezet met zwarte en rode panelen. Aan de uiteinden staan piratenfiguren in tonnen, waardoor het schip op een galjoen uit een tekenfilm lijkt.</p><p>Rode rozetten versieren de panelen langs de romp. De twee piraten, de een in het blauw en de ander in het groen, kijken boven de passagiers naar elkaar als figuren in een kermistheater.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wielkie pirackie kołysanie</h2><p>Bateau Pirate zamienia każdy przejazd w pełną ruchu przeprawę. Sylwetka galeonu od razu buduje nastrój przygody, a kołysanie unosi na przemian oba krańce.</p><p>Ruch nabiera rozmachu, a potem ponownie łagodnieje, tworząc serię wzniesień i powrotów odczuwanych w brzuchu i w zmieniającym się widoku. Wszystkie rzędy dzielą ten sam rytm.</p><h2>Przygoda dla wyższych gości</h2><p>Bateau Pirate jest żywszy od spokojnych atrakcji, ale zachowuje wspólny charakter: pasażerowie przeżywają te same wzniesienia, widzą przechylający się horyzont i razem wracają na peron.</p>",
+            "newValue": "<h2>Piraci nad beczkami</h2><p>Bateau Pirate ma kadłub pomalowany tak, by przypominał drewno, otoczony czarnymi i czerwonymi panelami. Na obu końcach figury piratów stoją w beczkach, nadając statkowi wygląd galeonu z kreskówki.</p><p>Czerwone rozety zdobią panele kadłuba. Dwaj piraci, jeden ubrany na niebiesko, a drugi na zielono, stoją naprzeciw siebie ponad pasażerami niczym postacie na lunaparkowej scenie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O grande balanço dos piratas</h2><p>O Bateau Pirate transforma cada volta numa travessia animada. A silhueta de galeão cria de imediato um ambiente de aventura, antes de o balanço elevar alternadamente cada extremidade.</p><p>O movimento ganha amplitude e depois regressa à calma, criando uma sucessão de subidas e retornos sentida tanto no estômago como na paisagem. Todas as filas partilham o mesmo ritmo.</p><h2>Uma aventura para os mais altos</h2><p>Mais agitado do que as diversões tranquilas, o Bateau Pirate mantém um caráter coletivo: os passageiros enfrentam as mesmas subidas, veem o horizonte inclinar-se e regressam juntos à plataforma.</p>",
+            "newValue": "<h2>Piratas acima dos barris</h2><p>O Bateau Pirate apresenta um casco pintado a imitar madeira, ladeado por painéis pretos e vermelhos. Nas extremidades, figuras de piratas empoleiradas em barris dão ao navio o aspeto de um galeão de desenhos animados.</p><p>Rosetas vermelhas pontuam os painéis do casco. Os dois piratas, um vestido de azul e o outro de verde, ficam frente a frente acima dos passageiros, como personagens de um cenário de teatro de feira.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+        "entityKey": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+        "displayName": "Carrousel 1900",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Reise in die Eleganz von 1900</h2><p>Carrousel 1900 lässt verzierte Pferde und Figuren unter einer von historischen Karussells inspirierten Architektur kreisen. Vergoldungen, Spiegel und Farben bilden zwischen den Bäumen einen unverwechselbaren Blickfang.</p><p>Die gleichmäßige Drehung zeigt vertraute Details immer wieder aus einem anderen Winkel: ein gemaltes Gesicht, ein Licht, eine wartende Begleitperson. Gerade diese Wiederholung und das feierliche Tempo prägen den Reiz.</p><h2>Ein Klassiker für jedes Alter</h2><p>Jüngere Gäste entdecken eine sanfte erste Fahrt, während Erwachsene einem beständigen Jahrmarktsymbol begegnen. Diese doppelte Bedeutung macht das Karussell zum Treffpunkt von Erinnerung und Entdeckung.</p>",
+            "newValue": "<h2>Bemalte Pferde und goldene Medaillons</h2><p>Carrousel 1900 zeigt seine Pferde unter einem Kranz bemalter Tafeln mit vergoldeten Ranken. Porträts wechseln sich ringsum mit Landschaftsszenen ab, über einem dunklen Fries und einer verzierten Decke.</p><p>Eine Treppe führt zur oberen Ebene mit weißer Balustrade. Mit Pferden, Bildern und kleinen Säulen wirkt das Karussell wie ein bemalter Pavillon, dessen Schmuck einen Kontrast zu den davor wachsenden Palmen bildet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A journey into 1900 elegance</h2><p>Carrousel 1900 turns decorated horses and figures beneath architecture inspired by historic merry-go-rounds. Gilding, mirrors and colours create an instantly recognisable landmark among the trees.</p><p>The steady rotation brings back the same details from a different angle: a painted face, a light, a loved one waiting nearby. The pleasure lies in that familiar repetition and the carouselʼs ceremonial pace.</p><h2>A classic for every age</h2><p>Younger visitors discover a gentle early ride, while adults reconnect with an enduring fairground symbol. That double meaning makes the carousel a natural meeting point between memories and new discoveries.</p>",
+            "newValue": "<h2>Painted horses and gilded medallions</h2><p>Carrousel 1900 displays its horses beneath a crown of painted panels framed by gilded scrollwork. Portraits alternate with landscape scenes around the edge, above a dark frieze and a decorated ceiling.</p><p>A staircase leads to the upper level, edged with a white balustrade. With its horses, paintings and slender columns, the carousel resembles a painted pavilion whose ornament contrasts with the palms growing in front.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un viaje a la elegancia de 1900</h2><p>Carrousel 1900 hace girar caballos y figuras decoradas bajo una arquitectura inspirada en los tiovivos antiguos. Dorados, espejos y colores forman un hito reconocible entre los árboles.</p><p>La rotación regular devuelve los mismos detalles desde otro ángulo: un rostro pintado, una luz, alguien cercano que espera junto al recorrido. El placer nace de esa repetición familiar y del ritmo solemne.</p><h2>Un clásico para todas las edades</h2><p>Los pequeños descubren una primera atracción suave y los adultos se reencuentran con un símbolo permanente de la feria. Esa doble lectura convierte el carrusel en un encuentro entre recuerdos y descubrimientos.</p>",
+            "newValue": "<h2>Caballos pintados y medallones dorados</h2><p>Carrousel 1900 presenta sus caballos bajo una corona de paneles pintados, enmarcados por volutas doradas. Los retratos y paisajes se alternan alrededor del borde, sobre un friso oscuro y un techo decorado.</p><p>Una escalera lleva al piso superior de la atracción, rodeado de una balaustrada blanca. Entre caballos, cuadros y pequeñas columnas, el carrusel parece un pabellón pintado cuyos adornos contrastan con las palmeras plantadas delante.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un voyage dans lʼélégance de 1900</h2><p>Le Carrousel 1900 fait tourner chevaux et figures décorées sous une architecture inspirée des manèges anciens. Dorures, miroirs et couleurs composent un repère immédiatement reconnaissable au milieu des arbres.</p><p>La rotation régulière fait revenir les mêmes détails sous un angle différent : un visage peint, une lumière, un proche qui attend au bord. Le plaisir repose sur cette répétition familière, portée par lʼallure cérémonieuse du carrousel.</p><h2>Un classique pour tous les âges</h2><p>Les plus jeunes y découvrent une première attraction douce, tandis que les adultes retrouvent un symbole durable de la fête foraine. Cette double lecture fait du carrousel un point de rencontre naturel entre souvenirs et découvertes.</p>",
+            "newValue": "<h2>Chevaux peints et médaillons dorés</h2><p>Le Carrousel 1900 présente ses chevaux sous une couronne de panneaux peints, encadrés de volutes dorées. Des portraits et des scènes de paysage alternent sur le pourtour, au-dessus d’une frise sombre et d’un plafond décoré.</p><p>Un escalier mène à l’étage du manège, bordé d’une balustrade blanche. Entre les chevaux, les tableaux et les petites colonnes, le carrousel forme une sorte de kiosque peint dont les ornements tranchent avec les palmiers plantés devant lui.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un viaggio nellʼeleganza del 1900</h2><p>Carrousel 1900 fa ruotare cavalli e figure decorate sotto unʼarchitettura ispirata alle giostre storiche. Dorature, specchi e colori creano un punto di riferimento riconoscibile tra gli alberi.</p><p>La rotazione regolare ripropone gli stessi dettagli da unʼangolazione diversa: un volto dipinto, una luce, una persona cara che aspetta vicino. Il piacere nasce da questa ripetizione familiare e dal ritmo solenne.</p><h2>Un classico per tutte le età</h2><p>I visitatori più piccoli scoprono una prima giostra dolce, mentre gli adulti ritrovano un simbolo duraturo del luna park. Questa doppia lettura rende il carosello un incontro tra ricordo e scoperta.</p>",
+            "newValue": "<h2>Cavalli dipinti e medaglioni dorati</h2><p>Carrousel 1900 presenta i suoi cavalli sotto una corona di pannelli dipinti, incorniciati da volute dorate. Ritratti e paesaggi si alternano lungo il bordo, sopra un fregio scuro e un soffitto decorato.</p><p>Una scala conduce al piano superiore della giostra, delimitato da una balaustra bianca. Tra cavalli, dipinti e colonnine, il carosello sembra un padiglione dipinto i cui ornamenti contrastano con le palme piantate davanti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een reis naar de elegantie van 1900</h2><p>Carrousel 1900 laat versierde paarden en figuren draaien onder een vormgeving die op historische draaimolens is geïnspireerd. Vergulding, spiegels en kleuren vormen tussen de bomen een herkenbaar baken.</p><p>De gelijkmatige draaiing laat dezelfde details telkens vanuit een andere hoek terugkeren: een geschilderd gezicht, een lichtje, iemand die langs de rand wacht. Die vertrouwde herhaling en het statige tempo bepalen het plezier.</p><h2>Een klassieker voor alle leeftijden</h2><p>Jonge bezoekers beleven een zachte eerste rit, terwijl volwassenen een blijvend kermissymbool herkennen. Die dubbele betekenis maakt de carrousel tot een ontmoetingspunt van herinnering en ontdekking.</p>",
+            "newValue": "<h2>Beschilderde paarden en vergulde medaillons</h2><p>Carrousel 1900 toont zijn paarden onder een kroon van beschilderde panelen met vergulde krullen. Portretten en landschappen wisselen elkaar langs de rand af, boven een donkere fries en een versierd plafond.</p><p>Een trap leidt naar de bovenverdieping met een witte balustrade. Met zijn paarden, schilderingen en kleine zuilen lijkt de draaimolen op een beschilderd paviljoen, waarvan de versieringen afsteken tegen de palmbomen ervoor.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Podróż do elegancji roku 1900</h2><p>Carrousel 1900 wprawia w ruch zdobione konie i figury pod konstrukcją inspirowaną dawnymi karuzelami. Złocenia, lustra i kolory tworzą charakterystyczny punkt pośród drzew.</p><p>Spokojny obrót pokazuje te same szczegóły pod innym kątem: malowaną twarz, światło, bliską osobę czekającą przy karuzeli. Przyjemność płynie ze znajomego powtarzania i uroczystego tempa.</p><h2>Klasyka dla każdego wieku</h2><p>Najmłodsi odkrywają łagodną pierwszą przejażdżkę, a dorośli spotykają trwały symbol lunaparku. To podwójne znaczenie czyni karuzelę miejscem spotkania wspomnień i nowych odkryć.</p>",
+            "newValue": "<h2>Malowane konie i złocone medaliony</h2><p>Carrousel 1900 prezentuje konie pod wieńcem malowanych paneli otoczonych złoconymi zawijasami. Wzdłuż krawędzi portrety przeplatają się z krajobrazami, ponad ciemnym fryzem i zdobionym sufitem.</p><p>Schody prowadzą na górny poziom karuzeli, otoczony białą balustradą. Wśród koni, obrazów i małych kolumn karuzela przypomina malowany pawilon, którego ozdoby kontrastują z rosnącymi przed nim palmami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma viagem à elegância de 1900</h2><p>O Carrousel 1900 faz girar cavalos e figuras decoradas sob uma arquitetura inspirada nos carrosséis antigos. Dourados, espelhos e cores criam um marco reconhecível entre as árvores.</p><p>A rotação regular faz regressar os mesmos detalhes sob outro ângulo: um rosto pintado, uma luz, alguém próximo que espera junto ao percurso. O prazer nasce dessa repetição familiar e do ritmo cerimonioso.</p><h2>Um clássico para todas as idades</h2><p>Os mais pequenos descobrem uma primeira diversão suave, enquanto os adultos reencontram um símbolo duradouro da feira. Essa dupla leitura faz do carrossel um encontro entre memória e descoberta.</p>",
+            "newValue": "<h2>Cavalos pintados e medalhões dourados</h2><p>O Carrousel 1900 apresenta os seus cavalos sob uma coroa de painéis pintados, emoldurados por arabescos dourados. Retratos e paisagens alternam ao longo do contorno, acima de um friso escuro e de um teto decorado.</p><p>Uma escada conduz ao piso superior, rodeado por uma balaustrada branca. Entre cavalos, pinturas e pequenas colunas, o carrossel parece um pavilhão pintado cujos ornamentos contrastam com as palmeiras à sua frente.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+        "entityKey": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+        "displayName": "Grande roue",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Der Park von oben</h2><p>Das Riesenrad hebt seine Gondeln langsam über die Bäume von LʼÎle aux Géants. Während der Boden zurückweicht, fügen sich bunte Fahrgeschäfte und die Landschaft um Dissay zu einem weiten Panorama.</p><p>Die gleichmäßige Drehung lässt Zeit, Wege wiederzuerkennen, andere Fahrgeschäfte zu beobachten und den höchsten Punkt zu genießen. Die Abfahrt führt sanft ins lebhafte Parkgeschehen zurück.</p><h2>Eine gemeinsame Runde</h2><p>Das Riesenrad setzt auf zugängliches Staunen statt auf Tempo. Seine Gondeln laden mehrere Generationen ein, denselben Horizont zu teilen und gemeinsam einen Ausblick zu erleben, der sich sanft verändert.</p>",
+            "newValue": "<h2>Weiße Gondeln über den Bäumen</h2><p>Grande roue zeichnet einen großen weißen Kreis in den Himmel über Dissay. Die runden, blau abgesetzten Gondeln mit kleinen Dächern ragen über die Kiefern hinaus.</p><p>Von den Gondeln öffnet sich der Blick auf den Park: Bunte Fahrgeschäftsdächer erscheinen zwischen den Bäumen, dahinter reichen benachbarte Felder bis zum Horizont. Vom Boden bleibt das Rad ein gut erkennbarer Orientierungspunkt über den niedrigeren Jahrmarktskulissen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The park from above</h2><p>The Ferris wheel slowly raises its gondolas above the trees of LʼÎle aux Géants. As the ground recedes, colourful rides and the countryside around Dissay form a broader panorama.</p><p>The steady rotation leaves time to recognise the paths, follow the other rides and enjoy the highest point. The descent gently returns riders to the parkʼs activity without breaking the contemplative mood.</p><h2>A ride to share</h2><p>The Ferris wheel favours approachable wonder rather than speed. Its gondolas invite several generations to share the same horizon and rediscover together the pleasure of a view that changes gently.</p>",
+            "newValue": "<h2>White gondolas above the trees</h2><p>Grande roue draws a large white circle against the sky over Dissay. Its rounded gondolas, trimmed in blue and topped with little roofs, rise above the line of pine trees.</p><p>From the gondolas, the park landscape opens out: colourful ride roofs appear among the trees, then neighbouring fields extend the horizon. From the ground, the wheel remains a clear landmark above the lower fairground scenery.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El parque visto desde arriba</h2><p>La noria eleva lentamente sus cabinas por encima de los árboles de LʼÎle aux Géants. A medida que el suelo se aleja, las atracciones de colores y el campo que rodea Dissay componen un panorama más amplio.</p><p>La rotación regular deja tiempo para reconocer los caminos, seguir las demás atracciones y disfrutar del punto más alto. El descenso devuelve suavemente a la actividad del parque.</p><h2>Una vuelta para compartir</h2><p>La noria busca una emoción accesible y no la velocidad. Sus cabinas invitan a varias generaciones a compartir el mismo horizonte y el placer de una vista que cambia suavemente.</p>",
+            "newValue": "<h2>Cabinas blancas sobre los árboles</h2><p>Grande roue dibuja un gran círculo blanco en el cielo de Dissay. Sus cabinas redondeadas, perfiladas en azul y cubiertas con pequeños techos, dominan la línea de los pinos.</p><p>Desde las cabinas, el paisaje del parque se amplía: los tejados de colores de las atracciones aparecen entre los árboles y los campos vecinos prolongan el horizonte. Desde el suelo, la noria sigue siendo una referencia clara por encima de los decorados más bajos de la feria.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le parc vu dʼen haut</h2><p>La Grande roue élève lentement ses nacelles au-dessus des arbres de LʼÎle aux Géants. À mesure que le sol sʼéloigne, les manèges colorés et la campagne autour de Dissay composent un panorama plus vaste.</p><p>La rotation régulière laisse le temps de reconnaître les allées, de suivre les autres attractions et de savourer le point culminant. La descente ramène doucement vers lʼanimation du parc sans rompre la contemplation.</p><h2>Un tour à partager</h2><p>La Grande roue cultive une émotion accessible plutôt quʼune recherche de vitesse. Ses nacelles invitent plusieurs générations à partager le même horizon et à retrouver ensemble le plaisir dʼune vue qui se transforme doucement.</p>",
+            "newValue": "<h2>Des nacelles blanches au-dessus des arbres</h2><p>La Grande roue découpe un grand cercle blanc dans le ciel de Dissay. Ses nacelles arrondies, soulignées de bleu et coiffées de petits toits, dominent la ligne des pins.</p><p>Depuis ces nacelles, le paysage du parc s’élargit : les toitures colorées des manèges apparaissent parmi les arbres, puis les champs voisins prolongent l’horizon. Vue du sol, la roue reste un repère clair au-dessus du décor plus bas des attractions foraines.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Il parco visto dallʼalto</h2><p>La ruota panoramica solleva lentamente le cabine sopra gli alberi di LʼÎle aux Géants. Mentre il suolo si allontana, le giostre colorate e la campagna intorno a Dissay formano un panorama più ampio.</p><p>La rotazione regolare lascia il tempo di riconoscere i viali, seguire le altre giostre e assaporare il punto più alto. La discesa riporta dolcemente allʼanimazione del parco.</p><h2>Un giro da condividere</h2><p>La ruota panoramica privilegia una meraviglia accessibile invece della velocità. Le cabine invitano più generazioni a condividere lo stesso orizzonte e il piacere di un panorama che cambia dolcemente.</p>",
+            "newValue": "<h2>Cabine bianche sopra gli alberi</h2><p>Grande roue disegna un ampio cerchio bianco nel cielo di Dissay. Le cabine arrotondate, rifinite in blu e sormontate da piccoli tetti, dominano la linea dei pini.</p><p>Dalle cabine il paesaggio del parco si allarga: i tetti colorati delle giostre appaiono tra gli alberi, poi i campi vicini estendono l’orizzonte. Da terra, la ruota resta un punto di riferimento ben visibile sopra gli scenari più bassi del luna park.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Het park van boven</h2><p>Het reuzenrad tilt zijn gondels langzaam boven de bomen van LʼÎle aux Géants. Terwijl de grond verder weg raakt, vormen kleurrijke attracties en het landschap rond Dissay een steeds ruimer panorama.</p><p>De gelijkmatige draaiing geeft tijd om paden te herkennen, andere attracties te volgen en van het hoogste punt te genieten. De afdaling brengt bezoekers rustig terug naar de levendigheid van het park.</p><h2>Een rit om samen te beleven</h2><p>Het reuzenrad kiest voor toegankelijke verwondering in plaats van snelheid. De gondels nodigen generaties uit om dezelfde horizon te delen en samen te genieten van een uitzicht dat langzaam verandert.</p>",
+            "newValue": "<h2>Witte gondels boven de bomen</h2><p>Grande roue tekent een grote witte cirkel tegen de lucht boven Dissay. De ronde gondels met blauwe accenten en kleine dakjes steken boven de rij dennen uit.</p><p>Vanuit de gondels ontvouwt zich het parklandschap: kleurrijke attractiedaken verschijnen tussen de bomen, waarna naburige velden de horizon verbreden. Vanaf de grond blijft het rad een duidelijk herkenningspunt boven de lagere kermisdecors.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Park widziany z góry</h2><p>Diabelski młyn powoli unosi gondole ponad drzewa LʼÎle aux Géants. Gdy ziemia się oddala, kolorowe atrakcje i okolice Dissay układają się w coraz szerszą panoramę.</p><p>Spokojny obrót daje czas na rozpoznawanie alejek, obserwowanie innych atrakcji i delektowanie się najwyższym punktem. Zjazd łagodnie przywraca do parkowego gwaru.</p><h2>Przejażdżka do wspólnego przeżycia</h2><p>Diabelski młyn stawia na dostępny zachwyt, nie na prędkość. Gondole zapraszają różne pokolenia do wspólnego patrzenia na ten sam horyzont i cieszenia się łagodnie zmieniającym widokiem.</p>",
+            "newValue": "<h2>Białe gondole ponad drzewami</h2><p>Grande roue rysuje wielki biały krąg na niebie nad Dissay. Zaokrąglone gondole z niebieskimi akcentami i małymi daszkami górują nad linią sosen.</p><p>Z gondoli otwiera się szerszy widok na park: między drzewami pojawiają się kolorowe dachy atrakcji, a dalej horyzont przedłużają sąsiednie pola. Z ziemi koło pozostaje wyraźnym punktem orientacyjnym ponad niższymi lunaparkowymi dekoracjami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O parque visto do alto</h2><p>A roda-gigante eleva lentamente as cabinas acima das árvores da LʼÎle aux Géants. À medida que o chão se afasta, as diversões coloridas e a paisagem em redor de Dissay formam um panorama mais amplo.</p><p>A rotação regular dá tempo para reconhecer os caminhos, acompanhar as outras diversões e apreciar o ponto mais alto. A descida devolve suavemente à animação do parque.</p><h2>Uma volta para partilhar</h2><p>A roda-gigante privilegia um encanto acessível em vez da velocidade. As cabinas convidam várias gerações a partilhar o mesmo horizonte e o prazer de uma vista que muda suavemente.</p>",
+            "newValue": "<h2>Cabines brancas acima das árvores</h2><p>A Grande roue desenha um grande círculo branco no céu de Dissay. As cabines arredondadas, com pormenores azuis e pequenos telhados, dominam a linha dos pinheiros.</p><p>Das cabines, a paisagem do parque alarga-se: os telhados coloridos das diversões aparecem entre as árvores e os campos vizinhos prolongam o horizonte. Vista do chão, a roda continua a ser uma referência clara acima dos cenários mais baixos da feira.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}
