@@ -1,5 +1,5 @@
 {
-  "work": "Source-backed qualification of five false positive standalone discovery records; all original rows retained. No park data was integrated and no lastDataIntegrationAt was invented.",
+  "work": "Source-backed qualification of seven standalone discovery records: four park-internal wheels, one dismantled wheel and two duplicate Wiegand references for already integrated standalone runs. All original rows retained. No park data was integrated and no lastDataIntegrationAt was invented.",
   "reviewedAt": "2026-11-15",
   "records": [
     {
@@ -44,6 +44,22 @@
       "name": "SkyView Rotterdam",
       "decision": "Historic installation dismantled; excluded from current creation queue",
       "source": "https://www.dehavenloods.nl/nieuws/algemeen/25827/reuzenrad-weg-bij-markthal-maar-hoop-op-nieuwe-rotterdamse-plek"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-656009ff5e3a31",
+      "name": "Luge Wiegand — Oberwiesenthal",
+      "publishedEntryId": "DE-candidate-2ae1371b43102d",
+      "decision": "Retained duplicate of an integrated standalone attraction; no extra site entry",
+      "source": "http://sommerrodelbahn-oberwiesenthal.de"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-d95b6a111a30ad",
+      "name": "Luge Wiegand — Kohren-Sahlis",
+      "publishedEntryId": "DE-candidate-04a04741efdfd7",
+      "decision": "Retained duplicate of an integrated standalone attraction; no extra site entry",
+      "source": "https://www.sommerrodelbahn-kohren-sahlis.de/"
     }
   ],
   "limitations": [

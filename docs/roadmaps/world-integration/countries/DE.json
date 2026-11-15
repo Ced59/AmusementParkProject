@@ -15501,25 +15501,27 @@
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Kohren-Sahlis",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Référence Wiegand du même site que la fiche standalone publiée DE-candidate-04a04741efdfd7.",
+      "identityConfidence": "Le constructeur et l’exploitant référencent la même luge que la fiche standalone publiée sous DE-candidate-04a04741efdfd7.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-04a04741efdfd7"
+      ],
       "aliases": [
         "Kohren-Sahlis"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme doublon documentaire de DE-candidate-04a04741efdfd7 ; ne pas créer de deuxième fiche. Les mises à jour de données se consignent sur la ligne principale.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15534,7 +15536,7 @@
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Kohren-Sahlis",
@@ -15545,8 +15547,9 @@
             "referenceId": "location-id-1270"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Même piste, même commune et même exploitant que la fiche autonome publiée et auditée sous DE-candidate-04a04741efdfd7."
+      },
+      "duplicateOf": "DE-candidate-04a04741efdfd7"
     },
     {
       "entryId": "DE-candidate-standalone-d8ee2468897f33",
@@ -16113,25 +16116,27 @@
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Oberwiesenthal",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Référence Wiegand du même site que la fiche standalone publiée DE-candidate-2ae1371b43102d.",
+      "identityConfidence": "Le constructeur et l’exploitant référencent la même luge que la fiche standalone publiée sous DE-candidate-2ae1371b43102d.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-2ae1371b43102d"
+      ],
       "aliases": [
         "Oberwiesenthal"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme doublon documentaire de DE-candidate-2ae1371b43102d ; ne pas créer de deuxième fiche. Les mises à jour de données se consignent sur la ligne principale.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16146,7 +16151,7 @@
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Oberwiesenthal",
@@ -16157,8 +16162,9 @@
             "referenceId": "location-id-1258"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Même piste, même commune et même exploitant que la fiche autonome publiée et auditée sous DE-candidate-2ae1371b43102d."
+      },
+      "duplicateOf": "DE-candidate-2ae1371b43102d"
     },
     {
       "entryId": "DE-candidate-standalone-2a658b5b10e69c",
