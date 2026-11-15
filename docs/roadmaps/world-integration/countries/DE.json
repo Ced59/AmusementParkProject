@@ -14936,25 +14936,27 @@
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Garmisch-Partenkirchen",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Les deux références Wiegand 1996 et 2013 concernent la même piste Garmisch-Partenkirchen, publiée sous la ligne DE-candidate-4ce70cf4ce1e8b.",
+      "identityConfidence": "Exploitant, site de tourisme et références constructeur relient les deux références de travaux à la même piste.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-4ce70cf4ce1e8b"
+      ],
       "aliases": [
         "Garmisch-Partenkirchen"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne constructeur et ses deux références comme doublon documentaire de DE-candidate-4ce70cf4ce1e8b ; ne pas créer une deuxième fiche. Vérifier la réouverture annoncée pour Pâques 2027.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -14970,11 +14972,21 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1279",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant actuel — même piste et fermeture saisonnière",
+          "url": "https://www.sommerrodelbahn-gap.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Zugspitz Region — même lieu",
+          "url": "https://www.zugspitz-region.de/poi/sommerrodelbahn-in-garmisch-partenkirchen",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Garmisch-Partenkirchen",
@@ -14993,8 +15005,9 @@
             "referenceId": "location-id-1279"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Les références Wiegand location-id-1279 et location-id-1280 décrivent la construction puis des travaux ultérieurs de la même piste au stade. La fiche publiée est suivie sous DE-candidate-4ce70cf4ce1e8b."
+      },
+      "duplicateOf": "DE-candidate-4ce70cf4ce1e8b"
     },
     {
       "entryId": "DE-candidate-standalone-39d4dbd8f1b588",
@@ -23457,37 +23470,131 @@
     {
       "entryId": "DE-candidate-4ce70cf4ce1e8b",
       "name": "Sommerrodelbahn Garmisch-Partenkirchen",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
+      "category": "Luge d’été",
       "locality": "Garmisch-Partenkirchen",
-      "siteId": null,
+      "siteId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T01:04:41.642Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Site officiel consulté le 2026-11-15 : fermé actuellement ; réouverture annoncée à Pâques 2027.",
+      "identityConfidence": "Exploitant, tourisme régional, OSM et photo de la piste concordent sur une seule attraction autonome à l’Olympia Skistadion ; aucune fiche préexistante dans l’éditeur.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn GAP",
+        "Sommerrodelbahn am Skistadion",
+        "Luge Wiegand — Garmisch-Partenkirchen"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T01:04:01.485Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-49e15fad-68d6-4c51-a515-d40677e87d89",
+          "appliedAt": "2026-11-15T01:01:18.527Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:apply:49e15fad-68d6-4c51-a515-d40677e87d89",
+          "auditEvidence": null,
+          "summary": "Création de la fiche, fermeture saisonnière, localisation et huit textes."
+        },
+        {
+          "eventId": "apply-f9e5faa5-e97f-4e46-935d-261d45199784",
+          "appliedAt": "2026-11-15T01:03:26.279Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:apply:f9e5faa5-e97f-4e46-935d-261d45199784",
+          "auditEvidence": null,
+          "summary": "Conditions officielles d’âge, d’accompagnement et de poids."
+        },
+        {
+          "eventId": "image-a17dbc7a7982458aaaa4beef0faae95d",
+          "appliedAt": "2026-11-15T01:03:57.624Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:image:a17dbc7a7982458aaaa4beef0faae95d",
+          "auditEvidence": null,
+          "summary": "Photo exacte Wikitarisch CC BY 4.0 importée et créditée en huit langues."
+        },
+        {
+          "eventId": "image-metadata-a17dbc7a7982458aaaa4beef0faae95d",
+          "appliedAt": "2026-11-15T01:04:01.485Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:image:a17dbc7a7982458aaaa4beef0faae95d",
+          "auditEvidence": null,
+          "summary": "Métadonnées de la photo confirmées, licence et recadrage explicités."
+        },
+        {
+          "eventId": "closure-image-a17dbc7a7982458aaaa4beef0faae95d",
+          "appliedAt": "2026-11-15T01:04:01.485Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:image:a17dbc7a7982458aaaa4beef0faae95d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-garmisch-20261115/audit.json",
+          "summary": "Audit final : huit pages et photo HTTP 200, complétude 81 sans bloqueur, fermeture signalée et Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date réelle. Avant Pâques 2027, vérifier la réouverture, les tarifs et les horaires officiels ; les références Wiegand 1279 et 1280 sont consignées dans la ligne doublon conservée.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-garmisch-partenkirchen/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — statut, conditions de visite et tarifs affichés",
+          "url": "https://www.sommerrodelbahn-gap.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Zugspitz Region — lieu",
+          "url": "https://www.zugspitz-region.de/poi/sommerrodelbahn-in-garmisch-partenkirchen",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — piste",
+          "url": "https://www.openstreetmap.org/way/582453792",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Wikitarisch, 21 mars 2025, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Olympia_Skistadion_Talstation_Eckbauerbahn_(Garmisch-Partenkirchen).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence 1996",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1279",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence 2013",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1280",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Garmisch-Partenkirchen",
+            "source": "Exploitant",
+            "url": "https://www.sommerrodelbahn-gap.de/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Olympia Skistadion",
+            "sourceLocality": "Garmisch-Partenkirchen"
+          }
+        ],
+        "rationale": "Piste avec exploitant, accès et billetterie propres à côté du stade ; les deux références constructeur documentent des travaux sur la même attraction."
       }
     },
     {
