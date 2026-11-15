@@ -474,6 +474,254 @@
       }
     },
     {
+      "entryId": "NZ-candidate-discovery-40a68098840cd0",
+      "name": "Nevis Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Nevis Valley, Queenstown-Lakes, Otago",
+      "siteId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T11:57:17.473Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : Nevis Playground proposé toute l’année ; horaires des départs variables selon la réservation.",
+      "identityConfidence": "Offre, billet, règles et transport confirmés par l’exploitant ; trois photographies exactes et réutilisables mais historiques ; aucune fiche site préexistante dans la recherche officielle.",
+      "possibleMatches": [],
+      "aliases": [
+        "Nevis Bungee",
+        "AJ Hackett Nevis Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T11:55:53.746Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c103691b-b587-4551-86a3-5f895f1f1b1a",
+          "appliedAt": "2026-11-15T11:51:19.180Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:apply:c103691b-b587-4551-86a3-5f895f1f1b1a",
+          "auditEvidence": null,
+          "summary": "Création du saut dans le canyon de Nevis, point OSM et huit descriptions éditoriales."
+        },
+        {
+          "eventId": "apply-8654f6db-e4dd-41cb-a160-117bcc4e001a",
+          "appliedAt": "2026-11-15T11:52:51.522Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:apply:8654f6db-e4dd-41cb-a160-117bcc4e001a",
+          "auditEvidence": null,
+          "summary": "Tarif officiel à partir de 395 NZD, règles d’âge, poids, santé et transport, note honnête sur les horaires variables, en huit langues."
+        },
+        {
+          "eventId": "image-97346b168b5d4ca0a204981f4594e0e6",
+          "appliedAt": "2026-11-15T11:53:42.578Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:image:97346b168b5d4ca0a204981f4594e0e6",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "image-15e609e356dc4e0f84a81093c3c706a0",
+          "appliedAt": "2026-11-15T11:54:10.477Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:image:15e609e356dc4e0f84a81093c3c706a0",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, Public domain."
+        },
+        {
+          "eventId": "image-9c2058de98aa4991a2a0e03bebae7979",
+          "appliedAt": "2026-11-15T11:54:27.314Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:image:9c2058de98aa4991a2a0e03bebae7979",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte du saut ou de la plateforme, datée du 2 octobre 2005 ; huit alt, légendes et crédits ; Che010, Public domain."
+        },
+        {
+          "eventId": "apply-831496f8-43cd-4520-bd23-987447677b03",
+          "appliedAt": "2026-11-15T11:55:53.746Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c5dd24f5-4eac-4b88-bb65-f11592f8061a",
+          "evidence": "PARK_DATA_EDITOR:apply:831496f8-43cd-4520-bd23-987447677b03",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-nevis-bungy-20261115/audit.json",
+          "summary": "Révision des descriptions pour supprimer les chiffres techniques proscrits dans le texte public ; données et sources inchangées."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler le prix et les départs de bus sous 90 jours ; compléter les horaires journaliers et l’année d’ouverture seulement après une preuve officielle. Les photos sont historiques (2005) ; chercher des vues plus récentes avec licence réutilisable. Qualifier Nevis Swing et Nevis Catapult séparément avec photos exactes. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — Nevis Bungy, tarif et conditions",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Nevis Playground, transport et horaires",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions médicales",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Nevis Swing distinct",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-swing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Nevis Catapult distinct",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-catapult/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — plateforme Nevis Bungy",
+          "url": "https://www.openstreetmap.org/way/927664640",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Che010, CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Jump_from_nevis_bungee_platform.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Che010, Public domain",
+          "url": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_jump.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Che010, Public domain",
+          "url": "https://commons.wikimedia.org/wiki/File:Nevis_bungy_platform_outside.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Nevis Bungy",
+            "source": "Exploitant — Nevis Bungy, tarif et conditions",
+            "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Nevis Playground",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Nevis Valley, Queenstown-Lakes"
+          }
+        ],
+        "rationale": "Saut vendu séparément du Swing et du Catapult au Nevis Playground. Fiche autonome créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-6e7f7b0f9f0758",
+      "name": "Nevis Catapult",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Catapulte de canyon",
+      "locality": "Nevis Playground, Queenstown-Lakes, Otago",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre et réservation distinctes sur la page officielle de l’exploitant, consultée le 15 novembre 2026.",
+      "identityConfidence": "Produit distinct du Nevis Bungy, page officielle disponible ; photo exacte et réutilisable, tarifs, règles et modélisation à contrôler avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "AJ Hackett Nevis Catapult"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, vérifier tarifs, accès et horaires officiels, trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos du Nevis Bungy pour une autre attraction.",
+      "sources": [
+        {
+          "label": "Exploitant — Nevis Playground, trois activités distinctes",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — activité propre",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-catapult/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité du Nevis Playground vendue séparément du Bungy ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-40a68098840cd0"
+      ]
+    },
+    {
+      "entryId": "NZ-candidate-discovery-4159f631122b1d",
+      "name": "Nevis Swing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire géante",
+      "locality": "Nevis Playground, Queenstown-Lakes, Otago",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre et réservation distinctes sur la page officielle de l’exploitant, consultée le 15 novembre 2026.",
+      "identityConfidence": "Produit distinct du Nevis Bungy, page officielle disponible ; photo exacte et réutilisable, tarifs, règles et modélisation à contrôler avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "AJ Hackett Nevis Swing"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, vérifier tarifs, accès et horaires officiels, trouver au moins une photographie réutilisable montrant exactement cette activité. Ne pas utiliser les photos du Nevis Bungy pour une autre attraction.",
+      "sources": [
+        {
+          "label": "Exploitant — Nevis Playground, trois activités distinctes",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — activité propre",
+          "url": "https://www.bungy.co.nz/queenstown/nevis/nevis-swing/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité du Nevis Playground vendue séparément du Bungy ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-40a68098840cd0"
+      ]
+    },
+    {
       "entryId": "NZ-candidate-standalone-b1ba5c7ef3de54",
       "name": "Luge Wiegand — Coronet Peak - dismantled",
       "entityKind": "ToQualify",
