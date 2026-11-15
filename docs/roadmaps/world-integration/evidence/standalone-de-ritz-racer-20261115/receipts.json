@@ -1,0 +1,130 @@
+{
+  "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+  "receipts": [
+    {
+      "action": "Apply",
+      "stage": "core",
+      "operationId": "b034d2b0-c842-4e45-86e1-06cf0a74f9c0",
+      "appliedAtUtc": "2026-11-15T08:32:44.9779586Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "pricing",
+      "operationId": "4b98f8e6-ae8e-4602-89e6-d4e3a6413dab",
+      "appliedAtUtc": "2026-11-15T08:35:06.2133516Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "text-update",
+      "operationId": "181a837c-a132-4f1c-b77e-4a3cd8e57eeb",
+      "appliedAtUtc": "2026-11-15T08:39:22.6653725Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "visitors",
+      "operationId": "d4eedd3a-646a-48b2-9e42-300da3ec4ecf",
+      "appliedAtUtc": "2026-11-15T08:41:43.9707413Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "history",
+      "operationId": "53c15713-aafc-4ed2-aeee-f74723200000",
+      "appliedAtUtc": "2026-11-15T08:42:59.7430654Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "publish",
+      "operationId": "4ae33691-7b51-405b-8eb5-aaf06783ba1f",
+      "appliedAtUtc": "2026-11-15T08:44:10.6234043Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-1",
+      "imageId": "29e08d8bfb7e4aae8b49687d6884962b",
+      "sourceUrl": "https://dam.destination.one/4318330/ec700c2af689e6c20c4a23d38d06b5a7a7c2fdbb594aa8d84d9cf72d0cc7d54d/ritzracer-am-ritzhagen-in-willingen.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-3",
+      "imageId": "818ce9b3dd194520b39352180e33bee2",
+      "sourceUrl": "https://dam.destination.one/4318328/66e3565d406daa6d1aa34b09f7af450c4a57230b2d7a0e7ca308372de9833b23/ritz-racer-beim-bergauffahren.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-4",
+      "imageId": "9e0bbadda4f54615afa652849d945e6f",
+      "sourceUrl": "https://dam.destination.one/4321044/285ff45677e3dc4891b1468247717ee8fbd9518158e05a40170922b12ddd7321/kreisel-am-ritz-racer-willingen.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-5",
+      "imageId": "711018c10ae841a1ada28569fad888ad",
+      "sourceUrl": "https://dam.destination.one/4321041/1c89fa8c7b9d9ad9c84431d1aef200e536d65481949bbd40c3dc1dd6b64d0de0/ritz-racer-willingen-auf-der-strecke.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "PublishFacebook",
+      "publicationId": "f072da507c684f959176c247f0a6ee12",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-15T08:45:02.3726436Z",
+      "postUrl": "https://www.facebook.com/1285475681307050/posts/122127428727424431"
+    }
+  ]
+}
