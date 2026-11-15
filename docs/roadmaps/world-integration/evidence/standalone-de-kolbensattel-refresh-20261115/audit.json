@@ -1,0 +1,99 @@
+{
+  "entryId": "DE-standalone-3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+  "name": "Alpine Coaster Kolbensattel",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T13:39:24.284Z",
+  "qualification": "Fiche autonome déjà publiée, avec six images. Révision éditoriale sans création ni remplacement du legacy Park masqué ; identité existante conservée.",
+  "operatorSources": [
+    "https://kolbensattel-im-sommer.de/alpine-coaster/",
+    "https://kolbensattel-im-sommer.de/betriebszeiten-preise/"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/3abbd360-2390-40bb-bd04-e8fbbbcc5620/alpine-coaster-kolbensattel",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 6,
+  "photos": [
+    {
+      "imageId": "a773870c0ad34105be65f5afed5e4a62",
+      "sourceUrl": "https://kolbensattel-im-sommer.de/wp-content/uploads/2025/01/MF_061713_AlpinCoster_0202-scaled.jpg",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "8124723aac7b407792124379d25d48d3",
+      "sourceUrl": "https://kolbensattel-im-sommer.de/wp-content/uploads/2025/02/MF_061713_AlpinCoster_0107-1536x1024.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "23d01d3264d849a183f4f0c9efa1d532",
+      "sourceUrl": "https://kolbensattel-im-sommer.de/wp-content/uploads/2025/01/MF_061713_AlpinCoster_0154-1536x1024.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "b1335c5598af44e7bd53ba5f80ecdba5",
+      "sourceUrl": "https://kolbensattel-im-sommer.de/wp-content/uploads/2025/01/MF_061713_AlpinCoster_0019-1536x1024.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "e96bb28531a5422ea6130188d3bc3ad8",
+      "sourceUrl": "https://kolbensattel-im-sommer.de/wp-content/uploads/2025/01/MF_061713_AlpinCoster_0015-1536x1024.jpg",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "437342cbe5ab45d2b3ad6d4aceacbff4",
+      "sourceUrl": "https://www.wiegandslide.com/fileadmin/template/wg_main_de_5/images/logo.png",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "mediaAssessment": "Six photographies existantes et servies en production. Leurs sources sont liées à l’exploitant ; cet audit ne certifie pas leurs droits de réutilisation. Aucune nouvelle image importée lors de cette révision.",
+  "editorialAssessment": "Blocage initial public-text.forbidden-editorial-language : descriptions contenant des métriques brutes et des commentaires sur les sources ou la page. Huit textes remplacés par des descriptions de visite ; blocage absent après Apply.",
+  "openingHoursAssessment": "Source officielle au 15 novembre 2026 : fermeture depuis le 9 novembre ; ouverture hivernale seulement envisagée autour du 27 décembre. Règle fermée structurée du 9 novembre au 26 décembre. Aucun horaire d’hiver inventé.",
+  "pricingAssessment": "La page officielle affiche les tarifs été 2026, mais ils ne sont pas repris comme tarifs de l’hiver à venir. À vérifier lors de la reprise.",
+  "completeness": {
+    "score": 80,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127458823424431",
+    "publishedAtUtc": "2026-11-15T13:38:51.0304375Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:37:52.784Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "corefix",
+      "operationId": "71f89264-a471-42ef-9498-b2623b8f8629",
+      "appliedAtUtc": "2026-11-15T13:36:42.2765733Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "closure",
+      "operationId": "96fcd161-e8b1-4927-8f2c-daa9ef8766ba",
+      "appliedAtUtc": "2026-11-15T13:37:52.7843442Z"
+    }
+  ],
+  "nextAction": "Conserver la ligne et les reçus. Revérifier autour du 27 décembre 2026 la date effective de reprise hivernale, les horaires et les tarifs de la nouvelle saison ; ne pas afficher les prix d’été 2026 comme tarifs d’hiver. Auditer séparément les droits des six photos existantes issues des pages de l’exploitant. Ne pas republier Facebook pour une simple actualisation."
+}

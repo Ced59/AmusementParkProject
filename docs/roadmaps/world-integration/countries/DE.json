@@ -1069,20 +1069,41 @@
         "f376f852-81a4-4875-b547-dfcc15d9bf96"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T13:37:52.784Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Actuellement fermé depuis le 9 novembre 2026 ; reprise hivernale envisagée autour du 27 décembre, non confirmée.",
+      "identityConfidence": "Fiche StandaloneAttraction existante conservée ; six médias accessibles ; texte public corrigé en huit langues, qualité sans blocage.",
       "possibleMatches": [],
       "aliases": [
         "Kolbensattel"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T13:37:52.784Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-71f89264-a471-42ef-9498-b2623b8f8629",
+          "appliedAt": "2026-11-15T13:36:42.276Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+          "evidence": "PARK_DATA_EDITOR:apply:71f89264-a471-42ef-9498-b2623b8f8629",
+          "auditEvidence": null,
+          "summary": "Huit descriptions réécrites pour supprimer le langage éditorial et les métriques brutes dans le texte narratif."
+        },
+        {
+          "eventId": "apply-96fcd161-e8b1-4927-8f2c-daa9ef8766ba",
+          "appliedAt": "2026-11-15T13:37:52.784Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+          "evidence": "PARK_DATA_EDITOR:apply:96fcd161-e8b1-4927-8f2c-daa9ef8766ba",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-kolbensattel-refresh-20261115/audit.json",
+          "summary": "Fermeture officielle après le 8 novembre structurée jusqu’au 26 décembre, avant une reprise hivernale encore tentative."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revérifier autour du 27 décembre 2026 la date effective de reprise hivernale, les horaires et les tarifs de la nouvelle saison ; ne pas afficher les prix d’été 2026 comme tarifs d’hiver. Auditer séparément les droits des six photos existantes issues des pages de l’exploitant. Ne pas republier Facebook pour une simple actualisation.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1118,6 +1139,11 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.kolbensattel.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — horaires, fermeture et tarifs été 2026",
+          "url": "https://kolbensattel-im-sommer.de/betriebszeiten-preise/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
