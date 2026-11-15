@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T10:30:45.925Z",
+  "result": {
+    "id": "bd614274b8db467280d0352d37453c8c",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+    "path": "park_item/bd614274b8db467280d0352d37453c8c",
+    "description": "Les Karts à pédales lors d’une sortie à Ô Parc relatée par le Secours populaire du Cher en juin 2023.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 2560,
+    "height": 1504,
+    "sizeInBytes": 728343,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/karting-oparc-ok-scaled.jpg",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Deux enfants sur des karts à pédales devant les bordures noires et blanches et les drapeaux à damier d’Ô Parc."
+      },
+      {
+        "languageCode": "en",
+        "value": "Two children on pedal karts beside the black-and-white track edging and chequered flags at Ô Parc."
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Kinder auf Tretkarts neben den schwarz-weißen Fahrbahnbegrenzungen und Karoflaggen im Ô Parc."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee kinderen op trapkarts bij de zwart-witte baanranden en geblokte vlaggen van Ô Parc."
+      },
+      {
+        "languageCode": "it",
+        "value": "Due bambini sui kart a pedali accanto ai bordi bianchi e neri della pista e alle bandiere a scacchi di Ô Parc."
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos niños en karts a pedales junto a los bordes blancos y negros de la pista y las banderas a cuadros de Ô Parc."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwoje dzieci na gokartach na pedały przy czarno-białych obrzeżach toru i flagach w szachownicę w Ô Parc."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Duas crianças em karts a pedais junto às bordas pretas e brancas da pista e às bandeiras axadrezadas do Ô Parc."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les Karts à pédales lors d’une sortie à Ô Parc relatée par le Secours populaire du Cher en juin 2023."
+      },
+      {
+        "languageCode": "en",
+        "value": "Karts à pédales during an Ô Parc outing reported by Secours populaire du Cher in June 2023."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Karts à pédales bei einem Ausflug in den Ô Parc, über den Secours populaire du Cher im Juni 2023 berichtete."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Karts à pédales tijdens een uitstapje naar Ô Parc waarover Secours populaire du Cher in juni 2023 berichtte."
+      },
+      {
+        "languageCode": "it",
+        "value": "I Karts à pédales durante una gita a Ô Parc raccontata dal Secours populaire du Cher nel giugno 2023."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los Karts à pédales durante una excursión a Ô Parc relatada por Secours populaire du Cher en junio de 2023."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Karts à pédales podczas wycieczki do Ô Parc opisanej przez Secours populaire du Cher w czerwcu 2023 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os Karts à pédales durante uma visita ao Ô Parc relatada pelo Secours populaire du Cher em junho de 2023."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "en",
+        "value": "Source : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło : Secours populaire français, Fédération du Cher"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte : Secours populaire français, Fédération du Cher"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T10:30:42.461Z",
+    "updatedAt": "2026-11-15T10:30:45.925Z"
+  },
+  "sourceEvidence": {
+    "stem": "karts-secours-2023",
+    "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/karting-oparc-ok-scaled.jpg",
+    "sourcePage": "https://www.secourspopulaire.fr/18/sortie-familles-au-parc-de-loisirs-oparc/",
+    "path": "/workspace/france-historical-20261114/o-parc/parallel-identities-followup-20261115/secours-2023-karting.jpg",
+    "bytes": 728343,
+    "sha256": "289bf6ed26e541279d1bf16f984595483ad4a029ed94140996630ba4b98aa3e0",
+    "width": 2560,
+    "height": 1504,
+    "sourceArticleUpdatedDate": "2023-06-21",
+    "sourceOutingDate": "2023-06-17",
+    "capturedAt": null,
+    "photographer": "Not individually named; source Fédération du Cher du Secours populaire français",
+    "rights": "Owner authorized researched photographs; source credit retained, no open licence claimed",
+    "review": "Root personally inspected native photograph and existing Infoptimum image: distinct close view versus existing distant view. Same identified pedal-kart track; no individual identities or manufacturer inferred. All eight alternative texts, captions and credits written and personally reviewed. Source file untouched; upload path October2023 not capture date. No visible watermark."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

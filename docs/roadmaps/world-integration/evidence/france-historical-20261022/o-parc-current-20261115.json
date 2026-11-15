@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T06:32:49.458541+00:00",
+  "observedAtUtc": "2026-11-15T10:31:59.201431+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": true,
@@ -323,14 +323,19 @@
       "imageId": "8976847a7add4386a59e30a020a80270",
       "serverIntegrationAtUtc": "2026-11-15T05:15:39.163Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-minigolf-entrance-panorama-2020-20261115.json"
+    },
+    {
+      "imageId": "bd614274b8db467280d0352d37453c8c",
+      "serverIntegrationAtUtc": "2026-11-15T10:30:45.925Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-karts-secours-2023-20261115.json"
     }
   ],
   "counts": {
     "items": 43,
     "itemDescriptionsRewrittenEightLanguages": 43,
     "itemDescriptionsStillToReview": 0,
-    "images": 23,
-    "newImagesPrivate": 0,
+    "images": 24,
+    "newImagesPrivate": 1,
     "zones": 2,
     "historyEvents": 10,
     "articles": 1,
@@ -508,7 +513,7 @@
     "Références fondateurs et exploitant relues et corrigées par Apply5a3caae1 ; closedYear exploitant null faute de preuve de dissolution, parc ClosedDefinitively préservé.",
     "Inspection directe logo5bbfbad: fichiercorrect avecmotPARCbleu-violet/liondansÔrouge, anciensaltvert faux corrigés. AltMiniGolf prétendait2enfants inexistants, corrigé. PremierPreviewzonesmedia10ownersnonrésolus nonappliqué, ownerKey+itemsminimaux redéclarés puisPreviewzérowarnings."
   ],
-  "nextAction": "Publication vérifiée : 43 lieux, 23 médias, 2 plans et 8 faits publics ; Facebook existant Published. Conserver partial et rechercher les identités du Twister géant 2017, de la pieuvre orange et du château jaune 2020 ; 32 photos de lieux et toutes positions non prouvées restent documentées. Affichage du plan 2025 encore absent en néerlandais uniquement : recontrôle après renouvellement normal du cache, sans réappliquer ni nouvel export d’audit.",
+  "nextAction": "Contrôler et publier la seconde vue distincte des Karts à pédales issue du Secours populaire2023, encore privée. Conserver les anciens audits et publications ainsi que les trois identités historiques non résolues et le plan2025 NL non affiché.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
@@ -954,7 +959,7 @@
       }
     }
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T06:09:54.0516313Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T10:30:45.925Z",
   "publicationFollowupEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-publication-followup-20261115.json",
   "publicVerificationCompleted": false
 }

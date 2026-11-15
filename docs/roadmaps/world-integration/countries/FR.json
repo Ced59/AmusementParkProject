@@ -21790,7 +21790,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T06:09:54.051Z",
+      "lastDataIntegrationAt": "2026-11-15T10:30:45.925Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -22181,9 +22181,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-12-publish-item-history-20261115.json",
           "auditEvidence": null,
           "summary": "Publication des jalons Ô Pirates 2024 et Parcours de la Jungle 2025 ; photographie réelle de la nouveauté 2025 rattachée au fait Safari Buggy. Deux anciens brouillons exclus préservés, aucun doublon historique créé."
+        },
+        {
+          "eventId": "image-bd614274b8db467280d0352d37453c8c",
+          "appliedAt": "2026-11-15T10:30:45.925Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-karts-secours-2023-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée karts-secours-2023, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
         }
       ],
-      "nextAction": "Publication vérifiée : 43 lieux, 23 médias, 2 plans et 8 faits publics ; Facebook existant Published. Conserver partial et rechercher les identités du Twister géant 2017, de la pieuvre orange et du château jaune 2020 ; 32 photos de lieux et toutes positions non prouvées restent documentées. Affichage du plan 2025 encore absent en néerlandais uniquement : recontrôle après renouvellement normal du cache, sans réappliquer ni nouvel export d’audit.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -27757,7 +27767,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T10:02:43.230Z",
+      "lastDataIntegrationAt": "2026-11-15T10:20:50.429Z",
       "integrationHistory": [
         {
           "eventId": "apply-800058f1-a0d9-4e68-8856-771632577322",
@@ -27988,9 +27998,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-tricycles-description-20261115.json",
           "auditEvidence": null,
           "summary": "Tricycles existants : huit notices historiques personnelles, panneau nominal dans photo2018 et nom officiel rapprochés ; distincts Vélos drôles, statut Unknown et visibilité privée conservés. Pas de restriction extrapolée du panneau tronqué."
+        },
+        {
+          "eventId": "apply-278bccc6-e034-4c38-8ae5-78e5350544a6",
+          "appliedAt": "2026-11-15T10:20:50.429Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-pont-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pont suspendu public corrigé32textes8langues : filet souple au-dessus eau/arceauxverts, petit toboggan distinct Luge ; nouveauté2023 annoncée sans premièreprésence inventée. Fiche,2résumés et1paragraphearticle ; dates/types/IDs/visibilités conservés."
         }
       ],
-      "nextAction": "55/84lieux décrits8langues après3Apply et2photosDune privés15novembre;48publics,56médias,8plansrestaurés. Qualifier36privés, contradictionâgeAmeco et possibleconfusionPonts. Aucun auditfinal ni publicationnouvelle;preuve naudieres-identity-followup-20261115.json.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

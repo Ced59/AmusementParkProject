@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 1,
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "status": "partial",
+  "checkedAtUtc": "2026-11-15T10:31:28.899056+00:00",
+  "actualApplyAtUtc": "2026-11-15T10:20:50.4292657Z",
+  "operationId": "278bccc6-e034-4c38-8ae5-78e5350544a6",
+  "applyEvidence": "naudieres-pont-correction-20261115.json",
+  "idempotence": {
+    "operationId": "da1a227e-d05d-42a3-9f49-f57c79b530b9",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:25:34.9899237Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+        "entityKey": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+        "displayName": "Pont suspendu",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "078645a5-5bf7-4f2b-abbb-ecd2fcbe72c4",
+        "entityKey": "naudieres-history-pont-suspendu-2023",
+        "displayName": "Un Pont suspendu parmi les nouveautés 2023",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ddd8053e-aff4-4a3c-8cb3-bb64e5463dfd",
+        "entityKey": "naudieres-history-envol-2023",
+        "displayName": "Holly donne son nom aux nouvelles chaises volantes",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "d290abc3-4d83-4d87-af5a-ce5863389d8b",
+        "entityKey": "naudieres-history-investment-plan-2020",
+        "displayName": "Un programme de transformation balnéaire",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T10:26:18.5181544Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+      "parkName": "Parc des Naudières",
+      "factCount": 109,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1970,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 23,
+          "sourcedResourceCount": 23,
+          "publishedResourceCount": 22,
+          "subjectCount": 16,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 2
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 29
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 78
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 29,
+        "sourcedFactCount": 29,
+        "majorFactCount": 17,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T10:26:17.6156904Z"
+  },
+  "publicChecks": [
+    {
+      "language": "fr",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:23.304688+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 2005
+    },
+    {
+      "language": "fr",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:24.287723+00:00",
+      "h1": [
+        "Histoire de Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1100
+    },
+    {
+      "language": "fr",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:28.731624+00:00",
+      "h1": [
+        "Histoire de L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1160
+    },
+    {
+      "language": "fr",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:33.421997+00:00",
+      "h1": [
+        "Les Naudières : du parc de plein air à HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6589
+    },
+    {
+      "language": "en",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/en/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:38.346422+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1899
+    },
+    {
+      "language": "en",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/en/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:38.885222+00:00",
+      "h1": [
+        "Pont suspendu history"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1011
+    },
+    {
+      "language": "en",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/en/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:41.948198+00:00",
+      "h1": [
+        "L’Envol d’Holly history"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1055
+    },
+    {
+      "language": "en",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/en/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:46.641113+00:00",
+      "h1": [
+        "Les Naudières: from outdoor play park to HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6143
+    },
+    {
+      "language": "de",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/de/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:52.008905+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 2066
+    },
+    {
+      "language": "de",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/de/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:52.822835+00:00",
+      "h1": [
+        "Geschichte von Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1128
+    },
+    {
+      "language": "de",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/de/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:28:55.847525+00:00",
+      "h1": [
+        "Geschichte von L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1202
+    },
+    {
+      "language": "de",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/de/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:00.054022+00:00",
+      "h1": [
+        "Les Naudières: vom Freizeitpark im Grünen zu HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6501
+    },
+    {
+      "language": "nl",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/nl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:05.863727+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 2007
+    },
+    {
+      "language": "nl",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/nl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:07.274572+00:00",
+      "h1": [
+        "Geschiedenis van Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1107
+    },
+    {
+      "language": "nl",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/nl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:10.268431+00:00",
+      "h1": [
+        "Geschiedenis van L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1152
+    },
+    {
+      "language": "nl",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/nl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:13.109088+00:00",
+      "h1": [
+        "Les Naudières: van buitenspeelpark tot HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6431
+    },
+    {
+      "language": "it",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/it/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:17.488086+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 2052
+    },
+    {
+      "language": "it",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/it/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:18.870716+00:00",
+      "h1": [
+        "Storia di Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1116
+    },
+    {
+      "language": "it",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/it/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:21.852889+00:00",
+      "h1": [
+        "Storia di L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1168
+    },
+    {
+      "language": "it",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/it/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:25.999517+00:00",
+      "h1": [
+        "Les Naudières: dal parco all’aperto a HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6435
+    },
+    {
+      "language": "es",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/es/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:30.282894+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 2086
+    },
+    {
+      "language": "es",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/es/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:31.702644+00:00",
+      "h1": [
+        "Historia de Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1097
+    },
+    {
+      "language": "es",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/es/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:35.213483+00:00",
+      "h1": [
+        "Historia de L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1171
+    },
+    {
+      "language": "es",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/es/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:39.350150+00:00",
+      "h1": [
+        "Les Naudières: del parque al aire libre a HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6512
+    },
+    {
+      "language": "pl",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/pl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:43.609788+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1882
+    },
+    {
+      "language": "pl",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/pl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:45.035999+00:00",
+      "h1": [
+        "Historia Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1085
+    },
+    {
+      "language": "pl",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/pl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:48.511726+00:00",
+      "h1": [
+        "Historia L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1141
+    },
+    {
+      "language": "pl",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/pl/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:51.045858+00:00",
+      "h1": [
+        "Les Naudières: od parku zabaw na świeżym powietrzu do HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6100
+    },
+    {
+      "language": "pt",
+      "kind": "item",
+      "url": "https://amusement-parks.fun/pt/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:55.301915+00:00",
+      "h1": [
+        "Pont suspendu"
+      ],
+      "expectedTextCount": 3,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 2045
+    },
+    {
+      "language": "pt",
+      "kind": "history-pont",
+      "url": "https://amusement-parks.fun/pt/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/85105c17-de06-4f23-8b51-e3c23bb88feb/pont-suspendu/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:29:56.701827+00:00",
+      "h1": [
+        "História de Pont suspendu"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1098
+    },
+    {
+      "language": "pt",
+      "kind": "history-envol",
+      "url": "https://amusement-parks.fun/pt/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/item/49e853d1-446e-428e-ad86-ba16bfefcea8/l-envol-d-holly/history",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:30:00.606865+00:00",
+      "h1": [
+        "História de L’Envol d’Holly"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 1151
+    },
+    {
+      "language": "pt",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/pt/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres/history/d290abc3-4d83-4d87-af5a-ce5863389d8b/naudieres-du-parc-de-plein-air-a-hollyween",
+      "normalNavigation": true,
+      "baseDocumentStatus": 200,
+      "checkedAtUtc": "2026-11-15T10:30:05.269228+00:00",
+      "h1": [
+        "Les Naudières: do parque ao ar livre ao HollyWeen"
+      ],
+      "expectedTextCount": 1,
+      "missingTexts": [],
+      "technicalCandidates": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "bodyCharacters": 6391
+    }
+  ],
+  "normalNavigation": "Park → places → search → item → item history; park → history → article. No cache parameter, purge or duplicate Apply.",
+  "publicCheckSummary": {
+    "pages": 32,
+    "languages": 8,
+    "itemPages": 8,
+    "itemHistories": 16,
+    "articlePages": 8,
+    "missingExpectedTexts": 0,
+    "technicalCandidates": 0,
+    "brokenImages": 0,
+    "horizontalOverflow": 0
+  },
+  "personalScreenshotReview": "French item page inspected; corrected flexible net crossing and 2023 announcement displayed.",
+  "screenshots": [
+    {
+      "path": "/workspace/france-historical-20261114/naudieres/09-pont-article-fr-public.png",
+      "sha256": "a0abb7e10445a3b6402f042c53b294bfe2ca8d1f1da61efc61fc1dd3ccfbaf0b"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/naudieres/09-pont-history-pont-fr-public.png",
+      "sha256": "45ef74e1c1e972e310caa388608428eaf03588e13acdb2769c8cdca9baeeb817"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/naudieres/09-pont-item-fr-public.png",
+      "sha256": "55e7e781d312b74d16143fa40bb68f210d8c0a86e3495d9bc8c80e8683601c81"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/naudieres/09-pont-history-envol-fr-public.png",
+      "sha256": "c8c92afa051e3f5ef36c24234ae8a8513b027f119530ec6f17f7bcd4e1e0bb04"
+    }
+  ],
+  "newPublicationOperation": false,
+  "existingPublicCopyUpdated": true,
+  "newFacebookPublication": false,
+  "fullAuditPerformed": false,
+  "remaining": "Private inventories and factual gaps remain; this focused correction is not a park completion."
+}
