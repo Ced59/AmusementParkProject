@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T20:47:21.213Z",
+      "lastDataIntegrationAt": "2026-11-15T21:18:14.913Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39168,9 +39168,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 117-editorial-wording-correction; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "import-photo-e874bad560d54671a56396e44f461203",
+          "appliedAt": "2026-11-15T21:13:44.125Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-123-toba-projection-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Premier envol — ancien récit Mission Toba importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-e93c399c-a45a-4977-bfd7-bd0cdd04332d",
+          "appliedAt": "2026-11-15T21:15:07.968Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-124-toba-envol-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : deux jalons privés relus en huit langues documentent Mission Toba en mars 2011 puis Premier envol en 2015 sur la même salle, sans nouvelle fiche ni jour inventé."
+        },
+        {
+          "eventId": "apply-c9c3edd5-9327-41f0-ad05-19d3e91be40d",
+          "appliedAt": "2026-11-15T21:17:54.438Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-129-publish-toba-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 129-publish-toba-photo; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
+          "appliedAt": "2026-11-15T21:18:14.913Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 130-publish-toba-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
-      "nextAction": "Périmètre publié et 544 routes contrôlées en huit langues (440 notices et 168 blocs exacts). Défauts application documentés : frise parc sans textes/lien, résumés Dragon FR/EN/DE anciens, alt anglais. Inventaire historique, notice privée, GPS/photos encore partiels. Facebook Published existant mais lien anonyme indisponible.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -39220,7 +39260,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-1005a47f-d1f4-4fdf-8b23-8859e4737385 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-f4c847dc-e6fc-4c08-a9b4-580e55b381f3 ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

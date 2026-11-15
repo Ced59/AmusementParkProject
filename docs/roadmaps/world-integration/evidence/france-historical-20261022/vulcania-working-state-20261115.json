@@ -13233,6 +13233,145 @@
       "updatedAt": "2026-11-15T18:29:49.832Z",
       "exifMetadata": null,
       "path": "park_item/5ca0ba406e924e5a8792e88852f8e9ed"
+    },
+    {
+      "id": "e874bad560d54671a56396e44f461203",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "path": "park_item/e874bad560d54671a56396e44f461203",
+      "description": "La projection de Mission Toba dans la salle devenue ensuite Premier envol à Vulcania.",
+      "isCurrent": false,
+      "isPublished": true,
+      "isWatermarked": false,
+      "width": 2500,
+      "height": 1055,
+      "sizeInBytes": 272258,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.lescrayons.com/images/mission-toba/lescrayons-vulcania-02-xl.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un spectateur face à un écran panoramique montrant un paysage volcanique lumineux dans Mission Toba."
+        },
+        {
+          "languageCode": "en",
+          "value": "A spectator faces a panoramic screen showing a brightly lit volcanic landscape inside Mission Toba."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Zuschauer blickt in Mission Toba auf eine Panoramaleinwand mit einer hell erleuchteten Vulkanlandschaft."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een toeschouwer kijkt in Mission Toba naar een panoramisch scherm met een helder verlicht vulkaanlandschap."
+        },
+        {
+          "languageCode": "it",
+          "value": "Uno spettatore osserva uno schermo panoramico con un luminoso paesaggio vulcanico all’interno di Mission Toba."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un espectador mira una pantalla panorámica con un luminoso paisaje volcánico dentro de Mission Toba."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widz patrzy na panoramiczny ekran z rozświetlonym krajobrazem wulkanicznym w Mission Toba."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um espectador observa um ecrã panorâmico com uma paisagem vulcânica luminosa no interior de Mission Toba."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La projection de Mission Toba dans la salle devenue ensuite Premier envol à Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Mission Toba projection in the venue later used for Premier envol at Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Projektion von Mission Toba in dem Saal, der später Premier envol in Vulcania beherbergt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De projectie van Mission Toba in de zaal waar later Premier envol in Vulcania te zien is."
+        },
+        {
+          "languageCode": "it",
+          "value": "La proiezione di Mission Toba nella sala che ospiterà poi Premier envol a Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "La proyección de Mission Toba en la sala que después acogerá Premier envol en Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Projekcja Mission Toba w sali, w której później pojawi się Premier envol w Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A projeção de Mission Toba na sala que mais tarde acolherá Premier envol em Vulcania."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source photographique : agence les crayons."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph source: agence les crayons."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bildquelle: agence les crayons."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Fotobron: agence les crayons."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte fotografica: agence les crayons."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente de la fotografía: agence les crayons."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło fotografii: agence les crayons."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte da fotografia: agence les crayons."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T21:13:44.125Z",
+      "updatedAt": "2026-11-15T21:13:47.813Z",
+      "key": "e874bad560d54671a56396e44f461203",
+      "imageId": "e874bad560d54671a56396e44f461203",
+      "ownerKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "internalUrl": "/images/e874bad560d54671a56396e44f461203"
     }
   ],
   "openingHours": null,
@@ -16213,6 +16352,249 @@
         ],
         "article": null,
         "id": "6f9960d8-d5af-4ac4-b42c-c3f38a086d94"
+      },
+      {
+        "key": "vulcania-item-history-toba-2011",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "itemId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "parkItemId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2011,
+        "month": 3,
+        "day": null,
+        "datePrecision": "Month",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "e874bad560d54671a56396e44f461203",
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Mission Toba ouvre la salle aux supervolcans"
+          },
+          {
+            "languageCode": "en",
+            "value": "Mission Toba introduces the world of supervolcanoes"
+          },
+          {
+            "languageCode": "de",
+            "value": "Mission Toba eröffnet den Blick auf Supervulkane"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Mission Toba brengt supervulkanen in beeld"
+          },
+          {
+            "languageCode": "it",
+            "value": "Mission Toba apre una finestra sui supervulcani"
+          },
+          {
+            "languageCode": "es",
+            "value": "Mission Toba abre la sala al mundo de los supervolcanes"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Mission Toba wprowadza w świat superwulkanów"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Mission Toba abre a sala ao mundo dos supervulcões"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "En mars 2011, Mission Toba ouvre à Vulcania. Son voyage imaginaire remonte à une éruption préhistorique en Indonésie, avec les supervolcans pour sujet central. Cette aventure inaugure la salle que Premier envol réutilisera ensuite pour raconter les paysages d’Auvergne."
+          },
+          {
+            "languageCode": "en",
+            "value": "Mission Toba opens at Vulcania in March 2011. Its imagined journey looks back to a prehistoric eruption in Indonesia, placing supervolcanoes at the centre of the story. The attraction establishes the venue later used by Premier envol to explore the landscapes of Auvergne."
+          },
+          {
+            "languageCode": "de",
+            "value": "Im März 2011 eröffnet Mission Toba in Vulcania. Die fiktive Reise führt zu einem prähistorischen Vulkanausbruch in Indonesien und stellt Supervulkane in den Mittelpunkt. Mit diesem Abenteuer beginnt die Geschichte des Saals, in dem später Premier envol die Landschaften der Auvergne zeigt."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Mission Toba opent in maart 2011 in Vulcania. De denkbeeldige reis voert terug naar een prehistorische uitbarsting in Indonesië, met supervulkanen als centraal onderwerp. Dit avontuur vormt het begin van de zaal waarin Premier envol later de landschappen van de Auvergne zal tonen."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel marzo 2011 apre Mission Toba a Vulcania. Il viaggio immaginario torna a un’eruzione preistorica in Indonesia e pone i supervulcani al centro del racconto. Questa avventura inaugura la sala che Premier envol utilizzerà in seguito per esplorare i paesaggi dell’Alvernia."
+          },
+          {
+            "languageCode": "es",
+            "value": "Mission Toba abre en Vulcania en marzo de 2011. Su viaje imaginario se remonta a una erupción prehistórica en Indonesia, con los supervolcanes como tema central. Esta aventura inaugura la sala que Premier envol utilizará después para mostrar los paisajes de Auvernia."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W marcu 2011 roku w Vulcanii otwiera się Mission Toba. Wyobrażona podróż cofa widzów do prehistorycznej erupcji w Indonezji, stawiając superwulkany w centrum opowieści. Ta przygoda rozpoczyna historię sali, w której później Premier envol pokaże krajobrazy Owernii."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Mission Toba abre em Vulcania em março de 2011. A viagem imaginária recua até uma erupção pré-histórica na Indonésia, colocando os supervulcões no centro da narrativa. Esta aventura inaugura a sala que Premier envol utilizará depois para revelar as paisagens da Auvérnia."
+          }
+        ],
+        "sources": [
+          {
+            "label": "Agence les crayons — Mission Toba, ouverture en mars 2011",
+            "url": "https://www.lescrayons.com/mission-toba-vulcania.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "TourMaG — Mission Toba annoncée pour 2011, 28 février 2011",
+            "url": "https://www.tourmag.com/Vulcania-sejour-enfant-offert-jusqu-au-9-mai_a43279.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "ParkTrips — visite et rétrospective de Vulcania, 2021",
+            "url": "https://www.parktrips.fr/vulcania/article-2497.html",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "id": "eb738445-185e-4c60-842c-54744e0f9e8e",
+        "itemKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "parkItemKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-item-history-envol-2015",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "itemId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "parkItemId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2015,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "StoryChange",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "d7146436ae0044dabef88f182dfd2516",
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Premier envol remplace le voyage vers Toba"
+          },
+          {
+            "languageCode": "en",
+            "value": "Premier envol takes over from the journey to Toba"
+          },
+          {
+            "languageCode": "de",
+            "value": "Premier envol löst die Reise nach Toba ab"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Premier envol volgt de reis naar Toba op"
+          },
+          {
+            "languageCode": "it",
+            "value": "Premier envol prende il posto del viaggio a Toba"
+          },
+          {
+            "languageCode": "es",
+            "value": "Premier envol sucede al viaje hacia Toba"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Premier envol zastępuje wyprawę nad Toba"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Premier envol sucede à viagem até Toba"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "En 2015, la même salle accueille Premier envol à la place de Mission Toba. La nouvelle histoire suit un jeune aigle au-dessus des reliefs auvergnats. Ce changement de récit déplace le regard vers le patrimoine naturel régional, tout en conservant l’expérience de survol de la salle existante."
+          },
+          {
+            "languageCode": "en",
+            "value": "In 2015, the same venue welcomes Premier envol in place of Mission Toba. The new story follows a young eagle above Auvergne’s hills and mountains. The change shifts the focus to the region’s natural heritage while retaining the existing venue’s aerial journey experience."
+          },
+          {
+            "languageCode": "de",
+            "value": "2015 zieht Premier envol anstelle von Mission Toba in denselben Saal ein. Die neue Geschichte begleitet einen jungen Adler über die Berge und Hügel der Auvergne. Der Wechsel rückt das Naturerbe der Region ins Blickfeld und bewahrt zugleich das Flugerlebnis des bestehenden Saals."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In 2015 komt Premier envol in dezelfde zaal in de plaats van Mission Toba. Het nieuwe verhaal volgt een jonge arend boven de bergen en heuvels van de Auvergne. Daarmee verschuift de aandacht naar het regionale natuurerfgoed, terwijl de vliegervaring in de bestaande zaal behouden blijft."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel 2015 la stessa sala accoglie Premier envol al posto di Mission Toba. La nuova storia segue una giovane aquila sopra i rilievi dell’Alvernia. Il cambio di racconto porta l’attenzione sul patrimonio naturale regionale, conservando l’esperienza di sorvolo della sala esistente."
+          },
+          {
+            "languageCode": "es",
+            "value": "En 2015, la misma sala recibe Premier envol en lugar de Mission Toba. La nueva historia sigue a un águila joven sobre los relieves de Auvernia. El cambio de relato dirige la mirada hacia el patrimonio natural regional y conserva la experiencia de vuelo de la sala existente."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W 2015 roku tę samą salę zajmuje Premier envol, zastępując Mission Toba. Nowa opowieść śledzi młodego orła ponad górzystymi krajobrazami Owernii. Zmiana historii kieruje uwagę na przyrodnicze dziedzictwo regionu, zachowując doświadczenie lotu w istniejącej sali."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 2015, a mesma sala recebe Premier envol em lugar de Mission Toba. A nova história acompanha uma jovem águia sobre os relevos da Auvérnia. A mudança de narrativa destaca o património natural regional, mantendo a experiência de voo da sala existente."
+          }
+        ],
+        "sources": [
+          {
+            "label": "Agence les crayons — Mission Toba, ouverture en mars 2011",
+            "url": "https://www.lescrayons.com/mission-toba-vulcania.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Magic Orange Plastic Bird — visite de Premier envol, 31 mars 2015",
+            "url": "https://magicorangeplasticbird.com/2015/03/31/a-la-decouverte-des-nouveautes-2015-de-vulcania/",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "ParcPlaza — communiqué Vulcania sur les nouveautés 2015, 24 mars 2015",
+            "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "ParkTrips — visite et rétrospective de Vulcania, 2021",
+            "url": "https://www.parktrips.fr/vulcania/article-2497.html",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "previousName": "Mission Toba",
+        "newName": "Premier envol",
+        "id": "c14047d0-01ce-4c56-a33c-44cceef184b6",
+        "itemKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "parkItemKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "slug": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
       }
     ]
   },

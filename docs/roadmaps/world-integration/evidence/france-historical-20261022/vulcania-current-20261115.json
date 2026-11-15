@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T20:47:21.2138604Z",
+  "lastDataIntegrationAt": "2026-11-15T21:18:14.9132372Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 45,
-  "realImportCount": 56,
-  "lastOperationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
+  "realApplyCount": 48,
+  "realImportCount": 57,
+  "lastOperationId": "f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -187,15 +187,18 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-105-publish-park-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-110-canonical-history-recovery-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-114-opening-summary-correction-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-124-toba-envol-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-129-publish-toba-photo-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json"
   ],
   "currentCoverage": {
     "items": 56,
     "publicItems": 55,
     "describedItems8Languages": 55,
     "zones": 0,
-    "ownMedia": 56,
-    "historyEvents": 15,
+    "ownMedia": 57,
+    "historyEvents": 17,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
@@ -203,12 +206,12 @@
     "privateArticles": 0,
     "privateItems": 1,
     "sharedMedia": 5,
-    "publicOwnMedia": 56,
-    "publicHistoryEvents": 15,
+    "publicOwnMedia": 57,
+    "publicHistoryEvents": 17,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
+  "lastApplyOperationId": "f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -489,6 +492,11 @@
       "imageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
       "createdAt": "2026-11-15T20:07:36.061Z",
       "proof": "vulcania-photo-90-planetarium-fire-20261115.json"
+    },
+    {
+      "imageId": "e874bad560d54671a56396e44f461203",
+      "createdAt": "2026-11-15T21:13:44.125Z",
+      "proof": "vulcania-photo-123-toba-projection-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -562,7 +570,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Continue historical identity and photo/GPS qualification; preserve published audited scope. Application history/alt defects are documented separately. Continue national campaign without repeating exports or announcements.",
+  "nextAction": "Qualify exterior playground from newly retrieved official pages, then remaining historical inventory. Keep global outcome partial.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -598,6 +606,16 @@
       "operationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
       "appliedAtUtc": "2026-11-15T20:47:21.2138604Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json"
+    },
+    {
+      "operationId": "c9c3edd5-9327-41f0-ad05-19d3e91be40d",
+      "appliedAtUtc": "2026-11-15T21:17:54.4384394Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-129-publish-toba-photo-20261115.json"
+    },
+    {
+      "operationId": "f4c847dc-e6fc-4c08-a9b4-580e55b381f3",
+      "appliedAtUtc": "2026-11-15T21:18:14.9132372Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-130-publish-toba-history-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -618,5 +636,6 @@
   "publicChecksStatus": "Completed with documented application discrepancies",
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
-  "facebookAnonymousVisibilityConfirmed": false
+  "facebookAnonymousVisibilityConfirmed": false,
+  "lastPublicFollowupProof": "vulcania-toba-publication-followup-20261115.json"
 }
