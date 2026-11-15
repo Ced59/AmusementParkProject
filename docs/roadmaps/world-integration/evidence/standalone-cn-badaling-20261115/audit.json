@@ -1,0 +1,91 @@
+{
+  "entryId": "CN-candidate-82d7ed26191682",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+  "name": "Badaling Sliding Car",
+  "countryCode": "CN",
+  "auditAtUtc": "2026-11-15T10:04:51.641468Z",
+  "editorialStatus": "InProgress",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/34654c76-67a7-4d58-8156-95296c5a6ec4/badaling-sliding-car",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "operatorDataAssessment": "No authenticated current operator tariff, ride hours or restrictions. badalingslide.com states its displayed prices and hours are illustrative and its footer has placeholder ICP; excluded as price/hour source. Government tourism page confirms separate ride fare. RCDB reports operation.",
+  "photos": [
+    {
+      "imageId": "385f767023b1415aa3341e5aae4c5f59",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Great_Wall,_Badaling_(9863402973).jpg",
+      "creator": "Gary Todd",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "photoYear": 2011,
+      "isCurrent": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "620215283e654cbc952cc4238451abaf",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:View_at_Great_Wall_of_China_at_Badaling_04.jpg",
+      "creator": "Dquai",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photoYear": 2007,
+      "isCurrent": false,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "photoCount": 2,
+  "pricing": "Current slideway fares unverified; not entered. Government page explicitly separates the Great Wall ticket from the ride.",
+  "openingHoursAssessment": "Current ride hours unverified; not entered. Great Wall admission hours are not treated as ride hours.",
+  "accessConditionsAssessment": "No current authoritative ride restriction found; not entered.",
+  "completeness": {
+    "score": 65,
+    "level": "Partial",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127437475424431",
+    "publishedAtUtc": "2026-11-15T10:03:54.5159489Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T10:01:47.379Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "919ea4ec-e4e7-4719-a1f7-7de779610718",
+      "appliedAtUtc": "2026-11-15T09:59:36.2793825Z"
+    },
+    {
+      "kind": "PhotoImport",
+      "stage": "track",
+      "imageId": "385f767023b1415aa3341e5aae4c5f59"
+    },
+    {
+      "kind": "PhotoImport",
+      "stage": "vehicles",
+      "imageId": "620215283e654cbc952cc4238451abaf"
+    },
+    {
+      "kind": "PhotoMetadata",
+      "stage": "track",
+      "imageId": "385f767023b1415aa3341e5aae4c5f59"
+    },
+    {
+      "kind": "PhotoMetadata",
+      "stage": "vehicles",
+      "imageId": "620215283e654cbc952cc4238451abaf"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "operationId": "94cb476b-8ff5-46ae-a190-6bb85a76dce5",
+    "appliedAtUtc": "2026-11-15T10:02:50.5302483Z"
+  }
+}

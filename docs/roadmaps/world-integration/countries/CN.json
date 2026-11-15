@@ -18348,26 +18348,81 @@
     },
     {
       "entryId": "CN-candidate-82d7ed26191682",
-      "name": "Great Wall of Badaling",
-      "entityKind": "ToQualify",
+      "name": "Badaling Sliding Car",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB)",
-      "locality": "Yanqing , Beijing",
-      "siteId": null,
+      "category": "Luge sur rails",
+      "locality": "Badaling, district de Yanqing, Beijing",
+      "siteId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T10:02:50.5302483Z",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "RCDB classe la Sliding Car comme opérationnelle ; la page touristique officielle de Beijing distingue la luge du billet de la Grande Muraille.",
+      "identityConfidence": "Photos géolocalisées de la piste et de ses véhicules ; cohérence RCDB et autorité touristique de Beijing ; aucune fiche Park ou standalone trouvée sous Badaling et Sliding Car.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sliding Car",
+        "八达岭滑车",
+        "八达岭长城滑车"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T10:01:47.379Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-919ea4ec-e4e7-4719-a1f7-7de779610718",
+          "appliedAt": "2026-11-15T09:59:36.279Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+          "evidence": "PARK_DATA_EDITOR:apply:919ea4ec-e4e7-4719-a1f7-7de779610718",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome, localisation et descriptions de visite dans huit langues ; prix et horaires actuels explicitement non confirmés."
+        },
+        {
+          "eventId": "image-385f767023b1415aa3341e5aae4c5f59",
+          "appliedAt": "2026-11-15T09:59:48.112Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+          "evidence": "PARK_DATA_EDITOR:image:385f767023b1415aa3341e5aae4c5f59",
+          "auditEvidence": null,
+          "summary": "Photo exacte du tracé et de la Grande Muraille, Gary Todd, CC0 1.0."
+        },
+        {
+          "eventId": "image-620215283e654cbc952cc4238451abaf",
+          "appliedAt": "2026-11-15T10:00:18.260Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+          "evidence": "PARK_DATA_EDITOR:image:620215283e654cbc952cc4238451abaf",
+          "auditEvidence": null,
+          "summary": "Photo exacte des véhicules sur la piste, Dquai, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-metadata-385f767023b1415aa3341e5aae4c5f59",
+          "appliedAt": "2026-11-15T10:01:38.029Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+          "evidence": "PARK_DATA_EDITOR:image:385f767023b1415aa3341e5aae4c5f59",
+          "auditEvidence": null,
+          "summary": "Métadonnées de la photo track reformulées dans les huit langues après contrôle anti-répétition."
+        },
+        {
+          "eventId": "image-metadata-620215283e654cbc952cc4238451abaf",
+          "appliedAt": "2026-11-15T10:01:47.379Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+          "evidence": "PARK_DATA_EDITOR:image:620215283e654cbc952cc4238451abaf",
+          "auditEvidence": null,
+          "summary": "Métadonnées de la photo vehicles reformulées dans les huit langues après contrôle anti-répétition."
+        }
+      ],
+      "nextAction": "Conserver cette ligne comme intégration partielle. Obtenir auprès de l’exploitant vérifié les tarifs, horaires et restrictions d’accès en vigueur, mettre à jour la fiche, puis passer un audit de complétude avant de la déclarer achevée. Les anciennes valeurs non datées ou simplement indicatives ne doivent pas être reprises. Annonce Facebook déjà publiée : ne pas la dupliquer.",
       "sources": [
         {
           "label": "RCDB",
@@ -18378,11 +18433,31 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/22804.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tourisme officiel de Beijing — billet de la luge distinct de celui de la Muraille",
+          "url": "https://s.visitbeijing.com.cn/attraction/101406",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Tourisme de Beijing — description de la Sliding Car",
+          "url": "https://www.visitbeijing.com.cn/article/4JVuaiIYLAk",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — tracé et Grande Muraille, Gary Todd, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Great_Wall,_Badaling_(9863402973).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — véhicules, Dquai, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:View_at_Great_Wall_of_China_at_Badaling_04.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Sliding Car",
@@ -18395,7 +18470,7 @@
             "sourceOpenedYear": "2005"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "La Sliding Car est une installation fixe à billetterie distincte au sein du site patrimonial de Badaling ; elle dispose désormais d’une fiche autonome publique mais de données visiteurs encore partielles."
       }
     },
     {
