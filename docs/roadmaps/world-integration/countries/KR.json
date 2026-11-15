@@ -3234,7 +3234,7 @@
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Rechercher une vue exacte des pistes ou luges Skyline Luge Busan dans l’emprise Osiria, avec licence ou autorisation vérifiable ; importer et contrôler la publication dans les huit langues avant de dater le reçu.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3328,7 +3328,7 @@
         "publicationBlockers": [],
         "gapCount": 3
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
     },
     {
       "entryId": "KR-candidate-standalone-5f91351dd67b29",
@@ -3403,7 +3403,7 @@
           "summary": "Audit 81/100 sans blocage ; photos et horaires variables documentés, site et Facebook publiés."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne ; rechercher une photographie du site avec licence vérifiable, puis recontrôler prix et calendrier hebdomadaire. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Rechercher une vue exacte des pistes ou luges Skyline Luge Tongyeong, avec licence ou autorisation vérifiable ; importer et contrôler la publication dans les huit langues avant de dater le reçu.",
       "sources": [
         {
           "label": "Skyline — destinations officielles",
@@ -3502,7 +3502,7 @@
         "publicationBlockers": [],
         "gapCount": 3
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
     },
     {
       "entryId": "KR-candidate-5adf0d4d7f94d6",
@@ -4140,7 +4140,7 @@
           "summary": "Article historique approfondi et répétition éditoriale corrigée ; audit final sans blocage."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; revérifier calendrier hiver et inspection mensuelle, statut administratif ToReview et rechercher une photographie dont la licence précise permet la réutilisation. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Trouver une photographie de la Zipwire Arii Hills à Jeongseon, distincte du Skywalk, avec droits et auteur vérifiés ; importer et publier avant de dater le nouvel apport. Recontrôler les réservations.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
@@ -4194,7 +4194,7 @@
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125004031424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-kr-jeongseon-20261028/jeongseon-receipts.json"
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
     },
     {
       "entryId": "KR-candidate-standalone-25023c9dd1cd28",

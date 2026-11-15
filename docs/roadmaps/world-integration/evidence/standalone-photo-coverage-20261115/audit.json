@@ -1,0 +1,2107 @@
+{
+  "auditAtUtc": "2026-11-15T03:43:59.675Z",
+  "scope": "Every currently published standalone backlog entry (excluding duplicate/excluded technical entries); public anonymous image endpoint, published own images only.",
+  "count": 232,
+  "zeroPhotoCount": 6,
+  "errorCount": 0,
+  "results": [
+    {
+      "countryCode": "AE",
+      "entryId": "AE-candidate-bc470aaefff20d",
+      "id": "f70328d1-79bf-492f-955a-3db69b7cc730",
+      "name": "Ain Dubai",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "cfffe28f5884407bbdeffd6fb312e6c1"
+    },
+    {
+      "countryCode": "AE",
+      "entryId": "AE-candidate-discovery-2e3c4377ca5ef9",
+      "id": "b5460e06-51ba-4b52-81bd-445d3f144f8d",
+      "name": "The Dubai Balloon at Atlantis",
+      "httpStatus": 200,
+      "publishedImageCount": 0,
+      "publicImageId": null
+    },
+    {
+      "countryCode": "AE",
+      "entryId": "AE-candidate-discovery-fa74bdc4d250e2",
+      "id": "7dd2d678-1dce-45cf-9c6e-ae6e28eff077",
+      "name": "XLine Dubai Marina",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "c2e38a455ce44bb292773d6e60cb20dd"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-candidate-discovery-876a04accdc1dc",
+      "id": "212a52d7-6a44-4ef5-861d-2c6d644ed77a",
+      "name": "Alpbachtaler Lauser-Sauser",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "6310c37805af4394aecb5d49503784a3"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-0c8ab99d-d1a8-434f-8785-6be618039172",
+      "id": "3bdc9128-855e-4b7d-9b61-961c420f35bc",
+      "name": "Alpine Coaster Imst",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "10e1ffd74bef4f02923848a8e5e57024"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-candidate-discovery-75e6998d61e541",
+      "id": "a5f1a001-a685-45a5-99c3-f147dff1ff4a",
+      "name": "Arena Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "bfc226758d174163928e07685f5e072a"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-candidate-discovery-5012808b5cf423",
+      "id": "e61aee72-db7f-4b37-832b-ac4d2061b6ad",
+      "name": "Donauturm-Rutsche",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "6e66a56de809450488a20e6ec7848c23"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-d45c859f-7df4-4f80-8851-9646c9ceb7e7",
+      "id": "0ec05a6a-3ae7-42af-8ae0-7c22a5e905e5",
+      "name": "EIBL Jet Türnitz",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "f1432b68f9d74d1798792aab31d3cd4c"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-4b096c01-c2d1-4f44-b8ab-f6b1cd362461",
+      "id": "1c4d259e-4c7e-43f8-9315-bd9108119bd3",
+      "name": "Grünberg-Flitzer",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "c091dcc14e81402c9e3013a3fcedbb9b"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-candidate-standalone-7072065e1e6372",
+      "id": "8cba8e15-650a-4931-8c82-91c43c485771",
+      "name": "Hexenexpress",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "f05387f5140d4df99dd5735d07e269ec"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-5c0e772c-7fcd-4081-b08b-7fb46f66c9f7",
+      "id": "a3447c55-089a-4cf1-9531-223fbe763544",
+      "name": "Nocky Flitzer",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "bea1a1d1beac4cfb976d8303b20104b9"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-56af967a-ce6a-4f94-b40a-911dd9effc87",
+      "id": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+      "name": "Osttirodler",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "78ad56fd18e94f79a9b02731a33560df"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-standalone-7ca75951-9be6-4705-9536-718759c7e0f0",
+      "id": "7ca75951-9be6-4705-9536-718759c7e0f0",
+      "name": "Pendolino",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "c88dbe4a42974024ba8e1d90ad2b38b1"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-5720c9f6-0944-4161-abae-3c9bb03adae1",
+      "id": "5dc707a1-e000-4966-a85a-0a41b893dbf8",
+      "name": "Serlesblitz — Sommerrodelbahn Mieders",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "a1a7b47c280046b98f20a8b7e226371a"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-candidate-standalone-3f84eb294e7228",
+      "id": "e530512a-1a28-4a74-b968-052fac792800",
+      "name": "Sommerrodelbahn Laterns",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "8ac64514610d4f7b9073a64b2f31fdff"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-candidate-standalone-42f17ac205f210",
+      "id": "e57823f1-4282-4a2d-893d-d5992504465c",
+      "name": "Sommerrodelbahn Strobl am Wolfgangsee",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "3cf93574365a4a139f04c99aa5b9f7ca"
+    },
+    {
+      "countryCode": "AT",
+      "entryId": "AT-park-5400ddc6-e650-478c-88b5-aaa1a87f7dae",
+      "id": "e97f373c-a9b4-41a9-9111-92f29771fd49",
+      "name": "Speed-Gleit-Bahn",
+      "httpStatus": 200,
+      "publishedImageCount": 0,
+      "publicImageId": null
+    },
+    {
+      "countryCode": "AU",
+      "entryId": "AU-candidate-d3bccb5fb8945f",
+      "id": "e776be68-af58-4f31-9a9b-fd876ee48d07",
+      "name": "Arthurs Seat Eagle",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "899a2ffcd21b493492c0abbf0bce0750"
+    },
+    {
+      "countryCode": "AU",
+      "entryId": "AU-candidate-61bc40d2c12cdc",
+      "id": "b62e8868-f6df-4728-9733-8b111469c42e",
+      "name": "Wheel of Brisbane",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "be46c3b54f694e3ca1db3287c0634181"
+    },
+    {
+      "countryCode": "AZ",
+      "entryId": "AZ-candidate-eab57a6cef47c8",
+      "id": "f09eda17-0ab4-49bd-aa78-532c532f98a3",
+      "name": "Baku Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "5061f85d8c464cbeafd3eae7de565fa1"
+    },
+    {
+      "countryCode": "AZ",
+      "entryId": "AZ-candidate-56998578936897",
+      "id": "ca5993d8-9074-4be2-ab6b-f62bb3bbf786",
+      "name": "Shahdag Mountain Resort",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "4467e7d5c8094103bd1c30267e201dc6"
+    },
+    {
+      "countryCode": "AZ",
+      "entryId": "AZ-candidate-f296136777add0",
+      "id": "2f9a5bee-a798-4591-b46b-5a61e4f2d1aa",
+      "name": "Tufandağ Mountain Resort",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "4dc352c2c16b4df59ce293e03b691992"
+    },
+    {
+      "countryCode": "BR",
+      "entryId": "BR-candidate-da68eda712078d",
+      "id": "3a5bd0fe-58fa-5e5c-b08b-77eefa7dc5db",
+      "name": "Roda Rico",
+      "httpStatus": 200,
+      "publishedImageCount": 6,
+      "publicImageId": "6291a5f724b345858005814b49ef199c"
+    },
+    {
+      "countryCode": "BR",
+      "entryId": "BR-candidate-572a008467e195",
+      "id": "6153ecff-f566-5dfa-83a5-a4e2df425ab5",
+      "name": "Yup Star Rio",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "8acb991f0dfd4e6e91bf98964ecbf750"
+    },
+    {
+      "countryCode": "BS",
+      "entryId": "BS-candidate-discovery-cc71f37b21c4cd",
+      "id": "eb245e32-fab8-49ee-9114-8d7c548707d0",
+      "name": "Up, Up and Away — CocoCay",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "8f956fefabb64b2db28f70657ea807c9"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-standalone-abf154c8e98f1e",
+      "id": "b8390695-b97a-4e15-a45d-a2234703a779",
+      "name": "Downhill Karting Calgary",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "e1019ba4cfc84e30992b9020d58d32c5"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-standalone-52b944d77d3979",
+      "id": "1cb184a8-6579-4aae-88ba-365e15542a09",
+      "name": "Eagle’s Flight ZipTour — Mount Washington",
+      "httpStatus": 200,
+      "publishedImageCount": 0,
+      "publicImageId": null
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-ff82b206858b7c",
+      "id": "630398c2-13b3-4e4c-b7f4-6742b0e0324e",
+      "name": "Flyover Vancouver",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "b8623ffd02c24a3e9ccebe531cec213d"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-a9d972567fa851",
+      "id": "64ce3cb3-ead2-4420-b5c8-92c4f1533abc",
+      "name": "La Grande Roue de Montréal",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "c9fd416c2cef4cdc926fe48346d9217c"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-6c82f89565e189",
+      "id": "a9836bee-4a11-4a31-870f-8b833efc3f46",
+      "name": "Niagara SkyWheel",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "7e43894c9d294d4ba993405f9e671862"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-05e7f7645eafbd",
+      "id": "f1ae87c0-93dc-4d1a-b303-97e228a549ca",
+      "name": "Panorama Mountain Resort",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "61691bd799224f359d54523e1fdfc967"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-standalone-d4c5e1d103913c",
+      "id": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+      "name": "Skyline Luge Mont-Tremblant",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "826c294ecaf847feba13ef4e598d3b86"
+    },
+    {
+      "countryCode": "CA",
+      "entryId": "CA-candidate-discovery-d9d575636efe74e7",
+      "id": "80755c3e-7eac-4c69-bade-a88121694e1f",
+      "name": "WildPlay Zipline to the Falls",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "795e1e78dc5c4f6eb864417ac9a4e47f"
+    },
+    {
+      "countryCode": "CH",
+      "entryId": "CH-candidate-standalone-e173d02f42dcd1",
+      "id": "b43f4a36-4048-49cd-ab31-80cf7a7c7149",
+      "name": "Fräkigaudi",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "b2a17b45e509434786148c567be9fc8e"
+    },
+    {
+      "countryCode": "CH",
+      "entryId": "CH-park-50a97efe-c9c4-4030-962e-16e35d47e079",
+      "id": "9f456316-348f-4664-b41c-cf55d10b9bf2",
+      "name": "Kronberg-Bobbahn",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "ed8dc7adbb6548bcba0b594aa71d9027"
+    },
+    {
+      "countryCode": "CH",
+      "entryId": "CH-candidate-standalone-d17fc77a234de1",
+      "id": "56f47184-c077-4d2a-b202-cdb09ee59dda",
+      "name": "Sommerrodelbahn Oeschinensee",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "94126e7a1c524b5280f6b0144d93b1e0"
+    },
+    {
+      "countryCode": "CN",
+      "entryId": "CN-candidate-f6764cf6b6da95",
+      "id": "471f2f0a-3175-487c-bd16-12d7b7fef942",
+      "name": "Bay Glory",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "1b3e95929f0a45b789ac7f4ef8aaf813"
+    },
+    {
+      "countryCode": "CN",
+      "entryId": "CN-candidate-6700528a88949c",
+      "id": "0ce70d70-20be-4393-aaab-6d74d5aaf815",
+      "name": "Changsha Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "0ef9d6ee47eb43d6a1e63de0ffef2ce6"
+    },
+    {
+      "countryCode": "CN",
+      "entryId": "CN-candidate-64246c8ed83953",
+      "id": "69415b5a-ef3b-575b-83a0-17455d5ddeb0",
+      "name": "Star of Nanchang",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "24e518938903493d8b0e344f73b7aa2a"
+    },
+    {
+      "countryCode": "CN",
+      "entryId": "CN-candidate-standalone-f04450aa802ebfe6",
+      "id": "86a4c0a1-c37e-4dc3-8a10-e8b34773ff18",
+      "name": "Suzhou Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "4a5316339d3d44d89a8bf931e6de1320"
+    },
+    {
+      "countryCode": "CN",
+      "entryId": "CN-candidate-f981b50796e94c",
+      "id": "8f7f349b-4e1d-5e92-b9a3-dca866363537",
+      "name": "Tianjin Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "3bb36f051ff946e5aa330c3e93f621c1"
+    },
+    {
+      "countryCode": "CZ",
+      "entryId": "CZ-park-181ad192-be78-4818-88b3-98df111040e4",
+      "id": "3716faba-51b5-441c-8f4e-59aa8e3ff098",
+      "name": "Bobovka Lipno",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "60a09d27ba1c4f32945953410e0a5781"
+    },
+    {
+      "countryCode": "CZ",
+      "entryId": "CZ-candidate-standalone-16eabf1e7c1f3f",
+      "id": "7c0caa68-3971-4854-8033-6d24f9927389",
+      "name": "Bobovka Prosek",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "7e8d5d4efa6840ecace3271fd25549f9"
+    },
+    {
+      "countryCode": "CZ",
+      "entryId": "CZ-park-66243ab8-bdb3-43ae-8409-81fc0310c56f",
+      "id": "d6bc9920-02da-4fb1-8801-4eeb8767a427",
+      "name": "Bobovka u mlýna",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "19bd633fca0a47ffb735c85d43adaa5a"
+    },
+    {
+      "countryCode": "CZ",
+      "entryId": "CZ-park-813ec867-ebb5-48a3-b07a-e61062364612",
+      "id": "7d5682a2-87f0-4c70-99c0-31b363488c6e",
+      "name": "Bobová dráha Němčičky",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "8f85ed97e05e44fb902dcc52ef7db5ca"
+    },
+    {
+      "countryCode": "CZ",
+      "entryId": "CZ-park-a582a121-a620-4403-b6b6-d19e153d3ed8",
+      "id": "22b6e012-2b8b-4d6f-aa62-080d8756bfda",
+      "name": "Bobová dráha Pastviny",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "f0d6292db37e459f976a60b4977c5fb7"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-2d246c13195b0a",
+      "id": "022e44da-a85a-41e1-9124-44b6e436fdc5",
+      "name": "Allgäu-Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "8b0abfb781ef4196a687a6dc16461423"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "id": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+      "name": "Allwetterrodelbahn Schöne Aussicht Weißenfels",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "13fdba512aa64317a31bea7c326314ac"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+      "id": "3abbd360-2390-40bb-bd04-e8fbbbcc5620",
+      "name": "Alpine Coaster Kolbensattel",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "8124723aac7b407792124379d25d48d3"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-b593d380-49b9-4c5d-b08c-00cc378182b3",
+      "id": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+      "name": "Alpsee Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "42ed1dcbbcf3484a93cd9b524e177bbe"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "id": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+      "name": "AlpspitzCOASTER",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "7d2fc1a72ef646b3af065dbf851e876b"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "id": "c7f13ddc-5576-4310-ac71-2e98a5d696a9",
+      "name": "Blomberg Blitz",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "d1d3c161d2e8469ba9d85b9c35e30c2d"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "id": "ccc33ef6-fe6b-4611-8655-c616e1a304ab",
+      "name": "Bobbahn Donnstetten",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "f200ee016b28481081317d8a5f5de410"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "id": "8a0ad048-04c6-485a-827d-ec5c42617db4",
+      "name": "Brocken-Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "c001e9c3141a423c865abe878668ced7"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-79535465-11be-4817-9e09-ca8fe376eb1f",
+      "id": "79535465-11be-4817-9e09-ca8fe376eb1f",
+      "name": "Chiemgau Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "f77dbba1543547489f184ad8382b062b"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+      "id": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+      "name": "Erlebnis-Rodelbahn Ruhla",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "67398e1246b54104a7099d89311a4cca"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "id": "c2b32b83-ec44-4d97-b85c-b1ffc21e5ad5",
+      "name": "Fröschbrunna Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "9da3ca151ad94f148578cbe590a71610"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "id": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+      "name": "Hasenhorn Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "a31c97be59a9415fb74c67e984ed3005"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "id": "cc34b1b2-58b4-4368-8d6c-24ab6919fc48",
+      "name": "Jaudenhangflitzer",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "6a1ce1455d2b44eabe7d235a8cbc996a"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "id": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "name": "LEITNER Natur-Bobbahn Berlin",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "e9894ef185ec40e59de4916d935ed038"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-a0ac84e5a9cacb",
+      "id": "f86e0223-83b4-4090-b476-717b51776232",
+      "name": "Loreley-Bob",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "c5abc868f5cb4406afe8a57bde249895"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574",
+      "id": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+      "name": "Odenwaldbob — Sommerrodelbahn Wald-Michelbach",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "27244162010e44498454ee1f0844c1ec"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+      "id": "8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+      "name": "Rodelbahn Petersberg",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "e90a31a0d25b4e39bacf1e5f172b781c"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "id": "a55847c8-a9ff-4026-9b6f-99e049ceb0ca",
+      "name": "Sommerrodelbahn Classic",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "31457308234e4e4196a1195d6ad3be47"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-standalone-d727843f-43ec-40b1-8c0e-8f303232c715",
+      "id": "d727843f-43ec-40b1-8c0e-8f303232c715",
+      "name": "Sommerrodelbahn Erbeskopf",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "c46ff55f1d2241aca8066d2e749ec553"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-4ce70cf4ce1e8b",
+      "id": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+      "name": "Sommerrodelbahn Garmisch-Partenkirchen",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "a17dbc7a7982458aaaa4beef0faae95d"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-park-59e34ae2-6443-4fab-8f6c-dbfda3eb850a",
+      "id": "3c36f9c6-432c-46cb-b619-d56970661efa",
+      "name": "Sommerrodelbahn Gutach",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "a0251f26fbc345508d42af3ea7af47ff"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-f1037f4762bef3",
+      "id": "e9654579-f599-4e11-8873-f63714b6a45f",
+      "name": "Sommerrodelbahn Hocheck",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "29cfdb877c654a8b9f26f0eb74f9b99b"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-43538b2eca18f2",
+      "id": "f95ad842-8a79-4067-a063-0cf1fc625349",
+      "name": "Sommerrodelbahn Hoherodskopf",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "93e9f574a3104023883a25f20625a3f8"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-04a04741efdfd7",
+      "id": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+      "name": "Sommerrodelbahn Kohren-Sahlis",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "e869659734324ab089c0976d9060a990"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-2ae1371b43102d",
+      "id": "6344aa13-1fa4-4df1-a464-42d98b493047",
+      "name": "Sommerrodelbahn Oberwiesenthal",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d96b5709edae400d81bdb16c6bdae8b8"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-b938aeae488469",
+      "id": "9dfcb7e3-5609-4ba4-8dd8-53f9bf1eb650",
+      "name": "Sommerrodelbahn Saar-Rodel",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "eb33cc604f1443ec811a00ebd01e9c30"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-c42faeedee8ee9",
+      "id": "917763c5-4d81-4546-a8f2-f67779880a07",
+      "name": "Sommerrodelbahn Sankt Andreasberg",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "ef3aef33047c47d49db505bf44a3bb96"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-schliersberg-20261115",
+      "id": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+      "name": "Sommerrodelbahn Schliersbergalm",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "83622d43f4204ed6a035f9c9b4329453"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-634964be127c93",
+      "id": "b226a5a1-72ad-4188-b483-2e622ef02b9f",
+      "name": "Sommerrodelbahn Tegelberg",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "07b0691eec8c4ab1a0854c021f0998d8"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-4d4990d71176b2",
+      "id": "af282486-25bb-4f08-a29f-e03de72a0be9",
+      "name": "Sommerrodelbahn Willingen",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "5cf774ee2bee4f2d8f92ec98c80f2e20"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-standalone-565d6e02d9562d",
+      "id": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+      "name": "Sparkassen-Sommerrodelbahn am Stausee Oberwald",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "e7f3ca38cf2347eaa6c9361109236660"
+    },
+    {
+      "countryCode": "DE",
+      "entryId": "DE-candidate-discovery-1f009f30180e49",
+      "id": "ab7e541b-ec8c-41b9-88fa-2bd670ecbf99",
+      "name": "Weltballon Berlin",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "15400fa5be4e4f149b59ca6ce98ebb15"
+    },
+    {
+      "countryCode": "EE",
+      "entryId": "EE-candidate-847a9466f32c0b",
+      "id": "651407c6-ba5d-4e08-86b8-07ae75b78149",
+      "name": "Skywheel of Tallinn",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "1457d7f4cd0344fca3db0693a87d4de6"
+    },
+    {
+      "countryCode": "ES",
+      "entryId": "ES-candidate-discovery-1182b2f2f1a8d3",
+      "id": "00946076-78d4-4db4-8841-2cf1d640094e",
+      "name": "Límite Zero — tyrolienne Espagne–Portugal",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "0c1ce1eb88e4487a9f4614ab43e748dd"
+    },
+    {
+      "countryCode": "FI",
+      "entryId": "FI-candidate-d94270eac2d1c8",
+      "id": "ae6f1412-46ec-4202-a74b-78fb4c5cac63",
+      "name": "SkyWheel Helsinki",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "ad501da5b22b42d398672ffa83ee223e"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-9a7818e7-3539-4845-9957-ff7e97028497",
+      "id": "9a7818e7-3539-4845-9957-ff7e97028497",
+      "name": "Clécy Gliss",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d1f3809b899d40d4a5af1bd4395d6c03"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-1e5b7e2c-331f-435a-a5d7-9842c1532b28",
+      "id": "1e5b7e2c-331f-435a-a5d7-9842c1532b28",
+      "name": "Draco’Snow",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "c386aca710fc4d72b10ab4b08e7a110e"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-43a2af2a-30d5-4866-a3e3-47d069f902f9",
+      "id": "43a2af2a-30d5-4866-a3e3-47d069f902f9",
+      "name": "Déval’luge",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "73cc8f162580495d896cc87d0f285697"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-5ba1d1f2-5e0e-4599-adab-386fb16b9728",
+      "id": "5ba1d1f2-5e0e-4599-adab-386fb16b9728",
+      "name": "Dévoluge",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "13859a0cfb8e4376b1a609e7b496b45a"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-3e8cdb05-5ee8-4c0a-ad4f-34cd525240a9",
+      "id": "3e8cdb05-5ee8-4c0a-ad4f-34cd525240a9",
+      "name": "Guzet Express",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "4d5f64b071814d20b18e4d8ba777e268"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-9b2259ea-f82e-456c-a606-621b82f65b7f",
+      "id": "9b2259ea-f82e-456c-a606-621b82f65b7f",
+      "name": "L'Orrian Express",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "b312e2cf3a7c4daaaa9bac42dcb05f51"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-abb6cba3-8941-496a-adb4-831ab3c8fce0",
+      "id": "abb6cba3-8941-496a-adb4-831ab3c8fce0",
+      "name": "La Comète",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "de2a2cba0e5741a78fd972913d0d389e"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-0dd99206-5ff2-4721-af07-da8cfce99b1f",
+      "id": "0dd99206-5ff2-4721-af07-da8cfce99b1f",
+      "name": "La Luge Dévale",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "7335aa7ed04b433b861f5ab05c53b149"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-a8b462e8-1dbf-4862-9151-6840c17d9183",
+      "id": "a8b462e8-1dbf-4862-9151-6840c17d9183",
+      "name": "La Mine",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "90bc7db244204e82b713bda771ac8df9"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-ee2e2b60-e894-4cc5-b70b-82fe722ae5d4",
+      "id": "ee2e2b60-e894-4cc5-b70b-82fe722ae5d4",
+      "name": "Lou Bac Mountain",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "92bf4f527ea74bc284fce888d442428b"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-46847372-e37d-4804-9db5-86fd17f1b6e9",
+      "id": "46847372-e37d-4804-9db5-86fd17f1b6e9",
+      "name": "Luge 4 Saisons",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "f3cf67fd035048deb5d7025d51cafefc"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-530ffe49-3392-4aeb-9370-dd8cc0bd8817",
+      "id": "530ffe49-3392-4aeb-9370-dd8cc0bd8817",
+      "name": "Luge 4 Saisons",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "fba88187768149e6a70178c7ce3313ad"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-49853230-a1a6-4592-90b1-ad7e03374d31",
+      "id": "49853230-a1a6-4592-90b1-ad7e03374d31",
+      "name": "Luge 4 Saisons de Bernex",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "fae447195db44b279196ae1a709894c3"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "id": "3ca66a78-92be-4265-bebd-935b861fc9d9",
+      "name": "Luge 4 saisons",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "8183b7e09e224b86ac6712e08be09d86"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-0b1678ed-01a3-4f48-9873-53ca8be2ddea",
+      "id": "0b1678ed-01a3-4f48-9873-53ca8be2ddea",
+      "name": "Luge Alpine Coaster de Chamonix",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "eda5cecf6084494d97599671bbcba451"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-2d446d1d-f3f3-4880-9fce-88e75997e9c5",
+      "id": "2d446d1d-f3f3-4880-9fce-88e75997e9c5",
+      "name": "Luge Coaster Chamrousse",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "ab14d409c4e74a26b52ef442958a7494"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-d598ac25-f4fb-4085-b366-2371ca95d7d8",
+      "id": "d598ac25-f4fb-4085-b366-2371ca95d7d8",
+      "name": "Luge Molines Sensation",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "ec5a0ce5694b40bba847b5c66910d7e2"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
+      "id": "1ba2e17e-e7ea-4ef7-91dd-472e6011de40",
+      "name": "Luge Monty Express",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "8fdb2ac908b9490097a25bdd87d37167"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+      "id": "0bfdfd47-8363-4f9d-959b-6fd331dca6e4",
+      "name": "Luge alpine du Plan Incliné",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d3d33419f4534ab585dd5bd8bf75101f"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
+      "id": "3e265e8c-6dff-49da-b3d2-4a76eb4f83d8",
+      "name": "Luge des Bois",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "50d2e23a5a474578bc401f76a0dbfd5d"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-6af61037-c7eb-476f-86f3-3815bc9e4b53",
+      "id": "6af61037-c7eb-476f-86f3-3815bc9e4b53",
+      "name": "Luge des Cimes",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "a2dff62a3bbe41c19e6f94349f2ed740"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-30dd9346-98af-47ac-9df9-fc137eb3ed94",
+      "id": "30dd9346-98af-47ac-9df9-fc137eb3ed94",
+      "name": "Luge du Caribou",
+      "httpStatus": 200,
+      "publishedImageCount": 7,
+      "publicImageId": "57d99410948044f08a5491452f8b94dc"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-b3b096be-faf3-4477-b340-1ee12d0803b6",
+      "id": "b3b096be-faf3-4477-b340-1ee12d0803b6",
+      "name": "Luge d’été de La Colmiane",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "e56b073954534d1c8519d6d2eee3fc1b"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-7397a904-b8be-4077-9da2-32d71a4802ee",
+      "id": "7397a904-b8be-4077-9da2-32d71a4802ee",
+      "name": "Luge sur Rail de l'Alpe d'Huez",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "00fe479de2a748ea81d73a4b332fdc9f"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-e579d256-0744-4f49-b887-6c3fa5b99031",
+      "id": "e579d256-0744-4f49-b887-6c3fa5b99031",
+      "name": "Luge sur rail du Markstein",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "81f72d81284e41d5ae0c7b1b259f2b2b"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-258c419a-5081-484e-a827-b7728ed6587d",
+      "id": "258c419a-5081-484e-a827-b7728ed6587d",
+      "name": "Luge sur rails : JIM La Sambuy",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "7f50e8ba0ccf45f5a51d181cce84c80f"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
+      "id": "eba6c813-59ed-4c60-9cea-14f0cc3ecb4c",
+      "name": "Luge sur rails de La Schlucht",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "43ad78b9eb6348c9ae3b15ad9fe6d77f"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-53f83007-496b-4e03-a8ec-2d33be9321ab",
+      "id": "53f83007-496b-4e03-a8ec-2d33be9321ab",
+      "name": "Luge sur rails du col de la Faucille",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "9834fcbbfd1541a1bdafda3ae6a7c031"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-0d88b893-b067-4368-8b1c-fd7a28440136",
+      "id": "0d88b893-b067-4368-8b1c-fd7a28440136",
+      "name": "Lugik Parc",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "583a95ee86d74954b59a3e3439b6e5e3"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-c9110d54-f4dd-44a7-9817-7ffaf648101c",
+      "id": "c9110d54-f4dd-44a7-9817-7ffaf648101c",
+      "name": "Mountain Twister",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "f1d9888418c24e599c89cda250a9392b"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-e703f8cf-d6e7-4a2b-ac7c-f9b6665d4755",
+      "id": "e703f8cf-d6e7-4a2b-ac7c-f9b6665d4755",
+      "name": "Norma Loops",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "445da74c34cd4979934580ba4f91d735"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-88fc20bb-4927-42cf-a6c8-09ff966fee61",
+      "id": "88fc20bb-4927-42cf-a6c8-09ff966fee61",
+      "name": "Praloops",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "76fcc6130b8641d3920fc2dbbb19102e"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-2c2d7646-80e9-4685-b911-005afef3d93b",
+      "id": "2c2d7646-80e9-4685-b911-005afef3d93b",
+      "name": "Schlitte Mountain",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "edfd770e240849578f8ce79b6a0b63bd"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-ac34ddc0-9887-459b-ac11-6f3fe04920ca",
+      "id": "ac34ddc0-9887-459b-ac11-6f3fe04920ca",
+      "name": "Speed Dragoz",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "24e95b6979194da0851dad62bedddc38"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-2be7c7a1-b10b-40b0-86ba-4df584faf181",
+      "id": "2be7c7a1-b10b-40b0-86ba-4df584faf181",
+      "name": "Speed Luge Vercors",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "6676b354c1654793bf2e464ee8e4457d"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-3283d263-279b-44a3-ba32-4dc04d7489d2",
+      "id": "3283d263-279b-44a3-ba32-4dc04d7489d2",
+      "name": "Super Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 6,
+      "publicImageId": "ae759d4e6a27495e9871e115a3a71d86"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-ce2e1fbf-374f-4730-a193-30bb8466f877",
+      "id": "ce2e1fbf-374f-4730-a193-30bb8466f877",
+      "name": "Tricky Track",
+      "httpStatus": 200,
+      "publishedImageCount": 6,
+      "publicImageId": "3ebc8192db464362b415676ae1f2caa4"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-97cd7fcb-9e78-4d2a-83f0-34d4df044836",
+      "id": "97cd7fcb-9e78-4d2a-83f0-34d4df044836",
+      "name": "Verdon Express",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "f90c31371ed74d3a98c9039f9c2ed320"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-cdd41c34-e9c6-4d95-8220-909f8c308690",
+      "id": "cdd41c34-e9c6-4d95-8220-909f8c308690",
+      "name": "Wiz Luge",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d3009cf220464d98950aa46a2508e65c"
+    },
+    {
+      "countryCode": "FR",
+      "entryId": "FR-standalone-505a6507-0ee2-40b7-b127-56446ebc2ab7",
+      "id": "505a6507-0ee2-40b7-b127-56446ebc2ab7",
+      "name": "X’TREME Luge",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d9b175f0623c466a916b07c493da579b"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-853eb2916325747e",
+      "id": "e5307935-8773-462a-bf3d-7c0061615b31",
+      "name": "Brighton i360",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "c03b2647645c4723b2df67af838ad8fe"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-standalone-7fe2cfe1af8ee8",
+      "id": "5741e424-fd83-45bd-adbc-0f94155bba51",
+      "name": "Chatham Toboggan Run",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "0761d3dca9a14166bedb9529915ad55e"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-standalone-dd9a76b82b3d48",
+      "id": "5bea846d-6151-426a-bb62-d471326f8b36",
+      "name": "Cresta Toboggan Run — Llandudno",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "7842239cf7034d81b90b2d60b8ca957e"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-b19f183565d402",
+      "id": "175b12ed-6427-4f3e-b9e5-dc2ffc8b91fd",
+      "name": "Helix — ArcelorMittal Orbit",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "cc28270f4083471f86b6993d403285b5"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-park-e2f54f75-6265-4aea-8752-6efaefb12f79",
+      "id": "162bd718-f375-4d1b-a316-e4d50f1ad91b",
+      "name": "Hillend Alpine Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "152ae7bbe77545718591e6d50cfdab2d"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-163104924676f7b4",
+      "id": "b17dcec6-82dc-4dcd-93e5-85741b1e2520",
+      "name": "Llandudno Cable Car",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "f90738ad2f974ebfa7bcec96d1f4ad60"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-fb1f66688697ac68",
+      "id": "a05c8736-0ce5-4a3d-bcdc-fb4fc4904108",
+      "name": "London Cable Car",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "2247d70da3b14adab978a9220a1f8d1a"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-1846c28620b223",
+      "id": "1950afc0-e443-4031-a325-707feda5a8e8",
+      "name": "London Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "f297e3825c7146e79f3f114b72b265a5"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-917b72e4fb69d19a",
+      "id": "1e9d9fdc-e99c-4ecd-8f50-64c494b36fa6",
+      "name": "The Falkirk Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "9bb6505566864cc6ae118a2baeb6cfce"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-629e501ddf0c64",
+      "id": "7b1438b1-f19d-4bbf-ab6c-98eb69db9b58",
+      "name": "Velocity — Zip World Penrhyn Quarry",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "d327924a986440f2927a646cfc2a2edc"
+    },
+    {
+      "countryCode": "GB",
+      "entryId": "GB-candidate-discovery-87f09723f38fd673",
+      "id": "ca180ae2-dba9-4ccf-8b1e-0df2f4cbb4ac",
+      "name": "Wheel of Liverpool",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "eec904e60d5d4b109e0f8fcf5f2316ad"
+    },
+    {
+      "countryCode": "GE",
+      "entryId": "GE-candidate-41eec184fd6f11",
+      "id": "a2f4ecb4-3131-49bf-b35b-7ff90201dd72",
+      "name": "Batumi Panoramic Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "016a24f4aaa34641937d5d59b8a7bed9"
+    },
+    {
+      "countryCode": "GE",
+      "entryId": "GE-candidate-discovery-e6d02474257cb3",
+      "id": "98b9ce33-601d-4115-8c71-25ad62ccaa1d",
+      "name": "Tbilisi Balloon",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "106f7ff5ef5244fc978495b302c1b7cd"
+    },
+    {
+      "countryCode": "HK",
+      "entryId": "HK-candidate-558e4714d0a8c2",
+      "id": "b5b5127d-b1bc-49c5-a8cc-b2d73389934d",
+      "name": "Hong Kong Observation Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "fb7f80fd4d084e75966c27af115d8def"
+    },
+    {
+      "countryCode": "HK",
+      "entryId": "HK-candidate-discovery-bdf95c6242a3c6fc",
+      "id": "d99d6e51-cb0d-4088-a7e0-557fcf945838",
+      "name": "Ngong Ping 360 Cable Car",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "4e471477c3de4f28833df942c143c300"
+    },
+    {
+      "countryCode": "HU",
+      "entryId": "HU-candidate-discovery-556b397ac50f58",
+      "id": "dca37ef2-9626-41e8-8cd2-4c1b77feb6a7",
+      "name": "BalloonFly Budapest",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "5c1f2ef5a611458e91eaa2bd56c9bb21"
+    },
+    {
+      "countryCode": "HU",
+      "entryId": "HU-candidate-624c24722c02bd",
+      "id": "f2c62e9b-bab0-430c-91d7-6b55aed8f7fc",
+      "name": "Ferris Wheel of Budapest",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "b73c6bd307d0441d99ac3d579f33b24b"
+    },
+    {
+      "countryCode": "HU",
+      "entryId": "HU-candidate-standalone-edb60b82f0b0f0",
+      "id": "ea91d336-cd45-44b9-a458-f5bf4181e197",
+      "name": "Soproni Bobpálya",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "63b305b9fdf84b6a8abeda38aa607925"
+    },
+    {
+      "countryCode": "HU",
+      "entryId": "HU-park-d28e9969-89aa-45d8-a297-49eefe8cacf6",
+      "id": "41e3628d-6650-4988-9489-8ac31fa8c504",
+      "name": "Visegrádi Bobpálya",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "ba9609c463144bd1a13f4ee7bf1c5488"
+    },
+    {
+      "countryCode": "ID",
+      "entryId": "ID-candidate-da2446813242e7",
+      "id": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+      "name": "J-SKY Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "9640d40d067f4ec08c75f6ed26212f5f"
+    },
+    {
+      "countryCode": "IS",
+      "entryId": "IS-candidate-631a8dcd6a53f2",
+      "id": "1df9651e-07f8-4878-b7d6-b62caf5e036f",
+      "name": "FlyOver Iceland",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "1e64ebdb930845b4b6d8e952b2d18906"
+    },
+    {
+      "countryCode": "IT",
+      "entryId": "IT-standalone-e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "id": "e1af2dac-4f6c-404d-9844-47b4e6048783",
+      "name": "Bardonecchia Alpine Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d1b66bf0539348ac95b254d307e987aa"
+    },
+    {
+      "countryCode": "IT",
+      "entryId": "IT-standalone-85aea3b3-6974-4213-870e-d91a484103a3",
+      "id": "85aea3b3-6974-4213-870e-d91a484103a3",
+      "name": "Bob Su Rotaia",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "73d3f6a93c434f1ebefa2b679e021b4c"
+    },
+    {
+      "countryCode": "IT",
+      "entryId": "IT-park-c814c4dd-baaf-4b49-9c97-ce94acfefad3",
+      "id": "9edc99d2-e242-403d-9cf0-1c73deabbf93",
+      "name": "Funbob Monte Baranci",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "43696cded9394f1d80c704e471d542e9"
+    },
+    {
+      "countryCode": "JO",
+      "entryId": "JO-candidate-discovery-7db34fc67aae91",
+      "id": "1cf37536-fa7b-4a49-a989-8250cd19c3ef",
+      "name": "Petra Balloon",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "9f5309b7bac24f41ad4dd55bb80b3cec"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-2a1dae09eb87da",
+      "id": "aacbd338-47e5-439b-ae61-6d5bcaa6449b",
+      "name": "Amuran",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "66dc802f87ca43d182fa8030da0f8292"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-5e9f105844edd3",
+      "id": "7e2dd93e-d506-4044-b6c1-8d20e913fddd",
+      "name": "Diamond and Flower Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "c2fee030157248999936185c843dc10a"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-49204b461ffa56",
+      "id": "74c01914-71db-4158-affe-35bf4ceed79a",
+      "name": "HEP FIVE Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "56c104eee16d4a3692864f20c653d189"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-discovery-87570422e6c85b",
+      "id": "f6742708-a40b-4b45-b726-f43daff2259d",
+      "name": "MOSAIC Big Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "61da97cee6384787adf2d0a3464d0301"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-395e105b7b4012",
+      "id": "e42ee082-9559-5e1d-b7cf-e8b0170b39f7",
+      "name": "OSAKA WHEEL",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "6e71b6ce249c4ae0a2b9332b3c14ff7f"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-discovery-0c2e7732f201b4",
+      "id": "46389fcf-0e2c-411c-a01c-de0312afe1d5",
+      "name": "Osaka Sakai Balloon",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "b40378160e2745598b5181b2f2f5353b"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-discovery-d0b93173cbf01d",
+      "id": "16c6f079-ecd3-4a18-bc2b-4e7a2c337886",
+      "name": "Sky-Boat",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "95ba792c354c4e9ebb20ed521b607726"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-db542127e800ef",
+      "id": "c694fb12-2689-4933-89be-06ee6c8c467d",
+      "name": "Tempozan Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "c379e75037a8445da1c0296ab17d65ad"
+    },
+    {
+      "countryCode": "JP",
+      "entryId": "JP-candidate-discovery-d4cf8880da9b16",
+      "id": "7aa68b76-331f-46ee-8b5c-95795629917a",
+      "name": "nORIA",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "e9ee54d8722341dc800e712481ea4dd6"
+    },
+    {
+      "countryCode": "KH",
+      "entryId": "KH-candidate-discovery-2c16dbe92a1350",
+      "id": "35d56008-8574-4662-a2e3-994eb36dedae",
+      "name": "Angkor Balloon",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "85f74942f1514cd189bb99dd0238fd73"
+    },
+    {
+      "countryCode": "KH",
+      "entryId": "KH-candidate-426ef7b6b0d835",
+      "id": "b458da08-a3da-4e53-85e5-1b5e33b16b57",
+      "name": "Angkor Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "d120a05f0a59461996f68113fa5d83d2"
+    },
+    {
+      "countryCode": "KR",
+      "entryId": "KR-candidate-standalone-83338432442c73",
+      "id": "56b41750-e5a1-4721-b4bf-225aaf8c3409",
+      "name": "Arii Hills Zipwire — Jeongseon",
+      "httpStatus": 200,
+      "publishedImageCount": 0,
+      "publicImageId": null
+    },
+    {
+      "countryCode": "KR",
+      "entryId": "KR-candidate-discovery-1ff4ac48854ae5",
+      "id": "d04426fe-8ec7-425d-9e7f-80ca7d20924b",
+      "name": "Flying Suwon",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "151f9912a00b4d7cac6867125bfef850"
+    },
+    {
+      "countryCode": "KR",
+      "entryId": "KR-candidate-discovery-220e0945c2e59e",
+      "id": "1ee3a830-9cac-4c18-a1c5-27367ee860bd",
+      "name": "SEOULDAL — Seoul Moon",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "7f37cbc18f87405e97fc470ea9488ef1"
+    },
+    {
+      "countryCode": "KR",
+      "entryId": "KR-candidate-standalone-0f95f79317187a",
+      "id": "b7da9b3e-fd8c-4dca-9a91-0542e557afec",
+      "name": "Skyline Luge Busan",
+      "httpStatus": 200,
+      "publishedImageCount": 0,
+      "publicImageId": null
+    },
+    {
+      "countryCode": "KR",
+      "entryId": "KR-candidate-standalone-5f91351dd67b29",
+      "id": "c4a7a4ae-bbb1-486f-aa6a-b362498628af",
+      "name": "Skyline Luge Tongyeong",
+      "httpStatus": 200,
+      "publishedImageCount": 0,
+      "publicImageId": null
+    },
+    {
+      "countryCode": "KR",
+      "entryId": "KR-candidate-standalone-25023c9dd1cd28",
+      "id": "f619573f-a2ca-43cf-8b4a-5efe080dfa8a",
+      "name": "Skyline Zipwire — Nami Island",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "c439e4ac6fcd424ab778b664b5ae5f4c"
+    },
+    {
+      "countryCode": "LT",
+      "entryId": "LT-candidate-5464edde20d57d",
+      "id": "1b45ed19-a646-4433-8b99-cd623bc0e39f",
+      "name": "Palanga Sky Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "d7233b56d29c48af97636b2add3df6bd"
+    },
+    {
+      "countryCode": "LV",
+      "entryId": "LV-candidate-d5b78fdaef20b9",
+      "id": "fbc98591-3b14-426f-a3f1-af8d2c3344ca",
+      "name": "Riga Rise",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "6bc86e0191f442c68a8e7d8ff4deff56"
+    },
+    {
+      "countryCode": "MO",
+      "entryId": "MO-candidate-discovery-ed48ddea6705793a",
+      "id": "a241ed1c-6ce5-456b-8126-8c1d7f08c50e",
+      "name": "Golden Reel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "1702179793ce40b0ba8f98a05c18f66a"
+    },
+    {
+      "countryCode": "MO",
+      "entryId": "MO-candidate-discovery-64f20a87c649ce",
+      "id": "1e6aaf84-ba08-4acd-b068-5e0ae206ed29",
+      "name": "Macau Tower Bungy Jump",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "7a34444b1eb74d0f90d1a531de07b95c"
+    },
+    {
+      "countryCode": "MY",
+      "entryId": "MY-candidate-standalone-75acc28180ff3b",
+      "id": "a19b5ecb-d608-4b0f-99d5-3a67e7969d88",
+      "name": "Menara Taming Sari — Super Gyro Melaka",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "2216126be03a4d629c92a38fc910f83e"
+    },
+    {
+      "countryCode": "MY",
+      "entryId": "MY-candidate-standalone-346db9cd03d143",
+      "id": "58e8c96c-2fab-4378-9ab9-8c23fc3ce22e",
+      "name": "Skyline Luge Kuala Lumpur",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "83dac49a42564402b47f30b4cdcf1c8f"
+    },
+    {
+      "countryCode": "NL",
+      "entryId": "NL-candidate-discovery-1825dcfb286f92",
+      "id": "d18eea27-684d-4023-b451-1461a9e2ccec",
+      "name": "Euroscoop — Euromast",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "d3df8e517d8d419e8c3082a8c592b26e"
+    },
+    {
+      "countryCode": "NL",
+      "entryId": "NL-candidate-discovery-80445428d4593e",
+      "id": "6361f910-9880-4454-beaf-e2f6877991e3",
+      "name": "Over the Edge — A’DAM LOOKOUT",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "3a3f91cc44b947f1b1ace1b695f24558"
+    },
+    {
+      "countryCode": "NL",
+      "entryId": "NL-candidate-d11ee161bf385f",
+      "id": "4b5cb5ae-319f-4bee-8020-d177ac79e440",
+      "name": "SkyView de Pier",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "efdbf6784fc046509754d306f25d79eb"
+    },
+    {
+      "countryCode": "NL",
+      "entryId": "NL-candidate-standalone-d1328a7cf0c136",
+      "id": "6dee734e-796d-4ca0-9db6-ec2538b86405",
+      "name": "THIS IS HOLLAND",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "2fe6a1de322943af962ea7ae4a478e95"
+    },
+    {
+      "countryCode": "NZ",
+      "entryId": "NZ-candidate-standalone-07dc2e49aee425",
+      "id": "6b9d4991-4049-47af-8082-bfe3eedaf7f6",
+      "name": "Skyline Luge Queenstown",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "94b818cf428e4cf5ba15a019ae34c729"
+    },
+    {
+      "countryCode": "NZ",
+      "entryId": "NZ-candidate-standalone-7ec2f4b17a16c4",
+      "id": "08b8a7b0-0e88-48e5-8ceb-c5daf6ef79b4",
+      "name": "Skyline Luge Rotorua",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "f7206820b94346a39edd06c84720049a"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-candidate-b632be72cdb88a",
+      "id": "ccf8eb6d-bd75-40d5-b7d2-98f39c9ed11e",
+      "name": "AmberSky Gdańsk",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "7dff4c8334e3427caa5e312b10dd519a"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-candidate-discovery-472b096ce8a2e8",
+      "id": "5d3b5e38-6ab6-4de4-bc8c-c2e5385556d9",
+      "name": "Balon Widokowy — Kraków",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "7a08649d7aa14c8588330607a0ef6b33"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-park-6316cc1b-e42a-4451-823c-26c3b9b23ed7",
+      "id": "1649a64c-cf6d-405d-8281-1eee955527c3",
+      "name": "Kolejka grawitacyjna Górka Szczęśliwicka",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "bebe62a9086f41c081bb02a812ce3a98"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-candidate-standalone-9c584f7e2403327e",
+      "id": "7b675189-9a52-4850-a970-d111c6b96443",
+      "name": "Letni tor saneczkowy na Czantorii",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "e9f1ff5ae27549409ef4bf3accf61ca7"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-candidate-standalone-2fd9bb2095a3f2",
+      "id": "cc134245-94e5-40c6-8411-cbb88ced23a1",
+      "name": "Sankostrada Krynica-Zdrój",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "612965967d0148739e07c02b8a0069d4"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-candidate-standalone-191126944562f3",
+      "id": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+      "name": "Tor saneczkowy na Rudzkiej Górze",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "015b16498b564ca89c1b15cced38bcd6"
+    },
+    {
+      "countryCode": "PL",
+      "entryId": "PL-candidate-standalone-e2010b28e2d8fff9",
+      "id": "6573a789-58e5-4044-bda4-ba883cda7fe4",
+      "name": "Zjeżdżalnia grawitacyjna Gubałówka",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "ea2e662f8c8a40c88a02686e07f3fc8b"
+    },
+    {
+      "countryCode": "PT",
+      "entryId": "PT-standalone-2a207fda-7479-405a-b1ce-d93dc3a0acd8",
+      "id": "2a207fda-7479-405a-b1ce-d93dc3a0acd8",
+      "name": "DreamFly Lisboa",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "aaa346afead84ea0ae3fa5f606b65270"
+    },
+    {
+      "countryCode": "PT",
+      "entryId": "PT-standalone-22507909-9fab-4452-a87d-27fded8b2e3c",
+      "id": "22507909-9fab-4452-a87d-27fded8b2e3c",
+      "name": "DreamFly Porto",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "8ed7e9f5d4c34102b4104be5cbd40414"
+    },
+    {
+      "countryCode": "RO",
+      "entryId": "RO-candidate-6fa71332367544",
+      "id": "d1b09350-8591-437e-82d7-2957573535b3",
+      "name": "Predeal Mountain Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "eab6c2c58244449aae52d4345dc850b1"
+    },
+    {
+      "countryCode": "RU",
+      "entryId": "RU-candidate-0a9f178a14f2fd",
+      "id": "c119655f-712a-4060-b8d1-dbe322e09ac1",
+      "name": "Sun of Moscow",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "75098dba9c3c4bbd97e996332666308a"
+    },
+    {
+      "countryCode": "SE",
+      "entryId": "SE-candidate-discovery-e9ac5c40cff15d",
+      "id": "ca4fcd0e-0c14-4a70-ac5d-cb20c4c15126",
+      "name": "SkiStar Mountain Coaster Hammarbybacken",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "e4b52758f9994f858cc3e7f15cd9a502"
+    },
+    {
+      "countryCode": "SE",
+      "entryId": "SE-candidate-discovery-5993148c7fe7c6",
+      "id": "84dfb09a-802e-4fe7-a631-f63d0cffeb41",
+      "name": "SkyView Stockholm",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "a15cab9ba3a049e88e436451bb2c6f6d"
+    },
+    {
+      "countryCode": "SG",
+      "entryId": "SG-candidate-discovery-0bc9f9fd511d6f",
+      "id": "49ec49ed-ef6b-44a0-b6d9-acd8b8d5f952",
+      "name": "Sentosa Bungy Jump",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "229d13f0d5b243d6b02e212e62ffc9a0"
+    },
+    {
+      "countryCode": "SG",
+      "entryId": "SG-candidate-0b2ddef5675e0c",
+      "id": "4aa25a72-8a2d-4455-b932-1d151781bc42",
+      "name": "Singapore Flyer",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "973a82ab604f4c5dbc7a858aa3733dc7"
+    },
+    {
+      "countryCode": "SG",
+      "entryId": "SG-candidate-discovery-b43f63a4dd05a4",
+      "id": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+      "name": "SkyHelix Sentosa",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "ebeac47b1f294e7085e62c611f991e7c"
+    },
+    {
+      "countryCode": "SG",
+      "entryId": "SG-candidate-standalone-864d87f292e0f6",
+      "id": "07e8d89b-1cc2-486a-9cf0-ff3100957bdc",
+      "name": "Skyline Luge Singapore",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "a7456384749f49f0ba649b022d8c566c"
+    },
+    {
+      "countryCode": "SK",
+      "entryId": "SK-candidate-37f6a177200aa3",
+      "id": "9e14b449-3216-4bd6-8625-239e5eb7c430",
+      "name": "Bobová dráha Bachledka",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "50b0faab22c24921934d6e92ed4db924"
+    },
+    {
+      "countryCode": "SK",
+      "entryId": "SK-candidate-standalone-04c8ea259b65a0",
+      "id": "256948c2-8731-422e-bc5c-016970bbf5fe",
+      "name": "Luge Wiegand — Kosice",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "d4a3dd5cfcdb453ea218536ea0adf5d6"
+    },
+    {
+      "countryCode": "SK",
+      "entryId": "SK-park-c0d9c7fa-c8fa-435b-b24b-659217ab68be",
+      "id": "40a2ebdd-d891-4821-8305-1d4c88f5ec6d",
+      "name": "Tatrabob",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "6d7aa9e78787460f8817744483436ce8"
+    },
+    {
+      "countryCode": "TW",
+      "entryId": "TW-candidate-a2cafea4bad92a",
+      "id": "82c5548b-c0bd-4418-9aba-e567f15895b5",
+      "name": "E-DA Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "bf218273be97446da9c26cfead0eb042"
+    },
+    {
+      "countryCode": "TW",
+      "entryId": "TW-candidate-d04f792843150d",
+      "id": "859a182e-f188-4e92-839a-b22e24a8a0e7",
+      "name": "Kaohsiung Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "508b81cc300547689b1a8cdb4ab031ca"
+    },
+    {
+      "countryCode": "TW",
+      "entryId": "TW-candidate-4c7dad24c6c000",
+      "id": "bdf7abcd-89d5-4393-bc04-845d92cb40f4",
+      "name": "Miramar Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "5044d56bd59a4589ba2c723171a9b175"
+    },
+    {
+      "countryCode": "TW",
+      "entryId": "TW-candidate-standalone-114163f2bb283b",
+      "id": "029d88ba-768f-4f1b-9d1c-d1e961ab62c5",
+      "name": "Tamshui Lover’s Tower",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "f4c6483996f24b05837af19fef78c1b1"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-2f0e2b642d783e",
+      "id": "6a0a5bcc-555a-49a0-a528-1398901ca30d",
+      "name": "Aerophile — Disney Springs",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "07ffdcf41ae14e61ae1dde9550e6b732"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-c58b1d3f354f4f",
+      "id": "72b0aadb-436f-47f0-a978-15610e577f4c",
+      "name": "Branson Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "0ef2067766c648699284b6b9f7f2db8c"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-6259ed7a4dceb9",
+      "id": "be71f169-aec6-4e9b-8984-6640d12c9c9f",
+      "name": "Brush Creek Falls Resort",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "454bd2e33bce4dcb8533551e70576d0d"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-9bbeeac20c9b5e",
+      "id": "9a31ef73-1334-46aa-9686-52e143739ae1",
+      "name": "Centennial Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "54dcb23cf6464bd18aa900584637367e"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-f5f1a9ec7a1515",
+      "id": "29b22c8f-3822-4f7b-9f61-4aa4f35ac4ed",
+      "name": "Dream Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "75174c487d854befa805d61ebc894d1b"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-508928b8731e77",
+      "id": "1b3144f7-2cdb-48b7-a3ca-daaa2f2f6213",
+      "name": "Flathead Lake Alpine Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "b396d814a59f4fd7aee0fdfc713972df"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-standalone-cc3caa2f6fca41",
+      "id": "6256ae91-3f69-4198-b8e0-8170e21fe6e7",
+      "name": "FlyOver America",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "d31e892b00ff4c788eb535400af9dd9d"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-69a1a4b80393db",
+      "id": "d79ef5a0-e922-44d1-98be-bfe364a31431",
+      "name": "Flyover Chicago",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "ee6102dbc5b24adaa3f4e552b81e483c"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-3005be6295777b",
+      "id": "aa5209d3-2d30-4ef2-baf5-4ee4ff68c881",
+      "name": "Flyover Las Vegas",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "607f7e4613dc46c0a37df97d23388d32"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-park-1ea43ab2-e917-4420-bef8-386c3add4280",
+      "id": "6c3c5eae-402c-498d-9749-b96595c49f4a",
+      "name": "Georgia Mountain Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "e83c561d8824494499adfc8f9fce0597"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-177cb9d986d45d",
+      "id": "7fbb68c5-178f-482b-bbfa-c94ce1a69239",
+      "name": "Great Park Balloon",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "326308240c6a48b3ab4b992e90065a6b"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-fd6fcdcb5fd85b",
+      "id": "3c3cf28e-e40c-493c-baba-4062874cad4d",
+      "name": "Great Smoky Mountain Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "5a0b4c6bc90942b88854d47594969add"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-9e33a8dae9d141",
+      "id": "d987f074-7efc-47dd-bbf8-5ccec428538e",
+      "name": "High Roller",
+      "httpStatus": 200,
+      "publishedImageCount": 5,
+      "publicImageId": "371960490d5941968bf78024a519456e"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-0b298586d914cd",
+      "id": "2a0c4cab-6d8e-45a4-a0d2-01329f001af7",
+      "name": "Orlando SlingShot",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "1f065235b3d44d148dce852caf5c5d51"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-f182f64e1743f5",
+      "id": "bfdc59da-2f22-42e2-a63e-ecfd4f9a4c2e",
+      "name": "Orlando StarFlyer",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "b87565c5aa164eb9bac8ae45037674d6"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-0cb8cee26bb3f2b9",
+      "id": "da3367d0-cdca-4fbe-8790-364ac656da4c",
+      "name": "San Francisco Carousel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "f65d734ef7604c17a712d41d12cb6167"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-cc60136c844ee4",
+      "id": "d3b5033b-9520-4ab4-a5a8-96109a7784cf",
+      "name": "Seattle Great Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "e975758683a5479eb2fc8529a65c11e2"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-2201321359d5bd88",
+      "id": "86100cec-397a-44a4-8c02-9803753665dd",
+      "name": "SkyJump Las Vegas",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "31adadfc92914159bdaad50ee5930993"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-a2121bfa4df7d3",
+      "id": "49ae82c6-f18c-48e0-bdbd-13fa3377a870",
+      "name": "SkyStar Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "60dcc906ae124fb58fae0c06b8ce6a50"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-5ce81bb6696419",
+      "id": "3e968ae6-1ab4-436d-a16c-9ed19cef3b47",
+      "name": "SkyView Atlanta",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "945e85d496ec4a468325e918a6c3b735"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-b580f555d9d1fb",
+      "id": "7afdd5bb-a5ae-491a-ae8a-d3f2781d3e8b",
+      "name": "SkyWheel Myrtle Beach",
+      "httpStatus": 200,
+      "publishedImageCount": 6,
+      "publicImageId": "92382db66dc04d0abe3f691278210633"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-94cdb6c6fa968d",
+      "id": "998077d1-0e1b-4e1b-a263-1185a324f105",
+      "name": "Skyviews Miami",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "bba8983d0f8b41eaa5f9cfeb71b28d7b"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-340f6212f0ce2e21",
+      "id": "515db5e7-8c07-452f-83c9-ba9af1b50a2e",
+      "name": "SlotZilla Zip Line",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "8d77894ea2eb45428a0a2b0f3552c102"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-fe4e16c78ab379",
+      "id": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+      "name": "Smoky Mountain Alpine Coaster",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "08b63464c9404e2aa4ae7b9c52601595"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-15a41c387081bc",
+      "id": "2c4f6433-1ae4-4eef-8471-8afbd7e58f83",
+      "name": "TILT — 360 CHICAGO",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "eee5ffc6814f4279b2ee8f21ee01d67f"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-3b680ad27a9128",
+      "id": "b7d1a5db-854c-453a-add8-0d95751eedea",
+      "name": "The Branson Ferris Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "fe560586e48644259b13214ddd88814c"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-01cb30201aa0db",
+      "id": "b0335449-d1b1-43b0-a39f-fed9b33742ff",
+      "name": "The Capital Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "dcb789168b1a44a5a7d1f7e304ae61dc"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-72972e2d343bf3",
+      "id": "395c043d-9aca-4e01-9725-ddcce5f1195a",
+      "name": "The Orlando Eye",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "4547869c91d34b24a0934b6054af3c01"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-7a55d8c10505e4",
+      "id": "794a53d9-847b-452c-8a46-ee74a42e0dd9",
+      "name": "The St. Louis Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "1acac94c4f6a41bfb9a8b62adf2bc1f8"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-discovery-ec2477b8468fba",
+      "id": "3fd4fcba-ecf8-44e9-8a0e-c8c7e45d96fd",
+      "name": "Wings Over Washington",
+      "httpStatus": 200,
+      "publishedImageCount": 3,
+      "publicImageId": "2250eecd403b486992501ceb554e605f"
+    },
+    {
+      "countryCode": "US",
+      "entryId": "US-candidate-standalone-3e5f903c59f53a",
+      "id": "0bfef2c1-04a3-4366-afa7-8649cd050b28",
+      "name": "ZipRider — Icy Strait Point",
+      "httpStatus": 200,
+      "publishedImageCount": 1,
+      "publicImageId": "85bc1bb3e7a243db9e4890bea58d9e66"
+    },
+    {
+      "countryCode": "VN",
+      "entryId": "VN-candidate-discovery-c8ee724635c18d6e",
+      "id": "42cb1ac7-dec8-4a12-b0bc-1c514f2ef3a6",
+      "name": "Datanla Alpine Coaster 1",
+      "httpStatus": 200,
+      "publishedImageCount": 2,
+      "publicImageId": "518099db5ac9489faea8b7356f75cf40"
+    },
+    {
+      "countryCode": "ZA",
+      "entryId": "ZA-candidate-discovery-8cc07959c6470aae",
+      "id": "add537b0-256c-4091-9e1d-eb63a23b6863",
+      "name": "Cape Wheel",
+      "httpStatus": 200,
+      "publishedImageCount": 4,
+      "publicImageId": "bfe9d37187284de39398933642994527"
+    }
+  ],
+  "method": {
+    "endpointTemplate": "https://amusement-parks.fun/api/images/STANDALONE_ATTRACTION/{siteId}/STANDALONE_ATTRACTION?page=1&size=1",
+    "authentication": "anonymous",
+    "countField": "pagination.totalItems",
+    "scopeRule": "Published standalone backlog entries excluding Duplicate and Excluded",
+    "interpretation": "Published images owned by the exact standalone entity; logos and Park or ParkItem images do not count."
+  },
+  "withAtLeastOneImageCount": 226,
+  "withExactlyOneImageCount": 27,
+  "withAtLeastTwoImagesCount": 199
+}

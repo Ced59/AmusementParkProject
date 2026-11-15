@@ -32,6 +32,8 @@ Une nouvelle fiche standalone destinée à la publication doit comporter au moin
 
 Les fiches déjà publiques sans photo restent visibles et prioritaires pour le rattrapage. Le [relevé du 28 octobre 2026](evidence/standalone-photo-coverage-20261028/SOURCES.md) distingue les photos propres aux attractions du logo générique, avec le détail par entrée. Son comptage des lacunes a été [corrigé par un contrôle officiel le 1er novembre 2026](STANDALONE-PHOTO-GAPS-20261101.md) : huit des douze fiches signalées n’ont aucune image publiée, une n’a qu’une photo d’enseigne et trois possèdent déjà une vue pertinente. Un import photographique est une intégration de données datée par son reçu `ImportPhoto` ; la publication du média est consignée à part et ne remplace pas cette date.
 
+Le [contrôle public exhaustif du 15 novembre 2026](STANDALONE-PHOTO-AUDIT-20261115.md) recense six fiches sans image propre parmi 232 standalone publiées. Les lignes nationales portent la preuve et la prochaine recherche ; ce contrôle ne change pas leur date d’intégration de données.
+
 ## Découverte de nouvelles fiches
 
 La [liste des créations candidates](CREATIONS-STANDALONE.md) isole les attractions sans correspondance trouvée, avec une section alpine / mountain coasters. Poursuivre la découverte hors du catalogue : annuaires spécialisés, références constructeurs, exploitants et tourisme local. Comparer les noms, alias, adresses, coordonnées et anciennes identités aux Park et StandaloneAttraction publics et masqués ; élargir la recherche au-delà du pays en cas de classement erroné.
