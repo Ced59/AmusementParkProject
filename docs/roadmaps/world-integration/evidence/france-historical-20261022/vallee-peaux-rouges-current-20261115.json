@@ -1,0 +1,154 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "owner": "Conversation France",
+  "observedAtUtc": "2026-11-15T06:40:44.917157+00:00",
+  "outcome": "partial",
+  "finalAuditCompleted": false,
+  "sitePublished": false,
+  "facebookPublished": false,
+  "lastDataIntegrationRawUtc": "2026-11-15T06:38:47.302864Z",
+  "newIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-fort-followup-20261115.json",
+  "resumeDirectory": "/workspace/france-historical-20261114/vallee-peaux-rouges",
+  "targetedRecovery": {
+    "sections": [
+      "ParkBasics",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History"
+    ],
+    "exportedAtUtc": "2026-11-15T06:34:10.1098106Z",
+    "sha256": "9babf661ded13fc9ebd6171fb0fcbc8a363e81c36994a9acb9b7f3dfa61af11e",
+    "existingItemIdsPreserved": true,
+    "items": 8,
+    "images": 17,
+    "historicalAuditExportNotRepeated": true
+  },
+  "currentHiddenStateCompleteness": {
+    "result": {
+      "completenessScore": 81,
+      "dataQualityLevel": "Publishable",
+      "applicableMaxPoints": 94,
+      "earnedPoints": 76,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "receivedAtUtc": "2026-11-15T06:39:38.8394828Z",
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-15T06:39:38.3219353Z"
+  },
+  "scoreInterpretation": "81/100 est la note de l’état privé courant, pas une projection de publication. Ancienne projection85/100 et blocage logo du3novembre conservés comme historiques; pas de nouvelle Preview de publication ni audit global.",
+  "idempotence": {
+    "operationId": "285d6dc5-4e6a-487d-a386-cbee4bd60b2a",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T06:39:27.452916Z",
+    "appliedAtUtc": null,
+    "targetParkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+    "targetParkName": "La Vallée des Peaux-Rouges",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+        "entityKey": "park",
+        "displayName": "La Vallée des Peaux-Rouges",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "entityKey": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "displayName": "Fort",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sources": [
+    {
+      "name": "lemonde-1967",
+      "url": "https://www.lemonde.fr/archives/article/1967/07/11/les-cow-boys-du-dimanche_2630080_1819218.html",
+      "error": "HTTP Error 402: Payment Required",
+      "retrievedAtUtc": "2026-11-15T06:34:55.968972+00:00"
+    },
+    {
+      "name": "fleurines-2010",
+      "url": "https://fleurines.fr/images/fleurinesetvous/N9.pdf",
+      "finalUrl": "https://fleurines.fr/images/fleurinesetvous/N9.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T06:34:58.049321+00:00",
+      "bytes": 920992,
+      "sha256": "66e2611c9d71b75fe9824c5d9710daeb256f9ecaf5db038c1c38cfba69b11f59"
+    },
+    {
+      "name": "pnr-fleurines-2025",
+      "url": "https://www.parc-oise-paysdefrance.fr/wp-content/uploads/2025/11/Decouvrons-villages-Fleurines-web.pdf",
+      "finalUrl": "https://www.parc-oise-paysdefrance.fr/wp-content/uploads/2025/11/Decouvrons-villages-Fleurines-web.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T06:35:01.017142+00:00",
+      "bytes": 3697170,
+      "sha256": "b04f38849ade9f4dd40a5f7a1787efe94f01e3d7e00fbc03d98e1087e5915f28"
+    },
+    {
+      "name": "official-history",
+      "url": "https://www.parcoursaventure60.fr/histoire-du-parc",
+      "finalUrl": "https://www.parcoursaventure60.fr/histoire-du-parc",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T06:35:06.223544+00:00",
+      "bytes": 203876,
+      "sha256": "3b3339010dbcf77d0b114269efffbf45ab736f71c0617e34aa367c05434b3411"
+    }
+  ],
+  "fortCorrection": "Huit descriptions privées relues et appliquées : deux sections/deux paragraphes. Spectacles, nuits en plein air attestées1967 et départ Run&Bike2010. Alias Cheyenne non ajouté, aucun matériau/date/GPS inventé.",
+  "remainingGaps": [
+    {
+      "key": "logo",
+      "blocking": true,
+      "detail": "Logo historique exploitable encore absent. La brochure America Park constitue une piste authentique. Aucun interdit général de recadrage dans AGENTS.md : la mention ancienne « pas de recadrage » était un choix local, pas une règle du projet. Demande de méthode de recadrage fidèle en attente; pas de dessin généré ou de logo moderne substitué."
+    },
+    {
+      "key": "official-maps",
+      "blocking": false,
+      "detail": "Aucune édition officielle visiteurs retrouvée. Dépliant collectors limité à couverture ; vue aérienne annotée1968 et cartes municipales/PNR ne sont pas des plans officiels du parc."
+    },
+    {
+      "key": "geolocation",
+      "blocking": false,
+      "detail": "Sept installations fixes sans point exact prouvé. GPS de parc et de viaduc connus, mais aucun transfert arbitraire aux bâtiments ou gare. Photographies, plans municipaux et vue aérienne1968 contrôlés."
+    },
+    {
+      "key": "photos",
+      "blocking": false,
+      "detail": "4/5 vues générales historiques; banque désormais illustrée. Gare et fort sans photographie propre utilisable. 17 médias conservés, dont deux nouvelles photographies du reportage Jan Hertoghs."
+    },
+    {
+      "key": "operator-manufacturer-access",
+      "blocking": false,
+      "detail": "Exploitant juridique ancien, constructeur du train et conditions d’accès historiques non attribuables. JeanRichard acheteur1971 n’est pas fondateur. Société moderne et locomotives industrielles des anciennes sablières non transférées au parc."
+    },
+    {
+      "key": "closing-year",
+      "blocking": false,
+      "detail": "1988 retenu selon inventaire ferroviaire et notice Cinémathèque ; PNR2025 et extrait étude2006 donnent1989. Divergence conservée sans inventer jour, mois, ni précision supérieure aux sources."
+    }
+  ],
+  "nextAction": "Chercher un véritable logo historique autonome et les photos du fort/de la gare ; contrôler l’inventaire secondaire puis réauditer le périmètre avant publication. Aucune nouvelle image ni réimport. L’amélioration du fort ne vaut pas clôture."
+}

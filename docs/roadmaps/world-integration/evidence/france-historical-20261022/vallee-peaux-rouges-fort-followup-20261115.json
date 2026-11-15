@@ -1,0 +1,160 @@
+{
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "documentSha256": "c6bcac5ae5d146f5f3e78fb28b68d6937f211833191916f6932e645978dca6c0",
+  "result": {
+    "operationId": "f42496e8-a0ab-47e5-ab17-3936db0b4746",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T06:38:47.3028631Z",
+    "appliedAtUtc": "2026-11-15T06:38:47.302864Z",
+    "targetParkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+    "targetParkName": "La Vallée des Peaux-Rouges",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+        "entityKey": "park",
+        "displayName": "La Vallée des Peaux-Rouges",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "entityKey": "5c32d182-ab5a-40aa-8c6b-9dbe7b487c8d",
+        "displayName": "Fort",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<p>In Fleurines traten die Darsteller auch am Fort auf. Vorführungen belebten diese Kulisse der Vallée ebenso wie das Pionierdorf und das Tipilager, die in den ehemaligen Sandgruben entstanden waren.</p>",
+            "newValue": "<h2>Das Fort als Westernkulisse</h2><p>In den ehemaligen Sandgruben von Fleurines gehörte das Fort neben dem Indianerlager und dem Pionierdorf zu den Schauplätzen der Vorführungen. 1967 berichtete Le Monde von Nächten unter freiem Himmel am Fort.</p><h2>Ein Name blieb in Fleurines erhalten</h2><p>2010 startete am Fort der neunte Run &amp; Bike von Fleurines. Nach der Schließung des Westernparks wurde der Ort somit weiterhin für den Sport genutzt, als Ausgangspunkt einer Strecke durch den Wald von Halatte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<p>At Fleurines, performers also appeared at the fort. Shows brought this Vallée setting to life alongside the pioneer village and tipi camp built within the former sand quarries.</p>",
+            "newValue": "<h2>The fort in the western shows</h2><p>In the former sand quarries at Fleurines, the fort was one of the settings brought to life by performers, alongside the Native American camp and pioneer village. In 1967, Le Monde described nights spent outdoors at the fort.</p><h2>A name that outlasted the western park</h2><p>In 2010, the ninth Fleurines Run &amp; Bike started at the fort. After the western park had closed, the site continued to serve a sporting purpose as the starting point for a route through Halatte Forest.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<p>En Fleurines, los actores también actuaban en el fuerte. Los espectáculos animaban este escenario de la Vallée, junto al pueblo de pioneros y al campamento de tipis instalados en las antiguas canteras de arena.</p>",
+            "newValue": "<h2>El fuerte de los espectáculos del Oeste</h2><p>En las antiguas canteras de arena de Fleurines, el fuerte era uno de los escenarios animados por los actores, junto con el campamento indígena y el pueblo de pioneros. En 1967, Le Monde describía noches al aire libre en el fuerte.</p><h2>Un nombre que perduró en Fleurines</h2><p>En 2010, la novena edición del Run &amp; Bike de Fleurines salía del fuerte. Tras el cierre del parque del Oeste, el lugar conservaba así una función deportiva, como punto de partida de un recorrido por el bosque de Halatte.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<p>À Fleurines, les comédiens jouaient aussi au fort. Les spectacles animaient ce décor de la Vallée, aux côtés du village des pionniers et du camp de tipis installés dans les anciennes sablières.</p>",
+            "newValue": "<h2>Le fort des spectacles western</h2><p>Dans les anciennes sablières de Fleurines, le fort était l’un des décors animés par les comédiens, avec le camp indien et le village des pionniers. En 1967, Le Monde y évoque des nuits en plein air.</p><h2>Un nom resté dans la vie de Fleurines</h2><p>En 2010, le neuvième Run &amp; Bike de Fleurines prenait son départ au fort. Le lieu conservait ainsi un usage sportif après la fermeture du parc western, au départ d’un parcours dans la forêt d’Halatte.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<p>A Fleurines gli attori si esibivano anche al forte. Gli spettacoli animavano questa scenografia della Vallée, accanto al villaggio dei pionieri e all’accampamento di tipi sorti nelle vecchie cave di sabbia.</p>",
+            "newValue": "<h2>Il forte degli spettacoli western</h2><p>Nelle antiche cave di sabbia di Fleurines, il forte era uno degli scenari animati dagli attori, insieme all’accampamento indiano e al villaggio dei pionieri. Nel 1967 Le Monde raccontava di notti all’aperto presso il forte.</p><h2>Un nome rimasto nella vita di Fleurines</h2><p>Nel 2010 la nona edizione del Run &amp; Bike di Fleurines partiva dal forte. Dopo la chiusura del parco western, il luogo continuava così ad avere una funzione sportiva, come punto di partenza di un percorso nella foresta di Halatte.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<p>In Fleurines traden de spelers ook bij het fort op. Voorstellingen brachten dit decor van de Vallée tot leven, naast het pioniersdorp en het tipikamp die in de oude zandgroeven waren aangelegd.</p>",
+            "newValue": "<h2>Het fort als westerndecor</h2><p>In de voormalige zandgroeven van Fleurines vormde het fort, samen met het indianenkamp en het pioniersdorp, een van de decors voor de optredens. In 1967 beschreef Le Monde overnachtingen onder de blote hemel bij het fort.</p><h2>Een naam die in Fleurines bleef voortleven</h2><p>In 2010 startte de negende Run &amp; Bike van Fleurines bij het fort. Na de sluiting van het westernpark behield de plek zo een sportieve functie, als vertrekpunt van een route door het bos van Halatte.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<p>We Fleurines wykonawcy występowali również przy forcie. Widowiska ożywiały tę scenerię Vallée, obok miasteczka pionierów i obozu z tipi, które powstały na terenie dawnych wyrobisk piasku.</p>",
+            "newValue": "<h2>Fort w scenerii westernowych widowisk</h2><p>W dawnych wyrobiskach piasku we Fleurines fort był jednym z miejsc występów aktorów, obok indiańskiego obozu i miasteczka pionierów. W 1967 roku Le Monde opisywał noclegi pod gołym niebem przy forcie.</p><h2>Nazwa, która przetrwała we Fleurines</h2><p>W 2010 roku przy forcie rozpoczynała się dziewiąta edycja zawodów Run &amp; Bike we Fleurines. Po zamknięciu westernowego parku miejsce nadal służyło więc rekreacji, jako punkt startowy trasy przez las Halatte.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<p>Em Fleurines, os atores também se apresentavam no forte. Os espetáculos animavam este cenário da Vallée, ao lado da vila dos pioneiros e do acampamento de tipis instalados nos antigos areeiros.</p>",
+            "newValue": "<h2>O forte dos espetáculos western</h2><p>Nos antigos areeiros de Fleurines, o forte era um dos cenários animados pelos atores, a par do acampamento indígena e da aldeia dos pioneiros. Em 1967, o Le Monde relatava noites ao ar livre no forte.</p><h2>Um nome que permaneceu em Fleurines</h2><p>Em 2010, a nona edição do Run &amp; Bike de Fleurines partia do forte. Após o encerramento do parque western, o local manteve assim uma função desportiva, como ponto de partida de um percurso pela floresta de Halatte.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "sources": [
+    {
+      "name": "lemonde-1967",
+      "url": "https://www.lemonde.fr/archives/article/1967/07/11/les-cow-boys-du-dimanche_2630080_1819218.html",
+      "error": "HTTP Error 402: Payment Required",
+      "retrievedAtUtc": "2026-11-15T06:34:55.968972+00:00"
+    },
+    {
+      "name": "fleurines-2010",
+      "url": "https://fleurines.fr/images/fleurinesetvous/N9.pdf",
+      "finalUrl": "https://fleurines.fr/images/fleurinesetvous/N9.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T06:34:58.049321+00:00",
+      "bytes": 920992,
+      "sha256": "66e2611c9d71b75fe9824c5d9710daeb256f9ecaf5db038c1c38cfba69b11f59"
+    },
+    {
+      "name": "pnr-fleurines-2025",
+      "url": "https://www.parc-oise-paysdefrance.fr/wp-content/uploads/2025/11/Decouvrons-villages-Fleurines-web.pdf",
+      "finalUrl": "https://www.parc-oise-paysdefrance.fr/wp-content/uploads/2025/11/Decouvrons-villages-Fleurines-web.pdf",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T06:35:01.017142+00:00",
+      "bytes": 3697170,
+      "sha256": "b04f38849ade9f4dd40a5f7a1787efe94f01e3d7e00fbc03d98e1087e5915f28"
+    },
+    {
+      "name": "official-history",
+      "url": "https://www.parcoursaventure60.fr/histoire-du-parc",
+      "finalUrl": "https://www.parcoursaventure60.fr/histoire-du-parc",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T06:35:06.223544+00:00",
+      "bytes": 203876,
+      "sha256": "3b3339010dbcf77d0b114269efffbf45ab736f71c0617e34aa367c05434b3411"
+    }
+  ],
+  "historicalPress": {
+    "url": "https://www.lemonde.fr/archives/article/1967/07/11/les-cow-boys-du-dimanche_2630080_1819218.html",
+    "author": "Charles Vanhecke",
+    "publicationDate": "1967-07-11",
+    "access": "Extrait public indexé et outil de recherche ; téléchargement direct 402 arrêté sans contournement.",
+    "supportedFact": "Le reportage évoque des nuits en plein air dans le fort. Aucune déduction du nom propre Cheyenne, de date d’ouverture ou de matériau."
+  },
+  "municipalEvidence": {
+    "document": "Fleurines & Vous n°9 juin-juillet 2010",
+    "page": 10,
+    "supportedFact": "Le départ du neuvième Run & Bike est donné au fort, puis le parcours passe en forêt. Pas de réouverture du parc western déduite."
+  },
+  "review": {
+    "personallyAuthoredAndReviewedLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "allEightPreviewValuesMatched": true,
+    "descriptionFormat": "Deux sections et deux paragraphes précis par langue, format court lié aux sources ; aucune description architecturale fabriquée.",
+    "unchanged": "Identifiant, nom Fort, catégorie, type, visibilité privée, coordonnées et toutes les autres entités."
+  },
+  "remainingGaps": [
+    "Logo historique authentique manquant : aucune substitution par logo du parcours aventure moderne, aucun recadrage non demandé.",
+    "Fort et gare sans photographie propre ; positions non prouvées, aucun nouveau plan annuel.",
+    "Réaudit global et publication non réalisés."
+  ]
+}

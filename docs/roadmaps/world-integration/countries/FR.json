@@ -14196,7 +14196,7 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-11-03T04:23:55.7330914Z",
-      "editorialStatus": "Blocked",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -14207,7 +14207,7 @@
         "America Park"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-03T04:23:41.842Z",
+      "lastDataIntegrationAt": "2026-11-15T06:38:47.302Z",
       "integrationHistory": [
         {
           "eventId": "apply-760394ca-4aef-4336-b48e-50af509de7c6",
@@ -14518,9 +14518,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-receipts.json#apply-d7510d73-286a-43ae-9cdd-042111359d90",
           "auditEvidence": null,
           "summary": "Vallée des Peaux-Rouges : description de la banque enrichie en huit langues et article complété par une photographie de la banque et un témoignage sur la vie du camp. Sources, blocs précédents et confidentialité conservés; résultat partiel avant audit."
+        },
+        {
+          "eventId": "apply-f42496e8-a0ab-47e5-ab17-3936db0b4746",
+          "appliedAt": "2026-11-15T06:38:47.302Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-fort-followup-20261115.json",
+          "auditEvidence": null,
+          "summary": "Notice du fort enrichie et relue en huit langues : spectacles historiques, nuit en plein air rapportée en 1967, départ du Run & Bike municipal en 2010. Aucun alias, matériau, date d’ouverture ou coordonnées inventés ; visibilité privée préservée et logo toujours manquant."
         }
       ],
-      "nextAction": "8 éléments, 17 médias, 6 faits et article en huit langues. Banque illustrée et description développée; témoignage sur la vie du camp ajouté. Audit85/100 : logo historique et description précise du fort encore nécessaires. Fiche privée, Facebook non envoyé. Voir vallee-peaux-rouges-followup-audit-20261103.json.",
+      "nextAction": "Notice du fort enrichie et relue8langues le15novembre (spectacles, repères1967/2010),8items17médias6faitsarticle privés conservés. Logo historique et photos fort/gare toujours manquants ; contrôle inventaire et nouvel audit requis avant publication. Voir vallee-peaux-rouges-current-20261115.json.",
       "sources": [
         {
           "label": "Backlog national existant",
