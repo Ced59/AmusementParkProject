@@ -52,6 +52,7 @@ interface ParkWriteRequest {
 interface ParksHttpOptions {
   context?: HttpContext;
   transferCache?: boolean;
+  cardView?: boolean;
   closedFilter?: ClosedEntityFilter;
   audienceClassificationFilter?: ParkAudienceClassificationFilter | null;
   sort?: ParkAdminListSort;
@@ -76,12 +77,12 @@ export class ParksApiService {
 
   getParksPaginated(page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParksPaginated(page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter, options.status)}`;
-    return this.http.get<ParksApiResponse>(url, options);
+    return this.http.get<ParksApiResponse>(url, options.cardView ? { ...options, params: { cardView: true } } : options);
   }
 
   getRandomVisibleParks(limit: number = 4, options: ParksHttpOptions = {}): Observable<Park[]> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getRandomVisibleParks(limit)}`;
-    return this.http.get<Park[]>(url, options);
+    return this.http.get<Park[]>(url, options.cardView ? { ...options, params: { cardView: true } } : options);
   }
 
   getVisibleParkMapPoints(query: string | null = null, region: ParkRegionFilter | null = null, options: ParksHttpOptions = {}): Observable<ParkMapPoint[]> {
@@ -92,7 +93,7 @@ export class ParksApiService {
 
   getParkById(id: string, options: ParksHttpOptions = {}): Observable<Park> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.getParkById(id)}`;
-    return this.http.get<Park>(url, options);
+    return this.http.get<Park>(url, options.cardView ? { ...options, params: { cardView: true } } : options);
   }
 
   getParkOfficialMapFile(url: string, options: ParksHttpOptions = {}): Observable<Blob> {
@@ -174,7 +175,7 @@ export class ParksApiService {
 
   searchParks(query: string, page: number, size: number, visibleOnly: boolean = false, region: ParkRegionFilter | null = null, filters: ParkAdminListFilters | null = null, options: ParksHttpOptions = {}): Observable<ParksApiResponse> {
     const url: string = `${environment.apiBaseUrl}${PARKS_API_ENDPOINTS.searchParks(query, page, size, visibleOnly, region, filters, options.sort ?? null, options.closedFilter, options.status)}`;
-    return this.http.get<ParksApiResponse>(url, options);
+    return this.http.get<ParksApiResponse>(url, options.cardView ? { ...options, params: { cardView: true } } : options);
   }
 
   getParkDistances(sourceParkId: string, targetParkIds: string[], options: ParksHttpOptions = {}): Observable<ParkDistanceResponse> {

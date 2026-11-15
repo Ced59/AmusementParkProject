@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using AmusementPark.WebAPI.Contracts.Common;
 
 namespace AmusementPark.WebAPI.Contracts.Home;
@@ -21,6 +22,9 @@ public sealed class HomeLatestArticleDto
     public List<LocalizedTextDto> Titles { get; set; } = new();
 
     public List<LocalizedTextDto> Summaries { get; set; } = new();
+
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public List<LocalizedTextDto>? ShortSummaries { get; set; }
 
     public string? MainImageId { get; set; }
 }

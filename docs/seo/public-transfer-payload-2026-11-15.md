@@ -16,13 +16,17 @@ Cette optimisation ne constitue pas un diagnostic de la couverture d'indexation.
 
 | Appel / usage public audité | Décision |
 |---|---|
+| Catalogue des parcs et recherche serveur | Vue de cartes avec les résumés courts dans toutes les langues, mêmes pages, filtres et métadonnées de pagination. Les marqueurs de la carte restent complets. |
+| Cartes de l'accueil : sélection aléatoire, parcs mis en avant, derniers parcs et articles | Résumés limités au format réellement affiché de chaque carte : 140 ou 142 caractères, avec son ellipse d'origine. Titres, liens, images, compteurs et mentions sponsorisées sont conservés. |
+| Annuaire des constructeurs | Biographies limitées aux aperçus de 180 caractères, avec la même sélection de traduction, y compris les biographies vides ou composées d'images. |
+| Noms de constructeurs des listes de parkItems | Projection identifiant/nom sur toutes les pages du chargement ; les filtres et les libellés sont identiques. |
 | Destinations recommandées, depuis un parc ou une attraction autonome | Vue `cardView=true` : uniquement les champs des cartes et les résumés déjà formatés, dans toutes les langues d'origine. Rang, liens, coordonnées, distances, durées, statuts, logos et photos sont conservés. |
 | Disponibilité des vidéos sur une fiche de parc ou de parkItem | `includeItems=false` : mêmes filtres, autorisations et pagination ; les objets vidéo inutilisés ne sont plus sérialisés. |
 | Compteur de l'onglet des vidéos de parkItems | Même projection de pagination, puis chargement normal de la galerie quand elle est sélectionnée. |
 | Existence de l'historique d'un parkItem | Réponse booléenne utilisant exactement la même requête de chronologie publique ; aucun événement ni objet parent transmis pour le lien. |
 | Vérification de la présence d'un logo dans le repli de la fiche parc | Pagination seule ; les images du parc et des parkItems restent complètes car elles déterminent l'image sociale. |
 | Aperçu d'image de l'onglet parkItems | Conservé : le premier objet est réellement affiché, il ne s'agit pas d'un simple compteur. |
-| Descriptions principales, coordonnées, météo, calendriers et galeries consultables | Conservés : ces données alimentent l'affichage, les interactions, la prochaine ouverture ou les changements de langue. |
+| Descriptions principales, textes de parkItems recherchés localement, coordonnées, météo, calendriers et galeries consultables | Conservés : ces données alimentent l'affichage, les interactions, la prochaine ouverture ou les changements de langue. |
 
 Les réponses API historiques restent les réponses par défaut. Les lecteurs des vues
 compactes acceptent aussi les anciennes réponses pendant un déploiement progressif

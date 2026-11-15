@@ -3,6 +3,7 @@ import { LocalizedItem } from '../shared/localized-item';
 import { ParkReferenceContactDetails } from './park-reference-contact-details';
 
 export interface AttractionManufacturer {
+  biographyPreviews?: LocalizedItem<string>[];
   id?: string;
   name: string;
   legalName?: string | null;

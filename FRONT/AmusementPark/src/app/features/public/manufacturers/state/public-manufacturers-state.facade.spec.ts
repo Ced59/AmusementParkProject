@@ -57,7 +57,7 @@ describe('PublicManufacturersStateFacade', () => {
 
     expect(
       manufacturersPort.getAttractionManufacturersPage,
-    ).toHaveBeenCalledWith(1, 24, '');
+    ).toHaveBeenCalledWith(1, 24, '', false, true);
     expect(facade.loading()).toBe(false);
     expect(facade.totalCount()).toBe(3);
     expect(
@@ -89,7 +89,7 @@ describe('PublicManufacturersStateFacade', () => {
 
     expect(
       manufacturersPort.getAttractionManufacturersPage,
-    ).toHaveBeenCalledWith(2, 12, 'ride');
+    ).toHaveBeenCalledWith(2, 12, 'ride', false, true);
     expect(facade.searchTerm()).toBe('ride');
     expect(facade.currentPage()).toBe(2);
     expect(facade.pageSize()).toBe(12);

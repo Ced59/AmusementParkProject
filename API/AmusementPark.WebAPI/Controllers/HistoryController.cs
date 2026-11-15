@@ -130,7 +130,7 @@ public sealed class HistoryController : ControllerBase
     [AllowAnonymous]
     [OutputCache(PolicyName = ApiOutputCachePolicyNames.PublicDataMedium)]
     [ProducesResponseType(typeof(IReadOnlyCollection<HomeLatestArticleDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetLatestArticlesAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> GetLatestArticlesAsync([FromQuery] int limit = 3, CancellationToken cancellationToken = default, [FromQuery] bool cardView = false)
     {
         ApplicationResult<IReadOnlyCollection<HistoryArticleResult>> result = await this.getLatestArticlesHandler.HandleAsync(
             new GetLatestHistoryArticlesQuery(limit),
@@ -141,7 +141,7 @@ public sealed class HistoryController : ControllerBase
             return this.ToActionResult(result);
         }
 
-        List<HomeLatestArticleDto> response = result.Value.Select(static article => article.ToHomeLatestHttp()).ToList();
+        List<HomeLatestArticleDto> response = result.Value.Select(article => cardView ? article.ToHomeLatestHttp().ToCardHttp() : article.ToHomeLatestHttp()).ToList();
         return this.Ok(response);
     }
 

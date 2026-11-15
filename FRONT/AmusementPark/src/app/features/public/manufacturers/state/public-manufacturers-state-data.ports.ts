@@ -6,7 +6,7 @@ import { ManufacturersApiService } from '@data-access/manufacturers/manufacturer
 import { PagedResult } from '@shared/models/contracts';
 
 export interface PublicManufacturersPort {
-  getAttractionManufacturersPage(page?: number, size?: number, search?: string | null): Observable<PagedResult<AttractionManufacturer>>;
+  getAttractionManufacturersPage(page?: number, size?: number, search?: string | null, includeHidden?: boolean, cardView?: boolean): Observable<PagedResult<AttractionManufacturer>>;
   getAllAttractionManufacturers(): Observable<AttractionManufacturer[]>;
 }
 

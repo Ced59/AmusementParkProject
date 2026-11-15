@@ -35,7 +35,9 @@ export function mapHomeFeaturedParkToCardModel(
     countryName,
     locationLine,
     logoImageId: normalizeOptionalString(park.currentLogoImageId),
-    description: truncator.truncate(plainDescription, { maxLength: FEATURED_DESCRIPTION_MAX_LENGTH }),
+    description: park.shortDescriptions !== undefined
+      ? resolveLocalizedValue(park.shortDescriptions, currentLanguage) ?? null
+      : truncator.truncate(plainDescription, { maxLength: FEATURED_DESCRIPTION_MAX_LENGTH }),
     metrics: buildMetrics(park.countsByCategory),
     isManualFeatured: Boolean(park.isManualFeatured),
     isSponsoredFeatured: Boolean(park.isSponsoredFeatured),

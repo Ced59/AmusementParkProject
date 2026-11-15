@@ -15,7 +15,9 @@ export function mapParkToCardModel(
   countryDisplayService: CountryDisplayService | null = null,
   textTruncator: NaturalTextTruncatorService | null = null
 ): ParkCardModel {
-  const shortDescription: string | null = buildShortDescription(
+  const shortDescription: string | null = park.shortDescriptions !== undefined
+    ? resolveLocalizedValue(park.shortDescriptions, currentLanguage) ?? null
+    : buildShortDescription(
     resolveLocalizedValue(park.descriptions, currentLanguage) ?? null,
     textTruncator
   );

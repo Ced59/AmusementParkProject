@@ -26,15 +26,18 @@ export class ManufacturersApiService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getAttractionManufacturers(includeHidden: boolean = false): Observable<AttractionManufacturer[]> {
-    return this.getAllAttractionManufacturers(includeHidden);
+  getAttractionManufacturers(includeHidden: boolean = false, nameOnly: boolean = false): Observable<AttractionManufacturer[]> {
+    return this.getAllAttractionManufacturers(includeHidden, nameOnly);
   }
 
-  getAttractionManufacturersPage(page: number = 1, size: number = 100, search: string | null = null, includeHidden: boolean = false): Observable<PagedResult<AttractionManufacturer>> {
+  getAttractionManufacturersPage(page: number = 1, size: number = 100, search: string | null = null, includeHidden: boolean = false, cardView: boolean = false, nameOnly: boolean = false): Observable<PagedResult<AttractionManufacturer>> {
     const url: string = `${environment.apiBaseUrl}${MANUFACTURERS_API_ENDPOINTS.getAttractionManufacturers}`;
     let params: HttpParams = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString());
+
+    if (cardView) { params = params.set('cardView', 'true'); }
+    if (nameOnly) { params = params.set('nameOnly', 'true'); }
 
     if (includeHidden) {
       params = params.set('includeHidden', 'true');
@@ -49,15 +52,15 @@ export class ManufacturersApiService {
     );
   }
 
-  getAllAttractionManufacturers(includeHidden: boolean = false): Observable<AttractionManufacturer[]> {
-    return this.getAttractionManufacturersPage(1, 100, null, includeHidden).pipe(
+  getAllAttractionManufacturers(includeHidden: boolean = false, nameOnly: boolean = false): Observable<AttractionManufacturer[]> {
+    return this.getAttractionManufacturersPage(1, 100, null, includeHidden, false, nameOnly).pipe(
       expand((result: PagedResult<AttractionManufacturer>) => {
         const nextPage: number = result.pagination.currentPage + 1;
         if (nextPage > result.pagination.totalPages) {
           return EMPTY;
         }
 
-        return this.getAttractionManufacturersPage(nextPage, result.pagination.itemsPerPage || 100, null, includeHidden);
+        return this.getAttractionManufacturersPage(nextPage, result.pagination.itemsPerPage || 100, null, includeHidden, false, nameOnly);
       }),
       reduce((items: AttractionManufacturer[], result: PagedResult<AttractionManufacturer>) => [...items, ...unwrapCollection<AttractionManufacturer>({ data: result.items })], [] as AttractionManufacturer[])
     );
