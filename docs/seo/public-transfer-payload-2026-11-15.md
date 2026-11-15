@@ -24,7 +24,9 @@ Cette optimisation ne constitue pas un diagnostic de la couverture d'indexation.
 | Aperçu d'image de l'onglet parkItems | Conservé : le premier objet est réellement affiché, il ne s'agit pas d'un simple compteur. |
 | Descriptions principales, coordonnées, météo, calendriers et galeries consultables | Conservés : ces données alimentent l'affichage, les interactions, la prochaine ouverture ou les changements de langue. |
 
-Les réponses API historiques restent les réponses par défaut. Les options de projection
+Les réponses API historiques restent les réponses par défaut. Les lecteurs des vues
+compactes acceptent aussi les anciennes réponses pendant un déploiement progressif
+ou un retour arrière, sans deuxième requête. Les options de projection
 font partie de la clé des caches HTTP et Angular ; le cache serveur varie déjà sur tous
 les paramètres de requête. Aucun transfert Angular n'est désactivé, aucun appel réseau
 supplémentaire n'est nécessaire à l'hydratation, au changement de langue ou d'unités.

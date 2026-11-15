@@ -6,6 +6,16 @@ import { SKIP_AUTHORIZATION_HEADER } from '@core/http/auth/auth-request-policy';
 import { NearbyDestinationsApiService } from './nearby-destinations-api.service';
 
 describe('NearbyDestinationsApiService compact transport', () => {
+  it('also accepts legacy responses during deployment without a retry or refetch', () => {
+    TestBed.configureTestingModule({ providers: [provideHttpClient(), provideHttpClientTesting()] });
+    const http = TestBed.inject(HttpTestingController);
+    const legacy = [{ kind: 'Park', park: { id: 'park', name: 'Parc', latitude: 48, longitude: 2 }, standaloneAttraction: null, distanceKilometers: 1.6 }];
+    TestBed.inject(NearbyDestinationsApiService).getNearby('Park', 'source', 4, anonymousHttpOptions())
+      .subscribe(items => expect(items).toEqual(legacy));
+    http.expectOne(request => request.url.endsWith('/nearby-destinations/Park/source')).flush(legacy);
+    http.verify();
+  });
+
   it('requests only card data and restores both kinds without losing localized values or images', () => {
     TestBed.configureTestingModule({ providers: [provideHttpClient(), provideHttpClientTesting()] });
     const http = TestBed.inject(HttpTestingController);

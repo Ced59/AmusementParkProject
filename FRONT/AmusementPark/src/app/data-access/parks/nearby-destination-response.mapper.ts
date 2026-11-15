@@ -1,7 +1,11 @@
 import { NearbyDestination } from '@app/models/parks/nearby-destination';
 import { NearbyDestinationCardResponse } from '@app/models/parks/nearby-destination-card-response';
 
-export function mapNearbyDestinationResponse(response: NearbyDestinationCardResponse): NearbyDestination {
+export function mapNearbyDestinationResponse(response: NearbyDestinationCardResponse | NearbyDestination): NearbyDestination {
+  // Older APIs ignore cardView during rolling deployments and return the legacy shape.
+  if ('park' in response) {
+    return response;
+  }
   const common = {
     id: response.id, name: response.name ?? '', countryCode: response.countryCode ?? undefined,
     city: response.city ?? undefined, street: response.street ?? undefined,

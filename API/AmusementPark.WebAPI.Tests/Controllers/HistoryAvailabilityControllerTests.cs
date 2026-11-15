@@ -38,7 +38,7 @@ public sealed class HistoryAvailabilityControllerTests
         {
             ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() },
         };
-        OkObjectResult result = Assert.IsType<OkObjectResult>(await controller.HasParkItemHistoryAsync("item"));
+        OkObjectResult result = Assert.IsType<OkObjectResult>(await controller.GetParkItemTimelineAsync("item", availabilityOnly: true));
         Assert.Equal(hasEvents, Assert.IsType<bool>(result.Value));
         timeline.VerifyAll();
     }

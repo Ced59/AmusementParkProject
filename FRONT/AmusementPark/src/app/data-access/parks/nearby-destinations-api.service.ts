@@ -13,7 +13,7 @@ export class NearbyDestinationsApiService {
 
   getNearby(sourceKind: NearbyDestinationKind, sourceId: string, limit: number, options: AnonymousHttpOptions): Observable<NearbyDestination[]> {
     const url = `${environment.apiBaseUrl}nearby-destinations/${sourceKind}/${encodeURIComponent(sourceId)}`;
-    return this.http.get<NearbyDestinationCardResponse[]>(url, {
+    return this.http.get<(NearbyDestinationCardResponse | NearbyDestination)[]>(url, {
       ...options, params: new HttpParams().set('limit', limit).set('cardView', 'true')
     }).pipe(map(responses => responses.map(mapNearbyDestinationResponse)));
   }
