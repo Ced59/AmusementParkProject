@@ -1,0 +1,128 @@
+{
+  "work": "Qualified J-SKY at AEON Mall Jakarta Garden City as a standalone Ferris wheel; created a page with eight localized descriptions, official operating hours and two exact reusable photographs; published the site and Facebook post; retained the original Indonesian backlog line.",
+  "qualification": "AEON Mall lists J-SKY as its own attraction on its third floor and provides its operating and last-ticket times. Jakarta Tourism confirms the rooftop wheel, enclosed air-conditioned cabins and location. Official Park and StandaloneAttraction searches for J-Sky and Jakarta Garden City in ID found no matches before creation. The mall is a shopping centre, not a structured amusement park.",
+  "sources": {
+    "mallAttraction": "https://aeonmall-jgc.com/en/shopping_detail.php?id=85",
+    "mallHours": "https://aeonmall-jgc.com/en/mallguide_03.php",
+    "jakartaTourism": "https://enjoy.jakarta.go.id/article/j-sky-ferris-wheel",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_in_View.jpg",
+      "https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_AEON_MALL_JGC_at_night.jpg"
+    ]
+  },
+  "officialFacts": {
+    "location": "AEON Mall Jakarta Garden City, third floor rooftop, Jl. Jakarta Garden City Boulevard No. 1, East Jakarta 13910",
+    "enclosedAirConditionedCabins": true,
+    "gondolas": 32,
+    "maximumPeoplePerCabin": 6,
+    "dailyHours": "10:00–22:00 Asia/Jakarta",
+    "lastTicketOrder": "21:00 WIB"
+  },
+  "sourceLimitations": [
+    "AEON Mall official guide says the wheel operates 10:00–22:00 with last ticket order at 21:00; Jakarta Tourism lists 10:00–21:00, likely the last-ticket interval. The mall schedule was used and the distinction explained.",
+    "No current operator-confirmed price was found. Third-party prices differ and a reseller currently marks tickets sold out; no numeric tariff was entered.",
+    "The photographs show the exact wheel in March 2026 and November 2021, respectively."
+  ],
+  "duplicateSearches": {
+    "parkQueries": [
+      "J-Sky",
+      "Jakarta Garden City"
+    ],
+    "standaloneQueries": [
+      "J-Sky",
+      "Jakarta Garden City"
+    ],
+    "matchesBeforeCreation": 0
+  },
+  "entity": {
+    "id": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+    "name": "J-SKY Ferris Wheel",
+    "countryCode": "ID",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "a6e7cc93-a273-4254-bb74-02f90d76e456",
+      "appliedAtUtc": "2026-11-15T00:44:00.7731578Z",
+      "summary": "Identity, address and eight descriptions"
+    },
+    {
+      "operationId": "14fec7e4-7aa3-4d5b-83e9-9530898658ef",
+      "appliedAtUtc": "2026-11-15T00:44:31.1360595Z",
+      "summary": "Official daily schedule and ticket cutoff"
+    },
+    {
+      "operationId": "2f3e7230-21fe-4060-9d4e-a626d3f27017",
+      "appliedAtUtc": "2026-11-15T00:46:46.9841665Z",
+      "summary": "Refined visitor text to avoid technical metric blocker"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "ddf3dd301d70463baec03855e06a4753",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/J-Sky_Ferris_Wheel_in_View.jpg",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_in_View.jpg",
+      "author": "Esther Rossini",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "14 March 2026",
+      "modification": "Resized for web and metadata stripped, without cropping",
+      "width": 1350,
+      "height": 1800,
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T00:45:20.228Z",
+      "metadataAppliedAtUtc": "2026-11-15T00:45:24.089Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "9640d40d067f4ec08c75f6ed26212f5f",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/J-Sky_Ferris_Wheel_AEON_MALL_JGC_at_night.jpg",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_AEON_MALL_JGC_at_night.jpg",
+      "author": "Fabi Fuu 76",
+      "license": "CC BY 4.0",
+      "photographedAt": "26 November 2021",
+      "modification": "Resized for web and metadata stripped, without cropping",
+      "width": 1346,
+      "height": 1800,
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T00:45:41.535Z",
+      "metadataAppliedAtUtc": "2026-11-15T00:45:44.954Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 74,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 2,
+    "fareOfferCount": 0,
+    "weeklyHourRuleCount": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/a05fb104-8e4d-4844-b12d-3bd2b176cad2/j-sky-ferris-wheel",
+    "sitePublishedAtUtc": "2026-11-15T00:47:23.7610525Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:4620f98f-5123-4fdf-933d-86f82b633b30",
+    "facebookStatus": "Published",
+    "facebookId": "56c1c2e7bbaa4fdc9cef824c3f3d84d6",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127392337424431",
+    "facebookPublishedAtUtc": "2026-11-15T00:48:27.3945818Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T00:46:46.9841665Z",
+  "remainingGaps": [
+    "Obtain the current ticket price directly from J-SKY or AEON Mall.",
+    "Reconfirm same-day operation before a visit."
+  ]
+}
