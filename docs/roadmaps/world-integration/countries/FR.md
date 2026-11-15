@@ -15,10 +15,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 20 |
-| À qualifier | 211 |
+| À qualifier | 210 |
 | En cours | 11 |
 | Bloqué | 14 |
-| Intégration achevée | 13 |
+| Intégration achevée | 14 |
 | Publié, date inconnue | 127 |
 | Hors périmètre enregistré | 99 |
 | Doublon conservé | 2 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **111 publiés**, **33 masqués à intégrer**, **101 masqués NotRelevant à réexaminer**, **175 candidats sans fiche**.
 
-Standalone : **40 publiées**, **0 masquées**, **11 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **41 publiées**, **0 masquées**, **10 candidates sans fiche**. Autres dossiers : **1 types à décider**, **23 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **0 pistes dans des fiches Park masquées**, **6 dans des fiches Park publiées**, **21 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **8 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 

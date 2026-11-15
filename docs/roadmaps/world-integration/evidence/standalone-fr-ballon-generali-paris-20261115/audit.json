@@ -1,0 +1,115 @@
+{
+  "work": "Ballon Generali de Paris intégré comme ballon captif autonome : huit descriptions, trois photographies exactes 2025 CC BY-SA 4.0, huit tarifs, horaires, conditions d’embarquement, huit pages publiques et annonce Facebook.",
+  "qualification": "Billetterie propre au ballon au parc André Citroën, exploitation confirmée par le site officiel en 2026. Recherches officielles Park et StandaloneAttraction des noms Ballon de Paris, Ballon Generali et Aeroparis sans correspondance avant création. Les références Eutelsat/City of Paris/Aeroparis sont conservées comme anciennes identités dans la même ligne de backlog.",
+  "sources": {
+    "Exploitant — identité et statut des vols": "https://ballondeparis.com/",
+    "Exploitant — vols, altitude, historique et enveloppe 2025": "https://ballondeparis.com/vol-en-ballon/",
+    "Exploitant — tarifs, horaires et accessibilité": "https://ballondeparis.com/infos-pratiques/",
+    "OpenStreetMap — emplacement du ballon": "https://www.openstreetmap.org/way/1335077539",
+    "Wikimedia Commons — trois photographies exactes 2025": [
+      "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_1.jpg",
+      "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_2.jpg",
+      "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_4.jpg"
+    ],
+    "Licence CC BY-SA 4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "Fiche publique Ballon Generali de Paris": "https://amusement-parks.fun/fr/attraction/c8823aa8-65ab-4cd0-aada-2e814d0790e9/ballon-generali-de-paris"
+  },
+  "entity": {
+    "id": "c8823aa8-65ab-4cd0-aada-2e814d0790e9",
+    "name": "Ballon Generali de Paris",
+    "countryCode": "FR",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "6bf5730ba76a434898b56bbe126eed48",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_1.jpg",
+      "author": "Chabe01",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-10-14",
+      "createdAtUtc": "2026-11-15T22:34:05.997Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "02a020e2bdcd46968450edac3737f079",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_2.jpg",
+      "author": "Chabe01",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-10-14",
+      "createdAtUtc": "2026-11-15T22:34:22.264Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "ce4df6a9c5ab46e79b7890f93c7748ab",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ballon_Paris_Parc_André_Citroën_-_Paris_XV_(FR75)_-_2025-10-14_-_4.jpg",
+      "author": "Chabe01",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2025-10-14",
+      "createdAtUtc": "2026-11-15T22:34:38.584Z",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "ObservationRide",
+    "subtype": "Tethered helium balloon",
+    "manufacturer": "Aerophile",
+    "openedYear": "1999",
+    "envelopeRenewedYear": "2025",
+    "standardAltitudeMeters": 150,
+    "maximumRidersPerFlight": 30,
+    "priceOffers": 8,
+    "currency": "EUR",
+    "underThreeFree": true,
+    "weeklyOpeningHourRules": 1,
+    "scheduledHours": "09:00–17:00 daily, weather permitting",
+    "structuredAccessConditions": 2,
+    "address": "Parc André Citroën, 75015 Paris",
+    "coordinates": [
+      48.8413678,
+      2.2740027
+    ]
+  },
+  "audit": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinaryHttpStatuses": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/c8823aa8-65ab-4cd0-aada-2e814d0790e9/ballon-generali-de-paris",
+    "sitePublishedAtUtc": "2026-11-15T22:38:58.1226492Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:cdeb98e6-bdc1-49cb-a9fd-24750ca1f681",
+    "facebookStatus": "Published",
+    "facebookId": "52a22431d5a14b8ba4fc3113d134eb8b",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127517725424431",
+    "facebookPublishedAtUtc": "2026-11-15T22:39:44.0601733Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T22:38:25.037Z",
+  "remainingGaps": [
+    "Le statut des vols change selon la météo ; consulter le site officiel le jour du déplacement.",
+    "Recontrôler les tarifs et les horaires lorsque l’exploitant les modifie."
+  ]
+}
