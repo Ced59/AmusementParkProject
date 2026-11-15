@@ -1,0 +1,145 @@
+{
+  "work": "Qualified and created the Garmisch-Partenkirchen summer toboggan run as one standalone attraction; published eight localized pages, exact credited photo and Facebook announcement; reconciled two Wiegand reference IDs into a retained duplicate backlog record.",
+  "qualification": "The official operator and local tourism directory identify the same single standalone summer toboggan site beside the Olympic ski jumping stadium. Wiegand references location-id-1279 (1996 installation) and location-id-1280 (2013 work/spiral) at this location; they do not justify two separate attraction fiches. Official editor Park and StandaloneAttraction searches for Sommerrodelbahn Garmisch, Skistadion and Garmisch in Germany found no preexisting match.",
+  "sources": {
+    "operator": "https://www.sommerrodelbahn-gap.de/",
+    "tourism": "https://www.zugspitz-region.de/poi/sommerrodelbahn-in-garmisch-partenkirchen",
+    "osm": "https://www.openstreetmap.org/way/582453792",
+    "wiegandReferences": [
+      "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1279",
+      "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1280"
+    ],
+    "commonsPhoto": "https://commons.wikimedia.org/wiki/File:Olympia_Skistadion_Talstation_Eckbauerbahn_(Garmisch-Partenkirchen).jpg"
+  },
+  "officialFacts": {
+    "address": "Karl-und-Martin-Neuner-Platz 3, 82467 Garmisch-Partenkirchen, Germany",
+    "coordinates": {
+      "latitude": 47.4816857,
+      "longitude": 11.1211967
+    },
+    "statusOn2026-11-15": "TemporarilyClosed; operator states Geschlossen and Geöffnet: Ostern 2027",
+    "seasonalReopeningAnnounced": "Easter 2027",
+    "rainRule": "Operations stop immediately when track is wet or raining",
+    "minimumAgeYears": 3,
+    "underAgeYearsRideWithAdult": 8,
+    "maximumCombinedWeightTwoRidersKg": 130
+  },
+  "sourceLimitations": [
+    "Official homepage marks the attraction closed with reopening at Easter 2027. No operating weekly hours or current public tariff was encoded while closed; reconfirm opening and fares on reopening.",
+    "The official website displays prices during seasonal closure. The editor rejects active pricing for a TemporarilyClosed standalone attraction, so the display prices are preserved only as research evidence here, not offered as current visitor prices.",
+    "Operator names the square Karl-Martin-Neuner-Platz while regional tourism and OSM use Karl-und-Martin-Neuner-Platz; the latter geocoded form was used for the public address."
+  ],
+  "operatorDisplayedTariffsToRecheckOnReopening": {
+    "currency": "EUR",
+    "source": "https://www.sommerrodelbahn-gap.de/",
+    "observedAt": "2026-11-15",
+    "childAges3To14": {
+      "single": 3.5,
+      "sixRides": 17,
+      "sixWithGuestCard": 16
+    },
+    "adultAges15Plus": {
+      "single": 4,
+      "sixRides": 20,
+      "sixWithGuestCard": 19
+    },
+    "adultWithChildUnder8SharedSled": 6,
+    "group20Plus": {
+      "childSingle": 2.5,
+      "adultSingle": 3
+    }
+  },
+  "duplicateSearches": {
+    "parkQueries": [
+      "Sommerrodelbahn Garmisch",
+      "Skistadion",
+      "Garmisch"
+    ],
+    "standaloneQueries": [
+      "Sommerrodelbahn Garmisch",
+      "Skistadion",
+      "Garmisch"
+    ],
+    "matchesBeforeCreation": 0
+  },
+  "entity": {
+    "id": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+    "name": "Sommerrodelbahn Garmisch-Partenkirchen",
+    "countryCode": "DE",
+    "kind": "StandaloneAttraction",
+    "published": true,
+    "operatingStatus": "TemporarilyClosed"
+  },
+  "dataReceipts": [
+    {
+      "operationId": "49e15fad-68d6-4c51-a515-d40677e87d89",
+      "appliedAtUtc": "2026-11-15T01:01:18.5270955Z",
+      "summary": "Identity, OSM location, closed status and eight localized descriptions"
+    },
+    {
+      "operationId": "f9e5faa5-e97f-4e46-935d-261d45199784",
+      "appliedAtUtc": "2026-11-15T01:03:26.2795946Z",
+      "summary": "Three official access rules and seasonal closure information"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "a17dbc7a7982458aaaa4beef0faae95d",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Olympia_Skistadion_Talstation_Eckbauerbahn_(Garmisch-Partenkirchen).jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Olympia_Skistadion_Talstation_Eckbauerbahn_%28Garmisch-Partenkirchen%29.jpg",
+      "author": "Wikitarisch",
+      "license": "CC BY 4.0",
+      "photographedAt": "2025-03-21",
+      "subject": "Exact Garmisch-Partenkirchen toboggan track beside Olympia Skistadion",
+      "modification": "Cropped to focus on the toboggan run, resized to 1600×950 and metadata stripped",
+      "width": 1600,
+      "height": 950,
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T01:03:57.624Z",
+      "metadataAppliedAtUtc": "2026-11-15T01:04:01.485Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 81,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 1,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/446f04b2-7bf3-4b30-beeb-ab822935f64f/sommerrodelbahn-garmisch-partenkirchen",
+    "sitePublishedAtUtc": "2026-11-15T01:04:41.6424533Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:a5aa77ff-933b-4a9b-a5b3-e5c91376a019",
+    "facebookStatus": "Published",
+    "facebookId": "462ee09e365940eb9c559e27b0123329",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127393669424431",
+    "facebookPublishedAtUtc": "2026-11-15T01:06:59.8553559Z"
+  },
+  "backlog": {
+    "integratedEntryId": "DE-candidate-4ce70cf4ce1e8b",
+    "retainedDuplicateEntryId": "DE-candidate-standalone-c5c42c258f4823",
+    "wiegandReferenceIds": [
+      "location-id-1279",
+      "location-id-1280"
+    ]
+  },
+  "lastDataIntegrationAt": "2026-11-15T01:04:01.485Z",
+  "remainingGaps": [
+    "Recheck the operator’s reopening announcement and live state near Easter 2027.",
+    "After reopening, verify official fares and weekly opening hours before adding active pricing and schedule."
+  ]
+}

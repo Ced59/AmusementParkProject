@@ -1,0 +1,113 @@
+{
+  "entryId": "DE-candidate-standalone-schliersberg-20261115",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+  "name": "Sommerrodelbahn Schliersbergalm",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T03:23:25.959Z",
+  "operatorSources": [
+    "https://schliersbergalm.com/erleben/",
+    "https://schliersbergalm.com/kontakt/"
+  ],
+  "distinctFrom": {
+    "hiddenParkId": "87939460-1a47-4355-854c-1e039a400ab6",
+    "historicParkItemId": "6696fdaf-7342-4b5a-bcf8-d6eb141cbe8d",
+    "historicItemName": "Alpenroller"
+  },
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e/sommerrodelbahn-schliersbergalm",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "07078f87e6924771924fdd7f0ca5f43f",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_01.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Sommerrodelbahn_am_Schliersberg_01.jpg",
+      "creator": "Kritzolina",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "capturedAt": "2017-08-26",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T03:18:04.516Z"
+    },
+    {
+      "imageId": "6db89367f811498da900e25ec0855ecd",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_02.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Sommerrodelbahn_am_Schliersberg_02.jpg",
+      "creator": "Kritzolina",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "capturedAt": "2017-08-26",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T03:18:26.533Z"
+    },
+    {
+      "imageId": "83622d43f4204ed6a035f9c9b4329453",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_04.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Sommerrodelbahn_am_Schliersberg_04.jpg",
+      "creator": "Kritzolina",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "capturedAt": "2017-08-26",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T03:18:52.467Z"
+    }
+  ],
+  "priceOffers": [
+    {
+      "audience": "adult",
+      "amountEur": 7
+    },
+    {
+      "audience": "8–14",
+      "amountEur": 5
+    },
+    {
+      "audience": "3–7",
+      "amountEur": 3
+    }
+  ],
+  "openingHoursAssessment": "Operator says luge runs in dry weather; no ride-specific weekly timetable published. Cable-car hours not reused as luge hours.",
+  "completeness": {
+    "score": 71,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127402075424431",
+    "publishedAtUtc": "2026-11-15T03:21:49.6463889Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T03:20:07.537Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "operationId": "66f9c85b-d62f-4331-b56f-36574722fb61",
+      "appliedAtUtc": "2026-11-15T03:15:09.7453495Z"
+    },
+    {
+      "kind": "Apply",
+      "operationId": "c8cf7758-c7a5-406b-a06c-71edeb02cff8",
+      "appliedAtUtc": "2026-11-15T03:17:00.5206204Z"
+    },
+    {
+      "kind": "Apply",
+      "operationId": "4c1f0bf2-702e-45f1-86cc-57f3b47f5037",
+      "appliedAtUtc": "2026-11-15T03:20:55.8426408Z"
+    }
+  ]
+}

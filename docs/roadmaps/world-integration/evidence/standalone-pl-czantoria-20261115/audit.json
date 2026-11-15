@@ -1,0 +1,159 @@
+{
+  "work": "Separated the conflated Ustroń Wiegand backlog observation into the Czantoria summer toboggan run and the separate Równica alpine coaster; created and published Czantoria as a standalone attraction with three exact credited images and a Facebook announcement.",
+  "qualification": "The operator places a separately ticketed summer toboggan course at the upper Czantoria chairlift station on Polana Stokłosica. The other Wiegand reference is the coaster inside Górski Park Równica, a genuine park with an existing hidden Park fiche. Park and Standalone searches in the editor for Czantoria, Ustroń and Stokłosica returned no matching Czantoria fiche. The original backlog row combined both Wiegand references; this audit splits them without deleting the original row.",
+  "sources": {
+    "operatorRide": "https://www.czantoria.net/top-7-atrakcji/",
+    "operatorHome": "https://www.czantoria.net/",
+    "regionalTourism": "https://www.beskidy.travel/entertainment/19588/letni-tor-saneczkowy",
+    "coordinateDirectory": "https://pl.wander-book.com/letni-tor-saneczkowy-na-gorze-czantoria-m9245.htm",
+    "wiegandSummerTobogganReference": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1364",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_01.JPG",
+      "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_02.JPG",
+      "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_03.JPG"
+    ],
+    "cityTicketEvidence": "https://kartamieszkanca.ustron.pl/pl/partnerzy/kolej-linowa-%E2%80%9Eczantoria%E2%80%9D-sp.-z-o.o.-8442",
+    "rownicaParkOperator": "https://www.rownica.pl/?p=106"
+  },
+  "facts": {
+    "country": "PL",
+    "place": "Polana Stokłosica, upper Czantoria chairlift, Ustroń",
+    "coordinates": {
+      "latitude": 49.68334722,
+      "longitude": 18.82004167
+    },
+    "trackLengthMeters": 710,
+    "vehicle": "braked sled in steel trough, hauled back up by a lift",
+    "twoRidersPossible": true,
+    "underEightAdultRecommendation": true
+  },
+  "limitations": [
+    "The operator lists the ride but does not publish a verified current ride-specific weekly timetable or fare on the accessed page. Neither was invented; the chairlift timetable is not treated as the ride timetable.",
+    "The three Wikimedia Commons photographs are from August 2006. Their captions identify the date and must not be presented as a current condition report.",
+    "The operator website appears to list the attraction as active; day-of-visit operation and weather may change.",
+    "Równica alpine coaster is an internal attraction of the existing hidden Górski Park Równica fiche and remains to be integrated with that park."
+  ],
+  "editorSearch": {
+    "parkQueries": [
+      "Czantoria",
+      "Ustroń",
+      "Stokłosica"
+    ],
+    "standaloneQueries": [
+      "Czantoria",
+      "Ustroń",
+      "Stokłosica"
+    ],
+    "matchesBeforeCreation": 0
+  },
+  "entity": {
+    "id": "7b675189-9a52-4850-a970-d111c6b96443",
+    "name": "Letni tor saneczkowy na Czantorii",
+    "kind": "StandaloneAttraction",
+    "operatingStatus": "Operating",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "f4b38af1-8a4a-4ffd-99a4-3d581d9af51b",
+      "appliedAtUtc": "2026-11-15T01:25:11.9200892Z",
+      "summary": "Created identity, coordinates and eight descriptions"
+    },
+    {
+      "operationId": "7727a249-0412-45d4-9972-336d57018810",
+      "appliedAtUtc": "2026-11-15T01:26:00.5963701Z",
+      "summary": "Added two official access rules and honest timetable note"
+    },
+    {
+      "operationId": "4b865f63-87e9-4171-b5a0-9096eb391f3b",
+      "appliedAtUtc": "2026-11-15T01:31:34.8511188Z",
+      "summary": "Reworded the length in public descriptions to satisfy the public text rule"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "8b746bb90f914a8d8df2cd360e591369",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_01.JPG",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/69/Czantoria_-_letni_tor_saneczkowy_01.JPG",
+      "author": "Piotrus",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2006-08",
+      "subject": "Adult and child riding the exact Czantoria track",
+      "modification": "Resized to 1600×1200, JPEG optimized for web display",
+      "width": 1600,
+      "height": 1200,
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T01:26:53.706Z",
+      "metadataAppliedAtUtc": "2026-11-15T01:36:16.631Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "f78d6e28b1b84e9889747888c48c64af",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_02.JPG",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Czantoria_-_letni_tor_saneczkowy_02.JPG",
+      "author": "Piotrus",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2006-08",
+      "subject": "A sled on the Czantoria uphill haul track",
+      "modification": "Resized to 1600×1200, JPEG optimized for web display",
+      "width": 1600,
+      "height": 1200,
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T01:27:22.783Z",
+      "metadataAppliedAtUtc": "2026-11-15T01:37:42.39Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "e9f1ff5ae27549409ef4bf3accf61ca7",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_03.JPG",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Czantoria_-_letni_tor_saneczkowy_03.JPG",
+      "author": "Piotrus",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2006-08",
+      "subject": "Steel trough and lift of the Czantoria track",
+      "modification": "Resized to 1600×1200, JPEG optimized for web display",
+      "width": 1600,
+      "height": 1200,
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T01:27:56.07Z",
+      "metadataAppliedAtUtc": "2026-11-15T01:37:54.599Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 67,
+    "dataQualityLevel": "Partial",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/7b675189-9a52-4850-a970-d111c6b96443/letni-tor-saneczkowy-na-czantorii",
+    "sitePublishedAtUtc": "2026-11-15T01:34:04.6006871Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:67a970fc-6cf4-4168-afac-161e8fb63941",
+    "facebookStatus": "Published",
+    "facebookId": "edb695e66d9c467c98b0416dd5ad9357",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127395325424431",
+    "facebookPublishedAtUtc": "2026-11-15T01:35:31.8406945Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T01:37:54.599Z",
+  "remainingGaps": [
+    "Verify current ride-specific official ticket price and hours when operator publishes them.",
+    "Integrate Równica as an attraction of its existing hidden park fiche, with current operator facts and exact reusable photos."
+  ]
+}

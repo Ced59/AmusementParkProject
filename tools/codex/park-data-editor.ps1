@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'SearchStandaloneAttractions', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'RetryFacebookPublication', 'RevokeCurrent')]
+    [ValidateSet('SaveAccountCredential', 'ClearAccountCredential', 'RegisterAccount', 'CreateToken', 'SaveToken', 'ClearToken', 'Status', 'SearchParks', 'SearchStandaloneAttractions', 'ExportPark', 'ExportStandaloneAttraction', 'Preview', 'Apply', 'PreviewDeletion', 'ApplyDeletion', 'Completeness', 'HistoryDiagnostics', 'ImportPhoto', 'ImportOfficialMap', 'UpdatePhotoMetadata', 'ResolveFacebookPublication', 'PublishFacebook', 'DeleteOwnFacebookPublication', 'RetryFacebookPublication', 'RevokeCurrent')]
     [string]$Action,
 
     [string]$ApiBaseUrl = 'https://amusement-parks.fun/api/',
@@ -1640,6 +1640,17 @@ switch ($Action) {
                 message = $publicationMessage
                 previewImageId = $previewImageId
             }
+    }
+    'DeleteOwnFacebookPublication' {
+        if ([string]::IsNullOrWhiteSpace($PublicationId)) {
+            throw 'PublicationId is required for DeleteOwnFacebookPublication.'
+        }
+
+        Wait-ParkDataEditorAvailability | Out-Null
+        Invoke-ParkDataEditorJsonApi `
+            -Method DELETE `
+            -RelativePath "park-data-editor/social-publications/facebook/$([Uri]::EscapeDataString($PublicationId.Trim()))" `
+            -Body $null
     }
     'RetryFacebookPublication' {
         if ([string]::IsNullOrWhiteSpace($ParkId) -or [string]::IsNullOrWhiteSpace($PublicationId)) {

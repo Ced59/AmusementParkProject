@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-10-04",
+  "reviewedAt": "2026-11-15",
   "scope": "Tous les champs déclarés par les documents C# listés héritent de la politique de leur surface, y compris les identifiants fonctionnels, versions et horodatages techniques. Les champs Id, CreatedAt et UpdatedAt hérités de MongoDocumentBase sont des données de liaison internes soumises à la même rétention et à la même suppression que leur document.",
   "globalDefaults": {
     "privacy": "Privé tant qu'une action explicite et réversible ne publie pas une projection dédiée.",
@@ -186,10 +186,10 @@
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/LiveOperationalControlDocument.cs",
         "API/AmusementPark.Infrastructure/Persistence/Mongo/Documents/LiveData/LiveQualityIncidentDocument.cs"
       ],
-      "reviewedSchemaSha256": "add45a36b04b5ce2fea6f6173e8ccd679d6420be8d99fb39d6cc9d85f1fbe237",
+      "reviewedSchemaSha256": "d05d7dba9631a37d0b694562927e0ac1285b5fd1cc61016464b024973f5cd000",
       "policy": {
-        "purpose": "Attribuer les décisions sensibles, diagnostiquer les incidents et démontrer les changements administratifs ou de sécurité.",
-        "necessity": "Identité d'acteur et contexte minimal nécessaires à la responsabilité ; contenu brut, secrets et données métier privées sont exclus.",
+        "purpose": "Attribuer les décisions sensibles, vérifier le créateur initial des annonces sociales, diagnostiquer les incidents et démontrer les changements administratifs ou de sécurité.",
+        "necessity": "Identité d'acteur et identifiant du créateur initial nécessaires à la responsabilité et à la suppression de ses propres annonces ; contenu brut, secrets et données métier privées sont exclus.",
         "visibility": "Administration restreinte uniquement ; aucune indexation, réponse publique ou exposition dans les écrans membre.",
         "legalBasisOrConsent": "Intérêt légitime de sécurité, intégrité et administration du service ; obligations de preuve selon l'action concernée.",
         "retention": "Durée de sécurité et d'audit définie par catégorie ; besoin de formaliser les durées chiffrées et l'anonymisation finale.",

@@ -1757,37 +1757,53 @@
       "entryId": "TW-candidate-59d3818b8227da",
       "name": "Sky Wheel",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "proposedEntityKind": "ToQualify",
+      "category": "Attraction interne à un parc",
       "locality": "Janfusun Fancyworld , Gukeng",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction incluse dans le parc parent ; aucune création standalone autonome.",
+      "identityConfidence": "Grande roue Sky Wheel située au sein de Janfusun Fancyworld, déjà suivie comme fiche Park masquée.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne de découverte. Reprendre Sky Wheel comme attraction interne dans TW-park-b7c167b6-0c1c-405b-94c7-67eed22b5f27, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Janfusun Fancyworld — attractions officielles",
+          "url": "https://www.janfusun.com.tw/fancyworld.php?lang=en",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sky Wheel",
+            "source": "Janfusun Fancyworld — attractions officielles",
+            "url": "https://www.janfusun.com.tw/fancyworld.php?lang=en",
+            "family": "Grande roue",
+            "sourceVenueName": "Janfusun Fancyworld"
+          }
+        ],
+        "rationale": "Grande roue Sky Wheel située au sein de Janfusun Fancyworld, déjà suivie comme fiche Park masquée."
+      },
+      "possibleBacklogEntries": [
+        "TW-park-b7c167b6-0c1c-405b-94c7-67eed22b5f27"
+      ]
     },
     {
       "entryId": "TW-candidate-8b0d722267f86d",

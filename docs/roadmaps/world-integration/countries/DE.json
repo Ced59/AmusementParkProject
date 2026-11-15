@@ -6951,13 +6951,21 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Qualifier le domaine de montagne et ses autres activités séparément ; la Sommerrodelbahn Hocheck est déjà publiée comme standalone sous DE-candidate-standalone-f1037f4762bef3. Ne pas recréer la piste.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/erlebnisberg-oberaudorf-hocheck/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hocheck — activité de luge déjà intégrée en standalone",
+          "url": "https://hocheck.com/sommer-rodelbahn/",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-f1037f4762bef3"
       ]
     },
     {
@@ -7081,7 +7089,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), avec leurs photos et informations officielles. Ne pas migrer ces attractions vers des fiches standalone en doublon.",
+      "nextAction": "Compléter la fiche Park masquée et ses parkItems BocksBergBob (5e38b880-dbe2-4f74-8742-9ab1e40917ee) et Drachenblitz (76bef22f-565b-4eed-aa19-8d05a06d7ceb), sans créer de standalone en doublon. La fiche standalone créée par erreur (93f0eb22-735b-430f-82d4-58de8dd5154b) est masquée et renvoie 404 ; son annonce Facebook erronée a été supprimée le 15 novembre 2026 à 04:26:40 UTC. Déterminer la suppression administrative éventuelle de la fiche technique masquée en conservant les reçus d’audit.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7137,7 +7145,8 @@
           }
         ],
         "rationale": "L’export officiel du parc confirme deux parkItems existants et masqués : BocksBergBob et Drachenblitz. Compléter le parc et ses attractions sans créer de standalone en doublon."
-      }
+      },
+      "duplicateCorrectionEvidence": "docs/roadmaps/world-integration/evidence/bocksbergbob-duplicate-correction-20261115/audit.json"
     },
     {
       "entryId": "DE-park-f952a087-82d0-4e59-a071-e6acd32edf1b",
@@ -14936,25 +14945,27 @@
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Garmisch-Partenkirchen",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Les deux références Wiegand 1996 et 2013 concernent la même piste Garmisch-Partenkirchen, publiée sous la ligne DE-candidate-4ce70cf4ce1e8b.",
+      "identityConfidence": "Exploitant, site de tourisme et références constructeur relient les deux références de travaux à la même piste.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-4ce70cf4ce1e8b"
+      ],
       "aliases": [
         "Garmisch-Partenkirchen"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne constructeur et ses deux références comme doublon documentaire de DE-candidate-4ce70cf4ce1e8b ; ne pas créer une deuxième fiche. Vérifier la réouverture annoncée pour Pâques 2027.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -14970,11 +14981,21 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1279",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant actuel — même piste et fermeture saisonnière",
+          "url": "https://www.sommerrodelbahn-gap.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Zugspitz Region — même lieu",
+          "url": "https://www.zugspitz-region.de/poi/sommerrodelbahn-in-garmisch-partenkirchen",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Garmisch-Partenkirchen",
@@ -14993,8 +15014,9 @@
             "referenceId": "location-id-1279"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Les références Wiegand location-id-1279 et location-id-1280 décrivent la construction puis des travaux ultérieurs de la même piste au stade. La fiche publiée est suivie sous DE-candidate-4ce70cf4ce1e8b."
+      },
+      "duplicateOf": "DE-candidate-4ce70cf4ce1e8b"
     },
     {
       "entryId": "DE-candidate-standalone-39d4dbd8f1b588",
@@ -15488,25 +15510,27 @@
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Kohren-Sahlis",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Référence Wiegand du même site que la fiche standalone publiée DE-candidate-04a04741efdfd7.",
+      "identityConfidence": "Le constructeur et l’exploitant référencent la même luge que la fiche standalone publiée sous DE-candidate-04a04741efdfd7.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-04a04741efdfd7"
+      ],
       "aliases": [
         "Kohren-Sahlis"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme doublon documentaire de DE-candidate-04a04741efdfd7 ; ne pas créer de deuxième fiche. Les mises à jour de données se consignent sur la ligne principale.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -15521,7 +15545,7 @@
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Kohren-Sahlis",
@@ -15532,8 +15556,9 @@
             "referenceId": "location-id-1270"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Même piste, même commune et même exploitant que la fiche autonome publiée et auditée sous DE-candidate-04a04741efdfd7."
+      },
+      "duplicateOf": "DE-candidate-04a04741efdfd7"
     },
     {
       "entryId": "DE-candidate-standalone-d8ee2468897f33",
@@ -15990,29 +16015,102 @@
     },
     {
       "entryId": "DE-candidate-standalone-f1037f4762bef3",
-      "name": "Luge Wiegand — Oberaudorf",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Hocheck",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Hocheck, 83080 Oberaudorf, Bavière",
+      "siteId": "e9654579-f599-4e11-8873-f63714b6a45f",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:25:33.282Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : saison estivale 2026 terminée, prochaine saison de luge non annoncée.",
+      "identityConfidence": "Piste fixe et descente autonome confirmées par l’exploitant, avec accès à pied possible et billet de remontée incluant la luge ; aucune fiche existante dans l’éditeur.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Oberaudorf"
+        "Sommer-Rodelbahn Hocheck",
+        "Sommerrodelbahn Oberaudorf",
+        "Luge Wiegand — Oberaudorf"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T02:24:25.865Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4ff140e9-556f-4c72-ae01-15e0a6ffbc4a",
+          "appliedAt": "2026-11-15T02:22:29.694Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:apply:4ff140e9-556f-4c72-ae01-15e0a6ffbc4a",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée avec huit descriptions et fermeture saisonnière."
+        },
+        {
+          "eventId": "apply-a1f64e20-606a-402b-bdef-6b4636aecb57",
+          "appliedAt": "2026-11-15T02:23:22.553Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:apply:a1f64e20-606a-402b-bdef-6b4636aecb57",
+          "auditEvidence": null,
+          "summary": "Quatre règles officielles et calendrier 2026 terminé."
+        },
+        {
+          "eventId": "image-7f043173efd04373aff0260c50ba451e",
+          "appliedAt": "2026-11-15T02:24:07.436Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:7f043173efd04373aff0260c50ba451e",
+          "auditEvidence": null,
+          "summary": "Vue historique exacte du Hocheck importée."
+        },
+        {
+          "eventId": "image-metadata-7f043173efd04373aff0260c50ba451e",
+          "appliedAt": "2026-11-15T02:24:11.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:7f043173efd04373aff0260c50ba451e",
+          "auditEvidence": null,
+          "summary": "Crédit, licence et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "image-29cfdb877c654a8b9f26f0eb74f9b99b",
+          "appliedAt": "2026-11-15T02:24:22.257Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:29cfdb877c654a8b9f26f0eb74f9b99b",
+          "auditEvidence": null,
+          "summary": "Vue historique exacte du Hocheck importée."
+        },
+        {
+          "eventId": "image-metadata-29cfdb877c654a8b9f26f0eb74f9b99b",
+          "appliedAt": "2026-11-15T02:24:25.865Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:29cfdb877c654a8b9f26f0eb74f9b99b",
+          "auditEvidence": null,
+          "summary": "Crédit, licence et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "closure-e9654579-f599-4e11-8873-f63714b6a45f",
+          "appliedAt": "2026-11-15T02:24:25.865Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:29cfdb877c654a8b9f26f0eb74f9b99b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-hocheck-20261115/audit.json",
+          "summary": "Audit final : huit pages et deux photos HTTP 200, complétude 74 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Vérifier la prochaine ouverture estivale, les tarifs et la limite exacte d’accompagnement à huit ans ; les deux photos historiques et le post Facebook sont intégrés.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16023,22 +16121,47 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.hocheck.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hocheck — piste et règles de sécurité",
+          "url": "https://hocheck.com/sommer-rodelbahn/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Hocheck — calendrier été 2026",
+          "url": "https://hocheck.com/betriebszeiten-sommer-am-erlebnisberg-hocheck-in-oberaudorf/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Hocheck — tarifs été 2026 archivés",
+          "url": "https://hocheck.com/preise-erlebnisberg-hocheck-2025/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Rufus46, CC BY-SA 3.0, vue 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Hocheck_Oberaudorf-1.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Rufus46, CC BY-SA 3.0, vue 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Wildbarren,_Rodelbahn,_Kahlanger-Schanze_vom_Hocheck_Oberaudorf-1.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Oberaudorf",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1260",
+            "name": "Sommerrodelbahn Hocheck",
+            "source": "Hocheck Bergbahnen",
+            "url": "https://hocheck.com/sommer-rodelbahn/",
             "family": "Luge d’été",
-            "sourceVenueName": "Oberaudorf",
-            "referenceId": "location-id-1260"
+            "sourceVenueName": "Erlebnisberg Hocheck",
+            "sourceLocality": "Oberaudorf"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Descente de luge fixe et payante dans un domaine de remontées, randonnée et sports d’hiver. Le billet de télésiège peut inclure la descente ; accès au départ aussi possible à pied. Les autres activités restent à qualifier séparément."
       }
     },
     {
@@ -16100,25 +16223,27 @@
       "entityKind": "ToQualify",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
+      "locality": "Oberwiesenthal",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Référence Wiegand du même site que la fiche standalone publiée DE-candidate-2ae1371b43102d.",
+      "identityConfidence": "Le constructeur et l’exploitant référencent la même luge que la fiche standalone publiée sous DE-candidate-2ae1371b43102d.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "DE-candidate-2ae1371b43102d"
+      ],
       "aliases": [
         "Oberwiesenthal"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette référence constructeur comme doublon documentaire de DE-candidate-2ae1371b43102d ; ne pas créer de deuxième fiche. Les mises à jour de données se consignent sur la ligne principale.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16133,7 +16258,7 @@
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Oberwiesenthal",
@@ -16144,8 +16269,9 @@
             "referenceId": "location-id-1258"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Même piste, même commune et même exploitant que la fiche autonome publiée et auditée sous DE-candidate-2ae1371b43102d."
+      },
+      "duplicateOf": "DE-candidate-2ae1371b43102d"
     },
     {
       "entryId": "DE-candidate-standalone-2a658b5b10e69c",
@@ -16523,29 +16649,132 @@
     },
     {
       "entryId": "DE-candidate-standalone-565d6e02d9562d",
-      "name": "Luge Wiegand — Stausee Oberwald, Callenberg",
-      "entityKind": "ToQualify",
+      "name": "Sparkassen-Sommerrodelbahn am Stausee Oberwald",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Stausee Oberwald, 09337 Callenberg, Saxe",
+      "siteId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:16:57.049Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : piste fermée en attente de la nouvelle saison.",
+      "identityConfidence": "Piste autonome à billet propre confirmée sur le site de l’exploitant ; aucun Park ni StandaloneAttraction existant dans les recherches de l’éditeur.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Stausee Oberwald, Callenberg"
+        "Sommerrodelbahn Stausee Oberwald",
+        "Luge Wiegand — Stausee Oberwald, Callenberg",
+        "Sommerrodelbahn Callenberg"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T02:15:58.331Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1b23ddc8-d566-4269-9b83-e82026f617d3",
+          "appliedAt": "2026-11-15T02:10:53.131Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:1b23ddc8-d566-4269-9b83-e82026f617d3",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome et huit descriptions."
+        },
+        {
+          "eventId": "apply-b0bdf27e-4894-479c-bbe9-352cec9d5b1d",
+          "appliedAt": "2026-11-15T02:11:48.437Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:b0bdf27e-4894-479c-bbe9-352cec9d5b1d",
+          "auditEvidence": null,
+          "summary": "Longueur officielle de descente, condition d’accès et statut saisonnier."
+        },
+        {
+          "eventId": "image-cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "appliedAt": "2026-11-15T02:12:38.482Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-123a9d1468a242b2b4e5fbd19cb0f287",
+          "appliedAt": "2026-11-15T02:12:55.008Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:123a9d1468a242b2b4e5fbd19cb0f287",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-e7f3ca38cf2347eaa6c9361109236660",
+          "appliedAt": "2026-11-15T02:13:13.226Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:e7f3ca38cf2347eaa6c9361109236660",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "appliedAt": "2026-11-15T02:14:26.701Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:cda8e0bc8bc7407cb5c3ecdf67836df3",
+          "auditEvidence": null,
+          "summary": "Description spécifique, crédits et licence confirmés."
+        },
+        {
+          "eventId": "image-metadata-123a9d1468a242b2b4e5fbd19cb0f287",
+          "appliedAt": "2026-11-15T02:14:37.547Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:123a9d1468a242b2b4e5fbd19cb0f287",
+          "auditEvidence": null,
+          "summary": "Description spécifique, crédits et licence confirmés."
+        },
+        {
+          "eventId": "image-metadata-e7f3ca38cf2347eaa6c9361109236660",
+          "appliedAt": "2026-11-15T02:14:48.404Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:image:e7f3ca38cf2347eaa6c9361109236660",
+          "auditEvidence": null,
+          "summary": "Description spécifique, crédits et licence confirmés."
+        },
+        {
+          "eventId": "apply-4335c578-8b53-4d5c-a529-148bfed54ceb",
+          "appliedAt": "2026-11-15T02:15:58.331Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:4335c578-8b53-4d5c-a529-148bfed54ceb",
+          "auditEvidence": null,
+          "summary": "Huit descriptions corrigées pour supprimer les mesures techniques brutes."
+        },
+        {
+          "eventId": "closure-b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "appliedAt": "2026-11-15T02:15:58.331Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+          "evidence": "PARK_DATA_EDITOR:apply:4335c578-8b53-4d5c-a529-148bfed54ceb",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-oberwald-20261115/audit.json",
+          "summary": "Audit final : huit pages et trois photos HTTP 200, complétude 74 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Revoir la prochaine ouverture, les horaires propres à la piste et les tarifs alors en vigueur ; trois photos exactes et la publication Facebook sont déjà intégrées.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16556,22 +16785,47 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.stausee-oberwald.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Stausee Oberwald — piste et caractéristiques",
+          "url": "https://www.stausee-oberwald.de/rodeln",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Stausee Oberwald — statut saisonnier",
+          "url": "https://www.stausee-oberwald.de/oeffnungszeiten-eintritt",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Kora27, CC BY-SA 3.0, photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:370_m_lange_Sommerrodelbahn_am_Stausee_Oberwald..IMG_7399WI.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Kora27, CC BY-SA 3.0, photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald...IMG_7392WI.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Kora27, CC BY-SA 3.0, photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald..IMG_7406WI.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Stausee Oberwald, Callenberg",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1247",
+            "name": "Sparkassen-Sommerrodelbahn am Stausee Oberwald",
+            "source": "Stausee Oberwald",
+            "url": "https://www.stausee-oberwald.de/rodeln",
             "family": "Luge d’été",
-            "sourceVenueName": "Stausee Oberwald, Callenberg",
-            "referenceId": "location-id-1247"
+            "sourceVenueName": "Stausee Oberwald",
+            "sourceLocality": "Callenberg"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Piste fixe avec billet de luge distinct dans un domaine de baignade, camping et loisirs ; intégration en StandaloneAttraction, pas de création Park."
       }
     },
     {
@@ -23457,37 +23711,131 @@
     {
       "entryId": "DE-candidate-4ce70cf4ce1e8b",
       "name": "Sommerrodelbahn Garmisch-Partenkirchen",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
+      "category": "Luge d’été",
       "locality": "Garmisch-Partenkirchen",
-      "siteId": null,
+      "siteId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T01:04:41.642Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Site officiel consulté le 2026-11-15 : fermé actuellement ; réouverture annoncée à Pâques 2027.",
+      "identityConfidence": "Exploitant, tourisme régional, OSM et photo de la piste concordent sur une seule attraction autonome à l’Olympia Skistadion ; aucune fiche préexistante dans l’éditeur.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn GAP",
+        "Sommerrodelbahn am Skistadion",
+        "Luge Wiegand — Garmisch-Partenkirchen"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T01:04:01.485Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-49e15fad-68d6-4c51-a515-d40677e87d89",
+          "appliedAt": "2026-11-15T01:01:18.527Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:apply:49e15fad-68d6-4c51-a515-d40677e87d89",
+          "auditEvidence": null,
+          "summary": "Création de la fiche, fermeture saisonnière, localisation et huit textes."
+        },
+        {
+          "eventId": "apply-f9e5faa5-e97f-4e46-935d-261d45199784",
+          "appliedAt": "2026-11-15T01:03:26.279Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:apply:f9e5faa5-e97f-4e46-935d-261d45199784",
+          "auditEvidence": null,
+          "summary": "Conditions officielles d’âge, d’accompagnement et de poids."
+        },
+        {
+          "eventId": "image-a17dbc7a7982458aaaa4beef0faae95d",
+          "appliedAt": "2026-11-15T01:03:57.624Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:image:a17dbc7a7982458aaaa4beef0faae95d",
+          "auditEvidence": null,
+          "summary": "Photo exacte Wikitarisch CC BY 4.0 importée et créditée en huit langues."
+        },
+        {
+          "eventId": "image-metadata-a17dbc7a7982458aaaa4beef0faae95d",
+          "appliedAt": "2026-11-15T01:04:01.485Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:image:a17dbc7a7982458aaaa4beef0faae95d",
+          "auditEvidence": null,
+          "summary": "Métadonnées de la photo confirmées, licence et recadrage explicités."
+        },
+        {
+          "eventId": "closure-image-a17dbc7a7982458aaaa4beef0faae95d",
+          "appliedAt": "2026-11-15T01:04:01.485Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "446f04b2-7bf3-4b30-beeb-ab822935f64f",
+          "evidence": "PARK_DATA_EDITOR:image:a17dbc7a7982458aaaa4beef0faae95d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-garmisch-20261115/audit.json",
+          "summary": "Audit final : huit pages et photo HTTP 200, complétude 81 sans bloqueur, fermeture signalée et Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date réelle. Avant Pâques 2027, vérifier la réouverture, les tarifs et les horaires officiels ; les références Wiegand 1279 et 1280 sont consignées dans la ligne doublon conservée.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-garmisch-partenkirchen/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — statut, conditions de visite et tarifs affichés",
+          "url": "https://www.sommerrodelbahn-gap.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Zugspitz Region — lieu",
+          "url": "https://www.zugspitz-region.de/poi/sommerrodelbahn-in-garmisch-partenkirchen",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — piste",
+          "url": "https://www.openstreetmap.org/way/582453792",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Wikitarisch, 21 mars 2025, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Olympia_Skistadion_Talstation_Eckbauerbahn_(Garmisch-Partenkirchen).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence 1996",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1279",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence 2013",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1280",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Garmisch-Partenkirchen",
+            "source": "Exploitant",
+            "url": "https://www.sommerrodelbahn-gap.de/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Olympia Skistadion",
+            "sourceLocality": "Garmisch-Partenkirchen"
+          }
+        ],
+        "rationale": "Piste avec exploitant, accès et billetterie propres à côté du stade ; les deux références constructeur documentent des travaux sur la même attraction."
       }
     },
     {
@@ -23779,43 +24127,125 @@
     {
       "entryId": "DE-candidate-04a04741efdfd7",
       "name": "Sommerrodelbahn Kohren-Sahlis",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Frohburg",
-      "siteId": null,
+      "category": "Luge d’été en auge",
+      "locality": "Kohren-Sahlis, Frohburg, Saxe",
+      "siteId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-14T23:52:35.707Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
-      "possibleMatches": [
+      "sourceLifecycleSignal": "Site de l’exploitant actif au 2026-11-14, billets et règles affichés ; avis du jour « fermé », ouverture dépendant de la météo.",
+      "identityConfidence": "Piste à billetterie propre, adresse et site officiel confirmés ; aucune fiche Park ou Standalone homonyme à Kohren-Sahlis ou Frohburg. Le rapprochement automatique avec Grafenau ne portait que sur le nom générique.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sommerrodelbahn Kohren Sahlis",
+        "Kohren-Sahlis summer toboggan run"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-14T23:55:06.330Z",
+      "integrationHistory": [
         {
-          "siteId": "1bc5ed5c-e772-4ee0-a66a-09cfea571c3e",
-          "name": "Sommerrodelbahn Grafenau",
-          "similarity": 76
+          "eventId": "apply-42767859-9689-4570-a4e5-e5cb75ff73c0",
+          "appliedAt": "2026-11-14T23:46:15.027Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:apply:42767859-9689-4570-a4e5-e5cb75ff73c0",
+          "auditEvidence": null,
+          "summary": "Création de la piste autonome, localisation et huit descriptions."
+        },
+        {
+          "eventId": "apply-1439d4fa-be3a-4ccb-8ac8-f54e78134dff",
+          "appliedAt": "2026-11-14T23:48:12.390Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:apply:1439d4fa-be3a-4ccb-8ac8-f54e78134dff",
+          "auditEvidence": null,
+          "summary": "Sept tarifs officiels et règle d’accompagnement des moins de huit ans intégrés."
+        },
+        {
+          "eventId": "image-e869659734324ab089c0976d9060a990",
+          "appliedAt": "2026-11-14T23:49:42.750Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:image:e869659734324ab089c0976d9060a990",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste et de sa caisse en 2011, André L., CC BY 3.0, importée et publiée."
+        },
+        {
+          "eventId": "apply-b5eb5c52-bb9f-4e96-b006-4d3adcb62956",
+          "appliedAt": "2026-11-14T23:51:31.900Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:apply:b5eb5c52-bb9f-4e96-b006-4d3adcb62956",
+          "auditEvidence": null,
+          "summary": "Huit descriptions revues pour la lecture publique après contrôle de qualité."
+        },
+        {
+          "eventId": "image-metadata-e869659734324ab089c0976d9060a990",
+          "appliedAt": "2026-11-14T23:55:06.330Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:image:e869659734324ab089c0976d9060a990",
+          "auditEvidence": null,
+          "summary": "Licence, source, auteur et légendes de la photo revérifiés et enregistrés dans les huit langues."
+        },
+        {
+          "eventId": "closure-image-e869659734324ab089c0976d9060a990",
+          "appliedAt": "2026-11-14T23:55:06.330Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+          "evidence": "PARK_DATA_EDITOR:image:e869659734324ab089c0976d9060a990",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-kohren-sahlis-20261114/audit.json",
+          "summary": "Audit final : huit pages publiques, photo exacte HTTP 200, sept tarifs, règle d’accès, complétude 78 sans bloqueur et Facebook Published."
         }
       ],
-      "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne et sa date réelle. Confirmer les prochains horaires saisonniers auprès de l’exploitant ; le 14 novembre, tous les jours étaient affichés fermés avec avertissement météo. Chercher une photographie exacte plus récente sous licence de réutilisation claire.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/sommerrodelbahn-kohren-sahlis/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sommerrodelbahn Kohren-Sahlis — piste, billets, règles et état du jour",
+          "url": "https://www.sommerrodelbahn-kohren-sahlis.de/",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "OpenStreetMap Nominatim — point exact de la piste",
+          "url": "https://www.openstreetmap.org/node/1257755774",
+          "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Wikimedia Commons — André L., photo de 2011, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_panoramio_(1).jpg",
+          "accessedAt": "2026-11-14"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-14",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Kohren-Sahlis",
+            "source": "Sommerrodelbahn Kohren-Sahlis — exploitant",
+            "url": "https://www.sommerrodelbahn-kohren-sahlis.de/",
+            "family": "Luge d’été en auge",
+            "sourceVenueName": "Sommerrodelbahn Kohren-Sahlis",
+            "sourceLocality": "Frohburg"
+          }
+        ],
+        "rationale": "La piste dispose de sa propre billetterie et d’une petite restauration, sans parc multi-attractions auquel la rattacher. L’exploitant publie les prix et la règle d’âge sur son site."
       }
     },
     {
@@ -24303,26 +24733,123 @@
     },
     {
       "entryId": "DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574",
-      "name": "Sommerrodelbahn Wald Michelbach",
-      "entityKind": "Park",
+      "name": "Odenwaldbob — Sommerrodelbahn Wald-Michelbach",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "9f0be526-a8d7-4bfe-9932-31598aacf574",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "Kreidacher Höhe 2, 69483 Wald-Michelbach, Hesse",
+      "siteId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+      "legacySiteIds": [
+        "9f0be526-a8d7-4bfe-9932-31598aacf574"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:38:19.267Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : piste signalée ouverte le week-end de 13 h à 16 h, sous réserve de la météo (signal mis à jour le 14 novembre).",
+      "identityConfidence": "Ancienne fiche Park masquée avec seul parkItem Odenwaldbob migrée via ses IDs ; entrée au domaine gratuite, billet propre pour la luge.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn Wald Michelbach",
+        "Sommerrodelbahn Wald-Michelbach",
+        "Odenwaldbob"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T02:37:09.151Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ebcbe806-f199-4df7-9059-a1b5c9663866",
+          "appliedAt": "2026-11-15T02:34:40.054Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:apply:ebcbe806-f199-4df7-9059-a1b5c9663866",
+          "auditEvidence": null,
+          "summary": "Création autonome et classement NotRelevant du parc masqué et de son item."
+        },
+        {
+          "eventId": "apply-18e3e4b2-138b-4b84-b020-14ed013c2460",
+          "appliedAt": "2026-11-15T02:36:16.863Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:apply:18e3e4b2-138b-4b84-b020-14ed013c2460",
+          "auditEvidence": null,
+          "summary": "Cinq règles officielles, longueur de descente et statut météo renseignés."
+        },
+        {
+          "eventId": "image-9e681364d2a6403f859424f9bc87861f",
+          "appliedAt": "2026-11-15T02:36:38.232Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:9e681364d2a6403f859424f9bc87861f",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-9e681364d2a6403f859424f9bc87861f",
+          "appliedAt": "2026-11-15T02:36:41.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:9e681364d2a6403f859424f9bc87861f",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "image-f233452c440e4604bc3fcdcf80bff200",
+          "appliedAt": "2026-11-15T02:36:51.914Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:f233452c440e4604bc3fcdcf80bff200",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-f233452c440e4604bc3fcdcf80bff200",
+          "appliedAt": "2026-11-15T02:36:55.254Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:f233452c440e4604bc3fcdcf80bff200",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "image-27244162010e44498454ee1f0844c1ec",
+          "appliedAt": "2026-11-15T02:37:05.667Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:27244162010e44498454ee1f0844c1ec",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-27244162010e44498454ee1f0844c1ec",
+          "appliedAt": "2026-11-15T02:37:09.151Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:27244162010e44498454ee1f0844c1ec",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "closure-779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "appliedAt": "2026-11-15T02:37:09.151Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:27244162010e44498454ee1f0844c1ec",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-waldmichelbach-20261115/audit.json",
+          "summary": "Audit final : huit pages et trois photos HTTP 200, complétude 76 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les IDs legacy et la date réelle. Recontrôler le signal de fonctionnement météo et vérifier les tarifs hors saison ; trois photos exactes et le post Facebook sont intégrés.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -24348,35 +24875,54 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.erlebnishoehe-wald-michelbach.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Erlebnishöhe — piste et règles d’accès",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Erlebnishöhe — statut en direct",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/infos/oeffnungszeiten/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Erlebnishöhe — tarifs affichés pour l’été",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/infos/preise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_in_Wald-Michelbach_1.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wald-Michelbach_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_bei_Wald-Michelbach_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Odenwaldbob",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13200.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Sommerrodelbahn Wald Michelbach",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Wald-Michelbach , Hesse",
-            "sourceOpenedYear": "2010"
-          },
-          {
-            "name": "Wald-Michelbach",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1005",
+            "source": "Erlebnishöhe Wald-Michelbach",
+            "url": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Wald-Michelbach",
-            "referenceId": "location-id-1005",
-            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+            "sourceVenueName": "Kreidacher Höhe",
+            "sourceLocality": "Wald-Michelbach"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet de luge distinct et accès gratuit au domaine ; une ancienne fiche Park masquée ne contenait qu’un item Odenwaldbob. Migration contrôlée en standalone sans suppression."
       }
     },
     {
@@ -24940,23 +25486,31 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Domaine de loisirs lacustre avec baignade, camping, minigolf et luge ; la piste à billet séparé a sa fiche autonome publiée.",
+      "identityConfidence": "L’exploitant décrit le Stausee Oberwald comme une aire de loisirs ; sa luge d’été est intégrée dans la ligne standalone liée. Aucune fiche Park supplémentaire à créer.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Conserver cette ligne de découverte comme lieu de rattachement, sans créer un faux parc ; la piste autonome est intégrée sous DE-candidate-standalone-565d6e02d9562d.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/stausee-oberwald/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Stausee Oberwald — offre du domaine et piste distincte",
+          "url": "https://www.stausee-oberwald.de/rodeln",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-565d6e02d9562d"
       ]
     },
     {
@@ -29110,13 +29664,21 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Qualifier le domaine Erlebnishöhe et ses autres activités séparément ; l’Odenwaldbob est déjà publié comme standalone sous DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574. Ne pas recréer la piste.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/wiegand-erlebnisberge-erlebnishoehe-wald-michelbach/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Erlebnishöhe — Odenwaldbob déjà intégré en standalone",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574"
       ]
     },
     {
@@ -33136,6 +33698,298 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "DE-candidate-standalone-schliersberg-20261115",
+      "name": "Sommerrodelbahn Schliersbergalm",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été en auge",
+      "locality": "Schliersee, Bavière",
+      "siteId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T03:20:55.842Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif au 2026-11-15 ; piste en service par temps sec, fermeture sous pluie ou neige ; heures de luge non publiées.",
+      "identityConfidence": "Billetterie propre confirmée. Distincte de l’Alpenroller (ParkItem 6696fdaf-7342-4b5a-bcf8-d6eb141cbe8d), ancien coaster fermé temporairement dans le Park masqué Schliersbergalm 87939460-1a47-4355-854c-1e039a400ab6 ; ce Park est conservé.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sommerrodelbahn am Schliersberg",
+        "Sommer-Rodelbahn Schliersberg Alm",
+        "Schliersbergalm summer toboggan run"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T03:20:07.537Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-66f9c85b-d62f-4331-b56f-36574722fb61",
+          "appliedAt": "2026-11-15T03:15:09.745Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:apply:66f9c85b-d62f-4331-b56f-36574722fb61",
+          "auditEvidence": null,
+          "summary": "Création de la piste autonome, huit descriptions, lieu et statut ; l’ancien Alpenroller du Park masqué reste distinct et conservé."
+        },
+        {
+          "eventId": "apply-c8cf7758-c7a5-406b-a06c-71edeb02cff8",
+          "appliedAt": "2026-11-15T03:17:00.520Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:apply:c8cf7758-c7a5-406b-a06c-71edeb02cff8",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels datés de descente simple intégrés ; règle météo confirmée dans les descriptions."
+        },
+        {
+          "eventId": "image-07078f87e6924771924fdd7f0ca5f43f",
+          "appliedAt": "2026-11-15T03:18:04.516Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:07078f87e6924771924fdd7f0ca5f43f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 01 de la piste ou de ses luges, Kritzolina, Wikimedia Commons CC BY-SA 4.0, publiée avec crédits dans huit langues."
+        },
+        {
+          "eventId": "image-6db89367f811498da900e25ec0855ecd",
+          "appliedAt": "2026-11-15T03:18:26.533Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:6db89367f811498da900e25ec0855ecd",
+          "auditEvidence": null,
+          "summary": "Photo exacte 02 de la piste ou de ses luges, Kritzolina, Wikimedia Commons CC BY-SA 4.0, publiée avec crédits dans huit langues."
+        },
+        {
+          "eventId": "image-83622d43f4204ed6a035f9c9b4329453",
+          "appliedAt": "2026-11-15T03:18:52.467Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:83622d43f4204ed6a035f9c9b4329453",
+          "auditEvidence": null,
+          "summary": "Photo exacte 04 de la piste ou de ses luges, Kritzolina, Wikimedia Commons CC BY-SA 4.0, publiée avec crédits dans huit langues."
+        },
+        {
+          "eventId": "image-metadata-6db89367f811498da900e25ec0855ecd",
+          "appliedAt": "2026-11-15T03:19:56.686Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:6db89367f811498da900e25ec0855ecd",
+          "auditEvidence": null,
+          "summary": "Métadonnées de la photo corrigées pour différencier ses légendes."
+        },
+        {
+          "eventId": "image-metadata-83622d43f4204ed6a035f9c9b4329453",
+          "appliedAt": "2026-11-15T03:20:07.537Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:83622d43f4204ed6a035f9c9b4329453",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/audit.json",
+          "summary": "Métadonnées de la troisième photo corrigées ; audit final 71/100 sans bloqueur, huit pages, trois images HTTP 200 et Facebook publié."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier périodiquement les heures réelles de la piste et les tarifs ; l’exploitant ne donne que la condition de temps sec. Chercher des photos plus récentes de la même piste sous licence vérifiable. Le Park masqué multi-activité Schliersbergalm reste un dossier séparé.",
+      "sources": [
+        {
+          "label": "Schliersberg Alm — piste, trois tarifs par âge, condition météo et caisse",
+          "url": "https://schliersbergalm.com/erleben/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Schliersberg Alm — FAQ météo et accès par téléphérique",
+          "url": "https://schliersbergalm.com/kontakt/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "RCDB — Alpenroller historique, attraction distincte",
+          "url": "https://rcdb.com/12984.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Sommerrodelbahn Schliersberg 01, Kritzolina, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Sommerrodelbahn Schliersberg 02, Kritzolina, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_02.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Sommerrodelbahn Schliersberg 04, Kritzolina, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_04.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique — huit langues",
+          "url": "https://amusement-parks.fun/fr/attraction/71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e/sommerrodelbahn-schliersbergalm",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Schliersbergalm",
+            "source": "Schliersberg Alm — exploitant",
+            "url": "https://schliersbergalm.com/erleben/",
+            "family": "Luge d’été en auge",
+            "sourceVenueName": "Schliersberg Alm",
+            "sourceLocality": "Schliersee"
+          }
+        ],
+        "rationale": "La descente est tarifée séparément au sein d’un domaine multi-activité ; elle n’est pas l’ancien Alpenroller, déjà référencé comme ParkItem. La fiche Park masquée reste présente."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/audit.json",
+        "score": 71,
+        "publicationBlockers": []
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-15T03:20:55.842Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e/sommerrodelbahn-schliersbergalm",
+        "facebookPublishedAtUtc": "2026-11-15T03:21:49.646Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127402075424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/receipts.json"
+      }
+    },
+    {
+      "entryId": "DE-duplicate-bocksbergbob-20261115",
+      "name": "BocksBergBob — doublon masqué",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "Park",
+      "category": "Doublon technique d’un ParkItem",
+      "locality": "Hahnenklee, Goslar, Basse-Saxe",
+      "siteId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+      "legacySiteIds": [],
+      "presence": "Hidden",
+      "presenceObservedAt": "2026-11-15T03:35:44.045Z",
+      "editorialStatus": "Duplicate",
+      "duplicateOf": "DE-park-815bb3f3-9fb9-4bfd-aac1-472af9e18700",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Le vrai BocksBergBob est le ParkItem 5e38b880-dbe2-4f74-8742-9ab1e40917ee du Park masqué ErlebnisBocksBerg.",
+      "identityConfidence": "Doublon confirmé par export officiel du Park et par la qualification InsidePark du 1er novembre 2026.",
+      "possibleMatches": [],
+      "aliases": [
+        "BocksBergBob",
+        "Sommerrodelbahn Bocksberg"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T03:35:44.045Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-3f673705-a584-4288-a6f0-dc44a9fb017b",
+          "appliedAt": "2026-11-15T03:27:45.497Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:3f673705-a584-4288-a6f0-dc44a9fb017b",
+          "auditEvidence": null,
+          "summary": "Création erronée d’une standalone alors que le Park masqué contient déjà le ParkItem BocksBergBob."
+        },
+        {
+          "eventId": "apply-b7bd15e8-7971-4c8d-8100-fb800f86baef",
+          "appliedAt": "2026-11-15T03:28:52.595Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:b7bd15e8-7971-4c8d-8100-fb800f86baef",
+          "auditEvidence": null,
+          "summary": "Conditions d’accès ajoutées avant identification du doublon."
+        },
+        {
+          "eventId": "image-f2db348624c349099df9edcc05e0c206",
+          "appliedAt": "2026-11-15T03:30:40.020Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:image:f2db348624c349099df9edcc05e0c206",
+          "auditEvidence": null,
+          "summary": "Image exacte 4 importée sur la fiche doublon ; conservée masquée avec la fiche."
+        },
+        {
+          "eventId": "image-bc01476a45cf46e68b9e01f3d18e2385",
+          "appliedAt": "2026-11-15T03:31:03.219Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:image:bc01476a45cf46e68b9e01f3d18e2385",
+          "auditEvidence": null,
+          "summary": "Image exacte 1 importée sur la fiche doublon ; conservée masquée avec la fiche."
+        },
+        {
+          "eventId": "image-a0bdd8a8ee4c418ba2e8735fd78572fb",
+          "appliedAt": "2026-11-15T03:31:27.188Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:image:a0bdd8a8ee4c418ba2e8735fd78572fb",
+          "auditEvidence": null,
+          "summary": "Image exacte 5 importée sur la fiche doublon ; conservée masquée avec la fiche."
+        },
+        {
+          "eventId": "apply-85916302-6250-4c3e-8aa6-4dadcdf7bd99",
+          "appliedAt": "2026-11-15T03:32:47.461Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:85916302-6250-4c3e-8aa6-4dadcdf7bd99",
+          "auditEvidence": null,
+          "summary": "Textes corrigés avant identification du doublon."
+        },
+        {
+          "eventId": "apply-66b099b8-256b-42d0-9787-deea9b30b01b",
+          "appliedAt": "2026-11-15T03:33:38.861Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:66b099b8-256b-42d0-9787-deea9b30b01b",
+          "auditEvidence": null,
+          "summary": "Fiche rendue publique brièvement avant identification du doublon."
+        },
+        {
+          "eventId": "apply-95b99b21-ddec-422e-afb4-3eb8eb4fc4f9",
+          "appliedAt": "2026-11-15T03:35:44.045Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "93f0eb22-735b-430f-82d4-58de8dd5154b",
+          "evidence": "PARK_DATA_EDITOR:apply:95b99b21-ddec-422e-afb4-3eb8eb4fc4f9",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/bocksbergbob-duplicate-correction-20261115/audit.json",
+          "summary": "Correction : fiche standalone masquée, page publique vérifiée HTTP 404 ; post Facebook erroné encore à supprimer par un administrateur."
+        }
+      ],
+      "nextAction": "Ne pas republier cette fiche ; son annonce Facebook erronée a été supprimée. Déterminer la suppression administrative éventuelle de la fiche technique masquée, intégrer l’attraction sur son ParkItem existant et conserver cette ligne avec ses reçus.",
+      "sources": [
+        {
+          "label": "RCDB — BocksBergBob dans ErlebnisBocksBerg",
+          "url": "https://rcdb.com/13161.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — BocksBergBob",
+          "url": "https://www.erlebnisbocksberg.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "duplicateCorrectionEvidence": "docs/roadmaps/world-integration/evidence/bocksbergbob-duplicate-correction-20261115/audit.json",
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-15T03:33:38.861Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/93f0eb22-735b-430f-82d4-58de8dd5154b/bocksbergbob",
+        "facebookPublishedAtUtc": "2026-11-15T03:34:20.931Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127402903424431",
+        "facebookRemovalPending": false,
+        "siteHiddenAtUtc": "2026-11-15T03:35:44.045Z",
+        "facebookDeletedAtUtc": "2026-11-15T04:26:40Z"
+      }
     }
   ]
 }

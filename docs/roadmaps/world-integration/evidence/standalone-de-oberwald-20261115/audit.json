@@ -1,0 +1,148 @@
+{
+  "work": "Created and published the independently ticketed Sparkassen-Sommerrodelbahn at Stausee Oberwald as a standalone summer toboggan attraction; imported three distinct exact photographs and published its Facebook announcement.",
+  "qualification": "The operator runs a lakeside recreation area with bathing, camping, boating and minigolf, not a structured amusement park. The toboggan run is a separately ticketed fixed ride. Official editor searches for Oberwald, Callenberg and Sommerrodelbahn am Stausee found no existing Park or StandaloneAttraction; a new standalone was appropriate. The separate Stausee Oberwald candidate in the park inventory was qualified as the recreation venue, not another Park creation.",
+  "sources": {
+    "operatorRide": "https://www.stausee-oberwald.de/rodeln",
+    "operatorStatus": "https://www.stausee-oberwald.de/oeffnungszeiten-eintritt",
+    "operatorContact": "https://www.stausee-oberwald.de/kontakt",
+    "constructorReference": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1247",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:370_m_lange_Sommerrodelbahn_am_Stausee_Oberwald..IMG_7399WI.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald...IMG_7392WI.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald..IMG_7406WI.jpg"
+    ]
+  },
+  "entity": {
+    "id": "b29d69bf-e3e6-45ec-a443-b2c537330232",
+    "name": "Sparkassen-Sommerrodelbahn am Stausee Oberwald",
+    "kind": "StandaloneAttraction",
+    "countryCode": "DE",
+    "operatingStatus": "TemporarilyClosed",
+    "published": true
+  },
+  "officialFacts": {
+    "place": "Stausee Oberwald, 09337 Callenberg, Saxony, Germany",
+    "openedYear": 2003,
+    "descentLengthMeters": 375,
+    "ascentLengthMeters": 133,
+    "totalCourseMeters": 508,
+    "bendCount": 7,
+    "ridersPerSled": "one or two",
+    "operatorSeasonStateOn2026-11-15": "The operator says it looks forward to the new season; no current ride operating timetable is shown",
+    "fareContext": "The operator posts separate ride fares and seasonal grounds admission, but no active tariff is published on the fiche while the ride is seasonally closed"
+  },
+  "sourceLimitations": [
+    "The displayed ride fares distinguish peak season with grounds admission from off season; the operator gives no confirmed next operating dates. No weekly opening rules or active fare were invented.",
+    "The current visit hours for day guests apply to the recreation grounds and were not used as ride hours.",
+    "The photographs show the exact installation but may predate current operating conditions.",
+    "The manufacturer reference calls the venue Stausee Oberwald; the operator calls the ride Sparkassen-Sommerrodelbahn and gives 375 m descent plus 133 m ascent, rather than a single rounded 370 m value."
+  ],
+  "editorSearch": {
+    "parkQueries": [
+      "Oberwald",
+      "Callenberg",
+      "Sommerrodelbahn am Stausee"
+    ],
+    "standaloneQueries": [
+      "Oberwald",
+      "Callenberg",
+      "Sommerrodelbahn am Stausee"
+    ],
+    "matchingEntitiesBeforeCreation": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "1b23ddc8-d566-4269-9b83-e82026f617d3",
+      "appliedAtUtc": "2026-11-15T02:10:53.1315415Z",
+      "summary": "Created autonomous ride with eight descriptions and seasonal closure"
+    },
+    {
+      "operationId": "b0bdf27e-4894-479c-bbe9-352cec9d5b1d",
+      "appliedAtUtc": "2026-11-15T02:11:48.4372683Z",
+      "summary": "Added official descent length and one access rule; recorded operator status without invented schedule"
+    },
+    {
+      "operationId": "4335c578-8b53-4d5c-a529-148bfed54ceb",
+      "appliedAtUtc": "2026-11-15T02:15:58.3318203Z",
+      "summary": "Spelled out public measurements to satisfy publication text checks"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "cda8e0bc8bc7407cb5c3ecdf67836df3",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:370_m_lange_Sommerrodelbahn_am_Stausee_Oberwald..IMG_7399WI.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/370_m_lange_Sommerrodelbahn_am_Stausee_Oberwald..IMG_7399WI.jpg",
+      "author": "Kora27",
+      "license": "CC BY-SA 3.0",
+      "subject": "Close view of a curved steel trough beside flowers and autumn trees",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T02:12:38.482Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:14:26.701Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "123a9d1468a242b2b4e5fbd19cb0f287",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald...IMG_7392WI.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/27/Sommerrodelbahn._Stausee_Oberwald...IMG_7392WI.jpg",
+      "author": "Kora27",
+      "license": "CC BY-SA 3.0",
+      "subject": "Wide curve of the exact track behind a flowerbed",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T02:12:55.008Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:14:37.547Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "e7f3ca38cf2347eaa6c9361109236660",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn._Stausee_Oberwald..IMG_7406WI.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Sommerrodelbahn._Stausee_Oberwald..IMG_7406WI.jpg",
+      "author": "Kora27",
+      "license": "CC BY-SA 3.0",
+      "subject": "Sweeping section of the exact run through landscaped grounds",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T02:13:13.226Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:14:48.404Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 74,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "currentOwnImages": 1,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/b29d69bf-e3e6-45ec-a443-b2c537330232/sparkassen-sommerrodelbahn-am-stausee-oberwald",
+    "sitePublishedAtUtc": "2026-11-15T02:16:57.0491588Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:81910122-4e9d-4c32-bbec-a5ccdda1b27b",
+    "facebookStatus": "Published",
+    "facebookId": "2967d32a9ac148e9a0f3a56d3807a4de",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127397557424431",
+    "facebookPublishedAtUtc": "2026-11-15T02:17:57.3898503Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T02:15:58.331Z",
+  "remainingGaps": [
+    "Check the operator’s next ride-specific opening date and lift seasonal closure when announced.",
+    "Verify current ride fares and any grounds admission before adding active pricing."
+  ]
+}

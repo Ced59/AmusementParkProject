@@ -1,0 +1,109 @@
+{
+  "work": "Created and published Sommerrodelbahn Kohren-Sahlis as a standalone attraction with eight descriptions, seven official fare offers, one age rule, one exact licensed photo, Facebook announcement and retained backlog entry.",
+  "qualification": "Operator runs a dedicated 527 m trough slide with its own ticket booth and snack kiosk. Official Park and StandaloneAttraction searches for Kohren and Frohburg returned no matches. A fuzzy candidate named Sommerrodelbahn Grafenau refers to a different city and was rejected as a false match.",
+  "sources": {
+    "operator": "https://www.sommerrodelbahn-kohren-sahlis.de/",
+    "commonsPhoto": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_panoramio_(1).jpg",
+    "osmPoint": "https://www.openstreetmap.org/node/1257755774"
+  },
+  "officialFacts": {
+    "trackLengthMetres": 527,
+    "liftLengthMetres": 247,
+    "operatorMaximumSpeedKmh": 40,
+    "adultSingleEur": 3,
+    "adultFiveEur": 14,
+    "child3to14SingleEur": 2,
+    "child3to14FiveEur": 9,
+    "adultWithChildSingleEur": 4.5,
+    "groupFrom15AdultEur": 2.8,
+    "groupFrom15ChildEur": 1.8,
+    "underEightRule": "ride accompanied by a person over eight"
+  },
+  "sourceLimitations": [
+    "Operator live notice on 2026-11-14 listed every day as closed and explicitly weather-dependent. No stable weekly hours or reopening date were entered.",
+    "The exact reusable photo was taken in 2011 and shows the track and ticket office at that time. Current operation is evidenced by the operator site, while a newer reusable image remains desirable."
+  ],
+  "duplicateSearches": {
+    "parkQueries": [
+      "Kohren",
+      "Frohburg"
+    ],
+    "standaloneQueries": [
+      "Kohren",
+      "Frohburg"
+    ],
+    "matchesBeforeCreation": 0
+  },
+  "entity": {
+    "id": "76366fa2-b8da-4671-9cd8-6af017cc602e",
+    "name": "Sommerrodelbahn Kohren-Sahlis",
+    "countryCode": "DE",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "42767859-9689-4570-a4e5-e5cb75ff73c0",
+      "appliedAtUtc": "2026-11-14T23:46:15.02731Z",
+      "summary": "Identity, exact location and eight descriptions"
+    },
+    {
+      "operationId": "1439d4fa-be3a-4ccb-8ac8-f54e78134dff",
+      "appliedAtUtc": "2026-11-14T23:48:12.3905486Z",
+      "summary": "Seven published fares and under-eight accompaniment"
+    },
+    {
+      "operationId": "b5eb5c52-bb9f-4e96-b006-4d3adcb62956",
+      "appliedAtUtc": "2026-11-14T23:51:31.9007648Z",
+      "summary": "Final visitor text revision"
+    }
+  ],
+  "photograph": {
+    "imageId": "e869659734324ab089c0976d9060a990",
+    "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Sommerrodelbahn_-_panoramio_%281%29.jpg",
+    "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_-_panoramio_(1).jpg",
+    "author": "André L.",
+    "license": "CC BY 3.0",
+    "photographedAt": "2011-10-02",
+    "width": 2048,
+    "height": 1536,
+    "published": true,
+    "current": true,
+    "importedAtUtc": "2026-11-14T23:49:42.75Z",
+    "metadataAppliedAtUtc": "2026-11-14T23:55:06.33Z",
+    "publicBinaryHttpStatus": 200
+  },
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 1,
+    "fareOfferCount": 7,
+    "accessConditionCount": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/76366fa2-b8da-4671-9cd8-6af017cc602e/sommerrodelbahn-kohren-sahlis",
+    "sitePublishedAtUtc": "2026-11-14T23:52:35.707153Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:c1f30573-d89b-42fb-8c9f-8d3be6e05d0d",
+    "facebookStatus": "Published",
+    "facebookId": "ab7183b93a674307b7f89eb2d2482185",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127386727424431",
+    "facebookPublishedAtUtc": "2026-11-14T23:53:50.2398554Z"
+  },
+  "lastDataIntegrationAt": "2026-11-14T23:55:06.330Z",
+  "remainingGaps": [
+    "Confirm a stable seasonal opening timetable or reopening date with the operator.",
+    "Obtain a more recent exact photo with clear reuse rights."
+  ]
+}

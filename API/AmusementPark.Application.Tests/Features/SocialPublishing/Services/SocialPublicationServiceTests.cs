@@ -35,6 +35,7 @@ public sealed class SocialPublicationServiceTests
         Assert.Equal("Découvrez ce parc !", result.Value.Message);
         Assert.Equal("https://amusement-parks.fun/fr/park/park-1/test", result.Value.Url);
         Assert.Equal("facebook-post-1", result.Value.ExternalPostId);
+        Assert.Equal("admin-1", result.Value.CreatedByUserId);
         Assert.Equal(1, publisher.PublishCallCount);
         Assert.Single(repository.Publications);
     }

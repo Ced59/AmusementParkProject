@@ -1161,37 +1161,53 @@
       "entryId": "AE-candidate-86e0331b70ace2",
       "name": "Eye of the Emirates",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
+      "proposedEntityKind": "ToQualify",
+      "category": "Attraction interne à un parc",
       "locality": "Al Qasba, Sharjah",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "Attraction incluse dans le parc parent ; aucune création standalone autonome.",
+      "identityConfidence": "Grande roue déplacée en 2018 de Al Qasba à Al Montazah Parks ; elle appartient désormais à l’Island of Legends dans le complexe de parcs. Examiner l’identité précise de la ligne Al Montazah Water Park lors de la reprise du parc.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette ligne de découverte. Reprendre Eye of the Emirates comme attraction interne dans AE-candidate-243b018a221f27, lors de l’intégration éditoriale du parc parent ; ne pas créer de fiche standalone séparée.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Sharjah Tourism — Eye of the Emirates à Al Montazah",
+          "url": "https://www.sharjahtourism.ae/wp-content/uploads/2025/11/SCTDA-General-Factsheet_Updated-2025.pdf",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Eye of the Emirates",
+            "source": "Sharjah Tourism — Eye of the Emirates à Al Montazah",
+            "url": "https://www.sharjahtourism.ae/wp-content/uploads/2025/11/SCTDA-General-Factsheet_Updated-2025.pdf",
+            "family": "Grande roue",
+            "sourceVenueName": "Al Montazah Water Park"
+          }
+        ],
+        "rationale": "Grande roue déplacée en 2018 de Al Qasba à Al Montazah Parks ; elle appartient désormais à l’Island of Legends dans le complexe de parcs. Examiner l’identité précise de la ligne Al Montazah Water Park lors de la reprise du parc."
+      },
+      "possibleBacklogEntries": [
+        "AE-candidate-243b018a221f27"
+      ]
     },
     {
       "entryId": "AE-candidate-f65e7de1279174",
@@ -3423,7 +3439,7 @@
           "summary": "Résumés de l’article différenciés ; audit final sans blocage."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la fiche et les reçus ; surveiller la reprise officielle des vols, les nouveaux tarifs et horaires, et rechercher un visuel avec droits réutilisables. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Trouver une vue montrant précisément The Dubai Balloon at Atlantis, avec licence ou autorisation et auteur vérifiés ; importer et publier avant de dater une nouvelle intégration. Recontrôler la reprise des vols et les horaires sur le site de l’exploitant.",
       "sources": [
         {
           "label": "Exploitant — pause des vols et expérience",
@@ -3495,7 +3511,7 @@
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125066095424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ae-dubai-balloon-20261028/receipts.json"
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
     },
     {
       "entryId": "AE-candidate-dd07228f47bc25",

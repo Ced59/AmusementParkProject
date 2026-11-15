@@ -38,7 +38,8 @@ public sealed class ParkDataEditorSocialPublicationsControllerTests
             }));
         ParkDataEditorSocialPublicationsController controller = new ParkDataEditorSocialPublicationsController(
             Mock.Of<IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>>>(MockBehavior.Strict),
-            publishHandler.Object)
+            publishHandler.Object,
+            Mock.Of<ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict))
         {
             ControllerContext = new ControllerContext
             {
@@ -62,5 +63,47 @@ public sealed class ParkDataEditorSocialPublicationsControllerTests
 
         Assert.IsType<OkObjectResult>(result);
         publishHandler.VerifyAll();
+    }
+
+    [Fact]
+    public async Task DeleteOwnFacebookAsync_ShouldRequireRequesterOwnership()
+    {
+        Mock<ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>> deleteHandler =
+            new Mock<ICommandHandler<DeleteSocialPublicationCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict);
+        deleteHandler.Setup(handler => handler.HandleAsync(
+                It.Is<DeleteSocialPublicationCommand>(command =>
+                    command.PublicationId == "publication-1"
+                    && command.RequestedByUserId == "editor-1"
+                    && command.RequireRequesterOwnership),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(ApplicationResult<SocialPublication>.Success(new SocialPublication
+            {
+                Id = "publication-1",
+                Network = SocialNetwork.Facebook,
+                Status = SocialPublicationStatus.Deleted,
+                Message = "Deleted",
+                Url = "https://amusement-parks.fun/fr/home",
+            }));
+
+        ParkDataEditorSocialPublicationsController controller = new ParkDataEditorSocialPublicationsController(
+            Mock.Of<IQueryHandler<GetSocialPublicationDraftQuery, ApplicationResult<SocialPublicationDraft>>>(MockBehavior.Strict),
+            Mock.Of<ICommandHandler<PublishSocialLinkCommand, ApplicationResult<SocialPublication>>>(MockBehavior.Strict),
+            deleteHandler.Object)
+        {
+            ControllerContext = new ControllerContext
+            {
+                HttpContext = new DefaultHttpContext
+                {
+                    User = new ClaimsPrincipal(new ClaimsIdentity(
+                        new[] { new Claim(ClaimTypes.NameIdentifier, "editor-1") },
+                        "test")),
+                },
+            },
+        };
+
+        IActionResult result = await controller.DeleteOwnFacebookAsync("publication-1", CancellationToken.None);
+
+        Assert.IsType<OkObjectResult>(result);
+        deleteHandler.VerifyAll();
     }
 }

@@ -3811,26 +3811,83 @@
     },
     {
       "entryId": "AT-park-56af967a-ce6a-4f94-b40a-911dd9effc87",
-      "name": "Lienzer Bergbahnen",
-      "entityKind": "Park",
+      "name": "Osttirodler",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "56af967a-ce6a-4f94-b40a-911dd9effc87",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "Hochstein / Schlossberg, 9900 Lienz, Tyrol oriental",
+      "siteId": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+      "legacySiteIds": [
+        "56af967a-ce6a-4f94-b40a-911dd9effc87"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:00:52.207Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : saison estivale 2026 terminée, toutes les remontées fermées ; prochaine ouverture à vérifier.",
+      "identityConfidence": "Ancienne fiche Park masquée Lienzer Bergbahnen avec un seul parkItem Osttirodler migrée via les IDs legacy. Billet indépendant « nur Rodel » affiché par l’exploitant.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Lienzer Bergbahnen",
+        "Alpine Coaster Osttirodler",
+        "Sommerrodelbahn Hochstein"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T01:59:39.348Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-aaace4b3-86f1-4790-aae0-ce482f48a533",
+          "appliedAt": "2026-11-15T01:57:47.543Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+          "evidence": "PARK_DATA_EDITOR:apply:aaace4b3-86f1-4790-aae0-ce482f48a533",
+          "auditEvidence": null,
+          "summary": "Création autonome et classement NotRelevant du parc masqué et de son item."
+        },
+        {
+          "eventId": "apply-4cbca462-b575-4560-8ee8-4e12b6fac1fa",
+          "appliedAt": "2026-11-15T01:59:00.121Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+          "evidence": "PARK_DATA_EDITOR:apply:4cbca462-b575-4560-8ee8-4e12b6fac1fa",
+          "auditEvidence": null,
+          "summary": "Trois conditions d’accès officielles, longueur corrigée et fausse date exacte effacée."
+        },
+        {
+          "eventId": "image-78ad56fd18e94f79a9b02731a33560df",
+          "appliedAt": "2026-11-15T01:59:35.684Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+          "evidence": "PARK_DATA_EDITOR:image:78ad56fd18e94f79a9b02731a33560df",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2016, CC BY-SA 4.0, importée avec textes en huit langues."
+        },
+        {
+          "eventId": "image-metadata-78ad56fd18e94f79a9b02731a33560df",
+          "appliedAt": "2026-11-15T01:59:39.348Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+          "evidence": "PARK_DATA_EDITOR:image:78ad56fd18e94f79a9b02731a33560df",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "closure-78ad56fd18e94f79a9b02731a33560df",
+          "appliedAt": "2026-11-15T01:59:39.348Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+          "evidence": "PARK_DATA_EDITOR:image:78ad56fd18e94f79a9b02731a33560df",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-osttirodler-20261115/audit.json",
+          "summary": "Audit final : huit pages et photo HTTP 200, complétude 86 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date réelle. Revoir la prochaine ouverture, les horaires et les tarifs officiels ; l’ancienne fiche Park et son item restent masqués et NotRelevant, sans suppression.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3856,35 +3913,49 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.lienzer-bergbahnen.at/de/osttirodler-sommer.html",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Lienzer Bergbahnen — statut et saison 2026",
+          "url": "https://www.lienzer-bergbahnen.at/liftstatus-betriebszeiten/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Lienzer Bergbahnen — piste, longueur et règles d’accès",
+          "url": "https://www.lienzer-bergbahnen.at/en/summer-activities/family-kids/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Lienzer Bergbahnen — tarifs 2026 archivés",
+          "url": "https://www.lienzer-bergbahnen.at/en/services-content-prices-opening-hours/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Rapport historique — construction en 2010",
+          "url": "https://www.klenkhart.at/wp-content/uploads/2024/01/jahresbericht-2010.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Muck, 2 juin 2016, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Lienz-Osttirodler.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "AT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Osttirodler",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13064.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Lienzer Bergbahnen",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Lienz , Tyrol",
-            "sourceOpenedYear": "2010"
-          },
-          {
-            "name": "Lienz",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=369#location-id-952",
+            "source": "Lienzer Bergbahnen",
+            "url": "https://www.lienzer-bergbahnen.at/en/summer-activities/family-kids/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Lienz",
-            "referenceId": "location-id-952",
-            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+            "sourceVenueName": "Hochstein",
+            "sourceLocality": "Lienz"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Une piste avec billet autonome dans un domaine de remontées et d’activités de montagne ; l’ancienne fiche de parc n’avait que ce parkItem. Migration contrôlée sans suppression."
       }
     },
     {
@@ -5766,7 +5837,7 @@
           "summary": "Audit final 88/100 sans blocage ; site et Facebook publiés."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; trouver une photographie réutilisable de la piste, renouveler calendrier et prix après le 31 octobre 2026, puis contrôler les conditions exactes des carnets. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Audit public du 15 novembre 2026 : aucune photo propre publiée. Chercher une vue exacte de la Speed-Gleit-Bahn de Stoaninger Alm avec droits de réutilisation vérifiables ; importer, contrôler les huit pages et dater le reçu réel. Vérifier aussi le calendrier de la prochaine saison.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5855,7 +5926,7 @@
         "publicationBlockers": [],
         "gapCount": 4
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-coverage-20261115/audit.json"
     },
     {
       "entryId": "AT-candidate-f6b80dea57a125",

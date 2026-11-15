@@ -1,0 +1,132 @@
+{
+  "work": "Migrated the hidden mono-attraction Lienzer Bergbahnen legacy Park and its Osttirodler parkItem to a published standalone Alpine coaster; imported one exact credited photograph and published its Facebook announcement.",
+  "qualification": "Lienzer Bergbahnen is a cableway and mountain recreation operator rather than a structured amusement park. Its hidden Park fiche contained only the Osttirodler item. The operator sells an Osttirodler-only ticket as well as a separate lift-and-ride ticket. Official editor searches found the hidden legacy Park but no Osttirodler standalone. The controlled migration marked the hidden legacy Park and item NotRelevant without deletion.",
+  "sources": {
+    "operatorStatus": "https://www.lienzer-bergbahnen.at/liftstatus-betriebszeiten/",
+    "operatorFamilyAndAccess": "https://www.lienzer-bergbahnen.at/en/summer-activities/family-kids/",
+    "operator2026Prices": "https://www.lienzer-bergbahnen.at/en/services-content-prices-opening-hours/",
+    "historicalConstructionReport": "https://www.klenkhart.at/wp-content/uploads/2024/01/jahresbericht-2010.pdf",
+    "commonsPhoto": "https://commons.wikimedia.org/wiki/File:Lienz-Osttirodler.jpg"
+  },
+  "entity": {
+    "id": "78d938fd-fad0-426b-b951-dd88e66f05cf",
+    "name": "Osttirodler",
+    "kind": "StandaloneAttraction",
+    "countryCode": "AT",
+    "operatingStatus": "TemporarilyClosed",
+    "published": true,
+    "legacyParkId": "56af967a-ce6a-4f94-b40a-911dd9effc87",
+    "legacyParkItemId": "318ccbbd-f315-4e49-818a-b2f7b104214c"
+  },
+  "officialFacts": {
+    "place": "Hochstein / Schlossberg above Lienz, Austria",
+    "coordinates": {
+      "latitude": 46.828037,
+      "longitude": 12.740556
+    },
+    "descentLengthMeters": 2700,
+    "minimumChildAgeYears": 3,
+    "childrenUnderHeightCmRideWithSupervisor": 135,
+    "ridersPerSled": "one or two",
+    "seasonStateOn2026-11-15": "2026 summer season ended; all operator lifts listed closed",
+    "runDays": "When Schlossbergbahn operates"
+  },
+  "sourceLimitations": [
+    "The operator shows the 2026 summer season ended and no future Osttirodler dates. The ride is temporarily closed; no weekly schedule or active public price was invented.",
+    "The operator’s 2026 tariffs are retained below for future verification only, not offered as current fares during closure.",
+    "Legacy openingDate 2010-01-01 was a false precise date. A historical report confirms construction in 2010 but not the exact opening day, so openingDate was cleared.",
+    "The legacy item length was 2800 m; the operator describes a 2.7 km descent. The native length was corrected to the official value.",
+    "The Commons photograph dates from June 2016. It shows the exact track, but not its current appearance.",
+    "The legacy Park and parkItem remain hidden and NotRelevant. No destructive deletion was requested or performed."
+  ],
+  "operatorDisplayed2026TariffsForRecheck": {
+    "currency": "EUR",
+    "source": "https://www.lienzer-bergbahnen.at/en/services-content-prices-opening-hours/",
+    "observedAt": "2026-11-15",
+    "singleRideOnly": {
+      "adult": 16,
+      "youthChildBorn2008to2020": 12,
+      "childAge3to5": 7
+    },
+    "liftSectionOnePlusRide": {
+      "adult": 24.5,
+      "youthChildBorn2008to2020": 18,
+      "childAge3to5": 7
+    }
+  },
+  "editorSearch": {
+    "parkQueries": [
+      "Osttirodler",
+      "Lienzer Bergbahnen",
+      "Hochstein"
+    ],
+    "standaloneQueries": [
+      "Osttirodler",
+      "Lienzer Bergbahnen",
+      "Hochstein"
+    ],
+    "matchingStandaloneBeforeMigration": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "aaace4b3-86f1-4790-aae0-ce482f48a533",
+      "appliedAtUtc": "2026-11-15T01:57:47.5433169Z",
+      "summary": "Created standalone and marked hidden mono-attraction legacy Park and item NotRelevant"
+    },
+    {
+      "operationId": "4cbca462-b575-4560-8ee8-4e12b6fac1fa",
+      "appliedAtUtc": "2026-11-15T01:59:00.1215055Z",
+      "summary": "Added three official access rules, corrected descent length and cleared false precise opening date"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "78ad56fd18e94f79a9b02731a33560df",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Lienz-Osttirodler.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Lienz-Osttirodler.jpg",
+      "author": "Muck",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2016-06-02",
+      "subject": "High curved section of the exact Osttirodler coaster track in woodland",
+      "modification": "Resized to 1600×1200 and JPEG optimized for web display",
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T01:59:35.684Z",
+      "metadataAppliedAtUtc": "2026-11-15T01:59:39.348Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 86,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 1,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/78d938fd-fad0-426b-b951-dd88e66f05cf/osttirodler",
+    "sitePublishedAtUtc": "2026-11-15T02:00:52.2078481Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:3e548125-4b6f-4386-8d0f-2537e4438024",
+    "facebookStatus": "Published",
+    "facebookId": "471b837c6d48454181b163a8b63ff83f",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127396969424431",
+    "facebookPublishedAtUtc": "2026-11-15T02:01:51.9366684Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T01:59:39.348Z",
+  "remainingGaps": [
+    "Recheck the next officially announced Osttirodler operating calendar and reopen status.",
+    "Verify fresh fares when the ride resumes; do not reuse the expired 2026 tariff as current."
+  ]
+}

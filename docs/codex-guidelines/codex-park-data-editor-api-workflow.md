@@ -116,9 +116,10 @@ Pour couper l’accès depuis Codex :
 | Diagnostiquer l'éligibilité publique de l'historique d'un parc | `GET park-data-editor/parks/{id}/history-diagnostics` |
 | Téléverser/rattacher/documenter une image de parc | `park-data-editor/images/*` |
 | Préparer puis publier explicitement un lien Facebook | `GET park-data-editor/social-publications/facebook/draft`, puis `POST park-data-editor/social-publications/facebook` |
+| Supprimer une publication Facebook manuelle créée par le même compte | `DELETE park-data-editor/social-publications/facebook/{publicationId}` via `DeleteOwnFacebookPublication` |
 | Révoquer le jeton courant | `DELETE park-data-editor/tokens/current` |
 
-Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, une route générale de suppression ou les autres fonctions d’administration. La seule suppression disponible est le lot contrôlé `suppr` d’un parc, limité aux images, parkItems, zones et au parc cible lui-même lorsqu’ils sont explicitement identifiés et autorisés. La suppression du parc parent est refusée tant qu’il est visible, qu’il n’est pas classé `NotRelevant` ou qu’une dépendance contrôlée subsiste.
+Le rôle n’ouvre pas la gestion des utilisateurs, l’audit, la sécurité, les autres opérations de réseaux sociaux, le SEO, les sources de données, une route générale de suppression ou les autres fonctions d’administration. Il permet uniquement de retirer ses propres publications Facebook manuelles et d’appliquer le lot contrôlé `suppr` d’un parc, limité aux images, parkItems, zones et au parc cible lui-même lorsqu’ils sont explicitement identifiés et autorisés. La suppression du parc parent est refusée tant qu’il est visible, qu’il n’est pas classé `NotRelevant` ou qu’une dépendance contrôlée subsiste.
 
 `SearchParks` accepte `-Page` et `-PageSize` pour parcourir séquentiellement l’inventaire complet sans contourner le client officiel. La taille de page est limitée à 50 et chaque page doit être traitée avant d’appeler la suivante.
 

@@ -1060,7 +1060,7 @@
         "SkyHelix Sentosa Sentosa, Singapour"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-23T13:35:20.256Z",
+      "lastDataIntegrationAt": "2026-11-15T02:58:22.400Z",
       "integrationHistory": [
         {
           "eventId": "apply-beb0e1d8-e7a5-48e0-a07e-27efe49c1405",
@@ -1151,9 +1151,29 @@
           "evidence": "PARK_DATA_EDITOR:apply:91100d31-b454-4672-9711-25755d7b76c0",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-audit.json",
           "summary": "Audit final 85/100 sans blocage ; site et Facebook publiés."
+        },
+        {
+          "eventId": "image-3680f7983c2b4876aa1d74faed5a8173",
+          "appliedAt": "2026-11-15T02:57:54.865Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:image:3680f7983c2b4876aa1d74faed5a8173",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la nacelle SkyHelix et de sa tour, LN9267, Wikimedia Commons CC BY-SA 4.0, importée et publiée avec légendes et crédits dans huit langues."
+        },
+        {
+          "eventId": "image-ebeac47b1f294e7085e62c611f991e7c",
+          "appliedAt": "2026-11-15T02:58:22.400Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+          "evidence": "PARK_DATA_EDITOR:image:ebeac47b1f294e7085e62c611f991e7c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skyhelix-photo-20261115/audit.json",
+          "summary": "Photo exacte de l’entrée et de la base de SkyHelix, LN9267, Wikimedia Commons CC BY-SA 4.0, importée et publiée ; huit pages et deux images contrôlées HTTP 200."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver la ligne ; chercher une photo réutilisable, clarifier les deux plages horaires officielles et renouveler les prix en ligne. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Deux photos exactes, publiées et créditées ont comblé le manque le 15 novembre 2026. Conserver la ligne et ses reçus ; clarifier les deux plages horaires officielles et renouveler les prix en ligne à la prochaine vérification. Le post Facebook existant reste publié, sans doublon.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -1189,6 +1209,16 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
           "accessedAt": "2026-10-23"
+        },
+        {
+          "label": "Wikimedia Commons — SkyHelix et nacelle, LN9267, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sentosa_12-11-2023(28).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — entrée SkyHelix, LN9267, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sentosa_12-11-2023(60).jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -1231,12 +1261,11 @@
         }
       },
       "lastEditorialAudit": {
-        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-20261023/skyhelix-sentosa-audit.json",
-        "score": 85,
-        "publicationBlockers": [],
-        "gapCount": 3
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skyhelix-photo-20261115/audit.json",
+        "score": 90,
+        "publicationBlockers": []
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-sg-skyhelix-photo-20261115/audit.json"
     },
     {
       "entryId": "SG-candidate-standalone-864d87f292e0f6",

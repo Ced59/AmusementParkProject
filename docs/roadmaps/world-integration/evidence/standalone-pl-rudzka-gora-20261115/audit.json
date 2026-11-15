@@ -1,0 +1,143 @@
+{
+  "work": "Qualified the old Wiegand Łódź lead as the Rudzka Góra trough slide; created one standalone page with eight descriptions, two official offers, one child rule and three exact attributed historic photographs; published the website and Facebook post; retained permanent backlog entry.",
+  "qualification": "The separate Rudzka Góra gravity trough slide lies next to restaurant Bacówka u Józka at Starorudzka 50 in Łódź. The operator sells ride tickets at the restaurant and states its own ride rules. The Wiegand Łódź reference points to Rudzka Góra. Official Park and StandaloneAttraction searches for Rudzka and Bacówka returned no matches before creation.",
+  "sources": {
+    "operator": "https://bacowkaujozka.pl/tor-saneczkowy/",
+    "wiegand": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1369",
+    "osmArrivalPoint": "https://www.openstreetmap.org/way/138275304",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_luge_track_01.jpg",
+      "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_luge_track_02.jpg",
+      "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_-tor_saneczkowy.jpg"
+    ]
+  },
+  "officialFacts": {
+    "singleRidePln": 15,
+    "fivePaidRidesPln": 75,
+    "sixthRideFreeAfterFivePaid": true,
+    "underEightAdultRequired": true,
+    "ticketsSoldAtRestaurant": true,
+    "operatesYearRoundIfWeatherPermits": true,
+    "noRidesDuringPrecipitationOrIce": true,
+    "operatorRecommendsCallingInAutumnAndWinter": true
+  },
+  "sourceLimitations": [
+    "The operator gives no reliable fixed opening timetable for the slide, so no weekly hour rule was entered. Check current operation before travel.",
+    "All three exact reusable photographs are historical (two from 2015, one from 2006). Captions state their years; newer exact licensed photos would improve the fiche.",
+    "Coordinates refer to the ticket-selling restaurant and arrival point next to the ride rather than a measured centre of the trough."
+  ],
+  "duplicateSearches": {
+    "parkQueries": [
+      "Rudzka",
+      "Bacówka"
+    ],
+    "standaloneQueries": [
+      "Rudzka",
+      "Bacówka"
+    ],
+    "matchesBeforeCreation": 0
+  },
+  "entity": {
+    "id": "ee5b03a0-7953-41fa-a6fd-6bb58f43912c",
+    "name": "Tor saneczkowy na Rudzkiej Górze",
+    "countryCode": "PL",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "dataReceipts": [
+    {
+      "operationId": "7bcde777-b900-4f90-b1a9-397a9fe1107b",
+      "appliedAtUtc": "2026-11-15T00:23:37.0506235Z",
+      "summary": "Identity, location and eight descriptions"
+    },
+    {
+      "operationId": "15df1129-184f-4186-8bb4-e6da044e133b",
+      "appliedAtUtc": "2026-11-15T00:24:48.4049566Z",
+      "summary": "Two official fares, child rule and weather-aware opening note"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "d4dc64a64c2a4697997adf2f8e92a600",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Rudzka_G%C3%B3ra_luge_track_01.jpg",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_luge_track_01.jpg",
+      "author": "Zorro2212",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "25 April 2015",
+      "modification": "resized for web",
+      "width": 1800,
+      "height": 1205,
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T00:28:11.68Z",
+      "metadataAppliedAtUtc": "2026-11-15T00:28:16.417Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "f0207ce5628b4ef8830720af208bee2c",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Rudzka_G%C3%B3ra_luge_track_02.jpg",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_luge_track_02.jpg",
+      "author": "Zorro2212",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "25 April 2015",
+      "modification": "resized for web",
+      "width": 1800,
+      "height": 1205,
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T00:28:47.523Z",
+      "metadataAppliedAtUtc": "2026-11-15T00:30:03.018Z",
+      "publicBinaryHttpStatus": null
+    },
+    {
+      "imageId": "015b16498b564ca89c1b15cced38bcd6",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Rudzka_G%C3%B3ra_-tor_saneczkowy.jpg",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Rudzka_G%C3%B3ra_-tor_saneczkowy.jpg",
+      "author": "Arewicz",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "May 2006",
+      "modification": "None",
+      "width": 1024,
+      "height": 768,
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T00:29:16.801Z",
+      "metadataAppliedAtUtc": "2026-11-15T00:29:20.816Z",
+      "publicBinaryHttpStatus": null
+    }
+  ],
+  "audit": {
+    "completenessScore": 78,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "fareOfferCount": 2,
+    "accessConditionCount": 1,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/ee5b03a0-7953-41fa-a6fd-6bb58f43912c/tor-saneczkowy-na-rudzkiej-gorze",
+    "sitePublishedAtUtc": "2026-11-15T00:30:49.8307851Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:855d6686-e123-43b1-ba6e-aad1d5d63e8c",
+    "facebookStatus": "Published",
+    "facebookId": "576266b13e0342639022f8cf90544cf1",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127390513424431",
+    "facebookPublishedAtUtc": "2026-11-15T00:31:51.4420211Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T00:30:03.018Z",
+  "remainingGaps": [
+    "Find newer exact licensed photos of the track.",
+    "Check current weather-dependent operation and confirm any future tariff changes with the operator."
+  ]
+}
