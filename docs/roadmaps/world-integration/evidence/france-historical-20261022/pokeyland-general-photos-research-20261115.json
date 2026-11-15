@@ -1,0 +1,156 @@
+{
+  "createdAtUtc": "2026-11-15T11:18:27.103499+00:00",
+  "distinctPhotoCount": 2,
+  "photos": [
+    {
+      "key": "32110959",
+      "description": "Vue générale d’une cour du parc, chalets en bois, tables et aire de Segway avec visiteurs.",
+      "author": "Thierry Hauuy (EXIF: Hauuy Thierry)",
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/",
+      "pageLocalCopy": "../official-services-a-disposition.html",
+      "variants": [
+        {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/official-general-32110959-original.jpg",
+          "source": {
+            "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959.jpg",
+            "accessedAtUtc": "2026-11-15T11:11:35.170745+00:00",
+            "status": 200,
+            "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959.jpg",
+            "contentType": "image/jpeg",
+            "bytes": 2598385,
+            "sha256": "23485c8b48a9924fe03b6efed7015fecf85690ad0d58656cb1db09f9f769fdb0",
+            "file": "official-general-32110959-original.jpg"
+          },
+          "width": 2736,
+          "height": 1824,
+          "locallyEdited": false,
+          "personallyViewed": true,
+          "visualReviewLimit": null
+        },
+        {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/official-general-32110959-1350.jpg",
+          "source": {
+            "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+            "accessedAtUtc": "2026-11-15T11:12:28.937601+00:00",
+            "status": 200,
+            "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1350x900.jpg",
+            "contentType": "image/jpeg",
+            "bytes": 335161,
+            "sha256": "01b79b2048f2adf6ecbdf2e757004e9ed3317c1eb960830c9f9f6f8c72dbd833",
+            "file": "official-general-32110959-1350.jpg"
+          },
+          "width": 1350,
+          "height": 900,
+          "locallyEdited": false,
+          "personallyViewed": true,
+          "visualReviewLimit": null
+        }
+      ],
+      "exifEvidence": {
+        "DateTime": "2016:05:06 14:57:38",
+        "DateTimeOriginal": "2016:05:05 14:34:15",
+        "DateTimeDigitized": "2016:05:05 14:34:15",
+        "Artist": "Hauuy Thierry",
+        "Copyright": null,
+        "timezone": null
+      },
+      "historicalQualification": "EXIF DateTimeOriginal indicates 2016; do not label this as a 2026 scene. Exact timestamp has no timezone and is metadata evidence, not independently corroborated capture time.",
+      "currentness": "Not verified current; recommend historical/noncurrent treatment.",
+      "visualAssessment": "Real photograph, no visible watermark or promotional collage in the inspected source variants. Distinct scene and camera position from the other selected photo.",
+      "rights": "Official publisher Pokeyland; preserve identified photographer credit; no open licence claimed.",
+      "importStatus": "Not imported. Check root current media IDs and source hashes first. Original and 1350 rendition count as one photo."
+    },
+    {
+      "key": "JMP_9374",
+      "description": "Vue générale de l’étang, passerelle en bois, fontaine, végétation et chalets.",
+      "author": "Arnaud Scherer (EXIF Artist et Copyright)",
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/",
+      "pageLocalCopy": "../official-services-a-disposition.html",
+      "variants": [
+        {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/official-general-JMP_9374-original.jpg",
+          "source": {
+            "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374.jpg",
+            "accessedAtUtc": "2026-11-15T11:11:36.746358+00:00",
+            "status": 200,
+            "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374.jpg",
+            "contentType": "image/jpeg",
+            "bytes": 8399632,
+            "sha256": "6b8e03b4b75aad2b64c75886040e764de2bfb31b3e75cdbeb69d24ea95821f3b",
+            "file": "official-general-JMP_9374-original.jpg"
+          },
+          "width": 3000,
+          "height": 2000,
+          "locallyEdited": false,
+          "personallyViewed": false,
+          "visualReviewLimit": "8.4MB original JMP_9374 exceeded tool image output limit; official 1024/1350 variants were personally viewed."
+        },
+        {
+          "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/geolocation-followup/official-general-JMP_9374-1350.jpg",
+          "source": {
+            "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+            "accessedAtUtc": "2026-11-15T11:12:29.683875+00:00",
+            "status": 200,
+            "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1350x900.jpg",
+            "contentType": "image/jpeg",
+            "bytes": 315088,
+            "sha256": "23b7dc76c12b8f04c76507dcff49fcd1317985a97ec3f0e8e207ab4d23e7df81",
+            "file": "official-general-JMP_9374-1350.jpg"
+          },
+          "width": 1350,
+          "height": 900,
+          "locallyEdited": false,
+          "personallyViewed": true,
+          "visualReviewLimit": null
+        }
+      ],
+      "exifEvidence": {
+        "DateTime": "2016:08:08 00:25:50",
+        "DateTimeOriginal": "2016:08:07 13:44:29",
+        "DateTimeDigitized": "2016:08:07 13:44:29",
+        "Artist": "Arnaud Scherer ||  https://www.facebook.com/Arnaud.s.photographie",
+        "Copyright": "Arnaud Scherer ||  https://www.facebook.com/Arnaud.s.photographie",
+        "timezone": null
+      },
+      "historicalQualification": "EXIF DateTimeOriginal indicates 2016; do not label this as a 2026 scene. Exact timestamp has no timezone and is metadata evidence, not independently corroborated capture time.",
+      "currentness": "Not verified current; recommend historical/noncurrent treatment.",
+      "visualAssessment": "Real photograph, no visible watermark or promotional collage in the inspected source variants. Distinct scene and camera position from the other selected photo.",
+      "rights": "Official publisher Pokeyland; preserve identified photographer credit; no open licence claimed.",
+      "importStatus": "Not imported. Check root current media IDs and source hashes first. Original and 1350 rendition count as one photo."
+    }
+  ],
+  "additionalReviewedImages": [
+    {
+      "file": "official-service-035-2.jpg",
+      "finding": "Real courtyard/snack-building view, additional angle; not selected among the two requested photos."
+    },
+    {
+      "file": "official-service-45152318.jpg",
+      "finding": "Real parking view; suited to parking subject, not asserted as an entrance."
+    },
+    {
+      "file": "official-service-00478395.jpg",
+      "finding": "Children/adults on nets with orange transparent sphere; activity-specific, not a general entrance."
+    },
+    {
+      "file": "official-service-23578433.jpg",
+      "finding": "People at outdoor picnic tables with paintball in background; not a first-aid-post photograph despite nearby page text."
+    },
+    {
+      "file": "tourism-11.jpg",
+      "finding": "Legacy logo graphic on forest background; excluded as real park photo."
+    },
+    {
+      "file": "tourism-9.jpg",
+      "finding": "Promotional collage; excluded as real park photo."
+    },
+    {
+      "files": [
+        "tourism-4.jpg",
+        "tourism-5.jpg",
+        "tourism-6.jpg"
+      ],
+      "finding": "Real activity portraits (accrobranche/paintball), not broad park views and not used to geolocate unnamed courses."
+    }
+  ]
+}

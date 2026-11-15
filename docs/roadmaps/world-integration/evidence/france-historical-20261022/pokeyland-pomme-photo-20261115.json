@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/coaster-logo-followup/official-pomme-original.jpg",
+    "kind": "Photo",
+    "source": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-pomme-pokeyland-moselle.jpg",
+      "accessedAtUtc": "2026-11-15T10:53:21.824907+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-pomme-pokeyland-moselle.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 773220,
+      "sha256": "ab17a6c3818049515b6448687651f482d40a862c1ed7f5c94dfc227818973e5a",
+      "file": "official-pomme-original.jpg"
+    },
+    "width": 1733,
+    "height": 2600,
+    "mode": "RGB",
+    "hasTransparency": false,
+    "embeddedDateTimes": {},
+    "personallyViewed": true,
+    "locallyEdited": false,
+    "captureDate": null,
+    "creditQualification": "Published by Pokeyland; no individual photographer identified and no open licence claimed.",
+    "sourcePage": "https://www.pokeyland.com/activites/parc/la-pomme/",
+    "discovery": "Original-size WordPress candidate derived by removing the official -1350x900 rendition suffix; requested once, HTTP200. Full portrait personally compared with linked rendition.",
+    "visualDescription": "Real photograph of multicoloured caterpillar train on yellow steel track among trees, seen from below; blue nose and orange/green body; wooden support/railing in foreground.",
+    "qualification": "1733x2600 portrait,773220bytes, no visible overlaid watermark. Same exposure as official-pomme-1350.jpg; count as one photo, not two. Upload path2026/04 is not capture date."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-pomme-pokeyland-moselle.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/coaster-logo-followup/official-pomme-original.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/02-pomme-photo-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/02-pomme-photo-import-result.json"
+  },
+  "metadata": {
+    "description": "La Pomme, photographie officielle de la chenille multicolore dans les arbres.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-pomme-pokeyland-moselle.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La chenille orange, jaune et verte de La Pomme, au nez bleu, sur sa voie jaune entre les arbres de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Pomme’s orange, yellow and green caterpillar with a blue nose on yellow track among Pokeyland’s trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die orange-gelb-grüne Raupe von La Pomme mit blauer Nase auf der gelben Schiene zwischen den Bäumen von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "La oruga naranja, amarilla y verde de La Pomme, con nariz azul, sobre la vía amarilla entre los árboles de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il bruco arancione, giallo e verde di La Pomme, con il naso blu, sul binario giallo tra gli alberi di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De oranje, gele en groene rups van La Pomme met een blauwe neus op de gele baan tussen de bomen van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pomarańczowo-żółto-zielona gąsienica La Pomme z niebieskim nosem na żółtym torze między drzewami Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A lagarta laranja, amarela e verde de La Pomme, com nariz azul, na via amarela entre as árvores de Pokeyland."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La tête souriante de La Pomme domine une barrière en bois ; les couleurs du train se détachent sur le ciel bleu et les branches."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Pomme’s smiling head rises above a wooden railing, its colourful train framed by blue sky and branches."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der lächelnde Kopf von La Pomme ragt über ein Holzgeländer; der bunte Zug hebt sich vor blauem Himmel und Ästen ab."
+      },
+      {
+        "languageCode": "es",
+        "value": "La cabeza sonriente de La Pomme sobresale de una barandilla de madera; el tren multicolor destaca frente al cielo azul y las ramas."
+      },
+      {
+        "languageCode": "it",
+        "value": "La testa sorridente di La Pomme sovrasta una ringhiera di legno; il treno multicolore risalta sul cielo azzurro e tra i rami."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De lachende kop van La Pomme steekt boven een houten hek uit; de kleurrijke trein valt op tegen de blauwe lucht en de takken."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uśmiechnięta głowa La Pomme góruje nad drewnianą barierką; kolorowy pociąg wyróżnia się na tle błękitnego nieba i gałęzi."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A cabeça sorridente de La Pomme ergue-se acima de uma vedação de madeira; o comboio colorido destaca-se no céu azul e entre os ramos."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "path": "park_item/017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "description": "La Pomme, photographie officielle de la chenille multicolore dans les arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1733,
+      "height": 2600,
+      "sizeInBytes": 773220,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-pomme-pokeyland-moselle.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La chenille orange, jaune et verte de La Pomme, au nez bleu, sur sa voie jaune entre les arbres de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme’s orange, yellow and green caterpillar with a blue nose on yellow track among Pokeyland’s trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die orange-gelb-grüne Raupe von La Pomme mit blauer Nase auf der gelben Schiene zwischen den Bäumen von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "La oruga naranja, amarilla y verde de La Pomme, con nariz azul, sobre la vía amarilla entre los árboles de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il bruco arancione, giallo e verde di La Pomme, con il naso blu, sul binario giallo tra gli alberi di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De oranje, gele en groene rups van La Pomme met een blauwe neus op de gele baan tussen de bomen van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowo-żółto-zielona gąsienica La Pomme z niebieskim nosem na żółtym torze między drzewami Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A lagarta laranja, amarela e verde de La Pomme, com nariz azul, na via amarela entre as árvores de Pokeyland."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La tête souriante de La Pomme domine une barrière en bois ; les couleurs du train se détachent sur le ciel bleu et les branches."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme’s smiling head rises above a wooden railing, its colourful train framed by blue sky and branches."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der lächelnde Kopf von La Pomme ragt über ein Holzgeländer; der bunte Zug hebt sich vor blauem Himmel und Ästen ab."
+        },
+        {
+          "languageCode": "es",
+          "value": "La cabeza sonriente de La Pomme sobresale de una barandilla de madera; el tren multicolor destaca frente al cielo azul y las ramas."
+        },
+        {
+          "languageCode": "it",
+          "value": "La testa sorridente di La Pomme sovrasta una ringhiera di legno; il treno multicolore risalta sul cielo azzurro e tra i rami."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De lachende kop van La Pomme steekt boven een houten hek uit; de kleurrijke trein valt op tegen de blauwe lucht en de takken."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uśmiechnięta głowa La Pomme góruje nad drewnianą barierką; kolorowy pociąg wyróżnia się na tle błękitnego nieba i gałęzi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cabeça sorridente de La Pomme ergue-se acima de uma vedação de madeira; o comboio colorido destaca-se no céu azul e entre os ramos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:23:40.652Z",
+      "updatedAt": "2026-11-15T11:23:44.116Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T11:23:47.2280695Z",
+    "startedAtUtc": "2026-11-15T11:23:33.0208979Z"
+  },
+  "personalReview": {
+    "rootViewedNativePortrait": true,
+    "noCropRecreationOrUpscale": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true,
+    "sameExposure1350x900VariantExcludedAsDuplicate": true
+  },
+  "dateRecorded": "API result.createdAt actual import UTC; receivedAt and updatedAt not substituted.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T11:08:33.783672Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T11:27:10.806703Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Historical inventory qualification, eight-language zone/item descriptions, genuinephotos/maps/currentcalendar/pricing/history, then onlysinglefullaudit. GPSresearch and Vulcanianextdossierpublicresearch active in agents, rootexclusiveAPI. ExistingPomme corrected5April2025 preservingID. FounderBrunoPoquet ID6fc80030-d7d3-420b-b2ca-3093af8d4104, operatorf3164e8b-dcbf-4019-a2e1-e2fd27a27f01. Prepare-references helper has initial operator.biography error; finaldocument uses description and is authoritative.",
+  "nextAction": "Continue historical residual identities from 2017 sign (calèche, mer de filet, old food names, Archery Games) with sources before creation/alias. Complete 69 remaining item descriptions, three zones, actual photos, maps, 2026 calendar, prices, history/article. Geolocation report has 11 named OSM point candidates from 2021–24, not automatically verified current positions. Full final audit not yet performed. Root only sequential official API. Do not rerun already applied prepare/record helpers. Initial historical Preview zone warning corrected by redeclaring existing zone; final 24-entity Preview unchanged.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -151,23 +151,51 @@
       "proof": "pokeyland-06-park-description-20261115.json",
       "operationId": "b3a1ae1b-bfed-4bcc-8835-365f5d3d898e",
       "appliedAtUtc": "2026-11-15T11:08:33.783672Z"
+    },
+    {
+      "proof": "pokeyland-07-item-descriptions-20261115.json",
+      "operationId": "594bc4ff-6c84-4a29-b9cb-418322e9fb3b",
+      "appliedAtUtc": "2026-11-15T11:21:59.7305412Z"
+    },
+    {
+      "proof": "pokeyland-08-historical-inventory-20261115.json",
+      "operationId": "e49b214a-d8f0-408c-8374-64ef84616278",
+      "appliedAtUtc": "2026-11-15T11:27:10.806703Z"
     }
   ],
   "currentCounts": {
-    "items": 57,
+    "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 1,
+    "media": 2,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 0,
-    "referenceLocalizedTexts": 16
+    "itemsDescribed": 5,
+    "referenceLocalizedTexts": 16,
+    "historicalUnknownItems": 17
   },
   "imports": [
     {
       "proof": "pokeyland-logo-20261115.json",
       "imageId": "c71e7771f1a247f5b9dbf49cf3c69aca",
       "createdAtUtc": "2026-11-15T11:04:49.147Z"
+    },
+    {
+      "proof": "pokeyland-pomme-photo-20261115.json",
+      "imageId": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "createdAtUtc": "2026-11-15T11:23:40.652Z"
     }
-  ]
+  ],
+  "updatedAtUtc": "2026-11-15T11:28:36.106551+00:00",
+  "idempotence": {
+    "proof": "pokeyland-idempotence-followup-20261115.json",
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 24,
+      "warnings": 0,
+      "errors": 0
+    }
+  }
 }

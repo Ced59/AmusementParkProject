@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 1,
+  "preparedAtUtc": "2026-11-15T11:26:14.336475+00:00",
+  "scope": "Recherche publique uniquement — cinq pistes résiduelles de Pokeyland ; aucun appel PDE, import, mutation, Git ou modification de registre / working-state.",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "previousReportPreserved": "historical-inventory-followup-20261115.json",
+  "summary": {
+    "strongestNewEvidence": "Plan officiel photographié en place en 2017 et photo nominative du Big Air Jump en fonctionnement, tous deux dans un reportage contemporain.",
+    "currentStatuses": "Aucune fermeture, substitution ou alias actuel déduit d’une absence de catalogue. Les offres historiques restent à rapprocher avec l’état serveur par le parent.",
+    "mutationsPerformed": 0,
+    "photosImported": 0
+  },
+  "sources": {
+    "officialMap2022": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.pdf",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "accessedAtUtc": "2026-11-15T10:36:57.806942+00:00",
+      "httpStatus": 200,
+      "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798",
+      "bytes": 4042269,
+      "role": "Plan primaire publié par le parc",
+      "limits": "Pas de millésime imprimé établi. Version rattachée à 2022 par le chemin officiel /2022/06/ et la métadonnée PDF du 13 juin 2022 ; ce n’est pas une date d’ouverture des activités."
+    },
+    "groupsCurrent": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/official-groups.html",
+      "url": "https://www.pokeyland.com/vos-sorties-de-groupe/",
+      "accessedAtUtc": "2026-11-15T10:59:08.533565+00:00",
+      "httpStatus": 200,
+      "sha256": "1f3db381ad0530a06ab1c0d3ea52af60c079e3c692ffb0db284a1c18e20e53e8",
+      "bytes": 91379,
+      "role": "Page actuelle primaire du parc",
+      "limits": "Consultation en 2026 ne prouve pas la création de l’arboretum en 2026 ni la mise à jour récente de cette phrase."
+    },
+    "reportage2017": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-visit-2017.html",
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "accessedAtUtc": "2026-11-15T11:17:45.185777+00:00",
+      "httpStatus": 200,
+      "sha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+      "bytes": 617393,
+      "role": "Reportage photographique contemporain, source primaire de visite",
+      "limits": "Date affichée : 11 août 2017 à 18:00, mise à jour 18:08. Le chemin /2017/08/07/ n’est pas retenu comme date de publication. Aucun jour de prise de vue déduit du timestamp des fichiers."
+    },
+    "season2017": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/lorraine-season-2017.html",
+      "url": "https://www.lorraineaucoeur.com/evt-21266/parc-de-loisirs-pokeyland-saison-2017-et-nouveautes/moselle-fey/promo-sortie",
+      "accessedAtUtc": "2026-11-15T10:57:40.417418+00:00",
+      "httpStatus": 200,
+      "sha256": "5fdbfbd27f47aafdb62e34a79ba937d1db29ee1b9dcadb8f8c51299d1b870ccc",
+      "bytes": 153724,
+      "role": "Présentation promotionnelle contemporaine de la saison 2017 et commentaires visiteurs datés",
+      "limits": "Liste de nouveautés, sans preuve que chaque activité ouvrait effectivement le jour d’ouverture générale du parc."
+    },
+    "loractu2017": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/loractu-2017.html",
+      "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+      "accessedAtUtc": "2026-11-15T10:59:09.950737+00:00",
+      "httpStatus": 200,
+      "sha256": "54699215c76a4826922188935fa727b06cbe838bfb55a688b0a0a0b1dae8d976",
+      "bytes": 63951,
+      "role": "Article de presse du 13 avril 2017 à 15h04",
+      "limits": "La saison a débuté le 8 avril ; cette date générale n’est pas transposée aux ouvertures individuelles."
+    },
+    "season2018": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/lorraine-season-2018.html",
+      "url": "https://www.lorraineaucoeur.com/evt-24517/parc-de-loisirs-pokeyland-saison-2018-et-nouveautes/moselle-fey/promo-sortie",
+      "accessedAtUtc": "2026-11-15T11:17:48.975798+00:00",
+      "httpStatus": 200,
+      "sha256": "4bc265495e08d142d6762fd878cecd0836dcfd58312640764a3461eacf5ec785",
+      "bytes": 166932,
+      "role": "Présentation promotionnelle contemporaine de la saison 2018",
+      "limits": "Liste tarifaire d’offres, sans identification photographique des deux catégories de quad."
+    },
+    "halloween2017": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/snelac-halloween-2017.html",
+      "url": "https://www.snelac.com/post/2017/10/16/les-animations-des-sites-de-loisirs-et-culturels-pour-halloween",
+      "accessedAtUtc": "2026-11-15T11:20:10.078318+00:00",
+      "httpStatus": 200,
+      "sha256": "78566bd4ea7c13b4164b8ce934a982f7d84589fb067589c60856bdff9e500a78",
+      "bytes": 968361,
+      "role": "Annonce de la fédération professionnelle SNELAC, 16 octobre 2017",
+      "limits": "Programme annoncé pour les 21–31 octobre 2017 ; pas une preuve d’exécution de toutes les animations ni d’alias du labyrinthe permanent."
+    },
+    "season2019": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-season-2019.html",
+      "url": "https://tout-metz.com/ouverture-parc-pokeyland-fey-saison-2019-2288",
+      "accessedAtUtc": "2026-11-15T11:17:50.644265+00:00",
+      "httpStatus": 200,
+      "sha256": "5ce8bd603ab5cbb064d5a04b34594f5f744eb411290e139d526cc8c31246d629",
+      "bytes": 338483,
+      "role": "Annonce de saison, Corinne A., 5 avril 2019, mise à jour 18 novembre 2020",
+      "limits": "Ouverture générale annoncée pour le 6 avril 2019 ; texte et liste ne démontrent pas une fermeture ultérieure."
+    },
+    "reportage2016": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-visit-2016.html",
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2016/08/14/fey-un-renard-dans-les-arbres",
+      "accessedAtUtc": "2026-11-15T11:22:56.519851+00:00",
+      "httpStatus": 200,
+      "sha256": "9c5e37fbd4df9eff15d89e0272e1f3c336d300283850f874f630b151b6066fe5",
+      "bytes": 617646,
+      "role": "Compte rendu de visite signé Maxime Henry, 14 août 2016 à 05:01",
+      "limits": "Auteur du texte nommé ; la première photo porte Photo ER. Aucun photographe individuel spécifique aux autres clichés n’est établi."
+    },
+    "officialBrochure2023": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023.pdf",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+      "accessedAtUtc": "2026-11-15T10:36:59.030634+00:00",
+      "httpStatus": 200,
+      "sha256": "0631cbb032a16aef9d9893a39181094c8892104f40fd267c8fdf972817937ecc",
+      "bytes": 5283404,
+      "role": "Brochure officielle de saison 2023, vérifiée visuellement",
+      "limits": "Ne pas la confondre avec le fichier tiers Scribd au titre automatique 2023 et au nom BROCHURE-2021. Le PDF officiel consulté comporte quatre pages et ne contient pas ce plan tiers."
+    }
+  },
+  "candidates": [
+    {
+      "name": "Lancer de hache",
+      "qualification": "Identité historique attestée par plan primaire ; description physique insuffisante.",
+      "evidence": [
+        {
+          "source": "officialMap2022",
+          "fact": "Légende 4 : LANCER DE HACHE, sous INFORMATION / ÉVÉNEMENTS ; distinct des points de tir à l’arc et Petit Robin."
+        }
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "currentOperatingStatus": "Unknown",
+      "earliestSupportedPresence": "Version officielle de plan rattachée à 2022, pas un jour d’ouverture.",
+      "aliasesProven": [],
+      "descriptionReadiness": "Le nom et l’appartenance au parc sont sûrs ; pas assez pour une notice décrivant matériel, piste, cible, décor, restrictions ou animateurs.",
+      "photosPreciselyAttributed": [],
+      "remainingGaps": [
+        "Date de création et de retrait éventuel",
+        "Photographie native nominative",
+        "Équipement réel et disposition",
+        "Preuve d’exploitation actuelle ou de fermeture"
+      ],
+      "exclusions": [
+        "Lumberjack Metz / Jouy-aux-Arches / Augny est un autre établissement.",
+        "Hache’Lor à Diebling est extérieur au parc.",
+        "Les plans rechargés sur Scribd ont des titres automatiques ou des années contradictoires ; ils ne remplacent pas la provenance primaire."
+      ]
+    },
+    {
+      "name": "Arboretum",
+      "qualification": "Offre nommée sur une page officielle actuelle, mais équipement précis et autonomie de l’entité non établis.",
+      "evidence": [
+        {
+          "source": "groupsCurrent",
+          "quote": "Découvrez l’essence des arbres qui entourent notre parc grâce à notre arboretum et familiarisez-vous avec les animaux de notre mini-ferme.",
+          "fact": "La page présente séparément l’arboretum, la mini-ferme et le parcours pieds nus."
+        }
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "currentOperatingStatus": "Mentionné actuellement par le parc ; accessibilité effective non observée.",
+      "aliasesProven": [],
+      "descriptionReadiness": "Une fonction pédagogique liée à la reconnaissance des arbres est soutenue ; aucun circuit balisé, panneau, espèce ou nombre d’essences ne peut être ajouté.",
+      "photosPreciselyAttributed": [],
+      "remainingGaps": [
+        "Emprise et statut d’unité distincte ou animation de groupe",
+        "Signalétique et espèces",
+        "Date d’ouverture",
+        "Photographie nominative"
+      ],
+      "exclusions": [
+        "L’étang boisé et les sculptures du reportage ne sont pas automatiquement l’arboretum.",
+        "Les résultats MOSL mêlant la rubrique Arboretum et jardin botanique à une liste de sites ne sont pas une classification individuelle de Pokeyland.",
+        "Arboretums de Plappeville, Villecey-sur-Mad et Abbaye d’Autrey : lieux distincts."
+      ]
+    },
+    {
+      "name": "Labyrinthe géant",
+      "qualification": "Présence historique et nouveauté 2017 confirmées ; forme physique non documentée précisément.",
+      "evidence": [
+        {
+          "source": "reportage2017",
+          "photo": "estrepublicain-gallery-16-2017.jpg",
+          "fact": "Plan officiel photographié : 7 LABYRINTHE GÉANT avec pastille NOUVEAUTÉ."
+        },
+        {
+          "source": "loractu2017",
+          "fact": "Le 13 avril 2017, l’article cite le labyrinthe géant parmi les nouveautés de la saison déjà lancée ; aucun jour individuel d’ouverture."
+        },
+        {
+          "source": "season2017",
+          "fact": "La liste des nouveautés 2017 nomme Labyrinthe géant. Un commentaire de chris3784 publié le 2 septembre 2017 à 08:14:17 rapporte la visite du labyrinthe pendant la dernière semaine des vacances scolaires ; témoignage daté, jour de visite inconnu."
+        },
+        {
+          "source": "halloween2017",
+          "fact": "Le SNELAC annonce un labyrinthe hanté du 21 au 31 octobre 2017. Aucune phrase ne dit explicitement que ce décor était celui du Labyrinthe géant permanent."
+        }
+      ],
+      "openingYearSupported": 2017,
+      "exactOpeningDate": null,
+      "closingDate": null,
+      "currentOperatingStatus": "Unknown",
+      "aliasesProven": [],
+      "notEstablishedAliases": [
+        "Labyrinthe hanté de Halloween 2017"
+      ],
+      "descriptionReadiness": "Nom, année de nouveauté et usage historique soutenus ; ne pas inventer murs de bois, haies, maïs, dimensions, parcours ou décor western à partir d’une impression générale de visite.",
+      "photosPreciselyAttributed": [
+        "estrepublicain-gallery-16-2017.jpg : preuve cartographique photographiée, pas vue des installations"
+      ],
+      "remainingGaps": [
+        "Photo nominative de l’installation réelle",
+        "Matériaux et organisation du parcours",
+        "Relation exacte avec Halloween",
+        "Devenir après les mentions historiques"
+      ],
+      "exclusions": [
+        "Labyrinthe de Vigy et labyrinthe de maïs de Breidenbach sont des établissements distincts.",
+        "Les listes reprises en 2020/2021 peuvent conserver d’anciens textes ; ne pas leur attribuer seules une continuité d’exploitation."
+      ]
+    },
+    {
+      "name": "Big Air Jump",
+      "qualification": "Identité physique, présence en service et nouveauté 2017 confirmées.",
+      "evidence": [
+        {
+          "source": "reportage2017",
+          "photo": "estrepublicain-big-air-jump-2017.jpg",
+          "fact": "Photo 09/18 légendée Big Air Jump et montrant une participante en plein saut au-dessus d’une réception gonflable."
+        },
+        {
+          "source": "reportage2017",
+          "photo": "estrepublicain-gallery-16-2017.jpg",
+          "fact": "Plan officiel photographié : 26 BIG AIR JUMP avec pastille NOUVEAUTÉ, tandis que 24 SAUT DANS LE VIDE est une autre entrée."
+        },
+        {
+          "source": "loractu2017",
+          "fact": "Article du 13 avril 2017 : Big Air Jump cité parmi les nouveautés de la saison."
+        },
+        {
+          "source": "season2017",
+          "fact": "Présentation promotionnelle annonçant un saut de 10 m. Mesure non validée par la seule photo ; ne pas transposer la hauteur de 18 m du Saut dans le vide."
+        },
+        {
+          "source": "season2019",
+          "fact": "Big Air Jump encore nommé dans la liste d’activités de l’annonce de saison datée du 5 avril 2019."
+        }
+      ],
+      "openingYearSupported": 2017,
+      "exactOpeningDate": null,
+      "closingDate": null,
+      "currentOperatingStatus": "Unknown",
+      "aliasesProven": [],
+      "distinctFrom": [
+        "Saut dans le vide (24 sur le même plan 2017)",
+        "Water Jump aquatique"
+      ],
+      "descriptionReadiness": "Suffisant pour une description historique spécifique après examen personnel du parent : plateforme avec escalier et garde-corps, saut vers une réception gonflable, cadre boisé. Aucun fabricant, modèle, âge, hauteur exacte ou état actuel inféré.",
+      "photosPreciselyAttributed": [
+        "estrepublicain-big-air-jump-2017.jpg"
+      ],
+      "remainingGaps": [
+        "Hauteur exacte indépendante du texte promotionnel",
+        "Restrictions historiques officielles",
+        "Fabricant",
+        "Date ou raison de retrait éventuel",
+        "Lien éventuel avec d’autres équipements, non établi"
+      ]
+    },
+    {
+      "name": "Quad ados / Balade ou randonnée en quad",
+      "qualification": "Deux offres historiques distinctes attestées sur un plan primaire ; leurs véhicules et installations restent à identifier.",
+      "evidence": [
+        {
+          "source": "reportage2017",
+          "photo": "estrepublicain-gallery-16-2017.jpg",
+          "fact": "Le plan photographié distingue 14 QUAD ENFANT, 34 QUAD ADOS et 35 BALADE EN QUAD."
+        },
+        {
+          "source": "loractu2017",
+          "fact": "Article du 13 avril 2017 : activité découverte au choix parmi quad ado, paintball enfant et balade en quad."
+        },
+        {
+          "source": "season2017",
+          "fact": "Offres payantes Randonnées Quad et Quad adolescent présentées séparément des Quads électriques inclus."
+        },
+        {
+          "source": "season2018",
+          "fact": "Même distinction commerciale de Randonnées Quad, Quad adolescent et Quads électriques. Un visiteur toutcru, commentaire du 10 avril 2018 à 07:28:01, rapporte que son mari et le parrain ont testé le quad adultes pendant leurs visites de l’été précédent. Témoignage, pas règle officielle."
+        },
+        {
+          "source": "reportage2016",
+          "photo": "estrepublicain-quad-child-2016.jpg",
+          "fact": "Petit quad photographié en 2016, mais sans légende de catégorie ; il ne permet pas d’illustrer les deux offres ado/randonnée."
+        }
+      ],
+      "openingDate": null,
+      "closingDate": null,
+      "currentOperatingStatus": "Unknown",
+      "terminologyAlignment": "Balade en quad (plan et article), Randonnées Quad (présentation commerciale) décrivent des offres de promenade ; leur synonymie opérationnelle est probable mais aucune déclaration explicite de renommage n’a été trouvée. Aucun alias serveur automatique recommandé.",
+      "aliasesProven": [],
+      "distinctOfferProof": "Quad ados et Balade en quad portent deux numéros sur le même plan ; le Quad enfant possède un troisième numéro.",
+      "notEstablishedAliases": [
+        "Kid’s Racer / Quads Kids",
+        "Mini-buggy",
+        "Crazy Kart"
+      ],
+      "descriptionReadiness": "Assez pour préserver les pistes historiques distinctes, insuffisant pour attribuer un modèle, carburant, cylindrée, circuit, itinéraire, durée, âge ou permis requis. Ne pas transformer des avis visiteurs en restrictions officielles.",
+      "photosPreciselyAttributed": [],
+      "remainingGaps": [
+        "Photos nominatives des véhicules ado et randonnée",
+        "Relation avec la piste Quad enfant / Quads Kids",
+        "Itinéraire des randonnées",
+        "Périodes exactes et statut ultérieur"
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-big-air-jump-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:20:05.582852+00:00",
+      "httpStatus": 200,
+      "sha256": "961fe33bc07378cfd21311c058adc9a854a55bc9a47b2970c376983ae667f8f1",
+      "bytes": 306194,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "09/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "Le Big Air Jump, pour les plus téméraires !",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Plateforme élevée avec garde-corps jaunes, structure et escalier brun-rouge. Une participante est photographiée en plein saut, au-dessus d’une réception gonflable noire et jaune. Panneau partiellement visible portant la fin du mot JUMP.",
+      "qualification": "Attribution nominale sûre à Big Air Jump par la légende source ; bon candidat historique après examen personnel du parent et rapprochement des médias existants.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-16-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/304959DC-8C74-48BD-9E56-7EC69EF6C6D8/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:12.406977+00:00",
+      "httpStatus": 200,
+      "sha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c",
+      "bytes": 610309,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "16/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Panneau officiel du plan du parc photographié en place, sur support de bois ; légende lisible.",
+      "qualification": "Preuve primaire photographiée de noms distincts et de nouveautés annoncées en 2017. Ce n’est pas un fichier numérique de plan à prétendre officiellement millésimé.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-quad-poney-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/2E5A8668-0668-4692-BC32-BE7F46963688/NW_raw/des-ballades-en-quad-a-poney-ou-a-dos-d-ane-sont-disponibles-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:20:07.858018+00:00",
+      "httpStatus": 200,
+      "sha256": "a550305c0cbeb0470cf629ad631eaa76de2d7fb1adfd69d2b3602cbeaea74efc",
+      "bytes": 395362,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "08/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "Des ballades en quad, à poney ou à dos d’âne, sont disponibles.",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Un enfant sur un âne, mené dans une allée clôturée sous les arbres ; aucun quad visible.",
+      "qualification": "La légende regroupe plusieurs activités ; son intitulé ne permet pas de transformer le cliché en photo de quad.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false,
+      "notUsableFor": [
+        "Quad adolescent",
+        "Randonnée / balade en quad"
+      ]
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-07-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/D6BEFC89-8BAB-4271-B7AA-784D097F9614/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:02.355888+00:00",
+      "httpStatus": 200,
+      "sha256": "cf0ce848bc368ecf73fd8da7d3d0ef9e1603b519118acafd6373480f90612838",
+      "bytes": 506907,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "07/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Grand bâtiment d’accueil en bois, plan sur la façade, sculpture de renard et passage central.",
+      "qualification": "Contexte général du parc ; ne qualifie aucune des cinq activités résiduelles.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-10-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/D8E806CD-7571-4881-BF4C-9B0C55570549/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:04.415136+00:00",
+      "httpStatus": 200,
+      "sha256": "20a242e1cdebb724c0159b18a4736f26bd8a294aa6a1cd461d0ac9e0601b4ab2",
+      "bytes": 592019,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "10/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Aire de jeux avec toboggan vert, jeux sur ressort et tour d’escalade en arrière-plan.",
+      "qualification": "Aucun nom individuel dans la légende ; ne pas attribuer arbitrairement à Clairière de jeux, Village des lutins ou aire de jeux actuelle.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-11-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:06.104760+00:00",
+      "httpStatus": 200,
+      "sha256": "9c21ac79a5f925ed6b3d1875d617aafe68756889c5aeed8acb4bf77c336c3fc5",
+      "bytes": 659175,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "11/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Chèvres dans un enclos boisé, clôtures de bois et rochers ; mer de filets derrière.",
+      "qualification": "Candidat photographique historique de la mini-ferme du reportage ; absence de légende individuelle, à rapprocher personnellement avant import.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-12-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/7B6BFDDF-2203-41AE-BFD3-D450ECD6C5D8/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:08.291199+00:00",
+      "httpStatus": 200,
+      "sha256": "0aaa48d953ee0bd12abf8c2eda85f2b0408b22d8735bf8a45898829da76caa60",
+      "bytes": 665648,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "12/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Âne et petits poneys dans un enclos boisé avec abri brun.",
+      "qualification": "Candidat historique de la zone animale ; ne démontre pas l’identité d’un parcours de promenade ni la composition animale actuelle.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-14-2017.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/ADC0E820-EDCD-4E0E-BD2A-1A80F4A29078/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:10.870926+00:00",
+      "httpStatus": 200,
+      "sha256": "b5dfa112976df4ed1510ffe24341719ac18cd44194554486634d544aa06a55a8",
+      "bytes": 501733,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "galleryPosition": "14/18",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Étang avec jet d’eau et passerelle verte, végétation en rive.",
+      "qualification": "Vue du parc, aucune preuve d’arboretum ou d’une activité de pédalo.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2017,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-quad-child-2016.jpg",
+      "url": "https://cdn-s-www.estrepublicain.fr/images/9794702E-3092-4249-AAC1-EBA253F7521F/NW_raw/title-1471118244.jpg",
+      "accessedAtUtc": "2026-11-15T11:23:34.557352+00:00",
+      "httpStatus": 200,
+      "sha256": "a14c0e8e0f362d0902037f0c8883ea8806a5206a1abdd39db25042b000c444e4",
+      "bytes": 506290,
+      "role": "Photographie native téléchargée depuis le lien NW_raw de la galerie publique",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2016/08/14/fey-un-renard-dans-les-arbres",
+      "galleryPosition": "06/18",
+      "dimensions": [
+        1600,
+        1065
+      ],
+      "sourceCaption": "",
+      "visuallyReviewed": true,
+      "visibleWatermark": false,
+      "visualObservation": "Petit quad bleu piloté par un enfant sur une piste gravillonnée entre les arbres, avec ballots protecteurs, abri et camions au fond.",
+      "qualification": "Présence visuelle historique d’un petit quad ; pas de légende prouvant Quad ado, Randonnée quad ou l’alias actuel Kid’s Racer.",
+      "capturedAt": null,
+      "captureYearFromContemporaryContext": 2016,
+      "photographerIndividual": null,
+      "sourceCredit": "L’Est Républicain",
+      "license": null,
+      "localEditing": false,
+      "imported": false,
+      "notUsableFor": [
+        "Quad adolescent",
+        "Randonnée / balade en quad"
+      ]
+    }
+  ],
+  "additionalPrimaryFindings": [
+    {
+      "source": "reportage2016",
+      "fact": "Maxime Henry décrit la tour derrière l’accueil avec mur d’escalade et saut dans le vide de 18 m, puis relate son essai du Segway. Cela confirme que ce Saut dans le vide existait avant la nouveauté Big Air Jump 2017."
+    },
+    {
+      "source": "reportage2016",
+      "fact": "Le texte cite explicitement des tables de ping-pong, des terrains de pétanque et des jeux pour enfants mis gratuitement à disposition. Aucun nombre précis ni matériel détaillé établi."
+    },
+    {
+      "source": "reportage2017",
+      "photo": "estrepublicain-gallery-16-2017.jpg",
+      "fact": "Le plan photographié peut servir au rapprochement historique supplémentaire : 6 Aire de jeux enfant ; 7 Labyrinthe géant ; 8 Poney ; 9 Mini-golf ; 10 Éjector ; 11 Segway ; 12 Mer de filet ; 13 Mini-ferme ; 14 Quad enfant ; 15 Tir à l’arc ; 16 Le Petit Robin ; 24 Saut dans le vide ; 25 Mur d’escalade ; 26 Big Air Jump ; 27 Pokey’Trampoline ; 28 Chalet (barbecue géant) ; 29 Balade en calèche ; 30 Aire de pique-nique ; 33 Boutique souvenir ; 34 Quad ados ; 35 Balade en quad. Relecture personnelle par le parent avant toute exploitation fine, notamment pour les lignes moins nettes."
+    }
+  ],
+  "methodAndLimits": [
+    "Téléchargements publics directs via liens source ; pages L’Est Républicain marquées isAccessibleForFree=true. Aucun login, paywall ou contournement.",
+    "Le jour de prise de vue reste inconnu. Les dates de publication, timestamps de CDN et métadonnées PDF ne sont pas des dates d’ouverture ou de prise de vue.",
+    "Les photos sont natives, conservées sans recadrage ni retouche. Examen visuel réalisé ; aucun filigrane visible sur les neuf nouveaux clichés du reportage, mais aucune licence ouverte n’est revendiquée.",
+    "Les images non légendées ne reçoivent pas un nom arbitraire. Le parent doit rapprocher les photos existantes et IDs avant import.",
+    "Les recherches complémentaires sur hache et arboretum renvoient surtout à des sites voisins ; aucune matière physique supplémentaire suffisamment attribuable trouvée.",
+    "Les dérivés texte des deux pages LorraineAUcoeur 2017 et 2018 ont été relus en décodant le HTML original ISO-8859-1/Windows-1252 ; les fichiers HTML originaux et leurs hashes sont inchangés.",
+    "Aucun objet, état de fermeture, date inconnue ou alias n’a été créé pour compléter un compteur."
+  ]
+}

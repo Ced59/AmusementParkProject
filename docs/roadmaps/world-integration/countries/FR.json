@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T11:08:33.783Z",
+      "lastDataIntegrationAt": "2026-11-15T11:27:10.806Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33078,6 +33078,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-06-park-description-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland privé :description parc huitlangues personnellement rédigée/relue,3intertitres6paragraphes par langue,279–343mots. Forêt/décorspaintball/accrobranche/eau/manèges décrits sans horaires/restrictions/datesouverture ni remplissage."
+        },
+        {
+          "eventId": "apply-594bc4ff-6c84-4a29-b9cb-418322e9fb3b",
+          "appliedAt": "2026-11-15T11:21:59.730Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-07-item-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : cinq notices Aire de jeux, Bazooka ball, As du ciel, Bumper Boat et As du volant rédigées et relues dans huit langues, soit 40 textes. Sources officielles et photos natives relues ; formats courts documentés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-017581c2b60b4763a6f2e8e4d9c8a1a6",
+          "appliedAt": "2026-11-15T11:23:40.652Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-pomme-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle native de La Pomme 1733×2600 importée privée, 24 textes dans huit langues relus. Une seule exposition, variante paysage exclue ; date de prise de vue inconnue conservée."
+        },
+        {
+          "eventId": "apply-e49b214a-d8f0-408c-8374-64ef84616278",
+          "appliedAt": "2026-11-15T11:27:10.806Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-08-historical-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : 17 offres historiques distinctes créées privées, état actuel Unknown après rapprochement des plans et reportages. Aucun alias, fermeture, jour ou constructeur inventé. Total 74 lieux ; qualification résiduelle, notices, médias et audit à poursuivre."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

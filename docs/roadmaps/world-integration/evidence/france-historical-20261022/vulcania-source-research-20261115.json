@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-11-15T11:24:34.825204+00:00",
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "parkName": "Vulcania",
+  "scope": {
+    "publicResearchOnly": true,
+    "PDECalls": 0,
+    "gitCommands": 0,
+    "registryChanges": 0,
+    "reservations": 0,
+    "imports": 0,
+    "finalDescriptionsWritten": false,
+    "writtenOnlyWithin": "/workspace/france-historical-20261114/vulcania-public-research-20261115"
+  },
+  "ownership": {
+    "localSnapshot": "ownership-check.json",
+    "checkedAtUtc": "2026-11-15T11:10:20.851967+00:00",
+    "assignedTo": null,
+    "editorialStatus": "ToIntegrate",
+    "presence": "Hidden, observed2026-10-22",
+    "lastDataIntegrationAt": null,
+    "integrationHistoryCount": 0,
+    "limitation": "Read-only local registry snapshot; root must recheck freshest ownership and SearchParks before reserving/mutating. No remote ownership guarantee."
+  },
+  "rulesRead": [
+    "/workspace/amusement-france-registry/AGENTS.md",
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/README.md",
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/WORKFLOW.md",
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/countries/FR.json",
+    "French national backlog current entry"
+  ],
+  "currentInventory": {
+    "file": "current-inventory-candidates.json",
+    "mapGroups": 45,
+    "warning": "This is a source inventory, not API cardinality or an exhaustive final audit. Programmes share fixed venues. Existing item IDs are unknown to this child."
+  },
+  "historicalCandidates": [
+    {
+      "name": "Abyss Explorer",
+      "firstPerformance": "2016-03-16",
+      "datePrecision": "day",
+      "creatorSource": [
+        {
+          "file": "abyss-creator.html",
+          "url": "https://www.amak.fr/project/abyss-explorer/",
+          "accessedAtUtc": "2026-11-15T11:16:04.006083+00:00",
+          "status": 200,
+          "bytes": 57212,
+          "sha256": "496c7d33ad7f8b798b6bfa992d15f86516369ead75e67654eed71d6f7b530b1e"
+        }
+      ],
+      "evidence": "AMAK first screening 16 March 2016; official 2025 guide shows it in level C. Employee welcome2026 explicitly calls Hawaï ancien Abyss Explorer.",
+      "successor": "Expédition Hawaï",
+      "successorInaugurated": "2026-07-01",
+      "sources": [
+        {
+          "file": "employee-welcome-2026.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:14.002972+00:00",
+          "status": 200,
+          "bytes": 2030242,
+          "sha256": "765ba6a7a44aa1b64552de9e2a512e60926105bc34abecfbf474636e64d3812a"
+        },
+        {
+          "file": "press-summer-2026.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:13.209854+00:00",
+          "status": 200,
+          "bytes": 664221,
+          "sha256": "2a9ac74d6311195c2d60894c9e88d0b41e61954b877ce649775363262474f866"
+        },
+        {
+          "file": "teacher-guide-2025.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2025/03/A4-web-GUIDE-Enseignant-2025-Primaires.pdf",
+          "accessedAtUtc": "2026-11-15T11:13:17.250840+00:00",
+          "status": 200,
+          "bytes": 4399291,
+          "sha256": "73b9db73eb6950678154cbe56e7283dfe21baa4d7b17e5ab2d30b8832d88e4e0"
+        }
+      ],
+      "lastOperatingDay": null,
+      "classificationWarning": "Reconcile existing identity/version history. Do not create both as unrelated rides or copy coordinates: old guide C/current map D68."
+    },
+    {
+      "name": "Magma Explorer III",
+      "firstPerformance": "2007-03",
+      "datePrecision": "month",
+      "sources": [
+        {
+          "file": "magma-creator.html",
+          "url": "https://www.amak.fr/project/magma-explorer-iii/",
+          "accessedAtUtc": "2026-11-15T11:14:47.542378+00:00",
+          "status": 200,
+          "bytes": 55751,
+          "sha256": "3cea3c174cb55eb7b2bac60fc95435793a000de8fa1a6e6273f1831a882105c8"
+        }
+      ],
+      "evidence": "AMAK lists March2007 first screening, director François Garnier, commanditaire Région Auvergne, agency Harmatan; immersive windows/ceiling and dynamic platform.",
+      "closingDate": null,
+      "successor": null,
+      "classificationWarning": "No source proves closure date or a direct replacement relationship with Abyss. Similar concept is not identity proof."
+    },
+    {
+      "name": "Dragon Ride",
+      "firstPerformance": "2008",
+      "datePrecision": "year",
+      "sources": [
+        {
+          "file": "dragon-original-creator.html",
+          "url": "https://www.amak.fr/project/dragon-ride/",
+          "accessedAtUtc": "2026-11-15T11:16:04.006792+00:00",
+          "status": 200,
+          "bytes": 57501,
+          "sha256": "1184d2cb01c5182b36c61e370aba9bdab04ca8f3d16741b0624d688d9fa55913"
+        },
+        {
+          "file": "dragon-2-creator.html",
+          "url": "https://www.amak.fr/project/dragon-ride-2/",
+          "accessedAtUtc": "2026-11-15T11:16:04.007205+00:00",
+          "status": 200,
+          "bytes": 60983,
+          "sha256": "1c3f063eb88c3985100f74a032bf3c3029e9a43e9b9838ab7a78237b478ca76a"
+        }
+      ],
+      "versions": [
+        {
+          "name": "Dragon Ride 2",
+          "firstPerformance": "2020-07",
+          "datePrecision": "month"
+        }
+      ],
+      "closingDate": null,
+      "classificationWarning": "Current catalogue calls it Dragon Ride. The 2008/2020 creators describe versions; reconcile before creating a second physical ride."
+    },
+    {
+      "name": "Ballon des Puys",
+      "attestedYears": [
+        2014,
+        2016
+      ],
+      "sources": [
+        {
+          "file": "aerophile-vulcania.html",
+          "url": "https://www.aerophile.com/en/clients/vulcania/",
+          "accessedAtUtc": "2026-11-15T11:12:14.250016+00:00",
+          "status": 200,
+          "bytes": 49603,
+          "sha256": "878b75344a72d484050729cc79507e8d01330f0f2c2e73581f9ec974b12ccf10"
+        },
+        {
+          "file": "balloon-order-form-2016.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2023/06/Bon-de-commande_CE.pdf",
+          "accessedAtUtc": "2026-11-15T11:14:47.541062+00:00",
+          "status": 200,
+          "bytes": 67026,
+          "sha256": "2e183109ab65b5b8f30a02dd1b444b7db78970f98637745e97ee7ae7fd68237e"
+        }
+      ],
+      "evidence": "Aerophile creator lists Vulcania2014. Printed official2016 booking form excludes balloon from normal ticket; it is a paid extra.",
+      "closingDate": null,
+      "currentOperatingStatus": "unresolved",
+      "proposalNotExecution": "Search-indexed April2019 environmental memo mentions a planned suppression; direct public PDF503. Later airspace-zone mentions can be legacy and prove neither operation nor closure.",
+      "classificationWarning": "Existing FR standaloneAssessment says InsidePark. Do not create a standalone, infer retirement from missing map, or use URL2023 as document year2016."
+    },
+    {
+      "name": "Dragon Time",
+      "attestedMapEdition": 2024,
+      "sources": [
+        {
+          "file": "map-2024.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:13.695156+00:00",
+          "status": 200,
+          "bytes": 420693,
+          "sha256": "51038ef2aff6b4605988c5f099dfe7c317b2db0a25dd9ce615dad3b331dc5e0e"
+        }
+      ],
+      "currentOperatingStatus": "not resolved",
+      "closingDate": null,
+      "qualification": "historical show programme"
+    },
+    {
+      "name": "Noisettes",
+      "attestedMapEdition": 2024,
+      "sources": [
+        {
+          "file": "map-2024.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:13.695156+00:00",
+          "status": 200,
+          "bytes": 420693,
+          "sha256": "51038ef2aff6b4605988c5f099dfe7c317b2db0a25dd9ce615dad3b331dc5e0e"
+        }
+      ],
+      "currentOperatingStatus": "not resolved",
+      "closingDate": null,
+      "qualification": "historical film programme, not automatically separate physical venue"
+    },
+    {
+      "name": "La Piste de Vulcain",
+      "attestedMapEdition": 2024,
+      "sources": [
+        {
+          "file": "map-2024.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:13.695156+00:00",
+          "status": 200,
+          "bytes": 420693,
+          "sha256": "51038ef2aff6b4605988c5f099dfe7c317b2db0a25dd9ce615dad3b331dc5e0e"
+        }
+      ],
+      "currentOperatingStatus": "not resolved",
+      "closingDate": null,
+      "qualification": "pumptrack; absent current2026 map is not proof of closure"
+    },
+    {
+      "name": "Terre en colère",
+      "newVersionYear": 2025,
+      "sources": [
+        {
+          "file": "olympus.html",
+          "url": "https://www.vulcania.com/actualites/olympus-25/",
+          "accessedAtUtc": "2026-11-15T11:10:22.444343+00:00",
+          "status": 200,
+          "bytes": 112135,
+          "sha256": "67384b316749a7e16aa41412ee22df4143cdeb5d40e57b62876ef5d2fdb64d69"
+        }
+      ],
+      "classificationWarning": "Version refresh, not automatically a new ride identity."
+    }
+  ],
+  "calendar": {
+    "observedAtUtc": "2026-11-15T11:24:34.825204+00:00",
+    "source": [
+      {
+        "file": "calendar.html",
+        "url": "https://www.vulcania.com/calendrier/",
+        "accessedAtUtc": "2026-11-15T11:10:20.858204+00:00",
+        "status": 200,
+        "bytes": 142945,
+        "sha256": "11f79cdf52e31efc46dbfe31a98dd05d387a575e58c0aac5085bafbcc3abd06e"
+      }
+    ],
+    "extraction": "Literal vulcania_planning_vars embedded in the ordinary public HTML; no AJAX or private endpoint called.",
+    "season": 2026,
+    "datesCount": 222,
+    "firstDate": "2026-03-25",
+    "lastDate": "2026-11-01",
+    "openDays": 207,
+    "closedDays": 15,
+    "usedPeriods": {
+      "V": {
+        "days": 98,
+        "opening": "10:00",
+        "closing": "18:00",
+        "closed": false
+      },
+      "F": {
+        "days": 15,
+        "opening": null,
+        "closing": null,
+        "closed": true
+      },
+      "B1": {
+        "days": 48,
+        "opening": "10:00",
+        "closing": "18:00",
+        "closed": false
+      },
+      "B": {
+        "days": 41,
+        "opening": "10:00",
+        "closing": "19:00",
+        "closed": false
+      },
+      "J": {
+        "days": 14,
+        "opening": "10:00",
+        "closing": "22:00",
+        "closed": false
+      },
+      "A": {
+        "days": 4,
+        "opening": "10:00",
+        "closing": "23:00",
+        "closed": false
+      },
+      "B2": {
+        "days": 2,
+        "opening": "10:00",
+        "closing": "00:00",
+        "closed": false
+      }
+    },
+    "rawDataFile": "calendar-embedded-public-data.json",
+    "future2027": {
+      "openingDayAnnouncement": "2027-03-24",
+      "announcementSource": [
+        {
+          "file": "home-en.html",
+          "url": "https://www.vulcania.com/en/",
+          "accessedAtUtc": "2026-11-15T11:12:12.344416+00:00",
+          "status": 200,
+          "bytes": 117003,
+          "sha256": "42b7a56675063d7b2553a8e075aac885c205076ed33619225197f3f9d5f83a19"
+        }
+      ],
+      "generalDayByDayHoursRecovered": false,
+      "ticketSalesOpening": "2026-11-27",
+      "ticketSalesWarning": "Opening of 2027 ticket sales, not park opening.",
+      "schoolBrochureUrl": "https://www.calameo.com/read/006648985720c889ad8af",
+      "schoolBrochurePrintedEdition": 2027,
+      "schoolBrochureCalendarPage": 3,
+      "schoolCalendarCapture": "school-calameo-page2.png",
+      "schoolCalendarWarning": "White = offre scolaire non disponible; this is not closure of the park. Green = parc ouvert. Grid is provisional and cannot be copied as a general calendar or assigned unprinted opening hours.",
+      "schoolSpaceDays": {
+        "times": "10:00–16:00 local, as printed",
+        "dates": [
+          "2027-03-09",
+          "2027-03-11",
+          "2027-03-12",
+          "2027-03-15",
+          "2027-03-16",
+          "2027-11-09",
+          "2027-11-15",
+          "2027-11-16",
+          "2027-11-18"
+        ],
+        "audience": "school groups, planetarium special offer",
+        "sourcePage": 19,
+        "sourceCapture": "school-calameo-page18.png"
+      },
+      "sourceConflict": "The linked 2027 booking Excel keeps a label Journée Spéciale Espace 2026 and November 2026. The printed 2027 brochure and weekday grid show the nine dates under the 2027 edition. Preserve the inconsistency; do not silently import the old year from the form.",
+      "brochureTechnicalDateWarning": "Calaméo reports original online publication 2023-10-05 but the actual cover says 2027. Book was replaced in place; technical date is not printed edition."
+    }
+  },
+  "annualMaps": [
+    {
+      "edition": 2024,
+      "file": "map-2024.pdf",
+      "sources": [
+        {
+          "file": "map-2024.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:13.695156+00:00",
+          "status": 200,
+          "bytes": 420693,
+          "sha256": "51038ef2aff6b4605988c5f099dfe7c317b2db0a25dd9ce615dad3b331dc5e0e"
+        }
+      ],
+      "wholeSourcePreserved": true,
+      "personallyInspected": true,
+      "editionBasis": "Official filename 2024-Vulcania-Plan-de-visite.pdf; printed content historical versions.",
+      "warning": "Do not transpose its restrictions to2026."
+    },
+    {
+      "edition": 2025,
+      "file": "teacher-guide-2025.pdf",
+      "mapPage": 2,
+      "sources": [
+        {
+          "file": "teacher-guide-2025.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2025/03/A4-web-GUIDE-Enseignant-2025-Primaires.pdf",
+          "accessedAtUtc": "2026-11-15T11:13:17.250840+00:00",
+          "status": 200,
+          "bytes": 4399291,
+          "sha256": "73b9db73eb6950678154cbe56e7283dfe21baa4d7b17e5ab2d30b8832d88e4e0"
+        }
+      ],
+      "wholeSourcePreserved": true,
+      "personallyInspected": true,
+      "editionBasis": "Guide cover printed©Vulcania2025 and official filename2025.",
+      "warning": "Map embedded in teacher guide, not extracted/cropped or imported."
+    },
+    {
+      "edition": 2026,
+      "file": "map-2026.jpg",
+      "dimensions": [
+        1455,
+        2048
+      ],
+      "sources": [
+        {
+          "file": "map-2026.jpg",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+          "accessedAtUtc": "2026-11-15T11:12:13.509774+00:00",
+          "status": 200,
+          "bytes": 289392,
+          "sha256": "a693c29506d1107112933b761d37bd4aa674f969318c2b1be5107bcfa9ea20c6"
+        },
+        {
+          "file": "plan.html",
+          "url": "https://www.vulcania.com/plan-du-parc/",
+          "accessedAtUtc": "2026-11-15T11:10:20.858833+00:00",
+          "status": 200,
+          "bytes": 119736,
+          "sha256": "1e6fe78dddc1ccbae2fc317e0ec4882f15f936a7824140077bdc76af04d23cf7"
+        }
+      ],
+      "wholeSourcePreserved": true,
+      "personallyInspected": true,
+      "editionBasis": "Current official map page and filename2026; shows Hawaï inauguratedJuly2026.",
+      "warning": "URL directoryApril2026 is not an image creation or photograph date; file updated in place."
+    },
+    {
+      "edition": 2026,
+      "file": "map-2026-sensations.pdf",
+      "sources": [
+        {
+          "file": "map-2026-sensations.pdf",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/03/Propal-flyer-basse-saison-SENSATIONS-A5.pdf",
+          "accessedAtUtc": "2026-11-15T11:12:14.066846+00:00",
+          "status": 200,
+          "bytes": 370929,
+          "sha256": "bb2012af4d20729d388053660baaac63596e53345b6c4e40fec8de5bbe3bd0b6"
+        }
+      ],
+      "wholeSourcePreserved": true,
+      "personallyInspected": false,
+      "qualification": "Additional official season flyer, 2pages; inspect before use as annual map."
+    }
+  ],
+  "logo": {
+    "file": "logo-current.png",
+    "dimensions": [
+      570,
+      253
+    ],
+    "sources": [
+      {
+        "file": "logo-current.png",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/03/logo-vulcania.png",
+        "accessedAtUtc": "2026-11-15T11:12:13.824477+00:00",
+        "status": 200,
+        "bytes": 16461,
+        "sha256": "289c1059e68db68208375a3e53af75c4dfa3693917d740037f45855751817e11"
+      }
+    ],
+    "personallyInspected": true,
+    "observation": "Native official header logo: red Vulcania wordmark with stylized volcanic V/ejection and blue en AUVERGNE, not a park photograph.",
+    "use": "Candidate for official import after root verifies existing logo and image IDs; no import performed."
+  },
+  "historyAndOperator": {
+    "officialSources": [
+      {
+        "file": "history.html",
+        "url": "https://www.vulcania.com/historique/",
+        "accessedAtUtc": "2026-11-15T11:13:17.249630+00:00",
+        "status": 200,
+        "bytes": 117658,
+        "sha256": "7c908e1e4ea39c01ef4abc516b596047699f2897da9aa6f1543ab16f691a607c"
+      },
+      {
+        "file": "operator.html",
+        "url": "https://www.vulcania.com/la-sem-volcans/",
+        "accessedAtUtc": "2026-11-15T11:13:17.250410+00:00",
+        "status": 200,
+        "bytes": 110236,
+        "sha256": "796ce3842be38f4d048bd2e2e3e9eee20edcc52f1ae2dee07b6b9e27b2bef890"
+      }
+    ],
+    "events": [
+      {
+        "date": "1992",
+        "precision": "year",
+        "fact": "Regional council decides scientific park and volcanism museum on former57ha military terrain in Chaîne des Puys."
+      },
+      {
+        "date": "1994",
+        "precision": "year",
+        "fact": "Architecture/scenography entrusted to Hans Hollein."
+      },
+      {
+        "date": "2002-02-20",
+        "precision": "day",
+        "fact": "Public opening; official history says ownerRegionalCouncil, exploitationSEMVolcans."
+      }
+    ],
+    "roles": "Official history distinguishes Katia/Maurice Krafft scientific dream, Valéry Giscard d’Estaing/RegionalCouncil realization, architect Hans Hollein and operatorSEMVolcans. Do not collapse these roles into an unsourced single founder.",
+    "operator": "SEM Volcans, mixed-economy private-law company under public-service delegation. Current directorSophieRognon, chairFrédéricBonnichon, capital7.5M per officialpage; no incorporation date inferred.",
+    "olympusPlan": {
+      "source": [
+        {
+          "file": "olympus.html",
+          "url": "https://www.vulcania.com/actualites/olympus-25/",
+          "accessedAtUtc": "2026-11-15T11:10:22.444343+00:00",
+          "status": 200,
+          "bytes": 112135,
+          "sha256": "67384b316749a7e16aa41412ee22df4143cdeb5d40e57b62876ef5d2fdb64d69"
+        }
+      ],
+      "announcementDate": "2026-04-15",
+      "budgetEUR": 29000000,
+      "funding": "60%SEMVolcans /40%Region",
+      "plannedAccommodationFrom": 2028,
+      "plannedLargeAttraction": 2029,
+      "warning": "Announced future projects, not opened or named entities. No invented dates or models."
+    }
+  },
+  "photosAndSources": {
+    "officialPhotoLibrary": "https://admin-vulcania.keepeek.com/bNhlta1yo",
+    "basis": "Public sharing link explicitly provided by official press page; fetched public shell only.",
+    "qualification": "No login, no authenticated administration, no private endpoints, no downloaded library photos or licence inference. Root can inspect actual public originals and terms.",
+    "brochureScreenshots": "Anonymous ordinary Calaméo viewer, cookies denied/refused, page navigation only. Cover2027 and pages2/3,16/17,18/19,20 personally read; no whole-book reading claim."
+  },
+  "conflictsAndLimits": [
+    "Official safety table says90cm for Réveil des Géants/Terre en colère; current dynamic attractions landing says110cm. Resolve by authoritative dated instructions before setting restrictions; do not choose arbitrarily.",
+    "Current map image includes HawaïD68 but HTML list omits it; image includes Le cratère s’animeA10. Current HTML alone is incomplete.",
+    "Carnets de voyage isC53 in current HTML but printedC44 on map; C44also used forKrafft. No inferred exact coordinates.",
+    "2027 school calendar is real but scoped to school availability; white is not closed. General2027 daily hours are not recovered. SchoolExcelyear2026carryover retained as a source conflict.",
+    "Hawaï=ancienAbyss is explicit, but official map levels differ; keep version/location uncertainty until existing data and chronology are reconciled.",
+    "Balloon retirement, Magma successor and removal dates of absent2024 programmes remain unproven. No definitive closed status from map absence.",
+    "Map levels are schematic and often underground; no GPSpositions generated.",
+    "Historical inventory is not yet exhaustive. Park remains a research candidate, not qualified, integrated, audited or completed."
+  ],
+  "recommendedRootSequence": [
+    "Recheck latest FR ownership; exact-ID SearchParks and, if required, SearchStandalone. No unassigned guarantee beyond local snapshot.",
+    "Only targeted official recovery export for existing IDs/dependencies if needed; reserve only if still available and authorized. Never start a full final-audit export for initial recovery.",
+    "Reconcile fixed venues, their films/shows, replacement versions and historical balloon as internal attraction before any creation.",
+    "Use supplied official logo/annual maps after duplicate and quality checks; inspect real originals from official photolibrary and per-attraction pages.",
+    "Resolve contradictory restrictions and complete dated2027 schedule only to actual source scope, preserving unknowns.",
+    "Write/review personally8languages, qualify remaining historical inventory, then final-audit workflow. Active park requires ordinary quality and score>95; current sources are not an audit."
+  ],
+  "sourceAccessLog": "source-access.json",
+  "sourceAccessCount": 42,
+  "allLocalFilesManifest": "file-manifest.json"
+}

@@ -1,0 +1,565 @@
+{
+  "createdAtUtc": "2026-11-15T11:02:49.671000Z",
+  "scope": "Recherche publique et lecture locale seulement. Aucun PDE/API, Git, registre, import, création de notice finale ou modification de working-state.",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "startingReport": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/inventory-and-map-reconciliation.json",
+  "summary": {
+    "identitiesReviewed": 12,
+    "provenCurrentAliases": [],
+    "closureDatesProved": [],
+    "principalFindings": [
+      "RotorJump annoncé nouveauté2021 ; pageD!RECTFM du2avril2021 et saison2021 concordent.",
+      "PetitRobin et Mini-ferme nouveautés2017 ; ne pas déduire le jour propre de lancement.",
+      "Checkpoint terrain distinct de FoxTwo dans le même reportage2015.",
+      "Sautdanslevide18m et BigAirJump10m ne doivent pas être fusionnés sur le seul vocabulaire.",
+      "LaMini-ferme reste proposée sur la pageofficielleSortiesdegroupes ; configuration/exploitation2026 non vérifiées.",
+      "Les12candidats ne disposent pas de preuves suffisantes de fermeture actuelle ; ne pas les clôturer par omission du plan2026."
+    ]
+  },
+  "items": [
+    {
+      "name": "Rotor Jump",
+      "readiness": "Identité et fonctionnement historiques précis ; rédaction possible après revue personnelle.",
+      "evidenceFiles": [
+        "directfm-rotor-2020.html",
+        "lorraine-newsletter-2021.html",
+        "lorraine-season-2021.html",
+        "../official-map-2022.pdf",
+        "../official-brochure-2023.pdf page4",
+        "official-explorateurs.html"
+      ],
+      "supportedSpecificContent": [
+        "Jeu collectif dans lequel les participants évitent une balayette tournante ; la brochure officielle précise que tomber élimine le participant.",
+        "D!RECT FM annonce un jeu pouvant réunir jusqu’à huit personnes ; photo officielle de brochure montre la balayette à hauteur des jambes, avec un participant qui saute.",
+        "Sur le plan de version 2022 : activité26, séparée du Trampoline24 et de l’Ejector33."
+      ],
+      "dateAssessment": "Annoncé comme nouveauté2021 dans l’article D!RECT FM du2avril2021 et la saison2021 LorraineAUcoeur. Pas de jour d’ouverture effective établi. Le filename local directfm-rotor-2020.html est un nom provisoire erroné : la page est réellement publiée en2021.",
+      "aliasAssessment": "Aucun renommage prouvé. Ne pas rattacher à Trampoline, Ejector ou KidsSwing.",
+      "currentStatusAssessment": "Toujours cité dans l’introduction officielle Explorateurs et Qui sommes-nous, mais aucune fiche nominative dans le catalogue courant ni entrée sur le plan2026. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Aucun fabricant ou modèle.",
+        "La photo de brochure est une composition éditoriale et non un original à importer.",
+        "Pas de transposition automatique des règles2022/2023 en2026."
+      ]
+    },
+    {
+      "name": "Segway",
+      "readiness": "Offre historique précisément définie ; rédaction possible sans statut actuel.",
+      "evidenceFiles": [
+        "../news-toutmetz-opening-2015.html",
+        "../official-map-2022.pdf",
+        "../official-brochure-2023.pdf page4",
+        "../pokeyland-history.html",
+        "mosl-school-2020.pdf page76",
+        "tourism-metz.html"
+      ],
+      "supportedSpecificContent": [
+        "Balades accompagnées sur un parcours parcourant le parc, notamment le long des terrains de paintball selon le reportage2015.",
+        "Brochure officielle2023 : gyropodes à deux roues ; la photo montre un participant debout sur un engin à deux grandes roues, portant un casque."
+      ],
+      "dateAssessment": "Offre annoncée à l’ouverture du parc en juin2015 ; présente dans brochure officielle2023. Le jour de mise en service propre n’est pas documenté.",
+      "aliasAssessment": "Aucun alias vers un manège ou véhicule actuel démontré.",
+      "currentStatusAssessment": "Encore mentionné sur Qui sommes-nous et la fiche de tourisme de Metz ; présence matérielle/bookabilité actuelle non confirmée. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Ne pas attribuer un modèle de gyropode.",
+        "2015:20minutes/20euros et règle45kg du plan2022 sont historiques seulement.",
+        "Aucun GPS."
+      ]
+    },
+    {
+      "name": "Le Petit Robin",
+      "readiness": "Identité historique distincte établie ; fonction physique encore insuffisamment documentée.",
+      "evidenceFiles": [
+        "lorraine-season-2017.html",
+        "../official-map-2022.pdf",
+        "../official-brochure-2023.pdf pages3et4"
+      ],
+      "supportedSpecificContent": [
+        "Présent sous ce nom parmi les nouveautés2017 ; mentionné dans les listes officielles2022/2023.",
+        "Le plan distingue PetitRobin28 et Tiràl’arc27 ; la brochure2023 liste également les deux séparément."
+      ],
+      "dateAssessment": "Nouveauté2017 annoncée par LorraineAUcoeur. Aucun jour propre établi.",
+      "aliasAssessment": "Aucune preuve suffisante pour en faire un alias du Tiràl’arc, ni pour affirmer qu’il s’agit précisément d’un tir à l’arbalète.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Le nom Robin n’est pas une preuve de mécanisme.",
+        "Ne pas transposer une photo de Tiràl’arc.",
+        "Les annuaires géographiques nommant le lieu sans source datée ne prouvent pas son état actuel."
+      ]
+    },
+    {
+      "name": "Saut dans le vide",
+      "readiness": "Identité historique et hauteur documentées ; état actuel non démontré.",
+      "evidenceFiles": [
+        "../official-map-2022.pdf",
+        "congres-metz-team-2025.pdf page27",
+        "lorraine-season-2017.html"
+      ],
+      "supportedSpecificContent": [
+        "Le guide officiel du Bureau des congrès de Metz décrit le Sautdanslevide d’une hauteur de18m et le distingue de l’Ejector par élastiques.",
+        "Plan de version2022 : Sautdanslevide34, Ejector33 et Escalade25 séparés."
+      ],
+      "dateAssessment": "Présent au plus tard dans les offres2017 et le plan de version2022. Guide mis en ligne2025 encore descriptif ; pas de date d’ouverture précise établie.",
+      "aliasAssessment": "Ne pas fusionner avec BigAirJump : les listes2017 les distinguent, BigAirJump étant annoncé comme une nouveauté avec saut de10m. Des textes promotionnels utilisent toutefois les mots saut dans le vide de manière générique ; respecter les noms propres et les sources.",
+      "currentStatusAssessment": "Toujours repris dans la fiche tourismeMetz et guide mis en ligne2025 ; confirmation de service2026 non obtenue. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Le guide ne permet pas de déduire fabricant, système d’assurage ou vitesse.",
+        "La tour Escalade peut porter l’activité sans être une preuve de fusion des fiches.",
+        "Hauteur18m issue du guide officiel, pas d’un calcul sur dessin."
+      ]
+    },
+    {
+      "name": "Clairière de jeux",
+      "readiness": "Zone historique nommée ; contenu détaillé insuffisamment qualifié.",
+      "evidenceFiles": [
+        "../official-map-2022.pdf",
+        "../official-brochure-2023.pdf page3"
+      ],
+      "supportedSpecificContent": [
+        "Le plan distingue Clairière40, Airedejeux38, Parcourspiedsnus39 et Mini-ferme41.",
+        "La brochure2023 la présente parmi les Bonus de Pokeyland en entrée libre."
+      ],
+      "dateAssessment": "Présence officielle de version2022 et saison2023 ; aucun jour d’ouverture établi.",
+      "aliasAssessment": "Pas un alias démontré de l’Airedejeux ou du Parcourspiedsnus.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Le dessin du plan n’établit pas l’ensemble réel des jeux ou leurs matériaux.",
+        "Pas d’identification nominale fiable de jeux en bois individuels.",
+        "Ne pas ajouter une nouveauté2019 à partir d’un extrait regroupant plusieurs parcs sans contexte."
+      ]
+    },
+    {
+      "name": "Mini-ferme",
+      "readiness": "Zone animalière distincte, ancienneté et maintien dans les textes officiels établis.",
+      "evidenceFiles": [
+        "lorraine-season-2017.html",
+        "loractu-2017.html",
+        "../official-map-2022.pdf",
+        "../official-brochure-2023.pdf page3",
+        "official-groups.html",
+        "../pokeyland-history.html"
+      ],
+      "supportedSpecificContent": [
+        "Mini-ferme annoncée parmi les nouveautés2017 par deux articles contemporains.",
+        "Brochure officielle2023 : Bonusenentréelibre avec photo de chèvres dans ce bandeau.",
+        "Page officielle actuelle Sortiesdegroupes propose de se familiariser avec les animaux de la mini-ferme, séparément de l’arboretum et du parcours pieds nus."
+      ],
+      "dateAssessment": "Nouveauté2017 ; articleLoractu du13avril2017 présente les nouveautés de la saison commencée le8avril. Ne pas affirmer que la mini-ferme a ouvert exactement le8avril.",
+      "aliasAssessment": "Aucune fusion avec la Baladeàponey : activités distinctes sur le plan2022.",
+      "currentStatusAssessment": "La mini-ferme reste explicitement proposée dans des textes officiels accessibles ; sa configuration exacte et les espèces présentes en2026 ne sont pas confirmées. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Pas de liste exhaustive d’animaux.",
+        "La photo de chèvres du bandeau2023 ne prouve pas leur présence2026.",
+        "Arboretum est une piste distincte, pas un synonyme de mini-ferme."
+      ]
+    },
+    {
+      "name": "Boutique",
+      "readiness": "Service historique identifié ; rapprochement actuel non résolu.",
+      "evidenceFiles": [
+        "loractu-2017.html",
+        "lorraine-season-2020.html",
+        "../official-map-2022.pdf"
+      ],
+      "supportedSpecificContent": [
+        "Loractu2017 décrit une mainstreet avec boutique et restaurants.",
+        "En2020, la présentation de saison prévoit la vente de masques en caisse ou en boutique.",
+        "Plan de version2022 : Boutique2, également pointdevented’activités, distincte de Caisseaccueil0 et du Gourmand8."
+      ],
+      "dateAssessment": "Boutique présente dans reportageavril2017 et planversion2022 ; date de création propre inconnue.",
+      "aliasAssessment": "Ne pas convertir Boutique2 en LaPêchedePokey2 parce que les numéros sont les mêmes ; les plans ont été renumérotés.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "La boutique/surplus attachée au paintball dans certains annuaires n’est pas automatiquement cette boutiqueprincipale.",
+        "Pas d’inventaire de souvenirs/vêtements inventé.",
+        "Un avis disant boutiquefermée un jour ne démontre pas une fermeture définitive."
+      ]
+    },
+    {
+      "name": "Checkpoint",
+      "readiness": "Terrain historique avec photographie nominative ; identité distincte sûre.",
+      "evidenceFiles": [
+        "../news-toutmetz-opening-2015.html",
+        "toutmetz-checkpoint.jpg"
+      ],
+      "supportedSpecificContent": [
+        "Le reportage2015 nomme précisément Checkpoint et le décrit avec des tranchées et un poste de commandement enterré.",
+        "Photo inspectée : terrain forestier creusé de tranchées, revêtements de branchages, remblais, canon dans le décor et entrée basse ; ne pas supposer d’armes fonctionnelles.",
+        "Le même reportage nomme séparément FoxTwo, DogOne, Panama, Cannibale et Zombies : Checkpoint est donc un sixième terrain, pas un alias évident de FoxTwo."
+      ],
+      "dateAssessment": "Terrain déjà décrit à l’ouverture dejuin2015 ; pas de date propre de retrait.",
+      "aliasAssessment": "Aucun renommage actuel retrouvé. Sixnoms2015 contre cinqnoms actuels ne suffisent pas à désigner un successeur.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Photo porte une signature ThierryHauuy/ToutMetz : exclue de l’import selon règles campagne.",
+        "Cimetière est un projet futur sur croquis2015, pas une preuve de remplacement réalisé de Checkpoint.",
+        "Ne pas créer un parc autonome PokeyPaint."
+      ]
+    },
+    {
+      "name": "Mini-buggy / Buggy enfant",
+      "readiness": "Offre historique précisément photographiée ; ne pas fusionner avec le catalogue actuel.",
+      "evidenceFiles": [
+        "../news-toutmetz-opening-2015.html",
+        "toutmetz-tracks.jpg"
+      ],
+      "supportedSpecificContent": [
+        "Article2015 décrit des parcours aménagés serpentant entre les arbres pour mini-quads et mini-buggies.",
+        "Photo nominativement associée : petit buggy noir à siège bas, volant, arceau et quatre roues à pneus cramponnés ; éléments arrière rouges, marchepied métallique. Des quads distincts sont alignés derrière."
+      ],
+      "dateAssessment": "Offre tarifée dans reportageouverturejuin2015 ; aucune date de retrait.",
+      "aliasAssessment": "Mini-buggy/Buggyenfant sont variantes textuelles dans la même source. Pas d’équivalence établie avec CrazyKart àpédales, Kid’sRacer ou Lesasduvolant.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Ne pas identifier constructeur/modèle à partir d’une peinture ou du style.",
+        "Ne pas inférer moteur/carburant/puissance non décrits.",
+        "Photo signée ThierryHauuy/ToutMetz : recherche seulement."
+      ]
+    },
+    {
+      "name": "Mini-Jeep",
+      "readiness": "Offre historique avérée ; description physique spécifique encore limitée.",
+      "evidenceFiles": [
+        "../news-toutmetz-opening-2015.html",
+        "mosl-school-2020.pdf page76"
+      ],
+      "supportedSpecificContent": [
+        "Le tarif2015 distingue Mini-Jeep adulte/enfant, deuxplaces, du Buggyenfant, du Quadenfant et du Segway.",
+        "Le guide pédagogique officiel de Moselle, versionPDF créée/modifiéeen2020, décrit encore des baladesenmini-jeep parmi les activités familiales."
+      ],
+      "dateAssessment": "Offre tarifée2015, reprise dans guideversion2020 ; aucun jour propre ni retrait prouvé.",
+      "aliasAssessment": "Pas d’équivalence prouvée avec CrazyKart, KidsRacer, Lesasduvolant ou une miniJeep d’un autre parc.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Aucune photo nominative précise inspectée.",
+        "Deuxplaces et formatadulte/enfant sont caractéristiques de2015 uniquement.",
+        "Ne pas confondre le nom commun miniJeep avec un fabricant officiellement rattachable."
+      ]
+    },
+    {
+      "name": "Pédalo",
+      "readiness": "Offre historique avérée, distincte des bateaux tamponneurs électriques.",
+      "evidenceFiles": [
+        "../news-toutmetz-opening-2015.html",
+        "mosl-school-2020.pdf page76"
+      ],
+      "supportedSpecificContent": [
+        "Pédalo figure en rubrique tarifaire2015 ; pédalos sont cités par le guideMoselle version2020.",
+        "Le catalogue actuel décrit BumperBoat comme bateauélectrique bordé d’un boudin : aucun texte ne dit que c’est un renommage des pédalos."
+      ],
+      "dateAssessment": "Présence commerciale2015 et documentaireversion2020 ; pas de fermeture propre.",
+      "aliasAssessment": "Ne pas fusionner avec BumperBoat sans preuve de remplacement ou d’identité.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Aucune photo nominative ni forme/couleur/capacité propre qualifiée.",
+        "Aucun nombre de pédalos établi.",
+        "Ne pas reprendre le tarif4euros de2015 comme actuel."
+      ]
+    },
+    {
+      "name": "Pétanque — deux terrains",
+      "readiness": "Offre et nombre historiques établis ; configuration et statut actuels inconnus.",
+      "evidenceFiles": [
+        "../news-toutmetz-opening-2015.html",
+        "toutmetz-relaxation.jpg"
+      ],
+      "supportedSpecificContent": [
+        "Le reportage2015 situe deuxterrains de pétanque à côté de l’espace de détente et près de la restauration/enfants.",
+        "Photo inspectée montre surtout tables/bancs, chemin et zoneSegway en arrière-plan ; elle ne permet pas d’identifier avec certitude les limites des deuxterrains."
+      ],
+      "dateAssessment": "Attestés dans reportagejuin2015 ; aucun jour de création/retrait.",
+      "aliasAssessment": "Pas d’alias démontré avec Clairièredejeux ou Airedejeux.",
+      "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+      "limits": [
+        "Ne pas créer deuxnoms inventés pour les deuxterrains.",
+        "Aucun revêtement/dimension précisément établi par la photo.",
+        "Photo signéeThierryHauuy/ToutMetz, recherche seulement."
+      ]
+    }
+  ],
+  "sourceAccess": [
+    {
+      "url": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "accessedAtUtc": "2026-11-15T10:57:37.920732+00:00",
+      "status": 200,
+      "finalUrl": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 54846,
+      "sha256": "28ec4c31fb0a22b9a0f5a3a9b48b62e33610d6f5bc9b1daeed67d3e9bc51cd16",
+      "file": "directfm-rotor-2020.html"
+    },
+    {
+      "url": "https://www.lorraineaucoeur.com/evt-21266/parc-de-loisirs-pokeyland-saison-2017-et-nouveautes/moselle-fey/promo-sortie",
+      "accessedAtUtc": "2026-11-15T10:57:40.417418+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lorraineaucoeur.com/evt-21266/parc-de-loisirs-pokeyland-saison-2017-et-nouveautes/moselle-fey/promo-sortie",
+      "contentType": "text/html; charset=ISO-8859-1",
+      "bytes": 153724,
+      "sha256": "5fdbfbd27f47aafdb62e34a79ba937d1db29ee1b9dcadb8f8c51299d1b870ccc",
+      "file": "lorraine-season-2017.html"
+    },
+    {
+      "url": "https://www.lorraineaucoeur.com/evt-31222/parc-de-loisirs-pokeyland-saison-2020-et-nouveautes/moselle-fey/promo-sortie",
+      "accessedAtUtc": "2026-11-15T10:57:42.177905+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lorraineaucoeur.com/evt-31222/parc-de-loisirs-pokeyland-saison-2020-et-nouveautes/moselle-fey/promo-sortie",
+      "contentType": "text/html; charset=ISO-8859-1",
+      "bytes": 138577,
+      "sha256": "cbf16ebd12caa225611071712ed7fa3658f9d75666e2cd88137d282e59cd2b0b",
+      "file": "lorraine-season-2020.html"
+    },
+    {
+      "url": "https://www.lorraineaucoeur.com/newsletters/lac-nl-210624.html",
+      "accessedAtUtc": "2026-11-15T10:57:42.929878+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lorraineaucoeur.com/newsletters/lac-nl-210624.html",
+      "contentType": "text/html",
+      "bytes": 102157,
+      "sha256": "4676859166296bcedfaf7cfab1562c158e7fcf5f5c6955d84183c2e5bc5d06ef",
+      "file": "lorraine-newsletter-2021.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/activites/explorateurs/",
+      "accessedAtUtc": "2026-11-15T10:57:43.475312+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103335,
+      "sha256": "56f471b22eddf63cf51173e25bbcdeeb7d788ff6ceef5697f0d72c2cd91fbea4",
+      "file": "official-explorateurs.html"
+    },
+    {
+      "url": "https://www.tourisme-metz.com/fr/details/838164984-pokeyland-parc-de-loisirs",
+      "accessedAtUtc": "2026-11-15T10:57:44.587311+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourisme-metz.com/fr/details/838164984-pokeyland-parc-de-loisirs",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 173968,
+      "sha256": "2ff07ded8ffda17c89782900fc6cbb1a1a89af888b353b45c026e87e9a0fa1f4",
+      "file": "tourism-metz.html"
+    },
+    {
+      "url": "https://www.congres-metz.com/app/uploads/2025/03/A4-TeamBuilding-Vweb.pdf",
+      "accessedAtUtc": "2026-11-15T10:57:47.012919+00:00",
+      "status": 200,
+      "finalUrl": "https://www.congres-metz.com/app/uploads/2025/03/A4-TeamBuilding-Vweb.pdf",
+      "contentType": "application/pdf",
+      "bytes": 3548439,
+      "sha256": "d68386ac2b7cc0960cc7c1dcd9ca2ffedc07b7fa09d3064656b3b8df3789b7f1",
+      "file": "congres-metz-team-2025.pdf"
+    },
+    {
+      "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2975.jpg",
+      "accessedAtUtc": "2026-11-15T10:57:49.252057+00:00",
+      "status": 200,
+      "finalUrl": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2975.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 279363,
+      "sha256": "3baea07b0b7be8fecb94c72b96abf43065fefb883afe87ccc360c325c74f3a0d",
+      "file": "toutmetz-checkpoint.jpg"
+    },
+    {
+      "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2949.jpg",
+      "accessedAtUtc": "2026-11-15T10:57:50.442216+00:00",
+      "status": 200,
+      "finalUrl": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2949.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 257419,
+      "sha256": "82ea436e0df6842a4b043730bbf9bf0c3fee5ac1afa038dc3aef55bb02612c37",
+      "file": "toutmetz-tracks.jpg"
+    },
+    {
+      "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2909.jpg",
+      "accessedAtUtc": "2026-11-15T10:57:51.502121+00:00",
+      "status": 200,
+      "finalUrl": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2909.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 251518,
+      "sha256": "45b197f288cc5d0533753b4a9d5a08fbe88f47d06517b788bb2c6ac15b8db659",
+      "file": "toutmetz-relaxation.jpg"
+    },
+    {
+      "url": "https://www.pokeyland.com/vos-sorties-de-groupe/",
+      "accessedAtUtc": "2026-11-15T10:59:08.533565+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/vos-sorties-de-groupe/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91379,
+      "sha256": "1f3db381ad0530a06ab1c0d3ea52af60c079e3c692ffb0db284a1c18e20e53e8",
+      "file": "official-groups.html"
+    },
+    {
+      "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+      "accessedAtUtc": "2026-11-15T10:59:09.950737+00:00",
+      "status": 200,
+      "finalUrl": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+      "contentType": "text/html",
+      "bytes": 63951,
+      "sha256": "54699215c76a4826922188935fa727b06cbe838bfb55a688b0a0a0b1dae8d976",
+      "file": "loractu-2017.html"
+    },
+    {
+      "url": "https://www.airsoftpaintball.fr/terrain-paintball-fey.php",
+      "accessedAtUtc": "2026-11-15T10:59:10.440834+00:00",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.saintavold-coeurdemoselle.fr/wp-content/uploads/2020/09/MOSL-brochure-tourisme-scolaire_compressed.pdf",
+      "accessedAtUtc": "2026-11-15T10:59:12.816138+00:00",
+      "status": 200,
+      "finalUrl": "https://www.saintavold-coeurdemoselle.fr/wp-content/uploads/2020/09/MOSL-brochure-tourisme-scolaire_compressed.pdf",
+      "contentType": "application/pdf",
+      "bytes": 8573334,
+      "sha256": "4bf206610142ec025ad266036c444d34805e3cfdae0ace7acc7fd54ec5b55685",
+      "file": "mosl-school-2020.pdf"
+    },
+    {
+      "url": "https://www.lorraineaucoeur.com/evt-33403/parc-de-loisirs-pokeyland-saison-2021-et-nouveautes/moselle-fey/promo-sortie",
+      "accessedAtUtc": "2026-11-15T10:59:16.721725+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lorraineaucoeur.com/evt-33403/parc-de-loisirs-pokeyland-saison-2021-et-nouveautes/moselle-fey/promo-sortie",
+      "contentType": "text/html; charset=ISO-8859-1",
+      "bytes": 141358,
+      "sha256": "59e443f73d511d5176e078049583309fbbc71317c94b7235049f1e3f0c122202",
+      "file": "lorraine-season-2021.html"
+    }
+  ],
+  "sourcesReused": [
+    {
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/inventory-and-map-reconciliation.json",
+      "sha256": "948775087c802d8de2ff42b118bd68e73b2621d74a5aaa646b5386bd8dec945b",
+      "bytes": 10179
+    },
+    {
+      "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "accessedAtUtc": "2026-11-15T10:42:31.499476+00:00",
+      "status": 200,
+      "finalUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 347811,
+      "sha256": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4",
+      "file": "news-toutmetz-opening-2015.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-toutmetz-opening-2015.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "accessedAtUtc": "2026-11-15T10:36:57.806942+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "contentType": "application/pdf",
+      "bytes": 4042269,
+      "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798",
+      "file": "official-map-2022.pdf",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.pdf"
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+      "accessedAtUtc": "2026-11-15T10:36:59.030634+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+      "contentType": "application/pdf",
+      "bytes": 5283404,
+      "sha256": "0631cbb032a16aef9d9893a39181094c8892104f40fd267c8fdf972817937ecc",
+      "file": "official-brochure-2023.pdf",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023.pdf"
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+      "accessedAtUtc": "2026-11-15T10:36:57.087598+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+      "contentType": "application/pdf",
+      "bytes": 362538,
+      "sha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6",
+      "file": "official-map-2026.pdf",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2026.pdf"
+    },
+    {
+      "url": "https://www.pokeyland.com/qui-sommes-nous/",
+      "accessedAtUtc": "2026-11-15T10:30:22.518830+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/qui-sommes-nous/",
+      "bytes": 166983,
+      "sha256": "b908e38715b26b3f9f37993f99d7fe707c74de2ebf05517e4069b1a61d1ec09d",
+      "file": "pokeyland-history.html",
+      "usefulLinks": [
+        {
+          "url": "https://www.pokeyland.com/plan-du-parc/",
+          "text": "Plan du parc"
+        },
+        {
+          "url": "https://www.pokeyland.com/activites/",
+          "text": "Les activités"
+        },
+        {
+          "url": "https://www.pokeyland.com/plan-du-parc/",
+          "text": "Plan du parc         \r\n         \r\n          Impossible de vous perdre grâce à notre plan"
+        },
+        {
+          "url": "https://www.pokeyland.com/plan-du-parc/",
+          "text": "Plan du parc"
+        }
+      ],
+      "reusedFrom": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115/pokeyland-history.html",
+      "localCopiedAtUtc": "2026-11-15T10:36:42.277980+00:00",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pokeyland-history.html"
+    }
+  ],
+  "visualReview": [
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.png",
+      "reviewed": true,
+      "notes": "Tous les repères mentionnés lus ; illustrations cartographiques, pas preuve GPS ou photographie."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023-page-3.png",
+      "reviewed": true,
+      "notes": "BonusMiniFerme/Clairière/AireJeux/PiedsNus lisibles ; chèvres photographiées en bandeau ; PokeyPlage rendu illustré nonphotographique."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023-page-4.png",
+      "reviewed": true,
+      "notes": "RotorJump et Segway photographiés et nommés ; page est une compositionpromotionnelle, pas un originalimportable."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-checkpoint.jpg",
+      "reviewed": true,
+      "watermark": true,
+      "importAllowedByThisReport": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-tracks.jpg",
+      "reviewed": true,
+      "watermark": true,
+      "importAllowedByThisReport": false
+    },
+    {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-relaxation.jpg",
+      "reviewed": true,
+      "watermark": true,
+      "importAllowedByThisReport": false
+    }
+  ],
+  "dateAndEncodingNotes": [
+    "Les fichiersHTML LorraineAUcoeur utilisent cp1252 ; leurs textes locaux ont été décodés correctement après la première extractionutf8. Originauxinchangés.",
+    "directfm-rotor-2020.html contient réellement datePublished2021-04-02T08:35:00.000Z et dateaffichée2avril2021à10h35. Le suffixe2020n’estpasune preuve.",
+    "mosl-school-2020.pdf : création2020-09-17T13:12:02Z,modification2020-12-10T16:08:55Z ; page76. Cela qualifie la version documentaire, pas une observation de fonctionnement le jour de créationPDF.",
+    "GuidecongresMetz misenligne2025 : page27, pas une garantie de fonctionnement2026."
+  ],
+  "excludedClaims": [
+    "Tirsportifchabris : miroir secondaire non retenu.",
+    "Résultatsdebilletterie2026 recyclant7terrains/anciensattractions : ne prouventpas leurfonctionnementactuel.",
+    "Un extraitdepageLorraineAUcoeur groupantplusieursparcs évoqueClairière2019 ; nonretenu sanscontexteintégral.",
+    "RéponseHTTP403 du tunnel pourairsoftpaintball.fr : arrêté, aucuncontournement. Sonextraitpublicn’ajouterienau reportageprimaire2015.",
+    "Planssansannéeimprimée : version2022 établieparchemin/métadonnées, aucuneannéeimpriméeinventée."
+  ],
+  "residualQualification": [
+    "Photo etfonctionnominale PetitRobin",
+    "CompositionprécisedeClairièredejeux",
+    "Localisation/identitéactuelledelaBoutique",
+    "DevenirdeCheckpoint",
+    "Identitéactuellemini-buggy/miniJeep/pédalos/pétanque",
+    "Statutpratiquedesoffreshistoriquesmaintenuesseulementdanslespagesgénérales",
+    "AnciennesoffresLabyrinthe/ArcheryGames/BigAirJump nommées2017 : candidatsdistinctsàrapprocher, horslisteinitialeciblée."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "createdAtUtc": "2026-11-15T11:18:27.103499+00:00",
+  "scope": "Public geolocation and image research only. No PARK_DATA_EDITOR, Git, registry, reservation, source-data edit or media import.",
+  "park": {
+    "name": "Pokeyland",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "osmBoundary": "https://www.openstreetmap.org/way/935294131",
+    "boundaryLastModifiedAtUtc": "2026-10-02T19:51:49Z"
+  },
+  "coverage": {
+    "itemCount": 57,
+    "counts": {
+      "NoExplicitMatchingLocationFound": 17,
+      "AmbiguousOrAggregate": 19,
+      "UniqueNamedOsmPoint": 11,
+      "NamedGeometryWithoutExplicitPoint": 10
+    },
+    "uniqueNamedPointNames": [
+      "Bumper Boat",
+      "Escalade",
+      "Mini-golf",
+      "Poney",
+      "Crazy Kart",
+      "Laser Game",
+      "Waterjump",
+      "Le Petit Creux",
+      "Le Gourmand",
+      "L’Escale",
+      "Parcours sportif"
+    ],
+    "namedGeometryOnlyNames": [
+      "Dog One",
+      "Fox Two",
+      "Panama",
+      "Zombie",
+      "Cannibale",
+      "Scène Pokeyshow",
+      "Caisse d’accueil",
+      "Parcours pieds nus",
+      "Cabanes de Pokey",
+      "Ejector"
+    ],
+    "noClaimOfFullGeolocation": true,
+    "readableEvidence": "item-geolocation-coverage.json",
+    "rawMatchedGeometry": "matched-osm-geometries.geojson"
+  },
+  "method": [
+    "Official contact page only embeds a park-address Google search; no individual attraction coordinates. This park-level location was excluded from item coordinates.",
+    "Read the exact public OSM park boundary, then its limited geographic bounding box using documented read-only OSM API. No point was generated from a map illustration.",
+    "Matched nominal objects to the 57 local item names, preserving IDs and geometry metadata. No polygon centre, area average, generic park coordinate or arbitrary node was selected.",
+    "Read seven public OSM changesets to qualify provenance. Sources include local knowledge, survey, IGN aerial imagery and earlier official park maps. These are historical mapping records, not fresh 2026 ground measurements.",
+    "No geotagged current photo independently establishes these item coordinates. Ordinary park photos do not prove a GPS point."
+  ],
+  "provenanceHighlights": [
+    {
+      "changesetId": "140483317",
+      "date": "2023-08-28",
+      "source": "local knowledge;aerial imagery;survey",
+      "appliesTo": [
+        "Bumper Boat",
+        "Waterjump"
+      ],
+      "note": "Public comment says update after new aerial photographs."
+    },
+    {
+      "changesetId": "123803839",
+      "date": "2022-07-19",
+      "source": "official park map;local knowledge;survey",
+      "appliesTo": [
+        "Crazy Kart",
+        "Quad Kids"
+      ],
+      "note": "Quad Kids remains an identity candidate for current Kid’s Racer, not an automatic alias."
+    },
+    {
+      "changesetId": "155943658",
+      "date": "2024-08-29",
+      "source": "IGN aerial imagery",
+      "appliesTo": [
+        "Le Petit Creux",
+        "Le Gourmand",
+        "Cabanes/Ejector footprints"
+      ],
+      "note": "Last modification can concern name or geometry; it is not a capture date."
+    },
+    {
+      "changesetId": "104062489",
+      "date": "2021-05-03",
+      "source": "official 2020 plan;local knowledge",
+      "appliesTo": [
+        "Escalade",
+        "Poney",
+        "Laser Game",
+        "generic accrobranche names"
+      ],
+      "note": "Source points are explicit georeferenced OSM nodes; still preserve their age and unresolved numbered-course ambiguity."
+    }
+  ],
+  "importantGaps": [
+    "Two different Tir à l’arc points; do not prefer one solely because it was edited later.",
+    "Two nearby Trampoline points; possible multiple apparatus or mapping duplication, unresolved.",
+    "Generic Pitchounes and Aventure locations cannot be copied onto every numbered course.",
+    "Named paintball fields, Caisse, Scène, Ejector, Cabanes and barefoot trail have explicit footprints but no representative point provided by the source.",
+    "New mechanical rides from 2025, including La Pomme, have no matching named point in the OSM dataset read.",
+    "Aggregated Parkings/Sanitaires/Aires de pique-nique cover multiple places; one point cannot stand for all of them."
+  ],
+  "additionalHistoricalLeads": [
+    {
+      "name": "Cemetery",
+      "source": "https://www.openstreetmap.org/way/974286960",
+      "finding": "Named paintball footprint created in 2021, not just the 2015 design proposal. This is a further qualification lead, not proof of public opening date or current operation."
+    },
+    {
+      "name": "Check Point",
+      "source": "https://www.openstreetmap.org/way/974286962",
+      "finding": "Separate named paintball footprint; do not merge into Fox Two merely by military scenery."
+    },
+    {
+      "name": "O’Chalet / L’orée de Pokey",
+      "sources": [
+        "https://www.openstreetmap.org/node/8667758732",
+        "https://www.openstreetmap.org/way/935294176"
+      ],
+      "finding": "Different public labels, not automatically aliases of Le Grill or current Salle de séminaire."
+    }
+  ],
+  "photos": {
+    "report": "two-official-general-photos.json",
+    "count": 2,
+    "recommendedServerVariants": [
+      "official-general-32110959-1350.jpg",
+      "official-general-JMP_9374-1350.jpg"
+    ],
+    "sizesBytes": [
+      335161,
+      315088
+    ],
+    "creditAndDate": "Original EXIF names Thierry Hauuy and Arnaud Scherer and supplies 2016 DateTimeOriginal values. Preserve metadata attribution; do not invent timezone or call them 2026 photos."
+  },
+  "limits": [
+    "No current operating-location survey performed. Source coordinates are candidates for root review, not applied GPS facts.",
+    "No public Google map pin for the park was reused for any item.",
+    "No screenshot or illustrated park plan was georeferenced.",
+    "No API mutation or media import."
+  ]
+}

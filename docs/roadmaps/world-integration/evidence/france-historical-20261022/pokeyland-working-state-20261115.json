@@ -1,0 +1,1989 @@
+{
+  "documentType": "AmusementParkParkGraphUpsert",
+  "schemaVersion": "2026-09-05",
+  "mode": "merge",
+  "identity": {
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "name": "Pokeyland",
+    "countryCode": "FR"
+  },
+  "park": {
+    "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "name": "Pokeyland",
+    "countryCode": "FR",
+    "type": "AmusementPark",
+    "status": "Operating",
+    "openingDate": "2015-06-20",
+    "closingDate": null,
+    "openingDateText": "2015-06-20",
+    "closingDateText": null,
+    "founderId": "6fc80030-d7d3-420b-b2ca-3093af8d4104",
+    "founderKey": "bruno-poquet-pokeyland",
+    "operatorId": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+    "operatorKey": "bernard-amusement-pokeyland",
+    "websiteUrl": "https://www.pokeyland.com/",
+    "audienceClassification": "Regional",
+    "street": "Lieu-dit La Haie Focart",
+    "city": "Féy",
+    "postalCode": "57420",
+    "isVisible": false,
+    "adminReviewStatus": "ToReview",
+    "currentLogoImageId": "c71e7771f1a247f5b9dbf49cf3c69aca",
+    "descriptions": [
+      {
+        "languageCode": "fr",
+        "value": "<h2>La forêt de Féy comme terrain d’aventure</h2><p>Entre Metz et Nancy, Pokeyland occupe un domaine boisé de Féy, en Moselle. Les arbres entourent les clairières de jeux, les plans d’eau et les espaces de restauration. Le renard Pokey accompagne cet univers où les promenades sous les branches côtoient les couleurs vives des manèges.</p><p>Le paintball tient une place singulière dans ce paysage. Dog One évoque une plage de débarquement avec un bateau échoué ; Panama installe une chapelle dans une forêt sud-américaine imaginaire. Ailleurs, les décors de Fox Two, Zombie et Cannibale changent le sous-bois en base militaire, usine abandonnée ou village de fiction. Les parties se déroulent au milieu de ces petites scènes construites entre les arbres.</p><h2>Des cabanes aux cimes</h2><p>Les parcours d’accrobranche traversent la forêt à différentes hauteurs. Pitchoune, Découverte, Famille, Aventure et Sportif désignent des chemins où l’équilibre et le rapport au vide prennent une place croissante. Le parcours Tyrolienne ouvre encore une autre perspective sur le paysage boisé, tandis que les Cabanes de Pokey réunissent passerelles et grands filets autour des arbres.</p><p>Au sol, le Parcours pieds nus invite à sentir les matières du chemin. Le mini-golf se déploie à l’ombre, les poneys suivent un itinéraire forestier et les pistes de Tubing dessinent une large pente. Dans l’aire de jeux, balançoires et jeux sur ressorts occupent un tapis de copeaux bordé de barrières en bois.</p><h2>Éclaboussures et couleurs foraines</h2><p>Sur le plan d’eau des Bumper Boat, les bateaux ronds se croisent avec leurs jets d’eau. Les grandes pistes colorées de Waterjump donnent au secteur aquatique un caractère plus sportif : glissades et sauts y aboutissent dans l’eau, au bord de la forêt.</p><p>La chenille multicolore de La Pomme, les nacelles de montgolfière des As du ciel et les hélicoptères du Mono-Rail apportent une autre fantaisie aux clairières. La Roue, Le Batoo et le petit train complètent cette présence foraine. Entre les installations, Le Petit Creux, Le Grill, L’Escale et Le Gourmand proposent burgers, grillades, sandwiches ou douceurs près des terrasses ombragées.</p>"
+      },
+      {
+        "languageCode": "en",
+        "value": "<h2>Adventure in the woodland of Féy</h2><p>Between Metz and Nancy, Pokeyland occupies a wooded estate in Féy, Moselle. Trees surround the play clearings, ponds and places to eat. Pokey the fox accompanies a landscape where walks beneath the branches meet the bright colours of fairground rides.</p><p>Paintball has a distinctive place here. Dog One evokes a landing beach with a stranded boat, while Panama sets a chapel in an imagined South American forest. Elsewhere, the scenery of Fox Two, Zombie and Cannibale turns the woodland into a military base, an abandoned factory or a fictional village. Games unfold among these small scenes built between the trees.</p><h2>From woodland cabins to the treetops</h2><p>The treetop courses cross the forest at different heights. Pitchoune, Découverte, Famille, Aventure and Sportif name routes where balance and the sense of height become increasingly important. The Tyrolienne course offers another perspective on the woodland, while Cabanes de Pokey brings walkways and broad nets together around the trees.</p><p>On the ground, Parcours pieds nus invites bare feet to feel the different surfaces of the path. Mini-golf lies in the shade, ponies follow a woodland route, and the Tubing lanes form a wide slope. Swings and spring-mounted play equipment occupy a bed of woodchips in the playground, enclosed by wooden fencing.</p><h2>Splashes and fairground colours</h2><p>On the Bumper Boat pond, round boats pass one another with their water jets. Waterjump’s large, colourful slopes give the aquatic area a more sporting character: slides and jumps end in the water beside the forest.</p><p>La Pomme’s multicoloured caterpillar, the balloon-shaped baskets of Les as du ciel and the helicopters of Mono-Rail bring a different kind of fantasy to the clearings. La Roue, Le Batoo and the little train add to the fairground setting. Among the attractions, Le Petit Creux, Le Grill, L’Escale and Le Gourmand serve burgers, grilled food, sandwiches or sweet treats beside shaded terraces.</p>"
+      },
+      {
+        "languageCode": "de",
+        "value": "<h2>Abenteuer im Wald von Féy</h2><p>Zwischen Metz und Nancy liegt Pokeyland auf einem bewaldeten Gelände in Féy im Département Moselle. Bäume umgeben die Spielflächen auf den Lichtungen, die Wasserflächen und die Gastronomie. Fuchs Pokey begleitet diese Welt, in der Waldwege auf die leuchtenden Farben der Fahrgeschäfte treffen.</p><p>Paintball spielt in dieser Landschaft eine besondere Rolle. Dog One erinnert mit einem gestrandeten Boot an einen Landungsstrand; Panama versetzt eine Kapelle in einen erdachten südamerikanischen Wald. Die Kulissen von Fox Two, Zombie und Cannibale verwandeln andere Waldstücke in eine Militärbasis, eine verlassene Fabrik oder ein fiktives Dorf. Zwischen diesen kleinen Szenerien werden die Partien ausgetragen.</p><h2>Von Baumhütten zu den Wipfeln</h2><p>Die Hochseilparcours führen in unterschiedlichen Höhen durch den Wald. Pitchoune, Découverte, Famille, Aventure und Sportif bezeichnen Wege, auf denen Gleichgewicht und der Umgang mit der Höhe zunehmend gefordert sind. Der Parcours Tyrolienne eröffnet einen weiteren Blick auf den Wald. Bei Cabanes de Pokey verbinden sich Stege und große Netze rund um die Bäume.</p><p>Am Boden lässt der Parcours pieds nus verschiedene Wegmaterialien unter den Füßen spürbar werden. Die Minigolfanlage liegt im Schatten, Ponys folgen einem Waldweg, und die Tubingbahnen ziehen sich über einen breiten Hang. Auf dem Spielplatz stehen Schaukeln und Federwippen auf Holzschnitzeln innerhalb einer hölzernen Einfassung.</p><h2>Wasserspritzer und Jahrmarktsfarben</h2><p>Auf dem Teich der Bumper Boat begegnen sich runde Boote mit Wasserstrahlen. Die großen, farbigen Bahnen von Waterjump verleihen dem Wasserbereich einen sportlicheren Charakter: Rutschen und Sprünge enden am Waldrand im Wasser.</p><p>Die bunte Raupe von La Pomme, die Ballonkörbe von Les as du ciel und die Hubschrauber der Mono-Rail bringen weitere Fantasiewelten auf die Lichtungen. La Roue, Le Batoo und der kleine Zug ergänzen das Jahrmarktsbild. Zwischen den Attraktionen bieten Le Petit Creux, Le Grill, L’Escale und Le Gourmand Burger, Gegrilltes, Sandwiches oder Süßes bei schattigen Terrassen an.</p>"
+      },
+      {
+        "languageCode": "es",
+        "value": "<h2>El bosque de Féy como escenario de aventuras</h2><p>Entre Metz y Nancy, Pokeyland ocupa una finca arbolada de Féy, en Mosela. Los árboles rodean los claros de juegos, los estanques y los espacios de restauración. El zorro Pokey acompaña este universo donde los paseos bajo las ramas conviven con los colores vivos de las atracciones.</p><p>El paintball ocupa un lugar singular en este paisaje. Dog One evoca una playa de desembarco con un barco varado; Panama sitúa una capilla en un bosque sudamericano imaginario. Los decorados de Fox Two, Zombie y Cannibale transforman otros rincones en una base militar, una fábrica abandonada o un poblado ficticio. Las partidas transcurren entre estas pequeñas escenas construidas bajo los árboles.</p><h2>De las cabañas a las copas</h2><p>Los circuitos de aventura recorren el bosque a distintas alturas. Pitchoune, Découverte, Famille, Aventure y Sportif dan nombre a caminos donde el equilibrio y la sensación de altura cobran cada vez más importancia. El recorrido Tyrolienne ofrece otra perspectiva del paisaje arbolado, mientras Cabanes de Pokey reúne pasarelas y grandes redes alrededor de los árboles.</p><p>A ras de suelo, Parcours pieds nus invita a sentir descalzo los materiales del camino. El minigolf se extiende a la sombra, los ponis siguen un itinerario forestal y las pistas de Tubing dibujan una amplia pendiente. En el área de juegos, columpios y balancines de muelles ocupan un suelo de virutas delimitado por vallas de madera.</p><h2>Salpicaduras y colores de feria</h2><p>En el estanque de Bumper Boat, las embarcaciones redondas se cruzan con sus chorros de agua. Las grandes pistas de colores de Waterjump aportan un carácter más deportivo al sector acuático: los descensos y saltos terminan en el agua, junto al bosque.</p><p>La oruga multicolor de La Pomme, las cestas de globo de Les as du ciel y los helicópteros de Mono-Rail añaden otra fantasía a los claros. La Roue, Le Batoo y el pequeño tren completan el ambiente de feria. Entre las atracciones, Le Petit Creux, Le Grill, L’Escale y Le Gourmand sirven hamburguesas, parrilladas, bocadillos o dulces junto a terrazas sombreadas.</p>"
+      },
+      {
+        "languageCode": "it",
+        "value": "<h2>Il bosco di Féy come spazio d’avventura</h2><p>Fra Metz e Nancy, Pokeyland occupa una tenuta alberata di Féy, nella Mosella. Gli alberi circondano le radure dei giochi, gli specchi d’acqua e gli spazi di ristoro. La volpe Pokey accompagna questo mondo in cui le passeggiate sotto i rami incontrano i colori vivaci delle giostre.</p><p>Il paintball ha un ruolo particolare in questo paesaggio. Dog One evoca una spiaggia di sbarco con una barca arenata; Panama colloca una cappella in una foresta sudamericana immaginaria. Le scenografie di Fox Two, Zombie e Cannibale trasformano altri angoli del bosco in una base militare, una fabbrica abbandonata o un villaggio di fantasia. Le partite si svolgono fra queste piccole ambientazioni costruite tra gli alberi.</p><h2>Dalle capanne alle chiome</h2><p>I percorsi acrobatici attraversano il bosco ad altezze diverse. Pitchoune, Découverte, Famille, Aventure e Sportif indicano itinerari in cui l’equilibrio e il rapporto con il vuoto diventano sempre più importanti. Il percorso Tyrolienne offre un’altra prospettiva sul paesaggio alberato, mentre Cabanes de Pokey riunisce passerelle e grandi reti intorno agli alberi.</p><p>A terra, Parcours pieds nus invita a sentire sotto i piedi i materiali del cammino. Il minigolf si sviluppa all’ombra, i pony seguono un itinerario nel bosco e le piste di Tubing disegnano un ampio pendio. Nell’area giochi, altalene e giochi a molla occupano un tappeto di trucioli delimitato da staccionate.</p><h2>Spruzzi e colori da luna park</h2><p>Nello specchio d’acqua dei Bumper Boat, le barche rotonde si incrociano con i loro getti d’acqua. Le grandi piste colorate di Waterjump danno al settore acquatico un carattere più sportivo: discese e salti terminano nell’acqua, ai margini del bosco.</p><p>Il bruco multicolore di La Pomme, le ceste a forma di mongolfiera di Les as du ciel e gli elicotteri di Mono-Rail aggiungono un’altra fantasia alle radure. La Roue, Le Batoo e il trenino completano l’atmosfera da luna park. Fra le attrazioni, Le Petit Creux, Le Grill, L’Escale e Le Gourmand servono hamburger, grigliate, panini o dolci vicino alle terrazze ombreggiate.</p>"
+      },
+      {
+        "languageCode": "nl",
+        "value": "<h2>Avontuur in het bos van Féy</h2><p>Tussen Metz en Nancy ligt Pokeyland op een bebost terrein in Féy, in Moselle. Bomen omringen de open speelplekken, waterpartijen en eetgelegenheden. Vos Pokey hoort bij deze wereld waarin wandelingen onder de takken samengaan met de felle kleuren van de attracties.</p><p>Paintball neemt hier een bijzondere plaats in. Dog One roept met een gestrand schip een landingsstrand op; Panama plaatst een kapel in een denkbeeldig Zuid-Amerikaans bos. De decors van Fox Two, Zombie en Cannibale veranderen andere bospercelen in een militaire basis, een verlaten fabriek of een fictief dorp. Tussen deze kleine, onder de bomen gebouwde werelden worden de wedstrijden gespeeld.</p><h2>Van boomhutten naar boomtoppen</h2><p>De klimparcoursen doorkruisen het bos op verschillende hoogtes. Pitchoune, Découverte, Famille, Aventure en Sportif zijn routes waarbij evenwicht en de ervaring van hoogte steeds belangrijker worden. Parcours Tyrolienne biedt weer een ander uitzicht op het bos. Bij Cabanes de Pokey komen loopbruggen en grote netten rond de bomen samen.</p><p>Op de grond laat Parcours pieds nus blote voeten de verschillende materialen van het pad voelen. De minigolf ligt in de schaduw, pony’s volgen een bosroute en de Tubingbanen vormen een brede helling. In de speeltuin staan schommels en veertoestellen op houtsnippers, omgeven door houten hekwerk.</p><h2>Waterspetters en kermiskleuren</h2><p>Op de vijver van Bumper Boat kruisen ronde bootjes met waterstralen elkaars pad. De grote, kleurrijke banen van Waterjump geven het watergedeelte een sportiever karakter: glijpartijen en sprongen eindigen in het water aan de bosrand.</p><p>De veelkleurige rups van La Pomme, de ballonmandjes van Les as du ciel en de helikopters van Mono-Rail brengen nog meer fantasie naar de open plekken. La Roue, Le Batoo en het treintje vullen het kermisbeeld aan. Tussen de attracties serveren Le Petit Creux, Le Grill, L’Escale en Le Gourmand burgers, gegrilde gerechten, broodjes of zoetigheden bij schaduwrijke terrassen.</p>"
+      },
+      {
+        "languageCode": "pl",
+        "value": "<h2>Przygoda w lesie w Féy</h2><p>Między Metz a Nancy Pokeyland zajmuje zalesiony teren w Féy, w departamencie Mozela. Drzewa otaczają polany z zabawami, zbiorniki wodne i punkty gastronomiczne. Lis Pokey towarzyszy temu miejscu, w którym ścieżki pod gałęziami spotykają się z jaskrawymi kolorami urządzeń wesołego miasteczka.</p><p>Paintball odgrywa w tym krajobrazie szczególną rolę. Dog One przywołuje plażę desantową z osiadłą na brzegu łodzią, a Panama umieszcza kaplicę w wyobrażonym lesie południowoamerykańskim. Dekoracje Fox Two, Zombie i Cannibale zamieniają inne fragmenty lasu w bazę wojskową, opuszczoną fabrykę lub fikcyjną wioskę. Rozgrywki toczą się między tymi niewielkimi sceneriami zbudowanymi wśród drzew.</p><h2>Od domków do koron drzew</h2><p>Trasy parku linowego prowadzą przez las na różnych wysokościach. Pitchoune, Découverte, Famille, Aventure i Sportif to szlaki, na których równowaga i oswajanie wysokości odgrywają coraz większą rolę. Parcours Tyrolienne daje kolejne spojrzenie na leśny krajobraz, a Cabanes de Pokey łączy pomosty i duże siatki wokół drzew.</p><p>Na ziemi Parcours pieds nus zachęca do poznawania bosymi stopami materiałów ścieżki. Minigolf rozciąga się w cieniu, kucyki przemierzają leśną trasę, a tory Tubing tworzą szeroki stok. Na placu zabaw huśtawki i bujaki sprężynowe stoją na warstwie zrębków otoczonej drewnianym ogrodzeniem.</p><h2>Rozpryski wody i kolory wesołego miasteczka</h2><p>Na stawie Bumper Boat mijają się okrągłe łodzie ze strumieniami wody. Duże, kolorowe zjeżdżalnie Waterjump nadają strefie wodnej bardziej sportowy charakter: ślizgi i skoki kończą się w wodzie przy lesie.</p><p>Wielobarwna gąsienica La Pomme, kosze balonowe Les as du ciel i śmigłowce Mono-Rail wnoszą na polany kolejne fantazyjne motywy. La Roue, Le Batoo i mała kolejka dopełniają obraz wesołego miasteczka. Między atrakcjami Le Petit Creux, Le Grill, L’Escale i Le Gourmand podają burgery, dania z grilla, kanapki lub słodycze przy zacienionych tarasach.</p>"
+      },
+      {
+        "languageCode": "pt",
+        "value": "<h2>Aventura na floresta de Féy</h2><p>Entre Metz e Nancy, o Pokeyland ocupa uma propriedade arborizada de Féy, na Mosela. As árvores rodeiam as clareiras de jogos, os planos de água e os espaços de restauração. A raposa Pokey acompanha este universo onde os passeios sob os ramos se cruzam com as cores vivas dos divertimentos.</p><p>O paintball tem um lugar singular nesta paisagem. Dog One evoca uma praia de desembarque com um barco encalhado; Panama coloca uma capela numa floresta sul-americana imaginária. Os cenários de Fox Two, Zombie e Cannibale transformam outros recantos numa base militar, numa fábrica abandonada ou numa aldeia fictícia. As partidas decorrem entre estas pequenas cenas construídas debaixo das árvores.</p><h2>Das cabanas às copas</h2><p>Os percursos de arborismo atravessam a floresta a diferentes alturas. Pitchoune, Découverte, Famille, Aventure e Sportif identificam caminhos onde o equilíbrio e a relação com a altura ganham uma importância crescente. O percurso Tyrolienne oferece outra perspetiva sobre a paisagem arborizada, enquanto Cabanes de Pokey reúne passadiços e grandes redes em redor das árvores.</p><p>No solo, Parcours pieds nus convida a sentir, descalço, os materiais do caminho. O minigolfe estende-se à sombra, os póneis seguem um itinerário florestal e as pistas de Tubing desenham uma ampla encosta. Na área de jogos, baloiços e brinquedos de mola ocupam um tapete de aparas delimitado por vedações de madeira.</p><h2>Salpicos e cores de feira</h2><p>No plano de água dos Bumper Boat, os barcos redondos cruzam-se com os seus jatos de água. As grandes pistas coloridas de Waterjump dão ao setor aquático um caráter mais desportivo: descidas e saltos terminam na água, junto à floresta.</p><p>A lagarta multicolor de La Pomme, os cestos de balão de Les as du ciel e os helicópteros de Mono-Rail acrescentam outra fantasia às clareiras. La Roue, Le Batoo e o pequeno comboio completam o ambiente de feira. Entre os divertimentos, Le Petit Creux, Le Grill, L’Escale e Le Gourmand servem hambúrgueres, grelhados, sanduíches ou doces junto de esplanadas sombreadas.</p>"
+      }
+    ]
+  },
+  "references": {
+    "founders": [
+      {
+        "key": "bruno-poquet-pokeyland",
+        "name": "Bruno Poquet",
+        "biography": [
+          {
+            "languageCode": "fr",
+            "value": "<h2>Le projet familial de Féy</h2><p>Bruno Poquet est à l’origine du projet familial devenu Pokeyland, ouvert au public le 20 juin 2015 dans la forêt de Féy, en Moselle. L’achat de cette parcelle boisée précède la création d’un parc où les activités de plein air côtoient des terrains de paintball aux décors élaborés.</p><p>Bruno préside la société exploitante historique, tandis que son fils Nicolas Poquet participe à son développement et dirige le parc. La famille cède le fonds à Bernard-Amusement par un acte du 29 novembre 2023. Nicolas accompagne ensuite la transition, jusqu’au changement de direction opérationnelle de décembre 2024.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>The family project in Féy</h2><p>Bruno Poquet initiated the family project that became Pokeyland, which opened to the public on 20 June 2015 in the woodland of Féy, Moselle. The purchase of this wooded site preceded the creation of a park combining outdoor activities with elaborately themed paintball fields.</p><p>Bruno chaired the original operating company, while his son Nicolas Poquet helped develop the business and managed the park. The family sold the business to Bernard-Amusement under a deed signed on 29 November 2023. Nicolas then supported the transition until the change in operational management in December 2024.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Das Familienprojekt in Féy</h2><p>Bruno Poquet gab den Anstoß zu dem Familienprojekt, aus dem Pokeyland hervorging. Der Park im Wald von Féy im Département Moselle öffnete am 20. Juni 2015 für Besucher. Nach dem Kauf des bewaldeten Grundstücks entstand ein Freizeitpark, der Aktivitäten im Freien mit aufwendig gestalteten Paintballgeländen verband.</p><p>Bruno stand der ursprünglichen Betreibergesellschaft vor. Sein Sohn Nicolas Poquet wirkte am Ausbau mit und leitete den Park. Mit einem Vertrag vom 29. November 2023 verkaufte die Familie den Geschäftsbetrieb an Bernard-Amusement. Nicolas begleitete den Übergang bis zum Wechsel der operativen Leitung im Dezember 2024.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>El proyecto familiar de Féy</h2><p>Bruno Poquet impulsó el proyecto familiar que dio origen a Pokeyland, abierto al público el 20 de junio de 2015 en el bosque de Féy, en Mosela. La compra de este terreno arbolado precedió a la creación de un parque que combinaba actividades al aire libre con campos de paintball de cuidada ambientación.</p><p>Bruno presidía la sociedad operadora original, mientras su hijo Nicolas Poquet participaba en el desarrollo y dirigía el parque. La familia vendió el negocio a Bernard-Amusement mediante un contrato del 29 de noviembre de 2023. Nicolas acompañó la transición hasta el cambio de dirección operativa en diciembre de 2024.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Il progetto familiare di Féy</h2><p>Bruno Poquet avviò il progetto familiare da cui nacque Pokeyland, aperto al pubblico il 20 giugno 2015 nel bosco di Féy, nella Mosella. L’acquisto del terreno alberato precedette la creazione di un parco che univa attività all’aperto e campi da paintball dalle scenografie curate.</p><p>Bruno presiedeva la società di gestione originaria, mentre il figlio Nicolas Poquet contribuiva allo sviluppo e dirigeva il parco. La famiglia cedette l’attività a Bernard-Amusement con un atto del 29 novembre 2023. Nicolas accompagnò poi la transizione fino al cambio della direzione operativa nel dicembre 2024.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>Het familieproject in Féy</h2><p>Bruno Poquet nam het initiatief voor het familieproject waaruit Pokeyland ontstond. Het park in het bos van Féy, in Moselle, ging op 20 juni 2015 open voor bezoekers. Na de aankoop van het beboste terrein ontstond een park met buitenactiviteiten en uitvoerig aangeklede paintballterreinen.</p><p>Bruno was voorzitter van de oorspronkelijke exploitatiemaatschappij. Zijn zoon Nicolas Poquet werkte mee aan de ontwikkeling en leidde het park. De familie verkocht het bedrijf aan Bernard-Amusement met een akte van 29 november 2023. Nicolas begeleidde vervolgens de overgang tot de wisseling van de dagelijkse leiding in december 2024.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Rodzinny projekt w Féy</h2><p>Bruno Poquet zapoczątkował rodzinny projekt, z którego powstał Pokeyland. Park w lesie w Féy, w departamencie Mozela, otwarto dla zwiedzających 20 czerwca 2015 roku. Zakup zalesionej działki poprzedził stworzenie miejsca łączącego aktywności na świeżym powietrzu z rozbudowaną scenografią pól paintballowych.</p><p>Bruno był prezesem pierwotnej spółki prowadzącej park, a jego syn Nicolas Poquet uczestniczył w rozwoju przedsięwzięcia i kierował parkiem. Rodzina sprzedała działalność firmie Bernard-Amusement na mocy aktu z 29 listopada 2023 roku. Nicolas wspierał następnie okres przejściowy, aż do zmiany kierownictwa operacyjnego w grudniu 2024 roku.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>O projeto familiar de Féy</h2><p>Bruno Poquet iniciou o projeto familiar que deu origem ao Pokeyland, aberto ao público em 20 de junho de 2015 na floresta de Féy, na Mosela. A compra deste terreno arborizado antecedeu a criação de um parque que combinava atividades ao ar livre com campos de paintball de cenários elaborados.</p><p>Bruno presidia à sociedade exploradora original, enquanto o seu filho Nicolas Poquet participava no desenvolvimento e dirigia o parque. A família vendeu o negócio à Bernard-Amusement por um ato de 29 de novembro de 2023. Nicolas acompanhou depois a transição até à mudança da direção operacional em dezembro de 2024.</p>"
+          }
+        ],
+        "isVisible": false,
+        "adminReviewStatus": "ToReview",
+        "id": "6fc80030-d7d3-420b-b2ca-3093af8d4104"
+      }
+    ],
+    "operators": [
+      {
+        "key": "bernard-amusement-pokeyland",
+        "name": "BERNARD-AMUSEMENT",
+        "legalName": "BERNARD-AMUSEMENT",
+        "adminReviewStatus": "ToReview",
+        "id": "f3164e8b-dcbf-4019-a2e1-e2fd27a27f01",
+        "description": [
+          {
+            "languageCode": "fr",
+            "value": "<h2>De la Belgique à Pokeyland</h2><p>Bernard-Amusement est une société belge devenue exploitante de Pokeyland, à Féy. Elle acquiert le fonds de commerce de la société Pokeyland par un acte du 29 novembre 2023. Cette reprise précède le renouvellement complet de la direction opérationnelle en décembre 2024, après une période de transition accompagnée par Nicolas Poquet.</p><p>Le développement des manèges élargit alors l’offre du parc forestier, avec notamment La Pomme parmi les arrivées de 2025. Le 1er octobre 2026, Bernard-Amusement est placée en redressement judiciaire. La poursuite de l’activité et une réouverture du parc en 2027 restent les objectifs annoncés ; cette dernière n’est pas encore réalisée.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<h2>From Belgium to Pokeyland</h2><p>Bernard-Amusement is a Belgian company that became the operator of Pokeyland in Féy. It acquired the park business from the company Pokeyland under a deed dated 29 November 2023. The takeover preceded the full change in operational management in December 2024, following a transition supported by Nicolas Poquet.</p><p>The expansion of the ride offering broadened the woodland park’s attractions, with La Pomme among the arrivals in 2025. On 1 October 2026, Bernard-Amusement entered court-supervised reorganisation. Continuing the business and reopening the park in 2027 remain the stated aims; that reopening has not yet taken place.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Von Belgien nach Pokeyland</h2><p>Bernard-Amusement ist ein belgisches Unternehmen, das den Betrieb von Pokeyland in Féy übernahm. Mit einem Vertrag vom 29. November 2023 erwarb es den Geschäftsbetrieb von der Gesellschaft Pokeyland. Nach einer von Nicolas Poquet begleiteten Übergangszeit wechselte im Dezember 2024 auch die operative Leitung vollständig.</p><p>Zusätzliche Fahrgeschäfte erweiterten das Angebot des Waldparks; zu den Neuzugängen 2025 gehörte La Pomme. Am 1. Oktober 2026 wurde für Bernard-Amusement ein gerichtliches Sanierungsverfahren eröffnet. Die Fortführung des Betriebs und eine Wiedereröffnung des Parks 2027 bleiben die erklärten Ziele; diese Wiedereröffnung hat noch nicht stattgefunden.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>De Bélgica a Pokeyland</h2><p>Bernard-Amusement es una sociedad belga que pasó a explotar Pokeyland, en Féy. Adquirió el negocio de la sociedad Pokeyland mediante un contrato del 29 de noviembre de 2023. La compra precedió al relevo completo de la dirección operativa en diciembre de 2024, tras una transición acompañada por Nicolas Poquet.</p><p>La incorporación de más atracciones mecánicas amplió la oferta del parque forestal, con La Pomme entre las llegadas de 2025. El 1 de octubre de 2026, Bernard-Amusement entró en un procedimiento judicial de reorganización. Continuar la actividad y reabrir el parque en 2027 siguen siendo los objetivos anunciados; esa reapertura aún no se ha producido.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Dal Belgio a Pokeyland</h2><p>Bernard-Amusement è una società belga diventata gestore di Pokeyland, a Féy. Ha acquisito l’attività della società Pokeyland con un atto del 29 novembre 2023. Il passaggio ha preceduto il completo rinnovo della direzione operativa nel dicembre 2024, dopo una transizione accompagnata da Nicolas Poquet.</p><p>L’arrivo di altre giostre ha ampliato l’offerta del parco nel bosco, con La Pomme fra le novità del 2025. Il 1º ottobre 2026, Bernard-Amusement è stata sottoposta a una procedura giudiziaria di risanamento. Proseguire l’attività e riaprire il parco nel 2027 restano gli obiettivi annunciati; questa riapertura non è ancora avvenuta.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>Van België naar Pokeyland</h2><p>Bernard-Amusement is een Belgische onderneming die de exploitatie van Pokeyland in Féy overnam. Met een akte van 29 november 2023 kocht zij de parkactiviteiten van de vennootschap Pokeyland. Na een door Nicolas Poquet begeleide overgang volgde in december 2024 de volledige wisseling van de dagelijkse leiding.</p><p>Meer attracties breidden het aanbod van het bospark uit, met La Pomme als een van de aanwinsten in 2025. Op 1 oktober 2026 kwam Bernard-Amusement onder gerechtelijke reorganisatie te staan. Het bedrijf voortzetten en het park in 2027 heropenen blijven de aangekondigde doelen; die heropening heeft nog niet plaatsgevonden.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Z Belgii do Pokeylandu</h2><p>Bernard-Amusement to belgijska spółka, która została operatorem Pokeylandu w Féy. Na mocy aktu z 29 listopada 2023 roku nabyła działalność parku od spółki Pokeyland. Po okresie przejściowym wspieranym przez Nicolasa Poqueta w grudniu 2024 roku nastąpiła pełna zmiana kierownictwa operacyjnego.</p><p>Kolejne urządzenia rozrywkowe poszerzyły ofertę leśnego parku; wśród nowości z 2025 roku znalazła się La Pomme. 1 października 2026 roku Bernard-Amusement objęto sądowym postępowaniem naprawczym. Kontynuacja działalności i ponowne otwarcie parku w 2027 roku pozostają zapowiedzianymi celami; do tego otwarcia jeszcze nie doszło.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>Da Bélgica ao Pokeyland</h2><p>A Bernard-Amusement é uma sociedade belga que passou a explorar o Pokeyland, em Féy. Adquiriu o negócio da sociedade Pokeyland por um ato de 29 de novembro de 2023. A aquisição antecedeu a mudança completa da direção operacional em dezembro de 2024, após uma transição acompanhada por Nicolas Poquet.</p><p>A chegada de mais divertimentos ampliou a oferta do parque florestal, com La Pomme entre as novidades de 2025. Em 1 de outubro de 2026, a Bernard-Amusement entrou num processo judicial de recuperação. Prosseguir a atividade e reabrir o parque em 2027 continuam a ser os objetivos anunciados; essa reabertura ainda não ocorreu.</p>"
+          }
+        ]
+      }
+    ],
+    "manufacturers": [
+      {
+        "key": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "id": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "name": "Güven Amusement Rides Factory",
+        "legalName": "Güven Lunapark",
+        "foundedYear": 1979,
+        "closedYear": null,
+        "contactDetails": {
+          "websiteUrl": "https://www.guvenlunapark.com/",
+          "email": "info@guvenlunapark.com",
+          "phoneNumber": "+90 312 814 02 11",
+          "street": "Sathı Kadın Mah. Sanayi Sitesi No: 31",
+          "city": "Kazan",
+          "postalCode": null,
+          "countryCode": "TR",
+          "latitude": null,
+          "longitude": null
+        },
+        "biography": [
+          {
+            "languageCode": "en",
+            "value": "<h2>A Turkish fairground history since 1979</h2><p>Güven Amusement Rides Factory, also known as Güven Lunapark, has been building attractions since 1979. Based in the Ankara region, the company serves the Turkish market as well as operators in other countries.</p><p>Its work combines a catalogue of standard models with products developed around clients’ requests and designs. Transportable versions of its rides also connect its production with the world of travelling fairgrounds.</p><h2>The life of a ride after manufacture</h2><p>Spare parts, technical assistance and after-sales service extend the manufacturer’s role. That link between creating and supporting attractions forms part of Güven’s professional identity. Chenille in Trappes illustrates its presence in smaller family parks.</p>"
+          },
+          {
+            "languageCode": "fr",
+            "value": "<h2>Une histoire turque de fête foraine depuis 1979</h2><p>Güven Amusement Rides Factory, également connu sous le nom de Güven Lunapark, construit des attractions depuis 1979. Installée dans la région d’Ankara, l’entreprise s’adresse aussi bien au marché turc qu’aux exploitants d’autres pays.</p><p>Son activité associe un catalogue de modèles standard à des créations répondant aux demandes et aux décors souhaités par ses clients. Les versions transportables de ses manèges inscrivent également son travail dans l’univers des fêtes foraines itinérantes.</p><h2>La vie des manèges après leur fabrication</h2><p>La fourniture de pièces détachées, l’assistance technique et le service après-vente prolongent le rôle du constructeur. Cette continuité entre création et suivi des attractions fait partie de l’identité professionnelle de Güven, dont la Chenille de Trappes illustre la présence dans les petits parcs familiaux.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<h2>Una historia turca de feria desde 1979</h2><p>Güven Amusement Rides Factory, también conocida como Güven Lunapark, construye atracciones desde 1979. La empresa de la región de Ankara se dirige tanto al mercado turco como a operadores de otros países.</p><p>Su actividad combina un catálogo de modelos estándar con productos desarrollados según las peticiones y los diseños de sus clientes. Las versiones transportables de sus atracciones vinculan también su producción con el mundo de las ferias itinerantes.</p><h2>La vida de las atracciones después de su fabricación</h2><p>Los recambios, la asistencia técnica y el servicio posventa prolongan el papel del fabricante. Esa relación entre creación y apoyo a las atracciones forma parte de la identidad profesional de Güven. Chenille, en Trappes, ilustra su presencia en pequeños parques familiares.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<h2>Türkische Jahrmarktsgeschichte seit 1979</h2><p>Güven Amusement Rides Factory, auch als Güven Lunapark bekannt, baut seit 1979 Attraktionen. Das Unternehmen aus der Region Ankara beliefert sowohl den türkischen Markt als auch Betreiber in anderen Ländern.</p><p>Zum Angebot gehören Standardmodelle und Produkte, die nach den Wünschen und Gestaltungsideen der Kunden entwickelt werden. Transportable Ausführungen verbinden die Produktion auch mit der Welt der reisenden Schausteller.</p><h2>Das Leben der Fahrgeschäfte nach dem Bau</h2><p>Ersatzteile, technische Unterstützung und Kundendienst erweitern die Rolle des Herstellers. Die Verbindung von Bau und Betreuung der Attraktionen gehört zum beruflichen Profil von Güven. Chenille in Trappes veranschaulicht die Präsenz in kleineren Familienparks.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<h2>Una storia turca da luna park dal 1979</h2><p>Güven Amusement Rides Factory, nota anche come Güven Lunapark, costruisce attrazioni dal 1979. L’azienda della regione di Ankara si rivolge sia al mercato turco sia ai gestori di altri paesi.</p><p>La sua attività unisce un catalogo di modelli standard a prodotti sviluppati secondo le richieste e i progetti dei clienti. Le versioni trasportabili delle giostre legano inoltre la produzione al mondo dei luna park itineranti.</p><h2>La vita delle giostre dopo la costruzione</h2><p>Ricambi, assistenza tecnica e servizio dopo la vendita prolungano il ruolo del costruttore. Questo legame fra realizzazione e supporto delle attrazioni appartiene all’identità professionale di Güven. Chenille a Trappes ne mostra la presenza nei piccoli parchi per famiglie.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<h2>Turecka historia wesołych miasteczek od 1979 roku</h2><p>Güven Amusement Rides Factory, znana także jako Güven Lunapark, buduje atrakcje od 1979 roku. Firma z regionu Ankary kieruje ofertę zarówno na rynek turecki, jak i do operatorów w innych krajach.</p><p>Jej działalność łączy katalog modeli standardowych z produktami opracowywanymi według życzeń i projektów klientów. Przewoźne wersje atrakcji wiążą produkcję także ze światem objazdowych wesołych miasteczek.</p><h2>Życie atrakcji po zakończeniu budowy</h2><p>Części zamienne, wsparcie techniczne i obsługa posprzedażowa przedłużają rolę producenta. Związek między tworzeniem atrakcji a ich dalszą obsługą należy do zawodowej tożsamości Güven. Chenille w Trappes pokazuje obecność firmy w małych parkach rodzinnych.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<h2>Turkse kermisgeschiedenis sinds 1979</h2><p>Güven Amusement Rides Factory, ook bekend als Güven Lunapark, bouwt sinds 1979 attracties. Het bedrijf uit de regio Ankara bedient zowel de Turkse markt als exploitanten in andere landen.</p><p>Het aanbod combineert standaardmodellen met producten die naar de wensen en ontwerpen van klanten worden ontwikkeld. Vervoerbare uitvoeringen van de attracties verbinden de productie ook met de wereld van reizende kermissen.</p><h2>Het leven van attracties na de bouw</h2><p>Onderdelen, technische ondersteuning en service na de verkoop geven de fabrikant ook daarna een rol. Die verbinding tussen bouwen en ondersteunen hoort bij de professionele identiteit van Güven. Chenille in Trappes laat de aanwezigheid van het bedrijf in kleinere familieparken zien.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<h2>Uma história turca de feira desde 1979</h2><p>A Güven Amusement Rides Factory, também conhecida como Güven Lunapark, constrói atrações desde 1979. A empresa da região de Ancara dirige-se tanto ao mercado turco como a operadores de outros países.</p><p>A atividade combina um catálogo de modelos padrão com produtos desenvolvidos segundo os pedidos e os desenhos dos clientes. As versões transportáveis dos divertimentos ligam também a produção ao mundo das feiras itinerantes.</p><h2>A vida dos divertimentos depois da construção</h2><p>Peças sobresselentes, assistência técnica e serviço após a venda prolongam o papel do fabricante. Esta relação entre criação e acompanhamento das atrações faz parte da identidade profissional da Güven. A Chenille, em Trappes, ilustra a sua presença em pequenos parques familiares.</p>"
+          }
+        ],
+        "isVisible": true,
+        "adminReviewStatus": "ToReview"
+      }
+    ]
+  },
+  "zones": [
+    {
+      "key": "pokeyland-zone-accrobranche",
+      "name": "Accrobranche",
+      "isVisible": false,
+      "sortOrder": 1,
+      "id": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-zone-paintball",
+      "name": "Paintball",
+      "isVisible": false,
+      "sortOrder": 2,
+      "id": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+    },
+    {
+      "key": "pokeyland-zone-waterjump",
+      "name": "Waterjump",
+      "isVisible": false,
+      "sortOrder": 3,
+      "id": "161766a5-cdcd-4675-aef8-3acc9e078098"
+    }
+  ],
+  "items": [
+    {
+      "key": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "name": "La Pomme",
+      "category": "Attraction",
+      "type": "RollerCoaster",
+      "subtype": null,
+      "zoneId": null,
+      "zoneKey": null,
+      "descriptions": [],
+      "attractionDetails": {
+        "manufacturerId": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "manufacturerKey": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
+        "model": "Güven Amusement Rides Factory Brucomela",
+        "externalSource": "CaptainCoaster",
+        "externalId": "6501",
+        "sourceUrl": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+        "status": "Operating",
+        "materialType": "Steel",
+        "seatingType": "Sit Down",
+        "launchType": "Lift à chaîne",
+        "restraintType": "Lap Bar commune",
+        "isLaunched": false,
+        "openingDate": "2025-04-05",
+        "closingDate": null,
+        "openingDateText": "2025-04-05",
+        "closingDateText": null,
+        "durationInSeconds": null,
+        "capacityPerHour": null,
+        "heightInFeet": null,
+        "heightInMeters": null,
+        "lengthInFeet": null,
+        "lengthInMeters": null,
+        "speedInMph": null,
+        "speedInKmH": null,
+        "dropInFeet": null,
+        "dropInMeters": null,
+        "inversionCount": 0,
+        "trainCount": null,
+        "carsPerTrain": null,
+        "ridersPerVehicle": null,
+        "hasSingleRider": null,
+        "hasFastPass": null,
+        "isAccessibleForReducedMobility": null,
+        "isIndoor": null,
+        "waterExposureLevel": null,
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 92,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          },
+          {
+            "type": "MaxHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 2
+          }
+        ]
+      },
+      "attractionLocations": null,
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "key": "pokeyland-aire-de-jeux",
+      "name": "Aire de jeux",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/"
+      },
+      "id": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une clairière verte et jaune</h2><p>Un bateau à ressorts vert et jaune donne sa silhouette à cette aire de jeux. Autour de lui, une petite assise jaune, des balançoires et un ensemble à grimper avec toboggan occupent un sol couvert de copeaux.</p><p>Les formes arrondies des jeux contrastent avec les troncs et les clôtures en bois. Le vert des panneaux répond au feuillage qui entoure cet espace ouvert.</p><h2>Des tables au bord des jeux</h2><p>Des tables de pique-nique longent la clairière, face aux balançoires. Depuis leurs bancs, les accompagnateurs gardent les jeux en vue, dans un cadre de sous-bois plutôt que de cour goudronnée.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A green and yellow clearing</h2><p>A green and yellow spring boat gives this playground its distinctive outline. A small yellow spring seat, swings and a climbing frame with a slide stand around it on a bed of woodchips.</p><p>The rounded play equipment contrasts with the tree trunks and wooden fences. Green panels echo the foliage surrounding the open space.</p><h2>Tables beside the playground</h2><p>Picnic tables line the clearing opposite the swings. From the benches, companions can keep the play equipment in sight, in woodland surroundings rather than a paved yard.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Lichtung in Grün und Gelb</h2><p>Ein grün-gelbes Federspielboot prägt diesen Spielplatz. Daneben stehen ein kleiner gelber Federsitz, Schaukeln und ein Klettergerüst mit Rutsche auf einem Boden aus Holzschnitzeln.</p><p>Die abgerundeten Spielgeräte bilden einen Kontrast zu Baumstämmen und Holzzäunen. Ihre grünen Flächen greifen die Farbe des Laubs rund um den offenen Platz auf.</p><h2>Tische am Rand des Spielplatzes</h2><p>Picknicktische säumen die Lichtung gegenüber den Schaukeln. Von den Bänken aus bleiben die Spielgeräte im Blick: Die Umgebung erinnert an einen Waldplatz statt an einen asphaltierten Hof.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un claro verde y amarillo</h2><p>Un barco de muelles verde y amarillo da carácter a esta zona de juegos. A su alrededor, un pequeño asiento amarillo, columpios y una estructura para trepar con tobogán ocupan un suelo cubierto de virutas de madera.</p><p>Las formas redondeadas de los juegos contrastan con los troncos y las vallas de madera. Los paneles verdes recogen el color del follaje que rodea este espacio abierto.</p><h2>Mesas junto a los juegos</h2><p>Las mesas de pícnic bordean el claro, frente a los columpios. Desde sus bancos, los acompañantes mantienen los juegos a la vista, en un entorno de bosque en lugar de un patio asfaltado.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una radura verde e gialla</h2><p>Una barca a molle verde e gialla caratterizza questa area giochi. Intorno, un piccolo sedile giallo, altalene e una struttura per arrampicarsi con scivolo occupano un terreno coperto di trucioli di legno.</p><p>Le forme arrotondate dei giochi contrastano con i tronchi e le recinzioni in legno. I pannelli verdi riprendono il colore del fogliame che circonda lo spazio aperto.</p><h2>Tavoli accanto ai giochi</h2><p>I tavoli da picnic costeggiano la radura, di fronte alle altalene. Dalle panche gli accompagnatori possono tenere i giochi sott’occhio, in un ambiente boschivo anziché in un cortile asfaltato.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een groene en gele open plek</h2><p>Een groen-gele wipboot op veren vormt de opvallende blikvanger van deze speeltuin. Een klein geel veerzitje, schommels en een klimtoestel met glijbaan staan eromheen op een ondergrond van houtsnippers.</p><p>De afgeronde speeltoestellen contrasteren met de boomstammen en houten hekken. Groene panelen sluiten aan bij het gebladerte rondom de open ruimte.</p><h2>Tafels langs de speelplek</h2><p>Picknicktafels staan aan de rand van de open plek, tegenover de schommels. Vanaf de banken houden begeleiders de speeltoestellen in het oog, in een bosomgeving in plaats van op een geasfalteerd plein.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Zielono-żółta polana</h2><p>Zielono-żółta łódka na sprężynach nadaje temu placowi zabaw wyrazisty charakter. Wokół niej stoją małe żółte siedzisko, huśtawki oraz konstrukcja do wspinania ze zjeżdżalnią. Podłoże pokrywają drewniane zrębki.</p><p>Zaokrąglone kształty urządzeń kontrastują z pniami drzew i drewnianym ogrodzeniem. Zielone panele nawiązują do liści otaczających otwartą przestrzeń.</p><h2>Stoły przy placu zabaw</h2><p>Stoły piknikowe stoją na skraju polany, naprzeciw huśtawek. Siedzący na ławkach opiekunowie mają zabawki w zasięgu wzroku, w leśnym otoczeniu zamiast na asfaltowym podwórku.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma clareira verde e amarela</h2><p>Um barco de molas verde e amarelo dá personalidade a esta área de jogos. À sua volta, um pequeno assento amarelo, baloiços e uma estrutura de escalada com escorrega ocupam um chão coberto de aparas de madeira.</p><p>As formas arredondadas dos brinquedos contrastam com os troncos e as vedações de madeira. Os painéis verdes acompanham a cor da folhagem que rodeia o espaço aberto.</p><h2>Mesas junto aos brinquedos</h2><p>As mesas de piquenique ladeiam a clareira, em frente aos baloiços. Dos bancos, os acompanhantes conseguem manter os brinquedos à vista, num ambiente de bosque em vez de um pátio asfaltado.</p>"
+        }
+      ]
+    },
+    {
+      "key": "pokeyland-bazooka-ball",
+      "name": "Bazooka ball",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/",
+        "accessConditions": [
+          {
+            "type": "MinAge",
+            "value": 6,
+            "unit": "Year",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "798894e0-5efa-45b0-953c-baad70dab44a",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des balles jaunes dans les bois</h2><p>Bazooka ball transforme les terrains extérieurs de Pokeyland en partie d’équipe à balles de mousse. Les lanceurs noirs aux embouts verts et les projectiles jaunes tranchent avec le feuillage ; les joueurs portent des protections pour les yeux.</p><p>Le jeu reprend l’affrontement entre équipes du paintball, avec des balles de mousse à la place des billes de peinture. Les décors des terrains donnent des repères aux adversaires qui se cherchent entre les arbres.</p><h2>La forêt pour décor</h2><p>Le cadre reste ouvert sur les bois : sur la photographie officielle, la végétation remplit l’arrière-plan derrière les joueurs. Les couleurs vives des balles et des lanceurs ressortent dans cette scène de plein air.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Yellow balls among the trees</h2><p>Bazooka ball turns Pokeyland’s outdoor playing fields into a team game with foam balls. Black launchers with green muzzles and yellow projectiles stand out against the foliage; players wear eye protection.</p><p>The game borrows paintball’s team contest, using foam balls instead of paint pellets. The field scenery provides landmarks as opponents look for one another among the trees.</p><h2>A woodland setting</h2><p>The woods remain part of the setting: in the official photograph, vegetation fills the background behind the players. The bright balls and launchers stand out in this outdoor scene.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Gelbe Bälle zwischen den Bäumen</h2><p>Bei Bazooka ball werden die Außenflächen von Pokeyland zum Schauplatz eines Mannschaftsspiels mit Schaumstoffbällen. Schwarze Werfer mit grünen Mündungen und gelbe Bälle heben sich vom Laub ab; die Spieler tragen Augenschutz.</p><p>Das Spiel übernimmt den Wettstreit zwischen Paintball-Teams, verwendet aber Schaumstoffbälle statt Farbkugeln. Die Kulissen der Spielfelder bieten Orientierung, während sich die Gegner zwischen den Bäumen suchen.</p><h2>Der Wald als Kulisse</h2><p>Der Wald bleibt Teil der Szenerie: Auf dem offiziellen Foto füllt die Vegetation den Hintergrund hinter den Spielern. Die leuchtenden Farben der Bälle und Werfer treten in dieser Freiluftszene hervor.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Bolas amarillas entre los árboles</h2><p>Bazooka ball convierte los terrenos al aire libre de Pokeyland en un juego por equipos con bolas de espuma. Los lanzadores negros con bocas verdes y los proyectiles amarillos destacan entre el follaje; los jugadores llevan protección ocular.</p><p>El juego retoma el enfrentamiento por equipos del paintball, con bolas de espuma en lugar de pintura. Los decorados del terreno sirven de referencia mientras los adversarios se buscan entre los árboles.</p><h2>El bosque como escenario</h2><p>El bosque forma parte del entorno: en la fotografía oficial, la vegetación llena el fondo detrás de los jugadores. Los colores vivos de las bolas y los lanzadores resaltan en esta escena al aire libre.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Palline gialle tra gli alberi</h2><p>Bazooka ball trasforma i campi all’aperto di Pokeyland in un gioco di squadra con palline di gommapiuma. I lanciatori neri dalle estremità verdi e i proiettili gialli risaltano sul fogliame; i giocatori indossano protezioni per gli occhi.</p><p>Il gioco riprende il confronto tra squadre del paintball, sostituendo le palline di vernice con quelle di gommapiuma. Le scenografie dei campi offrono punti di riferimento agli avversari che si cercano tra gli alberi.</p><h2>Il bosco come sfondo</h2><p>Il bosco resta parte della scena: nella fotografia ufficiale, la vegetazione riempie lo sfondo dietro ai giocatori. I colori vivaci delle palline e dei lanciatori spiccano in questo ambiente all’aperto.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Gele ballen tussen de bomen</h2><p>Bij Bazooka ball veranderen de buitenterreinen van Pokeyland in het decor van een teamspel met schuimballen. Zwarte lanceerders met groene uiteinden en gele ballen vallen op tussen het gebladerte; de spelers dragen oogbescherming.</p><p>Het spel neemt de strijd tussen paintballteams over, maar gebruikt schuimballen in plaats van verfballetjes. De aankleding van het terrein biedt herkenningspunten terwijl tegenstanders elkaar tussen de bomen zoeken.</p><h2>Het bos als decor</h2><p>Het bos blijft onderdeel van de omgeving: op de officiële foto vult de begroeiing de achtergrond achter de spelers. De felle kleuren van de ballen en lanceerders springen eruit in deze buitenscène.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Żółte piłki między drzewami</h2><p>Bazooka ball zamienia plenerowe pola Pokeyland w teren drużynowej gry piankowymi piłkami. Czarne wyrzutnie z zielonymi wylotami oraz żółte pociski wyróżniają się na tle liści; gracze noszą ochronę oczu.</p><p>Gra nawiązuje do rywalizacji drużyn w paintballu, lecz zamiast kulek z farbą wykorzystuje piankowe piłki. Dekoracje pól są punktami orientacyjnymi dla przeciwników szukających się między drzewami.</p><h2>Las w roli scenografii</h2><p>Las pozostaje częścią scenerii: na oficjalnym zdjęciu roślinność wypełnia tło za graczami. Żywe kolory piłek i wyrzutni wyraźnie odcinają się od tej plenerowej przestrzeni.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Bolas amarelas entre as árvores</h2><p>Bazooka ball transforma os campos ao ar livre de Pokeyland num jogo de equipas com bolas de espuma. Os lançadores pretos com bocas verdes e os projéteis amarelos destacam-se na folhagem; os jogadores usam proteção ocular.</p><p>O jogo retoma o confronto entre equipas do paintball, com bolas de espuma em vez de bolas de tinta. Os cenários dos campos servem de referência aos adversários que se procuram entre as árvores.</p><h2>O bosque como cenário</h2><p>O bosque faz parte do ambiente: na fotografia oficial, a vegetação preenche o fundo atrás dos jogadores. As cores vivas das bolas e dos lançadores sobressaem nesta cena ao ar livre.</p>"
+        }
+      ]
+    },
+    {
+      "key": "pokeyland-bubble-race",
+      "name": "Les as du ciel",
+      "category": "Attraction",
+      "type": "FlatRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/bubble-race/"
+      },
+      "id": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des montgolfières à hauteur de branches</h2><p>Des ballons verts, jaunes, orange et violets dominent les petits paniers des As du ciel. Ce manège donne aux enfants et à leurs accompagnateurs une version miniature de l’aventure en montgolfière, au milieu des arbres de Pokeyland.</p><p>La décoration mêle les bandes colorées des ballons au rose et au blanc des bras du manège. Des rangées d’ampoules soulignent cette silhouette de fête foraine.</p><h2>Des paniers ouverts sur les feuillages</h2><p>Installés dans les paniers, les passagers voient les branches et le ciel autour d’eux. La végétation toute proche forme un fond vert aux couleurs vives des montgolfières.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Balloons among the branches</h2><p>Green, yellow, orange and purple balloons rise above the small baskets of Les as du ciel. The ride gives children and their companions a miniature hot-air-balloon adventure among Pokeyland’s trees.</p><p>The decoration pairs the balloons’ coloured stripes with the pink and white of the ride’s arms. Rows of bulbs outline its fairground silhouette.</p><h2>Baskets open to the foliage</h2><p>From the baskets, passengers can see branches and sky around them. The nearby vegetation provides a green backdrop to the balloons’ bright colours.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ballons zwischen den Ästen</h2><p>Grüne, gelbe, orangefarbene und violette Ballons ragen über den kleinen Körben von Les as du ciel auf. Das Karussell bietet Kindern und ihren Begleitern eine kleine Ballonfahrt zwischen den Bäumen von Pokeyland.</p><p>Die Gestaltung verbindet die bunten Streifen der Ballons mit dem Rosa und Weiß der Karussellarme. Glühlampenreihen betonen die Silhouette im Jahrmarktstil.</p><h2>Körbe mit Blick ins Laub</h2><p>Aus den Körben sehen die Fahrgäste Äste und Himmel um sich herum. Die nahe Vegetation bildet einen grünen Hintergrund für die leuchtenden Farben der Ballons.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Globos a la altura de las ramas</h2><p>Globos verdes, amarillos, naranjas y violetas se alzan sobre las pequeñas cestas de Les as du ciel. La atracción ofrece a los niños y sus acompañantes una aventura en globo en miniatura entre los árboles de Pokeyland.</p><p>La decoración combina las franjas de colores de los globos con el rosa y el blanco de los brazos de la atracción. Las hileras de bombillas perfilan su silueta de feria.</p><h2>Cestas abiertas al follaje</h2><p>Desde las cestas, los pasajeros ven las ramas y el cielo a su alrededor. La vegetación cercana crea un fondo verde para los vivos colores de los globos.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Mongolfiere tra i rami</h2><p>Palloni verdi, gialli, arancioni e viola sovrastano i piccoli cestelli di Les as du ciel. La giostra offre ai bambini e ai loro accompagnatori un’avventura in mongolfiera in miniatura tra gli alberi di Pokeyland.</p><p>La decorazione abbina le fasce colorate dei palloni al rosa e al bianco dei bracci della giostra. File di lampadine ne sottolineano la sagoma da luna park.</p><h2>Cestelli aperti sul fogliame</h2><p>Dai cestelli i passeggeri vedono i rami e il cielo tutt’intorno. La vegetazione vicina forma uno sfondo verde per i colori vivaci delle mongolfiere.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Luchtballonnen tussen de takken</h2><p>Groene, gele, oranje en paarse ballonnen steken boven de kleine manden van Les as du ciel uit. De attractie biedt kinderen en hun begeleiders een miniatuurballonvaart tussen de bomen van Pokeyland.</p><p>De versiering combineert de gekleurde banen van de ballonnen met de roze en witte armen van de attractie. Rijen lampjes benadrukken het kermisachtige silhouet.</p><h2>Manden met zicht op het groen</h2><p>Vanuit de manden zien passagiers de takken en de lucht om zich heen. De nabije begroeiing vormt een groene achtergrond voor de felle kleuren van de luchtballonnen.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Balony na wysokości gałęzi</h2><p>Zielone, żółte, pomarańczowe i fioletowe balony górują nad małymi koszami Les as du ciel. Karuzela daje dzieciom i ich opiekunom namiastkę balonowej przygody wśród drzew Pokeyland.</p><p>Kolorowe pasy balonów łączą się z różem i bielą ramion karuzeli. Rzędy żarówek podkreślają jej jarmarczną sylwetkę.</p><h2>Kosze z widokiem na liście</h2><p>Z koszy pasażerowie widzą otaczające ich gałęzie i niebo. Bliska roślinność tworzy zielone tło dla żywych kolorów balonów.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Balões à altura dos ramos</h2><p>Balões verdes, amarelos, laranja e roxos erguem-se sobre os pequenos cestos de Les as du ciel. A atração oferece às crianças e aos seus acompanhantes uma aventura de balão em miniatura entre as árvores de Pokeyland.</p><p>A decoração combina as faixas coloridas dos balões com o rosa e o branco dos braços da atração. Filas de lâmpadas sublinham a sua silhueta de feira.</p><h2>Cestos abertos à folhagem</h2><p>Dos cestos, os passageiros veem os ramos e o céu à sua volta. A vegetação próxima forma um fundo verde para as cores vivas dos balões.</p>"
+        }
+      ]
+    },
+    {
+      "key": "pokeyland-bumper-boat",
+      "name": "Bumper Boat",
+      "category": "Attraction",
+      "type": "WaterRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 90,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "a82dabf5-da88-4717-85f9-d22234c0654c",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des bateaux orange sur l’étang</h2><p>Les petits bateaux ronds de Bumper Boat apportent une touche orange au plan d’eau bordé d’arbres. Leurs contours noirs se détachent sur les reflets verts de l’étang.</p><p>Sur l’eau, les rencontres prennent la forme de petits chocs et de batailles d’éclaboussures. Un jet jaillit à l’avant du bateau : l’arrosage fait autant partie du jeu que la conduite.</p><h2>Une scène au ras de l’eau</h2><p>La photographie officielle montre le passager en gilet de sauvetage, juste au-dessus de la surface. Derrière lui, les berges boisées encadrent l’aire de jeu et les éclaboussures.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Orange boats on the pond</h2><p>The small round Bumper Boat craft bring a splash of orange to a tree-lined pond. Their black edges stand out against the water’s green reflections.</p><p>Encounters on the water become gentle bumps and splashing battles. A jet sprays from the front of the boat: soaking opponents is as much part of the game as steering.</p><h2>A view close to the water</h2><p>The official photograph shows a passenger in a life jacket just above the surface. Behind the boat, wooded banks frame the playing area and the splashes.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Orange Boote auf dem Teich</h2><p>Die kleinen runden Boote von Bumper Boat setzen orangefarbene Akzente auf dem von Bäumen gesäumten Teich. Ihre schwarzen Ränder heben sich von den grünen Spiegelungen im Wasser ab.</p><p>Begegnungen auf dem Wasser werden zu kleinen Zusammenstößen und Spritzduellen. Vorne am Boot sprudelt ein Wasserstrahl: Das Nassspritzen gehört ebenso zum Spiel wie das Lenken.</p><h2>Ganz nah an der Wasseroberfläche</h2><p>Das offizielle Foto zeigt einen Fahrgast mit Schwimmweste knapp über der Oberfläche. Hinter dem Boot umrahmen bewaldete Ufer die Spielfläche und die Wasserspritzer.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Barcos naranjas en el estanque</h2><p>Las pequeñas embarcaciones redondas de Bumper Boat ponen una nota naranja en el estanque rodeado de árboles. Sus bordes negros destacan sobre los reflejos verdes del agua.</p><p>Los encuentros en el agua se convierten en pequeños choques y batallas de salpicaduras. Un chorro sale de la parte delantera del barco: mojar a los demás forma parte del juego tanto como conducir.</p><h2>Una escena a ras de agua</h2><p>La fotografía oficial muestra a un pasajero con chaleco salvavidas, apenas por encima de la superficie. Detrás del barco, las orillas arboladas enmarcan la zona de juego y las salpicaduras.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Barche arancioni sul laghetto</h2><p>Le piccole imbarcazioni rotonde di Bumper Boat aggiungono una nota arancione al laghetto circondato dagli alberi. I bordi neri risaltano sui riflessi verdi dell’acqua.</p><p>Gli incontri sull’acqua diventano piccoli urti e battaglie di spruzzi. Un getto parte dalla prua: bagnare gli avversari fa parte del gioco quanto guidare.</p><h2>Una scena a pelo d’acqua</h2><p>La fotografia ufficiale mostra un passeggero con il giubbotto salvagente, poco sopra la superficie. Dietro la barca, le sponde alberate incorniciano lo spazio di gioco e gli spruzzi.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Oranje bootjes op de vijver</h2><p>De kleine ronde Bumper Boat-bootjes geven de door bomen omringde vijver een oranje accent. Hun zwarte randen steken af tegen de groene weerspiegelingen in het water.</p><p>Ontmoetingen op het water worden kleine botsingen en spettergevechten. Uit de voorkant van de boot spuit een waterstraal: anderen natspuiten hoort net zo bij het spel als sturen.</p><h2>Vlak boven het water</h2><p>De officiële foto toont een passagier met een reddingsvest vlak boven het wateroppervlak. Achter de boot omlijsten beboste oevers de speelruimte en de opspattende druppels.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pomarańczowe łódki na stawie</h2><p>Małe okrągłe łódki Bumper Boat wprowadzają pomarańczowy akcent na staw otoczony drzewami. Ich czarne obrzeża odcinają się od zielonych odbić na wodzie.</p><p>Spotkania na wodzie zmieniają się w lekkie zderzenia i bitwy na pluski. Z przodu łódki tryska strumień: oblewanie przeciwników jest tak samo częścią zabawy jak kierowanie.</p><h2>Tuż nad wodą</h2><p>Oficjalne zdjęcie pokazuje pasażera w kamizelce ratunkowej, tuż nad powierzchnią. Za łódką zadrzewione brzegi otaczają przestrzeń zabawy i rozpryskującą się wodę.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Barcos laranja no lago</h2><p>As pequenas embarcações redondas de Bumper Boat dão um toque laranja ao lago rodeado de árvores. Os rebordos pretos destacam-se nos reflexos verdes da água.</p><p>Os encontros na água transformam-se em pequenos choques e batalhas de salpicos. Um jato sai da frente do barco: molhar os adversários faz parte do jogo tanto como conduzir.</p><h2>Uma cena à superfície da água</h2><p>A fotografia oficial mostra um passageiro com colete salva-vidas, pouco acima da superfície. Atrás do barco, as margens arborizadas enquadram a área de jogo e os salpicos.</p>"
+        }
+      ]
+    },
+    {
+      "key": "pokeyland-bumper-car",
+      "name": "Les as du volant",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/"
+      },
+      "id": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des petites voitures sous le chalet</h2><p>Sous un abri aux parois de bois, les petites voitures bleues des As du volant affichent des motifs verts et de grandes calandres argentées et orange. Leur allure évoque des automobiles de dessin animé.</p><p>Les enfants prennent le volant sur une piste abritée. Les parents suivent leurs essais depuis le bord, derrière une clôture en bois qui laisse le regard circuler.</p><h2>Le bleu au milieu du bois</h2><p>Les teintes vives des carrosseries ressortent sur le sol sombre et le bardage du chalet. Ce petit garage de fête foraine conserve ainsi le décor boisé des autres installations de Pokeyland.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Small cars beneath a wooden shelter</h2><p>Beneath a wood-panelled shelter, the little blue cars of Les as du volant display green patterns and large silver and orange grilles. Their appearance recalls cartoon automobiles.</p><p>Children take the wheel on a covered track. Parents watch their attempts from the edge, behind a wooden fence that leaves the view open.</p><h2>Blue against the timber</h2><p>The bright bodywork stands out against the dark floor and the chalet’s wooden panels. This little fairground garage retains the woodland look of Pokeyland’s other buildings.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Kleine Autos unter dem Holzdach</h2><p>Unter einem holzverkleideten Unterstand zeigen die kleinen blauen Autos von Les as du volant grüne Muster und große silber-orangefarbene Kühlergrills. Sie erinnern an Autos aus einem Zeichentrickfilm.</p><p>Die Kinder übernehmen das Steuer auf einer überdachten Fahrfläche. Eltern verfolgen ihre Versuche vom Rand aus, hinter einem Holzzaun mit freiem Blick auf das Geschehen.</p><h2>Blau vor der Holzverkleidung</h2><p>Die leuchtenden Karosserien heben sich vom dunklen Boden und der Holzverkleidung ab. Diese kleine Jahrmarktgarage greift damit das waldnahe Erscheinungsbild der anderen Gebäude von Pokeyland auf.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Pequeños coches bajo el cobertizo</h2><p>Bajo un cobertizo revestido de madera, los pequeños coches azules de Les as du volant lucen motivos verdes y grandes parrillas plateadas y naranjas. Su aspecto recuerda a los automóviles de dibujos animados.</p><p>Los niños se ponen al volante en una pista cubierta. Los padres siguen sus intentos desde el borde, tras una valla de madera que deja ver el recorrido.</p><h2>Azul entre la madera</h2><p>Los colores vivos de las carrocerías destacan sobre el suelo oscuro y el revestimiento de madera. Este pequeño garaje de feria conserva así el aspecto boscoso de los demás edificios de Pokeyland.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Piccole auto sotto la tettoia</h2><p>Sotto una tettoia rivestita di legno, le piccole auto blu di Les as du volant sfoggiano motivi verdi e grandi griglie argentate e arancioni. Il loro aspetto ricorda le automobili dei cartoni animati.</p><p>I bambini prendono il volante su una pista coperta. I genitori seguono i loro tentativi dal bordo, dietro una recinzione in legno che lascia libera la visuale.</p><h2>Il blu tra il legno</h2><p>Le tinte vivaci delle carrozzerie spiccano sul pavimento scuro e sulle pareti in legno. Questo piccolo garage da luna park mantiene così l’aspetto boschivo degli altri edifici di Pokeyland.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Kleine auto’s onder het houten dak</h2><p>Onder een houten afdak hebben de kleine blauwe auto’s van Les as du volant groene patronen en grote zilver-oranje grilles. Ze lijken zo uit een tekenfilm te komen.</p><p>Kinderen nemen het stuur over op een overdekte baan. Ouders volgen hun pogingen vanaf de rand, achter een houten hek dat het zicht vrijlaat.</p><h2>Blauw tussen het hout</h2><p>De felle carrosseriekleuren steken af tegen de donkere vloer en de houten wandbekleding. Deze kleine kermisgarage sluit zo aan bij de bosrijke uitstraling van de andere gebouwen in Pokeyland.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Małe samochody pod drewnianym dachem</h2><p>Pod wiatą o drewnianych ścianach małe niebieskie samochody Les as du volant zdobią zielone wzory oraz duże srebrno-pomarańczowe grille. Ich wygląd przywodzi na myśl auta z kreskówek.</p><p>Dzieci siadają za kierownicą na zadaszonym torze. Rodzice obserwują ich próby z boku, zza drewnianego ogrodzenia, które nie zasłania widoku.</p><h2>Niebieski na tle drewna</h2><p>Żywe kolory karoserii wyróżniają się na ciemnej podłodze i drewnianych ścianach. Ten mały lunaparkowy garaż zachowuje w ten sposób leśny charakter innych budynków Pokeyland.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Pequenos carros sob o abrigo</h2><p>Sob um abrigo revestido de madeira, os pequenos carros azuis de Les as du volant exibem motivos verdes e grandes grelhas prateadas e laranja. O seu aspeto lembra automóveis de desenhos animados.</p><p>As crianças pegam no volante numa pista coberta. Os pais acompanham as suas tentativas a partir da margem, atrás de uma vedação de madeira que deixa a vista desimpedida.</p><h2>Azul no meio da madeira</h2><p>As cores vivas das carroçarias destacam-se no chão escuro e no revestimento de madeira. Esta pequena garagem de feira mantém assim o ambiente arborizado dos outros edifícios de Pokeyland.</p>"
+        }
+      ]
+    },
+    {
+      "key": "pokeyland-crazy-kart",
+      "name": "Crazy Kart",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/"
+      },
+      "id": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff"
+    },
+    {
+      "key": "pokeyland-ejector",
+      "name": "Ejector",
+      "category": "Attraction",
+      "type": "ThrillRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/ejector/"
+      },
+      "id": "11978677-6ea2-457a-af26-cfc2fda129df"
+    },
+    {
+      "key": "pokeyland-escalade",
+      "name": "Escalade",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/escalade/"
+      },
+      "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177"
+    },
+    {
+      "key": "pokeyland-kids-swing",
+      "name": "Kid’s Swing",
+      "category": "Attraction",
+      "type": "FlatRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/kids-swing/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 82,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          },
+          {
+            "type": "MaxHeight",
+            "value": 150,
+            "unit": "Centimeter",
+            "displayOrder": 2
+          }
+        ]
+      },
+      "id": "53432ace-37a0-4149-9153-a418b86da889"
+    },
+    {
+      "key": "pokeyland-la-roue",
+      "name": "La Roue",
+      "category": "Attraction",
+      "type": "ObservationRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/la-roue/"
+      },
+      "id": "1fcff91d-fc5e-480c-aab0-b7d288736e2e"
+    },
+    {
+      "key": "pokeyland-laser-game",
+      "name": "Laser Game",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/laser-game/",
+        "accessConditions": [
+          {
+            "type": "MinAge",
+            "value": 6,
+            "unit": "Year",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6"
+    },
+    {
+      "key": "pokeyland-le-batoo",
+      "name": "Le Batoo",
+      "category": "Attraction",
+      "type": "FlatRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/le-batoo/"
+      },
+      "id": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f"
+    },
+    {
+      "key": "pokeyland-le-ptit-train",
+      "name": "Le p’tit train",
+      "category": "Attraction",
+      "type": "TransportRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/le-ptit-train/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 90,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "23b37097-d2e0-42b3-98d1-92da91a1de98"
+    },
+    {
+      "key": "pokeyland-lenvol",
+      "name": "Fall Tower",
+      "category": "Attraction",
+      "type": "DropTower",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/lenvol/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "38922aa5-2307-4973-b0f5-b076325642a9"
+    },
+    {
+      "key": "pokeyland-les-avions",
+      "name": "Les avions",
+      "category": "Attraction",
+      "type": "FlatRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/les-avions/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 105,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          },
+          {
+            "type": "MaxHeight",
+            "value": 160,
+            "unit": "Centimeter",
+            "displayOrder": 2
+          }
+        ]
+      },
+      "id": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a"
+    },
+    {
+      "key": "pokeyland-les-ptits-chevaux",
+      "name": "Les p’tits chevaux",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/les-ptits-chevaux/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51"
+    },
+    {
+      "key": "pokeyland-mini-golf",
+      "name": "Mini-golf",
+      "category": "Attraction",
+      "type": "Game",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/mini-golf/"
+      },
+      "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810"
+    },
+    {
+      "key": "pokeyland-mono-rail",
+      "name": "Mono-Rail",
+      "category": "Attraction",
+      "type": "ObservationRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/parc/mono-rail/"
+      },
+      "id": "776a9555-8156-4199-980f-e07ccbd44a31"
+    },
+    {
+      "key": "pokeyland-parcours-pieds-nus",
+      "name": "Parcours pieds nus",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/"
+      },
+      "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749"
+    },
+    {
+      "key": "pokeyland-poney",
+      "name": "Poney",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/poney/",
+        "accessConditions": [
+          {
+            "type": "MinAgeAccompanied",
+            "value": 2,
+            "unit": "Year",
+            "displayOrder": 1,
+            "requiresAccompaniment": true
+          },
+          {
+            "type": "MaxHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 2
+          }
+        ]
+      },
+      "id": "90c00f80-deb0-4b63-9451-ed8cc255461c"
+    },
+    {
+      "key": "pokeyland-quad-kids",
+      "name": "Kid’s Racer",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
+        "openingDateText": "2023"
+      },
+      "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00"
+    },
+    {
+      "key": "pokeyland-tir-a-larc",
+      "name": "Tir à l’arc",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/tir-a-larc/",
+        "accessConditions": [
+          {
+            "type": "MinAge",
+            "value": 6,
+            "unit": "Year",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9"
+    },
+    {
+      "key": "pokeyland-trampoline",
+      "name": "Trampoline",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/trampoline/",
+        "accessConditions": [
+          {
+            "type": "MinAge",
+            "value": 3,
+            "unit": "Year",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "ef2faeeb-d008-419e-871b-f88df2d73c09"
+    },
+    {
+      "key": "pokeyland-tubing",
+      "name": "Tubing",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/tubing/",
+        "accessConditions": [
+          {
+            "type": "MinAgeAccompanied",
+            "value": 2,
+            "unit": "Year",
+            "displayOrder": 1,
+            "requiresAccompaniment": true
+          },
+          {
+            "type": "MinHeight",
+            "value": 100,
+            "unit": "Centimeter",
+            "displayOrder": 2
+          },
+          {
+            "type": "MaxHeight",
+            "value": 200,
+            "unit": "Centimeter",
+            "displayOrder": 3
+          }
+        ]
+      },
+      "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13"
+    },
+    {
+      "key": "pokeyland-cabanes",
+      "name": "Cabanes de Pokey",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+        "accessConditions": [
+          {
+            "type": "MinAge",
+            "value": 3,
+            "unit": "Year",
+            "displayOrder": 1
+          },
+          {
+            "type": "MinHeight",
+            "value": 90,
+            "unit": "Centimeter",
+            "displayOrder": 2
+          }
+        ]
+      },
+      "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4"
+    },
+    {
+      "key": "pokeyland-parcours-pitchoune-1",
+      "name": "Parcours Pitchoune 1",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 100,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          },
+          {
+            "type": "MinAgeAccompanied",
+            "value": 3,
+            "unit": "Year",
+            "requiresAccompaniment": true,
+            "displayOrder": 2
+          },
+          {
+            "type": "MaxHeight",
+            "value": 150,
+            "unit": "Centimeter",
+            "displayOrder": 3
+          }
+        ]
+      },
+      "id": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-pitchoune-2",
+      "name": "Parcours Pitchoune 2",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 100,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          },
+          {
+            "type": "MinAgeAccompanied",
+            "value": 3,
+            "unit": "Year",
+            "requiresAccompaniment": true,
+            "displayOrder": 2
+          },
+          {
+            "type": "MaxHeight",
+            "value": 150,
+            "unit": "Centimeter",
+            "displayOrder": 3
+          }
+        ]
+      },
+      "id": "9a40ce59-ca74-455f-8ba0-185b560055a1",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-pitchoune-3",
+      "name": "Parcours Pitchoune 3",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 100,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          },
+          {
+            "type": "MinAgeAccompanied",
+            "value": 3,
+            "unit": "Year",
+            "requiresAccompaniment": true,
+            "displayOrder": 2
+          },
+          {
+            "type": "MaxHeight",
+            "value": 150,
+            "unit": "Centimeter",
+            "displayOrder": 3
+          }
+        ]
+      },
+      "id": "20067de5-b801-4e24-90d3-4ba5ffc711f6",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-decouverte",
+      "name": "Parcours découverte",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-famille",
+      "name": "Parcours famille",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 120,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-aventure-1",
+      "name": "Parcours aventure 1",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 140,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "fa6e99c1-f258-408e-8628-8c95312f2c18",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-aventure-2",
+      "name": "Parcours aventure 2",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 140,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "496b6b3b-d182-45bf-b2b7-6199dd24c91a",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-sportif",
+      "name": "Parcours sportif",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 140,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-parcours-tyrolienne",
+      "name": "Parcours tyrolienne",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "zoneKey": "pokeyland-zone-accrobranche",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/accrobranche/",
+        "accessConditions": [
+          {
+            "type": "MinHeight",
+            "value": 140,
+            "unit": "Centimeter",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "ae8be798-c96c-4075-8968-1bf55a5a2786",
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9"
+    },
+    {
+      "key": "pokeyland-terrain-dog-one",
+      "name": "Dog One",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "zoneKey": "pokeyland-zone-paintball",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+      },
+      "id": "d7074297-19a0-44e6-a196-c251ea484d46",
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+    },
+    {
+      "key": "pokeyland-terrain-fox-two",
+      "name": "Fox Two",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "zoneKey": "pokeyland-zone-paintball",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+      },
+      "id": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+    },
+    {
+      "key": "pokeyland-terrain-panama",
+      "name": "Panama",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "zoneKey": "pokeyland-zone-paintball",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+      },
+      "id": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+    },
+    {
+      "key": "pokeyland-terrain-zombie",
+      "name": "Zombie",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "zoneKey": "pokeyland-zone-paintball",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+      },
+      "id": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+    },
+    {
+      "key": "pokeyland-terrain-cannibale",
+      "name": "Cannibale",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "zoneKey": "pokeyland-zone-paintball",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
+      },
+      "id": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+    },
+    {
+      "key": "pokeyland-waterjump",
+      "name": "Waterjump",
+      "category": "Attraction",
+      "type": "WaterRide",
+      "zoneKey": "pokeyland-zone-waterjump",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/packs/waterjump/",
+        "accessConditions": [
+          {
+            "type": "MinAge",
+            "value": 6,
+            "unit": "Year",
+            "displayOrder": 1
+          }
+        ]
+      },
+      "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "zoneId": "161766a5-cdcd-4675-aef8-3acc9e078098"
+    },
+    {
+      "key": "pokeyland-petit-creux",
+      "name": "Le Petit Creux",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/restauration/"
+      },
+      "id": "e267af4d-a394-4ddb-9cb5-597582e077da"
+    },
+    {
+      "key": "pokeyland-gourmand",
+      "name": "Le Gourmand",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/restauration/"
+      },
+      "id": "731d71c3-50aa-4898-8a78-de37c0b1437c"
+    },
+    {
+      "key": "pokeyland-grill",
+      "name": "Le Grill",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/restauration/"
+      },
+      "id": "538a604f-6fe1-4460-9740-7b0c576b0214"
+    },
+    {
+      "key": "pokeyland-escale",
+      "name": "L’Escale",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/restauration/"
+      },
+      "id": "698bf2fb-d43e-4a13-988c-f25ecee12095"
+    },
+    {
+      "key": "pokeyland-pokey-beach",
+      "name": "Pokey Beach",
+      "category": "Restaurant",
+      "type": "Snack",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32"
+    },
+    {
+      "key": "pokeyland-accueil",
+      "name": "Caisse d’accueil",
+      "category": "Service",
+      "type": "Information",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "00739144-e99b-45a1-8694-3594553ca3a2"
+    },
+    {
+      "key": "pokeyland-salle-seminaire",
+      "name": "Salle de séminaire",
+      "category": "Service",
+      "type": "Service",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "ef1210fa-569b-4a9e-9056-386ce7de6d07"
+    },
+    {
+      "key": "pokeyland-peche-pokey",
+      "name": "La Pêche de Pokey",
+      "category": "Attraction",
+      "type": "Game",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "d65f2126-7c7d-4f4f-9920-b84c90fca675"
+    },
+    {
+      "key": "pokeyland-salle-arcade",
+      "name": "Salle d’arcade",
+      "category": "Attraction",
+      "type": "Game",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "3244f8c0-d527-47e9-ad71-a4409e789ae1"
+    },
+    {
+      "key": "pokeyland-scene-pokeyshow",
+      "name": "Scène Pokeyshow",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "a2631717-bada-4f5b-83ff-a58cb643efc5"
+    },
+    {
+      "key": "pokeyland-accueil-accrobranche",
+      "name": "Accueil accrobranche",
+      "category": "Service",
+      "type": "Information",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "zoneId": "15802825-0835-40e0-b211-410bc26e14b9",
+      "id": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc"
+    },
+    {
+      "key": "pokeyland-parkings",
+      "name": "Parkings",
+      "category": "Service",
+      "type": "Parking",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+      },
+      "id": "4404aa32-40c6-409e-9bc7-52700a6a6e72"
+    },
+    {
+      "key": "pokeyland-poste-secours",
+      "name": "Poste de secours",
+      "category": "Service",
+      "type": "FirstAid",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+      },
+      "id": "edc063cf-9ddb-47f5-b47c-cf07eb239623"
+    },
+    {
+      "key": "pokeyland-aires-pique-nique",
+      "name": "Aires de pique-nique",
+      "category": "Service",
+      "type": "Service",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+      },
+      "id": "eeb57071-2903-41d0-875c-008dfbe36ee0"
+    },
+    {
+      "key": "pokeyland-casiers",
+      "name": "Casiers",
+      "category": "Service",
+      "type": "Locker",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/services-a-disposition/"
+      },
+      "id": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429"
+    },
+    {
+      "key": "pokeyland-sanitaires",
+      "name": "Sanitaires",
+      "category": "Service",
+      "type": "Toilets",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf"
+      },
+      "id": "ae748cb1-0161-4f41-8480-cdbfa2fef39c"
+    },
+    {
+      "key": "pokeyland-historical-rotor-jump",
+      "name": "Rotor Jump",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599"
+    },
+    {
+      "key": "pokeyland-historical-segway",
+      "name": "Segway",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+      },
+      "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27"
+    },
+    {
+      "key": "pokeyland-historical-petit-robin",
+      "name": "Le Petit Robin",
+      "category": "Attraction",
+      "type": "Attraction",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "6c658164-104c-41a1-a470-f50d7f0c956d"
+    },
+    {
+      "key": "pokeyland-historical-saut-vide",
+      "name": "Saut dans le vide",
+      "category": "Attraction",
+      "type": "ThrillRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae"
+    },
+    {
+      "key": "pokeyland-historical-clairiere-jeux",
+      "name": "Clairière de jeux",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7"
+    },
+    {
+      "key": "pokeyland-historical-mini-ferme",
+      "name": "Mini-ferme",
+      "category": "Animal",
+      "type": "AnimalExhibit",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "077229e9-6ff0-4b25-94f9-0858f11d9655"
+    },
+    {
+      "key": "pokeyland-historical-boutique-historique",
+      "name": "Boutique",
+      "category": "Shop",
+      "type": "Shop",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "58bc03b5-9202-4940-bbdc-c83973300b42"
+    },
+    {
+      "key": "pokeyland-historical-checkpoint",
+      "name": "Checkpoint",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+      },
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "zoneKey": "pokeyland-zone-paintball",
+      "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d"
+    },
+    {
+      "key": "pokeyland-historical-mini-buggy",
+      "name": "Mini-buggy",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+      },
+      "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017"
+    },
+    {
+      "key": "pokeyland-historical-mini-jeep",
+      "name": "Mini-Jeep",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+      },
+      "id": "97aad029-a386-4c2f-844c-9dcd7394f36a"
+    },
+    {
+      "key": "pokeyland-historical-pedalo",
+      "name": "Pédalo",
+      "category": "Attraction",
+      "type": "WaterRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+      },
+      "id": "1cb2aa09-2279-40a6-a032-6babe23f8882"
+    },
+    {
+      "key": "pokeyland-historical-petanque",
+      "name": "Terrains de pétanque",
+      "category": "Attraction",
+      "type": "Game",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+      },
+      "id": "2a23aa94-01ba-4cda-be85-653e60589c24"
+    },
+    {
+      "key": "pokeyland-historical-lancer-hache",
+      "name": "Lancer de hache",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+      },
+      "id": "0ddb1451-3dad-4936-9f8f-439efda9222c"
+    },
+    {
+      "key": "pokeyland-historical-big-air-jump",
+      "name": "Big Air Jump",
+      "category": "Attraction",
+      "type": "ThrillRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+      },
+      "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c"
+    },
+    {
+      "key": "pokeyland-historical-labyrinthe-geant",
+      "name": "Labyrinthe géant",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+      },
+      "id": "3956ae33-631f-46ef-b9c5-dd6afa08d785"
+    },
+    {
+      "key": "pokeyland-historical-quad-ados",
+      "name": "Quad ados",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+      },
+      "id": "0089b992-f5a6-4bb2-b4f0-1fd055361c16"
+    },
+    {
+      "key": "pokeyland-historical-balade-quad",
+      "name": "Balade en quad",
+      "category": "Attraction",
+      "type": "FamilyRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+      },
+      "id": "e43e6bd6-04bf-4940-967d-357aad4075ab"
+    }
+  ],
+  "images": [
+    {
+      "id": "c71e7771f1a247f5b9dbf49cf3c69aca",
+      "category": "Logo",
+      "ownerType": "Park",
+      "ownerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "path": "logo/c71e7771f1a247f5b9dbf49cf3c69aca",
+      "description": "Logo officiel utilisé sur le site de Pokeyland.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 500,
+      "height": 120,
+      "sizeInBytes": 5112,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/logo_pokeyland_dark.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Logo Pokeyland : nom sombre, lettre O orange stylisée et devise « Notre nature, c’est l’aventure »."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland logo with dark lettering, a stylised orange O and the French motto “Notre nature, c’est l’aventure”."
+        },
+        {
+          "languageCode": "de",
+          "value": "Pokeyland-Logo mit dunkler Schrift, stilisiertem orangefarbenem O und dem französischen Motto „Notre nature, c’est l’aventure“."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo de Pokeyland con letras oscuras, una O naranja estilizada y el lema francés « Notre nature, c’est l’aventure »."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo di Pokeyland con lettere scure, una O arancione stilizzata e il motto francese « Notre nature, c’est l’aventure »."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Pokeyland-logo met donkere letters, een gestileerde oranje O en het Franse motto “Notre nature, c’est l’aventure”."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Logo Pokeylandu z ciemnymi literami, stylizowanym pomarańczowym O i francuskim hasłem „Notre nature, c’est l’aventure”."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo do Pokeyland com letras escuras, um O laranja estilizado e o lema francês « Notre nature, c’est l’aventure »."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Logo officiel utilisé sur le site de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Official logo used on the Pokeyland website."
+        },
+        {
+          "languageCode": "de",
+          "value": "Offizielles Logo auf der Website von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo oficial utilizado en el sitio web de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo ufficiale utilizzato sul sito di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Officieel logo op de website van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oficjalne logo używane na stronie Pokeylandu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo oficial utilizado no sítio do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Pokeyland"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Pokeyland"
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:04:49.147Z",
+      "updatedAt": "2026-11-15T11:04:52.614Z",
+      "key": "c71e7771f1a247f5b9dbf49cf3c69aca",
+      "imageId": "c71e7771f1a247f5b9dbf49cf3c69aca"
+    },
+    {
+      "id": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "path": "park_item/017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "description": "La Pomme, photographie officielle de la chenille multicolore dans les arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1733,
+      "height": 2600,
+      "sizeInBytes": 773220,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-pomme-pokeyland-moselle.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La chenille orange, jaune et verte de La Pomme, au nez bleu, sur sa voie jaune entre les arbres de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme’s orange, yellow and green caterpillar with a blue nose on yellow track among Pokeyland’s trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die orange-gelb-grüne Raupe von La Pomme mit blauer Nase auf der gelben Schiene zwischen den Bäumen von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "La oruga naranja, amarilla y verde de La Pomme, con nariz azul, sobre la vía amarilla entre los árboles de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il bruco arancione, giallo e verde di La Pomme, con il naso blu, sul binario giallo tra gli alberi di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De oranje, gele en groene rups van La Pomme met een blauwe neus op de gele baan tussen de bomen van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowo-żółto-zielona gąsienica La Pomme z niebieskim nosem na żółtym torze między drzewami Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A lagarta laranja, amarela e verde de La Pomme, com nariz azul, na via amarela entre as árvores de Pokeyland."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La tête souriante de La Pomme domine une barrière en bois ; les couleurs du train se détachent sur le ciel bleu et les branches."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme’s smiling head rises above a wooden railing, its colourful train framed by blue sky and branches."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der lächelnde Kopf von La Pomme ragt über ein Holzgeländer; der bunte Zug hebt sich vor blauem Himmel und Ästen ab."
+        },
+        {
+          "languageCode": "es",
+          "value": "La cabeza sonriente de La Pomme sobresale de una barandilla de madera; el tren multicolor destaca frente al cielo azul y las ramas."
+        },
+        {
+          "languageCode": "it",
+          "value": "La testa sorridente di La Pomme sovrasta una ringhiera di legno; il treno multicolore risalta sul cielo azzurro e tra i rami."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De lachende kop van La Pomme steekt boven een houten hek uit; de kleurrijke trein valt op tegen de blauwe lucht en de takken."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uśmiechnięta głowa La Pomme góruje nad drewnianą barierką; kolorowy pociąg wyróżnia się na tle błękitnego nieba i gałęzi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cabeça sorridente de La Pomme ergue-se acima de uma vedação de madeira; o comboio colorido destaca-se no céu azul e entre os ramos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:23:40.652Z",
+      "updatedAt": "2026-11-15T11:23:44.116Z",
+      "key": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "imageId": "017581c2b60b4763a6f2e8e4d9c8a1a6"
+    }
+  ],
+  "history": {
+    "events": []
+  },
+  "metadata": {
+    "source": "admin-bulk-park-graph-export",
+    "exportedAtUtc": "2026-11-15T10:44:59.126788Z"
+  }
+}

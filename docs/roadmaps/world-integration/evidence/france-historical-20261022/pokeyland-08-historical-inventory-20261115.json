@@ -1,0 +1,2322 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-historical-inventory",
+        "step": "03-historical-items",
+        "notes": "17 separately named historical internal offers. Root read contemporary 2015 report, 2017 article extracts, official older map and photographed official 2017 sign; specialist report reconciled with current 57 IDs. All Unknown/private/ToReview, not arbitrary closures. No factual opening dates from announcement/publication dates; no historical restrictions carried into present. No full audit/export. Details: Rotor Jump: Plan #26, distinct Trampoline #24/Ejector #33. Announced novelty 2021; no effective day. Current introductory text persists but current service unverified. | Segway: Guided rides attested 2015 and official brochure 2023. No current availability/model or removal date established. | Le Petit Robin: Plan #28 separate from Tir à l’arc #27. Novelty 2017 documented; precise physical offer unqualified. No crossbow inference. | Saut dans le vide: Plan #34 separate Ejector #33 and Escalade #25. Official Metz guide mentions 18 m; no manufacturer, opening or removal date inferred. Distinct Big Air Jump on photographed 2017 plan. | Clairière de jeux: Named play area #40 separate from Aire #38, barefeet #39 and farm #41. Internal park offering, detailed games unqualified; no individual invented devices. | Mini-ferme: Named #41 and novelty 2017. Current group page still mentions farm; material 2026 configuration/species and operating status require reconciliation. Distinct pony ride. | Boutique: Named #2 shop/activity sales on older map and 2017 mainstreet. Not the 2026 La Pêche de Pokey merely because both maps use number 2. Goods and current continuity unproved. | Checkpoint: Named sixth paintball terrain 2015 with trenches and buried command post, distinct Fox Two/Panama/Dog One/Cannibale/Zombies. Cimetière was future proposal, no realized successor established. | Mini-buggy: Mini-buggy and Buggy enfant are textual variants in same 2015 report. Distinct mini-quad, Mini-Jeep, current pedal Crazy Kart and Kid’s Racer. No invented dated rename. | Mini-Jeep: Distinct named 2015 tariff offer, also official Moselle guide. Jeep not manufacturer inference. Physical details/current status unqualified. | Pédalo: Distinct named 2015 tariff offer and official Moselle guide; no proven alias with electric Bumper Boat. No quantity/capacity/current price inferred. | Terrains de pétanque: Two courts explicitly attested near relaxation/food area 2015, also report 2016. One grouped park offer; no invented court names, dimensions/surface/GPS. | Lancer de hache: Official older map names #4, separate from other targets/archery. No date, hardware details, safety/access rules or current status inferred from schematic. | Big Air Jump: Named on contemporary official sign #26, marked novelty, distinct Saut dans le vide #24. Actual 2017 photo caption names Big Air Jump; platform and inflatable landing visible. Article date displayed 11 August 2017 differs URL 7 August; neither used as opening date. | Labyrinthe géant: Official sign photographed in 2017 #7 marked novelty; contemporary 2017 reports confirm. No inferred present alias/closure or exact opening day. | Quad ados: Official sign photographed in 2017 #34 and 2017 tariff list distinguish adolescent quad from child quad and guided quad rides. Age band and hardware not guessed from the name. | Balade en quad: Official sign photographed in 2017 #35 and 2017 randonnée-quad tariff distinct from Quad ados #34 and child quad. No route/model/continuous current operation inferred."
+      },
+      "items": [
+        {
+          "key": "pokeyland-historical-rotor-jump",
+          "name": "Rotor Jump",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-segway",
+          "name": "Segway",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          }
+        },
+        {
+          "key": "pokeyland-historical-petit-robin",
+          "name": "Le Petit Robin",
+          "category": "Attraction",
+          "type": "Attraction",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-saut-vide",
+          "name": "Saut dans le vide",
+          "category": "Attraction",
+          "type": "ThrillRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-clairiere-jeux",
+          "name": "Clairière de jeux",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-mini-ferme",
+          "name": "Mini-ferme",
+          "category": "Animal",
+          "type": "AnimalExhibit",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-boutique-historique",
+          "name": "Boutique",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-checkpoint",
+          "name": "Checkpoint",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+          "zoneKey": "pokeyland-zone-paintball"
+        },
+        {
+          "key": "pokeyland-historical-mini-buggy",
+          "name": "Mini-buggy",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          }
+        },
+        {
+          "key": "pokeyland-historical-mini-jeep",
+          "name": "Mini-Jeep",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          }
+        },
+        {
+          "key": "pokeyland-historical-pedalo",
+          "name": "Pédalo",
+          "category": "Attraction",
+          "type": "WaterRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          }
+        },
+        {
+          "key": "pokeyland-historical-petanque",
+          "name": "Terrains de pétanque",
+          "category": "Attraction",
+          "type": "Game",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          }
+        },
+        {
+          "key": "pokeyland-historical-lancer-hache",
+          "name": "Lancer de hache",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          }
+        },
+        {
+          "key": "pokeyland-historical-big-air-jump",
+          "name": "Big Air Jump",
+          "category": "Attraction",
+          "type": "ThrillRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          }
+        },
+        {
+          "key": "pokeyland-historical-labyrinthe-geant",
+          "name": "Labyrinthe géant",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          }
+        },
+        {
+          "key": "pokeyland-historical-quad-ados",
+          "name": "Quad ados",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          }
+        },
+        {
+          "key": "pokeyland-historical-balade-quad",
+          "name": "Balade en quad",
+          "category": "Attraction",
+          "type": "FamilyRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          }
+        }
+      ],
+      "zones": [
+        {
+          "id": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+          "key": "pokeyland-zone-paintball",
+          "name": "Paintball"
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "bfebe276-0ab9-4219-80d8-434715ca3f59",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:26:38.6964683Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 17,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "pokeyland-zone-paintball",
+        "displayName": "Paintball",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7b6399b6-d689-45ca-8a49-7f0286f889a8",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e6d7742b-1202-45a3-b983-06dca6be9b1a",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "11440f70-7da5-453d-80c7-e051d28c1489",
+        "entityKey": "pokeyland-historical-petit-robin",
+        "displayName": "Le Petit Robin",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "72b79d0d-e82d-432c-bb99-d8fd9e6d667d",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4a932465-11dc-4b8f-902d-180baf59722d",
+        "entityKey": "pokeyland-historical-clairiere-jeux",
+        "displayName": "Clairière de jeux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "244a1e2c-0101-4e4e-af9c-1f5f93c48804",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Animal"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "AnimalExhibit"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4507cf66-f458-4205-8635-f02fd2527c61",
+        "entityKey": "pokeyland-historical-boutique-historique",
+        "displayName": "Boutique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "912ad10e-c7f5-41b6-8bbf-ea2ec48ec154",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cc545398-e729-4ea4-a717-85b340835677",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8d439eef-76eb-4496-bcdf-fda5d67762cd",
+        "entityKey": "pokeyland-historical-mini-jeep",
+        "displayName": "Mini-Jeep",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "96fe53a5-800f-4d7e-a989-48ce5b7eaaa5",
+        "entityKey": "pokeyland-historical-pedalo",
+        "displayName": "Pédalo",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2196815-71fc-4500-a142-17d75542e69e",
+        "entityKey": "pokeyland-historical-petanque",
+        "displayName": "Terrains de pétanque",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5059ab2c-0660-46e8-b4de-b9f2aa0f7570",
+        "entityKey": "pokeyland-historical-lancer-hache",
+        "displayName": "Lancer de hache",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c629f0dc-38eb-469c-a469-2fabe4a22acf",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8689b875-cae2-4b5e-814f-5f87c9218afa",
+        "entityKey": "pokeyland-historical-labyrinthe-geant",
+        "displayName": "Labyrinthe géant",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e6e0d499-f7b8-43cb-96db-e8f5eec9179a",
+        "entityKey": "pokeyland-historical-quad-ados",
+        "displayName": "Quad ados",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c7742774-cf07-4f07-976d-9313dec83e2e",
+        "entityKey": "pokeyland-historical-balade-quad",
+        "displayName": "Balade en quad",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "e49b214a-d8f0-408c-8374-64ef84616278",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:27:10.8067022Z",
+    "appliedAtUtc": "2026-11-15T11:27:10.806703Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 17,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "pokeyland-zone-paintball",
+        "displayName": "Paintball",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "entityKey": "pokeyland-historical-petit-robin",
+        "displayName": "Le Petit Robin",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c8c04ee5-8ea7-4dbb-afcb-2769f556cba7",
+        "entityKey": "pokeyland-historical-clairiere-jeux",
+        "displayName": "Clairière de jeux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Animal"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "AnimalExhibit"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58bc03b5-9202-4940-bbdc-c83973300b42",
+        "entityKey": "pokeyland-historical-boutique-historique",
+        "displayName": "Boutique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+        "entityKey": "pokeyland-historical-mini-jeep",
+        "displayName": "Mini-Jeep",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+        "entityKey": "pokeyland-historical-pedalo",
+        "displayName": "Pédalo",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2a23aa94-01ba-4cda-be85-653e60589c24",
+        "entityKey": "pokeyland-historical-petanque",
+        "displayName": "Terrains de pétanque",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+        "entityKey": "pokeyland-historical-lancer-hache",
+        "displayName": "Lancer de hache",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+        "entityKey": "pokeyland-historical-labyrinthe-geant",
+        "displayName": "Labyrinthe géant",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+        "entityKey": "pokeyland-historical-quad-ados",
+        "displayName": "Quad ados",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+        "entityKey": "pokeyland-historical-balade-quad",
+        "displayName": "Balade en quad",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "decisions": [
+    {
+      "name": "Rotor Jump",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Plan #26, distinct Trampoline #24/Ejector #33. Announced novelty 2021; no effective day. Current introductory text persists but current service unverified."
+    },
+    {
+      "name": "Segway",
+      "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "decision": "Guided rides attested 2015 and official brochure 2023. No current availability/model or removal date established."
+    },
+    {
+      "name": "Le Petit Robin",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Plan #28 separate from Tir à l’arc #27. Novelty 2017 documented; precise physical offer unqualified. No crossbow inference."
+    },
+    {
+      "name": "Saut dans le vide",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Plan #34 separate Ejector #33 and Escalade #25. Official Metz guide mentions 18 m; no manufacturer, opening or removal date inferred. Distinct Big Air Jump on photographed 2017 plan."
+    },
+    {
+      "name": "Clairière de jeux",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Named play area #40 separate from Aire #38, barefeet #39 and farm #41. Internal park offering, detailed games unqualified; no individual invented devices."
+    },
+    {
+      "name": "Mini-ferme",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Named #41 and novelty 2017. Current group page still mentions farm; material 2026 configuration/species and operating status require reconciliation. Distinct pony ride."
+    },
+    {
+      "name": "Boutique",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Named #2 shop/activity sales on older map and 2017 mainstreet. Not the 2026 La Pêche de Pokey merely because both maps use number 2. Goods and current continuity unproved."
+    },
+    {
+      "name": "Checkpoint",
+      "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "decision": "Named sixth paintball terrain 2015 with trenches and buried command post, distinct Fox Two/Panama/Dog One/Cannibale/Zombies. Cimetière was future proposal, no realized successor established."
+    },
+    {
+      "name": "Mini-buggy",
+      "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "decision": "Mini-buggy and Buggy enfant are textual variants in same 2015 report. Distinct mini-quad, Mini-Jeep, current pedal Crazy Kart and Kid’s Racer. No invented dated rename."
+    },
+    {
+      "name": "Mini-Jeep",
+      "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "decision": "Distinct named 2015 tariff offer, also official Moselle guide. Jeep not manufacturer inference. Physical details/current status unqualified."
+    },
+    {
+      "name": "Pédalo",
+      "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "decision": "Distinct named 2015 tariff offer and official Moselle guide; no proven alias with electric Bumper Boat. No quantity/capacity/current price inferred."
+    },
+    {
+      "name": "Terrains de pétanque",
+      "sourceUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "decision": "Two courts explicitly attested near relaxation/food area 2015, also report 2016. One grouped park offer; no invented court names, dimensions/surface/GPS."
+    },
+    {
+      "name": "Lancer de hache",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+      "decision": "Official older map names #4, separate from other targets/archery. No date, hardware details, safety/access rules or current status inferred from schematic."
+    },
+    {
+      "name": "Big Air Jump",
+      "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "decision": "Named on contemporary official sign #26, marked novelty, distinct Saut dans le vide #24. Actual 2017 photo caption names Big Air Jump; platform and inflatable landing visible. Article date displayed 11 August 2017 differs URL 7 August; neither used as opening date."
+    },
+    {
+      "name": "Labyrinthe géant",
+      "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "decision": "Official sign photographed in 2017 #7 marked novelty; contemporary 2017 reports confirm. No inferred present alias/closure or exact opening day."
+    },
+    {
+      "name": "Quad ados",
+      "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "decision": "Official sign photographed in 2017 #34 and 2017 tariff list distinguish adolescent quad from child quad and guided quad rides. Age band and hardware not guessed from the name."
+    },
+    {
+      "name": "Balade en quad",
+      "sourceUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "decision": "Official sign photographed in 2017 #35 and 2017 randonnée-quad tariff distinct from Quad ados #34 and child quad. No route/model/continuous current operation inferred."
+    }
+  ],
+  "initialUnappliedWarning": {
+    "operationId": "12a937ba-0350-4636-bdf8-bb5586ee781d",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:26:10.9852192Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 17,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 1,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "94feaad6-b463-4674-afff-d367330b5826",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fc9b751-2ff9-4313-8624-94e2012cc53e",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "76fa1abb-6771-4e45-8211-b67c64b17d1a",
+        "entityKey": "pokeyland-historical-petit-robin",
+        "displayName": "Le Petit Robin",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f28963b4-23c7-495f-a996-9fbf8d31956b",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6271fc4a-1cb8-430f-9fa1-445634a8caac",
+        "entityKey": "pokeyland-historical-clairiere-jeux",
+        "displayName": "Clairière de jeux",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "78f13c3c-a623-41d7-86db-e7f07e68f58d",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Animal"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "AnimalExhibit"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6dc8483b-22be-47a7-84da-62f4bea3ed3b",
+        "entityKey": "pokeyland-historical-boutique-historique",
+        "displayName": "Boutique",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Shop"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f8b1412-8746-4a04-aab2-7d7d2f8b0e4c",
+        "entityKey": "pokeyland-historical-checkpoint",
+        "displayName": "Checkpoint",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "49179bbb-dd88-4bb1-a80e-21f09764a35d",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7b670707-d2c0-45d2-b435-f03530d18ffd",
+        "entityKey": "pokeyland-historical-mini-jeep",
+        "displayName": "Mini-Jeep",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c423e4e9-923b-471a-92a0-42176b7dab14",
+        "entityKey": "pokeyland-historical-pedalo",
+        "displayName": "Pédalo",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "345e531b-489e-4d72-b2b7-dd5631232a15",
+        "entityKey": "pokeyland-historical-petanque",
+        "displayName": "Terrains de pétanque",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cb1b7b8-bda0-4013-9095-dbcac62d9f01",
+        "entityKey": "pokeyland-historical-lancer-hache",
+        "displayName": "Lancer de hache",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6537f4b6-74f7-4790-b371-f42f04c780f8",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ThrillRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "baa7c33a-9bcd-4b33-acdf-34c1af8cc6c5",
+        "entityKey": "pokeyland-historical-labyrinthe-geant",
+        "displayName": "Labyrinthe géant",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d0f29388-a74a-421d-8292-b67b1a95add2",
+        "entityKey": "pokeyland-historical-quad-ados",
+        "displayName": "Quad ados",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "05d03e00-1b6f-4eef-a1b9-ac7f73ecb56b",
+        "entityKey": "pokeyland-historical-balade-quad",
+        "displayName": "Balade en quad",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [
+      "ZoneKey 'pokeyland-zone-paintball' non résolue pour l'élément 'Checkpoint'."
+    ],
+    "errors": []
+  },
+  "warningResolution": "Existing Paintball zone redeclared minimally by actual ID/key/name, final Preview zero warnings; no AllowWarnings used. Initial preview was not applied.",
+  "research": {
+    "createdAtUtc": "2026-11-15T11:02:49.671000Z",
+    "scope": "Recherche publique et lecture locale seulement. Aucun PDE/API, Git, registre, import, création de notice finale ou modification de working-state.",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "startingReport": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/inventory-and-map-reconciliation.json",
+    "summary": {
+      "identitiesReviewed": 12,
+      "provenCurrentAliases": [],
+      "closureDatesProved": [],
+      "principalFindings": [
+        "RotorJump annoncé nouveauté2021 ; pageD!RECTFM du2avril2021 et saison2021 concordent.",
+        "PetitRobin et Mini-ferme nouveautés2017 ; ne pas déduire le jour propre de lancement.",
+        "Checkpoint terrain distinct de FoxTwo dans le même reportage2015.",
+        "Sautdanslevide18m et BigAirJump10m ne doivent pas être fusionnés sur le seul vocabulaire.",
+        "LaMini-ferme reste proposée sur la pageofficielleSortiesdegroupes ; configuration/exploitation2026 non vérifiées.",
+        "Les12candidats ne disposent pas de preuves suffisantes de fermeture actuelle ; ne pas les clôturer par omission du plan2026."
+      ]
+    },
+    "items": [
+      {
+        "name": "Rotor Jump",
+        "readiness": "Identité et fonctionnement historiques précis ; rédaction possible après revue personnelle.",
+        "evidenceFiles": [
+          "directfm-rotor-2020.html",
+          "lorraine-newsletter-2021.html",
+          "lorraine-season-2021.html",
+          "../official-map-2022.pdf",
+          "../official-brochure-2023.pdf page4",
+          "official-explorateurs.html"
+        ],
+        "supportedSpecificContent": [
+          "Jeu collectif dans lequel les participants évitent une balayette tournante ; la brochure officielle précise que tomber élimine le participant.",
+          "D!RECT FM annonce un jeu pouvant réunir jusqu’à huit personnes ; photo officielle de brochure montre la balayette à hauteur des jambes, avec un participant qui saute.",
+          "Sur le plan de version 2022 : activité26, séparée du Trampoline24 et de l’Ejector33."
+        ],
+        "dateAssessment": "Annoncé comme nouveauté2021 dans l’article D!RECT FM du2avril2021 et la saison2021 LorraineAUcoeur. Pas de jour d’ouverture effective établi. Le filename local directfm-rotor-2020.html est un nom provisoire erroné : la page est réellement publiée en2021.",
+        "aliasAssessment": "Aucun renommage prouvé. Ne pas rattacher à Trampoline, Ejector ou KidsSwing.",
+        "currentStatusAssessment": "Toujours cité dans l’introduction officielle Explorateurs et Qui sommes-nous, mais aucune fiche nominative dans le catalogue courant ni entrée sur le plan2026. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Aucun fabricant ou modèle.",
+          "La photo de brochure est une composition éditoriale et non un original à importer.",
+          "Pas de transposition automatique des règles2022/2023 en2026."
+        ]
+      },
+      {
+        "name": "Segway",
+        "readiness": "Offre historique précisément définie ; rédaction possible sans statut actuel.",
+        "evidenceFiles": [
+          "../news-toutmetz-opening-2015.html",
+          "../official-map-2022.pdf",
+          "../official-brochure-2023.pdf page4",
+          "../pokeyland-history.html",
+          "mosl-school-2020.pdf page76",
+          "tourism-metz.html"
+        ],
+        "supportedSpecificContent": [
+          "Balades accompagnées sur un parcours parcourant le parc, notamment le long des terrains de paintball selon le reportage2015.",
+          "Brochure officielle2023 : gyropodes à deux roues ; la photo montre un participant debout sur un engin à deux grandes roues, portant un casque."
+        ],
+        "dateAssessment": "Offre annoncée à l’ouverture du parc en juin2015 ; présente dans brochure officielle2023. Le jour de mise en service propre n’est pas documenté.",
+        "aliasAssessment": "Aucun alias vers un manège ou véhicule actuel démontré.",
+        "currentStatusAssessment": "Encore mentionné sur Qui sommes-nous et la fiche de tourisme de Metz ; présence matérielle/bookabilité actuelle non confirmée. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Ne pas attribuer un modèle de gyropode.",
+          "2015:20minutes/20euros et règle45kg du plan2022 sont historiques seulement.",
+          "Aucun GPS."
+        ]
+      },
+      {
+        "name": "Le Petit Robin",
+        "readiness": "Identité historique distincte établie ; fonction physique encore insuffisamment documentée.",
+        "evidenceFiles": [
+          "lorraine-season-2017.html",
+          "../official-map-2022.pdf",
+          "../official-brochure-2023.pdf pages3et4"
+        ],
+        "supportedSpecificContent": [
+          "Présent sous ce nom parmi les nouveautés2017 ; mentionné dans les listes officielles2022/2023.",
+          "Le plan distingue PetitRobin28 et Tiràl’arc27 ; la brochure2023 liste également les deux séparément."
+        ],
+        "dateAssessment": "Nouveauté2017 annoncée par LorraineAUcoeur. Aucun jour propre établi.",
+        "aliasAssessment": "Aucune preuve suffisante pour en faire un alias du Tiràl’arc, ni pour affirmer qu’il s’agit précisément d’un tir à l’arbalète.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Le nom Robin n’est pas une preuve de mécanisme.",
+          "Ne pas transposer une photo de Tiràl’arc.",
+          "Les annuaires géographiques nommant le lieu sans source datée ne prouvent pas son état actuel."
+        ]
+      },
+      {
+        "name": "Saut dans le vide",
+        "readiness": "Identité historique et hauteur documentées ; état actuel non démontré.",
+        "evidenceFiles": [
+          "../official-map-2022.pdf",
+          "congres-metz-team-2025.pdf page27",
+          "lorraine-season-2017.html"
+        ],
+        "supportedSpecificContent": [
+          "Le guide officiel du Bureau des congrès de Metz décrit le Sautdanslevide d’une hauteur de18m et le distingue de l’Ejector par élastiques.",
+          "Plan de version2022 : Sautdanslevide34, Ejector33 et Escalade25 séparés."
+        ],
+        "dateAssessment": "Présent au plus tard dans les offres2017 et le plan de version2022. Guide mis en ligne2025 encore descriptif ; pas de date d’ouverture précise établie.",
+        "aliasAssessment": "Ne pas fusionner avec BigAirJump : les listes2017 les distinguent, BigAirJump étant annoncé comme une nouveauté avec saut de10m. Des textes promotionnels utilisent toutefois les mots saut dans le vide de manière générique ; respecter les noms propres et les sources.",
+        "currentStatusAssessment": "Toujours repris dans la fiche tourismeMetz et guide mis en ligne2025 ; confirmation de service2026 non obtenue. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Le guide ne permet pas de déduire fabricant, système d’assurage ou vitesse.",
+          "La tour Escalade peut porter l’activité sans être une preuve de fusion des fiches.",
+          "Hauteur18m issue du guide officiel, pas d’un calcul sur dessin."
+        ]
+      },
+      {
+        "name": "Clairière de jeux",
+        "readiness": "Zone historique nommée ; contenu détaillé insuffisamment qualifié.",
+        "evidenceFiles": [
+          "../official-map-2022.pdf",
+          "../official-brochure-2023.pdf page3"
+        ],
+        "supportedSpecificContent": [
+          "Le plan distingue Clairière40, Airedejeux38, Parcourspiedsnus39 et Mini-ferme41.",
+          "La brochure2023 la présente parmi les Bonus de Pokeyland en entrée libre."
+        ],
+        "dateAssessment": "Présence officielle de version2022 et saison2023 ; aucun jour d’ouverture établi.",
+        "aliasAssessment": "Pas un alias démontré de l’Airedejeux ou du Parcourspiedsnus.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Le dessin du plan n’établit pas l’ensemble réel des jeux ou leurs matériaux.",
+          "Pas d’identification nominale fiable de jeux en bois individuels.",
+          "Ne pas ajouter une nouveauté2019 à partir d’un extrait regroupant plusieurs parcs sans contexte."
+        ]
+      },
+      {
+        "name": "Mini-ferme",
+        "readiness": "Zone animalière distincte, ancienneté et maintien dans les textes officiels établis.",
+        "evidenceFiles": [
+          "lorraine-season-2017.html",
+          "loractu-2017.html",
+          "../official-map-2022.pdf",
+          "../official-brochure-2023.pdf page3",
+          "official-groups.html",
+          "../pokeyland-history.html"
+        ],
+        "supportedSpecificContent": [
+          "Mini-ferme annoncée parmi les nouveautés2017 par deux articles contemporains.",
+          "Brochure officielle2023 : Bonusenentréelibre avec photo de chèvres dans ce bandeau.",
+          "Page officielle actuelle Sortiesdegroupes propose de se familiariser avec les animaux de la mini-ferme, séparément de l’arboretum et du parcours pieds nus."
+        ],
+        "dateAssessment": "Nouveauté2017 ; articleLoractu du13avril2017 présente les nouveautés de la saison commencée le8avril. Ne pas affirmer que la mini-ferme a ouvert exactement le8avril.",
+        "aliasAssessment": "Aucune fusion avec la Baladeàponey : activités distinctes sur le plan2022.",
+        "currentStatusAssessment": "La mini-ferme reste explicitement proposée dans des textes officiels accessibles ; sa configuration exacte et les espèces présentes en2026 ne sont pas confirmées. Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Pas de liste exhaustive d’animaux.",
+          "La photo de chèvres du bandeau2023 ne prouve pas leur présence2026.",
+          "Arboretum est une piste distincte, pas un synonyme de mini-ferme."
+        ]
+      },
+      {
+        "name": "Boutique",
+        "readiness": "Service historique identifié ; rapprochement actuel non résolu.",
+        "evidenceFiles": [
+          "loractu-2017.html",
+          "lorraine-season-2020.html",
+          "../official-map-2022.pdf"
+        ],
+        "supportedSpecificContent": [
+          "Loractu2017 décrit une mainstreet avec boutique et restaurants.",
+          "En2020, la présentation de saison prévoit la vente de masques en caisse ou en boutique.",
+          "Plan de version2022 : Boutique2, également pointdevented’activités, distincte de Caisseaccueil0 et du Gourmand8."
+        ],
+        "dateAssessment": "Boutique présente dans reportageavril2017 et planversion2022 ; date de création propre inconnue.",
+        "aliasAssessment": "Ne pas convertir Boutique2 en LaPêchedePokey2 parce que les numéros sont les mêmes ; les plans ont été renumérotés.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "La boutique/surplus attachée au paintball dans certains annuaires n’est pas automatiquement cette boutiqueprincipale.",
+          "Pas d’inventaire de souvenirs/vêtements inventé.",
+          "Un avis disant boutiquefermée un jour ne démontre pas une fermeture définitive."
+        ]
+      },
+      {
+        "name": "Checkpoint",
+        "readiness": "Terrain historique avec photographie nominative ; identité distincte sûre.",
+        "evidenceFiles": [
+          "../news-toutmetz-opening-2015.html",
+          "toutmetz-checkpoint.jpg"
+        ],
+        "supportedSpecificContent": [
+          "Le reportage2015 nomme précisément Checkpoint et le décrit avec des tranchées et un poste de commandement enterré.",
+          "Photo inspectée : terrain forestier creusé de tranchées, revêtements de branchages, remblais, canon dans le décor et entrée basse ; ne pas supposer d’armes fonctionnelles.",
+          "Le même reportage nomme séparément FoxTwo, DogOne, Panama, Cannibale et Zombies : Checkpoint est donc un sixième terrain, pas un alias évident de FoxTwo."
+        ],
+        "dateAssessment": "Terrain déjà décrit à l’ouverture dejuin2015 ; pas de date propre de retrait.",
+        "aliasAssessment": "Aucun renommage actuel retrouvé. Sixnoms2015 contre cinqnoms actuels ne suffisent pas à désigner un successeur.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Photo porte une signature ThierryHauuy/ToutMetz : exclue de l’import selon règles campagne.",
+          "Cimetière est un projet futur sur croquis2015, pas une preuve de remplacement réalisé de Checkpoint.",
+          "Ne pas créer un parc autonome PokeyPaint."
+        ]
+      },
+      {
+        "name": "Mini-buggy / Buggy enfant",
+        "readiness": "Offre historique précisément photographiée ; ne pas fusionner avec le catalogue actuel.",
+        "evidenceFiles": [
+          "../news-toutmetz-opening-2015.html",
+          "toutmetz-tracks.jpg"
+        ],
+        "supportedSpecificContent": [
+          "Article2015 décrit des parcours aménagés serpentant entre les arbres pour mini-quads et mini-buggies.",
+          "Photo nominativement associée : petit buggy noir à siège bas, volant, arceau et quatre roues à pneus cramponnés ; éléments arrière rouges, marchepied métallique. Des quads distincts sont alignés derrière."
+        ],
+        "dateAssessment": "Offre tarifée dans reportageouverturejuin2015 ; aucune date de retrait.",
+        "aliasAssessment": "Mini-buggy/Buggyenfant sont variantes textuelles dans la même source. Pas d’équivalence établie avec CrazyKart àpédales, Kid’sRacer ou Lesasduvolant.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Ne pas identifier constructeur/modèle à partir d’une peinture ou du style.",
+          "Ne pas inférer moteur/carburant/puissance non décrits.",
+          "Photo signée ThierryHauuy/ToutMetz : recherche seulement."
+        ]
+      },
+      {
+        "name": "Mini-Jeep",
+        "readiness": "Offre historique avérée ; description physique spécifique encore limitée.",
+        "evidenceFiles": [
+          "../news-toutmetz-opening-2015.html",
+          "mosl-school-2020.pdf page76"
+        ],
+        "supportedSpecificContent": [
+          "Le tarif2015 distingue Mini-Jeep adulte/enfant, deuxplaces, du Buggyenfant, du Quadenfant et du Segway.",
+          "Le guide pédagogique officiel de Moselle, versionPDF créée/modifiéeen2020, décrit encore des baladesenmini-jeep parmi les activités familiales."
+        ],
+        "dateAssessment": "Offre tarifée2015, reprise dans guideversion2020 ; aucun jour propre ni retrait prouvé.",
+        "aliasAssessment": "Pas d’équivalence prouvée avec CrazyKart, KidsRacer, Lesasduvolant ou une miniJeep d’un autre parc.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Aucune photo nominative précise inspectée.",
+          "Deuxplaces et formatadulte/enfant sont caractéristiques de2015 uniquement.",
+          "Ne pas confondre le nom commun miniJeep avec un fabricant officiellement rattachable."
+        ]
+      },
+      {
+        "name": "Pédalo",
+        "readiness": "Offre historique avérée, distincte des bateaux tamponneurs électriques.",
+        "evidenceFiles": [
+          "../news-toutmetz-opening-2015.html",
+          "mosl-school-2020.pdf page76"
+        ],
+        "supportedSpecificContent": [
+          "Pédalo figure en rubrique tarifaire2015 ; pédalos sont cités par le guideMoselle version2020.",
+          "Le catalogue actuel décrit BumperBoat comme bateauélectrique bordé d’un boudin : aucun texte ne dit que c’est un renommage des pédalos."
+        ],
+        "dateAssessment": "Présence commerciale2015 et documentaireversion2020 ; pas de fermeture propre.",
+        "aliasAssessment": "Ne pas fusionner avec BumperBoat sans preuve de remplacement ou d’identité.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Aucune photo nominative ni forme/couleur/capacité propre qualifiée.",
+          "Aucun nombre de pédalos établi.",
+          "Ne pas reprendre le tarif4euros de2015 comme actuel."
+        ]
+      },
+      {
+        "name": "Pétanque — deux terrains",
+        "readiness": "Offre et nombre historiques établis ; configuration et statut actuels inconnus.",
+        "evidenceFiles": [
+          "../news-toutmetz-opening-2015.html",
+          "toutmetz-relaxation.jpg"
+        ],
+        "supportedSpecificContent": [
+          "Le reportage2015 situe deuxterrains de pétanque à côté de l’espace de détente et près de la restauration/enfants.",
+          "Photo inspectée montre surtout tables/bancs, chemin et zoneSegway en arrière-plan ; elle ne permet pas d’identifier avec certitude les limites des deuxterrains."
+        ],
+        "dateAssessment": "Attestés dans reportagejuin2015 ; aucun jour de création/retrait.",
+        "aliasAssessment": "Pas d’alias démontré avec Clairièredejeux ou Airedejeux.",
+        "currentStatusAssessment": "Aucune fermeture ou continuité matérielle démontrée. Ne pas déduire un statut ClosedDefinitively de l’absence du catalogue ou du plan 2026.",
+        "limits": [
+          "Ne pas créer deuxnoms inventés pour les deuxterrains.",
+          "Aucun revêtement/dimension précisément établi par la photo.",
+          "Photo signéeThierryHauuy/ToutMetz, recherche seulement."
+        ]
+      }
+    ],
+    "sourceAccess": [
+      {
+        "url": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+        "accessedAtUtc": "2026-11-15T10:57:37.920732+00:00",
+        "status": 200,
+        "finalUrl": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 54846,
+        "sha256": "28ec4c31fb0a22b9a0f5a3a9b48b62e33610d6f5bc9b1daeed67d3e9bc51cd16",
+        "file": "directfm-rotor-2020.html"
+      },
+      {
+        "url": "https://www.lorraineaucoeur.com/evt-21266/parc-de-loisirs-pokeyland-saison-2017-et-nouveautes/moselle-fey/promo-sortie",
+        "accessedAtUtc": "2026-11-15T10:57:40.417418+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lorraineaucoeur.com/evt-21266/parc-de-loisirs-pokeyland-saison-2017-et-nouveautes/moselle-fey/promo-sortie",
+        "contentType": "text/html; charset=ISO-8859-1",
+        "bytes": 153724,
+        "sha256": "5fdbfbd27f47aafdb62e34a79ba937d1db29ee1b9dcadb8f8c51299d1b870ccc",
+        "file": "lorraine-season-2017.html"
+      },
+      {
+        "url": "https://www.lorraineaucoeur.com/evt-31222/parc-de-loisirs-pokeyland-saison-2020-et-nouveautes/moselle-fey/promo-sortie",
+        "accessedAtUtc": "2026-11-15T10:57:42.177905+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lorraineaucoeur.com/evt-31222/parc-de-loisirs-pokeyland-saison-2020-et-nouveautes/moselle-fey/promo-sortie",
+        "contentType": "text/html; charset=ISO-8859-1",
+        "bytes": 138577,
+        "sha256": "cbf16ebd12caa225611071712ed7fa3658f9d75666e2cd88137d282e59cd2b0b",
+        "file": "lorraine-season-2020.html"
+      },
+      {
+        "url": "https://www.lorraineaucoeur.com/newsletters/lac-nl-210624.html",
+        "accessedAtUtc": "2026-11-15T10:57:42.929878+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lorraineaucoeur.com/newsletters/lac-nl-210624.html",
+        "contentType": "text/html",
+        "bytes": 102157,
+        "sha256": "4676859166296bcedfaf7cfab1562c158e7fcf5f5c6955d84183c2e5bc5d06ef",
+        "file": "lorraine-newsletter-2021.html"
+      },
+      {
+        "url": "https://www.pokeyland.com/activites/explorateurs/",
+        "accessedAtUtc": "2026-11-15T10:57:43.475312+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/activites/explorateurs/",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 103335,
+        "sha256": "56f471b22eddf63cf51173e25bbcdeeb7d788ff6ceef5697f0d72c2cd91fbea4",
+        "file": "official-explorateurs.html"
+      },
+      {
+        "url": "https://www.tourisme-metz.com/fr/details/838164984-pokeyland-parc-de-loisirs",
+        "accessedAtUtc": "2026-11-15T10:57:44.587311+00:00",
+        "status": 200,
+        "finalUrl": "https://www.tourisme-metz.com/fr/details/838164984-pokeyland-parc-de-loisirs",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 173968,
+        "sha256": "2ff07ded8ffda17c89782900fc6cbb1a1a89af888b353b45c026e87e9a0fa1f4",
+        "file": "tourism-metz.html"
+      },
+      {
+        "url": "https://www.congres-metz.com/app/uploads/2025/03/A4-TeamBuilding-Vweb.pdf",
+        "accessedAtUtc": "2026-11-15T10:57:47.012919+00:00",
+        "status": 200,
+        "finalUrl": "https://www.congres-metz.com/app/uploads/2025/03/A4-TeamBuilding-Vweb.pdf",
+        "contentType": "application/pdf",
+        "bytes": 3548439,
+        "sha256": "d68386ac2b7cc0960cc7c1dcd9ca2ffedc07b7fa09d3064656b3b8df3789b7f1",
+        "file": "congres-metz-team-2025.pdf"
+      },
+      {
+        "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2975.jpg",
+        "accessedAtUtc": "2026-11-15T10:57:49.252057+00:00",
+        "status": 200,
+        "finalUrl": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2975.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 279363,
+        "sha256": "3baea07b0b7be8fecb94c72b96abf43065fefb883afe87ccc360c325c74f3a0d",
+        "file": "toutmetz-checkpoint.jpg"
+      },
+      {
+        "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2949.jpg",
+        "accessedAtUtc": "2026-11-15T10:57:50.442216+00:00",
+        "status": 200,
+        "finalUrl": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2949.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 257419,
+        "sha256": "82ea436e0df6842a4b043730bbf9bf0c3fee5ac1afa038dc3aef55bb02612c37",
+        "file": "toutmetz-tracks.jpg"
+      },
+      {
+        "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2909.jpg",
+        "accessedAtUtc": "2026-11-15T10:57:51.502121+00:00",
+        "status": 200,
+        "finalUrl": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2909.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 251518,
+        "sha256": "45b197f288cc5d0533753b4a9d5a08fbe88f47d06517b788bb2c6ac15b8db659",
+        "file": "toutmetz-relaxation.jpg"
+      },
+      {
+        "url": "https://www.pokeyland.com/vos-sorties-de-groupe/",
+        "accessedAtUtc": "2026-11-15T10:59:08.533565+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/vos-sorties-de-groupe/",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 91379,
+        "sha256": "1f3db381ad0530a06ab1c0d3ea52af60c079e3c692ffb0db284a1c18e20e53e8",
+        "file": "official-groups.html"
+      },
+      {
+        "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+        "accessedAtUtc": "2026-11-15T10:59:09.950737+00:00",
+        "status": 200,
+        "finalUrl": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+        "contentType": "text/html",
+        "bytes": 63951,
+        "sha256": "54699215c76a4826922188935fa727b06cbe838bfb55a688b0a0a0b1dae8d976",
+        "file": "loractu-2017.html"
+      },
+      {
+        "url": "https://www.airsoftpaintball.fr/terrain-paintball-fey.php",
+        "accessedAtUtc": "2026-11-15T10:59:10.440834+00:00",
+        "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+      },
+      {
+        "url": "https://www.saintavold-coeurdemoselle.fr/wp-content/uploads/2020/09/MOSL-brochure-tourisme-scolaire_compressed.pdf",
+        "accessedAtUtc": "2026-11-15T10:59:12.816138+00:00",
+        "status": 200,
+        "finalUrl": "https://www.saintavold-coeurdemoselle.fr/wp-content/uploads/2020/09/MOSL-brochure-tourisme-scolaire_compressed.pdf",
+        "contentType": "application/pdf",
+        "bytes": 8573334,
+        "sha256": "4bf206610142ec025ad266036c444d34805e3cfdae0ace7acc7fd54ec5b55685",
+        "file": "mosl-school-2020.pdf"
+      },
+      {
+        "url": "https://www.lorraineaucoeur.com/evt-33403/parc-de-loisirs-pokeyland-saison-2021-et-nouveautes/moselle-fey/promo-sortie",
+        "accessedAtUtc": "2026-11-15T10:59:16.721725+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lorraineaucoeur.com/evt-33403/parc-de-loisirs-pokeyland-saison-2021-et-nouveautes/moselle-fey/promo-sortie",
+        "contentType": "text/html; charset=ISO-8859-1",
+        "bytes": 141358,
+        "sha256": "59e443f73d511d5176e078049583309fbbc71317c94b7235049f1e3f0c122202",
+        "file": "lorraine-season-2021.html"
+      }
+    ],
+    "sourcesReused": [
+      {
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/inventory-and-map-reconciliation.json",
+        "sha256": "948775087c802d8de2ff42b118bd68e73b2621d74a5aaa646b5386bd8dec945b",
+        "bytes": 10179
+      },
+      {
+        "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+        "accessedAtUtc": "2026-11-15T10:42:31.499476+00:00",
+        "status": 200,
+        "finalUrl": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 347811,
+        "sha256": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4",
+        "file": "news-toutmetz-opening-2015.html",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-toutmetz-opening-2015.html"
+      },
+      {
+        "url": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+        "accessedAtUtc": "2026-11-15T10:36:57.806942+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/06/planpokeyland.pdf",
+        "contentType": "application/pdf",
+        "bytes": 4042269,
+        "sha256": "507ee6aaadb5f3e80cac2da0c645226293bf10160c6ea65d5cd4a46071e96798",
+        "file": "official-map-2022.pdf",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.pdf"
+      },
+      {
+        "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+        "accessedAtUtc": "2026-11-15T10:36:59.030634+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+        "contentType": "application/pdf",
+        "bytes": 5283404,
+        "sha256": "0631cbb032a16aef9d9893a39181094c8892104f40fd267c8fdf972817937ecc",
+        "file": "official-brochure-2023.pdf",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023.pdf"
+      },
+      {
+        "url": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+        "accessedAtUtc": "2026-11-15T10:36:57.087598+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+        "contentType": "application/pdf",
+        "bytes": 362538,
+        "sha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6",
+        "file": "official-map-2026.pdf",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2026.pdf"
+      },
+      {
+        "url": "https://www.pokeyland.com/qui-sommes-nous/",
+        "accessedAtUtc": "2026-11-15T10:30:22.518830+00:00",
+        "status": 200,
+        "finalUrl": "https://www.pokeyland.com/qui-sommes-nous/",
+        "bytes": 166983,
+        "sha256": "b908e38715b26b3f9f37993f99d7fe707c74de2ebf05517e4069b1a61d1ec09d",
+        "file": "pokeyland-history.html",
+        "usefulLinks": [
+          {
+            "url": "https://www.pokeyland.com/plan-du-parc/",
+            "text": "Plan du parc"
+          },
+          {
+            "url": "https://www.pokeyland.com/activites/",
+            "text": "Les activités"
+          },
+          {
+            "url": "https://www.pokeyland.com/plan-du-parc/",
+            "text": "Plan du parc         \r\n         \r\n          Impossible de vous perdre grâce à notre plan"
+          },
+          {
+            "url": "https://www.pokeyland.com/plan-du-parc/",
+            "text": "Plan du parc"
+          }
+        ],
+        "reusedFrom": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115/pokeyland-history.html",
+        "localCopiedAtUtc": "2026-11-15T10:36:42.277980+00:00",
+        "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pokeyland-history.html"
+      }
+    ],
+    "visualReview": [
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-map-2022.png",
+        "reviewed": true,
+        "notes": "Tous les repères mentionnés lus ; illustrations cartographiques, pas preuve GPS ou photographie."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023-page-3.png",
+        "reviewed": true,
+        "notes": "BonusMiniFerme/Clairière/AireJeux/PiedsNus lisibles ; chèvres photographiées en bandeau ; PokeyPlage rendu illustré nonphotographique."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023-page-4.png",
+        "reviewed": true,
+        "notes": "RotorJump et Segway photographiés et nommés ; page est une compositionpromotionnelle, pas un originalimportable."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-checkpoint.jpg",
+        "reviewed": true,
+        "watermark": true,
+        "importAllowedByThisReport": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-tracks.jpg",
+        "reviewed": true,
+        "watermark": true,
+        "importAllowedByThisReport": false
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-relaxation.jpg",
+        "reviewed": true,
+        "watermark": true,
+        "importAllowedByThisReport": false
+      }
+    ],
+    "dateAndEncodingNotes": [
+      "Les fichiersHTML LorraineAUcoeur utilisent cp1252 ; leurs textes locaux ont été décodés correctement après la première extractionutf8. Originauxinchangés.",
+      "directfm-rotor-2020.html contient réellement datePublished2021-04-02T08:35:00.000Z et dateaffichée2avril2021à10h35. Le suffixe2020n’estpasune preuve.",
+      "mosl-school-2020.pdf : création2020-09-17T13:12:02Z,modification2020-12-10T16:08:55Z ; page76. Cela qualifie la version documentaire, pas une observation de fonctionnement le jour de créationPDF.",
+      "GuidecongresMetz misenligne2025 : page27, pas une garantie de fonctionnement2026."
+    ],
+    "excludedClaims": [
+      "Tirsportifchabris : miroir secondaire non retenu.",
+      "Résultatsdebilletterie2026 recyclant7terrains/anciensattractions : ne prouventpas leurfonctionnementactuel.",
+      "Un extraitdepageLorraineAUcoeur groupantplusieursparcs évoqueClairière2019 ; nonretenu sanscontexteintégral.",
+      "RéponseHTTP403 du tunnel pourairsoftpaintball.fr : arrêté, aucuncontournement. Sonextraitpublicn’ajouterienau reportageprimaire2015.",
+      "Planssansannéeimprimée : version2022 établieparchemin/métadonnées, aucuneannéeimpriméeinventée."
+    ],
+    "residualQualification": [
+      "Photo etfonctionnominale PetitRobin",
+      "CompositionprécisedeClairièredejeux",
+      "Localisation/identitéactuelledelaBoutique",
+      "DevenirdeCheckpoint",
+      "Identitéactuellemini-buggy/miniJeep/pédalos/pétanque",
+      "Statutpratiquedesoffreshistoriquesmaintenuesseulementdanslespagesgénérales",
+      "AnciennesoffresLabyrinthe/ArcheryGames/BigAirJump nommées2017 : candidatsdistinctsàrapprocher, horslisteinitialeciblée."
+    ]
+  },
+  "personalReview": "Root read contemporary Tout Metz 2015 article, relevant Loractu/LorraineAUcoeur 2017 and D!RECT2021 texts, official old map and full photographed official map in contemporary 2017 gallery. Named historical offerings distinguished, present availability not proved. All Unknown/private. No exact opening date or current access rule invented.",
+  "totalItems": 74,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
