@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "references": {
+        "manufacturers": [
+          {
+            "key": "make-it-group",
+            "name": "Make It Group",
+            "isVisible": false,
+            "adminReviewStatus": "ToReview"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "vulcania-vulcanova",
+          "name": "Vulcanova, la Nuit des Enchanteurs",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2025",
+            "manufacturerKey": "make-it-group",
+            "sourceUrl": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/"
+          }
+        }
+      ],
+      "metadata": {
+        "notes": "Vulcanova sound-and-light show actually performed summer2025 confirmed by official retrospective and creator; exact first public day not inferred from planned16July schedule. Distinct creation from Primordia2026, no rename or definitive closure inferred. Unknown current lifecycle. Make It Group creative collaboration through Make It Création and Fabrik, not mechanical ride manufacturing; minimal name Preview required to reconcile shared reference. No legal entity, foundation date, GPS or performer live presence inferred. Green-screen production actors integrated into audiovisual scenes. Existing Primordia2026 date correct; generic2025news page now has2026cards, not evidence of2025Primordia."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "be7ce7f9-769f-4082-9770-d90a93d6e013",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:24:08.8579638Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "53ab5505-f6ca-438b-8cac-f6781960cb5b",
+        "entityKey": "make-it-group",
+        "displayName": "Make It Group",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "139fb466-dd62-4a8a-ac97-b7e5f24621cb",
+        "entityKey": "vulcania-vulcanova",
+        "displayName": "Vulcanova, la Nuit des Enchanteurs",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "53ab5505-f6ca-438b-8cac-f6781960cb5b"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2025"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "61b09554-a133-468f-9e90-898af543af71",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:24:27.5293629Z",
+    "appliedAtUtc": "2026-11-15T23:24:27.5293635Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "entityKey": "make-it-group",
+        "displayName": "Make It Group",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "entityKey": "vulcania-vulcanova",
+        "displayName": "Vulcanova, la Nuit des Enchanteurs",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "9905982b-ad7f-4a2f-b923-3d8789f47a75"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2025"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcanova 2025 et référence créative Make It Group rapprochés puis créés privés ; spectacle distinct de Primordia 2026, statut actuel Unknown et aucun jour ou fermeture inventé.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Vulcanova sound-and-light show actually performed summer2025 confirmed by official retrospective and creator; exact first public day not inferred from planned16July schedule. Distinct creation from Primordia2026, no rename or definitive closure inferred. Unknown current lifecycle. Make It Group creative collaboration through Make It Création and Fabrik, not mechanical ride manufacturing; minimal name Preview required to reconcile shared reference. No legal entity, foundation date, GPS or performer live presence inferred. Green-screen production actors integrated into audiovisual scenes. Existing Primordia2026 date correct; generic2025news page now has2026cards, not evidence of2025Primordia."
+}

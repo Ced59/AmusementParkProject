@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T23:14:19.181Z",
+      "lastDataIntegrationAt": "2026-11-15T23:32:27.868Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39608,6 +39608,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-213-publish-science-challenges-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 213-publish-science-challenges; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-61b09554-a133-468f-9e90-898af543af71",
+          "appliedAt": "2026-11-15T23:24:27.529Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-217-vulcanova-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcanova 2025 et référence créative Make It Group rapprochés puis créés privés ; spectacle distinct de Primordia 2026, statut actuel Unknown et aucun jour ou fermeture inventé."
+        },
+        {
+          "eventId": "apply-633afb11-e5a5-47a2-a125-b8a0039b6817",
+          "appliedAt": "2026-11-15T23:27:09.987Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-218-vulcanova-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcanova : huit notices développées et huit biographies Make It Group personnellement rédigées et relues, appliquées privées ; légendes celtiques, acteurs filmés et Porte des Volcans sourcés."
+        },
+        {
+          "eventId": "import-photo-6a4c070aff854c7ea9e607d71b07c478",
+          "appliedAt": "2026-11-15T23:27:51.875Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-219-vulcanova-filming-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Vulcanova, la Nuit des Enchanteurs importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-e8f6da0a-05bb-4a47-b2bc-7b12c2db0ac7",
+          "appliedAt": "2026-11-15T23:29:12.521Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-220-vulcanova-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcanova : ouverture 2025 qualifiée par bilan officiel et créateur, fait privé avec 16 titres/résumés relus et photo de tournage explicitement contextuelle ; aucun jour précis ou fermeture inféré."
+        },
+        {
+          "eventId": "apply-21fd7228-bdcc-45c3-9631-66426d5369b0",
+          "appliedAt": "2026-11-15T23:31:43.973Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-224-publish-vulcanova-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 224-publish-vulcanova-photo; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
+          "appliedAt": "2026-11-15T23:32:27.868Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 225-publish-vulcanova-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39660,7 +39720,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-109bbbfb-c3f7-4310-8b55-01b632c0fae6 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-035d0cdb-3e64-41b3-8e75-814f9e1c5ae7 ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

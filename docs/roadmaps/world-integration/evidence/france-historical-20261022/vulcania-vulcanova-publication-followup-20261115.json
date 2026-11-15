@@ -1,0 +1,1237 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T23:39:12.842142+00:00",
+  "scopeAudit": "vulcania-vulcanova-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-vulcanova-publication-export-20261115.json",
+  "realPublicationApplies": [
+    {
+      "operationId": "21fd7228-bdcc-45c3-9631-66426d5369b0",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T23:31:43.9733912Z",
+      "appliedAtUtc": "2026-11-15T23:31:43.973392Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "8914236b-9fda-47f3-a326-7833025f03eb",
+          "entityKey": "8914236b-9fda-47f3-a326-7833025f03eb",
+          "displayName": "Vulcanova, la Nuit des Enchanteurs",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "6a4c070aff854c7ea9e607d71b07c478",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T23:32:27.8682195Z",
+      "appliedAtUtc": "2026-11-15T23:32:27.86822Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 4,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+          "entityKey": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+          "displayName": "Make It Group",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+          "entityKey": "ba34b618-1876-4355-b842-2d10f6975525",
+          "displayName": "Primordia, la naissance du monde",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "attractionDetails.manufacturerId",
+              "oldValue": null,
+              "newValue": "9905982b-ad7f-4a2f-b923-3d8789f47a75"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "8914236b-9fda-47f3-a326-7833025f03eb",
+          "entityKey": "8914236b-9fda-47f3-a326-7833025f03eb",
+          "displayName": "Vulcanova, la Nuit des Enchanteurs",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "735af1ec-fcb2-4e4e-80e3-915e4d0c904e",
+          "entityKey": "vulcania-vulcanova-opening-2025",
+          "displayName": "Vulcanova installe les enchanteurs dans les soirées du parc",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "publicChecks": {
+    "languageCount": 8,
+    "renderedPages": 40,
+    "vulcanovaItemPages": 8,
+    "creatorBiographyPages": 8,
+    "itemTimelinePages": 8,
+    "primordiaItemPages": 8,
+    "galleryPages": 8,
+    "newLocalizedFieldsExact": 56,
+    "existingPrimordiaDescriptionsExact": 8,
+    "primordiaCreatorLinkPresentLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl"
+    ],
+    "primordiaCreatorLinkMissingLanguages": [
+      "pt"
+    ],
+    "normalParkCatalogueSearchItemNavigations": 16,
+    "normalItemHistoryNavigations": 8,
+    "normalItemManufacturerNavigations": 8,
+    "normalItemGalleryNavigations": 8,
+    "newPhotographBinary200Languages": 8,
+    "mainPhotoAltEnglishNonEnglishLanguages": 7,
+    "galleryAltCaptionCreditExactLanguages": 8,
+    "timelineImageAltLocalizedEventTitle": true,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshots": [
+      {
+        "path": "public-checks/vulcanova-fr.png",
+        "sha256": "c37a54ce30e9bd34e1912ba96449cdba3cc6914ff9614c8cc2020f8548d15913"
+      },
+      {
+        "path": "public-checks/vulcanova-fr-description.png",
+        "sha256": "4bd2e1b634f977ca4cc761a71b0ec462f45eb691c24358b6fceeb3bf137d67fe"
+      },
+      {
+        "path": "public-checks/vulcanova-fr-history.png",
+        "sha256": "d2a2b4417f892a415094ee71039d9b6a3e7d7260e9d99a0dc387375ddcefde3e"
+      },
+      {
+        "path": "public-checks/primordia-fr-creator.png",
+        "sha256": "96eba52416e8721719a55313ab97dac71c68337371636db9cf9ae9fe8e92c769"
+      },
+      {
+        "path": "public-checks/vulcanova-fr-gallery.png",
+        "sha256": "2574224d9567ec66ec098b5b4d8262c1b310697bce7e2ce4cb07e6e2f46ac0d0"
+      }
+    ],
+    "results": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T23:32:46.755109+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/fr/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Clap de Vulcanova devant les deux comédiens costumés sur fond vert",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/fr/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova installe les enchanteurs dans les soirées du parc",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/fr/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T23:32:46.759839+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/en/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/en/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova brings enchanters to the park’s summer nights",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/en/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T23:32:46.776788+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/de/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Vulcanova-Filmklappe vor zwei kostümierten Darstellern vor grünem Hintergrund",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/de/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova bringt Zauberwesen in die Sommerabende des Parks",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/de/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T23:33:20.890436+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/nl/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Filmklap van Vulcanova voor twee gekostumeerde acteurs tegen een groen scherm",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/nl/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova brengt tovenaars naar de zomeravonden van het park",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/nl/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T23:33:21.114861+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/it/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Ciak di Vulcanova davanti ai due attori in costume su fondo verde",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/it/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova porta gli incantatori nelle serate del parco",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/it/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T23:33:21.634798+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/es/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Claqueta de Vulcanova ante los dos actores caracterizados sobre un fondo verde",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/es/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova lleva a los encantadores a las noches del parque",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/es/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T23:34:58.483143+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/pl/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Klaps filmowy Vulcanovy przed dwojgiem aktorów w kostiumach na zielonym tle",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/pl/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova sprowadza czarodziejów na letnie wieczory w parku",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "primordiaCreatorLink": "/pl/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T23:36:47.413391+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/pt/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "primordia",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 360,
+            "height": 240
+          }
+        ],
+        "expectedAlt": "Claquete de Vulcanova diante dos dois atores em figurino sobre fundo verde",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/pt/park-manufacturer/9905982b-ad7f-4a2f-b923-3d8789f47a75/make-it-group",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova leva os encantadores às noites de verão do parque",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "primordiaDescriptionExact": true,
+        "primordiaNormalNavigation": true,
+        "error": "Locator.get_attribute: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"a[href*=\\\"9905982b-ad7f-4a2f-b923-3d8789f47a75\\\"]\").first\n",
+        "failedUrl": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/ba34b618-1876-4355-b842-2d10f6975525/primordia-la-naissance-du-monde",
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "status": 200
+          }
+        ]
+      }
+    ],
+    "galleryResults": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T23:37:56.542194+00:00",
+        "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Clap de Vulcanova devant les deux comédiens costumés sur fond vert",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Clap de Vulcanova devant les deux comédiens costumés sur fond vert",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T23:36:44.702499+00:00",
+        "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova clapperboard in front of two costumed actors against a green screen",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T23:36:44.702634+00:00",
+        "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Vulcanova-Filmklappe vor zwei kostümierten Darstellern vor grünem Hintergrund",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Vulcanova-Filmklappe vor zwei kostümierten Darstellern vor grünem Hintergrund",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T23:37:56.541335+00:00",
+        "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Filmklap van Vulcanova voor twee gekostumeerde acteurs tegen een groen scherm",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Filmklap van Vulcanova voor twee gekostumeerde acteurs tegen een groen scherm",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T23:36:54.818151+00:00",
+        "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Ciak di Vulcanova davanti ai due attori in costume su fondo verde",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Ciak di Vulcanova davanti ai due attori in costume su fondo verde",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T23:36:55.338545+00:00",
+        "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Claqueta de Vulcanova ante los dos actores caracterizados sobre un fondo verde",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Claqueta de Vulcanova ante los dos actores caracterizados sobre un fondo verde",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T23:37:02.473732+00:00",
+        "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Klaps filmowy Vulcanovy przed dwojgiem aktorów w kostiumach na zielonym tle",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Klaps filmowy Vulcanovy przed dwojgiem aktorów w kostiumach na zielonym tle",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T23:37:06.032278+00:00",
+        "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/8914236b-9fda-47f3-a326-7833025f03eb/vulcanova-la-nuit-des-enchanteurs/images",
+        "normalItemGalleryNavigation": true,
+        "captionExact": true,
+        "creditExact": true,
+        "expectedAlt": "Claquete de Vulcanova diante dos dois atores em figurino sobre fundo verde",
+        "images": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a4c070aff854c7ea9e607d71b07c478?width=480&v=2",
+            "alt": "Claquete de Vulcanova diante dos dois atores em figurino sobre fundo verde",
+            "width": 389,
+            "height": 259
+          }
+        ],
+        "overflow": 0,
+        "brokenImages": []
+      }
+    ],
+    "resolvedHarnessFailures": "InitialPL/PT catalogue clicks racedSPA rerender and were resolved bynormalnavigationwithwait. Initialgalleryselector expectedthumbnailbuttonbutgalleryuseddirectimage;actualDOMinspected andcorrectselectorpassed8languages. FirstNLgallerytimingresolvedbyrecheck.",
+    "unresolvedApplicationIssue": "PT Primordia creatorlink absent aftertwonormalnavigations despite225ApplymanufacturerIdand228unchangedPreview. AllPrimordiatexts2026datepreserved; sourcecorrect, no blindApply. Cause not asserted."
+  },
+  "photoSourceAndExif": {
+    "rootVisualReview": {
+      "creator-0392": "Actor in red coat before green screen, crew foreground; alternative production view not imported.",
+      "creator-0555": "Two costumed actors posed before green screen; not performance in park.",
+      "creator-0532": "Accepted noncurrent production context, slate and two actors; exact original unchanged.",
+      "creator-hero": "Real night park view,2025/2026edition not individually proven; not assigned.",
+      "official-visual": "Promotional composite rejected.",
+      "tourism-0": "Actual show wide blue illuminated stage; large Auvergne Rhône-Alpes Tourisme watermark rejected.",
+      "tourism-1": "Vertical gate and smoke; watermark rejected.",
+      "tourism-2": "Gate with projected characters,green/blue cone and greenhouse; watermark rejected."
+    },
+    "tourismGps": "Same generic coordinate repeated for many unrelated park photographs; not item GPS evidence.",
+    "captureDate": "No capturedate submitted. NativeEXIF dated16May2025, APIautoextractstakenOnUtc withZ butnative timezone absent. Do not claimactualUTCcapture.",
+    "photosCountBefore": 65,
+    "newImportPrepared": "photo-219-vulcanova-filming",
+    "nativeExifReview": {
+      "nativeDateFields": {
+        "ExifOffset": 348,
+        "DateTime": "2025:05:16 13:20:25",
+        "DateTimeOriginal": "2025:05:16 13:20:25",
+        "DateTimeDigitized": "2025:05:16 13:20:25",
+        "ExifInteroperabilityOffset": 15332
+      },
+      "serverAutomaticallyExtractedTakenOnUtc": "2025-05-16T13:20:25Z",
+      "noCaptureDateFieldSubmittedByCodex": true,
+      "note": "Native EXIF date16May2025 agrees with filming slate; no timezoneoffsetpresent in reviewed nativeEXIF. API names its normalized field takenOnUtc; this does not establish actualUTCcapture. No metadataoverride or inferredfirstperformance date."
+    }
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T23:33:00.2055128Z",
+    "receivedAtUtc": "2026-11-15T23:33:01.5964273Z",
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness"
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T23:32:44.6269625Z",
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 76,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 14,
+          "sourcedResourceCount": 14,
+          "publishedResourceCount": 14,
+          "subjectCount": 12,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 9,
+          "sourcedResourceCount": 9,
+          "publishedResourceCount": 9,
+          "subjectCount": 8,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 29
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 47
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 29,
+        "sourcedFactCount": 29,
+        "majorFactCount": 23,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T23:32:46.0609422Z",
+    "action": "HistoryDiagnostics"
+  },
+  "idempotence": {
+    "operationId": "861af6b2-43d5-49c3-8be6-dab6d131d23f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:33:24.1912682Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "entityKey": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "displayName": "Make It Group",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+        "entityKey": "ba34b618-1876-4355-b842-2d10f6975525",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "entityKey": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "displayName": "Vulcanova, la Nuit des Enchanteurs",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "6a4c070aff854c7ea9e607d71b07c478",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "735af1ec-fcb2-4e4e-80e3-915e4d0c904e",
+        "entityKey": "vulcania-vulcanova-opening-2025",
+        "displayName": "Vulcanova installe les enchanteurs dans les soirées du parc",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 65,
+    "publicItems": 65,
+    "descriptions8Languages": 65,
+    "ownMedia": 66,
+    "publicOwnMedia": 66,
+    "sharedMedia": 5,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 29,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "Vulcanovaexactopeningday,currentlifecycleandunwatermarkedstagephotosunresolved",
+    "Furtherhistoricalinventoryand2025itemmilestonesunderqualification",
+    "Preciseitemcoordinatesandphotographiccoverageincomplete",
+    "No complete general2027calendarorpricegrid found inpreviouslyreviewedsources"
+  ],
+  "earlierApplicationIssuesUnchanged": "vulcania-publication-followup-20261115.json",
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  },
+  "executionNotes": "Preparationcomparison initially rejected alreadyknownreferencekeyalias; no224request existed andwrapperstoppedlocallybeforeAPI. Comparison correctedusingexistingitemmanufacturerId/keypair;712representationonlydiffs0semantic. No mutationretried."
+}

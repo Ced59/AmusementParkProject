@@ -1,0 +1,289 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-219-vulcanova-filming",
+    "ownerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+    "itemName": "Vulcanova, la Nuit des Enchanteurs",
+    "current": false,
+    "source": {
+      "key": "photo-creator-0532",
+      "url": "https://make-it-event.com/wp-content/uploads/2025/06/DSC_0532-scaled.jpg",
+      "retrievedAtUtc": "2026-11-15T23:18:37.873888+00:00",
+      "status": 200,
+      "finalUrl": "https://make-it-event.com/wp-content/uploads/2025/06/DSC_0532-scaled.jpg",
+      "bytes": 415505,
+      "sha256": "fa3080c98d09c5a65a1bcca83bf0a4b7951f0aa76bbd19ed5428e67b60d17525",
+      "dimensions": [
+        2560,
+        1707
+      ]
+    },
+    "sourcePage": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+    "review": "Root individually viewed original; real production photograph, green screen and slate explicit; not park performance or current depiction. No watermark, editing or capture UTC. Slate16May2025 records filming context, not first public performance or EXIF capture. Creator source holder Make It Group, no individual photographer inferred. Other tourism photos excluded because large third-party watermark; creator hero show edition uncertain; promotional composite rejected. Existing owner France photo authorization preserved, no invented open licence."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "SourceUrl": "https://make-it-event.com/wp-content/uploads/2025/06/DSC_0532-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/vulcanova-followup-2315/photo-creator-0532.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-219-vulcanova-filming-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-219-vulcanova-filming-import-result.json"
+  },
+  "metadata": {
+    "description": "Le tournage des séquences de Vulcanova réunit les deux comédiens en costumes bleu et rouge devant un fond vert, tandis qu’un membre de l’équipe tient le clap.",
+    "sourceUrl": "https://make-it-event.com/wp-content/uploads/2025/06/DSC_0532-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Clap de Vulcanova devant les deux comédiens costumés sur fond vert"
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcanova clapperboard in front of two costumed actors against a green screen"
+      },
+      {
+        "languageCode": "de",
+        "value": "Vulcanova-Filmklappe vor zwei kostümierten Darstellern vor grünem Hintergrund"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Filmklap van Vulcanova voor twee gekostumeerde acteurs tegen een groen scherm"
+      },
+      {
+        "languageCode": "it",
+        "value": "Ciak di Vulcanova davanti ai due attori in costume su fondo verde"
+      },
+      {
+        "languageCode": "es",
+        "value": "Claqueta de Vulcanova ante los dos actores caracterizados sobre un fondo verde"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Klaps filmowy Vulcanovy przed dwojgiem aktorów w kostiumach na zielonym tle"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Claquete de Vulcanova diante dos dois atores em figurino sobre fundo verde"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le tournage des séquences de Vulcanova réunit les deux comédiens en costumes bleu et rouge devant un fond vert, tandis qu’un membre de l’équipe tient le clap."
+      },
+      {
+        "languageCode": "en",
+        "value": "During filming for Vulcanova, the two actors wear blue and red costumes against a green screen while a crew member holds the clapperboard."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bei den Dreharbeiten für Vulcanova stehen die beiden Darsteller in blauen und roten Kostümen vor einer grünen Leinwand, während ein Teammitglied die Filmklappe hält."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Tijdens de opnamen voor Vulcanova staan de twee acteurs in blauwe en rode kostuums voor een groen scherm, terwijl een medewerker de filmklap vasthoudt."
+      },
+      {
+        "languageCode": "it",
+        "value": "Durante le riprese delle sequenze di Vulcanova, i due attori indossano costumi blu e rossi davanti a un fondo verde, mentre un membro della troupe tiene il ciak."
+      },
+      {
+        "languageCode": "es",
+        "value": "Durante el rodaje de las secuencias de Vulcanova, los dos actores llevan trajes azules y rojos ante un fondo verde, mientras un miembro del equipo sostiene la claqueta."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Podczas zdjęć do sekwencji Vulcanovy dwoje aktorów w niebieskim i czerwonym kostiumie stoi przed zielonym tłem, a członek ekipy trzyma klaps filmowy."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Durante as filmagens das sequências de Vulcanova, os dois atores usam figurinos azuis e vermelhos diante de um fundo verde, enquanto um membro da equipa segura a claquete."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Make It Group."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Make It Group."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T23:27:58.4347427Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "6a4c070aff854c7ea9e607d71b07c478",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "path": "park_item/6a4c070aff854c7ea9e607d71b07c478",
+      "description": "Le tournage des séquences de Vulcanova réunit les deux comédiens en costumes bleu et rouge devant un fond vert, tandis qu’un membre de l’équipe tient le clap.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2560,
+      "height": 1707,
+      "sizeInBytes": 415505,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://make-it-event.com/wp-content/uploads/2025/06/DSC_0532-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "NIKON CORPORATION",
+        "cameraModel": "NIKON D3500",
+        "takenOnUtc": "2025-05-16T13:20:25Z",
+        "orientation": "1",
+        "focalLength": 38,
+        "aperture": 4.8,
+        "exposureTime": 0.004,
+        "iso": 640
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Clap de Vulcanova devant les deux comédiens costumés sur fond vert"
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcanova clapperboard in front of two costumed actors against a green screen"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcanova-Filmklappe vor zwei kostümierten Darstellern vor grünem Hintergrund"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Filmklap van Vulcanova voor twee gekostumeerde acteurs tegen een groen scherm"
+        },
+        {
+          "languageCode": "it",
+          "value": "Ciak di Vulcanova davanti ai due attori in costume su fondo verde"
+        },
+        {
+          "languageCode": "es",
+          "value": "Claqueta de Vulcanova ante los dos actores caracterizados sobre un fondo verde"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Klaps filmowy Vulcanovy przed dwojgiem aktorów w kostiumach na zielonym tle"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Claquete de Vulcanova diante dos dois atores em figurino sobre fundo verde"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le tournage des séquences de Vulcanova réunit les deux comédiens en costumes bleu et rouge devant un fond vert, tandis qu’un membre de l’équipe tient le clap."
+        },
+        {
+          "languageCode": "en",
+          "value": "During filming for Vulcanova, the two actors wear blue and red costumes against a green screen while a crew member holds the clapperboard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bei den Dreharbeiten für Vulcanova stehen die beiden Darsteller in blauen und roten Kostümen vor einer grünen Leinwand, während ein Teammitglied die Filmklappe hält."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tijdens de opnamen voor Vulcanova staan de twee acteurs in blauwe en rode kostuums voor een groen scherm, terwijl een medewerker de filmklap vasthoudt."
+        },
+        {
+          "languageCode": "it",
+          "value": "Durante le riprese delle sequenze di Vulcanova, i due attori indossano costumi blu e rossi davanti a un fondo verde, mentre un membro della troupe tiene il ciak."
+        },
+        {
+          "languageCode": "es",
+          "value": "Durante el rodaje de las secuencias de Vulcanova, los dos actores llevan trajes azules y rojos ante un fondo verde, mientras un miembro del equipo sostiene la claqueta."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Podczas zdjęć do sekwencji Vulcanovy dwoje aktorów w niebieskim i czerwonym kostiumie stoi przed zielonym tłem, a członek ekipy trzyma klaps filmowy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Durante as filmagens das sequências de Vulcanova, os dois atores usam figurinos azuis e vermelhos diante de um fundo verde, enquanto um membro da equipa segura a claquete."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Make It Group."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T23:27:51.875Z",
+      "updatedAt": "2026-11-15T23:27:55.34Z"
+    },
+    "startedAtUtc": "2026-11-15T23:27:49.5253149Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

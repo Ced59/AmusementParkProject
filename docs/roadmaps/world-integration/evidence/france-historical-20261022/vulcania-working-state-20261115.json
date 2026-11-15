@@ -498,6 +498,50 @@
             "value": "<p>Fundada em 1997, a Compagnie eliXir cria teatro de rua, espetáculos itinerantes e produções que combinam circo, magia, malabarismo e pirotecnia. Os seus ateliês ficam em Creuzier-le-Vieux, no departamento francês de Allier. A colaboração artística com Vulcania deu forma, entre outros elementos, aos trajes e adereços luminosos de Dragon Time, com os seus desenhos de fibra ótica.</p>"
           }
         ]
+      },
+      {
+        "id": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "key": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "name": "Make It Group",
+        "isVisible": true,
+        "adminReviewStatus": "Validated",
+        "biography": [
+          {
+            "languageCode": "fr",
+            "value": "<p>Make It Group réunit les activités de création audiovisuelle et scénique de Make It Création, les prestations de Make It Event et la fabrication de décors de Make It Fabrik. À Vulcania, le groupe conçoit Vulcanova pour l’été 2025 : le tournage des personnages de Danu et Lug nourrit le conte projeté, tandis que ses ateliers réalisent la Porte des Volcans. Cette collaboration se poursuit avec Primordia en 2026. Pour ce nouveau spectacle, ses équipes assurent la direction artistique, les images, la musique et les ambiances sonores, la création lumière ainsi que l’installation du dispositif dans le parc.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<p>Make It Group brings together Make It Création’s audiovisual and stage work, Make It Event’s production services and Make It Fabrik’s scenery workshops. At Vulcania, the group created Vulcanova for summer 2025: filmed performances of Danu and Lug became part of the projected tale, while its workshops built the Porte des Volcans. The collaboration continued with Primordia in 2026. For this new show, its teams handled artistic direction, visual content, music and sound design, lighting and the installation of the production at the park.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<p>Make It Group vereint die audiovisuelle und szenische Gestaltung von Make It Création, die Veranstaltungsleistungen von Make It Event und den Kulissenbau von Make It Fabrik. Für Vulcania entwickelte die Gruppe Vulcanova für den Sommer 2025: Aufnahmen der Figuren Danu und Lug wurden Teil der projizierten Erzählung, während die Werkstätten die Porte des Volcans bauten. Die Zusammenarbeit setzte sich 2026 mit Primordia fort. Bei dieser neuen Inszenierung übernahmen die Teams die künstlerische Leitung, Bildgestaltung, Musik und Klanggestaltung, Lichtgestaltung sowie die Einrichtung der Show im Park.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<p>Make It Group verenigt de audiovisuele en scenografische creaties van Make It Création, de evenementendiensten van Make It Event en de decorbouw van Make It Fabrik. Voor Vulcania ontwikkelde de groep Vulcanova voor de zomer van 2025: gefilmde vertolkingen van Danu en Lug werden onderdeel van het geprojecteerde verhaal, terwijl de werkplaatsen de Porte des Volcans bouwden. De samenwerking kreeg in 2026 een vervolg met Primordia. Voor deze nieuwe voorstelling verzorgden de teams de artistieke leiding, beelden, muziek en geluidsontwerp, lichtontwerp en installatie in het park.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<p>Make It Group riunisce la creazione audiovisiva e scenica di Make It Création, i servizi per eventi di Make It Event e i laboratori di scenografia di Make It Fabrik. Per Vulcania il gruppo realizza Vulcanova, presentato nell’estate 2025: le riprese di Danu e Lug entrano nel racconto proiettato, mentre i laboratori costruiscono la Porte des Volcans. La collaborazione prosegue con Primordia nel 2026. Per il nuovo spettacolo le squadre curano la direzione artistica, le immagini, la musica e il disegno sonoro, le luci e l’allestimento nel parco.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<p>Make It Group reúne la creación audiovisual y escénica de Make It Création, los servicios para eventos de Make It Event y los talleres de decorados de Make It Fabrik. Para Vulcania, el grupo creó Vulcanova para el verano de 2025: las interpretaciones filmadas de Danu y Lug se incorporaron al relato proyectado, mientras sus talleres construyeron la Porte des Volcans. La colaboración continuó con Primordia en 2026. En este nuevo espectáculo, los equipos se encargaron de la dirección artística, las imágenes, la música y el diseño sonoro, la iluminación y la instalación en el parque.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<p>Make It Group łączy twórczość audiowizualną i sceniczną Make It Création, obsługę wydarzeń Make It Event oraz budowę dekoracji Make It Fabrik. Dla Vulcanii grupa przygotowała Vulcanovę na lato 2025 roku: nagrane kreacje Danu i Luga stały się częścią wyświetlanej opowieści, a warsztaty zbudowały Porte des Volcans. Współpracę kontynuowano przy Primordii w 2026 roku. Przy nowym widowisku zespoły odpowiadały za kierownictwo artystyczne, obrazy, muzykę i oprawę dźwiękową, projekt oświetlenia oraz montaż całej inscenizacji w parku.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<p>A Make It Group reúne a criação audiovisual e cénica da Make It Création, os serviços para eventos da Make It Event e as oficinas de cenografia da Make It Fabrik. Para o Vulcania, o grupo criou Vulcanova para o verão de 2025: as interpretações filmadas de Danu e Lug passaram a integrar o conto projetado, enquanto as oficinas construíram a Porte des Volcans. A colaboração prosseguiu com Primordia em 2026. Neste novo espetáculo, as equipas asseguraram a direção artística, as imagens, a música e o desenho de som, a iluminação e a instalação no parque.</p>"
+          }
+        ],
+        "contactDetails": {
+          "websiteUrl": "https://make-it-event.com/"
+        }
       }
     ]
   },
@@ -4261,8 +4305,8 @@
         }
       ],
       "attractionDetails": {
-        "manufacturerId": null,
-        "manufacturerKey": null,
+        "manufacturerId": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "manufacturerKey": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
         "model": null,
         "externalSource": null,
         "externalId": null,
@@ -5826,6 +5870,57 @@
         {
           "languageCode": "pt",
           "value": "<h2>Duas equipas perante perguntas científicas</h2><p>Les Défis des Sciences envolvia as famílias numa sequência de jogos orientados pela equipa científica do Vulcania. Em Mission Volcans, Fred de L’Esprit sorcier aparecia em vídeo, enquanto os animadores acompanhavam o público no local. Divididos em duas equipas, os participantes respondiam a perguntas e cumpriam desafios para somar pontos.</p><p>A fórmula renovada em 2017 propunha duas missões. Uma desafiava os aprendizes de vulcanólogo a identificar um vulcão misterioso; a outra convidava os aspirantes a astronauta a reunir os elementos necessários à vida no espaço. Explicações e conversas com os animadores marcavam o ritmo das tarefas coletivas.</p><h2>Temas nos sucessivos programas</h2><p>A atividade já integrava o programa de verão de 2011, dedicado à água, aos vulcões e ao espaço. Em 2013, uma versão ao ar livre abordava também a natureza. Estes programas sucessivos colocavam as respostas dos visitantes no centro do jogo científico.</p>"
+        }
+      ]
+    },
+    {
+      "id": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "key": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "name": "Vulcanova, la Nuit des Enchanteurs",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "attractionDetails": {
+        "status": "Unknown",
+        "openingDate": null,
+        "manufacturerKey": "make-it-group",
+        "sourceUrl": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+        "manufacturerId": "9905982b-ad7f-4a2f-b923-3d8789f47a75",
+        "openingDateText": "2025"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Danu et Lug dans la nuit volcanique</h2><p>Vulcanova, la Nuit des Enchanteurs fait entrer les légendes celtiques dans l’univers de Vulcania. Danu et Lug habitent ce conte nocturne, où la magie des personnages rencontre les paysages volcaniques. Les lumières et les images projetées transforment les abords de la serre et du cône en décor de fiction, enveloppé de musique et de brumes colorées.</p><p>Les deux figures prennent vie grâce aux interprétations filmées d’Aliénor Schreder et de Ruddy Sala. Leurs gestes et leurs expressions sont intégrés aux paysages imaginés pour le spectacle : le jeu des comédiens devient ainsi une partie du monde fantastique qui apparaît dans la nuit.</p><h2>La Porte des Volcans</h2><p>Au centre de la composition, la Porte des Volcans dessine un passage lumineux entouré de motifs rayonnants. Cette création de Make It Fabrik donne une forme tangible au seuil entre le paysage du parc et l’univers des enchanteurs. Une musique originale accompagne les scènes conçues par Make It Création et relie les apparitions des personnages aux changements du décor.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Danu and Lug in the volcanic night</h2><p>Vulcanova, la Nuit des Enchanteurs brings Celtic legends into Vulcania’s volcanic world. Danu and Lug inhabit this night-time tale, whose magical characters meet landscapes shaped by volcanoes. Light and projected imagery turn the area around the greenhouse and cone into a fictional setting, surrounded by music and coloured mist.</p><p>The two figures come to life through filmed performances by Aliénor Schreder and Ruddy Sala. Their gestures and expressions are woven into landscapes created for the show, making the actors’ performances part of the fantasy world that emerges after dark.</p><h2>The Porte des Volcans</h2><p>At the heart of the scene, the Porte des Volcans forms a luminous gateway framed by radiating shapes. Created by Make It Fabrik, it gives physical form to the threshold between the park landscape and the enchanters’ realm. An original score accompanies Make It Création’s scenes, connecting the characters’ appearances with the changing scenery.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Danu und Lug in der vulkanischen Nacht</h2><p>Vulcanova, la Nuit des Enchanteurs verbindet keltische Sagen mit der Vulkanwelt von Vulcania. Danu und Lug stehen im Mittelpunkt dieser nächtlichen Erzählung, in der magische Gestalten auf Vulkanlandschaften treffen. Licht und Projektionen verwandeln den Bereich um das Gewächshaus und den Kegel in eine Fantasiekulisse, begleitet von Musik und farbig beleuchtetem Nebel.</p><p>Die beiden Figuren werden durch aufgezeichnete Darstellungen von Aliénor Schreder und Ruddy Sala lebendig. Ihre Gesten und Gesichtsausdrücke fließen in die eigens geschaffenen Landschaften ein. So wird das Schauspiel zum Bestandteil jener fantastischen Welt, die nach Einbruch der Dunkelheit erscheint.</p><h2>Das Tor der Vulkane</h2><p>Die Porte des Volcans bildet im Zentrum der Szene ein leuchtendes Tor mit strahlenförmiger Umrahmung. Das von Make It Fabrik geschaffene Bühnenbild macht den Übergang zwischen der Parklandschaft und dem Reich der Zauberwesen greifbar. Eine eigens komponierte Musik begleitet die Szenen von Make It Création und verbindet die Auftritte der Figuren mit den wechselnden Bildern.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Danu en Lug in de vulkaannacht</h2><p>Vulcanova, la Nuit des Enchanteurs brengt Keltische legenden naar de vulkaanwereld van Vulcania. Danu en Lug bevolken dit nachtelijke verhaal, waarin magische personages en vulkanische landschappen samenkomen. Licht en geprojecteerde beelden veranderen de omgeving van de serre en de kegel in een fantasiedecor, omgeven door muziek en gekleurde nevel.</p><p>De twee figuren komen tot leven door de gefilmde vertolkingen van Aliénor Schreder en Ruddy Sala. Hun gebaren en gezichtsuitdrukkingen zijn verwerkt in de landschappen die voor de voorstelling werden ontworpen. Zo maakt het acteerwerk deel uit van de wonderlijke wereld die in het donker verschijnt.</p><h2>De Porte des Volcans</h2><p>Midden in het tafereel staat de Porte des Volcans, een lichtende doorgang met een stralende omlijsting. Dit decorstuk van Make It Fabrik geeft tastbaar vorm aan de overgang tussen het parklandschap en het rijk van de tovenaars. Speciaal gecomponeerde muziek begeleidt de scènes van Make It Création en verbindt de verschijningen van de personages met het veranderende decor.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Danu e Lug nella notte vulcanica</h2><p>Vulcanova, la Nuit des Enchanteurs porta le leggende celtiche nel mondo vulcanico di Vulcania. Danu e Lug abitano questo racconto notturno, dove la magia dei personaggi incontra i paesaggi dei vulcani. Luci e immagini proiettate trasformano lo spazio attorno alla serra e al cono in uno scenario fantastico, avvolto dalla musica e da nebbie colorate.</p><p>Le due figure prendono vita attraverso le interpretazioni filmate di Aliénor Schreder e Ruddy Sala. I loro gesti e le loro espressioni si inseriscono nei paesaggi creati per lo spettacolo: la recitazione diventa così parte del mondo immaginario che appare nell’oscurità.</p><h2>La Porte des Volcans</h2><p>Al centro della scena, la Porte des Volcans disegna un passaggio luminoso circondato da motivi a raggiera. Realizzata da Make It Fabrik, rende tangibile la soglia fra il paesaggio del parco e il regno degli incantatori. Una colonna sonora originale accompagna le scene ideate da Make It Création, legando le apparizioni dei personaggi alle trasformazioni dello scenario.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Danu y Lug en la noche volcánica</h2><p>Vulcanova, la Nuit des Enchanteurs lleva las leyendas celtas al universo volcánico de Vulcania. Danu y Lug habitan este relato nocturno, en el que la magia de los personajes se encuentra con los paisajes de los volcanes. Las luces y las imágenes proyectadas transforman los alrededores del invernadero y del cono en un escenario fantástico, envuelto en música y nieblas de colores.</p><p>Ambas figuras cobran vida mediante las interpretaciones filmadas de Aliénor Schreder y Ruddy Sala. Sus gestos y expresiones se integran en los paisajes creados para el espectáculo. Así, la actuación forma parte del mundo imaginario que aparece al caer la noche.</p><h2>La Porte des Volcans</h2><p>En el centro de la escena, la Porte des Volcans dibuja un paso luminoso rodeado de formas radiales. Esta creación de Make It Fabrik da forma tangible al umbral entre el paisaje del parque y el reino de los encantadores. Una banda sonora original acompaña las escenas de Make It Création y enlaza las apariciones de los personajes con las transformaciones del decorado.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Danu i Lug w wulkanicznej nocy</h2><p>Vulcanova, la Nuit des Enchanteurs wprowadza celtyckie legendy do wulkanicznego świata Vulcanii. Danu i Lug są bohaterami nocnej opowieści, w której magia postaci spotyka się z krajobrazami wulkanów. Światło i wyświetlane obrazy zmieniają otoczenie szklarni oraz stożka w fantastyczną scenerię, otuloną muzyką i barwną mgłą.</p><p>Obie postacie ożywają dzięki nagranym kreacjom aktorskim Aliénor Schreder i Ruddy’ego Sali. Ich gesty oraz mimika zostają włączone w krajobrazy przygotowane na potrzeby widowiska. Gra aktorów staje się w ten sposób częścią wyobrażonego świata ukazującego się po zmroku.</p><h2>Brama Wulkanów</h2><p>Pośrodku sceny Porte des Volcans tworzy świetliste przejście otoczone promienistymi zdobieniami. Dzieło Make It Fabrik nadaje materialną formę granicy między krajobrazem parku a krainą czarodziejów. Specjalnie skomponowana muzyka towarzyszy scenom opracowanym przez Make It Création, łącząc pojawianie się bohaterów z przemianami dekoracji.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Danu e Lug na noite vulcânica</h2><p>Vulcanova, la Nuit des Enchanteurs leva as lendas celtas ao universo vulcânico do Vulcania. Danu e Lug habitam este conto noturno, onde a magia das personagens se cruza com paisagens de vulcões. A luz e as imagens projetadas transformam a envolvente da estufa e do cone num cenário fantástico, rodeado de música e de névoas coloridas.</p><p>As duas figuras ganham vida através das interpretações filmadas de Aliénor Schreder e Ruddy Sala. Os seus gestos e expressões são integrados nas paisagens criadas para o espetáculo. A representação dos atores torna-se, assim, parte do mundo imaginário que surge depois de anoitecer.</p><h2>A Porte des Volcans</h2><p>No centro da cena, a Porte des Volcans desenha uma passagem luminosa cercada por formas radiantes. Esta criação da Make It Fabrik dá forma concreta à fronteira entre a paisagem do parque e o reino dos encantadores. Uma banda sonora original acompanha as cenas da Make It Création e liga as aparições das personagens às mudanças do cenário.</p>"
         }
       ]
     }
@@ -15002,6 +15097,145 @@
       "setAsCurrent": false,
       "withWatermark": false,
       "internalUrl": "/images/f4d5833de6ce4e8f885282e1e56ae0ec"
+    },
+    {
+      "id": "6a4c070aff854c7ea9e607d71b07c478",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "path": "park_item/6a4c070aff854c7ea9e607d71b07c478",
+      "description": "Le tournage des séquences de Vulcanova réunit les deux comédiens en costumes bleu et rouge devant un fond vert, tandis qu’un membre de l’équipe tient le clap.",
+      "isCurrent": false,
+      "isPublished": true,
+      "isWatermarked": false,
+      "width": 2560,
+      "height": 1707,
+      "sizeInBytes": 415505,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://make-it-event.com/wp-content/uploads/2025/06/DSC_0532-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "NIKON CORPORATION",
+        "cameraModel": "NIKON D3500",
+        "takenOnUtc": "2025-05-16T13:20:25Z",
+        "orientation": "1",
+        "focalLength": 38,
+        "aperture": 4.8,
+        "exposureTime": 0.004,
+        "iso": 640
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Clap de Vulcanova devant les deux comédiens costumés sur fond vert"
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcanova clapperboard in front of two costumed actors against a green screen"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcanova-Filmklappe vor zwei kostümierten Darstellern vor grünem Hintergrund"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Filmklap van Vulcanova voor twee gekostumeerde acteurs tegen een groen scherm"
+        },
+        {
+          "languageCode": "it",
+          "value": "Ciak di Vulcanova davanti ai due attori in costume su fondo verde"
+        },
+        {
+          "languageCode": "es",
+          "value": "Claqueta de Vulcanova ante los dos actores caracterizados sobre un fondo verde"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Klaps filmowy Vulcanovy przed dwojgiem aktorów w kostiumach na zielonym tle"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Claquete de Vulcanova diante dos dois atores em figurino sobre fundo verde"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le tournage des séquences de Vulcanova réunit les deux comédiens en costumes bleu et rouge devant un fond vert, tandis qu’un membre de l’équipe tient le clap."
+        },
+        {
+          "languageCode": "en",
+          "value": "During filming for Vulcanova, the two actors wear blue and red costumes against a green screen while a crew member holds the clapperboard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bei den Dreharbeiten für Vulcanova stehen die beiden Darsteller in blauen und roten Kostümen vor einer grünen Leinwand, während ein Teammitglied die Filmklappe hält."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tijdens de opnamen voor Vulcanova staan de twee acteurs in blauwe en rode kostuums voor een groen scherm, terwijl een medewerker de filmklap vasthoudt."
+        },
+        {
+          "languageCode": "it",
+          "value": "Durante le riprese delle sequenze di Vulcanova, i due attori indossano costumi blu e rossi davanti a un fondo verde, mentre un membro della troupe tiene il ciak."
+        },
+        {
+          "languageCode": "es",
+          "value": "Durante el rodaje de las secuencias de Vulcanova, los dos actores llevan trajes azules y rojos ante un fondo verde, mientras un miembro del equipo sostiene la claqueta."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Podczas zdjęć do sekwencji Vulcanovy dwoje aktorów w niebieskim i czerwonym kostiumie stoi przed zielonym tłem, a członek ekipy trzyma klaps filmowy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Durante as filmagens das sequências de Vulcanova, os dois atores usam figurinos azuis e vermelhos diante de um fundo verde, enquanto um membro da equipa segura a claquete."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Make It Group."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Make It Group."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T23:27:51.875Z",
+      "updatedAt": "2026-11-15T23:27:55.34Z",
+      "key": "6a4c070aff854c7ea9e607d71b07c478",
+      "imageId": "6a4c070aff854c7ea9e607d71b07c478",
+      "ownerKey": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "internalUrl": "/images/6a4c070aff854c7ea9e607d71b07c478"
     }
   ],
   "openingHours": null,
@@ -19466,6 +19700,125 @@
         "id": "55b8e7dc-5576-4361-96b3-b6127e3d2304",
         "itemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
         "parkItemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-vulcanova-opening-2025",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "itemId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "parkItemId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2025,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "6a4c070aff854c7ea9e607d71b07c478",
+        "sources": [
+          {
+            "label": "Vulcania — programme estival, 26 juin 2025",
+            "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — bilan de saison, 3 novembre 2025",
+            "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Make It Group — création de Vulcanova et Primordia",
+            "url": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Vulcanova installe les enchanteurs dans les soirées du parc"
+          },
+          {
+            "languageCode": "en",
+            "value": "Vulcanova brings enchanters to the park’s summer nights"
+          },
+          {
+            "languageCode": "de",
+            "value": "Vulcanova bringt Zauberwesen in die Sommerabende des Parks"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Vulcanova brengt tovenaars naar de zomeravonden van het park"
+          },
+          {
+            "languageCode": "it",
+            "value": "Vulcanova porta gli incantatori nelle serate del parco"
+          },
+          {
+            "languageCode": "es",
+            "value": "Vulcanova lleva a los encantadores a las noches del parque"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Vulcanova sprowadza czarodziejów na letnie wieczory w parku"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Vulcanova leva os encantadores às noites de verão do parque"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "À l’été 2025, Vulcania présente Vulcanova, la Nuit des Enchanteurs. Le conte de Danu et Lug donne un nouveau visage aux nocturnes, avec un espace de spectacle réaménagé et des images jouant sur les bâtiments emblématiques. La création inaugure la collaboration du parc avec Make It Group, poursuivie l’année suivante avec Primordia."
+          },
+          {
+            "languageCode": "en",
+            "value": "In summer 2025, Vulcania introduces Vulcanova, la Nuit des Enchanteurs. The tale of Danu and Lug reshapes the evening programme with a redesigned show area and imagery playing across the park’s landmark buildings. The production begins the park’s collaboration with Make It Group, which continues the following year with Primordia."
+          },
+          {
+            "languageCode": "de",
+            "value": "Im Sommer 2025 präsentiert Vulcania Vulcanova, la Nuit des Enchanteurs. Die Geschichte von Danu und Lug prägt das Abendprogramm mit einem neu gestalteten Showbereich und Bildern auf den markanten Bauwerken des Parks. Mit dieser Produktion beginnt die Zusammenarbeit mit Make It Group, die im folgenden Jahr mit Primordia fortgesetzt wird."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In de zomer van 2025 presenteert Vulcania Vulcanova, la Nuit des Enchanteurs. Het verhaal van Danu en Lug geeft de avondopeningen een nieuw gezicht, met een heringericht showterrein en beelden op de kenmerkende gebouwen van het park. De productie vormt het begin van de samenwerking met Make It Group, die een jaar later doorgaat met Primordia."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nell’estate 2025 Vulcania presenta Vulcanova, la Nuit des Enchanteurs. Il racconto di Danu e Lug rinnova le serate con un’area per spettacoli ripensata e immagini proiettate sugli edifici simbolo del parco. La produzione avvia la collaborazione con Make It Group, proseguita l’anno successivo con Primordia."
+          },
+          {
+            "languageCode": "es",
+            "value": "En el verano de 2025, Vulcania presenta Vulcanova, la Nuit des Enchanteurs. El relato de Danu y Lug renueva las noches del parque con una zona de espectáculos remodelada e imágenes sobre sus edificios emblemáticos. La producción inicia la colaboración con Make It Group, que continúa al año siguiente con Primordia."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Latem 2025 roku Vulcania prezentuje Vulcanova, la Nuit des Enchanteurs. Opowieść o Danu i Lugu odmienia wieczorny program dzięki przebudowanej przestrzeni widowiskowej i obrazom na charakterystycznych budynkach parku. Produkcja rozpoczyna współpracę z Make It Group, kontynuowaną w następnym roku przy Primordii."
+          },
+          {
+            "languageCode": "pt",
+            "value": "No verão de 2025, o Vulcania apresenta Vulcanova, la Nuit des Enchanteurs. O conto de Danu e Lug renova as noites do parque, com uma área de espetáculos remodelada e imagens projetadas nos seus edifícios emblemáticos. A produção inicia a colaboração com a Make It Group, que prossegue no ano seguinte com Primordia."
+          }
+        ],
+        "id": "735af1ec-fcb2-4e4e-80e3-915e4d0c904e",
+        "itemKey": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "parkItemKey": "8914236b-9fda-47f3-a326-7833025f03eb",
         "slug": null,
         "previousName": null,
         "newName": null,

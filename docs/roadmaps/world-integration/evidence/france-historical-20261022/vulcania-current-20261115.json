@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T23:14:19.1816592Z",
+  "lastDataIntegrationAt": "2026-11-15T23:32:27.86822Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 80,
-  "realImportCount": 65,
-  "lastOperationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
+  "realApplyCount": 85,
+  "realImportCount": 66,
+  "lastOperationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -222,15 +222,20 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-207-science-challenges-inventory-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-208-science-challenges-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-209-science-shows-announcements-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-213-publish-science-challenges-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-213-publish-science-challenges-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-217-vulcanova-inventory-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-218-vulcanova-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-220-vulcanova-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-224-publish-vulcanova-photo-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json"
   ],
   "currentCoverage": {
-    "items": 64,
-    "publicItems": 64,
-    "describedItems8Languages": 64,
+    "items": 65,
+    "publicItems": 65,
+    "describedItems8Languages": 65,
     "zones": 0,
-    "ownMedia": 65,
-    "historyEvents": 28,
+    "ownMedia": 66,
+    "historyEvents": 29,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
@@ -238,12 +243,12 @@
     "privateArticles": 0,
     "privateItems": 0,
     "sharedMedia": 5,
-    "publicOwnMedia": 65,
-    "publicHistoryEvents": 28,
+    "publicOwnMedia": 66,
+    "publicHistoryEvents": 29,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
+  "lastApplyOperationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -569,6 +574,11 @@
       "imageId": "f4d5833de6ce4e8f885282e1e56ae0ec",
       "createdAt": "2026-11-15T22:55:30.94Z",
       "proof": "vulcania-photo-197-dragon-time-20261115.json"
+    },
+    {
+      "imageId": "6a4c070aff854c7ea9e607d71b07c478",
+      "createdAt": "2026-11-15T23:27:51.875Z",
+      "proof": "vulcania-photo-219-vulcanova-filming-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -642,7 +652,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Continue qualification of historical programmes, including Vulcanova2025 distinct from correctly dated Primordia2026. All64identifieditems describedandpublic;globalinventory,GPS,photographicand2027practicalcoveragepartial.",
+  "nextAction": "Continuehistoricalinventoryand2025itemmilestones, GPS,photosand2027practicalqualification.65items/66ownmedia/29factspublic. PTPrimordiacreatorlinkmissingafterrecheckdespitecorrectAPI;otherknownapplicationissuespreserved. NoFacebookresend.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -753,6 +763,16 @@
       "operationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
       "appliedAtUtc": "2026-11-15T23:14:19.1816592Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-213-publish-science-challenges-20261115.json"
+    },
+    {
+      "operationId": "21fd7228-bdcc-45c3-9631-66426d5369b0",
+      "appliedAtUtc": "2026-11-15T23:31:43.973392Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-224-publish-vulcanova-photo-20261115.json"
+    },
+    {
+      "operationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
+      "appliedAtUtc": "2026-11-15T23:32:27.86822Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -774,5 +794,5 @@
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
   "facebookAnonymousVisibilityConfirmed": false,
-  "lastPublicFollowupProof": "vulcania-science-challenges-publication-followup-20261115.json"
+  "lastPublicFollowupProof": "vulcania-vulcanova-publication-followup-20261115.json"
 }

@@ -1,0 +1,540 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-vulcanova-opening-2025",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+            "itemId": "8914236b-9fda-47f3-a326-7833025f03eb",
+            "parkItemId": "8914236b-9fda-47f3-a326-7833025f03eb",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2025,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "6a4c070aff854c7ea9e607d71b07c478",
+            "sources": [
+              {
+                "label": "Vulcania — programme estival, 26 juin 2025",
+                "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — bilan de saison, 3 novembre 2025",
+                "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Make It Group — création de Vulcanova et Primordia",
+                "url": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Vulcanova installe les enchanteurs dans les soirées du parc"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcanova brings enchanters to the park’s summer nights"
+              },
+              {
+                "languageCode": "de",
+                "value": "Vulcanova bringt Zauberwesen in die Sommerabende des Parks"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Vulcanova brengt tovenaars naar de zomeravonden van het park"
+              },
+              {
+                "languageCode": "it",
+                "value": "Vulcanova porta gli incantatori nelle serate del parco"
+              },
+              {
+                "languageCode": "es",
+                "value": "Vulcanova lleva a los encantadores a las noches del parque"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Vulcanova sprowadza czarodziejów na letnie wieczory w parku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Vulcanova leva os encantadores às noites de verão do parque"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "À l’été 2025, Vulcania présente Vulcanova, la Nuit des Enchanteurs. Le conte de Danu et Lug donne un nouveau visage aux nocturnes, avec un espace de spectacle réaménagé et des images jouant sur les bâtiments emblématiques. La création inaugure la collaboration du parc avec Make It Group, poursuivie l’année suivante avec Primordia."
+              },
+              {
+                "languageCode": "en",
+                "value": "In summer 2025, Vulcania introduces Vulcanova, la Nuit des Enchanteurs. The tale of Danu and Lug reshapes the evening programme with a redesigned show area and imagery playing across the park’s landmark buildings. The production begins the park’s collaboration with Make It Group, which continues the following year with Primordia."
+              },
+              {
+                "languageCode": "de",
+                "value": "Im Sommer 2025 präsentiert Vulcania Vulcanova, la Nuit des Enchanteurs. Die Geschichte von Danu und Lug prägt das Abendprogramm mit einem neu gestalteten Showbereich und Bildern auf den markanten Bauwerken des Parks. Mit dieser Produktion beginnt die Zusammenarbeit mit Make It Group, die im folgenden Jahr mit Primordia fortgesetzt wird."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In de zomer van 2025 presenteert Vulcania Vulcanova, la Nuit des Enchanteurs. Het verhaal van Danu en Lug geeft de avondopeningen een nieuw gezicht, met een heringericht showterrein en beelden op de kenmerkende gebouwen van het park. De productie vormt het begin van de samenwerking met Make It Group, die een jaar later doorgaat met Primordia."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nell’estate 2025 Vulcania presenta Vulcanova, la Nuit des Enchanteurs. Il racconto di Danu e Lug rinnova le serate con un’area per spettacoli ripensata e immagini proiettate sugli edifici simbolo del parco. La produzione avvia la collaborazione con Make It Group, proseguita l’anno successivo con Primordia."
+              },
+              {
+                "languageCode": "es",
+                "value": "En el verano de 2025, Vulcania presenta Vulcanova, la Nuit des Enchanteurs. El relato de Danu y Lug renueva las noches del parque con una zona de espectáculos remodelada e imágenes sobre sus edificios emblemáticos. La producción inicia la colaboración con Make It Group, que continúa al año siguiente con Primordia."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Latem 2025 roku Vulcania prezentuje Vulcanova, la Nuit des Enchanteurs. Opowieść o Danu i Lugu odmienia wieczorny program dzięki przebudowanej przestrzeni widowiskowej i obrazom na charakterystycznych budynkach parku. Produkcja rozpoczyna współpracę z Make It Group, kontynuowaną w następnym roku przy Primordii."
+              },
+              {
+                "languageCode": "pt",
+                "value": "No verão de 2025, o Vulcania apresenta Vulcanova, la Nuit des Enchanteurs. O conto de Danu e Lug renova as noites do parque, com uma área de espetáculos remodelada e imagens projetadas nos seus edifícios emblemáticos. A produção inicia a colaboração com a Make It Group, que prossegue no ano seguinte com Primordia."
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Executed first season2025 confirmed by official retrospective and creator; opening Year precision only, planned16July not assumed actual first day. Source creator visibly updated2026 though initialpage dateJune2025. Mainimage explicitly green-screen production context, not opening performance, slate date not inserted as opening. Three actual pages freshlyread200. All16localizedtitles/summaries authoredreviewed, no scientific causal claims. No article duplication; concise sourced opening milestone with enduring creative partnership context. Primordia distinct production, no Vulcanova definitiveclosure inferred."
+      },
+      "items": [
+        {
+          "id": "8914236b-9fda-47f3-a326-7833025f03eb",
+          "key": "vulcania-vulcanova",
+          "name": "Vulcanova, la Nuit des Enchanteurs",
+          "category": "Show",
+          "type": "Show"
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "1ad18fcf-8d7a-4237-850a-ff193f068800",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:28:42.2543947Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "entityKey": "vulcania-vulcanova",
+        "displayName": "Vulcanova, la Nuit des Enchanteurs",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8a5a7926-276f-4440-ba5e-e0c0c5359589",
+        "entityKey": "vulcania-vulcanova-opening-2025",
+        "displayName": "Vulcanova installe les enchanteurs dans les soirées du parc",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-vulcanova-opening-2025"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "8914236b-9fda-47f3-a326-7833025f03eb"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "8914236b-9fda-47f3-a326-7833025f03eb"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6a4c070aff854c7ea9e607d71b07c478"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Vulcanova bringt Zauberwesen in die Sommerabende des Parks, en:Vulcanova brings enchanters to the park’s summer nights, es:Vulcanova lleva a los encantadores a las noches del parque, fr:Vulcanova installe les enchanteurs dans les soirées du parc, it:Vulcanova porta gli incantatori nelle serate del parco, nl:Vulcanova brengt tovenaars naar de zomeravonden van het park, pl:Vulcanova sprowadza czarodziejów na letnie wieczory w parku, pt:Vulcanova leva os encantadores às noites de verão do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Sommer 2025 präsentiert Vulcania Vulcanova, la Nuit des Enchanteurs. Die Geschichte von Danu und Lug prägt das Abendprogramm mit einem neu gestalteten Showbereich und Bildern auf den markanten Bauwerken des Parks. Mit dieser Produktion beginnt die Zusammenarbeit mit Make It Group, die im folgenden Jahr mit Primordia fortgesetzt wird., en:In summer 2025, Vulcania introduces Vulcanova, la Nuit des Enchanteurs. The tale of Danu and Lug reshapes the evening programme with a redesigned show area and imagery playing across the park’s landmark buildings. The production begins the park’s collaboration with Make It Group, which continues the following year with Primordia., es:En el verano de 2025, Vulcania presenta Vulcanova, la Nuit des Enchanteurs. El relato de Danu y Lug renueva las noches del parque con una zona de espectáculos remodelada e imágenes sobre sus edificios emblemáticos. La producción inicia la colaboración con Make It Group, que continúa al año siguiente con Primordia., fr:À l’été 2025, Vulcania présente Vulcanova, la Nuit des Enchanteurs. Le conte de Danu et Lug donne un nouveau visage aux nocturnes, avec un espace de spectacle réaménagé et des images jouant sur les bâtiments emblématiques. La création inaugure la collaboration du parc avec Make It Group, poursuivie l’année suivante avec Primordia., it:Nell’estate 2025 Vulcania presenta Vulcanova, la Nuit des Enchanteurs. Il racconto di Danu e Lug rinnova le serate con un’area per spettacoli ripensata e immagini proiettate sugli edifici simbolo del parco. La produzione avvia la collaborazione con Make It Group, proseguita l’anno successivo con Primordia., nl:In de zomer van 2025 presenteert Vulcania Vulcanova, la Nuit des Enchanteurs. Het verhaal van Danu en Lug geeft de avondopeningen een nieuw gezicht, met een heringericht showterrein en beelden op de kenmerkende gebouwen van het park. De productie vormt het begin van de samenwerking met Make It Group, die een jaar later doorgaat met Primordia., pl:Latem 2025 roku Vulcania prezentuje Vulcanova, la Nuit des Enchanteurs. Opowieść o Danu i Lugu odmienia wieczorny program dzięki przebudowanej przestrzeni widowiskowej i obrazom na charakterystycznych budynkach parku. Produkcja rozpoczyna współpracę z Make It Group, kontynuowaną w następnym roku przy Primordii., pt:No verão de 2025, o Vulcania apresenta Vulcanova, la Nuit des Enchanteurs. O conto de Danu e Lug renova as noites do parque, com uma área de espetáculos remodelada e imagens projetadas nos seus edifícios emblemáticos. A produção inicia a colaboração com a Make It Group, que prossegue no ano seguinte com Primordia."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Make It Group \\u2014 cr\\u00E9ation de Vulcanova et Primordia\",\"Url\":\"https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 programme estival, 26 juin 2025\",\"Url\":\"https://www.vulcania.com/actualites/animations-ete-2025/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 bilan de saison, 3 novembre 2025\",\"Url\":\"https://www.vulcania.com/actualites/clap-de-fin-saison-2025/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "e8f6da0a-05bb-4a47-b2bc-7b12c2db0ac7",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:29:12.5218738Z",
+    "appliedAtUtc": "2026-11-15T23:29:12.5218744Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "entityKey": "vulcania-vulcanova",
+        "displayName": "Vulcanova, la Nuit des Enchanteurs",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "735af1ec-fcb2-4e4e-80e3-915e4d0c904e",
+        "entityKey": "vulcania-vulcanova-opening-2025",
+        "displayName": "Vulcanova installe les enchanteurs dans les soirées du parc",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-vulcanova-opening-2025"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "8914236b-9fda-47f3-a326-7833025f03eb"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "8914236b-9fda-47f3-a326-7833025f03eb"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6a4c070aff854c7ea9e607d71b07c478"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Vulcanova bringt Zauberwesen in die Sommerabende des Parks, en:Vulcanova brings enchanters to the park’s summer nights, es:Vulcanova lleva a los encantadores a las noches del parque, fr:Vulcanova installe les enchanteurs dans les soirées du parc, it:Vulcanova porta gli incantatori nelle serate del parco, nl:Vulcanova brengt tovenaars naar de zomeravonden van het park, pl:Vulcanova sprowadza czarodziejów na letnie wieczory w parku, pt:Vulcanova leva os encantadores às noites de verão do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Sommer 2025 präsentiert Vulcania Vulcanova, la Nuit des Enchanteurs. Die Geschichte von Danu und Lug prägt das Abendprogramm mit einem neu gestalteten Showbereich und Bildern auf den markanten Bauwerken des Parks. Mit dieser Produktion beginnt die Zusammenarbeit mit Make It Group, die im folgenden Jahr mit Primordia fortgesetzt wird., en:In summer 2025, Vulcania introduces Vulcanova, la Nuit des Enchanteurs. The tale of Danu and Lug reshapes the evening programme with a redesigned show area and imagery playing across the park’s landmark buildings. The production begins the park’s collaboration with Make It Group, which continues the following year with Primordia., es:En el verano de 2025, Vulcania presenta Vulcanova, la Nuit des Enchanteurs. El relato de Danu y Lug renueva las noches del parque con una zona de espectáculos remodelada e imágenes sobre sus edificios emblemáticos. La producción inicia la colaboración con Make It Group, que continúa al año siguiente con Primordia., fr:À l’été 2025, Vulcania présente Vulcanova, la Nuit des Enchanteurs. Le conte de Danu et Lug donne un nouveau visage aux nocturnes, avec un espace de spectacle réaménagé et des images jouant sur les bâtiments emblématiques. La création inaugure la collaboration du parc avec Make It Group, poursuivie l’année suivante avec Primordia., it:Nell’estate 2025 Vulcania presenta Vulcanova, la Nuit des Enchanteurs. Il racconto di Danu e Lug rinnova le serate con un’area per spettacoli ripensata e immagini proiettate sugli edifici simbolo del parco. La produzione avvia la collaborazione con Make It Group, proseguita l’anno successivo con Primordia., nl:In de zomer van 2025 presenteert Vulcania Vulcanova, la Nuit des Enchanteurs. Het verhaal van Danu en Lug geeft de avondopeningen een nieuw gezicht, met een heringericht showterrein en beelden op de kenmerkende gebouwen van het park. De productie vormt het begin van de samenwerking met Make It Group, die een jaar later doorgaat met Primordia., pl:Latem 2025 roku Vulcania prezentuje Vulcanova, la Nuit des Enchanteurs. Opowieść o Danu i Lugu odmienia wieczorny program dzięki przebudowanej przestrzeni widowiskowej i obrazom na charakterystycznych budynkach parku. Produkcja rozpoczyna współpracę z Make It Group, kontynuowaną w następnym roku przy Primordii., pt:No verão de 2025, o Vulcania apresenta Vulcanova, la Nuit des Enchanteurs. O conto de Danu e Lug renova as noites do parque, com uma área de espetáculos remodelada e imagens projetadas nos seus edifícios emblemáticos. A produção inicia a colaboração com a Make It Group, que prossegue no ano seguinte com Primordia."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Make It Group \\u2014 cr\\u00E9ation de Vulcanova et Primordia\",\"Url\":\"https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 programme estival, 26 juin 2025\",\"Url\":\"https://www.vulcania.com/actualites/animations-ete-2025/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 bilan de saison, 3 novembre 2025\",\"Url\":\"https://www.vulcania.com/actualites/clap-de-fin-saison-2025/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-vulcanova-opening-2025",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "itemId": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "parkItemId": "8914236b-9fda-47f3-a326-7833025f03eb",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2025,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "6a4c070aff854c7ea9e607d71b07c478",
+      "sources": [
+        {
+          "label": "Vulcania — programme estival, 26 juin 2025",
+          "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — bilan de saison, 3 novembre 2025",
+          "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Make It Group — création de Vulcanova et Primordia",
+          "url": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcanova installe les enchanteurs dans les soirées du parc"
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcanova brings enchanters to the park’s summer nights"
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcanova bringt Zauberwesen in die Sommerabende des Parks"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcanova brengt tovenaars naar de zomeravonden van het park"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vulcanova porta gli incantatori nelle serate del parco"
+        },
+        {
+          "languageCode": "es",
+          "value": "Vulcanova lleva a los encantadores a las noches del parque"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Vulcanova sprowadza czarodziejów na letnie wieczory w parku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vulcanova leva os encantadores às noites de verão do parque"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "À l’été 2025, Vulcania présente Vulcanova, la Nuit des Enchanteurs. Le conte de Danu et Lug donne un nouveau visage aux nocturnes, avec un espace de spectacle réaménagé et des images jouant sur les bâtiments emblématiques. La création inaugure la collaboration du parc avec Make It Group, poursuivie l’année suivante avec Primordia."
+        },
+        {
+          "languageCode": "en",
+          "value": "In summer 2025, Vulcania introduces Vulcanova, la Nuit des Enchanteurs. The tale of Danu and Lug reshapes the evening programme with a redesigned show area and imagery playing across the park’s landmark buildings. The production begins the park’s collaboration with Make It Group, which continues the following year with Primordia."
+        },
+        {
+          "languageCode": "de",
+          "value": "Im Sommer 2025 präsentiert Vulcania Vulcanova, la Nuit des Enchanteurs. Die Geschichte von Danu und Lug prägt das Abendprogramm mit einem neu gestalteten Showbereich und Bildern auf den markanten Bauwerken des Parks. Mit dieser Produktion beginnt die Zusammenarbeit mit Make It Group, die im folgenden Jahr mit Primordia fortgesetzt wird."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In de zomer van 2025 presenteert Vulcania Vulcanova, la Nuit des Enchanteurs. Het verhaal van Danu en Lug geeft de avondopeningen een nieuw gezicht, met een heringericht showterrein en beelden op de kenmerkende gebouwen van het park. De productie vormt het begin van de samenwerking met Make It Group, die een jaar later doorgaat met Primordia."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nell’estate 2025 Vulcania presenta Vulcanova, la Nuit des Enchanteurs. Il racconto di Danu e Lug rinnova le serate con un’area per spettacoli ripensata e immagini proiettate sugli edifici simbolo del parco. La produzione avvia la collaborazione con Make It Group, proseguita l’anno successivo con Primordia."
+        },
+        {
+          "languageCode": "es",
+          "value": "En el verano de 2025, Vulcania presenta Vulcanova, la Nuit des Enchanteurs. El relato de Danu y Lug renueva las noches del parque con una zona de espectáculos remodelada e imágenes sobre sus edificios emblemáticos. La producción inicia la colaboración con Make It Group, que continúa al año siguiente con Primordia."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Latem 2025 roku Vulcania prezentuje Vulcanova, la Nuit des Enchanteurs. Opowieść o Danu i Lugu odmienia wieczorny program dzięki przebudowanej przestrzeni widowiskowej i obrazom na charakterystycznych budynkach parku. Produkcja rozpoczyna współpracę z Make It Group, kontynuowaną w następnym roku przy Primordii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "No verão de 2025, o Vulcania apresenta Vulcanova, la Nuit des Enchanteurs. O conto de Danu e Lug renova as noites do parque, com uma área de espetáculos remodelada e imagens projetadas nos seus edifícios emblemáticos. A produção inicia a colaboração com a Make It Group, que prossegue no ano seguinte com Primordia."
+        }
+      ],
+      "id": "735af1ec-fcb2-4e4e-80e3-915e4d0c904e"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "official2025summer",
+      "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+      "retrievedAtUtc": "2026-11-15T23:15:00.361715+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/animations-ete-2025/",
+      "bytes": 141543,
+      "sha256": "e264bb3d33c4ff8d21dcece4b46caec8f75ca8c1c1d16579d2f53161eb0c9af3"
+    },
+    {
+      "key": "primordia",
+      "url": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "retrievedAtUtc": "2026-11-15T23:15:00.362568+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "bytes": 133078,
+      "sha256": "666f497aba0f8dda7f4dc8fb2611f4acc27abc57c405eaa5bc40966cb2ca2006"
+    },
+    {
+      "key": "retrospective2025",
+      "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+      "retrievedAtUtc": "2026-11-15T23:15:23.511727+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+      "bytes": 114165,
+      "sha256": "be2ac169e9726402db0bd6c50930a1f1465786bd33893a8435235d950e761538"
+    },
+    {
+      "key": "creator",
+      "url": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+      "retrievedAtUtc": "2026-11-15T23:15:23.512967+00:00",
+      "status": 200,
+      "finalUrl": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+      "bytes": 97117,
+      "sha256": "049e442f78419d035098fedd1db6d7903e02ede2c7f0921e4dac3a782cf539c7"
+    }
+  ],
+  "scopeNotes": "Executed first season2025 confirmed by official retrospective and creator; opening Year precision only, planned16July not assumed actual first day. Source creator visibly updated2026 though initialpage dateJune2025. Mainimage explicitly green-screen production context, not opening performance, slate date not inserted as opening. Three actual pages freshlyread200. All16localizedtitles/summaries authoredreviewed, no scientific causal claims. No article duplication; concise sourced opening milestone with enduring creative partnership context. Primordia distinct production, no Vulcanova definitiveclosure inferred.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
