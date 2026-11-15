@@ -1,0 +1,76 @@
+{
+  "entryId": "CN-candidate-82d7ed26191682",
+  "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+  "integrationHistory": [
+    {
+      "eventId": "apply-919ea4ec-e4e7-4719-a1f7-7de779610718",
+      "appliedAt": "2026-11-15T09:59:36.279Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:apply:919ea4ec-e4e7-4719-a1f7-7de779610718",
+      "auditEvidence": null,
+      "summary": "Création de la fiche autonome, localisation et descriptions de visite dans huit langues ; prix et horaires actuels explicitement non confirmés."
+    },
+    {
+      "eventId": "image-385f767023b1415aa3341e5aae4c5f59",
+      "appliedAt": "2026-11-15T09:59:48.112Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:image:385f767023b1415aa3341e5aae4c5f59",
+      "auditEvidence": null,
+      "summary": "Photo exacte du tracé et de la Grande Muraille, Gary Todd, CC0 1.0."
+    },
+    {
+      "eventId": "image-620215283e654cbc952cc4238451abaf",
+      "appliedAt": "2026-11-15T10:00:18.260Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:image:620215283e654cbc952cc4238451abaf",
+      "auditEvidence": null,
+      "summary": "Photo exacte des véhicules sur la piste, Dquai, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-metadata-385f767023b1415aa3341e5aae4c5f59",
+      "appliedAt": "2026-11-15T10:01:38.029Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:image:385f767023b1415aa3341e5aae4c5f59",
+      "auditEvidence": null,
+      "summary": "Métadonnées de la photo track reformulées dans les huit langues après contrôle anti-répétition."
+    },
+    {
+      "eventId": "image-metadata-620215283e654cbc952cc4238451abaf",
+      "appliedAt": "2026-11-15T10:01:47.379Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:image:620215283e654cbc952cc4238451abaf",
+      "auditEvidence": null,
+      "summary": "Métadonnées de la photo vehicles reformulées dans les huit langues après contrôle anti-répétition."
+    },
+    {
+      "eventId": "apply-9dd0be7f-21fa-4d58-be4c-222ddbc9bd59",
+      "appliedAt": "2026-11-15T10:05:59.396Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "34654c76-67a7-4d58-8156-95296c5a6ec4",
+      "evidence": "PARK_DATA_EDITOR:apply:9dd0be7f-21fa-4d58-be4c-222ddbc9bd59",
+      "auditEvidence": null,
+      "summary": "Correction du tutoiement sur la description française de visite."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "operationId": "94cb476b-8ff5-46ae-a190-6bb85a76dce5",
+    "appliedAtUtc": "2026-11-15T10:02:50.5302483Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127437475424431",
+    "publishedAtUtc": "2026-11-15T10:03:54.5159489Z"
+  }
+}

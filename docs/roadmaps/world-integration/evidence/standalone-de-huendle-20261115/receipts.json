@@ -1,0 +1,97 @@
+{
+  "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+  "receipts": [
+    {
+      "action": "Apply",
+      "stage": "core",
+      "operationId": "09bb4cf1-e83d-438e-b43b-54ce11cbc862",
+      "appliedAtUtc": "2026-11-15T09:12:51.8216193Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "pricing",
+      "operationId": "9dde1250-5f85-42c5-ab67-986a03671194",
+      "appliedAtUtc": "2026-11-15T09:14:43.3084766Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "access",
+      "operationId": "0d333115-cda4-4cd2-831f-9aeb60e2de06",
+      "appliedAtUtc": "2026-11-15T09:15:18.1360981Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "textfix",
+      "operationId": "0bca7324-a47c-45f3-8653-779ea91628cf",
+      "appliedAtUtc": "2026-11-15T09:16:18.4224609Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-1",
+      "imageId": "99d164d38b5d436bb369604640dc404c",
+      "sourceUrl": "https://c3.mmcdn.de/insecure/rs%3Afill%3A1420%3A1066/g%3Asm/el%3A1/plain/s3%3A//mvp/5787/assets/382013_sommerrodelbahn-am-huendle-bei-oberstaufen.jpg",
+      "createdAtUtc": "2026-11-15T09:13:46.387Z",
+      "updatedAtUtc": "2026-11-15T09:13:50.173Z",
+      "isPublished": true
+    },
+    {
+      "action": "Apply",
+      "stage": "publish",
+      "operationId": "f572ec6d-30f0-4dea-87ca-7f030ca2ceeb",
+      "appliedAtUtc": "2026-11-15T09:17:36.416465Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "dataIntegration": false
+    },
+    {
+      "action": "PublishFacebook",
+      "publicationId": "e2521fb9ab7a40619e622b8d65250e44",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-15T09:19:33.7023396Z",
+      "postUrl": "https://www.facebook.com/1285475681307050/posts/122127432735424431"
+    }
+  ]
+}

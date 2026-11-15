@@ -16,12 +16,12 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 324 | 1874 | 7551 |
-| Standalone | 234 | 1 | 117 |
+| Parcs | 324 | 1873 | 7551 |
+| Standalone | 237 | 1 | 116 |
 
-**Reprise standalone :** en plus des 117 candidates sans correspondance, **213 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **561 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 116 candidates sans correspondance, **212 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **559 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **72** types à décider, **1274** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **72** types à décider, **1272** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -54,7 +54,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 |
 | [Irlande](countries/IE.md) | 0 | 7 | 1 | 16 | 34 |
 | [Islande](countries/IS.md) | 0 | 0 | 0 | 2 | 6 |
-| [Italie](countries/IT.md) | 5 | 98 | 139 | 81 | 280 |
+| [Italie](countries/IT.md) | 5 | 97 | 139 | 81 | 280 |
 | [Jersey](countries/JE.md) | 0 | 0 | 0 | 1 | 1 |
 | [Kosovo](countries/XK.md) | 0 | 1 | 1 | 4 | 6 |
 | [Lettonie](countries/LV.md) | 1 | 3 | 0 | 6 | 19 |
@@ -81,14 +81,14 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 1 | 21 | 48 | 46 | 114 |
 | [Ukraine](countries/UA.md) | 1 | 33 | 1 | 42 | 72 |
-| **Total** | **226** | **771** | **672** | **1847** | **4605** |
+| **Total** | **226** | **770** | **672** | **1847** | **4605** |
 
 ### Attractions standalone et dossiers à trancher
 
 | Pays | Standalone publiées¹ | Standalone masquées | Sans fiche : candidates standalone | Sans fiche : type à décider | Rapprochements incertains² | Anciens parcs liés à une standalone |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | [Albanie](countries/AL.md) | 0 | 0 | 0 | 0 | 1 | 0 |
-| [Allemagne](countries/DE.md) | 34 | 0 | 12 | 46 | 67 | 15 |
+| [Allemagne](countries/DE.md) | 35 | 0 | 11 | 46 | 66 | 15 |
 | [Andorre](countries/AD.md) | 0 | 0 | 0 | 0 | 3 | 0 |
 | [Autriche](countries/AT.md) | 14 | 0 | 1 | 0 | 17 | 1 |
 | [Belgique](countries/BE.md) | 0 | 0 | 1 | 1 | 1 | 0 |
@@ -112,7 +112,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Irlande](countries/IE.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Islande](countries/IS.md) | 1 | 0 | 0 | 2 | 0 | 0 |
-| [Italie](countries/IT.md) | 3 | 0 | 2 | 1 | 23 | 2 |
+| [Italie](countries/IT.md) | 4 | 0 | 2 | 1 | 23 | 2 |
 | [Jersey](countries/JE.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Kosovo](countries/XK.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Lettonie](countries/LV.md) | 1 | 0 | 0 | 0 | 3 | 0 |
@@ -139,11 +139,11 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 5 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **139** | **1** | **31** | **64** | **268** | **18** |
+| **Total** | **141** | **1** | **30** | **64** | **267** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **101**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **103**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
-- Allemagne : 18 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Allemagne : 19 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Autriche : 13 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Espagne : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Estonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
@@ -151,7 +151,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - France : 16 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Hongrie : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Islande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
-- Italie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
+- Italie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Lettonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Lituanie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Pays-Bas : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -168,7 +168,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | Pays | Dans une fiche Park masquée | Dans une fiche Park publiée | Sans ID : identité / parent à résoudre² | Dossiers rattachés à un vrai parc |
 | --- | ---: | ---: | ---: | ---: |
 | [Albanie](countries/AL.md) | 0 | 0 | 0 | 0 |
-| [Allemagne](countries/DE.md) | 27 | 3 | 59 | 15 |
+| [Allemagne](countries/DE.md) | 27 | 3 | 58 | 15 |
 | [Andorre](countries/AD.md) | 0 | 0 | 3 | 1 |
 | [Autriche](countries/AT.md) | 23 | 1 | 16 | 4 |
 | [Belgique](countries/BE.md) | 0 | 1 | 1 | 0 |
@@ -192,7 +192,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 |
 | [Irlande](countries/IE.md) | 0 | 0 | 0 | 0 |
 | [Islande](countries/IS.md) | 0 | 0 | 0 | 0 |
-| [Italie](countries/IT.md) | 19 | 2 | 18 | 0 |
+| [Italie](countries/IT.md) | 18 | 2 | 18 | 0 |
 | [Jersey](countries/JE.md) | 0 | 0 | 0 | 0 |
 | [Kosovo](countries/XK.md) | 0 | 0 | 0 | 0 |
 | [Lettonie](countries/LV.md) | 3 | 0 | 3 | 0 |
@@ -219,7 +219,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 11 | 1 | 8 | 1 |
 | [Ukraine](countries/UA.md) | 1 | 0 | 2 | 0 |
-| **Total** | **162** | **16** | **214** | **40** |
+| **Total** | **161** | **16** | **213** | **40** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
@@ -336,7 +336,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Bhoutan](countries/BT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Brunei](countries/BN.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Cambodge](countries/KH.md) | 2 | 0 | 0 | 0 | 3 | 0 |
-| [Chine](countries/CN.md) | 5 | 0 | 28 | 0 | 328 | 0 |
+| [Chine](countries/CN.md) | 6 | 0 | 28 | 0 | 327 | 0 |
 | [Corée du Nord](countries/KP.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Corée du Sud](countries/KR.md) | 6 | 0 | 3 | 0 | 11 | 0 |
 | [Émirats arabes unis](countries/AE.md) | 3 | 0 | 2 | 0 | 9 | 0 |
@@ -376,7 +376,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Turkménistan](countries/TM.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 1 | 0 | 3 | 1 | 21 | 0 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **42** | **0** | **49** | **4** | **692** | **0** |
+| **Total** | **43** | **0** | **49** | **4** | **691** | **0** |
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **42**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
@@ -404,7 +404,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Bhoutan](countries/BT.md) | 0 | 0 | 0 | 0 |
 | [Brunei](countries/BN.md) | 0 | 0 | 0 | 0 |
 | [Cambodge](countries/KH.md) | 0 | 0 | 2 | 0 |
-| [Chine](countries/CN.md) | 1 | 0 | 104 | 6 |
+| [Chine](countries/CN.md) | 1 | 0 | 103 | 6 |
 | [Corée du Nord](countries/KP.md) | 0 | 0 | 0 | 0 |
 | [Corée du Sud](countries/KR.md) | 0 | 0 | 6 | 0 |
 | [Émirats arabes unis](countries/AE.md) | 1 | 0 | 4 | 0 |
@@ -444,7 +444,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Turkménistan](countries/TM.md) | 0 | 0 | 1 | 0 |
 | [Viêt Nam](countries/VN.md) | 1 | 0 | 15 | 6 |
 | [Yémen](countries/YE.md) | 0 | 0 | 0 | 0 |
-| **Total** | **3** | **0** | **218** | **17** |
+| **Total** | **3** | **0** | **217** | **17** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 

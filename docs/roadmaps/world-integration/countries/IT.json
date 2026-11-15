@@ -1450,25 +1450,111 @@
     {
       "entryId": "IT-park-aab065ef-8934-4c87-96a6-bd180e93432d",
       "name": "Alpyland Mottarone",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "aab065ef-8934-4c87-96a6-bd180e93432d",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Sommet du Mottarone, Stresa, Piémont",
+      "siteId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "legacySiteIds": [
+        "aab065ef-8934-4c87-96a6-bd180e93432d"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T09:39:03.1870078Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToProcessLater",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitant : attraction ouverte sur calendrier annuel, avec variations selon la météo ; téléphérique Stresa–Mottarone fermé.",
+      "identityConfidence": "Fiche parc masquée à un seul ParkItem Alpine Coaster, identité confirmée par le site de l’exploitant et migration vers une attraction autonome ; deux photos exactes sous CC BY 3.0.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Alpine Coaster Alpyland",
+        "Alpyland Mottarone Alpine Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T10:07:05.052Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e19c34d7-f709-4f8d-9598-22fad7bdd7eb",
+          "appliedAt": "2026-11-15T09:35:26.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:e19c34d7-f709-4f8d-9598-22fad7bdd7eb",
+          "auditEvidence": null,
+          "summary": "Seize tarifs officiels par personne, adulte et enfant, avec offres de une à dix descentes."
+        },
+        {
+          "eventId": "apply-e3b8f791-e66e-470c-a917-e4bab9e4e29f",
+          "appliedAt": "2026-11-15T09:35:43.598Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:e3b8f791-e66e-470c-a917-e4bab9e4e29f",
+          "auditEvidence": null,
+          "summary": "Règles officielles de quatre ans et taille minimale, accompagnement de quatre à huit ans, conduite seule dès neuf ans."
+        },
+        {
+          "eventId": "image-605984c03d474c559f44ba615868ad81",
+          "appliedAt": "2026-11-15T09:35:56.556Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:image:605984c03d474c559f44ba615868ad81",
+          "auditEvidence": null,
+          "summary": "Photo exacte du tracé en été importée et publiée, créditée mitch81 sous CC BY 3.0."
+        },
+        {
+          "eventId": "image-8272da5b295d4b4bb5def5f6a934ba83",
+          "appliedAt": "2026-11-15T09:36:12.099Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:image:8272da5b295d4b4bb5def5f6a934ba83",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la station enneigée importée et publiée, créditée qwesy qwesy sous CC BY 3.0."
+        },
+        {
+          "eventId": "apply-54205d09-e543-4b95-a19e-99eb403e4982",
+          "appliedAt": "2026-11-15T09:37:22.421Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:54205d09-e543-4b95-a19e-99eb403e4982",
+          "auditEvidence": null,
+          "summary": "Descriptions reformulées dans les huit langues pour la lecture publique."
+        },
+        {
+          "eventId": "apply-18abe6fa-8dc7-43b1-a99d-0216bb409be2",
+          "appliedAt": "2026-11-15T09:38:29.300Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:18abe6fa-8dc7-43b1-a99d-0216bb409be2",
+          "auditEvidence": null,
+          "summary": "Contrôle éditorial final : texte anglais corrigé, score 89/100 sans blocage."
+        },
+        {
+          "eventId": "apply-1aee0842-810f-4b2e-bd75-57ce63cd38f1",
+          "appliedAt": "2026-11-15T09:40:54.870Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:1aee0842-810f-4b2e-bd75-57ce63cd38f1",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-alpyland-20261115/audit.json",
+          "summary": "Ancien ParkItem masqué reclassé NotRelevant dans le cadre de la migration."
+        },
+        {
+          "eventId": "apply-fb13795a-391a-42eb-9f2b-b8addeb8db02",
+          "appliedAt": "2026-11-15T10:07:05.052Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+          "evidence": "PARK_DATA_EDITOR:apply:fb13795a-391a-42eb-9f2b-b8addeb8db02",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-alpyland-20261115/audit.json",
+          "summary": "Tutoiement corrigé dans la description française publique ; fiche publiée et score qualité 89/100 confirmés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et son historique. Vérifier régulièrement le calendrier météo et les tarifs de l’exploitant. Finaliser le statut NotRelevant du parc legacy masqué : la requête serveur de retrait du parent a expiré, tandis que son ParkItem est déjà retraité. Aucune nouvelle annonce Facebook pour cette intégration.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -1484,13 +1570,38 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13235.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — attraction et conditions d’accès",
+          "url": "https://www.alpyland.com/en/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.alpyland.com/en/opening-hours-and-rates/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — accès et calendrier",
+          "url": "https://www.alpyland.com/en/informazioni/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo du tracé, mitch81, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:ALPYLAND_TRACCIATO_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo de la station, qwesy qwesy, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Alpyland,_Mottarone_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "IT",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Alpine Coaster",
@@ -1503,7 +1614,7 @@
             "sourceOpenedYear": "2010"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant ne décrit qu’une luge alpine à billetterie propre ; le Park legacy à un seul item était une représentation artificielle. Fiche standalone publique vérifiée en huit langues."
       }
     },
     {

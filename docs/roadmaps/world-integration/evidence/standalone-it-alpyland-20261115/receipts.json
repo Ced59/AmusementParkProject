@@ -1,0 +1,103 @@
+{
+  "entryId": "IT-park-aab065ef-8934-4c87-96a6-bd180e93432d",
+  "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+  "integrationHistory": [
+    {
+      "eventId": "apply-e19c34d7-f709-4f8d-9598-22fad7bdd7eb",
+      "appliedAt": "2026-11-15T09:35:26.053Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:apply:e19c34d7-f709-4f8d-9598-22fad7bdd7eb",
+      "auditEvidence": null,
+      "summary": "Seize tarifs officiels par personne, adulte et enfant, avec offres de une à dix descentes."
+    },
+    {
+      "eventId": "apply-e3b8f791-e66e-470c-a917-e4bab9e4e29f",
+      "appliedAt": "2026-11-15T09:35:43.598Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:apply:e3b8f791-e66e-470c-a917-e4bab9e4e29f",
+      "auditEvidence": null,
+      "summary": "Règles officielles de quatre ans et taille minimale, accompagnement de quatre à huit ans, conduite seule dès neuf ans."
+    },
+    {
+      "eventId": "image-605984c03d474c559f44ba615868ad81",
+      "appliedAt": "2026-11-15T09:35:56.556Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:image:605984c03d474c559f44ba615868ad81",
+      "auditEvidence": null,
+      "summary": "Photo exacte du tracé en été importée et publiée, créditée mitch81 sous CC BY 3.0."
+    },
+    {
+      "eventId": "image-8272da5b295d4b4bb5def5f6a934ba83",
+      "appliedAt": "2026-11-15T09:36:12.099Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:image:8272da5b295d4b4bb5def5f6a934ba83",
+      "auditEvidence": null,
+      "summary": "Photo exacte de la station enneigée importée et publiée, créditée qwesy qwesy sous CC BY 3.0."
+    },
+    {
+      "eventId": "apply-54205d09-e543-4b95-a19e-99eb403e4982",
+      "appliedAt": "2026-11-15T09:37:22.421Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:apply:54205d09-e543-4b95-a19e-99eb403e4982",
+      "auditEvidence": null,
+      "summary": "Descriptions reformulées dans les huit langues pour la lecture publique."
+    },
+    {
+      "eventId": "apply-18abe6fa-8dc7-43b1-a99d-0216bb409be2",
+      "appliedAt": "2026-11-15T09:38:29.300Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:apply:18abe6fa-8dc7-43b1-a99d-0216bb409be2",
+      "auditEvidence": null,
+      "summary": "Contrôle éditorial final : texte anglais corrigé, score 89/100 sans blocage."
+    },
+    {
+      "eventId": "apply-1aee0842-810f-4b2e-bd75-57ce63cd38f1",
+      "appliedAt": "2026-11-15T09:40:54.870Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:apply:1aee0842-810f-4b2e-bd75-57ce63cd38f1",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-alpyland-20261115/audit.json",
+      "summary": "Ancien ParkItem masqué reclassé NotRelevant dans le cadre de la migration."
+    },
+    {
+      "eventId": "apply-fb13795a-391a-42eb-9f2b-b8addeb8db02",
+      "appliedAt": "2026-11-15T10:07:05.052Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+      "evidence": "PARK_DATA_EDITOR:apply:fb13795a-391a-42eb-9f2b-b8addeb8db02",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-it-alpyland-20261115/audit.json",
+      "summary": "Tutoiement corrigé dans la description française publique ; fiche publiée et score qualité 89/100 confirmés."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "9e530363-60c5-4a98-af61-469783c514d9",
+    "appliedAtUtc": "2026-11-15T09:39:03.1870078Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127434745424431",
+    "publishedAtUtc": "2026-11-15T09:40:05.230161Z"
+  },
+  "legacyMigration": {
+    "parkId": "aab065ef-8934-4c87-96a6-bd180e93432d",
+    "parkItemId": "d59889da-14e0-4aa7-b922-d3d20962659a",
+    "parkItemRetiredApplyOperationId": "1aee0842-810f-4b2e-bd75-57ce63cd38f1",
+    "parkRetirementPending": true
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "entryId": "IT-park-aab065ef-8934-4c87-96a6-bd180e93432d",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "a1598e76-22c8-4e81-88d8-771cdf86c1f8",
+  "name": "Alpyland Mottarone",
+  "countryCode": "IT",
+  "auditAtUtc": "2026-11-15T10:10:38.483Z",
+  "operatorSources": [
+    "https://www.alpyland.com/en/",
+    "https://www.alpyland.com/en/opening-hours-and-rates/",
+    "https://www.alpyland.com/en/informazioni/"
+  ],
+  "legacyParkId": "aab065ef-8934-4c87-96a6-bd180e93432d",
+  "legacyParkItemId": "d59889da-14e0-4aa7-b922-d3d20962659a",
+  "legacyParkStatus": "Hidden ToProcessLater; retirement attempt returned HTTP 504 and remains to be verified",
+  "legacyParkItemStatus": "Retired NotRelevant by successful official apply",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/a1598e76-22c8-4e81-88d8-771cdf86c1f8/alpyland-mottarone",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 2,
+  "photos": [
+    {
+      "imageId": "605984c03d474c559f44ba615868ad81",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/ALPYLAND_TRACCIATO_-_panoramio.jpg/1280px-ALPYLAND_TRACCIATO_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:ALPYLAND_TRACCIATO_-_panoramio.jpg",
+      "creator": "mitch81",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T09:35:56.556Z"
+    },
+    {
+      "imageId": "8272da5b295d4b4bb5def5f6a934ba83",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Alpyland%2C_Mottarone_-_panoramio.jpg/1280px-Alpyland%2C_Mottarone_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Alpyland,_Mottarone_-_panoramio.jpg",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T09:36:12.099Z"
+    }
+  ],
+  "pricing": "Sixteen official adult/reduced ride bundle offers, checked 2026-11-15; charged per person.",
+  "openingHoursAssessment": "Official calendar is weather-sensitive and changes by date; no speculative weekly rules imported.",
+  "lengthAssessment": "Official 1,200m is the full circuit including automatic uphill; not entered as downhill track length.",
+  "completeness": {
+    "score": 89,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127434745424431",
+    "publishedAtUtc": "2026-11-15T09:40:05.230161Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T10:07:05.052Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "pricing",
+      "operationId": "e19c34d7-f709-4f8d-9598-22fad7bdd7eb",
+      "appliedAtUtc": "2026-11-15T09:35:26.0535925Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access",
+      "operationId": "e3b8f791-e66e-470c-a917-e4bab9e4e29f",
+      "appliedAtUtc": "2026-11-15T09:35:43.598259Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "textfix",
+      "operationId": "54205d09-e543-4b95-a19e-99eb403e4982",
+      "appliedAtUtc": "2026-11-15T09:37:22.4219983Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "textfix2",
+      "operationId": "18abe6fa-8dc7-43b1-a99d-0216bb409be2",
+      "appliedAtUtc": "2026-11-15T09:38:29.3007788Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "retire-item",
+      "operationId": "1aee0842-810f-4b2e-bd75-57ce63cd38f1",
+      "appliedAtUtc": "2026-11-15T09:40:54.8703182Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "fr-tutoiement",
+      "operationId": "fb13795a-391a-42eb-9f2b-b8addeb8db02",
+      "appliedAtUtc": "2026-11-15T10:07:05.0524527Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "9e530363-60c5-4a98-af61-469783c514d9",
+    "appliedAtUtc": "2026-11-15T09:39:03.1870078Z"
+  },
+  "migrationInitialAttempt": "Initial combined migration returned HTTP 504 after creating the standalone. Export confirmed ID, legacy IDs, eight descriptions and two subsequent data applies. No successful core Apply receipt is claimed.",
+  "migrationParentRetirementAttempt": "Separate parent retirement returned HTTP 504; status must be verified after backend request ends."
+}
