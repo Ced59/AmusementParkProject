@@ -6113,6 +6113,181 @@
           "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
         }
       }
+    },
+    {
+      "entryId": "CA-candidate-discovery-d91c2b984195f2",
+      "name": "Whirlpool Aero Car",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Téléphérique panoramique",
+      "locality": "3850 Niagara Parkway, Niagara Falls, Ontario",
+      "siteId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T13:12:36.591Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation saisonnière avril–novembre selon Niagara Parks ; horaires quotidiens à confirmer, notamment en fin de saison.",
+      "identityConfidence": "Site Niagara Parks et billetterie propres ; recherche PDE Park et Standalone sans correspondance ; trois photos exactes et sourcées.",
+      "possibleMatches": [],
+      "aliases": [
+        "Spanish Aero Car",
+        "Niagara Whirlpool Aero Car",
+        "Whirlpool Spanish Aero Car"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T13:15:13.852Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-7f8f9369-bdad-4e4a-910c-df20a74ff8d9",
+          "appliedAt": "2026-11-15T13:09:10.608Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:apply:7f8f9369-bdad-4e4a-910c-df20a74ff8d9",
+          "auditEvidence": null,
+          "summary": "Création privée du téléphérique historique avec identité et huit descriptions."
+        },
+        {
+          "eventId": "apply-0b89d15e-61d3-46b0-b1a4-e67467cbac71",
+          "appliedAt": "2026-11-15T13:09:48.591Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:apply:0b89d15e-61d3-46b0-b1a4-e67467cbac71",
+          "auditEvidence": null,
+          "summary": "Position corrigée sur le site d’embarquement à partir de la Société canadienne de génie civil."
+        },
+        {
+          "eventId": "apply-1b9092aa-4f0f-4538-95ba-feaab7f1d65f",
+          "appliedAt": "2026-11-15T13:10:05.414Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:apply:1b9092aa-4f0f-4538-95ba-feaab7f1d65f",
+          "auditEvidence": null,
+          "summary": "Billets, accès par escaliers et exploitation saisonnière sourcés dans les huit langues."
+        },
+        {
+          "eventId": "image-85fc1f18a9bb4e2db29308f6c365454b",
+          "appliedAt": "2026-11-15T13:11:49.053Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:image:85fc1f18a9bb4e2db29308f6c365454b@2026-11-15T13:11:49.053Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026, crédits, alt et légendes distinctes en huit langues ; Chicken4War, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-5bed703328554b6ca7bba7c9b96e0e41",
+          "appliedAt": "2026-11-15T13:11:57.749Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:image:5bed703328554b6ca7bba7c9b96e0e41@2026-11-15T13:11:57.749Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2024, crédits, alt et légendes distinctes en huit langues ; Hannah Clover, CC BY 4.0."
+        },
+        {
+          "eventId": "image-123024e1da4e4357b719fdcf5aa9992b",
+          "appliedAt": "2026-11-15T13:12:04.938Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:image:123024e1da4e4357b719fdcf5aa9992b@2026-11-15T13:12:04.938Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2015, crédits, alt et légendes distinctes en huit langues ; Larry Koester, CC BY 2.0."
+        },
+        {
+          "eventId": "apply-28280d9b-51fd-49de-baf1-471560198e02",
+          "appliedAt": "2026-11-15T13:15:13.852Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+          "evidence": "PARK_DATA_EDITOR:apply:28280d9b-51fd-49de-baf1-471560198e02",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-whirlpool-aero-car-20261115/audit.json",
+          "summary": "Tarif enfant structuré ajouté après vérification publique des médias et des prix."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et ses reçus. Recontrôler horaires et statut au fil de la saison : la page officielle mentionne avril–novembre mais aucun calendrier futur détaillé n’est établi. Revoir les tarifs et la taxe ; rechercher de nouvelles photos récentes sous licence. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Niagara Parks — attraction, tarifs et accessibilité",
+          "url": "https://www.niagaraparks.com/attractions/whirlpool-aero-car/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — horaires du jour",
+          "url": "https://www.niagaraparks.com/visitor-information/hours-of-operation/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — tarifs et dernier départ",
+          "url": "https://www.niagaraparks.com/visit/attractions/whirlpool-aero-car",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Société canadienne de génie civil — localisation et historique",
+          "url": "https://legacy.csce.ca/en/historic-site/the-whirlpool-spanish-aero-car/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Chicken4War, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Whirlpool_Aero_Car,_Niagara_Falls_2026.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Hannah Clover, CC BY 4.0, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_Aerocar_and_Whirlpool.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Larry Koester, CC BY 2.0, 2015",
+          "url": "https://commons.wikimedia.org/wiki/File:Whirlpool_Aero_Car_(21964914820).jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue, recherche officielle des alias et comparaison du voisinage Clifton Hill.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Whirlpool Aero Car",
+            "source": "Niagara Parks",
+            "url": "https://www.niagaraparks.com/attractions/whirlpool-aero-car/",
+            "family": "Aerial cable car",
+            "sourceVenueName": "Niagara Parks",
+            "sourceLifecycleSignal": "Operating seasonally",
+            "sourceLocality": "Niagara Falls, Ontario"
+          }
+        ],
+        "rationale": "Billet autonome et site d’embarquement dédié au bord de la gorge ; distinct de la tyrolienne WildPlay."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+          "publishedAtUtc": "2026-11-02T18:35:20.503Z",
+          "verifiedAtUtc": "2026-11-02T18:40:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7f707b90-10e8-4741-ad88-bca1ef6086d1"
+        },
+        "facebook": {
+          "id": "0f8a1774a0de40948a2c9d74de4d4b3b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:38:20.0380428Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125768665424431",
+          "externalPostId": "1285475681307050_122125768665424431",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+        }
+      },
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null
     }
   ]
 }

@@ -18,7 +18,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | À qualifier | 94 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 8 |
+| Intégration achevée | 9 |
 | Publié, date inconnue | 0 |
 | Hors périmètre enregistré | 2 |
 | Doublon conservé | 0 |
@@ -29,7 +29,7 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **0 publiés**, **25 masqués à intégrer**, **2 masqués NotRelevant à réexaminer**, **84 candidats sans fiche**.
 
-Standalone : **8 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **9 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **10 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
 Revue standalone : **5 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **7 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
@@ -155,6 +155,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | CA-park-bfa8880e-5d7d-4aa0-8fe5-551a0270478f | West Coast Amusements | — | Park | Hidden | Hors périmètre enregistré | Inconnue — non inventée | — | Classement NotRelevant hérité ; vérifier une preuve de lieu fixe avant toute réouverture. Les exploitants forains ne sont pas des parcs. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) |
 | CA-candidate-0dd05ccb62a004 | Western Fair | London , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/4698.htm) |
 | CA-candidate-a8bba438f177d8 | Wet'n'Wild Toronto | Brampton | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_the_Americas#Canada) |
+| CA-candidate-discovery-d91c2b984195f2 | Whirlpool Aero Car | 3850 Niagara Parkway, Niagara Falls, Ontario | StandaloneAttraction | Published | Intégration achevée | 2026-11-15T13:15:13.852Z | — | Conserver cette ligne et ses reçus. Recontrôler horaires et statut au fil de la saison : la page officielle mentionne avril–novembre mais aucun calendrier futur détaillé n’est établi. Revoir les tarifs et la taxe ; rechercher de nouvelles photos récentes sous licence. Ne pas republier Facebook pour une simple actualisation. Qualification standalone : AlreadyStandalone. Billet autonome et site d’embarquement dédié au bord de la gorge ; distinct de la tyrolienne WildPlay. Installations référencées : Whirlpool Aero Car. Signal source : Exploitation saisonnière avril–novembre selon Niagara Parks ; horaires quotidiens à confirmer, notamment en fin de saison.. [Niagara Parks — attraction, tarifs et accessibilité](https://www.niagaraparks.com/attractions/whirlpool-aero-car/) · [Niagara Parks — horaires du jour](https://www.niagaraparks.com/visitor-information/hours-of-operation/) · [Niagara Parks — tarifs et dernier départ](https://www.niagaraparks.com/visit/attractions/whirlpool-aero-car) · [Société canadienne de génie civil — localisation et historique](https://legacy.csce.ca/en/historic-site/the-whirlpool-spanish-aero-car/) · [Wikimedia Commons — Chicken4War, CC BY-SA 4.0, 2026](https://commons.wikimedia.org/wiki/File:Whirlpool_Aero_Car,_Niagara_Falls_2026.jpg) · [Wikimedia Commons — Hannah Clover, CC BY 4.0, 2024](https://commons.wikimedia.org/wiki/File:Niagara_Aerocar_and_Whirlpool.jpg) · [Wikimedia Commons — Larry Koester, CC BY 2.0, 2015](https://commons.wikimedia.org/wiki/File:Whirlpool_Aero_Car_(21964914820).jpg) |
 | CA-candidate-e159079f4fb805 | White City | Vancouver , British Columbia | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5740.htm) |
 | CA-candidate-3db52ba8963c9f | Wild Water & Wheels | Peterborough , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/5582.htm) |
 | CA-candidate-e5e894919bc490 | Wild Zone Adventures | Chatham , Ontario | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [RCDB](https://rcdb.com/4699.htm) |

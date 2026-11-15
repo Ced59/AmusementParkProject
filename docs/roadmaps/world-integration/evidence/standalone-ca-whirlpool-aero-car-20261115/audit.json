@@ -1,0 +1,147 @@
+{
+  "entryId": "CA-candidate-discovery-d91c2b984195f2",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+  "name": "Whirlpool Aero Car",
+  "countryCode": "CA",
+  "auditAtUtc": "2026-11-15T13:15:29.986Z",
+  "qualification": "Téléphérique historique avec billet spécifique et embarquement autonome sur Niagara Parkway. Recherche PDE Park et Standalone sous Whirlpool Aero Car sans doublon ; WildPlay Zipline to the Falls est une autre activité déjà intégrée.",
+  "operatorSources": [
+    "https://www.niagaraparks.com/attractions/whirlpool-aero-car/",
+    "https://www.niagaraparks.com/visitor-information/hours-of-operation/",
+    "https://www.niagaraparks.com/visit/attractions/whirlpool-aero-car"
+  ],
+  "geoSource": "https://legacy.csce.ca/en/historic-site/the-whirlpool-spanish-aero-car/",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/f89489c6-5772-4d87-bbcc-94a86c4571d5/whirlpool-aero-car",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "85fc1f18a9bb4e2db29308f6c365454b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Whirlpool_Aero_Car,_Niagara_Falls_2026.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Whirlpool_Aero_Car%2C_Niagara_Falls_2026.jpg/960px-Whirlpool_Aero_Car%2C_Niagara_Falls_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Chicken4War",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-08-19 13:47:32",
+      "uploadedAtUtc": "2026-11-15T13:10:21.118Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:11:49.053Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "5bed703328554b6ca7bba7c9b96e0e41",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Niagara_Aerocar_and_Whirlpool.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Niagara_Aerocar_and_Whirlpool.jpg/960px-Niagara_Aerocar_and_Whirlpool.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Hannah Clover",
+      "license": "CC BY 4.0",
+      "photographedAt": "2024-06-01 09:41:09",
+      "uploadedAtUtc": "2026-11-15T13:10:38.857Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:11:57.749Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "123024e1da4e4357b719fdcf5aa9992b",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Whirlpool_Aero_Car_(21964914820).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Whirlpool_Aero_Car_%2821964914820%29.jpg/960px-Whirlpool_Aero_Car_%2821964914820%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Larry Koester",
+      "license": "CC BY 2.0",
+      "photographedAt": "2015-08-23 08:44",
+      "uploadedAtUtc": "2026-11-15T13:10:56.198Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:12:04.938Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Niagara Parks : adulte dès 13 ans 25 CAD, enfant 3–12 ans 16,50 CAD, jusqu’à 2 ans gratuit ; taxe de 13 % en sus, prix à recontrôler lors de la réservation.",
+  "openingHoursAssessment": "Niagara Parks annonce une exploitation saisonnière avril–novembre ; page des heures consultée le 15 novembre 2026 affichant 10:00–17:00, mais le widget de la fiche peut refléter une autre date. Aucune règle répétitive structurée extrapolée. Dernier départ 20 minutes avant fermeture, arrivée recommandée 30 minutes avant.",
+  "accessAssessment": "Niagara Parks : 40 marches à la descente et 40 au retour ; pas d’accès fauteuil roulant ou scooter, ni de sièges dans la cabine. Billet avec créneau ou billet sans heure selon disponibilité.",
+  "geoAssessment": "Point d’embarquement 43.1180306,-79.0687889 selon la Société canadienne de génie civil ; corroboré par photo Commons 2026 avec géotag.",
+  "historyAssessment": "Conception Leonardo Torres Quevedo, ouverture 1916 selon Niagara Parks. Restauration récente mentionnée sur la page officielle ; légende de la photo 2015 précise son ancienneté.",
+  "mediaAssessment": "Trois photos exactes de la cabine et du tourbillon, datées 2026, 2024 et 2015. CC BY-SA 4.0, CC BY 4.0 et CC BY 2.0 ; crédit et licence dans huit langues. Contrôle des fichiers binaires HTTP 200.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127456873424431",
+    "publishedAtUtc": "2026-11-15T13:13:25.6217594Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:15:13.852Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "7f8f9369-bdad-4e4a-910c-df20a74ff8d9",
+      "appliedAtUtc": "2026-11-15T13:09:10.6087487Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "corefix",
+      "operationId": "0b89d15e-61d3-46b0-b1a4-e67467cbac71",
+      "appliedAtUtc": "2026-11-15T13:09:48.5910247Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "1b9092aa-4f0f-4538-95ba-feaab7f1d65f",
+      "appliedAtUtc": "2026-11-15T13:10:05.4147767Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "pricingfix",
+      "operationId": "28280d9b-51fd-49de-baf1-471560198e02",
+      "appliedAtUtc": "2026-11-15T13:15:13.8522074Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "85fc1f18a9bb4e2db29308f6c365454b",
+      "uploadedAtUtc": "2026-11-15T13:10:21.118Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:11:49.053Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "5bed703328554b6ca7bba7c9b96e0e41",
+      "uploadedAtUtc": "2026-11-15T13:10:38.857Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:11:57.749Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "123024e1da4e4357b719fdcf5aa9992b",
+      "uploadedAtUtc": "2026-11-15T13:10:56.198Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:12:04.938Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "34b64e03-c0e2-4ccb-a461-1eeb151462f5",
+    "appliedAtUtc": "2026-11-15T13:12:36.5911598Z"
+  },
+  "nextAction": "Conserver cette ligne et ses reçus. Recontrôler horaires et statut au fil de la saison : la page officielle mentionne avril–novembre mais aucun calendrier futur détaillé n’est établi. Revoir les tarifs et la taxe ; rechercher de nouvelles photos récentes sous licence. Ne pas republier Facebook pour une simple actualisation."
+}

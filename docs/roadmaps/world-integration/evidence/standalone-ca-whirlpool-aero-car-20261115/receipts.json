@@ -1,0 +1,107 @@
+{
+  "entryId": "CA-candidate-discovery-d91c2b984195f2",
+  "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+  "integrationHistory": [
+    {
+      "eventId": "apply-7f8f9369-bdad-4e4a-910c-df20a74ff8d9",
+      "appliedAt": "2026-11-15T13:09:10.608Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:apply:7f8f9369-bdad-4e4a-910c-df20a74ff8d9",
+      "auditEvidence": null,
+      "summary": "Création privée du téléphérique historique avec identité et huit descriptions."
+    },
+    {
+      "eventId": "apply-0b89d15e-61d3-46b0-b1a4-e67467cbac71",
+      "appliedAt": "2026-11-15T13:09:48.591Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:apply:0b89d15e-61d3-46b0-b1a4-e67467cbac71",
+      "auditEvidence": null,
+      "summary": "Position corrigée sur le site d’embarquement à partir de la Société canadienne de génie civil."
+    },
+    {
+      "eventId": "apply-1b9092aa-4f0f-4538-95ba-feaab7f1d65f",
+      "appliedAt": "2026-11-15T13:10:05.414Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:apply:1b9092aa-4f0f-4538-95ba-feaab7f1d65f",
+      "auditEvidence": null,
+      "summary": "Billets, accès par escaliers et exploitation saisonnière sourcés dans les huit langues."
+    },
+    {
+      "eventId": "image-85fc1f18a9bb4e2db29308f6c365454b",
+      "appliedAt": "2026-11-15T13:11:49.053Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:image:85fc1f18a9bb4e2db29308f6c365454b@2026-11-15T13:11:49.053Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2026, crédits, alt et légendes distinctes en huit langues ; Chicken4War, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-5bed703328554b6ca7bba7c9b96e0e41",
+      "appliedAt": "2026-11-15T13:11:57.749Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:image:5bed703328554b6ca7bba7c9b96e0e41@2026-11-15T13:11:57.749Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2024, crédits, alt et légendes distinctes en huit langues ; Hannah Clover, CC BY 4.0."
+    },
+    {
+      "eventId": "image-123024e1da4e4357b719fdcf5aa9992b",
+      "appliedAt": "2026-11-15T13:12:04.938Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:image:123024e1da4e4357b719fdcf5aa9992b@2026-11-15T13:12:04.938Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2015, crédits, alt et légendes distinctes en huit langues ; Larry Koester, CC BY 2.0."
+    },
+    {
+      "eventId": "apply-28280d9b-51fd-49de-baf1-471560198e02",
+      "appliedAt": "2026-11-15T13:15:13.852Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "f89489c6-5772-4d87-bbcc-94a86c4571d5",
+      "evidence": "PARK_DATA_EDITOR:apply:28280d9b-51fd-49de-baf1-471560198e02",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-whirlpool-aero-car-20261115/audit.json",
+      "summary": "Tarif enfant structuré ajouté après vérification publique des médias et des prix."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "34b64e03-c0e2-4ccb-a461-1eeb151462f5",
+    "appliedAtUtc": "2026-11-15T13:12:36.5911598Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127456873424431",
+    "publishedAtUtc": "2026-11-15T13:13:25.6217594Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "85fc1f18a9bb4e2db29308f6c365454b",
+      "uploadedAtUtc": "2026-11-15T13:10:21.118Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:11:49.053Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "5bed703328554b6ca7bba7c9b96e0e41",
+      "uploadedAtUtc": "2026-11-15T13:10:38.857Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:11:57.749Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "123024e1da4e4357b719fdcf5aa9992b",
+      "uploadedAtUtc": "2026-11-15T13:10:56.198Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:12:04.938Z"
+    }
+  ]
+}
