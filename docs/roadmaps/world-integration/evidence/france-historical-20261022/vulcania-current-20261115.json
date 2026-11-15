@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T22:59:39.6368001Z",
+  "lastDataIntegrationAt": "2026-11-15T23:14:19.1816592Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 76,
+  "realApplyCount": 80,
   "realImportCount": 65,
-  "lastOperationId": "273bbd6e-14db-4db5-bd23-e099848edc45",
+  "lastOperationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -218,15 +218,19 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-196-dragon-time-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-198-dragon-time-history-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-202-publish-dragon-time-photo-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-203-publish-dragon-time-history-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-203-publish-dragon-time-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-207-science-challenges-inventory-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-208-science-challenges-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-209-science-shows-announcements-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-213-publish-science-challenges-20261115.json"
   ],
   "currentCoverage": {
-    "items": 63,
-    "publicItems": 63,
-    "describedItems8Languages": 63,
+    "items": 64,
+    "publicItems": 64,
+    "describedItems8Languages": 64,
     "zones": 0,
     "ownMedia": 65,
-    "historyEvents": 26,
+    "historyEvents": 28,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
@@ -235,11 +239,11 @@
     "privateItems": 0,
     "sharedMedia": 5,
     "publicOwnMedia": 65,
-    "publicHistoryEvents": 26,
+    "publicHistoryEvents": 28,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "273bbd6e-14db-4db5-bd23-e099848edc45",
+  "lastApplyOperationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -638,7 +642,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Continue historical science show and exhibition qualification. All 63 identified places are described and public; global inventory, GPS, photographic and 2027 practical coverage remain partial.",
+  "nextAction": "Continue qualification of historical programmes, including Vulcanova2025 distinct from correctly dated Primordia2026. All64identifieditems describedandpublic;globalinventory,GPS,photographicand2027practicalcoveragepartial.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -744,6 +748,11 @@
       "operationId": "273bbd6e-14db-4db5-bd23-e099848edc45",
       "appliedAtUtc": "2026-11-15T22:59:39.6368001Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-203-publish-dragon-time-history-20261115.json"
+    },
+    {
+      "operationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
+      "appliedAtUtc": "2026-11-15T23:14:19.1816592Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-213-publish-science-challenges-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -765,5 +774,5 @@
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
   "facebookAnonymousVisibilityConfirmed": false,
-  "lastPublicFollowupProof": "vulcania-dragon-time-publication-followup-20261115.json"
+  "lastPublicFollowupProof": "vulcania-science-challenges-publication-followup-20261115.json"
 }

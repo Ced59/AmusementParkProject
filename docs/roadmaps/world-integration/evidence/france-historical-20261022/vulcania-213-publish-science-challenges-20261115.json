@@ -1,0 +1,3965 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "120b1227-da60-4661-bb87-a649467ca3a6",
+          "key": "120b1227-da60-4661-bb87-a649467ca3a6",
+          "name": "Les Défis des Sciences",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+          "key": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+          "name": "Yapadrisk et la flamme des volcans",
+          "category": "Show",
+          "type": "Show"
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-yapadrisk-flame-announcement-2016",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkItemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "itemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "parkItemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2016,
+            "month": 6,
+            "day": 20,
+            "datePrecision": "Day",
+            "eventType": "Announcement",
+            "isMajor": false,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser"
+              },
+              {
+                "languageCode": "en",
+                "value": "Yapadrisk prepares a new gathering around the Geyser"
+              },
+              {
+                "languageCode": "de",
+                "value": "Yapadrisk plant einen neuen Auftritt am Geyser"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Yapadrisk bereidt een nieuwe ontmoeting bij de Geyser voor"
+              },
+              {
+                "languageCode": "it",
+                "value": "Yapadrisk prepara un nuovo appuntamento intorno al Geyser"
+              },
+              {
+                "languageCode": "es",
+                "value": "Yapadrisk prepara una nueva cita alrededor del Geyser"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Yapadrisk przygotowuje nowe spotkanie przy Geyser"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Yapadrisk prepara um novo encontro junto ao Geyser"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le programme des soirées estivales de 2016 annonce un spectacle inédit consacré à la passion du professeur pour les volcans. Le public doit se réunir autour du Geyser pour cette création. Elle vient élargir les aventures scéniques du personnage, déjà présent dans Expériences, c’est show !"
+              },
+              {
+                "languageCode": "en",
+                "value": "The programme for the 2016 summer evenings announces a new show devoted to the professor’s passion for volcanoes. Audiences are to gather around the Geyser for this creation. It expands the character’s stage adventures, following his appearances in Expériences, c’est show !"
+              },
+              {
+                "languageCode": "de",
+                "value": "Das Programm der Sommerabende 2016 kündigt eine neue Show über die Vulkanbegeisterung des Professors an. Das Publikum soll sich dafür am Geyser versammeln. Die Produktion erweitert die Bühnenabenteuer der Figur, die bereits in Expériences, c’est show ! auftritt."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het programma van de zomeravonden in 2016 kondigt een nieuwe voorstelling aan over de passie van de professor voor vulkanen. Het publiek zal zich voor deze productie rond de Geyser verzamelen. Daarmee krijgt het personage, dat al in Expériences, c’est show ! optreedt, een nieuw avontuur op het toneel."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il programma delle serate estive del 2016 annuncia uno spettacolo inedito dedicato alla passione del professore per i vulcani. Il pubblico dovrebbe riunirsi intorno al Geyser per questa creazione. La produzione amplia le avventure sceniche del personaggio, già presente in Expériences, c’est show !"
+              },
+              {
+                "languageCode": "es",
+                "value": "El programa de las noches de verano de 2016 anuncia un espectáculo nuevo dedicado a la pasión del profesor por los volcanes. El público se reunirá alrededor del Geyser para esta creación. La propuesta amplía las aventuras escénicas del personaje, que ya aparecía en Expériences, c’est show !"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Program letnich wieczorów na 2016 rok zapowiada nowy spektakl o wulkanicznej pasji profesora. Publiczność ma zebrać się wokół Geyser, by obejrzeć tę produkcję. Rozszerza ona sceniczne przygody postaci znanej już z Expériences, c’est show !"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O programa das noites de verão de 2016 anuncia um espetáculo inédito dedicado à paixão do professor pelos vulcões. O público deverá reunir-se em redor do Geyser para esta criação. A produção amplia as aventuras em palco da personagem, já presente em Expériences, c’est show !"
+              }
+            ],
+            "mainImageId": null,
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Vulcania — programme estival, communiqué repris par PARKS Trip le 20 juin 2016",
+                "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Le Progrès — L’été s’annonce agité à Vulcania, Geneviève Colonna d’Istria, 22 juin 2016",
+                "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null,
+            "itemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+          },
+          {
+            "key": "vulcania-science-challenges-renewal-announcement-2017",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkItemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "itemKey": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "parkItemKey": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2017,
+            "month": 6,
+            "day": 20,
+            "datePrecision": "Day",
+            "eventType": "Announcement",
+            "isMajor": false,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une nouvelle formule pour les défis du quinzième anniversaire"
+              },
+              {
+                "languageCode": "en",
+                "value": "A renewed challenge format for the fifteenth anniversary"
+              },
+              {
+                "languageCode": "de",
+                "value": "Ein neues Aufgabenformat zum fünfzehnten Jubiläum"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een vernieuwde spelvorm voor de vijftiende verjaardag"
+              },
+              {
+                "languageCode": "it",
+                "value": "Una formula rinnovata per il quindicesimo anniversario"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una fórmula renovada para el decimoquinto aniversario"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Nowa formuła wyzwań na piętnastolecie parku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma fórmula renovada para o décimo quinto aniversário"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "À l’occasion des quinze ans du parc, les équipes scientifiques, scénographiques et techniques présentent le résultat de plusieurs mois de préparation. Le programme annoncé confie à Fred le lancement des missions, puis aux animateurs l’accompagnement des visiteurs dans un jeu collectif consacré aux volcans ou à l’espace."
+              },
+              {
+                "languageCode": "en",
+                "value": "For the park’s fifteenth anniversary, its science, scenography and technical teams present the result of several months of preparation. The announced programme gives Fred the role of introducing the missions, with presenters then guiding visitors through a group game about volcanoes or space."
+              },
+              {
+                "languageCode": "de",
+                "value": "Zum fünfzehnten Parkjubiläum präsentieren die Teams für Wissenschaft, Szenografie und Technik das Ergebnis mehrmonatiger Vorbereitungen. Im angekündigten Programm stellt Fred die Missionen vor. Anschließend begleiten die Vermittler die Besucher durch ein gemeinsames Spiel rund um Vulkane oder den Weltraum."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Voor de vijftiende verjaardag van het park presenteren de teams voor wetenschap, scenografie en techniek het resultaat van maanden voorbereiding. Volgens het aangekondigde programma introduceert Fred de missies. Daarna begeleiden de medewerkers de bezoekers bij een gezamenlijk spel over vulkanen of de ruimte."
+              },
+              {
+                "languageCode": "it",
+                "value": "Per il quindicesimo anniversario del parco, i gruppi scientifici, scenografici e tecnici presentano il risultato di mesi di preparazione. Il programma annunciato affida a Fred l’introduzione delle missioni; gli animatori accompagnano poi i visitatori in un gioco collettivo dedicato ai vulcani o allo spazio."
+              },
+              {
+                "languageCode": "es",
+                "value": "Con motivo del decimoquinto aniversario del parque, los equipos científicos, escenográficos y técnicos presentan el resultado de meses de preparación. El programa anunciado encarga a Fred la presentación de las misiones, antes de que los animadores acompañen a los visitantes en un juego colectivo sobre volcanes o el espacio."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Z okazji piętnastolecia parku zespoły naukowy, scenograficzny i techniczny przedstawiają efekt wielomiesięcznych przygotowań. W zapowiedzianym programie Fred wprowadza uczestników w misje. Następnie animatorzy prowadzą zwiedzających przez zespołową zabawę poświęconą wulkanom lub kosmosowi."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Para o décimo quinto aniversário do parque, as equipas científicas, cenográficas e técnicas apresentam o resultado de meses de preparação. O programa anunciado atribui a Fred a introdução das missões. Depois, os animadores acompanham os visitantes num jogo coletivo dedicado aos vulcões ou ao espaço."
+              }
+            ],
+            "mainImageId": null,
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué estival du 20 juin 2017, repris par ParcPlaza",
+                "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "FranceNetInfos — programme estival du quinzième anniversaire, 2017",
+                "url": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null,
+            "itemId": "120b1227-da60-4661-bb87-a649467ca3a6"
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Publish audited historical science challenge programme and two source-dated announcements. No opening or closing dates inferred, no guessed image or alias. Existing Yapadrisk show fields and all prior public data preserved. No Facebook resend."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "ab036ebd-eec1-43db-a0cb-3b673f1c1abe",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:13:47.1995705Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "entityKey": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "displayName": "Les Défis des Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "55b8e7dc-5576-4361-96b3-b6127e3d2304",
+        "entityKey": "vulcania-yapadrisk-flame-announcement-2016",
+        "displayName": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "4b80dcd6-e7ef-49e1-abbb-3dfe56176bc9",
+        "entityKey": "vulcania-science-challenges-renewal-announcement-2017",
+        "displayName": "Une nouvelle formule pour les défis du quinzième anniversaire",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "109bbbfb-c3f7-4310-8b55-01b632c0fae6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:14:19.1816585Z",
+    "appliedAtUtc": "2026-11-15T23:14:19.1816592Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "entityKey": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "displayName": "Les Défis des Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "55b8e7dc-5576-4361-96b3-b6127e3d2304",
+        "entityKey": "vulcania-yapadrisk-flame-announcement-2016",
+        "displayName": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "4b80dcd6-e7ef-49e1-abbb-3dfe56176bc9",
+        "entityKey": "vulcania-science-challenges-renewal-announcement-2017",
+        "displayName": "Une nouvelle formule pour les défis du quinzième anniversaire",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "scopeAudit": "vulcania-science-challenges-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "exportedAtUtc": "2026-11-15T23:12:35.1302672Z",
+    "rawSha256": "73e84d379a539773457e9b16109b71a3f635c89205e3b4df31c08637e03ff302",
+    "differences": [],
+    "representationAndReceiptOnlyDifferences": [
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.id",
+        "state-only",
+        "a629a2e6-105a-4174-b1b4-1438e5fea3a6"
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.itemId",
+        "state-only",
+        "35ceac39-66c0-4c8b-bff7-2095f8318332"
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.id",
+        "state-only",
+        "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52"
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.itemId",
+        "state-only",
+        "533717be-96a1-428a-8d19-d4b6b16bfe18"
+      ],
+      [
+        ".history.events.vulcania-dragon-time-new-setting-announcement-2016.id",
+        "state-only",
+        "283352e0-0fb5-438f-8604-6d100ecae996"
+      ],
+      [
+        ".history.events.vulcania-dragon-time-new-setting-announcement-2016.itemId",
+        "state-only",
+        "2d31c7b4-8356-4b9c-acb2-4f702b51746e"
+      ],
+      [
+        ".history.events.vulcania-history-olympus-25-announcement-2026.id",
+        "state-only",
+        "6f9960d8-d5af-4ac4-b42c-c3f38a086d94"
+      ],
+      [
+        ".history.events.vulcania-history-public-opening-2002.id",
+        "state-only",
+        "193478ec-f80a-4507-9929-8530a432808b"
+      ],
+      [
+        ".history.events.vulcania-history-regional-project-1992.id",
+        "state-only",
+        "eca411f5-6231-4319-baf6-8fb0ccd79c16"
+      ],
+      [
+        ".history.events.vulcania-history-renewal-2007.id",
+        "state-only",
+        "57c0341c-a6dc-4a07-ad68-9a0d3d21dae1"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyss-2016.id",
+        "state-only",
+        "837a7952-42e6-4cbc-bdf6-cede2ae3c429"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyss-2016.itemId",
+        "state-only",
+        "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyssreplacement-2026.id",
+        "state-only",
+        "a18a7a31-f3ab-4320-b99b-34a718a516e1"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyssreplacement-2026.itemId",
+        "state-only",
+        "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+      ],
+      [
+        ".history.events.vulcania-item-history-ballon-2014.id",
+        "state-only",
+        "828115a4-f71f-4576-96d1-53c2cc8de496"
+      ],
+      [
+        ".history.events.vulcania-item-history-ballon-2014.itemId",
+        "state-only",
+        "ce88d195-4890-43e4-8551-8f26d460760b"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon-2008.id",
+        "state-only",
+        "420d901e-58f9-4455-953d-9bac44522ac5"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon-2008.itemId",
+        "state-only",
+        "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon2-2020.id",
+        "state-only",
+        "e42444c7-3213-4f23-8f06-4b11b5d1991f"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon2-2020.itemId",
+        "state-only",
+        "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+      ],
+      [
+        ".history.events.vulcania-item-history-envol-2015.id",
+        "state-only",
+        "c14047d0-01ce-4c56-a33c-44cceef184b6"
+      ],
+      [
+        ".history.events.vulcania-item-history-envol-2015.itemId",
+        "state-only",
+        "d3dbd03d-4665-429e-af89-9738bc1ae24f"
+      ],
+      [
+        ".history.events.vulcania-item-history-hawai-2026.id",
+        "state-only",
+        "02221ae8-9fa5-4424-b9af-7bf48d75d14c"
+      ],
+      [
+        ".history.events.vulcania-item-history-hawai-2026.itemId",
+        "state-only",
+        "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+      ],
+      [
+        ".history.events.vulcania-item-history-magma-2007.id",
+        "state-only",
+        "49b329de-0627-4a0a-a347-b6ad6c2cc05f"
+      ],
+      [
+        ".history.events.vulcania-item-history-magma-2007.itemId",
+        "state-only",
+        "a79eadd4-1aa7-44c9-8b5b-70cc7db55030"
+      ],
+      [
+        ".history.events.vulcania-item-history-namazu-2021.id",
+        "state-only",
+        "570b62cd-50dc-4326-ae82-624086033711"
+      ],
+      [
+        ".history.events.vulcania-item-history-namazu-2021.itemId",
+        "state-only",
+        "8fd86b67-7e42-4eed-89ee-11c9e718d996"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-2023.id",
+        "state-only",
+        "ee9b65df-57c1-41b3-a316-3c4c42bc02b2"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-2023.itemId",
+        "state-only",
+        "12128369-e7ee-4498-a97a-1bfa2a470b10"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-fire-2022.id",
+        "state-only",
+        "88068879-1dd4-4ebf-b7b2-75f5488cc85b"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-fire-2022.itemId",
+        "state-only",
+        "12128369-e7ee-4498-a97a-1bfa2a470b10"
+      ],
+      [
+        ".history.events.vulcania-item-history-primordia-2026.id",
+        "state-only",
+        "85ffcd73-0716-4482-9a84-436a1f3f86de"
+      ],
+      [
+        ".history.events.vulcania-item-history-primordia-2026.itemId",
+        "state-only",
+        "ba34b618-1876-4355-b842-2d10f6975525"
+      ],
+      [
+        ".history.events.vulcania-item-history-toba-2011.id",
+        "state-only",
+        "eb738445-185e-4c60-842c-54744e0f9e8e"
+      ],
+      [
+        ".history.events.vulcania-item-history-toba-2011.itemId",
+        "state-only",
+        "d3dbd03d-4665-429e-af89-9738bc1ae24f"
+      ],
+      [
+        ".history.events.vulcania-item-history-volcanbul-2008.id",
+        "state-only",
+        "53b44b47-243b-4cfa-9718-e848d78df7b5"
+      ],
+      [
+        ".history.events.vulcania-item-history-volcanbul-2008.itemId",
+        "state-only",
+        "8bfb83e9-2044-4483-a599-768f89acebf8"
+      ],
+      [
+        ".history.events.vulcania-nature-grand-format-opening-2018.id",
+        "state-only",
+        "9a92583c-de9f-4e19-b7f9-91e8eca70c74"
+      ],
+      [
+        ".history.events.vulcania-nature-grand-format-opening-2018.itemId",
+        "state-only",
+        "9b0346bc-cd7d-4365-a3c6-3532219039bc"
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.article",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.id",
+        "state-only",
+        "4b80dcd6-e7ef-49e1-abbb-3dfe56176bc9"
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.itemId",
+        "state-only",
+        "120b1227-da60-4661-bb87-a649467ca3a6"
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.itemKey",
+        "export-only",
+        "120b1227-da60-4661-bb87-a649467ca3a6"
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.locationLabel",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.newLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.newName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.newOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.newOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.parkItemKey",
+        "export-only",
+        "120b1227-da60-4661-bb87-a649467ca3a6"
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.previousLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.previousName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.previousOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.previousOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.relatedParkIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.relatedParkItemIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-science-challenges-renewal-announcement-2017.slug",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-seismes-opening-2018.id",
+        "state-only",
+        "18b5ac86-f00e-45fd-9eea-42a6c75c7b20"
+      ],
+      [
+        ".history.events.vulcania-seismes-opening-2018.itemId",
+        "state-only",
+        "06bb9bc9-cca5-4345-8376-6567c6ea2e4a"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.id",
+        "state-only",
+        "5100b2b6-3cdb-46f6-be2d-4246f8e24615"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.itemId",
+        "state-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.id",
+        "state-only",
+        "5c686348-534d-4c4c-ab67-b6650f1d85d9"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.itemId",
+        "state-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-volcano-drones-opening-2019.id",
+        "state-only",
+        "43d5f3a9-634e-4306-8af2-e4ab8a8d9e61"
+      ],
+      [
+        ".history.events.vulcania-volcano-drones-opening-2019.itemId",
+        "state-only",
+        "6550ac7c-87c8-4076-85ba-b877d293052d"
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.article",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.id",
+        "state-only",
+        "55b8e7dc-5576-4361-96b3-b6127e3d2304"
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.itemId",
+        "state-only",
+        "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.itemKey",
+        "export-only",
+        "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.locationLabel",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.newLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.newName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.newOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.newOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.parkItemKey",
+        "export-only",
+        "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.previousLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.previousName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.previousOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.previousOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.relatedParkIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.relatedParkItemIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-yapadrisk-flame-announcement-2016.slug",
+        "export-only",
+        null
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.createdAt",
+        "state-only",
+        "2026-11-15T19:18:39.013Z"
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.path",
+        "state-only",
+        "park_item/03ee8ef93e7045e289706b2885a5a6b4"
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:42.48Z"
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.createdAt",
+        "state-only",
+        "2026-11-15T20:03:24.61Z"
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.path",
+        "state-only",
+        "park_item/0a10c3fd8bd64c35a61995eeed970f8a"
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.updatedAt",
+        "state-only",
+        "2026-11-15T20:03:28.13Z"
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.createdAt",
+        "state-only",
+        "2026-11-15T16:56:53.084Z"
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "Canon",
+          "cameraModel": "Canon EOS 350D DIGITAL",
+          "takenOnUtc": "2010-01-12T22:36:06Z",
+          "orientation": "1",
+          "focalLength": 35,
+          "aperture": 13,
+          "exposureTime": 0.004,
+          "iso": null
+        }
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.path",
+        "state-only",
+        "park/0cd6c65c08224e81be09418fc0da591d"
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.updatedAt",
+        "state-only",
+        "2026-11-15T16:56:56.633Z"
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.createdAt",
+        "state-only",
+        "2026-11-15T19:04:55.566Z"
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.path",
+        "state-only",
+        "park_item/14b3cda47b7d44ea8e6bb88d9e952842"
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.updatedAt",
+        "state-only",
+        "2026-11-15T19:04:59.568Z"
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.createdAt",
+        "state-only",
+        "2026-11-15T19:05:12.579Z"
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.path",
+        "state-only",
+        "park_item/17d9beefe541405c8d396bfd116514b1"
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.updatedAt",
+        "state-only",
+        "2026-11-15T19:05:16.276Z"
+      ],
+      [
+        ".images.212b74dbb2af4190b02311f2f960f002.createdAt",
+        "state-only",
+        "2026-11-15T22:24:49.987Z"
+      ],
+      [
+        ".images.212b74dbb2af4190b02311f2f960f002.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "samsung",
+          "cameraModel": "SM-G930F",
+          "takenOnUtc": "2018-07-26T15:20:22Z",
+          "orientation": "1",
+          "focalLength": 4.2,
+          "aperture": 1.7,
+          "exposureTime": 0.0003315649867374005,
+          "iso": 50
+        }
+      ],
+      [
+        ".images.212b74dbb2af4190b02311f2f960f002.key",
+        "state-only",
+        "212b74dbb2af4190b02311f2f960f002"
+      ],
+      [
+        ".images.212b74dbb2af4190b02311f2f960f002.path",
+        "state-only",
+        "park_item/212b74dbb2af4190b02311f2f960f002"
+      ],
+      [
+        ".images.212b74dbb2af4190b02311f2f960f002.updatedAt",
+        "state-only",
+        "2026-11-15T22:24:53.617Z"
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.createdAt",
+        "state-only",
+        "2026-11-15T19:27:36.935Z"
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.path",
+        "state-only",
+        "park_item/2499afaf32444bc3b47500322efdf341"
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.updatedAt",
+        "state-only",
+        "2026-11-15T19:27:40.522Z"
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.createdAt",
+        "state-only",
+        "2026-11-15T19:46:59.501Z"
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.path",
+        "state-only",
+        "park_item/24eeb68044aa41328d38d948fe415385"
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.updatedAt",
+        "state-only",
+        "2026-11-15T19:47:03.112Z"
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.createdAt",
+        "state-only",
+        "2026-11-15T17:29:47.928Z"
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.path",
+        "state-only",
+        "park_item/2609d09da2864a06aaff9d0e640db0cd"
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.updatedAt",
+        "state-only",
+        "2026-11-15T17:29:51.43Z"
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.createdAt",
+        "state-only",
+        "2026-11-15T17:17:18.095Z"
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.path",
+        "state-only",
+        "logo/2eeb41e9d92a420e8ad3b1fbb98a7741"
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.updatedAt",
+        "state-only",
+        "2026-11-15T17:17:21.782Z"
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.createdAt",
+        "state-only",
+        "2026-11-15T17:29:24.142Z"
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.path",
+        "state-only",
+        "park_item/305cf7c2f2b64a66ab8c8e1efb7efdc7"
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.updatedAt",
+        "state-only",
+        "2026-11-15T17:29:27.77Z"
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.createdAt",
+        "state-only",
+        "2026-11-15T19:47:10.555Z"
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.path",
+        "state-only",
+        "park_item/31b117128a6745529a55c1c7df058ed0"
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.updatedAt",
+        "state-only",
+        "2026-11-15T19:47:14.036Z"
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.createdAt",
+        "state-only",
+        "2026-11-15T19:09:09.685Z"
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.path",
+        "state-only",
+        "park_item/339433b5e9974d78ae1d4005d6407f64"
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.updatedAt",
+        "state-only",
+        "2026-11-15T19:09:13.497Z"
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.createdAt",
+        "state-only",
+        "2026-11-15T18:29:12.199Z"
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.path",
+        "state-only",
+        "park_item/33b66af74c3c4adaa439769785a212d3"
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.updatedAt",
+        "state-only",
+        "2026-11-15T18:29:15.839Z"
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.createdAt",
+        "state-only",
+        "2026-11-15T20:03:09.724Z"
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "Canon",
+          "cameraModel": "Canon EOS 5D Mark III",
+          "takenOnUtc": "2014-06-05T19:35:05Z",
+          "orientation": "1",
+          "focalLength": 70,
+          "aperture": 10,
+          "exposureTime": 0.001,
+          "iso": 320
+        }
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.path",
+        "state-only",
+        "park_item/358753581b594abdb1a13a726c7c0a46"
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.updatedAt",
+        "state-only",
+        "2026-11-15T20:03:13.454Z"
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.createdAt",
+        "state-only",
+        "2026-11-15T16:52:05.512Z"
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.path",
+        "state-only",
+        "park/3656194cc2cf40c8a1f02b9390da5010"
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.updatedAt",
+        "state-only",
+        "2026-11-15T16:52:08.979Z"
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.createdAt",
+        "state-only",
+        "2026-11-15T19:46:31.419Z"
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.path",
+        "state-only",
+        "park_item/36fb503df2aa4ade8f31879d995a74ad"
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.updatedAt",
+        "state-only",
+        "2026-11-15T19:46:34.964Z"
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.createdAt",
+        "state-only",
+        "2026-11-15T17:46:20.226Z"
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.path",
+        "state-only",
+        "park_item/38d2d552d2b14bac9fc47972904f11c0"
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:23.707Z"
+      ],
+      [
+        ".images.3b1b7b2bcd254244aa735cff620be08e.createdAt",
+        "state-only",
+        "2026-11-15T22:24:23.398Z"
+      ],
+      [
+        ".images.3b1b7b2bcd254244aa735cff620be08e.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "samsung",
+          "cameraModel": "SM-G930F",
+          "takenOnUtc": "2018-07-26T15:26:35Z",
+          "orientation": "1",
+          "focalLength": 4.2,
+          "aperture": 1.7,
+          "exposureTime": 0.004149377593360996,
+          "iso": 50
+        }
+      ],
+      [
+        ".images.3b1b7b2bcd254244aa735cff620be08e.key",
+        "state-only",
+        "3b1b7b2bcd254244aa735cff620be08e"
+      ],
+      [
+        ".images.3b1b7b2bcd254244aa735cff620be08e.path",
+        "state-only",
+        "park_item/3b1b7b2bcd254244aa735cff620be08e"
+      ],
+      [
+        ".images.3b1b7b2bcd254244aa735cff620be08e.updatedAt",
+        "state-only",
+        "2026-11-15T22:24:27.064Z"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.createdAt",
+        "state-only",
+        "2026-11-15T21:41:54.419Z"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.key",
+        "state-only",
+        "483f952f1ebe4dcb998ed7bc2e47bdc5"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.path",
+        "state-only",
+        "park_item/483f952f1ebe4dcb998ed7bc2e47bdc5"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.updatedAt",
+        "state-only",
+        "2026-11-15T21:41:57.965Z"
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.createdAt",
+        "state-only",
+        "2026-11-15T17:46:11.073Z"
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.path",
+        "state-only",
+        "park_item/4fa5101fdeb747d5addd92ed6ada6a49"
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:14.545Z"
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.createdAt",
+        "state-only",
+        "2026-11-15T18:15:49.992Z"
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.path",
+        "state-only",
+        "park_item/4fe6f6c0da1f4994af54006f3a04a994"
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.updatedAt",
+        "state-only",
+        "2026-11-15T18:15:53.521Z"
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.createdAt",
+        "state-only",
+        "2026-11-15T19:09:48.445Z"
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.path",
+        "state-only",
+        "park_item/500e5290f94843918d5326c8b6f56547"
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.updatedAt",
+        "state-only",
+        "2026-11-15T19:09:51.955Z"
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.createdAt",
+        "state-only",
+        "2026-11-15T19:31:35.834Z"
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "SONY",
+          "cameraModel": "DSC-S650",
+          "takenOnUtc": "2007-03-20T22:01:15Z",
+          "orientation": "1",
+          "focalLength": 5.8,
+          "aperture": 5.6,
+          "exposureTime": 0.002,
+          "iso": 100
+        }
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.path",
+        "state-only",
+        "park_item/583a2b39fa9f4649a44345bdd310daf4"
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.updatedAt",
+        "state-only",
+        "2026-11-15T19:31:39.755Z"
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.createdAt",
+        "state-only",
+        "2026-11-15T19:27:47.762Z"
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.path",
+        "state-only",
+        "park_item/5b8fe460082a41428af86320e46f49fc"
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.updatedAt",
+        "state-only",
+        "2026-11-15T19:27:51.287Z"
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.createdAt",
+        "state-only",
+        "2026-11-15T18:30:04.011Z"
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.path",
+        "state-only",
+        "park_item/5c5c7f0bde5f4bd58eb3ab3ede97d9eb"
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.updatedAt",
+        "state-only",
+        "2026-11-15T18:30:07.522Z"
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.createdAt",
+        "state-only",
+        "2026-11-15T18:29:46.348Z"
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.path",
+        "state-only",
+        "park_item/5ca0ba406e924e5a8792e88852f8e9ed"
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.updatedAt",
+        "state-only",
+        "2026-11-15T18:29:49.832Z"
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.createdAt",
+        "state-only",
+        "2026-11-15T18:52:11.589Z"
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.path",
+        "state-only",
+        "park_item/5dc45999690d468c956587d4e938f72c"
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.updatedAt",
+        "state-only",
+        "2026-11-15T18:52:15.262Z"
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.createdAt",
+        "state-only",
+        "2026-11-15T18:43:21.23Z"
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.path",
+        "state-only",
+        "park_item/659517b47e5f4b5a95c9eb439c0b7263"
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.updatedAt",
+        "state-only",
+        "2026-11-15T18:43:24.833Z"
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.createdAt",
+        "state-only",
+        "2026-11-15T17:45:49.308Z"
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.path",
+        "state-only",
+        "park_item/66bf435069e443b29f6d87c7ad5764f9"
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.updatedAt",
+        "state-only",
+        "2026-11-15T17:45:53.03Z"
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.createdAt",
+        "state-only",
+        "2026-11-15T18:38:37.224Z"
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.path",
+        "state-only",
+        "park_item/6a45d27a89084fb690e5caa8bcdda23b"
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.updatedAt",
+        "state-only",
+        "2026-11-15T18:38:40.961Z"
+      ],
+      [
+        ".images.6a9dc082901745ea992bbc3dbf04c3f4.createdAt",
+        "state-only",
+        "2026-11-15T22:40:02.667Z"
+      ],
+      [
+        ".images.6a9dc082901745ea992bbc3dbf04c3f4.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6a9dc082901745ea992bbc3dbf04c3f4.key",
+        "state-only",
+        "6a9dc082901745ea992bbc3dbf04c3f4"
+      ],
+      [
+        ".images.6a9dc082901745ea992bbc3dbf04c3f4.path",
+        "state-only",
+        "park_item/6a9dc082901745ea992bbc3dbf04c3f4"
+      ],
+      [
+        ".images.6a9dc082901745ea992bbc3dbf04c3f4.updatedAt",
+        "state-only",
+        "2026-11-15T22:40:08.992Z"
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.createdAt",
+        "state-only",
+        "2026-11-15T19:05:26.253Z"
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.path",
+        "state-only",
+        "park_item/6c530a3938974ba9bab3b7b7abc7d155"
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.updatedAt",
+        "state-only",
+        "2026-11-15T19:05:30.178Z"
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.createdAt",
+        "state-only",
+        "2026-11-15T20:03:41.099Z"
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.path",
+        "state-only",
+        "park_item/6e2547f3c84c46e7b2bdc195579fe394"
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.updatedAt",
+        "state-only",
+        "2026-11-15T20:03:44.575Z"
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.createdAt",
+        "state-only",
+        "2026-11-15T16:51:42.968Z"
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.path",
+        "state-only",
+        "park/7455ffc28d574c158809574ac5c022bd"
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.updatedAt",
+        "state-only",
+        "2026-11-15T16:51:46.632Z"
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.createdAt",
+        "state-only",
+        "2026-11-15T19:46:50.572Z"
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.path",
+        "state-only",
+        "park_item/7c28d1bd539c4a8a9e5b00544152ae09"
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.updatedAt",
+        "state-only",
+        "2026-11-15T19:46:54.108Z"
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.createdAt",
+        "state-only",
+        "2026-11-15T17:46:41.809Z"
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.path",
+        "state-only",
+        "park_item/7e73e3872acb49c4b61d3c6961c29658"
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:45.35Z"
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.createdAt",
+        "state-only",
+        "2026-11-15T19:04:44.168Z"
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.path",
+        "state-only",
+        "park_item/8132b8b476bd4ddb90adb2a491a7c734"
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.updatedAt",
+        "state-only",
+        "2026-11-15T19:04:47.851Z"
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.createdAt",
+        "state-only",
+        "2026-11-15T18:15:28.219Z"
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.path",
+        "state-only",
+        "park_item/8964a6b4964b4d00b3083ecc845e7c24"
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.updatedAt",
+        "state-only",
+        "2026-11-15T18:15:31.781Z"
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.createdAt",
+        "state-only",
+        "2026-11-15T16:57:12.36Z"
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": "1",
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.path",
+        "state-only",
+        "park/8b9479d31a074fc98a5468865e32759e"
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.updatedAt",
+        "state-only",
+        "2026-11-15T16:57:15.832Z"
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.createdAt",
+        "state-only",
+        "2026-11-15T18:28:52.634Z"
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.path",
+        "state-only",
+        "park_item/9165d5c6d6574c21bb8d7ca626be26f1"
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.updatedAt",
+        "state-only",
+        "2026-11-15T18:28:56.357Z"
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.createdAt",
+        "state-only",
+        "2026-11-15T17:29:36.519Z"
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.path",
+        "state-only",
+        "park_item/9222c51f692d4d2bacbdc5ddb83631db"
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.updatedAt",
+        "state-only",
+        "2026-11-15T17:29:40.084Z"
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.createdAt",
+        "state-only",
+        "2026-11-15T18:29:36.397Z"
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.path",
+        "state-only",
+        "park_item/9c77d947e431462291012359d2c1e2b9"
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.updatedAt",
+        "state-only",
+        "2026-11-15T18:29:40.033Z"
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.createdAt",
+        "state-only",
+        "2026-11-15T20:07:36.061Z"
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.path",
+        "state-only",
+        "park_item/9fbd4d6f8df44a9b800f5b71b056dcc6"
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.updatedAt",
+        "state-only",
+        "2026-11-15T20:07:39.69Z"
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.createdAt",
+        "state-only",
+        "2026-11-15T19:18:29.999Z"
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.path",
+        "state-only",
+        "park_item/b5f87cd49bc84c5282dedffb9b80c0f3"
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:33.506Z"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.createdAt",
+        "state-only",
+        "2026-11-15T22:03:00.639Z"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.key",
+        "state-only",
+        "b8cc99ade2314af8b567ef80c680c77e"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.path",
+        "state-only",
+        "park_item/b8cc99ade2314af8b567ef80c680c77e"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.updatedAt",
+        "state-only",
+        "2026-11-15T22:03:04.3Z"
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.createdAt",
+        "state-only",
+        "2026-11-15T18:52:46.308Z"
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.path",
+        "state-only",
+        "park_item/b95b190d536f4197ab07873294f982e2"
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.updatedAt",
+        "state-only",
+        "2026-11-15T18:52:49.791Z"
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.createdAt",
+        "state-only",
+        "2026-11-15T18:08:35.68Z"
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.path",
+        "state-only",
+        "park_item/bbd931556fc64c6d8cfb91095871ed14"
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.updatedAt",
+        "state-only",
+        "2026-11-15T18:08:39.384Z"
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.createdAt",
+        "state-only",
+        "2026-11-15T18:38:49.525Z"
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.path",
+        "state-only",
+        "park_item/bc84977c466245e7827273c42abd2220"
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.updatedAt",
+        "state-only",
+        "2026-11-15T18:38:53.034Z"
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.createdAt",
+        "state-only",
+        "2026-11-15T16:57:03.161Z"
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.path",
+        "state-only",
+        "park/c196e76eafc343fabd54b180e5457dc8"
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.updatedAt",
+        "state-only",
+        "2026-11-15T16:57:06.614Z"
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.createdAt",
+        "state-only",
+        "2026-11-15T18:43:31.58Z"
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.path",
+        "state-only",
+        "park_item/d1b3a21b0ac347ca8570153a9b873f32"
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.updatedAt",
+        "state-only",
+        "2026-11-15T18:43:35.202Z"
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.createdAt",
+        "state-only",
+        "2026-11-15T18:38:18.47Z"
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": "1",
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.path",
+        "state-only",
+        "park_item/d6206d2553ad4eccbc08f8b6184be024"
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.updatedAt",
+        "state-only",
+        "2026-11-15T18:38:21.995Z"
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.createdAt",
+        "state-only",
+        "2026-11-15T17:46:01.592Z"
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.path",
+        "state-only",
+        "park_item/d7146436ae0044dabef88f182dfd2516"
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:05.341Z"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.createdAt",
+        "state-only",
+        "2026-11-15T21:26:36.548Z"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.key",
+        "state-only",
+        "d9db0d23cccc424191093ba08edca1df"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.path",
+        "state-only",
+        "park_item/d9db0d23cccc424191093ba08edca1df"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.updatedAt",
+        "state-only",
+        "2026-11-15T21:26:40.259Z"
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.createdAt",
+        "state-only",
+        "2026-11-15T16:52:15.335Z"
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.path",
+        "state-only",
+        "park/db289dbe8d05476d8918eb31ddd1f1ad"
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.updatedAt",
+        "state-only",
+        "2026-11-15T16:56:11.835Z"
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.createdAt",
+        "state-only",
+        "2026-11-15T19:46:41.172Z"
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.path",
+        "state-only",
+        "park_item/e4a759d9bc6f449684777d5ce883ec28"
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.updatedAt",
+        "state-only",
+        "2026-11-15T19:46:44.776Z"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.createdAt",
+        "state-only",
+        "2026-11-15T21:13:44.125Z"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.key",
+        "state-only",
+        "e874bad560d54671a56396e44f461203"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.path",
+        "state-only",
+        "park_item/e874bad560d54671a56396e44f461203"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.updatedAt",
+        "state-only",
+        "2026-11-15T21:13:47.813Z"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.createdAt",
+        "state-only",
+        "2026-11-15T21:59:51.484Z"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "SAMSUNG",
+          "cameraModel": "GT-I9505",
+          "takenOnUtc": "2015-03-28T12:41:18Z",
+          "orientation": "1",
+          "focalLength": 4.2,
+          "aperture": 2.2,
+          "exposureTime": 0.06666666666666667,
+          "iso": 640
+        }
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.key",
+        "state-only",
+        "ebd736e70aa6408bb5e8709226b2e8d4"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.path",
+        "state-only",
+        "park_item/ebd736e70aa6408bb5e8709226b2e8d4"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.updatedAt",
+        "state-only",
+        "2026-11-15T21:59:54.973Z"
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.createdAt",
+        "state-only",
+        "2026-11-15T19:09:58.827Z"
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.path",
+        "state-only",
+        "park_item/f1e809b6aa864d82a3cec643e624c7d9"
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.updatedAt",
+        "state-only",
+        "2026-11-15T19:10:02.506Z"
+      ],
+      [
+        ".images.f4d5833de6ce4e8f885282e1e56ae0ec.createdAt",
+        "state-only",
+        "2026-11-15T22:55:30.94Z"
+      ],
+      [
+        ".images.f4d5833de6ce4e8f885282e1e56ae0ec.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.f4d5833de6ce4e8f885282e1e56ae0ec.key",
+        "state-only",
+        "f4d5833de6ce4e8f885282e1e56ae0ec"
+      ],
+      [
+        ".images.f4d5833de6ce4e8f885282e1e56ae0ec.path",
+        "state-only",
+        "park_item/f4d5833de6ce4e8f885282e1e56ae0ec"
+      ],
+      [
+        ".images.f4d5833de6ce4e8f885282e1e56ae0ec.updatedAt",
+        "state-only",
+        "2026-11-15T22:55:34.658Z"
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.createdAt",
+        "state-only",
+        "2026-11-15T18:14:26.31Z"
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.path",
+        "state-only",
+        "park_item/f7028cf39cb34e1dbf40118d487cecfe"
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.updatedAt",
+        "state-only",
+        "2026-11-15T18:14:29.895Z"
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.createdAt",
+        "state-only",
+        "2026-11-15T19:18:08.948Z"
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.path",
+        "state-only",
+        "park_item/f75398491b044b9b8c2d9fa708b07f90"
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:12.827Z"
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.createdAt",
+        "state-only",
+        "2026-11-15T19:18:19.784Z"
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.path",
+        "state-only",
+        "park_item/fd7b1a3d22b246e0b8839903e7d6c006"
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:23.392Z"
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.createdAt",
+        "state-only",
+        "2026-11-15T18:53:13.742Z"
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.path",
+        "state-only",
+        "park_item/fe86e0aecff547439fcd5469af81b307"
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.updatedAt",
+        "state-only",
+        "2026-11-15T18:53:17.688Z"
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.createdAt",
+        "state-only",
+        "2026-11-15T18:08:52.608Z"
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.path",
+        "state-only",
+        "park_item/ff71086ebe364f679d022c4ead7235be"
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.updatedAt",
+        "state-only",
+        "2026-11-15T18:08:56.168Z"
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.openingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.openingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.key",
+        "different",
+        "vulcania-defis-des-sciences",
+        "120b1227-da60-4661-bb87-a649467ca3a6"
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.120b1227-da60-4661-bb87-a649467ca3a6.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.manufacturerKey",
+        "different",
+        "compagnie-elixir",
+        "a0eb3b82-ed2f-4e15-a6d8-947a83ee6121"
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.openingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.openingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.2d31c7b4-8356-4b9c-acb2-4f702b51746e.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.manufacturerKey",
+        "different",
+        "dronisos",
+        "b907bfbb-6429-42df-931a-c13b71e150b3"
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.6550ac7c-87c8-4076-85ba-b877d293052d.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.manufacturerKey",
+        "different",
+        "robosoft",
+        "317727bd-45db-467a-ab4e-9479a99007bb"
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.9b0346bc-cd7d-4365-a3c6-3532219039bc.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".metadata.exportedAtUtc",
+        "different",
+        "2026-11-15T20:31:22.6672616Z",
+        "2026-11-15T23:12:35.1302672Z"
+      ],
+      [
+        ".park.key",
+        "state-only",
+        "park"
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.closedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.contactDetails",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.foundedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.legalName",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.a0eb3b82-ed2f-4e15-a6d8-947a83ee6121.closedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.a0eb3b82-ed2f-4e15-a6d8-947a83ee6121.contactDetails",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.a0eb3b82-ed2f-4e15-a6d8-947a83ee6121.foundedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.a0eb3b82-ed2f-4e15-a6d8-947a83ee6121.legalName",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.b907bfbb-6429-42df-931a-c13b71e150b3.closedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.b907bfbb-6429-42df-931a-c13b71e150b3.contactDetails",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.b907bfbb-6429-42df-931a-c13b71e150b3.foundedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.b907bfbb-6429-42df-931a-c13b71e150b3.legalName",
+        "export-only",
+        null
+      ]
+    ],
+    "corpusExactAgainstConsolidatedState": true
+  },
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "globalCompletion": false
+}

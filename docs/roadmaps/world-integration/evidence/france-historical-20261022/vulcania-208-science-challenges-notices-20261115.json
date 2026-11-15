@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "120b1227-da60-4661-bb87-a649467ca3a6",
+          "key": "vulcania-defis-des-sciences",
+          "name": "Les Défis des Sciences",
+          "type": "InteractiveExperience",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Deux équipes face aux questions scientifiques</h2><p>Les Défis des Sciences faisaient participer les familles à une succession de jeux animés par l’équipe scientifique de Vulcania. Dans Mission Volcans, Fred de L’Esprit sorcier intervenait en vidéo, tandis que les animateurs accompagnaient le public sur place. Répartis en deux équipes, les participants répondaient aux questions et prenaient part à des épreuves pour accumuler des points.</p><p>La formule renouvelée en 2017 proposait deux missions. L’une conduisait les apprentis volcanologues à identifier un volcan mystérieux ; l’autre invitait les aspirants astronautes à réunir les éléments nécessaires à la vie dans l’espace. Les explications et les échanges avec les animateurs rythmaient ces défis collectifs.</p><h2>Des thèmes qui évoluent avec le programme</h2><p>L’animation figurait déjà au programme estival de 2011 autour de l’eau, des volcans et de l’espace. En 2013, une version en plein air abordait aussi la nature. Ces programmes successifs plaçaient les réponses des visiteurs au centre du jeu scientifique.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Two teams tackle scientific questions</h2><p>Les Défis des Sciences involved families in a series of games led by Vulcania’s science team. In Mission Volcans, Fred from L’Esprit sorcier appeared on video while presenters guided the audience in person. Divided into two teams, participants answered questions and took part in challenges to collect points.</p><p>The format renewed in 2017 offered two missions. One asked apprentice volcanologists to identify a mysterious volcano; the other challenged aspiring astronauts to gather the essentials for life in space. Explanations and exchanges with the presenters punctuated these group tasks.</p><h2>Themes across successive programmes</h2><p>The activity already featured in the summer programme for 2011, covering water, volcanoes and space. An outdoor version in 2013 also explored nature. These successive programmes put visitors’ answers at the centre of the science game.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Zwei Teams lösen wissenschaftliche Aufgaben</h2><p>Bei Les Défis des Sciences beteiligten sich Familien an einer Reihe von Spielen mit Vulcanias Wissenschaftsteam. In Mission Volcans trat Fred von L’Esprit sorcier per Video auf, während die Vermittler das Publikum vor Ort begleiteten. In zwei Teams beantworteten die Teilnehmer Fragen und sammelten durch verschiedene Aufgaben Punkte.</p><p>Die 2017 erneuerte Fassung bot zwei Missionen. Angehende Vulkanologen sollten einen geheimnisvollen Vulkan identifizieren; künftige Astronauten mussten die Voraussetzungen für das Leben im Weltraum zusammentragen. Erklärungen und Gespräche mit den Vermittlern begleiteten die gemeinsamen Aufgaben.</p><h2>Wechselnde Themen im Sommerprogramm</h2><p>Schon im Sommerprogramm 2011 behandelte die Animation Wasser, Vulkane und Weltraum. Eine Freiluftfassung griff 2013 auch das Thema Natur auf. In diesen aufeinanderfolgenden Programmen standen die Antworten der Besucher im Mittelpunkt des wissenschaftlichen Spiels.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Twee teams aan de slag met wetenschap</h2><p>Bij Les Défis des Sciences deden gezinnen mee aan een reeks spellen onder begeleiding van het wetenschapsteam van Vulcania. In Mission Volcans verscheen Fred van L’Esprit sorcier op video, terwijl de begeleiders het publiek ter plaatse hielpen. De deelnemers vormden twee teams, beantwoordden vragen en verzamelden punten met verschillende opdrachten.</p><p>De in 2017 vernieuwde opzet bood twee missies. Beginnende vulkanologen moesten een mysterieuze vulkaan herkennen; toekomstige astronauten verzamelden de noodzakelijke elementen voor leven in de ruimte. Uitleg en gesprekken met de begeleiders wisselden de gezamenlijke opdrachten af.</p><h2>Thema’s in opeenvolgende programma’s</h2><p>De activiteit stond al in het zomerprogramma van 2011, met water, vulkanen en de ruimte als onderwerpen. Een buitenversie behandelde in 2013 ook de natuur. In deze opeenvolgende programma’s draaide het wetenschappelijke spel om de antwoorden van de bezoekers.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Due squadre alle prese con la scienza</h2><p>Les Défis des Sciences coinvolgeva le famiglie in una serie di giochi condotti dal gruppo scientifico di Vulcania. In Mission Volcans, Fred di L’Esprit sorcier compariva in video, mentre gli animatori seguivano il pubblico sul posto. Divisi in due squadre, i partecipanti rispondevano alle domande e affrontavano prove per raccogliere punti.</p><p>La formula rinnovata nel 2017 proponeva due missioni. Una chiedeva agli aspiranti vulcanologi di identificare un vulcano misterioso; l’altra invitava i futuri astronauti a riunire gli elementi necessari alla vita nello spazio. Spiegazioni e scambi con gli animatori accompagnavano le sfide di gruppo.</p><h2>Temi diversi nei programmi estivi</h2><p>L’attività figurava già nel programma estivo del 2011, dedicata all’acqua, ai vulcani e allo spazio. Nel 2013 una versione all’aperto affrontava anche la natura. Questi programmi successivi ponevano le risposte dei visitatori al centro del gioco scientifico.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Dos equipos ante preguntas científicas</h2><p>Les Défis des Sciences hacía participar a las familias en una serie de juegos dirigidos por el equipo científico de Vulcania. En Mission Volcans, Fred de L’Esprit sorcier aparecía en vídeo mientras los animadores acompañaban al público en persona. Repartidos en dos equipos, los participantes respondían preguntas y superaban pruebas para sumar puntos.</p><p>La fórmula renovada en 2017 proponía dos misiones. Una pedía a los aprendices de vulcanólogo identificar un volcán misterioso; la otra invitaba a los aspirantes a astronauta a reunir los elementos necesarios para vivir en el espacio. Las explicaciones y los intercambios con los animadores marcaban el ritmo de los retos colectivos.</p><h2>Temas que cambian con la programación</h2><p>La actividad ya figuraba en el programa de verano de 2011, con temas relacionados con el agua, los volcanes y el espacio. En 2013, una versión al aire libre abordaba también la naturaleza. Estos programas sucesivos situaban las respuestas de los visitantes en el centro del juego científico.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Dwie drużyny i naukowe pytania</h2><p>Les Défis des Sciences angażowało rodziny w serię zabaw prowadzonych przez zespół naukowy Vulcanii. W Mission Volcans Fred z L’Esprit sorcier pojawiał się na nagraniu wideo, a animatorzy towarzyszyli publiczności na miejscu. Uczestnicy podzieleni na dwie drużyny odpowiadali na pytania i zdobywali punkty w kolejnych zadaniach.</p><p>Formuła odnowiona w 2017 roku obejmowała dwie misje. Początkujący wulkanolodzy mieli rozpoznać tajemniczy wulkan, natomiast przyszli astronauci gromadzili elementy niezbędne do życia w kosmosie. Wyjaśnienia oraz rozmowy z animatorami przeplatały się ze wspólnymi wyzwaniami.</p><h2>Tematy kolejnych programów</h2><p>Atrakcja znajdowała się już w letnim programie na 2011 rok, obejmującym wodę, wulkany i kosmos. Wersja plenerowa z 2013 roku poruszała również temat przyrody. W tych kolejnych odsłonach odpowiedzi zwiedzających stanowiły sedno naukowej zabawy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Duas equipas perante perguntas científicas</h2><p>Les Défis des Sciences envolvia as famílias numa sequência de jogos orientados pela equipa científica do Vulcania. Em Mission Volcans, Fred de L’Esprit sorcier aparecia em vídeo, enquanto os animadores acompanhavam o público no local. Divididos em duas equipas, os participantes respondiam a perguntas e cumpriam desafios para somar pontos.</p><p>A fórmula renovada em 2017 propunha duas missões. Uma desafiava os aprendizes de vulcanólogo a identificar um vulcão misterioso; a outra convidava os aspirantes a astronauta a reunir os elementos necessários à vida no espaço. Explicações e conversas com os animadores marcavam o ritmo das tarefas coletivas.</p><h2>Temas nos sucessivos programas</h2><p>A atividade já integrava o programa de verão de 2011, dedicado à água, aos vulcões e ao espaço. Em 2013, uma versão ao ar livre abordava também a natureza. Estes programas sucessivos colocavam as respostas dos visitantes no centro do jogo científico.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-208-science-challenges-notices",
+        "notes": "Eight descriptions personally authored and reviewed against2011programme/2013officialrelease/2017renewedtwo-missionprogramme and2018eyewitness. No firstopening orclosure inferred. No photoattribution or physicalvenuealias invented. Fredvideo and two audience teams documented. 2013outdoor version distinguished from2017missions. Scientific misclassification ineyewitness not repeated."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "01c821e8-2a94-4ce8-a399-aa4ac2b51955",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:09:45.5064913Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "entityKey": "vulcania-defis-des-sciences",
+        "displayName": "Les Défis des Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Zwei Teams lösen wissenschaftliche Aufgaben</h2><p>Bei Les Défis des Sciences beteiligten sich Familien an einer Reihe von Spielen mit Vulcanias Wissenschaftsteam. In Mission Volcans trat Fred von L’Esprit sorcier per Video auf, während die Vermittler das Publikum vor Ort begleiteten. In zwei Teams beantworteten die Teilnehmer Fragen und sammelten durch verschiedene Aufgaben Punkte.</p><p>Die 2017 erneuerte Fassung bot zwei Missionen. Angehende Vulkanologen sollten einen geheimnisvollen Vulkan identifizieren; künftige Astronauten mussten die Voraussetzungen für das Leben im Weltraum zusammentragen. Erklärungen und Gespräche mit den Vermittlern begleiteten die gemeinsamen Aufgaben.</p><h2>Wechselnde Themen im Sommerprogramm</h2><p>Schon im Sommerprogramm 2011 behandelte die Animation Wasser, Vulkane und Weltraum. Eine Freiluftfassung griff 2013 auch das Thema Natur auf. In diesen aufeinanderfolgenden Programmen standen die Antworten der Besucher im Mittelpunkt des wissenschaftlichen Spiels.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Two teams tackle scientific questions</h2><p>Les Défis des Sciences involved families in a series of games led by Vulcania’s science team. In Mission Volcans, Fred from L’Esprit sorcier appeared on video while presenters guided the audience in person. Divided into two teams, participants answered questions and took part in challenges to collect points.</p><p>The format renewed in 2017 offered two missions. One asked apprentice volcanologists to identify a mysterious volcano; the other challenged aspiring astronauts to gather the essentials for life in space. Explanations and exchanges with the presenters punctuated these group tasks.</p><h2>Themes across successive programmes</h2><p>The activity already featured in the summer programme for 2011, covering water, volcanoes and space. An outdoor version in 2013 also explored nature. These successive programmes put visitors’ answers at the centre of the science game.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Dos equipos ante preguntas científicas</h2><p>Les Défis des Sciences hacía participar a las familias en una serie de juegos dirigidos por el equipo científico de Vulcania. En Mission Volcans, Fred de L’Esprit sorcier aparecía en vídeo mientras los animadores acompañaban al público en persona. Repartidos en dos equipos, los participantes respondían preguntas y superaban pruebas para sumar puntos.</p><p>La fórmula renovada en 2017 proponía dos misiones. Una pedía a los aprendices de vulcanólogo identificar un volcán misterioso; la otra invitaba a los aspirantes a astronauta a reunir los elementos necesarios para vivir en el espacio. Las explicaciones y los intercambios con los animadores marcaban el ritmo de los retos colectivos.</p><h2>Temas que cambian con la programación</h2><p>La actividad ya figuraba en el programa de verano de 2011, con temas relacionados con el agua, los volcanes y el espacio. En 2013, una versión al aire libre abordaba también la naturaleza. Estos programas sucesivos situaban las respuestas de los visitantes en el centro del juego científico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Deux équipes face aux questions scientifiques</h2><p>Les Défis des Sciences faisaient participer les familles à une succession de jeux animés par l’équipe scientifique de Vulcania. Dans Mission Volcans, Fred de L’Esprit sorcier intervenait en vidéo, tandis que les animateurs accompagnaient le public sur place. Répartis en deux équipes, les participants répondaient aux questions et prenaient part à des épreuves pour accumuler des points.</p><p>La formule renouvelée en 2017 proposait deux missions. L’une conduisait les apprentis volcanologues à identifier un volcan mystérieux ; l’autre invitait les aspirants astronautes à réunir les éléments nécessaires à la vie dans l’espace. Les explications et les échanges avec les animateurs rythmaient ces défis collectifs.</p><h2>Des thèmes qui évoluent avec le programme</h2><p>L’animation figurait déjà au programme estival de 2011 autour de l’eau, des volcans et de l’espace. En 2013, une version en plein air abordait aussi la nature. Ces programmes successifs plaçaient les réponses des visiteurs au centre du jeu scientifique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Due squadre alle prese con la scienza</h2><p>Les Défis des Sciences coinvolgeva le famiglie in una serie di giochi condotti dal gruppo scientifico di Vulcania. In Mission Volcans, Fred di L’Esprit sorcier compariva in video, mentre gli animatori seguivano il pubblico sul posto. Divisi in due squadre, i partecipanti rispondevano alle domande e affrontavano prove per raccogliere punti.</p><p>La formula rinnovata nel 2017 proponeva due missioni. Una chiedeva agli aspiranti vulcanologi di identificare un vulcano misterioso; l’altra invitava i futuri astronauti a riunire gli elementi necessari alla vita nello spazio. Spiegazioni e scambi con gli animatori accompagnavano le sfide di gruppo.</p><h2>Temi diversi nei programmi estivi</h2><p>L’attività figurava già nel programma estivo del 2011, dedicata all’acqua, ai vulcani e allo spazio. Nel 2013 una versione all’aperto affrontava anche la natura. Questi programmi successivi ponevano le risposte dei visitatori al centro del gioco scientifico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Twee teams aan de slag met wetenschap</h2><p>Bij Les Défis des Sciences deden gezinnen mee aan een reeks spellen onder begeleiding van het wetenschapsteam van Vulcania. In Mission Volcans verscheen Fred van L’Esprit sorcier op video, terwijl de begeleiders het publiek ter plaatse hielpen. De deelnemers vormden twee teams, beantwoordden vragen en verzamelden punten met verschillende opdrachten.</p><p>De in 2017 vernieuwde opzet bood twee missies. Beginnende vulkanologen moesten een mysterieuze vulkaan herkennen; toekomstige astronauten verzamelden de noodzakelijke elementen voor leven in de ruimte. Uitleg en gesprekken met de begeleiders wisselden de gezamenlijke opdrachten af.</p><h2>Thema’s in opeenvolgende programma’s</h2><p>De activiteit stond al in het zomerprogramma van 2011, met water, vulkanen en de ruimte als onderwerpen. Een buitenversie behandelde in 2013 ook de natuur. In deze opeenvolgende programma’s draaide het wetenschappelijke spel om de antwoorden van de bezoekers.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dwie drużyny i naukowe pytania</h2><p>Les Défis des Sciences angażowało rodziny w serię zabaw prowadzonych przez zespół naukowy Vulcanii. W Mission Volcans Fred z L’Esprit sorcier pojawiał się na nagraniu wideo, a animatorzy towarzyszyli publiczności na miejscu. Uczestnicy podzieleni na dwie drużyny odpowiadali na pytania i zdobywali punkty w kolejnych zadaniach.</p><p>Formuła odnowiona w 2017 roku obejmowała dwie misje. Początkujący wulkanolodzy mieli rozpoznać tajemniczy wulkan, natomiast przyszli astronauci gromadzili elementy niezbędne do życia w kosmosie. Wyjaśnienia oraz rozmowy z animatorami przeplatały się ze wspólnymi wyzwaniami.</p><h2>Tematy kolejnych programów</h2><p>Atrakcja znajdowała się już w letnim programie na 2011 rok, obejmującym wodę, wulkany i kosmos. Wersja plenerowa z 2013 roku poruszała również temat przyrody. W tych kolejnych odsłonach odpowiedzi zwiedzających stanowiły sedno naukowej zabawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Duas equipas perante perguntas científicas</h2><p>Les Défis des Sciences envolvia as famílias numa sequência de jogos orientados pela equipa científica do Vulcania. Em Mission Volcans, Fred de L’Esprit sorcier aparecia em vídeo, enquanto os animadores acompanhavam o público no local. Divididos em duas equipas, os participantes respondiam a perguntas e cumpriam desafios para somar pontos.</p><p>A fórmula renovada em 2017 propunha duas missões. Uma desafiava os aprendizes de vulcanólogo a identificar um vulcão misterioso; a outra convidava os aspirantes a astronauta a reunir os elementos necessários à vida no espaço. Explicações e conversas com os animadores marcavam o ritmo das tarefas coletivas.</p><h2>Temas nos sucessivos programas</h2><p>A atividade já integrava o programa de verão de 2011, dedicado à água, aos vulcões e ao espaço. Em 2013, uma versão ao ar livre abordava também a natureza. Estes programas sucessivos colocavam as respostas dos visitantes no centro do jogo científico.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "5a1cc820-43a4-4dbc-a271-d13252d36a02",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:10:38.0463145Z",
+    "appliedAtUtc": "2026-11-15T23:10:38.0463152Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "entityKey": "vulcania-defis-des-sciences",
+        "displayName": "Les Défis des Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Zwei Teams lösen wissenschaftliche Aufgaben</h2><p>Bei Les Défis des Sciences beteiligten sich Familien an einer Reihe von Spielen mit Vulcanias Wissenschaftsteam. In Mission Volcans trat Fred von L’Esprit sorcier per Video auf, während die Vermittler das Publikum vor Ort begleiteten. In zwei Teams beantworteten die Teilnehmer Fragen und sammelten durch verschiedene Aufgaben Punkte.</p><p>Die 2017 erneuerte Fassung bot zwei Missionen. Angehende Vulkanologen sollten einen geheimnisvollen Vulkan identifizieren; künftige Astronauten mussten die Voraussetzungen für das Leben im Weltraum zusammentragen. Erklärungen und Gespräche mit den Vermittlern begleiteten die gemeinsamen Aufgaben.</p><h2>Wechselnde Themen im Sommerprogramm</h2><p>Schon im Sommerprogramm 2011 behandelte die Animation Wasser, Vulkane und Weltraum. Eine Freiluftfassung griff 2013 auch das Thema Natur auf. In diesen aufeinanderfolgenden Programmen standen die Antworten der Besucher im Mittelpunkt des wissenschaftlichen Spiels.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Two teams tackle scientific questions</h2><p>Les Défis des Sciences involved families in a series of games led by Vulcania’s science team. In Mission Volcans, Fred from L’Esprit sorcier appeared on video while presenters guided the audience in person. Divided into two teams, participants answered questions and took part in challenges to collect points.</p><p>The format renewed in 2017 offered two missions. One asked apprentice volcanologists to identify a mysterious volcano; the other challenged aspiring astronauts to gather the essentials for life in space. Explanations and exchanges with the presenters punctuated these group tasks.</p><h2>Themes across successive programmes</h2><p>The activity already featured in the summer programme for 2011, covering water, volcanoes and space. An outdoor version in 2013 also explored nature. These successive programmes put visitors’ answers at the centre of the science game.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Dos equipos ante preguntas científicas</h2><p>Les Défis des Sciences hacía participar a las familias en una serie de juegos dirigidos por el equipo científico de Vulcania. En Mission Volcans, Fred de L’Esprit sorcier aparecía en vídeo mientras los animadores acompañaban al público en persona. Repartidos en dos equipos, los participantes respondían preguntas y superaban pruebas para sumar puntos.</p><p>La fórmula renovada en 2017 proponía dos misiones. Una pedía a los aprendices de vulcanólogo identificar un volcán misterioso; la otra invitaba a los aspirantes a astronauta a reunir los elementos necesarios para vivir en el espacio. Las explicaciones y los intercambios con los animadores marcaban el ritmo de los retos colectivos.</p><h2>Temas que cambian con la programación</h2><p>La actividad ya figuraba en el programa de verano de 2011, con temas relacionados con el agua, los volcanes y el espacio. En 2013, una versión al aire libre abordaba también la naturaleza. Estos programas sucesivos situaban las respuestas de los visitantes en el centro del juego científico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Deux équipes face aux questions scientifiques</h2><p>Les Défis des Sciences faisaient participer les familles à une succession de jeux animés par l’équipe scientifique de Vulcania. Dans Mission Volcans, Fred de L’Esprit sorcier intervenait en vidéo, tandis que les animateurs accompagnaient le public sur place. Répartis en deux équipes, les participants répondaient aux questions et prenaient part à des épreuves pour accumuler des points.</p><p>La formule renouvelée en 2017 proposait deux missions. L’une conduisait les apprentis volcanologues à identifier un volcan mystérieux ; l’autre invitait les aspirants astronautes à réunir les éléments nécessaires à la vie dans l’espace. Les explications et les échanges avec les animateurs rythmaient ces défis collectifs.</p><h2>Des thèmes qui évoluent avec le programme</h2><p>L’animation figurait déjà au programme estival de 2011 autour de l’eau, des volcans et de l’espace. En 2013, une version en plein air abordait aussi la nature. Ces programmes successifs plaçaient les réponses des visiteurs au centre du jeu scientifique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Due squadre alle prese con la scienza</h2><p>Les Défis des Sciences coinvolgeva le famiglie in una serie di giochi condotti dal gruppo scientifico di Vulcania. In Mission Volcans, Fred di L’Esprit sorcier compariva in video, mentre gli animatori seguivano il pubblico sul posto. Divisi in due squadre, i partecipanti rispondevano alle domande e affrontavano prove per raccogliere punti.</p><p>La formula rinnovata nel 2017 proponeva due missioni. Una chiedeva agli aspiranti vulcanologi di identificare un vulcano misterioso; l’altra invitava i futuri astronauti a riunire gli elementi necessari alla vita nello spazio. Spiegazioni e scambi con gli animatori accompagnavano le sfide di gruppo.</p><h2>Temi diversi nei programmi estivi</h2><p>L’attività figurava già nel programma estivo del 2011, dedicata all’acqua, ai vulcani e allo spazio. Nel 2013 una versione all’aperto affrontava anche la natura. Questi programmi successivi ponevano le risposte dei visitatori al centro del gioco scientifico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Twee teams aan de slag met wetenschap</h2><p>Bij Les Défis des Sciences deden gezinnen mee aan een reeks spellen onder begeleiding van het wetenschapsteam van Vulcania. In Mission Volcans verscheen Fred van L’Esprit sorcier op video, terwijl de begeleiders het publiek ter plaatse hielpen. De deelnemers vormden twee teams, beantwoordden vragen en verzamelden punten met verschillende opdrachten.</p><p>De in 2017 vernieuwde opzet bood twee missies. Beginnende vulkanologen moesten een mysterieuze vulkaan herkennen; toekomstige astronauten verzamelden de noodzakelijke elementen voor leven in de ruimte. Uitleg en gesprekken met de begeleiders wisselden de gezamenlijke opdrachten af.</p><h2>Thema’s in opeenvolgende programma’s</h2><p>De activiteit stond al in het zomerprogramma van 2011, met water, vulkanen en de ruimte als onderwerpen. Een buitenversie behandelde in 2013 ook de natuur. In deze opeenvolgende programma’s draaide het wetenschappelijke spel om de antwoorden van de bezoekers.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dwie drużyny i naukowe pytania</h2><p>Les Défis des Sciences angażowało rodziny w serię zabaw prowadzonych przez zespół naukowy Vulcanii. W Mission Volcans Fred z L’Esprit sorcier pojawiał się na nagraniu wideo, a animatorzy towarzyszyli publiczności na miejscu. Uczestnicy podzieleni na dwie drużyny odpowiadali na pytania i zdobywali punkty w kolejnych zadaniach.</p><p>Formuła odnowiona w 2017 roku obejmowała dwie misje. Początkujący wulkanolodzy mieli rozpoznać tajemniczy wulkan, natomiast przyszli astronauci gromadzili elementy niezbędne do życia w kosmosie. Wyjaśnienia oraz rozmowy z animatorami przeplatały się ze wspólnymi wyzwaniami.</p><h2>Tematy kolejnych programów</h2><p>Atrakcja znajdowała się już w letnim programie na 2011 rok, obejmującym wodę, wulkany i kosmos. Wersja plenerowa z 2013 roku poruszała również temat przyrody. W tych kolejnych odsłonach odpowiedzi zwiedzających stanowiły sedno naukowej zabawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Duas equipas perante perguntas científicas</h2><p>Les Défis des Sciences envolvia as famílias numa sequência de jogos orientados pela equipa científica do Vulcania. Em Mission Volcans, Fred de L’Esprit sorcier aparecia em vídeo, enquanto os animadores acompanhavam o público no local. Divididos em duas equipas, os participantes respondiam a perguntas e cumpriam desafios para somar pontos.</p><p>A fórmula renovada em 2017 propunha duas missões. Uma desafiava os aprendizes de vulcanólogo a identificar um vulcão misterioso; a outra convidava os aspirantes a astronauta a reunir os elementos necessários à vida no espaço. Explicações e conversas com os animadores marcavam o ritmo das tarefas coletivas.</p><h2>Temas nos sucessivos programas</h2><p>A atividade já integrava o programa de verão de 2011, dedicado à água, aos vulcões e ao espaço. Em 2013, uma versão ao ar livre abordava também a natureza. Estes programas sucessivos colocavam as respostas dos visitantes no centro do jogo científico.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Défis des Sciences : huit notices personnelles relues, jeux par équipes et missions historiques décrits sans dates inventées.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Eight descriptions personally authored and reviewed against2011programme/2013officialrelease/2017renewedtwo-missionprogramme and2018eyewitness. No firstopening orclosure inferred. No photoattribution or physicalvenuealias invented. Fredvideo and two audience teams documented. 2013outdoor version distinguished from2017missions. Scientific misclassification ineyewitness not repeated."
+}

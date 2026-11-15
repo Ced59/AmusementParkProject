@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "vulcania-defis-des-sciences",
+          "name": "Les Défis des Sciences",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html"
+          }
+        }
+      ],
+      "metadata": {
+        "notes": "Historical family science challenge show documented in2011/2013, renewed2017 with Mission Volcans and Mission Espace, eyewitness2018. Two programmes within one named interactive show, not two new venues. No initial opening date inferred from earliest retrieved programme; no closure or2026operation inferred. Distinctly named alongside Coin des expériences, Expériences cest Show and Planète dévoilée. No identity/rename with current100%volcans or CestpasSorcier established, no arbitrary alias. Anniversary Défi des Volcans announced forMayJune2017 kept separate and uncreated pending qualification. No physical room/GPS/size/age/manufacturer inferred."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "714e2e3c-3e34-4033-b01b-74e4bba17f14",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:08:39.1267167Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f92eb239-ffb5-4369-be3b-4c4cec284581",
+        "entityKey": "vulcania-defis-des-sciences",
+        "displayName": "Les Défis des Sciences",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "f49a2364-6279-41ca-9878-b6ba664e2f15",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:09:19.2918672Z",
+    "appliedAtUtc": "2026-11-15T23:09:19.291868Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "entityKey": "vulcania-defis-des-sciences",
+        "displayName": "Les Défis des Sciences",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Défis des Sciences : programme historique privé identifié, deux variantes regroupées, statut et dates inconnus conservés.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Historical family science challenge show documented in2011/2013, renewed2017 with Mission Volcans and Mission Espace, eyewitness2018. Two programmes within one named interactive show, not two new venues. No initial opening date inferred from earliest retrieved programme; no closure or2026operation inferred. Distinctly named alongside Coin des expériences, Expériences cest Show and Planète dévoilée. No identity/rename with current100%volcans or CestpasSorcier established, no arbitrary alias. Anniversary Défi des Volcans announced forMayJune2017 kept separate and uncreated pending qualification. No physical room/GPS/size/age/manufacturer inferred."
+}

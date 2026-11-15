@@ -1,0 +1,125 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "researchedAtUtc": "2026-11-15T23:09:09.246745+00:00",
+  "sourceAccess": [
+    {
+      "key": "news2011",
+      "url": "https://www.newsparcs.com/fr/article/00005305-c_est_l_ete_a_vulcania_",
+      "retrievedAtUtc": "2026-11-15T23:05:36.198970+00:00",
+      "status": 200,
+      "finalUrl": "https://www.newsparcs.com/fr/article/00005305-c_est_l_ete_a_vulcania_",
+      "bytes": 94894,
+      "sha256": "355d6e82b1304e4ecc39688e49b9f28de796e4a98386605426e62faa51e4e88d"
+    },
+    {
+      "key": "summer2013",
+      "url": "https://www.parcplaza.net/2013/06/cest-lete-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T23:05:36.199760+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2013/06/cest-lete-vulcania.html",
+      "bytes": 129317,
+      "sha256": "3cfa6463a9dcc132f3ccef5355a1af846693332b3335dde6797ab54535cebadc"
+    },
+    {
+      "key": "retrospective2016",
+      "url": "https://www.parcplaza.net/2016/11/nouvelle-saison-record-pour-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T23:05:36.200141+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2016/11/nouvelle-saison-record-pour-vulcania.html",
+      "bytes": 135948,
+      "sha256": "2d2e3156ff1edf7cb5a72ea56751f6e9b50fd200b4a729d5c1e8bd8bafac5f70"
+    },
+    {
+      "key": "francenet2017",
+      "url": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+      "retrievedAtUtc": "2026-11-15T23:05:36.990642+00:00",
+      "status": 200,
+      "finalUrl": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+      "bytes": 212557,
+      "sha256": "358b7875631942c99290265416968114953a6250d51cff25ac9151ffc7b1307f"
+    },
+    {
+      "key": "leprogres2018",
+      "url": "https://www.leprogres.fr/haute-loire-43-edition-puy-en-velay/2018/07/14/vulcania-l-ete-sera-show",
+      "retrievedAtUtc": "2026-11-15T23:05:37.109317+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/haute-loire-43-edition-puy-en-velay/2018/07/14/vulcania-l-ete-sera-show",
+      "bytes": 528317,
+      "sha256": "86dff425fdb200100453491840bdc0d19f115908ce256fe3439f2fc1b01d9bec"
+    },
+    {
+      "key": "summer2020",
+      "url": "https://www.clermontinfos63.fr/actualite-18538-vulcania-vous-attend-des-le-1er-juillet.html",
+      "retrievedAtUtc": "2026-11-15T23:05:37.505784+00:00",
+      "status": 200,
+      "finalUrl": "https://www.clermontinfos63.fr/actualite-18538-vulcania-vous-attend-des-le-1er-juillet.html",
+      "bytes": 6852,
+      "sha256": "54b5c41cb674de8c17042f916034ea8d8daa40fb5f7d6ac88999b919a40bd382"
+    }
+  ],
+  "personallyRead": [
+    {
+      "key": "news2011",
+      "finding": "21June2011 published/29Juneupdated: family science challenges water/volcanoes/space; not labelled new, no openingdate inferred."
+    },
+    {
+      "key": "summer2013",
+      "finding": "26June2013 officialVulcania release: outdoors Défis des Sciences volcanoes/nature/space in addition to Coin des expériences."
+    },
+    {
+      "key": "retrospective2016",
+      "finding": "22Nov2016: Défi des Volcans announced as anniversaryMayJune2017game, not namedalias of Défis des Sciences. No itemcreatedforanniversarygame."
+    },
+    {
+      "key": "francenet2017",
+      "finding": "2017officialrelease reproduced: renewedDéfisdesSciences two missions volcanicmystery/spacelife, Fredvideo, distinctfromPlanèteDévoilée/Expériences/Coindesexpériences."
+    },
+    {
+      "key": "leprogres2018",
+      "finding": "14July2018actualarticle:DéfidesSciences andExpériencesdaily, Coinexperiencesseparate. NewversionYapaflammenotinitialcreation."
+    },
+    {
+      "key": "summer2020",
+      "finding": "HTTP2006852bytes but renderedtextonlytitle/LEJOURNAL; body NOTread, not used as factualproof."
+    },
+    {
+      "key": "sweetdaddy2018",
+      "url": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/",
+      "localSource": "nature-followup-2215/eyewitness2018.html",
+      "finding": "12Aug2018eyewitness MissionVolcans:Fredvideo, two teams/points/childrenparticipation. No scientificclassification copied from inaccurate casual wording. No associatedphoto underthisheading."
+    },
+    {
+      "key": "official2017release",
+      "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "localSource": "dragon-time-followup-2250/press2017.html",
+      "finding": "Officialrenewedshowidentityandmissions personallyread."
+    }
+  ],
+  "reconciliation": {
+    "existingItemsCompared": 63,
+    "createOneNamedHistoricalProgramme": "Les Défis des Sciences",
+    "variantsNotSeparateItems": [
+      "Mission Volcans",
+      "Mission Espace"
+    ],
+    "noUnsupportedAliasWith": [
+      "100% volcans",
+      "C’est pas sorcier les volcans !",
+      "Ateliers des volcans",
+      "Défi des Volcans anniversarygame"
+    ],
+    "separateNamedHistoricalProgrammeDoesNotAssertSeparateBuilding": true,
+    "openingDate": null,
+    "closingDate": null,
+    "status": "Unknown",
+    "manufacturerNotInferred": true,
+    "noCoordinatesInferred": true
+  },
+  "photos": {
+    "noImportPrepared": true,
+    "sweetdaddySectionHasNoSpecificPhoto": true,
+    "francenet2017PhotosCaptionedElixirNocturnesNotScienceChallenge": true
+  },
+  "newlyAuthoredNotices8LanguagesPersonallyReviewed": true,
+  "noMutationYet": true
+}

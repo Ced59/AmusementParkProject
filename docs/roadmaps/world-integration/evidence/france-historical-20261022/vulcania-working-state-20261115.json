@@ -5781,6 +5781,53 @@
           "value": "<h2>O dragão na noite de Auvergne</h2><p>Dragon Time levava uma criatura lendária às noites de verão de Vulcania. A Compagnie eliXir fazia surgir um dragão rodeado de personagens luminosas, cujos trajes desenhavam linhas e espirais na escuridão. A dança e as acrobacias davam vida ao encontro entre o animal mítico e os seres de luz.</p><p>Chuvas de faíscas, chamas e fumo acompanhavam os artistas. As fibras óticas dos trajes e adereços, desenvolvidos em colaboração com o parque, mantinham as silhuetas visíveis entre os clarões do fogo.</p><h2>A Chaîne des Puys como cenário</h2><p>Em 2016, Vulcania anunciava uma mudança de cenário e de encenação, numa nova localização diante dos vulcões de Auvergne. Ainda presente no programa das noites de verão de 2024, Dragon Time juntava essa paisagem real a um universo teatral de luz e pirotecnia.</p>"
         }
       ]
+    },
+    {
+      "id": "120b1227-da60-4661-bb87-a649467ca3a6",
+      "key": "120b1227-da60-4661-bb87-a649467ca3a6",
+      "name": "Les Défis des Sciences",
+      "category": "Show",
+      "type": "InteractiveExperience",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Deux équipes face aux questions scientifiques</h2><p>Les Défis des Sciences faisaient participer les familles à une succession de jeux animés par l’équipe scientifique de Vulcania. Dans Mission Volcans, Fred de L’Esprit sorcier intervenait en vidéo, tandis que les animateurs accompagnaient le public sur place. Répartis en deux équipes, les participants répondaient aux questions et prenaient part à des épreuves pour accumuler des points.</p><p>La formule renouvelée en 2017 proposait deux missions. L’une conduisait les apprentis volcanologues à identifier un volcan mystérieux ; l’autre invitait les aspirants astronautes à réunir les éléments nécessaires à la vie dans l’espace. Les explications et les échanges avec les animateurs rythmaient ces défis collectifs.</p><h2>Des thèmes qui évoluent avec le programme</h2><p>L’animation figurait déjà au programme estival de 2011 autour de l’eau, des volcans et de l’espace. En 2013, une version en plein air abordait aussi la nature. Ces programmes successifs plaçaient les réponses des visiteurs au centre du jeu scientifique.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Two teams tackle scientific questions</h2><p>Les Défis des Sciences involved families in a series of games led by Vulcania’s science team. In Mission Volcans, Fred from L’Esprit sorcier appeared on video while presenters guided the audience in person. Divided into two teams, participants answered questions and took part in challenges to collect points.</p><p>The format renewed in 2017 offered two missions. One asked apprentice volcanologists to identify a mysterious volcano; the other challenged aspiring astronauts to gather the essentials for life in space. Explanations and exchanges with the presenters punctuated these group tasks.</p><h2>Themes across successive programmes</h2><p>The activity already featured in the summer programme for 2011, covering water, volcanoes and space. An outdoor version in 2013 also explored nature. These successive programmes put visitors’ answers at the centre of the science game.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Zwei Teams lösen wissenschaftliche Aufgaben</h2><p>Bei Les Défis des Sciences beteiligten sich Familien an einer Reihe von Spielen mit Vulcanias Wissenschaftsteam. In Mission Volcans trat Fred von L’Esprit sorcier per Video auf, während die Vermittler das Publikum vor Ort begleiteten. In zwei Teams beantworteten die Teilnehmer Fragen und sammelten durch verschiedene Aufgaben Punkte.</p><p>Die 2017 erneuerte Fassung bot zwei Missionen. Angehende Vulkanologen sollten einen geheimnisvollen Vulkan identifizieren; künftige Astronauten mussten die Voraussetzungen für das Leben im Weltraum zusammentragen. Erklärungen und Gespräche mit den Vermittlern begleiteten die gemeinsamen Aufgaben.</p><h2>Wechselnde Themen im Sommerprogramm</h2><p>Schon im Sommerprogramm 2011 behandelte die Animation Wasser, Vulkane und Weltraum. Eine Freiluftfassung griff 2013 auch das Thema Natur auf. In diesen aufeinanderfolgenden Programmen standen die Antworten der Besucher im Mittelpunkt des wissenschaftlichen Spiels.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Twee teams aan de slag met wetenschap</h2><p>Bij Les Défis des Sciences deden gezinnen mee aan een reeks spellen onder begeleiding van het wetenschapsteam van Vulcania. In Mission Volcans verscheen Fred van L’Esprit sorcier op video, terwijl de begeleiders het publiek ter plaatse hielpen. De deelnemers vormden twee teams, beantwoordden vragen en verzamelden punten met verschillende opdrachten.</p><p>De in 2017 vernieuwde opzet bood twee missies. Beginnende vulkanologen moesten een mysterieuze vulkaan herkennen; toekomstige astronauten verzamelden de noodzakelijke elementen voor leven in de ruimte. Uitleg en gesprekken met de begeleiders wisselden de gezamenlijke opdrachten af.</p><h2>Thema’s in opeenvolgende programma’s</h2><p>De activiteit stond al in het zomerprogramma van 2011, met water, vulkanen en de ruimte als onderwerpen. Een buitenversie behandelde in 2013 ook de natuur. In deze opeenvolgende programma’s draaide het wetenschappelijke spel om de antwoorden van de bezoekers.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Due squadre alle prese con la scienza</h2><p>Les Défis des Sciences coinvolgeva le famiglie in una serie di giochi condotti dal gruppo scientifico di Vulcania. In Mission Volcans, Fred di L’Esprit sorcier compariva in video, mentre gli animatori seguivano il pubblico sul posto. Divisi in due squadre, i partecipanti rispondevano alle domande e affrontavano prove per raccogliere punti.</p><p>La formula rinnovata nel 2017 proponeva due missioni. Una chiedeva agli aspiranti vulcanologi di identificare un vulcano misterioso; l’altra invitava i futuri astronauti a riunire gli elementi necessari alla vita nello spazio. Spiegazioni e scambi con gli animatori accompagnavano le sfide di gruppo.</p><h2>Temi diversi nei programmi estivi</h2><p>L’attività figurava già nel programma estivo del 2011, dedicata all’acqua, ai vulcani e allo spazio. Nel 2013 una versione all’aperto affrontava anche la natura. Questi programmi successivi ponevano le risposte dei visitatori al centro del gioco scientifico.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Dos equipos ante preguntas científicas</h2><p>Les Défis des Sciences hacía participar a las familias en una serie de juegos dirigidos por el equipo científico de Vulcania. En Mission Volcans, Fred de L’Esprit sorcier aparecía en vídeo mientras los animadores acompañaban al público en persona. Repartidos en dos equipos, los participantes respondían preguntas y superaban pruebas para sumar puntos.</p><p>La fórmula renovada en 2017 proponía dos misiones. Una pedía a los aprendices de vulcanólogo identificar un volcán misterioso; la otra invitaba a los aspirantes a astronauta a reunir los elementos necesarios para vivir en el espacio. Las explicaciones y los intercambios con los animadores marcaban el ritmo de los retos colectivos.</p><h2>Temas que cambian con la programación</h2><p>La actividad ya figuraba en el programa de verano de 2011, con temas relacionados con el agua, los volcanes y el espacio. En 2013, una versión al aire libre abordaba también la naturaleza. Estos programas sucesivos situaban las respuestas de los visitantes en el centro del juego científico.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Dwie drużyny i naukowe pytania</h2><p>Les Défis des Sciences angażowało rodziny w serię zabaw prowadzonych przez zespół naukowy Vulcanii. W Mission Volcans Fred z L’Esprit sorcier pojawiał się na nagraniu wideo, a animatorzy towarzyszyli publiczności na miejscu. Uczestnicy podzieleni na dwie drużyny odpowiadali na pytania i zdobywali punkty w kolejnych zadaniach.</p><p>Formuła odnowiona w 2017 roku obejmowała dwie misje. Początkujący wulkanolodzy mieli rozpoznać tajemniczy wulkan, natomiast przyszli astronauci gromadzili elementy niezbędne do życia w kosmosie. Wyjaśnienia oraz rozmowy z animatorami przeplatały się ze wspólnymi wyzwaniami.</p><h2>Tematy kolejnych programów</h2><p>Atrakcja znajdowała się już w letnim programie na 2011 rok, obejmującym wodę, wulkany i kosmos. Wersja plenerowa z 2013 roku poruszała również temat przyrody. W tych kolejnych odsłonach odpowiedzi zwiedzających stanowiły sedno naukowej zabawy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Duas equipas perante perguntas científicas</h2><p>Les Défis des Sciences envolvia as famílias numa sequência de jogos orientados pela equipa científica do Vulcania. Em Mission Volcans, Fred de L’Esprit sorcier aparecia em vídeo, enquanto os animadores acompanhavam o público no local. Divididos em duas equipas, os participantes respondiam a perguntas e cumpriam desafios para somar pontos.</p><p>A fórmula renovada em 2017 propunha duas missões. Uma desafiava os aprendizes de vulcanólogo a identificar um vulcão misterioso; a outra convidava os aspirantes a astronauta a reunir os elementos necessários à vida no espaço. Explicações e conversas com os animadores marcavam o ritmo das tarefas coletivas.</p><h2>Temas nos sucessivos programas</h2><p>A atividade já integrava o programa de verão de 2011, dedicado à água, aos vulcões e ao espaço. Em 2013, uma versão ao ar livre abordava também a natureza. Estes programas sucessivos colocavam as respostas dos visitantes no centro do jogo científico.</p>"
+        }
+      ]
     }
   ],
   "images": [
@@ -19191,6 +19238,234 @@
         "id": "283352e0-0fb5-438f-8604-6d100ecae996",
         "itemKey": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
         "parkItemKey": "2d31c7b4-8356-4b9c-acb2-4f702b51746e",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-science-challenges-renewal-announcement-2017",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "itemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "parkItemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2017,
+        "month": 6,
+        "day": 20,
+        "datePrecision": "Day",
+        "eventType": "Announcement",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageId": null,
+        "sources": [
+          {
+            "label": "Vulcania — communiqué estival du 20 juin 2017, repris par ParcPlaza",
+            "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "FranceNetInfos — programme estival du quinzième anniversaire, 2017",
+            "url": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Une nouvelle formule pour les défis du quinzième anniversaire"
+          },
+          {
+            "languageCode": "en",
+            "value": "A renewed challenge format for the fifteenth anniversary"
+          },
+          {
+            "languageCode": "de",
+            "value": "Ein neues Aufgabenformat zum fünfzehnten Jubiläum"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een vernieuwde spelvorm voor de vijftiende verjaardag"
+          },
+          {
+            "languageCode": "it",
+            "value": "Una formula rinnovata per il quindicesimo anniversario"
+          },
+          {
+            "languageCode": "es",
+            "value": "Una fórmula renovada para el decimoquinto aniversario"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Nowa formuła wyzwań na piętnastolecie parku"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma fórmula renovada para o décimo quinto aniversário"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "À l’occasion des quinze ans du parc, les équipes scientifiques, scénographiques et techniques présentent le résultat de plusieurs mois de préparation. Le programme annoncé confie à Fred le lancement des missions, puis aux animateurs l’accompagnement des visiteurs dans un jeu collectif consacré aux volcans ou à l’espace."
+          },
+          {
+            "languageCode": "en",
+            "value": "For the park’s fifteenth anniversary, its science, scenography and technical teams present the result of several months of preparation. The announced programme gives Fred the role of introducing the missions, with presenters then guiding visitors through a group game about volcanoes or space."
+          },
+          {
+            "languageCode": "de",
+            "value": "Zum fünfzehnten Parkjubiläum präsentieren die Teams für Wissenschaft, Szenografie und Technik das Ergebnis mehrmonatiger Vorbereitungen. Im angekündigten Programm stellt Fred die Missionen vor. Anschließend begleiten die Vermittler die Besucher durch ein gemeinsames Spiel rund um Vulkane oder den Weltraum."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Voor de vijftiende verjaardag van het park presenteren de teams voor wetenschap, scenografie en techniek het resultaat van maanden voorbereiding. Volgens het aangekondigde programma introduceert Fred de missies. Daarna begeleiden de medewerkers de bezoekers bij een gezamenlijk spel over vulkanen of de ruimte."
+          },
+          {
+            "languageCode": "it",
+            "value": "Per il quindicesimo anniversario del parco, i gruppi scientifici, scenografici e tecnici presentano il risultato di mesi di preparazione. Il programma annunciato affida a Fred l’introduzione delle missioni; gli animatori accompagnano poi i visitatori in un gioco collettivo dedicato ai vulcani o allo spazio."
+          },
+          {
+            "languageCode": "es",
+            "value": "Con motivo del decimoquinto aniversario del parque, los equipos científicos, escenográficos y técnicos presentan el resultado de meses de preparación. El programa anunciado encarga a Fred la presentación de las misiones, antes de que los animadores acompañen a los visitantes en un juego colectivo sobre volcanes o el espacio."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Z okazji piętnastolecia parku zespoły naukowy, scenograficzny i techniczny przedstawiają efekt wielomiesięcznych przygotowań. W zapowiedzianym programie Fred wprowadza uczestników w misje. Następnie animatorzy prowadzą zwiedzających przez zespołową zabawę poświęconą wulkanom lub kosmosowi."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Para o décimo quinto aniversário do parque, as equipas científicas, cenográficas e técnicas apresentam o resultado de meses de preparação. O programa anunciado atribui a Fred a introdução das missões. Depois, os animadores acompanham os visitantes num jogo coletivo dedicado aos vulcões ou ao espaço."
+          }
+        ],
+        "id": "4b80dcd6-e7ef-49e1-abbb-3dfe56176bc9",
+        "itemKey": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "parkItemKey": "120b1227-da60-4661-bb87-a649467ca3a6",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-yapadrisk-flame-announcement-2016",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "itemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "parkItemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2016,
+        "month": 6,
+        "day": 20,
+        "datePrecision": "Day",
+        "eventType": "Announcement",
+        "isVisible": true,
+        "isMajor": false,
+        "mainImageId": null,
+        "sources": [
+          {
+            "label": "Vulcania — programme estival, communiqué repris par PARKS Trip le 20 juin 2016",
+            "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Le Progrès — L’été s’annonce agité à Vulcania, Geneviève Colonna d’Istria, 22 juin 2016",
+            "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser"
+          },
+          {
+            "languageCode": "en",
+            "value": "Yapadrisk prepares a new gathering around the Geyser"
+          },
+          {
+            "languageCode": "de",
+            "value": "Yapadrisk plant einen neuen Auftritt am Geyser"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Yapadrisk bereidt een nieuwe ontmoeting bij de Geyser voor"
+          },
+          {
+            "languageCode": "it",
+            "value": "Yapadrisk prepara un nuovo appuntamento intorno al Geyser"
+          },
+          {
+            "languageCode": "es",
+            "value": "Yapadrisk prepara una nueva cita alrededor del Geyser"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Yapadrisk przygotowuje nowe spotkanie przy Geyser"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Yapadrisk prepara um novo encontro junto ao Geyser"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Le programme des soirées estivales de 2016 annonce un spectacle inédit consacré à la passion du professeur pour les volcans. Le public doit se réunir autour du Geyser pour cette création. Elle vient élargir les aventures scéniques du personnage, déjà présent dans Expériences, c’est show !"
+          },
+          {
+            "languageCode": "en",
+            "value": "The programme for the 2016 summer evenings announces a new show devoted to the professor’s passion for volcanoes. Audiences are to gather around the Geyser for this creation. It expands the character’s stage adventures, following his appearances in Expériences, c’est show !"
+          },
+          {
+            "languageCode": "de",
+            "value": "Das Programm der Sommerabende 2016 kündigt eine neue Show über die Vulkanbegeisterung des Professors an. Das Publikum soll sich dafür am Geyser versammeln. Die Produktion erweitert die Bühnenabenteuer der Figur, die bereits in Expériences, c’est show ! auftritt."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het programma van de zomeravonden in 2016 kondigt een nieuwe voorstelling aan over de passie van de professor voor vulkanen. Het publiek zal zich voor deze productie rond de Geyser verzamelen. Daarmee krijgt het personage, dat al in Expériences, c’est show ! optreedt, een nieuw avontuur op het toneel."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il programma delle serate estive del 2016 annuncia uno spettacolo inedito dedicato alla passione del professore per i vulcani. Il pubblico dovrebbe riunirsi intorno al Geyser per questa creazione. La produzione amplia le avventure sceniche del personaggio, già presente in Expériences, c’est show !"
+          },
+          {
+            "languageCode": "es",
+            "value": "El programa de las noches de verano de 2016 anuncia un espectáculo nuevo dedicado a la pasión del profesor por los volcanes. El público se reunirá alrededor del Geyser para esta creación. La propuesta amplía las aventuras escénicas del personaje, que ya aparecía en Expériences, c’est show !"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Program letnich wieczorów na 2016 rok zapowiada nowy spektakl o wulkanicznej pasji profesora. Publiczność ma zebrać się wokół Geyser, by obejrzeć tę produkcję. Rozszerza ona sceniczne przygody postaci znanej już z Expériences, c’est show !"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O programa das noites de verão de 2016 anuncia um espetáculo inédito dedicado à paixão do professor pelos vulcões. O público deverá reunir-se em redor do Geyser para esta criação. A produção amplia as aventuras em palco da personagem, já presente em Expériences, c’est show !"
+          }
+        ],
+        "id": "55b8e7dc-5576-4361-96b3-b6127e3d2304",
+        "itemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "parkItemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
         "slug": null,
         "previousName": null,
         "newName": null,

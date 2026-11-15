@@ -1,0 +1,63 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T23:17:39.003718+00:00",
+  "sourceAccess": [
+    {
+      "key": "official2025summer",
+      "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+      "retrievedAtUtc": "2026-11-15T23:15:00.361715+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/animations-ete-2025/",
+      "bytes": 141543,
+      "sha256": "e264bb3d33c4ff8d21dcece4b46caec8f75ca8c1c1d16579d2f53161eb0c9af3"
+    },
+    {
+      "key": "primordia",
+      "url": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "retrievedAtUtc": "2026-11-15T23:15:00.362568+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "bytes": 133078,
+      "sha256": "666f497aba0f8dda7f4dc8fb2611f4acc27abc57c405eaa5bc40966cb2ca2006"
+    },
+    {
+      "key": "retrospective2025",
+      "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+      "retrievedAtUtc": "2026-11-15T23:15:23.511727+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+      "bytes": 114165,
+      "sha256": "be2ac169e9726402db0bd6c50930a1f1465786bd33893a8435235d950e761538"
+    },
+    {
+      "key": "creator",
+      "url": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+      "retrievedAtUtc": "2026-11-15T23:15:23.512967+00:00",
+      "status": 200,
+      "finalUrl": "https://make-it-event.com/portfolio/item/spectacle-immersif-vulcania/",
+      "bytes": 97117,
+      "sha256": "049e442f78419d035098fedd1db6d7903e02ede2c7f0921e4dac3a782cf539c7"
+    }
+  ],
+  "personallyReadSourceFindings": {
+    "official2025summer": "26June2025release namesVulcanova,LaNuitdesEnchanteurs newfor11JulyAugustdates. Notfirstperformedday inferred fromschedule. Terreencolèreclimate→earthquakeclaim notcopied.",
+    "retrospective2025": "3Nov2025officialretrospective explicitly listsVulcanova amongnew2025shows, confirming execution thatseason. Parkseasonclosure2Nov notpermanentshowclosure.",
+    "creator": "MakeItGroup portfolio explicitly distinguishesVULCANOVA2025andPRIMORDIA2026. MakeItCréation artisticcreation;MakeItFabrikPortedesVolcanssteelstructure. DanuandLug actedbyAliénorSchreder/RuddySala filmedgreenscreenandcomposited, notpresenceofliveactorsintheparkassumed. Displayed11June2025page timestamp isnotopeningdateandcontentnowdiscusses2026.",
+    "primordia": "Currentofficialpage storyoriginsofEarth,18min; noannualdateindependentlydeducedfromweeklycalendar."
+  },
+  "correctionOfPriorResearchNotes": {
+    "affected": "vulcania-dragon-time-research-20261115.json identityNotes and nonpublic metadata repeatedPrimordia2025",
+    "error": "Generic /actualites/nouveautes/ retains12Dec2024titleNouveautes2025butcardsnowlistPrimordia,ExpeditionHawaiand2026films. Currentcardcontentcannotdateopeningto2025.",
+    "correct": "Vulcanova is2025show; Primordia is2026show. Existing public Primordia openingDateTextandOpeningevent alreadycorrectly2026; no publicdatecorrectionneeded.",
+    "existingItemId": "ba34b618-1876-4355-b842-2d10f6975525",
+    "existingHistoryKey": "vulcania-item-history-primordia-2026",
+    "noDataMutationPerformed": true,
+    "noAliasOrRenameInferred": true
+  },
+  "pending": [
+    "QualifynewVulcanovaidentityandcreatorreferencebeforemutation",
+    "Inspectnativephotosbeforeattribution; creatorfilminggreenscreen/stillcomposites notautomaticallyparkphotos",
+    "Noexecutedclosuredateestablished"
+  ],
+  "noNewApplyOrImport": true
+}

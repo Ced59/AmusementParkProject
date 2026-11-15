@@ -1,0 +1,1005 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-science-challenges-renewal-announcement-2017",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "itemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "parkItemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2017,
+            "month": 6,
+            "day": 20,
+            "datePrecision": "Day",
+            "eventType": "Announcement",
+            "isVisible": false,
+            "isMajor": false,
+            "mainImageId": null,
+            "sources": [
+              {
+                "label": "Vulcania — communiqué estival du 20 juin 2017, repris par ParcPlaza",
+                "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "FranceNetInfos — programme estival du quinzième anniversaire, 2017",
+                "url": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une nouvelle formule pour les défis du quinzième anniversaire"
+              },
+              {
+                "languageCode": "en",
+                "value": "A renewed challenge format for the fifteenth anniversary"
+              },
+              {
+                "languageCode": "de",
+                "value": "Ein neues Aufgabenformat zum fünfzehnten Jubiläum"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een vernieuwde spelvorm voor de vijftiende verjaardag"
+              },
+              {
+                "languageCode": "it",
+                "value": "Una formula rinnovata per il quindicesimo anniversario"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una fórmula renovada para el decimoquinto aniversario"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Nowa formuła wyzwań na piętnastolecie parku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma fórmula renovada para o décimo quinto aniversário"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "À l’occasion des quinze ans du parc, les équipes scientifiques, scénographiques et techniques présentent le résultat de plusieurs mois de préparation. Le programme annoncé confie à Fred le lancement des missions, puis aux animateurs l’accompagnement des visiteurs dans un jeu collectif consacré aux volcans ou à l’espace."
+              },
+              {
+                "languageCode": "en",
+                "value": "For the park’s fifteenth anniversary, its science, scenography and technical teams present the result of several months of preparation. The announced programme gives Fred the role of introducing the missions, with presenters then guiding visitors through a group game about volcanoes or space."
+              },
+              {
+                "languageCode": "de",
+                "value": "Zum fünfzehnten Parkjubiläum präsentieren die Teams für Wissenschaft, Szenografie und Technik das Ergebnis mehrmonatiger Vorbereitungen. Im angekündigten Programm stellt Fred die Missionen vor. Anschließend begleiten die Vermittler die Besucher durch ein gemeinsames Spiel rund um Vulkane oder den Weltraum."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Voor de vijftiende verjaardag van het park presenteren de teams voor wetenschap, scenografie en techniek het resultaat van maanden voorbereiding. Volgens het aangekondigde programma introduceert Fred de missies. Daarna begeleiden de medewerkers de bezoekers bij een gezamenlijk spel over vulkanen of de ruimte."
+              },
+              {
+                "languageCode": "it",
+                "value": "Per il quindicesimo anniversario del parco, i gruppi scientifici, scenografici e tecnici presentano il risultato di mesi di preparazione. Il programma annunciato affida a Fred l’introduzione delle missioni; gli animatori accompagnano poi i visitatori in un gioco collettivo dedicato ai vulcani o allo spazio."
+              },
+              {
+                "languageCode": "es",
+                "value": "Con motivo del decimoquinto aniversario del parque, los equipos científicos, escenográficos y técnicos presentan el resultado de meses de preparación. El programa anunciado encarga a Fred la presentación de las misiones, antes de que los animadores acompañen a los visitantes en un juego colectivo sobre volcanes o el espacio."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Z okazji piętnastolecia parku zespoły naukowy, scenograficzny i techniczny przedstawiają efekt wielomiesięcznych przygotowań. W zapowiedzianym programie Fred wprowadza uczestników w misje. Następnie animatorzy prowadzą zwiedzających przez zespołową zabawę poświęconą wulkanom lub kosmosowi."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Para o décimo quinto aniversário do parque, as equipas científicas, cenográficas e técnicas apresentam o resultado de meses de preparação. O programa anunciado atribui a Fred a introdução das missões. Depois, os animadores acompanham os visitantes num jogo coletivo dedicado aos vulcões ou ao espaço."
+              }
+            ]
+          },
+          {
+            "key": "vulcania-yapadrisk-flame-announcement-2016",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "itemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "parkItemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2016,
+            "month": 6,
+            "day": 20,
+            "datePrecision": "Day",
+            "eventType": "Announcement",
+            "isVisible": false,
+            "isMajor": false,
+            "mainImageId": null,
+            "sources": [
+              {
+                "label": "Vulcania — programme estival, communiqué repris par PARKS Trip le 20 juin 2016",
+                "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Le Progrès — L’été s’annonce agité à Vulcania, Geneviève Colonna d’Istria, 22 juin 2016",
+                "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser"
+              },
+              {
+                "languageCode": "en",
+                "value": "Yapadrisk prepares a new gathering around the Geyser"
+              },
+              {
+                "languageCode": "de",
+                "value": "Yapadrisk plant einen neuen Auftritt am Geyser"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Yapadrisk bereidt een nieuwe ontmoeting bij de Geyser voor"
+              },
+              {
+                "languageCode": "it",
+                "value": "Yapadrisk prepara un nuovo appuntamento intorno al Geyser"
+              },
+              {
+                "languageCode": "es",
+                "value": "Yapadrisk prepara una nueva cita alrededor del Geyser"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Yapadrisk przygotowuje nowe spotkanie przy Geyser"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Yapadrisk prepara um novo encontro junto ao Geyser"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le programme des soirées estivales de 2016 annonce un spectacle inédit consacré à la passion du professeur pour les volcans. Le public doit se réunir autour du Geyser pour cette création. Elle vient élargir les aventures scéniques du personnage, déjà présent dans Expériences, c’est show !"
+              },
+              {
+                "languageCode": "en",
+                "value": "The programme for the 2016 summer evenings announces a new show devoted to the professor’s passion for volcanoes. Audiences are to gather around the Geyser for this creation. It expands the character’s stage adventures, following his appearances in Expériences, c’est show !"
+              },
+              {
+                "languageCode": "de",
+                "value": "Das Programm der Sommerabende 2016 kündigt eine neue Show über die Vulkanbegeisterung des Professors an. Das Publikum soll sich dafür am Geyser versammeln. Die Produktion erweitert die Bühnenabenteuer der Figur, die bereits in Expériences, c’est show ! auftritt."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het programma van de zomeravonden in 2016 kondigt een nieuwe voorstelling aan over de passie van de professor voor vulkanen. Het publiek zal zich voor deze productie rond de Geyser verzamelen. Daarmee krijgt het personage, dat al in Expériences, c’est show ! optreedt, een nieuw avontuur op het toneel."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il programma delle serate estive del 2016 annuncia uno spettacolo inedito dedicato alla passione del professore per i vulcani. Il pubblico dovrebbe riunirsi intorno al Geyser per questa creazione. La produzione amplia le avventure sceniche del personaggio, già presente in Expériences, c’est show !"
+              },
+              {
+                "languageCode": "es",
+                "value": "El programa de las noches de verano de 2016 anuncia un espectáculo nuevo dedicado a la pasión del profesor por los volcanes. El público se reunirá alrededor del Geyser para esta creación. La propuesta amplía las aventuras escénicas del personaje, que ya aparecía en Expériences, c’est show !"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Program letnich wieczorów na 2016 rok zapowiada nowy spektakl o wulkanicznej pasji profesora. Publiczność ma zebrać się wokół Geyser, by obejrzeć tę produkcję. Rozszerza ona sceniczne przygody postaci znanej już z Expériences, c’est show !"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O programa das noites de verão de 2016 anuncia um espetáculo inédito dedicado à paixão do professor pelos vulcões. O público deverá reunir-se em redor do Geyser para esta criação. A produção amplia as aventuras em palco da personagem, já presente em Expériences, c’est show !"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Two source-publication announcements,20June2017renewalofalready-existingDéfisdesSciences and20June2016newYapadriskflameshow atGeyser. NOTfirstopening dates orfirstperformance days. No itemopening/closingdates changed. Teamscollaboration fromofficial2017release, YapaGeyserintendedsetting fromofficial2016release. MainimagesNULL becausecurrentYapaimageundatedversionnotmatched andnoqualifiedDefisphoto.32titles/summariespersonallyauthoredreviewed8languages, notduplicateparkfacts."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "99262a75-2cf2-4cd0-9070-391b32392f23",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:11:10.62405Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ee1b24df-c2d9-4210-8bd5-d19a6e11f32c",
+        "entityKey": "vulcania-science-challenges-renewal-announcement-2017",
+        "displayName": "Une nouvelle formule pour les défis du quinzième anniversaire",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-science-challenges-renewal-announcement-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "120b1227-da60-4661-bb87-a649467ca3a6"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "120b1227-da60-4661-bb87-a649467ca3a6"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein neues Aufgabenformat zum fünfzehnten Jubiläum, en:A renewed challenge format for the fifteenth anniversary, es:Una fórmula renovada para el decimoquinto aniversario, fr:Une nouvelle formule pour les défis du quinzième anniversaire, it:Una formula rinnovata per il quindicesimo anniversario, nl:Een vernieuwde spelvorm voor de vijftiende verjaardag, pl:Nowa formuła wyzwań na piętnastolecie parku, pt:Uma fórmula renovada para o décimo quinto aniversário"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Zum fünfzehnten Parkjubiläum präsentieren die Teams für Wissenschaft, Szenografie und Technik das Ergebnis mehrmonatiger Vorbereitungen. Im angekündigten Programm stellt Fred die Missionen vor. Anschließend begleiten die Vermittler die Besucher durch ein gemeinsames Spiel rund um Vulkane oder den Weltraum., en:For the park’s fifteenth anniversary, its science, scenography and technical teams present the result of several months of preparation. The announced programme gives Fred the role of introducing the missions, with presenters then guiding visitors through a group game about volcanoes or space., es:Con motivo del decimoquinto aniversario del parque, los equipos científicos, escenográficos y técnicos presentan el resultado de meses de preparación. El programa anunciado encarga a Fred la presentación de las misiones, antes de que los animadores acompañen a los visitantes en un juego colectivo sobre volcanes o el espacio., fr:À l’occasion des quinze ans du parc, les équipes scientifiques, scénographiques et techniques présentent le résultat de plusieurs mois de préparation. Le programme annoncé confie à Fred le lancement des missions, puis aux animateurs l’accompagnement des visiteurs dans un jeu collectif consacré aux volcans ou à l’espace., it:Per il quindicesimo anniversario del parco, i gruppi scientifici, scenografici e tecnici presentano il risultato di mesi di preparazione. Il programma annunciato affida a Fred l’introduzione delle missioni; gli animatori accompagnano poi i visitatori in un gioco collettivo dedicato ai vulcani o allo spazio., nl:Voor de vijftiende verjaardag van het park presenteren de teams voor wetenschap, scenografie en techniek het resultaat van maanden voorbereiding. Volgens het aangekondigde programma introduceert Fred de missies. Daarna begeleiden de medewerkers de bezoekers bij een gezamenlijk spel over vulkanen of de ruimte., pl:Z okazji piętnastolecia parku zespoły naukowy, scenograficzny i techniczny przedstawiają efekt wielomiesięcznych przygotowań. W zapowiedzianym programie Fred wprowadza uczestników w misje. Następnie animatorzy prowadzą zwiedzających przez zespołową zabawę poświęconą wulkanom lub kosmosowi., pt:Para o décimo quinto aniversário do parque, as equipas científicas, cenográficas e técnicas apresentam o resultado de meses de preparação. O programa anunciado atribui a Fred a introdução das missões. Depois, os animadores acompanham os visitantes num jogo coletivo dedicado aos vulcões ou ao espaço."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"FranceNetInfos \\u2014 programme estival du quinzi\\u00E8me anniversaire, 2017\",\"Url\":\"https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 20 juin 2017, repris par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "bacc318e-5d3b-4b6d-b3aa-7b38434a842a",
+        "entityKey": "vulcania-yapadrisk-flame-announcement-2016",
+        "displayName": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-yapadrisk-flame-announcement-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Yapadrisk plant einen neuen Auftritt am Geyser, en:Yapadrisk prepares a new gathering around the Geyser, es:Yapadrisk prepara una nueva cita alrededor del Geyser, fr:Yapadrisk prépare un nouveau rendez-vous autour du Geyser, it:Yapadrisk prepara un nuovo appuntamento intorno al Geyser, nl:Yapadrisk bereidt een nieuwe ontmoeting bij de Geyser voor, pl:Yapadrisk przygotowuje nowe spotkanie przy Geyser, pt:Yapadrisk prepara um novo encontro junto ao Geyser"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Programm der Sommerabende 2016 kündigt eine neue Show über die Vulkanbegeisterung des Professors an. Das Publikum soll sich dafür am Geyser versammeln. Die Produktion erweitert die Bühnenabenteuer der Figur, die bereits in Expériences, c’est show ! auftritt., en:The programme for the 2016 summer evenings announces a new show devoted to the professor’s passion for volcanoes. Audiences are to gather around the Geyser for this creation. It expands the character’s stage adventures, following his appearances in Expériences, c’est show !, es:El programa de las noches de verano de 2016 anuncia un espectáculo nuevo dedicado a la pasión del profesor por los volcanes. El público se reunirá alrededor del Geyser para esta creación. La propuesta amplía las aventuras escénicas del personaje, que ya aparecía en Expériences, c’est show !, fr:Le programme des soirées estivales de 2016 annonce un spectacle inédit consacré à la passion du professeur pour les volcans. Le public doit se réunir autour du Geyser pour cette création. Elle vient élargir les aventures scéniques du personnage, déjà présent dans Expériences, c’est show !, it:Il programma delle serate estive del 2016 annuncia uno spettacolo inedito dedicato alla passione del professore per i vulcani. Il pubblico dovrebbe riunirsi intorno al Geyser per questa creazione. La produzione amplia le avventure sceniche del personaggio, già presente in Expériences, c’est show !, nl:Het programma van de zomeravonden in 2016 kondigt een nieuwe voorstelling aan over de passie van de professor voor vulkanen. Het publiek zal zich voor deze productie rond de Geyser verzamelen. Daarmee krijgt het personage, dat al in Expériences, c’est show ! optreedt, een nieuw avontuur op het toneel., pl:Program letnich wieczorów na 2016 rok zapowiada nowy spektakl o wulkanicznej pasji profesora. Publiczność ma zebrać się wokół Geyser, by obejrzeć tę produkcję. Rozszerza ona sceniczne przygody postaci znanej już z Expériences, c’est show !, pt:O programa das noites de verão de 2016 anuncia um espetáculo inédito dedicado à paixão do professor pelos vulcões. O público deverá reunir-se em redor do Geyser para esta criação. A produção amplia as aventuras em palco da personagem, já presente em Expériences, c’est show !"
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le Progr\\u00E8s \\u2014 L\\u2019\\u00E9t\\u00E9 s\\u2019annonce agit\\u00E9 \\u00E0 Vulcania, Genevi\\u00E8ve Colonna d\\u2019Istria, 22 juin 2016\",\"Url\":\"https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 programme estival, communiqu\\u00E9 repris par PARKS Trip le 20 juin 2016\",\"Url\":\"https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "cc845210-73b6-468a-8ae6-f420d0b807a0",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:11:29.7002604Z",
+    "appliedAtUtc": "2026-11-15T23:11:29.7002612Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "4b80dcd6-e7ef-49e1-abbb-3dfe56176bc9",
+        "entityKey": "vulcania-science-challenges-renewal-announcement-2017",
+        "displayName": "Une nouvelle formule pour les défis du quinzième anniversaire",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-science-challenges-renewal-announcement-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "120b1227-da60-4661-bb87-a649467ca3a6"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "120b1227-da60-4661-bb87-a649467ca3a6"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein neues Aufgabenformat zum fünfzehnten Jubiläum, en:A renewed challenge format for the fifteenth anniversary, es:Una fórmula renovada para el decimoquinto aniversario, fr:Une nouvelle formule pour les défis du quinzième anniversaire, it:Una formula rinnovata per il quindicesimo anniversario, nl:Een vernieuwde spelvorm voor de vijftiende verjaardag, pl:Nowa formuła wyzwań na piętnastolecie parku, pt:Uma fórmula renovada para o décimo quinto aniversário"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Zum fünfzehnten Parkjubiläum präsentieren die Teams für Wissenschaft, Szenografie und Technik das Ergebnis mehrmonatiger Vorbereitungen. Im angekündigten Programm stellt Fred die Missionen vor. Anschließend begleiten die Vermittler die Besucher durch ein gemeinsames Spiel rund um Vulkane oder den Weltraum., en:For the park’s fifteenth anniversary, its science, scenography and technical teams present the result of several months of preparation. The announced programme gives Fred the role of introducing the missions, with presenters then guiding visitors through a group game about volcanoes or space., es:Con motivo del decimoquinto aniversario del parque, los equipos científicos, escenográficos y técnicos presentan el resultado de meses de preparación. El programa anunciado encarga a Fred la presentación de las misiones, antes de que los animadores acompañen a los visitantes en un juego colectivo sobre volcanes o el espacio., fr:À l’occasion des quinze ans du parc, les équipes scientifiques, scénographiques et techniques présentent le résultat de plusieurs mois de préparation. Le programme annoncé confie à Fred le lancement des missions, puis aux animateurs l’accompagnement des visiteurs dans un jeu collectif consacré aux volcans ou à l’espace., it:Per il quindicesimo anniversario del parco, i gruppi scientifici, scenografici e tecnici presentano il risultato di mesi di preparazione. Il programma annunciato affida a Fred l’introduzione delle missioni; gli animatori accompagnano poi i visitatori in un gioco collettivo dedicato ai vulcani o allo spazio., nl:Voor de vijftiende verjaardag van het park presenteren de teams voor wetenschap, scenografie en techniek het resultaat van maanden voorbereiding. Volgens het aangekondigde programma introduceert Fred de missies. Daarna begeleiden de medewerkers de bezoekers bij een gezamenlijk spel over vulkanen of de ruimte., pl:Z okazji piętnastolecia parku zespoły naukowy, scenograficzny i techniczny przedstawiają efekt wielomiesięcznych przygotowań. W zapowiedzianym programie Fred wprowadza uczestników w misje. Następnie animatorzy prowadzą zwiedzających przez zespołową zabawę poświęconą wulkanom lub kosmosowi., pt:Para o décimo quinto aniversário do parque, as equipas científicas, cenográficas e técnicas apresentam o resultado de meses de preparação. O programa anunciado atribui a Fred a introdução das missões. Depois, os animadores acompanham os visitantes num jogo coletivo dedicado aos vulcões ou ao espaço."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"FranceNetInfos \\u2014 programme estival du quinzi\\u00E8me anniversaire, 2017\",\"Url\":\"https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 20 juin 2017, repris par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "55b8e7dc-5576-4361-96b3-b6127e3d2304",
+        "entityKey": "vulcania-yapadrisk-flame-announcement-2016",
+        "displayName": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-yapadrisk-flame-announcement-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "f56ed878-6c20-4b11-a9ad-aa954468dad2"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "20"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Announcement"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Yapadrisk plant einen neuen Auftritt am Geyser, en:Yapadrisk prepares a new gathering around the Geyser, es:Yapadrisk prepara una nueva cita alrededor del Geyser, fr:Yapadrisk prépare un nouveau rendez-vous autour du Geyser, it:Yapadrisk prepara un nuovo appuntamento intorno al Geyser, nl:Yapadrisk bereidt een nieuwe ontmoeting bij de Geyser voor, pl:Yapadrisk przygotowuje nowe spotkanie przy Geyser, pt:Yapadrisk prepara um novo encontro junto ao Geyser"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Programm der Sommerabende 2016 kündigt eine neue Show über die Vulkanbegeisterung des Professors an. Das Publikum soll sich dafür am Geyser versammeln. Die Produktion erweitert die Bühnenabenteuer der Figur, die bereits in Expériences, c’est show ! auftritt., en:The programme for the 2016 summer evenings announces a new show devoted to the professor’s passion for volcanoes. Audiences are to gather around the Geyser for this creation. It expands the character’s stage adventures, following his appearances in Expériences, c’est show !, es:El programa de las noches de verano de 2016 anuncia un espectáculo nuevo dedicado a la pasión del profesor por los volcanes. El público se reunirá alrededor del Geyser para esta creación. La propuesta amplía las aventuras escénicas del personaje, que ya aparecía en Expériences, c’est show !, fr:Le programme des soirées estivales de 2016 annonce un spectacle inédit consacré à la passion du professeur pour les volcans. Le public doit se réunir autour du Geyser pour cette création. Elle vient élargir les aventures scéniques du personnage, déjà présent dans Expériences, c’est show !, it:Il programma delle serate estive del 2016 annuncia uno spettacolo inedito dedicato alla passione del professore per i vulcani. Il pubblico dovrebbe riunirsi intorno al Geyser per questa creazione. La produzione amplia le avventure sceniche del personaggio, già presente in Expériences, c’est show !, nl:Het programma van de zomeravonden in 2016 kondigt een nieuwe voorstelling aan over de passie van de professor voor vulkanen. Het publiek zal zich voor deze productie rond de Geyser verzamelen. Daarmee krijgt het personage, dat al in Expériences, c’est show ! optreedt, een nieuw avontuur op het toneel., pl:Program letnich wieczorów na 2016 rok zapowiada nowy spektakl o wulkanicznej pasji profesora. Publiczność ma zebrać się wokół Geyser, by obejrzeć tę produkcję. Rozszerza ona sceniczne przygody postaci znanej już z Expériences, c’est show !, pt:O programa das noites de verão de 2016 anuncia um espetáculo inédito dedicado à paixão do professor pelos vulcões. O público deverá reunir-se em redor do Geyser para esta criação. A produção amplia as aventuras em palco da personagem, já presente em Expériences, c’est show !"
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le Progr\\u00E8s \\u2014 L\\u2019\\u00E9t\\u00E9 s\\u2019annonce agit\\u00E9 \\u00E0 Vulcania, Genevi\\u00E8ve Colonna d\\u2019Istria, 22 juin 2016\",\"Url\":\"https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 programme estival, communiqu\\u00E9 repris par PARKS Trip le 20 juin 2016\",\"Url\":\"https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-science-challenges-renewal-announcement-2017",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "120b1227-da60-4661-bb87-a649467ca3a6",
+      "itemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+      "parkItemId": "120b1227-da60-4661-bb87-a649467ca3a6",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2017,
+      "month": 6,
+      "day": 20,
+      "datePrecision": "Day",
+      "eventType": "Announcement",
+      "isVisible": false,
+      "isMajor": false,
+      "mainImageId": null,
+      "sources": [
+        {
+          "label": "Vulcania — communiqué estival du 20 juin 2017, repris par ParcPlaza",
+          "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "FranceNetInfos — programme estival du quinzième anniversaire, 2017",
+          "url": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Une nouvelle formule pour les défis du quinzième anniversaire"
+        },
+        {
+          "languageCode": "en",
+          "value": "A renewed challenge format for the fifteenth anniversary"
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein neues Aufgabenformat zum fünfzehnten Jubiläum"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een vernieuwde spelvorm voor de vijftiende verjaardag"
+        },
+        {
+          "languageCode": "it",
+          "value": "Una formula rinnovata per il quindicesimo anniversario"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una fórmula renovada para el decimoquinto aniversario"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nowa formuła wyzwań na piętnastolecie parku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma fórmula renovada para o décimo quinto aniversário"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "À l’occasion des quinze ans du parc, les équipes scientifiques, scénographiques et techniques présentent le résultat de plusieurs mois de préparation. Le programme annoncé confie à Fred le lancement des missions, puis aux animateurs l’accompagnement des visiteurs dans un jeu collectif consacré aux volcans ou à l’espace."
+        },
+        {
+          "languageCode": "en",
+          "value": "For the park’s fifteenth anniversary, its science, scenography and technical teams present the result of several months of preparation. The announced programme gives Fred the role of introducing the missions, with presenters then guiding visitors through a group game about volcanoes or space."
+        },
+        {
+          "languageCode": "de",
+          "value": "Zum fünfzehnten Parkjubiläum präsentieren die Teams für Wissenschaft, Szenografie und Technik das Ergebnis mehrmonatiger Vorbereitungen. Im angekündigten Programm stellt Fred die Missionen vor. Anschließend begleiten die Vermittler die Besucher durch ein gemeinsames Spiel rund um Vulkane oder den Weltraum."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Voor de vijftiende verjaardag van het park presenteren de teams voor wetenschap, scenografie en techniek het resultaat van maanden voorbereiding. Volgens het aangekondigde programma introduceert Fred de missies. Daarna begeleiden de medewerkers de bezoekers bij een gezamenlijk spel over vulkanen of de ruimte."
+        },
+        {
+          "languageCode": "it",
+          "value": "Per il quindicesimo anniversario del parco, i gruppi scientifici, scenografici e tecnici presentano il risultato di mesi di preparazione. Il programma annunciato affida a Fred l’introduzione delle missioni; gli animatori accompagnano poi i visitatori in un gioco collettivo dedicato ai vulcani o allo spazio."
+        },
+        {
+          "languageCode": "es",
+          "value": "Con motivo del decimoquinto aniversario del parque, los equipos científicos, escenográficos y técnicos presentan el resultado de meses de preparación. El programa anunciado encarga a Fred la presentación de las misiones, antes de que los animadores acompañen a los visitantes en un juego colectivo sobre volcanes o el espacio."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Z okazji piętnastolecia parku zespoły naukowy, scenograficzny i techniczny przedstawiają efekt wielomiesięcznych przygotowań. W zapowiedzianym programie Fred wprowadza uczestników w misje. Następnie animatorzy prowadzą zwiedzających przez zespołową zabawę poświęconą wulkanom lub kosmosowi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Para o décimo quinto aniversário do parque, as equipas científicas, cenográficas e técnicas apresentam o resultado de meses de preparação. O programa anunciado atribui a Fred a introdução das missões. Depois, os animadores acompanham os visitantes num jogo coletivo dedicado aos vulcões ou ao espaço."
+        }
+      ],
+      "id": "4b80dcd6-e7ef-49e1-abbb-3dfe56176bc9"
+    },
+    {
+      "key": "vulcania-yapadrisk-flame-announcement-2016",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "itemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "parkItemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2016,
+      "month": 6,
+      "day": 20,
+      "datePrecision": "Day",
+      "eventType": "Announcement",
+      "isVisible": false,
+      "isMajor": false,
+      "mainImageId": null,
+      "sources": [
+        {
+          "label": "Vulcania — programme estival, communiqué repris par PARKS Trip le 20 juin 2016",
+          "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Le Progrès — L’été s’annonce agité à Vulcania, Geneviève Colonna d’Istria, 22 juin 2016",
+          "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Yapadrisk prépare un nouveau rendez-vous autour du Geyser"
+        },
+        {
+          "languageCode": "en",
+          "value": "Yapadrisk prepares a new gathering around the Geyser"
+        },
+        {
+          "languageCode": "de",
+          "value": "Yapadrisk plant einen neuen Auftritt am Geyser"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Yapadrisk bereidt een nieuwe ontmoeting bij de Geyser voor"
+        },
+        {
+          "languageCode": "it",
+          "value": "Yapadrisk prepara un nuovo appuntamento intorno al Geyser"
+        },
+        {
+          "languageCode": "es",
+          "value": "Yapadrisk prepara una nueva cita alrededor del Geyser"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Yapadrisk przygotowuje nowe spotkanie przy Geyser"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Yapadrisk prepara um novo encontro junto ao Geyser"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le programme des soirées estivales de 2016 annonce un spectacle inédit consacré à la passion du professeur pour les volcans. Le public doit se réunir autour du Geyser pour cette création. Elle vient élargir les aventures scéniques du personnage, déjà présent dans Expériences, c’est show !"
+        },
+        {
+          "languageCode": "en",
+          "value": "The programme for the 2016 summer evenings announces a new show devoted to the professor’s passion for volcanoes. Audiences are to gather around the Geyser for this creation. It expands the character’s stage adventures, following his appearances in Expériences, c’est show !"
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Programm der Sommerabende 2016 kündigt eine neue Show über die Vulkanbegeisterung des Professors an. Das Publikum soll sich dafür am Geyser versammeln. Die Produktion erweitert die Bühnenabenteuer der Figur, die bereits in Expériences, c’est show ! auftritt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het programma van de zomeravonden in 2016 kondigt een nieuwe voorstelling aan over de passie van de professor voor vulkanen. Het publiek zal zich voor deze productie rond de Geyser verzamelen. Daarmee krijgt het personage, dat al in Expériences, c’est show ! optreedt, een nieuw avontuur op het toneel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il programma delle serate estive del 2016 annuncia uno spettacolo inedito dedicato alla passione del professore per i vulcani. Il pubblico dovrebbe riunirsi intorno al Geyser per questa creazione. La produzione amplia le avventure sceniche del personaggio, già presente in Expériences, c’est show !"
+        },
+        {
+          "languageCode": "es",
+          "value": "El programa de las noches de verano de 2016 anuncia un espectáculo nuevo dedicado a la pasión del profesor por los volcanes. El público se reunirá alrededor del Geyser para esta creación. La propuesta amplía las aventuras escénicas del personaje, que ya aparecía en Expériences, c’est show !"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Program letnich wieczorów na 2016 rok zapowiada nowy spektakl o wulkanicznej pasji profesora. Publiczność ma zebrać się wokół Geyser, by obejrzeć tę produkcję. Rozszerza ona sceniczne przygody postaci znanej już z Expériences, c’est show !"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O programa das noites de verão de 2016 anuncia um espetáculo inédito dedicado à paixão do professor pelos vulcões. O público deverá reunir-se em redor do Geyser para esta criação. A produção amplia as aventuras em palco da personagem, já presente em Expériences, c’est show !"
+        }
+      ],
+      "id": "55b8e7dc-5576-4361-96b3-b6127e3d2304"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "news2011",
+      "url": "https://www.newsparcs.com/fr/article/00005305-c_est_l_ete_a_vulcania_",
+      "retrievedAtUtc": "2026-11-15T23:05:36.198970+00:00",
+      "status": 200,
+      "finalUrl": "https://www.newsparcs.com/fr/article/00005305-c_est_l_ete_a_vulcania_",
+      "bytes": 94894,
+      "sha256": "355d6e82b1304e4ecc39688e49b9f28de796e4a98386605426e62faa51e4e88d"
+    },
+    {
+      "key": "summer2013",
+      "url": "https://www.parcplaza.net/2013/06/cest-lete-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T23:05:36.199760+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2013/06/cest-lete-vulcania.html",
+      "bytes": 129317,
+      "sha256": "3cfa6463a9dcc132f3ccef5355a1af846693332b3335dde6797ab54535cebadc"
+    },
+    {
+      "key": "retrospective2016",
+      "url": "https://www.parcplaza.net/2016/11/nouvelle-saison-record-pour-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T23:05:36.200141+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2016/11/nouvelle-saison-record-pour-vulcania.html",
+      "bytes": 135948,
+      "sha256": "2d2e3156ff1edf7cb5a72ea56751f6e9b50fd200b4a729d5c1e8bd8bafac5f70"
+    },
+    {
+      "key": "francenet2017",
+      "url": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+      "retrievedAtUtc": "2026-11-15T23:05:36.990642+00:00",
+      "status": 200,
+      "finalUrl": "https://www.francenetinfos.com/cest-lete-a-vulcania-place-aux-spectacles-a-lemotion-166480/",
+      "bytes": 212557,
+      "sha256": "358b7875631942c99290265416968114953a6250d51cff25ac9151ffc7b1307f"
+    },
+    {
+      "key": "leprogres2018",
+      "url": "https://www.leprogres.fr/haute-loire-43-edition-puy-en-velay/2018/07/14/vulcania-l-ete-sera-show",
+      "retrievedAtUtc": "2026-11-15T23:05:37.109317+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/haute-loire-43-edition-puy-en-velay/2018/07/14/vulcania-l-ete-sera-show",
+      "bytes": 528317,
+      "sha256": "86dff425fdb200100453491840bdc0d19f115908ce256fe3439f2fc1b01d9bec"
+    },
+    {
+      "key": "summer2020",
+      "url": "https://www.clermontinfos63.fr/actualite-18538-vulcania-vous-attend-des-le-1er-juillet.html",
+      "retrievedAtUtc": "2026-11-15T23:05:37.505784+00:00",
+      "status": 200,
+      "finalUrl": "https://www.clermontinfos63.fr/actualite-18538-vulcania-vous-attend-des-le-1er-juillet.html",
+      "bytes": 6852,
+      "sha256": "54b5c41cb674de8c17042f916034ea8d8daa40fb5f7d6ac88999b919a40bd382"
+    },
+    {
+      "key": "creator",
+      "url": "https://www.elixircompagnie.com/dragon-time",
+      "retrievedAtUtc": "2026-11-15T22:48:36.005323+00:00",
+      "status": 200,
+      "finalUrl": "https://www.elixircompagnie.com/dragon-time",
+      "bytes": 999089,
+      "sha256": "9e703d0109ce7953c6cdf17d4da86a94acd14cb306b86f025d3e81e93f0e1be9"
+    },
+    {
+      "key": "official2024",
+      "url": "https://www.vulcania.com/en/news/summer-evenings/",
+      "retrievedAtUtc": "2026-11-15T22:48:36.005975+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/en/news/summer-evenings/",
+      "bytes": 124170,
+      "sha256": "4117e5059fbab6b4a54f22a0c75d936b64668fde8ef0a2ce152df2926e8d86c1"
+    },
+    {
+      "key": "press2017",
+      "url": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "retrievedAtUtc": "2026-11-15T22:48:36.006508+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2017/06/cest-lete-vulcania-place-aux-spectacles.html",
+      "bytes": 137025,
+      "sha256": "f9affafc8565aae1237c05ab5a02d80e01a489f6239e7a8be5efb0400b857f8f"
+    },
+    {
+      "key": "leprogres2017",
+      "url": "https://www.leprogres.fr/sortir/2017/03/29/vulcania-un-programme-volcanique-pour-les-15-ans-du-parc",
+      "retrievedAtUtc": "2026-11-15T22:48:36.743639+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2017/03/29/vulcania-un-programme-volcanique-pour-les-15-ans-du-parc",
+      "bytes": 534014,
+      "sha256": "9068909af74b09b2f68c6e7de2e168181f4ce0e394f83b888255515810332ac2"
+    },
+    {
+      "key": "retrospective2023",
+      "url": "https://fr.linkedin.com/posts/emeline-mutz-41155329a_merci-lequipe-et-%C3%A0-lann%C3%A9e-prochaine-activity-7131198793772892161-3QX7",
+      "retrievedAtUtc": "2026-11-15T22:48:37.062759+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.linkedin.com/posts/emeline-mutz-41155329a_merci-lequipe-et-%C3%A0-lann%C3%A9e-prochaine-activity-7131198793772892161-3QX7",
+      "bytes": 97537,
+      "sha256": "5ed5eb3dee8014ad2ee2afd5c1b4c5b2c8c94438720318d8183090dd51b5f2ce"
+    },
+    {
+      "key": "company",
+      "url": "https://www.elixircompagnie.com/la-petite-histoire",
+      "retrievedAtUtc": "2026-11-15T22:51:25.593627+00:00",
+      "status": 200,
+      "finalUrl": "https://www.elixircompagnie.com/la-petite-histoire",
+      "bytes": 911697,
+      "sha256": "ecd89e4b5c46c9f30083b79a0c24ca053a92fe8a855999e982b62d8946c316b3"
+    },
+    {
+      "key": "press2016",
+      "url": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+      "retrievedAtUtc": "2026-11-15T22:51:25.594523+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parkstrip.fr/2016/06/lete-sera-show-vulcania.html",
+      "bytes": 217173,
+      "sha256": "726a55bd17a6a721329b94d9d7aaa66d736148e2c0e494ab1f019d0a4812f6a0"
+    },
+    {
+      "key": "leprogres2016",
+      "url": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+      "retrievedAtUtc": "2026-11-15T22:51:25.595109+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2016/06/22/l-ete-s-annonce-agite-a-vulcania",
+      "bytes": 530202,
+      "sha256": "2c6cfcfc3319d263431d806687ed4f26b969765be4b7bd5fa7a6e8ccf0247e4e"
+    },
+    {
+      "key": "official2025",
+      "url": "https://www.vulcania.com/actualites/nouveautes/",
+      "retrievedAtUtc": "2026-11-15T22:51:26.610604+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/nouveautes/",
+      "bytes": 139867,
+      "sha256": "cbf92a7c16eac7d3a64e56abfbfcb87c03055824def7d71bb096868f628c5c43"
+    },
+    {
+      "key": "photo-square",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/07/dragon-time-2-300x300-1.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.620025+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/07/dragon-time-2-300x300-1.jpg",
+      "bytes": 36973,
+      "sha256": "e3ef820927c27fdcd7a9b525c4e23d9d2049fbb0f0efe44dd46a4e03296f85f3",
+      "dimensions": [
+        300,
+        300
+      ]
+    },
+    {
+      "key": "photo-wide",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "retrievedAtUtc": "2026-11-15T22:51:27.925828+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau-dragon-time_600x403.jpg",
+      "bytes": 67837,
+      "sha256": "935b5621f78b31119592deaaab366c1161dda8028b5eaf0bfb4eb58583200369",
+      "dimensions": [
+        600,
+        403
+      ]
+    }
+  ],
+  "scopeNotes": "Two source-publication announcements,20June2017renewalofalready-existingDéfisdesSciences and20June2016newYapadriskflameshow atGeyser. NOTfirstopening dates orfirstperformance days. No itemopening/closingdates changed. Teamscollaboration fromofficial2017release, YapaGeyserintendedsetting fromofficial2016release. MainimagesNULL becausecurrentYapaimageundatedversionnotmatched andnoqualifiedDefisphoto.32titles/summariespersonallyauthoredreviewed8languages, notduplicateparkfacts.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
