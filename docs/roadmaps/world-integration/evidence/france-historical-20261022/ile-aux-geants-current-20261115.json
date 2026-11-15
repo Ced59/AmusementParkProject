@@ -3,7 +3,7 @@
   "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T01:38:25.153381+00:00",
+  "observedAtUtc": "2026-11-15T01:48:15.454483+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -616,7 +616,8 @@
         "url": "https://www.youtube.com/watch?v=pfbEdZ2zImQ",
         "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.youtube.com/watch?v=pfbEdZ2zImQ\nCall log:\n  - navigating to \"https://www.youtube.com/watch?v=pfbEdZ2zImQ\", waiting until \"domcontentloaded\"\n"
       }
-    ]
+    ],
+    "qualificationResearch": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-qualification-research-20261115.json"
   },
   "gaps": {
     "watermarkedExistingImageIds": [
@@ -677,7 +678,7 @@
   },
   "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-geants",
   "workingStateSha256": "caef777bfea6af83284a4f0d253761cb604abbc662b9b09d7c246e7e05353df5",
-  "nextAction": "Poursuivre qualification Manège enchanté/Petit train et inventaire ancien/nouveaux gonflables ; recherche Coasterrider active. Sept photos privées et cinq faits privés à auditer avant publication, sans doublonFacebook. Aucun export complet final effectué.",
+  "nextAction": "Résoudre les identités visuelles de Manège enchanté et Petit train et rapprocher l’inventaire ancien/actuel ; 19 notices réécrites, 14 Apply et 7 photos privées sauvegardés. Les cinq nouveaux faits restent privés. Aucun audit final ni nouvelle annonce Facebook.",
   "acceptedImports": [
     {
       "imageId": "c5ea8c26cbd547008c1db3708c3290cf",

@@ -1,0 +1,27 @@
+{
+  "checkedAtUtc": "2026-11-15T01:48:15.454483+00:00",
+  "outcome": "research-only",
+  "dataMutation": false,
+  "sources": [
+    {
+      "url": "https://coasterrider.fr/parc/l-ile-aux-geants/9-juillet-2018",
+      "sha256": "0f6dcd7076558721f1b4d309b8abea65a4450f3d65938a472fc932b94c8053b7",
+      "finding": "Reportage de Pascal Voisin, visite du 9 juillet 2018. Six originaux inspectés : entrée, labyrinthe, pataugeoire, Kangourou et deux vues du Grand 8 ; aucun ne résout les deux notices. Filigranes présents : aucune nouvelle importation. Queen Rides lisible sur Kangourou, constructeur et alias à vérifier avant rattachement."
+    },
+    {
+      "url": "https://guide-o-parc.com/site/index.php?action=park&id=275",
+      "finding": "Ancien inventaire nomme Petit train, Manège Mickey et Petit Manège. Aucune preuve que les deux derniers soient le Manège enchanté actuel. Pas de fusion ni description spéculative."
+    },
+    {
+      "url": "https://guide-o-parc.com/site/index.php?action=ride&id=3504",
+      "sha256": "90d7ccecdf7da5f42cd371352067f6c10339987701d39f1e24091abd1423a0f6",
+      "finding": "Notice Petit train sans photographie propre ni décor précisément décrit ; image de tête du guide sans rapport avec ce parc."
+    }
+  ],
+  "remainingBlockers": [
+    "Deux anciennes descriptions publiques génériques : Manège enchanté et Petit train. Leur identité visuelle reste à qualifier.",
+    "Inventaire actuel à rapprocher des anciennes boutique, pêche aux canards, salle de jeux et des gonflables visibles en 2026."
+  ],
+  "decision": "Conserver partial. Ne pas commencer un audit final déjà connu incomplet, ni publier les nouveaux médias/faits avant résolution et audit. Aucun export complet final réalisé.",
+  "nextIndependentWork": "Recherche historique Droséra, sans travail concurrent sur le même parc."
+}
