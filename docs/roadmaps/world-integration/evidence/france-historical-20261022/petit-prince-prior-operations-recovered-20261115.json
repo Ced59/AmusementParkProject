@@ -1,0 +1,674 @@
+{
+  "entryId": "FR-park-b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "owner": "Conversation France",
+  "recoveredAtUtc": "2026-11-15T08:35:50.2396632Z",
+  "source": "Historique officiel GET admin/park-graph-upserts/history via le transport du client officiel inchangé.",
+  "historyResponseRows": 50,
+  "acceptedApplyCount": 21,
+  "actualDateField": "result.appliedAtUtc ; createdAtUtc du journal non substitué.",
+  "newServerMutationPerformed": false,
+  "publicationRepeated": false,
+  "historyCompleteness": "Fenêtre récente de50opérations renvoyée par le serveur, dont21Apply ; aucune prétention de retrouver toutes les opérations antérieures ou tous les imports.",
+  "operations": [
+    {
+      "historyRecordId": "93a2bb91-e3ff-435f-abf4-91dd0c209516",
+      "historyCreatedAtUtc": "2026-10-20T10:19:27.343Z",
+      "rawDocumentSha256": "447d1cf04472d2c73d0f7ed655dd659218a0a6040f4e94a93f69b2fb68586361",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "d872844b-ea26-4f8b-9bb7-0fa69e28c813",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:19:27.2109279Z",
+        "appliedAtUtc": "2026-10-20T10:19:27.210929Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 6,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "f6994682-dd0f-4cf6-b12c-02c0ae49b144",
+      "historyCreatedAtUtc": "2026-10-20T10:22:40.478Z",
+      "rawDocumentSha256": "4dab9cfc86e39fcb6cad4c3bec2305dbec736933369aa1e92454229286220834",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "cd6e17fc-8c7b-4f8f-b6f8-9f58b0337854",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:22:40.3452984Z",
+        "appliedAtUtc": "2026-10-20T10:22:40.3452994Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 5,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "3731499e-3bd6-47de-96f1-0a67f3773e01",
+      "historyCreatedAtUtc": "2026-10-20T10:27:10.986Z",
+      "rawDocumentSha256": "04c61aba7ce7ee07c4ba1007756a5ef2d79128c114edae1be651cb03b9b27d83",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "80e56917-db73-481b-a666-54681df154b1",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:27:10.9342329Z",
+        "appliedAtUtc": "2026-10-20T10:27:10.9342335Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "0e0a07f9-4ae5-45c3-8607-8f17fbf4381c",
+      "historyCreatedAtUtc": "2026-10-20T10:34:27.264Z",
+      "rawDocumentSha256": "2b9cd4b56a7c8594b34b680b8ae73bd3fb79ccaeee4502d099e8216940329e63",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "676a3ea9-350c-44c8-b882-917228528d0c",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:34:27.2088444Z",
+        "appliedAtUtc": "2026-10-20T10:34:27.2088452Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "fc7a1d9f-4605-4b23-a480-8897b9338cdc",
+      "historyCreatedAtUtc": "2026-10-20T10:40:49.451Z",
+      "rawDocumentSha256": "8e143e7f311f2f4e2d9d9f518d25ee15e1beb00e99567b289645ad79da326795",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "fa3be3e3-c0aa-47ab-9e55-6a970d7c14d5",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:40:49.3926897Z",
+        "appliedAtUtc": "2026-10-20T10:40:49.3926907Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "c34fcddf-f9f4-43a1-9c5e-fc206ba5fac7",
+      "historyCreatedAtUtc": "2026-10-20T10:43:01.017Z",
+      "rawDocumentSha256": "73095d11f8528636fb44cda3bae9026a92872ac773ec50343354c5b59bd74d0a",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "122cde46-e5b8-4738-a0c7-ee4a94dd89de",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:43:00.8660414Z",
+        "appliedAtUtc": "2026-10-20T10:43:00.8660421Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "c89224e8-2479-4e97-b8fa-882f6a9efd91",
+      "historyCreatedAtUtc": "2026-10-20T10:49:09.282Z",
+      "rawDocumentSha256": "844edd658c022f0908dfb4e4f4a264509704b98e5da1898ae32a66866fc3eb77",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "2155cf94-ceea-4cdd-ad60-b43ac51c64de",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:49:09.1964589Z",
+        "appliedAtUtc": "2026-10-20T10:49:09.1964601Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "df63472a-4089-4e39-99f6-555bea5b89b0",
+      "historyCreatedAtUtc": "2026-10-20T10:54:31.2Z",
+      "rawDocumentSha256": "51b71e65feb83bf1612854b341d7495e3eee7fb32513fec7ac78eaeb117f2a2e",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "ceea5a7d-2cdc-490e-8cb4-f479360a75b5",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:54:31.1245441Z",
+        "appliedAtUtc": "2026-10-20T10:54:31.124545Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "f9a49c99-f2cc-4793-a6a4-43690cbd65ac",
+      "historyCreatedAtUtc": "2026-10-20T10:57:57.144Z",
+      "rawDocumentSha256": "02ca7703542fb2bf6046b9679c1862ead39a7287327b19d14bd04575568a36df",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "ac5b77c5-4515-4873-9204-b27b49683c87",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:57:57.0613996Z",
+        "appliedAtUtc": "2026-10-20T10:57:57.0614003Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "58fc73e3-39d6-4fa8-8dfc-ac91f264ee1f",
+      "historyCreatedAtUtc": "2026-10-20T10:59:16.539Z",
+      "rawDocumentSha256": "b10e9f46363d7f9629a3862c1a4a62877b51e7a61caba4dd2ef87ed4bc3a8356",
+      "documentSections": [
+        "items",
+        "history"
+      ],
+      "result": {
+        "operationId": "664b30a3-d27b-43d0-9eb8-b11eee2e5a02",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T10:59:16.3858486Z",
+        "appliedAtUtc": "2026-10-20T10:59:16.3858492Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 4,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "1c5c30e4-e918-42b4-bc57-6d823ba6af56",
+      "historyCreatedAtUtc": "2026-10-20T11:07:00.873Z",
+      "rawDocumentSha256": "99ed5d5ea404a96967f17f59d102e9ed1ebf20ad71c668d681d274c2f42e7d48",
+      "documentSections": [
+        "items",
+        "history",
+        "pricing"
+      ],
+      "result": {
+        "operationId": "929290fa-cfb5-4850-8174-e80463a9100b",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T11:07:00.5367981Z",
+        "appliedAtUtc": "2026-10-20T11:07:00.536823Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 2,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "1e540733-35d8-4ee0-898a-618a9be03d1a",
+      "historyCreatedAtUtc": "2026-10-20T11:09:15.745Z",
+      "rawDocumentSha256": "3a9613e9ef3ac3067837ffdddfb516878ef2fd76893984cc573f9704ccba6085",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "9e97c0c8-8945-4227-9247-246256973043",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T11:09:15.6487139Z",
+        "appliedAtUtc": "2026-10-20T11:09:15.6487148Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 2,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "5019c914-04fb-4d8a-9ebe-ab06f03243e0",
+      "historyCreatedAtUtc": "2026-10-20T11:14:21.588Z",
+      "rawDocumentSha256": "db44bba429fb27b9012db33622cacf7122868695b4cb0af6af14bc838a1f3cf5",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "4c838e8c-e8c7-4bc5-bb2a-60a6108e8a4b",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T11:14:21.5433521Z",
+        "appliedAtUtc": "2026-10-20T11:14:21.5433529Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "6108cb63-bedc-48a0-9b4a-4d0925be2ba6",
+      "historyCreatedAtUtc": "2026-10-21T23:09:16.048Z",
+      "rawDocumentSha256": "5ea098c9955c9a576f4845882f8f9263edbc6bbe5e6e5a5be1c7d6336fc83513",
+      "documentSections": [
+        "park"
+      ],
+      "result": {
+        "operationId": "b0e76e82-670c-4e17-90f6-6c6d08142900",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:09:15.9942172Z",
+        "appliedAtUtc": "2026-10-21T23:09:15.994218Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 4,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "89065195-07ae-4ee7-8df3-e755c1efe4ff",
+      "historyCreatedAtUtc": "2026-10-21T23:13:57.782Z",
+      "rawDocumentSha256": "9c09e791533abe1f5116f3b5fbe5d87daa88149cdfcd93e758cf236b2b1ffd13",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "1624bc58-f1e6-42e5-bebe-1a83d055cba5",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:13:57.0449602Z",
+        "appliedAtUtc": "2026-10-21T23:13:57.044961Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 14,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "68de3b2c-ffe9-4bd1-8085-4e265f9dc387",
+      "historyCreatedAtUtc": "2026-10-21T23:16:36.919Z",
+      "rawDocumentSha256": "5ab7253988445937d837e01b91aade911877439fecfd9ad8c5299d6725b7786f",
+      "documentSections": [
+        "items",
+        "images",
+        "history"
+      ],
+      "result": {
+        "operationId": "e83619e8-2838-4213-865e-cbf204db4aa7",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:16:36.4509028Z",
+        "appliedAtUtc": "2026-10-21T23:16:36.4509034Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 7,
+          "deleted": 0,
+          "unchanged": 2,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "44cd3127-572f-4dbb-b130-8dc57d374e0e",
+      "historyCreatedAtUtc": "2026-10-21T23:27:08.867Z",
+      "rawDocumentSha256": "0e29607649df767851fe912a2df9db7856239f502c416e6dd7383c1aa747497f",
+      "documentSections": [
+        "items",
+        "history"
+      ],
+      "result": {
+        "operationId": "20334196-2062-4673-9053-5029748fed42",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:27:08.7244163Z",
+        "appliedAtUtc": "2026-10-21T23:27:08.7244172Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 3,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "576bc40d-261d-45a4-9ffb-14f6fc647263",
+      "historyCreatedAtUtc": "2026-10-21T23:28:41.796Z",
+      "rawDocumentSha256": "7fe905514822a80f7cf40cc6de3c351a4d027908a49197a694886c5d26722288",
+      "documentSections": [
+        "items",
+        "images"
+      ],
+      "result": {
+        "operationId": "05d0f262-131a-4f9e-821f-805c46a010ef",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:28:40.8998092Z",
+        "appliedAtUtc": "2026-10-21T23:28:40.8999096Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 84,
+          "deleted": 0,
+          "unchanged": 51,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "ef9d5a12-b0f3-42f0-b200-9b4ed0d59021",
+      "historyCreatedAtUtc": "2026-10-21T23:29:50.844Z",
+      "rawDocumentSha256": "27abebef977f1f01bd81ae670956a99cfc665d04e35be43c82cbd140d730e595",
+      "documentSections": [
+        "items",
+        "history"
+      ],
+      "result": {
+        "operationId": "e2df5e8a-5c59-4cdd-8ddf-4ef1c86e0604",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:29:44.6973021Z",
+        "appliedAtUtc": "2026-10-21T23:29:44.697303Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 122,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "b5fcc1d6-641d-4bfa-b81a-5ae082e0bdd4",
+      "historyCreatedAtUtc": "2026-10-21T23:30:43.917Z",
+      "rawDocumentSha256": "91966ad22527250724fc69bfdc6a6cc58bbe55ad0fc3ec26c83865e0646e9c47",
+      "documentSections": [
+        "park"
+      ],
+      "result": {
+        "operationId": "2829c630-0ced-4eba-a801-6814c62f5bb4",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:30:32.0451047Z",
+        "appliedAtUtc": "2026-10-21T23:30:32.0451058Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 0,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "a1604feb-63c9-4e5b-89d3-1b76230f9e0a",
+      "historyCreatedAtUtc": "2026-10-21T23:32:36.388Z",
+      "rawDocumentSha256": "0759a303d768cbbf9ec5fc78c9d8af0bfb780c3195c62e9249ed601704d4b0eb",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "0ced0a44-22a1-4017-b7e3-f53da0c62f1e",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T23:32:31.2153279Z",
+        "appliedAtUtc": "2026-10-21T23:32:31.2153288Z",
+        "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "targetParkName": "Parc du Petit Prince",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 35,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    }
+  ]
+}

@@ -28076,9 +28076,230 @@
         "Little Prince Park Ungersheim, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Reprendre le fait Acquisition Ptak du 3 mars 2025, distinguer propriété et exploitation, puis audit final ; contrôler aussi l’ancienne identité Bioscope avant toute création.",
+      "lastDataIntegrationAt": "2026-11-15T08:38:09.045Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d872844b-ea26-4f8b-9bb7-0fa69e28c813",
+          "appliedAt": "2026-10-20T10:19:27.210Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-d872844b-ea26-4f8b-9bb7-0fa69e28c813",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 6 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-cd6e17fc-8c7b-4f8f-b6f8-9f58b0337854",
+          "appliedAt": "2026-10-20T10:22:40.345Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-cd6e17fc-8c7b-4f8f-b6f8-9f58b0337854",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 5 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-80e56917-db73-481b-a666-54681df154b1",
+          "appliedAt": "2026-10-20T10:27:10.934Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-80e56917-db73-481b-a666-54681df154b1",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-676a3ea9-350c-44c8-b882-917228528d0c",
+          "appliedAt": "2026-10-20T10:34:27.208Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-676a3ea9-350c-44c8-b882-917228528d0c",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-fa3be3e3-c0aa-47ab-9e55-6a970d7c14d5",
+          "appliedAt": "2026-10-20T10:40:49.392Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-fa3be3e3-c0aa-47ab-9e55-6a970d7c14d5",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-122cde46-e5b8-4738-a0c7-ee4a94dd89de",
+          "appliedAt": "2026-10-20T10:43:00.866Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-122cde46-e5b8-4738-a0c7-ee4a94dd89de",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-2155cf94-ceea-4cdd-ad60-b43ac51c64de",
+          "appliedAt": "2026-10-20T10:49:09.196Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-2155cf94-ceea-4cdd-ad60-b43ac51c64de",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-ceea5a7d-2cdc-490e-8cb4-f479360a75b5",
+          "appliedAt": "2026-10-20T10:54:31.124Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-ceea5a7d-2cdc-490e-8cb4-f479360a75b5",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-ac5b77c5-4515-4873-9204-b27b49683c87",
+          "appliedAt": "2026-10-20T10:57:57.061Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-ac5b77c5-4515-4873-9204-b27b49683c87",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-664b30a3-d27b-43d0-9eb8-b11eee2e5a02",
+          "appliedAt": "2026-10-20T10:59:16.385Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-664b30a3-d27b-43d0-9eb8-b11eee2e5a02",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 4 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-929290fa-cfb5-4850-8174-e80463a9100b",
+          "appliedAt": "2026-10-20T11:07:00.536Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-929290fa-cfb5-4850-8174-e80463a9100b",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 2 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-9e97c0c8-8945-4227-9247-246256973043",
+          "appliedAt": "2026-10-20T11:09:15.648Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-9e97c0c8-8945-4227-9247-246256973043",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 2 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-4c838e8c-e8c7-4bc5-bb2a-60a6108e8a4b",
+          "appliedAt": "2026-10-20T11:14:21.543Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-4c838e8c-e8c7-4bc5-bb2a-60a6108e8a4b",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-b0e76e82-670c-4e17-90f6-6c6d08142900",
+          "appliedAt": "2026-10-21T23:09:15.994Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-b0e76e82-670c-4e17-90f6-6c6d08142900",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 4 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-1624bc58-f1e6-42e5-bebe-1a83d055cba5",
+          "appliedAt": "2026-10-21T23:13:57.044Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-1624bc58-f1e6-42e5-bebe-1a83d055cba5",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 14 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-e83619e8-2838-4213-865e-cbf204db4aa7",
+          "appliedAt": "2026-10-21T23:16:36.450Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-e83619e8-2838-4213-865e-cbf204db4aa7",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 7 mise(s) à jour, 2 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-20334196-2062-4673-9053-5029748fed42",
+          "appliedAt": "2026-10-21T23:27:08.724Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-20334196-2062-4673-9053-5029748fed42",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 3 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-05d0f262-131a-4f9e-821f-805c46a010ef",
+          "appliedAt": "2026-10-21T23:28:40.899Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-05d0f262-131a-4f9e-821f-805c46a010ef",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 84 mise(s) à jour, 51 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-e2df5e8a-5c59-4cdd-8ddf-4ef1c86e0604",
+          "appliedAt": "2026-10-21T23:29:44.697Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-e2df5e8a-5c59-4cdd-8ddf-4ef1c86e0604",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 122 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-2829c630-0ced-4eba-a801-6814c62f5bb4",
+          "appliedAt": "2026-10-21T23:30:32.045Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-2829c630-0ced-4eba-a801-6814c62f5bb4",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 0 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-0ced0a44-22a1-4017-b7e3-f53da0c62f1e",
+          "appliedAt": "2026-10-21T23:32:31.215Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-prior-operations-recovered-20261115.json#apply-0ced0a44-22a1-4017-b7e3-f53da0c62f1e",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 35 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-23854087-264f-4dc7-8514-980bb5965001",
+          "appliedAt": "2026-11-15T08:38:09.045Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-acquisition-2025-20261115.json",
+          "auditEvidence": null,
+          "summary": "Annonce de la reprise par Ptak le3mars2025 intégrée en brouillon privé huit langues, ancien/nouveau propriétaires nommés, périmètre parc distinct de l’hôtel/restauration et du foncier. Article Investment et exploitant préservés, aucune publication."
+        }
+      ],
+      "nextAction": "L’annonce du rachat par Ptak le 3 mars 2025 est appliquée en brouillon privé, huit langues, le 15 novembre à 08:38:09 UTC. Auditer et publier ce fait ; qualifier les treize lieux privés au cycle de vie inconnu. Exploitant, article et annonce Facebook existante préservés. Vingt-et-un anciens Apply rapprochés aux vraies dates.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -28144,7 +28365,7 @@
             "referenceId": "aerophile-parc-du-petit-prince"
           }
         ],
-        "rationale": "Installation dans un parc structuré identifié ; traiter le parkItem, sans création standalone."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-23854087-264f-4dc7-8514-980bb5965001 ; conserver les références de découverte."
       }
     },
     {
