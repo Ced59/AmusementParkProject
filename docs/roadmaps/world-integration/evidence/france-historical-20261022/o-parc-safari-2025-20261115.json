@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T04:08:39.623Z",
+  "result": {
+    "id": "9dd30bfd5ef34dd39d697238e1d220ae",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+    "path": "park_item/9dd30bfd5ef34dd39d697238e1d220ae",
+    "description": "Le Safari Buggy présenté parmi les nouveautés d’Ô Parc en 2025.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 768,
+    "height": 576,
+    "sizeInBytes": 719134,
+    "originalFileName": "codex-import.png",
+    "contentType": "image/png",
+    "sourceUrl": "https://lemagazineduberry.fr/wp-content/uploads/2025/03/image2-768x576.png",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Les buggys bleus, jaunes et rouges du Safari Buggy autour d’une grande girafe, devant les toboggans Konga et des Pirates."
+      },
+      {
+        "languageCode": "en",
+        "value": "Blue, yellow and red Safari Buggy cars around a tall giraffe, with the Konga and Pirate slides behind them."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blaue, gelbe und rote Wagen des Safari Buggy rund um eine große Giraffe, dahinter die Rutschen Konga und Toboggan des Pirates."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Blauwe, gele en rode wagentjes van Safari Buggy rond een grote giraffe, met de glijbanen Konga en Toboggan des Pirates op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le vetture blu, gialle e rosse del Safari Buggy attorno a una grande giraffa, con gli scivoli Konga e Toboggan des Pirates sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los vehículos azules, amarillos y rojos del Safari Buggy alrededor de una gran jirafa, con los toboganes Konga y Toboggan des Pirates al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Niebieskie, żółte i czerwone samochodziki Safari Buggy wokół wysokiej żyrafy, a w tle zjeżdżalnie Konga i Toboggan des Pirates."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os veículos azuis, amarelos e vermelhos do Safari Buggy à volta de uma grande girafa, com os escorregas Konga e Toboggan des Pirates ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le Safari Buggy présenté parmi les nouveautés d’Ô Parc en 2025."
+      },
+      {
+        "languageCode": "en",
+        "value": "Safari Buggy, introduced among Ô Parc’s new attractions in 2025."
+      },
+      {
+        "languageCode": "de",
+        "value": "Safari Buggy, eine der für 2025 vorgestellten Neuheiten von Ô Parc."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Safari Buggy, een van de nieuwe attracties die Ô Parc in 2025 presenteerde."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Safari Buggy, presentato tra le novità di Ô Parc del 2025."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Safari Buggy, presentado entre las novedades de Ô Parc en 2025."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Safari Buggy, przedstawiony wśród nowości Ô Parc na rok 2025."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Safari Buggy, apresentado entre as novidades do Ô Parc em 2025."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "en",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "de",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "nl",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "it",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "es",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "pl",
+        "value": "© DR — Le Magazine du Berry"
+      },
+      {
+        "languageCode": "pt",
+        "value": "© DR — Le Magazine du Berry"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T04:08:35.7Z",
+    "updatedAt": "2026-11-15T04:08:39.623Z"
+  },
+  "sourceEvidence": {
+    "name": "safari-2025-768",
+    "url": "https://lemagazineduberry.fr/wp-content/uploads/2025/03/image2-768x576.png",
+    "path": "/workspace/france-historical-20261114/o-parc/source-images/safari-2025-768.png",
+    "status": 200,
+    "bytes": 719134,
+    "sha256": "fdbf5d3269c6aef2bbab90a80fd9a09c7f0165bddaa697e3f9cc035034b619ae",
+    "width": 768,
+    "height": 576,
+    "retrievedAtUtc": "2026-11-15T04:03:12.097579+00:00",
+    "sourcePage": "https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/",
+    "sourceMediaMetadata": "https://lemagazineduberry.fr/wp-json/wp/v2/media/9117",
+    "sourceCredit": "© DR",
+    "selection": "Largest uncropped 4:3 variant listed by publisher under960KiB; file untouched locally. Larger original and1024variant retained asresearch, notuploaded.",
+    "stem": "safari-2025",
+    "photographer": "Source credits © DR, without an individual photographer name",
+    "rights": "Owner authorized researched photographs; publisher credit © DR preserved, no open licence claimed",
+    "review": "Original2340 et variante native768 inspectés personnellement. Identité Safari Buggy et décors distincts Konga/Pirates vérifiés. Aucun filigrane visible, retouche ou jour de prise de vue inventé. Huit langues relues personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

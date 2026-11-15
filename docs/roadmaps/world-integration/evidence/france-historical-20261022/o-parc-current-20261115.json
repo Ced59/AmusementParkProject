@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "observedAtUtc": "2026-11-15T04:08:59.323036+00:00",
+  "outcome": "partial",
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "resumeDirectory": "/workspace/france-historical-20261114/o-parc",
+  "search": {
+    "receivedAtUtc": "2026-11-15T03:50:40.6568737Z",
+    "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "status": "ClosedDefinitively",
+    "itemCount": 31
+  },
+  "targetedRecovery": {
+    "sections": [
+      "ParkBasics",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History"
+    ],
+    "exportedAtUtc": "2026-11-15T03:51:22.3912207Z",
+    "sha256": "1a44df9cbaf41860449c38ddb0769c10850a6b0f6e048c2f4f9c9e664e24cc4b"
+  },
+  "mapRecovery": {
+    "receivedAtUtc": "2026-11-15T03:54:11.8703067Z",
+    "startedAtUtc": "2026-11-15T03:54:04.9909329Z",
+    "action": "ExportPark",
+    "result": "/workspace/france-historical-20261114/o-parc/official-map-recovery.json"
+  },
+  "initialCompleteness": {
+    "receivedAtUtc": "2026-11-15T03:52:06.0382402Z",
+    "startedAtUtc": "2026-11-15T03:52:05.2558165Z",
+    "result": {
+      "completenessScore": 96,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 104,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness"
+  },
+  "facebook": {
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Ô Parc ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Ô Parc! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/6644b892-d03c-461e-855d-a61cadba76f4/o-parc\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Ô Parc",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "b7460ad400174cf8a0496fdc1fe3386c",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122121487455424431",
+      "images": {
+        "data": [
+          {
+            "id": "7b8a30b154c34801a74f9d4cce98ba99",
+            "label": "La prairie centrale réunissait manèges, gonflables et Aqua Zone.",
+            "isCurrent": true,
+            "width": 1200,
+            "height": 676
+          }
+        ],
+        "pagination": {
+          "totalItems": 1,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "receivedAtUtc": "2026-11-15T03:52:32.4648110Z",
+    "startedAtUtc": "2026-11-15T03:52:31.9746724Z",
+    "action": "ResolveFacebookPublication"
+  },
+  "historyDateRecovery": {
+    "receipt": {
+      "startedAtUtc": "2026-11-15T03:53:53.3507470Z",
+      "result": null,
+      "action": "DocumentedIntegrationHistory",
+      "receivedAtUtc": "2026-11-15T03:53:56.0854151Z",
+      "status": {
+        "serverTimeUtc": "2026-11-15T03:53:55.1972532Z",
+        "isBusy": false,
+        "hasActiveExport": false,
+        "canStartResourceIntensiveOperation": true,
+        "activeRequestCount": 0,
+        "activeExportCount": 0,
+        "maxConcurrentRequests": 2,
+        "maxConcurrentResourceIntensiveOperations": 1,
+        "recommendedPollIntervalSeconds": 5,
+        "retryAfterSeconds": 5,
+        "activeRequests": [],
+        "activeExports": []
+      }
+    },
+    "result": "Aucune ancienne opération renvoyée ; aucune date d’intégration ancienne inventée. Première nouvelle opération réelle à03:59:27.1154803Z."
+  },
+  "acceptedApplies": [
+    {
+      "operationId": "6d6681b0-adf1-4e02-aa68-29d88117c508",
+      "appliedAtUtc": "2026-11-15T03:59:27.1154803Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-three-photo-descriptions-20261115.json"
+    }
+  ],
+  "acceptedImports": [
+    {
+      "imageId": "6b98288bb740472f9380b57f16f436da",
+      "serverIntegrationAtUtc": "2026-11-15T04:01:16.516Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chairs-passengers-20261115.json"
+    },
+    {
+      "imageId": "9dd30bfd5ef34dd39d697238e1d220ae",
+      "serverIntegrationAtUtc": "2026-11-15T04:08:39.623Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-safari-2025-20261115.json"
+    }
+  ],
+  "counts": {
+    "items": 31,
+    "itemDescriptionsRewrittenEightLanguages": 3,
+    "itemDescriptionsStillToReview": 28,
+    "images": 13,
+    "newImagesPrivate": 2,
+    "zones": 2,
+    "historyEvents": 8,
+    "articles": 1,
+    "officialMaps": 1
+  },
+  "sources": [
+    {
+      "name": "official-home",
+      "url": "https://www.o-parc.fr/",
+      "status": 200,
+      "finalUrl": "https://www.o-parc.fr/",
+      "retrievedAtUtc": "2026-11-15T03:51:40.715061+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "name": "official-park",
+      "url": "https://www.o-parc.fr/le-parc/",
+      "retrievedAtUtc": "2026-11-15T03:51:40.715776+00:00",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "official-presentation",
+      "url": "https://www.o-parc.fr/presentation/",
+      "retrievedAtUtc": "2026-11-15T03:51:41.506624+00:00",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "closure-radio",
+      "url": "https://radiono1.fr/news/o-parc-a-bannay-c-est-fini-1243",
+      "status": 200,
+      "finalUrl": "https://radiono1.fr/news/o-parc-a-bannay-c-est-fini-1243",
+      "retrievedAtUtc": "2026-11-15T03:51:41.656108+00:00",
+      "sha256": "fdf17c6624639fc39016ab3301a526d2f96a88256bafa30c2e23790e74a72e99",
+      "bytes": 95121
+    },
+    {
+      "name": "infoptimum",
+      "url": "https://www.bourges.infoptimum.com/pro/bannay/parc-de-loisirs-et-dattractions-en-plein-air/o-parc-999.html",
+      "error": "HTTP Error 404: Not Found",
+      "retrievedAtUtc": "2026-11-15T03:53:35.754885+00:00"
+    },
+    {
+      "name": "last-week",
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html",
+      "retrievedAtUtc": "2026-11-15T03:53:35.755646+00:00",
+      "bytes": 39276,
+      "sha256": "402e55b5d1ec58f6ee8735685404498d828d23cfcd0d8b743f443229b2b2f990"
+    },
+    {
+      "name": "tourism",
+      "url": "https://www.tourisme-sancerre.com/equipements-de-loisirs/parc-de-loisirs-o-parc-bannay/",
+      "status": 200,
+      "finalUrl": "https://www.tourisme-sancerre.com/equipements-de-loisirs/parc-de-loisirs-o-parc-bannay/",
+      "retrievedAtUtc": "2026-11-15T03:53:36.603334+00:00",
+      "bytes": 903589,
+      "sha256": "1f094cd5ff21e8abe138e8b69ba3edd6e8257d10e79a24aa7fcfae1be4d9560a"
+    },
+    {
+      "name": "2025-new",
+      "url": "https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/",
+      "status": 200,
+      "finalUrl": "https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/",
+      "retrievedAtUtc": "2026-11-15T03:53:37.016465+00:00",
+      "bytes": 1144842,
+      "sha256": "17596539fddf14ee37565bc7eab1efeadad1c4640e5aa6cb32e0102eb6808095"
+    }
+  ],
+  "photoResearch": {
+    "manifest": "source-image-downloads.json",
+    "inspected": [
+      "official-map-2026.jpg",
+      "tourism-0.jpg",
+      "tourism-1.jpg",
+      "tourism-3.jpg",
+      "tourism-5.jpg",
+      "tourism-7.jpg",
+      "new-rides-2025.png",
+      "existing-7ab8178f09e6410d975911782f40df7b.png",
+      "existing-7b8a30b154c34801a74f9d4cce98ba99.webp",
+      "safari-2025-768.png"
+    ],
+    "duplicateViewsExcluded": [
+      "tourism-0 already existing general Chaises",
+      "tourism-3 existing Chenille",
+      "tourism-5 existing park main slide viewpoint"
+    ],
+    "safariPhoto": "Variante native 768×576 du média9117 fourni par Le Magazine du Berry, 719134octets, inspectée sans retouche. Crédit ©DR conservé ; import privé avec huit langues relues. Aucun jour de prise de vue inventé.",
+    "olderMap": "Tourism gallery image4,undated official plan with eight additional historic names. Not imported as an annual map without year."
+  },
+  "inventoryToQualify": [
+    "Ô p’tits quads",
+    "Ô petit train",
+    "Le géant des mers",
+    "Parcours de l’extrême",
+    "Le Gorille",
+    "Baby pirate",
+    "Bac à sable",
+    "Pêche aux canards"
+  ],
+  "aliasToCheck": "Bienvenue au saloon in the undated map versus Saloon in2026; do not infer wooden building from drawing alone.",
+  "sourceWarnings": [
+    "Official home200empty,le-parc/presentation404; cached search excerpts not treated as fresh page retrieval.",
+    "Infoptimum directory404,its last-week2026article200; tourist office gallery and2025Berryarticle200.",
+    "Map2026isillustrated, cannot prove centimetricGPS or every real building material.",
+    "Several legacy paragraphs describe generic play benefits or unproved rider feelings; whole corpus review remains.",
+    "Founder collective / legal operator identity and closingYear require source review; no global-reference mutation yet."
+  ],
+  "nextAction": "Continue source/native image review, complete historical inventory and rewrite/review remaining28notices and zones8languages. Preserve existingpublic IDs/photos/facts. No complete final export yet. ExistingFBPublished; no newannouncement."
+}

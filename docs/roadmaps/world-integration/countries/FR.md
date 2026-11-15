@@ -16,10 +16,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | --- | ---: |
 | À intégrer | 20 |
 | À qualifier | 210 |
-| En cours | 7 |
+| En cours | 8 |
 | Bloqué | 17 |
 | Intégration achevée | 16 |
-| Publié, date inconnue | 125 |
+| Publié, date inconnue | 124 |
 | Hors périmètre enregistré | 99 |
 | Doublon conservé | 3 |
 

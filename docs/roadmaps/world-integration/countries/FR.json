@@ -21752,17 +21752,48 @@
       "legacySiteIds": [],
       "presence": "Published",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "ClosedDefinitively",
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "assignedTo": "Conversation France",
+      "lastDataIntegrationAt": "2026-11-15T04:08:39.623Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
+          "appliedAt": "2026-11-15T03:59:27.115Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-three-photo-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc :24 descriptions relues huit langues, Toboggan des pirates distingué de Konga ; Chaises Volantes et Safari Buggy décrits sur photographies identifiées. Visibilité et identifiants conservés ; inventaire historique et audit global à poursuivre."
+        },
+        {
+          "eventId": "image-6b98288bb740472f9380b57f16f436da",
+          "appliedAt": "2026-11-15T04:01:16.516Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-chairs-passengers-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée chairs-passengers, source touristique identifiée, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "image-9dd30bfd5ef34dd39d697238e1d220ae",
+          "appliedAt": "2026-11-15T04:08:39.623Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-safari-2025-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : photo privée safari-2025, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        }
+      ],
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

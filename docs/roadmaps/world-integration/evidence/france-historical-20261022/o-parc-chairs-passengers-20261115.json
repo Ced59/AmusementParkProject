@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T04:01:16.516Z",
+  "result": {
+    "id": "6b98288bb740472f9380b57f16f436da",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+    "path": "park_item/6b98288bb740472f9380b57f16f436da",
+    "description": "Un gros plan sur les passagers des Chaises Volantes.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1620,
+    "height": 1080,
+    "sizeInBytes": 365829,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/1/desktop.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des passagers dans les sièges suspendus des Chaises Volantes, avec les chaînes inclinées au-dessus des gonflables."
+      },
+      {
+        "languageCode": "en",
+        "value": "Passengers in the suspended seats of Chaises Volantes, with the chains slanting above the inflatables."
+      },
+      {
+        "languageCode": "de",
+        "value": "Fahrgäste in den aufgehängten Sitzen der Chaises Volantes; die Ketten verlaufen schräg über den Hüpfanlagen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers in de hangende stoelen van de Chaises Volantes, met schuinlopende kettingen boven de springkussens."
+      },
+      {
+        "languageCode": "it",
+        "value": "Passeggeri sui sedili sospesi delle Chaises Volantes, con le catene inclinate sopra i gonfiabili."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pasajeros en los asientos suspendidos de las Chaises Volantes, con las cadenas inclinadas sobre los hinchables."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pasażerowie na zawieszonych siedzeniach Chaises Volantes, z ukośnymi łańcuchami nad dmuchańcami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Passageiros nos assentos suspensos das Chaises Volantes, com as correntes inclinadas sobre os insufláveis."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un gros plan sur les passagers des Chaises Volantes."
+      },
+      {
+        "languageCode": "en",
+        "value": "A close view of passengers on Chaises Volantes."
+      },
+      {
+        "languageCode": "de",
+        "value": "Nahaufnahme der Fahrgäste auf den Chaises Volantes."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De bezoekers van de Chaises Volantes van dichtbij."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una veduta ravvicinata dei passeggeri delle Chaises Volantes."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una vista cercana de los pasajeros de las Chaises Volantes."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zbliżenie pasażerów Chaises Volantes."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma vista próxima dos passageiros das Chaises Volantes."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Destination Grand Sancerrois"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Destination Grand Sancerrois"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T04:01:12.701Z",
+    "updatedAt": "2026-11-15T04:01:16.516Z"
+  },
+  "sourceEvidence": {
+    "name": "tourism-1",
+    "url": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/1/desktop.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "retrievedAtUtc": "2026-11-15T03:55:12.847575+00:00",
+    "sha256": "c2a7807c4b21554851089540772b16036ef5923b7ceb31d7b06e38326591fa38",
+    "bytes": 365829,
+    "path": "/workspace/france-historical-20261114/o-parc/source-images/tourism-1.jpg",
+    "stem": "chairs-passengers",
+    "sourcePage": "https://www.tourisme-sancerre.com/equipements-de-loisirs/parc-de-loisirs-o-parc-bannay/",
+    "sourceLabel": "Chaises-volante1",
+    "photographer": "Not individually named by the tourist office page",
+    "rights": "Owner authorized use of researched photographs; no open licence claimed",
+    "review": "Photographie distincte de la vue générale du manège déjà publique ; vrai cadrage de passagers, aucune date de prise de vue inventée, pas de filigrane, image source intacte. Relecture personnelle huit langues."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page touristique et identité vérifiées, photographe individuel non précisé par la source et non inventé. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

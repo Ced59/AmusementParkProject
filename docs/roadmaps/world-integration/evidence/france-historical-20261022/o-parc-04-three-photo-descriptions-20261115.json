@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "1ac3dccffe11b8b39070ef38843cc938c289a108a417b1413162fde736430ad3",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "6d6681b0-adf1-4e02-aa68-29d88117c508",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:59:27.1154791Z",
+    "appliedAtUtc": "2026-11-15T03:59:27.1154803Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+        "entityKey": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+        "displayName": "Toboggan des pirates",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>Die Piratenrutsche bestand aus zwei großen Hüpfseiten, eine mit Kapitän und die andere mit bewaffnetem Seemann.</p><h2>Zwei Rutschen unter schwarzer Flagge</h2><p>Ein steiler Aufstieg führte zu gut sichtbaren Rutschbahnen; Kanonen, Totenköpfe und Schiffsfarben setzten das Thema fort.</p><p>Neben Toboggan Konga bildete die Anlage das Piraten-Gegenstück zum Dschungelbereich am Südrand.</p>",
+            "newValue": "<h2>Ein Pirat über den Rutschen</h2><p>Über den beiden blauen Bahnen des Toboggan des pirates stand eine Figur mit Dreispitz und rotem Mantel. Bärtiges Gesicht, gestreiftes Hemd und breiter Gürtel füllten die Mitte der aufblasbaren Fassade zwischen violetten Rändern und schwarzen Masten.</p><h2>Kanonen und rote Flaggen</h2><p>Zwischen den Bahnen ragte eine Kanone hervor; kleine rote Flaggen trugen Totenköpfe. Hinter der Figur setzten ein gemaltes Schiff und Befestigungsmauern die Kulisse fort. Der Plan von 2026 unterschied diese Rutsche vom benachbarten Konga mit seinem großen Affen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>The pirate slide brought together two large inflatable fronts, one topped by a captain and the other by an armed sailor.</p><h2>Two slides beneath the black flag</h2><p>A steep climb led to clearly visible sliding lanes, with cannons, skulls and ship colours extending the theme.</p><p>Installed beside Toboggan Konga, the attraction formed the pirate counterpart to the jungle cluster on the southern edge.</p>",
+            "newValue": "<h2>A pirate above the slides</h2><p>Toboggan des pirates placed a figure in a tricorn hat and red coat above two blue slides. His bearded face, striped shirt and broad belt filled the centre of the inflatable façade, between purple edging and black masts.</p><h2>Cannons and red flags</h2><p>A cannon projected between the slides, and small red flags carried skull emblems. A painted ship and fortifications continued the scenery behind the figure. The 2026 map distinguished this slide from neighbouring Konga, topped by a large ape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>El Toboggan des pirates reunía dos grandes fachadas hinchables, una presidida por un capitán y otra por un marinero armado.</p><h2>Dos toboganes bajo la bandera negra</h2><p>Una subida empinada llevaba a carriles de descenso visibles, con cañones, calaveras y colores de barco que prolongaban el tema.</p><p>Junto a Toboggan Konga, el conjunto formaba la contrapartida pirata del área de selva del borde sur.</p>",
+            "newValue": "<h2>Un pirata sobre los toboganes</h2><p>El Toboggan des pirates alzaba un personaje con tricornio y abrigo rojo sobre dos pistas azules. Su rostro barbudo, la camisa de rayas y el ancho cinturón ocupaban el centro de la fachada hinchable, entre bordes morados y mástiles negros.</p><h2>Cañones y banderas rojas</h2><p>Un cañón sobresalía entre las pistas; pequeñas banderas rojas llevaban calaveras. Detrás del personaje, un barco pintado y unas fortificaciones prolongaban el decorado. El plano de 2026 distinguía este tobogán del vecino Konga, coronado por un gran simio.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>Le Toboggan des pirates réunissait deux grandes façades gonflables, lʼune dominée par un capitaine et lʼautre par un marin armé.</p><h2>Deux glissades sous pavillon noir</h2><p>La montée raide conduisait à des couloirs de descente bien visibles, avec canons, crânes et couleurs de navire pour prolonger le thème.</p><p>Installé à côté de Toboggan Konga, cet ensemble formait le pendant pirate du pôle jungle sur le bord sud.</p>",
+            "newValue": "<h2>Le pirate au-dessus des glissades</h2><p>Le Toboggan des pirates dressait un personnage à tricorne et manteau rouge au-dessus de deux descentes bleues. Son visage barbu, sa chemise rayée et sa large ceinture occupaient le centre de la façade gonflable, entre des bordures violettes et des mâts noirs.</p><h2>Canons et pavillons rouges</h2><p>Un canon pointait entre les pistes ; de petits pavillons rouges portaient des têtes de mort. Derrière le personnage, une scène de bateau et de fortifications prolongeait le décor. Sur le plan de 2026, ce toboggan était distingué de Konga, son voisin au grand singe.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>Il Toboggan des pirates riuniva due grandi fronti gonfiabili, uno dominato da un capitano e lʼaltro da un marinaio armato.</p><h2>Due scivoli sotto la bandiera nera</h2><p>Una salita ripida conduceva a corsie di discesa ben visibili, con cannoni, teschi e colori navali a prolungare il tema.</p><p>Accanto al Toboggan Konga, lʼinsieme costituiva il corrispettivo piratesco del polo giungla sul margine sud.</p>",
+            "newValue": "<h2>Un pirata sopra gli scivoli</h2><p>Il Toboggan des pirates innalzava un personaggio con tricorno e cappotto rosso sopra due scivoli blu. Il volto barbuto, la maglia a righe e la larga cintura occupavano il centro della facciata gonfiabile, tra bordi viola e alberi neri.</p><h2>Cannoni e bandiere rosse</h2><p>Un cannone sporgeva tra le piste; piccole bandiere rosse mostravano teschi. Dietro il personaggio, una nave dipinta e fortificazioni prolungavano la scenografia. La mappa del 2026 distingueva questo scivolo dal vicino Konga, dominato da una grande scimmia.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>De piratenglijbaan bestond uit twee grote springgevels, één met een kapitein en één met een gewapende zeeman.</p><h2>Twee glijbanen onder de zwarte vlag</h2><p>Een steile klim leidde naar duidelijk zichtbare glijbanen, met kanonnen, schedels en scheepskleuren die het thema voortzetten.</p><p>Naast Toboggan Konga vormde de attractie de piratentegenhanger van de junglecluster aan de zuidrand.</p>",
+            "newValue": "<h2>Een piraat boven de glijbanen</h2><p>Boven de twee blauwe banen van Toboggan des pirates stond een figuur met een driekantige hoed en rode jas. Zijn bebaarde gezicht, gestreepte hemd en brede riem vulden het midden van de opblaasbare gevel, tussen paarse randen en zwarte masten.</p><h2>Kanonnen en rode vlaggen</h2><p>Tussen de banen stak een kanon uit; kleine rode vlaggen droegen doodskoppen. Achter de figuur liepen de geschilderde scheeps- en vestingdecors door. Op de plattegrond van 2026 stond deze glijbaan apart van het naburige Konga met zijn grote aap.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>Piracka zjeżdżalnia składała się z dwóch dużych dmuchanych frontów, jednego z kapitanem, drugiego z uzbrojonym marynarzem.</p><h2>Dwie zjeżdżalnie pod czarną flagą</h2><p>Strome wejście prowadziło do dobrze widocznych torów zjazdu, a armaty, czaszki i barwy okrętu rozwijały motyw.</p><p>Obok Toboggan Konga tworzył piracki odpowiednik dżunglowej strefy przy południowej granicy.</p>",
+            "newValue": "<h2>Pirat nad zjeżdżalniami</h2><p>Nad dwiema niebieskimi zjeżdżalniami Toboggan des pirates górowała postać w trójgraniastym kapeluszu i czerwonym płaszczu. Brodata twarz, pasiasta koszula i szeroki pas zajmowały środek dmuchanej fasady, między fioletowymi obrzeżami i czarnymi masztami.</p><h2>Armaty i czerwone flagi</h2><p>Między torami wystawała armata, a małe czerwone flagi zdobiły czaszki. Za postacią dekorację przedłużały namalowany statek i fortyfikacje. Plan z 2026 roku odróżniał tę zjeżdżalnię od sąsiedniej Kongi z wielką małpą.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Toboggan des pirates</h2><p>O Toboggan des pirates reunia duas grandes frentes insufláveis, uma dominada por um capitão e outra por um marinheiro armado.</p><h2>Dois escorregas sob a bandeira negra</h2><p>Uma subida íngreme conduzia a pistas de descida bem visíveis, com canhões, caveiras e cores de navio a prolongar o tema.</p><p>Junto ao Toboggan Konga, o conjunto formava o contraponto pirata do núcleo de selva no limite sul.</p>",
+            "newValue": "<h2>Um pirata sobre os escorregas</h2><p>O Toboggan des pirates erguia uma personagem de tricórnio e casaco vermelho sobre duas pistas azuis. O rosto barbudo, a camisa às riscas e o cinto largo ocupavam o centro da fachada insuflável, entre bordos roxos e mastros pretos.</p><h2>Canhões e bandeiras vermelhas</h2><p>Um canhão sobressaía entre as pistas; pequenas bandeiras vermelhas exibiam caveiras. Atrás da personagem, um barco pintado e fortificações prolongavam o cenário. O mapa de 2026 distinguia este escorrega do vizinho Konga, encimado por um grande macaco.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "displayName": "Chaises Volantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Chaises Volantes</h2><p>Die Kettenflieger waren das große Luftfahrgeschäft von Ô Parc; ihr heller Kranz war von mehreren Wegen aus sichtbar.</p><h2>Ein Kreis über der Wiese</h2><p>Mit zunehmender Drehung schwangen die Sitze nach außen und eröffneten einen Rundblick auf die benachbarten Hüpfanlagen.</p><p>Im Zentrum prägte die Silhouette das Bild der letzten Saison und bildete ein Gegenstück zu La Chenille.</p>",
+            "newValue": "<h2>Die weiß-blaue Krone</h2><p>Die Chaises Volantes waren an ihrer breiten, ausgestellten Krone mit weißen und blauen Streifen zu erkennen. Von dieser Konstruktion führten Ketten zu den einzelnen Sitzen, die sich bei der Drehung nach außen bewegten.</p><h2>Ein Sitzkreis über der Wiese</h2><p>Ein niedriger Holzzaun umgab das Karussell; darüber verliefen bunte Wimpelketten. Auf den Fotografien schweben die Fahrgäste vor den großen Hüpfanlagen des Parks und der Baumreihe vorbei. Der Plan von 2026 verortete die Chaises Volantes in der Mitte, zwischen den Trampolinen und Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Chaises Volantes</h2><p>The flying chairs formed Ô Parcʼs main aerial ride, with a pale crown visible from several paths.</p><h2>A circle above the meadow</h2><p>The hanging chairs swept outward and opened a broad circular view across the neighbouring inflatables, adding movement and height to the family landscape.</p><p>Placed at the heart of the grounds, the ride shaped the final-season skyline and stood in visual dialogue with La Chenille.</p>",
+            "newValue": "<h2>The white-and-blue crown</h2><p>Chaises Volantes was recognisable by its broad, flared crown with white and blue stripes. Chains descended from this structure to individual seats, which swung outwards as the ride turned.</p><h2>A circle of seats in the meadow</h2><p>A low wooden fence surrounded the ride, with colourful bunting stretched above the grass. Photographs show passengers passing the park’s large inflatables and the line of trees. The 2026 map placed Chaises Volantes in the centre, between the trampolines and Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Chaises Volantes</h2><p>Las sillas voladoras eran la gran atracción aérea de Ô Parc, con una corona clara visible desde varios caminos.</p><h2>Un círculo sobre la pradera</h2><p>Al aumentar el giro, los asientos suspendidos se abrían y ofrecían una vista circular de los hinchables cercanos.</p><p>En el centro del recinto, la silueta definía el paisaje de la última temporada y dialogaba con La Chenille.</p>",
+            "newValue": "<h2>La corona blanca y azul</h2><p>Las Chaises Volantes se reconocían por su amplia corona ensanchada, con franjas blancas y azules. De la estructura bajaban cadenas hasta los asientos individuales, que se abrían hacia fuera cuando giraba la atracción.</p><h2>Un círculo de asientos sobre el césped</h2><p>Una valla baja de madera rodeaba la atracción, con banderines multicolores tendidos sobre la hierba. En las fotografías los pasajeros pasan ante los grandes hinchables del parque y la hilera de árboles. El plano de 2026 situaba las Chaises Volantes en el centro, entre las camas elásticas y Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Chaises Volantes</h2><p>Les Chaises Volantes formaient le grand manège aérien dʼÔ Parc, avec une couronne claire visible depuis plusieurs allées.</p><h2>Un cercle au-dessus de la prairie</h2><p>À mesure que la rotation accélérait, les sièges suspendus sʼécartaient et ouvraient une vue circulaire sur les gonflables voisins.</p><p>Placée au cœur du terrain, la silhouette du manège structurait le panorama de la dernière saison et dialoguait avec La Chenille.</p>",
+            "newValue": "<h2>La couronne blanche et bleue</h2><p>Les Chaises Volantes se reconnaissaient à leur grande couronne évasée, rayée de blanc et de bleu. Les chaînes descendaient de cette structure jusqu’aux sièges individuels, qui s’écartaient vers l’extérieur lorsque le manège tournait.</p><h2>Un cercle de sièges dans la prairie</h2><p>Une clôture basse en bois entourait le manège, avec des fanions multicolores tendus au-dessus de l’herbe. Sur les photographies, les passagers passaient devant les grands gonflables du parc et la lisière d’arbres. Le plan de 2026 plaçait les Chaises Volantes au centre, entre les trampolines et le Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Chaises Volantes</h2><p>Le sedie volanti costituivano la grande giostra aerea di Ô Parc, con una corona chiara visibile da diversi vialetti.</p><h2>Un cerchio sopra il prato</h2><p>Con lʼaumentare della rotazione, i sedili sospesi si allargavano e offrivano una vista circolare sui gonfiabili vicini.</p><p>Al centro del terreno, la sagoma della giostra segnava il panorama dellʼultima stagione e dialogava con La Chenille.</p>",
+            "newValue": "<h2>La corona bianca e blu</h2><p>Le Chaises Volantes erano riconoscibili dall’ampia corona svasata a strisce bianche e blu. Le catene scendevano dalla struttura fino ai sedili individuali, che si allargavano verso l’esterno durante la rotazione.</p><h2>Un cerchio di sedili sul prato</h2><p>Una bassa recinzione di legno circondava la giostra, con festoni di bandierine colorate sopra l’erba. Nelle fotografie i passeggeri passano davanti ai grandi gonfiabili del parco e alla fila di alberi. La mappa del 2026 collocava le Chaises Volantes al centro, tra i trampolini e Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Chaises Volantes</h2><p>De zweefmolen was de grote luchtattractie van Ô Parc, met een lichte kroon die vanaf meerdere paden zichtbaar was.</p><h2>Een cirkel boven de weide</h2><p>Wanneer de draaisnelheid toenam, weken de hangende stoelen uit en ontstond een rond uitzicht over de springstructuren ernaast.</p><p>Midden op het terrein bepaalde de silhouet het uitzicht van het laatste seizoen en vormde ze een visuele tegenhanger van La Chenille.</p>",
+            "newValue": "<h2>De witte en blauwe kroon</h2><p>De Chaises Volantes waren herkenbaar aan hun brede, uitlopende kroon met witte en blauwe strepen. Kettingen liepen van deze constructie naar afzonderlijke stoelen, die tijdens het draaien naar buiten zwaaiden.</p><h2>Een kring stoelen boven het gras</h2><p>Een laag houten hek omsloot de attractie, met kleurrijke vlaggetjes boven het gras. Op de foto’s zweven bezoekers langs de grote springkussens van het park en de bomenrij. De plattegrond van 2026 plaatste de Chaises Volantes centraal, tussen de trampolines en Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Chaises Volantes</h2><p>Latające krzesełka tworzyły główną powietrzną karuzelę Ô Parc, z jasną koroną widoczną z kilku alejek.</p><h2>Krąg nad łąką</h2><p>Wraz ze wzrostem obrotów zawieszone krzesełka odchylały się, otwierając widok na sąsiednie dmuchańce.</p><p>W centrum terenu sylwetka karuzeli kształtowała panoramę ostatniego sezonu i odpowiadała wizualnie La Chenille.</p>",
+            "newValue": "<h2>Biało-niebieska korona</h2><p>Chaises Volantes wyróżniała szeroka, rozszerzająca się korona w białe i niebieskie pasy. Z konstrukcji zwisały łańcuchy z pojedynczymi siedzeniami, które podczas obrotu odchylały się na zewnątrz.</p><h2>Krąg siedzeń nad łąką</h2><p>Karuzelę otaczał niski drewniany płot, a nad trawą rozciągały się kolorowe proporczyki. Na fotografiach pasażerowie przelatują przed dużymi dmuchańcami i rzędem drzew. Plan z 2026 roku umieszczał Chaises Volantes pośrodku terenu, między trampolinami a Home-ball.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Chaises Volantes</h2><p>As cadeiras voadoras formavam a grande atração aérea do Ô Parc, com uma coroa clara visível de vários caminhos.</p><h2>Um círculo sobre o relvado</h2><p>À medida que a rotação aumentava, os assentos suspensos afastavam-se e abriam uma vista circular sobre os insufláveis vizinhos.</p><p>No centro do recinto, a silhueta marcava a paisagem da última época e dialogava visualmente com La Chenille.</p>",
+            "newValue": "<h2>A coroa branca e azul</h2><p>As Chaises Volantes distinguiam-se pela larga coroa alargada no topo, com riscas brancas e azuis. As correntes desciam da estrutura até aos assentos individuais, que se afastavam para fora enquanto a atração rodava.</p><h2>Um círculo de assentos sobre o relvado</h2><p>Uma cerca baixa de madeira rodeava a atração, com bandeirolas multicolores estendidas sobre a relva. Nas fotografias, os passageiros passam diante dos grandes insufláveis do parque e da fila de árvores. O mapa de 2026 situava as Chaises Volantes ao centro, entre os trampolins e o Home-ball.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "displayName": "Safari Buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy ließ kleine bunte Fahrzeuge um eine Insel mit Tierfiguren und Pflanzen kreisen.</p><h2>Eine kleine Motorsafari</h2><p>Die Rundfahrt vermittelte jungen Fahrgästen das Gefühl einer Fahrt durch eine Expeditionskulisse und blieb vom Weg aus gut sichtbar.</p><p>Die 2025 eingeführte Neuheit lag neben La Chenille und gehörte zu den letzten Fahrgeschäften vor der Schließung.</p>",
+            "newValue": "<h2>Kleine Autos in der Savanne</h2><p>Safari Buggy gehörte neben La Valse des Tasses zu den beiden angekündigten Neuheiten der Saison 2025. Die blauen, gelben und roten Fahrzeuge hatten Lenkräder, schwarze Sitze und Metallbügel. Sie fuhren um eine Sandinsel mit einer großen Giraffe.</p><h2>Ein Rundkurs vor den Hüpfanlagen</h2><p>Unter den kleinen Autos verlief die grüne Plattform in Wellen. Daneben stand eine grüne, mit Tieren dekorierte Kabine; dahinter ragten Konga und Toboggan des pirates über den Holzzaun. Die Vorstellung von 2025 beschrieb eine Savannenkulisse mit Löwen, Giraffen und Elefanten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy sent small colourful vehicles around an island filled with animal figures and vegetation.</p><h2>A miniature motor safari</h2><p>The looping route let young passengers feel as if they were driving through an expedition scene while remaining visible from the path.</p><p>Introduced in 2025, this addition stood beside La Chenille and became one of the last rides installed before closure.</p>",
+            "newValue": "<h2>Small cars in the savannah</h2><p>Safari Buggy was one of the two additions announced for the 2025 season, alongside La Valse des Tasses. Its blue, yellow and red vehicles had steering wheels, black seats and metal bars. They travelled around a sandy island with a tall giraffe.</p><h2>A circuit in front of the inflatables</h2><p>The green platform rose and dipped beneath the small cars. Beside it stood a green booth decorated with animals; behind, Konga and Toboggan des pirates rose above the wooden fence. The 2025 presentation described savannah scenery with lions, giraffes and elephants.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy hacía circular pequeños vehículos de colores alrededor de una isla con figuras de animales y vegetación.</p><h2>Un safari motorizado en miniatura</h2><p>El recorrido circular hacía sentir a los pasajeros jóvenes que conducían por un decorado de exploración, siempre visible desde el camino.</p><p>Incorporada en 2025, quedó junto a La Chenille y fue una de las últimas atracciones añadidas antes del cierre.</p>",
+            "newValue": "<h2>Pequeños coches en la sabana</h2><p>Safari Buggy era una de las dos novedades anunciadas para la temporada 2025, junto con La Valse des Tasses. Sus vehículos azules, amarillos y rojos tenían volante, asientos negros y barras metálicas. Circulaban alrededor de una isla de arena con una gran jirafa.</p><h2>Un circuito ante los hinchables</h2><p>La plataforma verde ondulaba bajo los pequeños coches. A su lado había una cabina verde decorada con animales; detrás, Konga y Toboggan des pirates sobresalían de la valla de madera. La presentación de 2025 describía un decorado de sabana con leones, jirafas y elefantes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy faisait circuler de petits véhicules colorés autour dʼun îlot peuplé de silhouettes dʼanimaux et de végétation.</p><h2>Une expédition motorisée miniature</h2><p>Le trajet en boucle donnait aux jeunes passagers la sensation de conduire dans un décor dʼexploration, tout en restant visible depuis lʼallée.</p><p>Introduite en 2025, cette nouveauté prit place près de La Chenille et devint lʼun des derniers manèges ajoutés avant la fermeture.</p>",
+            "newValue": "<h2>Les petites voitures de la savane</h2><p>Safari Buggy faisait partie des deux nouveautés annoncées pour la saison 2025, avec La Valse des Tasses. Ses véhicules bleus, jaunes et rouges possédaient un volant, des sièges noirs et un arceau métallique. Ils circulaient autour d’un îlot de sable où se dressait une grande girafe.</p><h2>Un circuit devant les gonflables</h2><p>La plateforme verte ondulait sous les petites voitures. À côté se trouvait une cabine verte décorée d’animaux ; derrière, les silhouettes de Konga et du Toboggan des pirates dépassaient la clôture en bois. La présentation de 2025 annonçait un décor de savane avec lions, girafes et éléphants.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy faceva girare piccoli veicoli colorati attorno a unʼisola popolata da sagome di animali e vegetazione.</p><h2>Un safari motorizzato in miniatura</h2><p>Il percorso ad anello dava ai giovani passeggeri lʼimpressione di guidare in uno scenario dʼesplorazione, restando visibile dal vialetto.</p><p>Introdotta nel 2025, la novità fu collocata accanto a La Chenille e divenne una delle ultime giostre aggiunte prima della chiusura.</p>",
+            "newValue": "<h2>Piccole auto nella savana</h2><p>Safari Buggy era una delle due novità annunciate per la stagione 2025, insieme a La Valse des Tasses. I veicoli blu, gialli e rossi avevano volante, sedili neri e barre metalliche. Giravano attorno a un’isola di sabbia su cui si innalzava una grande giraffa.</p><h2>Un circuito davanti ai gonfiabili</h2><p>La piattaforma verde formava saliscendi sotto le piccole auto. Accanto si trovava una cabina verde decorata con animali; dietro, Konga e Toboggan des pirates spuntavano oltre la recinzione di legno. La presentazione del 2025 descriveva una savana con leoni, giraffe ed elefanti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy liet kleine kleurrijke voertuigen rond een eiland met dierenfiguren en begroeiing rijden.</p><h2>Een minisafari op wielen</h2><p>De rondrit gaf jonge passagiers het gevoel zelf door een expeditiedecor te rijden en bleef zichtbaar vanaf het pad.</p><p>Deze nieuwigheid uit 2025 lag naast La Chenille en werd een van de laatste attracties die voor de sluiting werden toegevoegd.</p>",
+            "newValue": "<h2>Kleine auto’s in de savanne</h2><p>Safari Buggy was samen met La Valse des Tasses een van de twee aangekondigde nieuwigheden voor seizoen 2025. De blauwe, gele en rode voertuigen hadden een stuur, zwarte stoelen en metalen beugels. Ze reden rond een zanderig eiland met een grote giraffe.</p><h2>Een circuit voor de springkussens</h2><p>Het groene platform golfde onder de kleine auto’s. Ernaast stond een groene cabine met dierendecoraties; daarachter staken Konga en Toboggan des pirates boven het houten hek uit. De presentatie uit 2025 beschreef een savannedecor met leeuwen, giraffen en olifanten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy prowadziło małe kolorowe pojazdy wokół wyspy z figurami zwierząt i roślinnością.</p><h2>Miniaturowe motorowe safari</h2><p>Pętla dawała młodym pasażerom wrażenie prowadzenia przez scenerię wyprawy, pozostając widoczną z alejki.</p><p>Nowość z 2025 roku stanęła obok La Chenille i była jedną z ostatnich karuzel dodanych przed zamknięciem.</p>",
+            "newValue": "<h2>Małe samochody na sawannie</h2><p>Safari Buggy było jedną z dwóch nowości zapowiedzianych na sezon 2025, obok La Valse des Tasses. Niebieskie, żółte i czerwone pojazdy miały kierownice, czarne siedzenia i metalowe pałąki. Jeździły wokół piaszczystej wyspy z wysoką żyrafą.</p><h2>Tor przed dmuchańcami</h2><p>Zielona platforma tworzyła wzniesienia i zagłębienia pod małymi samochodami. Obok stała zielona kabina ozdobiona zwierzętami; za drewnianym płotem wznosiły się Konga i Toboggan des pirates. Prezentacja z 2025 roku zapowiadała scenerię sawanny z lwami, żyrafami i słoniami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Safari Buggy</h2><p>Safari Buggy fazia circular pequenos veículos coloridos em redor de uma ilha com figuras de animais e vegetação.</p><h2>Um safari motorizado em miniatura</h2><p>O percurso circular dava aos jovens passageiros a sensação de conduzir num cenário de exploração, sempre visível a partir do caminho.</p><p>Introduzida em 2025, ficou junto a La Chenille e tornou-se uma das últimas diversões acrescentadas antes do encerramento.</p>",
+            "newValue": "<h2>Pequenos carros na savana</h2><p>O Safari Buggy era uma das duas novidades anunciadas para a época de 2025, a par de La Valse des Tasses. Os veículos azuis, amarelos e vermelhos tinham volante, bancos pretos e barras metálicas. Circulavam em redor de uma ilha de areia com uma grande girafa.</p><h2>Um circuito diante dos insufláveis</h2><p>A plataforma verde ondulava sob os pequenos carros. Ao lado ficava uma cabina verde decorada com animais; atrás, Konga e Toboggan des pirates elevavam-se sobre a cerca de madeira. A apresentação de 2025 descrevia um cenário de savana com leões, girafas e elefantes.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}
