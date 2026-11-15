@@ -947,19 +947,21 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Ancien Parakeet Pete’s Steampunk Balloon à Branson Landing ; fermeture permanente signalée par Tripadvisor et Wanderlog en 2026.",
+      "identityConfidence": "Référence constructeur reliée à Parakeet Pete’s Steampunk Balloon ; deux annuaires visiteurs signalent la fermeture permanente.",
       "possibleMatches": [],
       "aliases": [
-        "Aerophare Branson Branson, Missouri, USA"
+        "Aerophare Branson Branson, Missouri, USA",
+        "Parakeet Pete’s Steampunk Balloon",
+        "Steampunk Balloon — Branson Landing"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver comme installation historique fermée, hors file des créations actuelles. Réexaminer uniquement avec preuve officielle de réouverture du même ballon.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -970,6 +972,16 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Tripadvisor — Parakeet Pete’s Steampunk Balloon signalé définitivement fermé",
+          "url": "https://www.tripadvisor.ca/Attraction_Review-g44160-d8326255-Reviews-Parakeet_Pete_s_Steampunk_Balloon-Branson_Missouri.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wanderlog — Steampunk Balloon signalé fermé",
+          "url": "https://wanderlog.com/place/details/992230/parakeet-petes-steampunk-balloon",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -979,7 +991,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Aérophare Branson",
@@ -987,13 +999,13 @@
             "url": "https://www.aerophile.com/en/clients/aerophare-branson/",
             "family": "Aérophare",
             "sourceVenueName": "Aérophare Branson",
-            "sourceLifecycleSignal": "Référence constructeur datée 2014 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Fermeture permanente signalée en 2026.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Branson, Missouri",
             "referenceId": "aerophile-aerophare-branson"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Ancien Aérophare de Branson Landing, connu comme Parakeet Pete’s Steampunk Balloon, signalé définitivement fermé par deux annuaires visiteurs."
       }
     },
     {
@@ -13344,11 +13356,11 @@
       "legacySiteIds": [],
       "presence": "NotFound",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Excluded",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Cloud Nine Balloon de Las Vegas définitivement fermé en décembre 2010 ; référence constructeur historique.",
+      "identityConfidence": "Identité de l’ancien ballon de Las Vegas confirmée ; fermeture définitive documentée en décembre 2010.",
       "possibleMatches": [],
       "aliases": [
         "Cloud Nine Las Vegas, Nevada, USA"
@@ -13356,7 +13368,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "nextAction": "Conserver cette entrée historique exclue de la file des attractions à créer. Ne réexaminer qu’avec preuve de réouverture du même équipement ; ne pas confondre avec les entreprises homonymes de ballons événementiels.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -13367,6 +13379,11 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Las Vegas Sun — fermeture définitive du Cloud Nine Balloon (17 décembre 2010)",
+          "url": "https://lasvegassun.com/news/2010/dec/17/cloud-nine-balloon-ride-strip-closes/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -13376,7 +13393,7 @@
       },
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Cloud Nine Balloon",
@@ -13384,13 +13401,13 @@
             "url": "https://www.aerophile.com/en/clients/cloud-nine/",
             "family": "Ballon captif",
             "sourceVenueName": "Cloud Nine Balloon",
-            "sourceLifecycleSignal": "Référence constructeur datée 2009 ; exploitation actuelle et permanence à vérifier.",
+            "sourceLifecycleSignal": "Fermeture définitive annoncée en décembre 2010.",
             "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
             "sourceLocality": "Las Vegas, Nevada",
             "referenceId": "aerophile-cloud-nine"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
+        "rationale": "Installation réelle mais définitivement fermée depuis décembre 2010, hors création d’attraction actuelle ; entrée conservée pour éviter sa redécouverte."
       }
     },
     {
