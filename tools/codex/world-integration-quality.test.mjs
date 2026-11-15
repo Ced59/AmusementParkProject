@@ -42,6 +42,7 @@ test('P0, P1, P2 : triage sans suppression des états hérités',()=>{
   assert.equal(a.queue.find(x=>x.entryId==='ZZ-1').priority,'P0');
   assert.equal(a.queue.find(x=>x.entryId==='GP-1').priority,'P1');
   assert.equal(a.queue.find(x=>x.entryId==='GP-2').priority,'P2');
+  assert.equal(a.queue.find(x=>x.entryId==='GP-4').priority,'P2');
 });
 test('un UUID de fiche partagé est signalé sans fusion',()=>{
   const a=auditWorld([doc('GP',[row({entryId:'GP-1',siteId:'same-id',presence:'Published'})]),doc('PF',[row({entryId:'PF-1',siteId:'same-id',presence:'Published'})])]);
