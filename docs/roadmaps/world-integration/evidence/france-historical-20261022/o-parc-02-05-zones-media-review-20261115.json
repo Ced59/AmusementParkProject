@@ -1,0 +1,1520 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "b8c53437e6dbcfa5069fa9ffab4f4ac21ab0eb291d54390e6af15e3546bbfa15",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "6393881e-c3aa-4be4-a34a-bde7757bef81",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:33:30.3963502Z",
+    "appliedAtUtc": "2026-11-15T05:33:30.3963517Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 14,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "4a1c7f06-323a-4fa9-80db-fdffea4cb93f",
+        "entityKey": "4a1c7f06-323a-4fa9-80db-fdffea4cb93f",
+        "displayName": "Aqua Zone",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die Wasserseite des Parks</h2><p>Die Aqua Zone vereinte das große Planschbecken mit zwei Rutschen auf der Wiese. Zwischen Fahrgeschäften und Hüpfanlagen bot das Wasser eine sommerliche Pause.</p><h2>Drei ergänzende Erlebnisse</h2><p>Das Becken lud zum gemeinsamen Spiel ein, während Méga Slide und Fun Slide der Abfahrt jeweils einen eigenen Rhythmus gaben. Zusammen bildeten sie den frischesten und offensten Punkt des letzten Plans.</p>",
+            "newValue": "<h2>Rutschen über der Wiese</h2><p>Die Aqua Zone vereinte Pataugeoire Géante, Méga Slide und Fun Slide. Der große rot-schwarze Méga Slide überragte diese Seite von Ô Parc; von oben reichte der Blick über Hüpfanlagen, Pavillons und Fahrgeschäfte auf der Wiese.</p><h2>Das blau-gelbe Becken</h2><p>Das Planschbecken war an seinem blau-gelben Rand erkennbar. Fotos zeigen die Kulissen von La Chenille und Le Phare des Pirates hinter dem Wasserspielbereich. Auf aufeinanderfolgenden Plänen blieben die drei Wasserattraktionen in einer eigenen Legende der Aqua Zone zusammengefasst.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The parkʼs waterside</h2><p>The Aqua Zone brought together the large paddling pool and two slides standing on the meadow. Water offered a summer interlude among the rides and inflatables.</p><h2>Three complementary experiences</h2><p>The pool encouraged shared play, while Mega Slide and Fun Slide each gave the descent its own rhythm. Together they formed the coolest and most open landmark on the final map.</p>",
+            "newValue": "<h2>Slides above the meadow</h2><p>The Aqua Zone grouped Pataugeoire Géante, Méga Slide and Fun Slide. The tall red-and-black Méga Slide dominated this side of Ô Parc; from its summit, the view opened across the meadow’s inflatables, canopies and rides.</p><h2>The blue-and-yellow pool</h2><p>The paddling pool was recognisable by its blue-and-yellow edge. Photographs show La Chenille and Le Phare des Pirates behind the water play area. Successive maps kept the three water attractions together in a legend dedicated to the Aqua Zone.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La vertiente acuática del parque</h2><p>La Aqua Zone reunía la gran piscina infantil y dos toboganes levantados sobre la pradera. El agua ofrecía un paréntesis veraniego entre atracciones e hinchables.</p><h2>Tres experiencias complementarias</h2><p>La piscina invitaba al juego compartido, mientras Méga Slide y Fun Slide daban cada uno su ritmo al descenso. El conjunto era el punto más fresco y abierto del plano final.</p>",
+            "newValue": "<h2>Los toboganes sobre la pradera</h2><p>Aqua Zone reunía Pataugeoire Géante, Méga Slide y Fun Slide. El alto Méga Slide rojo y negro dominaba este lado de Ô Parc; desde arriba, la vista se abría sobre los hinchables, los cenadores y las atracciones de la pradera.</p><h2>La piscina azul y amarilla</h2><p>La piscina infantil se reconocía por su borde azul y amarillo. Las fotografías muestran los decorados de La Chenille y Le Phare des Pirates detrás de los juegos de agua. Los planos sucesivos conservaron las tres atracciones acuáticas en una leyenda propia de Aqua Zone.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le versant aquatique du parc</h2><p>LʼAqua Zone réunissait la grande pataugeoire et les deux glissades dressées sur la prairie. Lʼeau y apportait une respiration estivale au milieu des manèges et des structures gonflables.</p><h2>Trois expériences complémentaires</h2><p>Le bassin invitait aux jeux partagés, tandis que Méga Slide et Fun Slide donnaient chacun leur rythme à la descente. Cet ensemble formait le repère le plus frais et le plus ouvert du plan final.</p>",
+            "newValue": "<h2>Les glissades au-dessus de la prairie</h2><p>L’Aqua Zone regroupait la Pataugeoire Géante, le Méga Slide et le Fun Slide. Le grand Méga Slide rouge et noir dominait ce côté d’Ô Parc ; depuis son sommet, la vue s’ouvrait sur les gonflables, les tonnelles et les manèges de la prairie.</p><h2>Le bassin bleu et jaune</h2><p>La pataugeoire se reconnaissait à sa bordure bleue et jaune. Les photographies montrent, derrière les jeux d’eau, les décors de La Chenille et du Phare des Pirates. Les plans successifs conservaient les trois noms aquatiques dans une légende propre à l’Aqua Zone.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Il lato acquatico del parco</h2><p>LʼAqua Zone riuniva la grande piscina bassa e due scivoli eretti sul prato. Lʼacqua offriva una parentesi estiva fra giostre e strutture gonfiabili.</p><h2>Tre esperienze complementari</h2><p>La vasca favoriva il gioco condiviso, mentre Méga Slide e Fun Slide davano ciascuno un ritmo diverso alla discesa. Insieme formavano il punto più fresco e aperto della mappa finale.</p>",
+            "newValue": "<h2>Gli scivoli sopra il prato</h2><p>L’Aqua Zone riuniva Pataugeoire Géante, Méga Slide e Fun Slide. L’alto Méga Slide rosso e nero dominava questo lato di Ô Parc; dalla cima lo sguardo si apriva sui gonfiabili, i gazebo e le giostre del prato.</p><h2>La vasca blu e gialla</h2><p>La piscina bassa si riconosceva dal bordo blu e giallo. Le fotografie mostrano le scenografie di La Chenille e Le Phare des Pirates dietro i giochi d’acqua. Le mappe successive mantenevano le tre attrazioni acquatiche in una legenda dedicata all’Aqua Zone.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De waterkant van het park</h2><p>De Aqua Zone bracht het grote peuterbad en twee glijbanen op de weide samen. Het water vormde een zomerse onderbreking tussen attracties en springstructuren.</p><h2>Drie aanvullende ervaringen</h2><p>Het bad nodigde uit tot samenspelen, terwijl Méga Slide en Fun Slide elk een eigen ritme aan de afdaling gaven. Samen waren ze het frisste en openste herkenningspunt op de laatste kaart.</p>",
+            "newValue": "<h2>Glijbanen boven het grasveld</h2><p>De Aqua Zone groepeerde Pataugeoire Géante, Méga Slide en Fun Slide. De hoge rood-zwarte Méga Slide stak boven deze kant van Ô Parc uit; vanaf de top keek je over de springkussens, partytenten en attracties op het grasveld.</p><h2>Het blauw-gele bad</h2><p>Het peuterbad was herkenbaar aan zijn blauw-gele rand. Op de foto’s staan de decors van La Chenille en Le Phare des Pirates achter de waterspeelplek. Opeenvolgende kaarten groepeerden de drie waterattracties in een eigen legenda voor de Aqua Zone.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wodna strona parku</h2><p>Aqua Zone łączyła duży brodzik z dwiema zjeżdżalniami stojącymi na łące. Woda tworzyła letnią przerwę pośród karuzel i dmuchanych konstrukcji.</p><h2>Trzy uzupełniające się przeżycia</h2><p>Brodzik sprzyjał wspólnej zabawie, a Méga Slide i Fun Slide nadawały zjazdom odmienny rytm. Razem tworzyły najświeższy i najbardziej otwarty punkt ostatniej mapy.</p>",
+            "newValue": "<h2>Zjeżdżalnie nad łąką</h2><p>Aqua Zone skupiała Pataugeoire Géante, Méga Slide i Fun Slide. Wysoki czerwono-czarny Méga Slide dominował nad tą stroną Ô Parc; z jego szczytu widać było dmuchańce, altany i karuzele na łące.</p><h2>Niebiesko-żółty basen</h2><p>Brodzik wyróżniał się niebiesko-żółtym brzegiem. Zdjęcia pokazują dekoracje La Chenille i Le Phare des Pirates za wodnymi zabawami. Kolejne plany ujmowały trzy wodne atrakcje w osobnej legendzie Aqua Zone.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O lado aquático do parque</h2><p>A Aqua Zone reunia a grande piscina infantil e dois escorregas erguidos no relvado. A água criava uma pausa de verão entre diversões e insufláveis.</p><h2>Três experiências complementares</h2><p>A piscina convidava à brincadeira partilhada, enquanto Méga Slide e Fun Slide davam ritmos diferentes à descida. O conjunto era o ponto mais fresco e aberto do mapa final.</p>",
+            "newValue": "<h2>Os escorregas sobre o prado</h2><p>A Aqua Zone reunia Pataugeoire Géante, Méga Slide e Fun Slide. O alto Méga Slide vermelho e preto dominava este lado do Ô Parc; do topo, a vista abria-se sobre os insufláveis, os toldos e as diversões do prado.</p><h2>A piscina azul e amarela</h2><p>A piscina rasa reconhecia-se pela borda azul e amarela. As fotografias mostram os cenários de La Chenille e Le Phare des Pirates atrás dos jogos de água. Os mapas sucessivos mantinham as três atrações aquáticas numa legenda própria da Aqua Zone.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "8793ed77-cad4-4610-9a15-17dc82595586",
+        "entityKey": "8793ed77-cad4-4610-9a15-17dc82595586",
+        "displayName": "Baby Zone",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Welt auf Kleinkindhöhe</h2><p>Die Baby Zone vereinte fünf Spiele für Kinder unter fünf Jahren. Niedrige Formen, klare Farben und vertraute Motive machten den Bereich sofort erkennbar.</p><h2>Erste eigene Entdeckungen</h2><p>Vulkan, Hühnerstall, Saloon, kleiner Spielplatz und Bällebad wechselten Hüpfen, Erkunden und Rollenspiel ab. Die Jüngsten fanden hier einen stimmigen Raum abseits der großen Anlagen auf der Wiese.</p>",
+            "newValue": "<h2>Der Baumwinkel mit den kleinen Spielen</h2><p>Die Baby Zone lag in einer von Bäumen gesäumten Ecke von Ô Parc nahe den Tischen und Chalet Gourmand. Ihre Pläne vereinten den rosa-blauen Saloon, Baby Volcan mit kleinen Palmen und den Poulailler, abseits der hohen Silhouette des Méga Slide.</p><h2>Spielplätze im Wandel der Saisons</h2><p>Ein älterer Plan nannte hier Baby pirate und Bac à sable. Die Ausgaben von 2025 und 2026 zeigten Piscine à balles und Aire de jeux mit seinem Holzgerüst. Zwischen den Attraktionen auf der Wiese behielt dieser kleine Bereich seinen eigenen Namen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A world at toddler height</h2><p>The Baby Zone gathered five play features reserved for children under five. Low shapes, bright colours and familiar scenery made it an immediately recognisable enclave.</p><h2>First independent discoveries</h2><p>A volcano, henhouse, saloon, small playground and ball pool alternated bouncing, exploration and make-believe. Younger children had a coherent space of their own, separate from the meadowʼs larger structures.</p>",
+            "newValue": "<h2>The wooded corner of small play areas</h2><p>The Baby Zone occupied a tree-lined corner of Ô Parc near the tables and Chalet Gourmand. Its maps grouped the pink-and-blue Saloon, Baby Volcan with its little palms and the Poulailler, away from Méga Slide’s tall outline.</p><h2>Play areas changing over the seasons</h2><p>An older map named Baby pirate and Bac à sable here. The 2025 and 2026 editions showed Piscine à balles and Aire de jeux with its timber frame. This small corner kept its own name among the attractions installed across the meadow.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un mundo a la altura de los pequeños</h2><p>La Baby Zone reunía cinco juegos reservados a menores de cinco años. Sus volúmenes bajos, colores vivos y formas familiares creaban un rincón reconocible al instante.</p><h2>Primeros descubrimientos autónomos</h2><p>Volcán, gallinero, saloon, pequeña zona de juegos y piscina de bolas alternaban saltos, exploración e imaginación. Los más pequeños tenían un espacio coherente, separado de las grandes estructuras de la pradera.</p>",
+            "newValue": "<h2>El rincón arbolado de los pequeños juegos</h2><p>Baby Zone ocupaba un rincón de Ô Parc bordeado de árboles, cerca de las mesas y Chalet Gourmand. Sus planos reunían el Saloon rosa y azul, Baby Volcan con pequeñas palmeras y Poulailler, lejos de la alta silueta de Méga Slide.</p><h2>Juegos que cambiaron con las temporadas</h2><p>Un plano antiguo nombraba aquí Baby pirate y Bac à sable. Las ediciones de 2025 y 2026 mostraban Piscine à balles y Aire de jeux con su estructura de madera. Este pequeño sector conservaba su nombre propio entre las atracciones instaladas en la pradera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un univers à hauteur de tout-petit</h2><p>La Baby Zone regroupait cinq jeux réservés aux enfants de moins de cinq ans. Ses volumes bas, ses couleurs franches et ses formes familières créaient une enclave immédiatement reconnaissable.</p><h2>Premières découvertes en autonomie</h2><p>Volcan, poulailler, saloon, petite aire de jeux et piscine à balles alternaient rebonds, exploration et jeux symboliques. Les plus jeunes y trouvaient un espace cohérent, distinct des grandes structures de la prairie.</p>",
+            "newValue": "<h2>Le coin boisé des petits jeux</h2><p>La Baby Zone occupait un coin d’Ô Parc bordé d’arbres, près des tables et du Chalet Gourmand. Ses plans réunissaient le Saloon rose et bleu, le Baby Volcan aux petits palmiers et le Poulailler, loin de la haute silhouette du Méga Slide.</p><h2>Des jeux qui ont changé au fil des saisons</h2><p>Un ancien plan y nommait Baby pirate et le Bac à sable. Les éditions de 2025 et 2026 montraient la Piscine à balles et l’Aire de jeux avec son portique. Ce petit secteur gardait son nom propre au milieu des attractions installées dans la prairie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un mondo ad altezza di bambino</h2><p>La Baby Zone riuniva cinque giochi riservati ai minori di cinque anni. Volumi bassi, colori netti e forme familiari creavano unʼarea subito riconoscibile.</p><h2>Prime scoperte in autonomia</h2><p>Vulcano, pollaio, saloon, piccola area giochi e piscina di palline alternavano salti, esplorazione e fantasia. I più piccoli avevano uno spazio coerente, distinto dalle grandi strutture del prato.</p>",
+            "newValue": "<h2>L’angolo alberato dei piccoli giochi</h2><p>La Baby Zone occupava un angolo di Ô Parc costeggiato da alberi, vicino ai tavoli e a Chalet Gourmand. Le mappe vi riunivano il Saloon rosa e blu, Baby Volcan con le piccole palme e il Poulailler, lontano dall’alta sagoma del Méga Slide.</p><h2>Giochi cambiati con le stagioni</h2><p>Una vecchia mappa vi nominava Baby pirate e Bac à sable. Le edizioni del 2025 e del 2026 mostravano Piscine à balles e Aire de jeux con la struttura di legno. Questo piccolo settore conservava il proprio nome fra le attrazioni allestite sul prato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een wereld op peuterhoogte</h2><p>De Baby Zone bracht vijf speelelementen voor kinderen onder vijf samen. Lage vormen, heldere kleuren en vertrouwde decors maakten de plek meteen herkenbaar.</p><h2>Eerste zelfstandige ontdekkingen</h2><p>Vulkaan, kippenhok, saloon, kleine speeltuin en ballenbad wisselden springen, ontdekken en fantasiespel af. Jonge kinderen kregen zo een samenhangende plek naast de grotere structuren op de weide.</p>",
+            "newValue": "<h2>De bomenhoek met kleine speelplekken</h2><p>De Baby Zone lag in een met bomen omzoomde hoek van Ô Parc, bij de tafels en Chalet Gourmand. De kaarten groepeerden er de roze-blauwe Saloon, Baby Volcan met kleine palmbomen en de Poulailler, weg van het hoge silhouet van Méga Slide.</p><h2>Spelen die met de seizoenen veranderden</h2><p>Een oudere kaart noemde hier Baby pirate en Bac à sable. De edities van 2025 en 2026 toonden Piscine à balles en Aire de jeux met het houten speelrek. Dit kleine gedeelte behield zijn eigen naam tussen de attracties op het grasveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Świat na wysokości najmłodszych</h2><p>Baby Zone skupiała pięć zabaw dla dzieci poniżej piątego roku życia. Niskie bryły, wyraźne kolory i znajome motywy tworzyły od razu rozpoznawalną enklawę.</p><h2>Pierwsze samodzielne odkrycia</h2><p>Wulkan, kurnik, saloon, mały plac zabaw i basen z piłkami łączyły skakanie, odkrywanie i zabawę w role. Najmłodsi mieli tu spójną przestrzeń oddzieloną od dużych konstrukcji na łące.</p>",
+            "newValue": "<h2>Zadrzewiony zakątek małych zabaw</h2><p>Baby Zone zajmowała otoczony drzewami zakątek Ô Parc przy stołach i Chalet Gourmand. Plany skupiały tu różowo-niebieski Saloon, Baby Volcan z małymi palmami i Poulailler, z dala od wysokiej sylwetki Méga Slide.</p><h2>Zabawy zmieniające się z sezonami</h2><p>Starszy plan wymieniał tu Baby pirate i Bac à sable. Wydania z 2025 i 2026 roku pokazywały Piscine à balles oraz Aire de jeux z drewnianą konstrukcją. Ten mały sektor zachował własną nazwę wśród atrakcji ustawionych na łące.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Um mundo à altura dos mais pequenos</h2><p>A Baby Zone reunia cinco jogos reservados a menores de cinco anos. Formas baixas, cores vivas e cenários familiares criavam um recanto imediatamente reconhecível.</p><h2>Primeiras descobertas autónomas</h2><p>Vulcão, galinheiro, saloon, pequeno parque infantil e piscina de bolas alternavam saltos, exploração e imaginação. Os mais novos tinham um espaço coerente, separado das grandes estruturas do relvado.</p>",
+            "newValue": "<h2>O canto arborizado dos pequenos jogos</h2><p>A Baby Zone ocupava um canto do Ô Parc ladeado de árvores, perto das mesas e do Chalet Gourmand. Os mapas reuniam ali o Saloon rosa e azul, o Baby Volcan com pequenas palmeiras e o Poulailler, longe da silhueta alta do Méga Slide.</p><h2>Jogos que mudaram com as épocas</h2><p>Um mapa antigo nomeava aqui Baby pirate e Bac à sable. As edições de 2025 e 2026 mostravam Piscine à balles e Aire de jeux com a sua estrutura de madeira. Este pequeno setor conservava o nome próprio entre as atrações instaladas no prado.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+        "entityKey": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+        "displayName": "Karts à pédales",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+        "entityKey": "23712697-5abc-4250-afe8-d93d3ffd3da5",
+        "displayName": "Toboggan des pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "displayName": "La Chenille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "displayName": "Trampolines",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "entityKey": "6ed5c52b-d4ba-4040-aab2-2e80bf7c04ed",
+        "displayName": "Chaises Volantes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+        "entityKey": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+        "displayName": "Méga Slide",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+        "entityKey": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+        "displayName": "Pataugeoire Géante",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+        "entityKey": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+        "displayName": "Mini-Golf",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+        "entityKey": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+        "displayName": "Ô Chalet Gourmand",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "5bbfbad268de44458d6c706ba70add6f",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Logo officiel dʼÔ Parc avec son lion et sa typographie rouge et verte.",
+            "newValue": "Le lion souriant d’Ô Parc, dans un Ô rouge au-dessus du nom bleu-violet."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Logo von Ô Parc mit rotem Ô, grünem Schriftzug Parc und Löwenkopf.",
+            "newValue": "Lächelnder Löwe in einem roten Ô mit Akzent darüber, blau-violettem Schriftzug PARC und grünen Blättern."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Ô Parc logo with a red Ô, the word Parc in green and a lionʼs head.",
+            "newValue": "Smiling lion in a red Ô with an accent above it, the blue-purple word PARC and green leaves."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Logotipo de Ô Parc con una Ô roja, la palabra Parc en verde y una cabeza de león.",
+            "newValue": "León sonriente dentro de una Ô roja con acento, la palabra PARC azul violeta y hojas verdes."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Logo dʼÔ Parc avec un Ô rouge, le mot Parc en vert et une tête de lion.",
+            "newValue": "Lion souriant dans un Ô rouge coiffé d’un accent, avec le mot PARC bleu-violet et des feuilles vertes."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Logo di Ô Parc con Ô rossa, parola Parc in verde e testa di leone.",
+            "newValue": "Leone sorridente in una Ô rossa con accento, la parola PARC blu-viola e foglie verdi."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Logo van Ô Parc met een rode Ô, het woord Parc in groen en een leeuwenkop.",
+            "newValue": "Lachende leeuw in een rode Ô met accent erboven, het blauwpaarse woord PARC en groene bladeren."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Logo Ô Parc z czerwonym Ô, zielonym napisem Parc i głową lwa.",
+            "newValue": "Uśmiechnięty lew w czerwonym Ô z akcentem, niebiesko-fioletowy napis PARC i zielone liście."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Logótipo do Ô Parc com Ô vermelho, palavra Parc a verde e cabeça de leão.",
+            "newValue": "Leão sorridente num Ô vermelho com acento, a palavra PARC azul-violeta e folhas verdes."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die visuelle Identität der letzten Saisons von Ô Parc.",
+            "newValue": "Der lächelnde Löwe von Ô Parc im roten Ô über dem blau-violetten Namen."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The visual identity used during Ô Parcʼs final seasons.",
+            "newValue": "Ô Parc’s smiling lion inside a red Ô above the blue-purple name."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La identidad visual utilizada en las últimas temporadas de Ô Parc.",
+            "newValue": "El león sonriente de Ô Parc dentro de una Ô roja sobre el nombre azul violeta."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Lʼidentité visuelle utilisée pendant les dernières saisons dʼÔ Parc.",
+            "newValue": "Le lion souriant d’Ô Parc, dans un Ô rouge au-dessus du nom bleu-violet."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Lʼidentità visiva delle ultime stagioni di Ô Parc.",
+            "newValue": "Il leone sorridente di Ô Parc in una Ô rossa sopra il nome blu-viola."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De visuele identiteit uit de laatste seizoenen van Ô Parc.",
+            "newValue": "De lachende leeuw van Ô Parc in een rode Ô boven de blauwpaarse naam."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Identyfikacja wizualna z ostatnich sezonów Ô Parc.",
+            "newValue": "Uśmiechnięty lew Ô Parc w czerwonym Ô nad niebiesko-fioletową nazwą."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A identidade visual usada nas últimas épocas do Ô Parc.",
+            "newValue": "O leão sorridente do Ô Parc num Ô vermelho sobre o nome azul-violeta."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Logo: Ô Parc, offizielle Quelle.",
+            "newValue": "Logo: Ô Parc, veröffentlicht von Infoptimum."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Logo: Ô Parc, official source.",
+            "newValue": "Logo: Ô Parc, shared by Infoptimum."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Logotipo: Ô Parc, fuente oficial.",
+            "newValue": "Logotipo: Ô Parc, difundido por Infoptimum."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Logo : Ô Parc, source officielle.",
+            "newValue": "Logo : Ô Parc, diffusé par Infoptimum."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Logo: Ô Parc, fonte ufficiale.",
+            "newValue": "Logo: Ô Parc, diffuso da Infoptimum."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Logo: Ô Parc, officiële bron.",
+            "newValue": "Logo: Ô Parc, verspreid door Infoptimum."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Logo: Ô Parc, oficjalne źródło.",
+            "newValue": "Logo: Ô Parc, udostępnione przez Infoptimum."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Logótipo: Ô Parc, fonte oficial.",
+            "newValue": "Logótipo: Ô Parc, divulgado pela Infoptimum."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "7b8a30b154c34801a74f9d4cce98ba99",
+        "entityKey": null,
+        "displayName": "codex-import.webp",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Vue générale dʼÔ Parc depuis le sommet de lʼAqua Zone.",
+            "newValue": "La prairie et ses tonnelles vues depuis le Méga Slide."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Blick von den Wasserrutschen über Ô Parc mit Becken und Spielen auf der Wiese.",
+            "newValue": "Ein Kind oben auf dem Méga Slide; darunter türkisfarbene Pavillons, Trampoline und Hüpfanlagen auf der Wiese."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "View of Ô Parc from the water slides, with the pool and games spread across the meadow.",
+            "newValue": "A child at the top of Méga Slide, with turquoise canopies, trampolines and the meadow’s inflatables below."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Vista de Ô Parc desde los toboganes acuáticos, con la piscina y los juegos en la pradera.",
+            "newValue": "Un niño en lo alto de Méga Slide; debajo, cenadores turquesas, trampolines e hinchables en la pradera."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Vue dʼÔ Parc depuis les toboggans aquatiques, avec le bassin et les jeux répartis dans la prairie.",
+            "newValue": "Un enfant au sommet du Méga Slide ; au-dessous, les tonnelles turquoise, les trampolines et les gonflables de la prairie."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Vista di Ô Parc dagli scivoli acquatici, con la vasca e i giochi distribuiti nel prato.",
+            "newValue": "Un bambino in cima al Méga Slide; sotto, gazebo turchesi, trampolini e gonfiabili del prato."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Uitzicht over Ô Parc vanaf de waterglijbanen, met het bad en de spellen op de weide.",
+            "newValue": "Een kind bovenaan Méga Slide, met daaronder turquoise partytenten, trampolines en springkussens op het grasveld."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Widok na Ô Parc ze zjeżdżalni wodnych, z basenem i zabawami rozmieszczonymi na łące.",
+            "newValue": "Dziecko na szczycie Méga Slide; poniżej turkusowe altany, trampoliny i dmuchańce na łące."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Vista do Ô Parc a partir dos escorregas aquáticos, com a piscina e os jogos espalhados pelo relvado.",
+            "newValue": "Uma criança no topo do Méga Slide; em baixo, toldos turquesa, trampolins e insufláveis no prado."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Auf der zentralen Wiese lagen Fahrgeschäfte, Hüpfanlagen und Aqua Zone beieinander.",
+            "newValue": "Die Wiese mit ihren Pavillons vom Méga Slide aus."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The central meadow brought together rides, inflatables and the Aqua Zone.",
+            "newValue": "The meadow and its canopies seen from Méga Slide."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La pradera central reunía atracciones, hinchables y Aqua Zone.",
+            "newValue": "La pradera y sus cenadores vistos desde Méga Slide."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "La prairie centrale réunissait manèges, gonflables et Aqua Zone.",
+            "newValue": "La prairie et ses tonnelles vues depuis le Méga Slide."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il prato centrale riuniva giostre, gonfiabili e Aqua Zone.",
+            "newValue": "Il prato e i gazebo visti dal Méga Slide."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De centrale weide bracht attracties, springstructuren en Aqua Zone samen.",
+            "newValue": "Het grasveld en de partytenten gezien vanaf Méga Slide."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Centralna łąka łączyła karuzele, dmuchańce i Aqua Zone.",
+            "newValue": "Łąka i altany widziane z Méga Slide."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O relvado central reunia diversões, insufláveis e Aqua Zone.",
+            "newValue": "O prado e os toldos vistos do Méga Slide."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "© Ô Parc — Berry Province."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1b43c59784c6432ba29f654df31a31ee",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les Karts à pédales sur leur circuit extérieur.",
+            "newValue": "Les Karts à pédales sur la piste en terre aux drapeaux à damier."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Zwei Kinder treiben ein Tretauto auf der von Zielflaggen gesäumten Strecke an.",
+            "newValue": "Zwei Kinder auf ihren Karts in einer Erdkurve zwischen Zielflaggen und Bäumen."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Two children pedal a kart around the track lined with chequered flags.",
+            "newValue": "Two children on their karts at a dirt bend, between chequered flags and trees."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Dos niños impulsan un kart a pedales por la pista con banderas a cuadros.",
+            "newValue": "Dos niños en sus karts en una curva de tierra, entre banderas a cuadros y árboles."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Deux enfants font avancer un kart à pédales sur la piste bordée de drapeaux à damier.",
+            "newValue": "Deux enfants sur leurs karts dans un virage de terre, entre les drapeaux à damier et les arbres."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Due bambini fanno avanzare un kart a pedali sulla pista bordata di bandiere a scacchi.",
+            "newValue": "Due bambini sui rispettivi kart in una curva sterrata fra bandiere a scacchi e alberi."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Twee kinderen trappen een kart rond de baan met geblokte vlaggen.",
+            "newValue": "Twee kinderen op hun karts in een onverharde bocht tussen geblokte vlaggen en bomen."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Dwoje dzieci napędza gokart pedałami na torze z flagami w szachownicę.",
+            "newValue": "Dwoje dzieci na swoich gokartach na ziemnym zakręcie między flagami w szachownicę a drzewami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Duas crianças fazem avançar um kart a pedais na pista ladeada por bandeiras axadrezadas.",
+            "newValue": "Duas crianças nos seus karts numa curva de terra, entre bandeiras axadrezadas e árvores."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die Fahrer bestimmten selbst das Tempo auf der Strecke.",
+            "newValue": "Karts à pédales auf der Erdbahn mit Zielflaggen."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The circuit moved at the pace set by its drivers.",
+            "newValue": "Karts à pédales on the dirt track with chequered flags."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El circuito avanzaba al ritmo marcado por sus conductores.",
+            "newValue": "Karts à pédales en la pista de tierra con banderas a cuadros."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le circuit avançait au rythme donné par ses conducteurs.",
+            "newValue": "Les Karts à pédales sur la piste en terre aux drapeaux à damier."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il circuito avanzava al ritmo scelto dai conducenti.",
+            "newValue": "Karts à pédales sulla pista di terra con bandiere a scacchi."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De bestuurders bepaalden zelf het tempo op het circuit.",
+            "newValue": "Karts à pédales op de onverharde baan met geblokte vlaggen."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Tempo na torze wyznaczali sami kierowcy.",
+            "newValue": "Karts à pédales na ziemnym torze z flagami w szachownicę."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O circuito avançava ao ritmo definido pelos condutores.",
+            "newValue": "Karts à pédales na pista de terra com bandeiras axadrezadas."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "7ab8178f09e6410d975911782f40df7b",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Le grand toboggan gonflable décoré dʼun capitaine pirate.",
+            "newValue": "Le capitaine en manteau rouge, les canons et les drapeaux du Toboggan des pirates."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die Freibeuterkulisse setzte die Welt von Ô Pirates fort.",
+            "newValue": "Der Kapitän im roten Mantel, Kanonen und Flaggen am Toboggan des pirates."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The buccaneer scenery extended the world of Ô Pirates.",
+            "newValue": "The red-coated captain, cannons and flags of Toboggan des pirates."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El decorado de filibusteros prolongaba el mundo de Ô Pirates.",
+            "newValue": "El capitán de abrigo rojo, los cañones y las banderas del Toboggan des pirates."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le décor de flibustiers prolongeait lʼunivers dʼÔ Pirates.",
+            "newValue": "Le capitaine en manteau rouge, les canons et les drapeaux du Toboggan des pirates."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Lo scenario da filibustieri prolungava lʼuniverso di Ô Pirates.",
+            "newValue": "Il capitano dal cappotto rosso, i cannoni e le bandiere del Toboggan des pirates."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Het vrijbuitersdecor zette de wereld van Ô Pirates voort.",
+            "newValue": "De kapitein in rode jas, kanonnen en vlaggen van Toboggan des pirates."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Korsarska sceneria rozwijała świat Ô Pirates.",
+            "newValue": "Kapitan w czerwonym płaszczu, armaty i flagi Toboggan des pirates."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O cenário de corsários prolongava o universo de Ô Pirates.",
+            "newValue": "O capitão de casaco vermelho, os canhões e as bandeiras do Toboggan des pirates."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "090be65c19e84417b676e4d458181e0a",
+        "entityKey": null,
+        "displayName": "codex-import.webp",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "La Chenille en mouvement sur son circuit familial.",
+            "newValue": "La Chenille parmi les fleurs géantes et les couleurs jaune et verte de son décor."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "La Chenille war von 2020 bis 2026 die Familienachterbahn von Ô Parc.",
+            "newValue": "La Chenille zwischen Riesenblumen und gelb-grüner Kulisse."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "La Chenille was Ô Parcʼs family roller coaster from 2020 to 2026.",
+            "newValue": "La Chenille among giant flowers and its yellow-and-green scenery."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La Chenille fue la montaña rusa familiar de Ô Parc entre 2020 y 2026.",
+            "newValue": "La Chenille entre flores gigantes y su decorado amarillo y verde."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "La Chenille fut le grand huit familial dʼÔ Parc de 2020 à 2026.",
+            "newValue": "La Chenille parmi les fleurs géantes et les couleurs jaune et verte de son décor."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "La Chenille fu la montagna russa per famiglie di Ô Parc dal 2020 al 2026.",
+            "newValue": "La Chenille fra fiori giganti e scenografie gialle e verdi."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "La Chenille was van 2020 tot 2026 de familieachtbaan van Ô Parc.",
+            "newValue": "La Chenille tussen reuzenbloemen en het geel-groene decor."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "La Chenille była rodzinną kolejką Ô Parc od 2020 do 2026 roku.",
+            "newValue": "La Chenille pośród olbrzymich kwiatów i żółto-zielonej scenerii."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "La Chenille foi a montanha-russa familiar do Ô Parc entre 2020 e 2026.",
+            "newValue": "La Chenille entre flores gigantes e o seu cenário amarelo e verde."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "© Ô Parc — Berry Province."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "ece8b4584df94a5cb90508cf87d96c2d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "La grande plateforme des Trampolines.",
+            "newValue": "La plateforme jaune et verte des Trampolines, entourée de hauts filets blancs."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Getrennte Felder ermöglichten jedem Kind einen eigenen Rhythmus.",
+            "newValue": "Die gelb-grüne Plattform der Trampolines mit hohen weißen Netzen."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Separate areas allowed each child to find an individual rhythm.",
+            "newValue": "The yellow-and-green Trampolines platform surrounded by tall white nets."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Las zonas separadas permitían que cada niño encontrara su ritmo.",
+            "newValue": "La plataforma amarilla y verde de Trampolines rodeada de altas redes blancas."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les zones séparées permettaient à chacun de trouver son propre rythme.",
+            "newValue": "La plateforme jaune et verte des Trampolines, entourée de hauts filets blancs."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Gli spazi separati permettevano a ciascuno di trovare il proprio ritmo.",
+            "newValue": "La piattaforma gialla e verde dei Trampolines circondata da alte reti bianche."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Afzonderlijke vakken lieten elk kind een eigen ritme vinden.",
+            "newValue": "Het geel-groene platform van de Trampolines met hoge witte netten."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Oddzielne pola pozwalały każdemu znaleźć własny rytm.",
+            "newValue": "Żółto-zielona platforma Trampolines otoczona wysokimi białymi siatkami."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "As zonas separadas permitiam a cada criança encontrar o próprio ritmo.",
+            "newValue": "A plataforma amarela e verde dos Trampolines rodeada de redes brancas altas."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d20fc9ef7f384abf92e26eaa80e8f938",
+        "entityKey": null,
+        "displayName": "codex-import.webp",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les Chaises Volantes au-dessus de la prairie.",
+            "newValue": "Les Chaises Volantes sous leur couronne blanche et bleue."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Das Luftfahrgeschäft überragte das Parkzentrum.",
+            "newValue": "Chaises Volantes unter ihrem weiß-blauen Kranz."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The aerial ride overlooked the centre of the park.",
+            "newValue": "Chaises Volantes beneath their white-and-blue crown."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La atracción aérea dominaba el centro del parque.",
+            "newValue": "Chaises Volantes bajo su corona blanca y azul."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le manège aérien dominait le centre du parc.",
+            "newValue": "Les Chaises Volantes sous leur couronne blanche et bleue."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "La giostra aerea dominava il centro del parco.",
+            "newValue": "Chaises Volantes sotto la corona bianca e blu."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De luchtattractie beheerste het midden van het park.",
+            "newValue": "Chaises Volantes onder de wit-blauwe kroon."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Powietrzna karuzela górowała nad centrum parku.",
+            "newValue": "Chaises Volantes pod biało-niebieską koroną."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A diversão aérea dominava o centro do parque.",
+            "newValue": "Chaises Volantes sob a coroa branca e azul."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "© Ô Parc — Berry Province."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "© Ô Parc — Berry Province."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a9255a5214dc40c5ac2d24522796ea9c",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Le Méga Slide vu depuis son bassin dʼarrivée.",
+            "newValue": "Le Méga Slide rouge et noir et son bassin d’arrivée."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die rot-schwarze Rampe des Méga Slide führt in ein rechteckiges Becken.",
+            "newValue": "Der blaue Hang des Méga Slide unter seinem Schild, mit dem Becken davor und einer weiteren Rutsche rechts."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The red-and-black Méga Slide ramp descends towards a rectangular pool.",
+            "newValue": "Méga Slide’s blue slope beneath its sign, with the pool in front and another slide to the right."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "La rampa roja y negra del Méga Slide desciende hacia una piscina rectangular.",
+            "newValue": "La pendiente azul de Méga Slide bajo su letrero, con la piscina delante y otro tobogán a la derecha."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "La rampe rouge et noire du Méga Slide descend vers un bassin rectangulaire.",
+            "newValue": "La pente bleue du Méga Slide sous son enseigne, avec le bassin au premier plan et un autre toboggan à droite."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "La rampa rossa e nera del Méga Slide scende verso una vasca rettangolare.",
+            "newValue": "La discesa blu del Méga Slide sotto l’insegna, con la vasca davanti e un altro scivolo a destra."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De rood-zwarte helling van Méga Slide daalt af naar een rechthoekig bad.",
+            "newValue": "De blauwe helling van Méga Slide onder het naambord, met het bad ervoor en rechts een andere glijbaan."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Czerwono-czarna rampa Méga Slide opada ku prostokątnemu basenowi.",
+            "newValue": "Niebieski zjazd Méga Slide pod szyldem, z basenem na pierwszym planie i drugą zjeżdżalnią po prawej."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "A rampa vermelha e preta do Méga Slide desce para uma piscina retangular.",
+            "newValue": "A descida azul do Méga Slide sob o letreiro, com a piscina à frente e outro escorrega à direita."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die große Wasserrutsche prägte die Silhouette der Aqua Zone.",
+            "newValue": "Der rot-schwarze Méga Slide mit seinem Auslaufbecken."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The large water slide defined the Aqua Zone skyline.",
+            "newValue": "The red-and-black Méga Slide and its splash pool."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El gran tobogán acuático definía el horizonte de la Aqua Zone.",
+            "newValue": "El Méga Slide rojo y negro y su piscina de llegada."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le grand toboggan aquatique marquait lʼhorizon de lʼAqua Zone.",
+            "newValue": "Le Méga Slide rouge et noir et son bassin d’arrivée."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il grande scivolo acquatico segnava lʼorizzonte dellʼAqua Zone.",
+            "newValue": "Il Méga Slide rosso e nero con la vasca d’arrivo."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De grote waterglijbaan bepaalde het silhouet van de Aqua Zone.",
+            "newValue": "De rood-zwarte Méga Slide met het uitloopbad."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Duża zjeżdżalnia wodna kształtowała panoramę Aqua Zone.",
+            "newValue": "Czerwono-czarny Méga Slide i basen u jego podnóża."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O grande escorrega aquático marcava o horizonte da Aqua Zone.",
+            "newValue": "O Méga Slide vermelho e preto e a piscina de chegada."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "24125fa7aa394658b8bc61c3e3143acd",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "La Pataugeoire Géante au centre de lʼAqua Zone.",
+            "newValue": "La Pataugeoire Géante au bord bleu et jaune, avec La Chenille à l’arrière-plan."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Das Becken verband die verschiedenen Elemente der Aqua Zone.",
+            "newValue": "Pataugeoire Géante mit blau-gelbem Rand und La Chenille im Hintergrund."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The pool connected the different features of the Aqua Zone.",
+            "newValue": "The blue-and-yellow-edged Pataugeoire Géante with La Chenille behind it."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La piscina conectaba los distintos elementos de la Aqua Zone.",
+            "newValue": "Pataugeoire Géante de borde azul y amarillo, con La Chenille al fondo."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le bassin reliait les différents éléments de lʼAqua Zone.",
+            "newValue": "La Pataugeoire Géante au bord bleu et jaune, avec La Chenille à l’arrière-plan."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "La vasca collegava i diversi elementi dellʼAqua Zone.",
+            "newValue": "Pataugeoire Géante dal bordo blu e giallo, con La Chenille sullo sfondo."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Het bad verbond de verschillende onderdelen van de Aqua Zone.",
+            "newValue": "Pataugeoire Géante met de blauw-gele rand en La Chenille op de achtergrond."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Basen łączył poszczególne elementy Aqua Zone.",
+            "newValue": "Pataugeoire Géante z niebiesko-żółtym brzegiem i La Chenille w tle."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A piscina ligava os diferentes elementos da Aqua Zone.",
+            "newValue": "Pataugeoire Géante de borda azul e amarela, com La Chenille ao fundo."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "b8d5ff109c904f81923056e5fe148f82",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Une piste du Mini-Golf et son obstacle en forme de tour Eiffel.",
+            "newValue": "La petite tour Eiffel du Mini-Golf près des pistes aux bordures rouges."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Zwei Kinder spielen an einer rot eingefassten Minigolfbahn neben einem kleinen Eiffelturm.",
+            "newValue": "Ein kleiner hölzerner Eiffelturm im Vordergrund, dahinter rote Bahnen und eine Windmühle."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Two children play a red-edged miniature-golf hole beside a small Eiffel Tower.",
+            "newValue": "A miniature timber Eiffel Tower in the foreground, with red lanes and a windmill behind."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Dos niños juegan en una pista de minigolf de bordes rojos junto a una pequeña torre Eiffel.",
+            "newValue": "Una torre Eiffel de madera en miniatura en primer plano, con pistas rojas y un molino detrás."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Deux enfants jouent sur une piste rouge du Mini-Golf devant une petite tour Eiffel.",
+            "newValue": "Tour Eiffel miniature en bois au premier plan, avec les pistes rouges et un moulin derrière."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Due bambini giocano su una pista da minigolf bordata di rosso accanto a una piccola Torre Eiffel.",
+            "newValue": "Una piccola Torre Eiffel di legno in primo piano, con piste rosse e un mulino sullo sfondo."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Twee kinderen spelen op een rood omrande minigolfbaan bij een kleine Eiffeltoren.",
+            "newValue": "Een houten Eiffeltorentje op de voorgrond, met rode banen en een molen erachter."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Dwoje dzieci gra na czerwono obramowanym torze minigolfa przy małej wieży Eiffla.",
+            "newValue": "Drewniana miniatura wieży Eiffla na pierwszym planie, za nią czerwone tory i wiatrak."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Duas crianças jogam numa pista de minigolfe de margens vermelhas junto a uma pequena Torre Eiffel.",
+            "newValue": "Uma Torre Eiffel de madeira em miniatura em primeiro plano, com pistas vermelhas e um moinho atrás."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die Außenanlage führte direkt durch die Wiese.",
+            "newValue": "Der kleine Eiffelturm des Mini-Golf bei den rot eingefassten Bahnen."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The outdoor course wound directly through the meadow.",
+            "newValue": "Mini-Golf’s little Eiffel Tower beside the red-edged lanes."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El recorrido al aire libre serpenteaba por la pradera.",
+            "newValue": "La pequeña torre Eiffel de Mini-Golf junto a las pistas de bordes rojos."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le parcours de plein air serpentait directement dans la prairie.",
+            "newValue": "La petite tour Eiffel du Mini-Golf près des pistes aux bordures rouges."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il percorso allʼaperto attraversava direttamente il prato.",
+            "newValue": "La piccola Torre Eiffel del Mini-Golf vicino alle piste dai bordi rossi."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Het buitenparcours liep rechtstreeks door de weide.",
+            "newValue": "Het kleine Eiffeltorentje van Mini-Golf bij de rood omrande banen."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Plenerowa trasa prowadziła bezpośrednio przez łąkę.",
+            "newValue": "Mała wieża Eiffla w Mini-Golf przy torach z czerwonymi brzegami."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O percurso ao ar livre serpenteava diretamente pelo relvado.",
+            "newValue": "A pequena Torre Eiffel do Mini-Golf junto às pistas de bordas vermelhas."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "372481fd0cd6474298eac52cf6f47562",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Le comptoir en bois dʼÔ Chalet Gourmand.",
+            "newValue": "Le Chalet Gourmand et son comptoir ouvert sous le toit de bois."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Das Holzgebäude war der wichtigste Gastronomiepunkt.",
+            "newValue": "Chalet Gourmand mit offenem Tresen unter dem Holzdach."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The timber building was the parkʼs main food outlet.",
+            "newValue": "Chalet Gourmand and its open counter beneath the timber roof."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El edificio de madera era el principal punto de restauración.",
+            "newValue": "Chalet Gourmand y su mostrador abierto bajo el techo de madera."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le bâtiment de bois formait le principal point de restauration.",
+            "newValue": "Le Chalet Gourmand et son comptoir ouvert sous le toit de bois."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Lʼedificio in legno era il principale punto di ristoro.",
+            "newValue": "Chalet Gourmand con il banco aperto sotto il tetto di legno."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Het houten gebouw was het belangrijkste eetpunt.",
+            "newValue": "Chalet Gourmand met de open balie onder het houten dak."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Drewniany budynek był głównym punktem gastronomicznym.",
+            "newValue": "Chalet Gourmand i otwarta lada pod drewnianym dachem."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O edifício de madeira era o principal ponto de restauração.",
+            "newValue": "Chalet Gourmand e o balcão aberto sob o teto de madeira."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Ô Parc, offizielle öffentliche Quelle.",
+            "newValue": "Quelle: Infoptimum, Eintrag zu Ô Parc."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Ô Parc, official public source.",
+            "newValue": "Source: Infoptimum, Ô Parc listing."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Ô Parc, fuente pública oficial.",
+            "newValue": "Fuente: Infoptimum, ficha de Ô Parc."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Ô Parc, source publique officielle.",
+            "newValue": "Source : Infoptimum, fiche Ô Parc."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Ô Parc, fonte pubblica ufficiale.",
+            "newValue": "Fonte: Infoptimum, scheda Ô Parc."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Ô Parc, officiële openbare bron.",
+            "newValue": "Bron: Infoptimum, vermelding van Ô Parc."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Ô Parc, oficjalne źródło publiczne.",
+            "newValue": "Źródło: Infoptimum, strona Ô Parc."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Ô Parc, fonte pública oficial.",
+            "newValue": "Fonte: Infoptimum, ficha do Ô Parc."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "6b98288bb740472f9380b57f16f436da",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "Quelle: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Source: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Fuente: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Source : Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Fonte: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Bron: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Źródło: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fonte: Destination Grand Sancerrois",
+            "newValue": "© Ô Parc — Tourisme Sancerre / Berry Province."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

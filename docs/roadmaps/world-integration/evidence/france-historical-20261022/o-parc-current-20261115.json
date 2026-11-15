@@ -3,7 +3,7 @@
   "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
   "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T05:25:34.418594Z",
+  "observedAtUtc": "2026-11-15T05:37:23.562148Z",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -173,6 +173,21 @@
       "operationId": "23d1c5f8-e859-4098-aac0-6c4b7bc28885",
       "appliedAtUtc": "2026-11-15T05:24:35.9295371Z",
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-services-photo-corrections-20261115.json"
+    },
+    {
+      "operationId": "5dd69b0b-31b4-41b1-a2ba-bb34622a41c8",
+      "appliedAtUtc": "2026-11-15T05:29:10.6983189Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-five-historical-places-20261115.json"
+    },
+    {
+      "operationId": "6393881e-c3aa-4be4-a34a-bde7757bef81",
+      "appliedAtUtc": "2026-11-15T05:33:30.3963517Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-02-05-zones-media-review-20261115.json"
+    },
+    {
+      "operationId": "b940dfbf-4524-4e96-bec7-c71532c75ab5",
+      "appliedAtUtc": "2026-11-15T05:36:35.9973771Z",
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-five-item-timelines-20261115.json"
     }
   ],
   "acceptedImports": [
@@ -233,17 +248,19 @@
     }
   ],
   "counts": {
-    "items": 34,
-    "itemDescriptionsRewrittenEightLanguages": 34,
+    "items": 39,
+    "itemDescriptionsRewrittenEightLanguages": 39,
     "itemDescriptionsStillToReview": 0,
     "images": 23,
     "newImagesPrivate": 12,
     "zones": 2,
-    "historyEvents": 8,
+    "historyEvents": 10,
     "articles": 1,
     "officialMaps": 2,
     "publicItems": 31,
-    "privateItems": 3
+    "privateItems": 8,
+    "zonesPersonallyReviewedEightLanguages": 2,
+    "initialMediaPersonallyReviewedEightLanguages": 11
   },
   "sources": [
     {
@@ -390,14 +407,10 @@
     }
   },
   "inventoryToQualify": [
-    "Le géant des mers",
-    "Parcours de l’extrême",
-    "Baby pirate",
-    "Bac à sable",
-    "Pêche aux canards",
-    "Twister géant (mention Koikispass 2017, identité à rapprocher)",
-    "Gonflable pieuvre orange visible avec le grand toboggan bleu en 2020",
-    "Château jaune visible en 2020 : identité à rapprocher"
+    "Twister géant cité par Koikispass2017: identité physique/alias à rapprocher",
+    "Gonflable pieuvre orange visible2020: nom et éventuel lien aux attractions existantes à rapprocher",
+    "Château jaune visible2020: nom et éventuel lien aux attractions existantes à rapprocher",
+    "Services fixes nommés plans : parking, sanitaires/tableàlanger, pique-nique et hamacs à intégrer sans dupliquer la caisse"
   ],
   "aliasToCheck": "Saloon corrigé gonflable en huitlangues ; TassesMagiques aliascartographique deValseTasses, aucune fiche doublon.",
   "sourceWarnings": [
@@ -410,9 +423,10 @@
     "HistoricGorille andKonga aredistinctsameoldmap; quadsandkartsdistinct; trainandChenilledistinct2025andoldermap. Noindividualopening/closingdatesinvented.",
     "Deuxième essai de la même archive2019 à04:35:54UTC :429 sansRetryAfter ; arrêté, aucunbypass. LaChenilleofficielle404. Coasterfriends3photos©Lavalamperejetéesfiligrane. TPFphotoBobVanDycksansfiligraneacceptée. Koikispass3fichiers:portrait ethamacacceptés,collagede2vuesChaisesnonimporté.",
     "SeasonOpening documenté mais refusé en Preview par modèle HIST canonique ; requête3faits nonappliquée, nouveau lot2faits2025/fermeture séparé. Source directe du4avril2026 resteàétayer, anciennepageofficielle404 etextraitindexé conservé.",
-    "Références fondateurs et exploitant relues et corrigées par Apply5a3caae1 ; closedYear exploitant null faute de preuve de dissolution, parc ClosedDefinitively préservé."
+    "Références fondateurs et exploitant relues et corrigées par Apply5a3caae1 ; closedYear exploitant null faute de preuve de dissolution, parc ClosedDefinitively préservé.",
+    "Inspection directe logo5bbfbad: fichiercorrect avecmotPARCbleu-violet/liondansÔrouge, anciensaltvert faux corrigés. AltMiniGolf prétendait2enfants inexistants, corrigé. PremierPreviewzonesmedia10ownersnonrésolus nonappliqué, ownerKey+itemsminimaux redéclarés puisPreviewzérowarnings."
   ],
-  "nextAction": "Les 34 lieux déjà identifiés sont relus en huit langues. Poursuivre les identités historiques encore non rapprochées, puis zones, anciens médias et faits des items. Aucun export complet final, audit global ou clôture. Ne pas réimporter les 7 photos de visiteurs 2020 ; 23 médias au total dont 12 nouveaux privés.",
+  "nextAction": "Continuer inventaire historique résiduel et services nommés, accès/positions et preuves de date2026. 39lieux8langues, deuxzones et11anciensmédias relus ;10faits dont2nouveauxprivés. AncienfaitparcChenille2020 potentieldoublonàqualifier avantretrait, SeasonOpening2026 refuséAPI conservédanspreuve. Aucunexportcompletfinal/audit/clôture/publicationglobale.",
   "acceptedMapUploads": [
     {
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
@@ -437,6 +451,36 @@
       "key": "o-parc-le-gorille",
       "id": "87d59498-a481-46ba-9a52-475cca5b161c",
       "name": "Le Gorille",
+      "private": true
+    },
+    {
+      "key": "o-parc-geant-des-mers",
+      "id": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+      "name": "Le Géant des mers",
+      "private": true
+    },
+    {
+      "key": "o-parc-parcours-extreme",
+      "id": "5d420723-34b1-472f-b4c7-d412c365eb11",
+      "name": "Parcours de l’extrême",
+      "private": true
+    },
+    {
+      "key": "o-parc-baby-pirate",
+      "id": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+      "name": "Baby pirate",
+      "private": true
+    },
+    {
+      "key": "o-parc-bac-a-sable",
+      "id": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+      "name": "Bac à sable",
+      "private": true
+    },
+    {
+      "key": "o-parc-peche-canards",
+      "id": "3f5145d6-bfad-4178-96f4-aee63661909f",
+      "name": "Pêche aux canards",
       "private": true
     }
   ],
@@ -620,5 +664,111 @@
     "receivedAtUtc": "2026-11-15T04:56:05.1331637Z",
     "action": "HistoryDiagnostics"
   },
-  "additionalResearchEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-source-photos-followup-20261115.json"
+  "additionalResearchEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-source-photos-followup-20261115.json",
+  "historyDiagnosticsAfterItemFacts": {
+    "startedAtUtc": "2026-11-15T05:36:54.7214125Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "parkName": "Ô Parc",
+      "factCount": 35,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 9,
+          "sourcedResourceCount": 9,
+          "publishedResourceCount": 5,
+          "subjectCount": 6,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 4
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 6
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 25
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 6,
+        "sourcedFactCount": 6,
+        "majorFactCount": 2,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T05:36:55.3351257Z"
+  },
+  "additionalSourceAccess": [
+    {
+      "name": "infoptimum-fiche-382",
+      "url": "https://www.bourges.infoptimum.com/fiche-quotidien-o-parc-382.html",
+      "retrievedAtUtc": "2026-11-15T05:29:51.987851+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/fiche-quotidien-o-parc-382.html",
+      "bytes": 33321,
+      "sha256": "f4816426dbb7e5c744b1fffe3e74e81201d3775be2491f301207c309aec49262"
+    },
+    {
+      "name": "guide-tourism-2024",
+      "url": "https://www.bourgogne-coeurdeloire.fr/uploads/2024/06/carnet-dinspirations-pour-petits-et-grands-2024.pdf",
+      "retrievedAtUtc": "2026-11-15T05:29:52.772488+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourgogne-coeurdeloire.fr/uploads/2024/06/carnet-dinspirations-pour-petits-et-grands-2024.pdf",
+      "bytes": 3743223,
+      "sha256": "d6d5890432a419dd5e3ea77a0812729dfe39c86fc53128ca6d89d2d90a7ef1d3"
+    },
+    {
+      "name": "infoptimum-july-2025",
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-parc-de-loisirs-en-plein-air-a-bannay--5524.html",
+      "retrievedAtUtc": "2026-11-15T05:29:55.909213+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-parc-de-loisirs-en-plein-air-a-bannay--5524.html",
+      "bytes": 37686,
+      "sha256": "defdfaf73db8d1f1f4600dd3fc15bed65e65a4b6484e161f4bfe203ca15deff6"
+    }
+  ]
 }

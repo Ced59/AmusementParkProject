@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "9a7fe62a738a7aaa83d48ec39721b4a05e7780b4a4afdc67b1cfc13638e22c7b",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "b940dfbf-4524-4e96-bec7-c71532c75ab5",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:36:35.9973759Z",
+    "appliedAtUtc": "2026-11-15T05:36:35.9973771Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "displayName": "La Chenille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "entityKey": "0bb56b79-d78c-47e6-a47e-4fd30814a6dd",
+        "displayName": "Safari Buggy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2265a05c-9519-4086-856f-1f26f4ac9756",
+        "entityKey": "2265a05c-9519-4086-856f-1f26f4ac9756",
+        "displayName": "La Valse des Tasses",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "entityKey": "86bf248f-070a-4b95-b4d2-962375788eb3",
+        "displayName": "Ô Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "entityKey": "81ab6e88-547b-4ea0-8906-aad0c1db4a55",
+        "displayName": "Parcours de la Jungle",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f4b5de89-2e9a-4077-9ab7-bf43fb56930c",
+        "entityKey": "o-parc-chenille-opening-2020",
+        "displayName": "La Chenille ouvre à Bannay",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "titles",
+            "oldValue": "de:La Chenille begrüßt ihre ersten Fahrgäste, en:La Chenille welcomes its first riders, es:La Chenille recibe a sus primeros pasajeros, fr:La Chenille accueille ses premiers passagers, it:La Chenille accoglie i primi passeggeri, nl:La Chenille verwelkomt haar eerste passagiers, pl:La Chenille przyjmuje pierwszych pasażerów, pt:La Chenille recebe os primeiros passageiros",
+            "newValue": "de:La Chenille eröffnet in Bannay, en:La Chenille opens in Bannay, es:La Chenille abre en Bannay, fr:La Chenille ouvre à Bannay, it:La Chenille apre a Bannay, nl:La Chenille opent in Bannay, pl:La Chenille otwiera się w Bannay, pt:La Chenille abre em Bannay"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:Der raupenförmige Zug fährt erstmals über die niedrige Strecke. Damit erhält der Park eine sichtbare und dauerhafte Familienachterbahn, die bis zur letzten Saison bleibt., en:The caterpillar-shaped train runs its low circuit for the first time. The opening gives the park a visible and lasting family roller coaster retained through the final season., es:El tren con forma de oruga recorre por primera vez el circuito bajo. La apertura da al parque una montaña rusa familiar visible y duradera, conservada hasta la última temporada., fr:Le train en forme de chenille parcourt pour la première fois son circuit bas. Cette ouverture donne au parc un grand huit familial visible et durable, conservé jusquʼà la dernière saison., it:Il treno a forma di bruco percorre per la prima volta il circuito basso. Lʼapertura dà al parco montagne russe familiari visibili e durature, conservate fino allʼultima stagione., nl:De rupsvormige trein rijdt voor het eerst over het lage traject. De opening geeft het park een zichtbare en blijvende familieachtbaan die tot het laatste seizoen behouden blijft., pl:Pociąg w kształcie gąsienicy po raz pierwszy przejeżdża niski tor. Otwarcie daje parkowi widoczną i trwałą rodzinną kolejkę, zachowaną do ostatniego sezonu., pt:O comboio em forma de lagarta percorre pela primeira vez o circuito baixo. A abertura dá ao parque uma montanha-russa familiar visível e duradoura, mantida até à última época.",
+            "newValue": "de:La Chenille eröffnet am 20. Juni 2020. Ihr bunter Zug, Riesenblumen und Pilzkulissen ergänzen den Park um eine kleine Gartenwelt als Schauplatz seiner ersten Achterbahn., en:La Chenille opens on 20 June 2020. Its multicoloured train, giant flowers and mushroom scenery add a small garden world to the park, providing the setting for its first roller coaster., es:La Chenille abre el 20 de junio de 2020. Su tren multicolor, las flores gigantes y los decorados de setas añaden al parque un pequeño mundo de jardín, escenario de su primera montaña rusa., fr:La Chenille ouvre le 20 juin 2020. Son train multicolore, ses fleurs géantes et ses décors de champignons ajoutent au parc un petit univers de jardin, devenu le décor de ses premières montagnes russes., it:La Chenille apre il 20 giugno 2020. Il treno variopinto, i fiori giganti e le scenografie di funghi aggiungono al parco un piccolo mondo di giardino, cornice delle sue prime montagne russe., nl:La Chenille opent op 20 juni 2020. De veelkleurige trein, reuzenbloemen en paddenstoelendecors voegen een kleine tuinwereld toe aan het park als decor voor de eerste achtbaan., pl:La Chenille otwiera się 20 czerwca 2020 roku. Wielobarwny pociąg, olbrzymie kwiaty i grzybowe dekoracje tworzą mały ogrodowy świat, który staje się scenerią pierwszego rollercoastera w parku., pt:La Chenille abre a 20 de junho de 2020. O comboio multicolorido, as flores gigantes e os cenários de cogumelos acrescentam ao parque um pequeno mundo de jardim, cenário da sua primeira montanha-russa."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Captain Coaster \\u2014 La Chenille\",\"Url\":\"https://captaincoaster.com/fr/coasters/3751/chenille-o-parc\",\"AccessedAt\":\"2026-10-05\"}]",
+            "newValue": "[{\"Label\":\"Coasterfriends \\u2014 La Chenille, ouverture le 20 juin 2020\",\"Url\":\"https://coasterfriends.de/joomla/parkcheckpoint/achterbahn/Parc/Chenille\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "efa7ed22-3d1c-47af-844a-395f2d9766db",
+        "entityKey": "o-parc-safari-buggy-opening-2025",
+        "displayName": "Safari Buggy rejoint la saison 2025",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "titles",
+            "oldValue": "de:Safari Buggy kommt auf die zentrale Wiese, en:Safari Buggy joins the central meadow, es:Safari Buggy llega a la pradera central, fr:Safari Buggy rejoint la prairie centrale, it:Safari Buggy arriva nel prato centrale, nl:Safari Buggy komt naar de centrale weide, pl:Safari Buggy pojawia się na centralnej łące, pt:Safari Buggy chega ao relvado central",
+            "newValue": "de:Safari Buggy kommt zur Saison 2025 hinzu, en:Safari Buggy joins the 2025 season, es:Safari Buggy llega en la temporada 2025, fr:Safari Buggy rejoint la saison 2025, it:Safari Buggy arriva per la stagione 2025, nl:Safari Buggy komt erbij in seizoen 2025, pl:Safari Buggy dołącza w sezonie 2025, pt:Safari Buggy chega na época de 2025"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:Kleine Fahrzeuge beginnen ihre Runden um die Tierinsel. Die Neuheit stärkt die Familienfahrgeschäfte und gehört zu den letzten dauerhaften Ergänzungen von Ô Parc., en:Small vehicles begin circling their animal island. The addition strengthens the family rides and becomes one of Ô Parcʼs final permanent additions., es:Pequeños vehículos comienzan a girar alrededor de la isla animal. La novedad refuerza las atracciones familiares y se convierte en una de las últimas incorporaciones permanentes de Ô Parc., fr:Les petits véhicules commencent à tourner autour de leur îlot animalier. Cette nouveauté renforce les manèges destinés aux familles et devient lʼun des derniers ajouts permanents dʼÔ Parc., it:Piccoli veicoli iniziano a girare attorno allʼisola animale. La novità rafforza le giostre familiari e diventa una delle ultime aggiunte permanenti di Ô Parc., nl:Kleine voertuigen beginnen rond hun diereneiland te rijden. De nieuwigheid versterkt de familieattracties en wordt een van de laatste vaste toevoegingen van Ô Parc., pl:Małe pojazdy zaczynają krążyć wokół zwierzęcej wyspy. Nowość wzmacnia rodzinne karuzele i staje się jednym z ostatnich stałych dodatków Ô Parc., pt:Pequenos veículos começam a circular em redor da ilha animal. A novidade reforça as diversões familiares e torna-se uma das últimas adições permanentes do Ô Parc.",
+            "newValue": "de:Safari Buggy wird zusammen mit La Valse des Tasses als Neuheit für 2025 angekündigt. Kleine Fahrzeuge, eine Giraffe und Palmen bringen eine Safarikulisse in den Park von Bannay, der zuvor vor allem für Piraten und große Hüpfanlagen stand., en:Safari Buggy is announced among the 2025 additions alongside La Valse des Tasses. Its small vehicles, giraffe and palms bring a safari setting to Bannay’s park, previously most recognisable for its pirates and large inflatables., es:Safari Buggy se anuncia entre las novedades de 2025 junto con La Valse des Tasses. Sus pequeños vehículos, la jirafa y las palmeras aportan un decorado de safari al parque de Bannay, hasta entonces reconocible sobre todo por piratas y grandes hinchables., fr:Safari Buggy fait partie des nouveautés annoncées pour 2025 avec la Valse des Tasses. Ses petits véhicules, sa girafe et ses palmiers apportent un décor de safari au parc de Bannay, jusque-là surtout reconnaissable à ses pirates et à ses grands gonflables., it:Safari Buggy viene annunciato fra le novità del 2025 insieme a La Valse des Tasses. I piccoli veicoli, la giraffa e le palme portano una scenografia da safari al parco di Bannay, fino ad allora riconoscibile soprattutto per pirati e grandi gonfiabili., nl:Safari Buggy wordt samen met La Valse des Tasses aangekondigd als nieuwigheid voor 2025. De kleine voertuigen, giraffe en palmbomen brengen een safaridecor naar het park in Bannay, dat vooral herkenbaar was aan piraten en grote springkussens., pl:Safari Buggy zostaje ogłoszony jako nowość 2025 roku wraz z La Valse des Tasses. Małe pojazdy, żyrafa i palmy wprowadzają scenerię safari do parku w Bannay, wcześniej kojarzonego głównie z piratami i dużymi dmuchańcami., pt:Safari Buggy é anunciado entre as novidades de 2025 com La Valse des Tasses. Os pequenos veículos, a girafa e as palmeiras trazem um cenário de safari ao parque de Bannay, até então reconhecível sobretudo pelos piratas e grandes insufláveis."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Infoptimum \\u2014 derni\\u00E8re semaine 2026\",\"Url\":\"https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html\",\"AccessedAt\":\"2026-10-05\"}]",
+            "newValue": "[{\"Label\":\"Le Magazine du Berry \\u2014 nouveaut\\u00E9s 2025\",\"Url\":\"https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Infoptimum \\u2014 r\\u00E9ouverture et plan officiel 2025\",\"Url\":\"https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c59c5f22-764e-4ad4-a9ed-cf736f1281e6",
+        "entityKey": "o-parc-valse-tasses-opening-2025",
+        "displayName": "La Valse des Tasses apparaît parmi les nouveautés",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "titles",
+            "oldValue": "de:La Valse des Tasses beginnt sich zu drehen, en:La Valse des Tasses begins to spin, es:La Valse des Tasses empieza a girar, fr:La Valse des Tasses commence à tourner, it:La Valse des Tasses inizia a girare, nl:La Valse des Tasses begint te draaien, pl:La Valse des Tasses zaczyna wirować, pt:La Valse des Tasses começa a rodar",
+            "newValue": "de:La Valse des Tasses gehört zu den Neuheiten, en:La Valse des Tasses appears among the new attractions, es:La Valse des Tasses figura entre las novedades, fr:La Valse des Tasses apparaît parmi les nouveautés, it:La Valse des Tasses compare fra le novità, nl:La Valse des Tasses verschijnt bij de nieuwigheden, pl:La Valse des Tasses pojawia się wśród nowości, pt:La Valse des Tasses surge entre as novidades"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:Die großen Tassen ergänzen die Drehung der Plattform um ihre eigene Bewegung. Zusammen mit Safari Buggy bildet das Fahrgeschäft die letzte bekannte Entwicklung des mechanischen Angebots vor 2026., en:The oversized cups add their rotations to that of the platform. Arriving with Safari Buggy, the ride represents the last known change to the mechanical offer before 2026., es:Las grandes tazas añaden su giro al de la plataforma. Llegada con Safari Buggy, la atracción representa la última evolución conocida de la oferta mecánica antes de 2026., fr:Les grandes tasses ajoutent leurs rotations à celle de la plateforme. Arrivée avec Safari Buggy, lʼattraction représente la dernière évolution connue de lʼoffre mécanique avant 2026., it:Le grandi tazze aggiungono la propria rotazione a quella della piattaforma. Arrivata con Safari Buggy, la giostra rappresenta lʼultima evoluzione meccanica nota prima del 2026., nl:De grote kopjes voegen hun eigen draaiing toe aan die van het platform. Samen met Safari Buggy vormt de attractie de laatste bekende verandering van het mechanische aanbod voor 2026., pl:Duże filiżanki dodają własny obrót do ruchu platformy. Atrakcja, dodana wraz z Safari Buggy, stanowi ostatnią znaną zmianę mechanicznej oferty przed 2026 rokiem., pt:As grandes chávenas acrescentam a própria rotação à da plataforma. Chegada com Safari Buggy, a diversão representa a última evolução mecânica conhecida antes de 2026.",
+            "newValue": "de:Zur Saison 2025 kommt La Valse des Tasses zu Ô Parc. Auf dem Plan heißt die Attraktion „Les Tasses Magiques“; sie bringt eine Süßwarenkulisse zu den Spielen auf der Wiese und wird gemeinsam mit Safari Buggy angekündigt., en:The 2025 season adds La Valse des Tasses to Ô Parc. Named “Les Tasses Magiques” on the map, the attraction introduces a sweet-themed setting beside the meadow’s games and is announced alongside Safari Buggy., es:La temporada 2025 añade La Valse des Tasses a Ô Parc. Llamada «Les Tasses Magiques» en el plano, introduce un decorado de golosinas junto a los juegos de la pradera y se anuncia junto con Safari Buggy., fr:La saison 2025 ajoute la Valse des Tasses à Ô Parc. Nommée « Les Tasses Magiques » sur le plan, cette attraction introduit un décor de gourmandises près des jeux de la prairie ; elle est annoncée aux côtés de Safari Buggy., it:La stagione 2025 aggiunge La Valse des Tasses a Ô Parc. Chiamata «Les Tasses Magiques» sulla mappa, l’attrazione introduce una scenografia di dolci vicino ai giochi sul prato ed è annunciata insieme a Safari Buggy., nl:Seizoen 2025 voegt La Valse des Tasses toe aan Ô Parc. Op de kaart heet de attractie “Les Tasses Magiques”; ze brengt een snoepdecor bij de spelen op het grasveld en wordt samen met Safari Buggy aangekondigd., pl:W sezonie 2025 do Ô Parc dołącza La Valse des Tasses. Na planie widnieje jako „Les Tasses Magiques”; wprowadza słodką scenerię przy zabawach na łące i zostaje ogłoszona razem z Safari Buggy., pt:A época de 2025 acrescenta La Valse des Tasses ao Ô Parc. Chamada «Les Tasses Magiques» no mapa, introduz um cenário de guloseimas perto dos jogos no prado e é anunciada juntamente com Safari Buggy."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Infoptimum \\u2014 derni\\u00E8re semaine 2026\",\"Url\":\"https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html\",\"AccessedAt\":\"2026-10-05\"}]",
+            "newValue": "[{\"Label\":\"Le Magazine du Berry \\u2014 nouveaut\\u00E9s 2025\",\"Url\":\"https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Infoptimum \\u2014 r\\u00E9ouverture et plan officiel 2025\",\"Url\":\"https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "17a343b3-eb0c-47fb-993b-f3b33eb818fe",
+        "entityKey": "o-parc-pirates-opening-2024",
+        "displayName": "Ô Pirates arrive en 2024",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "o-parc-pirates-opening-2024"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "86bf248f-070a-4b95-b4d2-962375788eb3"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "86bf248f-070a-4b95-b4d2-962375788eb3"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "6644b892-d03c-461e-855d-a61cadba76f4"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ô Pirates kommt 2024 hinzu, en:Ô Pirates arrives in 2024, es:Ô Pirates llega en 2024, fr:Ô Pirates arrive en 2024, it:Ô Pirates arriva nel 2024, nl:Ô Pirates arriveert in 2024, pl:Ô Pirates pojawia się w 2024 roku, pt:Ô Pirates chega em 2024"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Piratenschiff wird im Sommerprogramm 2024 als Neuheit vorgestellt. Es ergänzt die bereits in den Hüpfanlagen vertretene Piratenwelt um ein großes Boot und bleibt 2025 sowie in der letzten Saison im Angebot aufgeführt., en:The pirate ship is presented as a new attraction in the summer 2024 programme. It adds a large boat to the pirate world already present in the inflatables and remains listed in 2025 and in the final season., es:El barco pirata se presenta como novedad en el programa del verano de 2024. Añade una gran embarcación al mundo pirata ya presente en los hinchables y sigue citado en la oferta de 2025 y de la última temporada., fr:Le Bateau Pirate est présenté comme une nouveauté dans le programme de l’été 2024. Il ajoute un grand bateau à l’univers de pirates déjà présent dans les gonflables et reste mentionné dans l’offre de 2025 et de la dernière saison., it:La nave pirata viene presentata come novità nel programma dell’estate 2024. Aggiunge una grande imbarcazione al mondo dei pirati già presente nei gonfiabili e resta elencata nell’offerta del 2025 e dell’ultima stagione., nl:Het piratenschip wordt in het zomerprogramma van 2024 als nieuwe attractie voorgesteld. Het voegt een grote boot toe aan de piratenwereld van de springkussens en blijft genoemd in het aanbod van 2025 en het laatste seizoen., pl:Statek piracki zostaje przedstawiony jako nowość w programie lata 2024. Dodaje dużą łódź do pirackiego świata obecnego już w dmuchańcach i pozostaje wymieniany w ofercie z 2025 roku oraz ostatniego sezonu., pt:O barco pirata é apresentado como novidade no programa do verão de 2024. Acrescenta uma grande embarcação ao mundo de piratas já presente nos insufláveis e continua referido na oferta de 2025 e da última época."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Infoptimum \\u2014 \\u00E9t\\u00E9 2025, le bateau d\\u00E9j\\u00E0 pr\\u00E9sent\",\"Url\":\"https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-parc-de-loisirs-en-plein-air-a-bannay--5524.html\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Infoptimum \\u2014 nouveaut\\u00E9 Bateau Pirate de 2024\",\"Url\":\"https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-5090.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5e2e8be3-f24a-4f99-a5d0-0947becc6408",
+        "entityKey": "o-parc-jungle-opening-2025",
+        "displayName": "Le Parcours de la Jungle rejoint le plan 2025",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "o-parc-jungle-opening-2025"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "81ab6e88-547b-4ea0-8906-aad0c1db4a55"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "81ab6e88-547b-4ea0-8906-aad0c1db4a55"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "6644b892-d03c-461e-855d-a61cadba76f4"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Parcours de la Jungle erscheint auf dem Plan von 2025, en:Parcours de la Jungle joins the 2025 map, es:Parcours de la Jungle aparece en el plano de 2025, fr:Le Parcours de la Jungle rejoint le plan 2025, it:Parcours de la Jungle compare sulla mappa del 2025, nl:Parcours de la Jungle verschijnt op de kaart van 2025, pl:Parcours de la Jungle pojawia się na planie z 2025 roku, pt:Parcours de la Jungle surge no mapa de 2025"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der offizielle Plan von 2025 kennzeichnet Parcours de la Jungle neben Les Tasses Magiques und Safari Buggy als Neuheit. Palmen und orange Bögen ergänzen die tropische Kulisse der nahe den Seilrutschen dargestellten Wiesenecke., en:The official 2025 map marks Parcours de la Jungle as new, alongside Les Tasses Magiques and Safari Buggy. Its palms and orange arches extend the tropical scenery of the meadow corner shown near the zip lines., es:El plano oficial de 2025 marca Parcours de la Jungle como novedad, junto con Les Tasses Magiques y Safari Buggy. Sus palmeras y arcos naranjas amplían el decorado tropical del rincón de pradera representado cerca de las tirolinas., fr:Le plan officiel de 2025 marque le Parcours de la Jungle comme nouveauté, en plus des Tasses Magiques et de Safari Buggy. Ses palmiers et ses arches orange prolongent alors le décor tropical du coin de prairie représenté près des tyroliennes., it:La mappa ufficiale del 2025 indica Parcours de la Jungle come novità, insieme a Les Tasses Magiques e Safari Buggy. Palme e archi arancioni ampliano la scenografia tropicale dell’angolo di prato rappresentato vicino alle teleferiche., nl:De officiële kaart van 2025 markeert Parcours de la Jungle als nieuw, naast Les Tasses Magiques en Safari Buggy. De palmbomen en oranje bogen breiden het tropische decor uit in de hoek van het grasveld bij de tokkelbanen., pl:Oficjalny plan z 2025 roku oznacza Parcours de la Jungle jako nowość obok Les Tasses Magiques i Safari Buggy. Palmy i pomarańczowe łuki wzbogacają tropikalną scenerię zakątka łąki przedstawionego przy tyrolkach., pt:O mapa oficial de 2025 assinala Parcours de la Jungle como novidade, juntamente com Les Tasses Magiques e Safari Buggy. As palmeiras e os arcos laranja ampliam o cenário tropical do canto de prado representado perto das tirolesas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Infoptimum \\u2014 r\\u00E9ouverture et plan officiel 2025\",\"Url\":\"https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T05:24:35.929Z",
+      "lastDataIntegrationAt": "2026-11-15T05:36:35.997Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -22021,6 +22021,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-services-photo-corrections-20261115.json",
           "auditEvidence": null,
           "summary": "Quatre dernières notices existantes relues et réécrites en huit langues ; Konga, Trampolines et Home-ball affinés par les photos réelles et la relecture. Inventaire historique et audit final encore en cours."
+        },
+        {
+          "eventId": "apply-5dd69b0b-31b4-41b1-a2ba-bb34622a41c8",
+          "appliedAt": "2026-11-15T05:29:10.698Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-03-five-historical-places-20261115.json",
+          "auditEvidence": null,
+          "summary": "Cinq anciens lieux qualifiés par les plans officiels et leurs images distinctes : Géant des mers, Parcours de l’extrême, Baby pirate, Bac à sable, Pêche aux canards. Créations privées avec huit langues relues ; dates individuelles et constructeurs inconnus laissés vides."
+        },
+        {
+          "eventId": "apply-6393881e-c3aa-4be4-a34a-bde7757bef81",
+          "appliedAt": "2026-11-15T05:33:30.396Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-02-05-zones-media-review-20261115.json",
+          "auditEvidence": null,
+          "summary": "Deux zones et douze médias corrigés après inspection personnelle : descriptions huit langues, vrai logo bleu-violet, légendes concrètes, alt du mini-golf sans enfants inexistants et attribution des sources. Aucun import ni changement de visibilité."
+        },
+        {
+          "eventId": "apply-b940dfbf-4524-4e96-bec7-c71532c75ab5",
+          "appliedAt": "2026-11-15T05:36:35.997Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-five-item-timelines-20261115.json",
+          "auditEvidence": null,
+          "summary": "Chronologies propres aux attractions : trois résumés existants corrigés en huit langues et deux faits privés sourcés (Ô Pirates 2024, Jungle 2025). Dates exactes préservées ou précision annuelle sans jour inventé ; aucun doublon de fait créé dans la frise du parc."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "a6a2e63827fbca7263a157893ec4264f25bf5b3e9af981069015615dd1d1dc4c",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "5dd69b0b-31b4-41b1-a2ba-bb34622a41c8",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T05:29:10.6983175Z",
+    "appliedAtUtc": "2026-11-15T05:29:10.6983189Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 5,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1cc708d6-3000-43c2-a43d-171969fa8c28",
+        "entityKey": "o-parc-geant-des-mers",
+        "displayName": "Le Géant des mers",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die große blaue Meereskulisse</h2><p>Le Géant des mers ragte mit seiner blauen Rutsche am Rand der Wiese auf. Meereswesen schmückten die Seiten, und ein gelber Bogen kennzeichnete den Eingang am Fuß des hohen Hangs.</p><h2>Gegenüber den Spielen auf der Wiese</h2><p>Der ältere Plan führte die Anlage getrennt von den Rutschen der Aqua Zone auf. Eine Aufnahme vom Juni 2020 zeigt ihr hohes blaues Profil hinter der Kartbahn; in der Ferne stehen die Chaises Volantes.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The tall blue sea scene</h2><p>Le Géant des mers raised its blue slide beside the meadow. Sea creatures decorated its sides, while a yellow arch marked the entrance at the foot of the tall slope.</p><h2>Facing the meadow’s games</h2><p>The older map named it separately from the Aqua Zone slides. A June 2020 view shows its tall blue profile behind the kart track, with Chaises Volantes in the distance.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El gran decorado marino azul</h2><p>Le Géant des mers alzaba su tobogán azul al borde de la pradera. Criaturas marinas decoraban los laterales y un arco amarillo marcaba la entrada al pie de la gran pendiente.</p><h2>Frente a los juegos de la pradera</h2><p>El plano antiguo lo nombraba por separado de los toboganes de Aqua Zone. Una vista de junio de 2020 muestra su alto perfil azul detrás de la pista de karts, con Chaises Volantes al fondo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le grand décor marin bleu</h2><p>Le Géant des mers dressait son toboggan bleu au bord de la prairie. Des créatures marines décoraient ses flancs, tandis qu’une arche jaune marquait son entrée au pied de la grande pente.</p><h2>Face aux jeux de la prairie</h2><p>L’ancien plan le nommait séparément des glissades de l’Aqua Zone. Une vue de juin 2020 montre son grand profil bleu derrière la piste des karts, avec les Chaises Volantes au loin.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La grande scenografia marina blu</h2><p>Le Géant des mers innalzava il suo scivolo blu sul margine del prato. Creature marine ne decoravano i fianchi, mentre un arco giallo segnava l’ingresso ai piedi dell’alta discesa.</p><h2>Di fronte ai giochi sul prato</h2><p>La vecchia mappa lo indicava separatamente dagli scivoli dell’Aqua Zone. Una veduta del giugno 2020 mostra il grande profilo blu dietro la pista dei kart, con Chaises Volantes in lontananza.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het hoge blauwe zeedecor</h2><p>Le Géant des mers stak met zijn blauwe glijbaan boven de rand van het grasveld uit. Zeedieren versierden de zijkanten en een gele boog markeerde de ingang aan de voet van de hoge helling.</p><h2>Tegenover de spelen op het grasveld</h2><p>De oudere kaart noemde hem apart van de glijbanen in de Aqua Zone. Een foto uit juni 2020 toont het hoge blauwe profiel achter de kartbaan, met Chaises Volantes in de verte.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wysoka niebieska sceneria morska</h2><p>Le Géant des mers wznosił niebieską zjeżdżalnię na skraju łąki. Morskie stworzenia zdobiły boki, a żółty łuk oznaczał wejście u stóp wysokiego zjazdu.</p><h2>Naprzeciw zabaw na łące</h2><p>Starszy plan wymieniał go osobno od zjeżdżalni Aqua Zone. Widok z czerwca 2020 roku pokazuje wysoki niebieski profil za torem gokartowym, z Chaises Volantes w oddali.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O grande cenário marinho azul</h2><p>Le Géant des mers erguia o seu escorrega azul na margem do prado. Criaturas marinhas decoravam os lados, enquanto um arco amarelo assinalava a entrada ao pé da grande descida.</p><h2>Em frente aos jogos do prado</h2><p>O mapa antigo identificava-o separadamente dos escorregas da Aqua Zone. Uma vista de junho de 2020 mostra o perfil azul atrás da pista dos karts, com Chaises Volantes ao longe.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5d420723-34b1-472f-b4c7-d412c365eb11",
+        "entityKey": "o-parc-parcours-extreme",
+        "displayName": "Parcours de l’extrême",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Orange Bögen auf blauem Grund</h2><p>Parcours de l’extrême erschien auf dem älteren Plan unter den Hüpfanlagen auf der Wiese. Die Abbildung zeigte eine lange blaue Basis, kleine bunte Hindernisse und hohe orange und rote Bögen.</p><h2>Bei den Seilrutschen</h2><p>Der Plan verortete den Parcours nahe den Seilrutschen, abseits der großen Wasserrutschen. Seine Bogenkulisse trug keine Palmen wie der später angekündigte Parcours de la Jungle.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Orange arches on a blue base</h2><p>Parcours de l’extrême appeared on the older map among the meadow’s inflatables. Its image showed a long blue base, small colourful obstacles and tall orange and red arches.</p><h2>Near the zip lines</h2><p>The map placed this course near the zip lines, away from the large water slides. Its arched setting did not have the palms of Parcours de la Jungle, announced later.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Arcos naranjas sobre una base azul</h2><p>Parcours de l’extrême figuraba en el plano antiguo entre los hinchables de la pradera. La imagen mostraba una larga base azul, pequeños obstáculos de colores y altos arcos naranjas y rojos.</p><h2>Cerca de las tirolinas</h2><p>El plano situaba este recorrido cerca de las tirolinas, apartado de los grandes toboganes acuáticos. Su decorado de arcos no tenía las palmeras del Parcours de la Jungle anunciado más adelante.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les arches orange sur fond bleu</h2><p>Le Parcours de l’extrême figurait sur l’ancien plan parmi les gonflables de la prairie. L’image montrait une longue base bleue, de petits obstacles colorés et de hautes arches orange et rouges.</p><h2>Près des tyroliennes</h2><p>Le plan plaçait ce parcours près des tyroliennes, à l’écart des grandes glissades aquatiques. Son décor d’arches ne portait pas les palmiers du Parcours de la Jungle annoncé plus tard.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Archi arancioni su una base blu</h2><p>Parcours de l’extrême compariva sulla vecchia mappa fra i gonfiabili del prato. L’immagine mostrava una lunga base blu, piccoli ostacoli colorati e alti archi arancioni e rossi.</p><h2>Vicino alle teleferiche</h2><p>La mappa collocava il percorso vicino alle teleferiche, lontano dai grandi scivoli acquatici. La scenografia ad archi non aveva le palme del Parcours de la Jungle annunciato in seguito.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Oranje bogen op een blauwe basis</h2><p>Parcours de l’extrême stond op de oudere kaart tussen de opblaasbare spelen op het grasveld. De afbeelding toonde een lange blauwe basis, kleine kleurrijke hindernissen en hoge oranje en rode bogen.</p><h2>Bij de tokkelbanen</h2><p>De kaart plaatste dit parcours bij de tokkelbanen, weg van de grote waterglijbanen. Het bogendecor had niet de palmbomen van het later aangekondigde Parcours de la Jungle.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pomarańczowe łuki na niebieskiej podstawie</h2><p>Parcours de l’extrême widniał na starszym planie wśród dmuchańców na łące. Ilustracja pokazywała długą niebieską podstawę, małe kolorowe przeszkody oraz wysokie pomarańczowe i czerwone łuki.</p><h2>Przy tyrolkach</h2><p>Plan umieszczał tor przy tyrolkach, z dala od dużych zjeżdżalni wodnych. Łukowa sceneria nie miała palm znanych z później ogłoszonego Parcours de la Jungle.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Arcos laranja sobre uma base azul</h2><p>O Parcours de l’extrême aparecia no mapa antigo entre os insufláveis do prado. A imagem mostrava uma base azul comprida, pequenos obstáculos coloridos e arcos altos laranja e vermelhos.</p><h2>Perto das tirolesas</h2><p>O mapa situava este percurso perto das tirolesas, afastado dos grandes escorregas aquáticos. O cenário de arcos não tinha as palmeiras do Parcours de la Jungle anunciado mais tarde.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1eded582-ce65-46c3-8210-8a83df5fa62a",
+        "entityKey": "o-parc-baby-pirate",
+        "displayName": "Baby pirate",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "8793ed77-cad4-4610-9a15-17dc82595586"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Das kleine Boot der Baby Zone</h2><p>Baby pirate gehörte zu den früheren Spielangeboten der Baby Zone. Sein Bild auf dem Plan zeigte ein kleines orangefarbenes aufblasbares Boot auf blauem Grund, mit einem Mast und Öffnungen an den Seiten.</p><h2>Eine Meereskulisse zwischen den kleinen Spielen</h2><p>Das Boot erschien nahe Baby Volcan und dem Poulailler. Diese kleine Piratenszene gehörte zur Kinderspielecke; der große Toboggan des pirates war an anderer Stelle im Park verzeichnet.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The Baby Zone’s little boat</h2><p>Baby pirate was one of the Baby Zone’s earlier play features. Its map image showed a small orange inflatable boat on a blue base, with a mast and openings in its sides.</p><h2>A sea scene among the small play areas</h2><p>The boat appeared near Baby Volcan and the Poulailler. This small pirate scene belonged to the children’s play corner, while the large Toboggan des pirates was identified elsewhere in the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El barquito de Baby Zone</h2><p>Baby pirate era uno de los antiguos juegos de Baby Zone. Su imagen en el plano mostraba un pequeño barco hinchable naranja sobre una base azul, con un mástil y aberturas en los costados.</p><h2>Un decorado marino entre los pequeños juegos</h2><p>El barco aparecía cerca de Baby Volcan y Poulailler. Esta pequeña escena pirata pertenecía al rincón infantil, mientras el gran Toboggan des pirates estaba identificado en otra parte del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le petit bateau de la Baby Zone</h2><p>Baby pirate était l’un des anciens jeux de la Baby Zone. Son image sur le plan montrait un petit bateau gonflable orange, posé sur une base bleue, avec un mât et des ouvertures dans les flancs.</p><h2>Un décor marin parmi les petits jeux</h2><p>Le bateau apparaissait près du Baby Volcan et du Poulailler. Cette petite scène de pirates appartenait au coin des jeux d’enfants, tandis que le grand Toboggan des pirates était identifié ailleurs dans le parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La barchetta della Baby Zone</h2><p>Baby pirate era uno dei vecchi giochi della Baby Zone. La sua immagine sulla mappa mostrava una piccola barca gonfiabile arancione su una base blu, con un albero e aperture sui fianchi.</p><h2>Una scena marina fra i piccoli giochi</h2><p>La barca compariva vicino a Baby Volcan e al Poulailler. Questa piccola scena piratesca apparteneva all’angolo dei giochi per bambini, mentre il grande Toboggan des pirates era indicato altrove nel parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het bootje van de Baby Zone</h2><p>Baby pirate was een van de vroegere speelplekken in de Baby Zone. De afbeelding op de kaart toonde een klein oranje opblaasbootje op een blauwe basis, met een mast en openingen in de zijkanten.</p><h2>Een zeedecor tussen de kleine spelen</h2><p>Het bootje stond bij Baby Volcan en de Poulailler. Dit kleine piratentafereel hoorde bij de kinderspeelhoek, terwijl de grote Toboggan des pirates elders in het park was aangeduid.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Mała łódka w Baby Zone</h2><p>Baby pirate należał do dawnych zabaw w Baby Zone. Jego ilustracja na planie pokazywała małą pomarańczową dmuchaną łódkę na niebieskiej podstawie, z masztem i otworami w burtach.</p><h2>Morska sceneria wśród małych zabaw</h2><p>Łódka widniała przy Baby Volcan i Poulailler. Ta niewielka piracka scena należała do dziecięcego kącika, natomiast duży Toboggan des pirates oznaczono w innej części parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O barquinho da Baby Zone</h2><p>Baby pirate era um dos antigos jogos da Baby Zone. A imagem no mapa mostrava um pequeno barco insuflável laranja sobre uma base azul, com um mastro e aberturas nos lados.</p><h2>Um cenário marinho entre os pequenos jogos</h2><p>O barco aparecia perto do Baby Volcan e do Poulailler. Esta pequena cena de piratas pertencia ao canto infantil, enquanto o grande Toboggan des pirates estava identificado noutra parte do parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "08e6caac-8b9b-447c-ae1b-21fe4001111b",
+        "entityKey": "o-parc-bac-a-sable",
+        "displayName": "Bac à sable",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "zoneId",
+            "oldValue": null,
+            "newValue": "8793ed77-cad4-4610-9a15-17dc82595586"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Sand in der Spielecke der Kleinsten</h2><p>Ein Sandkasten gehörte zur früheren Baby Zone von Ô Parc. Der Plan kennzeichnete ihn mit einer Sandburg nahe Poulailler und Baby Volcan.</p><h2>Ein früheres Spielangebot im Baumwinkel</h2><p>In der Legende der kleinen Spiele trug er die Nummer 28. Benachbarte Tische und Bäume rahmten diesen bewaldeten Winkel des Parks ein.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Sand in the little ones’ corner</h2><p>A sandpit belonged to Ô Parc’s earlier Baby Zone. The map marked it with a sandcastle beside the Poulailler and Baby Volcan.</p><h2>An earlier feature of the wooded corner</h2><p>It bore number 28 in the list of small play areas. Nearby tables and trees framed the park’s wooded corner around it.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Arena en el rincón de los pequeños</h2><p>Un arenero formaba parte de la antigua Baby Zone de Ô Parc. El plano lo señalaba mediante un castillo de arena, cerca de Poulailler y Baby Volcan.</p><h2>Un antiguo juego en el sector arbolado</h2><p>Llevaba el número 28 en la leyenda de los pequeños juegos. Las mesas cercanas y los árboles enmarcaban este rincón arbolado del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le sable dans le coin des petits</h2><p>Un bac à sable faisait partie de l’ancienne Baby Zone d’Ô Parc. Le plan le signalait par un château de sable, près du Poulailler et du Baby Volcan.</p><h2>Un ancien jeu du secteur boisé</h2><p>Il portait le numéro 28 dans la légende consacrée aux petits jeux. Les tables voisines et les arbres dessinaient autour de lui le coin boisé du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La sabbia nell’angolo dei piccoli</h2><p>Una sabbiera faceva parte della vecchia Baby Zone di Ô Parc. La mappa la segnalava con un castello di sabbia, vicino al Poulailler e a Baby Volcan.</p><h2>Un vecchio gioco nell’angolo alberato</h2><p>Portava il numero 28 nella legenda dei piccoli giochi. I tavoli vicini e gli alberi delineavano attorno ad essa l’angolo alberato del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Zand in de hoek voor de kleintjes</h2><p>Een zandbak hoorde bij de vroegere Baby Zone van Ô Parc. De kaart markeerde hem met een zandkasteel bij de Poulailler en Baby Volcan.</p><h2>Een vroegere speelplek in de bomenhoek</h2><p>Hij droeg nummer 28 in de lijst van kleine speelplekken. De nabijgelegen tafels en bomen omlijstten deze beboste hoek van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Piasek w kąciku najmłodszych</h2><p>Piaskownica należała do dawnej Baby Zone w Ô Parc. Plan oznaczał ją zamkiem z piasku, przy Poulailler i Baby Volcan.</p><h2>Dawna zabawa wśród drzew</h2><p>Miała numer 28 w legendzie małych miejsc zabaw. Sąsiednie stoły i drzewa wyznaczały wokół niej zadrzewiony zakątek parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Areia no canto dos pequenos</h2><p>Uma caixa de areia fazia parte da antiga Baby Zone do Ô Parc. O mapa assinalava-a com um castelo de areia, perto do Poulailler e do Baby Volcan.</p><h2>Um antigo jogo no setor arborizado</h2><p>Tinha o número 28 na legenda dos pequenos jogos. As mesas próximas e as árvores enquadravam este canto arborizado do parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3f5145d6-bfad-4178-96f4-aee63661909f",
+        "entityKey": "o-parc-peche-canards",
+        "displayName": "Pêche aux canards",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Game"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der kleine Stand beim Chalet</h2><p>Pêche aux canards gehörte zu den Spielen von Ô Parc nahe Chalet Gourmand. Der Plan von 2025 stellte ihn als kleinen Stand mit braunem Dach und gelben Enten an der Vorderseite dar.</p><h2>Zwischen Imbissen und Spielen</h2><p>Sein Symbol erschien auch auf dem älteren Plan bei den Verkaufstresen. Im Jahr 2025 grenzte der Stand an die Picknicktische und blickte zu den Attraktionen auf der Wiese.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The little stall beside the chalet</h2><p>Pêche aux canards was one of Ô Parc’s games near Chalet Gourmand. The 2025 map depicted it as a small brown-roofed stall with yellow ducks across the front.</p><h2>Between food stalls and games</h2><p>Its symbol also appeared on the older map beside the group of counters. In 2025, the stall stood alongside the picnic tables, facing the meadow’s attractions.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El pequeño puesto junto al chalet</h2><p>Pêche aux canards figuraba entre los juegos de Ô Parc cerca de Chalet Gourmand. El plano de 2025 la representaba como un pequeño puesto con techo marrón y patos amarillos en la parte delantera.</p><h2>Entre restauración y juegos</h2><p>Su símbolo también aparecía en el plano antiguo cerca del grupo de mostradores. En 2025 el puesto bordeaba las mesas de pícnic, frente a las atracciones de la pradera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le petit stand près du chalet</h2><p>La Pêche aux canards figurait parmi les jeux d’Ô Parc, à proximité du Chalet Gourmand. Le plan de 2025 la représentait par un petit stand au toit brun, avec des canards jaunes sur le devant.</p><h2>Entre restauration et jeux</h2><p>Son pictogramme apparaissait aussi sur le plan plus ancien, près du regroupement des comptoirs. En 2025, le stand bordait les tables de pique-nique, face aux attractions de la prairie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il piccolo chiosco vicino allo chalet</h2><p>Pêche aux canards figurava fra i giochi di Ô Parc vicino a Chalet Gourmand. La mappa del 2025 la rappresentava come un piccolo chiosco dal tetto marrone, con anatre gialle sul davanti.</p><h2>Fra ristoro e giochi</h2><p>Il suo simbolo compariva anche sulla vecchia mappa vicino ai banconi. Nel 2025 il chiosco costeggiava i tavoli da picnic, di fronte alle attrazioni del prato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het kleine kraampje bij het chalet</h2><p>Pêche aux canards was een van de spelen van Ô Parc bij Chalet Gourmand. De kaart van 2025 stelde het voor als een klein kraampje met een bruin dak en gele eendjes aan de voorkant.</p><h2>Tussen eetkraampjes en spelen</h2><p>Het symbool stond ook op de oudere kaart bij de groep balies. In 2025 grensde het kraampje aan de picknicktafels, tegenover de attracties op het grasveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Małe stoisko przy Chalet Gourmand</h2><p>Pêche aux canards należała do zabaw Ô Parc w pobliżu Chalet Gourmand. Plan z 2025 roku przedstawiał małe stoisko z brązowym dachem i żółtymi kaczkami z przodu.</p><h2>Między jedzeniem a zabawami</h2><p>Jej symbol pojawiał się także na starszym planie przy zespole lad. W 2025 roku stoisko sąsiadowało ze stołami piknikowymi, naprzeciw atrakcji na łące.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A pequena banca junto ao chalet</h2><p>A Pêche aux canards figurava entre os jogos do Ô Parc perto do Chalet Gourmand. O mapa de 2025 representava-a como uma pequena banca de teto castanho, com patos amarelos na frente.</p><h2>Entre comida e jogos</h2><p>O seu símbolo também aparecia no mapa antigo perto do conjunto de balcões. Em 2025, a banca ladeava as mesas de piquenique, virada para as atrações do prado.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/4/desktop.jpg"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.isIndoor",
+            "oldValue": null,
+            "newValue": "false"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}
