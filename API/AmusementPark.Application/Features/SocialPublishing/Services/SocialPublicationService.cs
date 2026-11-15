@@ -493,6 +493,7 @@ public sealed class SocialPublicationService : ISocialPublicationService
             SourceEntityType = sourceEntityType,
             SourceEntityId = sourceEntityId,
             RequestedByUserId = requestedByUserId,
+            CreatedByUserId = requestedByUserId,
             DeduplicationKey = deduplicationKey,
             RequestedAtUtc = requestedAtUtc,
             CreatedAtUtc = requestedAtUtc,
