@@ -6288,6 +6288,218 @@
       },
       "countryCodeAtInventory": "CA",
       "countryResolution": null
+    },
+    {
+      "entryId": "CA-candidate-discovery-15adef96b5ca76",
+      "name": "Niagara City Cruises — Voyage to the Falls",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Croisière panoramique",
+      "locality": "Main Ticket Plaza, 5920 Niagara Parkway, Niagara Falls, Ontario",
+      "siteId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T13:21:48.633Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant et Niagara Parks indiquent un fonctionnement saisonnier ; navigation 2026 confirmée, horaires du jour à vérifier.",
+      "identityConfidence": "Billet Voyage to the Falls dédié, opérateur identifié, absence de doublon PDE, trois photos exactes. Croisière des feux d’artifice distincte.",
+      "possibleMatches": [],
+      "aliases": [
+        "Voyage to the Falls",
+        "Hornblower Niagara Cruises",
+        "Niagara City Cruises"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T13:21:22.035Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a45a1903-713d-4793-95cf-0e3c4ad48507",
+          "appliedAt": "2026-11-15T13:19:10.852Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+          "evidence": "PARK_DATA_EDITOR:apply:a45a1903-713d-4793-95cf-0e3c4ad48507",
+          "auditEvidence": null,
+          "summary": "Création privée du parcours en bateau canadien, identité, position du guichet et huit descriptions."
+        },
+        {
+          "eventId": "apply-77695fd0-e7cc-4533-bd6c-76b8524adba6",
+          "appliedAt": "2026-11-15T13:19:28.435Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+          "evidence": "PARK_DATA_EDITOR:apply:77695fd0-e7cc-4533-bd6c-76b8524adba6",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adulte et enfant, accès au quai, saison et conditions de réservation intégrés."
+        },
+        {
+          "eventId": "image-9a4f97d6b1dc4dceb41eaa340313ca30",
+          "appliedAt": "2026-11-15T13:20:00.114Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+          "evidence": "PARK_DATA_EDITOR:image:9a4f97d6b1dc4dceb41eaa340313ca30@2026-11-15T13:20:00.114Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la croisière datée de 2026 : huit alt, légendes et crédits ; Gogerr, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-56c9063bbddd441c8ed14420c05652ae",
+          "appliedAt": "2026-11-15T13:20:21.545Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+          "evidence": "PARK_DATA_EDITOR:image:56c9063bbddd441c8ed14420c05652ae@2026-11-15T13:20:21.545Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la croisière datée de 2026 : huit alt, légendes et crédits ; K2HWY, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-d6aee4c3366947ecb7a87a49cbe7241f",
+          "appliedAt": "2026-11-15T13:20:38.305Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+          "evidence": "PARK_DATA_EDITOR:image:d6aee4c3366947ecb7a87a49cbe7241f@2026-11-15T13:20:38.305Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la croisière datée de 2021 : huit alt, légendes et crédits ; Maksim Sokolov (maxergon.com), CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-663aaa68-b490-4fe7-9dbc-b944cd9a4fa8",
+          "appliedAt": "2026-11-15T13:21:22.035Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+          "evidence": "PARK_DATA_EDITOR:apply:663aaa68-b490-4fe7-9dbc-b944cd9a4fa8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-voyage-to-the-falls-20261115/audit.json",
+          "summary": "Distinction officielle de la navigation avant et après le coucher du soleil ajoutée dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne, ses reçus et le post Facebook. Recontrôler les prix, la taxe et le calendrier de navigation selon la saison ; ne pas prolonger les heures du jour en règle annuelle. Ajouter de nouvelles photos récentes sous licence si disponibles. Qualifier séparément le produit Falls Fireworks Cruise avant toute autre fiche.",
+      "sources": [
+        {
+          "label": "Niagara City Cruises — Voyage to the Falls",
+          "url": "https://niagaracitycruises.com/tickets/voyage-to-the-falls-boat-tour/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — tarifs et saison",
+          "url": "https://www.niagaraparks.com/attractions/hornblower-niagara-cruises/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara City Cruises — accessibilité",
+          "url": "https://www.cityexperiences.com/niagara-ca/city-cruises/niagara/accessibility/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Parks — horaires",
+          "url": "https://www.niagaraparks.com/visitor-information/hours-of-operation/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap/Mapcarta — guichet",
+          "url": "https://mapcarta.com/W1425944761",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Gogerr, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_City_Cruises_(Canadian_maid_of_the_mist).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — K2HWY, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_with_City_Cruises_Canada_boat_in_Ontario.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Maksim Sokolov (maxergon.com), CC BY-SA 4.0, 2021",
+          "url": "https://commons.wikimedia.org/wiki/File:Hornblower_Niagara_Cruise_approaching_Horseshoe_Falls.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "discovery": {
+        "batch": "2026-11-02-new-standalone-discovery",
+        "method": "Découverte hors catalogue, recherche officielle des alias et comparaison du voisinage Clifton Hill.",
+        "foundAt": "2026-11-02"
+      },
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Niagara City Cruises — Voyage to the Falls",
+            "source": "Niagara City Cruises",
+            "url": "https://niagaracitycruises.com/tickets/voyage-to-the-falls-boat-tour/",
+            "family": "Sightseeing boat tour",
+            "sourceVenueName": "Main Ticket Plaza",
+            "sourceLifecycleSignal": "Operating seasonally",
+            "sourceLocality": "Niagara Falls, Ontario"
+          }
+        ],
+        "rationale": "Billet indépendant et embarquement propre ; distinct de WildPlay Zipline et de la croisière spéciale des feux."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls",
+          "publishedAtUtc": "2026-11-02T18:35:20.503Z",
+          "verifiedAtUtc": "2026-11-02T18:40:00Z",
+          "evidence": "PARK_DATA_EDITOR:apply:7f707b90-10e8-4741-ad88-bca1ef6086d1"
+        },
+        "facebook": {
+          "id": "0f8a1774a0de40948a2c9d74de4d4b3b",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-02T18:38:20.0380428Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125768665424431",
+          "externalPostId": "1285475681307050_122125768665424431",
+          "url": "https://amusement-parks.fun/fr/attraction/80755c3e-7eac-4c69-bade-a88121694e1f/wildplay-zipline-to-the-falls"
+        }
+      },
+      "countryCodeAtInventory": "CA",
+      "countryResolution": null
+    },
+    {
+      "entryId": "CA-candidate-discovery-4fdbe897dbb65c",
+      "name": "Niagara City Cruises — Falls Fireworks Cruise",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Croisière nocturne",
+      "locality": "Main Ticket Plaza, 5920 Niagara Parkway, Niagara Falls, Ontario",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Produit nocturne et billet distincts selon l’exploitant ; dates des feux et état courant à vérifier.",
+      "identityConfidence": "Départ commun avec Voyage to the Falls mais produit dédié ; éviter un doublon de fiche si simple variante saisonnière.",
+      "possibleMatches": [
+        "CA-candidate-discovery-15adef96b5ca76"
+      ],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Falls Fireworks Cruise"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Qualifier si fiche distincte ou variante du parcours de jour ; vérifier calendrier des feux, prix, horaires, accès et au moins une photo exacte sous licence avant publication.",
+      "sources": [
+        {
+          "label": "Niagara City Cruises — croisière des feux",
+          "url": "https://www.cityexperiences.com/niagara-ca/city-cruises/niagara/falls-fireworks-cruise/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Billet et horaire propres, mais départ commun ; statut de fiche indépendante à trancher."
+      },
+      "countryCodeAtInventory": "CA"
     }
   ]
 }

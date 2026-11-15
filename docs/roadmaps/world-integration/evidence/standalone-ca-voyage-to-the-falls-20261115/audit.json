@@ -1,0 +1,139 @@
+{
+  "entryId": "CA-candidate-discovery-15adef96b5ca76",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "3532ab72-2444-4ca8-981f-33aac8e97ac0",
+  "name": "Niagara City Cruises — Voyage to the Falls",
+  "countryCode": "CA",
+  "auditAtUtc": "2026-11-15T13:23:23.344Z",
+  "qualification": "Le parcours Voyage to the Falls est un billet autonome vendu par Niagara City Cruises ; la croisière des feux d’artifice est un autre produit. Recherches PDE Park et Standalone sous Voyage to the Falls, Hornblower et City Cruises sans doublon.",
+  "operatorSources": [
+    "https://niagaracitycruises.com/tickets/voyage-to-the-falls-boat-tour/",
+    "https://www.niagaraparks.com/attractions/hornblower-niagara-cruises/",
+    "https://www.cityexperiences.com/niagara-ca/city-cruises/niagara/accessibility/",
+    "https://www.niagaraparks.com/visitor-information/hours-of-operation/"
+  ],
+  "geoSource": "https://mapcarta.com/W1425944761",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/3532ab72-2444-4ca8-981f-33aac8e97ac0/niagara-city-cruises-voyage-to-the-falls",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "9a4f97d6b1dc4dceb41eaa340313ca30",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Niagara_City_Cruises_(Canadian_maid_of_the_mist).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Niagara_City_Cruises_%28Canadian_maid_of_the_mist%29.jpg/960px-Niagara_City_Cruises_%28Canadian_maid_of_the_mist%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Gogerr",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-10-24 11:44:34",
+      "uploadedAtUtc": "2026-11-15T13:19:56.713Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:20:00.114Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "56c9063bbddd441c8ed14420c05652ae",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Niagara_Falls_with_City_Cruises_Canada_boat_in_Ontario.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Niagara_Falls_with_City_Cruises_Canada_boat_in_Ontario.jpg/960px-Niagara_Falls_with_City_Cruises_Canada_boat_in_Ontario.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "K2HWY",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2026-05-07 11:24:11",
+      "uploadedAtUtc": "2026-11-15T13:20:18.205Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:20:21.545Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "d6aee4c3366947ecb7a87a49cbe7241f",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Hornblower_Niagara_Cruise_approaching_Horseshoe_Falls.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Hornblower_Niagara_Cruise_approaching_Horseshoe_Falls.jpg/960px-Hornblower_Niagara_Cruise_approaching_Horseshoe_Falls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Maksim Sokolov (maxergon.com)",
+      "license": "CC BY-SA 4.0",
+      "photographedAt": "2021-07-04 16:23:35",
+      "uploadedAtUtc": "2026-11-15T13:20:34.967Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:20:38.305Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Niagara Parks : adulte dès 13 ans 47,95 CAD ; enfant de 3 à 12 ans 32,95 CAD ; jusqu’à 2 ans gratuit avec billet obligatoire. Taxe de 13 % en sus.",
+  "openingHoursAssessment": "Exploitation saisonnière avril–novembre ; page officielle du 15 novembre 2026 affichant 10:00–16:00, widget de la fiche daté du 14 novembre. Aucune règle récurrente future extrapolée ; vérifier les départs avant réservation.",
+  "accessAssessment": "Opérateur : Main Ticket Plaza, 5920 Niagara Parkway, rampe et ascenseurs vers Lower Landing ; bateau accessible aux fauteuils et poussettes. Billet pour chaque passager, y compris nourrissons. Gros bagages et nourriture extérieure interdits ; créneau de départ non garanti à la minute.",
+  "daylightAssessment": "Exploitant : avant le coucher du soleil navigation dans la forte brume des Horseshoe Falls ; après, navigation au bord extérieur avec moins de brume.",
+  "geoAssessment": "Position approximative du guichet 43.08875,-79.07392, correspondant à la billetterie OpenStreetMap/Mapcarta, et non au trajet du bateau.",
+  "mediaAssessment": "Trois photos du véritable bateau et de son parcours, dont deux prises en 2026 et une en 2021. Trois licences CC BY-SA 4.0, crédits et légendes dans huit langues. Trois binaires HTTP 200. La photo 2021 précise son ancienneté avant la marque actuelle.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127457395424431",
+    "publishedAtUtc": "2026-11-15T13:22:26.9403131Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:21:22.035Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "a45a1903-713d-4793-95cf-0e3c4ad48507",
+      "appliedAtUtc": "2026-11-15T13:19:10.8526138Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "77695fd0-e7cc-4533-bd6c-76b8524adba6",
+      "appliedAtUtc": "2026-11-15T13:19:28.4354901Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "daylight",
+      "operationId": "663aaa68-b490-4fe7-9dbc-b944cd9a4fa8",
+      "appliedAtUtc": "2026-11-15T13:21:22.0357836Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "9a4f97d6b1dc4dceb41eaa340313ca30",
+      "uploadedAtUtc": "2026-11-15T13:19:56.713Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "56c9063bbddd441c8ed14420c05652ae",
+      "uploadedAtUtc": "2026-11-15T13:20:18.205Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "d6aee4c3366947ecb7a87a49cbe7241f",
+      "uploadedAtUtc": "2026-11-15T13:20:34.967Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "0fc7d6e6-a6b1-458c-8e6a-3cde2819ac27",
+    "appliedAtUtc": "2026-11-15T13:21:48.6335608Z"
+  },
+  "nextAction": "Conserver cette ligne, ses reçus et le post Facebook. Recontrôler les prix, la taxe et le calendrier de navigation selon la saison ; ne pas prolonger les heures du jour en règle annuelle. Ajouter de nouvelles photos récentes sous licence si disponibles. Qualifier séparément le produit Falls Fireworks Cruise avant toute autre fiche."
+}
