@@ -20,7 +20,7 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | Intégration achevée | 16 |
 | Publié, date inconnue | 52 |
 | Hors périmètre enregistré | 89 |
-| Doublon conservé | 25 |
+| Doublon conservé | 26 |
 
 Couverture : **Pistes sourcées ; compléments locaux requis**. Observations externes : **1057**. Sources : Aerophile — références constructeur, AmusementForce, Brogent — projet constructeur, EAZA, Freizeitpark App, Intamin — référence constructeur, RCDB, RCDB — Mountain Coaster, WAZA, Wiegand — références constructeur, Wikipédia (découverte).
 
@@ -41,4 +41,4 @@ La liste est paginée pour rester lisible dans GitHub. Toutes les lignes restent
 - [Page 1 — lignes 1 à 250](DE/001.md)
 - [Page 2 — lignes 251 à 500](DE/002.md)
 - [Page 3 — lignes 501 à 750](DE/003.md)
-- [Page 4 — lignes 751 à 802](DE/004.md)
+- [Page 4 — lignes 751 à 803](DE/004.md)
