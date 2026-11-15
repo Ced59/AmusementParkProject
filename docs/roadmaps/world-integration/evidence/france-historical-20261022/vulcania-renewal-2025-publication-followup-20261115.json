@@ -1,0 +1,1504 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T23:53:17.906254+00:00",
+  "scopeAudit": "vulcania-renewal-2025-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-renewal-2025-publication-export-20261115.json",
+  "realPublicationApply": {
+    "operationId": "64c7e1cc-c850-4413-9de9-b963d37941a1",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:49:40.5363407Z",
+    "appliedAtUtc": "2026-11-15T23:49:40.5363418Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "displayName": "Terre en colère",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "eaff17b9-cf1b-49d5-aa1e-29e9d076c00d",
+        "entityKey": "vulcania-cest-pas-sorcier-opening-2025",
+        "displayName": "C’est pas sorcier les volcans ! rejoint les animations scientifiques",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "172082f7-be66-4103-86d7-a70510ea2722",
+        "entityKey": "vulcania-terre-de-volcans-opening-2025",
+        "displayName": "Terre de volcans ouvre un nouvel espace d’immersion",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "dc74890c-ba0f-4564-86c2-7aae217cdbd9",
+        "entityKey": "vulcania-terre-en-colere-renewal-2025",
+        "displayName": "Gaïa accompagne la nouvelle version de Terre en colère",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "87fcf5f7-97c5-49f1-9e93-5c7e2c1b95b3",
+        "entityKey": "vulcania-yapadrisk-screen-announcement-2025",
+        "displayName": "Vulcania annonce un écran intégré au récit de Yapadrisk",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "publicChecks": {
+    "languageCount": 8,
+    "renderedPages": 64,
+    "itemPages": 32,
+    "timelinePages": 32,
+    "normalParkCatalogueSearchItemNavigations": 32,
+    "normalItemHistoryNavigations": 32,
+    "previouslyPublishedDescriptionsExact": 32,
+    "newHistoryTitlesExact": 32,
+    "newHistorySummariesExact": 32,
+    "newLocalizedFieldsExact": 64,
+    "twoOpeningYears2025Correct": [
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "fr",
+        "label": "DATE D'OUVERTURE",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "fr",
+        "label": "DATE D'OUVERTURE",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "en",
+        "label": "OPENING DATE",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "en",
+        "label": "OPENING DATE",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "de",
+        "label": "ERÖFFNUNGSDATUM",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "de",
+        "label": "ERÖFFNUNGSDATUM",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "nl",
+        "label": "OPENINGSDATUM",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "nl",
+        "label": "OPENINGSDATUM",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "it",
+        "label": "DATA DI APERTURA",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "it",
+        "label": "DATA DI APERTURA",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "es",
+        "label": "FECHA DE APERTURA",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "es",
+        "label": "FECHA DE APERTURA",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "pl",
+        "label": "DATA OTWARCIA",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "pl",
+        "label": "DATA OTWARCIA",
+        "value": "2025"
+      },
+      {
+        "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "language": "pt",
+        "label": "DATA DE ABERTURA",
+        "value": "2025"
+      },
+      {
+        "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "language": "pt",
+        "label": "DATA DE ABERTURA",
+        "value": "2025"
+      }
+    ],
+    "newPhotographImported": false,
+    "existingSorcierContextualImageDisplayed": true,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshots": [
+      {
+        "path": "public-checks/52a14370-17ac-48e8-bfa6-aacdd324804e-fr-history.png",
+        "sha256": "671743560570b73d99e69d47c99a3d3e14ee95f132e696b09bf59fecd6a62c22"
+      },
+      {
+        "path": "public-checks/52a14370-17ac-48e8-bfa6-aacdd324804e-fr.png",
+        "sha256": "b8592f19037a4d43b807450885b72cc48edd43191849314670cd285a1659d369"
+      },
+      {
+        "path": "public-checks/af286486-47e8-4fe4-bdd1-1031453b409c-fr-history.png",
+        "sha256": "9bf20f0f1079e2d0bacb4a6e6478e1fec373277771b278dc80ede890ac6fd5e3"
+      },
+      {
+        "path": "public-checks/af286486-47e8-4fe4-bdd1-1031453b409c-fr.png",
+        "sha256": "737c2d1de75365b7e4993fd16db41dcae0dd7b4a7a318e9d32282a1f58cf7a5f"
+      },
+      {
+        "path": "public-checks/f3c31103-3f0b-4aa8-b064-dc97dd785379-fr-history.png",
+        "sha256": "9642d131324c35ae79e4af48fc5a02ae4225b25cfd01feafe21ecab18a343c2d"
+      },
+      {
+        "path": "public-checks/f3c31103-3f0b-4aa8-b064-dc97dd785379-fr.png",
+        "sha256": "e42a7317dff3018b7488812f11e02fa4a9ca49d5535b2f216972b5787f9fef65"
+      },
+      {
+        "path": "public-checks/f56ed878-6c20-4b11-a9ad-aa954468dad2-fr-history.png",
+        "sha256": "6233cc19bca649fcd9eedaffb213bb89d8e3762e7fd4a07cf31a01d735f66b12"
+      },
+      {
+        "path": "public-checks/f56ed878-6c20-4b11-a9ad-aa954468dad2-fr.png",
+        "sha256": "25ec253e7c82da5c6a69e22d39e6b740004540d5bcfb0a882caf8aa9d7b3769f"
+      },
+      {
+        "path": "public-checks/terre-colere-fr-description.png",
+        "sha256": "bc99215510ffedd44e0762bb52a8f8e5ec7a3a4261780b73394bf149e0da4486"
+      }
+    ],
+    "results": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T23:49:57.109187+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T23:49:57.110839+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T23:49:57.111171+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T23:50:49.611833+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T23:50:49.864229+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T23:50:51.487013+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T23:51:37.169656+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T23:51:38.071953+00:00",
+        "items": [
+          {
+            "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+            "eventKey": "vulcania-terre-en-colere-renewal-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f3c31103-3f0b-4aa8-b064-dc97dd785379/terre-en-colere",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+            "eventKey": "vulcania-terre-de-volcans-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/af286486-47e8-4fe4-bdd1-1031453b409c/terre-de-volcans-l-immersion-volcanique",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+            "eventKey": "vulcania-cest-pas-sorcier-opening-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/52a14370-17ac-48e8-bfa6-aacdd324804e/c-est-pas-sorcier-les-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": true,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          },
+          {
+            "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+            "eventKey": "vulcania-yapadrisk-screen-announcement-2025",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "parkStatus": 200,
+            "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/f56ed878-6c20-4b11-a9ad-aa954468dad2/yapadrisk-et-la-flamme-des-volcans",
+            "descriptionExact": true,
+            "normalParkItemsSearchItemNavigation": true,
+            "openingYear2025Visible": null,
+            "historyLinkCount": 1,
+            "titleExact": true,
+            "summaryExact": true,
+            "normalItemHistoryNavigation": true
+          }
+        ]
+      }
+    ]
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T23:50:12.3308445Z",
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T23:50:13.7979970Z"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 84,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 14,
+          "sourcedResourceCount": 14,
+          "publishedResourceCount": 14,
+          "subjectCount": 12,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 13,
+          "sourcedResourceCount": 13,
+          "publishedResourceCount": 13,
+          "subjectCount": 12,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 33
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 51
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 33,
+        "sourcedFactCount": 33,
+        "majorFactCount": 27,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T23:49:57.4165037Z",
+    "startedAtUtc": "2026-11-15T23:49:56.2553191Z",
+    "action": "HistoryDiagnostics"
+  },
+  "idempotence": {
+    "operationId": "510d0ade-71c4-4a63-85eb-8633193d43eb",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T23:50:48.4508693Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 9,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "displayName": "Terre en colère",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "eaff17b9-cf1b-49d5-aa1e-29e9d076c00d",
+        "entityKey": "vulcania-cest-pas-sorcier-opening-2025",
+        "displayName": "C’est pas sorcier les volcans ! rejoint les animations scientifiques",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "172082f7-be66-4103-86d7-a70510ea2722",
+        "entityKey": "vulcania-terre-de-volcans-opening-2025",
+        "displayName": "Terre de volcans ouvre un nouvel espace d’immersion",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "dc74890c-ba0f-4564-86c2-7aae217cdbd9",
+        "entityKey": "vulcania-terre-en-colere-renewal-2025",
+        "displayName": "Gaïa accompagne la nouvelle version de Terre en colère",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "87fcf5f7-97c5-49f1-9e93-5c7e2c1b95b3",
+        "entityKey": "vulcania-yapadrisk-screen-announcement-2025",
+        "displayName": "Vulcania annonce un écran intégré au récit de Yapadrisk",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 65,
+    "publicItems": 65,
+    "descriptions8Languages": 65,
+    "ownMedia": 66,
+    "publicOwnMedia": 66,
+    "sharedMedia": 5,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 33,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "Historicalinventory notclaimedclosed",
+    "Preciseitemcoordinates andphotographiccoverage remainincomplete",
+    "No complete general2027calendar orpricegrid found inpreviouslyreviewedsources"
+  ],
+  "earlierApplicationIssuesUnchanged": [
+    "vulcania-publication-followup-20261115.json",
+    "vulcania-vulcanova-publication-followup-20261115.json"
+  ],
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  }
+}

@@ -1836,7 +1836,7 @@
         "isLaunched": null,
         "openingDate": null,
         "closingDate": null,
-        "openingDateText": null,
+        "openingDateText": "2025",
         "closingDateText": null,
         "durationInSeconds": 1800,
         "capacityPerHour": null,
@@ -4956,7 +4956,7 @@
         "isLaunched": null,
         "openingDate": null,
         "closingDate": null,
-        "openingDateText": null,
+        "openingDateText": "2025",
         "closingDateText": null,
         "durationInSeconds": null,
         "capacityPerHour": null,
@@ -19819,6 +19819,457 @@
         "id": "735af1ec-fcb2-4e4e-80e3-915e4d0c904e",
         "itemKey": "8914236b-9fda-47f3-a326-7833025f03eb",
         "parkItemKey": "8914236b-9fda-47f3-a326-7833025f03eb",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-terre-en-colere-renewal-2025",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "itemId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "parkItemId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2025,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Refurbishment",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": null,
+        "sources": [
+          {
+            "label": "Vulcania — programme estival, 26 juin 2025",
+            "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — bilan de saison, 3 novembre 2025",
+            "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Gaïa accompagne la nouvelle version de Terre en colère"
+          },
+          {
+            "languageCode": "en",
+            "value": "Gaïa joins the renewed Terre en colère"
+          },
+          {
+            "languageCode": "de",
+            "value": "Gaïa begleitet die erneuerte Fassung von Terre en colère"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Gaïa begeleidt de vernieuwde Terre en colère"
+          },
+          {
+            "languageCode": "it",
+            "value": "Gaïa accompagna la nuova versione di Terre en colère"
+          },
+          {
+            "languageCode": "es",
+            "value": "Gaïa acompaña la nueva versión de Terre en colère"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Gaïa towarzyszy odnowionej wersji Terre en colère"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Gaïa acompanha a nova versão de Terre en colère"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "En 2025, Terre en colère renouvelle sa scénographie et ses séquences filmées. Le personnage numérique Gaïa accompagne désormais la découverte des phénomènes extrêmes et interroge le public. Cette refonte ajoute un échange sur les connaissances à l’expérience dynamique, tout en conservant la confrontation spectaculaire avec les forces de la nature."
+          },
+          {
+            "languageCode": "en",
+            "value": "In 2025, Terre en colère receives new scenery and film sequences. The digital character Gaïa now guides the exploration of extreme natural phenomena and asks the audience questions. The redesign adds an exchange of knowledge to the motion-based experience while retaining its dramatic encounters with the forces of nature."
+          },
+          {
+            "languageCode": "de",
+            "value": "2025 erhält Terre en colère eine neue Szenografie und neue Filmsequenzen. Die digitale Figur Gaïa begleitet nun die Entdeckung extremer Naturereignisse und stellt dem Publikum Fragen. Die Überarbeitung ergänzt das bewegungsreiche Erlebnis um einen Wissensaustausch und bewahrt zugleich die eindrucksvolle Begegnung mit den Naturgewalten."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In 2025 krijgt Terre en colère een nieuwe aankleding en nieuwe filmbeelden. Het digitale personage Gaïa begeleidt voortaan de ontdekking van extreme natuurverschijnselen en stelt vragen aan het publiek. De vernieuwing voegt een uitwisseling van kennis toe aan de bewegende belevenis, met behoud van de spectaculaire confrontatie met natuurkrachten."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel 2025 Terre en colère rinnova la scenografia e le sequenze filmate. Il personaggio digitale Gaïa accompagna ora la scoperta dei fenomeni naturali estremi e pone domande al pubblico. Il rinnovamento aggiunge uno scambio di conoscenze all’esperienza dinamica, mantenendo il confronto spettacolare con le forze della natura."
+          },
+          {
+            "languageCode": "es",
+            "value": "En 2025, Terre en colère renueva su escenografía y sus secuencias filmadas. El personaje digital Gaïa acompaña ahora el descubrimiento de los fenómenos naturales extremos y plantea preguntas al público. La renovación añade un intercambio de conocimientos a la experiencia dinámica, conservando el encuentro espectacular con las fuerzas de la naturaleza."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W 2025 roku Terre en colère zyskuje nową scenografię i sekwencje filmowe. Cyfrowa postać Gaïa towarzyszy odtąd odkrywaniu ekstremalnych zjawisk przyrodniczych i zadaje widzom pytania. Przebudowa wzbogaca dynamiczne doświadczenie o wymianę wiedzy, zachowując widowiskowe spotkanie z siłami natury."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 2025, Terre en colère renova a cenografia e as sequências filmadas. A personagem digital Gaïa passa a acompanhar a descoberta dos fenómenos naturais extremos e a colocar perguntas ao público. A renovação acrescenta uma troca de conhecimentos à experiência dinâmica, mantendo o encontro espetacular com as forças da natureza."
+          }
+        ],
+        "id": "dc74890c-ba0f-4564-86c2-7aae217cdbd9",
+        "itemKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "parkItemKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-terre-de-volcans-opening-2025",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "itemId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "parkItemId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2025,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": null,
+        "sources": [
+          {
+            "label": "Vulcania — programme estival, 26 juin 2025",
+            "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — bilan de saison, 3 novembre 2025",
+            "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Terre de volcans ouvre un nouvel espace d’immersion"
+          },
+          {
+            "languageCode": "en",
+            "value": "Terre de volcans opens a new immersive space"
+          },
+          {
+            "languageCode": "de",
+            "value": "Terre de volcans eröffnet einen neuen immersiven Raum"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Terre de volcans opent een nieuwe immersieve ruimte"
+          },
+          {
+            "languageCode": "it",
+            "value": "Terre de volcans apre un nuovo spazio immersivo"
+          },
+          {
+            "languageCode": "es",
+            "value": "Terre de volcans abre un nuevo espacio inmersivo"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Terre de volcans otwiera nową przestrzeń immersyjną"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Terre de volcans abre um novo espaço imersivo"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Vulcania inaugure en 2025 Terre de volcans : l’immersion volcanique. Ce nouvel espace donne aux paysages un rôle central, en entourant les visiteurs de projections interactives consacrées aux coulées de lave, aux geysers et à la diversité des milieux volcaniques. Il enrichit l’offre permanente par une découverte où l’image compose l’environnement de visite."
+          },
+          {
+            "languageCode": "en",
+            "value": "In 2025, Vulcania introduces Terre de volcans : l’immersion volcanique. The new space places landscapes at the centre of the experience, surrounding visitors with interactive projections of lava flows, geysers and varied volcanic environments. It expands the permanent offering with a form of discovery in which imagery shapes the visitor’s surroundings."
+          },
+          {
+            "languageCode": "de",
+            "value": "2025 eröffnet Vulcania Terre de volcans : l’immersion volcanique. Der neue Bereich rückt Landschaften in den Mittelpunkt und umgibt die Besucher mit interaktiven Projektionen von Lavaströmen, Geysiren und unterschiedlichen Vulkanlandschaften. Er erweitert das dauerhafte Angebot um eine Entdeckungsform, bei der Bilder die Umgebung des Besuchs gestalten."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Vulcania introduceert in 2025 Terre de volcans : l’immersion volcanique. In deze nieuwe ruimte staan landschappen centraal: interactieve projecties van lavastromen, geisers en uiteenlopende vulkanische omgevingen omringen de bezoekers. Het permanente aanbod krijgt zo een ontdekkingstocht waarbij beelden de omgeving van de bezoeker vormen."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel 2025 Vulcania inaugura Terre de volcans : l’immersion volcanique. Il nuovo spazio mette al centro i paesaggi, avvolgendo i visitatori in proiezioni interattive dedicate a colate laviche, geyser e diversi ambienti vulcanici. Arricchisce così l’offerta permanente con una scoperta nella quale le immagini costruiscono l’ambiente della visita."
+          },
+          {
+            "languageCode": "es",
+            "value": "En 2025, Vulcania inaugura Terre de volcans : l’immersion volcanique. El nuevo espacio sitúa los paisajes en el centro de la experiencia y rodea a los visitantes de proyecciones interactivas sobre coladas de lava, géiseres y distintos entornos volcánicos. Amplía así la oferta permanente con una exploración en la que las imágenes construyen el ambiente de la visita."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W 2025 roku Vulcania otwiera Terre de volcans : l’immersion volcanique. W nowej przestrzeni najważniejsze są krajobrazy: zwiedzających otaczają interaktywne projekcje potoków lawy, gejzerów i różnorodnych środowisk wulkanicznych. Stała oferta parku wzbogaca się o formę poznawania przyrody, w której obrazy kształtują otoczenie widza."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 2025, o Vulcania inaugura Terre de volcans : l’immersion volcanique. O novo espaço coloca as paisagens no centro da experiência, envolvendo os visitantes em projeções interativas de escoadas de lava, géiseres e diferentes ambientes vulcânicos. Enriquece a oferta permanente com uma descoberta em que as imagens compõem o ambiente da visita."
+          }
+        ],
+        "id": "172082f7-be66-4103-86d7-a70510ea2722",
+        "itemKey": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "parkItemKey": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-cest-pas-sorcier-opening-2025",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "itemId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "parkItemId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2025,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "5b8fe460082a41428af86320e46f49fc",
+        "sources": [
+          {
+            "label": "Vulcania — programme estival, 26 juin 2025",
+            "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — bilan de saison, 3 novembre 2025",
+            "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "C’est pas sorcier les volcans ! rejoint les animations scientifiques"
+          },
+          {
+            "languageCode": "en",
+            "value": "C’est pas sorcier les volcans ! joins the science programme"
+          },
+          {
+            "languageCode": "de",
+            "value": "C’est pas sorcier les volcans ! ergänzt das Wissenschaftsprogramm"
+          },
+          {
+            "languageCode": "nl",
+            "value": "C’est pas sorcier les volcans ! verrijkt het wetenschapsprogramma"
+          },
+          {
+            "languageCode": "it",
+            "value": "C’est pas sorcier les volcans ! entra nel programma scientifico"
+          },
+          {
+            "languageCode": "es",
+            "value": "C’est pas sorcier les volcans ! se suma al programa científico"
+          },
+          {
+            "languageCode": "pl",
+            "value": "C’est pas sorcier les volcans ! dołącza do programu naukowego"
+          },
+          {
+            "languageCode": "pt",
+            "value": "C’est pas sorcier les volcans ! junta-se ao programa científico"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "L’été 2025 voit apparaître C’est pas sorcier les volcans ! dans le programme de Vulcania. Un médiateur scientifique conduit cette présentation consacrée au fonctionnement des volcans, à leurs différences et au travail des volcanologues. Cette rencontre enrichit les échanges entre le public et l’équipe scientifique, au-delà des seuls dispositifs d’exposition."
+          },
+          {
+            "languageCode": "en",
+            "value": "C’est pas sorcier les volcans ! joins Vulcania’s programme in summer 2025. A science presenter leads this introduction to how volcanoes work, how they differ and what volcanologists do. The new encounter broadens the dialogue between visitors and the science team beyond the park’s exhibition displays."
+          },
+          {
+            "languageCode": "de",
+            "value": "Im Sommer 2025 nimmt Vulcania C’est pas sorcier les volcans ! ins Programm auf. Ein Wissenschaftsvermittler führt durch die Präsentation über die Funktionsweise und Unterschiede von Vulkanen sowie die Arbeit der Vulkanologen. Die neue Begegnung vertieft den Austausch zwischen Publikum und Wissenschaftsteam über die Ausstellungsangebote hinaus."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In de zomer van 2025 verschijnt C’est pas sorcier les volcans ! in het programma van Vulcania. Een wetenschappelijk begeleider leidt deze presentatie over de werking en verschillen van vulkanen en het werk van vulkanologen. De nieuwe ontmoeting verbreedt het gesprek tussen bezoekers en het wetenschapsteam, naast wat de tentoonstellingen laten zien."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nell’estate 2025 C’est pas sorcier les volcans ! entra nel programma di Vulcania. Un divulgatore scientifico conduce la presentazione sul funzionamento dei vulcani, sulle loro differenze e sul lavoro dei vulcanologi. Il nuovo incontro amplia il dialogo tra il pubblico e la squadra scientifica, oltre quanto offerto dagli allestimenti espositivi."
+          },
+          {
+            "languageCode": "es",
+            "value": "En el verano de 2025, C’est pas sorcier les volcans ! se incorpora al programa de Vulcania. Un divulgador científico conduce la presentación sobre el funcionamiento de los volcanes, sus diferencias y el trabajo de los vulcanólogos. El nuevo encuentro amplía el diálogo entre el público y el equipo científico más allá de los espacios expositivos."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Latem 2025 roku w programie Vulcanii pojawia się C’est pas sorcier les volcans !. Edukator prowadzi prezentację poświęconą działaniu i różnicom między wulkanami oraz pracy wulkanologów. Nowe spotkanie rozwija dialog zwiedzających z zespołem naukowym, uzupełniając treści przekazywane na wystawach."
+          },
+          {
+            "languageCode": "pt",
+            "value": "No verão de 2025, C’est pas sorcier les volcans ! passa a integrar o programa do Vulcania. Um divulgador científico conduz esta apresentação sobre o funcionamento dos vulcões, as suas diferenças e o trabalho dos vulcanólogos. O novo encontro alarga o diálogo entre o público e a equipa científica, para além dos espaços de exposição."
+          }
+        ],
+        "id": "eaff17b9-cf1b-49d5-aa1e-29e9d076c00d",
+        "itemKey": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "parkItemKey": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-yapadrisk-screen-announcement-2025",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "itemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "parkItemId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2025,
+        "month": 6,
+        "day": 26,
+        "datePrecision": "Day",
+        "eventType": "Announcement",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": null,
+        "sources": [
+          {
+            "label": "Vulcania — programme estival, 26 juin 2025",
+            "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Vulcania annonce un écran intégré au récit de Yapadrisk"
+          },
+          {
+            "languageCode": "en",
+            "value": "Vulcania announces a screen woven into Yapadrisk’s story"
+          },
+          {
+            "languageCode": "de",
+            "value": "Vulcania kündigt eine Leinwand als Teil von Yapadrisks Erzählung an"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Vulcania kondigt een scherm in Yapadrisks verhaal aan"
+          },
+          {
+            "languageCode": "it",
+            "value": "Vulcania annuncia uno schermo nel racconto di Yapadrisk"
+          },
+          {
+            "languageCode": "es",
+            "value": "Vulcania anuncia una pantalla dentro del relato de Yapadrisk"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Vulcania zapowiada ekran w opowieści Yapadriska"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O Vulcania anuncia um ecrã integrado na história de Yapadrisk"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Le 26 juin 2025, Vulcania présente une nouvelle formule de Yapadrisk et la flamme des volcans pour l’été. Un écran doit désormais servir de fil conducteur au spectacle et permettre de nouveaux effets. L’annonce marque une évolution de la mise en scène du professeur, où la comédie scientifique s’appuie davantage sur les images."
+          },
+          {
+            "languageCode": "en",
+            "value": "On 26 June 2025, Vulcania announces a new summer format for Yapadrisk et la flamme des volcans. A screen is to provide a narrative thread and enable new effects. The announcement marks a change in the professor’s staging, giving imagery a greater role in his science comedy."
+          },
+          {
+            "languageCode": "de",
+            "value": "Am 26. Juni 2025 stellt Vulcania eine neue Sommerfassung von Yapadrisk et la flamme des volcans vor. Eine Leinwand soll künftig den erzählerischen Rahmen bilden und neue Effekte ermöglichen. Die Ankündigung steht für eine Weiterentwicklung der Inszenierung des Professors, in dessen Wissenschaftskomödie Bilder eine größere Rolle übernehmen sollen."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Op 26 juni 2025 kondigt Vulcania een nieuwe zomerformule aan voor Yapadrisk et la flamme des volcans. Een scherm moet voortaan de rode draad van de voorstelling ondersteunen en nieuwe effecten mogelijk maken. De aankondiging markeert een ontwikkeling in de enscenering van de professor, waarbij beelden een grotere rol krijgen in zijn wetenschappelijke komedie."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il 26 giugno 2025 Vulcania presenta una nuova formula estiva di Yapadrisk et la flamme des volcans. Uno schermo dovrà sostenere il filo narrativo dello spettacolo e consentire nuovi effetti. L’annuncio segna un’evoluzione della messa in scena del professore, con un maggiore ruolo delle immagini nella sua commedia scientifica."
+          },
+          {
+            "languageCode": "es",
+            "value": "El 26 de junio de 2025, Vulcania anuncia un nuevo formato de verano para Yapadrisk et la flamme des volcans. Una pantalla servirá de hilo conductor y permitirá nuevos efectos. El anuncio marca una evolución de la puesta en escena del profesor, con un mayor protagonismo de las imágenes en su comedia científica."
+          },
+          {
+            "languageCode": "pl",
+            "value": "26 czerwca 2025 roku Vulcania zapowiada nową letnią formułę Yapadrisk et la flamme des volcans. Ekran ma odtąd wspierać wątek narracyjny widowiska i umożliwiać nowe efekty. Zapowiedź oznacza rozwój inscenizacji profesora, w której obrazy mają odgrywać większą rolę obok naukowej komedii."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 26 de junho de 2025, o Vulcania anuncia uma nova fórmula de verão para Yapadrisk et la flamme des volcans. Um ecrã passará a servir de fio condutor ao espetáculo e permitirá novos efeitos. O anúncio assinala uma evolução da encenação do professor, com maior presença das imagens na sua comédia científica."
+          }
+        ],
+        "id": "87fcf5f7-97c5-49f1-9e93-5c7e2c1b95b3",
+        "itemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "parkItemKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
         "slug": null,
         "previousName": null,
         "newName": null,

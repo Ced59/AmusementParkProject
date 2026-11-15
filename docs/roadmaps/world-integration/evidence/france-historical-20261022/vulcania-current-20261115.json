@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T23:32:27.86822Z",
+  "lastDataIntegrationAt": "2026-11-15T23:49:40.5363418Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 85,
+  "realApplyCount": 87,
   "realImportCount": 66,
-  "lastOperationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
+  "lastOperationId": "64c7e1cc-c850-4413-9de9-b963d37941a1",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -227,7 +227,9 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-218-vulcanova-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-220-vulcanova-history-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-224-publish-vulcanova-photo-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-229-renewal-2025-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-233-publish-renewal-2025-20261115.json"
   ],
   "currentCoverage": {
     "items": 65,
@@ -235,7 +237,7 @@
     "describedItems8Languages": 65,
     "zones": 0,
     "ownMedia": 66,
-    "historyEvents": 29,
+    "historyEvents": 33,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
@@ -244,11 +246,11 @@
     "privateItems": 0,
     "sharedMedia": 5,
     "publicOwnMedia": 66,
-    "publicHistoryEvents": 29,
+    "publicHistoryEvents": 33,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
+  "lastApplyOperationId": "64c7e1cc-c850-4413-9de9-b963d37941a1",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -652,7 +654,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Continuehistoricalinventoryand2025itemmilestones, GPS,photosand2027practicalqualification.65items/66ownmedia/29factspublic. PTPrimordiacreatorlinkmissingafterrecheckdespitecorrectAPI;otherknownapplicationissuespreserved. NoFacebookresend.",
+  "nextAction": "All65qualifieditems describedandpublic;33historyfacts published. ContinueFrancecampaign;Vulcania remains partialforhistoricalinventory,GPS,photos and2027practicalcoverage. No repeatfullaudit orFacebooksend.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -773,6 +775,11 @@
       "operationId": "035d0cdb-3e64-41b3-8e75-814f9e1c5ae7",
       "appliedAtUtc": "2026-11-15T23:32:27.86822Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json"
+    },
+    {
+      "operationId": "64c7e1cc-c850-4413-9de9-b963d37941a1",
+      "appliedAtUtc": "2026-11-15T23:49:40.5363418Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-233-publish-renewal-2025-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -794,5 +801,5 @@
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
   "facebookAnonymousVisibilityConfirmed": false,
-  "lastPublicFollowupProof": "vulcania-vulcanova-publication-followup-20261115.json"
+  "lastPublicFollowupProof": "vulcania-renewal-2025-publication-followup-20261115.json"
 }

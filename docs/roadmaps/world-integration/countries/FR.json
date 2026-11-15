@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T23:32:27.868Z",
+      "lastDataIntegrationAt": "2026-11-15T23:49:40.536Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39668,6 +39668,26 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-225-publish-vulcanova-history-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 225-publish-vulcanova-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-7cc380af-b202-4158-af45-33ac0297667a",
+          "appliedAt": "2026-11-15T23:47:07.209Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-229-renewal-2025-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : quatre jalons 2025 privés et deux ouvertures précisées à l’année, 64 titres et résumés relus dans huit langues ; rénovation Terre en colère, ouvertures Terre de volcans et C’est pas sorcier, annonce de la formule Yapadrisk. Aucun jour d’ouverture inventé."
+        },
+        {
+          "eventId": "apply-64c7e1cc-c850-4413-9de9-b963d37941a1",
+          "appliedAt": "2026-11-15T23:49:40.536Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-233-publish-renewal-2025-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 233-publish-renewal-2025; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39720,7 +39740,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-035d0cdb-3e64-41b3-8e75-814f9e1c5ae7 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-64c7e1cc-c850-4413-9de9-b963d37941a1 ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

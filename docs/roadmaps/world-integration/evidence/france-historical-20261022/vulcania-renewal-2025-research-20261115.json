@@ -1,0 +1,69 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "reviewedAtUtc": "2026-11-15T23:41:04.541795+00:00",
+  "sourceAccess": [
+    {
+      "key": "official2025summer",
+      "url": "https://www.vulcania.com/actualites/animations-ete-2025/",
+      "retrievedAtUtc": "2026-11-15T23:15:00.361715+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/animations-ete-2025/",
+      "bytes": 141543,
+      "sha256": "e264bb3d33c4ff8d21dcece4b46caec8f75ca8c1c1d16579d2f53161eb0c9af3"
+    },
+    {
+      "key": "retrospective2025",
+      "url": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+      "retrievedAtUtc": "2026-11-15T23:15:23.511727+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/actualites/clap-de-fin-saison-2025/",
+      "bytes": 114165,
+      "sha256": "be2ac169e9726402db0bd6c50930a1f1465786bd33893a8435235d950e761538"
+    }
+  ],
+  "sourceFiles": [
+    "vulcanova-followup-2315/official2025summer.txt",
+    "vulcanova-followup-2315/retrospective2025.txt"
+  ],
+  "existingItems": [
+    {
+      "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "name": "Terre en colère",
+      "openingDate": null,
+      "openingDateText": null,
+      "historyKeys": []
+    },
+    {
+      "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+      "name": "Terre de volcans : l’immersion volcanique",
+      "openingDate": null,
+      "openingDateText": null,
+      "historyKeys": []
+    },
+    {
+      "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+      "name": "C’est pas sorcier les volcans !",
+      "openingDate": null,
+      "openingDateText": null,
+      "historyKeys": []
+    },
+    {
+      "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "name": "Yapadrisk et la flamme des volcans",
+      "openingDate": null,
+      "openingDateText": null,
+      "historyKeys": [
+        "vulcania-yapadrisk-flame-announcement-2016"
+      ]
+    }
+  ],
+  "decisions": {
+    "Terre en colère": "Actual2025redevelopmentconfirmedby3Novretrospective, notoriginalopening. Gaïadigitalguide/scenography/films, no climatecausality toseismsorvolcanoes copied.",
+    "Terre de volcans": "Current immersiveexhibition namednew2025 in26Juneand3Novofficialtexts. Existingitemopeningyear2025only; noseasonfirstdayinferred or oldhomonymalias.",
+    "Cest pas sorcier": "Current named scientificmediatorprogramme new2025, actualretrospectiveconfirms. Existingitemopeningyearonly, notJune26pressday orJuly7generalprogramme.",
+    "Yapadrisk": "June26publication announces newformula withscreeninteraction, notfirstperformance or executeddate. Existing2016announcementretained, newdated2025Announcementdistinct."
+  },
+  "photos": "Terrecolerehistoricalphotosnotqualifiedas2025newversion;Terredevolcansnoownphoto;Yapahistoricalphoto notqualifiedcurrentdoorversion. CestpasSorcierexistingofficialphoto contextualshow, noopeningeventcaptureclaim. No newimports planned.",
+  "globalOutcome": "partial",
+  "newMutationPerformed": false
+}
