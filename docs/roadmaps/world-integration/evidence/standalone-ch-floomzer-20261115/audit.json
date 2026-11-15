@@ -4,7 +4,7 @@
   "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
   "name": "FLOOMZER Flumserberg",
   "countryCode": "CH",
-  "auditAtUtc": "2026-11-15T10:30:56.321Z",
+  "auditAtUtc": "2026-11-15T10:40:26.756Z",
   "operatorSources": [
     "https://www.flumserberg.ch/rodelberg",
     "https://www.flumserberg.ch/en/information/Tickets-rates/FLOOMZER-toboggan-run",
@@ -125,5 +125,37 @@
     "operationId": "0c8b1362-d23c-4a63-8bfd-256b1d9aff66",
     "appliedAtUtc": "2026-11-15T10:26:51.5980215Z"
   },
-  "migrationNote": "Core create used retireLegacyPark=false and retireLegacyParkItem=false to avoid the known parent retirement hang. The ParkItem was then retired in a separate successful apply; the hidden parent Park was not changed."
+  "migrationNote": "Core create used retireLegacyPark=false and retireLegacyParkItem=false to avoid the known parent retirement hang. The ParkItem was then retired in a separate successful apply; the hidden parent Park was not changed.",
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAtUtc": "2026-11-15T10:22:04.32Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "appliedAtUtc": "2026-11-15T10:22:12.374Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "appliedAtUtc": "2026-11-15T10:22:19.838Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAtUtc": "2026-11-15T10:23:47.195Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "appliedAtUtc": "2026-11-15T10:23:52.973Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "appliedAtUtc": "2026-11-15T10:23:58.581Z"
+    }
+  ]
 }

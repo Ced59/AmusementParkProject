@@ -34,33 +34,63 @@
     },
     {
       "eventId": "image-e9f3c2dadd1843e7b934b7bce796b6a3",
-      "appliedAt": "2026-11-15T10:23:47.195Z",
+      "appliedAt": "2026-11-15T10:22:04.320Z",
       "outcome": "partial",
       "entityKind": "StandaloneAttraction",
       "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
       "evidence": "PARK_DATA_EDITOR:image:e9f3c2dadd1843e7b934b7bce796b6a3",
       "auditEvidence": null,
-      "summary": "Photo exacte FLOOMZER (sled at lower section) importée, publiée et légendée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+      "summary": "Photo exacte FLOOMZER (sled at lower section) importée et publiée ; qwesy qwesy, CC BY 3.0, prise en 2015."
     },
     {
       "eventId": "image-f86c3814371646fc9c2977d397e8be8f",
-      "appliedAt": "2026-11-15T10:23:52.973Z",
+      "appliedAt": "2026-11-15T10:22:12.374Z",
       "outcome": "partial",
       "entityKind": "StandaloneAttraction",
       "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
       "evidence": "PARK_DATA_EDITOR:image:f86c3814371646fc9c2977d397e8be8f",
       "auditEvidence": null,
-      "summary": "Photo exacte FLOOMZER (track curve and gondola) importée, publiée et légendée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+      "summary": "Photo exacte FLOOMZER (track curve and gondola) importée et publiée ; qwesy qwesy, CC BY 3.0, prise en 2015."
     },
     {
       "eventId": "image-1563b6a920c449409e875caaba2c4889",
-      "appliedAt": "2026-11-15T10:23:58.581Z",
+      "appliedAt": "2026-11-15T10:22:19.838Z",
       "outcome": "partial",
       "entityKind": "StandaloneAttraction",
       "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
       "evidence": "PARK_DATA_EDITOR:image:1563b6a920c449409e875caaba2c4889",
       "auditEvidence": null,
-      "summary": "Photo exacte FLOOMZER (wooded track curve) importée, publiée et légendée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+      "summary": "Photo exacte FLOOMZER (wooded track curve) importée et publiée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+    },
+    {
+      "eventId": "image-metadata-e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAt": "2026-11-15T10:23:47.195Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+      "evidence": "PARK_DATA_EDITOR:image-metadata:e9f3c2dadd1843e7b934b7bce796b6a3",
+      "auditEvidence": null,
+      "summary": "Métadonnées de la photo FLOOMZER (sled at lower section) corrigées dans les huit langues : légendes distinctes des textes alternatifs."
+    },
+    {
+      "eventId": "image-metadata-f86c3814371646fc9c2977d397e8be8f",
+      "appliedAt": "2026-11-15T10:23:52.973Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+      "evidence": "PARK_DATA_EDITOR:image-metadata:f86c3814371646fc9c2977d397e8be8f",
+      "auditEvidence": null,
+      "summary": "Métadonnées de la photo FLOOMZER (track curve and gondola) corrigées dans les huit langues : légendes distinctes des textes alternatifs."
+    },
+    {
+      "eventId": "image-metadata-1563b6a920c449409e875caaba2c4889",
+      "appliedAt": "2026-11-15T10:23:58.581Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+      "evidence": "PARK_DATA_EDITOR:image-metadata:1563b6a920c449409e875caaba2c4889",
+      "auditEvidence": null,
+      "summary": "Métadonnées de la photo FLOOMZER (wooded track curve) corrigées dans les huit langues : légendes distinctes des textes alternatifs."
     },
     {
       "eventId": "apply-16dedeec-e0b2-426c-a039-acb2d35d6be1",
@@ -99,5 +129,37 @@
     "parkItemId": "da469f69-5875-4753-b513-73edf32ecaaf",
     "parkItemRetiredApplyOperationId": "b37ba4ea-6bac-4a60-b084-fed6fb5f2efe",
     "parkRetirementPending": true
-  }
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAtUtc": "2026-11-15T10:22:04.32Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "appliedAtUtc": "2026-11-15T10:22:12.374Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "appliedAtUtc": "2026-11-15T10:22:19.838Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAtUtc": "2026-11-15T10:23:47.195Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "appliedAtUtc": "2026-11-15T10:23:52.973Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "appliedAtUtc": "2026-11-15T10:23:58.581Z"
+    }
+  ]
 }
