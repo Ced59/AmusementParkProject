@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "private": true,
+  "newPublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "personalEightLanguageReview": true,
+  "qualification": "LA DUNE lettering visible in original official photo personally inspected by root; distinct from Le Dôme, separately listed on same page. Photo depicts smiling sun, bluearches,yellowdesertdecor withcacti/redsnake,orangebase,mound,trees/woodenfence. No maker,individualdates,coordinates or groupage restrictions inferred. Lifecycle Unknown preserved.",
+  "sourceEvidence": {
+    "stem": "dune",
+    "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+    "sourcePage": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "sourceSha256": "13ffde9defab04f1f3595a61f7c600fd6217c018346e80d40ab396412a63b00f",
+    "width": 1920,
+    "height": 1280,
+    "bytes": 462731,
+    "reconciliation": "Seven existing official-export media, all Park-owned; no LaDunephoto/source or image owned by this item. Existing Dômecontext photo is visually distinct. Original personally inspected by root, no crop/watermark/retouch. Visible name supports exactidentity, genericgalleryheading not an age proof.",
+    "sourceAccess": {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:44:20.887921Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 462731,
+      "sha256": "13ffde9defab04f1f3595a61f7c600fd6217c018346e80d40ab396412a63b00f",
+      "retryAfter": null
+    }
+  },
+  "document": {
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "name": "Parc des Naudières",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "id": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "name": "La Dune",
+          "category": "Attraction",
+          "type": "Playground",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un soleil au-dessus du petit désert</h2><p>Un soleil souriant aux rayons jaunes surplombe l’entrée de La Dune. Autour du nom, de grandes arches bleues encadrent des bandes jaunes décorées de cactus et d’un serpent rouge. La base orangée donne encore plus d’éclat à ce décor de désert dessiné.</p><p>À l’intérieur, un monticule arrondi occupe l’espace derrière les filets. Les arbres et une petite clôture de bois entourent le gonflable, dont les couleurs vives contrastent avec le cadre ombragé des Naudières.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A smiling sun above a little desert</h2><p>A smiling sun with yellow rays rises above the entrance to La Dune. Around the name, broad blue arches frame yellow bands decorated with cacti and a red snake. The orange base adds another bright colour to this cartoon desert setting.</p><p>Inside, a rounded mound fills the space behind the netting. Trees and a low wooden fence surround the inflatable, its vivid colours standing out in the shade of Les Naudières.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine lächelnde Sonne über der kleinen Wüste</h2><p>Über dem Eingang von La Dune thront eine lächelnde Sonne mit gelben Strahlen. Große blaue Bögen umrahmen den Namen und gelbe Streifen mit Kakteen und einer roten Schlange. Der orangefarbene Sockel bringt eine weitere kräftige Farbe in diese gezeichnete Wüstenwelt.</p><p>Im Inneren liegt hinter den Netzen ein rundlicher Hügel. Bäume und ein niedriger Holzzaun umgeben das aufblasbare Spielgerät, dessen leuchtende Farben sich von der schattigen Umgebung in Les Naudières abheben.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een lachende zon boven een kleine woestijn</h2><p>Boven de ingang van La Dune prijkt een lachende zon met gele stralen. Rond de naam omlijsten grote blauwe bogen de gele stroken met cactussen en een rode slang. De oranje basis geeft nog meer kleur aan deze getekende woestijnwereld.</p><p>Binnen ligt achter de netten een ronde heuvel. Bomen en een laag houten hek omringen het luchtkussen, waarvan de felle kleuren afsteken tegen de schaduwrijke omgeving van Les Naudières.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un sole sorridente sopra un piccolo deserto</h2><p>Un sole sorridente dai raggi gialli sovrasta l’ingresso della Dune. Attorno al nome, grandi archi blu incorniciano fasce gialle decorate con cactus e un serpente rosso. La base arancione aggiunge un altro colore acceso a questo deserto disegnato.</p><p>All’interno, un rialzo arrotondato occupa lo spazio dietro le reti. Gli alberi e una bassa staccionata di legno circondano il gonfiabile, i cui colori vivaci risaltano nell’ambiente ombreggiato di Les Naudières.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un sol sonriente sobre un pequeño desierto</h2><p>Un sol sonriente de rayos amarillos corona la entrada de La Dune. Alrededor del nombre, grandes arcos azules enmarcan franjas amarillas decoradas con cactus y una serpiente roja. La base naranja añade otro color vivo a este desierto dibujado.</p><p>En el interior, un montículo redondeado ocupa el espacio detrás de las redes. Los árboles y una valla baja de madera rodean el hinchable, cuyos colores intensos destacan en el entorno sombreado de Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Uśmiechnięte słońce nad małą pustynią</h2><p>Nad wejściem do La Dune góruje uśmiechnięte słońce z żółtymi promieniami. Wokół nazwy wielkie niebieskie łuki otaczają żółte pasy ozdobione kaktusami i czerwonym wężem. Pomarańczowa podstawa dodaje kolejny żywy kolor tej rysunkowej pustyni.</p><p>Wewnątrz, za siatkami, znajduje się zaokrąglony pagórek. Drzewa i niski drewniany płotek otaczają dmuchaną konstrukcję, której jaskrawe barwy wyróżniają się w zacienionym otoczeniu Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um sol sorridente sobre um pequeno deserto</h2><p>Um sol sorridente de raios amarelos ergue-se sobre a entrada de La Dune. À volta do nome, grandes arcos azuis enquadram faixas amarelas decoradas com catos e uma serpente vermelha. A base laranja acrescenta mais uma cor viva a este deserto desenhado.</p><p>No interior, um monte arredondado ocupa o espaço atrás das redes. As árvores e uma pequena vedação de madeira rodeiam o insuflável, cujas cores intensas sobressaem no ambiente sombreado de Les Naudières.</p>"
+            }
+          ],
+          "isVisible": false
+        }
+      ],
+      "metadata": {
+        "source": "Conversation France — identité par enseigne LA DUNE et panneau La Dune de John dans photo officielle. Distinct du Dôme. Publication du fichier en répertoire2023 ne date ni la photo ni ouverture. Aucune restriction du groupe Les Aventuriers transposée ; statutUnknown conservé."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "9ff246f4-75ea-4fbf-9160-fdf67b953e90",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:59:41.5356612Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine lächelnde Sonne über der kleinen Wüste</h2><p>Über dem Eingang von La Dune thront eine lächelnde Sonne mit gelben Strahlen. Große blaue Bögen umrahmen den Namen und gelbe Streifen mit Kakteen und einer roten Schlange. Der orangefarbene Sockel bringt eine weitere kräftige Farbe in diese gezeichnete Wüstenwelt.</p><p>Im Inneren liegt hinter den Netzen ein rundlicher Hügel. Bäume und ein niedriger Holzzaun umgeben das aufblasbare Spielgerät, dessen leuchtende Farben sich von der schattigen Umgebung in Les Naudières abheben.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A smiling sun above a little desert</h2><p>A smiling sun with yellow rays rises above the entrance to La Dune. Around the name, broad blue arches frame yellow bands decorated with cacti and a red snake. The orange base adds another bright colour to this cartoon desert setting.</p><p>Inside, a rounded mound fills the space behind the netting. Trees and a low wooden fence surround the inflatable, its vivid colours standing out in the shade of Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un sol sonriente sobre un pequeño desierto</h2><p>Un sol sonriente de rayos amarillos corona la entrada de La Dune. Alrededor del nombre, grandes arcos azules enmarcan franjas amarillas decoradas con cactus y una serpiente roja. La base naranja añade otro color vivo a este desierto dibujado.</p><p>En el interior, un montículo redondeado ocupa el espacio detrás de las redes. Los árboles y una valla baja de madera rodean el hinchable, cuyos colores intensos destacan en el entorno sombreado de Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un soleil au-dessus du petit désert</h2><p>Un soleil souriant aux rayons jaunes surplombe l’entrée de La Dune. Autour du nom, de grandes arches bleues encadrent des bandes jaunes décorées de cactus et d’un serpent rouge. La base orangée donne encore plus d’éclat à ce décor de désert dessiné.</p><p>À l’intérieur, un monticule arrondi occupe l’espace derrière les filets. Les arbres et une petite clôture de bois entourent le gonflable, dont les couleurs vives contrastent avec le cadre ombragé des Naudières.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un sole sorridente sopra un piccolo deserto</h2><p>Un sole sorridente dai raggi gialli sovrasta l’ingresso della Dune. Attorno al nome, grandi archi blu incorniciano fasce gialle decorate con cactus e un serpente rosso. La base arancione aggiunge un altro colore acceso a questo deserto disegnato.</p><p>All’interno, un rialzo arrotondato occupa lo spazio dietro le reti. Gli alberi e una bassa staccionata di legno circondano il gonfiabile, i cui colori vivaci risaltano nell’ambiente ombreggiato di Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een lachende zon boven een kleine woestijn</h2><p>Boven de ingang van La Dune prijkt een lachende zon met gele stralen. Rond de naam omlijsten grote blauwe bogen de gele stroken met cactussen en een rode slang. De oranje basis geeft nog meer kleur aan deze getekende woestijnwereld.</p><p>Binnen ligt achter de netten een ronde heuvel. Bomen en een laag houten hek omringen het luchtkussen, waarvan de felle kleuren afsteken tegen de schaduwrijke omgeving van Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Uśmiechnięte słońce nad małą pustynią</h2><p>Nad wejściem do La Dune góruje uśmiechnięte słońce z żółtymi promieniami. Wokół nazwy wielkie niebieskie łuki otaczają żółte pasy ozdobione kaktusami i czerwonym wężem. Pomarańczowa podstawa dodaje kolejny żywy kolor tej rysunkowej pustyni.</p><p>Wewnątrz, za siatkami, znajduje się zaokrąglony pagórek. Drzewa i niski drewniany płotek otaczają dmuchaną konstrukcję, której jaskrawe barwy wyróżniają się w zacienionym otoczeniu Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um sol sorridente sobre um pequeno deserto</h2><p>Um sol sorridente de raios amarelos ergue-se sobre a entrada de La Dune. À volta do nome, grandes arcos azuis enquadram faixas amarelas decoradas com catos e uma serpente vermelha. A base laranja acrescenta mais uma cor viva a este deserto desenhado.</p><p>No interior, um monte arredondado ocupa o espaço atrás das redes. As árvores e uma pequena vedação de madeira rodeiam o insuflável, cujas cores intensas sobressaem no ambiente sombreado de Les Naudières.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "4dafcdb7-7b1e-46d0-aec9-7bf2534e216e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:59:57.446491Z",
+    "appliedAtUtc": "2026-11-15T09:59:57.4464923Z",
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine lächelnde Sonne über der kleinen Wüste</h2><p>Über dem Eingang von La Dune thront eine lächelnde Sonne mit gelben Strahlen. Große blaue Bögen umrahmen den Namen und gelbe Streifen mit Kakteen und einer roten Schlange. Der orangefarbene Sockel bringt eine weitere kräftige Farbe in diese gezeichnete Wüstenwelt.</p><p>Im Inneren liegt hinter den Netzen ein rundlicher Hügel. Bäume und ein niedriger Holzzaun umgeben das aufblasbare Spielgerät, dessen leuchtende Farben sich von der schattigen Umgebung in Les Naudières abheben.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A smiling sun above a little desert</h2><p>A smiling sun with yellow rays rises above the entrance to La Dune. Around the name, broad blue arches frame yellow bands decorated with cacti and a red snake. The orange base adds another bright colour to this cartoon desert setting.</p><p>Inside, a rounded mound fills the space behind the netting. Trees and a low wooden fence surround the inflatable, its vivid colours standing out in the shade of Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un sol sonriente sobre un pequeño desierto</h2><p>Un sol sonriente de rayos amarillos corona la entrada de La Dune. Alrededor del nombre, grandes arcos azules enmarcan franjas amarillas decoradas con cactus y una serpiente roja. La base naranja añade otro color vivo a este desierto dibujado.</p><p>En el interior, un montículo redondeado ocupa el espacio detrás de las redes. Los árboles y una valla baja de madera rodean el hinchable, cuyos colores intensos destacan en el entorno sombreado de Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un soleil au-dessus du petit désert</h2><p>Un soleil souriant aux rayons jaunes surplombe l’entrée de La Dune. Autour du nom, de grandes arches bleues encadrent des bandes jaunes décorées de cactus et d’un serpent rouge. La base orangée donne encore plus d’éclat à ce décor de désert dessiné.</p><p>À l’intérieur, un monticule arrondi occupe l’espace derrière les filets. Les arbres et une petite clôture de bois entourent le gonflable, dont les couleurs vives contrastent avec le cadre ombragé des Naudières.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un sole sorridente sopra un piccolo deserto</h2><p>Un sole sorridente dai raggi gialli sovrasta l’ingresso della Dune. Attorno al nome, grandi archi blu incorniciano fasce gialle decorate con cactus e un serpente rosso. La base arancione aggiunge un altro colore acceso a questo deserto disegnato.</p><p>All’interno, un rialzo arrotondato occupa lo spazio dietro le reti. Gli alberi e una bassa staccionata di legno circondano il gonfiabile, i cui colori vivaci risaltano nell’ambiente ombreggiato di Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een lachende zon boven een kleine woestijn</h2><p>Boven de ingang van La Dune prijkt een lachende zon met gele stralen. Rond de naam omlijsten grote blauwe bogen de gele stroken met cactussen en een rode slang. De oranje basis geeft nog meer kleur aan deze getekende woestijnwereld.</p><p>Binnen ligt achter de netten een ronde heuvel. Bomen en een laag houten hek omringen het luchtkussen, waarvan de felle kleuren afsteken tegen de schaduwrijke omgeving van Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Uśmiechnięte słońce nad małą pustynią</h2><p>Nad wejściem do La Dune góruje uśmiechnięte słońce z żółtymi promieniami. Wokół nazwy wielkie niebieskie łuki otaczają żółte pasy ozdobione kaktusami i czerwonym wężem. Pomarańczowa podstawa dodaje kolejny żywy kolor tej rysunkowej pustyni.</p><p>Wewnątrz, za siatkami, znajduje się zaokrąglony pagórek. Drzewa i niski drewniany płotek otaczają dmuchaną konstrukcję, której jaskrawe barwy wyróżniają się w zacienionym otoczeniu Les Naudières.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um sol sorridente sobre um pequeno deserto</h2><p>Um sol sorridente de raios amarelos ergue-se sobre a entrada de La Dune. À volta do nome, grandes arcos azuis enquadram faixas amarelas decoradas com catos e uma serpente vermelha. A base laranja acrescenta mais uma cor viva a este deserto desenhado.</p><p>No interior, um monte arredondado ocupa o espaço atrás das redes. As árvores e uma pequena vedação de madeira rodeiam o insuflável, cujas cores intensas sobressaem no ambiente sombreado de Les Naudières.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "actualDateSource": "apply.appliedAtUtc",
+  "shortDescriptionException": "Two specific paragraphs proportional to visible/official evidence; no generic padding."
+}

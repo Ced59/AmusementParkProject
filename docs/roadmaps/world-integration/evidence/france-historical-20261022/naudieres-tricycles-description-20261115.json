@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "private": true,
+  "newPublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "personalEightLanguageReview": true,
+  "qualification": "Official catalogue names Tricycles; Julesetmoa personal visitor photo2018 has Tricycles sign on blue building. Red/yellow vehicles distinct from reversed saddle/handlebar Vélos drôles. Partial restriction sign not transposed, Unknown lifecycle/private preserved.",
+  "sourceEvidence": {
+    "documentType": "public-research-only-supplement",
+    "generatedAtUtc": "2026-11-15T09:56:28.648807Z",
+    "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "subject": "Tricycles distincts des Vélos drôles",
+    "existingItemIds": {
+      "tricycles": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+      "velosDroles": "b5b35100-ae8e-47c8-a8df-925257e13d12"
+    },
+    "conclusion": "Rapprochement historique Tricycles fortement étayé par la photographie personnelle avec panneau du parc dans le même cadre et par la mention nominale de la page officielle Exploration. Ne pas fusionner avec Vélos drôles. Pas de preuve supplémentaire de maintien du même matériel en2026.",
+    "primaryPhotographicSource": {
+      "pageUrl": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+      "localPage": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/julesetmoa-2018.html",
+      "pageMetadata": {
+        "url": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+        "attemptedAtUtc": "2026-11-15T09:47:14.821887Z",
+        "status": 200,
+        "finalUrl": "https://www.julesetmoa.com/2018/07/parc-dattraction-les-naudieres-loire-atlantique.html",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 49557,
+        "sha256": "ae1bd3b8fadffbf3ddad3508a8880bbcf7aad9b1f470021f182c8cbe5b1daf8c",
+        "retryAfter": null
+      },
+      "authorCredit": "Caroline / Julesetmoa",
+      "visitDateEvidence": "Le texte dit mai dernier dans cet article de juillet2018 : mois de visite mai2018, aucun jour de prise de vue prouvé.",
+      "photo": {
+        "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoXWs1Ln05UPoO2PQKOQg9HY82SlsED6dp_86u78MFS34U5idCoV8V7W9McIQeLnBw6uoP7BYP2ieDZ1rH4-1-krL_X5TWVlYZIynKP3-9yvGuy01KUrSNKUvuVcgMRhSl5sXKHsXf-0I4/s0/IMG_9981.jpg",
+        "attemptedAtUtc": "2026-11-15T09:55:29.382035Z",
+        "status": 200,
+        "finalUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoXWs1Ln05UPoO2PQKOQg9HY82SlsED6dp_86u78MFS34U5idCoV8V7W9McIQeLnBw6uoP7BYP2ieDZ1rH4-1-krL_X5TWVlYZIynKP3-9yvGuy01KUrSNKUvuVcgMRhSl5sXKHsXf-0I4/s0/IMG_9981.jpg",
+        "contentType": "image/jpeg",
+        "bytes": 560910,
+        "sha256": "a071108199bf853abdf587802ae05fd5de68c8e2c0039e9f89363055e0fc9fb9",
+        "retryAfter": null,
+        "localPath": "/workspace/france-historical-20261114/naudieres/parallel-inventory-20261115/jules2018-IMG_9981-native.jpg",
+        "dimensions": {
+          "width": 1536,
+          "height": 2048
+        },
+        "variantNote": "Variante native publique Blogger /s0/ du lien /s1600/ déjà référencé dans le reportage. Même cadre, aucun recadrage ni retouche locale. Fichier précédent conservé."
+      },
+      "observations": [
+        "Panneau intitulé Tricycles visible au bord droit du bâtiment bleu dans la même scène.",
+        "Deux véhicules rouge et jaune, chacune avec assise avant et emplacement arrière occupé, roues basses et châssis tubulaire.",
+        "Trois roues sur le véhicule jaune : une à l’avant et deux à l’arrière ; arrière droit visible, autre arrière en partie masqué par les occupants.",
+        "Le guidon est placé devant le conducteur et le siège derrière ; pas de selle mise à la place du guidon comme dans la description déjà intégrée des Vélos drôles."
+      ],
+      "restrictions": "Panneau coupé par bord droit ; aucune restriction d’âge, taille ou nombre autorisé extrapolée. Le nombre de personnes visibles n’est pas une certification de capacité."
+    },
+    "officialNominalEvidence": {
+      "url": "https://www.lesnaudieres.com/univers/exploration/",
+      "localPath": "/workspace/france-historical-20261114/naudieres/exploration-current.html",
+      "sha256": "972a5e367c8967b3a427b0cbb78af67ac274cea744fc382bbbba6553957c3288",
+      "content": "Tricycles est cité dans Nos autres attractions Exploration ; cette mention ne décrit ni modèles ni particularités ni dates individuelles."
+    },
+    "distinctVelosDrolesEvidence": {
+      "workingStateSha256": "85d4bf98195a7872292c78446b91124e39da41f19a4c958539083dd2130d38f0",
+      "sourceUrlAlreadyInItem": "https://www.citizenkid.com/sortie/parc-les-naudieres-nantes-a105150",
+      "existingSpecificDescription": "Selles et guidons échangent leurs places. Description huit langues présente sur l’autre item ; aucune raison de la réécrire ou de lui attribuer la photo des tricycles."
+    },
+    "otherResearch": {
+      "newPageAccess": {
+        "url": "https://www.cseairbusnantes.com/com/page/2498",
+        "attemptedAtUtc": "2026-11-15T09:54:48.941926Z",
+        "status": 200,
+        "finalUrl": "https://www.cseairbusnantes.com/com/page/2498",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 148503,
+        "sha256": "1a520ac722165d4acbbcb062f428a8dbe1d1ad0c67d004b07c5b9a2e528dd84f",
+        "retryAfter": null
+      },
+      "result": "CSEAirbus cite des tricycles originaux dans son offre2026 mais sans photographie nominative du matériel. Cette prose généraliste ne précise pas l’identité et ne justifie pas une nouvelle zone Le Monde des Roues. Source non retenue pour qualifier le matériel.",
+      "noAdditionalNominalPhotoFound": true,
+      "archive": "CDX déjà conservé identifie une ancienne page vélos drôles2008. Pas de replay supplémentaire après429 antérieur."
+    },
+    "suggestedScopeForParent": "Notice historique fondée sur les deux véhicules photographiés et le panneau ; dates de première ouverture/fermeture, constructeur, modèle, restrictions, GPS restent inconnus. Parent rédige et relit les huit langues.",
+    "actionsPerformed": "Recherche publique et complément local uniquement : aucun PDE, Git, registre, import ni modification du working-state.",
+    "rootPersonalPhotoReview": true,
+    "shortDescriptionException": "Two specific historical paragraphs; no generic filling, restrictions/dates preserved unknown."
+  },
+  "document": {
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "name": "Parc des Naudières",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+          "id": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+          "name": "Tricycles",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Rouge et jaune devant le pavillon bleu</h2><p>Les Tricycles des Naudières arboraient de grands cadres jaunes et rouges, avec une place à l’arrière pour partager la promenade. Sur le sol goudronné, leurs couleurs vives se détachaient devant le bâtiment bleu et son bardage clair.</p><p>Le panneau « Tricycles » était fixé à cette façade. Une photographie de visite de 2018 montre ce petit rassemblement de véhicules côte à côte, au milieu des enfants embarqués pour un tour.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Red and yellow beside the blue building</h2><p>The tricycles at Les Naudières had broad yellow and red frames, with a place at the back to share the ride. On the paved ground, their bright colours stood out against the blue building and its pale cladding.</p><p>A “Tricycles” sign was fixed to that façade. A visitor photograph from 2018 shows the little gathering of vehicles side by side, with children aboard for a ride.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Rot und Gelb vor dem blauen Gebäude</h2><p>Die Dreiräder von Les Naudières hatten breite gelb-rote Rahmen und einen Platz hinten, um gemeinsam eine Runde zu drehen. Auf dem asphaltierten Boden hoben sich ihre kräftigen Farben vom blauen Gebäude mit seiner hellen Verkleidung ab.</p><p>An dieser Fassade hing ein Schild mit der Aufschrift „Tricycles“. Ein Besucherfoto von 2018 zeigt die kleine Gruppe nebeneinanderstehender Fahrzeuge mit Kindern, die bereits aufgestiegen waren.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Rood en geel bij het blauwe gebouw</h2><p>De driewielers van Les Naudières hadden brede gele en rode frames, met achteraan een plaats om samen een rondje te maken. Op de verharde ondergrond staken hun felle kleuren af tegen het blauwe gebouw met zijn lichte bekleding.</p><p>Aan die gevel hing het bord “Tricycles”. Een bezoekersfoto uit 2018 toont het kleine groepje voertuigen naast elkaar, met kinderen die al waren ingestapt voor een ritje.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Rosso e giallo davanti all’edificio blu</h2><p>I tricicli di Les Naudières avevano grandi telai gialli e rossi, con un posto sul retro per condividere il giro. Sul terreno asfaltato, i colori vivaci risaltavano davanti all’edificio blu dal rivestimento chiaro.</p><p>Il cartello « Tricycles » era fissato a quella facciata. Una fotografia di visita del 2018 mostra il piccolo gruppo di veicoli affiancati, con i bambini già a bordo per un giro.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Rojo y amarillo junto al edificio azul</h2><p>Los triciclos de Les Naudières tenían amplios cuadros amarillos y rojos, con un lugar detrás para compartir el paseo. Sobre el suelo asfaltado, sus colores vivos destacaban ante el edificio azul de revestimiento claro.</p><p>El letrero « Tricycles » estaba fijado a esa fachada. Una fotografía de visita de 2018 muestra el pequeño grupo de vehículos uno al lado del otro, con niños ya subidos para dar una vuelta.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Czerwień i żółć przy niebieskim budynku</h2><p>Trójkołowce w Les Naudières miały szerokie żółto-czerwone ramy i miejsce z tyłu, pozwalające dzielić przejażdżkę z drugą osobą. Na asfaltowym podłożu ich żywe kolory odcinały się od niebieskiego budynku z jasną okładziną.</p><p>Na tej elewacji wisiał napis „Tricycles”. Zdjęcie wykonane przez gościa w 2018 roku pokazuje niewielką grupę pojazdów ustawionych obok siebie, z dziećmi gotowymi do przejażdżki.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Vermelho e amarelo junto ao edifício azul</h2><p>Os triciclos de Les Naudières tinham grandes quadros amarelos e vermelhos, com um lugar atrás para partilhar o passeio. No piso asfaltado, as cores vivas destacavam-se diante do edifício azul com revestimento claro.</p><p>O letreiro « Tricycles » estava fixado nessa fachada. Uma fotografia de visita de 2018 mostra o pequeno grupo de veículos lado a lado, com crianças já a bordo para uma volta.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "Conversation France — Tricycles : panneau nominal dans photo Julesetmoa visite mai2018, nom dans liste officielle actuelle. Matériel distinct des Vélos drôles à selles/guidons inversés. Description historique, aucun âge du panneau tronqué ni maintien du matériel actuel déduit. StatutUnknown et visibilité privée conservés."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "a15e38e1-1ee4-4e59-853d-de2b38f34e36",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:02:27.8144682Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "entityKey": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "displayName": "Tricycles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Rot und Gelb vor dem blauen Gebäude</h2><p>Die Dreiräder von Les Naudières hatten breite gelb-rote Rahmen und einen Platz hinten, um gemeinsam eine Runde zu drehen. Auf dem asphaltierten Boden hoben sich ihre kräftigen Farben vom blauen Gebäude mit seiner hellen Verkleidung ab.</p><p>An dieser Fassade hing ein Schild mit der Aufschrift „Tricycles“. Ein Besucherfoto von 2018 zeigt die kleine Gruppe nebeneinanderstehender Fahrzeuge mit Kindern, die bereits aufgestiegen waren.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Red and yellow beside the blue building</h2><p>The tricycles at Les Naudières had broad yellow and red frames, with a place at the back to share the ride. On the paved ground, their bright colours stood out against the blue building and its pale cladding.</p><p>A “Tricycles” sign was fixed to that façade. A visitor photograph from 2018 shows the little gathering of vehicles side by side, with children aboard for a ride.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Rojo y amarillo junto al edificio azul</h2><p>Los triciclos de Les Naudières tenían amplios cuadros amarillos y rojos, con un lugar detrás para compartir el paseo. Sobre el suelo asfaltado, sus colores vivos destacaban ante el edificio azul de revestimiento claro.</p><p>El letrero « Tricycles » estaba fijado a esa fachada. Una fotografía de visita de 2018 muestra el pequeño grupo de vehículos uno al lado del otro, con niños ya subidos para dar una vuelta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Rouge et jaune devant le pavillon bleu</h2><p>Les Tricycles des Naudières arboraient de grands cadres jaunes et rouges, avec une place à l’arrière pour partager la promenade. Sur le sol goudronné, leurs couleurs vives se détachaient devant le bâtiment bleu et son bardage clair.</p><p>Le panneau « Tricycles » était fixé à cette façade. Une photographie de visite de 2018 montre ce petit rassemblement de véhicules côte à côte, au milieu des enfants embarqués pour un tour.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Rosso e giallo davanti all’edificio blu</h2><p>I tricicli di Les Naudières avevano grandi telai gialli e rossi, con un posto sul retro per condividere il giro. Sul terreno asfaltato, i colori vivaci risaltavano davanti all’edificio blu dal rivestimento chiaro.</p><p>Il cartello « Tricycles » era fissato a quella facciata. Una fotografia di visita del 2018 mostra il piccolo gruppo di veicoli affiancati, con i bambini già a bordo per un giro.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Rood en geel bij het blauwe gebouw</h2><p>De driewielers van Les Naudières hadden brede gele en rode frames, met achteraan een plaats om samen een rondje te maken. Op de verharde ondergrond staken hun felle kleuren af tegen het blauwe gebouw met zijn lichte bekleding.</p><p>Aan die gevel hing het bord “Tricycles”. Een bezoekersfoto uit 2018 toont het kleine groepje voertuigen naast elkaar, met kinderen die al waren ingestapt voor een ritje.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwień i żółć przy niebieskim budynku</h2><p>Trójkołowce w Les Naudières miały szerokie żółto-czerwone ramy i miejsce z tyłu, pozwalające dzielić przejażdżkę z drugą osobą. Na asfaltowym podłożu ich żywe kolory odcinały się od niebieskiego budynku z jasną okładziną.</p><p>Na tej elewacji wisiał napis „Tricycles”. Zdjęcie wykonane przez gościa w 2018 roku pokazuje niewielką grupę pojazdów ustawionych obok siebie, z dziećmi gotowymi do przejażdżki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Vermelho e amarelo junto ao edifício azul</h2><p>Os triciclos de Les Naudières tinham grandes quadros amarelos e vermelhos, com um lugar atrás para partilhar o passeio. No piso asfaltado, as cores vivas destacavam-se diante do edifício azul com revestimento claro.</p><p>O letreiro « Tricycles » estava fixado nessa fachada. Uma fotografia de visita de 2018 mostra o pequeno grupo de veículos lado a lado, com crianças já a bordo para uma volta.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "6e56af0c-f7f6-45bb-8c14-cf82c9156e83",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T10:02:43.2306229Z",
+    "appliedAtUtc": "2026-11-15T10:02:43.2306244Z",
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "entityKey": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "displayName": "Tricycles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Rot und Gelb vor dem blauen Gebäude</h2><p>Die Dreiräder von Les Naudières hatten breite gelb-rote Rahmen und einen Platz hinten, um gemeinsam eine Runde zu drehen. Auf dem asphaltierten Boden hoben sich ihre kräftigen Farben vom blauen Gebäude mit seiner hellen Verkleidung ab.</p><p>An dieser Fassade hing ein Schild mit der Aufschrift „Tricycles“. Ein Besucherfoto von 2018 zeigt die kleine Gruppe nebeneinanderstehender Fahrzeuge mit Kindern, die bereits aufgestiegen waren.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Red and yellow beside the blue building</h2><p>The tricycles at Les Naudières had broad yellow and red frames, with a place at the back to share the ride. On the paved ground, their bright colours stood out against the blue building and its pale cladding.</p><p>A “Tricycles” sign was fixed to that façade. A visitor photograph from 2018 shows the little gathering of vehicles side by side, with children aboard for a ride.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Rojo y amarillo junto al edificio azul</h2><p>Los triciclos de Les Naudières tenían amplios cuadros amarillos y rojos, con un lugar detrás para compartir el paseo. Sobre el suelo asfaltado, sus colores vivos destacaban ante el edificio azul de revestimiento claro.</p><p>El letrero « Tricycles » estaba fijado a esa fachada. Una fotografía de visita de 2018 muestra el pequeño grupo de vehículos uno al lado del otro, con niños ya subidos para dar una vuelta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Rouge et jaune devant le pavillon bleu</h2><p>Les Tricycles des Naudières arboraient de grands cadres jaunes et rouges, avec une place à l’arrière pour partager la promenade. Sur le sol goudronné, leurs couleurs vives se détachaient devant le bâtiment bleu et son bardage clair.</p><p>Le panneau « Tricycles » était fixé à cette façade. Une photographie de visite de 2018 montre ce petit rassemblement de véhicules côte à côte, au milieu des enfants embarqués pour un tour.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Rosso e giallo davanti all’edificio blu</h2><p>I tricicli di Les Naudières avevano grandi telai gialli e rossi, con un posto sul retro per condividere il giro. Sul terreno asfaltato, i colori vivaci risaltavano davanti all’edificio blu dal rivestimento chiaro.</p><p>Il cartello « Tricycles » era fissato a quella facciata. Una fotografia di visita del 2018 mostra il piccolo gruppo di veicoli affiancati, con i bambini già a bordo per un giro.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Rood en geel bij het blauwe gebouw</h2><p>De driewielers van Les Naudières hadden brede gele en rode frames, met achteraan een plaats om samen een rondje te maken. Op de verharde ondergrond staken hun felle kleuren af tegen het blauwe gebouw met zijn lichte bekleding.</p><p>Aan die gevel hing het bord “Tricycles”. Een bezoekersfoto uit 2018 toont het kleine groepje voertuigen naast elkaar, met kinderen die al waren ingestapt voor een ritje.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwień i żółć przy niebieskim budynku</h2><p>Trójkołowce w Les Naudières miały szerokie żółto-czerwone ramy i miejsce z tyłu, pozwalające dzielić przejażdżkę z drugą osobą. Na asfaltowym podłożu ich żywe kolory odcinały się od niebieskiego budynku z jasną okładziną.</p><p>Na tej elewacji wisiał napis „Tricycles”. Zdjęcie wykonane przez gościa w 2018 roku pokazuje niewielką grupę pojazdów ustawionych obok siebie, z dziećmi gotowymi do przejażdżki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Vermelho e amarelo junto ao edifício azul</h2><p>Os triciclos de Les Naudières tinham grandes quadros amarelos e vermelhos, com um lugar atrás para partilhar o passeio. No piso asfaltado, as cores vivas destacavam-se diante do edifício azul com revestimento claro.</p><p>O letreiro « Tricycles » estava fixado nessa fachada. Uma fotografia de visita de 2018 mostra o pequeno grupo de veículos lado a lado, com crianças já a bordo para uma volta.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "actualDateSource": "apply.appliedAtUtc",
+  "shortDescriptionException": "Two specific paragraphs proportional to visible/official evidence; no generic padding."
+}

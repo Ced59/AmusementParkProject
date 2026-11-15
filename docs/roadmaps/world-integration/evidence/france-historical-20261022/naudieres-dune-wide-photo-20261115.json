@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T10:01:02.277Z",
+  "private": true,
+  "sourceEvidence": {
+    "stem": "dune-wide",
+    "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+    "sourcePage": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "sourceSha256": "54fe0b07ec8f1edc7448ac895c27a271dcd29949b48df2e64a8b06aaa58fba61",
+    "width": 1707,
+    "height": 2560,
+    "bytes": 775540,
+    "reconciliation": "Distinct portrait view personally inspected from the opposite side, signfullyvisible, foregroundfence/tables/tree, scorpiondecoration. Not a crop of the first officiallandscape photo. No prioritemphoto inseven-mediaexport; differentURL/hash fromfirstplannedimport.",
+    "sourceAccess": {
+      "url": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+      "attemptedAtUtc": "2026-11-15T09:45:10.182364Z",
+      "status": 200,
+      "finalUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 775540,
+      "sha256": "54fe0b07ec8f1edc7448ac895c27a271dcd29949b48df2e64a8b06aaa58fba61",
+      "retryAfter": null
+    }
+  },
+  "result": {
+    "id": "341b0e55a14f422fb4262d7c9aaf6e9e",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+    "path": "park_item/341b0e55a14f422fb4262d7c9aaf6e9e",
+    "description": "Vue de La Dune depuis les tables voisines, avec ses cactus et son scorpion peints.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1707,
+    "height": 2560,
+    "sizeInBytes": 775540,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La Dune et son soleil souriant derrière une clôture en bois, sous les grands arbres des Naudières."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Dune and its smiling sun behind a wooden fence beneath the tall trees of Les Naudières."
+      },
+      {
+        "languageCode": "de",
+        "value": "La Dune mit ihrer lächelnden Sonne hinter einem Holzzaun unter den großen Bäumen von Les Naudières."
+      },
+      {
+        "languageCode": "nl",
+        "value": "La Dune met de lachende zon achter een houten hek onder de hoge bomen van Les Naudières."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Dune con il sole sorridente dietro una staccionata di legno, sotto i grandi alberi di Les Naudières."
+      },
+      {
+        "languageCode": "es",
+        "value": "La Dune con su sol sonriente detrás de una valla de madera, bajo los grandes árboles de Les Naudières."
+      },
+      {
+        "languageCode": "pl",
+        "value": "La Dune z uśmiechniętym słońcem za drewnianym płotkiem, pod wysokimi drzewami Les Naudières."
+      },
+      {
+        "languageCode": "pt",
+        "value": "La Dune com o seu sol sorridente atrás de uma vedação de madeira, sob as grandes árvores de Les Naudières."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Vue de La Dune depuis les tables voisines, avec ses cactus et son scorpion peints."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Dune seen from the nearby tables, with its painted cacti and scorpion."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blick von den benachbarten Tischen auf La Dune mit ihren aufgemalten Kakteen und dem Skorpion."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Zicht op La Dune vanaf de nabije tafels, met de geschilderde cactussen en schorpioen."
+      },
+      {
+        "languageCode": "it",
+        "value": "La Dune vista dai tavoli vicini, con i cactus e lo scorpione dipinti."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista de La Dune desde las mesas cercanas, con sus cactus y escorpión pintados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok La Dune od strony pobliskich stołów, z namalowanymi kaktusami i skorpionem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista de La Dune a partir das mesas próximas, com os catos e o escorpião pintados."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Parc des Naudières — site officiel"
+      },
+      {
+        "languageCode": "en",
+        "value": "Parc des Naudières — official website"
+      },
+      {
+        "languageCode": "de",
+        "value": "Parc des Naudières — offizielle Website"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Parc des Naudières — officiële website"
+      },
+      {
+        "languageCode": "it",
+        "value": "Parc des Naudières — sito ufficiale"
+      },
+      {
+        "languageCode": "es",
+        "value": "Parc des Naudières — sitio oficial"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Parc des Naudières — oficjalna strona"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Parc des Naudières — sítio oficial"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T10:00:58.442Z",
+    "updatedAt": "2026-11-15T10:01:02.277Z"
+  },
+  "review": "Original official photo personally inspected; exactentityreadable, eightlanguagealt/caption/credit personallyauthoredandreviewed; sourcecredit preserved, no photographernamed or openlicenseclaimed, no retouch/crop/capturedateinvented.",
+  "newPublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

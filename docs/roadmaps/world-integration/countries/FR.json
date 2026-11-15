@@ -27757,7 +27757,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T08:30:32.163Z",
+      "lastDataIntegrationAt": "2026-11-15T10:02:43.230Z",
       "integrationHistory": [
         {
           "eventId": "apply-800058f1-a0d9-4e68-8856-771632577322",
@@ -27938,9 +27938,59 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-acquisition-2020-20261115.json",
           "auditEvidence": null,
           "summary": "Acquisition par Wikiparks en février 2020 intégrée en brouillon privé, huit langues personnellement relues, propriétaire nommé et trois sources ; distincte du programme d’investissement existant. Zéro warning/erreur, aucune publication ou réimport."
+        },
+        {
+          "eventId": "apply-4dafcdb7-7b1e-46d0-aec9-7bf2534e216e",
+          "appliedAt": "2026-11-15T09:59:57.446Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-dune-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "La Dune existante qualifiée par enseigne et photo officielles, huit descriptions personnellement écrites et relues ; distincte du Dôme, lifecycleUnknown/visibilitéprivée conservés. Aucune date,restriction oupositioninventée."
+        },
+        {
+          "eventId": "image-373575c2d2fb421b8b154cb99742af48",
+          "appliedAt": "2026-11-15T10:00:33.423Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-dune-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "La Dune : photographie officielle dune importée privée, identité visuelle vérifiée et huitlangues relues. Aucune datecapturée inventée, ni publication/Facebook nouveau."
+        },
+        {
+          "eventId": "image-341b0e55a14f422fb4262d7c9aaf6e9e",
+          "appliedAt": "2026-11-15T10:01:02.277Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-dune-wide-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "La Dune : photographie officielle dune-wide importée privée, identité visuelle vérifiée et huitlangues relues. Aucune datecapturée inventée, ni publication/Facebook nouveau."
+        },
+        {
+          "eventId": "apply-e39c96a4-a4bc-419b-a0ac-ab956dea44ba",
+          "appliedAt": "2026-11-15T10:02:06.473Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-echasses-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Les Échasses existantes : huit notices historiques personnelles, nom dans brochure officielle2017 et photo d’usage relue ; statut Unknown et visibilité privée conservés. Aucune date individuelle, restriction ou position inventée."
+        },
+        {
+          "eventId": "apply-6e56af0c-f7f6-45bb-8c14-cf82c9156e83",
+          "appliedAt": "2026-11-15T10:02:43.230Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-tricycles-description-20261115.json",
+          "auditEvidence": null,
+          "summary": "Tricycles existants : huit notices historiques personnelles, panneau nominal dans photo2018 et nom officiel rapprochés ; distincts Vélos drôles, statut Unknown et visibilité privée conservés. Pas de restriction extrapolée du panneau tronqué."
         }
       ],
-      "nextAction": "Acquisition Wikiparks février2020 appliquée privée8langues le15novembre08:30:32UTC, idempotence2inchangées et diagnostics0bloqueur. Publier après audit du périmètre ; qualifier Maison Ameco (sources officielles encore contradictoires) et35lieux privés. Dix-sept anciensApply rapprochés aux vraiesdates sansrejeu.",
+      "nextAction": "55/84lieux décrits8langues après3Apply et2photosDune privés15novembre;48publics,56médias,8plansrestaurés. Qualifier36privés, contradictionâgeAmeco et possibleconfusionPonts. Aucun auditfinal ni publicationnouvelle;preuve naudieres-identity-followup-20261115.json.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

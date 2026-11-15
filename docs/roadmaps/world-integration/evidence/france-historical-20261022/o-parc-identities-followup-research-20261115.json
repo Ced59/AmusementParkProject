@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "preparedAtUtc": "2026-11-15T09:59:06.039161+00:00",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkName": "Ô Parc — Bannay",
+  "scope": "Public research follow-up on three unresolved historical identities; no data integration",
+  "previousReport": "/workspace/france-historical-20261114/o-parc/parallel-inventory-20261115/inventory-research-report.json",
+  "previousReportSha256": "74a844edeedfadc61f7eba5c1c6ff3269b3ea5915ee45a3923c7caa05418e6b4",
+  "result": "No explicit independent nominal match found for Twister géant, orange octopus inflatable, or yellow castle. Keep all three gaps open.",
+  "identityResults": [
+    {
+      "candidate": "Twister géant",
+      "established": "The Koikispass article of 6 July 2017 names it separately from other games. The existing report was read; no independent physical description, named photograph or alias was found.",
+      "notEstablished": [
+        "Correspondence with La Boule",
+        "Correspondence with Jeux d’adresse or Course Ô Sac",
+        "Exact game design, rules, dimensions, manufacturer, dates of installation/removal"
+      ],
+      "recommendation": "Preserve the sourced mention and unresolved mapping. Do not assign the 2023 suspended-ball photograph to Twister."
+    },
+    {
+      "candidate": "Orange octopus inflatable visible in 2020",
+      "established": "Physical presence remains supported by existing Tripadvisor 2020 pictures. New sources do not name it.",
+      "notEstablished": [
+        "Official name",
+        "Alias to Baby Volcan or Phare des Pirates",
+        "Installation/removal year"
+      ],
+      "recommendation": "Keep neutral park-owned photographs and the unresolved inventory gap."
+    },
+    {
+      "candidate": "Yellow/orange crenellated castle visible in 2020",
+      "established": "Physical presence remains supported by existing 2020 pictures; simultaneous appearance with octopus already documented. New sources do not name it.",
+      "notEstablished": [
+        "Official name",
+        "Alias to Saloon, Baby Pirate or another existing inflatable",
+        "Installation/removal year"
+      ],
+      "recommendation": "Do not create or rename an attraction based on appearance alone."
+    }
+  ],
+  "newPrimarySourcesRead": [
+    {
+      "url": "https://www.secourspopulaire.fr/18/journee-detente-au-parc-d-attractions-o-parc-a-bannay/",
+      "localFile": "secours-2019.html",
+      "sourceDisplayDate": "2019-08-12",
+      "eventDateText": "mardi 16 juillet",
+      "findings": "Organiser account of a visit to Ô Parc, Bannay: generic inflatables, swing chairs, zipline, little train, water games and rides. Captions Jeux d’eau, Manège petits, Petit train. None of the three target identities named.",
+      "limits": "Old embedded media are unresolved scald placeholders on the normal page; no guessed media endpoint or administrative access attempted. Article date is not an attraction opening date."
+    },
+    {
+      "url": "https://www.secourspopulaire.fr/18/journee-bonheur-au-parc-d-attraction-o-parc-a-bannay-pour-des-familles-du-cher/",
+      "localFile": "secours-2020.html",
+      "sourceDisplayDate": "2020-08-14",
+      "findings": "Organiser account explicitly locates visit at Ô Parc in Bannay. Generic list of giant inflatables, pedal karts, quads, ziplines, swing chairs, games and baby zone. No target identity name.",
+      "limits": "Image paths have 2023 migration-style dates even though the article is dated 2020. URL path dates must not be used as capture dates. Downloaded jeux picture is only 240×320 and shows a child at a wooden-platform suspended game; no readable attraction name."
+    },
+    {
+      "url": "https://www.secourspopulaire.fr/18/sortie-familles-au-parc-de-loisirs-oparc/",
+      "localFile": "secours-2023.html",
+      "sourceDisplayDate": "2023-06-21",
+      "eventDateText": "samedi 17 juin",
+      "findings": "Organiser account explicitly identifies Ô Parc at Bannay. Two original images have captions Structure gonflable and Karting. Neither names Twister, octopus or yellow castle.",
+      "limits": "Event context supports 17 June 2023, not an invented EXIF/precise photo timestamp. Individual photographer and image licence are not supplied."
+    }
+  ],
+  "newPhotographicLeads": [
+    {
+      "file": "secours-2023-inflatable.jpg",
+      "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/stucture-gonflable-oparc-scaled.jpg",
+      "article": "secours-2023.html",
+      "sourceCaption": "Structure gonflable",
+      "personallyViewed": true,
+      "observed": "Large blue, green, red/orange inflatable arch structure over a circular base, yellow podium blocks, suspended orange/green ball. People stand on the blocks. Blue dome and a large blue slide visible in background. No readable attraction name.",
+      "useLimit": "Potential additional photograph of existing La Boule requires root comparison against the already qualified item. It is not independent proof of an alias Twister. No attribution to Twister made. No new photo imported.",
+      "bytes": 711540,
+      "sha256": "1a402ce84276da311eea5cf49ce5fd11faa6793d5cf6e6d9d2ef595ab1230070",
+      "dimensions": [
+        2560,
+        1920
+      ]
+    },
+    {
+      "file": "secours-2023-karting.jpg",
+      "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/karting-oparc-ok-scaled.jpg",
+      "article": "secours-2023.html",
+      "sourceCaption": "Karting",
+      "personallyViewed": true,
+      "observed": "Pedal vehicles on a defined circuit with black/white edging and chequered flags. BERG lettering is readable on one background vehicle.",
+      "useLimit": "Potential illustration of already existing Karts à pédales; a visible brand on one vehicle does not prove a global manufacturer for every vehicle or the circuit. No new photo imported.",
+      "bytes": 728343,
+      "sha256": "289bf6ed26e541279d1bf16f984595483ad4a029ed94140996630ba4b98aa3e0",
+      "dimensions": [
+        2560,
+        1504
+      ]
+    },
+    {
+      "file": "secours-2020-jeux.jpg",
+      "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/06/jeux-oparc.jpg",
+      "article": "secours-2020.html",
+      "sourceCaption": "jeux Oparc",
+      "personallyViewed": true,
+      "observed": "Small photograph of a wooden platform with suspended rope/seat; no target identity signage.",
+      "useLimit": "240×320 pixels; not useful for the three target identifications and not proposed for import.",
+      "bytes": 18641,
+      "sha256": "fa72336666f3ba0a8785639aae7b0bff18625926d966f3ef4882c1caaaeacac8",
+      "dimensions": [
+        240,
+        320
+      ]
+    }
+  ],
+  "additionalSourceChecks": [
+    {
+      "url": "https://www.bourges.infoptimum.com/archive-bourges-2017.html",
+      "file": "infoptimum-archive-2017.html",
+      "result": "HTTP 200 archive page; no Ô Parc/Bannay-specific article link discovered in inspected links."
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/archive-bourges-2018.html",
+      "file": "infoptimum-archive-2018.html",
+      "result": "HTTP 200 archive page; no Ô Parc/Bannay-specific article link discovered in inspected links."
+    }
+  ],
+  "excludedSearchResults": [
+    "Pi-O Longueuil Quebec",
+    "Récré-O-Parc Compton Quebec",
+    "Guide-O-Parc attraction directory entries for other parks",
+    "OPARC Montclair California organisation",
+    "Bannay Moselle rental advertisements",
+    "Other non-park uses of Twister, octopus and o parc"
+  ],
+  "searchEvidence": "public-search-results.json",
+  "archiveHandling": "No Wayback request performed. Prior 2019 replay 429 failures were not repeated. No challenge, login or missing media bypass.",
+  "remainingUsefulEvidenceNeeded": "An operator-era named photograph, caption, brochure or inventory explicitly connecting each historical appearance with a name. Further identical nominal web searches are unlikely to advance the gap without a new source.",
+  "accesses": [
+    {
+      "url": "https://www.secourspopulaire.fr/18/page/5/?location=atrium_dpt_id&s=jeunes",
+      "accessedAtUtc": "2026-11-15T09:56:08.595195+00:00",
+      "status": 200,
+      "finalUrl": "https://www.secourspopulaire.fr/18/page/5/?location=atrium_dpt_id&s=jeunes",
+      "bytes": 109088,
+      "sha256": "09d3ac572106681b5a1f71cf2bb6b87d106fafef40ce2be68184a92a0dd670bd",
+      "file": "secours-index.html"
+    },
+    {
+      "url": "https://www.secourspopulaire.fr/18/journee-bonheur-au-parc-d-attraction-o-parc-a-bannay-pour-des-familles-du-cher/",
+      "accessedAtUtc": "2026-11-15T09:56:22.860702+00:00",
+      "status": 200,
+      "finalUrl": "https://www.secourspopulaire.fr/18/journee-bonheur-au-parc-d-attraction-o-parc-a-bannay-pour-des-familles-du-cher/",
+      "bytes": 81612,
+      "sha256": "a8f1ddf8d4e178c6f4ed7a32a8c96685d4f978d650b1655af9ac47045038ad9b",
+      "file": "secours-2020.html"
+    },
+    {
+      "url": "https://www.secourspopulaire.fr/18/journee-detente-au-parc-d-attractions-o-parc-a-bannay/",
+      "accessedAtUtc": "2026-11-15T09:56:45.699929+00:00",
+      "status": 200,
+      "finalUrl": "https://www.secourspopulaire.fr/18/journee-detente-au-parc-d-attractions-o-parc-a-bannay/",
+      "bytes": 74763,
+      "sha256": "7f4d438724463f42c66931370c903c0026af62449e4f588082b1f7f17ddb300c",
+      "file": "secours-2019.html"
+    },
+    {
+      "url": "https://www.secourspopulaire.fr/18/sortie-familles-au-parc-de-loisirs-oparc/",
+      "accessedAtUtc": "2026-11-15T09:56:47.595397+00:00",
+      "status": 200,
+      "finalUrl": "https://www.secourspopulaire.fr/18/sortie-familles-au-parc-de-loisirs-oparc/",
+      "bytes": 77100,
+      "sha256": "88cb28918e44aaa22c2fe166d2bf20f922d5f26edd25e639bbda7a7955f15ef4",
+      "file": "secours-2023.html"
+    },
+    {
+      "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/06/jeux-oparc.jpg",
+      "accessedAtUtc": "2026-11-15T09:57:00.424163+00:00",
+      "status": 200,
+      "finalUrl": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/06/jeux-oparc.jpg",
+      "bytes": 18641,
+      "sha256": "fa72336666f3ba0a8785639aae7b0bff18625926d966f3ef4882c1caaaeacac8",
+      "file": "secours-2020-jeux.jpg"
+    },
+    {
+      "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/stucture-gonflable-oparc-scaled.jpg",
+      "accessedAtUtc": "2026-11-15T09:57:01.742777+00:00",
+      "status": 200,
+      "finalUrl": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/stucture-gonflable-oparc-scaled.jpg",
+      "bytes": 711540,
+      "sha256": "1a402ce84276da311eea5cf49ce5fd11faa6793d5cf6e6d9d2ef595ab1230070",
+      "file": "secours-2023-inflatable.jpg"
+    },
+    {
+      "url": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/karting-oparc-ok-scaled.jpg",
+      "accessedAtUtc": "2026-11-15T09:57:02.977775+00:00",
+      "status": 200,
+      "finalUrl": "https://images.secourspopulaire.fr/app/uploads/sites/321/2023/10/karting-oparc-ok-scaled.jpg",
+      "bytes": 728343,
+      "sha256": "289bf6ed26e541279d1bf16f984595483ad4a029ed94140996630ba4b98aa3e0",
+      "file": "secours-2023-karting.jpg"
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/archive-bourges-2017.html",
+      "accessedAtUtc": "2026-11-15T09:57:48.001595+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/archive-bourges-2017.html",
+      "bytes": 177715,
+      "sha256": "47ef37519863572f574dfda6c95b353c9d52c9c700bd6234f128e609e0a755ad",
+      "file": "infoptimum-archive-2017.html"
+    },
+    {
+      "url": "https://www.bourges.infoptimum.com/archive-bourges-2018.html",
+      "accessedAtUtc": "2026-11-15T09:57:49.046013+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bourges.infoptimum.com/archive-bourges-2018.html",
+      "bytes": 180575,
+      "sha256": "e73c7a02d6a0ac603d452164d07ae803f6e35c0f3bb07461df04f973145ee068",
+      "file": "infoptimum-archive-2018.html"
+    }
+  ],
+  "guardrails": {
+    "pdeApiCalls": 0,
+    "gitCommands": 0,
+    "registryEdits": 0,
+    "imports": 0,
+    "existingFileEdits": 0,
+    "publications": 0,
+    "imageEdits": 0
+  }
+}

@@ -2,19 +2,33 @@
   "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "owner": "Conversation France",
-  "updatedAtUtc": "2026-11-15T08:32:29.153080Z",
+  "updatedAtUtc": "2026-11-15T10:06:36.793201Z",
   "status": "partial",
-  "lastActualIntegrationAtUtc": "2026-11-15T08:30:32.1634788Z",
-  "lastApplyOperationId": "ad34eb09-de1c-46f6-815e-9aa102612630",
+  "lastActualIntegrationAtUtc": "2026-11-15T10:02:43.2306244Z",
+  "lastApplyOperationId": "6e56af0c-f7f6-45bb-8c14-cf82c9156e83",
   "localDirectory": "/workspace/france-historical-20261114/naudieres",
-  "scope": "Reprise ciblée de l’acquisition 2020 et rapprochement de dix-sept Apply historiques ; aucun audit complet nouveau ni publication.",
+  "scope": "Acquisition2020 privée et trois fiches privées La Dune/Échasses/Tricycles enrichies de24textes relus, deux photos officielles Dune privées. Rapprochement4entités inchangées. Médias historiques et huit plans restaurés sans réimport, aucun audit final ni publication nouvelle.",
   "counts": {
     "items": 84,
     "publicItems": 48,
     "legacyHistoryEvents": 31,
     "canonicalPublishedFacts": 29,
     "canonicalDraftFacts": 2,
-    "canonicalRetractedRevisions": 75
+    "canonicalRetractedRevisions": 75,
+    "describedItemsEightLanguages": 55,
+    "media": 56,
+    "publicMedia": 52,
+    "privateMedia": 4,
+    "publicOfficialMapYears": [
+      2026,
+      2025,
+      2024,
+      2023,
+      2022,
+      2021,
+      2020,
+      2017
+    ]
   },
   "currentCompleteness": {
     "result": {
@@ -35,7 +49,8 @@
     "status": 200,
     "retrievedAtUtc": "2026-11-15T08:31:52.955690Z",
     "sha256": "c6ba8095bc942c4fd15f00e87d4bcef672df76cd2c691918eaa58bd05a1edf73",
-    "observation": "La page de printemps classe encore Maison Ameco parmi les moins de cinq ans. Le catalogue Exploration indique dix ans minimum. Contradiction actuelle confirmée ; aucun âge certain fabriqué, fiche maintenue privée."
+    "observation": "La page de printemps classe encore Maison Ameco parmi les moins de cinq ans. Le catalogue Exploration indique dix ans minimum. Contradiction actuelle confirmée ; aucun âge certain fabriqué, fiche maintenue privée.",
+    "followupEvidence": "naudieres-ameco-restriction-research-20261115.json"
   },
   "sourceAccess": [
     {
@@ -87,15 +102,26 @@
   "proofs": [
     "naudieres-prior-operations-recovered-20261115.json",
     "naudieres-acquisition-2020-20261115.json",
-    "naudieres-recovered-state-20261115.json"
+    "naudieres-recovered-state-20261115.json",
+    "naudieres-dune-description-20261115.json",
+    "naudieres-echasses-description-20261115.json",
+    "naudieres-tricycles-description-20261115.json",
+    "naudieres-dune-photo-20261115.json",
+    "naudieres-dune-wide-photo-20261115.json",
+    "naudieres-identity-followup-20261115.json",
+    "naudieres-ameco-restriction-research-20261115.json",
+    "naudieres-identity-photo-findings-20261115.json",
+    "naudieres-tricycles-research-20261115.json"
   ],
   "remaining": [
-    "Maison Ameco : pages officielles contradictoires sur l’âge ; rester privée tant que le contrôle n’est pas résolu.",
-    "Trente-cinq autres lieux privés au cycle de vie à qualifier ; ne pas clôturer sur le seul score100.",
-    "Sept images de parc récupérées seulement ; les quarante-quatre photos des items et les huit plans antérieurement intégrés restent à retrouver par leurs IDs si nécessaire, jamais réimporter.",
-    "Acquisition2020 privée à publier après contrôle du périmètre ; ne pas dupliquer le programme d’investissement déjà public.",
-    "Ancien Facebook Published connu ; résoudre officiellement avant toute décision, jamais renvoyer une annonce existante."
+    "Maison Ameco : article moinsde5ans datémai2025 contre catalogue minimum10ans non daté ; brochure2026/règlement ne tranchent pas. Aucun âge réécrit.",
+    "Trente-six lieux privés, dont trois identités nouvellement décrites sans extrapoler leur cycle de vie. Autres sources/identités à qualifier.",
+    "Pont suspendu public : nouvelle recherche signale une possible confusion de silhouette et de date2023 ; vérifier les sources avant correction.",
+    "Acquisition2020 et nouveaux contenus privés à publier seulement après audit applicable ; aucun export complet final effectué.",
+    "Huit plans publics2017/2020–2026 et54anciens médias conservés ; les deux nouveaux Dune restent privés.",
+    "Facebook existant Published confirmé dans le rapprochement34 ; visibilité externe non établie par ce statut, aucun renvoi."
   ],
   "fullAuditExportPerformedThisRecovery": false,
-  "facebookPublicationPerformed": false
+  "facebookPublicationPerformed": false,
+  "facebookEvidence": "france-facebook-reconciliation-20261115.json"
 }

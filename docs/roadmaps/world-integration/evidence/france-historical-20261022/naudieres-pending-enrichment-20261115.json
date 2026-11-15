@@ -4,7 +4,7 @@
   "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "owner": "Conversation France",
   "preparedAtUtc": "2026-11-15T09:58:57.209725+00:00",
-  "state": "prepared-not-applied",
+  "state": "historical-preparation-superseded-by-successful-private-integration",
   "newIntegrationPerformed": false,
   "newPublicationPerformed": false,
   "newFacebookPublicationPerformed": false,
@@ -605,5 +605,10 @@
       "withWatermark": false
     }
   ],
-  "nextAction": "When official Status is free, fresh Preview and Apply each reviewed document sequentially; record every successful actual server UTC immediately. Import each Dune photo only after checking receipts for newer work. No publication without audit."
+  "nextAction": "When official Status is free, fresh Preview and Apply each reviewed document sequentially; record every successful actual server UTC immediately. Import each Dune photo only after checking receipts for newer work. No publication without audit.",
+  "resolvedByEvidence": "naudieres-identity-followup-20261115.json",
+  "resolvedAtUtc": "2026-11-15T10:06:36.793201Z",
+  "historicalPreparationAndTimeoutPreserved": true,
+  "currentNextAction": "Do not replay documents/imports. Continue qualification and final audit; successful receipts referenced in follow-up.",
+  "flagsScope": "newIntegrationPerformed/newPublicationPerformed refer to original preparation snapshot, retained unchanged. Actual later successes are in resolvedByEvidence."
 }
