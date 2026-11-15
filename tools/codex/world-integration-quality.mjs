@@ -48,7 +48,9 @@ export function auditWorld(docs,{asOf='2026-11-15'}={}){
       if(e.presence==='Published'&&live(e)){c.publishedPresence++;totals.publishedPresence++;}
       if(live(e)&&e.editorialStatus!=='Integrated'&&!e.locality)c.missingLocality++;
       if(live(e)&&e.editorialStatus!=='Integrated'&&report.domains<=1)c.oneSourceDomainOrLess++;
-      const priority=d.countryCode==='ZZ'&&live(e)?'P0':live(e)&&(e.presence==='PossibleExisting'||e.proposedEntityKind==='ToQualify')?'P1':
+      const priority=d.countryCode==='ZZ'&&e.editorialStatus!=='Duplicate'?'P0':
+        e.siteReviewStatusAtInventory==='NotRelevant'&&e.editorialStatus==='Excluded'?'P2':
+        live(e)&&(e.presence==='PossibleExisting'||e.proposedEntityKind==='ToQualify')?'P1':
         live(e)&&(absent(e)||e.presence==='Hidden')?'P2':null;
       if(priority)queue.push({country:d.countryCode,priority,...report});
     }
