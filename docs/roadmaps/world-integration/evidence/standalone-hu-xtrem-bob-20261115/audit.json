@@ -1,0 +1,116 @@
+{
+  "entryId": "HU-park-8c51d749-cdf3-46de-9d73-6d63037eec09",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+  "name": "X-Trém Bob Szilvásvárad",
+  "countryCode": "HU",
+  "auditAtUtc": "2026-11-15T10:45:15.677Z",
+  "operatorSources": [
+    "https://www.szilvasvaradbob.hu/en/",
+    "https://www.szilvasvaradbob.hu/en/prices/",
+    "https://www.szilvasvaradbob.hu/en/opening-hours/",
+    "https://www.szilvasvaradbob.hu/en/rules/",
+    "https://www.szilvasvaradbob.hu/kapcsolat/"
+  ],
+  "legacyParkId": "8c51d749-cdf3-46de-9d73-6d63037eec09",
+  "legacyParkItemId": "af8d32ea-4aa4-4084-8cd2-64914ad0a34f",
+  "legacyParkStatus": "Hidden ToReview; parent administrative retirement pending because Park graph retirement currently times out",
+  "legacyParkItemStatus": "Hidden NotRelevant, verified after successful official apply",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/bf784c11-f31d-44ea-88c6-69f8c82e2737/x-trem-bob-szilvasvarad",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 1,
+  "photos": [
+    {
+      "imageId": "cf97e67297244f20abab0e1a60be4351",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bobp%C3%A1lya_az_erd%C5%91ben_-_panoramio.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Bobp%C3%A1lya_az_erd%C5%91ben_-_panoramio.jpg/960px-Bobp%C3%A1lya_az_erd%C5%91ben_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Szodorai Imre [Hun]",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "photographedAt": "2009-01-03",
+      "importedAtUtc": "2026-11-15T10:37:31.385Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Quatre offres de l’exploitant : 1 personne 1 trajet 1 000 HUF ; adulte + enfant 1 trajet 1 500 HUF ; 1 personne 6 trajets 5 000 HUF ; adulte + enfant 6 trajets 7 500 HUF.",
+  "openingHoursAssessment": "Exploitant : fermeture du 1er novembre au 5 mars et fermetures possibles par pluie ou mauvais temps. Fenêtre structurée actuelle jusqu’au 5 mars 2027 ; aucune ouverture future supposée.",
+  "accessAssessment": "Seul dès 7 ans ; plus jeune avec une personne âgée d’au moins 15 ans et ceinture propre, selon les règles de l’exploitant.",
+  "technicalAssessment": "Exploitant : bob monorail Brandauer, descente de 350 m, dénivelé 52 m, vitesse maximale indiquée 40–45 km/h, ouvert en décembre 2008. Ancien identifiant constructeur Wiegand non repris faute de correspondance.",
+  "completeness": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127441165424431",
+    "publishedAtUtc": "2026-11-15T10:39:22.4436073Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T10:44:07.934Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "271de7f2-d349-4d59-b8a8-93a22a2d4f37",
+      "appliedAtUtc": "2026-11-15T10:34:24.8430172Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "pricing",
+      "operationId": "6c2648cd-26fc-4a6d-99b0-c97f3d08ecc2",
+      "appliedAtUtc": "2026-11-15T10:35:12.2895878Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access",
+      "operationId": "058d7dd8-817f-4ce3-af10-6513e9151b00",
+      "appliedAtUtc": "2026-11-15T10:35:50.7694915Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "hours",
+      "operationId": "e36a4bb2-35f5-4ad9-a096-fa2291de38fa",
+      "appliedAtUtc": "2026-11-15T10:36:51.2158418Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "retire-item",
+      "operationId": "a2d89040-3542-464d-b82e-7d080de41bf2",
+      "appliedAtUtc": "2026-11-15T10:38:18.5346442Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "textfix",
+      "operationId": "a805f363-343b-4dee-adb6-4702fa8d2f9a",
+      "appliedAtUtc": "2026-11-15T10:44:07.9340389Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "cf97e67297244f20abab0e1a60be4351",
+      "appliedAtUtc": "2026-11-15T10:37:31.385Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "c47d91dc-75ca-4888-8232-859d65bf7f98",
+    "appliedAtUtc": "2026-11-15T10:38:41.5990757Z"
+  },
+  "migrationNote": "Création sans retireLegacyPark ni retireLegacyParkItem pour éviter le blocage connu de la retraite du Park parent. Ancien ParkItem retiré ensuite par Apply distinct ; Park masqué intact."
+}

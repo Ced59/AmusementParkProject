@@ -1,0 +1,145 @@
+{
+  "entryId": "IT-candidate-discovery-12c4dd5738319d",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "347a0c05-5f7a-4258-8940-085bee1a34c4",
+  "name": "Volo dell’Angelo — Dolomiti Lucane",
+  "countryCode": "IT",
+  "auditAtUtc": "2026-11-15T11:08:48.433Z",
+  "qualification": "Tyrolienne autonome à billet propre entre deux villages, composée de deux lignes aller-retour sous une seule offre. La fiche Park masquée homonyme contient un ParkItem distinct, la Slittovia de 2025, et n’a pas été migrée ni retirée.",
+  "operatorSources": [
+    "https://www.volodellangelo.com/",
+    "https://www.volodellangelo.com/eng/web/item.asp?nav=angel-flight",
+    "https://www.volodellangelo.com/ita/web/item.asp?nav=calendario",
+    "https://www.volodellangelo.com/eng/ticket/index.asp",
+    "https://www.volodellangelo.com/eng/web/item.asp?nav=faqs",
+    "https://www.volodellangelo.com/ita/web/item.asp?nav=slittovia-dolomiti-lucane"
+  ],
+  "relatedHiddenParkId": "9f6cb24e-584f-40d5-9f81-2d71cb62f244",
+  "relatedHiddenParkItemId": "1e176765-c09a-4585-98c7-64c7f2689b73",
+  "relatedHiddenParkStatus": "Hidden ToReview; Slittovia qualification pending",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/347a0c05-5f7a-4258-8940-085bee1a34c4/volo-dell-angelo-dolomiti-lucane",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 2,
+  "photos": [
+    {
+      "imageId": "4638e7139c9445feb07c869607cd1088",
+      "sourcePage": "https://commons.wikimedia.org/wiki/In_volo_verso_l'arrivo_a_Castelmezzano_(sullo_sfondo).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/In_volo_verso_l%27arrivo_a_Castelmezzano_%28sullo_sfondo%29.jpg/960px-In_volo_verso_l%27arrivo_a_Castelmezzano_%28sullo_sfondo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Mantovani Raffaella",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2017-08-14",
+      "importedAtUtc": "2026-11-15T11:00:13.78Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "0a77251916534b03bd4f49dabb8f74c4",
+      "sourcePage": "https://commons.wikimedia.org/wiki/Volo_dell%E2%80%99angelo.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Volo_dell%E2%80%99angelo.jpg/960px-Volo_dell%E2%80%99angelo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Giugiuliagiu",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "photographedAt": "2020-08-30",
+      "importedAtUtc": "2026-11-15T11:00:41.92Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Tarifs 2026 restants : 46 EUR solo, 79 EUR duo ; billet pour deux vols sur deux lignes et navette. Tarif 2027 non publié.",
+  "openingHoursAssessment": "15 novembre 2026 fermé par mauvais temps selon l’avis du jour. Dates restantes annoncées : 22 et 29 novembre, 5–8 décembre, 09:30–18:30 sous réserve de météo ; prochaine saison à partir du 1er mai 2027 sans calendrier détaillé.",
+  "accessAssessment": "Solo dès 14 ans, 135 cm, 40–120 kg ; duo 135 cm par personne, 150 kg total et 40 kg écart maximal, mineurs de moins de 14 ans avec adulte et au moins 35 kg ; présence à la billetterie une heure avant.",
+  "geoAssessment": "Point d’attraction OpenStreetMap node 4496292989 à 40.5336204,16.0496557 côté Castelmezzano ; le parcours relie aussi Pietrapertosa.",
+  "historyAssessment": "En service depuis 2007 selon ANSA ; date exacte non documentée, événement à précision annuelle.",
+  "completeness": {
+    "score": 97,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127443781424431",
+    "publishedAtUtc": "2026-11-15T11:06:23.6309207Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T11:04:41.601Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "19524d74-2400-4b00-9555-4376465ae069",
+      "appliedAtUtc": "2026-11-15T10:56:24.6370488Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "pricing",
+      "operationId": "aea358d3-b4a4-47ee-8356-b44e40890f9f",
+      "appliedAtUtc": "2026-11-15T10:58:05.9918736Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access",
+      "operationId": "de4a45a6-2b0b-4b7b-982a-3ccd63058269",
+      "appliedAtUtc": "2026-11-15T10:58:42.3582521Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "hours",
+      "operationId": "495f2522-f72b-472a-8480-731ebd70bbcf",
+      "appliedAtUtc": "2026-11-15T10:59:13.4488991Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "geo",
+      "operationId": "9627f83d-80b7-46b1-8787-d0ab8ccee603",
+      "appliedAtUtc": "2026-11-15T11:03:19.5709387Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "history",
+      "operationId": "acb36840-debf-48a7-89b1-31f0cf03ff0c",
+      "appliedAtUtc": "2026-11-15T11:03:50.0408386Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access-provenance",
+      "operationId": "35532eca-21dd-45e2-b83a-3ca18b8ff54f",
+      "appliedAtUtc": "2026-11-15T11:04:41.6017102Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "4638e7139c9445feb07c869607cd1088",
+      "appliedAtUtc": "2026-11-15T11:00:13.78Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "0a77251916534b03bd4f49dabb8f74c4",
+      "appliedAtUtc": "2026-11-15T11:00:41.92Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "24ef7693-59e9-4825-83ed-9f0441466884",
+    "appliedAtUtc": "2026-11-15T11:05:36.7413742Z"
+  },
+  "nextSeasonGap": "Tarifs et calendrier détaillé 2027 à contrôler lorsque publiés. La slittovia 2025 reste à intégrer séparément avec au moins une photo exacte réutilisable."
+}
