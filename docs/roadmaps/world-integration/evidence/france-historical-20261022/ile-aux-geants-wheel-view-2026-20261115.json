@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "af3c8bdb537c4729ba4ef357005aee8f",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+    "path": "park_item/af3c8bdb537c4729ba4ef357005aee8f",
+    "description": "Au-delà de la D910, le regard porte sur la campagne qui entoure Dissay.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1200,
+    "height": 1200,
+    "sizeInBytes": 363053,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/88/caption.jpg?w=1200&h=1200&s=1",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Paysage de champs et de bois vu sous le toit d’une nacelle de la Grande roue."
+      },
+      {
+        "languageCode": "en",
+        "value": "Fields and woodland seen beneath the roof of a Grande roue gondola."
+      },
+      {
+        "languageCode": "de",
+        "value": "Felder und Wald unter dem Dach einer Gondel der Grande roue betrachtet."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Velden en bos gezien onder het dak van een gondel van de Grande roue."
+      },
+      {
+        "languageCode": "it",
+        "value": "Campi e boschi visti sotto il tetto di una cabina della Grande roue."
+      },
+      {
+        "languageCode": "es",
+        "value": "Campos y arboledas vistos bajo el techo de una cabina de la Grande roue."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pola i lasy widziane spod dachu gondoli Grande roue."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Campos e bosques vistos sob o teto de uma cabine da Grande roue."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Au-delà de la D910, le regard porte sur la campagne qui entoure Dissay."
+      },
+      {
+        "languageCode": "en",
+        "value": "Beyond the D910, the view extends across the countryside around Dissay."
+      },
+      {
+        "languageCode": "de",
+        "value": "Jenseits der D910 reicht der Blick über die Landschaft rund um Dissay."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Voorbij de D910 reikt het uitzicht over het landschap rond Dissay."
+      },
+      {
+        "languageCode": "it",
+        "value": "Oltre la D910, lo sguardo si estende sulla campagna intorno a Dissay."
+      },
+      {
+        "languageCode": "es",
+        "value": "Más allá de la D910, la vista se extiende por la campiña que rodea Dissay."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Za drogą D910 rozciąga się krajobraz okolic Dissay."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Para lá da D910, a vista estende-se pela paisagem rural em redor de Dissay."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Paul Pérucaud / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T01:31:40.105Z",
+    "updatedAt": "2026-11-15T01:31:43.719Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-15T01:31:43.719Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1077750517-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+  "sourceEvidence": {
+    "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-3.jpg",
+    "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/88/caption.jpg?w=1200&h=1200&s=1",
+    "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "sha256": "b35e2dc6866ad7bd356a243f5c040d9ebdecaca1f4f09e7792bd6cc731a04064",
+    "status": 200,
+    "stem": "wheel-view-2026",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1077750517-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "author": "Paul Pérucaud",
+    "visitPeriod": "août 2026",
+    "captureDay": null,
+    "ownerId": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+    "ownerType": "PARK_ITEM",
+    "visuallyInspected": true,
+    "watermark": false,
+    "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+    "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+  }
+}

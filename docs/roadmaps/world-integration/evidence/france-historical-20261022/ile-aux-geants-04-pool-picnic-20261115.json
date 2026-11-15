@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "a055f562974d437c60573d596dfaca1e336c5efd09da5ef03438e9517a423b97",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées aux sources conservées et aux photographies originales personnellement inspectées, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "936e4812-b028-4a5e-bae4-4284f66bbd12",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:35:34.0114681Z",
+    "appliedAtUtc": "2026-11-15T01:35:34.0114693Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6b94675f-34a3-4eb4-b2cf-8d4a4e6ade55",
+        "entityKey": "6b94675f-34a3-4eb4-b2cf-8d4a4e6ade55",
+        "displayName": "Pataugeoire",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine kühle Pause für Kinder</h2><p>Das Planschbecken bringt einen flachen Wasserbereich in den Parktag. Kinder erleben dort die einfache Freude am Wasser, getrennt von den Bewegungen der Fahrgeschäfte.</p><p>Dieser Bereich verändert den Rhythmus des Parks: Spritzen, freies Spiel und ruhige Momente ersetzen die geregelten Runden mechanischer Attraktionen. Er ergänzt Rasen und Schattenplätze.</p><h2>Badekleidung gehört dazu</h2><p>Der Park verlangt Badekleidung für Kinder und begleitende Erwachsene, die das Becken betreten. Diese offizielle Regel gilt für alle im Wasser und bewahrt den Charakter des Bereichs.</p>",
+            "newValue": "<h2>Eine Pirateninsel im blauen Wasser</h2><p>Das Planschbecken liegt vor der Silhouette des Riesenrads. Ein Pirat auf einem Mast überragt eine kleine Hütte, während ein blauer Delfin Wasser ins Becken spritzt. Weitere kleine Inseln erinnern an Felsen und sind mit Holzbrücken und kleinen Rutschen gestaltet.</p><p>Vögel und verschmitzte Tiere bevölkern diese Miniaturlandschaft. Kiefern und Palmen führen das Inselmotiv rund um das Becken fort; rote, gelbe und grüne Ränder rahmen das blaue Wasser.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A cool break for children</h2><p>The paddling pool brings a shallow water area into the day. Children find the simple pleasure of water in a setting distinct from the movement of the rides.</p><p>This space changes the parkʼs rhythm: splashing, free play and quiet moments replace the timed cycles of mechanical rides. It naturally complements lawns and shaded areas.</p><h2>Swimwear is part of the experience</h2><p>The park requires swimwear for children and accompanying adults who enter the pool. This official rule preserves the aquatic character of the area and applies to everyone sharing the water.</p>",
+            "newValue": "<h2>A pirate island in blue water</h2><p>The paddling pool unfolds beneath the outline of the Ferris wheel. A pirate perched on a mast watches over a small hut, while a blue dolphin sends a jet of water into the pool. Other little islands resemble rocks, with wooden bridges and small slides.</p><p>Birds and mischievous animals inhabit this miniature landscape. Pines and palms continue the island setting around the pool, where red, yellow and green edging frames the blue water.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una pausa fresca para los niños</h2><p>La piscina infantil aporta una zona de poca profundidad a la jornada. Los niños encuentran el placer sencillo del agua en un entorno distinto del movimiento de las atracciones.</p><p>Este espacio cambia el ritmo del parque: chapoteos, juego libre y momentos tranquilos sustituyen los ciclos de las atracciones mecánicas. Completa de forma natural el césped y las zonas de sombra.</p><h2>El bañador forma parte de la experiencia</h2><p>El parque exige bañador tanto a los niños como a los acompañantes que entren en el agua. Esta regla oficial se aplica a todos y conserva el carácter acuático de la zona.</p>",
+            "newValue": "<h2>Una isla de piratas en el agua azul</h2><p>La piscina infantil despliega su decorado bajo la silueta de la noria. Un pirata encaramado a un mástil domina una pequeña cabaña, mientras un delfín azul lanza un chorro de agua hacia la piscina. Otros islotes imitan rocas, con pasarelas de madera y pequeños toboganes.</p><p>Aves y animales traviesos pueblan este paisaje en miniatura. Los pinos y las palmeras prolongan la temática isleña alrededor de la piscina; los bordes rojos, amarillos y verdes enmarcan el azul del agua.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une parenthèse fraîche pour les enfants</h2><p>La Pataugeoire apporte un espace aquatique peu profond au cœur de la journée. Les enfants y retrouvent le plaisir simple de lʼeau, dans un cadre distinct des manèges et de leurs mouvements.</p><p>Cet espace change le rythme du parc : éclaboussures, jeux libres et moments de calme remplacent les tours réglés des attractions mécaniques. Il complète naturellement les pelouses et les zones ombragées.</p><h2>Le maillot de bain fait partie de lʼexpérience</h2><p>Le parc demande un maillot de bain aux enfants comme aux accompagnateurs qui entrent dans la pataugeoire. Cette règle officielle protège lʼidentité aquatique du lieu et sʼapplique à tous ceux qui partagent lʼeau.</p>",
+            "newValue": "<h2>Une île de pirates dans l’eau bleue</h2><p>La Pataugeoire déploie son décor sous la silhouette de la grande roue. Un pirate perché sur un mât domine une petite cabane, tandis qu’un dauphin bleu lance son jet d’eau vers le bassin. D’autres îlots prennent des airs de rochers, avec des passerelles de bois et de petits toboggans.</p><p>Oiseaux et animaux malicieux peuplent ce paysage miniature. Tout autour, les pins et les palmiers prolongent le thème de l’île ; les bordures rouges, jaunes et vertes soulignent le bleu de l’eau.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una pausa fresca per i bambini</h2><p>La piscina per bambini offre uno spazio dʼacqua poco profonda durante la giornata. I più piccoli ritrovano il piacere semplice dellʼacqua, in un ambiente distinto dalle giostre.</p><p>Questo spazio cambia il ritmo del parco: spruzzi, gioco libero e momenti tranquilli sostituiscono i cicli delle attrazioni meccaniche. Completa naturalmente prati e zone ombreggiate.</p><h2>Il costume da bagno fa parte dellʼesperienza</h2><p>Il parco richiede il costume da bagno sia ai bambini sia agli accompagnatori che entrano in acqua. La regola ufficiale vale per tutti e preserva il carattere acquatico dello spazio.</p>",
+            "newValue": "<h2>Un’isola di pirati nell’acqua azzurra</h2><p>La piscina per bambini si apre sotto la sagoma della ruota panoramica. Un pirata appollaiato su un albero domina una piccola capanna, mentre un delfino blu spruzza acqua nella vasca. Altri isolotti ricordano rocce, con ponticelli di legno e piccoli scivoli.</p><p>Uccelli e animali birichini popolano questo paesaggio in miniatura. Pini e palme prolungano il tema dell’isola intorno alla piscina; i bordi rossi, gialli e verdi incorniciano l’azzurro dell’acqua.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een frisse pauze voor kinderen</h2><p>Het peuterbad voegt een ondiepe waterplek toe aan de dag. Kinderen beleven er het eenvoudige plezier van water, apart van de beweging van de attracties.</p><p>Deze plek verandert het ritme van het park: spetteren, vrij spel en rustige momenten vervangen de vaste rondes van mechanische attracties. Het vormt een natuurlijk geheel met grasvelden en schaduw.</p><h2>Badkleding hoort erbij</h2><p>Het park vraagt badkleding voor kinderen en begeleidende volwassenen die het bad ingaan. Deze officiële regel geldt voor iedereen in het water en bewaart het aquatische karakter.</p>",
+            "newValue": "<h2>Een pirateneiland in blauw water</h2><p>Het peuterbad ligt onder het silhouet van het reuzenrad. Een piraat op een mast kijkt uit over een hutje, terwijl een blauwe dolfijn een waterstraal het bad in spuit. Andere eilandjes lijken op rotsen, met houten bruggetjes en kleine glijbanen.</p><p>Vogels en ondeugende dieren bevolken dit miniatuurlandschap. Dennen en palmen zetten het eilandthema rond het bad voort; rode, gele en groene randen omlijsten het blauwe water.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Chłodna przerwa dla dzieci</h2><p>Brodzik wnosi do dnia płytką przestrzeń wodną. Dzieci odnajdują prostą radość wody w otoczeniu odmiennym od ruchu urządzeń rozrywkowych.</p><p>Ta przestrzeń zmienia rytm parku: pluskanie, swobodna zabawa i spokojne chwile zastępują regularne cykle atrakcji mechanicznych. Naturalnie uzupełnia trawniki i miejsca w cieniu.</p><h2>Strój kąpielowy jest częścią zabawy</h2><p>Park wymaga stroju kąpielowego od dzieci i opiekunów wchodzących do brodzika. Oficjalna zasada dotyczy wszystkich korzystających z wody i zachowuje wodny charakter miejsca.</p>",
+            "newValue": "<h2>Piracka wyspa w niebieskiej wodzie</h2><p>Sceneria brodzika rozciąga się pod sylwetką diabelskiego młyna. Pirat na maszcie góruje nad małą chatką, a niebieski delfin tryska wodą do basenu. Inne wysepki przypominają skały z drewnianymi mostkami i małymi zjeżdżalniami.</p><p>Ten miniaturowy krajobraz zamieszkują ptaki i figlarne zwierzęta. Sosny i palmy otaczające brodzik podtrzymują wyspiarski motyw, a czerwone, żółte i zielone obrzeża podkreślają błękit wody.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma pausa fresca para as crianças</h2><p>A piscina infantil acrescenta um espaço de água pouco profunda ao dia. As crianças encontram o prazer simples da água num ambiente distinto do movimento das diversões.</p><p>Este espaço muda o ritmo do parque: salpicos, brincadeira livre e momentos tranquilos substituem os ciclos das diversões mecânicas. Complementa naturalmente os relvados e zonas de sombra.</p><h2>O fato de banho faz parte da experiência</h2><p>O parque exige fato de banho às crianças e aos acompanhantes que entram na piscina. Esta regra oficial aplica-se a todos na água e preserva o caráter aquático do espaço.</p>",
+            "newValue": "<h2>Uma ilha de piratas na água azul</h2><p>A piscina infantil estende o seu cenário sob a silhueta da roda-gigante. Um pirata no mastro domina uma pequena cabana, enquanto um golfinho azul lança um jato de água para a piscina. Outros ilhéus imitam rochas, com pequenas pontes de madeira e escorregas.</p><p>Aves e animais traquinas povoam esta paisagem em miniatura. Os pinheiros e as palmeiras prolongam o tema da ilha em redor da piscina; as margens vermelhas, amarelas e verdes enquadram o azul da água.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "be18c211-63cb-4208-812b-2cd1644c776b",
+        "entityKey": "be18c211-63cb-4208-812b-2cd1644c776b",
+        "displayName": "Aires de pique-nique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine Mahlzeit zwischen Bäumen</h2><p>Die Picknickbereiche nehmen mitgebrachte Speisen in der grünen Umgebung von LʼÎle aux Géants auf. Als offene Flächen abseits der Fahrgeschäfte setzen sie die familiäre Atmosphäre fort.</p><p>Die Tische bilden einen ruhigen Ort, an dem das Grün stets nahe bleibt. Diese Schlichtheit passt zur überschaubaren Größe und zum Charakter eines lokalen Ausflugsziels.</p><h2>Ein ergänzendes Angebot</h2><p>Neben Oʼresto dʼIros bieten die Picknickbereiche eine zweite Form der Verpflegung: Dort werden Speisen vor Ort zubereitet, hier finden mitgebrachte Mahlzeiten ihren Platz.</p>",
+            "newValue": "<h2>Bunte Dächer zwischen Palmen</h2><p>Die Picknickbereiche greifen die Farben der Fahrgeschäfte an ihren kleinen Unterständen auf. Gelbe, rote, blaue und grüne Flächen liegen auf den rechteckigen Dächern über Tischen und Bänken nebeneinander. Diese bunten Akzente begleiten die palmengesäumten Wege.</p><p>Andere Plätze liegen im Schatten der Kiefern. Die überdachten oder schattigen Bereiche stehen für mitgebrachte Mahlzeiten frei zur Verfügung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A meal among the trees</h2><p>The picnic areas bring food carried into LʼÎle aux Géants into the parkʼs leafy setting. They extend its family atmosphere through an open space separate from the rides.</p><p>Tables create a quiet place where greenery remains close at hand. That simplicity suits the scale of the grounds and their identity as a local destination.</p><h2>A complementary service</h2><p>Alongside Oʼresto dʼIros, the picnic areas provide a second kind of dining: one prepares meals on site, while the other welcomes food brought from outside.</p>",
+            "newValue": "<h2>Multicoloured roofs among the palms</h2><p>The picnic areas carry the rides’ colours onto their little shelters. Yellow, red, blue and green panels sit side by side on rectangular roofs above the tables and benches. These bright patches punctuate the palm-lined paths.</p><p>Other spots benefit from the shade of the pines. The park leaves these covered or shaded spaces freely available for meals brought from home.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una comida entre los árboles</h2><p>Las zonas de pícnic acogen la comida llevada al parque dentro del entorno arbolado de LʼÎle aux Géants. Son un espacio abierto, separado de las atracciones, que prolonga el ambiente familiar.</p><p>Las mesas forman un lugar tranquilo donde la vegetación sigue muy presente. Esa sencillez encaja con la escala contenida del recinto y su identidad como destino local.</p><h2>Un servicio complementario</h2><p>Junto a Oʼresto dʼIros, las zonas de pícnic ofrecen otra forma de comer: el restaurante prepara los platos en el recinto y las mesas reciben la comida traída del exterior.</p>",
+            "newValue": "<h2>Techos multicolores entre palmeras</h2><p>Las zonas de pícnic retoman los colores de las atracciones en sus pequeños cobertizos. Amarillo, rojo, azul y verde se combinan en los techos rectangulares situados sobre mesas y bancos. Estas notas vivas salpican los caminos bordeados de palmeras.</p><p>Otros lugares disfrutan de la sombra de los pinos. El parque deja estos espacios cubiertos o sombreados a libre disposición para las comidas traídas de casa.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Un repas au milieu des arbres</h2><p>Les aires de pique-nique installent les repas apportés dans le cadre arboré de LʼÎle aux Géants. Elles prolongent lʼatmosphère familiale du parc par un espace ouvert, distinct des manèges.</p><p>Les tables composent un lieu calme où la végétation reste présente. Cette simplicité correspond à lʼéchelle du site et à son identité de destination locale.</p><h2>Un service complémentaire</h2><p>Associées à Oʼresto dʼIros, les aires de pique-nique offrent une seconde forme de restauration : lʼune prépare les repas sur place, les autres accueillent ceux qui viennent de lʼextérieur.</p>",
+            "newValue": "<h2>Des toits multicolores entre les palmiers</h2><p>Les aires de pique-nique reprennent les couleurs des manèges jusque sur leurs petits abris. Jaune, rouge, bleu et vert se juxtaposent sur les toits rectangulaires, au-dessus des tables et des bancs. Ces touches vives ponctuent les allées bordées de palmiers.</p><p>D’autres emplacements profitent de l’ombre des pins. Le parc laisse ces espaces couverts ou ombragés en libre accès pour les repas apportés sur place.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un pasto tra gli alberi</h2><p>Le aree picnic accolgono i pasti portati nel parco nellʼambiente alberato di LʼÎle aux Géants. Sono uno spazio aperto, distinto dalle giostre, che prolunga lʼatmosfera familiare.</p><p>I tavoli compongono un luogo tranquillo dove il verde rimane vicino. Questa semplicità corrisponde alla scala raccolta del sito e alla sua identità di destinazione locale.</p><h2>Un servizio complementare</h2><p>Accanto a Oʼresto dʼIros, le aree picnic offrono una seconda forma di ristoro: il ristorante prepara i pasti sul posto, mentre i tavoli accolgono quelli portati dallʼesterno.</p>",
+            "newValue": "<h2>Tetti multicolori tra le palme</h2><p>Le aree picnic riprendono i colori delle giostre sulle piccole tettoie. Giallo, rosso, blu e verde si affiancano sui tetti rettangolari sopra tavoli e panche. Queste macchie vivaci punteggiano i viali fiancheggiati dalle palme.</p><p>Altri posti godono dell’ombra dei pini. Il parco lascia questi spazi coperti o ombreggiati liberamente disponibili per i pasti portati da casa.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Eten tussen de bomen</h2><p>De picknickplaatsen geven meegebracht eten een plek in de groene omgeving van LʼÎle aux Géants. Als open ruimte naast de attracties zetten ze de familiale sfeer van het park voort.</p><p>De tafels vormen een rustige plek waar het groen dichtbij blijft. Die eenvoud past bij de overzichtelijke schaal en het karakter van een lokale bestemming.</p><h2>Een aanvullende voorziening</h2><p>Samen met Oʼresto dʼIros bieden de picknickplaatsen een tweede vorm van eten: het restaurant bereidt maaltijden ter plaatse, terwijl de tafels ruimte geven aan eten van buitenaf.</p>",
+            "newValue": "<h2>Veelkleurige daken tussen de palmen</h2><p>De picknickplekken nemen de kleuren van de attracties over op hun kleine afdakjes. Gele, rode, blauwe en groene vlakken liggen naast elkaar op de rechthoekige daken boven tafels en banken. Deze felle accenten markeren de paden tussen de palmen.</p><p>Andere plekken liggen in de schaduw van de dennen. Het park stelt deze overdekte of beschaduwde ruimtes vrij beschikbaar voor meegebrachte maaltijden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Posiłek wśród drzew</h2><p>Strefy piknikowe przyjmują posiłki przyniesione do LʼÎle aux Géants w zielonym otoczeniu parku. To otwarta przestrzeń oddzielona od atrakcji, która rozwija rodzinną atmosferę.</p><p>Stoły tworzą spokojne miejsce blisko zieleni. Ta prostota pasuje do kameralnej skali terenu i jego tożsamości jako lokalnego celu wyjazdu.</p><h2>Usługa uzupełniająca</h2><p>Obok Oʼresto dʼIros strefy piknikowe oferują inną formę posiłku: restauracja przygotowuje dania na miejscu, a stoły przyjmują jedzenie przyniesione z zewnątrz.</p>",
+            "newValue": "<h2>Kolorowe dachy między palmami</h2><p>Miejsca piknikowe nawiązują kolorami swoich wiat do parkowych atrakcji. Żółte, czerwone, niebieskie i zielone pola sąsiadują ze sobą na prostokątnych dachach nad stołami i ławkami. Te barwne akcenty pojawiają się wzdłuż alejek obsadzonych palmami.</p><p>Inne miejsca korzystają z cienia sosen. Park udostępnia zadaszone lub zacienione przestrzenie na posiłki przyniesione z domu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma refeição entre as árvores</h2><p>As zonas de piquenique acolhem as refeições levadas para a LʼÎle aux Géants no ambiente arborizado do parque. São um espaço aberto, separado das diversões, que prolonga a atmosfera familiar.</p><p>As mesas formam um local tranquilo onde a vegetação permanece próxima. Esta simplicidade combina com a escala contida do recinto e com a sua identidade de destino local.</p><h2>Um serviço complementar</h2><p>Ao lado do Oʼresto dʼIros, as zonas de piquenique oferecem outra forma de refeição: o restaurante prepara os pratos no local e as mesas recebem a comida trazida do exterior.</p>",
+            "newValue": "<h2>Telhados multicolores entre palmeiras</h2><p>As zonas de piquenique retomam as cores das diversões nos seus pequenos abrigos. Amarelo, vermelho, azul e verde surgem lado a lado nos telhados retangulares sobre mesas e bancos. Estas manchas vivas pontuam os caminhos ladeados de palmeiras.</p><p>Outros lugares beneficiam da sombra dos pinheiros. O parque disponibiliza livremente estes espaços cobertos ou à sombra para refeições trazidas de casa.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

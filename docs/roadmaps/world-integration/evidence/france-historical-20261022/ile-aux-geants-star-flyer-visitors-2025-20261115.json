@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "46c343fdef504f7a96232e9a3470943d",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+    "path": "park_item/46c343fdef504f7a96232e9a3470943d",
+    "description": "Le décor alpin accompagne les nacelles bleues et vertes de Star Flyer en juillet 2025.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1100,
+    "height": 1100,
+    "sizeInBytes": 320004,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/36/caption.jpg?w=1100&h=1100&s=1",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Deux visiteurs dans une nacelle ailée de Star Flyer devant un décor de montagnes, de cascades et de parapentes."
+      },
+      {
+        "languageCode": "en",
+        "value": "Two visitors in a winged Star Flyer gondola in front of painted mountains, waterfalls and paragliders."
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Besucher in einer geflügelten Gondel von Star Flyer vor gemalten Bergen, Wasserfällen und Gleitschirmen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee bezoekers in een gevleugelde gondel van Star Flyer voor geschilderde bergen, watervallen en paragliders."
+      },
+      {
+        "languageCode": "it",
+        "value": "Due visitatori in una cabina alata di Star Flyer davanti a montagne, cascate e parapendii dipinti."
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos visitantes en una góndola alada de Star Flyer ante montañas, cascadas y parapentes pintados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwoje gości w uskrzydlonej gondoli Star Flyer na tle malowanych gór, wodospadów i paralotni."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Dois visitantes numa cabine alada do Star Flyer diante de montanhas, cascatas e parapentes pintados."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le décor alpin accompagne les nacelles bleues et vertes de Star Flyer en juillet 2025."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Alpine backdrop surrounds Star Flyer’s blue and green gondolas in July 2025."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Alpenkulisse umgibt die blauen und grünen Gondeln von Star Flyer im Juli 2025."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het alpendecor omringt de blauwe en groene gondels van Star Flyer in juli 2025."
+      },
+      {
+        "languageCode": "it",
+        "value": "Lo scenario alpino circonda le cabine blu e verdi di Star Flyer nel luglio 2025."
+      },
+      {
+        "languageCode": "es",
+        "value": "El decorado alpino rodea las góndolas azules y verdes de Star Flyer en julio de 2025."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Alpejska sceneria otacza niebieskie i zielone gondole Star Flyer w lipcu 2025 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cenário alpino envolve as cabines azuis e verdes do Star Flyer em julho de 2025."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: vanessa g / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T01:32:48.078Z",
+    "updatedAt": "2026-11-15T01:32:51.648Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-15T01:32:51.648Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+  "sourceEvidence": {
+    "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-5.jpg",
+    "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/36/caption.jpg?w=1100&h=1100&s=1",
+    "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "sha256": "c189cd31c08229da9c656e744e107a35358f34850feaa468c25e76ed6854370a",
+    "status": 200,
+    "stem": "star-flyer-visitors-2025",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "author": "vanessa g",
+    "visitPeriod": "juillet 2025",
+    "captureDay": null,
+    "ownerId": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+    "ownerType": "PARK_ITEM",
+    "visuallyInspected": true,
+    "watermark": false,
+    "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+    "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+  }
+}

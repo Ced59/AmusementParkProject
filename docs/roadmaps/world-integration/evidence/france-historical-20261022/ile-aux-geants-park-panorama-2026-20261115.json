@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "d64a164581614bcc8619a655395e1b7e",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "path": "park/d64a164581614bcc8619a655395e1b7e",
+    "description": "Pins, palmiers et abris multicolores dessinent les allées du parc durant la saison 2026.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1200,
+    "height": 1200,
+    "sizeInBytes": 570079,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/89/caption.jpg?w=1200&h=1200&s=1",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vue de L’Île aux Géants depuis la grande roue, avec Star Tower au centre, la pataugeoire à gauche et Le Grand 8 à droite."
+      },
+      {
+        "languageCode": "en",
+        "value": "View of L’Île aux Géants from the Ferris wheel, with Star Tower in the centre, the paddling pool on the left and Le Grand 8 on the right."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blick vom Riesenrad auf L’Île aux Géants mit Star Tower in der Mitte, dem Planschbecken links und Le Grand 8 rechts."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Uitzicht vanaf het reuzenrad op L’Île aux Géants, met Star Tower in het midden, het peuterbad links en Le Grand 8 rechts."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vista di L’Île aux Géants dalla ruota panoramica, con Star Tower al centro, la piscina per bambini a sinistra e Le Grand 8 a destra."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista de L’Île aux Géants desde la noria, con Star Tower en el centro, la piscina infantil a la izquierda y Le Grand 8 a la derecha."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok na L’Île aux Géants z diabelskiego młyna: Star Tower pośrodku, brodzik po lewej i Le Grand 8 po prawej."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista do L’Île aux Géants a partir da roda-gigante, com a Star Tower ao centro, a piscina infantil à esquerda e o Grand 8 à direita."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Pins, palmiers et abris multicolores dessinent les allées du parc durant la saison 2026."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pines, palms and multicoloured shelters line the park’s paths during the 2026 season."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kiefern, Palmen und bunte Unterstände säumen die Parkwege in der Saison 2026."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Dennen, palmen en veelkleurige afdakjes omzomen de parkpaden in het seizoen 2026."
+      },
+      {
+        "languageCode": "it",
+        "value": "Pini, palme e ripari multicolori delineano i viali del parco nella stagione 2026."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pinos, palmeras y cobertizos multicolores bordean los caminos del parque durante la temporada 2026."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sosny, palmy i wielobarwne zadaszenia wyznaczają alejki parku w sezonie 2026."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pinheiros, palmeiras e abrigos multicolores ladeiam os caminhos do parque na época de 2026."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Paul Pérucaud / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Paul Pérucaud / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T01:31:22.483Z",
+    "updatedAt": "2026-11-15T01:31:26.057Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-15T01:31:26.057Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1077750517-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+  "sourceEvidence": {
+    "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-2.jpg",
+    "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/89/caption.jpg?w=1200&h=1200&s=1",
+    "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "sha256": "04aa6aa0a4296ff00a6d5bae3e8041507d7b64090c51c8999a9ca808534f8ef6",
+    "status": 200,
+    "stem": "park-panorama-2026",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1077750517-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "author": "Paul Pérucaud",
+    "visitPeriod": "août 2026",
+    "captureDay": null,
+    "ownerId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "ownerType": "PARK",
+    "visuallyInspected": true,
+    "watermark": false,
+    "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+    "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+  }
+}

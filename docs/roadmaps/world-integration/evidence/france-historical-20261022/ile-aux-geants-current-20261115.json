@@ -3,7 +3,7 @@
   "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T01:27:11.894322+00:00",
+  "observedAtUtc": "2026-11-15T01:38:25.153381+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -45,25 +45,41 @@
       "Images",
       "History"
     ],
-    "fullFinalAuditExportPerformed": false
+    "fullFinalAuditExportPerformed": false,
+    "hoursPricingTargetedExport": {
+      "sections": [
+        "OpeningHours",
+        "Pricing"
+      ],
+      "purpose": "Récupération des IDs absents et contrôle calendrier/tarifs",
+      "result": {
+        "receivedAtUtc": "2026-11-15T01:27:08.8433224Z",
+        "result": "/workspace/france-historical-20261114/ile-aux-geants/targeted-hours-pricing-export.json",
+        "startedAtUtc": "2026-11-15T01:26:51.8103403Z",
+        "action": "ExportPark"
+      },
+      "sha256": "85574c53049aeb9285686dfb8ee53a181006186c4fceb719b6adc480897f245d"
+    }
   },
   "counts": {
     "items": 21,
     "publicItems": 21,
     "itemsWithDescriptionEightLanguages": 21,
-    "itemDescriptionsPersonallyRewrittenThisRun": 17,
+    "itemDescriptionsPersonallyRewrittenThisRun": 19,
     "parkDescriptionLanguagesRewritten": 8,
-    "images": 21,
-    "ownPhotoOrCutoutImagesOfItems": 18,
+    "images": 26,
+    "ownPhotoOrCutoutImagesOfItems": 22,
     "parkPromotionalMontages": 2,
     "logo": 1,
     "existingHistoryEvents": 1,
     "existingArticles": 1,
     "fixedItemCoordinates": 0,
-    "newPrivateImages": 2,
+    "newPrivateImages": 7,
     "newPrivateHistoryEvents": 5,
     "existingArticlesRewrittenEightLanguages": 1,
-    "existingImageTextSetsCorrected": 9
+    "existingImageTextSetsCorrected": 19,
+    "parkRealPhotographs": 1,
+    "existingImageCreditsLocalized": 19
   },
   "acceptedApplies": [
     {
@@ -208,6 +224,45 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-image-factual-corrections-20261115.json"
+    },
+    {
+      "operationId": "936e4812-b028-4a5e-bae4-4284f66bbd12",
+      "appliedAtUtc": "2026-11-15T01:35:34.0114693Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-pool-picnic-20261115.json"
+    },
+    {
+      "operationId": "5344969e-7cbb-4ff3-8167-f7a51cfd26ac",
+      "appliedAtUtc": "2026-11-15T01:36:20.3768426Z",
+      "counts": {
+        "created": 0,
+        "updated": 19,
+        "deleted": 0,
+        "unchanged": 17,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-remaining-image-texts-20261115.json"
+    },
+    {
+      "operationId": "6393ad21-bf59-4aa8-97bd-9e2c77de346f",
+      "appliedAtUtc": "2026-11-15T01:37:36.5921723Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-07-pricing-age-precision-20261115.json"
     }
   ],
   "reviewedItems": [
@@ -227,12 +282,12 @@
     "Bateau Pirate",
     "Carrousel 1900",
     "Grande roue",
-    "O'resto d'Iros"
+    "O'resto d'Iros",
+    "Pataugeoire",
+    "Aires de pique-nique"
   ],
   "remainingItemsToReview": [
-    "Aires de pique-nique",
     "Manège enchanté",
-    "Pataugeoire",
     "Petit train"
   ],
   "criticalCorrection": {
@@ -454,6 +509,113 @@
         "sha256": "96d10200dd2c81ecbc0dc7592acee83d7137110624105407cfb153461fa7ace9",
         "retrievedAtUtc": "2026-11-15T01:09:45.175278+00:00"
       }
+    ],
+    "visitorPhotos": [
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-2.jpg",
+        "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/89/caption.jpg?w=1200&h=1200&s=1",
+        "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "sha256": "04aa6aa0a4296ff00a6d5bae3e8041507d7b64090c51c8999a9ca808534f8ef6",
+        "status": 200,
+        "stem": "park-panorama-2026",
+        "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1077750517-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "author": "Paul Pérucaud",
+        "visitPeriod": "août 2026",
+        "captureDay": null,
+        "ownerId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "ownerType": "PARK",
+        "visuallyInspected": true,
+        "watermark": false,
+        "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+        "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-3.jpg",
+        "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/88/caption.jpg?w=1200&h=1200&s=1",
+        "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "sha256": "b35e2dc6866ad7bd356a243f5c040d9ebdecaca1f4f09e7792bd6cc731a04064",
+        "status": 200,
+        "stem": "wheel-view-2026",
+        "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1077750517-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "author": "Paul Pérucaud",
+        "visitPeriod": "août 2026",
+        "captureDay": null,
+        "ownerId": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+        "ownerType": "PARK_ITEM",
+        "visuallyInspected": true,
+        "watermark": false,
+        "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+        "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-5.jpg",
+        "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/36/caption.jpg?w=1100&h=1100&s=1",
+        "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "sha256": "c189cd31c08229da9c656e744e107a35358f34850feaa468c25e76ed6854370a",
+        "status": 200,
+        "stem": "star-flyer-visitors-2025",
+        "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "author": "vanessa g",
+        "visitPeriod": "juillet 2025",
+        "captureDay": null,
+        "ownerId": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+        "ownerType": "PARK_ITEM",
+        "visuallyInspected": true,
+        "watermark": false,
+        "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+        "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-6.jpg",
+        "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/35/caption.jpg?w=1100&h=1100&s=1",
+        "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "sha256": "c7263453b95ee117a679703de9f87ac91fbc70727563e6a33d40b16bdab2544a",
+        "status": 200,
+        "stem": "carousel-roses-2025",
+        "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "author": "vanessa g",
+        "visitPeriod": "juillet 2025",
+        "captureDay": null,
+        "ownerId": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+        "ownerType": "PARK_ITEM",
+        "visuallyInspected": true,
+        "watermark": false,
+        "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+        "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+      },
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-7.jpg",
+        "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/34/caption.jpg?w=1100&h=1100&s=1",
+        "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "sha256": "82dfd0bd2e1535542a48497148d687ff62c557fb78f3144b07a0869eade1e7d1",
+        "status": 200,
+        "stem": "paddling-pool-2025",
+        "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "author": "vanessa g",
+        "visitPeriod": "juillet 2025",
+        "captureDay": null,
+        "ownerId": "6b94675f-34a3-4eb4-b2cf-8d4a4e6ade55",
+        "ownerType": "PARK_ITEM",
+        "visuallyInspected": true,
+        "watermark": false,
+        "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+        "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+      }
+    ],
+    "additionalResearch": [
+      {
+        "name": "tripadvisor",
+        "url": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "finalUrl": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+        "status": 200,
+        "retrievedAtUtc": "2026-11-15T01:27:58.500451+00:00",
+        "sha256": "8c0febbe7058990147a8546bf2744ba60fb6ae36bc03eb12278b0b33ac0a133d"
+      },
+      {
+        "name": "official-video",
+        "url": "https://www.youtube.com/watch?v=pfbEdZ2zImQ",
+        "error": "Page.goto: net::ERR_TUNNEL_CONNECTION_FAILED at https://www.youtube.com/watch?v=pfbEdZ2zImQ\nCall log:\n  - navigating to \"https://www.youtube.com/watch?v=pfbEdZ2zImQ\", waiting until \"domcontentloaded\"\n"
+      }
     ]
   },
   "gaps": {
@@ -470,11 +632,10 @@
       "361e07dd6fb449ae856edf00fb33fe9f"
     ],
     "watermarkPolicy": "10 old original item photos visibly carry Coasterrider watermark; retained existing images, no new watermark import or cropping. Need proper replacements; not a rights-consent question.",
-    "parkPhotoMislabel": "Deux montages promotionnels hérités conservés mais désormais décrits correctement dans les huit langues ; illustration principale de l’article remplacée par la photographie existante de la grande roue.",
+    "parkPhotoMislabel": "Montages corrigés8langues. Nouveau panorama réel de2026 privé ; remplace avantageusement le montage à la publication après audit. Images proches non importées pour ne pas gonfler la couverture.",
     "noOwnImageItems": [
       "Aires de pique-nique",
       "Manège enchanté",
-      "Pataugeoire",
       "Petit train"
     ],
     "noGeolocationItems": [
@@ -502,9 +663,10 @@
     ],
     "history": "Article développé huit langues réécrit et appliqué, blocs/identité/publication existants conservés. Ancien fait2013 corrigé ; quatre faits parc 2022/2024/2025 et un fait Bateau Pirate2024 privés, pas encore audités globalement. Photo réelle de l’incendie introuvable, événement sans photo ; photographie de la roue contextualise l’article général, sans prétendre représenter l’incendie.",
     "additionalCandidates": "Official old galleries name entrance/souvenir shop, duck fishing and games room; current status following2024 reception fire needs qualification. No items created.",
-    "calendar": "Official2026 image: June weekends and July4–Aug31; no2027dates found. Website advertises10:30–18:00, officialFacebook says10:30–18:30 fromJuly4; discrepancy preserved, no schedule edited.",
+    "calendar": "Calendrier2026 complet67jours retrouvés par export cibléOpeningHours/Pricing, aucun horizon futur2027annoncé. Site10:30–18:00, Facebookété18:30 : divergence documentée ; anciennes règles conservées, aucune extrapolation. Prix5offres rapprochés ; ambiguïté18ans corrigée dans8langues, dernière vérification vraie source200.",
     "maps": "No official dated interior plan found. Unrelated Canadian Île aux Géants and communityOSM are not substitutes.",
-    "facebookPhotos": "Public page shows5 genuine thumbnails160px; individual photo routes returned login screen. Downloaded1240px images were generic Facebook login illustrations, visually rejected, never imported. Do not treat HTTP200 or dimensions as a relevant photo."
+    "facebookPhotos": "Public page shows5 genuine thumbnails160px; individual photo routes returned login screen. Downloaded1240px images were generic Facebook login illustrations, visually rejected, never imported. Do not treat HTTP200 or dimensions as a relevant photo.",
+    "inventoryQualification": "Deux notices publiques anciennes encore génériques : Manège enchanté/Petit train. Site2026 et archive23mai2022 utilisent le logo en guise de photo, sans décor décrit. Photo visiteur2022 d’un petit manège à véhicules non attribuable avec certitude au nom officiel, non importée. Panorama2026 montre structures gonflables et manège enfantin non nommés : candidats à qualifier, pas de création spéculative. Anciennes entrée/boutique, pêche canards et salle jeux à rapprocher après incendie2024."
   },
   "facebook": {
     "observedAtUtc": "2026-11-15T00:50:17.2712322Z",
@@ -514,8 +676,8 @@
     "newAnnouncementSent": false
   },
   "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-geants",
-  "workingStateSha256": "0320a6ff4d48f1aac1c898194ad85c200390f1f3fc0dd8d4b4dc4e420f3031ee",
-  "nextAction": "Finir les quatre notices restantes et les dix anciennes légendes d’images, compléter les recherches photos/inventaire ancien/positions et horaires-tarifs. Export ciblé OpeningHours/Pricing en cours pour IDs absents. Aucun export complet final ni clôture.",
+  "workingStateSha256": "caef777bfea6af83284a4f0d253761cb604abbc662b9b09d7c246e7e05353df5",
+  "nextAction": "Poursuivre qualification Manège enchanté/Petit train et inventaire ancien/nouveaux gonflables ; recherche Coasterrider active. Sept photos privées et cinq faits privés à auditer avant publication, sans doublonFacebook. Aucun export complet final effectué.",
   "acceptedImports": [
     {
       "imageId": "c5ea8c26cbd547008c1db3708c3290cf",
@@ -530,6 +692,41 @@
       "serverIntegrationAtUtc": "2026-11-15T01:09:44.663Z",
       "isPublished": false,
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-restaurant-counter-20261115.json"
+    },
+    {
+      "imageId": "d64a164581614bcc8619a655395e1b7e",
+      "ownerId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+      "serverIntegrationAtUtc": "2026-11-15T01:31:26.057Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-park-panorama-2026-20261115.json"
+    },
+    {
+      "imageId": "af3c8bdb537c4729ba4ef357005aee8f",
+      "ownerId": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+      "serverIntegrationAtUtc": "2026-11-15T01:31:43.719Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-wheel-view-2026-20261115.json"
+    },
+    {
+      "imageId": "46c343fdef504f7a96232e9a3470943d",
+      "ownerId": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+      "serverIntegrationAtUtc": "2026-11-15T01:32:51.648Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-star-flyer-visitors-2025-20261115.json"
+    },
+    {
+      "imageId": "99b9852a652f44e598c135404e8f400c",
+      "ownerId": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+      "serverIntegrationAtUtc": "2026-11-15T01:33:15.297Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-carousel-roses-2025-20261115.json"
+    },
+    {
+      "imageId": "fad0db1c6b684e61ae62d3078f455e33",
+      "ownerId": "6b94675f-34a3-4eb4-b2cf-8d4a4e6ade55",
+      "serverIntegrationAtUtc": "2026-11-15T01:33:30.472Z",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-paddling-pool-2025-20261115.json"
     }
   ]
 }

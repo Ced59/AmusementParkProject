@@ -1,0 +1,1989 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "e843e756feccff8a2013f6ada4c3bf3412ced2ef99e5650175c790750a89cf91",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées aux sources conservées et aux photographies originales personnellement inspectées, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "5344969e-7cbb-4ff3-8167-f7a51cfd26ac",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:36:20.3768414Z",
+    "appliedAtUtc": "2026-11-15T01:36:20.3768426Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 19,
+      "deleted": 0,
+      "unchanged": 17,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "entityKey": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "displayName": "Bateau du Colorado",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "entityKey": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "displayName": "Bateau Pirate",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+        "entityKey": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+        "displayName": "Carrousel 1900",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+        "entityKey": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+        "displayName": "Grande roue",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3c9ff19a-b5f7-4d2c-8b91-439ddfaedb8d",
+        "entityKey": "3c9ff19a-b5f7-4d2c-8b91-439ddfaedb8d",
+        "displayName": "Kangourou",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9305488c-b270-4c11-8256-1080202ce347",
+        "entityKey": "9305488c-b270-4c11-8256-1080202ce347",
+        "displayName": "La Chenille",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "638da404-8a4d-4ec6-af68-68dc5d66a576",
+        "entityKey": "638da404-8a4d-4ec6-af68-68dc5d66a576",
+        "displayName": "La Randonnée fantastique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "74c8d08e-2382-461e-bade-53609111a1f2",
+        "entityKey": "74c8d08e-2382-461e-bade-53609111a1f2",
+        "displayName": "Labyrinthes",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "entityKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "displayName": "Le Grand 8",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "entityKey": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "displayName": "Pouss-Pouss",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4a3b5ae7-6995-431c-b5b5-4d9e955bfae0",
+        "entityKey": "4a3b5ae7-6995-431c-b5b5-4d9e955bfae0",
+        "displayName": "Samba Ballon",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+        "entityKey": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+        "displayName": "Star Flyer",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b344e698-e8b0-4598-9c26-3929e7d1c383",
+        "entityKey": "b344e698-e8b0-4598-9c26-3929e7d1c383",
+        "displayName": "Star Tower",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "85b8602f-ef65-468c-b577-7a6cf73a9ea7",
+        "entityKey": "85b8602f-ef65-468c-b577-7a6cf73a9ea7",
+        "displayName": "Toboggan des Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06eb4048-eadc-4095-a8a7-74ef63c2dff1",
+        "entityKey": "06eb4048-eadc-4095-a8a7-74ef63c2dff1",
+        "displayName": "Trampolines",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4e66050-5f12-4324-97d8-81586b7b9ab6",
+        "entityKey": "e4e66050-5f12-4324-97d8-81586b7b9ab6",
+        "displayName": "Trampolines n° 2",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "401a5d56edd542e99f8089d862e1cddf",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les toiles alignées des Trampolines occupent un espace ouvert.",
+            "newValue": "Trampolines entourés de filets devant le décor Jumpy aux kangourous et aux palmiers."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die nebeneinanderliegenden Trampolinflächen füllen einen offenen Spielbereich.",
+            "newValue": "Trampoline mit Netzen vor der Jumpy-Kulisse mit Kängurus und Palmen."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The aligned trampoline beds fill an open play area.",
+            "newValue": "Trampolines enclosed by nets in front of the Jumpy backdrop with kangaroos and palms."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Las camas elásticas alineadas ocupan una zona de juego abierta.",
+            "newValue": "Trampolines rodeados de redes ante el decorado Jumpy con canguros y palmeras."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les toiles alignées des Trampolines occupent un espace ouvert.",
+            "newValue": "Trampolines entourés de filets devant le décor Jumpy aux kangourous et aux palmiers."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "I tappeti elastici allineati occupano uno spazio di gioco aperto.",
+            "newValue": "Trampolini circondati da reti davanti allo scenario Jumpy con canguri e palme."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De trampolinematten liggen naast elkaar in een open speelruimte.",
+            "newValue": "Trampolines met netten voor het Jumpy-decor met kangoeroes en palmen."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Ustawione obok siebie trampoliny zajmują otwartą strefę zabawy.",
+            "newValue": "Trampoliny otoczone siatkami przed dekoracją Jumpy z kangurami i palmami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "As camas elásticas alinhadas ocupam uma zona de jogo aberta.",
+            "newValue": "Trampolins rodeados por redes diante do cenário Jumpy com cangurus e palmeiras."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Netze und Polster rahmen einen Bereich für die Sprünge der Kinder.",
+            "newValue": "Gezeichnete Kängurus geben der Jumpy-Fassade ihren verspielten Charakter."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Nets and pads frame a space devoted to childrenʼs bouncing.",
+            "newValue": "Cartoon kangaroos bring a playful touch to the Jumpy frontage."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Redes y protecciones delimitan un espacio dedicado a los saltos infantiles.",
+            "newValue": "Los canguros dibujados dan un toque juguetón a la fachada Jumpy."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Filets et coussins encadrent une zone consacrée aux rebonds des enfants.",
+            "newValue": "Les kangourous dessinés donnent leur fantaisie au fronton Jumpy."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Reti e protezioni delimitano uno spazio dedicato ai salti dei bambini.",
+            "newValue": "I canguri disegnati danno un tocco giocoso alla facciata Jumpy."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Netten en kussens begrenzen een plek voor de sprongen van kinderen.",
+            "newValue": "Getekende kangoeroes geven de Jumpy-gevel zijn speelse karakter."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Siatki i osłony wyznaczają miejsce przeznaczone do dziecięcych podskoków.",
+            "newValue": "Rysunkowe kangury nadają frontonowi Jumpy figlarny charakter."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Redes e proteções delimitam um espaço dedicado aos saltos das crianças.",
+            "newValue": "Os cangurus desenhados dão um toque brincalhão à fachada Jumpy."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "734f1164cd18439a9bbe6cfc9fa9a43d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les sièges de Kangourou sont disposés autour de sa structure bondissante.",
+            "newValue": "Kangourous de dessin animé avec gants de boxe et cravates sur le manège Kangourou."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Sitze von Kangourou sind rund um die federnde Konstruktion angeordnet.",
+            "newValue": "Comic-Kängurus mit Boxhandschuhen und Krawatten am Fahrgeschäft Kangourou."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Kangourouʼs seats circle its bouncing structure.",
+            "newValue": "Cartoon kangaroos wearing boxing gloves and ties on the Kangourou ride."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Los asientos de Kangourou rodean su estructura saltarina.",
+            "newValue": "Canguros de dibujos animados con guantes de boxeo y corbatas en la atracción Kangourou."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les sièges de Kangourou sont disposés autour de sa structure bondissante.",
+            "newValue": "Kangourous de dessin animé avec gants de boxe et cravates sur le manège Kangourou."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "I sedili di Kangourou circondano la struttura saltellante.",
+            "newValue": "Canguri dei cartoni con guantoni da boxe e cravatte sulla giostra Kangourou."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De stoelen van Kangourou staan rond de verende constructie.",
+            "newValue": "Cartoonkangoeroes met bokshandschoenen en stropdassen op de attractie Kangourou."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Siedzenia Kangourou otaczają sprężystą konstrukcję.",
+            "newValue": "Rysunkowe kangury w rękawicach bokserskich i krawatach na atrakcji Kangourou."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Os assentos de Kangourou rodeiam a estrutura saltitante.",
+            "newValue": "Cangurus de desenhos animados com luvas de boxe e gravatas na diversão Kangourou."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die runde Plattform verleiht dem Fahrgeschäft sein energiegeladenes Aussehen.",
+            "newValue": "Die langohrigen Figuren heben sich vor dem Himmel und dem Grün des Parks ab."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The circular platform gives the ride its energetic appearance.",
+            "newValue": "The long-eared characters stand out against the sky and the park’s greenery."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La plataforma circular da a la atracción su aspecto enérgico.",
+            "newValue": "Los personajes de largas orejas destacan contra el cielo y la vegetación del parque."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "La plateforme circulaire donne au manège son allure énergique.",
+            "newValue": "Les personnages aux grandes oreilles se détachent sur le ciel et la verdure du parc."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "La piattaforma circolare conferisce alla giostra un aspetto energico.",
+            "newValue": "I personaggi dalle lunghe orecchie spiccano contro il cielo e il verde del parco."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Het ronde platform geeft de attractie haar energieke uitstraling.",
+            "newValue": "De figuren met lange oren steken af tegen de lucht en het groen van het park."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Okrągła platforma nadaje atrakcji energiczny wygląd.",
+            "newValue": "Postacie o długich uszach wyróżniają się na tle nieba i parkowej zieleni."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A plataforma circular dá à diversão o seu aspeto enérgico.",
+            "newValue": "As personagens de orelhas compridas destacam-se contra o céu e a vegetação do parque."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1bee00dfe8cc44da8c4e0cab255d0b95",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les nacelles en montgolfière de Samba Ballon entourent leur axe.",
+            "newValue": "Ballons multicolores étoilés de Samba Ballon autour d’un grand sapin à visage."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Heißluftballon-Gondeln von Samba Ballon umgeben den Mittelbau.",
+            "newValue": "Bunte Ballons mit Sternen von Samba Ballon um eine große Tanne mit Gesicht."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Samba Ballonʼs hot-air-balloon gondolas surround the central mast.",
+            "newValue": "Multicoloured, star-patterned Samba Ballon balloons around a tall fir tree with a face."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Las góndolas en forma de globo de Samba Ballon rodean el eje central.",
+            "newValue": "Globos multicolores con estrellas de Samba Ballon alrededor de un gran abeto con rostro."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les nacelles en montgolfière de Samba Ballon entourent leur axe.",
+            "newValue": "Ballons multicolores étoilés de Samba Ballon autour d’un grand sapin à visage."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Le gondole a mongolfiera di Samba Ballon circondano il perno centrale.",
+            "newValue": "Palloni multicolori stellati di Samba Ballon attorno a un grande abete con un volto."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De luchtballongondels van Samba Ballon omringen de middenas.",
+            "newValue": "Veelkleurige ballonnen met sterren van Samba Ballon rond een hoge spar met een gezicht."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Gondole w kształcie balonów Samba Ballon otaczają centralną oś.",
+            "newValue": "Wielobarwne balony w gwiazdy Samba Ballon wokół wysokiej jodły z twarzą."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "As cabinas em forma de balão da Samba Ballon rodeiam o eixo central.",
+            "newValue": "Balões multicolores com estrelas do Samba Ballon em redor de um grande abeto com rosto."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Bunte Ballons bilden einen unverwechselbaren Kreis in der Luft.",
+            "newValue": "Ein kleiner Pavillon mit rotem Dach ergänzt die Märchenkulisse von Samba Ballon."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Colourful balloons form a distinctive airborne circle.",
+            "newValue": "A small red-roofed pavilion completes Samba Ballon’s storybook setting."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Los globos de colores forman una ronda aérea inconfundible.",
+            "newValue": "Un pequeño pabellón de tejado rojo completa el decorado de cuento de Samba Ballon."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les ballons colorés forment une ronde aérienne reconnaissable.",
+            "newValue": "Un petit pavillon au toit rouge complète le décor de conte de Samba Ballon."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "I palloni colorati formano un giro aereo inconfondibile.",
+            "newValue": "Un piccolo padiglione dal tetto rosso completa lo scenario fiabesco di Samba Ballon."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Kleurrijke ballonnen vormen een herkenbare ronde in de lucht.",
+            "newValue": "Een klein paviljoen met een rood dak maakt het sprookjesdecor van Samba Ballon compleet."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Kolorowe balony tworzą charakterystyczny krąg w powietrzu.",
+            "newValue": "Mały pawilon z czerwonym dachem dopełnia baśniową scenerię Samba Ballon."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Os balões coloridos formam uma roda aérea inconfundível.",
+            "newValue": "Um pequeno pavilhão de telhado vermelho completa o cenário de conto do Samba Ballon."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "b2b6cb85314d45aea85c7c56e4d13eff",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les véhicules de La Randonnée fantastique traversent un décor de Far West.",
+            "newValue": "Chevaux de La Randonnée fantastique devant une galerie de bois et son toit rouge."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Fahrzeuge von La Randonnée fantastique fahren durch eine Wildwestkulisse.",
+            "newValue": "Pferde von La Randonnée fantastique vor einer Holzveranda mit rotem Dach."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "La Randonnée fantastique vehicles travel through Wild West scenery.",
+            "newValue": "La Randonnée fantastique’s horses in front of a wooden porch with a red roof."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Los vehículos de La Randonnée fantastique atraviesan un decorado del Oeste.",
+            "newValue": "Caballos de La Randonnée fantastique ante una galería de madera con tejado rojo."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les véhicules de La Randonnée fantastique traversent un décor de Far West.",
+            "newValue": "Chevaux de La Randonnée fantastique devant une galerie de bois et son toit rouge."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "I veicoli di La Randonnée fantastique attraversano uno scenario western.",
+            "newValue": "Cavalli di La Randonnée fantastique davanti a una veranda di legno dal tetto rosso."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De voertuigen van La Randonnée fantastique rijden door een wildwestdecor.",
+            "newValue": "Paarden van La Randonnée fantastique voor een houten veranda met rood dak."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Pojazdy La Randonnée fantastique przemierzają scenerię Dzikiego Zachodu.",
+            "newValue": "Konie La Randonnée fantastique przed drewnianą werandą z czerwonym dachem."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Os veículos de La Randonnée fantastique atravessam um cenário do Faroeste.",
+            "newValue": "Cavalos da Randonnée fantastique diante de um alpendre de madeira com telhado vermelho."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Holzzäune und Westernszenen rahmen diese gemütliche Fahrt.",
+            "newValue": "Die Ranchkulisse umgibt die Reittiere dieses Western-Ausritts."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Wooden fences and western scenes frame this leisurely journey.",
+            "newValue": "The ranch setting surrounds the mounts of this Western ride."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Vallas de madera y escenas del Oeste enmarcan este paseo.",
+            "newValue": "El decorado de rancho rodea las monturas de este paseo del Oeste."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Barrières de bois et scènes western encadrent cette promenade.",
+            "newValue": "Le décor de ranch accompagne les montures de cette randonnée western."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Staccionate di legno e scene western incorniciano questa passeggiata.",
+            "newValue": "Lo scenario del ranch circonda i cavalli di questa passeggiata western."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Houten hekken en westernscènes omlijsten deze rustige tocht.",
+            "newValue": "Het ranchdecor omringt de paarden van deze westernrit."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Drewniane ogrodzenia i westernowe sceny tworzą oprawę tej spokojnej podróży.",
+            "newValue": "Sceneria rancza otacza wierzchowce tej westernowej przejażdżki."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Cercas de madeira e cenas do Faroeste enquadram este passeio.",
+            "newValue": "O cenário de rancho rodeia as montadas deste passeio pelo Oeste."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "c74966a1f0b64b4faaad471c4c1353fe",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les passages des Labyrinthes serpentent entre des panneaux colorés.",
+            "newValue": "Façade de Labyrinthes avec Scooby-Doo, ses amis et l’enseigne L’Aventure."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Wege der Labyrinthe winden sich zwischen bunten Wänden.",
+            "newValue": "Fassade von Labyrinthes mit Scooby-Doo, seinen Freunden und dem Schriftzug L’Aventure."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The maze passages wind between colourful panels.",
+            "newValue": "Labyrinthes frontage with Scooby-Doo, his friends and the L’Aventure sign."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Los pasajes de los laberintos serpentean entre paneles de colores.",
+            "newValue": "Fachada de Labyrinthes con Scooby-Doo, sus amigos y el rótulo L’Aventure."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les passages des Labyrinthes serpentent entre des panneaux colorés.",
+            "newValue": "Façade de Labyrinthes avec Scooby-Doo, ses amis et l’enseigne L’Aventure."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "I passaggi dei labirinti serpeggiano tra pannelli colorati.",
+            "newValue": "Facciata di Labyrinthes con Scooby-Doo, i suoi amici e l’insegna L’Aventure."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De doorgangen van de doolhoven kronkelen tussen kleurrijke panelen.",
+            "newValue": "Gevel van Labyrinthes met Scooby-Doo, zijn vrienden en het bord L’Aventure."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Przejścia labiryntów wiją się między kolorowymi ścianami.",
+            "newValue": "Fasada Labyrinthes ze Scooby-Doo, jego przyjaciółmi i szyldem L’Aventure."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "As passagens dos labirintos serpenteiam entre painéis coloridos.",
+            "newValue": "Fachada dos Labyrinthes com Scooby-Doo, os seus amigos e o letreiro L’Aventure."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Hier gilt es, den eigenen Weg zu finden, statt einer Schiene zu folgen.",
+            "newValue": "Gemalte Figuren schmücken die Fassade dieses Jahrmarktgeschäfts."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The course asks visitors to find a route instead of following a rail.",
+            "newValue": "Painted characters cover the frontage of this fairground attraction."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El recorrido invita a buscar el camino en lugar de seguir una vía.",
+            "newValue": "Los personajes pintados decoran la fachada de esta atracción de feria."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le parcours invite à chercher sa route plutôt quʼà suivre un rail.",
+            "newValue": "Les personnages peints occupent la façade de cette attraction foraine."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il percorso invita a trovare la strada invece di seguire un binario.",
+            "newValue": "Personaggi dipinti decorano la facciata di questa attrazione da luna park."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Hier zoek je zelf de weg in plaats van een vaste baan te volgen.",
+            "newValue": "Geschilderde figuren sieren de gevel van deze kermisattractie."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Trasa zachęca do szukania drogi zamiast podążania po szynie.",
+            "newValue": "Malowane postacie zdobią fasadę tej jarmarcznej atrakcji."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O percurso convida a procurar o caminho em vez de seguir um carril.",
+            "newValue": "Personagens pintadas decoram a fachada desta diversão de feira."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "590f9f146fdb424fbcc4eebed49611d9",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les pistes ondulées du Toboggan des Géants descendent côte à côte.",
+            "newValue": "Pentes ondulées bleues, jaunes et roses du Toboggan des Géants, bordées de vert."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die welligen Bahnen von Toboggan des Géants verlaufen nebeneinander bergab.",
+            "newValue": "Gewellte blaue, gelbe und rosa Bahnen von Toboggan des Géants mit grünen Rändern."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The wavy lanes of Toboggan des Géants descend side by side.",
+            "newValue": "Wavy blue, yellow and pink lanes of Toboggan des Géants, edged in green."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Las pistas onduladas de Toboggan des Géants bajan una junto a otra.",
+            "newValue": "Pistas onduladas azules, amarillas y rosas de Toboggan des Géants, bordeadas de verde."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les pistes ondulées du Toboggan des Géants descendent côte à côte.",
+            "newValue": "Pentes ondulées bleues, jaunes et roses du Toboggan des Géants, bordées de vert."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Le corsie ondulate di Toboggan des Géants scendono affiancate.",
+            "newValue": "Piste ondulate blu, gialle e rosa di Toboggan des Géants, bordate di verde."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De golvende banen van Toboggan des Géants dalen naast elkaar af.",
+            "newValue": "Golvende blauwe, gele en roze banen van Toboggan des Géants met groene randen."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Faliste tory Toboggan des Géants opadają obok siebie.",
+            "newValue": "Faliste niebieskie, żółte i różowe tory Toboggan des Géants z zielonymi brzegami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "As pistas onduladas do Toboggan des Géants descem lado a lado.",
+            "newValue": "Pistas onduladas azuis, amarelas e cor-de-rosa do Toboggan des Géants, ladeadas de verde."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Bunte Bahnen machen jede Rutschpartie zu einem Rennen nebeneinander.",
+            "newValue": "Die Pastellfarben der großen Rutsche stehen im Kontrast zu den umgebenden Kiefern."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Multicoloured lanes turn each slide into a side-by-side race.",
+            "newValue": "The large slide’s pastel colours contrast with the pines around it."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Los carriles multicolores convierten cada bajada en una carrera paralela.",
+            "newValue": "Los colores pastel del gran tobogán contrastan con los pinos que lo rodean."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les couloirs multicolores transforment la glissade en course parallèle.",
+            "newValue": "Les couleurs pastel du grand toboggan tranchent avec les pins qui l’entourent."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Le corsie variopinte trasformano ogni discesa in una corsa parallela.",
+            "newValue": "I colori pastello del grande scivolo contrastano con i pini circostanti."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Veelkleurige banen maken van elke afdaling een wedstrijd naast elkaar.",
+            "newValue": "De pastelkleuren van de grote glijbaan contrasteren met de dennen eromheen."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Wielobarwne pasy zmieniają każdy zjazd w równoległy wyścig.",
+            "newValue": "Pastelowe barwy dużej zjeżdżalni kontrastują z otaczającymi ją sosnami."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "As pistas multicoloridas transformam cada descida numa corrida lado a lado.",
+            "newValue": "As cores pastel do grande escorrega contrastam com os pinheiros em redor."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "cda036d71e924ce4a468741eb04e7349",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Le train en forme de chenille suit sa voie au milieu du parc.",
+            "newValue": "Train vert en forme de chenille près de grandes fleurs décoratives."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Der raupenförmige Zug folgt seiner Strecke durch den Park.",
+            "newValue": "Grüner Zug in Raupenform neben großen Dekoblumen."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The caterpillar-shaped train follows its track through the park.",
+            "newValue": "Green caterpillar-shaped train beside large decorative flowers."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "El tren con forma de oruga recorre su vía por el parque.",
+            "newValue": "Tren verde con forma de oruga junto a grandes flores decorativas."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Le train en forme de chenille suit sa voie au milieu du parc.",
+            "newValue": "Train vert en forme de chenille près de grandes fleurs décoratives."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Il treno a forma di bruco segue la sua via nel parco.",
+            "newValue": "Treno verde a forma di bruco accanto a grandi fiori decorativi."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De rupsenvormige trein volgt zijn baan door het park.",
+            "newValue": "Groene trein in de vorm van een rups naast grote decoratieve bloemen."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Pociąg w kształcie gąsienicy jedzie swoim torem przez park.",
+            "newValue": "Zielony pociąg w kształcie gąsienicy obok dużych ozdobnych kwiatów."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "O comboio em forma de lagarta percorre a sua via pelo parque.",
+            "newValue": "Comboio verde em forma de lagarta junto de grandes flores decorativas."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Leuchtende Farben machen diese Familienachterbahn sofort erkennbar.",
+            "newValue": "La Chenille schlängelt sich durch einen Garten übergroßer Blumen."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Bright colours immediately identify this family roller coaster.",
+            "newValue": "La Chenille winds through a garden of oversized flowers."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Los colores vivos hacen reconocible al instante esta montaña rusa familiar.",
+            "newValue": "La Chenille recorre un jardín de flores gigantes."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Ses couleurs vives identifient immédiatement cette montagne russe familiale.",
+            "newValue": "La Chenille se glisse dans un jardin de fleurs surdimensionnées."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "I colori vivaci rendono subito riconoscibile questa montagna russa familiare.",
+            "newValue": "La Chenille si snoda in un giardino di fiori giganteschi."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Heldere kleuren maken deze familieachtbaan meteen herkenbaar.",
+            "newValue": "La Chenille slingert door een tuin met reusachtige bloemen."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Żywe kolory od razu wyróżniają tę rodzinną kolejkę.",
+            "newValue": "La Chenille wije się przez ogród olbrzymich kwiatów."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "As cores vivas tornam esta montanha-russa familiar imediatamente reconhecível.",
+            "newValue": "A Chenille percorre um jardim de flores gigantes."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "8c2043fcfcf643bf99cc0498324a48f2",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les nacelles de la Grande roue dessinent un cercle au-dessus de la végétation.",
+            "newValue": "Grande roue blanche aux nacelles couvertes, au-dessus des pins et des champs."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die Gondeln des Riesenrads zeichnen einen Kreis über dem Grün.",
+            "newValue": "Weißes Riesenrad mit überdachten Gondeln über Kiefern und Feldern."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The Ferris wheel gondolas draw a circle above the greenery.",
+            "newValue": "White Ferris wheel with covered gondolas above pines and fields."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Las cabinas de la noria dibujan un círculo sobre la vegetación.",
+            "newValue": "Noria blanca con cabinas cubiertas sobre pinos y campos."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les nacelles de la Grande roue dessinent un cercle au-dessus de la végétation.",
+            "newValue": "Grande roue blanche aux nacelles couvertes, au-dessus des pins et des champs."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Le cabine della ruota panoramica disegnano un cerchio sopra il verde.",
+            "newValue": "Ruota panoramica bianca con cabine coperte sopra pini e campi."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De gondels van het reuzenrad tekenen een cirkel boven het groen.",
+            "newValue": "Wit reuzenrad met overdekte gondels boven dennen en velden."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Gondole diabelskiego młyna kreślą krąg nad zielenią.",
+            "newValue": "Biały diabelski młyn z zadaszonymi gondolami nad sosnami i polami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "As cabinas da roda-gigante desenham um círculo sobre a vegetação.",
+            "newValue": "Roda-gigante branca com cabines cobertas acima de pinheiros e campos."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Vom Boden aus dient ihre hohe Silhouette als Orientierungspunkt im Park.",
+            "newValue": "Der weiße Kreis der Grande roue überragt den Rand des Parks in Dissay."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "From the ground, its upright silhouette serves as a landmark across the park.",
+            "newValue": "The white circle of Grande roue rises above the edge of the Dissay park."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Desde el suelo, su silueta vertical sirve de referencia en el parque.",
+            "newValue": "El círculo blanco de la Grande roue domina el límite del parque de Dissay."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Depuis le sol, sa silhouette verticale sert de repère dans le parc.",
+            "newValue": "Le cercle blanc de la Grande roue domine la lisière du parc de Dissay."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Dal suolo, la sagoma verticale è un punto di riferimento nel parco.",
+            "newValue": "Il cerchio bianco della Grande roue domina il margine del parco di Dissay."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Vanaf de grond vormt het hoge silhouet een herkenningspunt in het park.",
+            "newValue": "De witte cirkel van de Grande roue torent boven de rand van het park in Dissay uit."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Z poziomu alejek jej pionowa sylwetka jest punktem orientacyjnym parku.",
+            "newValue": "Biały krąg Grande roue góruje nad skrajem parku w Dissay."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A partir do chão, a silhueta vertical serve de referência no parque.",
+            "newValue": "O círculo branco da Grande roue domina a extremidade do parque de Dissay."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "67fd211d2c464f5da75fc6d2d33a8bfb",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Chevaux peints et ornements dorés entourent le Carrousel 1900.",
+            "newValue": "Carrousel 1900 sous ses panneaux peints et ses volutes dorées, avec une balustrade blanche à l’étage."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Bemalte Pferde und goldene Ornamente schmücken Carrousel 1900.",
+            "newValue": "Carrousel 1900 unter bemalten Tafeln und goldenen Voluten mit einer weißen Balustrade im Obergeschoss."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Painted horses and gilded ornaments surround Carrousel 1900.",
+            "newValue": "Carrousel 1900 beneath painted panels and gilded scrollwork, with a white upper balustrade."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Caballos pintados y adornos dorados rodean Carrousel 1900.",
+            "newValue": "Carrousel 1900 bajo paneles pintados y volutas doradas, con una balaustrada blanca en el piso superior."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Chevaux peints et ornements dorés entourent le Carrousel 1900.",
+            "newValue": "Carrousel 1900 sous ses panneaux peints et ses volutes dorées, avec une balustrade blanche à l’étage."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Cavalli dipinti e ornamenti dorati circondano Carrousel 1900.",
+            "newValue": "Carrousel 1900 sotto pannelli dipinti e volute dorate, con una balaustra bianca al piano superiore."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Geschilderde paarden en gouden ornamenten omringen Carrousel 1900.",
+            "newValue": "Carrousel 1900 onder beschilderde panelen en vergulde krullen, met een witte balustrade bovenaan."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Malowane konie i złote ornamenty otaczają Carrousel 1900.",
+            "newValue": "Carrousel 1900 pod malowanymi panelami i złoconymi wolutami, z białą balustradą na piętrze."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Cavalos pintados e ornamentos dourados rodeiam o Carrousel 1900.",
+            "newValue": "Carrousel 1900 sob painéis pintados e volutas douradas, com uma balaustrada branca no piso superior."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Der runde Pavillon bringt die Farben eines historischen Karussells in den Park.",
+            "newValue": "Porträts, Landschaften und Vergoldungen schmücken den Pavillon des Carrousel 1900."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The circular pavilion brings the colours of a historic merry-go-round to the park.",
+            "newValue": "Portraits, landscapes and gilding decorate the Carrousel 1900 pavilion."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El pabellón circular aporta al parque los colores de un tiovivo histórico.",
+            "newValue": "Retratos, paisajes y dorados adornan el pabellón del Carrousel 1900."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le pavillon circulaire apporte au parc les couleurs dʼun manège ancien.",
+            "newValue": "Portraits, paysages et dorures habillent le pavillon du Carrousel 1900."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il padiglione circolare porta nel parco i colori di una giostra storica.",
+            "newValue": "Ritratti, paesaggi e dorature decorano il padiglione del Carrousel 1900."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Het ronde paviljoen brengt de kleuren van een historische draaimolen in het park.",
+            "newValue": "Portretten, landschappen en verguldsel sieren het paviljoen van Carrousel 1900."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Okrągły pawilon wnosi do parku kolory dawnej karuzeli.",
+            "newValue": "Portrety, pejzaże i złocenia zdobią pawilon Carrousel 1900."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O pavilhão circular leva ao parque as cores de um carrossel histórico.",
+            "newValue": "Retratos, paisagens e dourados decoram o pavilhão do Carrousel 1900."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "361e07dd6fb449ae856edf00fb33fe9f",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les Trampolines n° 2 montrent leurs toiles protégées par des filets.",
+            "newValue": "Trampolines n° 2 avec filets turquoise et jupe jaune portant le nom Kangui."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Trampolines Nr. 2 zeigt Sprungflächen hinter Schutznetzen.",
+            "newValue": "Trampolines n° 2 mit türkisfarbenen Netzen und gelber Verkleidung mit dem Namen Kangui."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Trampolines No. 2 shows its jumping beds protected by nets.",
+            "newValue": "Trampolines n° 2 with turquoise nets and a yellow skirt bearing the Kangui name."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Trampolines n.º 2 muestra sus camas protegidas por redes.",
+            "newValue": "Trampolines n° 2 con redes turquesas y faldón amarillo con el nombre Kangui."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les Trampolines n° 2 montrent leurs toiles protégées par des filets.",
+            "newValue": "Trampolines n° 2 avec filets turquoise et jupe jaune portant le nom Kangui."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Trampolines n. 2 mostra i tappeti protetti dalle reti.",
+            "newValue": "Trampolines n° 2 con reti turchesi e rivestimento giallo con il nome Kangui."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Trampolines nr. 2 toont springmatten achter beschermnetten.",
+            "newValue": "Trampolines n° 2 met turquoise netten en een gele rand met de naam Kangui."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Trampolines nr 2 pokazują maty osłonięte siatkami.",
+            "newValue": "Trampolines n° 2 z turkusowymi siatkami i żółtą osłoną z nazwą Kangui."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Trampolines n.º 2 mostra as camas protegidas por redes.",
+            "newValue": "Trampolines n° 2 com redes turquesa e saia amarela com o nome Kangui."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Dieser zweite Bereich bietet größeren Kindern mehr Platz zum Springen.",
+            "newValue": "Weiße Silhouetten von Springenden schmücken die gelbe Umrandung der Trampoline."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "This second area gives older children more room to bounce.",
+            "newValue": "White silhouettes of jumpers decorate the yellow surround of the trampolines."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Esta segunda zona ofrece más espacio a los niños mayores.",
+            "newValue": "Siluetas blancas de saltadores decoran el borde amarillo de los trampolines."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Cette seconde zone réserve davantage dʼespace aux enfants plus grands.",
+            "newValue": "Des silhouettes blanches de sauteurs décorent le pourtour jaune des trampolines."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Questa seconda zona offre più spazio ai bambini più grandi.",
+            "newValue": "Sagome bianche di saltatori decorano il bordo giallo dei trampolini."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Deze tweede zone geeft oudere kinderen meer ruimte om te springen.",
+            "newValue": "Witte silhouetten van springers versieren de gele rand van de trampolines."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Ta druga strefa daje starszym dzieciom więcej miejsca do skakania.",
+            "newValue": "Białe sylwetki skaczących osób zdobią żółte obrzeże trampolin."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Esta segunda zona oferece mais espaço às crianças mais velhas.",
+            "newValue": "Silhuetas brancas de pessoas a saltar decoram o contorno amarelo dos trampolins."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "39f4dbe31e854dc0a0c552e2f96cea38",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a3ec565c0a334f5db285e05ecebe9cb5",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "73ad5b0ae1c04a4caeca8cb9088dfd7b",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "4f183c91d4834462ae2c31bd38ef346e",
+        "entityKey": null,
+        "displayName": "codex-import.webp",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9ad259ed2aaf41c9a112503acc6dd201",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "15382cc4ae5544b7b728a6fb327a5ac1",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "4c56d24e2acf4eb9be298a2f419587d3",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9a8f42dd0ee04195adc14ac6309a8f90",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "761b88f1451a415ebffd89f05484e4ad",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "credits.de",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — offizielle Website"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — official website"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sitio oficial"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — site officiel"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sito ufficiale"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — officiële website"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — oficjalna strona"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "L'Île aux Géants — site officiel",
+            "newValue": "L’Île aux Géants — sítio oficial"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "kind": "ImportPhoto",
+  "result": {
+    "id": "99b9852a652f44e598c135404e8f400c",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+    "path": "park_item/99b9852a652f44e598c135404e8f400c",
+    "description": "Guirlandes de fleurs, portraits peints et dorures entourent les visiteurs du carrousel en juillet 2025.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 1100,
+    "height": 1100,
+    "sizeInBytes": 436196,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/35/caption.jpg?w=1100&h=1100&s=1",
+    "geoLocation": null,
+    "exifMetadata": {
+      "cameraMaker": null,
+      "cameraModel": null,
+      "takenOnUtc": null,
+      "orientation": "1",
+      "focalLength": null,
+      "aperture": null,
+      "exposureTime": null,
+      "iso": null
+    },
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Chevaux blancs et gondole rose ornée de roses sur le Carrousel 1900."
+      },
+      {
+        "languageCode": "en",
+        "value": "White horses and a pink gondola decorated with roses on Carrousel 1900."
+      },
+      {
+        "languageCode": "de",
+        "value": "Weiße Pferde und eine rosafarbene Gondel mit Rosen am Carrousel 1900."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Witte paarden en een roze gondel met rozen op Carrousel 1900."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cavalli bianchi e una cabina rosa decorata con rose sul Carrousel 1900."
+      },
+      {
+        "languageCode": "es",
+        "value": "Caballos blancos y una góndola rosa adornada con rosas en Carrousel 1900."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Białe konie i różowa gondola ozdobiona różami na Carrousel 1900."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cavalos brancos e uma cabine cor-de-rosa decorada com rosas no Carrousel 1900."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Guirlandes de fleurs, portraits peints et dorures entourent les visiteurs du carrousel en juillet 2025."
+      },
+      {
+        "languageCode": "en",
+        "value": "Flower garlands, painted portraits and gilding surround the carousel’s visitors in July 2025."
+      },
+      {
+        "languageCode": "de",
+        "value": "Blumengirlanden, gemalte Porträts und Vergoldungen umgeben die Karussellgäste im Juli 2025."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bloemenslingers, geschilderde portretten en verguldsel omringen de bezoekers van de carrousel in juli 2025."
+      },
+      {
+        "languageCode": "it",
+        "value": "Ghirlande di fiori, ritratti dipinti e dorature circondano i visitatori della giostra nel luglio 2025."
+      },
+      {
+        "languageCode": "es",
+        "value": "Guirnaldas de flores, retratos pintados y dorados rodean a los visitantes del carrusel en julio de 2025."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Girlandy kwiatów, malowane portrety i złocenia otaczają gości karuzeli w lipcu 2025 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Grinaldas de flores, retratos pintados e dourados rodeiam os visitantes do carrossel em julho de 2025."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: vanessa g / Tripadvisor"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: vanessa g / Tripadvisor"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T01:33:11.716Z",
+    "updatedAt": "2026-11-15T01:33:15.297Z"
+  },
+  "serverIntegrationAtUtc": "2026-11-15T01:33:15.297Z",
+  "review": "Photographie personnellement inspectée ; identité et contexte vérifiés ; huit langues rédigées et relues ; fichier original sans modification.",
+  "private": true,
+  "finalAuditCompleted": false,
+  "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+  "sourceEvidence": {
+    "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-6.jpg",
+    "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/7b/1f/35/caption.jpg?w=1100&h=1100&s=1",
+    "page": "https://www.tripadvisor.fr/Attraction_Review-g3217011-d7037503-Reviews-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "sha256": "c7263453b95ee117a679703de9f87ac91fbc70727563e6a33d40b16bdab2544a",
+    "status": 200,
+    "stem": "carousel-roses-2025",
+    "sourcePageUrl": "https://www.tripadvisor.fr/ShowUserReviews-g3217011-d7037503-r1018764949-L_ile_aux_Geants-Dissay_Vienne_Nouvelle_Aquitaine.html",
+    "author": "vanessa g",
+    "visitPeriod": "juillet 2025",
+    "captureDay": null,
+    "ownerId": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+    "ownerType": "PARK_ITEM",
+    "visuallyInspected": true,
+    "watermark": false,
+    "permissionContext": "Le propriétaire a explicitement autorisé les photos de la campagne France malgré la question des droits. Auteur et page conservés ; aucune licence ouverte ni permission personnelle de cet auteur revendiquée.",
+    "review": "Fichier original téléchargé depuis la page publique, pas capture sociale ni miniature de moteur. Identité vérifiée par comparaison avec les images officielles. Images proches du panorama écartées ; vue en nacelle conservée pour la Grande roue, non pour gonfler le quota du parc."
+  }
+}

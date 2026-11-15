@@ -12831,7 +12831,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T01:26:19.208Z",
+      "lastDataIntegrationAt": "2026-11-15T01:37:36.592Z",
       "integrationHistory": [
         {
           "eventId": "apply-021c7c49-3a37-4b11-ac74-160837a53be2",
@@ -12962,6 +12962,86 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-image-factual-corrections-20261115.json",
           "auditEvidence": null,
           "summary": "Sept médias existants corrigés en huit langues après examen des originaux : montages promotionnels, logo, Bateau Pirate, Pouss-Pouss, Grand 8 et Colorado. Identifiants, fichiers, crédits et visibilité conservés ; audit global non terminé."
+        },
+        {
+          "eventId": "image-d64a164581614bcc8619a655395e1b7e",
+          "appliedAt": "2026-11-15T01:31:26.057Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-park-panorama-2026-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vue générale réelle du parc en 2026 ajoutée privée, source et auteur Paul Pérucaud vérifiés. Panorama distinct des anciens montages, huit langues relues ; publication après audit."
+        },
+        {
+          "eventId": "image-af3c8bdb537c4729ba4ef357005aee8f",
+          "appliedAt": "2026-11-15T01:31:43.719Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-wheel-view-2026-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vue depuis une nacelle de la Grande roue importée privée avec source Paul Pérucaud, huit langues. Contexte paysage distinct du panorama général, pas de duplication."
+        },
+        {
+          "eventId": "image-46c343fdef504f7a96232e9a3470943d",
+          "appliedAt": "2026-11-15T01:32:51.648Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-star-flyer-visitors-2025-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photographie contextualisée de Star Flyer en juillet 2025 ajoutée privée, auteur vanessa g. Nacelle ailée et décor alpin vérifiés ; huit langues relues."
+        },
+        {
+          "eventId": "image-99b9852a652f44e598c135404e8f400c",
+          "appliedAt": "2026-11-15T01:33:15.297Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-carousel-roses-2025-20261115.json",
+          "auditEvidence": null,
+          "summary": "Carrousel 1900 : photographie sans filigrane ajoutée privée, chevaux et gondole fleurie en juillet 2025, source vanessa g. Aucun média antérieur supprimé."
+        },
+        {
+          "eventId": "image-fad0db1c6b684e61ae62d3078f455e33",
+          "appliedAt": "2026-11-15T01:33:30.472Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-paddling-pool-2025-20261115.json",
+          "auditEvidence": null,
+          "summary": "Première photographie propre de la Pataugeoire ajoutée privée : décor de pirates, dauphin et bassin, source vanessa g juillet 2025, huit langues relues."
+        },
+        {
+          "eventId": "apply-936e4812-b028-4a5e-bae4-4284f66bbd12",
+          "appliedAt": "2026-11-15T01:35:34.011Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-pool-picnic-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pataugeoire et aires de pique-nique : seize descriptions spécifiques rédigées et relues après examen des photographies 2025/2026 ; deux notices restantes à qualifier, audit final non terminé."
+        },
+        {
+          "eventId": "apply-5344969e-7cbb-4ff3-8167-f7a51cfd26ac",
+          "appliedAt": "2026-11-15T01:36:20.376Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-remaining-image-texts-20261115.json",
+          "auditEvidence": null,
+          "summary": "Dix derniers jeux de légendes et alternatives réécrits en huit langues ; crédits des dix-neuf médias initiaux localisés. Fichiers et rattachements conservés, sans réimport."
+        },
+        {
+          "eventId": "apply-6393ad21-bf59-4aa8-97bd-9e2c77de346f",
+          "appliedAt": "2026-11-15T01:37:36.592Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-07-pricing-age-precision-20261115.json",
+          "auditEvidence": null,
+          "summary": "Tarifs 2026 rapprochés des cinq montants officiels ; seuil adulte inféré retiré, ambiguïté à 18 ans explicitée dans les huit langues. Aucune date ni tarification 2027 inventée, horaires inchangés."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
