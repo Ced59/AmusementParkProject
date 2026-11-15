@@ -1,0 +1,69 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "85aea3b3-6974-4213-870e-d91a484103a3",
+  "entryId": "IT-standalone-85aea3b3-6974-4213-870e-d91a484103a3",
+  "name": "Bob Su Rotaia",
+  "countryCode": "IT",
+  "auditAtUtc": "2026-11-15T15:38:51.535Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/85aea3b3-6974-4213-870e-d91a484103a3/bob-su-rotaia",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.turismofvg.it/it/montagna365/bob-su-rotaia-tarvisio",
+    "https://www.turismofvg.it/proxyvfs.axd/null/r166263/transport-conditions-pdf?ext=.pdf&v=307371",
+    "https://www.turismofvg.it/it/montagna365/tarvisio/calendario-aperture-estive-tarvisio?LangSetCMS=it"
+  ],
+  "editorial": "Eight updated descriptions, official winter 2026/27 per-person and group fares, transport regulation age conditions and operator length (830 m downhill plus 270 m lift). Existing 662 m length corrected to 1100 m total.",
+  "pricing": "Operator winter 2026/27 page: €5 per person, €4 per person for groups of at least twenty; FVGcard 50% discount with conditions; Family Pass 20% on up to eight rides. Summer 2026 page lists same base fares.",
+  "hours": "Operator winter 2026/27 page states 10:00–16:00 on operating days, with actual dates available only in live infoneve. Summer 2026 operation ended 13 September. No exact winter opening date inferred.",
+  "photos": [
+    {
+      "imageId": "4dee98c75f4a45c89c36e27fc84df9a8",
+      "exactMatchVisuallyChecked": true,
+      "season": "summer",
+      "current": true,
+      "productionBinaryHttpStatus": 200,
+      "sourceUrl": "https://cmsphoto.ww-cdn.com/superstatic/3428547/art/grande/82899406-59409700.jpg?v=1726730563",
+      "origin": "Existing image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "73d3f6a93c434f1ebefa2b679e021b4c",
+      "exactMatchVisuallyChecked": true,
+      "season": "winter",
+      "current": false,
+      "productionBinaryHttpStatus": 200,
+      "sourceUrl": "https://www.tarvisiano.org/media-archive/45609/image-thumb__45609__wysiwyg-with-media/Family_Tarvisio_F_Gallina2015-_AB_9987f5eaf010-a437-46c6-99d9-b65677416875.jpg",
+      "origin": "Existing tourism image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoCountPublished": 2,
+  "photoFollowup": "Find an additional exact photo with verifiable reuse licence and review rights for two legacy images.",
+  "completenessBefore": {
+    "score": 78,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "completenessAfter": {
+    "score": 90,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "84c885d0ca4c4a84852fe7b73e203da3",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127469995424431",
+    "publishedAtUtc": "2026-11-15T15:38:16.9015839Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:37:18.618Z",
+  "nextAction": "Suivre le relevé quotidien d’ouverture et revalider les tarifs hiver 2026–2027 ; trouver une photo exacte supplémentaire avec licence vérifiable et auditer les droits des images existantes."
+}
