@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkName": "Ô Parc — Bannay",
+  "scope": "Public documentary and visual research only: three unresolved historical identities",
+  "preparedAtUtc": "2026-11-15T09:29:51.018230+00:00",
+  "mutationsPerformed": false,
+  "pdeApiCalls": 0,
+  "gitCommands": 0,
+  "registryEdits": 0,
+  "result": "No new proven nominal/photographic identity. Keep the three existing inventory gaps open.",
+  "checkpointRead": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-current-20261115.json",
+  "knownInventoryCount": 43,
+  "identities": [
+    {
+      "researchLabel": "Twister géant",
+      "labelNature": "Name explicitly mentioned in editorial reporting; not a guessed official sign",
+      "sourceUrl": "https://www.koikispass.com/evadez-vous-8-escapades-insolites-dans-la-nievre/",
+      "sourcePublicationDate": "2017-07-06",
+      "datePrecision": "Article publication, not an individual ride opening date",
+      "result": "Named presence in 2017 is supported; physical design and relation to the 43 existing items remain unknown.",
+      "reason": "The article lists it separately from sack racing, pedal karts, swing chairs, zip lines, baby zone and inflatable castles. Its three retained photographs show founders in a train, hammocks/meadow, and a swing-chair montage. No named photograph of Twister was found.",
+      "candidateAliasesRejectedAsUnproven": [
+        "Course Ô Sac",
+        "La Boule",
+        "Échelles Dingos",
+        "Bulle de Savon",
+        "Jeux d’adresse"
+      ],
+      "safeAction": "Keep the sourced 2017 mention and unresolved mapping; do not invent dimensions, rules, manufacturer, physical model, alias or dates."
+    },
+    {
+      "researchLabel": "Pieuvre orange sur gonflable pyramidal",
+      "labelNature": "Visual description, not an official attraction name",
+      "sourceUrls": [
+        "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887162-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+        "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/7a/toboggan.jpg"
+      ],
+      "sourceAuthor": "Renard60La",
+      "dateEvidence": "June 2020 visitor review retained in the existing manifest; no exact capture day inferred",
+      "observed": "Large orange octopus head and tentacles over pink supports, broad pale-blue/turquoise sloping inflatable faces, orange strip with climbing holds. Located behind the pedal-kart course in the photograph; no name sign legible.",
+      "result": "Physical presence is proven. Official name and potential former/replacement identity are not proven.",
+      "comparison": "The 2025 and 2026 cartographic Baby Volcan has palms, La Boule has a suspended-ball frame, and Phare des Pirates has a pirate tower. These different depicted appearances do not establish a retrospective alias or exclude undocumented replacement/retheming.",
+      "safeAction": "Keep the existing park-owned 2020 photo and neutral caption. Do not relink it to Baby Volcan, Phare des Pirates or another item without direct evidence."
+    },
+    {
+      "researchLabel": "Château gonflable jaune/orangé",
+      "labelNature": "Visual description, not an official attraction name",
+      "sourceUrls": [
+        "https://www.tripadvisor.fr/LocationPhotoDirectLink-g5599483-d12557202-i460887176-OParc-Bannay_Sancerre_Cher_Berry_Centre_Val_de_Loire.html",
+        "https://media-cdn.tripadvisor.com/media/photo-w/1b/78/94/88/toboggan-et-autres.jpg",
+        "https://www.tourisme-sancerre.com/wp-content/uploads/tourinsoft-import/photos-cache/loi/LOICENBERV50214B/0/desktop.jpg"
+      ],
+      "sourceAuthor": "Renard60La for the Tripadvisor 2020 views; tourism credit preserved separately",
+      "dateEvidence": "2020 visitor series; tourism photograph itself undated",
+      "observed": "Inflatable yellow/orange crenellated towers and brick-like wall outlines. A wider 2020 view (local tripadvisor-1b789483) shows it simultaneously with the orange octopus, confirming they are separate structures. No name sign legible.",
+      "result": "Physical presence is proven. Official name and mapping to an existing item are not proven.",
+      "comparison": "The undated photographic map and 2025/2026 maps have named Saloon, Baby Pirate, Baby Volcan, Le Gorille, Parcours Extrême and other inflatables, but no demonstrable match to this yellow castle. Similar category is insufficient for an alias.",
+      "safeAction": "Keep as an unresolved historical identity; no duplicate attraction creation or arbitrary relinking."
+    }
+  ],
+  "mapsCompared": [
+    {
+      "path": "source-images/tourism-7.jpg",
+      "year": null,
+      "note": "Official-origin photographic map relayed by tourism, no year inferred; names do not prove a match to the three candidates."
+    },
+    {
+      "path": "source-images/reopening-2025-1.jpg",
+      "year": 2025,
+      "sourceUrl": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html"
+    },
+    {
+      "path": "source-images/official-map-2026.jpg",
+      "year": 2026,
+      "sourceUrl": "https://www.bourges.infoptimum.com/photos/69ce8f6e050b7_capture-d%27ecran_2-4-2026_174619_.jpeg"
+    }
+  ],
+  "newSourcesExamined": [
+    {
+      "url": "https://www.bourges.infoptimum.com/page-special-loisirs-o-parc-site-de-loisirs-et-dattractions-en-plein-air-a-bannay-4334.html",
+      "publishedDate": "2022-08-11",
+      "localFile": "infoptimum-2022.html",
+      "conclusion": "Generic list of attraction categories; no individual identification of Twister, orange octopus or yellow castle.",
+      "imageUrl": "https://www.bourges.infoptimum.com/content/cache/para/928x900/5391_bannay.png",
+      "imageAccess": "Direct image fetch returned HTTP 403; no bypass or repeated fetch attempted; image not visually verified."
+    },
+    {
+      "url": "https://www.promoparcs.com/img/CMS/catalogue/guide-2020-promoparcs.pdf",
+      "publicationYear": 2020,
+      "localFile": "promoparcs-2020.pdf",
+      "pdfPageIndexOneBased": 39,
+      "printedPage": 37,
+      "conclusion": "Ô Parc entry with generic attraction list and swing-chair photograph. No identifying photograph or name for the three candidates.",
+      "rights": "Brochure retains its original rights statement; local research copy and full-page rendering only, no new media import."
+    }
+  ],
+  "searchQueries": [
+    "\"Ô Parc\" \"Twister\"",
+    "\"Ô Parc\" pieuvre",
+    "\"O parc\" \"château\" \"Bannay\"",
+    "site:o-parc.fr \"pieuvre\"",
+    "site:o-parc.fr \"twister\"",
+    "\"Ô Parc\" \"château jaune\"",
+    "\"Oparc\" \"pieuvre\"",
+    "\"Bannay\" \"pieuvre\"",
+    "\"Bannay\" \"twister\"",
+    "\"Ô Parc\" 2017 attractions",
+    "\"Ô Parc\" \"château gonflable\"",
+    "\"Ô Parc\" \"Twister géant\"",
+    "\"Bannay\" \"château gonflable\" 2017",
+    "\"O parc\" \"pyramide\"",
+    "\"Oparc\" \"château jaune\""
+  ],
+  "imageSearchExclusion": {
+    "query": "\"Ô Parc\" \"pieuvre\"",
+    "returnedUrl": "https://www.sortiraparis.com/en/what-to-visit-in-paris/walks/articles/10131-the-val-de-seine-leisure-park-for-swimming-and-fun-in-verneuil-sur-seine-78",
+    "reason": "Different park, Val de Seine in Verneuil-sur-Seine; excluded without attribution to Bannay."
+  },
+  "archiveHandling": "Read existing CDX and the two prior 429 access receipts only. Did not retry the refused archive captures, use an alternate endpoint, or infer page content from CDX.",
+  "limits": [
+    "No original name board readable in the retained 2020 photographs.",
+    "No year assigned to the undated tourism map.",
+    "No statement that a depicted shape difference alone proves distinct historical ownership or definitive absence from every season.",
+    "No new date of integration, completion, publication, removal or photo capture invented.",
+    "The three gaps continue to prevent a claim of fully qualified historical inventory."
+  ],
+  "files": [
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/working-state.json",
+      "bytes": 517062,
+      "sha256": "d86965415da8bdeb7ea795f94f0a451a8a28af74b2059078f22b8c7b796a19c5",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/koikispass-2017.html",
+      "bytes": 462684,
+      "sha256": "3cd307650ae230202ab797227b57ffea0bf322ec896911c18f58bd08b389d1d7",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b78947a.jpg",
+      "bytes": 2539512,
+      "sha256": "76c1947b5033fef328d4ffe2513cb329ca2eb9c4a05aed25561bf34352e5359c",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b789483.jpg",
+      "bytes": 2390717,
+      "sha256": "ac33aade226c5f52480e77216435f999d52b03460974cc2809f2fe573d796930",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/tripadvisor-1b789488.jpg",
+      "bytes": 2766691,
+      "sha256": "914e39d53b616978741b8226d49a82a8f6ca6247e32ef59179a388a2dfee235f",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/tourism-0.jpg",
+      "bytes": 372486,
+      "sha256": "aa3f5e9efaa9e9e1d209926a98e91c21b0cc42af13212825ece4d0b08846edce",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/tourism-7.jpg",
+      "bytes": 423848,
+      "sha256": "1804ec5627a087f0b02894f193b6e43725a8e48865a3ae6a41249388989fc3fc",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/reopening-2025-1.jpg",
+      "bytes": 1866222,
+      "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-images/official-map-2026.jpg",
+      "bytes": 1175725,
+      "sha256": "6c97cd0b12644dba8cc7f1de1b16003950c4275bbf4dad791a5559afa1f54dc3",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/koikispass-source-access.json",
+      "bytes": 263,
+      "sha256": "6a8a9a7322d4096b66bd476ed9eb42dd744ba537422299f3768a187aafccdd17",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/accepted-photo-manifest.json",
+      "bytes": 18493,
+      "sha256": "e568b341a072b6c952904035a41925e198d634a566ae7db795539cc2b76bacc9",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/source-image-downloads.json",
+      "bytes": 10612,
+      "sha256": "ce3550184db7ffa3a1618d37b316b96ec8a242145fd4d1374c53767352952290",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/accepted-map-2025-source.json",
+      "bytes": 960,
+      "sha256": "f7ab180b649fc9a57b4f3378e7375a838d359270248748f8437bce92e2410918",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/official-archive-cdx-success.json",
+      "bytes": 7079,
+      "sha256": "b391d66ce0e43d842b9d0f4189096757b326d423e78dd6ef960841a1cea4235a",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/official-archive-page-access.json",
+      "bytes": 409,
+      "sha256": "99c738a7d087cb08fe5ab11be3f160926e21272cdc95b3d84e99d797ef80d9eb",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/official-archive-retry-access.json",
+      "bytes": 262,
+      "sha256": "e27805361c0158e6bd3b3c47641bb91f6b8b2f4cd80b2c4abb1fb7d20ed69d7f",
+      "role": "read-only existing evidence"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/parallel-inventory-20261115/infoptimum-2022.html",
+      "bytes": 34750,
+      "sha256": "cae32b9206ee1b725f76d45fd4a09ab0a0f26984a50da3317cf8e5e6c5cf395f",
+      "role": "new public research; no import"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/parallel-inventory-20261115/promoparcs-2020.pdf",
+      "bytes": 28355052,
+      "sha256": "818048d4b2dc2a97198cc964706cbdaed2a8b42eff476cd922a567e8df1ec334",
+      "role": "new public research; no import"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/o-parc/parallel-inventory-20261115/promoparcs-2020-page-39.png",
+      "bytes": 1223739,
+      "sha256": "59f266d2d079f70ffd228592423641ce8b7d703e0c1f4c799de28db32e5fe021",
+      "role": "new public research; no import"
+    }
+  ]
+}

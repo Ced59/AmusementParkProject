@@ -1,0 +1,781 @@
+{
+  "schemaVersion": 1,
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "newPublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "research": {
+    "observedAtUtc": "2026-11-15T09:27:03.395517Z",
+    "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "entryId": "FR-candidate-33e1083778e134",
+    "scope": "Read-only public research for three existing private games; no API, Git, register edit, image import, final caption or localized description prepared.",
+    "baselineRead": [
+      "aquagliss-publication-followup-20261115.json",
+      "aquagliss-publication-scope-audit-20261114.json",
+      "aquagliss-source-gaps.json",
+      "/workspace/france-historical-20261022/aquagliss/recovery-20261114/working-state.json"
+    ],
+    "findings": [
+      {
+        "itemId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong",
+        "status": "Concrete visual lead for root personal review",
+        "observed": "Two low blue rectangular tables with pale edging/supports stand separately on a grass strip beyond the pools, alongside the final yellow-slide curve. They can be read most clearly near the right edge of the 800×600 official photograph.",
+        "identityBasis": "Ping-pong is explicitly named in the official outdoor-games list; matching table appearance supports the attribution. Preserve the original single existing item for the group; do not create a second item for the second table.",
+        "originalPixelLocations": [
+          {
+            "file": "gshjytjghjgyjh.jpg",
+            "pointsApprox": [
+              [
+                720,
+                361
+              ],
+              [
+                788,
+                358
+              ]
+            ]
+          },
+          {
+            "file": "srfghjdtgjedtyjk.jpg",
+            "pointsApprox": [
+              [
+                540,
+                259
+              ],
+              [
+                570,
+                263
+              ]
+            ]
+          }
+        ],
+        "limits": [
+          "No maker, material, table size, exact GPS, opening/closing day or price established.",
+          "No closer item-only photograph discovered; do not crop/reimport the general photo as another media asset.",
+          "Root must personally confirm the table reading before final prose."
+        ]
+      },
+      {
+        "itemId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant",
+        "status": "Concrete but small visual lead requiring root personal review",
+        "observed": "A large alternating light/dark ground-board shape lies on the lawn to the right of the blue tables and near the site boundary in the wider official aerial photograph.",
+        "identityBasis": "The photograph itself supports a ground checkerboard shape. Identification as the giant draughts game comes from the official games list, not from discernible pieces or inferred game rules.",
+        "originalPixelLocations": [
+          {
+            "file": "srfghjdtgjedtyjk.jpg",
+            "rectangleApprox": [
+              574,
+              257,
+              601,
+              272
+            ]
+          }
+        ],
+        "limits": [
+          "Pattern is small at native resolution; do not count squares or claim visible pieces, colours of pieces, board material or dimensions.",
+          "Photograph does not establish installation date.",
+          "The washed-out background images show the same scene; exclude them as duplicate media.",
+          "Root must confirm the checkerboard reading rather than adopt this hypothesis automatically."
+        ]
+      },
+      {
+        "itemId": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley",
+        "status": "Still unresolved beyond advertised existence",
+        "supported": "Official outdoor-games list names Volley. Petit Futé describes volleyball courts but supplies no precise count, layout, playing surface, dimensions, photo or individual date.",
+        "notSupported": [
+          "No reliably identified net or court in the personally inspected aerial/event photographs.",
+          "No beach-volley or sand court inference from nearby hotels or generic sport conventions.",
+          "No linkage to equipment listed by other Porticcio accommodation or Aquagliss in Moselle."
+        ],
+        "recommendation": "Retain the existing private item and gap until site-specific equipment evidence exists; no filler from generic volleyball rules."
+      }
+    ],
+    "officialTextSources": [
+      {
+        "file": "/workspace/france-historical-20261022/aquagliss/recovery-20261114/accueil-2010.html",
+        "bytes": 20615,
+        "sha256": "9652affe5c024df38d1f69c6509391350c522d8ef8e459c3b9b3b8845f9c3a8f",
+        "textExtract": "/workspace/france-historical-20261022/aquagliss/parallel-research-20261115/accueil-2010.html.txt",
+        "observation": "Official home page names Jeux de dames géant, Volley and Ping-pong under Jeux de plein air. This attests advertised outdoor activities, not equipment dimensions or construction dates."
+      },
+      {
+        "file": "/workspace/france-historical-20261022/aquagliss/recovery-20261114/accueil-2013.html",
+        "bytes": 19570,
+        "sha256": "85888dfd1bc23a013c0daaad2e766b7a1de7348d6cae68be873d6e6458064cf5",
+        "textExtract": "/workspace/france-historical-20261022/aquagliss/parallel-research-20261115/accueil-2013.html.txt",
+        "observation": "Official home page names Jeux de dames géant, Volley and Ping-pong under Jeux de plein air. This attests advertised outdoor activities, not equipment dimensions or construction dates."
+      }
+    ],
+    "existingSourceImagesPersonallyViewed": [
+      {
+        "file": "/workspace/france-historical-20261022/aquagliss/recovery-20261114/images/srfghjdtgjedtyjk.jpg",
+        "width": 634,
+        "height": 484,
+        "bytes": 200806,
+        "sha256": "3b84318392c63a3e18cf61f0977867e652aa7db91e58cd610605e93735b89caa",
+        "existingImageId": "dc5fa7d9803245aca4af80970b2b5897",
+        "archiveUrl": "https://web.archive.org/web/20131210093258id_/http://acqua-gliss.com/photos/20/548/srfghjdtgjedtyjk.jpg",
+        "importAction": "None. Existing photos must not be reimported. Blanched website backgrounds are not new photographs."
+      },
+      {
+        "file": "/workspace/france-historical-20261022/aquagliss/recovery-20261114/images/gshjytjghjgyjh.jpg",
+        "width": 800,
+        "height": 600,
+        "bytes": 322346,
+        "sha256": "27d333fe01ca0a19665f393b78b1ce69b018631d8354bd146b7fb69ec8161eeb",
+        "existingImageId": "a5c6bdb968fd45e1bce242aa72f592c0",
+        "archiveUrl": "https://web.archive.org/web/20110208110640id_/http://acqua-gliss.com/photos/20/548/gshjytjghjgyjh.jpg",
+        "importAction": "None. Existing photos must not be reimported. Blanched website backgrounds are not new photographs."
+      },
+      {
+        "file": "/workspace/france-historical-20261022/aquagliss/recovery-20261114/images/fond1.jpg",
+        "width": 1000,
+        "height": 800,
+        "bytes": 279820,
+        "sha256": "58ce50122803fa92121527a252896be2d3c492a4bcf9ffe0212ce2ae73545581",
+        "existingImageId": null,
+        "archiveUrl": "https://web.archive.org/web/20110916011315id_/http://www.acqua-gliss.com/photos/20/548/fond1.jpg",
+        "importAction": "None. Existing photos must not be reimported. Blanched website backgrounds are not new photographs."
+      },
+      {
+        "file": "/workspace/france-historical-20261022/aquagliss/recovery-20261114/images/ffond.jpg",
+        "width": 1000,
+        "height": 800,
+        "bytes": 347202,
+        "sha256": "67643edd09c6113b26b4d166737cef3b97e3b95beab61ea04859ab8279079209",
+        "existingImageId": null,
+        "archiveUrl": "https://web.archive.org/web/20131210112436id_/http://acqua-gliss.com/photos/20/548/ffond.jpg",
+        "importAction": "None. Existing photos must not be reimported. Blanched website backgrounds are not new photographs."
+      }
+    ],
+    "additionalPublicSource": {
+      "url": "https://www.petitfute.com/v51396-porticcio-20166/c1173-visites-points-d-interet/c972-parcs-d-attractions/443294-acqua-cyrne-gliss.html",
+      "attemptedAtUtc": "2026-11-15T09:25:48.727637Z",
+      "status": 200,
+      "finalUrl": "https://www.petitfute.com/v51396-porticcio-20166/c1173-visites-points-d-interet/c972-parcs-d-attractions/443294-acqua-cyrne-gliss.html",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 220958,
+      "sha256": "0a41563ae4e2dc6d7a85a137ad5fa2bad1ea627d92b3f18c9fef6b035f929030",
+      "retryAfter": null
+    },
+    "additionalPublicSourceFinding": "Petit Futé independently repeats giant draughts and volleyball courts, but no added physical description sufficient for Volley. Its present-tense opening text is stale for the closed park and must not be reused as current hours.",
+    "otherPhotosPersonallyInspected": [
+      "moi.jpg",
+      "53863.jpg",
+      "86386386.jpg",
+      "586386396.jpg",
+      "5638636.jpg",
+      "5838653863.jpg",
+      "rtyjktuiksyt.jpg"
+    ],
+    "negativeSearchNotes": [
+      "Exact-name text searches for Porticcio with ping-pong, dames and volley largely return the known official/tourism directory material or unrelated hotels/other Aquagliss sites.",
+      "Image search returned an unrelated accommodation image, excluded without attribution to Acqua Gliss.",
+      "2013 Ajaccio tourism guide search index supplies an alternate historic domain acquagliss.fr. One public CDX query for that domain returned HTTP 503 without Retry-After. It was not repeated or worked around.",
+      "The known network-denied YouTube and 403 tourism guide were not retried or bypassed."
+    ],
+    "failedAccess": {
+      "url": "https://web.archive.org/cdx/search/cdx?url=acquagliss.fr%2F*&output=json&filter=statuscode%3A200&collapse=urlkey&to=2015&fl=timestamp%2Coriginal%2Cmimetype&limit=300",
+      "attemptedAtUtc": "2026-11-15T09:23:22.072017Z",
+      "status": 503,
+      "error": "HTTP Error 503: Service Unavailable",
+      "retryAfter": null
+    },
+    "datePolicy": "Archive capture and metadata dates are evidence-preservation dates, not individual game installation or closure dates. No new historical date proposed.",
+    "externalWritesPerformed": false,
+    "parkDataEditorCallsPerformed": false,
+    "gitOperationsPerformed": false
+  },
+  "personalReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "performedBy": "root Codex, personally authored and reviewed all16descriptions",
+    "imagesPersonallyViewed": [
+      "/workspace/france-historical-20261022/aquagliss/recovery-20261114/images/srfghjdtgjedtyjk.jpg",
+      "/workspace/france-historical-20261022/aquagliss/recovery-20261114/images/gshjytjghjgyjh.jpg"
+    ],
+    "qualification": "Ground checkerboard and blue table-tennis tables personally confirmed. Draughts identification also rests on official named outdoor-games list. No pieces, square count, material, installation date, restrictions or precise coordinates inferred.",
+    "shortDescriptionException": "Small historical outdoor games; concise specific visual descriptions proportional to available evidence. No generic rules or invented detail to fill a word quota."
+  },
+  "recentActualOperationsReconciliation": [
+    {
+      "operationId": "ede787a9-b840-4336-b273-c07b46c32049",
+      "appliedAtUtc": "2026-11-15T00:02:05.2390054Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "9a33781d-d676-4c06-85bb-e5eed9e772a1",
+      "appliedAtUtc": "2026-11-15T00:01:18.5041736Z",
+      "counts": {
+        "created": 0,
+        "updated": 12,
+        "deleted": 0,
+        "unchanged": 6,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "d1632952-f669-4c81-9f85-ddecf97376d9",
+      "appliedAtUtc": "2026-11-14T21:35:59.6923333Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "29a5fc78-6d3d-469a-89d6-bceebcb69088",
+      "appliedAtUtc": "2026-11-14T21:27:57.1632744Z",
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "86f77423-c6f5-4362-a820-0fd05167da4a",
+      "appliedAtUtc": "2026-11-01T17:04:47.4840689Z",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "e2d1db10-5a9c-41de-b5e3-4116b46929ec",
+      "appliedAtUtc": "2026-11-01T17:02:34.7253894Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "33ff2f7c-911b-4c0b-9c6a-25dc8b622cec",
+      "appliedAtUtc": "2026-11-01T16:53:20.1367984Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "84473322-03c2-4595-b801-bef11d1ebbe0",
+      "appliedAtUtc": "2026-11-01T16:49:59.0807533Z",
+      "counts": {
+        "created": 0,
+        "updated": 15,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "f37c0968-9eaa-4b1e-9d3b-201716fc53e8",
+      "appliedAtUtc": "2026-11-01T16:48:56.9304892Z",
+      "counts": {
+        "created": 0,
+        "updated": 5,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "d58a01bb-8d2f-4475-b621-a3e1683ee95c",
+      "appliedAtUtc": "2026-11-01T16:45:42.6272951Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "388d58c3-7d90-4e41-b6a2-27b8b63c1654",
+      "appliedAtUtc": "2026-11-01T16:44:37.0320039Z",
+      "counts": {
+        "created": 5,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "24d9a401-ba09-4a0d-9982-ea3aa6763cd0",
+      "appliedAtUtc": "2026-11-01T16:36:58.3467834Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "64698d87-33ca-49c2-8c01-4c40b651b29a",
+      "appliedAtUtc": "2026-11-01T16:33:58.5130517Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "4e888862-5230-4c0f-a7a4-bfcb616b6c7c",
+      "appliedAtUtc": "2026-11-01T16:31:45.0860108Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "463f5d3b-b8df-4f88-b583-49416ee3ef78",
+      "appliedAtUtc": "2026-11-01T16:28:04.9047508Z",
+      "counts": {
+        "created": 13,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "6e4cf8e8-6052-4566-b368-dc3bf0b3cb2e",
+      "appliedAtUtc": "2026-11-01T16:24:57.8975457Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "documentSha256": "83550fba115a36e6e816ef6553dffbd8c496ae0c70f9c3aaf1596a60f830552d",
+  "document": {
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "id": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "name": "Acqua Gliss Porticcio",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+          "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+          "name": "Jeu de dames géant",
+          "category": "Attraction",
+          "type": "Game",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un grand damier sur la pelouse</h2><p>À Acqua Gliss, le jeu de dames géant occupait un carré à cases claires et foncées posé au niveau de la pelouse. Il se trouvait en bordure du parc, près de la clôture et des tables de ping-pong. Les courbes du toboggan jaune dominaient ce coin de jeux.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A giant board on the lawn</h2><p>At Acqua Gliss, the giant draughts game occupied a square of light and dark spaces laid at lawn level. It stood near the edge of the park, beside the fence and the table tennis tables. The curves of the yellow slide rose above this corner of the grounds.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein großes Damebrett auf dem Rasen</h2><p>Bei Acqua Gliss lag das riesige Damefeld mit seinen hellen und dunklen Feldern ebenerdig auf dem Rasen. Es befand sich am Rand des Parks, nahe dem Zaun und den Tischtennisplatten. Über dieser Spielecke erhoben sich die Kurven der gelben Rutsche.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een groot dambord op het gras</h2><p>Bij Acqua Gliss lag het reuzendambord met lichte en donkere vakken op gelijke hoogte met het gras. Het bevond zich aan de rand van het park, bij het hek en de tafeltennistafels. Boven deze speelhoek tekenden zich de bochten van de gele glijbaan af.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una grande damiera sul prato</h2><p>Ad Acqua Gliss, il gioco della dama gigante occupava un quadrato di caselle chiare e scure disposto a livello del prato. Si trovava ai margini del parco, vicino alla recinzione e ai tavoli da ping-pong. Le curve dello scivolo giallo si innalzavano sopra questo angolo di giochi.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un gran tablero sobre el césped</h2><p>En Acqua Gliss, el juego de damas gigante ocupaba un cuadrado de casillas claras y oscuras colocado a ras del césped. Estaba en un extremo del parque, junto a la valla y las mesas de ping-pong. Las curvas del tobogán amarillo se alzaban sobre este rincón de juegos.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wielka plansza na trawniku</h2><p>W Acqua Gliss olbrzymia plansza do warcabów tworzyła kwadrat jasnych i ciemnych pól ułożonych na poziomie trawnika. Znajdowała się na skraju parku, w pobliżu ogrodzenia i stołów do tenisa stołowego. Nad tym zakątkiem wznosiły się zakręty żółtej zjeżdżalni.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um grande tabuleiro no relvado</h2><p>No Acqua Gliss, o jogo de damas gigante ocupava um quadrado de casas claras e escuras colocado ao nível do relvado. Ficava na extremidade do parque, junto à vedação e às mesas de ténis de mesa. As curvas do escorrega amarelo erguiam-se sobre este recanto de jogos.</p>"
+            }
+          ],
+          "isVisible": false
+        },
+        {
+          "key": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+          "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+          "name": "Ping-pong",
+          "category": "Attraction",
+          "type": "Game",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des tables bleues au pied des toboggans</h2><p>Les tables de ping-pong d’Acqua Gliss étaient installées à ciel ouvert, sur la bande de pelouse qui longeait les bassins. Leurs plateaux bleus se détachaient devant la végétation, au pied des toboggans jaune et vert. Le grand damier occupait le même secteur du parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Blue tables beneath the slides</h2><p>Acqua Gliss’s table tennis tables stood outdoors on the strip of lawn alongside the pools. Their blue tops stood out against the greenery at the foot of the yellow and green slides. The giant draughts board occupied the same part of the park.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Blaue Platten am Fuß der Rutschen</h2><p>Die Tischtennisplatten von Acqua Gliss standen im Freien auf dem Rasenstreifen entlang der Becken. Ihre blauen Spielflächen hoben sich vor dem Grün am Fuß der gelben und grünen Rutschen ab. In demselben Parkbereich lag auch das große Damefeld.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Blauwe tafels onder aan de glijbanen</h2><p>De tafeltennistafels van Acqua Gliss stonden in de openlucht, op de grasstrook langs de zwembaden. Hun blauwe bladen staken af tegen het groen onder aan de gele en groene glijbanen. Het grote dambord lag in hetzelfde gedeelte van het park.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Tavoli blu ai piedi degli scivoli</h2><p>I tavoli da ping-pong di Acqua Gliss erano all’aperto, sulla striscia di prato che costeggiava le piscine. I piani blu risaltavano davanti alla vegetazione, ai piedi degli scivoli giallo e verde. La grande damiera occupava lo stesso settore del parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Mesas azules al pie de los toboganes</h2><p>Las mesas de ping-pong de Acqua Gliss estaban al aire libre, en la franja de césped que bordeaba las piscinas. Sus tableros azules destacaban ante la vegetación, al pie de los toboganes amarillo y verde. El gran tablero de damas ocupaba el mismo sector del parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Niebieskie stoły u stóp zjeżdżalni</h2><p>Stoły do tenisa stołowego w Acqua Gliss stały pod gołym niebem, na pasie trawnika wzdłuż basenów. Ich niebieskie blaty odcinały się od zieleni u stóp żółtej i zielonej zjeżdżalni. W tej samej części parku znajdowała się wielka plansza do warcabów.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Mesas azuis junto aos escorregas</h2><p>As mesas de ténis de mesa do Acqua Gliss estavam ao ar livre, na faixa de relva ao longo das piscinas. Os tampos azuis destacavam-se diante da vegetação, na base dos escorregas amarelo e verde. O grande tabuleiro de damas ocupava o mesmo setor do parque.</p>"
+            }
+          ],
+          "isVisible": false
+        }
+      ],
+      "metadata": {
+        "source": "Conversation France — anciens jeux de plein air d’Acqua Gliss : noms du catalogue officiel et implantation visible dans deux photographies officielles existantes. Descriptions courtes proportionnées aux sources, sans inventer matériau, dimensions, pions, dates individuelles ou coordonnées."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "4d02b335-118b-4364-bdd4-66b183c23f8f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:27:39.2641481Z",
+    "appliedAtUtc": null,
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "entityKey": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "displayName": "Jeu de dames géant",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein großes Damebrett auf dem Rasen</h2><p>Bei Acqua Gliss lag das riesige Damefeld mit seinen hellen und dunklen Feldern ebenerdig auf dem Rasen. Es befand sich am Rand des Parks, nahe dem Zaun und den Tischtennisplatten. Über dieser Spielecke erhoben sich die Kurven der gelben Rutsche.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A giant board on the lawn</h2><p>At Acqua Gliss, the giant draughts game occupied a square of light and dark spaces laid at lawn level. It stood near the edge of the park, beside the fence and the table tennis tables. The curves of the yellow slide rose above this corner of the grounds.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un gran tablero sobre el césped</h2><p>En Acqua Gliss, el juego de damas gigante ocupaba un cuadrado de casillas claras y oscuras colocado a ras del césped. Estaba en un extremo del parque, junto a la valla y las mesas de ping-pong. Las curvas del tobogán amarillo se alzaban sobre este rincón de juegos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un grand damier sur la pelouse</h2><p>À Acqua Gliss, le jeu de dames géant occupait un carré à cases claires et foncées posé au niveau de la pelouse. Il se trouvait en bordure du parc, près de la clôture et des tables de ping-pong. Les courbes du toboggan jaune dominaient ce coin de jeux.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una grande damiera sul prato</h2><p>Ad Acqua Gliss, il gioco della dama gigante occupava un quadrato di caselle chiare e scure disposto a livello del prato. Si trovava ai margini del parco, vicino alla recinzione e ai tavoli da ping-pong. Le curve dello scivolo giallo si innalzavano sopra questo angolo di giochi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een groot dambord op het gras</h2><p>Bij Acqua Gliss lag het reuzendambord met lichte en donkere vakken op gelijke hoogte met het gras. Het bevond zich aan de rand van het park, bij het hek en de tafeltennistafels. Boven deze speelhoek tekenden zich de bochten van de gele glijbaan af.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wielka plansza na trawniku</h2><p>W Acqua Gliss olbrzymia plansza do warcabów tworzyła kwadrat jasnych i ciemnych pól ułożonych na poziomie trawnika. Znajdowała się na skraju parku, w pobliżu ogrodzenia i stołów do tenisa stołowego. Nad tym zakątkiem wznosiły się zakręty żółtej zjeżdżalni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um grande tabuleiro no relvado</h2><p>No Acqua Gliss, o jogo de damas gigante ocupava um quadrado de casas claras e escuras colocado ao nível do relvado. Ficava na extremidade do parque, junto à vedação e às mesas de ténis de mesa. As curvas do escorrega amarelo erguiam-se sobre este recanto de jogos.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "entityKey": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "displayName": "Ping-pong",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Blaue Platten am Fuß der Rutschen</h2><p>Die Tischtennisplatten von Acqua Gliss standen im Freien auf dem Rasenstreifen entlang der Becken. Ihre blauen Spielflächen hoben sich vor dem Grün am Fuß der gelben und grünen Rutschen ab. In demselben Parkbereich lag auch das große Damefeld.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Blue tables beneath the slides</h2><p>Acqua Gliss’s table tennis tables stood outdoors on the strip of lawn alongside the pools. Their blue tops stood out against the greenery at the foot of the yellow and green slides. The giant draughts board occupied the same part of the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Mesas azules al pie de los toboganes</h2><p>Las mesas de ping-pong de Acqua Gliss estaban al aire libre, en la franja de césped que bordeaba las piscinas. Sus tableros azules destacaban ante la vegetación, al pie de los toboganes amarillo y verde. El gran tablero de damas ocupaba el mismo sector del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des tables bleues au pied des toboggans</h2><p>Les tables de ping-pong d’Acqua Gliss étaient installées à ciel ouvert, sur la bande de pelouse qui longeait les bassins. Leurs plateaux bleus se détachaient devant la végétation, au pied des toboggans jaune et vert. Le grand damier occupait le même secteur du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Tavoli blu ai piedi degli scivoli</h2><p>I tavoli da ping-pong di Acqua Gliss erano all’aperto, sulla striscia di prato che costeggiava le piscine. I piani blu risaltavano davanti alla vegetazione, ai piedi degli scivoli giallo e verde. La grande damiera occupava lo stesso settore del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Blauwe tafels onder aan de glijbanen</h2><p>De tafeltennistafels van Acqua Gliss stonden in de openlucht, op de grasstrook langs de zwembaden. Hun blauwe bladen staken af tegen het groen onder aan de gele en groene glijbanen. Het grote dambord lag in hetzelfde gedeelte van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Niebieskie stoły u stóp zjeżdżalni</h2><p>Stoły do tenisa stołowego w Acqua Gliss stały pod gołym niebem, na pasie trawnika wzdłuż basenów. Ich niebieskie blaty odcinały się od zieleni u stóp żółtej i zielonej zjeżdżalni. W tej samej części parku znajdowała się wielka plansza do warcabów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Mesas azuis junto aos escorregas</h2><p>As mesas de ténis de mesa do Acqua Gliss estavam ao ar livre, na faixa de relva ao longo das piscinas. Os tampos azuis destacavam-se diante da vegetação, na base dos escorregas amarelo e verde. O grande tabuleiro de damas ocupava o mesmo setor do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "06cb5890-6424-4d2f-8aa9-d0b829842ddd",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:28:15.3417546Z",
+    "appliedAtUtc": "2026-11-15T09:28:15.3417568Z",
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "entityKey": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "displayName": "Jeu de dames géant",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein großes Damebrett auf dem Rasen</h2><p>Bei Acqua Gliss lag das riesige Damefeld mit seinen hellen und dunklen Feldern ebenerdig auf dem Rasen. Es befand sich am Rand des Parks, nahe dem Zaun und den Tischtennisplatten. Über dieser Spielecke erhoben sich die Kurven der gelben Rutsche.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A giant board on the lawn</h2><p>At Acqua Gliss, the giant draughts game occupied a square of light and dark spaces laid at lawn level. It stood near the edge of the park, beside the fence and the table tennis tables. The curves of the yellow slide rose above this corner of the grounds.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un gran tablero sobre el césped</h2><p>En Acqua Gliss, el juego de damas gigante ocupaba un cuadrado de casillas claras y oscuras colocado a ras del césped. Estaba en un extremo del parque, junto a la valla y las mesas de ping-pong. Las curvas del tobogán amarillo se alzaban sobre este rincón de juegos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un grand damier sur la pelouse</h2><p>À Acqua Gliss, le jeu de dames géant occupait un carré à cases claires et foncées posé au niveau de la pelouse. Il se trouvait en bordure du parc, près de la clôture et des tables de ping-pong. Les courbes du toboggan jaune dominaient ce coin de jeux.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una grande damiera sul prato</h2><p>Ad Acqua Gliss, il gioco della dama gigante occupava un quadrato di caselle chiare e scure disposto a livello del prato. Si trovava ai margini del parco, vicino alla recinzione e ai tavoli da ping-pong. Le curve dello scivolo giallo si innalzavano sopra questo angolo di giochi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een groot dambord op het gras</h2><p>Bij Acqua Gliss lag het reuzendambord met lichte en donkere vakken op gelijke hoogte met het gras. Het bevond zich aan de rand van het park, bij het hek en de tafeltennistafels. Boven deze speelhoek tekenden zich de bochten van de gele glijbaan af.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wielka plansza na trawniku</h2><p>W Acqua Gliss olbrzymia plansza do warcabów tworzyła kwadrat jasnych i ciemnych pól ułożonych na poziomie trawnika. Znajdowała się na skraju parku, w pobliżu ogrodzenia i stołów do tenisa stołowego. Nad tym zakątkiem wznosiły się zakręty żółtej zjeżdżalni.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um grande tabuleiro no relvado</h2><p>No Acqua Gliss, o jogo de damas gigante ocupava um quadrado de casas claras e escuras colocado ao nível do relvado. Ficava na extremidade do parque, junto à vedação e às mesas de ténis de mesa. As curvas do escorrega amarelo erguiam-se sobre este recanto de jogos.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "entityKey": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "displayName": "Ping-pong",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Blaue Platten am Fuß der Rutschen</h2><p>Die Tischtennisplatten von Acqua Gliss standen im Freien auf dem Rasenstreifen entlang der Becken. Ihre blauen Spielflächen hoben sich vor dem Grün am Fuß der gelben und grünen Rutschen ab. In demselben Parkbereich lag auch das große Damefeld.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Blue tables beneath the slides</h2><p>Acqua Gliss’s table tennis tables stood outdoors on the strip of lawn alongside the pools. Their blue tops stood out against the greenery at the foot of the yellow and green slides. The giant draughts board occupied the same part of the park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Mesas azules al pie de los toboganes</h2><p>Las mesas de ping-pong de Acqua Gliss estaban al aire libre, en la franja de césped que bordeaba las piscinas. Sus tableros azules destacaban ante la vegetación, al pie de los toboganes amarillo y verde. El gran tablero de damas ocupaba el mismo sector del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des tables bleues au pied des toboggans</h2><p>Les tables de ping-pong d’Acqua Gliss étaient installées à ciel ouvert, sur la bande de pelouse qui longeait les bassins. Leurs plateaux bleus se détachaient devant la végétation, au pied des toboggans jaune et vert. Le grand damier occupait le même secteur du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Tavoli blu ai piedi degli scivoli</h2><p>I tavoli da ping-pong di Acqua Gliss erano all’aperto, sulla striscia di prato che costeggiava le piscine. I piani blu risaltavano davanti alla vegetazione, ai piedi degli scivoli giallo e verde. La grande damiera occupava lo stesso settore del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Blauwe tafels onder aan de glijbanen</h2><p>De tafeltennistafels van Acqua Gliss stonden in de openlucht, op de grasstrook langs de zwembaden. Hun blauwe bladen staken af tegen het groen onder aan de gele en groene glijbanen. Het grote dambord lag in hetzelfde gedeelte van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Niebieskie stoły u stóp zjeżdżalni</h2><p>Stoły do tenisa stołowego w Acqua Gliss stały pod gołym niebem, na pasie trawnika wzdłuż basenów. Ich niebieskie blaty odcinały się od zieleni u stóp żółtej i zielonej zjeżdżalni. W tej samej części parku znajdowała się wielka plansza do warcabów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Mesas azuis junto aos escorregas</h2><p>As mesas de ténis de mesa do Acqua Gliss estavam ao ar livre, na faixa de relva ao longo das piscinas. Os tampos azuis destacavam-se diante da vegetação, na base dos escorregas amarelo e verde. O grande tabuleiro de damas ocupava o mesmo setor do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "actualDateSource": "apply.appliedAtUtc",
+  "remaining": "Volley remains private without specific equipment evidence; both newly described games remain private until publication review. No photo import/reassignment/deletion."
+}

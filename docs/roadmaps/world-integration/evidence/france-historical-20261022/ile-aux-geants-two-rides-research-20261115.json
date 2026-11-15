@@ -1,0 +1,198 @@
+{
+  "observedAtUtc": "2026-11-15T09:29:12.029457+00:00",
+  "scope": "Public-source and existing local-source research only. No PDE, Git, registry or existing-state mutation.",
+  "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "conclusion": "Neither physical identity nor a correctly attributable item photo is established for the two unresolved rides. Current official catalogue proves their names and children-only access. Preserve distinct existing IDs and keep qualification open.",
+  "items": [
+    {
+      "itemId": "75eddf51-f6e1-4047-a8a2-2db808586925",
+      "name": "Manège enchanté",
+      "supported": {
+        "officialSpelling": "Manège enchantée",
+        "audience": "Exclusively children",
+        "officialCatalogueUrl": "https://ileauxgeants.fr/attractions/"
+      },
+      "unproved": [
+        "Vehicle shapes or colours",
+        "Circular motion and ride speed",
+        "Manufacturer and model",
+        "Physical identity with Manège Mickey",
+        "Individual reopening after February 2024 fire",
+        "Individual operating dates",
+        "Current photo and precise position"
+      ],
+      "safeFrenchTextCandidate": "Le Manège enchanté fait partie des attractions que L’Île aux Géants réserve exclusivement aux enfants. Le parc le distingue du Carrousel 1900, présenté comme une attraction familiale.",
+      "editorialStatus": "Short factual correction candidate only; not a completed descriptive inventory."
+    },
+    {
+      "itemId": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+      "name": "Petit train",
+      "supported": {
+        "officialSpelling": "Petit train",
+        "audience": "Exclusively children",
+        "officialCatalogueUrl": "https://ileauxgeants.fr/attractions/"
+      },
+      "unproved": [
+        "Rail layout, track propulsion and train composition",
+        "Decor and route through the park",
+        "Manufacturer and model",
+        "Individual reopening after February 2024 fire",
+        "Current photo and precise position"
+      ],
+      "safeFrenchTextCandidate": "Le Petit train est présenté par L’Île aux Géants parmi ses attractions réservées exclusivement aux enfants. Il possède une entrée distincte de La Chenille et de La Randonnée fantastique dans le catalogue du parc.",
+      "editorialStatus": "Short factual correction candidate only; not a completed descriptive inventory."
+    }
+  ],
+  "newLeads": [
+    {
+      "url": "https://guide-o-parc.com/site/index.php?action=park&id=275",
+      "local": "guideoparc-park.html",
+      "evidence": "Separately lists Manège Mickey (carrousel), Petit Manège (manège avion, 2015), and Petit Train (train junior).",
+      "limits": "Undated database inventory with obsolete official links and empty image galleries. No documented alias to current Manège enchanté, no post-fire evidence. Do not create, merge or assign dates from similarity."
+    },
+    {
+      "url": "https://guide-o-parc.com/site/index.php?action=ride&id=3503",
+      "local": "guideoparc-manege-mickey.html",
+      "evidence": "Manège Mickey, carrousel, for children; opening year and manufacturer unknown.",
+      "limits": "No usable item photo or explicit alias."
+    },
+    {
+      "url": "https://guide-o-parc.com/site/index.php?action=ride&id=3500",
+      "local": "guideoparc-petit-manege.html",
+      "evidence": "Petit Manège, manège avion, 2015.",
+      "limits": "No usable photo or connection to either requested item. Not transferable to Manège enchanté or Star Flyer without proof."
+    },
+    {
+      "url": "https://guide-o-parc.com/site/index.php?action=ride&id=3504",
+      "local": "guideoparc-petit-train.html",
+      "evidence": "Petit Train, train junior, for children.",
+      "limits": "No photo, date or physical specifications."
+    },
+    {
+      "url": "https://data.over-blog-kiwi.com/1/96/76/66/20260305/ob_ed70ae_bi-casc-gp-2026.pdf",
+      "local": "casc-grand-poitiers-2026.pdf",
+      "pagePrinted": 12,
+      "evidence": "Brochure carrying 2026 in title/file lists Petit Train with Brocomela and Carrousel.",
+      "limits": "Its May–September, Wednesday and 11h–19h opening information conflicts with the verified current official season. Likely retained older park description; publication/file year does not prove the train operated in 2026. Not accepted for current operation or tariffs."
+    }
+  ],
+  "visualInspection": [
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-11.jpg",
+      "evidence": "Close photograph of children on a vehicle carousel: red/silver toy vehicles, truck and cartoon character, no readable ride-name sign. SOMEPLAS appears on a vehicle body.",
+      "limits": "No name match to Manège enchanté, no current operation evidence. Component marking alone must not be assigned as manufacturer of the complete ride. Do not import under either item."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-12.jpg",
+      "evidence": "Older aerial photograph shows several rides and structures but no legible requested-item sign.",
+      "limits": "Do not assign rails, canopies or unnamed structures to Petit Train by proximity."
+    },
+    {
+      "file": "/workspace/france-historical-20261114/ile-aux-geants/parallel-research-20261115/panorama-2026-native.jpg",
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/34/98/9a/8a/caption.jpg",
+      "evidence": "Downloaded native version of an existing 2026 panoramic scene for visual reading. Shows blue swing-chair Star Tower and multicoloured wing-gondola Star Flyer, plus other already catalogued rides.",
+      "limits": "No direct requested-name attribution. This is an alternate size of an already researched scene, not a new import candidate; do not duplicate. Do not call wing gondolas Manège enchanté."
+    },
+    {
+      "files": [
+        "coasterrider-IMG_8409.JPG",
+        "coasterrider-IMG_8410.JPG",
+        "coasterrider-IMG_8420.JPG"
+      ],
+      "evidence": "Read existing 2018 images showing entry, inflatable play structures and coaster.",
+      "limits": "No qualifying requested-ride identity, visible watermark, no new import proposed."
+    }
+  ],
+  "postFireQualification": {
+    "parkReopening": "Existing confirmed sources establish park reopening on 29 May 2025 and official 2026 season. They do not establish a per-item survival/replacement inventory.",
+    "officialListingLimit": "The two item texts/images are unchanged in substance from 2021/2022 archive captures and use the logo placeholder. A live 2026 navigation context does not prove the same physical asset remained.",
+    "sourceConflict": "Angers Info 30 May 2025 wrongly calls chair swings Star Flyer; preserve verified Star Tower/Star Flyer separation.",
+    "noNewEntities": [
+      "Do not create Manège Mickey or Petit Manège from the undated secondary database alone.",
+      "Do not assign old entry/boutique, duck-fishing or arcade-gallery assets a post-fire current status without dated evidence."
+    ]
+  },
+  "proposedFieldPolicy": {
+    "preserveExistingIds": true,
+    "preserveUnknownDatesAndManufacturerNull": true,
+    "noStatusChangeFromThisResearch": true,
+    "noAliasOrMerge": true,
+    "noNewPhotoImport": true,
+    "noFinalAuditOrCompletionClaim": true
+  },
+  "nextEvidenceNeeded": "Dated operator photo/video or signage explicitly naming either ride and showing the physical asset, preferably after the 2024 fire. No human contact performed.",
+  "existingEvidenceHashes": [
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/attractions.txt",
+      "sha256": "45fe0e121d3af7ab0c1bf1645ceabc87962ea2f7d90ced3d42bf49c8f71bb123",
+      "bytes": 3215,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/attractions.html",
+      "sha256": "d48ad0abc35aa23d9f5fcceffcf8f31d8624fe4220f51752225ec46d431c1701",
+      "bytes": 1566769,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/archive-attractions-20211028112253.html",
+      "sha256": "2f9b5c1aa417f79c50b0411561ad2a323ea5d8fcb10e779fc36d4a6a65c63571",
+      "bytes": 11819,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/archive-attractions-20220523022335.html",
+      "sha256": "94513552f6adc08a383a3d700e812691bc54deb4e7ff12a5eb7788f1937cf78d",
+      "bytes": 312907,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/tripadvisor-images-manifest.json",
+      "sha256": "2dc5420178059058a2becae7dc58c1b4b7d19ba64c8161858cc973c13e7c253f",
+      "bytes": 6965,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/accepted-visitor-photo-manifest.json",
+      "sha256": "75d5bae9b0060a68c81285629b415839516eb59a507f62f1be9d761b182ac836",
+      "bytes": 7108,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/tripadvisor-review-cards.json",
+      "sha256": "6380bd45f383bf76000d6878335d0dbdf76441e0172e47406069c276d28aed45",
+      "bytes": 12694,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-11.jpg",
+      "sha256": "99de0e134e953084b99975642d95161a7a89b89a84b5c6a1f55a1a866a85e7ad",
+      "bytes": 233426,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-12.jpg",
+      "sha256": "291c56d7ecfd9650c4f0be9f172ff4ba6a8318615b1145c02b0232f0ac59b517",
+      "bytes": 426226,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/source-images/tripadvisor-4.jpg",
+      "sha256": "613f3be839c5e1f911c4a141be462d61304744b63a90c34a3a1ae967d6a409fe",
+      "bytes": 610869,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/source-images/IMG_0676.jpg",
+      "sha256": "da06fa7758c0ea31a76642f250fb166fc90901b7ff382ab0ef8215b086e742da",
+      "bytes": 380724,
+      "access": "Read existing local evidence; not a new web fetch"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/ile-aux-geants/coasterrider-2018.txt",
+      "sha256": "316b36b2f1c5c578dff23722176ba90de652fad3f255de65e1c9ef7ff66808ae",
+      "bytes": 4428,
+      "access": "Read existing local evidence; not a new web fetch"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "sourceAccess": [
+    {
+      "url": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+      "finalUrl": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T09:24:31.910517+00:00",
+      "bytes": 86441,
+      "sha256": "dfbf68029b55b9167fa6a3cbd9dea01494bf57e63336a3a5c02b39744dcd3ecd"
+    }
+  ],
+  "observation": "La page officielle actuelle présente Le dôme avec une galerie, puis cite La dune séparément dans les autres gonflables. Les huit anciens noms privés sont encore listés mais sans photographie nominative. Ne pas utiliser la photo gonflables-la-dome comme image de La Dune ni inférer une synonymie. Aucun Apply.",
+  "mutation": false
+}

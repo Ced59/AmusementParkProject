@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-15T09:31:03.743305+00:00",
+  "localDirectory": "/workspace/france-historical-20261114/aquagliss/qualification-20261115",
+  "outcome": "partial",
+  "completed": false,
+  "lastActualIntegrationAtUtc": "2026-11-15T09:28:15.3417568Z",
+  "lastApplyOperationId": "06cb5890-6424-4d2f-8aa9-d0b829842ddd",
+  "coverage": {
+    "items": 14,
+    "publicItems": 11,
+    "itemsDescribedInEightLanguages": 13,
+    "media": 17,
+    "newImportedMedia": 0
+  },
+  "newDescriptionsPrivate": [
+    "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+    "c7424f36-e352-49c9-bc32-91bf357e30ea"
+  ],
+  "stillUnqualifiedPrivate": [
+    "088de2d8-2bf7-49fb-b2e6-d7cfc732d120"
+  ],
+  "proofs": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-games-qualification-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-publication-scope-audit-20261114.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-publication-followup-20261115.json"
+  ],
+  "publication": {
+    "newPublicationPerformed": false,
+    "newFacebookPublicationPerformed": false,
+    "existingFacebookPublicationId": "8543f61911b545f29e4159e39351d2ae",
+    "existingFacebookStatus": "Published",
+    "publicVisibilityCaveat": "Official34announcement reconciliation returns Published; anonymous FB tests remain unavailable, not proof of deletion."
+  },
+  "auditContinuation": "Existing complete scope audit and export preserved; two new descriptions personally reviewed eight languages. Whole consolidated raw text and cross-entity paragraph controls pass (601 localized fields,830 raw strings). Pending idempotence response; no fresh audit export. Distinct publication export must be reconciled before publication. A secondary read-only export wrapper was stopped locally before any receipt; check official status/jobs before retry.",
+  "nextAction": "Finish serial idempotence/status/export reconciliation, then publish only two reviewed descriptions after publication-scope checks; Volley and global completion remain open."
+}
