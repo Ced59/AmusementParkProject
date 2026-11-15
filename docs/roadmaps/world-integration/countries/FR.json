@@ -22141,27 +22141,90 @@
     {
       "entryId": "FR-candidate-discovery-8c603a6339cbd7",
       "name": "PanoraMagique",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Ballon captif",
-      "locality": "Disney Village, Marne-la-Vallée",
-      "siteId": null,
+      "locality": "Lake Disney, Disney Village, Chessy 77700",
+      "siteId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:48:55.955Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
-      "identityConfidence": "Découverte externe comparée aux noms et alias du relevé mondial, fiches masquées incluses ; recherche fraîche obligatoire avant création.",
+      "sourceLifecycleSignal": "Exploitant actif en 2026, vols prévus quotidiennement selon la météo.",
+      "identityConfidence": "Billet propre et accès libre à Disney Village confirmés par FAQ officielle ; recherche Park et StandaloneAttraction sans correspondance avant création.",
       "possibleMatches": [],
       "aliases": [
-        "Disneyland® Paris Marne-La-Vallée, France"
+        "Panoramagique",
+        "PanoraMagique balloon",
+        "Disney Village tethered balloon"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création. Comparer les noms, alias, adresse, coordonnées et anciennes identités dans SearchParks et SearchStandaloneAttractions, sans filtre de visibilité ; élargir hors pays si nécessaire. Ne pas présenter une référence historique comme une exploitation actuelle.",
+      "lastDataIntegrationAt": "2026-11-15T22:47:41.605Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-29f67b89-3559-4017-82d6-7333a2e5a917",
+          "appliedAt": "2026-11-15T22:45:02.713Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:29f67b89-3559-4017-82d6-7333a2e5a917",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "photo-712d416cb8f4484d81e7cf575f381ae4",
+          "appliedAt": "2026-11-15T22:45:22.374Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:photo:712d416cb8f4484d81e7cf575f381ae4",
+          "auditEvidence": null,
+          "summary": "Photo exacte historique de PanoraMagique importée, créditée sous CC BY 2.0 et datée de 2010."
+        },
+        {
+          "eventId": "apply-6dd4fe46-e102-4f67-8e9e-878482ce1196",
+          "appliedAt": "2026-11-15T22:46:36.382Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:6dd4fe46-e102-4f67-8e9e-878482ce1196",
+          "auditEvidence": null,
+          "summary": "Ouverture 2005, altitude, durée et capacité intégrées."
+        },
+        {
+          "eventId": "apply-ef92ac8c-5273-4ffe-b8a1-3f7e9f788e58",
+          "appliedAt": "2026-11-15T22:46:57.963Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:ef92ac8c-5273-4ffe-b8a1-3f7e9f788e58",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels sur place et en ligne intégrés."
+        },
+        {
+          "eventId": "apply-6da516a2-eefa-4b3e-af13-4d14783b1847",
+          "appliedAt": "2026-11-15T22:47:19.902Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:6da516a2-eefa-4b3e-af13-4d14783b1847",
+          "auditEvidence": null,
+          "summary": "Horaires habituels quotidiens et dépendance météo intégrés."
+        },
+        {
+          "eventId": "apply-af4790c6-0150-4aeb-9ea6-eb2a8ad955ee",
+          "appliedAt": "2026-11-15T22:47:41.605Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+          "evidence": "PARK_DATA_EDITOR:apply:af4790c6-0150-4aeb-9ea6-eb2a8ad955ee",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-fr-panoramagique-20261115/audit.json",
+          "summary": "Trois règles d’embarquement officielles intégrées."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves ; rechercher une photo récente sous licence compatible, puis recontrôler horaires et tarifs. Prévenir la conversation France que PanoraMagique est déjà publié pour éviter un doublon.",
       "sources": [
         {
           "label": "Aerophile — références constructeur",
@@ -22172,6 +22235,46 @@
           "label": "Aerophile — références constructeur — annuaire",
           "url": "https://www.aerophile.com/en/clients/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — identité et statut",
+          "url": "https://panoramagique.com/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — prix et horaires",
+          "url": "https://panoramagique.com/informations-pratiques",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et autonomie",
+          "url": "https://panoramagique.com/faq",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — ballon",
+          "url": "https://panoramagique.com/panoramagique/le-ballon",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — histoire",
+          "url": "https://panoramagique.com/panoramagique/histoire",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — emplacement",
+          "url": "https://www.openstreetmap.org/way/253840775",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2010 CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:PanoraMagique,_Disney_Village,_Disneyland_Paris.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/21e2b789-4781-4c1d-b303-417a496ab2bc/panoramagique",
+          "accessedAt": "2026-11-15"
         }
       ],
       "discovery": {
@@ -22180,23 +22283,23 @@
         "foundAt": "2026-10-22"
       },
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "PanoraMagique",
-            "source": "Aerophile — références constructeur",
-            "url": "https://www.aerophile.com/en/clients/disneyland-paris/",
+            "source": "Exploitant PanoraMagique — informations pratiques",
+            "url": "https://panoramagique.com/informations-pratiques",
             "family": "Ballon captif",
-            "sourceVenueName": "PanoraMagique",
-            "sourceLifecycleSignal": "Référence constructeur datée 2005 ; exploitation actuelle et permanence à vérifier.",
-            "matchingMethod": "Rapprochement documentaire examiné ; recherche API actualisée requise avant création.",
-            "sourceLocality": "Disney Village, Marne-la-Vallée",
-            "referenceId": "aerophile-disneyland-paris"
+            "sourceVenueName": "Disney Village",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Chessy",
+            "sourceOpenedYear": "2005"
           }
         ],
-        "rationale": "Installation documentée sur un site touristique ou dédié ; aucun rapprochement établi avec une fiche du site. Confirmer identité, autonomie et cycle de vie avant création."
-      }
+        "rationale": "Billetterie distincte ; Disney Village est accessible sans billet de parc Disney. Fiche autonome publiée."
+      },
+      "possibleBacklogEntries": []
     },
     {
       "entryId": "FR-candidate-54d1a76a9d8f2e",

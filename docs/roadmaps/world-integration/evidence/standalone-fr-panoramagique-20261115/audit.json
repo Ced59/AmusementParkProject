@@ -1,0 +1,88 @@
+{
+  "work": "PanoraMagique intégré comme ballon captif autonome à Disney Village : huit descriptions, photo exacte historique CC BY 2.0, tarifs en ligne et sur place, horaires, conditions d’embarquement, huit pages publiques et annonce Facebook.",
+  "qualification": "Billetterie propre au ballon, accès libre à Disney Village sans billet pour les parcs Disney selon la FAQ officielle. Recherches Park et StandaloneAttraction des alias PanoraMagique, Panoramique Disney et Disney Village balloon sans résultat avant création.",
+  "sources": {
+    "Exploitant — identité et statut en direct": "https://panoramagique.com/",
+    "Exploitant — tarifs, horaires et adresse": "https://panoramagique.com/informations-pratiques",
+    "Exploitant — accès et conditions": "https://panoramagique.com/faq",
+    "Exploitant — ballon et capacité": "https://panoramagique.com/panoramagique/le-ballon",
+    "Exploitant — histoire et ouverture": "https://panoramagique.com/panoramagique/histoire",
+    "OpenStreetMap — ballon": "https://www.openstreetmap.org/way/253840775",
+    "Wikimedia Commons — photo historique": "https://commons.wikimedia.org/wiki/File:PanoraMagique,_Disney_Village,_Disneyland_Paris.jpg",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "Fiche publique PanoraMagique": "https://amusement-parks.fun/fr/attraction/21e2b789-4781-4c1d-b303-417a496ab2bc/panoramagique"
+  },
+  "entity": {
+    "id": "21e2b789-4781-4c1d-b303-417a496ab2bc",
+    "name": "PanoraMagique",
+    "countryCode": "FR",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "712d416cb8f4484d81e7cf575f381ae4",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:PanoraMagique,_Disney_Village,_Disneyland_Paris.jpg",
+      "createdAtUtc": "2026-11-15T22:45:22.374Z",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200,
+      "author": "Hans Brian Brandsberg Berg",
+      "license": "CC BY 2.0",
+      "takenAt": "2010-07-27",
+      "note": "Vue historique de l’ancienne livrée du ballon, explicitement signalée en légende."
+    }
+  ],
+  "visitorInformation": {
+    "type": "ObservationRide",
+    "subtype": "Tethered helium balloon",
+    "manufacturer": "Aerophile",
+    "openedYear": "2005",
+    "standardAltitudeMeters": 100,
+    "flightDurationSeconds": 360,
+    "maximumRidersPerFlight": 30,
+    "priceOffers": 2,
+    "currency": "EUR",
+    "underThreeFree": true,
+    "weeklyOpeningHourRules": 1,
+    "scheduledHours": "10:00–20:00 daily, weather permitting",
+    "structuredAccessConditions": 3,
+    "address": "Lake Disney, Disney Village, Chessy 77700",
+    "coordinates": [
+      48.8690073,
+      2.7871143
+    ]
+  },
+  "audit": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedExactImages": 1,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinaryHttpStatus": 200
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/21e2b789-4781-4c1d-b303-417a496ab2bc/panoramagique",
+    "sitePublishedAtUtc": "2026-11-15T22:48:14.348279Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:3605c05a-6108-4c71-bbde-ebbb56791658",
+    "facebookStatus": "Published",
+    "facebookId": "8613343be4e240ff928e348adc0d9550",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127518337424431",
+    "facebookPublishedAtUtc": "2026-11-15T22:48:55.9556945Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T22:47:41.605Z",
+  "remainingGaps": [
+    "La seule photo libre trouvée montre l’ancienne livrée de 2010. Rechercher une vue récente de la livrée actuelle sous licence compatible pour compléter la galerie.",
+    "Vérifier le statut en direct et les tarifs au jour de la visite ; les vols dépendent de la météo."
+  ]
+}
