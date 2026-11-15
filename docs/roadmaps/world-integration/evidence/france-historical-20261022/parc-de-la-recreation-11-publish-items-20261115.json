@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "owner": "Conversation France",
+  "documentSha256": "2509c72ed2c9ec826a21667f070904482f687e04f6261cab2f2f56a40738b092",
+  "review": "Corpus exporté relu personnellement dans huit langues,3 originaux rapprochés et revus visuellement. Export distinct de publication identique ; seuls les indicateurs de visibilité et validation changent. Registre des limites conservé.",
+  "result": {
+    "operationId": "ec6f65bc-dc3d-4b21-935b-bb07ea1c23b5",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:25:11.7227535Z",
+    "appliedAtUtc": "2026-11-15T00:25:11.7227547Z",
+    "targetParkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "targetParkName": "Parc de la Récréation",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+        "entityKey": "park",
+        "displayName": "Parc de la Récréation",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53e02da1-dd83-4818-b06d-389810532904",
+        "entityKey": "53e02da1-dd83-4818-b06d-389810532904",
+        "displayName": "Tour de pneus",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "entityKey": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "displayName": "Voitures à pédales",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

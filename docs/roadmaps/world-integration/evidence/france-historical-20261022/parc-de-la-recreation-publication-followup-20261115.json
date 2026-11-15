@@ -1,0 +1,2352 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "name": "Parc de la Récréation",
+  "checkedAtUtc": "2026-11-15T00:30:22.117030+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "finalAuditPassed": false,
+  "publishedScopeEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false,
+  "scopeAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-publication-scope-audit-20261115.json",
+  "ownerClosedParkScoreTolerance": {
+    "accepted": true,
+    "date": "2026-11-14",
+    "scope": "Publication des seuls contenus audités ; dossier global toujours partial."
+  },
+  "actualCompleteness": {
+    "receivedAtUtc": "2026-11-15T00:26:10.3558393Z",
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-15T00:26:09.7404006Z",
+    "result": {
+      "completenessScore": 91,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 103,
+      "earnedPoints": 94,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T00:26:21.8357469Z",
+    "result": {
+      "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+      "parkName": "Parc de la Récréation",
+      "factCount": 18,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 2,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 4
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 14
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 4,
+        "sourcedFactCount": 4,
+        "majorFactCount": 4,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T00:26:21.3922215Z"
+  },
+  "publicationExport": {
+    "auditExportAtUtc": "2026-11-15T00:17:03.0088332Z",
+    "publicationExportAtUtc": "2026-11-15T00:21:20.4800808Z",
+    "auditSha256": "25979d04eea57d69fe60b4307a4d8377b79925ef3a0c1960cace06864e6ed9b7",
+    "publicationSha256": "99cff7a7e55dcdc5efc13e8a71fd7c1a3411c7855d2b5f71218efc697492ba5d",
+    "allSectionsExactlyEqualExcludingExportMetadata": true,
+    "unexplainedDifferences": 0,
+    "checkedAtUtc": "2026-11-15T00:21:32.369790+00:00"
+  },
+  "publicationReceipts": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-10-publish-images-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-11-publish-items-20261115.json"
+  ],
+  "lastDataIntegrationAt": "2026-11-15T00:25:11.722Z",
+  "coverage": {
+    "items": 30,
+    "itemsWithEightDescriptions": 22,
+    "attractions": 25,
+    "attractionsWithEightDescriptions": 17,
+    "attractionsWithPhoto": 14,
+    "attractionsWithThreePhotos": 0,
+    "itemsWithPhoto": 15,
+    "media": 24,
+    "logo": 1,
+    "generalPhotosExcludingLogoAndCollage": 5,
+    "fixedItemsGeolocated": 0,
+    "fixedItemsTotal": 30,
+    "missingGeolocation": [
+      {
+        "id": "cf66dea3-923b-4a9f-bd5a-ca7cb7383255",
+        "name": "Accueil"
+      },
+      {
+        "id": "1a8b15a3-93bc-4f88-8ddf-e9bc513c530b",
+        "name": "Aires de pique-nique et barbecues"
+      },
+      {
+        "id": "64104365-d16d-491c-a9a4-44b2e0c3b1da",
+        "name": "Animaux de la ferme"
+      },
+      {
+        "id": "f33fd85b-20fa-4606-96fa-e71d84d2fd96",
+        "name": "Archery Tag"
+      },
+      {
+        "id": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+        "name": "Balades en carriole"
+      },
+      {
+        "id": "0adedff3-3eb7-4660-8bfa-6e00fd2ecca5",
+        "name": "Beach-soccer"
+      },
+      {
+        "id": "55454103-5d40-464b-858e-4e5ddfcc4633",
+        "name": "Beach-volley"
+      },
+      {
+        "id": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+        "name": "Billard hollandais"
+      },
+      {
+        "id": "80f13d22-dbb5-49bf-9d31-82a4fcd3578c",
+        "name": "Bubble foot"
+      },
+      {
+        "id": "cf186c77-665a-4bd7-b410-ee9a8c60ec63",
+        "name": "Cordes de Tarzan"
+      },
+      {
+        "id": "74d8e8aa-4198-4b73-bfc8-cff3584eaade",
+        "name": "Descente en baignoire"
+      },
+      {
+        "id": "1e41fd06-fbc6-48fe-a588-ae0931226f87",
+        "name": "Gliss’mouille"
+      },
+      {
+        "id": "a3d35ad9-7c21-4b06-9c01-df0f4221d2fb",
+        "name": "L’Éco-lutin"
+      },
+      {
+        "id": "c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+        "name": "Manège à pédales"
+      },
+      {
+        "id": "afd4c643-feb5-44bc-9c98-942b2388208a",
+        "name": "Mur d’escalade"
+      },
+      {
+        "id": "5e7ac0d6-632b-42f6-b7d6-f67e5137c1df",
+        "name": "Parcours insolite"
+      },
+      {
+        "id": "1cd878f9-d190-4e54-b123-3b17131d8d4c",
+        "name": "Parking"
+      },
+      {
+        "id": "77725983-c259-4350-9b08-121975c5d26f",
+        "name": "Pentes d’escalade"
+      },
+      {
+        "id": "313d53e2-82a0-4003-b80c-ddda682f6d9a",
+        "name": "Pistes de vélos"
+      },
+      {
+        "id": "9e5bd944-e832-425d-aaae-9b39027f4193",
+        "name": "Pont en filet"
+      },
+      {
+        "id": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+        "name": "Pétanque"
+      },
+      {
+        "id": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+        "name": "Pêche à la ligne"
+      },
+      {
+        "id": "fa4b2b8f-9f7f-4818-aa93-a2f572d5a880",
+        "name": "Slalom-kart"
+      },
+      {
+        "id": "bbbe91f1-2702-4dee-b7c0-209cba5e4545",
+        "name": "Snack"
+      },
+      {
+        "id": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+        "name": "Totem-ball"
+      },
+      {
+        "id": "53e02da1-dd83-4818-b06d-389810532904",
+        "name": "Tour de pneus"
+      },
+      {
+        "id": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+        "name": "Tourni-pneu"
+      },
+      {
+        "id": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+        "name": "Tyroliennes"
+      },
+      {
+        "id": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "name": "Voitures à pédales"
+      },
+      {
+        "id": "40d0a59c-937a-4d4d-a56c-8713c960c3d0",
+        "name": "Vélos-taxis"
+      }
+    ],
+    "itemPhotoCounts": [
+      {
+        "id": "cf66dea3-923b-4a9f-bd5a-ca7cb7383255",
+        "name": "Accueil",
+        "photos": 0
+      },
+      {
+        "id": "1a8b15a3-93bc-4f88-8ddf-e9bc513c530b",
+        "name": "Aires de pique-nique et barbecues",
+        "photos": 0
+      },
+      {
+        "id": "64104365-d16d-491c-a9a4-44b2e0c3b1da",
+        "name": "Animaux de la ferme",
+        "photos": 0
+      },
+      {
+        "id": "f33fd85b-20fa-4606-96fa-e71d84d2fd96",
+        "name": "Archery Tag",
+        "photos": 2
+      },
+      {
+        "id": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+        "name": "Balades en carriole",
+        "photos": 0
+      },
+      {
+        "id": "0adedff3-3eb7-4660-8bfa-6e00fd2ecca5",
+        "name": "Beach-soccer",
+        "photos": 1
+      },
+      {
+        "id": "55454103-5d40-464b-858e-4e5ddfcc4633",
+        "name": "Beach-volley",
+        "photos": 1
+      },
+      {
+        "id": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+        "name": "Billard hollandais",
+        "photos": 0
+      },
+      {
+        "id": "80f13d22-dbb5-49bf-9d31-82a4fcd3578c",
+        "name": "Bubble foot",
+        "photos": 1
+      },
+      {
+        "id": "cf186c77-665a-4bd7-b410-ee9a8c60ec63",
+        "name": "Cordes de Tarzan",
+        "photos": 1
+      },
+      {
+        "id": "74d8e8aa-4198-4b73-bfc8-cff3584eaade",
+        "name": "Descente en baignoire",
+        "photos": 1
+      },
+      {
+        "id": "1e41fd06-fbc6-48fe-a588-ae0931226f87",
+        "name": "Gliss’mouille",
+        "photos": 1
+      },
+      {
+        "id": "a3d35ad9-7c21-4b06-9c01-df0f4221d2fb",
+        "name": "L’Éco-lutin",
+        "photos": 0
+      },
+      {
+        "id": "c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+        "name": "Manège à pédales",
+        "photos": 0
+      },
+      {
+        "id": "afd4c643-feb5-44bc-9c98-942b2388208a",
+        "name": "Mur d’escalade",
+        "photos": 0
+      },
+      {
+        "id": "5e7ac0d6-632b-42f6-b7d6-f67e5137c1df",
+        "name": "Parcours insolite",
+        "photos": 0
+      },
+      {
+        "id": "1cd878f9-d190-4e54-b123-3b17131d8d4c",
+        "name": "Parking",
+        "photos": 1
+      },
+      {
+        "id": "77725983-c259-4350-9b08-121975c5d26f",
+        "name": "Pentes d’escalade",
+        "photos": 1
+      },
+      {
+        "id": "313d53e2-82a0-4003-b80c-ddda682f6d9a",
+        "name": "Pistes de vélos",
+        "photos": 1
+      },
+      {
+        "id": "9e5bd944-e832-425d-aaae-9b39027f4193",
+        "name": "Pont en filet",
+        "photos": 1
+      },
+      {
+        "id": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+        "name": "Pétanque",
+        "photos": 0
+      },
+      {
+        "id": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+        "name": "Pêche à la ligne",
+        "photos": 0
+      },
+      {
+        "id": "fa4b2b8f-9f7f-4818-aa93-a2f572d5a880",
+        "name": "Slalom-kart",
+        "photos": 2
+      },
+      {
+        "id": "bbbe91f1-2702-4dee-b7c0-209cba5e4545",
+        "name": "Snack",
+        "photos": 0
+      },
+      {
+        "id": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+        "name": "Totem-ball",
+        "photos": 0
+      },
+      {
+        "id": "53e02da1-dd83-4818-b06d-389810532904",
+        "name": "Tour de pneus",
+        "photos": 1
+      },
+      {
+        "id": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+        "name": "Tourni-pneu",
+        "photos": 0
+      },
+      {
+        "id": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+        "name": "Tyroliennes",
+        "photos": 0
+      },
+      {
+        "id": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "name": "Voitures à pédales",
+        "photos": 1
+      },
+      {
+        "id": "40d0a59c-937a-4d4d-a56c-8713c960c3d0",
+        "name": "Vélos-taxis",
+        "photos": 1
+      }
+    ],
+    "history": 4,
+    "articles": 1,
+    "annualMaps": 0,
+    "currentHoursAndPricesApplicable": false,
+    "publicItems": 22,
+    "publicMedia": 24,
+    "privateItemsWithoutDescription": [
+      {
+        "id": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+        "name": "Balades en carriole"
+      },
+      {
+        "id": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+        "name": "Billard hollandais"
+      },
+      {
+        "id": "afd4c643-feb5-44bc-9c98-942b2388208a",
+        "name": "Mur d’escalade"
+      },
+      {
+        "id": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+        "name": "Pétanque"
+      },
+      {
+        "id": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+        "name": "Pêche à la ligne"
+      },
+      {
+        "id": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+        "name": "Totem-ball"
+      },
+      {
+        "id": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+        "name": "Tourni-pneu"
+      },
+      {
+        "id": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+        "name": "Tyroliennes"
+      }
+    ]
+  },
+  "remainingSourceGaps": [
+    "Huit notices manquantes, identifiants conservés privés.",
+    "Attributions de constructeurs, dates individuelles, coordonnées non prouvées et photos supplémentaires non inventées.",
+    "Plan2009 est routier, exclu des cartes annuelles ; aucune carte intérieure authentifiée retrouvée.",
+    "Le total commercial de70jeux ne permet pas de créer70identités distinctes : modules de parcours regroupés selon les noms prouvés.",
+    "Faits Other pour installation du site et réemploi Family Park : défaut de libellé public déjà identifié sur cette famille de faits, à conserver dans les contrôles."
+  ],
+  "idempotence": [
+    {
+      "operationId": "8c2b3067-8133-4178-90e8-e4c0bfb4b433",
+      "previewedAtUtc": "2026-11-15T00:26:45.7211738Z",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 6,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "f98cb1ce-d465-47ad-b471-dee601ef45b7",
+      "previewedAtUtc": "2026-11-15T00:26:57.0657422Z",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 3,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-15T00:26:39.532004+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation à Monts, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5398,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:41.641356+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "L'histoire de Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1892,
+      "h1": [
+        "L'histoire de Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:43.771313+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Article : La Récréation : des baignoires sous les chênes de Touraine - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 5148,
+      "h1": [
+        "La Récréation : des baignoires sous les chênes de Touraine"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:46.237388+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 4994,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:47.730694+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "The history of Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1692,
+      "h1": [
+        "The history of Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:49.470913+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Article: La Récréation: bathtubs beneath Touraine’s oaks - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 4588,
+      "h1": [
+        "La Récréation: bathtubs beneath Touraine’s oaks"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:51.766899+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5354,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:53.177569+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "Die Geschichte von Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1877,
+      "h1": [
+        "Die Geschichte von Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:54.581899+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Artikel: La Récréation: Badewannen unter den Eichen der Touraine - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 5212,
+      "h1": [
+        "La Récréation: Badewannen unter den Eichen der Touraine"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:56.139109+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5246,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:57.551417+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "De geschiedenis van Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1879,
+      "h1": [
+        "De geschiedenis van Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:26:59.084952+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Artikelpagina: La Récréation: badkuipen onder de eiken van Touraine - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 4954,
+      "h1": [
+        "La Récréation: badkuipen onder de eiken van Touraine"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:01.052203+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5339,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:02.879518+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "La storia di Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1831,
+      "h1": [
+        "La storia di Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:04.755883+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Articolo: La Récréation: vasche da bagno sotto le querce della Touraine - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 4999,
+      "h1": [
+        "La Récréation: vasche da bagno sotto le querce della Touraine"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:07.010068+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5441,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:08.457578+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "La historia de Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1826,
+      "h1": [
+        "La historia de Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:10.102912+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Artículo: La Récréation: bañeras bajo los robles de Touraine - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 5000,
+      "h1": [
+        "La Récréation: bañeras bajo los robles de Touraine"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:12.087677+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5181,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:13.487990+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "Historia Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1824,
+      "h1": [
+        "Historia Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:15.131667+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Artykuł: La Récréation: wanny pod dębami Turenii - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 4733,
+      "h1": [
+        "La Récréation: wanny pod dębami Turenii"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:17.114508+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation",
+      "status": 200,
+      "title": "Parc de la Récréation — Monts, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5355,
+      "h1": [
+        "Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:18.606797+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history",
+      "status": 200,
+      "title": "A história de Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 1820,
+      "h1": [
+        "A história de Parc de la Récréation"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:27:20.125733+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/history/e177ef08-40ac-4bd5-be7e-b985999617eb/la-recreation-monts-jeux-recuperation-histoire",
+      "status": 200,
+      "title": "Artigo: La Récréation: banheiras sob os carvalhos da Touraine - Parc de la Récréation — Amusement Parks",
+      "bodyCharacters": 4912,
+      "h1": [
+        "La Récréation: banheiras sob os carvalhos da Touraine"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "publishedItemPages": [
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:09.086582+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "Français",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2389
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:11.879634+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "Français",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2438
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:14.420301+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "English",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2155
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:17.072875+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "English",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2115
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:19.799762+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "Deutsch",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2356
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:22.228233+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "Deutsch",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2357
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:24.843033+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "Nederlands",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2287
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:26.884039+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "Nederlands",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2280
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:29.295656+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "Italiano",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2364
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:31.437565+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "Italiano",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2381
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:33.798119+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "Español",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2396
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:35.693746+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "Español",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2401
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:38.054584+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "Polski",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2192
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:39.967780+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "Polski",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2175
+    },
+    {
+      "itemId": "53e02da1-dd83-4818-b06d-389810532904",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/53e02da1-dd83-4818-b06d-389810532904/tour-de-pneus",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:44.094964+00:00",
+      "h1": [
+        "Tour de pneus"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "Português",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+          "alt": "A climber on a wooden wall surrounded by red and yellow tyres beneath the branches.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2334
+    },
+    {
+      "itemId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/854fefca-4dff-4133-835b-12ac1dcf444f/parc-de-la-recreation/item/68ac6ed9-52c1-4062-bbb8-d0734799fed3/voitures-a-pedales",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:28:46.072782+00:00",
+      "h1": [
+        "Voitures à pédales"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "Português",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+          "alt": "Red pedal cars with black bonnets and chequered markings on a path between trees.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2348
+    }
+  ],
+  "publishedPhotos": [
+    {
+      "imageId": "87689145d64d4266b88af29f3225359b",
+      "url": "https://amusement-parks.fun/api/images/binary/87689145d64d4266b88af29f3225359b?width=480&v=2",
+      "status": 200,
+      "contentType": "image/webp",
+      "displayedImages": [
+        {
+          "width": 480,
+          "height": 320,
+          "complete": true
+        }
+      ],
+      "checkedAtUtc": "2026-11-15T00:29:06.231763+00:00"
+    },
+    {
+      "imageId": "0307ea44e16a4f0aadded32668e4b229",
+      "url": "https://amusement-parks.fun/api/images/binary/0307ea44e16a4f0aadded32668e4b229?width=480&v=2",
+      "status": 200,
+      "contentType": "image/webp",
+      "displayedImages": [
+        {
+          "width": 480,
+          "height": 360,
+          "complete": true
+        }
+      ],
+      "checkedAtUtc": "2026-11-15T00:29:07.216136+00:00"
+    },
+    {
+      "imageId": "314b4db3e89e4431b0a7fdbe818e3eb4",
+      "url": "https://amusement-parks.fun/api/images/binary/314b4db3e89e4431b0a7fdbe818e3eb4?width=480&v=2",
+      "status": 200,
+      "contentType": "image/webp",
+      "displayedImages": [
+        {
+          "width": 480,
+          "height": 360,
+          "complete": true
+        }
+      ],
+      "checkedAtUtc": "2026-11-15T00:29:13.202325+00:00"
+    }
+  ],
+  "mobileScreenshotsPersonallyViewed": [
+    "53e02da1-dd83-4818-b06d-389810532904-public-mobile-final.png",
+    "68ac6ed9-52c1-4062-bbb8-d0734799fed3-public-mobile-final.png"
+  ],
+  "publicNavigation": "Depuis la fiche normale, Lieux du parc puis taille de page24 : les deux fiches sont accessibles. Le premier contrôle attendait Tour de pneus sur la page1 limitée à12 ; la pagination explique cette absence, pas un défaut de publication.",
+  "displayObservations": [
+    "Deux badges OTHER dans la frise historique, déjà publics ; aucun fait reclassé artificiellement pour masquer le défaut.",
+    "Les alt de galerie sont rendus en anglais dans les pages françaises des deux nouveaux lieux, malgré huit localisations relues conservées dans le graphe."
+  ],
+  "publicImageTransportObservation": "Le téléchargement isolé urllib a reçu503 et APIRequestContext ECONNREFUSED ; les trois mêmes images sont ensuite servies200 et affichées par le navigateur anonyme. Aucun réimport.",
+  "facebook": {
+    "status": "Published",
+    "publicationId": "29717df3ec6f4c6d869aa236f0fb4bbb",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
+    "observedAtUtc": "2026-11-15T00:26:32.0145865Z",
+    "newPublicationCalls": 0
+  },
+  "newSitePublication": true,
+  "newFacebookPublication": false,
+  "sitePublicationScope": "Trois photographies et deux fiches existantes rendues publiques, sans création ni réimport.",
+  "releaseVersionChanged": false
+}

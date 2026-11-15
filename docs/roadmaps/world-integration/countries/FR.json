@@ -24116,7 +24116,7 @@
       "siteId": "854fefca-4dff-4133-835b-12ac1dcf444f",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-14T21:44:03.0950436Z",
+      "presenceObservedAt": "2026-11-15T00:25:43.5957844Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -24128,7 +24128,7 @@
         "La Recreation"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T21:53:14.187Z",
+      "lastDataIntegrationAt": "2026-11-15T00:25:11.722Z",
       "integrationHistory": [
         {
           "eventId": "apply-78ec5f49-8b14-4641-b17c-6b8088329a29",
@@ -24549,9 +24549,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-park-clearing-20261114.json",
           "auditEvidence": null,
           "summary": "Vue générale officielle distincte de la clairière de La Récréation, volley et Gliss’mouille, huit langues, import privé du fichier original."
+        },
+        {
+          "eventId": "apply-ed7fdad5-3abb-4074-a934-0b400e49f333",
+          "appliedAt": "2026-11-15T00:21:50.663Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-10-publish-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "La Récréation : publication des trois photographies historiques auditées, identifiants conservés ; périmètre global toujours partiel."
+        },
+        {
+          "eventId": "apply-ec6f65bc-dc3d-4b21-935b-bb07ea1c23b5",
+          "appliedAt": "2026-11-15T00:25:11.722Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-11-publish-items-20261115.json",
+          "auditEvidence": null,
+          "summary": "La Récréation : Tour de pneus et Voitures à pédales publiés après relecture des huit langues et rapprochement des originaux ; huit autres notices restent à documenter."
         }
       ],
-      "nextAction": "Reprise du 14 novembre : deux descriptions huit langues et trois photos officielles anciennes ajoutées en privé. 30 lieux, 22 décrits, 24 médias ; huit notices restent incomplètes. Projection officielle 91/100 ; Preview de rapprochement sans mutation ni erreur. Plan 2009 = accès routier, exclu des cartes annuelles. Intégration partial, aucune nouvelle publication site/Facebook. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-followup-20261114.json",
+      "nextAction": "Trois photos et les fiches Tour de pneus/Voitures à pédales publiées après audit huit langues : 22 lieux publics sur30,24 médias,score91. Huit notices restent privées faute de matière précise ; conserver lacunes photos/positions/plans et défauts de rendu OTHER/alt anglais. Facebook existant confirmé sans nouvel envoi.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -24560,7 +24580,20 @@
         }
       ],
       "qualificationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-intake-decision.json",
-      "latestProgressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-followup-20261114.json"
+      "latestProgressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-publication-followup-20261115.json",
+      "facebookPublicationEvidence": {
+        "status": "Published",
+        "publicationId": "29717df3ec6f4c6d869aa236f0fb4bbb",
+        "url": "https://www.facebook.com/1285475681307050/posts/122125754151424431",
+        "observedAtUtc": "2026-11-15T00:26:32.0145865Z",
+        "newPublicationCalls": 0
+      },
+      "acceptedScoreException": {
+        "score": 91,
+        "decisionDate": "2026-11-14",
+        "scope": "Contenus effectivement audités ; dossier non terminé",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-publication-followup-20261115.json"
+      }
     },
     {
       "entryId": "FR-park-66653da2-93bb-499f-95df-15e240673e58",

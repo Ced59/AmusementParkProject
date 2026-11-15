@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "owner": "Conversation France",
+  "documentSha256": "67273a70f4386c7b86db1314f7ffc6365816e67d5f7571c70f410b1c80805a21",
+  "review": "Corpus exporté relu personnellement dans huit langues,3 originaux rapprochés et revus visuellement. Export distinct de publication identique ; seuls les indicateurs de visibilité et validation changent. Registre des limites conservé.",
+  "result": {
+    "operationId": "ed7fdad5-3abb-4074-a934-0b400e49f333",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:21:50.6636566Z",
+    "appliedAtUtc": "2026-11-15T00:21:50.6636585Z",
+    "targetParkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+    "targetParkName": "Parc de la Récréation",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+        "entityKey": "park",
+        "displayName": "Parc de la Récréation",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53e02da1-dd83-4818-b06d-389810532904",
+        "entityKey": "53e02da1-dd83-4818-b06d-389810532904",
+        "displayName": "Tour de pneus",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "entityKey": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "displayName": "Voitures à pédales",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "314b4db3e89e4431b0a7fdbe818e3eb4",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "87689145d64d4266b88af29f3225359b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "0307ea44e16a4f0aadded32668e4b229",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

@@ -1,0 +1,870 @@
+{
+  "entryId": "FR-candidate-28e967c581a3cb",
+  "parkId": "854fefca-4dff-4133-835b-12ac1dcf444f",
+  "checkedAtUtc": "2026-11-15T00:21:19.150682+00:00",
+  "auditExportAtUtc": "2026-11-15T00:17:03.0088332Z",
+  "auditExportSha256": "25979d04eea57d69fe60b4307a4d8377b79925ef3a0c1960cace06864e6ed9b7",
+  "publishedScopeEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false,
+  "completed": false,
+  "scope": {
+    "itemIdsReadyForPublication": [
+      "53e02da1-dd83-4818-b06d-389810532904",
+      "68ac6ed9-52c1-4062-bbb8-d0734799fed3"
+    ],
+    "privateReviewedPhotographs": 3,
+    "alreadyPublicItems": 20,
+    "publicItemsAfterPlannedPublication": 22,
+    "totalItems": 30,
+    "itemsStillPrivate": [
+      {
+        "id": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+        "name": "Balades en carriole"
+      },
+      {
+        "id": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+        "name": "Billard hollandais"
+      },
+      {
+        "id": "afd4c643-feb5-44bc-9c98-942b2388208a",
+        "name": "Mur d’escalade"
+      },
+      {
+        "id": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+        "name": "Pétanque"
+      },
+      {
+        "id": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+        "name": "Pêche à la ligne"
+      },
+      {
+        "id": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+        "name": "Totem-ball"
+      },
+      {
+        "id": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+        "name": "Tourni-pneu"
+      },
+      {
+        "id": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+        "name": "Tyroliennes"
+      }
+    ]
+  },
+  "personalReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "basis": "Relecture intégrale personnelle des huit fichiers de corpus, plus les 24 descriptions simples des images : parc,22 notices,quatre faits,article développé,alt et légendes. Les huit fiches sans notice restent privées. Photographies originales nouvelles revues personnellement et SHA256 rapprochés.",
+    "rawPublicStringsChecked": 1091,
+    "localizedEditorialFields": 792,
+    "encodingIssues": 0,
+    "exactCrossEntityMatches": 0,
+    "nearCrossEntityMatches": 0,
+    "newPhotoOriginalsPersonallyViewed": 3,
+    "newPhotoOriginalHashesMatchImportReceipts": true
+  },
+  "coverage": {
+    "items": 30,
+    "itemsWithEightDescriptions": 22,
+    "attractions": 25,
+    "attractionsWithEightDescriptions": 17,
+    "attractionsWithPhoto": 14,
+    "attractionsWithThreePhotos": 0,
+    "itemsWithPhoto": 15,
+    "media": 24,
+    "logo": 1,
+    "generalPhotosExcludingLogoAndCollage": 5,
+    "fixedItemsGeolocated": 0,
+    "fixedItemsTotal": 30,
+    "missingGeolocation": [
+      {
+        "id": "cf66dea3-923b-4a9f-bd5a-ca7cb7383255",
+        "name": "Accueil"
+      },
+      {
+        "id": "1a8b15a3-93bc-4f88-8ddf-e9bc513c530b",
+        "name": "Aires de pique-nique et barbecues"
+      },
+      {
+        "id": "64104365-d16d-491c-a9a4-44b2e0c3b1da",
+        "name": "Animaux de la ferme"
+      },
+      {
+        "id": "f33fd85b-20fa-4606-96fa-e71d84d2fd96",
+        "name": "Archery Tag"
+      },
+      {
+        "id": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+        "name": "Balades en carriole"
+      },
+      {
+        "id": "0adedff3-3eb7-4660-8bfa-6e00fd2ecca5",
+        "name": "Beach-soccer"
+      },
+      {
+        "id": "55454103-5d40-464b-858e-4e5ddfcc4633",
+        "name": "Beach-volley"
+      },
+      {
+        "id": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+        "name": "Billard hollandais"
+      },
+      {
+        "id": "80f13d22-dbb5-49bf-9d31-82a4fcd3578c",
+        "name": "Bubble foot"
+      },
+      {
+        "id": "cf186c77-665a-4bd7-b410-ee9a8c60ec63",
+        "name": "Cordes de Tarzan"
+      },
+      {
+        "id": "74d8e8aa-4198-4b73-bfc8-cff3584eaade",
+        "name": "Descente en baignoire"
+      },
+      {
+        "id": "1e41fd06-fbc6-48fe-a588-ae0931226f87",
+        "name": "Gliss’mouille"
+      },
+      {
+        "id": "a3d35ad9-7c21-4b06-9c01-df0f4221d2fb",
+        "name": "L’Éco-lutin"
+      },
+      {
+        "id": "c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+        "name": "Manège à pédales"
+      },
+      {
+        "id": "afd4c643-feb5-44bc-9c98-942b2388208a",
+        "name": "Mur d’escalade"
+      },
+      {
+        "id": "5e7ac0d6-632b-42f6-b7d6-f67e5137c1df",
+        "name": "Parcours insolite"
+      },
+      {
+        "id": "1cd878f9-d190-4e54-b123-3b17131d8d4c",
+        "name": "Parking"
+      },
+      {
+        "id": "77725983-c259-4350-9b08-121975c5d26f",
+        "name": "Pentes d’escalade"
+      },
+      {
+        "id": "313d53e2-82a0-4003-b80c-ddda682f6d9a",
+        "name": "Pistes de vélos"
+      },
+      {
+        "id": "9e5bd944-e832-425d-aaae-9b39027f4193",
+        "name": "Pont en filet"
+      },
+      {
+        "id": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+        "name": "Pétanque"
+      },
+      {
+        "id": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+        "name": "Pêche à la ligne"
+      },
+      {
+        "id": "fa4b2b8f-9f7f-4818-aa93-a2f572d5a880",
+        "name": "Slalom-kart"
+      },
+      {
+        "id": "bbbe91f1-2702-4dee-b7c0-209cba5e4545",
+        "name": "Snack"
+      },
+      {
+        "id": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+        "name": "Totem-ball"
+      },
+      {
+        "id": "53e02da1-dd83-4818-b06d-389810532904",
+        "name": "Tour de pneus"
+      },
+      {
+        "id": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+        "name": "Tourni-pneu"
+      },
+      {
+        "id": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+        "name": "Tyroliennes"
+      },
+      {
+        "id": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "name": "Voitures à pédales"
+      },
+      {
+        "id": "40d0a59c-937a-4d4d-a56c-8713c960c3d0",
+        "name": "Vélos-taxis"
+      }
+    ],
+    "itemPhotoCounts": [
+      {
+        "id": "cf66dea3-923b-4a9f-bd5a-ca7cb7383255",
+        "name": "Accueil",
+        "photos": 0
+      },
+      {
+        "id": "1a8b15a3-93bc-4f88-8ddf-e9bc513c530b",
+        "name": "Aires de pique-nique et barbecues",
+        "photos": 0
+      },
+      {
+        "id": "64104365-d16d-491c-a9a4-44b2e0c3b1da",
+        "name": "Animaux de la ferme",
+        "photos": 0
+      },
+      {
+        "id": "f33fd85b-20fa-4606-96fa-e71d84d2fd96",
+        "name": "Archery Tag",
+        "photos": 2
+      },
+      {
+        "id": "d7e43134-d950-45a1-97c5-f7d52beb4c53",
+        "name": "Balades en carriole",
+        "photos": 0
+      },
+      {
+        "id": "0adedff3-3eb7-4660-8bfa-6e00fd2ecca5",
+        "name": "Beach-soccer",
+        "photos": 1
+      },
+      {
+        "id": "55454103-5d40-464b-858e-4e5ddfcc4633",
+        "name": "Beach-volley",
+        "photos": 1
+      },
+      {
+        "id": "56165ef4-2ee1-4e22-9dfe-f24afbec09f3",
+        "name": "Billard hollandais",
+        "photos": 0
+      },
+      {
+        "id": "80f13d22-dbb5-49bf-9d31-82a4fcd3578c",
+        "name": "Bubble foot",
+        "photos": 1
+      },
+      {
+        "id": "cf186c77-665a-4bd7-b410-ee9a8c60ec63",
+        "name": "Cordes de Tarzan",
+        "photos": 1
+      },
+      {
+        "id": "74d8e8aa-4198-4b73-bfc8-cff3584eaade",
+        "name": "Descente en baignoire",
+        "photos": 1
+      },
+      {
+        "id": "1e41fd06-fbc6-48fe-a588-ae0931226f87",
+        "name": "Gliss’mouille",
+        "photos": 1
+      },
+      {
+        "id": "a3d35ad9-7c21-4b06-9c01-df0f4221d2fb",
+        "name": "L’Éco-lutin",
+        "photos": 0
+      },
+      {
+        "id": "c73d51a8-25c8-4fbb-8ebe-f01efe24617f",
+        "name": "Manège à pédales",
+        "photos": 0
+      },
+      {
+        "id": "afd4c643-feb5-44bc-9c98-942b2388208a",
+        "name": "Mur d’escalade",
+        "photos": 0
+      },
+      {
+        "id": "5e7ac0d6-632b-42f6-b7d6-f67e5137c1df",
+        "name": "Parcours insolite",
+        "photos": 0
+      },
+      {
+        "id": "1cd878f9-d190-4e54-b123-3b17131d8d4c",
+        "name": "Parking",
+        "photos": 1
+      },
+      {
+        "id": "77725983-c259-4350-9b08-121975c5d26f",
+        "name": "Pentes d’escalade",
+        "photos": 1
+      },
+      {
+        "id": "313d53e2-82a0-4003-b80c-ddda682f6d9a",
+        "name": "Pistes de vélos",
+        "photos": 1
+      },
+      {
+        "id": "9e5bd944-e832-425d-aaae-9b39027f4193",
+        "name": "Pont en filet",
+        "photos": 1
+      },
+      {
+        "id": "41da4dd2-b65a-4e55-b4bc-102a7dc2c94f",
+        "name": "Pétanque",
+        "photos": 0
+      },
+      {
+        "id": "6a807fad-f5f4-4e4b-8f8b-a918b76b4523",
+        "name": "Pêche à la ligne",
+        "photos": 0
+      },
+      {
+        "id": "fa4b2b8f-9f7f-4818-aa93-a2f572d5a880",
+        "name": "Slalom-kart",
+        "photos": 2
+      },
+      {
+        "id": "bbbe91f1-2702-4dee-b7c0-209cba5e4545",
+        "name": "Snack",
+        "photos": 0
+      },
+      {
+        "id": "e0dc56bd-8171-4b85-8938-66dc3c0a31a9",
+        "name": "Totem-ball",
+        "photos": 0
+      },
+      {
+        "id": "53e02da1-dd83-4818-b06d-389810532904",
+        "name": "Tour de pneus",
+        "photos": 1
+      },
+      {
+        "id": "ad4bccdd-5152-4b0b-8700-ceb089ee970b",
+        "name": "Tourni-pneu",
+        "photos": 0
+      },
+      {
+        "id": "fef1589f-2cc5-48f6-b4ba-deae4a43648b",
+        "name": "Tyroliennes",
+        "photos": 0
+      },
+      {
+        "id": "68ac6ed9-52c1-4062-bbb8-d0734799fed3",
+        "name": "Voitures à pédales",
+        "photos": 1
+      },
+      {
+        "id": "40d0a59c-937a-4d4d-a56c-8713c960c3d0",
+        "name": "Vélos-taxis",
+        "photos": 1
+      }
+    ],
+    "history": 4,
+    "articles": 1,
+    "annualMaps": 0,
+    "currentHoursAndPricesApplicable": false
+  },
+  "distributions": {
+    "park-fr": {
+      "count": 1,
+      "min": 272,
+      "p10": 272,
+      "median": 272,
+      "p90": 272,
+      "max": 272
+    },
+    "park-en": {
+      "count": 1,
+      "min": 237,
+      "p10": 237,
+      "median": 237,
+      "p90": 237,
+      "max": 237
+    },
+    "park-de": {
+      "count": 1,
+      "min": 227,
+      "p10": 227,
+      "median": 227,
+      "p90": 227,
+      "max": 227
+    },
+    "park-nl": {
+      "count": 1,
+      "min": 247,
+      "p10": 247,
+      "median": 247,
+      "p90": 247,
+      "max": 247
+    },
+    "park-it": {
+      "count": 1,
+      "min": 256,
+      "p10": 256,
+      "median": 256,
+      "p90": 256,
+      "max": 256
+    },
+    "park-es": {
+      "count": 1,
+      "min": 272,
+      "p10": 272,
+      "median": 272,
+      "p90": 272,
+      "max": 272
+    },
+    "park-pl": {
+      "count": 1,
+      "min": 221,
+      "p10": 221,
+      "median": 221,
+      "p90": 221,
+      "max": 221
+    },
+    "park-pt": {
+      "count": 1,
+      "min": 256,
+      "p10": 256,
+      "median": 256,
+      "p90": 256,
+      "max": 256
+    },
+    "items-Service-fr": {
+      "count": 3,
+      "min": 113,
+      "p10": 113,
+      "median": 117,
+      "p90": 117,
+      "max": 119
+    },
+    "items-Service-en": {
+      "count": 3,
+      "min": 97,
+      "p10": 97,
+      "median": 107,
+      "p90": 107,
+      "max": 110
+    },
+    "items-Service-de": {
+      "count": 3,
+      "min": 90,
+      "p10": 90,
+      "median": 94,
+      "p90": 94,
+      "max": 110
+    },
+    "items-Service-nl": {
+      "count": 3,
+      "min": 95,
+      "p10": 95,
+      "median": 106,
+      "p90": 106,
+      "max": 119
+    },
+    "items-Service-it": {
+      "count": 3,
+      "min": 100,
+      "p10": 100,
+      "median": 103,
+      "p90": 103,
+      "max": 110
+    },
+    "items-Service-es": {
+      "count": 3,
+      "min": 106,
+      "p10": 106,
+      "median": 118,
+      "p90": 118,
+      "max": 125
+    },
+    "items-Service-pl": {
+      "count": 3,
+      "min": 86,
+      "p10": 86,
+      "median": 94,
+      "p90": 94,
+      "max": 95
+    },
+    "items-Service-pt": {
+      "count": 3,
+      "min": 102,
+      "p10": 102,
+      "median": 110,
+      "p90": 110,
+      "max": 118
+    },
+    "items-Animal-fr": {
+      "count": 1,
+      "min": 118,
+      "p10": 118,
+      "median": 118,
+      "p90": 118,
+      "max": 118
+    },
+    "items-Animal-en": {
+      "count": 1,
+      "min": 99,
+      "p10": 99,
+      "median": 99,
+      "p90": 99,
+      "max": 99
+    },
+    "items-Animal-de": {
+      "count": 1,
+      "min": 92,
+      "p10": 92,
+      "median": 92,
+      "p90": 92,
+      "max": 92
+    },
+    "items-Animal-nl": {
+      "count": 1,
+      "min": 95,
+      "p10": 95,
+      "median": 95,
+      "p90": 95,
+      "max": 95
+    },
+    "items-Animal-it": {
+      "count": 1,
+      "min": 110,
+      "p10": 110,
+      "median": 110,
+      "p90": 110,
+      "max": 110
+    },
+    "items-Animal-es": {
+      "count": 1,
+      "min": 110,
+      "p10": 110,
+      "median": 110,
+      "p90": 110,
+      "max": 110
+    },
+    "items-Animal-pl": {
+      "count": 1,
+      "min": 88,
+      "p10": 88,
+      "median": 88,
+      "p90": 88,
+      "max": 88
+    },
+    "items-Animal-pt": {
+      "count": 1,
+      "min": 110,
+      "p10": 110,
+      "median": 110,
+      "p90": 110,
+      "max": 110
+    },
+    "items-Attraction-fr": {
+      "count": 17,
+      "min": 92,
+      "p10": 93,
+      "median": 113,
+      "p90": 131,
+      "max": 157
+    },
+    "items-Attraction-en": {
+      "count": 17,
+      "min": 74,
+      "p10": 82,
+      "median": 102,
+      "p90": 113,
+      "max": 128
+    },
+    "items-Attraction-de": {
+      "count": 17,
+      "min": 73,
+      "p10": 74,
+      "median": 94,
+      "p90": 116,
+      "max": 119
+    },
+    "items-Attraction-nl": {
+      "count": 17,
+      "min": 75,
+      "p10": 80,
+      "median": 102,
+      "p90": 118,
+      "max": 139
+    },
+    "items-Attraction-it": {
+      "count": 17,
+      "min": 84,
+      "p10": 88,
+      "median": 106,
+      "p90": 123,
+      "max": 146
+    },
+    "items-Attraction-es": {
+      "count": 17,
+      "min": 86,
+      "p10": 92,
+      "median": 116,
+      "p90": 132,
+      "max": 150
+    },
+    "items-Attraction-pl": {
+      "count": 17,
+      "min": 65,
+      "p10": 72,
+      "median": 88,
+      "p90": 104,
+      "max": 116
+    },
+    "items-Attraction-pt": {
+      "count": 17,
+      "min": 85,
+      "p10": 87,
+      "median": 108,
+      "p90": 118,
+      "max": 143
+    },
+    "items-Restaurant-fr": {
+      "count": 1,
+      "min": 111,
+      "p10": 111,
+      "median": 111,
+      "p90": 111,
+      "max": 111
+    },
+    "items-Restaurant-en": {
+      "count": 1,
+      "min": 99,
+      "p10": 99,
+      "median": 99,
+      "p90": 99,
+      "max": 99
+    },
+    "items-Restaurant-de": {
+      "count": 1,
+      "min": 96,
+      "p10": 96,
+      "median": 96,
+      "p90": 96,
+      "max": 96
+    },
+    "items-Restaurant-nl": {
+      "count": 1,
+      "min": 99,
+      "p10": 99,
+      "median": 99,
+      "p90": 99,
+      "max": 99
+    },
+    "items-Restaurant-it": {
+      "count": 1,
+      "min": 104,
+      "p10": 104,
+      "median": 104,
+      "p90": 104,
+      "max": 104
+    },
+    "items-Restaurant-es": {
+      "count": 1,
+      "min": 110,
+      "p10": 110,
+      "median": 110,
+      "p90": 110,
+      "max": 110
+    },
+    "items-Restaurant-pl": {
+      "count": 1,
+      "min": 84,
+      "p10": 84,
+      "median": 84,
+      "p90": 84,
+      "max": 84
+    },
+    "items-Restaurant-pt": {
+      "count": 1,
+      "min": 101,
+      "p10": 101,
+      "median": 101,
+      "p90": 101,
+      "max": 101
+    },
+    "timeline-fr": {
+      "count": 4,
+      "min": 37,
+      "p10": 37,
+      "median": 38.5,
+      "p90": 39,
+      "max": 42
+    },
+    "timeline-en": {
+      "count": 4,
+      "min": 33,
+      "p10": 33,
+      "median": 36.0,
+      "p90": 37,
+      "max": 37
+    },
+    "timeline-de": {
+      "count": 4,
+      "min": 32,
+      "p10": 32,
+      "median": 32.5,
+      "p90": 33,
+      "max": 38
+    },
+    "timeline-nl": {
+      "count": 4,
+      "min": 34,
+      "p10": 34,
+      "median": 36.0,
+      "p90": 37,
+      "max": 38
+    },
+    "timeline-it": {
+      "count": 4,
+      "min": 34,
+      "p10": 34,
+      "median": 36.0,
+      "p90": 37,
+      "max": 38
+    },
+    "timeline-es": {
+      "count": 4,
+      "min": 37,
+      "p10": 37,
+      "median": 38.0,
+      "p90": 39,
+      "max": 39
+    },
+    "timeline-pl": {
+      "count": 4,
+      "min": 30,
+      "p10": 30,
+      "median": 32.5,
+      "p90": 33,
+      "max": 34
+    },
+    "timeline-pt": {
+      "count": 4,
+      "min": 37,
+      "p10": 37,
+      "median": 37.0,
+      "p90": 37,
+      "max": 39
+    },
+    "article-fr": {
+      "count": 1,
+      "min": 547,
+      "p10": 547,
+      "median": 547,
+      "p90": 547,
+      "max": 547
+    },
+    "article-en": {
+      "count": 1,
+      "min": 473,
+      "p10": 473,
+      "median": 473,
+      "p90": 473,
+      "max": 473
+    },
+    "article-de": {
+      "count": 1,
+      "min": 477,
+      "p10": 477,
+      "median": 477,
+      "p90": 477,
+      "max": 477
+    },
+    "article-nl": {
+      "count": 1,
+      "min": 492,
+      "p10": 492,
+      "median": 492,
+      "p90": 492,
+      "max": 492
+    },
+    "article-it": {
+      "count": 1,
+      "min": 507,
+      "p10": 507,
+      "median": 507,
+      "p90": 507,
+      "max": 507
+    },
+    "article-es": {
+      "count": 1,
+      "min": 519,
+      "p10": 519,
+      "median": 519,
+      "p90": 519,
+      "max": 519
+    },
+    "article-pl": {
+      "count": 1,
+      "min": 430,
+      "p10": 430,
+      "median": 430,
+      "p90": 430,
+      "max": 430
+    },
+    "article-pt": {
+      "count": 1,
+      "min": 507,
+      "p10": 507,
+      "median": 507,
+      "p90": 507,
+      "max": 507
+    }
+  },
+  "shortDescriptions": "Descriptions spécifiques fondées sur photographies officielles et reportages, deux paragraphes pour les nouveaux objets ; aucune histoire ni donnée technique inventée pour allonger les textes.",
+  "score": {
+    "completenessScore": 91,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 94,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "closedParkScoreTolerance": {
+    "accepted": true,
+    "date": "2026-11-14",
+    "scope": "Publication des seuls contenus audités ; dossier global toujours partial."
+  },
+  "sourceChecks": [
+    {
+      "url": "https://mairie-sorigny.com/wp-content/uploads/37159-rp-1-DP-Monts-28-05-18.pdf",
+      "checkedAtUtc": "2026-11-15T00:19:14.221850+00:00",
+      "status": 200,
+      "finalUrl": "https://mairie-sorigny.com/wp-content/uploads/37159-rp-1-DP-Monts-28-05-18.pdf",
+      "bytes": 4785218,
+      "sha256": "b2f3364e3b2f666df87b7e9d74ec0c6ac6223cb73b0b68d134159058a6f663b8"
+    },
+    {
+      "url": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "checkedAtUtc": "2026-11-15T00:19:17.136059+00:00",
+      "status": 200,
+      "finalUrl": "https://www.37degres-mag.fr/societe/vacances-en-touraine-que-faire-en-famille/",
+      "bytes": 131796,
+      "sha256": "791508c9190ec100fe7f232aa3fa2a913bf8a7ff9d9c912c2277a09aa5fd820f"
+    },
+    {
+      "url": "https://rcdb.com/16305.htm",
+      "checkedAtUtc": "2026-11-15T00:19:18.375092+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/16305.htm",
+      "bytes": 66040,
+      "sha256": "85e170e4e32fb76f1b9739538ad2228fabc71a306dba59063f84e0a09e2b91ac"
+    },
+    {
+      "url": "https://web.archive.org/web/20120219031551id_/http://www.la-recreation.com/Jeux/jeux.html",
+      "checkedAtUtc": "2026-11-15T00:19:19.040481+00:00",
+      "error": "HTTP Error 429: Too Many Requests"
+    }
+  ],
+  "sourceAvailabilityNote": "La nouvelle lecture de la page archivée de jeux reçoit429 ; original déjà récupéré le14novembre avec preuve200, fichiers et hachages conservés. Pas de contournement ni changement des faits. Sources municipales,37degrés etRCDB répondent200.",
+  "remainingGaps": [
+    "Huit notices manquantes, identifiants conservés privés.",
+    "Attributions de constructeurs, dates individuelles, coordonnées non prouvées et photos supplémentaires non inventées.",
+    "Plan2009 est routier, exclu des cartes annuelles ; aucune carte intérieure authentifiée retrouvée.",
+    "Le total commercial de70jeux ne permet pas de créer70identités distinctes : modules de parcours regroupés selon les noms prouvés.",
+    "Faits Other pour installation du site et réemploi Family Park : défaut de libellé public déjà identifié sur cette famille de faits, à conserver dans les contrôles."
+  ],
+  "sourceEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-recreation-followup-20261114.json"
+}
