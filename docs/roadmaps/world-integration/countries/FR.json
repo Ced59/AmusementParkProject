@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T19:31:35.834Z",
+      "lastDataIntegrationAt": "2026-11-15T19:50:10.107Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38928,6 +38928,86 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-75-ballon-puys-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : photo officielle de Ballon des Puys importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-959d5443-f3c3-425b-aef1-dd624f19a76e",
+          "appliedAt": "2026-11-15T19:37:52.738Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-77-remaining-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : neuf lieux internes et services officiellement identifiés ajoutés privés ; Geyser, Serre, Cratère, sentiers, aires de jeux, Piste de Vulcain, aire camping-cars, parking et accueil. Statut de la Piste Unknown conservé, aucune date ni position inventée."
+        },
+        {
+          "eventId": "apply-83940aa2-7376-460f-8235-7fefd50d921e",
+          "appliedAt": "2026-11-15T19:45:01.364Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-78-landscape-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : 32 notices relues en huit langues pour Geyser, Serre, Cratère et Sentiers de découverte ; identité et caractère reconstitué du Geyser documentés, données privées conservées."
+        },
+        {
+          "eventId": "import-photo-36fb503df2aa4ade8f31879d995a74ad",
+          "appliedAt": "2026-11-15T19:46:31.419Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-79-cratere-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Cratère importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-e4a759d9bc6f449684777d5ce883ec28",
+          "appliedAt": "2026-11-15T19:46:41.172Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-80-geyser-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Geyser importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-7c28d1bd539c4a8a9e5b00544152ae09",
+          "appliedAt": "2026-11-15T19:46:50.572Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-81-sentiers-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Sentiers de découverte importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-24eeb68044aa41328d38d948fe415385",
+          "appliedAt": "2026-11-15T19:46:59.501Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-82-serre-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Serre importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-31b117128a6745529a55c1c7df058ed0",
+          "appliedAt": "2026-11-15T19:47:10.555Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-83-piste-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de La Piste de Vulcain importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-717f82d0-a76d-4a98-b8d0-f9c4ae7df10b",
+          "appliedAt": "2026-11-15T19:50:10.107Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-84-services-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : 32 textes relus en huit langues pour Piste de Vulcain, aire camping-cars, parking et accueil niveau C ; distinction jour/nuit sourcée, Piste indisponible de statut Unknown, toutes fiches privées."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38980,7 +39060,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-583a2b39fa9f4649a44345bdd310daf4 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-717f82d0-a76d-4a98-b8d0-f9c4ae7df10b ; conserver les références de découverte."
       }
     },
     {

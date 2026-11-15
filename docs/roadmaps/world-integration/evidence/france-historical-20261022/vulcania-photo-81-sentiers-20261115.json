@@ -1,0 +1,282 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-81-sentiers",
+    "ownerId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+    "itemName": "Sentiers de découverte",
+    "current": true,
+    "source": {
+      "key": "sentiers",
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/05/sentiers-decouverte.jpg",
+      "status": 200,
+      "file": "/workspace/france-historical-20261114/vulcania/remaining-inventory-1938/sentiers.jpg",
+      "bytes": 60772,
+      "dimensions": [
+        594,
+        399
+      ],
+      "sha256": "a2a81d6c2e0809d75eb2f50bd664da89278192c51103b562eb45cd23a14aa5a7",
+      "sourcePage": "https://www.vulcania.com/education/maternelle/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; official credit retained; no open licence claimed.",
+    "qualification": "Original personally inspected, 24 localized fields personally authored and reviewed, no crop, transformation or capture date invention. Piste historical noncurrent; official notice says unavailable without documented permanent removal."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/sentiers-decouverte.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/remaining-inventory-1938/sentiers.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-81-sentiers-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-81-sentiers-import-result.json"
+  },
+  "metadata": {
+    "description": "Une prairie fleurie et le cône du parc apparaissent derrière cette observation de terrain.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/sentiers-decouverte.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un adulte montre une roche à trois enfants près d’un muret sur les Sentiers de découverte de Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "An adult shows a rock to three children beside a stone wall on Vulcania’s Sentiers de découverte."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Erwachsener zeigt drei Kindern an einer Steinmauer auf Vulcanias Sentiers de découverte ein Gestein."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een volwassene laat drie kinderen bij een stenen muurtje een steen zien op de Sentiers de découverte van Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un adulto mostra una roccia a tre bambini accanto a un muretto sui Sentiers de découverte di Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un adulto muestra una roca a tres niños junto a un murete en los Sentiers de découverte de Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dorosły pokazuje skałę trojgu dzieci przy kamiennym murku na Sentiers de découverte w Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um adulto mostra uma rocha a três crianças junto de um murete nos Sentiers de découverte de Vulcania."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une prairie fleurie et le cône du parc apparaissent derrière cette observation de terrain."
+      },
+      {
+        "languageCode": "en",
+        "value": "A flowering meadow and the park’s cone form the background to this outdoor observation."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine blühende Wiese und der Kegel des Parks bilden den Hintergrund dieser Beobachtung im Freien."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een bloemenweide en de kegel van het park vormen de achtergrond van deze waarneming buiten."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un prato fiorito e il cono del parco fanno da sfondo a questa osservazione sul terreno."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un prado florido y el cono del parque aparecen al fondo de esta observación sobre el terreno."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kwiecista łąka i parkowy stożek tworzą tło tej obserwacji w terenie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um prado florido e o cone do parque surgem ao fundo desta observação no terreno."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T19:46:57.2209426Z",
+    "startedAtUtc": "2026-11-15T19:46:49.6419217Z",
+    "result": {
+      "id": "7c28d1bd539c4a8a9e5b00544152ae09",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+      "path": "park_item/7c28d1bd539c4a8a9e5b00544152ae09",
+      "description": "Une prairie fleurie et le cône du parc apparaissent derrière cette observation de terrain.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 594,
+      "height": 399,
+      "sizeInBytes": 60772,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/sentiers-decouverte.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un adulte montre une roche à trois enfants près d’un muret sur les Sentiers de découverte de Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "An adult shows a rock to three children beside a stone wall on Vulcania’s Sentiers de découverte."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Erwachsener zeigt drei Kindern an einer Steinmauer auf Vulcanias Sentiers de découverte ein Gestein."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een volwassene laat drie kinderen bij een stenen muurtje een steen zien op de Sentiers de découverte van Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un adulto mostra una roccia a tre bambini accanto a un muretto sui Sentiers de découverte di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un adulto muestra una roca a tres niños junto a un murete en los Sentiers de découverte de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorosły pokazuje skałę trojgu dzieci przy kamiennym murku na Sentiers de découverte w Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um adulto mostra uma rocha a três crianças junto de um murete nos Sentiers de découverte de Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une prairie fleurie et le cône du parc apparaissent derrière cette observation de terrain."
+        },
+        {
+          "languageCode": "en",
+          "value": "A flowering meadow and the park’s cone form the background to this outdoor observation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine blühende Wiese und der Kegel des Parks bilden den Hintergrund dieser Beobachtung im Freien."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een bloemenweide en de kegel van het park vormen de achtergrond van deze waarneming buiten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un prato fiorito e il cono del parco fanno da sfondo a questa osservazione sul terreno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un prado florido y el cono del parque aparecen al fondo de esta observación sobre el terreno."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kwiecista łąka i parkowy stożek tworzą tło tej obserwacji w terenie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um prado florido e o cone do parque surgem ao fundo desta observação no terreno."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:46:50.572Z",
+      "updatedAt": "2026-11-15T19:46:54.108Z"
+    },
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

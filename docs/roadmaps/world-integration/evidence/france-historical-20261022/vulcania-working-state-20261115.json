@@ -370,7 +370,7 @@
         "isLaunched": true,
         "openingDate": "2021-07-10",
         "closingDate": null,
-        "openingDateText": null,
+        "openingDateText": "2021-07-10",
         "closingDateText": null,
         "durationInSeconds": null,
         "capacityPerHour": null,
@@ -1361,7 +1361,8 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/expedition-hawai/",
         "durationInSeconds": 900,
-        "openingDate": "2026"
+        "openingDate": null,
+        "openingDateText": "2026"
       },
       "descriptions": [
         {
@@ -1409,7 +1410,8 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/planetarium/",
-        "openingDate": "2023"
+        "openingDate": null,
+        "openingDateText": "2023"
       },
       "descriptions": [
         {
@@ -2023,7 +2025,8 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
         "durationInSeconds": 1080,
-        "openingDate": "2026"
+        "openingDate": null,
+        "openingDateText": "2026"
       },
       "descriptions": [
         {
@@ -2635,6 +2638,383 @@
         {
           "languageCode": "pt",
           "value": "<h2>Um olhar acima das árvores</h2><p>Apresentado em Vulcania em 2014, o Ballon des Puys proporcionava uma descoberta aérea das paisagens vulcânicas da Auvérnia. Este balão cativo Aérophile ligava o parque a uma vista acima das copas das árvores, com os relevos no horizonte.</p><p>O invólucro branco tinha uma larga faixa azul ilustrada com silhuetas de paisagens e o nome Le Ballon des Puys. Uma gôndola circular azul estava suspensa sob a grande esfera, visível acima do bosque.</p><h2>A paisagem como tema</h2><p>A experiência prolongava a descoberta do vulcanismo através da observação do próprio território. As florestas e as formas vulcânicas em redor de Vulcania compunham o cenário, visto de uma perspetiva invulgar.</p>"
+        }
+      ]
+    },
+    {
+      "id": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+      "key": "vulcania-geyser",
+      "name": "Geyser",
+      "category": "Attraction",
+      "type": "InteractiveExperience",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un jet d’eau dans le paysage volcanique</h2><p>Le Geyser transpose en plein air un spectacle des terres volcaniques : une colonne d’eau s’élève par intermittence au milieu d’un bassin. Autour, les jeux d’eau donnent aux enfants une approche concrète de ce thème, loin des éruptions projetées dans les salles du parc.</p><p>Il s’agit d’une reconstitution, pas d’une source chaude naturelle. Le jaillissement met en scène les manifestations qui peuvent persister dans une région volcanique après les éruptions.</p><h2>L’eau à portée de jeu</h2><p>Des tables de manipulation aux commandes rouges entourent le bassin, avec le grand jet en arrière-plan. Le contraste entre les petits gestes des enfants et l’eau qui s’élève donne son caractère à cet espace extérieur, ouvert sur les arbres et les reliefs environnants.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A fountain in a volcanic landscape</h2><p>The Geyser brings a spectacle associated with volcanic country outdoors: a column of water rises intermittently from a pool. Water games around it let children explore the theme directly, away from the eruptions shown on the park’s cinema screens.</p><p>This is a reconstruction, rather than a natural hot spring. Its bursts represent phenomena that can continue in a volcanic region after eruptions have ended.</p><h2>Water within reach</h2><p>Activity tables with red controls stand around the pool, with the tall fountain beyond them. The contrast between children’s small movements and the rising water shapes this outdoor space, which opens onto the surrounding trees and hills.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Wasserfontäne in der Vulkanlandschaft</h2><p>Der Geyser bringt ein Schauspiel vulkanischer Regionen ins Freie: In Abständen steigt eine Wassersäule aus einem Becken auf. Die Wasserspiele ringsum machen das Thema für Kinder unmittelbar erfahrbar, abseits der Eruptionen auf den Kinoleinwänden des Parks.</p><p>Die Anlage ist eine Nachbildung und keine natürliche heiße Quelle. Das Aufschießen des Wassers veranschaulicht Erscheinungen, die in einem Vulkangebiet auch nach Ausbrüchen noch auftreten können.</p><h2>Mit Wasser experimentieren</h2><p>Spieltische mit roten Steuerelementen stehen rund um das Becken, dahinter erhebt sich die hohe Fontäne. Das Nebeneinander kleiner Kinderhandgriffe und aufsteigenden Wassers prägt diesen Außenbereich mit Blick auf die umliegenden Bäume und Hügel.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een waterstraal in het vulkaanlandschap</h2><p>Bij de Geyser verschijnt een verschijnsel uit vulkanische gebieden in de openlucht: met tussenpozen stijgt een hoge waterkolom uit een bassin. De waterspellen eromheen laten kinderen het thema zelf verkennen, buiten de zalen waar vulkaanuitbarstingen op schermen te zien zijn.</p><p>Dit is een nabootsing, geen natuurlijke warmwaterbron. De opspuitende straal verbeeldt verschijnselen die na uitbarstingen in een vulkanisch gebied kunnen voortduren.</p><h2>Spelen met water</h2><p>Speeltafels met rode bedieningsknoppen staan rondom het bassin, met de hoge fontein op de achtergrond. Het verschil tussen kleine kinderhandelingen en het opstijgende water kenmerkt deze buitenruimte, die uitzicht biedt op bomen en omliggende heuvels.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un getto d’acqua nel paesaggio vulcanico</h2><p>Il Geyser porta all’aperto uno spettacolo legato alle terre vulcaniche: una colonna d’acqua si alza a intervalli da una vasca. I giochi d’acqua circostanti permettono ai bambini di avvicinarsi al tema attraverso l’esperienza diretta, fuori dalle sale che proiettano le eruzioni.</p><p>È una ricostruzione, non una sorgente termale naturale. Il getto rappresenta i fenomeni che possono persistere in una regione vulcanica dopo le eruzioni.</p><h2>L’acqua diventa gioco</h2><p>Tavoli per le attività con comandi rossi circondano la vasca, con l’alta fontana sullo sfondo. Il contrasto fra i piccoli gesti dei bambini e l’acqua che sale caratterizza questo spazio aperto verso gli alberi e i rilievi circostanti.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un chorro de agua en el paisaje volcánico</h2><p>El Geyser lleva al aire libre un espectáculo de las regiones volcánicas: una columna de agua se eleva de forma intermitente desde una piscina. Los juegos de agua que la rodean acercan el tema a los niños mediante la experiencia directa, fuera de las salas que proyectan erupciones.</p><p>Se trata de una recreación, no de una fuente termal natural. El chorro representa fenómenos que pueden persistir en una región volcánica después de las erupciones.</p><h2>El agua como juego</h2><p>Las mesas de actividades con mandos rojos rodean la piscina, con la gran fuente al fondo. El contraste entre los pequeños gestos de los niños y el agua que se eleva caracteriza este espacio abierto hacia los árboles y las colinas circundantes.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Strumień wody w wulkanicznym krajobrazie</h2><p>Geyser przenosi pod gołe niebo widowisko kojarzone z terenami wulkanicznymi: z basenu co pewien czas wystrzela słup wody. Otaczające go zabawy wodne pozwalają dzieciom poznawać temat przez własne doświadczenie, poza salami z projekcjami erupcji.</p><p>To odtworzenie zjawiska, a nie naturalne gorące źródło. Strumień ilustruje procesy, które mogą utrzymywać się w regionie wulkanicznym również po ustaniu wybuchów.</p><h2>Woda zachęcająca do zabawy</h2><p>Wokół basenu stoją stoliki z czerwonymi elementami sterującymi, a za nimi wznosi się wysoka fontanna. Zestawienie drobnych ruchów dziecięcych dłoni z unoszącą się wodą wyróżnia tę plenerową przestrzeń, otwartą na okoliczne drzewa i wzgórza.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um jato de água na paisagem vulcânica</h2><p>O Geyser traz para o ar livre um espetáculo associado às terras vulcânicas: uma coluna de água sobe de forma intermitente a partir de um tanque. Os jogos de água em redor aproximam as crianças do tema pela experiência direta, fora das salas onde se projetam erupções.</p><p>É uma recriação, não uma nascente termal natural. O jato representa fenómenos que podem persistir numa região vulcânica depois das erupções.</p><h2>Água para experimentar</h2><p>Mesas de atividades com comandos vermelhos rodeiam o tanque, com a grande fonte ao fundo. O contraste entre os pequenos gestos das crianças e a água que sobe caracteriza este espaço aberto para as árvores e os relevos circundantes.</p>"
+        }
+      ]
+    },
+    {
+      "id": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+      "key": "vulcania-serre",
+      "name": "Serre",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une végétation venue des hauteurs tropicales</h2><p>Sous la verrière de la Serre, les fougères arborescentes et d’autres plantes exotiques évoquent les milieux volcaniques tropicaux d’altitude. Le feuillage entoure un chemin de visite et des rochers, composant un jardin où le volcanisme se raconte par le vivant.</p><p>Cet ensemble symbolise la reconquête d’une terre après une éruption : aux paysages dénudés souvent associés aux volcans répond ici une végétation abondante. La lumière de la verrière accompagne cette lecture botanique des sols volcaniques.</p><h2>De la serre à la vallée</h2><p>Dans son prolongement, la vallée laisse apparaître une ancienne coulée de lave partiellement dégagée. La flore locale y contraste avec les plantes abritées sous verre et relie ce jardin exotique au terrain auvergnat qui accueille Vulcania.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Plants from tropical highlands</h2><p>Beneath the greenhouse roof, tree ferns and other exotic plants evoke high-altitude tropical volcanic habitats. Foliage surrounds a visitor path and rocks, creating a garden that tells a volcanic story through living things.</p><p>The planting symbolises vegetation reclaiming land after an eruption. Lush growth answers the bare landscapes often associated with volcanoes, while light through the glass roof illuminates this botanical reading of volcanic soils.</p><h2>From greenhouse to valley</h2><p>Beyond the greenhouse, a valley exposes part of an old lava flow. Its local flora contrasts with the plants sheltered under glass, connecting this exotic garden to the Auvergne terrain on which Vulcania stands.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Pflanzen aus tropischen Höhenlagen</h2><p>Unter dem Glasdach der Serre erinnern Baumfarne und andere exotische Pflanzen an tropische Vulkanlandschaften in höheren Lagen. Das Grün umgibt einen Besucherweg und Felsen. So entsteht ein Garten, der Vulkanismus anhand der lebendigen Natur erzählt.</p><p>Die Bepflanzung steht für die Rückkehr der Vegetation nach einem Ausbruch. Den kahlen Landschaften, die häufig mit Vulkanen verbunden werden, setzt sie üppiges Wachstum entgegen. Licht fällt durch das Glasdach auf diesen botanischen Blick auf vulkanische Böden.</p><h2>Vom Gewächshaus ins Tal</h2><p>Im anschließenden Tal ist ein alter Lavastrom teilweise freigelegt. Die heimische Flora bildet einen Kontrast zu den Pflanzen unter Glas und verbindet den exotischen Garten mit dem auvergnatischen Untergrund von Vulcania.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Planten uit tropische hooglanden</h2><p>Onder het glazen dak van de Serre verwijzen boomvarens en andere exotische planten naar tropische vulkaangebieden op grotere hoogte. Bladeren omringen een bezoekerspad en rotsen. In deze tuin vertelt de levende natuur het verhaal van vulkanisme.</p><p>De beplanting verbeeldt hoe vegetatie na een uitbarsting het land opnieuw verovert. Tegenover de kale landschappen die vaak met vulkanen worden verbonden, staat hier uitbundig groen. Licht door het glas versterkt die botanische blik op vulkanische bodems.</p><h2>Van kas naar dal</h2><p>In het aansluitende dal ligt een oude lavastroom gedeeltelijk bloot. De plaatselijke flora contrasteert met de planten onder glas en verbindt deze exotische tuin met de Auvergnese bodem waarop Vulcania is gebouwd.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Piante delle alture tropicali</h2><p>Sotto la vetrata della Serre, felci arboree e altre piante esotiche evocano gli ambienti vulcanici tropicali d’altitudine. Il fogliame circonda un percorso di visita e alcune rocce, formando un giardino che racconta il vulcanismo attraverso la vita vegetale.</p><p>L’insieme simboleggia la riconquista del terreno dopo un’eruzione. Ai paesaggi spogli spesso associati ai vulcani risponde una vegetazione rigogliosa, illuminata dalla copertura di vetro: una lettura botanica dei suoli vulcanici.</p><h2>Dalla serra alla valle</h2><p>Nella valle che prosegue oltre la serra affiora parte di un’antica colata lavica. La flora locale contrasta con le piante riparate sotto vetro e collega questo giardino esotico al terreno dell’Alvernia su cui sorge Vulcania.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Plantas de las alturas tropicales</h2><p>Bajo la cubierta de cristal de la Serre, los helechos arborescentes y otras plantas exóticas evocan los ambientes volcánicos tropicales de altitud. El follaje rodea un recorrido y unas rocas, formando un jardín que cuenta el vulcanismo a través de la vida vegetal.</p><p>El conjunto simboliza la recuperación del terreno por la vegetación después de una erupción. Frente a los paisajes desnudos asociados a los volcanes aparece un crecimiento exuberante, iluminado por la cristalera: una lectura botánica de los suelos volcánicos.</p><h2>Del invernadero al valle</h2><p>En el valle contiguo aflora parcialmente una antigua colada de lava. La flora local contrasta con las plantas protegidas bajo cristal y vincula este jardín exótico con el terreno de Auvernia donde se encuentra Vulcania.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Rośliny z tropikalnych wyżyn</h2><p>Pod szklanym dachem Serre paprocie drzewiaste i inne egzotyczne rośliny przywołują wysokogórskie środowiska tropikalnych regionów wulkanicznych. Liście otaczają ścieżkę dla zwiedzających i skały. Ten ogród opowiada o wulkanizmie za pośrednictwem żywej przyrody.</p><p>Kompozycja symbolizuje powrót roślinności na ziemię po erupcji. Zamiast pustych krajobrazów często kojarzonych z wulkanami pojawia się bujna zieleń. Światło przenikające przez dach oświetla tę botaniczną interpretację gleb wulkanicznych.</p><h2>Ze szklarni do doliny</h2><p>W przylegającej dolinie częściowo odsłonięto dawny potok lawy. Miejscowa flora kontrastuje z roślinami chronionymi pod szkłem i wiąże egzotyczny ogród z owernijskim podłożem Vulcanii.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Plantas das terras altas tropicais</h2><p>Sob a cobertura de vidro da Serre, fetos arbóreos e outras plantas exóticas evocam ambientes vulcânicos tropicais de altitude. A folhagem envolve um percurso de visita e rochas, formando um jardim que conta o vulcanismo através da vida vegetal.</p><p>O conjunto simboliza a reconquista do terreno pela vegetação após uma erupção. Às paisagens despidas frequentemente associadas aos vulcões responde um crescimento abundante, iluminado pela cobertura de vidro: uma leitura botânica dos solos vulcânicos.</p><h2>Da estufa ao vale</h2><p>No vale contíguo aflora parcialmente uma antiga escoada de lava. A flora local contrasta com as plantas protegidas sob vidro e liga este jardim exótico ao terreno de Auvérnia onde se encontra Vulcania.</p>"
+        }
+      ]
+    },
+    {
+      "id": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+      "key": "vulcania-cratere",
+      "name": "Cratère",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une ouverture dans les couches volcaniques</h2><p>Le Cratère donne au bâtiment de Vulcania une profondeur visible depuis ses circulations. Cette excavation traverse un empilement de matériaux volcaniques ; ses parois et les cheminements qui l’entourent placent le terrain lui-même au centre du décor.</p><p>Le regard descend vers une ouverture sombre, tandis que les visiteurs restent perceptibles sur les niveaux supérieurs. Cette confrontation entre l’échelle humaine et la cavité accompagne l’architecture largement enterrée du parc.</p><h2>Des grondements sous les pas</h2><p>Des grondements et des dégagements de vapeur intermittents composent une simulation sensorielle autour de la roche. Ils mettent en scène un imaginaire volcanique dans un espace aménagé : le Cratère n’est pas un volcan en activité.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>An opening through volcanic layers</h2><p>The Cratère gives Vulcania’s building a depth visible from its surrounding walkways. This excavation cuts through accumulated volcanic material; its walls and the paths around them make the ground itself part of the setting.</p><p>The eye is drawn down towards a dark opening, while visitors remain visible on the upper levels. The contrast between people and the cavity complements the park’s largely underground architecture.</p><h2>Rumbling beneath the walkways</h2><p>Intermittent rumbles and releases of vapour create a sensory simulation around the rock. They evoke volcanic activity in a constructed visitor space: the Cratère is not an active volcano.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Einblick in vulkanische Schichten</h2><p>Der Cratère macht die Tiefe des Vulcania-Gebäudes von den umliegenden Wegen aus sichtbar. Die Ausgrabung führt durch übereinanderliegendes vulkanisches Material. Ihre Wände und die angrenzenden Wege rücken den Untergrund selbst in den Mittelpunkt der Gestaltung.</p><p>Der Blick fällt hinab zu einer dunklen Öffnung, während auf den oberen Ebenen Besucher erkennbar bleiben. Das Verhältnis zwischen Mensch und Hohlraum ergänzt die weitgehend unterirdische Architektur des Parks.</p><h2>Grollen unter den Wegen</h2><p>Zeitweiliges Grollen und aufsteigender Dampf bilden eine sinnliche Inszenierung rund um das Gestein. Sie lassen vulkanische Vorgänge in einem gestalteten Besucherraum anklingen: Der Cratère ist kein aktiver Vulkan.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een opening door vulkanische lagen</h2><p>De Cratère maakt de diepte van het Vulcania-gebouw zichtbaar vanaf de omliggende wandelgangen. Deze uitgraving doorsnijdt opgestapeld vulkanisch materiaal. De wanden en paden eromheen plaatsen de ondergrond zelf in het middelpunt van het decor.</p><p>De blik daalt af naar een donkere opening, terwijl bezoekers bovenlangs zichtbaar blijven. Het contrast tussen de mensen en de holte sluit aan bij de grotendeels ondergrondse architectuur van het park.</p><h2>Gerommel onder de paden</h2><p>Met tussenpozen zorgen gerommel en stoom voor een zintuiglijke nabootsing rond het gesteente. Ze roepen vulkanische activiteit op binnen een aangelegde bezoekersruimte: de Cratère is geen actieve vulkaan.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un’apertura negli strati vulcanici</h2><p>Il Cratère rende visibile la profondità dell’edificio di Vulcania dai percorsi circostanti. Lo scavo attraversa una successione di materiali vulcanici: le pareti e i camminamenti che lo circondano mettono al centro della scenografia il terreno stesso.</p><p>Lo sguardo scende verso un’apertura scura, mentre i visitatori restano visibili ai livelli superiori. Il rapporto tra la scala umana e la cavità accompagna l’architettura in gran parte sotterranea del parco.</p><h2>Boati sotto i camminamenti</h2><p>Boati e fuoriuscite intermittenti di vapore compongono una simulazione sensoriale attorno alla roccia. Evocano l’attività vulcanica in uno spazio allestito per il pubblico: il Cratère non è un vulcano attivo.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una abertura entre capas volcánicas</h2><p>El Cratère permite apreciar la profundidad del edificio de Vulcania desde los pasos que lo rodean. Esta excavación atraviesa una acumulación de materiales volcánicos; las paredes y los recorridos circundantes sitúan el propio terreno en el centro de la escenografía.</p><p>La mirada baja hacia una abertura oscura, mientras los visitantes siguen siendo visibles en los niveles superiores. El contraste entre la escala humana y la cavidad acompaña la arquitectura mayoritariamente subterránea del parque.</p><h2>Retumbos bajo los pasos</h2><p>Los retumbos y las emisiones intermitentes de vapor componen una simulación sensorial en torno a la roca. Evocan actividad volcánica en un espacio acondicionado para visitantes: el Cratère no es un volcán activo.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Otwór w warstwach wulkanicznych</h2><p>Cratère pozwala dostrzec głębokość budynku Vulcanii z otaczających go przejść. Wykop przecina nagromadzone materiały wulkaniczne. Jego ściany i biegnące obok trasy stawiają samą ziemię w centrum scenografii.</p><p>Wzrok kieruje się ku ciemnemu otworowi, podczas gdy na wyższych poziomach nadal widać zwiedzających. Zestawienie ludzkiej sylwetki z rozmiarami zagłębienia uzupełnia w dużej mierze podziemną architekturę parku.</p><h2>Pomruki pod przejściami</h2><p>Okresowe pomruki i wyrzuty pary tworzą wokół skał symulację oddziałującą na zmysły. Przywołują aktywność wulkaniczną w przestrzeni urządzonej dla gości: Cratère nie jest czynnym wulkanem.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma abertura nas camadas vulcânicas</h2><p>O Cratère torna visível a profundidade do edifício de Vulcania a partir dos percursos em redor. A escavação atravessa uma acumulação de materiais vulcânicos; as paredes e as passagens circundantes colocam o próprio terreno no centro do cenário.</p><p>O olhar desce para uma abertura escura, enquanto os visitantes continuam visíveis nos níveis superiores. O contraste entre a escala humana e a cavidade acompanha a arquitetura maioritariamente subterrânea do parque.</p><h2>Rugidos sob as passagens</h2><p>Rugidos e libertações intermitentes de vapor compõem uma simulação sensorial em torno da rocha. Evocam atividade vulcânica num espaço preparado para visitantes: o Cratère não é um vulcão ativo.</p>"
+        }
+      ]
+    },
+    {
+      "id": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+      "key": "vulcania-sentiers-decouverte",
+      "name": "Sentiers de découverte",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le paysage auvergnat comme terrain de découverte</h2><p>Les Sentiers de découverte parcourent les espaces extérieurs de Vulcania pour donner à lire le territoire qui entoure le parc. Le volcanisme n’y apparaît plus seulement sous forme de film ou de maquette : il s’inscrit dans le relief, les roches et la végétation d’un milieu de moyenne montagne.</p><p>L’observation porte aussi sur l’empreinte humaine. Les peuplements végétaux et l’organisation du paysage permettent d’aborder la manière dont les activités des habitants ont accompagné l’histoire naturelle de cette région.</p><h2>Des roches aux plantes</h2><p>Les ressources pédagogiques associées aux sentiers relient climat, végétation et lecture du paysage. Observer une roche, reconnaître le rôle des plantes ou replacer l’architecture du parc dans son environnement ramène ainsi les grands thèmes de Vulcania à des éléments visibles dans ses propres espaces extérieurs.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Exploring Auvergne through its landscape</h2><p>The Sentiers de découverte cross Vulcania’s outdoor grounds to reveal the territory surrounding the park. Volcanism is encountered beyond films and models: it is present in the relief, rocks and vegetation of this upland environment.</p><p>Observation also turns to human influence. Patterns of vegetation and the organisation of the landscape introduce the ways local activities have accompanied the region’s natural history.</p><h2>From rocks to plants</h2><p>The trails’ educational resources connect climate, vegetation and landscape interpretation. Observing a rock, considering the role of plants or placing the park’s architecture in its surroundings brings Vulcania’s broader themes back to things visible within its own grounds.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Auvergne anhand ihrer Landschaft entdecken</h2><p>Die Sentiers de découverte führen durch das Außengelände von Vulcania und erschließen die Umgebung des Parks. Vulkanismus begegnet hier jenseits von Filmen und Modellen: Er zeigt sich in den Geländeformen, Gesteinen und Pflanzen einer Mittelgebirgslandschaft.</p><p>Zur Beobachtung gehört auch der menschliche Einfluss. Die Zusammensetzung der Vegetation und die Gestaltung der Landschaft zeigen, wie örtliche Tätigkeiten die Naturgeschichte der Region begleitet haben.</p><h2>Von Steinen zu Pflanzen</h2><p>Die pädagogischen Materialien zu den Wegen verbinden Klima, Vegetation und Landschaftsbetrachtung. Ein Gestein zu beobachten, die Rolle der Pflanzen zu erkennen oder die Parkarchitektur in ihre Umgebung einzuordnen, führt Vulcanias große Themen auf sichtbare Elemente im eigenen Außengelände zurück.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Auvergne ontdekken via het landschap</h2><p>De Sentiers de découverte lopen door het buitenterrein van Vulcania en maken het gebied rondom het park leesbaar. Vulkanisme komt hier buiten films en maquettes tot leven: in het reliëf, de stenen en de begroeiing van een middelgebergte.</p><p>Ook de invloed van mensen krijgt aandacht. De samenstelling van de vegetatie en de inrichting van het landschap laten zien hoe plaatselijke activiteiten samengingen met de natuurlijke geschiedenis van de streek.</p><h2>Van stenen naar planten</h2><p>Het lesmateriaal bij de paden verbindt klimaat, begroeiing en landschapsinterpretatie. Een steen bekijken, de rol van planten onderzoeken of de parkarchitectuur in haar omgeving plaatsen brengt de grote thema’s van Vulcania terug naar zichtbare onderdelen van het eigen buitenterrein.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Scoprire l’Alvernia attraverso il paesaggio</h2><p>I Sentiers de découverte attraversano gli spazi esterni di Vulcania per leggere il territorio attorno al parco. Il vulcanismo si incontra oltre i film e i plastici: è presente nei rilievi, nelle rocce e nella vegetazione di questo ambiente di media montagna.</p><p>L’osservazione riguarda anche l’impronta umana. La composizione della vegetazione e l’organizzazione del paesaggio permettono di affrontare il rapporto tra le attività degli abitanti e la storia naturale della regione.</p><h2>Dalle rocce alle piante</h2><p>Le risorse didattiche dei sentieri collegano clima, vegetazione e lettura del paesaggio. Osservare una roccia, riconoscere il ruolo delle piante o collocare l’architettura del parco nel suo ambiente riporta i grandi temi di Vulcania a elementi visibili nei suoi stessi spazi esterni.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Descubrir Auvernia a través del paisaje</h2><p>Los Sentiers de découverte recorren los espacios exteriores de Vulcania para interpretar el territorio que rodea el parque. El vulcanismo se encuentra más allá de películas y maquetas: está presente en el relieve, las rocas y la vegetación de este entorno de media montaña.</p><p>La observación también aborda la huella humana. La composición vegetal y la organización del paisaje permiten explorar cómo las actividades de sus habitantes han acompañado la historia natural de la región.</p><h2>De las rocas a las plantas</h2><p>Los recursos educativos de los senderos relacionan clima, vegetación y lectura del paisaje. Observar una roca, reconocer el papel de las plantas o situar la arquitectura del parque en su entorno acerca los grandes temas de Vulcania a elementos visibles en sus propios espacios exteriores.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Poznawanie Owernii poprzez krajobraz</h2><p>Sentiers de découverte prowadzą przez zewnętrzne tereny Vulcanii i pomagają odczytać otoczenie parku. Wulkanizm pojawia się tu poza filmami i makietami: jest obecny w rzeźbie terenu, skałach i roślinności krajobrazu średnich gór.</p><p>Obserwacja obejmuje również wpływ człowieka. Skład roślinności i zagospodarowanie krajobrazu pozwalają poznać związki między działalnością mieszkańców a historią przyrodniczą regionu.</p><h2>Od skał do roślin</h2><p>Materiały edukacyjne do ścieżek łączą klimat, roślinność i interpretację krajobrazu. Obserwowanie skały, poznawanie roli roślin czy umieszczanie parkowej architektury w jej otoczeniu wiąże główne tematy Vulcanii z elementami widocznymi na jej własnym terenie.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Descobrir Auvérnia através da paisagem</h2><p>Os Sentiers de découverte atravessam os espaços exteriores de Vulcania para interpretar o território em redor do parque. O vulcanismo surge para além dos filmes e das maquetas: está presente no relevo, nas rochas e na vegetação deste ambiente de média montanha.</p><p>A observação abrange também a marca humana. A composição da vegetação e a organização da paisagem permitem abordar a forma como as atividades dos habitantes acompanharam a história natural da região.</p><h2>Das rochas às plantas</h2><p>Os recursos educativos dos percursos relacionam clima, vegetação e interpretação da paisagem. Observar uma rocha, reconhecer o papel das plantas ou enquadrar a arquitetura do parque no seu ambiente aproxima os grandes temas de Vulcania de elementos visíveis nos seus próprios espaços exteriores.</p>"
+        }
+      ]
+    },
+    {
+      "id": "83ff43e0-c52c-4c28-9f18-a20419168599",
+      "key": "vulcania-aires-jeux-exterieures",
+      "name": "Aires de jeux extérieures",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Operating",
+        "sourceUrl": "https://www.vulcania.com/special-enfants/"
+      }
+    },
+    {
+      "id": "f3f72017-45be-4f59-9e45-424d951d29cf",
+      "key": "vulcania-piste-vulcain",
+      "name": "La Piste de Vulcain",
+      "category": "Attraction",
+      "type": "Playground",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "sourceUrl": "https://www.vulcania.com/animation/la-piste-de-vulcain/"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un paysage volcanique parcouru à vélo</h2><p>La Piste de Vulcain proposait une expérience de BMX à l’extérieur de Vulcania. Son dessin ondulant évoquait, selon le parc, les formes arrondies de la Chaîne des Puys environnante. Le relief devenait ainsi un terrain de pratique plutôt qu’un paysage observé depuis une exposition.</p><p>La piste sombre serpentait entre des îlots d’herbe, avec des marques blanches qui en soulignaient les courbes. Les photographies montrent des cyclistes portant casque et protections dans ce décor ouvert.</p><h2>Une activité désormais indisponible</h2><p>Cette animation n’est plus proposée à Vulcania. La pratique du BMX y donnait au thème volcanique une traduction sportive, en rapprochant les courbes d’un terrain de jeu des reliefs de la Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Cycling through a volcanic-inspired landscape</h2><p>La Piste de Vulcain offered an outdoor BMX experience at Vulcania. According to the park, its undulating shape echoed the rounded forms of the surrounding Chaîne des Puys. The landscape became something to ride through rather than observe in an exhibition.</p><p>The dark track wound between patches of grass, with white markings emphasising its curves. Photographs show riders wearing helmets and protective pads in this open setting.</p><h2>An activity no longer available</h2><p>This activity is no longer offered at Vulcania. BMX riding gave the volcanic theme a sporting expression, linking the curves of a play landscape with the contours of the Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Mit dem Fahrrad durch eine Vulkanlandschaft</h2><p>La Piste de Vulcain bot ein BMX-Erlebnis im Freien. Nach Angaben von Vulcania erinnerte ihre wellige Gestaltung an die abgerundeten Formen der umliegenden Chaîne des Puys. Die Landschaft wurde damit zum befahrbaren Gelände statt zum Gegenstand einer Ausstellung.</p><p>Die dunkle Bahn schlängelte sich zwischen Grasinseln hindurch; weiße Markierungen betonten ihre Kurven. Auf Fotografien sind Radfahrer mit Helmen und Schützern in dieser offenen Umgebung zu sehen.</p><h2>Nicht mehr angeboten</h2><p>Diese Aktivität wird in Vulcania nicht mehr angeboten. Das BMX-Fahren verlieh dem Vulkanthema eine sportliche Form und verband die Kurven eines Spielgeländes mit den Erhebungen der Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Fietsen door een vulkanisch geïnspireerd landschap</h2><p>La Piste de Vulcain bood een BMX-ervaring in de buitenlucht. Volgens Vulcania verwees de golvende vorm naar de afgeronde heuvels van de omliggende Chaîne des Puys. Het landschap werd zo een terrein om doorheen te fietsen in plaats van een onderwerp in een tentoonstelling.</p><p>De donkere baan slingerde tussen grasstroken, met witte markeringen die de bochten benadrukten. Foto’s tonen fietsers met helmen en beschermers in deze open omgeving.</p><h2>Niet meer beschikbaar</h2><p>Deze activiteit wordt niet meer aangeboden in Vulcania. BMX-fietsen gaf het vulkaanthema een sportieve invulling, waarbij de bochten van een speelterrein aansloten bij de vormen van de Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un paesaggio vulcanico da percorrere in bicicletta</h2><p>La Piste de Vulcain proponeva un’esperienza di BMX all’aperto. Secondo Vulcania, il disegno ondulato richiamava le forme arrotondate della vicina Chaîne des Puys. Il paesaggio diventava così un terreno da affrontare in bicicletta anziché un soggetto da osservare in un’esposizione.</p><p>La pista scura serpeggiava tra isole d’erba, con segni bianchi a sottolinearne le curve. Le fotografie mostrano ciclisti con casco e protezioni in questo ambiente aperto.</p><h2>Un’attività non più disponibile</h2><p>Questa attività non è più proposta a Vulcania. La pratica del BMX dava al tema vulcanico un’espressione sportiva, accostando le curve di un terreno di gioco ai rilievi della Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un paisaje volcánico recorrido en bicicleta</h2><p>La Piste de Vulcain ofrecía una experiencia de BMX al aire libre. Según Vulcania, su trazado ondulado evocaba las formas redondeadas de la cercana Chaîne des Puys. El paisaje se convertía así en un terreno para practicar ciclismo en lugar de observarlo en una exposición.</p><p>La pista oscura serpenteaba entre islas de hierba, con marcas blancas que destacaban sus curvas. Las fotografías muestran ciclistas con casco y protecciones en este entorno abierto.</p><h2>Una actividad ya no disponible</h2><p>Esta actividad ya no se ofrece en Vulcania. La práctica del BMX daba al tema volcánico una expresión deportiva, relacionando las curvas de un terreno de juego con los relieves de la Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Rowerem przez krajobraz inspirowany wulkanami</h2><p>La Piste de Vulcain oferowała jazdę na BMX-ach na świeżym powietrzu. Według Vulcanii falisty kształt nawiązywał do zaokrąglonych form pobliskiej Chaîne des Puys. Krajobraz stawał się w ten sposób terenem do jazdy, a nie tylko tematem wystawy.</p><p>Ciemny tor wił się między wysepkami trawy, a białe oznaczenia podkreślały zakręty. Fotografie pokazują rowerzystów w kaskach i ochraniaczach w tej otwartej przestrzeni.</p><h2>Atrakcja już niedostępna</h2><p>Ta aktywność nie jest już oferowana w Vulcanii. Jazda na BMX-ach nadawała tematowi wulkanów sportowy wymiar, łącząc krzywizny terenu do zabawy z formami Chaîne des Puys.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma paisagem vulcânica percorrida de bicicleta</h2><p>A Piste de Vulcain proporcionava uma experiência de BMX ao ar livre. Segundo Vulcania, o desenho ondulado evocava as formas arredondadas da vizinha Chaîne des Puys. A paisagem tornava-se assim terreno para andar de bicicleta, em vez de um tema observado numa exposição.</p><p>A pista escura serpenteava entre ilhas de relva, com marcas brancas a salientar as curvas. As fotografias mostram ciclistas com capacete e proteções neste cenário aberto.</p><h2>Uma atividade já indisponível</h2><p>Esta atividade já não é proposta em Vulcania. A prática de BMX dava ao tema vulcânico uma expressão desportiva, aproximando as curvas de um terreno de jogo dos relevos da Chaîne des Puys.</p>"
+        }
+      ]
+    },
+    {
+      "id": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+      "key": "vulcania-aire-camping-cars",
+      "name": "Aire de camping-cars",
+      "category": "Service",
+      "type": "Service",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles gratuitement dans le parking du parc pendant la journée.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available free of charge in the park’s daytime car park.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem tagsüber kostenlosen Parkplatz des Parks getrennt.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag gratis beschikbaar zijn.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili gratuitamente durante il giorno nel parcheggio del parco.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles gratuitamente durante el día en el aparcamiento del parque.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych bezpłatnie w ciągu dnia na zwykłym parkingu parku.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis gratuitamente durante o dia no estacionamento do parque.</p>"
+        }
+      ]
+    },
+    {
+      "id": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+      "key": "vulcania-parking",
+      "name": "Parking",
+      "category": "Service",
+      "type": "Parking",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Vulcania annonce ce stationnement comme gratuit et prévoit notamment des places pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement gratuit pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément. Le parking de jour et cette aire de séjour ont donc des usages différents.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Vulcania advertises this parking as free and provides spaces for motorhomes as well.</p><p>School groups also have free coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer. Daytime parking and this overnight area therefore serve different purposes.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Vulcania gibt das Parken als kostenlos an und bietet auch Stellflächen für Wohnmobile.</p><p>Schulgruppen können Reisebusse ebenfalls kostenlos abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen. Tagesparkplatz und Übernachtungsbereich erfüllen somit unterschiedliche Zwecke.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Vulcania vermeldt dat dit parkeren gratis is en voorziet ook in plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over gratis parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod. De dagparkeerplaats en dit verblijfsterrein hebben dus verschillende functies.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Vulcania indica la sosta come gratuita e prevede anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio gratuito per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente. Il parcheggio diurno e quest’area di soggiorno hanno quindi funzioni differenti.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. Vulcania anuncia este estacionamiento como gratuito y dispone también de plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento gratuito para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado. El aparcamiento diurno y esa área de estancia cumplen, por tanto, funciones diferentes.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Vulcania podaje, że postój jest bezpłatny, i zapewnia również miejsca dla kamperów.</p><p>Grupy szkolne mają także bezpłatny parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie. Parking dzienny i teren noclegowy pełnią zatem różne funkcje.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Vulcania anuncia este estacionamento como gratuito e disponibiliza também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento gratuito para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente. O estacionamento diurno e essa área de estadia têm, por isso, funções diferentes.</p>"
+        }
+      ]
+    },
+    {
+      "id": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+      "key": "vulcania-accueil",
+      "name": "Accueil",
+      "category": "Service",
+      "type": "Information",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le point d’accueil du niveau C</h2><p>L’accueil général de Vulcania se trouve au niveau C. Il assure notamment l’information sur le dispositif « baby switch », qui permet aux adultes d’une famille d’accéder à tour de rôle aux animations dynamiques lorsqu’un enfant n’atteint pas la taille minimale.</p><p>C’est aussi l’un des points de remise du bracelet et de la notice d’accès prioritaire, sur présentation du justificatif prévu par le parc. Ce service est également proposé aux caisses de l’entrée.</p><h2>Les équipements prêtés</h2><p>Fauteuils roulants, poussettes et équipements d’aide à la visite peuvent être retirés à l’accueil ou à l’espace de services des caisses, selon les stocks et les conditions de prêt. Ces fonctions rassemblent ici l’accompagnement des familles et plusieurs services d’accessibilité.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The reception point on level C</h2><p>Vulcania’s main reception is on level C. Among its services is information about baby switch, which lets adults in a family take turns on dynamic attractions when a child does not meet the minimum height.</p><p>Reception also issues the priority-access wristband and information leaflet on presentation of the supporting document required by the park. This service is also offered at the entrance ticket offices.</p><h2>Equipment loans</h2><p>Wheelchairs, pushchairs and visitor-assistance equipment can be collected here or from the service area at the ticket offices, subject to availability and loan conditions. Reception brings together family assistance and several accessibility services.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Der Empfang auf Ebene C</h2><p>Vulcanias zentraler Empfang befindet sich auf Ebene C. Hier gibt es unter anderem Auskunft zum Baby-Switch-Angebot: Erwachsene einer Familie können dynamische Attraktionen abwechselnd nutzen, wenn ein Kind die Mindestgröße noch nicht erreicht.</p><p>Gegen Vorlage des vom Park verlangten Nachweises werden hier auch das Armband und das Merkblatt für bevorzugten Zugang ausgegeben. Diesen Service bieten ebenso die Eingangskassen an.</p><h2>Hilfsmittel zum Ausleihen</h2><p>Rollstühle, Kinderwagen und Hilfsmittel für den Besuch sind am Empfang oder im Servicebereich der Kassen erhältlich, je nach Bestand und Leihbedingungen. Damit vereint dieser Ort Familienbetreuung und mehrere Angebote zur Barrierefreiheit.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Het ontvangstpunt op niveau C</h2><p>De algemene receptie van Vulcania bevindt zich op niveau C. Hier is onder meer informatie over baby switch verkrijgbaar: volwassenen binnen een gezin kunnen om de beurt een dynamische attractie bezoeken wanneer een kind de minimumlengte nog niet bereikt.</p><p>Ook het polsbandje en de informatie over voorrangstoegang worden hier verstrekt op vertoon van het door het park vereiste bewijs. Deze dienst is eveneens beschikbaar bij de ingangskassa’s.</p><h2>Uitleen van hulpmiddelen</h2><p>Rolstoelen, kinderwagens en hulpmiddelen voor het bezoek zijn hier of bij de servicedienst van de kassa’s af te halen, afhankelijk van voorraad en uitleenvoorwaarden. De receptie verenigt zo gezinsondersteuning en verschillende toegankelijkheidsdiensten.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Il punto d’accoglienza al livello C</h2><p>L’accoglienza generale di Vulcania si trova al livello C. Fornisce anche informazioni sul servizio baby switch, che permette agli adulti di una famiglia di alternarsi sulle attrazioni dinamiche quando un bambino non raggiunge l’altezza minima.</p><p>Qui vengono inoltre consegnati il braccialetto e la guida per l’accesso prioritario, dietro presentazione del documento richiesto dal parco. Lo stesso servizio è disponibile alle casse d’ingresso.</p><h2>Attrezzature in prestito</h2><p>Sedie a rotelle, passeggini e ausili alla visita possono essere ritirati qui o nello spazio servizi delle casse, secondo disponibilità e condizioni di prestito. L’accoglienza riunisce così assistenza alle famiglie e diversi servizi di accessibilità.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>El punto de acogida del nivel C</h2><p>La recepción general de Vulcania se encuentra en el nivel C. Ofrece, entre otros servicios, información sobre baby switch, que permite a los adultos de una familia turnarse en las atracciones dinámicas cuando un niño no alcanza la altura mínima.</p><p>También entrega la pulsera y la información de acceso prioritario al presentar el justificante exigido por el parque. Este servicio se ofrece igualmente en las taquillas de entrada.</p><h2>Préstamo de equipamiento</h2><p>Las sillas de ruedas, cochecitos y equipos de apoyo a la visita pueden recogerse aquí o en el espacio de servicios de las taquillas, según existencias y condiciones de préstamo. La recepción reúne así asistencia a las familias y varios servicios de accesibilidad.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Punkt obsługi na poziomie C</h2><p>Główna recepcja Vulcanii znajduje się na poziomie C. Udziela między innymi informacji o usłudze baby switch, dzięki której dorośli z jednej rodziny mogą kolejno korzystać z atrakcji dynamicznych, gdy dziecko nie osiąga wymaganego wzrostu.</p><p>Po okazaniu dokumentu wymaganego przez park wydaje się tu również opaskę i ulotkę dotyczącą dostępu priorytetowego. Usługa ta jest dostępna także w kasach przy wejściu.</p><h2>Wypożyczanie wyposażenia</h2><p>Wózki inwalidzkie, wózki dziecięce i pomoce do zwiedzania można odebrać tutaj lub w strefie usług przy kasach, zależnie od dostępności i warunków wypożyczenia. Recepcja łączy w ten sposób wsparcie rodzin z kilkoma usługami dostępności.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>O ponto de acolhimento do nível C</h2><p>O acolhimento geral de Vulcania situa-se no nível C. Presta, entre outros serviços, informações sobre o baby switch, que permite aos adultos de uma família alternarem nas atrações dinâmicas quando uma criança não atinge a altura mínima.</p><p>É também um dos pontos de entrega da pulseira e do folheto de acesso prioritário, mediante apresentação do comprovativo exigido pelo parque. Este serviço existe igualmente nas bilheteiras da entrada.</p><h2>Equipamento emprestado</h2><p>Cadeiras de rodas, carrinhos de bebé e equipamentos de apoio à visita podem ser levantados aqui ou no espaço de serviços das bilheteiras, conforme as existências e condições de empréstimo. O acolhimento reúne assim apoio às famílias e vários serviços de acessibilidade.</p>"
         }
       ]
     }
@@ -9191,6 +9571,650 @@
       "key": "583a2b39fa9f4649a44345bdd310daf4",
       "imageId": "583a2b39fa9f4649a44345bdd310daf4",
       "ownerKey": "ce88d195-4890-43e4-8551-8f26d460760b"
+    },
+    {
+      "id": "36fb503df2aa4ade8f31879d995a74ad",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+      "path": "park_item/36fb503df2aa4ade8f31879d995a74ad",
+      "description": "La cavité centrale dévoile des parois rocheuses sous les rampes et les passerelles du bâtiment.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 594,
+      "height": 399,
+      "sizeInBytes": 49305,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/cratere.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vue plongeante sur le Cratère de Vulcania et les visiteurs dans les circulations qui l’entourent."
+        },
+        {
+          "languageCode": "en",
+          "value": "Looking down into Vulcania’s Cratère, with visitors on the surrounding walkways."
+        },
+        {
+          "languageCode": "de",
+          "value": "Blick hinab in Vulcanias Cratère mit Besuchern auf den umliegenden Wegen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Neerwaarts zicht op de Cratère van Vulcania met bezoekers op de omliggende wandelgangen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vista dall’alto sul Cratère di Vulcania e sui visitatori lungo i percorsi circostanti."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista desde arriba del Cratère de Vulcania y de los visitantes en los pasos circundantes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok z góry na Cratère w Vulcanii i zwiedzających na otaczających go przejściach."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista de cima sobre o Cratère de Vulcania e os visitantes nas passagens em redor."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La cavité centrale dévoile des parois rocheuses sous les rampes et les passerelles du bâtiment."
+        },
+        {
+          "languageCode": "en",
+          "value": "The central cavity exposes rock faces beneath the building’s ramps and footbridges."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der zentrale Hohlraum legt Felswände unter den Rampen und Stegen des Gebäudes frei."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In de centrale holte zijn rotswanden zichtbaar onder de hellingbanen en loopbruggen van het gebouw."
+        },
+        {
+          "languageCode": "it",
+          "value": "La cavità centrale rivela pareti rocciose sotto le rampe e le passerelle dell’edificio."
+        },
+        {
+          "languageCode": "es",
+          "value": "La cavidad central deja ver paredes rocosas bajo las rampas y pasarelas del edificio."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W centralnym zagłębieniu widać skalne ściany pod pochylniami i kładkami budynku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cavidade central revela paredes rochosas sob as rampas e passadiços do edifício."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:46:31.419Z",
+      "updatedAt": "2026-11-15T19:46:34.964Z",
+      "key": "36fb503df2aa4ade8f31879d995a74ad",
+      "imageId": "36fb503df2aa4ade8f31879d995a74ad",
+      "ownerKey": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94"
+    },
+    {
+      "id": "e4a759d9bc6f449684777d5ce883ec28",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+      "path": "park_item/e4a759d9bc6f449684777d5ce883ec28",
+      "description": "Le bassin circulaire et son pavage mouillé s’inscrivent dans un espace ouvert bordé d’arbres.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 981,
+      "height": 658,
+      "sizeInBytes": 141311,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/geyser.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Geyser de Vulcania projette un haut jet d’eau devant des enfants réunis autour d’une table de jeu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s Geyser sends up a tall jet of water in front of children gathered at an activity table."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcanias Geyser lässt eine hohe Wasserfontäne vor Kindern an einem Spieltisch aufsteigen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Geyser van Vulcania spuit een hoge waterstraal op voor kinderen rond een speeltafel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Geyser di Vulcania solleva un alto getto d’acqua davanti ai bambini riuniti attorno a un tavolo da gioco."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Geyser de Vulcania lanza un alto chorro de agua ante unos niños reunidos en una mesa de juegos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Geyser w Vulcanii wyrzuca wysoki strumień wody przed dziećmi zebranymi przy stoliku do zabawy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Geyser de Vulcania lança um alto jato de água diante de crianças reunidas numa mesa de jogos."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le bassin circulaire et son pavage mouillé s’inscrivent dans un espace ouvert bordé d’arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The circular pool and wet paving occupy an open space bordered by trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das runde Becken und das nasse Pflaster liegen auf einer offenen, von Bäumen gesäumten Fläche."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het ronde bassin en de natte bestrating liggen in een open ruimte omzoomd door bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "La vasca circolare e la pavimentazione bagnata occupano uno spazio aperto delimitato da alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "La piscina circular y el pavimento mojado ocupan un espacio abierto bordeado de árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Okrągły basen i mokra nawierzchnia znajdują się na otwartej przestrzeni otoczonej drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O tanque circular e o pavimento molhado ocupam um espaço aberto ladeado por árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:46:41.172Z",
+      "updatedAt": "2026-11-15T19:46:44.776Z",
+      "key": "e4a759d9bc6f449684777d5ce883ec28",
+      "imageId": "e4a759d9bc6f449684777d5ce883ec28",
+      "ownerKey": "4fbdddac-0414-4692-8d49-3470d0ea0bbd"
+    },
+    {
+      "id": "7c28d1bd539c4a8a9e5b00544152ae09",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+      "path": "park_item/7c28d1bd539c4a8a9e5b00544152ae09",
+      "description": "Une prairie fleurie et le cône du parc apparaissent derrière cette observation de terrain.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 594,
+      "height": 399,
+      "sizeInBytes": 60772,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/sentiers-decouverte.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un adulte montre une roche à trois enfants près d’un muret sur les Sentiers de découverte de Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "An adult shows a rock to three children beside a stone wall on Vulcania’s Sentiers de découverte."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Erwachsener zeigt drei Kindern an einer Steinmauer auf Vulcanias Sentiers de découverte ein Gestein."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een volwassene laat drie kinderen bij een stenen muurtje een steen zien op de Sentiers de découverte van Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un adulto mostra una roccia a tre bambini accanto a un muretto sui Sentiers de découverte di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un adulto muestra una roca a tres niños junto a un murete en los Sentiers de découverte de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorosły pokazuje skałę trojgu dzieci przy kamiennym murku na Sentiers de découverte w Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um adulto mostra uma rocha a três crianças junto de um murete nos Sentiers de découverte de Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une prairie fleurie et le cône du parc apparaissent derrière cette observation de terrain."
+        },
+        {
+          "languageCode": "en",
+          "value": "A flowering meadow and the park’s cone form the background to this outdoor observation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine blühende Wiese und der Kegel des Parks bilden den Hintergrund dieser Beobachtung im Freien."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een bloemenweide en de kegel van het park vormen de achtergrond van deze waarneming buiten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un prato fiorito e il cono del parco fanno da sfondo a questa osservazione sul terreno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un prado florido y el cono del parque aparecen al fondo de esta observación sobre el terreno."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kwiecista łąka i parkowy stożek tworzą tło tej obserwacji w terenie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um prado florido e o cone do parque surgem ao fundo desta observação no terreno."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:46:50.572Z",
+      "updatedAt": "2026-11-15T19:46:54.108Z",
+      "key": "7c28d1bd539c4a8a9e5b00544152ae09",
+      "imageId": "7c28d1bd539c4a8a9e5b00544152ae09",
+      "ownerKey": "e86df04e-1840-431f-bb7b-52c29850ef9d"
+    },
+    {
+      "id": "24eeb68044aa41328d38d948fe415385",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+      "path": "park_item/24eeb68044aa41328d38d948fe415385",
+      "description": "Des fougères arborescentes se déploient sous la verrière au-dessus de rochers couverts de mousse.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 594,
+      "height": 399,
+      "sizeInBytes": 60951,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/serre-vallee-exterieure.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des enfants et des adultes observent les plantes de la Serre de Vulcania le long d’une rambarde."
+        },
+        {
+          "languageCode": "en",
+          "value": "Children and adults observe plants along a railing in Vulcania’s greenhouse."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kinder und Erwachsene betrachten Pflanzen an einem Geländer in Vulcanias Gewächshaus."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kinderen en volwassenen bekijken planten langs een leuning in de kas van Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambini e adulti osservano le piante lungo una ringhiera nella Serre di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Niños y adultos observan las plantas junto a una barandilla en la Serre de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dzieci i dorośli oglądają rośliny przy barierce w szklarni Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Crianças e adultos observam as plantas junto de um corrimão na Serre de Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des fougères arborescentes se déploient sous la verrière au-dessus de rochers couverts de mousse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Tree ferns spread beneath the glass roof above moss-covered rocks."
+        },
+        {
+          "languageCode": "de",
+          "value": "Unter dem Glasdach entfalten sich Baumfarne über moosbewachsenen Felsen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Boomvarens spreiden zich onder het glazen dak uit boven met mos bedekte rotsen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le felci arboree si allargano sotto la copertura di vetro, sopra rocce ricoperte di muschio."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los helechos arborescentes se extienden bajo la cubierta de cristal, sobre rocas cubiertas de musgo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Paprocie drzewiaste rozpościerają liście pod szklanym dachem, ponad skałami pokrytymi mchem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fetos arbóreos estendem-se sob a cobertura de vidro, sobre rochas cobertas de musgo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:46:59.501Z",
+      "updatedAt": "2026-11-15T19:47:03.112Z",
+      "key": "24eeb68044aa41328d38d948fe415385",
+      "imageId": "24eeb68044aa41328d38d948fe415385",
+      "ownerKey": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9"
+    },
+    {
+      "id": "31b117128a6745529a55c1c7df058ed0",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "f3f72017-45be-4f59-9e45-424d951d29cf",
+      "path": "park_item/31b117128a6745529a55c1c7df058ed0",
+      "description": "Les bosses et les virages de la piste asphaltée sont soulignés par des marques blanches au milieu de l’herbe.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 311487,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/piste-de-vulcain_3000x1100-1-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un jeune cycliste équipé d’un casque et de protections roule sur un BMX bleu à la Piste de Vulcain."
+        },
+        {
+          "languageCode": "en",
+          "value": "A young rider wearing a helmet and protective pads rides a blue BMX on La Piste de Vulcain."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein junger Radfahrer mit Helm und Schützern fährt auf einem blauen BMX über La Piste de Vulcain."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een jonge fietser met helm en beschermers rijdt op een blauwe BMX op La Piste de Vulcain."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un giovane ciclista con casco e protezioni guida una BMX blu sulla Piste de Vulcain."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un joven ciclista con casco y protecciones monta una BMX azul en La Piste de Vulcain."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Młody rowerzysta w kasku i ochraniaczach jedzie niebieskim BMX-em po La Piste de Vulcain."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um jovem ciclista com capacete e proteções anda numa BMX azul na Piste de Vulcain."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les bosses et les virages de la piste asphaltée sont soulignés par des marques blanches au milieu de l’herbe."
+        },
+        {
+          "languageCode": "en",
+          "value": "White markings outline the asphalt track’s humps and bends amid the grass."
+        },
+        {
+          "languageCode": "de",
+          "value": "Weiße Markierungen betonen die Hügel und Kurven der asphaltierten Bahn im Gras."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Witte markeringen benadrukken de heuveltjes en bochten van de asfaltbaan tussen het gras."
+        },
+        {
+          "languageCode": "it",
+          "value": "Segni bianchi delineano i dossi e le curve della pista asfaltata tra l’erba."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las marcas blancas destacan los montículos y las curvas de la pista asfaltada entre la hierba."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Białe oznaczenia podkreślają wzniesienia i zakręty asfaltowego toru pośród trawy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Marcas brancas delineiam as lombas e curvas da pista asfaltada entre a relva."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:47:10.555Z",
+      "updatedAt": "2026-11-15T19:47:14.036Z",
+      "key": "31b117128a6745529a55c1c7df058ed0",
+      "imageId": "31b117128a6745529a55c1c7df058ed0",
+      "ownerKey": "f3f72017-45be-4f59-9e45-424d951d29cf"
     }
   ],
   "history": {

@@ -1,0 +1,282 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-82-serre",
+    "ownerId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+    "itemName": "Serre",
+    "current": true,
+    "source": {
+      "key": "serre",
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/05/serre-vallee-exterieure.jpg",
+      "status": 200,
+      "file": "/workspace/france-historical-20261114/vulcania/remaining-inventory-1938/serre.jpg",
+      "bytes": 60951,
+      "dimensions": [
+        594,
+        399
+      ],
+      "sha256": "71daee6ecfdcb6ea82168b6a150a2742381784eeb65931dd770bf477552e8106",
+      "sourcePage": "https://www.vulcania.com/education/maternelle/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; official credit retained; no open licence claimed.",
+    "qualification": "Original personally inspected, 24 localized fields personally authored and reviewed, no crop, transformation or capture date invention. Piste historical noncurrent; official notice says unavailable without documented permanent removal."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/serre-vallee-exterieure.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/remaining-inventory-1938/serre.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-82-serre-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-82-serre-import-result.json"
+  },
+  "metadata": {
+    "description": "Des fougères arborescentes se déploient sous la verrière au-dessus de rochers couverts de mousse.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/serre-vallee-exterieure.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des enfants et des adultes observent les plantes de la Serre de Vulcania le long d’une rambarde."
+      },
+      {
+        "languageCode": "en",
+        "value": "Children and adults observe plants along a railing in Vulcania’s greenhouse."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kinder und Erwachsene betrachten Pflanzen an einem Geländer in Vulcanias Gewächshaus."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kinderen en volwassenen bekijken planten langs een leuning in de kas van Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Bambini e adulti osservano le piante lungo una ringhiera nella Serre di Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Niños y adultos observan las plantas junto a una barandilla en la Serre de Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dzieci i dorośli oglądają rośliny przy barierce w szklarni Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Crianças e adultos observam as plantas junto de um corrimão na Serre de Vulcania."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des fougères arborescentes se déploient sous la verrière au-dessus de rochers couverts de mousse."
+      },
+      {
+        "languageCode": "en",
+        "value": "Tree ferns spread beneath the glass roof above moss-covered rocks."
+      },
+      {
+        "languageCode": "de",
+        "value": "Unter dem Glasdach entfalten sich Baumfarne über moosbewachsenen Felsen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Boomvarens spreiden zich onder het glazen dak uit boven met mos bedekte rotsen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le felci arboree si allargano sotto la copertura di vetro, sopra rocce ricoperte di muschio."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los helechos arborescentes se extienden bajo la cubierta de cristal, sobre rocas cubiertas de musgo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Paprocie drzewiaste rozpościerają liście pod szklanym dachem, ponad skałami pokrytymi mchem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fetos arbóreos estendem-se sob a cobertura de vidro, sobre rochas cobertas de musgo."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T19:46:58.7068026Z",
+    "result": {
+      "id": "24eeb68044aa41328d38d948fe415385",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+      "path": "park_item/24eeb68044aa41328d38d948fe415385",
+      "description": "Des fougères arborescentes se déploient sous la verrière au-dessus de rochers couverts de mousse.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 594,
+      "height": 399,
+      "sizeInBytes": 60951,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/serre-vallee-exterieure.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des enfants et des adultes observent les plantes de la Serre de Vulcania le long d’une rambarde."
+        },
+        {
+          "languageCode": "en",
+          "value": "Children and adults observe plants along a railing in Vulcania’s greenhouse."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kinder und Erwachsene betrachten Pflanzen an einem Geländer in Vulcanias Gewächshaus."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kinderen en volwassenen bekijken planten langs een leuning in de kas van Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Bambini e adulti osservano le piante lungo una ringhiera nella Serre di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Niños y adultos observan las plantas junto a una barandilla en la Serre de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dzieci i dorośli oglądają rośliny przy barierce w szklarni Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Crianças e adultos observam as plantas junto de um corrimão na Serre de Vulcania."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des fougères arborescentes se déploient sous la verrière au-dessus de rochers couverts de mousse."
+        },
+        {
+          "languageCode": "en",
+          "value": "Tree ferns spread beneath the glass roof above moss-covered rocks."
+        },
+        {
+          "languageCode": "de",
+          "value": "Unter dem Glasdach entfalten sich Baumfarne über moosbewachsenen Felsen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Boomvarens spreiden zich onder het glazen dak uit boven met mos bedekte rotsen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le felci arboree si allargano sotto la copertura di vetro, sopra rocce ricoperte di muschio."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los helechos arborescentes se extienden bajo la cubierta de cristal, sobre rocas cubiertas de musgo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Paprocie drzewiaste rozpościerają liście pod szklanym dachem, ponad skałami pokrytymi mchem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fetos arbóreos estendem-se sob a cobertura de vidro, sobre rochas cobertas de musgo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:46:59.501Z",
+      "updatedAt": "2026-11-15T19:47:03.112Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T19:47:06.2387183Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "key": "vulcania-geyser",
+          "name": "Geyser",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+          }
+        },
+        {
+          "key": "vulcania-serre",
+          "name": "Serre",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+          }
+        },
+        {
+          "key": "vulcania-cratere",
+          "name": "Cratère",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+          }
+        },
+        {
+          "key": "vulcania-sentiers-decouverte",
+          "name": "Sentiers de découverte",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/education/maternelle/"
+          }
+        },
+        {
+          "key": "vulcania-aires-jeux-exterieures",
+          "name": "Aires de jeux extérieures",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Operating",
+            "sourceUrl": "https://www.vulcania.com/special-enfants/"
+          }
+        },
+        {
+          "key": "vulcania-piste-vulcain",
+          "name": "La Piste de Vulcain",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "sourceUrl": "https://www.vulcania.com/animation/la-piste-de-vulcain/"
+          }
+        },
+        {
+          "key": "vulcania-aire-camping-cars",
+          "name": "Aire de camping-cars",
+          "category": "Service",
+          "type": "Service",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview"
+        },
+        {
+          "key": "vulcania-parking",
+          "name": "Parking",
+          "category": "Service",
+          "type": "Parking",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview"
+        },
+        {
+          "key": "vulcania-accueil",
+          "name": "Accueil",
+          "category": "Service",
+          "type": "Information",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview"
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-remaining-source-inventory",
+        "notes": "Nine named park offers directly supported by current official pages read19:34-19:35UTC: Geyser water games (not bathing), tropical Serre, excavated sensory Cratere distinct outdoor Lecrateresanime show, educational trails as one named group not invented individual routes, exterior playgrounds as one official group not guessed count, historical Piste de Vulcain now explicitly no longer available but removal/permanent closure unproved soUnknown; motorhome service area and separate daytime parking, receptionlevelC. All47existing IDs preserved; new9privateToReview. No invented dates, manufacturers, GPS or age transfer. General school terms/photos not treated as individual public hours. Landmark names Cone/Vallee/GrandeCoulee not multiplied as new rides. Further descriptions/photos/geolocation qualification pending. Source URLs and raw access receipts in remaining-inventory-1938 and practical-followup-1936."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "418f1a77-ae73-4c45-97b0-8b94290af2e7",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:37:25.0432897Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 9,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4db4095b-721a-4f59-b97a-01836cb4feb4",
+        "entityKey": "vulcania-geyser",
+        "displayName": "Geyser",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "caf7d5dc-ea2a-49aa-813a-a40d55b81992",
+        "entityKey": "vulcania-serre",
+        "displayName": "Serre",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5eba6d9d-9581-4273-9599-b2c13c3deb19",
+        "entityKey": "vulcania-cratere",
+        "displayName": "Cratère",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "aa1110bf-06ec-47e6-af1a-65895b1b5d4a",
+        "entityKey": "vulcania-sentiers-decouverte",
+        "displayName": "Sentiers de découverte",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fd11fb97-0a9f-4b61-bf00-544fa02b903a",
+        "entityKey": "vulcania-aires-jeux-exterieures",
+        "displayName": "Aires de jeux extérieures",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/special-enfants/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d6cb1959-e770-4451-b907-8b57fc163cb8",
+        "entityKey": "vulcania-piste-vulcain",
+        "displayName": "La Piste de Vulcain",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-piste-de-vulcain/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "104a359d-dff3-499b-9484-1d86a8c097fc",
+        "entityKey": "vulcania-aire-camping-cars",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d2434416-8458-47f3-a5b3-9fb13973cb11",
+        "entityKey": "vulcania-parking",
+        "displayName": "Parking",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Parking"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "309629c3-90e5-48fc-935f-26e0ca004198",
+        "entityKey": "vulcania-accueil",
+        "displayName": "Accueil",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Information"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "959d5443-f3c3-425b-aef1-dd624f19a76e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:37:52.7385265Z",
+    "appliedAtUtc": "2026-11-15T19:37:52.7385272Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 9,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "entityKey": "vulcania-geyser",
+        "displayName": "Geyser",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "InteractiveExperience"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "entityKey": "vulcania-serre",
+        "displayName": "Serre",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "entityKey": "vulcania-cratere",
+        "displayName": "Cratère",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "entityKey": "vulcania-sentiers-decouverte",
+        "displayName": "Sentiers de découverte",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/education/maternelle/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "83ff43e0-c52c-4c28-9f18-a20419168599",
+        "entityKey": "vulcania-aires-jeux-exterieures",
+        "displayName": "Aires de jeux extérieures",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/special-enfants/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "entityKey": "vulcania-piste-vulcain",
+        "displayName": "La Piste de Vulcain",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/animation/la-piste-de-vulcain/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "vulcania-aire-camping-cars",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "vulcania-parking",
+        "displayName": "Parking",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Parking"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "entityKey": "vulcania-accueil",
+        "displayName": "Accueil",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Service"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Information"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : neuf lieux internes et services officiellement identifiés ajoutés privés ; Geyser, Serre, Cratère, sentiers, aires de jeux, Piste de Vulcain, aire camping-cars, parking et accueil. Statut de la Piste Unknown conservé, aucune date ni position inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Nine named park offers directly supported by current official pages read19:34-19:35UTC: Geyser water games (not bathing), tropical Serre, excavated sensory Cratere distinct outdoor Lecrateresanime show, educational trails as one named group not invented individual routes, exterior playgrounds as one official group not guessed count, historical Piste de Vulcain now explicitly no longer available but removal/permanent closure unproved soUnknown; motorhome service area and separate daytime parking, receptionlevelC. All47existing IDs preserved; new9privateToReview. No invented dates, manufacturers, GPS or age transfer. General school terms/photos not treated as individual public hours. Landmark names Cone/Vallee/GrandeCoulee not multiplied as new rides. Further descriptions/photos/geolocation qualification pending. Source URLs and raw access receipts in remaining-inventory-1938 and practical-followup-1936."
+}

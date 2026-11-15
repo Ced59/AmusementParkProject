@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T19:31:35.834Z",
+  "lastDataIntegrationAt": "2026-11-15T19:50:10.1072742Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 30,
-  "realImportCount": 47,
-  "lastOperationId": "9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
+  "realApplyCount": 33,
+  "realImportCount": 52,
+  "lastOperationId": "717f82d0-a76d-4a98-b8d0-f9c4ae7df10b",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -172,22 +172,25 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-65-vulcania-espace-shops-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-71-vulcania-shop-specificity-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-70-two-presenter-notices-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-74-workshops-balloon-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-74-workshops-balloon-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-77-remaining-inventory-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-78-landscape-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-84-services-notices-20261115.json"
   ],
   "currentCoverage": {
-    "items": 47,
+    "items": 56,
     "publicItems": 0,
-    "describedItems8Languages": 47,
+    "describedItems8Languages": 55,
     "zones": 0,
-    "ownMedia": 47,
+    "ownMedia": 52,
     "historyEvents": 4,
     "privateHistoryEvents": 4,
     "officialMaps": 2,
-    "privateOwnMedia": 47,
+    "privateOwnMedia": 52,
     "articles": 1,
     "privateArticles": 1
   },
-  "lastApplyOperationId": "9090120c-0e1f-4dbb-b8f1-fb1108a0a6a2",
+  "lastApplyOperationId": "717f82d0-a76d-4a98-b8d0-f9c4ae7df10b",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -423,6 +426,31 @@
       "imageId": "583a2b39fa9f4649a44345bdd310daf4",
       "createdAt": "2026-11-15T19:31:35.834Z",
       "proof": "vulcania-photo-75-ballon-puys-20261115.json"
+    },
+    {
+      "imageId": "36fb503df2aa4ade8f31879d995a74ad",
+      "createdAt": "2026-11-15T19:46:31.419Z",
+      "proof": "vulcania-photo-79-cratere-20261115.json"
+    },
+    {
+      "imageId": "e4a759d9bc6f449684777d5ce883ec28",
+      "createdAt": "2026-11-15T19:46:41.172Z",
+      "proof": "vulcania-photo-80-geyser-20261115.json"
+    },
+    {
+      "imageId": "7c28d1bd539c4a8a9e5b00544152ae09",
+      "createdAt": "2026-11-15T19:46:50.572Z",
+      "proof": "vulcania-photo-81-sentiers-20261115.json"
+    },
+    {
+      "imageId": "24eeb68044aa41328d38d948fe415385",
+      "createdAt": "2026-11-15T19:46:59.501Z",
+      "proof": "vulcania-photo-82-serre-20261115.json"
+    },
+    {
+      "imageId": "31b117128a6745529a55c1c7df058ed0",
+      "createdAt": "2026-11-15T19:47:10.555Z",
+      "proof": "vulcania-photo-83-piste-20261115.json"
     }
   ],
   "photoMetadataUpdates": [

@@ -1,0 +1,668 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "f3f72017-45be-4f59-9e45-424d951d29cf",
+          "key": "vulcania-piste-vulcain",
+          "name": "La Piste de Vulcain",
+          "type": "Playground",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un paysage volcanique parcouru à vélo</h2><p>La Piste de Vulcain proposait une expérience de BMX à l’extérieur de Vulcania. Son dessin ondulant évoquait, selon le parc, les formes arrondies de la Chaîne des Puys environnante. Le relief devenait ainsi un terrain de pratique plutôt qu’un paysage observé depuis une exposition.</p><p>La piste sombre serpentait entre des îlots d’herbe, avec des marques blanches qui en soulignaient les courbes. Les photographies montrent des cyclistes portant casque et protections dans ce décor ouvert.</p><h2>Une activité désormais indisponible</h2><p>Cette animation n’est plus proposée à Vulcania. La pratique du BMX y donnait au thème volcanique une traduction sportive, en rapprochant les courbes d’un terrain de jeu des reliefs de la Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Cycling through a volcanic-inspired landscape</h2><p>La Piste de Vulcain offered an outdoor BMX experience at Vulcania. According to the park, its undulating shape echoed the rounded forms of the surrounding Chaîne des Puys. The landscape became something to ride through rather than observe in an exhibition.</p><p>The dark track wound between patches of grass, with white markings emphasising its curves. Photographs show riders wearing helmets and protective pads in this open setting.</p><h2>An activity no longer available</h2><p>This activity is no longer offered at Vulcania. BMX riding gave the volcanic theme a sporting expression, linking the curves of a play landscape with the contours of the Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Mit dem Fahrrad durch eine Vulkanlandschaft</h2><p>La Piste de Vulcain bot ein BMX-Erlebnis im Freien. Nach Angaben von Vulcania erinnerte ihre wellige Gestaltung an die abgerundeten Formen der umliegenden Chaîne des Puys. Die Landschaft wurde damit zum befahrbaren Gelände statt zum Gegenstand einer Ausstellung.</p><p>Die dunkle Bahn schlängelte sich zwischen Grasinseln hindurch; weiße Markierungen betonten ihre Kurven. Auf Fotografien sind Radfahrer mit Helmen und Schützern in dieser offenen Umgebung zu sehen.</p><h2>Nicht mehr angeboten</h2><p>Diese Aktivität wird in Vulcania nicht mehr angeboten. Das BMX-Fahren verlieh dem Vulkanthema eine sportliche Form und verband die Kurven eines Spielgeländes mit den Erhebungen der Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Fietsen door een vulkanisch geïnspireerd landschap</h2><p>La Piste de Vulcain bood een BMX-ervaring in de buitenlucht. Volgens Vulcania verwees de golvende vorm naar de afgeronde heuvels van de omliggende Chaîne des Puys. Het landschap werd zo een terrein om doorheen te fietsen in plaats van een onderwerp in een tentoonstelling.</p><p>De donkere baan slingerde tussen grasstroken, met witte markeringen die de bochten benadrukten. Foto’s tonen fietsers met helmen en beschermers in deze open omgeving.</p><h2>Niet meer beschikbaar</h2><p>Deze activiteit wordt niet meer aangeboden in Vulcania. BMX-fietsen gaf het vulkaanthema een sportieve invulling, waarbij de bochten van een speelterrein aansloten bij de vormen van de Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un paesaggio vulcanico da percorrere in bicicletta</h2><p>La Piste de Vulcain proponeva un’esperienza di BMX all’aperto. Secondo Vulcania, il disegno ondulato richiamava le forme arrotondate della vicina Chaîne des Puys. Il paesaggio diventava così un terreno da affrontare in bicicletta anziché un soggetto da osservare in un’esposizione.</p><p>La pista scura serpeggiava tra isole d’erba, con segni bianchi a sottolinearne le curve. Le fotografie mostrano ciclisti con casco e protezioni in questo ambiente aperto.</p><h2>Un’attività non più disponibile</h2><p>Questa attività non è più proposta a Vulcania. La pratica del BMX dava al tema vulcanico un’espressione sportiva, accostando le curve di un terreno di gioco ai rilievi della Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un paisaje volcánico recorrido en bicicleta</h2><p>La Piste de Vulcain ofrecía una experiencia de BMX al aire libre. Según Vulcania, su trazado ondulado evocaba las formas redondeadas de la cercana Chaîne des Puys. El paisaje se convertía así en un terreno para practicar ciclismo en lugar de observarlo en una exposición.</p><p>La pista oscura serpenteaba entre islas de hierba, con marcas blancas que destacaban sus curvas. Las fotografías muestran ciclistas con casco y protecciones en este entorno abierto.</p><h2>Una actividad ya no disponible</h2><p>Esta actividad ya no se ofrece en Vulcania. La práctica del BMX daba al tema volcánico una expresión deportiva, relacionando las curvas de un terreno de juego con los relieves de la Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Rowerem przez krajobraz inspirowany wulkanami</h2><p>La Piste de Vulcain oferowała jazdę na BMX-ach na świeżym powietrzu. Według Vulcanii falisty kształt nawiązywał do zaokrąglonych form pobliskiej Chaîne des Puys. Krajobraz stawał się w ten sposób terenem do jazdy, a nie tylko tematem wystawy.</p><p>Ciemny tor wił się między wysepkami trawy, a białe oznaczenia podkreślały zakręty. Fotografie pokazują rowerzystów w kaskach i ochraniaczach w tej otwartej przestrzeni.</p><h2>Atrakcja już niedostępna</h2><p>Ta aktywność nie jest już oferowana w Vulcanii. Jazda na BMX-ach nadawała tematowi wulkanów sportowy wymiar, łącząc krzywizny terenu do zabawy z formami Chaîne des Puys.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma paisagem vulcânica percorrida de bicicleta</h2><p>A Piste de Vulcain proporcionava uma experiência de BMX ao ar livre. Segundo Vulcania, o desenho ondulado evocava as formas arredondadas da vizinha Chaîne des Puys. A paisagem tornava-se assim terreno para andar de bicicleta, em vez de um tema observado numa exposição.</p><p>A pista escura serpenteava entre ilhas de relva, com marcas brancas a salientar as curvas. As fotografias mostram ciclistas com capacete e proteções neste cenário aberto.</p><h2>Uma atividade já indisponível</h2><p>Esta atividade já não é proposta em Vulcania. A prática de BMX dava ao tema vulcânico uma expressão desportiva, aproximando as curvas de um terreno de jogo dos relevos da Chaîne des Puys.</p>"
+            }
+          ]
+        },
+        {
+          "id": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+          "key": "vulcania-aire-camping-cars",
+          "name": "Aire de camping-cars",
+          "type": "Service",
+          "category": "Service",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles gratuitement dans le parking du parc pendant la journée.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available free of charge in the park’s daytime car park.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem tagsüber kostenlosen Parkplatz des Parks getrennt.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag gratis beschikbaar zijn.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili gratuitamente durante il giorno nel parcheggio del parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles gratuitamente durante el día en el aparcamiento del parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych bezpłatnie w ciągu dnia na zwykłym parkingu parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis gratuitamente durante o dia no estacionamento do parque.</p>"
+            }
+          ]
+        },
+        {
+          "id": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+          "key": "vulcania-accueil",
+          "name": "Accueil",
+          "type": "Information",
+          "category": "Service",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le point d’accueil du niveau C</h2><p>L’accueil général de Vulcania se trouve au niveau C. Il assure notamment l’information sur le dispositif « baby switch », qui permet aux adultes d’une famille d’accéder à tour de rôle aux animations dynamiques lorsqu’un enfant n’atteint pas la taille minimale.</p><p>C’est aussi l’un des points de remise du bracelet et de la notice d’accès prioritaire, sur présentation du justificatif prévu par le parc. Ce service est également proposé aux caisses de l’entrée.</p><h2>Les équipements prêtés</h2><p>Fauteuils roulants, poussettes et équipements d’aide à la visite peuvent être retirés à l’accueil ou à l’espace de services des caisses, selon les stocks et les conditions de prêt. Ces fonctions rassemblent ici l’accompagnement des familles et plusieurs services d’accessibilité.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The reception point on level C</h2><p>Vulcania’s main reception is on level C. Among its services is information about baby switch, which lets adults in a family take turns on dynamic attractions when a child does not meet the minimum height.</p><p>Reception also issues the priority-access wristband and information leaflet on presentation of the supporting document required by the park. This service is also offered at the entrance ticket offices.</p><h2>Equipment loans</h2><p>Wheelchairs, pushchairs and visitor-assistance equipment can be collected here or from the service area at the ticket offices, subject to availability and loan conditions. Reception brings together family assistance and several accessibility services.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Der Empfang auf Ebene C</h2><p>Vulcanias zentraler Empfang befindet sich auf Ebene C. Hier gibt es unter anderem Auskunft zum Baby-Switch-Angebot: Erwachsene einer Familie können dynamische Attraktionen abwechselnd nutzen, wenn ein Kind die Mindestgröße noch nicht erreicht.</p><p>Gegen Vorlage des vom Park verlangten Nachweises werden hier auch das Armband und das Merkblatt für bevorzugten Zugang ausgegeben. Diesen Service bieten ebenso die Eingangskassen an.</p><h2>Hilfsmittel zum Ausleihen</h2><p>Rollstühle, Kinderwagen und Hilfsmittel für den Besuch sind am Empfang oder im Servicebereich der Kassen erhältlich, je nach Bestand und Leihbedingungen. Damit vereint dieser Ort Familienbetreuung und mehrere Angebote zur Barrierefreiheit.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Het ontvangstpunt op niveau C</h2><p>De algemene receptie van Vulcania bevindt zich op niveau C. Hier is onder meer informatie over baby switch verkrijgbaar: volwassenen binnen een gezin kunnen om de beurt een dynamische attractie bezoeken wanneer een kind de minimumlengte nog niet bereikt.</p><p>Ook het polsbandje en de informatie over voorrangstoegang worden hier verstrekt op vertoon van het door het park vereiste bewijs. Deze dienst is eveneens beschikbaar bij de ingangskassa’s.</p><h2>Uitleen van hulpmiddelen</h2><p>Rolstoelen, kinderwagens en hulpmiddelen voor het bezoek zijn hier of bij de servicedienst van de kassa’s af te halen, afhankelijk van voorraad en uitleenvoorwaarden. De receptie verenigt zo gezinsondersteuning en verschillende toegankelijkheidsdiensten.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Il punto d’accoglienza al livello C</h2><p>L’accoglienza generale di Vulcania si trova al livello C. Fornisce anche informazioni sul servizio baby switch, che permette agli adulti di una famiglia di alternarsi sulle attrazioni dinamiche quando un bambino non raggiunge l’altezza minima.</p><p>Qui vengono inoltre consegnati il braccialetto e la guida per l’accesso prioritario, dietro presentazione del documento richiesto dal parco. Lo stesso servizio è disponibile alle casse d’ingresso.</p><h2>Attrezzature in prestito</h2><p>Sedie a rotelle, passeggini e ausili alla visita possono essere ritirati qui o nello spazio servizi delle casse, secondo disponibilità e condizioni di prestito. L’accoglienza riunisce così assistenza alle famiglie e diversi servizi di accessibilità.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El punto de acogida del nivel C</h2><p>La recepción general de Vulcania se encuentra en el nivel C. Ofrece, entre otros servicios, información sobre baby switch, que permite a los adultos de una familia turnarse en las atracciones dinámicas cuando un niño no alcanza la altura mínima.</p><p>También entrega la pulsera y la información de acceso prioritario al presentar el justificante exigido por el parque. Este servicio se ofrece igualmente en las taquillas de entrada.</p><h2>Préstamo de equipamiento</h2><p>Las sillas de ruedas, cochecitos y equipos de apoyo a la visita pueden recogerse aquí o en el espacio de servicios de las taquillas, según existencias y condiciones de préstamo. La recepción reúne así asistencia a las familias y varios servicios de accesibilidad.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Punkt obsługi na poziomie C</h2><p>Główna recepcja Vulcanii znajduje się na poziomie C. Udziela między innymi informacji o usłudze baby switch, dzięki której dorośli z jednej rodziny mogą kolejno korzystać z atrakcji dynamicznych, gdy dziecko nie osiąga wymaganego wzrostu.</p><p>Po okazaniu dokumentu wymaganego przez park wydaje się tu również opaskę i ulotkę dotyczącą dostępu priorytetowego. Usługa ta jest dostępna także w kasach przy wejściu.</p><h2>Wypożyczanie wyposażenia</h2><p>Wózki inwalidzkie, wózki dziecięce i pomoce do zwiedzania można odebrać tutaj lub w strefie usług przy kasach, zależnie od dostępności i warunków wypożyczenia. Recepcja łączy w ten sposób wsparcie rodzin z kilkoma usługami dostępności.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O ponto de acolhimento do nível C</h2><p>O acolhimento geral de Vulcania situa-se no nível C. Presta, entre outros serviços, informações sobre o baby switch, que permite aos adultos de uma família alternarem nas atrações dinâmicas quando uma criança não atinge a altura mínima.</p><p>É também um dos pontos de entrega da pulseira e do folheto de acesso prioritário, mediante apresentação do comprovativo exigido pelo parque. Este serviço existe igualmente nas bilheteiras da entrada.</p><h2>Equipamento emprestado</h2><p>Cadeiras de rodas, carrinhos de bebé e equipamentos de apoio à visita podem ser levantados aqui ou no espaço de serviços das bilheteiras, conforme as existências e condições de empréstimo. O acolhimento reúne assim apoio às famílias e vários serviços de acessibilidade.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+          "key": "vulcania-parking",
+          "name": "Parking",
+          "type": "Parking",
+          "category": "Service",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Vulcania annonce ce stationnement comme gratuit et prévoit notamment des places pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement gratuit pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément. Le parking de jour et cette aire de séjour ont donc des usages différents.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Vulcania advertises this parking as free and provides spaces for motorhomes as well.</p><p>School groups also have free coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer. Daytime parking and this overnight area therefore serve different purposes.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Vulcania gibt das Parken als kostenlos an und bietet auch Stellflächen für Wohnmobile.</p><p>Schulgruppen können Reisebusse ebenfalls kostenlos abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen. Tagesparkplatz und Übernachtungsbereich erfüllen somit unterschiedliche Zwecke.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Vulcania vermeldt dat dit parkeren gratis is en voorziet ook in plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over gratis parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod. De dagparkeerplaats en dit verblijfsterrein hebben dus verschillende functies.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Vulcania indica la sosta come gratuita e prevede anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio gratuito per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente. Il parcheggio diurno e quest’area di soggiorno hanno quindi funzioni differenti.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. Vulcania anuncia este estacionamiento como gratuito y dispone también de plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento gratuito para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado. El aparcamiento diurno y esa área de estancia cumplen, por tanto, funciones diferentes.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Vulcania podaje, że postój jest bezpłatny, i zapewnia również miejsca dla kamperów.</p><p>Grupy szkolne mają także bezpłatny parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie. Parking dzienny i teren noclegowy pełnią zatem różne funkcje.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Vulcania anuncia este estacionamento como gratuito e disponibiliza também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento gratuito para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente. O estacionamento diurno e essa área de estadia têm, por isso, funções diferentes.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-84-services-notices",
+        "notes": "Quatre notices relues personnellement en huit langues ; Piste officielle indisponible maintenue Unknown et privée, aucune fermeture définitive ni date supposée. Aire camping-cars distincte parking de jour ; accueil niveau C établi par règlement et page enfants. Sources : animation/la-piste-de-vulcain, aire-de-camping-cars, reglement-interieur, special-enfants, education/maternelle. Parking notice volontairement courte car offre matérielle documentée limitée ; aucun remplissage pour atteindre un seuil de mots."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "6ab5f19c-0c38-47d8-9dc2-a2ed99fa95c2",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:49:42.7525957Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "entityKey": "vulcania-piste-vulcain",
+        "displayName": "La Piste de Vulcain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mit dem Fahrrad durch eine Vulkanlandschaft</h2><p>La Piste de Vulcain bot ein BMX-Erlebnis im Freien. Nach Angaben von Vulcania erinnerte ihre wellige Gestaltung an die abgerundeten Formen der umliegenden Chaîne des Puys. Die Landschaft wurde damit zum befahrbaren Gelände statt zum Gegenstand einer Ausstellung.</p><p>Die dunkle Bahn schlängelte sich zwischen Grasinseln hindurch; weiße Markierungen betonten ihre Kurven. Auf Fotografien sind Radfahrer mit Helmen und Schützern in dieser offenen Umgebung zu sehen.</p><h2>Nicht mehr angeboten</h2><p>Diese Aktivität wird in Vulcania nicht mehr angeboten. Das BMX-Fahren verlieh dem Vulkanthema eine sportliche Form und verband die Kurven eines Spielgeländes mit den Erhebungen der Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Cycling through a volcanic-inspired landscape</h2><p>La Piste de Vulcain offered an outdoor BMX experience at Vulcania. According to the park, its undulating shape echoed the rounded forms of the surrounding Chaîne des Puys. The landscape became something to ride through rather than observe in an exhibition.</p><p>The dark track wound between patches of grass, with white markings emphasising its curves. Photographs show riders wearing helmets and protective pads in this open setting.</p><h2>An activity no longer available</h2><p>This activity is no longer offered at Vulcania. BMX riding gave the volcanic theme a sporting expression, linking the curves of a play landscape with the contours of the Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un paisaje volcánico recorrido en bicicleta</h2><p>La Piste de Vulcain ofrecía una experiencia de BMX al aire libre. Según Vulcania, su trazado ondulado evocaba las formas redondeadas de la cercana Chaîne des Puys. El paisaje se convertía así en un terreno para practicar ciclismo en lugar de observarlo en una exposición.</p><p>La pista oscura serpenteaba entre islas de hierba, con marcas blancas que destacaban sus curvas. Las fotografías muestran ciclistas con casco y protecciones en este entorno abierto.</p><h2>Una actividad ya no disponible</h2><p>Esta actividad ya no se ofrece en Vulcania. La práctica del BMX daba al tema volcánico una expresión deportiva, relacionando las curvas de un terreno de juego con los relieves de la Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un paysage volcanique parcouru à vélo</h2><p>La Piste de Vulcain proposait une expérience de BMX à l’extérieur de Vulcania. Son dessin ondulant évoquait, selon le parc, les formes arrondies de la Chaîne des Puys environnante. Le relief devenait ainsi un terrain de pratique plutôt qu’un paysage observé depuis une exposition.</p><p>La piste sombre serpentait entre des îlots d’herbe, avec des marques blanches qui en soulignaient les courbes. Les photographies montrent des cyclistes portant casque et protections dans ce décor ouvert.</p><h2>Une activité désormais indisponible</h2><p>Cette animation n’est plus proposée à Vulcania. La pratique du BMX y donnait au thème volcanique une traduction sportive, en rapprochant les courbes d’un terrain de jeu des reliefs de la Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un paesaggio vulcanico da percorrere in bicicletta</h2><p>La Piste de Vulcain proponeva un’esperienza di BMX all’aperto. Secondo Vulcania, il disegno ondulato richiamava le forme arrotondate della vicina Chaîne des Puys. Il paesaggio diventava così un terreno da affrontare in bicicletta anziché un soggetto da osservare in un’esposizione.</p><p>La pista scura serpeggiava tra isole d’erba, con segni bianchi a sottolinearne le curve. Le fotografie mostrano ciclisti con casco e protezioni in questo ambiente aperto.</p><h2>Un’attività non più disponibile</h2><p>Questa attività non è più proposta a Vulcania. La pratica del BMX dava al tema vulcanico un’espressione sportiva, accostando le curve di un terreno di gioco ai rilievi della Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Fietsen door een vulkanisch geïnspireerd landschap</h2><p>La Piste de Vulcain bood een BMX-ervaring in de buitenlucht. Volgens Vulcania verwees de golvende vorm naar de afgeronde heuvels van de omliggende Chaîne des Puys. Het landschap werd zo een terrein om doorheen te fietsen in plaats van een onderwerp in een tentoonstelling.</p><p>De donkere baan slingerde tussen grasstroken, met witte markeringen die de bochten benadrukten. Foto’s tonen fietsers met helmen en beschermers in deze open omgeving.</p><h2>Niet meer beschikbaar</h2><p>Deze activiteit wordt niet meer aangeboden in Vulcania. BMX-fietsen gaf het vulkaanthema een sportieve invulling, waarbij de bochten van een speelterrein aansloten bij de vormen van de Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rowerem przez krajobraz inspirowany wulkanami</h2><p>La Piste de Vulcain oferowała jazdę na BMX-ach na świeżym powietrzu. Według Vulcanii falisty kształt nawiązywał do zaokrąglonych form pobliskiej Chaîne des Puys. Krajobraz stawał się w ten sposób terenem do jazdy, a nie tylko tematem wystawy.</p><p>Ciemny tor wił się między wysepkami trawy, a białe oznaczenia podkreślały zakręty. Fotografie pokazują rowerzystów w kaskach i ochraniaczach w tej otwartej przestrzeni.</p><h2>Atrakcja już niedostępna</h2><p>Ta aktywność nie jest już oferowana w Vulcanii. Jazda na BMX-ach nadawała tematowi wulkanów sportowy wymiar, łącząc krzywizny terenu do zabawy z formami Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma paisagem vulcânica percorrida de bicicleta</h2><p>A Piste de Vulcain proporcionava uma experiência de BMX ao ar livre. Segundo Vulcania, o desenho ondulado evocava as formas arredondadas da vizinha Chaîne des Puys. A paisagem tornava-se assim terreno para andar de bicicleta, em vez de um tema observado numa exposição.</p><p>A pista escura serpenteava entre ilhas de relva, com marcas brancas a salientar as curvas. As fotografias mostram ciclistas com capacete e proteções neste cenário aberto.</p><h2>Uma atividade já indisponível</h2><p>Esta atividade já não é proposta em Vulcania. A prática de BMX dava ao tema vulcânico uma expressão desportiva, aproximando as curvas de um terreno de jogo dos relevos da Chaîne des Puys.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "vulcania-aire-camping-cars",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem tagsüber kostenlosen Parkplatz des Parks getrennt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available free of charge in the park’s daytime car park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles gratuitamente durante el día en el aparcamiento del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles gratuitement dans le parking du parc pendant la journée.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili gratuitamente durante il giorno nel parcheggio del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag gratis beschikbaar zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych bezpłatnie w ciągu dnia na zwykłym parkingu parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis gratuitamente durante o dia no estacionamento do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "entityKey": "vulcania-accueil",
+        "displayName": "Accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Empfang auf Ebene C</h2><p>Vulcanias zentraler Empfang befindet sich auf Ebene C. Hier gibt es unter anderem Auskunft zum Baby-Switch-Angebot: Erwachsene einer Familie können dynamische Attraktionen abwechselnd nutzen, wenn ein Kind die Mindestgröße noch nicht erreicht.</p><p>Gegen Vorlage des vom Park verlangten Nachweises werden hier auch das Armband und das Merkblatt für bevorzugten Zugang ausgegeben. Diesen Service bieten ebenso die Eingangskassen an.</p><h2>Hilfsmittel zum Ausleihen</h2><p>Rollstühle, Kinderwagen und Hilfsmittel für den Besuch sind am Empfang oder im Servicebereich der Kassen erhältlich, je nach Bestand und Leihbedingungen. Damit vereint dieser Ort Familienbetreuung und mehrere Angebote zur Barrierefreiheit.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The reception point on level C</h2><p>Vulcania’s main reception is on level C. Among its services is information about baby switch, which lets adults in a family take turns on dynamic attractions when a child does not meet the minimum height.</p><p>Reception also issues the priority-access wristband and information leaflet on presentation of the supporting document required by the park. This service is also offered at the entrance ticket offices.</p><h2>Equipment loans</h2><p>Wheelchairs, pushchairs and visitor-assistance equipment can be collected here or from the service area at the ticket offices, subject to availability and loan conditions. Reception brings together family assistance and several accessibility services.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El punto de acogida del nivel C</h2><p>La recepción general de Vulcania se encuentra en el nivel C. Ofrece, entre otros servicios, información sobre baby switch, que permite a los adultos de una familia turnarse en las atracciones dinámicas cuando un niño no alcanza la altura mínima.</p><p>También entrega la pulsera y la información de acceso prioritario al presentar el justificante exigido por el parque. Este servicio se ofrece igualmente en las taquillas de entrada.</p><h2>Préstamo de equipamiento</h2><p>Las sillas de ruedas, cochecitos y equipos de apoyo a la visita pueden recogerse aquí o en el espacio de servicios de las taquillas, según existencias y condiciones de préstamo. La recepción reúne así asistencia a las familias y varios servicios de accesibilidad.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le point d’accueil du niveau C</h2><p>L’accueil général de Vulcania se trouve au niveau C. Il assure notamment l’information sur le dispositif « baby switch », qui permet aux adultes d’une famille d’accéder à tour de rôle aux animations dynamiques lorsqu’un enfant n’atteint pas la taille minimale.</p><p>C’est aussi l’un des points de remise du bracelet et de la notice d’accès prioritaire, sur présentation du justificatif prévu par le parc. Ce service est également proposé aux caisses de l’entrée.</p><h2>Les équipements prêtés</h2><p>Fauteuils roulants, poussettes et équipements d’aide à la visite peuvent être retirés à l’accueil ou à l’espace de services des caisses, selon les stocks et les conditions de prêt. Ces fonctions rassemblent ici l’accompagnement des familles et plusieurs services d’accessibilité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il punto d’accoglienza al livello C</h2><p>L’accoglienza generale di Vulcania si trova al livello C. Fornisce anche informazioni sul servizio baby switch, che permette agli adulti di una famiglia di alternarsi sulle attrazioni dinamiche quando un bambino non raggiunge l’altezza minima.</p><p>Qui vengono inoltre consegnati il braccialetto e la guida per l’accesso prioritario, dietro presentazione del documento richiesto dal parco. Lo stesso servizio è disponibile alle casse d’ingresso.</p><h2>Attrezzature in prestito</h2><p>Sedie a rotelle, passeggini e ausili alla visita possono essere ritirati qui o nello spazio servizi delle casse, secondo disponibilità e condizioni di prestito. L’accoglienza riunisce così assistenza alle famiglie e diversi servizi di accessibilità.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het ontvangstpunt op niveau C</h2><p>De algemene receptie van Vulcania bevindt zich op niveau C. Hier is onder meer informatie over baby switch verkrijgbaar: volwassenen binnen een gezin kunnen om de beurt een dynamische attractie bezoeken wanneer een kind de minimumlengte nog niet bereikt.</p><p>Ook het polsbandje en de informatie over voorrangstoegang worden hier verstrekt op vertoon van het door het park vereiste bewijs. Deze dienst is eveneens beschikbaar bij de ingangskassa’s.</p><h2>Uitleen van hulpmiddelen</h2><p>Rolstoelen, kinderwagens en hulpmiddelen voor het bezoek zijn hier of bij de servicedienst van de kassa’s af te halen, afhankelijk van voorraad en uitleenvoorwaarden. De receptie verenigt zo gezinsondersteuning en verschillende toegankelijkheidsdiensten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Punkt obsługi na poziomie C</h2><p>Główna recepcja Vulcanii znajduje się na poziomie C. Udziela między innymi informacji o usłudze baby switch, dzięki której dorośli z jednej rodziny mogą kolejno korzystać z atrakcji dynamicznych, gdy dziecko nie osiąga wymaganego wzrostu.</p><p>Po okazaniu dokumentu wymaganego przez park wydaje się tu również opaskę i ulotkę dotyczącą dostępu priorytetowego. Usługa ta jest dostępna także w kasach przy wejściu.</p><h2>Wypożyczanie wyposażenia</h2><p>Wózki inwalidzkie, wózki dziecięce i pomoce do zwiedzania można odebrać tutaj lub w strefie usług przy kasach, zależnie od dostępności i warunków wypożyczenia. Recepcja łączy w ten sposób wsparcie rodzin z kilkoma usługami dostępności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O ponto de acolhimento do nível C</h2><p>O acolhimento geral de Vulcania situa-se no nível C. Presta, entre outros serviços, informações sobre o baby switch, que permite aos adultos de uma família alternarem nas atrações dinâmicas quando uma criança não atinge a altura mínima.</p><p>É também um dos pontos de entrega da pulseira e do folheto de acesso prioritário, mediante apresentação do comprovativo exigido pelo parque. Este serviço existe igualmente nas bilheteiras da entrada.</p><h2>Equipamento emprestado</h2><p>Cadeiras de rodas, carrinhos de bebé e equipamentos de apoio à visita podem ser levantados aqui ou no espaço de serviços das bilheteiras, conforme as existências e condições de empréstimo. O acolhimento reúne assim apoio às famílias e vários serviços de acessibilidade.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "vulcania-parking",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Vulcania gibt das Parken als kostenlos an und bietet auch Stellflächen für Wohnmobile.</p><p>Schulgruppen können Reisebusse ebenfalls kostenlos abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen. Tagesparkplatz und Übernachtungsbereich erfüllen somit unterschiedliche Zwecke.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Vulcania advertises this parking as free and provides spaces for motorhomes as well.</p><p>School groups also have free coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer. Daytime parking and this overnight area therefore serve different purposes.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. Vulcania anuncia este estacionamiento como gratuito y dispone también de plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento gratuito para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado. El aparcamiento diurno y esa área de estancia cumplen, por tanto, funciones diferentes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Vulcania annonce ce stationnement comme gratuit et prévoit notamment des places pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement gratuit pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément. Le parking de jour et cette aire de séjour ont donc des usages différents.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Vulcania indica la sosta come gratuita e prevede anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio gratuito per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente. Il parcheggio diurno e quest’area di soggiorno hanno quindi funzioni differenti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Vulcania vermeldt dat dit parkeren gratis is en voorziet ook in plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over gratis parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod. De dagparkeerplaats en dit verblijfsterrein hebben dus verschillende functies.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Vulcania podaje, że postój jest bezpłatny, i zapewnia również miejsca dla kamperów.</p><p>Grupy szkolne mają także bezpłatny parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie. Parking dzienny i teren noclegowy pełnią zatem różne funkcje.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Vulcania anuncia este estacionamento como gratuito e disponibiliza também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento gratuito para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente. O estacionamento diurno e essa área de estadia têm, por isso, funções diferentes.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "717f82d0-a76d-4a98-b8d0-f9c4ae7df10b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:50:10.1072734Z",
+    "appliedAtUtc": "2026-11-15T19:50:10.1072742Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "entityKey": "vulcania-piste-vulcain",
+        "displayName": "La Piste de Vulcain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mit dem Fahrrad durch eine Vulkanlandschaft</h2><p>La Piste de Vulcain bot ein BMX-Erlebnis im Freien. Nach Angaben von Vulcania erinnerte ihre wellige Gestaltung an die abgerundeten Formen der umliegenden Chaîne des Puys. Die Landschaft wurde damit zum befahrbaren Gelände statt zum Gegenstand einer Ausstellung.</p><p>Die dunkle Bahn schlängelte sich zwischen Grasinseln hindurch; weiße Markierungen betonten ihre Kurven. Auf Fotografien sind Radfahrer mit Helmen und Schützern in dieser offenen Umgebung zu sehen.</p><h2>Nicht mehr angeboten</h2><p>Diese Aktivität wird in Vulcania nicht mehr angeboten. Das BMX-Fahren verlieh dem Vulkanthema eine sportliche Form und verband die Kurven eines Spielgeländes mit den Erhebungen der Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Cycling through a volcanic-inspired landscape</h2><p>La Piste de Vulcain offered an outdoor BMX experience at Vulcania. According to the park, its undulating shape echoed the rounded forms of the surrounding Chaîne des Puys. The landscape became something to ride through rather than observe in an exhibition.</p><p>The dark track wound between patches of grass, with white markings emphasising its curves. Photographs show riders wearing helmets and protective pads in this open setting.</p><h2>An activity no longer available</h2><p>This activity is no longer offered at Vulcania. BMX riding gave the volcanic theme a sporting expression, linking the curves of a play landscape with the contours of the Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un paisaje volcánico recorrido en bicicleta</h2><p>La Piste de Vulcain ofrecía una experiencia de BMX al aire libre. Según Vulcania, su trazado ondulado evocaba las formas redondeadas de la cercana Chaîne des Puys. El paisaje se convertía así en un terreno para practicar ciclismo en lugar de observarlo en una exposición.</p><p>La pista oscura serpenteaba entre islas de hierba, con marcas blancas que destacaban sus curvas. Las fotografías muestran ciclistas con casco y protecciones en este entorno abierto.</p><h2>Una actividad ya no disponible</h2><p>Esta actividad ya no se ofrece en Vulcania. La práctica del BMX daba al tema volcánico una expresión deportiva, relacionando las curvas de un terreno de juego con los relieves de la Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un paysage volcanique parcouru à vélo</h2><p>La Piste de Vulcain proposait une expérience de BMX à l’extérieur de Vulcania. Son dessin ondulant évoquait, selon le parc, les formes arrondies de la Chaîne des Puys environnante. Le relief devenait ainsi un terrain de pratique plutôt qu’un paysage observé depuis une exposition.</p><p>La piste sombre serpentait entre des îlots d’herbe, avec des marques blanches qui en soulignaient les courbes. Les photographies montrent des cyclistes portant casque et protections dans ce décor ouvert.</p><h2>Une activité désormais indisponible</h2><p>Cette animation n’est plus proposée à Vulcania. La pratique du BMX y donnait au thème volcanique une traduction sportive, en rapprochant les courbes d’un terrain de jeu des reliefs de la Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un paesaggio vulcanico da percorrere in bicicletta</h2><p>La Piste de Vulcain proponeva un’esperienza di BMX all’aperto. Secondo Vulcania, il disegno ondulato richiamava le forme arrotondate della vicina Chaîne des Puys. Il paesaggio diventava così un terreno da affrontare in bicicletta anziché un soggetto da osservare in un’esposizione.</p><p>La pista scura serpeggiava tra isole d’erba, con segni bianchi a sottolinearne le curve. Le fotografie mostrano ciclisti con casco e protezioni in questo ambiente aperto.</p><h2>Un’attività non più disponibile</h2><p>Questa attività non è più proposta a Vulcania. La pratica del BMX dava al tema vulcanico un’espressione sportiva, accostando le curve di un terreno di gioco ai rilievi della Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Fietsen door een vulkanisch geïnspireerd landschap</h2><p>La Piste de Vulcain bood een BMX-ervaring in de buitenlucht. Volgens Vulcania verwees de golvende vorm naar de afgeronde heuvels van de omliggende Chaîne des Puys. Het landschap werd zo een terrein om doorheen te fietsen in plaats van een onderwerp in een tentoonstelling.</p><p>De donkere baan slingerde tussen grasstroken, met witte markeringen die de bochten benadrukten. Foto’s tonen fietsers met helmen en beschermers in deze open omgeving.</p><h2>Niet meer beschikbaar</h2><p>Deze activiteit wordt niet meer aangeboden in Vulcania. BMX-fietsen gaf het vulkaanthema een sportieve invulling, waarbij de bochten van een speelterrein aansloten bij de vormen van de Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rowerem przez krajobraz inspirowany wulkanami</h2><p>La Piste de Vulcain oferowała jazdę na BMX-ach na świeżym powietrzu. Według Vulcanii falisty kształt nawiązywał do zaokrąglonych form pobliskiej Chaîne des Puys. Krajobraz stawał się w ten sposób terenem do jazdy, a nie tylko tematem wystawy.</p><p>Ciemny tor wił się między wysepkami trawy, a białe oznaczenia podkreślały zakręty. Fotografie pokazują rowerzystów w kaskach i ochraniaczach w tej otwartej przestrzeni.</p><h2>Atrakcja już niedostępna</h2><p>Ta aktywność nie jest już oferowana w Vulcanii. Jazda na BMX-ach nadawała tematowi wulkanów sportowy wymiar, łącząc krzywizny terenu do zabawy z formami Chaîne des Puys.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma paisagem vulcânica percorrida de bicicleta</h2><p>A Piste de Vulcain proporcionava uma experiência de BMX ao ar livre. Segundo Vulcania, o desenho ondulado evocava as formas arredondadas da vizinha Chaîne des Puys. A paisagem tornava-se assim terreno para andar de bicicleta, em vez de um tema observado numa exposição.</p><p>A pista escura serpenteava entre ilhas de relva, com marcas brancas a salientar as curvas. As fotografias mostram ciclistas com capacete e proteções neste cenário aberto.</p><h2>Uma atividade já indisponível</h2><p>Esta atividade já não é proposta em Vulcania. A prática de BMX dava ao tema vulcânico uma expressão desportiva, aproximando as curvas de um terreno de jogo dos relevos da Chaîne des Puys.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "vulcania-aire-camping-cars",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem tagsüber kostenlosen Parkplatz des Parks getrennt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available free of charge in the park’s daytime car park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles gratuitamente durante el día en el aparcamiento del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles gratuitement dans le parking du parc pendant la journée.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili gratuitamente durante il giorno nel parcheggio del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag gratis beschikbaar zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych bezpłatnie w ciągu dnia na zwykłym parkingu parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis gratuitamente durante o dia no estacionamento do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "entityKey": "vulcania-accueil",
+        "displayName": "Accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der Empfang auf Ebene C</h2><p>Vulcanias zentraler Empfang befindet sich auf Ebene C. Hier gibt es unter anderem Auskunft zum Baby-Switch-Angebot: Erwachsene einer Familie können dynamische Attraktionen abwechselnd nutzen, wenn ein Kind die Mindestgröße noch nicht erreicht.</p><p>Gegen Vorlage des vom Park verlangten Nachweises werden hier auch das Armband und das Merkblatt für bevorzugten Zugang ausgegeben. Diesen Service bieten ebenso die Eingangskassen an.</p><h2>Hilfsmittel zum Ausleihen</h2><p>Rollstühle, Kinderwagen und Hilfsmittel für den Besuch sind am Empfang oder im Servicebereich der Kassen erhältlich, je nach Bestand und Leihbedingungen. Damit vereint dieser Ort Familienbetreuung und mehrere Angebote zur Barrierefreiheit.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The reception point on level C</h2><p>Vulcania’s main reception is on level C. Among its services is information about baby switch, which lets adults in a family take turns on dynamic attractions when a child does not meet the minimum height.</p><p>Reception also issues the priority-access wristband and information leaflet on presentation of the supporting document required by the park. This service is also offered at the entrance ticket offices.</p><h2>Equipment loans</h2><p>Wheelchairs, pushchairs and visitor-assistance equipment can be collected here or from the service area at the ticket offices, subject to availability and loan conditions. Reception brings together family assistance and several accessibility services.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El punto de acogida del nivel C</h2><p>La recepción general de Vulcania se encuentra en el nivel C. Ofrece, entre otros servicios, información sobre baby switch, que permite a los adultos de una familia turnarse en las atracciones dinámicas cuando un niño no alcanza la altura mínima.</p><p>También entrega la pulsera y la información de acceso prioritario al presentar el justificante exigido por el parque. Este servicio se ofrece igualmente en las taquillas de entrada.</p><h2>Préstamo de equipamiento</h2><p>Las sillas de ruedas, cochecitos y equipos de apoyo a la visita pueden recogerse aquí o en el espacio de servicios de las taquillas, según existencias y condiciones de préstamo. La recepción reúne así asistencia a las familias y varios servicios de accesibilidad.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le point d’accueil du niveau C</h2><p>L’accueil général de Vulcania se trouve au niveau C. Il assure notamment l’information sur le dispositif « baby switch », qui permet aux adultes d’une famille d’accéder à tour de rôle aux animations dynamiques lorsqu’un enfant n’atteint pas la taille minimale.</p><p>C’est aussi l’un des points de remise du bracelet et de la notice d’accès prioritaire, sur présentation du justificatif prévu par le parc. Ce service est également proposé aux caisses de l’entrée.</p><h2>Les équipements prêtés</h2><p>Fauteuils roulants, poussettes et équipements d’aide à la visite peuvent être retirés à l’accueil ou à l’espace de services des caisses, selon les stocks et les conditions de prêt. Ces fonctions rassemblent ici l’accompagnement des familles et plusieurs services d’accessibilité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il punto d’accoglienza al livello C</h2><p>L’accoglienza generale di Vulcania si trova al livello C. Fornisce anche informazioni sul servizio baby switch, che permette agli adulti di una famiglia di alternarsi sulle attrazioni dinamiche quando un bambino non raggiunge l’altezza minima.</p><p>Qui vengono inoltre consegnati il braccialetto e la guida per l’accesso prioritario, dietro presentazione del documento richiesto dal parco. Lo stesso servizio è disponibile alle casse d’ingresso.</p><h2>Attrezzature in prestito</h2><p>Sedie a rotelle, passeggini e ausili alla visita possono essere ritirati qui o nello spazio servizi delle casse, secondo disponibilità e condizioni di prestito. L’accoglienza riunisce così assistenza alle famiglie e diversi servizi di accessibilità.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Het ontvangstpunt op niveau C</h2><p>De algemene receptie van Vulcania bevindt zich op niveau C. Hier is onder meer informatie over baby switch verkrijgbaar: volwassenen binnen een gezin kunnen om de beurt een dynamische attractie bezoeken wanneer een kind de minimumlengte nog niet bereikt.</p><p>Ook het polsbandje en de informatie over voorrangstoegang worden hier verstrekt op vertoon van het door het park vereiste bewijs. Deze dienst is eveneens beschikbaar bij de ingangskassa’s.</p><h2>Uitleen van hulpmiddelen</h2><p>Rolstoelen, kinderwagens en hulpmiddelen voor het bezoek zijn hier of bij de servicedienst van de kassa’s af te halen, afhankelijk van voorraad en uitleenvoorwaarden. De receptie verenigt zo gezinsondersteuning en verschillende toegankelijkheidsdiensten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Punkt obsługi na poziomie C</h2><p>Główna recepcja Vulcanii znajduje się na poziomie C. Udziela między innymi informacji o usłudze baby switch, dzięki której dorośli z jednej rodziny mogą kolejno korzystać z atrakcji dynamicznych, gdy dziecko nie osiąga wymaganego wzrostu.</p><p>Po okazaniu dokumentu wymaganego przez park wydaje się tu również opaskę i ulotkę dotyczącą dostępu priorytetowego. Usługa ta jest dostępna także w kasach przy wejściu.</p><h2>Wypożyczanie wyposażenia</h2><p>Wózki inwalidzkie, wózki dziecięce i pomoce do zwiedzania można odebrać tutaj lub w strefie usług przy kasach, zależnie od dostępności i warunków wypożyczenia. Recepcja łączy w ten sposób wsparcie rodzin z kilkoma usługami dostępności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O ponto de acolhimento do nível C</h2><p>O acolhimento geral de Vulcania situa-se no nível C. Presta, entre outros serviços, informações sobre o baby switch, que permite aos adultos de uma família alternarem nas atrações dinâmicas quando uma criança não atinge a altura mínima.</p><p>É também um dos pontos de entrega da pulseira e do folheto de acesso prioritário, mediante apresentação do comprovativo exigido pelo parque. Este serviço existe igualmente nas bilheteiras da entrada.</p><h2>Equipamento emprestado</h2><p>Cadeiras de rodas, carrinhos de bebé e equipamentos de apoio à visita podem ser levantados aqui ou no espaço de serviços das bilheteiras, conforme as existências e condições de empréstimo. O acolhimento reúne assim apoio às famílias e vários serviços de acessibilidade.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "vulcania-parking",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Vulcania gibt das Parken als kostenlos an und bietet auch Stellflächen für Wohnmobile.</p><p>Schulgruppen können Reisebusse ebenfalls kostenlos abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen. Tagesparkplatz und Übernachtungsbereich erfüllen somit unterschiedliche Zwecke.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Vulcania advertises this parking as free and provides spaces for motorhomes as well.</p><p>School groups also have free coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer. Daytime parking and this overnight area therefore serve different purposes.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. Vulcania anuncia este estacionamiento como gratuito y dispone también de plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento gratuito para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado. El aparcamiento diurno y esa área de estancia cumplen, por tanto, funciones diferentes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Vulcania annonce ce stationnement comme gratuit et prévoit notamment des places pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement gratuit pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément. Le parking de jour et cette aire de séjour ont donc des usages différents.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Vulcania indica la sosta come gratuita e prevede anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio gratuito per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente. Il parcheggio diurno e quest’area di soggiorno hanno quindi funzioni differenti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Vulcania vermeldt dat dit parkeren gratis is en voorziet ook in plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over gratis parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod. De dagparkeerplaats en dit verblijfsterrein hebben dus verschillende functies.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Vulcania podaje, że postój jest bezpłatny, i zapewnia również miejsca dla kamperów.</p><p>Grupy szkolne mają także bezpłatny parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie. Parking dzienny i teren noclegowy pełnią zatem różne funkcje.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Vulcania anuncia este estacionamento como gratuito e disponibiliza também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento gratuito para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente. O estacionamento diurno e essa área de estadia têm, por isso, funções diferentes.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : 32 textes relus en huit langues pour Piste de Vulcain, aire camping-cars, parking et accueil niveau C ; distinction jour/nuit sourcée, Piste indisponible de statut Unknown, toutes fiches privées.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Quatre notices relues personnellement en huit langues ; Piste officielle indisponible maintenue Unknown et privée, aucune fermeture définitive ni date supposée. Aire camping-cars distincte parking de jour ; accueil niveau C établi par règlement et page enfants. Sources : animation/la-piste-de-vulcain, aire-de-camping-cars, reglement-interieur, special-enfants, education/maternelle. Parking notice volontairement courte car offre matérielle documentée limitée ; aucun remplissage pour atteindre un seuil de mots."
+}

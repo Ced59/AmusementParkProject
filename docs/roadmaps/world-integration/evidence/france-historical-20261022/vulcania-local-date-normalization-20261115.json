@@ -1,0 +1,64 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "changes": [
+    {
+      "id": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "name": "Namazu",
+      "sourceApply": "a2322d06-a575-48de-9f8b-4ce06599503c",
+      "sourceDate": "2026-11-15T14:37:00.7314505Z",
+      "before": {
+        "openingDate": "2021-07-10",
+        "closingDate": null,
+        "openingDateText": null,
+        "closingDateText": null
+      },
+      "after": {
+        "openingDate": "2021-07-10",
+        "closingDate": null,
+        "openingDateText": "2021-07-10",
+        "closingDateText": null
+      }
+    },
+    {
+      "id": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "name": "Expédition Hawaï",
+      "sourceApply": "b0c3e3b7-8795-43b7-a67f-74218cb44502",
+      "sourceDate": "2026-11-15T15:27:40.0347931Z",
+      "before": {
+        "openingDate": "2026"
+      },
+      "after": {
+        "openingDate": null,
+        "openingDateText": "2026"
+      }
+    },
+    {
+      "id": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "name": "Astrodôme – Planétarium",
+      "sourceApply": "b0c3e3b7-8795-43b7-a67f-74218cb44502",
+      "sourceDate": "2026-11-15T15:27:40.0347931Z",
+      "before": {
+        "openingDate": "2023"
+      },
+      "after": {
+        "openingDate": null,
+        "openingDateText": "2023"
+      }
+    },
+    {
+      "id": "ba34b618-1876-4355-b842-2d10f6975525",
+      "name": "Primordia, la naissance du monde",
+      "sourceApply": "0f39c1be-ad52-4349-b4d3-c8b2d3064da4",
+      "sourceDate": "2026-11-15T15:29:20.1021724Z",
+      "before": {
+        "openingDate": "2026"
+      },
+      "after": {
+        "openingDate": null,
+        "openingDateText": "2026"
+      }
+    }
+  ],
+  "scope": "Local canonical state reconciliation to existing server Apply fields only. No API mutation or new data integration event. Original source receipts retained. Importer stores partial years in openingDateText; local input shorthand is now normalized.",
+  "dataIntegrationPerformed": false
+}

@@ -1,0 +1,668 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+          "key": "vulcania-geyser",
+          "name": "Geyser",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un jet d’eau dans le paysage volcanique</h2><p>Le Geyser transpose en plein air un spectacle des terres volcaniques : une colonne d’eau s’élève par intermittence au milieu d’un bassin. Autour, les jeux d’eau donnent aux enfants une approche concrète de ce thème, loin des éruptions projetées dans les salles du parc.</p><p>Il s’agit d’une reconstitution, pas d’une source chaude naturelle. Le jaillissement met en scène les manifestations qui peuvent persister dans une région volcanique après les éruptions.</p><h2>L’eau à portée de jeu</h2><p>Des tables de manipulation aux commandes rouges entourent le bassin, avec le grand jet en arrière-plan. Le contraste entre les petits gestes des enfants et l’eau qui s’élève donne son caractère à cet espace extérieur, ouvert sur les arbres et les reliefs environnants.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A fountain in a volcanic landscape</h2><p>The Geyser brings a spectacle associated with volcanic country outdoors: a column of water rises intermittently from a pool. Water games around it let children explore the theme directly, away from the eruptions shown on the park’s cinema screens.</p><p>This is a reconstruction, rather than a natural hot spring. Its bursts represent phenomena that can continue in a volcanic region after eruptions have ended.</p><h2>Water within reach</h2><p>Activity tables with red controls stand around the pool, with the tall fountain beyond them. The contrast between children’s small movements and the rising water shapes this outdoor space, which opens onto the surrounding trees and hills.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Wasserfontäne in der Vulkanlandschaft</h2><p>Der Geyser bringt ein Schauspiel vulkanischer Regionen ins Freie: In Abständen steigt eine Wassersäule aus einem Becken auf. Die Wasserspiele ringsum machen das Thema für Kinder unmittelbar erfahrbar, abseits der Eruptionen auf den Kinoleinwänden des Parks.</p><p>Die Anlage ist eine Nachbildung und keine natürliche heiße Quelle. Das Aufschießen des Wassers veranschaulicht Erscheinungen, die in einem Vulkangebiet auch nach Ausbrüchen noch auftreten können.</p><h2>Mit Wasser experimentieren</h2><p>Spieltische mit roten Steuerelementen stehen rund um das Becken, dahinter erhebt sich die hohe Fontäne. Das Nebeneinander kleiner Kinderhandgriffe und aufsteigenden Wassers prägt diesen Außenbereich mit Blick auf die umliegenden Bäume und Hügel.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een waterstraal in het vulkaanlandschap</h2><p>Bij de Geyser verschijnt een verschijnsel uit vulkanische gebieden in de openlucht: met tussenpozen stijgt een hoge waterkolom uit een bassin. De waterspellen eromheen laten kinderen het thema zelf verkennen, buiten de zalen waar vulkaanuitbarstingen op schermen te zien zijn.</p><p>Dit is een nabootsing, geen natuurlijke warmwaterbron. De opspuitende straal verbeeldt verschijnselen die na uitbarstingen in een vulkanisch gebied kunnen voortduren.</p><h2>Spelen met water</h2><p>Speeltafels met rode bedieningsknoppen staan rondom het bassin, met de hoge fontein op de achtergrond. Het verschil tussen kleine kinderhandelingen en het opstijgende water kenmerkt deze buitenruimte, die uitzicht biedt op bomen en omliggende heuvels.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un getto d’acqua nel paesaggio vulcanico</h2><p>Il Geyser porta all’aperto uno spettacolo legato alle terre vulcaniche: una colonna d’acqua si alza a intervalli da una vasca. I giochi d’acqua circostanti permettono ai bambini di avvicinarsi al tema attraverso l’esperienza diretta, fuori dalle sale che proiettano le eruzioni.</p><p>È una ricostruzione, non una sorgente termale naturale. Il getto rappresenta i fenomeni che possono persistere in una regione vulcanica dopo le eruzioni.</p><h2>L’acqua diventa gioco</h2><p>Tavoli per le attività con comandi rossi circondano la vasca, con l’alta fontana sullo sfondo. Il contrasto fra i piccoli gesti dei bambini e l’acqua che sale caratterizza questo spazio aperto verso gli alberi e i rilievi circostanti.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un chorro de agua en el paisaje volcánico</h2><p>El Geyser lleva al aire libre un espectáculo de las regiones volcánicas: una columna de agua se eleva de forma intermitente desde una piscina. Los juegos de agua que la rodean acercan el tema a los niños mediante la experiencia directa, fuera de las salas que proyectan erupciones.</p><p>Se trata de una recreación, no de una fuente termal natural. El chorro representa fenómenos que pueden persistir en una región volcánica después de las erupciones.</p><h2>El agua como juego</h2><p>Las mesas de actividades con mandos rojos rodean la piscina, con la gran fuente al fondo. El contraste entre los pequeños gestos de los niños y el agua que se eleva caracteriza este espacio abierto hacia los árboles y las colinas circundantes.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Strumień wody w wulkanicznym krajobrazie</h2><p>Geyser przenosi pod gołe niebo widowisko kojarzone z terenami wulkanicznymi: z basenu co pewien czas wystrzela słup wody. Otaczające go zabawy wodne pozwalają dzieciom poznawać temat przez własne doświadczenie, poza salami z projekcjami erupcji.</p><p>To odtworzenie zjawiska, a nie naturalne gorące źródło. Strumień ilustruje procesy, które mogą utrzymywać się w regionie wulkanicznym również po ustaniu wybuchów.</p><h2>Woda zachęcająca do zabawy</h2><p>Wokół basenu stoją stoliki z czerwonymi elementami sterującymi, a za nimi wznosi się wysoka fontanna. Zestawienie drobnych ruchów dziecięcych dłoni z unoszącą się wodą wyróżnia tę plenerową przestrzeń, otwartą na okoliczne drzewa i wzgórza.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um jato de água na paisagem vulcânica</h2><p>O Geyser traz para o ar livre um espetáculo associado às terras vulcânicas: uma coluna de água sobe de forma intermitente a partir de um tanque. Os jogos de água em redor aproximam as crianças do tema pela experiência direta, fora das salas onde se projetam erupções.</p><p>É uma recriação, não uma nascente termal natural. O jato representa fenómenos que podem persistir numa região vulcânica depois das erupções.</p><h2>Água para experimentar</h2><p>Mesas de atividades com comandos vermelhos rodeiam o tanque, com a grande fonte ao fundo. O contraste entre os pequenos gestos das crianças e a água que sobe caracteriza este espaço aberto para as árvores e os relevos circundantes.</p>"
+            }
+          ]
+        },
+        {
+          "id": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+          "key": "vulcania-serre",
+          "name": "Serre",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une végétation venue des hauteurs tropicales</h2><p>Sous la verrière de la Serre, les fougères arborescentes et d’autres plantes exotiques évoquent les milieux volcaniques tropicaux d’altitude. Le feuillage entoure un chemin de visite et des rochers, composant un jardin où le volcanisme se raconte par le vivant.</p><p>Cet ensemble symbolise la reconquête d’une terre après une éruption : aux paysages dénudés souvent associés aux volcans répond ici une végétation abondante. La lumière de la verrière accompagne cette lecture botanique des sols volcaniques.</p><h2>De la serre à la vallée</h2><p>Dans son prolongement, la vallée laisse apparaître une ancienne coulée de lave partiellement dégagée. La flore locale y contraste avec les plantes abritées sous verre et relie ce jardin exotique au terrain auvergnat qui accueille Vulcania.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Plants from tropical highlands</h2><p>Beneath the greenhouse roof, tree ferns and other exotic plants evoke high-altitude tropical volcanic habitats. Foliage surrounds a visitor path and rocks, creating a garden that tells a volcanic story through living things.</p><p>The planting symbolises vegetation reclaiming land after an eruption. Lush growth answers the bare landscapes often associated with volcanoes, while light through the glass roof illuminates this botanical reading of volcanic soils.</p><h2>From greenhouse to valley</h2><p>Beyond the greenhouse, a valley exposes part of an old lava flow. Its local flora contrasts with the plants sheltered under glass, connecting this exotic garden to the Auvergne terrain on which Vulcania stands.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Pflanzen aus tropischen Höhenlagen</h2><p>Unter dem Glasdach der Serre erinnern Baumfarne und andere exotische Pflanzen an tropische Vulkanlandschaften in höheren Lagen. Das Grün umgibt einen Besucherweg und Felsen. So entsteht ein Garten, der Vulkanismus anhand der lebendigen Natur erzählt.</p><p>Die Bepflanzung steht für die Rückkehr der Vegetation nach einem Ausbruch. Den kahlen Landschaften, die häufig mit Vulkanen verbunden werden, setzt sie üppiges Wachstum entgegen. Licht fällt durch das Glasdach auf diesen botanischen Blick auf vulkanische Böden.</p><h2>Vom Gewächshaus ins Tal</h2><p>Im anschließenden Tal ist ein alter Lavastrom teilweise freigelegt. Die heimische Flora bildet einen Kontrast zu den Pflanzen unter Glas und verbindet den exotischen Garten mit dem auvergnatischen Untergrund von Vulcania.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Planten uit tropische hooglanden</h2><p>Onder het glazen dak van de Serre verwijzen boomvarens en andere exotische planten naar tropische vulkaangebieden op grotere hoogte. Bladeren omringen een bezoekerspad en rotsen. In deze tuin vertelt de levende natuur het verhaal van vulkanisme.</p><p>De beplanting verbeeldt hoe vegetatie na een uitbarsting het land opnieuw verovert. Tegenover de kale landschappen die vaak met vulkanen worden verbonden, staat hier uitbundig groen. Licht door het glas versterkt die botanische blik op vulkanische bodems.</p><h2>Van kas naar dal</h2><p>In het aansluitende dal ligt een oude lavastroom gedeeltelijk bloot. De plaatselijke flora contrasteert met de planten onder glas en verbindt deze exotische tuin met de Auvergnese bodem waarop Vulcania is gebouwd.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Piante delle alture tropicali</h2><p>Sotto la vetrata della Serre, felci arboree e altre piante esotiche evocano gli ambienti vulcanici tropicali d’altitudine. Il fogliame circonda un percorso di visita e alcune rocce, formando un giardino che racconta il vulcanismo attraverso la vita vegetale.</p><p>L’insieme simboleggia la riconquista del terreno dopo un’eruzione. Ai paesaggi spogli spesso associati ai vulcani risponde una vegetazione rigogliosa, illuminata dalla copertura di vetro: una lettura botanica dei suoli vulcanici.</p><h2>Dalla serra alla valle</h2><p>Nella valle che prosegue oltre la serra affiora parte di un’antica colata lavica. La flora locale contrasta con le piante riparate sotto vetro e collega questo giardino esotico al terreno dell’Alvernia su cui sorge Vulcania.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Plantas de las alturas tropicales</h2><p>Bajo la cubierta de cristal de la Serre, los helechos arborescentes y otras plantas exóticas evocan los ambientes volcánicos tropicales de altitud. El follaje rodea un recorrido y unas rocas, formando un jardín que cuenta el vulcanismo a través de la vida vegetal.</p><p>El conjunto simboliza la recuperación del terreno por la vegetación después de una erupción. Frente a los paisajes desnudos asociados a los volcanes aparece un crecimiento exuberante, iluminado por la cristalera: una lectura botánica de los suelos volcánicos.</p><h2>Del invernadero al valle</h2><p>En el valle contiguo aflora parcialmente una antigua colada de lava. La flora local contrasta con las plantas protegidas bajo cristal y vincula este jardín exótico con el terreno de Auvernia donde se encuentra Vulcania.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Rośliny z tropikalnych wyżyn</h2><p>Pod szklanym dachem Serre paprocie drzewiaste i inne egzotyczne rośliny przywołują wysokogórskie środowiska tropikalnych regionów wulkanicznych. Liście otaczają ścieżkę dla zwiedzających i skały. Ten ogród opowiada o wulkanizmie za pośrednictwem żywej przyrody.</p><p>Kompozycja symbolizuje powrót roślinności na ziemię po erupcji. Zamiast pustych krajobrazów często kojarzonych z wulkanami pojawia się bujna zieleń. Światło przenikające przez dach oświetla tę botaniczną interpretację gleb wulkanicznych.</p><h2>Ze szklarni do doliny</h2><p>W przylegającej dolinie częściowo odsłonięto dawny potok lawy. Miejscowa flora kontrastuje z roślinami chronionymi pod szkłem i wiąże egzotyczny ogród z owernijskim podłożem Vulcanii.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Plantas das terras altas tropicais</h2><p>Sob a cobertura de vidro da Serre, fetos arbóreos e outras plantas exóticas evocam ambientes vulcânicos tropicais de altitude. A folhagem envolve um percurso de visita e rochas, formando um jardim que conta o vulcanismo através da vida vegetal.</p><p>O conjunto simboliza a reconquista do terreno pela vegetação após uma erupção. Às paisagens despidas frequentemente associadas aos vulcões responde um crescimento abundante, iluminado pela cobertura de vidro: uma leitura botânica dos solos vulcânicos.</p><h2>Da estufa ao vale</h2><p>No vale contíguo aflora parcialmente uma antiga escoada de lava. A flora local contrasta com as plantas protegidas sob vidro e liga este jardim exótico ao terreno de Auvérnia onde se encontra Vulcania.</p>"
+            }
+          ]
+        },
+        {
+          "id": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+          "key": "vulcania-cratere",
+          "name": "Cratère",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une ouverture dans les couches volcaniques</h2><p>Le Cratère donne au bâtiment de Vulcania une profondeur visible depuis ses circulations. Cette excavation traverse un empilement de matériaux volcaniques ; ses parois et les cheminements qui l’entourent placent le terrain lui-même au centre du décor.</p><p>Le regard descend vers une ouverture sombre, tandis que les visiteurs restent perceptibles sur les niveaux supérieurs. Cette confrontation entre l’échelle humaine et la cavité accompagne l’architecture largement enterrée du parc.</p><h2>Des grondements sous les pas</h2><p>Des grondements et des dégagements de vapeur intermittents composent une simulation sensorielle autour de la roche. Ils mettent en scène un imaginaire volcanique dans un espace aménagé : le Cratère n’est pas un volcan en activité.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>An opening through volcanic layers</h2><p>The Cratère gives Vulcania’s building a depth visible from its surrounding walkways. This excavation cuts through accumulated volcanic material; its walls and the paths around them make the ground itself part of the setting.</p><p>The eye is drawn down towards a dark opening, while visitors remain visible on the upper levels. The contrast between people and the cavity complements the park’s largely underground architecture.</p><h2>Rumbling beneath the walkways</h2><p>Intermittent rumbles and releases of vapour create a sensory simulation around the rock. They evoke volcanic activity in a constructed visitor space: the Cratère is not an active volcano.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Einblick in vulkanische Schichten</h2><p>Der Cratère macht die Tiefe des Vulcania-Gebäudes von den umliegenden Wegen aus sichtbar. Die Ausgrabung führt durch übereinanderliegendes vulkanisches Material. Ihre Wände und die angrenzenden Wege rücken den Untergrund selbst in den Mittelpunkt der Gestaltung.</p><p>Der Blick fällt hinab zu einer dunklen Öffnung, während auf den oberen Ebenen Besucher erkennbar bleiben. Das Verhältnis zwischen Mensch und Hohlraum ergänzt die weitgehend unterirdische Architektur des Parks.</p><h2>Grollen unter den Wegen</h2><p>Zeitweiliges Grollen und aufsteigender Dampf bilden eine sinnliche Inszenierung rund um das Gestein. Sie lassen vulkanische Vorgänge in einem gestalteten Besucherraum anklingen: Der Cratère ist kein aktiver Vulkan.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een opening door vulkanische lagen</h2><p>De Cratère maakt de diepte van het Vulcania-gebouw zichtbaar vanaf de omliggende wandelgangen. Deze uitgraving doorsnijdt opgestapeld vulkanisch materiaal. De wanden en paden eromheen plaatsen de ondergrond zelf in het middelpunt van het decor.</p><p>De blik daalt af naar een donkere opening, terwijl bezoekers bovenlangs zichtbaar blijven. Het contrast tussen de mensen en de holte sluit aan bij de grotendeels ondergrondse architectuur van het park.</p><h2>Gerommel onder de paden</h2><p>Met tussenpozen zorgen gerommel en stoom voor een zintuiglijke nabootsing rond het gesteente. Ze roepen vulkanische activiteit op binnen een aangelegde bezoekersruimte: de Cratère is geen actieve vulkaan.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un’apertura negli strati vulcanici</h2><p>Il Cratère rende visibile la profondità dell’edificio di Vulcania dai percorsi circostanti. Lo scavo attraversa una successione di materiali vulcanici: le pareti e i camminamenti che lo circondano mettono al centro della scenografia il terreno stesso.</p><p>Lo sguardo scende verso un’apertura scura, mentre i visitatori restano visibili ai livelli superiori. Il rapporto tra la scala umana e la cavità accompagna l’architettura in gran parte sotterranea del parco.</p><h2>Boati sotto i camminamenti</h2><p>Boati e fuoriuscite intermittenti di vapore compongono una simulazione sensoriale attorno alla roccia. Evocano l’attività vulcanica in uno spazio allestito per il pubblico: il Cratère non è un vulcano attivo.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una abertura entre capas volcánicas</h2><p>El Cratère permite apreciar la profundidad del edificio de Vulcania desde los pasos que lo rodean. Esta excavación atraviesa una acumulación de materiales volcánicos; las paredes y los recorridos circundantes sitúan el propio terreno en el centro de la escenografía.</p><p>La mirada baja hacia una abertura oscura, mientras los visitantes siguen siendo visibles en los niveles superiores. El contraste entre la escala humana y la cavidad acompaña la arquitectura mayoritariamente subterránea del parque.</p><h2>Retumbos bajo los pasos</h2><p>Los retumbos y las emisiones intermitentes de vapor componen una simulación sensorial en torno a la roca. Evocan actividad volcánica en un espacio acondicionado para visitantes: el Cratère no es un volcán activo.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Otwór w warstwach wulkanicznych</h2><p>Cratère pozwala dostrzec głębokość budynku Vulcanii z otaczających go przejść. Wykop przecina nagromadzone materiały wulkaniczne. Jego ściany i biegnące obok trasy stawiają samą ziemię w centrum scenografii.</p><p>Wzrok kieruje się ku ciemnemu otworowi, podczas gdy na wyższych poziomach nadal widać zwiedzających. Zestawienie ludzkiej sylwetki z rozmiarami zagłębienia uzupełnia w dużej mierze podziemną architekturę parku.</p><h2>Pomruki pod przejściami</h2><p>Okresowe pomruki i wyrzuty pary tworzą wokół skał symulację oddziałującą na zmysły. Przywołują aktywność wulkaniczną w przestrzeni urządzonej dla gości: Cratère nie jest czynnym wulkanem.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma abertura nas camadas vulcânicas</h2><p>O Cratère torna visível a profundidade do edifício de Vulcania a partir dos percursos em redor. A escavação atravessa uma acumulação de materiais vulcânicos; as paredes e as passagens circundantes colocam o próprio terreno no centro do cenário.</p><p>O olhar desce para uma abertura escura, enquanto os visitantes continuam visíveis nos níveis superiores. O contraste entre a escala humana e a cavidade acompanha a arquitetura maioritariamente subterrânea do parque.</p><h2>Rugidos sob as passagens</h2><p>Rugidos e libertações intermitentes de vapor compõem uma simulação sensorial em torno da rocha. Evocam atividade vulcânica num espaço preparado para visitantes: o Cratère não é um vulcão ativo.</p>"
+            }
+          ]
+        },
+        {
+          "id": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+          "key": "vulcania-sentiers-decouverte",
+          "name": "Sentiers de découverte",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le paysage auvergnat comme terrain de découverte</h2><p>Les Sentiers de découverte parcourent les espaces extérieurs de Vulcania pour donner à lire le territoire qui entoure le parc. Le volcanisme n’y apparaît plus seulement sous forme de film ou de maquette : il s’inscrit dans le relief, les roches et la végétation d’un milieu de moyenne montagne.</p><p>L’observation porte aussi sur l’empreinte humaine. Les peuplements végétaux et l’organisation du paysage permettent d’aborder la manière dont les activités des habitants ont accompagné l’histoire naturelle de cette région.</p><h2>Des roches aux plantes</h2><p>Les ressources pédagogiques associées aux sentiers relient climat, végétation et lecture du paysage. Observer une roche, reconnaître le rôle des plantes ou replacer l’architecture du parc dans son environnement ramène ainsi les grands thèmes de Vulcania à des éléments visibles dans ses propres espaces extérieurs.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Exploring Auvergne through its landscape</h2><p>The Sentiers de découverte cross Vulcania’s outdoor grounds to reveal the territory surrounding the park. Volcanism is encountered beyond films and models: it is present in the relief, rocks and vegetation of this upland environment.</p><p>Observation also turns to human influence. Patterns of vegetation and the organisation of the landscape introduce the ways local activities have accompanied the region’s natural history.</p><h2>From rocks to plants</h2><p>The trails’ educational resources connect climate, vegetation and landscape interpretation. Observing a rock, considering the role of plants or placing the park’s architecture in its surroundings brings Vulcania’s broader themes back to things visible within its own grounds.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Auvergne anhand ihrer Landschaft entdecken</h2><p>Die Sentiers de découverte führen durch das Außengelände von Vulcania und erschließen die Umgebung des Parks. Vulkanismus begegnet hier jenseits von Filmen und Modellen: Er zeigt sich in den Geländeformen, Gesteinen und Pflanzen einer Mittelgebirgslandschaft.</p><p>Zur Beobachtung gehört auch der menschliche Einfluss. Die Zusammensetzung der Vegetation und die Gestaltung der Landschaft zeigen, wie örtliche Tätigkeiten die Naturgeschichte der Region begleitet haben.</p><h2>Von Steinen zu Pflanzen</h2><p>Die pädagogischen Materialien zu den Wegen verbinden Klima, Vegetation und Landschaftsbetrachtung. Ein Gestein zu beobachten, die Rolle der Pflanzen zu erkennen oder die Parkarchitektur in ihre Umgebung einzuordnen, führt Vulcanias große Themen auf sichtbare Elemente im eigenen Außengelände zurück.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Auvergne ontdekken via het landschap</h2><p>De Sentiers de découverte lopen door het buitenterrein van Vulcania en maken het gebied rondom het park leesbaar. Vulkanisme komt hier buiten films en maquettes tot leven: in het reliëf, de stenen en de begroeiing van een middelgebergte.</p><p>Ook de invloed van mensen krijgt aandacht. De samenstelling van de vegetatie en de inrichting van het landschap laten zien hoe plaatselijke activiteiten samengingen met de natuurlijke geschiedenis van de streek.</p><h2>Van stenen naar planten</h2><p>Het lesmateriaal bij de paden verbindt klimaat, begroeiing en landschapsinterpretatie. Een steen bekijken, de rol van planten onderzoeken of de parkarchitectuur in haar omgeving plaatsen brengt de grote thema’s van Vulcania terug naar zichtbare onderdelen van het eigen buitenterrein.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Scoprire l’Alvernia attraverso il paesaggio</h2><p>I Sentiers de découverte attraversano gli spazi esterni di Vulcania per leggere il territorio attorno al parco. Il vulcanismo si incontra oltre i film e i plastici: è presente nei rilievi, nelle rocce e nella vegetazione di questo ambiente di media montagna.</p><p>L’osservazione riguarda anche l’impronta umana. La composizione della vegetazione e l’organizzazione del paesaggio permettono di affrontare il rapporto tra le attività degli abitanti e la storia naturale della regione.</p><h2>Dalle rocce alle piante</h2><p>Le risorse didattiche dei sentieri collegano clima, vegetazione e lettura del paesaggio. Osservare una roccia, riconoscere il ruolo delle piante o collocare l’architettura del parco nel suo ambiente riporta i grandi temi di Vulcania a elementi visibili nei suoi stessi spazi esterni.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Descubrir Auvernia a través del paisaje</h2><p>Los Sentiers de découverte recorren los espacios exteriores de Vulcania para interpretar el territorio que rodea el parque. El vulcanismo se encuentra más allá de películas y maquetas: está presente en el relieve, las rocas y la vegetación de este entorno de media montaña.</p><p>La observación también aborda la huella humana. La composición vegetal y la organización del paisaje permiten explorar cómo las actividades de sus habitantes han acompañado la historia natural de la región.</p><h2>De las rocas a las plantas</h2><p>Los recursos educativos de los senderos relacionan clima, vegetación y lectura del paisaje. Observar una roca, reconocer el papel de las plantas o situar la arquitectura del parque en su entorno acerca los grandes temas de Vulcania a elementos visibles en sus propios espacios exteriores.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Poznawanie Owernii poprzez krajobraz</h2><p>Sentiers de découverte prowadzą przez zewnętrzne tereny Vulcanii i pomagają odczytać otoczenie parku. Wulkanizm pojawia się tu poza filmami i makietami: jest obecny w rzeźbie terenu, skałach i roślinności krajobrazu średnich gór.</p><p>Obserwacja obejmuje również wpływ człowieka. Skład roślinności i zagospodarowanie krajobrazu pozwalają poznać związki między działalnością mieszkańców a historią przyrodniczą regionu.</p><h2>Od skał do roślin</h2><p>Materiały edukacyjne do ścieżek łączą klimat, roślinność i interpretację krajobrazu. Obserwowanie skały, poznawanie roli roślin czy umieszczanie parkowej architektury w jej otoczeniu wiąże główne tematy Vulcanii z elementami widocznymi na jej własnym terenie.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Descobrir Auvérnia através da paisagem</h2><p>Os Sentiers de découverte atravessam os espaços exteriores de Vulcania para interpretar o território em redor do parque. O vulcanismo surge para além dos filmes e das maquetas: está presente no relevo, nas rochas e na vegetação deste ambiente de média montanha.</p><p>A observação abrange também a marca humana. A composição da vegetação e a organização da paisagem permitem abordar a forma como as atividades dos habitantes acompanharam a história natural da região.</p><h2>Das rochas às plantas</h2><p>Os recursos educativos dos percursos relacionam clima, vegetação e interpretação da paisagem. Observar uma rocha, reconhecer o papel das plantas ou enquadrar a arquitetura do parque no seu ambiente aproxima os grandes temas de Vulcania de elementos visíveis nos seus próprios espaços exteriores.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-78-landscape-notices",
+        "notes": "Quatre espaces confirmés par la page pédagogique officielle maternelle et ses photographies : Geyser reconstitué, Serre, Cratère creusé et Sentiers de découverte. Trente-deux notices personnellement rédigées et relues ; aucune source chaude naturelle, ouverture, fermeture, durée ou position inventée. Deux titres et trois paragraphes par langue, profondeur limitée aux éléments documentés sans remplissage."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "46d26681-1408-4617-b4ac-6997524777cb",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:44:43.3312812Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "entityKey": "vulcania-geyser",
+        "displayName": "Geyser",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Wasserfontäne in der Vulkanlandschaft</h2><p>Der Geyser bringt ein Schauspiel vulkanischer Regionen ins Freie: In Abständen steigt eine Wassersäule aus einem Becken auf. Die Wasserspiele ringsum machen das Thema für Kinder unmittelbar erfahrbar, abseits der Eruptionen auf den Kinoleinwänden des Parks.</p><p>Die Anlage ist eine Nachbildung und keine natürliche heiße Quelle. Das Aufschießen des Wassers veranschaulicht Erscheinungen, die in einem Vulkangebiet auch nach Ausbrüchen noch auftreten können.</p><h2>Mit Wasser experimentieren</h2><p>Spieltische mit roten Steuerelementen stehen rund um das Becken, dahinter erhebt sich die hohe Fontäne. Das Nebeneinander kleiner Kinderhandgriffe und aufsteigenden Wassers prägt diesen Außenbereich mit Blick auf die umliegenden Bäume und Hügel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A fountain in a volcanic landscape</h2><p>The Geyser brings a spectacle associated with volcanic country outdoors: a column of water rises intermittently from a pool. Water games around it let children explore the theme directly, away from the eruptions shown on the park’s cinema screens.</p><p>This is a reconstruction, rather than a natural hot spring. Its bursts represent phenomena that can continue in a volcanic region after eruptions have ended.</p><h2>Water within reach</h2><p>Activity tables with red controls stand around the pool, with the tall fountain beyond them. The contrast between children’s small movements and the rising water shapes this outdoor space, which opens onto the surrounding trees and hills.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un chorro de agua en el paisaje volcánico</h2><p>El Geyser lleva al aire libre un espectáculo de las regiones volcánicas: una columna de agua se eleva de forma intermitente desde una piscina. Los juegos de agua que la rodean acercan el tema a los niños mediante la experiencia directa, fuera de las salas que proyectan erupciones.</p><p>Se trata de una recreación, no de una fuente termal natural. El chorro representa fenómenos que pueden persistir en una región volcánica después de las erupciones.</p><h2>El agua como juego</h2><p>Las mesas de actividades con mandos rojos rodean la piscina, con la gran fuente al fondo. El contraste entre los pequeños gestos de los niños y el agua que se eleva caracteriza este espacio abierto hacia los árboles y las colinas circundantes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un jet d’eau dans le paysage volcanique</h2><p>Le Geyser transpose en plein air un spectacle des terres volcaniques : une colonne d’eau s’élève par intermittence au milieu d’un bassin. Autour, les jeux d’eau donnent aux enfants une approche concrète de ce thème, loin des éruptions projetées dans les salles du parc.</p><p>Il s’agit d’une reconstitution, pas d’une source chaude naturelle. Le jaillissement met en scène les manifestations qui peuvent persister dans une région volcanique après les éruptions.</p><h2>L’eau à portée de jeu</h2><p>Des tables de manipulation aux commandes rouges entourent le bassin, avec le grand jet en arrière-plan. Le contraste entre les petits gestes des enfants et l’eau qui s’élève donne son caractère à cet espace extérieur, ouvert sur les arbres et les reliefs environnants.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un getto d’acqua nel paesaggio vulcanico</h2><p>Il Geyser porta all’aperto uno spettacolo legato alle terre vulcaniche: una colonna d’acqua si alza a intervalli da una vasca. I giochi d’acqua circostanti permettono ai bambini di avvicinarsi al tema attraverso l’esperienza diretta, fuori dalle sale che proiettano le eruzioni.</p><p>È una ricostruzione, non una sorgente termale naturale. Il getto rappresenta i fenomeni che possono persistere in una regione vulcanica dopo le eruzioni.</p><h2>L’acqua diventa gioco</h2><p>Tavoli per le attività con comandi rossi circondano la vasca, con l’alta fontana sullo sfondo. Il contrasto fra i piccoli gesti dei bambini e l’acqua che sale caratterizza questo spazio aperto verso gli alberi e i rilievi circostanti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een waterstraal in het vulkaanlandschap</h2><p>Bij de Geyser verschijnt een verschijnsel uit vulkanische gebieden in de openlucht: met tussenpozen stijgt een hoge waterkolom uit een bassin. De waterspellen eromheen laten kinderen het thema zelf verkennen, buiten de zalen waar vulkaanuitbarstingen op schermen te zien zijn.</p><p>Dit is een nabootsing, geen natuurlijke warmwaterbron. De opspuitende straal verbeeldt verschijnselen die na uitbarstingen in een vulkanisch gebied kunnen voortduren.</p><h2>Spelen met water</h2><p>Speeltafels met rode bedieningsknoppen staan rondom het bassin, met de hoge fontein op de achtergrond. Het verschil tussen kleine kinderhandelingen en het opstijgende water kenmerkt deze buitenruimte, die uitzicht biedt op bomen en omliggende heuvels.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Strumień wody w wulkanicznym krajobrazie</h2><p>Geyser przenosi pod gołe niebo widowisko kojarzone z terenami wulkanicznymi: z basenu co pewien czas wystrzela słup wody. Otaczające go zabawy wodne pozwalają dzieciom poznawać temat przez własne doświadczenie, poza salami z projekcjami erupcji.</p><p>To odtworzenie zjawiska, a nie naturalne gorące źródło. Strumień ilustruje procesy, które mogą utrzymywać się w regionie wulkanicznym również po ustaniu wybuchów.</p><h2>Woda zachęcająca do zabawy</h2><p>Wokół basenu stoją stoliki z czerwonymi elementami sterującymi, a za nimi wznosi się wysoka fontanna. Zestawienie drobnych ruchów dziecięcych dłoni z unoszącą się wodą wyróżnia tę plenerową przestrzeń, otwartą na okoliczne drzewa i wzgórza.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um jato de água na paisagem vulcânica</h2><p>O Geyser traz para o ar livre um espetáculo associado às terras vulcânicas: uma coluna de água sobe de forma intermitente a partir de um tanque. Os jogos de água em redor aproximam as crianças do tema pela experiência direta, fora das salas onde se projetam erupções.</p><p>É uma recriação, não uma nascente termal natural. O jato representa fenómenos que podem persistir numa região vulcânica depois das erupções.</p><h2>Água para experimentar</h2><p>Mesas de atividades com comandos vermelhos rodeiam o tanque, com a grande fonte ao fundo. O contraste entre os pequenos gestos das crianças e a água que sobe caracteriza este espaço aberto para as árvores e os relevos circundantes.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "entityKey": "vulcania-serre",
+        "displayName": "Serre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Pflanzen aus tropischen Höhenlagen</h2><p>Unter dem Glasdach der Serre erinnern Baumfarne und andere exotische Pflanzen an tropische Vulkanlandschaften in höheren Lagen. Das Grün umgibt einen Besucherweg und Felsen. So entsteht ein Garten, der Vulkanismus anhand der lebendigen Natur erzählt.</p><p>Die Bepflanzung steht für die Rückkehr der Vegetation nach einem Ausbruch. Den kahlen Landschaften, die häufig mit Vulkanen verbunden werden, setzt sie üppiges Wachstum entgegen. Licht fällt durch das Glasdach auf diesen botanischen Blick auf vulkanische Böden.</p><h2>Vom Gewächshaus ins Tal</h2><p>Im anschließenden Tal ist ein alter Lavastrom teilweise freigelegt. Die heimische Flora bildet einen Kontrast zu den Pflanzen unter Glas und verbindet den exotischen Garten mit dem auvergnatischen Untergrund von Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Plants from tropical highlands</h2><p>Beneath the greenhouse roof, tree ferns and other exotic plants evoke high-altitude tropical volcanic habitats. Foliage surrounds a visitor path and rocks, creating a garden that tells a volcanic story through living things.</p><p>The planting symbolises vegetation reclaiming land after an eruption. Lush growth answers the bare landscapes often associated with volcanoes, while light through the glass roof illuminates this botanical reading of volcanic soils.</p><h2>From greenhouse to valley</h2><p>Beyond the greenhouse, a valley exposes part of an old lava flow. Its local flora contrasts with the plants sheltered under glass, connecting this exotic garden to the Auvergne terrain on which Vulcania stands.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Plantas de las alturas tropicales</h2><p>Bajo la cubierta de cristal de la Serre, los helechos arborescentes y otras plantas exóticas evocan los ambientes volcánicos tropicales de altitud. El follaje rodea un recorrido y unas rocas, formando un jardín que cuenta el vulcanismo a través de la vida vegetal.</p><p>El conjunto simboliza la recuperación del terreno por la vegetación después de una erupción. Frente a los paisajes desnudos asociados a los volcanes aparece un crecimiento exuberante, iluminado por la cristalera: una lectura botánica de los suelos volcánicos.</p><h2>Del invernadero al valle</h2><p>En el valle contiguo aflora parcialmente una antigua colada de lava. La flora local contrasta con las plantas protegidas bajo cristal y vincula este jardín exótico con el terreno de Auvernia donde se encuentra Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une végétation venue des hauteurs tropicales</h2><p>Sous la verrière de la Serre, les fougères arborescentes et d’autres plantes exotiques évoquent les milieux volcaniques tropicaux d’altitude. Le feuillage entoure un chemin de visite et des rochers, composant un jardin où le volcanisme se raconte par le vivant.</p><p>Cet ensemble symbolise la reconquête d’une terre après une éruption : aux paysages dénudés souvent associés aux volcans répond ici une végétation abondante. La lumière de la verrière accompagne cette lecture botanique des sols volcaniques.</p><h2>De la serre à la vallée</h2><p>Dans son prolongement, la vallée laisse apparaître une ancienne coulée de lave partiellement dégagée. La flore locale y contraste avec les plantes abritées sous verre et relie ce jardin exotique au terrain auvergnat qui accueille Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Piante delle alture tropicali</h2><p>Sotto la vetrata della Serre, felci arboree e altre piante esotiche evocano gli ambienti vulcanici tropicali d’altitudine. Il fogliame circonda un percorso di visita e alcune rocce, formando un giardino che racconta il vulcanismo attraverso la vita vegetale.</p><p>L’insieme simboleggia la riconquista del terreno dopo un’eruzione. Ai paesaggi spogli spesso associati ai vulcani risponde una vegetazione rigogliosa, illuminata dalla copertura di vetro: una lettura botanica dei suoli vulcanici.</p><h2>Dalla serra alla valle</h2><p>Nella valle che prosegue oltre la serra affiora parte di un’antica colata lavica. La flora locale contrasta con le piante riparate sotto vetro e collega questo giardino esotico al terreno dell’Alvernia su cui sorge Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Planten uit tropische hooglanden</h2><p>Onder het glazen dak van de Serre verwijzen boomvarens en andere exotische planten naar tropische vulkaangebieden op grotere hoogte. Bladeren omringen een bezoekerspad en rotsen. In deze tuin vertelt de levende natuur het verhaal van vulkanisme.</p><p>De beplanting verbeeldt hoe vegetatie na een uitbarsting het land opnieuw verovert. Tegenover de kale landschappen die vaak met vulkanen worden verbonden, staat hier uitbundig groen. Licht door het glas versterkt die botanische blik op vulkanische bodems.</p><h2>Van kas naar dal</h2><p>In het aansluitende dal ligt een oude lavastroom gedeeltelijk bloot. De plaatselijke flora contrasteert met de planten onder glas en verbindt deze exotische tuin met de Auvergnese bodem waarop Vulcania is gebouwd.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rośliny z tropikalnych wyżyn</h2><p>Pod szklanym dachem Serre paprocie drzewiaste i inne egzotyczne rośliny przywołują wysokogórskie środowiska tropikalnych regionów wulkanicznych. Liście otaczają ścieżkę dla zwiedzających i skały. Ten ogród opowiada o wulkanizmie za pośrednictwem żywej przyrody.</p><p>Kompozycja symbolizuje powrót roślinności na ziemię po erupcji. Zamiast pustych krajobrazów często kojarzonych z wulkanami pojawia się bujna zieleń. Światło przenikające przez dach oświetla tę botaniczną interpretację gleb wulkanicznych.</p><h2>Ze szklarni do doliny</h2><p>W przylegającej dolinie częściowo odsłonięto dawny potok lawy. Miejscowa flora kontrastuje z roślinami chronionymi pod szkłem i wiąże egzotyczny ogród z owernijskim podłożem Vulcanii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Plantas das terras altas tropicais</h2><p>Sob a cobertura de vidro da Serre, fetos arbóreos e outras plantas exóticas evocam ambientes vulcânicos tropicais de altitude. A folhagem envolve um percurso de visita e rochas, formando um jardim que conta o vulcanismo através da vida vegetal.</p><p>O conjunto simboliza a reconquista do terreno pela vegetação após uma erupção. Às paisagens despidas frequentemente associadas aos vulcões responde um crescimento abundante, iluminado pela cobertura de vidro: uma leitura botânica dos solos vulcânicos.</p><h2>Da estufa ao vale</h2><p>No vale contíguo aflora parcialmente uma antiga escoada de lava. A flora local contrasta com as plantas protegidas sob vidro e liga este jardim exótico ao terreno de Auvérnia onde se encontra Vulcania.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "entityKey": "vulcania-cratere",
+        "displayName": "Cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Einblick in vulkanische Schichten</h2><p>Der Cratère macht die Tiefe des Vulcania-Gebäudes von den umliegenden Wegen aus sichtbar. Die Ausgrabung führt durch übereinanderliegendes vulkanisches Material. Ihre Wände und die angrenzenden Wege rücken den Untergrund selbst in den Mittelpunkt der Gestaltung.</p><p>Der Blick fällt hinab zu einer dunklen Öffnung, während auf den oberen Ebenen Besucher erkennbar bleiben. Das Verhältnis zwischen Mensch und Hohlraum ergänzt die weitgehend unterirdische Architektur des Parks.</p><h2>Grollen unter den Wegen</h2><p>Zeitweiliges Grollen und aufsteigender Dampf bilden eine sinnliche Inszenierung rund um das Gestein. Sie lassen vulkanische Vorgänge in einem gestalteten Besucherraum anklingen: Der Cratère ist kein aktiver Vulkan.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An opening through volcanic layers</h2><p>The Cratère gives Vulcania’s building a depth visible from its surrounding walkways. This excavation cuts through accumulated volcanic material; its walls and the paths around them make the ground itself part of the setting.</p><p>The eye is drawn down towards a dark opening, while visitors remain visible on the upper levels. The contrast between people and the cavity complements the park’s largely underground architecture.</p><h2>Rumbling beneath the walkways</h2><p>Intermittent rumbles and releases of vapour create a sensory simulation around the rock. They evoke volcanic activity in a constructed visitor space: the Cratère is not an active volcano.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una abertura entre capas volcánicas</h2><p>El Cratère permite apreciar la profundidad del edificio de Vulcania desde los pasos que lo rodean. Esta excavación atraviesa una acumulación de materiales volcánicos; las paredes y los recorridos circundantes sitúan el propio terreno en el centro de la escenografía.</p><p>La mirada baja hacia una abertura oscura, mientras los visitantes siguen siendo visibles en los niveles superiores. El contraste entre la escala humana y la cavidad acompaña la arquitectura mayoritariamente subterránea del parque.</p><h2>Retumbos bajo los pasos</h2><p>Los retumbos y las emisiones intermitentes de vapor componen una simulación sensorial en torno a la roca. Evocan actividad volcánica en un espacio acondicionado para visitantes: el Cratère no es un volcán activo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une ouverture dans les couches volcaniques</h2><p>Le Cratère donne au bâtiment de Vulcania une profondeur visible depuis ses circulations. Cette excavation traverse un empilement de matériaux volcaniques ; ses parois et les cheminements qui l’entourent placent le terrain lui-même au centre du décor.</p><p>Le regard descend vers une ouverture sombre, tandis que les visiteurs restent perceptibles sur les niveaux supérieurs. Cette confrontation entre l’échelle humaine et la cavité accompagne l’architecture largement enterrée du parc.</p><h2>Des grondements sous les pas</h2><p>Des grondements et des dégagements de vapeur intermittents composent une simulation sensorielle autour de la roche. Ils mettent en scène un imaginaire volcanique dans un espace aménagé : le Cratère n’est pas un volcan en activité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’apertura negli strati vulcanici</h2><p>Il Cratère rende visibile la profondità dell’edificio di Vulcania dai percorsi circostanti. Lo scavo attraversa una successione di materiali vulcanici: le pareti e i camminamenti che lo circondano mettono al centro della scenografia il terreno stesso.</p><p>Lo sguardo scende verso un’apertura scura, mentre i visitatori restano visibili ai livelli superiori. Il rapporto tra la scala umana e la cavità accompagna l’architettura in gran parte sotterranea del parco.</p><h2>Boati sotto i camminamenti</h2><p>Boati e fuoriuscite intermittenti di vapore compongono una simulazione sensoriale attorno alla roccia. Evocano l’attività vulcanica in uno spazio allestito per il pubblico: il Cratère non è un vulcano attivo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een opening door vulkanische lagen</h2><p>De Cratère maakt de diepte van het Vulcania-gebouw zichtbaar vanaf de omliggende wandelgangen. Deze uitgraving doorsnijdt opgestapeld vulkanisch materiaal. De wanden en paden eromheen plaatsen de ondergrond zelf in het middelpunt van het decor.</p><p>De blik daalt af naar een donkere opening, terwijl bezoekers bovenlangs zichtbaar blijven. Het contrast tussen de mensen en de holte sluit aan bij de grotendeels ondergrondse architectuur van het park.</p><h2>Gerommel onder de paden</h2><p>Met tussenpozen zorgen gerommel en stoom voor een zintuiglijke nabootsing rond het gesteente. Ze roepen vulkanische activiteit op binnen een aangelegde bezoekersruimte: de Cratère is geen actieve vulkaan.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Otwór w warstwach wulkanicznych</h2><p>Cratère pozwala dostrzec głębokość budynku Vulcanii z otaczających go przejść. Wykop przecina nagromadzone materiały wulkaniczne. Jego ściany i biegnące obok trasy stawiają samą ziemię w centrum scenografii.</p><p>Wzrok kieruje się ku ciemnemu otworowi, podczas gdy na wyższych poziomach nadal widać zwiedzających. Zestawienie ludzkiej sylwetki z rozmiarami zagłębienia uzupełnia w dużej mierze podziemną architekturę parku.</p><h2>Pomruki pod przejściami</h2><p>Okresowe pomruki i wyrzuty pary tworzą wokół skał symulację oddziałującą na zmysły. Przywołują aktywność wulkaniczną w przestrzeni urządzonej dla gości: Cratère nie jest czynnym wulkanem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma abertura nas camadas vulcânicas</h2><p>O Cratère torna visível a profundidade do edifício de Vulcania a partir dos percursos em redor. A escavação atravessa uma acumulação de materiais vulcânicos; as paredes e as passagens circundantes colocam o próprio terreno no centro do cenário.</p><p>O olhar desce para uma abertura escura, enquanto os visitantes continuam visíveis nos níveis superiores. O contraste entre a escala humana e a cavidade acompanha a arquitetura maioritariamente subterrânea do parque.</p><h2>Rugidos sob as passagens</h2><p>Rugidos e libertações intermitentes de vapor compõem uma simulação sensorial em torno da rocha. Evocam atividade vulcânica num espaço preparado para visitantes: o Cratère não é um vulcão ativo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "entityKey": "vulcania-sentiers-decouverte",
+        "displayName": "Sentiers de découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Auvergne anhand ihrer Landschaft entdecken</h2><p>Die Sentiers de découverte führen durch das Außengelände von Vulcania und erschließen die Umgebung des Parks. Vulkanismus begegnet hier jenseits von Filmen und Modellen: Er zeigt sich in den Geländeformen, Gesteinen und Pflanzen einer Mittelgebirgslandschaft.</p><p>Zur Beobachtung gehört auch der menschliche Einfluss. Die Zusammensetzung der Vegetation und die Gestaltung der Landschaft zeigen, wie örtliche Tätigkeiten die Naturgeschichte der Region begleitet haben.</p><h2>Von Steinen zu Pflanzen</h2><p>Die pädagogischen Materialien zu den Wegen verbinden Klima, Vegetation und Landschaftsbetrachtung. Ein Gestein zu beobachten, die Rolle der Pflanzen zu erkennen oder die Parkarchitektur in ihre Umgebung einzuordnen, führt Vulcanias große Themen auf sichtbare Elemente im eigenen Außengelände zurück.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Exploring Auvergne through its landscape</h2><p>The Sentiers de découverte cross Vulcania’s outdoor grounds to reveal the territory surrounding the park. Volcanism is encountered beyond films and models: it is present in the relief, rocks and vegetation of this upland environment.</p><p>Observation also turns to human influence. Patterns of vegetation and the organisation of the landscape introduce the ways local activities have accompanied the region’s natural history.</p><h2>From rocks to plants</h2><p>The trails’ educational resources connect climate, vegetation and landscape interpretation. Observing a rock, considering the role of plants or placing the park’s architecture in its surroundings brings Vulcania’s broader themes back to things visible within its own grounds.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Descubrir Auvernia a través del paisaje</h2><p>Los Sentiers de découverte recorren los espacios exteriores de Vulcania para interpretar el territorio que rodea el parque. El vulcanismo se encuentra más allá de películas y maquetas: está presente en el relieve, las rocas y la vegetación de este entorno de media montaña.</p><p>La observación también aborda la huella humana. La composición vegetal y la organización del paisaje permiten explorar cómo las actividades de sus habitantes han acompañado la historia natural de la región.</p><h2>De las rocas a las plantas</h2><p>Los recursos educativos de los senderos relacionan clima, vegetación y lectura del paisaje. Observar una roca, reconocer el papel de las plantas o situar la arquitectura del parque en su entorno acerca los grandes temas de Vulcania a elementos visibles en sus propios espacios exteriores.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le paysage auvergnat comme terrain de découverte</h2><p>Les Sentiers de découverte parcourent les espaces extérieurs de Vulcania pour donner à lire le territoire qui entoure le parc. Le volcanisme n’y apparaît plus seulement sous forme de film ou de maquette : il s’inscrit dans le relief, les roches et la végétation d’un milieu de moyenne montagne.</p><p>L’observation porte aussi sur l’empreinte humaine. Les peuplements végétaux et l’organisation du paysage permettent d’aborder la manière dont les activités des habitants ont accompagné l’histoire naturelle de cette région.</p><h2>Des roches aux plantes</h2><p>Les ressources pédagogiques associées aux sentiers relient climat, végétation et lecture du paysage. Observer une roche, reconnaître le rôle des plantes ou replacer l’architecture du parc dans son environnement ramène ainsi les grands thèmes de Vulcania à des éléments visibles dans ses propres espaces extérieurs.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Scoprire l’Alvernia attraverso il paesaggio</h2><p>I Sentiers de découverte attraversano gli spazi esterni di Vulcania per leggere il territorio attorno al parco. Il vulcanismo si incontra oltre i film e i plastici: è presente nei rilievi, nelle rocce e nella vegetazione di questo ambiente di media montagna.</p><p>L’osservazione riguarda anche l’impronta umana. La composizione della vegetazione e l’organizzazione del paesaggio permettono di affrontare il rapporto tra le attività degli abitanti e la storia naturale della regione.</p><h2>Dalle rocce alle piante</h2><p>Le risorse didattiche dei sentieri collegano clima, vegetazione e lettura del paesaggio. Osservare una roccia, riconoscere il ruolo delle piante o collocare l’architettura del parco nel suo ambiente riporta i grandi temi di Vulcania a elementi visibili nei suoi stessi spazi esterni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne ontdekken via het landschap</h2><p>De Sentiers de découverte lopen door het buitenterrein van Vulcania en maken het gebied rondom het park leesbaar. Vulkanisme komt hier buiten films en maquettes tot leven: in het reliëf, de stenen en de begroeiing van een middelgebergte.</p><p>Ook de invloed van mensen krijgt aandacht. De samenstelling van de vegetatie en de inrichting van het landschap laten zien hoe plaatselijke activiteiten samengingen met de natuurlijke geschiedenis van de streek.</p><h2>Van stenen naar planten</h2><p>Het lesmateriaal bij de paden verbindt klimaat, begroeiing en landschapsinterpretatie. Een steen bekijken, de rol van planten onderzoeken of de parkarchitectuur in haar omgeving plaatsen brengt de grote thema’s van Vulcania terug naar zichtbare onderdelen van het eigen buitenterrein.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Poznawanie Owernii poprzez krajobraz</h2><p>Sentiers de découverte prowadzą przez zewnętrzne tereny Vulcanii i pomagają odczytać otoczenie parku. Wulkanizm pojawia się tu poza filmami i makietami: jest obecny w rzeźbie terenu, skałach i roślinności krajobrazu średnich gór.</p><p>Obserwacja obejmuje również wpływ człowieka. Skład roślinności i zagospodarowanie krajobrazu pozwalają poznać związki między działalnością mieszkańców a historią przyrodniczą regionu.</p><h2>Od skał do roślin</h2><p>Materiały edukacyjne do ścieżek łączą klimat, roślinność i interpretację krajobrazu. Obserwowanie skały, poznawanie roli roślin czy umieszczanie parkowej architektury w jej otoczeniu wiąże główne tematy Vulcanii z elementami widocznymi na jej własnym terenie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Descobrir Auvérnia através da paisagem</h2><p>Os Sentiers de découverte atravessam os espaços exteriores de Vulcania para interpretar o território em redor do parque. O vulcanismo surge para além dos filmes e das maquetas: está presente no relevo, nas rochas e na vegetação deste ambiente de média montanha.</p><p>A observação abrange também a marca humana. A composição da vegetação e a organização da paisagem permitem abordar a forma como as atividades dos habitantes acompanharam a história natural da região.</p><h2>Das rochas às plantas</h2><p>Os recursos educativos dos percursos relacionam clima, vegetação e interpretação da paisagem. Observar uma rocha, reconhecer o papel das plantas ou enquadrar a arquitetura do parque no seu ambiente aproxima os grandes temas de Vulcania de elementos visíveis nos seus próprios espaços exteriores.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "83940aa2-7376-460f-8235-7fefd50d921e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:45:01.3641339Z",
+    "appliedAtUtc": "2026-11-15T19:45:01.3641351Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "entityKey": "vulcania-geyser",
+        "displayName": "Geyser",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Wasserfontäne in der Vulkanlandschaft</h2><p>Der Geyser bringt ein Schauspiel vulkanischer Regionen ins Freie: In Abständen steigt eine Wassersäule aus einem Becken auf. Die Wasserspiele ringsum machen das Thema für Kinder unmittelbar erfahrbar, abseits der Eruptionen auf den Kinoleinwänden des Parks.</p><p>Die Anlage ist eine Nachbildung und keine natürliche heiße Quelle. Das Aufschießen des Wassers veranschaulicht Erscheinungen, die in einem Vulkangebiet auch nach Ausbrüchen noch auftreten können.</p><h2>Mit Wasser experimentieren</h2><p>Spieltische mit roten Steuerelementen stehen rund um das Becken, dahinter erhebt sich die hohe Fontäne. Das Nebeneinander kleiner Kinderhandgriffe und aufsteigenden Wassers prägt diesen Außenbereich mit Blick auf die umliegenden Bäume und Hügel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A fountain in a volcanic landscape</h2><p>The Geyser brings a spectacle associated with volcanic country outdoors: a column of water rises intermittently from a pool. Water games around it let children explore the theme directly, away from the eruptions shown on the park’s cinema screens.</p><p>This is a reconstruction, rather than a natural hot spring. Its bursts represent phenomena that can continue in a volcanic region after eruptions have ended.</p><h2>Water within reach</h2><p>Activity tables with red controls stand around the pool, with the tall fountain beyond them. The contrast between children’s small movements and the rising water shapes this outdoor space, which opens onto the surrounding trees and hills.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un chorro de agua en el paisaje volcánico</h2><p>El Geyser lleva al aire libre un espectáculo de las regiones volcánicas: una columna de agua se eleva de forma intermitente desde una piscina. Los juegos de agua que la rodean acercan el tema a los niños mediante la experiencia directa, fuera de las salas que proyectan erupciones.</p><p>Se trata de una recreación, no de una fuente termal natural. El chorro representa fenómenos que pueden persistir en una región volcánica después de las erupciones.</p><h2>El agua como juego</h2><p>Las mesas de actividades con mandos rojos rodean la piscina, con la gran fuente al fondo. El contraste entre los pequeños gestos de los niños y el agua que se eleva caracteriza este espacio abierto hacia los árboles y las colinas circundantes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un jet d’eau dans le paysage volcanique</h2><p>Le Geyser transpose en plein air un spectacle des terres volcaniques : une colonne d’eau s’élève par intermittence au milieu d’un bassin. Autour, les jeux d’eau donnent aux enfants une approche concrète de ce thème, loin des éruptions projetées dans les salles du parc.</p><p>Il s’agit d’une reconstitution, pas d’une source chaude naturelle. Le jaillissement met en scène les manifestations qui peuvent persister dans une région volcanique après les éruptions.</p><h2>L’eau à portée de jeu</h2><p>Des tables de manipulation aux commandes rouges entourent le bassin, avec le grand jet en arrière-plan. Le contraste entre les petits gestes des enfants et l’eau qui s’élève donne son caractère à cet espace extérieur, ouvert sur les arbres et les reliefs environnants.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un getto d’acqua nel paesaggio vulcanico</h2><p>Il Geyser porta all’aperto uno spettacolo legato alle terre vulcaniche: una colonna d’acqua si alza a intervalli da una vasca. I giochi d’acqua circostanti permettono ai bambini di avvicinarsi al tema attraverso l’esperienza diretta, fuori dalle sale che proiettano le eruzioni.</p><p>È una ricostruzione, non una sorgente termale naturale. Il getto rappresenta i fenomeni che possono persistere in una regione vulcanica dopo le eruzioni.</p><h2>L’acqua diventa gioco</h2><p>Tavoli per le attività con comandi rossi circondano la vasca, con l’alta fontana sullo sfondo. Il contrasto fra i piccoli gesti dei bambini e l’acqua che sale caratterizza questo spazio aperto verso gli alberi e i rilievi circostanti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een waterstraal in het vulkaanlandschap</h2><p>Bij de Geyser verschijnt een verschijnsel uit vulkanische gebieden in de openlucht: met tussenpozen stijgt een hoge waterkolom uit een bassin. De waterspellen eromheen laten kinderen het thema zelf verkennen, buiten de zalen waar vulkaanuitbarstingen op schermen te zien zijn.</p><p>Dit is een nabootsing, geen natuurlijke warmwaterbron. De opspuitende straal verbeeldt verschijnselen die na uitbarstingen in een vulkanisch gebied kunnen voortduren.</p><h2>Spelen met water</h2><p>Speeltafels met rode bedieningsknoppen staan rondom het bassin, met de hoge fontein op de achtergrond. Het verschil tussen kleine kinderhandelingen en het opstijgende water kenmerkt deze buitenruimte, die uitzicht biedt op bomen en omliggende heuvels.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Strumień wody w wulkanicznym krajobrazie</h2><p>Geyser przenosi pod gołe niebo widowisko kojarzone z terenami wulkanicznymi: z basenu co pewien czas wystrzela słup wody. Otaczające go zabawy wodne pozwalają dzieciom poznawać temat przez własne doświadczenie, poza salami z projekcjami erupcji.</p><p>To odtworzenie zjawiska, a nie naturalne gorące źródło. Strumień ilustruje procesy, które mogą utrzymywać się w regionie wulkanicznym również po ustaniu wybuchów.</p><h2>Woda zachęcająca do zabawy</h2><p>Wokół basenu stoją stoliki z czerwonymi elementami sterującymi, a za nimi wznosi się wysoka fontanna. Zestawienie drobnych ruchów dziecięcych dłoni z unoszącą się wodą wyróżnia tę plenerową przestrzeń, otwartą na okoliczne drzewa i wzgórza.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um jato de água na paisagem vulcânica</h2><p>O Geyser traz para o ar livre um espetáculo associado às terras vulcânicas: uma coluna de água sobe de forma intermitente a partir de um tanque. Os jogos de água em redor aproximam as crianças do tema pela experiência direta, fora das salas onde se projetam erupções.</p><p>É uma recriação, não uma nascente termal natural. O jato representa fenómenos que podem persistir numa região vulcânica depois das erupções.</p><h2>Água para experimentar</h2><p>Mesas de atividades com comandos vermelhos rodeiam o tanque, com a grande fonte ao fundo. O contraste entre os pequenos gestos das crianças e a água que sobe caracteriza este espaço aberto para as árvores e os relevos circundantes.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "entityKey": "vulcania-serre",
+        "displayName": "Serre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Pflanzen aus tropischen Höhenlagen</h2><p>Unter dem Glasdach der Serre erinnern Baumfarne und andere exotische Pflanzen an tropische Vulkanlandschaften in höheren Lagen. Das Grün umgibt einen Besucherweg und Felsen. So entsteht ein Garten, der Vulkanismus anhand der lebendigen Natur erzählt.</p><p>Die Bepflanzung steht für die Rückkehr der Vegetation nach einem Ausbruch. Den kahlen Landschaften, die häufig mit Vulkanen verbunden werden, setzt sie üppiges Wachstum entgegen. Licht fällt durch das Glasdach auf diesen botanischen Blick auf vulkanische Böden.</p><h2>Vom Gewächshaus ins Tal</h2><p>Im anschließenden Tal ist ein alter Lavastrom teilweise freigelegt. Die heimische Flora bildet einen Kontrast zu den Pflanzen unter Glas und verbindet den exotischen Garten mit dem auvergnatischen Untergrund von Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Plants from tropical highlands</h2><p>Beneath the greenhouse roof, tree ferns and other exotic plants evoke high-altitude tropical volcanic habitats. Foliage surrounds a visitor path and rocks, creating a garden that tells a volcanic story through living things.</p><p>The planting symbolises vegetation reclaiming land after an eruption. Lush growth answers the bare landscapes often associated with volcanoes, while light through the glass roof illuminates this botanical reading of volcanic soils.</p><h2>From greenhouse to valley</h2><p>Beyond the greenhouse, a valley exposes part of an old lava flow. Its local flora contrasts with the plants sheltered under glass, connecting this exotic garden to the Auvergne terrain on which Vulcania stands.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Plantas de las alturas tropicales</h2><p>Bajo la cubierta de cristal de la Serre, los helechos arborescentes y otras plantas exóticas evocan los ambientes volcánicos tropicales de altitud. El follaje rodea un recorrido y unas rocas, formando un jardín que cuenta el vulcanismo a través de la vida vegetal.</p><p>El conjunto simboliza la recuperación del terreno por la vegetación después de una erupción. Frente a los paisajes desnudos asociados a los volcanes aparece un crecimiento exuberante, iluminado por la cristalera: una lectura botánica de los suelos volcánicos.</p><h2>Del invernadero al valle</h2><p>En el valle contiguo aflora parcialmente una antigua colada de lava. La flora local contrasta con las plantas protegidas bajo cristal y vincula este jardín exótico con el terreno de Auvernia donde se encuentra Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une végétation venue des hauteurs tropicales</h2><p>Sous la verrière de la Serre, les fougères arborescentes et d’autres plantes exotiques évoquent les milieux volcaniques tropicaux d’altitude. Le feuillage entoure un chemin de visite et des rochers, composant un jardin où le volcanisme se raconte par le vivant.</p><p>Cet ensemble symbolise la reconquête d’une terre après une éruption : aux paysages dénudés souvent associés aux volcans répond ici une végétation abondante. La lumière de la verrière accompagne cette lecture botanique des sols volcaniques.</p><h2>De la serre à la vallée</h2><p>Dans son prolongement, la vallée laisse apparaître une ancienne coulée de lave partiellement dégagée. La flore locale y contraste avec les plantes abritées sous verre et relie ce jardin exotique au terrain auvergnat qui accueille Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Piante delle alture tropicali</h2><p>Sotto la vetrata della Serre, felci arboree e altre piante esotiche evocano gli ambienti vulcanici tropicali d’altitudine. Il fogliame circonda un percorso di visita e alcune rocce, formando un giardino che racconta il vulcanismo attraverso la vita vegetale.</p><p>L’insieme simboleggia la riconquista del terreno dopo un’eruzione. Ai paesaggi spogli spesso associati ai vulcani risponde una vegetazione rigogliosa, illuminata dalla copertura di vetro: una lettura botanica dei suoli vulcanici.</p><h2>Dalla serra alla valle</h2><p>Nella valle che prosegue oltre la serra affiora parte di un’antica colata lavica. La flora locale contrasta con le piante riparate sotto vetro e collega questo giardino esotico al terreno dell’Alvernia su cui sorge Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Planten uit tropische hooglanden</h2><p>Onder het glazen dak van de Serre verwijzen boomvarens en andere exotische planten naar tropische vulkaangebieden op grotere hoogte. Bladeren omringen een bezoekerspad en rotsen. In deze tuin vertelt de levende natuur het verhaal van vulkanisme.</p><p>De beplanting verbeeldt hoe vegetatie na een uitbarsting het land opnieuw verovert. Tegenover de kale landschappen die vaak met vulkanen worden verbonden, staat hier uitbundig groen. Licht door het glas versterkt die botanische blik op vulkanische bodems.</p><h2>Van kas naar dal</h2><p>In het aansluitende dal ligt een oude lavastroom gedeeltelijk bloot. De plaatselijke flora contrasteert met de planten onder glas en verbindt deze exotische tuin met de Auvergnese bodem waarop Vulcania is gebouwd.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rośliny z tropikalnych wyżyn</h2><p>Pod szklanym dachem Serre paprocie drzewiaste i inne egzotyczne rośliny przywołują wysokogórskie środowiska tropikalnych regionów wulkanicznych. Liście otaczają ścieżkę dla zwiedzających i skały. Ten ogród opowiada o wulkanizmie za pośrednictwem żywej przyrody.</p><p>Kompozycja symbolizuje powrót roślinności na ziemię po erupcji. Zamiast pustych krajobrazów często kojarzonych z wulkanami pojawia się bujna zieleń. Światło przenikające przez dach oświetla tę botaniczną interpretację gleb wulkanicznych.</p><h2>Ze szklarni do doliny</h2><p>W przylegającej dolinie częściowo odsłonięto dawny potok lawy. Miejscowa flora kontrastuje z roślinami chronionymi pod szkłem i wiąże egzotyczny ogród z owernijskim podłożem Vulcanii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Plantas das terras altas tropicais</h2><p>Sob a cobertura de vidro da Serre, fetos arbóreos e outras plantas exóticas evocam ambientes vulcânicos tropicais de altitude. A folhagem envolve um percurso de visita e rochas, formando um jardim que conta o vulcanismo através da vida vegetal.</p><p>O conjunto simboliza a reconquista do terreno pela vegetação após uma erupção. Às paisagens despidas frequentemente associadas aos vulcões responde um crescimento abundante, iluminado pela cobertura de vidro: uma leitura botânica dos solos vulcânicos.</p><h2>Da estufa ao vale</h2><p>No vale contíguo aflora parcialmente uma antiga escoada de lava. A flora local contrasta com as plantas protegidas sob vidro e liga este jardim exótico ao terreno de Auvérnia onde se encontra Vulcania.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "entityKey": "vulcania-cratere",
+        "displayName": "Cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Einblick in vulkanische Schichten</h2><p>Der Cratère macht die Tiefe des Vulcania-Gebäudes von den umliegenden Wegen aus sichtbar. Die Ausgrabung führt durch übereinanderliegendes vulkanisches Material. Ihre Wände und die angrenzenden Wege rücken den Untergrund selbst in den Mittelpunkt der Gestaltung.</p><p>Der Blick fällt hinab zu einer dunklen Öffnung, während auf den oberen Ebenen Besucher erkennbar bleiben. Das Verhältnis zwischen Mensch und Hohlraum ergänzt die weitgehend unterirdische Architektur des Parks.</p><h2>Grollen unter den Wegen</h2><p>Zeitweiliges Grollen und aufsteigender Dampf bilden eine sinnliche Inszenierung rund um das Gestein. Sie lassen vulkanische Vorgänge in einem gestalteten Besucherraum anklingen: Der Cratère ist kein aktiver Vulkan.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An opening through volcanic layers</h2><p>The Cratère gives Vulcania’s building a depth visible from its surrounding walkways. This excavation cuts through accumulated volcanic material; its walls and the paths around them make the ground itself part of the setting.</p><p>The eye is drawn down towards a dark opening, while visitors remain visible on the upper levels. The contrast between people and the cavity complements the park’s largely underground architecture.</p><h2>Rumbling beneath the walkways</h2><p>Intermittent rumbles and releases of vapour create a sensory simulation around the rock. They evoke volcanic activity in a constructed visitor space: the Cratère is not an active volcano.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una abertura entre capas volcánicas</h2><p>El Cratère permite apreciar la profundidad del edificio de Vulcania desde los pasos que lo rodean. Esta excavación atraviesa una acumulación de materiales volcánicos; las paredes y los recorridos circundantes sitúan el propio terreno en el centro de la escenografía.</p><p>La mirada baja hacia una abertura oscura, mientras los visitantes siguen siendo visibles en los niveles superiores. El contraste entre la escala humana y la cavidad acompaña la arquitectura mayoritariamente subterránea del parque.</p><h2>Retumbos bajo los pasos</h2><p>Los retumbos y las emisiones intermitentes de vapor componen una simulación sensorial en torno a la roca. Evocan actividad volcánica en un espacio acondicionado para visitantes: el Cratère no es un volcán activo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une ouverture dans les couches volcaniques</h2><p>Le Cratère donne au bâtiment de Vulcania une profondeur visible depuis ses circulations. Cette excavation traverse un empilement de matériaux volcaniques ; ses parois et les cheminements qui l’entourent placent le terrain lui-même au centre du décor.</p><p>Le regard descend vers une ouverture sombre, tandis que les visiteurs restent perceptibles sur les niveaux supérieurs. Cette confrontation entre l’échelle humaine et la cavité accompagne l’architecture largement enterrée du parc.</p><h2>Des grondements sous les pas</h2><p>Des grondements et des dégagements de vapeur intermittents composent une simulation sensorielle autour de la roche. Ils mettent en scène un imaginaire volcanique dans un espace aménagé : le Cratère n’est pas un volcan en activité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un’apertura negli strati vulcanici</h2><p>Il Cratère rende visibile la profondità dell’edificio di Vulcania dai percorsi circostanti. Lo scavo attraversa una successione di materiali vulcanici: le pareti e i camminamenti che lo circondano mettono al centro della scenografia il terreno stesso.</p><p>Lo sguardo scende verso un’apertura scura, mentre i visitatori restano visibili ai livelli superiori. Il rapporto tra la scala umana e la cavità accompagna l’architettura in gran parte sotterranea del parco.</p><h2>Boati sotto i camminamenti</h2><p>Boati e fuoriuscite intermittenti di vapore compongono una simulazione sensoriale attorno alla roccia. Evocano l’attività vulcanica in uno spazio allestito per il pubblico: il Cratère non è un vulcano attivo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een opening door vulkanische lagen</h2><p>De Cratère maakt de diepte van het Vulcania-gebouw zichtbaar vanaf de omliggende wandelgangen. Deze uitgraving doorsnijdt opgestapeld vulkanisch materiaal. De wanden en paden eromheen plaatsen de ondergrond zelf in het middelpunt van het decor.</p><p>De blik daalt af naar een donkere opening, terwijl bezoekers bovenlangs zichtbaar blijven. Het contrast tussen de mensen en de holte sluit aan bij de grotendeels ondergrondse architectuur van het park.</p><h2>Gerommel onder de paden</h2><p>Met tussenpozen zorgen gerommel en stoom voor een zintuiglijke nabootsing rond het gesteente. Ze roepen vulkanische activiteit op binnen een aangelegde bezoekersruimte: de Cratère is geen actieve vulkaan.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Otwór w warstwach wulkanicznych</h2><p>Cratère pozwala dostrzec głębokość budynku Vulcanii z otaczających go przejść. Wykop przecina nagromadzone materiały wulkaniczne. Jego ściany i biegnące obok trasy stawiają samą ziemię w centrum scenografii.</p><p>Wzrok kieruje się ku ciemnemu otworowi, podczas gdy na wyższych poziomach nadal widać zwiedzających. Zestawienie ludzkiej sylwetki z rozmiarami zagłębienia uzupełnia w dużej mierze podziemną architekturę parku.</p><h2>Pomruki pod przejściami</h2><p>Okresowe pomruki i wyrzuty pary tworzą wokół skał symulację oddziałującą na zmysły. Przywołują aktywność wulkaniczną w przestrzeni urządzonej dla gości: Cratère nie jest czynnym wulkanem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma abertura nas camadas vulcânicas</h2><p>O Cratère torna visível a profundidade do edifício de Vulcania a partir dos percursos em redor. A escavação atravessa uma acumulação de materiais vulcânicos; as paredes e as passagens circundantes colocam o próprio terreno no centro do cenário.</p><p>O olhar desce para uma abertura escura, enquanto os visitantes continuam visíveis nos níveis superiores. O contraste entre a escala humana e a cavidade acompanha a arquitetura maioritariamente subterrânea do parque.</p><h2>Rugidos sob as passagens</h2><p>Rugidos e libertações intermitentes de vapor compõem uma simulação sensorial em torno da rocha. Evocam atividade vulcânica num espaço preparado para visitantes: o Cratère não é um vulcão ativo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "entityKey": "vulcania-sentiers-decouverte",
+        "displayName": "Sentiers de découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Auvergne anhand ihrer Landschaft entdecken</h2><p>Die Sentiers de découverte führen durch das Außengelände von Vulcania und erschließen die Umgebung des Parks. Vulkanismus begegnet hier jenseits von Filmen und Modellen: Er zeigt sich in den Geländeformen, Gesteinen und Pflanzen einer Mittelgebirgslandschaft.</p><p>Zur Beobachtung gehört auch der menschliche Einfluss. Die Zusammensetzung der Vegetation und die Gestaltung der Landschaft zeigen, wie örtliche Tätigkeiten die Naturgeschichte der Region begleitet haben.</p><h2>Von Steinen zu Pflanzen</h2><p>Die pädagogischen Materialien zu den Wegen verbinden Klima, Vegetation und Landschaftsbetrachtung. Ein Gestein zu beobachten, die Rolle der Pflanzen zu erkennen oder die Parkarchitektur in ihre Umgebung einzuordnen, führt Vulcanias große Themen auf sichtbare Elemente im eigenen Außengelände zurück.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Exploring Auvergne through its landscape</h2><p>The Sentiers de découverte cross Vulcania’s outdoor grounds to reveal the territory surrounding the park. Volcanism is encountered beyond films and models: it is present in the relief, rocks and vegetation of this upland environment.</p><p>Observation also turns to human influence. Patterns of vegetation and the organisation of the landscape introduce the ways local activities have accompanied the region’s natural history.</p><h2>From rocks to plants</h2><p>The trails’ educational resources connect climate, vegetation and landscape interpretation. Observing a rock, considering the role of plants or placing the park’s architecture in its surroundings brings Vulcania’s broader themes back to things visible within its own grounds.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Descubrir Auvernia a través del paisaje</h2><p>Los Sentiers de découverte recorren los espacios exteriores de Vulcania para interpretar el territorio que rodea el parque. El vulcanismo se encuentra más allá de películas y maquetas: está presente en el relieve, las rocas y la vegetación de este entorno de media montaña.</p><p>La observación también aborda la huella humana. La composición vegetal y la organización del paisaje permiten explorar cómo las actividades de sus habitantes han acompañado la historia natural de la región.</p><h2>De las rocas a las plantas</h2><p>Los recursos educativos de los senderos relacionan clima, vegetación y lectura del paisaje. Observar una roca, reconocer el papel de las plantas o situar la arquitectura del parque en su entorno acerca los grandes temas de Vulcania a elementos visibles en sus propios espacios exteriores.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le paysage auvergnat comme terrain de découverte</h2><p>Les Sentiers de découverte parcourent les espaces extérieurs de Vulcania pour donner à lire le territoire qui entoure le parc. Le volcanisme n’y apparaît plus seulement sous forme de film ou de maquette : il s’inscrit dans le relief, les roches et la végétation d’un milieu de moyenne montagne.</p><p>L’observation porte aussi sur l’empreinte humaine. Les peuplements végétaux et l’organisation du paysage permettent d’aborder la manière dont les activités des habitants ont accompagné l’histoire naturelle de cette région.</p><h2>Des roches aux plantes</h2><p>Les ressources pédagogiques associées aux sentiers relient climat, végétation et lecture du paysage. Observer une roche, reconnaître le rôle des plantes ou replacer l’architecture du parc dans son environnement ramène ainsi les grands thèmes de Vulcania à des éléments visibles dans ses propres espaces extérieurs.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Scoprire l’Alvernia attraverso il paesaggio</h2><p>I Sentiers de découverte attraversano gli spazi esterni di Vulcania per leggere il territorio attorno al parco. Il vulcanismo si incontra oltre i film e i plastici: è presente nei rilievi, nelle rocce e nella vegetazione di questo ambiente di media montagna.</p><p>L’osservazione riguarda anche l’impronta umana. La composizione della vegetazione e l’organizzazione del paesaggio permettono di affrontare il rapporto tra le attività degli abitanti e la storia naturale della regione.</p><h2>Dalle rocce alle piante</h2><p>Le risorse didattiche dei sentieri collegano clima, vegetazione e lettura del paesaggio. Osservare una roccia, riconoscere il ruolo delle piante o collocare l’architettura del parco nel suo ambiente riporta i grandi temi di Vulcania a elementi visibili nei suoi stessi spazi esterni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne ontdekken via het landschap</h2><p>De Sentiers de découverte lopen door het buitenterrein van Vulcania en maken het gebied rondom het park leesbaar. Vulkanisme komt hier buiten films en maquettes tot leven: in het reliëf, de stenen en de begroeiing van een middelgebergte.</p><p>Ook de invloed van mensen krijgt aandacht. De samenstelling van de vegetatie en de inrichting van het landschap laten zien hoe plaatselijke activiteiten samengingen met de natuurlijke geschiedenis van de streek.</p><h2>Van stenen naar planten</h2><p>Het lesmateriaal bij de paden verbindt klimaat, begroeiing en landschapsinterpretatie. Een steen bekijken, de rol van planten onderzoeken of de parkarchitectuur in haar omgeving plaatsen brengt de grote thema’s van Vulcania terug naar zichtbare onderdelen van het eigen buitenterrein.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Poznawanie Owernii poprzez krajobraz</h2><p>Sentiers de découverte prowadzą przez zewnętrzne tereny Vulcanii i pomagają odczytać otoczenie parku. Wulkanizm pojawia się tu poza filmami i makietami: jest obecny w rzeźbie terenu, skałach i roślinności krajobrazu średnich gór.</p><p>Obserwacja obejmuje również wpływ człowieka. Skład roślinności i zagospodarowanie krajobrazu pozwalają poznać związki między działalnością mieszkańców a historią przyrodniczą regionu.</p><h2>Od skał do roślin</h2><p>Materiały edukacyjne do ścieżek łączą klimat, roślinność i interpretację krajobrazu. Obserwowanie skały, poznawanie roli roślin czy umieszczanie parkowej architektury w jej otoczeniu wiąże główne tematy Vulcanii z elementami widocznymi na jej własnym terenie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Descobrir Auvérnia através da paisagem</h2><p>Os Sentiers de découverte atravessam os espaços exteriores de Vulcania para interpretar o território em redor do parque. O vulcanismo surge para além dos filmes e das maquetas: está presente no relevo, nas rochas e na vegetação deste ambiente de média montanha.</p><p>A observação abrange também a marca humana. A composição da vegetação e a organização da paisagem permitem abordar a forma como as atividades dos habitantes acompanharam a história natural da região.</p><h2>Das rochas às plantas</h2><p>Os recursos educativos dos percursos relacionam clima, vegetação e interpretação da paisagem. Observar uma rocha, reconhecer o papel das plantas ou enquadrar a arquitetura do parque no seu ambiente aproxima os grandes temas de Vulcania de elementos visíveis nos seus próprios espaços exteriores.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : 32 notices relues en huit langues pour Geyser, Serre, Cratère et Sentiers de découverte ; identité et caractère reconstitué du Geyser documentés, données privées conservées.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Quatre espaces confirmés par la page pédagogique officielle maternelle et ses photographies : Geyser reconstitué, Serre, Cratère creusé et Sentiers de découverte. Trente-deux notices personnellement rédigées et relues ; aucune source chaude naturelle, ouverture, fermeture, durée ou position inventée. Deux titres et trois paragraphes par langue, profondeur limitée aux éléments documentés sans remplissage."
+}
