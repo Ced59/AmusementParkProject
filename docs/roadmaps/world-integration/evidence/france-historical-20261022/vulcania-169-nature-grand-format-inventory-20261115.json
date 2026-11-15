@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "vulcania-nature-grand-format",
+          "name": "Nature grand format",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2018",
+            "sourceUrl": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html"
+          }
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-nature2018",
+        "notes": "Distinct outdoor photographic exhibition Nature grand format opened2018, partnership UshuaïaTV not manufacturer. Primary official2018brochure mirroredMonBeauPays p10, official release reproducedParcPlaza19March2018, retrospective SEMreport, eyewitnessSweetDaddy12August2018, Gîtes2019 and Interclub2020 reviewing2019. Current2026operation/closure unproven:Unknown, no invented closure or exact openingday. Ouragan is a film in existing CinéMax, not a new place. Existing60items individually reconciled; no proven alias with Carnets de voyage/Sentiers de découverte. Two full native900x675photos personally viewed: installed lava panel among woodland and installed entrance sign beside rocks; printed logo belongs to photographed exhibit, no publisher overlay. Hawaiian coordinates printed on lava panel are NOT itemGPS. Brochure2018 is a general brochure, no park map identified; not imported as annual map. InfoClermont returns200onlyan empty JavaScript shell and is not treated as personally read article. MaisonPitoufeu2017indoor/outdoor identity ambiguity held for further research."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "c59e1fba-36d4-450f-bcdd-c633385cd252",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:18:58.1414848Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8322500e-4032-4e12-a8ae-dc88b860758e",
+        "entityKey": "vulcania-nature-grand-format",
+        "displayName": "Nature grand format",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2018"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ebfcbf77-f834-47d4-928e-179f5a2f2bcf",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:19:19.4451479Z",
+    "appliedAtUtc": "2026-11-15T22:19:19.4451503Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "entityKey": "vulcania-nature-grand-format",
+        "displayName": "Nature grand format",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2018"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : Nature grand format, exposition photographique extérieure créée avec Ushuaïa TV en 2018, ajoutée en privé après rapprochement des60lieux ; statutUnknown conservé sans fermeture ni GPS inventés.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Distinct outdoor photographic exhibition Nature grand format opened2018, partnership UshuaïaTV not manufacturer. Primary official2018brochure mirroredMonBeauPays p10, official release reproducedParcPlaza19March2018, retrospective SEMreport, eyewitnessSweetDaddy12August2018, Gîtes2019 and Interclub2020 reviewing2019. Current2026operation/closure unproven:Unknown, no invented closure or exact openingday. Ouragan is a film in existing CinéMax, not a new place. Existing60items individually reconciled; no proven alias with Carnets de voyage/Sentiers de découverte. Two full native900x675photos personally viewed: installed lava panel among woodland and installed entrance sign beside rocks; printed logo belongs to photographed exhibit, no publisher overlay. Hawaiian coordinates printed on lava panel are NOT itemGPS. Brochure2018 is a general brochure, no park map identified; not imported as annual map. InfoClermont returns200onlyan empty JavaScript shell and is not treated as personally read article. MaisonPitoufeu2017indoor/outdoor identity ambiguity held for further research."
+}

@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+          "key": "vulcania-nature-grand-format",
+          "name": "Nature grand format",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des paysages suspendus entre les arbres</h2><p>Nature grand format installait les images d’Ushuaïa TV dans les sous-bois de Vulcania. Des photographies de déserts, de volcans et d’autres milieux naturels apparaissaient sur de grandes toiles tendues au bord du chemin. La forêt auvergnate entourait ainsi des paysages venus d’ailleurs.</p><p>Un panneau intitulé « Volcan » montrait une coulée de lave incandescente sous sa croûte sombre. Les troncs, les feuillages et les rondins au pied de l’image donnaient une échelle concrète à cette photographie exposée en plein air. Des textes accompagnaient les paysages pour en éclairer les transformations.</p><h2>Un regard d’Ushuaïa sur la Terre</h2><p>Le parcours associait la beauté des sites à leur fragilité. Parmi ces lieux figuraient des paysages inscrits au patrimoine mondial de l’Unesco : leurs images ouvraient la découverte au-delà des volcans d’Auvergne, vers les grands milieux de la planète.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Landscapes hanging between the trees</h2><p>Nature grand format brought Ushuaïa TV’s imagery into Vulcania’s woodland. Photographs of deserts, volcanoes and other natural environments appeared on large fabric panels beside the path. The Auvergne forest became the setting for landscapes from much farther away.</p><p>A panel headed “Volcan” showed glowing lava beneath a dark crust. Tree trunks, foliage and cut logs below the picture gave this outdoor photograph a tangible sense of scale. Accompanying texts explored the changes taking place in the landscapes on display.</p><h2>Ushuaïa’s view of the Earth</h2><p>The trail connected the beauty of these places with their fragility. Several scenes depicted Unesco World Heritage sites, carrying the exhibition beyond the volcanoes of Auvergne towards the planet’s wider natural environments.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Landschaften zwischen den Bäumen</h2><p>Nature grand format brachte die Bilder von Ushuaïa TV in Vulcanias Wald. Fotografien von Wüsten, Vulkanen und anderen Naturräumen erschienen auf großen Stoffbahnen am Wegesrand. So umgab der Wald der Auvergne Landschaften aus fernen Regionen.</p><p>Eine Tafel mit der Überschrift „Volcan“ zeigte glühende Lava unter ihrer dunklen Kruste. Baumstämme, Laub und abgesägte Holzstücke unter dem Bild machten die Größe dieser Freiluftfotografie greifbar. Begleitende Texte erläuterten die Veränderungen der dargestellten Landschaften.</p><h2>Ushuaïas Blick auf die Erde</h2><p>Der Rundgang verband die Schönheit der Orte mit ihrer Verletzlichkeit. Einige Motive zeigten Landschaften des Unesco-Welterbes. Ihre Bilder erweiterten die Entdeckung über die Vulkane der Auvergne hinaus und führten zu den großen Naturräumen unseres Planeten.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Landschappen tussen de bomen</h2><p>Nature grand format bracht de beelden van Ushuaïa TV naar het bos van Vulcania. Foto’s van woestijnen, vulkanen en andere natuurlijke omgevingen verschenen op grote doeken langs het pad. Het bos van de Auvergne omringde zo landschappen uit verre streken.</p><p>Een paneel met het opschrift ‘Volcan’ toonde gloeiende lava onder een donkere korst. Boomstammen, bladeren en afgezaagde stukken hout onder de afbeelding maakten de schaal van deze buitenfoto tastbaar. Begeleidende teksten vertelden over de veranderingen in de getoonde landschappen.</p><h2>De aarde door de blik van Ushuaïa</h2><p>De route verbond de schoonheid van de locaties met hun kwetsbaarheid. Een deel van de beelden toonde landschappen op de Unesco-Werelderfgoedlijst. Daarmee reikte de tentoonstelling verder dan de vulkanen van de Auvergne, naar de grote natuurlijke omgevingen van onze planeet.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Paesaggi sospesi tra gli alberi</h2><p>Nature grand format portava le immagini di Ushuaïa TV nel bosco di Vulcania. Fotografie di deserti, vulcani e altri ambienti naturali comparivano su grandi teli tesi lungo il sentiero. La foresta dell’Alvernia circondava così paesaggi provenienti da regioni lontane.</p><p>Un pannello intitolato « Volcan » mostrava lava incandescente sotto una crosta scura. Tronchi, foglie e ceppi ai piedi dell’immagine rendevano concreta la scala di questa fotografia esposta all’aperto. I testi di accompagnamento spiegavano le trasformazioni dei paesaggi rappresentati.</p><h2>Lo sguardo di Ushuaïa sulla Terra</h2><p>Il percorso collegava la bellezza dei luoghi alla loro fragilità. Tra le immagini figuravano paesaggi iscritti al patrimonio mondiale dell’Unesco, che estendevano la scoperta oltre i vulcani dell’Alvernia, verso i grandi ambienti naturali del pianeta.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Paisajes suspendidos entre los árboles</h2><p>Nature grand format llevaba las imágenes de Ushuaïa TV al bosque de Vulcania. Fotografías de desiertos, volcanes y otros entornos naturales aparecían sobre grandes lonas tendidas junto al sendero. El bosque de Auvernia rodeaba así paisajes procedentes de regiones lejanas.</p><p>Un panel titulado « Volcan » mostraba lava incandescente bajo una corteza oscura. Los troncos, las hojas y los leños situados al pie de la imagen daban una escala tangible a esta fotografía al aire libre. Los textos explicaban las transformaciones de los paisajes representados.</p><h2>La mirada de Ushuaïa sobre la Tierra</h2><p>El recorrido vinculaba la belleza de los lugares con su fragilidad. Entre ellos figuraban paisajes inscritos en el patrimonio mundial de la Unesco, cuyas imágenes ampliaban la exploración más allá de los volcanes de Auvernia hacia los grandes entornos naturales del planeta.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Krajobrazy zawieszone między drzewami</h2><p>Nature grand format przenosiło fotografie Ushuaïa TV do lasu na terenie Vulcanii. Zdjęcia pustyń, wulkanów i innych środowisk przyrodniczych pojawiały się na dużych płachtach rozpiętych przy ścieżce. Las Owernii otaczał w ten sposób krajobrazy odległych regionów.</p><p>Plansza zatytułowana „Volcan” przedstawiała rozżarzoną lawę pod ciemną skorupą. Pnie, liście i kawałki ściętego drewna u dołu zdjęcia pozwalały odczuć rozmiar tej plenerowej fotografii. Towarzyszące teksty objaśniały przemiany ukazanych krajobrazów.</p><h2>Ziemia w obiektywie Ushuaïa</h2><p>Trasa łączyła piękno miejsc z ich wrażliwością. Wśród przedstawionych krajobrazów znajdowały się obszary wpisane na listę światowego dziedzictwa Unesco. Ich fotografie poszerzały temat poza wulkany Owernii, przybliżając wielkie środowiska przyrodnicze naszej planety.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Paisagens suspensas entre as árvores</h2><p>Nature grand format levava as imagens da Ushuaïa TV ao bosque de Vulcania. Fotografias de desertos, vulcões e outros ambientes naturais surgiam em grandes telas estendidas junto ao caminho. A floresta de Auvergne envolvia assim paisagens de regiões distantes.</p><p>Um painel intitulado « Volcan » mostrava lava incandescente sob uma crosta escura. Os troncos, a folhagem e os toros de madeira ao pé da imagem tornavam percetível a escala desta fotografia ao ar livre. Textos de acompanhamento explicavam as transformações das paisagens representadas.</p><h2>O olhar da Ushuaïa sobre a Terra</h2><p>O percurso ligava a beleza dos lugares à sua fragilidade. Entre eles encontravam-se paisagens inscritas no património mundial da Unesco, cujas imagens alargavam a descoberta para além dos vulcões de Auvergne, até aos grandes ambientes naturais do planeta.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-nature-description",
+        "notes": "Eight personally authored/reviewed notices, twoheadings and threeparagraphs each, based on official2018brochure/communiqué plus2018eyewitness and two physical-installation photographs. No day-planning advice, measurements, fabricated currentstate or inheritedgenericfiller. Actualprintedlava image explicitlydistinctfromrealeruptiononsite. No geographic coordinates derivedfromHawaiipanel."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "ae5af163-b2a1-4463-b12f-6d98d9af370e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:20:31.3038652Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "entityKey": "vulcania-nature-grand-format",
+        "displayName": "Nature grand format",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Landschaften zwischen den Bäumen</h2><p>Nature grand format brachte die Bilder von Ushuaïa TV in Vulcanias Wald. Fotografien von Wüsten, Vulkanen und anderen Naturräumen erschienen auf großen Stoffbahnen am Wegesrand. So umgab der Wald der Auvergne Landschaften aus fernen Regionen.</p><p>Eine Tafel mit der Überschrift „Volcan“ zeigte glühende Lava unter ihrer dunklen Kruste. Baumstämme, Laub und abgesägte Holzstücke unter dem Bild machten die Größe dieser Freiluftfotografie greifbar. Begleitende Texte erläuterten die Veränderungen der dargestellten Landschaften.</p><h2>Ushuaïas Blick auf die Erde</h2><p>Der Rundgang verband die Schönheit der Orte mit ihrer Verletzlichkeit. Einige Motive zeigten Landschaften des Unesco-Welterbes. Ihre Bilder erweiterten die Entdeckung über die Vulkane der Auvergne hinaus und führten zu den großen Naturräumen unseres Planeten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Landscapes hanging between the trees</h2><p>Nature grand format brought Ushuaïa TV’s imagery into Vulcania’s woodland. Photographs of deserts, volcanoes and other natural environments appeared on large fabric panels beside the path. The Auvergne forest became the setting for landscapes from much farther away.</p><p>A panel headed “Volcan” showed glowing lava beneath a dark crust. Tree trunks, foliage and cut logs below the picture gave this outdoor photograph a tangible sense of scale. Accompanying texts explored the changes taking place in the landscapes on display.</p><h2>Ushuaïa’s view of the Earth</h2><p>The trail connected the beauty of these places with their fragility. Several scenes depicted Unesco World Heritage sites, carrying the exhibition beyond the volcanoes of Auvergne towards the planet’s wider natural environments.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Paisajes suspendidos entre los árboles</h2><p>Nature grand format llevaba las imágenes de Ushuaïa TV al bosque de Vulcania. Fotografías de desiertos, volcanes y otros entornos naturales aparecían sobre grandes lonas tendidas junto al sendero. El bosque de Auvernia rodeaba así paisajes procedentes de regiones lejanas.</p><p>Un panel titulado « Volcan » mostraba lava incandescente bajo una corteza oscura. Los troncos, las hojas y los leños situados al pie de la imagen daban una escala tangible a esta fotografía al aire libre. Los textos explicaban las transformaciones de los paisajes representados.</p><h2>La mirada de Ushuaïa sobre la Tierra</h2><p>El recorrido vinculaba la belleza de los lugares con su fragilidad. Entre ellos figuraban paisajes inscritos en el patrimonio mundial de la Unesco, cuyas imágenes ampliaban la exploración más allá de los volcanes de Auvernia hacia los grandes entornos naturales del planeta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des paysages suspendus entre les arbres</h2><p>Nature grand format installait les images d’Ushuaïa TV dans les sous-bois de Vulcania. Des photographies de déserts, de volcans et d’autres milieux naturels apparaissaient sur de grandes toiles tendues au bord du chemin. La forêt auvergnate entourait ainsi des paysages venus d’ailleurs.</p><p>Un panneau intitulé « Volcan » montrait une coulée de lave incandescente sous sa croûte sombre. Les troncs, les feuillages et les rondins au pied de l’image donnaient une échelle concrète à cette photographie exposée en plein air. Des textes accompagnaient les paysages pour en éclairer les transformations.</p><h2>Un regard d’Ushuaïa sur la Terre</h2><p>Le parcours associait la beauté des sites à leur fragilité. Parmi ces lieux figuraient des paysages inscrits au patrimoine mondial de l’Unesco : leurs images ouvraient la découverte au-delà des volcans d’Auvergne, vers les grands milieux de la planète.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Paesaggi sospesi tra gli alberi</h2><p>Nature grand format portava le immagini di Ushuaïa TV nel bosco di Vulcania. Fotografie di deserti, vulcani e altri ambienti naturali comparivano su grandi teli tesi lungo il sentiero. La foresta dell’Alvernia circondava così paesaggi provenienti da regioni lontane.</p><p>Un pannello intitolato « Volcan » mostrava lava incandescente sotto una crosta scura. Tronchi, foglie e ceppi ai piedi dell’immagine rendevano concreta la scala di questa fotografia esposta all’aperto. I testi di accompagnamento spiegavano le trasformazioni dei paesaggi rappresentati.</p><h2>Lo sguardo di Ushuaïa sulla Terra</h2><p>Il percorso collegava la bellezza dei luoghi alla loro fragilità. Tra le immagini figuravano paesaggi iscritti al patrimonio mondiale dell’Unesco, che estendevano la scoperta oltre i vulcani dell’Alvernia, verso i grandi ambienti naturali del pianeta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Landschappen tussen de bomen</h2><p>Nature grand format bracht de beelden van Ushuaïa TV naar het bos van Vulcania. Foto’s van woestijnen, vulkanen en andere natuurlijke omgevingen verschenen op grote doeken langs het pad. Het bos van de Auvergne omringde zo landschappen uit verre streken.</p><p>Een paneel met het opschrift ‘Volcan’ toonde gloeiende lava onder een donkere korst. Boomstammen, bladeren en afgezaagde stukken hout onder de afbeelding maakten de schaal van deze buitenfoto tastbaar. Begeleidende teksten vertelden over de veranderingen in de getoonde landschappen.</p><h2>De aarde door de blik van Ushuaïa</h2><p>De route verbond de schoonheid van de locaties met hun kwetsbaarheid. Een deel van de beelden toonde landschappen op de Unesco-Werelderfgoedlijst. Daarmee reikte de tentoonstelling verder dan de vulkanen van de Auvergne, naar de grote natuurlijke omgevingen van onze planeet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Krajobrazy zawieszone między drzewami</h2><p>Nature grand format przenosiło fotografie Ushuaïa TV do lasu na terenie Vulcanii. Zdjęcia pustyń, wulkanów i innych środowisk przyrodniczych pojawiały się na dużych płachtach rozpiętych przy ścieżce. Las Owernii otaczał w ten sposób krajobrazy odległych regionów.</p><p>Plansza zatytułowana „Volcan” przedstawiała rozżarzoną lawę pod ciemną skorupą. Pnie, liście i kawałki ściętego drewna u dołu zdjęcia pozwalały odczuć rozmiar tej plenerowej fotografii. Towarzyszące teksty objaśniały przemiany ukazanych krajobrazów.</p><h2>Ziemia w obiektywie Ushuaïa</h2><p>Trasa łączyła piękno miejsc z ich wrażliwością. Wśród przedstawionych krajobrazów znajdowały się obszary wpisane na listę światowego dziedzictwa Unesco. Ich fotografie poszerzały temat poza wulkany Owernii, przybliżając wielkie środowiska przyrodnicze naszej planety.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Paisagens suspensas entre as árvores</h2><p>Nature grand format levava as imagens da Ushuaïa TV ao bosque de Vulcania. Fotografias de desertos, vulcões e outros ambientes naturais surgiam em grandes telas estendidas junto ao caminho. A floresta de Auvergne envolvia assim paisagens de regiões distantes.</p><p>Um painel intitulado « Volcan » mostrava lava incandescente sob uma crosta escura. Os troncos, a folhagem e os toros de madeira ao pé da imagem tornavam percetível a escala desta fotografia ao ar livre. Textos de acompanhamento explicavam as transformações das paisagens representadas.</p><h2>O olhar da Ushuaïa sobre a Terra</h2><p>O percurso ligava a beleza dos lugares à sua fragilidade. Entre eles encontravam-se paisagens inscritas no património mundial da Unesco, cujas imagens alargavam a descoberta para além dos vulcões de Auvergne, até aos grandes ambientes naturais do planeta.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "a9159af2-862c-453f-af97-cd07ac8bc576",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:21:01.6878303Z",
+    "appliedAtUtc": "2026-11-15T22:21:01.6878314Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "entityKey": "vulcania-nature-grand-format",
+        "displayName": "Nature grand format",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Landschaften zwischen den Bäumen</h2><p>Nature grand format brachte die Bilder von Ushuaïa TV in Vulcanias Wald. Fotografien von Wüsten, Vulkanen und anderen Naturräumen erschienen auf großen Stoffbahnen am Wegesrand. So umgab der Wald der Auvergne Landschaften aus fernen Regionen.</p><p>Eine Tafel mit der Überschrift „Volcan“ zeigte glühende Lava unter ihrer dunklen Kruste. Baumstämme, Laub und abgesägte Holzstücke unter dem Bild machten die Größe dieser Freiluftfotografie greifbar. Begleitende Texte erläuterten die Veränderungen der dargestellten Landschaften.</p><h2>Ushuaïas Blick auf die Erde</h2><p>Der Rundgang verband die Schönheit der Orte mit ihrer Verletzlichkeit. Einige Motive zeigten Landschaften des Unesco-Welterbes. Ihre Bilder erweiterten die Entdeckung über die Vulkane der Auvergne hinaus und führten zu den großen Naturräumen unseres Planeten.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Landscapes hanging between the trees</h2><p>Nature grand format brought Ushuaïa TV’s imagery into Vulcania’s woodland. Photographs of deserts, volcanoes and other natural environments appeared on large fabric panels beside the path. The Auvergne forest became the setting for landscapes from much farther away.</p><p>A panel headed “Volcan” showed glowing lava beneath a dark crust. Tree trunks, foliage and cut logs below the picture gave this outdoor photograph a tangible sense of scale. Accompanying texts explored the changes taking place in the landscapes on display.</p><h2>Ushuaïa’s view of the Earth</h2><p>The trail connected the beauty of these places with their fragility. Several scenes depicted Unesco World Heritage sites, carrying the exhibition beyond the volcanoes of Auvergne towards the planet’s wider natural environments.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Paisajes suspendidos entre los árboles</h2><p>Nature grand format llevaba las imágenes de Ushuaïa TV al bosque de Vulcania. Fotografías de desiertos, volcanes y otros entornos naturales aparecían sobre grandes lonas tendidas junto al sendero. El bosque de Auvernia rodeaba así paisajes procedentes de regiones lejanas.</p><p>Un panel titulado « Volcan » mostraba lava incandescente bajo una corteza oscura. Los troncos, las hojas y los leños situados al pie de la imagen daban una escala tangible a esta fotografía al aire libre. Los textos explicaban las transformaciones de los paisajes representados.</p><h2>La mirada de Ushuaïa sobre la Tierra</h2><p>El recorrido vinculaba la belleza de los lugares con su fragilidad. Entre ellos figuraban paisajes inscritos en el patrimonio mundial de la Unesco, cuyas imágenes ampliaban la exploración más allá de los volcanes de Auvernia hacia los grandes entornos naturales del planeta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des paysages suspendus entre les arbres</h2><p>Nature grand format installait les images d’Ushuaïa TV dans les sous-bois de Vulcania. Des photographies de déserts, de volcans et d’autres milieux naturels apparaissaient sur de grandes toiles tendues au bord du chemin. La forêt auvergnate entourait ainsi des paysages venus d’ailleurs.</p><p>Un panneau intitulé « Volcan » montrait une coulée de lave incandescente sous sa croûte sombre. Les troncs, les feuillages et les rondins au pied de l’image donnaient une échelle concrète à cette photographie exposée en plein air. Des textes accompagnaient les paysages pour en éclairer les transformations.</p><h2>Un regard d’Ushuaïa sur la Terre</h2><p>Le parcours associait la beauté des sites à leur fragilité. Parmi ces lieux figuraient des paysages inscrits au patrimoine mondial de l’Unesco : leurs images ouvraient la découverte au-delà des volcans d’Auvergne, vers les grands milieux de la planète.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Paesaggi sospesi tra gli alberi</h2><p>Nature grand format portava le immagini di Ushuaïa TV nel bosco di Vulcania. Fotografie di deserti, vulcani e altri ambienti naturali comparivano su grandi teli tesi lungo il sentiero. La foresta dell’Alvernia circondava così paesaggi provenienti da regioni lontane.</p><p>Un pannello intitolato « Volcan » mostrava lava incandescente sotto una crosta scura. Tronchi, foglie e ceppi ai piedi dell’immagine rendevano concreta la scala di questa fotografia esposta all’aperto. I testi di accompagnamento spiegavano le trasformazioni dei paesaggi rappresentati.</p><h2>Lo sguardo di Ushuaïa sulla Terra</h2><p>Il percorso collegava la bellezza dei luoghi alla loro fragilità. Tra le immagini figuravano paesaggi iscritti al patrimonio mondiale dell’Unesco, che estendevano la scoperta oltre i vulcani dell’Alvernia, verso i grandi ambienti naturali del pianeta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Landschappen tussen de bomen</h2><p>Nature grand format bracht de beelden van Ushuaïa TV naar het bos van Vulcania. Foto’s van woestijnen, vulkanen en andere natuurlijke omgevingen verschenen op grote doeken langs het pad. Het bos van de Auvergne omringde zo landschappen uit verre streken.</p><p>Een paneel met het opschrift ‘Volcan’ toonde gloeiende lava onder een donkere korst. Boomstammen, bladeren en afgezaagde stukken hout onder de afbeelding maakten de schaal van deze buitenfoto tastbaar. Begeleidende teksten vertelden over de veranderingen in de getoonde landschappen.</p><h2>De aarde door de blik van Ushuaïa</h2><p>De route verbond de schoonheid van de locaties met hun kwetsbaarheid. Een deel van de beelden toonde landschappen op de Unesco-Werelderfgoedlijst. Daarmee reikte de tentoonstelling verder dan de vulkanen van de Auvergne, naar de grote natuurlijke omgevingen van onze planeet.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Krajobrazy zawieszone między drzewami</h2><p>Nature grand format przenosiło fotografie Ushuaïa TV do lasu na terenie Vulcanii. Zdjęcia pustyń, wulkanów i innych środowisk przyrodniczych pojawiały się na dużych płachtach rozpiętych przy ścieżce. Las Owernii otaczał w ten sposób krajobrazy odległych regionów.</p><p>Plansza zatytułowana „Volcan” przedstawiała rozżarzoną lawę pod ciemną skorupą. Pnie, liście i kawałki ściętego drewna u dołu zdjęcia pozwalały odczuć rozmiar tej plenerowej fotografii. Towarzyszące teksty objaśniały przemiany ukazanych krajobrazów.</p><h2>Ziemia w obiektywie Ushuaïa</h2><p>Trasa łączyła piękno miejsc z ich wrażliwością. Wśród przedstawionych krajobrazów znajdowały się obszary wpisane na listę światowego dziedzictwa Unesco. Ich fotografie poszerzały temat poza wulkany Owernii, przybliżając wielkie środowiska przyrodnicze naszej planety.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Paisagens suspensas entre as árvores</h2><p>Nature grand format levava as imagens da Ushuaïa TV ao bosque de Vulcania. Fotografias de desertos, vulcões e outros ambientes naturais surgiam em grandes telas estendidas junto ao caminho. A floresta de Auvergne envolvia assim paisagens de regiões distantes.</p><p>Um painel intitulado « Volcan » mostrava lava incandescente sob uma crosta escura. Os troncos, a folhagem e os toros de madeira ao pé da imagem tornavam percetível a escala desta fotografia ao ar livre. Textos de acompanhamento explicavam as transformações das paisagens representadas.</p><h2>O olhar da Ushuaïa sobre a Terra</h2><p>O percurso ligava a beleza dos lugares à sua fragilidade. Entre eles encontravam-se paisagens inscritas no património mundial da Unesco, cujas imagens alargavam a descoberta para além dos vulcões de Auvergne, até aos grandes ambientes naturais do planeta.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : notice privée de Nature grand format en huit langues, photographies du parcours extérieur 2018 et sources officielles relues ; statut Unknown préservé.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Eight personally authored/reviewed notices, twoheadings and threeparagraphs each, based on official2018brochure/communiqué plus2018eyewitness and two physical-installation photographs. No day-planning advice, measurements, fabricated currentstate or inheritedgenericfiller. Actualprintedlava image explicitlydistinctfromrealeruptiononsite. No geographic coordinates derivedfromHawaiipanel."
+}

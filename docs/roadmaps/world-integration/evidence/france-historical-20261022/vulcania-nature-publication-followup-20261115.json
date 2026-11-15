@@ -1,0 +1,2361 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T22:32:45.437408+00:00",
+  "scopeAudit": "vulcania-nature-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-nature-publication-export-20261115.json",
+  "realPublicationApplies": [
+    {
+      "operationId": "2a8a2ef8-693d-49c5-9b8c-de77bb975240",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:29:20.5045201Z",
+      "appliedAtUtc": "2026-11-15T22:29:20.5045211Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+          "entityKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+          "displayName": "Nature grand format",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "212b74dbb2af4190b02311f2f960f002",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "3b1b7b2bcd254244aa735cff620be08e",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "eba72d89-2a7a-4ca6-b060-c1892d2b806a",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:29:51.523864Z",
+      "appliedAtUtc": "2026-11-15T22:29:51.5238645Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+          "entityKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+          "displayName": "Nature grand format",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "9a92583c-de9f-4e19-b7f9-91e8eca70c74",
+          "entityKey": "vulcania-nature-grand-format-opening-2018",
+          "displayName": "Les paysages d’Ushuaïa entrent dans les sous-bois",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "18b5ac86-f00e-45fd-9eea-42a6c75c7b20",
+          "entityKey": "vulcania-seismes-opening-2018",
+          "displayName": "Une nouvelle exposition rapproche sismologie et secours",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "localDateNormalization": {
+    "operationId": "633f1e72-e5c2-4bd2-bf74-6b21893555a6",
+    "reason": "Requestyear2018isnormalized byofficialPreviewApply into openingDateText2018only; openingDate remains priornull. Localhelper had copied raw request string; corrected local cache only, no new API call.",
+    "appliedFields": [
+      {
+        "field": "attractionDetails.openingDateText",
+        "oldValue": null,
+        "newValue": "2018"
+      }
+    ]
+  },
+  "publicChecks": {
+    "languageCount": 8,
+    "renderedPages": 40,
+    "itemPages": 16,
+    "timelinePages": 16,
+    "galleryPages": 8,
+    "normalCatalogueSearchItemNavigations": 16,
+    "normalItemHistoryNavigations": 16,
+    "normalItemGalleryNavigations": 8,
+    "descriptionsExact": 16,
+    "newNatureDescriptionsExact": 8,
+    "historyTitlesExact": 16,
+    "historySummariesExact": 16,
+    "photoItemLanguagePairsRendered": 16,
+    "photoTimelineLanguagePairsRendered": 16,
+    "newPhotoGalleryLanguagePairsRendered": 16,
+    "newPhotoGalleryAltTextsExact": 16,
+    "distinctPhotoLanguagePairsWithBinary200": 24,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshots": [
+      {
+        "path": "public-checks/0-fr-description.png",
+        "sha256": "c576c507db13f857e7f7baa92699bf3ab116b118947dbe863b3a94793ea7e4bc"
+      },
+      {
+        "path": "public-checks/0-fr-history.png",
+        "sha256": "f04903ee2ff3cc3dc325740a62cb326d84f360f02d6e36901ce65fb79b306f37"
+      },
+      {
+        "path": "public-checks/1-fr-description.png",
+        "sha256": "4f831507e3165b6e413634e06a4dcdbc57feccd6d69e47360048195a61e12d7f"
+      },
+      {
+        "path": "public-checks/1-fr-gallery-212b74dbb2af4190b02311f2f960f002.png",
+        "sha256": "a4bfef438bcbc1b3fc7830ce3e97082ff924d5c954e6c2f8f0339adca66a26ee"
+      },
+      {
+        "path": "public-checks/1-fr-gallery-3b1b7b2bcd254244aa735cff620be08e.png",
+        "sha256": "dfa2f19db4b605edac8d9d86fbb23d5e0de2faed8d27818924e9c3784a03e642"
+      },
+      {
+        "path": "public-checks/1-fr-history.png",
+        "sha256": "39b7ac07a04852fc389981a85632d4eff656d366f30ea368e4f3cc772ec59dfc"
+      }
+    ],
+    "results": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T22:30:11.957476+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Vitrine de l’exposition Séismes avec un casque orange, du matériel de secours et des provisions sur un fond bleu.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Une nouvelle exposition rapproche sismologie et secours",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Les paysages d’Ushuaïa entrent dans les sous-bois",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T22:30:11.968932+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "A new exhibition connects seismology and rescue",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Ushuaïa’s landscapes enter the woodland",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T22:30:12.052619+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Vitrine der Ausstellung Séismes mit orangefarbenem Helm, Rettungsausrüstung und Proviant vor blauem Hintergrund.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Eine neue Ausstellung verbindet Seismologie und Rettung",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Ushuaïas Landschaften ziehen in den Wald ein",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T22:30:42.684553+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Vitrine in de tentoonstelling Séismes met een oranje helm, reddingsmateriaal en proviand tegen een blauwe achtergrond.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Een nieuwe tentoonstelling verbindt seismologie en hulpverlening",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "De landschappen van Ushuaïa krijgen een plek in het bos",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T22:30:42.940399+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Vetrina della mostra Séismes con casco arancione, attrezzature di soccorso e provviste su sfondo blu.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Una nuova mostra avvicina sismologia e soccorso",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "I paesaggi di Ushuaïa arrivano nel bosco",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T22:30:43.315909+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Vitrina de la exposición Séismes con casco naranja, material de rescate y provisiones sobre fondo azul.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Una nueva exposición acerca la sismología al rescate",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Los paisajes de Ushuaïa llegan al bosque",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T22:31:14.052936+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Gablota wystawy Séismes z pomarańczowym kaskiem, sprzętem ratowniczym i zapasami żywności na niebieskim tle.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Nowa wystawa łączy sejsmologię z ratownictwem",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Krajobrazy Ushuaïa trafiają między drzewa",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T22:31:17.403036+00:00",
+        "items": [
+          {
+            "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "name": "Séismes, quand la Terre tremble",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/06bb9bc9-cca5-4345-8376-6567c6ea2e4a/seismes-quand-la-terre-tremble",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "expectedAlt": "Vitrina da exposição Séismes com capacete laranja, equipamento de socorro e provisões sobre fundo azul.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Display case in the Séismes exhibition with an orange helmet, rescue equipment and provisions against a blue background.",
+                    "width": 360,
+                    "height": 132
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-seismes-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "659517b47e5f4b5a95c9eb439c0b7263",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+                    "alt": "Uma nova exposição aproxima a sismologia do socorro",
+                    "width": 389,
+                    "height": 142
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "name": "Nature grand format",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "gallery",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/images",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format",
+                "rendered": []
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "galleryPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "expectedAlt": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+                    "alt": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format",
+                    "width": 213,
+                    "height": 160
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "expectedAlt": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+                    "alt": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys",
+                    "width": 160,
+                    "height": 120
+                  }
+                ]
+              }
+            ],
+            "normalItemGalleryNavigation": true,
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-nature-grand-format-opening-2018",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+                    "alt": "As paisagens da Ushuaïa chegam ao bosque",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              },
+              {
+                "imageId": "212b74dbb2af4190b02311f2f960f002",
+                "rendered": []
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/659517b47e5f4b5a95c9eb439c0b7263?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=240&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/9b0346bc-cd7d-4365-a3c6-3532219039bc/nature-grand-format",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/212b74dbb2af4190b02311f2f960f002?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/3b1b7b2bcd254244aa735cff620be08e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      }
+    ]
+  },
+  "applicationIssue": {
+    "mainPhotoAltFallsBackToEnglish": [
+      {
+        "language": "fr",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "fr",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      },
+      {
+        "language": "de",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "de",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      },
+      {
+        "language": "nl",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "nl",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      },
+      {
+        "language": "it",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "it",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      },
+      {
+        "language": "es",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "es",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      },
+      {
+        "language": "pl",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "pl",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      },
+      {
+        "language": "pt",
+        "imageId": "659517b47e5f4b5a95c9eb439c0b7263"
+      },
+      {
+        "language": "pt",
+        "imageId": "212b74dbb2af4190b02311f2f960f002"
+      }
+    ],
+    "timelinePhotoAltUsesLocalizedEventTitle": true,
+    "galleryTwoPhotoAltTextsLocalizedCorrectly": true,
+    "storedEightLanguageMetadataPreserved": true,
+    "noBlindDataCorrection": true
+  },
+  "completeness": {
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T22:30:18.3683633Z",
+    "startedAtUtc": "2026-11-15T22:30:17.2093160Z"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 66,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 10,
+          "sourcedResourceCount": 10,
+          "publishedResourceCount": 10,
+          "subjectCount": 8,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 8,
+          "sourcedResourceCount": 8,
+          "publishedResourceCount": 8,
+          "subjectCount": 7,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 24
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 42
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 24,
+        "sourcedFactCount": 24,
+        "majorFactCount": 21,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T22:30:10.9015937Z",
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T22:30:10.2426145Z"
+  },
+  "idempotence": {
+    "operationId": "15236f6c-d8f5-4db9-8ca9-a1a48b280332",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:30:35.7737912Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "entityKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "displayName": "Nature grand format",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "212b74dbb2af4190b02311f2f960f002",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "3b1b7b2bcd254244aa735cff620be08e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9a92583c-de9f-4e19-b7f9-91e8eca70c74",
+        "entityKey": "vulcania-nature-grand-format-opening-2018",
+        "displayName": "Les paysages d’Ushuaïa entrent dans les sous-bois",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "18b5ac86-f00e-45fd-9eea-42a6c75c7b20",
+        "entityKey": "vulcania-seismes-opening-2018",
+        "displayName": "Une nouvelle exposition rapproche sismologie et secours",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 61,
+    "publicItems": 61,
+    "descriptions8Languages": 61,
+    "ownMedia": 63,
+    "publicOwnMedia": 63,
+    "sharedMedia": 5,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 24,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "Other historical shows including Volcano Drones remain to qualify against existing offerings and shared rooms",
+    "Nature current operation or closure remains unknown; no date invented",
+    "Precise item coordinates and distinct photographic coverage remain incomplete",
+    "No complete general calendar or price table for2027 found in previously reviewed official pages"
+  ],
+  "earlierApplicationIssuesUnchanged": "vulcania-publication-followup-20261115.json",
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  }
+}

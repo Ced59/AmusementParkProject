@@ -1,0 +1,947 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-nature-grand-format-opening-2018",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "itemId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "parkItemId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2018,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "3b1b7b2bcd254244aa735cff620be08e",
+            "sources": [
+              {
+                "label": "Vulcania — communiqué saison 2018 reproduit par ParcPlaza, 19 mars 2018",
+                "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — brochure officielle 2018 conservée par Mon Beau Pays",
+                "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Clermont Auvergne Métropole — rapport SEM Volcans sur 2018, délibération 15 février 2019, p. 4 et 11",
+                "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Les paysages d’Ushuaïa entrent dans les sous-bois"
+              },
+              {
+                "languageCode": "en",
+                "value": "Ushuaïa’s landscapes enter the woodland"
+              },
+              {
+                "languageCode": "de",
+                "value": "Ushuaïas Landschaften ziehen in den Wald ein"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De landschappen van Ushuaïa krijgen een plek in het bos"
+              },
+              {
+                "languageCode": "it",
+                "value": "I paesaggi di Ushuaïa arrivano nel bosco"
+              },
+              {
+                "languageCode": "es",
+                "value": "Los paisajes de Ushuaïa llegan al bosque"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Krajobrazy Ushuaïa trafiają między drzewa"
+              },
+              {
+                "languageCode": "pt",
+                "value": "As paisagens da Ushuaïa chegam ao bosque"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En 2018, Vulcania inaugure Nature grand format avec Ushuaïa TV. Les images issues de l’univers de la chaîne deviennent un parcours photographique extérieur : cette nouveauté élargit la découverte des phénomènes terrestres aux paysages remarquables et à la préservation des milieux naturels."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2018, Vulcania opens Nature grand format with Ushuaïa TV. Imagery from the channel’s world becomes an outdoor photographic trail, extending the park’s exploration of Earth’s phenomena to remarkable landscapes and the preservation of natural environments."
+              },
+              {
+                "languageCode": "de",
+                "value": "2018 eröffnet Vulcania gemeinsam mit Ushuaïa TV Nature grand format. Aus der Bilderwelt des Senders entsteht ein fotografischer Rundgang im Freien. Damit erweitert der Park seine Beschäftigung mit den Phänomenen der Erde um außergewöhnliche Landschaften und den Schutz natürlicher Lebensräume."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2018 opent Vulcania Nature grand format samen met Ushuaïa TV. De beeldenwereld van de zender krijgt de vorm van een fotografische buitenroute. Daarmee verbreedt het park zijn verkenning van aardse verschijnselen naar bijzondere landschappen en het behoud van natuurlijke leefomgevingen."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2018 Vulcania inaugura Nature grand format insieme a Ushuaïa TV. Le immagini dell’universo del canale diventano un percorso fotografico all’aperto. La novità amplia l’esplorazione dei fenomeni terrestri ai paesaggi più suggestivi e alla tutela degli ambienti naturali."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2018, Vulcania inaugura Nature grand format con Ushuaïa TV. Las imágenes del universo del canal se convierten en un recorrido fotográfico al aire libre. La novedad amplía la exploración de los fenómenos terrestres hacia paisajes singulares y la conservación de los entornos naturales."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2018 roku Vulcania otwiera Nature grand format we współpracy z Ushuaïa TV. Obrazy ze świata stacji tworzą plenerową trasę fotograficzną. Nowa wystawa poszerza opowieść o zjawiskach zachodzących na Ziemi o niezwykłe krajobrazy i ochronę środowiska naturalnego."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2018, Vulcania inaugura Nature grand format com a Ushuaïa TV. As imagens do universo do canal tornam-se um percurso fotográfico ao ar livre. A novidade alarga a exploração dos fenómenos terrestres a paisagens singulares e à preservação dos ambientes naturais."
+              }
+            ]
+          },
+          {
+            "key": "vulcania-seismes-opening-2018",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "itemId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "parkItemId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2018,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "659517b47e5f4b5a95c9eb439c0b7263",
+            "sources": [
+              {
+                "label": "Vulcania — communiqué saison 2018 reproduit par ParcPlaza, 19 mars 2018",
+                "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — brochure officielle 2018 conservée par Mon Beau Pays",
+                "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Clermont Auvergne Métropole — rapport SEM Volcans sur 2018, délibération 15 février 2019, p. 4 et 11",
+                "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une nouvelle exposition rapproche sismologie et secours"
+              },
+              {
+                "languageCode": "en",
+                "value": "A new exhibition connects seismology and rescue"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine neue Ausstellung verbindet Seismologie und Rettung"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een nieuwe tentoonstelling verbindt seismologie en hulpverlening"
+              },
+              {
+                "languageCode": "it",
+                "value": "Una nuova mostra avvicina sismologia e soccorso"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una nueva exposición acerca la sismología al rescate"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Nowa wystawa łączy sejsmologię z ratownictwem"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma nova exposição aproxima a sismologia do socorro"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Séismes, quand la Terre tremble rejoint les nouveautés de Vulcania en 2018. Conçue avec le concours des Pompiers de l’Urgence Internationale, l’exposition associe la connaissance des tremblements de terre à l’action des secours. Elle inscrit les exemples français et auvergnats dans une découverte mondiale du risque sismique."
+              },
+              {
+                "languageCode": "en",
+                "value": "Séismes, quand la Terre tremble joins Vulcania’s new attractions in 2018. Developed with help from Pompiers de l’Urgence Internationale, the exhibition links understanding earthquakes with emergency response. French and Auvergne examples form part of its worldwide exploration of seismic risk."
+              },
+              {
+                "languageCode": "de",
+                "value": "Séismes, quand la Terre tremble gehört 2018 zu Vulcanias Neuheiten. Mit Unterstützung der Pompiers de l’Urgence Internationale verbindet die Ausstellung das Wissen über Erdbeben mit der Arbeit von Rettungskräften. Beispiele aus Frankreich und der Auvergne stehen dabei im weltweiten Zusammenhang des Erdbebenrisikos."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Séismes, quand la Terre tremble behoort in 2018 tot de nieuwigheden van Vulcania. De tentoonstelling komt tot stand met hulp van Pompiers de l’Urgence Internationale en verbindt kennis over aardbevingen met noodhulp. Voorbeelden uit Frankrijk en de Auvergne krijgen een plaats in een wereldwijde verkenning van het aardbevingsrisico."
+              },
+              {
+                "languageCode": "it",
+                "value": "Séismes, quand la Terre tremble entra tra le novità di Vulcania nel 2018. Realizzata con il contributo dei Pompiers de l’Urgence Internationale, la mostra collega la conoscenza dei terremoti all’intervento dei soccorritori. Gli esempi francesi e dell’Alvernia si inseriscono in un’esplorazione mondiale del rischio sismico."
+              },
+              {
+                "languageCode": "es",
+                "value": "Séismes, quand la Terre tremble figura entre las novedades de Vulcania en 2018. Creada con la colaboración de Pompiers de l’Urgence Internationale, la exposición relaciona el conocimiento de los terremotos con la intervención de los equipos de rescate. Los casos de Francia y Auvernia se integran en una exploración mundial del riesgo sísmico."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Séismes, quand la Terre tremble dołącza do nowości Vulcanii w 2018 roku. Wystawa powstaje z udziałem Pompiers de l’Urgence Internationale i łączy wiedzę o trzęsieniach ziemi z działaniami ratowników. Przykłady z Francji i Owernii stają się częścią opowieści o zagrożeniu sejsmicznym na świecie."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Séismes, quand la Terre tremble integra as novidades de Vulcania em 2018. Concebida com o contributo dos Pompiers de l’Urgence Internationale, a exposição liga o conhecimento dos sismos à intervenção das equipas de socorro. Os exemplos franceses e da Auvérnia integram uma exploração mundial do risco sísmico."
+              }
+            ]
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+          "key": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+          "name": "Séismes, quand la Terre tremble",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "attractionDetails": {
+            "openingDate": "2018"
+          }
+        }
+      ],
+      "metadata": {
+        "notes": "Two private Opening facts,2018year-only, official2018brochure/press and municipal retrospective report personally read. Existing public Seismes opening year qualified; no season-opening day transposed. Nature Unknown preserved; Ushuaia TV partner not manufacturer. All32 localized titles/summaries personally written and reviewed."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "05b2658c-5490-4589-9dc1-fafda5ec898d",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:26:03.4358325Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "entityKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "displayName": "Séismes, quand la Terre tremble",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2018"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "28bf37cc-e1ac-4a71-ace5-d8530ae84651",
+        "entityKey": "vulcania-nature-grand-format-opening-2018",
+        "displayName": "Les paysages d’Ushuaïa entrent dans les sous-bois",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-nature-grand-format-opening-2018"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "9b0346bc-cd7d-4365-a3c6-3532219039bc"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "9b0346bc-cd7d-4365-a3c6-3532219039bc"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2018"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3b1b7b2bcd254244aa735cff620be08e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ushuaïas Landschaften ziehen in den Wald ein, en:Ushuaïa’s landscapes enter the woodland, es:Los paisajes de Ushuaïa llegan al bosque, fr:Les paysages d’Ushuaïa entrent dans les sous-bois, it:I paesaggi di Ushuaïa arrivano nel bosco, nl:De landschappen van Ushuaïa krijgen een plek in het bos, pl:Krajobrazy Ushuaïa trafiają między drzewa, pt:As paisagens da Ushuaïa chegam ao bosque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2018 eröffnet Vulcania gemeinsam mit Ushuaïa TV Nature grand format. Aus der Bilderwelt des Senders entsteht ein fotografischer Rundgang im Freien. Damit erweitert der Park seine Beschäftigung mit den Phänomenen der Erde um außergewöhnliche Landschaften und den Schutz natürlicher Lebensräume., en:In 2018, Vulcania opens Nature grand format with Ushuaïa TV. Imagery from the channel’s world becomes an outdoor photographic trail, extending the park’s exploration of Earth’s phenomena to remarkable landscapes and the preservation of natural environments., es:En 2018, Vulcania inaugura Nature grand format con Ushuaïa TV. Las imágenes del universo del canal se convierten en un recorrido fotográfico al aire libre. La novedad amplía la exploración de los fenómenos terrestres hacia paisajes singulares y la conservación de los entornos naturales., fr:En 2018, Vulcania inaugure Nature grand format avec Ushuaïa TV. Les images issues de l’univers de la chaîne deviennent un parcours photographique extérieur : cette nouveauté élargit la découverte des phénomènes terrestres aux paysages remarquables et à la préservation des milieux naturels., it:Nel 2018 Vulcania inaugura Nature grand format insieme a Ushuaïa TV. Le immagini dell’universo del canale diventano un percorso fotografico all’aperto. La novità amplia l’esplorazione dei fenomeni terrestri ai paesaggi più suggestivi e alla tutela degli ambienti naturali., nl:In 2018 opent Vulcania Nature grand format samen met Ushuaïa TV. De beeldenwereld van de zender krijgt de vorm van een fotografische buitenroute. Daarmee verbreedt het park zijn verkenning van aardse verschijnselen naar bijzondere landschappen en het behoud van natuurlijke leefomgevingen., pl:W 2018 roku Vulcania otwiera Nature grand format we współpracy z Ushuaïa TV. Obrazy ze świata stacji tworzą plenerową trasę fotograficzną. Nowa wystawa poszerza opowieść o zjawiskach zachodzących na Ziemi o niezwykłe krajobrazy i ochronę środowiska naturalnego., pt:Em 2018, Vulcania inaugura Nature grand format com a Ushuaïa TV. As imagens do universo do canal tornam-se um percurso fotográfico ao ar livre. A novidade alarga a exploração dos fenómenos terrestres a paisagens singulares e à preservação dos ambientes naturais."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 rapport SEM Volcans sur 2018, d\\u00E9lib\\u00E9ration 15 f\\u00E9vrier 2019, p. 4 et 11\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 brochure officielle 2018 conserv\\u00E9e par Mon Beau Pays\",\"Url\":\"https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 saison 2018 reproduit par ParcPlaza, 19 mars 2018\",\"Url\":\"https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "b86bde8b-dee7-47d7-8db7-e24a28b15156",
+        "entityKey": "vulcania-seismes-opening-2018",
+        "displayName": "Une nouvelle exposition rapproche sismologie et secours",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-seismes-opening-2018"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2018"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "659517b47e5f4b5a95c9eb439c0b7263"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine neue Ausstellung verbindet Seismologie und Rettung, en:A new exhibition connects seismology and rescue, es:Una nueva exposición acerca la sismología al rescate, fr:Une nouvelle exposition rapproche sismologie et secours, it:Una nuova mostra avvicina sismologia e soccorso, nl:Een nieuwe tentoonstelling verbindt seismologie en hulpverlening, pl:Nowa wystawa łączy sejsmologię z ratownictwem, pt:Uma nova exposição aproxima a sismologia do socorro"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Séismes, quand la Terre tremble gehört 2018 zu Vulcanias Neuheiten. Mit Unterstützung der Pompiers de l’Urgence Internationale verbindet die Ausstellung das Wissen über Erdbeben mit der Arbeit von Rettungskräften. Beispiele aus Frankreich und der Auvergne stehen dabei im weltweiten Zusammenhang des Erdbebenrisikos., en:Séismes, quand la Terre tremble joins Vulcania’s new attractions in 2018. Developed with help from Pompiers de l’Urgence Internationale, the exhibition links understanding earthquakes with emergency response. French and Auvergne examples form part of its worldwide exploration of seismic risk., es:Séismes, quand la Terre tremble figura entre las novedades de Vulcania en 2018. Creada con la colaboración de Pompiers de l’Urgence Internationale, la exposición relaciona el conocimiento de los terremotos con la intervención de los equipos de rescate. Los casos de Francia y Auvernia se integran en una exploración mundial del riesgo sísmico., fr:Séismes, quand la Terre tremble rejoint les nouveautés de Vulcania en 2018. Conçue avec le concours des Pompiers de l’Urgence Internationale, l’exposition associe la connaissance des tremblements de terre à l’action des secours. Elle inscrit les exemples français et auvergnats dans une découverte mondiale du risque sismique., it:Séismes, quand la Terre tremble entra tra le novità di Vulcania nel 2018. Realizzata con il contributo dei Pompiers de l’Urgence Internationale, la mostra collega la conoscenza dei terremoti all’intervento dei soccorritori. Gli esempi francesi e dell’Alvernia si inseriscono in un’esplorazione mondiale del rischio sismico., nl:Séismes, quand la Terre tremble behoort in 2018 tot de nieuwigheden van Vulcania. De tentoonstelling komt tot stand met hulp van Pompiers de l’Urgence Internationale en verbindt kennis over aardbevingen met noodhulp. Voorbeelden uit Frankrijk en de Auvergne krijgen een plaats in een wereldwijde verkenning van het aardbevingsrisico., pl:Séismes, quand la Terre tremble dołącza do nowości Vulcanii w 2018 roku. Wystawa powstaje z udziałem Pompiers de l’Urgence Internationale i łączy wiedzę o trzęsieniach ziemi z działaniami ratowników. Przykłady z Francji i Owernii stają się częścią opowieści o zagrożeniu sejsmicznym na świecie., pt:Séismes, quand la Terre tremble integra as novidades de Vulcania em 2018. Concebida com o contributo dos Pompiers de l’Urgence Internationale, a exposição liga o conhecimento dos sismos à intervenção das equipas de socorro. Os exemplos franceses e da Auvérnia integram uma exploração mundial do risco sísmico."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 rapport SEM Volcans sur 2018, d\\u00E9lib\\u00E9ration 15 f\\u00E9vrier 2019, p. 4 et 11\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 brochure officielle 2018 conserv\\u00E9e par Mon Beau Pays\",\"Url\":\"https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 saison 2018 reproduit par ParcPlaza, 19 mars 2018\",\"Url\":\"https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "633f1e72-e5c2-4bd2-bf74-6b21893555a6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:26:25.6974774Z",
+    "appliedAtUtc": "2026-11-15T22:26:25.6974781Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "entityKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "displayName": "Séismes, quand la Terre tremble",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2018"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9a92583c-de9f-4e19-b7f9-91e8eca70c74",
+        "entityKey": "vulcania-nature-grand-format-opening-2018",
+        "displayName": "Les paysages d’Ushuaïa entrent dans les sous-bois",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-nature-grand-format-opening-2018"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "9b0346bc-cd7d-4365-a3c6-3532219039bc"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "9b0346bc-cd7d-4365-a3c6-3532219039bc"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2018"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "3b1b7b2bcd254244aa735cff620be08e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ushuaïas Landschaften ziehen in den Wald ein, en:Ushuaïa’s landscapes enter the woodland, es:Los paisajes de Ushuaïa llegan al bosque, fr:Les paysages d’Ushuaïa entrent dans les sous-bois, it:I paesaggi di Ushuaïa arrivano nel bosco, nl:De landschappen van Ushuaïa krijgen een plek in het bos, pl:Krajobrazy Ushuaïa trafiają między drzewa, pt:As paisagens da Ushuaïa chegam ao bosque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2018 eröffnet Vulcania gemeinsam mit Ushuaïa TV Nature grand format. Aus der Bilderwelt des Senders entsteht ein fotografischer Rundgang im Freien. Damit erweitert der Park seine Beschäftigung mit den Phänomenen der Erde um außergewöhnliche Landschaften und den Schutz natürlicher Lebensräume., en:In 2018, Vulcania opens Nature grand format with Ushuaïa TV. Imagery from the channel’s world becomes an outdoor photographic trail, extending the park’s exploration of Earth’s phenomena to remarkable landscapes and the preservation of natural environments., es:En 2018, Vulcania inaugura Nature grand format con Ushuaïa TV. Las imágenes del universo del canal se convierten en un recorrido fotográfico al aire libre. La novedad amplía la exploración de los fenómenos terrestres hacia paisajes singulares y la conservación de los entornos naturales., fr:En 2018, Vulcania inaugure Nature grand format avec Ushuaïa TV. Les images issues de l’univers de la chaîne deviennent un parcours photographique extérieur : cette nouveauté élargit la découverte des phénomènes terrestres aux paysages remarquables et à la préservation des milieux naturels., it:Nel 2018 Vulcania inaugura Nature grand format insieme a Ushuaïa TV. Le immagini dell’universo del canale diventano un percorso fotografico all’aperto. La novità amplia l’esplorazione dei fenomeni terrestri ai paesaggi più suggestivi e alla tutela degli ambienti naturali., nl:In 2018 opent Vulcania Nature grand format samen met Ushuaïa TV. De beeldenwereld van de zender krijgt de vorm van een fotografische buitenroute. Daarmee verbreedt het park zijn verkenning van aardse verschijnselen naar bijzondere landschappen en het behoud van natuurlijke leefomgevingen., pl:W 2018 roku Vulcania otwiera Nature grand format we współpracy z Ushuaïa TV. Obrazy ze świata stacji tworzą plenerową trasę fotograficzną. Nowa wystawa poszerza opowieść o zjawiskach zachodzących na Ziemi o niezwykłe krajobrazy i ochronę środowiska naturalnego., pt:Em 2018, Vulcania inaugura Nature grand format com a Ushuaïa TV. As imagens do universo do canal tornam-se um percurso fotográfico ao ar livre. A novidade alarga a exploração dos fenómenos terrestres a paisagens singulares e à preservação dos ambientes naturais."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 rapport SEM Volcans sur 2018, d\\u00E9lib\\u00E9ration 15 f\\u00E9vrier 2019, p. 4 et 11\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 brochure officielle 2018 conserv\\u00E9e par Mon Beau Pays\",\"Url\":\"https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 saison 2018 reproduit par ParcPlaza, 19 mars 2018\",\"Url\":\"https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "18b5ac86-f00e-45fd-9eea-42a6c75c7b20",
+        "entityKey": "vulcania-seismes-opening-2018",
+        "displayName": "Une nouvelle exposition rapproche sismologie et secours",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-seismes-opening-2018"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2018"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "659517b47e5f4b5a95c9eb439c0b7263"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine neue Ausstellung verbindet Seismologie und Rettung, en:A new exhibition connects seismology and rescue, es:Una nueva exposición acerca la sismología al rescate, fr:Une nouvelle exposition rapproche sismologie et secours, it:Una nuova mostra avvicina sismologia e soccorso, nl:Een nieuwe tentoonstelling verbindt seismologie en hulpverlening, pl:Nowa wystawa łączy sejsmologię z ratownictwem, pt:Uma nova exposição aproxima a sismologia do socorro"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Séismes, quand la Terre tremble gehört 2018 zu Vulcanias Neuheiten. Mit Unterstützung der Pompiers de l’Urgence Internationale verbindet die Ausstellung das Wissen über Erdbeben mit der Arbeit von Rettungskräften. Beispiele aus Frankreich und der Auvergne stehen dabei im weltweiten Zusammenhang des Erdbebenrisikos., en:Séismes, quand la Terre tremble joins Vulcania’s new attractions in 2018. Developed with help from Pompiers de l’Urgence Internationale, the exhibition links understanding earthquakes with emergency response. French and Auvergne examples form part of its worldwide exploration of seismic risk., es:Séismes, quand la Terre tremble figura entre las novedades de Vulcania en 2018. Creada con la colaboración de Pompiers de l’Urgence Internationale, la exposición relaciona el conocimiento de los terremotos con la intervención de los equipos de rescate. Los casos de Francia y Auvernia se integran en una exploración mundial del riesgo sísmico., fr:Séismes, quand la Terre tremble rejoint les nouveautés de Vulcania en 2018. Conçue avec le concours des Pompiers de l’Urgence Internationale, l’exposition associe la connaissance des tremblements de terre à l’action des secours. Elle inscrit les exemples français et auvergnats dans une découverte mondiale du risque sismique., it:Séismes, quand la Terre tremble entra tra le novità di Vulcania nel 2018. Realizzata con il contributo dei Pompiers de l’Urgence Internationale, la mostra collega la conoscenza dei terremoti all’intervento dei soccorritori. Gli esempi francesi e dell’Alvernia si inseriscono in un’esplorazione mondiale del rischio sismico., nl:Séismes, quand la Terre tremble behoort in 2018 tot de nieuwigheden van Vulcania. De tentoonstelling komt tot stand met hulp van Pompiers de l’Urgence Internationale en verbindt kennis over aardbevingen met noodhulp. Voorbeelden uit Frankrijk en de Auvergne krijgen een plaats in een wereldwijde verkenning van het aardbevingsrisico., pl:Séismes, quand la Terre tremble dołącza do nowości Vulcanii w 2018 roku. Wystawa powstaje z udziałem Pompiers de l’Urgence Internationale i łączy wiedzę o trzęsieniach ziemi z działaniami ratowników. Przykłady z Francji i Owernii stają się częścią opowieści o zagrożeniu sejsmicznym na świecie., pt:Séismes, quand la Terre tremble integra as novidades de Vulcania em 2018. Concebida com o contributo dos Pompiers de l’Urgence Internationale, a exposição liga o conhecimento dos sismos à intervenção das equipas de socorro. Os exemplos franceses e da Auvérnia integram uma exploração mundial do risco sísmico."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 rapport SEM Volcans sur 2018, d\\u00E9lib\\u00E9ration 15 f\\u00E9vrier 2019, p. 4 et 11\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 brochure officielle 2018 conserv\\u00E9e par Mon Beau Pays\",\"Url\":\"https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 saison 2018 reproduit par ParcPlaza, 19 mars 2018\",\"Url\":\"https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-nature-grand-format-opening-2018",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "itemId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "parkItemId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2018,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "3b1b7b2bcd254244aa735cff620be08e",
+      "sources": [
+        {
+          "label": "Vulcania — communiqué saison 2018 reproduit par ParcPlaza, 19 mars 2018",
+          "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — brochure officielle 2018 conservée par Mon Beau Pays",
+          "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Clermont Auvergne Métropole — rapport SEM Volcans sur 2018, délibération 15 février 2019, p. 4 et 11",
+          "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Les paysages d’Ushuaïa entrent dans les sous-bois"
+        },
+        {
+          "languageCode": "en",
+          "value": "Ushuaïa’s landscapes enter the woodland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Ushuaïas Landschaften ziehen in den Wald ein"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De landschappen van Ushuaïa krijgen een plek in het bos"
+        },
+        {
+          "languageCode": "it",
+          "value": "I paesaggi di Ushuaïa arrivano nel bosco"
+        },
+        {
+          "languageCode": "es",
+          "value": "Los paisajes de Ushuaïa llegan al bosque"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Krajobrazy Ushuaïa trafiają między drzewa"
+        },
+        {
+          "languageCode": "pt",
+          "value": "As paisagens da Ushuaïa chegam ao bosque"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "En 2018, Vulcania inaugure Nature grand format avec Ushuaïa TV. Les images issues de l’univers de la chaîne deviennent un parcours photographique extérieur : cette nouveauté élargit la découverte des phénomènes terrestres aux paysages remarquables et à la préservation des milieux naturels."
+        },
+        {
+          "languageCode": "en",
+          "value": "In 2018, Vulcania opens Nature grand format with Ushuaïa TV. Imagery from the channel’s world becomes an outdoor photographic trail, extending the park’s exploration of Earth’s phenomena to remarkable landscapes and the preservation of natural environments."
+        },
+        {
+          "languageCode": "de",
+          "value": "2018 eröffnet Vulcania gemeinsam mit Ushuaïa TV Nature grand format. Aus der Bilderwelt des Senders entsteht ein fotografischer Rundgang im Freien. Damit erweitert der Park seine Beschäftigung mit den Phänomenen der Erde um außergewöhnliche Landschaften und den Schutz natürlicher Lebensräume."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In 2018 opent Vulcania Nature grand format samen met Ushuaïa TV. De beeldenwereld van de zender krijgt de vorm van een fotografische buitenroute. Daarmee verbreedt het park zijn verkenning van aardse verschijnselen naar bijzondere landschappen en het behoud van natuurlijke leefomgevingen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel 2018 Vulcania inaugura Nature grand format insieme a Ushuaïa TV. Le immagini dell’universo del canale diventano un percorso fotografico all’aperto. La novità amplia l’esplorazione dei fenomeni terrestri ai paesaggi più suggestivi e alla tutela degli ambienti naturali."
+        },
+        {
+          "languageCode": "es",
+          "value": "En 2018, Vulcania inaugura Nature grand format con Ushuaïa TV. Las imágenes del universo del canal se convierten en un recorrido fotográfico al aire libre. La novedad amplía la exploración de los fenómenos terrestres hacia paisajes singulares y la conservación de los entornos naturales."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W 2018 roku Vulcania otwiera Nature grand format we współpracy z Ushuaïa TV. Obrazy ze świata stacji tworzą plenerową trasę fotograficzną. Nowa wystawa poszerza opowieść o zjawiskach zachodzących na Ziemi o niezwykłe krajobrazy i ochronę środowiska naturalnego."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em 2018, Vulcania inaugura Nature grand format com a Ushuaïa TV. As imagens do universo do canal tornam-se um percurso fotográfico ao ar livre. A novidade alarga a exploração dos fenómenos terrestres a paisagens singulares e à preservação dos ambientes naturais."
+        }
+      ],
+      "id": "9a92583c-de9f-4e19-b7f9-91e8eca70c74"
+    },
+    {
+      "key": "vulcania-seismes-opening-2018",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "itemId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "parkItemId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2018,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "659517b47e5f4b5a95c9eb439c0b7263",
+      "sources": [
+        {
+          "label": "Vulcania — communiqué saison 2018 reproduit par ParcPlaza, 19 mars 2018",
+          "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — brochure officielle 2018 conservée par Mon Beau Pays",
+          "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Clermont Auvergne Métropole — rapport SEM Volcans sur 2018, délibération 15 février 2019, p. 4 et 11",
+          "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Une nouvelle exposition rapproche sismologie et secours"
+        },
+        {
+          "languageCode": "en",
+          "value": "A new exhibition connects seismology and rescue"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine neue Ausstellung verbindet Seismologie und Rettung"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een nieuwe tentoonstelling verbindt seismologie en hulpverlening"
+        },
+        {
+          "languageCode": "it",
+          "value": "Una nuova mostra avvicina sismologia e soccorso"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una nueva exposición acerca la sismología al rescate"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nowa wystawa łączy sejsmologię z ratownictwem"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma nova exposição aproxima a sismologia do socorro"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Séismes, quand la Terre tremble rejoint les nouveautés de Vulcania en 2018. Conçue avec le concours des Pompiers de l’Urgence Internationale, l’exposition associe la connaissance des tremblements de terre à l’action des secours. Elle inscrit les exemples français et auvergnats dans une découverte mondiale du risque sismique."
+        },
+        {
+          "languageCode": "en",
+          "value": "Séismes, quand la Terre tremble joins Vulcania’s new attractions in 2018. Developed with help from Pompiers de l’Urgence Internationale, the exhibition links understanding earthquakes with emergency response. French and Auvergne examples form part of its worldwide exploration of seismic risk."
+        },
+        {
+          "languageCode": "de",
+          "value": "Séismes, quand la Terre tremble gehört 2018 zu Vulcanias Neuheiten. Mit Unterstützung der Pompiers de l’Urgence Internationale verbindet die Ausstellung das Wissen über Erdbeben mit der Arbeit von Rettungskräften. Beispiele aus Frankreich und der Auvergne stehen dabei im weltweiten Zusammenhang des Erdbebenrisikos."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Séismes, quand la Terre tremble behoort in 2018 tot de nieuwigheden van Vulcania. De tentoonstelling komt tot stand met hulp van Pompiers de l’Urgence Internationale en verbindt kennis over aardbevingen met noodhulp. Voorbeelden uit Frankrijk en de Auvergne krijgen een plaats in een wereldwijde verkenning van het aardbevingsrisico."
+        },
+        {
+          "languageCode": "it",
+          "value": "Séismes, quand la Terre tremble entra tra le novità di Vulcania nel 2018. Realizzata con il contributo dei Pompiers de l’Urgence Internationale, la mostra collega la conoscenza dei terremoti all’intervento dei soccorritori. Gli esempi francesi e dell’Alvernia si inseriscono in un’esplorazione mondiale del rischio sismico."
+        },
+        {
+          "languageCode": "es",
+          "value": "Séismes, quand la Terre tremble figura entre las novedades de Vulcania en 2018. Creada con la colaboración de Pompiers de l’Urgence Internationale, la exposición relaciona el conocimiento de los terremotos con la intervención de los equipos de rescate. Los casos de Francia y Auvernia se integran en una exploración mundial del riesgo sísmico."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Séismes, quand la Terre tremble dołącza do nowości Vulcanii w 2018 roku. Wystawa powstaje z udziałem Pompiers de l’Urgence Internationale i łączy wiedzę o trzęsieniach ziemi z działaniami ratowników. Przykłady z Francji i Owernii stają się częścią opowieści o zagrożeniu sejsmicznym na świecie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Séismes, quand la Terre tremble integra as novidades de Vulcania em 2018. Concebida com o contributo dos Pompiers de l’Urgence Internationale, a exposição liga o conhecimento dos sismos à intervenção das equipas de socorro. Os exemplos franceses e da Auvérnia integram uma exploração mundial do risco sísmico."
+        }
+      ],
+      "id": "18b5ac86-f00e-45fd-9eea-42a6c75c7b20"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "brochure2018",
+      "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+      "checkedAtUtc": "2026-11-15T22:15:23.430875+00:00",
+      "status": 200,
+      "finalUrl": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+      "bytes": 3973611,
+      "sha256": "638813bbe6fbfebda5ad7c1c16e2b1b8bf627ba25f2e5223e9141a3d218106bb"
+    },
+    {
+      "key": "press2018",
+      "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+      "checkedAtUtc": "2026-11-15T22:15:23.431932+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+      "bytes": 132714,
+      "sha256": "94a33a1acdb1c6f382941ab29dc4b518cbba3b3c61098598e03400308de3de41"
+    },
+    {
+      "key": "eyewitness2018",
+      "url": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/",
+      "checkedAtUtc": "2026-11-15T22:15:23.432422+00:00",
+      "status": 200,
+      "finalUrl": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/",
+      "bytes": 135085,
+      "sha256": "5d7c5674d63ab61950342fcb278fff6317bc58c099efd77ea412c2c67ec5e146"
+    },
+    {
+      "key": "info2018",
+      "url": "https://www.clermontinfos63.fr/actualite-15859-vulcania-en-mai-c-est-le-pied.html",
+      "checkedAtUtc": "2026-11-15T22:15:23.433165+00:00",
+      "status": 200,
+      "finalUrl": "https://www.clermontinfos63.fr/actualite-15859-vulcania-en-mai-c-est-le-pied.html",
+      "bytes": 6027,
+      "sha256": "a5904aaca6815dcd0f920494107ed248ab7adec922ca68bf395a82310e2507d0"
+    },
+    {
+      "key": "gites2019",
+      "url": "https://www.gites-de-france.com/fr/regions-de-france/auvergne-rhone-alpes/location-de-vacances-puy-de-dome/vulcania",
+      "checkedAtUtc": "2026-11-15T22:15:24.217692+00:00",
+      "status": 200,
+      "finalUrl": "https://www.gites-de-france.com/fr/regions-de-france/auvergne-rhone-alpes/location-de-vacances-puy-de-dome/vulcania",
+      "bytes": 209108,
+      "sha256": "41e0967d128062fd95622a6a987f330eb6dd9f8572b9f3c6d65b7efdf80d47a2"
+    },
+    {
+      "key": "interclub2020",
+      "url": "https://www.lecourrierdesentreprises.fr/interclub-du-grand-clermont-vulcania-le-meilleur-reste-a-venir/",
+      "checkedAtUtc": "2026-11-15T22:15:24.554413+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lecourrierdesentreprises.fr/interclub-du-grand-clermont-vulcania-le-meilleur-reste-a-venir/",
+      "bytes": 106531,
+      "sha256": "60fc7843930bbca6100d102201c2ce407f2ce1c0f8caa38081364579569a8bc6"
+    },
+    {
+      "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+      "status": 200,
+      "bytes": 1272745,
+      "sha256": "51b29d7d4877b42228671d5c97623b71379a5c9847cb488b72372be5fc0b1a74",
+      "checkedAtUtc": "2026-11-15T21:54:32.974084+00:00"
+    }
+  ],
+  "scopeNotes": "Two private Opening facts,2018year-only, official2018brochure/press and municipal retrospective report personally read. Existing public Seismes opening year qualified; no season-opening day transposed. Nature Unknown preserved; Ushuaia TV partner not manufacturer. All32 localized titles/summaries personally written and reviewed.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

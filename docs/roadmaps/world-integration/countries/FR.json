@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T22:08:43.127Z",
+      "lastDataIntegrationAt": "2026-11-15T22:29:51.523Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39378,6 +39378,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-165-publish-exhibitions-items-history-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 165-publish-exhibitions-items-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-ebfcbf77-f834-47d4-928e-179f5a2f2bcf",
+          "appliedAt": "2026-11-15T22:19:19.445Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-169-nature-grand-format-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : Nature grand format, exposition photographique extérieure créée avec Ushuaïa TV en 2018, ajoutée en privé après rapprochement des60lieux ; statutUnknown conservé sans fermeture ni GPS inventés."
+        },
+        {
+          "eventId": "apply-a9159af2-862c-453f-af97-cd07ac8bc576",
+          "appliedAt": "2026-11-15T22:21:01.687Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-170-nature-grand-format-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : notice privée de Nature grand format en huit langues, photographies du parcours extérieur 2018 et sources officielles relues ; statut Unknown préservé."
+        },
+        {
+          "eventId": "import-photo-3b1b7b2bcd254244aa735cff620be08e",
+          "appliedAt": "2026-11-15T22:24:23.398Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-171-nature-lava-panel-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Nature grand format importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-212b74dbb2af4190b02311f2f960f002",
+          "appliedAt": "2026-11-15T22:24:49.987Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-172-nature-entrance-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Nature grand format importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-633f1e72-e5c2-4bd2-bf74-6b21893555a6",
+          "appliedAt": "2026-11-15T22:26:25.697Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-173-nature-and-seismes-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : deux faits privés sur les ouvertures de Nature grand format et Séismes en 2018, sources primaires relues ; année seule précisée pour la fiche Séismes, aucune date quotidienne inventée."
+        },
+        {
+          "eventId": "apply-2a8a2ef8-693d-49c5-9b8c-de77bb975240",
+          "appliedAt": "2026-11-15T22:29:20.504Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-177-publish-nature-photos-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 177-publish-nature-photos; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-eba72d89-2a7a-4ca6-b060-c1892d2b806a",
+          "appliedAt": "2026-11-15T22:29:51.523Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-178-publish-nature-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 178-publish-nature-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39430,7 +39500,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-dc3b4889-0c13-4716-8e7f-6b8e76bc6992 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-eba72d89-2a7a-4ca6-b060-c1892d2b806a ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

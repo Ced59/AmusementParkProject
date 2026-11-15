@@ -4743,7 +4743,7 @@
         "isLaunched": null,
         "openingDate": null,
         "closingDate": null,
-        "openingDateText": null,
+        "openingDateText": "2018",
         "closingDateText": null,
         "durationInSeconds": null,
         "capacityPerHour": null,
@@ -5548,6 +5548,55 @@
         {
           "languageCode": "pt",
           "value": "<h2>Silhuetas pré-históricas no parque</h2><p>Sur les traces des dinosaures instalava reproduções animadas nos espaços exteriores do Vulcania. Os movimentos e os sons acompanhavam a descoberta destes animais extintos, representados entre a relva, as rochas e as árvores do parque.</p><p>Perto da estufa, um grande tiranossauro dominava o caminho. Vedações baixas separavam o público das figuras, entre as quais surgia um dinossauro couraçado e coberto de espigões. O cone e a fachada envidraçada continuavam visíveis atrás desta cena pré-histórica.</p><h2>Um percurso criado com o Paléopolis</h2><p>Realizado em parceria com o Paléopolis, o percurso retomava temas de Bouleversements, a exposição sobre as grandes transformações do planeta. Os dinossauros foram renovados ao longo das temporadas, até uma última apresentação com novos animatrónicos. Este passeio fazia parte das instalações temporárias do Vulcania.</p>"
+        }
+      ]
+    },
+    {
+      "id": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "key": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "name": "Nature grand format",
+      "category": "Attraction",
+      "type": "WalkThrough",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "attractionDetails": {
+        "status": "Unknown",
+        "openingDate": null,
+        "sourceUrl": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+        "openingDateText": "2018"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des paysages suspendus entre les arbres</h2><p>Nature grand format installait les images d’Ushuaïa TV dans les sous-bois de Vulcania. Des photographies de déserts, de volcans et d’autres milieux naturels apparaissaient sur de grandes toiles tendues au bord du chemin. La forêt auvergnate entourait ainsi des paysages venus d’ailleurs.</p><p>Un panneau intitulé « Volcan » montrait une coulée de lave incandescente sous sa croûte sombre. Les troncs, les feuillages et les rondins au pied de l’image donnaient une échelle concrète à cette photographie exposée en plein air. Des textes accompagnaient les paysages pour en éclairer les transformations.</p><h2>Un regard d’Ushuaïa sur la Terre</h2><p>Le parcours associait la beauté des sites à leur fragilité. Parmi ces lieux figuraient des paysages inscrits au patrimoine mondial de l’Unesco : leurs images ouvraient la découverte au-delà des volcans d’Auvergne, vers les grands milieux de la planète.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Landscapes hanging between the trees</h2><p>Nature grand format brought Ushuaïa TV’s imagery into Vulcania’s woodland. Photographs of deserts, volcanoes and other natural environments appeared on large fabric panels beside the path. The Auvergne forest became the setting for landscapes from much farther away.</p><p>A panel headed “Volcan” showed glowing lava beneath a dark crust. Tree trunks, foliage and cut logs below the picture gave this outdoor photograph a tangible sense of scale. Accompanying texts explored the changes taking place in the landscapes on display.</p><h2>Ushuaïa’s view of the Earth</h2><p>The trail connected the beauty of these places with their fragility. Several scenes depicted Unesco World Heritage sites, carrying the exhibition beyond the volcanoes of Auvergne towards the planet’s wider natural environments.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Landschaften zwischen den Bäumen</h2><p>Nature grand format brachte die Bilder von Ushuaïa TV in Vulcanias Wald. Fotografien von Wüsten, Vulkanen und anderen Naturräumen erschienen auf großen Stoffbahnen am Wegesrand. So umgab der Wald der Auvergne Landschaften aus fernen Regionen.</p><p>Eine Tafel mit der Überschrift „Volcan“ zeigte glühende Lava unter ihrer dunklen Kruste. Baumstämme, Laub und abgesägte Holzstücke unter dem Bild machten die Größe dieser Freiluftfotografie greifbar. Begleitende Texte erläuterten die Veränderungen der dargestellten Landschaften.</p><h2>Ushuaïas Blick auf die Erde</h2><p>Der Rundgang verband die Schönheit der Orte mit ihrer Verletzlichkeit. Einige Motive zeigten Landschaften des Unesco-Welterbes. Ihre Bilder erweiterten die Entdeckung über die Vulkane der Auvergne hinaus und führten zu den großen Naturräumen unseres Planeten.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Landschappen tussen de bomen</h2><p>Nature grand format bracht de beelden van Ushuaïa TV naar het bos van Vulcania. Foto’s van woestijnen, vulkanen en andere natuurlijke omgevingen verschenen op grote doeken langs het pad. Het bos van de Auvergne omringde zo landschappen uit verre streken.</p><p>Een paneel met het opschrift ‘Volcan’ toonde gloeiende lava onder een donkere korst. Boomstammen, bladeren en afgezaagde stukken hout onder de afbeelding maakten de schaal van deze buitenfoto tastbaar. Begeleidende teksten vertelden over de veranderingen in de getoonde landschappen.</p><h2>De aarde door de blik van Ushuaïa</h2><p>De route verbond de schoonheid van de locaties met hun kwetsbaarheid. Een deel van de beelden toonde landschappen op de Unesco-Werelderfgoedlijst. Daarmee reikte de tentoonstelling verder dan de vulkanen van de Auvergne, naar de grote natuurlijke omgevingen van onze planeet.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Paesaggi sospesi tra gli alberi</h2><p>Nature grand format portava le immagini di Ushuaïa TV nel bosco di Vulcania. Fotografie di deserti, vulcani e altri ambienti naturali comparivano su grandi teli tesi lungo il sentiero. La foresta dell’Alvernia circondava così paesaggi provenienti da regioni lontane.</p><p>Un pannello intitolato « Volcan » mostrava lava incandescente sotto una crosta scura. Tronchi, foglie e ceppi ai piedi dell’immagine rendevano concreta la scala di questa fotografia esposta all’aperto. I testi di accompagnamento spiegavano le trasformazioni dei paesaggi rappresentati.</p><h2>Lo sguardo di Ushuaïa sulla Terra</h2><p>Il percorso collegava la bellezza dei luoghi alla loro fragilità. Tra le immagini figuravano paesaggi iscritti al patrimonio mondiale dell’Unesco, che estendevano la scoperta oltre i vulcani dell’Alvernia, verso i grandi ambienti naturali del pianeta.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Paisajes suspendidos entre los árboles</h2><p>Nature grand format llevaba las imágenes de Ushuaïa TV al bosque de Vulcania. Fotografías de desiertos, volcanes y otros entornos naturales aparecían sobre grandes lonas tendidas junto al sendero. El bosque de Auvernia rodeaba así paisajes procedentes de regiones lejanas.</p><p>Un panel titulado « Volcan » mostraba lava incandescente bajo una corteza oscura. Los troncos, las hojas y los leños situados al pie de la imagen daban una escala tangible a esta fotografía al aire libre. Los textos explicaban las transformaciones de los paisajes representados.</p><h2>La mirada de Ushuaïa sobre la Tierra</h2><p>El recorrido vinculaba la belleza de los lugares con su fragilidad. Entre ellos figuraban paisajes inscritos en el patrimonio mundial de la Unesco, cuyas imágenes ampliaban la exploración más allá de los volcanes de Auvernia hacia los grandes entornos naturales del planeta.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Krajobrazy zawieszone między drzewami</h2><p>Nature grand format przenosiło fotografie Ushuaïa TV do lasu na terenie Vulcanii. Zdjęcia pustyń, wulkanów i innych środowisk przyrodniczych pojawiały się na dużych płachtach rozpiętych przy ścieżce. Las Owernii otaczał w ten sposób krajobrazy odległych regionów.</p><p>Plansza zatytułowana „Volcan” przedstawiała rozżarzoną lawę pod ciemną skorupą. Pnie, liście i kawałki ściętego drewna u dołu zdjęcia pozwalały odczuć rozmiar tej plenerowej fotografii. Towarzyszące teksty objaśniały przemiany ukazanych krajobrazów.</p><h2>Ziemia w obiektywie Ushuaïa</h2><p>Trasa łączyła piękno miejsc z ich wrażliwością. Wśród przedstawionych krajobrazów znajdowały się obszary wpisane na listę światowego dziedzictwa Unesco. Ich fotografie poszerzały temat poza wulkany Owernii, przybliżając wielkie środowiska przyrodnicze naszej planety.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Paisagens suspensas entre as árvores</h2><p>Nature grand format levava as imagens da Ushuaïa TV ao bosque de Vulcania. Fotografias de desertos, vulcões e outros ambientes naturais surgiam em grandes telas estendidas junto ao caminho. A floresta de Auvergne envolvia assim paisagens de regiões distantes.</p><p>Um painel intitulado « Volcan » mostrava lava incandescente sob uma crosta escura. Os troncos, a folhagem e os toros de madeira ao pé da imagem tornavam percetível a escala desta fotografia ao ar livre. Textos de acompanhamento explicavam as transformações das paisagens representadas.</p><h2>O olhar da Ushuaïa sobre a Terra</h2><p>O percurso ligava a beleza dos lugares à sua fragilidade. Entre eles encontravam-se paisagens inscritas no património mundial da Unesco, cujas imagens alargavam a descoberta para além dos vulcões de Auvergne, até aos grandes ambientes naturais do planeta.</p>"
         }
       ]
     }
@@ -14177,6 +14226,284 @@
       "setAsCurrent": false,
       "withWatermark": false,
       "internalUrl": "/images/b8cc99ade2314af8b567ef80c680c77e"
+    },
+    {
+      "id": "3b1b7b2bcd254244aa735cff620be08e",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "path": "park_item/3b1b7b2bcd254244aa735cff620be08e",
+      "description": "Une photographie de lave occupe ce panneau du parcours Nature grand format, entouré d’arbres et de rondins. Vue du reportage de 2018 à Vulcania.",
+      "isCurrent": false,
+      "isPublished": true,
+      "isWatermarked": false,
+      "width": 900,
+      "height": 675,
+      "sizeInBytes": 413321,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "samsung",
+        "cameraModel": "SM-G930F",
+        "takenOnUtc": "2018-07-26T15:26:35Z",
+        "orientation": "1",
+        "focalLength": 4.2,
+        "aperture": 1.7,
+        "exposureTime": 0.004149377593360996,
+        "iso": 50
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format"
+        },
+        {
+          "languageCode": "en",
+          "value": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format"
+        },
+        {
+          "languageCode": "it",
+          "value": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format"
+        },
+        {
+          "languageCode": "es",
+          "value": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une photographie de lave occupe ce panneau du parcours Nature grand format, entouré d’arbres et de rondins. Vue du reportage de 2018 à Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "A photograph of lava fills this Nature grand format panel, surrounded by trees and cut logs. View from the 2018 report on Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Lavafotografie füllt diese Tafel von Nature grand format, umgeben von Bäumen und Holzstücken. Aufnahme aus dem Vulcania-Bericht von 2018."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een lavafoto vult dit paneel van Nature grand format, omringd door bomen en afgezaagd hout. Beeld uit het verslag over Vulcania uit 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una fotografia di lava occupa questo pannello di Nature grand format, circondato da alberi e ceppi. Immagine dal reportage del 2018 su Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una fotografía de lava ocupa este panel de Nature grand format, rodeado de árboles y leños. Imagen del reportaje de 2018 sobre Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia lawy wypełnia planszę Nature grand format otoczoną drzewami i kawałkami drewna. Widok z reportażu o Vulcanii z 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma fotografia de lava ocupa este painel de Nature grand format, rodeado de árvores e toros de madeira. Imagem do relato de 2018 sobre Vulcania."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SweetDaddy — reportage du 12 août 2018."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SweetDaddy — report published on 12 August 2018."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SweetDaddy — Bericht vom 12. August 2018."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SweetDaddy — verslag van 12 augustus 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SweetDaddy — reportage del 12 agosto 2018."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SweetDaddy — reportaje del 12 de agosto de 2018."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SweetDaddy — reportaż z 12 sierpnia 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SweetDaddy — relato de 12 de agosto de 2018."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:24:23.398Z",
+      "updatedAt": "2026-11-15T22:24:27.064Z",
+      "key": "3b1b7b2bcd254244aa735cff620be08e",
+      "imageId": "3b1b7b2bcd254244aa735cff620be08e",
+      "ownerKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "internalUrl": "/images/3b1b7b2bcd254244aa735cff620be08e"
+    },
+    {
+      "id": "212b74dbb2af4190b02311f2f960f002",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "path": "park_item/212b74dbb2af4190b02311f2f960f002",
+      "description": "La toile d’accueil présente Nature grand format comme un parcours photographique avec Ushuaïa TV et en indique l’accès. Installation photographiée dans le reportage de 2018.",
+      "isCurrent": false,
+      "isPublished": true,
+      "isWatermarked": false,
+      "width": 900,
+      "height": 675,
+      "sizeInBytes": 335709,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "samsung",
+        "cameraModel": "SM-G930F",
+        "takenOnUtc": "2018-07-26T15:20:22Z",
+        "orientation": "1",
+        "focalLength": 4.2,
+        "aperture": 1.7,
+        "exposureTime": 0.0003315649867374005,
+        "iso": 50
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys"
+        },
+        {
+          "languageCode": "en",
+          "value": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path"
+        },
+        {
+          "languageCode": "de",
+          "value": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys"
+        },
+        {
+          "languageCode": "it",
+          "value": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys"
+        },
+        {
+          "languageCode": "es",
+          "value": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La toile d’accueil présente Nature grand format comme un parcours photographique avec Ushuaïa TV et en indique l’accès. Installation photographiée dans le reportage de 2018."
+        },
+        {
+          "languageCode": "en",
+          "value": "The entrance banner introduces Nature grand format as a photographic trail with Ushuaïa TV and points towards its access path. Installation shown in the 2018 report."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Eingangsbanner stellt Nature grand format als fotografischen Rundgang mit Ushuaïa TV vor und weist zum Zugang. Die Installation ist im Bericht von 2018 abgebildet."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het welkomstdoek presenteert Nature grand format als een fotografische route met Ushuaïa TV en wijst de toegang aan. De opstelling is te zien in het verslag uit 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il telo d’ingresso presenta Nature grand format come percorso fotografico con Ushuaïa TV e ne indica l’accesso. Installazione ritratta nel reportage del 2018."
+        },
+        {
+          "languageCode": "es",
+          "value": "La lona de bienvenida presenta Nature grand format como un recorrido fotográfico con Ushuaïa TV e indica su acceso. Instalación fotografiada en el reportaje de 2018."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plansza wejściowa przedstawia Nature grand format jako trasę fotograficzną z Ushuaïa TV i wskazuje drogę dojścia. Instalacja widoczna w reportażu z 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A tela de boas-vindas apresenta Nature grand format como um percurso fotográfico com a Ushuaïa TV e indica o acesso. Instalação fotografada no relato de 2018."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SweetDaddy — reportage du 12 août 2018."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SweetDaddy — report published on 12 August 2018."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SweetDaddy — Bericht vom 12. August 2018."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SweetDaddy — verslag van 12 augustus 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SweetDaddy — reportage del 12 agosto 2018."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SweetDaddy — reportaje del 12 de agosto de 2018."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SweetDaddy — reportaż z 12 sierpnia 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SweetDaddy — relato de 12 de agosto de 2018."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:24:49.987Z",
+      "updatedAt": "2026-11-15T22:24:53.617Z",
+      "key": "212b74dbb2af4190b02311f2f960f002",
+      "imageId": "212b74dbb2af4190b02311f2f960f002",
+      "ownerKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "internalUrl": "/images/212b74dbb2af4190b02311f2f960f002"
     }
   ],
   "openingHours": null,
@@ -17942,6 +18269,244 @@
         "id": "5100b2b6-3cdb-46f6-be2d-4246f8e24615",
         "itemKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
         "parkItemKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-nature-grand-format-opening-2018",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "itemId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "parkItemId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2018,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "3b1b7b2bcd254244aa735cff620be08e",
+        "sources": [
+          {
+            "label": "Vulcania — communiqué saison 2018 reproduit par ParcPlaza, 19 mars 2018",
+            "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — brochure officielle 2018 conservée par Mon Beau Pays",
+            "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Clermont Auvergne Métropole — rapport SEM Volcans sur 2018, délibération 15 février 2019, p. 4 et 11",
+            "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Les paysages d’Ushuaïa entrent dans les sous-bois"
+          },
+          {
+            "languageCode": "en",
+            "value": "Ushuaïa’s landscapes enter the woodland"
+          },
+          {
+            "languageCode": "de",
+            "value": "Ushuaïas Landschaften ziehen in den Wald ein"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De landschappen van Ushuaïa krijgen een plek in het bos"
+          },
+          {
+            "languageCode": "it",
+            "value": "I paesaggi di Ushuaïa arrivano nel bosco"
+          },
+          {
+            "languageCode": "es",
+            "value": "Los paisajes de Ushuaïa llegan al bosque"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Krajobrazy Ushuaïa trafiają między drzewa"
+          },
+          {
+            "languageCode": "pt",
+            "value": "As paisagens da Ushuaïa chegam ao bosque"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "En 2018, Vulcania inaugure Nature grand format avec Ushuaïa TV. Les images issues de l’univers de la chaîne deviennent un parcours photographique extérieur : cette nouveauté élargit la découverte des phénomènes terrestres aux paysages remarquables et à la préservation des milieux naturels."
+          },
+          {
+            "languageCode": "en",
+            "value": "In 2018, Vulcania opens Nature grand format with Ushuaïa TV. Imagery from the channel’s world becomes an outdoor photographic trail, extending the park’s exploration of Earth’s phenomena to remarkable landscapes and the preservation of natural environments."
+          },
+          {
+            "languageCode": "de",
+            "value": "2018 eröffnet Vulcania gemeinsam mit Ushuaïa TV Nature grand format. Aus der Bilderwelt des Senders entsteht ein fotografischer Rundgang im Freien. Damit erweitert der Park seine Beschäftigung mit den Phänomenen der Erde um außergewöhnliche Landschaften und den Schutz natürlicher Lebensräume."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In 2018 opent Vulcania Nature grand format samen met Ushuaïa TV. De beeldenwereld van de zender krijgt de vorm van een fotografische buitenroute. Daarmee verbreedt het park zijn verkenning van aardse verschijnselen naar bijzondere landschappen en het behoud van natuurlijke leefomgevingen."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel 2018 Vulcania inaugura Nature grand format insieme a Ushuaïa TV. Le immagini dell’universo del canale diventano un percorso fotografico all’aperto. La novità amplia l’esplorazione dei fenomeni terrestri ai paesaggi più suggestivi e alla tutela degli ambienti naturali."
+          },
+          {
+            "languageCode": "es",
+            "value": "En 2018, Vulcania inaugura Nature grand format con Ushuaïa TV. Las imágenes del universo del canal se convierten en un recorrido fotográfico al aire libre. La novedad amplía la exploración de los fenómenos terrestres hacia paisajes singulares y la conservación de los entornos naturales."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W 2018 roku Vulcania otwiera Nature grand format we współpracy z Ushuaïa TV. Obrazy ze świata stacji tworzą plenerową trasę fotograficzną. Nowa wystawa poszerza opowieść o zjawiskach zachodzących na Ziemi o niezwykłe krajobrazy i ochronę środowiska naturalnego."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 2018, Vulcania inaugura Nature grand format com a Ushuaïa TV. As imagens do universo do canal tornam-se um percurso fotográfico ao ar livre. A novidade alarga a exploração dos fenómenos terrestres a paisagens singulares e à preservação dos ambientes naturais."
+          }
+        ],
+        "id": "9a92583c-de9f-4e19-b7f9-91e8eca70c74",
+        "itemKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "parkItemKey": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-seismes-opening-2018",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "itemId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "parkItemId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2018,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "659517b47e5f4b5a95c9eb439c0b7263",
+        "sources": [
+          {
+            "label": "Vulcania — communiqué saison 2018 reproduit par ParcPlaza, 19 mars 2018",
+            "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — brochure officielle 2018 conservée par Mon Beau Pays",
+            "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Clermont Auvergne Métropole — rapport SEM Volcans sur 2018, délibération 15 février 2019, p. 4 et 11",
+            "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Une nouvelle exposition rapproche sismologie et secours"
+          },
+          {
+            "languageCode": "en",
+            "value": "A new exhibition connects seismology and rescue"
+          },
+          {
+            "languageCode": "de",
+            "value": "Eine neue Ausstellung verbindet Seismologie und Rettung"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een nieuwe tentoonstelling verbindt seismologie en hulpverlening"
+          },
+          {
+            "languageCode": "it",
+            "value": "Una nuova mostra avvicina sismologia e soccorso"
+          },
+          {
+            "languageCode": "es",
+            "value": "Una nueva exposición acerca la sismología al rescate"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Nowa wystawa łączy sejsmologię z ratownictwem"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma nova exposição aproxima a sismologia do socorro"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Séismes, quand la Terre tremble rejoint les nouveautés de Vulcania en 2018. Conçue avec le concours des Pompiers de l’Urgence Internationale, l’exposition associe la connaissance des tremblements de terre à l’action des secours. Elle inscrit les exemples français et auvergnats dans une découverte mondiale du risque sismique."
+          },
+          {
+            "languageCode": "en",
+            "value": "Séismes, quand la Terre tremble joins Vulcania’s new attractions in 2018. Developed with help from Pompiers de l’Urgence Internationale, the exhibition links understanding earthquakes with emergency response. French and Auvergne examples form part of its worldwide exploration of seismic risk."
+          },
+          {
+            "languageCode": "de",
+            "value": "Séismes, quand la Terre tremble gehört 2018 zu Vulcanias Neuheiten. Mit Unterstützung der Pompiers de l’Urgence Internationale verbindet die Ausstellung das Wissen über Erdbeben mit der Arbeit von Rettungskräften. Beispiele aus Frankreich und der Auvergne stehen dabei im weltweiten Zusammenhang des Erdbebenrisikos."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Séismes, quand la Terre tremble behoort in 2018 tot de nieuwigheden van Vulcania. De tentoonstelling komt tot stand met hulp van Pompiers de l’Urgence Internationale en verbindt kennis over aardbevingen met noodhulp. Voorbeelden uit Frankrijk en de Auvergne krijgen een plaats in een wereldwijde verkenning van het aardbevingsrisico."
+          },
+          {
+            "languageCode": "it",
+            "value": "Séismes, quand la Terre tremble entra tra le novità di Vulcania nel 2018. Realizzata con il contributo dei Pompiers de l’Urgence Internationale, la mostra collega la conoscenza dei terremoti all’intervento dei soccorritori. Gli esempi francesi e dell’Alvernia si inseriscono in un’esplorazione mondiale del rischio sismico."
+          },
+          {
+            "languageCode": "es",
+            "value": "Séismes, quand la Terre tremble figura entre las novedades de Vulcania en 2018. Creada con la colaboración de Pompiers de l’Urgence Internationale, la exposición relaciona el conocimiento de los terremotos con la intervención de los equipos de rescate. Los casos de Francia y Auvernia se integran en una exploración mundial del riesgo sísmico."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Séismes, quand la Terre tremble dołącza do nowości Vulcanii w 2018 roku. Wystawa powstaje z udziałem Pompiers de l’Urgence Internationale i łączy wiedzę o trzęsieniach ziemi z działaniami ratowników. Przykłady z Francji i Owernii stają się częścią opowieści o zagrożeniu sejsmicznym na świecie."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Séismes, quand la Terre tremble integra as novidades de Vulcania em 2018. Concebida com o contributo dos Pompiers de l’Urgence Internationale, a exposição liga o conhecimento dos sismos à intervenção das equipas de socorro. Os exemplos franceses e da Auvérnia integram uma exploração mundial do risco sísmico."
+          }
+        ],
+        "id": "18b5ac86-f00e-45fd-9eea-42a6c75c7b20",
+        "itemKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "parkItemKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
         "slug": null,
         "previousName": null,
         "newName": null,

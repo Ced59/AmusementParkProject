@@ -1,0 +1,92 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T22:17:53.630736+00:00",
+  "sourceAccess": [
+    {
+      "key": "brochure2018",
+      "url": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+      "checkedAtUtc": "2026-11-15T22:15:23.430875+00:00",
+      "status": 200,
+      "finalUrl": "https://monbeaupays.fr/wp-content/uploads/2018/07/Brochure_Grand-Public-Parc-Vulcania-2018.pdf",
+      "bytes": 3973611,
+      "sha256": "638813bbe6fbfebda5ad7c1c16e2b1b8bf627ba25f2e5223e9141a3d218106bb"
+    },
+    {
+      "key": "press2018",
+      "url": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+      "checkedAtUtc": "2026-11-15T22:15:23.431932+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2018/03/vulcania-inaugure-une-saison-2018.html",
+      "bytes": 132714,
+      "sha256": "94a33a1acdb1c6f382941ab29dc4b518cbba3b3c61098598e03400308de3de41"
+    },
+    {
+      "key": "eyewitness2018",
+      "url": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/",
+      "checkedAtUtc": "2026-11-15T22:15:23.432422+00:00",
+      "status": 200,
+      "finalUrl": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/",
+      "bytes": 135085,
+      "sha256": "5d7c5674d63ab61950342fcb278fff6317bc58c099efd77ea412c2c67ec5e146"
+    },
+    {
+      "key": "info2018",
+      "url": "https://www.clermontinfos63.fr/actualite-15859-vulcania-en-mai-c-est-le-pied.html",
+      "checkedAtUtc": "2026-11-15T22:15:23.433165+00:00",
+      "status": 200,
+      "finalUrl": "https://www.clermontinfos63.fr/actualite-15859-vulcania-en-mai-c-est-le-pied.html",
+      "bytes": 6027,
+      "sha256": "a5904aaca6815dcd0f920494107ed248ab7adec922ca68bf395a82310e2507d0"
+    },
+    {
+      "key": "gites2019",
+      "url": "https://www.gites-de-france.com/fr/regions-de-france/auvergne-rhone-alpes/location-de-vacances-puy-de-dome/vulcania",
+      "checkedAtUtc": "2026-11-15T22:15:24.217692+00:00",
+      "status": 200,
+      "finalUrl": "https://www.gites-de-france.com/fr/regions-de-france/auvergne-rhone-alpes/location-de-vacances-puy-de-dome/vulcania",
+      "bytes": 209108,
+      "sha256": "41e0967d128062fd95622a6a987f330eb6dd9f8572b9f3c6d65b7efdf80d47a2"
+    },
+    {
+      "key": "interclub2020",
+      "url": "https://www.lecourrierdesentreprises.fr/interclub-du-grand-clermont-vulcania-le-meilleur-reste-a-venir/",
+      "checkedAtUtc": "2026-11-15T22:15:24.554413+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lecourrierdesentreprises.fr/interclub-du-grand-clermont-vulcania-le-meilleur-reste-a-venir/",
+      "bytes": 106531,
+      "sha256": "60fc7843930bbca6100d102201c2ce407f2ce1c0f8caa38081364579569a8bc6"
+    }
+  ],
+  "photoCandidates": [
+    {
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/nature-followup-2215/photo-nature-0.jpg",
+      "status": 200,
+      "bytes": 413321,
+      "width": 900,
+      "height": 675,
+      "sha256": "eda96afceacf971513939edddf0fb2112c06915d2d8d1004a2548d44a42a1a20",
+      "checkedAtUtc": "2026-11-15T22:16:21.568937+00:00"
+    },
+    {
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/nature-followup-2215/photo-nature-1.jpg",
+      "status": 200,
+      "bytes": 335709,
+      "width": 900,
+      "height": 675,
+      "sha256": "d9caa3c416a15827980c6bb85ffe9538d12d8daff04923cf229916a54bc7d3aa",
+      "checkedAtUtc": "2026-11-15T22:16:22.147001+00:00"
+    }
+  ],
+  "decisions": "Distinct outdoor photographic exhibition Nature grand format opened2018, partnership UshuaïaTV not manufacturer. Primary official2018brochure mirroredMonBeauPays p10, official release reproducedParcPlaza19March2018, retrospective SEMreport, eyewitnessSweetDaddy12August2018, Gîtes2019 and Interclub2020 reviewing2019. Current2026operation/closure unproven:Unknown, no invented closure or exact openingday. Ouragan is a film in existing CinéMax, not a new place. Existing60items individually reconciled; no proven alias with Carnets de voyage/Sentiers de découverte. Two full native900x675photos personally viewed: installed lava panel among woodland and installed entrance sign beside rocks; printed logo belongs to photographed exhibit, no publisher overlay. Hawaiian coordinates printed on lava panel are NOT itemGPS. Brochure2018 is a general brochure, no park map identified; not imported as annual map. InfoClermont returns200onlyan empty JavaScript shell and is not treated as personally read article. MaisonPitoufeu2017indoor/outdoor identity ambiguity held for further research.",
+  "sourcesRead": [
+    "brochure2018.pdf printedp10/11",
+    "press2018.txt",
+    "eyewitness2018.txt",
+    "gites2019.txt",
+    "interclub2020.txt",
+    "../three-exhibitions-followup-2153/metropole2019.txt pp4,11"
+  ],
+  "closedInventory": false
+}

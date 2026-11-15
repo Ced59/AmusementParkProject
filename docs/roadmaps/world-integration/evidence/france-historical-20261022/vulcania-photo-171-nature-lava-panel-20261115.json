@@ -1,0 +1,294 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-171-nature-lava-panel",
+    "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+    "itemName": "Nature grand format",
+    "current": false,
+    "source": {
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/nature-followup-2215/photo-nature-0.jpg",
+      "status": 200,
+      "bytes": 413321,
+      "width": 900,
+      "height": 675,
+      "sha256": "eda96afceacf971513939edddf0fb2112c06915d2d8d1004a2548d44a42a1a20",
+      "checkedAtUtc": "2026-11-15T22:16:21.568937+00:00",
+      "url": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+      "dimensions": [
+        900,
+        675
+      ],
+      "sourcePage": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France contributor-photo authorization preserved; SweetDaddy publisher credited, no openlicence/individualphotographer permission invented.",
+    "qualification": "Real photograph of installed outdoor exhibition, not standalone promotional graphic. Native900x675intact; logo onphysicalsubject is part of exhibit, not thirdpartywatermarkoverlay. Firstphoto shows printedlava underwoodland trees andlogs; Hawaiian geographiccoordinates inprint notitemGPS. Secondshowsfabricentrancesign besidevolcanicrocksandwoodenposts. Both2018report historicalnoncurrent; exactcapturedateunknown."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "SourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/nature-followup-2215/photo-nature-0.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-171-nature-lava-panel-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-171-nature-lava-panel-import-result.json"
+  },
+  "metadata": {
+    "description": "Une photographie de lave occupe ce panneau du parcours Nature grand format, entouré d’arbres et de rondins. Vue du reportage de 2018 à Vulcania.",
+    "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format"
+      },
+      {
+        "languageCode": "en",
+        "value": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format"
+      },
+      {
+        "languageCode": "de",
+        "value": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format"
+      },
+      {
+        "languageCode": "it",
+        "value": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format"
+      },
+      {
+        "languageCode": "es",
+        "value": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une photographie de lave occupe ce panneau du parcours Nature grand format, entouré d’arbres et de rondins. Vue du reportage de 2018 à Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "A photograph of lava fills this Nature grand format panel, surrounded by trees and cut logs. View from the 2018 report on Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Lavafotografie füllt diese Tafel von Nature grand format, umgeben von Bäumen und Holzstücken. Aufnahme aus dem Vulcania-Bericht von 2018."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een lavafoto vult dit paneel van Nature grand format, omringd door bomen en afgezaagd hout. Beeld uit het verslag over Vulcania uit 2018."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una fotografia di lava occupa questo pannello di Nature grand format, circondato da alberi e ceppi. Immagine dal reportage del 2018 su Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una fotografía de lava ocupa este panel de Nature grand format, rodeado de árboles y leños. Imagen del reportaje de 2018 sobre Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia lawy wypełnia planszę Nature grand format otoczoną drzewami i kawałkami drewna. Widok z reportażu o Vulcanii z 2018 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma fotografia de lava ocupa este painel de Nature grand format, rodeado de árvores e toros de madeira. Imagem do relato de 2018 sobre Vulcania."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© SweetDaddy — reportage du 12 août 2018."
+      },
+      {
+        "languageCode": "en",
+        "value": "© SweetDaddy — report published on 12 August 2018."
+      },
+      {
+        "languageCode": "de",
+        "value": "© SweetDaddy — Bericht vom 12. August 2018."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© SweetDaddy — verslag van 12 augustus 2018."
+      },
+      {
+        "languageCode": "it",
+        "value": "© SweetDaddy — reportage del 12 agosto 2018."
+      },
+      {
+        "languageCode": "es",
+        "value": "© SweetDaddy — reportaje del 12 de agosto de 2018."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© SweetDaddy — reportaż z 12 sierpnia 2018 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© SweetDaddy — relato de 12 de agosto de 2018."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T22:24:21.2889579Z",
+    "result": {
+      "id": "3b1b7b2bcd254244aa735cff620be08e",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "path": "park_item/3b1b7b2bcd254244aa735cff620be08e",
+      "description": "Une photographie de lave occupe ce panneau du parcours Nature grand format, entouré d’arbres et de rondins. Vue du reportage de 2018 à Vulcania.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 900,
+      "height": 675,
+      "sizeInBytes": 413321,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format-2.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "samsung",
+        "cameraModel": "SM-G930F",
+        "takenOnUtc": "2018-07-26T15:26:35Z",
+        "orientation": "1",
+        "focalLength": 4.2,
+        "aperture": 1.7,
+        "exposureTime": 0.004149377593360996,
+        "iso": 50
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Panneau « Volcan » montrant de la lave, tendu entre les arbres de Nature grand format"
+        },
+        {
+          "languageCode": "en",
+          "value": "A ‘Volcan’ panel showing lava, stretched between the trees of Nature grand format"
+        },
+        {
+          "languageCode": "de",
+          "value": "Tafel „Volcan“ mit einem Lavabild zwischen den Bäumen von Nature grand format"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een paneel ‘Volcan’ met lava, gespannen tussen de bomen van Nature grand format"
+        },
+        {
+          "languageCode": "it",
+          "value": "Pannello « Volcan » con un’immagine di lava, teso tra gli alberi di Nature grand format"
+        },
+        {
+          "languageCode": "es",
+          "value": "Panel « Volcan » con una imagen de lava, tendido entre los árboles de Nature grand format"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plansza „Volcan” ze zdjęciem lawy, rozpięta między drzewami Nature grand format"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Painel « Volcan » com uma imagem de lava, estendido entre as árvores de Nature grand format"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une photographie de lave occupe ce panneau du parcours Nature grand format, entouré d’arbres et de rondins. Vue du reportage de 2018 à Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "A photograph of lava fills this Nature grand format panel, surrounded by trees and cut logs. View from the 2018 report on Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Lavafotografie füllt diese Tafel von Nature grand format, umgeben von Bäumen und Holzstücken. Aufnahme aus dem Vulcania-Bericht von 2018."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een lavafoto vult dit paneel van Nature grand format, omringd door bomen en afgezaagd hout. Beeld uit het verslag over Vulcania uit 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una fotografia di lava occupa questo pannello di Nature grand format, circondato da alberi e ceppi. Immagine dal reportage del 2018 su Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una fotografía de lava ocupa este panel de Nature grand format, rodeado de árboles y leños. Imagen del reportaje de 2018 sobre Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia lawy wypełnia planszę Nature grand format otoczoną drzewami i kawałkami drewna. Widok z reportażu o Vulcanii z 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma fotografia de lava ocupa este painel de Nature grand format, rodeado de árvores e toros de madeira. Imagem do relato de 2018 sobre Vulcania."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SweetDaddy — reportage du 12 août 2018."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SweetDaddy — report published on 12 August 2018."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SweetDaddy — Bericht vom 12. August 2018."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SweetDaddy — verslag van 12 augustus 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SweetDaddy — reportage del 12 agosto 2018."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SweetDaddy — reportaje del 12 de agosto de 2018."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SweetDaddy — reportaż z 12 sierpnia 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SweetDaddy — relato de 12 de agosto de 2018."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:24:23.398Z",
+      "updatedAt": "2026-11-15T22:24:27.064Z"
+    },
+    "receivedAtUtc": "2026-11-15T22:24:30.1872895Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,294 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-172-nature-entrance",
+    "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+    "itemName": "Nature grand format",
+    "current": false,
+    "source": {
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/nature-followup-2215/photo-nature-1.jpg",
+      "status": 200,
+      "bytes": 335709,
+      "width": 900,
+      "height": 675,
+      "sha256": "d9caa3c416a15827980c6bb85ffe9538d12d8daff04923cf229916a54bc7d3aa",
+      "checkedAtUtc": "2026-11-15T22:16:22.147001+00:00",
+      "url": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+      "dimensions": [
+        900,
+        675
+      ],
+      "sourcePage": "https://www.sweetdaddy.fr/decouverte-avis-vulcania-volcan-lemptegy/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France contributor-photo authorization preserved; SweetDaddy publisher credited, no openlicence/individualphotographer permission invented.",
+    "qualification": "Real photograph of installed outdoor exhibition, not standalone promotional graphic. Native900x675intact; logo onphysicalsubject is part of exhibit, not thirdpartywatermarkoverlay. Firstphoto shows printedlava underwoodland trees andlogs; Hawaiian geographiccoordinates inprint notitemGPS. Secondshowsfabricentrancesign besidevolcanicrocksandwoodenposts. Both2018report historicalnoncurrent; exactcapturedateunknown."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "SourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/nature-followup-2215/photo-nature-1.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-172-nature-entrance-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-172-nature-entrance-import-result.json"
+  },
+  "metadata": {
+    "description": "La toile d’accueil présente Nature grand format comme un parcours photographique avec Ushuaïa TV et en indique l’accès. Installation photographiée dans le reportage de 2018.",
+    "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys"
+      },
+      {
+        "languageCode": "en",
+        "value": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path"
+      },
+      {
+        "languageCode": "de",
+        "value": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys"
+      },
+      {
+        "languageCode": "it",
+        "value": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys"
+      },
+      {
+        "languageCode": "es",
+        "value": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La toile d’accueil présente Nature grand format comme un parcours photographique avec Ushuaïa TV et en indique l’accès. Installation photographiée dans le reportage de 2018."
+      },
+      {
+        "languageCode": "en",
+        "value": "The entrance banner introduces Nature grand format as a photographic trail with Ushuaïa TV and points towards its access path. Installation shown in the 2018 report."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das Eingangsbanner stellt Nature grand format als fotografischen Rundgang mit Ushuaïa TV vor und weist zum Zugang. Die Installation ist im Bericht von 2018 abgebildet."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het welkomstdoek presenteert Nature grand format als een fotografische route met Ushuaïa TV en wijst de toegang aan. De opstelling is te zien in het verslag uit 2018."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il telo d’ingresso presenta Nature grand format come percorso fotografico con Ushuaïa TV e ne indica l’accesso. Installazione ritratta nel reportage del 2018."
+      },
+      {
+        "languageCode": "es",
+        "value": "La lona de bienvenida presenta Nature grand format como un recorrido fotográfico con Ushuaïa TV e indica su acceso. Instalación fotografiada en el reportaje de 2018."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Plansza wejściowa przedstawia Nature grand format jako trasę fotograficzną z Ushuaïa TV i wskazuje drogę dojścia. Instalacja widoczna w reportażu z 2018 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A tela de boas-vindas apresenta Nature grand format como um percurso fotográfico com a Ushuaïa TV e indica o acesso. Instalação fotografada no relato de 2018."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© SweetDaddy — reportage du 12 août 2018."
+      },
+      {
+        "languageCode": "en",
+        "value": "© SweetDaddy — report published on 12 August 2018."
+      },
+      {
+        "languageCode": "de",
+        "value": "© SweetDaddy — Bericht vom 12. August 2018."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© SweetDaddy — verslag van 12 augustus 2018."
+      },
+      {
+        "languageCode": "it",
+        "value": "© SweetDaddy — reportage del 12 agosto 2018."
+      },
+      {
+        "languageCode": "es",
+        "value": "© SweetDaddy — reportaje del 12 de agosto de 2018."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© SweetDaddy — reportaż z 12 sierpnia 2018 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© SweetDaddy — relato de 12 de agosto de 2018."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T22:24:48.4755562Z",
+    "receivedAtUtc": "2026-11-15T22:24:56.7243348Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "212b74dbb2af4190b02311f2f960f002",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "9b0346bc-cd7d-4365-a3c6-3532219039bc",
+      "path": "park_item/212b74dbb2af4190b02311f2f960f002",
+      "description": "La toile d’accueil présente Nature grand format comme un parcours photographique avec Ushuaïa TV et en indique l’accès. Installation photographiée dans le reportage de 2018.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 900,
+      "height": 675,
+      "sizeInBytes": 335709,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.sweetdaddy.fr/wp-content/uploads/2018/08/Vulcania-d%C3%A9couverte-et-avis-Attraction-parcours-nature-grand-format.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "samsung",
+        "cameraModel": "SM-G930F",
+        "takenOnUtc": "2018-07-26T15:20:22Z",
+        "orientation": "1",
+        "focalLength": 4.2,
+        "aperture": 1.7,
+        "exposureTime": 0.0003315649867374005,
+        "iso": 50
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Signalétique Nature grand format près des rochers, avec une flèche vers le chemin du Ballon des Puys"
+        },
+        {
+          "languageCode": "en",
+          "value": "Nature grand format sign beside rocks, with an arrow towards the Ballon des Puys path"
+        },
+        {
+          "languageCode": "de",
+          "value": "Schild von Nature grand format neben Felsen mit einem Pfeil zum Weg des Ballon des Puys"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bord van Nature grand format naast rotsen, met een pijl naar het pad van Ballon des Puys"
+        },
+        {
+          "languageCode": "it",
+          "value": "Segnaletica di Nature grand format accanto alle rocce, con una freccia verso il sentiero del Ballon des Puys"
+        },
+        {
+          "languageCode": "es",
+          "value": "Señal de Nature grand format junto a unas rocas, con una flecha hacia el camino del Ballon des Puys"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oznaczenie Nature grand format przy skałach, ze strzałką ku ścieżce Ballon des Puys"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sinal de Nature grand format junto às rochas, com uma seta para o caminho do Ballon des Puys"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La toile d’accueil présente Nature grand format comme un parcours photographique avec Ushuaïa TV et en indique l’accès. Installation photographiée dans le reportage de 2018."
+        },
+        {
+          "languageCode": "en",
+          "value": "The entrance banner introduces Nature grand format as a photographic trail with Ushuaïa TV and points towards its access path. Installation shown in the 2018 report."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Eingangsbanner stellt Nature grand format als fotografischen Rundgang mit Ushuaïa TV vor und weist zum Zugang. Die Installation ist im Bericht von 2018 abgebildet."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het welkomstdoek presenteert Nature grand format als een fotografische route met Ushuaïa TV en wijst de toegang aan. De opstelling is te zien in het verslag uit 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il telo d’ingresso presenta Nature grand format come percorso fotografico con Ushuaïa TV e ne indica l’accesso. Installazione ritratta nel reportage del 2018."
+        },
+        {
+          "languageCode": "es",
+          "value": "La lona de bienvenida presenta Nature grand format como un recorrido fotográfico con Ushuaïa TV e indica su acceso. Instalación fotografiada en el reportaje de 2018."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plansza wejściowa przedstawia Nature grand format jako trasę fotograficzną z Ushuaïa TV i wskazuje drogę dojścia. Instalacja widoczna w reportażu z 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A tela de boas-vindas apresenta Nature grand format como um percurso fotográfico com a Ushuaïa TV e indica o acesso. Instalação fotografada no relato de 2018."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© SweetDaddy — reportage du 12 août 2018."
+        },
+        {
+          "languageCode": "en",
+          "value": "© SweetDaddy — report published on 12 August 2018."
+        },
+        {
+          "languageCode": "de",
+          "value": "© SweetDaddy — Bericht vom 12. August 2018."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© SweetDaddy — verslag van 12 augustus 2018."
+        },
+        {
+          "languageCode": "it",
+          "value": "© SweetDaddy — reportage del 12 agosto 2018."
+        },
+        {
+          "languageCode": "es",
+          "value": "© SweetDaddy — reportaje del 12 de agosto de 2018."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© SweetDaddy — reportaż z 12 sierpnia 2018 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© SweetDaddy — relato de 12 de agosto de 2018."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:24:49.987Z",
+      "updatedAt": "2026-11-15T22:24:53.617Z"
+    }
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
