@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T04:37:14.273Z",
+      "lastDataIntegrationAt": "2026-11-15T04:55:30.275Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -21871,6 +21871,46 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-founder-portrait-20261115.json",
           "auditEvidence": null,
           "summary": "Ajout privé du portrait de Steeve et Guillaume à la référence globale existante des fondateurs, par upsert officiel ; source Koikispass et identités de la légende vérifiées, huit langues relues. Charles non représenté, aucune date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-5a3caae1-b882-4676-b614-7f165ddbd530",
+          "appliedAt": "2026-11-15T04:42:58.326Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-park-global-reference-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Descriptions du parc, biographie des trois fondateurs et description de l’exploitant réécrites et relues dans les huit langues. Dates du dernier accueil et de l’annonce distinguées ; closedYear de la référence exploitant remis à null faute de preuve de dissolution. Parc toujours fermé, visibilité préservée."
+        },
+        {
+          "eventId": "apply-ad4486d1-4415-401f-927c-dd2597ba7835",
+          "appliedAt": "2026-11-15T04:46:18.121Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-four-landmark-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre notices huit langues relues : Chenille et décor floral, Konga distinct du Gorille, Phare des Pirates, véritable petit train photographié avec les fondateurs. Dates et visibilité conservées ; descriptions génériques remplacées par des éléments propres aux lieux."
+        },
+        {
+          "eventId": "apply-be54aeca-1cc3-4d89-8f00-d330b7cc4635",
+          "appliedAt": "2026-11-15T04:50:37.488Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-history-article-rewrite-20261115.json",
+          "auditEvidence": null,
+          "summary": "Article existant entièrement réécrit et relu dans les huit langues : trois sections, six paragraphes développés par langue (348–446 mots), huit sources consultées et calendrier de fermeture précis. Neuf identifiants de blocs, image et publication conservés ; résumé du fait 2017 corrigé."
+        },
+        {
+          "eventId": "apply-5e89323d-f775-48c3-9e68-960fea396165",
+          "appliedAt": "2026-11-15T04:55:30.275Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-08-two-verified-park-facts-20261115.json",
+          "auditEvidence": null,
+          "summary": "Deux faits de parc corrigés en huit langues : ensemble des nouveautés de 2025 incluant Jungle et fermeture définitive du 31 août 2026 annoncée le 7 septembre. Sources vérifiées, dates et images conservées ; correction SeasonOpening non appliquée car refus API."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

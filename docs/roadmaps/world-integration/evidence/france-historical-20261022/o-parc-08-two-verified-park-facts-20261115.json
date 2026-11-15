@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "38d2045fa31befa503a93b6e774e85812979f440e737f6feee6a06747167ad08",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "5e89323d-f775-48c3-9e68-960fea396165",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:55:30.2754525Z",
+    "appliedAtUtc": "2026-11-15T04:55:30.2754534Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c3018a37-139e-456c-af8c-0f6858c8fb6d",
+        "entityKey": "o-parc-new-rides-2025",
+        "displayName": "Safari Buggy et La Valse des Tasses rejoignent le parc",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Zwei Fahrgeschäfte erweitern das Angebot: kleine Fahrzeuge in Tierkulisse und drehende Tassen. Sie bilden die letzte bekannte Welle dauerhafter Neuheiten vor der Abschlusssaison., en:Two rides expand the offer: small vehicles in an animal setting and rotating cups. Their arrival forms the last known wave of permanent additions before the final season., es:Dos atracciones amplían la oferta: pequeños vehículos en un decorado animal y tazas giratorias. Su llegada forma la última oleada conocida de novedades permanentes antes de la temporada final., fr:Deux manèges complètent lʼoffre : de petits véhicules dans un décor animalier et des tasses en rotation. Leur arrivée constitue la dernière vague connue de nouveautés permanentes avant la saison finale., it:Due giostre ampliano lʼofferta: piccoli veicoli in uno scenario animale e tazze rotanti. Il loro arrivo rappresenta lʼultima ondata nota di novità permanenti prima della stagione finale., nl:Twee attracties breiden het aanbod uit: kleine voertuigen in een dierendecor en draaiende kopjes. Hun komst vormt de laatste bekende reeks vaste nieuwigheden voor het slotseizoen., pl:Dwie karuzele rozszerzają ofertę: małe pojazdy w zwierzęcej scenerii i obracające się filiżanki. Ich pojawienie się stanowi ostatnią znaną falę stałych nowości przed końcowym sezonem., pt:Duas diversões ampliam a oferta: pequenos veículos num cenário animal e chávenas giratórias. A chegada constitui a última vaga conhecida de novidades permanentes antes da época final.",
+            "newValue": "de:Der Plan von 2025 stellt Safari Buggy, Les Tasses Magiques und Parcours de la Jungle als Neuheiten vor. Neue Safari-, Süßwaren- und Dschungelkulissen ergänzen in dieser Saison die bestehenden Wasserbereiche und Wiesenspiele., en:The 2025 map presents Safari Buggy, Les Tasses Magiques and Parcours de la Jungle as new additions. That season brings new safari, confectionery and jungle settings alongside the existing water areas and meadow games., es:El plano de 2025 presenta Safari Buggy, Les Tasses Magiques y Parcours de la Jungle como novedades. La temporada añade así decorados de safari, golosinas y selva a las zonas acuáticas y los juegos de pradera existentes., fr:Le plan de 2025 présente Safari Buggy, les Tasses Magiques et le Parcours de la Jungle comme nouveautés. Cette saison associe donc de nouveaux décors de safari, de confiserie et de jungle aux espaces aquatiques et aux jeux de prairie déjà présents., it:La mappa del 2025 presenta Safari Buggy, Les Tasses Magiques e Parcours de la Jungle come novità. La stagione aggiunge così scenari di safari, dolciumi e giungla alle aree acquatiche e ai giochi sul prato già presenti., nl:De kaart van 2025 presenteert Safari Buggy, Les Tasses Magiques en Parcours de la Jungle als nieuwigheden. Dat seizoen voegt safari-, snoep- en jungledecors toe aan de bestaande waterzones en spelen op het grasveld., pl:Plan z 2025 roku przedstawia Safari Buggy, Les Tasses Magiques i Parcours de la Jungle jako nowości. W tym sezonie scenerie safari, słodyczy i dżungli uzupełniają istniejące strefy wodne i zabawy na łące., pt:O mapa de 2025 apresenta Safari Buggy, Les Tasses Magiques e Parcours de la Jungle como novidades. A época acrescenta assim cenários de safari, guloseimas e selva às áreas aquáticas e aos jogos no prado já existentes."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Infoptimum \\u2014 derni\\u00E8re semaine 2026\",\"Url\":\"https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html\",\"AccessedAt\":\"2026-10-05\"}]",
+            "newValue": "[{\"Label\":\"Le Magazine du Berry \\u2014 nouveaut\\u00E9s 2025\",\"Url\":\"https://lemagazineduberry.fr/bannay-o-parc-le-parc-dattractions-rouvre-ses-portes-le-samedi-5-avril-avec-des-nouveautes/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Infoptimum \\u2014 r\\u00E9ouverture et plan 2025\",\"Url\":\"https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "faf88237-0a3d-4e70-81b6-78b2182f6d78",
+        "entityKey": "o-parc-closure-2026",
+        "displayName": "Ô Parc ferme définitivement après dix saisons",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Der letzte öffentliche Tag beendet den Betrieb in Bannay. Am 7. September bestätigt das Team wegen der unsicheren Zukunft des Geländes die endgültige Schließung; die Attraktionen sollen entfernt und das Grundstück zurückgegeben werden., en:The final public day ends operations in Bannay. On 7 September, the team confirms a permanent closure because of uncertainty over the landʼs future; the attractions are to be removed and the plot returned to its original state., es:La última jornada pública pone fin a la actividad en Bannay. El 7 de septiembre, el equipo confirma el cierre definitivo por la incertidumbre sobre el futuro del terreno; las atracciones deben retirarse y la parcela devolverse a su estado inicial., fr:La dernière journée publique met fin à lʼexploitation de Bannay. Le 7 septembre, lʼéquipe confirme une fermeture définitive liée aux incertitudes sur lʼavenir du terrain ; les attractions doivent être retirées et la parcelle rendue dans son état initial., it:Lʼultima giornata pubblica conclude lʼattività a Bannay. Il 7 settembre la squadra conferma la chiusura definitiva per le incertezze sul futuro del terreno; le attrazioni devono essere rimosse e la parcella restituita allo stato iniziale., nl:De laatste publieksdag beëindigt de exploitatie in Bannay. Op 7 september bevestigt het team de definitieve sluiting door onzekerheid over de toekomst van het terrein; de attracties worden verwijderd en de grond teruggebracht in de oorspronkelijke staat., pl:Ostatni publiczny dzień kończy działalność w Bannay. 7 września zespół potwierdza definitywne zamknięcie z powodu niepewnej przyszłości terenu; atrakcje mają zostać usunięte, a działka przywrócona do stanu początkowego., pt:O último dia público termina a atividade em Bannay. Em 7 de setembro, a equipa confirma o encerramento definitivo devido à incerteza sobre o futuro do terreno; as atrações serão retiradas e a parcela devolvida ao estado inicial.",
+            "newValue": "de:Der 31. August ist der letzte Besuchstag in Bannay. Am 7. September kündigt das Team an, dass Ô Parc wegen der ungewissen Zukunft des Grundstücks nicht wieder öffnen wird. Vorgesehen sind der Abbau der Anlagen und die Wiederherstellung des Geländes; zehn Freizeitsaisons enden., en:31 August is the last day for visitors in Bannay. On 7 September, the team announces that Ô Parc will not reopen because of uncertainty over the land’s future. It plans to remove the installations and restore the plot, ending ten seasons of leisure., es:El 31 de agosto es el último día de visita en Bannay. El 7 de septiembre el equipo anuncia que Ô Parc no reabrirá por la incertidumbre sobre el futuro del terreno. Prevé retirar las instalaciones y restaurar la parcela, poniendo fin a diez temporadas de ocio., fr:Le 31 août est le dernier jour d’accueil à Bannay. Le 7 septembre, l’équipe annonce qu’Ô Parc ne rouvrira pas, en raison des incertitudes sur l’avenir du terrain. Elle prévoit le retrait des installations et la remise en état de la parcelle, mettant fin à dix saisons de loisirs., it:Il 31 agosto è l’ultimo giorno di visita a Bannay. Il 7 settembre la squadra annuncia che Ô Parc non riaprirà a causa delle incertezze sul futuro del terreno. Prevede la rimozione delle installazioni e il ripristino dell’area, concludendo dieci stagioni di svago., nl:31 augustus is de laatste bezoekdag in Bannay. Op 7 september kondigt het team aan dat Ô Parc niet meer zal openen vanwege onzekerheid over de toekomst van de grond. Het wil de installaties verwijderen en het terrein herstellen, waarmee tien recreatieseizoenen eindigen., pl:31 sierpnia jest ostatnim dniem odwiedzin w Bannay. Dnia 7 września zespół ogłasza, że Ô Parc nie zostanie ponownie otwarty z powodu niepewnej przyszłości terenu. Zapowiada usunięcie instalacji i przywrócenie działki do pierwotnego stanu, kończąc dziesięć sezonów rekreacji., pt:31 de agosto é o último dia de visita em Bannay. A 7 de setembro a equipa anuncia que o Ô Parc não reabrirá devido às incertezas sobre o futuro do terreno. Prevê retirar as instalações e repor o espaço no estado original, encerrando dez épocas de lazer."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Radio Num\\u00E9ro 1 \\u2014 fermeture d\\u00E9finitive\",\"Url\":\"https://www.radiono1.fr/news/o-parc-a-bannay-c-est-fini-1243\",\"AccessedAt\":\"2026-10-05\"}]",
+            "newValue": "[{\"Label\":\"Radio Num\\u00E9ro 1 \\u2014 fermeture d\\u00E9finitive\",\"Url\":\"https://radiono1.fr/news/o-parc-a-bannay-c-est-fini-1243\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Infoptimum \\u2014 derni\\u00E8re semaine 2026\",\"Url\":\"https://www.bourges.infoptimum.com/page-special-loisirs-derniere-semaine-pour-profiter-do-parc-a-bannay-avant-la-fermeture-de-la-saison--6003.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

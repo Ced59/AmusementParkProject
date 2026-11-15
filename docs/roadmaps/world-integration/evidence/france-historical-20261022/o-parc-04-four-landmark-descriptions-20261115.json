@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "8a9cd673c52357d7ee9c162233782563e70068cb75f6c97a1bce56a56c5dd37b",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "ad4486d1-4415-401f-927c-dd2597ba7835",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:46:18.1216214Z",
+    "appliedAtUtc": "2026-11-15T04:46:18.1216232Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "entityKey": "3551c8d1-d2e4-459c-bc86-047f026fb0a1",
+        "displayName": "La Chenille",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille fuhr auf einer niedrigen gelb-grünen Strecke mit einem bunten Zug, dessen Spitze eine lächelnde Raupe zeigte.</p><h2>Die Familienachterbahn des Parks</h2><p>Kurven und Hügel vermittelten einen ersten Eindruck einer Achterbahn; der Ablauf blieb vom Weg aus gut sichtbar und beruhigend.</p><p>Am 20. Juni 2020 eröffnet, blieb sie bis 2026 eines der beiden sichtbarsten Fahrgeschäfte von Ô Parc.</p>",
+            "newValue": "<h2>Eine Raupe zwischen riesigen Blumen</h2><p>Das lächelnde Gesicht von La Chenille mit seinen Fühlern und bunten Wangen zog durch einen Garten übergroßer Dekorationsblumen. Gemalte Bienen, Pilze und ein Regenbogen schmückten die Fassade unter einem grünen Namensschild.</p><h2>Die Achterbahn von 2020</h2><p>La Chenille eröffnete am 20. Juni 2020 und ergänzte die Hüpfanlagen und Spiele von Ô Parc um eine Achterbahn. Ihre gelb-grünen Farben blieben von der Wiese aus sichtbar und erschienen noch auf dem Plan der letzten Saison 2026.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille followed a low yellow-and-green circuit in a colourful train whose front depicted a smiling caterpillar.</p><h2>The parkʼs family roller coaster</h2><p>Its turns and humps offered a first taste of roller-coaster motion, clearly visible and reassuring from the path.</p><p>Opened on 20 June 2020, it remained one of Ô Parcʼs two most visible mechanical rides until 2026.</p>",
+            "newValue": "<h2>A caterpillar among giant flowers</h2><p>La Chenille’s smiling face, with its antennae and colourful cheeks, travelled through a garden of oversized decorative flowers. Painted bees, mushrooms and a rainbow covered the façade beneath a green sign bearing the ride’s name.</p><h2>The roller coaster added in 2020</h2><p>Opened on 20 June 2020, La Chenille brought a roller coaster to Ô Parc’s landscape of inflatables and games. Its yellow and green colours remained visible from the meadow and still appeared on the map of the final season in 2026.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille recorría un circuito bajo amarillo y verde en un tren colorido cuya parte delantera representaba una oruga sonriente.</p><h2>La montaña rusa familiar</h2><p>Sus curvas y pequeños cambios de nivel ofrecían una primera experiencia de montaña rusa, visible y tranquilizadora desde el camino.</p><p>Inaugurada el 20 de junio de 2020, siguió hasta 2026 como una de las dos atracciones mecánicas más visibles de Ô Parc.</p>",
+            "newValue": "<h2>Una oruga entre flores gigantes</h2><p>El rostro sonriente de La Chenille, con sus antenas y mejillas de colores, recorría un jardín de grandes flores decorativas. Abejas dibujadas, setas y un arcoíris adornaban la fachada bajo un letrero verde con el nombre de la atracción.</p><h2>La montaña rusa llegada en 2020</h2><p>La Chenille abrió el 20 de junio de 2020 y añadió una montaña rusa al paisaje de hinchables y juegos de Ô Parc. Sus colores amarillo y verde seguían siendo visibles desde la pradera y aparecían aún en el plano de la última temporada, en 2026.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille parcourait un circuit jaune et vert à faible hauteur, dans un train coloré dont lʼavant figurait une chenille souriante.</p><h2>Le grand huit familial du parc</h2><p>Ses virages et ses bosses donnaient une première lecture du grand huit, avec un mouvement visible et rassurant depuis lʼallée.</p><p>Ouverte le 20 juin 2020, elle resta jusquʼen 2026 lʼun des deux manèges mécaniques les plus visibles dʼÔ Parc.</p>",
+            "newValue": "<h2>Une chenille parmi les fleurs géantes</h2><p>Le visage souriant de La Chenille, avec ses antennes et ses joues colorées, traversait un jardin de grandes fleurs décoratives. Des abeilles dessinées, des champignons et un arc-en-ciel habillaient la façade, sous une enseigne verte portant le nom du manège.</p><h2>Le grand huit arrivé en 2020</h2><p>Ouverte le 20 juin 2020, La Chenille ajoutait un grand huit au paysage de gonflables et de jeux d’Ô Parc. Ses couleurs jaunes et vertes restèrent visibles depuis la prairie et figurèrent encore sur le plan de la dernière saison en 2026.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille seguiva un circuito basso giallo e verde con un treno colorato, la cui parte anteriore raffigurava un bruco sorridente.</p><h2>Le montagne russe per famiglie</h2><p>Curve e dossi offrivano un primo incontro con le montagne russe, con movimenti ben visibili e rassicuranti dal vialetto.</p><p>Inaugurata il 20 giugno 2020, rimase fino al 2026 una delle due giostre meccaniche più visibili di Ô Parc.</p>",
+            "newValue": "<h2>Un bruco fra fiori giganti</h2><p>Il volto sorridente di La Chenille, con antenne e guance colorate, attraversava un giardino di grandi fiori decorativi. Api disegnate, funghi e un arcobaleno rivestivano la facciata sotto un’insegna verde con il nome della giostra.</p><h2>Le montagne russe arrivate nel 2020</h2><p>Aperta il 20 giugno 2020, La Chenille aggiungeva le montagne russe al paesaggio di gonfiabili e giochi di Ô Parc. I suoi colori giallo e verde restavano visibili dal prato e comparivano ancora sulla mappa dell’ultima stagione, nel 2026.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille reed over een laag geel-groen traject met een kleurrijke trein waarvan de voorkant een glimlachende rups voorstelde.</p><h2>De familieachtbaan van het park</h2><p>Bochten en heuveltjes boden een eerste kennismaking met een achtbaan, duidelijk zichtbaar en geruststellend vanaf het pad.</p><p>De attractie opende op 20 juni 2020 en bleef tot 2026 een van de twee opvallendste mechanische attracties van Ô Parc.</p>",
+            "newValue": "<h2>Een rups tussen reuzenbloemen</h2><p>Het lachende gezicht van La Chenille, met voelsprieten en gekleurde wangen, bewoog door een tuin van grote decoratieve bloemen. Getekende bijen, paddenstoelen en een regenboog sierden de gevel onder een groen bord met de naam van de attractie.</p><h2>De achtbaan die in 2020 kwam</h2><p>La Chenille opende op 20 juni 2020 en voegde een achtbaan toe aan het landschap van springkussens en spelen van Ô Parc. De gele en groene kleuren bleven vanaf het grasveld zichtbaar en stonden nog op de kaart van het laatste seizoen in 2026.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille jeździła po niskim żółto-zielonym torze kolorowym pociągiem z uśmiechniętą gąsienicą z przodu.</p><h2>Rodzinna kolejka parku</h2><p>Zakręty i pagórki dawały pierwsze doświadczenie kolejki górskiej, dobrze widoczne i oswajające z alejki.</p><p>Otwarta 20 czerwca 2020 roku, pozostała do 2026 jedną z dwóch najbardziej widocznych mechanicznych atrakcji Ô Parc.</p>",
+            "newValue": "<h2>Gąsienica wśród olbrzymich kwiatów</h2><p>Uśmiechnięta twarz La Chenille, z czułkami i kolorowymi policzkami, przemierzała ogród wielkich dekoracyjnych kwiatów. Rysunkowe pszczoły, grzyby i tęcza zdobiły fasadę pod zielonym szyldem z nazwą atrakcji.</p><h2>Kolejka górska z 2020 roku</h2><p>La Chenille otwarto 20 czerwca 2020 roku, dodając kolejkę górską do krajobrazu dmuchańców i gier Ô Parc. Jej żółto-zielone barwy były widoczne z łąki i pojawiły się jeszcze na planie ostatniego sezonu w 2026 roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>La Chenille</h2><p>La Chenille percorria um circuito baixo amarelo e verde num comboio colorido cuja frente representava uma lagarta sorridente.</p><h2>A montanha-russa familiar</h2><p>As curvas e lombas davam um primeiro contacto com uma montanha-russa, com movimento visível e tranquilizador a partir do caminho.</p><p>Inaugurada em 20 de junho de 2020, permaneceu até 2026 como uma das duas diversões mecânicas mais visíveis do Ô Parc.</p>",
+            "newValue": "<h2>Uma lagarta entre flores gigantes</h2><p>O rosto sorridente da La Chenille, com antenas e faces coloridas, atravessava um jardim de grandes flores decorativas. Abelhas desenhadas, cogumelos e um arco-íris revestiam a fachada sob um letreiro verde com o nome da atração.</p><h2>A montanha-russa chegada em 2020</h2><p>Inaugurada a 20 de junho de 2020, La Chenille acrescentava uma montanha-russa à paisagem de insufláveis e jogos do Ô Parc. As suas cores amarelas e verdes continuavam visíveis do prado e surgiam ainda no mapa da última época, em 2026.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+        "entityKey": "fe34d7e6-49a6-4bfc-9cc8-aaccc48c137b",
+        "displayName": "Toboggan Konga",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Toboggan Konga war eine große grüne Hüpfanlage mit einem Affen an der Spitze und dadurch auf der Wiese sofort erkennbar.</p><h2>Dschungelspaß auf der Schräge</h2><p>Kinder stiegen durch die Tropenkulisse hinauf und rutschten anschließend auf mehreren von aufblasbaren Palmen gerahmten Bahnen zurück zum Boden.</p><p>Der Plan von 2026 zeigte die Anlage am südöstlichen Rand nahe der Piratenrutsche und dem Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga über dem Dschungel</h2><p>Ein großer brauner Gorilla mit hellem Bauch thronte über den grünen Hängen des Toboggan Konga. Seine Arme ragten über eine Palmenkulisse und verliehen der Hüpfanlage ihre erkennbare Silhouette zwischen den anderen Riesenfiguren auf der Wiese.</p><h2>Benachbarte große Rutschen</h2><p>Auf den Plänen von 2025 und 2026 lag Konga nahe dem Toboggan des pirates und La Chenille. Der ältere Tourismusplan zeigte Le Gorille als gesonderte kleinere Hüpfanlage; Konga war eine eigenständige Attraktion.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Toboggan Konga was a large green inflatable crowned by a monkey, making it instantly recognisable across the meadow.</p><h2>A jungle built on a slope</h2><p>Children climbed through the tropical scenery before returning to ground level along several sliding lanes framed by inflatable palms.</p><p>The 2026 map placed it at the south-eastern edge of the park, close to the pirate slide and the Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga above the jungle</h2><p>A large brown gorilla with a pale belly towered over Toboggan Konga’s green slopes. Its arms stretched above a palm-tree setting, giving the inflatable its recognisable silhouette among the meadow’s other giant figures.</p><h2>Neighbouring giant slides</h2><p>On the 2025 and 2026 maps, Konga stood near Toboggan des pirates and La Chenille. The older tourist map showed Le Gorille, a separate smaller inflatable, so Konga was a distinct attraction.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Toboggan Konga era una gran estructura hinchable verde coronada por un mono, reconocible de inmediato en la pradera.</p><h2>La selva en pendiente</h2><p>Los niños subían por el decorado tropical y regresaban al suelo por varios carriles entre palmeras hinchables.</p><p>El plano de 2026 la situaba en el extremo sureste, cerca del tobogán de los piratas y del Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga sobre la selva</h2><p>Un gran gorila marrón, con el vientre claro, dominaba las pendientes verdes del Toboggan Konga. Sus brazos se extendían sobre un decorado de palmeras y daban al hinchable una silueta reconocible entre las otras grandes figuras de la pradera.</p><h2>Dos grandes toboganes vecinos</h2><p>En los planos de 2025 y 2026, Konga estaba cerca del Toboggan des pirates y de La Chenille. El antiguo plano turístico mostraba por separado Le Gorille, otro hinchable más pequeño: Konga era una atracción distinta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Le Toboggan Konga prenait la forme dʼune grande structure gonflable verte dominée par un singe, immédiatement reconnaissable dans la prairie.</p><h2>La jungle en pente</h2><p>Les enfants grimpaient dans le décor tropical avant de retrouver le sol par plusieurs couloirs de glisse bordés de palmiers gonflables.</p><p>Le plan 2026 le plaçait à lʼextrémité sud-est du parc, près du toboggan des pirates et du Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga au-dessus de la jungle</h2><p>Un grand gorille brun, au ventre clair, dominait les pentes vertes du Toboggan Konga. Ses bras s’étendaient au-dessus d’un décor de palmiers et donnaient au gonflable sa silhouette reconnaissable, visible entre les autres grandes figures de la prairie.</p><h2>Deux grands toboggans voisins</h2><p>Sur les plans de 2025 et 2026, Konga se trouvait près du Toboggan des pirates et de La Chenille. L’ancien plan touristique représentait séparément Le Gorille, un autre gonflable plus petit : Konga était bien une attraction distincte.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Toboggan Konga era una grande struttura gonfiabile verde sormontata da una scimmia, subito riconoscibile nel prato.</p><h2>La giungla in discesa</h2><p>I bambini salivano nello scenario tropicale e tornavano a terra lungo più corsie di scivolo incorniciate da palme gonfiabili.</p><p>La mappa del 2026 la collocava sul margine sud-orientale, vicino allo scivolo dei pirati e al Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga sopra la giungla</h2><p>Un grande gorilla marrone dal ventre chiaro dominava i pendii verdi del Toboggan Konga. Le braccia si protendevano sopra un paesaggio di palme, dando al gonfiabile una sagoma riconoscibile fra le altre grandi figure del prato.</p><h2>Due grandi scivoli vicini</h2><p>Sulle mappe del 2025 e del 2026, Konga si trovava vicino al Toboggan des pirates e a La Chenille. La vecchia mappa turistica mostrava separatamente Le Gorille, un altro gonfiabile più piccolo: Konga era un’attrazione distinta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Toboggan Konga was een grote groene springstructuur met een aap bovenaan, meteen herkenbaar op de speelweide.</p><h2>Junglepret op een helling</h2><p>Kinderen klommen door het tropische decor en gleden daarna via verschillende banen tussen opblaasbare palmen terug naar beneden.</p><p>Op de kaart van 2026 lag ze aan de zuidoostrand, dicht bij de piratenglijbaan en Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga boven de jungle</h2><p>Een grote bruine gorilla met een lichte buik torende boven de groene hellingen van Toboggan Konga uit. Zijn armen strekten zich boven een palmendecor uit en gaven het springkussen een herkenbaar silhouet tussen de andere reuzenfiguren op het grasveld.</p><h2>Twee grote glijbanen bij elkaar</h2><p>Op de kaarten van 2025 en 2026 stond Konga bij Toboggan des pirates en La Chenille. De oudere toeristische kaart toonde Le Gorille als een apart, kleiner springkussen; Konga was een afzonderlijke attractie.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Toboggan Konga</h2><p>Toboggan Konga był dużą zieloną dmuchaną konstrukcją zwieńczoną małpą, wyraźnie widoczną na łące.</p><h2>Dżungla na pochyłości</h2><p>Dzieci wspinały się w tropikalnej scenerii, a potem zjeżdżały kilkoma torami otoczonymi dmuchanymi palmami.</p><p>Mapa z 2026 roku umieszczała ją na południowo-wschodnim skraju, obok pirackiej zjeżdżalni i Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga ponad dżunglą</h2><p>Duży brązowy goryl z jasnym brzuchem górował nad zielonymi zboczami Toboggan Konga. Jego ramiona rozpościerały się nad palmową scenerią, nadając dmuchańcowi rozpoznawalną sylwetkę wśród innych wielkich postaci na łące.</p><h2>Dwie sąsiadujące duże zjeżdżalnie</h2><p>Na planach z 2025 i 2026 roku Konga znajdował się przy Toboggan des pirates i La Chenille. Starszy plan turystyczny pokazywał osobno Le Gorille, inny, mniejszy dmuchaniec: Konga był odrębną atrakcją.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Toboggan Konga</h2><p>O Toboggan Konga era uma grande estrutura insuflável verde coroada por um macaco, logo reconhecível no relvado.</p><h2>A selva em descida</h2><p>As crianças subiam pelo cenário tropical e regressavam ao chão por várias pistas ladeadas por palmeiras insufláveis.</p><p>O mapa de 2026 colocava-a no limite sudeste, perto do escorrega dos piratas e do Parcours de la Jungle.</p>",
+            "newValue": "<h2>Konga sobre a selva</h2><p>Um grande gorila castanho, de barriga clara, dominava as encostas verdes do Toboggan Konga. Os braços estendiam-se sobre um cenário de palmeiras e davam ao insuflável uma silhueta reconhecível entre as outras grandes figuras do prado.</p><h2>Dois grandes escorregas vizinhos</h2><p>Nos mapas de 2025 e 2026, Konga ficava perto do Toboggan des pirates e da La Chenille. O antigo mapa turístico mostrava separadamente Le Gorille, outro insuflável mais pequeno: Konga era uma atração distinta.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "66672916-7314-4c65-ae4b-95d56c40fd49",
+        "entityKey": "66672916-7314-4c65-ae4b-95d56c40fd49",
+        "displayName": "Le Phare des Pirates",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates zeigte einen Kapitän und seinen Turm über einer großen Hüpfanlage in Meeresfarben.</p><h2>Ein aufblasbares Piratenzeichen</h2><p>Bootsformen, Flaggen und Rutschen verwandelten das bewegte Spiel in ein kurzes Korsarenabenteuer.</p><p>Neben der Aqua Zone verband der Leuchtturm die Wasserspiele optisch mit der Piratenwelt in anderen Parkbereichen.</p>",
+            "newValue": "<h2>Ein Kapitän auf dem Leuchtturm</h2><p>Le Phare des Pirates verband einen gestreiften Turm mit einer großen Freibeuterfigur über der Hüpfanlage. Auf dem Plan von 2025 trug sie einen blauen Hut und war von kleinen Schiffsformen mitten auf der Wiese umgeben.</p><h2>Ein kleiner Piratenstützpunkt</h2><p>Der Plan zeigte diese maritime Kulisse nahe Échelles Dingos und La Boule, abseits der anderen großen Figur auf dem Toboggan des pirates. So entstand ein weiterer Piratenblickfang zwischen den Spielen im Freien.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates raised a captain and his tower above a large inflatable structure in maritime colours.</p><h2>An inflatable pirate landmark</h2><p>Boat shapes, flags and slides turned active play into a short corsair adventure.</p><p>Set beside the Aqua Zone, the lighthouse visually linked the water games with the pirate world found elsewhere in the park.</p>",
+            "newValue": "<h2>A captain at the top of the lighthouse</h2><p>Le Phare des Pirates combined a striped tower with a large buccaneer figure standing above the inflatable. The 2025 map gave him a blue hat and surrounded him with small ship shapes in the middle of the meadow.</p><h2>A small pirate outpost</h2><p>The map placed this nautical scene near Échelles Dingos and La Boule, away from the other giant figure on Toboggan des pirates. It formed another pirate landmark among the park’s outdoor games.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates elevaba a un capitán y su torre sobre una gran estructura hinchable de colores marinos.</p><h2>Un hito pirata hinchable</h2><p>Las formas de barco, las banderas y los toboganes convertían el juego físico en una breve aventura corsaria.</p><p>Situado junto a la Aqua Zone, el faro enlazaba visualmente los juegos de agua con el mundo pirata de otras zonas.</p>",
+            "newValue": "<h2>Un capitán en lo alto del faro</h2><p>Le Phare des Pirates reunía una torre a rayas y una gran figura de corsario sobre el hinchable. En el plano de 2025 llevaba un sombrero azul y estaba rodeado de pequeñas siluetas de barcos en medio de la pradera.</p><h2>Una pequeña escala pirata</h2><p>El plano situaba este decorado marino junto a Échelles Dingos y La Boule, lejos de la otra gran figura del Toboggan des pirates. Así formaba un segundo referente pirata entre los juegos al aire libre del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates dressait un capitaine et sa tour au milieu dʼune grande structure gonflable aux couleurs marines.</p><h2>Un repère pirate gonflable</h2><p>Les formes de bateau, les drapeaux et les glissades transformaient le jeu physique en courte aventure de corsaires.</p><p>Installé près de lʼAqua Zone, ce phare reliait visuellement les jeux dʼeau à lʼunivers pirate présent ailleurs dans le parc.</p>",
+            "newValue": "<h2>Un capitaine au sommet du phare</h2><p>Le Phare des Pirates réunissait une tour rayée et un grand personnage de corsaire, dressé au-dessus du gonflable. Le plan de 2025 lui donnait un chapeau bleu et l’entourait de petites silhouettes de navires, au milieu de la prairie.</p><h2>La petite escale des pirates</h2><p>Ce décor marin se trouvait près des Échelles Dingos et de La Boule sur le plan, à distance de l’autre grand personnage du Toboggan des pirates. Il formait ainsi un second repère de flibustiers dans les jeux de plein air du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates innalzava un capitano e la sua torre sopra una grande struttura gonfiabile dai colori marini.</p><h2>Un punto di riferimento piratesco</h2><p>Forme di barca, bandiere e scivoli trasformavano il gioco motorio in una breve avventura da corsari.</p><p>Collocato accanto allʼAqua Zone, il faro collegava visivamente i giochi dʼacqua allʼuniverso piratesco presente altrove nel parco.</p>",
+            "newValue": "<h2>Un capitano in cima al faro</h2><p>Le Phare des Pirates riuniva una torre a strisce e un grande personaggio da corsaro sopra il gonfiabile. Sulla mappa del 2025 indossava un cappello blu ed era circondato da piccole sagome di navi al centro del prato.</p><h2>Un piccolo approdo dei pirati</h2><p>La mappa collocava questo scenario marino vicino a Échelles Dingos e La Boule, lontano dall’altra grande figura sul Toboggan des pirates. Formava così un secondo punto di richiamo piratesco fra i giochi all’aperto del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates liet een kapitein en zijn toren boven een grote springstructuur in zeekleuren uitsteken.</p><h2>Een opblaasbaar piratenbaken</h2><p>Bootvormen, vlaggen en glijbanen maakten van het actieve spel een kort kapersavontuur.</p><p>Naast de Aqua Zone verbond de vuurtoren de waterspellen visueel met de piratenwereld elders in het park.</p>",
+            "newValue": "<h2>Een kapitein boven op de vuurtoren</h2><p>Le Phare des Pirates combineerde een gestreepte toren met een grote zeeroversfiguur boven het springkussen. Op de kaart van 2025 droeg hij een blauwe hoed en werd hij omringd door kleine scheepsvormen midden op het grasveld.</p><h2>Een kleine piratenpost</h2><p>De kaart plaatste dit zeedecor bij Échelles Dingos en La Boule, op afstand van de andere reuzenfiguur op Toboggan des pirates. Zo vormde het een tweede piratenbaken tussen de buitenspelen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates ukazywał kapitana i jego wieżę nad dużą dmuchaną konstrukcją w morskich barwach.</p><h2>Dmuchany piracki znak</h2><p>Kształty łodzi, flagi i zjeżdżalnie zmieniały ruchową zabawę w krótką korsarską przygodę.</p><p>Położona obok Aqua Zone latarnia wizualnie łączyła wodne zabawy z pirackim światem obecnym w innych częściach parku.</p>",
+            "newValue": "<h2>Kapitan na szczycie latarni</h2><p>Le Phare des Pirates łączył wieżę w pasy z wielką postacią korsarza górującą nad dmuchańcem. Na planie z 2025 roku miał on niebieski kapelusz i był otoczony małymi sylwetkami statków pośrodku łąki.</p><h2>Mała piracka przystań</h2><p>Plan umieszczał tę morską scenerię przy Échelles Dingos i La Boule, z dala od innej wielkiej postaci na Toboggan des pirates. Był to drugi piracki punkt orientacyjny wśród zabaw na świeżym powietrzu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Le Phare des Pirates</h2><p>Le Phare des Pirates erguia um capitão e a sua torre sobre uma grande estrutura insuflável de cores marítimas.</p><h2>Um marco pirata insuflável</h2><p>Formas de barco, bandeiras e escorregas transformavam a brincadeira física numa curta aventura de corsários.</p><p>Instalado junto à Aqua Zone, o farol ligava visualmente os jogos de água ao universo pirata de outras zonas.</p>",
+            "newValue": "<h2>Um capitão no topo do farol</h2><p>Le Phare des Pirates reunia uma torre às riscas e uma grande figura de corsário erguida sobre o insuflável. No mapa de 2025, usava um chapéu azul e era rodeado por pequenas silhuetas de navios no meio do prado.</p><h2>Uma pequena escala pirata</h2><p>O mapa situava este cenário marítimo perto de Échelles Dingos e La Boule, afastado da outra grande figura do Toboggan des pirates. Formava assim uma segunda referência de corsários entre os jogos ao ar livre do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3907da4a-6351-420f-ac42-953e8814da0b",
+        "entityKey": "o-parc-petit-train",
+        "displayName": "Ô Petit Train",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die kleine rote Lokomotive</h2><p>Ô Petit Train war in Ô Parc eine eigenständige Attraktion neben La Chenille. Der Plan von 2025 stellte ihn als rote Lokomotive mit schwarzem Schornstein nahe Home-ball und den Trampolinen dar.</p><h2>Auf mehreren Parkplänen vertreten</h2><p>Die Bahn erschien auch auf einem älteren Plan mit einer kleinen Schleife vor den Spielen auf der Wiese. Ihr Name wurde noch in der Vorstellung der letzten Parksaison genannt.</p>",
+            "newValue": "<h2>Eine Lokomotive mit rotem Dach</h2><p>Ô Petit Train war an seiner kleinen dunklen Lokomotive mit rotem Dach und den Holzbänken unter einem hellen Verdeck zu erkennen. Steeve und Guillaume, zwei der Parkgründer, posierten in diesem Zug für ein von Koikispass veröffentlichtes Foto.</p><h2>Der Zug auf der Wiese</h2><p>Auf dem Plan von 2025 lag die kleine Eisenbahn nahe Home-ball und den Trampolinen. Ein älterer Plan zeigte ihre Runde bereits am Rand der Spiele; ihr Name erschien noch in der Vorstellung der letzten Saison von Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The little red locomotive</h2><p>Ô Petit Train was a separate attraction from La Chenille at Ô Parc. The 2025 map depicted it as a red locomotive with a black chimney, near Home-ball and Trampolines.</p><h2>A ride on several park maps</h2><p>The train also appeared on an older map, with a small loop in front of the meadow’s games. Its name still featured in the presentation of the park’s final season.</p>",
+            "newValue": "<h2>A locomotive with a red roof</h2><p>Ô Petit Train was recognisable by its small dark locomotive with a red roof and wooden benches beneath a pale canopy. Steeve and Guillaume, two of the park’s creators, posed in this train for a photograph published by Koikispass.</p><h2>The train in the meadow</h2><p>The 2025 map showed the small train near Home-ball and Trampolines. An earlier map already depicted its loop beside the games, and its name still appeared in the presentation of Ô Parc’s final season.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>La pequeña locomotora roja</h2><p>Ô Petit Train era una atracción distinta de La Chenille en Ô Parc. El plano de 2025 lo representaba mediante una locomotora roja con chimenea negra, cerca de Home-ball y los Trampolines.</p><h2>Una atracción en varios planos</h2><p>El trenecito también aparecía en un plano anterior, con un pequeño circuito delante de los juegos de la pradera. Su nombre seguía figurando en la presentación de la última temporada del parque.</p>",
+            "newValue": "<h2>Una locomotora de techo rojo</h2><p>Ô Petit Train se reconocía por su pequeña locomotora oscura de techo rojo y sus bancos de madera bajo una cubierta clara. Steeve y Guillaume, dos fundadores del parque, posaron en este trenecito para una fotografía publicada por Koikispass.</p><h2>El trenecito en la pradera</h2><p>El plano de 2025 mostraba el trenecito cerca de Home-ball y los Trampolines. Un plano anterior ya representaba su vuelta junto a los juegos; su nombre aparecía aún en la presentación de la última temporada de Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>La petite locomotive rouge</h2><p>Ô Petit Train occupait une place distincte de La Chenille dans les attractions d’Ô Parc. Le plan de 2025 le représentait par une locomotive rouge à cheminée noire, à proximité du Home-ball et des Trampolines.</p><h2>Un manège présent sur plusieurs plans</h2><p>Le train figurait aussi sur un plan plus ancien, avec une petite boucle devant les jeux de la prairie. Son nom apparaissait encore dans la présentation de la dernière saison du parc.</p>",
+            "newValue": "<h2>Une locomotive au toit rouge</h2><p>Ô Petit Train se reconnaissait à sa petite locomotive sombre au toit rouge et à ses banquettes de bois abritées par une couverture claire. C’est dans ce train que Steeve et Guillaume, deux créateurs du parc, posaient pour une photographie publiée par Koikispass.</p><h2>Le train dans la prairie</h2><p>Le plan de 2025 représentait le petit train près du Home-ball et des Trampolines. Un plan antérieur le montrait déjà avec sa boucle au bord des jeux ; son nom figurait encore dans la présentation de la dernière saison d’Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La piccola locomotiva rossa</h2><p>Ô Petit Train era un’attrazione distinta da La Chenille a Ô Parc. La mappa del 2025 lo rappresentava con una locomotiva rossa dal fumaiolo nero, vicino a Home-ball e ai Trampolines.</p><h2>Una giostra presente su più mappe</h2><p>Il trenino compariva anche su una mappa più vecchia, con un piccolo anello davanti ai giochi del prato. Il suo nome figurava ancora nella presentazione dell’ultima stagione del parco.</p>",
+            "newValue": "<h2>Una locomotiva dal tetto rosso</h2><p>Ô Petit Train si riconosceva dalla piccola locomotiva scura con tetto rosso e dalle panche di legno sotto una copertura chiara. Steeve e Guillaume, due fondatori del parco, posarono su questo trenino per una fotografia pubblicata da Koikispass.</p><h2>Il trenino nel prato</h2><p>La mappa del 2025 mostrava il trenino vicino a Home-ball e ai Trampolines. Una mappa precedente ne raffigurava già il giro accanto ai giochi; il nome compariva ancora nella presentazione dell’ultima stagione di Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De kleine rode locomotief</h2><p>Ô Petit Train was in Ô Parc een aparte attractie naast La Chenille. De plattegrond van 2025 beeldde hem af als een rode locomotief met een zwarte schoorsteen, bij Home-ball en de Trampolines.</p><h2>Een attractie op meerdere plattegronden</h2><p>Het treintje stond ook op een oudere kaart, met een kleine lus voor de spelen op het grasveld. Zijn naam werd nog genoemd in de presentatie van het laatste parkseizoen.</p>",
+            "newValue": "<h2>Een locomotief met een rood dak</h2><p>Ô Petit Train was herkenbaar aan de kleine donkere locomotief met rood dak en houten banken onder een lichte overkapping. Steeve en Guillaume, twee oprichters van het park, poseerden in dit treintje voor een foto die Koikispass publiceerde.</p><h2>Het treintje op het grasveld</h2><p>De kaart van 2025 toonde het treintje bij Home-ball en de Trampolines. Een oudere kaart beeldde zijn rondje langs de spelen al af; de naam stond nog in de presentatie van het laatste seizoen van Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Mała czerwona lokomotywa</h2><p>Ô Petit Train był w Ô Parc odrębną atrakcją od La Chenille. Plan z 2025 roku przedstawiał go jako czerwoną lokomotywę z czarnym kominem, w pobliżu Home-ball i trampolin.</p><h2>Atrakcja na kilku planach</h2><p>Pociąg pojawiał się również na starszym planie, z małą pętlą przed zabawami na łące. Jego nazwę wymieniano jeszcze w opisie ostatniego sezonu parku.</p>",
+            "newValue": "<h2>Lokomotywa z czerwonym dachem</h2><p>Ô Petit Train wyróżniał się małą ciemną lokomotywą z czerwonym dachem oraz drewnianymi ławkami pod jasnym zadaszeniem. Właśnie w tym pociągu Steeve i Guillaume, dwaj założyciele parku, pozowali do zdjęcia opublikowanego przez Koikispass.</p><h2>Pociąg na łące</h2><p>Plan z 2025 roku pokazywał mały pociąg w pobliżu Home-ball i trampolin. Starszy plan przedstawiał już jego pętlę przy miejscach zabaw; nazwa figurowała także w opisie ostatniego sezonu Ô Parc.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>A pequena locomotiva vermelha</h2><p>O Ô Petit Train era uma atração distinta da La Chenille no Ô Parc. O mapa de 2025 representava-o por uma locomotiva vermelha com chaminé preta, perto do Home-ball e dos Trampolines.</p><h2>Uma atração em vários mapas</h2><p>O pequeno comboio também aparecia num mapa mais antigo, com uma pequena volta diante dos jogos do prado. O seu nome ainda figurava na apresentação da última época do parque.</p>",
+            "newValue": "<h2>Uma locomotiva de teto vermelho</h2><p>Ô Petit Train reconhecia-se pela pequena locomotiva escura de teto vermelho e pelos bancos de madeira sob uma cobertura clara. Steeve e Guillaume, dois fundadores do parque, posaram neste comboio para uma fotografia publicada pela Koikispass.</p><h2>O comboio no prado</h2><p>O mapa de 2025 mostrava o pequeno comboio perto do Home-ball e dos Trampolines. Um mapa anterior já representava a sua volta junto aos jogos; o nome surgia ainda na apresentação da última época do Ô Parc.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}
