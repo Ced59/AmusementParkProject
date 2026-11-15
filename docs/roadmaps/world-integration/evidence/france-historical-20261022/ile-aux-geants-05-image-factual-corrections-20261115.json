@@ -1,0 +1,746 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "17df73a375dcddf4813d010554a4abc69cc3558ce996424432b74d064ab5ac9d",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "2c89412d-c5a1-4c90-9422-626645ce8815",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:26:19.2089338Z",
+    "appliedAtUtc": "2026-11-15T01:26:19.208935Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "entityKey": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "displayName": "Bateau du Colorado",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "entityKey": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "displayName": "Bateau Pirate",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "entityKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "displayName": "Le Grand 8",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "entityKey": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "displayName": "Pouss-Pouss",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "39f4dbe31e854dc0a0c552e2f96cea38",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Panorama officiel du parc arboré L'Île aux Géants.",
+            "newValue": "Montage promotionnel du Grand 8, de Star Tower et de Star Flyer sur fond bleu."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Offizielles Panorama des grünen Parks L'Île aux Géants.",
+            "newValue": "Werbemontage mit Le Grand 8, Star Tower und Star Flyer vor blauem Hintergrund."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Official panorama of the leafy L'Île aux Géants park.",
+            "newValue": "Promotional montage of Le Grand 8, Star Tower and Star Flyer against a blue background."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Panorama oficial del parque arbolado L'Île aux Géants.",
+            "newValue": "Montaje promocional de Le Grand 8, Star Tower y Star Flyer sobre fondo azul."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Panorama officiel du parc arboré L'Île aux Géants.",
+            "newValue": "Montage promotionnel du Grand 8, de Star Tower et de Star Flyer sur fond bleu."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Panorama ufficiale del parco alberato L'Île aux Géants.",
+            "newValue": "Montaggio promozionale di Le Grand 8, Star Tower e Star Flyer su sfondo blu."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Officieel panorama van het groene park L'Île aux Géants.",
+            "newValue": "Promotiemontage van Le Grand 8, Star Tower en Star Flyer tegen een blauwe achtergrond."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Oficjalna panorama zielonego parku L'Île aux Géants.",
+            "newValue": "Montaż promocyjny Le Grand 8, Star Tower i Star Flyer na niebieskim tle."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Panorama oficial do parque arborizado L'Île aux Géants.",
+            "newValue": "Montagem promocional do Grand 8, da Star Tower e do Star Flyer sobre fundo azul."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Riesenrad, Familienfahrgeschäfte und Grün prägen die Landschaft von L'Île aux Géants.",
+            "newValue": "Das Banner vereint den Zug auf rosa Schienen, Kettenstühle und geflügelte Gondeln zwischen Palmwedeln."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Ferris wheel, family rides and greenery shape the landscape of L'Île aux Géants.",
+            "newValue": "The banner brings together the train on pink rails, flying chairs and winged gondolas between palm fronds."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Noria, atracciones familiares y vegetación forman el paisaje de L'Île aux Géants.",
+            "newValue": "El cartel combina el tren sobre raíles rosas, las sillas voladoras y las góndolas aladas entre hojas de palmera."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Grande roue, attractions familiales et végétation composent le paysage de L'Île aux Géants.",
+            "newValue": "La bannière assemble le train sur ses rails roses, les chaises volantes et les nacelles ailées entre des palmes."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Ruota panoramica, giostre familiari e verde formano il paesaggio di L'Île aux Géants.",
+            "newValue": "Il banner riunisce il treno sui binari rosa, i seggiolini volanti e le cabine alate tra foglie di palma."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Reuzenrad, familieattracties en groen vormen het landschap van L'Île aux Géants.",
+            "newValue": "De banner combineert de trein op roze rails, zweefstoelen en gevleugelde gondels tussen palmbladeren."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Diabelski młyn, rodzinne atrakcje i zieleń tworzą krajobraz L'Île aux Géants.",
+            "newValue": "Baner łączy pociąg na różowych szynach, latające krzesełka i uskrzydlone gondole między liśćmi palm."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Roda-gigante, diversões familiares e vegetação formam a paisagem da L'Île aux Géants.",
+            "newValue": "O cartaz reúne o comboio nos carris cor-de-rosa, as cadeiras voadoras e as cabines aladas entre folhas de palmeira."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "a3ec565c0a334f5db285e05ecebe9cb5",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Vue panoramique officielle des attractions de L'Île aux Géants.",
+            "newValue": "Montage promotionnel du Grand 8, de Star Tower et de Star Flyer sur fond bleu."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Offizielle Panoramaansicht der Fahrgeschäfte von L'Île aux Géants.",
+            "newValue": "Werbemontage mit Le Grand 8, Star Tower und Star Flyer vor blauem Hintergrund."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Official panoramic view of the rides at L'Île aux Géants.",
+            "newValue": "Promotional montage of Le Grand 8, Star Tower and Star Flyer against a blue background."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Vista panorámica oficial de las atracciones de L'Île aux Géants.",
+            "newValue": "Montaje promocional de Le Grand 8, Star Tower y Star Flyer sobre fondo azul."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Vue panoramique officielle des attractions de L'Île aux Géants.",
+            "newValue": "Montage promotionnel du Grand 8, de Star Tower et de Star Flyer sur fond bleu."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Veduta panoramica ufficiale delle giostre di L'Île aux Géants.",
+            "newValue": "Montaggio promozionale di Le Grand 8, Star Tower e Star Flyer su sfondo blu."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Officieel panoramisch beeld van de attracties van L'Île aux Géants.",
+            "newValue": "Promotiemontage van Le Grand 8, Star Tower en Star Flyer tegen een blauwe achtergrond."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Oficjalna panorama atrakcji L'Île aux Géants.",
+            "newValue": "Montaż promocyjny Le Grand 8, Star Tower i Star Flyer na niebieskim tle."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Vista panorâmica oficial das diversões da L'Île aux Géants.",
+            "newValue": "Montagem promocional do Grand 8, da Star Tower e do Star Flyer sobre fundo azul."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Bunte Fahrgeschäfte heben sich zwischen den Bäumen des Parks in Dissay ab.",
+            "newValue": "Das Banner vereint den Zug auf rosa Schienen, Kettenstühle und geflügelte Gondeln zwischen Palmwedeln."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Colourful ride silhouettes stand among the trees of the Dissay park.",
+            "newValue": "The banner brings together the train on pink rails, flying chairs and winged gondolas between palm fronds."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Las siluetas de colores de las atracciones destacan entre los árboles del parque de Dissay.",
+            "newValue": "El cartel combina el tren sobre raíles rosas, las sillas voladoras y las góndolas aladas entre hojas de palmera."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les silhouettes colorées des manèges se détachent parmi les arbres du parc de Dissay.",
+            "newValue": "La bannière assemble le train sur ses rails roses, les chaises volantes et les nacelles ailées entre des palmes."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Le sagome colorate delle giostre emergono tra gli alberi del parco di Dissay.",
+            "newValue": "Il banner riunisce il treno sui binari rosa, i seggiolini volanti e le cabine alate tra foglie di palma."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Kleurrijke attracties tekenen zich af tussen de bomen van het park in Dissay.",
+            "newValue": "De banner combineert de trein op roze rails, zweefstoelen en gevleugelde gondels tussen palmbladeren."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Kolorowe sylwetki atrakcji wyróżniają się pośród drzew parku w Dissay.",
+            "newValue": "Baner łączy pociąg na różowych szynach, latające krzesełka i uskrzydlone gondole między liśćmi palm."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "As silhuetas coloridas das diversões destacam-se entre as árvores do parque de Dissay.",
+            "newValue": "O cartaz reúne o comboio nos carris cor-de-rosa, as cadeiras voadoras e as cabines aladas entre folhas de palmeira."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "73ad5b0ae1c04a4caeca8cb9088dfd7b",
+        "entityKey": null,
+        "displayName": "codex-import.png",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Logo officiel de L'Île aux Géants à Dissay.",
+            "newValue": "Logo de L’Île aux Géants en lettres rouges entre deux personnages de dessin animé."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Offizielles Logo von L'Île aux Géants in Dissay.",
+            "newValue": "Logo von L’Île aux Géants mit roter Schrift zwischen zwei Zeichentrickfiguren."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Official L'Île aux Géants logo in Dissay.",
+            "newValue": "L’Île aux Géants logo in red lettering between two cartoon characters."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Logotipo oficial de L'Île aux Géants en Dissay.",
+            "newValue": "Logotipo de L’Île aux Géants en letras rojas entre dos personajes de dibujos animados."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Logo officiel de L'Île aux Géants à Dissay.",
+            "newValue": "Logo de L’Île aux Géants en lettres rouges entre deux personnages de dessin animé."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Logo ufficiale di L'Île aux Géants a Dissay.",
+            "newValue": "Logo di L’Île aux Géants in lettere rosse tra due personaggi dei cartoni animati."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Officieel logo van L'Île aux Géants in Dissay.",
+            "newValue": "Logo van L’Île aux Géants in rode letters tussen twee tekenfilmfiguren."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Oficjalne logo L'Île aux Géants w Dissay.",
+            "newValue": "Logo L’Île aux Géants z czerwonym napisem pomiędzy dwiema rysunkowymi postaciami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Logótipo oficial da L'Île aux Géants em Dissay.",
+            "newValue": "Logótipo do L’Île aux Géants em letras vermelhas entre duas personagens de desenhos animados."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die Identität von L'Île aux Géants verbindet Familienfahrgeschäfte mit einer grünen Umgebung.",
+            "newValue": "Der Zusatz „Parc d’attractions“ begleitet den Parknamen; die beiden Figuren tragen Blumen und Blätter."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The identity of L'Île aux Géants brings family rides and a leafy setting together.",
+            "newValue": "The words “Parc d’attractions” accompany the park’s name; the two characters wear flowers and foliage."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La identidad de L'Île aux Géants une atracciones familiares y un entorno arbolado.",
+            "newValue": "La mención « Parc d’attractions » acompaña el nombre del parque; los dos personajes llevan flores y hojas."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "L'identité de L'Île aux Géants réunit manèges familiaux et cadre arboré.",
+            "newValue": "La mention « Parc d’attractions » accompagne le nom du parc ; les deux personnages portent des fleurs et des feuillages."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "L'identità di L'Île aux Géants unisce giostre familiari e ambiente verde.",
+            "newValue": "La scritta « Parc d’attractions » accompagna il nome del parco; i due personaggi indossano fiori e foglie."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De identiteit van L'Île aux Géants verenigt familieattracties met een groene omgeving.",
+            "newValue": "Onder de parknaam staat “Parc d’attractions”; de twee figuren dragen bloemen en bladeren."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Tożsamość L'Île aux Géants łączy rodzinne atrakcje z zielonym otoczeniem.",
+            "newValue": "Napis „Parc d’attractions” towarzyszy nazwie parku; obie postacie mają kwiaty i liście."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A identidade da L'Île aux Géants une diversões familiares e um ambiente arborizado.",
+            "newValue": "A expressão « Parc d’attractions » acompanha o nome do parque; as duas personagens usam flores e folhas."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "4f183c91d4834462ae2c31bd38ef346e",
+        "entityKey": null,
+        "displayName": "codex-import.webp",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Le galion rouge du Bateau Pirate se détache sur les arbres.",
+            "newValue": "Coque du Bateau Pirate peinte à l’imitation du bois, avec deux pirates dans des tonneaux."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die rote Galeone von Bateau Pirate hebt sich vor den Bäumen ab.",
+            "newValue": "Rumpf von Bateau Pirate in gemalter Holzoptik mit zwei Piraten in Fässern."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The red Bateau Pirate galleon stands out against the trees.",
+            "newValue": "Bateau Pirate’s hull painted to resemble timber, with two pirates in barrels."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "El galeón rojo de Bateau Pirate destaca ante los árboles.",
+            "newValue": "Casco de Bateau Pirate pintado a imitación de madera, con dos piratas en barriles."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Le galion rouge du Bateau Pirate se détache sur les arbres.",
+            "newValue": "Coque du Bateau Pirate peinte à l’imitation du bois, avec deux pirates dans des tonneaux."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Il galeone rosso di Bateau Pirate risalta tra gli alberi.",
+            "newValue": "Scafo di Bateau Pirate dipinto a imitazione del legno, con due pirati nelle botti."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Het rode galjoen van Bateau Pirate steekt af tegen de bomen.",
+            "newValue": "De romp van Bateau Pirate met geschilderde houtnerf en twee piraten in tonnen."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Czerwony galeon Bateau Pirate wyróżnia się na tle drzew.",
+            "newValue": "Kadłub Bateau Pirate pomalowany na wzór drewna, z dwoma piratami w beczkach."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "O galeão vermelho do Bateau Pirate destaca-se diante das árvores.",
+            "newValue": "Casco do Bateau Pirate pintado a imitar madeira, com dois piratas em barris."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Sein verzierter Rumpf prägt die Kulisse vor jedem weiten Schwung.",
+            "newValue": "Blaue und grüne Piraten überragen schwarze Tafeln mit roten Rosetten."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Its decorated hull shapes the scene before every sweeping swing.",
+            "newValue": "Blue and green pirates overlook black panels decorated with red rosettes."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Su casco decorado marca el paisaje antes de cada gran balanceo.",
+            "newValue": "Los piratas azules y verdes dominan paneles negros adornados con rosetas rojas."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Sa coque décorée marque le paysage avant chaque grand balancement.",
+            "newValue": "Les pirates bleu et vert surplombent les panneaux noirs ornés de rosaces rouges."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Lo scafo decorato caratterizza la scena prima di ogni grande oscillazione.",
+            "newValue": "I pirati blu e verdi dominano pannelli neri decorati con rosette rosse."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De versierde romp bepaalt het beeld voor elke ruime zwaai.",
+            "newValue": "Blauwe en groene piraten kijken uit over zwarte panelen met rode rozetten."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Zdobiony kadłub wyznacza scenerię przed każdym szerokim wahnięciem.",
+            "newValue": "Niebieskie i zielone postacie piratów górują nad czarnymi panelami z czerwonymi rozetami."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O casco decorado marca a paisagem antes de cada grande balanço.",
+            "newValue": "Os piratas azuis e verdes dominam painéis pretos decorados com rosetas vermelhas."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "4c56d24e2acf4eb9be298a2f419587d3",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Les petits véhicules de Pouss-Pouss attendent sur leur aire de jeu.",
+            "newValue": "Petites chaises suspendues de Pouss-Pouss autour d’une tour peinte en briques rouges et jaunes."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die kleinen Fahrzeuge von Pouss-Pouss warten auf ihrer Spielfläche.",
+            "newValue": "Kleine Hängesitze von Pouss-Pouss um einen Turm mit gemalten roten und gelben Ziegeln."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "The small Pouss-Pouss vehicles wait on their play circuit.",
+            "newValue": "Pouss-Pouss’s small hanging chairs around a tower painted with red and yellow bricks."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Los pequeños vehículos de Pouss-Pouss esperan en su zona de juego.",
+            "newValue": "Pequeñas sillas suspendidas de Pouss-Pouss alrededor de una torre pintada con ladrillos rojos y amarillos."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Les petits véhicules de Pouss-Pouss attendent sur leur aire de jeu.",
+            "newValue": "Petites chaises suspendues de Pouss-Pouss autour d’une tour peinte en briques rouges et jaunes."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "I piccoli veicoli di Pouss-Pouss attendono sulla loro area di gioco.",
+            "newValue": "Piccoli seggiolini sospesi di Pouss-Pouss attorno a una torre dipinta con mattoni rossi e gialli."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De kleine voertuigen van Pouss-Pouss staan klaar op hun speelbaan.",
+            "newValue": "Kleine hangstoeltjes van Pouss-Pouss rond een toren met geschilderde rode en gele stenen."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Małe pojazdy Pouss-Pouss czekają na swoim placu zabawy.",
+            "newValue": "Małe wiszące krzesełka Pouss-Pouss wokół wieży pomalowanej w czerwone i żółte cegły."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Os pequenos veículos de Pouss-Pouss esperam na sua área de jogo.",
+            "newValue": "Pequenas cadeiras suspensas do Pouss-Pouss à volta de uma torre pintada com tijolos vermelhos e amarelos."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Dieser niedrige, farbenfrohe Rundkurs ist auf kleine Kinder zugeschnitten.",
+            "newValue": "Blaue Wappen, ein spitzes Dach und gemalte Blumen bilden das kleine Schloss von Pouss-Pouss."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "This low, colourful circuit is designed on a scale for younger children.",
+            "newValue": "Blue shields, a pointed roof and painted flowers form Pouss-Pouss’s little castle."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Este circuito bajo y colorido está pensado a la escala de los pequeños.",
+            "newValue": "Escudos azules, tejado puntiagudo y flores pintadas forman el pequeño castillo de Pouss-Pouss."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Ce circuit bas et coloré est conçu à lʼéchelle des plus jeunes.",
+            "newValue": "Blasons bleus, toit pointu et fleurs peintes composent le petit château de Pouss-Pouss."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Questo circuito basso e colorato è pensato alla misura dei più piccoli.",
+            "newValue": "Stemmi blu, tetto a punta e fiori dipinti compongono il piccolo castello di Pouss-Pouss."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Dit lage, kleurrijke parcours is afgestemd op jonge kinderen.",
+            "newValue": "Blauwe wapenschilden, een puntdak en geschilderde bloemen vormen het kasteeltje van Pouss-Pouss."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Ta niska, kolorowa trasa jest dopasowana do najmłodszych dzieci.",
+            "newValue": "Niebieskie herby, spiczasty dach i malowane kwiaty tworzą mały zamek Pouss-Pouss."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Este circuito baixo e colorido foi pensado à escala das crianças mais novas.",
+            "newValue": "Brasões azuis, telhado pontiagudo e flores pintadas compõem o pequeno castelo do Pouss-Pouss."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9ad259ed2aaf41c9a112503acc6dd201",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "La structure rouge et blanche du Grand 8 sʼélève au-dessus de son quai.",
+            "newValue": "Rails roses et supports blancs du Grand 8 devant sa façade illustrée Avengers."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Die rot-weiße Konstruktion von Le Grand 8 erhebt sich über der Station.",
+            "newValue": "Rosa Schienen und weiße Stützen von Le Grand 8 vor der bemalten Avengers-Fassade."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Le Grand 8ʼs red-and-white structure rises above its platform.",
+            "newValue": "Le Grand 8’s pink rails and white supports in front of its illustrated Avengers façade."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "La estructura roja y blanca de Le Grand 8 se eleva sobre la estación.",
+            "newValue": "Raíles rosas y soportes blancos de Le Grand 8 ante su fachada ilustrada de Avengers."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "La structure rouge et blanche du Grand 8 sʼélève au-dessus de son quai.",
+            "newValue": "Rails roses et supports blancs du Grand 8 devant sa façade illustrée Avengers."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "La struttura rossa e bianca di Le Grand 8 si alza sopra la stazione.",
+            "newValue": "Binari rosa e sostegni bianchi di Le Grand 8 davanti alla facciata illustrata Avengers."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "De rood-witte constructie van Le Grand 8 rijst boven het station uit.",
+            "newValue": "Roze rails en witte steunen van Le Grand 8 voor de beschilderde Avengers-gevel."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Czerwono-biała konstrukcja Le Grand 8 wznosi się nad stacją.",
+            "newValue": "Różowe szyny i białe podpory Le Grand 8 przed fasadą z ilustracjami Avengers."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "A estrutura vermelha e branca do Le Grand 8 ergue-se sobre a estação.",
+            "newValue": "Carris cor-de-rosa e suportes brancos do Grand 8 diante da fachada ilustrada dos Avengers."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Kompakte Kurven verleihen dieser Achterbahn eine lebhafte Präsenz.",
+            "newValue": "Die Fassade verbindet Superheldenfiguren, blauen Himmel und gemalte Palmen."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Compact curves give this roller coaster a lively presence.",
+            "newValue": "The façade combines superhero characters, blue sky and painted palms."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Las curvas compactas dan a esta montaña rusa una presencia muy viva.",
+            "newValue": "La fachada combina superhéroes, cielo azul y palmeras pintadas."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Ses courbes compactes donnent une présence vive à cette montagne russe.",
+            "newValue": "La façade associe personnages de super-héros, ciel bleu et palmiers peints."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Le curve compatte danno a questa montagna russa una presenza vivace.",
+            "newValue": "La facciata unisce supereroi, cielo azzurro e palme dipinte."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Compacte bochten geven deze achtbaan een levendige uitstraling.",
+            "newValue": "De gevel combineert superhelden, een blauwe lucht en geschilderde palmen."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Zwarte zakręty nadają tej kolejce wyrazistą obecność.",
+            "newValue": "Fasada łączy superbohaterów, błękitne niebo i malowane palmy."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "As curvas compactas dão a esta montanha-russa uma presença viva.",
+            "newValue": "A fachada reúne super-heróis, céu azul e palmeiras pintadas."
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9a8f42dd0ee04195adc14ac6309a8f90",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Une embarcation du Bateau du Colorado flotte dans son bassin.",
+            "newValue": "Petites embarcations du Bateau du Colorado dans un bassin bleu bordé de marguerites peintes."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Ein Boot von Bateau du Colorado schwimmt in seinem Becken.",
+            "newValue": "Kleine Boote von Bateau du Colorado in einem blauen Becken mit gemalten Margeriten am Rand."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "A Bateau du Colorado boat floats in its pool.",
+            "newValue": "Small Bateau du Colorado boats in a blue pool edged with painted daisies."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Una embarcación de Bateau du Colorado flota en su estanque.",
+            "newValue": "Pequeñas embarcaciones de Bateau du Colorado en un estanque azul bordeado de margaritas pintadas."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Une embarcation du Bateau du Colorado flotte dans son bassin.",
+            "newValue": "Petites embarcations du Bateau du Colorado dans un bassin bleu bordé de marguerites peintes."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Unʼimbarcazione del Bateau du Colorado galleggia nel bacino.",
+            "newValue": "Piccole imbarcazioni di Bateau du Colorado in una vasca blu bordata di margherite dipinte."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Een bootje van Bateau du Colorado drijft in het bassin.",
+            "newValue": "Kleine bootjes van Bateau du Colorado in een blauw bassin met geschilderde margrieten langs de rand."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Łódź Bateau du Colorado unosi się na wodzie w basenie.",
+            "newValue": "Małe łódki Bateau du Colorado w niebieskim basenie z malowanymi margerytkami na brzegu."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Uma embarcação do Bateau du Colorado flutua no seu tanque.",
+            "newValue": "Pequenas embarcações do Bateau du Colorado num tanque azul ladeado de margaridas pintadas."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Wasser und Westernkulisse bilden ein kleines Abenteuer.",
+            "newValue": "Das blaue Becken und die großen weißen Blumen prägen die Kulisse von Bateau du Colorado."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Water and western scenery create a miniature adventure.",
+            "newValue": "The blue pool and large white flowers form Bateau du Colorado’s setting."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El agua y el decorado del Oeste componen una aventura en miniatura.",
+            "newValue": "El azul del estanque y las grandes flores blancas definen el decorado de Bateau du Colorado."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Lʼeau et le décor western composent une aventure miniature.",
+            "newValue": "Le bleu du bassin et les grandes fleurs blanches donnent leur décor au Bateau du Colorado."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Acqua e scenario western compongono unʼavventura in miniatura.",
+            "newValue": "Il blu della vasca e i grandi fiori bianchi caratterizzano lo scenario di Bateau du Colorado."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Water en westerndecor vormen samen een miniatuuravontuur.",
+            "newValue": "Het blauwe bassin en de grote witte bloemen vormen het decor van Bateau du Colorado."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Woda i westernowa sceneria tworzą miniaturową przygodę.",
+            "newValue": "Niebieski basen i duże białe kwiaty tworzą scenerię Bateau du Colorado."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A água e o cenário do Faroeste compõem uma aventura em miniatura.",
+            "newValue": "O azul do tanque e as grandes flores brancas compõem o cenário do Bateau du Colorado."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

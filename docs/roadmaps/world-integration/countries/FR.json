@@ -12831,7 +12831,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T01:09:44.663Z",
+      "lastDataIntegrationAt": "2026-11-15T01:26:19.208Z",
       "integrationHistory": [
         {
           "eventId": "apply-021c7c49-3a37-4b11-ac74-160837a53be2",
@@ -12922,6 +12922,46 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-restaurant-counter-20261115.json",
           "auditEvidence": null,
           "summary": "Import privé de la photographie officielle distincte du comptoir sucré d’O’resto d’Iros : modèles de gaufres identifiés, huit langues relues, aucun doublon."
+        },
+        {
+          "eventId": "apply-a9488ccf-7e72-45f0-a788-281f67f8f82a",
+          "appliedAt": "2026-11-15T01:13:57.120Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-08-historical-milestones-20261115.json",
+          "auditEvidence": null,
+          "summary": "Histoire : source et textes du fait 2013 corrigés, quatre nouveaux jalons privés du parc et ouverture 2024 du Bateau Pirate sur sa propre timeline ; huit langues relues, pas de fermeture définitive inventée."
+        },
+        {
+          "eventId": "apply-8328d6a4-3fc0-4577-844a-f66bffa547e3",
+          "appliedAt": "2026-11-15T01:16:32.611Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-founder-20261115.json",
+          "auditEvidence": null,
+          "summary": "Louis Ouvrard : référence résolue par nom dans la Preview officielle puis créée et rattachée, biographie huit langues sourcée et relue ; distinction avec son fils Luis et les homonymes, aucun état civil inventé."
+        },
+        {
+          "eventId": "apply-3be67876-a6b1-4b22-8cc2-a5af87b899c8",
+          "appliedAt": "2026-11-15T01:20:49.475Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-08-history-article-20261115.json",
+          "auditEvidence": null,
+          "summary": "Article général existant réécrit et relu intégralement dans huit langues, quatre sections historiques sourcées ; mêmes blocs et visibilité conservés, montage remplacé en couverture par la vraie photographie de la grande roue."
+        },
+        {
+          "eventId": "apply-2c89412d-c5a1-4c90-9422-626645ce8815",
+          "appliedAt": "2026-11-15T01:26:19.208Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-image-factual-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Sept médias existants corrigés en huit langues après examen des originaux : montages promotionnels, logo, Bateau Pirate, Pouss-Pouss, Grand 8 et Colorado. Identifiants, fichiers, crédits et visibilité conservés ; audit global non terminé."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

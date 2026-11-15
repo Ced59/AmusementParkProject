@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "4979c12d3880d4a0d2b18517a2ec2b32b9c12c675fdba381acc06177b7a53a6b",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "8328d6a4-3fc0-4577-844a-f66bffa547e3",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:16:32.6115481Z",
+    "appliedAtUtc": "2026-11-15T01:16:32.6115492Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkFounder",
+        "entityId": "c17a7916-bd3a-432d-a509-29088ba974c3",
+        "entityKey": "louis-ouvrard-ile-aux-geants",
+        "displayName": "Louis Ouvrard",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard ist der Schausteller hinter L’Île aux Géants, das 2013 nahe Poitiers zwischen Dissay und Jaunay-Marigny eröffnete. Er versammelte seine Fahrgeschäfte auf einem Grundstück an der ehemaligen Nationalstraße 10 und entwickelte dort einen baumbestandenen Park.</p><p>2022 setzte er sich im baurechtlichen Streit um das landwirtschaftliche Gelände für den Erhalt der Anlagen ein. Sein Sohn Luis gehört zum Familienunternehmen; 2025 führen Charlie und Luis Ouvrard den Saisonbetrieb des Parks.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard is the showman behind L’Île aux Géants, opened in 2013 near Poitiers, between Dissay and Jaunay-Marigny. He brought his rides together on land beside the former national road 10 and developed it into a tree-lined park.</p><p>In 2022, he defended the retention of the installations during the planning dispute over the agricultural site. His son Luis is part of the family venture; in 2025, Charlie and Luis Ouvrard run the park’s seasonal operations.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard es el feriante que creó L’Île aux Géants, abierto en 2013 cerca de Poitiers, entre Dissay y Jaunay-Marigny. Reunió sus atracciones en un terreno junto a la antigua carretera nacional 10 y lo convirtió en un parque arbolado.</p><p>En 2022 defendió la permanencia de las instalaciones durante el conflicto urbanístico sobre el suelo agrícola. Su hijo Luis participa en la empresa familiar; en 2025 Charlie y Luis Ouvrard se encargan de la explotación estacional del parque.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard est le forain à l’origine de L’Île aux Géants, ouvert en 2013 près de Poitiers, entre Dissay et Jaunay-Marigny. Il réunit ses manèges sur un terrain bordant l’ancienne route nationale 10 et y développe un parc arboré.</p><p>En 2022, il défend le maintien des installations lors du conflit d’urbanisme concernant le terrain agricole. Son fils Luis participe à cette aventure familiale ; en 2025, Charlie et Luis Ouvrard assurent l’exploitation saisonnière du parc.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard è il giostraio che ha fondato L’Île aux Géants, aperto nel 2013 vicino a Poitiers, tra Dissay e Jaunay-Marigny. Ha riunito le sue giostre su un terreno lungo l’ex strada nazionale 10, sviluppandovi un parco alberato.</p><p>Nel 2022 ha difeso la permanenza degli impianti durante la controversia urbanistica sul terreno agricolo. Anche suo figlio Luis partecipa all’impresa familiare; nel 2025 Charlie e Luis Ouvrard gestiscono l’attività stagionale del parco.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard is de kermisexploitant achter L’Île aux Géants, dat in 2013 bij Poitiers opende, tussen Dissay en Jaunay-Marigny. Hij bracht zijn attracties samen op een terrein langs de voormalige nationale weg 10 en maakte er een park met bomen van.</p><p>In 2022 verdedigde hij het behoud van de installaties tijdens het geschil over de bestemming van de landbouwgrond. Zijn zoon Luis is betrokken bij het familiebedrijf; in 2025 verzorgen Charlie en Luis Ouvrard de seizoensgebonden exploitatie.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard jest właścicielem wesołego miasteczka, który stworzył L’Île aux Géants, otwarte w 2013 roku pod Poitiers, między Dissay a Jaunay-Marigny. Zgromadził swoje atrakcje przy dawnej drodze krajowej nr 10 i urządził tam park wśród drzew.</p><p>W 2022 roku bronił pozostawienia urządzeń podczas sporu urbanistycznego dotyczącego gruntu rolnego. W rodzinnym przedsięwzięciu uczestniczy jego syn Luis; w 2025 roku Charlie i Luis Ouvrard prowadzą sezonową działalność parku.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<p>Louis Ouvrard é o empresário de diversões que criou o L’Île aux Géants, aberto em 2013 perto de Poitiers, entre Dissay e Jaunay-Marigny. Reuniu as suas diversões num terreno junto à antiga estrada nacional 10 e desenvolveu ali um parque arborizado.</p><p>Em 2022 defendeu a permanência das instalações no litígio urbanístico sobre o terreno agrícola. O seu filho Luis participa no empreendimento familiar; em 2025, Charlie e Luis Ouvrard asseguram a exploração sazonal do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "founderId",
+            "oldValue": null,
+            "newValue": "c17a7916-bd3a-432d-a509-29088ba974c3"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

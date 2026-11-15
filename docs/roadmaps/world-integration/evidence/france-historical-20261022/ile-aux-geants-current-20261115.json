@@ -3,7 +3,7 @@
   "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T01:10:22.579724+00:00",
+  "observedAtUtc": "2026-11-15T01:27:11.894322+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -20,8 +20,9 @@
     "status": "Operating",
     "operatorId": "545cb39c-ae35-45f6-a208-72fdd7e08bec",
     "operatorName": "OFE / OUVRARD FIOT ET SES ENFANTS",
-    "founderId": null,
-    "noDuplicateCreated": true
+    "founderId": "c17a7916-bd3a-432d-a509-29088ba974c3",
+    "noDuplicateCreated": true,
+    "founderName": "Louis Ouvrard"
   },
   "reconciliation": {
     "search": {
@@ -59,7 +60,10 @@
     "existingHistoryEvents": 1,
     "existingArticles": 1,
     "fixedItemCoordinates": 0,
-    "newPrivateImages": 2
+    "newPrivateImages": 2,
+    "newPrivateHistoryEvents": 5,
+    "existingArticlesRewrittenEightLanguages": 1,
+    "existingImageTextSetsCorrected": 9
   },
   "acceptedApplies": [
     {
@@ -152,6 +156,58 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-04-restaurant-20261115.json"
+    },
+    {
+      "operationId": "a9488ccf-7e72-45f0-a788-281f67f8f82a",
+      "appliedAtUtc": "2026-11-15T01:13:57.120586Z",
+      "counts": {
+        "created": 5,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-08-historical-milestones-20261115.json"
+    },
+    {
+      "operationId": "8328d6a4-3fc0-4577-844a-f66bffa547e3",
+      "appliedAtUtc": "2026-11-15T01:16:32.6115492Z",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-founder-20261115.json"
+    },
+    {
+      "operationId": "3be67876-a6b1-4b22-8cc2-a5af87b899c8",
+      "appliedAtUtc": "2026-11-15T01:20:49.4756706Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-08-history-article-20261115.json"
+    },
+    {
+      "operationId": "2c89412d-c5a1-4c90-9422-626645ce8815",
+      "appliedAtUtc": "2026-11-15T01:26:19.208935Z",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 5,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-05-image-factual-corrections-20261115.json"
     }
   ],
   "reviewedItems": [
@@ -368,6 +424,36 @@
         "captureDate": null,
         "review": "Photographie originale examinée personnellement ; deuxième photo montrant des modèles de présentation de gaufres, non des plats prétendus servis. Pas de millésime inventé ; fichiers distincts des 19 médias précédents."
       }
+    ],
+    "historySources": [
+      {
+        "name": "history-fire",
+        "url": "https://www.le7.info/article/23118-dissay-violent-incendie-sur-lile-aux-geants",
+        "status": 200,
+        "sha256": "6638eea57114a59035892d48ac9dc1c67be29acc297104a5d54ae0e942519a34",
+        "retrievedAtUtc": "2026-11-15T01:09:40.398701+00:00"
+      },
+      {
+        "name": "history-appeal",
+        "url": "https://www.le7.info/article/23920-dissay-lile-aux-geants-devra-etre-demontee-a-la-fin-de-la-saison",
+        "status": 200,
+        "sha256": "40615e58456c9166c28b095a1ffcfe176cf2d0d41db85956148b217d3bf2ccef",
+        "retrievedAtUtc": "2026-11-15T01:09:42.084420+00:00"
+      },
+      {
+        "name": "history-2025",
+        "url": "https://my-angers.info/05/30/jaunay-marigny-lile-aux-geants-rouvre-ses-portes-pour-trois-mois-dattractions-sous-surveillance-judiciaire/163779",
+        "status": 200,
+        "sha256": "256b1f004a8fc4426e6e6810a63ce2d99d74c05c15b00b6c775d1610871a099b",
+        "retrievedAtUtc": "2026-11-15T01:09:43.924550+00:00"
+      },
+      {
+        "name": "history-2023",
+        "url": "https://my-angers.info/06/01/reouverture-du-parc-dattractions-lile-aux-geants-a-dissay/128812",
+        "status": 200,
+        "sha256": "96d10200dd2c81ecbc0dc7592acee83d7137110624105407cfb153461fa7ace9",
+        "retrievedAtUtc": "2026-11-15T01:09:45.175278+00:00"
+      }
     ]
   },
   "gaps": {
@@ -384,7 +470,7 @@
       "361e07dd6fb449ae856edf00fb33fe9f"
     ],
     "watermarkPolicy": "10 old original item photos visibly carry Coasterrider watermark; retained existing images, no new watermark import or cropping. Need proper replacements; not a rights-consent question.",
-    "parkPhotoMislabel": "2 old park images are promotional composites, not actual leafy panoramas. Existing captions and generic article require correction.",
+    "parkPhotoMislabel": "Deux montages promotionnels hérités conservés mais désormais décrits correctement dans les huit langues ; illustration principale de l’article remplacée par la photographie existante de la grande roue.",
     "noOwnImageItems": [
       "Aires de pique-nique",
       "Manège enchanté",
@@ -414,7 +500,7 @@
       "Trampolines",
       "Trampolines n° 2"
     ],
-    "history": "2013 article needs full rewrite/review; 2022 planning litigation, fire 23 Feb2024, appellate decision10 Jul2024 and actual2025 reopening found, not yet integrated. Decision does not prove permanent closure.",
+    "history": "Article développé huit langues réécrit et appliqué, blocs/identité/publication existants conservés. Ancien fait2013 corrigé ; quatre faits parc 2022/2024/2025 et un fait Bateau Pirate2024 privés, pas encore audités globalement. Photo réelle de l’incendie introuvable, événement sans photo ; photographie de la roue contextualise l’article général, sans prétendre représenter l’incendie.",
     "additionalCandidates": "Official old galleries name entrance/souvenir shop, duck fishing and games room; current status following2024 reception fire needs qualification. No items created.",
     "calendar": "Official2026 image: June weekends and July4–Aug31; no2027dates found. Website advertises10:30–18:00, officialFacebook says10:30–18:30 fromJuly4; discrepancy preserved, no schedule edited.",
     "maps": "No official dated interior plan found. Unrelated Canadian Île aux Géants and communityOSM are not substitutes.",
@@ -428,8 +514,8 @@
     "newAnnouncementSent": false
   },
   "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-geants",
-  "workingStateSha256": "8c9242290d37c6b370dbe223ade13a06dfd421570a83eac76cc5713ba87fa55d",
-  "nextAction": "Poursuivre les quatre dernières notices, les textes images, les photos, les références et histoire, puis horaires/tarifs. Deux photos restaurant privées à inclure dans audit/publication. Aucun export complet final ni clôture.",
+  "workingStateSha256": "0320a6ff4d48f1aac1c898194ad85c200390f1f3fc0dd8d4b4dc4e420f3031ee",
+  "nextAction": "Finir les quatre notices restantes et les dix anciennes légendes d’images, compléter les recherches photos/inventaire ancien/positions et horaires-tarifs. Export ciblé OpeningHours/Pricing en cours pour IDs absents. Aucun export complet final ni clôture.",
   "acceptedImports": [
     {
       "imageId": "c5ea8c26cbd547008c1db3708c3290cf",

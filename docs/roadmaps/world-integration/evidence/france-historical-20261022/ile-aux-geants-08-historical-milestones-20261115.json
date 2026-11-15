@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "owner": "Conversation France",
+  "documentSha256": "558d882701281b9c8f74028b85fe98a90667176ff6664a4743cc1b2ba4575529",
+  "review": "Correction ciblée du corpus existant : huit langues rédigées et relues personnellement, observations confrontées au site officiel et à ses photographies originales, Preview entièrement relu avant Apply. Aucun audit final ni clôture globale.",
+  "result": {
+    "operationId": "a9488ccf-7e72-45f0-a788-281f67f8f82a",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T01:13:57.1205845Z",
+    "appliedAtUtc": "2026-11-15T01:13:57.120586Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 5,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9d12b9c8-8e52-4a18-af77-30c2efa7a9ea",
+        "entityKey": "ile-aux-geants-opening-2013",
+        "displayName": "Louis Ouvrard ouvre L’Île aux Géants",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "titles",
+            "oldValue": "de:L'Île aux Géants eröffnet in Dissay, en:L'Île aux Géants opens in Dissay, es:L'Île aux Géants abre en Dissay, fr:L'Île aux Géants ouvre à Dissay, it:L'Île aux Géants apre a Dissay, nl:L'Île aux Géants opent in Dissay, pl:L'Île aux Géants otwiera się w Dissay, pt:A L'Île aux Géants abre em Dissay",
+            "newValue": "de:Louis Ouvrard eröffnet L’Île aux Géants, en:Louis Ouvrard opens L’Île aux Géants, es:Louis Ouvrard abre L’Île aux Géants, fr:Louis Ouvrard ouvre L’Île aux Géants, it:Louis Ouvrard apre L’Île aux Géants, nl:Louis Ouvrard opent L’Île aux Géants, pl:Louis Ouvrard otwiera L’Île aux Géants, pt:Louis Ouvrard abre o L’Île aux Géants"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:Die Eröffnung 2013 brachte einen dauerhaften Park mit Jahrmarktstradition nach Dissay. Dieser Ursprung erklärt bis heute die Identität: klassische Fahrgeschäfte in grüner Umgebung als lokales Ausflugsziel., en:The 2013 opening established a permanent park in Dissay rooted in fairground tradition. That origin still explains its identity today: classic rides gathered in a leafy setting and operated as a local destination., es:La apertura en 2013 instala en Dissay un parque permanente nacido de la tradición ferial. Ese origen aún explica su identidad: atracciones clásicas reunidas en un entorno arbolado como destino local., fr:L'ouverture en 2013 installe à Dissay un parc permanent issu de la tradition foraine. Ce point de départ explique encore l'identité actuelle : des manèges classiques réunis dans un cadre arboré et exploités comme une destination locale., it:L'apertura nel 2013 porta a Dissay un parco permanente nato dalla tradizione fieristica. Questa origine spiega ancora l'identità attuale: giostre classiche riunite in un ambiente alberato come destinazione locale., nl:De opening in 2013 bracht in Dissay een permanent park voort uit de kermistraditie. Die oorsprong verklaart nog steeds de identiteit: klassieke attracties in een groene omgeving als lokale bestemming., pl:Otwarcie w 2013 roku stworzyło w Dissay stały park wywodzący się z tradycji lunaparkowej. To pochodzenie nadal określa jego tożsamość: klasyczne atrakcje w zielonym otoczeniu jako lokalny cel wyjazdu., pt:A abertura em 2013 instalou em Dissay um parque permanente com raízes na tradição das feiras. Essa origem ainda explica a identidade atual: diversões clássicas reunidas num ambiente arborizado como destino local.",
+            "newValue": "de:Schausteller Louis Ouvrard gründet L’Île aux Géants 2013 nahe der ehemaligen Nationalstraße 10. Die Fahrgeschäfte stehen auf landwirtschaftlichem Gelände, dessen dauerhafte Bebauung später zum Kern eines baurechtlichen Streits wird., en:Showman Louis Ouvrard establishes L’Île aux Géants in 2013 beside the former national road 10. Rides are brought together on agricultural land, whose permanent development will later become the focus of a planning dispute., es:El feriante Louis Ouvrard funda L’Île aux Géants en 2013, junto a la antigua carretera nacional 10. El proyecto reúne atracciones en un terreno agrícola cuya instalación permanente se convertirá en el centro de un conflicto urbanístico., fr:Le forain Louis Ouvrard fonde L’Île aux Géants en 2013, près de l’ancienne route nationale 10. Le projet rassemble des manèges sur un terrain agricole, dont l’aménagement permanent deviendra le cœur du litige d’urbanisme., it:Il giostraio Louis Ouvrard fonda L’Île aux Géants nel 2013, vicino all’ex strada nazionale 10. Il progetto riunisce le giostre su un terreno agricolo, la cui sistemazione permanente diventerà il fulcro di una controversia urbanistica., nl:Kermisexploitant Louis Ouvrard richt L’Île aux Géants in 2013 op bij de voormalige nationale weg 10. De attracties komen op landbouwgrond te staan; de permanente inrichting ervan wordt later de kern van een geschil over ruimtelijke ordening., pl:Właściciel wesołego miasteczka Louis Ouvrard zakłada L’Île aux Géants w 2013 roku przy dawnej drodze krajowej nr 10. Atrakcje trafiają na grunt rolny, którego trwała zabudowa stanie się później przedmiotem sporu urbanistycznego., pt:O empresário de diversões Louis Ouvrard funda o L’Île aux Géants em 2013, junto à antiga estrada nacional 10. O projeto reúne diversões num terreno agrícola, cuja instalação permanente se tornará o centro de um litígio urbanístico."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"Guide-O-Parc \\u2014 L\\u02BC\\u00CEle aux G\\u00E9ants\",\"Url\":\"https://guide-o-parc.com/site/index.php?action=park\\u0026id=275\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 site officiel\",\"Url\":\"https://ileauxgeants.fr/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 attractions\",\"Url\":\"https://ileauxgeants.fr/attractions/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 informations pratiques\",\"Url\":\"https://ileauxgeants.fr/infos-pratiques/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"Roller Coaster DataBase \\u2014 L\\u02BC\\u00CEle aux G\\u00E9ants\",\"Url\":\"https://rcdb.com/12948.htm\",\"AccessedAt\":\"2026-10-03\"}]",
+            "newValue": "[{\"Label\":\"Le Parisien \\u2014 reportage de Fabien Paillot, 26 octobre 2022\",\"Url\":\"https://www.leparisien.fr/culture-loisirs/pres-de-poitiers-un-parc-dattractions-familial-condamne-au-demantelement-26-10-2022-LHPLD2LKV5EILAFSUYIDXDUSXA.php\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "41f789e3-ab47-4aca-b360-3fcbb35c0d68",
+        "entityKey": "ile-aux-geants-planning-judgment-2022",
+        "displayName": "Un jugement impose le démontage des installations",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "ile-aux-geants-planning-judgment-2022"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2022"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "LegalDispute"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein Urteil ordnet den Abbau der Anlagen an, en:A judgment orders the rides to be dismantled, es:Una sentencia ordena desmontar las instalaciones, fr:Un jugement impose le démontage des installations, it:Una sentenza impone lo smontaggio degli impianti, nl:Een vonnis beveelt de afbraak van de installaties, pl:Wyrok nakazuje demontaż urządzeń, pt:Uma sentença impõe a desmontagem das instalações"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Im Oktober 2022 ordnet das Gericht in Poitiers den Abbau der Anlagen auf dem landwirtschaftlichen Gelände innerhalb von sechs Monaten an. Louis Ouvrard legt Berufung ein. Streitpunkt ist die dauerhafte Nutzung des Grundstücks; in den folgenden Saisons bleibt der Park in Betrieb., en:In October 2022, the Poitiers court orders the installations on the agricultural site to be dismantled within six months. Louis Ouvrard appeals. The dispute concerns permanent occupation of the land; the park continues operating in subsequent seasons., es:En octubre de 2022, el tribunal de Poitiers ordena desmontar en seis meses las instalaciones del terreno agrícola. Louis Ouvrard recurre. La disputa trata de la ocupación permanente del solar, mientras el parque sigue funcionando en las temporadas posteriores., fr:En octobre 2022, le tribunal de Poitiers ordonne le démontage des installations sur ce terrain agricole, avec un délai de six mois. Louis Ouvrard fait appel : le conflit porte sur l’occupation durable du site, tandis que l’exploitation se poursuit les saisons suivantes., it:Nell’ottobre 2022 il tribunale di Poitiers ordina di smontare entro sei mesi gli impianti sul terreno agricolo. Louis Ouvrard presenta appello. La controversia riguarda l’occupazione permanente del sito, mentre il parco continua l’attività nelle stagioni successive., nl:In oktober 2022 beveelt de rechtbank van Poitiers de installaties op de landbouwgrond binnen zes maanden af te breken. Louis Ouvrard gaat in beroep. Het geschil gaat over het permanente gebruik van het terrein; het park blijft de volgende seizoenen open., pl:W październiku 2022 roku sąd w Poitiers nakazuje demontaż urządzeń na gruncie rolnym w ciągu sześciu miesięcy. Louis Ouvrard składa apelację. Spór dotyczy stałego zajęcia terenu, a park działa również w kolejnych sezonach., pt:Em outubro de 2022, o tribunal de Poitiers ordena a desmontagem das instalações no terreno agrícola no prazo de seis meses. Louis Ouvrard recorre. O litígio diz respeito à ocupação permanente do local, enquanto o parque continua a funcionar nas épocas seguintes."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le 7 n\\u00B0688, 3\\u20139 juin 2025, page 18 \\u2014 r\\u00E9ouverture saisonni\\u00E8re\",\"Url\":\"https://www.le7.info/uploads/pdf/683e75867a5d4.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Le Parisien \\u2014 reportage de Fabien Paillot, 26 octobre 2022\",\"Url\":\"https://www.leparisien.fr/culture-loisirs/pres-de-poitiers-un-parc-dattractions-familial-condamne-au-demantelement-26-10-2022-LHPLD2LKV5EILAFSUYIDXDUSXA.php\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "de0fbf0d-ba3f-40bb-9f29-6e5db88c67a7",
+        "entityKey": "ile-aux-geants-reception-fire-20240223",
+        "displayName": "L’accueil et des annexes touchés par un incendie",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "ile-aux-geants-reception-fire-20240223"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "23"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Fire"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Brand trifft Empfang und Nebengebäude, en:Fire affects reception and adjoining buildings, es:Un incendio afecta a la recepción y los anexos, fr:L’accueil et des annexes touchés par un incendie, it:Un incendio colpisce l’accoglienza e gli annessi, nl:Brand treft ontvangstgebouw en bijgebouwen, pl:Pożar obejmuje recepcję i budynki pomocnicze, pt:Incêndio atinge a receção e os anexos"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Während der Winterpause trifft ein Brand Empfang und Lagergebäude. Verletzte werden nicht gemeldet; die Ursache bleibt im ersten Bericht ungeklärt., en:A fire affects reception and storage buildings during the winter closure. No injuries are reported; its cause remains undetermined in the initial report., es:Un incendio afecta a la recepción y los almacenes durante el cierre invernal. No se comunican heridos; la causa sigue sin determinarse en el primer balance., fr:Un incendie touche l’accueil et des annexes de stockage pendant la fermeture hivernale. Aucun blessé n’est signalé ; la cause reste indéterminée lors du premier bilan., it:Un incendio colpisce l’accoglienza e i depositi durante la chiusura invernale. Non risultano feriti; la causa resta indeterminata nel primo bilancio., nl:Tijdens de wintersluiting treft een brand de ontvangst- en opslaggebouwen. Er worden geen gewonden gemeld; de oorzaak is bij de eerste berichtgeving onbekend., pl:Podczas przerwy zimowej pożar obejmuje recepcję i magazyny. Nie odnotowano rannych; w pierwszym komunikacie przyczyna pozostaje nieustalona., pt:Um incêndio atinge a receção e os armazéns durante o encerramento de inverno. Não são registados feridos; a causa permanece indeterminada no primeiro balanço."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le 7 \\u2014 incendie du 23 f\\u00E9vrier 2024\",\"Url\":\"https://www.le7.info/article/23118-dissay-violent-incendie-sur-lile-aux-geants\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ca7efa1b-6859-4baa-9520-0fffbc8c7f92",
+        "entityKey": "ile-aux-geants-appeal-judgment-20240710",
+        "displayName": "La cour d’appel confirme l’obligation de démontage",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "ile-aux-geants-appeal-judgment-20240710"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "7"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "LegalDispute"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Berufungsgericht bestätigt die Pflicht zum Abbau, en:The appeal court confirms the dismantling requirement, es:La corte de apelación confirma la obligación de desmontaje, fr:La cour d’appel confirme l’obligation de démontage, it:La corte d’appello conferma l’obbligo di smontaggio, nl:Hof bevestigt de verplichting tot afbraak, pl:Sąd apelacyjny potwierdza obowiązek demontażu, pt:O tribunal de recurso confirma a obrigação de desmontagem"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Berufungsgericht in Poitiers erklärt die ganzjährige Aufstellung für rechtswidrig und verlangt den Abbau nach der Saison. Die Entscheidung regelt die Grundstücksnutzung; spätere Wiedereröffnungen führen den Sommerbetrieb mit saisonalem Auf- und Abbau fort., en:The Poitiers appeal court rules that year-round installation is unlawful and requires dismantling after the season. The decision governs occupation of the land; subsequent reopenings retain summer operations with rides assembled and taken down seasonally., es:La corte de apelación de Poitiers declara ilegal la instalación durante todo el año y exige desmontarla tras la temporada. La decisión regula la ocupación del terreno; las reaperturas posteriores mantienen la actividad estival con montaje y desmontaje estacionales., fr:La cour d’appel de Poitiers juge illégale l’installation à l’année et impose un démontage après la saison. Cette décision encadre l’occupation du terrain ; les réouvertures ultérieures conservent une exploitation estivale avec remontage et démontage des manèges., it:La corte d’appello di Poitiers giudica illegale l’installazione per tutto l’anno e impone lo smontaggio dopo la stagione. La decisione disciplina l’occupazione del terreno; le riaperture successive mantengono l’attività estiva con montaggio e smontaggio stagionali delle giostre., nl:Het hof in Poitiers verklaart de jaarronde opstelling onrechtmatig en eist afbraak na het seizoen. De uitspraak regelt het gebruik van de grond; bij latere heropeningen blijft het park zomers actief met seizoensgebonden opbouw en afbraak., pl:Sąd apelacyjny w Poitiers uznaje całoroczne ustawienie urządzeń za nielegalne i nakazuje demontaż po sezonie. Wyrok reguluje użytkowanie gruntu; późniejsze otwarcia zachowują letnią działalność z sezonowym montażem i demontażem atrakcji., pt:O tribunal de recurso de Poitiers considera ilegal a instalação durante todo o ano e exige a desmontagem após a época. A decisão regula a ocupação do terreno; as reaberturas posteriores mantêm a atividade de verão com montagem e desmontagem sazonais."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Le 7 \\u2014 d\\u00E9cision du 10 juillet 2024\",\"Url\":\"https://www.le7.info/article/23920-dissay-lile-aux-geants-devra-etre-demontee-a-la-fin-de-la-saison\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Le 7 n\\u00B0688, 3\\u20139 juin 2025, page 18 \\u2014 r\\u00E9ouverture saisonni\\u00E8re\",\"Url\":\"https://www.le7.info/uploads/pdf/683e75867a5d4.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "7f1912f5-e669-40c6-9d7a-99c0c46e678d",
+        "entityKey": "ile-aux-geants-seasonal-return-20250529",
+        "displayName": "Une réouverture estivale sous le régime du démontage saisonnier",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "ile-aux-geants-seasonal-return-20250529"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "29"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Reopening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Sommerliche Wiedereröffnung mit saisonalem Abbau, en:Summer reopening under seasonal dismantling rules, es:Reapertura estival con desmontaje por temporada, fr:Une réouverture estivale sous le régime du démontage saisonnier, it:Riapertura estiva con smontaggio stagionale, nl:Zomerse heropening met seizoensgebonden afbraak, pl:Letnie otwarcie z sezonowym demontażem, pt:Reabertura de verão com desmontagem sazonal"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 29. Mai 2025 empfängt der Park wieder Gäste für eine Saison bis zum 31. August. Nach dem Berufungsurteil bestätigt die Wiedereröffnung, dass die Familie Ouvrard den Betrieb unter der Auflage eines Abbaus zum Sommerende fortsetzt., en:The park welcomes visitors again on 29 May 2025 for a season running until 31 August. Following the appeal ruling, this reopening confirms that the Ouvrard family’s operations continue under arrangements requiring dismantling at the end of summer., es:El parque vuelve a recibir visitantes el 29 de mayo de 2025 para una temporada hasta el 31 de agosto. Tras la sentencia de apelación, esta reapertura confirma que la familia Ouvrard sigue operando con la obligación de desmontar las instalaciones al final del verano., fr:Le parc accueille de nouveau les visiteurs le 29 mai 2025 pour une saison allant jusqu’au 31 août. Après la décision d’appel, cette reprise confirme la poursuite des activités de la famille Ouvrard dans un cadre imposant le démontage à la fin de l’été., it:Il parco accoglie nuovamente i visitatori il 29 maggio 2025 per una stagione fino al 31 agosto. Dopo la sentenza d’appello, la riapertura conferma il proseguimento dell’attività della famiglia Ouvrard con l’obbligo di smontare gli impianti alla fine dell’estate., nl:Op 29 mei 2025 ontvangt het park opnieuw bezoekers voor een seizoen tot en met 31 augustus. Na de uitspraak in hoger beroep bevestigt deze heropening dat de familie Ouvrard doorgaat, met de verplichting de installaties na de zomer af te breken., pl:Park ponownie przyjmuje gości 29 maja 2025 roku na sezon trwający do 31 sierpnia. Po wyroku apelacyjnym otwarcie potwierdza dalszą działalność rodziny Ouvrard z obowiązkiem demontażu urządzeń pod koniec lata., pt:O parque volta a receber visitantes em 29 de maio de 2025, para uma época até 31 de agosto. Após a decisão de recurso, esta reabertura confirma a continuidade da atividade da família Ouvrard, com desmontagem obrigatória no fim do verão."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Angers Info \\u2014 r\\u00E9ouverture du 29 mai 2025 et offre du parc\",\"Url\":\"https://my-angers.info/05/30/jaunay-marigny-lile-aux-geants-rouvre-ses-portes-pour-trois-mois-dattractions-sous-surveillance-judiciaire/163779\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Le 7 n\\u00B0688, 3\\u20139 juin 2025, page 18 \\u2014 r\\u00E9ouverture saisonni\\u00E8re\",\"Url\":\"https://www.le7.info/uploads/pdf/683e75867a5d4.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f83e854d-7e81-41fb-820f-3a6a230e49ab",
+        "entityKey": "ile-aux-geants-pirate-ship-opening-2024",
+        "displayName": "Le Bateau Pirate rejoint les attractions",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "ile-aux-geants-pirate-ship-opening-2024"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "00d39b64-33fb-4dde-a512-d744f5230df0"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "00d39b64-33fb-4dde-a512-d744f5230df0"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "4f183c91d4834462ae2c31bd38ef346e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Bateau Pirate ergänzt die Fahrgeschäfte, en:Bateau Pirate joins the rides, es:Bateau Pirate se incorpora a las atracciones, fr:Le Bateau Pirate rejoint les attractions, it:Bateau Pirate si aggiunge alle attrazioni, nl:Bateau Pirate komt bij het attractieaanbod, pl:Bateau Pirate dołącza do atrakcji, pt:O Bateau Pirate junta-se às diversões"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Seit 2024 ergänzt Bateau Pirate den Park mit seinem großen Schiff und Piratenfiguren in Fässern. Es reiht sich neben Riesenrad und Karussell in die bereits vorhandenen Familienfahrgeschäfte ein., en:Introduced in 2024, Bateau Pirate brings its large hull and pirates perched in barrels to the park. It joins the established family rides alongside the Ferris wheel and carousel., es:Incorporado en 2024, Bateau Pirate aporta al parque su gran casco con piratas encaramados en barriles. Se suma a las atracciones familiares ya presentes, junto a la noria y el carrusel., fr:Introduit en 2024, le Bateau Pirate apporte au parc sa grande coque décorée de pirates dans des tonneaux. Il rejoint les attractions familiales déjà installées, aux côtés de la grande roue et du carrousel., it:Introdotto nel 2024, Bateau Pirate porta nel parco il suo grande scafo con pirati appollaiati nelle botti. Si aggiunge alle attrazioni per famiglie già presenti, accanto alla ruota panoramica e al carosello., nl:Bateau Pirate verschijnt in 2024 met zijn grote schip en piratenfiguren in tonnen. Het sluit aan bij de bestaande familieattracties, naast het reuzenrad en de carrousel., pl:Wprowadzony w 2024 roku Bateau Pirate wnosi do parku duży statek z figurami piratów w beczkach. Dołącza do istniejących atrakcji rodzinnych obok koła widokowego i karuzeli., pt:Introduzido em 2024, o Bateau Pirate traz ao parque o seu grande casco com piratas empoleirados em barris. Junta-se às diversões familiares já existentes, ao lado da roda panorâmica e do carrossel."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"L\\u2019\\u00CEle aux G\\u00E9ants \\u2014 attractions et photographie du Bateau Pirate\",\"Url\":\"https://ileauxgeants.fr/attractions/\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Angers Info \\u2014 r\\u00E9ouverture du 29 mai 2025 et offre du parc\",\"Url\":\"https://my-angers.info/05/30/jaunay-marigny-lile-aux-geants-rouvre-ses-portes-pour-trois-mois-dattractions-sous-surveillance-judiciaire/163779\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialReviewPassed": true,
+  "allItemsEditorialAuditPassed": false
+}
