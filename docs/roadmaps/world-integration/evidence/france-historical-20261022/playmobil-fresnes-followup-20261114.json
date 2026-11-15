@@ -1,0 +1,1265 @@
+{
+  "entryId": "FR-candidate-13b50050620a99",
+  "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+  "name": "Playmobil FunPark Fresnes",
+  "checkedAtUtc": "2026-11-14T23:53:36.000692+00:00",
+  "outcome": "partial",
+  "dataMutationThisReview": false,
+  "lastDataIntegrationAt": "2026-11-01T14:33:27.779Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-receipts.json#apply-042d47b6-8540-48f0-9477-7c899f471f53",
+  "priorFullAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-publication-audit.json",
+  "closedParkScoreToleranceAccepted": true,
+  "actualScore": {
+    "startedAtUtc": "2026-11-14T23:44:22.9189574Z",
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-14T23:44:23.4671295Z",
+    "result": {
+      "completenessScore": 92,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 103,
+      "earnedPoints": 95,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "parkName": "Playmobil FunPark Fresnes",
+      "factCount": 22,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 6
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 16
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 6,
+        "sourcedFactCount": 6,
+        "majorFactCount": 6,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-14T23:44:50.6919595Z",
+    "receivedAtUtc": "2026-11-14T23:44:51.1966988Z"
+  },
+  "sitePublished": true,
+  "facebook": {
+    "receivedAtUtc": "2026-11-14T23:46:24.8010307Z",
+    "startedAtUtc": "2026-11-14T23:46:23.9532207Z",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Playmobil FunPark Fresnes ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Playmobil FunPark Fresnes! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Playmobil FunPark Fresnes",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "d875aa39e6eb4c47ae4852844cc72314",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125617357424431",
+      "images": {
+        "data": [
+          {
+            "id": "a8ba40a1272e4e40b09a4cd0e3819b40",
+            "label": "Les univers de jeu réunis dans la grande salle de Fresnes, en mars 2022.",
+            "isCurrent": true,
+            "width": 1024,
+            "height": 683
+          },
+          {
+            "id": "e39b6c660fd64c6dac0cab6a0a0cede7",
+            "label": "Le château de la Cerisaie photographié lors d’une visite en mars 2022.",
+            "isCurrent": false,
+            "width": 1200,
+            "height": 1800
+          },
+          {
+            "id": "1d182b49c0994558be9754d6f853ed19",
+            "label": "Les avions surplombaient les tables et la mezzanine, en mars 2022.",
+            "isCurrent": false,
+            "width": 1024,
+            "height": 683
+          },
+          {
+            "id": "5c358142a8fe41b68e220d18fb59b94f",
+            "label": "Le château de Fresnes le 24 juin 2022, alors que la fermeture pour fin juillet vient d’être annoncée.",
+            "isCurrent": false,
+            "width": 2576,
+            "height": 1932
+          },
+          {
+            "id": "edc00f4de3874625bd87c285b72663e7",
+            "label": "La vente des archives Playmobil à l’Hôtel Drouot, à Paris, le 26 septembre 2026.",
+            "isCurrent": false,
+            "width": 2016,
+            "height": 1512
+          }
+        ],
+        "pagination": {
+          "totalItems": 5,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "action": "ResolveFacebookPublication"
+  },
+  "newFacebookPublication": false,
+  "coverage": {
+    "freshAtUtc": "2026-11-01T14:24:28.2464679Z",
+    "items": 19,
+    "zones": 0,
+    "attractions": 12,
+    "attractionStatuses": {
+      "ClosedDefinitively": 12
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 12,
+    "attractionsWithImage": 10,
+    "attractionImageGaps": [
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux"
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures"
+      }
+    ],
+    "ownedImages": 24,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+        "name": "La Boutique Playmobil",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+        "name": "La Ferme",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+        "name": "Le Bateau des pirates",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+        "name": "Le Chantier",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+        "name": "Le Chapiteau des animations",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+        "name": "Le Château des chevaliers",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+        "name": "Le Château des princesses",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+        "name": "Le Point accueil",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+        "name": "Les Maisons et les commerçants",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+        "name": "Les Sanitaires de l’étage",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+        "name": "Les Sanitaires du rez-de-chaussée",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+        "name": "L’Aire des tout-petits",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+        "name": "L’Entrée du château",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+        "name": "L’Espace restauration",
+        "category": "Restaurant",
+        "images": 1
+      },
+      {
+        "id": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+        "name": "L’Univers de la police",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+        "name": "L’Univers des pompiers",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+        "name": "L’Univers du cirque",
+        "category": "Attraction",
+        "images": 1
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+        "name": "La Boutique Playmobil",
+        "category": "Shop",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+        "name": "La Ferme",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+        "name": "Le Bateau des pirates",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+        "name": "Le Chantier",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+        "name": "Le Chapiteau des animations",
+        "category": "Show",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+        "name": "Le Château des chevaliers",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+        "name": "Le Château des princesses",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+        "name": "Le Point accueil",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+        "name": "Le Zoo et les animaux",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+        "name": "Les Maisons et les commerçants",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+        "name": "Les Sanitaires de l’étage",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+        "name": "Les Sanitaires du rez-de-chaussée",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+        "name": "L’Aire des tout-petits",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+        "name": "L’Entrée du château",
+        "category": "Service",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+        "name": "L’Espace restauration",
+        "category": "Restaurant",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+        "name": "L’Univers de la police",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+        "name": "L’Univers des dinosaures",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+        "name": "L’Univers des pompiers",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      },
+      {
+        "id": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+        "name": "L’Univers du cirque",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 6,
+    "itemHistory": 0,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "manualReviewBasis": "Corpus personally authored and reviewed in the prior audit, compared against the fresh export with no unexplained difference; complete raw-text and repetition checks rerun. Any later source-only correction has its own bound review and verified Apply."
+  },
+  "idempotence": {
+    "uniqueEntities": 51,
+    "previews": [
+      {
+        "operationId": "781aac91-dc6a-40b5-8444-cfcf4d3b2357",
+        "previewedAtUtc": "2026-11-14T23:48:57.9996498Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 21,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "1095fe45-c5fc-4400-a943-e7ea7216c226",
+        "previewedAtUtc": "2026-11-14T23:52:27.1764169Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 45,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "6d4d1fca-0786-4f4f-99d4-222eeb6d6d67",
+        "previewedAtUtc": "2026-11-14T23:52:53.6912671Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 51,
+          "warnings": 0,
+          "errors": 0
+        }
+      }
+    ]
+  },
+  "corpus": {
+    "checkedAtUtc": "2026-11-14T23:47:50.516571+00:00",
+    "sourceSha256": "6e3d8923468e79241e6c4d6ee9c38ff34b04c4e508139fd145a6c26537aff129",
+    "rawPublicStringsChecked": 1161,
+    "technicalStringsSeparated": 1449,
+    "localizedEditorialFields": 840,
+    "encodingIssues": [],
+    "exactCrossEntityMatches": [],
+    "nearCrossEntityMatches": [],
+    "manualReviewRequired": true
+  },
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-14T23:46:32.395988+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes à Fresnes, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5751,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:34.414415+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "L'histoire de Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2283,
+      "h1": [
+        "L'histoire de Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:36.356212+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Article : Playmobil FunPark : le château disparu de Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 7174,
+      "h1": [
+        "Playmobil FunPark : le château disparu de Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:38.687632+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 5269,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:40.203533+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "The history of Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2071,
+      "h1": [
+        "The history of Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:41.672496+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Article: Playmobil FunPark: Fresnes’ vanished castle - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 6538,
+      "h1": [
+        "Playmobil FunPark: Fresnes’ vanished castle"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:43.730202+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5689,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:45.334451+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "Die Geschichte von Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2282,
+      "h1": [
+        "Die Geschichte von Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:46.841920+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Artikel: Playmobil FunPark: die verschwundene Burg von Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 6955,
+      "h1": [
+        "Playmobil FunPark: die verschwundene Burg von Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:48.950376+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5495,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:50.399150+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "De geschiedenis van Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2315,
+      "h1": [
+        "De geschiedenis van Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:51.990547+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Artikelpagina: Playmobil FunPark: het verdwenen kasteel van Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 6836,
+      "h1": [
+        "Playmobil FunPark: het verdwenen kasteel van Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:54.068423+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5709,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:46:58.579645+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "La storia di Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2220,
+      "h1": [
+        "La storia di Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:00.642195+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Articolo: Playmobil FunPark: il castello scomparso di Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 6922,
+      "h1": [
+        "Playmobil FunPark: il castello scomparso di Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:05.447654+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5763,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:08.740253+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "La historia de Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2227,
+      "h1": [
+        "La historia de Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:10.571704+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Artículo: Playmobil FunPark: el castillo desaparecido de Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 7002,
+      "h1": [
+        "Playmobil FunPark: el castillo desaparecido de Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:12.998664+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5396,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:15.123183+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "Historia Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2238,
+      "h1": [
+        "Historia Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:19.410760+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Artykuł: Playmobil FunPark: zamek, który zniknął z Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 6435,
+      "h1": [
+        "Playmobil FunPark: zamek, który zniknął z Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:23.340012+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes",
+      "status": 200,
+      "title": "Playmobil FunPark Fresnes — Fresnes, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5647,
+      "h1": [
+        "Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:32.834562+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "status": 200,
+      "title": "A história de Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 2217,
+      "h1": [
+        "A história de Playmobil FunPark Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:47:34.719176+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history/bee57ba2-f01a-48da-835e-297eb99d5fea/fresnes-playmobil-funpark-castle-memory",
+      "status": 200,
+      "title": "Artigo: Playmobil FunPark: o castelo desaparecido de Fresnes - Playmobil FunPark Fresnes — Amusement Parks",
+      "bodyCharacters": 6837,
+      "h1": [
+        "Playmobil FunPark: o castelo desaparecido de Fresnes"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "normalNavigation": [
+    {
+      "target": "park",
+      "url": "https://amusement-parks.fun/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "href": "/fr/park/e88afcf6-3f31-4d21-8db3-fa7dfca604f8/playmobil-funpark-fresnes/history",
+      "h1": [
+        "L'histoire de Playmobil FunPark Fresnes"
+      ],
+      "bodyLength": 1825,
+      "technical": [
+        "OTHER"
+      ],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-14T23:49:14.492771+00:00"
+    }
+  ],
+  "finalAuditPassed": false,
+  "remainingBlocker": {
+    "kind": "PublicHistoryTypeLabel",
+    "observed": "OTHER displayed in each of the eight history routes, including ordinary park-to-history navigation.",
+    "eventKey": "fresnes-former-exhibits-auction-2026-09-26",
+    "meaning": "Vente caritative de pièces anciennes du parc, pas une vente du parc ni un changement de propriétaire.",
+    "officialContractFinding": "ParkGraphExportHistoryEvent and ParkGraphUpsertProcessorHistoryExtensions do not expose or accept otherTypeLabel. Other is supported when sourced. No unofficial field or administration route used.",
+    "requiredWork": "Correct the application localization of the canonical Other history badge; then repeat public route checks. Preserve the sourced event type and text.",
+    "gateReference": "docs/codex-guidelines/park-data-integration-steps/09-final-audit-and-publication.md, contrôle public sans enum brut."
+  },
+  "scoreDoesNotBlock": true,
+  "residualSourceGaps": {
+    "gapsEvidence": "step-applicability-and-source-gaps.json",
+    "generalParkPhotographs": {
+      "count": 4,
+      "target": 5,
+      "auctionPhotoIsAnEventImageNotGeneralOverview": true
+    },
+    "importantItemsWithThreePhotographs": {
+      "covered": 1,
+      "total": 3
+    },
+    "imageExclusionsEvidence": "additional-photo-exclusions.json",
+    "documentedSourceGaps": {
+      "parkId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
+      "entryId": "FR-candidate-13b50050620a99",
+      "reviewedAtUtc": "2026-10-28",
+      "zones": {
+        "applicable": false,
+        "reason": "Indoor play areas are the inventoried parkItems; no independently named lands supported by official pages."
+      },
+      "openingHours": {
+        "applicable": false,
+        "reason": "Definitively closed 31 July 2022. No current calendar."
+      },
+      "pricing": {
+        "applicable": false,
+        "reason": "Definitively closed. Archived 2008/2017/2021 prices are historical evidence, not a current offer."
+      },
+      "maps": {
+        "accepted": 0,
+        "years": [],
+        "checked": [
+          "Official archived park and play-area pages 2008",
+          "Official archived page and activity/attendance calendars 2017",
+          "Official archived park page 2021",
+          "2019 French brand catalogue",
+          "Searches for Fresnes official annual map and floorplan"
+        ],
+        "exclusions": [
+          "2017 Plan link leads to Google access map, not annual park plan",
+          "2017 PDFs are attendance and activity calendars, not maps",
+          "2019 German FunPark plan depicts another park",
+          "French catalogue page is an advertisement, not a plan, and third-party PDF is watermarked"
+        ],
+        "reason": "No official annual floorplan located for this small indoor site; no edition year invented."
+      },
+      "geolocation": {
+        "covered": 0,
+        "total": 19,
+        "parkCoordinate": "Official archived Google place link supplies park point only. No georeferenced interior floorplan. Historical interior moved/reconfigured, current supermarket layout cannot locate former areas reliably.",
+        "missing": [
+          {
+            "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+            "name": "Le Château des chevaliers",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+            "name": "Le Château des princesses",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+            "name": "Le Bateau des pirates",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "186b3503-feec-405b-a2e4-f3011daa4fc7",
+            "name": "La Ferme",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+            "name": "Le Zoo et les animaux",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "4be5431e-f824-4be0-b654-4a4df301f9b0",
+            "name": "Les Maisons et les commerçants",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "19d1d54a-8f44-4218-af01-32146ee2c3ee",
+            "name": "L’Aire des tout-petits",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "ea9a2965-fd8c-47df-b5cd-ac45d45fd03c",
+            "name": "L’Univers de la police",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "a370a43d-a4eb-485a-a6b6-701d9b91ae83",
+            "name": "L’Univers des pompiers",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "ab96c94c-4fc8-4cb6-9c3c-b474a220af75",
+            "name": "Le Chantier",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "e544659f-fb7c-4a35-90b0-20822387ef2e",
+            "name": "L’Univers du cirque",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+            "name": "L’Univers des dinosaures",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "3bfc608b-09cf-4063-8f09-1eac4fd091ed",
+            "name": "L’Espace restauration",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "edd7c8ac-d0b6-4bf4-88e3-bd5202641754",
+            "name": "La Boutique Playmobil",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "93bcec4b-5af6-4b68-9cba-222fb1367b67",
+            "name": "Le Point accueil",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "dd0ff973-daeb-41f0-9f9a-69b17d55394e",
+            "name": "L’Entrée du château",
+            "reason": "Historic facade documented photographically, but precise entrance point not established by an identifiable georeferenced source; park centroid not copied."
+          },
+          {
+            "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+            "name": "Les Sanitaires du rez-de-chaussée",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+            "name": "Les Sanitaires de l’étage",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          },
+          {
+            "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+            "name": "Le Chapiteau des animations",
+            "reason": "Precise historical interior position unproven; relative visitor descriptions do not provide defensible GPS."
+          }
+        ]
+      },
+      "accessConditions": {
+        "checked": 12,
+        "known": [
+          "fresnes-petits: age 18–36 months from official archived page and 2022 report"
+        ],
+        "sources": [
+          "Official play areas 2008",
+          "Official facts 2008",
+          "Official park pages 2017 and 2021",
+          "2022 Family Globe-Trotters visit"
+        ],
+        "remaining": "Other play areas have no separately stated item-specific age, height or accompaniment limits. General park child-supervision rule is not invented as a ride restriction."
+      },
+      "shorterDescriptions": {
+        "reason": "Small indoor play installations rather than rides with independently documented histories. Specific scenery and play content described where visible; service text is limited to sourced function and placement. Word counts recorded in final audit; no padding.",
+        "particularlyLimited": [
+          {
+            "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+            "name": "Le Zoo et les animaux",
+            "reason": "Official archived theme list and 2022 closure reporting identify the toy theme, but no reliably attributable individual scene, date or setting detail survived searches."
+          },
+          {
+            "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+            "name": "L’Univers des dinosaures",
+            "reason": "Official archived theme list and 2022 closure reporting identify the toy theme, but no reliably attributable individual scene, date or setting detail survived searches."
+          }
+        ]
+      },
+      "itemTimelines": {
+        "created": 0,
+        "reason": "No individual opening, remodelling or closure date established. Historical inventory combines themes recorded at different dates; applying 1999 or 31 July 2022 to all would invent lifetimes. Park-level closure and article explain overall disappearance. No claims of transfer or object preservation."
+      },
+      "referenceImages": {
+        "operator": "Jeux Jouets Services legal operator has no separately verified brand logo/portrait in registry or official archive. Do not duplicate Playmobil park logo as legal-company logo.",
+        "founder": "No proven personal founder; brand creator not assumed to be Fresnes founder.",
+        "manufacturer": "Toy brand is not a proven attraction-structure manufacturer; no inferred manufacturer references."
+      },
+      "mediaResearch": {
+        "families": [
+          "Official archived PLAYMOBIL pages and six original photos",
+          "2017 official PDF native logo extraction",
+          "Sortiraparis 16 original gallery files",
+          "Family Globe-Trotters 25 visit photos",
+          "Le Parisien contemporary closure and reconversion reporting",
+          "Vinci Autoroutes",
+          "LotsaFunMaps",
+          "Écomusée local heritage page"
+        ],
+        "mainPhotoAndLogo": true,
+        "generalPhotos": {
+          "count": 4,
+          "target": 5,
+          "files": [
+            "05-park-hall",
+            "05-park-facade",
+            "05-park-aircraft",
+            "05-park-june2022"
+          ],
+          "reason": "Hall, facade at two distinct angles and decorated mezzanine. Other hall frames are near duplicates, attraction close-ups do not qualify. Wrong-park LotsaFunMaps and generic Vinci images rejected. No fifth independently useful overview found."
+        },
+        "importantItems": [
+          {
+            "id": "8063ad83-ef24-438a-8e18-73447bcb3367",
+            "name": "Le Château des chevaliers",
+            "count": 3,
+            "target": 3,
+            "reason": "Wide older scene, official play-table scene and 2022 dragon guard close-up provide complementary views."
+          },
+          {
+            "id": "05387cd4-3402-4cbd-91ec-17e378d9ceba",
+            "name": "Le Château des princesses",
+            "count": 2,
+            "target": 3,
+            "reason": "Whole palace scenery and close view of pink miniature palaces. Other 2022 frame foreground is a child and pirate toys, with princess backdrop soft/out of focus; not added just for count."
+          },
+          {
+            "id": "8e1f874f-95b3-48c5-8a84-443a024a5cd1",
+            "name": "Le Bateau des pirates",
+            "count": 2,
+            "target": 3,
+            "reason": "Large walk-aboard ship and miniature boats at its base. Mascot/pirate portraits outside this area cannot be counted as a third installation view."
+          }
+        ],
+        "missing": [
+          {
+            "id": "9dfd5a45-be53-4ac7-8dec-302ab8e0017f",
+            "name": "Le Zoo et les animaux",
+            "reason": "No photograph attributable to the specific Fresnes zoo area. Shop animal shelves and other FunParks excluded."
+          },
+          {
+            "id": "07b49a78-35cc-4e32-afe6-af9df97255ee",
+            "name": "L’Univers des dinosaures",
+            "reason": "No securely identified photograph of the Fresnes dinosaur play area. Generic toy imagery excluded."
+          },
+          {
+            "id": "59bb9521-a211-4c73-a24e-f9d2f9eac143",
+            "name": "Les Sanitaires du rez-de-chaussée",
+            "reason": "Visitor text identifies ground-floor block; no identified unobstructed photograph found."
+          },
+          {
+            "id": "eccf56e9-3873-4894-b08a-aa5bb3d388d6",
+            "name": "Les Sanitaires de l’étage",
+            "reason": "Visitor text identifies upper block; no identified photograph found."
+          },
+          {
+            "id": "f042c241-1460-49b5-81f6-c9edc641f82c",
+            "name": "Le Chapiteau des animations",
+            "reason": "Activity tent identified in visitor text; birthday-room photo and miniature toy circus are different spaces and were rejected as substitutes."
+          }
+        ],
+        "eventPhotos": {
+          "opening": "No contemporary 1999 opening photograph located; March 2022 operating hall explicitly captioned.",
+          "announcement": "Actual press photograph dated 24 June 2022 by LP/Fanny Delporte, source and caption checked, imported original bytes.",
+          "closure": "24 June 2022 facade contextualizes closure, not represented as final-day photograph.",
+          "reconversion": "Actual 13 December 2023 LP/Marine Legrand photo found. Original 1861849 bytes exceeds 960 KiB; published reduced variant blocked by proxy. No recompression; pre-closure facade caption clearly dates June 2022.",
+          "heritage": "No image of a physical donation inferred from collection recognition. Historical facade represents remembered place.",
+          "article": "June 2022 closure-announcement reportage main image, March 2022 hall within article."
+        }
+      }
+    }
+  },
+  "recoveryExportSha256": "6e3d8923468e79241e6c4d6ee9c38ff34b04c4e508139fd145a6c26537aff129"
+}

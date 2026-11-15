@@ -1,0 +1,1096 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-e85014d661e1cf",
+  "parkId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+  "name": "Aqwaland Martinique",
+  "owner": "Conversation France",
+  "checkedAtUtc": "2026-11-15T00:14:04.385787+00:00",
+  "outcome": "completed",
+  "finalAuditPassed": true,
+  "ownerAuthorization": {
+    "ownerInstructionDateUtc": "2026-11-14",
+    "instruction": "Publie tout avec fb aussi. Les parcs définitivement fermes on peut avoir une tolérance sur la note. Et tu finis l’intégration de tous les parcs francais. Pas seulement les définitivement fermes.",
+    "application": "Aqwaland Martinique, définitivement fermé : score réel 90/100 accepté selon cette tolérance ; audit antérieur confirmé, lacunes de sources conservées."
+  },
+  "acceptedScore": 90,
+  "officialCompleteness": {
+    "result": {
+      "completenessScore": 90,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 103,
+      "earnedPoints": 93,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "receivedAtUtc": "2026-11-15T00:05:40.5383012Z",
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-15T00:05:39.9976329Z"
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T00:05:55.2781170Z",
+    "startedAtUtc": "2026-11-15T00:05:54.8523625Z",
+    "result": {
+      "parkId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+      "parkName": "Aqwaland Martinique",
+      "factCount": 19,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 2,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 6
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 13
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 6,
+        "sourcedFactCount": 6,
+        "majorFactCount": 5,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics"
+  },
+  "coverage": {
+    "freshAtUtc": "2026-11-02T08:29:21.6660143Z",
+    "items": 15,
+    "zones": 0,
+    "attractions": 7,
+    "attractionStatuses": {
+      "ClosedDefinitively": 7
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 7,
+    "attractionsWithImage": 6,
+    "attractionImageGaps": [
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne"
+      }
+    ],
+    "ownedImages": 24,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+        "name": "Black Hole",
+        "category": "Attraction",
+        "images": 2
+      },
+      {
+        "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+        "name": "Cabane à glace",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "104b94d7-26d5-4a7f-9634-224e1552fd50",
+        "name": "Colorado",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "d8901acf-2972-40a9-8276-0154d6c01611",
+        "name": "Crazy race",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+        "name": "Entrée d’Aqwaland",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+        "name": "Kazaland",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+        "name": "Le Monarque",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+        "name": "Le Morne Pique",
+        "category": "Restaurant",
+        "images": 0
+      },
+      {
+        "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+        "name": "Le Petit Piton",
+        "category": "Restaurant",
+        "images": 1
+      },
+      {
+        "id": "ac09276e-e3ab-4977-b188-8026613653fa",
+        "name": "Mini Parc",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "509772c1-defd-4c93-9442-2d40841cb402",
+        "name": "Parking",
+        "category": "Service",
+        "images": 0
+      },
+      {
+        "id": "61ad1e7a-4114-42a4-8df3-38fba4945da4",
+        "name": "Piscine à vagues",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+        "name": "Sokol Show",
+        "category": "Show",
+        "images": 0
+      },
+      {
+        "id": "5e988026-9b9f-4e97-8833-876f7a0eaa3e",
+        "name": "Super Slalom",
+        "category": "Attraction",
+        "images": 3
+      },
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 6,
+    "geolocationGaps": [
+      {
+        "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+        "name": "Cabane à glace",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+        "name": "Entrée d’Aqwaland",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+        "name": "Kazaland",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+        "name": "Le Monarque",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+        "name": "Le Morne Pique",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+        "name": "Le Petit Piton",
+        "category": "Restaurant",
+        "status": null
+      },
+      {
+        "id": "509772c1-defd-4c93-9442-2d40841cb402",
+        "name": "Parking",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+        "name": "Sokol Show",
+        "category": "Show",
+        "status": null
+      },
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne",
+        "category": "Attraction",
+        "status": "ClosedDefinitively"
+      }
+    ],
+    "history": 6,
+    "parkHistory": 6,
+    "itemHistory": 0,
+    "historyWithSource": 6,
+    "historyWithImage": 6,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "corpusFields": 952,
+    "itemsPublished": 15,
+    "itemsPrivate": 0,
+    "itemsWithEightDescriptions": 15,
+    "fixedItemsGeolocated": 6,
+    "fixedItemsTotal": 14,
+    "generalPhotographs": 5,
+    "currentAuthenticLogo": true,
+    "attractionsWithThreePhotographs": 4,
+    "officialMapEditions": 0
+  },
+  "priorFullEditorialAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-publication-audit.json",
+  "priorFullAuditExportAtUtc": "2026-11-02T08:29:21.6660143Z",
+  "auditMethod": "Confirmation de l’audit complet du 2 novembre, avec export ciblé pour récupération des identifiants perdus. Aucun nouvel export complet, aucune mutation, aucune republication du parc ni de Facebook. Les données confirmées sont rapprochées dans trois Previews sans changement.",
+  "recoveryExport": {
+    "exportedAtUtc": "2026-11-15T00:06:31.5219248Z",
+    "sha256": "5be0bc73b7c8bb8d2048371cc97f9bd0f3a194131e22f2d78d960d7dfbd2ee2b",
+    "sections": [
+      "ParkBasics",
+      "ParkDescriptions",
+      "References",
+      "Zones",
+      "Items",
+      "Images",
+      "History",
+      "OfficialMaps"
+    ]
+  },
+  "idempotence": {
+    "previews": [
+      {
+        "operationId": "8ee763f9-a6b9-48a6-8b57-c22ea045fd2f",
+        "previewedAtUtc": "2026-11-15T00:07:14.3839845Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 17,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "343629fb-268e-4bee-9265-570f3549d6bb",
+        "previewedAtUtc": "2026-11-15T00:07:41.6991299Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 41,
+          "warnings": 0,
+          "errors": 0
+        }
+      },
+      {
+        "operationId": "6bff6927-2fa5-4d4f-bb0e-10619a33e0cd",
+        "previewedAtUtc": "2026-11-15T00:08:23.3521375Z",
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 47,
+          "warnings": 0,
+          "errors": 0
+        }
+      }
+    ],
+    "uniqueEntities": 47,
+    "unexpectedMutations": 0
+  },
+  "corpusConfirmation": {
+    "priorPersonalReview": {
+      "fields": 952,
+      "languages": 8,
+      "encodingIssues": 0,
+      "editorialFlags": 0,
+      "paragraphDuplicateGroups": 0,
+      "crossCorpusSequenceGroups": 0,
+      "personalReviewComplete": true
+    },
+    "currentReviewScope": "Les textes ont été personnellement relus dans les huit langues lors de l’audit complet du 2 novembre. Cette reprise confirme cet audit inchangé par rapprochement, contrôles transversaux et pages publiques ; elle ne revendique pas une nouvelle relecture intégrale.",
+    "rawPublicStringsChecked": 1077,
+    "localizedEditorialFields": 760,
+    "encodingIssues": 0,
+    "exactCrossEntityMatches": 0,
+    "nearCrossEntityMatches": 0
+  },
+  "residualGaps": {
+    "sourceFamilies": [
+      "Official operator archives",
+      "Official tourism guides and IEDOM",
+      "Corporate register",
+      "CTM/IGN public sources",
+      "Regional press RCI/France-Antilles/ZayActu",
+      "Specialist ParcPlaza and professional interview Amusement Logic",
+      "Visitor imagery reproduced by press"
+    ],
+    "photoAndReferenceGaps": [
+      "Tyrolienne : aucune photo propre ni coordonnées de départ/arrivée établies ; description historique documentée, parcours et mesures inconnus.",
+      "Black Hole : deux vues fidèles ; photo complémentaire de presse porte watermark et est refusée.",
+      "Crazy race : une photo propre après fermeture ; photos officielles spécifiques indisponibles 404 ; montage 2018 et miniatures écartés.",
+      "Sokol Show : photographie promotionnelle de plongeur trouvée en presse 2012 mais aucun élément ne prouve cette prise de vue au Carbet ; ne pas attribuer un autre lieu.",
+      "Le Morne Pique, Cabane à glace, Le Monarque, Parking : aucune vue propre ni emplacement précis établis.",
+      "Petit Piton, Kazaland, Entrée : une vue chacun ; coordonnées exactes non prouvées.",
+      "Aucune identité personnelle de fondateur ou de constructeur d’attraction établie. Investisseurs martiniquais collectifs non nommés dans entretien de directeur 2026.",
+      "Aucune image autonome de l’exploitant liée avec certitude ; eliliane.jpg est un portrait dans un autre cadre, identité non prouvée par le nom de fichier."
+    ],
+    "maps": {
+      "accepted": 0,
+      "research": [
+        "Archive officielle domaine aqwaland.fr : CDX global, 35 photographies conservées, pages attractions, services, restaurants, plan et plan d’accès 2012–2014.",
+        "PlanSat et plan d’accès renvoient une carte routière Google ; pas de plan intérieur annuel. Image plan.jpg inaccessible 403 : aucun contournement.",
+        "Guides officiels tourisme français 2014–2015 et anglais 2015 : cartes de la Martinique, pas des bassins.",
+        "Recherches Aqwaland/Aqualand Martinique plan du parc, carte 2012/2013, presse régionale, sources spécialisées ParcPlaza et fonds photographiques de visiteurs : aucune édition annuelle intérieure authentifiée."
+      ],
+      "result": "No genuine annual visitor-map edition identified; no invented year or community map substituted."
+    },
+    "resolutionException": "Several native official originals survive only at 200px (one whole-site aerial170px). Exact identity and readable scene personally checked; larger suitable source preferred where found (Colorado640, gate640, Crazyrace528, CTM/drone1000, IGN1300). No local enlargement, crop, recompression, watermark removal or reconstruction.",
+    "fixedGeolocation": {
+      "covered": 6,
+      "total": 14,
+      "gaps": [
+        "Tyrolienne",
+        "Le Morne Pique",
+        "Cabane à glace",
+        "Le Monarque",
+        "Le Petit Piton",
+        "Kazaland",
+        "Entrée d’Aqwaland",
+        "Parking"
+      ],
+      "nonFixedGap": "Sokol Show : site exact de scène non établi ; aucun point au centre du parc."
+    },
+    "attractionAccess": {
+      "reviewed": 7,
+      "structuredRulesProved": 0,
+      "gap": "Pages officielles de chaque attraction, services, guides touristiques et photographies consultés ; aucune restriction exacte fiable retrouvée. Pas de taille ou âge inventé."
+    },
+    "individualDatesAndManufacturers": "Dates individuelles d’ouverture et de fermeture, constructeurs et modèle non établis. Six ensembles aquatiques présents avant arrêt général de 2013 ; tyrolienne encore listée dans guide 2014–2015 sans exploitation prouvée. Aucun jour individuel inventé.",
+    "shortDescriptionExceptions": [
+      {
+        "id": "f4ca23ea-b362-4301-880a-225b108ad6f0",
+        "name": "Black Hole",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "eaa0160c-1740-4885-938c-6de8f26b0214",
+        "name": "Cabane à glace",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "104b94d7-26d5-4a7f-9634-224e1552fd50",
+        "name": "Colorado",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "d8901acf-2972-40a9-8276-0154d6c01611",
+        "name": "Crazy race",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "eb0c3b86-0df2-4fa4-a0f5-d35d10e4b5ad",
+        "name": "Entrée d’Aqwaland",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "d6555c00-cceb-498e-bd8e-4d0cadc971b9",
+        "name": "Kazaland",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "feb90bbb-a75a-4ea5-8fbc-3fea2f99d18f",
+        "name": "Le Monarque",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "f5458282-2d9d-45bd-8560-d1a8a08d6b20",
+        "name": "Le Morne Pique",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "3dbdd29c-aa87-4e55-b891-8115f3a854ff",
+        "name": "Le Petit Piton",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "ac09276e-e3ab-4977-b188-8026613653fa",
+        "name": "Mini Parc",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "509772c1-defd-4c93-9442-2d40841cb402",
+        "name": "Parking",
+        "reason": "Parking attesté par un témoignage de randonnée daté, aucune capacité, limite ou offre tarifaire prouvée après recherche. Description brève strictement limitée à cette fonction historique."
+      },
+      {
+        "id": "61ad1e7a-4114-42a4-8df3-38fba4945da4",
+        "name": "Piscine à vagues",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "407efabd-3619-4d9f-9f18-53e8bfcb73ae",
+        "name": "Sokol Show",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "5e988026-9b9f-4e97-8833-876f7a0eaa3e",
+        "name": "Super Slalom",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      },
+      {
+        "id": "8b5da5c1-a544-4a3b-85eb-98413e69857f",
+        "name": "Tyrolienne",
+        "reason": "Archives officielles des attractions, restaurants/services, photographies et presse exploitées. Texte limité aux caractéristiques propres et documentées ; pas de seconde section ou de paragraphes de remplissage pour atteindre un seuil."
+      }
+    ],
+    "historyPhotoContext": {
+      "mapping": {
+        "aqwaland-opening-2004": "05-aerial",
+        "aqwaland-domaine-pitons-2012": "05-panorama",
+        "aqwaland-closure-2013": "05-drone-2022",
+        "aqwaland-ctm-acquisition-2017": "05-ign-site",
+        "aqwaland-project-call-2023": "05-ctm-garden",
+        "aqwaland-sale-decision-2024": "05-drone-2022"
+      },
+      "eventPhotograph": "2023 : photographie CTM effectivement diffusée avec appel à projets.",
+      "contextualFallbacks": {
+        "opening-2004": "Vue générale officielle des années d’activité, date exacte de prise de vue inconnue, jamais présentée comme inauguration.",
+        "domaine-pitons-2012": "Panorama officiel des bassins dans le domaine, contexte du site, pas une cérémonie ou une vue inventée de la tyrolienne.",
+        "closure-2013": "Vue Jérémy Thomin 2022, explicitement légendée neuf ans après la dernière saison, illustre suites matérielles sans dater le cliché 2013.",
+        "ctm-acquisition-2017": "Emprise IGN du site acquis, date de photographie inconnue et aucun acte de signature illustré.",
+        "sale-decision-2024": "Photo du terrain abandonné 2022, contexte physique du bien mis en vente, pas séance plénière."
+      },
+      "research": "Actual event photos searched in primary/archive/operator, government and contemporary regional press before choosing exact-site context; no suitable actual-event photograph established for these five facts."
+    },
+    "currentHoursAndPricing": {
+      "assessedAtUtc": "2026-11-01T18:09:28.980476+00:00",
+      "status": "ClosedDefinitively",
+      "lastOperatingSeason": 2013,
+      "openingHours": {
+        "applicable": false,
+        "reason": "Parc fermé définitivement après la saison achevée le 1er septembre 2013. Aucun calendrier futur officiel ; ne pas recopier en horaires actuels les archives 2012–2013.",
+        "coveredFutureDays": 0,
+        "uncoveredPublishedDays": 0,
+        "overlaps": 0
+      },
+      "pricing": {
+        "applicable": false,
+        "reason": "Aucune offre actuelle vendable pour ce parc fermé. Les tarifs historiques trouvés ne sont pas des offres actives et ne doivent pas être présentés comme tels.",
+        "activeOffers": 0
+      },
+      "namedEvents": {
+        "currentApplicable": false,
+        "historicalInventory": "Sokol Show attesté en 2012 ; animations ponctuelles 2013 dans article, aucune séance actuelle inventée."
+      }
+    }
+  },
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-15T00:06:40.971528+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique à Le Carbet, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5595,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:42.874343+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "L'histoire de Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2224,
+      "h1": [
+        "L'histoire de Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:44.806638+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Article : Aqwaland : les étés du Carbet et l’attente d’une reprise - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6388,
+      "h1": [
+        "Aqwaland : les étés du Carbet et l’attente d’une reprise"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:46.968850+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 4999,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:48.576222+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "The history of Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2006,
+      "h1": [
+        "The history of Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:50.221689+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Article: Aqwaland: Le Carbet’s summers and the wait for a new future - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 5914,
+      "h1": [
+        "Aqwaland: Le Carbet’s summers and the wait for a new future"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:52.360939+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5444,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:53.926415+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "Die Geschichte von Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2218,
+      "h1": [
+        "Die Geschichte von Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:55.614835+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Artikel: Aqwaland: die Sommer von Le Carbet und das Warten auf einen Neuanfang - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6361,
+      "h1": [
+        "Aqwaland: die Sommer von Le Carbet und das Warten auf einen Neuanfang"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:57.825818+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5304,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:06:59.466887+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "De geschiedenis van Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2255,
+      "h1": [
+        "De geschiedenis van Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:01.198456+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Artikelpagina: Aqwaland: zomers in Le Carbet en wachten op een nieuwe toekomst - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6184,
+      "h1": [
+        "Aqwaland: zomers in Le Carbet en wachten op een nieuwe toekomst"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:07.564562+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5468,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:10.019948+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "La storia di Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2155,
+      "h1": [
+        "La storia di Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:11.823665+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Articolo: Aqwaland: le estati del Carbet e l’attesa di una ripresa - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6141,
+      "h1": [
+        "Aqwaland: le estati del Carbet e l’attesa di una ripresa"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:14.039489+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5550,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:15.515255+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "La historia de Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2156,
+      "h1": [
+        "La historia de Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:17.299382+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Artículo: Aqwaland: los veranos de Le Carbet y la espera de un nuevo futuro - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6347,
+      "h1": [
+        "Aqwaland: los veranos de Le Carbet y la espera de un nuevo futuro"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:19.475052+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5212,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:21.082333+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "Historia Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2173,
+      "h1": [
+        "Historia Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:22.741259+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Artykuł: Aqwaland: lata w Le Carbet i oczekiwanie na nową przyszłość - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6003,
+      "h1": [
+        "Aqwaland: lata w Le Carbet i oczekiwanie na nową przyszłość"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:24.960011+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+      "status": 200,
+      "title": "Aqwaland Martinique — Le Carbet, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5468,
+      "h1": [
+        "Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:26.524280+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "status": 200,
+      "title": "A história de Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 2155,
+      "h1": [
+        "A história de Aqwaland Martinique"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:07:28.289716+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history/ffcd961c-8c88-4cc4-82ba-a713307784d7/aqwaland-martinique-carbet-des-bassins-aux-projets-de-reprise",
+      "status": 200,
+      "title": "Artigo: Aqwaland: os verões do Carbet e a espera de um novo futuro - Aqwaland Martinique — Amusement Parks",
+      "bodyCharacters": 6179,
+      "h1": [
+        "Aqwaland: os verões do Carbet e a espera de um novo futuro"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "historyNavigation": [
+    {
+      "target": "park",
+      "url": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "href": "/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique/history",
+      "h1": [
+        "L'histoire de Aqwaland Martinique"
+      ],
+      "bodyLength": 1772,
+      "technical": [],
+      "overflow": 0,
+      "checkedAtUtc": "2026-11-15T00:11:58.258230+00:00"
+    }
+  ],
+  "sourceReachabilityConfirmation": [
+    {
+      "url": "https://rci.fm/martinique/infos/Economie/Aqwaland-rouvrira-t-il-un-jour",
+      "checkedAtUtc": "2026-11-15T00:12:38.840283+00:00",
+      "status": 200,
+      "finalUrl": "https://rci.fm/martinique/infos/Economie/Aqwaland-rouvrira-t-il-un-jour",
+      "bytes": 120934,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.zetwal.mq/actualites/appel-a-projets-pour-la-reprise-du-site-de-lex-parc-aquatique-aqualand/",
+      "checkedAtUtc": "2026-11-15T00:12:41.179022+00:00",
+      "status": 200,
+      "finalUrl": "https://www.zetwal.mq/actualites/appel-a-projets-pour-la-reprise-du-site-de-lex-parc-aquatique-aqualand/",
+      "bytes": 64808,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.zayactu.org/martinique/des-photos-du-parc-aquatique-du-carbet-aqwaland-5-ans-apres-sa-fermeture",
+      "checkedAtUtc": "2026-11-15T00:12:43.139913+00:00",
+      "status": 200,
+      "finalUrl": "https://www.zayactu.org/martinique/des-photos-du-parc-aquatique-du-carbet-aqwaland-5-ans-apres-sa-fermeture",
+      "bytes": 198881,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://amusementlogic.fr/nouvelles-generales/arnaud-vidor-directeur-dexploitation-chez-aspro-parks/",
+      "checkedAtUtc": "2026-11-15T00:12:43.809284+00:00",
+      "status": 200,
+      "finalUrl": "https://amusementlogic.fr/nouvelles-generales/arnaud-vidor-directeur-dexploitation-chez-aspro-parks/",
+      "bytes": 1089990,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    {
+      "url": "https://www.iedom.fr/IMG/pdf/ra2004_martinique-3.pdf",
+      "checkedAtUtc": "2026-11-15T00:12:46.910379+00:00",
+      "status": 200,
+      "finalUrl": "https://www.iedom.fr/IMG/pdf/ra2004_martinique-3.pdf",
+      "bytes": 232769,
+      "contentType": "application/pdf"
+    }
+  ],
+  "screenshotPersonallyViewed": "normal-history-park.png",
+  "site": {
+    "status": "Published",
+    "publicUrl": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+    "publishedAtUtc": "2026-11-02T08:32:10.7534405Z",
+    "publicationOperationId": "3fcd1a1e-c09b-4215-82a7-b382dc928b60",
+    "observedAtUtc": "2026-11-15T00:05:23.3109459Z",
+    "newPublicationCalls": 0
+  },
+  "facebook": {
+    "status": "Published",
+    "publicationId": "f2bb83e561e246e9a40812368a6b6eb2",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125703175424431",
+    "publishedAtUtc": null,
+    "observedAtUtc": "2026-11-15T00:06:12.9216372Z",
+    "newPublicationCalls": 0,
+    "note": "Annonce existante ; date non exposée par la résolution, aucune date inventée."
+  },
+  "lastDataIntegrationAt": "2026-11-02T08:40:33.156Z",
+  "lastIntegrationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+  "dataMutationThisClosure": false,
+  "newSitePublication": false,
+  "newFacebookPublication": false,
+  "nextBatchCompletedCount": 3,
+  "releaseVersionChanged": false
+}

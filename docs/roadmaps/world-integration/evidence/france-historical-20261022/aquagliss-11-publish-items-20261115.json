@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "documentSha256": "74f2a998f92c918da5256f87480417d3068af82f7c1c5e93ccc750389cfacb15",
+  "review": "Corpus exporté relu personnellement dans huit langues,12originaux rapprochés et revus visuellement. Export distinct de publication identique ; seuls les indicateurs de visibilité et validation changent. Registre des limites conservé.",
+  "result": {
+    "operationId": "ede787a9-b840-4336-b273-c07b46c32049",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:02:05.2390039Z",
+    "appliedAtUtc": "2026-11-15T00:02:05.2390054Z",
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "entityKey": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "displayName": "Boutique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+        "entityKey": "56b30e96-bd2d-462e-a357-a3376efe2597",
+        "displayName": "Espace VIP",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false
+}

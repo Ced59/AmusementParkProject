@@ -1821,7 +1821,7 @@
       "siteId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-14T21:21:51.3785328Z",
+      "presenceObservedAt": "2026-11-15T00:14:32.7649105Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -1830,7 +1830,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-14T21:36:12.781Z",
+      "lastDataIntegrationAt": "2026-11-15T00:02:05.239Z",
       "integrationHistory": [
         {
           "eventId": "apply-6e4cf8e8-6052-4566-b368-dc3bf0b3cb2e",
@@ -2111,9 +2111,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-shop-counter-20261114.json",
           "auditEvidence": null,
           "summary": "Acqua Gliss : photographie officielle historique shop-counter, vérifiée et légendée dans les huit langues ; import privé."
+        },
+        {
+          "eventId": "apply-9a33781d-d676-4c06-85bb-e5eed9e772a1",
+          "appliedAt": "2026-11-15T00:01:18.504Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-10-publish-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "Douze photos existantes Acqua Gliss publiées après relecture huit langues, contrôle visuel et rapprochement de l’export de publication ; aucun réimport, aucun nouvel envoi Facebook. Deux fiches prêtes restent à publier, trois jeux insuffisamment documentés restent privés."
+        },
+        {
+          "eventId": "apply-ede787a9-b840-4336-b273-c07b46c32049",
+          "appliedAt": "2026-11-15T00:02:05.239Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-11-publish-items-20261115.json",
+          "auditEvidence": null,
+          "summary": "Publication des deux fiches huit langues relues Espace VIP et Boutique, avec médias existants publiés. Onze lieux publics sur quatorze ; trois jeux restent privés faute de matière propre. Aucun doublon Facebook ni clôture artificielle."
         }
       ],
-      "nextAction": "Reprise du 14 novembre 2026 : 14 lieux, 11 décrits dans huit langues, 17 médias dont 12 nouvelles photos privées ; salon VIP créé et boutique décrite. Preview de rapprochement : 18 entités inchangées. Projection officielle 92/100, trois jeux sans description et lacunes historiques persistantes ; conserver partial, aucun nouveau site/Facebook. Annonce existante Published reconfirmée. Preuve : docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-followup-20261114.json",
+      "nextAction": "Douze photos, Espace VIP et Boutique publiés après audit huit langues : 11 lieux publics sur 14, 17 médias publics, score réel 92/100. Trois jeux restent privés faute de notice précise ; frise avec OTHER et alt rendu en anglais à corriger. Facebook existant confirmé, aucun nouvel envoi.",
       "sources": [
         {
           "label": "Backlog national existant",
@@ -2121,7 +2141,20 @@
           "accessedAt": "2026-10-22"
         }
       ],
-      "latestProgressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-followup-20261114.json"
+      "latestProgressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-publication-followup-20261115.json",
+      "facebookPublicationEvidence": {
+        "status": "Published",
+        "publicationId": "8543f61911b545f29e4159e39351d2ae",
+        "url": "https://www.facebook.com/1285475681307050/posts/122125630275424431",
+        "observedAtUtc": "2026-11-15T00:02:53.7484760Z",
+        "newPublicationCalls": 0
+      },
+      "acceptedScoreException": {
+        "score": 92,
+        "decisionDate": "2026-11-14",
+        "scope": "Contenus effectivement audités ; dossier non terminé",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-publication-followup-20261115.json"
+      }
     },
     {
       "entryId": "FR-candidate-d7132646475bcd",
@@ -2779,20 +2812,20 @@
       "name": "Aqwaland Martinique",
       "entityKind": "Park",
       "proposedEntityKind": "Park",
-      "category": "Catégorie à qualifier",
+      "category": "Parc aquatique historique",
       "locality": "Le Carbet",
       "siteId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-02T08:49:14.256801+00:00",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-15T00:05:23.3109459Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Dernière saison en 2013 ; reconversion ou vente du site annoncées, sans réouverture du parc établie.",
+      "identityConfidence": "Identité confirmée par les archives officielles, sources martiniquaises et rapprochement PARK_DATA_EDITOR du 15 novembre 2026.",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": "Conversation France",
+      "assignedTo": null,
       "lastDataIntegrationAt": "2026-11-02T08:40:33.156Z",
       "integrationHistory": [
         {
@@ -3184,16 +3217,49 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-33e1741f-644f-4f8a-910a-aa146efe0818",
           "auditEvidence": null,
           "summary": "Aqwaland : relecture du rendu public, amélioration du paragraphe du galion en français et anglais pour supprimer les répétitions décor/décor et setting/setting, sans ajout factuel."
+        },
+        {
+          "eventId": "completed-after-closed-park-tolerance-20261115-apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+          "appliedAt": "2026-11-02T08:40:33.156Z",
+          "outcome": "completed",
+          "entityKind": "Park",
+          "entityId": "72a94650-0b9e-4add-8ad2-c2b049b0ef79",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-receipts.json#apply-33e1741f-644f-4f8a-910a-aa146efe0818",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-completion-20261115.json",
+          "summary": "Clôture à 90/100 selon la tolérance propriétaire pour les parcs fermés : audit antérieur confirmé, 15 lieux huit langues, 24 médias, six faits et article, site et annonce Facebook existante vérifiés. Aucune nouvelle mutation ; lacunes historiques conservées."
         }
       ],
-      "nextAction": "Fiche, quinze lieux, 24 médias, six faits et article publiés dans huit langues ; Facebook Published et lien Histoire vérifiés. Score réel 90/100 sans bloqueur API, aucune exception acceptée : conserver partial ; poursuivre photos, huit localisations fixes, carte annuelle et données individuelles manquantes. Ne pas republier Facebook. Voir aqwaland-martinique-publication-audit.json.",
+      "nextAction": "Clôturé à 90/100 selon la tolérance du 14 novembre pour les parcs définitivement fermés. Conserver les recherches résiduelles : tyrolienne sans photo, huit positions fixes, fabricants/restrictions et dates individuelles inconnus, plans annuels non retrouvés. Site et Facebook vérifiés, ne pas renvoyer l’annonce.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-completion-20261115.json",
+      "publicationEvidence": {
+        "status": "Published",
+        "publicUrl": "https://amusement-parks.fun/fr/park/72a94650-0b9e-4add-8ad2-c2b049b0ef79/aqwaland-martinique",
+        "publishedAtUtc": "2026-11-02T08:32:10.7534405Z",
+        "publicationOperationId": "3fcd1a1e-c09b-4215-82a7-b382dc928b60",
+        "observedAtUtc": "2026-11-15T00:05:23.3109459Z",
+        "newPublicationCalls": 0
+      },
+      "facebookPublicationEvidence": {
+        "status": "Published",
+        "publicationId": "f2bb83e561e246e9a40812368a6b6eb2",
+        "url": "https://www.facebook.com/1285475681307050/posts/122125703175424431",
+        "publishedAtUtc": null,
+        "observedAtUtc": "2026-11-15T00:06:12.9216372Z",
+        "newPublicationCalls": 0,
+        "note": "Annonce existante ; date non exposée par la résolution, aucune date inventée."
+      },
+      "acceptedScoreException": {
+        "score": 90,
+        "decisionDate": "2026-11-14",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aqwaland-martinique-completion-20261115.json"
+      }
     },
     {
       "entryId": "FR-candidate-ca15d9972f6367",
@@ -27767,8 +27833,8 @@
       "siteId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-01T13:36:53.416272Z",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-14T23:53:35.8490806Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
@@ -27943,14 +28009,20 @@
           "summary": "Restauration officielle des onze faits dans HIST après publication parent : onze champs canonicalHistory incomplete→restored, mêmes textes, dates, sources, propriétaires et médias. Fiche publique, contrôle du lien Histoire et Facebook à suivre ; backlog reste partial."
         }
       ],
-      "nextAction": "Fiche Cousteau et Facebook publiés le1novembre2026 ; onze faitsHIST restaurés, lienHistoire vérifié dans huit langues. Score réel87/100 sans bloqueur. Ligne conservée partial : enrichir les lacunes historiques documentées ou obtenir une exception nominative avant clôture, pas de nouvelle annonce Facebook. Voir parc-cousteau-publication-audit.json.",
+      "nextAction": "Score87 accepté selon la tolérance des parcs définitivement fermés. Corriger le libellé applicatif OTHER non traduit dans les huit frises avant clôture, sans modifier artificiellement le sens des trois faits. Site etFacebook Published confirmés, aucune nouvelle annonce. Lacunes historiques conservées.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-followup-20261114.json",
+      "acceptedScoreException": {
+        "score": 87,
+        "decisionDate": "2026-11-14",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-followup-20261114.json"
+      }
     },
     {
       "entryId": "FR-candidate-f414d0eefce917",
@@ -30642,8 +30714,8 @@
       "siteId": "e88afcf6-3f31-4d21-8db3-fa7dfca604f8",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-01T14:31:00.4837675Z",
-      "editorialStatus": "InProgress",
+      "presenceObservedAt": "2026-11-14T23:43:55.0407263Z",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Fermeture définitive confirmée le 31 juillet 2022",
@@ -31048,14 +31120,20 @@
           "summary": "Fresnes : restauration canonique des six faits historiques, textes et dates conservés ; résultat partial maintenu."
         }
       ],
-      "nextAction": "Fiche et Facebook publiés ; 6 faits historiques restaurés, lien Histoire vérifié dans huit langues. Score réel 92/100 sans bloqueur API. Ligne partial conservée : enrichir les lacunes documentées ou obtenir une exception nominative avant clôture. Ne pas republier Facebook. Voir playmobil-fresnes-publication-audit.json.",
+      "nextAction": "Score92 accepté selon la tolérance des parcs définitivement fermés. Résoudre le libellé applicatif OTHER non traduit dans la frise avant clôture ; le type Other décrit correctement la vente caritative de pièces, à conserver. Site etFacebook Published confirmés, aucun nouvel envoi ni mutation. Recherche résiduelle conservée.",
       "sources": [
         {
           "label": "Backlog national existant",
           "url": "https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/france-parks-integration-backlog-2026-09-29.md",
           "accessedAt": "2026-10-22"
         }
-      ]
+      ],
+      "progressEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-followup-20261114.json",
+      "acceptedScoreException": {
+        "score": 92,
+        "decisionDate": "2026-11-14",
+        "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/playmobil-fresnes-followup-20261114.json"
+      }
     },
     {
       "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",

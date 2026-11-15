@@ -1,0 +1,2252 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "name": "Acqua Gliss Porticcio",
+  "checkedAtUtc": "2026-11-15T00:15:23.705792+00:00",
+  "outcome": "partial",
+  "completed": false,
+  "finalAuditPassed": false,
+  "publishedScopeEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false,
+  "scopeAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-publication-scope-audit-20261114.json",
+  "ownerClosedParkTolerance": {
+    "accepted": true,
+    "date": "2026-11-14",
+    "scope": "Autorisation du propriétaire pour les parcs définitivement fermés. Publication des enrichissements effectivement audités, sans clôture artificielle."
+  },
+  "actualCompleteness": {
+    "startedAtUtc": "2026-11-15T00:02:40.2267883Z",
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T00:02:41.0975286Z",
+    "result": {
+      "completenessScore": 92,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 103,
+      "earnedPoints": 95,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T00:02:21.7652146Z",
+    "receivedAtUtc": "2026-11-15T00:02:22.2219325Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "parkName": "Acqua Gliss Porticcio",
+      "factCount": 17,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1980,
+          "resourceCount": 2,
+          "sourcedResourceCount": 2,
+          "publishedResourceCount": 2,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 5
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 12
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 5,
+        "sourcedFactCount": 5,
+        "majorFactCount": 4,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "publicationExport": {
+    "auditExportAtUtc": "2026-11-14T23:56:40.525024Z",
+    "publicationExportAtUtc": "2026-11-15T00:00:02.9895013Z",
+    "publicationExportSha256": "83a208e90f879db723e1416479d7c7b81b81903e8361dc6ad9e77efa64b0d1ea",
+    "unexplainedDifferences": 0,
+    "ignored": "export metadata only"
+  },
+  "publicationReceipts": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-10-publish-images-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-11-publish-items-20261115.json"
+  ],
+  "lastDataIntegrationAt": "2026-11-15T00:02:05.239Z",
+  "coverage": {
+    "totalItems": 14,
+    "publicItems": 11,
+    "itemsWithEightDescriptions": 11,
+    "privateItemsWithoutDescription": [
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant"
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong"
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley"
+      }
+    ],
+    "publicMedia": 17,
+    "photos": 15,
+    "parkAndItemFacts": 5,
+    "articles": 1,
+    "officialAnnualMaps": 0,
+    "fixedItemsGeolocated": 6,
+    "importantAquaticSetsWithThreePhotos": 2,
+    "importantAquaticSets": 6
+  },
+  "remainingSourceGaps": {
+    "checkedAtUtc": "2026-11-01T16:49:32.363521+00:00",
+    "identity": "Aquagliss / Acqua Gliss / Acqua Cyrné Gliss, Porticcio (Grosseto-Prugna), Corse-du-Sud. Homonyme Moselle exclu.",
+    "dates": "1986 année du backlog secondaire cohérente avec société/assurance ; jour d’ouverture non établi. Fermeture fin été 2014 attestée par annuaire et contexte judiciaire, pas de jour précis. Événement de 1986 exprime la société et l’assurance, pas une cérémonie.",
+    "sourcesRead": "Archives officielles accueil, animation, règlement, organisation, renseignements, restauration, sensations et accès 2010 ; introduction 2011 ; tourisme Corse ; annuaire spécialisé ; Gralon ; Petit Futé ; blog 2012 ; Sirene ; décisions de cassation 1993 et 2016 ; IGN BD ORTHO.",
+    "failedAccess": [
+      {
+        "source": "Anciennes photos officielles",
+        "result": "28 fichiers non récupérés, HTTP404 ; 14 URL d’images conservées dans CDX, majoritairement menus et GIF.",
+        "fallback": "Véritable photographie aérienne officielle 800x600 retrouvée et importée."
+      },
+      {
+        "source": "Guide Ajaccio2014",
+        "result": "HTTP403 direct ; extrait indexé seulement, aucun contournement."
+      },
+      {
+        "source": "YouTube lié par annuaire",
+        "result": "Accès réseau refusé à la page source ; pas de téléchargement alternatif ni image extraite."
+      },
+      {
+        "source": "Cour de cassation1998",
+        "result": "Page JS/cookie challenge ; décision non lue directement."
+      },
+      {
+        "source": "Légifrance2005 fiscalité",
+        "result": "HTTP403 ; extrait indexé seulement, pas de certitude sur théâtre de l’eau/bibliothèque/écran avant1999."
+      }
+    ],
+    "inventory": "13 fiches dont9 attractions. Cinq ensembles de glissades représentent8 pistes, pas5 installations physiques : deux oranges et trois couloirs regroupés selon appellation officielle. Bassins enfants avec champignon regroupés, pas doublon.",
+    "missingDescriptions": [
+      {
+        "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "name": "Boutique",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      },
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley",
+        "reason": "Nom et existence attestés sur accueil officiel, mais aucun aspect, contenu, implantation ou histoire propre suffisamment détaillé après archives et sources photographiques ; pas de paragraphe générique."
+      }
+    ],
+    "shortDescriptions": "Six ensembles aquatiques :1h2/2p fondés sur observation ; snack-bar1h2/2p ; casiers1phrase strictement documentée ; parking1p judiciaire. Format historique local proportionné à la matière, pas du remplissage pour quotas.",
+    "photoCoverage": {
+      "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+      "owners": [
+        {
+          "key": "park",
+          "existingImages": 0,
+          "existingLogo": null
+        },
+        {
+          "key": "aquagliss-toboggan-jaune",
+          "id": "199638eb-e2e3-4e4b-9b3b-c0c84d5f7713",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-toboggan-vert",
+          "id": "6bce5108-6f61-4f49-991b-bd510243b0b8",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-toboggan-bleu",
+          "id": "db4b67c7-8bbc-4b92-846d-6acb6575d2b8",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-toboggans-oranges",
+          "id": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-trois-couloirs-bleus",
+          "id": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-bassins-enfants",
+          "id": "3419186e-37ba-4f58-9950-862c700a3dad",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-dames-geant",
+          "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-volley",
+          "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-ping-pong",
+          "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-snack-bar",
+          "id": "cb357854-20d4-44db-8890-214338653ab1",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-boutique",
+          "id": "568d61fb-2a39-4955-ab5c-748d95018deb",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-casiers",
+          "id": "78d6eea0-82d2-40ef-ba95-337ef4d8f0b0",
+          "existingImages": 0
+        },
+        {
+          "key": "aquagliss-parking",
+          "id": "7b9f8caf-bc31-4141-b690-8b0696162e1b",
+          "existingImages": 0
+        }
+      ],
+      "acceptedFiles": 5,
+      "logoFound": true,
+      "officialMapsFound": 0,
+      "generalPhotographs": 3,
+      "generalPhotoExplanation": "Official oblique aerial, poolside scene and IGN vertical aerial; banner and logo excluded. Poolside photo assigned to orange slides but also shows shared pool and visitors.",
+      "research": "Eight pages of official 2010 site, CDX all 14 surviving image URLs, primary tourism Corse, specialist directory, Gralon, Petit Futé, 2012 visitor blog, IGN, photographic web searches. Most official slide/restaurant/animation images return 404.",
+      "notImported": [
+        "Official GIF banner and animated entry button: unsupported format, no conversion",
+        "Two original official access-map files unavailable 404; they concern road access, no internal annual visitor map established",
+        "Gralon location map: third-party map, not official park plan; inaccurate point",
+        "Tourism guide 2014 direct 403; no bypass or claim of reading its images",
+        "YouTube video linked by directory: network access denied to source, no alternate extraction",
+        "Repeated views or arbitrary crops of official aerial to fabricate item photo coverage"
+      ],
+      "gaps": [
+        "Two additional distinct general photographs missing from the target of five",
+        "Only orange slide ensemble has its own assigned photo; other visible rides remain photo gaps in item galleries",
+        "No annual internal official map",
+        "No genuine photo identified for 1989 attack, parking restitution or 2014 closure",
+        "No founder, manufacturer or operator portrait/biography supported by more than corporate records"
+      ]
+    },
+    "geolocation": "Six ensembles aquatiques sur13 lieux ; correspondance entre photo officielle et orthophoto2006–2010, preuve géoréférencée. GPSduparc annuaire spécialisé confirmé, points tourisme,Gralon et siègeSirene divergents écartés. Sept positions de jeux/services non prouvées, parking variable selonépoque.",
+    "maps": "Aucun plan interne annuel retrouvé ; page plan d’accès ne prouve pas une édition interne. IGN et Gralon ne sont pas importés comme cartes officielles.",
+    "individualHistory": "Dates propres, constructeurs, modèles et relocalisations non établis ; pas de1986/2014 propagé aux items.",
+    "access": "Règlement2010 : accompagnement moinsde10ans auparc, brassards nonnageurs, nombre maximal d’utilisateurs parglissade ; pas de seuil de taille parattraction établi. Aucun minimum de taille ou constructeur supposé.",
+    "eventImages": "Aucune image réelle prouvée des cinq événements après recherches ciblées1989/2014/inauguration et archives. Photos duparc conservées comme contexte de l’article, pas comme photos de l’attentat ou dernierjour.",
+    "references": "Dernier exploitantAcquaCyrneGliss juridiquecréé1986, aucun fondateur/fabricant/portrait/biographie longue établis. Pas de logo inventé pour opérateur.",
+    "closureCausation": "Restitutionparking2013, permis35logements7mars2014, fermetureété2014. Aucune causalité forcée parking→fermeture ; tribunal souligne solutionalternative. Ni date ni réalisation de logements déduite dupermis.",
+    "publicationScope": "Neuf lieux décrits publiés ; Boutique, Jeu de dames géant, Ping-pong et Volley restent privés. Score réel 92/100 ; résultat partial sans exception acceptée."
+  },
+  "nextAction": "Rechercher une matière précise pour le jeu de dames géant, le ping-pong et le volley ; conserver ces trois fiches privées. Corriger séparément le libellé public OTHER des événements légitimes, sans inventer une nature différente du fait. Conserver les autres lacunes photo/position/années.",
+  "idempotence": [
+    {
+      "operationId": "a36fade5-4087-4937-a8a4-4eca8a3c82b2",
+      "previewedAtUtc": "2026-11-15T00:03:06.1813311Z",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 18,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "operationId": "a66f3304-c06f-4d31-95c7-4558c36a9f4e",
+      "previewedAtUtc": "2026-11-15T00:03:34.067372Z",
+      "counts": {
+        "created": 0,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 3,
+        "warnings": 0,
+        "errors": 0
+      }
+    }
+  ],
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-15T00:02:30.475426+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio à Porticcio (Grosseto-Prugna), en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 4895,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:32.773181+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "L'histoire de Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 2058,
+      "h1": [
+        "L'histoire de Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:34.811844+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Article : Acqua Gliss : les étés aquatiques de Porticcio - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5646,
+      "h1": [
+        "Acqua Gliss : les étés aquatiques de Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:37.182796+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), France: permanently closed — Amusement Parks",
+      "bodyCharacters": 4524,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:38.874260+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "The history of Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 1852,
+      "h1": [
+        "The history of Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:46.600758+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Article: Acqua Gliss: Porticcio’s summers by the slides - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5033,
+      "h1": [
+        "Acqua Gliss: Porticcio’s summers by the slides"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:48.795118+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 4848,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:50.522701+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "Die Geschichte von Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 2051,
+      "h1": [
+        "Die Geschichte von Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:52.144541+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Artikel: Acqua Gliss: Porticcios Sommer zwischen Wasserrutschen - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5448,
+      "h1": [
+        "Acqua Gliss: Porticcios Sommer zwischen Wasserrutschen"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:54.451118+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 4704,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:56.285849+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "De geschiedenis van Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 2070,
+      "h1": [
+        "De geschiedenis van Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:02:57.830839+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Artikelpagina: Acqua Gliss: zomers tussen de glijbanen van Porticcio - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5331,
+      "h1": [
+        "Acqua Gliss: zomers tussen de glijbanen van Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:00.178079+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 4826,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:01.849074+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "La storia di Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 1999,
+      "h1": [
+        "La storia di Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:04.089899+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Articolo: Acqua Gliss: le estati acquatiche di Porticcio - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5410,
+      "h1": [
+        "Acqua Gliss: le estati acquatiche di Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:07.303471+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 4932,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:08.496090+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "La historia de Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 2005,
+      "h1": [
+        "La historia de Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:10.006869+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Artículo: Acqua Gliss: los veranos acuáticos de Porticcio - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5481,
+      "h1": [
+        "Acqua Gliss: los veranos acuáticos de Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:12.054542+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 4669,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:13.658393+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "Historia Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 2002,
+      "h1": [
+        "Historia Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:15.135213+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Artykuł: Acqua Gliss: wodne lata w Porticcio - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 4973,
+      "h1": [
+        "Acqua Gliss: wodne lata w Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:17.229731+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio",
+      "status": 200,
+      "title": "Acqua Gliss Porticcio — Porticcio (Grosseto-Prugna), França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 4788,
+      "h1": [
+        "Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:18.676278+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history",
+      "status": 200,
+      "title": "A história de Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 1998,
+      "h1": [
+        "A história de Acqua Gliss Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-15T00:03:20.200956+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/history/0cd1e806-e607-477a-a86b-345167cdcdd0/acqua-gliss-porticcio-jardin-aquatique-fermeture",
+      "status": 200,
+      "title": "Artigo: Acqua Gliss: os verões aquáticos de Porticcio - Acqua Gliss Porticcio — Amusement Parks",
+      "bodyCharacters": 5337,
+      "h1": [
+        "Acqua Gliss: os verões aquáticos de Porticcio"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "publishedItemPages": [
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:18.325384+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "Français",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2327
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "fr",
+      "url": "https://amusement-parks.fun/fr/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:19.942954+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "Français",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1841
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:21.688840+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "English",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2133
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "en",
+      "url": "https://amusement-parks.fun/en/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:23.185491+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "English",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1638
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:25.279895+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "Deutsch",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2329
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "de",
+      "url": "https://amusement-parks.fun/de/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:26.766815+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "Deutsch",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1797
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:28.785549+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "Nederlands",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2267
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "nl",
+      "url": "https://amusement-parks.fun/nl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:30.711694+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "Nederlands",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1725
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:32.789698+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "Italiano",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2368
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "it",
+      "url": "https://amusement-parks.fun/it/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:36.317715+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "Italiano",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1845
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:38.528957+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "Español",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2362
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "es",
+      "url": "https://amusement-parks.fun/es/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:40.419418+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "Español",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1852
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:42.206826+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "Polski",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2168
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "pl",
+      "url": "https://amusement-parks.fun/pl/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:44.227258+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "Polski",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1644
+    },
+    {
+      "itemId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/56b30e96-bd2d-462e-a357-a3376efe2597/espace-vip",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:46.054882+00:00",
+      "h1": [
+        "Espace VIP"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "Português",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=480&v=2",
+          "alt": "Three people sit on garden seats beneath the VIP area’s beige parasol, among oleanders.",
+          "complete": true,
+          "width": 360
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 2282
+    },
+    {
+      "itemId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+      "language": "pt",
+      "url": "https://amusement-parks.fun/pt/park/952b18e3-ea90-4827-b9aa-426689cfe70b/acqua-gliss-porticcio/item/568d61fb-2a39-4955-ab5c-748d95018deb/boutique",
+      "status": 200,
+      "checkedAtUtc": "2026-11-15T00:06:47.555781+00:00",
+      "h1": [
+        "Boutique"
+      ],
+      "technical": [],
+      "overflow": 0,
+      "brokenImages": [],
+      "images": [
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "Português",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=480&v=2",
+          "alt": "The sweets and ice-cream corner, with transparent bins along the white wall and a blue freezer.",
+          "complete": true,
+          "width": 250
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/en.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/fr.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/es.webp",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/de.png",
+          "alt": "",
+          "complete": true,
+          "width": 100
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/it.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/nl.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        },
+        {
+          "src": "https://amusement-parks.fun/assets/flags/pt.webp",
+          "alt": "",
+          "complete": true,
+          "width": 128
+        }
+      ],
+      "bodyCharacters": 1808
+    }
+  ],
+  "publishedPhotos": [
+    {
+      "imageId": "dc5fa7d9803245aca4af80970b2b5897",
+      "url": "https://amusement-parks.fun/api/images/binary/dc5fa7d9803245aca4af80970b2b5897?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:39.047985+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "112368"
+    },
+    {
+      "imageId": "1cb49aa9a061474ea83373112c5c36cf",
+      "url": "https://amusement-parks.fun/api/images/binary/1cb49aa9a061474ea83373112c5c36cf?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:39.411664+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "54467"
+    },
+    {
+      "imageId": "f8db4935161e4b9681540061a11fcb2a",
+      "url": "https://amusement-parks.fun/api/images/binary/f8db4935161e4b9681540061a11fcb2a?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:39.762599+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "31424"
+    },
+    {
+      "imageId": "9f80364f0a374148b01577eb84dce24b",
+      "url": "https://amusement-parks.fun/api/images/binary/9f80364f0a374148b01577eb84dce24b?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:40.128514+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "191154"
+    },
+    {
+      "imageId": "ad4aa80d54b04b38b0709317023a297c",
+      "url": "https://amusement-parks.fun/api/images/binary/ad4aa80d54b04b38b0709317023a297c?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:40.414120+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "61217"
+    },
+    {
+      "imageId": "daba65f2d835401eaafba5d2f2a76979",
+      "url": "https://amusement-parks.fun/api/images/binary/daba65f2d835401eaafba5d2f2a76979?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:40.671879+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "64636"
+    },
+    {
+      "imageId": "95413e49472d473ab66335dbef613de2",
+      "url": "https://amusement-parks.fun/api/images/binary/95413e49472d473ab66335dbef613de2?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:40.949381+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "69784"
+    },
+    {
+      "imageId": "8592fa4be82e4381af2fd3ef123cc26a",
+      "url": "https://amusement-parks.fun/api/images/binary/8592fa4be82e4381af2fd3ef123cc26a?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:41.200587+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "54790"
+    },
+    {
+      "imageId": "49227d5857594f5cbfecc111b4c2395d",
+      "url": "https://amusement-parks.fun/api/images/binary/49227d5857594f5cbfecc111b4c2395d?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:41.428722+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "49122"
+    },
+    {
+      "imageId": "5a8b2457aef44d279df7bddec657b207",
+      "url": "https://amusement-parks.fun/api/images/binary/5a8b2457aef44d279df7bddec657b207?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:41.805651+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "30606"
+    },
+    {
+      "imageId": "c0f731609fd349709b5199d5cfeeab8d",
+      "url": "https://amusement-parks.fun/api/images/binary/c0f731609fd349709b5199d5cfeeab8d?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:42.002828+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "77368"
+    },
+    {
+      "imageId": "df782a64dec64702bdfb0dacb3e03aff",
+      "url": "https://amusement-parks.fun/api/images/binary/df782a64dec64702bdfb0dacb3e03aff?width=800&v=2",
+      "checkedAtUtc": "2026-11-15T00:07:42.230075+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": "223170"
+    }
+  ],
+  "mobileScreenshotsPersonallyViewed": [
+    "56b30e96-bd2d-462e-a357-a3376efe2597-public-mobile.png",
+    "568d61fb-2a39-4955-ab5c-748d95018deb-public-mobile.png"
+  ],
+  "displayObservations": [
+    "Trois badges OTHER encore visibles dans la frise historique ; aucun texte de fait falsifié pour masquer le défaut.",
+    "Les champs alt observés dans les pages françaises des deux nouveaux lieux utilisent une version anglaise, alors que le graphe conserve les huit localisations relues ; observation de rendu à traiter séparément."
+  ],
+  "facebook": {
+    "status": "Published",
+    "publicationId": "8543f61911b545f29e4159e39351d2ae",
+    "url": "https://www.facebook.com/1285475681307050/posts/122125630275424431",
+    "observedAtUtc": "2026-11-15T00:02:53.7484760Z",
+    "newPublicationCalls": 0
+  },
+  "newSitePublication": true,
+  "newFacebookPublication": false,
+  "sitePublicationScope": "Douze photos existantes et deux fiches existantes rendues publiques ; aucun réimport, aucune nouvelle identité.",
+  "releaseVersionChanged": false
+}

@@ -1,0 +1,939 @@
+{
+  "entryId": "FR-candidate-d81bd703cc53f0",
+  "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+  "checkedAtUtc": "2026-11-14T23:56:16.241029+00:00",
+  "outcome": "partial",
+  "dataMutationThisReview": false,
+  "lastDataIntegrationAt": "2026-11-01T13:40:27.375Z",
+  "priorFullAudit": "docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-cousteau-publication-audit.json",
+  "officialCompleteness": {
+    "result": {
+      "completenessScore": 87,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 99,
+      "earnedPoints": 86,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-14T23:53:49.9630264Z",
+    "startedAtUtc": "2026-11-14T23:53:49.4241391Z"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+      "parkName": "Parc océanique Cousteau",
+      "factCount": 36,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1980,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 6,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1990,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 11
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 25
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 11,
+        "sourcedFactCount": 11,
+        "majorFactCount": 10,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-14T23:54:01.3033137Z",
+    "receivedAtUtc": "2026-11-14T23:54:02.5456249Z"
+  },
+  "facebook": {
+    "action": "ResolveFacebookPublication",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc océanique Cousteau ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc océanique Cousteau! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Parc océanique Cousteau",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "766cb7c7-bacf-4d74-8ada-ba9b9b8488a2",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "e4d7fd71532b4eabaf66ef2951f7b4ec",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125612269424431",
+      "images": {
+        "data": [],
+        "pagination": {
+          "totalItems": 0,
+          "totalPages": 0,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "receivedAtUtc": "2026-11-14T23:54:23.8557089Z",
+    "startedAtUtc": "2026-11-14T23:54:23.2461941Z"
+  },
+  "newPublicationCalls": 0,
+  "coverage": {
+    "freshAtUtc": "2026-11-01T12:03:20.3312336Z",
+    "items": 5,
+    "zones": 0,
+    "attractions": 3,
+    "attractionStatuses": {
+      "Removed": 3
+    },
+    "invalidAttractionStatus": [],
+    "attractionsWith8Descriptions": 3,
+    "attractionsWithImage": 1,
+    "attractionImageGaps": [
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique"
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin"
+      }
+    ],
+    "ownedImages": 4,
+    "sharedImages": 0,
+    "itemImageCounts": [
+      {
+        "id": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+        "name": "Baleine Jonas",
+        "category": "Attraction",
+        "images": 1
+      },
+      {
+        "id": "b557fd2a-3525-47d3-9d21-c893564c8432",
+        "name": "Boutique du Parc océanique",
+        "category": "Shop",
+        "images": 1
+      },
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique",
+        "category": "Attraction",
+        "images": 0
+      },
+      {
+        "id": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+        "name": "Entrée du Parc océanique",
+        "category": "Service",
+        "images": 1
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin",
+        "category": "Attraction",
+        "images": 0
+      }
+    ],
+    "itemsWithCoordinates": 0,
+    "geolocationGaps": [
+      {
+        "id": "36ca3c7a-8fe4-4470-932f-654c635c7cb2",
+        "name": "Baleine Jonas",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "b557fd2a-3525-47d3-9d21-c893564c8432",
+        "name": "Boutique du Parc océanique",
+        "category": "Shop",
+        "status": null
+      },
+      {
+        "id": "521035ba-048c-4e8d-b156-e3f9b4bf2946",
+        "name": "Cinéma du Parc océanique",
+        "category": "Attraction",
+        "status": "Removed"
+      },
+      {
+        "id": "f0dc2a0c-f77b-42b5-82d8-ba05dc371002",
+        "name": "Entrée du Parc océanique",
+        "category": "Service",
+        "status": null
+      },
+      {
+        "id": "163d8382-54d5-4c8d-ab55-e097609dd1f5",
+        "name": "Parcours sous-marin",
+        "category": "Attraction",
+        "status": "Removed"
+      }
+    ],
+    "history": 11,
+    "parkHistory": 6,
+    "itemHistory": 5,
+    "historyWithSource": 11,
+    "historyWithImage": 3,
+    "articles": 1,
+    "officialMaps": [],
+    "pricing": {
+      "admissionOffers": 0,
+      "annualPasses": 0,
+      "parkingOffers": 0,
+      "creditOffers": 0,
+      "historicalSnapshots": 0
+    },
+    "encodingFindings": 0,
+    "automaticEditorialFlags": 0,
+    "paragraphDuplicateGroups": 0,
+    "personalCorpusReviewComplete": true,
+    "itemsWith8Descriptions": 5,
+    "attractionsCurrent": 0,
+    "attractionsAnnounced": 0,
+    "attractionsHistorical": 3,
+    "logo": {
+      "present": true,
+      "current": true,
+      "watermark": false
+    },
+    "parkMainPhoto": false,
+    "generalParkPhotos": {
+      "actual": 0,
+      "target": 5
+    },
+    "importantItemsWith3Photos": {
+      "actual": 0,
+      "total": 3
+    },
+    "officialMapYears": [],
+    "historyMajor": 10,
+    "articlesWith8Languages": 1
+  },
+  "remainingSourceGaps": [
+    {
+      "field": "Photographies générales et principale",
+      "coverage": "0/5 ; aucune photographie principale de parc",
+      "reason": "Aucune vue générale acceptable retrouvée après recherches institutionnelles, presse, photographes, archives d’architecte, collectionneurs, Wikimedia et Flickr. Les portraits filigranés ne sont pas réutilisés ; le logo, le disque et la vue UGC postérieure ne sont pas comptés comme photographies générales."
+    },
+    {
+      "field": "Photographies des attractions",
+      "coverage": "1/3 attractions ; 0/3 avec trois vues",
+      "reason": "Jonas : une vue de la baleine transférée à l’Aquaboulevard en 2018. Aucun intérieur fiable du parcours sous-marin ou du cinéma. La publicité INA montre un requin réel et non la salle ; rejetée. Le second cliché de Jonas, proche et moins net, n’a pas été ajouté artificiellement."
+    },
+    {
+      "field": "Géolocalisation des cinq équipements",
+      "coverage": "0/5",
+      "reason": "Installation historique souterraine à plusieurs niveaux ; aucune implantation intérieure suffisamment précise pour attribuer cinq points. Le plan du Forum situe l’accès, sans coordonnées prouvées de chaque entité."
+    },
+    {
+      "field": "Cartes officielles annuelles",
+      "coverage": "0 édition",
+      "reason": "Recherche des brochures et plans français/anglais, archives de Sérau, sources institutionnelles, revue Parcs Passion et collectionneurs. L’ancien plan du Forum retrouvé sur Flickr est une carte du centre commercial, sans millésime établi du parc ; il n’est pas importé comme plan annuel."
+    },
+    {
+      "field": "Constructeur et restrictions d’accès",
+      "coverage": "0/3 constructeur identifié ; 0/3 restrictions fiables",
+      "reason": "Dark Ride Database ne nomme pas le sous-traitant du système suspendu. Aucun fabricant prouvé pour Jonas ou le cinéma. Les tarifs enfants d’une publicité de 1989 ne sont pas des restrictions d’attraction."
+    },
+    {
+      "field": "Inventaire",
+      "coverage": "5 entités indépendantes prouvées",
+      "reason": "Les poissons à ressort et les conversations filmées cités dans Le Monde restent des composants de l’exposition ; autonomie, nom ou zone indépendante non établis. La piscine et le parking du Forum sont extérieurs au parc. Aucun équipement supplémentaire créé pour atteindre un seuil numérique."
+    },
+    {
+      "field": "Photographies des faits historiques",
+      "coverage": "3/11 faits avec image de contexte",
+      "reason": "Deux faits de Jonas utilisent sa vue datée de 2018 ; la reconversion utilise l’entrée UGC de 2010. Aucune photo acceptable des cérémonies, du dépôt de bilan, du colloque, de la fermeture ou des attractions en activité. L’article précise le contexte des trois images et conserve onze sources."
+    },
+    {
+      "field": "Textes courts",
+      "coverage": "3 exceptions de source : cinéma, boutique et entrée",
+      "reason": "Les descriptions restent développées en deux paragraphes sans inventer de décoration, de programmation, de catalogue commercial ni d’enseigne. La boutique et la vente du disque reposent sur une source spécialisée secondaire non officielle, recoupée pour les crédits par la pochette originale."
+    },
+    {
+      "field": "Site web actuel et exploitation",
+      "coverage": "Aucun site officiel actuel ; horaires et tarifs non applicables",
+      "reason": "Parc définitivement fermé en novembre 1992. Aucun site de loisirs actuel n’est substitué à son identité."
+    }
+  ],
+  "publicPages": [
+    {
+      "checkedAtUtc": "2026-11-14T23:54:17.900878+00:00",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau à Paris, en France : fermé définitivement — Amusement Parks",
+      "bodyCharacters": 5631,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:19.755398+00:00",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "L'histoire de Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2961,
+      "h1": [
+        "L'histoire de Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:22.036287+00:00",
+      "language": "fr",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/fr/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Article : Cousteau sous les Halles : trois années d’océan à Paris - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5276,
+      "h1": [
+        "Cousteau sous les Halles : trois années d’océan à Paris"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:24.301057+00:00",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, France: permanently closed — Amusement Parks",
+      "bodyCharacters": 5206,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:25.792801+00:00",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "The history of Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2697,
+      "h1": [
+        "The history of Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:27.334989+00:00",
+      "language": "en",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/en/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Article: Cousteau beneath Les Halles: three years of ocean discovery in Paris - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 4864,
+      "h1": [
+        "Cousteau beneath Les Halles: three years of ocean discovery in Paris"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:29.613158+00:00",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, Frankreich: dauerhaft geschlossen — Amusement Parks",
+      "bodyCharacters": 5687,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:31.040906+00:00",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "Die Geschichte von Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2959,
+      "h1": [
+        "Die Geschichte von Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:32.553570+00:00",
+      "language": "de",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/de/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Artikel: Cousteau unter Les Halles: drei Jahre Meereswelt in Paris - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5059,
+      "h1": [
+        "Cousteau unter Les Halles: drei Jahre Meereswelt in Paris"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:34.536368+00:00",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, Frankrijk: definitief gesloten — Amusement Parks",
+      "bodyCharacters": 5509,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:36.281570+00:00",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "De geschiedenis van Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 3050,
+      "h1": [
+        "De geschiedenis van Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:37.811789+00:00",
+      "language": "nl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/nl/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Artikelpagina: Cousteau onder Les Halles: drie jaar oceaanbeleving in Parijs - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5115,
+      "h1": [
+        "Cousteau onder Les Halles: drie jaar oceaanbeleving in Parijs"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:39.972765+00:00",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, Francia: chiuso definitivamente — Amusement Parks",
+      "bodyCharacters": 5567,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:41.921676+00:00",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "La storia di Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2870,
+      "h1": [
+        "La storia di Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:43.424317+00:00",
+      "language": "it",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/it/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Articolo: Cousteau sotto Les Halles: tre anni di oceano a Parigi - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5216,
+      "h1": [
+        "Cousteau sotto Les Halles: tre anni di oceano a Parigi"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:45.552759+00:00",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, Francia: cerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5655,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:46.947005+00:00",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "La historia de Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2853,
+      "h1": [
+        "La historia de Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:48.410745+00:00",
+      "language": "es",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/es/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Artículo: Cousteau bajo Les Halles: tres años de océano en París - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5207,
+      "h1": [
+        "Cousteau bajo Les Halles: tres años de océano en París"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:50.456505+00:00",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, Francja: zamknięty na stałe — Amusement Parks",
+      "bodyCharacters": 5319,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:51.995526+00:00",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "Historia Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2945,
+      "h1": [
+        "Historia Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:53.571789+00:00",
+      "language": "pl",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pl/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Artykuł: Cousteau pod Les Halles: trzy lata oceanu w Paryżu - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5010,
+      "h1": [
+        "Cousteau pod Les Halles: trzy lata oceanu w Paryżu"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:55.762510+00:00",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau",
+      "status": 200,
+      "title": "Parc océanique Cousteau — Paris, França: encerrado definitivamente — Amusement Parks",
+      "bodyCharacters": 5498,
+      "h1": [
+        "Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:57.342675+00:00",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history",
+      "status": 200,
+      "title": "A história de Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 2855,
+      "h1": [
+        "A história de Parc océanique Cousteau"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [
+        "OTHER",
+        "OTHER",
+        "OTHER"
+      ],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    },
+    {
+      "checkedAtUtc": "2026-11-14T23:54:58.856884+00:00",
+      "language": "pt",
+      "kind": "article-1",
+      "url": "https://amusement-parks.fun/pt/park/766cb7c7-bacf-4d74-8ada-ba9b9b8488a2/parc-oceanique-cousteau/history/3b437fc5-431f-46ec-a950-5f54feb59192/parc-oceanique-cousteau-halles-histoire",
+      "status": 200,
+      "title": "Artigo: Cousteau sob Les Halles: três anos de oceano em Paris - Parc océanique Cousteau — Amusement Parks",
+      "bodyCharacters": 5085,
+      "h1": [
+        "Cousteau sob Les Halles: três anos de oceano em Paris"
+      ],
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalTextMatches": [],
+      "brokenImages": [],
+      "historyLinkPresent": true
+    }
+  ],
+  "finalAuditPassed": false,
+  "closedParkScoreToleranceAccepted": true,
+  "remainingBlocker": "Libellé applicatif OTHER non traduit dans les huit frises. Aucun type historique falsifié pour dissimuler le défaut ; cérémonie, colloque et réemploi des équipements conservés. Correction applicative du libellé puis contrôle public requis.",
+  "affectedEvents": [
+    {
+      "key": "cousteau-inauguration-19890711",
+      "owner": "park",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "L’inauguration officielle suit l’ouverture au public"
+        },
+        {
+          "languageCode": "en",
+          "value": "The official inauguration follows the public opening"
+        },
+        {
+          "languageCode": "de",
+          "value": "Die offizielle Einweihung folgt auf die Öffnung für Besucher"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De officiële inhuldiging volgt op de publieksopening"
+        },
+        {
+          "languageCode": "it",
+          "value": "L’inaugurazione ufficiale segue l’apertura al pubblico"
+        },
+        {
+          "languageCode": "es",
+          "value": "La inauguración oficial sigue a la apertura al público"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oficjalna inauguracja po otwarciu dla zwiedzających"
+        },
+        {
+          "languageCode": "pt",
+          "value": "A inauguração oficial sucede à abertura ao público"
+        }
+      ],
+      "sources": [
+        {
+          "label": "La Cité de la Mer — Jacques-Yves Cousteau",
+          "url": "https://www.mediathequedelamer.com/jacques-yves-cousteau",
+          "accessedAt": "2026-11-01"
+        },
+        {
+          "label": "Pierre Gleizes — campagne d’ouverture et inauguration",
+          "url": "https://pierregleizes.com/2026/07/22/en-levant-les-poings/",
+          "accessedAt": "2026-11-01"
+        }
+      ]
+    },
+    {
+      "key": "cousteau-colloque-19891213",
+      "owner": "park",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le colloque Écologie et pouvoir s’installe au parc"
+        },
+        {
+          "languageCode": "en",
+          "value": "The Écologie et pouvoir conference comes to the park"
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Kolloquium Écologie et pouvoir findet im Park statt"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het colloquium Écologie et pouvoir vindt in het park plaats"
+        },
+        {
+          "languageCode": "it",
+          "value": "Il parco ospita il convegno Écologie et pouvoir"
+        },
+        {
+          "languageCode": "es",
+          "value": "El parque acoge el coloquio Écologie et pouvoir"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Park gości konferencję Écologie et pouvoir"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O parque recebe o colóquio Écologie et pouvoir"
+        }
+      ],
+      "sources": [
+        {
+          "label": "BnF — Écologie et pouvoir, actes du colloque",
+          "url": "https://catalogue.bnf.fr/ark:/12148/cb36640719d.public",
+          "accessedAt": "2026-11-01"
+        }
+      ]
+    },
+    {
+      "key": "cousteau-parcours-reemploi-1995",
+      "owner": "parkItem",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le matériel réapparaît dans Images Studio"
+        },
+        {
+          "languageCode": "en",
+          "value": "The equipment reappears in Images Studio"
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Anlage erscheint im Images Studio wieder"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het systeem keert terug in Images Studio"
+        },
+        {
+          "languageCode": "it",
+          "value": "L’impianto ricompare in Images Studio"
+        },
+        {
+          "languageCode": "es",
+          "value": "El equipo reaparece en Images Studio"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wyposażenie wraca w Images Studio"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O equipamento reaparece em Images Studio"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Dark Ride Database — Images Studio, origine du matériel",
+          "url": "https://darkridedatabase.com/rides/images-studio/",
+          "accessedAt": "2026-11-01"
+        }
+      ]
+    }
+  ],
+  "scoreDoesNotBlock": true,
+  "recoveryExportAt": "2026-11-14T23:54:33.1308855Z",
+  "recoveryExportSha256": "33bc0c6d90188e37c620e07e5b3d37efb0c5ac6777bbd6754fe99815c77a44e7"
+}

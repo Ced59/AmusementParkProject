@@ -46,6 +46,8 @@ Traiter d’abord le groupe `Publishable`, du score le plus faible vers le plus 
 
 | Parc de Lomme (`a2df3ac6-4627-4dc9-bee2-7fa2e2d96cf5`) | Tolérance propriétaire du 2026-11-14 pour les parcs définitivement fermés ; [audit confirmé](world-integration/evidence/france-historical-20261022/lillom-completion-20261114.json) | 95 (103/108) | Vingt attractions sans photo, un point prouvé sur 46 lieux, restrictions historiques et constructeurs partiellement inconnus, aucun plan annuel daté authentifié ; recherches et notices courtes documentées | `Published` — [annonce existante](https://www.facebook.com/1285475681307050/posts/122125616409424431), aucun nouvel envoi |
 
+| Aqwaland Martinique (`72a94650-0b9e-4add-8ad2-c2b049b0ef79`) | Tolérance propriétaire du 2026-11-14 pour les parcs définitivement fermés ; [audit confirmé](world-integration/evidence/france-historical-20261022/aqwaland-martinique-completion-20261115.json) | 90 (93/103) | Photo de la tyrolienne, huit positions fixes, dates individuelles, fabricants, restrictions et plans annuels non retrouvés ; faibles résolutions natives et notices courtes documentées | `Published` — [annonce existante](https://www.facebook.com/1285475681307050/posts/122125703175424431), aucun nouvel envoi |
+
 ## Projets publiés à surveiller périodiquement
 
 Cette liste conserve les projets publiés dont les données doivent être réexaminées après les prochaines annonces officielles. Une revue trimestrielle est indicative ; une annonce de chantier, un nouveau dossier investisseur, un plan révisé, une date d’ouverture consolidée ou la publication de règles d’accès déclenche une vérification anticipée. Le contrôle repasse par le workflow `PARK_DATA_EDITOR` et ne remplace pas un nouvel audit avant toute modification publique.

@@ -1,0 +1,168 @@
+{
+  "entryId": "FR-candidate-33e1083778e134",
+  "parkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+  "checkedAtUtc": "2026-11-15T00:00:01.327957+00:00",
+  "auditExportAtUtc": "2026-11-14T23:56:40.525024Z",
+  "auditExportSha256": "a25d79f1c1f0626d0f07167c5306a1f82cd7bf8ab5bb04f8379565bd5d523453",
+  "publishedScopeEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false,
+  "completed": false,
+  "scope": {
+    "itemIdsReadyForPublication": [
+      "56b30e96-bd2d-462e-a357-a3376efe2597",
+      "568d61fb-2a39-4955-ab5c-748d95018deb"
+    ],
+    "privateReviewedPhotographs": 12,
+    "alreadyPublicItems": 9,
+    "publicItemsAfterPlannedPublication": 11,
+    "totalItems": 14,
+    "itemsStillPrivate": [
+      {
+        "id": "1b79e713-27eb-4db2-9fde-cc111fbccddb",
+        "name": "Jeu de dames géant"
+      },
+      {
+        "id": "c7424f36-e352-49c9-bc32-91bf357e30ea",
+        "name": "Ping-pong"
+      },
+      {
+        "id": "088de2d8-2bf7-49fb-b2e6-d7cfc732d120",
+        "name": "Volley"
+      }
+    ]
+  },
+  "personalReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "basis": "Relecture intégrale du corpus exporté, langue par langue : descriptions, cinq faits, article, légendes, textes alternatifs, descriptions simples des images. Aucun changement textuel requis sur les contenus examinés. Les trois jeux sans notice restent privés.",
+    "rawPublicStringsChecked": 814,
+    "localizedEditorialFields": 585,
+    "encodingIssues": 0,
+    "exactCrossEntityMatches": 0,
+    "nearCrossEntityMatches": 0,
+    "newPhotoOriginalsPersonallyViewed": 12,
+    "newPhotoOriginalHashesMatchImportReceipts": true
+  },
+  "score": {
+    "completenessScore": 92,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 103,
+    "earnedPoints": 95,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "closedParkScoreTolerance": {
+    "accepted": true,
+    "date": "2026-11-14",
+    "scope": "Autorisation du propriétaire pour les parcs définitivement fermés. Publication des enrichissements effectivement audités, sans clôture artificielle."
+  },
+  "sourceChecks": [
+    {
+      "url": "https://recherche-entreprises.api.gouv.fr/search?q=334956463",
+      "checkedAtUtc": "2026-11-14T23:58:22.863530+00:00",
+      "status": 200,
+      "finalUrl": "https://recherche-entreprises.api.gouv.fr/search?q=334956463",
+      "bytes": 3197,
+      "sha256": "5a480fddeed0417f007f28bae8c6efd7ce1cf7c7e2ab715fb7cf77931de223f3"
+    },
+    {
+      "url": "https://web.archive.org/web/20100621044503id_/http://www.acqua-gliss.com:80/accueil-5798.html",
+      "checkedAtUtc": "2026-11-14T23:58:22.864138+00:00",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "url": "https://web.archive.org/web/20100621091031id_/http://www.acqua-gliss.com:80/reglement-interieur-6091.html",
+      "checkedAtUtc": "2026-11-14T23:58:22.864616+00:00",
+      "status": 200,
+      "finalUrl": "https://web.archive.org/web/20100621091031id_/http://www.acqua-gliss.com:80/reglement-interieur-6091.html",
+      "bytes": 18366,
+      "sha256": "7df6e81982907e9d61e9c1ea1f8969c7a24f692c8f0af68424704937dd42ddb1"
+    },
+    {
+      "url": "https://web.archive.org/web/20100829020503id_/http://www.acqua-gliss.com/animation-5800.html",
+      "checkedAtUtc": "2026-11-14T23:58:24.435556+00:00",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007196249",
+      "checkedAtUtc": "2026-11-14T23:58:24.450015+00:00",
+      "status": 200,
+      "finalUrl": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000007196249",
+      "bytes": 99315,
+      "sha256": "d03af4c2072f92cca7c23077753e9acd843847ac736702e1b3c2c5857ee3a3ba"
+    },
+    {
+      "url": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000033432317",
+      "checkedAtUtc": "2026-11-14T23:58:25.063799+00:00",
+      "status": 200,
+      "finalUrl": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000033432317",
+      "bytes": 115052,
+      "sha256": "d4c90075d79994d6f400dc83654e3fe1e9390284fafe0c8df984a6bd8c00be9d"
+    },
+    {
+      "url": "https://www.parcs-aquatiques.com/acqua-gliss-porticcio/",
+      "checkedAtUtc": "2026-11-14T23:58:25.598037+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcs-aquatiques.com/acqua-gliss-porticcio/",
+      "bytes": 137406,
+      "sha256": "11feafbf42938fdb23e4fd3f1d93928739e0a0444b4f9b0065253a3eaa73507d"
+    }
+  ],
+  "sourceRetry": [
+    {
+      "url": "https://web.archive.org/web/20100621044503id_/http://www.acqua-gliss.com:80/accueil-5798.html",
+      "checkedAtUtc": "2026-11-14T23:59:08.323954+00:00",
+      "error": "HTTP Error 429: Too Many Requests",
+      "retryAfter": null
+    },
+    {
+      "url": "https://web.archive.org/web/20100829020503id_/http://www.acqua-gliss.com/animation-5800.html",
+      "checkedAtUtc": "2026-11-14T23:59:09.520048+00:00",
+      "error": "HTTP Error 429: Too Many Requests",
+      "retryAfter": null
+    }
+  ],
+  "historicalSourceAvailabilityNote": "Les copies locales officielles 2010/2013 ont été lues et sont conservées. Deux relectures Wayback rencontrent429, sansRetry-After ; aucune conclusion de source disparue ni contournement. Les faits existants ne sont pas modifiés dans ce lot.",
+  "residualGaps": [
+    "Jeu de dames géant, ping-pong et volley : noms et existence prouvés, pas assez de matière propre pour une notice sans remplissage ; rester privés.",
+    "Huit lieux sans position précise, neuf items dont sept attractions sans photo propre. Deux des six ensembles aquatiques disposent de trois photos propres.",
+    "Aucun plan intérieur annuel authentifié.",
+    "Libellés historiques applicatifs Other : contrôle public distinct restant ; pas de nouvelle annonce Facebook tant que le contrôle final ne passe pas."
+  ],
+  "priorEvidence": [
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-publication-audit.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/aquagliss-followup-20261114.json"
+  ],
+  "publicationPerformed": false,
+  "newFacebookPublication": false,
+  "coverage": {
+    "items": 14,
+    "itemsWithEightDescriptions": 11,
+    "itemsWithOwnImage": 5,
+    "itemsWithoutPhoto": [
+      "Bassins pour enfants",
+      "Casiers gardés",
+      "Jeu de dames géant",
+      "Parking",
+      "Ping-pong",
+      "Toboggan bleu",
+      "Toboggan jaune",
+      "Toboggan vert",
+      "Volley"
+    ],
+    "imagesTotal": 17,
+    "parkImages": 6,
+    "itemsWithCoordinates": 6,
+    "historyEvents": 5,
+    "articles": 1,
+    "officialAnnualMaps": 0
+  }
+}

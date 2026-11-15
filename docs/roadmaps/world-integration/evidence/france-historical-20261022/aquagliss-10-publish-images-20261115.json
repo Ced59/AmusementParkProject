@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-candidate-33e1083778e134",
+  "owner": "Conversation France",
+  "documentSha256": "685dfb4866a3b9d84020574c11704cc2c584fef9fadb2c5bd49be0a73ea59a51",
+  "review": "Corpus exporté relu personnellement dans huit langues,12originaux rapprochés et revus visuellement. Export distinct de publication identique ; seuls les indicateurs de visibilité et validation changent. Registre des limites conservé.",
+  "result": {
+    "operationId": "9a33781d-d676-4c06-85bb-e5eed9e772a1",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T00:01:18.5041718Z",
+    "appliedAtUtc": "2026-11-15T00:01:18.5041736Z",
+    "targetParkId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+    "targetParkName": "Acqua Gliss Porticcio",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 12,
+      "deleted": 0,
+      "unchanged": 6,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "952b18e3-ea90-4827-b9aa-426689cfe70b",
+        "entityKey": "park",
+        "displayName": "Acqua Gliss Porticcio",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "entityKey": "568d61fb-2a39-4955-ab5c-748d95018deb",
+        "displayName": "Boutique",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "56b30e96-bd2d-462e-a357-a3376efe2597",
+        "entityKey": "56b30e96-bd2d-462e-a357-a3376efe2597",
+        "displayName": "Espace VIP",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+        "entityKey": "c61b58f5-73e4-4339-8499-c49f76863e9f",
+        "displayName": "Les trois couloirs bleus",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cb357854-20d4-44db-8890-214338653ab1",
+        "entityKey": "cb357854-20d4-44db-8890-214338653ab1",
+        "displayName": "Snack-bar",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+        "entityKey": "e072b9c4-de18-43ac-9fea-1acd40de2e0f",
+        "displayName": "Toboggans oranges",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "dc5fa7d9803245aca4af80970b2b5897",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1cb49aa9a061474ea83373112c5c36cf",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "f8db4935161e4b9681540061a11fcb2a",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9f80364f0a374148b01577eb84dce24b",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "ad4aa80d54b04b38b0709317023a297c",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "daba65f2d835401eaafba5d2f2a76979",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "95413e49472d473ab66335dbef613de2",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "8592fa4be82e4381af2fd3ef123cc26a",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "49227d5857594f5cbfecc111b4c2395d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "5a8b2457aef44d279df7bddec657b207",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "c0f731609fd349709b5199d5cfeeab8d",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "df782a64dec64702bdfb0dacb3e03aff",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "existingParkIsPublic": true,
+  "newSitePublicationPerformed": true,
+  "newFacebookPublicationPerformed": false,
+  "scopedEditorialAuditPassed": true,
+  "allItemsEditorialAuditPassed": false
+}
