@@ -3572,28 +3572,31 @@
     {
       "entryId": "US-candidate-standalone-0209156805a665",
       "name": "Alpine Coaster Wiegand — Wisp",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
       "locality": null,
-      "siteId": null,
+      "siteId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:22:34.549Z",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Operating, identité Wisp Mountain Coaster confirmée.",
+      "identityConfidence": "Même installation que US-candidate-e1d7086e749d36, par constructeur Wiegand, exploitant Wisp, RCDB et géolocalisation.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-e1d7086e749d36"
+      ],
       "aliases": [
-        "Wisp"
+        "Wisp",
+        "Wisp Mountain Coaster"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette piste constructeur comme doublon sourcé de US-candidate-e1d7086e749d36. Suivre les mises à jour sur la fiche intégrée ; ne pas recréer ni republier Facebook.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -3604,23 +3607,29 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.wispresort.com/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Fiche autonome publiée après rapprochement",
+          "url": "https://amusement-parks.fun/fr/attraction/c1a3a369-c558-43c4-9b8a-b83cc36ddd69/wisp-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Wisp",
+            "name": "Wisp Mountain Coaster",
             "source": "Wiegand — références constructeur",
             "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-1103",
             "family": "Alpine coaster",
-            "sourceVenueName": "Wisp",
+            "sourceVenueName": "Wisp Resort",
             "referenceId": "location-id-1103"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "Doublon de découverte constructeur ; même coaster autonome publié sous US-candidate-e1d7086e749d36."
+      },
+      "duplicateOf": "US-candidate-e1d7086e749d36"
     },
     {
       "entryId": "US-park-11691071-bb84-46b1-857e-fa27c8d531f0",
@@ -72453,26 +72462,111 @@
     },
     {
       "entryId": "US-candidate-e1d7086e749d36",
-      "name": "Wisp Resort",
-      "entityKind": "ToQualify",
+      "name": "Wisp Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "McHenry , Maryland",
-      "siteId": null,
+      "category": "Alpine coaster",
+      "locality": "296 Marsh Hill Road, McHenry, Maryland 21541",
+      "siteId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T22:22:34.549Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitant actif au 15 novembre 2026 ; calendrier de la piste publié jusqu’au 22 novembre 2026.",
+      "identityConfidence": "Billet propre confirmé par Wisp, construction Wiegand et piste localisée par RCDB et OSM ; recherche officielle Park et StandaloneAttraction sans résultat avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Mountain Coaster (Wisp Resort)",
+        "Wisp Resort Mountain Coaster",
+        "Alpine Coaster Wiegand — Wisp"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T22:20:59.796Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b9745318-aac1-4b1c-b142-1da2cb2fd31b",
+          "appliedAt": "2026-11-15T22:15:11.666Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:b9745318-aac1-4b1c-b142-1da2cb2fd31b",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "photo-894facbeba5b46f8828ed93028614973",
+          "appliedAt": "2026-11-15T22:15:48.788Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:photo:894facbeba5b46f8828ed93028614973",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du coaster importée, publiée et créditée sous CC BY 2.0."
+        },
+        {
+          "eventId": "apply-5dc73a23-4232-43ae-9b6b-7961e50be5a0",
+          "appliedAt": "2026-11-15T22:17:23.762Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:5dc73a23-4232-43ae-9b6b-7961e50be5a0",
+          "auditEvidence": null,
+          "summary": "Constructeur Wiegand, vitesse et date d’ouverture intégrés."
+        },
+        {
+          "eventId": "apply-4fa41dec-cb0a-4ed7-bd5b-b01fab0e6aca",
+          "appliedAt": "2026-11-15T22:17:45.849Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:4fa41dec-cb0a-4ed7-bd5b-b01fab0e6aca",
+          "auditEvidence": null,
+          "summary": "Quatre offres tarifaires officielles intégrées."
+        },
+        {
+          "eventId": "apply-7fa9b183-8ed6-4684-99de-ca284d1aed25",
+          "appliedAt": "2026-11-15T22:18:07.752Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:7fa9b183-8ed6-4684-99de-ca284d1aed25",
+          "auditEvidence": null,
+          "summary": "Calendrier du coaster daté au 22 novembre 2026 intégré."
+        },
+        {
+          "eventId": "apply-c702b1a7-4471-46e5-93d4-8fbe165bef51",
+          "appliedAt": "2026-11-15T22:18:29.366Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:c702b1a7-4471-46e5-93d4-8fbe165bef51",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "apply-93b127ae-1531-4ebb-8a95-2266e07f7649",
+          "appliedAt": "2026-11-15T22:20:04.381Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:93b127ae-1531-4ebb-8a95-2266e07f7649",
+          "auditEvidence": null,
+          "summary": "Descriptions reformulées après contrôle éditorial."
+        },
+        {
+          "eventId": "apply-b4eb00a2-35fb-46e3-b1ef-6a56654b0686",
+          "appliedAt": "2026-11-15T22:20:59.796Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c1a3a369-c558-43c4-9b8a-b83cc36ddd69",
+          "evidence": "PARK_DATA_EDITOR:apply:b4eb00a2-35fb-46e3-b1ef-6a56654b0686",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-wisp-mountain-coaster-20261115/audit.json",
+          "summary": "Point exact de la station OSM intégré ; audit final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves ; vérifier horaires au-delà du 22 novembre 2026 et tarifs lors de leur prochain changement.",
       "sources": [
         {
           "label": "RCDB",
@@ -72488,25 +72582,68 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13328.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wisp Resort — identité, piste, tarifs et conditions",
+          "url": "https://www.wispresort.com/activity/mountain-adventures/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wisp Resort — horaires",
+          "url": "https://www.wispresort.com/hours/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wisp Resort — calendrier publié jusqu’au 22 novembre 2026",
+          "url": "https://www.wispresort.com/wp-content/uploads/2026/11/Schedule-10.26-11.22.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wisp Resort — adresse",
+          "url": "https://www.wispresort.com/about-wisp/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — Wiegand et ouverture 2007",
+          "url": "https://coasterpedia.net/wiki/Mountain_Coaster_%28Wisp_Resort%29",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Coasterpedia — photo TheTurducken CC BY 2.0",
+          "url": "https://coasterpedia.net/wiki/File:Mountain_Coaster_(Wisp_Resort)_2024-09_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — station de la piste",
+          "url": "https://www.openstreetmap.org/way/160679032",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Wisp Mountain Coaster",
+          "url": "https://amusement-parks.fun/fr/attraction/c1a3a369-c558-43c4-9b8a-b83cc36ddd69/wisp-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13328.htm",
-            "family": "Mountain coaster",
+            "name": "Wisp Mountain Coaster",
+            "source": "Wisp Resort — Mountain Adventures",
+            "url": "https://www.wispresort.com/activity/mountain-adventures/",
+            "family": "Alpine coaster",
             "sourceVenueName": "Wisp Resort",
             "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "McHenry , Maryland",
+            "sourceLocality": "McHenry, Maryland",
             "sourceOpenedYear": "2007"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Piste à billet propre dans la station de montagne ; identité confirmée et fiche autonome publiée. La piste constructeur Wiegand est le même coaster."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-0209156805a665"
+      ]
     },
     {
       "entryId": "US-candidate-d66e4f02b04553",
