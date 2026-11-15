@@ -9,6 +9,8 @@ Continue la campagne France en prenant en compte l’inventaire mondial du dép�
 
 Lis AGENTS.md puis, dans docs/roadmaps/world-integration/, README.md, WORKFLOW.md, STANDALONE-AUDIT.md, CREATIONS-STANDALONE.md et countries/FR.json.
 
+Le Ballon Generali de Paris est déjà intégré et publié sous FR-candidate-discovery-91f1e3fca6cbc6 (fiche c8823aa8-65ab-4cd0-aada-2e814d0790e9) : trois photos exactes, annonce Facebook et audit sont enregistrés dans le dépôt. Ne recrée pas cette attraction et conserve ses anciennes identités Aeroparis, Eutelsat et City of Paris dans cette même ligne.
+
 Avant le prochain lot, rapproche tes intégrations récentes du relevé du 22 octobre 2026, sans perdre le travail en cours. Réserve les entrées par leur entryId et cette conversation. Vérifie les alias, anciennes identités et migrations avant toute création. Une fiche masquée ordinaire nécessite une vraie intégration éditoriale.
 
 Pour les standalone, examine aussi les pistes encore rangées dans Park et les dossiers dont l’identité ou le parent reste incertain. Ne transforme pas une attraction interne à un vrai parc en standalone. Un compteur national nul ou faible ne prouve pas l’exhaustivité. Recherche aussi des installations totalement absentes du site, notamment les alpine coasters et luges fixes : croise annuaires spécialisés, constructeurs, exploitants et tourisme local. Vérifie les fiches publiques et masquées avant toute création ; ajoute toute nouvelle découverte au registre avec un entryId permanent, ses sources et une date d’intégration initialement null. Une ancienne référence constructeur ne prouve pas une ouverture actuelle.
