@@ -1,0 +1,682 @@
+{
+  "researchedUtc": "2026-11-15T11:52:56.149486+00:00",
+  "scope": "Recherche publique seule pour les 16 restaurants/services actuels. Aucun PDE, Git, registre, import ni mutation des fichiers root.",
+  "workingStateReadOnly": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+  "counts": {
+    "itemsCovered": 16,
+    "qualifiedItems": 3,
+    "conditionalItems": 3,
+    "notQualifiedItems": 10,
+    "downloadedFilesInspected": 20
+  },
+  "constraints": {
+    "nativePublisherBytesOnly": true,
+    "localCropResizeRetouch": false,
+    "maxBytes": 983040,
+    "gpsDeduced": false,
+    "captureDateUnknownUnlessProved": true
+  },
+  "identityRules": [
+    "Sur le Pouce, O’Chalet, L’Escale et Le Grill ne sont pas fusionnés. Articles 2017/2019 les énumèrent séparément ; recherches historiques existantes sous historical-inventory-followup à préserver.",
+    "Une rubrique officielle ne suffit pas si le sujet de l’image contredit le service : secours et casiers restent non illustrés.",
+    "Les variantes 1024 et 2048 du parking/pique-nique sont les mêmes expositions : une seule version éventuelle par photo.",
+    "Aucune photo candidate n’est déclarée nouvelle par rapport aux imports réalisés en parallèle ; root doit rapprocher les reçus avant import."
+  ],
+  "items": [
+    {
+      "name": "Le Petit Creux",
+      "itemId": "e267af4d-a394-4ddb-9cb5-597582e077da",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [
+        "formule-burger-pmym4164pe003ppkecvaqpasjrg8g5vqo94iituaao.png"
+      ],
+      "reason": "Montage produit uniquement ; pas de façade officielle identifiée."
+    },
+    {
+      "name": "Le Gourmand",
+      "itemId": "731d71c3-50aa-4898-8a78-de37c0b1437c",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [
+        "restauration_le_gourmand-pmv5nf40sudn7s1t1360mvb8wxtjsx5qza26ubagf4.jpg"
+      ],
+      "reason": "Illustration churros, sans lieu identifiable."
+    },
+    {
+      "name": "Le Grill",
+      "itemId": "538a604f-6fe1-4460-9740-7b0c576b0214",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [
+        "restauration_le_grill-pmv5hobj1aik9ke6kls3ebhu864sricsuujd9ft2g0.jpg"
+      ],
+      "reason": "Illustration grillade, pas de façade. Aucun alias O’Chalet/Sur le Pouce prouvé."
+    },
+    {
+      "name": "L’Escale",
+      "itemId": "698bf2fb-d43e-4a13-988c-f25ecee12095",
+      "status": "conditional_food_service",
+      "candidates": [
+        "restauration_l_escalejpg-pmv60aige6007jcov5h3a4dhrwdi7p9f2zokfq7d7k.jpg"
+      ],
+      "rejectedCandidates": [],
+      "reason": "Page officielle rattache la photo culinaire à L’Escale ; image modeste 500×400, ne pas en déduire l’identité du bâtiment."
+    },
+    {
+      "name": "Pokey Beach",
+      "itemId": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32",
+      "status": "conditional_alias_unresolved",
+      "candidates": [
+        "IMG_2620-1024x768.png"
+      ],
+      "rejectedCandidates": [],
+      "reason": "Photo officielle du Pokey Plage 2023 ; lien exact avec le nom Pokey Beach 2026 à confirmer."
+    },
+    {
+      "name": "Caisse d’accueil",
+      "itemId": "00739144-e99b-45a1-8694-3594553ca3a2",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [],
+      "reason": "Aucune vraie vue officielle nommément attribuée au guichet principal retrouvée. Photo de presse ER/Emma Facchetti trouvée mais hors sélection officielle demandée."
+    },
+    {
+      "name": "Salle de séminaire",
+      "itemId": "ef1210fa-569b-4a9e-9056-386ce7de6d07",
+      "status": "qualified_limited_resolution",
+      "candidates": [
+        "salle.jpg",
+        "seminaire.jpg",
+        "formation.jpg"
+      ],
+      "rejectedCandidates": [],
+      "reason": "Les trois natifs figurent sur la page officielle Événements et séminaires ; intérieur de verrière et conférence, pas de dates de capture inventées."
+    },
+    {
+      "name": "Accueil accrobranche",
+      "itemId": "bb6e718a-0f24-40c7-8731-e3d5de7bbfcc",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [],
+      "reason": "Photos de chalets génériques sans enseigne accueil accrobranche non assignées."
+    },
+    {
+      "name": "Parkings",
+      "itemId": "4404aa32-40c6-409e-9bc7-52700a6a6e72",
+      "status": "qualified",
+      "candidates": [
+        "45152318-2048x1365.jpg"
+      ],
+      "rejectedCandidates": [],
+      "reason": "Section Parking gratuit et sujet visuel concordants."
+    },
+    {
+      "name": "Poste de secours",
+      "itemId": "edc063cf-9ddb-47f5-b47c-cf07eb239623",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [
+        "32110959-1024x683.jpg"
+      ],
+      "reason": "Image officielle placée dans la section, mais vue générale sans dispositif de secours identifiable."
+    },
+    {
+      "name": "Aires de pique-nique",
+      "itemId": "eeb57071-2903-41d0-875c-008dfbe36ee0",
+      "status": "qualified",
+      "candidates": [
+        "23578433-2048x1365.jpg"
+      ],
+      "rejectedCandidates": [],
+      "reason": "Section Aire de pique-nique et tables visibles concordantes. Photo historique non datée ; ne pas transposer sa configuration aux règles actuelles."
+    },
+    {
+      "name": "Casiers",
+      "itemId": "bdbb2a10-9ec2-411e-8cec-4c10eaf06429",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [
+        "JMP_9374-1024x683.jpg"
+      ],
+      "reason": "Image officielle de l’étang sous la section Casiers ; aucun casier visible."
+    },
+    {
+      "name": "Sanitaires",
+      "itemId": "ae748cb1-0161-4f41-8480-cdbfa2fef39c",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [],
+      "reason": "Aucune vue officielle précise retrouvée."
+    },
+    {
+      "name": "La Pêche de Pokey",
+      "itemId": "d65f2126-7c7d-4f4f-9920-b84c90fca675",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [],
+      "reason": "Aucune vraie photo officielle nommément attribuée retrouvée."
+    },
+    {
+      "name": "Salle d’arcade",
+      "itemId": "3244f8c0-d527-47e9-ad71-a4409e789ae1",
+      "status": "not_qualified",
+      "candidates": [],
+      "rejectedCandidates": [],
+      "reason": "Aucune vue officielle précise retrouvée."
+    },
+    {
+      "name": "Scène Pokeyshow",
+      "itemId": "a2631717-bada-4f5b-83ff-a58cb643efc5",
+      "status": "conditional_stage_identity_unresolved",
+      "candidates": [
+        "nocturne-yanns-151-1-683x1024.jpg"
+      ],
+      "rejectedCandidates": [],
+      "reason": "Concert Yanns 2025 confirmé au parc ; article ne nomme pas Scène Pokeyshow. Les images sociales portant le nom ont des incrustations promotionnelles exclues."
+    }
+  ],
+  "photos": [
+    {
+      "sourceKey": "food",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/bg-restauration-1244x700.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/bg-restauration-1244x700.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:14.475901+00:00",
+      "bytes": 49939,
+      "dimensions": [
+        1244,
+        700
+      ],
+      "sha256": "f3f16630f3853765e4a0de2d688c6ac7bf50ded5948f68d8aa32497cee2c4792",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "bg-restauration-1244x700.jpg",
+      "inspectionStatus": "excluded_unidentified_food_illustration",
+      "visualObservation": "Femme tenant un hamburger, arrière-plan flou. Aucun restaurant précis ni élément propre au parc visible ; ne pas affecter à un item.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/restauration/"
+    },
+    {
+      "sourceKey": "food",
+      "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/formule-burger-pmym4164pe003ppkecvaqpasjrg8g5vqo94iituaao.png",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/formule-burger-pmym4164pe003ppkecvaqpasjrg8g5vqo94iituaao.png",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:14.889669+00:00",
+      "bytes": 217384,
+      "dimensions": [
+        500,
+        400
+      ],
+      "sha256": "bbcececba7006be4028712615c249079d7663e0bbe11e841b3b68325563fdbb8",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "formule-burger-pmym4164pe003ppkecvaqpasjrg8g5vqo94iituaao.png",
+      "inspectionStatus": "excluded_promotional_composite",
+      "visualObservation": "Détourages de burger, frites avec logo Pokeyland et bouteille Coca-Cola assemblés sur fond transparent. Ce n’est pas une photographie documentaire du Petit Creux.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/restauration/"
+    },
+    {
+      "sourceKey": "food",
+      "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/restauration_l_escalejpg-pmv60aige6007jcov5h3a4dhrwdi7p9f2zokfq7d7k.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/restauration_l_escalejpg-pmv60aige6007jcov5h3a4dhrwdi7p9f2zokfq7d7k.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:15.057351+00:00",
+      "bytes": 56756,
+      "dimensions": [
+        500,
+        400
+      ],
+      "sha256": "edcb1f3d02079f2a1bbe04de54dc06821033fd76820d3c4bfa75c6bfc8fb36d8",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "restauration_l_escalejpg-pmv60aige6007jcov5h3a4dhrwdi7p9f2zokfq7d7k.jpg",
+      "inspectionStatus": "conditional_official_food_service",
+      "visualObservation": "Sous L’Escale sur la page officielle : cuisinier au tablier Pokeyland devant une grande poêlée. Preuve du contexte culinaire attribué par l’éditeur, pas de façade/enseigne. 500×400 seulement. Ne pas identifier O’Chalet/Le Grill à partir du chalet en fond.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/restauration/"
+    },
+    {
+      "sourceKey": "food",
+      "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/restauration_le_gourmand-pmv5nf40sudn7s1t1360mvb8wxtjsx5qza26ubagf4.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/restauration_le_gourmand-pmv5nf40sudn7s1t1360mvb8wxtjsx5qza26ubagf4.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:15.248925+00:00",
+      "bytes": 28866,
+      "dimensions": [
+        500,
+        400
+      ],
+      "sha256": "001848d8f14b85b70ba0efc0ef8770ee025fdd71b50ea7b68acef04b388b491d",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "restauration_le_gourmand-pmv5nf40sudn7s1t1360mvb8wxtjsx5qza26ubagf4.jpg",
+      "inspectionStatus": "excluded_unidentified_food_illustration",
+      "visualObservation": "Deux mains présentent des barquettes de churros ; aucune identité physique du Gourmand visible. Illustration produit non retenue comme photo propre du lieu.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/restauration/"
+    },
+    {
+      "sourceKey": "food",
+      "url": "https://www.pokeyland.com/wp-content/uploads/elementor/thumbs/restauration_le_grill-pmv5hobj1aik9ke6kls3ebhu864sricsuujd9ft2g0.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/restauration_le_grill-pmv5hobj1aik9ke6kls3ebhu864sricsuujd9ft2g0.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:15.409971+00:00",
+      "bytes": 47546,
+      "dimensions": [
+        500,
+        400
+      ],
+      "sha256": "5ca03500d6e500958db558249cbd253542be3da5a6c5381a11fae9ce88c07336",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "restauration_le_grill-pmv5hobj1aik9ke6kls3ebhu864sricsuujd9ft2g0.jpg",
+      "inspectionStatus": "excluded_promotional_food_illustration",
+      "visualObservation": "Viande/brochette au-dessus de flammes, composition promotionnelle sans contexte physique du restaurant. Ne pas importer comme vue du Grill.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/restauration/"
+    },
+    {
+      "sourceKey": "services",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/00478395-1024x683.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/00478395-1024x683.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:15.597161+00:00",
+      "bytes": 195845,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "a98e62bef3ec8f5d9eb6043ce2973550c6ec218803e879c65a0088b2a0923435",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "00478395-1024x683.jpg",
+      "inspectionStatus": "excluded_for_service_identity",
+      "visualObservation": "Famille sur filets suspendus avec grosses boules orange ; image sous rubrique handicap mais ne montre pas un équipement d’accueil ou un service précis.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/"
+    },
+    {
+      "sourceKey": "services",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/035-2-1024x683.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/035-2-1024x683.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:15.790030+00:00",
+      "bytes": 162739,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "f0df64f7d887043661a67134c23025fbb9f6ad3b80389461d7dadfe6efff4cdc",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "035-2-1024x683.jpg",
+      "inspectionStatus": "park_only_unresolved_snack_identity",
+      "visualObservation": "Allée bordée de chalets dont un porte simplement SNACK ; un panneau indique CAISSES/SNACK/ACTIVITES ENFANTS. Image de la rubrique accessibilité. Ne prouve aucun des noms actuels des restaurants, ni le guichet principal exact.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/"
+    },
+    {
+      "sourceKey": "services",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-1024x683.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/23578433-1024x683.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:15.954772+00:00",
+      "bytes": 161202,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "9b951b6150c2bc48a2821e0f8b5af25f0ae484087983760f3a6fe6b8656b1ae4",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "23578433-1024x683.jpg",
+      "inspectionStatus": "same_exposure_smaller_variant",
+      "visualObservation": "Même exposition que 23578433-2048x1365.jpg, ne pas importer les deux.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/"
+    },
+    {
+      "sourceKey": "services",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/32110959-1024x683.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/32110959-1024x683.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:16.119767+00:00",
+      "bytes": 201949,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "ee81de9402d2a9a972c419c829bb2587ba34e30a009ccc6bc78c5dfe94cc3153",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "32110959-1024x683.jpg",
+      "inspectionStatus": "park_only_not_first_aid",
+      "visualObservation": "Vue générale de bâtiments bois, terrasse et initiation Segway ; placée sous Poste de secours mais aucune enseigne/installation de secours visible. Ne pas affecter à Poste de secours.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/"
+    },
+    {
+      "sourceKey": "services",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-1024x683.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/45152318-1024x683.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:16.283722+00:00",
+      "bytes": 183428,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "235a4c59785b0adf6d132c2bc83267c14bb8b3788960cb4e66c0988024ca5dc7",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "45152318-1024x683.jpg",
+      "inspectionStatus": "same_exposure_smaller_variant",
+      "visualObservation": "Même exposition que 45152318-2048x1365.jpg, ne pas importer les deux.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/"
+    },
+    {
+      "sourceKey": "services",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/JMP_9374-1024x683.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/JMP_9374-1024x683.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:16.449278+00:00",
+      "bytes": 183178,
+      "dimensions": [
+        1024,
+        683
+      ],
+      "sha256": "e5eee342683dd400017b282a0d3bb0c92c177e3bd083a03163ee04003ddf1563",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "JMP_9374-1024x683.jpg",
+      "inspectionStatus": "park_only_not_lockers",
+      "visualObservation": "Vue de l’étang, jet d’eau, pont et bâtiments ; placée sous Casiers mais aucun casier visible. Ne pas affecter à Casiers.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/"
+    },
+    {
+      "sourceKey": "beach",
+      "url": "https://www.pokeyland.com/wp-content/uploads/2023/07/IMG_2620-1024x768.png",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/IMG_2620-1024x768.png",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:45:16.734501+00:00",
+      "bytes": 435269,
+      "dimensions": [
+        1024,
+        768
+      ],
+      "sha256": "fd14c3ee2482a1821c7d2351d1fcace1933401e94a283d3217cccf2bff7c6be6",
+      "over960KiB": false,
+      "captureDate": null,
+      "photographer": null,
+      "filename": "IMG_2620-1024x768.png",
+      "inspectionStatus": "conditional_pokey_plage_2023",
+      "visualObservation": "Vraie photo nocturne de pergola/terrasse, palmiers en pot et guirlandes au pied du Waterjump. Article officiel nomme Pokey Plage et le décrit comme point de détente avec cocktails, publié 20 juillet 2023. Ne prouve pas seul identité avec l’item Pokey Beach du plan 2026 ; pas de nouvelle enseigne visible.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "sourcePage": "https://www.pokeyland.com/actualites/amusez-vous-a-pokeyplage/"
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/salle.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/salle.jpg",
+      "http": 200,
+      "bytes": 72008,
+      "dimensions": [
+        534,
+        476
+      ],
+      "sha256": "dc2f952b5cc0ee6c1d3395e82bea8fd239aee0636194838e636b134221af0011",
+      "fetchedUtc": "2026-11-15T11:48:53.293739+00:00",
+      "sourcePage": "https://www.pokeyland.com/vos-evenements-seminaires/",
+      "captureDate": null,
+      "photographer": null,
+      "filename": "salle.jpg",
+      "inspectionStatus": "qualified_limited_resolution",
+      "visualObservation": "Vue intérieure de la salle à verrière colorée, mobilier haut et table dressée. Page officielle de location de salle. 534×476 natif ; qualité modestement définie, pas agrandir. Aucun filigrane ni montage visible.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "over960KiB": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/seminaire.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/seminaire.jpg",
+      "http": 200,
+      "bytes": 96690,
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "525c5f95240039b5b67137cfbde974405372be48896f7c29704d6147c43a4579",
+      "fetchedUtc": "2026-11-15T11:48:53.486694+00:00",
+      "sourcePage": "https://www.pokeyland.com/vos-evenements-seminaires/",
+      "captureDate": null,
+      "photographer": null,
+      "filename": "seminaire.jpg",
+      "inspectionStatus": "qualified_limited_resolution",
+      "visualObservation": "Conférence dans une salle à plafond bois, public assis, écran et intervenante. Photo officielle sous Séminaire. 600×600 natif ; pas agrandir. Aucun filigrane ni montage visible.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "over960KiB": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/formation.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/formation.jpg",
+      "http": 200,
+      "bytes": 134105,
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "d882a17cea225a71b95599f3ced846288edeefce458573fe9cb079862c51dceb",
+      "fetchedUtc": "2026-11-15T11:48:53.654108+00:00",
+      "sourcePage": "https://www.pokeyland.com/vos-evenements-seminaires/",
+      "captureDate": null,
+      "photographer": null,
+      "filename": "formation.jpg",
+      "inspectionStatus": "qualified_limited_resolution",
+      "visualObservation": "Autre angle réel de la conférence dans la salle bois ; la fenêtre/rideaux/escalier confirment la même salle que seminaire.jpg. Deux expositions distinctes, pas deux variantes de la même image. 600×600 natif ; pas agrandir. Aucun filigrane ni montage visible.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "over960KiB": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2025/06/nocturne-yanns-034-683x1024.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/nocturne-yanns-034-683x1024.jpg",
+      "sourcePage": "https://www.pokeyland.com/actualites/waterjump2025/",
+      "http": 200,
+      "bytes": 139880,
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sha256": "b845dc29c477c37ca83604145acae4fefae425fd484a65574f63165976d60cec",
+      "fetchedUtc": "2026-11-15T11:49:21.126423+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "filename": "nocturne-yanns-034-683x1024.jpg",
+      "inspectionStatus": "outside_task_waterjump_candidate",
+      "visualObservation": "Waterjump avec participants en saut et mascotte visible. Vraie photo officielle de la nocturne 2025 ; n’illustre aucun service demandé. Date de l’événement 28 juin 2025, date exacte de cette prise non déduite.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "over960KiB": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2025/06/nocturne-yanns-151-1-683x1024.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/nocturne-yanns-151-1-683x1024.jpg",
+      "sourcePage": "https://www.pokeyland.com/actualites/waterjump2025/",
+      "http": 200,
+      "bytes": 37966,
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sha256": "8cf4bd49496f5ba4bcde2a541b0c119a55ffd3564b69fec74a4c9d4701ce6a7e",
+      "fetchedUtc": "2026-11-15T11:49:21.324941+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "filename": "nocturne-yanns-151-1-683x1024.jpg",
+      "inspectionStatus": "conditional_stage_identity_unresolved",
+      "visualObservation": "Yanns chante devant le public sur une scène couverte en bois. Article officiel identifie son concert au parc, pas explicitement le nom Scène Pokeyshow. Ne pas rattacher automatiquement à cet item sans autre rapprochement. Pas de filigrane ni montage visible.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "over960KiB": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2025/06/nocturne-yanns-042-scaled-e1751276028857.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/nocturne-yanns-042-scaled-e1751276028857.jpg",
+      "sourcePage": "https://www.pokeyland.com/actualites/waterjump2025/",
+      "http": 200,
+      "bytes": 344997,
+      "dimensions": [
+        1733,
+        1677
+      ],
+      "sha256": "a45e983509e4d0d3d2205cd000bd9669c699a912c57d3495747748f9878e281b",
+      "fetchedUtc": "2026-11-15T11:49:21.604807+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "filename": "nocturne-yanns-042-scaled-e1751276028857.jpg",
+      "inspectionStatus": "outside_task_waterjump_candidate",
+      "visualObservation": "Vue depuis le haut des pistes du Waterjump avec un participant casqué de dos. Fichier déjà servi ainsi par l’éditeur, aucun recadrage local. Ne documente pas les services.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false,
+      "over960KiB": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/23578433-2048x1365.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/23578433-2048x1365.jpg",
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/",
+      "http": 200,
+      "bytes": 517686,
+      "dimensions": [
+        2048,
+        1365
+      ],
+      "sha256": "62ffbcd9bc22dddea366874b3b1b889ab5637bf9007cac9b0480c1182f90673e",
+      "fetchedUtc": "2026-11-15T11:50:28.658176+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "over960KiB": false,
+      "exif": {},
+      "filename": "23578433-2048x1365.jpg",
+      "inspectionStatus": "qualified_service_photo",
+      "visualObservation": "Tables et bancs de pique-nique avec visiteurs, près de terrains de paintball derrière les filets. Page officielle associe cette exposition à Aire de pique-nique. Ne pas annoncer une localisation exacte actuelle ou le droit de pique-niquer à l’intérieur : la page distingue aujourd’hui parking et proximité accrobranche hors parc.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2022/04/45152318-2048x1365.jpg",
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/food-services-photo-followup/45152318-2048x1365.jpg",
+      "sourcePage": "https://www.pokeyland.com/services-a-disposition/",
+      "http": 200,
+      "bytes": 659262,
+      "dimensions": [
+        2048,
+        1365
+      ],
+      "sha256": "6e98affea663493db8c37f1025b9d20b2d3dfbdcf867bedaed8cebd43a1bb19e",
+      "fetchedUtc": "2026-11-15T11:50:29.713212+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "over960KiB": false,
+      "exif": {},
+      "filename": "45152318-2048x1365.jpg",
+      "inspectionStatus": "qualified_service_photo",
+      "visualObservation": "Deux rangées de voitures stationnées bordent une allée dans les arbres. Page officielle associe cette exposition à Parking gratuit. Aucun filigrane ni montage visible ; ne pas inventer capacité ou géolocalisation.",
+      "visuallyInspected": true,
+      "localPixelTransformation": false,
+      "publisher": "Pokeyland",
+      "creditBasis": "Image publiée sur le site officiel Pokeyland ; photographe individuel non nommé.",
+      "openLicenseClaimed": false
+    }
+  ],
+  "additionalPublicLead": {
+    "url": "https://www.estrepublicain.fr/culture-loisirs/2021/08/04/le-pass-sanitaire-vide-les-allees-du-parc-de-loisirs-pokeyland-a-fey",
+    "imageUrl": "https://cdn-s-www.estrepublicain.fr/images/3ACCF05D-856C-4587-A0AE-87A669E21387/NW_raw/depuis-la-mise-en-place-du-pass-sanitaire-la-frequentation-de-pokeyland-a-baisse-de-30-photo-er-emma-facchetti-1628090396.jpg",
+    "credit": "ER / Emma Facchetti",
+    "status": "Search result only; not fetched or visually inspected locally; outside official-only selection.",
+    "subjectFromIndex": "Caisses sous arche bois/pierres surmontée mascotte."
+  }
+}

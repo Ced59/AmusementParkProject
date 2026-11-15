@@ -1,0 +1,849 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-17-paintball-descriptions",
+        "step": "04-items",
+        "notes": "Five existing named paintball fields. Current official paintball page and exact named DOM/photo associations personally reviewed; five native photos personally viewed. All40 texts authored and reread in eight languages. Physical descriptions reflect actual images, boats and vehicles never confused. Checkpoint remains distinct. Short formats (Dog One two paragraphs) retained after source research, no padding or unsupported event/date/model. No status, dates, restrictions or visibility changes."
+      },
+      "items": [
+        {
+          "id": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+          "key": "pokeyland-terrain-zombie",
+          "name": "Zombie",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une usine abandonnée dans les bois</h2><p>Zombie installe son scénario de paintball dans une friche industrielle reconstituée. Des façades grises, de vieux véhicules et des fûts rouges occupent la clairière ; une longue flèche métallique rouge traverse le décor au-dessus du sol couvert de feuilles.</p><p>Cette usine désaffectée sert de refuge aux joueurs face aux morts-vivants. Les arbres poussent au milieu des vestiges, donnant à l’ensemble l’allure d’un site abandonné à la forêt.</p><h2>Le camp des morts-vivants grandit</h2><p>Le scénario repose sur la contamination : chaque joueur touché rejoint les zombies. La partie transforme ainsi progressivement les défenseurs en assaillants, autour de l’usine à reprendre.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>An abandoned factory in the woods</h2><p>Zombie sets its paintball scenario in a recreated industrial ruin. Grey façades, old vehicles and red drums fill the clearing; a long red metal boom crosses the scene above the leaf-covered ground.</p><p>This disused factory shelters the players from the undead. Trees rise among the remains, giving the setting the appearance of a site reclaimed by the forest.</p><h2>The undead gain ground</h2><p>The scenario centres on infection: every player hit joins the zombies. Defenders gradually become attackers as the struggle to take the factory continues.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine verlassene Fabrik im Wald</h2><p>Zombie spielt in einer nachgebauten Industrieruine. Graue Fassaden, alte Fahrzeuge und rote Fässer stehen auf der Lichtung; ein langer roter Metallausleger zieht sich über den laubbedeckten Boden hinweg.</p><p>Die stillgelegte Fabrik bietet den Spielern Zuflucht vor den Untoten. Zwischen den Überresten wachsen Bäume, als hätte der Wald das Gelände zurückerobert.</p><h2>Die Untoten werden mehr</h2><p>Das Szenario beruht auf Ansteckung: Jeder getroffene Spieler schließt sich den Zombies an. So werden Verteidiger nach und nach zu Angreifern im Kampf um die Fabrik.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una fábrica abandonada entre los árboles</h2><p>Zombie sitúa su escenario de paintball en unas ruinas industriales recreadas. Fachadas grises, vehículos antiguos y bidones rojos ocupan el claro; una larga estructura metálica roja cruza el decorado sobre el suelo cubierto de hojas.</p><p>La fábrica en desuso sirve de refugio a los jugadores frente a los muertos vivientes. Los árboles crecen entre los restos, dando al conjunto el aspecto de un lugar recuperado por el bosque.</p><h2>Crece el bando de los zombis</h2><p>El escenario gira en torno al contagio: cada jugador alcanzado se une a los zombis. Los defensores se convierten poco a poco en atacantes durante la disputa por la fábrica.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una fabbrica abbandonata nel bosco</h2><p>Zombie ambienta il suo scenario di paintball in una rovina industriale ricostruita. Facciate grigie, vecchi veicoli e fusti rossi occupano la radura; una lunga struttura metallica rossa attraversa la scena sopra il terreno coperto di foglie.</p><p>La fabbrica dismessa offre rifugio ai giocatori contro i non morti. Gli alberi crescono tra i resti, dando l’impressione di un sito riconquistato dal bosco.</p><h2>Le file degli zombi si ingrossano</h2><p>Lo scenario si basa sul contagio: ogni giocatore colpito passa dalla parte degli zombi. I difensori diventano così gradualmente attaccanti nella contesa per la fabbrica.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een verlaten fabriek in het bos</h2><p>Zombie speelt zich af in een nagebouwde industriële ruïne. Grijze gevels, oude voertuigen en rode vaten staan op de open plek; een lange rode metalen arm loopt boven de met bladeren bedekte grond door het decor.</p><p>De verlaten fabriek biedt de spelers een schuilplaats tegen de ondoden. Tussen de overblijfselen groeien bomen, alsof het bos het terrein heeft teruggewonnen.</p><h2>Steeds meer zombies</h2><p>Besmetting vormt de kern van het scenario: iedere geraakte speler sluit zich aan bij de zombies. Verdedigers veranderen zo geleidelijk in aanvallers tijdens de strijd om de fabriek.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Opuszczona fabryka w lesie</h2><p>Zombie rozgrywa się w odtworzonych ruinach przemysłowych. Szare fasady, stare pojazdy i czerwone beczki zajmują polanę; długa czerwona konstrukcja metalowa przecina dekorację nad ziemią pokrytą liśćmi.</p><p>Nieczynna fabryka daje graczom schronienie przed nieumarłymi. Drzewa rosną wśród pozostałości, jakby las odzyskał opuszczony teren.</p><h2>Przybywa nieumarłych</h2><p>Scenariusz opiera się na zarażaniu: każdy trafiony gracz dołącza do zombie. Obrońcy stopniowo stają się napastnikami podczas walki o fabrykę.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma fábrica abandonada no bosque</h2><p>Zombie situa o seu cenário de paintball numa ruína industrial recriada. Fachadas cinzentas, veículos antigos e bidões vermelhos ocupam a clareira; uma longa estrutura metálica vermelha atravessa o cenário sobre o chão coberto de folhas.</p><p>A fábrica desativada serve de refúgio aos jogadores perante os mortos-vivos. As árvores crescem entre os vestígios, dando ao conjunto o aspeto de um local reconquistado pelo bosque.</p><h2>O grupo dos mortos-vivos cresce</h2><p>O cenário assenta no contágio: cada jogador atingido junta-se aos zombies. Os defensores tornam-se gradualmente atacantes na disputa pela fábrica.</p>"
+            }
+          ]
+        },
+        {
+          "id": "d7074297-19a0-44e6-a196-c251ea484d46",
+          "key": "pokeyland-terrain-dog-one",
+          "name": "Dog One",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un débarquement en décor</h2><p>Dog One reprend l’imaginaire d’un débarquement pour son terrain de paintball. Un véritable bateau échoué sur une plage et une barge composent ce paysage de combat reconstitué à Pokeyland.</p><h2>Le véhicule camouflé</h2><p>La photographie officielle montre aussi un véhicule blindé de décor, peint en vert et beige et marqué du numéro 302. Il repose entre les arbres, devant des cloisons basses en bois.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A landing scene</h2><p>Dog One draws on the imagery of a military landing for its paintball field. A real boat stranded on a beach and a barge form part of this recreated battlefield at Pokeyland.</p><h2>A camouflaged vehicle</h2><p>The official photograph also shows a prop armoured vehicle painted green and beige and marked 302. It stands among the trees in front of low wooden barriers.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Landung als Kulisse</h2><p>Dog One greift für sein Paintballgelände das Motiv einer militärischen Landung auf. Ein echtes, an einem Strand gestrandetes Boot und ein Lastkahn gehören zu diesem nachgebauten Schauplatz in Pokeyland.</p><h2>Ein Fahrzeug in Tarnfarben</h2><p>Das offizielle Foto zeigt außerdem ein gepanzertes Dekorfahrzeug in Grün und Beige mit der Nummer 302. Es steht zwischen den Bäumen vor niedrigen Holzwänden.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un desembarco como escenario</h2><p>Dog One recurre al imaginario de un desembarco militar para su campo de paintball. Un barco real varado en una playa y una barcaza forman parte de este paisaje de combate recreado en Pokeyland.</p><h2>Un vehículo camuflado</h2><p>La fotografía oficial muestra también un vehículo blindado de decorado, pintado de verde y beige y marcado con el número 302. Está entre los árboles, delante de barreras bajas de madera.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Uno sbarco come ambientazione</h2><p>Dog One si ispira all’immaginario di uno sbarco militare per il suo campo da paintball. Una vera barca arenata su una spiaggia e una chiatta fanno parte di questo paesaggio di combattimento ricreato a Pokeyland.</p><h2>Un veicolo mimetizzato</h2><p>La fotografia ufficiale mostra anche un veicolo blindato di scena, dipinto di verde e beige e contrassegnato dal numero 302. Si trova tra gli alberi, davanti a basse barriere di legno.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een landing als decor</h2><p>Dog One gebruikt het beeld van een militaire landing voor zijn paintballterrein. Een echte boot die op een strand is gestrand en een ponton maken deel uit van dit nagebouwde strijdtoneel in Pokeyland.</p><h2>Een gecamoufleerd voertuig</h2><p>De officiële foto toont ook een gepantserd decorvoertuig in groen en beige, met het nummer 302. Het staat tussen de bomen voor lage houten schotten.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Sceneria desantu</h2><p>Dog One wykorzystuje motyw desantu wojskowego jako scenerię pola paintballowego. Prawdziwa łódź osiadła na plaży oraz barka tworzą część odtworzonego pola walki w Pokeyland.</p><h2>Pojazd w kamuflażu</h2><p>Oficjalna fotografia pokazuje również dekoracyjny pojazd opancerzony, pomalowany na zielono i beżowo oraz oznaczony numerem 302. Stoi wśród drzew przed niskimi drewnianymi przegrodami.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um desembarque como cenário</h2><p>Dog One inspira-se no imaginário de um desembarque militar para o seu campo de paintball. Um barco verdadeiro encalhado numa praia e uma barcaça fazem parte desta paisagem de combate recriada em Pokeyland.</p><h2>Um veículo camuflado</h2><p>A fotografia oficial mostra também um veículo blindado de cenário, pintado de verde e bege e marcado com o número 302. Está entre as árvores, diante de barreiras baixas de madeira.</p>"
+            }
+          ]
+        },
+        {
+          "id": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+          "key": "pokeyland-terrain-cannibale",
+          "name": "Cannibale",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les huttes sous les arbres</h2><p>Cannibale prend la forme d’un village de fiction installé dans la forêt de Pokeyland. Ses petites huttes ont des parois de planches sombres, des ouvertures rectangulaires et des toits coniques couverts de branchages.</p><p>Le feuillage du sous-bois se mêle aux couvertures végétales des cabanes. Les passages entre ces constructions composent le décor du terrain de paintball, autour des portes et des fenêtres laissées ouvertes.</p><h2>Un village à défendre</h2><p>Le scénario oppose l’attaque et la défense de ce village reconstitué.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Huts beneath the trees</h2><p>Cannibale takes the form of a fictional village in Pokeyland’s forest. Its small huts have dark plank walls, rectangular openings and conical roofs covered with branches.</p><p>The woodland foliage blends with the cabins’ leafy roofs. Paths between these buildings form the paintball setting around their open doorways and windows.</p><h2>A village to defend</h2><p>The scenario pits attackers against defenders of the reconstructed village.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Hütten unter den Bäumen</h2><p>Cannibale ist als fiktives Dorf im Wald von Pokeyland gestaltet. Die kleinen Hütten haben dunkle Bretterwände, rechteckige Öffnungen und kegelförmige, mit Zweigen gedeckte Dächer.</p><p>Das Laub des Waldes geht optisch in die pflanzlichen Dächer über. Die Wege zwischen den Bauten bilden zusammen mit den offenen Türen und Fenstern die Paintballkulisse.</p><h2>Ein Dorf verteidigen</h2><p>Im Szenario treten Angreifer und Verteidiger des nachgebauten Dorfes gegeneinander an.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Cabañas bajo los árboles</h2><p>Cannibale adopta la forma de una aldea ficticia en el bosque de Pokeyland. Sus pequeñas cabañas tienen paredes de tablas oscuras, aberturas rectangulares y tejados cónicos cubiertos de ramas.</p><p>El follaje del bosque se mezcla con las cubiertas vegetales de las cabañas. Los pasos entre las construcciones forman el escenario de paintball, alrededor de las puertas y ventanas abiertas.</p><h2>Una aldea que defender</h2><p>El escenario enfrenta a atacantes y defensores de esta aldea recreada.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Capanne sotto gli alberi</h2><p>Cannibale prende la forma di un villaggio immaginario nel bosco di Pokeyland. Le piccole capanne hanno pareti di assi scure, aperture rettangolari e tetti conici coperti di rami.</p><p>Il fogliame del bosco si mescola alle coperture vegetali delle capanne. I passaggi tra le costruzioni compongono la scenografia del campo da paintball, attorno alle porte e alle finestre aperte.</p><h2>Un villaggio da difendere</h2><p>Lo scenario contrappone attaccanti e difensori del villaggio ricostruito.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Hutten onder de bomen</h2><p>Cannibale heeft de vorm van een fictief dorp in het bos van Pokeyland. De kleine hutten hebben wanden van donkere planken, rechthoekige openingen en kegelvormige daken bedekt met takken.</p><p>Het bosgroen sluit aan op de begroeiing van de daken. De doorgangen tussen de bouwsels vormen het paintballdecor, rond de open deuren en ramen.</p><h2>Een dorp verdedigen</h2><p>In het scenario staan aanvallers tegenover verdedigers van het nagebouwde dorp.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Chaty pod drzewami</h2><p>Cannibale ma postać fikcyjnej wioski w lesie Pokeyland. Niewielkie chaty mają ściany z ciemnych desek, prostokątne otwory i stożkowate dachy pokryte gałęziami.</p><p>Leśne liście mieszają się z roślinnymi pokryciami chat. Przejścia między budynkami tworzą scenerię pola paintballowego wokół otwartych drzwi i okien.</p><h2>Obrona wioski</h2><p>Scenariusz przeciwstawia napastników obrońcom odtworzonej wioski.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Cabanas sob as árvores</h2><p>Cannibale assume a forma de uma aldeia fictícia no bosque de Pokeyland. As pequenas cabanas têm paredes de tábuas escuras, aberturas retangulares e telhados cónicos cobertos de ramos.</p><p>A folhagem do bosque mistura-se com as coberturas vegetais das cabanas. As passagens entre as construções formam o cenário do campo de paintball, em redor das portas e janelas abertas.</p><h2>Uma aldeia para defender</h2><p>O cenário opõe atacantes e defensores da aldeia recriada.</p>"
+            }
+          ]
+        },
+        {
+          "id": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+          "key": "pokeyland-terrain-panama",
+          "name": "Panama",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La chapelle dans la forêt</h2><p>Panama transpose son terrain de paintball dans une forêt d’inspiration sud-américaine. Une petite chapelle reconstituée, aux murs clairs et au toit sombre, se dresse parmi les arbres.</p><p>La lucarne de cette chapelle fait partie du jeu : le parc la présente comme un poste depuis lequel les joueurs peuvent viser leurs adversaires. Le bâtiment donne ainsi un point de repère précis au scénario forestier.</p><h2>Un passage de bois</h2><p>À côté de la chapelle, un pont de planches bordé de cordes traverse le décor. Des éléments métalliques rouillés prolongent cette ambiance de constructions isolées sous le feuillage.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A chapel in the forest</h2><p>Panama places its paintball field in a setting inspired by South American forests. A small recreated chapel, with pale walls and a dark roof, stands among the trees.</p><p>The chapel’s upper window is part of the game: the park presents it as a position from which players can aim at their opponents. The building gives this woodland scenario a distinctive landmark.</p><h2>A timber crossing</h2><p>Beside the chapel, a plank bridge edged with ropes crosses the scene. Rusted metal structures extend the atmosphere of isolated buildings beneath the foliage.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Kapelle im Wald</h2><p>Panama versetzt sein Paintballgelände in eine von südamerikanischen Wäldern inspirierte Kulisse. Zwischen den Bäumen steht eine kleine nachgebaute Kapelle mit hellen Wänden und dunklem Dach.</p><p>Das obere Fenster der Kapelle gehört zum Spiel: Der Park beschreibt es als Position, von der aus Spieler ihre Gegner anvisieren können. Damit wird das Gebäude zum markanten Orientierungspunkt im Waldszenario.</p><h2>Ein Übergang aus Holz</h2><p>Neben der Kapelle führt eine von Seilen gesäumte Bretterbrücke durch die Kulisse. Rostige Metallaufbauten ergänzen das Bild abgelegener Bauten unter dem Blätterdach.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una capilla en el bosque</h2><p>Panama sitúa su campo de paintball en una ambientación inspirada en los bosques sudamericanos. Una pequeña capilla recreada, de paredes claras y tejado oscuro, se alza entre los árboles.</p><p>La ventana superior de la capilla forma parte del juego: el parque la presenta como un puesto desde el que los jugadores pueden apuntar a sus adversarios. El edificio aporta así una referencia singular al escenario forestal.</p><h2>Un paso de madera</h2><p>Junto a la capilla, un puente de tablas bordeado de cuerdas atraviesa el decorado. Estructuras metálicas oxidadas prolongan esta atmósfera de construcciones aisladas bajo el follaje.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una cappella nel bosco</h2><p>Panama ambienta il suo campo da paintball in una foresta d’ispirazione sudamericana. Una piccola cappella ricostruita, con pareti chiare e tetto scuro, sorge tra gli alberi.</p><p>La finestra superiore della cappella fa parte del gioco: il parco la presenta come una postazione da cui i giocatori possono prendere di mira gli avversari. L’edificio diventa così un punto di riferimento riconoscibile nello scenario boschivo.</p><h2>Un passaggio di legno</h2><p>Accanto alla cappella, un ponte di assi bordato da corde attraversa lo scenario. Strutture metalliche arrugginite prolungano l’atmosfera di costruzioni isolate sotto il fogliame.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een kapel in het bos</h2><p>Panama plaatst zijn paintballterrein in een decor dat is geïnspireerd op Zuid-Amerikaanse bossen. Tussen de bomen staat een kleine nagebouwde kapel met lichte muren en een donker dak.</p><p>Het bovenraam van de kapel hoort bij het spel: het park beschrijft het als een plek vanwaar spelers op hun tegenstanders kunnen richten. Zo vormt het gebouw een herkenbaar punt in het bosdecor.</p><h2>Een houten oversteek</h2><p>Naast de kapel loopt een plankenbrug met touwen langs de randen door het terrein. Roestige metalen constructies versterken de sfeer van afgelegen bouwsels onder het bladerdak.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Kaplica w lesie</h2><p>Panama umieszcza pole paintballowe w scenerii inspirowanej lasami Ameryki Południowej. Wśród drzew stoi niewielka odtworzona kaplica o jasnych ścianach i ciemnym dachu.</p><p>Górne okienko kaplicy jest częścią gry: park przedstawia je jako stanowisko, z którego gracze mogą celować do przeciwników. Budynek stanowi dzięki temu charakterystyczny punkt leśnego scenariusza.</p><h2>Drewniane przejście</h2><p>Obok kaplicy przez dekorację prowadzi most z desek, otoczony linami. Zardzewiałe konstrukcje metalowe dopełniają atmosfery odosobnionych budowli pod liśćmi drzew.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma capela no bosque</h2><p>Panama situa o seu campo de paintball num ambiente inspirado nas florestas sul-americanas. Uma pequena capela recriada, com paredes claras e telhado escuro, ergue-se entre as árvores.</p><p>A janela superior da capela faz parte do jogo: o parque apresenta-a como um posto de onde os jogadores podem apontar aos adversários. O edifício torna-se assim uma referência marcante no cenário florestal.</p><h2>Uma passagem de madeira</h2><p>Ao lado da capela, uma ponte de tábuas ladeada de cordas atravessa o cenário. Estruturas metálicas enferrujadas prolongam esta atmosfera de construções isoladas sob a folhagem.</p>"
+            }
+          ]
+        },
+        {
+          "id": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+          "key": "pokeyland-terrain-fox-two",
+          "name": "Fox Two",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La base militaire sous les arbres</h2><p>Fox Two représente une base militaire aménagée en terrain de paintball. Un bus embourbé et un camion de transport de matériel appartiennent au scénario d’attaque et de défense de cette position.</p><p>Les tranchées et le poste de commandement enterré prolongent le décor de champ de bataille.</p><h2>Caisses et blindé</h2><p>La vue officielle montre un véhicule blindé vert à canon, entouré de caisses empilées entre les arbres. Ces objets de décor donnent à Fox Two sa silhouette de campement militaire dissimulé dans la forêt.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A military base beneath the trees</h2><p>Fox Two represents a military base laid out as a paintball field. A bogged-down bus and an equipment truck belong to the scenario of attacking and defending this position.</p><p>Trenches and a buried command post extend the battlefield scenery.</p><h2>Crates and armour</h2><p>The official view shows a green armoured vehicle with a gun, surrounded by stacked crates among the trees. These props give Fox Two the appearance of a military encampment concealed in the forest.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Militärbasis unter Bäumen</h2><p>Fox Two stellt eine als Paintballgelände gestaltete Militärbasis dar. Ein im Schlamm festgefahrener Bus und ein Materialtransporter gehören zum Angriffs- und Verteidigungsszenario dieses Stützpunkts.</p><p>Schützengräben und ein eingegrabener Kommandoposten ergänzen die Schlachtfeldkulisse.</p><h2>Kisten und Panzerfahrzeug</h2><p>Das offizielle Bild zeigt ein grünes Panzerfahrzeug mit Kanone, umgeben von gestapelten Kisten zwischen den Bäumen. Diese Requisiten geben Fox Two das Aussehen eines im Wald verborgenen Militärlagers.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una base militar bajo los árboles</h2><p>Fox Two representa una base militar convertida en campo de paintball. Un autobús atascado en el barro y un camión de transporte de material forman parte del escenario de ataque y defensa de esta posición.</p><p>Las trincheras y el puesto de mando enterrado prolongan el decorado de campo de batalla.</p><h2>Cajas y un blindado</h2><p>La vista oficial muestra un vehículo blindado verde con cañón, rodeado de cajas apiladas entre los árboles. Estos elementos dan a Fox Two el aspecto de un campamento militar oculto en el bosque.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una base militare sotto gli alberi</h2><p>Fox Two rappresenta una base militare allestita come campo da paintball. Un autobus impantanato e un camion per il trasporto di materiale fanno parte dello scenario di attacco e difesa della postazione.</p><p>Le trincee e il posto di comando interrato prolungano la scenografia del campo di battaglia.</p><h2>Casse e un blindato</h2><p>La veduta ufficiale mostra un veicolo blindato verde con cannone, circondato da casse impilate tra gli alberi. Questi elementi danno a Fox Two l’aspetto di un accampamento militare nascosto nel bosco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een militaire basis onder de bomen</h2><p>Fox Two stelt een militaire basis voor die als paintballterrein is ingericht. Een vastgelopen bus en een vrachtwagen voor materieel horen bij het scenario waarin deze positie wordt aangevallen en verdedigd.</p><p>Loopgraven en een ondergrondse commandopost vullen het slagvelddecor aan.</p><h2>Kisten en een pantservoertuig</h2><p>De officiële foto toont een groen pantservoertuig met kanon, omringd door gestapelde kisten tussen de bomen. Deze decorstukken geven Fox Two het uiterlijk van een militair kamp dat in het bos verscholen ligt.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Baza wojskowa pod drzewami</h2><p>Fox Two przedstawia bazę wojskową urządzoną jako pole paintballowe. Autobus ugrzęzły w błocie i ciężarówka transportująca wyposażenie należą do scenariusza ataku oraz obrony tej pozycji.</p><p>Okopy i zagłębione w ziemi stanowisko dowodzenia uzupełniają dekorację pola walki.</p><h2>Skrzynie i pojazd pancerny</h2><p>Oficjalne zdjęcie pokazuje zielony pojazd opancerzony z działem, otoczony skrzyniami ustawionymi między drzewami. Rekwizyty nadają Fox Two wygląd obozu wojskowego ukrytego w lesie.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma base militar sob as árvores</h2><p>Fox Two representa uma base militar preparada como campo de paintball. Um autocarro atolado e um camião de transporte de material fazem parte do cenário de ataque e defesa desta posição.</p><p>As trincheiras e o posto de comando enterrado prolongam o cenário de campo de batalha.</p><h2>Caixas e um blindado</h2><p>A vista oficial mostra um veículo blindado verde com canhão, rodeado de caixas empilhadas entre as árvores. Estes elementos dão a Fox Two o aspeto de um acampamento militar escondido no bosque.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "398b3f96-4c5f-4671-bb59-5eec53b4bf36",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:20:56.4292605Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine verlassene Fabrik im Wald</h2><p>Zombie spielt in einer nachgebauten Industrieruine. Graue Fassaden, alte Fahrzeuge und rote Fässer stehen auf der Lichtung; ein langer roter Metallausleger zieht sich über den laubbedeckten Boden hinweg.</p><p>Die stillgelegte Fabrik bietet den Spielern Zuflucht vor den Untoten. Zwischen den Überresten wachsen Bäume, als hätte der Wald das Gelände zurückerobert.</p><h2>Die Untoten werden mehr</h2><p>Das Szenario beruht auf Ansteckung: Jeder getroffene Spieler schließt sich den Zombies an. So werden Verteidiger nach und nach zu Angreifern im Kampf um die Fabrik.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An abandoned factory in the woods</h2><p>Zombie sets its paintball scenario in a recreated industrial ruin. Grey façades, old vehicles and red drums fill the clearing; a long red metal boom crosses the scene above the leaf-covered ground.</p><p>This disused factory shelters the players from the undead. Trees rise among the remains, giving the setting the appearance of a site reclaimed by the forest.</p><h2>The undead gain ground</h2><p>The scenario centres on infection: every player hit joins the zombies. Defenders gradually become attackers as the struggle to take the factory continues.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una fábrica abandonada entre los árboles</h2><p>Zombie sitúa su escenario de paintball en unas ruinas industriales recreadas. Fachadas grises, vehículos antiguos y bidones rojos ocupan el claro; una larga estructura metálica roja cruza el decorado sobre el suelo cubierto de hojas.</p><p>La fábrica en desuso sirve de refugio a los jugadores frente a los muertos vivientes. Los árboles crecen entre los restos, dando al conjunto el aspecto de un lugar recuperado por el bosque.</p><h2>Crece el bando de los zombis</h2><p>El escenario gira en torno al contagio: cada jugador alcanzado se une a los zombis. Los defensores se convierten poco a poco en atacantes durante la disputa por la fábrica.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une usine abandonnée dans les bois</h2><p>Zombie installe son scénario de paintball dans une friche industrielle reconstituée. Des façades grises, de vieux véhicules et des fûts rouges occupent la clairière ; une longue flèche métallique rouge traverse le décor au-dessus du sol couvert de feuilles.</p><p>Cette usine désaffectée sert de refuge aux joueurs face aux morts-vivants. Les arbres poussent au milieu des vestiges, donnant à l’ensemble l’allure d’un site abandonné à la forêt.</p><h2>Le camp des morts-vivants grandit</h2><p>Le scénario repose sur la contamination : chaque joueur touché rejoint les zombies. La partie transforme ainsi progressivement les défenseurs en assaillants, autour de l’usine à reprendre.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una fabbrica abbandonata nel bosco</h2><p>Zombie ambienta il suo scenario di paintball in una rovina industriale ricostruita. Facciate grigie, vecchi veicoli e fusti rossi occupano la radura; una lunga struttura metallica rossa attraversa la scena sopra il terreno coperto di foglie.</p><p>La fabbrica dismessa offre rifugio ai giocatori contro i non morti. Gli alberi crescono tra i resti, dando l’impressione di un sito riconquistato dal bosco.</p><h2>Le file degli zombi si ingrossano</h2><p>Lo scenario si basa sul contagio: ogni giocatore colpito passa dalla parte degli zombi. I difensori diventano così gradualmente attaccanti nella contesa per la fabbrica.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een verlaten fabriek in het bos</h2><p>Zombie speelt zich af in een nagebouwde industriële ruïne. Grijze gevels, oude voertuigen en rode vaten staan op de open plek; een lange rode metalen arm loopt boven de met bladeren bedekte grond door het decor.</p><p>De verlaten fabriek biedt de spelers een schuilplaats tegen de ondoden. Tussen de overblijfselen groeien bomen, alsof het bos het terrein heeft teruggewonnen.</p><h2>Steeds meer zombies</h2><p>Besmetting vormt de kern van het scenario: iedere geraakte speler sluit zich aan bij de zombies. Verdedigers veranderen zo geleidelijk in aanvallers tijdens de strijd om de fabriek.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Opuszczona fabryka w lesie</h2><p>Zombie rozgrywa się w odtworzonych ruinach przemysłowych. Szare fasady, stare pojazdy i czerwone beczki zajmują polanę; długa czerwona konstrukcja metalowa przecina dekorację nad ziemią pokrytą liśćmi.</p><p>Nieczynna fabryka daje graczom schronienie przed nieumarłymi. Drzewa rosną wśród pozostałości, jakby las odzyskał opuszczony teren.</p><h2>Przybywa nieumarłych</h2><p>Scenariusz opiera się na zarażaniu: każdy trafiony gracz dołącza do zombie. Obrońcy stopniowo stają się napastnikami podczas walki o fabrykę.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma fábrica abandonada no bosque</h2><p>Zombie situa o seu cenário de paintball numa ruína industrial recriada. Fachadas cinzentas, veículos antigos e bidões vermelhos ocupam a clareira; uma longa estrutura metálica vermelha atravessa o cenário sobre o chão coberto de folhas.</p><p>A fábrica desativada serve de refúgio aos jogadores perante os mortos-vivos. As árvores crescem entre os vestígios, dando ao conjunto o aspeto de um local reconquistado pelo bosque.</p><h2>O grupo dos mortos-vivos cresce</h2><p>O cenário assenta no contágio: cada jogador atingido junta-se aos zombies. Os defensores tornam-se gradualmente atacantes na disputa pela fábrica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Landung als Kulisse</h2><p>Dog One greift für sein Paintballgelände das Motiv einer militärischen Landung auf. Ein echtes, an einem Strand gestrandetes Boot und ein Lastkahn gehören zu diesem nachgebauten Schauplatz in Pokeyland.</p><h2>Ein Fahrzeug in Tarnfarben</h2><p>Das offizielle Foto zeigt außerdem ein gepanzertes Dekorfahrzeug in Grün und Beige mit der Nummer 302. Es steht zwischen den Bäumen vor niedrigen Holzwänden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A landing scene</h2><p>Dog One draws on the imagery of a military landing for its paintball field. A real boat stranded on a beach and a barge form part of this recreated battlefield at Pokeyland.</p><h2>A camouflaged vehicle</h2><p>The official photograph also shows a prop armoured vehicle painted green and beige and marked 302. It stands among the trees in front of low wooden barriers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un desembarco como escenario</h2><p>Dog One recurre al imaginario de un desembarco militar para su campo de paintball. Un barco real varado en una playa y una barcaza forman parte de este paisaje de combate recreado en Pokeyland.</p><h2>Un vehículo camuflado</h2><p>La fotografía oficial muestra también un vehículo blindado de decorado, pintado de verde y beige y marcado con el número 302. Está entre los árboles, delante de barreras bajas de madera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un débarquement en décor</h2><p>Dog One reprend l’imaginaire d’un débarquement pour son terrain de paintball. Un véritable bateau échoué sur une plage et une barge composent ce paysage de combat reconstitué à Pokeyland.</p><h2>Le véhicule camouflé</h2><p>La photographie officielle montre aussi un véhicule blindé de décor, peint en vert et beige et marqué du numéro 302. Il repose entre les arbres, devant des cloisons basses en bois.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Uno sbarco come ambientazione</h2><p>Dog One si ispira all’immaginario di uno sbarco militare per il suo campo da paintball. Una vera barca arenata su una spiaggia e una chiatta fanno parte di questo paesaggio di combattimento ricreato a Pokeyland.</p><h2>Un veicolo mimetizzato</h2><p>La fotografia ufficiale mostra anche un veicolo blindato di scena, dipinto di verde e beige e contrassegnato dal numero 302. Si trova tra gli alberi, davanti a basse barriere di legno.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een landing als decor</h2><p>Dog One gebruikt het beeld van een militaire landing voor zijn paintballterrein. Een echte boot die op een strand is gestrand en een ponton maken deel uit van dit nagebouwde strijdtoneel in Pokeyland.</p><h2>Een gecamoufleerd voertuig</h2><p>De officiële foto toont ook een gepantserd decorvoertuig in groen en beige, met het nummer 302. Het staat tussen de bomen voor lage houten schotten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Sceneria desantu</h2><p>Dog One wykorzystuje motyw desantu wojskowego jako scenerię pola paintballowego. Prawdziwa łódź osiadła na plaży oraz barka tworzą część odtworzonego pola walki w Pokeyland.</p><h2>Pojazd w kamuflażu</h2><p>Oficjalna fotografia pokazuje również dekoracyjny pojazd opancerzony, pomalowany na zielono i beżowo oraz oznaczony numerem 302. Stoi wśród drzew przed niskimi drewnianymi przegrodami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um desembarque como cenário</h2><p>Dog One inspira-se no imaginário de um desembarque militar para o seu campo de paintball. Um barco verdadeiro encalhado numa praia e uma barcaça fazem parte desta paisagem de combate recriada em Pokeyland.</p><h2>Um veículo camuflado</h2><p>A fotografia oficial mostra também um veículo blindado de cenário, pintado de verde e bege e marcado com o número 302. Está entre as árvores, diante de barreiras baixas de madeira.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Hütten unter den Bäumen</h2><p>Cannibale ist als fiktives Dorf im Wald von Pokeyland gestaltet. Die kleinen Hütten haben dunkle Bretterwände, rechteckige Öffnungen und kegelförmige, mit Zweigen gedeckte Dächer.</p><p>Das Laub des Waldes geht optisch in die pflanzlichen Dächer über. Die Wege zwischen den Bauten bilden zusammen mit den offenen Türen und Fenstern die Paintballkulisse.</p><h2>Ein Dorf verteidigen</h2><p>Im Szenario treten Angreifer und Verteidiger des nachgebauten Dorfes gegeneinander an.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Huts beneath the trees</h2><p>Cannibale takes the form of a fictional village in Pokeyland’s forest. Its small huts have dark plank walls, rectangular openings and conical roofs covered with branches.</p><p>The woodland foliage blends with the cabins’ leafy roofs. Paths between these buildings form the paintball setting around their open doorways and windows.</p><h2>A village to defend</h2><p>The scenario pits attackers against defenders of the reconstructed village.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cabañas bajo los árboles</h2><p>Cannibale adopta la forma de una aldea ficticia en el bosque de Pokeyland. Sus pequeñas cabañas tienen paredes de tablas oscuras, aberturas rectangulares y tejados cónicos cubiertos de ramas.</p><p>El follaje del bosque se mezcla con las cubiertas vegetales de las cabañas. Los pasos entre las construcciones forman el escenario de paintball, alrededor de las puertas y ventanas abiertas.</p><h2>Una aldea que defender</h2><p>El escenario enfrenta a atacantes y defensores de esta aldea recreada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les huttes sous les arbres</h2><p>Cannibale prend la forme d’un village de fiction installé dans la forêt de Pokeyland. Ses petites huttes ont des parois de planches sombres, des ouvertures rectangulaires et des toits coniques couverts de branchages.</p><p>Le feuillage du sous-bois se mêle aux couvertures végétales des cabanes. Les passages entre ces constructions composent le décor du terrain de paintball, autour des portes et des fenêtres laissées ouvertes.</p><h2>Un village à défendre</h2><p>Le scénario oppose l’attaque et la défense de ce village reconstitué.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Capanne sotto gli alberi</h2><p>Cannibale prende la forma di un villaggio immaginario nel bosco di Pokeyland. Le piccole capanne hanno pareti di assi scure, aperture rettangolari e tetti conici coperti di rami.</p><p>Il fogliame del bosco si mescola alle coperture vegetali delle capanne. I passaggi tra le costruzioni compongono la scenografia del campo da paintball, attorno alle porte e alle finestre aperte.</p><h2>Un villaggio da difendere</h2><p>Lo scenario contrappone attaccanti e difensori del villaggio ricostruito.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hutten onder de bomen</h2><p>Cannibale heeft de vorm van een fictief dorp in het bos van Pokeyland. De kleine hutten hebben wanden van donkere planken, rechthoekige openingen en kegelvormige daken bedekt met takken.</p><p>Het bosgroen sluit aan op de begroeiing van de daken. De doorgangen tussen de bouwsels vormen het paintballdecor, rond de open deuren en ramen.</p><h2>Een dorp verdedigen</h2><p>In het scenario staan aanvallers tegenover verdedigers van het nagebouwde dorp.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Chaty pod drzewami</h2><p>Cannibale ma postać fikcyjnej wioski w lesie Pokeyland. Niewielkie chaty mają ściany z ciemnych desek, prostokątne otwory i stożkowate dachy pokryte gałęziami.</p><p>Leśne liście mieszają się z roślinnymi pokryciami chat. Przejścia między budynkami tworzą scenerię pola paintballowego wokół otwartych drzwi i okien.</p><h2>Obrona wioski</h2><p>Scenariusz przeciwstawia napastników obrońcom odtworzonej wioski.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cabanas sob as árvores</h2><p>Cannibale assume a forma de uma aldeia fictícia no bosque de Pokeyland. As pequenas cabanas têm paredes de tábuas escuras, aberturas retangulares e telhados cónicos cobertos de ramos.</p><p>A folhagem do bosque mistura-se com as coberturas vegetais das cabanas. As passagens entre as construções formam o cenário do campo de paintball, em redor das portas e janelas abertas.</p><h2>Uma aldeia para defender</h2><p>O cenário opõe atacantes e defensores da aldeia recriada.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Kapelle im Wald</h2><p>Panama versetzt sein Paintballgelände in eine von südamerikanischen Wäldern inspirierte Kulisse. Zwischen den Bäumen steht eine kleine nachgebaute Kapelle mit hellen Wänden und dunklem Dach.</p><p>Das obere Fenster der Kapelle gehört zum Spiel: Der Park beschreibt es als Position, von der aus Spieler ihre Gegner anvisieren können. Damit wird das Gebäude zum markanten Orientierungspunkt im Waldszenario.</p><h2>Ein Übergang aus Holz</h2><p>Neben der Kapelle führt eine von Seilen gesäumte Bretterbrücke durch die Kulisse. Rostige Metallaufbauten ergänzen das Bild abgelegener Bauten unter dem Blätterdach.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A chapel in the forest</h2><p>Panama places its paintball field in a setting inspired by South American forests. A small recreated chapel, with pale walls and a dark roof, stands among the trees.</p><p>The chapel’s upper window is part of the game: the park presents it as a position from which players can aim at their opponents. The building gives this woodland scenario a distinctive landmark.</p><h2>A timber crossing</h2><p>Beside the chapel, a plank bridge edged with ropes crosses the scene. Rusted metal structures extend the atmosphere of isolated buildings beneath the foliage.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una capilla en el bosque</h2><p>Panama sitúa su campo de paintball en una ambientación inspirada en los bosques sudamericanos. Una pequeña capilla recreada, de paredes claras y tejado oscuro, se alza entre los árboles.</p><p>La ventana superior de la capilla forma parte del juego: el parque la presenta como un puesto desde el que los jugadores pueden apuntar a sus adversarios. El edificio aporta así una referencia singular al escenario forestal.</p><h2>Un paso de madera</h2><p>Junto a la capilla, un puente de tablas bordeado de cuerdas atraviesa el decorado. Estructuras metálicas oxidadas prolongan esta atmósfera de construcciones aisladas bajo el follaje.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La chapelle dans la forêt</h2><p>Panama transpose son terrain de paintball dans une forêt d’inspiration sud-américaine. Une petite chapelle reconstituée, aux murs clairs et au toit sombre, se dresse parmi les arbres.</p><p>La lucarne de cette chapelle fait partie du jeu : le parc la présente comme un poste depuis lequel les joueurs peuvent viser leurs adversaires. Le bâtiment donne ainsi un point de repère précis au scénario forestier.</p><h2>Un passage de bois</h2><p>À côté de la chapelle, un pont de planches bordé de cordes traverse le décor. Des éléments métalliques rouillés prolongent cette ambiance de constructions isolées sous le feuillage.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una cappella nel bosco</h2><p>Panama ambienta il suo campo da paintball in una foresta d’ispirazione sudamericana. Una piccola cappella ricostruita, con pareti chiare e tetto scuro, sorge tra gli alberi.</p><p>La finestra superiore della cappella fa parte del gioco: il parco la presenta come una postazione da cui i giocatori possono prendere di mira gli avversari. L’edificio diventa così un punto di riferimento riconoscibile nello scenario boschivo.</p><h2>Un passaggio di legno</h2><p>Accanto alla cappella, un ponte di assi bordato da corde attraversa lo scenario. Strutture metalliche arrugginite prolungano l’atmosfera di costruzioni isolate sotto il fogliame.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een kapel in het bos</h2><p>Panama plaatst zijn paintballterrein in een decor dat is geïnspireerd op Zuid-Amerikaanse bossen. Tussen de bomen staat een kleine nagebouwde kapel met lichte muren en een donker dak.</p><p>Het bovenraam van de kapel hoort bij het spel: het park beschrijft het als een plek vanwaar spelers op hun tegenstanders kunnen richten. Zo vormt het gebouw een herkenbaar punt in het bosdecor.</p><h2>Een houten oversteek</h2><p>Naast de kapel loopt een plankenbrug met touwen langs de randen door het terrein. Roestige metalen constructies versterken de sfeer van afgelegen bouwsels onder het bladerdak.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kaplica w lesie</h2><p>Panama umieszcza pole paintballowe w scenerii inspirowanej lasami Ameryki Południowej. Wśród drzew stoi niewielka odtworzona kaplica o jasnych ścianach i ciemnym dachu.</p><p>Górne okienko kaplicy jest częścią gry: park przedstawia je jako stanowisko, z którego gracze mogą celować do przeciwników. Budynek stanowi dzięki temu charakterystyczny punkt leśnego scenariusza.</p><h2>Drewniane przejście</h2><p>Obok kaplicy przez dekorację prowadzi most z desek, otoczony linami. Zardzewiałe konstrukcje metalowe dopełniają atmosfery odosobnionych budowli pod liśćmi drzew.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma capela no bosque</h2><p>Panama situa o seu campo de paintball num ambiente inspirado nas florestas sul-americanas. Uma pequena capela recriada, com paredes claras e telhado escuro, ergue-se entre as árvores.</p><p>A janela superior da capela faz parte do jogo: o parque apresenta-a como um posto de onde os jogadores podem apontar aos adversários. O edifício torna-se assim uma referência marcante no cenário florestal.</p><h2>Uma passagem de madeira</h2><p>Ao lado da capela, uma ponte de tábuas ladeada de cordas atravessa o cenário. Estruturas metálicas enferrujadas prolongam esta atmosfera de construções isoladas sob a folhagem.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Militärbasis unter Bäumen</h2><p>Fox Two stellt eine als Paintballgelände gestaltete Militärbasis dar. Ein im Schlamm festgefahrener Bus und ein Materialtransporter gehören zum Angriffs- und Verteidigungsszenario dieses Stützpunkts.</p><p>Schützengräben und ein eingegrabener Kommandoposten ergänzen die Schlachtfeldkulisse.</p><h2>Kisten und Panzerfahrzeug</h2><p>Das offizielle Bild zeigt ein grünes Panzerfahrzeug mit Kanone, umgeben von gestapelten Kisten zwischen den Bäumen. Diese Requisiten geben Fox Two das Aussehen eines im Wald verborgenen Militärlagers.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A military base beneath the trees</h2><p>Fox Two represents a military base laid out as a paintball field. A bogged-down bus and an equipment truck belong to the scenario of attacking and defending this position.</p><p>Trenches and a buried command post extend the battlefield scenery.</p><h2>Crates and armour</h2><p>The official view shows a green armoured vehicle with a gun, surrounded by stacked crates among the trees. These props give Fox Two the appearance of a military encampment concealed in the forest.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una base militar bajo los árboles</h2><p>Fox Two representa una base militar convertida en campo de paintball. Un autobús atascado en el barro y un camión de transporte de material forman parte del escenario de ataque y defensa de esta posición.</p><p>Las trincheras y el puesto de mando enterrado prolongan el decorado de campo de batalla.</p><h2>Cajas y un blindado</h2><p>La vista oficial muestra un vehículo blindado verde con cañón, rodeado de cajas apiladas entre los árboles. Estos elementos dan a Fox Two el aspecto de un campamento militar oculto en el bosque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La base militaire sous les arbres</h2><p>Fox Two représente une base militaire aménagée en terrain de paintball. Un bus embourbé et un camion de transport de matériel appartiennent au scénario d’attaque et de défense de cette position.</p><p>Les tranchées et le poste de commandement enterré prolongent le décor de champ de bataille.</p><h2>Caisses et blindé</h2><p>La vue officielle montre un véhicule blindé vert à canon, entouré de caisses empilées entre les arbres. Ces objets de décor donnent à Fox Two sa silhouette de campement militaire dissimulé dans la forêt.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una base militare sotto gli alberi</h2><p>Fox Two rappresenta una base militare allestita come campo da paintball. Un autobus impantanato e un camion per il trasporto di materiale fanno parte dello scenario di attacco e difesa della postazione.</p><p>Le trincee e il posto di comando interrato prolungano la scenografia del campo di battaglia.</p><h2>Casse e un blindato</h2><p>La veduta ufficiale mostra un veicolo blindato verde con cannone, circondato da casse impilate tra gli alberi. Questi elementi danno a Fox Two l’aspetto di un accampamento militare nascosto nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een militaire basis onder de bomen</h2><p>Fox Two stelt een militaire basis voor die als paintballterrein is ingericht. Een vastgelopen bus en een vrachtwagen voor materieel horen bij het scenario waarin deze positie wordt aangevallen en verdedigd.</p><p>Loopgraven en een ondergrondse commandopost vullen het slagvelddecor aan.</p><h2>Kisten en een pantservoertuig</h2><p>De officiële foto toont een groen pantservoertuig met kanon, omringd door gestapelde kisten tussen de bomen. Deze decorstukken geven Fox Two het uiterlijk van een militair kamp dat in het bos verscholen ligt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Baza wojskowa pod drzewami</h2><p>Fox Two przedstawia bazę wojskową urządzoną jako pole paintballowe. Autobus ugrzęzły w błocie i ciężarówka transportująca wyposażenie należą do scenariusza ataku oraz obrony tej pozycji.</p><p>Okopy i zagłębione w ziemi stanowisko dowodzenia uzupełniają dekorację pola walki.</p><h2>Skrzynie i pojazd pancerny</h2><p>Oficjalne zdjęcie pokazuje zielony pojazd opancerzony z działem, otoczony skrzyniami ustawionymi między drzewami. Rekwizyty nadają Fox Two wygląd obozu wojskowego ukrytego w lesie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma base militar sob as árvores</h2><p>Fox Two representa uma base militar preparada como campo de paintball. Um autocarro atolado e um camião de transporte de material fazem parte do cenário de ataque e defesa desta posição.</p><p>As trincheiras e o posto de comando enterrado prolongam o cenário de campo de batalha.</p><h2>Caixas e um blindado</h2><p>A vista oficial mostra um veículo blindado verde com canhão, rodeado de caixas empilhadas entre as árvores. Estes elementos dão a Fox Two o aspeto de um acampamento militar escondido no bosque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "feba1bcc-ae72-4f40-a8db-d038cc90f00f",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:21:14.3140456Z",
+    "appliedAtUtc": "2026-11-15T12:21:14.3140467Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
+        "entityKey": "pokeyland-terrain-zombie",
+        "displayName": "Zombie",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine verlassene Fabrik im Wald</h2><p>Zombie spielt in einer nachgebauten Industrieruine. Graue Fassaden, alte Fahrzeuge und rote Fässer stehen auf der Lichtung; ein langer roter Metallausleger zieht sich über den laubbedeckten Boden hinweg.</p><p>Die stillgelegte Fabrik bietet den Spielern Zuflucht vor den Untoten. Zwischen den Überresten wachsen Bäume, als hätte der Wald das Gelände zurückerobert.</p><h2>Die Untoten werden mehr</h2><p>Das Szenario beruht auf Ansteckung: Jeder getroffene Spieler schließt sich den Zombies an. So werden Verteidiger nach und nach zu Angreifern im Kampf um die Fabrik.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An abandoned factory in the woods</h2><p>Zombie sets its paintball scenario in a recreated industrial ruin. Grey façades, old vehicles and red drums fill the clearing; a long red metal boom crosses the scene above the leaf-covered ground.</p><p>This disused factory shelters the players from the undead. Trees rise among the remains, giving the setting the appearance of a site reclaimed by the forest.</p><h2>The undead gain ground</h2><p>The scenario centres on infection: every player hit joins the zombies. Defenders gradually become attackers as the struggle to take the factory continues.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una fábrica abandonada entre los árboles</h2><p>Zombie sitúa su escenario de paintball en unas ruinas industriales recreadas. Fachadas grises, vehículos antiguos y bidones rojos ocupan el claro; una larga estructura metálica roja cruza el decorado sobre el suelo cubierto de hojas.</p><p>La fábrica en desuso sirve de refugio a los jugadores frente a los muertos vivientes. Los árboles crecen entre los restos, dando al conjunto el aspecto de un lugar recuperado por el bosque.</p><h2>Crece el bando de los zombis</h2><p>El escenario gira en torno al contagio: cada jugador alcanzado se une a los zombis. Los defensores se convierten poco a poco en atacantes durante la disputa por la fábrica.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une usine abandonnée dans les bois</h2><p>Zombie installe son scénario de paintball dans une friche industrielle reconstituée. Des façades grises, de vieux véhicules et des fûts rouges occupent la clairière ; une longue flèche métallique rouge traverse le décor au-dessus du sol couvert de feuilles.</p><p>Cette usine désaffectée sert de refuge aux joueurs face aux morts-vivants. Les arbres poussent au milieu des vestiges, donnant à l’ensemble l’allure d’un site abandonné à la forêt.</p><h2>Le camp des morts-vivants grandit</h2><p>Le scénario repose sur la contamination : chaque joueur touché rejoint les zombies. La partie transforme ainsi progressivement les défenseurs en assaillants, autour de l’usine à reprendre.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una fabbrica abbandonata nel bosco</h2><p>Zombie ambienta il suo scenario di paintball in una rovina industriale ricostruita. Facciate grigie, vecchi veicoli e fusti rossi occupano la radura; una lunga struttura metallica rossa attraversa la scena sopra il terreno coperto di foglie.</p><p>La fabbrica dismessa offre rifugio ai giocatori contro i non morti. Gli alberi crescono tra i resti, dando l’impressione di un sito riconquistato dal bosco.</p><h2>Le file degli zombi si ingrossano</h2><p>Lo scenario si basa sul contagio: ogni giocatore colpito passa dalla parte degli zombi. I difensori diventano così gradualmente attaccanti nella contesa per la fabbrica.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een verlaten fabriek in het bos</h2><p>Zombie speelt zich af in een nagebouwde industriële ruïne. Grijze gevels, oude voertuigen en rode vaten staan op de open plek; een lange rode metalen arm loopt boven de met bladeren bedekte grond door het decor.</p><p>De verlaten fabriek biedt de spelers een schuilplaats tegen de ondoden. Tussen de overblijfselen groeien bomen, alsof het bos het terrein heeft teruggewonnen.</p><h2>Steeds meer zombies</h2><p>Besmetting vormt de kern van het scenario: iedere geraakte speler sluit zich aan bij de zombies. Verdedigers veranderen zo geleidelijk in aanvallers tijdens de strijd om de fabriek.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Opuszczona fabryka w lesie</h2><p>Zombie rozgrywa się w odtworzonych ruinach przemysłowych. Szare fasady, stare pojazdy i czerwone beczki zajmują polanę; długa czerwona konstrukcja metalowa przecina dekorację nad ziemią pokrytą liśćmi.</p><p>Nieczynna fabryka daje graczom schronienie przed nieumarłymi. Drzewa rosną wśród pozostałości, jakby las odzyskał opuszczony teren.</p><h2>Przybywa nieumarłych</h2><p>Scenariusz opiera się na zarażaniu: każdy trafiony gracz dołącza do zombie. Obrońcy stopniowo stają się napastnikami podczas walki o fabrykę.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma fábrica abandonada no bosque</h2><p>Zombie situa o seu cenário de paintball numa ruína industrial recriada. Fachadas cinzentas, veículos antigos e bidões vermelhos ocupam a clareira; uma longa estrutura metálica vermelha atravessa o cenário sobre o chão coberto de folhas.</p><p>A fábrica desativada serve de refúgio aos jogadores perante os mortos-vivos. As árvores crescem entre os vestígios, dando ao conjunto o aspeto de um local reconquistado pelo bosque.</p><h2>O grupo dos mortos-vivos cresce</h2><p>O cenário assenta no contágio: cada jogador atingido junta-se aos zombies. Os defensores tornam-se gradualmente atacantes na disputa pela fábrica.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d7074297-19a0-44e6-a196-c251ea484d46",
+        "entityKey": "pokeyland-terrain-dog-one",
+        "displayName": "Dog One",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Landung als Kulisse</h2><p>Dog One greift für sein Paintballgelände das Motiv einer militärischen Landung auf. Ein echtes, an einem Strand gestrandetes Boot und ein Lastkahn gehören zu diesem nachgebauten Schauplatz in Pokeyland.</p><h2>Ein Fahrzeug in Tarnfarben</h2><p>Das offizielle Foto zeigt außerdem ein gepanzertes Dekorfahrzeug in Grün und Beige mit der Nummer 302. Es steht zwischen den Bäumen vor niedrigen Holzwänden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A landing scene</h2><p>Dog One draws on the imagery of a military landing for its paintball field. A real boat stranded on a beach and a barge form part of this recreated battlefield at Pokeyland.</p><h2>A camouflaged vehicle</h2><p>The official photograph also shows a prop armoured vehicle painted green and beige and marked 302. It stands among the trees in front of low wooden barriers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un desembarco como escenario</h2><p>Dog One recurre al imaginario de un desembarco militar para su campo de paintball. Un barco real varado en una playa y una barcaza forman parte de este paisaje de combate recreado en Pokeyland.</p><h2>Un vehículo camuflado</h2><p>La fotografía oficial muestra también un vehículo blindado de decorado, pintado de verde y beige y marcado con el número 302. Está entre los árboles, delante de barreras bajas de madera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un débarquement en décor</h2><p>Dog One reprend l’imaginaire d’un débarquement pour son terrain de paintball. Un véritable bateau échoué sur une plage et une barge composent ce paysage de combat reconstitué à Pokeyland.</p><h2>Le véhicule camouflé</h2><p>La photographie officielle montre aussi un véhicule blindé de décor, peint en vert et beige et marqué du numéro 302. Il repose entre les arbres, devant des cloisons basses en bois.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Uno sbarco come ambientazione</h2><p>Dog One si ispira all’immaginario di uno sbarco militare per il suo campo da paintball. Una vera barca arenata su una spiaggia e una chiatta fanno parte di questo paesaggio di combattimento ricreato a Pokeyland.</p><h2>Un veicolo mimetizzato</h2><p>La fotografia ufficiale mostra anche un veicolo blindato di scena, dipinto di verde e beige e contrassegnato dal numero 302. Si trova tra gli alberi, davanti a basse barriere di legno.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een landing als decor</h2><p>Dog One gebruikt het beeld van een militaire landing voor zijn paintballterrein. Een echte boot die op een strand is gestrand en een ponton maken deel uit van dit nagebouwde strijdtoneel in Pokeyland.</p><h2>Een gecamoufleerd voertuig</h2><p>De officiële foto toont ook een gepantserd decorvoertuig in groen en beige, met het nummer 302. Het staat tussen de bomen voor lage houten schotten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Sceneria desantu</h2><p>Dog One wykorzystuje motyw desantu wojskowego jako scenerię pola paintballowego. Prawdziwa łódź osiadła na plaży oraz barka tworzą część odtworzonego pola walki w Pokeyland.</p><h2>Pojazd w kamuflażu</h2><p>Oficjalna fotografia pokazuje również dekoracyjny pojazd opancerzony, pomalowany na zielono i beżowo oraz oznaczony numerem 302. Stoi wśród drzew przed niskimi drewnianymi przegrodami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um desembarque como cenário</h2><p>Dog One inspira-se no imaginário de um desembarque militar para o seu campo de paintball. Um barco verdadeiro encalhado numa praia e uma barcaça fazem parte desta paisagem de combate recriada em Pokeyland.</p><h2>Um veículo camuflado</h2><p>A fotografia oficial mostra também um veículo blindado de cenário, pintado de verde e bege e marcado com o número 302. Está entre as árvores, diante de barreiras baixas de madeira.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
+        "entityKey": "pokeyland-terrain-cannibale",
+        "displayName": "Cannibale",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Hütten unter den Bäumen</h2><p>Cannibale ist als fiktives Dorf im Wald von Pokeyland gestaltet. Die kleinen Hütten haben dunkle Bretterwände, rechteckige Öffnungen und kegelförmige, mit Zweigen gedeckte Dächer.</p><p>Das Laub des Waldes geht optisch in die pflanzlichen Dächer über. Die Wege zwischen den Bauten bilden zusammen mit den offenen Türen und Fenstern die Paintballkulisse.</p><h2>Ein Dorf verteidigen</h2><p>Im Szenario treten Angreifer und Verteidiger des nachgebauten Dorfes gegeneinander an.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Huts beneath the trees</h2><p>Cannibale takes the form of a fictional village in Pokeyland’s forest. Its small huts have dark plank walls, rectangular openings and conical roofs covered with branches.</p><p>The woodland foliage blends with the cabins’ leafy roofs. Paths between these buildings form the paintball setting around their open doorways and windows.</p><h2>A village to defend</h2><p>The scenario pits attackers against defenders of the reconstructed village.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cabañas bajo los árboles</h2><p>Cannibale adopta la forma de una aldea ficticia en el bosque de Pokeyland. Sus pequeñas cabañas tienen paredes de tablas oscuras, aberturas rectangulares y tejados cónicos cubiertos de ramas.</p><p>El follaje del bosque se mezcla con las cubiertas vegetales de las cabañas. Los pasos entre las construcciones forman el escenario de paintball, alrededor de las puertas y ventanas abiertas.</p><h2>Una aldea que defender</h2><p>El escenario enfrenta a atacantes y defensores de esta aldea recreada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les huttes sous les arbres</h2><p>Cannibale prend la forme d’un village de fiction installé dans la forêt de Pokeyland. Ses petites huttes ont des parois de planches sombres, des ouvertures rectangulaires et des toits coniques couverts de branchages.</p><p>Le feuillage du sous-bois se mêle aux couvertures végétales des cabanes. Les passages entre ces constructions composent le décor du terrain de paintball, autour des portes et des fenêtres laissées ouvertes.</p><h2>Un village à défendre</h2><p>Le scénario oppose l’attaque et la défense de ce village reconstitué.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Capanne sotto gli alberi</h2><p>Cannibale prende la forma di un villaggio immaginario nel bosco di Pokeyland. Le piccole capanne hanno pareti di assi scure, aperture rettangolari e tetti conici coperti di rami.</p><p>Il fogliame del bosco si mescola alle coperture vegetali delle capanne. I passaggi tra le costruzioni compongono la scenografia del campo da paintball, attorno alle porte e alle finestre aperte.</p><h2>Un villaggio da difendere</h2><p>Lo scenario contrappone attaccanti e difensori del villaggio ricostruito.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hutten onder de bomen</h2><p>Cannibale heeft de vorm van een fictief dorp in het bos van Pokeyland. De kleine hutten hebben wanden van donkere planken, rechthoekige openingen en kegelvormige daken bedekt met takken.</p><p>Het bosgroen sluit aan op de begroeiing van de daken. De doorgangen tussen de bouwsels vormen het paintballdecor, rond de open deuren en ramen.</p><h2>Een dorp verdedigen</h2><p>In het scenario staan aanvallers tegenover verdedigers van het nagebouwde dorp.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Chaty pod drzewami</h2><p>Cannibale ma postać fikcyjnej wioski w lesie Pokeyland. Niewielkie chaty mają ściany z ciemnych desek, prostokątne otwory i stożkowate dachy pokryte gałęziami.</p><p>Leśne liście mieszają się z roślinnymi pokryciami chat. Przejścia między budynkami tworzą scenerię pola paintballowego wokół otwartych drzwi i okien.</p><h2>Obrona wioski</h2><p>Scenariusz przeciwstawia napastników obrońcom odtworzonej wioski.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cabanas sob as árvores</h2><p>Cannibale assume a forma de uma aldeia fictícia no bosque de Pokeyland. As pequenas cabanas têm paredes de tábuas escuras, aberturas retangulares e telhados cónicos cobertos de ramos.</p><p>A folhagem do bosque mistura-se com as coberturas vegetais das cabanas. As passagens entre as construções formam o cenário do campo de paintball, em redor das portas e janelas abertas.</p><h2>Uma aldeia para defender</h2><p>O cenário opõe atacantes e defensores da aldeia recriada.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
+        "entityKey": "pokeyland-terrain-panama",
+        "displayName": "Panama",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Kapelle im Wald</h2><p>Panama versetzt sein Paintballgelände in eine von südamerikanischen Wäldern inspirierte Kulisse. Zwischen den Bäumen steht eine kleine nachgebaute Kapelle mit hellen Wänden und dunklem Dach.</p><p>Das obere Fenster der Kapelle gehört zum Spiel: Der Park beschreibt es als Position, von der aus Spieler ihre Gegner anvisieren können. Damit wird das Gebäude zum markanten Orientierungspunkt im Waldszenario.</p><h2>Ein Übergang aus Holz</h2><p>Neben der Kapelle führt eine von Seilen gesäumte Bretterbrücke durch die Kulisse. Rostige Metallaufbauten ergänzen das Bild abgelegener Bauten unter dem Blätterdach.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A chapel in the forest</h2><p>Panama places its paintball field in a setting inspired by South American forests. A small recreated chapel, with pale walls and a dark roof, stands among the trees.</p><p>The chapel’s upper window is part of the game: the park presents it as a position from which players can aim at their opponents. The building gives this woodland scenario a distinctive landmark.</p><h2>A timber crossing</h2><p>Beside the chapel, a plank bridge edged with ropes crosses the scene. Rusted metal structures extend the atmosphere of isolated buildings beneath the foliage.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una capilla en el bosque</h2><p>Panama sitúa su campo de paintball en una ambientación inspirada en los bosques sudamericanos. Una pequeña capilla recreada, de paredes claras y tejado oscuro, se alza entre los árboles.</p><p>La ventana superior de la capilla forma parte del juego: el parque la presenta como un puesto desde el que los jugadores pueden apuntar a sus adversarios. El edificio aporta así una referencia singular al escenario forestal.</p><h2>Un paso de madera</h2><p>Junto a la capilla, un puente de tablas bordeado de cuerdas atraviesa el decorado. Estructuras metálicas oxidadas prolongan esta atmósfera de construcciones aisladas bajo el follaje.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La chapelle dans la forêt</h2><p>Panama transpose son terrain de paintball dans une forêt d’inspiration sud-américaine. Une petite chapelle reconstituée, aux murs clairs et au toit sombre, se dresse parmi les arbres.</p><p>La lucarne de cette chapelle fait partie du jeu : le parc la présente comme un poste depuis lequel les joueurs peuvent viser leurs adversaires. Le bâtiment donne ainsi un point de repère précis au scénario forestier.</p><h2>Un passage de bois</h2><p>À côté de la chapelle, un pont de planches bordé de cordes traverse le décor. Des éléments métalliques rouillés prolongent cette ambiance de constructions isolées sous le feuillage.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una cappella nel bosco</h2><p>Panama ambienta il suo campo da paintball in una foresta d’ispirazione sudamericana. Una piccola cappella ricostruita, con pareti chiare e tetto scuro, sorge tra gli alberi.</p><p>La finestra superiore della cappella fa parte del gioco: il parco la presenta come una postazione da cui i giocatori possono prendere di mira gli avversari. L’edificio diventa così un punto di riferimento riconoscibile nello scenario boschivo.</p><h2>Un passaggio di legno</h2><p>Accanto alla cappella, un ponte di assi bordato da corde attraversa lo scenario. Strutture metalliche arrugginite prolungano l’atmosfera di costruzioni isolate sotto il fogliame.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een kapel in het bos</h2><p>Panama plaatst zijn paintballterrein in een decor dat is geïnspireerd op Zuid-Amerikaanse bossen. Tussen de bomen staat een kleine nagebouwde kapel met lichte muren en een donker dak.</p><p>Het bovenraam van de kapel hoort bij het spel: het park beschrijft het als een plek vanwaar spelers op hun tegenstanders kunnen richten. Zo vormt het gebouw een herkenbaar punt in het bosdecor.</p><h2>Een houten oversteek</h2><p>Naast de kapel loopt een plankenbrug met touwen langs de randen door het terrein. Roestige metalen constructies versterken de sfeer van afgelegen bouwsels onder het bladerdak.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Kaplica w lesie</h2><p>Panama umieszcza pole paintballowe w scenerii inspirowanej lasami Ameryki Południowej. Wśród drzew stoi niewielka odtworzona kaplica o jasnych ścianach i ciemnym dachu.</p><p>Górne okienko kaplicy jest częścią gry: park przedstawia je jako stanowisko, z którego gracze mogą celować do przeciwników. Budynek stanowi dzięki temu charakterystyczny punkt leśnego scenariusza.</p><h2>Drewniane przejście</h2><p>Obok kaplicy przez dekorację prowadzi most z desek, otoczony linami. Zardzewiałe konstrukcje metalowe dopełniają atmosfery odosobnionych budowli pod liśćmi drzew.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma capela no bosque</h2><p>Panama situa o seu campo de paintball num ambiente inspirado nas florestas sul-americanas. Uma pequena capela recriada, com paredes claras e telhado escuro, ergue-se entre as árvores.</p><p>A janela superior da capela faz parte do jogo: o parque apresenta-a como um posto de onde os jogadores podem apontar aos adversários. O edifício torna-se assim uma referência marcante no cenário florestal.</p><h2>Uma passagem de madeira</h2><p>Ao lado da capela, uma ponte de tábuas ladeada de cordas atravessa o cenário. Estruturas metálicas enferrujadas prolongam esta atmosfera de construções isoladas sob a folhagem.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
+        "entityKey": "pokeyland-terrain-fox-two",
+        "displayName": "Fox Two",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Militärbasis unter Bäumen</h2><p>Fox Two stellt eine als Paintballgelände gestaltete Militärbasis dar. Ein im Schlamm festgefahrener Bus und ein Materialtransporter gehören zum Angriffs- und Verteidigungsszenario dieses Stützpunkts.</p><p>Schützengräben und ein eingegrabener Kommandoposten ergänzen die Schlachtfeldkulisse.</p><h2>Kisten und Panzerfahrzeug</h2><p>Das offizielle Bild zeigt ein grünes Panzerfahrzeug mit Kanone, umgeben von gestapelten Kisten zwischen den Bäumen. Diese Requisiten geben Fox Two das Aussehen eines im Wald verborgenen Militärlagers.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A military base beneath the trees</h2><p>Fox Two represents a military base laid out as a paintball field. A bogged-down bus and an equipment truck belong to the scenario of attacking and defending this position.</p><p>Trenches and a buried command post extend the battlefield scenery.</p><h2>Crates and armour</h2><p>The official view shows a green armoured vehicle with a gun, surrounded by stacked crates among the trees. These props give Fox Two the appearance of a military encampment concealed in the forest.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una base militar bajo los árboles</h2><p>Fox Two representa una base militar convertida en campo de paintball. Un autobús atascado en el barro y un camión de transporte de material forman parte del escenario de ataque y defensa de esta posición.</p><p>Las trincheras y el puesto de mando enterrado prolongan el decorado de campo de batalla.</p><h2>Cajas y un blindado</h2><p>La vista oficial muestra un vehículo blindado verde con cañón, rodeado de cajas apiladas entre los árboles. Estos elementos dan a Fox Two el aspecto de un campamento militar oculto en el bosque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La base militaire sous les arbres</h2><p>Fox Two représente une base militaire aménagée en terrain de paintball. Un bus embourbé et un camion de transport de matériel appartiennent au scénario d’attaque et de défense de cette position.</p><p>Les tranchées et le poste de commandement enterré prolongent le décor de champ de bataille.</p><h2>Caisses et blindé</h2><p>La vue officielle montre un véhicule blindé vert à canon, entouré de caisses empilées entre les arbres. Ces objets de décor donnent à Fox Two sa silhouette de campement militaire dissimulé dans la forêt.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una base militare sotto gli alberi</h2><p>Fox Two rappresenta una base militare allestita come campo da paintball. Un autobus impantanato e un camion per il trasporto di materiale fanno parte dello scenario di attacco e difesa della postazione.</p><p>Le trincee e il posto di comando interrato prolungano la scenografia del campo di battaglia.</p><h2>Casse e un blindato</h2><p>La veduta ufficiale mostra un veicolo blindato verde con cannone, circondato da casse impilate tra gli alberi. Questi elementi danno a Fox Two l’aspetto di un accampamento militare nascosto nel bosco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een militaire basis onder de bomen</h2><p>Fox Two stelt een militaire basis voor die als paintballterrein is ingericht. Een vastgelopen bus en een vrachtwagen voor materieel horen bij het scenario waarin deze positie wordt aangevallen en verdedigd.</p><p>Loopgraven en een ondergrondse commandopost vullen het slagvelddecor aan.</p><h2>Kisten en een pantservoertuig</h2><p>De officiële foto toont een groen pantservoertuig met kanon, omringd door gestapelde kisten tussen de bomen. Deze decorstukken geven Fox Two het uiterlijk van een militair kamp dat in het bos verscholen ligt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Baza wojskowa pod drzewami</h2><p>Fox Two przedstawia bazę wojskową urządzoną jako pole paintballowe. Autobus ugrzęzły w błocie i ciężarówka transportująca wyposażenie należą do scenariusza ataku oraz obrony tej pozycji.</p><p>Okopy i zagłębione w ziemi stanowisko dowodzenia uzupełniają dekorację pola walki.</p><h2>Skrzynie i pojazd pancerny</h2><p>Oficjalne zdjęcie pokazuje zielony pojazd opancerzony z działem, otoczony skrzyniami ustawionymi między drzewami. Rekwizyty nadają Fox Two wygląd obozu wojskowego ukrytego w lesie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma base militar sob as árvores</h2><p>Fox Two representa uma base militar preparada como campo de paintball. Um autocarro atolado e um camião de transporte de material fazem parte do cenário de ataque e defesa desta posição.</p><p>As trincheiras e o posto de comando enterrado prolongam o cenário de campo de batalha.</p><h2>Caixas e um blindado</h2><p>A vista oficial mostra um veículo blindado verde com canhão, rodeado de caixas empilhadas entre as árvores. Estes elementos dão a Fox Two o aspeto de um acampamento militar escondido no bosque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Five existing named paintball fields. Current official paintball page and exact named DOM/photo associations personally reviewed; five native photos personally viewed. All40 texts authored and reread in eight languages. Physical descriptions reflect actual images, boats and vehicles never confused. Checkpoint remains distinct. Short formats (Dog One two paragraphs) retained after source research, no padding or unsupported event/date/model. No status, dates, restrictions or visibility changes.",
+    "wordCounts": {
+      "Zombie": {
+        "fr": 105,
+        "en": 91,
+        "de": 85,
+        "es": 110,
+        "it": 97,
+        "nl": 96,
+        "pl": 68,
+        "pt": 93
+      },
+      "Dog One": {
+        "fr": 67,
+        "en": 65,
+        "de": 61,
+        "es": 72,
+        "it": 73,
+        "nl": 65,
+        "pl": 52,
+        "pt": 71
+      },
+      "Cannibale": {
+        "fr": 84,
+        "en": 67,
+        "de": 68,
+        "es": 78,
+        "it": 75,
+        "nl": 71,
+        "pl": 53,
+        "pt": 75
+      },
+      "Panama": {
+        "fr": 101,
+        "en": 93,
+        "de": 86,
+        "es": 101,
+        "it": 95,
+        "nl": 95,
+        "pl": 73,
+        "pt": 94
+      },
+      "Fox Two": {
+        "fr": 89,
+        "en": 81,
+        "de": 67,
+        "es": 93,
+        "it": 88,
+        "nl": 83,
+        "pl": 67,
+        "pt": 88
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

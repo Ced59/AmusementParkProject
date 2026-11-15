@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 5,
+    "activityName": "Crazy Kart",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+      "accessedAtUtc": "2026-11-15T10:37:41.527958+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/",
+      "sha256": "850e1d8c558838938c2a6b47883c63c5fbd1c2ccc148423719c25c00f9ae6845",
+      "bytes": 89908,
+      "file": "activity-crazy-kart.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-081-1350x900.jpg",
+    "file": "05-crazy-kart.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-081-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:17.988767+00:00",
+    "bytes": 217363,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "0708602654b2c05432a3b9bb3547ecba1f63d9813afa406bb2946ddcc26b75e0",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "05-crazy-kart.jpg",
+    "visualDescriptionFr": "Un adulte et un enfant roulent dans deux karts à pédales jaunes/noirs de tailles différentes sur une piste extérieure bordée d’arbres.",
+    "identityAndCaptionLimitsFr": "Crazy Kart à pédales ; ne pas confondre avec les véhicules de Kid’s Racer. Marque BERG visible sur un kart, sans rattacher automatiquement une référence constructeur de tout le lieu.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-081-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/05-crazy-kart.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-05-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-05-import-result.json"
+  },
+  "metadata": {
+    "description": "Deux formats de karts à pédales sur le circuit Crazy Kart de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-081-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un adulte et un enfant conduisent deux karts à pédales jaunes sur un chemin pavé, entre les arbres et des fleurs."
+      },
+      {
+        "languageCode": "en",
+        "value": "An adult and a child drive two yellow pedal karts along a paved path between trees and flowers."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Erwachsener und ein Kind fahren zwei gelbe Pedalkarts auf einem gepflasterten Weg zwischen Bäumen und Blumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un adulto y un niño conducen dos karts de pedales amarillos por un camino pavimentado entre árboles y flores."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un adulto e un bambino guidano due kart a pedali gialli su un sentiero pavimentato tra alberi e fiori."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een volwassene en een kind rijden met twee gele trapkarts over een verhard pad tussen bomen en bloemen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dorosły i dziecko prowadzą dwa żółte gokarty na pedały po brukowanej ścieżce między drzewami i kwiatami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um adulto e uma criança conduzem dois karts a pedais amarelos num caminho pavimentado entre árvores e flores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Deux formats de karts à pédales sur le circuit Crazy Kart de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Two sizes of pedal kart on Pokeyland’s Crazy Kart circuit."
+      },
+      {
+        "languageCode": "de",
+        "value": "Zwei Größen von Pedalkarts auf der Crazy-Kart-Strecke von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Dos tamaños de karts de pedales en el circuito Crazy Kart de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Due dimensioni di kart a pedali sul circuito Crazy Kart di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Twee formaten trapkarts op het Crazy Kart-circuit van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dwa rozmiary gokartów na pedały na torze Crazy Kart w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Dois tamanhos de karts a pedais no circuito Crazy Kart de Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "e962c52928454d4c83a3bc90c075f2ad",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+      "path": "park_item/e962c52928454d4c83a3bc90c075f2ad",
+      "description": "Deux formats de karts à pédales sur le circuit Crazy Kart de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 217363,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-081-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un adulte et un enfant conduisent deux karts à pédales jaunes sur un chemin pavé, entre les arbres et des fleurs."
+        },
+        {
+          "languageCode": "en",
+          "value": "An adult and a child drive two yellow pedal karts along a paved path between trees and flowers."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Erwachsener und ein Kind fahren zwei gelbe Pedalkarts auf einem gepflasterten Weg zwischen Bäumen und Blumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un adulto y un niño conducen dos karts de pedales amarillos por un camino pavimentado entre árboles y flores."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un adulto e un bambino guidano due kart a pedali gialli su un sentiero pavimentato tra alberi e fiori."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een volwassene en een kind rijden met twee gele trapkarts over een verhard pad tussen bomen en bloemen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorosły i dziecko prowadzą dwa żółte gokarty na pedały po brukowanej ścieżce między drzewami i kwiatami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um adulto e uma criança conduzem dois karts a pedais amarelos num caminho pavimentado entre árvores e flores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Deux formats de karts à pédales sur le circuit Crazy Kart de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Two sizes of pedal kart on Pokeyland’s Crazy Kart circuit."
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Größen von Pedalkarts auf der Crazy-Kart-Strecke von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos tamaños de karts de pedales en el circuito Crazy Kart de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Due dimensioni di kart a pedali sul circuito Crazy Kart di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee formaten trapkarts op het Crazy Kart-circuit van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwa rozmiary gokartów na pedały na torze Crazy Kart w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Dois tamanhos de karts a pedais no circuito Crazy Kart de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:09.326Z",
+      "updatedAt": "2026-11-15T12:17:13.627Z"
+    },
+    "startedAtUtc": "2026-11-15T12:17:04.8400967Z",
+    "receivedAtUtc": "2026-11-15T12:17:16.7993874Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

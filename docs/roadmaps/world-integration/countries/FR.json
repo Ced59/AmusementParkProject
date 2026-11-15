@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T11:50:19.438Z",
+      "lastDataIntegrationAt": "2026-11-15T12:21:14.314Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33198,6 +33198,116 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-11-item-descriptions-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland privé : six notices Laser Game, Le Batoo, Le p’tit train, Fall Tower, Les avions et Les p’tits chevaux rédigées et relues dans huit langues, soit 48 textes. Sources officielles et photos natives relues ; formats courts documentés, aucune publication."
+        },
+        {
+          "eventId": "apply-ef60138d-4c56-4cd9-9694-f42a1583c816",
+          "appliedAt": "2026-11-15T11:56:25.095Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-12-item-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 4 notices (Mini-golf, Mono-Rail, Parcours pieds nus, Poney) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "apply-ae0c7fd8-b90d-48b7-ac00-aadc23fa2343",
+          "appliedAt": "2026-11-15T11:59:38.421Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-13-item-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 5 notices (Kid’s Racer, Tir à l’arc, Trampoline, Tubing, Cabanes de Pokey) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "upload-map-ddba2c505c544a4583efe1467a3e80ee",
+          "appliedAt": "2026-11-15T12:04:03.448Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-map-2026-upload-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : PDF officiel 2026 téléversé intact en stockage privé via ImportOfficialMap. UTC réelle du reçu, serveur ne renvoyant pas de date de création ; association encore à appliquer, aucune publication."
+        },
+        {
+          "eventId": "apply-c9f14bed-17eb-43ac-b434-ee73bd7a329d",
+          "appliedAt": "2026-11-15T12:05:47.327Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-map-2026-association-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : plan officiel 2026 PDF intact rattaché privé, huit titres personnellement relus. Ancienne carte sans millésime non datée artificiellement ; aucune publication."
+        },
+        {
+          "eventId": "apply-43302dcc-d18f-492d-98d3-1a523891e7f7",
+          "appliedAt": "2026-11-15T12:10:43.276Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-zone-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : trois zones officielles Accrobranche, Paintball et Waterjump décrites personnellement en huit langues, 24 textes relus. Noms, IDs et visibilité conservés ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-e962c52928454d4c83a3bc90c075f2ad",
+          "appliedAt": "2026-11-15T12:17:09.326Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-05-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Crazy Kart importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-f76f6dce0ee54907bba900c8e307aa27",
+          "appliedAt": "2026-11-15T12:17:23.163Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-06-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Ejector importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-e00eba58326f471eb70bb311d414f52e",
+          "appliedAt": "2026-11-15T12:17:34.130Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-07-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Escalade importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-43911282339d43de84505b656079bcaf",
+          "appliedAt": "2026-11-15T12:17:46.457Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-08-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Kid’s Swing importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-a19c6a01526c40639bc7187d9b88368f",
+          "appliedAt": "2026-11-15T12:17:57.087Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-10-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de La Roue importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "apply-feba1bcc-ae72-4f40-a8db-d038cc90f00f",
+          "appliedAt": "2026-11-15T12:21:14.314Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-17-paintball-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 5 notices (Zombie, Dog One, Cannibale, Panama, Fox Two) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

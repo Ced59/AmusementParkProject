@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-official-map-2026",
+        "step": "05-official-maps",
+        "notes": "Official original PDF 362538 bytes; named PLAN_PARC_2026_compressed.pdf linked by official map page. Full map personally viewed; original file intact, eight titles personally reviewed. Targeted OfficialMaps export proves no previous maps. Uploaded immutable storage key reused exactly. Old 2022 file lacks a proven printed edition year and is not assigned a year."
+      },
+      "park": {
+        "officialMaps": [
+          {
+            "key": "pokeyland-map-2026-fr",
+            "id": "pokeyland-map-2026-fr",
+            "year": 2026,
+            "format": "Pdf",
+            "storageKey": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf",
+            "originalFileName": "official-map-2026.pdf",
+            "contentType": "application/pdf",
+            "sizeInBytes": 362538,
+            "sourcePageUrl": "https://www.pokeyland.com/plan-du-parc/",
+            "languageCode": "fr",
+            "isVisible": false,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan officiel de Pokeyland — 2026"
+              },
+              {
+                "languageCode": "en",
+                "value": "Official Pokeyland map — 2026"
+              },
+              {
+                "languageCode": "de",
+                "value": "Offizieller Parkplan von Pokeyland — 2026"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano oficial de Pokeyland — 2026"
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa ufficiale di Pokeyland — 2026"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Officiële plattegrond van Pokeyland — 2026"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Oficjalny plan Pokeyland — 2026"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa oficial de Pokeyland — 2026"
+              }
+            ],
+            "alternativeTexts": [],
+            "lastVerifiedAtUtc": "2026-11-15T10:36:57.087598Z"
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "7a9a1cf9-8f39-437a-973b-5a8ec91b9e74",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:04:59.2686847Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "pokeyland-map-2026-fr",
+        "entityKey": "pokeyland-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Pdf)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "format",
+            "oldValue": "Image",
+            "newValue": "Pdf"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "official-map-2026.pdf"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "application/pdf"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "362538"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/plan-du-parc/"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Offizieller Parkplan von Pokeyland — 2026"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Official Pokeyland map — 2026"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano oficial de Pokeyland — 2026"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan officiel de Pokeyland — 2026"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa ufficiale di Pokeyland — 2026"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Officiële plattegrond van Pokeyland — 2026"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Oficjalny plan Pokeyland — 2026"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa oficial de Pokeyland — 2026"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "c9f14bed-17eb-43ac-b434-ee73bd7a329d",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:05:47.3273532Z",
+    "appliedAtUtc": "2026-11-15T12:05:47.3273543Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "pokeyland-map-2026-fr",
+        "entityKey": "pokeyland-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Pdf)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "format",
+            "oldValue": "Image",
+            "newValue": "Pdf"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "official-map-2026.pdf"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "application/pdf"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "362538"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.pokeyland.com/plan-du-parc/"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Offizieller Parkplan von Pokeyland — 2026"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Official Pokeyland map — 2026"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano oficial de Pokeyland — 2026"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan officiel de Pokeyland — 2026"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa ufficiale di Pokeyland — 2026"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Officiële plattegrond van Pokeyland — 2026"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Oficjalny plan Pokeyland — 2026"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa oficial de Pokeyland — 2026"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "uploadReceipt": {
+    "receivedAtUtc": "2026-11-15T12:04:03.4485748Z",
+    "action": "ImportOfficialMap",
+    "startedAtUtc": "2026-11-15T12:04:01.3900965Z",
+    "result": {
+      "ParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "OfficialMap": {
+        "Key": "pokeyland-map-2026-fr",
+        "Id": "pokeyland-map-2026-fr",
+        "Year": 2026,
+        "Format": "Pdf",
+        "StorageKey": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf",
+        "OriginalFileName": "official-map-2026.pdf",
+        "ContentType": "application/pdf",
+        "SizeInBytes": 362538,
+        "SourcePageUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      }
+    }
+  },
+  "targetedExistingMapRecovery": {
+    "documentType": "AmusementParkParkGraphUpsert",
+    "schemaVersion": "2026-09-05",
+    "mode": "merge",
+    "identity": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "name": "Pokeyland",
+      "countryCode": "FR"
+    },
+    "park": {
+      "officialMaps": []
+    },
+    "openingHours": null,
+    "pricing": null,
+    "metadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T12:03:16.3252122Z"
+    }
+  },
+  "rootPersonalReview": {
+    "fullMapViewed": true,
+    "eightTitlesWrittenAndReviewed": true,
+    "originalPdfIntact": true,
+    "noInventedEditionForUndatedOldMap": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

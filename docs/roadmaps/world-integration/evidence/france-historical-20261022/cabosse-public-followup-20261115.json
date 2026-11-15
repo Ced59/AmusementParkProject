@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-11-15T11:54:54.735091+00:00",
+  "parkId": "adef7c8a-4405-4f91-b3cc-4b529971b0da",
+  "entryId": "FR-candidate-fa6227365b97a9",
+  "name": "Parc de la Cabosse",
+  "locality": "Jurques, Calvados",
+  "scope": "Public research only; no PDE, reservation, Git, registry edit, purchase, contact, login, access-control workaround, media alteration or import.",
+  "baselineRead": {
+    "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/parc-de-la-cabosse-source-research-20261115.json",
+    "sha256": "6549a821b0d4a52d551cc4f2d84cb97435a74bf685cd301220572da575e5f83d"
+  },
+  "outcome": "No newly readable contemporary article, independently authenticated item photograph or historical park logo recovered. The original Ouest-France1970 article remains unread. One bibliographic lead is now precisely qualified; no integration justified.",
+  "newBibliographicFinding": {
+    "title": "Le Bocage libre (1975), édition de la Manche libre, édition de Vire",
+    "primarySource": {
+      "url": "https://catalogue.bnf.fr/ark:/12148/cb473593914",
+      "accessedAtUtc": "2026-11-15T11:53:47.376952+00:00",
+      "status": 200,
+      "finalUrl": "https://catalogue.bnf.fr/ark:/12148/cb473593914",
+      "file": "bnf-bocage-libre.html",
+      "bytes": 74523,
+      "sha256": "d4b3935afe5883e3e23bb9df9e5ccf69bf4a79fb43f44bea2675027fbf3cac7f"
+    },
+    "catalogueId": "FRBNF47359391",
+    "issn": "3001-7165",
+    "catalogueNumbering": "[23 mars1975]–[novembre1981]",
+    "noticeBasedOn": "n°1923 (11octobre1981)",
+    "holding": "NUMP-27307, digitized text, Bibliothèque de recherche, Gallica intra muros",
+    "access": "BnF explicitly says consultable sur place en Bibliothèque de recherche, with research card. Public catalogue was read; newspaper pages were not accessed.",
+    "implication": "The unspecified citation Archives Le Bocage Libre can concern later retrospective reporting or1975–1977, but this title cannot be treated as a contemporaneous1970 source. No exact article/date/page about Cabosse identified.",
+    "didNotDo": "No attempt to access intramural digitized pages remotely, no account or reproduction purchase."
+  },
+  "ouestFrance1970": {
+    "date": "1970-08-29",
+    "referencedTitle": "À la Cabosse, paradis des enfants… les chevaux de bois sont centenaires",
+    "originalRead": false,
+    "publicScanFound": false,
+    "status": "Bibliographic citation remains known only from secondary source/repeats. Exact title/date and founder-name searches did not locate a public reproduction. The existing paid archive-service lead was not retried or contacted.",
+    "accessContext": {
+      "source": {
+        "url": "https://www.quotidien-genealogie.fr/archives-calvados-presse-ancienne-journaux-periodiques/",
+        "accessedAtUtc": "2026-11-15T11:53:50.035157+00:00",
+        "status": 200,
+        "finalUrl": "https://www.quotidien-genealogie.fr/archives-calvados-presse-ancienne-journaux-periodiques/",
+        "file": "calvados-public-press-update.html",
+        "bytes": 149423,
+        "sha256": "19fa72f38bd3106bd42164b381e5896ac8d18648ba41a5f0bb473eb71f9dcfba"
+      },
+      "published": "2026-01-27",
+      "author": "Elise Lenoble",
+      "finding": "Reports the2026release of1955newspapers at Calvados archives; searches cover catalogue notices, not OCR full text. This explains why a failed text search is not proof no relevant article exists.",
+      "limit": "This is an independent article on access policy, not a source for the park inventory. Do not make an absolute claim that every1970issue is inaccessible everywhere."
+    },
+    "departmentalPortalAttempt": {
+      "url": "https://archives.calvados.fr/search/form/734af2e0-3376-4540-a053-b9fbbbb156f4",
+      "status": 403,
+      "method": "Ordinary public link from source; search tool failed; no bypass or repeat attempt.",
+      "evidence": "public-search-evidence.json, batch6"
+    }
+  },
+  "searchCoverage": [
+    "Exact Cabosse title, article date29August1970, Jurques1970/1971/1972/1974/1977, wooden carousel and known founder names RogerLebel/RaymondLebel/RenéOzenne.",
+    "BnF historical-newspaper catalogue, Calvados departmental press access, FranceArchives, independent genealogy publication.",
+    "Public NormandieImages/MémoireNormande film search and dated amusement-park terms; no identified relevant film returned.",
+    "Named amusement-park postcard/depliant search, including Delcampe; returned known animal/zoo listings, not a new authenticated amusement-park source."
+  ],
+  "sourceFamilyDecision": [
+    {
+      "family": "Wikipedia and mirrors, 2012parcsdattractions blog",
+      "decision": "Not new independent corroboration; same inventoriednames. No new description, date, founder biography or photo justified."
+    },
+    {
+      "family": "Zoo postcards / contemporary zoo / Lessay",
+      "decision": "Not transferred to the1970–1977amusement park. The known eBay animal card was not downloaded again."
+    },
+    {
+      "family": "BRGM1972mine-concession evidence",
+      "decision": "Miningadministration, not an amusementattraction orvisitorplan; excluded."
+    },
+    {
+      "family": "LaMancheLibre public web",
+      "decision": "Search tool reports robots.txt restriction; no bypass attempted. BnF catalogue remains available."
+    }
+  ],
+  "unchangedDataGaps": {
+    "oldStateOnly": "12items,2described in8languages,1itemphoto; private; priorprojected75andmedia.logo-required. No new score or live state check.",
+    "missingNotices": 10,
+    "newQualifiedItemIdentities": 0,
+    "newAcceptedPhotos": 0,
+    "newLogo": false,
+    "lastActualIntegrationAtPreserved": "2026-11-02T14:56:30.390Z"
+  },
+  "nextActionIfNewMaterialBecomesAvailable": "Read a lawful public or owner-supplied reproduction of Ouest-France29August1970, or a precise Cabosse article from the nowidentified1975–1981BocageLibreholding. An exact issue/page scan is needed; do not reread generic copied lists or zoo cards as a substitute. No contact or purchase initiated.",
+  "evidenceFiles": [
+    "source-access.json",
+    "bnf-bocage-libre.html",
+    "bnf-bocage-libre.txt",
+    "calvados-public-press-update.html",
+    "calvados-public-press-update.txt",
+    "public-search-evidence.json",
+    "public-search-evidence-8.json"
+  ]
+}

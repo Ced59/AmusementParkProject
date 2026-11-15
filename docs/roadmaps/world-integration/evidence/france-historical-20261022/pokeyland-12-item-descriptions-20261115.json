@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-12-item-descriptions",
+        "step": "04-items",
+        "notes": "Four private existing items; 32 texts personally written and reviewed against official pages and exact original photos. Mini-golf 15 holes, pedal-powered Mono-Rail, barefoot material strips and live pony forest route. No free park entry claim, opening dates or unsupported mechanics. Short-source depth gaps retained; existing visibility and attributes preserved."
+      },
+      "items": [
+        {
+          "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+          "key": "pokeyland-mini-golf",
+          "name": "Mini-golf",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Quinze pistes à obstacles dans les arbres</h2><p>Le Mini-golf de Pokeyland réunit quinze trous dans un cadre ombragé. Les joueurs utilisent les clubs mis à disposition pour faire progresser leur balle entre les obstacles et comparer leurs scores au fil du parcours.</p><p>Une des pistes possède un revêtement rose saumon bordé de rouge et de grands obstacles en forme de champignons crème. La clôture de bois et les arbres entourent cette surface colorée, où la balle et le club se détachent nettement. Le jeu associe ainsi de petits décors à la végétation du parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Fifteen holes among the trees</h2><p>Pokeyland’s Mini-golf brings together fifteen holes in a shaded setting. Players use the clubs provided to guide their ball between obstacles and compare their scores as they progress around the course.</p><p>One lane has a salmon-pink surface edged in red, with large cream-coloured mushroom obstacles. A wooden fence and trees surround this colourful surface, against which the ball and club stand out. The game combines small decorative features with the park’s vegetation.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Fünfzehn Hindernisbahnen zwischen den Bäumen</h2><p>Der Mini-golf von Pokeyland umfasst fünfzehn Löcher in schattiger Umgebung. Mit den bereitgestellten Schlägern spielen die Besucher ihren Ball zwischen den Hindernissen hindurch und vergleichen im Laufe der Runde ihre Ergebnisse.</p><p>Eine Bahn hat einen lachsrosa Belag mit rotem Rand und großen cremefarbenen Pilzhindernissen. Ein Holzzaun und Bäume umgeben die bunte Fläche, auf der sich Ball und Schläger deutlich abheben. Kleine Dekorationen verbinden sich so mit der Vegetation des Parks.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Quince pistas con obstáculos entre los árboles</h2><p>El Mini-golf de Pokeyland reúne quince hoyos en un entorno sombreado. Los jugadores utilizan los palos disponibles para hacer avanzar la bola entre los obstáculos y comparar sus puntuaciones a lo largo del recorrido.</p><p>Una pista tiene una superficie rosa salmón con bordes rojos y grandes obstáculos en forma de setas color crema. La valla de madera y los árboles rodean esta superficie de colores, sobre la que destacan la bola y el palo. El juego combina pequeños decorados con la vegetación del parque.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Quindici piste a ostacoli tra gli alberi</h2><p>Il Mini-golf di Pokeyland riunisce quindici buche in un ambiente ombreggiato. I giocatori usano le mazze a disposizione per far avanzare la pallina tra gli ostacoli e confrontare i punteggi lungo il percorso.</p><p>Una pista ha una superficie rosa salmone bordata di rosso e grandi ostacoli a forma di funghi color crema. La recinzione di legno e gli alberi circondano questa superficie colorata, sulla quale pallina e mazza risaltano chiaramente. Il gioco unisce piccole decorazioni alla vegetazione del parco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vijftien hindernisbanen tussen de bomen</h2><p>De Mini-golf van Pokeyland telt vijftien holes in een schaduwrijke omgeving. Spelers gebruiken de beschikbare clubs om hun bal tussen de hindernissen door te spelen en tijdens de ronde hun scores te vergelijken.</p><p>Eén baan heeft een zalmroze ondergrond met rode randen en grote crèmekleurige paddenstoelen als hindernissen. Een houten hek en bomen omringen dit kleurrijke vlak, waarop de bal en club duidelijk afsteken. Kleine decorstukken gaan hier samen met het groen van het park.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Piętnaście torów z przeszkodami wśród drzew</h2><p>Mini-golf w Pokeyland obejmuje piętnaście dołków w zacienionym otoczeniu. Gracze korzystają z dostępnych kijów, aby prowadzić piłkę między przeszkodami i porównywać wyniki w trakcie rundy.</p><p>Jeden z torów ma łososioworóżową nawierzchnię z czerwonymi krawędziami oraz duże kremowe przeszkody w kształcie grzybów. Drewniane ogrodzenie i drzewa otaczają kolorową powierzchnię, na której wyraźnie widać piłkę i kij. Gra łączy drobne dekoracje z roślinnością parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Quinze pistas com obstáculos entre as árvores</h2><p>O Mini-golf de Pokeyland reúne quinze buracos num ambiente com sombra. Os jogadores usam os tacos disponíveis para fazer avançar a bola entre os obstáculos e comparar as pontuações ao longo do percurso.</p><p>Uma pista tem uma superfície rosa-salmão com bordas vermelhas e grandes obstáculos em forma de cogumelos de cor creme. A vedação de madeira e as árvores rodeiam esta superfície colorida, onde a bola e o taco se destacam. O jogo combina pequenas decorações com a vegetação do parque.</p>"
+            }
+          ]
+        },
+        {
+          "id": "776a9555-8156-4199-980f-e07ccbd44a31",
+          "key": "pokeyland-mono-rail",
+          "name": "Mono-Rail",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Pédaler dans un hélicoptère au-dessus du parc</h2><p>Le Mono-Rail fait avancer ses passagers à la force des pédales, dans des nacelles en forme d’hélicoptère. Le parcours surélevé permet de regarder le paysage depuis les airs tout en restant installé dans le petit appareil.</p><p>La carrosserie blanche, les ouvertures sombres du cockpit et le rotor noir décoratif donnent sa silhouette à l’hélicoptère. Les branches et le feuillage bordent le passage des nacelles : cette proximité des arbres accompagne la promenade aérienne.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Pedalling a helicopter above the park</h2><p>Mono-Rail passengers move under pedal power in helicopter-shaped gondolas. The elevated route lets them view the landscape from above while remaining seated in the small aircraft.</p><p>A white body, dark cockpit openings and a decorative black rotor give the helicopter its outline. Branches and foliage border the gondolas’ route, bringing the trees close to this aerial ride along a fixed course.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Im Hubschrauber über den Park radeln</h2><p>Beim Mono-Rail bewegen sich die Fahrgäste mit Pedalkraft in hubschrauberförmigen Gondeln vorwärts. Die erhöhte Strecke ermöglicht einen Blick von oben auf die Landschaft, während man im kleinen Fluggerät sitzen bleibt.</p><p>Eine weiße Karosserie, dunkle Cockpitöffnungen und ein schwarzer Zierrotor prägen die Form des Hubschraubers. Äste und Laub säumen den Weg der Gondeln. Die Bäume stehen auf dieser erhöhten Fahrt entlang einer festen Strecke ganz in der Nähe.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Pedalear en un helicóptero sobre el parque</h2><p>Los pasajeros del Mono-Rail avanzan a pedales en góndolas con forma de helicóptero. El recorrido elevado permite observar el paisaje desde arriba sin abandonar el pequeño aparato.</p><p>La carrocería blanca, las aberturas oscuras de la cabina y el rotor negro decorativo definen la silueta del helicóptero. Las ramas y el follaje bordean el paso de las góndolas. La cercanía de los árboles acompaña este paseo aéreo por una ruta fija.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Pedalare in elicottero sopra il parco</h2><p>I passeggeri del Mono-Rail avanzano a pedali in gondole a forma di elicottero. Il percorso sopraelevato consente di osservare il paesaggio dall’alto restando seduti nel piccolo apparecchio.</p><p>La carrozzeria bianca, le aperture scure dell’abitacolo e il rotore nero decorativo delineano la sagoma dell’elicottero. Rami e foglie costeggiano il passaggio delle gondole. La vicinanza degli alberi accompagna questa passeggiata aerea su un percorso fisso.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>In een helikopter boven het park fietsen</h2><p>Passagiers van de Mono-Rail bewegen met trapkracht voort in helikoptervormige gondels. Vanaf de verhoogde route bekijken ze het landschap van boven, terwijl ze in het kleine toestel blijven zitten.</p><p>Een witte carrosserie, donkere cockpitopeningen en een zwarte sierrotor bepalen het silhouet van de helikopter. Takken en bladeren omzomen de route van de gondels. De bomen staan dichtbij tijdens deze tocht door de lucht langs een vaste baan.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pedałowanie w helikopterze nad parkiem</h2><p>Pasażerowie Mono-Rail napędzają pedałami gondole w kształcie helikopterów. Podwyższona trasa pozwala oglądać krajobraz z góry, pozostając na miejscu w niewielkim pojeździe.</p><p>Biała karoseria, ciemne otwory kabiny i czarny ozdobny wirnik tworzą sylwetkę helikoptera. Gałęzie i liście otaczają trasę gondoli. Bliskość drzew towarzyszy tej powietrznej przejażdżce po stałym torze.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Pedalar num helicóptero sobre o parque</h2><p>Os passageiros do Mono-Rail avançam a pedais em gôndolas com forma de helicóptero. O percurso elevado permite observar a paisagem de cima, mantendo-se sentados no pequeno aparelho.</p><p>A carroçaria branca, as aberturas escuras do cockpit e o rotor preto decorativo definem a silhueta do helicóptero. Ramos e folhagem acompanham a passagem das gôndolas. As árvores ficam próximas durante este passeio aéreo num trajeto fixo.</p>"
+            }
+          ]
+        },
+        {
+          "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+          "key": "pokeyland-parcours-pieds-nus",
+          "name": "Parcours pieds nus",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des textures à découvrir sous les pieds</h2><p>Le Parcours pieds nus invite à enlever ses chaussures pour éprouver directement les matériaux du chemin. La découverte passe par le contact avec les plantes des pieds, au fil de surfaces successives aménagées dans un cadre végétal.</p><p>Des rondins séparent notamment des bandes de petits cailloux gris et blancs, puis une surface sableuse. L’herbe borde ces compartiments allongés.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Textures to discover underfoot</h2><p>Parcours pieds nus invites visitors to remove their shoes and feel the path’s materials directly. The experience centres on contact with the soles of the feet as walkers cross a succession of surfaces in a planted setting.</p><p>Logs separate strips of small grey and white stones, followed by a sandy surface. Grass borders these elongated compartments.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Unterschiedliche Oberflächen unter den Füßen</h2><p>Der Parcours pieds nus lädt dazu ein, die Schuhe auszuziehen und die Materialien des Weges unmittelbar zu spüren. Im Mittelpunkt steht der Kontakt mit den Fußsohlen beim Überqueren aufeinanderfolgender Flächen in begrünter Umgebung.</p><p>Rundhölzer trennen unter anderem Streifen aus kleinen grauen und weißen Steinen, gefolgt von einer sandigen Fläche. Gras säumt die länglichen Abschnitte.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Texturas para descubrir bajo los pies</h2><p>Parcours pieds nus invita a quitarse los zapatos para sentir directamente los materiales del camino. La experiencia se basa en el contacto con las plantas de los pies al cruzar superficies sucesivas en un entorno vegetal.</p><p>Troncos separan franjas de pequeñas piedras grises y blancas, seguidas de una superficie arenosa. La hierba bordea estos compartimentos alargados.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Texture da scoprire sotto i piedi</h2><p>Il Parcours pieds nus invita a togliersi le scarpe per sentire direttamente i materiali del sentiero. L’esperienza passa attraverso il contatto con le piante dei piedi, lungo superfici successive inserite in un ambiente vegetale.</p><p>Tronchi separano fasce di piccoli sassi grigi e bianchi, seguite da una superficie sabbiosa. L’erba delimita questi scomparti allungati.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Verschillende structuren onder de voeten</h2><p>Parcours pieds nus nodigt bezoekers uit om hun schoenen uit te trekken en de materialen van het pad rechtstreeks te voelen. Het contact met de voetzolen staat centraal bij het oversteken van opeenvolgende ondergronden in het groen.</p><p>Boomstammetjes scheiden stroken kleine grijze en witte stenen, gevolgd door een zanderig oppervlak. Gras omzoomt deze langgerekte vakken.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Faktury poznawane bosymi stopami</h2><p>Parcours pieds nus zachęca do zdjęcia butów i bezpośredniego poznawania materiałów ścieżki. Doświadczenie opiera się na kontakcie podeszew stóp z kolejnymi powierzchniami urządzonymi wśród roślinności.</p><p>Okrągłe belki rozdzielają pasy drobnych szarych i białych kamieni, za którymi znajduje się piaszczysta nawierzchnia. Trawa otacza te podłużne części.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Texturas para descobrir debaixo dos pés</h2><p>O Parcours pieds nus convida a descalçar os sapatos para sentir diretamente os materiais do caminho. A experiência passa pelo contacto com as plantas dos pés ao longo de superfícies sucessivas num ambiente vegetal.</p><p>Troncos separam faixas de pequenas pedras cinzentas e brancas, seguidas de uma superfície arenosa. A relva ladeia estes compartimentos alongados.</p>"
+            }
+          ]
+        },
+        {
+          "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+          "key": "pokeyland-poney",
+          "name": "Poney",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une promenade avec les poneys dans la forêt</h2><p>L’activité Poney permet une découverte de l’équitation en extérieur sur un parcours réservé dans la forêt de Pokeyland. L’enfant monte un véritable animal, accompagné à pied pendant la promenade.</p><p>Le sentier de terre passe entre des barrières en bois et la végétation. Le poney, le jeune cavalier casqué et les personnes qui marchent à ses côtés partagent cette allée ombragée. Cette rencontre avec les animaux constitue une offre distincte des chevaux mécaniques des P’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A woodland walk with ponies</h2><p>The Poney activity introduces outdoor horse riding on a dedicated route through Pokeyland’s forest. The child rides a live animal, accompanied by people on foot during the outing.</p><p>The earthen path runs between wooden fences and vegetation. The pony, its young helmeted rider and the people walking alongside share the shaded lane. This encounter with animals is a separate activity from the mechanical horses of Les p’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Mit Ponys durch den Wald</h2><p>Die Aktivität Poney bietet einen Einstieg in das Reiten im Freien auf einer eigenen Strecke durch den Wald von Pokeyland. Das Kind sitzt auf einem echten Tier und wird während des Ausritts zu Fuß begleitet.</p><p>Der Erdweg führt zwischen Holzzäunen und Vegetation hindurch. Das Pony, der junge Reiter mit Helm und die begleitenden Personen teilen sich den schattigen Weg. Diese Begegnung mit Tieren ist ein eigenes Angebot neben den mechanischen Pferden von Les p’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un paseo con ponis por el bosque</h2><p>La actividad Poney permite descubrir la equitación al aire libre en un recorrido reservado por el bosque de Pokeyland. El niño monta un animal vivo, acompañado a pie durante el paseo.</p><p>El sendero de tierra discurre entre vallas de madera y vegetación. El poni, el joven jinete con casco y las personas que caminan a su lado comparten este camino sombreado. El encuentro con los animales constituye una actividad distinta de los caballos mecánicos de Les p’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una passeggiata con i pony nel bosco</h2><p>L’attività Poney permette di avvicinarsi all’equitazione all’aperto su un percorso riservato nel bosco di Pokeyland. Il bambino monta un animale vivo, accompagnato a piedi durante la passeggiata.</p><p>Il sentiero di terra passa tra recinzioni di legno e vegetazione. Il pony, il giovane cavaliere con il casco e le persone che camminano al suo fianco condividono il viale ombreggiato. Questo incontro con gli animali è distinto dai cavalli meccanici di Les p’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een wandeling met pony’s door het bos</h2><p>Bij Poney maken kinderen kennis met buiten rijden op een eigen route door het bos van Pokeyland. Het kind rijdt op een levend dier en wordt tijdens het uitstapje te voet begeleid.</p><p>Het aarden pad loopt tussen houten hekken en begroeiing. De pony, de jonge ruiter met helm en de begeleiders delen deze schaduwrijke laan. Deze ontmoeting met dieren is een afzonderlijk aanbod naast de mechanische paarden van Les p’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Spacer z kucykami przez las</h2><p>Atrakcja Poney pozwala poznać jazdę konną na świeżym powietrzu, na wydzielonej trasie w lesie Pokeyland. Dziecko dosiada żywego zwierzęcia i podczas przejażdżki towarzyszą mu piesi opiekunowie.</p><p>Ziemna ścieżka prowadzi między drewnianymi ogrodzeniami a roślinnością. Kucyk, młody jeździec w kasku i osoby idące obok dzielą zacienioną alejkę. To spotkanie ze zwierzętami stanowi odrębną ofertę od mechanicznych koni Les p’tits chevaux.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um passeio com póneis pela floresta</h2><p>A atividade Poney permite descobrir a equitação ao ar livre num percurso reservado na floresta de Pokeyland. A criança monta um animal vivo, acompanhada a pé durante o passeio.</p><p>O caminho de terra passa entre vedações de madeira e vegetação. O pónei, o jovem cavaleiro de capacete e as pessoas que caminham ao lado partilham esta alameda com sombra. Este encontro com os animais constitui uma atividade distinta dos cavalos mecânicos de Les p’tits chevaux.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "d26ee9d3-1c73-4d4d-a982-a34efe0eecea",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:55:56.6010217Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Fünfzehn Hindernisbahnen zwischen den Bäumen</h2><p>Der Mini-golf von Pokeyland umfasst fünfzehn Löcher in schattiger Umgebung. Mit den bereitgestellten Schlägern spielen die Besucher ihren Ball zwischen den Hindernissen hindurch und vergleichen im Laufe der Runde ihre Ergebnisse.</p><p>Eine Bahn hat einen lachsrosa Belag mit rotem Rand und großen cremefarbenen Pilzhindernissen. Ein Holzzaun und Bäume umgeben die bunte Fläche, auf der sich Ball und Schläger deutlich abheben. Kleine Dekorationen verbinden sich so mit der Vegetation des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Fifteen holes among the trees</h2><p>Pokeyland’s Mini-golf brings together fifteen holes in a shaded setting. Players use the clubs provided to guide their ball between obstacles and compare their scores as they progress around the course.</p><p>One lane has a salmon-pink surface edged in red, with large cream-coloured mushroom obstacles. A wooden fence and trees surround this colourful surface, against which the ball and club stand out. The game combines small decorative features with the park’s vegetation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Quince pistas con obstáculos entre los árboles</h2><p>El Mini-golf de Pokeyland reúne quince hoyos en un entorno sombreado. Los jugadores utilizan los palos disponibles para hacer avanzar la bola entre los obstáculos y comparar sus puntuaciones a lo largo del recorrido.</p><p>Una pista tiene una superficie rosa salmón con bordes rojos y grandes obstáculos en forma de setas color crema. La valla de madera y los árboles rodean esta superficie de colores, sobre la que destacan la bola y el palo. El juego combina pequeños decorados con la vegetación del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Quinze pistes à obstacles dans les arbres</h2><p>Le Mini-golf de Pokeyland réunit quinze trous dans un cadre ombragé. Les joueurs utilisent les clubs mis à disposition pour faire progresser leur balle entre les obstacles et comparer leurs scores au fil du parcours.</p><p>Une des pistes possède un revêtement rose saumon bordé de rouge et de grands obstacles en forme de champignons crème. La clôture de bois et les arbres entourent cette surface colorée, où la balle et le club se détachent nettement. Le jeu associe ainsi de petits décors à la végétation du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Quindici piste a ostacoli tra gli alberi</h2><p>Il Mini-golf di Pokeyland riunisce quindici buche in un ambiente ombreggiato. I giocatori usano le mazze a disposizione per far avanzare la pallina tra gli ostacoli e confrontare i punteggi lungo il percorso.</p><p>Una pista ha una superficie rosa salmone bordata di rosso e grandi ostacoli a forma di funghi color crema. La recinzione di legno e gli alberi circondano questa superficie colorata, sulla quale pallina e mazza risaltano chiaramente. Il gioco unisce piccole decorazioni alla vegetazione del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vijftien hindernisbanen tussen de bomen</h2><p>De Mini-golf van Pokeyland telt vijftien holes in een schaduwrijke omgeving. Spelers gebruiken de beschikbare clubs om hun bal tussen de hindernissen door te spelen en tijdens de ronde hun scores te vergelijken.</p><p>Eén baan heeft een zalmroze ondergrond met rode randen en grote crèmekleurige paddenstoelen als hindernissen. Een houten hek en bomen omringen dit kleurrijke vlak, waarop de bal en club duidelijk afsteken. Kleine decorstukken gaan hier samen met het groen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Piętnaście torów z przeszkodami wśród drzew</h2><p>Mini-golf w Pokeyland obejmuje piętnaście dołków w zacienionym otoczeniu. Gracze korzystają z dostępnych kijów, aby prowadzić piłkę między przeszkodami i porównywać wyniki w trakcie rundy.</p><p>Jeden z torów ma łososioworóżową nawierzchnię z czerwonymi krawędziami oraz duże kremowe przeszkody w kształcie grzybów. Drewniane ogrodzenie i drzewa otaczają kolorową powierzchnię, na której wyraźnie widać piłkę i kij. Gra łączy drobne dekoracje z roślinnością parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Quinze pistas com obstáculos entre as árvores</h2><p>O Mini-golf de Pokeyland reúne quinze buracos num ambiente com sombra. Os jogadores usam os tacos disponíveis para fazer avançar a bola entre os obstáculos e comparar as pontuações ao longo do percurso.</p><p>Uma pista tem uma superfície rosa-salmão com bordas vermelhas e grandes obstáculos em forma de cogumelos de cor creme. A vedação de madeira e as árvores rodeiam esta superfície colorida, onde a bola e o taco se destacam. O jogo combina pequenas decorações com a vegetação do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "entityKey": "pokeyland-mono-rail",
+        "displayName": "Mono-Rail",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Im Hubschrauber über den Park radeln</h2><p>Beim Mono-Rail bewegen sich die Fahrgäste mit Pedalkraft in hubschrauberförmigen Gondeln vorwärts. Die erhöhte Strecke ermöglicht einen Blick von oben auf die Landschaft, während man im kleinen Fluggerät sitzen bleibt.</p><p>Eine weiße Karosserie, dunkle Cockpitöffnungen und ein schwarzer Zierrotor prägen die Form des Hubschraubers. Äste und Laub säumen den Weg der Gondeln. Die Bäume stehen auf dieser erhöhten Fahrt entlang einer festen Strecke ganz in der Nähe.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Pedalling a helicopter above the park</h2><p>Mono-Rail passengers move under pedal power in helicopter-shaped gondolas. The elevated route lets them view the landscape from above while remaining seated in the small aircraft.</p><p>A white body, dark cockpit openings and a decorative black rotor give the helicopter its outline. Branches and foliage border the gondolas’ route, bringing the trees close to this aerial ride along a fixed course.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Pedalear en un helicóptero sobre el parque</h2><p>Los pasajeros del Mono-Rail avanzan a pedales en góndolas con forma de helicóptero. El recorrido elevado permite observar el paisaje desde arriba sin abandonar el pequeño aparato.</p><p>La carrocería blanca, las aberturas oscuras de la cabina y el rotor negro decorativo definen la silueta del helicóptero. Las ramas y el follaje bordean el paso de las góndolas. La cercanía de los árboles acompaña este paseo aéreo por una ruta fija.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Pédaler dans un hélicoptère au-dessus du parc</h2><p>Le Mono-Rail fait avancer ses passagers à la force des pédales, dans des nacelles en forme d’hélicoptère. Le parcours surélevé permet de regarder le paysage depuis les airs tout en restant installé dans le petit appareil.</p><p>La carrosserie blanche, les ouvertures sombres du cockpit et le rotor noir décoratif donnent sa silhouette à l’hélicoptère. Les branches et le feuillage bordent le passage des nacelles : cette proximité des arbres accompagne la promenade aérienne.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Pedalare in elicottero sopra il parco</h2><p>I passeggeri del Mono-Rail avanzano a pedali in gondole a forma di elicottero. Il percorso sopraelevato consente di osservare il paesaggio dall’alto restando seduti nel piccolo apparecchio.</p><p>La carrozzeria bianca, le aperture scure dell’abitacolo e il rotore nero decorativo delineano la sagoma dell’elicottero. Rami e foglie costeggiano il passaggio delle gondole. La vicinanza degli alberi accompagna questa passeggiata aerea su un percorso fisso.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>In een helikopter boven het park fietsen</h2><p>Passagiers van de Mono-Rail bewegen met trapkracht voort in helikoptervormige gondels. Vanaf de verhoogde route bekijken ze het landschap van boven, terwijl ze in het kleine toestel blijven zitten.</p><p>Een witte carrosserie, donkere cockpitopeningen en een zwarte sierrotor bepalen het silhouet van de helikopter. Takken en bladeren omzomen de route van de gondels. De bomen staan dichtbij tijdens deze tocht door de lucht langs een vaste baan.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pedałowanie w helikopterze nad parkiem</h2><p>Pasażerowie Mono-Rail napędzają pedałami gondole w kształcie helikopterów. Podwyższona trasa pozwala oglądać krajobraz z góry, pozostając na miejscu w niewielkim pojeździe.</p><p>Biała karoseria, ciemne otwory kabiny i czarny ozdobny wirnik tworzą sylwetkę helikoptera. Gałęzie i liście otaczają trasę gondoli. Bliskość drzew towarzyszy tej powietrznej przejażdżce po stałym torze.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Pedalar num helicóptero sobre o parque</h2><p>Os passageiros do Mono-Rail avançam a pedais em gôndolas com forma de helicóptero. O percurso elevado permite observar a paisagem de cima, mantendo-se sentados no pequeno aparelho.</p><p>A carroçaria branca, as aberturas escuras do cockpit e o rotor preto decorativo definem a silhueta do helicóptero. Ramos e folhagem acompanham a passagem das gôndolas. As árvores ficam próximas durante este passeio aéreo num trajeto fixo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "entityKey": "pokeyland-parcours-pieds-nus",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Unterschiedliche Oberflächen unter den Füßen</h2><p>Der Parcours pieds nus lädt dazu ein, die Schuhe auszuziehen und die Materialien des Weges unmittelbar zu spüren. Im Mittelpunkt steht der Kontakt mit den Fußsohlen beim Überqueren aufeinanderfolgender Flächen in begrünter Umgebung.</p><p>Rundhölzer trennen unter anderem Streifen aus kleinen grauen und weißen Steinen, gefolgt von einer sandigen Fläche. Gras säumt die länglichen Abschnitte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Textures to discover underfoot</h2><p>Parcours pieds nus invites visitors to remove their shoes and feel the path’s materials directly. The experience centres on contact with the soles of the feet as walkers cross a succession of surfaces in a planted setting.</p><p>Logs separate strips of small grey and white stones, followed by a sandy surface. Grass borders these elongated compartments.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Texturas para descubrir bajo los pies</h2><p>Parcours pieds nus invita a quitarse los zapatos para sentir directamente los materiales del camino. La experiencia se basa en el contacto con las plantas de los pies al cruzar superficies sucesivas en un entorno vegetal.</p><p>Troncos separan franjas de pequeñas piedras grises y blancas, seguidas de una superficie arenosa. La hierba bordea estos compartimentos alargados.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des textures à découvrir sous les pieds</h2><p>Le Parcours pieds nus invite à enlever ses chaussures pour éprouver directement les matériaux du chemin. La découverte passe par le contact avec les plantes des pieds, au fil de surfaces successives aménagées dans un cadre végétal.</p><p>Des rondins séparent notamment des bandes de petits cailloux gris et blancs, puis une surface sableuse. L’herbe borde ces compartiments allongés.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Texture da scoprire sotto i piedi</h2><p>Il Parcours pieds nus invita a togliersi le scarpe per sentire direttamente i materiali del sentiero. L’esperienza passa attraverso il contatto con le piante dei piedi, lungo superfici successive inserite in un ambiente vegetale.</p><p>Tronchi separano fasce di piccoli sassi grigi e bianchi, seguite da una superficie sabbiosa. L’erba delimita questi scomparti allungati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Verschillende structuren onder de voeten</h2><p>Parcours pieds nus nodigt bezoekers uit om hun schoenen uit te trekken en de materialen van het pad rechtstreeks te voelen. Het contact met de voetzolen staat centraal bij het oversteken van opeenvolgende ondergronden in het groen.</p><p>Boomstammetjes scheiden stroken kleine grijze en witte stenen, gevolgd door een zanderig oppervlak. Gras omzoomt deze langgerekte vakken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Faktury poznawane bosymi stopami</h2><p>Parcours pieds nus zachęca do zdjęcia butów i bezpośredniego poznawania materiałów ścieżki. Doświadczenie opiera się na kontakcie podeszew stóp z kolejnymi powierzchniami urządzonymi wśród roślinności.</p><p>Okrągłe belki rozdzielają pasy drobnych szarych i białych kamieni, za którymi znajduje się piaszczysta nawierzchnia. Trawa otacza te podłużne części.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Texturas para descobrir debaixo dos pés</h2><p>O Parcours pieds nus convida a descalçar os sapatos para sentir diretamente os materiais do caminho. A experiência passa pelo contacto com as plantas dos pés ao longo de superfícies sucessivas num ambiente vegetal.</p><p>Troncos separam faixas de pequenas pedras cinzentas e brancas, seguidas de uma superfície arenosa. A relva ladeia estes compartimentos alongados.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mit Ponys durch den Wald</h2><p>Die Aktivität Poney bietet einen Einstieg in das Reiten im Freien auf einer eigenen Strecke durch den Wald von Pokeyland. Das Kind sitzt auf einem echten Tier und wird während des Ausritts zu Fuß begleitet.</p><p>Der Erdweg führt zwischen Holzzäunen und Vegetation hindurch. Das Pony, der junge Reiter mit Helm und die begleitenden Personen teilen sich den schattigen Weg. Diese Begegnung mit Tieren ist ein eigenes Angebot neben den mechanischen Pferden von Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A woodland walk with ponies</h2><p>The Poney activity introduces outdoor horse riding on a dedicated route through Pokeyland’s forest. The child rides a live animal, accompanied by people on foot during the outing.</p><p>The earthen path runs between wooden fences and vegetation. The pony, its young helmeted rider and the people walking alongside share the shaded lane. This encounter with animals is a separate activity from the mechanical horses of Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un paseo con ponis por el bosque</h2><p>La actividad Poney permite descubrir la equitación al aire libre en un recorrido reservado por el bosque de Pokeyland. El niño monta un animal vivo, acompañado a pie durante el paseo.</p><p>El sendero de tierra discurre entre vallas de madera y vegetación. El poni, el joven jinete con casco y las personas que caminan a su lado comparten este camino sombreado. El encuentro con los animales constituye una actividad distinta de los caballos mecánicos de Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une promenade avec les poneys dans la forêt</h2><p>L’activité Poney permet une découverte de l’équitation en extérieur sur un parcours réservé dans la forêt de Pokeyland. L’enfant monte un véritable animal, accompagné à pied pendant la promenade.</p><p>Le sentier de terre passe entre des barrières en bois et la végétation. Le poney, le jeune cavalier casqué et les personnes qui marchent à ses côtés partagent cette allée ombragée. Cette rencontre avec les animaux constitue une offre distincte des chevaux mécaniques des P’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una passeggiata con i pony nel bosco</h2><p>L’attività Poney permette di avvicinarsi all’equitazione all’aperto su un percorso riservato nel bosco di Pokeyland. Il bambino monta un animale vivo, accompagnato a piedi durante la passeggiata.</p><p>Il sentiero di terra passa tra recinzioni di legno e vegetazione. Il pony, il giovane cavaliere con il casco e le persone che camminano al suo fianco condividono il viale ombreggiato. Questo incontro con gli animali è distinto dai cavalli meccanici di Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een wandeling met pony’s door het bos</h2><p>Bij Poney maken kinderen kennis met buiten rijden op een eigen route door het bos van Pokeyland. Het kind rijdt op een levend dier en wordt tijdens het uitstapje te voet begeleid.</p><p>Het aarden pad loopt tussen houten hekken en begroeiing. De pony, de jonge ruiter met helm en de begeleiders delen deze schaduwrijke laan. Deze ontmoeting met dieren is een afzonderlijk aanbod naast de mechanische paarden van Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Spacer z kucykami przez las</h2><p>Atrakcja Poney pozwala poznać jazdę konną na świeżym powietrzu, na wydzielonej trasie w lesie Pokeyland. Dziecko dosiada żywego zwierzęcia i podczas przejażdżki towarzyszą mu piesi opiekunowie.</p><p>Ziemna ścieżka prowadzi między drewnianymi ogrodzeniami a roślinnością. Kucyk, młody jeździec w kasku i osoby idące obok dzielą zacienioną alejkę. To spotkanie ze zwierzętami stanowi odrębną ofertę od mechanicznych koni Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um passeio com póneis pela floresta</h2><p>A atividade Poney permite descobrir a equitação ao ar livre num percurso reservado na floresta de Pokeyland. A criança monta um animal vivo, acompanhada a pé durante o passeio.</p><p>O caminho de terra passa entre vedações de madeira e vegetação. O pónei, o jovem cavaleiro de capacete e as pessoas que caminham ao lado partilham esta alameda com sombra. Este encontro com os animais constitui uma atividade distinta dos cavalos mecânicos de Les p’tits chevaux.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ef60138d-4c56-4cd9-9694-f42a1583c816",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:56:25.0951407Z",
+    "appliedAtUtc": "2026-11-15T11:56:25.0951421Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+        "entityKey": "pokeyland-mini-golf",
+        "displayName": "Mini-golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Fünfzehn Hindernisbahnen zwischen den Bäumen</h2><p>Der Mini-golf von Pokeyland umfasst fünfzehn Löcher in schattiger Umgebung. Mit den bereitgestellten Schlägern spielen die Besucher ihren Ball zwischen den Hindernissen hindurch und vergleichen im Laufe der Runde ihre Ergebnisse.</p><p>Eine Bahn hat einen lachsrosa Belag mit rotem Rand und großen cremefarbenen Pilzhindernissen. Ein Holzzaun und Bäume umgeben die bunte Fläche, auf der sich Ball und Schläger deutlich abheben. Kleine Dekorationen verbinden sich so mit der Vegetation des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Fifteen holes among the trees</h2><p>Pokeyland’s Mini-golf brings together fifteen holes in a shaded setting. Players use the clubs provided to guide their ball between obstacles and compare their scores as they progress around the course.</p><p>One lane has a salmon-pink surface edged in red, with large cream-coloured mushroom obstacles. A wooden fence and trees surround this colourful surface, against which the ball and club stand out. The game combines small decorative features with the park’s vegetation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Quince pistas con obstáculos entre los árboles</h2><p>El Mini-golf de Pokeyland reúne quince hoyos en un entorno sombreado. Los jugadores utilizan los palos disponibles para hacer avanzar la bola entre los obstáculos y comparar sus puntuaciones a lo largo del recorrido.</p><p>Una pista tiene una superficie rosa salmón con bordes rojos y grandes obstáculos en forma de setas color crema. La valla de madera y los árboles rodean esta superficie de colores, sobre la que destacan la bola y el palo. El juego combina pequeños decorados con la vegetación del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Quinze pistes à obstacles dans les arbres</h2><p>Le Mini-golf de Pokeyland réunit quinze trous dans un cadre ombragé. Les joueurs utilisent les clubs mis à disposition pour faire progresser leur balle entre les obstacles et comparer leurs scores au fil du parcours.</p><p>Une des pistes possède un revêtement rose saumon bordé de rouge et de grands obstacles en forme de champignons crème. La clôture de bois et les arbres entourent cette surface colorée, où la balle et le club se détachent nettement. Le jeu associe ainsi de petits décors à la végétation du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Quindici piste a ostacoli tra gli alberi</h2><p>Il Mini-golf di Pokeyland riunisce quindici buche in un ambiente ombreggiato. I giocatori usano le mazze a disposizione per far avanzare la pallina tra gli ostacoli e confrontare i punteggi lungo il percorso.</p><p>Una pista ha una superficie rosa salmone bordata di rosso e grandi ostacoli a forma di funghi color crema. La recinzione di legno e gli alberi circondano questa superficie colorata, sulla quale pallina e mazza risaltano chiaramente. Il gioco unisce piccole decorazioni alla vegetazione del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vijftien hindernisbanen tussen de bomen</h2><p>De Mini-golf van Pokeyland telt vijftien holes in een schaduwrijke omgeving. Spelers gebruiken de beschikbare clubs om hun bal tussen de hindernissen door te spelen en tijdens de ronde hun scores te vergelijken.</p><p>Eén baan heeft een zalmroze ondergrond met rode randen en grote crèmekleurige paddenstoelen als hindernissen. Een houten hek en bomen omringen dit kleurrijke vlak, waarop de bal en club duidelijk afsteken. Kleine decorstukken gaan hier samen met het groen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Piętnaście torów z przeszkodami wśród drzew</h2><p>Mini-golf w Pokeyland obejmuje piętnaście dołków w zacienionym otoczeniu. Gracze korzystają z dostępnych kijów, aby prowadzić piłkę między przeszkodami i porównywać wyniki w trakcie rundy.</p><p>Jeden z torów ma łososioworóżową nawierzchnię z czerwonymi krawędziami oraz duże kremowe przeszkody w kształcie grzybów. Drewniane ogrodzenie i drzewa otaczają kolorową powierzchnię, na której wyraźnie widać piłkę i kij. Gra łączy drobne dekoracje z roślinnością parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Quinze pistas com obstáculos entre as árvores</h2><p>O Mini-golf de Pokeyland reúne quinze buracos num ambiente com sombra. Os jogadores usam os tacos disponíveis para fazer avançar a bola entre os obstáculos e comparar as pontuações ao longo do percurso.</p><p>Uma pista tem uma superfície rosa-salmão com bordas vermelhas e grandes obstáculos em forma de cogumelos de cor creme. A vedação de madeira e as árvores rodeiam esta superfície colorida, onde a bola e o taco se destacam. O jogo combina pequenas decorações com a vegetação do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "776a9555-8156-4199-980f-e07ccbd44a31",
+        "entityKey": "pokeyland-mono-rail",
+        "displayName": "Mono-Rail",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Im Hubschrauber über den Park radeln</h2><p>Beim Mono-Rail bewegen sich die Fahrgäste mit Pedalkraft in hubschrauberförmigen Gondeln vorwärts. Die erhöhte Strecke ermöglicht einen Blick von oben auf die Landschaft, während man im kleinen Fluggerät sitzen bleibt.</p><p>Eine weiße Karosserie, dunkle Cockpitöffnungen und ein schwarzer Zierrotor prägen die Form des Hubschraubers. Äste und Laub säumen den Weg der Gondeln. Die Bäume stehen auf dieser erhöhten Fahrt entlang einer festen Strecke ganz in der Nähe.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Pedalling a helicopter above the park</h2><p>Mono-Rail passengers move under pedal power in helicopter-shaped gondolas. The elevated route lets them view the landscape from above while remaining seated in the small aircraft.</p><p>A white body, dark cockpit openings and a decorative black rotor give the helicopter its outline. Branches and foliage border the gondolas’ route, bringing the trees close to this aerial ride along a fixed course.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Pedalear en un helicóptero sobre el parque</h2><p>Los pasajeros del Mono-Rail avanzan a pedales en góndolas con forma de helicóptero. El recorrido elevado permite observar el paisaje desde arriba sin abandonar el pequeño aparato.</p><p>La carrocería blanca, las aberturas oscuras de la cabina y el rotor negro decorativo definen la silueta del helicóptero. Las ramas y el follaje bordean el paso de las góndolas. La cercanía de los árboles acompaña este paseo aéreo por una ruta fija.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Pédaler dans un hélicoptère au-dessus du parc</h2><p>Le Mono-Rail fait avancer ses passagers à la force des pédales, dans des nacelles en forme d’hélicoptère. Le parcours surélevé permet de regarder le paysage depuis les airs tout en restant installé dans le petit appareil.</p><p>La carrosserie blanche, les ouvertures sombres du cockpit et le rotor noir décoratif donnent sa silhouette à l’hélicoptère. Les branches et le feuillage bordent le passage des nacelles : cette proximité des arbres accompagne la promenade aérienne.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Pedalare in elicottero sopra il parco</h2><p>I passeggeri del Mono-Rail avanzano a pedali in gondole a forma di elicottero. Il percorso sopraelevato consente di osservare il paesaggio dall’alto restando seduti nel piccolo apparecchio.</p><p>La carrozzeria bianca, le aperture scure dell’abitacolo e il rotore nero decorativo delineano la sagoma dell’elicottero. Rami e foglie costeggiano il passaggio delle gondole. La vicinanza degli alberi accompagna questa passeggiata aerea su un percorso fisso.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>In een helikopter boven het park fietsen</h2><p>Passagiers van de Mono-Rail bewegen met trapkracht voort in helikoptervormige gondels. Vanaf de verhoogde route bekijken ze het landschap van boven, terwijl ze in het kleine toestel blijven zitten.</p><p>Een witte carrosserie, donkere cockpitopeningen en een zwarte sierrotor bepalen het silhouet van de helikopter. Takken en bladeren omzomen de route van de gondels. De bomen staan dichtbij tijdens deze tocht door de lucht langs een vaste baan.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pedałowanie w helikopterze nad parkiem</h2><p>Pasażerowie Mono-Rail napędzają pedałami gondole w kształcie helikopterów. Podwyższona trasa pozwala oglądać krajobraz z góry, pozostając na miejscu w niewielkim pojeździe.</p><p>Biała karoseria, ciemne otwory kabiny i czarny ozdobny wirnik tworzą sylwetkę helikoptera. Gałęzie i liście otaczają trasę gondoli. Bliskość drzew towarzyszy tej powietrznej przejażdżce po stałym torze.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Pedalar num helicóptero sobre o parque</h2><p>Os passageiros do Mono-Rail avançam a pedais em gôndolas com forma de helicóptero. O percurso elevado permite observar a paisagem de cima, mantendo-se sentados no pequeno aparelho.</p><p>A carroçaria branca, as aberturas escuras do cockpit e o rotor preto decorativo definem a silhueta do helicóptero. Ramos e folhagem acompanham a passagem das gôndolas. As árvores ficam próximas durante este passeio aéreo num trajeto fixo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+        "entityKey": "pokeyland-parcours-pieds-nus",
+        "displayName": "Parcours pieds nus",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Unterschiedliche Oberflächen unter den Füßen</h2><p>Der Parcours pieds nus lädt dazu ein, die Schuhe auszuziehen und die Materialien des Weges unmittelbar zu spüren. Im Mittelpunkt steht der Kontakt mit den Fußsohlen beim Überqueren aufeinanderfolgender Flächen in begrünter Umgebung.</p><p>Rundhölzer trennen unter anderem Streifen aus kleinen grauen und weißen Steinen, gefolgt von einer sandigen Fläche. Gras säumt die länglichen Abschnitte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Textures to discover underfoot</h2><p>Parcours pieds nus invites visitors to remove their shoes and feel the path’s materials directly. The experience centres on contact with the soles of the feet as walkers cross a succession of surfaces in a planted setting.</p><p>Logs separate strips of small grey and white stones, followed by a sandy surface. Grass borders these elongated compartments.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Texturas para descubrir bajo los pies</h2><p>Parcours pieds nus invita a quitarse los zapatos para sentir directamente los materiales del camino. La experiencia se basa en el contacto con las plantas de los pies al cruzar superficies sucesivas en un entorno vegetal.</p><p>Troncos separan franjas de pequeñas piedras grises y blancas, seguidas de una superficie arenosa. La hierba bordea estos compartimentos alargados.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des textures à découvrir sous les pieds</h2><p>Le Parcours pieds nus invite à enlever ses chaussures pour éprouver directement les matériaux du chemin. La découverte passe par le contact avec les plantes des pieds, au fil de surfaces successives aménagées dans un cadre végétal.</p><p>Des rondins séparent notamment des bandes de petits cailloux gris et blancs, puis une surface sableuse. L’herbe borde ces compartiments allongés.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Texture da scoprire sotto i piedi</h2><p>Il Parcours pieds nus invita a togliersi le scarpe per sentire direttamente i materiali del sentiero. L’esperienza passa attraverso il contatto con le piante dei piedi, lungo superfici successive inserite in un ambiente vegetale.</p><p>Tronchi separano fasce di piccoli sassi grigi e bianchi, seguite da una superficie sabbiosa. L’erba delimita questi scomparti allungati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Verschillende structuren onder de voeten</h2><p>Parcours pieds nus nodigt bezoekers uit om hun schoenen uit te trekken en de materialen van het pad rechtstreeks te voelen. Het contact met de voetzolen staat centraal bij het oversteken van opeenvolgende ondergronden in het groen.</p><p>Boomstammetjes scheiden stroken kleine grijze en witte stenen, gevolgd door een zanderig oppervlak. Gras omzoomt deze langgerekte vakken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Faktury poznawane bosymi stopami</h2><p>Parcours pieds nus zachęca do zdjęcia butów i bezpośredniego poznawania materiałów ścieżki. Doświadczenie opiera się na kontakcie podeszew stóp z kolejnymi powierzchniami urządzonymi wśród roślinności.</p><p>Okrągłe belki rozdzielają pasy drobnych szarych i białych kamieni, za którymi znajduje się piaszczysta nawierzchnia. Trawa otacza te podłużne części.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Texturas para descobrir debaixo dos pés</h2><p>O Parcours pieds nus convida a descalçar os sapatos para sentir diretamente os materiais do caminho. A experiência passa pelo contacto com as plantas dos pés ao longo de superfícies sucessivas num ambiente vegetal.</p><p>Troncos separam faixas de pequenas pedras cinzentas e brancas, seguidas de uma superfície arenosa. A relva ladeia estes compartimentos alongados.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+        "entityKey": "pokeyland-poney",
+        "displayName": "Poney",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mit Ponys durch den Wald</h2><p>Die Aktivität Poney bietet einen Einstieg in das Reiten im Freien auf einer eigenen Strecke durch den Wald von Pokeyland. Das Kind sitzt auf einem echten Tier und wird während des Ausritts zu Fuß begleitet.</p><p>Der Erdweg führt zwischen Holzzäunen und Vegetation hindurch. Das Pony, der junge Reiter mit Helm und die begleitenden Personen teilen sich den schattigen Weg. Diese Begegnung mit Tieren ist ein eigenes Angebot neben den mechanischen Pferden von Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A woodland walk with ponies</h2><p>The Poney activity introduces outdoor horse riding on a dedicated route through Pokeyland’s forest. The child rides a live animal, accompanied by people on foot during the outing.</p><p>The earthen path runs between wooden fences and vegetation. The pony, its young helmeted rider and the people walking alongside share the shaded lane. This encounter with animals is a separate activity from the mechanical horses of Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un paseo con ponis por el bosque</h2><p>La actividad Poney permite descubrir la equitación al aire libre en un recorrido reservado por el bosque de Pokeyland. El niño monta un animal vivo, acompañado a pie durante el paseo.</p><p>El sendero de tierra discurre entre vallas de madera y vegetación. El poni, el joven jinete con casco y las personas que caminan a su lado comparten este camino sombreado. El encuentro con los animales constituye una actividad distinta de los caballos mecánicos de Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une promenade avec les poneys dans la forêt</h2><p>L’activité Poney permet une découverte de l’équitation en extérieur sur un parcours réservé dans la forêt de Pokeyland. L’enfant monte un véritable animal, accompagné à pied pendant la promenade.</p><p>Le sentier de terre passe entre des barrières en bois et la végétation. Le poney, le jeune cavalier casqué et les personnes qui marchent à ses côtés partagent cette allée ombragée. Cette rencontre avec les animaux constitue une offre distincte des chevaux mécaniques des P’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una passeggiata con i pony nel bosco</h2><p>L’attività Poney permette di avvicinarsi all’equitazione all’aperto su un percorso riservato nel bosco di Pokeyland. Il bambino monta un animale vivo, accompagnato a piedi durante la passeggiata.</p><p>Il sentiero di terra passa tra recinzioni di legno e vegetazione. Il pony, il giovane cavaliere con il casco e le persone che camminano al suo fianco condividono il viale ombreggiato. Questo incontro con gli animali è distinto dai cavalli meccanici di Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een wandeling met pony’s door het bos</h2><p>Bij Poney maken kinderen kennis met buiten rijden op een eigen route door het bos van Pokeyland. Het kind rijdt op een levend dier en wordt tijdens het uitstapje te voet begeleid.</p><p>Het aarden pad loopt tussen houten hekken en begroeiing. De pony, de jonge ruiter met helm en de begeleiders delen deze schaduwrijke laan. Deze ontmoeting met dieren is een afzonderlijk aanbod naast de mechanische paarden van Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Spacer z kucykami przez las</h2><p>Atrakcja Poney pozwala poznać jazdę konną na świeżym powietrzu, na wydzielonej trasie w lesie Pokeyland. Dziecko dosiada żywego zwierzęcia i podczas przejażdżki towarzyszą mu piesi opiekunowie.</p><p>Ziemna ścieżka prowadzi między drewnianymi ogrodzeniami a roślinnością. Kucyk, młody jeździec w kasku i osoby idące obok dzielą zacienioną alejkę. To spotkanie ze zwierzętami stanowi odrębną ofertę od mechanicznych koni Les p’tits chevaux.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um passeio com póneis pela floresta</h2><p>A atividade Poney permite descobrir a equitação ao ar livre num percurso reservado na floresta de Pokeyland. A criança monta um animal vivo, acompanhada a pé durante o passeio.</p><p>O caminho de terra passa entre vedações de madeira e vegetação. O pónei, o jovem cavaleiro de capacete e as pessoas que caminham ao lado partilham esta alameda com sombra. Este encontro com os animais constitui uma atividade distinta dos cavalos mecânicos de Les p’tits chevaux.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Four private existing items; 32 texts personally written and reviewed against official pages and exact original photos. Mini-golf 15 holes, pedal-powered Mono-Rail, barefoot material strips and live pony forest route. No free park entry claim, opening dates or unsupported mechanics. Short-source depth gaps retained; existing visibility and attributes preserved.",
+    "wordCounts": {
+      "Mini-golf": {
+        "fr": 94,
+        "en": 77,
+        "de": 75,
+        "es": 91,
+        "it": 86,
+        "nl": 80,
+        "pl": 68,
+        "pt": 88
+      },
+      "Mono-Rail": {
+        "fr": 80,
+        "en": 67,
+        "de": 73,
+        "es": 77,
+        "it": 69,
+        "nl": 74,
+        "pl": 53,
+        "pt": 70
+      },
+      "Parcours pieds nus": {
+        "fr": 65,
+        "en": 60,
+        "de": 59,
+        "es": 62,
+        "it": 59,
+        "nl": 60,
+        "pl": 49,
+        "pt": 60
+      },
+      "Poney": {
+        "fr": 83,
+        "en": 73,
+        "de": 80,
+        "es": 85,
+        "it": 79,
+        "nl": 78,
+        "pl": 64,
+        "pt": 81
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

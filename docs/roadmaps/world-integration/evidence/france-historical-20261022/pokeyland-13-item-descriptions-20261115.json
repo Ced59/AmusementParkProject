@@ -1,0 +1,849 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-13-item-descriptions",
+        "step": "04-items",
+        "notes": "Five private existing items; 40 texts personally written and reviewed against current official pages and exact original photographs. Electric steering-wheel karts, taught archery, eight elastic trampolines, 80-metre tubing and linked net cabins. Access-rule contradictions retained separately; no false free park entry or manufactured opening date. Short-source depth gaps retained. Existing IDs, statuses and visibility preserved."
+      },
+      "items": [
+        {
+          "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+          "key": "pokeyland-quad-kids",
+          "name": "Kid’s Racer",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des karts électriques sur un circuit dédié</h2><p>Kid’s Racer met les enfants au volant de petits karts électriques, avec la possibilité pour un adulte de prendre place comme accompagnateur. La conduite se déroule sur un circuit aménagé pour ces véhicules, au milieu de la végétation de Pokeyland.</p><p>Les carrosseries orange, noires et blanches entourent une assise basse et un volant. Des protections noires bordent la chaussée, tandis que le pilote casqué reste visible dans son véhicule ouvert. Ces karts carénés se distinguent des quads à guidon présents dans les documents plus anciens du parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Electric karts on a dedicated circuit</h2><p>Kid’s Racer puts children behind the wheel of small electric karts, with the option of an adult riding along. Driving takes place on a circuit prepared for these vehicles amid Pokeyland’s vegetation.</p><p>Orange, black and white bodywork surrounds a low seat and steering wheel. Black barriers line the roadway, while the helmeted driver remains visible in the open vehicle. These enclosed-body karts differ from the handlebar-controlled quads shown in older park documents.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Elektrokarts auf einer eigenen Strecke</h2><p>Bei Kid’s Racer sitzen Kinder am Steuer kleiner Elektrokarts; ein Erwachsener kann sie im Fahrzeug begleiten. Gefahren wird auf einer für diese Fahrzeuge angelegten Strecke inmitten der Vegetation von Pokeyland.</p><p>Orangefarbene, schwarze und weiße Karosserieteile umgeben einen niedrigen Sitz und ein Lenkrad. Schwarze Schutzbarrieren säumen die Fahrbahn, während der Fahrer mit Helm im offenen Fahrzeug sichtbar bleibt. Diese Karts mit Karosserie unterscheiden sich von den Quads mit Motorradlenker in älteren Parkunterlagen.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Karts eléctricos en un circuito propio</h2><p>Kid’s Racer pone a los niños al volante de pequeños karts eléctricos, con la posibilidad de que un adulto suba como acompañante. La conducción se realiza en un circuito preparado para estos vehículos, entre la vegetación de Pokeyland.</p><p>Las carrocerías naranjas, negras y blancas rodean un asiento bajo y un volante. Barreras negras delimitan la calzada, mientras el conductor con casco permanece visible en su vehículo abierto. Estos karts con carrocería se distinguen de los quads con manillar de los documentos más antiguos del parque.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Kart elettrici su un circuito dedicato</h2><p>Kid’s Racer mette i bambini al volante di piccoli kart elettrici, con la possibilità per un adulto di salire come accompagnatore. La guida si svolge su un circuito predisposto per questi veicoli, tra la vegetazione di Pokeyland.</p><p>Le carrozzerie arancioni, nere e bianche circondano un sedile basso e un volante. Barriere nere delimitano la carreggiata, mentre il pilota con il casco rimane visibile nel veicolo aperto. Questi kart carenati sono distinti dai quad con manubrio presenti nei documenti più vecchi del parco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Elektrische karts op een eigen circuit</h2><p>Bij Kid’s Racer nemen kinderen het stuur van kleine elektrische karts in handen. Een volwassene kan als begeleider meerijden. De rit vindt plaats op een speciaal aangelegd circuit tussen het groen van Pokeyland.</p><p>Oranje, zwarte en witte carrosseriedelen omringen een lage zitplaats en een stuurwiel. Zwarte beschermranden begrenzen het wegdek; de bestuurder met helm blijft zichtbaar in het open voertuig. Deze karts met carrosserie verschillen van de quads met motorstuur in oudere parkdocumenten.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Elektryczne gokarty na wydzielonym torze</h2><p>Kid’s Racer pozwala dzieciom prowadzić małe elektryczne gokarty, z możliwością przejazdu dorosłego opiekuna. Jazda odbywa się na torze przygotowanym dla tych pojazdów, wśród roślinności Pokeyland.</p><p>Pomarańczowe, czarne i białe nadwozia otaczają niskie siedzenie i kierownicę. Czarne bariery wyznaczają krawędzie nawierzchni, a kierowca w kasku pozostaje widoczny w otwartym pojeździe. Te gokarty z nadwoziem różnią się od quadów z kierownicą motocyklową przedstawianych w starszych materiałach parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Karts elétricos num circuito dedicado</h2><p>Kid’s Racer coloca as crianças ao volante de pequenos karts elétricos, com a possibilidade de um adulto viajar como acompanhante. A condução decorre num circuito preparado para estes veículos, entre a vegetação de Pokeyland.</p><p>As carroçarias laranja, pretas e brancas rodeiam um assento baixo e um volante. Barreiras pretas delimitam a via, enquanto o condutor de capacete permanece visível no veículo aberto. Estes karts com carroçaria distinguem-se dos quads com guiador presentes nos documentos mais antigos do parque.</p>"
+            }
+          ]
+        },
+        {
+          "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+          "key": "pokeyland-tir-a-larc",
+          "name": "Tir à l’arc",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Viser le centre des cibles</h2><p>Le Tir à l’arc de Pokeyland est une activité d’initiation encadrée par les animateurs du parc. L’apprentissage du maniement de l’arc et de la flèche précède la recherche du meilleur score. Le matériel proposé s’adapte à différents gabarits et niveaux de pratique.</p><p>Les cibles sur pied présentent des cercles concentriques blancs, noirs, bleus, rouges et jaunes. Des panneaux de bois et des filets délimitent l’espace de tir, ouvert sur la végétation. Ces repères colorés donnent un objectif précis au geste du joueur.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Aiming at the centre of the targets</h2><p>Pokeyland’s Tir à l’arc is an introductory archery activity led by park instructors. Learning to handle the bow and arrow comes before trying to achieve the best score. The equipment provided accommodates different sizes and experience levels.</p><p>The freestanding targets display concentric white, black, blue, red and yellow circles. Wooden panels and netting define the shooting area, which opens onto the vegetation. These coloured markings give the player a precise point to aim for.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Auf die Mitte der Zielscheiben zielen</h2><p>Tir à l’arc in Pokeyland bietet einen Einstieg ins Bogenschießen unter Anleitung der Parkbetreuer. Zunächst wird der Umgang mit Pfeil und Bogen erlernt, bevor es um eine möglichst hohe Punktzahl geht. Die bereitgestellte Ausrüstung eignet sich für unterschiedliche Körpergrößen und Erfahrungsstufen.</p><p>Die aufgestellten Zielscheiben zeigen konzentrische weiße, schwarze, blaue, rote und gelbe Kreise. Holztafeln und Netze begrenzen den zur Vegetation hin offenen Schießbereich. Die farbigen Markierungen geben der Bewegung des Schützen ein genaues Ziel.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Apuntar al centro de las dianas</h2><p>Tir à l’arc de Pokeyland es una actividad de iniciación al tiro con arco dirigida por los monitores del parque. El aprendizaje del manejo del arco y la flecha precede a la búsqueda de la mejor puntuación. El material disponible se adapta a distintas tallas y niveles de práctica.</p><p>Las dianas sobre soportes presentan círculos concéntricos blancos, negros, azules, rojos y amarillos. Paneles de madera y redes delimitan el espacio de tiro, abierto hacia la vegetación. Estas marcas de colores dan un objetivo preciso al gesto del jugador.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Mirare al centro dei bersagli</h2><p>Tir à l’arc di Pokeyland è un’attività introduttiva al tiro con l’arco seguita dagli animatori del parco. L’apprendimento dell’uso di arco e freccia precede la ricerca del miglior punteggio. Il materiale disponibile si adatta a diverse corporature e livelli di esperienza.</p><p>I bersagli su supporti presentano cerchi concentrici bianchi, neri, blu, rossi e gialli. Pannelli di legno e reti delimitano lo spazio di tiro, aperto verso la vegetazione. Questi riferimenti colorati danno un obiettivo preciso al gesto del giocatore.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Mikken op het midden van de doelen</h2><p>Tir à l’arc van Pokeyland is een kennismaking met boogschieten onder begeleiding van parkmedewerkers. Eerst leren deelnemers omgaan met pijl en boog; daarna proberen ze een zo hoog mogelijke score te halen. Het materiaal is geschikt voor verschillende lichaamsgroottes en ervaringsniveaus.</p><p>De doelen op standaards hebben concentrische witte, zwarte, blauwe, rode en gele ringen. Houten panelen en netten begrenzen het schietterrein, dat op het groen uitkijkt. De gekleurde markeringen geven de beweging van de speler een precies mikpunt.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Celowanie w środek tarczy</h2><p>Tir à l’arc w Pokeyland wprowadza w łucznictwo pod opieką instruktorów parku. Nauka posługiwania się łukiem i strzałą poprzedza próby uzyskania najlepszego wyniku. Udostępniany sprzęt dostosowano do różnych warunków fizycznych i poziomów doświadczenia.</p><p>Tarcze na stojakach mają koncentryczne białe, czarne, niebieskie, czerwone i żółte kręgi. Drewniane panele i siatki wyznaczają przestrzeń strzelecką, otwartą w stronę roślinności. Kolorowe oznaczenia dają graczowi konkretny punkt, w który może celować.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Apontar ao centro dos alvos</h2><p>Tir à l’arc de Pokeyland é uma atividade de iniciação ao tiro com arco orientada pelos monitores do parque. A aprendizagem do uso do arco e da flecha precede a procura da melhor pontuação. O material disponível adapta-se a diferentes estaturas e níveis de experiência.</p><p>Os alvos em suportes apresentam círculos concêntricos brancos, pretos, azuis, vermelhos e amarelos. Painéis de madeira e redes delimitam o espaço de tiro, aberto para a vegetação. Estas marcas coloridas dão um objetivo preciso ao gesto do jogador.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+          "key": "pokeyland-trampoline",
+          "name": "Trampoline",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Sauter avec des élastiques</h2><p>L’espace Trampoline de Pokeyland rassemble huit trampolines. Le participant porte un harnais relié à des élastiques, qui accompagnent ses bonds. Cette installation place le mouvement vertical au centre du jeu, dans le cadre boisé du parc.</p><p>Les cordons orange et les protections jaunes ressortent sur le fond des arbres. Le harnais noir entoure le corps du sauteur, tandis que les attaches restent visibles de part et d’autre. Les couleurs de l’équipement forment ainsi le principal repère visuel de cette activité.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Jumping with elastic cords</h2><p>Pokeyland’s Trampoline area contains eight trampolines. Participants wear a harness connected to elastic cords that accompany their jumps. The installation centres the activity on vertical movement within the park’s wooded surroundings.</p><p>Orange cords and yellow padding stand out against the trees. A black harness surrounds the jumper’s body, with the attachments visible on either side. The equipment’s colours provide the activity’s main visual markers.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Springen mit elastischen Seilen</h2><p>Der Bereich Trampoline in Pokeyland umfasst acht Trampoline. Die Teilnehmer tragen einen Gurt, der mit elastischen Seilen verbunden ist und ihre Sprünge begleitet. In der bewaldeten Umgebung des Parks steht hier die Bewegung nach oben und unten im Mittelpunkt.</p><p>Orangefarbene Seile und gelbe Polster heben sich von den Bäumen ab. Ein schwarzer Gurt umschließt den Körper des Springers; die Befestigungen bleiben auf beiden Seiten sichtbar. Die Farben der Ausrüstung prägen das Erscheinungsbild dieser Aktivität.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Saltar con cuerdas elásticas</h2><p>El espacio Trampoline de Pokeyland reúne ocho camas elásticas. El participante lleva un arnés unido a cuerdas elásticas que acompañan sus saltos. La instalación centra la actividad en el movimiento vertical, dentro del entorno arbolado del parque.</p><p>Las cuerdas naranjas y las protecciones amarillas destacan sobre el fondo de árboles. Un arnés negro rodea el cuerpo del saltador y las sujeciones permanecen visibles a ambos lados. Los colores del equipo constituyen los principales rasgos visuales de esta actividad.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Saltare con le corde elastiche</h2><p>L’area Trampoline di Pokeyland riunisce otto trampolini. Il partecipante indossa un’imbracatura collegata a corde elastiche che accompagnano i suoi salti. L’installazione pone il movimento verticale al centro del gioco, nell’ambiente boschivo del parco.</p><p>Le corde arancioni e le protezioni gialle risaltano sullo sfondo degli alberi. L’imbracatura nera circonda il corpo di chi salta, con gli attacchi visibili ai due lati. I colori dell’attrezzatura costituiscono i principali riferimenti visivi dell’attività.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Springen met elastische koorden</h2><p>De zone Trampoline van Pokeyland telt acht trampolines. De deelnemer draagt een harnas dat verbonden is met elastische koorden die de sprongen begeleiden. De verticale beweging staat centraal in deze activiteit, in de bosrijke omgeving van het park.</p><p>Oranje koorden en gele beschermkussens steken af tegen de bomen. Een zwart harnas omsluit het lichaam van de springer; de bevestigingen blijven aan beide kanten zichtbaar. De kleuren van de uitrusting bepalen zo het uiterlijk van deze activiteit.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Skoki z elastycznymi linami</h2><p>Strefa Trampoline w Pokeyland obejmuje osiem trampolin. Uczestnik zakłada uprząż połączoną z elastycznymi linami, które towarzyszą jego skokom. Ta instalacja stawia ruch pionowy w centrum zabawy, w leśnym otoczeniu parku.</p><p>Pomarańczowe liny i żółte osłony wyróżniają się na tle drzew. Czarna uprząż otacza ciało skaczącej osoby, a mocowania pozostają widoczne po obu stronach. Kolory wyposażenia stanowią główne rozpoznawalne elementy tej atrakcji.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Saltar com cordas elásticas</h2><p>O espaço Trampoline de Pokeyland reúne oito trampolins. O participante usa um arnês ligado a cordas elásticas que acompanham os seus saltos. A instalação coloca o movimento vertical no centro da atividade, no ambiente arborizado do parque.</p><p>As cordas laranja e as proteções amarelas destacam-se no fundo de árvores. O arnês preto envolve o corpo de quem salta, com as ligações visíveis dos dois lados. As cores do equipamento constituem os principais elementos visuais desta atividade.</p>"
+            }
+          ]
+        },
+        {
+          "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+          "key": "pokeyland-tubing",
+          "name": "Tubing",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une descente en bouée sur une piste verte</h2><p>Le Tubing de Pokeyland propose de glisser assis dans une grande bouée sur une piste de quatre-vingts mètres. Un tapis permet ensuite la remontée dans l’espace de jeu. La descente suit un revêtement aménagé, dans le cadre végétal du parc.</p><p>La surface verte est bordée d’éléments orange. Les bouées portent notamment des motifs de camouflage orange et vert, une poignée et le nom de Pokeyland. Leur forme ronde et leur fond jaune restent bien visibles lorsque l’engin se trouve sur la piste.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A tube ride down a green slope</h2><p>Pokeyland’s Tubing sends riders downhill seated in a large tube on an eighty-metre run. A conveyor then provides the uphill return within the play area. The descent follows a prepared surface amid the park’s vegetation.</p><p>Orange elements border the green surface. The tubes include orange and green camouflage patterns, a handle and the Pokeyland name. Their round shape and yellow base remain clearly visible when the tube is on the slope.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Reifenfahrt auf grüner Bahn</h2><p>Beim Tubing in Pokeyland gleiten die Besucher in einem großen Reifen eine achtzig Meter lange Bahn hinunter. Ein Förderband ermöglicht anschließend den Weg zurück nach oben innerhalb des Spielbereichs. Die Abfahrt folgt einem angelegten Belag inmitten der Parkvegetation.</p><p>Orangefarbene Elemente begrenzen die grüne Fläche. Die Reifen tragen unter anderem orange-grüne Tarnmuster, einen Griff und den Namen Pokeyland. Ihre runde Form und der gelbe Boden sind auf der Bahn gut zu erkennen.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un descenso en flotador por una pista verde</h2><p>El Tubing de Pokeyland propone deslizarse sentado en un gran flotador por una pista de ochenta metros. Una cinta permite después volver a subir dentro del espacio de juego. El descenso sigue una superficie preparada, entre la vegetación del parque.</p><p>Elementos naranjas bordean la superficie verde. Los flotadores llevan, entre otros detalles, dibujos de camuflaje naranja y verde, un asa y el nombre de Pokeyland. Su forma redonda y su base amarilla se distinguen bien cuando están sobre la pista.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una discesa in ciambella su una pista verde</h2><p>Il Tubing di Pokeyland propone di scivolare seduti in una grande ciambella su una pista di ottanta metri. Un tappeto permette poi la risalita all’interno dell’area giochi. La discesa segue una superficie predisposta, tra la vegetazione del parco.</p><p>Elementi arancioni delimitano la superficie verde. Le ciambelle presentano, fra gli altri dettagli, motivi mimetici arancioni e verdi, una maniglia e il nome Pokeyland. La forma rotonda e il fondo giallo restano ben visibili quando si trovano sulla pista.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Op een band van een groene helling</h2><p>Bij Tubing in Pokeyland glijden bezoekers zittend in een grote band over een tachtig meter lange baan naar beneden. Een transportband brengt hen vervolgens weer omhoog binnen het speelterrein. De afdaling verloopt over een aangelegde ondergrond tussen het groen van het park.</p><p>Oranje elementen begrenzen het groene oppervlak. De banden hebben onder meer oranje-groene camouflagepatronen, een handgreep en de naam Pokeyland. Hun ronde vorm en gele bodem zijn op de helling duidelijk zichtbaar.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Zjazd na oponie po zielonym torze</h2><p>Tubing w Pokeyland pozwala zjeżdżać na dużej oponie po osiemdziesięciometrowym torze. Przenośnik umożliwia następnie powrót pod górę w obrębie strefy zabawy. Zjazd prowadzi po przygotowanej nawierzchni wśród roślinności parku.</p><p>Pomarańczowe elementy wyznaczają krawędzie zielonej powierzchni. Opony mają między innymi pomarańczowo-zielony wzór maskujący, uchwyt i nazwę Pokeyland. Ich okrągły kształt i żółty spód są dobrze widoczne na torze.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma descida em boia numa pista verde</h2><p>O Tubing de Pokeyland propõe deslizar sentado numa grande boia por uma pista de oitenta metros. Um tapete permite depois regressar à parte de cima do espaço de jogos. A descida segue uma superfície preparada, entre a vegetação do parque.</p><p>Elementos laranja delimitam a superfície verde. As boias apresentam, entre outros detalhes, padrões de camuflagem laranja e verde, uma pega e o nome Pokeyland. A forma redonda e o fundo amarelo mantêm-se bem visíveis quando se encontram na pista.</p>"
+            }
+          ]
+        },
+        {
+          "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+          "key": "pokeyland-cabanes",
+          "name": "Cabanes de Pokey",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Passer de cabane en cabane dans les arbres</h2><p>Les Cabanes de Pokey réunissent un grand espace de filets suspendus et des cabanes accessibles par des ponts de singe. Les enfants évoluent en hauteur au milieu des arbres, avec la possibilité d’être accompagnés par un adulte.</p><p>Les passages sont entourés de filets qui forment aussi les côtés des ponts. Les mailles laissent apparaître les branches et le feuillage tout autour du joueur. Ce parcours relie des espaces de jeu dans les arbres, avec une progression de cabane en cabane au-dessus du sol.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Moving between cabins in the trees</h2><p>Cabanes de Pokey combines a large area of suspended netting with cabins reached by rope bridges. Children play above ground among the trees, with the option of an adult accompanying them.</p><p>Netting surrounds the passages and forms the sides of the bridges. Its mesh leaves branches and foliage visible all around the player. The route links play spaces in the trees, progressing from cabin to cabin above the ground.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Von Hütte zu Hütte zwischen den Bäumen</h2><p>Cabanes de Pokey verbindet eine große Fläche aus aufgehängten Netzen mit Hütten, die über Seilbrücken erreichbar sind. Kinder spielen erhöht zwischen den Bäumen und können von einem Erwachsenen begleitet werden.</p><p>Netze umgeben die Durchgänge und bilden zugleich die Seiten der Brücken. Durch die Maschen bleiben Äste und Laub rund um die Spieler sichtbar. Der Parcours verbindet Spielräume in den Bäumen und führt über dem Boden von Hütte zu Hütte.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Pasar de cabaña en cabaña entre los árboles</h2><p>Cabanes de Pokey reúne un gran espacio de redes suspendidas y cabañas a las que se llega por puentes de cuerda. Los niños juegan en altura entre los árboles, con la posibilidad de estar acompañados por un adulto.</p><p>Las redes rodean los pasos y forman también los laterales de los puentes. A través de las mallas se ven las ramas y el follaje alrededor del jugador. El recorrido conecta espacios de juego entre los árboles, avanzando de cabaña en cabaña sobre el suelo.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Passare da una capanna all’altra tra gli alberi</h2><p>Cabanes de Pokey riunisce un grande spazio di reti sospese e capanne raggiungibili tramite ponti di corde. I bambini giocano in altezza tra gli alberi, con la possibilità di essere accompagnati da un adulto.</p><p>Le reti circondano i passaggi e formano anche i lati dei ponti. Attraverso le maglie restano visibili rami e foglie tutt’attorno a chi gioca. Il percorso collega spazi di gioco negli alberi, procedendo da una capanna all’altra sopra il terreno.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Van hut naar hut tussen de bomen</h2><p>Cabanes de Pokey combineert een groot oppervlak van hangende netten met hutten die via touwbruggen bereikbaar zijn. Kinderen spelen boven de grond tussen de bomen en kunnen door een volwassene worden begeleid.</p><p>Netten omringen de doorgangen en vormen ook de zijkanten van de bruggen. Door de mazen blijven takken en bladeren rondom de speler zichtbaar. De route verbindt speelplekken in de bomen en voert boven de grond van hut naar hut.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Z chatki do chatki wśród drzew</h2><p>Cabanes de Pokey łączy rozległą przestrzeń zawieszonych siatek z chatkami dostępnymi przez mosty linowe. Dzieci bawią się na wysokości wśród drzew, z możliwością towarzyszenia im przez dorosłego.</p><p>Siatki otaczają przejścia i tworzą również boki mostów. Przez oczka widać gałęzie i liście wokół uczestnika. Trasa łączy miejsca zabawy na drzewach, prowadząc z chatki do chatki ponad ziemią.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Passar de cabana em cabana entre as árvores</h2><p>Cabanes de Pokey reúne uma grande área de redes suspensas e cabanas acessíveis por pontes de cordas. As crianças brincam em altura entre as árvores, com a possibilidade de serem acompanhadas por um adulto.</p><p>As redes envolvem as passagens e formam também as laterais das pontes. Pelas malhas veem-se os ramos e a folhagem em redor de quem brinca. O percurso liga espaços de jogo nas árvores, avançando de cabana em cabana acima do solo.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "88f0ebae-37ac-4ef5-9eb6-a12fb6df2dc5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:59:20.4673176Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "entityKey": "pokeyland-quad-kids",
+        "displayName": "Kid’s Racer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Elektrokarts auf einer eigenen Strecke</h2><p>Bei Kid’s Racer sitzen Kinder am Steuer kleiner Elektrokarts; ein Erwachsener kann sie im Fahrzeug begleiten. Gefahren wird auf einer für diese Fahrzeuge angelegten Strecke inmitten der Vegetation von Pokeyland.</p><p>Orangefarbene, schwarze und weiße Karosserieteile umgeben einen niedrigen Sitz und ein Lenkrad. Schwarze Schutzbarrieren säumen die Fahrbahn, während der Fahrer mit Helm im offenen Fahrzeug sichtbar bleibt. Diese Karts mit Karosserie unterscheiden sich von den Quads mit Motorradlenker in älteren Parkunterlagen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Electric karts on a dedicated circuit</h2><p>Kid’s Racer puts children behind the wheel of small electric karts, with the option of an adult riding along. Driving takes place on a circuit prepared for these vehicles amid Pokeyland’s vegetation.</p><p>Orange, black and white bodywork surrounds a low seat and steering wheel. Black barriers line the roadway, while the helmeted driver remains visible in the open vehicle. These enclosed-body karts differ from the handlebar-controlled quads shown in older park documents.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Karts eléctricos en un circuito propio</h2><p>Kid’s Racer pone a los niños al volante de pequeños karts eléctricos, con la posibilidad de que un adulto suba como acompañante. La conducción se realiza en un circuito preparado para estos vehículos, entre la vegetación de Pokeyland.</p><p>Las carrocerías naranjas, negras y blancas rodean un asiento bajo y un volante. Barreras negras delimitan la calzada, mientras el conductor con casco permanece visible en su vehículo abierto. Estos karts con carrocería se distinguen de los quads con manillar de los documentos más antiguos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des karts électriques sur un circuit dédié</h2><p>Kid’s Racer met les enfants au volant de petits karts électriques, avec la possibilité pour un adulte de prendre place comme accompagnateur. La conduite se déroule sur un circuit aménagé pour ces véhicules, au milieu de la végétation de Pokeyland.</p><p>Les carrosseries orange, noires et blanches entourent une assise basse et un volant. Des protections noires bordent la chaussée, tandis que le pilote casqué reste visible dans son véhicule ouvert. Ces karts carénés se distinguent des quads à guidon présents dans les documents plus anciens du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Kart elettrici su un circuito dedicato</h2><p>Kid’s Racer mette i bambini al volante di piccoli kart elettrici, con la possibilità per un adulto di salire come accompagnatore. La guida si svolge su un circuito predisposto per questi veicoli, tra la vegetazione di Pokeyland.</p><p>Le carrozzerie arancioni, nere e bianche circondano un sedile basso e un volante. Barriere nere delimitano la carreggiata, mentre il pilota con il casco rimane visibile nel veicolo aperto. Questi kart carenati sono distinti dai quad con manubrio presenti nei documenti più vecchi del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Elektrische karts op een eigen circuit</h2><p>Bij Kid’s Racer nemen kinderen het stuur van kleine elektrische karts in handen. Een volwassene kan als begeleider meerijden. De rit vindt plaats op een speciaal aangelegd circuit tussen het groen van Pokeyland.</p><p>Oranje, zwarte en witte carrosseriedelen omringen een lage zitplaats en een stuurwiel. Zwarte beschermranden begrenzen het wegdek; de bestuurder met helm blijft zichtbaar in het open voertuig. Deze karts met carrosserie verschillen van de quads met motorstuur in oudere parkdocumenten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Elektryczne gokarty na wydzielonym torze</h2><p>Kid’s Racer pozwala dzieciom prowadzić małe elektryczne gokarty, z możliwością przejazdu dorosłego opiekuna. Jazda odbywa się na torze przygotowanym dla tych pojazdów, wśród roślinności Pokeyland.</p><p>Pomarańczowe, czarne i białe nadwozia otaczają niskie siedzenie i kierownicę. Czarne bariery wyznaczają krawędzie nawierzchni, a kierowca w kasku pozostaje widoczny w otwartym pojeździe. Te gokarty z nadwoziem różnią się od quadów z kierownicą motocyklową przedstawianych w starszych materiałach parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Karts elétricos num circuito dedicado</h2><p>Kid’s Racer coloca as crianças ao volante de pequenos karts elétricos, com a possibilidade de um adulto viajar como acompanhante. A condução decorre num circuito preparado para estes veículos, entre a vegetação de Pokeyland.</p><p>As carroçarias laranja, pretas e brancas rodeiam um assento baixo e um volante. Barreiras pretas delimitam a via, enquanto o condutor de capacete permanece visível no veículo aberto. Estes karts com carroçaria distinguem-se dos quads com guiador presentes nos documentos mais antigos do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "entityKey": "pokeyland-tir-a-larc",
+        "displayName": "Tir à l’arc",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Auf die Mitte der Zielscheiben zielen</h2><p>Tir à l’arc in Pokeyland bietet einen Einstieg ins Bogenschießen unter Anleitung der Parkbetreuer. Zunächst wird der Umgang mit Pfeil und Bogen erlernt, bevor es um eine möglichst hohe Punktzahl geht. Die bereitgestellte Ausrüstung eignet sich für unterschiedliche Körpergrößen und Erfahrungsstufen.</p><p>Die aufgestellten Zielscheiben zeigen konzentrische weiße, schwarze, blaue, rote und gelbe Kreise. Holztafeln und Netze begrenzen den zur Vegetation hin offenen Schießbereich. Die farbigen Markierungen geben der Bewegung des Schützen ein genaues Ziel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Aiming at the centre of the targets</h2><p>Pokeyland’s Tir à l’arc is an introductory archery activity led by park instructors. Learning to handle the bow and arrow comes before trying to achieve the best score. The equipment provided accommodates different sizes and experience levels.</p><p>The freestanding targets display concentric white, black, blue, red and yellow circles. Wooden panels and netting define the shooting area, which opens onto the vegetation. These coloured markings give the player a precise point to aim for.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Apuntar al centro de las dianas</h2><p>Tir à l’arc de Pokeyland es una actividad de iniciación al tiro con arco dirigida por los monitores del parque. El aprendizaje del manejo del arco y la flecha precede a la búsqueda de la mejor puntuación. El material disponible se adapta a distintas tallas y niveles de práctica.</p><p>Las dianas sobre soportes presentan círculos concéntricos blancos, negros, azules, rojos y amarillos. Paneles de madera y redes delimitan el espacio de tiro, abierto hacia la vegetación. Estas marcas de colores dan un objetivo preciso al gesto del jugador.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Viser le centre des cibles</h2><p>Le Tir à l’arc de Pokeyland est une activité d’initiation encadrée par les animateurs du parc. L’apprentissage du maniement de l’arc et de la flèche précède la recherche du meilleur score. Le matériel proposé s’adapte à différents gabarits et niveaux de pratique.</p><p>Les cibles sur pied présentent des cercles concentriques blancs, noirs, bleus, rouges et jaunes. Des panneaux de bois et des filets délimitent l’espace de tir, ouvert sur la végétation. Ces repères colorés donnent un objectif précis au geste du joueur.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Mirare al centro dei bersagli</h2><p>Tir à l’arc di Pokeyland è un’attività introduttiva al tiro con l’arco seguita dagli animatori del parco. L’apprendimento dell’uso di arco e freccia precede la ricerca del miglior punteggio. Il materiale disponibile si adatta a diverse corporature e livelli di esperienza.</p><p>I bersagli su supporti presentano cerchi concentrici bianchi, neri, blu, rossi e gialli. Pannelli di legno e reti delimitano lo spazio di tiro, aperto verso la vegetazione. Questi riferimenti colorati danno un obiettivo preciso al gesto del giocatore.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Mikken op het midden van de doelen</h2><p>Tir à l’arc van Pokeyland is een kennismaking met boogschieten onder begeleiding van parkmedewerkers. Eerst leren deelnemers omgaan met pijl en boog; daarna proberen ze een zo hoog mogelijke score te halen. Het materiaal is geschikt voor verschillende lichaamsgroottes en ervaringsniveaus.</p><p>De doelen op standaards hebben concentrische witte, zwarte, blauwe, rode en gele ringen. Houten panelen en netten begrenzen het schietterrein, dat op het groen uitkijkt. De gekleurde markeringen geven de beweging van de speler een precies mikpunt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Celowanie w środek tarczy</h2><p>Tir à l’arc w Pokeyland wprowadza w łucznictwo pod opieką instruktorów parku. Nauka posługiwania się łukiem i strzałą poprzedza próby uzyskania najlepszego wyniku. Udostępniany sprzęt dostosowano do różnych warunków fizycznych i poziomów doświadczenia.</p><p>Tarcze na stojakach mają koncentryczne białe, czarne, niebieskie, czerwone i żółte kręgi. Drewniane panele i siatki wyznaczają przestrzeń strzelecką, otwartą w stronę roślinności. Kolorowe oznaczenia dają graczowi konkretny punkt, w który może celować.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Apontar ao centro dos alvos</h2><p>Tir à l’arc de Pokeyland é uma atividade de iniciação ao tiro com arco orientada pelos monitores do parque. A aprendizagem do uso do arco e da flecha precede a procura da melhor pontuação. O material disponível adapta-se a diferentes estaturas e níveis de experiência.</p><p>Os alvos em suportes apresentam círculos concêntricos brancos, pretos, azuis, vermelhos e amarelos. Painéis de madeira e redes delimitam o espaço de tiro, aberto para a vegetação. Estas marcas coloridas dão um objetivo preciso ao gesto do jogador.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "pokeyland-trampoline",
+        "displayName": "Trampoline",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Springen mit elastischen Seilen</h2><p>Der Bereich Trampoline in Pokeyland umfasst acht Trampoline. Die Teilnehmer tragen einen Gurt, der mit elastischen Seilen verbunden ist und ihre Sprünge begleitet. In der bewaldeten Umgebung des Parks steht hier die Bewegung nach oben und unten im Mittelpunkt.</p><p>Orangefarbene Seile und gelbe Polster heben sich von den Bäumen ab. Ein schwarzer Gurt umschließt den Körper des Springers; die Befestigungen bleiben auf beiden Seiten sichtbar. Die Farben der Ausrüstung prägen das Erscheinungsbild dieser Aktivität.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Jumping with elastic cords</h2><p>Pokeyland’s Trampoline area contains eight trampolines. Participants wear a harness connected to elastic cords that accompany their jumps. The installation centres the activity on vertical movement within the park’s wooded surroundings.</p><p>Orange cords and yellow padding stand out against the trees. A black harness surrounds the jumper’s body, with the attachments visible on either side. The equipment’s colours provide the activity’s main visual markers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Saltar con cuerdas elásticas</h2><p>El espacio Trampoline de Pokeyland reúne ocho camas elásticas. El participante lleva un arnés unido a cuerdas elásticas que acompañan sus saltos. La instalación centra la actividad en el movimiento vertical, dentro del entorno arbolado del parque.</p><p>Las cuerdas naranjas y las protecciones amarillas destacan sobre el fondo de árboles. Un arnés negro rodea el cuerpo del saltador y las sujeciones permanecen visibles a ambos lados. Los colores del equipo constituyen los principales rasgos visuales de esta actividad.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sauter avec des élastiques</h2><p>L’espace Trampoline de Pokeyland rassemble huit trampolines. Le participant porte un harnais relié à des élastiques, qui accompagnent ses bonds. Cette installation place le mouvement vertical au centre du jeu, dans le cadre boisé du parc.</p><p>Les cordons orange et les protections jaunes ressortent sur le fond des arbres. Le harnais noir entoure le corps du sauteur, tandis que les attaches restent visibles de part et d’autre. Les couleurs de l’équipement forment ainsi le principal repère visuel de cette activité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Saltare con le corde elastiche</h2><p>L’area Trampoline di Pokeyland riunisce otto trampolini. Il partecipante indossa un’imbracatura collegata a corde elastiche che accompagnano i suoi salti. L’installazione pone il movimento verticale al centro del gioco, nell’ambiente boschivo del parco.</p><p>Le corde arancioni e le protezioni gialle risaltano sullo sfondo degli alberi. L’imbracatura nera circonda il corpo di chi salta, con gli attacchi visibili ai due lati. I colori dell’attrezzatura costituiscono i principali riferimenti visivi dell’attività.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Springen met elastische koorden</h2><p>De zone Trampoline van Pokeyland telt acht trampolines. De deelnemer draagt een harnas dat verbonden is met elastische koorden die de sprongen begeleiden. De verticale beweging staat centraal in deze activiteit, in de bosrijke omgeving van het park.</p><p>Oranje koorden en gele beschermkussens steken af tegen de bomen. Een zwart harnas omsluit het lichaam van de springer; de bevestigingen blijven aan beide kanten zichtbaar. De kleuren van de uitrusting bepalen zo het uiterlijk van deze activiteit.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skoki z elastycznymi linami</h2><p>Strefa Trampoline w Pokeyland obejmuje osiem trampolin. Uczestnik zakłada uprząż połączoną z elastycznymi linami, które towarzyszą jego skokom. Ta instalacja stawia ruch pionowy w centrum zabawy, w leśnym otoczeniu parku.</p><p>Pomarańczowe liny i żółte osłony wyróżniają się na tle drzew. Czarna uprząż otacza ciało skaczącej osoby, a mocowania pozostają widoczne po obu stronach. Kolory wyposażenia stanowią główne rozpoznawalne elementy tej atrakcji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Saltar com cordas elásticas</h2><p>O espaço Trampoline de Pokeyland reúne oito trampolins. O participante usa um arnês ligado a cordas elásticas que acompanham os seus saltos. A instalação coloca o movimento vertical no centro da atividade, no ambiente arborizado do parque.</p><p>As cordas laranja e as proteções amarelas destacam-se no fundo de árvores. O arnês preto envolve o corpo de quem salta, com as ligações visíveis dos dois lados. As cores do equipamento constituem os principais elementos visuais desta atividade.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "pokeyland-tubing",
+        "displayName": "Tubing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Reifenfahrt auf grüner Bahn</h2><p>Beim Tubing in Pokeyland gleiten die Besucher in einem großen Reifen eine achtzig Meter lange Bahn hinunter. Ein Förderband ermöglicht anschließend den Weg zurück nach oben innerhalb des Spielbereichs. Die Abfahrt folgt einem angelegten Belag inmitten der Parkvegetation.</p><p>Orangefarbene Elemente begrenzen die grüne Fläche. Die Reifen tragen unter anderem orange-grüne Tarnmuster, einen Griff und den Namen Pokeyland. Ihre runde Form und der gelbe Boden sind auf der Bahn gut zu erkennen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A tube ride down a green slope</h2><p>Pokeyland’s Tubing sends riders downhill seated in a large tube on an eighty-metre run. A conveyor then provides the uphill return within the play area. The descent follows a prepared surface amid the park’s vegetation.</p><p>Orange elements border the green surface. The tubes include orange and green camouflage patterns, a handle and the Pokeyland name. Their round shape and yellow base remain clearly visible when the tube is on the slope.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un descenso en flotador por una pista verde</h2><p>El Tubing de Pokeyland propone deslizarse sentado en un gran flotador por una pista de ochenta metros. Una cinta permite después volver a subir dentro del espacio de juego. El descenso sigue una superficie preparada, entre la vegetación del parque.</p><p>Elementos naranjas bordean la superficie verde. Los flotadores llevan, entre otros detalles, dibujos de camuflaje naranja y verde, un asa y el nombre de Pokeyland. Su forma redonda y su base amarilla se distinguen bien cuando están sobre la pista.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une descente en bouée sur une piste verte</h2><p>Le Tubing de Pokeyland propose de glisser assis dans une grande bouée sur une piste de quatre-vingts mètres. Un tapis permet ensuite la remontée dans l’espace de jeu. La descente suit un revêtement aménagé, dans le cadre végétal du parc.</p><p>La surface verte est bordée d’éléments orange. Les bouées portent notamment des motifs de camouflage orange et vert, une poignée et le nom de Pokeyland. Leur forme ronde et leur fond jaune restent bien visibles lorsque l’engin se trouve sur la piste.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una discesa in ciambella su una pista verde</h2><p>Il Tubing di Pokeyland propone di scivolare seduti in una grande ciambella su una pista di ottanta metri. Un tappeto permette poi la risalita all’interno dell’area giochi. La discesa segue una superficie predisposta, tra la vegetazione del parco.</p><p>Elementi arancioni delimitano la superficie verde. Le ciambelle presentano, fra gli altri dettagli, motivi mimetici arancioni e verdi, una maniglia e il nome Pokeyland. La forma rotonda e il fondo giallo restano ben visibili quando si trovano sulla pista.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Op een band van een groene helling</h2><p>Bij Tubing in Pokeyland glijden bezoekers zittend in een grote band over een tachtig meter lange baan naar beneden. Een transportband brengt hen vervolgens weer omhoog binnen het speelterrein. De afdaling verloopt over een aangelegde ondergrond tussen het groen van het park.</p><p>Oranje elementen begrenzen het groene oppervlak. De banden hebben onder meer oranje-groene camouflagepatronen, een handgreep en de naam Pokeyland. Hun ronde vorm en gele bodem zijn op de helling duidelijk zichtbaar.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Zjazd na oponie po zielonym torze</h2><p>Tubing w Pokeyland pozwala zjeżdżać na dużej oponie po osiemdziesięciometrowym torze. Przenośnik umożliwia następnie powrót pod górę w obrębie strefy zabawy. Zjazd prowadzi po przygotowanej nawierzchni wśród roślinności parku.</p><p>Pomarańczowe elementy wyznaczają krawędzie zielonej powierzchni. Opony mają między innymi pomarańczowo-zielony wzór maskujący, uchwyt i nazwę Pokeyland. Ich okrągły kształt i żółty spód są dobrze widoczne na torze.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma descida em boia numa pista verde</h2><p>O Tubing de Pokeyland propõe deslizar sentado numa grande boia por uma pista de oitenta metros. Um tapete permite depois regressar à parte de cima do espaço de jogos. A descida segue uma superfície preparada, entre a vegetação do parque.</p><p>Elementos laranja delimitam a superfície verde. As boias apresentam, entre outros detalhes, padrões de camuflagem laranja e verde, uma pega e o nome Pokeyland. A forma redonda e o fundo amarelo mantêm-se bem visíveis quando se encontram na pista.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "entityKey": "pokeyland-cabanes",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Von Hütte zu Hütte zwischen den Bäumen</h2><p>Cabanes de Pokey verbindet eine große Fläche aus aufgehängten Netzen mit Hütten, die über Seilbrücken erreichbar sind. Kinder spielen erhöht zwischen den Bäumen und können von einem Erwachsenen begleitet werden.</p><p>Netze umgeben die Durchgänge und bilden zugleich die Seiten der Brücken. Durch die Maschen bleiben Äste und Laub rund um die Spieler sichtbar. Der Parcours verbindet Spielräume in den Bäumen und führt über dem Boden von Hütte zu Hütte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Moving between cabins in the trees</h2><p>Cabanes de Pokey combines a large area of suspended netting with cabins reached by rope bridges. Children play above ground among the trees, with the option of an adult accompanying them.</p><p>Netting surrounds the passages and forms the sides of the bridges. Its mesh leaves branches and foliage visible all around the player. The route links play spaces in the trees, progressing from cabin to cabin above the ground.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Pasar de cabaña en cabaña entre los árboles</h2><p>Cabanes de Pokey reúne un gran espacio de redes suspendidas y cabañas a las que se llega por puentes de cuerda. Los niños juegan en altura entre los árboles, con la posibilidad de estar acompañados por un adulto.</p><p>Las redes rodean los pasos y forman también los laterales de los puentes. A través de las mallas se ven las ramas y el follaje alrededor del jugador. El recorrido conecta espacios de juego entre los árboles, avanzando de cabaña en cabaña sobre el suelo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Passer de cabane en cabane dans les arbres</h2><p>Les Cabanes de Pokey réunissent un grand espace de filets suspendus et des cabanes accessibles par des ponts de singe. Les enfants évoluent en hauteur au milieu des arbres, avec la possibilité d’être accompagnés par un adulte.</p><p>Les passages sont entourés de filets qui forment aussi les côtés des ponts. Les mailles laissent apparaître les branches et le feuillage tout autour du joueur. Ce parcours relie des espaces de jeu dans les arbres, avec une progression de cabane en cabane au-dessus du sol.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Passare da una capanna all’altra tra gli alberi</h2><p>Cabanes de Pokey riunisce un grande spazio di reti sospese e capanne raggiungibili tramite ponti di corde. I bambini giocano in altezza tra gli alberi, con la possibilità di essere accompagnati da un adulto.</p><p>Le reti circondano i passaggi e formano anche i lati dei ponti. Attraverso le maglie restano visibili rami e foglie tutt’attorno a chi gioca. Il percorso collega spazi di gioco negli alberi, procedendo da una capanna all’altra sopra il terreno.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Van hut naar hut tussen de bomen</h2><p>Cabanes de Pokey combineert een groot oppervlak van hangende netten met hutten die via touwbruggen bereikbaar zijn. Kinderen spelen boven de grond tussen de bomen en kunnen door een volwassene worden begeleid.</p><p>Netten omringen de doorgangen en vormen ook de zijkanten van de bruggen. Door de mazen blijven takken en bladeren rondom de speler zichtbaar. De route verbindt speelplekken in de bomen en voert boven de grond van hut naar hut.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Z chatki do chatki wśród drzew</h2><p>Cabanes de Pokey łączy rozległą przestrzeń zawieszonych siatek z chatkami dostępnymi przez mosty linowe. Dzieci bawią się na wysokości wśród drzew, z możliwością towarzyszenia im przez dorosłego.</p><p>Siatki otaczają przejścia i tworzą również boki mostów. Przez oczka widać gałęzie i liście wokół uczestnika. Trasa łączy miejsca zabawy na drzewach, prowadząc z chatki do chatki ponad ziemią.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Passar de cabana em cabana entre as árvores</h2><p>Cabanes de Pokey reúne uma grande área de redes suspensas e cabanas acessíveis por pontes de cordas. As crianças brincam em altura entre as árvores, com a possibilidade de serem acompanhadas por um adulto.</p><p>As redes envolvem as passagens e formam também as laterais das pontes. Pelas malhas veem-se os ramos e a folhagem em redor de quem brinca. O percurso liga espaços de jogo nas árvores, avançando de cabana em cabana acima do solo.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ae0c7fd8-b90d-48b7-ac00-aadc23fa2343",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:59:38.4219061Z",
+    "appliedAtUtc": "2026-11-15T11:59:38.4219076Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+        "entityKey": "pokeyland-quad-kids",
+        "displayName": "Kid’s Racer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Elektrokarts auf einer eigenen Strecke</h2><p>Bei Kid’s Racer sitzen Kinder am Steuer kleiner Elektrokarts; ein Erwachsener kann sie im Fahrzeug begleiten. Gefahren wird auf einer für diese Fahrzeuge angelegten Strecke inmitten der Vegetation von Pokeyland.</p><p>Orangefarbene, schwarze und weiße Karosserieteile umgeben einen niedrigen Sitz und ein Lenkrad. Schwarze Schutzbarrieren säumen die Fahrbahn, während der Fahrer mit Helm im offenen Fahrzeug sichtbar bleibt. Diese Karts mit Karosserie unterscheiden sich von den Quads mit Motorradlenker in älteren Parkunterlagen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Electric karts on a dedicated circuit</h2><p>Kid’s Racer puts children behind the wheel of small electric karts, with the option of an adult riding along. Driving takes place on a circuit prepared for these vehicles amid Pokeyland’s vegetation.</p><p>Orange, black and white bodywork surrounds a low seat and steering wheel. Black barriers line the roadway, while the helmeted driver remains visible in the open vehicle. These enclosed-body karts differ from the handlebar-controlled quads shown in older park documents.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Karts eléctricos en un circuito propio</h2><p>Kid’s Racer pone a los niños al volante de pequeños karts eléctricos, con la posibilidad de que un adulto suba como acompañante. La conducción se realiza en un circuito preparado para estos vehículos, entre la vegetación de Pokeyland.</p><p>Las carrocerías naranjas, negras y blancas rodean un asiento bajo y un volante. Barreras negras delimitan la calzada, mientras el conductor con casco permanece visible en su vehículo abierto. Estos karts con carrocería se distinguen de los quads con manillar de los documentos más antiguos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des karts électriques sur un circuit dédié</h2><p>Kid’s Racer met les enfants au volant de petits karts électriques, avec la possibilité pour un adulte de prendre place comme accompagnateur. La conduite se déroule sur un circuit aménagé pour ces véhicules, au milieu de la végétation de Pokeyland.</p><p>Les carrosseries orange, noires et blanches entourent une assise basse et un volant. Des protections noires bordent la chaussée, tandis que le pilote casqué reste visible dans son véhicule ouvert. Ces karts carénés se distinguent des quads à guidon présents dans les documents plus anciens du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Kart elettrici su un circuito dedicato</h2><p>Kid’s Racer mette i bambini al volante di piccoli kart elettrici, con la possibilità per un adulto di salire come accompagnatore. La guida si svolge su un circuito predisposto per questi veicoli, tra la vegetazione di Pokeyland.</p><p>Le carrozzerie arancioni, nere e bianche circondano un sedile basso e un volante. Barriere nere delimitano la carreggiata, mentre il pilota con il casco rimane visibile nel veicolo aperto. Questi kart carenati sono distinti dai quad con manubrio presenti nei documenti più vecchi del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Elektrische karts op een eigen circuit</h2><p>Bij Kid’s Racer nemen kinderen het stuur van kleine elektrische karts in handen. Een volwassene kan als begeleider meerijden. De rit vindt plaats op een speciaal aangelegd circuit tussen het groen van Pokeyland.</p><p>Oranje, zwarte en witte carrosseriedelen omringen een lage zitplaats en een stuurwiel. Zwarte beschermranden begrenzen het wegdek; de bestuurder met helm blijft zichtbaar in het open voertuig. Deze karts met carrosserie verschillen van de quads met motorstuur in oudere parkdocumenten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Elektryczne gokarty na wydzielonym torze</h2><p>Kid’s Racer pozwala dzieciom prowadzić małe elektryczne gokarty, z możliwością przejazdu dorosłego opiekuna. Jazda odbywa się na torze przygotowanym dla tych pojazdów, wśród roślinności Pokeyland.</p><p>Pomarańczowe, czarne i białe nadwozia otaczają niskie siedzenie i kierownicę. Czarne bariery wyznaczają krawędzie nawierzchni, a kierowca w kasku pozostaje widoczny w otwartym pojeździe. Te gokarty z nadwoziem różnią się od quadów z kierownicą motocyklową przedstawianych w starszych materiałach parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Karts elétricos num circuito dedicado</h2><p>Kid’s Racer coloca as crianças ao volante de pequenos karts elétricos, com a possibilidade de um adulto viajar como acompanhante. A condução decorre num circuito preparado para estes veículos, entre a vegetação de Pokeyland.</p><p>As carroçarias laranja, pretas e brancas rodeiam um assento baixo e um volante. Barreiras pretas delimitam a via, enquanto o condutor de capacete permanece visível no veículo aberto. Estes karts com carroçaria distinguem-se dos quads com guiador presentes nos documentos mais antigos do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+        "entityKey": "pokeyland-tir-a-larc",
+        "displayName": "Tir à l’arc",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Auf die Mitte der Zielscheiben zielen</h2><p>Tir à l’arc in Pokeyland bietet einen Einstieg ins Bogenschießen unter Anleitung der Parkbetreuer. Zunächst wird der Umgang mit Pfeil und Bogen erlernt, bevor es um eine möglichst hohe Punktzahl geht. Die bereitgestellte Ausrüstung eignet sich für unterschiedliche Körpergrößen und Erfahrungsstufen.</p><p>Die aufgestellten Zielscheiben zeigen konzentrische weiße, schwarze, blaue, rote und gelbe Kreise. Holztafeln und Netze begrenzen den zur Vegetation hin offenen Schießbereich. Die farbigen Markierungen geben der Bewegung des Schützen ein genaues Ziel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Aiming at the centre of the targets</h2><p>Pokeyland’s Tir à l’arc is an introductory archery activity led by park instructors. Learning to handle the bow and arrow comes before trying to achieve the best score. The equipment provided accommodates different sizes and experience levels.</p><p>The freestanding targets display concentric white, black, blue, red and yellow circles. Wooden panels and netting define the shooting area, which opens onto the vegetation. These coloured markings give the player a precise point to aim for.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Apuntar al centro de las dianas</h2><p>Tir à l’arc de Pokeyland es una actividad de iniciación al tiro con arco dirigida por los monitores del parque. El aprendizaje del manejo del arco y la flecha precede a la búsqueda de la mejor puntuación. El material disponible se adapta a distintas tallas y niveles de práctica.</p><p>Las dianas sobre soportes presentan círculos concéntricos blancos, negros, azules, rojos y amarillos. Paneles de madera y redes delimitan el espacio de tiro, abierto hacia la vegetación. Estas marcas de colores dan un objetivo preciso al gesto del jugador.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Viser le centre des cibles</h2><p>Le Tir à l’arc de Pokeyland est une activité d’initiation encadrée par les animateurs du parc. L’apprentissage du maniement de l’arc et de la flèche précède la recherche du meilleur score. Le matériel proposé s’adapte à différents gabarits et niveaux de pratique.</p><p>Les cibles sur pied présentent des cercles concentriques blancs, noirs, bleus, rouges et jaunes. Des panneaux de bois et des filets délimitent l’espace de tir, ouvert sur la végétation. Ces repères colorés donnent un objectif précis au geste du joueur.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Mirare al centro dei bersagli</h2><p>Tir à l’arc di Pokeyland è un’attività introduttiva al tiro con l’arco seguita dagli animatori del parco. L’apprendimento dell’uso di arco e freccia precede la ricerca del miglior punteggio. Il materiale disponibile si adatta a diverse corporature e livelli di esperienza.</p><p>I bersagli su supporti presentano cerchi concentrici bianchi, neri, blu, rossi e gialli. Pannelli di legno e reti delimitano lo spazio di tiro, aperto verso la vegetazione. Questi riferimenti colorati danno un obiettivo preciso al gesto del giocatore.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Mikken op het midden van de doelen</h2><p>Tir à l’arc van Pokeyland is een kennismaking met boogschieten onder begeleiding van parkmedewerkers. Eerst leren deelnemers omgaan met pijl en boog; daarna proberen ze een zo hoog mogelijke score te halen. Het materiaal is geschikt voor verschillende lichaamsgroottes en ervaringsniveaus.</p><p>De doelen op standaards hebben concentrische witte, zwarte, blauwe, rode en gele ringen. Houten panelen en netten begrenzen het schietterrein, dat op het groen uitkijkt. De gekleurde markeringen geven de beweging van de speler een precies mikpunt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Celowanie w środek tarczy</h2><p>Tir à l’arc w Pokeyland wprowadza w łucznictwo pod opieką instruktorów parku. Nauka posługiwania się łukiem i strzałą poprzedza próby uzyskania najlepszego wyniku. Udostępniany sprzęt dostosowano do różnych warunków fizycznych i poziomów doświadczenia.</p><p>Tarcze na stojakach mają koncentryczne białe, czarne, niebieskie, czerwone i żółte kręgi. Drewniane panele i siatki wyznaczają przestrzeń strzelecką, otwartą w stronę roślinności. Kolorowe oznaczenia dają graczowi konkretny punkt, w który może celować.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Apontar ao centro dos alvos</h2><p>Tir à l’arc de Pokeyland é uma atividade de iniciação ao tiro com arco orientada pelos monitores do parque. A aprendizagem do uso do arco e da flecha precede a procura da melhor pontuação. O material disponível adapta-se a diferentes estaturas e níveis de experiência.</p><p>Os alvos em suportes apresentam círculos concêntricos brancos, pretos, azuis, vermelhos e amarelos. Painéis de madeira e redes delimitam o espaço de tiro, aberto para a vegetação. Estas marcas coloridas dão um objetivo preciso ao gesto do jogador.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+        "entityKey": "pokeyland-trampoline",
+        "displayName": "Trampoline",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Springen mit elastischen Seilen</h2><p>Der Bereich Trampoline in Pokeyland umfasst acht Trampoline. Die Teilnehmer tragen einen Gurt, der mit elastischen Seilen verbunden ist und ihre Sprünge begleitet. In der bewaldeten Umgebung des Parks steht hier die Bewegung nach oben und unten im Mittelpunkt.</p><p>Orangefarbene Seile und gelbe Polster heben sich von den Bäumen ab. Ein schwarzer Gurt umschließt den Körper des Springers; die Befestigungen bleiben auf beiden Seiten sichtbar. Die Farben der Ausrüstung prägen das Erscheinungsbild dieser Aktivität.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Jumping with elastic cords</h2><p>Pokeyland’s Trampoline area contains eight trampolines. Participants wear a harness connected to elastic cords that accompany their jumps. The installation centres the activity on vertical movement within the park’s wooded surroundings.</p><p>Orange cords and yellow padding stand out against the trees. A black harness surrounds the jumper’s body, with the attachments visible on either side. The equipment’s colours provide the activity’s main visual markers.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Saltar con cuerdas elásticas</h2><p>El espacio Trampoline de Pokeyland reúne ocho camas elásticas. El participante lleva un arnés unido a cuerdas elásticas que acompañan sus saltos. La instalación centra la actividad en el movimiento vertical, dentro del entorno arbolado del parque.</p><p>Las cuerdas naranjas y las protecciones amarillas destacan sobre el fondo de árboles. Un arnés negro rodea el cuerpo del saltador y las sujeciones permanecen visibles a ambos lados. Los colores del equipo constituyen los principales rasgos visuales de esta actividad.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sauter avec des élastiques</h2><p>L’espace Trampoline de Pokeyland rassemble huit trampolines. Le participant porte un harnais relié à des élastiques, qui accompagnent ses bonds. Cette installation place le mouvement vertical au centre du jeu, dans le cadre boisé du parc.</p><p>Les cordons orange et les protections jaunes ressortent sur le fond des arbres. Le harnais noir entoure le corps du sauteur, tandis que les attaches restent visibles de part et d’autre. Les couleurs de l’équipement forment ainsi le principal repère visuel de cette activité.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Saltare con le corde elastiche</h2><p>L’area Trampoline di Pokeyland riunisce otto trampolini. Il partecipante indossa un’imbracatura collegata a corde elastiche che accompagnano i suoi salti. L’installazione pone il movimento verticale al centro del gioco, nell’ambiente boschivo del parco.</p><p>Le corde arancioni e le protezioni gialle risaltano sullo sfondo degli alberi. L’imbracatura nera circonda il corpo di chi salta, con gli attacchi visibili ai due lati. I colori dell’attrezzatura costituiscono i principali riferimenti visivi dell’attività.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Springen met elastische koorden</h2><p>De zone Trampoline van Pokeyland telt acht trampolines. De deelnemer draagt een harnas dat verbonden is met elastische koorden die de sprongen begeleiden. De verticale beweging staat centraal in deze activiteit, in de bosrijke omgeving van het park.</p><p>Oranje koorden en gele beschermkussens steken af tegen de bomen. Een zwart harnas omsluit het lichaam van de springer; de bevestigingen blijven aan beide kanten zichtbaar. De kleuren van de uitrusting bepalen zo het uiterlijk van deze activiteit.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skoki z elastycznymi linami</h2><p>Strefa Trampoline w Pokeyland obejmuje osiem trampolin. Uczestnik zakłada uprząż połączoną z elastycznymi linami, które towarzyszą jego skokom. Ta instalacja stawia ruch pionowy w centrum zabawy, w leśnym otoczeniu parku.</p><p>Pomarańczowe liny i żółte osłony wyróżniają się na tle drzew. Czarna uprząż otacza ciało skaczącej osoby, a mocowania pozostają widoczne po obu stronach. Kolory wyposażenia stanowią główne rozpoznawalne elementy tej atrakcji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Saltar com cordas elásticas</h2><p>O espaço Trampoline de Pokeyland reúne oito trampolins. O participante usa um arnês ligado a cordas elásticas que acompanham os seus saltos. A instalação coloca o movimento vertical no centro da atividade, no ambiente arborizado do parque.</p><p>As cordas laranja e as proteções amarelas destacam-se no fundo de árvores. O arnês preto envolve o corpo de quem salta, com as ligações visíveis dos dois lados. As cores do equipamento constituem os principais elementos visuais desta atividade.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+        "entityKey": "pokeyland-tubing",
+        "displayName": "Tubing",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Reifenfahrt auf grüner Bahn</h2><p>Beim Tubing in Pokeyland gleiten die Besucher in einem großen Reifen eine achtzig Meter lange Bahn hinunter. Ein Förderband ermöglicht anschließend den Weg zurück nach oben innerhalb des Spielbereichs. Die Abfahrt folgt einem angelegten Belag inmitten der Parkvegetation.</p><p>Orangefarbene Elemente begrenzen die grüne Fläche. Die Reifen tragen unter anderem orange-grüne Tarnmuster, einen Griff und den Namen Pokeyland. Ihre runde Form und der gelbe Boden sind auf der Bahn gut zu erkennen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A tube ride down a green slope</h2><p>Pokeyland’s Tubing sends riders downhill seated in a large tube on an eighty-metre run. A conveyor then provides the uphill return within the play area. The descent follows a prepared surface amid the park’s vegetation.</p><p>Orange elements border the green surface. The tubes include orange and green camouflage patterns, a handle and the Pokeyland name. Their round shape and yellow base remain clearly visible when the tube is on the slope.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un descenso en flotador por una pista verde</h2><p>El Tubing de Pokeyland propone deslizarse sentado en un gran flotador por una pista de ochenta metros. Una cinta permite después volver a subir dentro del espacio de juego. El descenso sigue una superficie preparada, entre la vegetación del parque.</p><p>Elementos naranjas bordean la superficie verde. Los flotadores llevan, entre otros detalles, dibujos de camuflaje naranja y verde, un asa y el nombre de Pokeyland. Su forma redonda y su base amarilla se distinguen bien cuando están sobre la pista.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une descente en bouée sur une piste verte</h2><p>Le Tubing de Pokeyland propose de glisser assis dans une grande bouée sur une piste de quatre-vingts mètres. Un tapis permet ensuite la remontée dans l’espace de jeu. La descente suit un revêtement aménagé, dans le cadre végétal du parc.</p><p>La surface verte est bordée d’éléments orange. Les bouées portent notamment des motifs de camouflage orange et vert, une poignée et le nom de Pokeyland. Leur forme ronde et leur fond jaune restent bien visibles lorsque l’engin se trouve sur la piste.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una discesa in ciambella su una pista verde</h2><p>Il Tubing di Pokeyland propone di scivolare seduti in una grande ciambella su una pista di ottanta metri. Un tappeto permette poi la risalita all’interno dell’area giochi. La discesa segue una superficie predisposta, tra la vegetazione del parco.</p><p>Elementi arancioni delimitano la superficie verde. Le ciambelle presentano, fra gli altri dettagli, motivi mimetici arancioni e verdi, una maniglia e il nome Pokeyland. La forma rotonda e il fondo giallo restano ben visibili quando si trovano sulla pista.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Op een band van een groene helling</h2><p>Bij Tubing in Pokeyland glijden bezoekers zittend in een grote band over een tachtig meter lange baan naar beneden. Een transportband brengt hen vervolgens weer omhoog binnen het speelterrein. De afdaling verloopt over een aangelegde ondergrond tussen het groen van het park.</p><p>Oranje elementen begrenzen het groene oppervlak. De banden hebben onder meer oranje-groene camouflagepatronen, een handgreep en de naam Pokeyland. Hun ronde vorm en gele bodem zijn op de helling duidelijk zichtbaar.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Zjazd na oponie po zielonym torze</h2><p>Tubing w Pokeyland pozwala zjeżdżać na dużej oponie po osiemdziesięciometrowym torze. Przenośnik umożliwia następnie powrót pod górę w obrębie strefy zabawy. Zjazd prowadzi po przygotowanej nawierzchni wśród roślinności parku.</p><p>Pomarańczowe elementy wyznaczają krawędzie zielonej powierzchni. Opony mają między innymi pomarańczowo-zielony wzór maskujący, uchwyt i nazwę Pokeyland. Ich okrągły kształt i żółty spód są dobrze widoczne na torze.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma descida em boia numa pista verde</h2><p>O Tubing de Pokeyland propõe deslizar sentado numa grande boia por uma pista de oitenta metros. Um tapete permite depois regressar à parte de cima do espaço de jogos. A descida segue uma superfície preparada, entre a vegetação do parque.</p><p>Elementos laranja delimitam a superfície verde. As boias apresentam, entre outros detalhes, padrões de camuflagem laranja e verde, uma pega e o nome Pokeyland. A forma redonda e o fundo amarelo mantêm-se bem visíveis quando se encontram na pista.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+        "entityKey": "pokeyland-cabanes",
+        "displayName": "Cabanes de Pokey",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Von Hütte zu Hütte zwischen den Bäumen</h2><p>Cabanes de Pokey verbindet eine große Fläche aus aufgehängten Netzen mit Hütten, die über Seilbrücken erreichbar sind. Kinder spielen erhöht zwischen den Bäumen und können von einem Erwachsenen begleitet werden.</p><p>Netze umgeben die Durchgänge und bilden zugleich die Seiten der Brücken. Durch die Maschen bleiben Äste und Laub rund um die Spieler sichtbar. Der Parcours verbindet Spielräume in den Bäumen und führt über dem Boden von Hütte zu Hütte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Moving between cabins in the trees</h2><p>Cabanes de Pokey combines a large area of suspended netting with cabins reached by rope bridges. Children play above ground among the trees, with the option of an adult accompanying them.</p><p>Netting surrounds the passages and forms the sides of the bridges. Its mesh leaves branches and foliage visible all around the player. The route links play spaces in the trees, progressing from cabin to cabin above the ground.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Pasar de cabaña en cabaña entre los árboles</h2><p>Cabanes de Pokey reúne un gran espacio de redes suspendidas y cabañas a las que se llega por puentes de cuerda. Los niños juegan en altura entre los árboles, con la posibilidad de estar acompañados por un adulto.</p><p>Las redes rodean los pasos y forman también los laterales de los puentes. A través de las mallas se ven las ramas y el follaje alrededor del jugador. El recorrido conecta espacios de juego entre los árboles, avanzando de cabaña en cabaña sobre el suelo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Passer de cabane en cabane dans les arbres</h2><p>Les Cabanes de Pokey réunissent un grand espace de filets suspendus et des cabanes accessibles par des ponts de singe. Les enfants évoluent en hauteur au milieu des arbres, avec la possibilité d’être accompagnés par un adulte.</p><p>Les passages sont entourés de filets qui forment aussi les côtés des ponts. Les mailles laissent apparaître les branches et le feuillage tout autour du joueur. Ce parcours relie des espaces de jeu dans les arbres, avec une progression de cabane en cabane au-dessus du sol.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Passare da una capanna all’altra tra gli alberi</h2><p>Cabanes de Pokey riunisce un grande spazio di reti sospese e capanne raggiungibili tramite ponti di corde. I bambini giocano in altezza tra gli alberi, con la possibilità di essere accompagnati da un adulto.</p><p>Le reti circondano i passaggi e formano anche i lati dei ponti. Attraverso le maglie restano visibili rami e foglie tutt’attorno a chi gioca. Il percorso collega spazi di gioco negli alberi, procedendo da una capanna all’altra sopra il terreno.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Van hut naar hut tussen de bomen</h2><p>Cabanes de Pokey combineert een groot oppervlak van hangende netten met hutten die via touwbruggen bereikbaar zijn. Kinderen spelen boven de grond tussen de bomen en kunnen door een volwassene worden begeleid.</p><p>Netten omringen de doorgangen en vormen ook de zijkanten van de bruggen. Door de mazen blijven takken en bladeren rondom de speler zichtbaar. De route verbindt speelplekken in de bomen en voert boven de grond van hut naar hut.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Z chatki do chatki wśród drzew</h2><p>Cabanes de Pokey łączy rozległą przestrzeń zawieszonych siatek z chatkami dostępnymi przez mosty linowe. Dzieci bawią się na wysokości wśród drzew, z możliwością towarzyszenia im przez dorosłego.</p><p>Siatki otaczają przejścia i tworzą również boki mostów. Przez oczka widać gałęzie i liście wokół uczestnika. Trasa łączy miejsca zabawy na drzewach, prowadząc z chatki do chatki ponad ziemią.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Passar de cabana em cabana entre as árvores</h2><p>Cabanes de Pokey reúne uma grande área de redes suspensas e cabanas acessíveis por pontes de cordas. As crianças brincam em altura entre as árvores, com a possibilidade de serem acompanhadas por um adulto.</p><p>As redes envolvem as passagens e formam também as laterais das pontes. Pelas malhas veem-se os ramos e a folhagem em redor de quem brinca. O percurso liga espaços de jogo nas árvores, avançando de cabana em cabana acima do solo.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Five private existing items; 40 texts personally written and reviewed against current official pages and exact original photographs. Electric steering-wheel karts, taught archery, eight elastic trampolines, 80-metre tubing and linked net cabins. Access-rule contradictions retained separately; no false free park entry or manufactured opening date. Short-source depth gaps retained. Existing IDs, statuses and visibility preserved.",
+    "wordCounts": {
+      "Kid’s Racer": {
+        "fr": 94,
+        "en": 78,
+        "de": 76,
+        "es": 91,
+        "it": 88,
+        "nl": 79,
+        "pl": 70,
+        "pt": 83
+      },
+      "Tir à l’arc": {
+        "fr": 87,
+        "en": 81,
+        "de": 80,
+        "es": 94,
+        "it": 84,
+        "nl": 85,
+        "pl": 70,
+        "pt": 88
+      },
+      "Trampoline": {
+        "fr": 84,
+        "en": 68,
+        "de": 78,
+        "es": 82,
+        "it": 74,
+        "nl": 80,
+        "pl": 65,
+        "pt": 80
+      },
+      "Tubing": {
+        "fr": 90,
+        "en": 78,
+        "de": 76,
+        "es": 88,
+        "it": 85,
+        "nl": 80,
+        "pl": 63,
+        "pt": 86
+      },
+      "Cabanes de Pokey": {
+        "fr": 91,
+        "en": 75,
+        "de": 76,
+        "es": 91,
+        "it": 82,
+        "nl": 78,
+        "pl": 62,
+        "pt": 83
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

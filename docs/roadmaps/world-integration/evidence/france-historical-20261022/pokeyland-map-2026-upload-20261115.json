@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T12:04:03.4485748Z",
+    "action": "ImportOfficialMap",
+    "startedAtUtc": "2026-11-15T12:04:01.3900965Z",
+    "result": {
+      "ParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "OfficialMap": {
+        "Key": "pokeyland-map-2026-fr",
+        "Id": "pokeyland-map-2026-fr",
+        "Year": 2026,
+        "Format": "Pdf",
+        "StorageKey": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf",
+        "OriginalFileName": "official-map-2026.pdf",
+        "ContentType": "application/pdf",
+        "SizeInBytes": 362538,
+        "SourcePageUrl": "https://www.pokeyland.com/wp-content/uploads/2026/07/PLAN_PARC_2026_compressed.pdf",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      }
+    }
+  },
+  "sourceSha256": "995e99a02b0da75695b33206915fd292abef9c5a6a4efd614a6df14e00dc3db6",
+  "rootPersonallyViewedFullMap": true,
+  "yearEvidence": "Official linked file explicitly named PLAN_PARC_2026_compressed.pdf, not inferred only from upload directory.",
+  "timestampSemantics": "Upload response has no server creation UTC. Event uses real wrapper receipt UTC, with start/receipt interval preserved; not asserted as exact server commit timestamp.",
+  "associationApplied": false,
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false
+}

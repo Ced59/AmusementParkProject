@@ -1,0 +1,3031 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "observedAtUtc": "2026-11-15T12:22:15.841476+00:00",
+  "outcome": "documented-model-limitation",
+  "sourceCalendar": {
+    "createdAtUtc": "2026-11-15T10:47:52.417510+00:00",
+    "source": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2026/01/calendrier_pokey_2026-1638x2048.png",
+      "accessedAtUtc": "2026-11-15T10:37:46.946829+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/01/calendrier_pokey_2026-1638x2048.png",
+      "sha256": "9e41eb8552ed5ddd9c9a4703fb9f0681cf25e05e9617716f939000cec3a1a281",
+      "bytes": 4142231,
+      "file": "official-calendar-2026.png"
+    },
+    "calendarPage": {
+      "url": "https://www.pokeyland.com/horaires-calendrier/",
+      "accessedAtUtc": "2026-11-15T10:36:54.850233+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/horaires-calendrier/",
+      "sha256": "0750ce179949ebfb8be9291dec74f1d48989fde5665776826b08b74a9283559b",
+      "bytes": 84219,
+      "file": "official-calendar.html"
+    },
+    "visualReview": "Full original personally viewed twice; dates transcribed from printed grid, not generated from a guessed weekday rule",
+    "timezone": "Europe/Paris",
+    "coveredPeriod": [
+      "2026-04-01",
+      "2026-09-30"
+    ],
+    "outsideCoveredPeriod": "No date rule inferred; no 2027 calendar located",
+    "waterjumpSeasonStart": "2026-06-20",
+    "waterjumpQualification": "Printed footer gives Saturday20June; no end date inferred",
+    "countByStatus": {
+      "ClosedOrByReservation": 80,
+      "Open": 101,
+      "ConcertEvent": 1,
+      "OpenNocturne": 1
+    },
+    "days": [
+      {
+        "date": "2026-04-01",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-02",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-03",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-05",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-06",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-07",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-08",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-09",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-10",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-12",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-13",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-14",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-15",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-16",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-17",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-18",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-19",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-20",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-21",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-22",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-23",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-24",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-25",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-26",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-27",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-28",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-04-30",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-01",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-02",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-03",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-05",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-06",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-07",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-08",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-09",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-10",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-12",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-13",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-14",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-15",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-16",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-17",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-18",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-19",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-20",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-21",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-22",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-23",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-24",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-25",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-26",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-27",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-28",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-05-30",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-31",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-01",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-02",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-03",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-05",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-06",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-07",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-08",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-09",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-10",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-12",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-13",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-14",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-15",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-16",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-17",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-18",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-19",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-20",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-21",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-22",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-23",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-24",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-25",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-26",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-27",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-28",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-06-30",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-07-01",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-02",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-03",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-04",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-05",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-06",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-07",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-08",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-09",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-10",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-11",
+        "sourceColor": "pink",
+        "status": "ConcertEvent",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Calendar gives no hours for pink; do not reuse adjacent orange hours"
+      },
+      {
+        "date": "2026-07-12",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-13",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-14",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-15",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-16",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-17",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-18",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-19",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-20",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-21",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-22",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-23",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-24",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-25",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-26",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-27",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-28",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-29",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-30",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-31",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-01",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-02",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-03",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-04",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-05",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-06",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-07",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-08",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-09",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-10",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-11",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-12",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-13",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-14",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-15",
+        "sourceColor": "red",
+        "status": "OpenNocturne",
+        "openingTime": "10:30",
+        "closingTime": "22:00",
+        "activityClosingTime": "21:30"
+      },
+      {
+        "date": "2026-08-16",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-17",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-18",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-19",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-20",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-21",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-22",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-23",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-24",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-25",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-26",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-27",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-28",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-29",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-30",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-31",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-09-01",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-02",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-03",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-05",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-06",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-07",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-08",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-09",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-10",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-12",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-13",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-14",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-15",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-16",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-17",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-18",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-19",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-20",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-21",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-22",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-23",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-24",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-25",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-26",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-27",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-28",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      },
+      {
+        "date": "2026-09-30",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null,
+        "qualification": "Official legend is FERME OU SUR RESERVATION, not an unconditional closure"
+      }
+    ],
+    "conflicts": [
+      {
+        "date": "2026-04-18",
+        "calendar": "10:30",
+        "officialNews": "10:00",
+        "source": "official-news-2026.html",
+        "decision": "Keep contradiction; do not silently harmonize"
+      }
+    ]
+  },
+  "sourceCalendarSha256": "6af991d5cd2f12f9563e538ac6f82538ea7914e91d8847289f2c815bbd889c3b",
+  "rootPersonallyViewedOriginalCalendar": true,
+  "independentValidation": {
+    "createdAtUtc": "2026-11-15T11:43:03.981279+00:00",
+    "source": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2026/01/calendrier_pokey_2026-1638x2048.png",
+      "accessedAtUtc": "2026-11-15T10:37:46.946829+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/01/calendrier_pokey_2026-1638x2048.png",
+      "sha256": "9e41eb8552ed5ddd9c9a4703fb9f0681cf25e05e9617716f939000cec3a1a281",
+      "bytes": 4142231,
+      "file": "official-calendar-2026.png",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-calendar-2026.png",
+      "verifiedLocalSha256": "9e41eb8552ed5ddd9c9a4703fb9f0681cf25e05e9617716f939000cec3a1a281"
+    },
+    "currentCalendarPage": {
+      "url": "https://www.pokeyland.com/horaires-calendrier/",
+      "accessedAtUtc": "2026-11-15T11:40:15.467463+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/horaires-calendrier/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84219,
+      "sha256": "0750ce179949ebfb8be9291dec74f1d48989fde5665776826b08b74a9283559b",
+      "file": "official-calendar-page.html"
+    },
+    "method": "Personally reread the native official image, all six month grids and the full colour legend. Independently transcribed each printed coloured run, then compared every date and relevant field with the prior JSON. No OCR or weekday rule used as source truth.",
+    "sourceImageDisplayLimit": "Image tool displayed the 1638×2048 source at 1407×1760; all date numbers, colours and legend remained readable. Source file was not altered.",
+    "priorTranscription": {
+      "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-calendar-2026-transcription.json",
+      "sha256": "6af991d5cd2f12f9563e538ac6f82538ea7914e91d8847289f2c815bbd889c3b"
+    },
+    "coveredPeriod": [
+      "2026-04-01",
+      "2026-09-30"
+    ],
+    "dateCount": 183,
+    "countByColour": {
+      "black": 80,
+      "orange": 52,
+      "pink": 1,
+      "blue": 49,
+      "red": 1
+    },
+    "countByStatus": {
+      "ClosedOrByReservation": 80,
+      "Open": 101,
+      "ConcertEvent": 1,
+      "OpenNocturne": 1
+    },
+    "monthCounts": {
+      "4": {
+        "black": 23,
+        "orange": 7
+      },
+      "5": {
+        "orange": 15,
+        "black": 16
+      },
+      "6": {
+        "black": 19,
+        "orange": 11
+      },
+      "7": {
+        "orange": 11,
+        "pink": 1,
+        "blue": 19
+      },
+      "8": {
+        "blue": 30,
+        "red": 1
+      },
+      "9": {
+        "black": 22,
+        "orange": 8
+      }
+    },
+    "differences": [],
+    "allDatesAndFieldsMatch": true,
+    "independentlyReadColourRuns": {
+      "4": {
+        "black": [
+          [
+            1,
+            17
+          ],
+          [
+            20,
+            21
+          ],
+          [
+            27,
+            30
+          ]
+        ],
+        "orange": [
+          [
+            18,
+            19
+          ],
+          [
+            22,
+            26
+          ]
+        ]
+      },
+      "5": {
+        "black": [
+          [
+            4,
+            7
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            18,
+            22
+          ],
+          [
+            26,
+            29
+          ]
+        ],
+        "orange": [
+          [
+            1,
+            3
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            14,
+            17
+          ],
+          [
+            23,
+            25
+          ],
+          [
+            30,
+            31
+          ]
+        ]
+      },
+      "6": {
+        "black": [
+          [
+            1,
+            5
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            15,
+            19
+          ],
+          [
+            22,
+            22
+          ],
+          [
+            26,
+            26
+          ],
+          [
+            29,
+            30
+          ]
+        ],
+        "orange": [
+          [
+            6,
+            7
+          ],
+          [
+            13,
+            14
+          ],
+          [
+            20,
+            21
+          ],
+          [
+            23,
+            25
+          ],
+          [
+            27,
+            28
+          ]
+        ]
+      },
+      "7": {
+        "orange": [
+          [
+            1,
+            10
+          ],
+          [
+            12,
+            12
+          ]
+        ],
+        "pink": [
+          [
+            11,
+            11
+          ]
+        ],
+        "blue": [
+          [
+            13,
+            31
+          ]
+        ]
+      },
+      "8": {
+        "blue": [
+          [
+            1,
+            14
+          ],
+          [
+            16,
+            31
+          ]
+        ],
+        "red": [
+          [
+            15,
+            15
+          ]
+        ]
+      },
+      "9": {
+        "black": [
+          [
+            1,
+            4
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            14,
+            18
+          ],
+          [
+            21,
+            25
+          ],
+          [
+            28,
+            30
+          ]
+        ],
+        "orange": [
+          [
+            5,
+            6
+          ],
+          [
+            12,
+            13
+          ],
+          [
+            19,
+            20
+          ],
+          [
+            26,
+            27
+          ]
+        ]
+      }
+    },
+    "days": [
+      {
+        "date": "2026-04-01",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-02",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-03",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-05",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-06",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-07",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-08",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-09",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-10",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-12",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-13",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-14",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-15",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-16",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-17",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-18",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-19",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-20",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-21",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-22",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-23",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-24",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-25",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-26",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-04-27",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-28",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-04-30",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-01",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-02",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-03",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-05",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-06",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-07",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-08",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-09",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-10",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-12",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-13",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-14",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-15",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-16",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-17",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-18",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-19",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-20",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-21",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-22",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-23",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-24",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-25",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-26",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-27",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-28",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-05-30",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-05-31",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-01",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-02",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-03",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-05",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-06",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-07",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-08",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-09",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-10",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-12",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-13",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-14",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-15",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-16",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-17",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-18",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-19",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-20",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-21",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-22",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-23",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-24",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-25",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-26",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-27",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-28",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-06-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-06-30",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-07-01",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-02",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-03",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-04",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-05",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-06",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-07",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-08",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-09",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-10",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-11",
+        "sourceColor": "pink",
+        "status": "ConcertEvent",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-07-12",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-07-13",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-14",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-15",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-16",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-17",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-18",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-19",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-20",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-21",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-22",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-23",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-24",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-25",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-26",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-27",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-28",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-29",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-30",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-07-31",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-01",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-02",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-03",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-04",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-05",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-06",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-07",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-08",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-09",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-10",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-11",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-12",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-13",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-14",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-15",
+        "sourceColor": "red",
+        "status": "OpenNocturne",
+        "openingTime": "10:30",
+        "closingTime": "22:00",
+        "activityClosingTime": "21:30"
+      },
+      {
+        "date": "2026-08-16",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-17",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-18",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-19",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-20",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-21",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-22",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-23",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-24",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-25",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-26",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-27",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-28",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-29",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-30",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-08-31",
+        "sourceColor": "blue",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "18:00"
+      },
+      {
+        "date": "2026-09-01",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-02",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-03",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-04",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-05",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-06",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-07",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-08",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-09",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-10",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-11",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-12",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-13",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-14",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-15",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-16",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-17",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-18",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-19",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-20",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-21",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-22",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-23",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-24",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-25",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-26",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-27",
+        "sourceColor": "orange",
+        "status": "Open",
+        "openingTime": "10:30",
+        "closingTime": "17:30"
+      },
+      {
+        "date": "2026-09-28",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-29",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      },
+      {
+        "date": "2026-09-30",
+        "sourceColor": "black",
+        "status": "ClosedOrByReservation",
+        "openingTime": null,
+        "closingTime": null
+      }
+    ],
+    "qualifications": [
+      "Black is explicitly FERMÉ OU SUR RÉSERVATION. It cannot become unconditional closed.",
+      "The white background contains no day-status legend. Empty grid cells are outside that month, not closed days.",
+      "The July 11 pink concert marker gives neither opening nor closing time. Orange/blue hours from adjacent dates must not be carried over.",
+      "August 15 red: 10:30–22:00; activities close at 21:30, distinct from park closing.",
+      "Waterjump footer explicitly says opening Saturday June 20. No Waterjump end date or independent daily schedule is stated.",
+      "The FAQ states a general season April 18–September 27, 2026. The calendar still explicitly marks other April/September dates black: closed OR by reservation. Preserve both scopes.",
+      "No schedule before April 1 or after September 30 inferred. No 2027 dates published in the sources read."
+    ],
+    "conflicts": [
+      {
+        "date": "2026-04-18",
+        "calendarOpeningTime": "10:30",
+        "newsOpeningTime": "10:00",
+        "newsQuote": "Samedi 18 avril 2026 — À partir de 10h",
+        "newsPublishedDateDisplayed": "2026-04-20",
+        "source": {
+          "url": "https://www.pokeyland.com/actualites/pokeyland-vous-ouvre-ses-portes-pour-la-saison-2026/",
+          "accessedAtUtc": "2026-11-15T11:40:15.689517+00:00",
+          "status": 200,
+          "finalUrl": "https://www.pokeyland.com/actualites/pokeyland-vous-ouvre-ses-portes-pour-la-saison-2026/",
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 79989,
+          "sha256": "dbbd63a01e6adf3466954978054f0870b723112b52190b41e636b9e3d130fd75",
+          "file": "official-news-2026.html"
+        },
+        "decision": "Preserve the conflict. The news is specific to reopening; no source states it supersedes the calendar. Do not silently harmonize or infer a new general rule."
+      }
+    ]
+  },
+  "codeInspection": {
+    "repositoryBaseline": "913eae91bd4f139cf5da24064d16c6dd6f4cca7d",
+    "domainPath": "API/AmusementPark.Core/Domain/Parks/ParkOpeningHoursCalendarBuilder.cs",
+    "domainEvidence": [
+      "IsClosed = dateOverride.IsClosed || dateOverride.TimeRanges.Count == 0,",
+      "IsClosed = rule.IsClosed || rule.TimeRanges.Count == 0,"
+    ],
+    "publicPagePath": "FRONT/AmusementPark/src/app/features/public/parks/pages/park-opening-hours-page.component.ts",
+    "publicEvidence": [
+      "private isClosed(day: ParkOpeningHoursDay): boolean { return day.isClosed || day.timeRanges.length === 0; }",
+      "publicDayNote returns null when isClosed(day)",
+      "selectedDayDetails uses closed status when isClosed(day)"
+    ]
+  },
+  "finding": "80 calendar dates mean closed OR by reservation, not definite closure. July11 concert has no public hours. False+empty timeRanges is displayed closed; labels hidden on closed days. Do not encode these81 days as closed, invent hours, or claim complete183-day integration. Only102 unequivocal time-bearing days may be encoded separately after review; April18 opening-hour contradiction remains. No2027 announced.",
+  "calendarPreviewPerformed": false,
+  "calendarApplyPerformed": false,
+  "applicationCodeChanged": false,
+  "nextAction": "Keep unresolved dates documented, continue representable data and other integration steps; no improvised endpoint or fake time range."
+}

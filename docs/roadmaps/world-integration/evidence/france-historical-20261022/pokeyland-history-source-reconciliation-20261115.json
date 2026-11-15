@@ -1,0 +1,49 @@
+{
+  "createdAtUtc": "2026-11-15T11:58:40.121041+00:00",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "scope": "Public-source chronology research only. No PARK_DATA_EDITOR, Git, registry, reservation, server mutation or final multilingual text.",
+  "artifacts": [
+    "chronology-reconciliation.json",
+    "source-catalog.json",
+    "working-state-history-snapshot.json"
+  ],
+  "candidateCount": 12,
+  "sourceCount": 21,
+  "strongParkEvents": [
+    "public-opening-2015",
+    "sale-2023",
+    "operational-management-2024",
+    "judicial-reorganisation-2026"
+  ],
+  "itemEvents": [
+    "labyrinth-new-2017",
+    "big-air-jump-new-2017",
+    "mini-ferme-new-2017",
+    "rotor-jump-new-2021",
+    "waterjump-2022",
+    "pomme-opening-2025"
+  ],
+  "conditionalOrContextOnly": [
+    "extension-programme-2017",
+    "pokey-plage-2023"
+  ],
+  "criticalDecisions": [
+    "2015-06-20 is public opening; 2013 preparations/company dates are not public opening.",
+    "Year-only 2017, 2021, 2022 and 2023 novelties must remain year precision: never January 1 placeholders.",
+    "2017 sources say six versus seven novelties; a contractor proves a Pitchoun/initiation extension but not present numbered-course aliases.",
+    "Sale deed 2023-11-29; effective-transfer wording 2023-11-30 at midnight; BODACC publication 2024-05-05; operational succession 2024-12-01. These date meanings must remain separate.",
+    "La Pomme 2025-04-05 is supported by explicit specialist fields; 2025-05-04 is separate photo metadata.",
+    "Redressement judgment 2026-10-01, publication 2026-10-13; retrospective cessation of payments 2025-04-02 is not a closure.",
+    "Reported 2027 reopening objective is not an accomplished reopening or a published calendar.",
+    "Local history.events is empty in the read snapshot; verify derived/server history for park and coaster opening attributes before any event creation."
+  ],
+  "notReadyForAutomaticEvents": [
+    "Do not assign Archery Games to Tir à l’arc: distinct labels and no current identity established here.",
+    "Do not infer current Trampoline is identical to Pokey Trampoline 2017 solely from the word trampoline.",
+    "Pokey Plage/Pokey Beach target reconciliation is pending; no duplicate place creation.",
+    "A planned 2025 Sky Tower, later official Fall Tower or any other announced ride must not receive April 5 opening without separate ride evidence.",
+    "Do not publish individual service openings in 2017 based only on a general main-street development paragraph."
+  ],
+  "mutationsPerformed": 0,
+  "networkRequestsThisTask": 0
+}

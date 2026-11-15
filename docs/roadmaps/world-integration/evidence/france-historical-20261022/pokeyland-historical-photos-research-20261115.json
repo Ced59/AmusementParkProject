@@ -1,0 +1,904 @@
+{
+  "createdAtUtc": "2026-11-15T11:51:58.094632+00:00",
+  "scope": "Public historical evidence research only; no PDE, Git, register, import, current-state edit or final eight-language text.",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "comparison": {
+    "workingStateFile": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+    "sha256": "7bbf320199da216916e90b9e147ebaaedae365ca955cce592446479ea1a46121",
+    "readAtUtc": "2026-11-15T11:51:58.094632+00:00",
+    "itemCount": 74,
+    "priorityItems": [
+      {
+        "name": "Rotor Jump",
+        "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "descriptionsCount": 0,
+        "imageCountInLocalSnapshot": 0
+      },
+      {
+        "name": "Saut dans le vide",
+        "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "descriptionsCount": 0,
+        "imageCountInLocalSnapshot": 0
+      },
+      {
+        "name": "Le Petit Robin",
+        "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "descriptionsCount": 0,
+        "imageCountInLocalSnapshot": 0
+      },
+      {
+        "name": "Checkpoint",
+        "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+        "descriptionsCount": 0,
+        "imageCountInLocalSnapshot": 0
+      },
+      {
+        "name": "Mini-ferme",
+        "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "descriptionsCount": 0,
+        "imageCountInLocalSnapshot": 0
+      }
+    ],
+    "note": "Parent works concurrently; this is a local read-only snapshot, not a fresh server claim."
+  },
+  "sources": {
+    "supplier": {
+      "url": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "accessedAtUtc": "2026-11-15T11:28:43.873826+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 132832,
+      "sha256": "84af80a2fc698eb4c1fd4dd63900418ca4b2945306dd83eebe4eb60a1ba6e588",
+      "file": "amazone-thrill-en.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-thrill-en.html",
+      "pagePublicationDate": null,
+      "photoIndividualAuthor": null,
+      "credit": "Amazone Adventure — source and supplier, individual photographer not identified"
+    },
+    "gallery2017": {
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "accessedAtUtc": "2026-11-15T11:17:45.185777+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 617393,
+      "sha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+      "file": "estrepublicain-visit-2017.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-visit-2017.html",
+      "pagePublicationDate": "2017-08-11T16:00:00Z",
+      "pageDateNote": "Displayed 11 August 2017 at 18:00 local, not the 7 August date in the URL.",
+      "photoIndividualAuthor": null,
+      "credit": "L’Est Républicain"
+    },
+    "opening2015": {
+      "url": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "accessedAtUtc": "2026-11-15T10:42:31.499476+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 347811,
+      "sha256": "7c6ea3fde10a6d13864d0ac73da7626c860438bcc1bd9b3482bc9350ae46bba4",
+      "file": "news-toutmetz-opening-2015.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/news-toutmetz-opening-2015.html"
+    },
+    "brochure2023": {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+      "accessedAtUtc": "2026-11-15T10:36:59.030634+00:00",
+      "status": 200,
+      "contentType": "application/pdf",
+      "bytes": 5283404,
+      "sha256": "0631cbb032a16aef9d9893a39181094c8892104f40fd267c8fdf972817937ecc",
+      "file": "official-brochure-2023.pdf",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-brochure-2023.pdf"
+    },
+    "rotorAnnouncement2021": {
+      "url": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "accessedAtUtc": "2026-11-15T10:57:37.920732+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 54846,
+      "sha256": "28ec4c31fb0a22b9a0f5a3a9b48b62e33610d6f5bc9b1daeed67d3e9bc51cd16",
+      "file": "directfm-rotor-2020.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/directfm-rotor-2020.html",
+      "pagePublicationDate": "2021-04-02",
+      "pageAuthor": "Rédaction",
+      "legacyFilenameNote": "The filename ending 2020 is misleading: the displayed date is 2 April 2021 at 10:35.",
+      "heroCredit": "(@_Pokeyland)",
+      "galleryCreditNote": "Do not automatically assign the hero credit to every uncaptioned gallery photo."
+    },
+    "rotorVisit2022": {
+      "url": "https://forum.coastersworld.fr/threads/trip-des-parcs-du-nord.11376/",
+      "accessedAtUtc": "2026-11-15T11:46:54.038520+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 147054,
+      "sha256": "3fa262433e93620d8bbd31662252c4627816783860a8530df5b1b5a83e6ad638",
+      "file": "coastersworld-2022-trip.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/coastersworld-2022-trip.html",
+      "pagePublicationDate": "2022-09-23",
+      "pageAuthor": "fab70",
+      "visitDate": "August 2022 in the trip narrative; exact date not established for the Rotor Jump observation"
+    },
+    "miniFarmGroups": {
+      "url": "https://www.pokeyland.com/vos-sorties-de-groupe/",
+      "accessedAtUtc": "2026-11-15T10:59:08.533565+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91379,
+      "sha256": "1f3db381ad0530a06ab1c0d3ea52af60c079e3c692ffb0db284a1c18e20e53e8",
+      "file": "official-groups.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/official-groups.html"
+    },
+    "directfm2022Reopening": {
+      "url": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "accessedAtUtc": "2026-11-15T11:48:35.785352+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 56380,
+      "sha256": "e417c98a82cce2e6b3e253d9666e11de7b9b2d82f4f63d186e929a8dd41f8288",
+      "file": "directfm-2022-reopening.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-reopening.html",
+      "pagePublicationDate": "2022-04-09",
+      "pageAuthor": "Marie Simon",
+      "photoIndividualAuthor": null
+    },
+    "directfm2022Vip": {
+      "url": "https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland",
+      "accessedAtUtc": "2026-11-15T11:48:38.365341+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 48392,
+      "sha256": "42b78ff561a4e12bfaaa3461e2b24d7268135abff6778796f8101722207936c4",
+      "file": "directfm-2022-vip.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-vip.html",
+      "pagePublicationDate": "2022-09-02",
+      "pageAuthor": "Yoann Masson",
+      "photoIndividualAuthor": null
+    },
+    "brochure2021Reproduction": {
+      "url": "https://fr.scribd.com/document/513775350/Pokeyland-BROCHURE-2021-4-2",
+      "accessedAtUtc": "2026-11-15T11:46:55.367095+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1258182,
+      "sha256": "d61f923888875e4355bd67fc17c794799e4b4b5d45343d378b41a1a6eea8121c",
+      "file": "scribd-brochure-public.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/scribd-brochure-public.html",
+      "provenance": "Publicly indexed reproduction uploaded by FBGrandest; official original PDF URL not recovered.",
+      "documentYearEvidence": "Document body explicitly references the season 2021 calendar and 2021 novelties.",
+      "titleWarning": "Search display title “Tarifs et Activités de Pokeyland 2023” is AI-enhanced by Scribd and not reliable document dating.",
+      "accessLimitation": "Direct page metadata labels the document view_restricted/archive paywall. No internal page assets, download route or login bypass were used; only the already public indexed text was considered.",
+      "publicIndexedLocator": "Search-service open reference turn764643view0, lines 212–219",
+      "shortPublicQuote": "Initiez vos enfants au tir à l’arbalète en toute sécurité sur nos stands spécialement adaptés !"
+    },
+    "gallery2018": {
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2018/09/16/pokeyland",
+      "accessedAtUtc": "2026-11-15T11:48:20.873213+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 625778,
+      "sha256": "7193b7606568888602366964793839d70868b018c74eed09ee3b826ecf75659f",
+      "file": "estrepublicain-2018.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/estrepublicain-2018.html"
+    }
+  },
+  "items": [
+    {
+      "name": "Rotor Jump",
+      "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "descriptionReadiness": "Specific historical notice possible from official brochure and announcement; no final text authored here.",
+      "supportedDetails": [
+        "Mechanical rotating sweeper/balayette that participants avoid by jumping; falling eliminates them.",
+        "D!RECT FM announced the activity for the 2021 season with up to eight participants.",
+        "Official 2023 brochure names the game and pictures a child jumping over the padded bar."
+      ],
+      "dateAssessment": "2021 novelty announcement is established; an exact first operating day is not. Visitor fab70’s September 2022 report of an August trip lists Rotor Jump among available activities.",
+      "photoResult": "No standalone nominated original found. The 2023 brochure embeds a labelled photo in a flattened four-panel composition; extracting or cropping that panel would violate the no-crop instruction. Thirteen newly inspected D!RECT FM photographs show other subjects.",
+      "status": "Keep historical/Unknown unless separately verified; current landing-page mentions do not certify a current item operation.",
+      "remainingGaps": [
+        "Standalone original photo",
+        "Current operation or removal evidence",
+        "Manufacturer/model"
+      ]
+    },
+    {
+      "name": "Saut dans le vide",
+      "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "descriptionReadiness": "Strong physical evidence for the elevated platform, tower, harnessed departure and named device.",
+      "supportedDetails": [
+        "Supplier labels the device QUICKjump XL + Ripcord and explicitly identifies Pokeyland.",
+        "Photograph shows the departure platform, yellow mesh rails and burgundy steelwork.",
+        "Nominal 2017 gallery caption ties the jump to the same tower as Escalade."
+      ],
+      "dateAssessment": "Existed in reporter’s 2016 account and 2017 gallery. Supplier web page has no established publication date; no exact installation year claimed.",
+      "heightConflict": {
+        "tourismAndReportage": "18 m",
+        "supplierFreeFallCaption": "20 m",
+        "supplierTowerCaption": "23 m tower",
+        "decision": "Preserve conflict and distinguish whole tower/drop/equipment measure; omit exact height from new notice unless root resolves it."
+      },
+      "photoCandidates": [
+        "amazone-free-fall.jpeg"
+      ],
+      "remainingGaps": [
+        "Current operation",
+        "Exact opening date",
+        "Resolution of height measures"
+      ]
+    },
+    {
+      "name": "Le Petit Robin",
+      "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+      "descriptionReadiness": "Function is now explicitly supported by public indexed 2021 brochure text, with secondary-host provenance reserve; physical stand details and photo absent.",
+      "supportedDetails": [
+        "Children’s crossbow activity on adapted stands, distinct from adjacent Tir à l’arc listing."
+      ],
+      "source": "brochure2021Reproduction",
+      "dateAssessment": "The document body explicitly names season 2021. The title modified by Scribd AI to 2023 must not be used for dating. Novelty 2017 appears in earlier reports but no exact day established.",
+      "photoResult": "No nominal standalone photo found; do not attach generic archery pictures or infer weapon model, target type, stand material or current age restriction.",
+      "remainingGaps": [
+        "Primary original brochure file or direct official text",
+        "Nominal stand photo",
+        "Current operation and precise opening date"
+      ]
+    },
+    {
+      "name": "Checkpoint",
+      "id": "7a14b801-f78f-40d9-a03c-279e73e2de1d",
+      "descriptionReadiness": "Specific historical physical notice possible from the nominal 2015 source; no need for generic paintball filler.",
+      "supportedDetails": [
+        "Woodland paintball terrain reconstructed with trenches and an underground command post.",
+        "Earth embankments, timber/branch retaining surfaces and low shelter entrances are historically evidenced."
+      ],
+      "photoResult": "Nominal Tout-Metz photo is signed and excluded. New 2017 unsigned trench views are plausible but lack the exact Checkpoint name. Root must accept or reject the owner match.",
+      "dateAssessment": "Present in the 2015 opening report; no exact removal or renamed successor established.",
+      "remainingGaps": [
+        "Unambiguous named unsigned photo",
+        "Current lifecycle",
+        "Relationship to Cemetery must remain unresolved, not automatically treated as replacement"
+      ]
+    },
+    {
+      "name": "Mini-ferme",
+      "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "descriptionReadiness": "Historical wooded goat enclosure has enough specific visual content for a short notice after root attribution review.",
+      "supportedDetails": [
+        "Goats visible in a tree-filled enclosure with plank fence and rocky blocks.",
+        "The current official groups page separately names the mini-ferme, arboretum and barefoot path."
+      ],
+      "photoCandidate": "../historical-inventory-followup/estrepublicain-gallery-11-2017.jpg",
+      "dateAssessment": "2017 novelty reporting and gallery context; capture day unknown. Do not claim these specific animals are still present.",
+      "remainingGaps": [
+        "Current enclosure configuration and animals",
+        "Exact opening day",
+        "Individual photo author"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+      "accessedAtUtc": "2026-11-15T11:44:46.936845+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 675727,
+      "sha256": "942b30b28e3fbb1a70cb8c145c890cc06afa22c45b60da9513429f2267359962",
+      "file": "amazone-free-fall.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/amazone-free-fall.jpeg",
+      "dimensions": [
+        1000,
+        1500
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "sourcePublicationDate": null,
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Saut dans le vide",
+      "observations": "Harnessed participant at a yellow guarded platform on the burgundy steel tower; green overhead QUICKjump device and red lanyard; Pokeyland fox backdrop. Supplier caption explicitly says Free Fall Jump | QUICKjump XL + Ripcord — 20 m high — Pokeyland, France.",
+      "decision": "Strong nominated candidate; root visual and duplicate review required.",
+      "limits": [
+        "1000 × 1500 / 675727 bytes; image naturally served with these dimensions despite URL containing 1200.",
+        "No capture date or individual photographer identified.",
+        "20 m supplier specification diverges from the 18 m description used by tourism/reportage sources; do not silently choose one.",
+        "The supplier page establishes equipment identification, not a current operational or safety certification."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/326/1200/activity-towers-23-m-high.jpeg",
+      "accessedAtUtc": "2026-11-15T11:44:48.817963+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 180351,
+      "sha256": "c83f9ec746e370c2a00d81d0582fdac8385cdee6908bdf2fe7156f1bacb083ad",
+      "file": "amazone-tower.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/amazone-tower.jpeg",
+      "dimensions": [
+        1200,
+        752
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+      "sourcePublicationDate": null,
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Saut dans le vide and Escalade support tower",
+      "observations": "Full burgundy steel tower with yellow stairs/platforms, climbing face, Pokeyland fox and visible base sign naming Saut dans le vide and Escalade. Large white margins are native to the source.",
+      "decision": "Research evidence; less suitable photo because of native margins.",
+      "limits": [
+        "Do not crop white margins.",
+        "Caption’s 23 m is the tower height, not a verified jump/drop height."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/0D279AA0-0B95-4DAB-8B37-72C389A3D800/NW_raw/le-mur-d-escalade-culmine-a-plus-de-dix-huit-metres-de-hauteur-vous-pouvez-aussi-experimenter-le-saut-dans-le-vide-du-haut-de-cette-tour-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:12.535742+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 310783,
+      "sha256": "4c43430bc0df01d6e748fdc6f9d818e2a80c1165c74724c83d046374fb9b3584",
+      "file": "estrepublicain-2017-02.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/estrepublicain-2017-02.jpg",
+      "dimensions": [
+        1200,
+        1600
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Shared climbing/jump tower",
+      "observations": "Low upward view of grey climbing panels and burgundy structural steel with yellow stair rails. Nominal gallery caption says the Saut dans le vide can be experienced from this tower.",
+      "decision": "Supporting scene, but climbing face dominates; do not describe an active jump that is absent.",
+      "limits": [
+        "No visitor jumping shown.",
+        "Keep the Saut and Escalade entities separate although they share a tower."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:06.104760+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 659175,
+      "sha256": "9c21ac79a5f925ed6b3d1875d617aafe68756889c5aeed8acb4bf77c336c3fc5",
+      "file": "estrepublicain-gallery-11-2017.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-11-2017.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Mini-ferme",
+      "observations": "Goats in a wooded enclosure bounded by plank fencing, pale rocky blocks, bare earth/straw and mature trees. Raised net play structure visible behind the fencing.",
+      "decision": "Historical mini-farm candidate after root attribution review.",
+      "limits": [
+        "Gallery introduction explicitly names mini-fermes, but this image lacks an individual nominal caption.",
+        "Goat presence and enclosure appearance belong to the photographed historical scene; no claim about present-day animals or layout.",
+        "Do not assign net structure in background to mini-farm itself."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://tout-metz.com/wp-content/uploads/2015/06/parc-pokeyland-2015-5D2A2975.jpg",
+      "accessedAtUtc": "2026-11-15T10:57:49.252057+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 279363,
+      "sha256": "3baea07b0b7be8fecb94c72b96abf43065fefb883afe87ccc360c325c74f3a0d",
+      "file": "toutmetz-checkpoint.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-checkpoint.jpg",
+      "dimensions": [
+        1100,
+        733
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+      "sourcePublicationDate": "2015-06",
+      "takenDate": null,
+      "individualPhotographer": "Thierry Hauuy",
+      "reviewedPersonally": true,
+      "visibleWatermark": true,
+      "subject": "Checkpoint",
+      "observations": "Nominal 2015 photograph and text identify trenches and an underground command post. Gun-shaped prop on earthworks and wooden/branch-lined trenches are visible.",
+      "decision": "EXCLUDED FROM IMPORT; identity and description evidence only.",
+      "limits": [
+        "Visible signature Photo : Thierry Hauuy pour Tout-Metz.com.",
+        "No working weapon, battlefield authenticity or equipment origin claimed."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/8F5BA17B-13EB-4135-A4A4-75962E59AA33/NW_raw/sept-terrains-de-paintball-sont-aussi-accessibles-tous-thematises-ici-sur-les-tranchees-de-14-18-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:14.979401+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 747140,
+      "sha256": "1b9f3bd6c456c35a1c99465c6254a75801bee7622a209b9354052075446982ca",
+      "file": "estrepublicain-2017-17.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/estrepublicain-2017-17.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Trench-themed paintball terrain; likely Checkpoint",
+      "observations": "Woodland trenches with timber paths, branch-lined edges and an entrance into a covered earth shelter. Gallery caption explicitly says trenches of 14–18 but does not name Checkpoint.",
+      "decision": "Potential historical photo; named-owner match remains to be accepted by root.",
+      "limits": [
+        "Similar trench/underground-post setting to nominal Checkpoint 2015 source, but no Checkpoint sign visible.",
+        "Do not assign to another terrain or infer current status."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/BA0C8477-F7FF-4D07-956B-05C6C22CE01D/NW_raw/le-paintball-de-pokeyland-est-considere-comme-l-un-des-plus-beaux-de-france-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:17.610182+00:00",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "bytes": 793731,
+      "sha256": "6ea1251bfd039359ea86d49f3e534328a001c8f23578d426fc1a2770eea9ae2d",
+      "file": "estrepublicain-2017-18.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/estrepublicain-2017-18.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "sourcePublicationDate": "2017-08-11",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Trench-themed paintball terrain; likely Checkpoint",
+      "observations": "Woodland trenches with plank paths, a tank-shaped play obstacle and other military-theme props.",
+      "decision": "Potential historical photo; named-owner match remains to be accepted by root.",
+      "limits": [
+        "Adjacent gallery photo and same trench setting, but only generic paintball caption.",
+        "Tank-shaped prop is not established as a real military vehicle."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%201.jpg",
+      "accessedAtUtc": "2026-11-15T11:44:49.757958+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%201.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 979878,
+      "sha256": "2ca97fdf17b36c9bfb22e920054e46ec552ddd24fadfdaf6c9737f8e3bed37fa",
+      "file": "directfm-poke-1.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-1.jpg",
+      "dimensions": [
+        2016,
+        1512
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Decorative wooden fox, mushrooms and snail sculptures near picnic tables and paintball directional signs.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%202.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:00.374127+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%202.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 626447,
+      "sha256": "b789f1ca2de78919614d549dd05eab716719f4320e96fb57865e4ec6f68f0a25",
+      "file": "directfm-poke-2.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-2.jpg",
+      "dimensions": [
+        1512,
+        2016
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Close view of a wooden squirrel sculpture with buildings behind.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%203.jpg",
+      "accessedAtUtc": "2026-11-15T11:44:57.929184+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%203.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 637843,
+      "sha256": "73dda491388b597fc6bd11431ccc02ef2f103d246812c14e0736fa9c94a25e8b",
+      "file": "directfm-poke-3.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-3.jpg",
+      "dimensions": [
+        2016,
+        1512
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Wooden multi-level restaurant/event building and deck under construction.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%204.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:02.070140+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%204.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 637230,
+      "sha256": "dd34e39698f02c3fce59b0bae3753e046506d826c4e3cbbb22d6e5a75e09a45c",
+      "file": "directfm-poke-4.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-4.jpg",
+      "dimensions": [
+        2016,
+        1512
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Wider view of the same construction-stage restaurant/event deck.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%205.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:03.536978+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%205.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 594921,
+      "sha256": "a6b99c8695d2345c4b476710db3c2b0383703f4e24bb59dd525a4ca191375e87",
+      "file": "directfm-poke-5.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-5.jpg",
+      "dimensions": [
+        2016,
+        1512
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Timber lower deck, decorative railings and stacked chairs.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%206.jpg",
+      "accessedAtUtc": "2026-11-15T11:45:04.964290+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%206.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 599575,
+      "sha256": "0ac17f1c29098447a9db79c4a3c36be2e7c8380b3cfa4e73646d15cb222b1c03",
+      "file": "directfm-poke-6.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-6.jpg",
+      "dimensions": [
+        2016,
+        1512
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Small wooden hut, seating and assembly-point sign.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://www.directfm.fr/upload/medias/poke%207.jpg",
+      "accessedAtUtc": "2026-11-15T11:44:55.039146+00:00",
+      "status": 200,
+      "finalUrl": "https://bocir-prod-bucket.s3.amazonaws.com/radios/directfm/importrk/medias/poke%207.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 827521,
+      "sha256": "77810db71ff958611f4c0b47c1ba8d86cf63e2e851b796911b6a5f02224d6acf",
+      "file": "directfm-poke-7.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-poke-7.jpg",
+      "dimensions": [
+        2016,
+        1512
+      ],
+      "imageFormat": "JPEG",
+      "sourcePage": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+      "sourcePublicationDate": "2021-04-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "General park/buildings, not Rotor Jump",
+      "observations": "Upper deck under construction, workers and stairs.",
+      "decision": "Exclude for the five historical priorities: no Rotor Jump or named target shown.",
+      "limits": [
+        "The article announces Rotor Jump, but its gallery does not illustrate the attraction.",
+        "No new venue identity inferred from these photographs."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/IMG_03031623426785359.jpg",
+      "accessedAtUtc": "2026-11-15T11:49:10.252892+00:00",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 177358,
+      "sha256": "533b22312928751d189d841e3959366eafd89b2ff5d85639605251bd52bf8d66",
+      "file": "directfm-2022-reopening-image-1.webp",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-reopening-image-1.webp",
+      "dimensions": [
+        1100,
+        825
+      ],
+      "imageFormat": "WEBP",
+      "sourcePage": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "sourcePublicationDate": "2022-04-09",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Other park subject, not priority historical item",
+      "observations": "Wooden welcome sign.",
+      "decision": "Exclude for five priority items; not nominal proof for Rotor Jump or Petit Robin.",
+      "limits": [
+        "Variant is the exact public responsive image URL served by the article; no local resizing or conversion."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/21649520816481.jpg",
+      "accessedAtUtc": "2026-11-15T11:49:11.386483+00:00",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 80224,
+      "sha256": "72066fe704aaa9a1c1b7df71dd736b79e62226525aacbfdf049948ae7e075e0c",
+      "file": "directfm-2022-reopening-image-2.webp",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-reopening-image-2.webp",
+      "dimensions": [
+        1100,
+        825
+      ],
+      "imageFormat": "WEBP",
+      "sourcePage": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "sourcePublicationDate": "2022-04-09",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Other park subject, not priority historical item",
+      "observations": "Earthworks and diggers; no completed target attraction.",
+      "decision": "Exclude for five priority items; not nominal proof for Rotor Jump or Petit Robin.",
+      "limits": [
+        "Variant is the exact public responsive image URL served by the article; no local resizing or conversion."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/41649520863135.jpg",
+      "accessedAtUtc": "2026-11-15T11:49:12.078191+00:00",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 193280,
+      "sha256": "55926a6618c29604fc4159c4a17851c0c2ca61decb3b49a583f3f34803c8c078",
+      "file": "directfm-2022-reopening-image-3.webp",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-reopening-image-3.webp",
+      "dimensions": [
+        1100,
+        825
+      ],
+      "imageFormat": "WEBP",
+      "sourcePage": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "sourcePublicationDate": "2022-04-09",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Other park subject, not priority historical item",
+      "observations": "Two green tubing lanes down a hill.",
+      "decision": "Exclude for five priority items; not nominal proof for Rotor Jump or Petit Robin.",
+      "limits": [
+        "Variant is the exact public responsive image URL served by the article; no local resizing or conversion."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/31649520970932.jpg",
+      "accessedAtUtc": "2026-11-15T11:49:13.131364+00:00",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 275196,
+      "sha256": "fc744442e56fef504a7f1ede334b05054a295c12bc571d6621e2149f75bcf15d",
+      "file": "directfm-2022-reopening-image-4.webp",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-reopening-image-4.webp",
+      "dimensions": [
+        1100,
+        1467
+      ],
+      "imageFormat": "WEBP",
+      "sourcePage": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "sourcePublicationDate": "2022-04-09",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Other park subject, not priority historical item",
+      "observations": "White cabin with Route 66 sign; no named historical target identified.",
+      "decision": "Exclude for five priority items; not nominal proof for Rotor Jump or Petit Robin.",
+      "limits": [
+        "Variant is the exact public responsive image URL served by the article; no local resizing or conversion."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/51649521195786.jpg",
+      "accessedAtUtc": "2026-11-15T11:49:13.915311+00:00",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 171470,
+      "sha256": "388cb07a07d714f270429cd0b7728abc91d87abad434cbbed14eba0f6d270827",
+      "file": "directfm-2022-reopening-image-5.webp",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-reopening-image-5.webp",
+      "dimensions": [
+        1100,
+        825
+      ],
+      "imageFormat": "WEBP",
+      "sourcePage": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+      "sourcePublicationDate": "2022-04-09",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Other park subject, not priority historical item",
+      "observations": "General view of wooden park buildings, paths and sculptures.",
+      "decision": "Exclude for five priority items; not nominal proof for Rotor Jump or Petit Robin.",
+      "limits": [
+        "Variant is the exact public responsive image URL served by the article; no local resizing or conversion."
+      ],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    },
+    {
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/Pokey1662099873789.png",
+      "accessedAtUtc": "2026-11-15T11:49:14.808159+00:00",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 118634,
+      "sha256": "dcb2097358f283a79551b2e8709929b229cfd38441e99b38f43454cc802a4a6b",
+      "file": "directfm-2022-vip-image-1.webp",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/directfm-2022-vip-image-1.webp",
+      "dimensions": [
+        1100,
+        642
+      ],
+      "imageFormat": "WEBP",
+      "sourcePage": "https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland",
+      "sourcePublicationDate": "2022-09-02",
+      "takenDate": null,
+      "individualPhotographer": null,
+      "reviewedPersonally": true,
+      "visibleWatermark": false,
+      "subject": "Park entrance",
+      "observations": "Ticket hut with fox mascot statue and adjacent climbing wall.",
+      "decision": "Exclude for Rotor Jump: article title mentions it but photo is the entrance.",
+      "limits": [],
+      "importPerformed": false,
+      "localImageEditingPerformed": false
+    }
+  ],
+  "secondaryLeads": {
+    "Cemetery": {
+      "source": "gallery2018",
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2018/09/16/pokeyland",
+      "fact": "A publicly accessible 2018 gallery includes a photograph specifically captioned as a cemetery-themed adult paintball terrain. The publicly indexed 2021 brochure lists MODE CEMETERY. This advances the 2015 project-only evidence to documented later presence, not proof of replacement for Checkpoint.",
+      "photoUrl": "https://cdn-s-www.estrepublicain.fr/images/B25429AF-11CE-4238-B5B6-5ED5EE0E2101/NW_raw/pour-les-adultes-differents-terrains-de-chasse-pour-le-paintball-ici-un-decor-cimetiere-1531914598.jpg",
+      "downloadedOrVisuallyReviewed": false,
+      "safeUse": "Research lead only, no new entity or status asserted."
+    },
+    "BigAirHeight": {
+      "source": "gallery2018",
+      "fact": "The 2018 gallery captions photos of an airbag jump as four metres. Earlier 2017 promotional wording mentioned ten metres. This is separate from Saut dans le vide and requires review before any exact height is copied.",
+      "safeUse": "Only alert; photos not fetched in this priority batch."
+    }
+  },
+  "method": [
+    "No local cropping, resizing, retouching or conversion. Original links and exact responsive variants served by source pages were used.",
+    "No images imported and no old file overwritten. Prior image files are referenced in place rather than downloaded again.",
+    "Publication/access/capture dates remain separate; missing capture dates remain null.",
+    "No open licence inferred from a public page.",
+    "No Scribd paywall or restricted internal asset accessed. Publicly indexed text is marked as a reproduction, not an official original.",
+    "A third-party airsoft directory failed with a network 403; no circumvention attempted.",
+    "No Cabanes/Mer de filet item or duplicate media created."
+  ]
+}

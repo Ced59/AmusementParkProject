@@ -63,6 +63,57 @@
         "languageCode": "pt",
         "value": "<h2>Aventura na floresta de Féy</h2><p>Entre Metz e Nancy, o Pokeyland ocupa uma propriedade arborizada de Féy, na Mosela. As árvores rodeiam as clareiras de jogos, os planos de água e os espaços de restauração. A raposa Pokey acompanha este universo onde os passeios sob os ramos se cruzam com as cores vivas dos divertimentos.</p><p>O paintball tem um lugar singular nesta paisagem. Dog One evoca uma praia de desembarque com um barco encalhado; Panama coloca uma capela numa floresta sul-americana imaginária. Os cenários de Fox Two, Zombie e Cannibale transformam outros recantos numa base militar, numa fábrica abandonada ou numa aldeia fictícia. As partidas decorrem entre estas pequenas cenas construídas debaixo das árvores.</p><h2>Das cabanas às copas</h2><p>Os percursos de arborismo atravessam a floresta a diferentes alturas. Pitchoune, Découverte, Famille, Aventure e Sportif identificam caminhos onde o equilíbrio e a relação com a altura ganham uma importância crescente. O percurso Tyrolienne oferece outra perspetiva sobre a paisagem arborizada, enquanto Cabanes de Pokey reúne passadiços e grandes redes em redor das árvores.</p><p>No solo, Parcours pieds nus convida a sentir, descalço, os materiais do caminho. O minigolfe estende-se à sombra, os póneis seguem um itinerário florestal e as pistas de Tubing desenham uma ampla encosta. Na área de jogos, baloiços e brinquedos de mola ocupam um tapete de aparas delimitado por vedações de madeira.</p><h2>Salpicos e cores de feira</h2><p>No plano de água dos Bumper Boat, os barcos redondos cruzam-se com os seus jatos de água. As grandes pistas coloridas de Waterjump dão ao setor aquático um caráter mais desportivo: descidas e saltos terminam na água, junto à floresta.</p><p>A lagarta multicolor de La Pomme, os cestos de balão de Les as du ciel e os helicópteros de Mono-Rail acrescentam outra fantasia às clareiras. La Roue, Le Batoo e o pequeno comboio completam o ambiente de feira. Entre os divertimentos, Le Petit Creux, Le Grill, L’Escale e Le Gourmand servem hambúrgueres, grelhados, sanduíches ou doces junto de esplanadas sombreadas.</p>"
       }
+    ],
+    "officialMaps": [
+      {
+        "key": "pokeyland-map-2026-fr",
+        "id": "pokeyland-map-2026-fr",
+        "year": 2026,
+        "format": "Pdf",
+        "storageKey": "official-maps/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland-map-2026-fr.ddba2c505c544a4583efe1467a3e80ee.pdf",
+        "originalFileName": "official-map-2026.pdf",
+        "contentType": "application/pdf",
+        "sizeInBytes": 362538,
+        "sourcePageUrl": "https://www.pokeyland.com/plan-du-parc/",
+        "languageCode": "fr",
+        "isVisible": false,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Plan officiel de Pokeyland — 2026"
+          },
+          {
+            "languageCode": "en",
+            "value": "Official Pokeyland map — 2026"
+          },
+          {
+            "languageCode": "de",
+            "value": "Offizieller Parkplan von Pokeyland — 2026"
+          },
+          {
+            "languageCode": "es",
+            "value": "Plano oficial de Pokeyland — 2026"
+          },
+          {
+            "languageCode": "it",
+            "value": "Mappa ufficiale di Pokeyland — 2026"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Officiële plattegrond van Pokeyland — 2026"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Oficjalny plan Pokeyland — 2026"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Mapa oficial de Pokeyland — 2026"
+          }
+        ],
+        "alternativeTexts": [],
+        "lastVerifiedAtUtc": "2026-11-15"
+      }
     ]
   },
   "references": {
@@ -216,21 +267,123 @@
       "name": "Accrobranche",
       "isVisible": false,
       "sortOrder": 1,
-      "id": "15802825-0835-40e0-b211-410bc26e14b9"
+      "id": "15802825-0835-40e0-b211-410bc26e14b9",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Neuf parcours dans la forêt</h2><p>L’espace Accrobranche de Pokeyland utilise les arbres comme cadre d’une progression en hauteur. Ses neuf parcours comprennent les trois Pitchoune, le parcours découverte, le parcours famille, deux parcours aventure, le sportif et celui des tyroliennes.</p><p>Les ateliers sollicitent l’équilibre, l’agilité et la force pour passer d’arbre en arbre. Le parcours tyrolienne se compose entièrement de glissades sur câble à travers la forêt. La variété des itinéraires permet d’aborder différemment ce même environnement boisé, depuis l’initiation jusqu’aux passages plus exigeants.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Nine courses through the forest</h2><p>Pokeyland’s Accrobranche area uses the trees as the setting for progress above ground. Its nine courses include three Pitchoune routes, the discovery and family courses, two adventure courses, the sporting course and the zipline route.</p><p>The obstacles call on balance, agility and strength to move between trees. The zipline course consists entirely of cable slides through the forest. The different routes offer several ways to explore the same wooded environment, from introductory challenges to more demanding passages.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Neun Parcours durch den Wald</h2><p>Der Bereich Accrobranche von Pokeyland nutzt die Bäume als Kulisse für Wege in der Höhe. Zu den neun Parcours gehören drei Pitchoune-Routen, der Entdeckungs- und der Familienparcours, zwei Abenteuerparcours, der Sportparcours und die Seilrutschenroute.</p><p>Die Hindernisse verlangen Gleichgewicht, Geschicklichkeit und Kraft beim Wechsel von Baum zu Baum. Der Seilrutschenparcours besteht ausschließlich aus Fahrten an Seilen durch den Wald. Die verschiedenen Routen erschließen dieselbe bewaldete Umgebung vom Einstieg bis zu anspruchsvolleren Passagen.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Nueve recorridos por el bosque</h2><p>El espacio Accrobranche de Pokeyland utiliza los árboles como entorno para avanzar en altura. Sus nueve recorridos incluyen tres Pitchoune, el de descubrimiento, el familiar, dos de aventura, el deportivo y el de tirolinas.</p><p>Los obstáculos requieren equilibrio, agilidad y fuerza para pasar de un árbol a otro. El recorrido de tirolinas está compuesto exclusivamente por deslizamientos sobre cables a través del bosque. La variedad de rutas permite explorar este mismo entorno arbolado desde la iniciación hasta pasos más exigentes.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Nove percorsi nel bosco</h2><p>L’area Accrobranche di Pokeyland usa gli alberi come scenario per avanzare in altezza. I nove percorsi comprendono tre Pitchoune, quello di scoperta, quello per famiglie, due d’avventura, lo sportivo e quello delle teleferiche.</p><p>Gli ostacoli richiedono equilibrio, agilità e forza per passare da un albero all’altro. Il percorso delle teleferiche è composto interamente da scivolate su cavi attraverso il bosco. La varietà degli itinerari offre diversi modi di esplorare lo stesso ambiente, dall’iniziazione ai passaggi più impegnativi.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Negen routes door het bos</h2><p>De zone Accrobranche van Pokeyland gebruikt de bomen als omgeving voor routes op hoogte. De negen parcoursen omvatten drie Pitchoune-routes, een ontdekkings- en familieparcours, twee avonturenparcoursen, een sportief parcours en een tokkelbaanroute.</p><p>Evenwicht, behendigheid en kracht helpen deelnemers om tussen de bomen door de hindernissen te bewegen. De tokkelbaanroute bestaat volledig uit glijtochten aan kabels door het bos. De verschillende routes bieden meerdere manieren om dezelfde bosrijke omgeving te verkennen, van kennismaking tot zwaardere passages.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Dziewięć tras przez las</h2><p>Strefa Accrobranche w Pokeyland wykorzystuje drzewa jako otoczenie tras na wysokości. Dziewięć przebiegów obejmuje trzy Pitchoune, trasę odkrywczą, rodzinną, dwie przygodowe, sportową i trasę zjazdów na linie.</p><p>Przeszkody wymagają równowagi, zwinności i siły przy przechodzeniu między drzewami. Trasa tyrolkowa składa się wyłącznie ze zjazdów po linach przez las. Różnorodność przebiegów pozwala poznawać to samo leśne otoczenie na różnych poziomach, od nauki podstaw po bardziej wymagające odcinki.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Nove percursos pela floresta</h2><p>O espaço Accrobranche de Pokeyland usa as árvores como cenário para avançar em altura. Os nove percursos incluem três Pitchoune, o de descoberta, o familiar, dois de aventura, o desportivo e o de tirolesas.</p><p>Os obstáculos exigem equilíbrio, agilidade e força para passar de árvore em árvore. O percurso de tirolesas é composto inteiramente por descidas em cabos pela floresta. A variedade de itinerários oferece diferentes formas de explorar o mesmo ambiente arborizado, desde a iniciação até passagens mais exigentes.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-zone-paintball",
       "name": "Paintball",
       "isVisible": false,
       "sortOrder": 2,
-      "id": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+      "id": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Cinq terrains, cinq décors de jeu</h2><p>La zone Paintball rassemble les terrains Zombie, Dog One, Cannibale, Panama et Fox Two. Les équipes y utilisent des lanceurs de billes de peinture au sein de décors aménagés dans la nature.</p><p>Une usine désaffectée mise en scène, un bateau échoué, un village reconstitué, une chapelle et des installations militaires donnent des caractères différents aux terrains. Ces éléments servent de cadre aux scénarios d’affrontement, d’attaque ou de défense proposés selon l’espace choisi.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Five fields with five different settings</h2><p>The Paintball zone brings together Zombie, Dog One, Cannibale, Panama and Fox Two. Teams use paintball markers among themed structures set within natural surroundings.</p><p>A staged abandoned factory, a stranded boat, a reconstructed village, a chapel and military installations give the fields different identities. These elements form the settings for confrontation, attack or defence scenarios offered according to the chosen playing area.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Fünf Spielfelder mit eigener Kulisse</h2><p>Der Bereich Paintball vereint Zombie, Dog One, Cannibale, Panama und Fox Two. Die Teams verwenden Paintball-Markierer in gestalteten Kulissen, die in eine natürliche Umgebung eingebettet sind.</p><p>Eine inszenierte verlassene Fabrik, ein gestrandetes Boot, ein nachgebautes Dorf, eine Kapelle und militärische Anlagen verleihen den Feldern unterschiedliche Charaktere. Diese Elemente bilden je nach gewähltem Bereich den Rahmen für Spielabläufe mit Begegnung, Angriff oder Verteidigung.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Cinco terrenos con cinco escenarios</h2><p>La zona Paintball reúne los terrenos Zombie, Dog One, Cannibale, Panama y Fox Two. Los equipos utilizan marcadoras de bolas de pintura entre decorados instalados en un entorno natural.</p><p>Una fábrica abandonada escenificada, un barco varado, un pueblo reconstruido, una capilla e instalaciones militares dan un carácter distinto a cada terreno. Estos elementos sirven de marco a los escenarios de enfrentamiento, ataque o defensa ofrecidos según el espacio elegido.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Cinque campi con cinque scenari</h2><p>La zona Paintball riunisce i campi Zombie, Dog One, Cannibale, Panama e Fox Two. Le squadre usano marcatori a palline di vernice tra scenografie inserite in un ambiente naturale.</p><p>Una fabbrica abbandonata ricreata, una barca arenata, un villaggio ricostruito, una cappella e installazioni militari danno caratteri diversi ai campi. Questi elementi fanno da sfondo agli scenari di confronto, attacco o difesa proposti in base allo spazio scelto.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Vijf speelvelden met vijf decors</h2><p>De zone Paintball omvat de velden Zombie, Dog One, Cannibale, Panama en Fox Two. Teams gebruiken paintballmarkers tussen decors die in de natuurlijke omgeving zijn geplaatst.</p><p>Een nagebouwde verlaten fabriek, een gestrand schip, een gereconstrueerd dorp, een kapel en militaire installaties geven de velden elk een eigen karakter. Deze elementen vormen het decor voor confrontatie-, aanvals- of verdedigingsscenario’s, afhankelijk van het gekozen speelveld.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pięć pól o różnej scenerii</h2><p>Strefa Paintball obejmuje pola Zombie, Dog One, Cannibale, Panama i Fox Two. Drużyny korzystają z markerów strzelających kulkami z farbą pośród dekoracji urządzonych w naturalnym otoczeniu.</p><p>Sceneria opuszczonej fabryki, osiadła łódź, odtworzona wioska, kaplica i instalacje wojskowe nadają polom różny charakter. Elementy te tworzą tło scenariuszy starcia, ataku lub obrony, zależnie od wybranej przestrzeni gry.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Cinco campos com cinco cenários</h2><p>A zona Paintball reúne os campos Zombie, Dog One, Cannibale, Panama e Fox Two. As equipas usam marcadores de bolas de tinta entre cenários instalados num ambiente natural.</p><p>Uma fábrica abandonada recriada, um barco encalhado, uma aldeia reconstruída, uma capela e instalações militares dão diferentes características aos campos. Estes elementos servem de enquadramento aos cenários de confronto, ataque ou defesa propostos conforme o espaço escolhido.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-zone-waterjump",
       "name": "Waterjump",
       "isVisible": false,
       "sortOrder": 3,
-      "id": "161766a5-cdcd-4675-aef8-3acc9e078098"
+      "id": "161766a5-cdcd-4675-aef8-3acc9e078098",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un espace consacré aux glissades et aux sauts</h2><p>La zone Waterjump rassemble dix-huit pistes et toboggans destinés à différentes formes de glisse aquatique. Les installations permettent d’utiliser des bouées, des bodyboards ou les pistes de bodysurf, avec des tremplins pour les sauts.</p><p>Les secteurs jaunes, bleus, rouges et gris constituent les repères du dispositif. Les pistes de départ côtoient des rampes et des tremplins de difficulté différente, regroupés dans un même espace aquatique à l’intérieur de Pokeyland.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>An area for slides and jumps</h2><p>The Waterjump zone brings together eighteen runs and slides for different forms of aquatic sliding. The installations accommodate tubes, bodyboards and bodysurf runs, with ramps for jumping.</p><p>Yellow, blue, red and grey sections provide visual markers throughout the installation. Starter runs stand alongside ramps and jumps of differing difficulty, grouped within one aquatic area inside Pokeyland.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Bereich für Rutschfahrten und Sprünge</h2><p>Der Bereich Waterjump umfasst achtzehn Bahnen und Rutschen für unterschiedliche Formen des Wasserrutschens. Die Anlagen ermöglichen Fahrten mit Reifen, Bodyboards oder auf Bodysurf-Bahnen sowie Sprünge über Rampen.</p><p>Gelbe, blaue, rote und graue Abschnitte dienen als Orientierungspunkte. Einstiegsbahnen liegen neben Rampen und Sprungschanzen verschiedener Schwierigkeitsgrade, gebündelt in einem gemeinsamen Wasserbereich innerhalb von Pokeyland.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un espacio para deslizarse y saltar</h2><p>La zona Waterjump reúne dieciocho pistas y toboganes destinados a distintas formas de deslizamiento acuático. Las instalaciones permiten utilizar flotadores, tablas de bodyboard o pistas de bodysurf, con rampas para los saltos.</p><p>Los sectores amarillos, azules, rojos y grises sirven de referencia visual. Las pistas de iniciación conviven con rampas y saltos de distinta dificultad, agrupados en un mismo espacio acuático dentro de Pokeyland.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Uno spazio per scivolate e salti</h2><p>La zona Waterjump riunisce diciotto piste e scivoli dedicati a diverse forme di scivolata acquatica. Le installazioni consentono di usare ciambelle, bodyboard o piste da bodysurf, con rampe per i salti.</p><p>I settori gialli, blu, rossi e grigi costituiscono i riferimenti visivi dell’impianto. Le piste per iniziare affiancano rampe e salti di diversa difficoltà, raggruppati in un unico spazio acquatico all’interno di Pokeyland.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een zone voor glijden en springen</h2><p>De zone Waterjump omvat achttien banen en glijbanen voor verschillende vormen van waterglijplezier. Bezoekers gebruiken er banden, bodyboards of bodysurfbanen, met schansen om te springen.</p><p>Gele, blauwe, rode en grijze delen vormen de visuele herkenningspunten. Beginnersbanen liggen naast hellingen en schansen met verschillende moeilijkheidsgraden, samengebracht in één waterzone binnen Pokeyland.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Przestrzeń do ślizgów i skoków</h2><p>Strefa Waterjump obejmuje osiemnaście torów i zjeżdżalni przeznaczonych do różnych form wodnych ślizgów. Instalacje umożliwiają korzystanie z kół, desek bodyboard i torów bodysurf, a rampy służą do skoków.</p><p>Żółte, niebieskie, czerwone i szare sektory stanowią punkty orientacyjne. Tory dla początkujących sąsiadują z rampami i skoczniami o różnym stopniu trudności, zebranymi w jednej strefie wodnej wewnątrz Pokeyland.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um espaço para deslizar e saltar</h2><p>A zona Waterjump reúne dezoito pistas e escorregas destinados a diferentes formas de deslize aquático. As instalações permitem usar boias, pranchas de bodyboard ou pistas de bodysurf, com rampas para os saltos.</p><p>Os setores amarelos, azuis, vermelhos e cinzentos servem de referências visuais. As pistas de iniciação convivem com rampas e saltos de diferentes dificuldades, reunidos num mesmo espaço aquático dentro de Pokeyland.</p>"
+        }
+      ]
     }
   ],
   "items": [
@@ -1173,7 +1326,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/mini-golf/"
       },
-      "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810"
+      "id": "ba78bdc1-d344-4e7c-bf69-d70e678c3810",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Quinze pistes à obstacles dans les arbres</h2><p>Le Mini-golf de Pokeyland réunit quinze trous dans un cadre ombragé. Les joueurs utilisent les clubs mis à disposition pour faire progresser leur balle entre les obstacles et comparer leurs scores au fil du parcours.</p><p>Une des pistes possède un revêtement rose saumon bordé de rouge et de grands obstacles en forme de champignons crème. La clôture de bois et les arbres entourent cette surface colorée, où la balle et le club se détachent nettement. Le jeu associe ainsi de petits décors à la végétation du parc.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Fifteen holes among the trees</h2><p>Pokeyland’s Mini-golf brings together fifteen holes in a shaded setting. Players use the clubs provided to guide their ball between obstacles and compare their scores as they progress around the course.</p><p>One lane has a salmon-pink surface edged in red, with large cream-coloured mushroom obstacles. A wooden fence and trees surround this colourful surface, against which the ball and club stand out. The game combines small decorative features with the park’s vegetation.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Fünfzehn Hindernisbahnen zwischen den Bäumen</h2><p>Der Mini-golf von Pokeyland umfasst fünfzehn Löcher in schattiger Umgebung. Mit den bereitgestellten Schlägern spielen die Besucher ihren Ball zwischen den Hindernissen hindurch und vergleichen im Laufe der Runde ihre Ergebnisse.</p><p>Eine Bahn hat einen lachsrosa Belag mit rotem Rand und großen cremefarbenen Pilzhindernissen. Ein Holzzaun und Bäume umgeben die bunte Fläche, auf der sich Ball und Schläger deutlich abheben. Kleine Dekorationen verbinden sich so mit der Vegetation des Parks.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Quince pistas con obstáculos entre los árboles</h2><p>El Mini-golf de Pokeyland reúne quince hoyos en un entorno sombreado. Los jugadores utilizan los palos disponibles para hacer avanzar la bola entre los obstáculos y comparar sus puntuaciones a lo largo del recorrido.</p><p>Una pista tiene una superficie rosa salmón con bordes rojos y grandes obstáculos en forma de setas color crema. La valla de madera y los árboles rodean esta superficie de colores, sobre la que destacan la bola y el palo. El juego combina pequeños decorados con la vegetación del parque.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Quindici piste a ostacoli tra gli alberi</h2><p>Il Mini-golf di Pokeyland riunisce quindici buche in un ambiente ombreggiato. I giocatori usano le mazze a disposizione per far avanzare la pallina tra gli ostacoli e confrontare i punteggi lungo il percorso.</p><p>Una pista ha una superficie rosa salmone bordata di rosso e grandi ostacoli a forma di funghi color crema. La recinzione di legno e gli alberi circondano questa superficie colorata, sulla quale pallina e mazza risaltano chiaramente. Il gioco unisce piccole decorazioni alla vegetazione del parco.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Vijftien hindernisbanen tussen de bomen</h2><p>De Mini-golf van Pokeyland telt vijftien holes in een schaduwrijke omgeving. Spelers gebruiken de beschikbare clubs om hun bal tussen de hindernissen door te spelen en tijdens de ronde hun scores te vergelijken.</p><p>Eén baan heeft een zalmroze ondergrond met rode randen en grote crèmekleurige paddenstoelen als hindernissen. Een houten hek en bomen omringen dit kleurrijke vlak, waarop de bal en club duidelijk afsteken. Kleine decorstukken gaan hier samen met het groen van het park.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Piętnaście torów z przeszkodami wśród drzew</h2><p>Mini-golf w Pokeyland obejmuje piętnaście dołków w zacienionym otoczeniu. Gracze korzystają z dostępnych kijów, aby prowadzić piłkę między przeszkodami i porównywać wyniki w trakcie rundy.</p><p>Jeden z torów ma łososioworóżową nawierzchnię z czerwonymi krawędziami oraz duże kremowe przeszkody w kształcie grzybów. Drewniane ogrodzenie i drzewa otaczają kolorową powierzchnię, na której wyraźnie widać piłkę i kij. Gra łączy drobne dekoracje z roślinnością parku.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Quinze pistas com obstáculos entre as árvores</h2><p>O Mini-golf de Pokeyland reúne quinze buracos num ambiente com sombra. Os jogadores usam os tacos disponíveis para fazer avançar a bola entre os obstáculos e comparar as pontuações ao longo do percurso.</p><p>Uma pista tem uma superfície rosa-salmão com bordas vermelhas e grandes obstáculos em forma de cogumelos de cor creme. A vedação de madeira e as árvores rodeiam esta superfície colorida, onde a bola e o taco se destacam. O jogo combina pequenas decorações com a vegetação do parque.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-mono-rail",
@@ -1186,7 +1373,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/parc/mono-rail/"
       },
-      "id": "776a9555-8156-4199-980f-e07ccbd44a31"
+      "id": "776a9555-8156-4199-980f-e07ccbd44a31",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Pédaler dans un hélicoptère au-dessus du parc</h2><p>Le Mono-Rail fait avancer ses passagers à la force des pédales, dans des nacelles en forme d’hélicoptère. Le parcours surélevé permet de regarder le paysage depuis les airs tout en restant installé dans le petit appareil.</p><p>La carrosserie blanche, les ouvertures sombres du cockpit et le rotor noir décoratif donnent sa silhouette à l’hélicoptère. Les branches et le feuillage bordent le passage des nacelles : cette proximité des arbres accompagne la promenade aérienne.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Pedalling a helicopter above the park</h2><p>Mono-Rail passengers move under pedal power in helicopter-shaped gondolas. The elevated route lets them view the landscape from above while remaining seated in the small aircraft.</p><p>A white body, dark cockpit openings and a decorative black rotor give the helicopter its outline. Branches and foliage border the gondolas’ route, bringing the trees close to this aerial ride along a fixed course.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Im Hubschrauber über den Park radeln</h2><p>Beim Mono-Rail bewegen sich die Fahrgäste mit Pedalkraft in hubschrauberförmigen Gondeln vorwärts. Die erhöhte Strecke ermöglicht einen Blick von oben auf die Landschaft, während man im kleinen Fluggerät sitzen bleibt.</p><p>Eine weiße Karosserie, dunkle Cockpitöffnungen und ein schwarzer Zierrotor prägen die Form des Hubschraubers. Äste und Laub säumen den Weg der Gondeln. Die Bäume stehen auf dieser erhöhten Fahrt entlang einer festen Strecke ganz in der Nähe.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Pedalear en un helicóptero sobre el parque</h2><p>Los pasajeros del Mono-Rail avanzan a pedales en góndolas con forma de helicóptero. El recorrido elevado permite observar el paisaje desde arriba sin abandonar el pequeño aparato.</p><p>La carrocería blanca, las aberturas oscuras de la cabina y el rotor negro decorativo definen la silueta del helicóptero. Las ramas y el follaje bordean el paso de las góndolas. La cercanía de los árboles acompaña este paseo aéreo por una ruta fija.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Pedalare in elicottero sopra il parco</h2><p>I passeggeri del Mono-Rail avanzano a pedali in gondole a forma di elicottero. Il percorso sopraelevato consente di osservare il paesaggio dall’alto restando seduti nel piccolo apparecchio.</p><p>La carrozzeria bianca, le aperture scure dell’abitacolo e il rotore nero decorativo delineano la sagoma dell’elicottero. Rami e foglie costeggiano il passaggio delle gondole. La vicinanza degli alberi accompagna questa passeggiata aerea su un percorso fisso.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>In een helikopter boven het park fietsen</h2><p>Passagiers van de Mono-Rail bewegen met trapkracht voort in helikoptervormige gondels. Vanaf de verhoogde route bekijken ze het landschap van boven, terwijl ze in het kleine toestel blijven zitten.</p><p>Een witte carrosserie, donkere cockpitopeningen en een zwarte sierrotor bepalen het silhouet van de helikopter. Takken en bladeren omzomen de route van de gondels. De bomen staan dichtbij tijdens deze tocht door de lucht langs een vaste baan.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pedałowanie w helikopterze nad parkiem</h2><p>Pasażerowie Mono-Rail napędzają pedałami gondole w kształcie helikopterów. Podwyższona trasa pozwala oglądać krajobraz z góry, pozostając na miejscu w niewielkim pojeździe.</p><p>Biała karoseria, ciemne otwory kabiny i czarny ozdobny wirnik tworzą sylwetkę helikoptera. Gałęzie i liście otaczają trasę gondoli. Bliskość drzew towarzyszy tej powietrznej przejażdżce po stałym torze.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Pedalar num helicóptero sobre o parque</h2><p>Os passageiros do Mono-Rail avançam a pedais em gôndolas com forma de helicóptero. O percurso elevado permite observar a paisagem de cima, mantendo-se sentados no pequeno aparelho.</p><p>A carroçaria branca, as aberturas escuras do cockpit e o rotor preto decorativo definem a silhueta do helicóptero. Ramos e folhagem acompanham a passagem das gôndolas. As árvores ficam próximas durante este passeio aéreo num trajeto fixo.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-parcours-pieds-nus",
@@ -1199,7 +1420,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/bonus/parcours-pieds-nus/"
       },
-      "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749"
+      "id": "5a714160-d2ed-42cb-8cb0-fc22c3508749",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des textures à découvrir sous les pieds</h2><p>Le Parcours pieds nus invite à enlever ses chaussures pour éprouver directement les matériaux du chemin. La découverte passe par le contact avec les plantes des pieds, au fil de surfaces successives aménagées dans un cadre végétal.</p><p>Des rondins séparent notamment des bandes de petits cailloux gris et blancs, puis une surface sableuse. L’herbe borde ces compartiments allongés.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Textures to discover underfoot</h2><p>Parcours pieds nus invites visitors to remove their shoes and feel the path’s materials directly. The experience centres on contact with the soles of the feet as walkers cross a succession of surfaces in a planted setting.</p><p>Logs separate strips of small grey and white stones, followed by a sandy surface. Grass borders these elongated compartments.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Unterschiedliche Oberflächen unter den Füßen</h2><p>Der Parcours pieds nus lädt dazu ein, die Schuhe auszuziehen und die Materialien des Weges unmittelbar zu spüren. Im Mittelpunkt steht der Kontakt mit den Fußsohlen beim Überqueren aufeinanderfolgender Flächen in begrünter Umgebung.</p><p>Rundhölzer trennen unter anderem Streifen aus kleinen grauen und weißen Steinen, gefolgt von einer sandigen Fläche. Gras säumt die länglichen Abschnitte.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Texturas para descubrir bajo los pies</h2><p>Parcours pieds nus invita a quitarse los zapatos para sentir directamente los materiales del camino. La experiencia se basa en el contacto con las plantas de los pies al cruzar superficies sucesivas en un entorno vegetal.</p><p>Troncos separan franjas de pequeñas piedras grises y blancas, seguidas de una superficie arenosa. La hierba bordea estos compartimentos alargados.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Texture da scoprire sotto i piedi</h2><p>Il Parcours pieds nus invita a togliersi le scarpe per sentire direttamente i materiali del sentiero. L’esperienza passa attraverso il contatto con le piante dei piedi, lungo superfici successive inserite in un ambiente vegetale.</p><p>Tronchi separano fasce di piccoli sassi grigi e bianchi, seguite da una superficie sabbiosa. L’erba delimita questi scomparti allungati.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Verschillende structuren onder de voeten</h2><p>Parcours pieds nus nodigt bezoekers uit om hun schoenen uit te trekken en de materialen van het pad rechtstreeks te voelen. Het contact met de voetzolen staat centraal bij het oversteken van opeenvolgende ondergronden in het groen.</p><p>Boomstammetjes scheiden stroken kleine grijze en witte stenen, gevolgd door een zanderig oppervlak. Gras omzoomt deze langgerekte vakken.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Faktury poznawane bosymi stopami</h2><p>Parcours pieds nus zachęca do zdjęcia butów i bezpośredniego poznawania materiałów ścieżki. Doświadczenie opiera się na kontakcie podeszew stóp z kolejnymi powierzchniami urządzonymi wśród roślinności.</p><p>Okrągłe belki rozdzielają pasy drobnych szarych i białych kamieni, za którymi znajduje się piaszczysta nawierzchnia. Trawa otacza te podłużne części.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Texturas para descobrir debaixo dos pés</h2><p>O Parcours pieds nus convida a descalçar os sapatos para sentir diretamente os materiais do caminho. A experiência passa pelo contacto com as plantas dos pés ao longo de superfícies sucessivas num ambiente vegetal.</p><p>Troncos separam faixas de pequenas pedras cinzentas e brancas, seguidas de uma superfície arenosa. A relva ladeia estes compartimentos alongados.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-poney",
@@ -1227,7 +1482,41 @@
           }
         ]
       },
-      "id": "90c00f80-deb0-4b63-9451-ed8cc255461c"
+      "id": "90c00f80-deb0-4b63-9451-ed8cc255461c",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une promenade avec les poneys dans la forêt</h2><p>L’activité Poney permet une découverte de l’équitation en extérieur sur un parcours réservé dans la forêt de Pokeyland. L’enfant monte un véritable animal, accompagné à pied pendant la promenade.</p><p>Le sentier de terre passe entre des barrières en bois et la végétation. Le poney, le jeune cavalier casqué et les personnes qui marchent à ses côtés partagent cette allée ombragée. Cette rencontre avec les animaux constitue une offre distincte des chevaux mécaniques des P’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A woodland walk with ponies</h2><p>The Poney activity introduces outdoor horse riding on a dedicated route through Pokeyland’s forest. The child rides a live animal, accompanied by people on foot during the outing.</p><p>The earthen path runs between wooden fences and vegetation. The pony, its young helmeted rider and the people walking alongside share the shaded lane. This encounter with animals is a separate activity from the mechanical horses of Les p’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Mit Ponys durch den Wald</h2><p>Die Aktivität Poney bietet einen Einstieg in das Reiten im Freien auf einer eigenen Strecke durch den Wald von Pokeyland. Das Kind sitzt auf einem echten Tier und wird während des Ausritts zu Fuß begleitet.</p><p>Der Erdweg führt zwischen Holzzäunen und Vegetation hindurch. Das Pony, der junge Reiter mit Helm und die begleitenden Personen teilen sich den schattigen Weg. Diese Begegnung mit Tieren ist ein eigenes Angebot neben den mechanischen Pferden von Les p’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un paseo con ponis por el bosque</h2><p>La actividad Poney permite descubrir la equitación al aire libre en un recorrido reservado por el bosque de Pokeyland. El niño monta un animal vivo, acompañado a pie durante el paseo.</p><p>El sendero de tierra discurre entre vallas de madera y vegetación. El poni, el joven jinete con casco y las personas que caminan a su lado comparten este camino sombreado. El encuentro con los animales constituye una actividad distinta de los caballos mecánicos de Les p’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una passeggiata con i pony nel bosco</h2><p>L’attività Poney permette di avvicinarsi all’equitazione all’aperto su un percorso riservato nel bosco di Pokeyland. Il bambino monta un animale vivo, accompagnato a piedi durante la passeggiata.</p><p>Il sentiero di terra passa tra recinzioni di legno e vegetazione. Il pony, il giovane cavaliere con il casco e le persone che camminano al suo fianco condividono il viale ombreggiato. Questo incontro con gli animali è distinto dai cavalli meccanici di Les p’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een wandeling met pony’s door het bos</h2><p>Bij Poney maken kinderen kennis met buiten rijden op een eigen route door het bos van Pokeyland. Het kind rijdt op een levend dier en wordt tijdens het uitstapje te voet begeleid.</p><p>Het aarden pad loopt tussen houten hekken en begroeiing. De pony, de jonge ruiter met helm en de begeleiders delen deze schaduwrijke laan. Deze ontmoeting met dieren is een afzonderlijk aanbod naast de mechanische paarden van Les p’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Spacer z kucykami przez las</h2><p>Atrakcja Poney pozwala poznać jazdę konną na świeżym powietrzu, na wydzielonej trasie w lesie Pokeyland. Dziecko dosiada żywego zwierzęcia i podczas przejażdżki towarzyszą mu piesi opiekunowie.</p><p>Ziemna ścieżka prowadzi między drewnianymi ogrodzeniami a roślinnością. Kucyk, młody jeździec w kasku i osoby idące obok dzielą zacienioną alejkę. To spotkanie ze zwierzętami stanowi odrębną ofertę od mechanicznych koni Les p’tits chevaux.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um passeio com póneis pela floresta</h2><p>A atividade Poney permite descobrir a equitação ao ar livre num percurso reservado na floresta de Pokeyland. A criança monta um animal vivo, acompanhada a pé durante o passeio.</p><p>O caminho de terra passa entre vedações de madeira e vegetação. O pónei, o jovem cavaleiro de capacete e as pessoas que caminham ao lado partilham esta alameda com sombra. Este encontro com os animais constitui uma atividade distinta dos cavalos mecânicos de Les p’tits chevaux.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-quad-kids",
@@ -1241,7 +1530,41 @@
         "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/quad-kids/",
         "openingDateText": "2023"
       },
-      "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00"
+      "id": "6fcf30ca-25a3-4ee0-be26-f9e252109a00",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des karts électriques sur un circuit dédié</h2><p>Kid’s Racer met les enfants au volant de petits karts électriques, avec la possibilité pour un adulte de prendre place comme accompagnateur. La conduite se déroule sur un circuit aménagé pour ces véhicules, au milieu de la végétation de Pokeyland.</p><p>Les carrosseries orange, noires et blanches entourent une assise basse et un volant. Des protections noires bordent la chaussée, tandis que le pilote casqué reste visible dans son véhicule ouvert. Ces karts carénés se distinguent des quads à guidon présents dans les documents plus anciens du parc.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Electric karts on a dedicated circuit</h2><p>Kid’s Racer puts children behind the wheel of small electric karts, with the option of an adult riding along. Driving takes place on a circuit prepared for these vehicles amid Pokeyland’s vegetation.</p><p>Orange, black and white bodywork surrounds a low seat and steering wheel. Black barriers line the roadway, while the helmeted driver remains visible in the open vehicle. These enclosed-body karts differ from the handlebar-controlled quads shown in older park documents.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Elektrokarts auf einer eigenen Strecke</h2><p>Bei Kid’s Racer sitzen Kinder am Steuer kleiner Elektrokarts; ein Erwachsener kann sie im Fahrzeug begleiten. Gefahren wird auf einer für diese Fahrzeuge angelegten Strecke inmitten der Vegetation von Pokeyland.</p><p>Orangefarbene, schwarze und weiße Karosserieteile umgeben einen niedrigen Sitz und ein Lenkrad. Schwarze Schutzbarrieren säumen die Fahrbahn, während der Fahrer mit Helm im offenen Fahrzeug sichtbar bleibt. Diese Karts mit Karosserie unterscheiden sich von den Quads mit Motorradlenker in älteren Parkunterlagen.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Karts eléctricos en un circuito propio</h2><p>Kid’s Racer pone a los niños al volante de pequeños karts eléctricos, con la posibilidad de que un adulto suba como acompañante. La conducción se realiza en un circuito preparado para estos vehículos, entre la vegetación de Pokeyland.</p><p>Las carrocerías naranjas, negras y blancas rodean un asiento bajo y un volante. Barreras negras delimitan la calzada, mientras el conductor con casco permanece visible en su vehículo abierto. Estos karts con carrocería se distinguen de los quads con manillar de los documentos más antiguos del parque.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Kart elettrici su un circuito dedicato</h2><p>Kid’s Racer mette i bambini al volante di piccoli kart elettrici, con la possibilità per un adulto di salire come accompagnatore. La guida si svolge su un circuito predisposto per questi veicoli, tra la vegetazione di Pokeyland.</p><p>Le carrozzerie arancioni, nere e bianche circondano un sedile basso e un volante. Barriere nere delimitano la carreggiata, mentre il pilota con il casco rimane visibile nel veicolo aperto. Questi kart carenati sono distinti dai quad con manubrio presenti nei documenti più vecchi del parco.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Elektrische karts op een eigen circuit</h2><p>Bij Kid’s Racer nemen kinderen het stuur van kleine elektrische karts in handen. Een volwassene kan als begeleider meerijden. De rit vindt plaats op een speciaal aangelegd circuit tussen het groen van Pokeyland.</p><p>Oranje, zwarte en witte carrosseriedelen omringen een lage zitplaats en een stuurwiel. Zwarte beschermranden begrenzen het wegdek; de bestuurder met helm blijft zichtbaar in het open voertuig. Deze karts met carrosserie verschillen van de quads met motorstuur in oudere parkdocumenten.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Elektryczne gokarty na wydzielonym torze</h2><p>Kid’s Racer pozwala dzieciom prowadzić małe elektryczne gokarty, z możliwością przejazdu dorosłego opiekuna. Jazda odbywa się na torze przygotowanym dla tych pojazdów, wśród roślinności Pokeyland.</p><p>Pomarańczowe, czarne i białe nadwozia otaczają niskie siedzenie i kierownicę. Czarne bariery wyznaczają krawędzie nawierzchni, a kierowca w kasku pozostaje widoczny w otwartym pojeździe. Te gokarty z nadwoziem różnią się od quadów z kierownicą motocyklową przedstawianych w starszych materiałach parku.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Karts elétricos num circuito dedicado</h2><p>Kid’s Racer coloca as crianças ao volante de pequenos karts elétricos, com a possibilidade de um adulto viajar como acompanhante. A condução decorre num circuito preparado para estes veículos, entre a vegetação de Pokeyland.</p><p>As carroçarias laranja, pretas e brancas rodeiam um assento baixo e um volante. Barreiras pretas delimitam a via, enquanto o condutor de capacete permanece visível no veículo aberto. Estes karts com carroçaria distinguem-se dos quads com guiador presentes nos documentos mais antigos do parque.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-tir-a-larc",
@@ -1262,7 +1585,41 @@
           }
         ]
       },
-      "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9"
+      "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Viser le centre des cibles</h2><p>Le Tir à l’arc de Pokeyland est une activité d’initiation encadrée par les animateurs du parc. L’apprentissage du maniement de l’arc et de la flèche précède la recherche du meilleur score. Le matériel proposé s’adapte à différents gabarits et niveaux de pratique.</p><p>Les cibles sur pied présentent des cercles concentriques blancs, noirs, bleus, rouges et jaunes. Des panneaux de bois et des filets délimitent l’espace de tir, ouvert sur la végétation. Ces repères colorés donnent un objectif précis au geste du joueur.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Aiming at the centre of the targets</h2><p>Pokeyland’s Tir à l’arc is an introductory archery activity led by park instructors. Learning to handle the bow and arrow comes before trying to achieve the best score. The equipment provided accommodates different sizes and experience levels.</p><p>The freestanding targets display concentric white, black, blue, red and yellow circles. Wooden panels and netting define the shooting area, which opens onto the vegetation. These coloured markings give the player a precise point to aim for.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Auf die Mitte der Zielscheiben zielen</h2><p>Tir à l’arc in Pokeyland bietet einen Einstieg ins Bogenschießen unter Anleitung der Parkbetreuer. Zunächst wird der Umgang mit Pfeil und Bogen erlernt, bevor es um eine möglichst hohe Punktzahl geht. Die bereitgestellte Ausrüstung eignet sich für unterschiedliche Körpergrößen und Erfahrungsstufen.</p><p>Die aufgestellten Zielscheiben zeigen konzentrische weiße, schwarze, blaue, rote und gelbe Kreise. Holztafeln und Netze begrenzen den zur Vegetation hin offenen Schießbereich. Die farbigen Markierungen geben der Bewegung des Schützen ein genaues Ziel.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Apuntar al centro de las dianas</h2><p>Tir à l’arc de Pokeyland es una actividad de iniciación al tiro con arco dirigida por los monitores del parque. El aprendizaje del manejo del arco y la flecha precede a la búsqueda de la mejor puntuación. El material disponible se adapta a distintas tallas y niveles de práctica.</p><p>Las dianas sobre soportes presentan círculos concéntricos blancos, negros, azules, rojos y amarillos. Paneles de madera y redes delimitan el espacio de tiro, abierto hacia la vegetación. Estas marcas de colores dan un objetivo preciso al gesto del jugador.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Mirare al centro dei bersagli</h2><p>Tir à l’arc di Pokeyland è un’attività introduttiva al tiro con l’arco seguita dagli animatori del parco. L’apprendimento dell’uso di arco e freccia precede la ricerca del miglior punteggio. Il materiale disponibile si adatta a diverse corporature e livelli di esperienza.</p><p>I bersagli su supporti presentano cerchi concentrici bianchi, neri, blu, rossi e gialli. Pannelli di legno e reti delimitano lo spazio di tiro, aperto verso la vegetazione. Questi riferimenti colorati danno un obiettivo preciso al gesto del giocatore.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Mikken op het midden van de doelen</h2><p>Tir à l’arc van Pokeyland is een kennismaking met boogschieten onder begeleiding van parkmedewerkers. Eerst leren deelnemers omgaan met pijl en boog; daarna proberen ze een zo hoog mogelijke score te halen. Het materiaal is geschikt voor verschillende lichaamsgroottes en ervaringsniveaus.</p><p>De doelen op standaards hebben concentrische witte, zwarte, blauwe, rode en gele ringen. Houten panelen en netten begrenzen het schietterrein, dat op het groen uitkijkt. De gekleurde markeringen geven de beweging van de speler een precies mikpunt.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Celowanie w środek tarczy</h2><p>Tir à l’arc w Pokeyland wprowadza w łucznictwo pod opieką instruktorów parku. Nauka posługiwania się łukiem i strzałą poprzedza próby uzyskania najlepszego wyniku. Udostępniany sprzęt dostosowano do różnych warunków fizycznych i poziomów doświadczenia.</p><p>Tarcze na stojakach mają koncentryczne białe, czarne, niebieskie, czerwone i żółte kręgi. Drewniane panele i siatki wyznaczają przestrzeń strzelecką, otwartą w stronę roślinności. Kolorowe oznaczenia dają graczowi konkretny punkt, w który może celować.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Apontar ao centro dos alvos</h2><p>Tir à l’arc de Pokeyland é uma atividade de iniciação ao tiro com arco orientada pelos monitores do parque. A aprendizagem do uso do arco e da flecha precede a procura da melhor pontuação. O material disponível adapta-se a diferentes estaturas e níveis de experiência.</p><p>Os alvos em suportes apresentam círculos concêntricos brancos, pretos, azuis, vermelhos e amarelos. Painéis de madeira e redes delimitam o espaço de tiro, aberto para a vegetação. Estas marcas coloridas dão um objetivo preciso ao gesto do jogador.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-trampoline",
@@ -1283,7 +1640,41 @@
           }
         ]
       },
-      "id": "ef2faeeb-d008-419e-871b-f88df2d73c09"
+      "id": "ef2faeeb-d008-419e-871b-f88df2d73c09",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Sauter avec des élastiques</h2><p>L’espace Trampoline de Pokeyland rassemble huit trampolines. Le participant porte un harnais relié à des élastiques, qui accompagnent ses bonds. Cette installation place le mouvement vertical au centre du jeu, dans le cadre boisé du parc.</p><p>Les cordons orange et les protections jaunes ressortent sur le fond des arbres. Le harnais noir entoure le corps du sauteur, tandis que les attaches restent visibles de part et d’autre. Les couleurs de l’équipement forment ainsi le principal repère visuel de cette activité.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Jumping with elastic cords</h2><p>Pokeyland’s Trampoline area contains eight trampolines. Participants wear a harness connected to elastic cords that accompany their jumps. The installation centres the activity on vertical movement within the park’s wooded surroundings.</p><p>Orange cords and yellow padding stand out against the trees. A black harness surrounds the jumper’s body, with the attachments visible on either side. The equipment’s colours provide the activity’s main visual markers.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Springen mit elastischen Seilen</h2><p>Der Bereich Trampoline in Pokeyland umfasst acht Trampoline. Die Teilnehmer tragen einen Gurt, der mit elastischen Seilen verbunden ist und ihre Sprünge begleitet. In der bewaldeten Umgebung des Parks steht hier die Bewegung nach oben und unten im Mittelpunkt.</p><p>Orangefarbene Seile und gelbe Polster heben sich von den Bäumen ab. Ein schwarzer Gurt umschließt den Körper des Springers; die Befestigungen bleiben auf beiden Seiten sichtbar. Die Farben der Ausrüstung prägen das Erscheinungsbild dieser Aktivität.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Saltar con cuerdas elásticas</h2><p>El espacio Trampoline de Pokeyland reúne ocho camas elásticas. El participante lleva un arnés unido a cuerdas elásticas que acompañan sus saltos. La instalación centra la actividad en el movimiento vertical, dentro del entorno arbolado del parque.</p><p>Las cuerdas naranjas y las protecciones amarillas destacan sobre el fondo de árboles. Un arnés negro rodea el cuerpo del saltador y las sujeciones permanecen visibles a ambos lados. Los colores del equipo constituyen los principales rasgos visuales de esta actividad.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Saltare con le corde elastiche</h2><p>L’area Trampoline di Pokeyland riunisce otto trampolini. Il partecipante indossa un’imbracatura collegata a corde elastiche che accompagnano i suoi salti. L’installazione pone il movimento verticale al centro del gioco, nell’ambiente boschivo del parco.</p><p>Le corde arancioni e le protezioni gialle risaltano sullo sfondo degli alberi. L’imbracatura nera circonda il corpo di chi salta, con gli attacchi visibili ai due lati. I colori dell’attrezzatura costituiscono i principali riferimenti visivi dell’attività.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Springen met elastische koorden</h2><p>De zone Trampoline van Pokeyland telt acht trampolines. De deelnemer draagt een harnas dat verbonden is met elastische koorden die de sprongen begeleiden. De verticale beweging staat centraal in deze activiteit, in de bosrijke omgeving van het park.</p><p>Oranje koorden en gele beschermkussens steken af tegen de bomen. Een zwart harnas omsluit het lichaam van de springer; de bevestigingen blijven aan beide kanten zichtbaar. De kleuren van de uitrusting bepalen zo het uiterlijk van deze activiteit.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Skoki z elastycznymi linami</h2><p>Strefa Trampoline w Pokeyland obejmuje osiem trampolin. Uczestnik zakłada uprząż połączoną z elastycznymi linami, które towarzyszą jego skokom. Ta instalacja stawia ruch pionowy w centrum zabawy, w leśnym otoczeniu parku.</p><p>Pomarańczowe liny i żółte osłony wyróżniają się na tle drzew. Czarna uprząż otacza ciało skaczącej osoby, a mocowania pozostają widoczne po obu stronach. Kolory wyposażenia stanowią główne rozpoznawalne elementy tej atrakcji.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Saltar com cordas elásticas</h2><p>O espaço Trampoline de Pokeyland reúne oito trampolins. O participante usa um arnês ligado a cordas elásticas que acompanham os seus saltos. A instalação coloca o movimento vertical no centro da atividade, no ambiente arborizado do parque.</p><p>As cordas laranja e as proteções amarelas destacam-se no fundo de árvores. O arnês preto envolve o corpo de quem salta, com as ligações visíveis dos dois lados. As cores do equipamento constituem os principais elementos visuais desta atividade.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-tubing",
@@ -1317,7 +1708,41 @@
           }
         ]
       },
-      "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13"
+      "id": "0ac52923-895e-4644-9abc-6b1bf9b05e13",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une descente en bouée sur une piste verte</h2><p>Le Tubing de Pokeyland propose de glisser assis dans une grande bouée sur une piste de quatre-vingts mètres. Un tapis permet ensuite la remontée dans l’espace de jeu. La descente suit un revêtement aménagé, dans le cadre végétal du parc.</p><p>La surface verte est bordée d’éléments orange. Les bouées portent notamment des motifs de camouflage orange et vert, une poignée et le nom de Pokeyland. Leur forme ronde et leur fond jaune restent bien visibles lorsque l’engin se trouve sur la piste.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A tube ride down a green slope</h2><p>Pokeyland’s Tubing sends riders downhill seated in a large tube on an eighty-metre run. A conveyor then provides the uphill return within the play area. The descent follows a prepared surface amid the park’s vegetation.</p><p>Orange elements border the green surface. The tubes include orange and green camouflage patterns, a handle and the Pokeyland name. Their round shape and yellow base remain clearly visible when the tube is on the slope.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Reifenfahrt auf grüner Bahn</h2><p>Beim Tubing in Pokeyland gleiten die Besucher in einem großen Reifen eine achtzig Meter lange Bahn hinunter. Ein Förderband ermöglicht anschließend den Weg zurück nach oben innerhalb des Spielbereichs. Die Abfahrt folgt einem angelegten Belag inmitten der Parkvegetation.</p><p>Orangefarbene Elemente begrenzen die grüne Fläche. Die Reifen tragen unter anderem orange-grüne Tarnmuster, einen Griff und den Namen Pokeyland. Ihre runde Form und der gelbe Boden sind auf der Bahn gut zu erkennen.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un descenso en flotador por una pista verde</h2><p>El Tubing de Pokeyland propone deslizarse sentado en un gran flotador por una pista de ochenta metros. Una cinta permite después volver a subir dentro del espacio de juego. El descenso sigue una superficie preparada, entre la vegetación del parque.</p><p>Elementos naranjas bordean la superficie verde. Los flotadores llevan, entre otros detalles, dibujos de camuflaje naranja y verde, un asa y el nombre de Pokeyland. Su forma redonda y su base amarilla se distinguen bien cuando están sobre la pista.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una discesa in ciambella su una pista verde</h2><p>Il Tubing di Pokeyland propone di scivolare seduti in una grande ciambella su una pista di ottanta metri. Un tappeto permette poi la risalita all’interno dell’area giochi. La discesa segue una superficie predisposta, tra la vegetazione del parco.</p><p>Elementi arancioni delimitano la superficie verde. Le ciambelle presentano, fra gli altri dettagli, motivi mimetici arancioni e verdi, una maniglia e il nome Pokeyland. La forma rotonda e il fondo giallo restano ben visibili quando si trovano sulla pista.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Op een band van een groene helling</h2><p>Bij Tubing in Pokeyland glijden bezoekers zittend in een grote band over een tachtig meter lange baan naar beneden. Een transportband brengt hen vervolgens weer omhoog binnen het speelterrein. De afdaling verloopt over een aangelegde ondergrond tussen het groen van het park.</p><p>Oranje elementen begrenzen het groene oppervlak. De banden hebben onder meer oranje-groene camouflagepatronen, een handgreep en de naam Pokeyland. Hun ronde vorm en gele bodem zijn op de helling duidelijk zichtbaar.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Zjazd na oponie po zielonym torze</h2><p>Tubing w Pokeyland pozwala zjeżdżać na dużej oponie po osiemdziesięciometrowym torze. Przenośnik umożliwia następnie powrót pod górę w obrębie strefy zabawy. Zjazd prowadzi po przygotowanej nawierzchni wśród roślinności parku.</p><p>Pomarańczowe elementy wyznaczają krawędzie zielonej powierzchni. Opony mają między innymi pomarańczowo-zielony wzór maskujący, uchwyt i nazwę Pokeyland. Ich okrągły kształt i żółty spód są dobrze widoczne na torze.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma descida em boia numa pista verde</h2><p>O Tubing de Pokeyland propõe deslizar sentado numa grande boia por uma pista de oitenta metros. Um tapete permite depois regressar à parte de cima do espaço de jogos. A descida segue uma superfície preparada, entre a vegetação do parque.</p><p>Elementos laranja delimitam a superfície verde. As boias apresentam, entre outros detalhes, padrões de camuflagem laranja e verde, uma pega e o nome Pokeyland. A forma redonda e o fundo amarelo mantêm-se bem visíveis quando se encontram na pista.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-cabanes",
@@ -1344,7 +1769,41 @@
           }
         ]
       },
-      "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4"
+      "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Passer de cabane en cabane dans les arbres</h2><p>Les Cabanes de Pokey réunissent un grand espace de filets suspendus et des cabanes accessibles par des ponts de singe. Les enfants évoluent en hauteur au milieu des arbres, avec la possibilité d’être accompagnés par un adulte.</p><p>Les passages sont entourés de filets qui forment aussi les côtés des ponts. Les mailles laissent apparaître les branches et le feuillage tout autour du joueur. Ce parcours relie des espaces de jeu dans les arbres, avec une progression de cabane en cabane au-dessus du sol.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Moving between cabins in the trees</h2><p>Cabanes de Pokey combines a large area of suspended netting with cabins reached by rope bridges. Children play above ground among the trees, with the option of an adult accompanying them.</p><p>Netting surrounds the passages and forms the sides of the bridges. Its mesh leaves branches and foliage visible all around the player. The route links play spaces in the trees, progressing from cabin to cabin above the ground.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Von Hütte zu Hütte zwischen den Bäumen</h2><p>Cabanes de Pokey verbindet eine große Fläche aus aufgehängten Netzen mit Hütten, die über Seilbrücken erreichbar sind. Kinder spielen erhöht zwischen den Bäumen und können von einem Erwachsenen begleitet werden.</p><p>Netze umgeben die Durchgänge und bilden zugleich die Seiten der Brücken. Durch die Maschen bleiben Äste und Laub rund um die Spieler sichtbar. Der Parcours verbindet Spielräume in den Bäumen und führt über dem Boden von Hütte zu Hütte.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Pasar de cabaña en cabaña entre los árboles</h2><p>Cabanes de Pokey reúne un gran espacio de redes suspendidas y cabañas a las que se llega por puentes de cuerda. Los niños juegan en altura entre los árboles, con la posibilidad de estar acompañados por un adulto.</p><p>Las redes rodean los pasos y forman también los laterales de los puentes. A través de las mallas se ven las ramas y el follaje alrededor del jugador. El recorrido conecta espacios de juego entre los árboles, avanzando de cabaña en cabaña sobre el suelo.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Passare da una capanna all’altra tra gli alberi</h2><p>Cabanes de Pokey riunisce un grande spazio di reti sospese e capanne raggiungibili tramite ponti di corde. I bambini giocano in altezza tra gli alberi, con la possibilità di essere accompagnati da un adulto.</p><p>Le reti circondano i passaggi e formano anche i lati dei ponti. Attraverso le maglie restano visibili rami e foglie tutt’attorno a chi gioca. Il percorso collega spazi di gioco negli alberi, procedendo da una capanna all’altra sopra il terreno.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Van hut naar hut tussen de bomen</h2><p>Cabanes de Pokey combineert een groot oppervlak van hangende netten met hutten die via touwbruggen bereikbaar zijn. Kinderen spelen boven de grond tussen de bomen en kunnen door een volwassene worden begeleid.</p><p>Netten omringen de doorgangen en vormen ook de zijkanten van de bruggen. Door de mazen blijven takken en bladeren rondom de speler zichtbaar. De route verbindt speelplekken in de bomen en voert boven de grond van hut naar hut.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Z chatki do chatki wśród drzew</h2><p>Cabanes de Pokey łączy rozległą przestrzeń zawieszonych siatek z chatkami dostępnymi przez mosty linowe. Dzieci bawią się na wysokości wśród drzew, z możliwością towarzyszenia im przez dorosłego.</p><p>Siatki otaczają przejścia i tworzą również boki mostów. Przez oczka widać gałęzie i liście wokół uczestnika. Trasa łączy miejsca zabawy na drzewach, prowadząc z chatki do chatki ponad ziemią.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Passar de cabana em cabana entre as árvores</h2><p>Cabanes de Pokey reúne uma grande área de redes suspensas e cabanas acessíveis por pontes de cordas. As crianças brincam em altura entre as árvores, com a possibilidade de serem acompanhadas por um adulto.</p><p>As redes envolvem as passagens e formam também as laterais das pontes. Pelas malhas veem-se os ramos e a folhagem em redor de quem brinca. O percurso liga espaços de jogo nas árvores, avançando de cabana em cabana acima do solo.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-parcours-pitchoune-1",
@@ -1605,7 +2064,41 @@
         "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
       },
       "id": "d7074297-19a0-44e6-a196-c251ea484d46",
-      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un débarquement en décor</h2><p>Dog One reprend l’imaginaire d’un débarquement pour son terrain de paintball. Un véritable bateau échoué sur une plage et une barge composent ce paysage de combat reconstitué à Pokeyland.</p><h2>Le véhicule camouflé</h2><p>La photographie officielle montre aussi un véhicule blindé de décor, peint en vert et beige et marqué du numéro 302. Il repose entre les arbres, devant des cloisons basses en bois.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A landing scene</h2><p>Dog One draws on the imagery of a military landing for its paintball field. A real boat stranded on a beach and a barge form part of this recreated battlefield at Pokeyland.</p><h2>A camouflaged vehicle</h2><p>The official photograph also shows a prop armoured vehicle painted green and beige and marked 302. It stands among the trees in front of low wooden barriers.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Landung als Kulisse</h2><p>Dog One greift für sein Paintballgelände das Motiv einer militärischen Landung auf. Ein echtes, an einem Strand gestrandetes Boot und ein Lastkahn gehören zu diesem nachgebauten Schauplatz in Pokeyland.</p><h2>Ein Fahrzeug in Tarnfarben</h2><p>Das offizielle Foto zeigt außerdem ein gepanzertes Dekorfahrzeug in Grün und Beige mit der Nummer 302. Es steht zwischen den Bäumen vor niedrigen Holzwänden.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un desembarco como escenario</h2><p>Dog One recurre al imaginario de un desembarco militar para su campo de paintball. Un barco real varado en una playa y una barcaza forman parte de este paisaje de combate recreado en Pokeyland.</p><h2>Un vehículo camuflado</h2><p>La fotografía oficial muestra también un vehículo blindado de decorado, pintado de verde y beige y marcado con el número 302. Está entre los árboles, delante de barreras bajas de madera.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Uno sbarco come ambientazione</h2><p>Dog One si ispira all’immaginario di uno sbarco militare per il suo campo da paintball. Una vera barca arenata su una spiaggia e una chiatta fanno parte di questo paesaggio di combattimento ricreato a Pokeyland.</p><h2>Un veicolo mimetizzato</h2><p>La fotografia ufficiale mostra anche un veicolo blindato di scena, dipinto di verde e beige e contrassegnato dal numero 302. Si trova tra gli alberi, davanti a basse barriere di legno.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een landing als decor</h2><p>Dog One gebruikt het beeld van een militaire landing voor zijn paintballterrein. Een echte boot die op een strand is gestrand en een ponton maken deel uit van dit nagebouwde strijdtoneel in Pokeyland.</p><h2>Een gecamoufleerd voertuig</h2><p>De officiële foto toont ook een gepantserd decorvoertuig in groen en beige, met het nummer 302. Het staat tussen de bomen voor lage houten schotten.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Sceneria desantu</h2><p>Dog One wykorzystuje motyw desantu wojskowego jako scenerię pola paintballowego. Prawdziwa łódź osiadła na plaży oraz barka tworzą część odtworzonego pola walki w Pokeyland.</p><h2>Pojazd w kamuflażu</h2><p>Oficjalna fotografia pokazuje również dekoracyjny pojazd opancerzony, pomalowany na zielono i beżowo oraz oznaczony numerem 302. Stoi wśród drzew przed niskimi drewnianymi przegrodami.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um desembarque como cenário</h2><p>Dog One inspira-se no imaginário de um desembarque militar para o seu campo de paintball. Um barco verdadeiro encalhado numa praia e uma barcaça fazem parte desta paisagem de combate recriada em Pokeyland.</p><h2>Um veículo camuflado</h2><p>A fotografia oficial mostra também um veículo blindado de cenário, pintado de verde e bege e marcado com o número 302. Está entre as árvores, diante de barreiras baixas de madeira.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-terrain-fox-two",
@@ -1620,7 +2113,41 @@
         "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
       },
       "id": "8a1bfb77-86e0-4ba4-ae6d-1dddd13e4bb6",
-      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La base militaire sous les arbres</h2><p>Fox Two représente une base militaire aménagée en terrain de paintball. Un bus embourbé et un camion de transport de matériel appartiennent au scénario d’attaque et de défense de cette position.</p><p>Les tranchées et le poste de commandement enterré prolongent le décor de champ de bataille.</p><h2>Caisses et blindé</h2><p>La vue officielle montre un véhicule blindé vert à canon, entouré de caisses empilées entre les arbres. Ces objets de décor donnent à Fox Two sa silhouette de campement militaire dissimulé dans la forêt.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A military base beneath the trees</h2><p>Fox Two represents a military base laid out as a paintball field. A bogged-down bus and an equipment truck belong to the scenario of attacking and defending this position.</p><p>Trenches and a buried command post extend the battlefield scenery.</p><h2>Crates and armour</h2><p>The official view shows a green armoured vehicle with a gun, surrounded by stacked crates among the trees. These props give Fox Two the appearance of a military encampment concealed in the forest.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Militärbasis unter Bäumen</h2><p>Fox Two stellt eine als Paintballgelände gestaltete Militärbasis dar. Ein im Schlamm festgefahrener Bus und ein Materialtransporter gehören zum Angriffs- und Verteidigungsszenario dieses Stützpunkts.</p><p>Schützengräben und ein eingegrabener Kommandoposten ergänzen die Schlachtfeldkulisse.</p><h2>Kisten und Panzerfahrzeug</h2><p>Das offizielle Bild zeigt ein grünes Panzerfahrzeug mit Kanone, umgeben von gestapelten Kisten zwischen den Bäumen. Diese Requisiten geben Fox Two das Aussehen eines im Wald verborgenen Militärlagers.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una base militar bajo los árboles</h2><p>Fox Two representa una base militar convertida en campo de paintball. Un autobús atascado en el barro y un camión de transporte de material forman parte del escenario de ataque y defensa de esta posición.</p><p>Las trincheras y el puesto de mando enterrado prolongan el decorado de campo de batalla.</p><h2>Cajas y un blindado</h2><p>La vista oficial muestra un vehículo blindado verde con cañón, rodeado de cajas apiladas entre los árboles. Estos elementos dan a Fox Two el aspecto de un campamento militar oculto en el bosque.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una base militare sotto gli alberi</h2><p>Fox Two rappresenta una base militare allestita come campo da paintball. Un autobus impantanato e un camion per il trasporto di materiale fanno parte dello scenario di attacco e difesa della postazione.</p><p>Le trincee e il posto di comando interrato prolungano la scenografia del campo di battaglia.</p><h2>Casse e un blindato</h2><p>La veduta ufficiale mostra un veicolo blindato verde con cannone, circondato da casse impilate tra gli alberi. Questi elementi danno a Fox Two l’aspetto di un accampamento militare nascosto nel bosco.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een militaire basis onder de bomen</h2><p>Fox Two stelt een militaire basis voor die als paintballterrein is ingericht. Een vastgelopen bus en een vrachtwagen voor materieel horen bij het scenario waarin deze positie wordt aangevallen en verdedigd.</p><p>Loopgraven en een ondergrondse commandopost vullen het slagvelddecor aan.</p><h2>Kisten en een pantservoertuig</h2><p>De officiële foto toont een groen pantservoertuig met kanon, omringd door gestapelde kisten tussen de bomen. Deze decorstukken geven Fox Two het uiterlijk van een militair kamp dat in het bos verscholen ligt.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Baza wojskowa pod drzewami</h2><p>Fox Two przedstawia bazę wojskową urządzoną jako pole paintballowe. Autobus ugrzęzły w błocie i ciężarówka transportująca wyposażenie należą do scenariusza ataku oraz obrony tej pozycji.</p><p>Okopy i zagłębione w ziemi stanowisko dowodzenia uzupełniają dekorację pola walki.</p><h2>Skrzynie i pojazd pancerny</h2><p>Oficjalne zdjęcie pokazuje zielony pojazd opancerzony z działem, otoczony skrzyniami ustawionymi między drzewami. Rekwizyty nadają Fox Two wygląd obozu wojskowego ukrytego w lesie.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma base militar sob as árvores</h2><p>Fox Two representa uma base militar preparada como campo de paintball. Um autocarro atolado e um camião de transporte de material fazem parte do cenário de ataque e defesa desta posição.</p><p>As trincheiras e o posto de comando enterrado prolongam o cenário de campo de batalha.</p><h2>Caixas e um blindado</h2><p>A vista oficial mostra um veículo blindado verde com canhão, rodeado de caixas empilhadas entre as árvores. Estes elementos dão a Fox Two o aspeto de um acampamento militar escondido no bosque.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-terrain-panama",
@@ -1635,7 +2162,41 @@
         "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
       },
       "id": "973c578f-e1b7-4bfd-a5a7-3fc50c9a7114",
-      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La chapelle dans la forêt</h2><p>Panama transpose son terrain de paintball dans une forêt d’inspiration sud-américaine. Une petite chapelle reconstituée, aux murs clairs et au toit sombre, se dresse parmi les arbres.</p><p>La lucarne de cette chapelle fait partie du jeu : le parc la présente comme un poste depuis lequel les joueurs peuvent viser leurs adversaires. Le bâtiment donne ainsi un point de repère précis au scénario forestier.</p><h2>Un passage de bois</h2><p>À côté de la chapelle, un pont de planches bordé de cordes traverse le décor. Des éléments métalliques rouillés prolongent cette ambiance de constructions isolées sous le feuillage.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A chapel in the forest</h2><p>Panama places its paintball field in a setting inspired by South American forests. A small recreated chapel, with pale walls and a dark roof, stands among the trees.</p><p>The chapel’s upper window is part of the game: the park presents it as a position from which players can aim at their opponents. The building gives this woodland scenario a distinctive landmark.</p><h2>A timber crossing</h2><p>Beside the chapel, a plank bridge edged with ropes crosses the scene. Rusted metal structures extend the atmosphere of isolated buildings beneath the foliage.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Kapelle im Wald</h2><p>Panama versetzt sein Paintballgelände in eine von südamerikanischen Wäldern inspirierte Kulisse. Zwischen den Bäumen steht eine kleine nachgebaute Kapelle mit hellen Wänden und dunklem Dach.</p><p>Das obere Fenster der Kapelle gehört zum Spiel: Der Park beschreibt es als Position, von der aus Spieler ihre Gegner anvisieren können. Damit wird das Gebäude zum markanten Orientierungspunkt im Waldszenario.</p><h2>Ein Übergang aus Holz</h2><p>Neben der Kapelle führt eine von Seilen gesäumte Bretterbrücke durch die Kulisse. Rostige Metallaufbauten ergänzen das Bild abgelegener Bauten unter dem Blätterdach.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una capilla en el bosque</h2><p>Panama sitúa su campo de paintball en una ambientación inspirada en los bosques sudamericanos. Una pequeña capilla recreada, de paredes claras y tejado oscuro, se alza entre los árboles.</p><p>La ventana superior de la capilla forma parte del juego: el parque la presenta como un puesto desde el que los jugadores pueden apuntar a sus adversarios. El edificio aporta así una referencia singular al escenario forestal.</p><h2>Un paso de madera</h2><p>Junto a la capilla, un puente de tablas bordeado de cuerdas atraviesa el decorado. Estructuras metálicas oxidadas prolongan esta atmósfera de construcciones aisladas bajo el follaje.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una cappella nel bosco</h2><p>Panama ambienta il suo campo da paintball in una foresta d’ispirazione sudamericana. Una piccola cappella ricostruita, con pareti chiare e tetto scuro, sorge tra gli alberi.</p><p>La finestra superiore della cappella fa parte del gioco: il parco la presenta come una postazione da cui i giocatori possono prendere di mira gli avversari. L’edificio diventa così un punto di riferimento riconoscibile nello scenario boschivo.</p><h2>Un passaggio di legno</h2><p>Accanto alla cappella, un ponte di assi bordato da corde attraversa lo scenario. Strutture metalliche arrugginite prolungano l’atmosfera di costruzioni isolate sotto il fogliame.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een kapel in het bos</h2><p>Panama plaatst zijn paintballterrein in een decor dat is geïnspireerd op Zuid-Amerikaanse bossen. Tussen de bomen staat een kleine nagebouwde kapel met lichte muren en een donker dak.</p><p>Het bovenraam van de kapel hoort bij het spel: het park beschrijft het als een plek vanwaar spelers op hun tegenstanders kunnen richten. Zo vormt het gebouw een herkenbaar punt in het bosdecor.</p><h2>Een houten oversteek</h2><p>Naast de kapel loopt een plankenbrug met touwen langs de randen door het terrein. Roestige metalen constructies versterken de sfeer van afgelegen bouwsels onder het bladerdak.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kaplica w lesie</h2><p>Panama umieszcza pole paintballowe w scenerii inspirowanej lasami Ameryki Południowej. Wśród drzew stoi niewielka odtworzona kaplica o jasnych ścianach i ciemnym dachu.</p><p>Górne okienko kaplicy jest częścią gry: park przedstawia je jako stanowisko, z którego gracze mogą celować do przeciwników. Budynek stanowi dzięki temu charakterystyczny punkt leśnego scenariusza.</p><h2>Drewniane przejście</h2><p>Obok kaplicy przez dekorację prowadzi most z desek, otoczony linami. Zardzewiałe konstrukcje metalowe dopełniają atmosfery odosobnionych budowli pod liśćmi drzew.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma capela no bosque</h2><p>Panama situa o seu campo de paintball num ambiente inspirado nas florestas sul-americanas. Uma pequena capela recriada, com paredes claras e telhado escuro, ergue-se entre as árvores.</p><p>A janela superior da capela faz parte do jogo: o parque apresenta-a como um posto de onde os jogadores podem apontar aos adversários. O edifício torna-se assim uma referência marcante no cenário florestal.</p><h2>Uma passagem de madeira</h2><p>Ao lado da capela, uma ponte de tábuas ladeada de cordas atravessa o cenário. Estruturas metálicas enferrujadas prolongam esta atmosfera de construções isoladas sob a folhagem.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-terrain-zombie",
@@ -1650,7 +2211,41 @@
         "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
       },
       "id": "84f8f37a-0a6e-46d1-a438-fdd9c3225649",
-      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une usine abandonnée dans les bois</h2><p>Zombie installe son scénario de paintball dans une friche industrielle reconstituée. Des façades grises, de vieux véhicules et des fûts rouges occupent la clairière ; une longue flèche métallique rouge traverse le décor au-dessus du sol couvert de feuilles.</p><p>Cette usine désaffectée sert de refuge aux joueurs face aux morts-vivants. Les arbres poussent au milieu des vestiges, donnant à l’ensemble l’allure d’un site abandonné à la forêt.</p><h2>Le camp des morts-vivants grandit</h2><p>Le scénario repose sur la contamination : chaque joueur touché rejoint les zombies. La partie transforme ainsi progressivement les défenseurs en assaillants, autour de l’usine à reprendre.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>An abandoned factory in the woods</h2><p>Zombie sets its paintball scenario in a recreated industrial ruin. Grey façades, old vehicles and red drums fill the clearing; a long red metal boom crosses the scene above the leaf-covered ground.</p><p>This disused factory shelters the players from the undead. Trees rise among the remains, giving the setting the appearance of a site reclaimed by the forest.</p><h2>The undead gain ground</h2><p>The scenario centres on infection: every player hit joins the zombies. Defenders gradually become attackers as the struggle to take the factory continues.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine verlassene Fabrik im Wald</h2><p>Zombie spielt in einer nachgebauten Industrieruine. Graue Fassaden, alte Fahrzeuge und rote Fässer stehen auf der Lichtung; ein langer roter Metallausleger zieht sich über den laubbedeckten Boden hinweg.</p><p>Die stillgelegte Fabrik bietet den Spielern Zuflucht vor den Untoten. Zwischen den Überresten wachsen Bäume, als hätte der Wald das Gelände zurückerobert.</p><h2>Die Untoten werden mehr</h2><p>Das Szenario beruht auf Ansteckung: Jeder getroffene Spieler schließt sich den Zombies an. So werden Verteidiger nach und nach zu Angreifern im Kampf um die Fabrik.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una fábrica abandonada entre los árboles</h2><p>Zombie sitúa su escenario de paintball en unas ruinas industriales recreadas. Fachadas grises, vehículos antiguos y bidones rojos ocupan el claro; una larga estructura metálica roja cruza el decorado sobre el suelo cubierto de hojas.</p><p>La fábrica en desuso sirve de refugio a los jugadores frente a los muertos vivientes. Los árboles crecen entre los restos, dando al conjunto el aspecto de un lugar recuperado por el bosque.</p><h2>Crece el bando de los zombis</h2><p>El escenario gira en torno al contagio: cada jugador alcanzado se une a los zombis. Los defensores se convierten poco a poco en atacantes durante la disputa por la fábrica.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una fabbrica abbandonata nel bosco</h2><p>Zombie ambienta il suo scenario di paintball in una rovina industriale ricostruita. Facciate grigie, vecchi veicoli e fusti rossi occupano la radura; una lunga struttura metallica rossa attraversa la scena sopra il terreno coperto di foglie.</p><p>La fabbrica dismessa offre rifugio ai giocatori contro i non morti. Gli alberi crescono tra i resti, dando l’impressione di un sito riconquistato dal bosco.</p><h2>Le file degli zombi si ingrossano</h2><p>Lo scenario si basa sul contagio: ogni giocatore colpito passa dalla parte degli zombi. I difensori diventano così gradualmente attaccanti nella contesa per la fabbrica.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een verlaten fabriek in het bos</h2><p>Zombie speelt zich af in een nagebouwde industriële ruïne. Grijze gevels, oude voertuigen en rode vaten staan op de open plek; een lange rode metalen arm loopt boven de met bladeren bedekte grond door het decor.</p><p>De verlaten fabriek biedt de spelers een schuilplaats tegen de ondoden. Tussen de overblijfselen groeien bomen, alsof het bos het terrein heeft teruggewonnen.</p><h2>Steeds meer zombies</h2><p>Besmetting vormt de kern van het scenario: iedere geraakte speler sluit zich aan bij de zombies. Verdedigers veranderen zo geleidelijk in aanvallers tijdens de strijd om de fabriek.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Opuszczona fabryka w lesie</h2><p>Zombie rozgrywa się w odtworzonych ruinach przemysłowych. Szare fasady, stare pojazdy i czerwone beczki zajmują polanę; długa czerwona konstrukcja metalowa przecina dekorację nad ziemią pokrytą liśćmi.</p><p>Nieczynna fabryka daje graczom schronienie przed nieumarłymi. Drzewa rosną wśród pozostałości, jakby las odzyskał opuszczony teren.</p><h2>Przybywa nieumarłych</h2><p>Scenariusz opiera się na zarażaniu: każdy trafiony gracz dołącza do zombie. Obrońcy stopniowo stają się napastnikami podczas walki o fabrykę.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma fábrica abandonada no bosque</h2><p>Zombie situa o seu cenário de paintball numa ruína industrial recriada. Fachadas cinzentas, veículos antigos e bidões vermelhos ocupam a clareira; uma longa estrutura metálica vermelha atravessa o cenário sobre o chão coberto de folhas.</p><p>A fábrica desativada serve de refúgio aos jogadores perante os mortos-vivos. As árvores crescem entre os vestígios, dando ao conjunto o aspeto de um local reconquistado pelo bosque.</p><h2>O grupo dos mortos-vivos cresce</h2><p>O cenário assenta no contágio: cada jogador atingido junta-se aos zombies. Os defensores tornam-se gradualmente atacantes na disputa pela fábrica.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-terrain-cannibale",
@@ -1665,7 +2260,41 @@
         "sourceUrl": "https://www.pokeyland.com/packs/paintball/"
       },
       "id": "3301aa35-ec46-4b52-9b6b-6e965b3c6884",
-      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788"
+      "zoneId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les huttes sous les arbres</h2><p>Cannibale prend la forme d’un village de fiction installé dans la forêt de Pokeyland. Ses petites huttes ont des parois de planches sombres, des ouvertures rectangulaires et des toits coniques couverts de branchages.</p><p>Le feuillage du sous-bois se mêle aux couvertures végétales des cabanes. Les passages entre ces constructions composent le décor du terrain de paintball, autour des portes et des fenêtres laissées ouvertes.</p><h2>Un village à défendre</h2><p>Le scénario oppose l’attaque et la défense de ce village reconstitué.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Huts beneath the trees</h2><p>Cannibale takes the form of a fictional village in Pokeyland’s forest. Its small huts have dark plank walls, rectangular openings and conical roofs covered with branches.</p><p>The woodland foliage blends with the cabins’ leafy roofs. Paths between these buildings form the paintball setting around their open doorways and windows.</p><h2>A village to defend</h2><p>The scenario pits attackers against defenders of the reconstructed village.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Hütten unter den Bäumen</h2><p>Cannibale ist als fiktives Dorf im Wald von Pokeyland gestaltet. Die kleinen Hütten haben dunkle Bretterwände, rechteckige Öffnungen und kegelförmige, mit Zweigen gedeckte Dächer.</p><p>Das Laub des Waldes geht optisch in die pflanzlichen Dächer über. Die Wege zwischen den Bauten bilden zusammen mit den offenen Türen und Fenstern die Paintballkulisse.</p><h2>Ein Dorf verteidigen</h2><p>Im Szenario treten Angreifer und Verteidiger des nachgebauten Dorfes gegeneinander an.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Cabañas bajo los árboles</h2><p>Cannibale adopta la forma de una aldea ficticia en el bosque de Pokeyland. Sus pequeñas cabañas tienen paredes de tablas oscuras, aberturas rectangulares y tejados cónicos cubiertos de ramas.</p><p>El follaje del bosque se mezcla con las cubiertas vegetales de las cabañas. Los pasos entre las construcciones forman el escenario de paintball, alrededor de las puertas y ventanas abiertas.</p><h2>Una aldea que defender</h2><p>El escenario enfrenta a atacantes y defensores de esta aldea recreada.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Capanne sotto gli alberi</h2><p>Cannibale prende la forma di un villaggio immaginario nel bosco di Pokeyland. Le piccole capanne hanno pareti di assi scure, aperture rettangolari e tetti conici coperti di rami.</p><p>Il fogliame del bosco si mescola alle coperture vegetali delle capanne. I passaggi tra le costruzioni compongono la scenografia del campo da paintball, attorno alle porte e alle finestre aperte.</p><h2>Un villaggio da difendere</h2><p>Lo scenario contrappone attaccanti e difensori del villaggio ricostruito.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Hutten onder de bomen</h2><p>Cannibale heeft de vorm van een fictief dorp in het bos van Pokeyland. De kleine hutten hebben wanden van donkere planken, rechthoekige openingen en kegelvormige daken bedekt met takken.</p><p>Het bosgroen sluit aan op de begroeiing van de daken. De doorgangen tussen de bouwsels vormen het paintballdecor, rond de open deuren en ramen.</p><h2>Een dorp verdedigen</h2><p>In het scenario staan aanvallers tegenover verdedigers van het nagebouwde dorp.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Chaty pod drzewami</h2><p>Cannibale ma postać fikcyjnej wioski w lesie Pokeyland. Niewielkie chaty mają ściany z ciemnych desek, prostokątne otwory i stożkowate dachy pokryte gałęziami.</p><p>Leśne liście mieszają się z roślinnymi pokryciami chat. Przejścia między budynkami tworzą scenerię pola paintballowego wokół otwartych drzwi i okien.</p><h2>Obrona wioski</h2><p>Scenariusz przeciwstawia napastników obrońcom odtworzonej wioski.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Cabanas sob as árvores</h2><p>Cannibale assume a forma de uma aldeia fictícia no bosque de Pokeyland. As pequenas cabanas têm paredes de tábuas escuras, aberturas retangulares e telhados cónicos cobertos de ramos.</p><p>A folhagem do bosque mistura-se com as coberturas vegetais das cabanas. As passagens entre as construções formam o cenário do campo de paintball, em redor das portas e janelas abertas.</p><h2>Uma aldeia para defender</h2><p>O cenário opõe atacantes e defensores da aldeia recriada.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-waterjump",
@@ -3266,6 +3895,636 @@
       "updatedAt": "2026-11-15T11:46:32.392Z",
       "key": "880ef6aff6124424bdba9dacc67563e6",
       "imageId": "880ef6aff6124424bdba9dacc67563e6"
+    },
+    {
+      "id": "e962c52928454d4c83a3bc90c075f2ad",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+      "path": "park_item/e962c52928454d4c83a3bc90c075f2ad",
+      "description": "Deux formats de karts à pédales sur le circuit Crazy Kart de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 217363,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-081-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un adulte et un enfant conduisent deux karts à pédales jaunes sur un chemin pavé, entre les arbres et des fleurs."
+        },
+        {
+          "languageCode": "en",
+          "value": "An adult and a child drive two yellow pedal karts along a paved path between trees and flowers."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Erwachsener und ein Kind fahren zwei gelbe Pedalkarts auf einem gepflasterten Weg zwischen Bäumen und Blumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un adulto y un niño conducen dos karts de pedales amarillos por un camino pavimentado entre árboles y flores."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un adulto e un bambino guidano due kart a pedali gialli su un sentiero pavimentato tra alberi e fiori."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een volwassene en een kind rijden met twee gele trapkarts over een verhard pad tussen bomen en bloemen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorosły i dziecko prowadzą dwa żółte gokarty na pedały po brukowanej ścieżce między drzewami i kwiatami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um adulto e uma criança conduzem dois karts a pedais amarelos num caminho pavimentado entre árvores e flores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Deux formats de karts à pédales sur le circuit Crazy Kart de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Two sizes of pedal kart on Pokeyland’s Crazy Kart circuit."
+        },
+        {
+          "languageCode": "de",
+          "value": "Zwei Größen von Pedalkarts auf der Crazy-Kart-Strecke von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Dos tamaños de karts de pedales en el circuito Crazy Kart de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Due dimensioni di kart a pedali sul circuito Crazy Kart di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Twee formaten trapkarts op het Crazy Kart-circuit van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dwa rozmiary gokartów na pedały na torze Crazy Kart w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Dois tamanhos de karts a pedais no circuito Crazy Kart de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:09.326Z",
+      "updatedAt": "2026-11-15T12:17:13.627Z",
+      "key": "e962c52928454d4c83a3bc90c075f2ad",
+      "imageId": "e962c52928454d4c83a3bc90c075f2ad"
+    },
+    {
+      "id": "f76f6dce0ee54907bba900c8e307aa27",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "11978677-6ea2-457a-af26-cfc2fda129df",
+      "path": "park_item/f76f6dce0ee54907bba900c8e307aa27",
+      "description": "Le harnais et ses attaches vus de près sur la photographie officielle d’Ejector.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 204367,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9674-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Gros plan d’une enfant portant un harnais noir et rouge à Ejector, devant le feuillage."
+        },
+        {
+          "languageCode": "en",
+          "value": "Close-up of a child wearing a black and red harness at Ejector, with foliage behind."
+        },
+        {
+          "languageCode": "de",
+          "value": "Nahaufnahme eines Kindes mit schwarz-rotem Gurt bei Ejector vor dem Laub der Bäume."
+        },
+        {
+          "languageCode": "es",
+          "value": "Primer plano de una niña con un arnés negro y rojo en Ejector, delante del follaje."
+        },
+        {
+          "languageCode": "it",
+          "value": "Primo piano di una bambina con un’imbracatura nera e rossa a Ejector, davanti al fogliame."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind met een zwart-rood harnas bij Ejector van dichtbij, met bladeren op de achtergrond."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zbliżenie dziecka w czarno-czerwonej uprzęży na Ejector, na tle liści."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Plano aproximado de uma criança com arnês preto e vermelho no Ejector, diante da folhagem."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le harnais et ses attaches vus de près sur la photographie officielle d’Ejector."
+        },
+        {
+          "languageCode": "en",
+          "value": "A close view of the harness and attachments in Ejector’s official photograph."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gurt und Befestigungen aus der Nähe auf dem offiziellen Foto von Ejector."
+        },
+        {
+          "languageCode": "es",
+          "value": "El arnés y sus sujeciones vistos de cerca en la fotografía oficial de Ejector."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’imbracatura e gli attacchi visti da vicino nella fotografia ufficiale di Ejector."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het harnas en de bevestigingen van dichtbij op de officiële foto van Ejector."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uprząż i mocowania widziane z bliska na oficjalnym zdjęciu Ejector."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O arnês e as ligações vistos de perto na fotografia oficial de Ejector."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:23.163Z",
+      "updatedAt": "2026-11-15T12:17:26.855Z",
+      "key": "f76f6dce0ee54907bba900c8e307aa27",
+      "imageId": "f76f6dce0ee54907bba900c8e307aa27"
+    },
+    {
+      "id": "e00eba58326f471eb70bb311d414f52e",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+      "path": "park_item/e00eba58326f471eb70bb311d414f52e",
+      "description": "Le relief et les prises du mur d’escalade de Pokeyland vus pendant une ascension.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 69055,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A9554-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une enfant saisit les prises colorées d’un mur d’escalade clair ; des prises rouges, vertes et bleues jalonnent la paroi."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child grips colourful holds on a pale climbing wall, with red, green and blue holds across its surface."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind greift nach bunten Griffen an einer hellen Kletterwand mit roten, grünen und blauen Griffen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una niña se agarra a las presas de colores de un muro de escalada claro, con presas rojas, verdes y azules."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una bambina afferra le prese colorate di una parete d’arrampicata chiara, con appigli rossi, verdi e blu."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind grijpt de gekleurde grepen van een lichte klimwand met rode, groene en blauwe handgrepen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko chwyta kolorowe uchwyty na jasnej ściance wspinaczkowej, z czerwonymi, zielonymi i niebieskimi chwytami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança agarra as presas coloridas de uma parede de escalada clara, com apoios vermelhos, verdes e azuis."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le relief et les prises du mur d’escalade de Pokeyland vus pendant une ascension."
+        },
+        {
+          "languageCode": "en",
+          "value": "The contours and holds of Pokeyland’s climbing wall during an ascent."
+        },
+        {
+          "languageCode": "de",
+          "value": "Relief und Griffe der Kletterwand von Pokeyland während eines Aufstiegs."
+        },
+        {
+          "languageCode": "es",
+          "value": "El relieve y las presas del muro de escalada de Pokeyland durante una ascensión."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il rilievo e le prese della parete d’arrampicata di Pokeyland durante una salita."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het reliëf en de grepen van de klimwand van Pokeyland tijdens een beklimming."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ukształtowanie i uchwyty ścianki wspinaczkowej Pokeyland podczas wspinaczki."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O relevo e as presas da parede de escalada de Pokeyland durante uma subida."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:34.13Z",
+      "updatedAt": "2026-11-15T12:17:37.609Z",
+      "key": "e00eba58326f471eb70bb311d414f52e",
+      "imageId": "e00eba58326f471eb70bb311d414f52e"
+    },
+    {
+      "id": "43911282339d43de84505b656079bcaf",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "53432ace-37a0-4149-9153-a418b86da889",
+      "path": "park_item/43911282339d43de84505b656079bcaf",
+      "description": "Le manège de chaises sous son champignon, avec un chalet et les arbres à l’arrière-plan.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 227144,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-057-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le grand champignon rouge à pois blancs de Kid’s Swing porte des chaises colorées suspendues par des chaînes, derrière une clôture blanche."
+        },
+        {
+          "languageCode": "en",
+          "value": "Kid’s Swing’s large red mushroom with white spots carries colourful chairs suspended on chains behind a white fence."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der große rote Pilz mit weißen Punkten von Kid’s Swing trägt bunte, an Ketten hängende Sitze hinter einem weißen Zaun."
+        },
+        {
+          "languageCode": "es",
+          "value": "La gran seta roja con lunares blancos de Kid’s Swing sostiene sillas de colores colgadas de cadenas, detrás de una valla blanca."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il grande fungo rosso a pois bianchi di Kid’s Swing sostiene sedili colorati sospesi a catene, dietro una recinzione bianca."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De grote rode paddenstoel met witte stippen van Kid’s Swing draagt gekleurde stoeltjes aan kettingen achter een wit hek."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Duży czerwony grzyb w białe kropki Kid’s Swing ma kolorowe krzesełka zawieszone na łańcuchach, za białym ogrodzeniem."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O grande cogumelo vermelho com pintas brancas de Kid’s Swing tem cadeiras coloridas suspensas por correntes, atrás de uma vedação branca."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le manège de chaises sous son champignon, avec un chalet et les arbres à l’arrière-plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "The chair ride beneath its mushroom, with a chalet and trees in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Kettenkarussell unter seinem Pilz, mit einem Holzhaus und Bäumen im Hintergrund."
+        },
+        {
+          "languageCode": "es",
+          "value": "El carrusel de sillas bajo su seta, con una caseta y árboles al fondo."
+        },
+        {
+          "languageCode": "it",
+          "value": "La giostra a seggiolini sotto il fungo, con uno chalet e alberi sullo sfondo."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De zweefmolen onder zijn paddenstoel, met een chalet en bomen op de achtergrond."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Karuzela krzesełkowa pod grzybem, z drewnianym domkiem i drzewami w tle."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O carrossel de cadeiras sob o cogumelo, com um chalé e árvores ao fundo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:46.457Z",
+      "updatedAt": "2026-11-15T12:17:50.17Z",
+      "key": "43911282339d43de84505b656079bcaf",
+      "imageId": "43911282339d43de84505b656079bcaf"
+    },
+    {
+      "id": "a19c6a01526c40639bc7187d9b88368f",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+      "path": "park_item/a19c6a01526c40639bc7187d9b88368f",
+      "description": "Les paniers multicolores et les bras à effet bois de La Roue dans le cadre végétal de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 154160,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-roue-parc-pokeyland-metz-moselle-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Les nacelles en forme de paniers de La Roue portent des toits rouges, jaunes, verts et violets autour d’un décor central feuillu."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Roue’s basket-shaped gondolas have red, yellow, green and purple roofs around a leafy central decoration."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die korbförmigen Gondeln von La Roue haben rote, gelbe, grüne und violette Dächer um eine belaubte Mitteldekoration."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las góndolas en forma de cestas de La Roue tienen techos rojos, amarillos, verdes y morados alrededor de un decorado central con hojas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le gondole a forma di cestelli di La Roue hanno tetti rossi, gialli, verdi e viola attorno a una decorazione centrale con foglie."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De mandvormige gondels van La Roue hebben rode, gele, groene en paarse daken rond een centraal bladerdecor."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Gondole La Roue w kształcie koszy mają czerwone, żółte, zielone i fioletowe daszki wokół centralnej dekoracji z liśćmi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As gôndolas em forma de cestos de La Roue têm telhados vermelhos, amarelos, verdes e roxos à volta de uma decoração central com folhas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les paniers multicolores et les bras à effet bois de La Roue dans le cadre végétal de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Roue’s colourful baskets and wood-effect arms in Pokeyland’s planted setting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bunte Körbe und Arme in Holzoptik von La Roue in der begrünten Umgebung von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cestas multicolores y brazos de aspecto de madera de La Roue entre la vegetación de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cestelli multicolori e bracci effetto legno di La Roue tra la vegetazione di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Veelkleurige manden en armen met houtmotief van La Roue in het groen van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielobarwne kosze i ramiona imitujące drewno La Roue wśród roślinności Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cestos multicolores e braços com efeito de madeira de La Roue entre a vegetação de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:57.087Z",
+      "updatedAt": "2026-11-15T12:18:00.967Z",
+      "key": "a19c6a01526c40639bc7187d9b88368f",
+      "imageId": "a19c6a01526c40639bc7187d9b88368f"
     }
   ],
   "history": {
@@ -3274,5 +4533,7 @@
   "metadata": {
     "source": "admin-bulk-park-graph-export",
     "exportedAtUtc": "2026-11-15T10:44:59.126788Z"
-  }
+  },
+  "openingHours": null,
+  "pricing": null
 }

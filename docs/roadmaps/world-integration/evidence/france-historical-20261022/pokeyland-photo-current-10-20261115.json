@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 10,
+    "activityName": "La Roue",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/parc/la-roue/",
+      "accessedAtUtc": "2026-11-15T10:37:42.736618+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/parc/la-roue/",
+      "sha256": "14b9cbb87eb6e6eb9bc7af02f55b4dc73e1355b3bce2e95907cc1c9e30da909a",
+      "bytes": 80993,
+      "file": "activity-la-roue.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-roue-parc-pokeyland-metz-moselle-1350x900.jpg",
+    "file": "10-la-roue.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-roue-parc-pokeyland-metz-moselle-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:18.365806+00:00",
+    "bytes": 154160,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "80ddf47473a479f061dd814b4a3647d00c4bff8068257c73dea0511c20e1e255",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "10-la-roue.jpg",
+    "visualDescriptionFr": "Petite roue à nacelles décorées en tonneaux, cages supérieures multicolores, médaillon central à renard ; arbres et passerelle derrière.",
+    "identityAndCaptionLimitsFr": "Vraie photographie, pas illustration de la roue. Ne pas inventer hauteur, capacité ni matériau réel à partir du décor imitation bois.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-roue-parc-pokeyland-metz-moselle-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/10-la-roue.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-10-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-10-import-result.json"
+  },
+  "metadata": {
+    "description": "Les paniers multicolores et les bras à effet bois de La Roue dans le cadre végétal de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-roue-parc-pokeyland-metz-moselle-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Les nacelles en forme de paniers de La Roue portent des toits rouges, jaunes, verts et violets autour d’un décor central feuillu."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Roue’s basket-shaped gondolas have red, yellow, green and purple roofs around a leafy central decoration."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die korbförmigen Gondeln von La Roue haben rote, gelbe, grüne und violette Dächer um eine belaubte Mitteldekoration."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las góndolas en forma de cestas de La Roue tienen techos rojos, amarillos, verdes y morados alrededor de un decorado central con hojas."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le gondole a forma di cestelli di La Roue hanno tetti rossi, gialli, verdi e viola attorno a una decorazione centrale con foglie."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De mandvormige gondels van La Roue hebben rode, gele, groene en paarse daken rond een centraal bladerdecor."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Gondole La Roue w kształcie koszy mają czerwone, żółte, zielone i fioletowe daszki wokół centralnej dekoracji z liśćmi."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As gôndolas em forma de cestos de La Roue têm telhados vermelhos, amarelos, verdes e roxos à volta de uma decoração central com folhas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les paniers multicolores et les bras à effet bois de La Roue dans le cadre végétal de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Roue’s colourful baskets and wood-effect arms in Pokeyland’s planted setting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bunte Körbe und Arme in Holzoptik von La Roue in der begrünten Umgebung von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Cestas multicolores y brazos de aspecto de madera de La Roue entre la vegetación de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cestelli multicolori e bracci effetto legno di La Roue tra la vegetazione di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Veelkleurige manden en armen met houtmotief van La Roue in het groen van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wielobarwne kosze i ramiona imitujące drewno La Roue wśród roślinności Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cestos multicolores e braços com efeito de madeira de La Roue entre a vegetação de Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T12:17:54.9424278Z",
+    "result": {
+      "id": "a19c6a01526c40639bc7187d9b88368f",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+      "path": "park_item/a19c6a01526c40639bc7187d9b88368f",
+      "description": "Les paniers multicolores et les bras à effet bois de La Roue dans le cadre végétal de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 154160,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2026/04/la-roue-parc-pokeyland-metz-moselle-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Les nacelles en forme de paniers de La Roue portent des toits rouges, jaunes, verts et violets autour d’un décor central feuillu."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Roue’s basket-shaped gondolas have red, yellow, green and purple roofs around a leafy central decoration."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die korbförmigen Gondeln von La Roue haben rote, gelbe, grüne und violette Dächer um eine belaubte Mitteldekoration."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las góndolas en forma de cestas de La Roue tienen techos rojos, amarillos, verdes y morados alrededor de un decorado central con hojas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le gondole a forma di cestelli di La Roue hanno tetti rossi, gialli, verdi e viola attorno a una decorazione centrale con foglie."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De mandvormige gondels van La Roue hebben rode, gele, groene en paarse daken rond een centraal bladerdecor."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Gondole La Roue w kształcie koszy mają czerwone, żółte, zielone i fioletowe daszki wokół centralnej dekoracji z liśćmi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As gôndolas em forma de cestos de La Roue têm telhados vermelhos, amarelos, verdes e roxos à volta de uma decoração central com folhas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les paniers multicolores et les bras à effet bois de La Roue dans le cadre végétal de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Roue’s colourful baskets and wood-effect arms in Pokeyland’s planted setting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bunte Körbe und Arme in Holzoptik von La Roue in der begrünten Umgebung von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cestas multicolores y brazos de aspecto de madera de La Roue entre la vegetación de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cestelli multicolori e bracci effetto legno di La Roue tra la vegetazione di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Veelkleurige manden en armen met houtmotief van La Roue in het groen van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielobarwne kosze i ramiona imitujące drewno La Roue wśród roślinności Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cestos multicolores e braços com efeito de madeira de La Roue entre a vegetação de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T12:17:57.087Z",
+      "updatedAt": "2026-11-15T12:18:00.967Z"
+    },
+    "receivedAtUtc": "2026-11-15T12:18:04.1235506Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

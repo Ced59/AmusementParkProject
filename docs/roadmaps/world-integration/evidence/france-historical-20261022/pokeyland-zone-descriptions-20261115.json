@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-zone-descriptions",
+        "step": "02-zones",
+        "notes": "Three exact existing private official adventure zones. 24 descriptions personally authored/reviewed using current official pages. No invented zoning, routes, opening dates or visitor restrictions. Waterjump three/four-level source inconsistency not falsely resolved; descriptions name colours only."
+      },
+      "zones": [
+        {
+          "id": "15802825-0835-40e0-b211-410bc26e14b9",
+          "key": "pokeyland-zone-accrobranche",
+          "name": "Accrobranche",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Neuf parcours dans la forêt</h2><p>L’espace Accrobranche de Pokeyland utilise les arbres comme cadre d’une progression en hauteur. Ses neuf parcours comprennent les trois Pitchoune, le parcours découverte, le parcours famille, deux parcours aventure, le sportif et celui des tyroliennes.</p><p>Les ateliers sollicitent l’équilibre, l’agilité et la force pour passer d’arbre en arbre. Le parcours tyrolienne se compose entièrement de glissades sur câble à travers la forêt. La variété des itinéraires permet d’aborder différemment ce même environnement boisé, depuis l’initiation jusqu’aux passages plus exigeants.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Nine courses through the forest</h2><p>Pokeyland’s Accrobranche area uses the trees as the setting for progress above ground. Its nine courses include three Pitchoune routes, the discovery and family courses, two adventure courses, the sporting course and the zipline route.</p><p>The obstacles call on balance, agility and strength to move between trees. The zipline course consists entirely of cable slides through the forest. The different routes offer several ways to explore the same wooded environment, from introductory challenges to more demanding passages.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Neun Parcours durch den Wald</h2><p>Der Bereich Accrobranche von Pokeyland nutzt die Bäume als Kulisse für Wege in der Höhe. Zu den neun Parcours gehören drei Pitchoune-Routen, der Entdeckungs- und der Familienparcours, zwei Abenteuerparcours, der Sportparcours und die Seilrutschenroute.</p><p>Die Hindernisse verlangen Gleichgewicht, Geschicklichkeit und Kraft beim Wechsel von Baum zu Baum. Der Seilrutschenparcours besteht ausschließlich aus Fahrten an Seilen durch den Wald. Die verschiedenen Routen erschließen dieselbe bewaldete Umgebung vom Einstieg bis zu anspruchsvolleren Passagen.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Nueve recorridos por el bosque</h2><p>El espacio Accrobranche de Pokeyland utiliza los árboles como entorno para avanzar en altura. Sus nueve recorridos incluyen tres Pitchoune, el de descubrimiento, el familiar, dos de aventura, el deportivo y el de tirolinas.</p><p>Los obstáculos requieren equilibrio, agilidad y fuerza para pasar de un árbol a otro. El recorrido de tirolinas está compuesto exclusivamente por deslizamientos sobre cables a través del bosque. La variedad de rutas permite explorar este mismo entorno arbolado desde la iniciación hasta pasos más exigentes.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Nove percorsi nel bosco</h2><p>L’area Accrobranche di Pokeyland usa gli alberi come scenario per avanzare in altezza. I nove percorsi comprendono tre Pitchoune, quello di scoperta, quello per famiglie, due d’avventura, lo sportivo e quello delle teleferiche.</p><p>Gli ostacoli richiedono equilibrio, agilità e forza per passare da un albero all’altro. Il percorso delle teleferiche è composto interamente da scivolate su cavi attraverso il bosco. La varietà degli itinerari offre diversi modi di esplorare lo stesso ambiente, dall’iniziazione ai passaggi più impegnativi.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Negen routes door het bos</h2><p>De zone Accrobranche van Pokeyland gebruikt de bomen als omgeving voor routes op hoogte. De negen parcoursen omvatten drie Pitchoune-routes, een ontdekkings- en familieparcours, twee avonturenparcoursen, een sportief parcours en een tokkelbaanroute.</p><p>Evenwicht, behendigheid en kracht helpen deelnemers om tussen de bomen door de hindernissen te bewegen. De tokkelbaanroute bestaat volledig uit glijtochten aan kabels door het bos. De verschillende routes bieden meerdere manieren om dezelfde bosrijke omgeving te verkennen, van kennismaking tot zwaardere passages.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Dziewięć tras przez las</h2><p>Strefa Accrobranche w Pokeyland wykorzystuje drzewa jako otoczenie tras na wysokości. Dziewięć przebiegów obejmuje trzy Pitchoune, trasę odkrywczą, rodzinną, dwie przygodowe, sportową i trasę zjazdów na linie.</p><p>Przeszkody wymagają równowagi, zwinności i siły przy przechodzeniu między drzewami. Trasa tyrolkowa składa się wyłącznie ze zjazdów po linach przez las. Różnorodność przebiegów pozwala poznawać to samo leśne otoczenie na różnych poziomach, od nauki podstaw po bardziej wymagające odcinki.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Nove percursos pela floresta</h2><p>O espaço Accrobranche de Pokeyland usa as árvores como cenário para avançar em altura. Os nove percursos incluem três Pitchoune, o de descoberta, o familiar, dois de aventura, o desportivo e o de tirolesas.</p><p>Os obstáculos exigem equilíbrio, agilidade e força para passar de árvore em árvore. O percurso de tirolesas é composto inteiramente por descidas em cabos pela floresta. A variedade de itinerários oferece diferentes formas de explorar o mesmo ambiente arborizado, desde a iniciação até passagens mais exigentes.</p>"
+            }
+          ]
+        },
+        {
+          "id": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+          "key": "pokeyland-zone-paintball",
+          "name": "Paintball",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Cinq terrains, cinq décors de jeu</h2><p>La zone Paintball rassemble les terrains Zombie, Dog One, Cannibale, Panama et Fox Two. Les équipes y utilisent des lanceurs de billes de peinture au sein de décors aménagés dans la nature.</p><p>Une usine désaffectée mise en scène, un bateau échoué, un village reconstitué, une chapelle et des installations militaires donnent des caractères différents aux terrains. Ces éléments servent de cadre aux scénarios d’affrontement, d’attaque ou de défense proposés selon l’espace choisi.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Five fields with five different settings</h2><p>The Paintball zone brings together Zombie, Dog One, Cannibale, Panama and Fox Two. Teams use paintball markers among themed structures set within natural surroundings.</p><p>A staged abandoned factory, a stranded boat, a reconstructed village, a chapel and military installations give the fields different identities. These elements form the settings for confrontation, attack or defence scenarios offered according to the chosen playing area.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Fünf Spielfelder mit eigener Kulisse</h2><p>Der Bereich Paintball vereint Zombie, Dog One, Cannibale, Panama und Fox Two. Die Teams verwenden Paintball-Markierer in gestalteten Kulissen, die in eine natürliche Umgebung eingebettet sind.</p><p>Eine inszenierte verlassene Fabrik, ein gestrandetes Boot, ein nachgebautes Dorf, eine Kapelle und militärische Anlagen verleihen den Feldern unterschiedliche Charaktere. Diese Elemente bilden je nach gewähltem Bereich den Rahmen für Spielabläufe mit Begegnung, Angriff oder Verteidigung.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Cinco terrenos con cinco escenarios</h2><p>La zona Paintball reúne los terrenos Zombie, Dog One, Cannibale, Panama y Fox Two. Los equipos utilizan marcadoras de bolas de pintura entre decorados instalados en un entorno natural.</p><p>Una fábrica abandonada escenificada, un barco varado, un pueblo reconstruido, una capilla e instalaciones militares dan un carácter distinto a cada terreno. Estos elementos sirven de marco a los escenarios de enfrentamiento, ataque o defensa ofrecidos según el espacio elegido.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Cinque campi con cinque scenari</h2><p>La zona Paintball riunisce i campi Zombie, Dog One, Cannibale, Panama e Fox Two. Le squadre usano marcatori a palline di vernice tra scenografie inserite in un ambiente naturale.</p><p>Una fabbrica abbandonata ricreata, una barca arenata, un villaggio ricostruito, una cappella e installazioni militari danno caratteri diversi ai campi. Questi elementi fanno da sfondo agli scenari di confronto, attacco o difesa proposti in base allo spazio scelto.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vijf speelvelden met vijf decors</h2><p>De zone Paintball omvat de velden Zombie, Dog One, Cannibale, Panama en Fox Two. Teams gebruiken paintballmarkers tussen decors die in de natuurlijke omgeving zijn geplaatst.</p><p>Een nagebouwde verlaten fabriek, een gestrand schip, een gereconstrueerd dorp, een kapel en militaire installaties geven de velden elk een eigen karakter. Deze elementen vormen het decor voor confrontatie-, aanvals- of verdedigingsscenario’s, afhankelijk van het gekozen speelveld.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pięć pól o różnej scenerii</h2><p>Strefa Paintball obejmuje pola Zombie, Dog One, Cannibale, Panama i Fox Two. Drużyny korzystają z markerów strzelających kulkami z farbą pośród dekoracji urządzonych w naturalnym otoczeniu.</p><p>Sceneria opuszczonej fabryki, osiadła łódź, odtworzona wioska, kaplica i instalacje wojskowe nadają polom różny charakter. Elementy te tworzą tło scenariuszy starcia, ataku lub obrony, zależnie od wybranej przestrzeni gry.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Cinco campos com cinco cenários</h2><p>A zona Paintball reúne os campos Zombie, Dog One, Cannibale, Panama e Fox Two. As equipas usam marcadores de bolas de tinta entre cenários instalados num ambiente natural.</p><p>Uma fábrica abandonada recriada, um barco encalhado, uma aldeia reconstruída, uma capela e instalações militares dão diferentes características aos campos. Estes elementos servem de enquadramento aos cenários de confronto, ataque ou defesa propostos conforme o espaço escolhido.</p>"
+            }
+          ]
+        },
+        {
+          "id": "161766a5-cdcd-4675-aef8-3acc9e078098",
+          "key": "pokeyland-zone-waterjump",
+          "name": "Waterjump",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un espace consacré aux glissades et aux sauts</h2><p>La zone Waterjump rassemble dix-huit pistes et toboggans destinés à différentes formes de glisse aquatique. Les installations permettent d’utiliser des bouées, des bodyboards ou les pistes de bodysurf, avec des tremplins pour les sauts.</p><p>Les secteurs jaunes, bleus, rouges et gris constituent les repères du dispositif. Les pistes de départ côtoient des rampes et des tremplins de difficulté différente, regroupés dans un même espace aquatique à l’intérieur de Pokeyland.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>An area for slides and jumps</h2><p>The Waterjump zone brings together eighteen runs and slides for different forms of aquatic sliding. The installations accommodate tubes, bodyboards and bodysurf runs, with ramps for jumping.</p><p>Yellow, blue, red and grey sections provide visual markers throughout the installation. Starter runs stand alongside ramps and jumps of differing difficulty, grouped within one aquatic area inside Pokeyland.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Bereich für Rutschfahrten und Sprünge</h2><p>Der Bereich Waterjump umfasst achtzehn Bahnen und Rutschen für unterschiedliche Formen des Wasserrutschens. Die Anlagen ermöglichen Fahrten mit Reifen, Bodyboards oder auf Bodysurf-Bahnen sowie Sprünge über Rampen.</p><p>Gelbe, blaue, rote und graue Abschnitte dienen als Orientierungspunkte. Einstiegsbahnen liegen neben Rampen und Sprungschanzen verschiedener Schwierigkeitsgrade, gebündelt in einem gemeinsamen Wasserbereich innerhalb von Pokeyland.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un espacio para deslizarse y saltar</h2><p>La zona Waterjump reúne dieciocho pistas y toboganes destinados a distintas formas de deslizamiento acuático. Las instalaciones permiten utilizar flotadores, tablas de bodyboard o pistas de bodysurf, con rampas para los saltos.</p><p>Los sectores amarillos, azules, rojos y grises sirven de referencia visual. Las pistas de iniciación conviven con rampas y saltos de distinta dificultad, agrupados en un mismo espacio acuático dentro de Pokeyland.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Uno spazio per scivolate e salti</h2><p>La zona Waterjump riunisce diciotto piste e scivoli dedicati a diverse forme di scivolata acquatica. Le installazioni consentono di usare ciambelle, bodyboard o piste da bodysurf, con rampe per i salti.</p><p>I settori gialli, blu, rossi e grigi costituiscono i riferimenti visivi dell’impianto. Le piste per iniziare affiancano rampe e salti di diversa difficoltà, raggruppati in un unico spazio acquatico all’interno di Pokeyland.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een zone voor glijden en springen</h2><p>De zone Waterjump omvat achttien banen en glijbanen voor verschillende vormen van waterglijplezier. Bezoekers gebruiken er banden, bodyboards of bodysurfbanen, met schansen om te springen.</p><p>Gele, blauwe, rode en grijze delen vormen de visuele herkenningspunten. Beginnersbanen liggen naast hellingen en schansen met verschillende moeilijkheidsgraden, samengebracht in één waterzone binnen Pokeyland.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Przestrzeń do ślizgów i skoków</h2><p>Strefa Waterjump obejmuje osiemnaście torów i zjeżdżalni przeznaczonych do różnych form wodnych ślizgów. Instalacje umożliwiają korzystanie z kół, desek bodyboard i torów bodysurf, a rampy służą do skoków.</p><p>Żółte, niebieskie, czerwone i szare sektory stanowią punkty orientacyjne. Tory dla początkujących sąsiadują z rampami i skoczniami o różnym stopniu trudności, zebranymi w jednej strefie wodnej wewnątrz Pokeyland.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um espaço para deslizar e saltar</h2><p>A zona Waterjump reúne dezoito pistas e escorregas destinados a diferentes formas de deslize aquático. As instalações permitem usar boias, pranchas de bodyboard ou pistas de bodysurf, com rampas para os saltos.</p><p>Os setores amarelos, azuis, vermelhos e cinzentos servem de referências visuais. As pistas de iniciação convivem com rampas e saltos de diferentes dificuldades, reunidos num mesmo espaço aquático dentro de Pokeyland.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "f681821f-27e7-4af0-bbe2-f082e905f30e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:09:45.1866161Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "15802825-0835-40e0-b211-410bc26e14b9",
+        "entityKey": "pokeyland-zone-accrobranche",
+        "displayName": "Accrobranche",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Neun Parcours durch den Wald</h2><p>Der Bereich Accrobranche von Pokeyland nutzt die Bäume als Kulisse für Wege in der Höhe. Zu den neun Parcours gehören drei Pitchoune-Routen, der Entdeckungs- und der Familienparcours, zwei Abenteuerparcours, der Sportparcours und die Seilrutschenroute.</p><p>Die Hindernisse verlangen Gleichgewicht, Geschicklichkeit und Kraft beim Wechsel von Baum zu Baum. Der Seilrutschenparcours besteht ausschließlich aus Fahrten an Seilen durch den Wald. Die verschiedenen Routen erschließen dieselbe bewaldete Umgebung vom Einstieg bis zu anspruchsvolleren Passagen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Nine courses through the forest</h2><p>Pokeyland’s Accrobranche area uses the trees as the setting for progress above ground. Its nine courses include three Pitchoune routes, the discovery and family courses, two adventure courses, the sporting course and the zipline route.</p><p>The obstacles call on balance, agility and strength to move between trees. The zipline course consists entirely of cable slides through the forest. The different routes offer several ways to explore the same wooded environment, from introductory challenges to more demanding passages.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Nueve recorridos por el bosque</h2><p>El espacio Accrobranche de Pokeyland utiliza los árboles como entorno para avanzar en altura. Sus nueve recorridos incluyen tres Pitchoune, el de descubrimiento, el familiar, dos de aventura, el deportivo y el de tirolinas.</p><p>Los obstáculos requieren equilibrio, agilidad y fuerza para pasar de un árbol a otro. El recorrido de tirolinas está compuesto exclusivamente por deslizamientos sobre cables a través del bosque. La variedad de rutas permite explorar este mismo entorno arbolado desde la iniciación hasta pasos más exigentes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Neuf parcours dans la forêt</h2><p>L’espace Accrobranche de Pokeyland utilise les arbres comme cadre d’une progression en hauteur. Ses neuf parcours comprennent les trois Pitchoune, le parcours découverte, le parcours famille, deux parcours aventure, le sportif et celui des tyroliennes.</p><p>Les ateliers sollicitent l’équilibre, l’agilité et la force pour passer d’arbre en arbre. Le parcours tyrolienne se compose entièrement de glissades sur câble à travers la forêt. La variété des itinéraires permet d’aborder différemment ce même environnement boisé, depuis l’initiation jusqu’aux passages plus exigeants.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Nove percorsi nel bosco</h2><p>L’area Accrobranche di Pokeyland usa gli alberi come scenario per avanzare in altezza. I nove percorsi comprendono tre Pitchoune, quello di scoperta, quello per famiglie, due d’avventura, lo sportivo e quello delle teleferiche.</p><p>Gli ostacoli richiedono equilibrio, agilità e forza per passare da un albero all’altro. Il percorso delle teleferiche è composto interamente da scivolate su cavi attraverso il bosco. La varietà degli itinerari offre diversi modi di esplorare lo stesso ambiente, dall’iniziazione ai passaggi più impegnativi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Negen routes door het bos</h2><p>De zone Accrobranche van Pokeyland gebruikt de bomen als omgeving voor routes op hoogte. De negen parcoursen omvatten drie Pitchoune-routes, een ontdekkings- en familieparcours, twee avonturenparcoursen, een sportief parcours en een tokkelbaanroute.</p><p>Evenwicht, behendigheid en kracht helpen deelnemers om tussen de bomen door de hindernissen te bewegen. De tokkelbaanroute bestaat volledig uit glijtochten aan kabels door het bos. De verschillende routes bieden meerdere manieren om dezelfde bosrijke omgeving te verkennen, van kennismaking tot zwaardere passages.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dziewięć tras przez las</h2><p>Strefa Accrobranche w Pokeyland wykorzystuje drzewa jako otoczenie tras na wysokości. Dziewięć przebiegów obejmuje trzy Pitchoune, trasę odkrywczą, rodzinną, dwie przygodowe, sportową i trasę zjazdów na linie.</p><p>Przeszkody wymagają równowagi, zwinności i siły przy przechodzeniu między drzewami. Trasa tyrolkowa składa się wyłącznie ze zjazdów po linach przez las. Różnorodność przebiegów pozwala poznawać to samo leśne otoczenie na różnych poziomach, od nauki podstaw po bardziej wymagające odcinki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Nove percursos pela floresta</h2><p>O espaço Accrobranche de Pokeyland usa as árvores como cenário para avançar em altura. Os nove percursos incluem três Pitchoune, o de descoberta, o familiar, dois de aventura, o desportivo e o de tirolesas.</p><p>Os obstáculos exigem equilíbrio, agilidade e força para passar de árvore em árvore. O percurso de tirolesas é composto inteiramente por descidas em cabos pela floresta. A variedade de itinerários oferece diferentes formas de explorar o mesmo ambiente arborizado, desde a iniciação até passagens mais exigentes.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "pokeyland-zone-paintball",
+        "displayName": "Paintball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Fünf Spielfelder mit eigener Kulisse</h2><p>Der Bereich Paintball vereint Zombie, Dog One, Cannibale, Panama und Fox Two. Die Teams verwenden Paintball-Markierer in gestalteten Kulissen, die in eine natürliche Umgebung eingebettet sind.</p><p>Eine inszenierte verlassene Fabrik, ein gestrandetes Boot, ein nachgebautes Dorf, eine Kapelle und militärische Anlagen verleihen den Feldern unterschiedliche Charaktere. Diese Elemente bilden je nach gewähltem Bereich den Rahmen für Spielabläufe mit Begegnung, Angriff oder Verteidigung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Five fields with five different settings</h2><p>The Paintball zone brings together Zombie, Dog One, Cannibale, Panama and Fox Two. Teams use paintball markers among themed structures set within natural surroundings.</p><p>A staged abandoned factory, a stranded boat, a reconstructed village, a chapel and military installations give the fields different identities. These elements form the settings for confrontation, attack or defence scenarios offered according to the chosen playing area.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cinco terrenos con cinco escenarios</h2><p>La zona Paintball reúne los terrenos Zombie, Dog One, Cannibale, Panama y Fox Two. Los equipos utilizan marcadoras de bolas de pintura entre decorados instalados en un entorno natural.</p><p>Una fábrica abandonada escenificada, un barco varado, un pueblo reconstruido, una capilla e instalaciones militares dan un carácter distinto a cada terreno. Estos elementos sirven de marco a los escenarios de enfrentamiento, ataque o defensa ofrecidos según el espacio elegido.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Cinq terrains, cinq décors de jeu</h2><p>La zone Paintball rassemble les terrains Zombie, Dog One, Cannibale, Panama et Fox Two. Les équipes y utilisent des lanceurs de billes de peinture au sein de décors aménagés dans la nature.</p><p>Une usine désaffectée mise en scène, un bateau échoué, un village reconstitué, une chapelle et des installations militaires donnent des caractères différents aux terrains. Ces éléments servent de cadre aux scénarios d’affrontement, d’attaque ou de défense proposés selon l’espace choisi.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Cinque campi con cinque scenari</h2><p>La zona Paintball riunisce i campi Zombie, Dog One, Cannibale, Panama e Fox Two. Le squadre usano marcatori a palline di vernice tra scenografie inserite in un ambiente naturale.</p><p>Una fabbrica abbandonata ricreata, una barca arenata, un villaggio ricostruito, una cappella e installazioni militari danno caratteri diversi ai campi. Questi elementi fanno da sfondo agli scenari di confronto, attacco o difesa proposti in base allo spazio scelto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vijf speelvelden met vijf decors</h2><p>De zone Paintball omvat de velden Zombie, Dog One, Cannibale, Panama en Fox Two. Teams gebruiken paintballmarkers tussen decors die in de natuurlijke omgeving zijn geplaatst.</p><p>Een nagebouwde verlaten fabriek, een gestrand schip, een gereconstrueerd dorp, een kapel en militaire installaties geven de velden elk een eigen karakter. Deze elementen vormen het decor voor confrontatie-, aanvals- of verdedigingsscenario’s, afhankelijk van het gekozen speelveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pięć pól o różnej scenerii</h2><p>Strefa Paintball obejmuje pola Zombie, Dog One, Cannibale, Panama i Fox Two. Drużyny korzystają z markerów strzelających kulkami z farbą pośród dekoracji urządzonych w naturalnym otoczeniu.</p><p>Sceneria opuszczonej fabryki, osiadła łódź, odtworzona wioska, kaplica i instalacje wojskowe nadają polom różny charakter. Elementy te tworzą tło scenariuszy starcia, ataku lub obrony, zależnie od wybranej przestrzeni gry.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cinco campos com cinco cenários</h2><p>A zona Paintball reúne os campos Zombie, Dog One, Cannibale, Panama e Fox Two. As equipas usam marcadores de bolas de tinta entre cenários instalados num ambiente natural.</p><p>Uma fábrica abandonada recriada, um barco encalhado, uma aldeia reconstruída, uma capela e instalações militares dão diferentes características aos campos. Estes elementos servem de enquadramento aos cenários de confronto, ataque ou defesa propostos conforme o espaço escolhido.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "entityKey": "pokeyland-zone-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Bereich für Rutschfahrten und Sprünge</h2><p>Der Bereich Waterjump umfasst achtzehn Bahnen und Rutschen für unterschiedliche Formen des Wasserrutschens. Die Anlagen ermöglichen Fahrten mit Reifen, Bodyboards oder auf Bodysurf-Bahnen sowie Sprünge über Rampen.</p><p>Gelbe, blaue, rote und graue Abschnitte dienen als Orientierungspunkte. Einstiegsbahnen liegen neben Rampen und Sprungschanzen verschiedener Schwierigkeitsgrade, gebündelt in einem gemeinsamen Wasserbereich innerhalb von Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An area for slides and jumps</h2><p>The Waterjump zone brings together eighteen runs and slides for different forms of aquatic sliding. The installations accommodate tubes, bodyboards and bodysurf runs, with ramps for jumping.</p><p>Yellow, blue, red and grey sections provide visual markers throughout the installation. Starter runs stand alongside ramps and jumps of differing difficulty, grouped within one aquatic area inside Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un espacio para deslizarse y saltar</h2><p>La zona Waterjump reúne dieciocho pistas y toboganes destinados a distintas formas de deslizamiento acuático. Las instalaciones permiten utilizar flotadores, tablas de bodyboard o pistas de bodysurf, con rampas para los saltos.</p><p>Los sectores amarillos, azules, rojos y grises sirven de referencia visual. Las pistas de iniciación conviven con rampas y saltos de distinta dificultad, agrupados en un mismo espacio acuático dentro de Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un espace consacré aux glissades et aux sauts</h2><p>La zone Waterjump rassemble dix-huit pistes et toboggans destinés à différentes formes de glisse aquatique. Les installations permettent d’utiliser des bouées, des bodyboards ou les pistes de bodysurf, avec des tremplins pour les sauts.</p><p>Les secteurs jaunes, bleus, rouges et gris constituent les repères du dispositif. Les pistes de départ côtoient des rampes et des tremplins de difficulté différente, regroupés dans un même espace aquatique à l’intérieur de Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Uno spazio per scivolate e salti</h2><p>La zona Waterjump riunisce diciotto piste e scivoli dedicati a diverse forme di scivolata acquatica. Le installazioni consentono di usare ciambelle, bodyboard o piste da bodysurf, con rampe per i salti.</p><p>I settori gialli, blu, rossi e grigi costituiscono i riferimenti visivi dell’impianto. Le piste per iniziare affiancano rampe e salti di diversa difficoltà, raggruppati in un unico spazio acquatico all’interno di Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een zone voor glijden en springen</h2><p>De zone Waterjump omvat achttien banen en glijbanen voor verschillende vormen van waterglijplezier. Bezoekers gebruiken er banden, bodyboards of bodysurfbanen, met schansen om te springen.</p><p>Gele, blauwe, rode en grijze delen vormen de visuele herkenningspunten. Beginnersbanen liggen naast hellingen en schansen met verschillende moeilijkheidsgraden, samengebracht in één waterzone binnen Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przestrzeń do ślizgów i skoków</h2><p>Strefa Waterjump obejmuje osiemnaście torów i zjeżdżalni przeznaczonych do różnych form wodnych ślizgów. Instalacje umożliwiają korzystanie z kół, desek bodyboard i torów bodysurf, a rampy służą do skoków.</p><p>Żółte, niebieskie, czerwone i szare sektory stanowią punkty orientacyjne. Tory dla początkujących sąsiadują z rampami i skoczniami o różnym stopniu trudności, zebranymi w jednej strefie wodnej wewnątrz Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um espaço para deslizar e saltar</h2><p>A zona Waterjump reúne dezoito pistas e escorregas destinados a diferentes formas de deslize aquático. As instalações permitem usar boias, pranchas de bodyboard ou pistas de bodysurf, com rampas para os saltos.</p><p>Os setores amarelos, azuis, vermelhos e cinzentos servem de referências visuais. As pistas de iniciação convivem com rampas e saltos de diferentes dificuldades, reunidos num mesmo espaço aquático dentro de Pokeyland.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "43302dcc-d18f-492d-98d3-1a523891e7f7",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T12:10:43.2762043Z",
+    "appliedAtUtc": "2026-11-15T12:10:43.2762057Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "15802825-0835-40e0-b211-410bc26e14b9",
+        "entityKey": "pokeyland-zone-accrobranche",
+        "displayName": "Accrobranche",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Neun Parcours durch den Wald</h2><p>Der Bereich Accrobranche von Pokeyland nutzt die Bäume als Kulisse für Wege in der Höhe. Zu den neun Parcours gehören drei Pitchoune-Routen, der Entdeckungs- und der Familienparcours, zwei Abenteuerparcours, der Sportparcours und die Seilrutschenroute.</p><p>Die Hindernisse verlangen Gleichgewicht, Geschicklichkeit und Kraft beim Wechsel von Baum zu Baum. Der Seilrutschenparcours besteht ausschließlich aus Fahrten an Seilen durch den Wald. Die verschiedenen Routen erschließen dieselbe bewaldete Umgebung vom Einstieg bis zu anspruchsvolleren Passagen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Nine courses through the forest</h2><p>Pokeyland’s Accrobranche area uses the trees as the setting for progress above ground. Its nine courses include three Pitchoune routes, the discovery and family courses, two adventure courses, the sporting course and the zipline route.</p><p>The obstacles call on balance, agility and strength to move between trees. The zipline course consists entirely of cable slides through the forest. The different routes offer several ways to explore the same wooded environment, from introductory challenges to more demanding passages.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Nueve recorridos por el bosque</h2><p>El espacio Accrobranche de Pokeyland utiliza los árboles como entorno para avanzar en altura. Sus nueve recorridos incluyen tres Pitchoune, el de descubrimiento, el familiar, dos de aventura, el deportivo y el de tirolinas.</p><p>Los obstáculos requieren equilibrio, agilidad y fuerza para pasar de un árbol a otro. El recorrido de tirolinas está compuesto exclusivamente por deslizamientos sobre cables a través del bosque. La variedad de rutas permite explorar este mismo entorno arbolado desde la iniciación hasta pasos más exigentes.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Neuf parcours dans la forêt</h2><p>L’espace Accrobranche de Pokeyland utilise les arbres comme cadre d’une progression en hauteur. Ses neuf parcours comprennent les trois Pitchoune, le parcours découverte, le parcours famille, deux parcours aventure, le sportif et celui des tyroliennes.</p><p>Les ateliers sollicitent l’équilibre, l’agilité et la force pour passer d’arbre en arbre. Le parcours tyrolienne se compose entièrement de glissades sur câble à travers la forêt. La variété des itinéraires permet d’aborder différemment ce même environnement boisé, depuis l’initiation jusqu’aux passages plus exigeants.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Nove percorsi nel bosco</h2><p>L’area Accrobranche di Pokeyland usa gli alberi come scenario per avanzare in altezza. I nove percorsi comprendono tre Pitchoune, quello di scoperta, quello per famiglie, due d’avventura, lo sportivo e quello delle teleferiche.</p><p>Gli ostacoli richiedono equilibrio, agilità e forza per passare da un albero all’altro. Il percorso delle teleferiche è composto interamente da scivolate su cavi attraverso il bosco. La varietà degli itinerari offre diversi modi di esplorare lo stesso ambiente, dall’iniziazione ai passaggi più impegnativi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Negen routes door het bos</h2><p>De zone Accrobranche van Pokeyland gebruikt de bomen als omgeving voor routes op hoogte. De negen parcoursen omvatten drie Pitchoune-routes, een ontdekkings- en familieparcours, twee avonturenparcoursen, een sportief parcours en een tokkelbaanroute.</p><p>Evenwicht, behendigheid en kracht helpen deelnemers om tussen de bomen door de hindernissen te bewegen. De tokkelbaanroute bestaat volledig uit glijtochten aan kabels door het bos. De verschillende routes bieden meerdere manieren om dezelfde bosrijke omgeving te verkennen, van kennismaking tot zwaardere passages.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dziewięć tras przez las</h2><p>Strefa Accrobranche w Pokeyland wykorzystuje drzewa jako otoczenie tras na wysokości. Dziewięć przebiegów obejmuje trzy Pitchoune, trasę odkrywczą, rodzinną, dwie przygodowe, sportową i trasę zjazdów na linie.</p><p>Przeszkody wymagają równowagi, zwinności i siły przy przechodzeniu między drzewami. Trasa tyrolkowa składa się wyłącznie ze zjazdów po linach przez las. Różnorodność przebiegów pozwala poznawać to samo leśne otoczenie na różnych poziomach, od nauki podstaw po bardziej wymagające odcinki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Nove percursos pela floresta</h2><p>O espaço Accrobranche de Pokeyland usa as árvores como cenário para avançar em altura. Os nove percursos incluem três Pitchoune, o de descoberta, o familiar, dois de aventura, o desportivo e o de tirolesas.</p><p>Os obstáculos exigem equilíbrio, agilidade e força para passar de árvore em árvore. O percurso de tirolesas é composto inteiramente por descidas em cabos pela floresta. A variedade de itinerários oferece diferentes formas de explorar o mesmo ambiente arborizado, desde a iniciação até passagens mais exigentes.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "71ce2924-7fcc-4dec-adb2-35223d0d0788",
+        "entityKey": "pokeyland-zone-paintball",
+        "displayName": "Paintball",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Fünf Spielfelder mit eigener Kulisse</h2><p>Der Bereich Paintball vereint Zombie, Dog One, Cannibale, Panama und Fox Two. Die Teams verwenden Paintball-Markierer in gestalteten Kulissen, die in eine natürliche Umgebung eingebettet sind.</p><p>Eine inszenierte verlassene Fabrik, ein gestrandetes Boot, ein nachgebautes Dorf, eine Kapelle und militärische Anlagen verleihen den Feldern unterschiedliche Charaktere. Diese Elemente bilden je nach gewähltem Bereich den Rahmen für Spielabläufe mit Begegnung, Angriff oder Verteidigung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Five fields with five different settings</h2><p>The Paintball zone brings together Zombie, Dog One, Cannibale, Panama and Fox Two. Teams use paintball markers among themed structures set within natural surroundings.</p><p>A staged abandoned factory, a stranded boat, a reconstructed village, a chapel and military installations give the fields different identities. These elements form the settings for confrontation, attack or defence scenarios offered according to the chosen playing area.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cinco terrenos con cinco escenarios</h2><p>La zona Paintball reúne los terrenos Zombie, Dog One, Cannibale, Panama y Fox Two. Los equipos utilizan marcadoras de bolas de pintura entre decorados instalados en un entorno natural.</p><p>Una fábrica abandonada escenificada, un barco varado, un pueblo reconstruido, una capilla e instalaciones militares dan un carácter distinto a cada terreno. Estos elementos sirven de marco a los escenarios de enfrentamiento, ataque o defensa ofrecidos según el espacio elegido.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Cinq terrains, cinq décors de jeu</h2><p>La zone Paintball rassemble les terrains Zombie, Dog One, Cannibale, Panama et Fox Two. Les équipes y utilisent des lanceurs de billes de peinture au sein de décors aménagés dans la nature.</p><p>Une usine désaffectée mise en scène, un bateau échoué, un village reconstitué, une chapelle et des installations militaires donnent des caractères différents aux terrains. Ces éléments servent de cadre aux scénarios d’affrontement, d’attaque ou de défense proposés selon l’espace choisi.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Cinque campi con cinque scenari</h2><p>La zona Paintball riunisce i campi Zombie, Dog One, Cannibale, Panama e Fox Two. Le squadre usano marcatori a palline di vernice tra scenografie inserite in un ambiente naturale.</p><p>Una fabbrica abbandonata ricreata, una barca arenata, un villaggio ricostruito, una cappella e installazioni militari danno caratteri diversi ai campi. Questi elementi fanno da sfondo agli scenari di confronto, attacco o difesa proposti in base allo spazio scelto.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vijf speelvelden met vijf decors</h2><p>De zone Paintball omvat de velden Zombie, Dog One, Cannibale, Panama en Fox Two. Teams gebruiken paintballmarkers tussen decors die in de natuurlijke omgeving zijn geplaatst.</p><p>Een nagebouwde verlaten fabriek, een gestrand schip, een gereconstrueerd dorp, een kapel en militaire installaties geven de velden elk een eigen karakter. Deze elementen vormen het decor voor confrontatie-, aanvals- of verdedigingsscenario’s, afhankelijk van het gekozen speelveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pięć pól o różnej scenerii</h2><p>Strefa Paintball obejmuje pola Zombie, Dog One, Cannibale, Panama i Fox Two. Drużyny korzystają z markerów strzelających kulkami z farbą pośród dekoracji urządzonych w naturalnym otoczeniu.</p><p>Sceneria opuszczonej fabryki, osiadła łódź, odtworzona wioska, kaplica i instalacje wojskowe nadają polom różny charakter. Elementy te tworzą tło scenariuszy starcia, ataku lub obrony, zależnie od wybranej przestrzeni gry.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Cinco campos com cinco cenários</h2><p>A zona Paintball reúne os campos Zombie, Dog One, Cannibale, Panama e Fox Two. As equipas usam marcadores de bolas de tinta entre cenários instalados num ambiente natural.</p><p>Uma fábrica abandonada recriada, um barco encalhado, uma aldeia reconstruída, uma capela e instalações militares dão diferentes características aos campos. Estes elementos servem de enquadramento aos cenários de confronto, ataque ou defesa propostos conforme o espaço escolhido.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "161766a5-cdcd-4675-aef8-3acc9e078098",
+        "entityKey": "pokeyland-zone-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Bereich für Rutschfahrten und Sprünge</h2><p>Der Bereich Waterjump umfasst achtzehn Bahnen und Rutschen für unterschiedliche Formen des Wasserrutschens. Die Anlagen ermöglichen Fahrten mit Reifen, Bodyboards oder auf Bodysurf-Bahnen sowie Sprünge über Rampen.</p><p>Gelbe, blaue, rote und graue Abschnitte dienen als Orientierungspunkte. Einstiegsbahnen liegen neben Rampen und Sprungschanzen verschiedener Schwierigkeitsgrade, gebündelt in einem gemeinsamen Wasserbereich innerhalb von Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An area for slides and jumps</h2><p>The Waterjump zone brings together eighteen runs and slides for different forms of aquatic sliding. The installations accommodate tubes, bodyboards and bodysurf runs, with ramps for jumping.</p><p>Yellow, blue, red and grey sections provide visual markers throughout the installation. Starter runs stand alongside ramps and jumps of differing difficulty, grouped within one aquatic area inside Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un espacio para deslizarse y saltar</h2><p>La zona Waterjump reúne dieciocho pistas y toboganes destinados a distintas formas de deslizamiento acuático. Las instalaciones permiten utilizar flotadores, tablas de bodyboard o pistas de bodysurf, con rampas para los saltos.</p><p>Los sectores amarillos, azules, rojos y grises sirven de referencia visual. Las pistas de iniciación conviven con rampas y saltos de distinta dificultad, agrupados en un mismo espacio acuático dentro de Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un espace consacré aux glissades et aux sauts</h2><p>La zone Waterjump rassemble dix-huit pistes et toboggans destinés à différentes formes de glisse aquatique. Les installations permettent d’utiliser des bouées, des bodyboards ou les pistes de bodysurf, avec des tremplins pour les sauts.</p><p>Les secteurs jaunes, bleus, rouges et gris constituent les repères du dispositif. Les pistes de départ côtoient des rampes et des tremplins de difficulté différente, regroupés dans un même espace aquatique à l’intérieur de Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Uno spazio per scivolate e salti</h2><p>La zona Waterjump riunisce diciotto piste e scivoli dedicati a diverse forme di scivolata acquatica. Le installazioni consentono di usare ciambelle, bodyboard o piste da bodysurf, con rampe per i salti.</p><p>I settori gialli, blu, rossi e grigi costituiscono i riferimenti visivi dell’impianto. Le piste per iniziare affiancano rampe e salti di diversa difficoltà, raggruppati in un unico spazio acquatico all’interno di Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een zone voor glijden en springen</h2><p>De zone Waterjump omvat achttien banen en glijbanen voor verschillende vormen van waterglijplezier. Bezoekers gebruiken er banden, bodyboards of bodysurfbanen, met schansen om te springen.</p><p>Gele, blauwe, rode en grijze delen vormen de visuele herkenningspunten. Beginnersbanen liggen naast hellingen en schansen met verschillende moeilijkheidsgraden, samengebracht in één waterzone binnen Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przestrzeń do ślizgów i skoków</h2><p>Strefa Waterjump obejmuje osiemnaście torów i zjeżdżalni przeznaczonych do różnych form wodnych ślizgów. Instalacje umożliwiają korzystanie z kół, desek bodyboard i torów bodysurf, a rampy służą do skoków.</p><p>Żółte, niebieskie, czerwone i szare sektory stanowią punkty orientacyjne. Tory dla początkujących sąsiadują z rampami i skoczniami o różnym stopniu trudności, zebranymi w jednej strefie wodnej wewnątrz Pokeyland.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um espaço para deslizar e saltar</h2><p>A zona Waterjump reúne dezoito pistas e escorregas destinados a diferentes formas de deslize aquático. As instalações permitem usar boias, pranchas de bodyboard ou pistas de bodysurf, com rampas para os saltos.</p><p>Os setores amarelos, azuis, vermelhos e cinzentos servem de referências visuais. As pistas de iniciação convivem com rampas e saltos de diferentes dificuldades, reunidos num mesmo espaço aquático dentro de Pokeyland.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "all24TextsPersonallyAuthoredAndReviewed": true,
+    "sourcePages": [
+      "https://www.pokeyland.com/packs/accrobranche/",
+      "https://www.pokeyland.com/packs/paintball/",
+      "https://www.pokeyland.com/packs/waterjump/"
+    ],
+    "noInventedZoneOrPublicVisibility": true,
+    "shortSourceDepthGapsRetained": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
