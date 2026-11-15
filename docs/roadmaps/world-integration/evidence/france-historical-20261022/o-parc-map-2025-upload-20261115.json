@@ -1,0 +1,43 @@
+{
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "kind": "OfficialMapBlobUpload",
+  "receipt": {
+    "result": {
+      "ParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+      "OfficialMap": {
+        "Key": "o-parc-map-2025",
+        "Id": "o-parc-map-2025",
+        "Year": 2025,
+        "Format": "Image",
+        "StorageKey": "official-maps/6644b892-d03c-461e-855d-a61cadba76f4/o-parc-map-2025.d272ba4d4ce94a50881567fd1ec4d6de.jpg",
+        "OriginalFileName": "reopening-2025-1.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 1866222,
+        "SourcePageUrl": "https://www.bourges.infoptimum.com/photos/67efd00d4f5f2_67e51d5be29f0_plaquette.jpg",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      }
+    },
+    "action": "ImportOfficialMap",
+    "receivedAtUtc": "2026-11-15T04:16:17.9445584Z",
+    "startedAtUtc": "2026-11-15T04:16:11.5129672Z"
+  },
+  "sourceEvidence": {
+    "name": "reopening-2025-1",
+    "url": "https://www.bourges.infoptimum.com/photos/67efd00d4f5f2_67e51d5be29f0_plaquette.jpg",
+    "path": "/workspace/france-historical-20261114/o-parc/source-images/reopening-2025-1.jpg",
+    "status": 200,
+    "bytes": 1866222,
+    "sha256": "9e92434b08b366c10da80b01c0250c2f3dc0181afc00d03a465962c5bb6dda83",
+    "retrievedAtUtc": "2026-11-15T04:14:53.318533+00:00",
+    "sourcePage": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html",
+    "sourcePageDate": "2025-04-03",
+    "yearJustification": "Page dated3April2025 announces the2025reopening and links this branded operator map; labels Safari and Tasses asnew corroborate2025. Different numberedinventory from2026 including ÔPetitTrain, not a duplicate.",
+    "personalVisualReview": true,
+    "decision": "Accepted private official2025map; untouched native2000x1414JPEG. Earlier undatedtourismmap remainsundated."
+  },
+  "timestampBasis": "Actual UTC receipt time observed by wrapper; upload response contains no server timestamp. Association to park still requires Preview/Apply and will receive its own exact server UTC.",
+  "finalAuditCompleted": false,
+  "private": true
+}

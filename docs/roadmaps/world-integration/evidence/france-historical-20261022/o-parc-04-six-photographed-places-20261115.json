@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "33b55ecd131ef3371a57503f6b7f58d4b2af9ca6713c508c20bf1c27f3c66bd5",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "4845308a-f93d-461c-88d7-e08d68d3882e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:14:10.9107129Z",
+    "appliedAtUtc": "2026-11-15T04:14:10.9107181Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 6,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+        "entityKey": "1e6c56b5-076b-45bd-be2f-2392ee5487ce",
+        "displayName": "Karts à pédales",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Karts à pédales</h2><p>Die Tretautos fuhren auf einem Asphaltband mit Zielflaggen im nordwestlichen Teil des Geländes.</p><h2>Eine Strecke mit Pedalkraft</h2><p>Das Tempo hing ganz von der Pedalkraft ab, sodass Kurven und kurze Gerade in jeder Runde einen anderen Rhythmus bekamen.</p><p>Abseits motorisierter Fahrgeschäfte bot die Strecke ein einfaches, verständliches Fahrerlebnis im Freien.</p>",
+            "newValue": "<h2>Karoflaggen auf der Wiese</h2><p>Große Karoflaggen begleiteten die Karts à pédales entlang einer hellen, von Gras umgebenen Fahrbahn. Schwarz-weiße Begrenzungen griffen die Farben der Flaggen auf; hohe Bäume bildeten den Hintergrund.</p><h2>Rennkulisse unter freiem Himmel</h2><p>Die kleinen offenen Tretkarts gehörten zu den Spielen auf der Wiese. Auf den Fotografien fahren die Besucher dicht über dem Rasen zwischen den Flaggen hindurch.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Karts à pédales</h2><p>The pedal karts followed a ribbon of tarmac lined with chequered flags in the north-western part of the grounds.</p><h2>A circuit powered by pedalling</h2><p>Speed depended entirely on the driversʼ effort, giving the bends and short straight a different rhythm on every lap.</p><p>Away from the powered rides, the circuit offered a simple, easily understood driving experience rooted in outdoor play.</p>",
+            "newValue": "<h2>Chequered flags in the meadow</h2><p>Large chequered flags lined the pale track of Karts à pédales, surrounded by grass. Black-and-white edging repeated the colours of the flags, with tall trees forming the backdrop.</p><h2>Racing under the open sky</h2><p>The small open pedal karts stood alongside the meadow’s other games. Photographs show drivers passing between the flags close to the grass.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Karts à pédales</h2><p>Los karts a pedales seguían una cinta de asfalto con banderas a cuadros en la parte noroeste del recinto.</p><h2>Un circuito impulsado a pedales</h2><p>La velocidad dependía por completo del esfuerzo de los conductores, dando a las curvas y a la corta recta un ritmo distinto en cada vuelta.</p><p>Alejado de las atracciones motorizadas, el circuito ofrecía una conducción sencilla y clara al aire libre.</p>",
+            "newValue": "<h2>Banderas a cuadros en la pradera</h2><p>Grandes banderas a cuadros acompañaban a los Karts à pédales a lo largo de una pista clara rodeada de césped. Los bordes blancos y negros repetían los colores de las banderas, ante una hilera de árboles altos.</p><h2>Carreras al aire libre</h2><p>Los pequeños karts de pedales descubiertos compartían la pradera con otros juegos. En las fotografías los conductores pasan entre las banderas a ras del césped.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Karts à pédales</h2><p>Les Karts à pédales suivaient un ruban dʼasphalte bordé de fanions à damier dans la partie nord-ouest du domaine.</p><h2>Un circuit propulsé par les jambes</h2><p>La vitesse dépendait entièrement de lʼeffort des conducteurs, donnant aux virages et à la petite ligne droite un rythme différent à chaque tour.</p><p>À distance des manèges motorisés, le circuit proposait une expérience de conduite simple, lisible et ancrée dans le plein air.</p>",
+            "newValue": "<h2>Les damiers dans la prairie</h2><p>De grands drapeaux à damier accompagnaient les Karts à pédales sur une piste claire entourée d’herbe. Ses bordures noires et blanches reprenaient les couleurs des fanions, devant une lisière de grands arbres.</p><h2>Une course à ciel ouvert</h2><p>Les petits karts découverts côtoyaient les autres jeux de la prairie. Sur les photographies, les conducteurs passaient entre les drapeaux au ras du gazon.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Karts à pédales</h2><p>I kart a pedali seguivano una striscia dʼasfalto bordata da bandiere a scacchi nella parte nord-occidentale.</p><h2>Un circuito mosso dai pedali</h2><p>La velocità dipendeva interamente dallo sforzo dei conducenti, dando a curve e breve rettilineo un ritmo diverso a ogni giro.</p><p>Lontano dalle giostre motorizzate, il circuito offriva una guida semplice, leggibile e radicata nel gioco allʼaperto.</p>",
+            "newValue": "<h2>Bandiere a scacchi sul prato</h2><p>Grandi bandiere a scacchi accompagnavano i Karts à pédales lungo una pista chiara circondata dall’erba. I bordi bianchi e neri riprendevano i colori delle bandiere, davanti a una fila di alberi alti.</p><h2>Una corsa all’aperto</h2><p>I piccoli kart a pedali scoperti affiancavano gli altri giochi del prato. Nelle fotografie i guidatori passano tra le bandiere a poca altezza dall’erba.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Karts à pédales</h2><p>De trapkarts volgden een asfaltlint met geblokte vlaggen in het noordwestelijke deel van het terrein.</p><h2>Een circuit op trapkracht</h2><p>De snelheid hing volledig af van de inspanning van de bestuurders, waardoor bochten en korte rechte lijn elke ronde anders aanvoelden.</p><p>Weg van de gemotoriseerde attracties bood het circuit een eenvoudige, duidelijke rijervaring in de buitenlucht.</p>",
+            "newValue": "<h2>Geblokte vlaggen in het gras</h2><p>Grote geblokte vlaggen stonden langs de lichte baan van Karts à pédales, omringd door gras. De zwart-witte randen herhaalden de kleuren van de vlaggen, met hoge bomen op de achtergrond.</p><h2>Racen in de openlucht</h2><p>De kleine open trapkarts stonden tussen de andere spelen op het grasveld. Op de foto’s rijden bezoekers laag boven het gras tussen de vlaggen door.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Karts à pédales</h2><p>Gokarty na pedały jeździły asfaltową pętlą z flagami w szachownicę w północno-zachodniej części terenu.</p><h2>Tor napędzany pedałowaniem</h2><p>Prędkość zależała wyłącznie od wysiłku kierowców, więc zakręty i krótka prosta miały inny rytm na każdym okrążeniu.</p><p>Z dala od napędzanych karuzel tor zapewniał proste, czytelne doświadczenie jazdy zakorzenione w zabawie na świeżym powietrzu.</p>",
+            "newValue": "<h2>Szachownice na łące</h2><p>Duże flagi w szachownicę towarzyszyły Karts à pédales wzdłuż jasnego toru otoczonego trawą. Czarno-białe obrzeża powtarzały kolory flag, a tło tworzyły wysokie drzewa.</p><h2>Wyścigi pod gołym niebem</h2><p>Małe, odkryte gokarty na pedały sąsiadowały z innymi zabawami na łące. Na fotografiach kierowcy przejeżdżają nisko nad trawą między flagami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Karts à pédales</h2><p>Os karts a pedais seguiam uma faixa de asfalto ladeada por bandeiras axadrezadas na zona noroeste.</p><h2>Um circuito movido a pedais</h2><p>A velocidade dependia inteiramente do esforço dos condutores, dando às curvas e à pequena reta um ritmo diferente em cada volta.</p><p>Afastado das diversões motorizadas, o circuito oferecia uma condução simples, clara e ligada à brincadeira ao ar livre.</p>",
+            "newValue": "<h2>Bandeiras axadrezadas no prado</h2><p>Grandes bandeiras axadrezadas acompanhavam os Karts à pédales numa pista clara rodeada de relva. As margens brancas e pretas repetiam as cores das bandeiras, diante de uma fila de árvores altas.</p><h2>Corridas ao ar livre</h2><p>Os pequenos karts a pedais descobertos ficavam junto dos outros jogos do prado. Nas fotografias, os condutores passam entre as bandeiras perto da relva.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "entityKey": "5b0e7536-f02e-4563-a3d0-7f624754857b",
+        "displayName": "Trampolines",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Trampolines</h2><p>Die Trampoline lagen auf einer großen rechteckigen Plattform hinter einem weißen Netz, mit mehreren Sprungfeldern nebeneinander.</p><h2>Sprünge hinter Netzen</h2><p>Jedes Feld erlaubte einen eigenen Rhythmus, kleine Sprungfolgen oder mehr Höhe, ohne andere Nutzende zu kreuzen.</p><p>Auf dem Plan von 2026 lag die Plattform neben den Kettenfliegern und ergänzte deren Luftbewegung am Boden.</p>",
+            "newValue": "<h2>Das große gelb-grüne Rechteck</h2><p>Die Trampoline standen auf einer erhöhten Plattform mit einem grünen Streifen auf gelbem Unterbau. Ein weißes Netz umgab die Sprungflächen und ließ den Blick auf Himmel und Wiese frei.</p><h2>Neben den Chaises Volantes</h2><p>Eine kleine Treppe führte auf den Rasen, wo Schuhe am Fuß des Netzes lagen. Auf den Fotografien waren die Chaises Volantes direkt hinter den Springenden zu sehen; auch der letzte Parkplan zeigte beide Anlagen nebeneinander in der Parkmitte.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Trampolines</h2><p>The trampolines occupied a large rectangular platform enclosed by white netting, with several jumping areas side by side.</p><h2>Bounces behind netting</h2><p>Each space let participants find their rhythm, link small jumps or gain more height without crossing neighbouring users.</p><p>The platform stood beside the flying chairs on the 2026 map, offering a ground-level counterpart to the aerial movement nearby.</p>",
+            "newValue": "<h2>The large yellow-and-green rectangle</h2><p>Trampolines occupied a raised platform with a green stripe across its yellow base. White netting enclosed the jumping areas, with open views of the sky and meadow.</p><h2>Beside Chaises Volantes</h2><p>A small set of steps led down to the grass, where shoes were left at the foot of the netting. Chaises Volantes appeared directly behind the jumpers in photographs; the final park map retained these neighbouring positions in the centre of the grounds.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Trampolines</h2><p>Los trampolines ocupaban una gran plataforma rectangular rodeada de red blanca, con varias zonas de salto contiguas.</p><h2>Saltos tras la red</h2><p>Cada espacio permitía encontrar el propio ritmo, enlazar saltos cortos o ganar altura sin cruzarse con los demás.</p><p>La plataforma estaba junto a las sillas voladoras en el plano de 2026, como contrapunto a ras de suelo del movimiento aéreo.</p>",
+            "newValue": "<h2>El gran rectángulo amarillo y verde</h2><p>Los Trampolines ocupaban una plataforma elevada con una franja verde sobre la base amarilla. Una red blanca rodeaba las zonas de salto, con vistas abiertas al cielo y a la pradera.</p><h2>Junto a las Chaises Volantes</h2><p>Una pequeña escalera bajaba al césped, donde quedaban los zapatos al pie de la red. En las fotografías las Chaises Volantes aparecen justo detrás de quienes saltan; el último plano conservaba esta proximidad en el centro del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Trampolines</h2><p>Les Trampolines occupaient une grande plateforme rectangulaire entourée dʼun filet blanc, avec plusieurs zones de saut côte à côte.</p><h2>Des bonds sous filet</h2><p>Chaque espace permettait de trouver son rythme, dʼenchaîner de petits sauts ou de prendre davantage dʼamplitude sans croiser les voisins.</p><p>La plateforme longeait les Chaises Volantes sur le plan 2026, donnant une lecture au sol du mouvement aérien voisin.</p>",
+            "newValue": "<h2>Le grand rectangle jaune et vert</h2><p>Les Trampolines formaient une plateforme surélevée dont le soubassement jaune était traversé d’une bande verte. Un filet blanc entourait les espaces de saut, largement ouverts sur le ciel et la prairie.</p><h2>Auprès des Chaises Volantes</h2><p>Un petit escalier descendait sur l’herbe, où les chaussures étaient déposées au pied du filet. Les Chaises Volantes apparaissaient juste derrière les sauteurs sur les photographies ; le plan final conservait ce voisinage au centre du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Trampolines</h2><p>I trampolini occupavano una grande piattaforma rettangolare circondata da rete bianca, con più zone di salto affiancate.</p><h2>Salti dietro la rete</h2><p>Ogni spazio permetteva di trovare il proprio ritmo, concatenare piccoli salti o guadagnare altezza senza incrociare gli altri.</p><p>La piattaforma affiancava le sedie volanti nella mappa del 2026, offrendo a terra un contrappunto al movimento aereo vicino.</p>",
+            "newValue": "<h2>Il grande rettangolo giallo e verde</h2><p>I Trampolines occupavano una piattaforma rialzata con una fascia verde sulla base gialla. Una rete bianca circondava le aree di salto, lasciando aperta la vista sul cielo e sul prato.</p><h2>Accanto alle Chaises Volantes</h2><p>Una piccola scala scendeva sull’erba, dove le scarpe venivano lasciate ai piedi della rete. Nelle fotografie le Chaises Volantes compaiono subito dietro chi salta; anche l’ultima mappa manteneva questa vicinanza al centro del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Trampolines</h2><p>De trampolines lagen op een groot rechthoekig platform achter wit gaas, met verschillende springvakken naast elkaar.</p><h2>Sprongen achter netten</h2><p>Elk vak liet bezoekers hun ritme vinden, korte sprongen verbinden of hoger springen zonder anderen te kruisen.</p><p>Op de kaart van 2026 lag het platform naast de zweefmolen, als tegenhanger op de grond van de luchtbeweging ernaast.</p>",
+            "newValue": "<h2>De grote geel-groene rechthoek</h2><p>De Trampolines stonden op een verhoogd platform met een groene streep over de gele onderkant. Een wit net omsloot de springvlakken, met vrij zicht op de lucht en het grasveld.</p><h2>Naast de Chaises Volantes</h2><p>Een klein trapje kwam uit op het gras, waar schoenen aan de voet van het net lagen. Op de foto’s stonden de Chaises Volantes vlak achter de springende bezoekers; ook de laatste parkplattegrond toonde beide attracties naast elkaar in het midden van het terrein.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Trampolines</h2><p>Trampoliny zajmowały dużą prostokątną platformę otoczoną białą siatką, z kilkoma polami skoków obok siebie.</p><h2>Skoki za siatką</h2><p>Każde pole pozwalało znaleźć własny rytm, łączyć krótkie skoki lub nabierać wysokości bez przecinania toru innych.</p><p>Na mapie z 2026 roku platforma leżała obok latających krzesełek, stanowiąc naziemny odpowiednik ich ruchu.</p>",
+            "newValue": "<h2>Duży żółto-zielony prostokąt</h2><p>Trampoliny zajmowały podwyższoną platformę z zielonym pasem na żółtej podstawie. Biała siatka otaczała miejsca do skakania, pozostawiając widok na niebo i łąkę.</p><h2>Obok Chaises Volantes</h2><p>Małe schodki prowadziły na trawę, gdzie u stóp siatki leżały buty. Na fotografiach Chaises Volantes widać tuż za skaczącymi osobami; ostatni plan parku również umieszczał obie atrakcje obok siebie pośrodku terenu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Trampolines</h2><p>Os trampolins ocupavam uma grande plataforma retangular cercada por rede branca, com várias zonas de salto lado a lado.</p><h2>Saltos atrás da rede</h2><p>Cada espaço permitia encontrar o próprio ritmo, ligar pequenos saltos ou ganhar altura sem cruzar os restantes utilizadores.</p><p>A plataforma ficava junto às cadeiras voadoras no mapa de 2026, oferecendo ao nível do solo um contraponto ao movimento aéreo.</p>",
+            "newValue": "<h2>O grande retângulo amarelo e verde</h2><p>Os Trampolines ocupavam uma plataforma elevada com uma faixa verde sobre a base amarela. Uma rede branca rodeava as áreas de salto, deixando a vista aberta para o céu e o prado.</p><h2>Ao lado das Chaises Volantes</h2><p>Uma pequena escada descia até à relva, onde os sapatos ficavam junto à base da rede. Nas fotografias, as Chaises Volantes surgem logo atrás de quem salta; o último mapa mantinha esta proximidade no centro do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+        "entityKey": "cdcd0f65-6587-4f61-acf8-8e6e64b5bf5d",
+        "displayName": "Méga Slide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Méga Slide</h2><p>Méga Slide ragte als breite rot-schwarze Rampe über dem Becken auf, mit zentralem Aufstieg und mehreren Rutschbahnen.</p><h2>Die große Abfahrt der Aqua Zone</h2><p>Die Höhe steigerte die Erwartung vor der geraden Beschleunigung ins Wasser, die in der gesamten Aqua Zone sichtbar war.</p><p>Die offizielle Darstellung erlaubte die Rutsche ab einem Meter Körpergröße; sie blieb das prägende Zeichen der Aqua Zone.</p>",
+            "newValue": "<h2>Die breite blaue Rutsche</h2><p>Méga Slide erhob sich mit einer breiten blauen Abfahrt und roten und gelben aufblasbaren Seiten über seinem Becken. Die Treppe verlief seitlich; unten kamen die Besucher unter einem großen Schild mit dem Namen der Rutsche im Wasser an.</p><h2>Die Farben der Aqua Zone</h2><p>Ein niedriger Holzzaun trennte das Becken vom Rasen. Dahinter stand eine weitere blau-gelbe Hüpfanlage: Diese großen farbigen Silhouetten prägten die Aqua Zone zwischen den Bäumen von Bannay.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Méga Slide</h2><p>Méga Slide raised a broad red-and-black ramp above the pool, with a central climb and several sliding lanes.</p><h2>The Aqua Zoneʼs major descent</h2><p>The height built anticipation before a straight acceleration towards the water, visible throughout the aquatic area.</p><p>The official presentation limited this slide to guests at least one metre tall; it remained the Aqua Zoneʼs dominant landmark.</p>",
+            "newValue": "<h2>The broad blue slope</h2><p>Méga Slide rose above its pool with a broad blue descent framed by red and yellow inflatable sides. Steps ran along one side of the slope; at its foot, visitors reached the water beneath a large sign bearing the slide’s name.</p><h2>The colours of Aqua Zone</h2><p>A low wooden fence separated the pool from the lawn. Another blue-and-yellow inflatable stood behind it: these large colourful forms shaped Aqua Zone’s scenery among Bannay’s trees.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Méga Slide</h2><p>El Méga Slide alzaba una amplia rampa roja y negra sobre la piscina, con subida central y varios carriles de descenso.</p><h2>El gran descenso de la Aqua Zone</h2><p>La altura creaba expectación antes de una aceleración recta hacia el agua, visible desde toda la zona acuática.</p><p>La presentación oficial reservaba el tobogán a personas de al menos un metro; siguió siendo la gran referencia de la Aqua Zone.</p>",
+            "newValue": "<h2>La gran pendiente azul</h2><p>Méga Slide dominaba su piscina con una amplia bajada azul enmarcada por bordes hinchables rojos y amarillos. La escalera discurría por un lateral; abajo, los visitantes llegaban al agua bajo un gran cartel con el nombre del tobogán.</p><h2>Los colores del Aqua Zone</h2><p>Una valla baja de madera separaba la piscina del césped. Detrás se alzaba otro hinchable azul y amarillo: estas grandes siluetas de colores componían el paisaje del Aqua Zone entre los árboles de Bannay.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Méga Slide</h2><p>Le Méga Slide élevait une large rampe rouge et noire au-dessus du bassin, avec une montée centrale et plusieurs couloirs de glisse.</p><h2>La grande descente de lʼAqua Zone</h2><p>La hauteur construisait lʼattente avant une accélération droite vers lʼeau, lisible depuis toute la zone aquatique.</p><p>La présentation officielle réservait cette glissade aux personnes mesurant au moins un mètre ; elle resta la silhouette majeure de lʼAqua Zone.</p>",
+            "newValue": "<h2>La grande pente bleue</h2><p>Le Méga Slide dominait son bassin avec une large descente bleue, encadrée de boudins rouges et jaunes. L’escalier longeait un côté de la pente ; au pied, l’eau recevait les visiteurs sous une grande enseigne portant le nom du toboggan.</p><h2>Les couleurs de l’Aqua Zone</h2><p>Une clôture basse en bois séparait le bassin de la pelouse. Derrière lui se dressait un autre gonflable bleu et jaune : ces grandes silhouettes colorées composaient le paysage de l’Aqua Zone, parmi les arbres de Bannay.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Méga Slide</h2><p>Il Méga Slide innalzava unʼampia rampa rossa e nera sopra la vasca, con salita centrale e più corsie di scivolo.</p><h2>La grande discesa dellʼAqua Zone</h2><p>Lʼaltezza creava attesa prima di unʼaccelerazione rettilinea verso lʼacqua, visibile da tutta lʼarea acquatica.</p><p>La presentazione ufficiale riservava lo scivolo a chi misurava almeno un metro; rimase il principale punto di riferimento dellʼAqua Zone.</p>",
+            "newValue": "<h2>La grande discesa blu</h2><p>Méga Slide dominava la propria vasca con un’ampia discesa blu, delimitata da bordi gonfiabili rossi e gialli. La scala correva lungo un lato della pendenza; ai piedi, i visitatori arrivavano nell’acqua sotto una grande insegna con il nome dello scivolo.</p><h2>I colori dell’Aqua Zone</h2><p>Una bassa recinzione di legno separava la vasca dal prato. Dietro si innalzava un altro gonfiabile blu e giallo: queste grandi sagome colorate disegnavano il paesaggio dell’Aqua Zone tra gli alberi di Bannay.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Méga Slide</h2><p>Méga Slide verhief een brede rood-zwarte helling boven het bad, met een centrale klim en verschillende glijbanen.</p><h2>De grote afdaling van de Aqua Zone</h2><p>De hoogte bouwde de spanning op voor een rechte versnelling naar het water, zichtbaar in de hele waterzone.</p><p>Volgens de officiële presentatie was de glijbaan toegankelijk vanaf één meter; ze bleef het belangrijkste herkenningspunt van de Aqua Zone.</p>",
+            "newValue": "<h2>De brede blauwe helling</h2><p>Méga Slide torende boven zijn bad uit met een brede blauwe glijbaan tussen rode en gele opblaasbare randen. De trap liep langs één kant van de helling; onderaan kwamen bezoekers in het water terecht, onder een groot bord met de naam van de glijbaan.</p><h2>De kleuren van Aqua Zone</h2><p>Een laag houten hek scheidde het bad van het gazon. Daarachter stond nog een blauw-geel springkussen: deze grote kleurrijke vormen bepaalden het beeld van Aqua Zone tussen de bomen van Bannay.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Méga Slide</h2><p>Méga Slide wznosił szeroką czerwono-czarną rampę nad basenem, z centralnym wejściem i kilkoma torami zjazdu.</p><h2>Wielki zjazd Aqua Zone</h2><p>Wysokość budowała napięcie przed prostym przyspieszeniem w stronę wody, widocznym w całej strefie.</p><p>Oficjalna prezentacja dopuszczała osoby o wzroście co najmniej metra; zjeżdżalnia pozostała głównym znakiem Aqua Zone.</p>",
+            "newValue": "<h2>Szeroki niebieski zjazd</h2><p>Méga Slide górował nad swoim basenem szerokim niebieskim zjazdem z czerwonymi i żółtymi dmuchanymi bokami. Schody biegły z jednej strony; u podnóża odwiedzający trafiali do wody pod dużym szyldem z nazwą zjeżdżalni.</p><h2>Kolory Aqua Zone</h2><p>Niski drewniany płot oddzielał basen od trawnika. Za nim wznosił się kolejny niebiesko-żółty dmuchaniec: te duże kolorowe sylwetki tworzyły krajobraz Aqua Zone wśród drzew Bannay.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Méga Slide</h2><p>O Méga Slide elevava uma ampla rampa vermelha e preta sobre a piscina, com subida central e várias pistas de descida.</p><h2>A grande descida da Aqua Zone</h2><p>A altura criava expectativa antes de uma aceleração direta para a água, visível em toda a área aquática.</p><p>A apresentação oficial reservava o escorrega a pessoas com pelo menos um metro; continuou a ser o principal marco da Aqua Zone.</p>",
+            "newValue": "<h2>A grande descida azul</h2><p>O Méga Slide dominava a sua piscina com uma larga descida azul, ladeada por bordos insufláveis vermelhos e amarelos. A escada acompanhava um dos lados; em baixo, os visitantes chegavam à água sob um grande letreiro com o nome do escorrega.</p><h2>As cores da Aqua Zone</h2><p>Uma cerca baixa de madeira separava a piscina do relvado. Atrás erguia-se outro insuflável azul e amarelo: estas grandes silhuetas coloridas compunham a paisagem da Aqua Zone entre as árvores de Bannay.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+        "entityKey": "daab49ab-d253-49ae-80d9-50a397a2b52b",
+        "displayName": "Pataugeoire Géante",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>Das große Planschbecken bildete ein weites blau-gelbes Hüpfbecken am Fuß der großen Wasserrutschen.</p><h2>Das zentrale Becken der Aqua Zone</h2><p>Das flache Wasser lud zum Planschen, zu kleinen Rutschen und zum Wechsel zwischen den verschiedenen Elementen ein.</p><p>Zusammen mit Méga Slide und Fun Slide bildete das Becken die Aqua Zone, einen von drei klar benannten Bereichen im letzten Plan.</p>",
+            "newValue": "<h2>Das große blau-gelbe Becken</h2><p>Die Pataugeoire Géante lag mit ihrer blauen Wasserfläche mitten im Gras, eingefasst von einem breiten aufblasbaren Rand in Gelb und Blau. Fotografien zeigen Kinder beim Spielen im flachen Wasser und ihre Angehörigen am Beckenrand.</p><h2>Blick auf die Fahrgeschäfte</h2><p>Der Holzzaun ließ den Blick auf die Wiese und die übrigen Attraktionen frei. Jenseits des Wassers waren das Schild von La Chenille und mehrere große Hüpfanlagen zu sehen; auf dem angrenzenden Gelände standen Picknicktische.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>The giant paddling pool formed a broad blue-and-yellow inflatable basin at the foot of the large water slides.</p><h2>The central pool of the Aqua Zone</h2><p>The shallow water encouraged splashing, small slides and movement between the different features of the area.</p><p>Together with Méga Slide and Fun Slide, the pool formed the Aqua Zone, one of three clearly named areas on the final map.</p>",
+            "newValue": "<h2>The large blue-and-yellow pool</h2><p>Pataugeoire Géante spread its blue surface across the grass, bordered by a broad inflatable rim alternating yellow and blue. Photographs show children playing in shallow water, with their families around the pool.</p><h2>Views towards the rides</h2><p>The wooden fence left views across the meadow and other attractions. Beyond the water stood the La Chenille sign and several large inflatables, while picnic tables occupied the neighbouring ground.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>La Pataugeoire Géante formaba una amplia piscina hinchable azul y amarilla al pie de los grandes toboganes acuáticos.</p><h2>La piscina central de la Aqua Zone</h2><p>La poca profundidad favorecía los juegos en el agua, los pequeños toboganes y los desplazamientos entre los distintos elementos.</p><p>Junto con Méga Slide y Fun Slide, la piscina formaba la Aqua Zone, una de las tres áreas claramente nombradas en el plano final.</p>",
+            "newValue": "<h2>La gran piscina azul y amarilla</h2><p>La Pataugeoire Géante extendía su superficie azul en medio del césped, rodeada de un ancho borde hinchable que alternaba el amarillo y el azul. Las fotografías muestran niños jugando en el agua poco profunda, con sus familiares alrededor de la piscina.</p><h2>Vistas hacia las atracciones</h2><p>La valla de madera dejaba ver la pradera y las demás atracciones. Al otro lado del agua aparecían el cartel de La Chenille y varios grandes hinchables, mientras las mesas de pícnic ocupaban el terreno vecino.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>La Pataugeoire Géante formait un vaste bassin gonflable bleu et jaune au pied des grands toboggans aquatiques.</p><h2>Le bassin central de lʼAqua Zone</h2><p>La faible profondeur favorisait les jeux dans lʼeau, les petites glissades et les traversées entre les différents éléments de la zone.</p><p>Avec le Méga Slide et le Fun Slide, le bassin constituait lʼAqua Zone, lʼun des trois ensembles clairement nommés sur le plan final.</p>",
+            "newValue": "<h2>Le grand bassin bleu et jaune</h2><p>La Pataugeoire Géante étendait sa surface bleue au milieu de l’herbe, bordée d’un large boudin alternant le jaune et le bleu. Les photographies montrent des enfants jouant dans l’eau peu profonde, avec leurs proches autour du bassin.</p><h2>Une vue sur les manèges</h2><p>La clôture en bois laissait voir la prairie et les autres attractions. Au-delà de l’eau apparaissaient notamment l’enseigne de La Chenille et plusieurs grands gonflables, tandis que des tables de pique-nique occupaient le terrain voisin.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>La Pataugeoire Géante formava un ampio bacino gonfiabile blu e giallo ai piedi dei grandi scivoli acquatici.</p><h2>La vasca centrale dellʼAqua Zone</h2><p>La poca profondità favoriva giochi dʼacqua, piccoli scivoli e passaggi fra i diversi elementi della zona.</p><p>Con Méga Slide e Fun Slide, il bacino formava lʼAqua Zone, una delle tre aree chiaramente nominate nella mappa finale.</p>",
+            "newValue": "<h2>La grande vasca blu e gialla</h2><p>La Pataugeoire Géante stendeva la sua superficie blu in mezzo all’erba, delimitata da un largo bordo gonfiabile a tratti gialli e blu. Le fotografie mostrano bambini che giocano nell’acqua bassa, con i familiari attorno alla vasca.</p><h2>Uno sguardo sulle giostre</h2><p>La recinzione di legno lasciava vedere il prato e le altre attrazioni. Oltre l’acqua apparivano l’insegna di La Chenille e diversi grandi gonfiabili, mentre tavoli da picnic occupavano il terreno vicino.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>Het grote peuterbad vormde een ruim blauw-geel opblaasbaar bassin aan de voet van de grote waterglijbanen.</p><h2>Het centrale bad van de Aqua Zone</h2><p>Het ondiepe water maakte spetteren, korte glijbanen en bewegen tussen de verschillende onderdelen mogelijk.</p><p>Samen met Méga Slide en Fun Slide vormde het bad de Aqua Zone, een van de drie duidelijk benoemde zones op de laatste kaart.</p>",
+            "newValue": "<h2>Het grote blauw-gele bad</h2><p>Pataugeoire Géante lag als een blauw vlak midden in het gras, omgeven door een brede opblaasrand met afwisselend gele en blauwe delen. Foto’s tonen kinderen die in ondiep water spelen, met hun familie rond het bad.</p><h2>Zicht op de attracties</h2><p>Het houten hek liet het zicht op het grasveld en de andere attracties vrij. Aan de overkant waren het bord van La Chenille en verschillende grote springkussens te zien; op het aangrenzende terrein stonden picknicktafels.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>Pataugeoire Géante tworzyła szeroki niebiesko-żółty dmuchany basen u stóp dużych zjeżdżalni wodnych.</p><h2>Główny basen Aqua Zone</h2><p>Płytka woda sprzyjała pluskaniu, krótkim zjazdom i przechodzeniu między poszczególnymi elementami strefy.</p><p>Wraz z Méga Slide i Fun Slide basen tworzył Aqua Zone, jedną z trzech wyraźnie nazwanych stref na końcowej mapie.</p>",
+            "newValue": "<h2>Duży niebiesko-żółty basen</h2><p>Niebieska powierzchnia Pataugeoire Géante rozciągała się pośród trawy, otoczona szerokim dmuchanym brzegiem z naprzemiennie żółtymi i niebieskimi fragmentami. Fotografie pokazują dzieci bawiące się w płytkiej wodzie oraz ich bliskich wokół basenu.</p><h2>Widok na atrakcje</h2><p>Drewniany płot nie zasłaniał widoku na łąkę i inne atrakcje. Za wodą widać było szyld La Chenille oraz kilka dużych dmuchańców, a na sąsiednim terenie stały stoły piknikowe.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Pataugeoire Géante</h2><p>A Pataugeoire Géante formava uma ampla piscina insuflável azul e amarela aos pés dos grandes escorregas aquáticos.</p><h2>A piscina central da Aqua Zone</h2><p>A pouca profundidade favorecia brincadeiras na água, pequenos escorregas e deslocações entre os vários elementos da zona.</p><p>Com Méga Slide e Fun Slide, a piscina formava a Aqua Zone, uma das três áreas claramente nomeadas no mapa final.</p>",
+            "newValue": "<h2>A grande piscina azul e amarela</h2><p>A Pataugeoire Géante estendia a sua superfície azul no meio da relva, rodeada por um largo bordo insuflável que alternava amarelo e azul. As fotografias mostram crianças a brincar na água pouco profunda, com os familiares em redor da piscina.</p><h2>Vista para as atrações</h2><p>A cerca de madeira deixava ver o prado e as outras atrações. Para lá da água surgiam o letreiro da La Chenille e vários grandes insufláveis, enquanto mesas de piquenique ocupavam o terreno vizinho.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+        "entityKey": "f0f4406e-3924-4b79-a9dd-c50575974ea3",
+        "displayName": "Mini-Golf",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Mini-Golf</h2><p>Der Minigolfplatz führte rot eingefasste Bahnen direkt durch die Wiese; zu den Motiven gehörte ein kleiner Eiffelturm.</p><h2>Bahnen im Gras</h2><p>Jede Bahn veränderte Winkel und Gefälle, sodass Genauigkeit und Beobachtung den Kern der Runde bildeten.</p><p>Nahe Eingang und Home-ball bildete der ruhigere Parcours einen Ausgleich zu Fahrgeschäften und großen Hüpfanlagen.</p>",
+            "newValue": "<h2>Ein Eiffelturm an den Bahnen</h2><p>Ein kleiner Eiffelturm aus Holz stand beim Mini-Golf vor den roten Bahnen auf der Wiese. Weiter hinten ergänzten eine Miniaturwindmühle und ein ringförmiges Hindernis diese Landschaft aus Bauwerken und Spielen.</p><h2>Zwischen Bäumen und Pergolen</h2><p>Kleine weiße Fähnchen markierten die Löcher. Die Bahnen lagen auf einer baumbestandenen Wiese, mit Holzpergolen und weißen Stühlen in der Nähe.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Mini-Golf</h2><p>The miniature golf laid its red-edged courses directly across the meadow, with figurative obstacles including a small Eiffel Tower.</p><h2>Courses drawn through the grass</h2><p>Each hole changed angle and gradient, making precision and observation the central parts of a round.</p><p>Located near the entrance and Home-ball, this quieter course balanced the rides and large inflatables.</p>",
+            "newValue": "<h2>An Eiffel Tower beside the greens</h2><p>A small wooden Eiffel Tower stood at Mini-Golf, in front of red putting lanes spread across the grass. Further away, a miniature windmill and a ring-shaped obstacle added to this landscape of landmarks and games.</p><h2>Among trees and pergolas</h2><p>Small white flags marked the holes. The lanes occupied a meadow with trees, wooden pergolas and white chairs nearby.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Mini-Golf</h2><p>El minigolf extendía sus pistas de bordes rojos directamente por la pradera, con obstáculos figurativos como una pequeña torre Eiffel.</p><h2>Pistas trazadas en la hierba</h2><p>Cada hoyo cambiaba de ángulo y desnivel, haciendo de la precisión y la observación el centro de la partida.</p><p>Cerca de la entrada y del Home-ball, este recorrido tranquilo equilibraba las atracciones y los grandes hinchables.</p>",
+            "newValue": "<h2>Una torre Eiffel junto a las pistas</h2><p>Una pequeña torre Eiffel de madera se alzaba en el Mini-Golf, ante las pistas rojas repartidas por el césped. Más allá, un molino en miniatura y un obstáculo en forma de anillo completaban este paisaje de monumentos y juegos.</p><h2>Entre árboles y pérgolas</h2><p>Pequeñas banderas blancas señalaban los hoyos. Las pistas ocupaban una pradera arbolada, con pérgolas de madera y sillas blancas cerca.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Mini-Golf</h2><p>Le Mini-Golf installait ses pistes rouges directement dans la prairie, avec des obstacles figuratifs dont une petite tour Eiffel.</p><h2>Des pistes dessinées dans lʼherbe</h2><p>Chaque trou changeait dʼangle et de relief, faisant de la précision et de lʼobservation les ressorts principaux de la partie.</p><p>Situé près de lʼentrée et du Home-ball, ce parcours plus calme équilibriait les manèges et les grands gonflables.</p>",
+            "newValue": "<h2>Une tour Eiffel au bord des pistes</h2><p>Une petite tour Eiffel en bois se dressait au Mini-Golf, devant les pistes rouges réparties dans l’herbe. Plus loin, un moulin miniature et un obstacle en forme d’anneau complétaient ce paysage de monuments et de jeux.</p><h2>Entre les arbres et les pergolas</h2><p>De petits drapeaux blancs repéraient les trous. Les pistes occupaient une prairie arborée, avec des pergolas en bois et des chaises blanches à proximité .</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Mini-Golf</h2><p>Il minigolf disponeva le piste bordate di rosso direttamente nel prato, con ostacoli figurativi fra cui una piccola Torre Eiffel.</p><h2>Piste disegnate nellʼerba</h2><p>Ogni buca cambiava angolo e pendenza, facendo di precisione e osservazione gli elementi principali della partita.</p><p>Vicino allʼingresso e allʼHome-ball, questo percorso più tranquillo bilanciava le giostre e i grandi gonfiabili.</p>",
+            "newValue": "<h2>Una torre Eiffel accanto alle piste</h2><p>Una piccola torre Eiffel in legno si alzava nel Mini-Golf, davanti alle piste rosse distribuite sull’erba. Più lontano, un mulino in miniatura e un ostacolo ad anello completavano questo paesaggio di monumenti e giochi.</p><h2>Tra alberi e pergolati</h2><p>Piccole bandierine bianche indicavano le buche. Le piste occupavano un prato alberato, con pergolati di legno e sedie bianche nelle vicinanze.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Mini-Golf</h2><p>De minigolf legde rood omrande banen rechtstreeks door de weide, met speelse hindernissen zoals een kleine Eiffeltoren.</p><h2>Banen door het gras</h2><p>Elke hole veranderde van hoek en helling, waardoor nauwkeurigheid en observatie centraal stonden.</p><p>Bij de ingang en Home-ball bood dit rustigere parcours tegenwicht aan de attracties en grote springstructuren.</p>",
+            "newValue": "<h2>Een Eiffeltoren naast de banen</h2><p>Bij Mini-Golf stond een kleine houten Eiffeltoren voor de rode banen die over het gras verspreid lagen. Verderop vulden een miniatuurmolen en een ringvormig obstakel dit landschap van bouwwerken en spelen aan.</p><h2>Tussen bomen en pergola’s</h2><p>Kleine witte vlaggetjes markeerden de holes. De banen lagen op een grasveld met bomen, houten pergola’s en witte stoelen in de buurt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Mini-Golf</h2><p>Minigolf prowadził czerwono obramowane tory bezpośrednio po łące, z dekoracyjnymi przeszkodami, w tym małą wieżą Eiffla.</p><h2>Tory poprowadzone przez trawę</h2><p>Każdy dołek zmieniał kąt i nachylenie, dlatego precyzja oraz obserwacja stanowiły podstawę rozgrywki.</p><p>Położony przy wejściu i Home-ball spokojniejszy tor równoważył karuzele oraz duże dmuchane konstrukcje.</p>",
+            "newValue": "<h2>Wieża Eiffla przy torach</h2><p>Mała drewniana wieża Eiffla stała na terenie Mini-Golf przed czerwonymi torami rozłożonymi na trawie. Dalej miniaturowy wiatrak i przeszkoda w kształcie pierścienia uzupełniały ten krajobraz budowli i zabaw.</p><h2>Wśród drzew i pergoli</h2><p>Małe białe chorągiewki oznaczały dołki. Tory zajmowały porośniętą drzewami łąkę, z drewnianymi pergolami i białymi krzesłami w pobliżu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Mini-Golf</h2><p>O minigolfe estendia pistas de margens vermelhas diretamente pela relva, com obstáculos figurativos como uma pequena Torre Eiffel.</p><h2>Pistas desenhadas na relva</h2><p>Cada buraco mudava de ângulo e inclinação, tornando a precisão e a observação os elementos centrais da partida.</p><p>Junto à entrada e ao Home-ball, este percurso mais tranquilo equilibrava as diversões e os grandes insufláveis.</p>",
+            "newValue": "<h2>Uma torre Eiffel junto às pistas</h2><p>Uma pequena torre Eiffel de madeira erguia-se no Mini-Golf, diante das pistas vermelhas distribuídas pela relva. Mais adiante, um moinho em miniatura e um obstáculo em forma de anel completavam esta paisagem de monumentos e jogos.</p><h2>Entre árvores e pérgulas</h2><p>Pequenas bandeiras brancas assinalavam os buracos. As pistas ocupavam um prado arborizado, com pérgulas de madeira e cadeiras brancas nas proximidades.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+        "entityKey": "f373a4c7-f3f4-4c93-8f31-686f72f5d851",
+        "displayName": "Ô Chalet Gourmand",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand befand sich in einem Holzgebäude am Wiesenrand mit offenem Tresen und vorgelagerter Terrasse.</p><h2>Gastronomie im Holzchalet</h2><p>Die Karte verband schnelle süße und herzhafte Speisen, sodass Familien das Gelände zum Essen nicht verlassen mussten.</p><p>Auf Fotografien der letzten Zeit sichtbar, war das Chalet neben dem Eisstand der wichtigste Gastronomiepunkt.</p>",
+            "newValue": "<h2>Das Chalet mit der offenen Theke</h2><p>Ô Chalet Gourmand zeigte eine lange Holzfassade unter einem weit vorspringenden Dach. Vor der offenen Theke verlief eine niedrige Absperrung; der Löwe von Ô Parc schmückte das Schild des Chalets.</p><h2>Speisetafeln und Sonnenschirme</h2><p>Große Tafeln hinter der Theke warben für Burger und Tellergerichte. Bunte Sonnenschirme und ein benachbarter Stand verlängerten die Front; ein Plakat mit Eiswaffeln ergänzte diese kleine Ansammlung von Essensständen am Wiesenrand.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand occupied a timber building beside the meadow, with an open counter and a terrace along its front.</p><h2>Food served from a timber chalet</h2><p>Its menu combined quick sweet and savoury food so families could eat without leaving the park grounds.</p><p>Visible in photographs from the final period, the chalet was the main food outlet beside the ice-cream counter.</p>",
+            "newValue": "<h2>The chalet with the open counter</h2><p>Ô Chalet Gourmand had a long wooden façade beneath an overhanging roof. A low barrier stood in front of its open counter, while Ô Parc’s lion topped the chalet sign.</p><h2>Menu boards and parasols</h2><p>Large menu boards advertised burgers and plated meals behind the counter. Colourful parasols and a neighbouring stall extended the frontage; a poster of ice-cream cones accompanied this small cluster of food outlets beside the meadow.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand ocupaba un edificio de madera junto a la pradera, con mostrador abierto y terraza frontal.</p><h2>Restauración en un chalet de madera</h2><p>La carta combinaba preparaciones rápidas dulces y saladas para que las familias comieran sin salir del recinto.</p><p>Visible en fotografías del último periodo, el chalet era el principal punto de restauración junto al mostrador de helados.</p>",
+            "newValue": "<h2>El chalet con el mostrador abierto</h2><p>Ô Chalet Gourmand presentaba una larga fachada de madera bajo un tejado saliente. Una barrera baja precedía al mostrador abierto, mientras el león de Ô Parc coronaba el letrero del chalet.</p><h2>Pizarras y sombrillas</h2><p>Grandes pizarras anunciaban hamburguesas y platos detrás del mostrador. Las sombrillas de colores y un puesto vecino prolongaban la fachada; un cartel de cucuruchos de helado acompañaba este pequeño conjunto de establecimientos de comida junto a la pradera.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand occupait un bâtiment de bois au bord de la prairie, avec un comptoir ouvert et une terrasse frontale.</p><h2>La restauration dans un chalet de bois</h2><p>La carte réunissait des préparations rapides sucrées et salées, afin de servir les familles sans quitter lʼenceinte du parc.</p><p>Visible sur les photographies de la dernière période, le chalet formait le principal point de restauration à côté du comptoir glacé.</p>",
+            "newValue": "<h2>Le chalet au comptoir ouvert</h2><p>Ô Chalet Gourmand présentait une longue façade de bois sous un toit débordant. Son comptoir ouvert était précédé d’une barrière basse, tandis que le lion d’Ô Parc surmontait l’enseigne du chalet.</p><h2>Ardoises et parasols</h2><p>De grandes ardoises annonçaient burgers et assiettes derrière le comptoir. Des parasols colorés et un étal voisin prolongeaient la façade ; une affiche de cornets glacés accompagnait cette petite concentration de restauration au bord de la prairie.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand occupava un edificio in legno ai margini del prato, con banco aperto e terrazza frontale.</p><h2>Ristorazione in uno chalet di legno</h2><p>Il menu riuniva preparazioni rapide dolci e salate, permettendo alle famiglie di mangiare senza uscire dal parco.</p><p>Visibile nelle fotografie dellʼultimo periodo, lo chalet era il principale punto di ristoro accanto al banco dei gelati.</p>",
+            "newValue": "<h2>Lo chalet con il banco aperto</h2><p>Ô Chalet Gourmand aveva una lunga facciata in legno sotto un tetto sporgente. Una bassa barriera precedeva il banco aperto, mentre il leone di Ô Parc sovrastava l’insegna dello chalet.</p><h2>Lavagne e ombrelloni</h2><p>Grandi lavagne dietro il banco annunciavano hamburger e piatti. Ombrelloni colorati e una bancarella vicina prolungavano la facciata; un manifesto di coni gelato accompagnava questo piccolo gruppo di punti ristoro al margine del prato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand zat in een houten gebouw aan de weide, met een open toonbank en een terras ervoor.</p><h2>Eten vanuit een houten chalet</h2><p>Het menu combineerde snelle zoete en hartige gerechten zodat gezinnen het terrein niet hoefden te verlaten.</p><p>Het chalet is zichtbaar op fotoʼs uit de laatste periode en was naast het ijsloket het belangrijkste eetpunt.</p>",
+            "newValue": "<h2>Het chalet met de open balie</h2><p>Ô Chalet Gourmand had een lange houten gevel onder een overstekend dak. Voor de open balie stond een lage afscheiding, terwijl de leeuw van Ô Parc boven het chaletbord prijkte.</p><h2>Menuborden en parasols</h2><p>Grote menuborden achter de balie vermeldden burgers en maaltijden op een bord. Kleurrijke parasols en een naburige kraam verlengden de gevel; een poster met ijshoorntjes hoorde bij dit kleine groepje eetgelegenheden aan het grasveld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>Ô Chalet Gourmand mieścił się w drewnianym budynku przy łące, z otwartą ladą i tarasem z przodu.</p><h2>Gastronomia w drewnianym domku</h2><p>Menu łączyło szybkie dania słodkie i słone, aby rodziny mogły zjeść bez opuszczania parku.</p><p>Widoczny na zdjęciach z ostatniego okresu domek był głównym punktem gastronomicznym obok lodowego stoiska.</p>",
+            "newValue": "<h2>Drewniany domek z otwartą ladą</h2><p>Ô Chalet Gourmand miał długą drewnianą fasadę pod wysuniętym dachem. Przed otwartą ladą biegła niska barierka, a lew Ô Parc zdobił szyld domku.</p><h2>Tablice i parasole</h2><p>Duże tablice za ladą zapowiadały burgery i dania obiadowe. Kolorowe parasole i sąsiednie stoisko przedłużały fasadę; plakat z lodami w rożkach towarzyszył tej małej grupie punktów gastronomicznych na skraju łąki.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Ô Chalet Gourmand</h2><p>O Ô Chalet Gourmand ocupava um edifício de madeira junto ao relvado, com balcão aberto e terraço frontal.</p><h2>Restauração num chalet de madeira</h2><p>A ementa reunia opções rápidas doces e salgadas, permitindo às famílias comer sem sair do recinto.</p><p>Visível em fotografias do período final, o chalet era o principal ponto de restauração junto ao balcão de gelados.</p>",
+            "newValue": "<h2>O chalé com o balcão aberto</h2><p>O Ô Chalet Gourmand apresentava uma longa fachada de madeira sob um telhado saliente. Uma barreira baixa ficava diante do balcão aberto, enquanto o leão do Ô Parc encimava o letreiro do chalé.</p><h2>Quadros e guarda-sóis</h2><p>Grandes quadros anunciavam hambúrgueres e refeições em prato atrás do balcão. Guarda-sóis coloridos e uma banca vizinha prolongavam a fachada; um cartaz de cones de gelado acompanhava este pequeno conjunto de pontos de restauração junto ao prado.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}

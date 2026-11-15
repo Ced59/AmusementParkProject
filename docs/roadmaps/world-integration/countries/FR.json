@@ -21760,7 +21760,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T04:08:39.623Z",
+      "lastDataIntegrationAt": "2026-11-15T04:18:04.544Z",
       "integrationHistory": [
         {
           "eventId": "apply-6d6681b0-adf1-4e02-aa68-29d88117c508",
@@ -21791,6 +21791,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-safari-2025-20261115.json",
           "auditEvidence": null,
           "summary": "Ô Parc : photo privée safari-2025, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        },
+        {
+          "eventId": "apply-4845308a-f93d-461c-88d7-e08d68d3882e",
+          "appliedAt": "2026-11-15T04:14:10.910Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-04-six-photographed-places-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : six notices et 48 textes relus sur photographies, corrections du Méga Slide et des karts, retrait de remplissage. Identifiants et visibilité conservés ; audit global restant."
+        },
+        {
+          "eventId": "map-upload-d272ba4d4ce94a50881567fd1ec4d6de",
+          "appliedAt": "2026-11-15T04:16:17.944Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-map-2025-upload-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : plan officiel 2025 téléversé en privé, reçu UTC observé du client ; rattachement par Apply restant, aucun audit ou publication."
+        },
+        {
+          "eventId": "apply-207a781b-8420-475f-b174-34b03056c906",
+          "appliedAt": "2026-11-15T04:18:04.544Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/o-parc-05-map-2025-association-20261115.json",
+          "auditEvidence": null,
+          "summary": "Ô Parc : plan officiel 2025 rattaché en privé avec titres et alternatives huit langues, source datée du 3 avril 2025 ; édition 2026 conservée, ancien plan indaté non antidaté."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

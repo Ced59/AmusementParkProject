@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-6644b892-d03c-461e-855d-a61cadba76f4",
+  "parkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+  "owner": "Conversation France",
+  "documentSha256": "7b1030f3be59380fa5cd9da60615ce16a0e467051a3341bc036dddeaff61050c",
+  "manualReview": "Rédaction et relecture personnelle des huit langues ; identités confrontées aux photographies et au plan officiel. Valeurs Preview/Apply identiques.",
+  "result": {
+    "operationId": "207a781b-8420-475f-b174-34b03056c906",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T04:18:04.5445107Z",
+    "appliedAtUtc": "2026-11-15T04:18:04.5445132Z",
+    "targetParkId": "6644b892-d03c-461e-855d-a61cadba76f4",
+    "targetParkName": "Ô Parc",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "o-parc-map-2025",
+        "entityKey": "o-parc-map-2025",
+        "displayName": "Carte officielle 2025 (fr, Image)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/6644b892-d03c-461e-855d-a61cadba76f4/o-parc-map-2025.d272ba4d4ce94a50881567fd1ec4d6de.jpg"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "reopening-2025-1.jpg"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "image/jpeg"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "1866222"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.bourges.infoptimum.com/page-o-parc-reouverture-2025-du-parc-de-loisirs-en-plein-air-a-bannay-18--5375.html"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Offizieller Plan von Ô Parc — 2025"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Official Ô Parc map — 2025"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano oficial de Ô Parc — 2025"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan officiel d’Ô Parc — 2025"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa ufficiale di Ô Parc — 2025"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Officiële plattegrond van Ô Parc — 2025"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Oficjalna mapa Ô Parc — 2025"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa oficial do Ô Parc — 2025"
+          },
+          {
+            "field": "alternativeTexts.de",
+            "oldValue": null,
+            "newValue": "Illustrierter Plan der Attraktionen von Ô Parc im Jahr 2025 mit kleiner Eisenbahn, neuen Teetassen und Safari Buggy, Aqua Zone und Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.en",
+            "oldValue": null,
+            "newValue": "Illustrated map of Ô Parc’s attractions in 2025, including the small train, new teacups and Safari Buggy, Aqua Zone and Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.es",
+            "oldValue": null,
+            "newValue": "Plano ilustrado de las atracciones de Ô Parc en 2025, con el trenecito, las nuevas tazas y Safari Buggy, Aqua Zone y Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.fr",
+            "oldValue": null,
+            "newValue": "Plan illustré des attractions d’Ô Parc en 2025, avec le petit train, les nouvelles tasses et le Safari Buggy, l’Aqua Zone et la Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.it",
+            "oldValue": null,
+            "newValue": "Mappa illustrata delle attrazioni di Ô Parc nel 2025, con il trenino, le nuove tazze e Safari Buggy, Aqua Zone e Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.nl",
+            "oldValue": null,
+            "newValue": "Geïllustreerde plattegrond van de attracties van Ô Parc in 2025, met het treintje, de nieuwe theekopjes en Safari Buggy, Aqua Zone en Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.pl",
+            "oldValue": null,
+            "newValue": "Ilustrowana mapa atrakcji Ô Parc w 2025 roku z małym pociągiem, nowymi filiżankami i Safari Buggy, Aqua Zone oraz Baby Zone."
+          },
+          {
+            "field": "alternativeTexts.pt",
+            "oldValue": null,
+            "newValue": "Mapa ilustrado das atrações do Ô Parc em 2025, com o pequeno comboio, as novas chávenas e o Safari Buggy, Aqua Zone e Baby Zone."
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "6644b892-d03c-461e-855d-a61cadba76f4",
+        "entityKey": "park",
+        "displayName": "Ô Parc",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "finalAuditCompleted": false,
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}
