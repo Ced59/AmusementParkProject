@@ -358,11 +358,11 @@
     },
     {
       "entryId": "PL-candidate-standalone-3a177fd1574266",
-      "name": "Alpine Coaster Wiegand — Ustron",
+      "name": "Alpine Coaster Wiegand — Równica, Ustroń",
       "entityKind": "ToQualify",
-      "proposedEntityKind": "StandaloneAttraction",
+      "proposedEntityKind": "ToQualify",
       "category": "Alpine coaster",
-      "locality": null,
+      "locality": "Równica, Ustroń",
       "siteId": null,
       "legacySiteIds": [],
       "presence": "PossibleExisting",
@@ -370,17 +370,21 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Référence constructeur identifiée ; activité actuelle, prix et horaires de Równica encore à vérifier.",
+      "identityConfidence": "L’exploitant Górski Park Równica décrit cette piste comme l’une de ses attractions ; le parc parent possède déjà une fiche masquée PL-park-ea305737-1b51-4cfc-9a55-2371c1113939.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "PL-park-ea305737-1b51-4cfc-9a55-2371c1113939"
+      ],
       "aliases": [
-        "Ustron"
+        "Ustron",
+        "Równica",
+        "Rownica"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la piste alpine comme attraction du parc PL-park-ea305737-1b51-4cfc-9a55-2371c1113939 lors de l’enrichissement de sa fiche masquée. Rechercher les horaires, prix et photos exactes dans ce contexte ; ne pas créer de fiche standalone Równica.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -393,19 +397,14 @@
           "accessedAt": "2026-10-22"
         },
         {
-          "label": "Wiegand — références constructeur",
-          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1364",
-          "accessedAt": "2026-10-22"
-        },
-        {
-          "label": "Opérateur référencé par la source",
-          "url": "http://www.czantoria.net",
-          "accessedAt": "2026-10-22"
+          "label": "Exploitant Górski Park Równica — tor saneczkowy parmi les attractions du parc",
+          "url": "https://www.rownica.pl/?p=106",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "InsidePark",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Ustron",
@@ -414,17 +413,9 @@
             "family": "Alpine coaster",
             "sourceVenueName": "Ustron",
             "referenceId": "location-id-1072"
-          },
-          {
-            "name": "Ustron",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1364",
-            "family": "Luge d’été",
-            "sourceVenueName": "Ustron",
-            "referenceId": "location-id-1364"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le tor saneczkowy de Równica est présenté comme attraction du Górski Park Równica, qui possède une fiche Park masquée. Il relève de son intégration éditoriale comme attraction interne ; Czantoria est une piste autonome distincte."
       }
     },
     {
@@ -3213,13 +3204,13 @@
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "identityConfidence": "Fiche Park masquée existante ; l’exploitant Górski Park Równica présente le tor saneczkowy comme attraction interne. Le candidat Wiegand PL-candidate-standalone-3a177fd1574266 est rattaché à cette fiche.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Intégrer la fiche masquée du vrai Górski Park Równica et ses attractions, dont le tor saneczkowy Wiegand. Rechercher données officielles, tarifs, horaires et photos du parc et de la piste ; conserver le candidat interne PL-candidate-standalone-3a177fd1574266 pour suivi.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3235,6 +3226,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13275.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant Górski Park Równica — piste de luge du parc",
+          "url": "https://www.rownica.pl/?p=106",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "PL",
@@ -3254,7 +3250,7 @@
             "sourceOpenedYear": "2006"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’exploitant du Górski Park Równica présente le tor saneczkowy comme l’une de ses attractions ; il s’agit d’un vrai parc avec fiche Park masquée à compléter, pas d’une migration autonome."
       }
     },
     {
@@ -9717,6 +9713,200 @@
           }
         ],
         "rationale": "PKL exploite la piste à côté de la station supérieure et vend ses billets à une caisse dédiée. Elle représente donc une attraction visitable séparément du funiculaire, sans fiche du site déjà trouvée."
+      }
+    },
+    {
+      "entryId": "PL-candidate-standalone-9c584f7e2403327e",
+      "name": "Letni tor saneczkowy na Czantorii",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été en auge",
+      "locality": "Polana Stokłosica, 43-450 Ustroń, voïvodie de Silésie",
+      "siteId": "7b675189-9a52-4850-a970-d111c6b96443",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T01:34:04.600Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : attraction toujours présentée ; horaires et tarif spécifiques non vérifiés.",
+      "identityConfidence": "Exploitant Czantoria, tourisme régional et photos de la piste concordent ; aucune fiche Park ou Standalone trouvée dans l’éditeur. La référence Wiegand 1364 a été séparée de la ligne Równica.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [],
+      "aliases": [
+        "Czantoria",
+        "Letni tor saneczkowy na górze Czantoria",
+        "Ustron",
+        "Ustroń",
+        "Luge Wiegand — Ustron"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T01:37:54.599Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f4b38af1-8a4a-4ffd-99a4-3d581d9af51b",
+          "appliedAt": "2026-11-15T01:25:11.920Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:apply:f4b38af1-8a4a-4ffd-99a4-3d581d9af51b",
+          "auditEvidence": null,
+          "summary": "Création de la fiche, lieu précis et huit descriptions."
+        },
+        {
+          "eventId": "apply-7727a249-0412-45d4-9972-336d57018810",
+          "appliedAt": "2026-11-15T01:26:00.596Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:apply:7727a249-0412-45d4-9972-336d57018810",
+          "auditEvidence": null,
+          "summary": "Deux conditions d’accès officielles et note d’horaire sans invention."
+        },
+        {
+          "eventId": "image-8b746bb90f914a8d8df2cd360e591369",
+          "appliedAt": "2026-11-15T01:26:53.706Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:8b746bb90f914a8d8df2cd360e591369",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 prise en août 2006 par Piotrus, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "image-f78d6e28b1b84e9889747888c48c64af",
+          "appliedAt": "2026-11-15T01:27:22.783Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:f78d6e28b1b84e9889747888c48c64af",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 prise en août 2006 par Piotrus, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "image-e9f1ff5ae27549409ef4bf3accf61ca7",
+          "appliedAt": "2026-11-15T01:27:56.070Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:e9f1ff5ae27549409ef4bf3accf61ca7",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 prise en août 2006 par Piotrus, CC BY-SA 3.0."
+        },
+        {
+          "eventId": "apply-4b865f63-87e9-4171-b5a0-9096eb391f3b",
+          "appliedAt": "2026-11-15T01:31:34.851Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:apply:4b865f63-87e9-4171-b5a0-9096eb391f3b",
+          "auditEvidence": null,
+          "summary": "Longueur reformulée en huit langues sans mesure numérique brute."
+        },
+        {
+          "eventId": "image-metadata-8b746bb90f914a8d8df2cd360e591369",
+          "appliedAt": "2026-11-15T01:36:16.631Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:8b746bb90f914a8d8df2cd360e591369",
+          "auditEvidence": null,
+          "summary": "Légendes, alternatives et crédits de la photo 1 vérifiés en huit langues."
+        },
+        {
+          "eventId": "image-metadata-f78d6e28b1b84e9889747888c48c64af",
+          "appliedAt": "2026-11-15T01:37:42.390Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:f78d6e28b1b84e9889747888c48c64af",
+          "auditEvidence": null,
+          "summary": "Légendes, alternatives et crédits de la photo 2 vérifiés en huit langues."
+        },
+        {
+          "eventId": "image-metadata-e9f1ff5ae27549409ef4bf3accf61ca7",
+          "appliedAt": "2026-11-15T01:37:54.599Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:e9f1ff5ae27549409ef4bf3accf61ca7",
+          "auditEvidence": null,
+          "summary": "Légendes, alternatives et crédits de la photo 3 vérifiés en huit langues."
+        },
+        {
+          "eventId": "closure-7b675189-9a52-4850-a970-d111c6b96443",
+          "appliedAt": "2026-11-15T01:37:54.599Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7b675189-9a52-4850-a970-d111c6b96443",
+          "evidence": "PARK_DATA_EDITOR:image:e9f1ff5ae27549409ef4bf3accf61ca7",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-czantoria-20261115/audit.json",
+          "summary": "Audit final après la dernière intégration de métadonnées : fiche visible, huit pages et trois photos HTTP 200, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date réelle. Vérifier les tarifs et horaires officiels propres à la piste avant de les ajouter ; suivre Równica comme attraction du parc masqué PL-park-ea305737-1b51-4cfc-9a55-2371c1113939.",
+      "sources": [
+        {
+          "label": "Exploitant Czantoria — piste, longueur et règles de visite",
+          "url": "https://www.czantoria.net/top-7-atrakcji/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant Czantoria — accueil et offre actuelle",
+          "url": "https://www.czantoria.net/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Beskidy Travel — lieu et historique",
+          "url": "https://www.beskidy.travel/entertainment/19588/letni-tor-saneczkowy",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Ville d’Ustroń — réduction sur billet du tor saneczkowy en 2026",
+          "url": "https://kartamieszkanca.ustron.pl/pl/partnerzy/kolej-linowa-%E2%80%9Eczantoria%E2%80%9D-sp.-z-o.o.-8442",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence de luge d’été location-id-1364",
+          "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=243#location-id-1364",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wander-book — coordonnées de la piste",
+          "url": "https://pl.wander-book.com/letni-tor-saneczkowy-na-gorze-czantoria-m9245.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Piotrus, août 2006, CC BY-SA 3.0 (1)",
+          "url": "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_01.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Piotrus, août 2006, CC BY-SA 3.0 (2)",
+          "url": "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_02.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Piotrus, août 2006, CC BY-SA 3.0 (3)",
+          "url": "https://commons.wikimedia.org/wiki/File:Czantoria_-_letni_tor_saneczkowy_03.JPG",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Letni tor saneczkowy na Czantorii",
+            "source": "Exploitant Czantoria",
+            "url": "https://www.czantoria.net/top-7-atrakcji/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Czantoria",
+            "sourceLocality": "Ustroń",
+            "referenceId": "location-id-1364"
+          }
+        ],
+        "rationale": "Piste de luge d’été avec billet propre près de la gare supérieure du télésiège ; distincte de l’alpine coaster interne au Górski Park Równica."
       }
     }
   ]

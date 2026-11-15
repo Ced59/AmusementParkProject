@@ -1,6 +1,6 @@
 # Inventaire mondial et backlog permanent — résumé par pays
 
-Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12329 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
+Photographie initiale du 22 octobre 2026. **250 pays et territoires**, plus la file des pays non résolus ; **12330 lignes conservées**. France et Portugal inclus. Les JSON nationaux sont le registre permanent ; les vues et compteurs sont régénérés par `node tools/codex/integration-backlog.mjs render`.
 
 **Lecture des chiffres :** « publiés » répond au repère des intégrations déjà visibles sur le site. Ce recensement n’a pas réaudité leur complétude et ne prétend pas connaître leur dernière date d’intégration. Les fiches masquées ordinaires nécessitent une intégration éditoriale complète. Les fiches masquées `NotRelevant` sont comptées séparément : beaucoup sont des exploitants forains ou des anciennes identités ; une source de vrai lieu peut rouvrir leur examen.
 
@@ -17,9 +17,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
 | Parcs | 324 | 1877 | 7550 |
-| Standalone | 225 | 1 | 120 |
+| Standalone | 226 | 1 | 120 |
 
-**Reprise standalone :** en plus des 120 candidates sans correspondance, **216 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **567 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **68 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
+**Reprise standalone :** en plus des 120 candidates sans correspondance, **216 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **566 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **69 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
 À part : **767** Park masqués NotRelevant, **73** types à décider, **1280** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
@@ -126,7 +126,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Monténégro](countries/ME.md) | 0 | 0 | 1 | 0 | 1 | 0 |
 | [Norvège](countries/NO.md) | 0 | 0 | 0 | 0 | 3 | 0 |
 | [Pays-Bas](countries/NL.md) | 4 | 0 | 0 | 0 | 4 | 0 |
-| [Pologne](countries/PL.md) | 5 | 0 | 1 | 2 | 20 | 0 |
+| [Pologne](countries/PL.md) | 6 | 0 | 1 | 2 | 20 | 0 |
 | [Portugal](countries/PT.md) | 2 | 1 | 1 | 0 | 0 | 0 |
 | [Roumanie](countries/RO.md) | 1 | 0 | 1 | 0 | 7 | 0 |
 | [Royaume-Uni](countries/GB.md) | 11 | 0 | 0 | 6 | 28 | 0 |
@@ -139,9 +139,9 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 5 | 0 | 0 | 0 | 11 | 0 |
 | [Ukraine](countries/UA.md) | 0 | 0 | 0 | 0 | 4 | 0 |
-| **Total** | **130** | **1** | **34** | **65** | **274** | **18** |
+| **Total** | **131** | **1** | **34** | **65** | **274** | **18** |
 
-Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **89**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
+Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **90**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
 - Allemagne : 12 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Autriche : 12 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -155,7 +155,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Lettonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Lituanie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Pays-Bas : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- Pologne : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Pologne : 6 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Portugal : 7 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Roumanie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Royaume-Uni : 11 intégrations achevées et auditées, dont 0 fiches encore masquées.
@@ -206,7 +206,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Monténégro](countries/ME.md) | 1 | 0 | 1 | 0 |
 | [Norvège](countries/NO.md) | 2 | 0 | 3 | 1 |
 | [Pays-Bas](countries/NL.md) | 1 | 0 | 3 | 0 |
-| [Pologne](countries/PL.md) | 17 | 0 | 16 | 2 |
+| [Pologne](countries/PL.md) | 17 | 0 | 15 | 3 |
 | [Portugal](countries/PT.md) | 0 | 0 | 0 | 1 |
 | [Roumanie](countries/RO.md) | 14 | 0 | 7 | 0 |
 | [Royaume-Uni](countries/GB.md) | 1 | 0 | 16 | 1 |
@@ -219,7 +219,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Svalbard et Jan Mayen](countries/SJ.md) | 0 | 0 | 0 | 0 |
 | [Tchéquie](countries/CZ.md) | 11 | 1 | 8 | 1 |
 | [Ukraine](countries/UA.md) | 1 | 0 | 2 | 0 |
-| **Total** | **165** | **16** | **220** | **38** |
+| **Total** | **165** | **16** | **219** | **39** |
 
 Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la colonne sans ID est un sous-ensemble des rapprochements incertains. Ce sont des dossiers à examiner, pas un nombre garanti d’attractions autonomes distinctes.
 
