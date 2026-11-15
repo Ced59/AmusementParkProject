@@ -16299,11 +16299,11 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
       "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "identityConfidence": "Référence Wiegand Oberoderwitz identifiée comme la même piste que Sommerrodelbahn Oderwitz, intégrée sous c3915e57-01bf-486e-a932-db220a0eea66.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
@@ -16312,7 +16312,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver cette piste de découverte comme doublon de DE-candidate-8a4f1878921880 ; toute mise à jour de données doit être portée sur la fiche publiée.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16323,11 +16323,16 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.rodelbahn-oberoderwitz.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — installation confirmée",
+          "url": "https://rodelbahn-oderwitz.de/rodelpark/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Oberoderwitz",
@@ -16338,8 +16343,9 @@
             "referenceId": "location-id-1259"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La référence constructeur Oberoderwitz désigne la même installation au Spitzberg que la Sommerrodelbahn Oderwitz publiée ; ne pas créer de seconde fiche."
+      },
+      "duplicateOf": "DE-candidate-8a4f1878921880"
     },
     {
       "entryId": "DE-candidate-standalone-656009ff5e3a31",
@@ -21261,38 +21267,174 @@
     },
     {
       "entryId": "DE-candidate-8a4f1878921880",
-      "name": "Rodelpark Oderwitz",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Oderwitz",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Alpine adventure world",
-      "locality": "Oderwitz",
-      "siteId": null,
+      "category": "Luge d’été",
+      "locality": "Spitzbergstraße 4a–b, 02791 Oderwitz, Saxe",
+      "siteId": "c3915e57-01bf-486e-a932-db220a0eea66",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T09:05:32.8775443Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "En exploitation ; fermeture temporaire du 15 au 21 novembre 2026 annoncée par l’exploitant.",
+      "identityConfidence": "Luge d’été unique de 587 m au Spitzberg, exploitant et adresse confirmés ; deux photos exactes réutilisables sous CC BY-SA 4.0.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Rodelpark Oderwitz",
+        "Sommerrodelbahn Oberoderwitz",
+        "Luge Wiegand — Oberoderwitz"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T09:04:08.190Z",
+      "integrationHistory": [
+        {
+          "appliedAt": "2026-11-15T08:55:33.510Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:apply:37d1afe9-62bb-4913-b7c9-a90a534b6dc5",
+          "auditEvidence": null,
+          "summary": "Création de la fiche avec localisation, longueur de 587 m, ouverture en 1995 et huit descriptions.",
+          "eventId": "apply-37d1afe9-62bb-4913-b7c9-a90a534b6dc5"
+        },
+        {
+          "appliedAt": "2026-11-15T08:56:24.924Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:image:a7a54aed4a4141499b55682f222d5966",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 importée et publiée avec crédit Marketing-Gesellschaft Oberlausitz-Niederschlesien mbH sous licence CC BY-SA 4.0.",
+          "eventId": "image-a7a54aed4a4141499b55682f222d5966"
+        },
+        {
+          "appliedAt": "2026-11-15T08:57:46.288Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:image:9b865374634b4874867b699861004191",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2 importée et publiée avec crédit Gemeindeverwaltung Oderwitz sous licence CC BY-SA 4.0.",
+          "eventId": "image-9b865374634b4874867b699861004191"
+        },
+        {
+          "appliedAt": "2026-11-15T08:58:22.611Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:apply:a44c8bcc-bfc1-4e6d-aa68-76d0449f8d00",
+          "auditEvidence": null,
+          "summary": "Intégration des six tarifs officiels pour adultes et enfants.",
+          "eventId": "apply-a44c8bcc-bfc1-4e6d-aa68-76d0449f8d00"
+        },
+        {
+          "appliedAt": "2026-11-15T08:59:40.377Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:apply:daef05cd-0078-4fbf-93e1-95adbe206997",
+          "auditEvidence": null,
+          "summary": "Ajout des conditions d’accès pour les enfants et de la règle relative aux appareils tenus en main.",
+          "eventId": "apply-daef05cd-0078-4fbf-93e1-95adbe206997"
+        },
+        {
+          "appliedAt": "2026-11-15T09:02:02.085Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:apply:f483fa6b-6880-4199-99f8-254dc297bded",
+          "auditEvidence": null,
+          "summary": "Ajout de l’ouverture datée du 30 septembre 1995 dans huit langues.",
+          "eventId": "apply-f483fa6b-6880-4199-99f8-254dc297bded"
+        },
+        {
+          "appliedAt": "2026-11-15T09:03:38.085Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:apply:3733fa9c-5d40-46de-8608-48c34fa7d768",
+          "auditEvidence": null,
+          "summary": "Correction de la source tarifaire vers la page officielle active.",
+          "eventId": "apply-3733fa9c-5d40-46de-8608-48c34fa7d768"
+        },
+        {
+          "appliedAt": "2026-11-15T09:04:08.190Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "c3915e57-01bf-486e-a932-db220a0eea66",
+          "evidence": "PARK_DATA_EDITOR:apply:e3d711a4-a0bf-4305-94bc-5d78fb5dd04c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-oderwitz-20261115/audit.json",
+          "summary": "Intégration des horaires sourcés et fermeture temporaire du 15 au 21 novembre 2026.",
+          "eventId": "apply-e3d711a4-a0bf-4305-94bc-5d78fb5dd04c"
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Revoir les horaires à la réouverture prévue le 22 novembre 2026 et actualiser les tarifs à la prochaine intégration réelle ; ne pas republier Facebook.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/rodelpark-oderwitz/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — accueil, tarifs et horaires",
+          "url": "https://rodelbahn-oderwitz.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — installation",
+          "url": "https://rodelbahn-oderwitz.de/rodelpark/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — conditions d’accès",
+          "url": "https://rodelbahn-oderwitz.de/hinweise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Outdooractive — photo de la piste",
+          "url": "https://www.outdooractive.com/en/poi/oberlausitz/rodelpark-oberoderwitz/13210982/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Outdooractive — vue aérienne",
+          "url": "https://www.outdooractive.cz/cs/poi/oberlausitz/sommerrodelbahn/61232325/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Sommerrodelbahn Oderwitz",
+          "url": "https://amusement-parks.fun/fr/attraction/c3915e57-01bf-486e-a932-db220a0eea66/sommerrodelbahn-oderwitz",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Oderwitz",
+            "source": "Exploitant — Rodelpark",
+            "url": "https://rodelbahn-oderwitz.de/rodelpark/",
+            "family": "Luge d’été",
+            "sourceVenueName": "Rodelpark Oderwitz",
+            "sourceOpenedYear": "1995"
+          }
+        ],
+        "rationale": "La luge en auge est le produit principal du site, avec billet propre ; jeux et restauration annexes ne constituent pas un parc à inventorier séparément."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-oderwitz-20261115/audit.json",
+        "score": 95,
+        "publicationBlockers": []
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-15T09:05:32.8775443Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/c3915e57-01bf-486e-a932-db220a0eea66/sommerrodelbahn-oderwitz",
+        "facebookPublishedAtUtc": "2026-11-15T09:06:14.3981048Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127431529424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-oderwitz-20261115/receipts.json"
       }
     },
     {
