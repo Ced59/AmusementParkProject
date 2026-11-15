@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T11:37:18.130Z",
+      "lastDataIntegrationAt": "2026-11-15T11:50:19.438Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33168,6 +33168,36 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-04-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland : photo officielle réelle de Les as du volant importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-3f4e6f11b7f442519d25ee35fd0ad9a0",
+          "appliedAt": "2026-11-15T11:46:01.032Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-pomme-rcdb-1-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo RCDB distincte de La Pomme importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Variante native RCDB intacte, crédit Max Korzonnek ; copyright 4 mai 2025 distinct de capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-880ef6aff6124424bdba9dacc67563e6",
+          "appliedAt": "2026-11-15T11:46:28.835Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-pomme-rcdb-2-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo RCDB distincte de La Pomme importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Variante native RCDB intacte, crédit Max Korzonnek ; copyright 4 mai 2025 distinct de capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "apply-75519385-a7d9-4d4e-9a34-973d47b6bbcf",
+          "appliedAt": "2026-11-15T11:50:19.438Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-11-item-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : six notices Laser Game, Le Batoo, Le p’tit train, Fall Tower, Les avions et Les p’tits chevaux rédigées et relues dans huit langues, soit 48 textes. Sources officielles et photos natives relues ; formats courts documentés, aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

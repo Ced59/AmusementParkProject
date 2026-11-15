@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T11:37:18.13Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T11:50:19.4389687Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue historical residual identities from 2017 sign (calèche, mer de filet, old food names, Archery Games) with sources before creation/alias. Complete 63 remaining item descriptions, three zones, actual photos, maps, 2026 calendar, prices, history/article. Geolocation report has 11 named OSM point candidates from 2021–24, not automatically verified current positions. Full final audit not yet performed. Root only sequential official API. Do not rerun already applied prepare/record helpers. Initial historical Preview zone warning corrected by redeclaring existing zone; final 24-entity Preview unchanged.",
+  "nextAction": "Continue 57 remaining descriptions, including 9 current activities, 3 zones, actual photos, official maps, 2026 calendar/prices and history/article. Historical names and ambiguous aliases require source qualification. All private. No full final audit performed. Root sole sequential official API. Preserve all 10 Apply and 9 imports; do not rerun prepare/record helpers.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -166,16 +166,21 @@
       "proof": "pokeyland-10-item-descriptions-20261115.json",
       "operationId": "9f3cfa31-4e6b-4c19-acaa-6685c4be69db",
       "appliedAtUtc": "2026-11-15T11:34:14.5150887Z"
+    },
+    {
+      "proof": "pokeyland-11-item-descriptions-20261115.json",
+      "operationId": "75519385-a7d9-4d4e-9a34-973d47b6bbcf",
+      "appliedAtUtc": "2026-11-15T11:50:19.4389687Z"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 7,
+    "media": 9,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 11,
+    "itemsDescribed": 17,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17
   },
@@ -214,9 +219,19 @@
       "proof": "pokeyland-photo-current-04-20261115.json",
       "imageId": "854a573d1b84444d9257cb9626b0360b",
       "createdAtUtc": "2026-11-15T11:37:18.13Z"
+    },
+    {
+      "proof": "pokeyland-photo-pomme-rcdb-1-20261115.json",
+      "imageId": "3f4e6f11b7f442519d25ee35fd0ad9a0",
+      "createdAtUtc": "2026-11-15T11:46:01.032Z"
+    },
+    {
+      "proof": "pokeyland-photo-pomme-rcdb-2-20261115.json",
+      "imageId": "880ef6aff6124424bdba9dacc67563e6",
+      "createdAtUtc": "2026-11-15T11:46:28.835Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T11:38:57.908925+00:00",
+  "updatedAtUtc": "2026-11-15T11:51:30.363572+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -229,11 +244,11 @@
     }
   },
   "latestDescriptionIdempotence": {
-    "operationId": "50b8e488-87e4-4869-b41e-b784fb9518ef",
+    "operationId": "c32d4045-0866-460a-b8f8-9e9bd25a8484",
     "mode": "merge",
     "isApplied": false,
     "canApply": true,
-    "previewedAtUtc": "2026-11-15T11:38:29.3116753Z",
+    "previewedAtUtc": "2026-11-15T11:50:50.0782936Z",
     "appliedAtUtc": null,
     "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
     "targetParkName": "Pokeyland",
@@ -259,54 +274,54 @@
       },
       {
         "entityType": "ParkItem",
-        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
-        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
-        "displayName": "La Pomme",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
         "changeType": "Unchanged",
         "matchedBy": "id",
         "fields": []
       },
       {
         "entityType": "ParkItem",
-        "entityId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
-        "entityKey": "pokeyland-crazy-kart",
-        "displayName": "Crazy Kart",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "pokeyland-le-batoo",
+        "displayName": "Le Batoo",
         "changeType": "Unchanged",
         "matchedBy": "id",
         "fields": []
       },
       {
         "entityType": "ParkItem",
-        "entityId": "11978677-6ea2-457a-af26-cfc2fda129df",
-        "entityKey": "pokeyland-ejector",
-        "displayName": "Ejector",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "pokeyland-le-ptit-train",
+        "displayName": "Le p’tit train",
         "changeType": "Unchanged",
         "matchedBy": "id",
         "fields": []
       },
       {
         "entityType": "ParkItem",
-        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
-        "entityKey": "pokeyland-escalade",
-        "displayName": "Escalade",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "pokeyland-lenvol",
+        "displayName": "Fall Tower",
         "changeType": "Unchanged",
         "matchedBy": "id",
         "fields": []
       },
       {
         "entityType": "ParkItem",
-        "entityId": "53432ace-37a0-4149-9153-a418b86da889",
-        "entityKey": "pokeyland-kids-swing",
-        "displayName": "Kid’s Swing",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "pokeyland-les-avions",
+        "displayName": "Les avions",
         "changeType": "Unchanged",
         "matchedBy": "id",
         "fields": []
       },
       {
         "entityType": "ParkItem",
-        "entityId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
-        "entityKey": "pokeyland-la-roue",
-        "displayName": "La Roue",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "pokeyland-les-ptits-chevaux",
+        "displayName": "Les p’tits chevaux",
         "changeType": "Unchanged",
         "matchedBy": "id",
         "fields": []

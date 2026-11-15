@@ -1,0 +1,245 @@
+{
+  "researchedAtUtc": "2026-11-15T11:38:52.233729+00:00",
+  "scope": "Public-source photo research only. No PDE, Git, registry or existing campaign file edits.",
+  "localEditsOnlyUnder": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos",
+  "qualifiedCandidates": [
+    {
+      "key": "rcdb-pomme-148812-900",
+      "source": "https://rcdb.com/22635.htm#p=148812",
+      "url": "https://rcdb.com/aaimdof",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/rcdb-pomme-148812-900.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:31:42.898109+00:00",
+      "bytes": 237519,
+      "dimensions": [
+        900,
+        907
+      ],
+      "sha256": "338e9969d011603d0916f223f4943c404b69f6140b4b801ea8631b4afdf47fc0",
+      "over960KiB": false,
+      "author": "Max Korzonnek",
+      "rcdbCopyrightDate": "2025-05-04",
+      "captureDate": null,
+      "observedPublisherRendition": true,
+      "attraction": "La Pomme",
+      "decision": "candidate_for_root_personal_review",
+      "visibleWatermark": false,
+      "montage": false,
+      "isCurrent": false,
+      "shootingDateKnown": false,
+      "captionProposalFr": "Le train chenille multicolore de La Pomme à la gare, devant les rails jaunes et supports gris.",
+      "attributionProposal": "© Max Korzonnek / RCDB",
+      "dateNote": "RCDB affiche © 4 mai 2025 ; le champ source est copy_date. Ne pas convertir automatiquement en date de prise de vue exacte.",
+      "distinctness": "Deux prises de vue différentes : vue proche de la gare et vue générale du circuit. Toutes deux distinctes de la photo officielle déjà importée, qui cadre la chenille de profil en contre-plongée.",
+      "renditionNote": "Original RCDB conservé mais supérieur à 960 Kio. Variante publiée par RCDB, URL explicitement fournie dans pic_json ; aucun redimensionnement ou retouche locale.",
+      "siteIdentityEvidence": "La galerie RCDB 22635 est intitulée Pomme et rattachée à Pokeyland (Féy, France). Décor du train, rails jaunes, supports et implantation boisée correspondent à la photo officielle."
+    },
+    {
+      "key": "rcdb-pomme-148813-1280",
+      "source": "https://rcdb.com/22635.htm#p=148813",
+      "url": "https://rcdb.com/aaimdpe",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/rcdb-pomme-148813-1280.jpg",
+      "status": 200,
+      "fetchedUtc": "2026-11-15T11:31:43.021936+00:00",
+      "bytes": 279872,
+      "dimensions": [
+        1280,
+        651
+      ],
+      "sha256": "f7a69a1690b0b40a5f4859124e05e247f8a402afecf4aab2be5925eff6160a55",
+      "over960KiB": false,
+      "author": "Max Korzonnek",
+      "rcdbCopyrightDate": "2025-05-04",
+      "captureDate": null,
+      "observedPublisherRendition": true,
+      "attraction": "La Pomme",
+      "decision": "candidate_for_root_personal_review",
+      "visibleWatermark": false,
+      "montage": false,
+      "isCurrent": false,
+      "shootingDateKnown": false,
+      "captionProposalFr": "Vue générale du circuit de La Pomme, aux rails jaunes, avec le train chenille et la gare à droite.",
+      "attributionProposal": "© Max Korzonnek / RCDB",
+      "dateNote": "RCDB affiche © 4 mai 2025 ; le champ source est copy_date. Ne pas convertir automatiquement en date de prise de vue exacte.",
+      "distinctness": "Deux prises de vue différentes : vue proche de la gare et vue générale du circuit. Toutes deux distinctes de la photo officielle déjà importée, qui cadre la chenille de profil en contre-plongée.",
+      "renditionNote": "Original RCDB conservé mais supérieur à 960 Kio. Variante publiée par RCDB, URL explicitement fournie dans pic_json ; aucun redimensionnement ou retouche locale.",
+      "siteIdentityEvidence": "La galerie RCDB 22635 est intitulée Pomme et rattachée à Pokeyland (Féy, France). Décor du train, rails jaunes, supports et implantation boisée correspondent à la photo officielle."
+    },
+    {
+      "key": "directfm-monorail-1",
+      "url": "https://medias.lesindesradios.fr/t:app(web)/t:r(unknown)/fit-in/1100x2000/filters:format(webp)/medias/FIt5R0wFOe/image/Pok__1708593427495.png",
+      "source": "https://www.directfm.fr/pokeyland-les-projets-a-venir-en-2024",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/directfm-monorail-1.jpg",
+      "status": 200,
+      "contentType": "image/webp",
+      "fetchedUtc": "2026-11-15T11:30:50.732458+00:00",
+      "bytes": 222004,
+      "dimensions": [
+        1100,
+        725
+      ],
+      "sha256": "3dca7866fb1a8826d2d706198ab677b335d9885c2614c78a15ade7e52813dda7",
+      "over960KiB": false,
+      "captureDate": null,
+      "attraction": "Mono-Rail",
+      "decision": "candidate_for_root_personal_review",
+      "visibleWatermark": false,
+      "montage": false,
+      "isCurrent": false,
+      "shootingDateKnown": false,
+      "publicationDate": "2024-02-22",
+      "articleAuthor": "Yoann Masson",
+      "photographer": null,
+      "attributionProposal": "Direct FM",
+      "captionProposalFr": "La gare surélevée du Mono-Rail et les nacelles en forme d’hélicoptère lors de la préparation de la saison 2024.",
+      "dateNote": "Article publié le 22 février 2024 à 10 h 24. Jour de prise de vue non prouvé. Le crédit affiché est Direct_fm ; Yoann Masson est l’auteur de l’article, pas un photographe confirmé.",
+      "distinctness": "Gare et nacelles photographiées sans l’équipe, point de vue plus décalé à gauche. Différent du portrait collectif de Gilles Wirtz et du gros plan officiel d’un enfant à bord.",
+      "siteIdentityEvidence": "Reportage explicitement consacré à Pokeyland Fey. La légende du Quotidien nomme le monorail et ses hélicoptères ; gare verte et nacelles identiques sur la vue Direct FM. Ancienne implantation 2024, ne pas présenter comme photo prise en 2026."
+    },
+    {
+      "key": "quotidien-monorail-7",
+      "url": "https://image.lequotidien.lu/460981.webp?imageId=460981&width=960&height=642&format=jpg",
+      "source": "https://lequotidien.lu/grande-region/pokeyland-comment-le-parc-de-fey-prepare-la-saison/",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/quotidien-monorail-7.jpg",
+      "status": 200,
+      "contentType": "image/jpeg",
+      "fetchedUtc": "2026-11-15T11:30:50.256668+00:00",
+      "bytes": 302685,
+      "dimensions": [
+        960,
+        642
+      ],
+      "sha256": "765f66d538b7adf389f493112aaef69bab8cbd297ad885ae33cb05359981e75f",
+      "over960KiB": false,
+      "captureDate": null,
+      "attraction": "Mono-Rail",
+      "decision": "candidate_for_root_personal_review",
+      "visibleWatermark": false,
+      "montage": false,
+      "isCurrent": false,
+      "shootingDateKnown": false,
+      "publicationDate": "2024-02-21",
+      "articleAuthor": "Le Républicain Lorrain",
+      "photographer": "Gilles Wirtz",
+      "attributionProposal": "Gilles Wirtz / Le Républicain Lorrain, publié par Le Quotidien",
+      "captionProposalFr": "L’équipe de Pokeyland devant le Mono-Rail en préparation pour la saison 2024.",
+      "dateNote": "Article publié le 21 février 2024 à 9 h 55. La légende nomme explicitement le monorail et attribue la photo à Gilles Wirtz. Jour de prise de vue non prouvé.",
+      "distinctness": "Photo collective avec la gare et les hélicoptères visibles à l’arrière-plan ; scène distincte de la vue Direct FM et du gros plan officiel. Intérêt secondaire pour une galerie centrée sur l’attraction : le groupe occupe la moitié inférieure.",
+      "siteIdentityEvidence": "Reportage explicitement consacré à Pokeyland Fey. La légende du Quotidien nomme le monorail et ses hélicoptères ; gare verte et nacelles identiques sur la vue Direct FM. Ancienne implantation 2024, ne pas présenter comme photo prise en 2026."
+    }
+  ],
+  "gaps": [
+    {
+      "attraction": "La Roue",
+      "requestedAdditional": 2,
+      "qualifiedAdditional": 0,
+      "reason": "La page officielle ne fournit que la photo déjà candidate et ses variantes. Recherche dans les reportages, photos Tripadvisor, galerie touristique et carrousel social public sans autre photo distincte, nominalement sûre et sans montage/filigrane qualifiée à ce stade."
+    },
+    {
+      "attraction": "Le Batoo",
+      "requestedAdditional": 2,
+      "qualifiedAdditional": 0,
+      "reason": "La page officielle ne fournit que la photo déjà candidate et ses variantes. Recherche dans les reportages, photos Tripadvisor, galerie touristique et carrousel social public sans autre photo distincte, nominalement sûre et sans montage/filigrane qualifiée à ce stade."
+    },
+    {
+      "attraction": "Fall Tower",
+      "requestedAdditional": 2,
+      "qualifiedAdditional": 0,
+      "reason": "La page officielle ne fournit que la photo déjà candidate et ses variantes. Recherche dans les reportages, photos Tripadvisor, galerie touristique et carrousel social public sans autre photo distincte, nominalement sûre et sans montage/filigrane qualifiée à ce stade."
+    }
+  ],
+  "exclusions": [
+    {
+      "files": [
+        "rcdb-pomme-148812.jpg",
+        "rcdb-pomme-148813.jpg"
+      ],
+      "reason": "Originaux de 3 772 717 et 2 389 073 octets, au-dessus de 960 Kio ; seules les variantes RCDB explicitement listées sont proposées."
+    },
+    {
+      "files": [
+        "pomme-official-baseline.jpg"
+      ],
+      "reason": "Photo officielle déjà importée par root, utilisée uniquement pour comparaison, ne pas réimporter."
+    },
+    {
+      "files": [
+        "directfm-monorail-2.jpg"
+      ],
+      "reason": "Montre Kid’s Swing ; pas Fall Tower ou Mono-Rail."
+    },
+    {
+      "files": [
+        "metz-tourism-17.jpg",
+        "metz-tourism-18.jpg",
+        "metz-tourism-19.jpg",
+        "metz-tourism-20.jpg",
+        "metz-tourism-21.jpg"
+      ],
+      "reason": "Logo, accrobranche, paintball et montage promotionnel ; aucune photo des cinq attractions ciblées. Le dernier montage inclut Fall Tower et Mono-Rail, mais ne constitue pas une photo réelle de la scène."
+    },
+    {
+      "files": [
+        "ta-ee.jpg",
+        "ta-ef.jpg",
+        "ta-f0.jpg",
+        "ta-f1.jpg",
+        "ta-f2.jpg",
+        "ta-f3.jpg",
+        "ta-f4.jpg",
+        "ta-f5.jpg"
+      ],
+      "reason": "Photos de prix snack, tubing, accès/escalier et sanitaires ; pas les attractions ciblées. Aucun grief d’avis recopié dans les notices."
+    },
+    {
+      "files": [
+        "official-social-00.jpg",
+        "official-social-01.jpg",
+        "official-social-03.jpg",
+        "official-social-05.jpg",
+        "official-social-07.jpg",
+        "official-social-08.jpg",
+        "official-social-10.jpg",
+        "official-social-15.jpg",
+        "official-social-16.jpg",
+        "official-social-19.jpg",
+        "official-social-22.jpg"
+      ],
+      "reason": "Montages, calendrier ou texte publicitaire superposé ; exclus comme photos documentaires des attractions. La Roue visible derrière le calendrier ou un texte n’est pas retenue et n’a pas été recadrée."
+    },
+    {
+      "files": [
+        "official-social-14.jpg"
+      ],
+      "reason": "Visiteuse et mascotte Pokey, pas l’une des cinq attractions. Attribution individuelle à vérifier si usage ultérieur."
+    },
+    {
+      "files": [
+        "official-social-12.jpg"
+      ],
+      "reason": "Photo réelle sans filigrane visible d’un grimpeur sur le mur d’escalade, autre attraction ; conserver comme piste séparée, pas comptée dans le résultat ciblé."
+    },
+    {
+      "source": "https://www.findglocal.com/FR/Fey/1599460810302478/Pokeyland",
+      "reason": "Les sept URLs photos affichées par le miroir retournent HTTP 404 ; aucune image reconstruite ou URL improvisée."
+    },
+    {
+      "source": "https://www.erfales.fr/parc-pokeyland-activites-famille-moselle/",
+      "reason": "Résultat non utilisé : erreurs de lieu et de mascotte ; insuffisant pour attribuer une scène."
+    },
+    {
+      "source": "https://rcdb.com/23375.htm",
+      "reason": "URL initiale erronée, hors du rapprochement ; seule la page 22635 explicitement liée depuis Coasters World a été utilisée pour La Pomme."
+    }
+  ],
+  "globalLimits": [
+    "Toutes les propositions doivent encore être relues personnellement par root et rapprochées des médias déjà intégrés avant import.",
+    "Aucune licence ouverte ni autorisation de photographe individuel n’est inventée.",
+    "Aucune date exacte de prise de vue ou position GPS n’est déduite du nom de fichier, de la date de publication ou d’un plan.",
+    "Les variantes d’une même exposition ne sont jamais comptées comme des vues distinctes."
+  ],
+  "accessLimitations": [
+    "Navigation ordinaire du carrousel social du site : 24 publications uniques observées. Une tentative d’ouverture du carrousel de la publication DcL3GgFjcd5 a échoué car le conteneur du widget intercepte les clics. Aucun clic forcé, suppression de calque, endpoint interne, connexion ou contournement effectué.",
+    "Les quatre pages de pagination Tripadvisor ordinaires ne fournissent pas de nouveaux originaux pour les attractions ciblées ; pas de collecte répétitive des mêmes binaires."
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "key": "rcdb-pomme-148812-900",
+    "source": "https://rcdb.com/22635.htm#p=148812",
+    "url": "https://rcdb.com/aaimdof",
+    "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/rcdb-pomme-148812-900.jpg",
+    "status": 200,
+    "fetchedUtc": "2026-11-15T11:31:42.898109+00:00",
+    "bytes": 237519,
+    "dimensions": [
+      900,
+      907
+    ],
+    "sha256": "338e9969d011603d0916f223f4943c404b69f6140b4b801ea8631b4afdf47fc0",
+    "over960KiB": false,
+    "author": "Max Korzonnek",
+    "rcdbCopyrightDate": "2025-05-04",
+    "captureDate": null,
+    "observedPublisherRendition": true,
+    "attraction": "La Pomme",
+    "decision": "candidate_for_root_personal_review",
+    "visibleWatermark": false,
+    "montage": false,
+    "isCurrent": false,
+    "shootingDateKnown": false,
+    "captionProposalFr": "Le train chenille multicolore de La Pomme à la gare, devant les rails jaunes et supports gris.",
+    "attributionProposal": "© Max Korzonnek / RCDB",
+    "dateNote": "RCDB affiche © 4 mai 2025 ; le champ source est copy_date. Ne pas convertir automatiquement en date de prise de vue exacte.",
+    "distinctness": "Deux prises de vue différentes : vue proche de la gare et vue générale du circuit. Toutes deux distinctes de la photo officielle déjà importée, qui cadre la chenille de profil en contre-plongée.",
+    "renditionNote": "Original RCDB conservé mais supérieur à 960 Kio. Variante publiée par RCDB, URL explicitement fournie dans pic_json ; aucun redimensionnement ou retouche locale.",
+    "siteIdentityEvidence": "La galerie RCDB 22635 est intitulée Pomme et rattachée à Pokeyland (Féy, France). Décor du train, rails jaunes, supports et implantation boisée correspondent à la photo officielle."
+  },
+  "rcdbCopyrightDateIsNotCaptureDate": true,
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://rcdb.com/aaimdof",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/rcdb-pomme-148812-900.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-pomme-rcdb-1-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-pomme-rcdb-1-import-result.json"
+  },
+  "metadata": {
+    "description": "Vue rapprochée du train chenille et de la gare de La Pomme à Pokeyland.",
+    "sourceUrl": "https://rcdb.com/aaimdof",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La tête souriante et multicolore du train de La Pomme au bord du quai, avec les rails jaunes et leurs supports gris devant les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "The smiling multicoloured front of La Pomme’s train beside the platform, with yellow rails and grey supports in front of the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die lächelnde, bunte Front des Zuges von La Pomme neben dem Bahnsteig, mit gelben Schienen und grauen Stützen vor den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "La cabeza sonriente y multicolor del tren de La Pomme junto al andén, con raíles amarillos y soportes grises delante de los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "La testa sorridente e multicolore del treno di La Pomme accanto alla banchina, con binari gialli e sostegni grigi davanti agli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De lachende, veelkleurige voorkant van de trein van La Pomme naast het perron, met gele rails en grijze steunen voor de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uśmiechnięty, wielobarwny przód pociągu La Pomme przy peronie, z żółtymi szynami i szarymi podporami na tle drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A cabeça sorridente e multicolor do comboio de La Pomme junto à plataforma, com carris amarelos e suportes cinzentos diante das árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Vue rapprochée du train chenille et de la gare de La Pomme à Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Close view of the caterpillar train and station of La Pomme at Pokeyland."
+      },
+      {
+        "languageCode": "de",
+        "value": "Nahaufnahme des Raupenzuges und der Station von La Pomme in Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista de cerca del tren oruga y la estación de La Pomme en Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vista ravvicinata del treno a bruco e della stazione di La Pomme a Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De rupstrein en het station van La Pomme in Pokeyland van dichtbij."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zbliżenie na pociąg w kształcie gąsienicy i stację La Pomme w Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista de perto do comboio em forma de lagarta e da estação de La Pomme em Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Max Korzonnek / RCDB. Date de prise de vue non précisée."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Max Korzonnek / RCDB. Capture date not specified."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Max Korzonnek / RCDB. Aufnahmedatum nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Max Korzonnek / RCDB. Fecha de la fotografía no indicada."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Max Korzonnek / RCDB. Data dello scatto non indicata."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Max Korzonnek / RCDB. Opnamedatum niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Max Korzonnek / RCDB. Data wykonania zdjęcia niepodana."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Max Korzonnek / RCDB. Data da fotografia não indicada."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T11:46:07.7487448Z",
+    "startedAtUtc": "2026-11-15T11:45:58.8719557Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "3f4e6f11b7f442519d25ee35fd0ad9a0",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "path": "park_item/3f4e6f11b7f442519d25ee35fd0ad9a0",
+      "description": "Vue rapprochée du train chenille et de la gare de La Pomme à Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 900,
+      "height": 907,
+      "sizeInBytes": 237519,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://rcdb.com/aaimdof",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "La tête souriante et multicolore du train de La Pomme au bord du quai, avec les rails jaunes et leurs supports gris devant les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The smiling multicoloured front of La Pomme’s train beside the platform, with yellow rails and grey supports in front of the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die lächelnde, bunte Front des Zuges von La Pomme neben dem Bahnsteig, mit gelben Schienen und grauen Stützen vor den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "La cabeza sonriente y multicolor del tren de La Pomme junto al andén, con raíles amarillos y soportes grises delante de los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "La testa sorridente e multicolore del treno di La Pomme accanto alla banchina, con binari gialli e sostegni grigi davanti agli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De lachende, veelkleurige voorkant van de trein van La Pomme naast het perron, met gele rails en grijze steunen voor de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uśmiechnięty, wielobarwny przód pociągu La Pomme przy peronie, z żółtymi szynami i szarymi podporami na tle drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A cabeça sorridente e multicolor do comboio de La Pomme junto à plataforma, com carris amarelos e suportes cinzentos diante das árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Vue rapprochée du train chenille et de la gare de La Pomme à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Close view of the caterpillar train and station of La Pomme at Pokeyland."
+        },
+        {
+          "languageCode": "de",
+          "value": "Nahaufnahme des Raupenzuges und der Station von La Pomme in Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista de cerca del tren oruga y la estación de La Pomme en Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vista ravvicinata del treno a bruco e della stazione di La Pomme a Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De rupstrein en het station van La Pomme in Pokeyland van dichtbij."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zbliżenie na pociąg w kształcie gąsienicy i stację La Pomme w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista de perto do comboio em forma de lagarta e da estação de La Pomme em Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Max Korzonnek / RCDB. Date de prise de vue non précisée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Max Korzonnek / RCDB. Capture date not specified."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Max Korzonnek / RCDB. Aufnahmedatum nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Max Korzonnek / RCDB. Fecha de la fotografía no indicada."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Max Korzonnek / RCDB. Data dello scatto non indicata."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Max Korzonnek / RCDB. Opnamedatum niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Max Korzonnek / RCDB. Data wykonania zdjęcia niepodana."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Max Korzonnek / RCDB. Data da fotografia não indicada."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:46:01.032Z",
+      "updatedAt": "2026-11-15T11:46:04.619Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

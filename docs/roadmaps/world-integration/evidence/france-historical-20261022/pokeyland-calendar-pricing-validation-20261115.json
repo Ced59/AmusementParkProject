@@ -1,0 +1,157 @@
+{
+  "createdAtUtc": "2026-11-15T11:43:03.981279+00:00",
+  "scope": "Public research only; no PARK_DATA_EDITOR, Git, registry, media import, mutation or publication.",
+  "calendar": {
+    "file": "calendar-independent-validation.json",
+    "dateCount": 183,
+    "differences": [],
+    "colourCounts": {
+      "black": 80,
+      "orange": 52,
+      "pink": 1,
+      "blue": 49,
+      "red": 1
+    },
+    "notes": [
+      "Black means closed OR by reservation.",
+      "July 11 concert hours remain unknown.",
+      "August 15 10:30–22:00, activities until 21:30.",
+      "April 18 10:30 in calendar versus 10:00 in reopening announcement; unresolved.",
+      "No dates outside April–September or in 2027 invented."
+    ]
+  },
+  "pricing": {
+    "file": "pricing-independent-validation.json",
+    "mainAmountsVerified": [
+      31,
+      34,
+      26,
+      20,
+      25,
+      110,
+      140
+    ],
+    "mainAmountDifferences": [],
+    "separatePaintballOffers": 6,
+    "newUsefulClarification": "The FAQ explicitly requires visitors not doing activities to pay entry, apart from +65 Wednesday/Saturday. Free-access games do not mean free park entry."
+  },
+  "sourcesRead": [
+    {
+      "url": "https://www.pokeyland.com/tarifs-2026/",
+      "accessedAtUtc": "2026-11-15T11:40:14.568558+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/tarifs-2026/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 140590,
+      "sha256": "d7dab664582fd6da4bacd15dbd840d7145d77e444e1b9a5e6f82906bb2d5b4d1",
+      "file": "official-prices-2026.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/horaires-calendrier/",
+      "accessedAtUtc": "2026-11-15T11:40:15.467463+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/horaires-calendrier/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84219,
+      "sha256": "0750ce179949ebfb8be9291dec74f1d48989fde5665776826b08b74a9283559b",
+      "file": "official-calendar-page.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/actualites/pokeyland-vous-ouvre-ses-portes-pour-la-saison-2026/",
+      "accessedAtUtc": "2026-11-15T11:40:15.689517+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/actualites/pokeyland-vous-ouvre-ses-portes-pour-la-saison-2026/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79989,
+      "sha256": "dbbd63a01e6adf3466954978054f0870b723112b52190b41e636b9e3d130fd75",
+      "file": "official-news-2026.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/tarifs-paintball/",
+      "accessedAtUtc": "2026-11-15T11:40:15.888812+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/tarifs-paintball/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91009,
+      "sha256": "f2d983d69845f603519c4ce1949ac735f0d59db39f526d03ca960780a940d7bd",
+      "file": "official-paintball-prices.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/foire-aux-questions/",
+      "accessedAtUtc": "2026-11-15T11:40:16.085760+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/foire-aux-questions/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 95941,
+      "sha256": "b26b7db560b0ed892094c930051141b888552d27a27eb112aadc1938ffa9f923",
+      "file": "official-faq.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/conditions-generales-de-vente/",
+      "accessedAtUtc": "2026-11-15T11:40:16.273804+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/conditions-generales-de-vente/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 106879,
+      "sha256": "a536e507dd77abeda75101c3b6563e275250a080021f23678e5511d76321ef95",
+      "file": "official-cgv.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/packs/paintball/",
+      "accessedAtUtc": "2026-11-15T11:40:16.483411+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/packs/paintball/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103962,
+      "sha256": "eda859dec1ee1099220ab0287c585342fa999183d3d12fe84f6e4f9f5e8e85d0",
+      "file": "official-paintball.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/packs/waterjump/",
+      "accessedAtUtc": "2026-11-15T11:40:16.676681+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/packs/waterjump/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103159,
+      "sha256": "37510fc5408c687a032f058bcb0e39bda26d4ea2089b3652a58c5d6eb2c163fc",
+      "file": "official-waterjump.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/packs/accrobranche/",
+      "accessedAtUtc": "2026-11-15T11:40:16.919894+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/packs/accrobranche/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 108957,
+      "sha256": "d53750d754d586aae3dc7edf66d7f924e7d6d4cd53944d06b4694749daa4808f",
+      "file": "official-accrobranche.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/billetterie/",
+      "accessedAtUtc": "2026-11-15T11:40:17.111918+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/billetterie/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 85846,
+      "sha256": "8fb08947a33b363f80f9b63f74ae174a9ecfeba6303828d4fbd30d7f67c347dd",
+      "file": "official-ticketing.html"
+    },
+    {
+      "url": "https://www.pokeyland.com/wp-content/uploads/2026/01/calendrier_pokey_2026-1638x2048.png",
+      "accessedAtUtc": "2026-11-15T10:37:46.946829+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2026/01/calendrier_pokey_2026-1638x2048.png",
+      "sha256": "9e41eb8552ed5ddd9c9a4703fb9f0681cf25e05e9617716f939000cec3a1a281",
+      "bytes": 4142231,
+      "file": "official-calendar-2026.png",
+      "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-calendar-2026.png",
+      "verifiedLocalSha256": "9e41eb8552ed5ddd9c9a4703fb9f0681cf25e05e9617716f939000cec3a1a281"
+    }
+  ],
+  "priorArtifactsPreserved": true,
+  "limitations": [
+    "No admission product or calendar changed.",
+    "No public-source contradiction silently reconciled.",
+    "No price derived for companions, babies or unpriced groups."
+  ]
+}

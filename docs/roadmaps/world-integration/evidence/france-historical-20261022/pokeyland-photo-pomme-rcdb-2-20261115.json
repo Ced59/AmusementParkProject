@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "key": "rcdb-pomme-148813-1280",
+    "source": "https://rcdb.com/22635.htm#p=148813",
+    "url": "https://rcdb.com/aaimdpe",
+    "localFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/rcdb-pomme-148813-1280.jpg",
+    "status": 200,
+    "fetchedUtc": "2026-11-15T11:31:43.021936+00:00",
+    "bytes": 279872,
+    "dimensions": [
+      1280,
+      651
+    ],
+    "sha256": "f7a69a1690b0b40a5f4859124e05e247f8a402afecf4aab2be5925eff6160a55",
+    "over960KiB": false,
+    "author": "Max Korzonnek",
+    "rcdbCopyrightDate": "2025-05-04",
+    "captureDate": null,
+    "observedPublisherRendition": true,
+    "attraction": "La Pomme",
+    "decision": "candidate_for_root_personal_review",
+    "visibleWatermark": false,
+    "montage": false,
+    "isCurrent": false,
+    "shootingDateKnown": false,
+    "captionProposalFr": "Vue générale du circuit de La Pomme, aux rails jaunes, avec le train chenille et la gare à droite.",
+    "attributionProposal": "© Max Korzonnek / RCDB",
+    "dateNote": "RCDB affiche © 4 mai 2025 ; le champ source est copy_date. Ne pas convertir automatiquement en date de prise de vue exacte.",
+    "distinctness": "Deux prises de vue différentes : vue proche de la gare et vue générale du circuit. Toutes deux distinctes de la photo officielle déjà importée, qui cadre la chenille de profil en contre-plongée.",
+    "renditionNote": "Original RCDB conservé mais supérieur à 960 Kio. Variante publiée par RCDB, URL explicitement fournie dans pic_json ; aucun redimensionnement ou retouche locale.",
+    "siteIdentityEvidence": "La galerie RCDB 22635 est intitulée Pomme et rattachée à Pokeyland (Féy, France). Décor du train, rails jaunes, supports et implantation boisée correspondent à la photo officielle."
+  },
+  "rcdbCopyrightDateIsNotCaptureDate": true,
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://rcdb.com/aaimdpe",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/additional-current-photos/rcdb-pomme-148813-1280.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-pomme-rcdb-2-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-pomme-rcdb-2-import-result.json"
+  },
+  "metadata": {
+    "description": "Vue d’ensemble des virages et différences de niveau de La Pomme, à la lisière de la forêt.",
+    "sourceUrl": "https://rcdb.com/aaimdpe",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le circuit compact de La Pomme, aux rails jaunes et supports gris, derrière un grillage ; le train chenille et un chalet se trouvent à droite."
+      },
+      {
+        "languageCode": "en",
+        "value": "La Pomme’s compact yellow track on grey supports behind a fence, with the caterpillar train and a chalet on the right."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die kompakte Strecke von La Pomme mit gelben Schienen auf grauen Stützen hinter einem Zaun; rechts stehen der Raupenzug und ein Holzhaus."
+      },
+      {
+        "languageCode": "es",
+        "value": "El circuito compacto de La Pomme, con raíles amarillos y soportes grises, tras una valla; a la derecha están el tren oruga y una caseta."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il circuito compatto di La Pomme, con binari gialli e sostegni grigi, dietro una recinzione; a destra si trovano il treno a bruco e uno chalet."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het compacte circuit van La Pomme met gele rails op grijze steunen achter een hek; rechts staan de rupstrein en een chalet."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kompaktowy tor La Pomme z żółtymi szynami na szarych podporach za ogrodzeniem; po prawej pociąg w kształcie gąsienicy i drewniany domek."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O circuito compacto de La Pomme, com carris amarelos e suportes cinzentos, atrás de uma vedação; o comboio em forma de lagarta e um chalé ficam à direita."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Vue d’ensemble des virages et différences de niveau de La Pomme, à la lisière de la forêt."
+      },
+      {
+        "languageCode": "en",
+        "value": "Overview of La Pomme’s curves and changes in level at the edge of the forest."
+      },
+      {
+        "languageCode": "de",
+        "value": "Gesamtansicht der Kurven und Höhenunterschiede von La Pomme am Waldrand."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vista general de las curvas y los desniveles de La Pomme junto al bosque."
+      },
+      {
+        "languageCode": "it",
+        "value": "Veduta d’insieme delle curve e dei dislivelli di La Pomme ai margini del bosco."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Overzicht van de bochten en hoogteverschillen van La Pomme aan de bosrand."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widok ogólny zakrętów i zmian wysokości La Pomme na skraju lasu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vista geral das curvas e dos desníveis de La Pomme na orla da floresta."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Max Korzonnek / RCDB. Date de prise de vue non précisée."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Max Korzonnek / RCDB. Capture date not specified."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Max Korzonnek / RCDB. Aufnahmedatum nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Max Korzonnek / RCDB. Fecha de la fotografía no indicada."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Max Korzonnek / RCDB. Data dello scatto non indicata."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Max Korzonnek / RCDB. Opnamedatum niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Max Korzonnek / RCDB. Data wykonania zdjęcia niepodana."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Max Korzonnek / RCDB. Data da fotografia não indicada."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T11:46:26.9996693Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T11:46:35.4964940Z",
+    "result": {
+      "id": "880ef6aff6124424bdba9dacc67563e6",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "path": "park_item/880ef6aff6124424bdba9dacc67563e6",
+      "description": "Vue d’ensemble des virages et différences de niveau de La Pomme, à la lisière de la forêt.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1280,
+      "height": 651,
+      "sizeInBytes": 279872,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://rcdb.com/aaimdpe",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le circuit compact de La Pomme, aux rails jaunes et supports gris, derrière un grillage ; le train chenille et un chalet se trouvent à droite."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme’s compact yellow track on grey supports behind a fence, with the caterpillar train and a chalet on the right."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die kompakte Strecke von La Pomme mit gelben Schienen auf grauen Stützen hinter einem Zaun; rechts stehen der Raupenzug und ein Holzhaus."
+        },
+        {
+          "languageCode": "es",
+          "value": "El circuito compacto de La Pomme, con raíles amarillos y soportes grises, tras una valla; a la derecha están el tren oruga y una caseta."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il circuito compatto di La Pomme, con binari gialli e sostegni grigi, dietro una recinzione; a destra si trovano il treno a bruco e uno chalet."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het compacte circuit van La Pomme met gele rails op grijze steunen achter een hek; rechts staan de rupstrein en een chalet."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kompaktowy tor La Pomme z żółtymi szynami na szarych podporach za ogrodzeniem; po prawej pociąg w kształcie gąsienicy i drewniany domek."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O circuito compacto de La Pomme, com carris amarelos e suportes cinzentos, atrás de uma vedação; o comboio em forma de lagarta e um chalé ficam à direita."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Vue d’ensemble des virages et différences de niveau de La Pomme, à la lisière de la forêt."
+        },
+        {
+          "languageCode": "en",
+          "value": "Overview of La Pomme’s curves and changes in level at the edge of the forest."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gesamtansicht der Kurven und Höhenunterschiede von La Pomme am Waldrand."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vista general de las curvas y los desniveles de La Pomme junto al bosque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Veduta d’insieme delle curve e dei dislivelli di La Pomme ai margini del bosco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Overzicht van de bochten en hoogteverschillen van La Pomme aan de bosrand."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widok ogólny zakrętów i zmian wysokości La Pomme na skraju lasu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vista geral das curvas e dos desníveis de La Pomme na orla da floresta."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Max Korzonnek / RCDB. Date de prise de vue non précisée."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Max Korzonnek / RCDB. Capture date not specified."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Max Korzonnek / RCDB. Aufnahmedatum nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Max Korzonnek / RCDB. Fecha de la fotografía no indicada."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Max Korzonnek / RCDB. Data dello scatto non indicata."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Max Korzonnek / RCDB. Opnamedatum niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Max Korzonnek / RCDB. Data wykonania zdjęcia niepodana."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Max Korzonnek / RCDB. Data da fotografia não indicada."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:46:28.835Z",
+      "updatedAt": "2026-11-15T11:46:32.392Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

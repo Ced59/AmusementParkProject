@@ -1,0 +1,1007 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-item-descriptions-lot3",
+        "step": "04-items-lot-3",
+        "notes": "Six existing private items; 48 texts personally authored and reviewed after official pages and original photographs. One heading/two specific paragraphs per item; short-source depth gaps retained. No invented ride model, opening dates, dimensions or engineering sequence. Mechanical horses distinguished from live pony offer. Visibility and all existing attributes preserved."
+      },
+      "items": [
+        {
+          "id": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+          "key": "pokeyland-laser-game",
+          "name": "Laser Game",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une partie entre les décors de la forêt</h2><p>Le Laser Game de Pokeyland se joue dehors, sur des terrains aménagés au milieu des arbres. Les joueurs visent leurs adversaires pour marquer des points, avec des tirs laser sans projectiles de peinture. Des espaces sont prévus pour les enfants.</p><p>Les façades grises vieillies, les portes en planches et les ouvertures pratiquées dans les murs composent le décor. Les troncs restent présents au milieu de ces constructions, sur un sol de terre. Les équipements noirs et les casques orange visibles pendant une partie se détachent sur cette succession de murs et de végétation.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A game among woodland scenery</h2><p>Pokeyland’s Laser Game takes place outdoors, on playing areas set among the trees. Players aim at their opponents to score points, using laser shots without paint projectiles. There are dedicated spaces for children.</p><p>Weathered grey façades, plank doors and openings in the walls form the scenery. Tree trunks remain among these structures on an earthen surface. The black equipment and orange helmets seen during a game stand out against the sequence of walls and vegetation.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Spiel zwischen Waldkulissen</h2><p>Das Laser Game von Pokeyland findet im Freien auf Spielfeldern zwischen den Bäumen statt. Die Spieler zielen auf ihre Gegner, um Punkte zu sammeln, und verwenden dabei Laserstrahlen ohne Farbgeschosse. Für Kinder gibt es eigene Bereiche.</p><p>Verwitterte graue Fassaden, Brettertüren und Öffnungen in den Wänden bilden die Kulisse. Zwischen den Bauten bleiben Baumstämme sichtbar; der Boden besteht aus Erde. Schwarze Spielgeräte und orangefarbene Helme heben sich während einer Partie von den Wänden und der Vegetation ab.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una partida entre decorados del bosque</h2><p>El Laser Game de Pokeyland se juega al aire libre, en terrenos acondicionados entre los árboles. Los participantes apuntan a sus adversarios para sumar puntos mediante disparos láser sin proyectiles de pintura. Hay espacios dedicados a los niños.</p><p>Fachadas grises envejecidas, puertas de tablones y aberturas en los muros forman el decorado. Los troncos siguen presentes entre estas construcciones, sobre un suelo de tierra. El equipo negro y los cascos naranjas visibles durante una partida destacan frente a los muros y la vegetación.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una partita tra le scenografie del bosco</h2><p>Il Laser Game di Pokeyland si svolge all’aperto, su terreni attrezzati tra gli alberi. I giocatori mirano agli avversari per segnare punti con tiri laser, senza proiettili di vernice. Sono previsti spazi dedicati ai bambini.</p><p>Facciate grigie invecchiate, porte di assi e aperture nei muri compongono la scenografia. I tronchi restano presenti tra queste costruzioni, su un fondo di terra. L’attrezzatura nera e i caschi arancioni visibili durante una partita risaltano sullo sfondo di muri e vegetazione.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Spelen tussen decors in het bos</h2><p>Het Laser Game van Pokeyland vindt buiten plaats, op speelterreinen tussen de bomen. Spelers richten op hun tegenstanders om punten te verzamelen, met laserstralen zonder verfprojectielen. Voor kinderen zijn er eigen speelruimtes.</p><p>Verweerde grijze gevels, plankendeuren en openingen in de muren vormen het decor. Tussen deze bouwwerken blijven boomstammen staan, op een aarden ondergrond. De zwarte uitrusting en oranje helmen die tijdens een spel te zien zijn, steken af tegen de opeenvolgende muren en begroeiing.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Rozgrywka wśród leśnych dekoracji</h2><p>Laser Game w Pokeyland odbywa się na zewnątrz, na terenach przygotowanych między drzewami. Gracze celują w przeciwników, aby zdobywać punkty, korzystając ze strzałów laserowych bez pocisków z farbą. Dla dzieci przygotowano osobne przestrzenie.</p><p>Scenerię tworzą postarzane szare fasady, drzwi z desek i otwory w ścianach. Między konstrukcjami na ziemnym podłożu pozostawiono pnie drzew. Czarne wyposażenie i pomarańczowe kaski widoczne podczas rozgrywki wyróżniają się na tle kolejnych murów i roślinności.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma partida entre cenários da floresta</h2><p>O Laser Game de Pokeyland realiza-se ao ar livre, em terrenos preparados entre as árvores. Os jogadores apontam aos adversários para somar pontos, com disparos laser sem projéteis de tinta. Existem espaços destinados às crianças.</p><p>Fachadas cinzentas envelhecidas, portas de tábuas e aberturas nas paredes compõem o cenário. Os troncos mantêm-se entre estas construções, sobre um chão de terra. O equipamento preto e os capacetes laranja visíveis durante uma partida destacam-se entre os muros e a vegetação.</p>"
+            }
+          ]
+        },
+        {
+          "id": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+          "key": "pokeyland-le-batoo",
+          "name": "Le Batoo",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un navire aux couleurs vives</h2><p>Le Batoo reprend l’image d’un bateau affrontant une mer agitée. Le nom de l’attraction apparaît en lettres jaunes sur un panneau bleu, au-dessus des passagers. Des encadrements blancs soulignent les ouvertures arrondies de la coque.</p><p>Les parties jaunes, bleues et rouges se prolongent par un décor de vagues peintes. Une lampe entourée d’une cage métallique complète cet univers nautique, bien visible depuis les places à bord.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A brightly coloured vessel</h2><p>Le Batoo evokes a boat facing rough seas. The attraction’s name appears in yellow letters on a blue panel above the passengers. White frames outline the rounded openings in the hull.</p><p>Yellow, blue and red sections are complemented by painted waves. A lamp enclosed in a metal cage completes the nautical setting, clearly visible from the seats on board.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Schiff in kräftigen Farben</h2><p>Le Batoo greift das Bild eines Schiffes auf stürmischer See auf. Der Name der Attraktion steht in gelben Buchstaben auf einer blauen Tafel über den Fahrgästen. Weiße Rahmen betonen die abgerundeten Öffnungen im Rumpf.</p><p>Gelbe, blaue und rote Flächen werden durch gemalte Wellen ergänzt. Eine Lampe in einem Metallkäfig vervollständigt die maritime Gestaltung und ist von den Sitzplätzen an Bord gut zu sehen.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un navío de colores vivos</h2><p>Le Batoo evoca un barco que afronta un mar agitado. El nombre de la atracción aparece en letras amarillas sobre un panel azul, por encima de los pasajeros. Marcos blancos resaltan las aberturas redondeadas del casco.</p><p>Las zonas amarillas, azules y rojas se completan con olas pintadas. Una lámpara rodeada por una jaula metálica añade otro detalle náutico, bien visible desde los asientos a bordo.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una nave dai colori vivaci</h2><p>Le Batoo richiama l’immagine di una barca che affronta il mare agitato. Il nome dell’attrazione appare in lettere gialle su un pannello blu, sopra i passeggeri. Cornici bianche sottolineano le aperture arrotondate dello scafo.</p><p>Le parti gialle, blu e rosse sono accompagnate da onde dipinte. Una lampada racchiusa in una gabbia metallica completa l’ambientazione nautica, ben visibile dai posti a bordo.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een schip in felle kleuren</h2><p>Le Batoo roept het beeld op van een boot op een onstuimige zee. De naam van de attractie staat in gele letters op een blauw paneel boven de passagiers. Witte omlijstingen benadrukken de afgeronde openingen in de romp.</p><p>Gele, blauwe en rode vlakken worden aangevuld met geschilderde golven. Een lamp in een metalen kooi maakt het nautische decor compleet en is vanuit de zitplaatsen aan boord goed zichtbaar.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Statek w żywych kolorach</h2><p>Le Batoo nawiązuje do łodzi stawiającej czoła wzburzonemu morzu. Nazwa atrakcji widnieje żółtymi literami na niebieskim panelu ponad pasażerami. Białe obramowania podkreślają zaokrąglone otwory w kadłubie.</p><p>Żółte, niebieskie i czerwone elementy uzupełniają malowane fale. Lampa otoczona metalową klatką dopełnia morską scenerię, dobrze widoczną z miejsc na pokładzie.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um navio de cores vivas</h2><p>Le Batoo evoca um barco a enfrentar um mar agitado. O nome da atração surge em letras amarelas num painel azul, por cima dos passageiros. Molduras brancas realçam as aberturas arredondadas do casco.</p><p>As partes amarelas, azuis e vermelhas são acompanhadas por ondas pintadas. Uma lâmpada envolvida por uma gaiola metálica completa o ambiente náutico, bem visível dos lugares a bordo.</p>"
+            }
+          ]
+        },
+        {
+          "id": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+          "key": "pokeyland-le-ptit-train",
+          "name": "Le p’tit train",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une locomotive sous la gare en bois</h2><p>Le p’tit train propose une promenade ferroviaire dans le décor de Pokeyland. Sa locomotive verte associe un avant jaune à une cheminée rouge. Un grand phare cerclé de jaune et les inscriptions « Rio Grande » et « Old Timer » lui donnent l’allure d’un petit train de western.</p><p>La gare possède un toit porté par des poteaux de bois. Les rails, les copeaux au sol et la végétation environnante inscrivent cette scène ferroviaire dans le cadre boisé du parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A locomotive beneath a timber station</h2><p>Le p’tit train offers a railway ride through Pokeyland’s setting. Its green locomotive combines a yellow front with a red chimney. A large yellow-rimmed headlamp and the words “Rio Grande” and “Old Timer” give it the appearance of a miniature western train.</p><p>The station has a roof carried on wooden posts. Rails, woodchips on the ground and the surrounding vegetation place this railway scene within the park’s wooded setting.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Lokomotive unter dem Holzdach</h2><p>Le p’tit train bietet eine Eisenbahnfahrt durch die Kulisse von Pokeyland. Die grüne Lokomotive verbindet eine gelbe Front mit einem roten Schornstein. Ein großer, gelb eingefasster Scheinwerfer und die Aufschriften „Rio Grande“ und „Old Timer“ verleihen ihr das Aussehen einer kleinen Westernbahn.</p><p>Das Dach der Station ruht auf Holzpfosten. Schienen, Holzschnitzel am Boden und die umgebende Vegetation betten diese Eisenbahnszene in die Waldlandschaft des Parks ein.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una locomotora bajo la estación de madera</h2><p>Le p’tit train ofrece un paseo ferroviario por el entorno de Pokeyland. Su locomotora verde combina una parte delantera amarilla con una chimenea roja. Un gran faro de borde amarillo y las inscripciones «Rio Grande» y «Old Timer» le dan el aspecto de un pequeño tren del Oeste.</p><p>El techo de la estación se apoya en postes de madera. Los raíles, las virutas del suelo y la vegetación circundante sitúan esta escena ferroviaria en el paisaje arbolado del parque.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una locomotiva sotto la stazione di legno</h2><p>Le p’tit train propone una passeggiata ferroviaria nell’ambiente di Pokeyland. La locomotiva verde abbina un frontale giallo a un fumaiolo rosso. Un grande faro bordato di giallo e le scritte «Rio Grande» e «Old Timer» le danno l’aspetto di un piccolo treno western.</p><p>Il tetto della stazione poggia su pali di legno. I binari, i trucioli sul terreno e la vegetazione circostante inseriscono questa scena ferroviaria nel paesaggio boschivo del parco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een locomotief onder een houten stationsdak</h2><p>Le p’tit train biedt een treinrit door het decor van Pokeyland. De groene locomotief heeft een gele voorkant en een rode schoorsteen. Een grote koplamp met gele rand en de opschriften ‘Rio Grande’ en ‘Old Timer’ geven haar het uiterlijk van een kleine westerntrein.</p><p>Het stationsdak rust op houten palen. De rails, houtsnippers op de grond en de omliggende begroeiing plaatsen dit spoorwegtafereel in de bosrijke omgeving van het park.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Lokomotywa pod drewnianym dachem stacji</h2><p>Le p’tit train oferuje przejażdżkę kolejką w scenerii Pokeyland. Zielona lokomotywa łączy żółty przód z czerwonym kominem. Duży reflektor z żółtym obramowaniem oraz napisy „Rio Grande” i „Old Timer” nadają jej wygląd małego pociągu z Dzikiego Zachodu.</p><p>Dach stacji wspiera się na drewnianych słupach. Szyny, zrębki na ziemi i otaczająca roślinność wpisują tę kolejową scenerię w leśny krajobraz parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma locomotiva sob a estação de madeira</h2><p>Le p’tit train propõe um passeio de comboio pelo ambiente de Pokeyland. A locomotiva verde combina uma frente amarela com uma chaminé vermelha. Um grande farol de rebordo amarelo e as inscrições «Rio Grande» e «Old Timer» dão-lhe o aspeto de um pequeno comboio do Oeste.</p><p>O telhado da estação assenta em postes de madeira. Os carris, as aparas no chão e a vegetação envolvente integram esta cena ferroviária na paisagem arborizada do parque.</p>"
+            }
+          ]
+        },
+        {
+          "id": "38922aa5-2307-4973-b0f5-b076325642a9",
+          "key": "pokeyland-lenvol",
+          "name": "Fall Tower",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les pieds dans le vide autour d’un mât blanc</h2><p>Fall Tower fait monter ses passagers avant une descente annoncée comme une chute. Les places forment une couronne autour du mât blanc : les jambes restent suspendues, sans plancher sous les pieds.</p><p>Le vert vif et le blanc des sièges contrastent avec les petites lumières rouges disposées sous la nacelle. Cette assise ouverte met les passagers face au paysage et au ciel, tout autour de la tour.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Feet dangling around a white mast</h2><p>Fall Tower raises its passengers before a descent presented as a drop. The seats form a ring around the white mast, leaving riders’ legs hanging with no floor beneath their feet.</p><p>The seats’ bright green and white colours contrast with small red lights beneath the gondola. The open seating faces passengers towards the landscape and sky all around the tower.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Frei hängende Füße rund um einen weißen Mast</h2><p>Fall Tower hebt seine Fahrgäste an, bevor eine als Fall angekündigte Abfahrt folgt. Die Sitze bilden einen Ring um den weißen Mast. Die Beine hängen frei, ohne Boden unter den Füßen.</p><p>Das kräftige Grün und Weiß der Sitze kontrastiert mit kleinen roten Lichtern unter der Gondel. Durch die offenen Sitzplätze blicken die Fahrgäste rund um den Turm auf die Landschaft und den Himmel.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Los pies en el aire alrededor de un mástil blanco</h2><p>Fall Tower eleva a sus pasajeros antes de un descenso anunciado como una caída. Los asientos forman un anillo alrededor del mástil blanco y dejan las piernas colgando, sin suelo bajo los pies.</p><p>El verde vivo y el blanco de los asientos contrastan con pequeñas luces rojas bajo la góndola. Los asientos abiertos orientan a los pasajeros hacia el paisaje y el cielo, alrededor de toda la torre.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I piedi sospesi attorno a un albero bianco</h2><p>Fall Tower solleva i passeggeri prima di una discesa presentata come una caduta. I posti formano un anello attorno all’albero bianco: le gambe rimangono sospese, senza un pavimento sotto i piedi.</p><p>Il verde acceso e il bianco dei sedili contrastano con piccole luci rosse sotto la gondola. I posti aperti rivolgono i passeggeri verso il paesaggio e il cielo, tutt’attorno alla torre.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De voeten vrij rond een witte mast</h2><p>Fall Tower tilt zijn passagiers omhoog voordat de als val aangekondigde afdaling volgt. De zitplaatsen vormen een ring rond de witte mast. De benen hangen vrij, zonder vloer onder de voeten.</p><p>Het felle groen en wit van de stoelen contrasteert met kleine rode lampen onder de gondel. Door de open zitplaatsen kijken passagiers rondom de toren uit op het landschap en de lucht.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Stopy w powietrzu wokół białego masztu</h2><p>Fall Tower unosi pasażerów przed zjazdem przedstawianym jako spadek. Miejsca tworzą pierścień wokół białego masztu. Nogi zwisają swobodnie, bez podłogi pod stopami.</p><p>Jaskrawa zieleń i biel siedzeń kontrastują z małymi czerwonymi lampkami pod gondolą. Otwarte miejsca są skierowane na zewnątrz, dzięki czemu pasażerowie spoglądają na krajobraz i niebo wokół wieży.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Os pés suspensos à volta de um mastro branco</h2><p>A Fall Tower eleva os passageiros antes de uma descida apresentada como uma queda. Os lugares formam um anel à volta do mastro branco, deixando as pernas suspensas, sem chão debaixo dos pés.</p><p>O verde vivo e o branco dos assentos contrastam com pequenas luzes vermelhas sob a gôndola. Os lugares abertos viram os passageiros para a paisagem e o céu em redor da torre.</p>"
+            }
+          ]
+        },
+        {
+          "id": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+          "key": "pokeyland-les-avions",
+          "name": "Les avions",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des avions autour d’une tour à damier</h2><p>Les avions de Pokeyland accueillent leurs passagers seuls ou à deux dans de petits appareils rouges et bleus. Leurs ailes et leurs cockpits ouverts donnent au manège son thème aérien, au milieu des arbres.</p><p>Les avions sont reliés par des bras blancs à une tour centrale rouge et bleue. Une bande à damier et des rangées de lumières colorées habillent ce centre, tandis qu’une clôture sépare le manège de la végétation voisine.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Planes around a chequered tower</h2><p>Pokeyland’s Les avions carries passengers alone or in pairs in small red and blue aircraft. Their wings and open cockpits give the ride its aviation theme among the trees.</p><p>White arms connect the planes to a red and blue central tower. A chequered band and rows of coloured lights decorate the centre, while a fence separates the ride from the nearby vegetation.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Flugzeuge rund um einen Turm mit Schachbrettmuster</h2><p>Bei Les avions in Pokeyland nehmen die Fahrgäste allein oder zu zweit in kleinen roten und blauen Flugzeugen Platz. Flügel und offene Cockpits geben dem Fahrgeschäft zwischen den Bäumen sein Luftfahrtthema.</p><p>Weiße Arme verbinden die Flugzeuge mit einem rot-blauen Mittelturm. Ein Band mit Schachbrettmuster und Reihen bunter Lichter schmücken die Mitte. Ein Zaun trennt das Fahrgeschäft von der benachbarten Vegetation.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Aviones alrededor de una torre a cuadros</h2><p>Les avions de Pokeyland recibe a sus pasajeros solos o de dos en dos en pequeños aparatos rojos y azules. Las alas y las cabinas abiertas dan a la atracción su tema aeronáutico, entre los árboles.</p><p>Los aviones se unen mediante brazos blancos a una torre central roja y azul. Una franja a cuadros y filas de luces de colores decoran el centro, mientras una valla separa la atracción de la vegetación cercana.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Aeroplani attorno a una torre a scacchi</h2><p>Les avions di Pokeyland accoglie i passeggeri da soli o in coppia su piccoli aeroplani rossi e blu. Ali e abitacoli aperti danno alla giostra il suo tema aeronautico, tra gli alberi.</p><p>Gli aerei sono collegati da bracci bianchi a una torre centrale rossa e blu. Una fascia a scacchi e file di luci colorate decorano il centro, mentre una recinzione separa la giostra dalla vegetazione vicina.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vliegtuigen rond een toren met dambordpatroon</h2><p>Bij Les avions van Pokeyland nemen passagiers alleen of met z’n tweeën plaats in kleine rode en blauwe vliegtuigen. De vleugels en open cockpits geven de attractie tussen de bomen haar luchtvaartthema.</p><p>Witte armen verbinden de vliegtuigen met een rode en blauwe centrale toren. Een band met dambordpatroon en rijen gekleurde lampen versieren het midden. Een hek scheidt de attractie van de nabijgelegen begroeiing.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Samoloty wokół wieży z szachownicą</h2><p>W Les avions w Pokeyland pasażerowie zajmują miejsca pojedynczo lub w parach w małych czerwonych i niebieskich samolotach. Skrzydła i otwarte kokpity nadają karuzeli lotniczy charakter wśród drzew.</p><p>Białe ramiona łączą samoloty z czerwono-niebieską wieżą pośrodku. Pas w szachownicę i rzędy kolorowych lampek zdobią jej środek, a ogrodzenie oddziela karuzelę od pobliskiej roślinności.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Aviões à volta de uma torre axadrezada</h2><p>Les avions de Pokeyland recebe os passageiros sozinhos ou a dois em pequenos aparelhos vermelhos e azuis. As asas e os cockpits abertos dão à atração o seu tema aeronáutico, entre as árvores.</p><p>Braços brancos ligam os aviões a uma torre central vermelha e azul. Uma faixa axadrezada e filas de luzes coloridas decoram o centro, enquanto uma vedação separa a atração da vegetação próxima.</p>"
+            }
+          ]
+        },
+        {
+          "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+          "key": "pokeyland-les-ptits-chevaux",
+          "name": "Les p’tits chevaux",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une promenade sur des chevaux de manège</h2><p>Les p’tits chevaux proposent une balade guidée sur des montures de manège. Les chevaux bruns, blancs ou noirs portent des selles orange ; leurs crinières sculptées et leurs brides dessinées donnent à chaque monture une silhouette bien reconnaissable.</p><p>Le départ s’inscrit sous un abri à toit de bois. Le parcours bas, bordé d’éléments verts et jaunes, accompagne ces chevaux mécaniques dans le décor végétal. Cette attraction est distincte de la promenade avec de vrais poneys proposée dans le parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A ride on mechanical horses</h2><p>Les p’tits chevaux offers a guided ride on amusement-ride horses. The brown, white or black mounts have orange saddles; moulded manes and depicted bridles give each horse a recognisable outline.</p><p>The departure area sits beneath a wooden-roofed shelter. A low route edged with green and yellow elements carries the mechanical horses through the planted setting. This attraction is separate from the park’s rides on live ponies.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Ausritt auf mechanischen Pferden</h2><p>Les p’tits chevaux bietet eine geführte Fahrt auf Fahrgeschäftspferden. Die braunen, weißen oder schwarzen Tiere tragen orangefarbene Sättel. Modellierte Mähnen und dargestellte Zügel geben jedem Pferd eine erkennbare Silhouette.</p><p>Der Einstiegsbereich liegt unter einem Unterstand mit Holzdach. Eine niedrige Strecke mit grünen und gelben Randelementen führt die mechanischen Pferde durch die bepflanzte Umgebung. Diese Attraktion ist vom Reiten auf echten Ponys im Park getrennt.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un paseo sobre caballos mecánicos</h2><p>Les p’tits chevaux propone un recorrido guiado sobre caballos de atracción. Las monturas marrones, blancas o negras llevan sillas naranjas; las crines moldeadas y las bridas representadas dan a cada caballo una silueta reconocible.</p><p>La salida se sitúa bajo un cobertizo con techo de madera. Un recorrido bajo, bordeado por elementos verdes y amarillos, lleva a los caballos mecánicos por el entorno vegetal. Esta atracción es distinta del paseo con ponis vivos del parque.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una passeggiata su cavalli meccanici</h2><p>Les p’tits chevaux propone un percorso guidato su cavalli da giostra. Le cavalcature marroni, bianche o nere hanno selle arancioni; le criniere modellate e le briglie raffigurate danno a ogni cavallo una sagoma riconoscibile.</p><p>La partenza si trova sotto una tettoia con copertura di legno. Un percorso basso, bordato da elementi verdi e gialli, accompagna i cavalli meccanici nell’ambiente vegetale. Questa attrazione è distinta dalla passeggiata sui pony vivi proposta nel parco.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een rit op mechanische paarden</h2><p>Les p’tits chevaux biedt een rit langs een vaste route op attractiepaarden. De bruine, witte of zwarte paarden hebben oranje zadels. Gevormde manen en afgebeelde hoofdstellen geven elk paard een herkenbaar silhouet.</p><p>De rit begint onder een afdak met houten dak. Een lage route met groene en gele randelementen leidt de mechanische paarden door het groen. Deze attractie staat los van de ritten op levende pony’s in het park.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Przejażdżka na mechanicznych koniach</h2><p>Les p’tits chevaux oferuje przejażdżkę po wyznaczonej trasie na koniach z urządzenia rozrywkowego. Brązowe, białe lub czarne wierzchowce mają pomarańczowe siodła. Modelowane grzywy i przedstawione uzdy nadają każdemu koniowi rozpoznawalną sylwetkę.</p><p>Miejsce startu znajduje się pod wiatą z drewnianym dachem. Niska trasa z zielonymi i żółtymi elementami przy krawędziach prowadzi mechaniczne konie wśród roślinności. Ta atrakcja jest odrębna od przejażdżek na żywych kucykach w parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um passeio em cavalos mecânicos</h2><p>Les p’tits chevaux propõe um percurso guiado em cavalos de atração. As montadas castanhas, brancas ou pretas têm selas laranja; as crinas moldadas e as rédeas representadas dão a cada cavalo uma silhueta reconhecível.</p><p>A partida fica sob um abrigo com telhado de madeira. Um percurso baixo, ladeado por elementos verdes e amarelos, acompanha os cavalos mecânicos pelo ambiente vegetal. Esta atração é distinta do passeio com póneis vivos proposto no parque.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "e9f18baa-c97d-4ef3-9161-2ebebc386e87",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:49:54.8933047Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 6,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Spiel zwischen Waldkulissen</h2><p>Das Laser Game von Pokeyland findet im Freien auf Spielfeldern zwischen den Bäumen statt. Die Spieler zielen auf ihre Gegner, um Punkte zu sammeln, und verwenden dabei Laserstrahlen ohne Farbgeschosse. Für Kinder gibt es eigene Bereiche.</p><p>Verwitterte graue Fassaden, Brettertüren und Öffnungen in den Wänden bilden die Kulisse. Zwischen den Bauten bleiben Baumstämme sichtbar; der Boden besteht aus Erde. Schwarze Spielgeräte und orangefarbene Helme heben sich während einer Partie von den Wänden und der Vegetation ab.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A game among woodland scenery</h2><p>Pokeyland’s Laser Game takes place outdoors, on playing areas set among the trees. Players aim at their opponents to score points, using laser shots without paint projectiles. There are dedicated spaces for children.</p><p>Weathered grey façades, plank doors and openings in the walls form the scenery. Tree trunks remain among these structures on an earthen surface. The black equipment and orange helmets seen during a game stand out against the sequence of walls and vegetation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una partida entre decorados del bosque</h2><p>El Laser Game de Pokeyland se juega al aire libre, en terrenos acondicionados entre los árboles. Los participantes apuntan a sus adversarios para sumar puntos mediante disparos láser sin proyectiles de pintura. Hay espacios dedicados a los niños.</p><p>Fachadas grises envejecidas, puertas de tablones y aberturas en los muros forman el decorado. Los troncos siguen presentes entre estas construcciones, sobre un suelo de tierra. El equipo negro y los cascos naranjas visibles durante una partida destacan frente a los muros y la vegetación.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une partie entre les décors de la forêt</h2><p>Le Laser Game de Pokeyland se joue dehors, sur des terrains aménagés au milieu des arbres. Les joueurs visent leurs adversaires pour marquer des points, avec des tirs laser sans projectiles de peinture. Des espaces sont prévus pour les enfants.</p><p>Les façades grises vieillies, les portes en planches et les ouvertures pratiquées dans les murs composent le décor. Les troncs restent présents au milieu de ces constructions, sur un sol de terre. Les équipements noirs et les casques orange visibles pendant une partie se détachent sur cette succession de murs et de végétation.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una partita tra le scenografie del bosco</h2><p>Il Laser Game di Pokeyland si svolge all’aperto, su terreni attrezzati tra gli alberi. I giocatori mirano agli avversari per segnare punti con tiri laser, senza proiettili di vernice. Sono previsti spazi dedicati ai bambini.</p><p>Facciate grigie invecchiate, porte di assi e aperture nei muri compongono la scenografia. I tronchi restano presenti tra queste costruzioni, su un fondo di terra. L’attrezzatura nera e i caschi arancioni visibili durante una partita risaltano sullo sfondo di muri e vegetazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Spelen tussen decors in het bos</h2><p>Het Laser Game van Pokeyland vindt buiten plaats, op speelterreinen tussen de bomen. Spelers richten op hun tegenstanders om punten te verzamelen, met laserstralen zonder verfprojectielen. Voor kinderen zijn er eigen speelruimtes.</p><p>Verweerde grijze gevels, plankendeuren en openingen in de muren vormen het decor. Tussen deze bouwwerken blijven boomstammen staan, op een aarden ondergrond. De zwarte uitrusting en oranje helmen die tijdens een spel te zien zijn, steken af tegen de opeenvolgende muren en begroeiing.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rozgrywka wśród leśnych dekoracji</h2><p>Laser Game w Pokeyland odbywa się na zewnątrz, na terenach przygotowanych między drzewami. Gracze celują w przeciwników, aby zdobywać punkty, korzystając ze strzałów laserowych bez pocisków z farbą. Dla dzieci przygotowano osobne przestrzenie.</p><p>Scenerię tworzą postarzane szare fasady, drzwi z desek i otwory w ścianach. Między konstrukcjami na ziemnym podłożu pozostawiono pnie drzew. Czarne wyposażenie i pomarańczowe kaski widoczne podczas rozgrywki wyróżniają się na tle kolejnych murów i roślinności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma partida entre cenários da floresta</h2><p>O Laser Game de Pokeyland realiza-se ao ar livre, em terrenos preparados entre as árvores. Os jogadores apontam aos adversários para somar pontos, com disparos laser sem projéteis de tinta. Existem espaços destinados às crianças.</p><p>Fachadas cinzentas envelhecidas, portas de tábuas e aberturas nas paredes compõem o cenário. Os troncos mantêm-se entre estas construções, sobre um chão de terra. O equipamento preto e os capacetes laranja visíveis durante uma partida destacam-se entre os muros e a vegetação.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "pokeyland-le-batoo",
+        "displayName": "Le Batoo",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Schiff in kräftigen Farben</h2><p>Le Batoo greift das Bild eines Schiffes auf stürmischer See auf. Der Name der Attraktion steht in gelben Buchstaben auf einer blauen Tafel über den Fahrgästen. Weiße Rahmen betonen die abgerundeten Öffnungen im Rumpf.</p><p>Gelbe, blaue und rote Flächen werden durch gemalte Wellen ergänzt. Eine Lampe in einem Metallkäfig vervollständigt die maritime Gestaltung und ist von den Sitzplätzen an Bord gut zu sehen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A brightly coloured vessel</h2><p>Le Batoo evokes a boat facing rough seas. The attraction’s name appears in yellow letters on a blue panel above the passengers. White frames outline the rounded openings in the hull.</p><p>Yellow, blue and red sections are complemented by painted waves. A lamp enclosed in a metal cage completes the nautical setting, clearly visible from the seats on board.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un navío de colores vivos</h2><p>Le Batoo evoca un barco que afronta un mar agitado. El nombre de la atracción aparece en letras amarillas sobre un panel azul, por encima de los pasajeros. Marcos blancos resaltan las aberturas redondeadas del casco.</p><p>Las zonas amarillas, azules y rojas se completan con olas pintadas. Una lámpara rodeada por una jaula metálica añade otro detalle náutico, bien visible desde los asientos a bordo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un navire aux couleurs vives</h2><p>Le Batoo reprend l’image d’un bateau affrontant une mer agitée. Le nom de l’attraction apparaît en lettres jaunes sur un panneau bleu, au-dessus des passagers. Des encadrements blancs soulignent les ouvertures arrondies de la coque.</p><p>Les parties jaunes, bleues et rouges se prolongent par un décor de vagues peintes. Une lampe entourée d’une cage métallique complète cet univers nautique, bien visible depuis les places à bord.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una nave dai colori vivaci</h2><p>Le Batoo richiama l’immagine di una barca che affronta il mare agitato. Il nome dell’attrazione appare in lettere gialle su un pannello blu, sopra i passeggeri. Cornici bianche sottolineano le aperture arrotondate dello scafo.</p><p>Le parti gialle, blu e rosse sono accompagnate da onde dipinte. Una lampada racchiusa in una gabbia metallica completa l’ambientazione nautica, ben visibile dai posti a bordo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een schip in felle kleuren</h2><p>Le Batoo roept het beeld op van een boot op een onstuimige zee. De naam van de attractie staat in gele letters op een blauw paneel boven de passagiers. Witte omlijstingen benadrukken de afgeronde openingen in de romp.</p><p>Gele, blauwe en rode vlakken worden aangevuld met geschilderde golven. Een lamp in een metalen kooi maakt het nautische decor compleet en is vanuit de zitplaatsen aan boord goed zichtbaar.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Statek w żywych kolorach</h2><p>Le Batoo nawiązuje do łodzi stawiającej czoła wzburzonemu morzu. Nazwa atrakcji widnieje żółtymi literami na niebieskim panelu ponad pasażerami. Białe obramowania podkreślają zaokrąglone otwory w kadłubie.</p><p>Żółte, niebieskie i czerwone elementy uzupełniają malowane fale. Lampa otoczona metalową klatką dopełnia morską scenerię, dobrze widoczną z miejsc na pokładzie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um navio de cores vivas</h2><p>Le Batoo evoca um barco a enfrentar um mar agitado. O nome da atração surge em letras amarelas num painel azul, por cima dos passageiros. Molduras brancas realçam as aberturas arredondadas do casco.</p><p>As partes amarelas, azuis e vermelhas são acompanhadas por ondas pintadas. Uma lâmpada envolvida por uma gaiola metálica completa o ambiente náutico, bem visível dos lugares a bordo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "pokeyland-le-ptit-train",
+        "displayName": "Le p’tit train",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Lokomotive unter dem Holzdach</h2><p>Le p’tit train bietet eine Eisenbahnfahrt durch die Kulisse von Pokeyland. Die grüne Lokomotive verbindet eine gelbe Front mit einem roten Schornstein. Ein großer, gelb eingefasster Scheinwerfer und die Aufschriften „Rio Grande“ und „Old Timer“ verleihen ihr das Aussehen einer kleinen Westernbahn.</p><p>Das Dach der Station ruht auf Holzpfosten. Schienen, Holzschnitzel am Boden und die umgebende Vegetation betten diese Eisenbahnszene in die Waldlandschaft des Parks ein.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A locomotive beneath a timber station</h2><p>Le p’tit train offers a railway ride through Pokeyland’s setting. Its green locomotive combines a yellow front with a red chimney. A large yellow-rimmed headlamp and the words “Rio Grande” and “Old Timer” give it the appearance of a miniature western train.</p><p>The station has a roof carried on wooden posts. Rails, woodchips on the ground and the surrounding vegetation place this railway scene within the park’s wooded setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una locomotora bajo la estación de madera</h2><p>Le p’tit train ofrece un paseo ferroviario por el entorno de Pokeyland. Su locomotora verde combina una parte delantera amarilla con una chimenea roja. Un gran faro de borde amarillo y las inscripciones «Rio Grande» y «Old Timer» le dan el aspecto de un pequeño tren del Oeste.</p><p>El techo de la estación se apoya en postes de madera. Los raíles, las virutas del suelo y la vegetación circundante sitúan esta escena ferroviaria en el paisaje arbolado del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une locomotive sous la gare en bois</h2><p>Le p’tit train propose une promenade ferroviaire dans le décor de Pokeyland. Sa locomotive verte associe un avant jaune à une cheminée rouge. Un grand phare cerclé de jaune et les inscriptions « Rio Grande » et « Old Timer » lui donnent l’allure d’un petit train de western.</p><p>La gare possède un toit porté par des poteaux de bois. Les rails, les copeaux au sol et la végétation environnante inscrivent cette scène ferroviaire dans le cadre boisé du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una locomotiva sotto la stazione di legno</h2><p>Le p’tit train propone una passeggiata ferroviaria nell’ambiente di Pokeyland. La locomotiva verde abbina un frontale giallo a un fumaiolo rosso. Un grande faro bordato di giallo e le scritte «Rio Grande» e «Old Timer» le danno l’aspetto di un piccolo treno western.</p><p>Il tetto della stazione poggia su pali di legno. I binari, i trucioli sul terreno e la vegetazione circostante inseriscono questa scena ferroviaria nel paesaggio boschivo del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een locomotief onder een houten stationsdak</h2><p>Le p’tit train biedt een treinrit door het decor van Pokeyland. De groene locomotief heeft een gele voorkant en een rode schoorsteen. Een grote koplamp met gele rand en de opschriften ‘Rio Grande’ en ‘Old Timer’ geven haar het uiterlijk van een kleine westerntrein.</p><p>Het stationsdak rust op houten palen. De rails, houtsnippers op de grond en de omliggende begroeiing plaatsen dit spoorwegtafereel in de bosrijke omgeving van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Lokomotywa pod drewnianym dachem stacji</h2><p>Le p’tit train oferuje przejażdżkę kolejką w scenerii Pokeyland. Zielona lokomotywa łączy żółty przód z czerwonym kominem. Duży reflektor z żółtym obramowaniem oraz napisy „Rio Grande” i „Old Timer” nadają jej wygląd małego pociągu z Dzikiego Zachodu.</p><p>Dach stacji wspiera się na drewnianych słupach. Szyny, zrębki na ziemi i otaczająca roślinność wpisują tę kolejową scenerię w leśny krajobraz parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma locomotiva sob a estação de madeira</h2><p>Le p’tit train propõe um passeio de comboio pelo ambiente de Pokeyland. A locomotiva verde combina uma frente amarela com uma chaminé vermelha. Um grande farol de rebordo amarelo e as inscrições «Rio Grande» e «Old Timer» dão-lhe o aspeto de um pequeno comboio do Oeste.</p><p>O telhado da estação assenta em postes de madeira. Os carris, as aparas no chão e a vegetação envolvente integram esta cena ferroviária na paisagem arborizada do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "pokeyland-lenvol",
+        "displayName": "Fall Tower",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Frei hängende Füße rund um einen weißen Mast</h2><p>Fall Tower hebt seine Fahrgäste an, bevor eine als Fall angekündigte Abfahrt folgt. Die Sitze bilden einen Ring um den weißen Mast. Die Beine hängen frei, ohne Boden unter den Füßen.</p><p>Das kräftige Grün und Weiß der Sitze kontrastiert mit kleinen roten Lichtern unter der Gondel. Durch die offenen Sitzplätze blicken die Fahrgäste rund um den Turm auf die Landschaft und den Himmel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Feet dangling around a white mast</h2><p>Fall Tower raises its passengers before a descent presented as a drop. The seats form a ring around the white mast, leaving riders’ legs hanging with no floor beneath their feet.</p><p>The seats’ bright green and white colours contrast with small red lights beneath the gondola. The open seating faces passengers towards the landscape and sky all around the tower.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los pies en el aire alrededor de un mástil blanco</h2><p>Fall Tower eleva a sus pasajeros antes de un descenso anunciado como una caída. Los asientos forman un anillo alrededor del mástil blanco y dejan las piernas colgando, sin suelo bajo los pies.</p><p>El verde vivo y el blanco de los asientos contrastan con pequeñas luces rojas bajo la góndola. Los asientos abiertos orientan a los pasajeros hacia el paisaje y el cielo, alrededor de toda la torre.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les pieds dans le vide autour d’un mât blanc</h2><p>Fall Tower fait monter ses passagers avant une descente annoncée comme une chute. Les places forment une couronne autour du mât blanc : les jambes restent suspendues, sans plancher sous les pieds.</p><p>Le vert vif et le blanc des sièges contrastent avec les petites lumières rouges disposées sous la nacelle. Cette assise ouverte met les passagers face au paysage et au ciel, tout autour de la tour.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I piedi sospesi attorno a un albero bianco</h2><p>Fall Tower solleva i passeggeri prima di una discesa presentata come una caduta. I posti formano un anello attorno all’albero bianco: le gambe rimangono sospese, senza un pavimento sotto i piedi.</p><p>Il verde acceso e il bianco dei sedili contrastano con piccole luci rosse sotto la gondola. I posti aperti rivolgono i passeggeri verso il paesaggio e il cielo, tutt’attorno alla torre.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De voeten vrij rond een witte mast</h2><p>Fall Tower tilt zijn passagiers omhoog voordat de als val aangekondigde afdaling volgt. De zitplaatsen vormen een ring rond de witte mast. De benen hangen vrij, zonder vloer onder de voeten.</p><p>Het felle groen en wit van de stoelen contrasteert met kleine rode lampen onder de gondel. Door de open zitplaatsen kijken passagiers rondom de toren uit op het landschap en de lucht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Stopy w powietrzu wokół białego masztu</h2><p>Fall Tower unosi pasażerów przed zjazdem przedstawianym jako spadek. Miejsca tworzą pierścień wokół białego masztu. Nogi zwisają swobodnie, bez podłogi pod stopami.</p><p>Jaskrawa zieleń i biel siedzeń kontrastują z małymi czerwonymi lampkami pod gondolą. Otwarte miejsca są skierowane na zewnątrz, dzięki czemu pasażerowie spoglądają na krajobraz i niebo wokół wieży.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os pés suspensos à volta de um mastro branco</h2><p>A Fall Tower eleva os passageiros antes de uma descida apresentada como uma queda. Os lugares formam um anel à volta do mastro branco, deixando as pernas suspensas, sem chão debaixo dos pés.</p><p>O verde vivo e o branco dos assentos contrastam com pequenas luzes vermelhas sob a gôndola. Os lugares abertos viram os passageiros para a paisagem e o céu em redor da torre.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "pokeyland-les-avions",
+        "displayName": "Les avions",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Flugzeuge rund um einen Turm mit Schachbrettmuster</h2><p>Bei Les avions in Pokeyland nehmen die Fahrgäste allein oder zu zweit in kleinen roten und blauen Flugzeugen Platz. Flügel und offene Cockpits geben dem Fahrgeschäft zwischen den Bäumen sein Luftfahrtthema.</p><p>Weiße Arme verbinden die Flugzeuge mit einem rot-blauen Mittelturm. Ein Band mit Schachbrettmuster und Reihen bunter Lichter schmücken die Mitte. Ein Zaun trennt das Fahrgeschäft von der benachbarten Vegetation.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Planes around a chequered tower</h2><p>Pokeyland’s Les avions carries passengers alone or in pairs in small red and blue aircraft. Their wings and open cockpits give the ride its aviation theme among the trees.</p><p>White arms connect the planes to a red and blue central tower. A chequered band and rows of coloured lights decorate the centre, while a fence separates the ride from the nearby vegetation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Aviones alrededor de una torre a cuadros</h2><p>Les avions de Pokeyland recibe a sus pasajeros solos o de dos en dos en pequeños aparatos rojos y azules. Las alas y las cabinas abiertas dan a la atracción su tema aeronáutico, entre los árboles.</p><p>Los aviones se unen mediante brazos blancos a una torre central roja y azul. Una franja a cuadros y filas de luces de colores decoran el centro, mientras una valla separa la atracción de la vegetación cercana.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des avions autour d’une tour à damier</h2><p>Les avions de Pokeyland accueillent leurs passagers seuls ou à deux dans de petits appareils rouges et bleus. Leurs ailes et leurs cockpits ouverts donnent au manège son thème aérien, au milieu des arbres.</p><p>Les avions sont reliés par des bras blancs à une tour centrale rouge et bleue. Une bande à damier et des rangées de lumières colorées habillent ce centre, tandis qu’une clôture sépare le manège de la végétation voisine.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Aeroplani attorno a una torre a scacchi</h2><p>Les avions di Pokeyland accoglie i passeggeri da soli o in coppia su piccoli aeroplani rossi e blu. Ali e abitacoli aperti danno alla giostra il suo tema aeronautico, tra gli alberi.</p><p>Gli aerei sono collegati da bracci bianchi a una torre centrale rossa e blu. Una fascia a scacchi e file di luci colorate decorano il centro, mentre una recinzione separa la giostra dalla vegetazione vicina.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vliegtuigen rond een toren met dambordpatroon</h2><p>Bij Les avions van Pokeyland nemen passagiers alleen of met z’n tweeën plaats in kleine rode en blauwe vliegtuigen. De vleugels en open cockpits geven de attractie tussen de bomen haar luchtvaartthema.</p><p>Witte armen verbinden de vliegtuigen met een rode en blauwe centrale toren. Een band met dambordpatroon en rijen gekleurde lampen versieren het midden. Een hek scheidt de attractie van de nabijgelegen begroeiing.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Samoloty wokół wieży z szachownicą</h2><p>W Les avions w Pokeyland pasażerowie zajmują miejsca pojedynczo lub w parach w małych czerwonych i niebieskich samolotach. Skrzydła i otwarte kokpity nadają karuzeli lotniczy charakter wśród drzew.</p><p>Białe ramiona łączą samoloty z czerwono-niebieską wieżą pośrodku. Pas w szachownicę i rzędy kolorowych lampek zdobią jej środek, a ogrodzenie oddziela karuzelę od pobliskiej roślinności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Aviões à volta de uma torre axadrezada</h2><p>Les avions de Pokeyland recebe os passageiros sozinhos ou a dois em pequenos aparelhos vermelhos e azuis. As asas e os cockpits abertos dão à atração o seu tema aeronáutico, entre as árvores.</p><p>Braços brancos ligam os aviões a uma torre central vermelha e azul. Uma faixa axadrezada e filas de luzes coloridas decoram o centro, enquanto uma vedação separa a atração da vegetação próxima.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "pokeyland-les-ptits-chevaux",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Ausritt auf mechanischen Pferden</h2><p>Les p’tits chevaux bietet eine geführte Fahrt auf Fahrgeschäftspferden. Die braunen, weißen oder schwarzen Tiere tragen orangefarbene Sättel. Modellierte Mähnen und dargestellte Zügel geben jedem Pferd eine erkennbare Silhouette.</p><p>Der Einstiegsbereich liegt unter einem Unterstand mit Holzdach. Eine niedrige Strecke mit grünen und gelben Randelementen führt die mechanischen Pferde durch die bepflanzte Umgebung. Diese Attraktion ist vom Reiten auf echten Ponys im Park getrennt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A ride on mechanical horses</h2><p>Les p’tits chevaux offers a guided ride on amusement-ride horses. The brown, white or black mounts have orange saddles; moulded manes and depicted bridles give each horse a recognisable outline.</p><p>The departure area sits beneath a wooden-roofed shelter. A low route edged with green and yellow elements carries the mechanical horses through the planted setting. This attraction is separate from the park’s rides on live ponies.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un paseo sobre caballos mecánicos</h2><p>Les p’tits chevaux propone un recorrido guiado sobre caballos de atracción. Las monturas marrones, blancas o negras llevan sillas naranjas; las crines moldeadas y las bridas representadas dan a cada caballo una silueta reconocible.</p><p>La salida se sitúa bajo un cobertizo con techo de madera. Un recorrido bajo, bordeado por elementos verdes y amarillos, lleva a los caballos mecánicos por el entorno vegetal. Esta atracción es distinta del paseo con ponis vivos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une promenade sur des chevaux de manège</h2><p>Les p’tits chevaux proposent une balade guidée sur des montures de manège. Les chevaux bruns, blancs ou noirs portent des selles orange ; leurs crinières sculptées et leurs brides dessinées donnent à chaque monture une silhouette bien reconnaissable.</p><p>Le départ s’inscrit sous un abri à toit de bois. Le parcours bas, bordé d’éléments verts et jaunes, accompagne ces chevaux mécaniques dans le décor végétal. Cette attraction est distincte de la promenade avec de vrais poneys proposée dans le parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una passeggiata su cavalli meccanici</h2><p>Les p’tits chevaux propone un percorso guidato su cavalli da giostra. Le cavalcature marroni, bianche o nere hanno selle arancioni; le criniere modellate e le briglie raffigurate danno a ogni cavallo una sagoma riconoscibile.</p><p>La partenza si trova sotto una tettoia con copertura di legno. Un percorso basso, bordato da elementi verdi e gialli, accompagna i cavalli meccanici nell’ambiente vegetale. Questa attrazione è distinta dalla passeggiata sui pony vivi proposta nel parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een rit op mechanische paarden</h2><p>Les p’tits chevaux biedt een rit langs een vaste route op attractiepaarden. De bruine, witte of zwarte paarden hebben oranje zadels. Gevormde manen en afgebeelde hoofdstellen geven elk paard een herkenbaar silhouet.</p><p>De rit begint onder een afdak met houten dak. Een lage route met groene en gele randelementen leidt de mechanische paarden door het groen. Deze attractie staat los van de ritten op levende pony’s in het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przejażdżka na mechanicznych koniach</h2><p>Les p’tits chevaux oferuje przejażdżkę po wyznaczonej trasie na koniach z urządzenia rozrywkowego. Brązowe, białe lub czarne wierzchowce mają pomarańczowe siodła. Modelowane grzywy i przedstawione uzdy nadają każdemu koniowi rozpoznawalną sylwetkę.</p><p>Miejsce startu znajduje się pod wiatą z drewnianym dachem. Niska trasa z zielonymi i żółtymi elementami przy krawędziach prowadzi mechaniczne konie wśród roślinności. Ta atrakcja jest odrębna od przejażdżek na żywych kucykach w parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um passeio em cavalos mecânicos</h2><p>Les p’tits chevaux propõe um percurso guiado em cavalos de atração. As montadas castanhas, brancas ou pretas têm selas laranja; as crinas moldadas e as rédeas representadas dão a cada cavalo uma silhueta reconhecível.</p><p>A partida fica sob um abrigo com telhado de madeira. Um percurso baixo, ladeado por elementos verdes e amarelos, acompanha os cavalos mecânicos pelo ambiente vegetal. Esta atração é distinta do passeio com póneis vivos proposto no parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "75519385-a7d9-4d4e-9a34-973d47b6bbcf",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:50:19.4386548Z",
+    "appliedAtUtc": "2026-11-15T11:50:19.4389687Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 6,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b2620a7e-ea29-4d71-a19d-c5cd62d68ff6",
+        "entityKey": "pokeyland-laser-game",
+        "displayName": "Laser Game",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Spiel zwischen Waldkulissen</h2><p>Das Laser Game von Pokeyland findet im Freien auf Spielfeldern zwischen den Bäumen statt. Die Spieler zielen auf ihre Gegner, um Punkte zu sammeln, und verwenden dabei Laserstrahlen ohne Farbgeschosse. Für Kinder gibt es eigene Bereiche.</p><p>Verwitterte graue Fassaden, Brettertüren und Öffnungen in den Wänden bilden die Kulisse. Zwischen den Bauten bleiben Baumstämme sichtbar; der Boden besteht aus Erde. Schwarze Spielgeräte und orangefarbene Helme heben sich während einer Partie von den Wänden und der Vegetation ab.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A game among woodland scenery</h2><p>Pokeyland’s Laser Game takes place outdoors, on playing areas set among the trees. Players aim at their opponents to score points, using laser shots without paint projectiles. There are dedicated spaces for children.</p><p>Weathered grey façades, plank doors and openings in the walls form the scenery. Tree trunks remain among these structures on an earthen surface. The black equipment and orange helmets seen during a game stand out against the sequence of walls and vegetation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una partida entre decorados del bosque</h2><p>El Laser Game de Pokeyland se juega al aire libre, en terrenos acondicionados entre los árboles. Los participantes apuntan a sus adversarios para sumar puntos mediante disparos láser sin proyectiles de pintura. Hay espacios dedicados a los niños.</p><p>Fachadas grises envejecidas, puertas de tablones y aberturas en los muros forman el decorado. Los troncos siguen presentes entre estas construcciones, sobre un suelo de tierra. El equipo negro y los cascos naranjas visibles durante una partida destacan frente a los muros y la vegetación.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une partie entre les décors de la forêt</h2><p>Le Laser Game de Pokeyland se joue dehors, sur des terrains aménagés au milieu des arbres. Les joueurs visent leurs adversaires pour marquer des points, avec des tirs laser sans projectiles de peinture. Des espaces sont prévus pour les enfants.</p><p>Les façades grises vieillies, les portes en planches et les ouvertures pratiquées dans les murs composent le décor. Les troncs restent présents au milieu de ces constructions, sur un sol de terre. Les équipements noirs et les casques orange visibles pendant une partie se détachent sur cette succession de murs et de végétation.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una partita tra le scenografie del bosco</h2><p>Il Laser Game di Pokeyland si svolge all’aperto, su terreni attrezzati tra gli alberi. I giocatori mirano agli avversari per segnare punti con tiri laser, senza proiettili di vernice. Sono previsti spazi dedicati ai bambini.</p><p>Facciate grigie invecchiate, porte di assi e aperture nei muri compongono la scenografia. I tronchi restano presenti tra queste costruzioni, su un fondo di terra. L’attrezzatura nera e i caschi arancioni visibili durante una partita risaltano sullo sfondo di muri e vegetazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Spelen tussen decors in het bos</h2><p>Het Laser Game van Pokeyland vindt buiten plaats, op speelterreinen tussen de bomen. Spelers richten op hun tegenstanders om punten te verzamelen, met laserstralen zonder verfprojectielen. Voor kinderen zijn er eigen speelruimtes.</p><p>Verweerde grijze gevels, plankendeuren en openingen in de muren vormen het decor. Tussen deze bouwwerken blijven boomstammen staan, op een aarden ondergrond. De zwarte uitrusting en oranje helmen die tijdens een spel te zien zijn, steken af tegen de opeenvolgende muren en begroeiing.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Rozgrywka wśród leśnych dekoracji</h2><p>Laser Game w Pokeyland odbywa się na zewnątrz, na terenach przygotowanych między drzewami. Gracze celują w przeciwników, aby zdobywać punkty, korzystając ze strzałów laserowych bez pocisków z farbą. Dla dzieci przygotowano osobne przestrzenie.</p><p>Scenerię tworzą postarzane szare fasady, drzwi z desek i otwory w ścianach. Między konstrukcjami na ziemnym podłożu pozostawiono pnie drzew. Czarne wyposażenie i pomarańczowe kaski widoczne podczas rozgrywki wyróżniają się na tle kolejnych murów i roślinności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma partida entre cenários da floresta</h2><p>O Laser Game de Pokeyland realiza-se ao ar livre, em terrenos preparados entre as árvores. Os jogadores apontam aos adversários para somar pontos, com disparos laser sem projéteis de tinta. Existem espaços destinados às crianças.</p><p>Fachadas cinzentas envelhecidas, portas de tábuas e aberturas nas paredes compõem o cenário. Os troncos mantêm-se entre estas construções, sobre um chão de terra. O equipamento preto e os capacetes laranja visíveis durante uma partida destacam-se entre os muros e a vegetação.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c5f57ceb-616e-4ba0-8647-ccec585dfa9f",
+        "entityKey": "pokeyland-le-batoo",
+        "displayName": "Le Batoo",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Schiff in kräftigen Farben</h2><p>Le Batoo greift das Bild eines Schiffes auf stürmischer See auf. Der Name der Attraktion steht in gelben Buchstaben auf einer blauen Tafel über den Fahrgästen. Weiße Rahmen betonen die abgerundeten Öffnungen im Rumpf.</p><p>Gelbe, blaue und rote Flächen werden durch gemalte Wellen ergänzt. Eine Lampe in einem Metallkäfig vervollständigt die maritime Gestaltung und ist von den Sitzplätzen an Bord gut zu sehen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A brightly coloured vessel</h2><p>Le Batoo evokes a boat facing rough seas. The attraction’s name appears in yellow letters on a blue panel above the passengers. White frames outline the rounded openings in the hull.</p><p>Yellow, blue and red sections are complemented by painted waves. A lamp enclosed in a metal cage completes the nautical setting, clearly visible from the seats on board.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un navío de colores vivos</h2><p>Le Batoo evoca un barco que afronta un mar agitado. El nombre de la atracción aparece en letras amarillas sobre un panel azul, por encima de los pasajeros. Marcos blancos resaltan las aberturas redondeadas del casco.</p><p>Las zonas amarillas, azules y rojas se completan con olas pintadas. Una lámpara rodeada por una jaula metálica añade otro detalle náutico, bien visible desde los asientos a bordo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un navire aux couleurs vives</h2><p>Le Batoo reprend l’image d’un bateau affrontant une mer agitée. Le nom de l’attraction apparaît en lettres jaunes sur un panneau bleu, au-dessus des passagers. Des encadrements blancs soulignent les ouvertures arrondies de la coque.</p><p>Les parties jaunes, bleues et rouges se prolongent par un décor de vagues peintes. Une lampe entourée d’une cage métallique complète cet univers nautique, bien visible depuis les places à bord.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una nave dai colori vivaci</h2><p>Le Batoo richiama l’immagine di una barca che affronta il mare agitato. Il nome dell’attrazione appare in lettere gialle su un pannello blu, sopra i passeggeri. Cornici bianche sottolineano le aperture arrotondate dello scafo.</p><p>Le parti gialle, blu e rosse sono accompagnate da onde dipinte. Una lampada racchiusa in una gabbia metallica completa l’ambientazione nautica, ben visibile dai posti a bordo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een schip in felle kleuren</h2><p>Le Batoo roept het beeld op van een boot op een onstuimige zee. De naam van de attractie staat in gele letters op een blauw paneel boven de passagiers. Witte omlijstingen benadrukken de afgeronde openingen in de romp.</p><p>Gele, blauwe en rode vlakken worden aangevuld met geschilderde golven. Een lamp in een metalen kooi maakt het nautische decor compleet en is vanuit de zitplaatsen aan boord goed zichtbaar.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Statek w żywych kolorach</h2><p>Le Batoo nawiązuje do łodzi stawiającej czoła wzburzonemu morzu. Nazwa atrakcji widnieje żółtymi literami na niebieskim panelu ponad pasażerami. Białe obramowania podkreślają zaokrąglone otwory w kadłubie.</p><p>Żółte, niebieskie i czerwone elementy uzupełniają malowane fale. Lampa otoczona metalową klatką dopełnia morską scenerię, dobrze widoczną z miejsc na pokładzie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um navio de cores vivas</h2><p>Le Batoo evoca um barco a enfrentar um mar agitado. O nome da atração surge em letras amarelas num painel azul, por cima dos passageiros. Molduras brancas realçam as aberturas arredondadas do casco.</p><p>As partes amarelas, azuis e vermelhas são acompanhadas por ondas pintadas. Uma lâmpada envolvida por uma gaiola metálica completa o ambiente náutico, bem visível dos lugares a bordo.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "23b37097-d2e0-42b3-98d1-92da91a1de98",
+        "entityKey": "pokeyland-le-ptit-train",
+        "displayName": "Le p’tit train",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Lokomotive unter dem Holzdach</h2><p>Le p’tit train bietet eine Eisenbahnfahrt durch die Kulisse von Pokeyland. Die grüne Lokomotive verbindet eine gelbe Front mit einem roten Schornstein. Ein großer, gelb eingefasster Scheinwerfer und die Aufschriften „Rio Grande“ und „Old Timer“ verleihen ihr das Aussehen einer kleinen Westernbahn.</p><p>Das Dach der Station ruht auf Holzpfosten. Schienen, Holzschnitzel am Boden und die umgebende Vegetation betten diese Eisenbahnszene in die Waldlandschaft des Parks ein.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A locomotive beneath a timber station</h2><p>Le p’tit train offers a railway ride through Pokeyland’s setting. Its green locomotive combines a yellow front with a red chimney. A large yellow-rimmed headlamp and the words “Rio Grande” and “Old Timer” give it the appearance of a miniature western train.</p><p>The station has a roof carried on wooden posts. Rails, woodchips on the ground and the surrounding vegetation place this railway scene within the park’s wooded setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una locomotora bajo la estación de madera</h2><p>Le p’tit train ofrece un paseo ferroviario por el entorno de Pokeyland. Su locomotora verde combina una parte delantera amarilla con una chimenea roja. Un gran faro de borde amarillo y las inscripciones «Rio Grande» y «Old Timer» le dan el aspecto de un pequeño tren del Oeste.</p><p>El techo de la estación se apoya en postes de madera. Los raíles, las virutas del suelo y la vegetación circundante sitúan esta escena ferroviaria en el paisaje arbolado del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une locomotive sous la gare en bois</h2><p>Le p’tit train propose une promenade ferroviaire dans le décor de Pokeyland. Sa locomotive verte associe un avant jaune à une cheminée rouge. Un grand phare cerclé de jaune et les inscriptions « Rio Grande » et « Old Timer » lui donnent l’allure d’un petit train de western.</p><p>La gare possède un toit porté par des poteaux de bois. Les rails, les copeaux au sol et la végétation environnante inscrivent cette scène ferroviaire dans le cadre boisé du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una locomotiva sotto la stazione di legno</h2><p>Le p’tit train propone una passeggiata ferroviaria nell’ambiente di Pokeyland. La locomotiva verde abbina un frontale giallo a un fumaiolo rosso. Un grande faro bordato di giallo e le scritte «Rio Grande» e «Old Timer» le danno l’aspetto di un piccolo treno western.</p><p>Il tetto della stazione poggia su pali di legno. I binari, i trucioli sul terreno e la vegetazione circostante inseriscono questa scena ferroviaria nel paesaggio boschivo del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een locomotief onder een houten stationsdak</h2><p>Le p’tit train biedt een treinrit door het decor van Pokeyland. De groene locomotief heeft een gele voorkant en een rode schoorsteen. Een grote koplamp met gele rand en de opschriften ‘Rio Grande’ en ‘Old Timer’ geven haar het uiterlijk van een kleine westerntrein.</p><p>Het stationsdak rust op houten palen. De rails, houtsnippers op de grond en de omliggende begroeiing plaatsen dit spoorwegtafereel in de bosrijke omgeving van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Lokomotywa pod drewnianym dachem stacji</h2><p>Le p’tit train oferuje przejażdżkę kolejką w scenerii Pokeyland. Zielona lokomotywa łączy żółty przód z czerwonym kominem. Duży reflektor z żółtym obramowaniem oraz napisy „Rio Grande” i „Old Timer” nadają jej wygląd małego pociągu z Dzikiego Zachodu.</p><p>Dach stacji wspiera się na drewnianych słupach. Szyny, zrębki na ziemi i otaczająca roślinność wpisują tę kolejową scenerię w leśny krajobraz parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma locomotiva sob a estação de madeira</h2><p>Le p’tit train propõe um passeio de comboio pelo ambiente de Pokeyland. A locomotiva verde combina uma frente amarela com uma chaminé vermelha. Um grande farol de rebordo amarelo e as inscrições «Rio Grande» e «Old Timer» dão-lhe o aspeto de um pequeno comboio do Oeste.</p><p>O telhado da estação assenta em postes de madeira. Os carris, as aparas no chão e a vegetação envolvente integram esta cena ferroviária na paisagem arborizada do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "38922aa5-2307-4973-b0f5-b076325642a9",
+        "entityKey": "pokeyland-lenvol",
+        "displayName": "Fall Tower",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Frei hängende Füße rund um einen weißen Mast</h2><p>Fall Tower hebt seine Fahrgäste an, bevor eine als Fall angekündigte Abfahrt folgt. Die Sitze bilden einen Ring um den weißen Mast. Die Beine hängen frei, ohne Boden unter den Füßen.</p><p>Das kräftige Grün und Weiß der Sitze kontrastiert mit kleinen roten Lichtern unter der Gondel. Durch die offenen Sitzplätze blicken die Fahrgäste rund um den Turm auf die Landschaft und den Himmel.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Feet dangling around a white mast</h2><p>Fall Tower raises its passengers before a descent presented as a drop. The seats form a ring around the white mast, leaving riders’ legs hanging with no floor beneath their feet.</p><p>The seats’ bright green and white colours contrast with small red lights beneath the gondola. The open seating faces passengers towards the landscape and sky all around the tower.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los pies en el aire alrededor de un mástil blanco</h2><p>Fall Tower eleva a sus pasajeros antes de un descenso anunciado como una caída. Los asientos forman un anillo alrededor del mástil blanco y dejan las piernas colgando, sin suelo bajo los pies.</p><p>El verde vivo y el blanco de los asientos contrastan con pequeñas luces rojas bajo la góndola. Los asientos abiertos orientan a los pasajeros hacia el paisaje y el cielo, alrededor de toda la torre.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les pieds dans le vide autour d’un mât blanc</h2><p>Fall Tower fait monter ses passagers avant une descente annoncée comme une chute. Les places forment une couronne autour du mât blanc : les jambes restent suspendues, sans plancher sous les pieds.</p><p>Le vert vif et le blanc des sièges contrastent avec les petites lumières rouges disposées sous la nacelle. Cette assise ouverte met les passagers face au paysage et au ciel, tout autour de la tour.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I piedi sospesi attorno a un albero bianco</h2><p>Fall Tower solleva i passeggeri prima di una discesa presentata come una caduta. I posti formano un anello attorno all’albero bianco: le gambe rimangono sospese, senza un pavimento sotto i piedi.</p><p>Il verde acceso e il bianco dei sedili contrastano con piccole luci rosse sotto la gondola. I posti aperti rivolgono i passeggeri verso il paesaggio e il cielo, tutt’attorno alla torre.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De voeten vrij rond een witte mast</h2><p>Fall Tower tilt zijn passagiers omhoog voordat de als val aangekondigde afdaling volgt. De zitplaatsen vormen een ring rond de witte mast. De benen hangen vrij, zonder vloer onder de voeten.</p><p>Het felle groen en wit van de stoelen contrasteert met kleine rode lampen onder de gondel. Door de open zitplaatsen kijken passagiers rondom de toren uit op het landschap en de lucht.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Stopy w powietrzu wokół białego masztu</h2><p>Fall Tower unosi pasażerów przed zjazdem przedstawianym jako spadek. Miejsca tworzą pierścień wokół białego masztu. Nogi zwisają swobodnie, bez podłogi pod stopami.</p><p>Jaskrawa zieleń i biel siedzeń kontrastują z małymi czerwonymi lampkami pod gondolą. Otwarte miejsca są skierowane na zewnątrz, dzięki czemu pasażerowie spoglądają na krajobraz i niebo wokół wieży.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os pés suspensos à volta de um mastro branco</h2><p>A Fall Tower eleva os passageiros antes de uma descida apresentada como uma queda. Os lugares formam um anel à volta do mastro branco, deixando as pernas suspensas, sem chão debaixo dos pés.</p><p>O verde vivo e o branco dos assentos contrastam com pequenas luzes vermelhas sob a gôndola. Os lugares abertos viram os passageiros para a paisagem e o céu em redor da torre.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ca386d-5ecb-4b74-a8cd-eaeff8d1693a",
+        "entityKey": "pokeyland-les-avions",
+        "displayName": "Les avions",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Flugzeuge rund um einen Turm mit Schachbrettmuster</h2><p>Bei Les avions in Pokeyland nehmen die Fahrgäste allein oder zu zweit in kleinen roten und blauen Flugzeugen Platz. Flügel und offene Cockpits geben dem Fahrgeschäft zwischen den Bäumen sein Luftfahrtthema.</p><p>Weiße Arme verbinden die Flugzeuge mit einem rot-blauen Mittelturm. Ein Band mit Schachbrettmuster und Reihen bunter Lichter schmücken die Mitte. Ein Zaun trennt das Fahrgeschäft von der benachbarten Vegetation.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Planes around a chequered tower</h2><p>Pokeyland’s Les avions carries passengers alone or in pairs in small red and blue aircraft. Their wings and open cockpits give the ride its aviation theme among the trees.</p><p>White arms connect the planes to a red and blue central tower. A chequered band and rows of coloured lights decorate the centre, while a fence separates the ride from the nearby vegetation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Aviones alrededor de una torre a cuadros</h2><p>Les avions de Pokeyland recibe a sus pasajeros solos o de dos en dos en pequeños aparatos rojos y azules. Las alas y las cabinas abiertas dan a la atracción su tema aeronáutico, entre los árboles.</p><p>Los aviones se unen mediante brazos blancos a una torre central roja y azul. Una franja a cuadros y filas de luces de colores decoran el centro, mientras una valla separa la atracción de la vegetación cercana.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des avions autour d’une tour à damier</h2><p>Les avions de Pokeyland accueillent leurs passagers seuls ou à deux dans de petits appareils rouges et bleus. Leurs ailes et leurs cockpits ouverts donnent au manège son thème aérien, au milieu des arbres.</p><p>Les avions sont reliés par des bras blancs à une tour centrale rouge et bleue. Une bande à damier et des rangées de lumières colorées habillent ce centre, tandis qu’une clôture sépare le manège de la végétation voisine.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Aeroplani attorno a una torre a scacchi</h2><p>Les avions di Pokeyland accoglie i passeggeri da soli o in coppia su piccoli aeroplani rossi e blu. Ali e abitacoli aperti danno alla giostra il suo tema aeronautico, tra gli alberi.</p><p>Gli aerei sono collegati da bracci bianchi a una torre centrale rossa e blu. Una fascia a scacchi e file di luci colorate decorano il centro, mentre una recinzione separa la giostra dalla vegetazione vicina.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vliegtuigen rond een toren met dambordpatroon</h2><p>Bij Les avions van Pokeyland nemen passagiers alleen of met z’n tweeën plaats in kleine rode en blauwe vliegtuigen. De vleugels en open cockpits geven de attractie tussen de bomen haar luchtvaartthema.</p><p>Witte armen verbinden de vliegtuigen met een rode en blauwe centrale toren. Een band met dambordpatroon en rijen gekleurde lampen versieren het midden. Een hek scheidt de attractie van de nabijgelegen begroeiing.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Samoloty wokół wieży z szachownicą</h2><p>W Les avions w Pokeyland pasażerowie zajmują miejsca pojedynczo lub w parach w małych czerwonych i niebieskich samolotach. Skrzydła i otwarte kokpity nadają karuzeli lotniczy charakter wśród drzew.</p><p>Białe ramiona łączą samoloty z czerwono-niebieską wieżą pośrodku. Pas w szachownicę i rzędy kolorowych lampek zdobią jej środek, a ogrodzenie oddziela karuzelę od pobliskiej roślinności.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Aviões à volta de uma torre axadrezada</h2><p>Les avions de Pokeyland recebe os passageiros sozinhos ou a dois em pequenos aparelhos vermelhos e azuis. As asas e os cockpits abertos dão à atração o seu tema aeronáutico, entre as árvores.</p><p>Braços brancos ligam os aviões a uma torre central vermelha e azul. Uma faixa axadrezada e filas de luzes coloridas decoram o centro, enquanto uma vedação separa a atração da vegetação próxima.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e4952e01-1404-4f8f-8f53-e8f0336d4d51",
+        "entityKey": "pokeyland-les-ptits-chevaux",
+        "displayName": "Les p’tits chevaux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Ausritt auf mechanischen Pferden</h2><p>Les p’tits chevaux bietet eine geführte Fahrt auf Fahrgeschäftspferden. Die braunen, weißen oder schwarzen Tiere tragen orangefarbene Sättel. Modellierte Mähnen und dargestellte Zügel geben jedem Pferd eine erkennbare Silhouette.</p><p>Der Einstiegsbereich liegt unter einem Unterstand mit Holzdach. Eine niedrige Strecke mit grünen und gelben Randelementen führt die mechanischen Pferde durch die bepflanzte Umgebung. Diese Attraktion ist vom Reiten auf echten Ponys im Park getrennt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A ride on mechanical horses</h2><p>Les p’tits chevaux offers a guided ride on amusement-ride horses. The brown, white or black mounts have orange saddles; moulded manes and depicted bridles give each horse a recognisable outline.</p><p>The departure area sits beneath a wooden-roofed shelter. A low route edged with green and yellow elements carries the mechanical horses through the planted setting. This attraction is separate from the park’s rides on live ponies.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un paseo sobre caballos mecánicos</h2><p>Les p’tits chevaux propone un recorrido guiado sobre caballos de atracción. Las monturas marrones, blancas o negras llevan sillas naranjas; las crines moldeadas y las bridas representadas dan a cada caballo una silueta reconocible.</p><p>La salida se sitúa bajo un cobertizo con techo de madera. Un recorrido bajo, bordeado por elementos verdes y amarillos, lleva a los caballos mecánicos por el entorno vegetal. Esta atracción es distinta del paseo con ponis vivos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une promenade sur des chevaux de manège</h2><p>Les p’tits chevaux proposent une balade guidée sur des montures de manège. Les chevaux bruns, blancs ou noirs portent des selles orange ; leurs crinières sculptées et leurs brides dessinées donnent à chaque monture une silhouette bien reconnaissable.</p><p>Le départ s’inscrit sous un abri à toit de bois. Le parcours bas, bordé d’éléments verts et jaunes, accompagne ces chevaux mécaniques dans le décor végétal. Cette attraction est distincte de la promenade avec de vrais poneys proposée dans le parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una passeggiata su cavalli meccanici</h2><p>Les p’tits chevaux propone un percorso guidato su cavalli da giostra. Le cavalcature marroni, bianche o nere hanno selle arancioni; le criniere modellate e le briglie raffigurate danno a ogni cavallo una sagoma riconoscibile.</p><p>La partenza si trova sotto una tettoia con copertura di legno. Un percorso basso, bordato da elementi verdi e gialli, accompagna i cavalli meccanici nell’ambiente vegetale. Questa attrazione è distinta dalla passeggiata sui pony vivi proposta nel parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een rit op mechanische paarden</h2><p>Les p’tits chevaux biedt een rit langs een vaste route op attractiepaarden. De bruine, witte of zwarte paarden hebben oranje zadels. Gevormde manen en afgebeelde hoofdstellen geven elk paard een herkenbaar silhouet.</p><p>De rit begint onder een afdak met houten dak. Een lage route met groene en gele randelementen leidt de mechanische paarden door het groen. Deze attractie staat los van de ritten op levende pony’s in het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Przejażdżka na mechanicznych koniach</h2><p>Les p’tits chevaux oferuje przejażdżkę po wyznaczonej trasie na koniach z urządzenia rozrywkowego. Brązowe, białe lub czarne wierzchowce mają pomarańczowe siodła. Modelowane grzywy i przedstawione uzdy nadają każdemu koniowi rozpoznawalną sylwetkę.</p><p>Miejsce startu znajduje się pod wiatą z drewnianym dachem. Niska trasa z zielonymi i żółtymi elementami przy krawędziach prowadzi mechaniczne konie wśród roślinności. Ta atrakcja jest odrębna od przejażdżek na żywych kucykach w parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um passeio em cavalos mecânicos</h2><p>Les p’tits chevaux propõe um percurso guiado em cavalos de atração. As montadas castanhas, brancas ou pretas têm selas laranja; as crinas moldadas e as rédeas representadas dão a cada cavalo uma silhueta reconhecível.</p><p>A partida fica sob um abrigo com telhado de madeira. Um percurso baixo, ladeado por elementos verdes e amarelos, acompanha os cavalos mecânicos pelo ambiente vegetal. Esta atração é distinta do passeio com póneis vivos proposto no parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "structure": "Six items with one heading and two specific paragraphs; explicit short-source depth gaps.",
+    "wordCounts": {
+      "Laser Game": {
+        "fr": 101,
+        "en": 80,
+        "de": 80,
+        "es": 89,
+        "it": 84,
+        "nl": 81,
+        "pl": 73,
+        "pt": 83
+      },
+      "Le Batoo": {
+        "fr": 71,
+        "en": 63,
+        "de": 68,
+        "es": 70,
+        "it": 66,
+        "nl": 73,
+        "pl": 51,
+        "pt": 66
+      },
+      "Le p’tit train": {
+        "fr": 87,
+        "en": 75,
+        "de": 71,
+        "es": 86,
+        "it": 78,
+        "nl": 76,
+        "pl": 64,
+        "pt": 81
+      },
+      "Fall Tower": {
+        "fr": 76,
+        "en": 66,
+        "de": 71,
+        "es": 78,
+        "it": 70,
+        "nl": 70,
+        "pl": 56,
+        "pt": 74
+      },
+      "Les avions": {
+        "fr": 79,
+        "en": 67,
+        "de": 67,
+        "es": 80,
+        "it": 74,
+        "nl": 70,
+        "pl": 58,
+        "pt": 72
+      },
+      "Les p’tits chevaux": {
+        "fr": 86,
+        "en": 71,
+        "de": 69,
+        "es": 79,
+        "it": 77,
+        "nl": 74,
+        "pl": 69,
+        "pt": 77
+      }
+    },
+    "sourceLimits": "Current official activity pages are short; original photos supply visible setting and details. Shorter notices remain explicit depth gaps; no unsupported storyline added to reach 120 words.",
+    "rootInspectedPhotos": [
+      "11-laser-game.jpg",
+      "12-le-batoo.jpg",
+      "13-le-ptit-train.jpg",
+      "14-lenvol.jpg",
+      "15-les-avions.jpg",
+      "16-les-ptits-chevaux.jpg"
+    ],
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesIncludingExistingParkAndReferences": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
