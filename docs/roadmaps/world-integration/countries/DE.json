@@ -33697,6 +33697,168 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "DE-candidate-standalone-schliersberg-20261115",
+      "name": "Sommerrodelbahn Schliersbergalm",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Luge d’été en auge",
+      "locality": "Schliersee, Bavière",
+      "siteId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T03:20:55.842Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant actif au 2026-11-15 ; piste en service par temps sec, fermeture sous pluie ou neige ; heures de luge non publiées.",
+      "identityConfidence": "Billetterie propre confirmée. Distincte de l’Alpenroller (ParkItem 6696fdaf-7342-4b5a-bcf8-d6eb141cbe8d), ancien coaster fermé temporairement dans le Park masqué Schliersbergalm 87939460-1a47-4355-854c-1e039a400ab6 ; ce Park est conservé.",
+      "possibleMatches": [],
+      "aliases": [
+        "Sommerrodelbahn am Schliersberg",
+        "Sommer-Rodelbahn Schliersberg Alm",
+        "Schliersbergalm summer toboggan run"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T03:20:07.537Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-66f9c85b-d62f-4331-b56f-36574722fb61",
+          "appliedAt": "2026-11-15T03:15:09.745Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:apply:66f9c85b-d62f-4331-b56f-36574722fb61",
+          "auditEvidence": null,
+          "summary": "Création de la piste autonome, huit descriptions, lieu et statut ; l’ancien Alpenroller du Park masqué reste distinct et conservé."
+        },
+        {
+          "eventId": "apply-c8cf7758-c7a5-406b-a06c-71edeb02cff8",
+          "appliedAt": "2026-11-15T03:17:00.520Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:apply:c8cf7758-c7a5-406b-a06c-71edeb02cff8",
+          "auditEvidence": null,
+          "summary": "Trois tarifs officiels datés de descente simple intégrés ; règle météo confirmée dans les descriptions."
+        },
+        {
+          "eventId": "image-07078f87e6924771924fdd7f0ca5f43f",
+          "appliedAt": "2026-11-15T03:18:04.516Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:07078f87e6924771924fdd7f0ca5f43f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 01 de la piste ou de ses luges, Kritzolina, Wikimedia Commons CC BY-SA 4.0, publiée avec crédits dans huit langues."
+        },
+        {
+          "eventId": "image-6db89367f811498da900e25ec0855ecd",
+          "appliedAt": "2026-11-15T03:18:26.533Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:6db89367f811498da900e25ec0855ecd",
+          "auditEvidence": null,
+          "summary": "Photo exacte 02 de la piste ou de ses luges, Kritzolina, Wikimedia Commons CC BY-SA 4.0, publiée avec crédits dans huit langues."
+        },
+        {
+          "eventId": "image-83622d43f4204ed6a035f9c9b4329453",
+          "appliedAt": "2026-11-15T03:18:52.467Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:83622d43f4204ed6a035f9c9b4329453",
+          "auditEvidence": null,
+          "summary": "Photo exacte 04 de la piste ou de ses luges, Kritzolina, Wikimedia Commons CC BY-SA 4.0, publiée avec crédits dans huit langues."
+        },
+        {
+          "eventId": "image-metadata-6db89367f811498da900e25ec0855ecd",
+          "appliedAt": "2026-11-15T03:19:56.686Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:6db89367f811498da900e25ec0855ecd",
+          "auditEvidence": null,
+          "summary": "Métadonnées de la photo corrigées pour différencier ses légendes."
+        },
+        {
+          "eventId": "image-metadata-83622d43f4204ed6a035f9c9b4329453",
+          "appliedAt": "2026-11-15T03:20:07.537Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+          "evidence": "PARK_DATA_EDITOR:image:83622d43f4204ed6a035f9c9b4329453",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/audit.json",
+          "summary": "Métadonnées de la troisième photo corrigées ; audit final 71/100 sans bloqueur, huit pages, trois images HTTP 200 et Facebook publié."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier périodiquement les heures réelles de la piste et les tarifs ; l’exploitant ne donne que la condition de temps sec. Chercher des photos plus récentes de la même piste sous licence vérifiable. Le Park masqué multi-activité Schliersbergalm reste un dossier séparé.",
+      "sources": [
+        {
+          "label": "Schliersberg Alm — piste, trois tarifs par âge, condition météo et caisse",
+          "url": "https://schliersbergalm.com/erleben/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Schliersberg Alm — FAQ météo et accès par téléphérique",
+          "url": "https://schliersbergalm.com/kontakt/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "RCDB — Alpenroller historique, attraction distincte",
+          "url": "https://rcdb.com/12984.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Sommerrodelbahn Schliersberg 01, Kritzolina, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_01.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Sommerrodelbahn Schliersberg 02, Kritzolina, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_02.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Sommerrodelbahn Schliersberg 04, Kritzolina, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_am_Schliersberg_04.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique — huit langues",
+          "url": "https://amusement-parks.fun/fr/attraction/71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e/sommerrodelbahn-schliersbergalm",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Sommerrodelbahn Schliersbergalm",
+            "source": "Schliersberg Alm — exploitant",
+            "url": "https://schliersbergalm.com/erleben/",
+            "family": "Luge d’été en auge",
+            "sourceVenueName": "Schliersberg Alm",
+            "sourceLocality": "Schliersee"
+          }
+        ],
+        "rationale": "La descente est tarifée séparément au sein d’un domaine multi-activité ; elle n’est pas l’ancien Alpenroller, déjà référencé comme ParkItem. La fiche Park masquée reste présente."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/audit.json",
+        "score": 71,
+        "publicationBlockers": []
+      },
+      "publicationEvidence": {
+        "siteVisibleAtUtc": "2026-11-15T03:20:55.842Z",
+        "siteUrl": "https://amusement-parks.fun/fr/attraction/71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e/sommerrodelbahn-schliersbergalm",
+        "facebookPublishedAtUtc": "2026-11-15T03:21:49.646Z",
+        "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127402075424431",
+        "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-de-schliersberg-20261115/receipts.json"
+      }
     }
   ]
 }

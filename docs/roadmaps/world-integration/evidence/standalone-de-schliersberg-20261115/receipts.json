@@ -1,0 +1,95 @@
+{
+  "entityId": "71704ca5-5720-4f2b-bc8d-d6b1a0c67d5e",
+  "receipts": [
+    {
+      "action": "Apply",
+      "stage": "core",
+      "operationId": "66f9c85b-d62f-4331-b56f-36574722fb61",
+      "appliedAtUtc": "2026-11-15T03:15:09.7453495Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "pricing",
+      "operationId": "c8cf7758-c7a5-406b-a06c-71edeb02cff8",
+      "appliedAtUtc": "2026-11-15T03:17:00.5206204Z",
+      "isApplied": true,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "Apply",
+      "stage": "publish",
+      "operationId": "4c1f0bf2-702e-45f1-86cc-57f3b47f5037",
+      "appliedAtUtc": "2026-11-15T03:20:55.8426408Z",
+      "isApplied": true,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 0,
+        "warnings": 0,
+        "errors": 0
+      }
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-1",
+      "imageId": "07078f87e6924771924fdd7f0ca5f43f",
+      "updatedAtUtc": "2026-11-15T03:18:04.516Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Sommerrodelbahn_am_Schliersberg_01.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-2",
+      "imageId": "6db89367f811498da900e25ec0855ecd",
+      "updatedAtUtc": "2026-11-15T03:18:26.533Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Sommerrodelbahn_am_Schliersberg_02.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "ImportPhoto",
+      "stage": "photo-4",
+      "imageId": "83622d43f4204ed6a035f9c9b4329453",
+      "updatedAtUtc": "2026-11-15T03:18:52.467Z",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Sommerrodelbahn_am_Schliersberg_04.jpg",
+      "isPublished": true
+    },
+    {
+      "action": "UpdatePhotoMetadata",
+      "stage": "photo-2-metadata",
+      "imageId": "6db89367f811498da900e25ec0855ecd",
+      "updatedAtUtc": "2026-11-15T03:19:56.686Z",
+      "isPublished": true
+    },
+    {
+      "action": "UpdatePhotoMetadata",
+      "stage": "photo-4-metadata",
+      "imageId": "83622d43f4204ed6a035f9c9b4329453",
+      "updatedAtUtc": "2026-11-15T03:20:07.537Z",
+      "isPublished": true
+    },
+    {
+      "action": "PublishFacebook",
+      "publicationId": "d614f2e669ba48caba3eb72b9bba2919",
+      "status": "Published",
+      "publishedAtUtc": "2026-11-15T03:21:49.6463889Z",
+      "postUrl": "https://www.facebook.com/1285475681307050/posts/122127402075424431"
+    }
+  ]
+}
