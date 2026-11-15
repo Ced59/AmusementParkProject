@@ -1,0 +1,86 @@
+{
+  "entryId": "DE-candidate-838a83725c4441",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
+  "name": "Sommerrodelbahn Hündle",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T09:17:36.416465Z",
+  "operatorSources": [
+    "https://www.huendle-imberg.de/",
+    "https://www.huendle-imberg.de/sommer/huendle/sommerrodelbahn/",
+    "https://www.huendle-imberg.de/sommer/huendle/preise/"
+  ],
+  "photoSource": "https://www.mvp.de/bayern/entdecken/sommerrodelbahn-am-huendle-oberstaufen/",
+  "sameRideAsBacklogEntry": "DE-candidate-standalone-ffbfe6608ff67d",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/a49ffd3f-3502-4b8d-985f-105f8a830efb/sommerrodelbahn-huendle",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 1,
+  "photos": [
+    {
+      "imageId": "99d164d38b5d436bb369604640dc404c",
+      "sourceUrl": "https://c3.mmcdn.de/insecure/rs%3Afill%3A1420%3A1066/g%3Asm/el%3A1/plain/s3%3A//mvp/5787/assets/382013_sommerrodelbahn-am-huendle-bei-oberstaufen.jpg",
+      "sourcePage": "https://www.mvp.de/bayern/entdecken/sommerrodelbahn-am-huendle-oberstaufen/",
+      "creator": "Nico Bogenreuther / Oberstaufen Tourismus Marketing GmbH",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T09:13:46.387Z"
+    }
+  ],
+  "pricing": "Eight official 2026 adult/child bundles; these are last published seasonal prices, not asserted as 2027 rates.",
+  "openingHoursAssessment": "Operator states closed until summer 2027 without a precise reopening date. No speculative weekly or dated opening rules imported; visitor descriptions direct to live operator status.",
+  "completeness": {
+    "score": 81,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127432735424431",
+    "publishedAtUtc": "2026-11-15T09:19:33.7023396Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T09:16:18.422Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "09bb4cf1-e83d-438e-b43b-54ce11cbc862",
+      "appliedAtUtc": "2026-11-15T09:12:51.8216193Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "pricing",
+      "operationId": "9dde1250-5f85-42c5-ab67-986a03671194",
+      "appliedAtUtc": "2026-11-15T09:14:43.3084766Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access",
+      "operationId": "0d333115-cda4-4cd2-831f-9aeb60e2de06",
+      "appliedAtUtc": "2026-11-15T09:15:18.1360981Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "textfix",
+      "operationId": "0bca7324-a47c-45f3-8653-779ea91628cf",
+      "appliedAtUtc": "2026-11-15T09:16:18.4224609Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "f572ec6d-30f0-4dea-87ca-7f030ca2ceeb",
+    "appliedAtUtc": "2026-11-15T09:17:36.416465Z"
+  }
+}
