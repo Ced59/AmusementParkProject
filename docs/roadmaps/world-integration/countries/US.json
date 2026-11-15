@@ -34628,26 +34628,90 @@
     },
     {
       "entryId": "US-candidate-610c82b56f5dbe",
-      "name": "Killington Resort",
-      "entityKind": "ToQualify",
+      "name": "Beast Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Killington , Vermont",
-      "siteId": null,
+      "category": "Mountain coaster",
+      "locality": "3861 Killington Road, Killington, Vermont 05751",
+      "siteId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:25:55.410Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Saison 2026 du Snowshed Adventure Center achevée le 12 octobre ; dates de prochaine saison non confirmées.",
+      "identityConfidence": "Billet individuel et forfait de quatre confirmés par Killington ; RCDB et position OSM concordants ; aucun doublon PDE avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Beast Mountain Coaster — Killington",
+        "Killington Beast Mountain Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T23:24:37.484Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c90941b7-2e90-438a-aeec-9c59f7bfb2c2",
+          "appliedAt": "2026-11-15T23:21:55.684Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:c90941b7-2e90-438a-aeec-9c59f7bfb2c2",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "apply-d9a62328-9162-4b9e-9e2f-dd3c60b0a1dc",
+          "appliedAt": "2026-11-15T23:22:38.745Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:d9a62328-9162-4b9e-9e2f-dd3c60b0a1dc",
+          "auditEvidence": null,
+          "summary": "Modèle et date d’ouverture sourcée intégrés."
+        },
+        {
+          "eventId": "apply-cce0cd4f-1aa6-4357-b3b4-57362131b554",
+          "appliedAt": "2026-11-15T23:23:00.749Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:cce0cd4f-1aa6-4357-b3b4-57362131b554",
+          "auditEvidence": null,
+          "summary": "Quatre conditions d’accès officielles intégrées."
+        },
+        {
+          "eventId": "photo-6f2b1b202b8e4522878ee64c04dd23e6",
+          "appliedAt": "2026-11-15T23:23:23.707Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:photo:6f2b1b202b8e4522878ee64c04dd23e6",
+          "auditEvidence": null,
+          "summary": "Photogramme exact de 2019 importé, publié et crédité sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-3d3147cd029a47d0a0ce303da111efe0",
+          "appliedAt": "2026-11-15T23:23:38.308Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:photo:3d3147cd029a47d0a0ce303da111efe0",
+          "auditEvidence": null,
+          "summary": "Photogramme exact de 2019 importé, publié et crédité sous CC BY 2.0."
+        },
+        {
+          "eventId": "apply-f2389cea-6056-4611-94d9-597401b0c081",
+          "appliedAt": "2026-11-15T23:24:37.484Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+          "evidence": "PARK_DATA_EDITOR:apply:f2389cea-6056-4611-94d9-597401b0c081",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-beast-mountain-coaster-20261115/audit.json",
+          "summary": "Point exact de la piste OSM intégré ; contrôle final sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les reçus et les photogrammes crédités. Confirmer calendrier et tarifs de la prochaine saison, puis chercher des photos récentes sous licence compatible.",
       "sources": [
         {
           "label": "RCDB",
@@ -34668,33 +34732,44 @@
           "label": "ADG — Project Book",
           "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Killington — billet, calendrier et accès",
+          "url": "https://killington.com/summer-adventure-center",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — piste",
+          "url": "https://www.openstreetmap.org/node/4602218104",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — vidéo CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/9507ef65-57b8-405a-9d9f-b03dc3250504/beast-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Beast Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13330.htm",
+            "source": "Killington — Summer Adventure Center",
+            "url": "https://killington.com/summer-adventure-center",
             "family": "Mountain coaster",
             "sourceVenueName": "Killington Resort",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Killington , Vermont",
+            "sourceLifecycleSignal": "2026 summer season ended",
+            "sourceLocality": "Killington, Vermont",
             "sourceOpenedYear": "2015"
-          },
-          {
-            "name": "Beast Mountain Coaster",
-            "source": "ADG — Project Book",
-            "url": "https://www.adgmountainsides.com/Project%20Book%20download.pdf",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Killington Resort",
-            "matchingMethod": "Parent retrouvé dans les dossiers RCDB déjà recensés ; référence constructeur ou exploitant complémentaire.",
-            "sourceLifecycleSignal": "Référence datée à contrôler ; aucune nouvelle date d’intégration ni preuve de publication."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet propre à une descente vendu par l’exploitant ; fiche autonome publiée avec images exactes."
       }
     },
     {

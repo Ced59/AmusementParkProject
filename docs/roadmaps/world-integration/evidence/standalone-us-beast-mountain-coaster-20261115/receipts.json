@@ -1,0 +1,75 @@
+{
+  "entityId": "9507ef65-57b8-405a-9d9f-b03dc3250504",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "c90941b7-2e90-438a-aeec-9c59f7bfb2c2",
+      "appliedAtUtc": "2026-11-15T23:21:55.6845244Z",
+      "evidence": "PARK_DATA_EDITOR:apply:c90941b7-2e90-438a-aeec-9c59f7bfb2c2"
+    },
+    {
+      "step": "spec",
+      "operationId": "d9a62328-9162-4b9e-9e2f-dd3c60b0a1dc",
+      "appliedAtUtc": "2026-11-15T23:22:38.7451805Z",
+      "evidence": "PARK_DATA_EDITOR:apply:d9a62328-9162-4b9e-9e2f-dd3c60b0a1dc"
+    },
+    {
+      "step": "access",
+      "operationId": "cce0cd4f-1aa6-4357-b3b4-57362131b554",
+      "appliedAtUtc": "2026-11-15T23:23:00.7497933Z",
+      "evidence": "PARK_DATA_EDITOR:apply:cce0cd4f-1aa6-4357-b3b4-57362131b554"
+    },
+    {
+      "step": "location",
+      "operationId": "f2389cea-6056-4611-94d9-597401b0c081",
+      "appliedAtUtc": "2026-11-15T23:24:37.4841437Z",
+      "evidence": "PARK_DATA_EDITOR:apply:f2389cea-6056-4611-94d9-597401b0c081"
+    },
+    {
+      "step": "publish",
+      "operationId": "659fb585-2b36-4c26-9b00-cf64a1907b36",
+      "appliedAtUtc": "2026-11-15T23:25:13.5843821Z",
+      "evidence": "PARK_DATA_EDITOR:apply:659fb585-2b36-4c26-9b00-cf64a1907b36"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "6f2b1b202b8e4522878ee64c04dd23e6",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+      "createdAtUtc": "2026-11-15T23:23:23.707Z",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2019-07-11",
+      "videoFrameAt": "00:05",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "3d3147cd029a47d0a0ce303da111efe0",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/48353516526/",
+      "createdAtUtc": "2026-11-15T23:23:38.308Z",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2019-07-11",
+      "videoFrameAt": "00:30",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "facebook": {
+    "id": "76aec477f63b404e883dc918b28f048a",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127520941424431",
+    "publishedAtUtc": "2026-11-15T23:25:55.4106959Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 75,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 72,
+    "earnedPoints": 54,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}
