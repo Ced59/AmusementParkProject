@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-58-yapadrisk-pyrotechnics",
+    "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+    "itemName": "Yapadrisk et la flamme des volcans",
+    "current": false,
+    "source": {
+      "key": "yapadrisk",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Yapadrisk-et-la-flamme-des-volcans.png",
+      "sourcePage": "https://www.vulcania.com/animation/yapadrisk-flamme-des-volcans/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-yapadrisk-1855.png",
+      "http": 200,
+      "bytes": 421245,
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "4a951c5e27099ab459a9450371b8beb1584a3d822086f0894d4754323b6c4e6d",
+      "accessedAtUtc": "2026-11-15T18:53:14.930588+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Real official source photograph personally viewed individually. Ninety-six localized fields personally authored and reviewed. Contes is a real theatre with an illustrated eruption on screen, Primordia uses actual projection on the architecture. Yapadrisk version and capture date unproved: non-current, no assertion it shows the present Celtic-door story. No local pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Yapadrisk-et-la-flamme-des-volcans.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-yapadrisk-1855.png",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-58-yapadrisk-pyrotechnics-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-58-yapadrisk-pyrotechnics-import-result.json"
+  },
+  "metadata": {
+    "description": "Blouses blanches, casquettes rouges et bras levés accompagnent cet effet pyrotechnique nocturne.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Yapadrisk-et-la-flamme-des-volcans.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des comédiens entourent un tonneau jaune et noir d’où jaillit une gerbe d’étincelles dans le spectacle de Yapadrisk."
+      },
+      {
+        "languageCode": "en",
+        "value": "Performers surround a yellow and black barrel sending up a spray of sparks in the Yapadrisk show."
+      },
+      {
+        "languageCode": "de",
+        "value": "Darsteller stehen um ein gelb-schwarzes Fass, aus dem im Yapadrisk-Spektakel ein Funkenstrahl aufsteigt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Artiesten staan rond een geel met zwarte ton waaruit een vonkenregen opstijgt tijdens de Yapadrisk-show."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli interpreti circondano un barile giallo e nero dal quale si alza una fontana di scintille nello spettacolo di Yapadrisk."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los intérpretes rodean un barril amarillo y negro del que sale una lluvia de chispas en el espectáculo de Yapadrisk."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Aktorzy otaczają żółto-czarną beczkę, z której w pokazie Yapadriska tryska fontanna iskier."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os intérpretes rodeiam um barril amarelo e preto de onde sai uma fonte de faíscas no espetáculo de Yapadrisk."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Blouses blanches, casquettes rouges et bras levés accompagnent cet effet pyrotechnique nocturne."
+      },
+      {
+        "languageCode": "en",
+        "value": "White coats, red caps and raised arms accompany this night-time pyrotechnic effect."
+      },
+      {
+        "languageCode": "de",
+        "value": "Weiße Kittel, rote Kappen und erhobene Arme begleiten diesen nächtlichen pyrotechnischen Effekt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Witte jassen, rode petten en geheven armen begeleiden dit nachtelijke vuurwerkeffect."
+      },
+      {
+        "languageCode": "it",
+        "value": "Camici bianchi, berretti rossi e braccia alzate accompagnano questo effetto pirotecnico notturno."
+      },
+      {
+        "languageCode": "es",
+        "value": "Batas blancas, gorras rojas y brazos levantados acompañan este efecto pirotécnico nocturno."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Białe fartuchy, czerwone czapki i uniesione ręce towarzyszą temu nocnemu efektowi pirotechnicznemu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Batas brancas, bonés vermelhos e braços erguidos acompanham este efeito pirotécnico noturno."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T19:05:19.3911013Z",
+    "result": {
+      "id": "17d9beefe541405c8d396bfd116514b1",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+      "path": "park_item/17d9beefe541405c8d396bfd116514b1",
+      "description": "Blouses blanches, casquettes rouges et bras levés accompagnent cet effet pyrotechnique nocturne.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 421245,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Yapadrisk-et-la-flamme-des-volcans.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des comédiens entourent un tonneau jaune et noir d’où jaillit une gerbe d’étincelles dans le spectacle de Yapadrisk."
+        },
+        {
+          "languageCode": "en",
+          "value": "Performers surround a yellow and black barrel sending up a spray of sparks in the Yapadrisk show."
+        },
+        {
+          "languageCode": "de",
+          "value": "Darsteller stehen um ein gelb-schwarzes Fass, aus dem im Yapadrisk-Spektakel ein Funkenstrahl aufsteigt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Artiesten staan rond een geel met zwarte ton waaruit een vonkenregen opstijgt tijdens de Yapadrisk-show."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli interpreti circondano un barile giallo e nero dal quale si alza una fontana di scintille nello spettacolo di Yapadrisk."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los intérpretes rodean un barril amarillo y negro del que sale una lluvia de chispas en el espectáculo de Yapadrisk."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Aktorzy otaczają żółto-czarną beczkę, z której w pokazie Yapadriska tryska fontanna iskier."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os intérpretes rodeiam um barril amarelo e preto de onde sai uma fonte de faíscas no espetáculo de Yapadrisk."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Blouses blanches, casquettes rouges et bras levés accompagnent cet effet pyrotechnique nocturne."
+        },
+        {
+          "languageCode": "en",
+          "value": "White coats, red caps and raised arms accompany this night-time pyrotechnic effect."
+        },
+        {
+          "languageCode": "de",
+          "value": "Weiße Kittel, rote Kappen und erhobene Arme begleiten diesen nächtlichen pyrotechnischen Effekt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Witte jassen, rode petten en geheven armen begeleiden dit nachtelijke vuurwerkeffect."
+        },
+        {
+          "languageCode": "it",
+          "value": "Camici bianchi, berretti rossi e braccia alzate accompagnano questo effetto pirotecnico notturno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Batas blancas, gorras rojas y brazos levantados acompañan este efecto pirotécnico nocturno."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Białe fartuchy, czerwone czapki i uniesione ręce towarzyszą temu nocnemu efektowi pirotechnicznemu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Batas brancas, bonés vermelhos e braços erguidos acompanham este efeito pirotécnico noturno."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:05:12.579Z",
+      "updatedAt": "2026-11-15T19:05:16.276Z"
+    },
+    "startedAtUtc": "2026-11-15T19:05:04.2807921Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

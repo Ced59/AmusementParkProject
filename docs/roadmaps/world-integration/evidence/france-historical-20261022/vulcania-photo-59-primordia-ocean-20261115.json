@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-59-primordia-ocean",
+    "ownerId": "ba34b618-1876-4355-b842-2d10f6975525",
+    "itemName": "Primordia",
+    "current": true,
+    "source": {
+      "key": "primordia",
+      "url": "https://www.vulcania.com/wp-content/uploads/2026/05/IMG_6960-scaled.jpeg",
+      "sourcePage": "https://www.vulcania.com/animation/spectacle-nocturne-primordia/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-primordia-1855.jpeg",
+      "http": 200,
+      "bytes": 194342,
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sha256": "241f6cb8857787ae620d3ad90cece46eacea4613e94c3ce5ec1e85ac455b2853",
+      "accessedAtUtc": "2026-11-15T18:53:15.123779+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Real official source photograph personally viewed individually. Ninety-six localized fields personally authored and reviewed. Contes is a real theatre with an illustrated eruption on screen, Primordia uses actual projection on the architecture. Yapadrisk version and capture date unproved: non-current, no assertion it shows the present Celtic-door story. No local pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ba34b618-1876-4355-b842-2d10f6975525",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2026/05/IMG_6960-scaled.jpeg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-primordia-1855.jpeg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-59-primordia-ocean-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-59-primordia-ocean-import-result.json"
+  },
+  "metadata": {
+    "description": "Au premier plan, une ouverture circulaire lumineuse montre une mer bleue, au milieu des fumées et de l’éclairage du spectacle.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2026/05/IMG_6960-scaled.jpeg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des coraux et des méduses sont projetés sur le cône et la serre de Vulcania pendant Primordia."
+      },
+      {
+        "languageCode": "en",
+        "value": "Corals and jellyfish are projected onto Vulcania’s cone and glasshouse during Primordia."
+      },
+      {
+        "languageCode": "de",
+        "value": "Während Primordia werden Korallen und Quallen auf Vulcanias Kegel und Glashaus projiziert."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Tijdens Primordia worden koralen en kwallen op de kegel en glazen serre van Vulcania geprojecteerd."
+      },
+      {
+        "languageCode": "it",
+        "value": "Coralli e meduse sono proiettati sul cono e sulla serra di Vulcania durante Primordia."
+      },
+      {
+        "languageCode": "es",
+        "value": "Corales y medusas se proyectan sobre el cono y el invernadero de Vulcania durante Primordia."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Podczas Primordii na stożku i szklanej hali Vulcanii wyświetlane są koralowce i meduzy."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Corais e medusas são projetados sobre o cone e a estufa de Vulcania durante Primordia."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Au premier plan, une ouverture circulaire lumineuse montre une mer bleue, au milieu des fumées et de l’éclairage du spectacle."
+      },
+      {
+        "languageCode": "en",
+        "value": "In the foreground, a glowing circular opening shows a blue sea amid the show’s smoke and lighting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Im Vordergrund zeigt eine leuchtende kreisförmige Öffnung ein blaues Meer zwischen Rauch und Bühnenlicht."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Op de voorgrond toont een lichtgevende ronde opening een blauwe zee, te midden van rook en showverlichting."
+      },
+      {
+        "languageCode": "it",
+        "value": "In primo piano, un’apertura circolare luminosa mostra un mare blu tra i fumi e le luci dello spettacolo."
+      },
+      {
+        "languageCode": "es",
+        "value": "En primer plano, una abertura circular luminosa muestra un mar azul entre el humo y las luces del espectáculo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Na pierwszym planie świetlisty okrągły otwór ukazuje błękitne morze pośród dymu i oświetlenia widowiska."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Em primeiro plano, uma abertura circular luminosa mostra um mar azul entre o fumo e as luzes do espetáculo."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "6c530a3938974ba9bab3b7b7abc7d155",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ba34b618-1876-4355-b842-2d10f6975525",
+      "path": "park_item/6c530a3938974ba9bab3b7b7abc7d155",
+      "description": "Au premier plan, une ouverture circulaire lumineuse montre une mer bleue, au milieu des fumées et de l’éclairage du spectacle.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1536,
+      "height": 2048,
+      "sizeInBytes": 194342,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2026/05/IMG_6960-scaled.jpeg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des coraux et des méduses sont projetés sur le cône et la serre de Vulcania pendant Primordia."
+        },
+        {
+          "languageCode": "en",
+          "value": "Corals and jellyfish are projected onto Vulcania’s cone and glasshouse during Primordia."
+        },
+        {
+          "languageCode": "de",
+          "value": "Während Primordia werden Korallen und Quallen auf Vulcanias Kegel und Glashaus projiziert."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Tijdens Primordia worden koralen en kwallen op de kegel en glazen serre van Vulcania geprojecteerd."
+        },
+        {
+          "languageCode": "it",
+          "value": "Coralli e meduse sono proiettati sul cono e sulla serra di Vulcania durante Primordia."
+        },
+        {
+          "languageCode": "es",
+          "value": "Corales y medusas se proyectan sobre el cono y el invernadero de Vulcania durante Primordia."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Podczas Primordii na stożku i szklanej hali Vulcanii wyświetlane są koralowce i meduzy."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Corais e medusas são projetados sobre o cone e a estufa de Vulcania durante Primordia."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Au premier plan, une ouverture circulaire lumineuse montre une mer bleue, au milieu des fumées et de l’éclairage du spectacle."
+        },
+        {
+          "languageCode": "en",
+          "value": "In the foreground, a glowing circular opening shows a blue sea amid the show’s smoke and lighting."
+        },
+        {
+          "languageCode": "de",
+          "value": "Im Vordergrund zeigt eine leuchtende kreisförmige Öffnung ein blaues Meer zwischen Rauch und Bühnenlicht."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Op de voorgrond toont een lichtgevende ronde opening een blauwe zee, te midden van rook en showverlichting."
+        },
+        {
+          "languageCode": "it",
+          "value": "In primo piano, un’apertura circolare luminosa mostra un mare blu tra i fumi e le luci dello spettacolo."
+        },
+        {
+          "languageCode": "es",
+          "value": "En primer plano, una abertura circular luminosa muestra un mar azul entre el humo y las luces del espectáculo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Na pierwszym planie świetlisty okrągły otwór ukazuje błękitne morze pośród dymu i oświetlenia widowiska."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em primeiro plano, uma abertura circular luminosa mostra um mar azul entre o fumo e as luzes do espetáculo."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:05:26.253Z",
+      "updatedAt": "2026-11-15T19:05:30.178Z"
+    },
+    "receivedAtUtc": "2026-11-15T19:05:33.3034703Z",
+    "startedAtUtc": "2026-11-15T19:05:21.2235153Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-61-experiences-flame",
+    "ownerId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+    "itemName": "Expériences, c’est show !",
+    "current": true,
+    "source": {
+      "key": "experiences-show",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Experiences-cest-show-.png",
+      "sourcePage": "https://www.vulcania.com/animation/experiences-cest-show/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-experiences-show-1855.png",
+      "http": 200,
+      "bytes": 392854,
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "76e7b1c11f7ecddd282515ef3b6f4109a992bd3d099647f2a0005a3b49c0f37f",
+      "accessedAtUtc": "2026-11-15T18:53:15.580064+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Native official photograph personally inspected. Seventy-two localized metadata fields personally authored and reviewed. Experiences wide file 2230170 bytes exceeds official960KiB limit; accepted native1200x630variant unchanged. Pitoufeu wide replaces same-exposure OG, 100% wide shows actual map/counter distinct from presenter portrait; no duplicate variant imported. No invented capture date or pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Experiences-cest-show-.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-experiences-show-1855.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-61-experiences-flame-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-61-experiences-flame-import-result.json"
+  },
+  "metadata": {
+    "description": "Derrière l’effet scénique, le comptoir aux bandes jaunes et noires porte des bouteilles, des fioles et des tubes à essai.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Experiences-cest-show-.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une grande flamme jaillit devant les animateurs en blouse blanche d’Expériences, c’est show !"
+      },
+      {
+        "languageCode": "en",
+        "value": "A large flame rises in front of the white-coated presenters of Expériences, c’est show !"
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine große Flamme steigt vor den Vermittlern in weißen Kitteln bei Expériences, c’est show ! auf."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een grote vlam stijgt op voor de begeleiders in witte jassen bij Expériences, c’est show !"
+      },
+      {
+        "languageCode": "it",
+        "value": "Una grande fiammata si alza davanti agli animatori in camice bianco di Expériences, c’est show !"
+      },
+      {
+        "languageCode": "es",
+        "value": "Una gran llamarada se alza ante los divulgadores con bata blanca de Expériences, c’est show !"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Duży płomień unosi się przed prowadzącymi w białych fartuchach podczas Expériences, c’est show !"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma grande chama ergue-se diante dos animadores de bata branca de Expériences, c’est show !"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Derrière l’effet scénique, le comptoir aux bandes jaunes et noires porte des bouteilles, des fioles et des tubes à essai."
+      },
+      {
+        "languageCode": "en",
+        "value": "Behind the stage effect, the yellow-and-black counter holds bottles, flasks and test tubes."
+      },
+      {
+        "languageCode": "de",
+        "value": "Hinter dem Bühneneffekt stehen Flaschen, Kolben und Reagenzgläser auf dem gelb-schwarzen Tresen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Achter het toneeleffect staan flessen, kolven en reageerbuizen op de geel met zwarte toonbank."
+      },
+      {
+        "languageCode": "it",
+        "value": "Dietro l’effetto scenico, sul bancone giallo e nero si trovano bottiglie, ampolle e provette."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tras el efecto escénico, el mostrador amarillo y negro sostiene botellas, matraces y tubos de ensayo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Za efektem scenicznym na żółto-czarnej ladzie stoją butelki, kolby i probówki."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Atrás do efeito cénico, o balcão amarelo e preto tem garrafas, frascos e tubos de ensaio."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T19:09:05.4977581Z",
+    "result": {
+      "id": "339433b5e9974d78ae1d4005d6407f64",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+      "path": "park_item/339433b5e9974d78ae1d4005d6407f64",
+      "description": "Derrière l’effet scénique, le comptoir aux bandes jaunes et noires porte des bouteilles, des fioles et des tubes à essai.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 392854,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Experiences-cest-show-.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une grande flamme jaillit devant les animateurs en blouse blanche d’Expériences, c’est show !"
+        },
+        {
+          "languageCode": "en",
+          "value": "A large flame rises in front of the white-coated presenters of Expériences, c’est show !"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine große Flamme steigt vor den Vermittlern in weißen Kitteln bei Expériences, c’est show ! auf."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een grote vlam stijgt op voor de begeleiders in witte jassen bij Expériences, c’est show !"
+        },
+        {
+          "languageCode": "it",
+          "value": "Una grande fiammata si alza davanti agli animatori in camice bianco di Expériences, c’est show !"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una gran llamarada se alza ante los divulgadores con bata blanca de Expériences, c’est show !"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Duży płomień unosi się przed prowadzącymi w białych fartuchach podczas Expériences, c’est show !"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma grande chama ergue-se diante dos animadores de bata branca de Expériences, c’est show !"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Derrière l’effet scénique, le comptoir aux bandes jaunes et noires porte des bouteilles, des fioles et des tubes à essai."
+        },
+        {
+          "languageCode": "en",
+          "value": "Behind the stage effect, the yellow-and-black counter holds bottles, flasks and test tubes."
+        },
+        {
+          "languageCode": "de",
+          "value": "Hinter dem Bühneneffekt stehen Flaschen, Kolben und Reagenzgläser auf dem gelb-schwarzen Tresen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Achter het toneeleffect staan flessen, kolven en reageerbuizen op de geel met zwarte toonbank."
+        },
+        {
+          "languageCode": "it",
+          "value": "Dietro l’effetto scenico, sul bancone giallo e nero si trovano bottiglie, ampolle e provette."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tras el efecto escénico, el mostrador amarillo y negro sostiene botellas, matraces y tubos de ensayo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Za efektem scenicznym na żółto-czarnej ladzie stoją butelki, kolby i probówki."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Atrás do efeito cénico, o balcão amarelo e preto tem garrafas, frascos e tubos de ensaio."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:09:09.685Z",
+      "updatedAt": "2026-11-15T19:09:13.497Z"
+    },
+    "receivedAtUtc": "2026-11-15T19:09:16.5911840Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+          "key": "vulcania-yapadrisk",
+          "name": "Yapadrisk et la flamme des volcans",
+          "type": "Show",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une porte aux énigmes volcaniques</h2><p>Au pied du cône et de la serre de Vulcania, le Professeur Yapadrisk et son assistant découvrent une inscription sur une porte ancestrale aux racines celtiques. L’apparition du dieu Lug transforme cette découverte en épreuve : les personnages doivent résoudre ses énigmes volcaniques pour franchir la porte sans provoquer sa colère.</p><p>Les pouvoirs de cette porte entraînent le duo dans une succession de rencontres et de défis. Le professeur conserve son goût des expériences et de la comédie ; sa passion pour la volcanologie se retrouve ainsi mêlée à un récit de légendes, où la curiosité scientifique rencontre des personnages fantastiques.</p><h2>Le défi du puy de Dôme</h2><p>L’ultime mission consiste à recréer l’éruption du puy de Dôme dans le cadre du spectacle. Expériences scientifiques et images sur écran accompagnent cette fiction jouée par les personnages. La flamme des volcans devient le fil d’une aventure humoristique, ancrée dans les décors emblématiques du parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A doorway of volcanic riddles</h2><p>At the foot of Vulcania’s cone and greenhouse, Professor Yapadrisk and his assistant discover an inscription on an ancient doorway with Celtic roots. The appearance of the god Lug turns their discovery into a trial: they must solve volcanic riddles to open the door without provoking his anger.</p><p>The doorway’s powers draw the pair through a succession of encounters and challenges. The professor retains his love of experiments and comedy. His passion for volcanology becomes part of a legendary tale in which scientific curiosity meets fantastic characters.</p><h2>The puy de Dôme challenge</h2><p>Their final mission is to recreate an eruption of the puy de Dôme within the show. Scientific experiments and screen imagery accompany the fictional adventure performed by the characters. The volcanic flame runs through this humorous story, set against the park’s distinctive architecture.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Tür voller Vulkanrätsel</h2><p>Am Fuß von Vulcanias Kegel und Gewächshaus entdecken Professor Yapadrisk und sein Assistent eine Inschrift an einer uralten Tür mit keltischen Wurzeln. Als der Gott Lug erscheint, wird daraus eine Prüfung: Die Figuren müssen Vulkanrätsel lösen, um die Tür zu öffnen, ohne seinen Zorn zu wecken.</p><p>Die Kräfte dieser Tür führen das Duo zu wechselnden Begegnungen und Herausforderungen. Der Professor bleibt seiner Vorliebe für Experimente und Komik treu. Seine Begeisterung für Vulkanologie verbindet sich mit einer Sagenwelt, in der wissenschaftliche Neugier auf fantastische Figuren trifft.</p><h2>Die Herausforderung des puy de Dôme</h2><p>Die letzte Aufgabe besteht darin, im Rahmen der Show einen Ausbruch des puy de Dôme nachzustellen. Wissenschaftliche Experimente und Bilder auf einer Leinwand begleiten die gespielte Fiktion. Die Vulkanflamme zieht sich durch eine humorvolle Geschichte vor der markanten Architektur des Parks.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een deur vol vulkaanraadsels</h2><p>Aan de voet van de kegel en de serre van Vulcania ontdekken professor Yapadrisk en zijn assistent een inscriptie op een oeroude deur met Keltische wortels. De verschijning van de god Lug maakt er een beproeving van: de personages moeten vulkaanraadsels oplossen om de deur te openen zonder zijn woede te wekken.</p><p>De krachten van deze deur voeren het duo langs verschillende ontmoetingen en uitdagingen. De professor behoudt zijn voorliefde voor proeven en komedie. Zijn passie voor vulkanologie raakt verweven met een legendarisch verhaal waarin wetenschappelijke nieuwsgierigheid fantastische figuren ontmoet.</p><h2>De uitdaging van de puy de Dôme</h2><p>De laatste opdracht is om binnen de voorstelling een uitbarsting van de puy de Dôme na te bootsen. Wetenschappelijke proeven en schermbeelden begeleiden de gespeelde fictie. De vulkaanvlam vormt de rode draad van een humoristisch avontuur tegen het decor van de kenmerkende gebouwen van het park.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una porta di enigmi vulcanici</h2><p>Ai piedi del cono e della serra di Vulcania, il professor Yapadrisk e il suo assistente scoprono un’iscrizione su una porta ancestrale dalle radici celtiche. L’apparizione del dio Lug trasforma la scoperta in una prova: devono risolvere i suoi enigmi vulcanici per aprire la porta senza provocarne la collera.</p><p>I poteri della porta trascinano il duo in una successione di incontri e sfide. Il professore conserva il suo gusto per gli esperimenti e la comicità. La passione per la vulcanologia si intreccia così con un racconto leggendario, nel quale la curiosità scientifica incontra personaggi fantastici.</p><h2>La sfida del puy de Dôme</h2><p>L’ultima missione consiste nel ricreare un’eruzione del puy de Dôme all’interno dello spettacolo. Esperimenti scientifici e immagini su schermo accompagnano questa finzione interpretata dai personaggi. La fiamma dei vulcani attraversa un’avventura umoristica ambientata tra le architetture emblematiche del parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una puerta de enigmas volcánicos</h2><p>Al pie del cono y del invernadero de Vulcania, el profesor Yapadrisk y su ayudante descubren una inscripción en una puerta ancestral de raíces celtas. La aparición del dios Lug convierte el hallazgo en una prueba: deben resolver sus enigmas volcánicos para abrir la puerta sin provocar su ira.</p><p>Los poderes de la puerta llevan al dúo por una sucesión de encuentros y desafíos. El profesor conserva su afición a los experimentos y a la comedia. Su pasión por la vulcanología se entrelaza con un relato legendario en el que la curiosidad científica encuentra personajes fantásticos.</p><h2>El desafío del puy de Dôme</h2><p>La misión final consiste en recrear una erupción del puy de Dôme dentro del espectáculo. Experimentos científicos e imágenes en pantalla acompañan esta ficción interpretada por los personajes. La llama de los volcanes recorre una aventura humorística situada entre las arquitecturas emblemáticas del parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Drzwi pełne wulkanicznych zagadek</h2><p>U stóp stożka i szklarni Vulcanii profesor Yapadrisk oraz jego asystent odkrywają napis na pradawnych drzwiach o celtyckich korzeniach. Pojawienie się boga Luga zmienia odkrycie w próbę: bohaterowie muszą rozwiązać wulkaniczne zagadki, aby otworzyć drzwi i nie wywołać jego gniewu.</p><p>Moce drzwi prowadzą duet przez kolejne spotkania i wyzwania. Profesor pozostaje wierny zamiłowaniu do eksperymentów oraz komedii. Jego pasja do wulkanologii splata się z legendarną opowieścią, w której naukowa ciekawość spotyka fantastyczne postacie.</p><h2>Wyzwanie puy de Dôme</h2><p>Ostatnia misja polega na odtworzeniu erupcji puy de Dôme w ramach przedstawienia. Eksperymenty naukowe i obrazy na ekranie towarzyszą fikcyjnej przygodzie odgrywanej przez bohaterów. Wulkaniczny płomień staje się motywem przewodnim humorystycznej historii rozgrywającej się wśród charakterystycznych budowli parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma porta de enigmas vulcânicos</h2><p>Ao pé do cone e da estufa de Vulcania, o professor Yapadrisk e o seu assistente descobrem uma inscrição numa porta ancestral de raízes celtas. A aparição do deus Lug transforma a descoberta numa prova: têm de resolver os seus enigmas vulcânicos para abrir a porta sem provocar a sua cólera.</p><p>Os poderes da porta conduzem a dupla por uma sucessão de encontros e desafios. O professor mantém o seu gosto pelas experiências e pela comédia. A paixão pela vulcanologia cruza-se assim com uma narrativa lendária, em que a curiosidade científica encontra personagens fantásticas.</p><h2>O desafio do puy de Dôme</h2><p>A última missão consiste em recriar uma erupção do puy de Dôme no contexto do espetáculo. Experiências científicas e imagens num ecrã acompanham esta ficção interpretada pelas personagens. A chama dos vulcões percorre uma aventura humorística entre as arquiteturas emblemáticas do parque.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ba34b618-1876-4355-b842-2d10f6975525",
+          "key": "vulcania-primordia",
+          "name": "Primordia, la naissance du monde",
+          "type": "Show",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les premiers instants du monde</h2><p>À la nuit tombée, Primordia imagine la naissance de la Terre dans le paysage de Vulcania. Le récit fait surgir le vent, la lave et les océans avant l’apparition de la vie. Des créatures fantastiques accompagnent ce voyage vers les origines, dans une évocation où la légende se mêle à la science.</p><p>La lumière, le son et la pyrotechnie composent cette fresque nocturne. Les manifestations de la nature appartiennent à la mise en scène : les volcans auvergnats deviennent le cadre d’une histoire de création, avec ses mouvements, ses éclats et ses silhouettes imaginaires.</p><h2>L’architecture entre en scène</h2><p>La Vallée, le Cône et la Serre conçus par Hans Hollein participent au récit. Ces espaces familiers du parc forment ensemble le décor du spectacle, tandis que le ciel nocturne prolonge les effets lumineux. Primordia transforme ainsi l’architecture de Vulcania en paysage de fiction.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The world’s first moments</h2><p>After dark, Primordia imagines the birth of Earth within Vulcania’s landscape. Its story brings forth wind, lava and oceans before the appearance of life. Fantastic creatures accompany this journey to the beginning, in a tale where legend meets science.</p><p>Light, sound and pyrotechnics create the nocturnal panorama. These forces of nature belong to the staging: the Auvergne volcanoes provide the setting for a creation story, filled with movement, flashes and imaginary figures.</p><h2>Architecture takes the stage</h2><p>The Valley, Cone and Greenhouse designed by Hans Hollein become part of the narrative. These familiar spaces form the show’s setting together, while the night sky extends its lighting effects. Primordia turns Vulcania’s architecture into a fictional landscape.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die ersten Augenblicke der Welt</h2><p>Nach Einbruch der Dunkelheit erzählt Primordia eine Vorstellung von der Geburt der Erde in Vulcanias Landschaft. Wind, Lava und Ozeane entstehen, bevor das Leben erscheint. Fantastische Wesen begleiten die Reise zu den Ursprüngen, bei der Sage und Wissenschaft aufeinandertreffen.</p><p>Licht, Klang und Pyrotechnik gestalten dieses nächtliche Panorama. Die Naturgewalten gehören zur Inszenierung: Die Vulkane der Auvergne bilden den Hintergrund einer Schöpfungsgeschichte voller Bewegung, Lichtblitze und erfundener Gestalten.</p><h2>Architektur wird zur Bühne</h2><p>Das Tal, der Kegel und das Gewächshaus von Hans Hollein wirken an der Erzählung mit. Gemeinsam bilden diese vertrauten Parkbereiche die Kulisse, während der Nachthimmel die Lichteffekte erweitert. Primordia verwandelt Vulcanias Architektur in eine Landschaft der Fantasie.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De eerste momenten van de wereld</h2><p>Na het vallen van de avond verbeeldt Primordia het ontstaan van de aarde in het landschap van Vulcania. Het verhaal laat wind, lava en oceanen ontstaan voordat het leven verschijnt. Fantastische wezens begeleiden deze reis naar de oorsprong, waarin legende en wetenschap samenkomen.</p><p>Licht, geluid en pyrotechniek vormen het nachtelijke tafereel. De natuurkrachten maken deel uit van de enscenering: de vulkanen van Auvergne bieden het decor voor een scheppingsverhaal vol beweging, lichtflitsen en denkbeeldige figuren.</p><h2>Architectuur op het toneel</h2><p>De Vallei, de Kegel en de Serre van Hans Hollein spelen mee in de vertelling. Deze vertrouwde parkruimten vormen samen het decor, terwijl de nachtelijke hemel de lichteffecten verlengt. Primordia maakt van de architectuur van Vulcania een fantasielandschap.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I primi istanti del mondo</h2><p>Al calare della notte, Primordia immagina la nascita della Terra nel paesaggio di Vulcania. Il racconto fa emergere vento, lava e oceani prima dell’apparizione della vita. Creature fantastiche accompagnano questo viaggio alle origini, in un’evocazione nella quale leggenda e scienza si incontrano.</p><p>Luce, suono e pirotecnica compongono il quadro notturno. Le forze della natura appartengono alla messa in scena: i vulcani dell’Alvernia diventano lo scenario di una storia della creazione, tra movimenti, bagliori e figure immaginarie.</p><h2>L’architettura entra in scena</h2><p>La Valle, il Cono e la Serra progettati da Hans Hollein partecipano alla narrazione. Questi spazi familiari del parco compongono insieme lo scenario, mentre il cielo notturno prolunga gli effetti luminosi. Primordia trasforma l’architettura di Vulcania in un paesaggio di fantasia.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Los primeros instantes del mundo</h2><p>Al caer la noche, Primordia imagina el nacimiento de la Tierra en el paisaje de Vulcania. El relato hace surgir el viento, la lava y los océanos antes de la aparición de la vida. Criaturas fantásticas acompañan este viaje a los orígenes, en una evocación donde la leyenda se encuentra con la ciencia.</p><p>La luz, el sonido y la pirotecnia componen el cuadro nocturno. Las fuerzas de la naturaleza pertenecen a la puesta en escena: los volcanes de Auvernia sirven de marco para una historia de creación, con movimientos, destellos y figuras imaginarias.</p><h2>La arquitectura entra en escena</h2><p>El Valle, el Cono y el Invernadero diseñados por Hans Hollein participan en el relato. Estos espacios familiares del parque forman juntos el escenario, mientras el cielo nocturno prolonga los efectos luminosos. Primordia transforma la arquitectura de Vulcania en un paisaje de ficción.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pierwsze chwile świata</h2><p>Po zmroku Primordia przedstawia wyobrażenie narodzin Ziemi w krajobrazie Vulcanii. Opowieść przywołuje wiatr, lawę i oceany, zanim pojawi się życie. Fantastyczne stworzenia towarzyszą podróży do początków świata, łączącej legendę z nauką.</p><p>Światło, dźwięk i pirotechnika tworzą nocną panoramę. Siły natury należą do inscenizacji: wulkany Owernii stają się tłem opowieści o stworzeniu, pełnej ruchu, rozbłysków i wymyślonych postaci.</p><h2>Architektura wkracza na scenę</h2><p>Dolina, Stożek i Szklarnia zaprojektowane przez Hansa Holleina uczestniczą w narracji. Znane przestrzenie parku wspólnie budują scenografię, a nocne niebo przedłuża efekty świetlne. Primordia zmienia architekturę Vulcanii w krajobraz fantazji.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Os primeiros instantes do mundo</h2><p>Ao cair da noite, Primordia imagina o nascimento da Terra na paisagem de Vulcania. A narrativa faz surgir o vento, a lava e os oceanos antes do aparecimento da vida. Criaturas fantásticas acompanham esta viagem às origens, numa evocação em que a lenda se encontra com a ciência.</p><p>A luz, o som e a pirotecnia compõem o quadro noturno. As forças da natureza pertencem à encenação: os vulcões da Auvérnia tornam-se o cenário de uma história de criação, com movimentos, clarões e figuras imaginárias.</p><h2>A arquitetura entra em cena</h2><p>O Vale, o Cone e a Estufa concebidos por Hans Hollein participam na narrativa. Estes espaços familiares do parque formam em conjunto o cenário, enquanto o céu noturno prolonga os efeitos luminosos. Primordia transforma a arquitetura de Vulcania numa paisagem de ficção.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-54-two-volcanic-shows",
+        "notes": "Sixteen descriptions personally written/reviewed in eight languages from complete primary official pages Yapadrisk et la flamme des volcans and Primordia. Existing two show identities only. Yapadrisk Celtic door/Lug/riddles/fictional recreation of Puy de Dome eruption, not real eruption. Primordia staged origins and fantastic creatures; light/sound/pyrotechnics, Valley/Cone/Greenhouse by Hans Hollein. No first opening day, all-year schedule, technical cycle or new duplicate show invented. Two headings three paragraphs, private preserved."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "6908ff37-b145-4192-90b7-8748c07393d7",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:55:30.1936458Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "vulcania-yapadrisk",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Tür voller Vulkanrätsel</h2><p>Am Fuß von Vulcanias Kegel und Gewächshaus entdecken Professor Yapadrisk und sein Assistent eine Inschrift an einer uralten Tür mit keltischen Wurzeln. Als der Gott Lug erscheint, wird daraus eine Prüfung: Die Figuren müssen Vulkanrätsel lösen, um die Tür zu öffnen, ohne seinen Zorn zu wecken.</p><p>Die Kräfte dieser Tür führen das Duo zu wechselnden Begegnungen und Herausforderungen. Der Professor bleibt seiner Vorliebe für Experimente und Komik treu. Seine Begeisterung für Vulkanologie verbindet sich mit einer Sagenwelt, in der wissenschaftliche Neugier auf fantastische Figuren trifft.</p><h2>Die Herausforderung des puy de Dôme</h2><p>Die letzte Aufgabe besteht darin, im Rahmen der Show einen Ausbruch des puy de Dôme nachzustellen. Wissenschaftliche Experimente und Bilder auf einer Leinwand begleiten die gespielte Fiktion. Die Vulkanflamme zieht sich durch eine humorvolle Geschichte vor der markanten Architektur des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A doorway of volcanic riddles</h2><p>At the foot of Vulcania’s cone and greenhouse, Professor Yapadrisk and his assistant discover an inscription on an ancient doorway with Celtic roots. The appearance of the god Lug turns their discovery into a trial: they must solve volcanic riddles to open the door without provoking his anger.</p><p>The doorway’s powers draw the pair through a succession of encounters and challenges. The professor retains his love of experiments and comedy. His passion for volcanology becomes part of a legendary tale in which scientific curiosity meets fantastic characters.</p><h2>The puy de Dôme challenge</h2><p>Their final mission is to recreate an eruption of the puy de Dôme within the show. Scientific experiments and screen imagery accompany the fictional adventure performed by the characters. The volcanic flame runs through this humorous story, set against the park’s distinctive architecture.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una puerta de enigmas volcánicos</h2><p>Al pie del cono y del invernadero de Vulcania, el profesor Yapadrisk y su ayudante descubren una inscripción en una puerta ancestral de raíces celtas. La aparición del dios Lug convierte el hallazgo en una prueba: deben resolver sus enigmas volcánicos para abrir la puerta sin provocar su ira.</p><p>Los poderes de la puerta llevan al dúo por una sucesión de encuentros y desafíos. El profesor conserva su afición a los experimentos y a la comedia. Su pasión por la vulcanología se entrelaza con un relato legendario en el que la curiosidad científica encuentra personajes fantásticos.</p><h2>El desafío del puy de Dôme</h2><p>La misión final consiste en recrear una erupción del puy de Dôme dentro del espectáculo. Experimentos científicos e imágenes en pantalla acompañan esta ficción interpretada por los personajes. La llama de los volcanes recorre una aventura humorística situada entre las arquitecturas emblemáticas del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une porte aux énigmes volcaniques</h2><p>Au pied du cône et de la serre de Vulcania, le Professeur Yapadrisk et son assistant découvrent une inscription sur une porte ancestrale aux racines celtiques. L’apparition du dieu Lug transforme cette découverte en épreuve : les personnages doivent résoudre ses énigmes volcaniques pour franchir la porte sans provoquer sa colère.</p><p>Les pouvoirs de cette porte entraînent le duo dans une succession de rencontres et de défis. Le professeur conserve son goût des expériences et de la comédie ; sa passion pour la volcanologie se retrouve ainsi mêlée à un récit de légendes, où la curiosité scientifique rencontre des personnages fantastiques.</p><h2>Le défi du puy de Dôme</h2><p>L’ultime mission consiste à recréer l’éruption du puy de Dôme dans le cadre du spectacle. Expériences scientifiques et images sur écran accompagnent cette fiction jouée par les personnages. La flamme des volcans devient le fil d’une aventure humoristique, ancrée dans les décors emblématiques du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una porta di enigmi vulcanici</h2><p>Ai piedi del cono e della serra di Vulcania, il professor Yapadrisk e il suo assistente scoprono un’iscrizione su una porta ancestrale dalle radici celtiche. L’apparizione del dio Lug trasforma la scoperta in una prova: devono risolvere i suoi enigmi vulcanici per aprire la porta senza provocarne la collera.</p><p>I poteri della porta trascinano il duo in una successione di incontri e sfide. Il professore conserva il suo gusto per gli esperimenti e la comicità. La passione per la vulcanologia si intreccia così con un racconto leggendario, nel quale la curiosità scientifica incontra personaggi fantastici.</p><h2>La sfida del puy de Dôme</h2><p>L’ultima missione consiste nel ricreare un’eruzione del puy de Dôme all’interno dello spettacolo. Esperimenti scientifici e immagini su schermo accompagnano questa finzione interpretata dai personaggi. La fiamma dei vulcani attraversa un’avventura umoristica ambientata tra le architetture emblematiche del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een deur vol vulkaanraadsels</h2><p>Aan de voet van de kegel en de serre van Vulcania ontdekken professor Yapadrisk en zijn assistent een inscriptie op een oeroude deur met Keltische wortels. De verschijning van de god Lug maakt er een beproeving van: de personages moeten vulkaanraadsels oplossen om de deur te openen zonder zijn woede te wekken.</p><p>De krachten van deze deur voeren het duo langs verschillende ontmoetingen en uitdagingen. De professor behoudt zijn voorliefde voor proeven en komedie. Zijn passie voor vulkanologie raakt verweven met een legendarisch verhaal waarin wetenschappelijke nieuwsgierigheid fantastische figuren ontmoet.</p><h2>De uitdaging van de puy de Dôme</h2><p>De laatste opdracht is om binnen de voorstelling een uitbarsting van de puy de Dôme na te bootsen. Wetenschappelijke proeven en schermbeelden begeleiden de gespeelde fictie. De vulkaanvlam vormt de rode draad van een humoristisch avontuur tegen het decor van de kenmerkende gebouwen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Drzwi pełne wulkanicznych zagadek</h2><p>U stóp stożka i szklarni Vulcanii profesor Yapadrisk oraz jego asystent odkrywają napis na pradawnych drzwiach o celtyckich korzeniach. Pojawienie się boga Luga zmienia odkrycie w próbę: bohaterowie muszą rozwiązać wulkaniczne zagadki, aby otworzyć drzwi i nie wywołać jego gniewu.</p><p>Moce drzwi prowadzą duet przez kolejne spotkania i wyzwania. Profesor pozostaje wierny zamiłowaniu do eksperymentów oraz komedii. Jego pasja do wulkanologii splata się z legendarną opowieścią, w której naukowa ciekawość spotyka fantastyczne postacie.</p><h2>Wyzwanie puy de Dôme</h2><p>Ostatnia misja polega na odtworzeniu erupcji puy de Dôme w ramach przedstawienia. Eksperymenty naukowe i obrazy na ekranie towarzyszą fikcyjnej przygodzie odgrywanej przez bohaterów. Wulkaniczny płomień staje się motywem przewodnim humorystycznej historii rozgrywającej się wśród charakterystycznych budowli parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma porta de enigmas vulcânicos</h2><p>Ao pé do cone e da estufa de Vulcania, o professor Yapadrisk e o seu assistente descobrem uma inscrição numa porta ancestral de raízes celtas. A aparição do deus Lug transforma a descoberta numa prova: têm de resolver os seus enigmas vulcânicos para abrir a porta sem provocar a sua cólera.</p><p>Os poderes da porta conduzem a dupla por uma sucessão de encontros e desafios. O professor mantém o seu gosto pelas experiências e pela comédia. A paixão pela vulcanologia cruza-se assim com uma narrativa lendária, em que a curiosidade científica encontra personagens fantásticas.</p><h2>O desafio do puy de Dôme</h2><p>A última missão consiste em recriar uma erupção do puy de Dôme no contexto do espetáculo. Experiências científicas e imagens num ecrã acompanham esta ficção interpretada pelas personagens. A chama dos vulcões percorre uma aventura humorística entre as arquiteturas emblemáticas do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+        "entityKey": "vulcania-primordia",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die ersten Augenblicke der Welt</h2><p>Nach Einbruch der Dunkelheit erzählt Primordia eine Vorstellung von der Geburt der Erde in Vulcanias Landschaft. Wind, Lava und Ozeane entstehen, bevor das Leben erscheint. Fantastische Wesen begleiten die Reise zu den Ursprüngen, bei der Sage und Wissenschaft aufeinandertreffen.</p><p>Licht, Klang und Pyrotechnik gestalten dieses nächtliche Panorama. Die Naturgewalten gehören zur Inszenierung: Die Vulkane der Auvergne bilden den Hintergrund einer Schöpfungsgeschichte voller Bewegung, Lichtblitze und erfundener Gestalten.</p><h2>Architektur wird zur Bühne</h2><p>Das Tal, der Kegel und das Gewächshaus von Hans Hollein wirken an der Erzählung mit. Gemeinsam bilden diese vertrauten Parkbereiche die Kulisse, während der Nachthimmel die Lichteffekte erweitert. Primordia verwandelt Vulcanias Architektur in eine Landschaft der Fantasie.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The world’s first moments</h2><p>After dark, Primordia imagines the birth of Earth within Vulcania’s landscape. Its story brings forth wind, lava and oceans before the appearance of life. Fantastic creatures accompany this journey to the beginning, in a tale where legend meets science.</p><p>Light, sound and pyrotechnics create the nocturnal panorama. These forces of nature belong to the staging: the Auvergne volcanoes provide the setting for a creation story, filled with movement, flashes and imaginary figures.</p><h2>Architecture takes the stage</h2><p>The Valley, Cone and Greenhouse designed by Hans Hollein become part of the narrative. These familiar spaces form the show’s setting together, while the night sky extends its lighting effects. Primordia turns Vulcania’s architecture into a fictional landscape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los primeros instantes del mundo</h2><p>Al caer la noche, Primordia imagina el nacimiento de la Tierra en el paisaje de Vulcania. El relato hace surgir el viento, la lava y los océanos antes de la aparición de la vida. Criaturas fantásticas acompañan este viaje a los orígenes, en una evocación donde la leyenda se encuentra con la ciencia.</p><p>La luz, el sonido y la pirotecnia componen el cuadro nocturno. Las fuerzas de la naturaleza pertenecen a la puesta en escena: los volcanes de Auvernia sirven de marco para una historia de creación, con movimientos, destellos y figuras imaginarias.</p><h2>La arquitectura entra en escena</h2><p>El Valle, el Cono y el Invernadero diseñados por Hans Hollein participan en el relato. Estos espacios familiares del parque forman juntos el escenario, mientras el cielo nocturno prolonga los efectos luminosos. Primordia transforma la arquitectura de Vulcania en un paisaje de ficción.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les premiers instants du monde</h2><p>À la nuit tombée, Primordia imagine la naissance de la Terre dans le paysage de Vulcania. Le récit fait surgir le vent, la lave et les océans avant l’apparition de la vie. Des créatures fantastiques accompagnent ce voyage vers les origines, dans une évocation où la légende se mêle à la science.</p><p>La lumière, le son et la pyrotechnie composent cette fresque nocturne. Les manifestations de la nature appartiennent à la mise en scène : les volcans auvergnats deviennent le cadre d’une histoire de création, avec ses mouvements, ses éclats et ses silhouettes imaginaires.</p><h2>L’architecture entre en scène</h2><p>La Vallée, le Cône et la Serre conçus par Hans Hollein participent au récit. Ces espaces familiers du parc forment ensemble le décor du spectacle, tandis que le ciel nocturne prolonge les effets lumineux. Primordia transforme ainsi l’architecture de Vulcania en paysage de fiction.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I primi istanti del mondo</h2><p>Al calare della notte, Primordia immagina la nascita della Terra nel paesaggio di Vulcania. Il racconto fa emergere vento, lava e oceani prima dell’apparizione della vita. Creature fantastiche accompagnano questo viaggio alle origini, in un’evocazione nella quale leggenda e scienza si incontrano.</p><p>Luce, suono e pirotecnica compongono il quadro notturno. Le forze della natura appartengono alla messa in scena: i vulcani dell’Alvernia diventano lo scenario di una storia della creazione, tra movimenti, bagliori e figure immaginarie.</p><h2>L’architettura entra in scena</h2><p>La Valle, il Cono e la Serra progettati da Hans Hollein partecipano alla narrazione. Questi spazi familiari del parco compongono insieme lo scenario, mentre il cielo notturno prolunga gli effetti luminosi. Primordia trasforma l’architettura di Vulcania in un paesaggio di fantasia.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De eerste momenten van de wereld</h2><p>Na het vallen van de avond verbeeldt Primordia het ontstaan van de aarde in het landschap van Vulcania. Het verhaal laat wind, lava en oceanen ontstaan voordat het leven verschijnt. Fantastische wezens begeleiden deze reis naar de oorsprong, waarin legende en wetenschap samenkomen.</p><p>Licht, geluid en pyrotechniek vormen het nachtelijke tafereel. De natuurkrachten maken deel uit van de enscenering: de vulkanen van Auvergne bieden het decor voor een scheppingsverhaal vol beweging, lichtflitsen en denkbeeldige figuren.</p><h2>Architectuur op het toneel</h2><p>De Vallei, de Kegel en de Serre van Hans Hollein spelen mee in de vertelling. Deze vertrouwde parkruimten vormen samen het decor, terwijl de nachtelijke hemel de lichteffecten verlengt. Primordia maakt van de architectuur van Vulcania een fantasielandschap.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pierwsze chwile świata</h2><p>Po zmroku Primordia przedstawia wyobrażenie narodzin Ziemi w krajobrazie Vulcanii. Opowieść przywołuje wiatr, lawę i oceany, zanim pojawi się życie. Fantastyczne stworzenia towarzyszą podróży do początków świata, łączącej legendę z nauką.</p><p>Światło, dźwięk i pirotechnika tworzą nocną panoramę. Siły natury należą do inscenizacji: wulkany Owernii stają się tłem opowieści o stworzeniu, pełnej ruchu, rozbłysków i wymyślonych postaci.</p><h2>Architektura wkracza na scenę</h2><p>Dolina, Stożek i Szklarnia zaprojektowane przez Hansa Holleina uczestniczą w narracji. Znane przestrzenie parku wspólnie budują scenografię, a nocne niebo przedłuża efekty świetlne. Primordia zmienia architekturę Vulcanii w krajobraz fantazji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os primeiros instantes do mundo</h2><p>Ao cair da noite, Primordia imagina o nascimento da Terra na paisagem de Vulcania. A narrativa faz surgir o vento, a lava e os oceanos antes do aparecimento da vida. Criaturas fantásticas acompanham esta viagem às origens, numa evocação em que a lenda se encontra com a ciência.</p><p>A luz, o som e a pirotecnia compõem o quadro noturno. As forças da natureza pertencem à encenação: os vulcões da Auvérnia tornam-se o cenário de uma história de criação, com movimentos, clarões e figuras imaginárias.</p><h2>A arquitetura entra em cena</h2><p>O Vale, o Cone e a Estufa concebidos por Hans Hollein participam na narrativa. Estes espaços familiares do parque formam em conjunto o cenário, enquanto o céu noturno prolonga os efeitos luminosos. Primordia transforma a arquitetura de Vulcania numa paisagem de ficção.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "8b87dc2f-e15d-4f9c-b628-6ef02092519d",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:55:52.7542258Z",
+    "appliedAtUtc": "2026-11-15T18:55:52.7542262Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "vulcania-yapadrisk",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Tür voller Vulkanrätsel</h2><p>Am Fuß von Vulcanias Kegel und Gewächshaus entdecken Professor Yapadrisk und sein Assistent eine Inschrift an einer uralten Tür mit keltischen Wurzeln. Als der Gott Lug erscheint, wird daraus eine Prüfung: Die Figuren müssen Vulkanrätsel lösen, um die Tür zu öffnen, ohne seinen Zorn zu wecken.</p><p>Die Kräfte dieser Tür führen das Duo zu wechselnden Begegnungen und Herausforderungen. Der Professor bleibt seiner Vorliebe für Experimente und Komik treu. Seine Begeisterung für Vulkanologie verbindet sich mit einer Sagenwelt, in der wissenschaftliche Neugier auf fantastische Figuren trifft.</p><h2>Die Herausforderung des puy de Dôme</h2><p>Die letzte Aufgabe besteht darin, im Rahmen der Show einen Ausbruch des puy de Dôme nachzustellen. Wissenschaftliche Experimente und Bilder auf einer Leinwand begleiten die gespielte Fiktion. Die Vulkanflamme zieht sich durch eine humorvolle Geschichte vor der markanten Architektur des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A doorway of volcanic riddles</h2><p>At the foot of Vulcania’s cone and greenhouse, Professor Yapadrisk and his assistant discover an inscription on an ancient doorway with Celtic roots. The appearance of the god Lug turns their discovery into a trial: they must solve volcanic riddles to open the door without provoking his anger.</p><p>The doorway’s powers draw the pair through a succession of encounters and challenges. The professor retains his love of experiments and comedy. His passion for volcanology becomes part of a legendary tale in which scientific curiosity meets fantastic characters.</p><h2>The puy de Dôme challenge</h2><p>Their final mission is to recreate an eruption of the puy de Dôme within the show. Scientific experiments and screen imagery accompany the fictional adventure performed by the characters. The volcanic flame runs through this humorous story, set against the park’s distinctive architecture.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una puerta de enigmas volcánicos</h2><p>Al pie del cono y del invernadero de Vulcania, el profesor Yapadrisk y su ayudante descubren una inscripción en una puerta ancestral de raíces celtas. La aparición del dios Lug convierte el hallazgo en una prueba: deben resolver sus enigmas volcánicos para abrir la puerta sin provocar su ira.</p><p>Los poderes de la puerta llevan al dúo por una sucesión de encuentros y desafíos. El profesor conserva su afición a los experimentos y a la comedia. Su pasión por la vulcanología se entrelaza con un relato legendario en el que la curiosidad científica encuentra personajes fantásticos.</p><h2>El desafío del puy de Dôme</h2><p>La misión final consiste en recrear una erupción del puy de Dôme dentro del espectáculo. Experimentos científicos e imágenes en pantalla acompañan esta ficción interpretada por los personajes. La llama de los volcanes recorre una aventura humorística situada entre las arquitecturas emblemáticas del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une porte aux énigmes volcaniques</h2><p>Au pied du cône et de la serre de Vulcania, le Professeur Yapadrisk et son assistant découvrent une inscription sur une porte ancestrale aux racines celtiques. L’apparition du dieu Lug transforme cette découverte en épreuve : les personnages doivent résoudre ses énigmes volcaniques pour franchir la porte sans provoquer sa colère.</p><p>Les pouvoirs de cette porte entraînent le duo dans une succession de rencontres et de défis. Le professeur conserve son goût des expériences et de la comédie ; sa passion pour la volcanologie se retrouve ainsi mêlée à un récit de légendes, où la curiosité scientifique rencontre des personnages fantastiques.</p><h2>Le défi du puy de Dôme</h2><p>L’ultime mission consiste à recréer l’éruption du puy de Dôme dans le cadre du spectacle. Expériences scientifiques et images sur écran accompagnent cette fiction jouée par les personnages. La flamme des volcans devient le fil d’une aventure humoristique, ancrée dans les décors emblématiques du parc.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una porta di enigmi vulcanici</h2><p>Ai piedi del cono e della serra di Vulcania, il professor Yapadrisk e il suo assistente scoprono un’iscrizione su una porta ancestrale dalle radici celtiche. L’apparizione del dio Lug trasforma la scoperta in una prova: devono risolvere i suoi enigmi vulcanici per aprire la porta senza provocarne la collera.</p><p>I poteri della porta trascinano il duo in una successione di incontri e sfide. Il professore conserva il suo gusto per gli esperimenti e la comicità. La passione per la vulcanologia si intreccia così con un racconto leggendario, nel quale la curiosità scientifica incontra personaggi fantastici.</p><h2>La sfida del puy de Dôme</h2><p>L’ultima missione consiste nel ricreare un’eruzione del puy de Dôme all’interno dello spettacolo. Esperimenti scientifici e immagini su schermo accompagnano questa finzione interpretata dai personaggi. La fiamma dei vulcani attraversa un’avventura umoristica ambientata tra le architetture emblematiche del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een deur vol vulkaanraadsels</h2><p>Aan de voet van de kegel en de serre van Vulcania ontdekken professor Yapadrisk en zijn assistent een inscriptie op een oeroude deur met Keltische wortels. De verschijning van de god Lug maakt er een beproeving van: de personages moeten vulkaanraadsels oplossen om de deur te openen zonder zijn woede te wekken.</p><p>De krachten van deze deur voeren het duo langs verschillende ontmoetingen en uitdagingen. De professor behoudt zijn voorliefde voor proeven en komedie. Zijn passie voor vulkanologie raakt verweven met een legendarisch verhaal waarin wetenschappelijke nieuwsgierigheid fantastische figuren ontmoet.</p><h2>De uitdaging van de puy de Dôme</h2><p>De laatste opdracht is om binnen de voorstelling een uitbarsting van de puy de Dôme na te bootsen. Wetenschappelijke proeven en schermbeelden begeleiden de gespeelde fictie. De vulkaanvlam vormt de rode draad van een humoristisch avontuur tegen het decor van de kenmerkende gebouwen van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Drzwi pełne wulkanicznych zagadek</h2><p>U stóp stożka i szklarni Vulcanii profesor Yapadrisk oraz jego asystent odkrywają napis na pradawnych drzwiach o celtyckich korzeniach. Pojawienie się boga Luga zmienia odkrycie w próbę: bohaterowie muszą rozwiązać wulkaniczne zagadki, aby otworzyć drzwi i nie wywołać jego gniewu.</p><p>Moce drzwi prowadzą duet przez kolejne spotkania i wyzwania. Profesor pozostaje wierny zamiłowaniu do eksperymentów oraz komedii. Jego pasja do wulkanologii splata się z legendarną opowieścią, w której naukowa ciekawość spotyka fantastyczne postacie.</p><h2>Wyzwanie puy de Dôme</h2><p>Ostatnia misja polega na odtworzeniu erupcji puy de Dôme w ramach przedstawienia. Eksperymenty naukowe i obrazy na ekranie towarzyszą fikcyjnej przygodzie odgrywanej przez bohaterów. Wulkaniczny płomień staje się motywem przewodnim humorystycznej historii rozgrywającej się wśród charakterystycznych budowli parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma porta de enigmas vulcânicos</h2><p>Ao pé do cone e da estufa de Vulcania, o professor Yapadrisk e o seu assistente descobrem uma inscrição numa porta ancestral de raízes celtas. A aparição do deus Lug transforma a descoberta numa prova: têm de resolver os seus enigmas vulcânicos para abrir a porta sem provocar a sua cólera.</p><p>Os poderes da porta conduzem a dupla por uma sucessão de encontros e desafios. O professor mantém o seu gosto pelas experiências e pela comédia. A paixão pela vulcanologia cruza-se assim com uma narrativa lendária, em que a curiosidade científica encontra personagens fantásticas.</p><h2>O desafio do puy de Dôme</h2><p>A última missão consiste em recriar uma erupção do puy de Dôme no contexto do espetáculo. Experiências científicas e imagens num ecrã acompanham esta ficção interpretada pelas personagens. A chama dos vulcões percorre uma aventura humorística entre as arquiteturas emblemáticas do parque.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+        "entityKey": "vulcania-primordia",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die ersten Augenblicke der Welt</h2><p>Nach Einbruch der Dunkelheit erzählt Primordia eine Vorstellung von der Geburt der Erde in Vulcanias Landschaft. Wind, Lava und Ozeane entstehen, bevor das Leben erscheint. Fantastische Wesen begleiten die Reise zu den Ursprüngen, bei der Sage und Wissenschaft aufeinandertreffen.</p><p>Licht, Klang und Pyrotechnik gestalten dieses nächtliche Panorama. Die Naturgewalten gehören zur Inszenierung: Die Vulkane der Auvergne bilden den Hintergrund einer Schöpfungsgeschichte voller Bewegung, Lichtblitze und erfundener Gestalten.</p><h2>Architektur wird zur Bühne</h2><p>Das Tal, der Kegel und das Gewächshaus von Hans Hollein wirken an der Erzählung mit. Gemeinsam bilden diese vertrauten Parkbereiche die Kulisse, während der Nachthimmel die Lichteffekte erweitert. Primordia verwandelt Vulcanias Architektur in eine Landschaft der Fantasie.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The world’s first moments</h2><p>After dark, Primordia imagines the birth of Earth within Vulcania’s landscape. Its story brings forth wind, lava and oceans before the appearance of life. Fantastic creatures accompany this journey to the beginning, in a tale where legend meets science.</p><p>Light, sound and pyrotechnics create the nocturnal panorama. These forces of nature belong to the staging: the Auvergne volcanoes provide the setting for a creation story, filled with movement, flashes and imaginary figures.</p><h2>Architecture takes the stage</h2><p>The Valley, Cone and Greenhouse designed by Hans Hollein become part of the narrative. These familiar spaces form the show’s setting together, while the night sky extends its lighting effects. Primordia turns Vulcania’s architecture into a fictional landscape.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los primeros instantes del mundo</h2><p>Al caer la noche, Primordia imagina el nacimiento de la Tierra en el paisaje de Vulcania. El relato hace surgir el viento, la lava y los océanos antes de la aparición de la vida. Criaturas fantásticas acompañan este viaje a los orígenes, en una evocación donde la leyenda se encuentra con la ciencia.</p><p>La luz, el sonido y la pirotecnia componen el cuadro nocturno. Las fuerzas de la naturaleza pertenecen a la puesta en escena: los volcanes de Auvernia sirven de marco para una historia de creación, con movimientos, destellos y figuras imaginarias.</p><h2>La arquitectura entra en escena</h2><p>El Valle, el Cono y el Invernadero diseñados por Hans Hollein participan en el relato. Estos espacios familiares del parque forman juntos el escenario, mientras el cielo nocturno prolonga los efectos luminosos. Primordia transforma la arquitectura de Vulcania en un paisaje de ficción.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les premiers instants du monde</h2><p>À la nuit tombée, Primordia imagine la naissance de la Terre dans le paysage de Vulcania. Le récit fait surgir le vent, la lave et les océans avant l’apparition de la vie. Des créatures fantastiques accompagnent ce voyage vers les origines, dans une évocation où la légende se mêle à la science.</p><p>La lumière, le son et la pyrotechnie composent cette fresque nocturne. Les manifestations de la nature appartiennent à la mise en scène : les volcans auvergnats deviennent le cadre d’une histoire de création, avec ses mouvements, ses éclats et ses silhouettes imaginaires.</p><h2>L’architecture entre en scène</h2><p>La Vallée, le Cône et la Serre conçus par Hans Hollein participent au récit. Ces espaces familiers du parc forment ensemble le décor du spectacle, tandis que le ciel nocturne prolonge les effets lumineux. Primordia transforme ainsi l’architecture de Vulcania en paysage de fiction.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I primi istanti del mondo</h2><p>Al calare della notte, Primordia immagina la nascita della Terra nel paesaggio di Vulcania. Il racconto fa emergere vento, lava e oceani prima dell’apparizione della vita. Creature fantastiche accompagnano questo viaggio alle origini, in un’evocazione nella quale leggenda e scienza si incontrano.</p><p>Luce, suono e pirotecnica compongono il quadro notturno. Le forze della natura appartengono alla messa in scena: i vulcani dell’Alvernia diventano lo scenario di una storia della creazione, tra movimenti, bagliori e figure immaginarie.</p><h2>L’architettura entra in scena</h2><p>La Valle, il Cono e la Serra progettati da Hans Hollein partecipano alla narrazione. Questi spazi familiari del parco compongono insieme lo scenario, mentre il cielo notturno prolunga gli effetti luminosi. Primordia trasforma l’architettura di Vulcania in un paesaggio di fantasia.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De eerste momenten van de wereld</h2><p>Na het vallen van de avond verbeeldt Primordia het ontstaan van de aarde in het landschap van Vulcania. Het verhaal laat wind, lava en oceanen ontstaan voordat het leven verschijnt. Fantastische wezens begeleiden deze reis naar de oorsprong, waarin legende en wetenschap samenkomen.</p><p>Licht, geluid en pyrotechniek vormen het nachtelijke tafereel. De natuurkrachten maken deel uit van de enscenering: de vulkanen van Auvergne bieden het decor voor een scheppingsverhaal vol beweging, lichtflitsen en denkbeeldige figuren.</p><h2>Architectuur op het toneel</h2><p>De Vallei, de Kegel en de Serre van Hans Hollein spelen mee in de vertelling. Deze vertrouwde parkruimten vormen samen het decor, terwijl de nachtelijke hemel de lichteffecten verlengt. Primordia maakt van de architectuur van Vulcania een fantasielandschap.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pierwsze chwile świata</h2><p>Po zmroku Primordia przedstawia wyobrażenie narodzin Ziemi w krajobrazie Vulcanii. Opowieść przywołuje wiatr, lawę i oceany, zanim pojawi się życie. Fantastyczne stworzenia towarzyszą podróży do początków świata, łączącej legendę z nauką.</p><p>Światło, dźwięk i pirotechnika tworzą nocną panoramę. Siły natury należą do inscenizacji: wulkany Owernii stają się tłem opowieści o stworzeniu, pełnej ruchu, rozbłysków i wymyślonych postaci.</p><h2>Architektura wkracza na scenę</h2><p>Dolina, Stożek i Szklarnia zaprojektowane przez Hansa Holleina uczestniczą w narracji. Znane przestrzenie parku wspólnie budują scenografię, a nocne niebo przedłuża efekty świetlne. Primordia zmienia architekturę Vulcanii w krajobraz fantazji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os primeiros instantes do mundo</h2><p>Ao cair da noite, Primordia imagina o nascimento da Terra na paisagem de Vulcania. A narrativa faz surgir o vento, a lava e os oceanos antes do aparecimento da vida. Criaturas fantásticas acompanham esta viagem às origens, numa evocação em que a lenda se encontra com a ciência.</p><p>A luz, o som e a pirotecnia compõem o quadro noturno. As forças da natureza pertencem à encenação: os vulcões da Auvérnia tornam-se o cenário de uma história de criação, com movimentos, clarões e figuras imaginárias.</p><h2>A arquitetura entra em cena</h2><p>O Vale, o Cone e a Estufa concebidos por Hans Hollein participam na narrativa. Estes espaços familiares do parque formam em conjunto o cenário, enquanto o céu noturno prolonga os efeitos luminosos. Primordia transforma a arquitetura de Vulcania numa paisagem de ficção.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : Yapadrisk et Primordia décrits personnellement en huit langues, récit de Lug et porte celtique, création nocturne scénographiée avec architecture Hollein. Identités et visibilité privées conservées, aucune éruption réelle ou date de première représentation inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally written/reviewed in eight languages from complete primary official pages Yapadrisk et la flamme des volcans and Primordia. Existing two show identities only. Yapadrisk Celtic door/Lug/riddles/fictional recreation of Puy de Dome eruption, not real eruption. Primordia staged origins and fantastic creatures; light/sound/pyrotechnics, Valley/Cone/Greenhouse by Hans Hollein. No first opening day, all-year schedule, technical cycle or new duplicate show invented. Two headings three paragraphs, private preserved."
+}

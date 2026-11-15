@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+          "key": "vulcania-experiences-show",
+          "name": "Expériences, c’est show !",
+          "type": "Show",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le laboratoire bousculé par Yapadrisk</h2><p>Expériences, c’est show ! commence avec les animateurs scientifiques de Vulcania, avant que le professeur Yapadrisk ne bouleverse leur présentation. Ce savant excentrique remplace les manipulations prévues par ses propres expériences, plus spectaculaires. La démonstration devient ainsi une comédie où l’assurance du professeur se heurte aux réactions de ses partenaires.</p><p>Sur scène, blouses blanches, casquettes rouges et matériel de laboratoire entourent un comptoir aux bandes jaunes et noires. Fioles et tubes à essai côtoient les accessoires du spectacle ; une grande flamme fait partie des effets présentés par l’équipe.</p><h2>La science jouée sur scène</h2><p>L’échange entre les animateurs et le professeur donne son rythme au spectacle. Les expériences restent au cœur de l’action, mais les interruptions de Yapadrisk, les gestes des comédiens et leurs réactions transforment le laboratoire en théâtre scientifique.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Yapadrisk disrupts the laboratory</h2><p>Expériences, c’est show ! begins with Vulcania’s science presenters before Professor Yapadrisk interrupts their demonstration. The eccentric scientist replaces the planned activities with his own, more spectacular experiments. The demonstration becomes a comedy in which the professor’s confidence meets his partners’ reactions.</p><p>White coats, red caps and laboratory equipment surround a counter edged in yellow and black. Flasks and test tubes share the stage with theatrical props, while a large flame is among the effects presented by the team.</p><h2>Science performed on stage</h2><p>The exchanges between the presenters and the professor set the show’s pace. Experiments remain central to the action, but Yapadrisk’s interruptions and the performers’ gestures and reactions turn the laboratory into scientific theatre.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Yapadrisk bringt das Labor durcheinander</h2><p>Expériences, c’est show ! beginnt mit Vulcanias Wissenschaftsvermittlern, bis Professor Yapadrisk ihre Vorführung unterbricht. Der exzentrische Forscher ersetzt die geplanten Versuche durch eigene, spektakulärere Experimente. Daraus entsteht eine Komödie, in der seine Selbstsicherheit auf die Reaktionen seiner Partner trifft.</p><p>Weiße Kittel, rote Kappen und Laborgeräte umgeben einen Tresen mit gelb-schwarzen Streifen. Kolben und Reagenzgläser stehen neben Bühnenrequisiten; zu den vorgeführten Effekten gehört auch eine große Flamme.</p><h2>Wissenschaft auf der Bühne</h2><p>Der Austausch zwischen den Vermittlern und dem Professor bestimmt den Rhythmus der Vorstellung. Die Experimente bleiben im Mittelpunkt, während Yapadrisks Unterbrechungen sowie Gesten und Reaktionen der Darsteller das Labor in ein Wissenschaftstheater verwandeln.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Yapadrisk zet het laboratorium op zijn kop</h2><p>Expériences, c’est show ! begint met de wetenschapsmedewerkers van Vulcania, totdat professor Yapadrisk hun demonstratie verstoort. De excentrieke geleerde vervangt de geplande proeven door zijn eigen, spectaculairdere experimenten. Zo ontstaat een komedie waarin zijn zelfverzekerdheid botst met de reacties van zijn medespelers.</p><p>Witte jassen, rode petten en laboratoriummateriaal omringen een toonbank met gele en zwarte strepen. Kolven en reageerbuizen staan tussen de toneelattributen; ook een grote vlam hoort bij de effecten die het team laat zien.</p><h2>Wetenschap als toneel</h2><p>De uitwisseling tussen de medewerkers en de professor bepaalt het ritme. De experimenten blijven centraal staan, terwijl Yapadrisks onderbrekingen, de gebaren en de reacties van de spelers het laboratorium in wetenschapstheater veranderen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Yapadrisk scompiglia il laboratorio</h2><p>Expériences, c’est show ! comincia con gli animatori scientifici di Vulcania, prima che il professor Yapadrisk sconvolga la presentazione. Lo scienziato eccentrico sostituisce le dimostrazioni previste con esperimenti propri, più spettacolari. La lezione diventa così una commedia in cui la sicurezza del professore incontra le reazioni dei suoi compagni.</p><p>Camici bianchi, berretti rossi e attrezzature da laboratorio circondano un bancone a strisce gialle e nere. Ampolle e provette affiancano gli oggetti di scena; una grande fiammata fa parte degli effetti presentati dalla squadra.</p><h2>La scienza sul palcoscenico</h2><p>Gli scambi tra animatori e professore scandiscono lo spettacolo. Gli esperimenti restano al centro dell’azione, ma le interruzioni di Yapadrisk, i gesti e le reazioni degli interpreti trasformano il laboratorio in teatro scientifico.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Yapadrisk revoluciona el laboratorio</h2><p>Expériences, c’est show ! comienza con los divulgadores científicos de Vulcania, hasta que el profesor Yapadrisk interrumpe su presentación. El científico excéntrico sustituye las demostraciones previstas por sus propios experimentos, más espectaculares. La demostración se convierte en una comedia donde la seguridad del profesor se enfrenta a las reacciones de sus compañeros.</p><p>Batas blancas, gorras rojas y material de laboratorio rodean un mostrador con franjas amarillas y negras. Matraces y tubos de ensayo comparten espacio con los accesorios teatrales; una gran llamarada forma parte de los efectos del equipo.</p><h2>La ciencia en escena</h2><p>Los intercambios entre los divulgadores y el profesor marcan el ritmo. Los experimentos siguen en el centro de la acción, mientras las interrupciones de Yapadrisk y los gestos y reacciones de los intérpretes convierten el laboratorio en teatro científico.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Yapadrisk wprowadza zamieszanie w laboratorium</h2><p>Expériences, c’est show ! rozpoczynają popularyzatorzy nauki z Vulcanii, zanim profesor Yapadrisk zakłóci ich prezentację. Ekscentryczny naukowiec zastępuje zaplanowane demonstracje własnymi, bardziej widowiskowymi doświadczeniami. Pokaz zmienia się w komedię, w której pewność siebie profesora zderza się z reakcjami jego partnerów.</p><p>Białe fartuchy, czerwone czapki i sprzęt laboratoryjny otaczają ladę w żółto-czarne pasy. Kolby i probówki stoją obok rekwizytów scenicznych; wśród prezentowanych efektów znajduje się duży płomień.</p><h2>Nauka na scenie</h2><p>Wymiana zdań między prowadzącymi a profesorem wyznacza rytm widowiska. Doświadczenia pozostają w centrum akcji, ale przerwy powodowane przez Yapadriska, gesty i reakcje aktorów zamieniają laboratorium w teatr naukowy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Yapadrisk põe o laboratório em alvoroço</h2><p>Expériences, c’est show ! começa com os animadores científicos de Vulcania, até o professor Yapadrisk perturbar a apresentação. O cientista excêntrico substitui as demonstrações previstas pelas suas próprias experiências, mais espetaculares. A demonstração transforma-se numa comédia em que a confiança do professor encontra as reações dos seus parceiros.</p><p>Batas brancas, bonés vermelhos e material de laboratório rodeiam um balcão com faixas amarelas e pretas. Frascos e tubos de ensaio partilham o palco com adereços; uma grande chama faz parte dos efeitos apresentados pela equipa.</p><h2>A ciência em palco</h2><p>As trocas entre os animadores e o professor marcam o ritmo do espetáculo. As experiências continuam no centro da ação, enquanto as interrupções de Yapadrisk, os gestos e as reações dos intérpretes transformam o laboratório em teatro científico.</p>"
+            }
+          ]
+        },
+        {
+          "id": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+          "key": "vulcania-danse-pitoufeu",
+          "name": "Danse de Pitoufeu",
+          "type": "MeetAndGreet",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le volcan rouge prend vie</h2><p>Pitoufeu quitte les illustrations du parc pour rencontrer les enfants sous la forme d’un grand volcan rouge souriant, couronné d’une flamme jaune. La mascotte se mêle au groupe, échange des gestes avec les petits visiteurs et prend la pose pour les photographies.</p><p>La rencontre comprend une danse que les enfants peuvent apprendre puis reprendre avec Pitoufeu. Les mouvements de la mascotte et ceux du groupe accompagnent sa chanson, donnant à cette apparition une forme à la fois musicale et participative.</p><h2>Une chanson de Paroles de Farfelus</h2><p>La chanson de Pitoufeu est composée et interprétée par Paroles de Farfelus. Elle porte la chorégraphie de la rencontre et donne une voix au personnage volcanique, déjà reconnaissable à son visage noir et à sa silhouette rouge et jaune.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The red volcano comes to life</h2><p>Pitoufeu steps out of the park’s illustrations to meet children as a large smiling red volcano topped with a yellow flame. The mascot joins the group, exchanges gestures with young visitors and poses for photographs.</p><p>The encounter includes a dance that children can learn and perform with Pitoufeu. The mascot and the group move to his song, making this appearance a musical event in which the audience takes part.</p><h2>A song by Paroles de Farfelus</h2><p>Pitoufeu’s song was composed and performed by Paroles de Farfelus. It accompanies the encounter’s choreography and gives a voice to the volcanic character, already recognisable by his black facial features and red and yellow silhouette.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Der rote Vulkan wird lebendig</h2><p>Pitoufeu verlässt die Illustrationen des Parks und begegnet Kindern als großer lächelnder roter Vulkan mit gelber Flamme. Das Maskottchen mischt sich unter die Gruppe, tauscht Gesten mit jungen Besuchern aus und posiert für Fotos.</p><p>Zur Begegnung gehört ein Tanz, den die Kinder lernen und mit Pitoufeu aufführen können. Die Bewegungen des Maskottchens und der Gruppe begleiten sein Lied. So wird der Auftritt zu einer musikalischen Begegnung zum Mitmachen.</p><h2>Ein Lied von Paroles de Farfelus</h2><p>Pitoufeus Lied wurde von Paroles de Farfelus komponiert und gesungen. Es begleitet die Choreografie und gibt der Vulkanfigur eine Stimme, die bereits an ihren schwarzen Gesichtszügen und ihrer rot-gelben Gestalt zu erkennen ist.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De rode vulkaan komt tot leven</h2><p>Pitoufeu stapt uit de illustraties van het park om kinderen te ontmoeten als een grote lachende rode vulkaan met een gele vlam. De mascotte begeeft zich tussen de groep, wisselt gebaren uit met jonge bezoekers en poseert voor foto’s.</p><p>Bij de ontmoeting hoort een dans die kinderen kunnen leren en samen met Pitoufeu uitvoeren. De mascotte en de groep bewegen op zijn lied, waardoor dit optreden een muzikaal karakter krijgt en het publiek meedoet.</p><h2>Een lied van Paroles de Farfelus</h2><p>Het lied van Pitoufeu is gecomponeerd en uitgevoerd door Paroles de Farfelus. Het begeleidt de choreografie en geeft een stem aan het vulkaanfiguurtje, herkenbaar aan zijn zwarte gelaatstrekken en rode en gele vorm.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Il vulcano rosso prende vita</h2><p>Pitoufeu esce dalle illustrazioni del parco per incontrare i bambini come un grande vulcano rosso sorridente, coronato da una fiamma gialla. La mascotte si unisce al gruppo, scambia gesti con i piccoli visitatori e posa per le fotografie.</p><p>L’incontro comprende un ballo che i bambini possono imparare ed eseguire con Pitoufeu. I movimenti della mascotte e del gruppo seguono la sua canzone, dando all’apparizione un carattere musicale e partecipativo.</p><h2>Una canzone di Paroles de Farfelus</h2><p>La canzone di Pitoufeu è composta e interpretata da Paroles de Farfelus. Accompagna la coreografia e dà voce al personaggio vulcanico, già riconoscibile per i lineamenti neri e la sagoma rossa e gialla.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El volcán rojo cobra vida</h2><p>Pitoufeu sale de las ilustraciones del parque para encontrarse con los niños como un gran volcán rojo sonriente, coronado por una llama amarilla. La mascota se une al grupo, intercambia gestos con los pequeños visitantes y posa para las fotografías.</p><p>El encuentro incluye un baile que los niños pueden aprender e interpretar con Pitoufeu. Los movimientos de la mascota y del grupo siguen su canción, dando a esta aparición un carácter musical y participativo.</p><h2>Una canción de Paroles de Farfelus</h2><p>La canción de Pitoufeu está compuesta e interpretada por Paroles de Farfelus. Acompaña la coreografía y da voz al personaje volcánico, reconocible por sus rasgos negros y su silueta roja y amarilla.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Czerwony wulkan ożywa</h2><p>Pitoufeu wychodzi z ilustracji parku, by spotkać dzieci jako duży uśmiechnięty czerwony wulkan zwieńczony żółtym płomieniem. Maskotka dołącza do grupy, wymienia gesty z małymi gośćmi i pozuje do zdjęć.</p><p>Spotkanie obejmuje taniec, którego dzieci mogą się nauczyć i wykonać razem z Pitoufeu. Ruchom maskotki i grupy towarzyszy jej piosenka, dzięki czemu występ łączy muzykę z udziałem publiczności.</p><h2>Piosenka Paroles de Farfelus</h2><p>Piosenkę Pitoufeu skomponował i wykonał zespół Paroles de Farfelus. Towarzyszy ona choreografii i daje głos wulkanicznej postaci, rozpoznawalnej po czarnych rysach twarzy i czerwono-żółtej sylwetce.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O vulcão vermelho ganha vida</h2><p>Pitoufeu sai das ilustrações do parque para encontrar as crianças como um grande vulcão vermelho sorridente, coroado por uma chama amarela. A mascote junta-se ao grupo, troca gestos com os pequenos visitantes e posa para fotografias.</p><p>O encontro inclui uma dança que as crianças podem aprender e repetir com Pitoufeu. Os movimentos da mascote e do grupo acompanham a sua canção, dando a esta aparição um carácter musical e participativo.</p><h2>Uma canção de Paroles de Farfelus</h2><p>A canção de Pitoufeu foi composta e interpretada por Paroles de Farfelus. Acompanha a coreografia e dá voz à personagem vulcânica, reconhecível pelos traços pretos do rosto e pela silhueta vermelha e amarela.</p>"
+            }
+          ]
+        },
+        {
+          "id": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+          "key": "vulcania-cent-volcans",
+          "name": "100% volcans",
+          "type": "InteractiveExperience",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des défis autour des éruptions</h2><p>100% volcans rassemble le public autour des animateurs scientifiques pour une série d’épreuves collaboratives. Les questions portent sur la répartition des volcans sur Terre, leur formation et les différences entre leurs éruptions. Les réponses se construisent au fil de défis, de démonstrations et de quiz.</p><p>Un grand planisphère porte des repères rouges et des limites dessinées entre les continents et les océans. À côté, un comptoir illustré d’éruptions accompagne les maquettes, les photographies et les vidéos utilisées pour comparer les formes volcaniques.</p><h2>Comprendre ensemble les formes volcaniques</h2><p>Les échanges avec l’animateur relient ces supports aux questions du groupe : les volcans ont-ils tous la même forme et fonctionnent-ils de la même manière ? La participation collective donne sa place à l’observation, à la comparaison et aux réponses proposées par le public.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Challenges about eruptions</h2><p>100% volcans brings the audience together with science presenters for a series of collaborative challenges. Questions explore where volcanoes occur on Earth, how they form and how their eruptions differ. Answers emerge through tasks, demonstrations and quizzes.</p><p>A large world map carries red markers and outlines across the continents and oceans. Beside it, a counter illustrated with eruptions accompanies the models, photographs and videos used to compare volcanic forms.</p><h2>Understanding volcanic forms together</h2><p>Exchanges with the presenter connect these materials to the group’s questions: do all volcanoes have the same shape and work in the same way? Collective participation gives a place to observation, comparison and the answers suggested by the audience.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Gemeinsame Aufgaben zu Eruptionen</h2><p>100% volcans versammelt das Publikum mit Wissenschaftsvermittlern zu gemeinschaftlichen Aufgaben. Die Fragen betreffen die Verteilung von Vulkanen auf der Erde, ihre Entstehung und die Unterschiede zwischen ihren Ausbrüchen. Aufgaben, Vorführungen und Quizfragen führen zu den Antworten.</p><p>Eine große Weltkarte trägt rote Markierungen und eingezeichnete Grenzen über Kontinente und Ozeane hinweg. Daneben steht ein Tresen mit Eruptionsbildern, der die Modelle, Fotos und Videos zum Vergleich vulkanischer Formen ergänzt.</p><h2>Vulkanformen gemeinsam verstehen</h2><p>Im Austausch mit dem Vermittler werden die Materialien mit den Fragen der Gruppe verbunden: Haben alle Vulkane dieselbe Form und funktionieren sie auf dieselbe Weise? Das gemeinsame Mitmachen gibt Beobachtungen, Vergleichen und Antwortvorschlägen aus dem Publikum ihren Platz.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Uitdagingen rond uitbarstingen</h2><p>100% volcans brengt het publiek en de wetenschapsmedewerkers samen voor gezamenlijke opdrachten. De vragen gaan over de verspreiding van vulkanen op aarde, hun ontstaan en de verschillen tussen uitbarstingen. Uitdagingen, demonstraties en quizzen leiden naar de antwoorden.</p><p>Een grote wereldkaart draagt rode markeringen en getekende grenzen over continenten en oceanen. Daarnaast staat een toonbank met afbeeldingen van uitbarstingen, bij de maquettes, foto’s en video’s waarmee vulkaanvormen worden vergeleken.</p><h2>Samen vulkaanvormen begrijpen</h2><p>De gesprekken met de begeleider verbinden het materiaal met de vragen van de groep: hebben alle vulkanen dezelfde vorm en werken ze op dezelfde manier? Samen deelnemen geeft ruimte aan waarnemen, vergelijken en antwoorden die het publiek voorstelt.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Sfide sulle eruzioni</h2><p>100% volcans riunisce il pubblico e gli animatori scientifici per una serie di prove collaborative. Le domande riguardano la distribuzione dei vulcani sulla Terra, la loro formazione e le differenze tra le eruzioni. Sfide, dimostrazioni e quiz conducono alle risposte.</p><p>Un grande planisfero presenta indicatori rossi e confini disegnati attraverso continenti e oceani. Accanto, un bancone illustrato con eruzioni accompagna i plastici, le fotografie e i video usati per confrontare le forme vulcaniche.</p><h2>Comprendere insieme le forme vulcaniche</h2><p>Gli scambi con l’animatore collegano questi materiali alle domande del gruppo: i vulcani hanno tutti la stessa forma e funzionano allo stesso modo? La partecipazione collettiva lascia spazio all’osservazione, al confronto e alle risposte proposte dal pubblico.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Retos sobre las erupciones</h2><p>100% volcans reúne al público y a los divulgadores científicos en una serie de pruebas colaborativas. Las preguntas tratan sobre la distribución de los volcanes en la Tierra, su formación y las diferencias entre sus erupciones. Retos, demostraciones y cuestionarios conducen a las respuestas.</p><p>Un gran mapamundi presenta marcadores rojos y límites dibujados entre continentes y océanos. A su lado, un mostrador ilustrado con erupciones acompaña las maquetas, fotografías y vídeos utilizados para comparar las formas volcánicas.</p><h2>Comprender juntos las formas volcánicas</h2><p>Los intercambios con el divulgador relacionan estos materiales con las preguntas del grupo: ¿tienen todos los volcanes la misma forma y funcionan igual? La participación colectiva da espacio a la observación, la comparación y las respuestas propuestas por el público.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wyzwania dotyczące erupcji</h2><p>100% volcans gromadzi publiczność i popularyzatorów nauki wokół wspólnych zadań. Pytania dotyczą rozmieszczenia wulkanów na Ziemi, ich powstawania i różnic między erupcjami. Odpowiedzi wyłaniają się z wyzwań, demonstracji i quizów.</p><p>Na dużej mapie świata widać czerwone znaczniki oraz granice poprowadzone przez kontynenty i oceany. Obok stoi lada z ilustracjami erupcji, towarzysząca modelom, fotografiom i filmom służącym do porównywania form wulkanicznych.</p><h2>Wspólne poznawanie form wulkanicznych</h2><p>Rozmowa z prowadzącym łączy te materiały z pytaniami grupy: czy wszystkie wulkany mają taki sam kształt i działają identycznie? Wspólny udział pozostawia miejsce na obserwacje, porównania i odpowiedzi proponowane przez publiczność.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Desafios sobre as erupções</h2><p>100% volcans reúne o público e os animadores científicos numa série de provas colaborativas. As perguntas abordam a distribuição dos vulcões na Terra, a sua formação e as diferenças entre erupções. Desafios, demonstrações e questionários conduzem às respostas.</p><p>Um grande mapa-múndi apresenta marcadores vermelhos e limites desenhados através dos continentes e oceanos. Ao lado, um balcão ilustrado com erupções acompanha as maquetes, fotografias e vídeos usados para comparar formas vulcânicas.</p><h2>Compreender em conjunto as formas vulcânicas</h2><p>As trocas com o animador ligam estes materiais às perguntas do grupo: têm todos os vulcões a mesma forma e funcionam da mesma maneira? A participação coletiva dá lugar à observação, à comparação e às respostas propostas pelo público.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-60-science-and-mascot",
+        "notes": "Twenty-four texts personally authored/reviewed in eight languages after reading complete official pages and individually viewing the native photographs. Professor Yapadrisk interrupts a science presentation; laboratory props and staged flame visible. Pitoufeu costume and named song creators confirmed; no daily meeting schedule invented. 100% volcans collaborative demonstrations/models/photos/quizzes remains its existing distinct item. Shorter source-limited notices documented without padding, no invented opening dates or experiment chemistry. Official wide photograph also individually viewed: physical world map with red markers and eruption-decorated counter."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "5dd72228-f267-4d64-a5bc-a548503fbedc",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:07:44.0991905Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "entityKey": "vulcania-experiences-show",
+        "displayName": "Expériences, c’est show !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk bringt das Labor durcheinander</h2><p>Expériences, c’est show ! beginnt mit Vulcanias Wissenschaftsvermittlern, bis Professor Yapadrisk ihre Vorführung unterbricht. Der exzentrische Forscher ersetzt die geplanten Versuche durch eigene, spektakulärere Experimente. Daraus entsteht eine Komödie, in der seine Selbstsicherheit auf die Reaktionen seiner Partner trifft.</p><p>Weiße Kittel, rote Kappen und Laborgeräte umgeben einen Tresen mit gelb-schwarzen Streifen. Kolben und Reagenzgläser stehen neben Bühnenrequisiten; zu den vorgeführten Effekten gehört auch eine große Flamme.</p><h2>Wissenschaft auf der Bühne</h2><p>Der Austausch zwischen den Vermittlern und dem Professor bestimmt den Rhythmus der Vorstellung. Die Experimente bleiben im Mittelpunkt, während Yapadrisks Unterbrechungen sowie Gesten und Reaktionen der Darsteller das Labor in ein Wissenschaftstheater verwandeln.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk disrupts the laboratory</h2><p>Expériences, c’est show ! begins with Vulcania’s science presenters before Professor Yapadrisk interrupts their demonstration. The eccentric scientist replaces the planned activities with his own, more spectacular experiments. The demonstration becomes a comedy in which the professor’s confidence meets his partners’ reactions.</p><p>White coats, red caps and laboratory equipment surround a counter edged in yellow and black. Flasks and test tubes share the stage with theatrical props, while a large flame is among the effects presented by the team.</p><h2>Science performed on stage</h2><p>The exchanges between the presenters and the professor set the show’s pace. Experiments remain central to the action, but Yapadrisk’s interruptions and the performers’ gestures and reactions turn the laboratory into scientific theatre.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk revoluciona el laboratorio</h2><p>Expériences, c’est show ! comienza con los divulgadores científicos de Vulcania, hasta que el profesor Yapadrisk interrumpe su presentación. El científico excéntrico sustituye las demostraciones previstas por sus propios experimentos, más espectaculares. La demostración se convierte en una comedia donde la seguridad del profesor se enfrenta a las reacciones de sus compañeros.</p><p>Batas blancas, gorras rojas y material de laboratorio rodean un mostrador con franjas amarillas y negras. Matraces y tubos de ensayo comparten espacio con los accesorios teatrales; una gran llamarada forma parte de los efectos del equipo.</p><h2>La ciencia en escena</h2><p>Los intercambios entre los divulgadores y el profesor marcan el ritmo. Los experimentos siguen en el centro de la acción, mientras las interrupciones de Yapadrisk y los gestos y reacciones de los intérpretes convierten el laboratorio en teatro científico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le laboratoire bousculé par Yapadrisk</h2><p>Expériences, c’est show ! commence avec les animateurs scientifiques de Vulcania, avant que le professeur Yapadrisk ne bouleverse leur présentation. Ce savant excentrique remplace les manipulations prévues par ses propres expériences, plus spectaculaires. La démonstration devient ainsi une comédie où l’assurance du professeur se heurte aux réactions de ses partenaires.</p><p>Sur scène, blouses blanches, casquettes rouges et matériel de laboratoire entourent un comptoir aux bandes jaunes et noires. Fioles et tubes à essai côtoient les accessoires du spectacle ; une grande flamme fait partie des effets présentés par l’équipe.</p><h2>La science jouée sur scène</h2><p>L’échange entre les animateurs et le professeur donne son rythme au spectacle. Les expériences restent au cœur de l’action, mais les interruptions de Yapadrisk, les gestes des comédiens et leurs réactions transforment le laboratoire en théâtre scientifique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk scompiglia il laboratorio</h2><p>Expériences, c’est show ! comincia con gli animatori scientifici di Vulcania, prima che il professor Yapadrisk sconvolga la presentazione. Lo scienziato eccentrico sostituisce le dimostrazioni previste con esperimenti propri, più spettacolari. La lezione diventa così una commedia in cui la sicurezza del professore incontra le reazioni dei suoi compagni.</p><p>Camici bianchi, berretti rossi e attrezzature da laboratorio circondano un bancone a strisce gialle e nere. Ampolle e provette affiancano gli oggetti di scena; una grande fiammata fa parte degli effetti presentati dalla squadra.</p><h2>La scienza sul palcoscenico</h2><p>Gli scambi tra animatori e professore scandiscono lo spettacolo. Gli esperimenti restano al centro dell’azione, ma le interruzioni di Yapadrisk, i gesti e le reazioni degli interpreti trasformano il laboratorio in teatro scientifico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk zet het laboratorium op zijn kop</h2><p>Expériences, c’est show ! begint met de wetenschapsmedewerkers van Vulcania, totdat professor Yapadrisk hun demonstratie verstoort. De excentrieke geleerde vervangt de geplande proeven door zijn eigen, spectaculairdere experimenten. Zo ontstaat een komedie waarin zijn zelfverzekerdheid botst met de reacties van zijn medespelers.</p><p>Witte jassen, rode petten en laboratoriummateriaal omringen een toonbank met gele en zwarte strepen. Kolven en reageerbuizen staan tussen de toneelattributen; ook een grote vlam hoort bij de effecten die het team laat zien.</p><h2>Wetenschap als toneel</h2><p>De uitwisseling tussen de medewerkers en de professor bepaalt het ritme. De experimenten blijven centraal staan, terwijl Yapadrisks onderbrekingen, de gebaren en de reacties van de spelers het laboratorium in wetenschapstheater veranderen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk wprowadza zamieszanie w laboratorium</h2><p>Expériences, c’est show ! rozpoczynają popularyzatorzy nauki z Vulcanii, zanim profesor Yapadrisk zakłóci ich prezentację. Ekscentryczny naukowiec zastępuje zaplanowane demonstracje własnymi, bardziej widowiskowymi doświadczeniami. Pokaz zmienia się w komedię, w której pewność siebie profesora zderza się z reakcjami jego partnerów.</p><p>Białe fartuchy, czerwone czapki i sprzęt laboratoryjny otaczają ladę w żółto-czarne pasy. Kolby i probówki stoją obok rekwizytów scenicznych; wśród prezentowanych efektów znajduje się duży płomień.</p><h2>Nauka na scenie</h2><p>Wymiana zdań między prowadzącymi a profesorem wyznacza rytm widowiska. Doświadczenia pozostają w centrum akcji, ale przerwy powodowane przez Yapadriska, gesty i reakcje aktorów zamieniają laboratorium w teatr naukowy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk põe o laboratório em alvoroço</h2><p>Expériences, c’est show ! começa com os animadores científicos de Vulcania, até o professor Yapadrisk perturbar a apresentação. O cientista excêntrico substitui as demonstrações previstas pelas suas próprias experiências, mais espetaculares. A demonstração transforma-se numa comédia em que a confiança do professor encontra as reações dos seus parceiros.</p><p>Batas brancas, bonés vermelhos e material de laboratório rodeiam um balcão com faixas amarelas e pretas. Frascos e tubos de ensaio partilham o palco com adereços; uma grande chama faz parte dos efeitos apresentados pela equipa.</p><h2>A ciência em palco</h2><p>As trocas entre os animadores e o professor marcam o ritmo do espetáculo. As experiências continuam no centro da ação, enquanto as interrupções de Yapadrisk, os gestos e as reações dos intérpretes transformam o laboratório em teatro científico.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "entityKey": "vulcania-danse-pitoufeu",
+        "displayName": "Danse de Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der rote Vulkan wird lebendig</h2><p>Pitoufeu verlässt die Illustrationen des Parks und begegnet Kindern als großer lächelnder roter Vulkan mit gelber Flamme. Das Maskottchen mischt sich unter die Gruppe, tauscht Gesten mit jungen Besuchern aus und posiert für Fotos.</p><p>Zur Begegnung gehört ein Tanz, den die Kinder lernen und mit Pitoufeu aufführen können. Die Bewegungen des Maskottchens und der Gruppe begleiten sein Lied. So wird der Auftritt zu einer musikalischen Begegnung zum Mitmachen.</p><h2>Ein Lied von Paroles de Farfelus</h2><p>Pitoufeus Lied wurde von Paroles de Farfelus komponiert und gesungen. Es begleitet die Choreografie und gibt der Vulkanfigur eine Stimme, die bereits an ihren schwarzen Gesichtszügen und ihrer rot-gelben Gestalt zu erkennen ist.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The red volcano comes to life</h2><p>Pitoufeu steps out of the park’s illustrations to meet children as a large smiling red volcano topped with a yellow flame. The mascot joins the group, exchanges gestures with young visitors and poses for photographs.</p><p>The encounter includes a dance that children can learn and perform with Pitoufeu. The mascot and the group move to his song, making this appearance a musical event in which the audience takes part.</p><h2>A song by Paroles de Farfelus</h2><p>Pitoufeu’s song was composed and performed by Paroles de Farfelus. It accompanies the encounter’s choreography and gives a voice to the volcanic character, already recognisable by his black facial features and red and yellow silhouette.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El volcán rojo cobra vida</h2><p>Pitoufeu sale de las ilustraciones del parque para encontrarse con los niños como un gran volcán rojo sonriente, coronado por una llama amarilla. La mascota se une al grupo, intercambia gestos con los pequeños visitantes y posa para las fotografías.</p><p>El encuentro incluye un baile que los niños pueden aprender e interpretar con Pitoufeu. Los movimientos de la mascota y del grupo siguen su canción, dando a esta aparición un carácter musical y participativo.</p><h2>Una canción de Paroles de Farfelus</h2><p>La canción de Pitoufeu está compuesta e interpretada por Paroles de Farfelus. Acompaña la coreografía y da voz al personaje volcánico, reconocible por sus rasgos negros y su silueta roja y amarilla.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le volcan rouge prend vie</h2><p>Pitoufeu quitte les illustrations du parc pour rencontrer les enfants sous la forme d’un grand volcan rouge souriant, couronné d’une flamme jaune. La mascotte se mêle au groupe, échange des gestes avec les petits visiteurs et prend la pose pour les photographies.</p><p>La rencontre comprend une danse que les enfants peuvent apprendre puis reprendre avec Pitoufeu. Les mouvements de la mascotte et ceux du groupe accompagnent sa chanson, donnant à cette apparition une forme à la fois musicale et participative.</p><h2>Une chanson de Paroles de Farfelus</h2><p>La chanson de Pitoufeu est composée et interprétée par Paroles de Farfelus. Elle porte la chorégraphie de la rencontre et donne une voix au personnage volcanique, déjà reconnaissable à son visage noir et à sa silhouette rouge et jaune.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il vulcano rosso prende vita</h2><p>Pitoufeu esce dalle illustrazioni del parco per incontrare i bambini come un grande vulcano rosso sorridente, coronato da una fiamma gialla. La mascotte si unisce al gruppo, scambia gesti con i piccoli visitatori e posa per le fotografie.</p><p>L’incontro comprende un ballo che i bambini possono imparare ed eseguire con Pitoufeu. I movimenti della mascotte e del gruppo seguono la sua canzone, dando all’apparizione un carattere musicale e partecipativo.</p><h2>Una canzone di Paroles de Farfelus</h2><p>La canzone di Pitoufeu è composta e interpretata da Paroles de Farfelus. Accompagna la coreografia e dà voce al personaggio vulcanico, già riconoscibile per i lineamenti neri e la sagoma rossa e gialla.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De rode vulkaan komt tot leven</h2><p>Pitoufeu stapt uit de illustraties van het park om kinderen te ontmoeten als een grote lachende rode vulkaan met een gele vlam. De mascotte begeeft zich tussen de groep, wisselt gebaren uit met jonge bezoekers en poseert voor foto’s.</p><p>Bij de ontmoeting hoort een dans die kinderen kunnen leren en samen met Pitoufeu uitvoeren. De mascotte en de groep bewegen op zijn lied, waardoor dit optreden een muzikaal karakter krijgt en het publiek meedoet.</p><h2>Een lied van Paroles de Farfelus</h2><p>Het lied van Pitoufeu is gecomponeerd en uitgevoerd door Paroles de Farfelus. Het begeleidt de choreografie en geeft een stem aan het vulkaanfiguurtje, herkenbaar aan zijn zwarte gelaatstrekken en rode en gele vorm.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwony wulkan ożywa</h2><p>Pitoufeu wychodzi z ilustracji parku, by spotkać dzieci jako duży uśmiechnięty czerwony wulkan zwieńczony żółtym płomieniem. Maskotka dołącza do grupy, wymienia gesty z małymi gośćmi i pozuje do zdjęć.</p><p>Spotkanie obejmuje taniec, którego dzieci mogą się nauczyć i wykonać razem z Pitoufeu. Ruchom maskotki i grupy towarzyszy jej piosenka, dzięki czemu występ łączy muzykę z udziałem publiczności.</p><h2>Piosenka Paroles de Farfelus</h2><p>Piosenkę Pitoufeu skomponował i wykonał zespół Paroles de Farfelus. Towarzyszy ona choreografii i daje głos wulkanicznej postaci, rozpoznawalnej po czarnych rysach twarzy i czerwono-żółtej sylwetce.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O vulcão vermelho ganha vida</h2><p>Pitoufeu sai das ilustrações do parque para encontrar as crianças como um grande vulcão vermelho sorridente, coroado por uma chama amarela. A mascote junta-se ao grupo, troca gestos com os pequenos visitantes e posa para fotografias.</p><p>O encontro inclui uma dança que as crianças podem aprender e repetir com Pitoufeu. Os movimentos da mascote e do grupo acompanham a sua canção, dando a esta aparição um carácter musical e participativo.</p><h2>Uma canção de Paroles de Farfelus</h2><p>A canção de Pitoufeu foi composta e interpretada por Paroles de Farfelus. Acompanha a coreografia e dá voz à personagem vulcânica, reconhecível pelos traços pretos do rosto e pela silhueta vermelha e amarela.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "entityKey": "vulcania-cent-volcans",
+        "displayName": "100% volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Gemeinsame Aufgaben zu Eruptionen</h2><p>100% volcans versammelt das Publikum mit Wissenschaftsvermittlern zu gemeinschaftlichen Aufgaben. Die Fragen betreffen die Verteilung von Vulkanen auf der Erde, ihre Entstehung und die Unterschiede zwischen ihren Ausbrüchen. Aufgaben, Vorführungen und Quizfragen führen zu den Antworten.</p><p>Eine große Weltkarte trägt rote Markierungen und eingezeichnete Grenzen über Kontinente und Ozeane hinweg. Daneben steht ein Tresen mit Eruptionsbildern, der die Modelle, Fotos und Videos zum Vergleich vulkanischer Formen ergänzt.</p><h2>Vulkanformen gemeinsam verstehen</h2><p>Im Austausch mit dem Vermittler werden die Materialien mit den Fragen der Gruppe verbunden: Haben alle Vulkane dieselbe Form und funktionieren sie auf dieselbe Weise? Das gemeinsame Mitmachen gibt Beobachtungen, Vergleichen und Antwortvorschlägen aus dem Publikum ihren Platz.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Challenges about eruptions</h2><p>100% volcans brings the audience together with science presenters for a series of collaborative challenges. Questions explore where volcanoes occur on Earth, how they form and how their eruptions differ. Answers emerge through tasks, demonstrations and quizzes.</p><p>A large world map carries red markers and outlines across the continents and oceans. Beside it, a counter illustrated with eruptions accompanies the models, photographs and videos used to compare volcanic forms.</p><h2>Understanding volcanic forms together</h2><p>Exchanges with the presenter connect these materials to the group’s questions: do all volcanoes have the same shape and work in the same way? Collective participation gives a place to observation, comparison and the answers suggested by the audience.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Retos sobre las erupciones</h2><p>100% volcans reúne al público y a los divulgadores científicos en una serie de pruebas colaborativas. Las preguntas tratan sobre la distribución de los volcanes en la Tierra, su formación y las diferencias entre sus erupciones. Retos, demostraciones y cuestionarios conducen a las respuestas.</p><p>Un gran mapamundi presenta marcadores rojos y límites dibujados entre continentes y océanos. A su lado, un mostrador ilustrado con erupciones acompaña las maquetas, fotografías y vídeos utilizados para comparar las formas volcánicas.</p><h2>Comprender juntos las formas volcánicas</h2><p>Los intercambios con el divulgador relacionan estos materiales con las preguntas del grupo: ¿tienen todos los volcanes la misma forma y funcionan igual? La participación colectiva da espacio a la observación, la comparación y las respuestas propuestas por el público.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des défis autour des éruptions</h2><p>100% volcans rassemble le public autour des animateurs scientifiques pour une série d’épreuves collaboratives. Les questions portent sur la répartition des volcans sur Terre, leur formation et les différences entre leurs éruptions. Les réponses se construisent au fil de défis, de démonstrations et de quiz.</p><p>Un grand planisphère porte des repères rouges et des limites dessinées entre les continents et les océans. À côté, un comptoir illustré d’éruptions accompagne les maquettes, les photographies et les vidéos utilisées pour comparer les formes volcaniques.</p><h2>Comprendre ensemble les formes volcaniques</h2><p>Les échanges avec l’animateur relient ces supports aux questions du groupe : les volcans ont-ils tous la même forme et fonctionnent-ils de la même manière ? La participation collective donne sa place à l’observation, à la comparaison et aux réponses proposées par le public.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sfide sulle eruzioni</h2><p>100% volcans riunisce il pubblico e gli animatori scientifici per una serie di prove collaborative. Le domande riguardano la distribuzione dei vulcani sulla Terra, la loro formazione e le differenze tra le eruzioni. Sfide, dimostrazioni e quiz conducono alle risposte.</p><p>Un grande planisfero presenta indicatori rossi e confini disegnati attraverso continenti e oceani. Accanto, un bancone illustrato con eruzioni accompagna i plastici, le fotografie e i video usati per confrontare le forme vulcaniche.</p><h2>Comprendere insieme le forme vulcaniche</h2><p>Gli scambi con l’animatore collegano questi materiali alle domande del gruppo: i vulcani hanno tutti la stessa forma e funzionano allo stesso modo? La partecipazione collettiva lascia spazio all’osservazione, al confronto e alle risposte proposte dal pubblico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Uitdagingen rond uitbarstingen</h2><p>100% volcans brengt het publiek en de wetenschapsmedewerkers samen voor gezamenlijke opdrachten. De vragen gaan over de verspreiding van vulkanen op aarde, hun ontstaan en de verschillen tussen uitbarstingen. Uitdagingen, demonstraties en quizzen leiden naar de antwoorden.</p><p>Een grote wereldkaart draagt rode markeringen en getekende grenzen over continenten en oceanen. Daarnaast staat een toonbank met afbeeldingen van uitbarstingen, bij de maquettes, foto’s en video’s waarmee vulkaanvormen worden vergeleken.</p><h2>Samen vulkaanvormen begrijpen</h2><p>De gesprekken met de begeleider verbinden het materiaal met de vragen van de groep: hebben alle vulkanen dezelfde vorm en werken ze op dezelfde manier? Samen deelnemen geeft ruimte aan waarnemen, vergelijken en antwoorden die het publiek voorstelt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wyzwania dotyczące erupcji</h2><p>100% volcans gromadzi publiczność i popularyzatorów nauki wokół wspólnych zadań. Pytania dotyczą rozmieszczenia wulkanów na Ziemi, ich powstawania i różnic między erupcjami. Odpowiedzi wyłaniają się z wyzwań, demonstracji i quizów.</p><p>Na dużej mapie świata widać czerwone znaczniki oraz granice poprowadzone przez kontynenty i oceany. Obok stoi lada z ilustracjami erupcji, towarzysząca modelom, fotografiom i filmom służącym do porównywania form wulkanicznych.</p><h2>Wspólne poznawanie form wulkanicznych</h2><p>Rozmowa z prowadzącym łączy te materiały z pytaniami grupy: czy wszystkie wulkany mają taki sam kształt i działają identycznie? Wspólny udział pozostawia miejsce na obserwacje, porównania i odpowiedzi proponowane przez publiczność.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Desafios sobre as erupções</h2><p>100% volcans reúne o público e os animadores científicos numa série de provas colaborativas. As perguntas abordam a distribuição dos vulcões na Terra, a sua formação e as diferenças entre erupções. Desafios, demonstrações e questionários conduzem às respostas.</p><p>Um grande mapa-múndi apresenta marcadores vermelhos e limites desenhados através dos continentes e oceanos. Ao lado, um balcão ilustrado com erupções acompanha as maquetes, fotografias e vídeos usados para comparar formas vulcânicas.</p><h2>Compreender em conjunto as formas vulcânicas</h2><p>As trocas com o animador ligam estes materiais às perguntas do grupo: têm todos os vulcões a mesma forma e funcionam da mesma maneira? A participação coletiva dá lugar à observação, à comparação e às respostas propostas pelo público.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ffe5bce7-6d34-4753-b4c0-87ce370c7a7d",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:08:02.1637916Z",
+    "appliedAtUtc": "2026-11-15T19:08:02.1637923Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "entityKey": "vulcania-experiences-show",
+        "displayName": "Expériences, c’est show !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk bringt das Labor durcheinander</h2><p>Expériences, c’est show ! beginnt mit Vulcanias Wissenschaftsvermittlern, bis Professor Yapadrisk ihre Vorführung unterbricht. Der exzentrische Forscher ersetzt die geplanten Versuche durch eigene, spektakulärere Experimente. Daraus entsteht eine Komödie, in der seine Selbstsicherheit auf die Reaktionen seiner Partner trifft.</p><p>Weiße Kittel, rote Kappen und Laborgeräte umgeben einen Tresen mit gelb-schwarzen Streifen. Kolben und Reagenzgläser stehen neben Bühnenrequisiten; zu den vorgeführten Effekten gehört auch eine große Flamme.</p><h2>Wissenschaft auf der Bühne</h2><p>Der Austausch zwischen den Vermittlern und dem Professor bestimmt den Rhythmus der Vorstellung. Die Experimente bleiben im Mittelpunkt, während Yapadrisks Unterbrechungen sowie Gesten und Reaktionen der Darsteller das Labor in ein Wissenschaftstheater verwandeln.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk disrupts the laboratory</h2><p>Expériences, c’est show ! begins with Vulcania’s science presenters before Professor Yapadrisk interrupts their demonstration. The eccentric scientist replaces the planned activities with his own, more spectacular experiments. The demonstration becomes a comedy in which the professor’s confidence meets his partners’ reactions.</p><p>White coats, red caps and laboratory equipment surround a counter edged in yellow and black. Flasks and test tubes share the stage with theatrical props, while a large flame is among the effects presented by the team.</p><h2>Science performed on stage</h2><p>The exchanges between the presenters and the professor set the show’s pace. Experiments remain central to the action, but Yapadrisk’s interruptions and the performers’ gestures and reactions turn the laboratory into scientific theatre.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk revoluciona el laboratorio</h2><p>Expériences, c’est show ! comienza con los divulgadores científicos de Vulcania, hasta que el profesor Yapadrisk interrumpe su presentación. El científico excéntrico sustituye las demostraciones previstas por sus propios experimentos, más espectaculares. La demostración se convierte en una comedia donde la seguridad del profesor se enfrenta a las reacciones de sus compañeros.</p><p>Batas blancas, gorras rojas y material de laboratorio rodean un mostrador con franjas amarillas y negras. Matraces y tubos de ensayo comparten espacio con los accesorios teatrales; una gran llamarada forma parte de los efectos del equipo.</p><h2>La ciencia en escena</h2><p>Los intercambios entre los divulgadores y el profesor marcan el ritmo. Los experimentos siguen en el centro de la acción, mientras las interrupciones de Yapadrisk y los gestos y reacciones de los intérpretes convierten el laboratorio en teatro científico.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le laboratoire bousculé par Yapadrisk</h2><p>Expériences, c’est show ! commence avec les animateurs scientifiques de Vulcania, avant que le professeur Yapadrisk ne bouleverse leur présentation. Ce savant excentrique remplace les manipulations prévues par ses propres expériences, plus spectaculaires. La démonstration devient ainsi une comédie où l’assurance du professeur se heurte aux réactions de ses partenaires.</p><p>Sur scène, blouses blanches, casquettes rouges et matériel de laboratoire entourent un comptoir aux bandes jaunes et noires. Fioles et tubes à essai côtoient les accessoires du spectacle ; une grande flamme fait partie des effets présentés par l’équipe.</p><h2>La science jouée sur scène</h2><p>L’échange entre les animateurs et le professeur donne son rythme au spectacle. Les expériences restent au cœur de l’action, mais les interruptions de Yapadrisk, les gestes des comédiens et leurs réactions transforment le laboratoire en théâtre scientifique.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk scompiglia il laboratorio</h2><p>Expériences, c’est show ! comincia con gli animatori scientifici di Vulcania, prima che il professor Yapadrisk sconvolga la presentazione. Lo scienziato eccentrico sostituisce le dimostrazioni previste con esperimenti propri, più spettacolari. La lezione diventa così una commedia in cui la sicurezza del professore incontra le reazioni dei suoi compagni.</p><p>Camici bianchi, berretti rossi e attrezzature da laboratorio circondano un bancone a strisce gialle e nere. Ampolle e provette affiancano gli oggetti di scena; una grande fiammata fa parte degli effetti presentati dalla squadra.</p><h2>La scienza sul palcoscenico</h2><p>Gli scambi tra animatori e professore scandiscono lo spettacolo. Gli esperimenti restano al centro dell’azione, ma le interruzioni di Yapadrisk, i gesti e le reazioni degli interpreti trasformano il laboratorio in teatro scientifico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk zet het laboratorium op zijn kop</h2><p>Expériences, c’est show ! begint met de wetenschapsmedewerkers van Vulcania, totdat professor Yapadrisk hun demonstratie verstoort. De excentrieke geleerde vervangt de geplande proeven door zijn eigen, spectaculairdere experimenten. Zo ontstaat een komedie waarin zijn zelfverzekerdheid botst met de reacties van zijn medespelers.</p><p>Witte jassen, rode petten en laboratoriummateriaal omringen een toonbank met gele en zwarte strepen. Kolven en reageerbuizen staan tussen de toneelattributen; ook een grote vlam hoort bij de effecten die het team laat zien.</p><h2>Wetenschap als toneel</h2><p>De uitwisseling tussen de medewerkers en de professor bepaalt het ritme. De experimenten blijven centraal staan, terwijl Yapadrisks onderbrekingen, de gebaren en de reacties van de spelers het laboratorium in wetenschapstheater veranderen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk wprowadza zamieszanie w laboratorium</h2><p>Expériences, c’est show ! rozpoczynają popularyzatorzy nauki z Vulcanii, zanim profesor Yapadrisk zakłóci ich prezentację. Ekscentryczny naukowiec zastępuje zaplanowane demonstracje własnymi, bardziej widowiskowymi doświadczeniami. Pokaz zmienia się w komedię, w której pewność siebie profesora zderza się z reakcjami jego partnerów.</p><p>Białe fartuchy, czerwone czapki i sprzęt laboratoryjny otaczają ladę w żółto-czarne pasy. Kolby i probówki stoją obok rekwizytów scenicznych; wśród prezentowanych efektów znajduje się duży płomień.</p><h2>Nauka na scenie</h2><p>Wymiana zdań między prowadzącymi a profesorem wyznacza rytm widowiska. Doświadczenia pozostają w centrum akcji, ale przerwy powodowane przez Yapadriska, gesty i reakcje aktorów zamieniają laboratorium w teatr naukowy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Yapadrisk põe o laboratório em alvoroço</h2><p>Expériences, c’est show ! começa com os animadores científicos de Vulcania, até o professor Yapadrisk perturbar a apresentação. O cientista excêntrico substitui as demonstrações previstas pelas suas próprias experiências, mais espetaculares. A demonstração transforma-se numa comédia em que a confiança do professor encontra as reações dos seus parceiros.</p><p>Batas brancas, bonés vermelhos e material de laboratório rodeiam um balcão com faixas amarelas e pretas. Frascos e tubos de ensaio partilham o palco com adereços; uma grande chama faz parte dos efeitos apresentados pela equipa.</p><h2>A ciência em palco</h2><p>As trocas entre os animadores e o professor marcam o ritmo do espetáculo. As experiências continuam no centro da ação, enquanto as interrupções de Yapadrisk, os gestos e as reações dos intérpretes transformam o laboratório em teatro científico.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "entityKey": "vulcania-danse-pitoufeu",
+        "displayName": "Danse de Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der rote Vulkan wird lebendig</h2><p>Pitoufeu verlässt die Illustrationen des Parks und begegnet Kindern als großer lächelnder roter Vulkan mit gelber Flamme. Das Maskottchen mischt sich unter die Gruppe, tauscht Gesten mit jungen Besuchern aus und posiert für Fotos.</p><p>Zur Begegnung gehört ein Tanz, den die Kinder lernen und mit Pitoufeu aufführen können. Die Bewegungen des Maskottchens und der Gruppe begleiten sein Lied. So wird der Auftritt zu einer musikalischen Begegnung zum Mitmachen.</p><h2>Ein Lied von Paroles de Farfelus</h2><p>Pitoufeus Lied wurde von Paroles de Farfelus komponiert und gesungen. Es begleitet die Choreografie und gibt der Vulkanfigur eine Stimme, die bereits an ihren schwarzen Gesichtszügen und ihrer rot-gelben Gestalt zu erkennen ist.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The red volcano comes to life</h2><p>Pitoufeu steps out of the park’s illustrations to meet children as a large smiling red volcano topped with a yellow flame. The mascot joins the group, exchanges gestures with young visitors and poses for photographs.</p><p>The encounter includes a dance that children can learn and perform with Pitoufeu. The mascot and the group move to his song, making this appearance a musical event in which the audience takes part.</p><h2>A song by Paroles de Farfelus</h2><p>Pitoufeu’s song was composed and performed by Paroles de Farfelus. It accompanies the encounter’s choreography and gives a voice to the volcanic character, already recognisable by his black facial features and red and yellow silhouette.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El volcán rojo cobra vida</h2><p>Pitoufeu sale de las ilustraciones del parque para encontrarse con los niños como un gran volcán rojo sonriente, coronado por una llama amarilla. La mascota se une al grupo, intercambia gestos con los pequeños visitantes y posa para las fotografías.</p><p>El encuentro incluye un baile que los niños pueden aprender e interpretar con Pitoufeu. Los movimientos de la mascota y del grupo siguen su canción, dando a esta aparición un carácter musical y participativo.</p><h2>Una canción de Paroles de Farfelus</h2><p>La canción de Pitoufeu está compuesta e interpretada por Paroles de Farfelus. Acompaña la coreografía y da voz al personaje volcánico, reconocible por sus rasgos negros y su silueta roja y amarilla.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le volcan rouge prend vie</h2><p>Pitoufeu quitte les illustrations du parc pour rencontrer les enfants sous la forme d’un grand volcan rouge souriant, couronné d’une flamme jaune. La mascotte se mêle au groupe, échange des gestes avec les petits visiteurs et prend la pose pour les photographies.</p><p>La rencontre comprend une danse que les enfants peuvent apprendre puis reprendre avec Pitoufeu. Les mouvements de la mascotte et ceux du groupe accompagnent sa chanson, donnant à cette apparition une forme à la fois musicale et participative.</p><h2>Une chanson de Paroles de Farfelus</h2><p>La chanson de Pitoufeu est composée et interprétée par Paroles de Farfelus. Elle porte la chorégraphie de la rencontre et donne une voix au personnage volcanique, déjà reconnaissable à son visage noir et à sa silhouette rouge et jaune.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il vulcano rosso prende vita</h2><p>Pitoufeu esce dalle illustrazioni del parco per incontrare i bambini come un grande vulcano rosso sorridente, coronato da una fiamma gialla. La mascotte si unisce al gruppo, scambia gesti con i piccoli visitatori e posa per le fotografie.</p><p>L’incontro comprende un ballo che i bambini possono imparare ed eseguire con Pitoufeu. I movimenti della mascotte e del gruppo seguono la sua canzone, dando all’apparizione un carattere musicale e partecipativo.</p><h2>Una canzone di Paroles de Farfelus</h2><p>La canzone di Pitoufeu è composta e interpretata da Paroles de Farfelus. Accompagna la coreografia e dà voce al personaggio vulcanico, già riconoscibile per i lineamenti neri e la sagoma rossa e gialla.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De rode vulkaan komt tot leven</h2><p>Pitoufeu stapt uit de illustraties van het park om kinderen te ontmoeten als een grote lachende rode vulkaan met een gele vlam. De mascotte begeeft zich tussen de groep, wisselt gebaren uit met jonge bezoekers en poseert voor foto’s.</p><p>Bij de ontmoeting hoort een dans die kinderen kunnen leren en samen met Pitoufeu uitvoeren. De mascotte en de groep bewegen op zijn lied, waardoor dit optreden een muzikaal karakter krijgt en het publiek meedoet.</p><h2>Een lied van Paroles de Farfelus</h2><p>Het lied van Pitoufeu is gecomponeerd en uitgevoerd door Paroles de Farfelus. Het begeleidt de choreografie en geeft een stem aan het vulkaanfiguurtje, herkenbaar aan zijn zwarte gelaatstrekken en rode en gele vorm.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Czerwony wulkan ożywa</h2><p>Pitoufeu wychodzi z ilustracji parku, by spotkać dzieci jako duży uśmiechnięty czerwony wulkan zwieńczony żółtym płomieniem. Maskotka dołącza do grupy, wymienia gesty z małymi gośćmi i pozuje do zdjęć.</p><p>Spotkanie obejmuje taniec, którego dzieci mogą się nauczyć i wykonać razem z Pitoufeu. Ruchom maskotki i grupy towarzyszy jej piosenka, dzięki czemu występ łączy muzykę z udziałem publiczności.</p><h2>Piosenka Paroles de Farfelus</h2><p>Piosenkę Pitoufeu skomponował i wykonał zespół Paroles de Farfelus. Towarzyszy ona choreografii i daje głos wulkanicznej postaci, rozpoznawalnej po czarnych rysach twarzy i czerwono-żółtej sylwetce.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O vulcão vermelho ganha vida</h2><p>Pitoufeu sai das ilustrações do parque para encontrar as crianças como um grande vulcão vermelho sorridente, coroado por uma chama amarela. A mascote junta-se ao grupo, troca gestos com os pequenos visitantes e posa para fotografias.</p><p>O encontro inclui uma dança que as crianças podem aprender e repetir com Pitoufeu. Os movimentos da mascote e do grupo acompanham a sua canção, dando a esta aparição um carácter musical e participativo.</p><h2>Uma canção de Paroles de Farfelus</h2><p>A canção de Pitoufeu foi composta e interpretada por Paroles de Farfelus. Acompanha a coreografia e dá voz à personagem vulcânica, reconhecível pelos traços pretos do rosto e pela silhueta vermelha e amarela.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "entityKey": "vulcania-cent-volcans",
+        "displayName": "100% volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Gemeinsame Aufgaben zu Eruptionen</h2><p>100% volcans versammelt das Publikum mit Wissenschaftsvermittlern zu gemeinschaftlichen Aufgaben. Die Fragen betreffen die Verteilung von Vulkanen auf der Erde, ihre Entstehung und die Unterschiede zwischen ihren Ausbrüchen. Aufgaben, Vorführungen und Quizfragen führen zu den Antworten.</p><p>Eine große Weltkarte trägt rote Markierungen und eingezeichnete Grenzen über Kontinente und Ozeane hinweg. Daneben steht ein Tresen mit Eruptionsbildern, der die Modelle, Fotos und Videos zum Vergleich vulkanischer Formen ergänzt.</p><h2>Vulkanformen gemeinsam verstehen</h2><p>Im Austausch mit dem Vermittler werden die Materialien mit den Fragen der Gruppe verbunden: Haben alle Vulkane dieselbe Form und funktionieren sie auf dieselbe Weise? Das gemeinsame Mitmachen gibt Beobachtungen, Vergleichen und Antwortvorschlägen aus dem Publikum ihren Platz.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Challenges about eruptions</h2><p>100% volcans brings the audience together with science presenters for a series of collaborative challenges. Questions explore where volcanoes occur on Earth, how they form and how their eruptions differ. Answers emerge through tasks, demonstrations and quizzes.</p><p>A large world map carries red markers and outlines across the continents and oceans. Beside it, a counter illustrated with eruptions accompanies the models, photographs and videos used to compare volcanic forms.</p><h2>Understanding volcanic forms together</h2><p>Exchanges with the presenter connect these materials to the group’s questions: do all volcanoes have the same shape and work in the same way? Collective participation gives a place to observation, comparison and the answers suggested by the audience.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Retos sobre las erupciones</h2><p>100% volcans reúne al público y a los divulgadores científicos en una serie de pruebas colaborativas. Las preguntas tratan sobre la distribución de los volcanes en la Tierra, su formación y las diferencias entre sus erupciones. Retos, demostraciones y cuestionarios conducen a las respuestas.</p><p>Un gran mapamundi presenta marcadores rojos y límites dibujados entre continentes y océanos. A su lado, un mostrador ilustrado con erupciones acompaña las maquetas, fotografías y vídeos utilizados para comparar las formas volcánicas.</p><h2>Comprender juntos las formas volcánicas</h2><p>Los intercambios con el divulgador relacionan estos materiales con las preguntas del grupo: ¿tienen todos los volcanes la misma forma y funcionan igual? La participación colectiva da espacio a la observación, la comparación y las respuestas propuestas por el público.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des défis autour des éruptions</h2><p>100% volcans rassemble le public autour des animateurs scientifiques pour une série d’épreuves collaboratives. Les questions portent sur la répartition des volcans sur Terre, leur formation et les différences entre leurs éruptions. Les réponses se construisent au fil de défis, de démonstrations et de quiz.</p><p>Un grand planisphère porte des repères rouges et des limites dessinées entre les continents et les océans. À côté, un comptoir illustré d’éruptions accompagne les maquettes, les photographies et les vidéos utilisées pour comparer les formes volcaniques.</p><h2>Comprendre ensemble les formes volcaniques</h2><p>Les échanges avec l’animateur relient ces supports aux questions du groupe : les volcans ont-ils tous la même forme et fonctionnent-ils de la même manière ? La participation collective donne sa place à l’observation, à la comparaison et aux réponses proposées par le public.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sfide sulle eruzioni</h2><p>100% volcans riunisce il pubblico e gli animatori scientifici per una serie di prove collaborative. Le domande riguardano la distribuzione dei vulcani sulla Terra, la loro formazione e le differenze tra le eruzioni. Sfide, dimostrazioni e quiz conducono alle risposte.</p><p>Un grande planisfero presenta indicatori rossi e confini disegnati attraverso continenti e oceani. Accanto, un bancone illustrato con eruzioni accompagna i plastici, le fotografie e i video usati per confrontare le forme vulcaniche.</p><h2>Comprendere insieme le forme vulcaniche</h2><p>Gli scambi con l’animatore collegano questi materiali alle domande del gruppo: i vulcani hanno tutti la stessa forma e funzionano allo stesso modo? La partecipazione collettiva lascia spazio all’osservazione, al confronto e alle risposte proposte dal pubblico.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Uitdagingen rond uitbarstingen</h2><p>100% volcans brengt het publiek en de wetenschapsmedewerkers samen voor gezamenlijke opdrachten. De vragen gaan over de verspreiding van vulkanen op aarde, hun ontstaan en de verschillen tussen uitbarstingen. Uitdagingen, demonstraties en quizzen leiden naar de antwoorden.</p><p>Een grote wereldkaart draagt rode markeringen en getekende grenzen over continenten en oceanen. Daarnaast staat een toonbank met afbeeldingen van uitbarstingen, bij de maquettes, foto’s en video’s waarmee vulkaanvormen worden vergeleken.</p><h2>Samen vulkaanvormen begrijpen</h2><p>De gesprekken met de begeleider verbinden het materiaal met de vragen van de groep: hebben alle vulkanen dezelfde vorm en werken ze op dezelfde manier? Samen deelnemen geeft ruimte aan waarnemen, vergelijken en antwoorden die het publiek voorstelt.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wyzwania dotyczące erupcji</h2><p>100% volcans gromadzi publiczność i popularyzatorów nauki wokół wspólnych zadań. Pytania dotyczą rozmieszczenia wulkanów na Ziemi, ich powstawania i różnic między erupcjami. Odpowiedzi wyłaniają się z wyzwań, demonstracji i quizów.</p><p>Na dużej mapie świata widać czerwone znaczniki oraz granice poprowadzone przez kontynenty i oceany. Obok stoi lada z ilustracjami erupcji, towarzysząca modelom, fotografiom i filmom służącym do porównywania form wulkanicznych.</p><h2>Wspólne poznawanie form wulkanicznych</h2><p>Rozmowa z prowadzącym łączy te materiały z pytaniami grupy: czy wszystkie wulkany mają taki sam kształt i działają identycznie? Wspólny udział pozostawia miejsce na obserwacje, porównania i odpowiedzi proponowane przez publiczność.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Desafios sobre as erupções</h2><p>100% volcans reúne o público e os animadores científicos numa série de provas colaborativas. As perguntas abordam a distribuição dos vulcões na Terra, a sua formação e as diferenças entre erupções. Desafios, demonstrações e questionários conduzem às respostas.</p><p>Um grande mapa-múndi apresenta marcadores vermelhos e limites desenhados através dos continentes e oceanos. Ao lado, um balcão ilustrado com erupções acompanha as maquetes, fotografias e vídeos usados para comparar formas vulcânicas.</p><h2>Compreender em conjunto as formas vulcânicas</h2><p>As trocas com o animador ligam estes materiais às perguntas do grupo: têm todos os vulcões a mesma forma e funcionam da mesma maneira? A participação coletiva dá lugar à observação, à comparação e às respostas propostas pelo público.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Expériences, c’est show !, Danse de Pitoufeu et 100% volcans : vingt-quatre notices en huit langues personnellement rédigées et relues, scénographie et supports pédagogiques vérifiés sur les pages officielles et les photographies. Trois fiches existantes privées ; aucune programmation permanente ou date inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Twenty-four texts personally authored/reviewed in eight languages after reading complete official pages and individually viewing the native photographs. Professor Yapadrisk interrupts a science presentation; laboratory props and staged flame visible. Pitoufeu costume and named song creators confirmed; no daily meeting schedule invented. 100% volcans collaborative demonstrations/models/photos/quizzes remains its existing distinct item. Shorter source-limited notices documented without padding, no invented opening dates or experiment chemistry. Official wide photograph also individually viewed: physical world map with red markers and eruption-decorated counter."
+}

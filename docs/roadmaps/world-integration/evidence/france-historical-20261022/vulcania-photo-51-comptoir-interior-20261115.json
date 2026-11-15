@@ -1,0 +1,285 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-51-comptoir-interior",
+    "ownerId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+    "itemName": "Le Comptoir du cratère",
+    "current": true,
+    "source": {
+      "key": "comptoir",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau_comptoir-du-cratere_3000x1100-scaled.jpg",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/food-comptoir-1847.jpg",
+      "http": 200,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "bytes": 149986,
+      "sha256": "0c34ac6e0a2855bd2c0d9b69c9414b36443df0a603ac3c848d7b44ca5d37302a",
+      "accessedAtUtc": "2026-11-15T18:43:51.713956+00:00",
+      "localPixelTransformation": false,
+      "captureDate": null,
+      "sourcePage": "https://www.vulcania.com/animation/comptoir-du-cratere/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Real official source photograph personally viewed. Cafeteria page identifies dining area; background Brasserie des volcans sign is not inferred to be an alias or separate new place. Menu prices photographed are not current prices imported. No local pixel transformation or invented capture date. Seventy-two localized fields personally authored/reviewed."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau_comptoir-du-cratere_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/food-comptoir-1847.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-51-comptoir-interior-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-51-comptoir-interior-import-result.json"
+  },
+  "metadata": {
+    "description": "Des visiteurs se tiennent devant le service, sous les indications des bornes de commande et du point de retrait.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau_comptoir-du-cratere_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Long comptoir habillé de lattes de bois, avec une image de reliefs volcaniques au mur du Comptoir du cratère."
+      },
+      {
+        "languageCode": "en",
+        "value": "Long counter faced with wooden slats and a volcanic landscape image on the wall at Le Comptoir du cratère."
+      },
+      {
+        "languageCode": "de",
+        "value": "Langer Tresen mit Holzleistenverkleidung und einem Vulkanlandschaftsbild an der Wand im Comptoir du cratère."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Lange toonbank met houten latten en een vulkaanlandschap op de wand van Le Comptoir du cratère."
+      },
+      {
+        "languageCode": "it",
+        "value": "Lungo bancone rivestito di listelli di legno e immagine di paesaggi vulcanici sulla parete del Comptoir du cratère."
+      },
+      {
+        "languageCode": "es",
+        "value": "Largo mostrador revestido de listones de madera y una imagen de relieves volcánicos en la pared del Comptoir du cratère."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Długa lada obłożona drewnianymi listwami i obraz wulkanicznych wzgórz na ścianie Le Comptoir du cratère."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Balcão comprido revestido de ripas de madeira e imagem de relevos vulcânicos na parede do Comptoir du cratère."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des visiteurs se tiennent devant le service, sous les indications des bornes de commande et du point de retrait."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors stand in front of the serving area beneath signs for ordering terminals and the collection point."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher stehen vor dem Ausgabebereich unter Schildern zu Bestellterminals und Abholstelle."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers staan voor de uitgifte onder borden voor bestelzuilen en het afhaalpunt."
+      },
+      {
+        "languageCode": "it",
+        "value": "I visitatori si trovano davanti al servizio, sotto le indicazioni dei terminali di ordinazione e del punto di ritiro."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los visitantes están frente al servicio, bajo las indicaciones de los terminales de pedido y del punto de recogida."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zwiedzający stoją przed obsługą pod oznaczeniami terminali zamówień i punktu odbioru."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os visitantes estão diante do serviço, sob as indicações dos terminais de pedido e do ponto de recolha."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T18:52:18.3700900Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "5dc45999690d468c956587d4e938f72c",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+      "path": "park_item/5dc45999690d468c956587d4e938f72c",
+      "description": "Des visiteurs se tiennent devant le service, sous les indications des bornes de commande et du point de retrait.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 149986,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/bandeau_comptoir-du-cratere_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Long comptoir habillé de lattes de bois, avec une image de reliefs volcaniques au mur du Comptoir du cratère."
+        },
+        {
+          "languageCode": "en",
+          "value": "Long counter faced with wooden slats and a volcanic landscape image on the wall at Le Comptoir du cratère."
+        },
+        {
+          "languageCode": "de",
+          "value": "Langer Tresen mit Holzleistenverkleidung und einem Vulkanlandschaftsbild an der Wand im Comptoir du cratère."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Lange toonbank met houten latten en een vulkaanlandschap op de wand van Le Comptoir du cratère."
+        },
+        {
+          "languageCode": "it",
+          "value": "Lungo bancone rivestito di listelli di legno e immagine di paesaggi vulcanici sulla parete del Comptoir du cratère."
+        },
+        {
+          "languageCode": "es",
+          "value": "Largo mostrador revestido de listones de madera y una imagen de relieves volcánicos en la pared del Comptoir du cratère."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Długa lada obłożona drewnianymi listwami i obraz wulkanicznych wzgórz na ścianie Le Comptoir du cratère."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Balcão comprido revestido de ripas de madeira e imagem de relevos vulcânicos na parede do Comptoir du cratère."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des visiteurs se tiennent devant le service, sous les indications des bornes de commande et du point de retrait."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors stand in front of the serving area beneath signs for ordering terminals and the collection point."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher stehen vor dem Ausgabebereich unter Schildern zu Bestellterminals und Abholstelle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers staan voor de uitgifte onder borden voor bestelzuilen en het afhaalpunt."
+        },
+        {
+          "languageCode": "it",
+          "value": "I visitatori si trovano davanti al servizio, sotto le indicazioni dei terminali di ordinazione e del punto di ritiro."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los visitantes están frente al servicio, bajo las indicaciones de los terminales de pedido y del punto de recogida."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający stoją przed obsługą pod oznaczeniami terminali zamówień i punktu odbioru."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os visitantes estão diante do serviço, sob as indicações dos terminais de pedido e do ponto de recolha."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:52:11.589Z",
+      "updatedAt": "2026-11-15T18:52:15.262Z"
+    },
+    "startedAtUtc": "2026-11-15T18:52:08.6909692Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

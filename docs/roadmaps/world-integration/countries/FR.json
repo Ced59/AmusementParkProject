@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T18:43:31.580Z",
+      "lastDataIntegrationAt": "2026-11-15T19:09:58.827Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38668,6 +38668,146 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-49-volcans-auvergne-trail-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : photo officielle de Volcans d’Auvergne importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-731d384a-c4f4-47b0-a888-f8d55b16ce64",
+          "appliedAt": "2026-11-15T18:51:03.146Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-50-five-food-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : les cinq points de restauration existants décrits en huit langues après lecture des cartes officielles et revue des images. Produits et cadres propres, horaires/fermeture saisonnière non extrapolés, aucun lieu supplémentaire ou changement de visibilité."
+        },
+        {
+          "eventId": "import-photo-5dc45999690d468c956587d4e938f72c",
+          "appliedAt": "2026-11-15T18:52:11.589Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-51-comptoir-interior-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Le Comptoir du cratère importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-b95b190d536f4197ab07873294f982e2",
+          "appliedAt": "2026-11-15T18:52:46.308Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-52-cafeteria-lava-room-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de La Cafétéria des Puys importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-fe86e0aecff547439fcd5469af81b307",
+          "appliedAt": "2026-11-15T18:53:13.742Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-53-namazu-kiosk-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Le Kiosque Namazu importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-8b87dc2f-e15d-4f9c-b628-6ef02092519d",
+          "appliedAt": "2026-11-15T18:55:52.754Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-54-two-volcanic-shows-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : Yapadrisk et Primordia décrits personnellement en huit langues, récit de Lug et porte celtique, création nocturne scénographiée avec architecture Hollein. Identités et visibilité privées conservées, aucune éruption réelle ou date de première représentation inventée."
+        },
+        {
+          "eventId": "apply-487397a0-4b69-44e9-94b9-cf5d94600cf4",
+          "appliedAt": "2026-11-15T19:02:41.406Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-55-birds-and-tales-20261115.json",
+          "auditEvidence": null,
+          "summary": "Rapaces en vol libre et Contes et légendes volcaniques : seize notices en huit langues personnellement rédigées et relues, fauconnerie et deux récits fictifs Hawaï/Japon qualifiés par sources officielles et photographies. Deux fiches existantes conservées privées ; aucune date ou disponibilité quotidienne inventée."
+        },
+        {
+          "eventId": "import-photo-8132b8b476bd4ddb90adb2a491a7c734",
+          "appliedAt": "2026-11-15T19:04:44.168Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-56-rapaces-eagle-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Rapaces en vol libre importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-14b3cda47b7d44ea8e6bb88d9e952842",
+          "appliedAt": "2026-11-15T19:04:55.566Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-57-contes-stage-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Contes et légendes volcaniques importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-17d9beefe541405c8d396bfd116514b1",
+          "appliedAt": "2026-11-15T19:05:12.579Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-58-yapadrisk-pyrotechnics-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Yapadrisk et la flamme des volcans importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-6c530a3938974ba9bab3b7b7abc7d155",
+          "appliedAt": "2026-11-15T19:05:26.253Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-59-primordia-ocean-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Primordia importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-ffe5bce7-6d34-4753-b4c0-87ce370c7a7d",
+          "appliedAt": "2026-11-15T19:08:02.163Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-60-science-and-mascot-20261115.json",
+          "auditEvidence": null,
+          "summary": "Expériences, c’est show !, Danse de Pitoufeu et 100% volcans : vingt-quatre notices en huit langues personnellement rédigées et relues, scénographie et supports pédagogiques vérifiés sur les pages officielles et les photographies. Trois fiches existantes privées ; aucune programmation permanente ou date inventée."
+        },
+        {
+          "eventId": "import-photo-339433b5e9974d78ae1d4005d6407f64",
+          "appliedAt": "2026-11-15T19:09:09.685Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-61-experiences-flame-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Expériences, c’est show ! importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-500e5290f94843918d5326c8b6f56547",
+          "appliedAt": "2026-11-15T19:09:48.445Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-62-pitoufeu-encounter-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Danse de Pitoufeu importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-f1e809b6aa864d82a3cec643e624c7d9",
+          "appliedAt": "2026-11-15T19:09:58.827Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-63-cent-volcans-map-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de 100% volcans importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38720,7 +38860,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-d1b3a21b0ac347ca8570153a9b873f32 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-f1e809b6aa864d82a3cec643e624c7d9 ; conserver les références de découverte."
       }
     },
     {

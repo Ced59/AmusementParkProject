@@ -1,0 +1,809 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+          "key": "vulcania-comptoir-cratere",
+          "name": "Le Comptoir du cratère",
+          "type": "Snack",
+          "category": "Restaurant",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un comptoir face aux puys</h2><p>Le Comptoir du cratère se reconnaît à son long habillage de lattes de bois et au panorama volcanique qui court derrière le service. Les grandes ouvertures éclairent cet espace de vente à emporter, où les points de retrait sont signalés au-dessus du comptoir.</p><p>La carte donne une place particulière aux produits auvergnats. Le bœuf régional garnit notamment des burgers à la fourme d’Ambert ou au Saint-Nectaire, avec pain brioché, oignons confits et tomates rôties. Une proposition végétarienne complète cette famille de burgers.</p><h2>Fromages et recettes préparées sur place</h2><p>Les salades prolongent cet ancrage local : la version auvergnate réunit Bleu d’Auvergne, Cantal, jambon et noix. Burgers, salades et cakes sont préparés sur place. Les recettes salées côtoient une offre de crêpes, gaufres et laitages, dont des produits Cœur de Fermier.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A counter beneath the volcanic panorama</h2><p>Le Comptoir du cratère has a long counter faced with wooden slats, backed by a panorama of volcanic hills. Large openings bring light into this takeaway venue, with collection points marked above the counter.</p><p>Auvergne produce has a prominent place on the menu. Regional beef appears in burgers with Fourme d’Ambert or Saint-Nectaire cheese, brioche-style buns, slow-cooked onions and roasted tomatoes. A vegetarian option completes the burger selection.</p><h2>Local cheeses and food prepared on site</h2><p>The salads continue the regional theme: the Auvergne version combines Bleu d’Auvergne, Cantal, ham and walnuts. Burgers, salads and cakes are prepared on site. Crêpes, waffles and dairy desserts, including Cœur de Fermier products, accompany the savoury dishes.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Tresen vor dem Vulkanpanorama</h2><p>Le Comptoir du cratère besitzt einen langen Tresen mit Holzleistenverkleidung und einem Panorama vulkanischer Hügel dahinter. Große Öffnungen lassen Licht in den Bereich für Speisen zum Mitnehmen. Über dem Tresen sind die Abholstellen ausgeschildert.</p><p>Produkte aus der Auvergne prägen die Speisekarte. Regionales Rindfleisch kommt etwa in Burgern mit Fourme d’Ambert oder Saint-Nectaire, Briochebrötchen, geschmorten Zwiebeln und gerösteten Tomaten vor. Eine vegetarische Variante ergänzt die Burgerauswahl.</p><h2>Käse und vor Ort zubereitete Gerichte</h2><p>Auch die Salate greifen die Region auf: Die Auvergne-Variante verbindet Bleu d’Auvergne, Cantal, Schinken und Walnüsse. Burger, Salate und Kuchen werden vor Ort zubereitet. Crêpes, Waffeln und Milchprodukte, darunter Erzeugnisse von Cœur de Fermier, ergänzen die herzhaften Speisen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een toonbank onder het vulkaanpanorama</h2><p>Le Comptoir du cratère heeft een lange toonbank met houten latten en een panorama van vulkanische heuvels op de achterwand. Grote openingen laten licht binnen in deze afhaalruimte. Boven de toonbank zijn de afhaalpunten aangegeven.</p><p>Producten uit Auvergne krijgen veel aandacht op de kaart. Regionaal rundvlees wordt gebruikt voor burgers met Fourme d’Ambert of Saint-Nectaire, briochebroodjes, gekonfijte uien en geroosterde tomaten. Een vegetarische versie vult het burgeraanbod aan.</p><h2>Streekkaas en bereidingen ter plaatse</h2><p>Ook de salades dragen het regionale karakter: de Auvergne-salade combineert Bleu d’Auvergne, Cantal, ham en walnoten. Burgers, salades en cakes worden ter plaatse bereid. Crêpes, wafels en zuiveldesserts, waaronder producten van Cœur de Fermier, staan naast de hartige gerechten op de kaart.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un bancone sotto il panorama vulcanico</h2><p>Le Comptoir du cratère si distingue per il lungo bancone rivestito di listelli di legno e il panorama vulcanico sulla parete retrostante. Grandi aperture illuminano questo spazio da asporto, con punti di ritiro indicati sopra il banco.</p><p>I prodotti dell’Alvernia hanno un ruolo particolare nel menu. La carne bovina regionale compare negli hamburger con Fourme d’Ambert o Saint-Nectaire, pane brioche, cipolle confit e pomodori arrostiti. Una versione vegetariana completa la scelta degli hamburger.</p><h2>Formaggi locali e preparazioni sul posto</h2><p>Le insalate proseguono il richiamo al territorio: quella alverniate unisce Bleu d’Auvergne, Cantal, prosciutto e noci. Hamburger, insalate e dolci vengono preparati sul posto. Crêpes, waffle e dessert a base di latte, anche di Cœur de Fermier, affiancano le proposte salate.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un mostrador bajo el panorama volcánico</h2><p>Le Comptoir du cratère se reconoce por su largo mostrador revestido de listones de madera y el panorama volcánico de la pared posterior. Grandes aberturas iluminan este espacio de comida para llevar, con puntos de recogida señalados sobre el mostrador.</p><p>Los productos de Auvernia tienen especial protagonismo en la carta. La carne de vacuno regional aparece en hamburguesas con Fourme d’Ambert o Saint-Nectaire, pan brioche, cebolla confitada y tomates asados. Una versión vegetariana completa la selección de hamburguesas.</p><h2>Quesos locales y recetas preparadas allí</h2><p>Las ensaladas prolongan el vínculo regional: la auvernesa combina Bleu d’Auvergne, Cantal, jamón y nueces. Hamburguesas, ensaladas y bizcochos se preparan en el establecimiento. Crepes, gofres y postres lácteos, incluidos productos Cœur de Fermier, acompañan las propuestas saladas.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Lada pod wulkaniczną panoramą</h2><p>Le Comptoir du cratère wyróżnia długa lada obłożona drewnianymi listwami oraz panorama wulkanicznych wzgórz na tylnej ścianie. Duże otwory doświetlają punkt sprzedaży na wynos. Nad ladą oznaczono miejsca odbioru zamówień.</p><p>W menu ważną rolę odgrywają produkty z Owernii. Regionalna wołowina trafia do burgerów z Fourme d’Ambert lub Saint-Nectaire, bułką brioche, duszoną cebulą i pieczonymi pomidorami. Wybór burgerów uzupełnia wersja wegetariańska.</p><h2>Lokalne sery i przygotowanie na miejscu</h2><p>Do regionu nawiązują też sałatki: owerniacka łączy Bleu d’Auvergne, Cantal, szynkę i orzechy włoskie. Burgery, sałatki i ciasta przygotowuje się na miejscu. Obok dań wytrawnych są naleśniki, gofry i desery mleczne, w tym produkty Cœur de Fermier.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um balcão sob o panorama vulcânico</h2><p>Le Comptoir du cratère distingue-se pelo longo balcão revestido de ripas de madeira e pelo panorama vulcânico na parede de trás. Grandes aberturas iluminam este espaço de comida para levar, com pontos de recolha assinalados sobre o balcão.</p><p>Os produtos da Auvérnia têm um lugar de destaque na ementa. A carne de bovino regional surge em hambúrgueres com Fourme d’Ambert ou Saint-Nectaire, pão brioche, cebola confitada e tomate assado. Uma versão vegetariana completa a seleção de hambúrgueres.</p><h2>Queijos locais e receitas feitas no local</h2><p>As saladas prolongam a ligação regional: a auvernesa combina Bleu d’Auvergne, Cantal, fiambre e nozes. Hambúrgueres, saladas e bolos são preparados no local. Crepes, waffles e sobremesas lácteas, incluindo produtos Cœur de Fermier, acompanham as propostas salgadas.</p>"
+            }
+          ]
+        },
+        {
+          "id": "26f977fb-834f-41df-9705-60846988a756",
+          "key": "vulcania-cafeteria-puys",
+          "name": "La Cafétéria des Puys",
+          "type": "Restaurant",
+          "category": "Restaurant",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une salle aux couleurs de lave</h2><p>La Cafétéria des Puys associe le libre-service à un décor volcanique très présent. Des assises rouges, des colonnes orangées et de grands luminaires circulaires illustrés de reliefs composent la salle. Des arches sombres et des motifs de lave encadrent certaines tables.</p><p>La cuisine régionale s’exprime dans la truffade accompagnée de saucisse d’Auvergne, les charcuteries et les fromages AOP. Le poisson du jour et une préparation végétarienne figurent aussi parmi les plats, avec des entrées et des desserts proposés séparément.</p><h2>Les produits de la ferme voisine</h2><p>Les laitages proviennent de Cœur de Fermier, à moins de vingt kilomètres du parc : yaourts, fromage blanc et faisselle prolongent la place des producteurs locaux. Parmi les douceurs de la carte, la tarte aux myrtilles côtoie le flan et la mousse au chocolat.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A dining room in lava colours</h2><p>La Cafétéria des Puys combines self-service dining with prominent volcanic decoration. Red seats, orange columns and large circular lamps illustrated with landscapes fill the room. Dark arches and lava patterns frame some of the tables.</p><p>Regional cooking appears in truffade served with Auvergne sausage, local charcuterie and protected-origin cheeses. Fish of the day and a vegetarian dish also feature, alongside separately offered starters and desserts.</p><h2>Dairy produce from a nearby farm</h2><p>The dairy range comes from Cœur de Fermier, less than twenty kilometres from the park. Yoghurts, fromage blanc and faisselle continue the emphasis on local producers. Blueberry tart, custard flan and chocolate mousse are among the sweet dishes on the menu.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein Speisesaal in Lavafarben</h2><p>La Cafétéria des Puys verbindet Selbstbedienung mit einer ausgeprägten Vulkandekoration. Rote Sitze, orangefarbene Säulen und große runde Leuchten mit Landschaftsmotiven gestalten den Saal. Dunkle Bögen und Lavamuster rahmen einige Tische ein.</p><p>Regionale Küche zeigt sich in Truffade mit Auvergne-Wurst, örtlichen Wurstwaren und Käse mit geschützter Ursprungsbezeichnung. Auch Tagesfisch und ein vegetarisches Gericht stehen zur Auswahl; Vorspeisen und Desserts werden separat angeboten.</p><h2>Milchprodukte vom nahen Hof</h2><p>Die Milchprodukte stammen von Cœur de Fermier, weniger als zwanzig Kilometer vom Park entfernt. Joghurt, Fromage blanc und Faisselle führen den Schwerpunkt auf lokale Erzeuger fort. Zu den süßen Speisen gehören Heidelbeertarte, Puddingflan und Mousse au Chocolat.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een eetzaal in lavakleuren</h2><p>La Cafétéria des Puys combineert zelfbediening met een opvallend vulkaandecor. Rode stoelen, oranje zuilen en grote ronde lampen met landschapsafbeeldingen bepalen de zaal. Donkere bogen en lavapatronen omlijsten enkele tafels.</p><p>De streekkeuken komt terug in truffade met worst uit Auvergne, lokale vleeswaren en kazen met beschermde oorsprongsbenaming. Ook vis van de dag en een vegetarisch gerecht staan op de kaart, naast afzonderlijk aangeboden voor- en nagerechten.</p><h2>Zuivel van een nabije boerderij</h2><p>De zuivel komt van Cœur de Fermier, op minder dan twintig kilometer van het park. Yoghurt, fromage blanc en faisselle onderstrepen de aandacht voor plaatselijke producenten. Bij de zoete gerechten staan onder meer bosbessentaart, flan en chocolademousse.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una sala nei colori della lava</h2><p>La Cafétéria des Puys abbina il self-service a una marcata decorazione vulcanica. Sedute rosse, colonne arancioni e grandi lampade circolari illustrate con paesaggi caratterizzano la sala. Archi scuri e motivi di lava incorniciano alcuni tavoli.</p><p>La cucina regionale emerge nella truffade con salsiccia dell’Alvernia, nei salumi e nei formaggi a denominazione d’origine protetta. Compaiono anche il pesce del giorno e un piatto vegetariano, con antipasti e dessert offerti separatamente.</p><h2>Latticini della fattoria vicina</h2><p>I latticini provengono da Cœur de Fermier, a meno di venti chilometri dal parco. Yogurt, fromage blanc e faisselle proseguono l’attenzione ai produttori locali. Tra i dolci della carta, la crostata ai mirtilli affianca il flan e la mousse al cioccolato.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un comedor con colores de lava</h2><p>La Cafétéria des Puys combina el autoservicio con una decoración volcánica muy presente. Asientos rojos, columnas naranjas y grandes lámparas circulares ilustradas con paisajes componen la sala. Arcos oscuros y motivos de lava enmarcan algunas mesas.</p><p>La cocina regional aparece en la truffade con salchicha de Auvernia, los embutidos y los quesos con denominación de origen protegida. También figuran el pescado del día y un plato vegetariano, con entrantes y postres ofrecidos por separado.</p><h2>Lácteos de una granja cercana</h2><p>Los lácteos proceden de Cœur de Fermier, a menos de veinte kilómetros del parque. Yogures, fromage blanc y faisselle prolongan la atención a los productores locales. Entre los dulces, la tarta de arándanos comparte carta con el flan y la mousse de chocolate.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Sala w kolorach lawy</h2><p>La Cafétéria des Puys łączy samoobsługę z wyrazistą dekoracją wulkaniczną. Salę tworzą czerwone siedzenia, pomarańczowe kolumny i duże okrągłe lampy ozdobione krajobrazami. Niektóre stoły otaczają ciemne łuki oraz wzory przypominające lawę.</p><p>Regionalną kuchnię reprezentują truffade z owerniacką kiełbasą, lokalne wędliny i sery z chronioną nazwą pochodzenia. W ofercie są też ryba dnia oraz danie wegetariańskie, a przystawki i desery wybiera się osobno.</p><h2>Nabiał z pobliskiego gospodarstwa</h2><p>Nabiał pochodzi z Cœur de Fermier, położonego mniej niż dwadzieścia kilometrów od parku. Jogurty, fromage blanc i faisselle podkreślają udział lokalnych producentów. Wśród słodkości są tarta jagodowa, flan i mus czekoladowy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma sala com cores de lava</h2><p>La Cafétéria des Puys combina o serviço de self-service com uma decoração vulcânica marcante. Assentos vermelhos, colunas cor de laranja e grandes candeeiros circulares com paisagens compõem a sala. Arcos escuros e motivos de lava enquadram algumas mesas.</p><p>A cozinha regional surge na truffade com salsicha da Auvérnia, nos enchidos e nos queijos com denominação de origem protegida. Há também peixe do dia e um prato vegetariano, além de entradas e sobremesas propostas separadamente.</p><h2>Laticínios de uma quinta próxima</h2><p>Os laticínios vêm de Cœur de Fermier, a menos de vinte quilómetros do parque. Iogurtes, fromage blanc e faisselle prolongam a atenção aos produtores locais. Entre os doces da ementa, a tarte de mirtilos acompanha o flan e a mousse de chocolate.</p>"
+            }
+          ]
+        },
+        {
+          "id": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+          "key": "vulcania-magma-cafe",
+          "name": "Le Magma café",
+          "type": "Snack",
+          "category": "Restaurant",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Hawaï dans l’assiette</h2><p>Le Magma café reprend le thème hawaïen dans une offre à emporter mêlant pokés, sandwichs et desserts aux fruits exotiques. Les bols se déclinent au poulet, au saumon ou en version végétarienne. Cette orientation culinaire fait écho à Expédition Hawaï.</p><p>Les recettes de sandwichs gardent une autre tonalité : pain aux céréales avec mozzarella, tomates et pesto, pan bagnat au poulet curry ou œuf et thon.</p><h2>Mangue, ananas et coco</h2><p>Les smoothies associent notamment mangue, ananas et fruit de la passion dans l’Exotic, ou ananas, banane et coco dans le Tropik’Colada. Le flan coco et la panna cotta mangue-passion poursuivent ces saveurs, aux côtés des gaufres et des glaces.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Hawaii on the menu</h2><p>Le Magma café carries the Hawaiian theme into takeaway food, combining poké bowls, sandwiches and tropical fruit desserts. The bowls come with chicken, salmon or vegetarian ingredients. This culinary direction echoes Expédition Hawaï.</p><p>The sandwiches follow a different style: multigrain bread with mozzarella, tomatoes and pesto, or pan bagnat with curry chicken or egg and tuna.</p><h2>Mango, pineapple and coconut</h2><p>Smoothies include mango, pineapple and passion fruit in the Exotic, and pineapple, banana and coconut in the Tropik’Colada. Coconut flan and mango-passion fruit panna cotta continue these flavours, alongside waffles and ice creams.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Hawaii auf der Speisekarte</h2><p>Le Magma café greift das Hawaii-Thema mit Speisen zum Mitnehmen auf: Poké-Bowls, Sandwiches und Desserts mit tropischen Früchten. Die Bowls gibt es mit Hähnchen, Lachs oder vegetarischen Zutaten. Diese kulinarische Ausrichtung nimmt Bezug auf Expédition Hawaï.</p><p>Die Sandwiches setzen einen anderen Akzent: Mehrkornbrot mit Mozzarella, Tomaten und Pesto oder Pan bagnat mit Curryhähnchen beziehungsweise Ei und Thunfisch.</p><h2>Mango, Ananas und Kokos</h2><p>Bei den Smoothies verbindet Exotic Mango, Ananas und Passionsfrucht; Tropik’Colada kombiniert Ananas, Banane und Kokos. Kokosflan und Mango-Passionsfrucht-Panna-cotta führen diese Aromen fort, neben Waffeln und Eis.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Hawaï op de kaart</h2><p>Le Magma café vertaalt het Hawaïaanse thema naar afhaalgerechten met pokébowls, broodjes en desserts met tropisch fruit. De bowls zijn verkrijgbaar met kip, zalm of vegetarische ingrediënten. Deze culinaire richting sluit aan bij Expédition Hawaï.</p><p>De broodjes hebben een ander karakter: meergranenbrood met mozzarella, tomaat en pesto, of pan bagnat met kipcurry of ei en tonijn.</p><h2>Mango, ananas en kokos</h2><p>De smoothie Exotic combineert mango, ananas en passievrucht; Tropik’Colada brengt ananas, banaan en kokos samen. Kokosflan en panna cotta met mango en passievrucht zetten die smaken voort, naast wafels en ijs.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Le Hawaii nel piatto</h2><p>Le Magma café riprende il tema hawaiano in un’offerta da asporto che unisce poké, panini e dessert ai frutti esotici. Le bowl sono proposte con pollo, salmone o ingredienti vegetariani. Questa scelta culinaria richiama Expédition Hawaï.</p><p>I panini seguono un altro stile: pane ai cereali con mozzarella, pomodori e pesto, oppure pan bagnat con pollo al curry o uovo e tonno.</p><h2>Mango, ananas e cocco</h2><p>Tra gli smoothie, Exotic associa mango, ananas e frutto della passione; Tropik’Colada combina ananas, banana e cocco. Il flan al cocco e la panna cotta mango-passione proseguono questi sapori, accanto a waffle e gelati.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Hawái en el plato</h2><p>Le Magma café retoma el tema hawaiano en una oferta para llevar con pokés, bocadillos y postres de frutas exóticas. Los boles se ofrecen con pollo, salmón o ingredientes vegetarianos. Esta orientación culinaria evoca Expédition Hawaï.</p><p>Los bocadillos siguen otro estilo: pan de cereales con mozzarella, tomate y pesto, o pan bagnat con pollo al curry o huevo y atún.</p><h2>Mango, piña y coco</h2><p>El batido Exotic combina mango, piña y fruta de la pasión; Tropik’Colada reúne piña, plátano y coco. El flan de coco y la panna cotta de mango y pasión prolongan estos sabores, junto a gofres y helados.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Hawaje na talerzu</h2><p>Le Magma café rozwija hawajski temat w ofercie na wynos, łącząc poké, kanapki i desery z owocami tropikalnymi. Miski występują z kurczakiem, łososiem lub składnikami wegetariańskimi. Ten kierunek kulinarny nawiązuje do Expédition Hawaï.</p><p>Kanapki mają inny charakter: pieczywo wielozbożowe z mozzarellą, pomidorami i pesto albo pan bagnat z kurczakiem curry bądź jajkiem i tuńczykiem.</p><h2>Mango, ananas i kokos</h2><p>Smoothie Exotic łączy mango, ananasa i marakuję, a Tropik’Colada — ananasa, banana i kokos. Kokosowy flan oraz panna cotta mango-marakuja rozwijają te smaki obok gofrów i lodów.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O Havai no prato</h2><p>Le Magma café retoma o tema havaiano numa oferta para levar com pokés, sanduíches e sobremesas de frutos exóticos. As taças são propostas com frango, salmão ou ingredientes vegetarianos. Esta orientação culinária evoca Expédition Hawaï.</p><p>As sanduíches seguem outro estilo: pão de cereais com mozzarella, tomate e pesto, ou pan bagnat com frango de caril ou ovo e atum.</p><h2>Manga, ananás e coco</h2><p>O smoothie Exotic combina manga, ananás e maracujá; Tropik’Colada junta ananás, banana e coco. O pudim de coco e a panna cotta de manga e maracujá prolongam estes sabores, ao lado de waffles e gelados.</p>"
+            }
+          ]
+        },
+        {
+          "id": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+          "key": "vulcania-kiosque-namazu",
+          "name": "Le Kiosque Namazu",
+          "type": "Snack",
+          "category": "Restaurant",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le kiosque orange</h2><p>Le Kiosque Namazu occupe un pavillon orange ouvert par un large guichet de service. Des cartes encadrent cette ouverture, tandis que le cône de Vulcania et les reliefs boisés apparaissent au-delà de la pelouse. La vente se fait à emporter.</p><p>Le choix salé comprend baguette jambon-beurre, pain aux céréales mozzarella-tomates-pesto et pains bagnats au poulet ou au thon. Des paninis complètent cette offre centrée sur les sandwichs.</p><h2>Granités et pop-corn</h2><p>Les machines et les vitrines accompagnent une carte de douceurs où figurent pop-corn, cookies et muffins au chocolat ou à la myrtille. Les granités sont proposés au cola, à la fraise et à la framboise bleue ; les boissons comprennent aussi une bière locale à la pression.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The orange kiosk</h2><p>Le Kiosque Namazu occupies an orange pavilion with a broad serving hatch. Menus flank the opening, while Vulcania’s cone and wooded hills appear beyond the lawn. Food is sold to take away.</p><p>The savoury selection includes ham-and-butter baguettes, multigrain bread with mozzarella, tomatoes and pesto, and pan bagnat with chicken or tuna. Paninis add to this sandwich-focused offer.</p><h2>Slush drinks and popcorn</h2><p>Machines and display cases accompany a sweet menu featuring popcorn, cookies and chocolate or blueberry muffins. Slush drinks come in cola, strawberry and blue raspberry flavours. The drinks range also includes a local draught beer.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Der orangefarbene Kiosk</h2><p>Le Kiosque Namazu befindet sich in einem orangefarbenen Pavillon mit breitem Ausgabefenster. Speisekarten rahmen die Öffnung ein; hinter der Rasenfläche sind Vulcanias Kegel und bewaldete Hügel zu sehen. Die Speisen werden zum Mitnehmen verkauft.</p><p>Die herzhafte Auswahl umfasst Schinken-Butter-Baguettes, Mehrkornbrot mit Mozzarella, Tomaten und Pesto sowie Pan bagnat mit Hähnchen oder Thunfisch. Panini ergänzen dieses Angebot rund um belegte Brote.</p><h2>Slush und Popcorn</h2><p>Maschinen und Vitrinen begleiten eine süße Auswahl mit Popcorn, Cookies sowie Schokoladen- und Heidelbeermuffins. Slush gibt es mit Cola-, Erdbeer- und blauer Himbeernote. Zum Getränkeangebot gehört außerdem ein lokales Bier vom Fass.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De oranje kiosk</h2><p>Le Kiosque Namazu is een oranje paviljoen met een breed uitgifteluik. Menukaarten omlijsten de opening; voorbij het grasveld zijn de kegel van Vulcania en beboste heuvels te zien. Het eten wordt verkocht om mee te nemen.</p><p>Het hartige aanbod omvat baguettes met ham en boter, meergranenbrood met mozzarella, tomaat en pesto, en pan bagnat met kip of tonijn. Panini’s vullen deze selectie van belegde broodjes aan.</p><h2>Slush en popcorn</h2><p>Machines en vitrines begeleiden een zoete kaart met popcorn, cookies en chocolade- of bosbessenmuffins. Slush is verkrijgbaar in de smaken cola, aardbei en blauwe framboos. Het drankaanbod bevat ook plaatselijk tapbier.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Il chiosco arancione</h2><p>Le Kiosque Namazu occupa un padiglione arancione con un ampio sportello di servizio. I menu incorniciano l’apertura, mentre oltre il prato appaiono il cono di Vulcania e i rilievi boscosi. La vendita è da asporto.</p><p>Le proposte salate comprendono baguette prosciutto e burro, pane ai cereali con mozzarella, pomodori e pesto, e pan bagnat con pollo o tonno. Panini caldi completano questa offerta dedicata soprattutto ai sandwich.</p><h2>Granite e popcorn</h2><p>Macchine e vetrine accompagnano una carta dolce con popcorn, cookie e muffin al cioccolato o ai mirtilli. Le granite sono proposte alla cola, alla fragola e al lampone blu. Tra le bevande compare anche una birra locale alla spina.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El quiosco naranja</h2><p>Le Kiosque Namazu ocupa un pabellón naranja con una amplia ventanilla de servicio. Las cartas enmarcan la abertura, mientras el cono de Vulcania y las colinas boscosas aparecen al otro lado del césped. La comida se vende para llevar.</p><p>La selección salada incluye baguette de jamón y mantequilla, pan de cereales con mozzarella, tomate y pesto, y pan bagnat con pollo o atún. Los paninis completan esta oferta centrada en los bocadillos.</p><h2>Granizados y palomitas</h2><p>Máquinas y vitrinas acompañan una carta dulce con palomitas, cookies y muffins de chocolate o arándanos. Los granizados se ofrecen de cola, fresa y frambuesa azul. Las bebidas incluyen también una cerveza local de barril.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pomarańczowy kiosk</h2><p>Le Kiosque Namazu zajmuje pomarańczowy pawilon z szerokim oknem sprzedaży. Po jego bokach wiszą menu, a za trawnikiem widać stożek Vulcanii i zalesione wzgórza. Jedzenie sprzedaje się na wynos.</p><p>Wśród słonych propozycji są bagietki z szynką i masłem, pieczywo wielozbożowe z mozzarellą, pomidorami i pesto oraz pan bagnat z kurczakiem lub tuńczykiem. Kanapkową ofertę uzupełniają panini.</p><h2>Granita i popcorn</h2><p>Maszyny oraz witryny towarzyszą słodkiemu menu z popcornem, cookies i muffinkami czekoladowymi lub jagodowymi. Granita występuje w smakach coli, truskawki i niebieskiej maliny. Wśród napojów jest również lokalne piwo lane.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O quiosque cor de laranja</h2><p>Le Kiosque Namazu ocupa um pavilhão cor de laranja com uma ampla janela de atendimento. As ementas enquadram a abertura, enquanto o cone de Vulcania e as colinas arborizadas aparecem para lá do relvado. A comida é vendida para levar.</p><p>A seleção salgada inclui baguete de fiambre e manteiga, pão de cereais com mozzarella, tomate e pesto, e pan bagnat com frango ou atum. Os paninis completam esta oferta centrada nas sanduíches.</p><h2>Granizados e pipocas</h2><p>Máquinas e vitrinas acompanham uma ementa doce com pipocas, cookies e muffins de chocolate ou mirtilos. Os granizados são propostos com sabores de cola, morango e framboesa azul. As bebidas incluem ainda uma cerveja local à pressão.</p>"
+            }
+          ]
+        },
+        {
+          "id": "1f3ce41f-f763-4389-b823-eb4a13816111",
+          "key": "vulcania-snack-planetarium",
+          "name": "Le Snack du Planétarium",
+          "type": "Snack",
+          "category": "Restaurant",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La restauration du Planétarium</h2><p>Le Snack du Planétarium est le point de vente à emporter associé à l’univers astronomique de Vulcania. Son offre est centrée sur une formule réunissant un sandwich, un dessert et une boisson fraîche.</p><p>La carte propose notamment un pain aux céréales garni de mozzarella, tomates et pesto, ainsi que des pains bagnats au poulet ou œuf et thon. Le pain tradition saucisson-beurre figure dans l’offre hors juillet et août.</p><h2>Cookies et myrtilles</h2><p>Les desserts comprennent un cookie au chocolat et des muffins au chocolat ou à la myrtille. L’offre de boissons cite notamment Volvic et Auvergnat Cola.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Food at the Planétarium</h2><p>Le Snack du Planétarium is the takeaway outlet associated with Vulcania’s astronomy setting. Its offer centres on a sandwich, dessert and cold-drink combination.</p><p>The menu includes multigrain bread with mozzarella, tomatoes and pesto, plus pan bagnat with chicken or egg and tuna. A traditional French bread sandwich with cured sausage and butter is offered outside July and August.</p><h2>Cookies and blueberries</h2><p>Desserts include a chocolate cookie and chocolate or blueberry muffins. Volvic and Auvergnat Cola feature among the drinks.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Verpflegung am Planétarium</h2><p>Le Snack du Planétarium ist das Angebot zum Mitnehmen im astronomischen Umfeld von Vulcania. Im Mittelpunkt steht eine Kombination aus Sandwich, Dessert und Kaltgetränk.</p><p>Zum Angebot gehören Pan-bagnat-Sandwiches mit Hähnchen oder mit Ei und Thunfisch. Die vegetarische Kombination aus Mozzarella, Tomaten und Pesto wird in Mehrkornbrot serviert. Traditionelles französisches Brot mit Dauerwurst und Butter steht außerhalb von Juli und August auf der Karte.</p><h2>Cookies und Heidelbeeren</h2><p>Zu den Desserts gehören ein Schokoladencookie und Muffins mit Schokolade oder Heidelbeeren. Bei den Getränken werden unter anderem Volvic und Auvergnat Cola genannt.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Eten bij het Planétarium</h2><p>Le Snack du Planétarium is het afhaalpunt bij de astronomische wereld van Vulcania. Het aanbod draait om een combinatie van broodje, dessert en koude drank.</p><p>Het aanbod omvat pan-bagnatbroodjes met kip of met ei en tonijn. De vegetarische combinatie van mozzarella, tomaat en pesto wordt op meergranenbrood geserveerd. Buiten juli en augustus staat ook traditioneel Frans brood met droge worst en boter op de kaart.</p><h2>Cookies en bosbessen</h2><p>De desserts omvatten een chocoladecookie en muffins met chocolade of bosbessen. Onder de dranken staan Volvic en Auvergnat Cola.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La ristorazione del Planétarium</h2><p>Le Snack du Planétarium è il punto da asporto legato all’ambiente astronomico di Vulcania. L’offerta ruota attorno a una formula con panino, dessert e bibita fresca.</p><p>La carta comprende pane ai cereali con mozzarella, pomodori e pesto, oltre a pan bagnat con pollo o uovo e tonno. Il pane tradizionale francese con salame e burro viene proposto al di fuori di luglio e agosto.</p><h2>Cookie e mirtilli</h2><p>I dessert includono un cookie al cioccolato e muffin al cioccolato o ai mirtilli. Tra le bevande figurano Volvic e Auvergnat Cola.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La restauración del Planétarium</h2><p>Le Snack du Planétarium es el punto de comida para llevar asociado al entorno astronómico de Vulcania. Su oferta se centra en una fórmula de bocadillo, postre y bebida fría.</p><p>La carta incluye pan de cereales con mozzarella, tomate y pesto, además de pan bagnat con pollo o huevo y atún. El pan tradicional francés con salchichón y mantequilla se ofrece fuera de julio y agosto.</p><h2>Cookies y arándanos</h2><p>Los postres comprenden una cookie de chocolate y muffins de chocolate o arándanos. Entre las bebidas figuran Volvic y Auvergnat Cola.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Jedzenie przy Planétarium</h2><p>Le Snack du Planétarium to punkt sprzedaży na wynos związany z astronomiczną częścią Vulcanii. Ofertę tworzy przede wszystkim zestaw z kanapką, deserem i zimnym napojem.</p><p>Pan bagnat występuje z kurczakiem lub z jajkiem i tuńczykiem. Wegetariańskie połączenie mozzarelli, pomidorów i pesto podaje się w pieczywie wielozbożowym. Poza lipcem i sierpniem menu obejmuje też tradycyjne francuskie pieczywo z suszoną kiełbasą i masłem.</p><h2>Cookies i jagody</h2><p>Desery obejmują czekoladowe cookie oraz muffinki z czekoladą lub jagodami. Wśród napojów wymieniono Volvic i Auvergnat Cola.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A restauração do Planétarium</h2><p>Le Snack du Planétarium é o ponto de comida para levar associado ao ambiente astronómico de Vulcania. A oferta centra-se numa fórmula com sanduíche, sobremesa e bebida fresca.</p><p>A ementa inclui pão de cereais com mozzarella, tomate e pesto, além de pan bagnat com frango ou ovo e atum. O pão tradicional francês com enchido curado e manteiga é proposto fora de julho e agosto.</p><h2>Cookies e mirtilos</h2><p>As sobremesas incluem um cookie de chocolate e muffins de chocolate ou mirtilos. Entre as bebidas surgem Volvic e Auvergnat Cola.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-50-five-food-notices",
+        "notes": "Forty notices personally written/revised and reviewed in eight languages from https://www.vulcania.com/animation/comptoir-du-cratere/ , cafeteria-des-puys/ , magma-cafe/ , kiosque-namazu/ , snack-du-planetarium/ . Full menus and original photos individually reviewed. Comptoir wooden counter/volcanic mural/local beef-cheeses-preparation; Cafeteria actual lava decor/truffade/local dairy; Magma current Hawaiian menu, no imagined room; named orange Namazu kiosk; Snack actual menu, no invented room. Shorter Snack exception documented after real source/menu research, no filler. German/Dutch/Polish menu sentences edited after repeated-source list detected; facts preserved and corpus checked again. Planetarium facade not own Snack photo, Magma sandwich image not interior proof. Seasonal closed/20October wording not definitive closure. Existing dates, statuses and visibility preserved; no prices/hours changed."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "345165a6-0a9f-414a-a0d0-80c8070e52af",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:50:45.4685749Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "entityKey": "vulcania-comptoir-cratere",
+        "displayName": "Le Comptoir du cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Tresen vor dem Vulkanpanorama</h2><p>Le Comptoir du cratère besitzt einen langen Tresen mit Holzleistenverkleidung und einem Panorama vulkanischer Hügel dahinter. Große Öffnungen lassen Licht in den Bereich für Speisen zum Mitnehmen. Über dem Tresen sind die Abholstellen ausgeschildert.</p><p>Produkte aus der Auvergne prägen die Speisekarte. Regionales Rindfleisch kommt etwa in Burgern mit Fourme d’Ambert oder Saint-Nectaire, Briochebrötchen, geschmorten Zwiebeln und gerösteten Tomaten vor. Eine vegetarische Variante ergänzt die Burgerauswahl.</p><h2>Käse und vor Ort zubereitete Gerichte</h2><p>Auch die Salate greifen die Region auf: Die Auvergne-Variante verbindet Bleu d’Auvergne, Cantal, Schinken und Walnüsse. Burger, Salate und Kuchen werden vor Ort zubereitet. Crêpes, Waffeln und Milchprodukte, darunter Erzeugnisse von Cœur de Fermier, ergänzen die herzhaften Speisen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A counter beneath the volcanic panorama</h2><p>Le Comptoir du cratère has a long counter faced with wooden slats, backed by a panorama of volcanic hills. Large openings bring light into this takeaway venue, with collection points marked above the counter.</p><p>Auvergne produce has a prominent place on the menu. Regional beef appears in burgers with Fourme d’Ambert or Saint-Nectaire cheese, brioche-style buns, slow-cooked onions and roasted tomatoes. A vegetarian option completes the burger selection.</p><h2>Local cheeses and food prepared on site</h2><p>The salads continue the regional theme: the Auvergne version combines Bleu d’Auvergne, Cantal, ham and walnuts. Burgers, salads and cakes are prepared on site. Crêpes, waffles and dairy desserts, including Cœur de Fermier products, accompany the savoury dishes.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un mostrador bajo el panorama volcánico</h2><p>Le Comptoir du cratère se reconoce por su largo mostrador revestido de listones de madera y el panorama volcánico de la pared posterior. Grandes aberturas iluminan este espacio de comida para llevar, con puntos de recogida señalados sobre el mostrador.</p><p>Los productos de Auvernia tienen especial protagonismo en la carta. La carne de vacuno regional aparece en hamburguesas con Fourme d’Ambert o Saint-Nectaire, pan brioche, cebolla confitada y tomates asados. Una versión vegetariana completa la selección de hamburguesas.</p><h2>Quesos locales y recetas preparadas allí</h2><p>Las ensaladas prolongan el vínculo regional: la auvernesa combina Bleu d’Auvergne, Cantal, jamón y nueces. Hamburguesas, ensaladas y bizcochos se preparan en el establecimiento. Crepes, gofres y postres lácteos, incluidos productos Cœur de Fermier, acompañan las propuestas saladas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un comptoir face aux puys</h2><p>Le Comptoir du cratère se reconnaît à son long habillage de lattes de bois et au panorama volcanique qui court derrière le service. Les grandes ouvertures éclairent cet espace de vente à emporter, où les points de retrait sont signalés au-dessus du comptoir.</p><p>La carte donne une place particulière aux produits auvergnats. Le bœuf régional garnit notamment des burgers à la fourme d’Ambert ou au Saint-Nectaire, avec pain brioché, oignons confits et tomates rôties. Une proposition végétarienne complète cette famille de burgers.</p><h2>Fromages et recettes préparées sur place</h2><p>Les salades prolongent cet ancrage local : la version auvergnate réunit Bleu d’Auvergne, Cantal, jambon et noix. Burgers, salades et cakes sont préparés sur place. Les recettes salées côtoient une offre de crêpes, gaufres et laitages, dont des produits Cœur de Fermier.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un bancone sotto il panorama vulcanico</h2><p>Le Comptoir du cratère si distingue per il lungo bancone rivestito di listelli di legno e il panorama vulcanico sulla parete retrostante. Grandi aperture illuminano questo spazio da asporto, con punti di ritiro indicati sopra il banco.</p><p>I prodotti dell’Alvernia hanno un ruolo particolare nel menu. La carne bovina regionale compare negli hamburger con Fourme d’Ambert o Saint-Nectaire, pane brioche, cipolle confit e pomodori arrostiti. Una versione vegetariana completa la scelta degli hamburger.</p><h2>Formaggi locali e preparazioni sul posto</h2><p>Le insalate proseguono il richiamo al territorio: quella alverniate unisce Bleu d’Auvergne, Cantal, prosciutto e noci. Hamburger, insalate e dolci vengono preparati sul posto. Crêpes, waffle e dessert a base di latte, anche di Cœur de Fermier, affiancano le proposte salate.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een toonbank onder het vulkaanpanorama</h2><p>Le Comptoir du cratère heeft een lange toonbank met houten latten en een panorama van vulkanische heuvels op de achterwand. Grote openingen laten licht binnen in deze afhaalruimte. Boven de toonbank zijn de afhaalpunten aangegeven.</p><p>Producten uit Auvergne krijgen veel aandacht op de kaart. Regionaal rundvlees wordt gebruikt voor burgers met Fourme d’Ambert of Saint-Nectaire, briochebroodjes, gekonfijte uien en geroosterde tomaten. Een vegetarische versie vult het burgeraanbod aan.</p><h2>Streekkaas en bereidingen ter plaatse</h2><p>Ook de salades dragen het regionale karakter: de Auvergne-salade combineert Bleu d’Auvergne, Cantal, ham en walnoten. Burgers, salades en cakes worden ter plaatse bereid. Crêpes, wafels en zuiveldesserts, waaronder producten van Cœur de Fermier, staan naast de hartige gerechten op de kaart.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Lada pod wulkaniczną panoramą</h2><p>Le Comptoir du cratère wyróżnia długa lada obłożona drewnianymi listwami oraz panorama wulkanicznych wzgórz na tylnej ścianie. Duże otwory doświetlają punkt sprzedaży na wynos. Nad ladą oznaczono miejsca odbioru zamówień.</p><p>W menu ważną rolę odgrywają produkty z Owernii. Regionalna wołowina trafia do burgerów z Fourme d’Ambert lub Saint-Nectaire, bułką brioche, duszoną cebulą i pieczonymi pomidorami. Wybór burgerów uzupełnia wersja wegetariańska.</p><h2>Lokalne sery i przygotowanie na miejscu</h2><p>Do regionu nawiązują też sałatki: owerniacka łączy Bleu d’Auvergne, Cantal, szynkę i orzechy włoskie. Burgery, sałatki i ciasta przygotowuje się na miejscu. Obok dań wytrawnych są naleśniki, gofry i desery mleczne, w tym produkty Cœur de Fermier.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um balcão sob o panorama vulcânico</h2><p>Le Comptoir du cratère distingue-se pelo longo balcão revestido de ripas de madeira e pelo panorama vulcânico na parede de trás. Grandes aberturas iluminam este espaço de comida para levar, com pontos de recolha assinalados sobre o balcão.</p><p>Os produtos da Auvérnia têm um lugar de destaque na ementa. A carne de bovino regional surge em hambúrgueres com Fourme d’Ambert ou Saint-Nectaire, pão brioche, cebola confitada e tomate assado. Uma versão vegetariana completa a seleção de hambúrgueres.</p><h2>Queijos locais e receitas feitas no local</h2><p>As saladas prolongam a ligação regional: a auvernesa combina Bleu d’Auvergne, Cantal, fiambre e nozes. Hambúrgueres, saladas e bolos são preparados no local. Crepes, waffles e sobremesas lácteas, incluindo produtos Cœur de Fermier, acompanham as propostas salgadas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "26f977fb-834f-41df-9705-60846988a756",
+        "entityKey": "vulcania-cafeteria-puys",
+        "displayName": "La Cafétéria des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Speisesaal in Lavafarben</h2><p>La Cafétéria des Puys verbindet Selbstbedienung mit einer ausgeprägten Vulkandekoration. Rote Sitze, orangefarbene Säulen und große runde Leuchten mit Landschaftsmotiven gestalten den Saal. Dunkle Bögen und Lavamuster rahmen einige Tische ein.</p><p>Regionale Küche zeigt sich in Truffade mit Auvergne-Wurst, örtlichen Wurstwaren und Käse mit geschützter Ursprungsbezeichnung. Auch Tagesfisch und ein vegetarisches Gericht stehen zur Auswahl; Vorspeisen und Desserts werden separat angeboten.</p><h2>Milchprodukte vom nahen Hof</h2><p>Die Milchprodukte stammen von Cœur de Fermier, weniger als zwanzig Kilometer vom Park entfernt. Joghurt, Fromage blanc und Faisselle führen den Schwerpunkt auf lokale Erzeuger fort. Zu den süßen Speisen gehören Heidelbeertarte, Puddingflan und Mousse au Chocolat.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A dining room in lava colours</h2><p>La Cafétéria des Puys combines self-service dining with prominent volcanic decoration. Red seats, orange columns and large circular lamps illustrated with landscapes fill the room. Dark arches and lava patterns frame some of the tables.</p><p>Regional cooking appears in truffade served with Auvergne sausage, local charcuterie and protected-origin cheeses. Fish of the day and a vegetarian dish also feature, alongside separately offered starters and desserts.</p><h2>Dairy produce from a nearby farm</h2><p>The dairy range comes from Cœur de Fermier, less than twenty kilometres from the park. Yoghurts, fromage blanc and faisselle continue the emphasis on local producers. Blueberry tart, custard flan and chocolate mousse are among the sweet dishes on the menu.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un comedor con colores de lava</h2><p>La Cafétéria des Puys combina el autoservicio con una decoración volcánica muy presente. Asientos rojos, columnas naranjas y grandes lámparas circulares ilustradas con paisajes componen la sala. Arcos oscuros y motivos de lava enmarcan algunas mesas.</p><p>La cocina regional aparece en la truffade con salchicha de Auvernia, los embutidos y los quesos con denominación de origen protegida. También figuran el pescado del día y un plato vegetariano, con entrantes y postres ofrecidos por separado.</p><h2>Lácteos de una granja cercana</h2><p>Los lácteos proceden de Cœur de Fermier, a menos de veinte kilómetros del parque. Yogures, fromage blanc y faisselle prolongan la atención a los productores locales. Entre los dulces, la tarta de arándanos comparte carta con el flan y la mousse de chocolate.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une salle aux couleurs de lave</h2><p>La Cafétéria des Puys associe le libre-service à un décor volcanique très présent. Des assises rouges, des colonnes orangées et de grands luminaires circulaires illustrés de reliefs composent la salle. Des arches sombres et des motifs de lave encadrent certaines tables.</p><p>La cuisine régionale s’exprime dans la truffade accompagnée de saucisse d’Auvergne, les charcuteries et les fromages AOP. Le poisson du jour et une préparation végétarienne figurent aussi parmi les plats, avec des entrées et des desserts proposés séparément.</p><h2>Les produits de la ferme voisine</h2><p>Les laitages proviennent de Cœur de Fermier, à moins de vingt kilomètres du parc : yaourts, fromage blanc et faisselle prolongent la place des producteurs locaux. Parmi les douceurs de la carte, la tarte aux myrtilles côtoie le flan et la mousse au chocolat.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una sala nei colori della lava</h2><p>La Cafétéria des Puys abbina il self-service a una marcata decorazione vulcanica. Sedute rosse, colonne arancioni e grandi lampade circolari illustrate con paesaggi caratterizzano la sala. Archi scuri e motivi di lava incorniciano alcuni tavoli.</p><p>La cucina regionale emerge nella truffade con salsiccia dell’Alvernia, nei salumi e nei formaggi a denominazione d’origine protetta. Compaiono anche il pesce del giorno e un piatto vegetariano, con antipasti e dessert offerti separatamente.</p><h2>Latticini della fattoria vicina</h2><p>I latticini provengono da Cœur de Fermier, a meno di venti chilometri dal parco. Yogurt, fromage blanc e faisselle proseguono l’attenzione ai produttori locali. Tra i dolci della carta, la crostata ai mirtilli affianca il flan e la mousse al cioccolato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een eetzaal in lavakleuren</h2><p>La Cafétéria des Puys combineert zelfbediening met een opvallend vulkaandecor. Rode stoelen, oranje zuilen en grote ronde lampen met landschapsafbeeldingen bepalen de zaal. Donkere bogen en lavapatronen omlijsten enkele tafels.</p><p>De streekkeuken komt terug in truffade met worst uit Auvergne, lokale vleeswaren en kazen met beschermde oorsprongsbenaming. Ook vis van de dag en een vegetarisch gerecht staan op de kaart, naast afzonderlijk aangeboden voor- en nagerechten.</p><h2>Zuivel van een nabije boerderij</h2><p>De zuivel komt van Cœur de Fermier, op minder dan twintig kilometer van het park. Yoghurt, fromage blanc en faisselle onderstrepen de aandacht voor plaatselijke producenten. Bij de zoete gerechten staan onder meer bosbessentaart, flan en chocolademousse.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Sala w kolorach lawy</h2><p>La Cafétéria des Puys łączy samoobsługę z wyrazistą dekoracją wulkaniczną. Salę tworzą czerwone siedzenia, pomarańczowe kolumny i duże okrągłe lampy ozdobione krajobrazami. Niektóre stoły otaczają ciemne łuki oraz wzory przypominające lawę.</p><p>Regionalną kuchnię reprezentują truffade z owerniacką kiełbasą, lokalne wędliny i sery z chronioną nazwą pochodzenia. W ofercie są też ryba dnia oraz danie wegetariańskie, a przystawki i desery wybiera się osobno.</p><h2>Nabiał z pobliskiego gospodarstwa</h2><p>Nabiał pochodzi z Cœur de Fermier, położonego mniej niż dwadzieścia kilometrów od parku. Jogurty, fromage blanc i faisselle podkreślają udział lokalnych producentów. Wśród słodkości są tarta jagodowa, flan i mus czekoladowy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma sala com cores de lava</h2><p>La Cafétéria des Puys combina o serviço de self-service com uma decoração vulcânica marcante. Assentos vermelhos, colunas cor de laranja e grandes candeeiros circulares com paisagens compõem a sala. Arcos escuros e motivos de lava enquadram algumas mesas.</p><p>A cozinha regional surge na truffade com salsicha da Auvérnia, nos enchidos e nos queijos com denominação de origem protegida. Há também peixe do dia e um prato vegetariano, além de entradas e sobremesas propostas separadamente.</p><h2>Laticínios de uma quinta próxima</h2><p>Os laticínios vêm de Cœur de Fermier, a menos de vinte quilómetros do parque. Iogurtes, fromage blanc e faisselle prolongam a atenção aos produtores locais. Entre os doces da ementa, a tarte de mirtilos acompanha o flan e a mousse de chocolate.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "entityKey": "vulcania-magma-cafe",
+        "displayName": "Le Magma café",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Hawaii auf der Speisekarte</h2><p>Le Magma café greift das Hawaii-Thema mit Speisen zum Mitnehmen auf: Poké-Bowls, Sandwiches und Desserts mit tropischen Früchten. Die Bowls gibt es mit Hähnchen, Lachs oder vegetarischen Zutaten. Diese kulinarische Ausrichtung nimmt Bezug auf Expédition Hawaï.</p><p>Die Sandwiches setzen einen anderen Akzent: Mehrkornbrot mit Mozzarella, Tomaten und Pesto oder Pan bagnat mit Curryhähnchen beziehungsweise Ei und Thunfisch.</p><h2>Mango, Ananas und Kokos</h2><p>Bei den Smoothies verbindet Exotic Mango, Ananas und Passionsfrucht; Tropik’Colada kombiniert Ananas, Banane und Kokos. Kokosflan und Mango-Passionsfrucht-Panna-cotta führen diese Aromen fort, neben Waffeln und Eis.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Hawaii on the menu</h2><p>Le Magma café carries the Hawaiian theme into takeaway food, combining poké bowls, sandwiches and tropical fruit desserts. The bowls come with chicken, salmon or vegetarian ingredients. This culinary direction echoes Expédition Hawaï.</p><p>The sandwiches follow a different style: multigrain bread with mozzarella, tomatoes and pesto, or pan bagnat with curry chicken or egg and tuna.</p><h2>Mango, pineapple and coconut</h2><p>Smoothies include mango, pineapple and passion fruit in the Exotic, and pineapple, banana and coconut in the Tropik’Colada. Coconut flan and mango-passion fruit panna cotta continue these flavours, alongside waffles and ice creams.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Hawái en el plato</h2><p>Le Magma café retoma el tema hawaiano en una oferta para llevar con pokés, bocadillos y postres de frutas exóticas. Los boles se ofrecen con pollo, salmón o ingredientes vegetarianos. Esta orientación culinaria evoca Expédition Hawaï.</p><p>Los bocadillos siguen otro estilo: pan de cereales con mozzarella, tomate y pesto, o pan bagnat con pollo al curry o huevo y atún.</p><h2>Mango, piña y coco</h2><p>El batido Exotic combina mango, piña y fruta de la pasión; Tropik’Colada reúne piña, plátano y coco. El flan de coco y la panna cotta de mango y pasión prolongan estos sabores, junto a gofres y helados.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Hawaï dans l’assiette</h2><p>Le Magma café reprend le thème hawaïen dans une offre à emporter mêlant pokés, sandwichs et desserts aux fruits exotiques. Les bols se déclinent au poulet, au saumon ou en version végétarienne. Cette orientation culinaire fait écho à Expédition Hawaï.</p><p>Les recettes de sandwichs gardent une autre tonalité : pain aux céréales avec mozzarella, tomates et pesto, pan bagnat au poulet curry ou œuf et thon.</p><h2>Mangue, ananas et coco</h2><p>Les smoothies associent notamment mangue, ananas et fruit de la passion dans l’Exotic, ou ananas, banane et coco dans le Tropik’Colada. Le flan coco et la panna cotta mangue-passion poursuivent ces saveurs, aux côtés des gaufres et des glaces.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Le Hawaii nel piatto</h2><p>Le Magma café riprende il tema hawaiano in un’offerta da asporto che unisce poké, panini e dessert ai frutti esotici. Le bowl sono proposte con pollo, salmone o ingredienti vegetariani. Questa scelta culinaria richiama Expédition Hawaï.</p><p>I panini seguono un altro stile: pane ai cereali con mozzarella, pomodori e pesto, oppure pan bagnat con pollo al curry o uovo e tonno.</p><h2>Mango, ananas e cocco</h2><p>Tra gli smoothie, Exotic associa mango, ananas e frutto della passione; Tropik’Colada combina ananas, banana e cocco. Il flan al cocco e la panna cotta mango-passione proseguono questi sapori, accanto a waffle e gelati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hawaï op de kaart</h2><p>Le Magma café vertaalt het Hawaïaanse thema naar afhaalgerechten met pokébowls, broodjes en desserts met tropisch fruit. De bowls zijn verkrijgbaar met kip, zalm of vegetarische ingrediënten. Deze culinaire richting sluit aan bij Expédition Hawaï.</p><p>De broodjes hebben een ander karakter: meergranenbrood met mozzarella, tomaat en pesto, of pan bagnat met kipcurry of ei en tonijn.</p><h2>Mango, ananas en kokos</h2><p>De smoothie Exotic combineert mango, ananas en passievrucht; Tropik’Colada brengt ananas, banaan en kokos samen. Kokosflan en panna cotta met mango en passievrucht zetten die smaken voort, naast wafels en ijs.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Hawaje na talerzu</h2><p>Le Magma café rozwija hawajski temat w ofercie na wynos, łącząc poké, kanapki i desery z owocami tropikalnymi. Miski występują z kurczakiem, łososiem lub składnikami wegetariańskimi. Ten kierunek kulinarny nawiązuje do Expédition Hawaï.</p><p>Kanapki mają inny charakter: pieczywo wielozbożowe z mozzarellą, pomidorami i pesto albo pan bagnat z kurczakiem curry bądź jajkiem i tuńczykiem.</p><h2>Mango, ananas i kokos</h2><p>Smoothie Exotic łączy mango, ananasa i marakuję, a Tropik’Colada — ananasa, banana i kokos. Kokosowy flan oraz panna cotta mango-marakuja rozwijają te smaki obok gofrów i lodów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O Havai no prato</h2><p>Le Magma café retoma o tema havaiano numa oferta para levar com pokés, sanduíches e sobremesas de frutos exóticos. As taças são propostas com frango, salmão ou ingredientes vegetarianos. Esta orientação culinária evoca Expédition Hawaï.</p><p>As sanduíches seguem outro estilo: pão de cereais com mozzarella, tomate e pesto, ou pan bagnat com frango de caril ou ovo e atum.</p><h2>Manga, ananás e coco</h2><p>O smoothie Exotic combina manga, ananás e maracujá; Tropik’Colada junta ananás, banana e coco. O pudim de coco e a panna cotta de manga e maracujá prolongam estes sabores, ao lado de waffles e gelados.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "entityKey": "vulcania-kiosque-namazu",
+        "displayName": "Le Kiosque Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der orangefarbene Kiosk</h2><p>Le Kiosque Namazu befindet sich in einem orangefarbenen Pavillon mit breitem Ausgabefenster. Speisekarten rahmen die Öffnung ein; hinter der Rasenfläche sind Vulcanias Kegel und bewaldete Hügel zu sehen. Die Speisen werden zum Mitnehmen verkauft.</p><p>Die herzhafte Auswahl umfasst Schinken-Butter-Baguettes, Mehrkornbrot mit Mozzarella, Tomaten und Pesto sowie Pan bagnat mit Hähnchen oder Thunfisch. Panini ergänzen dieses Angebot rund um belegte Brote.</p><h2>Slush und Popcorn</h2><p>Maschinen und Vitrinen begleiten eine süße Auswahl mit Popcorn, Cookies sowie Schokoladen- und Heidelbeermuffins. Slush gibt es mit Cola-, Erdbeer- und blauer Himbeernote. Zum Getränkeangebot gehört außerdem ein lokales Bier vom Fass.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The orange kiosk</h2><p>Le Kiosque Namazu occupies an orange pavilion with a broad serving hatch. Menus flank the opening, while Vulcania’s cone and wooded hills appear beyond the lawn. Food is sold to take away.</p><p>The savoury selection includes ham-and-butter baguettes, multigrain bread with mozzarella, tomatoes and pesto, and pan bagnat with chicken or tuna. Paninis add to this sandwich-focused offer.</p><h2>Slush drinks and popcorn</h2><p>Machines and display cases accompany a sweet menu featuring popcorn, cookies and chocolate or blueberry muffins. Slush drinks come in cola, strawberry and blue raspberry flavours. The drinks range also includes a local draught beer.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El quiosco naranja</h2><p>Le Kiosque Namazu ocupa un pabellón naranja con una amplia ventanilla de servicio. Las cartas enmarcan la abertura, mientras el cono de Vulcania y las colinas boscosas aparecen al otro lado del césped. La comida se vende para llevar.</p><p>La selección salada incluye baguette de jamón y mantequilla, pan de cereales con mozzarella, tomate y pesto, y pan bagnat con pollo o atún. Los paninis completan esta oferta centrada en los bocadillos.</p><h2>Granizados y palomitas</h2><p>Máquinas y vitrinas acompañan una carta dulce con palomitas, cookies y muffins de chocolate o arándanos. Los granizados se ofrecen de cola, fresa y frambuesa azul. Las bebidas incluyen también una cerveza local de barril.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le kiosque orange</h2><p>Le Kiosque Namazu occupe un pavillon orange ouvert par un large guichet de service. Des cartes encadrent cette ouverture, tandis que le cône de Vulcania et les reliefs boisés apparaissent au-delà de la pelouse. La vente se fait à emporter.</p><p>Le choix salé comprend baguette jambon-beurre, pain aux céréales mozzarella-tomates-pesto et pains bagnats au poulet ou au thon. Des paninis complètent cette offre centrée sur les sandwichs.</p><h2>Granités et pop-corn</h2><p>Les machines et les vitrines accompagnent une carte de douceurs où figurent pop-corn, cookies et muffins au chocolat ou à la myrtille. Les granités sont proposés au cola, à la fraise et à la framboise bleue ; les boissons comprennent aussi une bière locale à la pression.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il chiosco arancione</h2><p>Le Kiosque Namazu occupa un padiglione arancione con un ampio sportello di servizio. I menu incorniciano l’apertura, mentre oltre il prato appaiono il cono di Vulcania e i rilievi boscosi. La vendita è da asporto.</p><p>Le proposte salate comprendono baguette prosciutto e burro, pane ai cereali con mozzarella, pomodori e pesto, e pan bagnat con pollo o tonno. Panini caldi completano questa offerta dedicata soprattutto ai sandwich.</p><h2>Granite e popcorn</h2><p>Macchine e vetrine accompagnano una carta dolce con popcorn, cookie e muffin al cioccolato o ai mirtilli. Le granite sono proposte alla cola, alla fragola e al lampone blu. Tra le bevande compare anche una birra locale alla spina.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De oranje kiosk</h2><p>Le Kiosque Namazu is een oranje paviljoen met een breed uitgifteluik. Menukaarten omlijsten de opening; voorbij het grasveld zijn de kegel van Vulcania en beboste heuvels te zien. Het eten wordt verkocht om mee te nemen.</p><p>Het hartige aanbod omvat baguettes met ham en boter, meergranenbrood met mozzarella, tomaat en pesto, en pan bagnat met kip of tonijn. Panini’s vullen deze selectie van belegde broodjes aan.</p><h2>Slush en popcorn</h2><p>Machines en vitrines begeleiden een zoete kaart met popcorn, cookies en chocolade- of bosbessenmuffins. Slush is verkrijgbaar in de smaken cola, aardbei en blauwe framboos. Het drankaanbod bevat ook plaatselijk tapbier.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pomarańczowy kiosk</h2><p>Le Kiosque Namazu zajmuje pomarańczowy pawilon z szerokim oknem sprzedaży. Po jego bokach wiszą menu, a za trawnikiem widać stożek Vulcanii i zalesione wzgórza. Jedzenie sprzedaje się na wynos.</p><p>Wśród słonych propozycji są bagietki z szynką i masłem, pieczywo wielozbożowe z mozzarellą, pomidorami i pesto oraz pan bagnat z kurczakiem lub tuńczykiem. Kanapkową ofertę uzupełniają panini.</p><h2>Granita i popcorn</h2><p>Maszyny oraz witryny towarzyszą słodkiemu menu z popcornem, cookies i muffinkami czekoladowymi lub jagodowymi. Granita występuje w smakach coli, truskawki i niebieskiej maliny. Wśród napojów jest również lokalne piwo lane.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O quiosque cor de laranja</h2><p>Le Kiosque Namazu ocupa um pavilhão cor de laranja com uma ampla janela de atendimento. As ementas enquadram a abertura, enquanto o cone de Vulcania e as colinas arborizadas aparecem para lá do relvado. A comida é vendida para levar.</p><p>A seleção salgada inclui baguete de fiambre e manteiga, pão de cereais com mozzarella, tomate e pesto, e pan bagnat com frango ou atum. Os paninis completam esta oferta centrada nas sanduíches.</p><h2>Granizados e pipocas</h2><p>Máquinas e vitrinas acompanham uma ementa doce com pipocas, cookies e muffins de chocolate ou mirtilos. Os granizados são propostos com sabores de cola, morango e framboesa azul. As bebidas incluem ainda uma cerveja local à pressão.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "entityKey": "vulcania-snack-planetarium",
+        "displayName": "Le Snack du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Verpflegung am Planétarium</h2><p>Le Snack du Planétarium ist das Angebot zum Mitnehmen im astronomischen Umfeld von Vulcania. Im Mittelpunkt steht eine Kombination aus Sandwich, Dessert und Kaltgetränk.</p><p>Zum Angebot gehören Pan-bagnat-Sandwiches mit Hähnchen oder mit Ei und Thunfisch. Die vegetarische Kombination aus Mozzarella, Tomaten und Pesto wird in Mehrkornbrot serviert. Traditionelles französisches Brot mit Dauerwurst und Butter steht außerhalb von Juli und August auf der Karte.</p><h2>Cookies und Heidelbeeren</h2><p>Zu den Desserts gehören ein Schokoladencookie und Muffins mit Schokolade oder Heidelbeeren. Bei den Getränken werden unter anderem Volvic und Auvergnat Cola genannt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Food at the Planétarium</h2><p>Le Snack du Planétarium is the takeaway outlet associated with Vulcania’s astronomy setting. Its offer centres on a sandwich, dessert and cold-drink combination.</p><p>The menu includes multigrain bread with mozzarella, tomatoes and pesto, plus pan bagnat with chicken or egg and tuna. A traditional French bread sandwich with cured sausage and butter is offered outside July and August.</p><h2>Cookies and blueberries</h2><p>Desserts include a chocolate cookie and chocolate or blueberry muffins. Volvic and Auvergnat Cola feature among the drinks.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La restauración del Planétarium</h2><p>Le Snack du Planétarium es el punto de comida para llevar asociado al entorno astronómico de Vulcania. Su oferta se centra en una fórmula de bocadillo, postre y bebida fría.</p><p>La carta incluye pan de cereales con mozzarella, tomate y pesto, además de pan bagnat con pollo o huevo y atún. El pan tradicional francés con salchichón y mantequilla se ofrece fuera de julio y agosto.</p><h2>Cookies y arándanos</h2><p>Los postres comprenden una cookie de chocolate y muffins de chocolate o arándanos. Entre las bebidas figuran Volvic y Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La restauration du Planétarium</h2><p>Le Snack du Planétarium est le point de vente à emporter associé à l’univers astronomique de Vulcania. Son offre est centrée sur une formule réunissant un sandwich, un dessert et une boisson fraîche.</p><p>La carte propose notamment un pain aux céréales garni de mozzarella, tomates et pesto, ainsi que des pains bagnats au poulet ou œuf et thon. Le pain tradition saucisson-beurre figure dans l’offre hors juillet et août.</p><h2>Cookies et myrtilles</h2><p>Les desserts comprennent un cookie au chocolat et des muffins au chocolat ou à la myrtille. L’offre de boissons cite notamment Volvic et Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La ristorazione del Planétarium</h2><p>Le Snack du Planétarium è il punto da asporto legato all’ambiente astronomico di Vulcania. L’offerta ruota attorno a una formula con panino, dessert e bibita fresca.</p><p>La carta comprende pane ai cereali con mozzarella, pomodori e pesto, oltre a pan bagnat con pollo o uovo e tonno. Il pane tradizionale francese con salame e burro viene proposto al di fuori di luglio e agosto.</p><h2>Cookie e mirtilli</h2><p>I dessert includono un cookie al cioccolato e muffin al cioccolato o ai mirtilli. Tra le bevande figurano Volvic e Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Eten bij het Planétarium</h2><p>Le Snack du Planétarium is het afhaalpunt bij de astronomische wereld van Vulcania. Het aanbod draait om een combinatie van broodje, dessert en koude drank.</p><p>Het aanbod omvat pan-bagnatbroodjes met kip of met ei en tonijn. De vegetarische combinatie van mozzarella, tomaat en pesto wordt op meergranenbrood geserveerd. Buiten juli en augustus staat ook traditioneel Frans brood met droge worst en boter op de kaart.</p><h2>Cookies en bosbessen</h2><p>De desserts omvatten een chocoladecookie en muffins met chocolade of bosbessen. Onder de dranken staan Volvic en Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Jedzenie przy Planétarium</h2><p>Le Snack du Planétarium to punkt sprzedaży na wynos związany z astronomiczną częścią Vulcanii. Ofertę tworzy przede wszystkim zestaw z kanapką, deserem i zimnym napojem.</p><p>Pan bagnat występuje z kurczakiem lub z jajkiem i tuńczykiem. Wegetariańskie połączenie mozzarelli, pomidorów i pesto podaje się w pieczywie wielozbożowym. Poza lipcem i sierpniem menu obejmuje też tradycyjne francuskie pieczywo z suszoną kiełbasą i masłem.</p><h2>Cookies i jagody</h2><p>Desery obejmują czekoladowe cookie oraz muffinki z czekoladą lub jagodami. Wśród napojów wymieniono Volvic i Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A restauração do Planétarium</h2><p>Le Snack du Planétarium é o ponto de comida para levar associado ao ambiente astronómico de Vulcania. A oferta centra-se numa fórmula com sanduíche, sobremesa e bebida fresca.</p><p>A ementa inclui pão de cereais com mozzarella, tomate e pesto, além de pan bagnat com frango ou ovo e atum. O pão tradicional francês com enchido curado e manteiga é proposto fora de julho e agosto.</p><h2>Cookies e mirtilos</h2><p>As sobremesas incluem um cookie de chocolate e muffins de chocolate ou mirtilos. Entre as bebidas surgem Volvic e Auvergnat Cola.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "731d384a-c4f4-47b0-a888-f8d55b16ce64",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:51:03.1467547Z",
+    "appliedAtUtc": "2026-11-15T18:51:03.1467562Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "entityKey": "vulcania-comptoir-cratere",
+        "displayName": "Le Comptoir du cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Tresen vor dem Vulkanpanorama</h2><p>Le Comptoir du cratère besitzt einen langen Tresen mit Holzleistenverkleidung und einem Panorama vulkanischer Hügel dahinter. Große Öffnungen lassen Licht in den Bereich für Speisen zum Mitnehmen. Über dem Tresen sind die Abholstellen ausgeschildert.</p><p>Produkte aus der Auvergne prägen die Speisekarte. Regionales Rindfleisch kommt etwa in Burgern mit Fourme d’Ambert oder Saint-Nectaire, Briochebrötchen, geschmorten Zwiebeln und gerösteten Tomaten vor. Eine vegetarische Variante ergänzt die Burgerauswahl.</p><h2>Käse und vor Ort zubereitete Gerichte</h2><p>Auch die Salate greifen die Region auf: Die Auvergne-Variante verbindet Bleu d’Auvergne, Cantal, Schinken und Walnüsse. Burger, Salate und Kuchen werden vor Ort zubereitet. Crêpes, Waffeln und Milchprodukte, darunter Erzeugnisse von Cœur de Fermier, ergänzen die herzhaften Speisen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A counter beneath the volcanic panorama</h2><p>Le Comptoir du cratère has a long counter faced with wooden slats, backed by a panorama of volcanic hills. Large openings bring light into this takeaway venue, with collection points marked above the counter.</p><p>Auvergne produce has a prominent place on the menu. Regional beef appears in burgers with Fourme d’Ambert or Saint-Nectaire cheese, brioche-style buns, slow-cooked onions and roasted tomatoes. A vegetarian option completes the burger selection.</p><h2>Local cheeses and food prepared on site</h2><p>The salads continue the regional theme: the Auvergne version combines Bleu d’Auvergne, Cantal, ham and walnuts. Burgers, salads and cakes are prepared on site. Crêpes, waffles and dairy desserts, including Cœur de Fermier products, accompany the savoury dishes.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un mostrador bajo el panorama volcánico</h2><p>Le Comptoir du cratère se reconoce por su largo mostrador revestido de listones de madera y el panorama volcánico de la pared posterior. Grandes aberturas iluminan este espacio de comida para llevar, con puntos de recogida señalados sobre el mostrador.</p><p>Los productos de Auvernia tienen especial protagonismo en la carta. La carne de vacuno regional aparece en hamburguesas con Fourme d’Ambert o Saint-Nectaire, pan brioche, cebolla confitada y tomates asados. Una versión vegetariana completa la selección de hamburguesas.</p><h2>Quesos locales y recetas preparadas allí</h2><p>Las ensaladas prolongan el vínculo regional: la auvernesa combina Bleu d’Auvergne, Cantal, jamón y nueces. Hamburguesas, ensaladas y bizcochos se preparan en el establecimiento. Crepes, gofres y postres lácteos, incluidos productos Cœur de Fermier, acompañan las propuestas saladas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un comptoir face aux puys</h2><p>Le Comptoir du cratère se reconnaît à son long habillage de lattes de bois et au panorama volcanique qui court derrière le service. Les grandes ouvertures éclairent cet espace de vente à emporter, où les points de retrait sont signalés au-dessus du comptoir.</p><p>La carte donne une place particulière aux produits auvergnats. Le bœuf régional garnit notamment des burgers à la fourme d’Ambert ou au Saint-Nectaire, avec pain brioché, oignons confits et tomates rôties. Une proposition végétarienne complète cette famille de burgers.</p><h2>Fromages et recettes préparées sur place</h2><p>Les salades prolongent cet ancrage local : la version auvergnate réunit Bleu d’Auvergne, Cantal, jambon et noix. Burgers, salades et cakes sont préparés sur place. Les recettes salées côtoient une offre de crêpes, gaufres et laitages, dont des produits Cœur de Fermier.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un bancone sotto il panorama vulcanico</h2><p>Le Comptoir du cratère si distingue per il lungo bancone rivestito di listelli di legno e il panorama vulcanico sulla parete retrostante. Grandi aperture illuminano questo spazio da asporto, con punti di ritiro indicati sopra il banco.</p><p>I prodotti dell’Alvernia hanno un ruolo particolare nel menu. La carne bovina regionale compare negli hamburger con Fourme d’Ambert o Saint-Nectaire, pane brioche, cipolle confit e pomodori arrostiti. Una versione vegetariana completa la scelta degli hamburger.</p><h2>Formaggi locali e preparazioni sul posto</h2><p>Le insalate proseguono il richiamo al territorio: quella alverniate unisce Bleu d’Auvergne, Cantal, prosciutto e noci. Hamburger, insalate e dolci vengono preparati sul posto. Crêpes, waffle e dessert a base di latte, anche di Cœur de Fermier, affiancano le proposte salate.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een toonbank onder het vulkaanpanorama</h2><p>Le Comptoir du cratère heeft een lange toonbank met houten latten en een panorama van vulkanische heuvels op de achterwand. Grote openingen laten licht binnen in deze afhaalruimte. Boven de toonbank zijn de afhaalpunten aangegeven.</p><p>Producten uit Auvergne krijgen veel aandacht op de kaart. Regionaal rundvlees wordt gebruikt voor burgers met Fourme d’Ambert of Saint-Nectaire, briochebroodjes, gekonfijte uien en geroosterde tomaten. Een vegetarische versie vult het burgeraanbod aan.</p><h2>Streekkaas en bereidingen ter plaatse</h2><p>Ook de salades dragen het regionale karakter: de Auvergne-salade combineert Bleu d’Auvergne, Cantal, ham en walnoten. Burgers, salades en cakes worden ter plaatse bereid. Crêpes, wafels en zuiveldesserts, waaronder producten van Cœur de Fermier, staan naast de hartige gerechten op de kaart.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Lada pod wulkaniczną panoramą</h2><p>Le Comptoir du cratère wyróżnia długa lada obłożona drewnianymi listwami oraz panorama wulkanicznych wzgórz na tylnej ścianie. Duże otwory doświetlają punkt sprzedaży na wynos. Nad ladą oznaczono miejsca odbioru zamówień.</p><p>W menu ważną rolę odgrywają produkty z Owernii. Regionalna wołowina trafia do burgerów z Fourme d’Ambert lub Saint-Nectaire, bułką brioche, duszoną cebulą i pieczonymi pomidorami. Wybór burgerów uzupełnia wersja wegetariańska.</p><h2>Lokalne sery i przygotowanie na miejscu</h2><p>Do regionu nawiązują też sałatki: owerniacka łączy Bleu d’Auvergne, Cantal, szynkę i orzechy włoskie. Burgery, sałatki i ciasta przygotowuje się na miejscu. Obok dań wytrawnych są naleśniki, gofry i desery mleczne, w tym produkty Cœur de Fermier.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um balcão sob o panorama vulcânico</h2><p>Le Comptoir du cratère distingue-se pelo longo balcão revestido de ripas de madeira e pelo panorama vulcânico na parede de trás. Grandes aberturas iluminam este espaço de comida para levar, com pontos de recolha assinalados sobre o balcão.</p><p>Os produtos da Auvérnia têm um lugar de destaque na ementa. A carne de bovino regional surge em hambúrgueres com Fourme d’Ambert ou Saint-Nectaire, pão brioche, cebola confitada e tomate assado. Uma versão vegetariana completa a seleção de hambúrgueres.</p><h2>Queijos locais e receitas feitas no local</h2><p>As saladas prolongam a ligação regional: a auvernesa combina Bleu d’Auvergne, Cantal, fiambre e nozes. Hambúrgueres, saladas e bolos são preparados no local. Crepes, waffles e sobremesas lácteas, incluindo produtos Cœur de Fermier, acompanham as propostas salgadas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "26f977fb-834f-41df-9705-60846988a756",
+        "entityKey": "vulcania-cafeteria-puys",
+        "displayName": "La Cafétéria des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Speisesaal in Lavafarben</h2><p>La Cafétéria des Puys verbindet Selbstbedienung mit einer ausgeprägten Vulkandekoration. Rote Sitze, orangefarbene Säulen und große runde Leuchten mit Landschaftsmotiven gestalten den Saal. Dunkle Bögen und Lavamuster rahmen einige Tische ein.</p><p>Regionale Küche zeigt sich in Truffade mit Auvergne-Wurst, örtlichen Wurstwaren und Käse mit geschützter Ursprungsbezeichnung. Auch Tagesfisch und ein vegetarisches Gericht stehen zur Auswahl; Vorspeisen und Desserts werden separat angeboten.</p><h2>Milchprodukte vom nahen Hof</h2><p>Die Milchprodukte stammen von Cœur de Fermier, weniger als zwanzig Kilometer vom Park entfernt. Joghurt, Fromage blanc und Faisselle führen den Schwerpunkt auf lokale Erzeuger fort. Zu den süßen Speisen gehören Heidelbeertarte, Puddingflan und Mousse au Chocolat.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A dining room in lava colours</h2><p>La Cafétéria des Puys combines self-service dining with prominent volcanic decoration. Red seats, orange columns and large circular lamps illustrated with landscapes fill the room. Dark arches and lava patterns frame some of the tables.</p><p>Regional cooking appears in truffade served with Auvergne sausage, local charcuterie and protected-origin cheeses. Fish of the day and a vegetarian dish also feature, alongside separately offered starters and desserts.</p><h2>Dairy produce from a nearby farm</h2><p>The dairy range comes from Cœur de Fermier, less than twenty kilometres from the park. Yoghurts, fromage blanc and faisselle continue the emphasis on local producers. Blueberry tart, custard flan and chocolate mousse are among the sweet dishes on the menu.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un comedor con colores de lava</h2><p>La Cafétéria des Puys combina el autoservicio con una decoración volcánica muy presente. Asientos rojos, columnas naranjas y grandes lámparas circulares ilustradas con paisajes componen la sala. Arcos oscuros y motivos de lava enmarcan algunas mesas.</p><p>La cocina regional aparece en la truffade con salchicha de Auvernia, los embutidos y los quesos con denominación de origen protegida. También figuran el pescado del día y un plato vegetariano, con entrantes y postres ofrecidos por separado.</p><h2>Lácteos de una granja cercana</h2><p>Los lácteos proceden de Cœur de Fermier, a menos de veinte kilómetros del parque. Yogures, fromage blanc y faisselle prolongan la atención a los productores locales. Entre los dulces, la tarta de arándanos comparte carta con el flan y la mousse de chocolate.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une salle aux couleurs de lave</h2><p>La Cafétéria des Puys associe le libre-service à un décor volcanique très présent. Des assises rouges, des colonnes orangées et de grands luminaires circulaires illustrés de reliefs composent la salle. Des arches sombres et des motifs de lave encadrent certaines tables.</p><p>La cuisine régionale s’exprime dans la truffade accompagnée de saucisse d’Auvergne, les charcuteries et les fromages AOP. Le poisson du jour et une préparation végétarienne figurent aussi parmi les plats, avec des entrées et des desserts proposés séparément.</p><h2>Les produits de la ferme voisine</h2><p>Les laitages proviennent de Cœur de Fermier, à moins de vingt kilomètres du parc : yaourts, fromage blanc et faisselle prolongent la place des producteurs locaux. Parmi les douceurs de la carte, la tarte aux myrtilles côtoie le flan et la mousse au chocolat.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una sala nei colori della lava</h2><p>La Cafétéria des Puys abbina il self-service a una marcata decorazione vulcanica. Sedute rosse, colonne arancioni e grandi lampade circolari illustrate con paesaggi caratterizzano la sala. Archi scuri e motivi di lava incorniciano alcuni tavoli.</p><p>La cucina regionale emerge nella truffade con salsiccia dell’Alvernia, nei salumi e nei formaggi a denominazione d’origine protetta. Compaiono anche il pesce del giorno e un piatto vegetariano, con antipasti e dessert offerti separatamente.</p><h2>Latticini della fattoria vicina</h2><p>I latticini provengono da Cœur de Fermier, a meno di venti chilometri dal parco. Yogurt, fromage blanc e faisselle proseguono l’attenzione ai produttori locali. Tra i dolci della carta, la crostata ai mirtilli affianca il flan e la mousse al cioccolato.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een eetzaal in lavakleuren</h2><p>La Cafétéria des Puys combineert zelfbediening met een opvallend vulkaandecor. Rode stoelen, oranje zuilen en grote ronde lampen met landschapsafbeeldingen bepalen de zaal. Donkere bogen en lavapatronen omlijsten enkele tafels.</p><p>De streekkeuken komt terug in truffade met worst uit Auvergne, lokale vleeswaren en kazen met beschermde oorsprongsbenaming. Ook vis van de dag en een vegetarisch gerecht staan op de kaart, naast afzonderlijk aangeboden voor- en nagerechten.</p><h2>Zuivel van een nabije boerderij</h2><p>De zuivel komt van Cœur de Fermier, op minder dan twintig kilometer van het park. Yoghurt, fromage blanc en faisselle onderstrepen de aandacht voor plaatselijke producenten. Bij de zoete gerechten staan onder meer bosbessentaart, flan en chocolademousse.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Sala w kolorach lawy</h2><p>La Cafétéria des Puys łączy samoobsługę z wyrazistą dekoracją wulkaniczną. Salę tworzą czerwone siedzenia, pomarańczowe kolumny i duże okrągłe lampy ozdobione krajobrazami. Niektóre stoły otaczają ciemne łuki oraz wzory przypominające lawę.</p><p>Regionalną kuchnię reprezentują truffade z owerniacką kiełbasą, lokalne wędliny i sery z chronioną nazwą pochodzenia. W ofercie są też ryba dnia oraz danie wegetariańskie, a przystawki i desery wybiera się osobno.</p><h2>Nabiał z pobliskiego gospodarstwa</h2><p>Nabiał pochodzi z Cœur de Fermier, położonego mniej niż dwadzieścia kilometrów od parku. Jogurty, fromage blanc i faisselle podkreślają udział lokalnych producentów. Wśród słodkości są tarta jagodowa, flan i mus czekoladowy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma sala com cores de lava</h2><p>La Cafétéria des Puys combina o serviço de self-service com uma decoração vulcânica marcante. Assentos vermelhos, colunas cor de laranja e grandes candeeiros circulares com paisagens compõem a sala. Arcos escuros e motivos de lava enquadram algumas mesas.</p><p>A cozinha regional surge na truffade com salsicha da Auvérnia, nos enchidos e nos queijos com denominação de origem protegida. Há também peixe do dia e um prato vegetariano, além de entradas e sobremesas propostas separadamente.</p><h2>Laticínios de uma quinta próxima</h2><p>Os laticínios vêm de Cœur de Fermier, a menos de vinte quilómetros do parque. Iogurtes, fromage blanc e faisselle prolongam a atenção aos produtores locais. Entre os doces da ementa, a tarte de mirtilos acompanha o flan e a mousse de chocolate.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "entityKey": "vulcania-magma-cafe",
+        "displayName": "Le Magma café",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Hawaii auf der Speisekarte</h2><p>Le Magma café greift das Hawaii-Thema mit Speisen zum Mitnehmen auf: Poké-Bowls, Sandwiches und Desserts mit tropischen Früchten. Die Bowls gibt es mit Hähnchen, Lachs oder vegetarischen Zutaten. Diese kulinarische Ausrichtung nimmt Bezug auf Expédition Hawaï.</p><p>Die Sandwiches setzen einen anderen Akzent: Mehrkornbrot mit Mozzarella, Tomaten und Pesto oder Pan bagnat mit Curryhähnchen beziehungsweise Ei und Thunfisch.</p><h2>Mango, Ananas und Kokos</h2><p>Bei den Smoothies verbindet Exotic Mango, Ananas und Passionsfrucht; Tropik’Colada kombiniert Ananas, Banane und Kokos. Kokosflan und Mango-Passionsfrucht-Panna-cotta führen diese Aromen fort, neben Waffeln und Eis.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Hawaii on the menu</h2><p>Le Magma café carries the Hawaiian theme into takeaway food, combining poké bowls, sandwiches and tropical fruit desserts. The bowls come with chicken, salmon or vegetarian ingredients. This culinary direction echoes Expédition Hawaï.</p><p>The sandwiches follow a different style: multigrain bread with mozzarella, tomatoes and pesto, or pan bagnat with curry chicken or egg and tuna.</p><h2>Mango, pineapple and coconut</h2><p>Smoothies include mango, pineapple and passion fruit in the Exotic, and pineapple, banana and coconut in the Tropik’Colada. Coconut flan and mango-passion fruit panna cotta continue these flavours, alongside waffles and ice creams.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Hawái en el plato</h2><p>Le Magma café retoma el tema hawaiano en una oferta para llevar con pokés, bocadillos y postres de frutas exóticas. Los boles se ofrecen con pollo, salmón o ingredientes vegetarianos. Esta orientación culinaria evoca Expédition Hawaï.</p><p>Los bocadillos siguen otro estilo: pan de cereales con mozzarella, tomate y pesto, o pan bagnat con pollo al curry o huevo y atún.</p><h2>Mango, piña y coco</h2><p>El batido Exotic combina mango, piña y fruta de la pasión; Tropik’Colada reúne piña, plátano y coco. El flan de coco y la panna cotta de mango y pasión prolongan estos sabores, junto a gofres y helados.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Hawaï dans l’assiette</h2><p>Le Magma café reprend le thème hawaïen dans une offre à emporter mêlant pokés, sandwichs et desserts aux fruits exotiques. Les bols se déclinent au poulet, au saumon ou en version végétarienne. Cette orientation culinaire fait écho à Expédition Hawaï.</p><p>Les recettes de sandwichs gardent une autre tonalité : pain aux céréales avec mozzarella, tomates et pesto, pan bagnat au poulet curry ou œuf et thon.</p><h2>Mangue, ananas et coco</h2><p>Les smoothies associent notamment mangue, ananas et fruit de la passion dans l’Exotic, ou ananas, banane et coco dans le Tropik’Colada. Le flan coco et la panna cotta mangue-passion poursuivent ces saveurs, aux côtés des gaufres et des glaces.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Le Hawaii nel piatto</h2><p>Le Magma café riprende il tema hawaiano in un’offerta da asporto che unisce poké, panini e dessert ai frutti esotici. Le bowl sono proposte con pollo, salmone o ingredienti vegetariani. Questa scelta culinaria richiama Expédition Hawaï.</p><p>I panini seguono un altro stile: pane ai cereali con mozzarella, pomodori e pesto, oppure pan bagnat con pollo al curry o uovo e tonno.</p><h2>Mango, ananas e cocco</h2><p>Tra gli smoothie, Exotic associa mango, ananas e frutto della passione; Tropik’Colada combina ananas, banana e cocco. Il flan al cocco e la panna cotta mango-passione proseguono questi sapori, accanto a waffle e gelati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Hawaï op de kaart</h2><p>Le Magma café vertaalt het Hawaïaanse thema naar afhaalgerechten met pokébowls, broodjes en desserts met tropisch fruit. De bowls zijn verkrijgbaar met kip, zalm of vegetarische ingrediënten. Deze culinaire richting sluit aan bij Expédition Hawaï.</p><p>De broodjes hebben een ander karakter: meergranenbrood met mozzarella, tomaat en pesto, of pan bagnat met kipcurry of ei en tonijn.</p><h2>Mango, ananas en kokos</h2><p>De smoothie Exotic combineert mango, ananas en passievrucht; Tropik’Colada brengt ananas, banaan en kokos samen. Kokosflan en panna cotta met mango en passievrucht zetten die smaken voort, naast wafels en ijs.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Hawaje na talerzu</h2><p>Le Magma café rozwija hawajski temat w ofercie na wynos, łącząc poké, kanapki i desery z owocami tropikalnymi. Miski występują z kurczakiem, łososiem lub składnikami wegetariańskimi. Ten kierunek kulinarny nawiązuje do Expédition Hawaï.</p><p>Kanapki mają inny charakter: pieczywo wielozbożowe z mozzarellą, pomidorami i pesto albo pan bagnat z kurczakiem curry bądź jajkiem i tuńczykiem.</p><h2>Mango, ananas i kokos</h2><p>Smoothie Exotic łączy mango, ananasa i marakuję, a Tropik’Colada — ananasa, banana i kokos. Kokosowy flan oraz panna cotta mango-marakuja rozwijają te smaki obok gofrów i lodów.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O Havai no prato</h2><p>Le Magma café retoma o tema havaiano numa oferta para levar com pokés, sanduíches e sobremesas de frutos exóticos. As taças são propostas com frango, salmão ou ingredientes vegetarianos. Esta orientação culinária evoca Expédition Hawaï.</p><p>As sanduíches seguem outro estilo: pão de cereais com mozzarella, tomate e pesto, ou pan bagnat com frango de caril ou ovo e atum.</p><h2>Manga, ananás e coco</h2><p>O smoothie Exotic combina manga, ananás e maracujá; Tropik’Colada junta ananás, banana e coco. O pudim de coco e a panna cotta de manga e maracujá prolongam estes sabores, ao lado de waffles e gelados.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "entityKey": "vulcania-kiosque-namazu",
+        "displayName": "Le Kiosque Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Der orangefarbene Kiosk</h2><p>Le Kiosque Namazu befindet sich in einem orangefarbenen Pavillon mit breitem Ausgabefenster. Speisekarten rahmen die Öffnung ein; hinter der Rasenfläche sind Vulcanias Kegel und bewaldete Hügel zu sehen. Die Speisen werden zum Mitnehmen verkauft.</p><p>Die herzhafte Auswahl umfasst Schinken-Butter-Baguettes, Mehrkornbrot mit Mozzarella, Tomaten und Pesto sowie Pan bagnat mit Hähnchen oder Thunfisch. Panini ergänzen dieses Angebot rund um belegte Brote.</p><h2>Slush und Popcorn</h2><p>Maschinen und Vitrinen begleiten eine süße Auswahl mit Popcorn, Cookies sowie Schokoladen- und Heidelbeermuffins. Slush gibt es mit Cola-, Erdbeer- und blauer Himbeernote. Zum Getränkeangebot gehört außerdem ein lokales Bier vom Fass.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The orange kiosk</h2><p>Le Kiosque Namazu occupies an orange pavilion with a broad serving hatch. Menus flank the opening, while Vulcania’s cone and wooded hills appear beyond the lawn. Food is sold to take away.</p><p>The savoury selection includes ham-and-butter baguettes, multigrain bread with mozzarella, tomatoes and pesto, and pan bagnat with chicken or tuna. Paninis add to this sandwich-focused offer.</p><h2>Slush drinks and popcorn</h2><p>Machines and display cases accompany a sweet menu featuring popcorn, cookies and chocolate or blueberry muffins. Slush drinks come in cola, strawberry and blue raspberry flavours. The drinks range also includes a local draught beer.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El quiosco naranja</h2><p>Le Kiosque Namazu ocupa un pabellón naranja con una amplia ventanilla de servicio. Las cartas enmarcan la abertura, mientras el cono de Vulcania y las colinas boscosas aparecen al otro lado del césped. La comida se vende para llevar.</p><p>La selección salada incluye baguette de jamón y mantequilla, pan de cereales con mozzarella, tomate y pesto, y pan bagnat con pollo o atún. Los paninis completan esta oferta centrada en los bocadillos.</p><h2>Granizados y palomitas</h2><p>Máquinas y vitrinas acompañan una carta dulce con palomitas, cookies y muffins de chocolate o arándanos. Los granizados se ofrecen de cola, fresa y frambuesa azul. Las bebidas incluyen también una cerveza local de barril.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le kiosque orange</h2><p>Le Kiosque Namazu occupe un pavillon orange ouvert par un large guichet de service. Des cartes encadrent cette ouverture, tandis que le cône de Vulcania et les reliefs boisés apparaissent au-delà de la pelouse. La vente se fait à emporter.</p><p>Le choix salé comprend baguette jambon-beurre, pain aux céréales mozzarella-tomates-pesto et pains bagnats au poulet ou au thon. Des paninis complètent cette offre centrée sur les sandwichs.</p><h2>Granités et pop-corn</h2><p>Les machines et les vitrines accompagnent une carte de douceurs où figurent pop-corn, cookies et muffins au chocolat ou à la myrtille. Les granités sont proposés au cola, à la fraise et à la framboise bleue ; les boissons comprennent aussi une bière locale à la pression.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il chiosco arancione</h2><p>Le Kiosque Namazu occupa un padiglione arancione con un ampio sportello di servizio. I menu incorniciano l’apertura, mentre oltre il prato appaiono il cono di Vulcania e i rilievi boscosi. La vendita è da asporto.</p><p>Le proposte salate comprendono baguette prosciutto e burro, pane ai cereali con mozzarella, pomodori e pesto, e pan bagnat con pollo o tonno. Panini caldi completano questa offerta dedicata soprattutto ai sandwich.</p><h2>Granite e popcorn</h2><p>Macchine e vetrine accompagnano una carta dolce con popcorn, cookie e muffin al cioccolato o ai mirtilli. Le granite sono proposte alla cola, alla fragola e al lampone blu. Tra le bevande compare anche una birra locale alla spina.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De oranje kiosk</h2><p>Le Kiosque Namazu is een oranje paviljoen met een breed uitgifteluik. Menukaarten omlijsten de opening; voorbij het grasveld zijn de kegel van Vulcania en beboste heuvels te zien. Het eten wordt verkocht om mee te nemen.</p><p>Het hartige aanbod omvat baguettes met ham en boter, meergranenbrood met mozzarella, tomaat en pesto, en pan bagnat met kip of tonijn. Panini’s vullen deze selectie van belegde broodjes aan.</p><h2>Slush en popcorn</h2><p>Machines en vitrines begeleiden een zoete kaart met popcorn, cookies en chocolade- of bosbessenmuffins. Slush is verkrijgbaar in de smaken cola, aardbei en blauwe framboos. Het drankaanbod bevat ook plaatselijk tapbier.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pomarańczowy kiosk</h2><p>Le Kiosque Namazu zajmuje pomarańczowy pawilon z szerokim oknem sprzedaży. Po jego bokach wiszą menu, a za trawnikiem widać stożek Vulcanii i zalesione wzgórza. Jedzenie sprzedaje się na wynos.</p><p>Wśród słonych propozycji są bagietki z szynką i masłem, pieczywo wielozbożowe z mozzarellą, pomidorami i pesto oraz pan bagnat z kurczakiem lub tuńczykiem. Kanapkową ofertę uzupełniają panini.</p><h2>Granita i popcorn</h2><p>Maszyny oraz witryny towarzyszą słodkiemu menu z popcornem, cookies i muffinkami czekoladowymi lub jagodowymi. Granita występuje w smakach coli, truskawki i niebieskiej maliny. Wśród napojów jest również lokalne piwo lane.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O quiosque cor de laranja</h2><p>Le Kiosque Namazu ocupa um pavilhão cor de laranja com uma ampla janela de atendimento. As ementas enquadram a abertura, enquanto o cone de Vulcania e as colinas arborizadas aparecem para lá do relvado. A comida é vendida para levar.</p><p>A seleção salgada inclui baguete de fiambre e manteiga, pão de cereais com mozzarella, tomate e pesto, e pan bagnat com frango ou atum. Os paninis completam esta oferta centrada nas sanduíches.</p><h2>Granizados e pipocas</h2><p>Máquinas e vitrinas acompanham uma ementa doce com pipocas, cookies e muffins de chocolate ou mirtilos. Os granizados são propostos com sabores de cola, morango e framboesa azul. As bebidas incluem ainda uma cerveja local à pressão.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "entityKey": "vulcania-snack-planetarium",
+        "displayName": "Le Snack du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Verpflegung am Planétarium</h2><p>Le Snack du Planétarium ist das Angebot zum Mitnehmen im astronomischen Umfeld von Vulcania. Im Mittelpunkt steht eine Kombination aus Sandwich, Dessert und Kaltgetränk.</p><p>Zum Angebot gehören Pan-bagnat-Sandwiches mit Hähnchen oder mit Ei und Thunfisch. Die vegetarische Kombination aus Mozzarella, Tomaten und Pesto wird in Mehrkornbrot serviert. Traditionelles französisches Brot mit Dauerwurst und Butter steht außerhalb von Juli und August auf der Karte.</p><h2>Cookies und Heidelbeeren</h2><p>Zu den Desserts gehören ein Schokoladencookie und Muffins mit Schokolade oder Heidelbeeren. Bei den Getränken werden unter anderem Volvic und Auvergnat Cola genannt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Food at the Planétarium</h2><p>Le Snack du Planétarium is the takeaway outlet associated with Vulcania’s astronomy setting. Its offer centres on a sandwich, dessert and cold-drink combination.</p><p>The menu includes multigrain bread with mozzarella, tomatoes and pesto, plus pan bagnat with chicken or egg and tuna. A traditional French bread sandwich with cured sausage and butter is offered outside July and August.</p><h2>Cookies and blueberries</h2><p>Desserts include a chocolate cookie and chocolate or blueberry muffins. Volvic and Auvergnat Cola feature among the drinks.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La restauración del Planétarium</h2><p>Le Snack du Planétarium es el punto de comida para llevar asociado al entorno astronómico de Vulcania. Su oferta se centra en una fórmula de bocadillo, postre y bebida fría.</p><p>La carta incluye pan de cereales con mozzarella, tomate y pesto, además de pan bagnat con pollo o huevo y atún. El pan tradicional francés con salchichón y mantequilla se ofrece fuera de julio y agosto.</p><h2>Cookies y arándanos</h2><p>Los postres comprenden una cookie de chocolate y muffins de chocolate o arándanos. Entre las bebidas figuran Volvic y Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La restauration du Planétarium</h2><p>Le Snack du Planétarium est le point de vente à emporter associé à l’univers astronomique de Vulcania. Son offre est centrée sur une formule réunissant un sandwich, un dessert et une boisson fraîche.</p><p>La carte propose notamment un pain aux céréales garni de mozzarella, tomates et pesto, ainsi que des pains bagnats au poulet ou œuf et thon. Le pain tradition saucisson-beurre figure dans l’offre hors juillet et août.</p><h2>Cookies et myrtilles</h2><p>Les desserts comprennent un cookie au chocolat et des muffins au chocolat ou à la myrtille. L’offre de boissons cite notamment Volvic et Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La ristorazione del Planétarium</h2><p>Le Snack du Planétarium è il punto da asporto legato all’ambiente astronomico di Vulcania. L’offerta ruota attorno a una formula con panino, dessert e bibita fresca.</p><p>La carta comprende pane ai cereali con mozzarella, pomodori e pesto, oltre a pan bagnat con pollo o uovo e tonno. Il pane tradizionale francese con salame e burro viene proposto al di fuori di luglio e agosto.</p><h2>Cookie e mirtilli</h2><p>I dessert includono un cookie al cioccolato e muffin al cioccolato o ai mirtilli. Tra le bevande figurano Volvic e Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Eten bij het Planétarium</h2><p>Le Snack du Planétarium is het afhaalpunt bij de astronomische wereld van Vulcania. Het aanbod draait om een combinatie van broodje, dessert en koude drank.</p><p>Het aanbod omvat pan-bagnatbroodjes met kip of met ei en tonijn. De vegetarische combinatie van mozzarella, tomaat en pesto wordt op meergranenbrood geserveerd. Buiten juli en augustus staat ook traditioneel Frans brood met droge worst en boter op de kaart.</p><h2>Cookies en bosbessen</h2><p>De desserts omvatten een chocoladecookie en muffins met chocolade of bosbessen. Onder de dranken staan Volvic en Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Jedzenie przy Planétarium</h2><p>Le Snack du Planétarium to punkt sprzedaży na wynos związany z astronomiczną częścią Vulcanii. Ofertę tworzy przede wszystkim zestaw z kanapką, deserem i zimnym napojem.</p><p>Pan bagnat występuje z kurczakiem lub z jajkiem i tuńczykiem. Wegetariańskie połączenie mozzarelli, pomidorów i pesto podaje się w pieczywie wielozbożowym. Poza lipcem i sierpniem menu obejmuje też tradycyjne francuskie pieczywo z suszoną kiełbasą i masłem.</p><h2>Cookies i jagody</h2><p>Desery obejmują czekoladowe cookie oraz muffinki z czekoladą lub jagodami. Wśród napojów wymieniono Volvic i Auvergnat Cola.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A restauração do Planétarium</h2><p>Le Snack du Planétarium é o ponto de comida para levar associado ao ambiente astronómico de Vulcania. A oferta centra-se numa fórmula com sanduíche, sobremesa e bebida fresca.</p><p>A ementa inclui pão de cereais com mozzarella, tomate e pesto, além de pan bagnat com frango ou ovo e atum. O pão tradicional francês com enchido curado e manteiga é proposto fora de julho e agosto.</p><h2>Cookies e mirtilos</h2><p>As sobremesas incluem um cookie de chocolate e muffins de chocolate ou mirtilos. Entre as bebidas surgem Volvic e Auvergnat Cola.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : les cinq points de restauration existants décrits en huit langues après lecture des cartes officielles et revue des images. Produits et cadres propres, horaires/fermeture saisonnière non extrapolés, aucun lieu supplémentaire ou changement de visibilité.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Forty notices personally written/revised and reviewed in eight languages from https://www.vulcania.com/animation/comptoir-du-cratere/ , cafeteria-des-puys/ , magma-cafe/ , kiosque-namazu/ , snack-du-planetarium/ . Full menus and original photos individually reviewed. Comptoir wooden counter/volcanic mural/local beef-cheeses-preparation; Cafeteria actual lava decor/truffade/local dairy; Magma current Hawaiian menu, no imagined room; named orange Namazu kiosk; Snack actual menu, no invented room. Shorter Snack exception documented after real source/menu research, no filler. German/Dutch/Polish menu sentences edited after repeated-source list detected; facts preserved and corpus checked again. Planetarium facade not own Snack photo, Magma sandwich image not interior proof. Seasonal closed/20October wording not definitive closure. Existing dates, statuses and visibility preserved; no prices/hours changed."
+}

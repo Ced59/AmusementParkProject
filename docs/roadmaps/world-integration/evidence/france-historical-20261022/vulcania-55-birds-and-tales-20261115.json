@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "6c8ed372-384b-4dab-8395-696f62e48db8",
+          "key": "vulcania-rapaces",
+          "name": "Rapaces en vol libre",
+          "type": "Show",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des ailes au-dessus du public</h2><p>Rapaces en vol libre réunit des oiseaux et leurs fauconniers dans une présentation en plein air. Le programme met en regard le vol silencieux du hibou, les évolutions hautes du faucon, le passage bas de la buse de Harris et la puissance de l’aigle. Ces comportements donnent à chaque apparition une allure différente.</p><p>La proximité avec le fauconnier fait aussi partie de la rencontre. Les oiseaux présentés sur le gant complètent les séquences de vol, tandis que le public observe depuis l’espace extérieur bordé de végétation.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Cette présentation est proposée avec les Aigles de Saint-Maurice-de-Lignon. Les commentaires des fauconniers accompagnent l’observation des rapaces : leur présence relie les trajectoires au-dessus du public aux oiseaux que l’on peut voir de plus près lors des présentations.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Wings above the audience</h2><p>Rapaces en vol libre brings birds and their falconers together in an outdoor display. The programme contrasts the owl’s quiet flight, the falcon’s high movements, the Harris’s hawk’s low passes and the eagle’s power. These different behaviours give each appearance its own character.</p><p>Close encounters with the falconer also shape the presentation. Birds shown on the glove accompany the flying sequences, with the audience watching in an outdoor space bordered by vegetation.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>The display is presented with Les Aigles de Saint-Maurice-de-Lignon. Falconers’ commentary accompanies the birds, linking the paths above the audience with the raptors seen at closer range during the presentation.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Flügel über dem Publikum</h2><p>Rapaces en vol libre bringt Vögel und Falkner zu einer Vorführung im Freien zusammen. Das Programm stellt den leisen Eulenflug, die hohen Flugbewegungen des Falken, die niedrigen Passagen des Wüstenbussards und die Kraft des Adlers gegenüber. So erhält jeder Auftritt einen eigenen Charakter.</p><p>Auch die Nähe zum Falkner prägt die Begegnung. Auf dem Handschuh vorgestellte Vögel ergänzen die Flugsequenzen. Das Publikum beobachtet sie in einem von Pflanzen gesäumten Außenbereich.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Die Vorführung entsteht mit Les Aigles de Saint-Maurice-de-Lignon. Erläuterungen der Falkner begleiten die Beobachtung und verbinden die Flugbahnen über dem Publikum mit den Greifvögeln, die bei der Präsentation aus geringerer Entfernung zu sehen sind.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vleugels boven het publiek</h2><p>Rapaces en vol libre brengt vogels en hun valkeniers samen in een openluchtvoorstelling. Het programma toont verschillen tussen de stille vlucht van de uil, de hoge bewegingen van de valk, de lage passages van de woestijnbuizerd en de kracht van de arend. Elk optreden krijgt daardoor een eigen karakter.</p><p>Ook de nabijheid van de valkenier hoort bij de ontmoeting. Vogels op de handschoen vullen de vluchten aan, terwijl het publiek toekijkt vanuit een buitenruimte met begroeiing eromheen.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>De presentatie wordt verzorgd met Les Aigles de Saint-Maurice-de-Lignon. De uitleg van de valkeniers verbindt de banen boven het publiek met de roofvogels die tijdens de demonstratie van dichterbij te zien zijn.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Ali sopra il pubblico</h2><p>Rapaces en vol libre riunisce uccelli e falconieri in una presentazione all’aperto. Il programma mette a confronto il volo silenzioso del gufo, le evoluzioni alte del falcone, i passaggi bassi della poiana di Harris e la potenza dell’aquila. Questi comportamenti danno a ogni apparizione un carattere diverso.</p><p>Anche la vicinanza al falconiere fa parte dell’incontro. Gli uccelli mostrati sul guanto accompagnano le sequenze di volo, mentre il pubblico osserva da uno spazio esterno circondato dalla vegetazione.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>La presentazione è proposta con Les Aigles de Saint-Maurice-de-Lignon. I commenti dei falconieri collegano le traiettorie sopra il pubblico ai rapaci che si possono osservare più da vicino durante la dimostrazione.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Alas sobre el público</h2><p>Rapaces en vol libre reúne a las aves y sus cetreros en una presentación al aire libre. El programa contrasta el vuelo silencioso del búho, las evoluciones altas del halcón, los pases bajos del busardo de Harris y la potencia del águila. Estos comportamientos dan a cada aparición un carácter diferente.</p><p>La cercanía con el cetrero también forma parte del encuentro. Las aves mostradas sobre el guante acompañan las secuencias de vuelo, mientras el público observa desde un espacio exterior rodeado de vegetación.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>La presentación se realiza con Les Aigles de Saint-Maurice-de-Lignon. Los comentarios de los cetreros relacionan las trayectorias sobre el público con las rapaces que pueden verse más de cerca durante la demostración.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Skrzydła nad publicznością</h2><p>Rapaces en vol libre łączy ptaki i sokolników w pokazie na otwartym powietrzu. Program zestawia cichy lot sowy, wysokie ewolucje sokoła, niskie przeloty myszołowca towarzyskiego i siłę orła. Różne zachowania nadają każdemu pojawieniu się odmienny charakter.</p><p>Częścią spotkania jest również bliskość sokolnika. Ptaki prezentowane na rękawicy towarzyszą sekwencjom lotu. Publiczność obserwuje je z zewnętrznej przestrzeni otoczonej roślinnością.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Pokaz odbywa się we współpracy z Les Aigles de Saint-Maurice-de-Lignon. Komentarze sokolników łączą obserwację torów lotu nad widownią z ptakami drapieżnymi oglądanymi z mniejszej odległości podczas prezentacji.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Asas sobre o público</h2><p>Rapaces en vol libre reúne aves e falcoeiros numa apresentação ao ar livre. O programa contrapõe o voo silencioso do bufo, as evoluções altas do falcão, as passagens baixas do gavião-de-Harris e a força da águia. Estes comportamentos dão a cada aparição um carácter diferente.</p><p>A proximidade com o falcoeiro também faz parte do encontro. As aves apresentadas na luva acompanham as sequências de voo, enquanto o público observa a partir de um espaço exterior rodeado de vegetação.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>A apresentação é realizada com Les Aigles de Saint-Maurice-de-Lignon. Os comentários dos falcoeiros relacionam as trajetórias sobre o público com as aves de rapina que podem ser observadas mais de perto durante a demonstração.</p>"
+            }
+          ]
+        },
+        {
+          "id": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+          "key": "vulcania-contes",
+          "name": "Contes et légendes volcaniques",
+          "type": "Show",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le rêve de Ka’u Moku</h2><p>Contes et légendes volcaniques donne la parole au livre des volcans et aux animateurs scientifiques de Vulcania. Leur théâtre raconte des histoires destinées aux jeunes enfants, où des personnages imaginaires donnent un visage aux phénomènes volcaniques. Les images projetées et les décors de scène accompagnent cette découverte.</p><p>Le premier récit entraîne le public à Hawaï. Ka’u Moku est un jeune volcan né au fond du Pacifique qui rêve de grandir jusqu’à former une île. Les enfants sont invités à l’aider, avec d’autres personnages, dans cette histoire de naissance et de transformation.</p><h2>Le dragon de la pluie au Japon</h2><p>La seconde légende se déroule sur Honshu. Riujin-Sama, dieu dragon de la pluie, protège les habitants en faisant tomber l’eau et en apaisant les colères du volcan Ontake. Ce récit japonais complète l’aventure hawaïenne par une autre manière d’imaginer les rapports entre les volcans et les populations.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Ka’u Moku’s dream</h2><p>Contes et légendes volcaniques gives a voice to the book of volcanoes and Vulcania’s science presenters. Their theatre tells stories for young children, with imaginary characters bringing volcanic phenomena to life. Projected images and stage scenery accompany the storytelling.</p><p>The first tale takes the audience to Hawaii. Ka’u Moku is a young volcano born on the Pacific seabed who dreams of growing into an island. Children are invited to help him alongside other characters in this story of birth and transformation.</p><h2>Japan’s rain dragon</h2><p>The second legend unfolds on Honshu. Riujin-Sama, dragon god of rain, protects the inhabitants by bringing water and calming the anger of Mount Ontake. This Japanese tale complements the Hawaiian adventure with another way of imagining relationships between volcanoes and people.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ka’u Mokus Traum</h2><p>Contes et légendes volcaniques lässt das Vulkanbuch und Vulcanias Wissenschaftsvermittler erzählen. Ihr Theater richtet sich an jüngere Kinder und gibt vulkanischen Phänomenen durch erfundene Figuren ein Gesicht. Projizierte Bilder und Bühnenkulissen begleiten die Geschichten.</p><p>Die erste Erzählung führt nach Hawaii. Ka’u Moku ist ein junger Vulkan, der am Grund des Pazifiks geboren wurde und davon träumt, zu einer Insel heranzuwachsen. Gemeinsam mit anderen Figuren sollen die Kinder ihm in dieser Geschichte von Entstehung und Verwandlung helfen.</p><h2>Japans Regendrache</h2><p>Die zweite Legende spielt auf Honshu. Riujin-Sama, der Drachengott des Regens, beschützt die Menschen, indem er Wasser bringt und den Zorn des Vulkans Ontake besänftigt. Die japanische Sage ergänzt das Hawaii-Abenteuer um eine andere Vorstellung von den Beziehungen zwischen Vulkanen und Menschen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De droom van Ka’u Moku</h2><p>Contes et légendes volcaniques geeft het boek van de vulkanen en de wetenschapsmedewerkers van Vulcania een stem. Hun theater vertelt verhalen voor jonge kinderen, waarin denkbeeldige personages vulkanische verschijnselen een gezicht geven. Geprojecteerde beelden en toneeldecors begeleiden de vertelling.</p><p>Het eerste verhaal voert naar Hawaï. Ka’u Moku is een jonge vulkaan die op de bodem van de Stille Oceaan is geboren en ervan droomt uit te groeien tot een eiland. Kinderen helpen hem samen met andere personages in een verhaal over ontstaan en verandering.</p><h2>De regendraak van Japan</h2><p>De tweede legende speelt op Honshu. Riujin-Sama, de drakengod van de regen, beschermt de inwoners door water te brengen en de woede van de vulkaan Ontake te kalmeren. Dit Japanse verhaal vult het Hawaïaanse avontuur aan met een andere verbeelding van de band tussen vulkanen en mensen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Il sogno di Ka’u Moku</h2><p>Contes et légendes volcaniques dà voce al libro dei vulcani e agli animatori scientifici di Vulcania. Il loro teatro racconta storie per bambini piccoli, nelle quali personaggi immaginari danno un volto ai fenomeni vulcanici. Immagini proiettate e scenografie accompagnano la narrazione.</p><p>Il primo racconto conduce alle Hawaii. Ka’u Moku è un giovane vulcano nato sul fondo del Pacifico che sogna di crescere fino a diventare un’isola. I bambini sono invitati ad aiutarlo insieme ad altri personaggi, in una storia di nascita e trasformazione.</p><h2>Il drago della pioggia in Giappone</h2><p>La seconda leggenda si svolge su Honshu. Riujin-Sama, dio drago della pioggia, protegge gli abitanti portando l’acqua e placando la collera del vulcano Ontake. Il racconto giapponese completa l’avventura hawaiana con un altro modo di immaginare i rapporti tra vulcani e popolazioni.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>El sueño de Ka’u Moku</h2><p>Contes et légendes volcaniques da voz al libro de los volcanes y a los divulgadores científicos de Vulcania. Su teatro cuenta historias para niños pequeños en las que personajes imaginarios ponen rostro a los fenómenos volcánicos. Imágenes proyectadas y decorados acompañan la narración.</p><p>El primer relato lleva a Hawái. Ka’u Moku es un joven volcán nacido en el fondo del Pacífico que sueña con crecer hasta formar una isla. Se invita a los niños a ayudarlo junto a otros personajes, en una historia de nacimiento y transformación.</p><h2>El dragón de la lluvia en Japón</h2><p>La segunda leyenda se desarrolla en Honshu. Riujin-Sama, dios dragón de la lluvia, protege a los habitantes haciendo caer el agua y calmando la ira del volcán Ontake. Este relato japonés complementa la aventura hawaiana con otra forma de imaginar las relaciones entre volcanes y poblaciones.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Marzenie Ka’u Moku</h2><p>Contes et légendes volcaniques oddaje głos księdze wulkanów i popularyzatorom nauki z Vulcanii. Ich teatr opowiada historie dla małych dzieci, w których wyobrażone postacie nadają twarz zjawiskom wulkanicznym. Narracji towarzyszą projekcje i dekoracje sceniczne.</p><p>Pierwsza opowieść prowadzi na Hawaje. Ka’u Moku to młody wulkan narodzony na dnie Pacyfiku, który marzy, by urosnąć i stać się wyspą. Dzieci pomagają mu wraz z innymi bohaterami w historii o narodzinach i przemianie.</p><h2>Japoński smok deszczu</h2><p>Druga legenda rozgrywa się na Honsiu. Riujin-Sama, smoczy bóg deszczu, chroni mieszkańców, sprowadzając wodę i łagodząc gniew wulkanu Ontake. Japońska historia uzupełnia hawajską przygodę innym wyobrażeniem relacji między wulkanami a ludźmi.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>O sonho de Ka’u Moku</h2><p>Contes et légendes volcaniques dá voz ao livro dos vulcões e aos animadores científicos de Vulcania. O seu teatro conta histórias para crianças pequenas, nas quais personagens imaginárias dão um rosto aos fenómenos vulcânicos. Imagens projetadas e cenários acompanham a narrativa.</p><p>O primeiro conto leva ao Havai. Ka’u Moku é um jovem vulcão nascido no fundo do Pacífico que sonha crescer até formar uma ilha. As crianças são convidadas a ajudá-lo, juntamente com outras personagens, numa história de nascimento e transformação.</p><h2>O dragão da chuva no Japão</h2><p>A segunda lenda decorre em Honshu. Riujin-Sama, deus dragão da chuva, protege os habitantes fazendo cair a água e acalmando a cólera do vulcão Ontake. O conto japonês completa a aventura havaiana com outra maneira de imaginar as relações entre vulcões e populações.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-55-birds-and-tales",
+        "notes": "Sixteen descriptions personally authored/reviewed eight languages. Complete official pages Rapaces en vol libre and Contes et legendes volcaniques plus original photos inspected. Falconer partnership and named flight behaviours are sourced; hand/glove and outdoor vegetation visible. Contes two named fictional stories Ka’u Moku Hawaii and Riujin-Sama Honshu/Ontake, book/presenters, projection on real stage. No real eruption, unverified creator, exact opening day or permanent daily schedule. Existing private items only."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "59c78421-d0f6-4f1c-8066-4b810a5cba12",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:02:15.8952562Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "entityKey": "vulcania-rapaces",
+        "displayName": "Rapaces en vol libre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Flügel über dem Publikum</h2><p>Rapaces en vol libre bringt Vögel und Falkner zu einer Vorführung im Freien zusammen. Das Programm stellt den leisen Eulenflug, die hohen Flugbewegungen des Falken, die niedrigen Passagen des Wüstenbussards und die Kraft des Adlers gegenüber. So erhält jeder Auftritt einen eigenen Charakter.</p><p>Auch die Nähe zum Falkner prägt die Begegnung. Auf dem Handschuh vorgestellte Vögel ergänzen die Flugsequenzen. Das Publikum beobachtet sie in einem von Pflanzen gesäumten Außenbereich.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Die Vorführung entsteht mit Les Aigles de Saint-Maurice-de-Lignon. Erläuterungen der Falkner begleiten die Beobachtung und verbinden die Flugbahnen über dem Publikum mit den Greifvögeln, die bei der Präsentation aus geringerer Entfernung zu sehen sind.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Wings above the audience</h2><p>Rapaces en vol libre brings birds and their falconers together in an outdoor display. The programme contrasts the owl’s quiet flight, the falcon’s high movements, the Harris’s hawk’s low passes and the eagle’s power. These different behaviours give each appearance its own character.</p><p>Close encounters with the falconer also shape the presentation. Birds shown on the glove accompany the flying sequences, with the audience watching in an outdoor space bordered by vegetation.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>The display is presented with Les Aigles de Saint-Maurice-de-Lignon. Falconers’ commentary accompanies the birds, linking the paths above the audience with the raptors seen at closer range during the presentation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Alas sobre el público</h2><p>Rapaces en vol libre reúne a las aves y sus cetreros en una presentación al aire libre. El programa contrasta el vuelo silencioso del búho, las evoluciones altas del halcón, los pases bajos del busardo de Harris y la potencia del águila. Estos comportamientos dan a cada aparición un carácter diferente.</p><p>La cercanía con el cetrero también forma parte del encuentro. Las aves mostradas sobre el guante acompañan las secuencias de vuelo, mientras el público observa desde un espacio exterior rodeado de vegetación.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>La presentación se realiza con Les Aigles de Saint-Maurice-de-Lignon. Los comentarios de los cetreros relacionan las trayectorias sobre el público con las rapaces que pueden verse más de cerca durante la demostración.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des ailes au-dessus du public</h2><p>Rapaces en vol libre réunit des oiseaux et leurs fauconniers dans une présentation en plein air. Le programme met en regard le vol silencieux du hibou, les évolutions hautes du faucon, le passage bas de la buse de Harris et la puissance de l’aigle. Ces comportements donnent à chaque apparition une allure différente.</p><p>La proximité avec le fauconnier fait aussi partie de la rencontre. Les oiseaux présentés sur le gant complètent les séquences de vol, tandis que le public observe depuis l’espace extérieur bordé de végétation.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Cette présentation est proposée avec les Aigles de Saint-Maurice-de-Lignon. Les commentaires des fauconniers accompagnent l’observation des rapaces : leur présence relie les trajectoires au-dessus du public aux oiseaux que l’on peut voir de plus près lors des présentations.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Ali sopra il pubblico</h2><p>Rapaces en vol libre riunisce uccelli e falconieri in una presentazione all’aperto. Il programma mette a confronto il volo silenzioso del gufo, le evoluzioni alte del falcone, i passaggi bassi della poiana di Harris e la potenza dell’aquila. Questi comportamenti danno a ogni apparizione un carattere diverso.</p><p>Anche la vicinanza al falconiere fa parte dell’incontro. Gli uccelli mostrati sul guanto accompagnano le sequenze di volo, mentre il pubblico osserva da uno spazio esterno circondato dalla vegetazione.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>La presentazione è proposta con Les Aigles de Saint-Maurice-de-Lignon. I commenti dei falconieri collegano le traiettorie sopra il pubblico ai rapaci che si possono osservare più da vicino durante la dimostrazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vleugels boven het publiek</h2><p>Rapaces en vol libre brengt vogels en hun valkeniers samen in een openluchtvoorstelling. Het programma toont verschillen tussen de stille vlucht van de uil, de hoge bewegingen van de valk, de lage passages van de woestijnbuizerd en de kracht van de arend. Elk optreden krijgt daardoor een eigen karakter.</p><p>Ook de nabijheid van de valkenier hoort bij de ontmoeting. Vogels op de handschoen vullen de vluchten aan, terwijl het publiek toekijkt vanuit een buitenruimte met begroeiing eromheen.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>De presentatie wordt verzorgd met Les Aigles de Saint-Maurice-de-Lignon. De uitleg van de valkeniers verbindt de banen boven het publiek met de roofvogels die tijdens de demonstratie van dichterbij te zien zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skrzydła nad publicznością</h2><p>Rapaces en vol libre łączy ptaki i sokolników w pokazie na otwartym powietrzu. Program zestawia cichy lot sowy, wysokie ewolucje sokoła, niskie przeloty myszołowca towarzyskiego i siłę orła. Różne zachowania nadają każdemu pojawieniu się odmienny charakter.</p><p>Częścią spotkania jest również bliskość sokolnika. Ptaki prezentowane na rękawicy towarzyszą sekwencjom lotu. Publiczność obserwuje je z zewnętrznej przestrzeni otoczonej roślinnością.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Pokaz odbywa się we współpracy z Les Aigles de Saint-Maurice-de-Lignon. Komentarze sokolników łączą obserwację torów lotu nad widownią z ptakami drapieżnymi oglądanymi z mniejszej odległości podczas prezentacji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Asas sobre o público</h2><p>Rapaces en vol libre reúne aves e falcoeiros numa apresentação ao ar livre. O programa contrapõe o voo silencioso do bufo, as evoluções altas do falcão, as passagens baixas do gavião-de-Harris e a força da águia. Estes comportamentos dão a cada aparição um carácter diferente.</p><p>A proximidade com o falcoeiro também faz parte do encontro. As aves apresentadas na luva acompanham as sequências de voo, enquanto o público observa a partir de um espaço exterior rodeado de vegetação.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>A apresentação é realizada com Les Aigles de Saint-Maurice-de-Lignon. Os comentários dos falcoeiros relacionam as trajetórias sobre o público com as aves de rapina que podem ser observadas mais de perto durante a demonstração.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "entityKey": "vulcania-contes",
+        "displayName": "Contes et légendes volcaniques",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ka’u Mokus Traum</h2><p>Contes et légendes volcaniques lässt das Vulkanbuch und Vulcanias Wissenschaftsvermittler erzählen. Ihr Theater richtet sich an jüngere Kinder und gibt vulkanischen Phänomenen durch erfundene Figuren ein Gesicht. Projizierte Bilder und Bühnenkulissen begleiten die Geschichten.</p><p>Die erste Erzählung führt nach Hawaii. Ka’u Moku ist ein junger Vulkan, der am Grund des Pazifiks geboren wurde und davon träumt, zu einer Insel heranzuwachsen. Gemeinsam mit anderen Figuren sollen die Kinder ihm in dieser Geschichte von Entstehung und Verwandlung helfen.</p><h2>Japans Regendrache</h2><p>Die zweite Legende spielt auf Honshu. Riujin-Sama, der Drachengott des Regens, beschützt die Menschen, indem er Wasser bringt und den Zorn des Vulkans Ontake besänftigt. Die japanische Sage ergänzt das Hawaii-Abenteuer um eine andere Vorstellung von den Beziehungen zwischen Vulkanen und Menschen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Ka’u Moku’s dream</h2><p>Contes et légendes volcaniques gives a voice to the book of volcanoes and Vulcania’s science presenters. Their theatre tells stories for young children, with imaginary characters bringing volcanic phenomena to life. Projected images and stage scenery accompany the storytelling.</p><p>The first tale takes the audience to Hawaii. Ka’u Moku is a young volcano born on the Pacific seabed who dreams of growing into an island. Children are invited to help him alongside other characters in this story of birth and transformation.</p><h2>Japan’s rain dragon</h2><p>The second legend unfolds on Honshu. Riujin-Sama, dragon god of rain, protects the inhabitants by bringing water and calming the anger of Mount Ontake. This Japanese tale complements the Hawaiian adventure with another way of imagining relationships between volcanoes and people.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El sueño de Ka’u Moku</h2><p>Contes et légendes volcaniques da voz al libro de los volcanes y a los divulgadores científicos de Vulcania. Su teatro cuenta historias para niños pequeños en las que personajes imaginarios ponen rostro a los fenómenos volcánicos. Imágenes proyectadas y decorados acompañan la narración.</p><p>El primer relato lleva a Hawái. Ka’u Moku es un joven volcán nacido en el fondo del Pacífico que sueña con crecer hasta formar una isla. Se invita a los niños a ayudarlo junto a otros personajes, en una historia de nacimiento y transformación.</p><h2>El dragón de la lluvia en Japón</h2><p>La segunda leyenda se desarrolla en Honshu. Riujin-Sama, dios dragón de la lluvia, protege a los habitantes haciendo caer el agua y calmando la ira del volcán Ontake. Este relato japonés complementa la aventura hawaiana con otra forma de imaginar las relaciones entre volcanes y poblaciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le rêve de Ka’u Moku</h2><p>Contes et légendes volcaniques donne la parole au livre des volcans et aux animateurs scientifiques de Vulcania. Leur théâtre raconte des histoires destinées aux jeunes enfants, où des personnages imaginaires donnent un visage aux phénomènes volcaniques. Les images projetées et les décors de scène accompagnent cette découverte.</p><p>Le premier récit entraîne le public à Hawaï. Ka’u Moku est un jeune volcan né au fond du Pacifique qui rêve de grandir jusqu’à former une île. Les enfants sont invités à l’aider, avec d’autres personnages, dans cette histoire de naissance et de transformation.</p><h2>Le dragon de la pluie au Japon</h2><p>La seconde légende se déroule sur Honshu. Riujin-Sama, dieu dragon de la pluie, protège les habitants en faisant tomber l’eau et en apaisant les colères du volcan Ontake. Ce récit japonais complète l’aventure hawaïenne par une autre manière d’imaginer les rapports entre les volcans et les populations.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il sogno di Ka’u Moku</h2><p>Contes et légendes volcaniques dà voce al libro dei vulcani e agli animatori scientifici di Vulcania. Il loro teatro racconta storie per bambini piccoli, nelle quali personaggi immaginari danno un volto ai fenomeni vulcanici. Immagini proiettate e scenografie accompagnano la narrazione.</p><p>Il primo racconto conduce alle Hawaii. Ka’u Moku è un giovane vulcano nato sul fondo del Pacifico che sogna di crescere fino a diventare un’isola. I bambini sono invitati ad aiutarlo insieme ad altri personaggi, in una storia di nascita e trasformazione.</p><h2>Il drago della pioggia in Giappone</h2><p>La seconda leggenda si svolge su Honshu. Riujin-Sama, dio drago della pioggia, protegge gli abitanti portando l’acqua e placando la collera del vulcano Ontake. Il racconto giapponese completa l’avventura hawaiana con un altro modo di immaginare i rapporti tra vulcani e popolazioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De droom van Ka’u Moku</h2><p>Contes et légendes volcaniques geeft het boek van de vulkanen en de wetenschapsmedewerkers van Vulcania een stem. Hun theater vertelt verhalen voor jonge kinderen, waarin denkbeeldige personages vulkanische verschijnselen een gezicht geven. Geprojecteerde beelden en toneeldecors begeleiden de vertelling.</p><p>Het eerste verhaal voert naar Hawaï. Ka’u Moku is een jonge vulkaan die op de bodem van de Stille Oceaan is geboren en ervan droomt uit te groeien tot een eiland. Kinderen helpen hem samen met andere personages in een verhaal over ontstaan en verandering.</p><h2>De regendraak van Japan</h2><p>De tweede legende speelt op Honshu. Riujin-Sama, de drakengod van de regen, beschermt de inwoners door water te brengen en de woede van de vulkaan Ontake te kalmeren. Dit Japanse verhaal vult het Hawaïaanse avontuur aan met een andere verbeelding van de band tussen vulkanen en mensen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Marzenie Ka’u Moku</h2><p>Contes et légendes volcaniques oddaje głos księdze wulkanów i popularyzatorom nauki z Vulcanii. Ich teatr opowiada historie dla małych dzieci, w których wyobrażone postacie nadają twarz zjawiskom wulkanicznym. Narracji towarzyszą projekcje i dekoracje sceniczne.</p><p>Pierwsza opowieść prowadzi na Hawaje. Ka’u Moku to młody wulkan narodzony na dnie Pacyfiku, który marzy, by urosnąć i stać się wyspą. Dzieci pomagają mu wraz z innymi bohaterami w historii o narodzinach i przemianie.</p><h2>Japoński smok deszczu</h2><p>Druga legenda rozgrywa się na Honsiu. Riujin-Sama, smoczy bóg deszczu, chroni mieszkańców, sprowadzając wodę i łagodząc gniew wulkanu Ontake. Japońska historia uzupełnia hawajską przygodę innym wyobrażeniem relacji między wulkanami a ludźmi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O sonho de Ka’u Moku</h2><p>Contes et légendes volcaniques dá voz ao livro dos vulcões e aos animadores científicos de Vulcania. O seu teatro conta histórias para crianças pequenas, nas quais personagens imaginárias dão um rosto aos fenómenos vulcânicos. Imagens projetadas e cenários acompanham a narrativa.</p><p>O primeiro conto leva ao Havai. Ka’u Moku é um jovem vulcão nascido no fundo do Pacífico que sonha crescer até formar uma ilha. As crianças são convidadas a ajudá-lo, juntamente com outras personagens, numa história de nascimento e transformação.</p><h2>O dragão da chuva no Japão</h2><p>A segunda lenda decorre em Honshu. Riujin-Sama, deus dragão da chuva, protege os habitantes fazendo cair a água e acalmando a cólera do vulcão Ontake. O conto japonês completa a aventura havaiana com outra maneira de imaginar as relações entre vulcões e populações.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "487397a0-4b69-44e9-94b9-cf5d94600cf4",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T19:02:41.4063785Z",
+    "appliedAtUtc": "2026-11-15T19:02:41.4063792Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "entityKey": "vulcania-rapaces",
+        "displayName": "Rapaces en vol libre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Flügel über dem Publikum</h2><p>Rapaces en vol libre bringt Vögel und Falkner zu einer Vorführung im Freien zusammen. Das Programm stellt den leisen Eulenflug, die hohen Flugbewegungen des Falken, die niedrigen Passagen des Wüstenbussards und die Kraft des Adlers gegenüber. So erhält jeder Auftritt einen eigenen Charakter.</p><p>Auch die Nähe zum Falkner prägt die Begegnung. Auf dem Handschuh vorgestellte Vögel ergänzen die Flugsequenzen. Das Publikum beobachtet sie in einem von Pflanzen gesäumten Außenbereich.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Die Vorführung entsteht mit Les Aigles de Saint-Maurice-de-Lignon. Erläuterungen der Falkner begleiten die Beobachtung und verbinden die Flugbahnen über dem Publikum mit den Greifvögeln, die bei der Präsentation aus geringerer Entfernung zu sehen sind.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Wings above the audience</h2><p>Rapaces en vol libre brings birds and their falconers together in an outdoor display. The programme contrasts the owl’s quiet flight, the falcon’s high movements, the Harris’s hawk’s low passes and the eagle’s power. These different behaviours give each appearance its own character.</p><p>Close encounters with the falconer also shape the presentation. Birds shown on the glove accompany the flying sequences, with the audience watching in an outdoor space bordered by vegetation.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>The display is presented with Les Aigles de Saint-Maurice-de-Lignon. Falconers’ commentary accompanies the birds, linking the paths above the audience with the raptors seen at closer range during the presentation.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Alas sobre el público</h2><p>Rapaces en vol libre reúne a las aves y sus cetreros en una presentación al aire libre. El programa contrasta el vuelo silencioso del búho, las evoluciones altas del halcón, los pases bajos del busardo de Harris y la potencia del águila. Estos comportamientos dan a cada aparición un carácter diferente.</p><p>La cercanía con el cetrero también forma parte del encuentro. Las aves mostradas sobre el guante acompañan las secuencias de vuelo, mientras el público observa desde un espacio exterior rodeado de vegetación.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>La presentación se realiza con Les Aigles de Saint-Maurice-de-Lignon. Los comentarios de los cetreros relacionan las trayectorias sobre el público con las rapaces que pueden verse más de cerca durante la demostración.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des ailes au-dessus du public</h2><p>Rapaces en vol libre réunit des oiseaux et leurs fauconniers dans une présentation en plein air. Le programme met en regard le vol silencieux du hibou, les évolutions hautes du faucon, le passage bas de la buse de Harris et la puissance de l’aigle. Ces comportements donnent à chaque apparition une allure différente.</p><p>La proximité avec le fauconnier fait aussi partie de la rencontre. Les oiseaux présentés sur le gant complètent les séquences de vol, tandis que le public observe depuis l’espace extérieur bordé de végétation.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Cette présentation est proposée avec les Aigles de Saint-Maurice-de-Lignon. Les commentaires des fauconniers accompagnent l’observation des rapaces : leur présence relie les trajectoires au-dessus du public aux oiseaux que l’on peut voir de plus près lors des présentations.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Ali sopra il pubblico</h2><p>Rapaces en vol libre riunisce uccelli e falconieri in una presentazione all’aperto. Il programma mette a confronto il volo silenzioso del gufo, le evoluzioni alte del falcone, i passaggi bassi della poiana di Harris e la potenza dell’aquila. Questi comportamenti danno a ogni apparizione un carattere diverso.</p><p>Anche la vicinanza al falconiere fa parte dell’incontro. Gli uccelli mostrati sul guanto accompagnano le sequenze di volo, mentre il pubblico osserva da uno spazio esterno circondato dalla vegetazione.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>La presentazione è proposta con Les Aigles de Saint-Maurice-de-Lignon. I commenti dei falconieri collegano le traiettorie sopra il pubblico ai rapaci che si possono osservare più da vicino durante la dimostrazione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vleugels boven het publiek</h2><p>Rapaces en vol libre brengt vogels en hun valkeniers samen in een openluchtvoorstelling. Het programma toont verschillen tussen de stille vlucht van de uil, de hoge bewegingen van de valk, de lage passages van de woestijnbuizerd en de kracht van de arend. Elk optreden krijgt daardoor een eigen karakter.</p><p>Ook de nabijheid van de valkenier hoort bij de ontmoeting. Vogels op de handschoen vullen de vluchten aan, terwijl het publiek toekijkt vanuit een buitenruimte met begroeiing eromheen.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>De presentatie wordt verzorgd met Les Aigles de Saint-Maurice-de-Lignon. De uitleg van de valkeniers verbindt de banen boven het publiek met de roofvogels die tijdens de demonstratie van dichterbij te zien zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Skrzydła nad publicznością</h2><p>Rapaces en vol libre łączy ptaki i sokolników w pokazie na otwartym powietrzu. Program zestawia cichy lot sowy, wysokie ewolucje sokoła, niskie przeloty myszołowca towarzyskiego i siłę orła. Różne zachowania nadają każdemu pojawieniu się odmienny charakter.</p><p>Częścią spotkania jest również bliskość sokolnika. Ptaki prezentowane na rękawicy towarzyszą sekwencjom lotu. Publiczność obserwuje je z zewnętrznej przestrzeni otoczonej roślinnością.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>Pokaz odbywa się we współpracy z Les Aigles de Saint-Maurice-de-Lignon. Komentarze sokolników łączą obserwację torów lotu nad widownią z ptakami drapieżnymi oglądanymi z mniejszej odległości podczas prezentacji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Asas sobre o público</h2><p>Rapaces en vol libre reúne aves e falcoeiros numa apresentação ao ar livre. O programa contrapõe o voo silencioso do bufo, as evoluções altas do falcão, as passagens baixas do gavião-de-Harris e a força da águia. Estes comportamentos dão a cada aparição um carácter diferente.</p><p>A proximidade com o falcoeiro também faz parte do encontro. As aves apresentadas na luva acompanham as sequências de voo, enquanto o público observa a partir de um espaço exterior rodeado de vegetação.</p><h2>Les Aigles de Saint-Maurice-de-Lignon</h2><p>A apresentação é realizada com Les Aigles de Saint-Maurice-de-Lignon. Os comentários dos falcoeiros relacionam as trajetórias sobre o público com as aves de rapina que podem ser observadas mais de perto durante a demonstração.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "entityKey": "vulcania-contes",
+        "displayName": "Contes et légendes volcaniques",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ka’u Mokus Traum</h2><p>Contes et légendes volcaniques lässt das Vulkanbuch und Vulcanias Wissenschaftsvermittler erzählen. Ihr Theater richtet sich an jüngere Kinder und gibt vulkanischen Phänomenen durch erfundene Figuren ein Gesicht. Projizierte Bilder und Bühnenkulissen begleiten die Geschichten.</p><p>Die erste Erzählung führt nach Hawaii. Ka’u Moku ist ein junger Vulkan, der am Grund des Pazifiks geboren wurde und davon träumt, zu einer Insel heranzuwachsen. Gemeinsam mit anderen Figuren sollen die Kinder ihm in dieser Geschichte von Entstehung und Verwandlung helfen.</p><h2>Japans Regendrache</h2><p>Die zweite Legende spielt auf Honshu. Riujin-Sama, der Drachengott des Regens, beschützt die Menschen, indem er Wasser bringt und den Zorn des Vulkans Ontake besänftigt. Die japanische Sage ergänzt das Hawaii-Abenteuer um eine andere Vorstellung von den Beziehungen zwischen Vulkanen und Menschen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Ka’u Moku’s dream</h2><p>Contes et légendes volcaniques gives a voice to the book of volcanoes and Vulcania’s science presenters. Their theatre tells stories for young children, with imaginary characters bringing volcanic phenomena to life. Projected images and stage scenery accompany the storytelling.</p><p>The first tale takes the audience to Hawaii. Ka’u Moku is a young volcano born on the Pacific seabed who dreams of growing into an island. Children are invited to help him alongside other characters in this story of birth and transformation.</p><h2>Japan’s rain dragon</h2><p>The second legend unfolds on Honshu. Riujin-Sama, dragon god of rain, protects the inhabitants by bringing water and calming the anger of Mount Ontake. This Japanese tale complements the Hawaiian adventure with another way of imagining relationships between volcanoes and people.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El sueño de Ka’u Moku</h2><p>Contes et légendes volcaniques da voz al libro de los volcanes y a los divulgadores científicos de Vulcania. Su teatro cuenta historias para niños pequeños en las que personajes imaginarios ponen rostro a los fenómenos volcánicos. Imágenes proyectadas y decorados acompañan la narración.</p><p>El primer relato lleva a Hawái. Ka’u Moku es un joven volcán nacido en el fondo del Pacífico que sueña con crecer hasta formar una isla. Se invita a los niños a ayudarlo junto a otros personajes, en una historia de nacimiento y transformación.</p><h2>El dragón de la lluvia en Japón</h2><p>La segunda leyenda se desarrolla en Honshu. Riujin-Sama, dios dragón de la lluvia, protege a los habitantes haciendo caer el agua y calmando la ira del volcán Ontake. Este relato japonés complementa la aventura hawaiana con otra forma de imaginar las relaciones entre volcanes y poblaciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le rêve de Ka’u Moku</h2><p>Contes et légendes volcaniques donne la parole au livre des volcans et aux animateurs scientifiques de Vulcania. Leur théâtre raconte des histoires destinées aux jeunes enfants, où des personnages imaginaires donnent un visage aux phénomènes volcaniques. Les images projetées et les décors de scène accompagnent cette découverte.</p><p>Le premier récit entraîne le public à Hawaï. Ka’u Moku est un jeune volcan né au fond du Pacifique qui rêve de grandir jusqu’à former une île. Les enfants sont invités à l’aider, avec d’autres personnages, dans cette histoire de naissance et de transformation.</p><h2>Le dragon de la pluie au Japon</h2><p>La seconde légende se déroule sur Honshu. Riujin-Sama, dieu dragon de la pluie, protège les habitants en faisant tomber l’eau et en apaisant les colères du volcan Ontake. Ce récit japonais complète l’aventure hawaïenne par une autre manière d’imaginer les rapports entre les volcans et les populations.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il sogno di Ka’u Moku</h2><p>Contes et légendes volcaniques dà voce al libro dei vulcani e agli animatori scientifici di Vulcania. Il loro teatro racconta storie per bambini piccoli, nelle quali personaggi immaginari danno un volto ai fenomeni vulcanici. Immagini proiettate e scenografie accompagnano la narrazione.</p><p>Il primo racconto conduce alle Hawaii. Ka’u Moku è un giovane vulcano nato sul fondo del Pacifico che sogna di crescere fino a diventare un’isola. I bambini sono invitati ad aiutarlo insieme ad altri personaggi, in una storia di nascita e trasformazione.</p><h2>Il drago della pioggia in Giappone</h2><p>La seconda leggenda si svolge su Honshu. Riujin-Sama, dio drago della pioggia, protegge gli abitanti portando l’acqua e placando la collera del vulcano Ontake. Il racconto giapponese completa l’avventura hawaiana con un altro modo di immaginare i rapporti tra vulcani e popolazioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De droom van Ka’u Moku</h2><p>Contes et légendes volcaniques geeft het boek van de vulkanen en de wetenschapsmedewerkers van Vulcania een stem. Hun theater vertelt verhalen voor jonge kinderen, waarin denkbeeldige personages vulkanische verschijnselen een gezicht geven. Geprojecteerde beelden en toneeldecors begeleiden de vertelling.</p><p>Het eerste verhaal voert naar Hawaï. Ka’u Moku is een jonge vulkaan die op de bodem van de Stille Oceaan is geboren en ervan droomt uit te groeien tot een eiland. Kinderen helpen hem samen met andere personages in een verhaal over ontstaan en verandering.</p><h2>De regendraak van Japan</h2><p>De tweede legende speelt op Honshu. Riujin-Sama, de drakengod van de regen, beschermt de inwoners door water te brengen en de woede van de vulkaan Ontake te kalmeren. Dit Japanse verhaal vult het Hawaïaanse avontuur aan met een andere verbeelding van de band tussen vulkanen en mensen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Marzenie Ka’u Moku</h2><p>Contes et légendes volcaniques oddaje głos księdze wulkanów i popularyzatorom nauki z Vulcanii. Ich teatr opowiada historie dla małych dzieci, w których wyobrażone postacie nadają twarz zjawiskom wulkanicznym. Narracji towarzyszą projekcje i dekoracje sceniczne.</p><p>Pierwsza opowieść prowadzi na Hawaje. Ka’u Moku to młody wulkan narodzony na dnie Pacyfiku, który marzy, by urosnąć i stać się wyspą. Dzieci pomagają mu wraz z innymi bohaterami w historii o narodzinach i przemianie.</p><h2>Japoński smok deszczu</h2><p>Druga legenda rozgrywa się na Honsiu. Riujin-Sama, smoczy bóg deszczu, chroni mieszkańców, sprowadzając wodę i łagodząc gniew wulkanu Ontake. Japońska historia uzupełnia hawajską przygodę innym wyobrażeniem relacji między wulkanami a ludźmi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O sonho de Ka’u Moku</h2><p>Contes et légendes volcaniques dá voz ao livro dos vulcões e aos animadores científicos de Vulcania. O seu teatro conta histórias para crianças pequenas, nas quais personagens imaginárias dão um rosto aos fenómenos vulcânicos. Imagens projetadas e cenários acompanham a narrativa.</p><p>O primeiro conto leva ao Havai. Ka’u Moku é um jovem vulcão nascido no fundo do Pacífico que sonha crescer até formar uma ilha. As crianças são convidadas a ajudá-lo, juntamente com outras personagens, numa história de nascimento e transformação.</p><h2>O dragão da chuva no Japão</h2><p>A segunda lenda decorre em Honshu. Riujin-Sama, deus dragão da chuva, protege os habitantes fazendo cair a água e acalmando a cólera do vulcão Ontake. O conto japonês completa a aventura havaiana com outra maneira de imaginar as relações entre vulcões e populações.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Rapaces en vol libre et Contes et légendes volcaniques : seize notices en huit langues personnellement rédigées et relues, fauconnerie et deux récits fictifs Hawaï/Japon qualifiés par sources officielles et photographies. Deux fiches existantes conservées privées ; aucune date ou disponibilité quotidienne inventée.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally authored/reviewed eight languages. Complete official pages Rapaces en vol libre and Contes et legendes volcaniques plus original photos inspected. Falconer partnership and named flight behaviours are sourced; hand/glove and outdoor vegetation visible. Contes two named fictional stories Ka’u Moku Hawaii and Riujin-Sama Honshu/Ontake, book/presenters, projection on real stage. No real eruption, unverified creator, exact opening day or permanent daily schedule. Existing private items only."
+}

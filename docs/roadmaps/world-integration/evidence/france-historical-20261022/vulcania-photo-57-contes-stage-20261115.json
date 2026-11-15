@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-57-contes-stage",
+    "ownerId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+    "itemName": "Contes et légendes volcaniques",
+    "current": true,
+    "source": {
+      "key": "contes",
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/02/contes-et-legendes-volcaniques_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/contes-et-legendes-volcaniques/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-contes-wide-1904.jpg",
+      "http": 200,
+      "bytes": 62853,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "de7afa692f204a206917fe78448079b101c16d9ee96853d1d5daad44cdd8c8bb",
+      "accessedAtUtc": "2026-11-15T18:53:15.340824+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Real official source photograph personally viewed individually. Ninety-six localized fields personally authored and reviewed. Contes is a real theatre with an illustrated eruption on screen, Primordia uses actual projection on the architecture. Yapadrisk version and capture date unproved: non-current, no assertion it shows the present Celtic-door story. No local pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/02/contes-et-legendes-volcaniques_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-contes-wide-1904.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-57-contes-stage-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-57-contes-stage-import-result.json"
+  },
+  "metadata": {
+    "description": "Une porte à lanternes rouges, un arbre fleuri et des nuages suspendus composent le décor autour du personnage sur scène.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/02/contes-et-legendes-volcaniques_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un volcan dessiné en éruption occupe l’écran du théâtre de Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "en",
+        "value": "An illustrated erupting volcano fills the theatre screen in Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein gezeichneter ausbrechender Vulkan füllt die Theaterleinwand von Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een getekende uitbarstende vulkaan vult het theaterscherm van Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un vulcano disegnato in eruzione occupa lo schermo del teatro di Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un volcán dibujado en erupción ocupa la pantalla del teatro de Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Rysunkowy wybuchający wulkan zajmuje ekran teatru Contes et légendes volcaniques."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um vulcão desenhado em erupção ocupa o ecrã do teatro de Contes et légendes volcaniques."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une porte à lanternes rouges, un arbre fleuri et des nuages suspendus composent le décor autour du personnage sur scène."
+      },
+      {
+        "languageCode": "en",
+        "value": "A gateway with red lanterns, a flowering tree and suspended clouds frame the character on stage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Tor mit roten Laternen, ein blühender Baum und hängende Wolken rahmen die Figur auf der Bühne ein."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een poort met rode lantaarns, een bloeiende boom en hangende wolken omringen het personage op het toneel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un portale con lanterne rosse, un albero fiorito e nuvole sospese circondano il personaggio sul palco."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una puerta con faroles rojos, un árbol florido y nubes suspendidas rodean al personaje en escena."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Brama z czerwonymi lampionami, kwitnące drzewo i zawieszone chmury otaczają postać na scenie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um portal com lanternas vermelhas, uma árvore em flor e nuvens suspensas enquadram a personagem em palco."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T19:05:02.6984855Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "14b3cda47b7d44ea8e6bb88d9e952842",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+      "path": "park_item/14b3cda47b7d44ea8e6bb88d9e952842",
+      "description": "Une porte à lanternes rouges, un arbre fleuri et des nuages suspendus composent le décor autour du personnage sur scène.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 62853,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2024/02/contes-et-legendes-volcaniques_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un volcan dessiné en éruption occupe l’écran du théâtre de Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "en",
+          "value": "An illustrated erupting volcano fills the theatre screen in Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein gezeichneter ausbrechender Vulkan füllt die Theaterleinwand von Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een getekende uitbarstende vulkaan vult het theaterscherm van Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un vulcano disegnato in eruzione occupa lo schermo del teatro di Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un volcán dibujado en erupción ocupa la pantalla del teatro de Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rysunkowy wybuchający wulkan zajmuje ekran teatru Contes et légendes volcaniques."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um vulcão desenhado em erupção ocupa o ecrã do teatro de Contes et légendes volcaniques."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une porte à lanternes rouges, un arbre fleuri et des nuages suspendus composent le décor autour du personnage sur scène."
+        },
+        {
+          "languageCode": "en",
+          "value": "A gateway with red lanterns, a flowering tree and suspended clouds frame the character on stage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Tor mit roten Laternen, ein blühender Baum und hängende Wolken rahmen die Figur auf der Bühne ein."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een poort met rode lantaarns, een bloeiende boom en hangende wolken omringen het personage op het toneel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un portale con lanterne rosse, un albero fiorito e nuvole sospese circondano il personaggio sul palco."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una puerta con faroles rojos, un árbol florido y nubes suspendidas rodean al personaje en escena."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Brama z czerwonymi lampionami, kwitnące drzewo i zawieszone chmury otaczają postać na scenie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um portal com lanternas vermelhas, uma árvore em flor e nuvens suspensas enquadram a personagem em palco."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:04:55.566Z",
+      "updatedAt": "2026-11-15T19:04:59.568Z"
+    },
+    "startedAtUtc": "2026-11-15T19:04:52.6974193Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

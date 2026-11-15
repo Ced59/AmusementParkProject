@@ -1,0 +1,295 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-63-cent-volcans-map",
+    "ownerId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+    "itemName": "100% volcans",
+    "current": true,
+    "source": {
+      "key": "cent",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/10/100-pour-cent-volcans_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/100-pour-cent-volcans/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-cent-wide-1907.jpg",
+      "http": 200,
+      "bytes": 111223,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "20e5623cce8f9d640977e670f2050677d55ee6d49e2db0f7dca880cc8c818b04",
+      "accessedAtUtc": "2026-11-15T18:53:15.958407+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Native official photograph personally inspected. Seventy-two localized metadata fields personally authored and reviewed. Experiences wide file 2230170 bytes exceeds official960KiB limit; accepted native1200x630variant unchanged. Pitoufeu wide replaces same-exposure OG, 100% wide shows actual map/counter distinct from presenter portrait; no duplicate variant imported. No invented capture date or pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/10/100-pour-cent-volcans_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-cent-wide-1907.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-63-cent-volcans-map-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-63-cent-volcans-map-import-result.json"
+  },
+  "metadata": {
+    "description": "Des lignes en relief traversent les continents et les océans de la carte, près d’un échantillon rocheux posé au premier plan.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/10/100-pour-cent-volcans_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un planisphère à repères rouges et un comptoir peint d’éruptions composent l’espace de 100% volcans."
+      },
+      {
+        "languageCode": "en",
+        "value": "A world map with red markers and a counter painted with eruptions form the setting of 100% volcans."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Weltkarte mit roten Markierungen und ein mit Eruptionen bemalter Tresen bilden die Kulisse von 100% volcans."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een wereldkaart met rode markeringen en een toonbank beschilderd met uitbarstingen vormen het decor van 100% volcans."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un planisfero con indicatori rossi e un bancone dipinto con eruzioni compongono lo spazio di 100% volcans."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un mapamundi con marcadores rojos y un mostrador pintado con erupciones forman el espacio de 100% volcans."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Mapa świata z czerwonymi znacznikami i lada pomalowana w erupcje tworzą przestrzeń 100% volcans."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um mapa-múndi com marcadores vermelhos e um balcão pintado com erupções compõem o espaço de 100% volcans."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des lignes en relief traversent les continents et les océans de la carte, près d’un échantillon rocheux posé au premier plan."
+      },
+      {
+        "languageCode": "en",
+        "value": "Raised lines cross the map’s continents and oceans beside a rock sample in the foreground."
+      },
+      {
+        "languageCode": "de",
+        "value": "Erhabene Linien durchziehen die Kontinente und Ozeane der Karte; im Vordergrund liegt eine Gesteinsprobe."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Verhoogde lijnen lopen over de continenten en oceanen op de kaart, naast een gesteentemonster op de voorgrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Linee in rilievo attraversano continenti e oceani sulla carta, accanto a un campione di roccia in primo piano."
+      },
+      {
+        "languageCode": "es",
+        "value": "Líneas en relieve atraviesan los continentes y océanos del mapa, junto a una muestra de roca en primer plano."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wypukłe linie przecinają kontynenty i oceany na mapie, obok próbki skały na pierwszym planie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Linhas em relevo atravessam os continentes e oceanos do mapa, junto de uma amostra de rocha em primeiro plano."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "f1e809b6aa864d82a3cec643e624c7d9",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+      "path": "park_item/f1e809b6aa864d82a3cec643e624c7d9",
+      "description": "Des lignes en relief traversent les continents et les océans de la carte, près d’un échantillon rocheux posé au premier plan.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 111223,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/10/100-pour-cent-volcans_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": null,
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un planisphère à repères rouges et un comptoir peint d’éruptions composent l’espace de 100% volcans."
+        },
+        {
+          "languageCode": "en",
+          "value": "A world map with red markers and a counter painted with eruptions form the setting of 100% volcans."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Weltkarte mit roten Markierungen und ein mit Eruptionen bemalter Tresen bilden die Kulisse von 100% volcans."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een wereldkaart met rode markeringen en een toonbank beschilderd met uitbarstingen vormen het decor van 100% volcans."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un planisfero con indicatori rossi e un bancone dipinto con eruzioni compongono lo spazio di 100% volcans."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un mapamundi con marcadores rojos y un mostrador pintado con erupciones forman el espacio de 100% volcans."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mapa świata z czerwonymi znacznikami i lada pomalowana w erupcje tworzą przestrzeń 100% volcans."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um mapa-múndi com marcadores vermelhos e um balcão pintado com erupções compõem o espaço de 100% volcans."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des lignes en relief traversent les continents et les océans de la carte, près d’un échantillon rocheux posé au premier plan."
+        },
+        {
+          "languageCode": "en",
+          "value": "Raised lines cross the map’s continents and oceans beside a rock sample in the foreground."
+        },
+        {
+          "languageCode": "de",
+          "value": "Erhabene Linien durchziehen die Kontinente und Ozeane der Karte; im Vordergrund liegt eine Gesteinsprobe."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Verhoogde lijnen lopen over de continenten en oceanen op de kaart, naast een gesteentemonster op de voorgrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Linee in rilievo attraversano continenti e oceani sulla carta, accanto a un campione di roccia in primo piano."
+        },
+        {
+          "languageCode": "es",
+          "value": "Líneas en relieve atraviesan los continentes y océanos del mapa, junto a una muestra de roca en primer plano."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wypukłe linie przecinają kontynenty i oceany na mapie, obok próbki skały na pierwszym planie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Linhas em relevo atravessam os continentes e oceanos do mapa, junto de uma amostra de rocha em primeiro plano."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:09:58.827Z",
+      "updatedAt": "2026-11-15T19:10:02.506Z"
+    },
+    "startedAtUtc": "2026-11-15T19:09:56.9427641Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T19:10:05.6911791Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,285 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-53-namazu-kiosk",
+    "ownerId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+    "itemName": "Le Kiosque Namazu",
+    "current": true,
+    "source": {
+      "key": "kiosque",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Kiosque-namazu.png",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/food-kiosque-1847.png",
+      "http": 200,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "bytes": 727211,
+      "sha256": "93c94ee2e2b85709efaae4ea1249b8ea91c6f343613809c70f25c51c7d9d174f",
+      "accessedAtUtc": "2026-11-15T18:43:52.604797+00:00",
+      "localPixelTransformation": false,
+      "captureDate": null,
+      "sourcePage": "https://www.vulcania.com/animation/kiosque-namazu/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Real official source photograph personally viewed. Cafeteria page identifies dining area; background Brasserie des volcans sign is not inferred to be an alias or separate new place. Menu prices photographed are not current prices imported. No local pixel transformation or invented capture date. Seventy-two localized fields personally authored/reviewed."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Kiosque-namazu.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/food-kiosque-1847.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-53-namazu-kiosk-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-53-namazu-kiosk-import-result.json"
+  },
+  "metadata": {
+    "description": "Le cône de Vulcania se détache derrière les visiteurs, au-delà de la pelouse et des arbres bordant le kiosque.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Kiosque-namazu.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Pavillon orange du Kiosque Namazu avec son guichet ouvert, ses cartes et une machine à pop-corn."
+      },
+      {
+        "languageCode": "en",
+        "value": "Orange pavilion of Le Kiosque Namazu with its open serving hatch, menus and a popcorn machine."
+      },
+      {
+        "languageCode": "de",
+        "value": "Orangefarbener Pavillon des Kiosque Namazu mit offenem Ausgabefenster, Speisekarten und einer Popcornmaschine."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Oranje paviljoen van Le Kiosque Namazu met open uitgifteluik, menukaarten en een popcornmachine."
+      },
+      {
+        "languageCode": "it",
+        "value": "Padiglione arancione del Kiosque Namazu con sportello aperto, menu e macchina per popcorn."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pabellón naranja del Kiosque Namazu con ventanilla abierta, cartas y máquina de palomitas."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pomarańczowy pawilon Le Kiosque Namazu z otwartym oknem sprzedaży, menu i maszyną do popcornu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pavilhão cor de laranja do Kiosque Namazu com janela aberta, ementas e máquina de pipocas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le cône de Vulcania se détache derrière les visiteurs, au-delà de la pelouse et des arbres bordant le kiosque."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania’s cone rises behind the visitors beyond the lawn and trees beside the kiosk."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vulcanias Kegel erhebt sich hinter den Besuchern jenseits der Rasenfläche und der Bäume am Kiosk."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kegel van Vulcania rijst achter de bezoekers op, voorbij het grasveld en de bomen naast de kiosk."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il cono di Vulcania emerge dietro i visitatori, oltre il prato e gli alberi accanto al chiosco."
+      },
+      {
+        "languageCode": "es",
+        "value": "El cono de Vulcania destaca detrás de los visitantes, más allá del césped y los árboles junto al quiosco."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Stożek Vulcanii wznosi się za zwiedzającymi, ponad trawnikiem i drzewami obok kiosku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O cone de Vulcania destaca-se atrás dos visitantes, para lá do relvado e das árvores junto ao quiosque."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "fe86e0aecff547439fcd5469af81b307",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+      "path": "park_item/fe86e0aecff547439fcd5469af81b307",
+      "description": "Le cône de Vulcania se détache derrière les visiteurs, au-delà de la pelouse et des arbres bordant le kiosque.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 727211,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Kiosque-namazu.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Pavillon orange du Kiosque Namazu avec son guichet ouvert, ses cartes et une machine à pop-corn."
+        },
+        {
+          "languageCode": "en",
+          "value": "Orange pavilion of Le Kiosque Namazu with its open serving hatch, menus and a popcorn machine."
+        },
+        {
+          "languageCode": "de",
+          "value": "Orangefarbener Pavillon des Kiosque Namazu mit offenem Ausgabefenster, Speisekarten und einer Popcornmaschine."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Oranje paviljoen van Le Kiosque Namazu met open uitgifteluik, menukaarten en een popcornmachine."
+        },
+        {
+          "languageCode": "it",
+          "value": "Padiglione arancione del Kiosque Namazu con sportello aperto, menu e macchina per popcorn."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pabellón naranja del Kiosque Namazu con ventanilla abierta, cartas y máquina de palomitas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowy pawilon Le Kiosque Namazu z otwartym oknem sprzedaży, menu i maszyną do popcornu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pavilhão cor de laranja do Kiosque Namazu com janela aberta, ementas e máquina de pipocas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le cône de Vulcania se détache derrière les visiteurs, au-delà de la pelouse et des arbres bordant le kiosque."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania’s cone rises behind the visitors beyond the lawn and trees beside the kiosk."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcanias Kegel erhebt sich hinter den Besuchern jenseits der Rasenfläche und der Bäume am Kiosk."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kegel van Vulcania rijst achter de bezoekers op, voorbij het grasveld en de bomen naast de kiosk."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il cono di Vulcania emerge dietro i visitatori, oltre il prato e gli alberi accanto al chiosco."
+        },
+        {
+          "languageCode": "es",
+          "value": "El cono de Vulcania destaca detrás de los visitantes, más allá del césped y los árboles junto al quiosco."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Stożek Vulcanii wznosi się za zwiedzającymi, ponad trawnikiem i drzewami obok kiosku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O cone de Vulcania destaca-se atrás dos visitantes, para lá do relvado e das árvores junto ao quiosque."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:53:13.742Z",
+      "updatedAt": "2026-11-15T18:53:17.688Z"
+    },
+    "startedAtUtc": "2026-11-15T18:52:54.8682777Z",
+    "receivedAtUtc": "2026-11-15T18:53:20.7739619Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

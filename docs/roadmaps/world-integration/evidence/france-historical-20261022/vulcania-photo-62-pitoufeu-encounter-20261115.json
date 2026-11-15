@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-62-pitoufeu-encounter",
+    "ownerId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+    "itemName": "Danse de Pitoufeu",
+    "current": true,
+    "source": {
+      "key": "pitoufeu",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Pitoufeu-avec-ses-amis.png",
+      "sourcePage": "https://www.vulcania.com/animation/photo-avec-pitoufeu-et-ses-amis/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-pitoufeu-wide-1907.png",
+      "http": 200,
+      "bytes": 831391,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "9497fcf8c9bd2641cec3a7106758f6f577986f8ff77c1d97b5cbe4b79ae32bd6",
+      "accessedAtUtc": "2026-11-15T18:53:15.781088+00:00",
+      "captureDate": null,
+      "photographer": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence claimed.",
+    "qualification": "Native official photograph personally inspected. Seventy-two localized metadata fields personally authored and reviewed. Experiences wide file 2230170 bytes exceeds official960KiB limit; accepted native1200x630variant unchanged. Pitoufeu wide replaces same-exposure OG, 100% wide shows actual map/counter distinct from presenter portrait; no duplicate variant imported. No invented capture date or pixel transformation."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Pitoufeu-avec-ses-amis.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/show-pitoufeu-wide-1907.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-62-pitoufeu-encounter-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-62-pitoufeu-encounter-import-result.json"
+  },
+  "metadata": {
+    "description": "Le sourire noir et les mains rouges de la mascotte apparaissent au-dessus du groupe réuni pour la rencontre.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Pitoufeu-avec-ses-amis.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Pitoufeu, grand personnage rouge à flamme jaune, se penche vers les enfants devant une façade en bois."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pitoufeu, a large red character with a yellow flame, leans towards children in front of a wooden façade."
+      },
+      {
+        "languageCode": "de",
+        "value": "Pitoufeu, eine große rote Figur mit gelber Flamme, beugt sich vor einer Holzfassade zu Kindern hinunter."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Pitoufeu, een groot rood figuur met een gele vlam, buigt zich naar kinderen voor een houten gevel."
+      },
+      {
+        "languageCode": "it",
+        "value": "Pitoufeu, grande personaggio rosso con una fiamma gialla, si china verso i bambini davanti a una facciata di legno."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pitoufeu, gran personaje rojo con una llama amarilla, se inclina hacia los niños ante una fachada de madera."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pitoufeu, duża czerwona postać z żółtym płomieniem, pochyla się ku dzieciom przed drewnianą fasadą."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pitoufeu, grande personagem vermelha com uma chama amarela, inclina-se para as crianças diante de uma fachada de madeira."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le sourire noir et les mains rouges de la mascotte apparaissent au-dessus du groupe réuni pour la rencontre."
+      },
+      {
+        "languageCode": "en",
+        "value": "The mascot’s black smile and red hands appear above the group gathered for the encounter."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das schwarze Lächeln und die roten Hände des Maskottchens sind über der versammelten Gruppe zu sehen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De zwarte glimlach en rode handen van de mascotte zijn te zien boven de groep die voor de ontmoeting bijeenstaat."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il sorriso nero e le mani rosse della mascotte emergono sopra il gruppo riunito per l’incontro."
+      },
+      {
+        "languageCode": "es",
+        "value": "La sonrisa negra y las manos rojas de la mascota aparecen sobre el grupo reunido para el encuentro."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czarny uśmiech i czerwone dłonie maskotki widać ponad grupą zebraną na spotkanie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O sorriso preto e as mãos vermelhas da mascote aparecem acima do grupo reunido para o encontro."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "500e5290f94843918d5326c8b6f56547",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+      "path": "park_item/500e5290f94843918d5326c8b6f56547",
+      "description": "Le sourire noir et les mains rouges de la mascotte apparaissent au-dessus du groupe réuni pour la rencontre.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 831391,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Pitoufeu-avec-ses-amis.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Pitoufeu, grand personnage rouge à flamme jaune, se penche vers les enfants devant une façade en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pitoufeu, a large red character with a yellow flame, leans towards children in front of a wooden façade."
+        },
+        {
+          "languageCode": "de",
+          "value": "Pitoufeu, eine große rote Figur mit gelber Flamme, beugt sich vor einer Holzfassade zu Kindern hinunter."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Pitoufeu, een groot rood figuur met een gele vlam, buigt zich naar kinderen voor een houten gevel."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pitoufeu, grande personaggio rosso con una fiamma gialla, si china verso i bambini davanti a una facciata di legno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pitoufeu, gran personaje rojo con una llama amarilla, se inclina hacia los niños ante una fachada de madera."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pitoufeu, duża czerwona postać z żółtym płomieniem, pochyla się ku dzieciom przed drewnianą fasadą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pitoufeu, grande personagem vermelha com uma chama amarela, inclina-se para as crianças diante de uma fachada de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le sourire noir et les mains rouges de la mascotte apparaissent au-dessus du groupe réuni pour la rencontre."
+        },
+        {
+          "languageCode": "en",
+          "value": "The mascot’s black smile and red hands appear above the group gathered for the encounter."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das schwarze Lächeln und die roten Hände des Maskottchens sind über der versammelten Gruppe zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De zwarte glimlach en rode handen van de mascotte zijn te zien boven de groep die voor de ontmoeting bijeenstaat."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il sorriso nero e le mani rosse della mascotte emergono sopra il gruppo riunito per l’incontro."
+        },
+        {
+          "languageCode": "es",
+          "value": "La sonrisa negra y las manos rojas de la mascota aparecen sobre el grupo reunido para el encuentro."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czarny uśmiech i czerwone dłonie maskotki widać ponad grupą zebraną na spotkanie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O sorriso preto e as mãos vermelhas da mascote aparecem acima do grupo reunido para o encontro."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T19:09:48.445Z",
+      "updatedAt": "2026-11-15T19:09:51.955Z"
+    },
+    "startedAtUtc": "2026-11-15T19:09:18.3222520Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T19:09:55.1744214Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
