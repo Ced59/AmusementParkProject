@@ -13099,7 +13099,7 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T01:56:30.352Z",
+      "lastDataIntegrationAt": "2026-11-15T02:09:04.496Z",
       "integrationHistory": [
         {
           "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
@@ -13110,9 +13110,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-four-visible-settings-20261115.json",
           "auditEvidence": null,
           "summary": "Capbreton : Accro-bungy, Aquanimal, Manège Disney et Crêperie réécrits dans les huit langues sur photographies identifiées ; sources et identités conservées, audit global restant."
+        },
+        {
+          "eventId": "2d04e7f7-0623-4d19-8136-6d93a1638ca2",
+          "appliedAt": "2026-11-15T02:09:04.496Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-mine-safari-piste-20261115.json",
+          "auditEvidence": null,
+          "summary": "Train de la Mine, Parcours Safari et Piste des As :24 notices relues8langues ; précision2024 restaurée sans fauxjour. Intégration partielle, aucune publication nouvelle."
         }
       ],
-      "nextAction": "Poursuivre inventaire visuel daté, les six notices restantes, description parc/histoire, logo authentique et photos, puis horaires/tarifs et audit final. Aucun nouveau Facebook tant que l’annonce existante est Published.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

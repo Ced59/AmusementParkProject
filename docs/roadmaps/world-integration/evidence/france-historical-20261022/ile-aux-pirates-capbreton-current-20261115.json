@@ -3,7 +3,7 @@
   "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T01:59:05.231569+00:00",
+  "observedAtUtc": "2026-11-15T02:10:55.264879+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -56,7 +56,7 @@
   "counts": {
     "items": 10,
     "itemsPublic": 10,
-    "itemDescriptionsRewrittenEightLanguages": 4,
+    "itemDescriptionsRewrittenEightLanguages": 7,
     "images": 8,
     "newImages": 0,
     "historyEvents": 2
@@ -74,6 +74,19 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-four-visible-settings-20261115.json"
+    },
+    {
+      "operationId": "2d04e7f7-0623-4d19-8136-6d93a1638ca2",
+      "appliedAtUtc": "2026-11-15T02:09:04.4969353Z",
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-mine-safari-piste-20261115.json"
     }
   ],
   "sources": [
@@ -195,9 +208,9 @@
   "gaps": {
     "logo": "Le média courant 4bddcef62fb948b7a06bdaa39ba1d9ca est une photographie complète de façade Treasure Club, identique au média 2fe3f6e5d5d743c58820926f0165c5a8. Ce n’est pas un logo autonome. Ne pas valider le logo pour obtenir la note. Source/photo/IDs conservés, aucun retrait ni recadrage.",
     "wrongImageIdentity": "9713a59239f2474c8f54b01670c540c1 montre un gonflable pirate avec requin, non le safari à girafe/lion visible sur bf9bf846a468422caadfc102a55b7a0e. Rattachement et textes à corriger après qualification de l’inventaire.",
-    "legacyDescriptions": "Six notices encore génériques ou insuffisamment qualifiées : Espace de jeux, Parcours Safari, Piste des As, Pêche aux canards, Train de la Mine, Trampolino. Parc et histoire génériques également à revoir.",
+    "legacyDescriptions": "Trois notices héritées restent : Espace de jeux, Pêche aux canards, Trampolino. Sept autres réécrites huit langues ; précision du Train de la Mine corrigée :2024 et non1janvier. Parc et histoire à revoir.",
     "inventory": "Reportages primaires de fandemanèges 2013/2015/2016/2019 : boîte à rires L’Île aux Pirates itinérante présente l’été ; ferme et animaux électriques 2015, emplacement remplacé par stand sucré 2016 ; nouveaux gonflables, Happy Childhood et petit train 2019. Ces offres n’apparaissent pas dans les dix items. Qualifier alias et périodes avant création, ne pas supposer le petit train 2019 identique au Train de la Mine 2024. Espace de jeux legacy pourrait être un doublon générique des équipements ou l’arcade Treasure Club : ne pas supprimer ou renommer sans preuve.",
-    "history": "Reportage filmé le 10 juillet 2013 prouve une présence antérieure à la borne actuelle 2018 ; aucune date d’ouverture exacte prouvée. Historique à corriger sur sources.",
+    "history": "Archives officielles Capbreton2004 et2009 récupérées : présence prouvée dèsaoût2004, ouverture exacte inconnue. PDF municipal2018 OCRpage43 : mention incidente dans un débat esthétique sur les installations du club de plongée, pas création du parc. Historique actuel surestime la portée de cette mention et doit être corrigé.",
     "photos": "Turbo Kermis : originaux porteurs de filigranes, consultés pour identification uniquement. Captain Coaster Richard L. : original accessible via navigation publique Chromium après403urllib ; watermark visible, non importé. Autres originaux à inspecter.",
     "officialSite": "www.ileauxpirates.com redirige vers Facebook login. Les cinq images de cette page sont génériques et non utilisables ; aucune connexion ni contournement.",
     "hoursPricing": "À rapprocher de sources actuelles après qualification ; aucun export complet effectué."
@@ -209,6 +222,25 @@
     "url": "https://www.facebook.com/1285475681307050/posts/122121006345424431",
     "newAnnouncementSent": false
   },
-  "workingStateSha256": "4c2f0bd599053e049e744431b6d459d853a8ff4b47f659f17c177deeb96c0331",
-  "nextAction": "Poursuivre inventaire visuel daté, les six notices restantes, description parc/histoire, logo authentique et photos, puis horaires/tarifs et audit final. Aucun nouveau Facebook tant que l’annonce existante est Published."
+  "workingStateSha256": "3880a151ad746711a9de3f0b3f098256605bbe6481762a561d8972aad0d2f243",
+  "nextAction": "Poursuivre inventaire visuel daté, les six notices restantes, description parc/histoire, logo authentique et photos, puis horaires/tarifs et audit final. Aucun nouveau Facebook tant que l’annonce existante est Published.",
+  "newResearch": {
+    "official2004": "https://web.archive.org/web/20040825094812id_/http://www.ileauxpirates.com:80/iframe/parc.htm",
+    "official2009": "https://web.archive.org/web/20090216175804id_/http://www.ileauxpirates.com:80/le-parc",
+    "findings": [
+      "Aire de jeux gratuite distincte explicitement nommée2004 : ne pas fusionner arbitrairement avec arcade.",
+      "Red’s Club nommé2004/2009 ; Treasure Club sur photos plus récentes, continuité à confirmer.",
+      "La Paillote ancien stand nommé2004/2009 ; chalet nouveau2016, identité précise à qualifier.",
+      "Monde de la mer/Aventure de la jungle gonflables2004, Safari2009, Pirates Aventures parcours avec harnais2009.",
+      "PhotosTripadvisor natives inspectées montrent boîte à rires, Aquabuller et tour de jeux pirate, Happy Childhood et véhicules animaux. Aucun import effectué.",
+      "Illustration officielle accueil.jpg2011 identifie Capbreton mais est une composition promotionnelle complète, pas logo actuel autonome."
+    ],
+    "files": [
+      "archive-pages-index.json",
+      "official-archive-2004.html",
+      "official-archive-2009.html",
+      "archive-ta-photo-downloads.json",
+      "council-ocr/43.txt"
+    ]
+  }
 }

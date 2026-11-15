@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "e2cf88fc96ba007f0c5d94a496287a9db6e399a6739ae150c209a91476f8f87a",
+  "review": "24 notices rédigées et relues personnellement huit langues. Preview puis Apply identiques : trois descriptions et précision annuelle2024 du Train de la Mine, supprimant le faux1janvier2024. Aucun changement de visibilité. Sources OT/CaptainCoaster/TurboKermis et photographies originales examinées. Corpus global et inventaire encore incomplets.",
+  "result": {
+    "operationId": "2d04e7f7-0623-4d19-8136-6d93a1638ca2",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:09:04.4969343Z",
+    "appliedAtUtc": "2026-11-15T02:09:04.4969353Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9cc8f497-cd9d-4d25-868f-e0a249a296a4",
+        "entityKey": "9cc8f497-cd9d-4d25-868f-e0a249a296a4",
+        "displayName": "Train de la Mine",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine kleine Mine am Kai</h2><p>Train de la Mine bringt ein Goldgräberabenteuer in die farbenfrohe Welt von LʼÎle aux Pirates. Zug und Minenkulisse erzählen in diesem Park für junge Familien eine neue Geschichte.</p><p>Die kompakte Strecke führt ihre Kurven in Sichtweite der anderen Spiele und des Hafens entlang. So können Begleitpersonen die Fahrt verfolgen, während jeder vorbeifahrende Zug zu einer kleinen lebendigen Szene im Park wird.</p><h2>Die Neuheit von 2024</h2><p>Seit 2024 besitzt der Ort mit Train de la Mine eine Familienachterbahn und eine Silhouette, die sich deutlich von den benachbarten Fahrgeschäften, Hüpfanlagen und Becken abhebt. Die Bahn markiert einen jüngeren Entwicklungsschritt dieses Saisonangebots am Hafen.</p>",
+            "newValue": "<h2>Rote Grubenwagen am Hafen</h2><p>Train de la Mine verläuft hinter einem Holzzaun an der Promenade. Die roten Wagen sind in Bretteroptik gestaltet; graue Schienen heben sich vor Palmen und den Dächern kleiner Nachbargebäude ab. Das Bergwerksmotiv prägen hier die Wagen selbst, unter freiem Himmel am Hafen.</p><p>Die Achterbahn kam 2024 nach Capbreton.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A small mine by the quays</h2><p>Train de la Mine brings a gold-seeking adventure among the colours of LʼÎle aux Pirates. Its train and mining scenery offer a new story to follow in this park designed for young families.</p><p>The compact course unfolds its curves within sight of the other games and the harbour. That proximity lets companions follow the journey and turns every passing train into a lively little scene within the park.</p><h2>The 2024 addition</h2><p>Added in 2024, Train de la Mine gave the venue its family roller coaster and a silhouette clearly different from the nearby rides, inflatables and pools. It marks a recent stage in the evolution of this seasonal harbour attraction.</p>",
+            "newValue": "<h2>Red mine cars beside the harbour</h2><p>Train de la Mine runs beside the promenade behind a wooden fence. Its red cars imitate assembled planks, while grey rails stand out against palms and the roofs of neighbouring small buildings. Here the mining theme comes from the cars themselves, out in the open beneath the harbour sky.</p><p>The roller coaster arrived in Capbreton in 2024.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una pequeña mina junto al muelle</h2><p>Train de la Mine lleva una aventura de buscadores de oro a los colores de LʼÎle aux Pirates. Su convoy y su decorado minero ofrecen una nueva historia en este parque pensado para familias jóvenes.</p><p>El recorrido compacto traza sus curvas a la vista de los demás juegos y del puerto. Esa cercanía permite acompañar el viaje con la mirada y convierte cada paso del tren en una pequeña escena animada.</p><h2>La novedad de 2024</h2><p>Incorporado en 2024, Train de la Mine dio al lugar su montaña rusa familiar y una silueta claramente distinta de los carruseles, hinchables y estanques cercanos. Marca una etapa reciente en la evolución de este espacio estacional del puerto.</p>",
+            "newValue": "<h2>Vagonetas rojas junto al puerto</h2><p>El Train de la Mine discurre junto al paseo, detrás de una valla de madera. Sus vagonetas rojas imitan tablas ensambladas; los raíles grises destacan ante las palmeras y los tejados de los pequeños edificios vecinos. Aquí, el tema minero se concentra en las propias vagonetas, al aire libre bajo el cielo del puerto.</p><p>La montaña rusa llegó a Capbreton en 2024.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une petite mine sur les quais</h2><p>Train de la Mine installe une aventure de chercheurs dʼor au milieu des couleurs de LʼÎle aux Pirates. Son convoi et son décor minier donnent une nouvelle histoire à suivre dans ce parc tourné vers les jeunes familles.</p><p>Le parcours compact déroule ses courbes à portée de regard des autres jeux et du port. Cette proximité laisse les accompagnants suivre le voyage et fait de chaque passage du train une petite scène vivante dans le parc.</p><h2>La nouveauté de 2024</h2><p>Arrivé en 2024, Train de la Mine a donné au site sa montagne russe familiale et une silhouette immédiatement différente des manèges, jeux gonflables et bassins voisins. Il marque une étape récente dans lʼévolution de cette adresse saisonnière du port.</p>",
+            "newValue": "<h2>Des wagonnets rouges au bord du port</h2><p>Le Train de la Mine longe la promenade derrière une clôture de bois. Ses wagonnets rouges imitent des planches assemblées ; les rails gris se détachent devant les palmiers et les toitures des petits bâtiments voisins. Le décor minier tient ici aux wagonnets, en plein air, avec le ciel du port pour horizon.</p><p>La montagne russe arrive à Capbreton en 2024.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una piccola miniera sul molo</h2><p>Train de la Mine porta unʼavventura da cercatori dʼoro tra i colori di LʼÎle aux Pirates. Il convoglio e lo scenario minerario offrono una nuova storia in questo parco rivolto alle giovani famiglie.</p><p>Il percorso compatto disegna le sue curve in vista degli altri giochi e del porto. Questa vicinanza permette agli accompagnatori di seguire il viaggio e trasforma ogni passaggio del treno in una piccola scena animata.</p><h2>La novità del 2024</h2><p>Arrivato nel 2024, Train de la Mine ha dato al luogo una montagna russa familiare e una sagoma ben diversa dalle giostre, dai gonfiabili e dalle vasche vicine. Segna una tappa recente nellʼevoluzione di questa attrazione stagionale del porto.</p>",
+            "newValue": "<h2>Vagoncini rossi accanto al porto</h2><p>Il Train de la Mine costeggia la passeggiata dietro una recinzione di legno. I vagoncini rossi imitano tavole assemblate, mentre le rotaie grigie si stagliano davanti alle palme e ai tetti dei piccoli edifici vicini. Il tema minerario è affidato ai vagoncini stessi, all’aperto sotto il cielo del porto.</p><p>Le montagne russe sono arrivate a Capbreton nel 2024.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een kleine mijn aan de kade</h2><p>Train de la Mine brengt een goudzoekersavontuur tussen de kleuren van LʼÎle aux Pirates. De trein en mijnbouwdecoratie voegen een nieuw verhaal toe aan dit park voor jonge gezinnen.</p><p>Het compacte parcours legt zijn bochten af in het zicht van de andere spellen en de haven. Begeleiders kunnen de rit daardoor volgen en elke passage van de trein wordt een levendig tafereel in het park.</p><h2>De nieuwigheid van 2024</h2><p>Sinds 2024 heeft de plek met Train de la Mine een familieachtbaan en een silhouet dat duidelijk verschilt van de omliggende molens, springkussens en bassins. De baan markeert een recente stap in de ontwikkeling van deze seizoensplek aan de haven.</p>",
+            "newValue": "<h2>Rode mijnwagentjes aan de haven</h2><p>Train de la Mine loopt achter een houten hek langs de promenade. De rode wagentjes lijken van planken gemaakt; grijze rails steken af tegen palmen en de daken van kleine gebouwen ernaast. Het mijnthema zit hier in de wagentjes zelf, in de openlucht onder de hemel boven de haven.</p><p>De achtbaan kwam in 2024 naar Capbreton.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Mała kopalnia przy nabrzeżu</h2><p>Train de la Mine wnosi przygodę poszukiwaczy złota między barwy LʼÎle aux Pirates. Pociąg i górnicza sceneria dodają nową opowieść do parku przeznaczonego dla rodzin z młodszymi dziećmi.</p><p>Kompaktowa trasa prowadzi zakrętami w zasięgu wzroku pozostałych zabaw i portu. Dzięki temu bliscy mogą śledzić przejazd, a każdy powrót pociągu staje się małą żywą sceną w parku.</p><h2>Nowość z 2024 roku</h2><p>Train de la Mine pojawił się w 2024 roku, dając temu miejscu rodzinną kolejkę górską i sylwetkę wyraźnie inną od pobliskich karuzel, dmuchańców i basenów. To niedawny etap rozwoju sezonowej atrakcji portowej.</p>",
+            "newValue": "<h2>Czerwone wagoniki przy porcie</h2><p>Train de la Mine biegnie wzdłuż promenady, za drewnianym ogrodzeniem. Czerwone wagoniki przypominają skrzynie z desek, a szare szyny odcinają się na tle palm i dachów niewielkich sąsiednich budynków. Górniczy motyw tworzą tu same wagoniki, pod otwartym niebem nad portem.</p><p>Kolejka górska pojawiła się w Capbreton w 2024 roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma pequena mina junto ao cais</h2><p>Train de la Mine traz uma aventura de garimpeiros para o ambiente colorido da LʼÎle aux Pirates. O comboio e o cenário mineiro oferecem uma nova história neste parque pensado para famílias jovens.</p><p>O percurso compacto desenha as suas curvas à vista dos outros jogos e do porto. Essa proximidade permite acompanhar a viagem e transforma cada passagem do comboio numa pequena cena animada no parque.</p><h2>A novidade de 2024</h2><p>Chegado em 2024, Train de la Mine deu ao espaço uma montanha-russa familiar e uma silhueta claramente distinta dos carrosséis, insufláveis e tanques próximos. Marca uma etapa recente na evolução desta atração sazonal do porto.</p>",
+            "newValue": "<h2>Vagonetas vermelhas junto ao porto</h2><p>O Train de la Mine acompanha o passeio atrás de uma vedação de madeira. As vagonetas vermelhas imitam tábuas unidas; os carris cinzentos destacam-se diante das palmeiras e dos telhados dos pequenos edifícios vizinhos. O tema mineiro está nas próprias vagonetas, ao ar livre sob o céu do porto.</p><p>A montanha-russa chegou a Capbreton em 2024.</p>"
+          },
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2024-01-01",
+            "newValue": null
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2024"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1675eb76-d7eb-4c34-8734-2a67be0a7aa5",
+        "entityKey": "1675eb76-d7eb-4c34-8734-2a67be0a7aa5",
+        "displayName": "Parcours Safari",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Eine aufblasbare Expedition</h2><p>Parcours Safari verwandelt eine aufblasbare Anlage in ein Entdeckungsfeld. Palmen, Tiere und farbenfrohe Durchgänge bilden eine Welt, in der jeder Schritt neue Umwege und Funde bringt.</p><p>Die Kulisse lädt zum Klettern, Umgehen und Durchqueren ein, statt einer mechanischen Bewegung passiv zu folgen. Kinder bestimmen das Tempo selbst, zwischen schnellen Abschnitten und Pausen bei den Safarifiguren.</p><h2>Abenteuer durch Bewegung</h2><p>Im Park schafft Parcours Safari einen selbstbestimmten Abenteuerbereich aus Eigeninitiative und Fantasie. Das Tiermotiv hebt sich von den Piratenfassaden ab und führt zugleich die Freude an Entdeckerwelten fort.</p>",
+            "newValue": "<h2>Giraffen und Löwen hinter den Masten</h2><p>Große gelbe Giraffen und Löwen mit braunen Mähnen bestimmen die Silhouette von Parcours Safari. Die aufblasbaren Tiere ragen hinter den hohen Masten von Accro-bungy auf, wo sich echte Palmen mit bunten Kulissen mischen.</p><p>Safari bringt eine Tierwelt im Zeichentrickstil in die Nachbarschaft der schwarzen Flaggen. Die runden Tierköpfe bilden einen Kontrast zu den Piraten und gemalten Schiffen der anderen Anlagen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>An inflatable expedition</h2><p>Parcours Safari turns an inflatable structure into a field of exploration. Palm trees, animals and colourful passages create a world where moving forward becomes a succession of detours and discoveries.</p><p>The setting invites children to climb, go around and cross rather than passively follow a mechanical movement. They set the pace themselves, alternating bursts of speed with pauses beside the safari figures.</p><h2>Adventure through movement</h2><p>Within the park, Parcours Safari provides a self-directed adventure area built on initiative and imagination. Its animal theme contrasts with the pirate façades while extending the venueʼs taste for worlds of exploration.</p>",
+            "newValue": "<h2>Giraffes and lions behind the masts</h2><p>Tall yellow giraffes and brown-maned lions give Parcours Safari its outline. These inflatable animals rise behind Accro-bungy’s tall masts, in the part of the park where real palms mingle with colourful scenery.</p><p>Safari brings a cartoon menagerie to the setting of black flags. Its rounded animal heads contrast with the pirates and painted ships of the other attractions.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una expedición hinchable</h2><p>Parcours Safari convierte una estructura hinchable en terreno de exploración. Palmeras, animales y pasos de colores crean un mundo donde avanzar se transforma en una sucesión de desvíos y hallazgos.</p><p>El decorado invita a trepar, rodear y atravesar en vez de seguir pasivamente un movimiento mecánico. Los niños marcan el ritmo, alternando aceleraciones y pausas ante las figuras del safari.</p><h2>La aventura a través del movimiento</h2><p>Dentro del parque, Parcours Safari aporta una zona de aventura autónoma basada en la iniciativa y la imaginación. Su tema animal contrasta con las fachadas piratas y prolonga el gusto del lugar por los mundos de exploración.</p>",
+            "newValue": "<h2>Jirafas y leones detrás de los mástiles</h2><p>Grandes jirafas amarillas y leones de melena marrón dibujan la silueta del Parcours Safari. Estos animales hinchables asoman detrás de los altos mástiles de Accro-bungy, en la zona del parque donde las palmeras reales se mezclan con los decorados de colores.</p><p>Safari aporta una colección de animales de dibujos animados junto a las banderas negras. Sus cabezas redondeadas contrastan con los piratas y los barcos pintados de las otras instalaciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une expédition gonflable</h2><p>Parcours Safari transforme une structure gonflable en terrain dʼexploration. Palmiers, animaux et passages colorés dessinent un univers où avancer devient une succession de détours et de découvertes.</p><p>Le décor invite à grimper, contourner et traverser plutôt quʼà suivre passivement un mouvement mécanique. Les enfants donnent eux-mêmes son rythme au parcours, entre accélérations et pauses devant les figures du safari.</p><h2>Lʼaventure par le mouvement</h2><p>Au sein du parc, Parcours Safari apporte une aire dʼaventure autonome, fondée sur lʼinitiative et lʼimaginaire. Son thème animalier tranche avec les façades pirates tout en prolongeant le goût du lieu pour les mondes dʼexploration.</p>",
+            "newValue": "<h2>Girafes et lions derrière les mâts</h2><p>De grandes girafes jaunes et des lions à crinière brune donnent au Parcours Safari sa silhouette. Ces animaux gonflables apparaissent derrière les hauts mâts de l’Accro-bungy, dans la partie du parc où les palmiers réels se mêlent aux décors colorés.</p><p>Le Safari apporte une ménagerie de dessin animé au voisinage des pavillons noirs. Ses têtes animales arrondies contrastent avec les pirates et les bateaux peints des autres installations.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una spedizione gonfiabile</h2><p>Parcours Safari trasforma una struttura gonfiabile in un terreno di esplorazione. Palme, animali e passaggi colorati creano un mondo in cui avanzare diventa una serie di deviazioni e scoperte.</p><p>Lʼambientazione invita ad arrampicarsi, aggirare e attraversare invece di seguire passivamente un movimento meccanico. I bambini dettano il ritmo, alternando accelerazioni e soste davanti alle figure del safari.</p><h2>Lʼavventura attraverso il movimento</h2><p>Nel parco, Parcours Safari offre unʼarea dʼavventura autonoma fondata su iniziativa e immaginazione. Il tema animale contrasta con le facciate piratesche e continua il gusto del luogo per i mondi da esplorare.</p>",
+            "newValue": "<h2>Giraffe e leoni dietro i pali</h2><p>Grandi giraffe gialle e leoni dalla criniera marrone delineano la sagoma del Parcours Safari. Questi animali gonfiabili spuntano dietro gli alti pali dell’Accro-bungy, nella parte del parco dove le palme vere si mescolano alle scenografie colorate.</p><p>Safari porta un serraglio da cartone animato accanto alle bandiere nere. Le teste arrotondate degli animali contrastano con i pirati e le navi dipinte delle altre attrazioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een opblaasbare expeditie</h2><p>Parcours Safari verandert een opblaasbare constructie in een ontdekkingsterrein. Palmen, dieren en kleurrijke doorgangen vormen een wereld waarin vooruitgaan uit omwegen en vondsten bestaat.</p><p>Het decor nodigt uit tot klimmen, omwegen en doorgangen in plaats van passief een mechanische beweging te volgen. Kinderen bepalen zelf het tempo, met versnellingen en pauzes bij de safarifiguren.</p><h2>Avontuur door beweging</h2><p>In het park vormt Parcours Safari een zelfstandige avonturenzone vol initiatief en verbeelding. Het dierenthema contrasteert met de piratengevels en zet tegelijk de liefde voor ontdekkingswerelden voort.</p>",
+            "newValue": "<h2>Giraffen en leeuwen achter de masten</h2><p>Grote gele giraffen en leeuwen met bruine manen bepalen het silhouet van Parcours Safari. De opblaasbare dieren staan achter de hoge masten van Accro-bungy, waar echte palmen tussen de kleurrijke decors groeien.</p><p>Safari brengt een verzameling tekenfilmdieren naar de omgeving van de zwarte vlaggen. De ronde dierenkoppen contrasteren met de piraten en geschilderde schepen van de andere attracties.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Dmuchana wyprawa</h2><p>Parcours Safari zmienia dmuchaną konstrukcję w teren wyprawy. Palmy, zwierzęta i barwne przejścia tworzą świat, w którym posuwanie się naprzód składa się z zakrętów i odkryć.</p><p>Sceneria zachęca do wspinania, obchodzenia i przechodzenia, zamiast biernego podążania za ruchem urządzenia. Dzieci same nadają tempo, przeplatając przyspieszenia z postojami przy figurach safari.</p><h2>Przygoda poprzez ruch</h2><p>W parku Parcours Safari tworzy samodzielną strefę przygody opartą na inicjatywie i wyobraźni. Motyw zwierząt kontrastuje z pirackimi fasadami, a zarazem rozwija upodobanie miejsca do światów odkrywania.</p>",
+            "newValue": "<h2>Żyrafy i lwy za masztami</h2><p>Wielkie żółte żyrafy i lwy z brązowymi grzywami nadają kształt atrakcji Parcours Safari. Dmuchane zwierzęta wznoszą się za wysokimi masztami Accro-bungy, w części parku, gdzie prawdziwe palmy mieszają się z kolorowymi dekoracjami.</p><p>Safari wnosi kreskówkowy zwierzyniec w sąsiedztwo czarnych bander. Zaokrąglone głowy zwierząt kontrastują z piratami i malowanymi statkami pozostałych atrakcji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma expedição insuflável</h2><p>O Parcours Safari transforma uma estrutura insuflável num terreno de exploração. Palmeiras, animais e passagens coloridas criam um mundo onde avançar se torna uma sucessão de desvios e descobertas.</p><p>O cenário convida a trepar, contornar e atravessar em vez de seguir passivamente um movimento mecânico. As crianças definem o ritmo, alternando acelerações e pausas junto das figuras do safari.</p><h2>A aventura através do movimento</h2><p>No parque, o Parcours Safari oferece uma zona de aventura autónoma baseada na iniciativa e na imaginação. O tema animal contrasta com as fachadas piratas e prolonga o gosto do lugar por mundos de exploração.</p>",
+            "newValue": "<h2>Girafas e leões atrás dos mastros</h2><p>Grandes girafas amarelas e leões de juba castanha desenham a silhueta do Parcours Safari. Estes animais insufláveis surgem atrás dos altos mastros do Accro-bungy, na parte do parque onde as palmeiras verdadeiras se misturam com os cenários coloridos.</p><p>Safari traz um conjunto de animais de desenhos animados para junto das bandeiras negras. As cabeças arredondadas contrastam com os piratas e os barcos pintados das outras instalações.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+        "entityKey": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+        "displayName": "Piste des As",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein Rennen im Kleinformat</h2><p>Piste des As überträgt die Welt des Rennsports auf eine Strecke für junge Fahrer. Autos und Motorräder werden zu Fahrzeugen eines Spiels, bei dem der Kurs ebenso zählt wie das Gefühl am Steuer.</p><p>Wettbewerbsnahe Silhouetten geben der Strecke Persönlichkeit, ohne das Tempo großer Rennkurse anzustreben. Im Mittelpunkt stehen Nachahmung, Lenkbewegung und das Gefühl einer eigenen Linie.</p><h2>Der Geist junger Fahrer</h2><p>Im Angebot des Parks hebt sich Piste des As durch die aktive Rolle der Kinder ab. Die Welt aus Start, Kurve und Ziel ergänzt Karussells und aufblasbare Spielbereiche.</p>",
+            "newValue": "<h2>Die Piste am Piratenversteck</h2><p>Auf der Piste des As fahren kleine rote Autos und bunte Motorräder durch eine graue Felskulisse. Der 2016 hinzugefügte Bogen ist mit Laub geschmückt; Fässer, kleine Kanonen und eine Truhe mit der Aufschrift „Repaire de pirates“ setzen die Szenerie entlang der Piste fort.</p><p>Ein Holzzaun trennt das kleine Versteck vom Hafenrand. Hinter den Palmen und Miniaturfahrzeugen bleibt die Pont Notre-Dame sichtbar, nur wenige Schritte von den anderen Spielen der L’Île aux Pirates entfernt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A race in miniature</h2><p>Piste des As translates racing imagery into a circuit for young drivers. Cars and motorbikes become the stars of a game where the course matters as much as the pleasure of taking the controls.</p><p>Competition-inspired silhouettes give the course its personality without seeking the speed of a full-sized track. The attraction instead builds on imitation, steering gestures and the feeling of following oneʼs own line.</p><h2>The spirit of young drivers</h2><p>Within the parkʼs collection, Piste des As stands out through the active role it gives children. Its world of starts, bends and finishes complements the circular rides and inflatable play areas.</p>",
+            "newValue": "<h2>A track through a pirate hideout</h2><p>On Piste des As, little red cars and brightly coloured motorbikes pass through a setting of grey rocks. Foliage covers the arch added in 2016; barrels, little cannons and a chest labelled “Repaire de pirates” extend the scenery along the track.</p><p>A wooden palisade separates this little hideout from the harbour edge. Pont Notre-Dame remains visible behind the palms and miniature vehicles, a few steps from the other games at L’Île aux Pirates.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Una carrera en miniatura</h2><p>Piste des As traslada el imaginario de las carreras a un circuito para jóvenes pilotos. Coches y motos se convierten en protagonistas de un juego donde el trazado importa tanto como ponerse a los mandos.</p><p>Las siluetas de competición dan personalidad al recorrido sin buscar la velocidad de los grandes circuitos. La atracción se apoya en la imitación, el gesto de conducir y la sensación de seguir una trayectoria propia.</p><h2>El espíritu de los pequeños pilotos</h2><p>Dentro de la colección del parque, Piste des As destaca por el papel activo que deja a los niños. Su mundo de salidas, curvas y llegadas completa las atracciones circulares y los juegos hinchables.</p>",
+            "newValue": "<h2>La pista y su guarida pirata</h2><p>En la Piste des As, los pequeños coches rojos y las motos de vivos colores atraviesan un decorado de rocas grises. El arco añadido en 2016 está adornado con follaje; barriles, pequeños cañones y un cofre con la inscripción « Repaire de pirates » prolongan el escenario a lo largo de la pista.</p><p>Una empalizada de madera separa esta pequeña guarida del borde del puerto. El Pont Notre-Dame sigue visible detrás de las palmeras y los vehículos en miniatura, a pocos pasos de los otros juegos de L’Île aux Pirates.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une course en miniature</h2><p>La Piste des As transpose lʼimaginaire de la course dans un circuit pour jeunes pilotes. Voitures et motos deviennent les montures dʼun jeu où le tracé compte autant que le plaisir de prendre place aux commandes.</p><p>Les silhouettes de compétition donnent au parcours sa personnalité sans chercher la vitesse des grands circuits. Lʼattraction joue plutôt sur lʼimitation, le geste de conduite et le sentiment de suivre sa propre trajectoire.</p><h2>Lʼesprit des petits pilotes</h2><p>Dans la collection du parc, la Piste des As se distingue par ce rôle actif laissé aux enfants. Son univers de départ, de virage et dʼarrivée complète les manèges circulaires et les jeux gonflables.</p>",
+            "newValue": "<h2>La piste et son repaire de pirates</h2><p>Sur la Piste des As, les petites voitures rouges et les motos aux couleurs vives traversent un décor de rochers gris. L’arche ajoutée en 2016 est garnie de feuillage ; des tonneaux, de petits canons et un coffre portant l’inscription « Repaire de pirates » prolongent le décor le long de la piste.</p><p>Une palissade de bois sépare ce petit repaire du bord du port. Le pont Notre-Dame reste visible derrière les palmiers et les véhicules miniatures, à quelques pas des autres jeux de L’Île aux Pirates.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Una corsa in miniatura</h2><p>Piste des As porta lʼimmaginario delle corse su un circuito per giovani piloti. Auto e moto diventano i mezzi di un gioco in cui il percorso conta quanto il piacere di mettersi ai comandi.</p><p>Le sagome da competizione danno personalità al percorso senza cercare la velocità dei grandi circuiti. Lʼattrazione punta invece sullʼimitazione, sul gesto di guida e sulla sensazione di seguire una traiettoria propria.</p><h2>Lo spirito dei piccoli piloti</h2><p>Nella raccolta del parco, Piste des As si distingue per il ruolo attivo affidato ai bambini. Il suo mondo di partenze, curve e arrivi completa le giostre circolari e i giochi gonfiabili.</p>",
+            "newValue": "<h2>La pista nel covo dei pirati</h2><p>Sulla Piste des As, piccole auto rosse e moto dai colori vivaci attraversano una scenografia di rocce grigie. L’arco aggiunto nel 2016 è ornato di foglie; botti, piccoli cannoni e un forziere con la scritta « Repaire de pirates » prolungano il decorato lungo la pista.</p><p>Una palizzata di legno separa questo piccolo covo dal porto. Il Pont Notre-Dame rimane visibile dietro le palme e i veicoli in miniatura, a pochi passi dagli altri giochi dell’Île aux Pirates.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een race in het klein</h2><p>Piste des As vertaalt de racesfeer naar een circuit voor jonge bestuurders. Autoʼs en motoren worden de voertuigen van een spel waarin het parcours even belangrijk is als zelf aan het stuur zitten.</p><p>De wedstrijdachtige vormen geven het parcours karakter zonder de snelheid van een groot circuit na te streven. De attractie draait om nabootsing, sturen en het gevoel een eigen lijn te volgen.</p><h2>De geest van jonge bestuurders</h2><p>Binnen het parkaanbod onderscheidt Piste des As zich door de actieve rol van kinderen. De wereld van start, bocht en finish vult de ronde attracties en opblaasspellen aan.</p>",
+            "newValue": "<h2>De baan bij het piratenhol</h2><p>Op Piste des As rijden kleine rode auto’s en felgekleurde motorfietsjes door een decor van grijze rotsen. De boog die in 2016 werd toegevoegd is met bladeren versierd; tonnen, kleine kanonnen en een kist met het opschrift “Repaire de pirates” zetten het decor langs de baan voort.</p><p>Een houten schutting scheidt dit kleine piratenhol van de havenkant. Achter de palmen en miniatuurvoertuigen blijft de Pont Notre-Dame zichtbaar, op enkele passen van de andere spellen van L’Île aux Pirates.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Wyścig w miniaturze</h2><p>Piste des As przenosi wyobrażenie wyścigu na tor dla młodych kierowców. Samochody i motocykle stają się pojazdami zabawy, w której trasa liczy się tak samo jak zajęcie miejsca za sterami.</p><p>Wyścigowe sylwetki nadają trasie charakter, nie dążąc do prędkości dużych torów. Atrakcja opiera się na naśladowaniu, ruchu kierownicą i poczuciu prowadzenia własnej linii.</p><h2>Duch młodych kierowców</h2><p>W ofercie parku Piste des As wyróżnia się aktywną rolą dzieci. Świat startów, zakrętów i mety uzupełnia karuzele oraz dmuchane strefy zabawy.</p>",
+            "newValue": "<h2>Tor przy pirackiej kryjówce</h2><p>Na Piste des As małe czerwone samochody i kolorowe motocykle przejeżdżają przez scenerię szarych skał. Dodany w 2016 roku łuk zdobią liście; beczki, małe armaty i skrzynia z napisem „Repaire de pirates” dopełniają dekoracje wzdłuż toru.</p><p>Drewniana palisada oddziela tę małą kryjówkę od brzegu portu. Za palmami i miniaturowymi pojazdami wciąż widać Pont Notre-Dame, kilka kroków od pozostałych gier L’Île aux Pirates.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma corrida em miniatura</h2><p>A Piste des As transporta o imaginário das corridas para um circuito de jovens pilotos. Carros e motas tornam-se protagonistas de um jogo em que o traçado conta tanto como o prazer de assumir os comandos.</p><p>As silhuetas de competição dão personalidade ao percurso sem procurar a velocidade dos grandes circuitos. A atração apoia-se na imitação, no gesto de conduzir e na sensação de seguir uma trajetória própria.</p><h2>O espírito dos pequenos pilotos</h2><p>Na coleção do parque, a Piste des As distingue-se pelo papel ativo dado às crianças. O seu universo de partidas, curvas e chegadas completa as diversões circulares e os jogos insufláveis.</p>",
+            "newValue": "<h2>A pista e o esconderijo dos piratas</h2><p>Na Piste des As, pequenos carros vermelhos e motas de cores vivas atravessam um cenário de rochas cinzentas. O arco acrescentado em 2016 está enfeitado com folhagem; barris, pequenos canhões e um baú com a inscrição « Repaire de pirates » prolongam o cenário ao longo da pista.</p><p>Uma paliçada de madeira separa este pequeno esconderijo da margem do porto. A Pont Notre-Dame continua visível atrás das palmeiras e dos veículos em miniatura, a poucos passos dos outros jogos da L’Île aux Pirates.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false
+}
