@@ -5037,20 +5037,51 @@
         "d39bbdc7-76ad-43a2-a403-98b98b66f7c0"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:25:37.096Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Saison 2026 annoncée terminée le 27 septembre ; pas de date 2027 publiée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Nassfeld"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:24:27.161Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-e73f5b45-f170-4d18-aaa0-0ec107f332b4",
+          "appliedAt": "2026-11-15T15:21:28.390Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+          "evidence": "PARK_DATA_EDITOR:apply:e73f5b45-f170-4d18-aaa0-0ec107f332b4",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pendolino-20261115/audit.json",
+          "summary": "Saison 2026, six offres tarifaires, conditions d’accès et huit descriptions actualisées."
+        },
+        {
+          "eventId": "image-b77b1604c9f449118984720a30b233d2-20261115",
+          "appliedAt": "2026-11-15T15:23:26.714Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+          "evidence": "PARK_DATA_EDITOR:image:b77b1604c9f449118984720a30b233d2@2026-11-15T15:23:26.714Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pendolino-20261115/audit.json",
+          "summary": "Image corrompue masquée et retirée du visuel courant, en conservant son enregistrement."
+        },
+        {
+          "eventId": "image-c88dbe4a42974024ba8e1d90ad2b38b1-20261115",
+          "appliedAt": "2026-11-15T15:24:27.161Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+          "evidence": "PARK_DATA_EDITOR:image:c88dbe4a42974024ba8e1d90ad2b38b1@2026-11-15T15:24:27.161Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pendolino-20261115/audit.json",
+          "summary": "Photo exacte Flickr CC BY-SA 2.0 mise en avant ; huit crédits complétés avec lien vers la licence et la page source. Contrôle final 90/100."
+        }
+      ],
+      "nextAction": "Suivre les dates et prix 2027 ; chercher une deuxième photo exacte avec licence vérifiable. Conserver l’image rayée hors publication.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5071,6 +5102,21 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13018.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Nassfeld — exploitation du Pendolino 2026",
+          "url": "https://www.nassfeld.at/de/Family-World/Sommer/Kids-Erlebniswelten/Sommerrodeln",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Nassfeld — tarifs été 2026",
+          "url": "https://www.nassfeld.at/de/Summer-World/Hike-World/Sommerbergbahnen/Tickets-Preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — photo exacte et licence CC BY-SA 2.0",
+          "url": "https://www.flickr.com/photos/nassfeld/2949129642/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "AT",

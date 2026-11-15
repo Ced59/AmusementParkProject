@@ -1,0 +1,73 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+  "entryId": "AT-standalone-7ca75951-9be6-4705-9536-718759c7e0f0",
+  "name": "Pendolino",
+  "countryCode": "AT",
+  "auditAtUtc": "2026-11-15T15:25:37.096Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/7ca75951-9be6-4705-9536-718759c7e0f0/pendolino",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.nassfeld.at/de/Family-World/Sommer/Kids-Erlebniswelten/Sommerrodeln",
+    "https://www.nassfeld.at/de/Summer-World/Hike-World/Sommerbergbahnen/Tickets-Preise"
+  ],
+  "calendar": {
+    "startDate": "2026-11-15",
+    "endDate": "2026-12-31",
+    "closedDays": 47,
+    "nuance": "Official Pendolino 2026 daily operation ended 27 September. No 2027 opening date is published. The separate lift operating schedule should not be used to invent 2027 Pendolino dates."
+  },
+  "pricing": "Official 2026 adult/child: Pendolino only €14/€12; with third Millennium-Express section €20/€14.50; with all sections €30/€19. Reduced fares have conditions; multi-ride cards can mix Pendolino and Dondolo. Reverify before the 2027 season.",
+  "photo": {
+    "imageId": "c88dbe4a42974024ba8e1d90ad2b38b1",
+    "sourcePage": "https://www.flickr.com/photos/nassfeld/2949129642/",
+    "sourceUrl": "https://live.staticflickr.com/3160/2949129642_96ff45353e.jpg",
+    "creator": "Nassfeld / Hermagor",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "photographedAt": "2008-10-17",
+    "isCurrent": true,
+    "isPublished": true,
+    "binaryHttpStatus": 200,
+    "altCaptionCreditLocaleCount": 8,
+    "licenseVerifiedFromPrimaryPage": true,
+    "creditUpdatedAtUtc": "2026-11-15T15:24:27.161Z"
+  },
+  "unpublishedCorruptPhoto": {
+    "imageId": "b77b1604c9f449118984720a30b233d2",
+    "sourceUrl": "https://alps-resorts.com/assets/images/2/nlw-pendolino-1n3wr9sxex0erag.jpg",
+    "updatedAtUtc": "2026-11-15T15:23:26.714Z",
+    "isCurrent": false,
+    "isPublished": false,
+    "reason": "Downloaded production binary shows severe green stripe corruption; additionally, independent reuse rights of the operator image were not established. Metadata was changed; source record retained."
+  },
+  "photoCountPublished": 1,
+  "photoFollowup": "Find an additional exact, reusable recent image of Pendolino. A second Flickr candidate was rejected because no free reuse licence was established.",
+  "completenessBefore": {
+    "score": 70,
+    "level": "Publishable",
+    "publicationBlockers": []
+  },
+  "completenessAfter": {
+    "score": 90,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "a29b5d398a2343feabd7484ba3f5819e",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127469107424431",
+    "publishedAtUtc": "2026-11-15T15:22:31.6447811Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:24:27.161Z",
+  "nextAction": "Suivre les dates et prix 2027 ; chercher une deuxième photo exacte avec licence vérifiable. Conserver l’image rayée hors publication."
+}

@@ -1,0 +1,56 @@
+{
+  "entryId": "AT-standalone-7ca75951-9be6-4705-9536-718759c7e0f0",
+  "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+  "integrationHistory": [
+    {
+      "eventId": "apply-e73f5b45-f170-4d18-aaa0-0ec107f332b4",
+      "appliedAt": "2026-11-15T15:21:28.390Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+      "evidence": "PARK_DATA_EDITOR:apply:e73f5b45-f170-4d18-aaa0-0ec107f332b4",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pendolino-20261115/audit.json",
+      "summary": "Saison 2026, six offres tarifaires, conditions d’accès et huit descriptions actualisées."
+    },
+    {
+      "eventId": "image-b77b1604c9f449118984720a30b233d2-20261115",
+      "appliedAt": "2026-11-15T15:23:26.714Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+      "evidence": "PARK_DATA_EDITOR:image:b77b1604c9f449118984720a30b233d2@2026-11-15T15:23:26.714Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pendolino-20261115/audit.json",
+      "summary": "Image corrompue masquée et retirée du visuel courant, en conservant son enregistrement."
+    },
+    {
+      "eventId": "image-c88dbe4a42974024ba8e1d90ad2b38b1-20261115",
+      "appliedAt": "2026-11-15T15:24:27.161Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "7ca75951-9be6-4705-9536-718759c7e0f0",
+      "evidence": "PARK_DATA_EDITOR:image:c88dbe4a42974024ba8e1d90ad2b38b1@2026-11-15T15:24:27.161Z",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-at-pendolino-20261115/audit.json",
+      "summary": "Photo exacte Flickr CC BY-SA 2.0 mise en avant ; huit crédits complétés avec lien vers la licence et la page source. Contrôle final 90/100."
+    }
+  ],
+  "facebook": {
+    "id": "a29b5d398a2343feabd7484ba3f5819e",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127469107424431",
+    "publishedAtUtc": "2026-11-15T15:22:31.6447811Z"
+  },
+  "imageUpdates": [
+    {
+      "imageId": "b77b1604c9f449118984720a30b233d2",
+      "updatedAtUtc": "2026-11-15T15:23:26.714Z",
+      "isPublished": false,
+      "isCurrent": false
+    },
+    {
+      "imageId": "c88dbe4a42974024ba8e1d90ad2b38b1",
+      "updatedAtUtc": "2026-11-15T15:24:27.161Z",
+      "isPublished": true,
+      "isCurrent": true
+    }
+  ]
+}
