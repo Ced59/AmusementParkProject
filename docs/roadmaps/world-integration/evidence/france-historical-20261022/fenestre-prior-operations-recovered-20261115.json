@@ -1,0 +1,672 @@
+{
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "owner": "Conversation France",
+  "recoveredAtUtc": "2026-11-15T08:41:12.5178811Z",
+  "source": "Historique officiel GET admin/park-graph-upserts/history via le transport du client officiel inchangé.",
+  "historyResponseRows": 50,
+  "acceptedApplyCount": 21,
+  "actualDateField": "result.appliedAtUtc ; createdAtUtc du journal non substitué.",
+  "newServerMutationPerformed": false,
+  "publicationRepeated": false,
+  "historyCompleteness": "Fenêtre récente de50opérations renvoyée par le serveur, dont21Apply ; aucune prétention de retrouver toutes les opérations antérieures ou tous les imports.",
+  "operations": [
+    {
+      "historyRecordId": "983f6fe0-bcaf-44f7-ab6c-7109cbf75303",
+      "historyCreatedAtUtc": "2026-10-20T12:08:29.143Z",
+      "rawDocumentSha256": "d677ad1e65913a851b56705da0287dee489cdb3b952c6d35215e6c1f3849ee19",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "be93f3de-28f8-478f-a238-be12fb6cebab",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:08:28.9623972Z",
+        "appliedAtUtc": "2026-10-20T12:08:28.962398Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 5,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "3bef69ef-7c94-4cca-b0a6-560e47ee9809",
+      "historyCreatedAtUtc": "2026-10-20T12:13:38.605Z",
+      "rawDocumentSha256": "a2d8e0715a9b76b4de51e9602c22f134f93c67e53760f0a0394d31f28a2dbf26",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "df69b7bd-68b6-4e6f-9522-9ca279643a13",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:13:38.4441447Z",
+        "appliedAtUtc": "2026-10-20T12:13:38.4441456Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 5,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "d7ae4c60-8a92-4598-be7d-6cd1bc34a45f",
+      "historyCreatedAtUtc": "2026-10-20T12:20:59.661Z",
+      "rawDocumentSha256": "14790027495f1187606db701d500c8215688fb86b9a831c9b31ce72a2808f428",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "c42f4a32-cede-41ca-ab7d-fcefe7b9319e",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:20:59.5228739Z",
+        "appliedAtUtc": "2026-10-20T12:20:59.5228748Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 8,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "d3d2fced-c1ce-4605-9a32-f4b909e71756",
+      "historyCreatedAtUtc": "2026-10-20T12:31:06.155Z",
+      "rawDocumentSha256": "7c2c73c18a10ec3905d4bf0baf5bf70a92272d9aa7a6fa033f5c61b41c7f06a0",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "ca95968d-30f9-4105-90bc-2c18f9dfeb7e",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:31:05.9938921Z",
+        "appliedAtUtc": "2026-10-20T12:31:05.9938931Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 8,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "ce178f7b-2d4a-4229-95f9-3127c2c1e70a",
+      "historyCreatedAtUtc": "2026-10-20T12:37:34.918Z",
+      "rawDocumentSha256": "c236dd221311713d4c0c19448395d9ff5af47360bf33f83ac7fead303ab8908d",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "30381144-6061-469a-a31a-f0e715b554f5",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:37:34.7268001Z",
+        "appliedAtUtc": "2026-10-20T12:37:34.7268009Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 8,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "27524490-dccf-400e-ab75-c30bf8c87442",
+      "historyCreatedAtUtc": "2026-10-20T12:46:59.4Z",
+      "rawDocumentSha256": "277418387cabee4115f624068c3359eb9fd603237f486c7bed3043346159d974",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "da390319-1418-4492-8b71-9403df0ad832",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:46:59.2493178Z",
+        "appliedAtUtc": "2026-10-20T12:46:59.2493187Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 8,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "5268c820-4b43-4573-b2e6-7dd02de69dde",
+      "historyCreatedAtUtc": "2026-10-20T12:55:14.272Z",
+      "rawDocumentSha256": "39cf522eba3b05c2a29d21663cfcab6ae67fed90bc4dd7532c645be4843f24fc",
+      "documentSections": [
+        "items"
+      ],
+      "result": {
+        "operationId": "22454c11-080c-47b6-a95f-6d0a164dec4e",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T12:55:14.1965211Z",
+        "appliedAtUtc": "2026-10-20T12:55:14.1965218Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 9,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "0c6fef13-ebfb-48a0-bc5a-82597565c4cf",
+      "historyCreatedAtUtc": "2026-10-20T13:08:47.355Z",
+      "rawDocumentSha256": "80a79d08a85a13954e515daf2e939ef1927c074e08d910231736611105c4129e",
+      "documentSections": [
+        "references"
+      ],
+      "result": {
+        "operationId": "97d6da8b-df91-4508-8386-36fd061889de",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:08:47.1872452Z",
+        "appliedAtUtc": "2026-10-20T13:08:47.1872459Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 2,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "e43b1268-8d40-4a92-b6cf-9000ac0f7c59",
+      "historyCreatedAtUtc": "2026-10-20T13:15:55.077Z",
+      "rawDocumentSha256": "4e253a214aeb79c776448daf5e3a3adc8856ba527b4be550b32e20a50e94f077",
+      "documentSections": [
+        "openingHours"
+      ],
+      "result": {
+        "operationId": "fd86d99e-545f-4fd9-9edd-5d9850ab9552",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:15:55.0076999Z",
+        "appliedAtUtc": "2026-10-20T13:15:55.0077007Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "0e2dd52f-d01e-4c8d-979b-9b7ceb318155",
+      "historyCreatedAtUtc": "2026-10-20T13:28:22.088Z",
+      "rawDocumentSha256": "9638ae486da2e77f66126fd823a2cc8c2076911af595e03c0c8f0deb8445c766",
+      "documentSections": [
+        "pricing"
+      ],
+      "result": {
+        "operationId": "52847853-7d27-4e5e-88c1-024478262d0b",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:28:22.042216Z",
+        "appliedAtUtc": "2026-10-20T13:28:22.0422166Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 1,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "22396b64-8b35-4354-8197-afa1a4141bb8",
+      "historyCreatedAtUtc": "2026-10-20T13:35:25.588Z",
+      "rawDocumentSha256": "d530b40c3caf3f3f0af1400810224a349e2d5762a09d8237721a8a6e7c458ebf",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "fce52e1f-950f-4e56-ba4a-d39701ac8f35",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:35:25.5199959Z",
+        "appliedAtUtc": "2026-10-20T13:35:25.5199971Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 2,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "1488fa09-7c40-4a6d-babe-f08688d8ceef",
+      "historyCreatedAtUtc": "2026-10-20T13:41:08.205Z",
+      "rawDocumentSha256": "28f68129780f70145318c2e9c183175741253c88daad9a32a23edc7214d4dcb6",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "b7f1b725-e445-4b66-bc47-ba02e5c20531",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:41:08.1131223Z",
+        "appliedAtUtc": "2026-10-20T13:41:08.1131232Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 4,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "3ddba6ae-ad10-4366-9b46-a85a15ee42c2",
+      "historyCreatedAtUtc": "2026-10-20T13:46:04.652Z",
+      "rawDocumentSha256": "267082ea698f9ef69382df3dfeb0e2f5e3489a3e833440d0639a0bebfe200964",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "5f2c3276-8b22-4a1f-8da5-f9672f7ae7d7",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:46:04.3286258Z",
+        "appliedAtUtc": "2026-10-20T13:46:04.328627Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 6,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "0ca82f5f-c955-4bcd-83a5-bbaee97029b0",
+      "historyCreatedAtUtc": "2026-10-20T13:49:52.093Z",
+      "rawDocumentSha256": "ad0554d63c38f609eb5db5eb0fcdc750dc0d51502be3e0de6c132a9d13b66c75",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "2c4ce410-780e-40b5-924e-6a0e6d50923c",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:49:52.0210674Z",
+        "appliedAtUtc": "2026-10-20T13:49:52.021068Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "89908533-1d83-4ba0-80c8-8fb97f8cfc34",
+      "historyCreatedAtUtc": "2026-10-20T13:51:52.371Z",
+      "rawDocumentSha256": "43e7cd5746e2b0bbbd0c2e64245cc1fba57b6329e64cef3d68c10b210df12b6e",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "c942d3c8-e0ee-4db5-ae82-a20a9e39d9e5",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:51:52.3190586Z",
+        "appliedAtUtc": "2026-10-20T13:51:52.3190594Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "c72aa558-a1fe-414f-a917-8728897961bc",
+      "historyCreatedAtUtc": "2026-10-20T13:54:43.133Z",
+      "rawDocumentSha256": "f89e663266bc3558d5f57d1ddc3af3d86f8d0cd4031f7f0443730c0ea0235949",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "1b9d2b2b-e8f5-4f75-98ec-4068fa3dbecb",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-20T13:54:43.0850734Z",
+        "appliedAtUtc": "2026-10-20T13:54:43.0850741Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 1,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "86ef1dac-b552-49c4-a89d-a683d4a49b04",
+      "historyCreatedAtUtc": "2026-10-21T20:13:29.904Z",
+      "rawDocumentSha256": "5b87ba7e7c9f6a64842f48e9b0c5067c30c44022aa2df9d5b8c3c92a11b8d1ef",
+      "documentSections": [
+        "park"
+      ],
+      "result": {
+        "operationId": "5ff0637c-571e-412b-84cb-971bdc19029c",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T20:13:29.8560221Z",
+        "appliedAtUtc": "2026-10-21T20:13:29.8560231Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 3,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "afdc1adc-9354-4a45-96f6-72ac2963280f",
+      "historyCreatedAtUtc": "2026-10-21T20:43:35.807Z",
+      "rawDocumentSha256": "9bc86da8b72fcc3c58a270ec04f38e9bb9e55c5165d9db8aa7ece01a6989140a",
+      "documentSections": [
+        "history"
+      ],
+      "result": {
+        "operationId": "a6d8834f-8349-4b0f-8620-f1ee4297b850",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T20:43:35.3203427Z",
+        "appliedAtUtc": "2026-10-21T20:43:35.3203438Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 9,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "2da0ed1c-8241-4b58-8974-601cf352ddb5",
+      "historyCreatedAtUtc": "2026-10-21T20:47:30.319Z",
+      "rawDocumentSha256": "57059beae8126c491bbcb21fd68f7e6ec5c8040ea4273bb114e5dec9d1197c8a",
+      "documentSections": [
+        "park",
+        "items",
+        "images",
+        "references",
+        "history"
+      ],
+      "result": {
+        "operationId": "7d037f96-cc77-4879-af8b-715303510be3",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T20:47:08.5093529Z",
+        "appliedAtUtc": "2026-10-21T20:47:08.5093539Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 139,
+          "deleted": 0,
+          "unchanged": 10,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "cdeb558a-4141-40f7-8e5c-8c013886d078",
+      "historyCreatedAtUtc": "2026-10-21T20:50:51.859Z",
+      "rawDocumentSha256": "caee32737f78e8e813c5cb297aec73cbea869ec155dfe84cbdd0c6282078d24c",
+      "documentSections": [
+        "items",
+        "images"
+      ],
+      "result": {
+        "operationId": "6fe180fe-072f-4d65-86de-d78ea0813edf",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T20:50:50.5906607Z",
+        "appliedAtUtc": "2026-10-21T20:50:50.5906614Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 4,
+          "deleted": 0,
+          "unchanged": 5,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    {
+      "historyRecordId": "594e6505-80d2-4b03-bcb2-9d01cb49e3ac",
+      "historyCreatedAtUtc": "2026-10-21T20:55:54.551Z",
+      "rawDocumentSha256": "f47dce732b31c78c306f2818d976e7c1035c4feac12383ee7a4df22080fe746e",
+      "documentSections": [
+        "items",
+        "history"
+      ],
+      "result": {
+        "operationId": "15c77694-b3f5-40fb-89ac-7b67c4f5f605",
+        "mode": "merge",
+        "isApplied": true,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T20:55:49.4509969Z",
+        "appliedAtUtc": "2026-10-21T20:55:49.4509979Z",
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 7,
+          "deleted": 0,
+          "unchanged": 1,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      }
+    }
+  ]
+}

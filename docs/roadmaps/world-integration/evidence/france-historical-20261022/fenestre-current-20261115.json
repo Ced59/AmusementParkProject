@@ -1,0 +1,121 @@
+{
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "owner": "Conversation France",
+  "updatedAtUtc": "2026-11-15T08:58:39.281412Z",
+  "status": "partial",
+  "lastActualIntegrationAtUtc": "2026-11-15T08:57:39.078Z",
+  "localDirectory": "/workspace/france-historical-20261114/fenestre",
+  "scope": "Rapprochement de21 Apply antérieurs, municipalisation1972 privée, deux notices privées qualifiées et une photo anniversaire privée. Aucun nouvel audit complet ni publication.",
+  "counts": {
+    "items": 56,
+    "publicItems": 51,
+    "mediaOwned": 76,
+    "privateNewImages": 1,
+    "maps": 3,
+    "publishedFacts": 12,
+    "draftFacts": 1
+  },
+  "currentCompleteness": {
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 101,
+      "earnedPoints": 101,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T08:48:31.5397483Z",
+    "receivedAtUtc": "2026-11-15T08:48:32.3031364Z"
+  },
+  "facebookExisting": {
+    "action": "ResolveFacebookPublication",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/4af8f8f8-2be7-4438-a02f-0054b36cb25e/parc-fenestre",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc Fenestre ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc Fenestre! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/4af8f8f8-2be7-4438-a02f-0054b36cb25e/parc-fenestre\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Parc Fenestre",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "e5c5a346e8b1477f8bea798646ff0530",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124038499424431",
+      "images": {
+        "data": [
+          {
+            "id": "6b3a893346794328a9a54e8598db5e31",
+            "label": "L’entrée arborée de Fenestre, à La Bourboule, en août 2020.",
+            "isCurrent": true,
+            "width": 1280,
+            "height": 1920
+          },
+          {
+            "id": "d34f6b31e1ec450188ddbc9fa1bbc804",
+            "label": "Le bassin et ses rives plantées, en septembre 2014.",
+            "isCurrent": false,
+            "width": 1280,
+            "height": 960
+          },
+          {
+            "id": "6f33ccc9f3bf433fae440c4c155d8c5d",
+            "label": "Les pelouses et les équipements de plein air du jardin, en août 2020.",
+            "isCurrent": false,
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "id": "142c9a0de23e41f8961aa13a08be845e",
+            "label": "Le paysage ouvert des grandes pelouses de Fenestre en août 2020.",
+            "isCurrent": false,
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "id": "fc06fbac9f2c4a82be34c9e6fa9a14ad",
+            "label": "L’entrée du Jardin des vivaces, dans le parc de Fenestre en août 2020.",
+            "isCurrent": false,
+            "width": 1280,
+            "height": 853
+          },
+          {
+            "id": "a83e52a462d1452d936599d2a8379f27",
+            "label": "Le lac de Fenestre sur une carte postale ancienne conservée par l’Inventaire du patrimoine.",
+            "isCurrent": false,
+            "width": 751,
+            "height": 600
+          }
+        ],
+        "pagination": {
+          "totalItems": 7,
+          "totalPages": 2,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "receivedAtUtc": "2026-11-15T08:50:14.1238708Z",
+    "startedAtUtc": "2026-11-15T08:50:13.4619810Z"
+  },
+  "facebookVisibilityCaution": "Le contrôle officiel Published ne prouve pas la visibilité Facebook actuelle ; voir france-facebook-reconciliation-20261115.json. Aucun nouvel envoi.",
+  "proofs": [
+    "fenestre-prior-operations-recovered-20261115.json",
+    "fenestre-municipal-1972-20261115.json",
+    "fenestre-birthday-qualification-20261115.json",
+    "fenestre-cacahuete-birthday-20261115.json",
+    "fenestre-calendar-verification-20261115.json",
+    "fenestre-recovered-state-20261115.json"
+  ],
+  "remaining": [
+    "Cacahuète qualifié Operating sur réservation anniversaire, encore privé ; pas de rencontre quotidienne inventée.",
+    "Guignol : nouvelle recherche primaire datée2017 en cours, relire avant toute mutation.",
+    "Tapis Volants distinct de l’Envol ; Parcours botanique distinct du jardin ; statuts actuels inconnus conservés.",
+    "Gonflable décrit sur photo officielle non datée, statut Unknown conservé.",
+    "Calendrier officiel2027 retrouvé et vérifié109jours ouverts74fermés avril–septembre : aucune correction nécessaire.",
+    "Plans2023/2024/2026 déjà publics : aucun réimport.",
+    "Auditer les nouveaux contenus avant publication ciblée ; pas de clôture globale sur la seule note100."
+  ],
+  "fullAuditExportPerformedThisRecovery": false,
+  "newPublicationPerformed": false
+}

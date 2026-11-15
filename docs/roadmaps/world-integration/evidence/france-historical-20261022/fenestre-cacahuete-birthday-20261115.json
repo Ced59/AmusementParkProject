@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T08:57:39.078Z",
+  "result": {
+    "id": "e5b0242ce14848efaf8dd9a4d7a338cb",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+    "path": "park_item/e5b0242ce14848efaf8dd9a4d7a338cb",
+    "description": "Cacahuète dans le décor des goûters d’anniversaire de Fenestre.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 720,
+    "height": 960,
+    "sizeInBytes": 116655,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.parcfenestre.com/images/groupe/anniversaire.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "La mascotte Cacahuète, un âne gris costumé, auprès d’une table rose garnie de ballons sur la terrasse du snack de Fenestre."
+      },
+      {
+        "languageCode": "en",
+        "value": "Cacahuète, a costumed grey donkey, beside a pink table decorated with balloons on Fenestre’s snack bar terrace."
+      },
+      {
+        "languageCode": "de",
+        "value": "Maskottchen Cacahuète im grauen Eselskostüm neben einem rosa Tisch mit Luftballons auf Fenestres Imbissterrasse."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Mascotte Cacahuète in een grijs ezelkostuum naast een roze tafel met ballonnen op het terras van de snackbar in Fenestre."
+      },
+      {
+        "languageCode": "it",
+        "value": "La mascotte Cacahuète, un asino grigio in costume, accanto a un tavolo rosa decorato con palloncini sulla terrazza dello snack di Fenestre."
+      },
+      {
+        "languageCode": "es",
+        "value": "La mascota Cacahuète, un burro gris disfrazado, junto a una mesa rosa adornada con globos en la terraza del bar de Fenestre."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Maskotka Cacahuète w kostiumie szarego osła przy różowym stole ozdobionym balonami na tarasie baru w Fenestre."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A mascote Cacahuète, um burro cinzento em fato, junto a uma mesa cor-de-rosa decorada com balões na esplanada do snack-bar de Fenestre."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Cacahuète dans le décor des goûters d’anniversaire de Fenestre."
+      },
+      {
+        "languageCode": "en",
+        "value": "Cacahuète in Fenestre’s birthday party setting."
+      },
+      {
+        "languageCode": "de",
+        "value": "Cacahuète in der Kulisse der Geburtstagsfeiern von Fenestre."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Cacahuète in het decor van de verjaardagsfeestjes in Fenestre."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cacahuète nello scenario delle feste di compleanno di Fenestre."
+      },
+      {
+        "languageCode": "es",
+        "value": "Cacahuète en el escenario de los cumpleaños de Fenestre."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Cacahuète w scenerii przyjęć urodzinowych w Fenestre."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cacahuète no cenário das festas de aniversário de Fenestre."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Parc Fenestre — site officiel"
+      },
+      {
+        "languageCode": "en",
+        "value": "Parc Fenestre — official website"
+      },
+      {
+        "languageCode": "de",
+        "value": "Parc Fenestre — offizielle Website"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Parc Fenestre — officiële website"
+      },
+      {
+        "languageCode": "it",
+        "value": "Parc Fenestre — sito ufficiale"
+      },
+      {
+        "languageCode": "es",
+        "value": "Parc Fenestre — sitio oficial"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Parc Fenestre — oficjalna strona"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Parc Fenestre — sítio oficial"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T08:57:35.558Z",
+    "updatedAt": "2026-11-15T08:57:39.078Z"
+  },
+  "sourceEvidence": {
+    "stem": "cacahuete-birthday",
+    "sourceUrl": "https://www.parcfenestre.com/images/groupe/anniversaire.jpg",
+    "sourcePage": "https://www.parcfenestre.com/groupes-cse",
+    "captureDate": null,
+    "individualPhotographer": null,
+    "originalSha256": "8431ba2a2eb5b4276e9f8e89df0f9bcf0f8b3b20255661996b28b20411801ef4",
+    "width": 720,
+    "height": 960,
+    "reconciliation": "75 médias exportés avec Items/Images : aucune source anniversaire.jpg ni photo attribuée à cette fiche. Image réelle relue, aucune retouche ou filigrane visible.",
+    "sourceAccessProof": "parallel-inventory-research/source-access.json"
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original source inspecté personnellement ; page source et identité vérifiées, crédit exact de la source conservé sans inventer de photographe individuel. Alternative, légende et crédit relus dans les huit langues. Aucun recadrage ni image générée."
+}

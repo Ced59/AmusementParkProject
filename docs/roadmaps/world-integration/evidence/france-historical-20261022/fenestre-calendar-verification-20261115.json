@@ -1,0 +1,15 @@
+{
+  "checkedAtUtc": "2026-11-15T08:43:13.393453Z",
+  "officialPage": "https://www.parcfenestre.com/preparer-sa-visite",
+  "imageUrl": "https://www.parcfenestre.com/images/Calendrier_PF_2027.png",
+  "httpStatus": 200,
+  "sha256": "b9a734ccb1c1119d505f2c8367a3245cd74b49f55c25600da0d7542460072fea",
+  "matchesStoredSourceDomainFile": true,
+  "personalVisualReview": "Calendrier portant2027 relu en entier, couleurs/jours/transitions/horaires comparés aux règles intégrées.",
+  "coveredDays": 183,
+  "openDays": 109,
+  "closedDays": 74,
+  "issues": [],
+  "remainingHorizon": "Seul avril–septembre2027 est représenté. Aucune date hors de cet horizon n’est ajoutée. Jardin municipal accessible toute l’année, calendrier des seules attractions payantes.",
+  "mutationPerformed": false
+}

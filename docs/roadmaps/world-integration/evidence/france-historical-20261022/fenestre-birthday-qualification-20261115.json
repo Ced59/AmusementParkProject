@@ -1,0 +1,933 @@
+{
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "personalEightLanguageReview": true,
+  "sourceFindings": {
+    "schemaVersion": 1,
+    "preparedAtUtc": "2026-11-15T08:52:20.667201Z",
+    "task": "Read-only qualification of five existing private Fenestre items. No API/Git calls or changes to campaign state.",
+    "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "mutationPerformed": false,
+    "existingIdsPreserved": true,
+    "sourceManifest": "source-access.json",
+    "sourceScope": "Public operator pages, operator leaflets/maps and original images, Koifaire operator presentation, Jardinez and a rejected event aggregation result. No contacted humans.",
+    "globalCautions": [
+      "A current page may reuse an old URL; URL continuity alone does not identify the same physical ride.",
+      "Current availability of an image or an old PDF does not date a photograph or establish continuous operation of everything pictured.",
+      "The operator CURRENT groups page directly links the birthday booking form with 2024 in its filename. The presence of the mascot is therefore part of the currently offered booking document; neither the filename nor PDF title dates the actual photograph.",
+      "The current official Envol detail page still calls it a 2026 novelty with an opening planned during summer. The new ride is not confirmed operating by this research.",
+      "No precise opening/closing date, maker, model, capacity, GPS or removal date newly established for the five researched items.",
+      "No public/private visibility changes are proposed here; root must complete editorial/API/publication workflow."
+    ],
+    "items": [
+      {
+        "id": "0f5f6630-8784-431e-b123-46dda636f359",
+        "name": "Les Tapis Volants",
+        "identityConclusion": "Confirmed historical attraction, physically distinct from the proposed Envol de Fenestine in the two operator map illustrations. Do not merge or rename the two IDs.",
+        "evidence": [
+          {
+            "file": "official-2024.pdf",
+            "location": "page 2, attraction 12",
+            "finding": "Tapis Volants is named and illustrated with rigid vehicles around a central structure near Carrousel1900/FenesTower; page1 contains visible 2024 season calendar."
+          },
+          {
+            "file": "official-2026-leaflet.jpg",
+            "location": "attraction 7",
+            "finding": "L’Envol de Fenestine is marked NEW and illustrated as hanging swing chairs. Tapis Volants no longer appears in this legend. This proves catalog/map change, not actual dismantling date."
+          },
+          {
+            "file": "../tapis-current.html",
+            "finding": "The old /131-les-tapis-volants slug now presents L’Envol de Fenestine; current title and novelty2026/planned summer opening differ from the old attraction."
+          },
+          {
+            "file": "envol-current.png",
+            "finding": "Personally inspected official promotional rendering: a column, rotating canopy and chain-suspended chairs. This is an illustration, not an actual-operation photograph."
+          }
+        ],
+        "supportedProposedFields": {
+          "category": "Attraction",
+          "type": "FlatRide",
+          "attractionDetails.status": "Unknown",
+          "attractionDetails.openingDate": null,
+          "attractionDetails.closingDate": null,
+          "attractionDetails.sourceUrl": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf"
+        },
+        "supportedFrenchCopyDraft": "Les Tapis Volants figurent au numéro12 du plan officiel2024, dans le groupe de manèges du haut du parc, près du Carrousel1900 et de Fenes’Tower. Le dessin les représente avec des nacelles rigides disposées autour d’une structure centrale. Le plan diffusé sous le nom Depliant_2026 présente à leur place dans la liste une autre nouveauté, L’Envol de Fenestine, illustrée avec des chaises suspendues. Les deux noms doivent rester associés à des attractions distinctes ; la date de retrait des Tapis Volants n’est pas établie.",
+        "unresolved": [
+          "Actual last operating season/removal date",
+          "Real native photo positively attributed to this ride; map alone should not supply technical maker/model",
+          "Existing precise coordinates are inherited and were not independently verified"
+        ]
+      },
+      {
+        "id": "253af2e3-2583-49e0-97de-441cb056157f",
+        "name": "Parcours botanique",
+        "identityConclusion": "Confirmed distinct botanical walk/departure on the operator2024 map, not an alias of the Jardin des vivaces.",
+        "evidence": [
+          {
+            "file": "official-2024.pdf",
+            "location": "page2 Nature legend and bottom-left map",
+            "finding": "Nature#6 identifies a botanical route departure at the lower entrance near the sequoias; Nature#2 separately identifies the perennial garden."
+          },
+          {
+            "file": "official-2026-leaflet.jpg",
+            "finding": "The current map legend lists five nature features but omits the botanical-route departure. This is not evidence that trees/routes were physically removed."
+          },
+          {
+            "file": "official-nature-details.html",
+            "finding": "Current operator text confirms the garden, rare tree species, sequoias and perennial garden but does not name a maintained botanical itinerary."
+          }
+        ],
+        "supportedProposedFields": {
+          "category": "Other",
+          "type": "WalkThrough",
+          "attractionDetails.status": "Unknown",
+          "attractionDetails.openingDate": null,
+          "attractionDetails.closingDate": null,
+          "attractionDetails.sourceUrl": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf"
+        },
+        "supportedFrenchCopyDraft": "Le plan officiel2024 indique le départ d’un parcours botanique dans le bas de Fenestre, près de l’entrée et des séquoias. Cet itinéraire figure séparément du Jardin des vivaces : il donne un point de départ pour découvrir les plantations du parc. Le site actuel présente toujours les séquoias et les essences rares du jardin, mais ne précise plus le tracé ou le balisage de ce parcours.",
+        "unresolved": [
+          "Current signposting/route availability",
+          "Route length, duration and detailed species list",
+          "No current photo of named departure sign found"
+        ]
+      },
+      {
+        "id": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "name": "Rencontre avec Cacahuète",
+        "identityConclusion": "Costumed donkey meet-and-greet is supported separately from the live donkeys and Cacahuète Express. The current official birthday booking page and form still offer a mascot presence on reservation.",
+        "evidence": [
+          {
+            "file": "koifaire.html",
+            "finding": "Operator-style presentation explicitly names the official mascot Cacahuète and the chance to meet it and take a souvenir photo. Its three currently linked photos depict rides/live donkey, not the costume."
+          },
+          {
+            "file": "official-groups.html",
+            "finding": "Current /groupes-cse birthday section directly links /images/docs/new/Bon_de_reservation_anniversaire_2024.pdf; the page also has updated2027 group-order links, but this does not date the birthday photo."
+          },
+          {
+            "file": "official-anniversaire2024.pdf",
+            "finding": "The linked form expressly includes mascot presence in the birthday offer and reserves a snack-terrace table. No time/date for regular public meet-and-greets is given."
+          },
+          {
+            "file": "official-birthday-image.jpg",
+            "finding": "Personally inspected native720x960 photo currently displayed by the birthday section: gray donkey costume, pale belly/muzzle, black tuft and hooves, standing beside a decorated terrace table in front of the snack. No visible watermark. Capture date/individual photographer unknown."
+          }
+        ],
+        "supportedProposedFields": {
+          "category": "Show",
+          "type": "MeetAndGreet",
+          "attractionDetails.status": "Operating",
+          "attractionDetails.openingDate": null,
+          "attractionDetails.closingDate": null,
+          "attractionDetails.sourceUrl": "https://www.parcfenestre.com/groupes-cse#anniversaires"
+        },
+        "statusQualification": "Operating is a supported editorial proposal for the birthday-booking service currently advertised by the operator, not a claim of a daily open meet-and-greet or a fixed venue. Root should retain Unknown if its status convention requires evidence of a recent performed appearance rather than a current primary booking offer.",
+        "supportedFrenchCopyDraft": "Cacahuète est le personnage costumé associé aux rencontres avec la mascotte de Fenestre. Le costume d’âne gris possède un museau clair, une touffe noire et de longues oreilles. La photographie de l’offre anniversaire le montre auprès d’une table de goûter décorée de ballons, sur la terrasse du snack. La formule anniversaire actuellement proposée par le parc prévoit la présence de la mascotte sur réservation ; elle ne constitue pas un horaire de rencontres quotidiennes.",
+        "unresolved": [
+          "Exact debut date and capture date",
+          "No daily show schedule advertised",
+          "No separate fixed geolocation for roaming mascot"
+        ],
+        "photoCandidate": {
+          "file": "official-birthday-image.jpg",
+          "url": "https://www.parcfenestre.com/images/groupe/anniversaire.jpg",
+          "sourcePage": "https://www.parcfenestre.com/groupes-cse",
+          "photographer": null,
+          "captureDate": null,
+          "isCurrentRecommended": false,
+          "importPerformed": false,
+          "needsExistingMediaReconciliation": true
+        }
+      },
+      {
+        "id": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "name": "Structures gonflables",
+        "identityConclusion": "Genuine inflatable-play offering; a concrete operator photo now supports a multicoloured inflatable slide near the snack. Current operation, number and replacements remain unknown.",
+        "evidence": [
+          {
+            "file": "koifaire.html",
+            "finding": "The operator-style presentation lists inflatable play structures separately from TapisVolants, MaëlJump and the mascot."
+          },
+          {
+            "file": "official-birthday-image.jpg",
+            "finding": "Personally inspected: behind the snack terrace and mascot is an inflatable slide with a red/blue arch, brightblue side and yellow sliding face. Photo date unknown."
+          },
+          {
+            "file": "../visit-current.html",
+            "finding": "A games-inflatable restriction row survives inside an HTML comment. It is not rendered visitor information and must not be taken as current access rules."
+          }
+        ],
+        "supportedProposedFields": {
+          "category": "Attraction",
+          "type": "Playground",
+          "attractionDetails.status": "Unknown",
+          "attractionDetails.openingDate": null,
+          "attractionDetails.closingDate": null,
+          "attractionDetails.sourceUrl": "https://www.parcfenestre.com/groupes-cse"
+        },
+        "supportedFrenchCopyDraft": "Les structures gonflables font partie des jeux présentés dans l’ancienne offre de Fenestre. Une photographie officielle de la formule anniversaire montre un toboggan gonflable multicolore à côté de la terrasse du snack, derrière une petite clôture. Son arche rouge et bleue encadre une pente jaune. Cette vue documente une installation précise, sans établir sa période d’exploitation ni le nombre total de jeux proposés.",
+        "unresolved": [
+          "Current operating status",
+          "Whether plural entry encompasses this slide and additional distinct structures",
+          "Dates, dimensions, supplier and any change of equipment"
+        ]
+      },
+      {
+        "id": "ac0ff701-b2a1-40ac-bacb-1295cc90cb55",
+        "name": "Théâtre de Guignol",
+        "identityConclusion": "Historic puppet-show offering is documented, but this research did not establish a current permanent theatre, precise location or2026 performance.",
+        "evidence": [
+          {
+            "file": "jardinez.html",
+            "finding": "Directory lists Guignol among park activities. The same text still lists the closed cable car, so its automatically displayed2026 opening-year heading cannot establish current operation of each listed attraction."
+          },
+          {
+            "file": "pommes-20260804.html",
+            "finding": "Rejected search match: Guignol on4August2026 is at Salle des fêtes Saint-Anthème. The Fenestre event later on the same page is a musical siesta. These are different locations and events."
+          }
+        ],
+        "supportedProposedFields": {
+          "category": "Show",
+          "type": "Show",
+          "attractionDetails.status": "Unknown",
+          "attractionDetails.openingDate": null,
+          "attractionDetails.closingDate": null,
+          "attractionDetails.sourceUrl": "https://www.jardinez.com/Parcs-et-jardins-parc-fenestre_fr_1061"
+        },
+        "supportedFrenchCopyDraft": null,
+        "unresolved": [
+          "A dated primary program or municipal archive for Guignol inside Fenestre",
+          "Permanent venue versus temporary puppetry engagements",
+          "Performing company, current status, dates and physical appearance"
+        ],
+        "editorialRecommendation": "Keep the existing short historical notice and private review state; do not expand with generic puppetry details or assert closure/current operation."
+      }
+    ],
+    "rejectedOrInsufficientEvidence": [
+      {
+        "source": "Pommesdelune4August2026",
+        "reason": "Search snippet concatenates GuignolSaint-Anthème and separate Fenestre music event; opened page proves mismatch."
+      },
+      {
+        "source": "Envol official rendering",
+        "reason": "Promotional illustration only, not proof of installed/open ride and not a real park photo candidate."
+      },
+      {
+        "source": "Current touristic syndications listing TapisVolants and newEnvol",
+        "reason": "Mixed current/legacy catalog prose is not independent proof that both ran simultaneously in2026."
+      },
+      {
+        "source": "Jardinez current-year heading",
+        "reason": "Automatic current-year availability alongside stale cable-car text cannot date each equipment listing."
+      },
+      {
+        "source": "Three Koifaire current original photos",
+        "reason": "They show CacahuèteExpress/train/Rodéo and do not prove the mascot costume or inflatable installation."
+      }
+    ],
+    "sourceHashes": [
+      {
+        "url": "https://www.parcfenestre.com/images/docs/2024/Depliant_2024.pdf",
+        "file": "official-2024.pdf",
+        "sha256": "d0d3c24b9b7dadfe894ad38fcc52dd9a791c7ed429ec61270233322a02185813",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:46:26.705605Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/docs/Plaquette_de_presentation_des_attractions_2026.pdf",
+        "checkedAtUtc": "2026-11-15T08:46:30.510279Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/nature-jeux",
+        "file": "official-nature.html",
+        "sha256": "a4507307edc8b313bfa9804d147e7fd4fa0ed6161bd2481f91d2e8609fc1aded",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:46:31.106982Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/les-attractions",
+        "file": "official-attractions.html",
+        "sha256": "0f8b8dd25f9cacd07e700c5f35d79b04832c2e1126549b78b9ff30e29e1583ce",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:46:32.063741Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/19-carousel/120-l-envol-de-fenestine",
+        "file": "official-envol.html",
+        "sha256": "13b5dce90157580640a5ca8f71db7bb82f3747ee6d338e95f66a663802ac9886",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:46:32.952895Z"
+      },
+      {
+        "url": "https://www.koifaire.com/auvergne/parc,fenestre-8306.html",
+        "file": "koifaire.html",
+        "sha256": "798cf38fcc86243b18ba66622b3ed927c0e854995ec6a7082bc8da6d5af0ed49",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:46:33.527483Z"
+      },
+      {
+        "url": "https://www.jardinez.com/Parcs-et-jardins-parc-fenestre_fr_1061",
+        "file": "jardinez.html",
+        "sha256": "d04176ef748fed1ed6dd4f8e9bbf9ec53d7aac7c06e1fdf63ac3b680e26243d6",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:46:34.728171Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/nature-jeux/img3.jpg",
+        "file": "nature-panel.jpg",
+        "sha256": "6d158e3595792bde725a53de2e1a0c0928bcafc728a1efd52833848a9742e0f0",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:47:07.360990Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/Depliant_2026.jpg",
+        "file": "official-2026-leaflet.jpg",
+        "sha256": "96ad920f7fc001e681e60eae3b042933131c394307f96b33e784e26f8cb73de4",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:47:08.220834Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/attractions/les_tapis_volants/envol_de_fenestine.png",
+        "file": "envol-current.png",
+        "sha256": "548f7b6e40a141cd2e194342cef31fad2c28a41f672c54eb9058d5fd1e4fdc9f",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:47:08.649894Z"
+      },
+      {
+        "url": "https://pommesdelune.fr/cat:spectacles/jour/2026/8/4/",
+        "file": "pommes-20260804.html",
+        "sha256": "4ad2cb959b6ed43361b2348a90e9242ad4a5736e4ce1fe1fe8c9ee8621b541e9",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:47:09.277785Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/nature",
+        "file": "official-nature-details.html",
+        "sha256": "19753751d878ab18113b34ba896671fef4d30563d413a42f3a3111734a9cb0d0",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:08.266807Z"
+      },
+      {
+        "url": "https://www.koifaire.com/upload/2/fiches/8306/album-1/6250.jpg",
+        "file": "koifaire-6250.jpg",
+        "sha256": "f5dbef2ec585430af3d5d6e50aaaaac0fc92c9f1f0e6285ad8a290d1f750b952",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:09.620121Z"
+      },
+      {
+        "url": "https://www.koifaire.com/upload/2/fiches/8306/album-1/6251.jpg",
+        "file": "koifaire-6251.jpg",
+        "sha256": "07df11108c9e91c71c2e797c3fde0350d2a43b5733c5c977be7b11fdf54445b3",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:11.010794Z"
+      },
+      {
+        "url": "https://www.koifaire.com/upload/2/fiches/8306/album-1/6252.jpg",
+        "file": "koifaire-6252.jpg",
+        "sha256": "75d3dd0befd2d5a589d0a5fbc1af8cebe79695e624f8a89aafcd2ec69dd77feb",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:12.029307Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/docs/new/Bon_de_reservation_anniversaire_2024.pdf",
+        "file": "official-anniversaire2024.pdf",
+        "sha256": "089d582130bc231c3fb5866d13833ce9a4aa2ebcb117e096ee8d32868d33fd60",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:51.020846Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/docs/bon_de_reservation_anniversaire_2023.pdf",
+        "file": "official-anniversaire2023.pdf",
+        "sha256": "580947f3d65f37429d62f9bff86e67ab4f438eb4c2c301f21d9972a16c0e6545",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:52.382045Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/restauration-boutique",
+        "file": "official-food.html",
+        "sha256": "8714d7922804f78f5da2620864a0ec34d4e08e36b64c6a8d93985e14b47a6eb7",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:48:52.711692Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/groupes-cse",
+        "file": "official-groups.html",
+        "sha256": "873382ba07313053af7b40489ad94ec843e706914497fc656e6aa13bc05cfe29",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:49:45.791430Z"
+      },
+      {
+        "url": "https://www.parcfenestre.com/images/groupe/anniversaire.jpg",
+        "file": "official-birthday-image.jpg",
+        "sha256": "8431ba2a2eb5b4276e9f8e89df0f9bcf0f8b3b20255661996b28b20411801ef4",
+        "status": 200,
+        "checkedAtUtc": "2026-11-15T08:50:03.335848Z"
+      }
+    ],
+    "existingSourceHashes": [
+      {
+        "file": "../tapis-current.html",
+        "sha256": "49870c5b9088ad005a9c1a589663e603eb54b74562f9bf9cf41fa537938c5d6f"
+      },
+      {
+        "file": "../visit-current.html",
+        "sha256": "844986ee93c550b9e41c940e76f7ca67135c773b90fe388ad27d04d5a20f1c88"
+      }
+    ]
+  },
+  "qualification": "La page groupes actuelle lie le formulaire anniversaire officiel incluant la présence de la mascotte : Operating signifie ici rencontre sur réservation, sans horaire quotidien inventé. Le gonflable photographié reste Unknown ; dates individuelles, GPS et fabricant demeurent inconnus. Les deux fiches restent privées.",
+  "shortCopyException": "Sources limitées à une offre précise et une photographie réelle ; notices courtes assumées, aucun remplissage de catégorie.",
+  "photoInspectedByRoot": {
+    "file": "parallel-inventory-research/official-birthday-image.jpg",
+    "sha256": "8431ba2a2eb5b4276e9f8e89df0f9bcf0f8b3b20255661996b28b20411801ef4",
+    "captureDate": null
+  },
+  "document": {
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre"
+      },
+      "items": [
+        {
+          "key": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "id": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "name": "Rencontre avec Cacahuète",
+          "category": "Show",
+          "type": "MeetAndGreet",
+          "subtype": null,
+          "zoneId": null,
+          "zoneKey": null,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Cacahuète à la table d’anniversaire</h2><p>Un grand âne gris, un museau clair et une touffe noire : le costume de Cacahuète donne corps à la mascotte de Fenestre. Sur la terrasse du snack, une photographie du parc le montre près d’une longue table rose, entre les ballons colorés et les chaises du goûter.</p><p>La formule anniversaire proposée par Fenestre comprend la présence de la mascotte sur réservation. Cette rencontre accompagne le gâteau et les bougies ; elle ne correspond pas à un rendez-vous quotidien annoncé dans les allées.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Cacahuète at the birthday table</h2><p>A large grey donkey with a pale muzzle and a black tuft: the Cacahuète costume brings Fenestre’s mascot to life. A park photograph shows the character on the snack bar terrace beside a long pink table, among colourful balloons and chairs set out for the party.</p><p>Fenestre’s birthday package includes an appearance by the mascot when booked in advance. The encounter accompanies the cake and candles; it is not an advertised daily meet-and-greet in the park’s avenues.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Cacahuète am Geburtstagstisch</h2><p>Ein großer grauer Esel mit heller Schnauze und schwarzem Haarschopf: Das Cacahuète-Kostüm erweckt Fenestres Maskottchen zum Leben. Ein Parkfoto zeigt die Figur auf der Terrasse des Imbisses neben einem langen rosa Tisch, zwischen bunten Luftballons und den Stühlen für die Feier.</p><p>Zum buchbaren Geburtstagsangebot von Fenestre gehört ein Besuch des Maskottchens. Die Begegnung begleitet Kuchen und Kerzen; ein täglicher Treffpunkt auf den Parkwegen wird damit nicht angekündigt.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Cacahuète aan de verjaardagstafel</h2><p>Een grote grijze ezel met een lichte snuit en een zwarte kuif: het kostuum van Cacahuète brengt de mascotte van Fenestre tot leven. Op een foto van het park staat het personage op het terras van de snackbar naast een lange roze tafel, tussen gekleurde ballonnen en de stoelen voor het feestje.</p><p>Het verjaardagsarrangement van Fenestre omvat op reservering een bezoek van de mascotte. Die ontmoeting hoort bij de taart en de kaarsjes; er wordt geen dagelijkse ontmoeting op de parkpaden mee aangekondigd.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Cacahuète al tavolo del compleanno</h2><p>Un grande asino grigio, un muso chiaro e un ciuffo nero: il costume di Cacahuète dà vita alla mascotte di Fenestre. Una fotografia del parco mostra il personaggio sulla terrazza dello snack, accanto a un lungo tavolo rosa, tra palloncini colorati e sedie preparate per la festa.</p><p>La formula compleanno di Fenestre comprende la presenza della mascotte su prenotazione. L’incontro accompagna la torta e le candeline; non è un appuntamento quotidiano annunciato lungo i viali del parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Cacahuète en la mesa de cumpleaños</h2><p>Un gran burro gris, un hocico claro y un mechón negro: el disfraz de Cacahuète da vida a la mascota de Fenestre. Una fotografía del parque muestra al personaje en la terraza del bar, junto a una larga mesa rosa, entre globos de colores y las sillas preparadas para la merienda.</p><p>La fórmula de cumpleaños de Fenestre incluye la presencia de la mascota con reserva previa. El encuentro acompaña a la tarta y las velas; no se anuncia como una cita diaria en los paseos del parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Cacahuète przy urodzinowym stole</h2><p>Duży szary osioł z jasnym pyskiem i czarną grzywką: kostium Cacahuète ożywia maskotkę Fenestre. Na zdjęciu parku postać stoi na tarasie baru przy długim różowym stole, wśród kolorowych balonów i krzeseł przygotowanych na przyjęcie.</p><p>Oferta urodzinowa Fenestre obejmuje wizytę maskotki po wcześniejszej rezerwacji. Spotkanie towarzyszy tortowi i świeczkom; nie jest zapowiedzią codziennych spotkań na parkowych alejkach.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Cacahuète à mesa de aniversário</h2><p>Um grande burro cinzento, um focinho claro e um tufo preto: o fato de Cacahuète dá vida à mascote de Fenestre. Uma fotografia do parque mostra a personagem na esplanada do snack-bar, junto a uma longa mesa cor-de-rosa, entre balões coloridos e cadeiras preparadas para o lanche.</p><p>A oferta de aniversário de Fenestre inclui a presença da mascote mediante reserva. O encontro acompanha o bolo e as velas; não é anunciado como um encontro diário nos caminhos do parque.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://www.parcfenestre.com/groupes-cse",
+            "status": "Operating",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "latitude": null,
+          "longitude": null
+        },
+        {
+          "key": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+          "id": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+          "name": "Structures gonflables",
+          "category": "Attraction",
+          "type": "Playground",
+          "subtype": null,
+          "zoneId": null,
+          "zoneKey": null,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un toboggan près du snack</h2><p>Parmi les anciens jeux gonflables de Fenestre, un toboggan multicolore apparaît derrière la terrasse du snack. Son arche rouge et bleue entoure une pente jaune, bordée de larges côtés bleus, à quelques pas de la façade en pierre.</p><p>Ce décor figure sur une photographie officielle des anniversaires avec Cacahuète. La période d’exploitation de ce jeu et sa présence actuelle ne sont pas précisées.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A slide beside the snack bar</h2><p>One of Fenestre’s earlier inflatable play structures was a multicoloured slide behind the snack bar terrace. Its red and blue arch surrounded a yellow slope with broad blue sides, a short distance from the stone façade.</p><p>This setting appears in an official photograph of birthday parties with Cacahuète. The park does not specify when the slide operated or whether it is still present.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Rutsche neben dem Imbiss</h2><p>Zu Fenestres früheren aufblasbaren Spielgeräten gehörte eine bunte Rutsche hinter der Imbissterrasse. Ihr rot-blauer Bogen umrahmte eine gelbe Rutschfläche mit breiten blauen Seiten, nur wenige Schritte von der Steinfassade entfernt.</p><p>Diese Kulisse ist auf einem offiziellen Foto der Geburtstagsfeiern mit Cacahuète zu sehen. Wann die Rutsche betrieben wurde und ob sie noch vorhanden ist, wird nicht angegeben.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een glijbaan naast de snackbar</h2><p>Een van de vroegere opblaasbare speeltoestellen van Fenestre was een veelkleurige glijbaan achter het terras van de snackbar. De rood-blauwe boog omlijstte een gele helling met brede blauwe zijkanten, vlak bij de stenen gevel.</p><p>Dit decor is te zien op een officiële foto van verjaardagsfeestjes met Cacahuète. Wanneer de glijbaan in gebruik was en of ze er nog staat, wordt niet vermeld.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Uno scivolo accanto allo snack</h2><p>Tra i giochi gonfiabili del passato di Fenestre compare uno scivolo multicolore dietro la terrazza dello snack. L’arco rosso e blu incorniciava una discesa gialla dai larghi bordi blu, a pochi passi dalla facciata in pietra.</p><p>Questo scenario appare in una fotografia ufficiale dei compleanni con Cacahuète. Il periodo di attività dello scivolo e la sua presenza attuale non sono precisati.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un tobogán junto al bar</h2><p>Entre los antiguos juegos hinchables de Fenestre aparece un tobogán multicolor detrás de la terraza del bar. Su arco rojo y azul enmarcaba una pendiente amarilla con amplios laterales azules, a pocos pasos de la fachada de piedra.</p><p>Este escenario figura en una fotografía oficial de los cumpleaños con Cacahuète. No se precisan el periodo de funcionamiento del juego ni su presencia actual.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Zjeżdżalnia obok baru</h2><p>Wśród dawnych dmuchanych urządzeń do zabawy w Fenestre była wielobarwna zjeżdżalnia za tarasem baru. Czerwono-niebieski łuk otaczał żółtą pochylnię z szerokimi niebieskimi bokami, kilka kroków od kamiennej fasady.</p><p>Tę scenerię widać na oficjalnym zdjęciu przyjęć urodzinowych z Cacahuète. Nie podano okresu działania zjeżdżalni ani nie potwierdzono jej obecności dzisiaj.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um escorrega junto ao snack-bar</h2><p>Entre os antigos jogos insufláveis de Fenestre havia um escorrega multicolorido atrás da esplanada do snack-bar. O arco vermelho e azul enquadrava uma descida amarela com largas laterais azuis, a poucos passos da fachada de pedra.</p><p>Este cenário aparece numa fotografia oficial dos aniversários com Cacahuète. O período de funcionamento do jogo e a sua presença atual não são indicados.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://www.parcfenestre.com/groupes-cse",
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "latitude": null,
+          "longitude": null
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "10682dcb-0d0c-4272-a72f-fe76398983c5",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T08:56:06.2476091Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Esel Cacahuète begegnete den Familien</h2><p>Das Maskottchen Cacahuète erschien als großer grauer Esel mit heller Schnauze, langen Ohren und dunklem Haarschopf. Ältere Bilder zeigen die Figur neben der rot-grünen Lokomotive und in der Kulisse des Carrousel 1900.</p><p>Diese Auftritte gaben der Parkfigur ein lebendiges Gesicht. Das Kostüm erinnerte an die echten Esel von Fenestre, während die Begegnungen zwischen Fahrgeschäften und Gartenbäumen stattfanden.</p>",
+            "newValue": "<h2>Cacahuète am Geburtstagstisch</h2><p>Ein großer grauer Esel mit heller Schnauze und schwarzem Haarschopf: Das Cacahuète-Kostüm erweckt Fenestres Maskottchen zum Leben. Ein Parkfoto zeigt die Figur auf der Terrasse des Imbisses neben einem langen rosa Tisch, zwischen bunten Luftballons und den Stühlen für die Feier.</p><p>Zum buchbaren Geburtstagsangebot von Fenestre gehört ein Besuch des Maskottchens. Die Begegnung begleitet Kuchen und Kerzen; ein täglicher Treffpunkt auf den Parkwegen wird damit nicht angekündigt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Cacahuète the donkey met visiting families</h2><p>The Cacahuète mascot took the form of a large grey donkey with a pale muzzle, long ears and a dark tuft on its head. Older images show the character beside the red and green locomotive and within Carrousel 1900’s decoration.</p><p>These appearances brought the park’s character to life. The costume echoed Fenestre’s real donkeys, while encounters took place among the rides and garden trees.</p>",
+            "newValue": "<h2>Cacahuète at the birthday table</h2><p>A large grey donkey with a pale muzzle and a black tuft: the Cacahuète costume brings Fenestre’s mascot to life. A park photograph shows the character on the snack bar terrace beside a long pink table, among colourful balloons and chairs set out for the party.</p><p>Fenestre’s birthday package includes an appearance by the mascot when booked in advance. The encounter accompanies the cake and candles; it is not an advertised daily meet-and-greet in the park’s avenues.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El burro Cacahuète salía al encuentro de las familias</h2><p>La mascota Cacahuète tenía forma de gran burro gris con hocico claro, orejas largas y un mechón oscuro en la cabeza. Las imágenes antiguas lo muestran junto a la locomotora roja y verde y en el decorado de Carrousel 1900.</p><p>Esas apariciones daban vida al personaje del parque. El disfraz recordaba a los burros de verdad de Fenestre, mientras los encuentros se celebraban entre las atracciones y los árboles del jardín.</p>",
+            "newValue": "<h2>Cacahuète en la mesa de cumpleaños</h2><p>Un gran burro gris, un hocico claro y un mechón negro: el disfraz de Cacahuète da vida a la mascota de Fenestre. Una fotografía del parque muestra al personaje en la terraza del bar, junto a una larga mesa rosa, entre globos de colores y las sillas preparadas para la merienda.</p><p>La fórmula de cumpleaños de Fenestre incluye la presencia de la mascota con reserva previa. El encuentro acompaña a la tarta y las velas; no se anuncia como una cita diaria en los paseos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>L’âne Cacahuète venait à la rencontre des familles</h2><p>La mascotte Cacahuète prenait la forme d’un grand âne gris au museau clair, avec de longues oreilles et une touffe sombre sur la tête. Les images anciennes le montrent près de la locomotive rouge et verte, puis dans le décor du Carrousel 1900.</p><p>Ces apparitions donnaient un visage vivant au personnage associé au parc. Le costume évoquait les véritables ânes de Fenestre, tandis que les rencontres se déroulaient parmi les manèges et les arbres du jardin.</p>",
+            "newValue": "<h2>Cacahuète à la table d’anniversaire</h2><p>Un grand âne gris, un museau clair et une touffe noire : le costume de Cacahuète donne corps à la mascotte de Fenestre. Sur la terrasse du snack, une photographie du parc le montre près d’une longue table rose, entre les ballons colorés et les chaises du goûter.</p><p>La formule anniversaire proposée par Fenestre comprend la présence de la mascotte sur réservation. Cette rencontre accompagne le gâteau et les bougies ; elle ne correspond pas à un rendez-vous quotidien annoncé dans les allées.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>L’asino Cacahuète incontrava le famiglie</h2><p>La mascotte Cacahuète aveva l’aspetto di un grande asino grigio dal muso chiaro, con lunghe orecchie e un ciuffo scuro sulla testa. Le immagini più vecchie lo mostrano accanto alla locomotiva rossa e verde e nel decoro del Carrousel 1900.</p><p>Queste apparizioni davano vita al personaggio del parco. Il costume richiamava i veri asini di Fenestre, mentre gli incontri avvenivano tra le giostre e gli alberi del giardino.</p>",
+            "newValue": "<h2>Cacahuète al tavolo del compleanno</h2><p>Un grande asino grigio, un muso chiaro e un ciuffo nero: il costume di Cacahuète dà vita alla mascotte di Fenestre. Una fotografia del parco mostra il personaggio sulla terrazza dello snack, accanto a un lungo tavolo rosa, tra palloncini colorati e sedie preparate per la festa.</p><p>La formula compleanno di Fenestre comprende la presenza della mascotte su prenotazione. L’incontro accompagna la torta e le candeline; non è un appuntamento quotidiano annunciato lungo i viali del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Ezel Cacahuète ontmoette de gezinnen</h2><p>De mascotte Cacahuète verscheen als een grote grijze ezel met een lichte snuit, lange oren en een donkere pluk op het hoofd. Oudere beelden tonen de figuur bij de rood-groene locomotief en in het decor van Carrousel 1900.</p><p>Die verschijningen brachten het parkpersonage tot leven. Het kostuum verwees naar de echte ezels van Fenestre, terwijl de ontmoetingen tussen de attracties en de tuinbomen plaatsvonden.</p>",
+            "newValue": "<h2>Cacahuète aan de verjaardagstafel</h2><p>Een grote grijze ezel met een lichte snuit en een zwarte kuif: het kostuum van Cacahuète brengt de mascotte van Fenestre tot leven. Op een foto van het park staat het personage op het terras van de snackbar naast een lange roze tafel, tussen gekleurde ballonnen en de stoelen voor het feestje.</p><p>Het verjaardagsarrangement van Fenestre omvat op reservering een bezoek van de mascotte. Die ontmoeting hoort bij de taart en de kaarsjes; er wordt geen dagelijkse ontmoeting op de parkpaden mee aangekondigd.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Osioł Cacahuète spotykał się z rodzinami</h2><p>Maskotka Cacahuète miała postać dużego szarego osła z jasnym pyskiem, długimi uszami i ciemną grzywką. Starsze zdjęcia pokazują tę postać przy czerwono-zielonej lokomotywie i w dekoracji Carrousel 1900.</p><p>Te występy ożywiały parkową postać. Kostium nawiązywał do prawdziwych osłów Fenestre, a spotkania odbywały się wśród atrakcji i ogrodowych drzew.</p>",
+            "newValue": "<h2>Cacahuète przy urodzinowym stole</h2><p>Duży szary osioł z jasnym pyskiem i czarną grzywką: kostium Cacahuète ożywia maskotkę Fenestre. Na zdjęciu parku postać stoi na tarasie baru przy długim różowym stole, wśród kolorowych balonów i krzeseł przygotowanych na przyjęcie.</p><p>Oferta urodzinowa Fenestre obejmuje wizytę maskotki po wcześniejszej rezerwacji. Spotkanie towarzyszy tortowi i świeczkom; nie jest zapowiedzią codziennych spotkań na parkowych alejkach.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O burro Cacahuète encontrava as famílias</h2><p>A mascote Cacahuète tinha a forma de um grande burro cinzento com focinho claro, orelhas compridas e um tufo escuro na cabeça. As imagens antigas mostram a personagem junto à locomotiva vermelha e verde e no cenário do Carrousel 1900.</p><p>Estas aparições davam vida à personagem do parque. O fato recordava os verdadeiros burros de Fenestre, enquanto os encontros aconteciam entre os divertimentos e as árvores do jardim.</p>",
+            "newValue": "<h2>Cacahuète à mesa de aniversário</h2><p>Um grande burro cinzento, um focinho claro e um tufo preto: o fato de Cacahuète dá vida à mascote de Fenestre. Uma fotografia do parque mostra a personagem na esplanada do snack-bar, junto a uma longa mesa cor-de-rosa, entre balões coloridos e cadeiras preparadas para o lanche.</p><p>A oferta de aniversário de Fenestre inclui a presença da mascote mediante reserva. O encontro acompanha o bolo e as velas; não é anunciado como um encontro diário nos caminhos do parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.koifaire.com/auvergne/parc,fenestre-8306.html",
+            "newValue": "https://www.parcfenestre.com/groupes-cse"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": "Unknown",
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die aufblasbaren Spiele der Familie Saby</h2><p>Die Familie Saby bot in Fenestre auch aufblasbare Spielgeräte an. Diese weichen Spiele ergänzten die Unterhaltung im Garten von La Bourboule um das Vergnügen des Hüpfens, als auch Les Tapis Volants zu den Fahrgeschäften des Parks gehörten.</p>",
+            "newValue": "<h2>Eine Rutsche neben dem Imbiss</h2><p>Zu Fenestres früheren aufblasbaren Spielgeräten gehörte eine bunte Rutsche hinter der Imbissterrasse. Ihr rot-blauer Bogen umrahmte eine gelbe Rutschfläche mit breiten blauen Seiten, nur wenige Schritte von der Steinfassade entfernt.</p><p>Diese Kulisse ist auf einem offiziellen Foto der Geburtstagsfeiern mit Cacahuète zu sehen. Wann die Rutsche betrieben wurde und ob sie noch vorhanden ist, wird nicht angegeben.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The Saby family’s inflatable games</h2><p>The Saby family also offered inflatable play equipment at Fenestre. These soft games added the pleasure of bouncing to the entertainments in La Bourboule’s garden, during the period when Les Tapis Volants was also among the park’s rides.</p>",
+            "newValue": "<h2>A slide beside the snack bar</h2><p>One of Fenestre’s earlier inflatable play structures was a multicoloured slide behind the snack bar terrace. Its red and blue arch surrounded a yellow slope with broad blue sides, a short distance from the stone façade.</p><p>This setting appears in an official photograph of birthday parties with Cacahuète. The park does not specify when the slide operated or whether it is still present.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Los juegos hinchables de la familia Saby</h2><p>La familia Saby también ofrecía juegos hinchables en Fenestre. Estos juegos blandos añadían el placer de rebotar a los entretenimientos del jardín de La Bourboule, en la época en que Les Tapis Volants también figuraban entre las atracciones del parque.</p>",
+            "newValue": "<h2>Un tobogán junto al bar</h2><p>Entre los antiguos juegos hinchables de Fenestre aparece un tobogán multicolor detrás de la terraza del bar. Su arco rojo y azul enmarcaba una pendiente amarilla con amplios laterales azules, a pocos pasos de la fachada de piedra.</p><p>Este escenario figura en una fotografía oficial de los cumpleaños con Cacahuète. No se precisan el periodo de funcionamiento del juego ni su presencia actual.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les jeux gonflables de la famille Saby</h2><p>La famille Saby proposait également des structures gonflables à Fenestre. Ces jeux souples ajoutaient le plaisir de rebondir aux divertissements du jardin de La Bourboule, à l’époque où les Tapis Volants figuraient aussi parmi les manèges du parc.</p>",
+            "newValue": "<h2>Un toboggan près du snack</h2><p>Parmi les anciens jeux gonflables de Fenestre, un toboggan multicolore apparaît derrière la terrasse du snack. Son arche rouge et bleue entoure une pente jaune, bordée de larges côtés bleus, à quelques pas de la façade en pierre.</p><p>Ce décor figure sur une photographie officielle des anniversaires avec Cacahuète. La période d’exploitation de ce jeu et sa présence actuelle ne sont pas précisées.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>I giochi gonfiabili della famiglia Saby</h2><p>La famiglia Saby proponeva anche giochi gonfiabili a Fenestre. Questi giochi morbidi aggiungevano il piacere di rimbalzare ai divertimenti del giardino di La Bourboule, nel periodo in cui anche Les Tapis Volants figuravano tra le giostre del parco.</p>",
+            "newValue": "<h2>Uno scivolo accanto allo snack</h2><p>Tra i giochi gonfiabili del passato di Fenestre compare uno scivolo multicolore dietro la terrazza dello snack. L’arco rosso e blu incorniciava una discesa gialla dai larghi bordi blu, a pochi passi dalla facciata in pietra.</p><p>Questo scenario appare in una fotografia ufficiale dei compleanni con Cacahuète. Il periodo di attività dello scivolo e la sua presenza attuale non sono precisati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De opblaasspellen van de familie Saby</h2><p>De familie Saby bood in Fenestre ook opblaasbare speeltoestellen aan. Deze zachte spellen voegden het plezier van springen toe aan het vermaak in de tuin van La Bourboule, in de periode waarin Les Tapis Volants ook bij de parkattracties hoorde.</p>",
+            "newValue": "<h2>Een glijbaan naast de snackbar</h2><p>Een van de vroegere opblaasbare speeltoestellen van Fenestre was een veelkleurige glijbaan achter het terras van de snackbar. De rood-blauwe boog omlijstte een gele helling met brede blauwe zijkanten, vlak bij de stenen gevel.</p><p>Dit decor is te zien op een officiële foto van verjaardagsfeestjes met Cacahuète. Wanneer de glijbaan in gebruik was en of ze er nog staat, wordt niet vermeld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Dmuchane zabawy rodziny Saby</h2><p>Rodzina Saby oferowała w Fenestre również dmuchane urządzenia do zabawy. Dodawały one przyjemność podskakiwania do rozrywek ogrodu La Bourboule w okresie, gdy Les Tapis Volants także należały do parkowych atrakcji.</p>",
+            "newValue": "<h2>Zjeżdżalnia obok baru</h2><p>Wśród dawnych dmuchanych urządzeń do zabawy w Fenestre była wielobarwna zjeżdżalnia za tarasem baru. Czerwono-niebieski łuk otaczał żółtą pochylnię z szerokimi niebieskimi bokami, kilka kroków od kamiennej fasady.</p><p>Tę scenerię widać na oficjalnym zdjęciu przyjęć urodzinowych z Cacahuète. Nie podano okresu działania zjeżdżalni ani nie potwierdzono jej obecności dzisiaj.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Os insufláveis da família Saby</h2><p>A família Saby também oferecia jogos insufláveis em Fenestre. Estes jogos macios acrescentavam o prazer de saltar aos divertimentos do jardim de La Bourboule, na época em que Les Tapis Volants também faziam parte das atrações do parque.</p>",
+            "newValue": "<h2>Um escorrega junto ao snack-bar</h2><p>Entre os antigos jogos insufláveis de Fenestre havia um escorrega multicolorido atrás da esplanada do snack-bar. O arco vermelho e azul enquadrava uma descida amarela com largas laterais azuis, a poucos passos da fachada de pedra.</p><p>Este cenário aparece numa fotografia oficial dos aniversários com Cacahuète. O período de funcionamento do jogo e a sua presença atual não são indicados.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.koifaire.com/auvergne/parc,fenestre-8306.html",
+            "newValue": "https://www.parcfenestre.com/groupes-cse"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "2188838b-81ad-47fb-9b48-035e883154de",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T08:56:47.4885495Z",
+    "appliedAtUtc": "2026-11-15T08:56:47.4885502Z",
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Esel Cacahuète begegnete den Familien</h2><p>Das Maskottchen Cacahuète erschien als großer grauer Esel mit heller Schnauze, langen Ohren und dunklem Haarschopf. Ältere Bilder zeigen die Figur neben der rot-grünen Lokomotive und in der Kulisse des Carrousel 1900.</p><p>Diese Auftritte gaben der Parkfigur ein lebendiges Gesicht. Das Kostüm erinnerte an die echten Esel von Fenestre, während die Begegnungen zwischen Fahrgeschäften und Gartenbäumen stattfanden.</p>",
+            "newValue": "<h2>Cacahuète am Geburtstagstisch</h2><p>Ein großer grauer Esel mit heller Schnauze und schwarzem Haarschopf: Das Cacahuète-Kostüm erweckt Fenestres Maskottchen zum Leben. Ein Parkfoto zeigt die Figur auf der Terrasse des Imbisses neben einem langen rosa Tisch, zwischen bunten Luftballons und den Stühlen für die Feier.</p><p>Zum buchbaren Geburtstagsangebot von Fenestre gehört ein Besuch des Maskottchens. Die Begegnung begleitet Kuchen und Kerzen; ein täglicher Treffpunkt auf den Parkwegen wird damit nicht angekündigt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Cacahuète the donkey met visiting families</h2><p>The Cacahuète mascot took the form of a large grey donkey with a pale muzzle, long ears and a dark tuft on its head. Older images show the character beside the red and green locomotive and within Carrousel 1900’s decoration.</p><p>These appearances brought the park’s character to life. The costume echoed Fenestre’s real donkeys, while encounters took place among the rides and garden trees.</p>",
+            "newValue": "<h2>Cacahuète at the birthday table</h2><p>A large grey donkey with a pale muzzle and a black tuft: the Cacahuète costume brings Fenestre’s mascot to life. A park photograph shows the character on the snack bar terrace beside a long pink table, among colourful balloons and chairs set out for the party.</p><p>Fenestre’s birthday package includes an appearance by the mascot when booked in advance. The encounter accompanies the cake and candles; it is not an advertised daily meet-and-greet in the park’s avenues.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El burro Cacahuète salía al encuentro de las familias</h2><p>La mascota Cacahuète tenía forma de gran burro gris con hocico claro, orejas largas y un mechón oscuro en la cabeza. Las imágenes antiguas lo muestran junto a la locomotora roja y verde y en el decorado de Carrousel 1900.</p><p>Esas apariciones daban vida al personaje del parque. El disfraz recordaba a los burros de verdad de Fenestre, mientras los encuentros se celebraban entre las atracciones y los árboles del jardín.</p>",
+            "newValue": "<h2>Cacahuète en la mesa de cumpleaños</h2><p>Un gran burro gris, un hocico claro y un mechón negro: el disfraz de Cacahuète da vida a la mascota de Fenestre. Una fotografía del parque muestra al personaje en la terraza del bar, junto a una larga mesa rosa, entre globos de colores y las sillas preparadas para la merienda.</p><p>La fórmula de cumpleaños de Fenestre incluye la presencia de la mascota con reserva previa. El encuentro acompaña a la tarta y las velas; no se anuncia como una cita diaria en los paseos del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>L’âne Cacahuète venait à la rencontre des familles</h2><p>La mascotte Cacahuète prenait la forme d’un grand âne gris au museau clair, avec de longues oreilles et une touffe sombre sur la tête. Les images anciennes le montrent près de la locomotive rouge et verte, puis dans le décor du Carrousel 1900.</p><p>Ces apparitions donnaient un visage vivant au personnage associé au parc. Le costume évoquait les véritables ânes de Fenestre, tandis que les rencontres se déroulaient parmi les manèges et les arbres du jardin.</p>",
+            "newValue": "<h2>Cacahuète à la table d’anniversaire</h2><p>Un grand âne gris, un museau clair et une touffe noire : le costume de Cacahuète donne corps à la mascotte de Fenestre. Sur la terrasse du snack, une photographie du parc le montre près d’une longue table rose, entre les ballons colorés et les chaises du goûter.</p><p>La formule anniversaire proposée par Fenestre comprend la présence de la mascotte sur réservation. Cette rencontre accompagne le gâteau et les bougies ; elle ne correspond pas à un rendez-vous quotidien annoncé dans les allées.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>L’asino Cacahuète incontrava le famiglie</h2><p>La mascotte Cacahuète aveva l’aspetto di un grande asino grigio dal muso chiaro, con lunghe orecchie e un ciuffo scuro sulla testa. Le immagini più vecchie lo mostrano accanto alla locomotiva rossa e verde e nel decoro del Carrousel 1900.</p><p>Queste apparizioni davano vita al personaggio del parco. Il costume richiamava i veri asini di Fenestre, mentre gli incontri avvenivano tra le giostre e gli alberi del giardino.</p>",
+            "newValue": "<h2>Cacahuète al tavolo del compleanno</h2><p>Un grande asino grigio, un muso chiaro e un ciuffo nero: il costume di Cacahuète dà vita alla mascotte di Fenestre. Una fotografia del parco mostra il personaggio sulla terrazza dello snack, accanto a un lungo tavolo rosa, tra palloncini colorati e sedie preparate per la festa.</p><p>La formula compleanno di Fenestre comprende la presenza della mascotte su prenotazione. L’incontro accompagna la torta e le candeline; non è un appuntamento quotidiano annunciato lungo i viali del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Ezel Cacahuète ontmoette de gezinnen</h2><p>De mascotte Cacahuète verscheen als een grote grijze ezel met een lichte snuit, lange oren en een donkere pluk op het hoofd. Oudere beelden tonen de figuur bij de rood-groene locomotief en in het decor van Carrousel 1900.</p><p>Die verschijningen brachten het parkpersonage tot leven. Het kostuum verwees naar de echte ezels van Fenestre, terwijl de ontmoetingen tussen de attracties en de tuinbomen plaatsvonden.</p>",
+            "newValue": "<h2>Cacahuète aan de verjaardagstafel</h2><p>Een grote grijze ezel met een lichte snuit en een zwarte kuif: het kostuum van Cacahuète brengt de mascotte van Fenestre tot leven. Op een foto van het park staat het personage op het terras van de snackbar naast een lange roze tafel, tussen gekleurde ballonnen en de stoelen voor het feestje.</p><p>Het verjaardagsarrangement van Fenestre omvat op reservering een bezoek van de mascotte. Die ontmoeting hoort bij de taart en de kaarsjes; er wordt geen dagelijkse ontmoeting op de parkpaden mee aangekondigd.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Osioł Cacahuète spotykał się z rodzinami</h2><p>Maskotka Cacahuète miała postać dużego szarego osła z jasnym pyskiem, długimi uszami i ciemną grzywką. Starsze zdjęcia pokazują tę postać przy czerwono-zielonej lokomotywie i w dekoracji Carrousel 1900.</p><p>Te występy ożywiały parkową postać. Kostium nawiązywał do prawdziwych osłów Fenestre, a spotkania odbywały się wśród atrakcji i ogrodowych drzew.</p>",
+            "newValue": "<h2>Cacahuète przy urodzinowym stole</h2><p>Duży szary osioł z jasnym pyskiem i czarną grzywką: kostium Cacahuète ożywia maskotkę Fenestre. Na zdjęciu parku postać stoi na tarasie baru przy długim różowym stole, wśród kolorowych balonów i krzeseł przygotowanych na przyjęcie.</p><p>Oferta urodzinowa Fenestre obejmuje wizytę maskotki po wcześniejszej rezerwacji. Spotkanie towarzyszy tortowi i świeczkom; nie jest zapowiedzią codziennych spotkań na parkowych alejkach.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O burro Cacahuète encontrava as famílias</h2><p>A mascote Cacahuète tinha a forma de um grande burro cinzento com focinho claro, orelhas compridas e um tufo escuro na cabeça. As imagens antigas mostram a personagem junto à locomotiva vermelha e verde e no cenário do Carrousel 1900.</p><p>Estas aparições davam vida à personagem do parque. O fato recordava os verdadeiros burros de Fenestre, enquanto os encontros aconteciam entre os divertimentos e as árvores do jardim.</p>",
+            "newValue": "<h2>Cacahuète à mesa de aniversário</h2><p>Um grande burro cinzento, um focinho claro e um tufo preto: o fato de Cacahuète dá vida à mascote de Fenestre. Uma fotografia do parque mostra a personagem na esplanada do snack-bar, junto a uma longa mesa cor-de-rosa, entre balões coloridos e cadeiras preparadas para o lanche.</p><p>A oferta de aniversário de Fenestre inclui a presença da mascote mediante reserva. O encontro acompanha o bolo e as velas; não é anunciado como um encontro diário nos caminhos do parque.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.koifaire.com/auvergne/parc,fenestre-8306.html",
+            "newValue": "https://www.parcfenestre.com/groupes-cse"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": "Unknown",
+            "newValue": "Operating"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Die aufblasbaren Spiele der Familie Saby</h2><p>Die Familie Saby bot in Fenestre auch aufblasbare Spielgeräte an. Diese weichen Spiele ergänzten die Unterhaltung im Garten von La Bourboule um das Vergnügen des Hüpfens, als auch Les Tapis Volants zu den Fahrgeschäften des Parks gehörten.</p>",
+            "newValue": "<h2>Eine Rutsche neben dem Imbiss</h2><p>Zu Fenestres früheren aufblasbaren Spielgeräten gehörte eine bunte Rutsche hinter der Imbissterrasse. Ihr rot-blauer Bogen umrahmte eine gelbe Rutschfläche mit breiten blauen Seiten, nur wenige Schritte von der Steinfassade entfernt.</p><p>Diese Kulisse ist auf einem offiziellen Foto der Geburtstagsfeiern mit Cacahuète zu sehen. Wann die Rutsche betrieben wurde und ob sie noch vorhanden ist, wird nicht angegeben.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The Saby family’s inflatable games</h2><p>The Saby family also offered inflatable play equipment at Fenestre. These soft games added the pleasure of bouncing to the entertainments in La Bourboule’s garden, during the period when Les Tapis Volants was also among the park’s rides.</p>",
+            "newValue": "<h2>A slide beside the snack bar</h2><p>One of Fenestre’s earlier inflatable play structures was a multicoloured slide behind the snack bar terrace. Its red and blue arch surrounded a yellow slope with broad blue sides, a short distance from the stone façade.</p><p>This setting appears in an official photograph of birthday parties with Cacahuète. The park does not specify when the slide operated or whether it is still present.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Los juegos hinchables de la familia Saby</h2><p>La familia Saby también ofrecía juegos hinchables en Fenestre. Estos juegos blandos añadían el placer de rebotar a los entretenimientos del jardín de La Bourboule, en la época en que Les Tapis Volants también figuraban entre las atracciones del parque.</p>",
+            "newValue": "<h2>Un tobogán junto al bar</h2><p>Entre los antiguos juegos hinchables de Fenestre aparece un tobogán multicolor detrás de la terraza del bar. Su arco rojo y azul enmarcaba una pendiente amarilla con amplios laterales azules, a pocos pasos de la fachada de piedra.</p><p>Este escenario figura en una fotografía oficial de los cumpleaños con Cacahuète. No se precisan el periodo de funcionamiento del juego ni su presencia actual.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Les jeux gonflables de la famille Saby</h2><p>La famille Saby proposait également des structures gonflables à Fenestre. Ces jeux souples ajoutaient le plaisir de rebondir aux divertissements du jardin de La Bourboule, à l’époque où les Tapis Volants figuraient aussi parmi les manèges du parc.</p>",
+            "newValue": "<h2>Un toboggan près du snack</h2><p>Parmi les anciens jeux gonflables de Fenestre, un toboggan multicolore apparaît derrière la terrasse du snack. Son arche rouge et bleue entoure une pente jaune, bordée de larges côtés bleus, à quelques pas de la façade en pierre.</p><p>Ce décor figure sur une photographie officielle des anniversaires avec Cacahuète. La période d’exploitation de ce jeu et sa présence actuelle ne sont pas précisées.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>I giochi gonfiabili della famiglia Saby</h2><p>La famiglia Saby proponeva anche giochi gonfiabili a Fenestre. Questi giochi morbidi aggiungevano il piacere di rimbalzare ai divertimenti del giardino di La Bourboule, nel periodo in cui anche Les Tapis Volants figuravano tra le giostre del parco.</p>",
+            "newValue": "<h2>Uno scivolo accanto allo snack</h2><p>Tra i giochi gonfiabili del passato di Fenestre compare uno scivolo multicolore dietro la terrazza dello snack. L’arco rosso e blu incorniciava una discesa gialla dai larghi bordi blu, a pochi passi dalla facciata in pietra.</p><p>Questo scenario appare in una fotografia ufficiale dei compleanni con Cacahuète. Il periodo di attività dello scivolo e la sua presenza attuale non sono precisati.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De opblaasspellen van de familie Saby</h2><p>De familie Saby bood in Fenestre ook opblaasbare speeltoestellen aan. Deze zachte spellen voegden het plezier van springen toe aan het vermaak in de tuin van La Bourboule, in de periode waarin Les Tapis Volants ook bij de parkattracties hoorde.</p>",
+            "newValue": "<h2>Een glijbaan naast de snackbar</h2><p>Een van de vroegere opblaasbare speeltoestellen van Fenestre was een veelkleurige glijbaan achter het terras van de snackbar. De rood-blauwe boog omlijstte een gele helling met brede blauwe zijkanten, vlak bij de stenen gevel.</p><p>Dit decor is te zien op een officiële foto van verjaardagsfeestjes met Cacahuète. Wanneer de glijbaan in gebruik was en of ze er nog staat, wordt niet vermeld.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Dmuchane zabawy rodziny Saby</h2><p>Rodzina Saby oferowała w Fenestre również dmuchane urządzenia do zabawy. Dodawały one przyjemność podskakiwania do rozrywek ogrodu La Bourboule w okresie, gdy Les Tapis Volants także należały do parkowych atrakcji.</p>",
+            "newValue": "<h2>Zjeżdżalnia obok baru</h2><p>Wśród dawnych dmuchanych urządzeń do zabawy w Fenestre była wielobarwna zjeżdżalnia za tarasem baru. Czerwono-niebieski łuk otaczał żółtą pochylnię z szerokimi niebieskimi bokami, kilka kroków od kamiennej fasady.</p><p>Tę scenerię widać na oficjalnym zdjęciu przyjęć urodzinowych z Cacahuète. Nie podano okresu działania zjeżdżalni ani nie potwierdzono jej obecności dzisiaj.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Os insufláveis da família Saby</h2><p>A família Saby também oferecia jogos insufláveis em Fenestre. Estes jogos macios acrescentavam o prazer de saltar aos divertimentos do jardim de La Bourboule, na época em que Les Tapis Volants também faziam parte das atrações do parque.</p>",
+            "newValue": "<h2>Um escorrega junto ao snack-bar</h2><p>Entre os antigos jogos insufláveis de Fenestre havia um escorrega multicolorido atrás da esplanada do snack-bar. O arco vermelho e azul enquadrava uma descida amarela com largas laterais azuis, a poucos passos da fachada de pedra.</p><p>Este cenário aparece numa fotografia oficial dos aniversários com Cacahuète. O período de funcionamento do jogo e a sua presença atual não são indicados.</p>"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.koifaire.com/auvergne/parc,fenestre-8306.html",
+            "newValue": "https://www.parcfenestre.com/groupes-cse"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "publicationPerformed": false,
+  "idempotence": {
+    "operationId": "52ea6aaa-8d4e-4350-a11e-a249742f8112",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T08:58:03.6465203Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  }
+}

@@ -29151,9 +29151,250 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Reprendre l’acquisition ou gestion documentée sans confondre propriétaire et exploitant, vérifier l’horizon officiel des horaires puis audit final.",
+      "lastDataIntegrationAt": "2026-11-15T08:57:39.078Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-be93f3de-28f8-478f-a238-be12fb6cebab",
+          "appliedAt": "2026-10-20T12:08:28.962Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-be93f3de-28f8-478f-a238-be12fb6cebab",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 5 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-df69b7bd-68b6-4e6f-9522-9ca279643a13",
+          "appliedAt": "2026-10-20T12:13:38.444Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-df69b7bd-68b6-4e6f-9522-9ca279643a13",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 5 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-c42f4a32-cede-41ca-ab7d-fcefe7b9319e",
+          "appliedAt": "2026-10-20T12:20:59.522Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-c42f4a32-cede-41ca-ab7d-fcefe7b9319e",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 8 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-ca95968d-30f9-4105-90bc-2c18f9dfeb7e",
+          "appliedAt": "2026-10-20T12:31:05.993Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-ca95968d-30f9-4105-90bc-2c18f9dfeb7e",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 8 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-30381144-6061-469a-a31a-f0e715b554f5",
+          "appliedAt": "2026-10-20T12:37:34.726Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-30381144-6061-469a-a31a-f0e715b554f5",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 8 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-da390319-1418-4492-8b71-9403df0ad832",
+          "appliedAt": "2026-10-20T12:46:59.249Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-da390319-1418-4492-8b71-9403df0ad832",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 8 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-22454c11-080c-47b6-a95f-6d0a164dec4e",
+          "appliedAt": "2026-10-20T12:55:14.196Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-22454c11-080c-47b6-a95f-6d0a164dec4e",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 9 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-97d6da8b-df91-4508-8386-36fd061889de",
+          "appliedAt": "2026-10-20T13:08:47.187Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-97d6da8b-df91-4508-8386-36fd061889de",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 2 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-fd86d99e-545f-4fd9-9edd-5d9850ab9552",
+          "appliedAt": "2026-10-20T13:15:55.007Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-fd86d99e-545f-4fd9-9edd-5d9850ab9552",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-52847853-7d27-4e5e-88c1-024478262d0b",
+          "appliedAt": "2026-10-20T13:28:22.042Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-52847853-7d27-4e5e-88c1-024478262d0b",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 1 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-fce52e1f-950f-4e56-ba4a-d39701ac8f35",
+          "appliedAt": "2026-10-20T13:35:25.519Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-fce52e1f-950f-4e56-ba4a-d39701ac8f35",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 2 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-b7f1b725-e445-4b66-bc47-ba02e5c20531",
+          "appliedAt": "2026-10-20T13:41:08.113Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-b7f1b725-e445-4b66-bc47-ba02e5c20531",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 4 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-5f2c3276-8b22-4a1f-8da5-f9672f7ae7d7",
+          "appliedAt": "2026-10-20T13:46:04.328Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-5f2c3276-8b22-4a1f-8da5-f9672f7ae7d7",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 6 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-2c4ce410-780e-40b5-924e-6a0e6d50923c",
+          "appliedAt": "2026-10-20T13:49:52.021Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-2c4ce410-780e-40b5-924e-6a0e6d50923c",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-c942d3c8-e0ee-4db5-ae82-a20a9e39d9e5",
+          "appliedAt": "2026-10-20T13:51:52.319Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-c942d3c8-e0ee-4db5-ae82-a20a9e39d9e5",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-1b9d2b2b-e8f5-4f75-98ec-4068fa3dbecb",
+          "appliedAt": "2026-10-20T13:54:43.085Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-1b9d2b2b-e8f5-4f75-98ec-4068fa3dbecb",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 1 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-5ff0637c-571e-412b-84cb-971bdc19029c",
+          "appliedAt": "2026-10-21T20:13:29.856Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-5ff0637c-571e-412b-84cb-971bdc19029c",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 3 création(s), 0 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-a6d8834f-8349-4b0f-8620-f1ee4297b850",
+          "appliedAt": "2026-10-21T20:43:35.320Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-a6d8834f-8349-4b0f-8620-f1ee4297b850",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 9 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-7d037f96-cc77-4879-af8b-715303510be3",
+          "appliedAt": "2026-10-21T20:47:08.509Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-7d037f96-cc77-4879-af8b-715303510be3",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 139 mise(s) à jour, 10 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-6fe180fe-072f-4d65-86de-d78ea0813edf",
+          "appliedAt": "2026-10-21T20:50:50.590Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-6fe180fe-072f-4d65-86de-d78ea0813edf",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 4 mise(s) à jour, 5 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-15c77694-b3f5-40fb-89ac-7b67c4f5f605",
+          "appliedAt": "2026-10-21T20:55:49.450Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-prior-operations-recovered-20261115.json#apply-15c77694-b3f5-40fb-89ac-7b67c4f5f605",
+          "auditEvidence": null,
+          "summary": "Rapprochement d’un Apply antérieur accepté : 0 création(s), 7 mise(s) à jour, 1 entité(s) inchangée(s), zéro erreur/warning. Vraie date serveur récupérée, aucun rejeu ni nouvelle publication ; inventaire toujours partiel."
+        },
+        {
+          "eventId": "apply-7b737a6e-537e-49c3-87c3-9f3ae7a86f9f",
+          "appliedAt": "2026-11-15T08:47:14.594Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-municipal-1972-20261115.json",
+          "auditEvidence": null,
+          "summary": "Municipalisation de Fenestre en1972 intégrée privée dans les huit langues après rapprochement de l’ancienne Preview refusée. Nouveau propriétaire nommé, date limitée à l’année, exploitant actuel préservé. Zéro warning/erreur, aucune publication ni réimport."
+        },
+        {
+          "eventId": "apply-2188838b-81ad-47fb-9b48-035e883154de",
+          "appliedAt": "2026-11-15T08:56:47.488Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-birthday-qualification-20261115.json",
+          "auditEvidence": null,
+          "summary": "Cacahuète qualifié comme rencontre anniversaire sur réservation ; notice et ancien gonflable réécrits personnellement huit langues depuis la photographie officielle. Deux fiches existantes conservées privées, aucun horaire ou date inventé."
+        },
+        {
+          "eventId": "image-e5b0242ce14848efaf8dd9a4d7a338cb",
+          "appliedAt": "2026-11-15T08:57:39.078Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-cacahuete-birthday-20261115.json",
+          "auditEvidence": null,
+          "summary": "Fenestre : photo privée cacahuete-birthday, source et crédit identifiés, huit langues relues ; aucun nouvel envoi Facebook ni clôture."
+        }
+      ],
+      "nextAction": "Municipalisation1972, qualification Cacahuète sur réservation et gonflable : nouvelles données privées relues8langues ; photo anniversaire importée privée à08:57:39.078UTC. Auditer et publier ce périmètre, poursuivre Guignol et les statuts inconnus. Calendrier2027 vérifié sans mutation, plans2023/2024/2026 conservés. Facebook existant Published confirmé ; visibilité externe à distinguer.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
