@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:31:37.434Z",
+  "result": {
+    "id": "0cd9a25f66e24b0c8e3853dd32a199d7",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+    "path": "park_item/0cd9a25f66e24b0c8e3853dd32a199d7",
+    "description": "Le motard pirate de la Piste des As en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 54592,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130364%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Squelette pirate sur une moto, devant la palissade et le panneau Circuit des As."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pirate skeleton on a motorcycle in front of the palisade and Circuit des As sign."
+      },
+      {
+        "languageCode": "de",
+        "value": "Piratenskelett auf einem Motorrad vor der Palisade und dem Schild Circuit des As."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Piratenskelet op een motorfiets voor de palissade en het bord Circuit des As."
+      },
+      {
+        "languageCode": "it",
+        "value": "Scheletro pirata su una motocicletta davanti alla palizzata e al cartello Circuit des As."
+      },
+      {
+        "languageCode": "es",
+        "value": "Esqueleto pirata sobre una moto frente a la empalizada y al cartel Circuit des As."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Piracki szkielet na motocyklu przed palisadą i tablicą Circuit des As."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Esqueleto pirata numa mota diante da paliçada e da placa Circuit des As."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le motard pirate de la Piste des As en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "The Piste des As pirate biker in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Piraten-Motorradfahrer der Piste des As im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De piratenmotorrijder van Piste des As in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il motociclista pirata della Piste des As nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "El motorista pirata de la Piste des As en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Piracki motocyklista przy Piste des As w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O motociclista pirata da Piste des As em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:31:33.817Z",
+    "updatedAt": "2026-11-15T03:31:37.434Z"
+  },
+  "sourceEvidence": {
+    "stem": "piste-skeleton-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130364%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-34.jpg",
+    "sha256": "4477229579a086122b614dbef40f22916f3283412007c6394dc98ec055a278f8",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 personnellement inspecté, sans filigrane ni recadrage. Cinq vues complémentaires : décorPiste, Aquanimalcôtégalerie, Accrobungyensemble/décor, pêchedejour. Huit langues relues."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:31:55.806Z",
+  "result": {
+    "id": "5c9afd3c77c44bc0a1b06920390f67c4",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+    "path": "park_item/5c9afd3c77c44bc0a1b06920390f67c4",
+    "description": "L’Accro-bungy au bord du port en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 79715,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130356%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Mâts de bois de l’Accro-bungy au-dessus de tapis verts et rouges, avec palmiers, table de pique-nique et décor de pirate."
+      },
+      {
+        "languageCode": "en",
+        "value": "Wooden Accro-bungy masts above green and red mats, with palms, a picnic table and a pirate figure."
+      },
+      {
+        "languageCode": "de",
+        "value": "Holzmasten des Accro-bungy über grünen und roten Matten, mit Palmen, Picknicktisch und Piratenfigur."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Houten Accro-bungy-masten boven groene en rode matten, met palmen, een picknicktafel en een piratenfiguur."
+      },
+      {
+        "languageCode": "it",
+        "value": "Alberi di legno dell’Accro-bungy sopra tappeti verdi e rossi, con palme, tavolo da picnic e figura di pirata."
+      },
+      {
+        "languageCode": "es",
+        "value": "Mástiles de madera de Accro-bungy sobre colchonetas verdes y rojas, con palmeras, mesa de pícnic y figura de pirata."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Drewniane maszty Accro-bungy nad zielonymi i czerwonymi matami, z palmami, stołem piknikowym i figurą pirata."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Mastros de madeira do Accro-bungy sobre colchões verdes e vermelhos, com palmeiras, mesa de piquenique e figura de pirata."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’Accro-bungy au bord du port en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Accro-bungy beside the harbour in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Accro-bungy am Hafen im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Accro-bungy bij de haven in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’Accro-bungy accanto al porto nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Accro-bungy junto al puerto en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Accro-bungy przy porcie w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Accro-bungy junto ao porto em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:31:52.352Z",
+    "updatedAt": "2026-11-15T03:31:55.806Z"
+  },
+  "sourceEvidence": {
+    "stem": "accrobungy-masts-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130356%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-45.jpg",
+    "sha256": "7f7793acde0f3e4d4b19dc3d71c6150861a2dd484b6b797ba472bf515d32657e",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 personnellement inspecté, sans filigrane ni recadrage. Cinq vues complémentaires : décorPiste, Aquanimalcôtégalerie, Accrobungyensemble/décor, pêchedejour. Huit langues relues."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

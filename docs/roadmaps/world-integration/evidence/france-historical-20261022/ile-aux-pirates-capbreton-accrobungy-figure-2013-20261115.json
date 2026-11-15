@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:32:04.933Z",
+  "result": {
+    "id": "9c9ef955b0e5495b9714075977b673f9",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+    "path": "park_item/9c9ef955b0e5495b9714075977b673f9",
+    "description": "Un personnage du décor de l’Accro-bungy en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 32877,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130625%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Figure de femme pirate suspendue à une corde entre les mâts de l’Accro-bungy, à contre-jour."
+      },
+      {
+        "languageCode": "en",
+        "value": "Female pirate figure hanging from a rope between the Accro-bungy masts, backlit by the sun."
+      },
+      {
+        "languageCode": "de",
+        "value": "Piratinenfigur an einem Tau zwischen den Accro-bungy-Masten im Gegenlicht."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vrouwenfiguur in piratenkleding aan een touw tussen de Accro-bungy-masten, in tegenlicht."
+      },
+      {
+        "languageCode": "it",
+        "value": "Figura di piratessa appesa a una corda fra gli alberi dell’Accro-bungy, in controluce."
+      },
+      {
+        "languageCode": "es",
+        "value": "Figura de una mujer pirata suspendida de una cuerda entre los mástiles de Accro-bungy, a contraluz."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Podświetlona od tyłu figura piratki zawieszona na linie między masztami Accro-bungy."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Figura de uma mulher pirata suspensa numa corda entre os mastros do Accro-bungy, em contraluz."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un personnage du décor de l’Accro-bungy en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "One of the Accro-bungy scenery figures in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Figur der Accro-bungy-Kulisse im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een figuur uit het decor van Accro-bungy in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un personaggio della scenografia dell’Accro-bungy nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un personaje del decorado de Accro-bungy en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Postać ze scenerii Accro-bungy w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma personagem do cenário do Accro-bungy em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:32:01.162Z",
+    "updatedAt": "2026-11-15T03:32:04.933Z"
+  },
+  "sourceEvidence": {
+    "stem": "accrobungy-figure-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130625%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-4.jpg",
+    "sha256": "3f7d4b851dff9b7cd1a0b0dee094c7f73e980555d68fb047cf815a7af711cc18",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 personnellement inspecté, sans filigrane ni recadrage. Cinq vues complémentaires : décorPiste, Aquanimalcôtégalerie, Accrobungyensemble/décor, pêchedejour. Huit langues relues."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

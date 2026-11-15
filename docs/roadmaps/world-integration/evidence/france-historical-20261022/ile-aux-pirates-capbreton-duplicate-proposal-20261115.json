@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "action": "Remove exactly one duplicate public image after specific owner authorization",
+  "targetImageId": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+  "retainedImageId": "2fe3f6e5d5d743c58820926f0165c5a8",
+  "targetPublished": true,
+  "targetCurrent": false,
+  "retainedPublished": true,
+  "retainedArticleMainImage": true,
+  "sourceExportedAtUtc": "2026-11-15T03:32:59.4565742Z",
+  "sha256": {
+    "4bddcef62fb948b7a06bdaa39ba1d9ca": "e4789f0ce0a98a40767f5cae4a9e2a0e839d99ff6a4ebe0275e64b166f1b29dc",
+    "2fe3f6e5d5d743c58820926f0165c5a8": "e4789f0ce0a98a40767f5cae4a9e2a0e839d99ff6a4ebe0275e64b166f1b29dc"
+  },
+  "referencesOutsideImageRecords": [
+    {
+      "path": "/history/events/2/mainImageId",
+      "value": "2fe3f6e5d5d743c58820926f0165c5a8"
+    },
+    {
+      "path": "/history/events/2/article/mainImageId",
+      "value": "2fe3f6e5d5d743c58820926f0165c5a8"
+    }
+  ],
+  "authorizationReceived": false,
+  "deletionPerformed": false,
+  "reason": "Même fichier JPEG de 185806 octets, mêmes métadonnées ; la copie conservée reste liée à l’article. L’ancien faux logo a déjà été reclassé comme photographie, sans masquer ou supprimer la copie publique."
+}

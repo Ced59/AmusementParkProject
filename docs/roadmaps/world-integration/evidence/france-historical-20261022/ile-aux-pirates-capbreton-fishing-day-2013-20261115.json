@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:32:13.485Z",
+  "result": {
+    "id": "9c407ca64b9b468cb33644d639908e65",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+    "path": "park_item/9c407ca64b9b468cb33644d639908e65",
+    "description": "La Pêche aux canards et ses jouets en journée, en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 85074,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130404%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Stand en bois de pêche aux canards, avec bassin rond, canards multicolores, cerceaux et jouets suspendus."
+      },
+      {
+        "languageCode": "en",
+        "value": "Wooden duck-fishing stall with a round pool, colourful ducks, hoops and hanging toys."
+      },
+      {
+        "languageCode": "de",
+        "value": "Hölzerner Entenangelstand mit rundem Becken, bunten Enten, Reifen und aufgehängtem Spielzeug."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Houten eendjesviskraam met een rond bassin, kleurrijke eendjes, hoepels en hangend speelgoed."
+      },
+      {
+        "languageCode": "it",
+        "value": "Chiosco di legno della pesca alle paperelle, con vasca rotonda, paperelle colorate, cerchi e giocattoli appesi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Puesto de madera de pesca de patitos, con estanque redondo, patitos multicolores, aros y juguetes colgados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Drewniane stoisko do łowienia kaczuszek, z okrągłym basenem, kolorowymi kaczuszkami, obręczami i wiszącymi zabawkami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Barraca de madeira da pesca aos patinhos, com tanque redondo, patinhos coloridos, arcos e brinquedos pendurados."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La Pêche aux canards et ses jouets en journée, en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Duck fishing and its toys by day in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Entenangeln und Spielzeug bei Tageslicht, 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Eendjes vissen en het speelgoed overdag in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "La pesca alle paperelle e i suoi giocattoli di giorno, nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "La pesca de patitos y sus juguetes durante el día, en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Łowienie kaczuszek i zabawki za dnia w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A pesca aos patinhos e os seus brinquedos de dia, em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:32:10.04Z",
+    "updatedAt": "2026-11-15T03:32:13.485Z"
+  },
+  "sourceEvidence": {
+    "stem": "fishing-day-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130404%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-14.jpg",
+    "sha256": "940595a7f8b4304cab40f6a8b0d8888c3990a281ea8e9939784fbc2e7c79d7e3",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 personnellement inspecté, sans filigrane ni recadrage. Cinq vues complémentaires : décorPiste, Aquanimalcôtégalerie, Accrobungyensemble/décor, pêchedejour. Huit langues relues."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

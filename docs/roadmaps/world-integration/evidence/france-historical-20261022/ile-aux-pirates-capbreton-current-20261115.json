@@ -3,9 +3,9 @@
   "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T03:24:26.600512+00:00",
+  "observedAtUtc": "2026-11-15T03:46:58.328105+00:00",
   "outcome": "partial",
-  "finalAuditCompleted": false,
+  "finalAuditCompleted": true,
   "newSitePublicationPerformed": false,
   "newFacebookPublicationPerformed": false,
   "localResumeDirectory": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton",
@@ -57,9 +57,25 @@
     "items": 22,
     "itemsPublic": 10,
     "itemDescriptionsRewrittenEightLanguages": 22,
-    "images": 28,
-    "newImages": 20,
-    "historyEvents": 5
+    "images": 33,
+    "newImages": 25,
+    "historyEvents": 5,
+    "publicItems": 10,
+    "media": 33,
+    "publicMedia": 8,
+    "privateMedia": 25,
+    "itemsWithPhoto": 13,
+    "itemsWithThreePhotos": 5,
+    "itemsWithCoordinates": 0,
+    "parkPhotoRecords": 7,
+    "distinctQualifyingGeneralParkViews": 5,
+    "officialAnnualMaps": 0,
+    "unresolvedHistoricalNames": [
+      "Monde de la Mer",
+      "Aventure Jungle",
+      "Red’s Club",
+      "La Paillote"
+    ]
   },
   "acceptedApplies": [
     {
@@ -243,6 +259,45 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-galion-and-ropes-correction-20261115.json"
+    },
+    {
+      "operationId": "ff56e7a9-b472-49a4-85aa-5ac19e7ecc29",
+      "appliedAtUtc": "2026-11-15T03:28:53.7902468Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-07-pricing-reverified-20261115.json"
+    },
+    {
+      "operationId": "3ef9f12a-45d7-4519-afd8-62fb74282270",
+      "appliedAtUtc": "2026-11-15T03:31:13.8655771Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-shared-kilic-biography-20261115.json"
+    },
+    {
+      "operationId": "03415c62-3afd-40b5-9239-92578f6c60e5",
+      "appliedAtUtc": "2026-11-15T03:42:23.9223582Z",
+      "counts": {
+        "created": 0,
+        "updated": 6,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-09-editorial-corrections-20261115.json"
     }
   ],
   "sources": [
@@ -362,16 +417,29 @@
     }
   ],
   "gaps": {
-    "logo": "Fausse classification corrigée par Applyc87f6aa9-9d83-4f39-a890-578904170096 : photo de façade4bddcef conservée publique mais catégoriePark/noncourante, aucun vrai logo retrouvé. Doublon binaire historique2fe3 conservé, pas suppression. Ne pas compter ce média comme logo.",
+    "logo": "Aucun logo officiel autonome actuel trouvé. Domaine officiel redirigé vers Facebook/login ; ancien graphique2011 montage promotionnel et carte de fidélité photographiée2013 ne prouvent pas le logo actuel. Faux logo photographique reclassé Park, non masqué. Blocage API media.logo-required maintenu.",
     "wrongImageIdentity": "Corrigé par Apply4ce5679f-5321-48dd-a43c-f73158f4d885 :9713a59239f2474c8f54b01670c540c1 conservée publique comme photo générale du parc, sans sélection principale. Textes8langues décrivent pirate/requin ; ancienne identitéSafari retirée, attribution TourismeLandes sans licence/version non prouvée. Le Safari reste à illustrer correctement.",
     "legacyDescriptions": "Toutes les notices sont rédigées et relues dans huit langues. Airegratuite volontairement brève faute donnéesvisuelles. Correction du bassin de PiratesAventures après examenangle2013index27, jamais réappliquer ancienhelpermentionnant tapisbleu.",
     "inventory": "22lieux intérieurs au parc,10ancienspublics et12nouveauxprivés. TroisgonflablesPirates/Aladdin/galion sont physiquementdistincts ; Aquabuller distinctAquanimal ; HappyChildhood etpetittrainàpièces2019 distinctsDisney/TrainMine2024 ; Mario/Cirquenouveaux2019confirmés ; animauxélectriques2015 horsenclosdès2016, encorevus2019, aucunefermeturedéduite. AnciensnomsMondeMer/Jungle/Red’sClub/LaPaillote et airegratuite gardés comme mentionshistoriquesàcontinuitéincertaine, pas de doublonautomatique.",
     "history": "Trois nouveaux faits privés relus huit langues : entrée à tours en 2016, ouverture du chalet alimentaire en 2016, entrée unique en 2019. Précision année ; les jours des articles ne sont pas des dates d’ouverture. Le chalet utilise une photo contextuelle de 2018 explicitement identifiée, les photographies contemporaines de 2016 portant un filigrane. Deux faits publics et article antérieur réécrits, sans export final ni audit.",
-    "photos": "20 nouvelles photos privées, sources et attributions relues ; originaux 2013 sans filigrane distingués des reportages 2015/2016/2019 watermarkés. Les reçus et dates serveur figurent dans acceptedImports. Aucun réimport.",
+    "photos": "Neuf lieux sans photo propre ; cinq lieux sur22 atteignent trois photos.33 médias incluent un doublon historique public.25 nouveaux originaux privés contrôlés visuellement.2013 sans filigrane ; reportages2015/2016/2019 et coasterwatermarkés rejetés.",
     "officialSite": "www.ileauxpirates.com redirige vers Facebook login. Les cinq images de cette page sont génériques et non utilisables ; aucune connexion ni contournement.",
     "hoursPricing": "Export ciblé OpeningHours/Pricing pour récupérer les identifiants. Le calendrier hérité juillet–août 2026 ne démontre pas un calendrier officiel futur : Tripadvisor affiche 16 h–minuit sans année. Aucune saison 2027 ni montant de jeton actuel vérifié. Ne pas transposer les tarifs 2013/2015.",
     "logoArchiveSearch": "CSS officiellefrontend.css récupérée200viaarchive30janvier2011 : logo intégré àimagebody.jpg/accueil.jpg depageentière, pasfichierlogoautonomeprouvé. Cartefidélité2013 photographiée neconstituepaslogocourant. Aucuneimagegénérée/recadrée.",
-    "founder": "Recherchepublicspécifique fondateur/propriétaire/LeRouge : seulement avismentionnantfamilleetpseudonymeLeRouge. Ne pasinventeridentitécivile/fondateur ; pascréationderéférence."
+    "founder": "Recherchepublicspécifique fondateur/propriétaire/LeRouge : seulement avismentionnantfamilleetpseudonymeLeRouge. Ne pasinventeridentitécivile/fondateur ; pascréationderéférence.",
+    "duplicate": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-duplicate-proposal-20261115.json",
+    "openingHours": "Ancienne règle88b5812ef0c44518b32711539f933604,1juillet–31août2026,16h–minuit/62jours : la source Tripadvisor n’indique pas l’année. Retrait de la grille non fondée et notes saisonnières préparés, mais Preview ignore la section openingHours lorsque toutes les collections sont vides. Aucun Apply de ce document ; pas de jour/fermeture/règle annuelle inventé pour forcer le passage.",
+    "historicalIdentity": [
+      "Monde de la Mer",
+      "Aventure Jungle",
+      "Red’s Club",
+      "La Paillote"
+    ],
+    "coordinatesAndMaps": "0/22positions prouvées, aucun plan intérieur annuel. Limites portuaires/plan d’accès exclus.",
+    "references": "Fondateur/exploitant non qualifiés. ConstructeurKılıç résolu, biographie8langues corrigée dans un lot transverse explicite ; foundedYear reste null.",
+    "prices": "Entrée libre confirmée sur page accessible ; jetons à la caisse, montants actuels non publiés. Aucun prix2013 transposé.",
+    "historyRoute": "Trois faits privés ; zéro bloqueur technique, mais aucune année clé indexable parmi les deux faits publics. isMajor2018 est forcé par l’API lorsqu’un article est attaché ; le texte n’en fait ni une ouverture ni une fondation.",
+    "sourceAccess": "Sources actuelles de contenu retournent200 au contrôle sauf archives2004/2009 désormais429 ; leurs fichiers précédemment consultés restent conservés avec hash. Aucune relance pour contourner la limitation. URL préfecture503 retirée parce que sans lien avec le récit."
   },
   "facebook": {
     "observedAtUtc": "2026-11-15T01:51:29.3666304Z",
@@ -380,8 +448,8 @@
     "url": "https://www.facebook.com/1285475681307050/posts/122121006345424431",
     "newAnnouncementSent": false
   },
-  "workingStateSha256": "beeaa0dafb478d56be30e40d916a26cf27e51d0ba88950d24b5c8b51f77189da",
-  "nextAction": "Terminer la recherche des dernières illustrations et des horaires ; documenter logo officiel introuvable, plans et positions non prouvés, puis effectuer l’export complet unique pour audit. Les 22 notices sont relues huit langues ; aucun nouvel envoi Facebook puisque l’annonce existante est Published.",
+  "workingStateSha256": "789968d2bcc3329c4a5fd1917c044a5c28c98f2f2ed7b2e1837672b5b055fb28",
+  "nextAction": "Audit terminé, non conforme : résoudre logo officiel, doublon public sous autorisation spécifique, grille horaire héritée et quatre identités historiques. Aucun nouveau full export d’audit ; corrections futures rapprochées par reçus. Continuer les autres dossiers France en attendant. Aucun nouvel envoi Facebook.",
   "newResearch": {
     "official2004": "https://web.archive.org/web/20040825094812id_/http://www.ileauxpirates.com:80/iframe/parc.htm",
     "official2009": "https://web.archive.org/web/20090216175804id_/http://www.ileauxpirates.com:80/le-parc",
@@ -541,6 +609,41 @@
       "ownerId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
       "isPublished": false,
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-park-palm-bench-2013-20261115.json"
+    },
+    {
+      "imageId": "0cd9a25f66e24b0c8e3853dd32a199d7",
+      "serverIntegrationAtUtc": "2026-11-15T03:31:37.434Z",
+      "ownerId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-piste-skeleton-2013-20261115.json"
+    },
+    {
+      "imageId": "78789fbba10441578d86bbb98c5c9456",
+      "serverIntegrationAtUtc": "2026-11-15T03:31:46.609Z",
+      "ownerId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-aquanimal-arcade-2013-20261115.json"
+    },
+    {
+      "imageId": "5c9afd3c77c44bc0a1b06920390f67c4",
+      "serverIntegrationAtUtc": "2026-11-15T03:31:55.806Z",
+      "ownerId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-accrobungy-masts-2013-20261115.json"
+    },
+    {
+      "imageId": "9c9ef955b0e5495b9714075977b673f9",
+      "serverIntegrationAtUtc": "2026-11-15T03:32:04.933Z",
+      "ownerId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-accrobungy-figure-2013-20261115.json"
+    },
+    {
+      "imageId": "9c407ca64b9b468cb33644d639908e65",
+      "serverIntegrationAtUtc": "2026-11-15T03:32:13.485Z",
+      "ownerId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-fishing-day-2013-20261115.json"
     }
   ],
   "researchArchives": [
@@ -747,5 +850,8 @@
     "purpose": "IDs et conditions auparavantabsents du dossier ; pasexportcomplet",
     "openingRuleCount": 1,
     "observation": "Règle héritée juillet–août2026,16h–minuit fondéeTripadvisor ; pascalendrierofficiel2027trouvé. Entréegratuite héritée sansmontantsjetons. Ne pas importer tarifs2004/2013/2015 commeactuels."
-  }
+  },
+  "finalAuditPassed": false,
+  "finalAuditEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-final-audit-20261115.json",
+  "fullAuditExportedAtUtc": "2026-11-15T03:32:59.4565742Z"
 }

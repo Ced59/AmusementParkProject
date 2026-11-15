@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:31:46.609Z",
+  "result": {
+    "id": "78789fbba10441578d86bbb98c5c9456",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+    "path": "park_item/78789fbba10441578d86bbb98c5c9456",
+    "description": "Aquanimal et les façades de jeux en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 56116,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130415%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Bassin Aquanimal vide de bateaux, avec son mât, face aux jeux du Treasure Club et au Manège Disney."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aquanimal pool without boats, with its mast facing the Treasure Club games and Manège Disney."
+      },
+      {
+        "languageCode": "de",
+        "value": "Aquanimal-Becken ohne Boote, mit seinem Mast gegenüber den Spielen des Treasure Club und dem Manège Disney."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Aquanimal-bassin zonder boten, met de mast tegenover de spellen van Treasure Club en Manège Disney."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vasca Aquanimal senza barche, con l’albero di nave di fronte ai giochi del Treasure Club e al Manège Disney."
+      },
+      {
+        "languageCode": "es",
+        "value": "Estanque Aquanimal sin embarcaciones, con su mástil frente a los juegos del Treasure Club y al Manège Disney."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Basen Aquanimal bez łódek, z masztem naprzeciw gier Treasure Club i karuzeli Manège Disney."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Tanque Aquanimal sem barcos, com o mastro em frente aos jogos do Treasure Club e ao Manège Disney."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Aquanimal et les façades de jeux en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aquanimal and the games façades in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Aquanimal und die Spielfassaden im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Aquanimal en de gevels van de spellen in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Aquanimal e le facciate dei giochi nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Aquanimal y las fachadas de los juegos en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Aquanimal i fasady gier w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Aquanimal e as fachadas dos jogos em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:31:42.945Z",
+    "updatedAt": "2026-11-15T03:31:46.609Z"
+  },
+  "sourceEvidence": {
+    "stem": "aquanimal-arcade-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130415%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-43.jpg",
+    "sha256": "3ee6a3384c199ffb9404814ae78a4de3d45bddd69de1f4041c3e7fcfe538164a",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 personnellement inspecté, sans filigrane ni recadrage. Cinq vues complémentaires : décorPiste, Aquanimalcôtégalerie, Accrobungyensemble/décor, pêchedejour. Huit langues relues."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

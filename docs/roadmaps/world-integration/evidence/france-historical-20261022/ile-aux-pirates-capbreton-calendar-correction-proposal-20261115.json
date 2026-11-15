@@ -1,0 +1,158 @@
+{
+  "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "createIfMissing": false,
+  "replaceCollections": false,
+  "document": {
+    "documentType": "AmusementParkParkGraphUpsert",
+    "schemaVersion": "2026-09-05",
+    "mode": "merge",
+    "park": {
+      "id": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+    },
+    "openingHours": {
+      "weeklyRules": [],
+      "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "timeZoneId": "Europe/Paris",
+      "sourceUrl": "https://www.tripadvisor.fr/Attraction_Review-g641840-d4742129-Reviews-L_ile_aux_pirates-Capbreton_Landes_Nouvelle_Aquitaine.html",
+      "notes": "[{\"languageCode\": \"fr\", \"value\": \"L’office de tourisme annonce une ouverture quotidienne en juillet et août, puis les week-ends, mercredis et vacances en avril, mai, juin et septembre. Tripadvisor affiche 16 h–minuit, sans préciser la saison concernée. Les dates et horaires détaillés de la prochaine saison ne sont pas encore annoncés.\"}, {\"languageCode\": \"en\", \"value\": \"The tourist office lists daily opening in July and August, and weekends, Wednesdays and school holidays in April, May, June and September. Tripadvisor displays 4 pm–midnight without identifying the season. Detailed dates and hours for the next season have not yet been announced.\"}, {\"languageCode\": \"de\", \"value\": \"Das Tourismusbüro nennt tägliche Öffnung im Juli und August sowie Wochenenden, Mittwoche und Schulferien im April, Mai, Juni und September. Tripadvisor zeigt 16 Uhr bis Mitternacht an, ohne eine Saison zu nennen. Genaue Termine und Öffnungszeiten der nächsten Saison sind noch nicht angekündigt.\"}, {\"languageCode\": \"nl\", \"value\": \"Het toeristenbureau vermeldt dagelijkse opening in juli en augustus, en weekenden, woensdagen en schoolvakanties in april, mei, juni en september. Tripadvisor toont 16.00 uur tot middernacht zonder een seizoen te noemen. De precieze datums en openingstijden voor het volgende seizoen zijn nog niet aangekondigd.\"}, {\"languageCode\": \"it\", \"value\": \"L’ufficio turistico indica apertura quotidiana in luglio e agosto e nei fine settimana, il mercoledì e durante le vacanze scolastiche in aprile, maggio, giugno e settembre. Tripadvisor riporta dalle 16:00 a mezzanotte senza precisare la stagione. Date e orari dettagliati della prossima stagione non sono ancora stati annunciati.\"}, {\"languageCode\": \"es\", \"value\": \"La oficina de turismo indica apertura diaria en julio y agosto, y los fines de semana, miércoles y vacaciones escolares en abril, mayo, junio y septiembre. Tripadvisor muestra de 16:00 a medianoche sin precisar la temporada. Aún no se han anunciado las fechas y los horarios detallados de la próxima temporada.\"}, {\"languageCode\": \"pl\", \"value\": \"Biuro informacji turystycznej podaje codzienne otwarcie w lipcu i sierpniu oraz w weekendy, środy i wakacje szkolne w kwietniu, maju, czerwcu i wrześniu. Tripadvisor wskazuje godziny od 16:00 do północy, nie określając sezonu. Dokładne daty i godziny na kolejny sezon nie zostały jeszcze ogłoszone.\"}, {\"languageCode\": \"pt\", \"value\": \"O posto de turismo indica abertura diária em julho e agosto e aos fins de semana, quartas-feiras e férias escolares em abril, maio, junho e setembro. O Tripadvisor apresenta o horário das 16:00 à meia-noite sem indicar a época. As datas e os horários detalhados da próxima época ainda não foram anunciados.\"}]",
+      "lastVerifiedAtUtc": "2026-10-03T03:20:00Z",
+      "regularRules": [],
+      "dateOverrides": []
+    },
+    "pricing": {
+      "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "currencyCode": "EUR",
+      "sourceUrl": "https://www.campingdefrance.com/fr/tourisme/907/",
+      "purchaseUrl": null,
+      "notes": [
+        {
+          "languageCode": "fr",
+          "value": "L’entrée dans l’aire de loisirs est libre. Les attractions se paient séparément avec des jetons achetés à la caisse centrale. Le prix actuel des jetons et des lots n’est pas publié sur la page tarifaire consultable."
+        },
+        {
+          "languageCode": "en",
+          "value": "Entry to the leisure area is free. Attractions are paid for separately with tokens bought at the central booth. The accessible pricing page does not list current token or bundle prices."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Zugang zum Freizeitbereich ist frei. Die Attraktionen werden einzeln mit Jetons bezahlt, die an der Hauptkasse erhältlich sind. Die abrufbare Preisseite nennt keine aktuellen Jeton- oder Paketpreise."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De toegang tot het recreatieterrein is gratis. Attracties worden apart betaald met jetons uit de centrale kassa. De toegankelijke prijspagina vermeldt geen actuele prijzen voor jetons of bundels."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’ingresso nell’area ricreativa è libero. Le attrazioni si pagano separatamente con gettoni acquistati alla cassa centrale. La pagina dei prezzi consultabile non riporta gli importi attuali dei gettoni o dei pacchetti."
+        },
+        {
+          "languageCode": "es",
+          "value": "El acceso a la zona de ocio es gratuito. Las atracciones se pagan por separado con fichas compradas en la caja central. La página de precios accesible no indica los importes actuales de las fichas ni de los lotes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wstęp na teren rekreacyjny jest bezpłatny. Za atrakcje płaci się osobno żetonami kupowanymi w kasie głównej. Dostępna strona z informacjami o cenach nie podaje aktualnych kwot za żetony ani pakiety."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A entrada na zona de lazer é gratuita. As atrações são pagas separadamente com fichas compradas na bilheteira central. A página de preços acessível não apresenta os valores atuais das fichas nem dos lotes."
+        }
+      ],
+      "lastVerifiedAtUtc": "2026-11-15T03:25:31.998192Z",
+      "admissionOffers": [
+        {
+          "id": "ile-pirates-capbreton-free-access",
+          "code": "ile-pirates-capbreton-free-access",
+          "audienceCategory": "all",
+          "labels": [
+            {
+              "languageCode": "de",
+              "value": "Zugang zum Freizeitbereich"
+            },
+            {
+              "languageCode": "en",
+              "value": "Entry to the leisure area"
+            },
+            {
+              "languageCode": "es",
+              "value": "Acceso a la zona de ocio"
+            },
+            {
+              "languageCode": "fr",
+              "value": "Entrée dans lʼaire de loisirs"
+            },
+            {
+              "languageCode": "it",
+              "value": "Accesso allʼarea ricreativa"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Toegang tot het recreatieterrein"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Wstęp na teren rekreacyjny"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Entrada na zona de lazer"
+            }
+          ],
+          "onlinePrice": null,
+          "gatePrice": {
+            "mode": "Fixed",
+            "amount": 0.0,
+            "minimumAmount": null,
+            "maximumAmount": null
+          },
+          "validFrom": null,
+          "validTo": null,
+          "purchaseUrl": null,
+          "conditions": [
+            {
+              "languageCode": "de",
+              "value": "Freier Zugang; Attraktionen werden einzeln mit Jetons bezahlt."
+            },
+            {
+              "languageCode": "en",
+              "value": "Free access; attractions paid separately with tokens."
+            },
+            {
+              "languageCode": "es",
+              "value": "Acceso libre; atracciones pagadas por separado con fichas."
+            },
+            {
+              "languageCode": "fr",
+              "value": "Accès libre ; attractions payées séparément par jetons."
+            },
+            {
+              "languageCode": "it",
+              "value": "Accesso libero; attrazioni pagate separatamente con gettoni."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Gratis toegang; attracties worden apart met jetons betaald."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Wstęp wolny; atrakcje opłacane osobno żetonami."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Acesso livre; atrações pagas separadamente com fichas."
+            }
+          ],
+          "sortOrder": 10
+        }
+      ],
+      "annualPasses": [],
+      "parkingOffers": [],
+      "creditOffers": [],
+      "historicalSnapshots": []
+    },
+    "metadata": {
+      "source": "codex-france-hours-pricing-verification",
+      "notes": "Correction ciblée du planning complet : la seule règle datée héritée 88b5812ef0c44518b32711539f933604 prétend juillet-août2026 sans source annuelle. Original conservé dans targeted-hours-pricing-export.json et working-state antérieur. La source Tripadvisor fournit des heures mais aucune période ; OT saisonnier sans millésime ni dates civiles. Aucune règle hebdomadaire annuelle inventée, aucun jour fermé inféré, aucune date2027 ajoutée. Notes saisonnières huit langues relues. Entrée gratuite/jetons confirmés par CampingdeFrance HTTP200 le2026-11-15T03:25:31.998192Z ; offre0EUR/ID/conditions conservées, aucun prix jeton inventé. Photos2013tarifs exclus des prixactuels."
+    }
+  }
+}

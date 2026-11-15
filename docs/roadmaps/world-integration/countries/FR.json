@@ -13088,7 +13088,7 @@
       "legacySiteIds": [],
       "presence": "Published",
       "presenceObservedAt": "2026-11-15T01:49:39.7143182Z",
-      "editorialStatus": "InProgress",
+      "editorialStatus": "Blocked",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
       "sourceLifecycleSignal": "Operating",
@@ -13099,7 +13099,7 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T03:19:45.870Z",
+      "lastDataIntegrationAt": "2026-11-15T03:42:23.922Z",
       "integrationHistory": [
         {
           "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
@@ -13440,6 +13440,86 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-park-palm-bench-2013-20261115.json",
           "auditEvidence": null,
           "summary": "Photo privée park-palm-bench-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "apply-ff56e7a9-b472-49a4-85aa-5ac19e7ecc29",
+          "appliedAt": "2026-11-15T03:28:53.790Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-07-pricing-reverified-20261115.json",
+          "auditEvidence": null,
+          "summary": "Entrée libre et paiement par jetons vérifiés ; huit notes tarifaires corrigées, aucun montant inventé. Calendrier non modifié : limitation API conservée séparément."
+        },
+        {
+          "eventId": "apply-3ef9f12a-45d7-4519-afd8-62fb74282270",
+          "appliedAt": "2026-11-15T03:31:13.865Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-shared-kilic-biography-20261115.json",
+          "auditEvidence": null,
+          "summary": "Lot transversal explicite Kılıç Lunapark : biographie partagée réécrite et sourcée dans huit langues, sans modifier identité, contacts, dates légales ni rattachements."
+        },
+        {
+          "eventId": "image-0cd9a25f66e24b0c8e3853dd32a199d7",
+          "appliedAt": "2026-11-15T03:31:37.434Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-piste-skeleton-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée piste-skeleton-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-78789fbba10441578d86bbb98c5c9456",
+          "appliedAt": "2026-11-15T03:31:46.609Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-aquanimal-arcade-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée aquanimal-arcade-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-5c9afd3c77c44bc0a1b06920390f67c4",
+          "appliedAt": "2026-11-15T03:31:55.806Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-accrobungy-masts-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée accrobungy-masts-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-9c9ef955b0e5495b9714075977b673f9",
+          "appliedAt": "2026-11-15T03:32:04.933Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-accrobungy-figure-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée accrobungy-figure-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-9c407ca64b9b468cb33644d639908e65",
+          "appliedAt": "2026-11-15T03:32:13.485Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-fishing-day-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée fishing-day-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "apply-03415c62-3afd-40b5-9239-92578f6c60e5",
+          "appliedAt": "2026-11-15T03:42:23.922Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-09-editorial-corrections-20261115.json",
+          "auditEvidence": null,
+          "summary": "Audit final : précisions linguistiques, présence photographiée en 2019 sans date d’installation inventée, retrait de phrases sans apport et des sources sans lien avec le fait municipal ; aucun changement de visibilité."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -13466,7 +13546,8 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "notes": "Audit final2026-11-15 :95/100,logo requis,doublon photographique public,calendrier hérité non étayé et quatre noms historiques non rapprochés ;22lieux/33médias, nouveautés privées. docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-final-audit-20261115.json"
     },
     {
       "entryId": "FR-park-efac8649-a15b-4ed6-866c-2e926579d6de",

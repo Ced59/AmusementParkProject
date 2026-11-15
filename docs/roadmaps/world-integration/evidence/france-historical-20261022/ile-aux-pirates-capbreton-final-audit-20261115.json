@@ -1,0 +1,2347 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "auditedAtUtc": "2026-11-15T03:46:58.328105+00:00",
+  "finalEditorialAuditPerformed": true,
+  "auditPassed": false,
+  "dataIntegrationCompleted": false,
+  "decision": "Blocked — active park; official logo, legacy duplicate, unsupported dated calendar and unresolved inventory names",
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "auditBasis": {
+    "fullExportAtUtc": "2026-11-15T03:32:59.4565742Z",
+    "fullExportSha256": "2b02da0facbe740c13be5579a8007775a87cbddf872692722bc63fbea4076210",
+    "fullExportEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-final-audit-export-20261115.json",
+    "correctedSnapshotSha256": "1514336df0140c450f571dd015bc7b34106d390f09527b1b1c16bcd5296ca7f6",
+    "method": "Unique export complet conservé intact. Six entités corrigées par Apply 03415c62-3afd-40b5-9239-92578f6c60e5, puis Preview intégrale :64 entités inchangées. Aucun second export d’audit.",
+    "correctionEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-09-editorial-corrections-20261115.json"
+  },
+  "officialCompleteness": {
+    "startedAtUtc": "2026-11-15T03:45:19.4237554Z",
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T03:45:21.0885900Z",
+    "result": {
+      "completenessScore": 95,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 102,
+      "earnedPoints": 97,
+      "publicationBlockers": [
+        "media.logo-required"
+      ],
+      "formulaicPublicTextIssue": {
+        "matchType": "sentence",
+        "languageCode": "fr",
+        "firstDocumentIndex": 124,
+        "secondDocumentIndex": 192,
+        "firstDocumentSha256": "3b6bef4cf7afe2c2a97d09db3f5a1655788cad6f2d67aa414bd33f9879210b07",
+        "secondDocumentSha256": "3b6bef4cf7afe2c2a97d09db3f5a1655788cad6f2d67aa414bd33f9879210b07",
+        "fingerprintSha256": "60e5641d2da9e139baf16460c2dd497c1fa3e44260848b6b9c83344ed1783dfb",
+        "firstDocumentPreview": "Visiteurs devant la façade Treasure Club : galion peint, têtes de pirates et auvent vert en feuilles de palmier.",
+        "secondDocumentPreview": "Visiteurs devant la façade Treasure Club : galion peint, têtes de pirates et auvent vert en feuilles de palmier.",
+        "fingerprintPreview": "visiteurs devant la façade galion peint têtes de pirates et auvent vert en feuilles de palmier"
+      }
+    }
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T03:45:29.1837674Z",
+    "receivedAtUtc": "2026-11-15T03:45:29.7942779Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "parkName": "L'Île aux Pirates",
+      "factCount": 11,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 4,
+          "sourcedResourceCount": 4,
+          "publishedResourceCount": 1,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 3
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 2
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 6
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 2,
+        "sourcedFactCount": 2,
+        "majorFactCount": 1,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "idempotence": {
+    "startedAtUtc": "2026-11-15T03:43:19.6624249Z",
+    "result": {
+      "PreviewPath": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/audit-idempotence-preview.json",
+      "ReceiptPath": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/audit-idempotence-preview-receipt.json",
+      "Result": {
+        "operationId": "55264a22-aa0e-4259-9c04-c9d3df7fb6c4",
+        "mode": "merge",
+        "isApplied": false,
+        "canApply": true,
+        "previewedAtUtc": "2026-11-15T03:43:20.8780969Z",
+        "appliedAtUtc": null,
+        "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "targetParkName": "L'Île aux Pirates",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 64,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [
+          {
+            "entityType": "AttractionManufacturer",
+            "entityId": "0e2223c4-9290-4072-ae1f-6cf1d60455e3",
+            "entityKey": "0e2223c4-9290-4072-ae1f-6cf1d60455e3",
+            "displayName": "Kılıç Lunapark",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "Park",
+            "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+            "entityKey": "park",
+            "displayName": "L'Île aux Pirates",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkPricing",
+            "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+            "entityKey": "pricing",
+            "displayName": "L'Île aux Pirates pricing",
+            "changeType": "Unchanged",
+            "matchedBy": "pricing",
+            "fields": []
+          },
+          {
+            "entityType": "ParkOpeningHours",
+            "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+            "entityKey": "openingHours",
+            "displayName": "L'Île aux Pirates opening hours",
+            "changeType": "Unchanged",
+            "matchedBy": "openingHours",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+            "entityKey": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+            "displayName": "Accro-bungy",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "cf47d719-ffcf-48df-ab5d-1d3bc12892c1",
+            "entityKey": "cf47d719-ffcf-48df-ab5d-1d3bc12892c1",
+            "displayName": "Aladdin Adventure",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "51b7571d-e685-4702-bfdf-b7adab67aa8b",
+            "entityKey": "51b7571d-e685-4702-bfdf-b7adab67aa8b",
+            "displayName": "Animaux électriques",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "3fa3aefa-3196-4602-9c2a-4a268fb48a77",
+            "entityKey": "3fa3aefa-3196-4602-9c2a-4a268fb48a77",
+            "displayName": "Aquabuller",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+            "entityKey": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+            "displayName": "Aquanimal",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+            "entityKey": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+            "displayName": "Crêperie",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "bfbde670-567f-49e8-93d4-e03d69bc84b2",
+            "entityKey": "bfbde670-567f-49e8-93d4-e03d69bc84b2",
+            "displayName": "Espace de jeux",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "146bf355-1763-45f5-953b-3c2615ef2171",
+            "entityKey": "146bf355-1763-45f5-953b-3c2615ef2171",
+            "displayName": "Galion gonflable Pirates",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "323130bf-9267-4cb0-a9f5-3bc2b29edc28",
+            "entityKey": "323130bf-9267-4cb0-a9f5-3bc2b29edc28",
+            "displayName": "Gonflable Cirque",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "f67ac9b2-ea1c-4dbc-bdd0-1f10c3a58200",
+            "entityKey": "f67ac9b2-ea1c-4dbc-bdd0-1f10c3a58200",
+            "displayName": "Gonflable Mario",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "ace8e97e-fad6-4040-a9a1-375866602d62",
+            "entityKey": "ace8e97e-fad6-4040-a9a1-375866602d62",
+            "displayName": "Gonflable Pirates",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "ababe179-3c88-4d2b-b372-090be9459151",
+            "entityKey": "ababe179-3c88-4d2b-b372-090be9459151",
+            "displayName": "Happy Childhood",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "295a3460-71b5-4453-a3a7-b9266f508dd1",
+            "entityKey": "295a3460-71b5-4453-a3a7-b9266f508dd1",
+            "displayName": "L’Île aux Pirates — Palais du rire",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "482a2557-2956-417a-be20-aeff5b2436d3",
+            "entityKey": "482a2557-2956-417a-be20-aeff5b2436d3",
+            "displayName": "Manège Disney",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "1675eb76-d7eb-4c34-8734-2a67be0a7aa5",
+            "entityKey": "1675eb76-d7eb-4c34-8734-2a67be0a7aa5",
+            "displayName": "Parcours Safari",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "4f53ec0a-14f9-4652-a8eb-7a7edb6061fb",
+            "entityKey": "4f53ec0a-14f9-4652-a8eb-7a7edb6061fb",
+            "displayName": "Petit train à pièces",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "9405d573-5666-4003-a97f-7ea8523d99c5",
+            "entityKey": "9405d573-5666-4003-a97f-7ea8523d99c5",
+            "displayName": "Pirates Aventures",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+            "entityKey": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+            "displayName": "Piste des As",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+            "entityKey": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+            "displayName": "Pêche aux canards",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "9cc8f497-cd9d-4d25-868f-e0a249a296a4",
+            "entityKey": "9cc8f497-cd9d-4d25-868f-e0a249a296a4",
+            "displayName": "Train de la Mine",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "c2477c09-955a-4291-86b1-448732547c28",
+            "entityKey": "c2477c09-955a-4291-86b1-448732547c28",
+            "displayName": "Trampolino",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "ParkItem",
+            "entityId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+            "entityKey": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+            "displayName": "Treasure Club",
+            "changeType": "Unchanged",
+            "matchedBy": "id",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "9fae04a4531b4dc2baa9b4c075930d1e",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "f3c0db4dd38c4beaa4044471ba6ce168",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "9713a59239f2474c8f54b01670c540c1",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "1b522478ea284fe780bfffb0f86a83b8",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "bf9bf846a468422caadfc102a55b7a0e",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "78789fbba10441578d86bbb98c5c9456",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "45833ff75fa34432a5fde27895732f15",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "30ee425fbda04a8fbe7a504bc23e6d23",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "9c407ca64b9b468cb33644d639908e65",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "5fa25124f0f145039ca0bb00a7ec4d67",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "2b79609da79041af8d2ba0cb492ddb92",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "dcdf769271784dfbb57c98521aa5fa91",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "f9feb7a2da1245328012ef722a90ddf4",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "0ae6761a9e6b410abe4c24919df7b340",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "0cd9a25f66e24b0c8e3853dd32a199d7",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "e18772c402c745e28f8e0530d85e8c29",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "69297892944b4b0abe250404266bdf1a",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "1fa861940b604db8be8a2c6282a994dc",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "4c2a9a3b20c14e939a8fe73cf54519dc",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "fdbb4394fdc246db96ef843a5c6dc8f8",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "d35a121f1c514a21bb817e23961092ea",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "9c9ef955b0e5495b9714075977b673f9",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "5c9afd3c77c44bc0a1b06920390f67c4",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "5657119f7f844a1c88bacad5bb985b78",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "7147dce8bd5a4535a91dc4548f0b7622",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "716a42b5d6ee48e3b84d2bfec4722092",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "a41faa85e11646139fb65b38ca253cda",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "9581f122d8794e37be843742deec4961",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "920149595c604b59b2e33792cc7b84ec",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "75c9c5e536a44ac7b9b1c61bd11ceabc",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "Image",
+            "entityId": "e1484c0336ee4cf78a4e0bface74cce2",
+            "entityKey": null,
+            "displayName": "codex-import.jpg",
+            "changeType": "Unchanged",
+            "matchedBy": "imageId",
+            "fields": []
+          },
+          {
+            "entityType": "HistoryEvent",
+            "entityId": "ed054ceb-74ce-4f1f-8bb8-a67fd28e1b16",
+            "entityKey": "capbreton-entrance-towers-2016",
+            "displayName": "Une nouvelle entrée entre deux tours",
+            "changeType": "Unchanged",
+            "matchedBy": "ownerKey",
+            "fields": []
+          },
+          {
+            "entityType": "HistoryEvent",
+            "entityId": "70b9bd49-57db-4d99-8937-ea4fad122c0e",
+            "entityKey": "capbreton-food-chalet-opening-2016",
+            "displayName": "Le chalet des douceurs remplace le décor de ferme",
+            "changeType": "Unchanged",
+            "matchedBy": "ownerKey",
+            "fields": []
+          },
+          {
+            "entityType": "HistoryEvent",
+            "entityId": "3b61bee5-6404-48f7-804d-8d7e9d84c4e2",
+            "entityKey": "ile-pirates-capbreton-documented-2018",
+            "displayName": "Le parc cité dans un débat sur le paysage portuaire",
+            "changeType": "Unchanged",
+            "matchedBy": "ownerKey",
+            "fields": []
+          },
+          {
+            "entityType": "HistoryEvent",
+            "entityId": "1934963d-1c0b-4a32-9938-4e5d9ba23a6c",
+            "entityKey": "capbreton-single-entrance-2019",
+            "displayName": "Le parc adopte une entrée unique",
+            "changeType": "Unchanged",
+            "matchedBy": "ownerKey",
+            "fields": []
+          },
+          {
+            "entityType": "HistoryEvent",
+            "entityId": "16ffa1b0-2551-4db1-a218-183a8b96003d",
+            "entityKey": "ile-pirates-capbreton-train-mine-2024",
+            "displayName": "Arrivée de Train de la Mine",
+            "changeType": "Unchanged",
+            "matchedBy": "ownerKey",
+            "fields": []
+          }
+        ],
+        "warnings": [],
+        "errors": []
+      }
+    },
+    "action": "Preview",
+    "receivedAtUtc": "2026-11-15T03:43:21.4756554Z"
+  },
+  "manualEditorialReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "performedPersonally": true,
+    "scope": "Descriptions parc et22 lieux, cinq faits, article développé quatre sections, biographies constructeur, légendes/alternatives/crédits33 médias, notes et libellés horaires/tarifs. Les notices Espace jeux et certains anciens petits manèges restent courtes faute de matière précise ; aucune invention pour allonger.",
+    "corrections": "Suppression de phrases sans apport ; Happy Childhood seulement visible en2019, sans date d’installation inférée ; corrections idiomatiques allemand/italien/néerlandais ; retrait des deux sources sans rapport ; source municipale isolée pour le fait2018."
+  },
+  "metrics": {
+    "reviewedAtUtc": "2026-11-15T03:44:49.125285+00:00",
+    "scope": "Export complet unique puis corrections rapprochées par Apply et Preview ; contrôles quantitatifs complémentaires à la relecture humaine, aucun résultat de publication.",
+    "textFieldCount": 1184,
+    "missingTranslations": [],
+    "encodingFindings": [],
+    "wordCountsAfterHeadingRemoval": {
+      "altTexts": {
+        "fr": {
+          "count": 33,
+          "min": 14,
+          "median": 18,
+          "max": 25
+        },
+        "en": {
+          "count": 33,
+          "min": 13,
+          "median": 17,
+          "max": 22
+        },
+        "de": {
+          "count": 33,
+          "min": 9,
+          "median": 14,
+          "max": 19
+        },
+        "nl": {
+          "count": 33,
+          "min": 11,
+          "median": 15,
+          "max": 19
+        },
+        "it": {
+          "count": 33,
+          "min": 13,
+          "median": 18,
+          "max": 23
+        },
+        "es": {
+          "count": 33,
+          "min": 15,
+          "median": 19,
+          "max": 25
+        },
+        "pl": {
+          "count": 33,
+          "min": 11,
+          "median": 15,
+          "max": 20
+        },
+        "pt": {
+          "count": 33,
+          "min": 13,
+          "median": 18,
+          "max": 24
+        }
+      },
+      "article.Heading": {
+        "fr": {
+          "count": 4,
+          "min": 6,
+          "median": 6.5,
+          "max": 9
+        },
+        "en": {
+          "count": 4,
+          "min": 4,
+          "median": 6.5,
+          "max": 8
+        },
+        "de": {
+          "count": 4,
+          "min": 4,
+          "median": 5.5,
+          "max": 7
+        },
+        "nl": {
+          "count": 4,
+          "min": 3,
+          "median": 5.5,
+          "max": 7
+        },
+        "it": {
+          "count": 4,
+          "min": 6,
+          "median": 6.5,
+          "max": 9
+        },
+        "es": {
+          "count": 4,
+          "min": 6,
+          "median": 7.5,
+          "max": 9
+        },
+        "pl": {
+          "count": 4,
+          "min": 5,
+          "median": 6.0,
+          "max": 7
+        },
+        "pt": {
+          "count": 4,
+          "min": 6,
+          "median": 6.5,
+          "max": 8
+        }
+      },
+      "article.Paragraph": {
+        "fr": {
+          "count": 4,
+          "min": 75,
+          "median": 78.0,
+          "max": 79
+        },
+        "en": {
+          "count": 4,
+          "min": 64,
+          "median": 76.5,
+          "max": 79
+        },
+        "de": {
+          "count": 4,
+          "min": 64,
+          "median": 71.0,
+          "max": 79
+        },
+        "nl": {
+          "count": 4,
+          "min": 64,
+          "median": 72.5,
+          "max": 79
+        },
+        "it": {
+          "count": 4,
+          "min": 68,
+          "median": 73.0,
+          "max": 84
+        },
+        "es": {
+          "count": 4,
+          "min": 74,
+          "median": 81.5,
+          "max": 86
+        },
+        "pl": {
+          "count": 4,
+          "min": 59,
+          "median": 69.0,
+          "max": 71
+        },
+        "pt": {
+          "count": 4,
+          "min": 70,
+          "median": 78.5,
+          "max": 86
+        }
+      },
+      "article.subtitles": {
+        "fr": {
+          "count": 1,
+          "min": 13,
+          "median": 13,
+          "max": 13
+        },
+        "en": {
+          "count": 1,
+          "min": 14,
+          "median": 14,
+          "max": 14
+        },
+        "de": {
+          "count": 1,
+          "min": 13,
+          "median": 13,
+          "max": 13
+        },
+        "nl": {
+          "count": 1,
+          "min": 13,
+          "median": 13,
+          "max": 13
+        },
+        "it": {
+          "count": 1,
+          "min": 14,
+          "median": 14,
+          "max": 14
+        },
+        "es": {
+          "count": 1,
+          "min": 16,
+          "median": 16,
+          "max": 16
+        },
+        "pl": {
+          "count": 1,
+          "min": 15,
+          "median": 15,
+          "max": 15
+        },
+        "pt": {
+          "count": 1,
+          "min": 13,
+          "median": 13,
+          "max": 13
+        }
+      },
+      "article.summaries": {
+        "fr": {
+          "count": 1,
+          "min": 46,
+          "median": 46,
+          "max": 46
+        },
+        "en": {
+          "count": 1,
+          "min": 39,
+          "median": 39,
+          "max": 39
+        },
+        "de": {
+          "count": 1,
+          "min": 39,
+          "median": 39,
+          "max": 39
+        },
+        "nl": {
+          "count": 1,
+          "min": 41,
+          "median": 41,
+          "max": 41
+        },
+        "it": {
+          "count": 1,
+          "min": 40,
+          "median": 40,
+          "max": 40
+        },
+        "es": {
+          "count": 1,
+          "min": 45,
+          "median": 45,
+          "max": 45
+        },
+        "pl": {
+          "count": 1,
+          "min": 36,
+          "median": 36,
+          "max": 36
+        },
+        "pt": {
+          "count": 1,
+          "min": 43,
+          "median": 43,
+          "max": 43
+        }
+      },
+      "article.titles": {
+        "fr": {
+          "count": 1,
+          "min": 9,
+          "median": 9,
+          "max": 9
+        },
+        "en": {
+          "count": 1,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "de": {
+          "count": 1,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "nl": {
+          "count": 1,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "it": {
+          "count": 1,
+          "min": 7,
+          "median": 7,
+          "max": 7
+        },
+        "es": {
+          "count": 1,
+          "min": 9,
+          "median": 9,
+          "max": 9
+        },
+        "pl": {
+          "count": 1,
+          "min": 7,
+          "median": 7,
+          "max": 7
+        },
+        "pt": {
+          "count": 1,
+          "min": 9,
+          "median": 9,
+          "max": 9
+        }
+      },
+      "captions": {
+        "fr": {
+          "count": 33,
+          "min": 7,
+          "median": 12,
+          "max": 15
+        },
+        "en": {
+          "count": 33,
+          "min": 6,
+          "median": 11,
+          "max": 15
+        },
+        "de": {
+          "count": 33,
+          "min": 6,
+          "median": 11,
+          "max": 14
+        },
+        "nl": {
+          "count": 33,
+          "min": 6,
+          "median": 11,
+          "max": 16
+        },
+        "it": {
+          "count": 33,
+          "min": 6,
+          "median": 12,
+          "max": 15
+        },
+        "es": {
+          "count": 33,
+          "min": 6,
+          "median": 13,
+          "max": 17
+        },
+        "pl": {
+          "count": 33,
+          "min": 6,
+          "median": 10,
+          "max": 14
+        },
+        "pt": {
+          "count": 33,
+          "min": 7,
+          "median": 13,
+          "max": 16
+        }
+      },
+      "credits": {
+        "fr": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "en": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "de": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "nl": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "it": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "es": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "pl": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        },
+        "pt": {
+          "count": 33,
+          "min": 3,
+          "median": 4,
+          "max": 4
+        }
+      },
+      "event.summaries": {
+        "fr": {
+          "count": 5,
+          "min": 33,
+          "median": 36,
+          "max": 44
+        },
+        "en": {
+          "count": 5,
+          "min": 30,
+          "median": 36,
+          "max": 41
+        },
+        "de": {
+          "count": 5,
+          "min": 27,
+          "median": 33,
+          "max": 38
+        },
+        "nl": {
+          "count": 5,
+          "min": 27,
+          "median": 38,
+          "max": 38
+        },
+        "it": {
+          "count": 5,
+          "min": 32,
+          "median": 37,
+          "max": 40
+        },
+        "es": {
+          "count": 5,
+          "min": 33,
+          "median": 37,
+          "max": 40
+        },
+        "pl": {
+          "count": 5,
+          "min": 28,
+          "median": 31,
+          "max": 33
+        },
+        "pt": {
+          "count": 5,
+          "min": 33,
+          "median": 37,
+          "max": 41
+        }
+      },
+      "event.titles": {
+        "fr": {
+          "count": 5,
+          "min": 6,
+          "median": 6,
+          "max": 10
+        },
+        "en": {
+          "count": 5,
+          "min": 5,
+          "median": 6,
+          "max": 10
+        },
+        "de": {
+          "count": 5,
+          "min": 5,
+          "median": 6,
+          "max": 8
+        },
+        "nl": {
+          "count": 5,
+          "min": 5,
+          "median": 5,
+          "max": 9
+        },
+        "it": {
+          "count": 5,
+          "min": 5,
+          "median": 6,
+          "max": 9
+        },
+        "es": {
+          "count": 5,
+          "min": 5,
+          "median": 6,
+          "max": 10
+        },
+        "pl": {
+          "count": 5,
+          "min": 4,
+          "median": 5,
+          "max": 7
+        },
+        "pt": {
+          "count": 5,
+          "min": 6,
+          "median": 6,
+          "max": 9
+        }
+      },
+      "item": {
+        "fr": {
+          "count": 22,
+          "min": 40,
+          "median": 78.5,
+          "max": 108
+        },
+        "en": {
+          "count": 22,
+          "min": 35,
+          "median": 70.0,
+          "max": 91
+        },
+        "de": {
+          "count": 22,
+          "min": 31,
+          "median": 67.0,
+          "max": 90
+        },
+        "nl": {
+          "count": 22,
+          "min": 36,
+          "median": 69.5,
+          "max": 93
+        },
+        "it": {
+          "count": 22,
+          "min": 36,
+          "median": 76.0,
+          "max": 103
+        },
+        "es": {
+          "count": 22,
+          "min": 40,
+          "median": 80.0,
+          "max": 106
+        },
+        "pl": {
+          "count": 22,
+          "min": 34,
+          "median": 62.0,
+          "max": 83
+        },
+        "pt": {
+          "count": 22,
+          "min": 39,
+          "median": 76.5,
+          "max": 102
+        }
+      },
+      "offer.conditions": {
+        "fr": {
+          "count": 1,
+          "min": 7,
+          "median": 7,
+          "max": 7
+        },
+        "en": {
+          "count": 1,
+          "min": 7,
+          "median": 7,
+          "max": 7
+        },
+        "de": {
+          "count": 1,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "nl": {
+          "count": 1,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "it": {
+          "count": 1,
+          "min": 7,
+          "median": 7,
+          "max": 7
+        },
+        "es": {
+          "count": 1,
+          "min": 8,
+          "median": 8,
+          "max": 8
+        },
+        "pl": {
+          "count": 1,
+          "min": 6,
+          "median": 6,
+          "max": 6
+        },
+        "pt": {
+          "count": 1,
+          "min": 7,
+          "median": 7,
+          "max": 7
+        }
+      },
+      "offer.labels": {
+        "fr": {
+          "count": 1,
+          "min": 5,
+          "median": 5,
+          "max": 5
+        },
+        "en": {
+          "count": 1,
+          "min": 5,
+          "median": 5,
+          "max": 5
+        },
+        "de": {
+          "count": 1,
+          "min": 3,
+          "median": 3,
+          "max": 3
+        },
+        "nl": {
+          "count": 1,
+          "min": 4,
+          "median": 4,
+          "max": 4
+        },
+        "it": {
+          "count": 1,
+          "min": 3,
+          "median": 3,
+          "max": 3
+        },
+        "es": {
+          "count": 1,
+          "min": 6,
+          "median": 6,
+          "max": 6
+        },
+        "pl": {
+          "count": 1,
+          "min": 4,
+          "median": 4,
+          "max": 4
+        },
+        "pt": {
+          "count": 1,
+          "min": 5,
+          "median": 5,
+          "max": 5
+        }
+      },
+      "openingHours.notes": {
+        "fr": {
+          "count": 1,
+          "min": 36,
+          "median": 36,
+          "max": 36
+        },
+        "en": {
+          "count": 1,
+          "min": 30,
+          "median": 30,
+          "max": 30
+        },
+        "de": {
+          "count": 1,
+          "min": 31,
+          "median": 31,
+          "max": 31
+        },
+        "nl": {
+          "count": 1,
+          "min": 33,
+          "median": 33,
+          "max": 33
+        },
+        "it": {
+          "count": 1,
+          "min": 32,
+          "median": 32,
+          "max": 32
+        },
+        "es": {
+          "count": 1,
+          "min": 34,
+          "median": 34,
+          "max": 34
+        },
+        "pl": {
+          "count": 1,
+          "min": 29,
+          "median": 29,
+          "max": 29
+        },
+        "pt": {
+          "count": 1,
+          "min": 34,
+          "median": 34,
+          "max": 34
+        }
+      },
+      "park": {
+        "fr": {
+          "count": 1,
+          "min": 215,
+          "median": 215,
+          "max": 215
+        },
+        "en": {
+          "count": 1,
+          "min": 179,
+          "median": 179,
+          "max": 179
+        },
+        "de": {
+          "count": 1,
+          "min": 169,
+          "median": 169,
+          "max": 169
+        },
+        "nl": {
+          "count": 1,
+          "min": 182,
+          "median": 182,
+          "max": 182
+        },
+        "it": {
+          "count": 1,
+          "min": 203,
+          "median": 203,
+          "max": 203
+        },
+        "es": {
+          "count": 1,
+          "min": 216,
+          "median": 216,
+          "max": 216
+        },
+        "pl": {
+          "count": 1,
+          "min": 169,
+          "median": 169,
+          "max": 169
+        },
+        "pt": {
+          "count": 1,
+          "min": 207,
+          "median": 207,
+          "max": 207
+        }
+      },
+      "pricing.notes": {
+        "fr": {
+          "count": 1,
+          "min": 36,
+          "median": 36,
+          "max": 36
+        },
+        "en": {
+          "count": 1,
+          "min": 31,
+          "median": 31,
+          "max": 31
+        },
+        "de": {
+          "count": 1,
+          "min": 28,
+          "median": 28,
+          "max": 28
+        },
+        "nl": {
+          "count": 1,
+          "min": 28,
+          "median": 28,
+          "max": 28
+        },
+        "it": {
+          "count": 1,
+          "min": 31,
+          "median": 31,
+          "max": 31
+        },
+        "es": {
+          "count": 1,
+          "min": 39,
+          "median": 39,
+          "max": 39
+        },
+        "pl": {
+          "count": 1,
+          "min": 30,
+          "median": 30,
+          "max": 30
+        },
+        "pt": {
+          "count": 1,
+          "min": 34,
+          "median": 34,
+          "max": 34
+        }
+      },
+      "reference.biography": {
+        "fr": {
+          "count": 1,
+          "min": 97,
+          "median": 97,
+          "max": 97
+        },
+        "en": {
+          "count": 1,
+          "min": 90,
+          "median": 90,
+          "max": 90
+        },
+        "de": {
+          "count": 1,
+          "min": 85,
+          "median": 85,
+          "max": 85
+        },
+        "nl": {
+          "count": 1,
+          "min": 92,
+          "median": 92,
+          "max": 92
+        },
+        "it": {
+          "count": 1,
+          "min": 95,
+          "median": 95,
+          "max": 95
+        },
+        "es": {
+          "count": 1,
+          "min": 102,
+          "median": 102,
+          "max": 102
+        },
+        "pl": {
+          "count": 1,
+          "min": 85,
+          "median": 85,
+          "max": 85
+        },
+        "pt": {
+          "count": 1,
+          "min": 100,
+          "median": 100,
+          "max": 100
+        }
+      }
+    },
+    "paragraphDuplicatesAfterNameHeadingRemoval": [
+      {
+        "language": "fr",
+        "normalizedBody": "visiteurs devant la façade galion peint têtes de pirates et auvent vert en feuilles de palmier",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "normalizedBody": "visitors in front of the façade with a painted galleon pirate heads and a green palm leaf canopy",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "normalizedBody": "besucher vor der treasure club fassade mit gemalter galeone piratenköpfen und grünem palmblattdach",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "normalizedBody": "bezoekers voor de gevel van met een geschilderd galjoen piratenhoofden en een groen palmbladerdak",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "normalizedBody": "visitatori davanti alla facciata del con un galeone dipinto teste di pirati e una tettoia verde a foglie di palma",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "normalizedBody": "visitantes ante la fachada del con un galeón pintado cabezas de piratas y un tejadillo verde de hojas de palmera",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "normalizedBody": "goście przed fasadą z namalowanym galeonem głowami piratów i zielonym daszkiem z liści palmowych",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "normalizedBody": "visitantes diante da fachada do com um galeão pintado cabeças de piratas e uma cobertura verde de folhas de palmeira",
+        "occurrences": [
+          {
+            "kind": "altTexts",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "altTexts",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "fr",
+        "normalizedBody": "la façade du et ses machines à lots sur le port de capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "normalizedBody": "the façade and its prize machines on capbreton harbour",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "normalizedBody": "die fassade des und seine gewinnspielautomaten am hafen von capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "normalizedBody": "de gevel van en zijn prijsautomaten aan de haven van capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "normalizedBody": "la facciata del e le sue macchine a premi sul porto di capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "normalizedBody": "la fachada del y sus máquinas de premios junto al puerto de capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "normalizedBody": "fasada i automaty z nagrodami przy porcie w capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "normalizedBody": "a fachada do e as suas máquinas de prémios junto ao porto de capbreton",
+        "occurrences": [
+          {
+            "kind": "captions",
+            "id": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+            "paragraphIndex": 0
+          },
+          {
+            "kind": "captions",
+            "id": "2fe3f6e5d5d743c58820926f0165c5a8",
+            "paragraphIndex": 0
+          }
+        ]
+      }
+    ],
+    "coverage": [
+      {
+        "itemId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+        "name": "Accro-bungy",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 3,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "cf47d719-ffcf-48df-ab5d-1d3bc12892c1",
+        "name": "Aladdin Adventure",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 1,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "51b7571d-e685-4702-bfdf-b7adab67aa8b",
+        "name": "Animaux électriques",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "3fa3aefa-3196-4602-9c2a-4a268fb48a77",
+        "name": "Aquabuller",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+        "name": "Aquanimal",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 3,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
+        "name": "Crêperie",
+        "category": "Restaurant",
+        "visible": true,
+        "status": "Operating",
+        "photos": 1,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "bfbde670-567f-49e8-93d4-e03d69bc84b2",
+        "name": "Espace de jeux",
+        "category": "Service",
+        "visible": true,
+        "status": null,
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "146bf355-1763-45f5-953b-3c2615ef2171",
+        "name": "Galion gonflable Pirates",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 1,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "323130bf-9267-4cb0-a9f5-3bc2b29edc28",
+        "name": "Gonflable Cirque",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "f67ac9b2-ea1c-4dbc-bdd0-1f10c3a58200",
+        "name": "Gonflable Mario",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "ace8e97e-fad6-4040-a9a1-375866602d62",
+        "name": "Gonflable Pirates",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 1,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "ababe179-3c88-4d2b-b372-090be9459151",
+        "name": "Happy Childhood",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "295a3460-71b5-4453-a3a7-b9266f508dd1",
+        "name": "L’Île aux Pirates — Palais du rire",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Operating",
+        "photos": 1,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "482a2557-2956-417a-be20-aeff5b2436d3",
+        "name": "Manège Disney",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 3,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "1675eb76-d7eb-4c34-8734-2a67be0a7aa5",
+        "name": "Parcours Safari",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "4f53ec0a-14f9-4652-a8eb-7a7edb6061fb",
+        "name": "Petit train à pièces",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "9405d573-5666-4003-a97f-7ea8523d99c5",
+        "name": "Pirates Aventures",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Unknown",
+        "photos": 2,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "29284de1-b6a8-48d0-afd8-8f72a76b9406",
+        "name": "Piste des As",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 3,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+        "name": "Pêche aux canards",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 2,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "9cc8f497-cd9d-4d25-868f-e0a249a296a4",
+        "name": "Train de la Mine",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 0,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "c2477c09-955a-4291-86b1-448732547c28",
+        "name": "Trampolino",
+        "category": "Attraction",
+        "visible": true,
+        "status": "Operating",
+        "photos": 2,
+        "provenCoordinates": false
+      },
+      {
+        "itemId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+        "name": "Treasure Club",
+        "category": "Attraction",
+        "visible": false,
+        "status": "Operating",
+        "photos": 3,
+        "provenCoordinates": false
+      }
+    ],
+    "articleBodyWords": {
+      "fr": 310,
+      "en": 296,
+      "de": 285,
+      "nl": 288,
+      "it": 298,
+      "es": 323,
+      "pl": 268,
+      "pt": 313
+    },
+    "inventory": {
+      "items": 22,
+      "publicItems": 10,
+      "media": 33,
+      "publicMedia": 8,
+      "privateMedia": 25,
+      "itemsWithPhoto": 13,
+      "itemsWithThreePhotos": 5,
+      "itemsWithCoordinates": 0,
+      "parkPhotoRecords": 7,
+      "distinctQualifyingGeneralParkViews": 5,
+      "officialAnnualMaps": 0,
+      "unresolvedHistoricalNames": [
+        "Monde de la Mer",
+        "Aventure Jungle",
+        "Red’s Club",
+        "La Paillote"
+      ]
+    }
+  },
+  "publicationGate": {
+    "requiredScore": "strictly greater than95 for an operating park",
+    "actualProjectedScore": 95,
+    "blockers": [
+      "media.logo-required"
+    ],
+    "formulaicIssueIsConfirmedBinaryDuplicate": true,
+    "closedParkToleranceApplicable": false
+  },
+  "residualGaps": {
+    "logo": "Aucun logo officiel autonome actuel trouvé. Domaine officiel redirigé vers Facebook/login ; ancien graphique2011 montage promotionnel et carte de fidélité photographiée2013 ne prouvent pas le logo actuel. Faux logo photographique reclassé Park, non masqué. Blocage API media.logo-required maintenu.",
+    "duplicate": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-duplicate-proposal-20261115.json",
+    "openingHours": "Ancienne règle88b5812ef0c44518b32711539f933604,1juillet–31août2026,16h–minuit/62jours : la source Tripadvisor n’indique pas l’année. Retrait de la grille non fondée et notes saisonnières préparés, mais Preview ignore la section openingHours lorsque toutes les collections sont vides. Aucun Apply de ce document ; pas de jour/fermeture/règle annuelle inventé pour forcer le passage.",
+    "historicalIdentity": [
+      "Monde de la Mer",
+      "Aventure Jungle",
+      "Red’s Club",
+      "La Paillote"
+    ],
+    "photos": "Neuf lieux sans photo propre ; cinq lieux sur22 atteignent trois photos.33 médias incluent un doublon historique public.25 nouveaux originaux privés contrôlés visuellement.2013 sans filigrane ; reportages2015/2016/2019 et coasterwatermarkés rejetés.",
+    "coordinatesAndMaps": "0/22positions prouvées, aucun plan intérieur annuel. Limites portuaires/plan d’accès exclus.",
+    "references": "Fondateur/exploitant non qualifiés. ConstructeurKılıç résolu, biographie8langues corrigée dans un lot transverse explicite ; foundedYear reste null.",
+    "prices": "Entrée libre confirmée sur page accessible ; jetons à la caisse, montants actuels non publiés. Aucun prix2013 transposé.",
+    "historyRoute": "Trois faits privés ; zéro bloqueur technique, mais aucune année clé indexable parmi les deux faits publics. isMajor2018 est forcé par l’API lorsqu’un article est attaché ; le texte n’en fait ni une ouverture ni une fondation.",
+    "sourceAccess": "Sources actuelles de contenu retournent200 au contrôle sauf archives2004/2009 désormais429 ; leurs fichiers précédemment consultés restent conservés avec hash. Aucune relance pour contourner la limitation. URL préfecture503 retirée parce que sans lien avec le récit."
+  },
+  "sourceVerification": [
+    {
+      "url": "https://captaincoaster.com/fr/coasters/6396/lile-aux-pirates-capbreton-train-de-la-mine",
+      "checkedAtUtc": "2026-11-15T03:37:49.178869+00:00",
+      "status": 200,
+      "finalUrl": "https://captaincoaster.com/fr/coasters/6396/lile-aux-pirates-capbreton-train-de-la-mine",
+      "bytes": 85691,
+      "sha256": "39ea7abe6c694e1887ca70c16ec3a551ab905b5bd50d26ac30e352945abdd9e7",
+      "file": "e7625466ade3.html"
+    },
+    {
+      "url": "https://web.archive.org/web/20040825094812id_/http://www.ileauxpirates.com:80/iframe/parc.htm",
+      "checkedAtUtc": "2026-11-15T03:37:49.179540+00:00",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "url": "https://web.archive.org/web/20090216175804id_/http://www.ileauxpirates.com:80/le-parc",
+      "checkedAtUtc": "2026-11-15T03:37:49.996693+00:00",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "url": "https://www.capbreton.fr/fileadmin/mediatheque/Vie_municipale/Les_conseils_municipaux/Deliberations_2016/CR_CM_05_juillet_approuve__.pdf",
+      "checkedAtUtc": "2026-11-15T03:37:50.592468+00:00",
+      "status": 200,
+      "finalUrl": "https://www.capbreton.fr/fileadmin/mediatheque/Vie_municipale/Les_conseils_municipaux/Deliberations_2016/CR_CM_05_juillet_approuve__.pdf",
+      "bytes": 3748867,
+      "sha256": "ab83ca9e53da0b1da01e1b9fea501ebf454c5444c7d9a5b73b8d5ed31365f46f",
+      "file": "78a8d196bc6f.pdf"
+    },
+    {
+      "url": "https://www.landes.gouv.fr/contenu/telechargement/29387/247506/file/2024-262%20plans%20annex%C3%A9s%20Limite%20du%20Domaine%20Portuaire.pdf",
+      "checkedAtUtc": "2026-11-15T03:37:51.193333+00:00",
+      "error": "HTTP Error 503: Service Unavailable"
+    },
+    {
+      "url": "https://www.peche-capbreton.fr/evenements/fete-du-chipiron-port-de-capbreton-118.html",
+      "checkedAtUtc": "2026-11-15T03:37:52.265368+00:00",
+      "status": 200,
+      "finalUrl": "https://www.peche-capbreton.fr/evenements/fete-du-chipiron-port-de-capbreton-118.html",
+      "bytes": 34059,
+      "sha256": "253dd603401e9d38ed583b707d419820a50ee0355fea172d7b56ad5e3a834102",
+      "file": "bd1eadd708f4.html"
+    },
+    {
+      "url": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/",
+      "checkedAtUtc": "2026-11-15T03:37:53.412268+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/",
+      "bytes": 96823,
+      "sha256": "c9ebb87fbef2ee1bf2ed0fbc59f4846b7ab699cc6025e0353801d1a245573acf",
+      "file": "6d96f71ec01c.html"
+    },
+    {
+      "url": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html",
+      "checkedAtUtc": "2026-11-15T03:37:53.824504+00:00",
+      "status": 200,
+      "finalUrl": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html",
+      "bytes": 51501,
+      "sha256": "f40e09b55080129f2510c490c32ec21b44202fe64417787e08f5ef778335cab5",
+      "file": "3872f14b3c3d.html"
+    },
+    {
+      "url": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html",
+      "checkedAtUtc": "2026-11-15T03:37:54.279264+00:00",
+      "status": 200,
+      "finalUrl": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html",
+      "bytes": 47787,
+      "sha256": "a4e29a37dcb71f31f4428d4fd644c6404afa66845492b744d8a915b93bb0326f",
+      "file": "e66d88b1cf44.html"
+    },
+    {
+      "url": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html",
+      "checkedAtUtc": "2026-11-15T03:37:55.187941+00:00",
+      "status": 200,
+      "finalUrl": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html",
+      "bytes": 47221,
+      "sha256": "5915f66223273c29f3fe055f143549c3bbde88dce17834769f6f3aa27eb2ccc9",
+      "file": "db1aec130289.html"
+    },
+    {
+      "url": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+      "checkedAtUtc": "2026-11-15T03:37:55.299161+00:00",
+      "status": 200,
+      "finalUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+      "bytes": 108761,
+      "sha256": "819e8b26fac18e8cab113bca8b28a6a0113cb4ce13aca74a495fb3015d01b27c",
+      "file": "b0674fb60c1f.html"
+    }
+  ],
+  "originalSourceManifest": [
+    {
+      "name": "turbo2013",
+      "url": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-la-video-376.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-la-video-376.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:31.916197+00:00",
+      "sha256": "9730f0cfe2ea0326dbdc8d21a99ed206af2441041eca1d781b89d2c3921d77e2"
+    },
+    {
+      "name": "turbo2015",
+      "url": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:32.547854+00:00",
+      "sha256": "decd15eda708b6f934c0add08d40a453e648cec51b681a4bd30996ecdcad1573"
+    },
+    {
+      "name": "turbo2016",
+      "url": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-1264.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:32.875653+00:00",
+      "sha256": "26fe66d44559e552e4f7f8f1a3c62302fbad72294acedb89a4c2f6a8b4a5b41a"
+    },
+    {
+      "name": "turbo2019",
+      "url": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html",
+      "finalUrl": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:33.346743+00:00",
+      "sha256": "52325658b4d8b22805ad368da3c28a72b827fb50cb9c091b1d13ee29b8101c46"
+    },
+    {
+      "name": "tourisme",
+      "url": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/",
+      "finalUrl": "https://www.tourismelandes.com/loisir/ile-aux-pirates-loiaqu040fs0009a/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:34.733953+00:00",
+      "sha256": "32d349a403bcef35870959408237bf88670d34653ed886d76594c47f843825b6"
+    },
+    {
+      "name": "captain",
+      "url": "https://captaincoaster.com/fr/coasters/6396/lile-aux-pirates-capbreton-train-de-la-mine",
+      "finalUrl": "https://captaincoaster.com/fr/coasters/6396/lile-aux-pirates-capbreton-train-de-la-mine",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:52:35.512795+00:00",
+      "sha256": "35248f6598c7370f09b40dbee202de8b021bc9ed44406347cf4ff14bf2e9b565"
+    }
+  ],
+  "officialWebsiteCheck": [
+    {
+      "url": "https://www.ileauxpirates.com/",
+      "status": 200,
+      "retrievedAtUtc": "2026-11-15T01:51:18.584097+00:00",
+      "sha256": "04d5b459e3748792e17ebdb24459b866b822b44c194072dc0528913f8dc68ae5",
+      "finalUrl": "https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2FLile-aux-Pirates-464908563569429%2F",
+      "usableOfficialContent": false,
+      "note": "Le domaine officiel redirige vers la connexion Facebook ; HTTP 200 ne constitue pas un relevé officiel exploitable."
+    }
+  ],
+  "archives": [
+    {
+      "file": "official-archive-2004.html",
+      "sha256": "d3bb1486124e35b79c68bd87d7a65588ee4be3410bf826120d303a9ae292055a",
+      "currentRecheck": "429; original local content retained; no retry"
+    },
+    {
+      "file": "official-archive-2009.html",
+      "sha256": "65232fafe5dd08542dafd4fccbcec9797a38600570962e786db2ed92ffd38b55",
+      "currentRecheck": "429; original local content retained; no retry"
+    }
+  ],
+  "calendarApiEvidence": {
+    "requestSha256": "af0cc1768e309638778d957f10bcd2db062c7e82abfe19f4aa76589a84e6e561",
+    "preview": {
+      "operationId": "ec2583f9-7582-45b4-80c2-256fba962e6c",
+      "mode": "merge",
+      "isApplied": false,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T03:27:04.1633923Z",
+      "appliedAtUtc": null,
+      "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+      "targetParkName": "L'Île aux Pirates",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "entityKey": "park",
+          "displayName": "L'Île aux Pirates",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkPricing",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "entityKey": "pricing",
+          "displayName": "L'Île aux Pirates pricing",
+          "changeType": "Updated",
+          "matchedBy": "pricing",
+          "fields": [
+            {
+              "field": "pricing.notes",
+              "oldValue": "[{\"LanguageCode\":\"de\",\"Value\":\"Der Zugang zum Freizeitbereich ist frei. Die Attraktionen werden einzeln mit Jetons bezahlt, die an der Hauptkasse mit den verf\\u00FCgbaren Paketen und Preisen angeboten werden.\"},{\"LanguageCode\":\"en\",\"Value\":\"Entry to the leisure area is free. Attractions are paid for separately with tokens bought at the central booth, where the available bundles and their prices are displayed.\"},{\"LanguageCode\":\"es\",\"Value\":\"El acceso a la zona de ocio es gratuito. Las atracciones se pagan por separado con fichas compradas en la caja central, donde se muestran los lotes disponibles y sus precios.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u02BCentr\\u00E9e dans l\\u02BCaire de loisirs est libre. Les attractions se r\\u00E8glent s\\u00E9par\\u00E9ment avec des jetons achet\\u00E9s \\u00E0 la caisse centrale, o\\u00F9 les lots disponibles et leurs prix sont pr\\u00E9sent\\u00E9s.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u02BCaccesso all\\u02BCarea ricreativa \\u00E8 gratuito. Le attrazioni si pagano separatamente con gettoni acquistati alla cassa centrale, dove sono presentati i pacchetti disponibili e i relativi prezzi.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De toegang tot het recreatieterrein is gratis. Attracties worden apart betaald met jetons uit de centrale kassa, waar de beschikbare bundels en prijzen staan.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Wst\\u0119p na teren rekreacyjny jest bezp\\u0142atny. Za atrakcje p\\u0142aci si\\u0119 osobno \\u017Cetonami kupowanymi w kasie g\\u0142\\u00F3wnej, gdzie podane s\\u0105 dost\\u0119pne pakiety i ich ceny.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A entrada na zona de lazer \\u00E9 gratuita. As atra\\u00E7\\u00F5es s\\u00E3o pagas separadamente com fichas compradas na bilheteira central, onde s\\u00E3o apresentados os lotes dispon\\u00EDveis e os respetivos pre\\u00E7os.\"}]",
+              "newValue": "[{\"LanguageCode\":\"de\",\"Value\":\"Der Zugang zum Freizeitbereich ist frei. Die Attraktionen werden einzeln mit Jetons bezahlt, die an der Hauptkasse erh\\u00E4ltlich sind. Die abrufbare Preisseite nennt keine aktuellen Jeton- oder Paketpreise.\"},{\"LanguageCode\":\"en\",\"Value\":\"Entry to the leisure area is free. Attractions are paid for separately with tokens bought at the central booth. The accessible pricing page does not list current token or bundle prices.\"},{\"LanguageCode\":\"es\",\"Value\":\"El acceso a la zona de ocio es gratuito. Las atracciones se pagan por separado con fichas compradas en la caja central. La p\\u00E1gina de precios accesible no indica los importes actuales de las fichas ni de los lotes.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u2019entr\\u00E9e dans l\\u2019aire de loisirs est libre. Les attractions se paient s\\u00E9par\\u00E9ment avec des jetons achet\\u00E9s \\u00E0 la caisse centrale. Le prix actuel des jetons et des lots n\\u2019est pas publi\\u00E9 sur la page tarifaire consultable.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u2019ingresso nell\\u2019area ricreativa \\u00E8 libero. Le attrazioni si pagano separatamente con gettoni acquistati alla cassa centrale. La pagina dei prezzi consultabile non riporta gli importi attuali dei gettoni o dei pacchetti.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De toegang tot het recreatieterrein is gratis. Attracties worden apart betaald met jetons uit de centrale kassa. De toegankelijke prijspagina vermeldt geen actuele prijzen voor jetons of bundels.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Wst\\u0119p na teren rekreacyjny jest bezp\\u0142atny. Za atrakcje p\\u0142aci si\\u0119 osobno \\u017Cetonami kupowanymi w kasie g\\u0142\\u00F3wnej. Dost\\u0119pna strona z informacjami o cenach nie podaje aktualnych kwot za \\u017Cetony ani pakiety.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A entrada na zona de lazer \\u00E9 gratuita. As atra\\u00E7\\u00F5es s\\u00E3o pagas separadamente com fichas compradas na bilheteira central. A p\\u00E1gina de pre\\u00E7os acess\\u00EDvel n\\u00E3o apresenta os valores atuais das fichas nem dos lotes.\"}]"
+            },
+            {
+              "field": "pricing.lastVerifiedAtUtc",
+              "oldValue": "2026-10-03T08:20:00Z",
+              "newValue": "2026-11-15T03:25:31.998192Z"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    "applied": false,
+    "implementation": "API/AmusementPark.Application/Features/ParkGraphUpserts/Services/ParkGraphUpsertProcessorOpeningHoursExtensions.cs:62,159; HasOpeningHoursScheduleData returns false for empty collections"
+  },
+  "nextActions": [
+    "Attendre la réponse spécifique sur la seule copie publique, puis PreviewDeletion/ApplyDeletion si autorisée.",
+    "Obtenir un vrai logo officiel ; ne pas reclasser une photo pour gagner les points.",
+    "Faire prendre en charge la correction d’une grille horaire erronée sans règle de remplacement fictive via le client officiel.",
+    "Qualifier les quatre noms historiques et rechercher les lacunes sans doublons.",
+    "Après résolution : rapprocher seulement les changements, export distinct de publication, contrôles pages et ResolveFacebookPublication. Annonce déjà Published, ne pas la renvoyer."
+  ]
+}

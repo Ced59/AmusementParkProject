@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "f954dde7f603497ca8c1bd70685879e0fb836625ea41f171d374dda978cbd963",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "ff56e7a9-b472-49a4-85aa-5ac19e7ecc29",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:28:53.7902458Z",
+    "appliedAtUtc": "2026-11-15T03:28:53.7902468Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "pricing",
+        "displayName": "L'Île aux Pirates pricing",
+        "changeType": "Updated",
+        "matchedBy": "pricing",
+        "fields": [
+          {
+            "field": "pricing.notes",
+            "oldValue": "[{\"LanguageCode\":\"de\",\"Value\":\"Der Zugang zum Freizeitbereich ist frei. Die Attraktionen werden einzeln mit Jetons bezahlt, die an der Hauptkasse mit den verf\\u00FCgbaren Paketen und Preisen angeboten werden.\"},{\"LanguageCode\":\"en\",\"Value\":\"Entry to the leisure area is free. Attractions are paid for separately with tokens bought at the central booth, where the available bundles and their prices are displayed.\"},{\"LanguageCode\":\"es\",\"Value\":\"El acceso a la zona de ocio es gratuito. Las atracciones se pagan por separado con fichas compradas en la caja central, donde se muestran los lotes disponibles y sus precios.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u02BCentr\\u00E9e dans l\\u02BCaire de loisirs est libre. Les attractions se r\\u00E8glent s\\u00E9par\\u00E9ment avec des jetons achet\\u00E9s \\u00E0 la caisse centrale, o\\u00F9 les lots disponibles et leurs prix sont pr\\u00E9sent\\u00E9s.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u02BCaccesso all\\u02BCarea ricreativa \\u00E8 gratuito. Le attrazioni si pagano separatamente con gettoni acquistati alla cassa centrale, dove sono presentati i pacchetti disponibili e i relativi prezzi.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De toegang tot het recreatieterrein is gratis. Attracties worden apart betaald met jetons uit de centrale kassa, waar de beschikbare bundels en prijzen staan.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Wst\\u0119p na teren rekreacyjny jest bezp\\u0142atny. Za atrakcje p\\u0142aci si\\u0119 osobno \\u017Cetonami kupowanymi w kasie g\\u0142\\u00F3wnej, gdzie podane s\\u0105 dost\\u0119pne pakiety i ich ceny.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A entrada na zona de lazer \\u00E9 gratuita. As atra\\u00E7\\u00F5es s\\u00E3o pagas separadamente com fichas compradas na bilheteira central, onde s\\u00E3o apresentados os lotes dispon\\u00EDveis e os respetivos pre\\u00E7os.\"}]",
+            "newValue": "[{\"LanguageCode\":\"de\",\"Value\":\"Der Zugang zum Freizeitbereich ist frei. Die Attraktionen werden einzeln mit Jetons bezahlt, die an der Hauptkasse erh\\u00E4ltlich sind. Die abrufbare Preisseite nennt keine aktuellen Jeton- oder Paketpreise.\"},{\"LanguageCode\":\"en\",\"Value\":\"Entry to the leisure area is free. Attractions are paid for separately with tokens bought at the central booth. The accessible pricing page does not list current token or bundle prices.\"},{\"LanguageCode\":\"es\",\"Value\":\"El acceso a la zona de ocio es gratuito. Las atracciones se pagan por separado con fichas compradas en la caja central. La p\\u00E1gina de precios accesible no indica los importes actuales de las fichas ni de los lotes.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u2019entr\\u00E9e dans l\\u2019aire de loisirs est libre. Les attractions se paient s\\u00E9par\\u00E9ment avec des jetons achet\\u00E9s \\u00E0 la caisse centrale. Le prix actuel des jetons et des lots n\\u2019est pas publi\\u00E9 sur la page tarifaire consultable.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u2019ingresso nell\\u2019area ricreativa \\u00E8 libero. Le attrazioni si pagano separatamente con gettoni acquistati alla cassa centrale. La pagina dei prezzi consultabile non riporta gli importi attuali dei gettoni o dei pacchetti.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De toegang tot het recreatieterrein is gratis. Attracties worden apart betaald met jetons uit de centrale kassa. De toegankelijke prijspagina vermeldt geen actuele prijzen voor jetons of bundels.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Wst\\u0119p na teren rekreacyjny jest bezp\\u0142atny. Za atrakcje p\\u0142aci si\\u0119 osobno \\u017Cetonami kupowanymi w kasie g\\u0142\\u00F3wnej. Dost\\u0119pna strona z informacjami o cenach nie podaje aktualnych kwot za \\u017Cetony ani pakiety.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A entrada na zona de lazer \\u00E9 gratuita. As atra\\u00E7\\u00F5es s\\u00E3o pagas separadamente com fichas compradas na bilheteira central. A p\\u00E1gina de pre\\u00E7os acess\\u00EDvel n\\u00E3o apresenta os valores atuais das fichas nem dos lotes.\"}]"
+          },
+          {
+            "field": "pricing.lastVerifiedAtUtc",
+            "oldValue": "2026-10-03T08:20:00Z",
+            "newValue": "2026-11-15T03:25:31.998192Z"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

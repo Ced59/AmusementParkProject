@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "50b1cc2317993a3dc707e93167c68e137abc93b1d4bf720bc5a3ac27076a56ea",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "3ef9f12a-45d7-4519-afd8-62fb74282270",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:31:13.8655749Z",
+    "appliedAtUtc": "2026-11-15T03:31:13.8655771Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "0e2223c4-9290-4072-ae1f-6cf1d60455e3",
+        "entityKey": "0e2223c4-9290-4072-ae1f-6cf1d60455e3",
+        "displayName": "Kılıç Lunapark",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": "<h2>Ein türkischer Hersteller von Familienfahrgeschäften</h2><p>Kılıç Lunapark ist ein türkischer Hersteller von Freizeitparkattraktionen mit Sitz in Eskişehir. Das Angebot umfasst Familienachterbahnen, Riesenräder, Karussells, Gondeln, Autoscooter und kompakte Fahrgeschäfte für Parks, reisende Kirmesbetriebe und Freizeitanlagen.</p><h2>Kompakte Anlagen für lokale und internationale Parks</h2><p>Das Unternehmen ist besonders mit zugänglichen Modellen wie Shark Trip, Brucomela, Dragon und Spin Coaster verbunden. Im Vordergrund stehen meist geringer Platzbedarf, farbenfrohe Gestaltung und einfache Bedienung statt großer Thrillintensität.</p>",
+            "newValue": "<h2>Von Eskişehir in die Freizeitparks</h2><p>Kılıç Lunapark hat seinen Sitz im türkischen Eskişehir. Nach eigener Darstellung nahm das Unternehmen seine Tätigkeit 1965 auf und wurde 1976 im Stadtviertel Adalar als Parkbetreiber tätig. Diese Betriebserfahrung begleitet die Entwicklung der Fahrgeschäftsproduktion im organisierten Industriegebiet von Eskişehir.</p><h2>Shark Trip und Modelle auf Anhängern</h2><p>Zum Katalog gehören die Achterbahnen Shark Trip, Brucomela, Dragon und Spin Coaster sowie Riesenräder, Karussells und Piratenschiffe. Eine Baureihe auf Anhängern umfasst unter anderem Apple Coaster, Runaway Train und Samba Balloon. Kılıç bietet außerdem Parkplanung, die Montage seiner Fahrgeschäfte und technische Unterstützung nach der Lieferung an.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": "<h2>A Turkish manufacturer of family rides</h2><p>Kılıç Lunapark is a Turkish amusement ride manufacturer based in Eskişehir. Its catalogue includes family roller coasters, Ferris wheels, carousels, gondolas, bumper cars and several compact rides for parks, travelling fairgrounds and leisure venues.</p><h2>Compact rides for local and international parks</h2><p>The company is especially associated with approachable family models such as Shark Trip, Brucomela, Dragon and Spin Coaster. These rides usually focus on modest footprints, colourful theming and straightforward operation rather than large-scale thrill intensity.</p>",
+            "newValue": "<h2>From Eskişehir to amusement parks</h2><p>Kılıç Lunapark is based in Eskişehir, Turkey. The company dates the start of its activities to 1965 and its establishment as a park operator in the Adalar district to 1976. This operating background accompanies the development of its manufacturing business in Eskişehir’s organised industrial zone.</p><h2>Shark Trip and trailer-mounted models</h2><p>The catalogue includes the Shark Trip, Brucomela, Dragon and Spin Coaster roller coasters, alongside Ferris wheels, carousels and pirate ships. A trailer-mounted range includes Apple Coaster, Runaway Train and Samba Balloon. Kılıç also offers park design, installation of its rides and technical support after delivery.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": "<h2>Un fabricante turco de atracciones familiares</h2><p>Kılıç Lunapark es un fabricante turco de atracciones con sede en Eskişehir. Su catálogo incluye montañas rusas familiares, norias, carruseles, góndolas, coches de choque y varias atracciones compactas para parques, ferias itinerantes y espacios de ocio.</p><h2>Atracciones compactas para parques locales e internacionales</h2><p>La empresa se asocia especialmente con modelos accesibles como Shark Trip, Brucomela, Dragon y Spin Coaster. Estas atracciones suelen priorizar poco espacio, tematización colorida y operación sencilla más que emociones extremas a gran escala.</p>",
+            "newValue": "<h2>De Eskişehir a los parques de atracciones</h2><p>Kılıç Lunapark tiene su sede en Eskişehir, Turquía. La empresa sitúa el inicio de sus actividades en 1965 y su establecimiento como operadora de parques en el barrio de Adalar en 1976. Esa experiencia de explotación acompaña el desarrollo de la fabricación de atracciones en la zona industrial organizada de Eskişehir.</p><h2>Shark Trip y los modelos sobre remolque</h2><p>El catálogo incluye las montañas rusas Shark Trip, Brucomela, Dragon y Spin Coaster, además de norias, carruseles y barcos pirata. La gama sobre remolque reúne Apple Coaster, Runaway Train y Samba Balloon, entre otros modelos. Kılıç también ofrece diseño de parques, instalación de sus atracciones y asistencia técnica tras la entrega.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": "<h2>Un constructeur turc d’attractions familiales</h2><p>Kılıç Lunapark est un constructeur turc d’attractions basé à Eskişehir. Son catalogue comprend montagnes russes familiales, grandes roues, carrousels, gondoles, autos tamponneuses et plusieurs attractions compactes destinées aux parcs, fêtes foraines et lieux de loisirs.</p><h2>Des attractions compactes pour parcs locaux et internationaux</h2><p>L’entreprise est notamment associée à des modèles accessibles comme Shark Trip, Brucomela, Dragon et Spin Coaster. Ces attractions privilégient généralement une emprise modérée, une thématisation colorée et une exploitation simple plutôt que des sensations extrêmes à grande échelle.</p>",
+            "newValue": "<h2>D’Eskişehir aux parcs d’attractions</h2><p>Kılıç Lunapark est installé à Eskişehir, en Turquie. L’entreprise situe le début de ses activités en 1965 et son implantation comme exploitant dans le quartier d’Adalar en 1976. Cette histoire d’exploitation accompagne le développement de son activité de constructeur dans la zone industrielle organisée d’Eskişehir.</p><h2>Shark Trip et les modèles sur remorque</h2><p>Le catalogue comprend les montagnes russes Shark Trip, Brucomela, Dragon et Spin Coaster, ainsi que des grandes roues, carrousels et bateaux pirates. Une gamme sur remorque réunit notamment Apple Coaster, Runaway Train et Samba Balloon. Kılıç propose aussi la conception de parcs, l’installation de ses attractions et une assistance technique après livraison.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": "<h2>Un produttore turco di attrazioni familiari</h2><p>Kılıç Lunapark è un produttore turco di attrazioni con sede a Eskişehir. Il catalogo comprende montagne russe familiari, ruote panoramiche, caroselli, gondole, autoscontro e diverse giostre compatte per parchi, luna park itineranti e spazi di intrattenimento.</p><h2>Attrazioni compatte per parchi locali e internazionali</h2><p>L’azienda è associata a modelli accessibili come Shark Trip, Brucomela, Dragon e Spin Coaster. Queste attrazioni puntano di solito su ingombro contenuto, tematizzazione colorata e gestione semplice più che su grandi emozioni estreme.</p>",
+            "newValue": "<h2>Da Eskişehir ai parchi divertimento</h2><p>Kılıç Lunapark ha sede a Eskişehir, in Turchia. L’azienda fa risalire l’inizio delle proprie attività al 1965 e l’insediamento come gestore di parchi nel quartiere di Adalar al 1976. Questa esperienza di gestione accompagna lo sviluppo della produzione di attrazioni nella zona industriale organizzata di Eskişehir.</p><h2>Shark Trip e i modelli su rimorchio</h2><p>Il catalogo comprende le montagne russe Shark Trip, Brucomela, Dragon e Spin Coaster, oltre a ruote panoramiche, caroselli e navi pirata. La gamma su rimorchio include Apple Coaster, Runaway Train e Samba Balloon. Kılıç offre anche progettazione di parchi, installazione delle proprie attrazioni e assistenza tecnica dopo la consegna.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": "<h2>Een Turkse fabrikant van familieattracties</h2><p>Kılıç Lunapark is een Turkse attractiebouwer uit Eskişehir. De catalogus bevat familieachtbanen, reuzenraden, carrousels, gondels, botsauto’s en compacte rides voor parken, reizende kermissen en vrijetijdslocaties.</p><h2>Compacte attracties voor lokale en internationale parken</h2><p>Het bedrijf wordt vooral geassocieerd met toegankelijke modellen zoals Shark Trip, Brucomela, Dragon en Spin Coaster. Deze attracties richten zich doorgaans op beperkte ruimte, kleurrijke theming en eenvoudige exploitatie in plaats van extreme thrillervaringen.</p>",
+            "newValue": "<h2>Van Eskişehir naar attractieparken</h2><p>Kılıç Lunapark is gevestigd in Eskişehir in Turkije. Het bedrijf plaatst het begin van zijn activiteiten in 1965 en zijn vestiging als parkexploitant in de wijk Adalar in 1976. Die ervaring als exploitant gaat samen met de ontwikkeling van de attractiebouw op het georganiseerde industrieterrein van Eskişehir.</p><h2>Shark Trip en modellen op aanhangers</h2><p>De catalogus omvat de achtbanen Shark Trip, Brucomela, Dragon en Spin Coaster, naast reuzenraden, draaimolens en piratenschepen. De reeks op aanhangers omvat onder meer Apple Coaster, Runaway Train en Samba Balloon. Kılıç verzorgt ook parkontwerp, de installatie van zijn attracties en technische ondersteuning na levering.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": "<h2>Turecki producent atrakcji rodzinnych</h2><p>Kılıç Lunapark to turecki producent atrakcji z siedzibą w Eskişehir. W katalogu znajdują się rodzinne kolejki górskie, diabelskie młyny, karuzele, gondole, samochodziki zderzakowe i kompaktowe urządzenia dla parków, wesołych miasteczek i obiektów rozrywkowych.</p><h2>Kompaktowe urządzenia dla parków lokalnych i międzynarodowych</h2><p>Firma kojarzona jest z przystępnymi modelami takimi jak Shark Trip, Brucomela, Dragon i Spin Coaster. Atrakcje te zwykle stawiają na niewielką powierzchnię, kolorową oprawę i prostą obsługę zamiast ekstremalnej skali.</p>",
+            "newValue": "<h2>Z Eskişehir do parków rozrywki</h2><p>Kılıç Lunapark ma siedzibę w tureckim Eskişehir. Firma datuje początek swojej działalności na 1965 rok, a rozpoczęcie prowadzenia parku w dzielnicy Adalar na 1976 rok. To doświadczenie operatora towarzyszy rozwojowi produkcji atrakcji w zorganizowanej strefie przemysłowej Eskişehir.</p><h2>Shark Trip i modele na przyczepach</h2><p>Katalog obejmuje kolejki górskie Shark Trip, Brucomela, Dragon i Spin Coaster, a także diabelskie młyny, karuzele i statki pirackie. W gamie modeli na przyczepach znajdują się między innymi Apple Coaster, Runaway Train i Samba Balloon. Kılıç oferuje również projektowanie parków, montaż swoich atrakcji oraz pomoc techniczną po dostawie.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": "<h2>Um fabricante turco de atrações familiares</h2><p>A Kılıç Lunapark é uma fabricante turca de atrações sediada em Eskişehir. O catálogo inclui montanhas-russas familiares, rodas-gigantes, carrosséis, gôndolas, carrinhos de choque e equipamentos compactos para parques, feiras itinerantes e locais de lazer.</p><h2>Atrações compactas para parques locais e internacionais</h2><p>A empresa está associada a modelos acessíveis como Shark Trip, Brucomela, Dragon e Spin Coaster. Estas atrações privilegiam normalmente pouca ocupação de espaço, temática colorida e operação simples, mais do que intensidade radical em grande escala.</p>",
+            "newValue": "<h2>De Eskişehir aos parques de diversões</h2><p>A Kılıç Lunapark está sediada em Eskişehir, na Turquia. A empresa situa o início das suas atividades em 1965 e a instalação como operadora de parques no bairro de Adalar em 1976. Esta experiência de exploração acompanha o desenvolvimento da produção de atrações na zona industrial organizada de Eskişehir.</p><h2>Shark Trip e os modelos sobre reboque</h2><p>O catálogo inclui as montanhas-russas Shark Trip, Brucomela, Dragon e Spin Coaster, além de rodas-gigantes, carrosséis e barcos piratas. A gama sobre reboque reúne Apple Coaster, Runaway Train e Samba Balloon, entre outros modelos. A Kılıç também oferece conceção de parques, instalação das suas atrações e assistência técnica após a entrega.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
