@@ -1,0 +1,103 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+  "entryId": "DE-standalone-6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+  "name": "AlpspitzCOASTER",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T16:01:12.214Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/6766e963-cf8b-4210-9b02-9b6ebed6c92c/alpspitzcoaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.nesselwang.de/alpspitzcoaster-im-allgaeu.html",
+    "https://www.alpspitzbahn.de/preise-winter.html",
+    "https://www.nesselwang.de/preise-und-oeffnungszeiten-alpspitzbahn/articles/oeffnungszeiten.html",
+    "https://telegramm.alpspitzbahn.de/extern/urlaubsinfo.php"
+  ],
+  "editorial": "Eight descriptions cleaned of internal editorial commentary and raw technical metrics; two winter 2026/27 fares and sourced age/height rules added. Operator revision closure recorded through 30 November; provisional mid-December reopening expressly unconfirmed.",
+  "calendar": {
+    "from": "2026-11-15",
+    "through": "2026-11-30",
+    "dateOverrides": 16,
+    "revisionClosure": "9 November until approximately mid-December 2026 according to operator",
+    "nuance": "No exact reopening date asserted; visitor must check live operator status."
+  },
+  "pricing": "Winter 2026/27 driver age 8+ €9; passenger 3–7 €6. Driver minimum 135 cm.",
+  "photoCountPublished": 5,
+  "photos": [
+    {
+      "imageId": "62c88f1636394efbac3948ad5f345121",
+      "sourceUrl": "https://www.nesselwang.de/files/content/foto/das-erlebnisreich/alpspitzbahn/AlpspitzCOASTER/AlpspitzCOASTER_Sommer_2023_Alpspitzbahn_900x600_01.jpg",
+      "isCurrent": true,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing local tourism/operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "7d2fc1a72ef646b3af065dbf851e876b",
+      "sourceUrl": "https://www.nesselwang.de/files/content/foto/das-erlebnisreich/alpspitzbahn/AlpspitzCOASTER/AlpspitzCOASTER_Sommer_2023_Alpspitzbahn_900x600_06.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing local tourism/operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "e51d974c0e39456a91a02cea5f53f4a2",
+      "sourceUrl": "https://www.nesselwang.de/files/content/foto/das-erlebnisreich/alpspitzbahn/AlpspitzCOASTER/AlpspitzCOASTER_Sommer_2023_Alpspitzbahn_900x600_07.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing local tourism/operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "20dd79d21b2948dcbdfda3f77c6c6ce8",
+      "sourceUrl": "https://www.nesselwang.de/files/content/foto/das-erlebnisreich/alpspitzbahn/AlpspitzCOASTER/AlpspitzCOASTER_Sommer_2023_Alpspitzbahn_900x600_03.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing local tourism/operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    },
+    {
+      "imageId": "f24b3a9e72e84507a09e2cead798ce7b",
+      "sourceUrl": "https://www.nesselwang.de/files/content/foto/das-erlebnisreich/alpspitzbahn/AlpspitzCOASTER/AlpspitzCOASTER_Sommer_2023_Alpspitzbahn_900x600_02.jpg",
+      "isCurrent": false,
+      "exactMatchVisuallyChecked": true,
+      "productionBinaryHttpStatus": 200,
+      "origin": "Existing local tourism/operator image, not newly imported",
+      "reuseRights": "Independent reuse licence not established; retain pending review"
+    }
+  ],
+  "photoFollowup": "Audit independent reuse rights of five existing images and find an additional exact photo with a verifiable reuse licence.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "e5868d9edc564a3b81bdc3eb0efe55e1",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127471909424431",
+    "publishedAtUtc": "2026-11-15T16:00:03.8379776Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:58:59.268Z",
+  "nextAction": "Vérifier la date réelle de réouverture et les horaires hiver dans le bulletin officiel ; auditer les droits des cinq photos existantes et chercher une image supplémentaire exacte avec licence vérifiable."
+}

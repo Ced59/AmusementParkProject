@@ -2645,20 +2645,41 @@
         "a3141674-ea63-478e-a58c-8878ce527c41"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:01:12.214Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermé pour révision depuis le 9 novembre 2026 ; reprise vers la mi-décembre non confirmée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Alpspitzbahn Nesselwang"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:58:59.268Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-b26c67bc-1e2c-4a7c-a65b-ea92560ead9f",
+          "appliedAt": "2026-11-15T15:57:41.156Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+          "evidence": "PARK_DATA_EDITOR:apply:b26c67bc-1e2c-4a7c-a65b-ea92560ead9f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpspitz-20261115/audit.json",
+          "summary": "Tarifs hiver, conditions d’accès, fermeture pour révision et huit descriptions mis à jour."
+        },
+        {
+          "eventId": "apply-6f3ba81a-1c02-4bc4-ab97-85ed65392f0d",
+          "appliedAt": "2026-11-15T15:58:59.268Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "6766e963-cf8b-4210-9b02-9b6ebed6c92c",
+          "evidence": "PARK_DATA_EDITOR:apply:6f3ba81a-1c02-4bc4-ab97-85ed65392f0d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpspitz-20261115/audit.json",
+          "summary": "Huit descriptions corrigées pour retirer les métriques brutes ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier la date réelle de réouverture et les horaires hiver dans le bulletin officiel ; auditer les droits des cinq photos existantes et chercher une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2684,6 +2705,21 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-2117",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Alpspitzbahn — tarifs hiver 2026/27",
+          "url": "https://www.alpspitzbahn.de/preise-winter.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpspitzbahn — horaires et révision",
+          "url": "https://www.nesselwang.de/preise-und-oeffnungszeiten-alpspitzbahn/articles/oeffnungszeiten.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpspitzbahn — bulletin en direct",
+          "url": "https://telegramm.alpspitzbahn.de/extern/urlaubsinfo.php",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
