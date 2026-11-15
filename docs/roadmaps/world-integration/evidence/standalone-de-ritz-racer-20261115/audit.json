@@ -101,7 +101,7 @@
     "postUrl": "https://www.facebook.com/1285475681307050/posts/122127428727424431",
     "publishedAtUtc": "2026-11-15T08:45:02.3726436Z"
   },
-  "lastDataIntegrationAt": "2026-11-15T08:44:10.623Z",
+  "lastDataIntegrationAt": "2026-11-15T08:42:59.743Z",
   "dataReceipts": [
     {
       "kind": "Apply",
@@ -132,12 +132,12 @@
       "stage": "history",
       "operationId": "53c15713-aafc-4ed2-aeee-f74723200000",
       "appliedAtUtc": "2026-11-15T08:42:59.7430654Z"
-    },
-    {
-      "kind": "Apply",
-      "stage": "publish",
-      "operationId": "4ae33691-7b51-405b-8eb5-aaf06783ba1f",
-      "appliedAtUtc": "2026-11-15T08:44:10.6234043Z"
     }
-  ]
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "4ae33691-7b51-405b-8eb5-aaf06783ba1f",
+    "appliedAtUtc": "2026-11-15T08:44:10.6234043Z"
+  }
 }

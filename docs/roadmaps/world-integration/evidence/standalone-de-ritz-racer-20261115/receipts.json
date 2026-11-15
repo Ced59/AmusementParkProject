@@ -89,7 +89,8 @@
         "unchanged": 0,
         "warnings": 0,
         "errors": 0
-      }
+      },
+      "dataIntegration": false
     },
     {
       "action": "ImportPhoto",

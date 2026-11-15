@@ -1631,17 +1631,97 @@
         "\"Ritz Racer\" Willingen"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-11-15T08:44:10.623Z",
+      "lastDataIntegrationAt": "2026-11-15T08:42:59.743Z",
       "integrationHistory": [
         {
-          "eventId": "apply-4ae33691-7b51-405b-8eb5-aaf06783ba1f",
-          "appliedAt": "2026-11-15T08:44:10.623Z",
+          "eventId": "apply-b034d2b0-c842-4e45-86e1-06cf0a74f9c0",
+          "appliedAt": "2026-11-15T08:32:44.977Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:apply:b034d2b0-c842-4e45-86e1-06cf0a74f9c0",
+          "auditEvidence": null,
+          "summary": "Création de la fiche Ritz Racer, lieu, statut, longueur structurée et descriptions dans huit langues."
+        },
+        {
+          "eventId": "image-29e08d8bfb7e4aae8b49687d6884962b",
+          "appliedAt": "2026-11-15T08:33:10.308Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:image:29e08d8bfb7e4aae8b49687d6884962b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 1 de la Sommerrodelbahn Ritz Racer importée et publiée, créditée Sommerrodelbahn Willingen sous CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-818ce9b3dd194520b39352180e33bee2",
+          "appliedAt": "2026-11-15T08:33:49.214Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:image:818ce9b3dd194520b39352180e33bee2",
+          "auditEvidence": null,
+          "summary": "Photo exacte 3 de la Sommerrodelbahn Ritz Racer importée et publiée, créditée Sommerrodelbahn Willingen sous CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-9e0bbadda4f54615afa652849d945e6f",
+          "appliedAt": "2026-11-15T08:34:13.525Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:image:9e0bbadda4f54615afa652849d945e6f",
+          "auditEvidence": null,
+          "summary": "Photo exacte 4 de la Sommerrodelbahn Ritz Racer importée et publiée, créditée Sommerrodelbahn Willingen sous CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-711018c10ae841a1ada28569fad888ad",
+          "appliedAt": "2026-11-15T08:34:35.965Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:image:711018c10ae841a1ada28569fad888ad",
+          "auditEvidence": null,
+          "summary": "Photo exacte 5 de la Sommerrodelbahn Ritz Racer importée et publiée, créditée Sommerrodelbahn Willingen sous CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-4b98f8e6-ae8e-4602-89e6-d4e3a6413dab",
+          "appliedAt": "2026-11-15T08:35:06.213Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:apply:4b98f8e6-ae8e-4602-89e6-d4e3a6413dab",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels des courses simples et des trajets adulte-enfant intégrés avec date de vérification."
+        },
+        {
+          "eventId": "apply-181a837c-a132-4f1c-b77e-4a3cd8e57eeb",
+          "appliedAt": "2026-11-15T08:39:22.665Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:apply:181a837c-a132-4f1c-b77e-4a3cd8e57eeb",
+          "auditEvidence": null,
+          "summary": "Descriptions reformulées dans huit langues pour respecter le contrôle éditorial du site."
+        },
+        {
+          "eventId": "apply-d4eedd3a-646a-48b2-9e42-300da3ec4ecf",
+          "appliedAt": "2026-11-15T08:41:43.970Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
+          "evidence": "PARK_DATA_EDITOR:apply:d4eedd3a-646a-48b2-9e42-300da3ec4ecf",
+          "auditEvidence": null,
+          "summary": "Coordonnées d’accès, modèle, mois d’ouverture et condition d’accès des enfants intégrés."
+        },
+        {
+          "eventId": "apply-53c15713-aafc-4ed2-aeee-f74723200000",
+          "appliedAt": "2026-11-15T08:42:59.743Z",
           "outcome": "completed",
           "entityKind": "StandaloneAttraction",
           "entityId": "8a1328ce-3105-484e-bd0f-3f09a1674768",
-          "evidence": "PARK_DATA_EDITOR:apply:4ae33691-7b51-405b-8eb5-aaf06783ba1f",
+          "evidence": "PARK_DATA_EDITOR:apply:53c15713-aafc-4ed2-aeee-f74723200000",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ritz-racer-20261115/audit.json",
-          "summary": "Création, huit descriptions, conditions d’accès, tarifs officiels, quatre photos exactes sous CC BY-SA 4.0, événement d’ouverture ; fiche visible et annonce Facebook publiées."
+          "summary": "Événement d’ouverture sourcé et traduit ajouté ; audit final sans bloqueur après quatre photos exactes."
         }
       ],
       "nextAction": "Conserver la ligne et les reçus. Revoir les horaires saisonniers en direct et actualiser les tarifs à la prochaine intégration réelle ; ne pas republier Facebook.",
