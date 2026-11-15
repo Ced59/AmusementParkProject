@@ -1,0 +1,116 @@
+{
+  "entryId": "NZ-candidate-discovery-92659a55243cae",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "6bd9d15b-9027-460e-bd7f-fc523e08beaa",
+  "name": "Auckland SkyJump",
+  "countryCode": "NZ",
+  "auditAtUtc": "2026-11-15T13:02:49.685Z",
+  "qualification": "SkyJump est une descente contrôlée par câble, vendue séparément de SkyWalk et SkyRide, et non un saut à l’élastique. Recherche PDE Park et Standalone sous SkyJump sans doublon.",
+  "operatorSources": [
+    "https://www.bungy.co.nz/auckland/sky-tower/skyjump/",
+    "https://www.bungy.co.nz/auckland/sky-tower/",
+    "https://www.bungy.co.nz/faqs/"
+  ],
+  "operatorLandmarkSource": "https://www.skycityentertainmentgroup.com/news-media/news-media/new-thrill-ride-to-launch-from-aucklands-sky-tower/",
+  "geoSource": "https://www.wikidata.org/wiki/Q722125",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/6bd9d15b-9027-460e-bd7f-fc523e08beaa/auckland-skyjump",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 2,
+  "photos": [
+    {
+      "imageId": "d3ea5a647a194d1a903505b97b3f138e",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sky_Jump_(7187521210).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Sky_Jump_%287187521210%29.jpg/960px-Sky_Jump_%287187521210%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Simon_sees",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2012-05-06",
+      "uploadedAtUtc": "2026-11-15T12:59:26.796Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:59:30.18Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "ca3dec0833f945f3974410d6c2cc9fdc",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sky_Jump_(7187518688).jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Sky_Jump_%287187518688%29.jpg/960px-Sky_Jump_%287187518688%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Simon_sees",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "photographedAt": "2012-05-06",
+      "uploadedAtUtc": "2026-11-15T13:00:17.054Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:00:20.558Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "FAQ officielle consultée le 15 novembre 2026 : SkyJump à partir de 280 NZD, prix final variable selon réservation.",
+  "openingHoursAssessment": "Page officielle des activités Sky Tower : 09:30–16:00 quotidien, dernière expérience 30 minutes avant fermeture, arrivée 15 minutes avant le créneau. Calendrier structuré du 15 novembre 2026 au 15 novembre 2027 ; jours fériés et modifications de saison à recontrôler. Vent fort susceptible de retarder ou reporter.",
+  "accessAssessment": "Page SkyJump officielle : 10 ans minimum ; moins de 15 ans avec adulte signataire à l’accueil ; poids individuel 35–150 kg. Confirmation de réservation, identité et chaussures à lacets demandées à l’arrivée.",
+  "geoAssessment": "Point -36.84845,174.762192 du bâtiment Sky Tower, point de repère du saut et non coordonnée exacte de la plateforme extérieure.",
+  "historyAssessment": "SkyCity mentionne une ouverture de SkyJump en 2001 ; aucune année d’ouverture structurée ajoutée à la fiche faute de champ contrôlé.",
+  "mediaAssessment": "Deux photos de la descente réelle depuis Sky Tower datées du 6 mai 2012, Simon_sees, CC BY 2.0. Les légendes mentionnent l’année ; une photo actuelle serait préférable.",
+  "completeness": {
+    "score": 89,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127456075424431",
+    "publishedAtUtc": "2026-11-15T13:01:53.5226845Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T13:00:42.067Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "f8408dcb-0109-4e3a-bff8-3f5bddd15ad0",
+      "appliedAtUtc": "2026-11-15T12:59:00.2343192Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "502597a8-6403-4809-9f00-0cc5465787e0",
+      "appliedAtUtc": "2026-11-15T13:00:42.0671127Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "d3ea5a647a194d1a903505b97b3f138e",
+      "uploadedAtUtc": "2026-11-15T12:59:26.796Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:59:30.18Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "ca3dec0833f945f3974410d6c2cc9fdc",
+      "uploadedAtUtc": "2026-11-15T13:00:17.054Z",
+      "metadataCompletedAtUtc": "2026-11-15T13:00:20.558Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "08ad52b6-c0e4-4ec7-93a3-76b336425371",
+    "appliedAtUtc": "2026-11-15T13:01:13.8540331Z"
+  },
+  "nextAction": "Conserver cette ligne. Recontrôler tarif à partir de 280 NZD, horaires et conditions sous 90 jours ; vérifier les variations de jours fériés et la météo avant chaque nouvelle publication. Chercher une photo exacte récente sous licence réutilisable, les deux images actuelles datent de 2012. Qualifier SkyWalk et SkyRide séparément, sans réutiliser les photos du SkyJump. Ne pas republier Facebook pour une simple actualisation."
+}
