@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "46c69cc1687af6adcc4b6dd02106345d3067090d3299b10890832030dafdc892",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "bde61304-16ff-4feb-910c-b8beec2199ab",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:12:16.9234181Z",
+    "appliedAtUtc": "2026-11-15T03:12:16.9234192Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9405d573-5666-4003-a97f-7ea8523d99c5",
+        "entityKey": "capbreton-pirates-aventures",
+        "displayName": "Pirates Aventures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Taue zwischen den Masten</h2><p>Die Parkvorstellung von 2009 beschreibt Pirates Aventures als kleine Galeonenkulisse. Fotos von 2013 zeigen ein Holzgerüst, hängende Laufstege und Taue über einer blauen Matte. Schwarze Flaggen ragen an den Pfosten empor.</p><p>Eine Holztreppe führt in die von Netzen gesäumte Anlage. Ein Steuerrad schmückt die Palisade am Eingang neben Palmen und der großen benachbarten Hüpfburg. Dieser Parcours mit Sicherungsgurt ist vom Laufgeschäft mit seinen bemalten Fassaden zu unterscheiden.</p>",
+            "newValue": "<h2>Taue zwischen den Masten</h2><p>Die Parkvorstellung von 2009 beschreibt Pirates Aventures als kleine Galeonenkulisse. Fotos von 2013 zeigen ein Holzgerüst, hängende Laufstege und Taue über einem blauen Wasserbecken. Schwarze Flaggen ragen an den Pfosten empor.</p><p>Eine Holztreppe führt in die von Netzen gesäumte Anlage. Ein Steuerrad schmückt die Palisade am Eingang neben Palmen und der großen benachbarten Hüpfburg. Dieser Parcours mit Sicherungsgurt ist vom Laufgeschäft mit seinen bemalten Fassaden zu unterscheiden.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Ropes between the masts</h2><p>In the park’s 2009 presentation, Pirates Aventures invites visitors into a small galleon setting. Photographs from 2013 show a wooden framework, suspended walkways and ropes above a blue mat. Black flags rise on the posts.</p><p>A wooden staircase leads into the net-lined installation. A ship’s wheel decorates the entrance palisade beside palms and the neighbouring large inflatable. This harness-based course is distinct from the funhouse with its painted façades.</p>",
+            "newValue": "<h2>Ropes between the masts</h2><p>In the park’s 2009 presentation, Pirates Aventures invites visitors into a small galleon setting. Photographs from 2013 show a wooden framework, suspended walkways and ropes above a blue pool. Black flags rise on the posts.</p><p>A wooden staircase leads into the net-lined installation. A ship’s wheel decorates the entrance palisade beside palms and the neighbouring large inflatable. This harness-based course is distinct from the funhouse with its painted façades.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Cuerdas entre los mástiles</h2><p>En la presentación del parque de 2009, Pirates Aventures invita a recorrer un pequeño decorado de galeón. Las fotografías de 2013 muestran una estructura de madera, pasarelas suspendidas y cuerdas sobre una alfombra azul. Banderas negras se alzan en los postes.</p><p>Una escalera de madera da acceso a la instalación rodeada de redes. Un timón adorna la empalizada de entrada, junto a las palmeras y al gran hinchable vecino. Este recorrido con arnés es distinto de la casa de la risa de fachadas pintadas.</p>",
+            "newValue": "<h2>Cuerdas entre los mástiles</h2><p>En la presentación del parque de 2009, Pirates Aventures invita a recorrer un pequeño decorado de galeón. Las fotografías de 2013 muestran una estructura de madera, pasarelas suspendidas y cuerdas sobre un estanque azul. Banderas negras se alzan en los postes.</p><p>Una escalera de madera da acceso a la instalación rodeada de redes. Un timón adorna la empalizada de entrada, junto a las palmeras y al gran hinchable vecino. Este recorrido con arnés es distinto de la casa de la risa de fachadas pintadas.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Des cordages entre les mâts</h2><p>Dans la présentation du parc de 2009, Pirates Aventures invite à traverser un petit paysage de galion. Les photographies de 2013 montrent une ossature de bois, des passerelles suspendues et des cordages au-dessus d’un tapis bleu. Des pavillons noirs montent sur les poteaux.</p><p>Un escalier de bois donne accès à cette installation bordée de filets. Une barre de navire orne la palissade de l’entrée, près des palmiers et du grand gonflable voisin. Ce parcours avec harnais est distinct du Palais du rire aux façades peintes.</p>",
+            "newValue": "<h2>Des cordages entre les mâts</h2><p>Dans la présentation du parc de 2009, Pirates Aventures invite à traverser un petit paysage de galion. Les photographies de 2013 montrent une ossature de bois, des passerelles suspendues et des cordages au-dessus d’un bassin bleu. Des pavillons noirs montent sur les poteaux.</p><p>Un escalier de bois donne accès à cette installation bordée de filets. Une barre de navire orne la palissade de l’entrée, près des palmiers et du grand gonflable voisin. Ce parcours avec harnais est distinct du Palais du rire aux façades peintes.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Corde tra gli alberi della nave</h2><p>Nella presentazione del parco del 2009, Pirates Aventures invita a entrare in una piccola scenografia da galeone. Le fotografie del 2013 mostrano un’intelaiatura di legno, passerelle sospese e corde sopra un tappeto blu. Bandiere nere svettano sui pali.</p><p>Una scala di legno introduce nell’installazione bordata di reti. Un timone decora la palizzata d’ingresso, accanto alle palme e al grande gonfiabile vicino. Questo percorso con imbracatura è distinto dal palazzo del divertimento con le sue facciate dipinte.</p>",
+            "newValue": "<h2>Corde tra gli alberi della nave</h2><p>Nella presentazione del parco del 2009, Pirates Aventures invita a entrare in una piccola scenografia da galeone. Le fotografie del 2013 mostrano un’intelaiatura di legno, passerelle sospese e corde sopra una vasca blu. Bandiere nere svettano sui pali.</p><p>Una scala di legno introduce nell’installazione bordata di reti. Un timone decora la palizzata d’ingresso, accanto alle palme e al grande gonfiabile vicino. Questo percorso con imbracatura è distinto dal palazzo del divertimento con le sue facciate dipinte.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Touwen tussen de masten</h2><p>In de parkpresentatie uit 2009 voert Pirates Aventures bezoekers een klein galjoendecor binnen. Foto’s uit 2013 tonen een houten raamwerk, hangende loopbruggen en touwen boven een blauwe mat. Zwarte vlaggen hangen aan de palen.</p><p>Een houten trap leidt naar de door netten omgeven installatie. Een scheepsroer siert de palissade bij de ingang, naast palmen en het grote springkussen ernaast. Dit parcours met harnas is een andere attractie dan het funhouse met zijn geschilderde gevels.</p>",
+            "newValue": "<h2>Touwen tussen de masten</h2><p>In de parkpresentatie uit 2009 voert Pirates Aventures bezoekers een klein galjoendecor binnen. Foto’s uit 2013 tonen een houten raamwerk, hangende loopbruggen en touwen boven een blauw bassin. Zwarte vlaggen hangen aan de palen.</p><p>Een houten trap leidt naar de door netten omgeven installatie. Een scheepsroer siert de palissade bij de ingang, naast palmen en het grote springkussen ernaast. Dit parcours met harnas is een andere attractie dan het funhouse met zijn geschilderde gevels.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Liny pomiędzy masztami</h2><p>W opisie parku z 2009 roku Pirates Aventures zaprasza do niewielkiej scenerii galeonu. Zdjęcia z 2013 roku pokazują drewniany szkielet, wiszące kładki i liny nad niebieską matą. Na słupach powiewają czarne flagi.</p><p>Drewniane schody prowadzą do instalacji otoczonej siatkami. Koło sterowe zdobi palisadę przy wejściu, obok palm i dużego sąsiedniego dmuchańca. Ten pokonywany w uprzęży tor jest odrębną atrakcją od pałacu śmiechu z malowanymi fasadami.</p>",
+            "newValue": "<h2>Liny pomiędzy masztami</h2><p>W opisie parku z 2009 roku Pirates Aventures zaprasza do niewielkiej scenerii galeonu. Zdjęcia z 2013 roku pokazują drewniany szkielet, wiszące kładki i liny nad niebieskim basenem. Na słupach powiewają czarne flagi.</p><p>Drewniane schody prowadzą do instalacji otoczonej siatkami. Koło sterowe zdobi palisadę przy wejściu, obok palm i dużego sąsiedniego dmuchańca. Ten pokonywany w uprzęży tor jest odrębną atrakcją od pałacu śmiechu z malowanymi fasadami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Cordas entre os mastros</h2><p>Na apresentação do parque de 2009, Pirates Aventures convida a entrar num pequeno cenário de galeão. As fotografias de 2013 mostram uma estrutura de madeira, passadiços suspensos e cordas sobre um tapete azul. Bandeiras negras erguem-se nos postes.</p><p>Uma escada de madeira dá acesso à instalação rodeada por redes. Um leme decora a paliçada da entrada, junto às palmeiras e ao grande insuflável vizinho. Este percurso com arnês é distinto da casa de diversões com fachadas pintadas.</p>",
+            "newValue": "<h2>Cordas entre os mastros</h2><p>Na apresentação do parque de 2009, Pirates Aventures convida a entrar num pequeno cenário de galeão. As fotografias de 2013 mostram uma estrutura de madeira, passadiços suspensos e cordas sobre um tanque azul. Bandeiras negras erguem-se nos postes.</p><p>Uma escada de madeira dá acesso à instalação rodeada por redes. Um leme decora a paliçada da entrada, junto às palmeiras e ao grande insuflável vizinho. Este percurso com arnês é distinto da casa de diversões com fachadas pintadas.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "146bf355-1763-45f5-953b-3c2615ef2171",
+        "entityKey": "capbreton-galion-gonflable-pirates",
+        "displayName": "Galion gonflable Pirates",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine aufblasbare Galeone mit roten Segeln</h2><p>In der Kulisse von 2013 ahmt diese große Hüpfburg den braunen Rumpf einer Galeone nach. Aufgemalte Planken, Bullaugen und schwarze Verzierungen rahmen kleine Öffnungen. Rote Totenkopfsegel ragen über den gelben Spielflächen empor.</p><p>Der Bug nimmt die Form einer geschnitzten Figur an, während hinten ein großes Steuerrad aufragt. Auf der Bordwand steht Pirates. Das mächtige Schiff steht hinter der kleineren gelb-blauen Hüpfburg mit Palmen und Hai; es handelt sich um zwei verschiedene Kulissen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>An inflatable galleon with red sails</h2><p>In the 2013 setting, this large inflatable imitates the brown hull of a galleon. Painted planks, portholes and black ornaments frame small openings. Red skull-and-crossbones sails rise above the play structure’s yellow slopes.</p><p>The bow takes the form of a carved figure, while a large ship’s wheel stands high at the stern. Pirates is written along the side. This bulky ship stands behind the smaller yellow-and-blue inflatable with palms and a shark; the two settings are distinct.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un galeón hinchable de velas rojas</h2><p>En el decorado de 2013, este gran hinchable imita el casco marrón de un galeón. Tablones pintados, ojos de buey y adornos negros enmarcan pequeñas aberturas. Velas rojas con calaveras se alzan sobre las pendientes amarillas del juego.</p><p>La proa adopta la forma de una figura tallada, mientras que un gran timón domina la popa. La palabra Pirates aparece en el costado. Este barco voluminoso se encuentra detrás del pequeño hinchable amarillo y azul con palmeras y un tiburón; son dos decorados distintos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un galion gonflable aux voiles rouges</h2><p>Dans le décor de 2013, ce grand gonflable imite la coque brune d’un galion. Le dessin des planches, les hublots et les ornements noirs encadrent de petites ouvertures. Des voiles rouges à tête de mort se dressent au-dessus des pentes jaunes du jeu.</p><p>La proue prend la forme d’une figure sculptée, tandis qu’une grande barre de navire domine l’arrière. L’inscription Pirates apparaît sur le flanc. Ce navire volumineux se tient derrière le petit gonflable jaune et bleu aux palmiers et au requin ; les deux décors sont distincts.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un galeone gonfiabile dalle vele rosse</h2><p>Nello scenario del 2013, questo grande gonfiabile imita lo scafo marrone di un galeone. Assi dipinte, oblò e ornamenti neri incorniciano piccole aperture. Vele rosse con teschi si alzano sopra le pendenze gialle del gioco.</p><p>La prua assume la forma di una figura scolpita, mentre un grande timone domina la poppa. La scritta Pirates compare sul fianco. La nave imponente si trova dietro il piccolo gonfiabile giallo e blu con palme e squalo; sono due scenari distinti.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een opblaasgaljoen met rode zeilen</h2><p>In het decor uit 2013 bootst dit grote springkussen de bruine romp van een galjoen na. Geschilderde planken, patrijspoorten en zwarte versieringen omlijsten kleine openingen. Rode zeilen met doodshoofden steken boven de gele speelhellingen uit.</p><p>De boeg heeft de vorm van een gesneden figuur en achteraan staat een groot scheepsroer. Op de zijkant staat Pirates. Het grote schip bevindt zich achter het kleinere geelblauwe springkussen met palmen en een haai; het zijn twee verschillende decors.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Dmuchany galeon z czerwonymi żaglami</h2><p>W scenerii z 2013 roku ten duży dmuchaniec naśladuje brązowy kadłub galeonu. Namalowane deski, bulaje i czarne ozdoby otaczają niewielkie otwory. Czerwone żagle z czaszkami wznoszą się ponad żółtymi pochylniami do zabawy.</p><p>Dziób ma formę rzeźbionej postaci, a nad rufą góruje duże koło sterowe. Na burcie widnieje napis Pirates. Okazały statek stoi za mniejszym żółto-niebieskim dmuchańcem z palmami i rekinem; są to dwie odrębne dekoracje.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um galeão insuflável de velas vermelhas</h2><p>No cenário de 2013, este grande insuflável imita o casco castanho de um galeão. Tábuas pintadas, vigias e ornamentos negros enquadram pequenas aberturas. Velas vermelhas com caveiras erguem-se sobre as rampas amarelas do jogo.</p><p>A proa assume a forma de uma figura esculpida, enquanto um grande leme domina a popa. A inscrição Pirates aparece no costado. O navio volumoso fica atrás do pequeno insuflável amarelo e azul com palmeiras e um tubarão; são dois cenários distintos.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-galion-gonflable-pirates"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

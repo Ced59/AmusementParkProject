@@ -1,0 +1,1025 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "5e0d1636caab4fd5b87e66ce81cc61688ba539fef80c91752f3f32a0073eebbd",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "c87f6aa9-9d83-4f39-a890-578904170096",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:02:20.0527672Z",
+    "appliedAtUtc": "2026-11-15T03:02:20.0527685Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 4,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+        "entityKey": "802ad35d-a93e-4ae9-948e-6905cc3ff232",
+        "displayName": "Accro-bungy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+        "entityKey": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+        "displayName": "Aquanimal",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "482a2557-2956-417a-be20-aeff5b2436d3",
+        "entityKey": "482a2557-2956-417a-be20-aeff5b2436d3",
+        "displayName": "Manège Disney",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "4bddcef62fb948b7a06bdaa39ba1d9ca",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Enseigne illustrée officielle de L'Île aux Pirates sur la façade du parc.",
+            "newValue": "La façade du Treasure Club et ses machines à lots sur le port de Capbreton."
+          },
+          {
+            "field": "category",
+            "oldValue": "Logo",
+            "newValue": "Park"
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Schild von L'Île aux Pirates mit Galeone und Piratenfiguren.",
+            "newValue": "Besucher vor der Treasure-Club-Fassade mit gemalter Galeone, Piratenköpfen und grünem Palmblattdach."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "L'Île aux Pirates sign framed by a galleon and pirate characters.",
+            "newValue": "Visitors in front of the Treasure Club façade, with a painted galleon, pirate heads and a green palm-leaf canopy."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Rótulo de L'Île aux Pirates con un galeón y personajes piratas.",
+            "newValue": "Visitantes ante la fachada del Treasure Club, con un galeón pintado, cabezas de piratas y un tejadillo verde de hojas de palmera."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Enseigne L'Île aux Pirates entourée d'un galion et de personnages pirates.",
+            "newValue": "Visiteurs devant la façade Treasure Club : galion peint, têtes de pirates et auvent vert en feuilles de palmier."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Insegna di L'Île aux Pirates con galeone e personaggi pirateschi.",
+            "newValue": "Visitatori davanti alla facciata del Treasure Club, con un galeone dipinto, teste di pirati e una tettoia verde a foglie di palma."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Bord van L'Île aux Pirates met een galjoen en piratenfiguren.",
+            "newValue": "Bezoekers voor de gevel van Treasure Club, met een geschilderd galjoen, piratenhoofden en een groen palmbladerdak."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Szyld L'Île aux Pirates otoczony galeonem i postaciami piratów.",
+            "newValue": "Goście przed fasadą Treasure Club z namalowanym galeonem, głowami piratów i zielonym daszkiem z liści palmowych."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Letreiro da L'Île aux Pirates com um galeão e personagens piratas.",
+            "newValue": "Visitantes diante da fachada do Treasure Club, com um galeão pintado, cabeças de piratas e uma cobertura verde de folhas de palmeira."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Der Parkname steht auf der großen illustrierten Fassade des Spielstands.",
+            "newValue": "Die Fassade des Treasure Club und seine Gewinnspielautomaten am Hafen von Capbreton."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The park name spreads across the large illustrated façade of the game stall.",
+            "newValue": "The Treasure Club façade and its prize machines on Capbreton harbour."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El nombre del parque ocupa la gran fachada ilustrada del puesto de juegos.",
+            "newValue": "La fachada del Treasure Club y sus máquinas de premios junto al puerto de Capbreton."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le nom du parc se déploie sur la grande façade illustrée du point de jeux.",
+            "newValue": "La façade du Treasure Club et ses machines à lots sur le port de Capbreton."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il nome del parco campeggia sulla grande facciata illustrata del banco giochi.",
+            "newValue": "La facciata del Treasure Club e le sue macchine a premi sul porto di Capbreton."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De parknaam staat breed op de geïllustreerde gevel van de spellenkraam.",
+            "newValue": "De gevel van Treasure Club en zijn prijsautomaten aan de haven van Capbreton."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Nazwa parku rozciąga się na dużej ilustrowanej fasadzie stoiska gier.",
+            "newValue": "Fasada Treasure Club i automaty z nagrodami przy porcie w Capbreton."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O nome do parque ocupa a grande fachada ilustrada da banca de jogos.",
+            "newValue": "A fachada do Treasure Club e as suas máquinas de prémios junto ao porto de Capbreton."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Foto: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Photo: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Foto: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Photo : Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Foto: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Foto: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Zdjęcie: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Fotografia: Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "isCurrent",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "1b522478ea284fe780bfffb0f86a83b8",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Façade pirate et point de jeux au bord du port de Capbreton.",
+            "newValue": "Le galion et les palmiers peints dominent les jeux du Treasure Club à Capbreton."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Piraten-Spielstand von L'Île aux Pirates am Hafen.",
+            "newValue": "Treasure-Club-Fassade mit großer gemalter Galeone, Airhockeytischen und Gewinnspielautomaten unter einem grünen Vordach."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Pirate game stall at L'Île aux Pirates beside the harbour.",
+            "newValue": "Treasure Club façade with a large painted galleon, air-hockey tables and prize machines beneath a green canopy."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Puesto de juegos pirata de L'Île aux Pirates junto al puerto.",
+            "newValue": "Fachada del Treasure Club con un gran galeón pintado, mesas de hockey de aire y máquinas de premios bajo un tejadillo verde."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Point de jeux pirate de L'Île aux Pirates au bord du port.",
+            "newValue": "Façade du Treasure Club portant un grand galion peint ; jeux de palets et machines à lots sous un auvent vert."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Banco giochi piratesco di L'Île aux Pirates sul porto.",
+            "newValue": "Facciata del Treasure Club con un grande galeone dipinto, tavoli da air hockey e macchine a premi sotto una tettoia verde."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Piratenkraam van L'Île aux Pirates aan de haven.",
+            "newValue": "Treasure Club-gevel met een groot geschilderd galjoen, airhockeytafels en prijsautomaten onder een groene luifel."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Pirackie stoisko gier L'Île aux Pirates nad portem.",
+            "newValue": "Fasada Treasure Club z dużym namalowanym galeonem, stołami do cymbergaja i automatami z nagrodami pod zielonym daszkiem."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Banca de jogos pirata da L'Île aux Pirates junto ao porto.",
+            "newValue": "Fachada do Treasure Club com um grande galeão pintado, mesas de hóquei de ar e máquinas de prémios sob uma cobertura verde."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die Fassade verbindet die Jahrmarktswelt des Parks mit der maritimen Umgebung.",
+            "newValue": "Die gemalte Galeone und Palmen überragen die Spiele des Treasure Club in Capbreton."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "The façade links the park's fairground world to its maritime setting.",
+            "newValue": "The painted galleon and palms tower above the games at Treasure Club in Capbreton."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "La fachada une el mundo ferial del parque con su entorno marítimo.",
+            "newValue": "El galeón y las palmeras pintados dominan los juegos del Treasure Club en Capbreton."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "La façade relie l'univers forain du parc à son cadre maritime.",
+            "newValue": "Le galion et les palmiers peints dominent les jeux du Treasure Club à Capbreton."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "La facciata collega il mondo fieristico del parco al contesto marittimo.",
+            "newValue": "Il galeone e le palme dipinti sovrastano i giochi del Treasure Club a Capbreton."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De gevel verbindt de kermiswereld van het park met de maritieme omgeving.",
+            "newValue": "Het geschilderde galjoen en de palmbomen torenen boven de spellen van Treasure Club in Capbreton uit."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Fasada łączy lunaparkowy świat parku z morskim otoczeniem.",
+            "newValue": "Namalowany galeon i palmy górują nad grami w Treasure Club w Capbreton."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "A fachada liga o mundo de feira do parque ao ambiente marítimo.",
+            "newValue": "O galeão e as palmeiras pintados destacam-se sobre os jogos do Treasure Club em Capbreton."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "bf9bf846a468422caadfc102a55b7a0e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Vue d'ensemble des jeux gonflables et de l'Accro-bungy à L'Île aux Pirates.",
+            "newValue": "Les univers Safari et Aladdin se côtoient derrière les mâts en bois de l’Accro-bungy."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Aufblasbare Spiele und Accro-bungy in L'Île aux Pirates.",
+            "newValue": "Accro-bungy im Vordergrund, dahinter die Safari-Hüpfburg mit Giraffe und Löwe sowie die rosa-gelbe Rutsche Aladdin Adventure."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Inflatable games and Accro-bungy at L'Île aux Pirates.",
+            "newValue": "Accro-bungy in the foreground, in front of the Safari inflatable with a giraffe and lion and the pink-and-yellow Aladdin Adventure slide."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Juegos hinchables y Accro-bungy en L'Île aux Pirates.",
+            "newValue": "Accro-bungy en primer plano, delante del hinchable Safari con jirafa y león y del tobogán rosa y amarillo Aladdin Adventure."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Jeux gonflables et Accro-bungy de L'Île aux Pirates.",
+            "newValue": "Accro-bungy au premier plan, devant le gonflable Safari à girafe et lion et le toboggan rose et jaune Aladdin Adventure."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Giochi gonfiabili e Accro-bungy a L'Île aux Pirates.",
+            "newValue": "Accro-bungy in primo piano, davanti al gonfiabile Safari con giraffa e leone e allo scivolo rosa e giallo Aladdin Adventure."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Opblaasspellen en Accro-bungy bij L'Île aux Pirates.",
+            "newValue": "Accro-bungy op de voorgrond, voor het Safari-springkussen met giraf en leeuw en de roze-gele glijbaan Aladdin Adventure."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Dmuchane zabawy i Accro-bungy w L'Île aux Pirates.",
+            "newValue": "Accro-bungy na pierwszym planie, przed dmuchańcem Safari z żyrafą i lwem oraz różowo-żółtą zjeżdżalnią Aladdin Adventure."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Jogos insufláveis e Accro-bungy na L'Île aux Pirates.",
+            "newValue": "Accro-bungy em primeiro plano, diante do insuflável Safari com girafa e leão e do escorrega rosa e amarelo Aladdin Adventure."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Bunte Anlagen prägen die saisonale Silhouette des Parks.",
+            "newValue": "Die Safari- und Aladdin-Kulissen stehen nebeneinander hinter den Holzmasten von Accro-bungy."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Colourful structures shape the park's seasonal silhouette.",
+            "newValue": "The Safari and Aladdin settings stand side by side behind the wooden masts of Accro-bungy."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Las estructuras coloridas forman la silueta estacional del parque.",
+            "newValue": "Los decorados de Safari y Aladdin se encuentran juntos detrás de los mástiles de madera de Accro-bungy."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les structures colorées composent la silhouette saisonnière du parc.",
+            "newValue": "Les univers Safari et Aladdin se côtoient derrière les mâts en bois de l’Accro-bungy."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Le strutture colorate formano la sagoma stagionale del parco.",
+            "newValue": "Gli scenari di Safari e Aladdin si affiancano dietro gli alberi in legno di Accro-bungy."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Kleurrijke constructies bepalen het seizoenssilhouet van het park.",
+            "newValue": "De Safari- en Aladdin-decors staan naast elkaar achter de houten masten van Accro-bungy."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Barwne konstrukcje tworzą sezonową sylwetkę parku.",
+            "newValue": "Dekoracje Safari i Aladdina sąsiadują ze sobą za drewnianymi masztami Accro-bungy."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "As estruturas coloridas formam a silhueta sazonal do parque.",
+            "newValue": "Os cenários Safari e Aladdin ficam lado a lado atrás dos mastros de madeira do Accro-bungy."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "30ee425fbda04a8fbe7a504bc23e6d23",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Embarcations animales colorées réunies sur le bassin Aquanimal.",
+            "newValue": "Le bassin Aquanimal dans le décor de palmiers et de pirates de Capbreton."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Kleine bunte Tierboote auf dem Aquanimal-Becken.",
+            "newValue": "Kleine bunte Boote auf dem blauen Aquanimal-Becken neben Palmen und einer erhöht stehenden Piratenstatue."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Small colourful animal-shaped craft on the Aquanimal pool.",
+            "newValue": "Small colourful boats on the blue Aquanimal pool beside palms and a pirate statue standing above them."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Pequeñas embarcaciones coloridas con forma de animal en el estanque Aquanimal.",
+            "newValue": "Pequeñas embarcaciones de colores en el estanque azul Aquanimal, junto a palmeras y una estatua de pirata en lo alto."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Petites embarcations animales colorées sur le bassin Aquanimal.",
+            "newValue": "Petites embarcations colorées sur le bassin bleu Aquanimal, près de palmiers et d’une statue de pirate en hauteur."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Piccole imbarcazioni colorate a forma di animale nella vasca Aquanimal.",
+            "newValue": "Piccole barche colorate sul bacino blu Aquanimal, accanto a palme e a una statua di pirata posta in alto."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Kleine kleurrijke dierenvaartuigen op het Aquanimal-bassin.",
+            "newValue": "Kleine kleurrijke bootjes op het blauwe Aquanimal-bassin, naast palmbomen en een hoog geplaatste piratenfiguur."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Małe kolorowe pojazdy w kształcie zwierząt na basenie Aquanimal.",
+            "newValue": "Małe kolorowe łódki na niebieskim basenie Aquanimal, obok palm i wysoko ustawionej figury pirata."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Pequenas embarcações coloridas em forma de animal no tanque Aquanimal.",
+            "newValue": "Pequenas embarcações coloridas no tanque azul Aquanimal, junto a palmeiras e a uma estátua de pirata colocada no alto."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Leuchtend bunte schwimmende Tiere beleben das kleine Becken.",
+            "newValue": "Das Aquanimal-Becken inmitten der Palmen- und Piratenkulisse in Capbreton."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Brightly coloured floating animals bring the small pool to life.",
+            "newValue": "The Aquanimal pool among the palms and pirate scenery at Capbreton."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Animales flotantes de colores vivos animan el pequeño estanque.",
+            "newValue": "El estanque Aquanimal entre las palmeras y el decorado pirata de Capbreton."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Des animaux flottants aux couleurs vives animent le petit bassin.",
+            "newValue": "Le bassin Aquanimal dans le décor de palmiers et de pirates de Capbreton."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Animali galleggianti dai colori vivaci animano la piccola vasca.",
+            "newValue": "Il bacino Aquanimal tra le palme e lo scenario piratesco di Capbreton."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Felgekleurde drijvende dieren brengen het kleine bassin tot leven.",
+            "newValue": "Het Aquanimal-bassin tussen de palmbomen en het piratendecor in Capbreton."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Kolorowe pływające zwierzęta ożywiają niewielki basen.",
+            "newValue": "Basen Aquanimal wśród palm i pirackich dekoracji w Capbreton."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Animais flutuantes de cores vivas animam o pequeno tanque.",
+            "newValue": "O tanque Aquanimal entre palmeiras e o cenário de piratas de Capbreton."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "d35a121f1c514a21bb817e23961092ea",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Petites voitures colorées sous le pavillon du Manège Disney.",
+            "newValue": "Mickey et Minnie sur le Manège Disney, au bord du port et du pont Notre-Dame."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Bunte Fahrzeuge des Manège Disney unter ihrem Pavillon.",
+            "newValue": "Disney-Karussell unter freiem Himmel mit bunten Flugzeugen und Autos, großen Micky- und Minnie-Figuren und einer Piratenstatue nahe der Brücke."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Colourful Manège Disney cars beneath their canopy.",
+            "newValue": "Open-air Disney ride with colourful planes and cars, large Mickey and Minnie figures and a pirate statue beside the bridge."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Coches coloridos del Manège Disney bajo su pabellón.",
+            "newValue": "Tiovivo Disney al aire libre con aviones y coches de colores, grandes figuras de Mickey y Minnie y una estatua de pirata junto al puente."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Voitures colorées du Manège Disney sous leur pavillon.",
+            "newValue": "Manège Disney en plein air, avec avions et voitures colorés, grandes figures de Mickey et Minnie et statue de pirate près du pont."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Vetture colorate del Manège Disney sotto il padiglione.",
+            "newValue": "Giostra Disney all’aperto con aerei e auto colorati, grandi figure di Topolino e Minnie e una statua di pirata vicino al ponte."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Kleurrijke wagentjes van Manège Disney onder hun paviljoen.",
+            "newValue": "Disney-molen in de openlucht met kleurrijke vliegtuigen en auto’s, grote Mickey- en Minnie-figuren en een piratenbeeld bij de brug."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Kolorowe pojazdy Manège Disney pod zadaszeniem.",
+            "newValue": "Karuzela Disney pod gołym niebem, z kolorowymi samolotami i samochodami, dużymi figurami Myszki Miki i Minnie oraz piratem przy moście."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Carros coloridos do Manège Disney sob o pavilhão.",
+            "newValue": "Carrossel Disney ao ar livre, com aviões e carros coloridos, grandes figuras de Mickey e Minnie e uma estátua de pirata junto à ponte."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Unter dem Pavillon bilden die kleinen Fahrzeuge eine leuchtende Runde.",
+            "newValue": "Micky und Minnie auf dem Disney-Karussell am Hafen und an der Notre-Dame-Brücke."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Beneath the canopy, the little cars form a bright circular scene.",
+            "newValue": "Mickey and Minnie on the Disney ride beside the harbour and Notre-Dame bridge."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Bajo el pabellón, los pequeños coches forman una ronda luminosa.",
+            "newValue": "Mickey y Minnie en el tiovivo Disney, junto al puerto y al puente Notre-Dame."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Sous le pavillon, les petites voitures dessinent une ronde lumineuse.",
+            "newValue": "Mickey et Minnie sur le Manège Disney, au bord du port et du pont Notre-Dame."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Sotto il padiglione, le piccole vetture compongono un giro luminoso.",
+            "newValue": "Topolino e Minnie sulla giostra Disney, accanto al porto e al ponte Notre-Dame."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Onder het paviljoen vormen de kleine wagentjes een heldere rondgang.",
+            "newValue": "Mickey en Minnie op de Disney-molen bij de haven en de Notre-Dame-brug."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Pod zadaszeniem małe pojazdy tworzą barwny krąg.",
+            "newValue": "Myszka Miki i Minnie na karuzeli Disney obok portu i mostu Notre-Dame."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Sob o pavilhão, os pequenos carros formam uma roda luminosa.",
+            "newValue": "Mickey e Minnie no carrossel Disney, junto ao porto e à ponte Notre-Dame."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "5657119f7f844a1c88bacad5bb985b78",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Installation verticale de l'Accro-bungy au-dessus de l'aire de jeux.",
+            "newValue": "Les mâts et pavillons pirates de l’Accro-bungy, devant la girafe du Safari."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Hohe Accro-bungy-Anlage über den Spielen des Parks.",
+            "newValue": "Kinder an den Gummiseilen von Accro-bungy zwischen gekreuzten Holzmasten; hinter den Trampolinen steht die Safari-Kulisse."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Tall Accro-bungy structure above the park games.",
+            "newValue": "Children suspended from the Accro-bungy cords between crossed wooden masts, with the Safari scenery behind the trampolines."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Alta estructura de Accro-bungy sobre los juegos del parque.",
+            "newValue": "Niños suspendidos de los elásticos de Accro-bungy entre mástiles de madera cruzados, con el decorado Safari detrás de las camas elásticas."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Structure élancée de lʼAccro-bungy au-dessus des jeux du parc.",
+            "newValue": "Enfants suspendus aux élastiques de l’Accro-bungy entre des mâts de bois croisés, avec le décor Safari derrière les trampolines."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Alta struttura di Accro-bungy sopra i giochi del parco.",
+            "newValue": "Bambini sospesi agli elastici di Accro-bungy tra alberi di legno incrociati, con lo scenario Safari dietro i trampolini."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Hoge Accro-bungy-constructie boven de spellen van het park.",
+            "newValue": "Kinderen aan de elastieken van Accro-bungy tussen gekruiste houten masten, met het Safari-decor achter de trampolines."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Wysoka konstrukcja Accro-bungy nad zabawami parku.",
+            "newValue": "Dzieci zawieszone na gumowych linach Accro-bungy między skrzyżowanymi drewnianymi masztami, z dekoracją Safari za trampolinami."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Estrutura elevada de Accro-bungy sobre os jogos do parque.",
+            "newValue": "Crianças suspensas nos elásticos do Accro-bungy entre mastros de madeira cruzados, com o cenário Safari atrás dos trampolins."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Die hohen elastischen Seile zeichnen sich über dem Spielbereich am Himmel ab.",
+            "newValue": "Die Masten und Piratenflaggen von Accro-bungy vor der Safari-Giraffe."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Tall elastic cords stand out against the sky above the play area.",
+            "newValue": "The masts and pirate flags of Accro-bungy in front of the Safari giraffe."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Los altos elásticos se recortan contra el cielo sobre la zona de juegos.",
+            "newValue": "Los mástiles y las banderas piratas de Accro-bungy delante de la jirafa de Safari."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Les hauts élastiques se détachent sur le ciel au-dessus de lʼaire de jeux.",
+            "newValue": "Les mâts et pavillons pirates de l’Accro-bungy, devant la girafe du Safari."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Gli alti elastici risaltano nel cielo sopra lʼarea giochi.",
+            "newValue": "Gli alberi e le bandiere piratesche di Accro-bungy davanti alla giraffa di Safari."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "De hoge elastieken tekenen zich boven de speelplek af tegen de lucht.",
+            "newValue": "De masten en piratenvlaggen van Accro-bungy voor de giraf van Safari."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Wysokie elastyczne liny odcinają się na tle nieba nad strefą zabawy.",
+            "newValue": "Maszty i pirackie flagi Accro-bungy przed żyrafą z Safari."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Os elásticos altos destacam-se no céu sobre a zona de jogos.",
+            "newValue": "Os mastros e as bandeiras piratas do Accro-bungy diante da girafa do Safari."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "2fe3f6e5d5d743c58820926f0165c5a8",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "description",
+            "oldValue": "Façade colorée de l'espace de jeux de L'Île aux Pirates sur le port de Capbreton.",
+            "newValue": "La façade du Treasure Club et ses machines à lots sur le port de Capbreton."
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Farbenfrohe Piratenfassade von L'Île aux Pirates in Capbreton.",
+            "newValue": "Besucher vor der Treasure-Club-Fassade mit gemalter Galeone, Piratenköpfen und grünem Palmblattdach."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Colourful pirate façade at L'Île aux Pirates in Capbreton.",
+            "newValue": "Visitors in front of the Treasure Club façade, with a painted galleon, pirate heads and a green palm-leaf canopy."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Fachada pirata colorida de L'Île aux Pirates en Capbreton.",
+            "newValue": "Visitantes ante la fachada del Treasure Club, con un galeón pintado, cabezas de piratas y un tejadillo verde de hojas de palmera."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Façade pirate colorée de L'Île aux Pirates à Capbreton.",
+            "newValue": "Visiteurs devant la façade Treasure Club : galion peint, têtes de pirates et auvent vert en feuilles de palmier."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Facciata piratesca colorata di L'Île aux Pirates a Capbreton.",
+            "newValue": "Visitatori davanti alla facciata del Treasure Club, con un galeone dipinto, teste di pirati e una tettoia verde a foglie di palma."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Kleurrijke piratengevel van L'Île aux Pirates in Capbreton.",
+            "newValue": "Bezoekers voor de gevel van Treasure Club, met een geschilderd galjoen, piratenhoofden en een groen palmbladerdak."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Kolorowa piracka fasada L'Île aux Pirates w Capbreton.",
+            "newValue": "Goście przed fasadą Treasure Club z namalowanym galeonem, głowami piratów i zielonym daszkiem z liści palmowych."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Fachada pirata colorida da L'Île aux Pirates em Capbreton.",
+            "newValue": "Visitantes diante da fachada do Treasure Club, com um galeão pintado, cabeças de piratas e uma cobertura verde de folhas de palmeira."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Piratendekor kennzeichnet den Eingang zum Spielbereich am Hafen.",
+            "newValue": "Die Fassade des Treasure Club und seine Gewinnspielautomaten am Hafen von Capbreton."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Pirate scenery marks the entrance to the harbour play area.",
+            "newValue": "The Treasure Club façade and its prize machines on Capbreton harbour."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "El decorado pirata marca la entrada de la zona de juegos del puerto.",
+            "newValue": "La fachada del Treasure Club y sus máquinas de premios junto al puerto de Capbreton."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Le décor de pirates marque l'entrée de l'aire de jeux sur le port.",
+            "newValue": "La façade du Treasure Club et ses machines à lots sur le port de Capbreton."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Il decoro piratesco segna l'ingresso dell'area giochi sul porto.",
+            "newValue": "La facciata del Treasure Club e le sue macchine a premi sul porto di Capbreton."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Piratendecor markeert de ingang van de speelplek aan de haven.",
+            "newValue": "De gevel van Treasure Club en zijn prijsautomaten aan de haven van Capbreton."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Piracka sceneria wyznacza wejście do strefy zabawy nad portem.",
+            "newValue": "Fasada Treasure Club i automaty z nagrodami przy porcie w Capbreton."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "O cenário pirata assinala a entrada da zona de jogos junto ao porto.",
+            "newValue": "A fachada do Treasure Club e as suas máquinas de prémios junto ao porto de Capbreton."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "6429bc427a59fe5bdbba10eb33cf01de463289d7dfd686f9ed3c1c772536f7e7",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "f24b1d1f-85a5-4e63-a122-ac09ef700b8b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:09:58.7026305Z",
+    "appliedAtUtc": "2026-11-15T03:09:58.7026318Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ababe179-3c88-4d2b-b372-090be9459151",
+        "entityKey": "capbreton-happy-childhood",
+        "displayName": "Happy Childhood",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Krone über den Einhörnern</h2><p>Happy Childhood ist ein kleiner Münzautomat zum Mitfahren, der 2019 vor den Arcade-Spielen steht. Eine große rot-weiße Krone sitzt auf seinem rosa Mast mit Herzen. Weiße Einhörner tragen Regenbogenmähnen und rote Schleifen über einem bonbonfarbenen Sockel.</p><p>Hängende Plüschtiere und leuchtende Automaten umgeben das Miniaturkarussell. Sein Name steht am bodennahen runden Rand zwischen den Spielen des Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A crown above the unicorns</h2><p>Happy Childhood is a small coin-operated ride shown outside the arcade games in 2019. A large red-and-white crown tops its pink mast covered in hearts. White unicorns have rainbow manes and red bows above a candy-coloured base.</p><p>Hanging soft toys and illuminated machines surround the miniature carousel. Its name appears on the circular rim at ground level among the games at Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una corona sobre los unicornios</h2><p>Happy Childhood es un pequeño tiovivo de monedas situado delante de los juegos recreativos en 2019. Una gran corona roja y blanca remata su mástil rosa cubierto de corazones. Los unicornios blancos llevan crines arcoíris y lazos rojos sobre una base de colores de golosina.</p><p>Peluches colgantes y máquinas luminosas rodean este carrusel en miniatura. Su nombre aparece en el borde circular, cerca del suelo, entre los juegos del Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une couronne au-dessus des licornes</h2><p>Happy Childhood est un petit manège à pièces installé devant les jeux d’arcade en 2019. Une grande couronne rouge et blanche coiffe son mât rose couvert de cœurs. Les licornes blanches portent des crinières arc-en-ciel et des nœuds rouges, sur un socle aux couleurs de bonbons.</p><p>Peluches suspendues et machines lumineuses entourent ce carrousel miniature. Son enseigne apparaît sur la bordure ronde, au ras du sol, dans l’animation du Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una corona sopra gli unicorni</h2><p>Happy Childhood è una piccola giostra a monete collocata davanti ai giochi arcade nel 2019. Una grande corona rossa e bianca sormonta il palo rosa coperto di cuori. Gli unicorni bianchi hanno criniere arcobaleno e fiocchi rossi, sopra una base dai colori delle caramelle.</p><p>Peluche appesi e macchine luminose circondano questo carosello in miniatura. Il nome compare sul bordo circolare vicino al suolo, tra i giochi del Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een kroon boven de eenhoorns</h2><p>Happy Childhood is een kleine muntjesmolen die in 2019 voor de arcadespellen staat. Een grote rood-witte kroon rust op de roze mast vol hartjes. Witte eenhoorns dragen regenboogmanen en rode strikken boven een voet in snoepkleuren.</p><p>Hangende knuffels en verlichte automaten omringen dit miniatuurmolentje. De naam staat op de ronde rand vlak bij de grond, tussen de spellen van Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Korona nad jednorożcami</h2><p>Happy Childhood to mała karuzela na monety stojąca w 2019 roku przed automatami do gier. Duża czerwono-biała korona wieńczy różowy maszt pokryty sercami. Białe jednorożce mają tęczowe grzywy i czerwone kokardy nad podstawą w cukierkowych kolorach.</p><p>Miniaturową karuzelę otaczają wiszące pluszaki i świecące automaty. Jej nazwa widnieje na okrągłym brzegu tuż nad ziemią, wśród gier Treasure Club.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma coroa sobre os unicórnios</h2><p>Happy Childhood é um pequeno carrossel a moedas colocado diante dos jogos eletrónicos em 2019. Uma grande coroa vermelha e branca encima o mastro rosa coberto de corações. Os unicórnios brancos têm crinas arco-íris e laços vermelhos, sobre uma base de cores de rebuçado.</p><p>Peluches suspensos e máquinas luminosas rodeiam o carrossel em miniatura. O nome aparece no rebordo circular junto ao chão, entre os jogos do Treasure Club.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-happy-childhood"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4f53ec0a-14f9-4652-a8eb-7a7edb6061fb",
+        "entityKey": "capbreton-petit-train-a-pieces",
+        "displayName": "Petit train à pièces",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Bahn in Bonbonfarben</h2><p>Neben dem Süßwarenstand zeigt die kleine Münzfahrbahn von 2019 ein lächelndes Gesicht unter rosa Haaren. Das blaue Führerhaus, die großen grünen Räder und die rot-weißen Streifen an der Vorderseite erinnern an ein Spielzeug aus Süßigkeiten.</p><p>Ein rotes Signal steht am Rand des kleinen ovalen Sockels, der wie ein glasierter Kuchen gestaltet ist. Die Bahn gehört zu den Miniaturspielen neben der Arcade und ist nicht die 2024 hinzugekommene Achterbahn Train de la Mine.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A candy-coloured train</h2><p>Beside the sweet-food stall, the small coin-operated train seen in 2019 has a smiling face beneath pink hair. Its blue cab, large green wheels and red-and-white stripes at the front suggest a toy made of sweets.</p><p>A red signal stands beside its small oval base, decorated like an iced cake. It belongs to the miniature games beside the arcade and is distinct from Train de la Mine, the roller coaster introduced in 2024.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>El tren de colores de golosina</h2><p>Junto al puesto de dulces, el pequeño tren de monedas de 2019 muestra una cara sonriente bajo un peinado rosa. Su cabina azul, las grandes ruedas verdes y las rayas rojas y blancas del frontal recuerdan un juguete hecho de golosinas.</p><p>Una señal roja se alza junto a su pequeña base ovalada, decorada como una tarta glaseada. Forma parte de los juegos en miniatura próximos a los recreativos; es distinto del Train de la Mine, la montaña rusa llegada en 2024.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le train aux couleurs de confiserie</h2><p>Près du stand de gourmandises, le petit train à pièces de 2019 présente un visage souriant sous une coiffure rose. Sa cabine bleue, ses grandes roues vertes et les rayures rouges et blanches de sa face avant évoquent un jouet en bonbons.</p><p>Un signal rouge se dresse au bord de son petit socle ovale, décoré comme un gâteau glacé. Il appartient aux jeux miniatures voisins de l’arcade ; ce n’est pas le Train de la Mine, montagne russe arrivée en 2024.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il treno dai colori delle caramelle</h2><p>Vicino al chiosco di dolci, il piccolo trenino a monete del 2019 presenta un viso sorridente sotto una capigliatura rosa. La cabina blu, le grandi ruote verdi e le strisce rosse e bianche sul davanti ricordano un giocattolo fatto di caramelle.</p><p>Un segnale rosso si alza accanto alla piccola base ovale, decorata come una torta glassata. Il trenino appartiene ai giochi in miniatura vicini alla sala arcade; è distinto da Train de la Mine, le montagne russe arrivate nel 2024.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een trein in snoepkleuren</h2><p>Naast het kraampje met zoetigheden heeft het kleine muntjestreintje uit 2019 een lachend gezicht onder roze haar. De blauwe cabine, grote groene wielen en rood-witte strepen aan de voorkant doen denken aan speelgoed van snoep.</p><p>Een rood sein staat langs de kleine ovale voet, die als een geglazuurde taart is versierd. Het treintje hoort bij de miniatuurspellen naast de arcade en is niet de in 2024 verschenen achtbaan Train de la Mine.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pociąg w cukierkowych kolorach</h2><p>Obok stoiska ze słodyczami mały pociąg na monety z 2019 roku ma uśmiechniętą twarz pod różową fryzurą. Niebieska kabina, duże zielone koła oraz czerwono-białe paski z przodu przypominają zabawkę z cukierków.</p><p>Czerwony sygnalizator stoi przy małej owalnej podstawie ozdobionej jak lukrowane ciasto. Pociąg należy do miniaturowych gier przy salonie automatów; to inna atrakcja niż kolejka górska Train de la Mine, która pojawiła się w 2024 roku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>O comboio de cores de rebuçado</h2><p>Junto à banca de doces, o pequeno comboio a moedas de 2019 apresenta um rosto sorridente sob um penteado rosa. A cabina azul, as grandes rodas verdes e as riscas vermelhas e brancas da frente lembram um brinquedo feito de guloseimas.</p><p>Um sinal vermelho ergue-se junto à pequena base oval, decorada como um bolo coberto de glacé. O comboio pertence aos jogos em miniatura perto da sala de jogos; é distinto do Train de la Mine, a montanha-russa que chegou em 2024.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-petit-train-a-pieces"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f67ac9b2-ea1c-4dbc-bdd0-1f10c3a58200",
+        "entityKey": "capbreton-gonflable-mario",
+        "displayName": "Gonflable Mario",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein Schloss unter einem grünen Pilz</h2><p>Diese 2019 hinzugekommene Hüpfburg gleicht einem kleinen rot-blau-weißen Schloss. Ein großer grün-weißer Pilz überragt die Fassade. Mario und Luigi schmücken die Pfeiler um den blauen Eingang in einer Videospielkulisse.</p><p>Die Burg steht auf grünem Boden hinter einer mit Tauen verzierten Holzbalustrade. Direkt daneben befindet sich das aufblasbare Clown-Zirkuszelt in derselben Ecke der Piratenkulisse.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A castle beneath a green mushroom</h2><p>This inflatable added in 2019 resembles a small red, blue and white castle. A large green-and-white mushroom rises above the façade. Mario and Luigi decorate the pillars around a blue entrance and video-game scenery.</p><p>It stands on green flooring behind a wooden balustrade dressed with ropes. The clown-themed inflatable tent sits immediately beside it in the same corner of the pirate setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un castillo bajo la seta verde</h2><p>Este hinchable añadido en 2019 tiene forma de pequeño castillo rojo, azul y blanco. Una gran seta verde y blanca domina la fachada. Mario y Luigi decoran los pilares alrededor de una entrada azul y un escenario de videojuego.</p><p>Se encuentra sobre un suelo verde, detrás de una balaustrada de madera adornada con cuerdas. La carpa hinchable de los payasos está justo al lado, en el mismo rincón del decorado pirata.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un château sous le champignon vert</h2><p>Ce gonflable ajouté en 2019 prend la forme d’un petit château rouge, bleu et blanc. Un grand champignon vert et blanc domine la façade. Mario et Luigi occupent les piliers, autour d’une entrée bleue et d’un décor de jeu vidéo.</p><p>Il se tient sur un sol vert, derrière une balustrade de bois habillée de cordages. Le chapiteau gonflable aux clowns lui fait immédiatement voisin, dans le même coin du décor pirate.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un castello sotto il fungo verde</h2><p>Questo gonfiabile aggiunto nel 2019 ha la forma di un piccolo castello rosso, blu e bianco. Un grande fungo verde e bianco domina la facciata. Mario e Luigi decorano i pilastri attorno all’ingresso blu, in uno scenario da videogioco.</p><p>Il castello si trova su un pavimento verde, dietro una balaustra di legno ornata di corde. Il tendone gonfiabile dei clown gli è immediatamente accanto, nello stesso angolo dello scenario piratesco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een kasteel onder een groene paddenstoel</h2><p>Dit in 2019 toegevoegde springkussen lijkt op een klein rood-blauw-wit kasteel. Een grote groen-witte paddenstoel torent boven de gevel uit. Mario en Luigi versieren de pilaren rond een blauwe ingang in een videogamedecor.</p><p>Het staat op een groene vloer achter een houten balustrade met touwen. De opblaasbare clowntent staat er direct naast, in dezelfde hoek van het piratendecor.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Zamek pod zielonym grzybem</h2><p>Ten dmuchaniec dodany w 2019 roku ma formę małego czerwono-niebiesko-białego zamku. Nad fasadą góruje duży zielono-biały grzyb. Mario i Luigi zdobią kolumny wokół niebieskiego wejścia w scenerii gry wideo.</p><p>Zamek stoi na zielonym podłożu, za drewnianą balustradą ozdobioną linami. Tuż obok znajduje się dmuchany namiot z klaunami, w tej samej części pirackiej scenerii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um castelo sob o cogumelo verde</h2><p>Este insuflável acrescentado em 2019 tem a forma de um pequeno castelo vermelho, azul e branco. Um grande cogumelo verde e branco domina a fachada. Mario e Luigi decoram os pilares à volta de uma entrada azul, num cenário de videojogo.</p><p>O castelo fica num chão verde, atrás de uma balaustrada de madeira enfeitada com cordas. A tenda insuflável dos palhaços encontra-se imediatamente ao lado, no mesmo canto do cenário pirata.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-gonflable-mario"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2019"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "323130bf-9267-4cb0-a9f5-3bc2b29edc28",
+        "entityKey": "capbreton-gonflable-cirque",
+        "displayName": "Gonflable Cirque",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Playground"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Zelt und seine beiden Clowns</h2><p>Dieses 2019 hinzugekommene kleine aufblasbare Zelt trägt ein rot-weiß-blau gestreiftes Dach mit einer roten Kugel an der Spitze. Zwei große Clownsköpfe mit gebogenen Hüten rahmen den Pavillon. Durch die Netzwände sind ein gelber Boden und gemalte Zirkusfiguren an der Rückseite zu sehen.</p><p>Das Zelt steht direkt hinter der Burg mit dem grünen Pilz. Taue, ein weißer Rettungsring und Holzpfosten verbinden es trotz seines Zirkusthemas mit der Hafenkulisse des Parks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The tent and its two clowns</h2><p>Added in 2019, this small inflatable tent has a red, white and blue striped roof topped by a red ball. Two large clown heads in curved hats frame the pavilion. Netted walls reveal a yellow floor and circus characters illustrated at the back.</p><p>The tent stands just behind the castle with the green mushroom. Ropes, a white lifebuoy and wooden posts link it visually to the park’s harbour setting despite its circus theme.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La carpa y sus dos payasos</h2><p>Añadida en 2019, esta pequeña carpa hinchable lleva un techo de rayas rojas, blancas y azules, rematado por una bola roja. Dos grandes cabezas de payasos con sombreros curvos enmarcan el pabellón. Las paredes de red dejan ver un suelo amarillo y personajes circenses dibujados al fondo.</p><p>La carpa está justo detrás del castillo con la seta verde. Cuerdas, un salvavidas blanco y postes de madera la vinculan visualmente al ambiente portuario del parque, pese a su decorado de circo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Le chapiteau et les deux clowns</h2><p>Ajouté en 2019, ce petit chapiteau gonflable porte un toit rayé rouge, blanc et bleu, surmonté d’une boule rouge. Deux grandes têtes de clowns aux chapeaux recourbés encadrent le pavillon. Les parois à filets laissent voir une piste jaune et des personnages de cirque dessinés au fond.</p><p>Le chapiteau se trouve juste derrière le château au champignon vert. Cordages, bouée blanche et poteaux de bois le rattachent visuellement à l’ambiance portuaire du parc, malgré son décor de cirque.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Il tendone e i due clown</h2><p>Aggiunto nel 2019, questo piccolo tendone gonfiabile ha un tetto a strisce rosse, bianche e blu, sormontato da una sfera rossa. Due grandi teste di clown con cappelli ricurvi incorniciano il padiglione. Le pareti a rete lasciano vedere un pavimento giallo e personaggi circensi disegnati sul fondo.</p><p>Il tendone si trova subito dietro il castello con il fungo verde. Corde, un salvagente bianco e pali di legno lo legano visivamente all’ambiente portuale del parco, nonostante il tema del circo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De tent en de twee clowns</h2><p>Deze kleine opblaastent, toegevoegd in 2019, heeft een rood-wit-blauw gestreept dak met een rode bal bovenop. Twee grote clownshoofden met gebogen hoeden flankeren het paviljoen. Door de netwanden zijn een gele vloer en getekende circusfiguren achterin te zien.</p><p>De tent staat vlak achter het kasteel met de groene paddenstoel. Touwen, een witte reddingsboei en houten palen verbinden het circusdecor met de havensfeer van het park.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Namiot i dwaj klauni</h2><p>Ten mały dmuchany namiot, dodany w 2019 roku, ma dach w czerwone, białe i niebieskie pasy, zwieńczony czerwoną kulą. Dwie duże głowy klaunów w wygiętych czapkach otaczają pawilon. Przez siatkowe ściany widać żółtą podłogę i namalowane z tyłu postacie cyrkowe.</p><p>Namiot stoi tuż za zamkiem z zielonym grzybem. Liny, białe koło ratunkowe i drewniane słupki łączą go wizualnie z portową atmosferą parku, mimo cyrkowej dekoracji.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A tenda e os dois palhaços</h2><p>Acrescentada em 2019, esta pequena tenda insuflável tem um teto às riscas vermelhas, brancas e azuis, encimado por uma bola vermelha. Duas grandes cabeças de palhaços com chapéus curvos enquadram o pavilhão. As paredes de rede deixam ver um chão amarelo e figuras de circo desenhadas ao fundo.</p><p>A tenda fica mesmo atrás do castelo com o cogumelo verde. Cordas, uma boia branca e postes de madeira ligam-na visualmente ao ambiente portuário do parque, apesar do cenário de circo.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-gonflable-cirque"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/blog/l-ile-aux-pirates-de-capbreton-40-les-nouveautes-2019-1617.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2019"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

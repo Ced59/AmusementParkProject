@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "46f05a042c15de1f944200acd19312f2eba6d623c91dd8241dfc22fabc21fedb",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "b9b1b28c-5445-4949-b4b2-31f6ed322ba9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T03:06:15.2007804Z",
+    "appliedAtUtc": "2026-11-15T03:06:15.2007816Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3fa3aefa-3196-4602-9c2a-4a268fb48a77",
+        "entityKey": "capbreton-aquabuller",
+        "displayName": "Aquabuller",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WaterRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Blase in der Piratenkulisse</h2><p>Aquabuller liegt in einem blauen Becken, umgeben von einer Holzbalustrade und weißen Rettungsringen. Die große durchsichtige Rolle mit blauen und gelben Verbindungspunkten bildet einen Kontrast zu den Fässern und Piratenfiguren am Wasser.</p><p>Die Aquabuller-Schilder stehen neben einer aufrechten Piratenfigur; seitlich trägt ein Spielturm mit Netzen eine schwarze Flagge. Dahinter verläuft die Notre-Dame-Brücke. So treffen das Wasser des kleinen Beckens und das Hafenwasser in der maritimen Kulisse aufeinander.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A bubble in the pirate scenery</h2><p>Aquabuller occupies a blue pool surrounded by a wooden balustrade and white lifebuoys. Its large transparent roller, dotted with blue and yellow fittings, contrasts with the barrels and pirate figures around the water.</p><p>Aquabuller signs stand beside an upright pirate figure, while a netted play tower flies a black flag to one side. Notre-Dame bridge runs behind the scene, bringing the small pool and harbour waters together within the maritime setting.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una burbuja en el decorado pirata</h2><p>Aquabuller ocupa una piscina azul rodeada de una balaustrada de madera y salvavidas blancos. Su gran rodillo transparente, salpicado de uniones azules y amarillas, contrasta con los barriles y las figuras de piratas que bordean el agua.</p><p>Los carteles Aquabuller se alzan junto a un pirata de pie, mientras que a un lado una torre de juegos con redes lleva una bandera negra. El puente Notre-Dame pasa detrás del conjunto: el agua de la pequeña piscina y la del puerto se encuentran en este escenario marítimo.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une bulle dans le décor des pirates</h2><p>Aquabuller occupe un bassin bleu entouré d’une balustrade de bois et de bouées blanches. Son grand rouleau transparent, ponctué d’attaches bleues et jaunes, tranche avec les tonneaux et les silhouettes de pirates qui bordent l’eau.</p><p>Les panneaux Aquabuller se dressent près d’un pirate debout, tandis qu’une tour de jeux à filets porte un pavillon noir sur le côté. Le pont Notre-Dame passe derrière cet ensemble : l’eau du petit bassin et celle du port se répondent au milieu du décor maritime.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una bolla nello scenario dei pirati</h2><p>Aquabuller occupa una vasca blu circondata da una balaustra di legno e da salvagenti bianchi. Il grande rullo trasparente, punteggiato di attacchi blu e gialli, contrasta con le botti e le figure di pirati lungo l’acqua.</p><p>I cartelli Aquabuller si trovano accanto a un pirata in piedi, mentre di lato una torre di giochi con reti porta una bandiera nera. Il ponte Notre-Dame passa dietro l’insieme: l’acqua della piccola vasca e quella del porto si richiamano nello scenario marittimo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een bubbel in het piratendecor</h2><p>Aquabuller ligt in een blauw bassin, omgeven door een houten balustrade en witte reddingsboeien. De grote doorzichtige rol met blauwe en gele bevestigingspunten contrasteert met de tonnen en piratenfiguren rond het water.</p><p>De borden Aquabuller staan naast een rechtopstaande piratenfiguur; aan de zijkant wappert een zwarte vlag boven een speeltoren met netten. De Notre-Dame-brug loopt achter het geheel. Het water van het kleine bassin en dat van de haven maken zo deel uit van hetzelfde maritieme decor.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Bańka w pirackiej scenerii</h2><p>Aquabuller zajmuje niebieski basen otoczony drewnianą balustradą i białymi kołami ratunkowymi. Duży przezroczysty walec z niebieskimi i żółtymi mocowaniami kontrastuje z beczkami i figurami piratów wokół wody.</p><p>Tablice Aquabuller stoją obok figury pirata, a z boku nad wieżą do zabawy z siatkami powiewa czarna flaga. Za całością biegnie most Notre-Dame. Woda małego basenu i woda portu tworzą wspólnie morską scenerię.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma bolha no cenário dos piratas</h2><p>Aquabuller ocupa um tanque azul rodeado por uma balaustrada de madeira e boias brancas. O grande rolo transparente, pontuado por ligações azuis e amarelas, contrasta com os barris e as figuras de piratas à volta da água.</p><p>Os letreiros Aquabuller ficam junto a um pirata de pé, enquanto uma torre de jogos com redes ostenta uma bandeira negra ao lado. A ponte Notre-Dame passa atrás do conjunto: a água do pequeno tanque e a do porto encontram-se no cenário marítimo.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-aquabuller"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.tripadvisor.fr/Attraction_Review-g641840-d4742129-Reviews-L_ile_aux_pirates-Capbreton_Landes_Nouvelle_Aquitaine.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "51b7571d-e685-4702-bfdf-b7adab67aa8b",
+        "entityKey": "capbreton-animaux-electriques",
+        "displayName": "Animaux électriques",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "FamilyRide"
+          },
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein kleiner Bauernhof am Hafen</h2><p>2015 erschienen die elektrischen Reittiere in einem Gehege aus Holz und Netzen gegenüber den Hafenbooten. Eine gelbe Ente, eine gefleckte Kuh und kleine rosa oder weiße Tiere bildeten eine bonbonfarbene Herde. Hinten standen zwei dekorative Kühe vor einer Holzwand.</p><p>2016 nahm die Imbisshütte den Platz dieses Bauernhofs ein. Die Tiere setzten ihre Ausflüge nun auf den Wegen fort; auf den Ansichten von 2019 stehen sie neben dem Treasure Club, außerhalb des früheren Geheges. Die kleine Herde wechselte damit von der ländlichen Kulisse in die Bereiche zwischen den Spielen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A little farm beside the harbour</h2><p>In 2015, electric animal rides appeared in a wooden and netted enclosure facing the harbour boats. A yellow duck, a spotted cow and small pink or white animals formed a candy-coloured herd. Two decorative cows stood against a wooden screen at the back.</p><p>The food chalet took the place of this farm in 2016. The animals then continued their outings along the paths; the 2019 views show them beside Treasure Club, outside the former enclosure. The little herd thus moved from its rural setting into the spaces between the games.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una pequeña granja junto al puerto</h2><p>En 2015, los animales eléctricos aparecen en un recinto de madera y redes frente a los barcos del puerto. Un pato amarillo, una vaca con manchas y pequeños animales rosas o blancos forman un rebaño de colores de golosina. Al fondo, dos vacas decorativas se encuentran ante una pared de madera.</p><p>La caseta de comida ocupa el lugar de esta granja en 2016. Los animales continúan entonces sus paseos por los caminos; en las vistas de 2019 aparecen junto al Treasure Club, fuera del antiguo recinto. El pequeño rebaño pasa así del decorado rural a los espacios entre los juegos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La petite ferme au bord du port</h2><p>En 2015, les animaux électriques apparaissent dans un enclos de bois et de filets, face aux bateaux du port. Canard jaune, vache tachetée et petits animaux roses ou blancs composent un troupeau aux couleurs de confiserie. Au fond, deux vaches décoratives se tiennent devant une palissade.</p><p>Le chalet alimentaire prend la place de cette ferme en 2016. Les animaux continuent alors leurs promenades dans les allées ; on les retrouve près du Treasure Club sur les vues de 2019, hors de l’ancien enclos. Cette évolution fait passer le petit troupeau du décor rural à la circulation entre les jeux.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una piccola fattoria sul porto</h2><p>Nel 2015 gli animali elettrici compaiono in un recinto di legno e reti, di fronte alle barche del porto. Un’anatra gialla, una mucca pezzata e piccoli animali rosa o bianchi formano un gregge dai colori delle caramelle. In fondo, due mucche decorative si trovano davanti a una parete di legno.</p><p>Nel 2016 lo chalet di ristoro prende il posto della fattoria. Gli animali proseguono allora le loro passeggiate lungo i vialetti; nelle vedute del 2019 si ritrovano accanto al Treasure Club, fuori dal vecchio recinto. Il piccolo gregge passa così dallo scenario rurale agli spazi tra i giochi.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een kleine boerderij aan de haven</h2><p>In 2015 verschenen de elektrische rijdiertjes in een omheining van hout en netten, tegenover de boten in de haven. Een gele eend, een gevlekte koe en kleine roze of witte dieren vormden een kudde in snoepkleuren. Achterin stonden twee decoratieve koeien voor een houten wand.</p><p>Het eetkraampje nam in 2016 de plaats van deze boerderij in. De dieren maakten voortaan ritjes over de paden; op de beelden uit 2019 staan ze bij Treasure Club, buiten de vroegere omheining. De kleine kudde verhuisde zo van het landelijke decor naar de ruimte tussen de spellen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Mała farma nad portem</h2><p>W 2015 roku elektryczne zwierzątka pojawiają się w zagrodzie z drewna i siatek naprzeciwko łodzi w porcie. Żółta kaczka, łaciata krowa i małe różowe lub białe zwierzęta tworzą stado w cukierkowych kolorach. Z tyłu przed drewnianą ścianą stoją dwie ozdobne krowy.</p><p>W 2016 roku miejsce tej farmy zajmuje punkt gastronomiczny. Zwierzątka nadal przemieszczają się po alejkach; na zdjęciach z 2019 roku widać je przy Treasure Club, poza dawną zagrodą. Małe stado przenosi się w ten sposób z wiejskiej scenerii w przestrzeń między grami.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma pequena quinta junto ao porto</h2><p>Em 2015, os animais elétricos aparecem num recinto de madeira e redes, de frente para os barcos do porto. Um pato amarelo, uma vaca malhada e pequenos animais cor-de-rosa ou brancos formam um rebanho de cores de rebuçado. Ao fundo, duas vacas decorativas ficam diante de uma parede de madeira.</p><p>Em 2016, o chalé de comida ocupa o lugar desta quinta. Os animais continuam então os passeios pelos caminhos; nas vistas de 2019 surgem junto ao Treasure Club, fora do antigo recinto. O pequeno rebanho passa assim do cenário rural para os espaços entre os jogos.</p>"
+          },
+          {
+            "field": "attractionDetails.externalId",
+            "oldValue": null,
+            "newValue": "capbreton-animaux-electriques"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.turbo-kermis.fr/blog/les-nouveautes-de-l-ile-aux-pirates-de-capbreton-40-925.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2015"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -3,7 +3,7 @@
   "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T02:58:52.606053+00:00",
+  "observedAtUtc": "2026-11-15T03:13:01.917085+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -54,9 +54,9 @@
     "fullFinalAuditExportPerformed": false
   },
   "counts": {
-    "items": 15,
+    "items": 22,
     "itemsPublic": 10,
-    "itemDescriptionsRewrittenEightLanguages": 15,
+    "itemDescriptionsRewrittenEightLanguages": 22,
     "images": 17,
     "newImages": 9,
     "historyEvents": 5
@@ -191,6 +191,58 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-08-entrances-food-chalet-20261115.json"
+    },
+    {
+      "operationId": "c87f6aa9-9d83-4f39-a890-578904170096",
+      "appliedAtUtc": "2026-11-15T03:02:20.0527685Z",
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 4,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-legacy-image-editorial-correction-20261115.json"
+    },
+    {
+      "operationId": "b9b1b28c-5445-4949-b4b2-31f6ed322ba9",
+      "appliedAtUtc": "2026-11-15T03:06:15.2007816Z",
+      "counts": {
+        "created": 2,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-water-animals-20261115.json"
+    },
+    {
+      "operationId": "f24b1d1f-85a5-4e63-a122-ac09ef700b8b",
+      "appliedAtUtc": "2026-11-15T03:09:58.7026318Z",
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-2019-small-rides-20261115.json"
+    },
+    {
+      "operationId": "bde61304-16ff-4feb-910c-b8beec2199ab",
+      "appliedAtUtc": "2026-11-15T03:12:16.9234192Z",
+      "counts": {
+        "created": 1,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-galion-and-ropes-correction-20261115.json"
     }
   ],
   "sources": [
@@ -310,10 +362,10 @@
     }
   ],
   "gaps": {
-    "logo": "Le média courant 4bddcef62fb948b7a06bdaa39ba1d9ca est une photographie complète de façade Treasure Club, identique au média 2fe3f6e5d5d743c58820926f0165c5a8. Ce n’est pas un logo autonome. Ne pas valider le logo pour obtenir la note. Source/photo/IDs conservés, aucun retrait ni recadrage.",
+    "logo": "Fausse classification corrigée par Applyc87f6aa9-9d83-4f39-a890-578904170096 : photo de façade4bddcef conservée publique mais catégoriePark/noncourante, aucun vrai logo retrouvé. Doublon binaire historique2fe3 conservé, pas suppression. Ne pas compter ce média comme logo.",
     "wrongImageIdentity": "Corrigé par Apply4ce5679f-5321-48dd-a43c-f73158f4d885 :9713a59239f2474c8f54b01670c540c1 conservée publique comme photo générale du parc, sans sélection principale. Textes8langues décrivent pirate/requin ; ancienne identitéSafari retirée, attribution TourismeLandes sans licence/version non prouvée. Le Safari reste à illustrer correctement.",
-    "legacyDescriptions": "Toutes15notices ont été revues8langues. Airegratuite : notice volontairementbrève strictementlimitée àarchive2004, aucun équipement/décor/position/devenirinventé. Cette qualificationphysiqueresteouverte ; nepasclôturer sur le compte des descriptions.",
-    "inventory": "Trois installations historiques qualifiées et créées privées Unknown : PiratesAventures9405d573-5666-4003-a97f-7ea8523d99c5 (officiel2009, photo2013cordes/harnais, distinctPalaisduRire), GonflablePiratesace8e97e-fad6-4040-a9a1-375866602d62 (textePirateslisible, requin/palmiers, distinctSafari), AladdinAdventurecf47d719-ffcf-48df-ab5d-1d3bc12892c1 (enseigne2013lisible). Datesouverture/fermetureinconnues, étatcourantinconnuaprèsrecherche. Aquabuller, HappyChildhood/train2019, animauxélectriques2015, MondeMer/Jungle2004 et ancienLaPaillote/Red’sClub àqualifier. Ne pas créer doublons par équivalence de noms ou de catégorie.",
+    "legacyDescriptions": "Toutes les notices sont rédigées et relues dans huit langues. Airegratuite volontairement brève faute donnéesvisuelles. Correction du bassin de PiratesAventures après examenangle2013index27, jamais réappliquer ancienhelpermentionnant tapisbleu.",
+    "inventory": "22lieux intérieurs au parc,10ancienspublics et12nouveauxprivés. TroisgonflablesPirates/Aladdin/galion sont physiquementdistincts ; Aquabuller distinctAquanimal ; HappyChildhood etpetittrainàpièces2019 distinctsDisney/TrainMine2024 ; Mario/Cirquenouveaux2019confirmés ; animauxélectriques2015 horsenclosdès2016, encorevus2019, aucunefermeturedéduite. AnciensnomsMondeMer/Jungle/Red’sClub/LaPaillote et airegratuite gardés comme mentionshistoriquesàcontinuitéincertaine, pas de doublonautomatique.",
     "history": "Trois nouveaux faits privés relus huit langues : entrée à tours en 2016, ouverture du chalet alimentaire en 2016, entrée unique en 2019. Précision année ; les jours des articles ne sont pas des dates d’ouverture. Le chalet utilise une photo contextuelle de 2018 explicitement identifiée, les photographies contemporaines de 2016 portant un filigrane. Deux faits publics et article antérieur réécrits, sans export final ni audit.",
     "photos": "9 nouvelles photos privées, sources et attributions relues ; originaux 2013 sans filigrane distingués des reportages 2015/2016/2019 watermarkés. Les reçus et dates serveur figurent dans acceptedImports. Aucun réimport.",
     "officialSite": "www.ileauxpirates.com redirige vers Facebook login. Les cinq images de cette page sont génériques et non utilisables ; aucune connexion ni contournement.",
@@ -328,7 +380,7 @@
     "url": "https://www.facebook.com/1285475681307050/posts/122121006345424431",
     "newAnnouncementSent": false
   },
-  "workingStateSha256": "16097698698e59e865aaf20dcbb8216a5e9cf250f3a7018681f771b95e9848ea",
+  "workingStateSha256": "dd2da17addf8a17b4c6a08e46821488cc94a591389bf8867b11bab8bf54ba70f",
   "nextAction": "Corriger les anciens textes et le faux logo photographique, qualifier les installations historiques restantes sans doublons, rechercher les photos et les positions prouvées. Aucun export complet final ni audit effectué ; aucun nouvel envoi Facebook puisque l’annonce existante est Published.",
   "newResearch": {
     "official2004": "https://web.archive.org/web/20040825094812id_/http://www.ileauxpirates.com:80/iframe/parc.htm",

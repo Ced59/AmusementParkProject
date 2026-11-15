@@ -13099,7 +13099,7 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T02:57:35.721Z",
+      "lastDataIntegrationAt": "2026-11-15T03:12:16.923Z",
       "integrationHistory": [
         {
           "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
@@ -13290,6 +13290,46 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-aladdin-adventure-2013-20261115.json",
           "auditEvidence": null,
           "summary": "Photo privée aladdin-adventure-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "apply-c87f6aa9-9d83-4f39-a890-578904170096",
+          "appliedAt": "2026-11-15T03:02:20.052Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-legacy-image-editorial-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Sept médias anciens corrigés en huit langues après revue des originaux ; photo de façade reclassée de Logo en Park sans suppression ni changement de visibilité. Attribution sans version de licence non prouvée."
+        },
+        {
+          "eventId": "apply-b9b1b28c-5445-4949-b4b2-31f6ed322ba9",
+          "appliedAt": "2026-11-15T03:06:15.200Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-water-animals-20261115.json",
+          "auditEvidence": null,
+          "summary": "Deux attractions distinctes créées privées : Aquabuller et animaux électriques. Seize descriptions relues, date2015 conservée à l’année pour les animaux, état actuel inconnu après recherche ; aucune publication."
+        },
+        {
+          "eventId": "apply-f24b1d1f-85a5-4e63-a122-ac09ef700b8b",
+          "appliedAt": "2026-11-15T03:09:58.702Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-2019-small-rides-20261115.json",
+          "auditEvidence": null,
+          "summary": "Quatre installations de 2019 qualifiées et créées privées, trente-deux textes relus. Happy Childhood et petit train à pièces distincts de Disney et Train de la Mine ; deux gonflables datés2019 sans jour inventé."
+        },
+        {
+          "eventId": "apply-bde61304-16ff-4feb-910c-b8beec2199ab",
+          "appliedAt": "2026-11-15T03:12:16.923Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-03-galion-and-ropes-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Galion gonflable identifié séparément et créé privé ; correction sourcée des huit notices Pirates Aventures : bassin d’eau sous les cordages, et non tapis. Photos2013 comparées, aucune date ou fermeture inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
