@@ -1425,38 +1425,137 @@
     },
     {
       "entryId": "ID-candidate-da2446813242e7",
-      "name": "J-Sky",
-      "entityKind": "ToQualify",
+      "name": "J-SKY Ferris Wheel",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Standalone à qualifier",
-      "locality": "Jakarta Garden City , Jakarta",
-      "siteId": null,
+      "category": "Grande roue panoramique",
+      "locality": "AEON Mall Jakarta Garden City, Cakung, Jakarta oriental 13910",
+      "siteId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T00:47:23.761Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Piste secondaire seule",
+      "sourceLifecycleSignal": "AEON Mall consulté le 2026-11-15 : J-SKY listée comme attraction au 3e étage et horaires quotidiens publiés.",
+      "identityConfidence": "Grande roue J-SKY reconnue par l’AEON Mall et Jakarta Tourism à la même adresse ; aucune fiche Park ou Standalone homonyme trouvée dans l’éditeur.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "J-Sky",
+        "J-SKY Ferris Wheel AEON Mall JGC",
+        "Bianglala J-SKY"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T00:46:46.984Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-a6e7cc93-a273-4254-bb74-02f90d76e456",
+          "appliedAt": "2026-11-15T00:44:00.773Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+          "evidence": "PARK_DATA_EDITOR:apply:a6e7cc93-a273-4254-bb74-02f90d76e456",
+          "auditEvidence": null,
+          "summary": "Création de J-SKY avec adresse et huit textes."
+        },
+        {
+          "eventId": "apply-14fec7e4-7aa3-4d5b-83e9-9530898658ef",
+          "appliedAt": "2026-11-15T00:44:31.136Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+          "evidence": "PARK_DATA_EDITOR:apply:14fec7e4-7aa3-4d5b-83e9-9530898658ef",
+          "auditEvidence": null,
+          "summary": "Horaires du centre commercial et heure du dernier billet."
+        },
+        {
+          "eventId": "image-ddf3dd301d70463baec03855e06a4753",
+          "appliedAt": "2026-11-15T00:45:20.228Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+          "evidence": "PARK_DATA_EDITOR:image:ddf3dd301d70463baec03855e06a4753",
+          "auditEvidence": null,
+          "summary": "Photo exacte (14 March 2026), Esther Rossini, CC BY-SA 4.0, importée avec crédits en huit langues."
+        },
+        {
+          "eventId": "image-9640d40d067f4ec08c75f6ed26212f5f",
+          "appliedAt": "2026-11-15T00:45:41.535Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+          "evidence": "PARK_DATA_EDITOR:image:9640d40d067f4ec08c75f6ed26212f5f",
+          "auditEvidence": null,
+          "summary": "Photo exacte (26 November 2021), Fabi Fuu 76, CC BY 4.0, importée avec crédits en huit langues."
+        },
+        {
+          "eventId": "apply-2f3e7230-21fe-4060-9d4e-a626d3f27017",
+          "appliedAt": "2026-11-15T00:46:46.984Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+          "evidence": "PARK_DATA_EDITOR:apply:2f3e7230-21fe-4060-9d4e-a626d3f27017",
+          "auditEvidence": null,
+          "summary": "Révision des huit textes pour supprimer un blocage lié aux métriques brutes."
+        },
+        {
+          "eventId": "closure-apply-2f3e7230-21fe-4060-9d4e-a626d3f27017",
+          "appliedAt": "2026-11-15T00:46:46.984Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "a05fb104-8e4d-4844-b12d-3bd2b176cad2",
+          "evidence": "PARK_DATA_EDITOR:apply:2f3e7230-21fe-4060-9d4e-a626d3f27017",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-id-jsky-20261115/audit.json",
+          "summary": "Audit final : huit pages et deux photos HTTP 200, horaires officiels, complétude 74 sans bloqueur et Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Obtenir le prix actuel directement de J-SKY ou du centre commercial ; revérifier le fonctionnement du jour avant une visite.",
       "sources": [
         {
           "label": "Wikipédia (découverte)",
           "url": "https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "AEON Mall Jakarta Garden City — fiche officielle de J-SKY",
+          "url": "https://aeonmall-jgc.com/en/shopping_detail.php?id=85",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "AEON Mall Jakarta Garden City — horaires et dernier billet",
+          "url": "https://aeonmall-jgc.com/en/mallguide_03.php",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Jakarta Tourism — localisation et cabines",
+          "url": "https://enjoy.jakarta.go.id/article/j-sky-ferris-wheel",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Esther Rossini, 14 March 2026, CC BY-SA 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_in_View.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Fabi Fuu 76, 26 November 2021, CC BY 4.0",
+          "url": "https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_AEON_MALL_JGC_at_night.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
-        "attractions": [],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "J-SKY Ferris Wheel",
+            "source": "AEON Mall Jakarta Garden City",
+            "url": "https://aeonmall-jgc.com/en/shopping_detail.php?id=85",
+            "family": "Grande roue",
+            "sourceVenueName": "AEON Mall Jakarta Garden City",
+            "sourceLocality": "East Jakarta"
+          }
+        ],
+        "rationale": "Grande roue fixe avec billetterie propre sur la terrasse d’un centre commercial, présentée comme attraction distincte par le centre commercial et l’office de tourisme."
       }
     },
     {

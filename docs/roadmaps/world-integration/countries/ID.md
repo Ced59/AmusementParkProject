@@ -12,10 +12,10 @@ Source de vérité : le fichier JSON du même pays. Ne jamais supprimer une entr
 | État éditorial | Nombre |
 | --- | ---: |
 | À intégrer | 9 |
-| À qualifier | 165 |
+| À qualifier | 164 |
 | En cours | 0 |
 | Bloqué | 0 |
-| Intégration achevée | 0 |
+| Intégration achevée | 1 |
 | Publié, date inconnue | 2 |
 | Hors périmètre enregistré | 0 |
 | Doublon conservé | 0 |
@@ -26,9 +26,9 @@ Pays proposé par rapprochement pour **0** fiches du site sans code pays au rele
 
 Parcs : **2 publiés**, **9 masqués à intégrer**, **0 masqués NotRelevant à réexaminer**, **131 candidats sans fiche**.
 
-Standalone : **0 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **34 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
+Standalone : **1 publiées**, **0 masquées**, **0 candidates sans fiche**. Autres dossiers : **0 types à décider**, **33 rapprochements incertains**, **0 anciens parcs liés à une standalone**.
 
-Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **1 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
+Revue standalone : **0 pistes dans des fiches Park masquées**, **0 dans des fiches Park publiées**, **0 dossiers sans ID dont l’identité ou le parent reste à résoudre**, **0 dossiers rattachés à un vrai parc**. Ces sous-ensembles ne doivent pas être ajoutés une seconde fois aux totaux précédents.
 
 Chaque candidat passe par une qualification avant création. Le type proposé ne prouve pas l’autonomie d’une attraction. Les signaux de fermeture ou d’exploitation ci-dessous sont ceux des sources, à dater et à vérifier.
 
@@ -78,7 +78,7 @@ Chaque candidat passe par une qualification avant création. Le type proposé ne
 | ID-candidate-e748049f2aef36 | Havana Waterpark | Banyuwangi | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Indonesia) |
 | ID-candidate-f5108c2dc55b7f | Hawai Waterpark | Malang | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_water_parks_in_Asia#Indonesia) · [AmusementForce](https://www.amusementforce.com/parks/hawai-waterpark-malang-java-indonesia) |
 | ID-candidate-928b927793f1e8 | Hillpark Sibolangit | Sibolangit , North Sumatra | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. [RCDB](https://rcdb.com/4832.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Indonesia) |
-| ID-candidate-da2446813242e7 | J-Sky | Jakarta Garden City , Jakarta | À qualifier ; proposé : StandaloneAttraction | PossibleExisting | À qualifier | Inconnue — non inventée | — | Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision. Qualification standalone : ParentToResolve. Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) |
+| ID-candidate-da2446813242e7 | J-SKY Ferris Wheel | AEON Mall Jakarta Garden City, Cakung, Jakarta oriental 13910 | StandaloneAttraction | Published | Intégration achevée | 2026-11-15T00:46:46.984Z | — | Conserver cette ligne et sa date réelle. Obtenir le prix actuel directement de J-SKY ou du centre commercial ; revérifier le fonctionnement du jour avant une visite. Qualification standalone : AlreadyStandalone. Grande roue fixe avec billetterie propre sur la terrasse d’un centre commercial, présentée comme attraction distincte par le centre commercial et l’office de tourisme. Installations référencées : J-SKY Ferris Wheel. Signal source : AEON Mall consulté le 2026-11-15 : J-SKY listée comme attraction au 3e étage et horaires quotidiens publiés.. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_Ferris_wheels#Fixed_Ferris_wheels) · [AEON Mall Jakarta Garden City — fiche officielle de J-SKY](https://aeonmall-jgc.com/en/shopping_detail.php?id=85) · [AEON Mall Jakarta Garden City — horaires et dernier billet](https://aeonmall-jgc.com/en/mallguide_03.php) · [Jakarta Tourism — localisation et cabines](https://enjoy.jakarta.go.id/article/j-sky-ferris-wheel) · [Wikimedia Commons — Esther Rossini, 14 March 2026, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_in_View.jpg) · [Wikimedia Commons — Fabi Fuu 76, 26 November 2021, CC BY 4.0](https://commons.wikimedia.org/wiki/File:J-Sky_Ferris_Wheel_AEON_MALL_JGC_at_night.jpg) |
 | ID-candidate-fd8826e639882b | Jakarta Aquarium | Jakarta | Park | NotFound | À qualifier | Inconnue — non inventée | — | Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_aquaria#Indonesia) |
 | ID-park-0d88a9de-1955-4891-a622-aeabd2138b93 | Jawa Timur Park 1 | — | Park | Hidden | À intégrer | Inconnue — non inventée | — | Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée. Signal source : Operating. [Relevé du site — méthode](https://github.com/Ced59/AmusementParkProject/blob/master/docs/roadmaps/world-integration/METHODOLOGY.md) · [RCDB](https://rcdb.com/5686.htm) · [Wikipédia (découverte)](https://en.wikipedia.org/wiki/List_of_amusement_parks_in_Asia#Indonesia) |
 | ID-candidate-d2666ee2cd9a72 | Jawa Timur Park 2 | Batu , East Java | Park | PossibleExisting | À qualifier | Inconnue — non inventée | — | Rapprochement incertain avec une fiche existante : trancher avant de compter un nouvel établissement. Confirmer identité, adresse, cycle de vie et source officielle ; rechercher à nouveau noms, alias et coordonnées avant création. Signal source : Operating. Correspondance possible : Jawa Timur Park 1 (0d88a9de-1955-4891-a622-aeabd2138b93). [RCDB](https://rcdb.com/10417.htm) |
