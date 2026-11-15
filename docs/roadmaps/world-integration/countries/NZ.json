@@ -1610,6 +1610,186 @@
           "accessedAt": "2026-10-22"
         }
       ]
+    },
+    {
+      "entryId": "NZ-candidate-discovery-b7c31d2090640c",
+      "name": "Taupō Bungy",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "202 Spa Road, Taupō, Waikato",
+      "siteId": "11128785-fc14-4361-bbab-5e373e995bf5",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T12:06:45.221Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : saut et réservation actuels, tarifs et horaires affichés sur la page propre au site.",
+      "identityConfidence": "Offre, billet, adresse, horaires et règles confirmés par l’exploitant ; deux photographies exactes et réutilisables mais historiques ; aucune fiche site préexistante dans la recherche officielle.",
+      "possibleMatches": [],
+      "aliases": [
+        "Taupo Bungy",
+        "AJ Hackett Taupō Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T12:08:26.960Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-8bab846e-d87e-4595-a337-c01591ca3670",
+          "appliedAt": "2026-11-15T12:03:41.399Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:apply:8bab846e-d87e-4595-a337-c01591ca3670",
+          "auditEvidence": null,
+          "summary": "Création du saut de Taupō, point de saut OSM, adresse et descriptions éditoriales dans huit langues."
+        },
+        {
+          "eventId": "apply-132191da-c8dc-4977-840a-deaf9649110b",
+          "appliedAt": "2026-11-15T12:04:39.091Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:apply:132191da-c8dc-4977-840a-deaf9649110b",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels adulte et enfant, horaires de semaine et de week-end, âge, poids, tandem et santé, en huit langues."
+        },
+        {
+          "eventId": "image-61941fbb53f94b95bb4323cd53aec992",
+          "appliedAt": "2026-11-15T12:05:22.609Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:image:61941fbb53f94b95bb4323cd53aec992",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de la plateforme au-dessus du Waikato, prise le 9 février 2005 ; huit alt, légendes et crédits ; Thajsko, CC BY 3.0."
+        },
+        {
+          "eventId": "image-4e91f7cd1996456399b55bb71533bb23",
+          "appliedAt": "2026-11-15T12:05:40.063Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:image:4e91f7cd1996456399b55bb71533bb23",
+          "auditEvidence": null,
+          "summary": "Photo historique exacte de la plateforme au-dessus du Waikato, prise le 9 février 2005 ; huit alt, légendes et crédits ; Thajsko, CC BY 3.0."
+        },
+        {
+          "eventId": "apply-924ee396-d7f7-48a9-8cc0-d4527a22a038",
+          "appliedAt": "2026-11-15T12:08:26.960Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+          "evidence": "PARK_DATA_EDITOR:apply:924ee396-d7f7-48a9-8cc0-d4527a22a038",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-nz-taupo-bungy-20261115/audit.json",
+          "summary": "Condition officielle ajoutée en huit langues : effleurer l’eau est possible selon les conditions, sans garantie."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler prix, horaires et conditions sous 90 jours, notamment les éventuelles fermetures exceptionnelles. Les deux photos sont historiques (2005) : chercher des vues récentes exactes sous licence réutilisable. Qualifier Taupō Swing séparément. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — Taupō Bungy, prix et conditions",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-bungy/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Taupō Bungy Centre, adresse et horaires",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Taupō Swing distinct",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-swing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ et conditions médicales",
+          "url": "https://www.bungy.co.nz/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — point de saut",
+          "url": "https://www.openstreetmap.org/node/3915899981",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Thajsko, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_jump_in_Taupo_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte, Thajsko, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungy_jump_in_Taupo_-_panoramio_-_Thajsko.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Taupō Bungy",
+            "source": "Exploitant — Taupō Bungy, prix et conditions",
+            "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-bungy/",
+            "family": "Bungy jump",
+            "sourceVenueName": "Taupō Bungy Centre",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Taupō, Waikato"
+          }
+        ],
+        "rationale": "Saut vendu séparément du Taupō Swing. Fiche autonome créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NZ-candidate-discovery-57d6a08c734447",
+      "name": "Taupō Swing",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire de canyon",
+      "locality": "Taupō Bungy Centre, Taupō, Waikato",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Offre et réservation distinctes sur la page officielle de l’exploitant, consultée le 15 novembre 2026.",
+      "identityConfidence": "Produit distinct du Taupō Bungy, page officielle disponible ; photo exacte et réutilisable, tarifs, règles et modélisation à contrôler avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "Taupo Swing"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, vérifier tarifs, accès et horaires officiels, trouver au moins une photographie réutilisable montrant exactement le Swing. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "sources": [
+        {
+          "label": "Exploitant — Taupō Bungy Centre, deux activités distinctes",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Taupō Swing",
+          "url": "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-swing/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NZ",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité distincte du Taupō Bungy ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NZ-candidate-discovery-b7c31d2090640c"
+      ]
     }
   ]
 }

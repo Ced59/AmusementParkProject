@@ -1,0 +1,118 @@
+{
+  "entryId": "NZ-candidate-discovery-b7c31d2090640c",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "11128785-fc14-4361-bbab-5e373e995bf5",
+  "name": "Taupō Bungy",
+  "countryCode": "NZ",
+  "auditAtUtc": "2026-11-15T12:09:53.012Z",
+  "qualification": "Saut fixe et billet propres au Taupō Bungy Centre. Le Taupō Swing est vendu séparément. Recherches officielles Park et StandaloneAttraction sur Taupo, Taupō Bungy et Taupo Bungy sans résultat.",
+  "operatorSources": [
+    "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-bungy/",
+    "https://www.bungy.co.nz/taupo/taupo-bungy-centre/",
+    "https://www.bungy.co.nz/taupo/taupo-bungy-centre/taupo-swing/",
+    "https://www.bungy.co.nz/faqs/"
+  ],
+  "geoSource": "https://www.openstreetmap.org/node/3915899981",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/11128785-fc14-4361-bbab-5e373e995bf5/taupo-bungy",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 2,
+  "photos": [
+    {
+      "imageId": "61941fbb53f94b95bb4323cd53aec992",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungy_jump_in_Taupo_-_panoramio.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Bungy_jump_in_Taupo_-_panoramio.jpg/960px-Bungy_jump_in_Taupo_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Thajsko",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2005-02-09",
+      "importedAtUtc": "2026-11-15T12:05:22.609Z",
+      "isCurrent": true,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "4e91f7cd1996456399b55bb71533bb23",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Bungy_jump_in_Taupo_-_panoramio_-_Thajsko.jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Bungy_jump_in_Taupo_-_panoramio_-_Thajsko.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "creator": "Thajsko",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2005-02-09",
+      "importedAtUtc": "2026-11-15T12:05:40.063Z",
+      "isCurrent": false,
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Page propre à l’attraction consultée le 15 novembre 2026 : à partir de 275 NZD par adulte, 235 NZD par enfant. Prix final selon réservation ; visite du site gratuite pour les spectateurs.",
+  "openingHoursAssessment": "Présentation du centre : lundi à vendredi 09:30–16:00, samedi et dimanche 09:30–17:00 ; dernier saut 30 minutes avant fermeture. Check-in au moins 15 minutes avant le créneau réservé. Aucune fermeture de Noël publiée sur cette page ; n’en inventer aucune.",
+  "accessAssessment": "Dès 10 ans, moins de 14 ans avec adulte sur place, moins de 18 ans avec accord adulte au check-in. Solo 35–140 kg ; tandem maximum total 180 kg, écart maximum 30 kg. Grossesse et épilepsie photosensible exclues ; autres situations selon avis de l’exploitant. Contact avec l’eau possible mais jamais garanti.",
+  "geoAssessment": "OpenStreetMap node 3915899981 à -38.6792232,176.0869213 correspond au point de saut ; l’adresse officielle de l’accueil est 202 Spa Road, Taupō 3330.",
+  "historyAssessment": "Année d’ouverture non vérifiée dans les pages de l’exploitant. Le 1988 mentionné par l’exploitant renvoie à la fondation du bungy commercial de l’entreprise, non au site de Taupō. Aucune date d’ouverture n’est inventée.",
+  "qualityLimitation": "Score 89/100 Good, sans blocage. Les deux photos exactes datent de 2005 et sont légendées comme historiques.",
+  "completeness": {
+    "score": 89,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127449727424431",
+    "publishedAtUtc": "2026-11-15T12:07:26.1611363Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T12:08:26.960Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "8bab846e-d87e-4595-a337-c01591ca3670",
+      "appliedAtUtc": "2026-11-15T12:03:41.399622Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "132191da-c8dc-4977-840a-deaf9649110b",
+      "appliedAtUtc": "2026-11-15T12:04:39.0916839Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "water",
+      "operationId": "924ee396-d7f7-48a9-8cc0-d4527a22a038",
+      "appliedAtUtc": "2026-11-15T12:08:26.9604173Z"
+    }
+  ],
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "61941fbb53f94b95bb4323cd53aec992",
+      "appliedAtUtc": "2026-11-15T12:05:22.609Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "4e91f7cd1996456399b55bb71533bb23",
+      "appliedAtUtc": "2026-11-15T12:05:40.063Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "a69b681f-881d-4105-90ba-3d9979e0d7ef",
+    "appliedAtUtc": "2026-11-15T12:06:45.221397Z"
+  },
+  "nextAction": "Conserver la ligne. Recontrôler prix, horaires et conditions sous 90 jours, notamment les éventuelles fermetures exceptionnelles. Les deux photos sont historiques (2005) : chercher des vues récentes exactes sous licence réutilisable. Qualifier Taupō Swing séparément. Ne pas republier Facebook pour une simple actualisation."
+}
