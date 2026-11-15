@@ -1,0 +1,94 @@
+{
+  "entryId": "DE-standalone-46a57823-75cd-4ff3-9fde-495ad0204b1b",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+  "name": "Hasenhorn Coaster",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T12:32:10.302Z",
+  "qualification": "Fiche StandaloneAttraction déjà publiée, avec trois photos accessibles et une fiche Park masquée ancienne classée doublon. Identité de la standalone conservée ; aucune création ni suppression de l’ancienne fiche Park.",
+  "operatorSources": [
+    "https://www.hasenhorn-rodelbahn.de/",
+    "https://www.hasenhorn-rodelbahn.de/preise/",
+    "https://www.hasenhorn-rodelbahn.de/weg-zur-rodelbahn/"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/46a57823-75cd-4ff3-9fde-495ad0204b1b/hasenhorn-coaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pt",
+    "pl"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "1085326d5fa44a7d833f17171192e094",
+      "sourceUrl": "https://db-service.toubiz.de/var/plain_site/storage/images/orte/todtnau/hasenhorn-coaster/_mg_1123/925060-1-ger-DE/_MG_1123_front_large.jpg",
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "a31c97be59a9415fb74c67e984ed3005",
+      "sourceUrl": "https://img.oastatic.com/img2/17335045/834x417r/variant.jpg",
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "19046b57633c4c3ca44423b8ccfc9f6e",
+      "sourceUrl": "https://www.hochschwarzwald.de/_Resources/Persistent/294619f8b053a981b8918ca29850560d124a0a41/Hasenhorn%20Coaster-960x640.jpg",
+      "isPublished": true,
+      "altLocaleCount": 8,
+      "captionLocaleCount": 8,
+      "creditLocaleCount": 8,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "photoRightsAssessment": "Trois photos préexistantes, aucune nouvelle importation durant cette mise à jour. Leurs sources et crédits sont conservés ; les droits de réutilisation n’ont pas été réaudités et restent à vérifier pour les usages futurs.",
+  "pricing": "Page officielle « Sommer-Preise 2026 » : adulte dès 16 ans, coaster seul 7 €, montée en télésiège + coaster 15 € ; enfant 4–15 ans, 6,50 € et 13 €. Billets uniquement en caisse sur place. Il s’agit des prix de l’été 2026, à revalider avant toute nouvelle saison.",
+  "openingHoursAssessment": "Page officielle du 15 novembre 2026 : télésiège et coaster fermés. L’exploitant espère une réouverture pendant les vacances de Noël selon la météo et la neige, sans date ni heures confirmées. Vent fort, orage et gel peuvent empêcher l’exploitation. La fiche ne crée aucun créneau futur.",
+  "accessAssessment": "Dès 3 ans et 95 cm avec un adulte ; conduite seule dès 8 ans et 1,40 m. La tarification enfant affichée commence à 4 ans : demander en caisse le prix pour un accompagnant de 3 ans.",
+  "technicalLengthAssessment": "La fiche technique héritée indique 2700 m selon Wiegand ; l’exploitant communique 2,9 km pour l’expérience. Les descriptions publiques ne présentent plus cette divergence technique comme récit de visite. La donnée technique héritée n’est pas modifiée sans mesure probante équivalente.",
+  "qualityBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "qualityAfter": {
+    "score": 88,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127452451424431",
+    "publishedAtUtc": "2026-11-15T12:30:27.8349132Z",
+    "note": "Annonce publiée lors de la première intégration éditoriale documentée de cette fiche préexistante."
+  },
+  "lastDataIntegrationAt": "2026-11-15T12:29:46.743Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "copy",
+      "operationId": "63715f39-64fc-4d1f-8b10-629ab0c87629",
+      "appliedAtUtc": "2026-11-15T12:28:03.1270434Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "visitor",
+      "operationId": "d188c17e-c1fa-4c23-8da2-d48b0c4c73a5",
+      "appliedAtUtc": "2026-11-15T12:29:46.7437793Z"
+    }
+  ],
+  "nextAction": "Conserver cette ligne, son ancien identifiant Park lié et tous les reçus. Recontrôler la réouverture annoncée comme possible pendant les vacances de Noël 2026, selon météo et neige ; ne publier des heures qu’après annonce officielle. Actualiser les tarifs pour la prochaine saison avant de les qualifier de courants. Vérifier les droits des trois photos historiques et chercher des photos Commons exactes en complément. Ne pas republier Facebook pour une simple actualisation."
+}

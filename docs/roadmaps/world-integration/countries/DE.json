@@ -11209,21 +11209,42 @@
         "e0f15bcf-4670-461d-998b-224e7df2e98e"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T12:29:46.743Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitant : télésiège et coaster actuellement fermés ; réouverture pendant les vacances de Noël 2026 envisagée selon les conditions météo, sans date confirmée.",
+      "identityConfidence": "Fiche existante et ancien identifiant Park reliés, source officielle actualisée, trois photos publiées ; audit éditorial et reçus du 15 novembre 2026.",
       "possibleMatches": [],
       "aliases": [
         "Hasenhorn Rodelbahn",
         "Hasenhorn Coaster Todtnau"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T12:29:46.743Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-63715f39-64fc-4d1f-8b10-629ab0c87629",
+          "appliedAt": "2026-11-15T12:28:03.127Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+          "evidence": "PARK_DATA_EDITOR:apply:63715f39-64fc-4d1f-8b10-629ab0c87629",
+          "auditEvidence": null,
+          "summary": "Révision des huit descriptions : récit des lieux conservé, chiffres techniques et formulations méta-éditoriales retirés du texte public ; blocage de qualité levé."
+        },
+        {
+          "eventId": "apply-d188c17e-c1fa-4c23-8da2-d48b0c4c73a5",
+          "appliedAt": "2026-11-15T12:29:46.743Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "46a57823-75cd-4ff3-9fde-495ad0204b1b",
+          "evidence": "PARK_DATA_EDITOR:apply:d188c17e-c1fa-4c23-8da2-d48b0c4c73a5",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-hasenhorn-refresh-20261115/audit.json",
+          "summary": "Conditions d’âge et de taille, fermeture météorologique, tarifs été 2026 vendus uniquement sur place et statut saisonnier ajoutés en huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne, son ancien identifiant Park lié et tous les reçus. Recontrôler la réouverture annoncée comme possible pendant les vacances de Noël 2026, selon météo et neige ; ne publier des heures qu’après annonce officielle. Actualiser les tarifs pour la prochaine saison avant de les qualifier de courants. Vérifier les droits des trois photos historiques et chercher des photos Commons exactes en complément. Ne pas republier Facebook pour une simple actualisation.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -11259,13 +11280,28 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.hasenhorn-rodelbahn.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — fermeture actuelle et conditions météo",
+          "url": "https://www.hasenhorn-rodelbahn.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs été 2026, uniquement sur place",
+          "url": "https://www.hasenhorn-rodelbahn.de/preise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — accès à Todtnau et coordonnées de la station",
+          "url": "https://www.hasenhorn-rodelbahn.de/weg-zur-rodelbahn/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
         "relation": "AlreadyStandalone",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Hasenhorn Coaster",
@@ -11286,7 +11322,7 @@
             "referenceId": "location-id-1024"
           }
         ],
-        "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+        "rationale": "Fiche StandaloneAttraction déjà publiée et fiche Park ancienne conservée comme doublon. Mise à jour éditoriale et audit documentés, sans recréation."
       }
     },
     {
