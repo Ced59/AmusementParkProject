@@ -1,0 +1,113 @@
+{
+  "work": "Migrated the hidden mono-attraction Hill Szczęśliwicka legacy Park and its Gravity Slide parkItem to a published standalone alpine coaster; imported one exact credited photograph and published a Facebook announcement. Reconciled the separate Wiegand Warsaw candidate as a retained duplicate of this migration.",
+  "qualification": "The site is an urban municipal sports hill and public park, not a structured amusement park. Its gravity coaster is a fixed separately visitable ride. The editor found the hidden legacy Park and its single Gravity Slide parkItem, but no matching standalone attraction. The city confirms the coaster continues during ski-lift modernisation and also in winter. Controlled migration marked the hidden legacy Park and item NotRelevant without deleting them.",
+  "sources": {
+    "cityOperations": "https://warszawa19115.pl/-/miejskie-obiekty-sportowe",
+    "sportsDirectory": "https://sportowa.warszawa.pl/osrodki-sportu/gorka-szczesliwicka/",
+    "rcdbRide": "https://rcdb.com/3832.htm",
+    "wiegandReference": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=243#location-id-1071",
+    "commonsPhoto": "https://commons.wikimedia.org/wiki/File:Park-szczesliwicki-rollercoaster-2.jpg"
+  },
+  "entity": {
+    "id": "1649a64c-cf6d-405d-8281-1eee955527c3",
+    "name": "Kolejka grawitacyjna Górka Szczęśliwicka",
+    "kind": "StandaloneAttraction",
+    "countryCode": "PL",
+    "operatingStatus": "Operating",
+    "published": true,
+    "legacyParkId": "6316cc1b-e42a-4451-823c-26c3b9b23ed7",
+    "legacyParkItemId": "41de865c-b58c-43a5-ab67-653bf7e81d44"
+  },
+  "officialFacts": {
+    "address": "Drawska 22, 02-202 Warszawa, Poland",
+    "coordinates": {
+      "latitude": 52.206071,
+      "longitude": 20.957403
+    },
+    "cityOperationDuringSkiLiftWorks": true,
+    "citySaysOperatesInWinter": true,
+    "dailyHoursText": "10:00 until dusk"
+  },
+  "sourceLimitations": [
+    "The city publishes a variable dusk closing time, so no fixed weekly closing time was invented. The city notice and a local instructor site disagree on winter operation; the city notice is treated as authoritative, while visitors are asked to confirm the day’s operation.",
+    "No current ride-specific official fare was found, so no price was entered.",
+    "The legacy ride carried a 1999-01-01 opening date despite RCDB giving no precise opening date. This placeholder was cleared in a separate Apply. The inherited length is attributed to RCDB; it is not repeated in public prose because other sources describe a different overall route length.",
+    "The photograph dates from July 2015 and is labelled as historical; it does not document the current state of the works.",
+    "The legacy Park and parkItem remain hidden and NotRelevant. No destructive deletion was requested or performed."
+  ],
+  "editorSearch": {
+    "parkQueries": [
+      "Szczęśliwick"
+    ],
+    "standaloneQueries": [
+      "Szczęśliwick",
+      "Szczesliwick",
+      "Gravity Slide",
+      "Kolejka grawitacyjna",
+      "Zjeżdżalnia Grawitacyjna"
+    ],
+    "matchingStandaloneBeforeMigration": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "6d23b63c-5641-4181-bad2-c646d6f3ffac",
+      "appliedAtUtc": "2026-11-15T01:46:53.0107427Z",
+      "summary": "Created standalone and marked hidden legacy Park and item NotRelevant"
+    },
+    {
+      "operationId": "504d6f00-1471-49aa-a0ac-05bb9c625dd2",
+      "appliedAtUtc": "2026-11-15T01:48:13.3660093Z",
+      "summary": "Cleared inherited 1999-01-01 placeholder opening date"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "bebe62a9086f41c081bb02a812ce3a98",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Park-szczesliwicki-rollercoaster-2.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Park-szczesliwicki-rollercoaster-2.jpg",
+      "author": "Globe Master - SideEffect",
+      "license": "CC BY 3.0",
+      "photographedAt": "2015-07-16",
+      "subject": "Adult and child on orange sled on the exact Górka Szczęśliwicka alpine coaster",
+      "modification": "Unmodified original uploaded through official image pipeline",
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T01:49:09.343Z",
+      "metadataAppliedAtUtc": "2026-11-15T01:49:12.996Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 72,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 1,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/1649a64c-cf6d-405d-8281-1eee955527c3/kolejka-grawitacyjna-gorka-szczesliwicka",
+    "sitePublishedAtUtc": "2026-11-15T01:51:17.2276668Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:0df985e0-51d3-4104-b09c-41634f75557c",
+    "facebookStatus": "Published",
+    "facebookId": "c6863907651c48198bdeaef1171866b3",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127396513424431",
+    "facebookPublishedAtUtc": "2026-11-15T01:52:18.7137834Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T01:49:12.996Z",
+  "remainingGaps": [
+    "Find and verify a current official ride fare before adding a public price.",
+    "Recheck the city daily status and variable closing time before a planned visit."
+  ]
+}
