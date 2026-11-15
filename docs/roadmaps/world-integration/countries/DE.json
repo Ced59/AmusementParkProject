@@ -6951,13 +6951,21 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Qualifier le domaine de montagne et ses autres activités séparément ; la Sommerrodelbahn Hocheck est déjà publiée comme standalone sous DE-candidate-standalone-f1037f4762bef3. Ne pas recréer la piste.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/erlebnisberg-oberaudorf-hocheck/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hocheck — activité de luge déjà intégrée en standalone",
+          "url": "https://hocheck.com/sommer-rodelbahn/",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "DE-candidate-standalone-f1037f4762bef3"
       ]
     },
     {
@@ -16006,29 +16014,102 @@
     },
     {
       "entryId": "DE-candidate-standalone-f1037f4762bef3",
-      "name": "Luge Wiegand — Oberaudorf",
-      "entityKind": "ToQualify",
+      "name": "Sommerrodelbahn Hocheck",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Luge d’été",
-      "locality": null,
-      "siteId": null,
+      "locality": "Hocheck, 83080 Oberaudorf, Bavière",
+      "siteId": "e9654579-f599-4e11-8873-f63714b6a45f",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:25:33.282Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : saison estivale 2026 terminée, prochaine saison de luge non annoncée.",
+      "identityConfidence": "Piste fixe et descente autonome confirmées par l’exploitant, avec accès à pied possible et billet de remontée incluant la luge ; aucune fiche existante dans l’éditeur.",
       "possibleMatches": [],
       "possibleBacklogEntries": [],
       "aliases": [
-        "Oberaudorf"
+        "Sommer-Rodelbahn Hocheck",
+        "Sommerrodelbahn Oberaudorf",
+        "Luge Wiegand — Oberaudorf"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T02:24:25.865Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4ff140e9-556f-4c72-ae01-15e0a6ffbc4a",
+          "appliedAt": "2026-11-15T02:22:29.694Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:apply:4ff140e9-556f-4c72-ae01-15e0a6ffbc4a",
+          "auditEvidence": null,
+          "summary": "Fiche autonome créée avec huit descriptions et fermeture saisonnière."
+        },
+        {
+          "eventId": "apply-a1f64e20-606a-402b-bdef-6b4636aecb57",
+          "appliedAt": "2026-11-15T02:23:22.553Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:apply:a1f64e20-606a-402b-bdef-6b4636aecb57",
+          "auditEvidence": null,
+          "summary": "Quatre règles officielles et calendrier 2026 terminé."
+        },
+        {
+          "eventId": "image-7f043173efd04373aff0260c50ba451e",
+          "appliedAt": "2026-11-15T02:24:07.436Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:7f043173efd04373aff0260c50ba451e",
+          "auditEvidence": null,
+          "summary": "Vue historique exacte du Hocheck importée."
+        },
+        {
+          "eventId": "image-metadata-7f043173efd04373aff0260c50ba451e",
+          "appliedAt": "2026-11-15T02:24:11.035Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:7f043173efd04373aff0260c50ba451e",
+          "auditEvidence": null,
+          "summary": "Crédit, licence et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "image-29cfdb877c654a8b9f26f0eb74f9b99b",
+          "appliedAt": "2026-11-15T02:24:22.257Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:29cfdb877c654a8b9f26f0eb74f9b99b",
+          "auditEvidence": null,
+          "summary": "Vue historique exacte du Hocheck importée."
+        },
+        {
+          "eventId": "image-metadata-29cfdb877c654a8b9f26f0eb74f9b99b",
+          "appliedAt": "2026-11-15T02:24:25.865Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:29cfdb877c654a8b9f26f0eb74f9b99b",
+          "auditEvidence": null,
+          "summary": "Crédit, licence et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "closure-e9654579-f599-4e11-8873-f63714b6a45f",
+          "appliedAt": "2026-11-15T02:24:25.865Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e9654579-f599-4e11-8873-f63714b6a45f",
+          "evidence": "PARK_DATA_EDITOR:image:29cfdb877c654a8b9f26f0eb74f9b99b",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-hocheck-20261115/audit.json",
+          "summary": "Audit final : huit pages et deux photos HTTP 200, complétude 74 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et sa date réelle. Vérifier la prochaine ouverture estivale, les tarifs et la limite exacte d’accompagnement à huit ans ; les deux photos historiques et le post Facebook sont intégrés.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -16039,22 +16120,47 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.hocheck.com",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Hocheck — piste et règles de sécurité",
+          "url": "https://hocheck.com/sommer-rodelbahn/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Hocheck — calendrier été 2026",
+          "url": "https://hocheck.com/betriebszeiten-sommer-am-erlebnisberg-hocheck-in-oberaudorf/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Hocheck — tarifs été 2026 archivés",
+          "url": "https://hocheck.com/preise-erlebnisberg-hocheck-2025/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Rufus46, CC BY-SA 3.0, vue 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Hocheck_Oberaudorf-1.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Rufus46, CC BY-SA 3.0, vue 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Wildbarren,_Rodelbahn,_Kahlanger-Schanze_vom_Hocheck_Oberaudorf-1.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Oberaudorf",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/summer-toboggan-run/references.html?wgrls=316#location-id-1260",
+            "name": "Sommerrodelbahn Hocheck",
+            "source": "Hocheck Bergbahnen",
+            "url": "https://hocheck.com/sommer-rodelbahn/",
             "family": "Luge d’été",
-            "sourceVenueName": "Oberaudorf",
-            "referenceId": "location-id-1260"
+            "sourceVenueName": "Erlebnisberg Hocheck",
+            "sourceLocality": "Oberaudorf"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Descente de luge fixe et payante dans un domaine de remontées, randonnée et sports d’hiver. Le billet de télésiège peut inclure la descente ; accès au départ aussi possible à pied. Les autres activités restent à qualifier séparément."
       }
     },
     {
