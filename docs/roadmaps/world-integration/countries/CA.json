@@ -4611,7 +4611,7 @@
         "Skyline Luge Mont Tremblant"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-28T07:43:46.178Z",
+      "lastDataIntegrationAt": "2026-11-15T03:05:40.545Z",
       "integrationHistory": [
         {
           "eventId": "apply-cb8f9dae-e3e5-44a6-920c-881699147ab2",
@@ -4672,9 +4672,29 @@
           "evidence": "PARK_DATA_EDITOR:apply:139a5cc6-b450-4926-a524-bab6d48861dd",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-20261028/tremblant-audit.json",
           "summary": "Titres des conditions d’accès corrigés après vérification publique ; audit final sans blocage."
+        },
+        {
+          "eventId": "image-5da8aae6edb94d9f9cfc44ac9ec25e9b",
+          "appliedAt": "2026-11-15T03:05:16.069Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+          "evidence": "PARK_DATA_EDITOR:image:5da8aae6edb94d9f9cfc44ac9ec25e9b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Skyline Luge Mont-Tremblant photographiée en 2008, Jiaqian AirplaneFan, Wikimedia Commons CC BY 3.0, publiée et créditée en huit langues ; photo historique datée."
+        },
+        {
+          "eventId": "image-826c294ecaf847feba13ef4e598d3b86",
+          "appliedAt": "2026-11-15T03:05:40.545Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "ba136b99-e441-4569-be10-17c9a9b8ba8d",
+          "evidence": "PARK_DATA_EDITOR:image:826c294ecaf847feba13ef4e598d3b86",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-photo-20261115/audit.json",
+          "summary": "Photo exacte de Skyline Luge Mont-Tremblant photographiée en 2013, Jiaqian AirplaneFan, Wikimedia Commons CC BY 3.0, publiée et créditée en huit langues ; photo historique datée."
         }
       ],
-      "nextAction": "Audit photo du 1er novembre 2026 : aucune image publiée. Rechercher une photo de cette attraction précise avec droit de réutilisation vérifiable ; l’importer et la publier, puis dater la nouvelle intégration de données. Conserver cette ligne et les reçus ; vérifier date de reprise, horaires et prix 2027 avant la saison, statut administratif ToReview et possibilité d’une photographie sous licence réutilisable. Ajouter au minimum une photo montrant exactement cette installation, avec droits de réutilisation et crédit vérifiés ; publier la photo, contrôler les huit pages et la miniature sociale, puis dater cette intégration réelle sans supprimer la ligne du backlog.",
+      "nextAction": "Deux photos exactes, datées de 2008 et 2013, publiées avec crédits le 15 novembre 2026. Conserver la ligne et les reçus ; chercher des vues plus récentes de la piste, puis vérifier la date de reprise, les horaires et les prix 2027 avant la saison. Vérifier également le statut administratif ToReview. Le post Facebook initial reste lié sans doublon.",
       "sources": [
         {
           "label": "Skyline Luge — saison et calendrier officiels",
@@ -4710,6 +4730,16 @@
           "label": "OpenStreetMap — piste",
           "url": "https://www.openstreetmap.org/way/232350134",
           "accessedAt": "2026-10-28"
+        },
+        {
+          "label": "Wikimedia Commons — piste Skyline Luge Mont-Tremblant en 2008, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Downhill_-_panoramio_%286%29.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — piste Skyline Luge Mont-Tremblant en 2013, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Mont-Tremblant_village_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
@@ -4733,7 +4763,12 @@
         "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122125005813424431",
         "receiptsPath": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-20261028/tremblant-receipts.json"
       },
-      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-photo-gaps-20261102/audit.json"
+      "photoGapAuditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-photo-20261115/audit.json",
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-ca-tremblant-photo-20261115/audit.json",
+        "score": 93,
+        "publicationBlockers": []
+      }
     },
     {
       "entryId": "CA-candidate-534923ad73742b",
