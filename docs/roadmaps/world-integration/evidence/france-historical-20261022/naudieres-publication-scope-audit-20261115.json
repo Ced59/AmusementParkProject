@@ -1,0 +1,1388 @@
+{
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "auditedAtUtc": "2026-11-15T16:04:35.825590+00:00",
+  "outcome": "ready-for-targeted-publication",
+  "globalOutcome": "partial",
+  "globalCompletion": false,
+  "scope": {
+    "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "itemIds": [
+      "135870ba-51af-4c0a-b96e-c18b6c255e27",
+      "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+      "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+      "290932a2-7d9d-4630-9998-6be03b6bbb6d"
+    ],
+    "imageIds": [
+      "373575c2d2fb421b8b154cb99742af48",
+      "341b0e55a14f422fb4262d7c9aaf6e9e"
+    ],
+    "historyKeys": [
+      "naudieres-history-acquisition-wikiparks-2020"
+    ],
+    "personalReview": "32item descriptions,16event titles/summaries,48image localizedmetadata read personally;2originalDunephotos re-viewed; existingauthoring/proof preserved.",
+    "publicationStatus": "Not started; singlefullauditrequestednext before audit."
+  },
+  "authorization": "france-publication-score-policy-20261115.json; owner authorizes site and Facebook, including score exceptions for undocumented opening dates/hours. No API or editorial gate bypassed.",
+  "export": {
+    "atUtc": "2026-11-15T15:55:49.0236759Z",
+    "sha256": "580e8c1d2469acae463b8a64a8d493aab2d171a869bf49e97873d20afa82d981",
+    "proof": "naudieres-publication-scope-audit-export-20261115.json",
+    "repeatAuditExport": false
+  },
+  "editorialReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "newLocalizedFieldsPersonallyReread": 96,
+    "detail": "32item descriptions,16event titles/summaries,48image alt/caption/credit fields personally reread. Two original Dune photographs personally re-inspected. Eight park descriptions and six zone descriptions in eight languages recovered by this full export also personally reread. Existing audited public corpus is retained, not claimed wholly reread during this followup.",
+    "priorAuditChain": "National backlog publication record21–22Oct; recovered official step09 publication/84and108unchangedPreview records in naudieres-prior-operations-recovered-20261115.json. Only7of48currentpublic itemdescriptions re-match successfulApplytexts within retained50operationwindow; remaining41 match this recovery consolidatedsnapshot; no assertion of all48 matching earlierApplytext.",
+    "priorCorpusReconciliation": {
+      "priorHistoryRows": 50,
+      "successfulApplyDocumentsRecovered": 23,
+      "scopeIntent": {
+        "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "itemIds": [
+          "135870ba-51af-4c0a-b96e-c18b6c255e27",
+          "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+          "290932a2-7d9d-4630-9998-6be03b6bbb6d"
+        ],
+        "imageIds": [
+          "373575c2d2fb421b8b154cb99742af48",
+          "341b0e55a14f422fb4262d7c9aaf6e9e"
+        ],
+        "historyKeys": [
+          "naudieres-history-acquisition-wikiparks-2020"
+        ],
+        "personalReview": "32item descriptions,16event titles/summaries,48image localizedmetadata read personally;2originalDunephotos re-viewed; existingauthoring/proof preserved.",
+        "publicationStatus": "Not started; singlefullauditrequestednext before audit."
+      },
+      "currentItems": [
+        {
+          "id": "ff1c9527-ade5-46a4-b4bf-b61c3b0ac320",
+          "name": "Adresse basket",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "f823100e-4b96-46cf-bea7-cc7a4f909983",
+          "name": "Aire des Bambinos",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "442449c0-92ab-4e17-b051-3e2434c42cae",
+          "name": "Aires de pique-nique",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "580d998c-1af2-4eac-b9db-becbbea3ff91",
+          "name": "Aquabully",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+          "name": "Baby-foot humain",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "8b8d629c-3e43-4d87-ac79-e564e7e802be",
+              "appliedAtUtc": "2026-11-15T10:41:26.1371433Z"
+            }
+          ]
+        },
+        {
+          "id": "90cbfc3c-9098-4f83-a963-a0d65818eabb",
+          "name": "Balançoire horizontale",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "8c47d5b8-6a85-44d5-88b7-8024f557cb6e",
+          "name": "Bumper Ball",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "c1cad614-2856-46a5-8166-cfdadf084c82",
+          "name": "Bungy Éjection",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+              "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+            }
+          ]
+        },
+        {
+          "id": "822de895-75c5-4527-b485-bd2dc19c8cf3",
+          "name": "Carrousel",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "f0512393-88a0-4e85-bf4e-cc6d7ff8e808",
+          "name": "Collecte de verre près de la Cabane d’Holly",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "1c8046d0-110b-4680-a6ea-61235f12f558",
+          "name": "Coupe du monde",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "85a1d9ff-0caf-410f-8e82-961221d66e3b",
+          "name": "Crazy",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "70e01926-4000-4f9e-87f0-8e6551d88f48",
+          "name": "Double pyramide",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "73473a39-e0e9-4fa0-83e0-6d597703ecf6",
+          "name": "Entrée et accueil",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "27abaa7f-0957-4d59-97a2-d67dffb05d2e",
+          "name": "Espace fumeurs près du mini-golf",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "4210c0c9-3101-4bfb-afb7-45fb2f5a6bdf",
+          "name": "Fort Apache",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "611f8c06-c5a0-4f31-9409-25fcb4867d46",
+          "name": "Grand Pyraccord",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "596974eb-3483-44ff-9ec4-cdaa9ee2b7f4",
+          "name": "Gyrosat",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "8ca9e4eb-5760-4381-bdfd-9c6e660f11ce",
+          "name": "Holly Shop",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "6323ac60-3a4e-40cf-9774-dcddc1d8bad1",
+          "name": "Home Ball",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "3cf07ecb-f439-4951-a7c2-eed606835a08",
+          "name": "Jeux à ressorts",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "ce7d726b-6b89-40a7-8fb0-2a4bfe2dba11",
+          "name": "Jump Box",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "9b32c57d-4ae9-457b-aa7c-6ad15eea19d5",
+          "name": "Kart à pédales",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "04be0f05-a269-48d8-8448-01216c5870c4",
+          "name": "Kids Land",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "d59c099b-f293-4ffb-a7ed-19c19742e7ac",
+          "name": "Kiosque aquatique",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "00905890-0187-49e7-89b5-314f015f10ee",
+          "name": "La Cabane d’Holly",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "name": "La Dune",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "4dafcdb7-7b1e-46d0-aec9-7bf2534e216e",
+              "appliedAtUtc": "2026-11-15T09:59:57.4464923Z"
+            }
+          ]
+        },
+        {
+          "id": "a6370d07-6884-41cf-86b7-ace1ae32fdfc",
+          "name": "La Grange d’Outre-Monde",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "53c53c88-20cc-412a-b2ab-8cc0f39cc48a",
+          "name": "La Gueule du loup",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "92eb785b-1d68-40a5-9f8a-c386bb368e27",
+          "name": "La Jungle",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "21552030-a787-458a-8b8b-7650e0b616e1",
+          "name": "La Pyramide gonflable",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "ba2e7fec-b6cb-4a10-ab82-38f58bd765b1",
+          "name": "La Table d’Holly",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+              "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+            }
+          ]
+        },
+        {
+          "id": "40d1038c-81da-4012-a716-708e99abd190",
+          "name": "Labyrinthe d’Holly",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "024c0d4b-8167-47f6-8e15-6ca22810c1fb",
+          "name": "Le Chapiteau des clowns",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "19344a2e-b190-4cf9-8b86-3727f7de34d4",
+          "name": "Le Cheval gonflable",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "ac51141b-bbec-429c-afa2-cd17c8e2cadb",
+          "name": "Le Duel",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "a75a3ca1-d487-49f3-b7ad-8f1d833008a0",
+          "name": "Le Dôme",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "b9d252b7-4f98-4841-ab5a-e843f1c22ce7",
+          "name": "Le Grand Défi",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "73b8ed10-4065-4895-a12f-809b6a8afd75",
+          "name": "Le Grand Frisson",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "0799fba8-8a5a-44d8-8992-197581904180",
+          "name": "Le Renard",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "8f9f7c3a-0402-408e-9f71-7ea6ce0d6816",
+          "name": "Le Rodéo",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "f2e73641-c59b-4c28-aed0-9475487fe809",
+          "name": "Le Voyage d’Holly",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+              "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+            }
+          ]
+        },
+        {
+          "id": "8bd9a54a-36ae-4256-882a-2dba1852c5dc",
+          "name": "Les Aventuriers",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+          "name": "Les Échasses",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "e39c96a4-a4bc-419b-a0ac-ab956dea44ba",
+              "appliedAtUtc": "2026-11-15T10:02:06.4731156Z"
+            }
+          ]
+        },
+        {
+          "id": "09c3dfac-a2c6-4218-b1cd-a1c2be947dac",
+          "name": "Luge",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "bae597bd-4afe-47e3-b76e-05bd0bb838c6",
+          "name": "L’Arche des bambins",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "49e853d1-446e-428e-ad86-ba16bfefcea8",
+          "name": "L’Envol d’Holly",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "52db5589-2c4c-4d21-bebd-c7eac7e03218",
+          "name": "L’Écureuil",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "6ee6d026-a18b-417e-a6da-3abb8af95984",
+          "name": "L’Équalizer",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "fb84e11a-e735-40c2-ad0f-6a8055cbe456",
+          "name": "Maison Ameco",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "a981df4b-3c53-467c-999b-4dbb48783ccf",
+          "name": "Mini-ferme des animaux",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "0e062cc2-5ba1-454f-952e-5e1048fe0d11",
+          "name": "Mini-golf",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+              "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+            }
+          ]
+        },
+        {
+          "id": "63c20eb0-7db4-406d-aea6-40a4156a7381",
+          "name": "Parcours Adresse Filets",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "86c2067b-b214-4ac0-b891-cce9bbb31f20",
+          "name": "Parcours du combattant",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "69afcdd2-83a1-4e2d-8561-fc6328803561",
+          "name": "Parkings des Naudières",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "5eba71b6-6f01-467c-abbc-03e1c1bfa30c",
+          "name": "Pentagliss",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "49d9fb4d-6348-4582-9e09-d7614e2b3194",
+          "name": "Piscines à balles",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "d683e9e4-60fd-4dde-b6e9-96c75127ec82",
+          "name": "Plage Nantaise",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "61a558f2-50a4-4c40-8636-1489b9da5eaf",
+          "name": "Poney Trek",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+              "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+            }
+          ]
+        },
+        {
+          "id": "ee138650-efee-471a-bb89-90f00f8bc84a",
+          "name": "Pont de corde",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "85105c17-de06-4f23-8b51-e3c23bb88feb",
+          "name": "Pont suspendu",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "278bccc6-e034-4c38-8ae5-78e5350544a6",
+              "appliedAtUtc": "2026-11-15T10:20:50.4292657Z"
+            }
+          ]
+        },
+        {
+          "id": "aca35bfa-65b4-4bf3-861f-62893b848cf7",
+          "name": "Portique Alexia",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "c0f09a62-f888-4099-98b8-aa3812961f91",
+          "name": "Portique double",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "23544d2e-492f-46db-8bca-7af04a8ec0ed",
+          "name": "Portique mixte",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "78b34278-731e-4688-b906-dee02bced803",
+          "name": "Portique nacelle",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "5ff89119-85fa-48d4-a527-20ef0b5ee1a5",
+          "name": "Poste de secours",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "f51d4585-4bf7-48ba-bd9a-156674adacfc",
+          "name": "Pédalo",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "342315d9-477d-4ffd-a77d-fa312b0ffc09",
+          "name": "Roller Coaster",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "085052b9-541a-49e4-9741-8605888961ad",
+          "name": "Tapis volant",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "f404a7f6-befa-4d31-a1a9-0d992bdfcc74",
+          "name": "Terrain multisports",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "b9e0568f-a6d2-463f-8fdb-05648782c6ad",
+          "name": "Tir à l’élastique",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "ab54fafc-dcc0-45d6-9d29-536682868c2f",
+          "name": "Toilettes près de la zone aquatique",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "dabae869-a3e8-430a-b654-d3f7a2445245",
+          "name": "Toilettes près du Poney Trek",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "3ef9ddde-c942-4c89-92d1-c1ec838f54ba",
+          "name": "Tonneau hamster",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "61162355-809c-4119-b15a-d23fa9a387b6",
+          "name": "Tourelle",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "5bdb095a-5264-415f-af0c-eb5663024c99",
+          "name": "Tournesol",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "2ee15bcf-c652-4215-b17a-6538262f14e6",
+          "name": "Trampolines",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+              "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+            }
+          ]
+        },
+        {
+          "id": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+          "name": "Tricycles",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": [
+            {
+              "operationId": "6e56af0c-f7f6-45bb-8c14-cf82c9156e83",
+              "appliedAtUtc": "2026-11-15T10:02:43.2306244Z"
+            }
+          ]
+        },
+        {
+          "id": "95c848be-7a6c-466a-b1bd-2dfa255371f9",
+          "name": "Tyrolienne adulte",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "7d6c925b-75ca-42e0-bf0f-9c88e5bec5ab",
+          "name": "Tyrolienne enfants",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "b5b35100-ae8e-47c8-a8df-925257e13d12",
+          "name": "Vélos drôles",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "53c88722-be00-44e4-bc11-624624d97220",
+          "name": "Zone 51",
+          "isVisible": false,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "926b0b14-a6ae-4575-babf-8535bf0da7f9",
+          "name": "Zone aquatique — Aquazone et Aquaslide",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        },
+        {
+          "id": "12b1910a-7ef4-41f5-a92d-9961fd6ae8a3",
+          "name": "Zone de spectacles",
+          "isVisible": true,
+          "localWorkingStateDifferingFields": [],
+          "descriptionMatchesSuccessfulApply": []
+        }
+      ],
+      "publicItemDescriptionsWithoutApplyMatch": [
+        "442449c0-92ab-4e17-b051-3e2434c42cae",
+        "580d998c-1af2-4eac-b9db-becbbea3ff91",
+        "822de895-75c5-4527-b485-bd2dc19c8cf3",
+        "f0512393-88a0-4e85-bf4e-cc6d7ff8e808",
+        "70e01926-4000-4f9e-87f0-8e6551d88f48",
+        "73473a39-e0e9-4fa0-83e0-6d597703ecf6",
+        "27abaa7f-0957-4d59-97a2-d67dffb05d2e",
+        "4210c0c9-3101-4bfb-afb7-45fb2f5a6bdf",
+        "611f8c06-c5a0-4f31-9409-25fcb4867d46",
+        "8ca9e4eb-5760-4381-bdfd-9c6e660f11ce",
+        "ce7d726b-6b89-40a7-8fb0-2a4bfe2dba11",
+        "9b32c57d-4ae9-457b-aa7c-6ad15eea19d5",
+        "04be0f05-a269-48d8-8448-01216c5870c4",
+        "d59c099b-f293-4ffb-a7ed-19c19742e7ac",
+        "00905890-0187-49e7-89b5-314f015f10ee",
+        "a6370d07-6884-41cf-86b7-ace1ae32fdfc",
+        "40d1038c-81da-4012-a716-708e99abd190",
+        "a75a3ca1-d487-49f3-b7ad-8f1d833008a0",
+        "73b8ed10-4065-4895-a12f-809b6a8afd75",
+        "0799fba8-8a5a-44d8-8992-197581904180",
+        "8f9f7c3a-0402-408e-9f71-7ea6ce0d6816",
+        "8bd9a54a-36ae-4256-882a-2dba1852c5dc",
+        "09c3dfac-a2c6-4218-b1cd-a1c2be947dac",
+        "49e853d1-446e-428e-ad86-ba16bfefcea8",
+        "a981df4b-3c53-467c-999b-4dbb48783ccf",
+        "63c20eb0-7db4-406d-aea6-40a4156a7381",
+        "86c2067b-b214-4ac0-b891-cce9bbb31f20",
+        "69afcdd2-83a1-4e2d-8561-fc6328803561",
+        "5eba71b6-6f01-467c-abbc-03e1c1bfa30c",
+        "49d9fb4d-6348-4582-9e09-d7614e2b3194",
+        "d683e9e4-60fd-4dde-b6e9-96c75127ec82",
+        "5ff89119-85fa-48d4-a527-20ef0b5ee1a5",
+        "f51d4585-4bf7-48ba-bd9a-156674adacfc",
+        "342315d9-477d-4ffd-a77d-fa312b0ffc09",
+        "b9e0568f-a6d2-463f-8fdb-05648782c6ad",
+        "ab54fafc-dcc0-45d6-9d29-536682868c2f",
+        "dabae869-a3e8-430a-b654-d3f7a2445245",
+        "95c848be-7a6c-466a-b1bd-2dfa255371f9",
+        "7d6c925b-75ca-42e0-bf0f-9c88e5bec5ab",
+        "926b0b14-a6ae-4575-babf-8535bf0da7f9",
+        "12b1910a-7ef4-41f5-a92d-9961fd6ae8a3"
+      ],
+      "workingItemsDifferences": [],
+      "priorFinalPreviews": [
+        {
+          "historyId": "6243fdc7-b289-43d0-bfdc-6093a8cf0c15",
+          "createdAtUtc": "2026-10-22T00:03:19.739Z",
+          "counts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 84,
+            "warnings": 0,
+            "errors": 0
+          },
+          "metadata": {
+            "source": "authorized-source-label-editorial-correction",
+            "step": "09-authorized-final-adjustments",
+            "notes": "Private targeted corrections after fresh export: original 2017 brochure photograph illustrates Bungy history/article; source date stated, not misrepresented as closure/sale event photograph. Five investment summaries, two sale-offer summaries and one article opening sentence rewritten after whole-corpus repetition review. No event factual/date/source/visibility changes."
+          }
+        },
+        {
+          "historyId": "e26cba59-08f7-418e-96ad-00fd88bfd7d4",
+          "createdAtUtc": "2026-10-22T00:03:07.032Z",
+          "counts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 108,
+            "warnings": 0,
+            "errors": 0
+          },
+          "metadata": {
+            "source": "authorized-source-label-editorial-correction",
+            "step": "09-authorized-final-adjustments",
+            "notes": "Private targeted corrections after fresh export: original 2017 brochure photograph illustrates Bungy history/article; source date stated, not misrepresented as closure/sale event photograph. Five investment summaries, two sale-offer summaries and one article opening sentence rewritten after whole-corpus repetition review. No event factual/date/source/visibility changes."
+          }
+        }
+      ],
+      "allAppliedReceipts": [
+        {
+          "operationId": "3a7370e6-abd6-4d02-875d-70f0609dd81a",
+          "appliedAtUtc": "2026-10-21T23:59:49.5608177Z"
+        },
+        {
+          "operationId": "aa868363-d408-47d9-a163-85030a93deb6",
+          "appliedAtUtc": "2026-10-21T23:58:01.4935128Z"
+        },
+        {
+          "operationId": "25b90433-1d53-496c-be81-5822ae6dfe3a",
+          "appliedAtUtc": "2026-10-21T23:57:05.2749639Z"
+        },
+        {
+          "operationId": "15775faf-b70d-4309-abd9-eb9744479f07",
+          "appliedAtUtc": "2026-10-21T23:52:31.6796481Z"
+        },
+        {
+          "operationId": "84585c66-5ec6-453d-86b3-484a681ce5ff",
+          "appliedAtUtc": "2026-10-21T23:47:29.9834635Z"
+        },
+        {
+          "operationId": "474175c3-ee23-40b0-9f85-1c977fbe7b8c",
+          "appliedAtUtc": "2026-10-21T23:46:15.0874644Z"
+        },
+        {
+          "operationId": "75cd7e80-0c23-4249-b3a8-c0ed63754f92",
+          "appliedAtUtc": "2026-10-21T23:40:40.8847138Z"
+        },
+        {
+          "operationId": "22e757d0-b160-4b02-b460-2db8aed7711a",
+          "appliedAtUtc": "2026-10-20T01:02:53.2346817Z"
+        },
+        {
+          "operationId": "29810d3b-f3a0-403a-b847-4422f0bdc8bf",
+          "appliedAtUtc": "2026-10-20T00:53:40.793898Z"
+        },
+        {
+          "operationId": "2c725274-09ee-474a-b753-bff54027d250",
+          "appliedAtUtc": "2026-10-20T00:52:39.9616233Z"
+        },
+        {
+          "operationId": "259b85d0-282d-4857-b0de-f69e07d6318b",
+          "appliedAtUtc": "2026-10-20T00:49:09.8798686Z"
+        },
+        {
+          "operationId": "bd71d1b9-dfe5-4900-bb2d-350f7621b103",
+          "appliedAtUtc": "2026-10-20T00:47:22.8552595Z"
+        },
+        {
+          "operationId": "a34a21b9-e9f0-47da-905a-5676fb8c9ed8",
+          "appliedAtUtc": "2026-10-20T00:46:20.1437248Z"
+        },
+        {
+          "operationId": "905505b4-fc01-4312-a994-e2aef75a9749",
+          "appliedAtUtc": "2026-10-20T00:43:50.4301937Z"
+        },
+        {
+          "operationId": "d39580ba-3191-499d-a127-ab88a6682794",
+          "appliedAtUtc": "2026-10-20T00:41:34.2969869Z"
+        },
+        {
+          "operationId": "d45799e8-dbb4-4c4b-8a43-81987fcdb28e",
+          "appliedAtUtc": "2026-10-20T00:38:54.8979038Z"
+        },
+        {
+          "operationId": "dbd37cc0-83fa-4154-bbef-9c1d7ba4e4f6",
+          "appliedAtUtc": "2026-10-20T00:34:00.2910101Z"
+        },
+        {
+          "operationId": "4dafcdb7-7b1e-46d0-aec9-7bf2534e216e",
+          "appliedAtUtc": "2026-11-15T09:59:57.4464923Z"
+        },
+        {
+          "operationId": "e39c96a4-a4bc-419b-a0ac-ab956dea44ba",
+          "appliedAtUtc": "2026-11-15T10:02:06.4731156Z"
+        },
+        {
+          "operationId": "278bccc6-e034-4c38-8ae5-78e5350544a6",
+          "appliedAtUtc": "2026-11-15T10:20:50.4292657Z"
+        },
+        {
+          "operationId": "ad34eb09-de1c-46f6-815e-9aa102612630",
+          "appliedAtUtc": "2026-11-15T08:30:32.1634788Z"
+        },
+        {
+          "operationId": "8b8d629c-3e43-4d87-ac79-e564e7e802be",
+          "appliedAtUtc": "2026-11-15T10:41:26.1371433Z"
+        },
+        {
+          "operationId": "6e56af0c-f7f6-45bb-8c14-cf82c9156e83",
+          "appliedAtUtc": "2026-11-15T10:02:43.2306244Z"
+        }
+      ]
+    },
+    "workingTextReconciliation": {
+      "park": {
+        "currentLocalizedFields": 16,
+        "workingLocalizedFields": 8,
+        "changed": [],
+        "missingFromWorking": [
+          "park.descriptions[fr].fr",
+          "park.descriptions[en].en",
+          "park.descriptions[de].de",
+          "park.descriptions[nl].nl",
+          "park.descriptions[it].it",
+          "park.descriptions[es].es",
+          "park.descriptions[pl].pl",
+          "park.descriptions[pt].pt"
+        ]
+      },
+      "items": {
+        "currentLocalizedFields": 992,
+        "workingLocalizedFields": 992,
+        "changed": [],
+        "missingFromWorking": []
+      },
+      "images": {
+        "currentLocalizedFields": 1344,
+        "workingLocalizedFields": 1344,
+        "changed": [],
+        "missingFromWorking": []
+      },
+      "history": {
+        "currentLocalizedFields": 904,
+        "workingLocalizedFields": 904,
+        "changed": [],
+        "missingFromWorking": []
+      },
+      "zones": {
+        "currentLocalizedFields": 96,
+        "workingLocalizedFields": 0,
+        "changed": [],
+        "missingFromWorking": [
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[fr].fr",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[en].en",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[de].de",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[nl].nl",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[it].it",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[es].es",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[pl].pl",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].names[pt].pt",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[fr].fr",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[en].en",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[de].de",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[nl].nl",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[it].it",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[es].es",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[pl].pl",
+          "zones[55f75d22-bd3b-473b-adb2-439e9465ec56].descriptions[pt].pt",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[fr].fr",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[en].en",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[de].de",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[nl].nl",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[it].it",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[es].es",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[pl].pl",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].names[pt].pt",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[fr].fr",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[en].en",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[de].de",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[nl].nl",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[it].it",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[es].es",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[pl].pl",
+          "zones[29630ce4-8d6a-4557-8610-35e4a087088b].descriptions[pt].pt",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[fr].fr",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[en].en",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[de].de",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[nl].nl",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[it].it",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[es].es",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[pl].pl",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].names[pt].pt",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[fr].fr",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[en].en",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[de].de",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[nl].nl",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[it].it",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[es].es",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[pl].pl",
+          "zones[b26d480b-1a93-42b2-a193-97f648316192].descriptions[pt].pt",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[fr].fr",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[en].en",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[de].de",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[nl].nl",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[it].it",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[es].es",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[pl].pl",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].names[pt].pt",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[fr].fr",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[en].en",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[de].de",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[nl].nl",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[it].it",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[es].es",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[pl].pl",
+          "zones[f4e8834b-4517-44e4-ad61-31f86d4e8a73].descriptions[pt].pt",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[fr].fr",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[en].en",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[de].de",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[nl].nl",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[it].it",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[es].es",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[pl].pl",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].names[pt].pt",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[fr].fr",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[en].en",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[de].de",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[nl].nl",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[it].it",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[es].es",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[pl].pl",
+          "zones[18765d38-c768-4332-b9ea-5318f27886a4].descriptions[pt].pt",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[fr].fr",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[en].en",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[de].de",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[nl].nl",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[it].it",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[es].es",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[pl].pl",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].names[pt].pt",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[fr].fr",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[en].en",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[de].de",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[nl].nl",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[it].it",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[es].es",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[pl].pl",
+          "zones[7ab41278-d435-4c3a-a038-ac60ef353201].descriptions[pt].pt"
+        ]
+      },
+      "references": {
+        "currentLocalizedFields": 32,
+        "workingLocalizedFields": 32,
+        "changed": [],
+        "missingFromWorking": []
+      }
+    },
+    "shortDescriptionGaps": "Dune,Échasses,Tricycles retain two specific factualparagraphs after researched sources; no paddedhistory/dates/model/restrictions/currentstatus. Babyfoot appearance2016 and laterpractice2026 distinguished."
+  },
+  "structuralCorpus": {
+    "auditExportedAtUtc": "2026-11-15T15:55:49.0236759Z",
+    "sha256": "580e8c1d2469acae463b8a64a8d493aab2d171a869bf49e97873d20afa82d981",
+    "localizedFields": 5224,
+    "encodingIssues": [],
+    "longSequenceCandidates": [],
+    "counts": {
+      "items": 84,
+      "visibleItems": 48,
+      "images": 56,
+      "facts": 31
+    }
+  },
+  "sourceProofs": [
+    "naudieres-dune-description-20261115.json",
+    "naudieres-dune-photo-20261115.json",
+    "naudieres-dune-wide-photo-20261115.json",
+    "naudieres-echasses-description-20261115.json",
+    "naudieres-tricycles-description-20261115.json",
+    "naudieres-babyfoot-description-20261115.json",
+    "naudieres-acquisition-2020-20261115.json"
+  ],
+  "images": {
+    "ids": [
+      "373575c2d2fb421b8b154cb99742af48",
+      "341b0e55a14f422fb4262d7c9aaf6e9e"
+    ],
+    "originalPaths": [
+      "parallel-inventory-20261115/gonflable-dune-official.jpg",
+      "parallel-inventory-20261115/aventuriers-gonflables2.jpg"
+    ],
+    "differentViews": true,
+    "photoDatesUnknown": true,
+    "noReimport": true,
+    "eventImageFallback": "Existinggeneralparkphotograph457a3953036c404c88852f67a976048c remains contextual, not falsely described as a photograph of the2020acquisition."
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T15:59:29.5886150Z",
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T15:59:30.6955344Z",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 108,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    }
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T16:00:28.8302899Z",
+    "result": {
+      "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+      "parkName": "Parc des Naudières",
+      "factCount": 109,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1970,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 23,
+          "sourcedResourceCount": 23,
+          "publishedResourceCount": 22,
+          "subjectCount": 16,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 2
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 29
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 78
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 29,
+        "sourcedFactCount": 29,
+        "majorFactCount": 17,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T16:00:26.8398989Z"
+  },
+  "preview": {
+    "operationId": "e73ca171-74d4-463e-8378-752cd04acaf2",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:58:55.8851577Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "b26d480b-1a93-42b2-a193-97f648316192",
+        "entityKey": "b26d480b-1a93-42b2-a193-97f648316192",
+        "displayName": "Gonflables",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "entityKey": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "displayName": "Exploration",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "entityKey": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "displayName": "Les Échasses",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "entityKey": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "displayName": "Tricycles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "341b0e55a14f422fb4262d7c9aaf6e9e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "373575c2d2fb421b8b154cb99742af48",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f56ec4a1-8c18-45a4-a5ab-2a1bf6876571",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "initialPreviewWarningResolution": {
+    "unappliedWarnings": [
+      "ZoneKey 'b26d480b-1a93-42b2-a193-97f648316192' non résolue pour l'élément 'Baby-foot humain'.",
+      "ZoneKey 'b26d480b-1a93-42b2-a193-97f648316192' non résolue pour l'élément 'La Dune'.",
+      "ZoneKey '18765d38-c768-4332-b9ea-5318f27886a4' non résolue pour l'élément 'Tricycles'."
+    ],
+    "resolution": "Declared two existing zone IDs/keys/names in scope graph; finalPreview zero warnings, zonesunchanged. No AllowWarnings override."
+  },
+  "countsBefore": {
+    "items": 84,
+    "publicItems": 48,
+    "privateItems": 36,
+    "describedItems": 56,
+    "media": 56,
+    "publicMedia": 52,
+    "zones": 6,
+    "maps": 8,
+    "publicFacts": 29,
+    "privateFacts": 2,
+    "articles": 4
+  },
+  "expectedAfter": {
+    "publicItems": 52,
+    "privateItems": 32,
+    "publicMedia": 54,
+    "privateMedia": 2,
+    "publicFacts": 30,
+    "privateFacts": 1
+  },
+  "remainingGaps": [
+    "32privateitems afterthisscope, including unreconciledPontdecorde, MaisonAmeco contradictoryminimumage10versusunder5, and historicalidentities.",
+    "Unknown lifecycle remains Unknown on fourpublished historical/currentlyunconfirmeditems; no invention of current operation or dates.",
+    "Preserveeightmaps2017/2020–2026 and prior244daycalendar2026; no2027horizoninvention.",
+    "FacebookexistingPublishedmustberesolvedwithoutduplicate; externalvisibilityseparate.",
+    "Globalphoto/geolocationgaps retained; no completedinventory claimed."
+  ]
+}

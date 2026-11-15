@@ -2,33 +2,23 @@
   "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
   "owner": "Conversation France",
-  "updatedAtUtc": "2026-11-15T10:44:17.323497+00:00",
+  "updatedAtUtc": "2026-11-15T16:17:23.188722+00:00",
   "status": "partial",
-  "lastActualIntegrationAtUtc": "2026-11-15T10:41:26.1371433Z",
-  "lastApplyOperationId": "8b8d629c-3e43-4d87-ac79-e564e7e802be",
+  "lastActualIntegrationAtUtc": "2026-11-15T16:06:20.1478817Z",
+  "lastApplyOperationId": "b118019c-12e6-4976-a1c6-3f8add99db53",
   "localDirectory": "/workspace/france-historical-20261114/naudieres",
-  "scope": "Acquisition 2020 privée, trois fiches privées et deux photos de La Dune enrichies. Pont suspendu public : 32 textes corrigés sur la fiche, deux résumés historiques et un paragraphe d’article ; 32 pages vérifiées dans huit langues. Aucun audit final ni nouvelle opération de visibilité. Baby-foot humain privé désormais décrit en huit langues, configuration2016 distinguée de pratique2026.",
+  "scope": "Quatre nouvelles fiches, deux photos et acquisition2020 publiés et contrôlés8langues; globalpartial pour32lieuxprivés et défautsapp/visibilitéFacebook.",
   "counts": {
     "items": 84,
-    "publicItems": 48,
-    "legacyHistoryEvents": 31,
-    "canonicalPublishedFacts": 29,
-    "canonicalDraftFacts": 2,
-    "canonicalRetractedRevisions": 78,
-    "describedItemsEightLanguages": 56,
+    "publicItems": 52,
+    "privateItems": 32,
     "media": 56,
-    "publicMedia": 52,
-    "privateMedia": 4,
-    "publicOfficialMapYears": [
-      2026,
-      2025,
-      2024,
-      2023,
-      2022,
-      2021,
-      2020,
-      2017
-    ]
+    "publicMedia": 54,
+    "privateMedia": 2,
+    "publicFacts": 30,
+    "privateFacts": 1,
+    "articles": 4,
+    "maps": 8
   },
   "currentCompleteness": {
     "result": {
@@ -114,7 +104,15 @@
     "naudieres-tricycles-research-20261115.json",
     "naudieres-pont-correction-20261115.json",
     "naudieres-pont-public-followup-20261115.json",
-    "naudieres-babyfoot-description-20261115.json"
+    "naudieres-babyfoot-description-20261115.json",
+    "naudieres-publication-followup-20261115.json",
+    "naudieres-publication-public-checks-20261115.json",
+    "naudieres-publication-scope-audit-20261115.json",
+    "naudieres-publication-scope-audit-export-20261115.json",
+    "naudieres-publication-export-20261115.json",
+    "naudieres-01-publish-images-20261115.json",
+    "naudieres-02-publish-items-history-20261115.json",
+    "naudieres-published-state-20261115.json"
   ],
   "remaining": [
     "Maison Ameco : article moinsde5ans datémai2025 contre catalogue minimum10ans non daté ; brochure2026/règlement ne tranchent pas. Aucun âge réécrit.",
@@ -125,7 +123,7 @@
     "Pont de corde privé conservé distinct : relation exacte avec le Pont suspendu et évolution entre 2017/2018 et la nouveauté annoncée2023 non prouvées.",
     "Baby-foot humain : notice historique rédigée, statut Unknown et visibilité privée conservés. Photo originale2,43Mo supérieure limiteofficielle960Kio, aucune compression arbitraire."
   ],
-  "fullAuditExportPerformedThisRecovery": false,
+  "fullAuditExportPerformedThisRecovery": true,
   "facebookPublicationPerformed": false,
   "facebookEvidence": "france-facebook-reconciliation-20261115.json",
   "babyfootIdempotence": {
@@ -169,5 +167,229 @@
     ],
     "warnings": [],
     "errors": []
-  }
+  },
+  "newPublicationPerformed": true,
+  "scopeAuditProof": "naudieres-publication-scope-audit-20261115.json",
+  "publicationOperations": [
+    {
+      "operationId": "96f73c0a-01eb-4a42-8fa1-08751601e3a7",
+      "appliedAtUtc": "2026-11-15T16:05:45.5153502Z",
+      "proof": "naudieres-01-publish-images-20261115.json"
+    },
+    {
+      "operationId": "b118019c-12e6-4976-a1c6-3f8add99db53",
+      "appliedAtUtc": "2026-11-15T16:06:20.1478817Z",
+      "proof": "naudieres-02-publish-items-history-20261115.json"
+    }
+  ],
+  "publicFollowupEvidence": "naudieres-publication-followup-20261115.json",
+  "actualCompleteness": {
+    "startedAtUtc": "2026-11-15T16:07:38.6680326Z",
+    "receivedAtUtc": "2026-11-15T16:07:39.6241606Z",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 108,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness"
+  },
+  "historyDiagnosticsAfterPublication": {
+    "result": {
+      "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+      "parkName": "Parc des Naudières",
+      "factCount": 110,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1970,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 23,
+          "sourcedResourceCount": 23,
+          "publishedResourceCount": 23,
+          "subjectCount": 16,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 1
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 30
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 79
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 30,
+        "sourcedFactCount": 30,
+        "majorFactCount": 18,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T16:08:14.8576856Z",
+    "receivedAtUtc": "2026-11-15T16:08:16.5223260Z"
+  },
+  "facebookAfterPublication": {
+    "official": {
+      "receivedAtUtc": "2026-11-15T16:08:35.9866213Z",
+      "startedAtUtc": "2026-11-15T16:08:35.2592463Z",
+      "action": "ResolveFacebookPublication",
+      "result": {
+        "url": "https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres",
+        "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc des Naudières ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc des Naudières! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+        "targetKind": "Park",
+        "targetName": "Parc des Naudières",
+        "imageOwnerType": "Park",
+        "imageOwnerId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "f2edfc32fa2246c1acf885957c15d09f",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124053079424431",
+        "images": {
+          "data": [
+            {
+              "id": "f78b8182d9fa4b09b04c2d764dac8ab7",
+              "label": "Les rangées de parasols occupent le sable à gauche ; les grandes glissades et les promeneurs longent l’autre côté de la plage.",
+              "isCurrent": false,
+              "width": 1536,
+              "height": 234
+            },
+            {
+              "id": "9d054b0a2d3e47f19b73b7c6b7e1820a",
+              "label": "Aux Naudières, le sable blanc et les rangées de transats côtoient les courbes du Roller Coaster.",
+              "isCurrent": true,
+              "width": 2560,
+              "height": 1707
+            },
+            {
+              "id": "fc39a491cecd42eb98e732ebee20cea3",
+              "label": "Le mini-golf rouge, la plage claire et le circuit orange dessinent des espaces distincts autour des allées ; le logo est ajouté à la photographie.",
+              "isCurrent": false,
+              "width": 2048,
+              "height": 1365
+            },
+            {
+              "id": "23ff5455a4d54bceaa198504fcab4e7f",
+              "label": "Entre l’eau et les arbres, la promenade longe les pédalos puis le décor bleu de L’Envol d’Holly.",
+              "isCurrent": false,
+              "width": 600,
+              "height": 400
+            },
+            {
+              "id": "457a3953036c404c88852f67a976048c",
+              "label": "Cette vue des allées réunit les anciennes figures de hiboux, les couleurs du Dôme et les filets de l’aire de saut.",
+              "isCurrent": false,
+              "width": 600,
+              "height": 400
+            },
+            {
+              "id": "9945a59472ae4023aa658f2695121038",
+              "label": "Le visuel de la première édition de HollyWeen associe la Grange d’Outre-Monde, le village, la quête et la soirée d’Halloween.",
+              "isCurrent": false,
+              "width": 1920,
+              "height": 400
+            }
+          ],
+          "pagination": {
+            "totalItems": 6,
+            "totalPages": 1,
+            "currentPage": 1,
+            "itemsPerPage": 6
+          }
+        }
+      }
+    },
+    "anonymous": {
+      "url": "https://www.facebook.com/1285475681307050/posts/122124053079424431",
+      "mode": "Anonymous public Chromium; optional cookies declined when offered; no login, no publication.",
+      "optionalCookiesDeclined": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.facebook.com/61592732938801/posts/122124053079424431/",
+      "body": "Log in\nForgotten account?\nThis content isn't available at the moment\nWhen this happens, it's usually because the owner only shared it with a small group of people or changed who can see it, or it's been deleted.\nGo to Feed\nGo back\nVisit Help Centre",
+      "bodySha256": "90df80c47e6be14eeef0018eec3d5875a96adcd2e397bcd3d40f137c62f63f2e",
+      "checkedAtUtc": "2026-11-15T16:10:18.413467+00:00"
+    },
+    "newSend": false,
+    "retry": false,
+    "visibilityConfirmed": false,
+    "explanation": "Existing official Published confirmed, anonymous link unavailable; no Failed record, no duplicate. Existing connected-owner question remains pending."
+  },
+  "remainingPublicDefects": [
+    {
+      "kind": "historyNarrative",
+      "observed": "Acquisition février2020: année, mois, OwnerChange et3sources visibles, mais titres/résumés absents des8frises; réponsepubliqueobservée narrative:null. Les4articles restent lisibles.",
+      "action": "Correction de projection applicative distincte; aucun faux changement de type ou Apply aveugle."
+    },
+    {
+      "kind": "legacyOtherBadges",
+      "observed": "Deux anciens événements affichent OTHER dans les frises, dont les langues non anglaises; types et sources conservés.",
+      "action": "Localisation applicative distincte; aucune falsification de type."
+    },
+    {
+      "kind": "itemMainPhotoAltLocale",
+      "observed": "La fiche LaDune affiche son image principale avec alt anglais dans7langues non anglaises. La galerie dédiée restitue correctement les deux alt/captions en8langues.",
+      "action": "Corriger séparément la sélection de langue de la photo principale; aucun réimport."
+    }
+  ],
+  "globalCompletion": false
 }

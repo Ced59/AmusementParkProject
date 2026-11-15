@@ -1,0 +1,802 @@
+{
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "outcome": "partial",
+  "scopeAudit": "naudieres-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "auditAtUtc": "2026-11-15T15:55:49.0236759Z",
+    "publicationAtUtc": "2026-11-15T16:04:37.6955133Z",
+    "equalExceptMetadata": true,
+    "auditSha256": "580e8c1d2469acae463b8a64a8d493aab2d171a869bf49e97873d20afa82d981",
+    "publicationSha256": "45bd8467b3acfb5649dbe9a2458ededa0e21b94e448fd1b24d468f4a4387c5d7"
+  },
+  "document": {
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "park": {
+        "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "key": "park",
+        "name": "Parc des Naudières"
+      },
+      "items": [
+        {
+          "key": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+          "id": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+          "name": "Baby-foot humain",
+          "category": "Attraction",
+          "type": "Game",
+          "subtype": null,
+          "zoneId": "b26d480b-1a93-42b2-a193-97f648316192",
+          "zoneKey": "b26d480b-1a93-42b2-a193-97f648316192",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des rangées rouges et bleues</h2><p>En juin 2016, le Baby-foot humain occupait une aire pavée, bordée de boudins gonflables verts et orange. Au fond, un but orange et bleu se détachait sur les filets entourant le terrain.</p><p>Les lignes rouges et bleues traversaient ce petit terrain entouré d’arbres. Les enfants y prenaient eux-mêmes la place des figurines, face à leurs camarades.</p><h2>Un jeu collectif encore pratiqué en 2026</h2><p>À l’été 2026, le baby-foot humain figurait toujours parmi les activités partagées lors des sorties aux Naudières.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Red and blue rows</h2><p>In June 2016, Baby-foot humain occupied a paved area edged with green and orange inflatable sides. An orange-and-blue goal stood at the far end, against the netting around the pitch.</p><p>Red and blue rows crossed this small, tree-lined playing area. The children themselves took the places of the table-football figures, facing their friends.</p><h2>A group game still played in 2026</h2><p>In summer 2026, human table football was still among the activities shared on outings to Les Naudières.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Rote und blaue Reihen</h2><p>Im Juni 2016 lag das Baby-foot humain auf einer gepflasterten Fläche mit grünen und orangefarbenen aufblasbaren Seitenwänden. Am hinteren Ende hob sich ein orange-blaues Tor vor den Netzen rund um das Spielfeld ab.</p><p>Rote und blaue Reihen durchzogen das kleine, von Bäumen umgebene Spielfeld. Die Kinder nahmen selbst die Plätze der Kickerfiguren ein und standen ihren Freunden gegenüber.</p><h2>Auch 2026 noch gemeinsam gespielt</h2><p>Im Sommer 2026 gehörte der Menschenkicker weiterhin zu den gemeinsamen Aktivitäten bei Ausflügen nach Les Naudières.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Rode en blauwe rijen</h2><p>In juni 2016 lag Baby-foot humain op een betegeld terrein, omgeven door groene en oranje opblaasbare randen. Achteraan stak een oranje-blauw doel af tegen de netten rond het speelveld.</p><p>Rode en blauwe rijen liepen dwars over dit kleine veld tussen de bomen. De kinderen namen zelf de plaats van de tafelvoetbalpoppetjes in, tegenover hun vrienden.</p><h2>Ook in 2026 nog samen spelen</h2><p>In de zomer van 2026 hoorde menselijk tafelvoetbal nog steeds bij de gezamenlijke activiteiten tijdens uitstapjes naar Les Naudières.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>File rosse e blu</h2><p>Nel giugno 2016, il Baby-foot humain occupava un’area pavimentata, delimitata da bordi gonfiabili verdi e arancioni. Sul fondo, una porta arancione e blu risaltava davanti alle reti che circondavano il campo.</p><p>File rosse e blu attraversavano questo piccolo campo fra gli alberi. I bambini prendevano essi stessi il posto degli omini del calcio balilla, di fronte ai compagni.</p><h2>Un gioco di gruppo ancora praticato nel 2026</h2><p>Nell’estate 2026, il calcio balilla umano figurava ancora fra le attività condivise durante le gite a Les Naudières.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Filas rojas y azules</h2><p>En junio de 2016, el Baby-foot humain ocupaba una zona pavimentada, delimitada por bordes hinchables verdes y naranjas. Al fondo, una portería naranja y azul destacaba ante las redes que rodeaban el campo.</p><p>Filas rojas y azules atravesaban este pequeño terreno entre los árboles. Los propios niños ocupaban el lugar de las figuras del futbolín, frente a sus compañeros.</p><h2>Un juego colectivo todavía practicado en 2026</h2><p>En el verano de 2026, el futbolín humano seguía entre las actividades compartidas durante las excursiones a Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Czerwone i niebieskie rzędy</h2><p>W czerwcu 2016 roku Baby-foot humain zajmował brukowany plac otoczony zielonymi i pomarańczowymi dmuchanymi bandami. Z tyłu pomarańczowo-niebieska bramka wyróżniała się na tle siatek wokół boiska.</p><p>Czerwone i niebieskie rzędy przecinały to niewielkie boisko wśród drzew. Dzieci same zajmowały miejsca figurek z piłkarzyków, naprzeciw swoich kolegów.</p><h2>Wspólna zabawa także w 2026 roku</h2><p>Latem 2026 roku ludzkie piłkarzyki nadal należały do wspólnych zajęć podczas wycieczek do Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Filas vermelhas e azuis</h2><p>Em junho de 2016, o Baby-foot humain ocupava uma área pavimentada, delimitada por bordas insufláveis verdes e laranja. Ao fundo, uma baliza laranja e azul destacava-se diante das redes que rodeavam o campo.</p><p>Filas vermelhas e azuis atravessavam este pequeno campo entre as árvores. As próprias crianças ocupavam o lugar dos bonecos dos matraquilhos, frente aos colegas.</p><h2>Um jogo coletivo ainda praticado em 2026</h2><p>No verão de 2026, os matraquilhos humanos continuavam entre as atividades partilhadas durante as visitas ao parque Les Naudières.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": true,
+          "adminReviewStatus": "Validated",
+          "latitude": null,
+          "longitude": null
+        },
+        {
+          "key": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "id": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "name": "La Dune",
+          "category": "Attraction",
+          "type": "Playground",
+          "subtype": null,
+          "zoneId": "b26d480b-1a93-42b2-a193-97f648316192",
+          "zoneKey": "b26d480b-1a93-42b2-a193-97f648316192",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un soleil au-dessus du petit désert</h2><p>Un soleil souriant aux rayons jaunes surplombe l’entrée de La Dune. Autour du nom, de grandes arches bleues encadrent des bandes jaunes décorées de cactus et d’un serpent rouge. La base orangée donne encore plus d’éclat à ce décor de désert dessiné.</p><p>À l’intérieur, un monticule arrondi occupe l’espace derrière les filets. Les arbres et une petite clôture de bois entourent le gonflable, dont les couleurs vives contrastent avec le cadre ombragé des Naudières.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A smiling sun above a little desert</h2><p>A smiling sun with yellow rays rises above the entrance to La Dune. Around the name, broad blue arches frame yellow bands decorated with cacti and a red snake. The orange base adds another bright colour to this cartoon desert setting.</p><p>Inside, a rounded mound fills the space behind the netting. Trees and a low wooden fence surround the inflatable, its vivid colours standing out in the shade of Les Naudières.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine lächelnde Sonne über der kleinen Wüste</h2><p>Über dem Eingang von La Dune thront eine lächelnde Sonne mit gelben Strahlen. Große blaue Bögen umrahmen den Namen und gelbe Streifen mit Kakteen und einer roten Schlange. Der orangefarbene Sockel bringt eine weitere kräftige Farbe in diese gezeichnete Wüstenwelt.</p><p>Im Inneren liegt hinter den Netzen ein rundlicher Hügel. Bäume und ein niedriger Holzzaun umgeben das aufblasbare Spielgerät, dessen leuchtende Farben sich von der schattigen Umgebung in Les Naudières abheben.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een lachende zon boven een kleine woestijn</h2><p>Boven de ingang van La Dune prijkt een lachende zon met gele stralen. Rond de naam omlijsten grote blauwe bogen de gele stroken met cactussen en een rode slang. De oranje basis geeft nog meer kleur aan deze getekende woestijnwereld.</p><p>Binnen ligt achter de netten een ronde heuvel. Bomen en een laag houten hek omringen het luchtkussen, waarvan de felle kleuren afsteken tegen de schaduwrijke omgeving van Les Naudières.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un sole sorridente sopra un piccolo deserto</h2><p>Un sole sorridente dai raggi gialli sovrasta l’ingresso della Dune. Attorno al nome, grandi archi blu incorniciano fasce gialle decorate con cactus e un serpente rosso. La base arancione aggiunge un altro colore acceso a questo deserto disegnato.</p><p>All’interno, un rialzo arrotondato occupa lo spazio dietro le reti. Gli alberi e una bassa staccionata di legno circondano il gonfiabile, i cui colori vivaci risaltano nell’ambiente ombreggiato di Les Naudières.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un sol sonriente sobre un pequeño desierto</h2><p>Un sol sonriente de rayos amarillos corona la entrada de La Dune. Alrededor del nombre, grandes arcos azules enmarcan franjas amarillas decoradas con cactus y una serpiente roja. La base naranja añade otro color vivo a este desierto dibujado.</p><p>En el interior, un montículo redondeado ocupa el espacio detrás de las redes. Los árboles y una valla baja de madera rodean el hinchable, cuyos colores intensos destacan en el entorno sombreado de Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Uśmiechnięte słońce nad małą pustynią</h2><p>Nad wejściem do La Dune góruje uśmiechnięte słońce z żółtymi promieniami. Wokół nazwy wielkie niebieskie łuki otaczają żółte pasy ozdobione kaktusami i czerwonym wężem. Pomarańczowa podstawa dodaje kolejny żywy kolor tej rysunkowej pustyni.</p><p>Wewnątrz, za siatkami, znajduje się zaokrąglony pagórek. Drzewa i niski drewniany płotek otaczają dmuchaną konstrukcję, której jaskrawe barwy wyróżniają się w zacienionym otoczeniu Les Naudières.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um sol sorridente sobre um pequeno deserto</h2><p>Um sol sorridente de raios amarelos ergue-se sobre a entrada de La Dune. À volta do nome, grandes arcos azuis enquadram faixas amarelas decoradas com catos e uma serpente vermelha. A base laranja acrescenta mais uma cor viva a este deserto desenhado.</p><p>No interior, um monte arredondado ocupa o espaço atrás das redes. As árvores e uma pequena vedação de madeira rodeiam o insuflável, cujas cores intensas sobressaem no ambiente sombreado de Les Naudières.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://www.lesnaudieres.com/univers/chateau-gonflable/",
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": true,
+          "adminReviewStatus": "Validated",
+          "latitude": null,
+          "longitude": null
+        },
+        {
+          "key": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+          "id": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+          "name": "Les Échasses",
+          "category": "Attraction",
+          "type": "Game",
+          "subtype": null,
+          "zoneId": null,
+          "zoneKey": null,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les longues perches de la prairie</h2><p>Sur la pelouse devant la grande enceinte des trampolines, Les Échasses invitaient à prendre de la hauteur avec de longues perches de bois munies de petits appuis pour les pieds. Des exemplaires attendaient contre la barrière tandis que les joueurs s’essayaient à l’équilibre sur l’herbe.</p><p>Le jeu s’inscrivait dans un coin arboré des Naudières, au pied des filets noirs et du palmier vert découpé qui surmontait les trampolines voisins.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Long wooden poles on the lawn</h2><p>On the lawn in front of the large trampoline enclosure, Les Échasses offered a little extra height on long wooden stilts with small footrests. Some rested against the fence while players tried their balance on the grass.</p><p>The game occupied a tree-lined corner of Les Naudières, below the black netting and the green palm-tree cutout above the neighbouring trampolines.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Lange Holzstelzen auf der Wiese</h2><p>Auf der Wiese vor dem großen Trampolinbereich ging es bei Les Échasses auf langen Holzstelzen mit kleinen Fußstützen ein Stück in die Höhe. Einige lehnten am Zaun, während die Spieler auf dem Rasen ihr Gleichgewicht erprobten.</p><p>Das Spiel lag in einer baumreichen Ecke von Les Naudières, unter den schwarzen Netzen und der ausgeschnittenen grünen Palmenfigur über den benachbarten Trampolinen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Lange houten stelten op het gras</h2><p>Op het gras voor de grote trampolineomheining boden Les Échasses wat extra hoogte op lange houten stelten met kleine voetsteunen. Enkele stonden tegen het hek terwijl spelers op het gazon hun evenwicht uitprobeerden.</p><p>Het spel lag in een boomrijke hoek van Les Naudières, onder de zwarte netten en de uitgesneden groene palmboom boven de naburige trampolines.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Lunghi trampoli sul prato</h2><p>Sul prato davanti alla grande recinzione dei trampolini, Les Échasses permettevano di alzarsi da terra su lunghi trampoli di legno dotati di piccoli appoggi per i piedi. Alcuni erano appoggiati alla staccionata mentre i giocatori provavano a mantenere l’equilibrio sull’erba.</p><p>Il gioco si trovava in un angolo alberato di Les Naudières, sotto le reti nere e la sagoma di palma verde che sovrastava i trampolini vicini.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Largos zancos sobre el césped</h2><p>En el césped frente al gran recinto de camas elásticas, Les Échasses permitían ganar algo de altura sobre largos zancos de madera con pequeños apoyos para los pies. Algunos descansaban contra la valla mientras los jugadores probaban su equilibrio sobre la hierba.</p><p>El juego ocupaba un rincón arbolado de Les Naudières, bajo las redes negras y la silueta de palmera verde que coronaba las camas elásticas vecinas.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Długie drewniane szczudła na trawniku</h2><p>Na trawniku przed dużym ogrodzonym terenem z trampolinami Les Échasses pozwalały wznieść się nieco wyżej na długich drewnianych szczudłach z małymi podpórkami pod stopy. Niektóre opierano o płot, gdy uczestnicy próbowali utrzymać równowagę na trawie.</p><p>Zabawa zajmowała zadrzewiony zakątek Les Naudières, pod czarnymi siatkami i zieloną sylwetką palmy górującą nad sąsiednimi trampolinami.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Longas andas de madeira no relvado</h2><p>No relvado diante do grande recinto dos trampolins, Les Échasses permitiam ganhar alguma altura sobre longas andas de madeira com pequenos apoios para os pés. Algumas estavam encostadas à vedação enquanto os jogadores experimentavam o equilíbrio sobre a relva.</p><p>O jogo ocupava um recanto arborizado de Les Naudières, sob as redes pretas e a silhueta de palmeira verde que se erguia acima dos trampolins vizinhos.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://www.triplancar.com/sites/triplancar.com/files/lieu/825/brochurenaudieres2017.pdf",
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": true,
+          "adminReviewStatus": "Validated",
+          "latitude": null,
+          "longitude": null
+        },
+        {
+          "key": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+          "id": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+          "name": "Tricycles",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "subtype": null,
+          "zoneId": "18765d38-c768-4332-b9ea-5318f27886a4",
+          "zoneKey": "18765d38-c768-4332-b9ea-5318f27886a4",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Rouge et jaune devant le pavillon bleu</h2><p>Les Tricycles des Naudières arboraient de grands cadres jaunes et rouges, avec une place à l’arrière pour partager la promenade. Sur le sol goudronné, leurs couleurs vives se détachaient devant le bâtiment bleu et son bardage clair.</p><p>Le panneau « Tricycles » était fixé à cette façade. Une photographie de visite de 2018 montre ce petit rassemblement de véhicules côte à côte, au milieu des enfants embarqués pour un tour.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Red and yellow beside the blue building</h2><p>The tricycles at Les Naudières had broad yellow and red frames, with a place at the back to share the ride. On the paved ground, their bright colours stood out against the blue building and its pale cladding.</p><p>A “Tricycles” sign was fixed to that façade. A visitor photograph from 2018 shows the little gathering of vehicles side by side, with children aboard for a ride.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Rot und Gelb vor dem blauen Gebäude</h2><p>Die Dreiräder von Les Naudières hatten breite gelb-rote Rahmen und einen Platz hinten, um gemeinsam eine Runde zu drehen. Auf dem asphaltierten Boden hoben sich ihre kräftigen Farben vom blauen Gebäude mit seiner hellen Verkleidung ab.</p><p>An dieser Fassade hing ein Schild mit der Aufschrift „Tricycles“. Ein Besucherfoto von 2018 zeigt die kleine Gruppe nebeneinanderstehender Fahrzeuge mit Kindern, die bereits aufgestiegen waren.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Rood en geel bij het blauwe gebouw</h2><p>De driewielers van Les Naudières hadden brede gele en rode frames, met achteraan een plaats om samen een rondje te maken. Op de verharde ondergrond staken hun felle kleuren af tegen het blauwe gebouw met zijn lichte bekleding.</p><p>Aan die gevel hing het bord “Tricycles”. Een bezoekersfoto uit 2018 toont het kleine groepje voertuigen naast elkaar, met kinderen die al waren ingestapt voor een ritje.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Rosso e giallo davanti all’edificio blu</h2><p>I tricicli di Les Naudières avevano grandi telai gialli e rossi, con un posto sul retro per condividere il giro. Sul terreno asfaltato, i colori vivaci risaltavano davanti all’edificio blu dal rivestimento chiaro.</p><p>Il cartello « Tricycles » era fissato a quella facciata. Una fotografia di visita del 2018 mostra il piccolo gruppo di veicoli affiancati, con i bambini già a bordo per un giro.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Rojo y amarillo junto al edificio azul</h2><p>Los triciclos de Les Naudières tenían amplios cuadros amarillos y rojos, con un lugar detrás para compartir el paseo. Sobre el suelo asfaltado, sus colores vivos destacaban ante el edificio azul de revestimiento claro.</p><p>El letrero « Tricycles » estaba fijado a esa fachada. Una fotografía de visita de 2018 muestra el pequeño grupo de vehículos uno al lado del otro, con niños ya subidos para dar una vuelta.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Czerwień i żółć przy niebieskim budynku</h2><p>Trójkołowce w Les Naudières miały szerokie żółto-czerwone ramy i miejsce z tyłu, pozwalające dzielić przejażdżkę z drugą osobą. Na asfaltowym podłożu ich żywe kolory odcinały się od niebieskiego budynku z jasną okładziną.</p><p>Na tej elewacji wisiał napis „Tricycles”. Zdjęcie wykonane przez gościa w 2018 roku pokazuje niewielką grupę pojazdów ustawionych obok siebie, z dziećmi gotowymi do przejażdżki.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Vermelho e amarelo junto ao edifício azul</h2><p>Os triciclos de Les Naudières tinham grandes quadros amarelos e vermelhos, com um lugar atrás para partilhar o passeio. No piso asfaltado, as cores vivas destacavam-se diante do edifício azul com revestimento claro.</p><p>O letreiro « Tricycles » estava fixado nessa fachada. Uma fotografia de visita de 2018 mostra o pequeno grupo de veículos lado a lado, com crianças já a bordo para uma volta.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://www.lesnaudieres.com/univers/exploration/",
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": null,
+          "isVisible": true,
+          "adminReviewStatus": "Validated",
+          "latitude": null,
+          "longitude": null
+        }
+      ],
+      "zones": [
+        {
+          "id": "b26d480b-1a93-42b2-a193-97f648316192",
+          "key": "b26d480b-1a93-42b2-a193-97f648316192",
+          "name": "Gonflables"
+        },
+        {
+          "id": "18765d38-c768-4332-b9ea-5318f27886a4",
+          "key": "18765d38-c768-4332-b9ea-5318f27886a4",
+          "name": "Exploration"
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "naudieres-history-acquisition-wikiparks-2020",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+            "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+            "parkItemId": null,
+            "itemKey": null,
+            "parkItemKey": null,
+            "contextParkId": null,
+            "year": 2020,
+            "month": 2,
+            "day": null,
+            "datePrecision": "Month",
+            "eventType": "Acquisition",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Wikiparks devient propriétaire des Naudières"
+              },
+              {
+                "languageCode": "en",
+                "value": "Wikiparks takes ownership of Les Naudières"
+              },
+              {
+                "languageCode": "de",
+                "value": "Wikiparks wird Eigentümer von Les Naudières"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Wikiparks wordt eigenaar van Les Naudières"
+              },
+              {
+                "languageCode": "it",
+                "value": "Wikiparks diventa proprietario di Les Naudières"
+              },
+              {
+                "languageCode": "es",
+                "value": "Wikiparks adquiere Les Naudières"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Wikiparks przejmuje Les Naudières"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Wikiparks torna-se proprietária de Les Naudières"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En février 2020, le parc de Sautron rejoint Wikiparks, déjà présent à Labenne-Océan avec Aquatic-Landes. Le groupe présente cette reprise comme sa deuxième acquisition. Ce changement d’actionnaire engage Les Naudières dans la stratégie de développement de parcs de loisirs régionaux portée par Arnaud Coste et François Boisroux."
+              },
+              {
+                "languageCode": "en",
+                "value": "In February 2020, the Sautron park joins Wikiparks, which already operates Aquatic-Landes in Labenne-Océan. The group describes the takeover as its second acquisition. The change of shareholder brings Les Naudières into the regional leisure park development strategy led by Arnaud Coste and François Boisroux."
+              },
+              {
+                "languageCode": "de",
+                "value": "Im Februar 2020 kommt der Park in Sautron zu Wikiparks, das bereits Aquatic-Landes in Labenne-Océan betreibt. Die Gruppe bezeichnet die Übernahme als ihre zweite Akquisition. Mit dem neuen Anteilseigner wird Les Naudières Teil der von Arnaud Coste und François Boisroux getragenen Entwicklungsstrategie für regionale Freizeitparks."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In februari 2020 sluit het park in Sautron zich aan bij Wikiparks, dat al Aquatic-Landes in Labenne-Océan exploiteert. De groep noemt de aankoop haar tweede overname. Met deze aandeelhouderswissel wordt Les Naudières onderdeel van de ontwikkelingsstrategie voor regionale recreatieparken van Arnaud Coste en François Boisroux."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel febbraio 2020 il parco di Sautron entra in Wikiparks, già presente a Labenne-Océan con Aquatic-Landes. Il gruppo presenta l’operazione come la sua seconda acquisizione. Con il nuovo azionista, Les Naudières entra nella strategia di sviluppo dei parchi ricreativi regionali promossa da Arnaud Coste e François Boisroux."
+              },
+              {
+                "languageCode": "es",
+                "value": "En febrero de 2020, el parque de Sautron pasa a formar parte de Wikiparks, ya presente en Labenne-Océan con Aquatic-Landes. El grupo presenta la operación como su segunda adquisición. El cambio de accionista incorpora Les Naudières a la estrategia de desarrollo de parques de ocio regionales impulsada por Arnaud Coste y François Boisroux."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W lutym 2020 roku park w Sautron dołącza do Wikiparks, które prowadzi już Aquatic-Landes w Labenne-Océan. Grupa przedstawia zakup jako swoje drugie przejęcie. Zmiana akcjonariusza włącza Les Naudières w strategię rozwoju regionalnych parków rekreacyjnych realizowaną przez Arnauda Coste’a i François Boisroux."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em fevereiro de 2020, o parque de Sautron passa a integrar a Wikiparks, já presente em Labenne-Océan com o Aquatic-Landes. O grupo apresenta a operação como a sua segunda aquisição. A mudança de acionista enquadra Les Naudières na estratégia de desenvolvimento de parques de lazer regionais promovida por Arnaud Coste e François Boisroux."
+              }
+            ],
+            "mainImageId": "457a3953036c404c88852f67a976048c",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": "Wikiparks",
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Wikipark Management — acquisition des Naudières annoncée le 13 février 2020",
+                "url": "https://www.wikipark-management.fr/le-parc-de-loisirs-les-naudieres/",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "L’Informateur judiciaire n°7001, 24 juillet 2020, p.25 — acquisition en février 2020",
+                "url": "https://www.informateurjudiciaire.fr/wp-content/uploads/sites/10/2020/07/IJ_7001_24072020_V2.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Les Naudières — communiqué de reprise publié le 13 mai 2020",
+                "url": "https://www.lesnaudieres.com/parc-naudieres-wikiparks/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "a5195fe6-e6aa-47d6-bac8-f25a6fb8359e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:06:03.2722057Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "b26d480b-1a93-42b2-a193-97f648316192",
+        "entityKey": "b26d480b-1a93-42b2-a193-97f648316192",
+        "displayName": "Gonflables",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "entityKey": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "displayName": "Exploration",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "entityKey": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "displayName": "Les Échasses",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "entityKey": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "displayName": "Tricycles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f56ec4a1-8c18-45a4-a5ab-2a1bf6876571",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "b118019c-12e6-4976-a1c6-3f8add99db53",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:06:20.1478809Z",
+    "appliedAtUtc": "2026-11-15T16:06:20.1478817Z",
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 5,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "b26d480b-1a93-42b2-a193-97f648316192",
+        "entityKey": "b26d480b-1a93-42b2-a193-97f648316192",
+        "displayName": "Gonflables",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "entityKey": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "displayName": "Exploration",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "entityKey": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "displayName": "Les Échasses",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "entityKey": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "displayName": "Tricycles",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f56ec4a1-8c18-45a4-a5ab-2a1bf6876571",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookNewSend": false,
+  "globalCompletion": false
+}

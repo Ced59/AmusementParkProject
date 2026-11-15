@@ -27777,7 +27777,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T10:41:26.137Z",
+      "lastDataIntegrationAt": "2026-11-15T16:06:20.147Z",
       "integrationHistory": [
         {
           "eventId": "apply-800058f1-a0d9-4e68-8856-771632577322",
@@ -28028,9 +28028,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-babyfoot-description-20261115.json",
           "auditEvidence": null,
           "summary": "Baby-foot humain privé : huit notices historiques rédigées et relues, configuration photographiée juin2016 distincte de la pratique attestée été2026. Aucun statut, fabricant, ouverture ou âge inventé ; aucun import photo."
+        },
+        {
+          "eventId": "apply-96f73c0a-01eb-4a42-8fa1-08751601e3a7",
+          "appliedAt": "2026-11-15T16:05:45.515Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-01-publish-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "Naudières : publication après audit de deux photos existantes de La Dune, sans réimport."
+        },
+        {
+          "eventId": "apply-b118019c-12e6-4976-a1c6-3f8add99db53",
+          "appliedAt": "2026-11-15T16:06:20.147Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/naudieres-02-publish-items-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Naudières : publication après audit de quatre notices en huit langues et du fait Acquisition février 2020 ; 32 lieux privés restent à qualifier, état global partial."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Qualifier les32lieux privés, dont Ameco (âge contradictoire) et Pontdecorde (alias nonprouvé); corriger séparément frise/OTHER/alt photo principale. Quatre fiches/deux photos/acquisition2020 publiées après audit, preuve naudieres-publication-followup-20261115.json; visibilitéFacebook externeàconfirmer.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

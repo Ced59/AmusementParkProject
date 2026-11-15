@@ -1,0 +1,432 @@
+{
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "outcome": "partial",
+  "scopeAudit": "naudieres-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "auditAtUtc": "2026-11-15T15:55:49.0236759Z",
+    "publicationAtUtc": "2026-11-15T16:04:37.6955133Z",
+    "equalExceptMetadata": true,
+    "auditSha256": "580e8c1d2469acae463b8a64a8d493aab2d171a869bf49e97873d20afa82d981",
+    "publicationSha256": "45bd8467b3acfb5649dbe9a2458ededa0e21b94e448fd1b24d468f4a4387c5d7"
+  },
+  "document": {
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "park": {
+        "id": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "key": "park",
+        "name": "Parc des Naudières"
+      },
+      "items": [
+        {
+          "id": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "key": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "name": "La Dune",
+          "type": "Playground",
+          "category": "Attraction"
+        }
+      ],
+      "images": [
+        {
+          "imageId": "341b0e55a14f422fb4262d7c9aaf6e9e",
+          "id": "341b0e55a14f422fb4262d7c9aaf6e9e",
+          "ownerType": "ParkItem",
+          "ownerId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "ownerKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "category": "ParkItem",
+          "isPublished": true,
+          "isCurrent": false,
+          "setAsCurrent": false,
+          "withWatermark": false,
+          "isWatermarked": false,
+          "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonfables-2-scaled-1707xauto_0_1.jpg",
+          "internalUrl": "/images/341b0e55a14f422fb4262d7c9aaf6e9e",
+          "description": "Vue de La Dune depuis les tables voisines, avec ses cactus et son scorpion peints.",
+          "altTexts": [
+            {
+              "languageCode": "fr",
+              "value": "La Dune et son soleil souriant derrière une clôture en bois, sous les grands arbres des Naudières."
+            },
+            {
+              "languageCode": "en",
+              "value": "La Dune and its smiling sun behind a wooden fence beneath the tall trees of Les Naudières."
+            },
+            {
+              "languageCode": "de",
+              "value": "La Dune mit ihrer lächelnden Sonne hinter einem Holzzaun unter den großen Bäumen von Les Naudières."
+            },
+            {
+              "languageCode": "nl",
+              "value": "La Dune met de lachende zon achter een houten hek onder de hoge bomen van Les Naudières."
+            },
+            {
+              "languageCode": "it",
+              "value": "La Dune con il sole sorridente dietro una staccionata di legno, sotto i grandi alberi di Les Naudières."
+            },
+            {
+              "languageCode": "es",
+              "value": "La Dune con su sol sonriente detrás de una valla de madera, bajo los grandes árboles de Les Naudières."
+            },
+            {
+              "languageCode": "pl",
+              "value": "La Dune z uśmiechniętym słońcem za drewnianym płotkiem, pod wysokimi drzewami Les Naudières."
+            },
+            {
+              "languageCode": "pt",
+              "value": "La Dune com o seu sol sorridente atrás de uma vedação de madeira, sob as grandes árvores de Les Naudières."
+            }
+          ],
+          "captions": [
+            {
+              "languageCode": "fr",
+              "value": "Vue de La Dune depuis les tables voisines, avec ses cactus et son scorpion peints."
+            },
+            {
+              "languageCode": "en",
+              "value": "La Dune seen from the nearby tables, with its painted cacti and scorpion."
+            },
+            {
+              "languageCode": "de",
+              "value": "Blick von den benachbarten Tischen auf La Dune mit ihren aufgemalten Kakteen und dem Skorpion."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Zicht op La Dune vanaf de nabije tafels, met de geschilderde cactussen en schorpioen."
+            },
+            {
+              "languageCode": "it",
+              "value": "La Dune vista dai tavoli vicini, con i cactus e lo scorpione dipinti."
+            },
+            {
+              "languageCode": "es",
+              "value": "Vista de La Dune desde las mesas cercanas, con sus cactus y escorpión pintados."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Widok La Dune od strony pobliskich stołów, z namalowanymi kaktusami i skorpionem."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Vista de La Dune a partir das mesas próximas, com os catos e o escorpião pintados."
+            }
+          ],
+          "credits": [
+            {
+              "languageCode": "fr",
+              "value": "Parc des Naudières — site officiel"
+            },
+            {
+              "languageCode": "en",
+              "value": "Parc des Naudières — official website"
+            },
+            {
+              "languageCode": "de",
+              "value": "Parc des Naudières — offizielle Website"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Parc des Naudières — officiële website"
+            },
+            {
+              "languageCode": "it",
+              "value": "Parc des Naudières — sito ufficiale"
+            },
+            {
+              "languageCode": "es",
+              "value": "Parc des Naudières — sitio oficial"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Parc des Naudières — oficjalna strona"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Parc des Naudières — sítio oficial"
+            }
+          ],
+          "tagIds": [],
+          "geoLocation": null,
+          "originalFileName": "codex-import.jpg",
+          "contentType": "image/jpeg",
+          "width": 1707,
+          "height": 2560,
+          "sizeInBytes": 775540
+        },
+        {
+          "imageId": "373575c2d2fb421b8b154cb99742af48",
+          "id": "373575c2d2fb421b8b154cb99742af48",
+          "ownerType": "ParkItem",
+          "ownerId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "ownerKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+          "category": "ParkItem",
+          "isPublished": true,
+          "isCurrent": false,
+          "setAsCurrent": false,
+          "withWatermark": false,
+          "isWatermarked": false,
+          "sourceUrl": "https://www.lesnaudieres.com/wp-content/uploads/2023/02/Gonflable-Dune-scaled-1920xauto_0_1.jpg",
+          "internalUrl": "/images/373575c2d2fb421b8b154cb99742af48",
+          "description": "Le soleil de La Dune domine les cactus et le serpent rouge de son décor.",
+          "altTexts": [
+            {
+              "languageCode": "fr",
+              "value": "La Dune, gonflable bleu, jaune et orange surmonté d’un soleil souriant, parmi les arbres des Naudières."
+            },
+            {
+              "languageCode": "en",
+              "value": "La Dune, a blue, yellow and orange inflatable topped by a smiling sun, among the trees at Les Naudières."
+            },
+            {
+              "languageCode": "de",
+              "value": "La Dune, ein blau-gelb-oranges aufblasbares Spielgerät mit lächelnder Sonne zwischen den Bäumen von Les Naudières."
+            },
+            {
+              "languageCode": "nl",
+              "value": "La Dune, een blauw, geel en oranje luchtkussen met een lachende zon tussen de bomen van Les Naudières."
+            },
+            {
+              "languageCode": "it",
+              "value": "La Dune, un gonfiabile blu, giallo e arancione sormontato da un sole sorridente, tra gli alberi di Les Naudières."
+            },
+            {
+              "languageCode": "es",
+              "value": "La Dune, un hinchable azul, amarillo y naranja coronado por un sol sonriente, entre los árboles de Les Naudières."
+            },
+            {
+              "languageCode": "pl",
+              "value": "La Dune, niebiesko-żółto-pomarańczowy dmuchaniec z uśmiechniętym słońcem, wśród drzew Les Naudières."
+            },
+            {
+              "languageCode": "pt",
+              "value": "La Dune, um insuflável azul, amarelo e laranja com um sol sorridente no topo, entre as árvores de Les Naudières."
+            }
+          ],
+          "captions": [
+            {
+              "languageCode": "fr",
+              "value": "Le soleil de La Dune domine les cactus et le serpent rouge de son décor."
+            },
+            {
+              "languageCode": "en",
+              "value": "La Dune’s sun rises above the cacti and red snake in its decoration."
+            },
+            {
+              "languageCode": "de",
+              "value": "Die Sonne von La Dune thront über den Kakteen und der roten Schlange der Dekoration."
+            },
+            {
+              "languageCode": "nl",
+              "value": "De zon van La Dune prijkt boven de cactussen en de rode slang van het decor."
+            },
+            {
+              "languageCode": "it",
+              "value": "Il sole della Dune sovrasta i cactus e il serpente rosso della decorazione."
+            },
+            {
+              "languageCode": "es",
+              "value": "El sol de La Dune se alza sobre los cactus y la serpiente roja de su decoración."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Słońce La Dune góruje nad kaktusami i czerwonym wężem zdobiącymi dmuchaniec."
+            },
+            {
+              "languageCode": "pt",
+              "value": "O sol de La Dune ergue-se sobre os catos e a serpente vermelha da decoração."
+            }
+          ],
+          "credits": [
+            {
+              "languageCode": "fr",
+              "value": "Parc des Naudières — site officiel"
+            },
+            {
+              "languageCode": "en",
+              "value": "Parc des Naudières — official website"
+            },
+            {
+              "languageCode": "de",
+              "value": "Parc des Naudières — offizielle Website"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Parc des Naudières — officiële website"
+            },
+            {
+              "languageCode": "it",
+              "value": "Parc des Naudières — sito ufficiale"
+            },
+            {
+              "languageCode": "es",
+              "value": "Parc des Naudières — sitio oficial"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Parc des Naudières — oficjalna strona"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Parc des Naudières — sítio oficial"
+            }
+          ],
+          "tagIds": [],
+          "geoLocation": null,
+          "originalFileName": "codex-import.jpg",
+          "contentType": "image/jpeg",
+          "width": 1920,
+          "height": 1280,
+          "sizeInBytes": 462731
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "46cb60c5-26ec-4980-8d23-f427ccbe9343",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:05:13.2128777Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "341b0e55a14f422fb4262d7c9aaf6e9e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "373575c2d2fb421b8b154cb99742af48",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "96f73c0a-01eb-4a42-8fa1-08751601e3a7",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:05:45.5153495Z",
+    "appliedAtUtc": "2026-11-15T16:05:45.5153502Z",
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "341b0e55a14f422fb4262d7c9aaf6e9e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "373575c2d2fb421b8b154cb99742af48",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookNewSend": false,
+  "globalCompletion": false
+}

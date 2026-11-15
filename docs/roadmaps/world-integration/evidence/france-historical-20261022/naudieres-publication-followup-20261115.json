@@ -1,0 +1,404 @@
+{
+  "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "entryId": "FR-park-f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+  "checkedAtUtc": "2026-11-15T16:17:23.188722+00:00",
+  "outcome": "audited-scope-published-with-documented-application-defects",
+  "globalOutcome": "partial",
+  "globalCompletion": false,
+  "publicationScope": {
+    "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "itemIds": [
+      "135870ba-51af-4c0a-b96e-c18b6c255e27",
+      "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+      "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+      "290932a2-7d9d-4630-9998-6be03b6bbb6d"
+    ],
+    "imageIds": [
+      "373575c2d2fb421b8b154cb99742af48",
+      "341b0e55a14f422fb4262d7c9aaf6e9e"
+    ],
+    "historyKeys": [
+      "naudieres-history-acquisition-wikiparks-2020"
+    ],
+    "personalReview": "32item descriptions,16event titles/summaries,48image localizedmetadata read personally;2originalDunephotos re-viewed; existingauthoring/proof preserved.",
+    "publicationStatus": "Published by the two receipt-backed operations above."
+  },
+  "lastActualIntegrationAtUtc": "2026-11-15T16:06:20.1478817Z",
+  "operations": [
+    {
+      "operationId": "96f73c0a-01eb-4a42-8fa1-08751601e3a7",
+      "appliedAtUtc": "2026-11-15T16:05:45.5153502Z",
+      "proof": "naudieres-01-publish-images-20261115.json"
+    },
+    {
+      "operationId": "b118019c-12e6-4976-a1c6-3f8add99db53",
+      "appliedAtUtc": "2026-11-15T16:06:20.1478817Z",
+      "proof": "naudieres-02-publish-items-history-20261115.json"
+    }
+  ],
+  "counts": {
+    "items": 84,
+    "publicItems": 52,
+    "privateItems": 32,
+    "media": 56,
+    "publicMedia": 54,
+    "privateMedia": 2,
+    "publicFacts": 30,
+    "privateFacts": 1,
+    "articles": 4,
+    "maps": 8
+  },
+  "auditEvidence": "naudieres-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "auditAtUtc": "2026-11-15T15:55:49.0236759Z",
+    "publicationAtUtc": "2026-11-15T16:04:37.6955133Z",
+    "equalExceptMetadata": true,
+    "auditSha256": "580e8c1d2469acae463b8a64a8d493aab2d171a869bf49e97873d20afa82d981",
+    "publicationSha256": "45bd8467b3acfb5649dbe9a2458ededa0e21b94e448fd1b24d468f4a4387c5d7"
+  },
+  "completeness": {
+    "startedAtUtc": "2026-11-15T16:07:38.6680326Z",
+    "receivedAtUtc": "2026-11-15T16:07:39.6241606Z",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 108,
+      "earnedPoints": 108,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+      "parkName": "Parc des Naudières",
+      "factCount": 110,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1970,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 6,
+          "sourcedResourceCount": 6,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 23,
+          "sourcedResourceCount": 23,
+          "publishedResourceCount": 23,
+          "subjectCount": 16,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 1
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 30
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 79
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 30,
+        "sourcedFactCount": 30,
+        "majorFactCount": 18,
+        "indexableKeyYears": []
+      }
+    },
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T16:08:14.8576856Z",
+    "receivedAtUtc": "2026-11-15T16:08:16.5223260Z"
+  },
+  "idempotence": {
+    "operationId": "3b6158da-f6ae-4fc5-963e-36e4a23299ef",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:06:58.3492339Z",
+    "appliedAtUtc": null,
+    "targetParkId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+    "targetParkName": "Parc des Naudières",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "entityKey": "park",
+        "displayName": "Parc des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "b26d480b-1a93-42b2-a193-97f648316192",
+        "entityKey": "b26d480b-1a93-42b2-a193-97f648316192",
+        "displayName": "Gonflables",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkZone",
+        "entityId": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "entityKey": "18765d38-c768-4332-b9ea-5318f27886a4",
+        "displayName": "Exploration",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "entityKey": "135870ba-51af-4c0a-b96e-c18b6c255e27",
+        "displayName": "Baby-foot humain",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "entityKey": "cbe88e2b-1764-41f8-9668-afc85b5a804c",
+        "displayName": "La Dune",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "entityKey": "f683aec0-3844-44ef-b8f5-ee098f5133fe",
+        "displayName": "Les Échasses",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "entityKey": "290932a2-7d9d-4630-9998-6be03b6bbb6d",
+        "displayName": "Tricycles",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "341b0e55a14f422fb4262d7c9aaf6e9e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "373575c2d2fb421b8b154cb99742af48",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "f56ec4a1-8c18-45a4-a5ab-2a1bf6876571",
+        "entityKey": "naudieres-history-acquisition-wikiparks-2020",
+        "displayName": "Wikiparks devient propriétaire des Naudières",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "publicChecks": {
+    "evidence": "naudieres-publication-public-checks-20261115.json",
+    "coreRoutesRendered": 80,
+    "newItemDescriptionsExact": 32,
+    "parkDescriptionsExact": 8,
+    "articlePages": 32,
+    "articleBlocksExact": 264,
+    "galleryRoutesChecked": 8,
+    "twoPhotosRenderedAndLocalizedInAllGalleries": true,
+    "observedImageResponses": 21,
+    "brokenImages": 0,
+    "overflow": 0,
+    "normalItemNavigations": 4,
+    "allFourArticlesDiscoveredThroughNormalHistoryPagination": true,
+    "detail": "72 initial routes HTTP200 plus8fourth-article routes reached after observing page2; all articleblocks exact. InitialPLpark response200 renderedblank then normalrecheck returnedexactdescription. Two photos areselected andrenderednormally inall8galleryroutes,observedbinaries200."
+  },
+  "remainingPublicDefects": [
+    {
+      "kind": "historyNarrative",
+      "observed": "Acquisition février2020: année, mois, OwnerChange et3sources visibles, mais titres/résumés absents des8frises; réponsepubliqueobservée narrative:null. Les4articles restent lisibles.",
+      "action": "Correction de projection applicative distincte; aucun faux changement de type ou Apply aveugle."
+    },
+    {
+      "kind": "legacyOtherBadges",
+      "observed": "Deux anciens événements affichent OTHER dans les frises, dont les langues non anglaises; types et sources conservés.",
+      "action": "Localisation applicative distincte; aucune falsification de type."
+    },
+    {
+      "kind": "itemMainPhotoAltLocale",
+      "observed": "La fiche LaDune affiche son image principale avec alt anglais dans7langues non anglaises. La galerie dédiée restitue correctement les deux alt/captions en8langues.",
+      "action": "Corriger séparément la sélection de langue de la photo principale; aucun réimport."
+    }
+  ],
+  "facebook": {
+    "official": {
+      "receivedAtUtc": "2026-11-15T16:08:35.9866213Z",
+      "startedAtUtc": "2026-11-15T16:08:35.2592463Z",
+      "action": "ResolveFacebookPublication",
+      "result": {
+        "url": "https://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres",
+        "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc des Naudières ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc des Naudières! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/f7f8cba8-62b4-4a91-8732-70a1cbc02b42/parc-des-naudieres\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+        "targetKind": "Park",
+        "targetName": "Parc des Naudières",
+        "imageOwnerType": "Park",
+        "imageOwnerId": "f7f8cba8-62b4-4a91-8732-70a1cbc02b42",
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "f2edfc32fa2246c1acf885957c15d09f",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124053079424431",
+        "images": {
+          "data": [
+            {
+              "id": "f78b8182d9fa4b09b04c2d764dac8ab7",
+              "label": "Les rangées de parasols occupent le sable à gauche ; les grandes glissades et les promeneurs longent l’autre côté de la plage.",
+              "isCurrent": false,
+              "width": 1536,
+              "height": 234
+            },
+            {
+              "id": "9d054b0a2d3e47f19b73b7c6b7e1820a",
+              "label": "Aux Naudières, le sable blanc et les rangées de transats côtoient les courbes du Roller Coaster.",
+              "isCurrent": true,
+              "width": 2560,
+              "height": 1707
+            },
+            {
+              "id": "fc39a491cecd42eb98e732ebee20cea3",
+              "label": "Le mini-golf rouge, la plage claire et le circuit orange dessinent des espaces distincts autour des allées ; le logo est ajouté à la photographie.",
+              "isCurrent": false,
+              "width": 2048,
+              "height": 1365
+            },
+            {
+              "id": "23ff5455a4d54bceaa198504fcab4e7f",
+              "label": "Entre l’eau et les arbres, la promenade longe les pédalos puis le décor bleu de L’Envol d’Holly.",
+              "isCurrent": false,
+              "width": 600,
+              "height": 400
+            },
+            {
+              "id": "457a3953036c404c88852f67a976048c",
+              "label": "Cette vue des allées réunit les anciennes figures de hiboux, les couleurs du Dôme et les filets de l’aire de saut.",
+              "isCurrent": false,
+              "width": 600,
+              "height": 400
+            },
+            {
+              "id": "9945a59472ae4023aa658f2695121038",
+              "label": "Le visuel de la première édition de HollyWeen associe la Grange d’Outre-Monde, le village, la quête et la soirée d’Halloween.",
+              "isCurrent": false,
+              "width": 1920,
+              "height": 400
+            }
+          ],
+          "pagination": {
+            "totalItems": 6,
+            "totalPages": 1,
+            "currentPage": 1,
+            "itemsPerPage": 6
+          }
+        }
+      }
+    },
+    "anonymous": {
+      "url": "https://www.facebook.com/1285475681307050/posts/122124053079424431",
+      "mode": "Anonymous public Chromium; optional cookies declined when offered; no login, no publication.",
+      "optionalCookiesDeclined": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.facebook.com/61592732938801/posts/122124053079424431/",
+      "body": "Log in\nForgotten account?\nThis content isn't available at the moment\nWhen this happens, it's usually because the owner only shared it with a small group of people or changed who can see it, or it's been deleted.\nGo to Feed\nGo back\nVisit Help Centre",
+      "bodySha256": "90df80c47e6be14eeef0018eec3d5875a96adcd2e397bcd3d40f137c62f63f2e",
+      "checkedAtUtc": "2026-11-15T16:10:18.413467+00:00"
+    },
+    "newSend": false,
+    "retry": false,
+    "visibilityConfirmed": false,
+    "explanation": "Existing official Published confirmed, anonymous link unavailable; no Failed record, no duplicate. Existing connected-owner question remains pending."
+  },
+  "remainingInventory": "32privateitems, including unresolvedlegacyidentities, contradictoryAmecoage and unprovedPontdecordealias. Unknownstatuses retained onthefournewlypublic historicallyqualifieditems. Globalphoto/GPSgaps kept.",
+  "protocolIncidents": [
+    "InitialhistorynavigationreadbeforeSPAroutechange is superseded by explicitwaitand normalhistory/page/2 navigation. No missingfourtharticle: it is on ordinarypage2.",
+    "Initialgalleryreads capturedfooter/earlyDOM; finalnormalgallerychecks wait for actualphotographs and selecteach. No missingphoto, no APIretry.",
+    "OnecookierenderinterceptedearlierENclick; ordinaryconsent controls used, no forcedclick or login."
+  ],
+  "noRepeatedAuditExport": true
+}
