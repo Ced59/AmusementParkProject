@@ -24732,26 +24732,123 @@
     },
     {
       "entryId": "DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574",
-      "name": "Sommerrodelbahn Wald Michelbach",
-      "entityKind": "Park",
+      "name": "Odenwaldbob — Sommerrodelbahn Wald-Michelbach",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": null,
-      "locality": null,
-      "siteId": "9f0be526-a8d7-4bfe-9932-31598aacf574",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "category": "Alpine coaster",
+      "locality": "Kreidacher Höhe 2, 69483 Wald-Michelbach, Hesse",
+      "siteId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+      "legacySiteIds": [
+        "9f0be526-a8d7-4bfe-9932-31598aacf574"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T02:38:19.267Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Exploitant consulté le 2026-11-15 : piste signalée ouverte le week-end de 13 h à 16 h, sous réserve de la météo (signal mis à jour le 14 novembre).",
+      "identityConfidence": "Ancienne fiche Park masquée avec seul parkItem Odenwaldbob migrée via ses IDs ; entrée au domaine gratuite, billet propre pour la luge.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Sommerrodelbahn Wald Michelbach",
+        "Sommerrodelbahn Wald-Michelbach",
+        "Odenwaldbob"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T02:37:09.151Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-ebcbe806-f199-4df7-9059-a1b5c9663866",
+          "appliedAt": "2026-11-15T02:34:40.054Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:apply:ebcbe806-f199-4df7-9059-a1b5c9663866",
+          "auditEvidence": null,
+          "summary": "Création autonome et classement NotRelevant du parc masqué et de son item."
+        },
+        {
+          "eventId": "apply-18e3e4b2-138b-4b84-b020-14ed013c2460",
+          "appliedAt": "2026-11-15T02:36:16.863Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:apply:18e3e4b2-138b-4b84-b020-14ed013c2460",
+          "auditEvidence": null,
+          "summary": "Cinq règles officielles, longueur de descente et statut météo renseignés."
+        },
+        {
+          "eventId": "image-9e681364d2a6403f859424f9bc87861f",
+          "appliedAt": "2026-11-15T02:36:38.232Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:9e681364d2a6403f859424f9bc87861f",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-9e681364d2a6403f859424f9bc87861f",
+          "appliedAt": "2026-11-15T02:36:41.717Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:9e681364d2a6403f859424f9bc87861f",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "image-f233452c440e4604bc3fcdcf80bff200",
+          "appliedAt": "2026-11-15T02:36:51.914Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:f233452c440e4604bc3fcdcf80bff200",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-f233452c440e4604bc3fcdcf80bff200",
+          "appliedAt": "2026-11-15T02:36:55.254Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:f233452c440e4604bc3fcdcf80bff200",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "image-27244162010e44498454ee1f0844c1ec",
+          "appliedAt": "2026-11-15T02:37:05.667Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:27244162010e44498454ee1f0844c1ec",
+          "auditEvidence": null,
+          "summary": "Photo exacte de la piste importée et publiée."
+        },
+        {
+          "eventId": "image-metadata-27244162010e44498454ee1f0844c1ec",
+          "appliedAt": "2026-11-15T02:37:09.151Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:27244162010e44498454ee1f0844c1ec",
+          "auditEvidence": null,
+          "summary": "Crédit et métadonnées de la photo confirmés."
+        },
+        {
+          "eventId": "closure-779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "appliedAt": "2026-11-15T02:37:09.151Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+          "evidence": "PARK_DATA_EDITOR:image:27244162010e44498454ee1f0844c1ec",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-waldmichelbach-20261115/audit.json",
+          "summary": "Audit final : huit pages et trois photos HTTP 200, complétude 76 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne, les IDs legacy et la date réelle. Recontrôler le signal de fonctionnement météo et vérifier les tarifs hors saison ; trois photos exactes et le post Facebook sont intégrés.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -24777,35 +24874,54 @@
           "label": "Opérateur référencé par la source",
           "url": "https://www.erlebnishoehe-wald-michelbach.de/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Erlebnishöhe — piste et règles d’accès",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Erlebnishöhe — statut en direct",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/infos/oeffnungszeiten/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Erlebnishöhe — tarifs affichés pour l’été",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/infos/preise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 1",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_in_Wald-Michelbach_1.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wald-Michelbach_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte 3",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_bei_Wald-Michelbach_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Odenwaldbob",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13200.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Sommerrodelbahn Wald Michelbach",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Wald-Michelbach , Hesse",
-            "sourceOpenedYear": "2010"
-          },
-          {
-            "name": "Wald-Michelbach",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-1005",
+            "source": "Erlebnishöhe Wald-Michelbach",
+            "url": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
             "family": "Alpine coaster",
-            "sourceVenueName": "Wald-Michelbach",
-            "referenceId": "location-id-1005",
-            "matchingMethod": "Localité et année d’ouverture concordantes avec une unique fiche de lieu RCDB ; rapprochement documentaire à confirmer."
+            "sourceVenueName": "Kreidacher Höhe",
+            "sourceLocality": "Wald-Michelbach"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Billet de luge distinct et accès gratuit au domaine ; une ancienne fiche Park masquée ne contenait qu’un item Odenwaldbob. Migration contrôlée en standalone sans suppression."
       }
     },
     {
@@ -29547,13 +29663,21 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Décider parc, standalone, équipement interne ou hors périmètre avant toute création ; vérifier l’identité et les doublons.",
+      "nextAction": "Qualifier le domaine Erlebnishöhe et ses autres activités séparément ; l’Odenwaldbob est déjà publié comme standalone sous DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574. Ne pas recréer la piste.",
       "sources": [
         {
           "label": "Freizeitpark App",
           "url": "https://www.freizeitparkapp.de/en/parks/deutschland/wiegand-erlebnisberge-erlebnishoehe-wald-michelbach/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Erlebnishöhe — Odenwaldbob déjà intégré en standalone",
+          "url": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
+          "accessedAt": "2026-11-15"
         }
+      ],
+      "possibleBacklogEntries": [
+        "DE-park-9f0be526-a8d7-4bfe-9932-31598aacf574"
       ]
     },
     {

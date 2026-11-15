@@ -1,0 +1,160 @@
+{
+  "work": "Migrated the hidden mono-attraction Park and Odenwaldbob parkItem into a published standalone Alpine coaster; imported three exact photos and published its Facebook announcement.",
+  "qualification": "The operator presents the Odenwaldbob as a separately ticketed fixed ride within an area with free admission. The hidden legacy Park Sommerrodelbahn Wald Michelbach contained only the Odenwaldbob parkItem. Official editor searches found no standalone equivalent. Controlled migration marked both hidden legacy records NotRelevant without deleting them; the broader Erlebnishöhe venue candidate remains for separate classification of its other activities.",
+  "sources": {
+    "operatorRideAndRules": "https://www.erlebnishoehe-wald-michelbach.de/sommersaison/sommerrodelbahn/",
+    "operatorLiveStatus": "https://www.erlebnishoehe-wald-michelbach.de/infos/oeffnungszeiten/",
+    "operatorSummerPrices": "https://www.erlebnishoehe-wald-michelbach.de/infos/preise/",
+    "municipalOpeningHistory": "https://www.ueberwald.eu/tourismus/freizeiterlebnis/sommerrodelbahn/",
+    "commonsPhotos": [
+      "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_in_Wald-Michelbach_1.JPG",
+      "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wald-Michelbach_-_panoramio.jpg",
+      "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_bei_Wald-Michelbach_-_panoramio.jpg"
+    ]
+  },
+  "entity": {
+    "id": "779ee07b-a8e0-4cca-b21d-54d457b9bf94",
+    "name": "Odenwaldbob — Sommerrodelbahn Wald-Michelbach",
+    "kind": "StandaloneAttraction",
+    "countryCode": "DE",
+    "operatingStatus": "Operating",
+    "published": true,
+    "legacyParkId": "9f0be526-a8d7-4bfe-9932-31598aacf574",
+    "legacyParkItemId": "bac4d1f1-9465-45a5-87b3-10561a9c1e9e"
+  },
+  "officialFacts": {
+    "place": "Kreidacher Höhe 2, 69483 Wald-Michelbach, Hesse, Germany",
+    "openedYear": 2010,
+    "descentLengthMeters": 1000,
+    "approximateAscentLengthMeters": 360,
+    "minimumAgeYears": 3,
+    "soloFromAgeYears": 8,
+    "companionMinimumAgeYears": 8,
+    "companionMinimumHeightCm": 135,
+    "maxCombinedRiderWeightKg": 150,
+    "pregnantRidersAllowed": false,
+    "operatorLiveStatusOn2026-11-15": "Ride signal updated 2026-11-14 says open weekends 13:00–16:00, weather permitting",
+    "groundsAdmission": "free; ride ticket separate"
+  },
+  "sourceLimitations": [
+    "The live signal is dated 2026-11-14 and weather dependent. Weekend hours are documented in notes rather than encoded as guaranteed recurring ride hours.",
+    "The displayed single ride prices are labelled summer prices; they were retained for future verification and not entered as an active winter fare.",
+    "The ascent length is approximate according to the operator and was not encoded as a precise native field.",
+    "All three Commons photographs date from 2011 and show the exact installation, not necessarily its current appearance.",
+    "The legacy Park and item remain hidden and NotRelevant without deletion."
+  ],
+  "operatorDisplayedSummerTariffsForRecheck": {
+    "source": "https://www.erlebnishoehe-wald-michelbach.de/infos/preise/",
+    "currency": "EUR",
+    "observedAt": "2026-11-15",
+    "singleRideAdult": 4,
+    "singleRideChildAge3to14": 3
+  },
+  "editorSearch": {
+    "parkQueries": [
+      "Sommerrodelbahn Wald Michelbach",
+      "Erlebnishöhe Wald-Michelbach",
+      "Odenwaldbob"
+    ],
+    "standaloneQueries": [
+      "Sommerrodelbahn Wald Michelbach",
+      "Erlebnishöhe Wald-Michelbach",
+      "Odenwaldbob"
+    ],
+    "matchingStandaloneBeforeMigration": 0
+  },
+  "dataReceipts": [
+    {
+      "operationId": "ebcbe806-f199-4df7-9059-a1b5c9663866",
+      "appliedAtUtc": "2026-11-15T02:34:40.0549084Z",
+      "summary": "Created standalone and marked hidden mono-attraction legacy Park and item NotRelevant"
+    },
+    {
+      "operationId": "18e3e4b2-138b-4b84-b020-14ed013c2460",
+      "appliedAtUtc": "2026-11-15T02:36:16.8630923Z",
+      "summary": "Added five official access rules, 1000m descent and weather-dependent weekend status"
+    }
+  ],
+  "photographs": [
+    {
+      "imageId": "9e681364d2a6403f859424f9bc87861f",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_in_Wald-Michelbach_1.JPG",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Sommerrodelbahn_in_Wald-Michelbach_1.JPG",
+      "author": "Woelle ffm",
+      "license": "CC BY-SA 3.0",
+      "photographedAt": "2011-08-11",
+      "subject": "Course and lift on the Odenwald hillside",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": true,
+      "importedAtUtc": "2026-11-15T02:36:38.232Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:36:41.717Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "f233452c440e4604bc3fcdcf80bff200",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_Wald-Michelbach_-_panoramio.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sommerrodelbahn_Wald-Michelbach_-_panoramio.jpg",
+      "author": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "photographedAt": "2011-09-10",
+      "subject": "Panorama of the complete descent across a meadow",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T02:36:51.914Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:36:55.254Z",
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "27244162010e44498454ee1f0844c1ec",
+      "commonsPage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn_bei_Wald-Michelbach_-_panoramio.jpg",
+      "originalSourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Sommerrodelbahn_bei_Wald-Michelbach_-_panoramio.jpg",
+      "author": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "photographedAt": "2011-09-10",
+      "subject": "Close view of an elevated rail bend",
+      "modification": "Resized and JPEG optimized for web display",
+      "published": true,
+      "current": false,
+      "importedAtUtc": "2026-11-15T02:37:05.667Z",
+      "metadataAppliedAtUtc": "2026-11-15T02:37:09.151Z",
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "audit": {
+    "completenessScore": 76,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedOwnImages": 3,
+    "currentOwnImages": 1,
+    "activeFareOfferCount": 0,
+    "weeklyHourRuleCount": 0,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    }
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/779ee07b-a8e0-4cca-b21d-54d457b9bf94/odenwaldbob-sommerrodelbahn-wald-michelbach",
+    "sitePublishedAtUtc": "2026-11-15T02:38:19.2679365Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:478bbdfc-b8ef-47b5-b182-f19b25e0ec91",
+    "facebookStatus": "Published",
+    "facebookId": "768fda44bbde4202b5302b5650ecdd1e",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127398955424431",
+    "facebookPublishedAtUtc": "2026-11-15T02:39:14.3295396Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T02:37:09.151Z",
+  "remainingGaps": [
+    "Verify the operator’s live status on each visit day and update if the winter weather pattern changes.",
+    "Confirm whether the displayed summer tariffs remain valid during the off-season before encoding active pricing.",
+    "Qualify the broader Erlebnishöhe venue and its climbing attractions separately."
+  ]
+}
