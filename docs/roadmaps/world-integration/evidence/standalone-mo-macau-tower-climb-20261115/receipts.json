@@ -1,0 +1,43 @@
+{
+  "entityId": "e4672f67-f21b-4461-b044-5ba27420898d",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "f0f76b34-9458-4b19-9f24-226201842332",
+      "appliedAtUtc": "2026-11-15T18:36:19.6445931Z"
+    },
+    {
+      "step": "visitor",
+      "operationId": "5d38547a-1323-4086-8216-3ee9283a11e3",
+      "appliedAtUtc": "2026-11-15T18:37:17.5655167Z"
+    },
+    {
+      "step": "history",
+      "operationId": "ac6be7fa-1043-43cc-89cf-2de7c0bca8c8",
+      "appliedAtUtc": "2026-11-15T18:38:27.7813043Z"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "77094c2aeaad4fb99341241c6a73f0cd",
+      "createdAtUtc": "2026-11-15T18:37:43.304Z",
+      "updatedAtUtc": "2026-11-15T18:37:46.747Z",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Urban_Climbing_at_Macau_Tower,_338_meter.webm",
+      "derivation": "Wikimedia Commons 1280 px photographic video frame; exact Tower Climb ascent, source video CC BY 3.0.",
+      "published": true,
+      "current": true
+    }
+  ],
+  "sitePublication": {
+    "operationId": "17e3840f-2bd3-483b-a34f-7e90007f967e",
+    "appliedAtUtc": "2026-11-15T18:39:24.3569052Z",
+    "url": "https://amusement-parks.fun/fr/attraction/e4672f67-f21b-4461-b044-5ba27420898d/macau-tower-tower-climb"
+  },
+  "facebookPublication": {
+    "id": "f6b354bb9f63410fbcb071dc100ebbcc",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-15T18:40:21.0248216Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127490473424431",
+    "externalPostId": "1285475681307050_122127490473424431"
+  }
+}

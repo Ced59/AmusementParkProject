@@ -613,25 +613,69 @@
     {
       "entryId": "MO-candidate-discovery-f6b745d5b0628c86",
       "name": "Macau Tower Tower Climb",
-      "entityKind": "ToQualify",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Activité de hauteur fixe",
+      "category": "Ascension fixe de tour",
       "locality": "Macau Tower, Macao",
-      "siteId": null,
+      "siteId": "e4672f67-f21b-4461-b044-5ba27420898d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-11-14",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T18:40:40Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Ascension de la tour proposée distinctement par Skypark ; identité, tarif et photo à vérifier.",
-      "identityConfidence": "Activité distincte listée par l’exploitant ; identité précise, autonomie et éventuel doublon à contrôler avant création.",
+      "sourceLifecycleSignal": "Skypark Macau affiche Tower Climb à 2 688 MOP par personne le 15 novembre 2026.",
+      "identityConfidence": "Ascension au sommet du mât, billet propre ; recherches officielles StandaloneAttraction et Park sans doublon à Macao.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Skypark Macau Tower Climb",
+        "Macau Tower Mast Climb"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Rechercher de nouveau Park et StandaloneAttraction, vérifier l’offre actuelle et trouver une photographie réutilisable montrant exactement cette activité avant publication. Ne pas utiliser les photos du Bungy pour cette fiche.",
+      "lastDataIntegrationAt": "2026-11-15T18:38:27.781Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-f0f76b34-9458-4b19-9f24-226201842332",
+          "appliedAt": "2026-11-15T18:36:19.644Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4672f67-f21b-4461-b044-5ba27420898d",
+          "evidence": "PARK_DATA_EDITOR:apply:f0f76b34-9458-4b19-9f24-226201842332",
+          "auditEvidence": null,
+          "summary": "Création masquée et huit descriptions."
+        },
+        {
+          "eventId": "apply-5d38547a-1323-4086-8216-3ee9283a11e3",
+          "appliedAt": "2026-11-15T18:37:17.565Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4672f67-f21b-4461-b044-5ba27420898d",
+          "evidence": "PARK_DATA_EDITOR:apply:5d38547a-1323-4086-8216-3ee9283a11e3",
+          "auditEvidence": null,
+          "summary": "Tarif officiel et conditions d’accès."
+        },
+        {
+          "eventId": "photo-77094c2aeaad4fb99341241c6a73f0cd",
+          "appliedAt": "2026-11-15T18:37:46.747Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4672f67-f21b-4461-b044-5ba27420898d",
+          "evidence": "PARK_DATA_EDITOR:photo:77094c2aeaad4fb99341241c6a73f0cd",
+          "auditEvidence": null,
+          "summary": "Photogramme exact du Tower Climb, vidéo CC BY 3.0 et crédits localisés."
+        },
+        {
+          "eventId": "apply-ac6be7fa-1043-43cc-89cf-2de7c0bca8c8",
+          "appliedAt": "2026-11-15T18:38:27.781Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "e4672f67-f21b-4461-b044-5ba27420898d",
+          "evidence": "PARK_DATA_EDITOR:apply:ac6be7fa-1043-43cc-89cf-2de7c0bca8c8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-mo-macau-tower-climb-20261115/audit.json",
+          "summary": "Frise d’ouverture 2002, audit final et fiche prête à publier."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier les créneaux propres à l’activité et le tarif avant février 2027 ; chercher une seconde image exacte sous licence. Skyjump reste un dossier distinct.",
       "sources": [
         {
           "label": "Skypark Macau — catalogue des activités",
@@ -642,19 +686,73 @@
           "label": "Skypark Macau — activité",
           "url": "https://www.skyparkmacau.com/activities/towerclimb",
           "accessedAt": "2026-11-14"
+        },
+        {
+          "label": "Skypark Macau — Tower Climb, tarif et conditions",
+          "url": "https://www.skyparkmacau.com/activities/Towerclimb",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Skypark Macau — chronologie officielle, ouverture 2002",
+          "url": "https://www.skyparkmacau.com/timeline",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — ascension filmée du mât, Nicklas Ulvnäs, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Urban_Climbing_at_Macau_Tower,_338_meter.webm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Tower Climb",
+          "url": "https://amusement-parks.fun/fr/attraction/e4672f67-f21b-4461-b044-5ba27420898d/macau-tower-tower-climb",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "MO",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-11-14",
-        "attractions": [],
-        "rationale": "Produit distinct du Bungy ; la modélisation autonome, les doublons et une photo exacte restent à confirmer."
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Macau Tower Tower Climb",
+            "source": "Skypark Macau",
+            "url": "https://www.skyparkmacau.com/activities/Towerclimb",
+            "family": "Ascension fixe de tour",
+            "sourceVenueName": "Macau Tower",
+            "sourceLifecycleSignal": "Billet Tower Climb ouvert à la réservation et tarif affiché le 15 novembre 2026.",
+            "matchingMethod": "Recherches officielles StandaloneAttraction et Park, création contrôlée par Preview/Apply.",
+            "sourceLocality": "Macao"
+          }
+        ],
+        "rationale": "Ascension permanente du mât de Macau Tower à billet individuel incluant l’observatoire ; produit distinct du Skywalk, du Bungy et du Skyjump."
       },
       "possibleBacklogEntries": [
         "MO-candidate-discovery-64f20a87c649ce"
-      ]
+      ],
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/e4672f67-f21b-4461-b044-5ba27420898d/macau-tower-tower-climb",
+          "publishedAtUtc": "2026-11-15T18:39:24.356Z",
+          "verifiedAtUtc": "2026-11-15T18:40:40Z",
+          "evidence": "PARK_DATA_EDITOR:apply:17e3840f-2bd3-483b-a34f-7e90007f967e"
+        },
+        "facebook": {
+          "id": "f6b354bb9f63410fbcb071dc100ebbcc",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T18:40:21.024Z",
+          "externalPostId": "1285475681307050_122127490473424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127490473424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:f6b354bb9f63410fbcb071dc100ebbcc"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-mo-macau-tower-climb-20261115/audit.json",
+        "score": 85,
+        "publicationBlockers": [],
+        "gapCount": 3
+      }
     }
   ]
 }
