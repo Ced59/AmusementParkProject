@@ -1,0 +1,190 @@
+{
+  "parkId": "657f74f6-b7dd-43f4-8039-318c2daa4157",
+  "entryId": "FR-candidate-b96b33e2bd92d5",
+  "scope": "Public historical-logo research only; no API, Git, imports, generated imagery or image edits.",
+  "completedAtUtc": "2026-11-15T09:17:33.640222+00:00",
+  "outcome": "No new standalone historical logo found. Existing authentic-looking advertising-cover lead re-inspected; no publication blocker claimed resolved.",
+  "priorEvidenceRead": [
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-intake.json",
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-progress-audit.json",
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-followup-audit-20261103.json",
+    "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/vallee-peaux-rouges-current-20261115.json"
+  ],
+  "priorUnsuccessfulSearchesNotRepeated": [
+    "Paywalled Le Monde 1967 article (HTTP402)",
+    "Modern successor logo already rejected",
+    "Image’Est watermarked poster and Delcampe watermarked postcards",
+    "Modern OK Corral photographs misassociated on forum",
+    "Historic-film and railway sources already examined without standalone logo"
+  ],
+  "historicalCoverCandidate": {
+    "sourcePage": "https://repliquesoldwest.superforum.fr/t6075-qui-se-souvient-de-la-vallee-des-peaux-rouges",
+    "sourceImage": "https://i.servimg.com/u/f34/16/37/32/46/29784611.jpg",
+    "localFile": "/workspace/france-historical-20261114/vallee-peaux-rouges/parallel-logo-research/original-america-park-brochure.jpg",
+    "sha256": "c5ff44c8f279910dc66827e7e188a6d85fbfbdff1273bf683a93751d7cd48ac8",
+    "bytes": 210398,
+    "dimensions": [
+      729,
+      934
+    ],
+    "sourcePublicationDate": "2013-08-01",
+    "sourcePublicationDateMeaning": "Date of forum opening post containing the reproduction, not the original brochure date.",
+    "originalBrochureDate": null,
+    "originalPhotographerOrScanAuthor": null,
+    "attributionLimits": "The forum opening post credits Photos: Google. That is not proof of original scan authorship or an open licence. The printed advertisement itself is a historical object, reproduced on a secondary forum, not an operator-owned archive.",
+    "visualIdentityEvidence": [
+      "Large red-and-black lettering VALLÉE DES PEAUX-ROUGES",
+      "Printed address 60700 FLEURINES and access via A1/Senlis",
+      "America Park wording on American-flag cartouche",
+      "Park photographs of train, western façades, performance area and themed dining rooms",
+      "Printed photographer credit PHOTOS GLOB VISION INTERNATIONAL visible at left edge; it does not identify who made this scan."
+    ],
+    "qualityAssessment": {
+      "personallyViewed": true,
+      "watermarkVisible": false,
+      "wordmarkReadable": true,
+      "coverShowsWearAndCreases": true,
+      "nativeStandaloneLogo": false,
+      "containsCompositeAdvertisingLayout": true,
+      "usableWithoutEditingAsLogo": false,
+      "reason": "The full original is a brochure cover with a rider illustration, several photographs and address text. It must not be reclassified wholesale as a logo to satisfy the API."
+    },
+    "approximateWordmarkBoundingBoxForReviewOnly": {
+      "left": 105,
+      "top": 101,
+      "right": 716,
+      "bottom": 376,
+      "coordinateSystem": "Original 729x934 pixels; no cropped image produced.",
+      "warning": "A rectangular crop retains background and parts of adjacent illustration; precise boundaries require deliberate faithful editing, not a generated redraw."
+    },
+    "editPerformed": false,
+    "acceptedForImport": false
+  },
+  "officialSuccessorPageCheckedLocally": {
+    "url": "https://www.parcoursaventure60.fr/histoire-du-parc",
+    "file": "/workspace/france-historical-20261114/vallee-peaux-rouges/official-history.html",
+    "sha256": "3b3339010dbcf77d0b114269efffbf45ab736f71c0617e34aa367c05434b3411",
+    "originalAccessEvidence": "/workspace/france-historical-20261114/vallee-peaux-rouges/source-access.json",
+    "originalAccessedAtUtc": "2026-11-15T06:35:06.223544+00:00",
+    "newNetworkFetch": false,
+    "logoUrl": "https://www.parcoursaventure60.fr/wp-content/uploads/2020/11/logo-parcours-aventure-sans-fond.png",
+    "decision": "Excluded: current Parcours Aventure 60 successor logo, not historic western-park identity. The six other page images are historical photographs, not autonomous logos."
+  },
+  "searchResults": [
+    {
+      "file": "google-logo.html",
+      "result": "HTTP200 but JavaScript/challenge interstitial, no search-result evidence extracted; no challenge solved."
+    },
+    {
+      "file": "duckduckgo-historic-logo.html",
+      "result": "HTTP202 human/duck-image challenge; stopped, no challenge solved."
+    },
+    {
+      "file": "bing-america.html",
+      "result": "HTTP200 but broad America/United States results unrelated to Fleurines, excluded."
+    },
+    {
+      "file": "bing-vallee-logo.html",
+      "result": "No result returned for exact historical name + logo."
+    },
+    {
+      "file": "bing-vallee-brochure.html",
+      "result": "No result returned for exact historical name + brochure."
+    },
+    {
+      "file": "bing-fleurines-poster.html",
+      "result": "No result returned for Fleurines Peaux Rouges affiche."
+    }
+  ],
+  "accessChecks": [
+    {
+      "name": "google-logo.html",
+      "url": "https://www.google.com/search?q=%22vall%C3%A9e+des+peaux+rouges%22+logo+historique&num=10",
+      "accessedAtUtc": "2026-11-15T09:14:37.994346+00:00",
+      "status": 200,
+      "finalUrl": "https://www.google.com/search?q=%22vall%C3%A9e+des+peaux+rouges%22+logo+historique&num=10",
+      "contentType": "text/html; charset=UTF-8",
+      "retryAfter": null,
+      "bytes": 92897,
+      "sha256": "9f9ee8056b72fec6afd2975d6ee40a4591c9fa34dd833079e28e48e01ecd0c8a"
+    },
+    {
+      "name": "original-america-park-brochure.jpg",
+      "url": "https://i.servimg.com/u/f34/16/37/32/46/29784611.jpg",
+      "accessedAtUtc": "2026-11-15T09:14:46.117787+00:00",
+      "status": 200,
+      "finalUrl": "https://i.servimg.com/u/f34/16/37/32/46/29784611.jpg",
+      "contentType": "image/jpeg",
+      "retryAfter": null,
+      "bytes": 210398,
+      "sha256": "c5ff44c8f279910dc66827e7e188a6d85fbfbdff1273bf683a93751d7cd48ac8"
+    },
+    {
+      "name": "bing-america.html",
+      "url": "https://www.bing.com/search?q=%22America+Park%22+%22Fleurines%22&count=10",
+      "accessedAtUtc": "2026-11-15T09:14:54.490332+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bing.com/search?q=%22America+Park%22+%22Fleurines%22&count=10",
+      "contentType": "text/html; charset=utf-8",
+      "retryAfter": null,
+      "bytes": 123529,
+      "sha256": "08e0bd4be2def2e182ad91005e22d8b128e3fdc9d0195bd7b9032904fbb030fa"
+    },
+    {
+      "name": "duckduckgo-historic-logo.html",
+      "url": "https://html.duckduckgo.com/html/?q=%22vall%C3%A9e+des+peaux+rouges%22+logo",
+      "accessedAtUtc": "2026-11-15T09:15:20.951005+00:00",
+      "status": 202,
+      "finalUrl": "https://html.duckduckgo.com/html/?q=%22vall%C3%A9e+des+peaux+rouges%22+logo",
+      "contentType": "text/html; charset=UTF-8",
+      "retryAfter": null,
+      "bytes": 14316,
+      "sha256": "74c8a98c16681ff758dfcffa4baa3d05ad9da34842436ff02f240510fd18e478"
+    },
+    {
+      "name": "forum-brochure.html",
+      "url": "https://repliquesoldwest.superforum.fr/t6075-qui-se-souvient-de-la-vallee-des-peaux-rouges",
+      "accessedAtUtc": "2026-11-15T09:15:20.941742+00:00",
+      "status": 200,
+      "finalUrl": "https://repliquesoldwest.superforum.fr/t6075-qui-se-souvient-de-la-vallee-des-peaux-rouges",
+      "contentType": "text/html; charset=utf-8",
+      "retryAfter": null,
+      "bytes": 201557,
+      "sha256": "3c791e2feace87028da4e5bb55c3a42b86c59da3149a75a04a2689ae52266860"
+    },
+    {
+      "name": "bing-vallee-logo.html",
+      "url": "https://www.bing.com/search?q=%22Vall%C3%A9e%20des%20Peaux-Rouges%22%20logo&setlang=fr",
+      "accessedAtUtc": "2026-11-15T09:15:53.407151+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bing.com/search?q=%22Vall%C3%A9e%20des%20Peaux-Rouges%22%20logo&setlang=fr",
+      "contentType": "text/html; charset=utf-8",
+      "retryAfter": null,
+      "bytes": 92717,
+      "sha256": "129bcc2d86e936b76665611b6d87b12d8302436d01a04a3a48b41022f3778834"
+    },
+    {
+      "name": "bing-vallee-brochure.html",
+      "url": "https://www.bing.com/search?q=%22vall%C3%A9e+des+peaux-rouges%22+brochure&setlang=fr",
+      "accessedAtUtc": "2026-11-15T09:16:03.157873+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bing.com/search?q=%22vall%C3%A9e+des+peaux-rouges%22+brochure&setlang=fr",
+      "contentType": "text/html; charset=utf-8",
+      "retryAfter": null,
+      "bytes": 92079,
+      "sha256": "4868e025191d4cb933bfebb27c1dd72893cac85f8e0da7a78745849c6b152168"
+    },
+    {
+      "name": "bing-fleurines-poster.html",
+      "url": "https://www.bing.com/search?q=Fleurines+Peaux+Rouges+affiche&setlang=fr",
+      "accessedAtUtc": "2026-11-15T09:16:22.223489+00:00",
+      "status": 200,
+      "finalUrl": "https://www.bing.com/search?q=Fleurines+Peaux+Rouges+affiche&setlang=fr",
+      "contentType": "text/html; charset=utf-8",
+      "retryAfter": null,
+      "bytes": 91224,
+      "sha256": "8df793e84d80cc623c3eb1e43439a523bbd31a07d3f42d715ba8455d145e06b9"
+    }
+  ],
+  "nextAction": "Keep logo blocker unresolved until a faithful, sufficiently clear historical mark is supplied or extracted under an explicit allowed method, or another genuine standalone original is found. Do not substitute the modern successor logo or use the full brochure as Logo. Existing crop-method question is historical and was not repeated."
+}

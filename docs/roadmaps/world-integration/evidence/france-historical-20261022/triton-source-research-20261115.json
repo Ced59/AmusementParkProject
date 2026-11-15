@@ -1,0 +1,144 @@
+{
+  "createdAtUtc": "2026-11-15T09:17:31.508455Z",
+  "scope": "Public-source research only; no PARK_DATA_EDITOR call, Git command, authentication, publication, contact or existing-file modification.",
+  "identity": {
+    "name": "Le Triton",
+    "locality": "Yerres, Essonne, France",
+    "entryId": "FR-candidate-da3b95a7f543cb",
+    "parkId": "0f2ee67f-fedf-4423-9a6b-bb2142a92a70",
+    "aliases": [
+      "Centre aquatique Le Triton",
+      "Aqualand de Yerres",
+      "Centre de loisirs nautiques Le Triton"
+    ],
+    "excludedHomonyms": [
+      "Le Triton music venue, Les Lilas",
+      "Evere swimming pool",
+      "Aquagif/Aqualand Gif-sur-Yvette",
+      "current Pierre de Coubertin swimming pool",
+      "current Parc des Deux Rivières visitor equipment"
+    ]
+  },
+  "baseline": {
+    "reviewedFiles": [
+      {
+        "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-intake.json",
+        "sha256": "80b8d6aadb65d88c4e9c49d6d3f8ad011b0d0aceb50a1e73708d9efa77966368"
+      },
+      {
+        "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-progress-audit.json",
+        "sha256": "e950a10c0fd0b98494b94ba2976284d60da3ac886aea763e1317dfb77369b5e5"
+      },
+      {
+        "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-source-gaps.json",
+        "sha256": "f82c354ccec54ac8c35e1feb02069fbb878d898f0a5e175eb34cddce1e807ba0"
+      },
+      {
+        "path": "/workspace/amusement-france-registry/docs/roadmaps/world-integration/evidence/france-historical-20261022/le-triton-receipts.json",
+        "sha256": "bfa70f96bc1bd7a236d7b991a2abcf9071bd8747d7e53a79f3ae9b8361d51435"
+      }
+    ],
+    "lastDataIntegrationAt": "2026-11-02T10:22:25.548Z",
+    "status": "Hidden/Blocked/partial",
+    "projectedScore": 77,
+    "apiBlocker": "media.logo-required",
+    "items": 0,
+    "ownedImages": 3,
+    "historyFacts": 5,
+    "articles": 1,
+    "historicalInventoryQualified": false,
+    "openingAndVisitorClosureDates": "Unresolved contradictory sources; preserved unknown."
+  },
+  "result": {
+    "authenticStandaloneLogoFound": false,
+    "newAssetApprovedForImport": false,
+    "newInventoryItemQualified": false,
+    "blockersResolved": false,
+    "changesApplied": false
+  },
+  "inspectedSources": [
+    {
+      "url": "https://www.maisondebanlieue.fr/wp-content/uploads/2010/05/Panneaux_expo_piscines.pdf",
+      "status": "HTTP200 PDF fetched; page10 personally inspected; existing source",
+      "file": "museum-posters.pdf",
+      "sha256": "0cc26a12f03d3c1830bfbbabe50d8bee9bccb55f1c9299838e968e239f013992",
+      "observations": "Two historical advertising posters attributed to collection Senée, dated 1988 by museum. The small green poster announces future opening; the other shows a family advertising visual. Neither is a standalone native logo. The large waterslide/pool photographs and yellow-blue AQUALAND wordmark on the same page explicitly concern Gif-sur-Yvette, not Triton.",
+      "assetDecision": "No import. No crop, reconstruction, recolouring or logo substitution. Rendered page is for inspection only.",
+      "inventoryLimit": "Advertising model or generic aquatic illustration does not independently establish built named facilities."
+    },
+    {
+      "url": "https://www.ccomptes.fr/sites/default/files/EzPublish/Collectivites-territoriales-gestion-tresorerie-et-dette.pdf",
+      "status": "HTTP200 PDF fetched and text searched; new primary-source lead",
+      "file": "ccomptes-debt1991.pdf",
+      "sha256": "b44273e97c9252ebba9490056a198b113bfa5bf42bb2361992deac94a4081360",
+      "observations": "November1991 thematic debt report, page88, explicitly refers back to the June1991 annual report treatment of Yerres at page369 and following. No Triton inventory or logo in this downloaded thematic report.",
+      "limitation": "This is NOT the June1991 annual report pages369–375; that specific full text remains unfound."
+    },
+    {
+      "url": "https://questions.assemblee-nationale.fr/q9/9-51356QE.htm",
+      "status": "Previously cited source; public search text rechecked",
+      "observations": "Written question51356 identifies Cour des comptes report24June1991 pages369–375. This provides an exact archival target, not the contents of those pages."
+    },
+    {
+      "url": "https://jpierre-mocky.fr/index.php?FontSize=font-medium&catid=1&id=197&option=com_content&view=article",
+      "status": "Direct urllib HTTP406; public web open readable, no login or wall bypass",
+      "observations": "Official filmmaker site reproduces an interview from the city of Yerres about the2011 filming of Le Mentor. Mocky recalls filming at the Triton in1991.",
+      "limitation": "This is evidence of a filming location, not proof of public opening in1991, named attractions or logo. Surrounding2011 photos concern Le Mentor and Caillebotte, not historical Triton scenes."
+    },
+    {
+      "url": "https://catalogue.ina.fr/doc/TV-RADIO/TV_574298.001.007/les-flops-en-stock",
+      "status": "Public INA catalogue read",
+      "observations": "Capital/M6 segment Les flops en stock, aired11May1997, notice574298.001.007, producer summary associates inauguration with Vanessa Paradis.",
+      "limitation": "No inauguration date or named attraction inventory in the notice. Footage was not obtained; no screenshot or watermark removal/import."
+    }
+  ],
+  "searchLimits": [
+    "Targeted public text and image searches: name/locality + logo, poster, brochure, wave pool, slide, architect, restaurant, dates, financial report.",
+    "Targeted searches of archives.essonne.fr, archives-nationales.culture.gouv.fr, francearchives.gouv.fr and delcampe.net returned no result for the exact park/locality pair.",
+    "Image search returned a present-day Brunoy sculpture, excluded as unrelated.",
+    "Political commentary mentions a restaurant but provides no identifiable historic business, named room, contemporaneous plan or independent precise inventory; not sufficient for a new item.",
+    "Existing conflicting opening/closure dates not silently resolved from retrospective press."
+  ],
+  "nextResearchTargets": [
+    "Exact Cour des comptes annual report June1991 pages369–375, rather than the November debt report.",
+    "Native high-resolution original of the two1988 advertising posters in collection Senée via the Maison de Banlieue catalogue/archive; none obtained, no outreach sent.",
+    "INA consultation of notice574298.001.007 may provide identifiable footage; catalogue alone does not qualify facilities."
+  ],
+  "files": [
+    {
+      "file": "ccomptes-debt1991.pdf",
+      "bytes": 712707,
+      "sha256": "b44273e97c9252ebba9490056a198b113bfa5bf42bb2361992deac94a4081360"
+    },
+    {
+      "file": "ccomptes-debt1991.txt",
+      "bytes": 698068,
+      "sha256": "843e32c493b2db53fb0cbe3d490b4c35acc02c4939ab29b3a65e71482ebefdef"
+    },
+    {
+      "file": "museum-p10-inspection.png",
+      "bytes": 2254691,
+      "sha256": "ec9f0a9b4c375e138dd6bd5280239695191789867e6abd3f17c399163c316a81"
+    },
+    {
+      "file": "museum-posters.pdf",
+      "bytes": 2875811,
+      "sha256": "0cc26a12f03d3c1830bfbbabe50d8bee9bccb55f1c9299838e968e239f013992"
+    },
+    {
+      "file": "museum-posters.txt",
+      "bytes": 66683,
+      "sha256": "c0e97dd0e882c14c3e8741009d073572e95959cbebad44684f21a84ab833268d"
+    },
+    {
+      "file": "search-result-links.json",
+      "bytes": 46061,
+      "sha256": "00b5437b2eda6f378709ebb426794614d7293d99d0bd98997cd281114e71fc84"
+    },
+    {
+      "file": "source-downloads-initial.json",
+      "bytes": 1386,
+      "sha256": "a84a57517cd927bc02c31574bce54e8b3802e37ec3c257330deeda16bc292a47"
+    }
+  ]
+}
