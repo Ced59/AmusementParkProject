@@ -24190,18 +24190,49 @@
         "5569cb0e-fc32-4c5f-8a8c-0c289657de6b"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:12:49.458Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Saison 2026 terminée ; reprise fin avril ou début mai 2027 seulement envisagée par l’exploitant.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:11:15.012Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-37a5b27d-aee8-440b-aac4-1078b9f622da",
+          "appliedAt": "2026-11-15T15:09:29.398Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+          "evidence": "PARK_DATA_EDITOR:apply:37a5b27d-aee8-440b-aac4-1078b9f622da",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+          "summary": "Huit descriptions, huit tarifs affichés, conditions d’âge et fermeture de la saison 2026 intégrés."
+        },
+        {
+          "eventId": "image-81a7403c4ca64b1aaf9294133af2b4a6",
+          "appliedAt": "2026-11-15T15:10:00.158Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+          "evidence": "PARK_DATA_EDITOR:image:81a7403c4ca64b1aaf9294133af2b4a6@2026-11-15T15:10:00.158Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+          "summary": "Photo exacte de la remontée sur rail, Pardin, CC0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-743e49b7-9ad3-41b7-87a5-40881e065298",
+          "appliedAt": "2026-11-15T15:11:15.012Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+          "evidence": "PARK_DATA_EDITOR:apply:743e49b7-9ad3-41b7-87a5-40881e065298",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-erbeskopf-20261115/audit.json",
+          "summary": "Correction de la description polonaise, blocage éditorial levé, contrôle final à 95/100."
+        }
+      ],
+      "nextAction": "Surveiller la confirmation de la date d’ouverture 2027 et les tarifs ; vérifier les droits des cinq anciennes images.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -24227,6 +24258,11 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/12988.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Wikimedia Commons — photo de la remontée, CC0",
+          "url": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn-Lift.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",

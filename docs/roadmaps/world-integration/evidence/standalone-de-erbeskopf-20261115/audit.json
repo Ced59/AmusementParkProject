@@ -1,0 +1,76 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "d727843f-43ec-40b1-8c0e-8f303232c715",
+  "entryId": "DE-standalone-d727843f-43ec-40b1-8c0e-8f303232c715",
+  "name": "Sommerrodelbahn Erbeskopf",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T15:12:49.458Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/d727843f-43ec-40b1-8c0e-8f303232c715/sommerrodelbahn-erbeskopf",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://rodelbahn-erbeskopf.de/",
+    "https://erlebnis-nlp.de/",
+    "https://www.erbeskopf.de/tourismus/erbeskopf-wintersport/sommerrodelbahn.html"
+  ],
+  "sourceNuance": "Current operator site reports the 2026 season closed; a late April or early May 2027 start is only tentative. The parent ENP page still contains an obsolete early-2026 planning notice; the current ride page takes precedence. The municipality quotes a different rounded track length; no length comparison is repeated in the public descriptions.",
+  "calendar": {
+    "startDate": "2026-11-15",
+    "endDate": "2026-12-31",
+    "closedDays": 47,
+    "nuance": "The 2026 season has ended. No 2027 opening date is set. Wet or rainy conditions halt operations during open season."
+  },
+  "pricing": "Operator currently displays adult 16+ €4.70/€13.50/€25/€37 and child 8–15 €4/€11/€21/€30 for 1/3/6/10 rides. Children 3–7 ride free with an adult. These are displayed rates, to reverify for 2027; no 2027 booking date is asserted.",
+  "photos": [
+    {
+      "imageId": "81a7403c4ca64b1aaf9294133af2b4a6",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sommerrodelbahn-Lift.jpg",
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Sommerrodelbahn-Lift.jpg/1280px-Sommerrodelbahn-Lift.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "Pardin",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "photographedAt": "2011-08-15",
+      "sourceSha256": "77ea91c0fec4987c6f9b794f57d29e1abc936cec83aabd0038a055cbbe316132",
+      "isCurrent": true,
+      "isPublished": true,
+      "altCaptionCreditLocaleCount": 8,
+      "importedAtUtc": "2026-11-15T15:10:00.158Z",
+      "binaryHttpStatus": 200
+    }
+  ],
+  "rejectedImageCandidates": [
+    "https://commons.wikimedia.org/wiki/File:Erbeskopf_%E2%80%93_Sommerrodelbahn_und_Wintersport_-_panoramio.jpg",
+    "https://commons.wikimedia.org/wiki/File:Rodelbahn.jpg"
+  ],
+  "rejectedImageReason": "Wide views do not visibly identify the rail attraction well enough for an attraction photo.",
+  "photoCountPublished": 6,
+  "oldImageRightsGap": "Five earlier operator images are public; their independent reuse rights remain unverified.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "eb958e36533246f88448b806991cb31d",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127467781424431",
+    "publishedAtUtc": "2026-11-15T15:12:04.9269123Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:11:15.012Z",
+  "nextAction": "Surveiller la confirmation de la date d’ouverture 2027 et les tarifs ; vérifier les droits des cinq anciennes images."
+}
