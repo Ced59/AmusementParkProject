@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:19:14.546Z",
+  "result": {
+    "id": "9581f122d8794e37be843742deec4961",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "c2477c09-955a-4291-86b1-448732547c28",
+    "path": "park_item/9581f122d8794e37be843742deec4961",
+    "description": "Le pirate à l’entrée des trampolines de Capbreton en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 119167,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130350%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Statue de pirate à écharpe rouge et chapeau noir devant les filets des trampolines, près d’un tonneau."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pirate statue with a red sash and black hat in front of the trampoline nets beside a barrel."
+      },
+      {
+        "languageCode": "de",
+        "value": "Piratenstatue mit roter Schärpe und schwarzem Hut vor den Trampolinnetzen neben einem Fass."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Piratenbeeld met rode sjerp en zwarte hoed voor de trampolinenetten naast een ton."
+      },
+      {
+        "languageCode": "it",
+        "value": "Statua di pirata con fascia rossa e cappello nero davanti alle reti dei trampolini, accanto a una botte."
+      },
+      {
+        "languageCode": "es",
+        "value": "Estatua de pirata con banda roja y sombrero negro delante de las redes de las camas elásticas, junto a un barril."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Figura pirata z czerwoną szarfą i czarnym kapeluszem przed siatkami trampolin, obok beczki."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Estátua de pirata com faixa vermelha e chapéu preto diante das redes dos trampolins, junto a um barril."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le pirate à l’entrée des trampolines de Capbreton en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "The pirate at the entrance to the Capbreton trampolines in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Pirat am Eingang zu den Trampolinen in Capbreton 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De piraat bij de ingang van de trampolines in Capbreton in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il pirata all’ingresso dei trampolini di Capbreton nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "El pirata a la entrada de las camas elásticas de Capbreton en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pirat przy wejściu na trampoliny w Capbreton w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O pirata à entrada dos trampolins de Capbreton em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:19:10.954Z",
+    "updatedAt": "2026-11-15T03:19:14.546Z"
+  },
+  "sourceEvidence": {
+    "stem": "trampolino-pirate-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130350%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "c2477c09-955a-4291-86b1-448732547c28",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-6.jpg",
+    "sha256": "c680a6242bc0ddf50b494e5e46831b91e3806978a0cd81789474c0b6378d4d70",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

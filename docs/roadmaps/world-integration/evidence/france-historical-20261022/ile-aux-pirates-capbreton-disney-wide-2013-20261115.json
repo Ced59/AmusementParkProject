@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:16:29.438Z",
+  "result": {
+    "id": "fdbb4394fdc246db96ef843a5c6dc8f8",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "482a2557-2956-417a-be20-aeff5b2436d3",
+    "path": "park_item/fdbb4394fdc246db96ef843a5c6dc8f8",
+    "description": "Les personnages d’Aladdin sur le Manège Disney en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 67577,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130380%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Manège coloré avec Aladdin, le Génie bleu et un véhicule à grandes oreilles noires autour d’une colonne lumineuse."
+      },
+      {
+        "languageCode": "en",
+        "value": "Colourful ride with Aladdin, the blue Genie and a vehicle with large black ears around an illuminated column."
+      },
+      {
+        "languageCode": "de",
+        "value": "Buntes Karussell mit Aladdin, dem blauen Dschinni und einem Fahrzeug mit großen schwarzen Ohren um eine beleuchtete Säule."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kleurrijke molen met Aladdin, de blauwe Geest en een voertuig met grote zwarte oren rond een verlichte zuil."
+      },
+      {
+        "languageCode": "it",
+        "value": "Giostra colorata con Aladdin, il Genio blu e un veicolo dalle grandi orecchie nere attorno a una colonna luminosa."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tiovivo de colores con Aladdín, el Genio azul y un vehículo de grandes orejas negras alrededor de una columna luminosa."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolorowa karuzela z Aladynem, niebieskim Dżinem i pojazdem z dużymi czarnymi uszami wokół świecącej kolumny."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Carrossel colorido com Aladino, o Génio azul e um veículo de grandes orelhas pretas à volta de uma coluna luminosa."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les personnages d’Aladdin sur le Manège Disney en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aladdin characters on the Disney ride in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Aladdin-Figuren auf dem Disney-Karussell im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Aladdin-figuren op de Disney-molen in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "I personaggi di Aladdin sulla giostra Disney nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los personajes de Aladdín en el tiovivo Disney en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Postacie z Aladyna na karuzeli Disney w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As personagens de Aladino no carrossel Disney em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:16:25.905Z",
+    "updatedAt": "2026-11-15T03:16:29.438Z"
+  },
+  "sourceEvidence": {
+    "stem": "disney-wide-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130380%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "482a2557-2956-417a-be20-aeff5b2436d3",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-9.jpg",
+    "sha256": "cc11afd650caf2d6fc43435477f15289422d823dd81eb5c3429e6762612b6b8d",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

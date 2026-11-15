@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:16:47.486Z",
+  "result": {
+    "id": "f9feb7a2da1245328012ef722a90ddf4",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+    "path": "park_item/f9feb7a2da1245328012ef722a90ddf4",
+    "description": "Le Treasure Club de jour, avec ses machines blanches et violettes en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 89260,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130366%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Façade Treasure Club avec galion peint, enseigne en parchemin et grandes machines à lots sous un auvent de palmes."
+      },
+      {
+        "languageCode": "en",
+        "value": "Treasure Club façade with a painted galleon, parchment sign and large prize machines beneath a palm-leaf canopy."
+      },
+      {
+        "languageCode": "de",
+        "value": "Treasure-Club-Fassade mit gemalter Galeone, Pergamentschild und großen Gewinnspielautomaten unter einem Palmblattdach."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Treasure Club-gevel met een geschilderd galjoen, perkamentbord en grote prijsautomaten onder een palmbladerdak."
+      },
+      {
+        "languageCode": "it",
+        "value": "Facciata del Treasure Club con galeone dipinto, insegna a pergamena e grandi macchine a premi sotto una tettoia di palme."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fachada del Treasure Club con galeón pintado, rótulo de pergamino y grandes máquinas de premios bajo un tejadillo de palmeras."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fasada Treasure Club z namalowanym galeonem, szyldem w formie pergaminu i dużymi automatami z nagrodami pod palmowym daszkiem."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fachada do Treasure Club com galeão pintado, letreiro em pergaminho e grandes máquinas de prémios sob uma cobertura de palmeiras."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le Treasure Club de jour, avec ses machines blanches et violettes en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Treasure Club by day, with its white and purple machines in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Treasure Club bei Tageslicht mit seinen weißen und violetten Automaten 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Treasure Club bij daglicht, met witte en paarse automaten in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Treasure Club di giorno, con le sue macchine bianche e viola nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "El Treasure Club de día, con sus máquinas blancas y moradas en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Treasure Club za dnia, z białymi i fioletowymi automatami w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Treasure Club de dia, com as suas máquinas brancas e roxas em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:16:43.972Z",
+    "updatedAt": "2026-11-15T03:16:47.486Z"
+  },
+  "sourceEvidence": {
+    "stem": "treasure-front-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130366%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-7.jpg",
+    "sha256": "713d6784029730eeeaebdaab774f184c5612e3c44d33aae9fce83001fec6dce2",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:19:23.104Z",
+  "result": {
+    "id": "45833ff75fa34432a5fde27895732f15",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+    "path": "park_item/45833ff75fa34432a5fde27895732f15",
+    "description": "Le mât pirate au centre d’Aquanimal en 2013, face aux bateaux du port.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 50649,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130359%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Bassin Aquanimal autour d’un mât à tête de mort, avec de petites embarcations le long de la palissade et les voiliers du port au fond."
+      },
+      {
+        "languageCode": "en",
+        "value": "Aquanimal pool around a skull-decorated mast, with small boats beside the palisade and harbour sailboats beyond."
+      },
+      {
+        "languageCode": "de",
+        "value": "Aquanimal-Becken um einen Mast mit Totenkopf, kleine Boote an der Palisade und Segelboote im Hafen dahinter."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Aquanimal-bassin rond een mast met doodshoofd, met kleine bootjes langs de palissade en zeilboten in de haven erachter."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vasca Aquanimal attorno a un albero decorato con un teschio, con piccole barche lungo la palizzata e le vele del porto sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Estanque Aquanimal alrededor de un mástil con calavera, con pequeñas embarcaciones junto a la empalizada y veleros del puerto al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Basen Aquanimal wokół masztu z czaszką, z małymi łódkami przy palisadzie i portowymi żaglówkami w tle."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Tanque Aquanimal à volta de um mastro com caveira, com pequenas embarcações junto à paliçada e veleiros do porto ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le mât pirate au centre d’Aquanimal en 2013, face aux bateaux du port."
+      },
+      {
+        "languageCode": "en",
+        "value": "The pirate mast at the centre of Aquanimal in 2013, facing the harbour boats."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Piratenmast in der Mitte von Aquanimal 2013, gegenüber den Hafenbooten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De piratenmast midden in Aquanimal in 2013, tegenover de boten in de haven."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’albero piratesco al centro di Aquanimal nel 2013, di fronte alle barche del porto."
+      },
+      {
+        "languageCode": "es",
+        "value": "El mástil pirata en el centro de Aquanimal en 2013, frente a los barcos del puerto."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Piracki maszt pośrodku Aquanimal w 2013 roku, naprzeciw łodzi w porcie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O mastro pirata no centro de Aquanimal em 2013, de frente para os barcos do porto."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:19:19.625Z",
+    "updatedAt": "2026-11-15T03:19:23.104Z"
+  },
+  "sourceEvidence": {
+    "stem": "aquanimal-mast-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130359%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "081fd6b1-d832-4458-9004-6ab779ea7f5d",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-23.jpg",
+    "sha256": "8898991a82f1e0775a21964905ef41359675da146127fc189cacb9450e3fd9d3",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

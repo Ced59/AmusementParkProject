@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:16:56.728Z",
+  "result": {
+    "id": "dcdf769271784dfbb57c98521aa5fa91",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+    "path": "park_item/dcdf769271784dfbb57c98521aa5fa91",
+    "description": "Les jeux lumineux et les peluches à l’intérieur du Treasure Club en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 94713,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130375%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Machines pousse-pièces Black Jack et Let’s Go To Again sous des rangées de peluches et de boîtes de lots."
+      },
+      {
+        "languageCode": "en",
+        "value": "Black Jack and Let’s Go To Again coin-pusher machines beneath rows of soft toys and prize boxes."
+      },
+      {
+        "languageCode": "de",
+        "value": "Münzschieber Black Jack und Let’s Go To Again unter Reihen von Plüschtieren und Gewinnkartons."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Black Jack- en Let’s Go To Again-muntenschuivers onder rijen knuffels en dozen met prijzen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Macchine spingimonete Black Jack e Let’s Go To Again sotto file di peluche e scatole di premi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Máquinas empujamonedas Black Jack y Let’s Go To Again bajo filas de peluches y cajas de premios."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Automaty z przesuwanymi monetami Black Jack i Let’s Go To Again pod rzędami pluszaków i pudełek z nagrodami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Máquinas empurra-moedas Black Jack e Let’s Go To Again sob filas de peluches e caixas de prémios."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les jeux lumineux et les peluches à l’intérieur du Treasure Club en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Illuminated games and soft toys inside Treasure Club in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Leuchtende Spiele und Plüschtiere im Treasure Club im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Verlichte spellen en knuffels binnen in Treasure Club in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Giochi luminosi e peluche all’interno del Treasure Club nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "Juegos luminosos y peluches en el interior del Treasure Club en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Świecące gry i pluszaki wewnątrz Treasure Club w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Jogos luminosos e peluches no interior do Treasure Club em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:16:53.241Z",
+    "updatedAt": "2026-11-15T03:16:56.728Z"
+  },
+  "sourceEvidence": {
+    "stem": "treasure-interior-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130375%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "2439b04e-c66f-4c39-b556-69f70a802d2f",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-8.jpg",
+    "sha256": "64e268fe7a51da7866931dfe23f83db4a4f934ab443426945528cdd8b47690dc",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:19:45.870Z",
+  "result": {
+    "id": "9fae04a4531b4dc2baa9b4c075930d1e",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "path": "park/9fae04a4531b4dc2baa9b4c075930d1e",
+    "description": "L’allée des jeux autour du palmier et du bassin en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 96153,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130403%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Banc devant un grand palmier, entre une vitrine à peluches, le bassin Aquanimal et les mâts de l’Accro-bungy."
+      },
+      {
+        "languageCode": "en",
+        "value": "Bench in front of a large palm between a soft-toy display, the Aquanimal pool and the Accro-bungy masts."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bank vor einer großen Palme zwischen einer Plüschtier-Vitrine, dem Aquanimal-Becken und den Accro-bungy-Masten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bank voor een grote palm tussen een knuffelvitrine, het Aquanimal-bassin en de Accro-bungy-masten."
+      },
+      {
+        "languageCode": "it",
+        "value": "Panchina davanti a una grande palma, tra una vetrina di peluche, la vasca Aquanimal e gli alberi dell’Accro-bungy."
+      },
+      {
+        "languageCode": "es",
+        "value": "Banco frente a una gran palmera, entre una vitrina de peluches, el estanque Aquanimal y los mástiles de Accro-bungy."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ławka przed dużą palmą, między witryną z pluszakami, basenem Aquanimal i masztami Accro-bungy."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Banco diante de uma grande palmeira, entre uma montra de peluches, o tanque Aquanimal e os mastros do Accro-bungy."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’allée des jeux autour du palmier et du bassin en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "The games area around the palm and pool in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Spielbereich rund um Palme und Becken im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De spellen rond de palm en het bassin in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il vialetto dei giochi attorno alla palma e alla vasca nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "El paseo de los juegos alrededor de la palmera y el estanque en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Alejka z grami wokół palmy i basenu w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O caminho dos jogos à volta da palmeira e do tanque em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:19:42.279Z",
+    "updatedAt": "2026-11-15T03:19:45.87Z"
+  },
+  "sourceEvidence": {
+    "stem": "park-palm-bench-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130403%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-0.jpg",
+    "sha256": "1c428c23001e82b8f02106be0bcaa11d8a12092380ef2dd4e932a9a7007d6043",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

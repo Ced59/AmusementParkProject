@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T03:19:36.891Z",
+  "result": {
+    "id": "f3c0db4dd38c4beaa4044471ba6ce168",
+    "category": "PARK",
+    "ownerType": "PARK",
+    "ownerId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "path": "park/f3c0db4dd38c4beaa4044471ba6ce168",
+    "description": "L’Île aux Pirates vue depuis le port de Capbreton en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 78988,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130416%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Parc au-dessus d’un quai en béton et d’enrochements, avec mâts de l’Accro-bungy, kiosque de bois, palmiers et passerelle à droite."
+      },
+      {
+        "languageCode": "en",
+        "value": "Park above a concrete quay and rocks, with Accro-bungy masts, a wooden kiosk, palms and a footbridge on the right."
+      },
+      {
+        "languageCode": "de",
+        "value": "Park oberhalb eines Betonkais und von Felsen, mit Accro-bungy-Masten, Holzkiosk, Palmen und einer Fußgängerbrücke rechts."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Park boven een betonnen kade en rotsen, met Accro-bungy-masten, een houten kiosk, palmen en rechts een loopbrug."
+      },
+      {
+        "languageCode": "it",
+        "value": "Parco sopra una banchina di cemento e scogli, con alberi dell’Accro-bungy, chiosco di legno, palme e passerella a destra."
+      },
+      {
+        "languageCode": "es",
+        "value": "Parque sobre un muelle de hormigón y rocas, con mástiles de Accro-bungy, quiosco de madera, palmeras y pasarela a la derecha."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Park ponad betonowym nabrzeżem i kamieniami, z masztami Accro-bungy, drewnianym kioskiem, palmami i kładką po prawej."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Parque acima de um cais de betão e rochas, com mastros do Accro-bungy, quiosque de madeira, palmeiras e uma passagem pedonal à direita."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’Île aux Pirates vue depuis le port de Capbreton en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "L’Île aux Pirates seen from Capbreton harbour in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "L’Île aux Pirates vom Hafen von Capbreton aus gesehen, 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "L’Île aux Pirates gezien vanaf de haven van Capbreton in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’Île aux Pirates vista dal porto di Capbreton nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "L’Île aux Pirates vista desde el puerto de Capbreton en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "L’Île aux Pirates widziana od strony portu w Capbreton w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A L’Île aux Pirates vista do porto de Capbreton em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T03:19:33.411Z",
+    "updatedAt": "2026-11-15T03:19:36.891Z"
+  },
+  "sourceEvidence": {
+    "stem": "park-quay-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130416%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-17.jpg",
+    "sha256": "add9d0755c580a31d5488fcbc169ebc5b3ea8409dc0fd3a0e6b29ff4806c66c3",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Autorisation générale du propriétaire pour la campagne ; attribution auteur et galerie vérifiées, aucune licence ouverte inventée.",
+    "review": "Original natif800x600 inspecté intégralement, sans filigrane ni recadrage ; huit alt/légendes/crédits rédigés et relus personnellement."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}
