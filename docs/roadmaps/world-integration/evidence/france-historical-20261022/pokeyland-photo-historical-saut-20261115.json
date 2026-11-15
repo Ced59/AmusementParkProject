@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+    "accessedAtUtc": "2026-11-15T11:44:46.936845+00:00",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 675727,
+    "sha256": "942b30b28e3fbb1a70cb8c145c890cc06afa22c45b60da9513429f2267359962",
+    "file": "amazone-free-fall.jpeg",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/amazone-free-fall.jpeg",
+    "dimensions": [
+      1000,
+      1500
+    ],
+    "imageFormat": "JPEG",
+    "sourcePage": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+    "sourcePublicationDate": null,
+    "takenDate": null,
+    "individualPhotographer": null,
+    "reviewedPersonally": true,
+    "visibleWatermark": false,
+    "subject": "Saut dans le vide",
+    "observations": "Harnessed participant at a yellow guarded platform on the burgundy steel tower; green overhead QUICKjump device and red lanyard; Pokeyland fox backdrop. Supplier caption explicitly says Free Fall Jump | QUICKjump XL + Ripcord — 20 m high — Pokeyland, France.",
+    "decision": "Strong nominated candidate; root visual and duplicate review required.",
+    "limits": [
+      "1000 × 1500 / 675727 bytes; image naturally served with these dimensions despite URL containing 1200.",
+      "No capture date or individual photographer identified.",
+      "20 m supplier specification diverges from the 18 m description used by tourism/reportage sources; do not silently choose one.",
+      "The supplier page establishes equipment identification, not a current operational or safety certification."
+    ],
+    "importPerformed": false,
+    "localImageEditingPerformed": false,
+    "reusedWithoutRedownload": true,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "rootAttributionDecision": "Named supplier example for Pokeyland"
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/amazone-free-fall.jpeg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-saut-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-saut-import-result.json"
+  },
+  "metadata": {
+    "description": "La plateforme grillagée est bordée de garde-corps jaunes. Un participant relié à l’appareil suspendu se prépare aux côtés d’un membre de l’équipe, devant le renard de Pokeyland.",
+    "sourceUrl": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Participant en harnais au départ du Saut dans le vide, sous le panneau au renard"
+      },
+      {
+        "languageCode": "en",
+        "value": "Harnessed participant at the Saut dans le vide departure beneath the fox panel"
+      },
+      {
+        "languageCode": "de",
+        "value": "Teilnehmer mit Gurt am Start des Saut dans le vide unter der Fuchstafel"
+      },
+      {
+        "languageCode": "es",
+        "value": "Participante con arnés en la salida del Saut dans le vide bajo el panel del zorro"
+      },
+      {
+        "languageCode": "it",
+        "value": "Partecipante con imbracatura alla partenza del Saut dans le vide sotto il pannello della volpe"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Deelnemer met harnas bij de start van Saut dans le vide onder het vossenpaneel"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uczestnik w uprzęży na starcie Saut dans le vide pod panelem z lisem"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Participante com arnês na partida do Saut dans le vide sob o painel da raposa"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La plateforme grillagée est bordée de garde-corps jaunes. Un participant relié à l’appareil suspendu se prépare aux côtés d’un membre de l’équipe, devant le renard de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Yellow guardrails border the grated platform. A participant connected to the overhead device prepares beside a team member, in front of the Pokeyland fox."
+      },
+      {
+        "languageCode": "de",
+        "value": "Gelbe Geländer begrenzen die Gitterplattform. Vor dem Pokeyland-Fuchs bereitet sich ein mit dem oberen Gerät verbundener Teilnehmer neben einem Mitarbeiter vor."
+      },
+      {
+        "languageCode": "es",
+        "value": "Unas barandillas amarillas bordean la plataforma de rejilla. Un participante conectado al aparato superior se prepara junto a un miembro del equipo, delante del zorro de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Parapetti gialli delimitano la piattaforma grigliata. Un partecipante collegato al dispositivo sospeso si prepara accanto a un membro dello staff, davanti alla volpe di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Gele hekken begrenzen het roosterplatform. Een deelnemer die met het apparaat erboven is verbonden, bereidt zich naast een medewerker voor, vóór de Pokeyland-vos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Żółte barierki otaczają kratowaną platformę. Uczestnik połączony z urządzeniem nad głową przygotowuje się obok pracownika, przed wizerunkiem lisa Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Guardas amarelas delimitam a plataforma gradeada. Um participante ligado ao aparelho suspenso prepara-se junto de um membro da equipa, diante da raposa do Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Amazone Adventure ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Amazone Adventure; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Amazone Adventure; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Amazone Adventure; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Amazone Adventure; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Amazone Adventure; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Amazone Adventure; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Amazone Adventure; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T13:17:32.3741502Z",
+    "startedAtUtc": "2026-11-15T13:17:23.7282179Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "dc7a5c8c37bf421991729e5b30735d50",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "path": "park_item/dc7a5c8c37bf421991729e5b30735d50",
+      "description": "La plateforme grillagée est bordée de garde-corps jaunes. Un participant relié à l’appareil suspendu se prépare aux côtés d’un membre de l’équipe, devant le renard de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 1500,
+      "sizeInBytes": 675727,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Participant en harnais au départ du Saut dans le vide, sous le panneau au renard"
+        },
+        {
+          "languageCode": "en",
+          "value": "Harnessed participant at the Saut dans le vide departure beneath the fox panel"
+        },
+        {
+          "languageCode": "de",
+          "value": "Teilnehmer mit Gurt am Start des Saut dans le vide unter der Fuchstafel"
+        },
+        {
+          "languageCode": "es",
+          "value": "Participante con arnés en la salida del Saut dans le vide bajo el panel del zorro"
+        },
+        {
+          "languageCode": "it",
+          "value": "Partecipante con imbracatura alla partenza del Saut dans le vide sotto il pannello della volpe"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Deelnemer met harnas bij de start van Saut dans le vide onder het vossenpaneel"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestnik w uprzęży na starcie Saut dans le vide pod panelem z lisem"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Participante com arnês na partida do Saut dans le vide sob o painel da raposa"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La plateforme grillagée est bordée de garde-corps jaunes. Un participant relié à l’appareil suspendu se prépare aux côtés d’un membre de l’équipe, devant le renard de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Yellow guardrails border the grated platform. A participant connected to the overhead device prepares beside a team member, in front of the Pokeyland fox."
+        },
+        {
+          "languageCode": "de",
+          "value": "Gelbe Geländer begrenzen die Gitterplattform. Vor dem Pokeyland-Fuchs bereitet sich ein mit dem oberen Gerät verbundener Teilnehmer neben einem Mitarbeiter vor."
+        },
+        {
+          "languageCode": "es",
+          "value": "Unas barandillas amarillas bordean la plataforma de rejilla. Un participante conectado al aparato superior se prepara junto a un miembro del equipo, delante del zorro de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Parapetti gialli delimitano la piattaforma grigliata. Un partecipante collegato al dispositivo sospeso si prepara accanto a un membro dello staff, davanti alla volpe di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Gele hekken begrenzen het roosterplatform. Een deelnemer die met het apparaat erboven is verbonden, bereidt zich naast een medewerker voor, vóór de Pokeyland-vos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Żółte barierki otaczają kratowaną platformę. Uczestnik połączony z urządzeniem nad głową przygotowuje się obok pracownika, przed wizerunkiem lisa Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Guardas amarelas delimitam a plataforma gradeada. Um participante ligado ao aparelho suspenso prepara-se junto de um membro da equipa, diante da raposa do Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Amazone Adventure ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Amazone Adventure; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Amazone Adventure; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Amazone Adventure; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Amazone Adventure; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Amazone Adventure; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Amazone Adventure; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Amazone Adventure; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:17:25.792Z",
+      "updatedAt": "2026-11-15T13:17:29.253Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

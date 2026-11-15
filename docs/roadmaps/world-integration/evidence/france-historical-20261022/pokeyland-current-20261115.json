@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T12:55:10.8315168Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T13:20:41.6487431Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue Pokeyland: developed history article and item milestones, remaining 37 descriptions, qualified actual photographs and structured reference reconciliation. Four historical candidate photos (Rotor, Saut dans le vide, Mini-ferme, Big Air) personally viewed by root but not imported. Twenty Apply and 27 imports already reconciled; no full audit or publication.",
+  "nextAction": "Continue Pokeyland remaining 34 item descriptions, actual photographs, historical inventory reconciliation, fixed positions and reference dependencies. Article completed privately in eight languages, 4 sections / 8 paragraphs (549–623 body words), six private item opening facts added to four park facts. Calendar model and daily-ticket sales-channel gaps remain documented. No full final audit/export or publication.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -221,16 +221,31 @@
       "proof": "pokeyland-22-historical-three-descriptions-20261115.json",
       "operationId": "114d8cd3-e3e4-4bcf-9afc-5041f58dfb62",
       "appliedAtUtc": "2026-11-15T12:55:10.8315168Z"
+    },
+    {
+      "proof": "pokeyland-history-article-20261115.json",
+      "operationId": "cf50578d-0345-4b74-a1d8-cd33251b5edc",
+      "appliedAtUtc": "2026-11-15T13:11:27.0815819Z"
+    },
+    {
+      "proof": "pokeyland-26-historical-detail-descriptions-20261115.json",
+      "operationId": "434c3ad4-00ff-4f61-9742-5a1c24c3de21",
+      "appliedAtUtc": "2026-11-15T13:15:20.8561672Z"
+    },
+    {
+      "proof": "pokeyland-item-openings-20261115.json",
+      "operationId": "e09ec867-2572-4970-92f8-ee232b25f74e",
+      "appliedAtUtc": "2026-11-15T13:20:41.6487431Z"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 27,
+    "media": 31,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 37,
+    "itemsDescribed": 40,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17,
     "zonesDescribed": 3,
@@ -238,7 +253,11 @@
     "publicOfficialMaps": 0,
     "parkFacts": 4,
     "privateParkFacts": 4,
-    "seasonPasses": 2
+    "seasonPasses": 2,
+    "itemFacts": 6,
+    "privateItemFacts": 6,
+    "articles": 1,
+    "privateArticles": 1
   },
   "imports": [
     {
@@ -375,9 +394,29 @@
       "proof": "pokeyland-photo-service-reception-20261115.json",
       "imageId": "e502a87696b443d88727981f41303c0d",
       "createdAtUtc": "2026-11-15T12:51:05.338Z"
+    },
+    {
+      "proof": "pokeyland-photo-historical-rotor-20261115.json",
+      "imageId": "608ac56337434664a6394fe378fcc0f4",
+      "createdAtUtc": "2026-11-15T13:17:15.169Z"
+    },
+    {
+      "proof": "pokeyland-photo-historical-saut-20261115.json",
+      "imageId": "dc7a5c8c37bf421991729e5b30735d50",
+      "createdAtUtc": "2026-11-15T13:17:25.792Z"
+    },
+    {
+      "proof": "pokeyland-photo-historical-ferme-20261115.json",
+      "imageId": "209ac79cecaa4ab08ca814d318c027b0",
+      "createdAtUtc": "2026-11-15T13:17:39.493Z"
+    },
+    {
+      "proof": "pokeyland-photo-historical-bigair-20261115.json",
+      "imageId": "73a1c7d039244b45b8e2973e13a36f61",
+      "createdAtUtc": "2026-11-15T13:17:49.49Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T12:57:35.012925+00:00",
+  "updatedAtUtc": "2026-11-15T13:22:23.911342+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -645,35 +684,38 @@
     "errors": []
   },
   "latestHistoryDiagnostics": {
+    "receivedAtUtc": "2026-11-15T13:21:47.4888171Z",
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T13:21:46.8703304Z",
     "result": {
       "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
       "parkName": "Pokeyland",
-      "factCount": 4,
+      "factCount": 11,
       "relationCount": 0,
       "blockingIssueCount": 0,
       "issues": [],
       "decadeCoverage": [
         {
           "decade": 2010,
-          "resourceCount": 2,
-          "sourcedResourceCount": 2,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
           "publishedResourceCount": 0,
-          "subjectCount": 1,
+          "subjectCount": 4,
           "sourceCoveragePercentage": 100
         },
         {
           "decade": 2020,
-          "resourceCount": 2,
-          "sourcedResourceCount": 2,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
           "publishedResourceCount": 0,
-          "subjectCount": 1,
+          "subjectCount": 4,
           "sourceCoveragePercentage": 100
         }
       ],
       "workflow": [
         {
           "stage": "Draft",
-          "resourceCount": 4
+          "resourceCount": 10
         },
         {
           "stage": "SourcesAttached",
@@ -697,7 +739,7 @@
         },
         {
           "stage": "Retracted",
-          "resourceCount": 0
+          "resourceCount": 1
         }
       ],
       "visits": {
@@ -716,10 +758,7 @@
         "majorFactCount": 0,
         "indexableKeyYears": []
       }
-    },
-    "startedAtUtc": "2026-11-15T12:39:03.7137918Z",
-    "receivedAtUtc": "2026-11-15T12:39:04.5256289Z",
-    "action": "HistoryDiagnostics"
+    }
   },
   "pricingQualification": {
     "proof": "pokeyland-season-pass-pricing-20261115.json",
@@ -733,5 +772,215 @@
   },
   "sourceCatalogCorrections": {
     "gallery2017": "Le catalogue historique indique 7 août par ancienne lecture de l’URL ; le texte public de la galerie indique 11 août 2017. Conserver la preuve antérieure et cette correction, ne pas en déduire une date de prise de vue."
+  },
+  "latestArticleIdempotence": {
+    "operationId": "73dc026d-2b91-4233-8928-d377eed9b2de",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:11:55.1053405Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "latestHistoryIdempotence": {
+    "operationId": "b449354d-3654-4fc8-b91f-5da0c7d17f73",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:21:08.4342459Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 16,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c54d3c41-b27e-4e66-870d-a9e457129085",
+        "entityKey": "pokeyland-item-pomme-opening-2025",
+        "displayName": "La Pomme ouvre son circuit",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c3ed398f-3aaa-42c7-b68d-ed15e5bb3d23",
+        "entityKey": "pokeyland-item-waterjump-opening-2022",
+        "displayName": "Le Waterjump apporte une aventure aquatique",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6856d2d6-f1d2-4f2b-a2dd-dbc7d22d99fa",
+        "entityKey": "pokeyland-item-rotor-opening-2021",
+        "displayName": "Le Rotor Jump entre dans les jeux du parc",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6447fa8e-56c3-40bc-86ce-54287de6a848",
+        "entityKey": "pokeyland-item-bigair-opening-2017",
+        "displayName": "Le Big Air Jump fait sauter vers un coussin géant",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "47a8ef0a-9999-4dbb-a8cb-349753a4ca53",
+        "entityKey": "pokeyland-item-ferme-opening-2017",
+        "displayName": "La mini-ferme enrichit l’offre familiale",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fc599901-8e58-47b1-8642-7c0fe510b10f",
+        "entityKey": "pokeyland-item-saut-opening-2016",
+        "displayName": "Le Saut dans le vide rejoint les aventures",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
   }
 }

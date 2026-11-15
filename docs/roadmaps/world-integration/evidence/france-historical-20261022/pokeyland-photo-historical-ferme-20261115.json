@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+    "accessedAtUtc": "2026-11-15T11:21:06.104760+00:00",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 659175,
+    "sha256": "9c21ac79a5f925ed6b3d1875d617aafe68756889c5aeed8acb4bf77c336c3fc5",
+    "file": "estrepublicain-gallery-11-2017.jpg",
+    "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-11-2017.jpg",
+    "dimensions": [
+      1600,
+      1200
+    ],
+    "imageFormat": "JPEG",
+    "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+    "sourcePublicationDate": "2017-08-11",
+    "takenDate": null,
+    "individualPhotographer": null,
+    "reviewedPersonally": true,
+    "visibleWatermark": false,
+    "subject": "Mini-ferme",
+    "observations": "Goats in a wooded enclosure bounded by plank fencing, pale rocky blocks, bare earth/straw and mature trees. Raised net play structure visible behind the fencing.",
+    "decision": "Historical mini-farm candidate after root attribution review.",
+    "limits": [
+      "Gallery introduction explicitly names mini-fermes, but this image lacks an individual nominal caption.",
+      "Goat presence and enclosure appearance belong to the photographed historical scene; no claim about present-day animals or layout.",
+      "Do not assign net structure in background to mini-farm itself."
+    ],
+    "importPerformed": false,
+    "localImageEditingPerformed": false,
+    "reusedWithoutRedownload": true,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "rootAttributionDecision": "Goat enclosure in the named Pokeyland gallery whose introduction names the mini-farm; fenced habitat matches this offer, background net play excluded."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-11-2017.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-ferme-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-ferme-import-result.json"
+  },
+  "metadata": {
+    "description": "Une chèvre noire se tient devant des blocs rocheux clairs, avec une chèvre blanche plus loin. Des clôtures en planches entourent l’enclos dans cette vue publiée en 2017.",
+    "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Chèvres parmi les rochers de l’enclos boisé de la mini-ferme de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Goats among rocks in Pokeyland’s wooded small-farm enclosure"
+      },
+      {
+        "languageCode": "de",
+        "value": "Ziegen zwischen Felsen im bewaldeten Gehege der kleinen Farm von Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Cabras entre las rocas del recinto arbolado de la pequeña granja de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Capre tra le rocce del recinto alberato della piccola fattoria di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Geiten tussen rotsblokken in het beboste verblijf van Pokeylands kleine boerderij"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kozy wśród skał na zadrzewionym wybiegu małej farmy Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cabras entre as rochas do recinto arborizado da pequena quinta do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une chèvre noire se tient devant des blocs rocheux clairs, avec une chèvre blanche plus loin. Des clôtures en planches entourent l’enclos dans cette vue publiée en 2017."
+      },
+      {
+        "languageCode": "en",
+        "value": "A black goat stands in front of pale rocks, with a white goat farther back. Plank fences surround the enclosure in this view published in 2017."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine schwarze Ziege steht vor hellen Felsblöcken, weiter hinten eine weiße. Bretterzäune umgeben das Gehege auf dieser 2017 veröffentlichten Aufnahme."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una cabra negra está delante de rocas claras y otra blanca aparece más lejos. Cercas de tablas rodean el recinto en esta vista publicada en 2017."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una capra nera si trova davanti a massi chiari, con una capra bianca più lontano. Recinzioni di assi delimitano il recinto in questa veduta pubblicata nel 2017."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een zwarte geit staat vóór lichte rotsblokken, met verderop een witte geit. Plankenhekken omringen het verblijf op deze in 2017 gepubliceerde foto."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Czarna koza stoi przed jasnymi blokami skalnymi, a dalej widać białą kozę. Ogrodzenia z desek otaczają wybieg na zdjęciu opublikowanym w 2017 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma cabra preta está diante de blocos rochosos claros, com uma cabra branca mais atrás. Vedações de tábuas rodeiam o recinto nesta vista publicada em 2017."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : L’Est Républicain ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: L’Est Républicain; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: L’Est Républicain; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: L’Est Républicain; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: L’Est Républicain; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: L’Est Républicain; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: L’Est Républicain; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: L’Est Républicain; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T13:17:46.1428498Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "209ac79cecaa4ab08ca814d318c027b0",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "path": "park_item/209ac79cecaa4ab08ca814d318c027b0",
+      "description": "Une chèvre noire se tient devant des blocs rocheux clairs, avec une chèvre blanche plus loin. Des clôtures en planches entourent l’enclos dans cette vue publiée en 2017.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1200,
+      "sizeInBytes": 659175,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/E9C068C9-450B-4492-892B-826AD491D2DD/NW_raw/title-1500630058.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Chèvres parmi les rochers de l’enclos boisé de la mini-ferme de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Goats among rocks in Pokeyland’s wooded small-farm enclosure"
+        },
+        {
+          "languageCode": "de",
+          "value": "Ziegen zwischen Felsen im bewaldeten Gehege der kleinen Farm von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Cabras entre las rocas del recinto arbolado de la pequeña granja de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Capre tra le rocce del recinto alberato della piccola fattoria di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Geiten tussen rotsblokken in het beboste verblijf van Pokeylands kleine boerderij"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kozy wśród skał na zadrzewionym wybiegu małej farmy Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cabras entre as rochas do recinto arborizado da pequena quinta do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une chèvre noire se tient devant des blocs rocheux clairs, avec une chèvre blanche plus loin. Des clôtures en planches entourent l’enclos dans cette vue publiée en 2017."
+        },
+        {
+          "languageCode": "en",
+          "value": "A black goat stands in front of pale rocks, with a white goat farther back. Plank fences surround the enclosure in this view published in 2017."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine schwarze Ziege steht vor hellen Felsblöcken, weiter hinten eine weiße. Bretterzäune umgeben das Gehege auf dieser 2017 veröffentlichten Aufnahme."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una cabra negra está delante de rocas claras y otra blanca aparece más lejos. Cercas de tablas rodean el recinto en esta vista publicada en 2017."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una capra nera si trova davanti a massi chiari, con una capra bianca più lontano. Recinzioni di assi delimitano il recinto in questa veduta pubblicata nel 2017."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een zwarte geit staat vóór lichte rotsblokken, met verderop een witte geit. Plankenhekken omringen het verblijf op deze in 2017 gepubliceerde foto."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Czarna koza stoi przed jasnymi blokami skalnymi, a dalej widać białą kozę. Ogrodzenia z desek otaczają wybieg na zdjęciu opublikowanym w 2017 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma cabra preta está diante de blocos rochosos claros, com uma cabra branca mais atrás. Vedações de tábuas rodeiam o recinto nesta vista publicada em 2017."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : L’Est Républicain ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: L’Est Républicain; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: L’Est Républicain; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: L’Est Républicain; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: L’Est Républicain; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: L’Est Républicain; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: L’Est Républicain; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: L’Est Républicain; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:17:39.493Z",
+      "updatedAt": "2026-11-15T13:17:43.028Z"
+    },
+    "startedAtUtc": "2026-11-15T13:17:33.7709306Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

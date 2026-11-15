@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+    "accessedAtUtc": "2026-11-15T12:39:40.059530+00:00",
+    "status": 200,
+    "finalUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 124864,
+    "sha256": "9afb0464a773193fc9b97ddde0fba08c8d566864cef6c3516c520fd5b5fb51f0",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-rotor-native.jpg",
+    "subject": "Rotor Jump",
+    "decision": "Admissible candidate after parent review: real photo, no visible watermark, under 960 KiB.",
+    "observations": "Orange/brown sector mat, outer numbered pads, central padded sweeper arm, applied park logos; yard outside a metal-clad building.",
+    "dimensions": [
+      640,
+      480
+    ],
+    "sourcePage": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+    "sourcePublicationDate": "2021-05-20",
+    "takenDate": null,
+    "individualPhotographer": null,
+    "personallyViewed": true,
+    "importPerformed": false,
+    "localImageEditingPerformed": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "rootAttributionDecision": "Named supplier example for Pokeyland"
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lukylud-rotor-native.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-rotor-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-rotor-import-result.json"
+  },
+  "metadata": {
+    "description": "La réalisation personnalisée présentée par Lukylud : secteurs orange et bruns, emplacements numérotés et bras central rembourré. La scène se situe dans une cour.",
+    "sourceUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Rotor Jump orange et brun aux couleurs de Pokeyland, installé dans une cour"
+      },
+      {
+        "languageCode": "en",
+        "value": "Orange and brown Pokeyland-branded Rotor Jump set up in a yard"
+      },
+      {
+        "languageCode": "de",
+        "value": "Orange-brauner Rotor Jump mit Pokeyland-Motiven in einem Hof"
+      },
+      {
+        "languageCode": "es",
+        "value": "Rotor Jump naranja y marrón con la imagen de Pokeyland en un patio"
+      },
+      {
+        "languageCode": "it",
+        "value": "Rotor Jump arancione e marrone con marchi Pokeyland in un cortile"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Oranje en bruine Rotor Jump met Pokeyland-opdruk in een binnenplaats"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pomarańczowo-brązowy Rotor Jump z oznaczeniami Pokeyland na podwórzu"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Rotor Jump laranja e castanho com marcas Pokeyland num pátio"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La réalisation personnalisée présentée par Lukylud : secteurs orange et bruns, emplacements numérotés et bras central rembourré. La scène se situe dans une cour."
+      },
+      {
+        "languageCode": "en",
+        "value": "The bespoke structure presented by Lukylud has orange and brown sectors, numbered positions and a padded central arm. It is pictured in a yard."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die von Lukylud vorgestellte Sonderanfertigung besitzt orange-braune Segmente, nummerierte Plätze und einen gepolsterten Mittelarm. Die Aufnahme entstand in einem Hof."
+      },
+      {
+        "languageCode": "es",
+        "value": "La estructura personalizada presentada por Lukylud tiene sectores naranjas y marrones, puestos numerados y un brazo central acolchado. La escena se sitúa en un patio."
+      },
+      {
+        "languageCode": "it",
+        "value": "La struttura personalizzata presentata da Lukylud ha settori arancioni e marroni, postazioni numerate e un braccio centrale imbottito. È fotografata in un cortile."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De door Lukylud gepresenteerde maatwerkconstructie heeft oranje en bruine vakken, genummerde plaatsen en een beklede middenarm. De foto toont een binnenplaats."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Konstrukcja przygotowana na zamówienie i przedstawiona przez Lukylud ma pomarańczowe i brązowe sektory, ponumerowane miejsca oraz miękkie ramię pośrodku. Zdjęcie wykonano na podwórzu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A estrutura personalizada apresentada pela Lukylud tem setores laranja e castanhos, lugares numerados e um braço central almofadado. Está fotografada num pátio."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Lukylud ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Lukylud; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Lukylud; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Lukylud; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Lukylud; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Lukylud; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Lukylud; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Lukylud; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "608ac56337434664a6394fe378fcc0f4",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "path": "park_item/608ac56337434664a6394fe378fcc0f4",
+      "description": "La réalisation personnalisée présentée par Lukylud : secteurs orange et bruns, emplacements numérotés et bras central rembourré. La scène se situe dans une cour.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 640,
+      "height": 480,
+      "sizeInBytes": 124864,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.lukylud.fr/wp-content/uploads/2021/05/jeu-gonflable-personnalise-rotor-infernal.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "Apple",
+        "cameraModel": "iPhone 7",
+        "takenOnUtc": "2021-04-21T13:56:17Z",
+        "orientation": "1",
+        "focalLength": 3.99,
+        "aperture": 1.8,
+        "exposureTime": 0.0002820078962210942,
+        "iso": 20
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Rotor Jump orange et brun aux couleurs de Pokeyland, installé dans une cour"
+        },
+        {
+          "languageCode": "en",
+          "value": "Orange and brown Pokeyland-branded Rotor Jump set up in a yard"
+        },
+        {
+          "languageCode": "de",
+          "value": "Orange-brauner Rotor Jump mit Pokeyland-Motiven in einem Hof"
+        },
+        {
+          "languageCode": "es",
+          "value": "Rotor Jump naranja y marrón con la imagen de Pokeyland en un patio"
+        },
+        {
+          "languageCode": "it",
+          "value": "Rotor Jump arancione e marrone con marchi Pokeyland in un cortile"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Oranje en bruine Rotor Jump met Pokeyland-opdruk in een binnenplaats"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pomarańczowo-brązowy Rotor Jump z oznaczeniami Pokeyland na podwórzu"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Rotor Jump laranja e castanho com marcas Pokeyland num pátio"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "La réalisation personnalisée présentée par Lukylud : secteurs orange et bruns, emplacements numérotés et bras central rembourré. La scène se situe dans une cour."
+        },
+        {
+          "languageCode": "en",
+          "value": "The bespoke structure presented by Lukylud has orange and brown sectors, numbered positions and a padded central arm. It is pictured in a yard."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die von Lukylud vorgestellte Sonderanfertigung besitzt orange-braune Segmente, nummerierte Plätze und einen gepolsterten Mittelarm. Die Aufnahme entstand in einem Hof."
+        },
+        {
+          "languageCode": "es",
+          "value": "La estructura personalizada presentada por Lukylud tiene sectores naranjas y marrones, puestos numerados y un brazo central acolchado. La escena se sitúa en un patio."
+        },
+        {
+          "languageCode": "it",
+          "value": "La struttura personalizzata presentata da Lukylud ha settori arancioni e marroni, postazioni numerate e un braccio centrale imbottito. È fotografata in un cortile."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De door Lukylud gepresenteerde maatwerkconstructie heeft oranje en bruine vakken, genummerde plaatsen en een beklede middenarm. De foto toont een binnenplaats."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Konstrukcja przygotowana na zamówienie i przedstawiona przez Lukylud ma pomarańczowe i brązowe sektory, ponumerowane miejsca oraz miękkie ramię pośrodku. Zdjęcie wykonano na podwórzu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A estrutura personalizada apresentada pela Lukylud tem setores laranja e castanhos, lugares numerados e um braço central almofadado. Está fotografada num pátio."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Lukylud ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Lukylud; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Lukylud; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Lukylud; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Lukylud; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Lukylud; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Lukylud; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Lukylud; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:17:15.169Z",
+      "updatedAt": "2026-11-15T13:17:18.714Z"
+    },
+    "startedAtUtc": "2026-11-15T13:17:13.5258020Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:17:21.8189512Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

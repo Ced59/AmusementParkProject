@@ -1,0 +1,2784 @@
+{
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "id": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+          "key": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+          "name": "La Pomme"
+        },
+        {
+          "id": "73ff7670-39ee-4c19-b339-907707fc8711",
+          "key": "pokeyland-waterjump",
+          "name": "Waterjump"
+        },
+        {
+          "id": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+          "key": "pokeyland-historical-rotor-jump",
+          "name": "Rotor Jump"
+        },
+        {
+          "id": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+          "key": "pokeyland-historical-big-air-jump",
+          "name": "Big Air Jump"
+        },
+        {
+          "id": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+          "key": "pokeyland-historical-mini-ferme",
+          "name": "Mini-ferme"
+        },
+        {
+          "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+          "key": "pokeyland-historical-saut-vide",
+          "name": "Saut dans le vide"
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "pokeyland-item-pomme-opening-2025",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+            "parkId": null,
+            "parkItemId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+            "itemId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+            "itemKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+            "parkItemKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+            "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2025,
+            "month": 4,
+            "day": 5,
+            "datePrecision": "Day",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+            "sources": [
+              {
+                "label": "Captain Coaster — La Pomme, ouverture 5 avril 2025",
+                "url": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "RCDB 22635 — date ISO 2025-04-05",
+                "url": "https://rcdb.com/22635.htm",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "La Pomme ouvre son circuit"
+              },
+              {
+                "languageCode": "en",
+                "value": "La Pomme opens its circuit"
+              },
+              {
+                "languageCode": "de",
+                "value": "La Pomme eröffnet ihren Rundkurs"
+              },
+              {
+                "languageCode": "es",
+                "value": "La Pomme abre su circuito"
+              },
+              {
+                "languageCode": "it",
+                "value": "La Pomme apre il suo circuito"
+              },
+              {
+                "languageCode": "nl",
+                "value": "La Pomme opent haar circuit"
+              },
+              {
+                "languageCode": "pl",
+                "value": "La Pomme otwiera swój tor"
+              },
+              {
+                "languageCode": "pt",
+                "value": "La Pomme abre o seu circuito"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "La Pomme ouvre le 5 avril 2025. Cette montagne russe familiale à train en forme de chenille accompagne l’arrivée de manèges mécaniques à Pokeyland, élargissant l’offre jusque-là principalement tournée vers les loisirs de plein air."
+              },
+              {
+                "languageCode": "en",
+                "value": "La Pomme opens on 5 April 2025. The family roller coaster with a caterpillar-shaped train accompanies the arrival of mechanical rides at Pokeyland, broadening an offer previously focused mainly on outdoor activities."
+              },
+              {
+                "languageCode": "de",
+                "value": "La Pomme eröffnet am 5. April 2025. Die Familienachterbahn mit raupenförmigem Zug begleitet den Einzug mechanischer Fahrgeschäfte in Pokeyland und erweitert das zuvor vor allem auf Freiluftaktivitäten ausgerichtete Angebot."
+              },
+              {
+                "languageCode": "es",
+                "value": "La Pomme abre el 5 de abril de 2025. Esta montaña rusa familiar con tren en forma de oruga acompaña la llegada de atracciones mecánicas a Pokeyland y amplía una oferta antes centrada principalmente en actividades al aire libre."
+              },
+              {
+                "languageCode": "it",
+                "value": "La Pomme apre il 5 aprile 2025. La montagna russa per famiglie con treno a forma di bruco accompagna l’arrivo delle giostre meccaniche a Pokeyland, ampliando un’offerta prima dedicata soprattutto alle attività all’aperto."
+              },
+              {
+                "languageCode": "nl",
+                "value": "La Pomme opent op 5 april 2025. De familieachtbaan met rupsentrein begeleidt de komst van mechanische attracties in Pokeyland en verbreedt een aanbod dat voorheen vooral op buitenactiviteiten was gericht."
+              },
+              {
+                "languageCode": "pl",
+                "value": "La Pomme otwiera się 5 kwietnia 2025 roku. Rodzinna kolejka górska z pociągiem w kształcie gąsienicy towarzyszy wprowadzeniu atrakcji mechanicznych do Pokeyland, poszerzając ofertę wcześniej skupioną głównie na aktywnościach plenerowych."
+              },
+              {
+                "languageCode": "pt",
+                "value": "La Pomme abre a 5 de abril de 2025. A montanha-russa familiar com comboio em forma de lagarta acompanha a chegada de atrações mecânicas ao Pokeyland, alargando uma oferta antes sobretudo dedicada às atividades ao ar livre."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-item-waterjump-opening-2022",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+            "parkId": null,
+            "parkItemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+            "itemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+            "itemKey": "pokeyland-waterjump",
+            "parkItemKey": "pokeyland-waterjump",
+            "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2022,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "c8466353e86442e180d8ff8e5fbbf41a",
+            "sources": [
+              {
+                "label": "Direct FM — nouvelle aventure aquatique annoncée en 2022",
+                "url": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Pokeyland — brochure 2023 rappelant le Waterjump testé en 2022",
+                "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Direct FM — utilisation Waterjump en septembre 2022",
+                "url": "https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le Waterjump apporte une aventure aquatique"
+              },
+              {
+                "languageCode": "en",
+                "value": "Waterjump adds an aquatic adventure"
+              },
+              {
+                "languageCode": "de",
+                "value": "Waterjump bringt ein Wasserabenteuer"
+              },
+              {
+                "languageCode": "es",
+                "value": "Waterjump incorpora una aventura acuática"
+              },
+              {
+                "languageCode": "it",
+                "value": "Waterjump porta un’avventura acquatica"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Waterjump voegt een wateravontuur toe"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Waterjump wprowadza wodną przygodę"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Waterjump traz uma aventura aquática"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le Waterjump rejoint les activités du parc en 2022. Les pistes de glisse se terminent par un saut suivi d’une réception dans l’eau, donnant une dimension aquatique aux aventures de Pokeyland."
+              },
+              {
+                "languageCode": "en",
+                "value": "Waterjump joins the park’s activities in 2022. Its slides end in a jump followed by a landing in the water, adding an aquatic dimension to Pokeyland’s range of adventures."
+              },
+              {
+                "languageCode": "de",
+                "value": "Waterjump ergänzt 2022 das Parkangebot. Auf die Rutschbahnen folgen ein Sprung und eine Landung im Wasser, wodurch die Abenteuer in Pokeyland eine zusätzliche Wasserkomponente erhalten."
+              },
+              {
+                "languageCode": "es",
+                "value": "Waterjump se incorpora a las actividades del parque en 2022. Sus pistas terminan en un salto seguido de una caída en el agua, aportando una dimensión acuática a las aventuras de Pokeyland."
+              },
+              {
+                "languageCode": "it",
+                "value": "Waterjump entra nell’offerta del parco nel 2022. Le piste di scivolamento terminano con un salto e un arrivo in acqua, aggiungendo una dimensione acquatica alle avventure di Pokeyland."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Waterjump komt in 2022 bij het parkaanbod. De glijbanen eindigen in een sprong, gevolgd door een landing in het water, en geven de avonturen van Pokeyland een waterdimensie."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Waterjump dołącza do atrakcji parku w 2022 roku. Zjazd po torze kończy się skokiem i lądowaniem w wodzie, dodając wodny wymiar do przygód oferowanych przez Pokeyland."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Waterjump junta-se às atividades do parque em 2022. As pistas terminam num salto seguido de uma chegada à água, acrescentando uma dimensão aquática às aventuras do Pokeyland."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-item-rotor-opening-2021",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+            "parkId": null,
+            "parkItemId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+            "itemId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+            "itemKey": "pokeyland-historical-rotor-jump",
+            "parkItemKey": "pokeyland-historical-rotor-jump",
+            "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2021,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "608ac56337434664a6394fe378fcc0f4",
+            "sources": [
+              {
+                "label": "Direct FM — nouveauté Rotor Jump saison 2021",
+                "url": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Lukylud — structure personnalisée Pokeyland, 20 mai 2021",
+                "url": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le Rotor Jump entre dans les jeux du parc"
+              },
+              {
+                "languageCode": "en",
+                "value": "Rotor Jump joins the park’s games"
+              },
+              {
+                "languageCode": "de",
+                "value": "Rotor Jump ergänzt die Spielangebote"
+              },
+              {
+                "languageCode": "es",
+                "value": "Rotor Jump se suma a los juegos del parque"
+              },
+              {
+                "languageCode": "it",
+                "value": "Rotor Jump entra tra i giochi del parco"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Rotor Jump komt bij het spelaanbod"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Rotor Jump dołącza do zabaw w parku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Rotor Jump junta-se aos jogos do parque"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le Rotor Jump fait partie des nouveautés de 2021. Jusqu’à huit joueurs tentent d’éviter son bras tournant ; Lukylud personnalise la structure gonflable avec les couleurs et les marquages de Pokeyland."
+              },
+              {
+                "languageCode": "en",
+                "value": "Rotor Jump is one of the additions for 2021. Up to eight players try to avoid its rotating arm; Lukylud customises the inflatable structure with Pokeyland’s colours and branding."
+              },
+              {
+                "languageCode": "de",
+                "value": "Rotor Jump gehört zu den Neuheiten von 2021. Bis zu acht Spieler versuchen, dem rotierenden Arm auszuweichen. Lukylud gestaltet die aufblasbare Anlage mit den Farben und Motiven von Pokeyland."
+              },
+              {
+                "languageCode": "es",
+                "value": "Rotor Jump es una de las novedades de 2021. Hasta ocho jugadores intentan esquivar su brazo giratorio; Lukylud personaliza la estructura hinchable con los colores y las marcas de Pokeyland."
+              },
+              {
+                "languageCode": "it",
+                "value": "Rotor Jump è una delle novità del 2021. Fino a otto giocatori cercano di evitare il braccio rotante; Lukylud personalizza la struttura gonfiabile con i colori e i marchi di Pokeyland."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Rotor Jump is een van de nieuwigheden van 2021. Maximaal acht spelers proberen de draaiende arm te ontwijken; Lukylud past de opblaasbare constructie aan met de kleuren en opdrukken van Pokeyland."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Rotor Jump jest jedną z nowości na 2021 rok. Maksymalnie ośmiu graczy próbuje uniknąć obracającego się ramienia; Lukylud dostosowuje dmuchaną konstrukcję, nadając jej kolory i oznaczenia Pokeyland."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Rotor Jump é uma das novidades de 2021. Até oito jogadores tentam evitar o braço giratório; a Lukylud personaliza a estrutura insuflável com as cores e as marcas do Pokeyland."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-item-bigair-opening-2017",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+            "parkId": null,
+            "parkItemId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+            "itemId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+            "itemKey": "pokeyland-historical-big-air-jump",
+            "parkItemKey": "pokeyland-historical-big-air-jump",
+            "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2017,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "73a1c7d039244b45b8e2973e13a36f61",
+            "sources": [
+              {
+                "label": "Loractu — nouveautés de la saison 2017",
+                "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "L’Est Républicain — reportage Pokeyland publié le 11 août 2017",
+                "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le Big Air Jump fait sauter vers un coussin géant"
+              },
+              {
+                "languageCode": "en",
+                "value": "Big Air Jump introduces leaps onto a giant cushion"
+              },
+              {
+                "languageCode": "de",
+                "value": "Big Air Jump bringt Sprünge auf ein großes Kissen"
+              },
+              {
+                "languageCode": "es",
+                "value": "Big Air Jump propone saltar a un gran colchón"
+              },
+              {
+                "languageCode": "it",
+                "value": "Big Air Jump porta i salti su un grande cuscino"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Big Air Jump laat deelnemers op een groot kussen springen"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Big Air Jump wprowadza skoki na wielką poduszkę"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Big Air Jump propõe saltos para uma grande almofada"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le Big Air Jump apparaît parmi les nouveautés de la saison 2017. Sa plateforme et son grand coussin de réception créent un nouveau défi de saut au milieu des arbres, distinct du Saut dans le vide déjà proposé."
+              },
+              {
+                "languageCode": "en",
+                "value": "Big Air Jump appears among the additions for the 2017 season. Its platform and large landing cushion create a new jumping challenge among the trees, separate from the existing Saut dans le vide."
+              },
+              {
+                "languageCode": "de",
+                "value": "Big Air Jump zählt zu den Neuheiten der Saison 2017. Plattform und großes Landekissen schaffen zwischen den Bäumen eine neue Sprungherausforderung, getrennt vom bereits angebotenen Saut dans le vide."
+              },
+              {
+                "languageCode": "es",
+                "value": "Big Air Jump figura entre las novedades de la temporada 2017. Su plataforma y su gran colchón de recepción crean un nuevo reto de salto entre los árboles, distinto del Saut dans le vide ya existente."
+              },
+              {
+                "languageCode": "it",
+                "value": "Big Air Jump compare tra le novità della stagione 2017. La piattaforma e il grande cuscino di atterraggio creano una nuova sfida di salto tra gli alberi, distinta dal Saut dans le vide già proposto."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Big Air Jump behoort tot de nieuwigheden van het seizoen 2017. Het platform en het grote landingskussen vormen een nieuwe springuitdaging tussen de bomen, los van de al bestaande Saut dans le vide."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Big Air Jump pojawia się wśród nowości sezonu 2017. Platforma i duża poduszka do lądowania tworzą nowe wyzwanie skokowe między drzewami, odrębne od wcześniej oferowanego Saut dans le vide."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Big Air Jump surge entre as novidades da temporada 2017. A plataforma e a grande almofada de receção criam um novo desafio de salto entre as árvores, distinto do Saut dans le vide já existente."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-item-ferme-opening-2017",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+            "parkId": null,
+            "parkItemId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+            "itemId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+            "itemKey": "pokeyland-historical-mini-ferme",
+            "parkItemKey": "pokeyland-historical-mini-ferme",
+            "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2017,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "209ac79cecaa4ab08ca814d318c027b0",
+            "sources": [
+              {
+                "label": "Loractu — nouveautés de la saison 2017",
+                "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "L’Est Républicain — reportage Pokeyland publié le 11 août 2017",
+                "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "La mini-ferme enrichit l’offre familiale"
+              },
+              {
+                "languageCode": "en",
+                "value": "The small farm broadens the family offer"
+              },
+              {
+                "languageCode": "de",
+                "value": "Die kleine Farm erweitert das Familienangebot"
+              },
+              {
+                "languageCode": "es",
+                "value": "La pequeña granja amplía la oferta familiar"
+              },
+              {
+                "languageCode": "it",
+                "value": "La piccola fattoria amplia l’offerta familiare"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De kleine boerderij verbreedt het gezinsaanbod"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Mała farma poszerza ofertę rodzinną"
+              },
+              {
+                "languageCode": "pt",
+                "value": "A pequena quinta alarga a oferta familiar"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "La mini-ferme est présentée parmi les nouveautés de 2017. Les animaux prennent place dans un enclos boisé, ajoutant une découverte animalière aux jeux et aux activités sportives déjà présents à Pokeyland."
+              },
+              {
+                "languageCode": "en",
+                "value": "The small farm is presented among the additions for 2017. Animals occupy a wooded enclosure, adding an animal encounter to the games and sporting activities already available at Pokeyland."
+              },
+              {
+                "languageCode": "de",
+                "value": "Die kleine Farm wird als eine der Neuheiten von 2017 vorgestellt. Tiere beziehen ein bewaldetes Gehege und ergänzen die bestehenden Spiel- und Sportangebote in Pokeyland um Tierbeobachtungen."
+              },
+              {
+                "languageCode": "es",
+                "value": "La pequeña granja se presenta entre las novedades de 2017. Los animales ocupan un recinto arbolado, añadiendo un encuentro con animales a los juegos y las actividades deportivas ya presentes en Pokeyland."
+              },
+              {
+                "languageCode": "it",
+                "value": "La piccola fattoria viene presentata tra le novità del 2017. Gli animali trovano posto in un recinto alberato, aggiungendo un incontro con gli animali ai giochi e alle attività sportive già presenti a Pokeyland."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De kleine boerderij wordt voorgesteld als een van de nieuwigheden van 2017. Dieren krijgen een bebost verblijf en voegen een kennismaking met dieren toe aan de bestaande spel- en sportactiviteiten in Pokeyland."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Mała farma jest przedstawiana wśród nowości na 2017 rok. Zwierzęta zajmują zadrzewiony wybieg, dodając możliwość obserwacji zwierząt do gier i aktywności sportowych dostępnych już w Pokeyland."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A pequena quinta é apresentada entre as novidades de 2017. Os animais ocupam um recinto arborizado, acrescentando um encontro com animais aos jogos e às atividades desportivas já existentes no Pokeyland."
+              }
+            ]
+          },
+          {
+            "key": "pokeyland-item-saut-opening-2016",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+            "parkId": null,
+            "parkItemId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+            "itemId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+            "itemKey": "pokeyland-historical-saut-vide",
+            "parkItemKey": "pokeyland-historical-saut-vide",
+            "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+            "year": 2016,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "mainImageId": "dc7a5c8c37bf421991729e5b30735d50",
+            "sources": [
+              {
+                "label": "MyLorraine — nouveautés Pokeyland, description publique du 19 juillet 2016",
+                "url": "https://www.dailymotion.com/video/x4kv1rz",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Amazone Adventure — Saut dans le vide Pokeyland",
+                "url": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le Saut dans le vide rejoint les aventures"
+              },
+              {
+                "languageCode": "en",
+                "value": "Saut dans le vide joins the adventures"
+              },
+              {
+                "languageCode": "de",
+                "value": "Saut dans le vide ergänzt die Abenteuer"
+              },
+              {
+                "languageCode": "es",
+                "value": "Saut dans le vide se suma a las aventuras"
+              },
+              {
+                "languageCode": "it",
+                "value": "Saut dans le vide entra tra le avventure"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Saut dans le vide komt bij de avonturen"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Saut dans le vide dołącza do przygód"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Saut dans le vide junta-se às aventuras"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En 2016, MyLorraine présente le Saut dans le vide parmi les nouvelles activités de Pokeyland. Le départ en harnais depuis une plateforme élevée ajoute une épreuve de vertige aux aventures du parc."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2016, MyLorraine presents Saut dans le vide among Pokeyland’s new activities. Setting off in a harness from an elevated platform adds a challenge at height to the park’s adventures."
+              },
+              {
+                "languageCode": "de",
+                "value": "2016 stellt MyLorraine Saut dans le vide als neue Aktivität in Pokeyland vor. Der Start mit einem Gurt von einer erhöhten Plattform ergänzt die Parkabenteuer um eine Herausforderung in der Höhe."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2016, MyLorraine presenta Saut dans le vide entre las nuevas actividades de Pokeyland. La salida con arnés desde una plataforma elevada añade un reto en altura a las aventuras del parque."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2016, MyLorraine presenta Saut dans le vide tra le nuove attività di Pokeyland. La partenza con imbracatura da una piattaforma sopraelevata aggiunge una sfida in quota alle avventure del parco."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2016 presenteert MyLorraine Saut dans le vide als een van Pokeylands nieuwe activiteiten. Het vertrek met een harnas vanaf een verhoogd platform voegt een uitdaging op hoogte toe aan de parkavonturen."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2016 roku MyLorraine przedstawia Saut dans le vide wśród nowych aktywności Pokeyland. Start w uprzęży z podwyższonej platformy dodaje wyzwanie na wysokości do przygód oferowanych w parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2016, a MyLorraine apresenta o Saut dans le vide entre as novas atividades do Pokeyland. A partida com arnês de uma plataforma elevada acrescenta um desafio em altura às aventuras do parque."
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — six jalons propres aux items, titres et résumés rédigés et relus personnellement huit langues. Pomme seule datée au jour ; cinq nouveautés datées à l’année selon sources. Aucun événement d’item dupliqué dans la frise parc, aucun statut courant déduit, aucune publication. Photographies authentiques de contexte, dont Rotor en cour fournisseur ; dates de prise de vue inconnues."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "8516cb41-d712-45f0-a744-95cac1aeddcc",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:19:47.4437963Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 6,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "63cb34ba-dc76-460d-a039-b73a6cf47f0a",
+        "entityKey": "pokeyland-item-pomme-opening-2025",
+        "displayName": "La Pomme ouvre son circuit",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-pomme-opening-2025"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "017581c2b60b4763a6f2e8e4d9c8a1a6"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:La Pomme eröffnet ihren Rundkurs, en:La Pomme opens its circuit, es:La Pomme abre su circuito, fr:La Pomme ouvre son circuit, it:La Pomme apre il suo circuito, nl:La Pomme opent haar circuit, pl:La Pomme otwiera swój tor, pt:La Pomme abre o seu circuito"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:La Pomme eröffnet am 5. April 2025. Die Familienachterbahn mit raupenförmigem Zug begleitet den Einzug mechanischer Fahrgeschäfte in Pokeyland und erweitert das zuvor vor allem auf Freiluftaktivitäten ausgerichtete Angebot., en:La Pomme opens on 5 April 2025. The family roller coaster with a caterpillar-shaped train accompanies the arrival of mechanical rides at Pokeyland, broadening an offer previously focused mainly on outdoor activities., es:La Pomme abre el 5 de abril de 2025. Esta montaña rusa familiar con tren en forma de oruga acompaña la llegada de atracciones mecánicas a Pokeyland y amplía una oferta antes centrada principalmente en actividades al aire libre., fr:La Pomme ouvre le 5 avril 2025. Cette montagne russe familiale à train en forme de chenille accompagne l’arrivée de manèges mécaniques à Pokeyland, élargissant l’offre jusque-là principalement tournée vers les loisirs de plein air., it:La Pomme apre il 5 aprile 2025. La montagna russa per famiglie con treno a forma di bruco accompagna l’arrivo delle giostre meccaniche a Pokeyland, ampliando un’offerta prima dedicata soprattutto alle attività all’aperto., nl:La Pomme opent op 5 april 2025. De familieachtbaan met rupsentrein begeleidt de komst van mechanische attracties in Pokeyland en verbreedt een aanbod dat voorheen vooral op buitenactiviteiten was gericht., pl:La Pomme otwiera się 5 kwietnia 2025 roku. Rodzinna kolejka górska z pociągiem w kształcie gąsienicy towarzyszy wprowadzeniu atrakcji mechanicznych do Pokeyland, poszerzając ofertę wcześniej skupioną głównie na aktywnościach plenerowych., pt:La Pomme abre a 5 de abril de 2025. A montanha-russa familiar com comboio em forma de lagarta acompanha a chegada de atrações mecânicas ao Pokeyland, alargando uma oferta antes sobretudo dedicada às atividades ao ar livre."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Captain Coaster \\u2014 La Pomme, ouverture 5 avril 2025\",\"Url\":\"https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RCDB 22635 \\u2014 date ISO 2025-04-05\",\"Url\":\"https://rcdb.com/22635.htm\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "d2050894-313a-4c65-aefb-5f79a1b0e874",
+        "entityKey": "pokeyland-item-waterjump-opening-2022",
+        "displayName": "Le Waterjump apporte une aventure aquatique",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-waterjump-opening-2022"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "73ff7670-39ee-4c19-b339-907707fc8711"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "73ff7670-39ee-4c19-b339-907707fc8711"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2022"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "c8466353e86442e180d8ff8e5fbbf41a"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Waterjump bringt ein Wasserabenteuer, en:Waterjump adds an aquatic adventure, es:Waterjump incorpora una aventura acuática, fr:Le Waterjump apporte une aventure aquatique, it:Waterjump porta un’avventura acquatica, nl:Waterjump voegt een wateravontuur toe, pl:Waterjump wprowadza wodną przygodę, pt:O Waterjump traz uma aventura aquática"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Waterjump ergänzt 2022 das Parkangebot. Auf die Rutschbahnen folgen ein Sprung und eine Landung im Wasser, wodurch die Abenteuer in Pokeyland eine zusätzliche Wasserkomponente erhalten., en:Waterjump joins the park’s activities in 2022. Its slides end in a jump followed by a landing in the water, adding an aquatic dimension to Pokeyland’s range of adventures., es:Waterjump se incorpora a las actividades del parque en 2022. Sus pistas terminan en un salto seguido de una caída en el agua, aportando una dimensión acuática a las aventuras de Pokeyland., fr:Le Waterjump rejoint les activités du parc en 2022. Les pistes de glisse se terminent par un saut suivi d’une réception dans l’eau, donnant une dimension aquatique aux aventures de Pokeyland., it:Waterjump entra nell’offerta del parco nel 2022. Le piste di scivolamento terminano con un salto e un arrivo in acqua, aggiungendo una dimensione acquatica alle avventure di Pokeyland., nl:Waterjump komt in 2022 bij het parkaanbod. De glijbanen eindigen in een sprong, gevolgd door een landing in het water, en geven de avonturen van Pokeyland een waterdimensie., pl:Waterjump dołącza do atrakcji parku w 2022 roku. Zjazd po torze kończy się skokiem i lądowaniem w wodzie, dodając wodny wymiar do przygód oferowanych przez Pokeyland., pt:O Waterjump junta-se às atividades do parque em 2022. As pistas terminam num salto seguido de uma chegada à água, acrescentando uma dimensão aquática às aventuras do Pokeyland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Direct FM \\u2014 nouvelle aventure aquatique annonc\\u00E9e en 2022\",\"Url\":\"https://www.directfm.fr/reouverture-du-parc-pokeyland\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Direct FM \\u2014 utilisation Waterjump en septembre 2022\",\"Url\":\"https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Pokeyland \\u2014 brochure 2023 rappelant le Waterjump test\\u00E9 en 2022\",\"Url\":\"https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8ee911c6-c3f8-469b-becb-d224c70a3579",
+        "entityKey": "pokeyland-item-rotor-opening-2021",
+        "displayName": "Le Rotor Jump entre dans les jeux du parc",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-rotor-opening-2021"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "651f4fbe-a213-4e27-a5f8-7b325cc97599"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "651f4fbe-a213-4e27-a5f8-7b325cc97599"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2021"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "608ac56337434664a6394fe378fcc0f4"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Rotor Jump ergänzt die Spielangebote, en:Rotor Jump joins the park’s games, es:Rotor Jump se suma a los juegos del parque, fr:Le Rotor Jump entre dans les jeux du parc, it:Rotor Jump entra tra i giochi del parco, nl:Rotor Jump komt bij het spelaanbod, pl:Rotor Jump dołącza do zabaw w parku, pt:O Rotor Jump junta-se aos jogos do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Rotor Jump gehört zu den Neuheiten von 2021. Bis zu acht Spieler versuchen, dem rotierenden Arm auszuweichen. Lukylud gestaltet die aufblasbare Anlage mit den Farben und Motiven von Pokeyland., en:Rotor Jump is one of the additions for 2021. Up to eight players try to avoid its rotating arm; Lukylud customises the inflatable structure with Pokeyland’s colours and branding., es:Rotor Jump es una de las novedades de 2021. Hasta ocho jugadores intentan esquivar su brazo giratorio; Lukylud personaliza la estructura hinchable con los colores y las marcas de Pokeyland., fr:Le Rotor Jump fait partie des nouveautés de 2021. Jusqu’à huit joueurs tentent d’éviter son bras tournant ; Lukylud personnalise la structure gonflable avec les couleurs et les marquages de Pokeyland., it:Rotor Jump è una delle novità del 2021. Fino a otto giocatori cercano di evitare il braccio rotante; Lukylud personalizza la struttura gonfiabile con i colori e i marchi di Pokeyland., nl:Rotor Jump is een van de nieuwigheden van 2021. Maximaal acht spelers proberen de draaiende arm te ontwijken; Lukylud past de opblaasbare constructie aan met de kleuren en opdrukken van Pokeyland., pl:Rotor Jump jest jedną z nowości na 2021 rok. Maksymalnie ośmiu graczy próbuje uniknąć obracającego się ramienia; Lukylud dostosowuje dmuchaną konstrukcję, nadając jej kolory i oznaczenia Pokeyland., pt:O Rotor Jump é uma das novidades de 2021. Até oito jogadores tentam evitar o braço giratório; a Lukylud personaliza a estrutura insuflável com as cores e as marcas do Pokeyland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Direct FM \\u2014 nouveaut\\u00E9 Rotor Jump saison 2021\",\"Url\":\"https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Lukylud \\u2014 structure personnalis\\u00E9e Pokeyland, 20 mai 2021\",\"Url\":\"https://www.lukylud.fr/jeu-gonflable-personnalise/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "9bfef331-cd4d-4a26-8a2e-c6546ffcf9b9",
+        "entityKey": "pokeyland-item-bigair-opening-2017",
+        "displayName": "Le Big Air Jump fait sauter vers un coussin géant",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-bigair-opening-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "73a1c7d039244b45b8e2973e13a36f61"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Big Air Jump bringt Sprünge auf ein großes Kissen, en:Big Air Jump introduces leaps onto a giant cushion, es:Big Air Jump propone saltar a un gran colchón, fr:Le Big Air Jump fait sauter vers un coussin géant, it:Big Air Jump porta i salti su un grande cuscino, nl:Big Air Jump laat deelnemers op een groot kussen springen, pl:Big Air Jump wprowadza skoki na wielką poduszkę, pt:O Big Air Jump propõe saltos para uma grande almofada"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Big Air Jump zählt zu den Neuheiten der Saison 2017. Plattform und großes Landekissen schaffen zwischen den Bäumen eine neue Sprungherausforderung, getrennt vom bereits angebotenen Saut dans le vide., en:Big Air Jump appears among the additions for the 2017 season. Its platform and large landing cushion create a new jumping challenge among the trees, separate from the existing Saut dans le vide., es:Big Air Jump figura entre las novedades de la temporada 2017. Su plataforma y su gran colchón de recepción crean un nuevo reto de salto entre los árboles, distinto del Saut dans le vide ya existente., fr:Le Big Air Jump apparaît parmi les nouveautés de la saison 2017. Sa plateforme et son grand coussin de réception créent un nouveau défi de saut au milieu des arbres, distinct du Saut dans le vide déjà proposé., it:Big Air Jump compare tra le novità della stagione 2017. La piattaforma e il grande cuscino di atterraggio creano una nuova sfida di salto tra gli alberi, distinta dal Saut dans le vide già proposto., nl:Big Air Jump behoort tot de nieuwigheden van het seizoen 2017. Het platform en het grote landingskussen vormen een nieuwe springuitdaging tussen de bomen, los van de al bestaande Saut dans le vide., pl:Big Air Jump pojawia się wśród nowości sezonu 2017. Platforma i duża poduszka do lądowania tworzą nowe wyzwanie skokowe między drzewami, odrębne od wcześniej oferowanego Saut dans le vide., pt:O Big Air Jump surge entre as novidades da temporada 2017. A plataforma e a grande almofada de receção criam um novo desafio de salto entre as árvores, distinto do Saut dans le vide já existente."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Loractu \\u2014 nouveaut\\u00E9s de la saison 2017\",\"Url\":\"https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"L\\u2019Est R\\u00E9publicain \\u2014 reportage Pokeyland publi\\u00E9 le 11 ao\\u00FBt 2017\",\"Url\":\"https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "4a7aefb4-133f-4117-aba2-cc5dc18e1853",
+        "entityKey": "pokeyland-item-ferme-opening-2017",
+        "displayName": "La mini-ferme enrichit l’offre familiale",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-ferme-opening-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "077229e9-6ff0-4b25-94f9-0858f11d9655"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "077229e9-6ff0-4b25-94f9-0858f11d9655"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "209ac79cecaa4ab08ca814d318c027b0"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die kleine Farm erweitert das Familienangebot, en:The small farm broadens the family offer, es:La pequeña granja amplía la oferta familiar, fr:La mini-ferme enrichit l’offre familiale, it:La piccola fattoria amplia l’offerta familiare, nl:De kleine boerderij verbreedt het gezinsaanbod, pl:Mała farma poszerza ofertę rodzinną, pt:A pequena quinta alarga a oferta familiar"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Die kleine Farm wird als eine der Neuheiten von 2017 vorgestellt. Tiere beziehen ein bewaldetes Gehege und ergänzen die bestehenden Spiel- und Sportangebote in Pokeyland um Tierbeobachtungen., en:The small farm is presented among the additions for 2017. Animals occupy a wooded enclosure, adding an animal encounter to the games and sporting activities already available at Pokeyland., es:La pequeña granja se presenta entre las novedades de 2017. Los animales ocupan un recinto arbolado, añadiendo un encuentro con animales a los juegos y las actividades deportivas ya presentes en Pokeyland., fr:La mini-ferme est présentée parmi les nouveautés de 2017. Les animaux prennent place dans un enclos boisé, ajoutant une découverte animalière aux jeux et aux activités sportives déjà présents à Pokeyland., it:La piccola fattoria viene presentata tra le novità del 2017. Gli animali trovano posto in un recinto alberato, aggiungendo un incontro con gli animali ai giochi e alle attività sportive già presenti a Pokeyland., nl:De kleine boerderij wordt voorgesteld als een van de nieuwigheden van 2017. Dieren krijgen een bebost verblijf en voegen een kennismaking met dieren toe aan de bestaande spel- en sportactiviteiten in Pokeyland., pl:Mała farma jest przedstawiana wśród nowości na 2017 rok. Zwierzęta zajmują zadrzewiony wybieg, dodając możliwość obserwacji zwierząt do gier i aktywności sportowych dostępnych już w Pokeyland., pt:A pequena quinta é apresentada entre as novidades de 2017. Os animais ocupam um recinto arborizado, acrescentando um encontro com animais aos jogos e às atividades desportivas já existentes no Pokeyland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Loractu \\u2014 nouveaut\\u00E9s de la saison 2017\",\"Url\":\"https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"L\\u2019Est R\\u00E9publicain \\u2014 reportage Pokeyland publi\\u00E9 le 11 ao\\u00FBt 2017\",\"Url\":\"https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8eb9c42d-55a9-4492-a1d8-b4aa86287cba",
+        "entityKey": "pokeyland-item-saut-opening-2016",
+        "displayName": "Le Saut dans le vide rejoint les aventures",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-saut-opening-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "dc7a5c8c37bf421991729e5b30735d50"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Saut dans le vide ergänzt die Abenteuer, en:Saut dans le vide joins the adventures, es:Saut dans le vide se suma a las aventuras, fr:Le Saut dans le vide rejoint les aventures, it:Saut dans le vide entra tra le avventure, nl:Saut dans le vide komt bij de avonturen, pl:Saut dans le vide dołącza do przygód, pt:O Saut dans le vide junta-se às aventuras"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2016 stellt MyLorraine Saut dans le vide als neue Aktivität in Pokeyland vor. Der Start mit einem Gurt von einer erhöhten Plattform ergänzt die Parkabenteuer um eine Herausforderung in der Höhe., en:In 2016, MyLorraine presents Saut dans le vide among Pokeyland’s new activities. Setting off in a harness from an elevated platform adds a challenge at height to the park’s adventures., es:En 2016, MyLorraine presenta Saut dans le vide entre las nuevas actividades de Pokeyland. La salida con arnés desde una plataforma elevada añade un reto en altura a las aventuras del parque., fr:En 2016, MyLorraine présente le Saut dans le vide parmi les nouvelles activités de Pokeyland. Le départ en harnais depuis une plateforme élevée ajoute une épreuve de vertige aux aventures du parc., it:Nel 2016, MyLorraine presenta Saut dans le vide tra le nuove attività di Pokeyland. La partenza con imbracatura da una piattaforma sopraelevata aggiunge una sfida in quota alle avventure del parco., nl:In 2016 presenteert MyLorraine Saut dans le vide als een van Pokeylands nieuwe activiteiten. Het vertrek met een harnas vanaf een verhoogd platform voegt een uitdaging op hoogte toe aan de parkavonturen., pl:W 2016 roku MyLorraine przedstawia Saut dans le vide wśród nowych aktywności Pokeyland. Start w uprzęży z podwyższonej platformy dodaje wyzwanie na wysokości do przygód oferowanych w parku., pt:Em 2016, a MyLorraine apresenta o Saut dans le vide entre as novas atividades do Pokeyland. A partida com arnês de uma plataforma elevada acrescenta um desafio em altura às aventuras do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Amazone Adventure \\u2014 Saut dans le vide Pokeyland\",\"Url\":\"https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"MyLorraine \\u2014 nouveaut\\u00E9s Pokeyland, description publique du 19 juillet 2016\",\"Url\":\"https://www.dailymotion.com/video/x4kv1rz\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "e09ec867-2572-4970-92f8-ee232b25f74e",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:20:41.6487426Z",
+    "appliedAtUtc": "2026-11-15T13:20:41.6487431Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 6,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c54d3c41-b27e-4e66-870d-a9e457129085",
+        "entityKey": "pokeyland-item-pomme-opening-2025",
+        "displayName": "La Pomme ouvre son circuit",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-pomme-opening-2025"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2025"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "4"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "017581c2b60b4763a6f2e8e4d9c8a1a6"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:La Pomme eröffnet ihren Rundkurs, en:La Pomme opens its circuit, es:La Pomme abre su circuito, fr:La Pomme ouvre son circuit, it:La Pomme apre il suo circuito, nl:La Pomme opent haar circuit, pl:La Pomme otwiera swój tor, pt:La Pomme abre o seu circuito"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:La Pomme eröffnet am 5. April 2025. Die Familienachterbahn mit raupenförmigem Zug begleitet den Einzug mechanischer Fahrgeschäfte in Pokeyland und erweitert das zuvor vor allem auf Freiluftaktivitäten ausgerichtete Angebot., en:La Pomme opens on 5 April 2025. The family roller coaster with a caterpillar-shaped train accompanies the arrival of mechanical rides at Pokeyland, broadening an offer previously focused mainly on outdoor activities., es:La Pomme abre el 5 de abril de 2025. Esta montaña rusa familiar con tren en forma de oruga acompaña la llegada de atracciones mecánicas a Pokeyland y amplía una oferta antes centrada principalmente en actividades al aire libre., fr:La Pomme ouvre le 5 avril 2025. Cette montagne russe familiale à train en forme de chenille accompagne l’arrivée de manèges mécaniques à Pokeyland, élargissant l’offre jusque-là principalement tournée vers les loisirs de plein air., it:La Pomme apre il 5 aprile 2025. La montagna russa per famiglie con treno a forma di bruco accompagna l’arrivo delle giostre meccaniche a Pokeyland, ampliando un’offerta prima dedicata soprattutto alle attività all’aperto., nl:La Pomme opent op 5 april 2025. De familieachtbaan met rupsentrein begeleidt de komst van mechanische attracties in Pokeyland en verbreedt een aanbod dat voorheen vooral op buitenactiviteiten was gericht., pl:La Pomme otwiera się 5 kwietnia 2025 roku. Rodzinna kolejka górska z pociągiem w kształcie gąsienicy towarzyszy wprowadzeniu atrakcji mechanicznych do Pokeyland, poszerzając ofertę wcześniej skupioną głównie na aktywnościach plenerowych., pt:La Pomme abre a 5 de abril de 2025. A montanha-russa familiar com comboio em forma de lagarta acompanha a chegada de atrações mecânicas ao Pokeyland, alargando uma oferta antes sobretudo dedicada às atividades ao ar livre."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Captain Coaster \\u2014 La Pomme, ouverture 5 avril 2025\",\"Url\":\"https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RCDB 22635 \\u2014 date ISO 2025-04-05\",\"Url\":\"https://rcdb.com/22635.htm\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c3ed398f-3aaa-42c7-b68d-ed15e5bb3d23",
+        "entityKey": "pokeyland-item-waterjump-opening-2022",
+        "displayName": "Le Waterjump apporte une aventure aquatique",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-waterjump-opening-2022"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "73ff7670-39ee-4c19-b339-907707fc8711"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "73ff7670-39ee-4c19-b339-907707fc8711"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2022"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "c8466353e86442e180d8ff8e5fbbf41a"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Waterjump bringt ein Wasserabenteuer, en:Waterjump adds an aquatic adventure, es:Waterjump incorpora una aventura acuática, fr:Le Waterjump apporte une aventure aquatique, it:Waterjump porta un’avventura acquatica, nl:Waterjump voegt een wateravontuur toe, pl:Waterjump wprowadza wodną przygodę, pt:O Waterjump traz uma aventura aquática"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Waterjump ergänzt 2022 das Parkangebot. Auf die Rutschbahnen folgen ein Sprung und eine Landung im Wasser, wodurch die Abenteuer in Pokeyland eine zusätzliche Wasserkomponente erhalten., en:Waterjump joins the park’s activities in 2022. Its slides end in a jump followed by a landing in the water, adding an aquatic dimension to Pokeyland’s range of adventures., es:Waterjump se incorpora a las actividades del parque en 2022. Sus pistas terminan en un salto seguido de una caída en el agua, aportando una dimensión acuática a las aventuras de Pokeyland., fr:Le Waterjump rejoint les activités du parc en 2022. Les pistes de glisse se terminent par un saut suivi d’une réception dans l’eau, donnant une dimension aquatique aux aventures de Pokeyland., it:Waterjump entra nell’offerta del parco nel 2022. Le piste di scivolamento terminano con un salto e un arrivo in acqua, aggiungendo una dimensione acquatica alle avventure di Pokeyland., nl:Waterjump komt in 2022 bij het parkaanbod. De glijbanen eindigen in een sprong, gevolgd door een landing in het water, en geven de avonturen van Pokeyland een waterdimensie., pl:Waterjump dołącza do atrakcji parku w 2022 roku. Zjazd po torze kończy się skokiem i lądowaniem w wodzie, dodając wodny wymiar do przygód oferowanych przez Pokeyland., pt:O Waterjump junta-se às atividades do parque em 2022. As pistas terminam num salto seguido de uma chegada à água, acrescentando uma dimensão aquática às aventuras do Pokeyland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Direct FM \\u2014 nouvelle aventure aquatique annonc\\u00E9e en 2022\",\"Url\":\"https://www.directfm.fr/reouverture-du-parc-pokeyland\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Direct FM \\u2014 utilisation Waterjump en septembre 2022\",\"Url\":\"https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Pokeyland \\u2014 brochure 2023 rappelant le Waterjump test\\u00E9 en 2022\",\"Url\":\"https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6856d2d6-f1d2-4f2b-a2dd-dbc7d22d99fa",
+        "entityKey": "pokeyland-item-rotor-opening-2021",
+        "displayName": "Le Rotor Jump entre dans les jeux du parc",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-rotor-opening-2021"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "651f4fbe-a213-4e27-a5f8-7b325cc97599"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "651f4fbe-a213-4e27-a5f8-7b325cc97599"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2021"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "608ac56337434664a6394fe378fcc0f4"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Rotor Jump ergänzt die Spielangebote, en:Rotor Jump joins the park’s games, es:Rotor Jump se suma a los juegos del parque, fr:Le Rotor Jump entre dans les jeux du parc, it:Rotor Jump entra tra i giochi del parco, nl:Rotor Jump komt bij het spelaanbod, pl:Rotor Jump dołącza do zabaw w parku, pt:O Rotor Jump junta-se aos jogos do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Rotor Jump gehört zu den Neuheiten von 2021. Bis zu acht Spieler versuchen, dem rotierenden Arm auszuweichen. Lukylud gestaltet die aufblasbare Anlage mit den Farben und Motiven von Pokeyland., en:Rotor Jump is one of the additions for 2021. Up to eight players try to avoid its rotating arm; Lukylud customises the inflatable structure with Pokeyland’s colours and branding., es:Rotor Jump es una de las novedades de 2021. Hasta ocho jugadores intentan esquivar su brazo giratorio; Lukylud personaliza la estructura hinchable con los colores y las marcas de Pokeyland., fr:Le Rotor Jump fait partie des nouveautés de 2021. Jusqu’à huit joueurs tentent d’éviter son bras tournant ; Lukylud personnalise la structure gonflable avec les couleurs et les marquages de Pokeyland., it:Rotor Jump è una delle novità del 2021. Fino a otto giocatori cercano di evitare il braccio rotante; Lukylud personalizza la struttura gonfiabile con i colori e i marchi di Pokeyland., nl:Rotor Jump is een van de nieuwigheden van 2021. Maximaal acht spelers proberen de draaiende arm te ontwijken; Lukylud past de opblaasbare constructie aan met de kleuren en opdrukken van Pokeyland., pl:Rotor Jump jest jedną z nowości na 2021 rok. Maksymalnie ośmiu graczy próbuje uniknąć obracającego się ramienia; Lukylud dostosowuje dmuchaną konstrukcję, nadając jej kolory i oznaczenia Pokeyland., pt:O Rotor Jump é uma das novidades de 2021. Até oito jogadores tentam evitar o braço giratório; a Lukylud personaliza a estrutura insuflável com as cores e as marcas do Pokeyland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Direct FM \\u2014 nouveaut\\u00E9 Rotor Jump saison 2021\",\"Url\":\"https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Lukylud \\u2014 structure personnalis\\u00E9e Pokeyland, 20 mai 2021\",\"Url\":\"https://www.lukylud.fr/jeu-gonflable-personnalise/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6447fa8e-56c3-40bc-86ce-54287de6a848",
+        "entityKey": "pokeyland-item-bigair-opening-2017",
+        "displayName": "Le Big Air Jump fait sauter vers un coussin géant",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-bigair-opening-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "73a1c7d039244b45b8e2973e13a36f61"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Big Air Jump bringt Sprünge auf ein großes Kissen, en:Big Air Jump introduces leaps onto a giant cushion, es:Big Air Jump propone saltar a un gran colchón, fr:Le Big Air Jump fait sauter vers un coussin géant, it:Big Air Jump porta i salti su un grande cuscino, nl:Big Air Jump laat deelnemers op een groot kussen springen, pl:Big Air Jump wprowadza skoki na wielką poduszkę, pt:O Big Air Jump propõe saltos para uma grande almofada"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Big Air Jump zählt zu den Neuheiten der Saison 2017. Plattform und großes Landekissen schaffen zwischen den Bäumen eine neue Sprungherausforderung, getrennt vom bereits angebotenen Saut dans le vide., en:Big Air Jump appears among the additions for the 2017 season. Its platform and large landing cushion create a new jumping challenge among the trees, separate from the existing Saut dans le vide., es:Big Air Jump figura entre las novedades de la temporada 2017. Su plataforma y su gran colchón de recepción crean un nuevo reto de salto entre los árboles, distinto del Saut dans le vide ya existente., fr:Le Big Air Jump apparaît parmi les nouveautés de la saison 2017. Sa plateforme et son grand coussin de réception créent un nouveau défi de saut au milieu des arbres, distinct du Saut dans le vide déjà proposé., it:Big Air Jump compare tra le novità della stagione 2017. La piattaforma e il grande cuscino di atterraggio creano una nuova sfida di salto tra gli alberi, distinta dal Saut dans le vide già proposto., nl:Big Air Jump behoort tot de nieuwigheden van het seizoen 2017. Het platform en het grote landingskussen vormen een nieuwe springuitdaging tussen de bomen, los van de al bestaande Saut dans le vide., pl:Big Air Jump pojawia się wśród nowości sezonu 2017. Platforma i duża poduszka do lądowania tworzą nowe wyzwanie skokowe między drzewami, odrębne od wcześniej oferowanego Saut dans le vide., pt:O Big Air Jump surge entre as novidades da temporada 2017. A plataforma e a grande almofada de receção criam um novo desafio de salto entre as árvores, distinto do Saut dans le vide já existente."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Loractu \\u2014 nouveaut\\u00E9s de la saison 2017\",\"Url\":\"https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"L\\u2019Est R\\u00E9publicain \\u2014 reportage Pokeyland publi\\u00E9 le 11 ao\\u00FBt 2017\",\"Url\":\"https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "47a8ef0a-9999-4dbb-a8cb-349753a4ca53",
+        "entityKey": "pokeyland-item-ferme-opening-2017",
+        "displayName": "La mini-ferme enrichit l’offre familiale",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-ferme-opening-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "077229e9-6ff0-4b25-94f9-0858f11d9655"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "077229e9-6ff0-4b25-94f9-0858f11d9655"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "209ac79cecaa4ab08ca814d318c027b0"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Die kleine Farm erweitert das Familienangebot, en:The small farm broadens the family offer, es:La pequeña granja amplía la oferta familiar, fr:La mini-ferme enrichit l’offre familiale, it:La piccola fattoria amplia l’offerta familiare, nl:De kleine boerderij verbreedt het gezinsaanbod, pl:Mała farma poszerza ofertę rodzinną, pt:A pequena quinta alarga a oferta familiar"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Die kleine Farm wird als eine der Neuheiten von 2017 vorgestellt. Tiere beziehen ein bewaldetes Gehege und ergänzen die bestehenden Spiel- und Sportangebote in Pokeyland um Tierbeobachtungen., en:The small farm is presented among the additions for 2017. Animals occupy a wooded enclosure, adding an animal encounter to the games and sporting activities already available at Pokeyland., es:La pequeña granja se presenta entre las novedades de 2017. Los animales ocupan un recinto arbolado, añadiendo un encuentro con animales a los juegos y las actividades deportivas ya presentes en Pokeyland., fr:La mini-ferme est présentée parmi les nouveautés de 2017. Les animaux prennent place dans un enclos boisé, ajoutant une découverte animalière aux jeux et aux activités sportives déjà présents à Pokeyland., it:La piccola fattoria viene presentata tra le novità del 2017. Gli animali trovano posto in un recinto alberato, aggiungendo un incontro con gli animali ai giochi e alle attività sportive già presenti a Pokeyland., nl:De kleine boerderij wordt voorgesteld als een van de nieuwigheden van 2017. Dieren krijgen een bebost verblijf en voegen een kennismaking met dieren toe aan de bestaande spel- en sportactiviteiten in Pokeyland., pl:Mała farma jest przedstawiana wśród nowości na 2017 rok. Zwierzęta zajmują zadrzewiony wybieg, dodając możliwość obserwacji zwierząt do gier i aktywności sportowych dostępnych już w Pokeyland., pt:A pequena quinta é apresentada entre as novidades de 2017. Os animais ocupam um recinto arborizado, acrescentando um encontro com animais aos jogos e às atividades desportivas já existentes no Pokeyland."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Loractu \\u2014 nouveaut\\u00E9s de la saison 2017\",\"Url\":\"https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"L\\u2019Est R\\u00E9publicain \\u2014 reportage Pokeyland publi\\u00E9 le 11 ao\\u00FBt 2017\",\"Url\":\"https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fc599901-8e58-47b1-8642-7c0fe510b10f",
+        "entityKey": "pokeyland-item-saut-opening-2016",
+        "displayName": "Le Saut dans le vide rejoint les aventures",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "pokeyland-item-saut-opening-2016"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "dc876288-7c8b-4684-8150-993908cdcf7a"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2016"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "dc7a5c8c37bf421991729e5b30735d50"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Saut dans le vide ergänzt die Abenteuer, en:Saut dans le vide joins the adventures, es:Saut dans le vide se suma a las aventuras, fr:Le Saut dans le vide rejoint les aventures, it:Saut dans le vide entra tra le avventure, nl:Saut dans le vide komt bij de avonturen, pl:Saut dans le vide dołącza do przygód, pt:O Saut dans le vide junta-se às aventuras"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2016 stellt MyLorraine Saut dans le vide als neue Aktivität in Pokeyland vor. Der Start mit einem Gurt von einer erhöhten Plattform ergänzt die Parkabenteuer um eine Herausforderung in der Höhe., en:In 2016, MyLorraine presents Saut dans le vide among Pokeyland’s new activities. Setting off in a harness from an elevated platform adds a challenge at height to the park’s adventures., es:En 2016, MyLorraine presenta Saut dans le vide entre las nuevas actividades de Pokeyland. La salida con arnés desde una plataforma elevada añade un reto en altura a las aventuras del parque., fr:En 2016, MyLorraine présente le Saut dans le vide parmi les nouvelles activités de Pokeyland. Le départ en harnais depuis une plateforme élevée ajoute une épreuve de vertige aux aventures du parc., it:Nel 2016, MyLorraine presenta Saut dans le vide tra le nuove attività di Pokeyland. La partenza con imbracatura da una piattaforma sopraelevata aggiunge una sfida in quota alle avventure del parco., nl:In 2016 presenteert MyLorraine Saut dans le vide als een van Pokeylands nieuwe activiteiten. Het vertrek met een harnas vanaf een verhoogd platform voegt een uitdaging op hoogte toe aan de parkavonturen., pl:W 2016 roku MyLorraine przedstawia Saut dans le vide wśród nowych aktywności Pokeyland. Start w uprzęży z podwyższonej platformy dodaje wyzwanie na wysokości do przygód oferowanych w parku., pt:Em 2016, a MyLorraine apresenta o Saut dans le vide entre as novas atividades do Pokeyland. A partida com arnês de uma plataforma elevada acrescenta um desafio em altura às aventuras do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Amazone Adventure \\u2014 Saut dans le vide Pokeyland\",\"Url\":\"https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"MyLorraine \\u2014 nouveaut\\u00E9s Pokeyland, description publique du 19 juillet 2016\",\"Url\":\"https://www.dailymotion.com/video/x4kv1rz\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "pokeyland-item-pomme-opening-2025",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "parkId": null,
+      "parkItemId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "itemId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "itemKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "parkItemKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+      "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2025,
+      "month": 4,
+      "day": 5,
+      "datePrecision": "Day",
+      "eventType": "Opening",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "017581c2b60b4763a6f2e8e4d9c8a1a6",
+      "sources": [
+        {
+          "label": "Captain Coaster — La Pomme, ouverture 5 avril 2025",
+          "url": "https://captaincoaster.com/fr/coasters/6501/pokeyland-pomme",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "RCDB 22635 — date ISO 2025-04-05",
+          "url": "https://rcdb.com/22635.htm",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "La Pomme ouvre son circuit"
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme opens its circuit"
+        },
+        {
+          "languageCode": "de",
+          "value": "La Pomme eröffnet ihren Rundkurs"
+        },
+        {
+          "languageCode": "es",
+          "value": "La Pomme abre su circuito"
+        },
+        {
+          "languageCode": "it",
+          "value": "La Pomme apre il suo circuito"
+        },
+        {
+          "languageCode": "nl",
+          "value": "La Pomme opent haar circuit"
+        },
+        {
+          "languageCode": "pl",
+          "value": "La Pomme otwiera swój tor"
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Pomme abre o seu circuito"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "La Pomme ouvre le 5 avril 2025. Cette montagne russe familiale à train en forme de chenille accompagne l’arrivée de manèges mécaniques à Pokeyland, élargissant l’offre jusque-là principalement tournée vers les loisirs de plein air."
+        },
+        {
+          "languageCode": "en",
+          "value": "La Pomme opens on 5 April 2025. The family roller coaster with a caterpillar-shaped train accompanies the arrival of mechanical rides at Pokeyland, broadening an offer previously focused mainly on outdoor activities."
+        },
+        {
+          "languageCode": "de",
+          "value": "La Pomme eröffnet am 5. April 2025. Die Familienachterbahn mit raupenförmigem Zug begleitet den Einzug mechanischer Fahrgeschäfte in Pokeyland und erweitert das zuvor vor allem auf Freiluftaktivitäten ausgerichtete Angebot."
+        },
+        {
+          "languageCode": "es",
+          "value": "La Pomme abre el 5 de abril de 2025. Esta montaña rusa familiar con tren en forma de oruga acompaña la llegada de atracciones mecánicas a Pokeyland y amplía una oferta antes centrada principalmente en actividades al aire libre."
+        },
+        {
+          "languageCode": "it",
+          "value": "La Pomme apre il 5 aprile 2025. La montagna russa per famiglie con treno a forma di bruco accompagna l’arrivo delle giostre meccaniche a Pokeyland, ampliando un’offerta prima dedicata soprattutto alle attività all’aperto."
+        },
+        {
+          "languageCode": "nl",
+          "value": "La Pomme opent op 5 april 2025. De familieachtbaan met rupsentrein begeleidt de komst van mechanische attracties in Pokeyland en verbreedt een aanbod dat voorheen vooral op buitenactiviteiten was gericht."
+        },
+        {
+          "languageCode": "pl",
+          "value": "La Pomme otwiera się 5 kwietnia 2025 roku. Rodzinna kolejka górska z pociągiem w kształcie gąsienicy towarzyszy wprowadzeniu atrakcji mechanicznych do Pokeyland, poszerzając ofertę wcześniej skupioną głównie na aktywnościach plenerowych."
+        },
+        {
+          "languageCode": "pt",
+          "value": "La Pomme abre a 5 de abril de 2025. A montanha-russa familiar com comboio em forma de lagarta acompanha a chegada de atrações mecânicas ao Pokeyland, alargando uma oferta antes sobretudo dedicada às atividades ao ar livre."
+        }
+      ],
+      "id": "c54d3c41-b27e-4e66-870d-a9e457129085"
+    },
+    {
+      "key": "pokeyland-item-waterjump-opening-2022",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "parkId": null,
+      "parkItemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "itemId": "73ff7670-39ee-4c19-b339-907707fc8711",
+      "itemKey": "pokeyland-waterjump",
+      "parkItemKey": "pokeyland-waterjump",
+      "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2022,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "c8466353e86442e180d8ff8e5fbbf41a",
+      "sources": [
+        {
+          "label": "Direct FM — nouvelle aventure aquatique annoncée en 2022",
+          "url": "https://www.directfm.fr/reouverture-du-parc-pokeyland",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Pokeyland — brochure 2023 rappelant le Waterjump testé en 2022",
+          "url": "https://www.pokeyland.com/wp-content/uploads/2023/04/Pokeyland-saison-2023.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Direct FM — utilisation Waterjump en septembre 2022",
+          "url": "https://www.directfm.fr/waterjump-roterjump-vos-invitations-pour-une-soiree-vip-a-pokeyland",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le Waterjump apporte une aventure aquatique"
+        },
+        {
+          "languageCode": "en",
+          "value": "Waterjump adds an aquatic adventure"
+        },
+        {
+          "languageCode": "de",
+          "value": "Waterjump bringt ein Wasserabenteuer"
+        },
+        {
+          "languageCode": "es",
+          "value": "Waterjump incorpora una aventura acuática"
+        },
+        {
+          "languageCode": "it",
+          "value": "Waterjump porta un’avventura acquatica"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Waterjump voegt een wateravontuur toe"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Waterjump wprowadza wodną przygodę"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Waterjump traz uma aventura aquática"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le Waterjump rejoint les activités du parc en 2022. Les pistes de glisse se terminent par un saut suivi d’une réception dans l’eau, donnant une dimension aquatique aux aventures de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Waterjump joins the park’s activities in 2022. Its slides end in a jump followed by a landing in the water, adding an aquatic dimension to Pokeyland’s range of adventures."
+        },
+        {
+          "languageCode": "de",
+          "value": "Waterjump ergänzt 2022 das Parkangebot. Auf die Rutschbahnen folgen ein Sprung und eine Landung im Wasser, wodurch die Abenteuer in Pokeyland eine zusätzliche Wasserkomponente erhalten."
+        },
+        {
+          "languageCode": "es",
+          "value": "Waterjump se incorpora a las actividades del parque en 2022. Sus pistas terminan en un salto seguido de una caída en el agua, aportando una dimensión acuática a las aventuras de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Waterjump entra nell’offerta del parco nel 2022. Le piste di scivolamento terminano con un salto e un arrivo in acqua, aggiungendo una dimensione acquatica alle avventure di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Waterjump komt in 2022 bij het parkaanbod. De glijbanen eindigen in een sprong, gevolgd door een landing in het water, en geven de avonturen van Pokeyland een waterdimensie."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Waterjump dołącza do atrakcji parku w 2022 roku. Zjazd po torze kończy się skokiem i lądowaniem w wodzie, dodając wodny wymiar do przygód oferowanych przez Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Waterjump junta-se às atividades do parque em 2022. As pistas terminam num salto seguido de uma chegada à água, acrescentando uma dimensão aquática às aventuras do Pokeyland."
+        }
+      ],
+      "id": "c3ed398f-3aaa-42c7-b68d-ed15e5bb3d23"
+    },
+    {
+      "key": "pokeyland-item-rotor-opening-2021",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "parkId": null,
+      "parkItemId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "itemId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+      "itemKey": "pokeyland-historical-rotor-jump",
+      "parkItemKey": "pokeyland-historical-rotor-jump",
+      "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2021,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "608ac56337434664a6394fe378fcc0f4",
+      "sources": [
+        {
+          "label": "Direct FM — nouveauté Rotor Jump saison 2021",
+          "url": "https://www.directfm.fr/news/info-exclusive-d-rect-fm-pokeyland-une-ouverture-reportee-mais-des-nouveautes-a-venir-dont-une-attraction-familiale-32601",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Lukylud — structure personnalisée Pokeyland, 20 mai 2021",
+          "url": "https://www.lukylud.fr/jeu-gonflable-personnalise/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le Rotor Jump entre dans les jeux du parc"
+        },
+        {
+          "languageCode": "en",
+          "value": "Rotor Jump joins the park’s games"
+        },
+        {
+          "languageCode": "de",
+          "value": "Rotor Jump ergänzt die Spielangebote"
+        },
+        {
+          "languageCode": "es",
+          "value": "Rotor Jump se suma a los juegos del parque"
+        },
+        {
+          "languageCode": "it",
+          "value": "Rotor Jump entra tra i giochi del parco"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rotor Jump komt bij het spelaanbod"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rotor Jump dołącza do zabaw w parku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Rotor Jump junta-se aos jogos do parque"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le Rotor Jump fait partie des nouveautés de 2021. Jusqu’à huit joueurs tentent d’éviter son bras tournant ; Lukylud personnalise la structure gonflable avec les couleurs et les marquages de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Rotor Jump is one of the additions for 2021. Up to eight players try to avoid its rotating arm; Lukylud customises the inflatable structure with Pokeyland’s colours and branding."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rotor Jump gehört zu den Neuheiten von 2021. Bis zu acht Spieler versuchen, dem rotierenden Arm auszuweichen. Lukylud gestaltet die aufblasbare Anlage mit den Farben und Motiven von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Rotor Jump es una de las novedades de 2021. Hasta ocho jugadores intentan esquivar su brazo giratorio; Lukylud personaliza la estructura hinchable con los colores y las marcas de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Rotor Jump è una delle novità del 2021. Fino a otto giocatori cercano di evitare il braccio rotante; Lukylud personalizza la struttura gonfiabile con i colori e i marchi di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rotor Jump is een van de nieuwigheden van 2021. Maximaal acht spelers proberen de draaiende arm te ontwijken; Lukylud past de opblaasbare constructie aan met de kleuren en opdrukken van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rotor Jump jest jedną z nowości na 2021 rok. Maksymalnie ośmiu graczy próbuje uniknąć obracającego się ramienia; Lukylud dostosowuje dmuchaną konstrukcję, nadając jej kolory i oznaczenia Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Rotor Jump é uma das novidades de 2021. Até oito jogadores tentam evitar o braço giratório; a Lukylud personaliza a estrutura insuflável com as cores e as marcas do Pokeyland."
+        }
+      ],
+      "id": "6856d2d6-f1d2-4f2b-a2dd-dbc7d22d99fa"
+    },
+    {
+      "key": "pokeyland-item-bigair-opening-2017",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "parkId": null,
+      "parkItemId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "itemId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "itemKey": "pokeyland-historical-big-air-jump",
+      "parkItemKey": "pokeyland-historical-big-air-jump",
+      "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2017,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "73a1c7d039244b45b8e2973e13a36f61",
+      "sources": [
+        {
+          "label": "Loractu — nouveautés de la saison 2017",
+          "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "L’Est Républicain — reportage Pokeyland publié le 11 août 2017",
+          "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le Big Air Jump fait sauter vers un coussin géant"
+        },
+        {
+          "languageCode": "en",
+          "value": "Big Air Jump introduces leaps onto a giant cushion"
+        },
+        {
+          "languageCode": "de",
+          "value": "Big Air Jump bringt Sprünge auf ein großes Kissen"
+        },
+        {
+          "languageCode": "es",
+          "value": "Big Air Jump propone saltar a un gran colchón"
+        },
+        {
+          "languageCode": "it",
+          "value": "Big Air Jump porta i salti su un grande cuscino"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Big Air Jump laat deelnemers op een groot kussen springen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Big Air Jump wprowadza skoki na wielką poduszkę"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Big Air Jump propõe saltos para uma grande almofada"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le Big Air Jump apparaît parmi les nouveautés de la saison 2017. Sa plateforme et son grand coussin de réception créent un nouveau défi de saut au milieu des arbres, distinct du Saut dans le vide déjà proposé."
+        },
+        {
+          "languageCode": "en",
+          "value": "Big Air Jump appears among the additions for the 2017 season. Its platform and large landing cushion create a new jumping challenge among the trees, separate from the existing Saut dans le vide."
+        },
+        {
+          "languageCode": "de",
+          "value": "Big Air Jump zählt zu den Neuheiten der Saison 2017. Plattform und großes Landekissen schaffen zwischen den Bäumen eine neue Sprungherausforderung, getrennt vom bereits angebotenen Saut dans le vide."
+        },
+        {
+          "languageCode": "es",
+          "value": "Big Air Jump figura entre las novedades de la temporada 2017. Su plataforma y su gran colchón de recepción crean un nuevo reto de salto entre los árboles, distinto del Saut dans le vide ya existente."
+        },
+        {
+          "languageCode": "it",
+          "value": "Big Air Jump compare tra le novità della stagione 2017. La piattaforma e il grande cuscino di atterraggio creano una nuova sfida di salto tra gli alberi, distinta dal Saut dans le vide già proposto."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Big Air Jump behoort tot de nieuwigheden van het seizoen 2017. Het platform en het grote landingskussen vormen een nieuwe springuitdaging tussen de bomen, los van de al bestaande Saut dans le vide."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Big Air Jump pojawia się wśród nowości sezonu 2017. Platforma i duża poduszka do lądowania tworzą nowe wyzwanie skokowe między drzewami, odrębne od wcześniej oferowanego Saut dans le vide."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Big Air Jump surge entre as novidades da temporada 2017. A plataforma e a grande almofada de receção criam um novo desafio de salto entre as árvores, distinto do Saut dans le vide já existente."
+        }
+      ],
+      "id": "6447fa8e-56c3-40bc-86ce-54287de6a848"
+    },
+    {
+      "key": "pokeyland-item-ferme-opening-2017",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "parkId": null,
+      "parkItemId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "itemId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+      "itemKey": "pokeyland-historical-mini-ferme",
+      "parkItemKey": "pokeyland-historical-mini-ferme",
+      "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2017,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "209ac79cecaa4ab08ca814d318c027b0",
+      "sources": [
+        {
+          "label": "Loractu — nouveautés de la saison 2017",
+          "url": "https://loractu.fr/metz/15791-pokeyland-le-parc-de-loisirs-pour-toute-la-famille-pres-de-metz-a-lance-sa-saison.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "L’Est Républicain — reportage Pokeyland publié le 11 août 2017",
+          "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "La mini-ferme enrichit l’offre familiale"
+        },
+        {
+          "languageCode": "en",
+          "value": "The small farm broadens the family offer"
+        },
+        {
+          "languageCode": "de",
+          "value": "Die kleine Farm erweitert das Familienangebot"
+        },
+        {
+          "languageCode": "es",
+          "value": "La pequeña granja amplía la oferta familiar"
+        },
+        {
+          "languageCode": "it",
+          "value": "La piccola fattoria amplia l’offerta familiare"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kleine boerderij verbreedt het gezinsaanbod"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mała farma poszerza ofertę rodzinną"
+        },
+        {
+          "languageCode": "pt",
+          "value": "A pequena quinta alarga a oferta familiar"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "La mini-ferme est présentée parmi les nouveautés de 2017. Les animaux prennent place dans un enclos boisé, ajoutant une découverte animalière aux jeux et aux activités sportives déjà présents à Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The small farm is presented among the additions for 2017. Animals occupy a wooded enclosure, adding an animal encounter to the games and sporting activities already available at Pokeyland."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die kleine Farm wird als eine der Neuheiten von 2017 vorgestellt. Tiere beziehen ein bewaldetes Gehege und ergänzen die bestehenden Spiel- und Sportangebote in Pokeyland um Tierbeobachtungen."
+        },
+        {
+          "languageCode": "es",
+          "value": "La pequeña granja se presenta entre las novedades de 2017. Los animales ocupan un recinto arbolado, añadiendo un encuentro con animales a los juegos y las actividades deportivas ya presentes en Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La piccola fattoria viene presentata tra le novità del 2017. Gli animali trovano posto in un recinto alberato, aggiungendo un incontro con gli animali ai giochi e alle attività sportive già presenti a Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kleine boerderij wordt voorgesteld als een van de nieuwigheden van 2017. Dieren krijgen een bebost verblijf en voegen een kennismaking met dieren toe aan de bestaande spel- en sportactiviteiten in Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Mała farma jest przedstawiana wśród nowości na 2017 rok. Zwierzęta zajmują zadrzewiony wybieg, dodając możliwość obserwacji zwierząt do gier i aktywności sportowych dostępnych już w Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A pequena quinta é apresentada entre as novidades de 2017. Os animais ocupam um recinto arborizado, acrescentando um encontro com animais aos jogos e às atividades desportivas já existentes no Pokeyland."
+        }
+      ],
+      "id": "47a8ef0a-9999-4dbb-a8cb-349753a4ca53"
+    },
+    {
+      "key": "pokeyland-item-saut-opening-2016",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "parkId": null,
+      "parkItemId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "itemId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+      "itemKey": "pokeyland-historical-saut-vide",
+      "parkItemKey": "pokeyland-historical-saut-vide",
+      "contextParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "year": 2016,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isMajor": false,
+      "isVisible": false,
+      "mainImageId": "dc7a5c8c37bf421991729e5b30735d50",
+      "sources": [
+        {
+          "label": "MyLorraine — nouveautés Pokeyland, description publique du 19 juillet 2016",
+          "url": "https://www.dailymotion.com/video/x4kv1rz",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Amazone Adventure — Saut dans le vide Pokeyland",
+          "url": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le Saut dans le vide rejoint les aventures"
+        },
+        {
+          "languageCode": "en",
+          "value": "Saut dans le vide joins the adventures"
+        },
+        {
+          "languageCode": "de",
+          "value": "Saut dans le vide ergänzt die Abenteuer"
+        },
+        {
+          "languageCode": "es",
+          "value": "Saut dans le vide se suma a las aventuras"
+        },
+        {
+          "languageCode": "it",
+          "value": "Saut dans le vide entra tra le avventure"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Saut dans le vide komt bij de avonturen"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Saut dans le vide dołącza do przygód"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Saut dans le vide junta-se às aventuras"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "En 2016, MyLorraine présente le Saut dans le vide parmi les nouvelles activités de Pokeyland. Le départ en harnais depuis une plateforme élevée ajoute une épreuve de vertige aux aventures du parc."
+        },
+        {
+          "languageCode": "en",
+          "value": "In 2016, MyLorraine presents Saut dans le vide among Pokeyland’s new activities. Setting off in a harness from an elevated platform adds a challenge at height to the park’s adventures."
+        },
+        {
+          "languageCode": "de",
+          "value": "2016 stellt MyLorraine Saut dans le vide als neue Aktivität in Pokeyland vor. Der Start mit einem Gurt von einer erhöhten Plattform ergänzt die Parkabenteuer um eine Herausforderung in der Höhe."
+        },
+        {
+          "languageCode": "es",
+          "value": "En 2016, MyLorraine presenta Saut dans le vide entre las nuevas actividades de Pokeyland. La salida con arnés desde una plataforma elevada añade un reto en altura a las aventuras del parque."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel 2016, MyLorraine presenta Saut dans le vide tra le nuove attività di Pokeyland. La partenza con imbracatura da una piattaforma sopraelevata aggiunge una sfida in quota alle avventure del parco."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In 2016 presenteert MyLorraine Saut dans le vide als een van Pokeylands nieuwe activiteiten. Het vertrek met een harnas vanaf een verhoogd platform voegt een uitdaging op hoogte toe aan de parkavonturen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W 2016 roku MyLorraine przedstawia Saut dans le vide wśród nowych aktywności Pokeyland. Start w uprzęży z podwyższonej platformy dodaje wyzwanie na wysokości do przygód oferowanych w parku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em 2016, a MyLorraine apresenta o Saut dans le vide entre as novas atividades do Pokeyland. A partida com arnês de uma plataforma elevada acrescenta um desafio em altura às aventuras do parque."
+        }
+      ],
+      "id": "fc599901-8e58-47b1-8642-7c0fe510b10f"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "dateDecisions": [
+    "La Pomme: 5 April 2025, two specialist opening-date fields agree; no photo copyright date substituted.",
+    "Waterjump: year 2022 from seasonal aquatic announcement and official 2023 retrospective; no invented June day.",
+    "Rotor Jump: 2021 novelty and dated supplier article; source publication date is not an opening day.",
+    "Big Air Jump and Mini-ferme: actual 2017 novelty season and contemporary imagery, no exact day.",
+    "Saut dans le vide: 2016 extension described by primary tourism publisher; July 19 is video publication, not first operating day."
+  ],
+  "currentStatusesPreserved": true,
+  "parkTimelineReceivesNoDuplicateItemOpenings": true,
+  "imageDecisions": "Six existing genuine photos illustrate the respective offers. Rotor is a supplier-yard photograph; publication dates/copyright dates are not claimed as capture dates or opening-day photography.",
+  "sourceResearch": {
+    "createdAtUtc": "2026-11-15T13:09:16.803566+00:00",
+    "scope": "Additional public research only for 11 existing private historic offers. No PDE/Git/registry/import/root-state mutation, no final descriptions.",
+    "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "baseReadinessReport": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/historical-offer-readiness-20261115.json",
+    "newFindings": [
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-detail-followup-1300/dailymotion-2015.html",
+        "url": "https://www.dailymotion.com/video/x329fd9",
+        "publisher": "MyLorraine",
+        "uploadDateUtc": "2015-08-19T15:18:03+00:00",
+        "duration": "PT2M46S",
+        "videoPersonallyViewed": false,
+        "descriptionPersonallyRead": true,
+        "claimsSource": "Public uploader description, not a transcript or inspected video frames",
+        "relevantFacts": [
+          "Primary 2015 tourism report explicitly mentions pedalo and mini-buggee family activities.",
+          "Description distinguishes six existing paintball settings and a future cemetery proposal; not new lifecycle evidence for the target rides."
+        ]
+      },
+      {
+        "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-detail-followup-1300/dailymotion-2016.html",
+        "url": "https://www.dailymotion.com/video/x4kv1rz",
+        "publisher": "MyLorraine",
+        "uploadDateUtc": "2016-07-19T15:19:22+00:00",
+        "duration": "PT2M27S",
+        "videoPersonallyViewed": false,
+        "descriptionPersonallyRead": true,
+        "claimsSource": "Public uploader description, not a transcript or inspected video frames",
+        "relevantFacts": [
+          "Primary 2016 tourism report explicitly lists Saut dans le vide among the additions since the previous year, with climbing/ejector/rope courses.",
+          "25 m describes climbing wall in this description and conflicts with other measurements; must not be copied as the drop height."
+        ]
+      }
+    ],
+    "specificDetailPackets": [
+      {
+        "name": "Saut dans le vide",
+        "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "readiness": "Sufficient specific historical physical facts for parent drafting; strong native image already retained.",
+        "visualFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-photos-followup/amazone-free-fall.jpeg",
+        "sourcePage": "https://www.amazone-adventure.com/en/our-solutions/adventure-park/thrill-seekers",
+        "nativeImageUrl": "https://www.amazone-adventure.com/upload/miniatures/324/1200/free-fall-jump-quickjump-xl-ripcord-20m-high.jpeg",
+        "observations": [
+          "Burgundy steel structure and elevated grated platform.",
+          "Yellow mesh guardrails around an opening used for departure.",
+          "Participant wearing a harness, tethered below a green overhead device.",
+          "Fox graphic on yellow panel behind the platform.",
+          "Supplier labels the apparatus QUICKjump XL + Ripcord and names Pokeyland."
+        ],
+        "newDateEvidence": "MyLorraine upload dated 19 July 2016 lists the activity among the extension additions since the previous year. This supports a 2016 novelty description, not an exact first operating day.",
+        "limits": [
+          "Do not assert exact drop height: 18 m tourism, 20 m equipment caption, 23 m tower caption and 25 m climbing-wall text are unresolved/distinct measures.",
+          "Do not assert present operation, current compliance, opening day or photo capture date.",
+          "The photograph shows preparation on the platform, not a participant already falling."
+        ],
+        "photoImportReadiness": "Real native 1000×1500 JPEG, 675727 bytes, no visible watermark; parent duplicate and visual review required."
+      },
+      {
+        "name": "Mini-buggy",
+        "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "readiness": "Sufficient specific historical physical facts for parent drafting; current photo research-only because signed.",
+        "visualFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/toutmetz-tracks.jpg",
+        "sourcePage": "https://tout-metz.com/photos-pokeyland-nouveau-parc-loisirs-fey-2015-5623",
+        "observations": [
+          "Single low black seat with an upright back, steering wheel and open tubular body.",
+          "Roll bar behind the seat and woven side/foot retention netting.",
+          "Four knobby tyres; broad metal footstep on the side.",
+          "Red rear/side panel bearing a yellow flame motif.",
+          "Separate small quad bikes aligned behind; do not describe their saddle/handlebars as the buggy.",
+          "Nominal article caption associates mini-buggies with wooded paths for children."
+        ],
+        "newDateEvidence": "MyLorraine public description uploaded 19 August 2015 independently names mini-buggee among family activities.",
+        "limits": [
+          "Do not infer maker, model, power, fuel, speed, circuit length, age limits or current operation.",
+          "Photo is signed Photo: Thierry Hauuy pour Tout-Metz.com; no importing or cropping out signature."
+        ],
+        "photoImportReadiness": "Excluded: visible signature, native 1100×733 JPEG."
+      },
+      {
+        "name": "Segway",
+        "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "readiness": "Sufficient specific historical physical/activity facts for parent drafting; no separate admissible photo.",
+        "visualFile": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-offer-readiness-20261115/lorrain-segway-2017.jpg",
+        "sourcePage": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+        "observations": [
+          "Riders standing on platforms between two broad side wheels.",
+          "Central upright handlebar column; helmets worn in the photographed scene.",
+          "Several vehicles follow one another along a gravel route bordered by timber edging/fencing and planting.",
+          "2015 reportage explicitly describes longer escorted trips, including behind paintball grounds.",
+          "Separate signed 2015 relaxation photograph shows a Segway sign over a wooden gateway, supporting a dedicated historical meeting area."
+        ],
+        "limits": [
+          "Le Lorrain file combines two photographs, Segway and tower; not a single scene and not admissible under no-montage rule.",
+          "Do not copy the reporter’s personal 2016 duration/distance as fixed route specification.",
+          "No make/model beyond name, current thresholds, current operation or exact route."
+        ],
+        "photoImportReadiness": "No acceptable separate native original found; retained montage is research only."
+      }
+    ],
+    "residualLimits": [
+      {
+        "name": "Le Petit Robin",
+        "id": "6c658164-104c-41a1-a470-f50d7f0c956d",
+        "result": "2021 brochure reproduction supports child crossbow stands, separately named from Tir à l’arc. No primary original or named physical stand photo found. Do not infer wood, targets, bow model or projectile."
+      },
+      {
+        "name": "Mini-Jeep",
+        "id": "97aad029-a386-4c2f-844c-9dcd7394f36a",
+        "result": "2015 adult/child two-seat offer and 2020 tourism-guide presence remain the concrete facts. No identified vehicle photo, specific model or material."
+      },
+      {
+        "name": "Pédalo",
+        "id": "1cb2aa09-2279-40a6-a032-6babe23f8882",
+        "result": "2015 primary MyLorraine description now independently confirms the offer; no boat shape, colour, capacity, quantity or route established. Not an alias of Bumper Boat."
+      },
+      {
+        "name": "Terrains de pétanque",
+        "id": "2a23aa94-01ba-4cda-be85-653e60589c24",
+        "result": "Two courts beside the relaxation/food area established by 2015 report. Reinspection of its signed photo still does not safely show the court boundaries or surface. No invented equipment."
+      },
+      {
+        "name": "Lancer de hache",
+        "id": "0ddb1451-3dad-4936-9f8f-439efda9222c",
+        "result": "2022 official map remains the only precise identification. No nominated lane/target/axe photo. No repeat requests to the same exhausted results."
+      },
+      {
+        "name": "Labyrinthe géant",
+        "id": "3956ae33-631f-46ef-b9c5-dd6afa08d785",
+        "result": "2017 novelty and use established; no material, layout or native named photo. Halloween maze relationship remains unproved."
+      },
+      {
+        "name": "Quad ados",
+        "id": "0089b992-f5a6-4bb2-b4f0-1fd055361c16",
+        "result": "2017 map proves a separate offer from child quad and excursion quad. No nominated vehicle or track photo; child quad images remain excluded for this entity."
+      },
+      {
+        "name": "Balade en quad",
+        "id": "e43e6bd6-04bf-4940-967d-357aad4075ab",
+        "result": "2017 map and contemporary commercial text prove excursions, separate from Quad ados. No vehicle model, route, duration, licence or current state demonstrated."
+      }
+    ],
+    "accessAndExclusions": {
+      "video2015PublicPage": "HTTP 200; date/duration/uploader description preserved.",
+      "video2016PublicPage": "HTTP 200; date/duration/uploader description preserved.",
+      "oldEmbed2015": "HTTP 403 once; not retried, no hidden endpoint or bypass used.",
+      "normalBrowser2015": "Public watch page returned 200 but player stayed blank; no video element/iframe materialised after normal load. Screenshot and access JSON preserved. Video was not watched.",
+      "agencyCaseStudy": "UCC/Speedi Rychi Nylon 2021 campaign case study retrieved successfully, but only poster/bus/social campaign imagery, no qualifying attraction equipment; no media downloads.",
+      "2018Gallery": "Already downloaded earlier. Captions show current/other subjects, not these unresolved identities; no second local download and no additional images fetched.",
+      "nativePhotosNewlyDownloaded": 0,
+      "imageEditsOrCrops": 0,
+      "repeatArchiveOrLoginAttempts": 0
+    },
+    "sourceAccess": [
+      {
+        "url": "https://www.dailymotion.com/video/x329fd9",
+        "accessedAtUtc": "2026-11-15T13:05:59.622991+00:00",
+        "status": 200,
+        "finalUrl": "https://www.dailymotion.com/video/x329fd9",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 236236,
+        "sha256": "49e7035072d32748ac0cbcf921cd3d1a4a9b49ab068517c88c679859d0148e12",
+        "file": "dailymotion-2015.html"
+      },
+      {
+        "url": "https://www.dailymotion.com/video/x4kv1rz",
+        "accessedAtUtc": "2026-11-15T13:06:00.671596+00:00",
+        "status": 200,
+        "finalUrl": "https://www.dailymotion.com/video/x4kv1rz",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 233142,
+        "sha256": "ad5f80352fa7b5bf0b7104b6118b061012bf1683d7c9810eb1f28924fed36e12",
+        "file": "dailymotion-2016.html"
+      },
+      {
+        "url": "https://www.dailymotion.com/embed/video/x329fd9",
+        "accessedAtUtc": "2026-11-15T13:06:01.782160+00:00",
+        "status": 403,
+        "error": "HTTP Error 403: Forbidden",
+        "retryAfter": null
+      },
+      {
+        "url": "https://www.lameilleureagencedecommunication.com/realisations/conseil-strategie-globale/parc-de-loisirs-pokeyland/",
+        "accessedAtUtc": "2026-11-15T13:06:26.645977+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lameilleureagencedecommunication.com/realisations/conseil-strategie-globale/parc-de-loisirs-pokeyland/",
+        "contentType": "text/html; charset=UTF-8",
+        "bytes": 693019,
+        "sha256": "80022c750d167f5ade415db35a68bd932b00de76ccf3a3c6a927250d27c2420b",
+        "file": "agency-pokeyland.html"
+      }
+    ],
+    "browserEvidence": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-detail-followup-1300/dailymotion-browser-access.json",
+    "sourceReuse": [
+      "news-toutmetz-opening-2015.html",
+      "historical-inventory-followup/toutmetz-tracks.jpg",
+      "historical-inventory-followup/toutmetz-relaxation.jpg",
+      "historical-photos-followup/amazone-free-fall.jpeg",
+      "historical-offer-readiness-20261115/lorrain-segway-2017.jpg",
+      "historical-photos-followup/estrepublicain-2018.html"
+    ],
+    "method": "Reused earlier sources and inspected whole native images. Additional research targeted primary tourism videos and the park communication supplier rather than repeating blocked archive/social searches. Facts are research observations, not final publication wording. All capture dates and current statuses remain unknown unless explicitly sourced."
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "idempotence": {
+    "operationId": "b449354d-3654-4fc8-b91f-5da0c7d17f73",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:21:08.4342459Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 16,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73ff7670-39ee-4c19-b339-907707fc8711",
+        "entityKey": "pokeyland-waterjump",
+        "displayName": "Waterjump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "651f4fbe-a213-4e27-a5f8-7b325cc97599",
+        "entityKey": "pokeyland-historical-rotor-jump",
+        "displayName": "Rotor Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+        "entityKey": "pokeyland-historical-big-air-jump",
+        "displayName": "Big Air Jump",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "077229e9-6ff0-4b25-94f9-0858f11d9655",
+        "entityKey": "pokeyland-historical-mini-ferme",
+        "displayName": "Mini-ferme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8de9d388-66de-402a-8edf-62389727a14b",
+        "entityKey": "pokeyland-history-opening-2015",
+        "displayName": "Pokeyland ouvre au public à Féy",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c54d3c41-b27e-4e66-870d-a9e457129085",
+        "entityKey": "pokeyland-item-pomme-opening-2025",
+        "displayName": "La Pomme ouvre son circuit",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "c3ed398f-3aaa-42c7-b68d-ed15e5bb3d23",
+        "entityKey": "pokeyland-item-waterjump-opening-2022",
+        "displayName": "Le Waterjump apporte une aventure aquatique",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6856d2d6-f1d2-4f2b-a2dd-dbc7d22d99fa",
+        "entityKey": "pokeyland-item-rotor-opening-2021",
+        "displayName": "Le Rotor Jump entre dans les jeux du parc",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6447fa8e-56c3-40bc-86ce-54287de6a848",
+        "entityKey": "pokeyland-item-bigair-opening-2017",
+        "displayName": "Le Big Air Jump fait sauter vers un coussin géant",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "47a8ef0a-9999-4dbb-a8cb-349753a4ca53",
+        "entityKey": "pokeyland-item-ferme-opening-2017",
+        "displayName": "La mini-ferme enrichit l’offre familiale",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fc599901-8e58-47b1-8642-7c0fe510b10f",
+        "entityKey": "pokeyland-item-saut-opening-2016",
+        "displayName": "Le Saut dans le vide rejoint les aventures",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T13:21:47.4888171Z",
+    "action": "HistoryDiagnostics",
+    "startedAtUtc": "2026-11-15T13:21:46.8703304Z",
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 11,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 10
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 1
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": false,
+        "hasCompleteSourceCoverage": false,
+        "hasMajorMilestone": false,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 0,
+        "sourcedFactCount": 0,
+        "majorFactCount": 0,
+        "indexableKeyYears": []
+      }
+    }
+  }
+}

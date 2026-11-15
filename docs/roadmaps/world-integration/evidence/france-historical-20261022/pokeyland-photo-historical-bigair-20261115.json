@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "url": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+    "accessedAtUtc": "2026-11-15T11:20:05.582852+00:00",
+    "status": 200,
+    "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 306194,
+    "sha256": "961fe33bc07378cfd21311c058adc9a854a55bc9a47b2970c376983ae667f8f1",
+    "file": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-big-air-jump-2017.jpg",
+    "subject": "Big Air Jump",
+    "decision": "Previously retained nominated real photo; reused without redownload.",
+    "observations": "Participant above inflatable landing, platform stairs/guardrails in wooded surroundings.",
+    "dimensions": [
+      1600,
+      1200
+    ],
+    "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+    "sourcePublicationDate": "2017-08-11",
+    "takenDate": null,
+    "individualPhotographer": null,
+    "personallyViewed": true,
+    "importPerformed": false,
+    "localImageEditingPerformed": false,
+    "rootVisuallyReviewed": true,
+    "individualCaptureDateUnknown": true,
+    "rootAttributionDecision": "Named Big Air caption in 2017 gallery"
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-big-air-jump-2017.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-bigair-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-historical-bigair-import-result.json"
+  },
+  "metadata": {
+    "description": "Un participant saute depuis la plateforme à garde-corps jaunes vers le grand coussin de réception, bordé de noir. Les arbres entourent l’installation dans cette vue publiée en 2017.",
+    "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Participant au-dessus du coussin jaune du Big Air Jump dans le bois de Pokeyland"
+      },
+      {
+        "languageCode": "en",
+        "value": "Participant above Big Air Jump’s yellow landing cushion in Pokeyland’s woodland"
+      },
+      {
+        "languageCode": "de",
+        "value": "Teilnehmer über dem gelben Landekissen des Big Air Jump im Wald von Pokeyland"
+      },
+      {
+        "languageCode": "es",
+        "value": "Participante sobre el colchón amarillo del Big Air Jump en el bosque de Pokeyland"
+      },
+      {
+        "languageCode": "it",
+        "value": "Partecipante sopra il cuscino giallo del Big Air Jump nel bosco di Pokeyland"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Deelnemer boven het gele landingskussen van Big Air Jump in Pokeylands bos"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uczestnik nad żółtą poduszką Big Air Jump w lesie Pokeyland"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Participante sobre a almofada amarela do Big Air Jump no bosque do Pokeyland"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un participant saute depuis la plateforme à garde-corps jaunes vers le grand coussin de réception, bordé de noir. Les arbres entourent l’installation dans cette vue publiée en 2017."
+      },
+      {
+        "languageCode": "en",
+        "value": "A participant jumps from the platform with yellow guardrails towards the large, black-edged landing cushion. Trees surround the structure in this view published in 2017."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Teilnehmer springt von der Plattform mit gelben Geländern auf das große, schwarz eingefasste Landekissen zu. Bäume umgeben die Anlage auf dieser 2017 veröffentlichten Aufnahme."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un participante salta desde la plataforma con barandillas amarillas hacia el gran colchón de recepción, bordeado de negro. Los árboles rodean la instalación en esta vista publicada en 2017."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un partecipante salta dalla piattaforma con parapetti gialli verso il grande cuscino di atterraggio bordato di nero. Gli alberi circondano l’impianto in questa veduta pubblicata nel 2017."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een deelnemer springt vanaf het platform met gele hekken naar het grote landingskussen met zwarte rand. Bomen omringen de installatie op deze in 2017 gepubliceerde foto."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Uczestnik skacze z platformy z żółtymi barierkami w stronę dużej poduszki do lądowania z czarnym obrzeżem. Drzewa otaczają instalację na zdjęciu opublikowanym w 2017 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um participante salta da plataforma com guardas amarelas para a grande almofada de receção, debruada a preto. As árvores rodeiam a instalação nesta vista publicada em 2017."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : L’Est Républicain ; photographe individuel non indiqué."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: L’Est Républicain; individual photographer not named."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: L’Est Républicain; einzelner Fotograf nicht genannt."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: L’Est Républicain; fotógrafo individual no indicado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: L’Est Républicain; fotografo individuale non indicato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: L’Est Républicain; individuele fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: L’Est Républicain; indywidualny fotograf niepodany."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: L’Est Républicain; fotógrafo individual não indicado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T13:17:47.8521120Z",
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T13:17:56.0487598Z",
+    "result": {
+      "id": "73a1c7d039244b45b8e2973e13a36f61",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "4cf3a23e-97ff-4dbc-b8bd-0d53cae14f0c",
+      "path": "park_item/73a1c7d039244b45b8e2973e13a36f61",
+      "description": "Un participant saute depuis la plateforme à garde-corps jaunes vers le grand coussin de réception, bordé de noir. Les arbres entourent l’installation dans cette vue publiée en 2017.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1600,
+      "height": 1200,
+      "sizeInBytes": 306194,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cdn-s-www.estrepublicain.fr/images/88697B75-C74C-4C7F-A904-752F33F2A5F8/NW_raw/le-big-air-jump-pour-les-plus-temeraires-1500630058.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": null,
+        "cameraModel": null,
+        "takenOnUtc": null,
+        "orientation": "1",
+        "focalLength": null,
+        "aperture": null,
+        "exposureTime": null,
+        "iso": null
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Participant au-dessus du coussin jaune du Big Air Jump dans le bois de Pokeyland"
+        },
+        {
+          "languageCode": "en",
+          "value": "Participant above Big Air Jump’s yellow landing cushion in Pokeyland’s woodland"
+        },
+        {
+          "languageCode": "de",
+          "value": "Teilnehmer über dem gelben Landekissen des Big Air Jump im Wald von Pokeyland"
+        },
+        {
+          "languageCode": "es",
+          "value": "Participante sobre el colchón amarillo del Big Air Jump en el bosque de Pokeyland"
+        },
+        {
+          "languageCode": "it",
+          "value": "Partecipante sopra il cuscino giallo del Big Air Jump nel bosco di Pokeyland"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Deelnemer boven het gele landingskussen van Big Air Jump in Pokeylands bos"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestnik nad żółtą poduszką Big Air Jump w lesie Pokeyland"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Participante sobre a almofada amarela do Big Air Jump no bosque do Pokeyland"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un participant saute depuis la plateforme à garde-corps jaunes vers le grand coussin de réception, bordé de noir. Les arbres entourent l’installation dans cette vue publiée en 2017."
+        },
+        {
+          "languageCode": "en",
+          "value": "A participant jumps from the platform with yellow guardrails towards the large, black-edged landing cushion. Trees surround the structure in this view published in 2017."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Teilnehmer springt von der Plattform mit gelben Geländern auf das große, schwarz eingefasste Landekissen zu. Bäume umgeben die Anlage auf dieser 2017 veröffentlichten Aufnahme."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un participante salta desde la plataforma con barandillas amarillas hacia el gran colchón de recepción, bordeado de negro. Los árboles rodean la instalación en esta vista publicada en 2017."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un partecipante salta dalla piattaforma con parapetti gialli verso il grande cuscino di atterraggio bordato di nero. Gli alberi circondano l’impianto in questa veduta pubblicata nel 2017."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een deelnemer springt vanaf het platform met gele hekken naar het grote landingskussen met zwarte rand. Bomen omringen de installatie op deze in 2017 gepubliceerde foto."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Uczestnik skacze z platformy z żółtymi barierkami w stronę dużej poduszki do lądowania z czarnym obrzeżem. Drzewa otaczają instalację na zdjęciu opublikowanym w 2017 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um participante salta da plataforma com guardas amarelas para a grande almofada de receção, debruada a preto. As árvores rodeiam a instalação nesta vista publicada em 2017."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : L’Est Républicain ; photographe individuel non indiqué."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: L’Est Républicain; individual photographer not named."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: L’Est Républicain; einzelner Fotograf nicht genannt."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: L’Est Républicain; fotógrafo individual no indicado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: L’Est Républicain; fotografo individuale non indicato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: L’Est Républicain; individuele fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: L’Est Républicain; indywidualny fotograf niepodany."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: L’Est Républicain; fotógrafo individual não indicado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T13:17:49.49Z",
+      "updatedAt": "2026-11-15T13:17:52.944Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "publicationAndUploadDatesNotCaptureDates": true,
+    "noOpenLicenseClaim": true,
+    "existingMediaReconciledNoDuplicate": true,
+    "exactSourceAttributionPreserved": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

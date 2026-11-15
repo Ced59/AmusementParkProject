@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T12:55:10.831Z",
+      "lastDataIntegrationAt": "2026-11-15T13:20:41.648Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33488,6 +33488,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-22-historical-three-descriptions-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland privé : 3 notices (Rotor Jump, Big Air Jump, Mini-ferme) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "apply-cf50578d-0345-4b74-a1d8-cd33251b5edc",
+          "appliedAt": "2026-11-15T13:11:27.081Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-history-article-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : article historique développé et personnellement relu en huit langues, quatre sections et huit paragraphes par version. Cession 2023, direction 2024 et redressement 2026 distingués. Fait existant et visibilité conservés, aucune publication."
+        },
+        {
+          "eventId": "apply-434c3ad4-00ff-4f61-9742-5a1c24c3de21",
+          "appliedAt": "2026-11-15T13:15:20.856Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-26-historical-detail-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : 3 notices (Saut dans le vide, Mini-buggy, Segway) rédigées et relues personnellement huit langues. Sources et photos examinées ; lacunes de profondeur conservées, aucun statut ni date inventés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-608ac56337434664a6394fe378fcc0f4",
+          "appliedAt": "2026-11-15T13:17:15.169Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-historical-rotor-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Rotor Jump importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-dc7a5c8c37bf421991729e5b30735d50",
+          "appliedAt": "2026-11-15T13:17:25.792Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-historical-saut-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Saut dans le vide importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-209ac79cecaa4ab08ca814d318c027b0",
+          "appliedAt": "2026-11-15T13:17:39.493Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-historical-ferme-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Mini-ferme importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "import-photo-73a1c7d039244b45b8e2973e13a36f61",
+          "appliedAt": "2026-11-15T13:17:49.490Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-historical-bigair-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photographie réelle de Big Air Jump importée privée, 24 métadonnées huit langues personnellement relues ; crédit source exact, natif intact, date de capture inconnue, variantes de même exposition exclues. Aucune publication."
+        },
+        {
+          "eventId": "apply-e09ec867-2572-4970-92f8-ee232b25f74e",
+          "appliedAt": "2026-11-15T13:20:41.648Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-item-openings-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : six ouvertures sur les frises de leurs propres attractions, 96 champs huit langues relus, sources et images réelles rattachées. Pomme datée au jour, cinq nouveautés à l’année ; aucun statut actuel ou jour inconnu inventé, aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

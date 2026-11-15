@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "name": "Pokeyland"
+      },
+      "metadata": {
+        "source": "codex-france-pokeyland-26-historical-detail-descriptions",
+        "step": "04-items",
+        "notes": "Trois notices historiques huit langues personnellement rédigées et relues après examen des photographies et sources : Saut dans le vide photo primaire Amazone et description MyLorraine2016 ; Mini-buggy photo Tout-Metz2015 signée exclue des imports, distinct des quads ; Segway montage LeLorrain2017 seulement recherche et reportage2015. Aucune hauteur, fabricant de véhicule, capacité, âge, date exacte ou statut actuel inventés. Profondeur limitée après recherches nominatives conservée comme lacune ; descriptions de configurations historiques datées, pas continuité2026 inférée."
+      },
+      "items": [
+        {
+          "id": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+          "key": "pokeyland-historical-saut-vide",
+          "name": "Saut dans le vide",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une plateforme sous le renard</h2><p>Le départ du Saut dans le vide occupe une plateforme grillagée, portée par une charpente bordeaux. Des garde-corps jaunes encadrent l’ouverture, sous un grand panneau où le renard de Pokeyland se détache sur un fond jaune.</p><p>Le participant porte un harnais relié à l’appareil suspendu au-dessus de lui. La préparation se déroule au bord de la plateforme, avec un membre de l’équipe à ses côtés.</p><h2>Une aventure apparue dans les années 2010</h2><p>MyLorraine présente cette activité parmi les nouveautés de 2016. Amazone Adventure montre l’installation de Pokeyland équipée d’un dispositif QUICKjump XL avec Ripcord.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A platform beneath the fox</h2><p>Saut dans le vide starts from a grated platform carried by a burgundy framework. Yellow mesh guardrails surround the opening beneath a large panel showing Pokeyland’s fox against a yellow background.</p><p>The participant wears a harness connected to the device suspended overhead. Preparation takes place at the platform edge, with a team member standing alongside.</p><h2>An adventure introduced in the 2010s</h2><p>MyLorraine presented the activity among the additions for 2016. Amazone Adventure shows Pokeyland’s installation fitted with a QUICKjump XL device and Ripcord.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Plattform unter dem Fuchs</h2><p>Der Saut dans le vide beginnt auf einer Gitterplattform in einem bordeauxfarbenen Rahmen. Gelbe Schutzgeländer umgeben die Öffnung unter einer großen Tafel, auf der sich der Pokeyland-Fuchs vom gelben Hintergrund abhebt.</p><p>Der Teilnehmer trägt einen Gurt, der mit dem über ihm hängenden Gerät verbunden ist. Die Vorbereitung erfolgt am Rand der Plattform, begleitet von einem Mitarbeiter.</p><h2>Ein Abenteuer aus den 2010er-Jahren</h2><p>MyLorraine stellte die Aktivität als eine der Neuheiten von 2016 vor. Amazone Adventure zeigt die Anlage in Pokeyland mit einem QUICKjump-XL-Gerät und Ripcord.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una plataforma bajo el zorro</h2><p>El Saut dans le vide parte de una plataforma de rejilla sostenida por una estructura burdeos. Unas barandillas de malla amarilla rodean la abertura, bajo un gran panel donde el zorro de Pokeyland destaca sobre un fondo amarillo.</p><p>El participante lleva un arnés conectado al aparato suspendido sobre él. La preparación se realiza en el borde de la plataforma, con un miembro del equipo a su lado.</p><h2>Una aventura de la década de 2010</h2><p>MyLorraine presentó esta actividad entre las novedades de 2016. Amazone Adventure muestra la instalación de Pokeyland equipada con un dispositivo QUICKjump XL y Ripcord.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una piattaforma sotto la volpe</h2><p>Il Saut dans le vide parte da una piattaforma grigliata sorretta da una struttura bordeaux. Parapetti gialli a rete circondano l’apertura, sotto un grande pannello con la volpe di Pokeyland su fondo giallo.</p><p>Il partecipante indossa un’imbracatura collegata al dispositivo sospeso sopra di lui. La preparazione avviene sul bordo della piattaforma, con un membro dello staff accanto.</p><h2>Un’avventura nata negli anni 2010</h2><p>MyLorraine presentò questa attività tra le novità del 2016. Amazone Adventure mostra l’impianto di Pokeyland equipaggiato con un dispositivo QUICKjump XL e Ripcord.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een platform onder de vos</h2><p>Saut dans le vide begint op een roosterplatform in een bordeauxrood raamwerk. Gele gaashekken omringen de opening, onder een groot paneel waarop de Pokeyland-vos tegen een gele achtergrond afsteekt.</p><p>De deelnemer draagt een harnas dat verbonden is met het apparaat boven hem. De voorbereiding gebeurt aan de rand van het platform, met een medewerker ernaast.</p><h2>Een avontuur uit de jaren 2010</h2><p>MyLorraine presenteerde de activiteit als een van de nieuwigheden van 2016. Amazone Adventure toont de installatie in Pokeyland met een QUICKjump XL-apparaat en Ripcord.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Platforma pod lisem</h2><p>Saut dans le vide zaczyna się na kratowanej platformie podtrzymywanej przez bordową konstrukcję. Żółte siatkowe barierki otaczają otwór pod dużym panelem, na którym lis Pokeyland wyróżnia się na żółtym tle.</p><p>Uczestnik zakłada uprząż połączoną z urządzeniem zawieszonym nad nim. Przygotowanie odbywa się przy krawędzi platformy, w obecności stojącego obok pracownika.</p><h2>Przygoda z lat 2010.</h2><p>MyLorraine przedstawiło tę aktywność wśród nowości na 2016 rok. Amazone Adventure pokazuje instalację w Pokeyland wyposażoną w urządzenie QUICKjump XL z Ripcord.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma plataforma sob a raposa</h2><p>O Saut dans le vide começa numa plataforma gradeada, sustentada por uma estrutura bordô. Guardas de rede amarela rodeiam a abertura, sob um grande painel onde a raposa do Pokeyland se destaca num fundo amarelo.</p><p>O participante usa um arnês ligado ao aparelho suspenso por cima dele. A preparação decorre à beira da plataforma, com um membro da equipa ao lado.</p><h2>Uma aventura da década de 2010</h2><p>A MyLorraine apresentou esta atividade entre as novidades de 2016. A Amazone Adventure mostra a instalação do Pokeyland equipada com um dispositivo QUICKjump XL e Ripcord.</p>"
+            }
+          ]
+        },
+        {
+          "id": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+          "key": "pokeyland-historical-mini-buggy",
+          "name": "Mini-buggy",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Un petit véhicule à volant</h2><p>Le mini-buggy photographié à Pokeyland en 2015 possède un siège noir bas, un volant et une carrosserie ouverte. Son arceau dépasse derrière le dossier, tandis que des filets ferment partiellement les côtés près des jambes.</p><p>Quatre pneus à crampons entourent ce véhicule compact. Un panneau rouge à motif de flammes jaunes colore l’arrière, au-dessus du marchepied latéral métallique.</p><h2>Les chemins boisés des débuts</h2><p>Le reportage d’ouverture associe les mini-buggies aux promenades des enfants sur les chemins du parc. MyLorraine cite également cette offre dès août 2015, parmi les activités familiales de la première saison.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A small vehicle with a steering wheel</h2><p>The mini-buggy photographed at Pokeyland in 2015 has a low black seat, a steering wheel and an open body. Its roll bar rises behind the backrest, while netting partly closes the sides beside the rider’s legs.</p><p>Four knobbly tyres surround the compact vehicle. A red panel with yellow flames adds colour at the rear, above the metal side step.</p><h2>Woodland routes in the early years</h2><p>The opening report links mini-buggies to children’s rides along the park’s wooded paths. MyLorraine also mentioned the offer in August 2015 among the family activities of the first season.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein kleines Fahrzeug mit Lenkrad</h2><p>Der 2015 in Pokeyland fotografierte Mini-Buggy besitzt einen niedrigen schwarzen Sitz, ein Lenkrad und eine offene Karosserie. Hinter der Lehne ragt ein Überrollbügel auf; Netze schließen die Seiten neben den Beinen teilweise ab.</p><p>Vier grobstollige Reifen umgeben das kompakte Fahrzeug. Eine rote Verkleidung mit gelben Flammen setzt am Heck über dem seitlichen Metalltritt einen farbigen Akzent.</p><h2>Waldwege aus den Anfangsjahren</h2><p>Der Eröffnungsbericht verbindet die Mini-Buggys mit Kinderfahrten auf den Waldwegen des Parks. Auch MyLorraine nannte das Angebot im August 2015 unter den Familienaktivitäten der ersten Saison.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un pequeño vehículo con volante</h2><p>El minibuggy fotografiado en Pokeyland en 2015 tiene un asiento negro bajo, volante y carrocería abierta. Un arco sobresale detrás del respaldo, mientras unas redes cierran parcialmente los laterales junto a las piernas.</p><p>Cuatro neumáticos con tacos rodean este vehículo compacto. Un panel rojo con llamas amarillas da color a la parte trasera, por encima del escalón metálico lateral.</p><h2>Los caminos arbolados de los primeros años</h2><p>El reportaje de apertura relaciona los minibuggies con paseos infantiles por los caminos del parque. MyLorraine también citó la propuesta en agosto de 2015 entre las actividades familiares de la primera temporada.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un piccolo veicolo con volante</h2><p>Il mini-buggy fotografato a Pokeyland nel 2015 ha un sedile nero basso, un volante e una carrozzeria aperta. Un arco si alza dietro lo schienale, mentre reti laterali chiudono parzialmente lo spazio vicino alle gambe.</p><p>Quattro pneumatici tassellati circondano il veicolo compatto. Un pannello rosso con fiamme gialle colora la parte posteriore, sopra la pedana laterale metallica.</p><h2>I sentieri alberati delle origini</h2><p>Il reportage d’apertura associa i mini-buggy alle passeggiate dei bambini sui sentieri del parco. Anche MyLorraine citò la proposta nell’agosto 2015 tra le attività familiari della prima stagione.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een klein voertuig met een stuur</h2><p>De mini-buggy die in 2015 in Pokeyland is gefotografeerd, heeft een lage zwarte stoel, een stuur en een open carrosserie. Achter de rugleuning steekt een rolbeugel uit; netten sluiten de zijkanten bij de benen gedeeltelijk af.</p><p>Vier banden met grof profiel omringen het compacte voertuig. Een rood paneel met gele vlammen kleurt de achterkant boven de metalen opstap aan de zijkant.</p><h2>Bospaden uit de beginjaren</h2><p>De openingsreportage beschrijft mini-buggyritten voor kinderen over de bospaden van het park. Ook MyLorraine noemde dit aanbod in augustus 2015 bij de gezinsactiviteiten van het eerste seizoen.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Mały pojazd z kierownicą</h2><p>Mini-buggy sfotografowany w Pokeyland w 2015 roku ma niski czarny fotel, kierownicę i otwarte nadwozie. Pałąk wystaje za oparciem, a boczne siatki częściowo zamykają przestrzeń przy nogach.</p><p>Kompaktowy pojazd otaczają cztery opony z grubym bieżnikiem. Czerwony panel z żółtymi płomieniami zdobi tył nad metalowym stopniem z boku.</p><h2>Leśne ścieżki z początków parku</h2><p>Reportaż z otwarcia łączy mini-buggy z przejażdżkami dzieci po leśnych drogach parku. MyLorraine wymieniło tę ofertę również w sierpniu 2015 roku, wśród rodzinnych aktywności pierwszego sezonu.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Um pequeno veículo com volante</h2><p>O mini-buggy fotografado no Pokeyland em 2015 tem um banco preto baixo, volante e carroçaria aberta. Um arco ergue-se atrás do encosto, enquanto redes fecham parcialmente as laterais junto às pernas.</p><p>Quatro pneus com piso saliente rodeiam o veículo compacto. Um painel vermelho com chamas amarelas dá cor à traseira, acima do apoio metálico lateral para os pés.</p><h2>Os caminhos arborizados dos primeiros anos</h2><p>A reportagem de abertura associa os mini-buggies a passeios infantis pelos caminhos do parque. A MyLorraine também citou esta oferta em agosto de 2015 entre as atividades familiares da primeira temporada.</p>"
+            }
+          ]
+        },
+        {
+          "id": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+          "key": "pokeyland-historical-segway",
+          "name": "Segway",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Debout entre deux grandes roues</h2><p>Les sorties en Segway font partie des loisirs des premières saisons de Pokeyland. Les participants conduisent debout, les pieds sur une plateforme placée entre deux roues épaisses et les mains sur un guidon porté par une colonne centrale.</p><p>Une vue publiée en 2017 montre plusieurs conducteurs casqués se suivant sur un chemin gravillonné. Des bordures et des clôtures en bois accompagnent la végétation le long du passage.</p><h2>Une promenade accompagnée</h2><p>Le reportage de 2015 décrit des balades encadrées qui explorent aussi les abords des terrains de paintball. Le déplacement à travers le site constitue ici l’activité elle-même.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Standing between two large wheels</h2><p>Segway outings were among the activities offered during Pokeyland’s early seasons. Participants ride standing up, with their feet on a platform between two broad wheels and their hands on a handlebar supported by a central column.</p><p>A view published in 2017 shows several helmeted riders following one another along a gravel path. Timber edging and fences accompany the planting beside the route.</p><h2>An accompanied outing</h2><p>The 2015 report describes guided rides that also explore the surroundings of the paintball fields. Travelling through the site forms the activity itself.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Stehend zwischen zwei großen Rädern</h2><p>Segway-Ausflüge gehörten zu den Angeboten der ersten Pokeyland-Saisons. Die Teilnehmer fahren stehend, mit den Füßen auf einer Plattform zwischen zwei breiten Rädern und den Händen am Lenker einer mittleren Säule.</p><p>Eine 2017 veröffentlichte Ansicht zeigt mehrere behelmte Fahrer hintereinander auf einem Kiesweg. Hölzerne Einfassungen und Zäune begleiten die Bepflanzung entlang der Strecke.</p><h2>Ein begleiteter Ausflug</h2><p>Der Bericht von 2015 beschreibt geführte Fahrten, die auch in die Umgebung der Paintballfelder führen. Die Bewegung durch das Gelände bildet dabei die eigentliche Freizeitaktivität.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>De pie entre dos grandes ruedas</h2><p>Las salidas en Segway formaban parte de las actividades de las primeras temporadas de Pokeyland. Los participantes conducen de pie, sobre una plataforma entre dos ruedas anchas, sujetando un manillar sostenido por una columna central.</p><p>Una vista publicada en 2017 muestra a varios conductores con casco siguiendo un camino de grava. Bordes y cercas de madera acompañan la vegetación junto al recorrido.</p><h2>Un paseo acompañado</h2><p>El reportaje de 2015 describe paseos guiados que exploran también los alrededores de los campos de paintball. El desplazamiento por el lugar constituye aquí la propia actividad.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>In piedi tra due grandi ruote</h2><p>Le uscite in Segway facevano parte delle attività delle prime stagioni di Pokeyland. I partecipanti guidano in piedi, con i piedi su una piattaforma tra due ruote larghe e le mani su un manubrio sostenuto da una colonna centrale.</p><p>Una veduta pubblicata nel 2017 mostra più conducenti con casco che si seguono su un sentiero di ghiaia. Bordi e recinzioni in legno accompagnano la vegetazione lungo il passaggio.</p><h2>Una passeggiata accompagnata</h2><p>Il reportage del 2015 descrive uscite guidate che esplorano anche i dintorni dei campi da paintball. Lo spostamento attraverso il sito costituisce qui l’attività stessa.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Staand tussen twee grote wielen</h2><p>Segwaytochten behoorden tot de activiteiten uit Pokeylands eerste seizoenen. De deelnemers rijden staand, met hun voeten op een platform tussen twee brede wielen en hun handen aan een stuur op een centrale kolom.</p><p>Een in 2017 gepubliceerde foto toont verschillende rijders met helmen die elkaar over een grindpad volgen. Houten randen en hekken lopen langs de begroeiing naast de route.</p><h2>Een begeleide tocht</h2><p>De reportage uit 2015 beschrijft begeleide ritten die ook de omgeving van de paintballvelden verkennen. Het verplaatsen door het terrein vormt hier de activiteit zelf.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Na stojąco między dwoma dużymi kołami</h2><p>Wycieczki na Segwayach należały do aktywności z pierwszych sezonów Pokeyland. Uczestnicy jadą na stojąco, ze stopami na platformie między dwoma szerokimi kołami i dłońmi na kierownicy osadzonej na centralnej kolumnie.</p><p>Zdjęcie opublikowane w 2017 roku pokazuje kilku kierujących w kaskach, jadących jeden za drugim po żwirowej drodze. Drewniane obrzeża i ogrodzenia towarzyszą roślinności wzdłuż przejazdu.</p><h2>Wycieczka z opiekunem</h2><p>Reportaż z 2015 roku opisuje przejazdy z przewodnikiem, prowadzące także w okolice pól paintballowych. Samo przemieszczanie się po terenie stanowi tutaj atrakcję.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>De pé entre duas grandes rodas</h2><p>Os passeios de Segway faziam parte das atividades das primeiras temporadas do Pokeyland. Os participantes conduzem de pé, com os pés numa plataforma entre duas rodas largas e as mãos num guiador apoiado numa coluna central.</p><p>Uma vista publicada em 2017 mostra vários condutores com capacete seguindo um caminho de gravilha. Bordaduras e vedações de madeira acompanham a vegetação ao longo da passagem.</p><h2>Um passeio acompanhado</h2><p>A reportagem de 2015 descreve passeios guiados que exploram também os arredores dos campos de paintball. A deslocação pelo local constitui aqui a própria atividade.</p>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "0047f6fc-a0f4-4b8e-91a0-b8d7340599a6",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:14:35.8084574Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Plattform unter dem Fuchs</h2><p>Der Saut dans le vide beginnt auf einer Gitterplattform in einem bordeauxfarbenen Rahmen. Gelbe Schutzgeländer umgeben die Öffnung unter einer großen Tafel, auf der sich der Pokeyland-Fuchs vom gelben Hintergrund abhebt.</p><p>Der Teilnehmer trägt einen Gurt, der mit dem über ihm hängenden Gerät verbunden ist. Die Vorbereitung erfolgt am Rand der Plattform, begleitet von einem Mitarbeiter.</p><h2>Ein Abenteuer aus den 2010er-Jahren</h2><p>MyLorraine stellte die Aktivität als eine der Neuheiten von 2016 vor. Amazone Adventure zeigt die Anlage in Pokeyland mit einem QUICKjump-XL-Gerät und Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A platform beneath the fox</h2><p>Saut dans le vide starts from a grated platform carried by a burgundy framework. Yellow mesh guardrails surround the opening beneath a large panel showing Pokeyland’s fox against a yellow background.</p><p>The participant wears a harness connected to the device suspended overhead. Preparation takes place at the platform edge, with a team member standing alongside.</p><h2>An adventure introduced in the 2010s</h2><p>MyLorraine presented the activity among the additions for 2016. Amazone Adventure shows Pokeyland’s installation fitted with a QUICKjump XL device and Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una plataforma bajo el zorro</h2><p>El Saut dans le vide parte de una plataforma de rejilla sostenida por una estructura burdeos. Unas barandillas de malla amarilla rodean la abertura, bajo un gran panel donde el zorro de Pokeyland destaca sobre un fondo amarillo.</p><p>El participante lleva un arnés conectado al aparato suspendido sobre él. La preparación se realiza en el borde de la plataforma, con un miembro del equipo a su lado.</p><h2>Una aventura de la década de 2010</h2><p>MyLorraine presentó esta actividad entre las novedades de 2016. Amazone Adventure muestra la instalación de Pokeyland equipada con un dispositivo QUICKjump XL y Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une plateforme sous le renard</h2><p>Le départ du Saut dans le vide occupe une plateforme grillagée, portée par une charpente bordeaux. Des garde-corps jaunes encadrent l’ouverture, sous un grand panneau où le renard de Pokeyland se détache sur un fond jaune.</p><p>Le participant porte un harnais relié à l’appareil suspendu au-dessus de lui. La préparation se déroule au bord de la plateforme, avec un membre de l’équipe à ses côtés.</p><h2>Une aventure apparue dans les années 2010</h2><p>MyLorraine présente cette activité parmi les nouveautés de 2016. Amazone Adventure montre l’installation de Pokeyland équipée d’un dispositif QUICKjump XL avec Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una piattaforma sotto la volpe</h2><p>Il Saut dans le vide parte da una piattaforma grigliata sorretta da una struttura bordeaux. Parapetti gialli a rete circondano l’apertura, sotto un grande pannello con la volpe di Pokeyland su fondo giallo.</p><p>Il partecipante indossa un’imbracatura collegata al dispositivo sospeso sopra di lui. La preparazione avviene sul bordo della piattaforma, con un membro dello staff accanto.</p><h2>Un’avventura nata negli anni 2010</h2><p>MyLorraine presentò questa attività tra le novità del 2016. Amazone Adventure mostra l’impianto di Pokeyland equipaggiato con un dispositivo QUICKjump XL e Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een platform onder de vos</h2><p>Saut dans le vide begint op een roosterplatform in een bordeauxrood raamwerk. Gele gaashekken omringen de opening, onder een groot paneel waarop de Pokeyland-vos tegen een gele achtergrond afsteekt.</p><p>De deelnemer draagt een harnas dat verbonden is met het apparaat boven hem. De voorbereiding gebeurt aan de rand van het platform, met een medewerker ernaast.</p><h2>Een avontuur uit de jaren 2010</h2><p>MyLorraine presenteerde de activiteit als een van de nieuwigheden van 2016. Amazone Adventure toont de installatie in Pokeyland met een QUICKjump XL-apparaat en Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Platforma pod lisem</h2><p>Saut dans le vide zaczyna się na kratowanej platformie podtrzymywanej przez bordową konstrukcję. Żółte siatkowe barierki otaczają otwór pod dużym panelem, na którym lis Pokeyland wyróżnia się na żółtym tle.</p><p>Uczestnik zakłada uprząż połączoną z urządzeniem zawieszonym nad nim. Przygotowanie odbywa się przy krawędzi platformy, w obecności stojącego obok pracownika.</p><h2>Przygoda z lat 2010.</h2><p>MyLorraine przedstawiło tę aktywność wśród nowości na 2016 rok. Amazone Adventure pokazuje instalację w Pokeyland wyposażoną w urządzenie QUICKjump XL z Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma plataforma sob a raposa</h2><p>O Saut dans le vide começa numa plataforma gradeada, sustentada por uma estrutura bordô. Guardas de rede amarela rodeiam a abertura, sob um grande painel onde a raposa do Pokeyland se destaca num fundo amarelo.</p><p>O participante usa um arnês ligado ao aparelho suspenso por cima dele. A preparação decorre à beira da plataforma, com um membro da equipa ao lado.</p><h2>Uma aventura da década de 2010</h2><p>A MyLorraine apresentou esta atividade entre as novidades de 2016. A Amazone Adventure mostra a instalação do Pokeyland equipada com um dispositivo QUICKjump XL e Ripcord.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein kleines Fahrzeug mit Lenkrad</h2><p>Der 2015 in Pokeyland fotografierte Mini-Buggy besitzt einen niedrigen schwarzen Sitz, ein Lenkrad und eine offene Karosserie. Hinter der Lehne ragt ein Überrollbügel auf; Netze schließen die Seiten neben den Beinen teilweise ab.</p><p>Vier grobstollige Reifen umgeben das kompakte Fahrzeug. Eine rote Verkleidung mit gelben Flammen setzt am Heck über dem seitlichen Metalltritt einen farbigen Akzent.</p><h2>Waldwege aus den Anfangsjahren</h2><p>Der Eröffnungsbericht verbindet die Mini-Buggys mit Kinderfahrten auf den Waldwegen des Parks. Auch MyLorraine nannte das Angebot im August 2015 unter den Familienaktivitäten der ersten Saison.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A small vehicle with a steering wheel</h2><p>The mini-buggy photographed at Pokeyland in 2015 has a low black seat, a steering wheel and an open body. Its roll bar rises behind the backrest, while netting partly closes the sides beside the rider’s legs.</p><p>Four knobbly tyres surround the compact vehicle. A red panel with yellow flames adds colour at the rear, above the metal side step.</p><h2>Woodland routes in the early years</h2><p>The opening report links mini-buggies to children’s rides along the park’s wooded paths. MyLorraine also mentioned the offer in August 2015 among the family activities of the first season.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un pequeño vehículo con volante</h2><p>El minibuggy fotografiado en Pokeyland en 2015 tiene un asiento negro bajo, volante y carrocería abierta. Un arco sobresale detrás del respaldo, mientras unas redes cierran parcialmente los laterales junto a las piernas.</p><p>Cuatro neumáticos con tacos rodean este vehículo compacto. Un panel rojo con llamas amarillas da color a la parte trasera, por encima del escalón metálico lateral.</p><h2>Los caminos arbolados de los primeros años</h2><p>El reportaje de apertura relaciona los minibuggies con paseos infantiles por los caminos del parque. MyLorraine también citó la propuesta en agosto de 2015 entre las actividades familiares de la primera temporada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un petit véhicule à volant</h2><p>Le mini-buggy photographié à Pokeyland en 2015 possède un siège noir bas, un volant et une carrosserie ouverte. Son arceau dépasse derrière le dossier, tandis que des filets ferment partiellement les côtés près des jambes.</p><p>Quatre pneus à crampons entourent ce véhicule compact. Un panneau rouge à motif de flammes jaunes colore l’arrière, au-dessus du marchepied latéral métallique.</p><h2>Les chemins boisés des débuts</h2><p>Le reportage d’ouverture associe les mini-buggies aux promenades des enfants sur les chemins du parc. MyLorraine cite également cette offre dès août 2015, parmi les activités familiales de la première saison.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un piccolo veicolo con volante</h2><p>Il mini-buggy fotografato a Pokeyland nel 2015 ha un sedile nero basso, un volante e una carrozzeria aperta. Un arco si alza dietro lo schienale, mentre reti laterali chiudono parzialmente lo spazio vicino alle gambe.</p><p>Quattro pneumatici tassellati circondano il veicolo compatto. Un pannello rosso con fiamme gialle colora la parte posteriore, sopra la pedana laterale metallica.</p><h2>I sentieri alberati delle origini</h2><p>Il reportage d’apertura associa i mini-buggy alle passeggiate dei bambini sui sentieri del parco. Anche MyLorraine citò la proposta nell’agosto 2015 tra le attività familiari della prima stagione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een klein voertuig met een stuur</h2><p>De mini-buggy die in 2015 in Pokeyland is gefotografeerd, heeft een lage zwarte stoel, een stuur en een open carrosserie. Achter de rugleuning steekt een rolbeugel uit; netten sluiten de zijkanten bij de benen gedeeltelijk af.</p><p>Vier banden met grof profiel omringen het compacte voertuig. Een rood paneel met gele vlammen kleurt de achterkant boven de metalen opstap aan de zijkant.</p><h2>Bospaden uit de beginjaren</h2><p>De openingsreportage beschrijft mini-buggyritten voor kinderen over de bospaden van het park. Ook MyLorraine noemde dit aanbod in augustus 2015 bij de gezinsactiviteiten van het eerste seizoen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Mały pojazd z kierownicą</h2><p>Mini-buggy sfotografowany w Pokeyland w 2015 roku ma niski czarny fotel, kierownicę i otwarte nadwozie. Pałąk wystaje za oparciem, a boczne siatki częściowo zamykają przestrzeń przy nogach.</p><p>Kompaktowy pojazd otaczają cztery opony z grubym bieżnikiem. Czerwony panel z żółtymi płomieniami zdobi tył nad metalowym stopniem z boku.</p><h2>Leśne ścieżki z początków parku</h2><p>Reportaż z otwarcia łączy mini-buggy z przejażdżkami dzieci po leśnych drogach parku. MyLorraine wymieniło tę ofertę również w sierpniu 2015 roku, wśród rodzinnych aktywności pierwszego sezonu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um pequeno veículo com volante</h2><p>O mini-buggy fotografado no Pokeyland em 2015 tem um banco preto baixo, volante e carroçaria aberta. Um arco ergue-se atrás do encosto, enquanto redes fecham parcialmente as laterais junto às pernas.</p><p>Quatro pneus com piso saliente rodeiam o veículo compacto. Um painel vermelho com chamas amarelas dá cor à traseira, acima do apoio metálico lateral para os pés.</p><h2>Os caminhos arborizados dos primeiros anos</h2><p>A reportagem de abertura associa os mini-buggies a passeios infantis pelos caminhos do parque. A MyLorraine também citou esta oferta em agosto de 2015 entre as atividades familiares da primeira temporada.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Stehend zwischen zwei großen Rädern</h2><p>Segway-Ausflüge gehörten zu den Angeboten der ersten Pokeyland-Saisons. Die Teilnehmer fahren stehend, mit den Füßen auf einer Plattform zwischen zwei breiten Rädern und den Händen am Lenker einer mittleren Säule.</p><p>Eine 2017 veröffentlichte Ansicht zeigt mehrere behelmte Fahrer hintereinander auf einem Kiesweg. Hölzerne Einfassungen und Zäune begleiten die Bepflanzung entlang der Strecke.</p><h2>Ein begleiteter Ausflug</h2><p>Der Bericht von 2015 beschreibt geführte Fahrten, die auch in die Umgebung der Paintballfelder führen. Die Bewegung durch das Gelände bildet dabei die eigentliche Freizeitaktivität.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Standing between two large wheels</h2><p>Segway outings were among the activities offered during Pokeyland’s early seasons. Participants ride standing up, with their feet on a platform between two broad wheels and their hands on a handlebar supported by a central column.</p><p>A view published in 2017 shows several helmeted riders following one another along a gravel path. Timber edging and fences accompany the planting beside the route.</p><h2>An accompanied outing</h2><p>The 2015 report describes guided rides that also explore the surroundings of the paintball fields. Travelling through the site forms the activity itself.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>De pie entre dos grandes ruedas</h2><p>Las salidas en Segway formaban parte de las actividades de las primeras temporadas de Pokeyland. Los participantes conducen de pie, sobre una plataforma entre dos ruedas anchas, sujetando un manillar sostenido por una columna central.</p><p>Una vista publicada en 2017 muestra a varios conductores con casco siguiendo un camino de grava. Bordes y cercas de madera acompañan la vegetación junto al recorrido.</p><h2>Un paseo acompañado</h2><p>El reportaje de 2015 describe paseos guiados que exploran también los alrededores de los campos de paintball. El desplazamiento por el lugar constituye aquí la propia actividad.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Debout entre deux grandes roues</h2><p>Les sorties en Segway font partie des loisirs des premières saisons de Pokeyland. Les participants conduisent debout, les pieds sur une plateforme placée entre deux roues épaisses et les mains sur un guidon porté par une colonne centrale.</p><p>Une vue publiée en 2017 montre plusieurs conducteurs casqués se suivant sur un chemin gravillonné. Des bordures et des clôtures en bois accompagnent la végétation le long du passage.</p><h2>Une promenade accompagnée</h2><p>Le reportage de 2015 décrit des balades encadrées qui explorent aussi les abords des terrains de paintball. Le déplacement à travers le site constitue ici l’activité elle-même.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>In piedi tra due grandi ruote</h2><p>Le uscite in Segway facevano parte delle attività delle prime stagioni di Pokeyland. I partecipanti guidano in piedi, con i piedi su una piattaforma tra due ruote larghe e le mani su un manubrio sostenuto da una colonna centrale.</p><p>Una veduta pubblicata nel 2017 mostra più conducenti con casco che si seguono su un sentiero di ghiaia. Bordi e recinzioni in legno accompagnano la vegetazione lungo il passaggio.</p><h2>Una passeggiata accompagnata</h2><p>Il reportage del 2015 descrive uscite guidate che esplorano anche i dintorni dei campi da paintball. Lo spostamento attraverso il sito costituisce qui l’attività stessa.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Staand tussen twee grote wielen</h2><p>Segwaytochten behoorden tot de activiteiten uit Pokeylands eerste seizoenen. De deelnemers rijden staand, met hun voeten op een platform tussen twee brede wielen en hun handen aan een stuur op een centrale kolom.</p><p>Een in 2017 gepubliceerde foto toont verschillende rijders met helmen die elkaar over een grindpad volgen. Houten randen en hekken lopen langs de begroeiing naast de route.</p><h2>Een begeleide tocht</h2><p>De reportage uit 2015 beschrijft begeleide ritten die ook de omgeving van de paintballvelden verkennen. Het verplaatsen door het terrein vormt hier de activiteit zelf.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Na stojąco między dwoma dużymi kołami</h2><p>Wycieczki na Segwayach należały do aktywności z pierwszych sezonów Pokeyland. Uczestnicy jadą na stojąco, ze stopami na platformie między dwoma szerokimi kołami i dłońmi na kierownicy osadzonej na centralnej kolumnie.</p><p>Zdjęcie opublikowane w 2017 roku pokazuje kilku kierujących w kaskach, jadących jeden za drugim po żwirowej drodze. Drewniane obrzeża i ogrodzenia towarzyszą roślinności wzdłuż przejazdu.</p><h2>Wycieczka z opiekunem</h2><p>Reportaż z 2015 roku opisuje przejazdy z przewodnikiem, prowadzące także w okolice pól paintballowych. Samo przemieszczanie się po terenie stanowi tutaj atrakcję.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>De pé entre duas grandes rodas</h2><p>Os passeios de Segway faziam parte das atividades das primeiras temporadas do Pokeyland. Os participantes conduzem de pé, com os pés numa plataforma entre duas rodas largas e as mãos num guiador apoiado numa coluna central.</p><p>Uma vista publicada em 2017 mostra vários condutores com capacete seguindo um caminho de gravilha. Bordaduras e vedações de madeira acompanham a vegetação ao longo da passagem.</p><h2>Um passeio acompanhado</h2><p>A reportagem de 2015 descreve passeios guiados que exploram também os arredores dos campos de paintball. A deslocação pelo local constitui aqui a própria atividade.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "434c3ad4-00ff-4f61-9742-5a1c24c3de21",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T13:15:20.8561667Z",
+    "appliedAtUtc": "2026-11-15T13:15:20.8561672Z",
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d908a9f7-2786-4627-b4d0-ff74b2ec4aae",
+        "entityKey": "pokeyland-historical-saut-vide",
+        "displayName": "Saut dans le vide",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Eine Plattform unter dem Fuchs</h2><p>Der Saut dans le vide beginnt auf einer Gitterplattform in einem bordeauxfarbenen Rahmen. Gelbe Schutzgeländer umgeben die Öffnung unter einer großen Tafel, auf der sich der Pokeyland-Fuchs vom gelben Hintergrund abhebt.</p><p>Der Teilnehmer trägt einen Gurt, der mit dem über ihm hängenden Gerät verbunden ist. Die Vorbereitung erfolgt am Rand der Plattform, begleitet von einem Mitarbeiter.</p><h2>Ein Abenteuer aus den 2010er-Jahren</h2><p>MyLorraine stellte die Aktivität als eine der Neuheiten von 2016 vor. Amazone Adventure zeigt die Anlage in Pokeyland mit einem QUICKjump-XL-Gerät und Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A platform beneath the fox</h2><p>Saut dans le vide starts from a grated platform carried by a burgundy framework. Yellow mesh guardrails surround the opening beneath a large panel showing Pokeyland’s fox against a yellow background.</p><p>The participant wears a harness connected to the device suspended overhead. Preparation takes place at the platform edge, with a team member standing alongside.</p><h2>An adventure introduced in the 2010s</h2><p>MyLorraine presented the activity among the additions for 2016. Amazone Adventure shows Pokeyland’s installation fitted with a QUICKjump XL device and Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Una plataforma bajo el zorro</h2><p>El Saut dans le vide parte de una plataforma de rejilla sostenida por una estructura burdeos. Unas barandillas de malla amarilla rodean la abertura, bajo un gran panel donde el zorro de Pokeyland destaca sobre un fondo amarillo.</p><p>El participante lleva un arnés conectado al aparato suspendido sobre él. La preparación se realiza en el borde de la plataforma, con un miembro del equipo a su lado.</p><h2>Una aventura de la década de 2010</h2><p>MyLorraine presentó esta actividad entre las novedades de 2016. Amazone Adventure muestra la instalación de Pokeyland equipada con un dispositivo QUICKjump XL y Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Une plateforme sous le renard</h2><p>Le départ du Saut dans le vide occupe une plateforme grillagée, portée par une charpente bordeaux. Des garde-corps jaunes encadrent l’ouverture, sous un grand panneau où le renard de Pokeyland se détache sur un fond jaune.</p><p>Le participant porte un harnais relié à l’appareil suspendu au-dessus de lui. La préparation se déroule au bord de la plateforme, avec un membre de l’équipe à ses côtés.</p><h2>Une aventure apparue dans les années 2010</h2><p>MyLorraine présente cette activité parmi les nouveautés de 2016. Amazone Adventure montre l’installation de Pokeyland équipée d’un dispositif QUICKjump XL avec Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Una piattaforma sotto la volpe</h2><p>Il Saut dans le vide parte da una piattaforma grigliata sorretta da una struttura bordeaux. Parapetti gialli a rete circondano l’apertura, sotto un grande pannello con la volpe di Pokeyland su fondo giallo.</p><p>Il partecipante indossa un’imbracatura collegata al dispositivo sospeso sopra di lui. La preparazione avviene sul bordo della piattaforma, con un membro dello staff accanto.</p><h2>Un’avventura nata negli anni 2010</h2><p>MyLorraine presentò questa attività tra le novità del 2016. Amazone Adventure mostra l’impianto di Pokeyland equipaggiato con un dispositivo QUICKjump XL e Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een platform onder de vos</h2><p>Saut dans le vide begint op een roosterplatform in een bordeauxrood raamwerk. Gele gaashekken omringen de opening, onder een groot paneel waarop de Pokeyland-vos tegen een gele achtergrond afsteekt.</p><p>De deelnemer draagt een harnas dat verbonden is met het apparaat boven hem. De voorbereiding gebeurt aan de rand van het platform, met een medewerker ernaast.</p><h2>Een avontuur uit de jaren 2010</h2><p>MyLorraine presenteerde de activiteit als een van de nieuwigheden van 2016. Amazone Adventure toont de installatie in Pokeyland met een QUICKjump XL-apparaat en Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Platforma pod lisem</h2><p>Saut dans le vide zaczyna się na kratowanej platformie podtrzymywanej przez bordową konstrukcję. Żółte siatkowe barierki otaczają otwór pod dużym panelem, na którym lis Pokeyland wyróżnia się na żółtym tle.</p><p>Uczestnik zakłada uprząż połączoną z urządzeniem zawieszonym nad nim. Przygotowanie odbywa się przy krawędzi platformy, w obecności stojącego obok pracownika.</p><h2>Przygoda z lat 2010.</h2><p>MyLorraine przedstawiło tę aktywność wśród nowości na 2016 rok. Amazone Adventure pokazuje instalację w Pokeyland wyposażoną w urządzenie QUICKjump XL z Ripcord.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Uma plataforma sob a raposa</h2><p>O Saut dans le vide começa numa plataforma gradeada, sustentada por uma estrutura bordô. Guardas de rede amarela rodeiam a abertura, sob um grande painel onde a raposa do Pokeyland se destaca num fundo amarelo.</p><p>O participante usa um arnês ligado ao aparelho suspenso por cima dele. A preparação decorre à beira da plataforma, com um membro da equipa ao lado.</p><h2>Uma aventura da década de 2010</h2><p>A MyLorraine apresentou esta atividade entre as novidades de 2016. A Amazone Adventure mostra a instalação do Pokeyland equipada com um dispositivo QUICKjump XL e Ripcord.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "5f9d6f7e-94de-4b7e-acd0-da4abafb8017",
+        "entityKey": "pokeyland-historical-mini-buggy",
+        "displayName": "Mini-buggy",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Ein kleines Fahrzeug mit Lenkrad</h2><p>Der 2015 in Pokeyland fotografierte Mini-Buggy besitzt einen niedrigen schwarzen Sitz, ein Lenkrad und eine offene Karosserie. Hinter der Lehne ragt ein Überrollbügel auf; Netze schließen die Seiten neben den Beinen teilweise ab.</p><p>Vier grobstollige Reifen umgeben das kompakte Fahrzeug. Eine rote Verkleidung mit gelben Flammen setzt am Heck über dem seitlichen Metalltritt einen farbigen Akzent.</p><h2>Waldwege aus den Anfangsjahren</h2><p>Der Eröffnungsbericht verbindet die Mini-Buggys mit Kinderfahrten auf den Waldwegen des Parks. Auch MyLorraine nannte das Angebot im August 2015 unter den Familienaktivitäten der ersten Saison.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>A small vehicle with a steering wheel</h2><p>The mini-buggy photographed at Pokeyland in 2015 has a low black seat, a steering wheel and an open body. Its roll bar rises behind the backrest, while netting partly closes the sides beside the rider’s legs.</p><p>Four knobbly tyres surround the compact vehicle. A red panel with yellow flames adds colour at the rear, above the metal side step.</p><h2>Woodland routes in the early years</h2><p>The opening report links mini-buggies to children’s rides along the park’s wooded paths. MyLorraine also mentioned the offer in August 2015 among the family activities of the first season.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Un pequeño vehículo con volante</h2><p>El minibuggy fotografiado en Pokeyland en 2015 tiene un asiento negro bajo, volante y carrocería abierta. Un arco sobresale detrás del respaldo, mientras unas redes cierran parcialmente los laterales junto a las piernas.</p><p>Cuatro neumáticos con tacos rodean este vehículo compacto. Un panel rojo con llamas amarillas da color a la parte trasera, por encima del escalón metálico lateral.</p><h2>Los caminos arbolados de los primeros años</h2><p>El reportaje de apertura relaciona los minibuggies con paseos infantiles por los caminos del parque. MyLorraine también citó la propuesta en agosto de 2015 entre las actividades familiares de la primera temporada.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Un petit véhicule à volant</h2><p>Le mini-buggy photographié à Pokeyland en 2015 possède un siège noir bas, un volant et une carrosserie ouverte. Son arceau dépasse derrière le dossier, tandis que des filets ferment partiellement les côtés près des jambes.</p><p>Quatre pneus à crampons entourent ce véhicule compact. Un panneau rouge à motif de flammes jaunes colore l’arrière, au-dessus du marchepied latéral métallique.</p><h2>Les chemins boisés des débuts</h2><p>Le reportage d’ouverture associe les mini-buggies aux promenades des enfants sur les chemins du parc. MyLorraine cite également cette offre dès août 2015, parmi les activités familiales de la première saison.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Un piccolo veicolo con volante</h2><p>Il mini-buggy fotografato a Pokeyland nel 2015 ha un sedile nero basso, un volante e una carrozzeria aperta. Un arco si alza dietro lo schienale, mentre reti laterali chiudono parzialmente lo spazio vicino alle gambe.</p><p>Quattro pneumatici tassellati circondano il veicolo compatto. Un pannello rosso con fiamme gialle colora la parte posteriore, sopra la pedana laterale metallica.</p><h2>I sentieri alberati delle origini</h2><p>Il reportage d’apertura associa i mini-buggy alle passeggiate dei bambini sui sentieri del parco. Anche MyLorraine citò la proposta nell’agosto 2015 tra le attività familiari della prima stagione.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Een klein voertuig met een stuur</h2><p>De mini-buggy die in 2015 in Pokeyland is gefotografeerd, heeft een lage zwarte stoel, een stuur en een open carrosserie. Achter de rugleuning steekt een rolbeugel uit; netten sluiten de zijkanten bij de benen gedeeltelijk af.</p><p>Vier banden met grof profiel omringen het compacte voertuig. Een rood paneel met gele vlammen kleurt de achterkant boven de metalen opstap aan de zijkant.</p><h2>Bospaden uit de beginjaren</h2><p>De openingsreportage beschrijft mini-buggyritten voor kinderen over de bospaden van het park. Ook MyLorraine noemde dit aanbod in augustus 2015 bij de gezinsactiviteiten van het eerste seizoen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Mały pojazd z kierownicą</h2><p>Mini-buggy sfotografowany w Pokeyland w 2015 roku ma niski czarny fotel, kierownicę i otwarte nadwozie. Pałąk wystaje za oparciem, a boczne siatki częściowo zamykają przestrzeń przy nogach.</p><p>Kompaktowy pojazd otaczają cztery opony z grubym bieżnikiem. Czerwony panel z żółtymi płomieniami zdobi tył nad metalowym stopniem z boku.</p><h2>Leśne ścieżki z początków parku</h2><p>Reportaż z otwarcia łączy mini-buggy z przejażdżkami dzieci po leśnych drogach parku. MyLorraine wymieniło tę ofertę również w sierpniu 2015 roku, wśród rodzinnych aktywności pierwszego sezonu.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Um pequeno veículo com volante</h2><p>O mini-buggy fotografado no Pokeyland em 2015 tem um banco preto baixo, volante e carroçaria aberta. Um arco ergue-se atrás do encosto, enquanto redes fecham parcialmente as laterais junto às pernas.</p><p>Quatro pneus com piso saliente rodeiam o veículo compacto. Um painel vermelho com chamas amarelas dá cor à traseira, acima do apoio metálico lateral para os pés.</p><h2>Os caminhos arborizados dos primeiros anos</h2><p>A reportagem de abertura associa os mini-buggies a passeios infantis pelos caminhos do parque. A MyLorraine também citou esta oferta em agosto de 2015 entre as atividades familiares da primeira temporada.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0b18c421-95e9-4088-8e1b-0598cdba4d27",
+        "entityKey": "pokeyland-historical-segway",
+        "displayName": "Segway",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Stehend zwischen zwei großen Rädern</h2><p>Segway-Ausflüge gehörten zu den Angeboten der ersten Pokeyland-Saisons. Die Teilnehmer fahren stehend, mit den Füßen auf einer Plattform zwischen zwei breiten Rädern und den Händen am Lenker einer mittleren Säule.</p><p>Eine 2017 veröffentlichte Ansicht zeigt mehrere behelmte Fahrer hintereinander auf einem Kiesweg. Hölzerne Einfassungen und Zäune begleiten die Bepflanzung entlang der Strecke.</p><h2>Ein begleiteter Ausflug</h2><p>Der Bericht von 2015 beschreibt geführte Fahrten, die auch in die Umgebung der Paintballfelder führen. Die Bewegung durch das Gelände bildet dabei die eigentliche Freizeitaktivität.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Standing between two large wheels</h2><p>Segway outings were among the activities offered during Pokeyland’s early seasons. Participants ride standing up, with their feet on a platform between two broad wheels and their hands on a handlebar supported by a central column.</p><p>A view published in 2017 shows several helmeted riders following one another along a gravel path. Timber edging and fences accompany the planting beside the route.</p><h2>An accompanied outing</h2><p>The 2015 report describes guided rides that also explore the surroundings of the paintball fields. Travelling through the site forms the activity itself.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>De pie entre dos grandes ruedas</h2><p>Las salidas en Segway formaban parte de las actividades de las primeras temporadas de Pokeyland. Los participantes conducen de pie, sobre una plataforma entre dos ruedas anchas, sujetando un manillar sostenido por una columna central.</p><p>Una vista publicada en 2017 muestra a varios conductores con casco siguiendo un camino de grava. Bordes y cercas de madera acompañan la vegetación junto al recorrido.</p><h2>Un paseo acompañado</h2><p>El reportaje de 2015 describe paseos guiados que exploran también los alrededores de los campos de paintball. El desplazamiento por el lugar constituye aquí la propia actividad.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Debout entre deux grandes roues</h2><p>Les sorties en Segway font partie des loisirs des premières saisons de Pokeyland. Les participants conduisent debout, les pieds sur une plateforme placée entre deux roues épaisses et les mains sur un guidon porté par une colonne centrale.</p><p>Une vue publiée en 2017 montre plusieurs conducteurs casqués se suivant sur un chemin gravillonné. Des bordures et des clôtures en bois accompagnent la végétation le long du passage.</p><h2>Une promenade accompagnée</h2><p>Le reportage de 2015 décrit des balades encadrées qui explorent aussi les abords des terrains de paintball. Le déplacement à travers le site constitue ici l’activité elle-même.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>In piedi tra due grandi ruote</h2><p>Le uscite in Segway facevano parte delle attività delle prime stagioni di Pokeyland. I partecipanti guidano in piedi, con i piedi su una piattaforma tra due ruote larghe e le mani su un manubrio sostenuto da una colonna centrale.</p><p>Una veduta pubblicata nel 2017 mostra più conducenti con casco che si seguono su un sentiero di ghiaia. Bordi e recinzioni in legno accompagnano la vegetazione lungo il passaggio.</p><h2>Una passeggiata accompagnata</h2><p>Il reportage del 2015 descrive uscite guidate che esplorano anche i dintorni dei campi da paintball. Lo spostamento attraverso il sito costituisce qui l’attività stessa.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Staand tussen twee grote wielen</h2><p>Segwaytochten behoorden tot de activiteiten uit Pokeylands eerste seizoenen. De deelnemers rijden staand, met hun voeten op een platform tussen twee brede wielen en hun handen aan een stuur op een centrale kolom.</p><p>Een in 2017 gepubliceerde foto toont verschillende rijders met helmen die elkaar over een grindpad volgen. Houten randen en hekken lopen langs de begroeiing naast de route.</p><h2>Een begeleide tocht</h2><p>De reportage uit 2015 beschrijft begeleide ritten die ook de omgeving van de paintballvelden verkennen. Het verplaatsen door het terrein vormt hier de activiteit zelf.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Na stojąco między dwoma dużymi kołami</h2><p>Wycieczki na Segwayach należały do aktywności z pierwszych sezonów Pokeyland. Uczestnicy jadą na stojąco, ze stopami na platformie między dwoma szerokimi kołami i dłońmi na kierownicy osadzonej na centralnej kolumnie.</p><p>Zdjęcie opublikowane w 2017 roku pokazuje kilku kierujących w kaskach, jadących jeden za drugim po żwirowej drodze. Drewniane obrzeża i ogrodzenia towarzyszą roślinności wzdłuż przejazdu.</p><h2>Wycieczka z opiekunem</h2><p>Reportaż z 2015 roku opisuje przejazdy z przewodnikiem, prowadzące także w okolice pól paintballowych. Samo przemieszczanie się po terenie stanowi tutaj atrakcję.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>De pé entre duas grandes rodas</h2><p>Os passeios de Segway faziam parte das atividades das primeiras temporadas do Pokeyland. Os participantes conduzem de pé, com os pés numa plataforma entre duas rodas largas e as mãos num guiador apoiado numa coluna central.</p><p>Uma vista publicada em 2017 mostra vários condutores com capacete seguindo um caminho de gravilha. Bordaduras e vedações de madeira acompanham a vegetação ao longo da passagem.</p><h2>Um passeio acompanhado</h2><p>A reportagem de 2015 descreve passeios guiados que exploram também os arredores dos campos de paintball. A deslocação pelo local constitui aqui a própria atividade.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "personalReview": {
+    "allEightLanguagesPersonallyWrittenAndReviewed": true,
+    "sourceAndDepthNotes": "Trois notices historiques huit langues personnellement rédigées et relues après examen des photographies et sources : Saut dans le vide photo primaire Amazone et description MyLorraine2016 ; Mini-buggy photo Tout-Metz2015 signée exclue des imports, distinct des quads ; Segway montage LeLorrain2017 seulement recherche et reportage2015. Aucune hauteur, fabricant de véhicule, capacité, âge, date exacte ou statut actuel inventés. Profondeur limitée après recherches nominatives conservée comme lacune ; descriptions de configurations historiques datées, pas continuité2026 inférée.",
+    "wordCounts": {
+      "Saut dans le vide": {
+        "fr": 99,
+        "en": 88,
+        "de": 89,
+        "es": 103,
+        "it": 90,
+        "nl": 90,
+        "pl": 79,
+        "pt": 98
+      },
+      "Mini-buggy": {
+        "fr": 99,
+        "en": 101,
+        "de": 91,
+        "es": 103,
+        "it": 95,
+        "nl": 98,
+        "pl": 82,
+        "pt": 100
+      },
+      "Segway": {
+        "fr": 102,
+        "en": 93,
+        "de": 85,
+        "es": 98,
+        "it": 102,
+        "nl": 93,
+        "pl": 86,
+        "pt": 97
+      }
+    },
+    "noRawHtmlEntities": true,
+    "noExactParagraphDuplicatesAfterRemovingNamesAndTitles": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
