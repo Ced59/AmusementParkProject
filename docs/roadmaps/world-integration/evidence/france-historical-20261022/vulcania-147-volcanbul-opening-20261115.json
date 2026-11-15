@@ -1,0 +1,582 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-item-history-volcanbul-2008",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+            "itemId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+            "parkItemId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2008,
+            "month": 3,
+            "day": null,
+            "datePrecision": "Month",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "VolcanBUL ouvre les paysages du parc à une nouvelle promenade"
+              },
+              {
+                "languageCode": "en",
+                "value": "VolcanBUL adds a new way to explore the park’s landscape"
+              },
+              {
+                "languageCode": "de",
+                "value": "VolcanBUL eröffnet einen neuen Blick auf die Parklandschaft"
+              },
+              {
+                "languageCode": "nl",
+                "value": "VolcanBUL ontsluit het parklandschap met een nieuwe rondrit"
+              },
+              {
+                "languageCode": "it",
+                "value": "VolcanBUL introduce un nuovo percorso nel paesaggio del parco"
+              },
+              {
+                "languageCode": "es",
+                "value": "VolcanBUL incorpora un nuevo paseo por el paisaje del parque"
+              },
+              {
+                "languageCode": "pl",
+                "value": "VolcanBUL otwiera nową trasę poznawania krajobrazu parku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O VolcanBUL abre um novo percurso pela paisagem do parque"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "L’arrivée de VolcanBUL en mars 2008 ajoute à Vulcania une excursion consacrée à son environnement extérieur. Les volcans de la région et le geyser composent le décor de cette expérience, qui prolonge la découverte de la géologie au-delà des espaces d’exposition."
+              },
+              {
+                "languageCode": "en",
+                "value": "The arrival of VolcanBUL in March 2008 brings Vulcania an excursion devoted to its outdoor surroundings. The region’s volcanoes and the geyser form the setting for an experience that extends the exploration of geology beyond the exhibition spaces."
+              },
+              {
+                "languageCode": "de",
+                "value": "Mit VolcanBUL erhält Vulcania im März 2008 einen Ausflug durch seine Außenanlagen. Die Vulkane der Region und der Geysir bilden die Kulisse dieser neuen Erfahrung, die geologische Entdeckungen über die Ausstellungsräume hinaus erweitert."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Met de komst van VolcanBUL in maart 2008 krijgt Vulcania een rondrit die het omliggende landschap centraal stelt. De vulkanen van de streek en de geiser vormen het decor van een ervaring die de ontdekking van geologie buiten de tentoonstellingsruimten voortzet."
+              },
+              {
+                "languageCode": "it",
+                "value": "L’arrivo di VolcanBUL nel marzo 2008 aggiunge a Vulcania un’escursione dedicata all’ambiente esterno. I vulcani della regione e il geyser fanno da scenario a un’esperienza che estende la scoperta della geologia oltre gli spazi espositivi."
+              },
+              {
+                "languageCode": "es",
+                "value": "La llegada de VolcanBUL en marzo de 2008 añade a Vulcania una excursión dedicada al entorno exterior. Los volcanes de la región y el géiser enmarcan esta experiencia, que prolonga el descubrimiento de la geología más allá de las salas de exposición."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W marcu 2008 roku oferta Vulcanii wzbogaca się o VolcanBUL, przejażdżkę poświęconą otoczeniu parku. Wulkany regionu i gejzer tworzą scenerię doświadczenia, które przenosi odkrywanie geologii poza przestrzenie wystawowe."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A chegada do VolcanBUL em março de 2008 acrescenta a Vulcania um passeio dedicado à sua envolvente exterior. Os vulcões da região e o géiser compõem o cenário desta experiência, que prolonga a descoberta da geologia para além dos espaços de exposição."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vincent Dupourque, Robosoft — Automatic People Transportation, section 2.2, ouverture en mars 2008",
+                "url": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — Guide de l’enseignant 2017, extérieurs, copie du document officiel",
+                "url": "https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-volcanbul-opening",
+        "notes": "Private historical opening fact on same new VolcanBUL item. March2008 explicitly stated by manufacturer primary paper, day unknown. No invented lifecycle closing or current operation.2015 photo is contextual representation of ride, not claimed to depict2008 opening ceremony. Eight titles and summaries personally written/reviewed; distinct wording from item and reference biographies."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "ff4bc16b-9a8c-4934-9d52-c3753a9a08bd",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:42:37.6385506Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "e9449957-fc93-4231-bc44-aa8503089cec",
+        "entityKey": "vulcania-item-history-volcanbul-2008",
+        "displayName": "VolcanBUL ouvre les paysages du parc à une nouvelle promenade",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-volcanbul-2008"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "8bfb83e9-2044-4483-a599-768f89acebf8"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "8bfb83e9-2044-4483-a599-768f89acebf8"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2008"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "3"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "483f952f1ebe4dcb998ed7bc2e47bdc5"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:VolcanBUL eröffnet einen neuen Blick auf die Parklandschaft, en:VolcanBUL adds a new way to explore the park’s landscape, es:VolcanBUL incorpora un nuevo paseo por el paisaje del parque, fr:VolcanBUL ouvre les paysages du parc à une nouvelle promenade, it:VolcanBUL introduce un nuovo percorso nel paesaggio del parco, nl:VolcanBUL ontsluit het parklandschap met een nieuwe rondrit, pl:VolcanBUL otwiera nową trasę poznawania krajobrazu parku, pt:O VolcanBUL abre um novo percurso pela paisagem do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Mit VolcanBUL erhält Vulcania im März 2008 einen Ausflug durch seine Außenanlagen. Die Vulkane der Region und der Geysir bilden die Kulisse dieser neuen Erfahrung, die geologische Entdeckungen über die Ausstellungsräume hinaus erweitert., en:The arrival of VolcanBUL in March 2008 brings Vulcania an excursion devoted to its outdoor surroundings. The region’s volcanoes and the geyser form the setting for an experience that extends the exploration of geology beyond the exhibition spaces., es:La llegada de VolcanBUL en marzo de 2008 añade a Vulcania una excursión dedicada al entorno exterior. Los volcanes de la región y el géiser enmarcan esta experiencia, que prolonga el descubrimiento de la geología más allá de las salas de exposición., fr:L’arrivée de VolcanBUL en mars 2008 ajoute à Vulcania une excursion consacrée à son environnement extérieur. Les volcans de la région et le geyser composent le décor de cette expérience, qui prolonge la découverte de la géologie au-delà des espaces d’exposition., it:L’arrivo di VolcanBUL nel marzo 2008 aggiunge a Vulcania un’escursione dedicata all’ambiente esterno. I vulcani della regione e il geyser fanno da scenario a un’esperienza che estende la scoperta della geologia oltre gli spazi espositivi., nl:Met de komst van VolcanBUL in maart 2008 krijgt Vulcania een rondrit die het omliggende landschap centraal stelt. De vulkanen van de streek en de geiser vormen het decor van een ervaring die de ontdekking van geologie buiten de tentoonstellingsruimten voortzet., pl:W marcu 2008 roku oferta Vulcanii wzbogaca się o VolcanBUL, przejażdżkę poświęconą otoczeniu parku. Wulkany regionu i gejzer tworzą scenerię doświadczenia, które przenosi odkrywanie geologii poza przestrzenie wystawowe., pt:A chegada do VolcanBUL em março de 2008 acrescenta a Vulcania um passeio dedicado à sua envolvente exterior. Os vulcões da região e o géiser compõem o cenário desta experiência, que prolonga a descoberta da geologia para além dos espaços de exposição."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 Guide de l\\u2019enseignant 2017, ext\\u00E9rieurs, copie du document officiel\",\"Url\":\"https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vincent Dupourque, Robosoft \\u2014 Automatic People Transportation, section 2.2, ouverture en mars 2008\",\"Url\":\"https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "2939ae83-d4ca-460c-949a-842129c20b98",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:42:58.4184412Z",
+    "appliedAtUtc": "2026-11-15T21:42:58.418442Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "53b44b47-243b-4cfa-9718-e848d78df7b5",
+        "entityKey": "vulcania-item-history-volcanbul-2008",
+        "displayName": "VolcanBUL ouvre les paysages du parc à une nouvelle promenade",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-volcanbul-2008"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "8bfb83e9-2044-4483-a599-768f89acebf8"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "8bfb83e9-2044-4483-a599-768f89acebf8"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2008"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "3"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Month"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "483f952f1ebe4dcb998ed7bc2e47bdc5"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:VolcanBUL eröffnet einen neuen Blick auf die Parklandschaft, en:VolcanBUL adds a new way to explore the park’s landscape, es:VolcanBUL incorpora un nuevo paseo por el paisaje del parque, fr:VolcanBUL ouvre les paysages du parc à une nouvelle promenade, it:VolcanBUL introduce un nuovo percorso nel paesaggio del parco, nl:VolcanBUL ontsluit het parklandschap met een nieuwe rondrit, pl:VolcanBUL otwiera nową trasę poznawania krajobrazu parku, pt:O VolcanBUL abre um novo percurso pela paisagem do parque"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Mit VolcanBUL erhält Vulcania im März 2008 einen Ausflug durch seine Außenanlagen. Die Vulkane der Region und der Geysir bilden die Kulisse dieser neuen Erfahrung, die geologische Entdeckungen über die Ausstellungsräume hinaus erweitert., en:The arrival of VolcanBUL in March 2008 brings Vulcania an excursion devoted to its outdoor surroundings. The region’s volcanoes and the geyser form the setting for an experience that extends the exploration of geology beyond the exhibition spaces., es:La llegada de VolcanBUL en marzo de 2008 añade a Vulcania una excursión dedicada al entorno exterior. Los volcanes de la región y el géiser enmarcan esta experiencia, que prolonga el descubrimiento de la geología más allá de las salas de exposición., fr:L’arrivée de VolcanBUL en mars 2008 ajoute à Vulcania une excursion consacrée à son environnement extérieur. Les volcans de la région et le geyser composent le décor de cette expérience, qui prolonge la découverte de la géologie au-delà des espaces d’exposition., it:L’arrivo di VolcanBUL nel marzo 2008 aggiunge a Vulcania un’escursione dedicata all’ambiente esterno. I vulcani della regione e il geyser fanno da scenario a un’esperienza che estende la scoperta della geologia oltre gli spazi espositivi., nl:Met de komst van VolcanBUL in maart 2008 krijgt Vulcania een rondrit die het omliggende landschap centraal stelt. De vulkanen van de streek en de geiser vormen het decor van een ervaring die de ontdekking van geologie buiten de tentoonstellingsruimten voortzet., pl:W marcu 2008 roku oferta Vulcanii wzbogaca się o VolcanBUL, przejażdżkę poświęconą otoczeniu parku. Wulkany regionu i gejzer tworzą scenerię doświadczenia, które przenosi odkrywanie geologii poza przestrzenie wystawowe., pt:A chegada do VolcanBUL em março de 2008 acrescenta a Vulcania um passeio dedicado à sua envolvente exterior. Os vulcões da região e o géiser compõem o cenário desta experiência, que prolonga a descoberta da geologia para além dos espaços de exposição."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 Guide de l\\u2019enseignant 2017, ext\\u00E9rieurs, copie du document officiel\",\"Url\":\"https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vincent Dupourque, Robosoft \\u2014 Automatic People Transportation, section 2.2, ouverture en mars 2008\",\"Url\":\"https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-item-history-volcanbul-2008",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "itemId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "parkItemId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2008,
+      "month": 3,
+      "day": null,
+      "datePrecision": "Month",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "VolcanBUL ouvre les paysages du parc à une nouvelle promenade"
+        },
+        {
+          "languageCode": "en",
+          "value": "VolcanBUL adds a new way to explore the park’s landscape"
+        },
+        {
+          "languageCode": "de",
+          "value": "VolcanBUL eröffnet einen neuen Blick auf die Parklandschaft"
+        },
+        {
+          "languageCode": "nl",
+          "value": "VolcanBUL ontsluit het parklandschap met een nieuwe rondrit"
+        },
+        {
+          "languageCode": "it",
+          "value": "VolcanBUL introduce un nuovo percorso nel paesaggio del parco"
+        },
+        {
+          "languageCode": "es",
+          "value": "VolcanBUL incorpora un nuevo paseo por el paisaje del parque"
+        },
+        {
+          "languageCode": "pl",
+          "value": "VolcanBUL otwiera nową trasę poznawania krajobrazu parku"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O VolcanBUL abre um novo percurso pela paisagem do parque"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "L’arrivée de VolcanBUL en mars 2008 ajoute à Vulcania une excursion consacrée à son environnement extérieur. Les volcans de la région et le geyser composent le décor de cette expérience, qui prolonge la découverte de la géologie au-delà des espaces d’exposition."
+        },
+        {
+          "languageCode": "en",
+          "value": "The arrival of VolcanBUL in March 2008 brings Vulcania an excursion devoted to its outdoor surroundings. The region’s volcanoes and the geyser form the setting for an experience that extends the exploration of geology beyond the exhibition spaces."
+        },
+        {
+          "languageCode": "de",
+          "value": "Mit VolcanBUL erhält Vulcania im März 2008 einen Ausflug durch seine Außenanlagen. Die Vulkane der Region und der Geysir bilden die Kulisse dieser neuen Erfahrung, die geologische Entdeckungen über die Ausstellungsräume hinaus erweitert."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Met de komst van VolcanBUL in maart 2008 krijgt Vulcania een rondrit die het omliggende landschap centraal stelt. De vulkanen van de streek en de geiser vormen het decor van een ervaring die de ontdekking van geologie buiten de tentoonstellingsruimten voortzet."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’arrivo di VolcanBUL nel marzo 2008 aggiunge a Vulcania un’escursione dedicata all’ambiente esterno. I vulcani della regione e il geyser fanno da scenario a un’esperienza che estende la scoperta della geologia oltre gli spazi espositivi."
+        },
+        {
+          "languageCode": "es",
+          "value": "La llegada de VolcanBUL en marzo de 2008 añade a Vulcania una excursión dedicada al entorno exterior. Los volcanes de la región y el géiser enmarcan esta experiencia, que prolonga el descubrimiento de la geología más allá de las salas de exposición."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W marcu 2008 roku oferta Vulcanii wzbogaca się o VolcanBUL, przejażdżkę poświęconą otoczeniu parku. Wulkany regionu i gejzer tworzą scenerię doświadczenia, które przenosi odkrywanie geologii poza przestrzenie wystawowe."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A chegada do VolcanBUL em março de 2008 acrescenta a Vulcania um passeio dedicado à sua envolvente exterior. Os vulcões da região e o géiser compõem o cenário desta experiência, que prolonga a descoberta da geologia para além dos espaços de exposição."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vincent Dupourque, Robosoft — Automatic People Transportation, section 2.2, ouverture en mars 2008",
+          "url": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — Guide de l’enseignant 2017, extérieurs, copie du document officiel",
+          "url": "https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "53b44b47-243b-4cfa-9718-e848d78df7b5"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "name": "worksheet",
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/05/Cite-des-Enfants_Je-decouvre-l-environnement_Niveau-Maternel_Cycle1.pdf",
+      "checkedAtUtc": "2026-11-15T21:34:47.491772+00:00",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/Cite-des-Enfants_Je-decouvre-l-environnement_Niveau-Maternel_Cycle1.pdf",
+      "contentType": "application/pdf",
+      "bytes": 588525,
+      "sha256": "41cadd417b2a405628c286daa3a3f8d0d70bdc2f8ddaff2336748ca750e65f88"
+    },
+    {
+      "name": "aop",
+      "url": "https://www.aop-saintnectaire.com/actualites/retour-journee-filiere-aop-saint-nectaire-a-vulcania/",
+      "checkedAtUtc": "2026-11-15T21:34:47.492356+00:00",
+      "status": 200,
+      "finalUrl": "https://www.aop-saintnectaire.com/actualites/retour-journee-filiere-aop-saint-nectaire-a-vulcania/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79621,
+      "sha256": "e2f6a9fead0fe2ce6b95694a0aeaa3464219ace710ad75ca6069ce1aff658dec"
+    },
+    {
+      "name": "avesta",
+      "url": "https://avestagroup.eu/fr/projets/vulcanie/",
+      "checkedAtUtc": "2026-11-15T21:34:47.492739+00:00",
+      "status": 200,
+      "finalUrl": "https://avestagroup.eu/fr/projets/vulcanie/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 105638,
+      "sha256": "3eb3f8252553951065d5cbbf87e6961472f54565c1c07dd52caf326a609db424"
+    },
+    {
+      "name": "teacher2017",
+      "url": "https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires",
+      "checkedAtUtc": "2026-11-15T21:34:47.493103+00:00",
+      "status": 200,
+      "finalUrl": "https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires",
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 176694,
+      "sha256": "57f44264056d17d7f59eb09548e6e7cce15a51c8993a973fae7daf899290fa10"
+    },
+    {
+      "name": "regards2013",
+      "url": "https://www.regardsetviedauvergne.fr/2013/04/vulcania-le-volcanbul.html",
+      "checkedAtUtc": "2026-11-15T21:38:05.529001+00:00",
+      "status": 200,
+      "bytes": 225700,
+      "sha256": "7f7bf1036240b0cbb419d0b3ba68d15a53a5b98bf289aba0b3af467ce3c54426"
+    },
+    {
+      "name": "lindigo2011",
+      "url": "https://www.lindigo-mag.com/Vacances-dans-le-Puy-de-Dome-Vulcania-dans-les-fureurs-de-la-Terre_a195.html",
+      "checkedAtUtc": "2026-11-15T21:38:06.760415+00:00",
+      "status": 200,
+      "bytes": 35822,
+      "sha256": "3990dfa18a37dea5d04af97600b8dbd6eb07bf17ef9f87075fb97f69990aaeba"
+    },
+    {
+      "name": "francenet2015",
+      "url": "https://www.francenetinfos.com/vulcania-partez-a-decouverte-volcans-109920/",
+      "checkedAtUtc": "2026-11-15T21:38:08.326458+00:00",
+      "status": 200,
+      "bytes": 235642,
+      "sha256": "5261cb4ec00d86e1f035389c09852f09a9d27d0de4063dea2128b9637e29dfd1"
+    },
+    {
+      "key": "toba-project",
+      "url": "https://www.lescrayons.com/mission-toba-vulcania.html",
+      "checkedAtUtc": "2026-11-15T21:08:42.871193+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lescrayons.com/mission-toba-vulcania.html",
+      "bytes": 9820,
+      "contentType": "text/html",
+      "sha256": "78884af7e09686f4f29d1e05f9e9fdd672cd8c748869aa9dd7b4df0aad9f9307"
+    },
+    {
+      "key": "toba-tourmag",
+      "url": "https://www.tourmag.com/Vulcania-sejour-enfant-offert-jusqu-au-9-mai_a43279.html",
+      "checkedAtUtc": "2026-11-15T21:08:42.871785+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourmag.com/Vulcania-sejour-enfant-offert-jusqu-au-9-mai_a43279.html",
+      "bytes": 142705,
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "bae732593ac2251244ba5fdf4ff5cb09650d7339d15aa883a2ce02dd3fe03e12"
+    },
+    {
+      "key": "envol-parktrips",
+      "url": "https://www.parktrips.fr/vulcania/article-2497.html",
+      "checkedAtUtc": "2026-11-15T21:08:42.872416+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parktrips.fr/vulcania/article-2497.html",
+      "bytes": 52985,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "24dd2e11003d1a9eb441743b42661ff4b4e93643371a924005f6d81de5f5e9b4"
+    }
+  ],
+  "scopeNotes": "Private historical opening fact on same new VolcanBUL item. March2008 explicitly stated by manufacturer primary paper, day unknown. No invented lifecycle closing or current operation.2015 photo is contextual representation of ride, not claimed to depict2008 opening ceremony. Eight titles and summaries personally written/reviewed; distinct wording from item and reference biographies.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

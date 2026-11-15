@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T21:29:33.858Z",
+      "lastDataIntegrationAt": "2026-11-15T21:45:51.551Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39248,6 +39248,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-140-publish-playground-item-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 140-publish-playground-item; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-179270ca-1c21-4b19-86d6-ba9f6a7dca3c",
+          "appliedAt": "2026-11-15T21:38:51.125Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-144-volcanbul-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "VolcanBUL ajouté en privé, ouverture mars 2008 et modèle robuRIDE documentés par Robosoft ; constructeur rapproché par nom puis créé privé, statut actuel Unknown faute de preuve récente, aucun GPS ni fermeture inventés."
+        },
+        {
+          "eventId": "apply-274c045d-e365-4291-bc94-2c10f6c719c3",
+          "appliedAt": "2026-11-15T21:41:10.225Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-145-volcanbul-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "VolcanBUL : huit notices et huit biographies du nouveau constructeur Robosoft personnellement rédigées et relues ; promenade paysagère historique, état Unknown et visibilité privée conservés."
+        },
+        {
+          "eventId": "import-photo-483f952f1ebe4dcb998ed7bc2e47bdc5",
+          "appliedAt": "2026-11-15T21:41:54.419Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-146-volcanbul-boarding-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de VolcanBUL importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-2939ae83-d4ca-460c-949a-842129c20b98",
+          "appliedAt": "2026-11-15T21:42:58.418Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-147-volcanbul-opening-20261115.json",
+          "auditEvidence": null,
+          "summary": "VolcanBUL : fait privé d’ouverture en mars 2008, seize titres/résumés relus en huit langues et exactement comparés au Preview/Apply ; photo de 2015 contextuelle sans cérémonie d’ouverture prétendue."
+        },
+        {
+          "eventId": "apply-06e0bb22-4160-46ba-9153-6ff62f2640af",
+          "appliedAt": "2026-11-15T21:45:25.804Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-151-publish-volcanbul-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 151-publish-volcanbul-photo; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-9d9b76a5-d571-40e8-836a-c82851a95269",
+          "appliedAt": "2026-11-15T21:45:51.551Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-152-publish-volcanbul-item-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 152-publish-volcanbul-item-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39300,7 +39360,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-bbc2f166-e5d7-48f4-aee4-293574e3f63c ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-9d9b76a5-d571-40e8-836a-c82851a95269 ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

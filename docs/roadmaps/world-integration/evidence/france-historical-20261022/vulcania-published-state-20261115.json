@@ -375,6 +375,47 @@
         ],
         "isVisible": true,
         "adminReviewStatus": "Validated"
+      },
+      {
+        "id": "317727bd-45db-467a-ab4e-9479a99007bb",
+        "key": "317727bd-45db-467a-ab4e-9479a99007bb",
+        "name": "Robosoft",
+        "isVisible": true,
+        "adminReviewStatus": "Validated",
+        "biography": [
+          {
+            "languageCode": "fr",
+            "value": "<p>Robosoft a conçu les véhicules robuRIDE utilisés par VolcanBUL à Vulcania, où la promenade a ouvert en mars 2008. Cette réalisation prolongeait son travail sur le transport automatisé de visiteurs, déjà présent au fort du Simserhof depuis 2002.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<p>Robosoft designed the robuRIDE vehicles used for VolcanBUL at Vulcania, where the landscape ride opened in March 2008. The project continued the company’s work on automated visitor transport, already in use at the Simserhof fort from 2002.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<p>Robosoft entwickelte die robuRIDE-Fahrzeuge für VolcanBUL in Vulcania, wo die Landschaftsfahrt im März 2008 eröffnete. Das Projekt knüpfte an die Arbeit des Unternehmens im automatisierten Besuchertransport an, der bereits seit 2002 im Fort Simserhof eingesetzt wurde.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<p>Robosoft ontwierp de robuRIDE-voertuigen voor VolcanBUL in Vulcania, waar de landschapsrit in maart 2008 opende. Het project bouwde voort op het werk van het bedrijf aan automatisch bezoekersvervoer, dat sinds 2002 ook in het fort Simserhof werd gebruikt.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<p>Robosoft ha progettato i veicoli robuRIDE impiegati da VolcanBUL a Vulcania, dove il percorso paesaggistico ha aperto nel marzo 2008. Il progetto proseguiva il lavoro dell’azienda sul trasporto automatizzato dei visitatori, già presente al forte del Simserhof dal 2002.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<p>Robosoft diseñó los vehículos robuRIDE utilizados por VolcanBUL en Vulcania, cuyo recorrido paisajístico abrió en marzo de 2008. El proyecto continuaba el trabajo de la empresa en el transporte automatizado de visitantes, ya presente en el fuerte de Simserhof desde 2002.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<p>Robosoft zaprojektował pojazdy robuRIDE używane przez VolcanBUL w Vulcanii, gdzie przejażdżkę krajobrazową otwarto w marcu 2008 roku. Projekt rozwijał doświadczenia firmy w automatycznym transporcie zwiedzających, wykorzystywanym już od 2002 roku w forcie Simserhof.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<p>A Robosoft concebeu os veículos robuRIDE utilizados pelo VolcanBUL em Vulcania, cujo percurso paisagístico abriu em março de 2008. O projeto dava continuidade ao trabalho da empresa no transporte automatizado de visitantes, já presente no forte de Simserhof desde 2002.</p>"
+          }
+        ]
       }
     ]
   },
@@ -5308,6 +5349,58 @@
       "adminReviewStatus": "Validated",
       "latitude": null,
       "longitude": null
+    },
+    {
+      "id": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "key": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "name": "VolcanBUL",
+      "category": "Attraction",
+      "type": "TransportRide",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "attractionDetails": {
+        "status": "Unknown",
+        "openingDate": null,
+        "manufacturerKey": "robosoft",
+        "model": "robuRIDE",
+        "sourceUrl": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf",
+        "manufacturerId": "317727bd-45db-467a-ab4e-9479a99007bb",
+        "openingDateText": "2008-03"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une promenade face à la Chaîne des Puys</h2><p>À Vulcania, VolcanBUL proposait une découverte des paysages auvergnats depuis les extérieurs du parc. Ouverte en mars 2008, cette promenade prenait pour décor les reliefs volcaniques qui entourent le site, avec les arbres, les espaces herbeux et le geyser reconstitué au premier plan.</p><p>Ses cabines transparentes donnaient à cette exploration une silhouette bien particulière. Près de l’embarquement, des voiles blanches formaient un abri au-dessus du public ; au-delà, la promenade s’inscrivait dans les chemins et la végétation de Vulcania.</p><h2>Lire un territoire volcanique</h2><p>L’animation associait l’observation des formes volcaniques à celle des paysages façonnés par les activités humaines. Le partenariat avec l’AOP Saint-Nectaire mettait notamment en lumière les montagnes où se fabrique le fromage. VolcanBUL reliait ainsi les thèmes géologiques du parc à un territoire habité et cultivé.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A journey facing the Chaîne des Puys</h2><p>At Vulcania, VolcanBUL offered a view of the Auvergne landscape from the park’s outdoor grounds. Opened in March 2008, the ride took its setting from the volcanic hills surrounding the site, with trees, grassy spaces and the reconstructed geyser in the foreground.</p><p>Its transparent cabins gave this landscape tour a distinctive appearance. Near the boarding area, white fabric canopies sheltered the waiting visitors; beyond them, the journey followed the paths through Vulcania’s planted grounds.</p><h2>Reading a volcanic landscape</h2><p>The experience brought together volcanic landforms and scenery shaped by human activity. A partnership with the Saint-Nectaire protected designation of origin highlighted the mountain areas where the cheese is made. VolcanBUL connected the park’s geological themes with a landscape of farming and everyday life.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Fahrt mit Blick auf die Chaîne des Puys</h2><p>VolcanBUL erschloss die Landschaft der Auvergne von den Außenanlagen Vulcanias aus. Die im März 2008 eröffnete Rundfahrt führte vor die Kulisse der umliegenden Vulkanberge. Bäume, Wiesenflächen und der nachgebildete Geysir gehörten zum unmittelbaren Umfeld.</p><p>Durchsichtige Kabinen prägten das Erscheinungsbild dieser Landschaftsfahrt. Am Einstieg überspannten weiße Sonnensegel den Wartebereich; dahinter setzte sich der Ausflug auf den Wegen durch die begrünten Außenanlagen des Parks fort.</p><h2>Eine Vulkanlandschaft verstehen</h2><p>Die Animation verband den Blick auf vulkanische Geländeformen mit den Spuren menschlicher Nutzung. In einer Zusammenarbeit mit der geschützten Herkunftsbezeichnung Saint-Nectaire wurden auch die Berggebiete vorgestellt, in denen der Käse hergestellt wird. So stellte VolcanBUL eine Verbindung zwischen den geologischen Themen des Parks und einer bewohnten, landwirtschaftlich geprägten Landschaft her.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een rit met uitzicht op de Chaîne des Puys</h2><p>VolcanBUL liet bezoekers vanuit het buitenterrein van Vulcania kennismaken met het landschap van de Auvergne. De rondrit opende in maart 2008 en had de vulkanische heuvels rondom het park als decor. Dichterbij lagen de bomen, grasvelden en de nagebouwde geiser.</p><p>De doorzichtige cabines gaven deze landschapsrit een herkenbaar uiterlijk. Bij het instappen boden witte schaduwdoeken beschutting aan de wachtende bezoekers. Daarachter liep de route verder over de paden tussen het groen van Vulcania.</p><h2>Het vulkanische landschap lezen</h2><p>De rondrit besteedde aandacht aan vulkanische vormen én aan de invloed van mensen op het landschap. Een samenwerking met de beschermde oorsprongsbenaming Saint-Nectaire belichtte bijvoorbeeld de berggebieden waar deze kaas wordt gemaakt. Daarmee verbond VolcanBUL de geologische onderwerpen van het park met een streek waarin mensen wonen en landbouw bedrijven.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un percorso di fronte alla Chaîne des Puys</h2><p>A Vulcania, VolcanBUL proponeva di scoprire i paesaggi dell’Alvernia dagli spazi esterni del parco. Inaugurato nel marzo 2008, il percorso aveva come sfondo i rilievi vulcanici che circondano il sito, con alberi, prati e il geyser ricostruito in primo piano.</p><p>Le cabine trasparenti conferivano a questa passeggiata un aspetto inconfondibile. Vicino all’imbarco, vele bianche riparavano il pubblico in attesa; più avanti, il tragitto si inseriva nei vialetti e nella vegetazione di Vulcania.</p><h2>Interpretare un paesaggio vulcanico</h2><p>L’esperienza accostava l’osservazione delle forme vulcaniche a quella dei paesaggi modellati dall’attività umana. La collaborazione con la denominazione d’origine protetta Saint-Nectaire richiamava, per esempio, le montagne dove si produce il formaggio. VolcanBUL collegava così i temi geologici del parco a un territorio abitato e coltivato.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un paseo frente a la Chaîne des Puys</h2><p>VolcanBUL proponía descubrir los paisajes de Auvernia desde los espacios exteriores de Vulcania. El recorrido, abierto en marzo de 2008, tenía como telón de fondo los relieves volcánicos que rodean el parque, con árboles, praderas y el géiser recreado en primer plano.</p><p>Las cabinas transparentes daban a este paseo una apariencia característica. Junto al embarque, unas lonas blancas protegían al público que esperaba; más allá, el trayecto seguía los caminos entre la vegetación de Vulcania.</p><h2>Interpretar un paisaje volcánico</h2><p>La actividad combinaba la observación de las formas volcánicas con la de los paisajes transformados por la actividad humana. La colaboración con la denominación de origen protegida Saint-Nectaire destacaba, por ejemplo, las montañas donde se elabora el queso. VolcanBUL enlazaba así la geología del parque con un territorio habitado y agrícola.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Przejażdżka z widokiem na Chaîne des Puys</h2><p>VolcanBUL pozwalał poznawać krajobrazy Owernii z terenów zewnętrznych Vulcanii. Przejażdżkę otwarto w marcu 2008 roku. Jej tłem były otaczające park wzgórza wulkaniczne, a bliżej znajdowały się drzewa, trawniki i odtworzony gejzer.</p><p>Przezroczyste kabiny nadawały tej wyprawie po krajobrazie rozpoznawalny wygląd. Przy miejscu wsiadania białe zadaszenia przypominające żagle osłaniały oczekujących gości. Dalej trasa prowadziła parkowymi alejkami wśród zieleni Vulcanii.</p><h2>Odczytywanie wulkanicznego krajobrazu</h2><p>Tematem przejażdżki były zarówno formy wulkaniczne, jak i ślady działalności człowieka. Współpraca z chronioną nazwą pochodzenia Saint-Nectaire przybliżała między innymi górskie obszary produkcji tego sera. VolcanBUL łączył więc geologiczne opowieści parku z krajobrazem zamieszkanym przez ludzi i kształtowanym przez rolnictwo.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um passeio diante da Chaîne des Puys</h2><p>O VolcanBUL propunha descobrir as paisagens da Auvérnia a partir dos espaços exteriores de Vulcania. Aberto em março de 2008, o percurso tinha como cenário os relevos vulcânicos que rodeiam o parque, com árvores, relvados e o géiser recriado em primeiro plano.</p><p>As cabinas transparentes davam a este passeio uma aparência muito própria. Junto ao embarque, toldos brancos em forma de vela abrigavam o público que esperava; mais adiante, o trajeto seguia pelos caminhos entre a vegetação de Vulcania.</p><h2>Interpretar uma paisagem vulcânica</h2><p>A atividade combinava a observação das formas vulcânicas com a das paisagens moldadas pela ação humana. A parceria com a denominação de origem protegida Saint-Nectaire destacava, por exemplo, as montanhas onde se produz o queijo. O VolcanBUL ligava assim os temas geológicos do parque a um território habitado e agrícola.</p>"
+        }
+      ]
     }
   ],
   "images": [
@@ -13536,6 +13629,136 @@
       "setAsCurrent": true,
       "withWatermark": false,
       "internalUrl": "/images/d9db0d23cccc424191093ba08edca1df"
+    },
+    {
+      "id": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "path": "park_item/483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "description": "À Vulcania, le départ de la promenade paysagère est installé au bord d’une allée, entre pelouses et arbres.",
+      "isCurrent": false,
+      "isPublished": true,
+      "isWatermarked": false,
+      "width": 500,
+      "height": 333,
+      "sizeInBytes": 166564,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.francenetinfos.com/wp-content/uploads/2015/06/volcanbul.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un VolcanBUL occupé devant les voiles blanches de l’embarquement, avec une seconde cabine au fond."
+        },
+        {
+          "languageCode": "en",
+          "value": "A VolcanBUL carrying visitors beside the white boarding-area canopies, with a second cabin in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein besetzter VolcanBUL vor den weißen Sonnensegeln am Einstieg, mit einer zweiten Kabine im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een VolcanBUL met bezoekers bij de witte schaduwdoeken van de instapplaats, met een tweede cabine op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un VolcanBUL con visitatori davanti alle vele bianche dell’imbarco, con una seconda cabina sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un VolcanBUL con visitantes junto a las lonas blancas del embarque, con una segunda cabina al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "VolcanBUL z gośćmi obok białych zadaszeń przy miejscu wsiadania; w głębi widać drugą kabinę."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um VolcanBUL com visitantes junto aos toldos brancos do embarque, com uma segunda cabina ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "À Vulcania, le départ de la promenade paysagère est installé au bord d’une allée, entre pelouses et arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "At Vulcania, the landscape ride sets off beside a path bordered by lawns and trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "In Vulcania beginnt die Landschaftsfahrt an einem Weg zwischen Rasenflächen und Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In Vulcania begint de landschapsrit langs een pad tussen grasvelden en bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "A Vulcania, il percorso paesaggistico parte accanto a un vialetto tra prati e alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "En Vulcania, el paseo paisajístico sale junto a un camino entre zonas de césped y árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W Vulcanii przejażdżka krajobrazowa rozpoczyna się przy alejce między trawnikami i drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em Vulcania, o passeio paisagístico começa junto a um caminho entre relvados e árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "FranceNetInfos — reportage de Mikael Buffard, juin 2015."
+        },
+        {
+          "languageCode": "en",
+          "value": "FranceNetInfos — report by Mikael Buffard, June 2015."
+        },
+        {
+          "languageCode": "de",
+          "value": "FranceNetInfos — Reportage von Mikael Buffard, Juni 2015."
+        },
+        {
+          "languageCode": "nl",
+          "value": "FranceNetInfos — reportage van Mikael Buffard, juni 2015."
+        },
+        {
+          "languageCode": "it",
+          "value": "FranceNetInfos — reportage di Mikael Buffard, giugno 2015."
+        },
+        {
+          "languageCode": "es",
+          "value": "FranceNetInfos — reportaje de Mikael Buffard, junio de 2015."
+        },
+        {
+          "languageCode": "pl",
+          "value": "FranceNetInfos — reportaż Mikaela Buffarda, czerwiec 2015 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "FranceNetInfos — reportagem de Mikael Buffard, junho de 2015."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T21:41:54.419Z",
+      "updatedAt": "2026-11-15T21:41:57.965Z",
+      "key": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "imageId": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "ownerKey": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "internalUrl": "/images/483f952f1ebe4dcb998ed7bc2e47bdc5"
     }
   ],
   "openingHours": null,
@@ -16749,6 +16972,120 @@
         "itemKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
         "parkItemKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
         "slug": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-item-history-volcanbul-2008",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+        "itemId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+        "parkItemId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2008,
+        "month": 3,
+        "day": null,
+        "datePrecision": "Month",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "VolcanBUL ouvre les paysages du parc à une nouvelle promenade"
+          },
+          {
+            "languageCode": "en",
+            "value": "VolcanBUL adds a new way to explore the park’s landscape"
+          },
+          {
+            "languageCode": "de",
+            "value": "VolcanBUL eröffnet einen neuen Blick auf die Parklandschaft"
+          },
+          {
+            "languageCode": "nl",
+            "value": "VolcanBUL ontsluit het parklandschap met een nieuwe rondrit"
+          },
+          {
+            "languageCode": "it",
+            "value": "VolcanBUL introduce un nuovo percorso nel paesaggio del parco"
+          },
+          {
+            "languageCode": "es",
+            "value": "VolcanBUL incorpora un nuevo paseo por el paisaje del parque"
+          },
+          {
+            "languageCode": "pl",
+            "value": "VolcanBUL otwiera nową trasę poznawania krajobrazu parku"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O VolcanBUL abre um novo percurso pela paisagem do parque"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "L’arrivée de VolcanBUL en mars 2008 ajoute à Vulcania une excursion consacrée à son environnement extérieur. Les volcans de la région et le geyser composent le décor de cette expérience, qui prolonge la découverte de la géologie au-delà des espaces d’exposition."
+          },
+          {
+            "languageCode": "en",
+            "value": "The arrival of VolcanBUL in March 2008 brings Vulcania an excursion devoted to its outdoor surroundings. The region’s volcanoes and the geyser form the setting for an experience that extends the exploration of geology beyond the exhibition spaces."
+          },
+          {
+            "languageCode": "de",
+            "value": "Mit VolcanBUL erhält Vulcania im März 2008 einen Ausflug durch seine Außenanlagen. Die Vulkane der Region und der Geysir bilden die Kulisse dieser neuen Erfahrung, die geologische Entdeckungen über die Ausstellungsräume hinaus erweitert."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Met de komst van VolcanBUL in maart 2008 krijgt Vulcania een rondrit die het omliggende landschap centraal stelt. De vulkanen van de streek en de geiser vormen het decor van een ervaring die de ontdekking van geologie buiten de tentoonstellingsruimten voortzet."
+          },
+          {
+            "languageCode": "it",
+            "value": "L’arrivo di VolcanBUL nel marzo 2008 aggiunge a Vulcania un’escursione dedicata all’ambiente esterno. I vulcani della regione e il geyser fanno da scenario a un’esperienza che estende la scoperta della geologia oltre gli spazi espositivi."
+          },
+          {
+            "languageCode": "es",
+            "value": "La llegada de VolcanBUL en marzo de 2008 añade a Vulcania una excursión dedicada al entorno exterior. Los volcanes de la región y el géiser enmarcan esta experiencia, que prolonga el descubrimiento de la geología más allá de las salas de exposición."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W marcu 2008 roku oferta Vulcanii wzbogaca się o VolcanBUL, przejażdżkę poświęconą otoczeniu parku. Wulkany regionu i gejzer tworzą scenerię doświadczenia, które przenosi odkrywanie geologii poza przestrzenie wystawowe."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A chegada do VolcanBUL em março de 2008 acrescenta a Vulcania um passeio dedicado à sua envolvente exterior. Os vulcões da região e o géiser compõem o cenário desta experiência, que prolonga a descoberta da geologia para além dos espaços de exposição."
+          }
+        ],
+        "sources": [
+          {
+            "label": "Vincent Dupourque, Robosoft — Automatic People Transportation, section 2.2, ouverture en mars 2008",
+            "url": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — Guide de l’enseignant 2017, extérieurs, copie du document officiel",
+            "url": "https://studylibfr.com/doc/6550044/le-guide-de-l-enseignant-classes-secondaires",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "id": "53b44b47-243b-4cfa-9718-e848d78df7b5",
+        "itemKey": "8bfb83e9-2044-4483-a599-768f89acebf8",
+        "parkItemKey": "8bfb83e9-2044-4483-a599-768f89acebf8",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
         "previousLogoImageId": null,
         "newLogoImageId": null,
         "previousOperatorId": null,

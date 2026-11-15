@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-146-volcanbul-boarding",
+    "ownerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+    "itemName": "VolcanBUL",
+    "current": false,
+    "source": {
+      "name": "francenet-volcanbul",
+      "url": "https://www.francenetinfos.com/wp-content/uploads/2015/06/volcanbul.jpg",
+      "checkedAtUtc": "2026-11-15T21:38:44.655239+00:00",
+      "status": 200,
+      "bytes": 166564,
+      "sha256": "ca524d56602ca69d4229a03a09d0fe4f8ec613b1d58b918a7140a3eb6863f89a",
+      "width": 500,
+      "height": 333,
+      "format": "JPEG",
+      "dimensions": [
+        500,
+        333
+      ],
+      "file": "/workspace/france-historical-20261114/vulcania/volcanbul-followup-2134/francenet-volcanbul.jpg",
+      "sourcePage": "https://www.francenetinfos.com/vulcania-partez-a-decouverte-volcans-109920/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization. FranceNetInfos source and article author credited; no individual photographer or open licence asserted.",
+    "qualification": "Native linked500x333 photograph, not enlarged or cropped, actual ride and two distinct cabins visible. Published9June2015 report of6Junevisit; exact photograph timestamp unproven. Regards1256x778 rejected for visible third-party watermark. Lindigo764x174 rejected for multi-scene montage. No other images imported."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "SourceUrl": "https://www.francenetinfos.com/wp-content/uploads/2015/06/volcanbul.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/volcanbul-followup-2134/francenet-volcanbul.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-146-volcanbul-boarding-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-146-volcanbul-boarding-import-result.json"
+  },
+  "metadata": {
+    "description": "À Vulcania, le départ de la promenade paysagère est installé au bord d’une allée, entre pelouses et arbres.",
+    "sourceUrl": "https://www.francenetinfos.com/wp-content/uploads/2015/06/volcanbul.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un VolcanBUL occupé devant les voiles blanches de l’embarquement, avec une seconde cabine au fond."
+      },
+      {
+        "languageCode": "en",
+        "value": "A VolcanBUL carrying visitors beside the white boarding-area canopies, with a second cabin in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein besetzter VolcanBUL vor den weißen Sonnensegeln am Einstieg, mit einer zweiten Kabine im Hintergrund."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een VolcanBUL met bezoekers bij de witte schaduwdoeken van de instapplaats, met een tweede cabine op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un VolcanBUL con visitatori davanti alle vele bianche dell’imbarco, con una seconda cabina sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un VolcanBUL con visitantes junto a las lonas blancas del embarque, con una segunda cabina al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "VolcanBUL z gośćmi obok białych zadaszeń przy miejscu wsiadania; w głębi widać drugą kabinę."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um VolcanBUL com visitantes junto aos toldos brancos do embarque, com uma segunda cabina ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "À Vulcania, le départ de la promenade paysagère est installé au bord d’une allée, entre pelouses et arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "At Vulcania, the landscape ride sets off beside a path bordered by lawns and trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "In Vulcania beginnt die Landschaftsfahrt an einem Weg zwischen Rasenflächen und Bäumen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "In Vulcania begint de landschapsrit langs een pad tussen grasvelden en bomen."
+      },
+      {
+        "languageCode": "it",
+        "value": "A Vulcania, il percorso paesaggistico parte accanto a un vialetto tra prati e alberi."
+      },
+      {
+        "languageCode": "es",
+        "value": "En Vulcania, el paseo paisajístico sale junto a un camino entre zonas de césped y árboles."
+      },
+      {
+        "languageCode": "pl",
+        "value": "W Vulcanii przejażdżka krajobrazowa rozpoczyna się przy alejce między trawnikami i drzewami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Em Vulcania, o passeio paisagístico começa junto a um caminho entre relvados e árvores."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "FranceNetInfos — reportage de Mikael Buffard, juin 2015."
+      },
+      {
+        "languageCode": "en",
+        "value": "FranceNetInfos — report by Mikael Buffard, June 2015."
+      },
+      {
+        "languageCode": "de",
+        "value": "FranceNetInfos — Reportage von Mikael Buffard, Juni 2015."
+      },
+      {
+        "languageCode": "nl",
+        "value": "FranceNetInfos — reportage van Mikael Buffard, juni 2015."
+      },
+      {
+        "languageCode": "it",
+        "value": "FranceNetInfos — reportage di Mikael Buffard, giugno 2015."
+      },
+      {
+        "languageCode": "es",
+        "value": "FranceNetInfos — reportaje de Mikael Buffard, junio de 2015."
+      },
+      {
+        "languageCode": "pl",
+        "value": "FranceNetInfos — reportaż Mikaela Buffarda, czerwiec 2015 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "FranceNetInfos — reportagem de Mikael Buffard, junho de 2015."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T21:42:01.1156351Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+      "path": "park_item/483f952f1ebe4dcb998ed7bc2e47bdc5",
+      "description": "À Vulcania, le départ de la promenade paysagère est installé au bord d’une allée, entre pelouses et arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 500,
+      "height": 333,
+      "sizeInBytes": 166564,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.francenetinfos.com/wp-content/uploads/2015/06/volcanbul.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un VolcanBUL occupé devant les voiles blanches de l’embarquement, avec une seconde cabine au fond."
+        },
+        {
+          "languageCode": "en",
+          "value": "A VolcanBUL carrying visitors beside the white boarding-area canopies, with a second cabin in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein besetzter VolcanBUL vor den weißen Sonnensegeln am Einstieg, mit einer zweiten Kabine im Hintergrund."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een VolcanBUL met bezoekers bij de witte schaduwdoeken van de instapplaats, met een tweede cabine op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un VolcanBUL con visitatori davanti alle vele bianche dell’imbarco, con una seconda cabina sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un VolcanBUL con visitantes junto a las lonas blancas del embarque, con una segunda cabina al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "VolcanBUL z gośćmi obok białych zadaszeń przy miejscu wsiadania; w głębi widać drugą kabinę."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um VolcanBUL com visitantes junto aos toldos brancos do embarque, com uma segunda cabina ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "À Vulcania, le départ de la promenade paysagère est installé au bord d’une allée, entre pelouses et arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "At Vulcania, the landscape ride sets off beside a path bordered by lawns and trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "In Vulcania beginnt die Landschaftsfahrt an einem Weg zwischen Rasenflächen und Bäumen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In Vulcania begint de landschapsrit langs een pad tussen grasvelden en bomen."
+        },
+        {
+          "languageCode": "it",
+          "value": "A Vulcania, il percorso paesaggistico parte accanto a un vialetto tra prati e alberi."
+        },
+        {
+          "languageCode": "es",
+          "value": "En Vulcania, el paseo paisajístico sale junto a un camino entre zonas de césped y árboles."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W Vulcanii przejażdżka krajobrazowa rozpoczyna się przy alejce między trawnikami i drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em Vulcania, o passeio paisagístico começa junto a um caminho entre relvados e árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "FranceNetInfos — reportage de Mikael Buffard, juin 2015."
+        },
+        {
+          "languageCode": "en",
+          "value": "FranceNetInfos — report by Mikael Buffard, June 2015."
+        },
+        {
+          "languageCode": "de",
+          "value": "FranceNetInfos — Reportage von Mikael Buffard, Juni 2015."
+        },
+        {
+          "languageCode": "nl",
+          "value": "FranceNetInfos — reportage van Mikael Buffard, juni 2015."
+        },
+        {
+          "languageCode": "it",
+          "value": "FranceNetInfos — reportage di Mikael Buffard, giugno 2015."
+        },
+        {
+          "languageCode": "es",
+          "value": "FranceNetInfos — reportaje de Mikael Buffard, junio de 2015."
+        },
+        {
+          "languageCode": "pl",
+          "value": "FranceNetInfos — reportaż Mikaela Buffarda, czerwiec 2015 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "FranceNetInfos — reportagem de Mikael Buffard, junho de 2015."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T21:41:54.419Z",
+      "updatedAt": "2026-11-15T21:41:57.965Z"
+    },
+    "startedAtUtc": "2026-11-15T21:41:53.2423854Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

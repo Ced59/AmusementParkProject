@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "references": {
+        "manufacturers": [
+          {
+            "key": "robosoft",
+            "name": "Robosoft",
+            "isVisible": false,
+            "adminReviewStatus": "ToReview"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "vulcania-volcanbul",
+          "name": "VolcanBUL",
+          "category": "Attraction",
+          "type": "TransportRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2008-03",
+            "manufacturerKey": "robosoft",
+            "model": "robuRIDE",
+            "sourceUrl": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf"
+          }
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-volcanbul-historical-inventory",
+        "notes": "Manufacturer Vincent Dupourque/ROBOSOFT paper section2.2 explicitly confirms public operation from March2008 and robuRIDE model. Official2017 secondary school guide and Saint-Nectaire partnership23October2017 document this outdoor landscape ride. Undated official nature worksheet downloaded2026 contains VolcanBul but upload2024 is not a confirmed edition or current operation date. Official current2026 inventory does not establish current operation or definitive closure: Unknown, no invented closing date/GPS/route centre. Historical28seat/8kmh and365day capacity statement not applied as present technical specification or park calendar. Existing56items checked, no VolcanBul duplicate. Minimal manufacturer name must be reconciled by Preview before Apply; no visibility or description rewrite of a shared existing reference. Eight-language item description and images to follow; private item."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "7b1addd6-a1f6-464f-8fe7-1a12dc14a041",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:38:30.5976032Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "d1a5956d-470a-476b-a7d6-11b55d365588",
+        "entityKey": "robosoft",
+        "displayName": "Robosoft",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "514a7064-aa65-4c25-98ba-5847b4cbdc4c",
+        "entityKey": "vulcania-volcanbul",
+        "displayName": "VolcanBUL",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "TransportRide"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "d1a5956d-470a-476b-a7d6-11b55d365588"
+          },
+          {
+            "field": "attractionDetails.model",
+            "oldValue": null,
+            "newValue": "robuRIDE"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2008-03"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "179270ca-1c21-4b19-86d6-ba9f6a7dca3c",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:38:51.1251451Z",
+    "appliedAtUtc": "2026-11-15T21:38:51.1251459Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "317727bd-45db-467a-ab4e-9479a99007bb",
+        "entityKey": "robosoft",
+        "displayName": "Robosoft",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8bfb83e9-2044-4483-a599-768f89acebf8",
+        "entityKey": "vulcania-volcanbul",
+        "displayName": "VolcanBUL",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "TransportRide"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "317727bd-45db-467a-ab4e-9479a99007bb"
+          },
+          {
+            "field": "attractionDetails.model",
+            "oldValue": null,
+            "newValue": "robuRIDE"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.urba2000.com/club-ecomobilite-DUD/IMG/pdf/papier_THNS_final_V.Dupourque_1_.pdf"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2008-03"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "VolcanBUL ajouté en privé, ouverture mars 2008 et modèle robuRIDE documentés par Robosoft ; constructeur rapproché par nom puis créé privé, statut actuel Unknown faute de preuve récente, aucun GPS ni fermeture inventés.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Manufacturer Vincent Dupourque/ROBOSOFT paper section2.2 explicitly confirms public operation from March2008 and robuRIDE model. Official2017 secondary school guide and Saint-Nectaire partnership23October2017 document this outdoor landscape ride. Undated official nature worksheet downloaded2026 contains VolcanBul but upload2024 is not a confirmed edition or current operation date. Official current2026 inventory does not establish current operation or definitive closure: Unknown, no invented closing date/GPS/route centre. Historical28seat/8kmh and365day capacity statement not applied as present technical specification or park calendar. Existing56items checked, no VolcanBul duplicate. Minimal manufacturer name must be reconciled by Preview before Apply; no visibility or description rewrite of a shared existing reference. Eight-language item description and images to follow; private item."
+}
