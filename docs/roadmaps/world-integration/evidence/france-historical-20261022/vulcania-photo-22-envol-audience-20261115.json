@@ -1,0 +1,289 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-22-envol-audience",
+    "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+    "itemName": "Premier envol",
+    "current": true,
+    "source": {
+      "key": "envol-main",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Premier-envol-1.png",
+      "sourcePage": "https://www.vulcania.com/animation/premier-envol/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/envol-main.png",
+      "accessedAtUtc": "2026-11-15T13:54:25.341545+00:00",
+      "http": 200,
+      "bytes": 446033,
+      "dimensions": [
+        1200,
+        630
+      ],
+      "sha256": "42dd36a9b97ce91d05ced72e6d5f1731f91aaf50a5310365f2b74d84f355b389",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "recheckedAtUtc": "2026-11-15T17:45:12.157203+00:00",
+      "personalOriginalReview": true
+    },
+    "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+    "captureDate": null,
+    "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+    "localTransformation": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Premier-envol-1.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/envol-main.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-22-envol-audience-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-22-envol-audience-import-result.json"
+  },
+  "metadata": {
+    "description": "Adultes et enfants regardent le paysage forestier projeté devant eux dans la salle.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Premier-envol-1.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Visiteurs de Premier envol face à l’image d’un aigle survolant une forêt sur l’écran courbe."
+      },
+      {
+        "languageCode": "en",
+        "value": "Premier envol visitors facing an image of an eagle flying over a forest on the curved screen."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher von Premier envol vor dem Bild eines Adlers über einem Wald auf der gebogenen Leinwand."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers van Premier envol voor het beeld van een arend boven een bos op het gebogen scherm."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori di Premier envol davanti all’immagine di un’aquila sopra una foresta sullo schermo curvo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes de Premier envol ante la imagen de un águila sobre un bosque en la pantalla curva."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Widzowie Premier envol przed obrazem orła nad lasem na zakrzywionym ekranie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes de Premier envol perante a imagem de uma águia sobre uma floresta no ecrã curvo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Adultes et enfants regardent le paysage forestier projeté devant eux dans la salle."
+      },
+      {
+        "languageCode": "en",
+        "value": "Adults and children watch the forest landscape projected in front of them inside the theatre."
+      },
+      {
+        "languageCode": "de",
+        "value": "Erwachsene und Kinder betrachten die vor ihnen projizierte Waldlandschaft im Saal."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Volwassenen en kinderen kijken naar het boslandschap dat voor hen in de zaal wordt geprojecteerd."
+      },
+      {
+        "languageCode": "it",
+        "value": "Adulti e bambini osservano il paesaggio boschivo proiettato davanti a loro nella sala."
+      },
+      {
+        "languageCode": "es",
+        "value": "Adultos y niños observan el paisaje forestal proyectado ante ellos en la sala."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dorośli i dzieci oglądają leśny krajobraz wyświetlany przed nimi w sali."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Adultos e crianças observam a paisagem florestal projetada à sua frente na sala."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "d7146436ae0044dabef88f182dfd2516",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "path": "park_item/d7146436ae0044dabef88f182dfd2516",
+      "description": "Adultes et enfants regardent le paysage forestier projeté devant eux dans la salle.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 446033,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Premier-envol-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs de Premier envol face à l’image d’un aigle survolant une forêt sur l’écran courbe."
+        },
+        {
+          "languageCode": "en",
+          "value": "Premier envol visitors facing an image of an eagle flying over a forest on the curved screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher von Premier envol vor dem Bild eines Adlers über einem Wald auf der gebogenen Leinwand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers van Premier envol voor het beeld van een arend boven een bos op het gebogen scherm."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori di Premier envol davanti all’immagine di un’aquila sopra una foresta sullo schermo curvo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes de Premier envol ante la imagen de un águila sobre un bosque en la pantalla curva."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widzowie Premier envol przed obrazem orła nad lasem na zakrzywionym ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes de Premier envol perante a imagem de uma águia sobre uma floresta no ecrã curvo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Adultes et enfants regardent le paysage forestier projeté devant eux dans la salle."
+        },
+        {
+          "languageCode": "en",
+          "value": "Adults and children watch the forest landscape projected in front of them inside the theatre."
+        },
+        {
+          "languageCode": "de",
+          "value": "Erwachsene und Kinder betrachten die vor ihnen projizierte Waldlandschaft im Saal."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Volwassenen en kinderen kijken naar het boslandschap dat voor hen in de zaal wordt geprojecteerd."
+        },
+        {
+          "languageCode": "it",
+          "value": "Adulti e bambini osservano il paesaggio boschivo proiettato davanti a loro nella sala."
+        },
+        {
+          "languageCode": "es",
+          "value": "Adultos y niños observan el paisaje forestal proyectado ante ellos en la sala."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorośli i dzieci oglądają leśny krajobraz wyświetlany przed nimi w sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Adultos e crianças observam a paisagem florestal projetada à sua frente na sala."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:01.592Z",
+      "updatedAt": "2026-11-15T17:46:05.341Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T17:46:08.4419381Z",
+    "startedAtUtc": "2026-11-15T17:45:58.0186968Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -3162,6 +3162,641 @@
       "key": "2609d09da2864a06aaff9d0e640db0cd",
       "imageId": "2609d09da2864a06aaff9d0e640db0cd",
       "ownerKey": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+    },
+    {
+      "id": "66bf435069e443b29f6d87c7ad5764f9",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+      "path": "park_item/66bf435069e443b29f6d87c7ad5764f9",
+      "description": "Les murs verts entourent l’écran, où la scène du film montre un jaillissement au milieu d’un plan d’eau.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 728118,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Reveil-des-geants-dauvergne.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Salle de Réveil des géants d’Auvergne avec un jaillissement d’eau projeté sur le grand écran et des spectateurs en contrebas."
+        },
+        {
+          "languageCode": "en",
+          "value": "Réveil des géants d’Auvergne theatre with a burst of water projected on the large screen and spectators below."
+        },
+        {
+          "languageCode": "de",
+          "value": "Saal von Réveil des géants d’Auvergne mit einer Wasserfontäne auf der großen Leinwand und Zuschauern darunter."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Zaal van Réveil des géants d’Auvergne met een geprojecteerde wateruitbarsting op het grote scherm en toeschouwers eronder."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sala di Réveil des géants d’Auvergne con un getto d’acqua proiettato sul grande schermo e spettatori più in basso."
+        },
+        {
+          "languageCode": "es",
+          "value": "Sala de Réveil des géants d’Auvergne con un chorro de agua proyectado en la gran pantalla y espectadores debajo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sala Réveil des géants d’Auvergne z wybuchem wody wyświetlanym na dużym ekranie i widzami poniżej."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sala de Réveil des géants d’Auvergne com um jato de água projetado no grande ecrã e espetadores em baixo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les murs verts entourent l’écran, où la scène du film montre un jaillissement au milieu d’un plan d’eau."
+        },
+        {
+          "languageCode": "en",
+          "value": "Green walls surround the screen, where a film scene shows water bursting upwards from a lake."
+        },
+        {
+          "languageCode": "de",
+          "value": "Grüne Wände umgeben die Leinwand, auf der eine Filmszene eine aufschießende Wasserfontäne in einem Gewässer zeigt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groene wanden omringen het scherm, waarop een filmscène een wateruitbarsting midden in een meer toont."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le pareti verdi circondano lo schermo, dove una scena del film mostra un getto che emerge da uno specchio d’acqua."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las paredes verdes rodean la pantalla, donde una escena de la película muestra un chorro que surge de una masa de agua."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielone ściany otaczają ekran, na którym scena filmowa pokazuje wodę tryskającą ze zbiornika."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As paredes verdes rodeiam o ecrã, onde uma cena do filme mostra um jato a emergir de uma superfície de água."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:45:49.308Z",
+      "updatedAt": "2026-11-15T17:45:53.03Z",
+      "key": "66bf435069e443b29f6d87c7ad5764f9",
+      "imageId": "66bf435069e443b29f6d87c7ad5764f9",
+      "ownerKey": "84fe09e2-0e91-42f6-b53a-716264aaf638"
+    },
+    {
+      "id": "d7146436ae0044dabef88f182dfd2516",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "path": "park_item/d7146436ae0044dabef88f182dfd2516",
+      "description": "Adultes et enfants regardent le paysage forestier projeté devant eux dans la salle.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1200,
+      "height": 630,
+      "sizeInBytes": 446033,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Premier-envol-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs de Premier envol face à l’image d’un aigle survolant une forêt sur l’écran courbe."
+        },
+        {
+          "languageCode": "en",
+          "value": "Premier envol visitors facing an image of an eagle flying over a forest on the curved screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher von Premier envol vor dem Bild eines Adlers über einem Wald auf der gebogenen Leinwand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers van Premier envol voor het beeld van een arend boven een bos op het gebogen scherm."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori di Premier envol davanti all’immagine di un’aquila sopra una foresta sullo schermo curvo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes de Premier envol ante la imagen de un águila sobre un bosque en la pantalla curva."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Widzowie Premier envol przed obrazem orła nad lasem na zakrzywionym ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes de Premier envol perante a imagem de uma águia sobre uma floresta no ecrã curvo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Adultes et enfants regardent le paysage forestier projeté devant eux dans la salle."
+        },
+        {
+          "languageCode": "en",
+          "value": "Adults and children watch the forest landscape projected in front of them inside the theatre."
+        },
+        {
+          "languageCode": "de",
+          "value": "Erwachsene und Kinder betrachten die vor ihnen projizierte Waldlandschaft im Saal."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Volwassenen en kinderen kijken naar het boslandschap dat voor hen in de zaal wordt geprojecteerd."
+        },
+        {
+          "languageCode": "it",
+          "value": "Adulti e bambini osservano il paesaggio boschivo proiettato davanti a loro nella sala."
+        },
+        {
+          "languageCode": "es",
+          "value": "Adultos y niños observan el paisaje forestal proyectado ante ellos en la sala."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dorośli i dzieci oglądają leśny krajobraz wyświetlany przed nimi w sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Adultos e crianças observam a paisagem florestal projetada à sua frente na sala."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:01.592Z",
+      "updatedAt": "2026-11-15T17:46:05.341Z",
+      "key": "d7146436ae0044dabef88f182dfd2516",
+      "imageId": "d7146436ae0044dabef88f182dfd2516",
+      "ownerKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f"
+    },
+    {
+      "id": "4fa5101fdeb747d5addd92ed6ada6a49",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "path": "park_item/4fa5101fdeb747d5addd92ed6ada6a49",
+      "description": "Des motifs lumineux se détachent sur les colonnes sombres, sous des moniteurs suspendus.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 600,
+      "sizeInBytes": 41827,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-2-600x600.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs devant des colonnes à écrans dans un espace de Terre en colère éclairé en bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors facing columns with screens in a blue-lit area of Terre en colère."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher vor Säulen mit Bildschirmen in einem blau beleuchteten Bereich von Terre en colère."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers voor zuilen met schermen in een blauw verlichte ruimte van Terre en colère."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori davanti a colonne con schermi in uno spazio di Terre en colère illuminato di blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes ante columnas con pantallas en un espacio de Terre en colère iluminado de azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Odwiedzający przed kolumnami z ekranami w oświetlonej na niebiesko przestrzeni Terre en colère."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes diante de colunas com ecrãs num espaço de Terre en colère iluminado a azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des motifs lumineux se détachent sur les colonnes sombres, sous des moniteurs suspendus."
+        },
+        {
+          "languageCode": "en",
+          "value": "Luminous patterns stand out on dark columns beneath suspended monitors."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtende Muster heben sich unter hängenden Monitoren von dunklen Säulen ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Lichtpatronen steken af tegen donkere zuilen onder hangende beeldschermen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Motivi luminosi risaltano sulle colonne scure, sotto monitor sospesi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los motivos luminosos destacan sobre las columnas oscuras, bajo monitores suspendidos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Świetlne wzory wyróżniają się na ciemnych kolumnach pod zawieszonymi monitorami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Padrões luminosos destacam-se nas colunas escuras, sob monitores suspensos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:11.073Z",
+      "updatedAt": "2026-11-15T17:46:14.545Z",
+      "key": "4fa5101fdeb747d5addd92ed6ada6a49",
+      "imageId": "4fa5101fdeb747d5addd92ed6ada6a49",
+      "ownerKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379"
+    },
+    {
+      "id": "38d2d552d2b14bac9fc47972904f11c0",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "path": "park_item/38d2d552d2b14bac9fc47972904f11c0",
+      "description": "Le feu et la fumée appartiennent à l’image projetée dans la salle obscure.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 600,
+      "sizeInBytes": 45022,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-3-600x600.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Silhouettes de spectateurs de Terre en colère devant une scène de feu de forêt projetée à l’écran."
+        },
+        {
+          "languageCode": "en",
+          "value": "Silhouettes of Terre en colère spectators watching a forest fire scene projected on screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Silhouetten von Zuschauern in Terre en colère vor einer auf die Leinwand projizierten Waldbrandszene."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Silhouetten van toeschouwers in Terre en colère voor een geprojecteerde bosbrandscène."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sagome degli spettatori di Terre en colère davanti a una scena di incendio boschivo proiettata sullo schermo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Siluetas de espectadores de Terre en colère ante una escena de incendio forestal proyectada en la pantalla."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sylwetki widzów Terre en colère przed sceną pożaru lasu wyświetlaną na ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Silhuetas de espetadores de Terre en colère perante uma cena de incêndio florestal projetada no ecrã."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le feu et la fumée appartiennent à l’image projetée dans la salle obscure."
+        },
+        {
+          "languageCode": "en",
+          "value": "The fire and smoke are part of the image projected inside the darkened theatre."
+        },
+        {
+          "languageCode": "de",
+          "value": "Feuer und Rauch gehören zum projizierten Bild im dunklen Kinosaal."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vuur en rook maken deel uit van het geprojecteerde beeld in de donkere zaal."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il fuoco e il fumo fanno parte dell’immagine proiettata nella sala buia."
+        },
+        {
+          "languageCode": "es",
+          "value": "El fuego y el humo forman parte de la imagen proyectada en la sala oscura."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ogień i dym są częścią obrazu wyświetlanego w zaciemnionej sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O fogo e o fumo fazem parte da imagem projetada na sala escura."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:20.226Z",
+      "updatedAt": "2026-11-15T17:46:23.707Z",
+      "key": "38d2d552d2b14bac9fc47972904f11c0",
+      "imageId": "38d2d552d2b14bac9fc47972904f11c0",
+      "ownerKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379"
+    },
+    {
+      "id": "7e73e3872acb49c4b61d3c6961c29658",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+      "path": "park_item/7e73e3872acb49c4b61d3c6961c29658",
+      "description": "Le personnage porte un chapeau conique et tient un bâton devant le paysage de montagne du décor.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 929057,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Photo-Volcans-sacres-application-2-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs de Volcans sacrés près d’un personnage vêtu de blanc, de branches fleuries et d’un volcan peint."
+        },
+        {
+          "languageCode": "en",
+          "value": "Volcans sacrés visitors beside a figure dressed in white, flowering branches and a painted volcano."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher von Volcans sacrés neben einer weiß gekleideten Figur, blühenden Zweigen und einem gemalten Vulkan."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers van Volcans sacrés naast een figuur in witte kleding, bloeiende takken en een geschilderde vulkaan."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori di Volcans sacrés accanto a una figura vestita di bianco, rami fioriti e un vulcano dipinto."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes de Volcans sacrés junto a una figura vestida de blanco, ramas floridas y un volcán pintado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Odwiedzający Volcans sacrés obok postaci ubranej na biało, kwitnących gałęzi i namalowanego wulkanu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes de Volcans sacrés junto de uma figura vestida de branco, ramos floridos e um vulcão pintado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le personnage porte un chapeau conique et tient un bâton devant le paysage de montagne du décor."
+        },
+        {
+          "languageCode": "en",
+          "value": "The figure wears a conical hat and holds a staff in front of the mountain scenery."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Figur trägt einen kegelförmigen Hut und hält vor der Bergkulisse einen Stab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De figuur draagt een kegelvormige hoed en houdt een stok vast voor het bergdecor."
+        },
+        {
+          "languageCode": "it",
+          "value": "La figura indossa un cappello conico e regge un bastone davanti allo scenario montano."
+        },
+        {
+          "languageCode": "es",
+          "value": "La figura lleva un sombrero cónico y sostiene un bastón ante el decorado de montaña."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Postać nosi stożkowaty kapelusz i trzyma laskę na tle górskiej dekoracji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A figura usa um chapéu cónico e segura um bastão diante do cenário de montanha."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:41.809Z",
+      "updatedAt": "2026-11-15T17:46:45.35Z",
+      "key": "7e73e3872acb49c4b61d3c6961c29658",
+      "imageId": "7e73e3872acb49c4b61d3c6961c29658",
+      "ownerKey": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9"
     }
   ],
   "history": {
@@ -3351,7 +3986,717 @@
             "accessedAt": "2026-11-15"
           }
         ],
-        "id": "193478ec-f80a-4507-9929-8530a432808b"
+        "id": "193478ec-f80a-4507-9929-8530a432808b",
+        "article": {
+          "slug": null,
+          "titles": [
+            {
+              "languageCode": "fr",
+              "value": "Vulcania, du projet scientifique aux nouvelles explorations"
+            },
+            {
+              "languageCode": "en",
+              "value": "Vulcania, from a science park project to new explorations"
+            },
+            {
+              "languageCode": "de",
+              "value": "Vulcania: vom Wissenschaftspark-Projekt zu neuen Entdeckungen"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Vulcania, van wetenschapsparkproject tot nieuwe ontdekkingen"
+            },
+            {
+              "languageCode": "it",
+              "value": "Vulcania, dal progetto scientifico a nuove esplorazioni"
+            },
+            {
+              "languageCode": "es",
+              "value": "Vulcania, del proyecto científico a nuevas exploraciones"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Vulcania: od projektu naukowego do nowych odkryć"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Vulcania, do projeto científico a novas explorações"
+            }
+          ],
+          "subtitles": [
+            {
+              "languageCode": "fr",
+              "value": "Dans la Chaîne des Puys, un équipement régional ouvert en 2002 renouvelle sa manière de raconter les volcans"
+            },
+            {
+              "languageCode": "en",
+              "value": "In the Chaîne des Puys, a regional park opened in 2002 keeps renewing the way it tells the story of volcanoes"
+            },
+            {
+              "languageCode": "de",
+              "value": "Eine 2002 eröffnete regionale Einrichtung in der Chaîne des Puys erzählt die Geschichte der Vulkane immer wieder neu"
+            },
+            {
+              "languageCode": "nl",
+              "value": "In de Chaîne des Puys vernieuwt een in 2002 geopend regionaal park zijn verhalen over vulkanen"
+            },
+            {
+              "languageCode": "it",
+              "value": "Nella Chaîne des Puys, un parco regionale aperto nel 2002 rinnova il proprio modo di raccontare i vulcani"
+            },
+            {
+              "languageCode": "es",
+              "value": "En la Chaîne des Puys, un parque regional abierto en 2002 renueva su manera de contar la historia de los volcanes"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Regionalny park otwarty w 2002 roku w Chaîne des Puys wciąż zmienia sposób opowiadania o wulkanach"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Na Chaîne des Puys, um parque regional aberto em 2002 renova a sua forma de contar a história dos vulcões"
+            }
+          ],
+          "summaries": [
+            {
+              "languageCode": "fr",
+              "value": "L’architecture de Hans Hollein, le rôle de la Région et les choix de la SEM Volcans jalonnent l’histoire de Vulcania. Depuis les premières ambitions scientifiques jusqu’au programme Olympus 25, le parc transforme ses expériences tout en conservant les sciences de la Terre comme point d’ancrage."
+            },
+            {
+              "languageCode": "en",
+              "value": "Hans Hollein’s architecture, regional government ownership and decisions by SEM Volcans have shaped Vulcania’s history. From its first scientific ambitions to the Olympus 25 programme, the park has transformed its experiences while keeping Earth sciences at their heart."
+            },
+            {
+              "languageCode": "de",
+              "value": "Hans Holleins Architektur, die Region als Eigentümerin und die Entscheidungen der SEM Volcans prägen Vulcanias Geschichte. Von den ersten wissenschaftlichen Zielen bis zum Programm Olympus 25 verändert der Park seine Erlebnisse, während die Geowissenschaften sein Bezugspunkt bleiben."
+            },
+            {
+              "languageCode": "nl",
+              "value": "De architectuur van Hans Hollein, het regionale eigendom en de keuzes van SEM Volcans bepalen de geschiedenis van Vulcania. Van de eerste wetenschappelijke ambities tot het programma Olympus 25 verandert het park zijn ervaringen, met aardwetenschappen als blijvend uitgangspunt."
+            },
+            {
+              "languageCode": "it",
+              "value": "L’architettura di Hans Hollein, la proprietà regionale e le scelte di SEM Volcans segnano la storia di Vulcania. Dalle prime ambizioni scientifiche al programma Olympus 25, il parco trasforma le sue esperienze mantenendo le scienze della Terra come punto di riferimento."
+            },
+            {
+              "languageCode": "es",
+              "value": "La arquitectura de Hans Hollein, la propiedad regional y las decisiones de SEM Volcans marcan la historia de Vulcania. Desde sus primeras ambiciones científicas hasta el programa Olympus 25, el parque transforma sus experiencias manteniendo las ciencias de la Tierra como referencia."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Architektura Hansa Holleina, własność regionu i decyzje SEM Volcans wyznaczają historię Vulcanii. Od pierwszych ambicji naukowych po program Olympus 25 park przekształca swoje doświadczenia, zachowując nauki o Ziemi jako punkt odniesienia."
+            },
+            {
+              "languageCode": "pt",
+              "value": "A arquitetura de Hans Hollein, a propriedade regional e as decisões da SEM Volcans marcam a história do Vulcania. Das primeiras ambições científicas ao programa Olympus 25, o parque transforma as suas experiências, mantendo as ciências da Terra como referência."
+            }
+          ],
+          "mainImageId": "7455ffc28d574c158809574ac5c022bd",
+          "blocks": [
+            {
+              "id": "02447deeda2a455f9e9ce768e9e1e674",
+              "type": "Heading",
+              "sortOrder": 10,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Une idée prend place dans les Puys"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "An idea finds a home in the Puys"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Eine Idee findet ihren Ort in den Puys"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Een idee krijgt een plek in de Puys"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Un’idea trova posto nei Puys"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Una idea encuentra su lugar en los Puys"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Pomysł znajduje miejsce wśród Puys"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Uma ideia encontra lugar nos Puys"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "35dc92cf428c4f1bb3f1aa0ced5f4bb7",
+              "type": "Paragraph",
+              "sortOrder": 20,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "L’origine de Vulcania remonte au projet de parc scientifique imaginé par Katia et Maurice Krafft, auquel Valéry Giscard d’Estaing apporte son soutien. En 1992, le Conseil régional d’Auvergne engage la création d’un musée du volcanisme et d’un parc sur un ancien terrain militaire, au cœur de la Chaîne des Puys."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Katia and Maurice Krafft imagined a science park, and their idea gained the backing of Valéry Giscard d’Estaing. In 1992, Auvergne’s Regional Council began developing a museum of volcanism and a park on former military land in the heart of the Chaîne des Puys."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Vulcanias Ursprung liegt in dem von Katia und Maurice Krafft erdachten Wissenschaftspark, den Valéry Giscard d’Estaing unterstützte. 1992 leitete der Regionalrat der Auvergne die Entwicklung eines Vulkanismusmuseums und eines Parks auf einem ehemaligen Militärgelände im Herzen der Chaîne des Puys ein."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "De oorsprong van Vulcania ligt in het wetenschapspark dat Katia en Maurice Krafft voor ogen hadden en dat Valéry Giscard d’Estaing steunde. In 1992 begon de regionale raad van Auvergne met de ontwikkeling van een vulkanismemuseum en een park op een voormalig militair terrein in de Chaîne des Puys."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Le origini di Vulcania risalgono al parco scientifico immaginato da Katia e Maurice Krafft, sostenuto da Valéry Giscard d’Estaing. Nel 1992 il Consiglio regionale dell’Alvernia avviò la creazione di un museo del vulcanismo e di un parco su un ex terreno militare nel cuore della Chaîne des Puys."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "El origen de Vulcania se remonta al parque científico imaginado por Katia y Maurice Krafft, al que Valéry Giscard d’Estaing prestó su apoyo. En 1992, el Consejo Regional de Auvernia inició la creación de un museo del vulcanismo y un parque en un antiguo terreno militar de la Chaîne des Puys."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Początki Vulcanii sięgają parku naukowego wymyślonego przez Katię i Maurice’a Krafftów, który wsparł Valéry Giscard d’Estaing. W 1992 roku rada regionalna Owernii rozpoczęła tworzenie muzeum wulkanizmu i parku na dawnym terenie wojskowym w sercu pasma Chaîne des Puys."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "A origem do Vulcania remonta ao parque científico imaginado por Katia e Maurice Krafft, apoiado por Valéry Giscard d’Estaing. Em 1992, o Conselho Regional da Auvérnia iniciou a criação de um museu do vulcanismo e de um parque num antigo terreno militar, no coração da Chaîne des Puys."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "5c0ebb21f54f4f268efe971a2e2cf331",
+              "type": "Paragraph",
+              "sortOrder": 30,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "L’architecture et la scénographie sont confiées à Hans Hollein en 1994. Le dessin de l’architecte autrichien associe des espaces largement souterrains à un cône devenu la silhouette emblématique du site. Cette implantation donne un cadre au sujet du parc : découvrir les volcans dans un paysage lui-même façonné par leur activité."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Hans Hollein was commissioned to design the architecture and scenography in 1994. The Austrian design combined largely underground spaces with a cone that became the site’s defining silhouette. Its setting gave a physical context to the park’s subject: discovering volcanoes within a landscape shaped by volcanic activity."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "1994 erhielt Hans Hollein den Auftrag für Architektur und Szenografie. Der österreichische Entwurf verband überwiegend unterirdische Räume mit einem Kegel, der zur unverwechselbaren Silhouette des Geländes wurde. Der Standort verlieh dem Thema des Parks einen räumlichen Zusammenhang: Vulkane in einer Landschaft zu entdecken, die durch ihre Aktivität entstanden ist."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Hans Hollein kreeg in 1994 de opdracht voor de architectuur en scenografie. Het Oostenrijkse ontwerp verbond grotendeels ondergrondse ruimten met een kegel die het herkenbare silhouet van de plek werd. De ligging gaf het onderwerp van het park een tastbare context: vulkanen ontdekken in een landschap dat door hun activiteit is gevormd."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "L’architettura e la scenografia furono affidate a Hans Hollein nel 1994. Il progetto dell’architetto austriaco univa spazi in gran parte sotterranei a un cono divenuto la sagoma emblematica del sito. L’ubicazione dava un contesto concreto al tema del parco: scoprire i vulcani in un paesaggio modellato dalla loro attività."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "En 1994 se encargaron la arquitectura y la escenografía a Hans Hollein. El diseño del arquitecto austríaco combinó espacios mayoritariamente subterráneos con un cono que se convirtió en la silueta emblemática del lugar. Su ubicación dio un contexto físico al tema del parque: descubrir volcanes dentro de un paisaje formado por su actividad."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "W 1994 roku architekturę i scenografię powierzono Hansowi Holleinowi. Projekt austriackiego architekta połączył w dużej mierze podziemne przestrzenie ze stożkiem, który stał się rozpoznawalną sylwetką obiektu. Lokalizacja nadała tematowi parku konkretny kontekst: poznawanie wulkanów w krajobrazie ukształtowanym przez ich działalność."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "A arquitetura e a cenografia foram confiadas a Hans Hollein em 1994. O projeto do arquiteto austríaco combinou espaços maioritariamente subterrâneos com um cone que se tornou a silhueta emblemática do local. A implantação deu um contexto concreto ao tema do parque: descobrir vulcões numa paisagem moldada pela sua atividade."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "cbdf7902ad8040af8020be995df66b89",
+              "type": "Image",
+              "sortOrder": 40,
+              "headingLevel": null,
+              "texts": [],
+              "imageId": "8b9479d31a074fc98a5468865e327591",
+              "imageIds": [],
+              "captions": [
+                {
+                  "languageCode": "fr",
+                  "value": "Chantier de Vulcania en mars 2000, avant l’ouverture du parc."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Vulcania under construction in March 2000, before the park opened."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Vulcania im Bau im März 2000, vor der Eröffnung des Parks."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Vulcania in aanbouw in maart 2000, voordat het park opende."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Il cantiere di Vulcania nel marzo 2000, prima dell’apertura del parco."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Obras de Vulcania en marzo de 2000, antes de la apertura del parque."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Budowa Vulcanii w marcu 2000 roku, przed otwarciem parku."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Obras do Vulcania em março de 2000, antes da abertura do parque."
+                }
+              ]
+            },
+            {
+              "id": "0aa03986f2914bf3b1c55b05d687a3c1",
+              "type": "Heading",
+              "sortOrder": 50,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Ouvrir, puis trouver un équilibre"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Opening and finding a balance"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Eröffnung und Suche nach einem Gleichgewicht"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Openen en een evenwicht vinden"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Aprire e trovare un equilibrio"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Abrir y buscar un equilibrio"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Otwarcie i poszukiwanie równowagi"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Abrir e encontrar um equilíbrio"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "b8c9b847f9544240b77a69eefde6a74e",
+              "type": "Paragraph",
+              "sortOrder": 60,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Vulcania accueille le public en février 2002 à Saint-Ours-les-Roches. La Région demeure propriétaire de l’équipement et en confie l’exploitation à la SEM Volcans. Deux ambitions accompagnent cette ouverture : transmettre les connaissances sur la Terre et contribuer au développement économique, culturel et touristique de l’Auvergne."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Vulcania welcomed the public in February 2002 at Saint-Ours-les-Roches. The Region retained ownership and entrusted operations to SEM Volcans. The opening brought together two ambitions: sharing knowledge about the Earth and contributing to Auvergne’s economic, cultural and tourism development."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Im Februar 2002 empfing Vulcania in Saint-Ours-les-Roches seine ersten Besucher. Die Region blieb Eigentümerin und übertrug den Betrieb der SEM Volcans. Zwei Ziele begleiteten die Eröffnung: Wissen über die Erde zu vermitteln und zur wirtschaftlichen, kulturellen und touristischen Entwicklung der Auvergne beizutragen."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Vulcania ontving in februari 2002 zijn eerste bezoekers in Saint-Ours-les-Roches. De regio bleef eigenaar en vertrouwde de exploitatie toe aan SEM Volcans. Twee ambities begeleidden de opening: kennis over de aarde delen en bijdragen aan de economische, culturele en toeristische ontwikkeling van Auvergne."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Vulcania accolse il pubblico nel febbraio 2002 a Saint-Ours-les-Roches. La Regione mantenne la proprietà e affidò la gestione a SEM Volcans. Due ambizioni accompagnavano l’apertura: diffondere conoscenze sulla Terra e contribuire allo sviluppo economico, culturale e turistico dell’Alvernia."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Vulcania recibió al público en febrero de 2002 en Saint-Ours-les-Roches. La Región conservó la propiedad y confió la explotación a SEM Volcans. Dos ambiciones acompañaron la apertura: transmitir conocimientos sobre la Tierra y contribuir al desarrollo económico, cultural y turístico de Auvernia."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Vulcania przyjęła publiczność w lutym 2002 roku w Saint-Ours-les-Roches. Region zachował własność obiektu, powierzając jego prowadzenie SEM Volcans. Otwarciu towarzyszyły dwa cele: przekazywanie wiedzy o Ziemi oraz wspieranie gospodarczego, kulturalnego i turystycznego rozwoju Owernii."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "O Vulcania recebeu o público em fevereiro de 2002, em Saint-Ours-les-Roches. A Região manteve a propriedade e confiou a exploração à SEM Volcans. Duas ambições acompanharam a abertura: transmitir conhecimentos sobre a Terra e contribuir para o desenvolvimento económico, cultural e turístico da Auvérnia."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "3aa960ec74734638b71836f92d486034",
+              "type": "Paragraph",
+              "sortOrder": 70,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Les premières années connaissent des difficultés financières. Une nouvelle délégation de service public débute en 2007, tandis que les investissements renforcent le caractère ludique des visites, notamment pour les plus jeunes. Cette évolution, retracée par la Chambre régionale des comptes, inscrit le renouvellement des expériences dans l’histoire économique du parc."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Financial difficulties marked the early years. A new public service operating agreement began in 2007, while investment strengthened the playful aspects of visiting, particularly for younger audiences. This shift, documented by the Regional Audit Chamber, places the renewal of experiences within the park’s economic history."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Die ersten Jahre waren von finanziellen Schwierigkeiten geprägt. 2007 begann ein neuer Betreibervertrag für die öffentliche Einrichtung, während Investitionen die spielerischen Elemente besonders für jüngere Besucher stärkten. Die regionale Rechnungskammer dokumentierte diese Entwicklung und ordnete die Erneuerung der Erlebnisse in die wirtschaftliche Geschichte des Parks ein."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Financiële problemen kenmerkten de eerste jaren. In 2007 begon een nieuwe overeenkomst voor de exploitatie als publieke dienst. Investeringen versterkten intussen het speelse karakter van het bezoek, vooral voor een jonger publiek. De regionale rekenkamer beschreef deze ontwikkeling en plaatste de vernieuwing van ervaringen binnen de economische geschiedenis van het park."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "I primi anni furono segnati da difficoltà finanziarie. Nel 2007 iniziò un nuovo contratto di gestione del servizio pubblico, mentre gli investimenti rafforzavano gli aspetti ludici della visita, soprattutto per i più giovani. Questa evoluzione, documentata dalla camera regionale dei conti, colloca il rinnovo delle esperienze nella storia economica del parco."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Los primeros años estuvieron marcados por dificultades financieras. En 2007 comenzó un nuevo contrato de gestión de servicio público, mientras las inversiones reforzaban el carácter lúdico de las visitas, especialmente para los más jóvenes. Esta evolución, documentada por la cámara regional de cuentas, sitúa la renovación de experiencias dentro de la historia económica del parque."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Pierwsze lata przyniosły trudności finansowe. W 2007 roku rozpoczęła się nowa umowa o prowadzenie obiektu w ramach usługi publicznej, a inwestycje wzmacniały zabawowy charakter zwiedzania, zwłaszcza dla młodszej publiczności. Ewolucja opisana przez regionalną izbę obrachunkową wpisuje odnowę doświadczeń w gospodarczą historię parku."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Os primeiros anos foram marcados por dificuldades financeiras. Em 2007 começou um novo contrato de gestão de serviço público, enquanto os investimentos reforçavam o caráter lúdico das visitas, sobretudo para os mais jovens. Esta evolução, documentada pela câmara regional de contas, enquadra a renovação das experiências na história económica do parque."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "1167af0778434917a6ca7ce3d4aec2ec",
+              "type": "Heading",
+              "sortOrder": 80,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Élargir les formes de l’exploration"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Exploring through different experiences"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Neue Wege der Erkundung"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Verkennen krijgt verschillende vormen"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Ampliare i modi di esplorare"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Ampliar las formas de explorar"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Różne formy odkrywania"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Alargar as formas de explorar"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "af40b28a907c4423af77cdbfae63f99e",
+              "type": "Paragraph",
+              "sortOrder": 90,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Les récits immersifs prennent plusieurs directions. Magma Explorer III propose dès 2007 une expédition fictive dans les profondeurs terrestres ; Dragon Ride introduit son univers fantastique en 2008. En 2016, Abyss Explorer entraîne les visiteurs vers le volcanisme sous-marin, avec un bathyscaphe imaginé pour cette aventure."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Immersive stories developed in several directions. From 2007, Magma Explorer III offered a fictional expedition into the Earth’s depths, while Dragon Ride introduced its fantasy world in 2008. In 2016, Abyss Explorer took visitors towards underwater volcanism aboard a bathyscaphe imagined for the adventure."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Die immersiven Geschichten entwickelten sich in verschiedene Richtungen. Magma Explorer III bot ab 2007 eine fiktive Expedition ins Erdinnere, Dragon Ride führte 2008 seine Fantasiewelt ein. 2016 nahm Abyss Explorer die Besucher in einem für das Abenteuer erdachten Tauchboot mit zum Vulkanismus unter der Meeresoberfläche."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "De meeslepende verhalen ontwikkelden zich in meerdere richtingen. Magma Explorer III bood vanaf 2007 een fictieve expeditie naar het binnenste van de aarde; Dragon Ride introduceerde in 2008 zijn fantasiewereld. In 2016 voerde Abyss Explorer bezoekers naar onderwatervulkanisme, aan boord van een voor het avontuur bedachte bathyscaaf."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "I racconti immersivi presero direzioni diverse. Magma Explorer III propose dal 2007 una spedizione immaginaria nelle profondità della Terra; Dragon Ride introdusse il proprio universo fantastico nel 2008. Nel 2016 Abyss Explorer condusse i visitatori verso il vulcanismo sottomarino, a bordo di un batiscafo ideato per quell’avventura."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Los relatos inmersivos tomaron distintas direcciones. Magma Explorer III ofreció desde 2007 una expedición ficticia a las profundidades terrestres; Dragon Ride introdujo su mundo fantástico en 2008. En 2016, Abyss Explorer llevó a los visitantes hacia el vulcanismo submarino en un batiscafo imaginado para esa aventura."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Wciągające opowieści rozwijały się w kilku kierunkach. Magma Explorer III od 2007 roku proponował fikcyjną wyprawę w głąb Ziemi, a Dragon Ride wprowadził swój fantastyczny świat w 2008 roku. W 2016 roku Abyss Explorer prowadził odwiedzających ku podwodnemu wulkanizmowi w batyskafie wymyślonym na potrzeby tej przygody."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "As histórias imersivas seguiram várias direções. Desde 2007, Magma Explorer III propunha uma expedição fictícia às profundezas terrestres; Dragon Ride introduziu o seu universo fantástico em 2008. Em 2016, Abyss Explorer levou os visitantes ao vulcanismo submarino, num batiscafo imaginado para essa aventura."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "b922a8dcf09f43379844cfc7ef478404",
+              "type": "Paragraph",
+              "sortOrder": 100,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "L’offre s’enrichit ensuite de Namazu, le parcours de montagnes russes ouvert en 2021, puis d’un planétarium inauguré en 2023. Ces équipements étendent les supports de découverte : le récit sismique de Namazu et l’exploration du ciel rejoignent les expositions, les films et la médiation scientifique déjà présents."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Namazu, the roller coaster opened in 2021, was followed by a planetarium inaugurated in 2023. These additions broadened the ways visitors could explore: Namazu’s seismic story and journeys into the sky joined the exhibitions, films and scientific interpretation already offered by the park."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Auf Namazu, die 2021 eröffnete Achterbahn, folgte 2023 die Einweihung eines Planetariums. Diese Einrichtungen erweiterten die Formen der Entdeckung: Namazus Erdbebengeschichte und Reisen in den Himmel ergänzten die bereits vorhandenen Ausstellungen, Filme und Angebote zur Wissenschaftsvermittlung."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Op Namazu, de achtbaan die in 2021 opende, volgde een planetarium dat in 2023 werd geopend. Deze voorzieningen verbreedden de manieren om te ontdekken. Het aardbevingsverhaal van Namazu en de verkenning van het heelal kwamen naast de bestaande tentoonstellingen, films en wetenschappelijke uitleg te staan."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "A Namazu, le montagne russe aperte nel 2021, seguì un planetario inaugurato nel 2023. Queste strutture ampliarono le forme della scoperta: il racconto sismico di Namazu e l’esplorazione del cielo si aggiunsero alle esposizioni, ai film e alle attività di divulgazione scientifica già presenti."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "A Namazu, la montaña rusa abierta en 2021, le siguió un planetario inaugurado en 2023. Estos equipamientos ampliaron las formas de descubrimiento: la historia sísmica de Namazu y la exploración del cielo se sumaron a las exposiciones, las películas y la divulgación científica ya presentes."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Po kolejce górskiej Namazu, otwartej w 2021 roku, przyszło planetarium zainaugurowane w 2023 roku. Te obiekty poszerzyły formy poznawania świata: sejsmiczna opowieść Namazu i odkrywanie nieba dołączyły do istniejących wystaw, filmów oraz zajęć popularyzujących naukę."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "A Namazu, a montanha-russa aberta em 2021, seguiu-se um planetário inaugurado em 2023. Estes equipamentos alargaram as formas de descoberta: a história sísmica de Namazu e a exploração do céu juntaram-se às exposições, aos filmes e às atividades de divulgação científica já existentes."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "01257dc47d3d4fdb8f4d4808c8d5bbcb",
+              "type": "Heading",
+              "sortOrder": 110,
+              "headingLevel": 2,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Renouveler les expériences, préparer la suite"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Renewing experiences and planning ahead"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Erlebnisse erneuern und die Zukunft vorbereiten"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Ervaringen vernieuwen en vooruitkijken"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Rinnovare le esperienze e preparare il futuro"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Renovar experiencias y preparar el futuro"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Odnowa doświadczeń i plany na przyszłość"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Renovar experiências e preparar o futuro"
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "d376155bbd9e4a799d4fe9c496318fce",
+              "type": "Paragraph",
+              "sortOrder": 120,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Une nouvelle version de Terre en colère arrive en 2025. Expédition Hawaï prend en 2026 la suite d’Abyss Explorer, avec une autre destination volcanique. Ces changements illustrent un renouvellement qui concerne aussi les contenus d’espaces existants, au-delà de l’ajout de nouvelles installations dans le parc."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "A new version of Terre en colère arrived in 2025. In 2026, Expédition Hawaï succeeded Abyss Explorer with another volcanic destination. These changes demonstrate renewal within existing spaces as well as the addition of new installations across the park."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "2025 erschien eine neue Fassung von Terre en colère. 2026 folgte Expédition Hawaï auf Abyss Explorer und stellte ein anderes vulkanisches Reiseziel vor. Die Veränderungen zeigen, dass die Erneuerung auch Inhalte bestehender Räume betrifft und sich nicht auf zusätzliche Anlagen beschränkt."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "In 2025 verscheen een nieuwe versie van Terre en colère. Expédition Hawaï volgde in 2026 Abyss Explorer op, met een andere vulkanische bestemming. Deze veranderingen laten zien hoe ook de inhoud van bestaande ruimten wordt vernieuwd, naast de toevoeging van nieuwe installaties in het park."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Nel 2025 arrivò una nuova versione di Terre en colère. Nel 2026 Expédition Hawaï subentrò ad Abyss Explorer, con un’altra destinazione vulcanica. Questi cambiamenti mostrano un rinnovo che riguarda anche i contenuti degli spazi esistenti, oltre all’aggiunta di nuove installazioni nel parco."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "En 2025 llegó una nueva versión de Terre en colère. Expédition Hawaï sucedió en 2026 a Abyss Explorer con otro destino volcánico. Estos cambios muestran una renovación que también afecta a los contenidos de espacios existentes, además de incorporar nuevas instalaciones al parque."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "W 2025 roku pojawiła się nowa wersja Terre en colère. W 2026 roku Expédition Hawaï zastąpiła Abyss Explorer, zabierając widzów do innego wulkanicznego celu podróży. Zmiany te pokazują odnowę treści w istniejących przestrzeniach, obok dodawania nowych instalacji w parku."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Em 2025 chegou uma nova versão de Terre en colère. Em 2026, Expédition Hawaï sucedeu a Abyss Explorer, com outro destino vulcânico. Estas mudanças mostram uma renovação que também abrange os conteúdos de espaços existentes, além de acrescentar novas instalações ao parque."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            },
+            {
+              "id": "5c14ac6aaf864f0ea67c75de3a9a7c6c",
+              "type": "Paragraph",
+              "sortOrder": 130,
+              "headingLevel": null,
+              "texts": [
+                {
+                  "languageCode": "fr",
+                  "value": "Le programme Olympus 25, présenté en avril 2026, prévoit 29 millions d’euros d’investissements, financés à 60 % par la SEM Volcans et à 40 % par la Région. Il prolonge les renouvellements déjà engagés et annonce des hébergements thématiques à partir de 2028 ainsi qu’une nouvelle attraction en 2029. Ces deux dernières étapes restent des projets annoncés."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Presented in April 2026, the Olympus 25 programme sets out €29 million of investment, funded 60% by SEM Volcans and 40% by the Region. It extends renewal already under way and announces themed accommodation from 2028 and a new attraction in 2029. Those final two stages remain announced projects."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Das im April 2026 vorgestellte Programm Olympus 25 sieht Investitionen von 29 Millionen Euro vor, zu 60 Prozent von SEM Volcans und zu 40 Prozent von der Region finanziert. Es setzt bereits begonnene Erneuerungen fort und kündigt thematische Unterkünfte ab 2028 sowie eine neue Attraktion für 2029 an. Diese beiden letzten Schritte bleiben angekündigte Vorhaben."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Het in april 2026 gepresenteerde programma Olympus 25 voorziet in 29 miljoen euro aan investeringen, voor 60 procent gefinancierd door SEM Volcans en voor 40 procent door de regio. Het bouwt voort op al begonnen vernieuwingen en kondigt thematische verblijfsaccommodatie vanaf 2028 en een nieuwe attractie in 2029 aan. Die laatste twee stappen blijven aangekondigde projecten."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Presentato nell’aprile 2026, il programma Olympus 25 prevede investimenti per 29 milioni di euro, finanziati per il 60% da SEM Volcans e per il 40% dalla Regione. Prosegue i rinnovi già avviati e annuncia alloggi a tema a partire dal 2028 e una nuova attrazione nel 2029. Queste ultime due tappe restano progetti annunciati."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Presentado en abril de 2026, Olympus 25 prevé inversiones de 29 millones de euros. SEM Volcans aporta el 60 % y la Región el 40 % del presupuesto. El programa prolonga las renovaciones ya iniciadas; entre sus siguientes objetivos figuran el alojamiento temático, previsto desde 2028, y la incorporación de otra atracción en 2029. Ambos desarrollos se encuentran todavía en la etapa de anuncio."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Przedstawiony w kwietniu 2026 roku program Olympus 25 przewiduje inwestycje o wartości 29 milionów euro, finansowane w 60 procentach przez SEM Volcans i w 40 procentach przez region. Rozwija rozpoczęte już odnowy oraz zapowiada tematyczne miejsca noclegowe od 2028 roku i nową atrakcję w 2029 roku. Te dwa ostatnie etapy pozostają zapowiedzianymi projektami."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Apresentado em abril de 2026, Olympus 25 prevê investimentos de 29 milhões de euros. A SEM Volcans assegura 60% do orçamento e a Região os restantes 40%. O programa prolonga as renovações já iniciadas e inclui duas etapas futuras: acolher visitantes em alojamentos temáticos desde 2028 e acrescentar outra atração em 2029. Ambos os desenvolvimentos permanecem na fase de anúncio."
+                }
+              ],
+              "imageId": null,
+              "imageIds": [],
+              "captions": []
+            }
+          ],
+          "sources": [
+            {
+              "label": "Vulcania — historique officiel",
+              "url": "https://www.vulcania.com/historique/",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "Chambre régionale des comptes — SAEM des Volcans, rapport 2018",
+              "url": "https://www.ccomptes.fr/sites/default/files/2018-05/ARA201813.pdf",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "AmaK — Magma Explorer III",
+              "url": "https://www.amak.fr/project/magma-explorer-iii/",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "AmaK — Dragon Ride",
+              "url": "https://www.amak.fr/project/dragon-ride/",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "AmaK — Abyss Explorer",
+              "url": "https://www.amak.fr/project/abyss-explorer/",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "Vulcania — Olympus 25, 15 avril 2026",
+              "url": "https://www.vulcania.com/actualites/olympus-25/",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "Vulcania — communiqué de presse du 1er juillet 2026",
+              "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+              "accessedAt": "2026-11-15"
+            },
+            {
+              "label": "Vulcania — livret public 2026, projets de la saison",
+              "url": "https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf",
+              "accessedAt": "2026-11-15"
+            }
+          ],
+          "isPublished": false
+        }
       },
       {
         "key": "vulcania-history-renewal-2007",

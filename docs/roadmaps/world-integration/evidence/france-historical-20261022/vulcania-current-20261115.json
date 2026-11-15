@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T17:41:54.5241231Z",
+  "lastDataIntegrationAt": "2026-11-15T17:54:51.6852414Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 12,
-  "realImportCount": 10,
-  "lastOperationId": "82eeb5d6-5d1d-4ced-b7dc-6e5df830cd84",
+  "realApplyCount": 13,
+  "realImportCount": 15,
+  "lastOperationId": "17a935d8-acd0-4ef7-879a-a6ab2372fc6a",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -154,17 +154,21 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-14-three-cinema-descriptions-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-18-operator-description-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-first-park-history-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-20-four-experiences-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-20-four-experiences-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-history-article-20261115.json"
   ],
   "currentCoverage": {
     "items": 47,
     "publicItems": 0,
     "describedItems8Languages": 10,
     "zones": 0,
-    "ownMedia": 10,
+    "ownMedia": 15,
     "historyEvents": 4,
     "privateHistoryEvents": 4,
-    "officialMaps": 2
+    "officialMaps": 2,
+    "privateOwnMedia": 15,
+    "articles": 1,
+    "privateArticles": 1
   },
   "lastApplyOperationId": "0be325ce-b104-4ece-b4bc-1ef49f0d3229",
   "photoImports": [
@@ -217,6 +221,31 @@
       "imageId": "2609d09da2864a06aaff9d0e640db0cd",
       "createdAt": "2026-11-15T17:29:47.928Z",
       "proof": "vulcania-photo-17-abyss-cabin-20261115.json"
+    },
+    {
+      "imageId": "66bf435069e443b29f6d87c7ad5764f9",
+      "createdAt": "2026-11-15T17:45:49.308Z",
+      "proof": "vulcania-photo-21-reveil-screen-20261115.json"
+    },
+    {
+      "imageId": "d7146436ae0044dabef88f182dfd2516",
+      "createdAt": "2026-11-15T17:46:01.592Z",
+      "proof": "vulcania-photo-22-envol-audience-20261115.json"
+    },
+    {
+      "imageId": "4fa5101fdeb747d5addd92ed6ada6a49",
+      "createdAt": "2026-11-15T17:46:11.073Z",
+      "proof": "vulcania-photo-23-terre-blue-room-20261115.json"
+    },
+    {
+      "imageId": "38d2d552d2b14bac9fc47972904f11c0",
+      "createdAt": "2026-11-15T17:46:20.226Z",
+      "proof": "vulcania-photo-24-terre-fire-screen-20261115.json"
+    },
+    {
+      "imageId": "7e73e3872acb49c4b61d3c6961c29658",
+      "createdAt": "2026-11-15T17:46:41.809Z",
+      "proof": "vulcania-photo-25-sacres-scenery-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -260,5 +289,15 @@
     2024,
     2026
   ],
-  "latestSourceNote": "Own7privateimages (6Commons historicalphotos+officiallogo),2privateofficialmaps2024/2026,6of47itemdescriptions8languages. ExistingownerFrancecampaignmediaauthorizationhonored;noopenlicenseclaimedforofficiallogo/maps. No fullaudit orpublication."
+  "latestSourceNote": "Own7privateimages (6Commons historicalphotos+officiallogo),2privateofficialmaps2024/2026,6of47itemdescriptions8languages. ExistingownerFrancecampaignmediaauthorizationhonored;noopenlicenseclaimedforofficiallogo/maps. No fullaudit orpublication.",
+  "articleBodyWordsByLanguage": {
+    "fr": 412,
+    "en": 361,
+    "de": 359,
+    "nl": 392,
+    "it": 388,
+    "es": 401,
+    "pl": 332,
+    "pt": 388
+  }
 }

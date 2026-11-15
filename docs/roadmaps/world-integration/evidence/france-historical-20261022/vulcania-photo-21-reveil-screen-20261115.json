@@ -1,0 +1,289 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-21-reveil-screen",
+    "ownerId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+    "itemName": "Réveil des géants d’Auvergne",
+    "current": true,
+    "source": {
+      "key": "reveil-main",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Reveil-des-geants-dauvergne.png",
+      "sourcePage": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/reveil-main.png",
+      "accessedAtUtc": "2026-11-15T13:54:25.161061+00:00",
+      "http": 200,
+      "bytes": 728118,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "83e894c0cbd1a84a83fa1fb99afa130ae1f5d0a2341dbd10f63b081b907c4de6",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "recheckedAtUtc": "2026-11-15T17:45:11.865818+00:00",
+      "personalOriginalReview": true
+    },
+    "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+    "captureDate": null,
+    "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+    "localTransformation": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Reveil-des-geants-dauvergne.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/reveil-main.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-21-reveil-screen-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-21-reveil-screen-import-result.json"
+  },
+  "metadata": {
+    "description": "Les murs verts entourent l’écran, où la scène du film montre un jaillissement au milieu d’un plan d’eau.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Reveil-des-geants-dauvergne.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Salle de Réveil des géants d’Auvergne avec un jaillissement d’eau projeté sur le grand écran et des spectateurs en contrebas."
+      },
+      {
+        "languageCode": "en",
+        "value": "Réveil des géants d’Auvergne theatre with a burst of water projected on the large screen and spectators below."
+      },
+      {
+        "languageCode": "de",
+        "value": "Saal von Réveil des géants d’Auvergne mit einer Wasserfontäne auf der großen Leinwand und Zuschauern darunter."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Zaal van Réveil des géants d’Auvergne met een geprojecteerde wateruitbarsting op het grote scherm en toeschouwers eronder."
+      },
+      {
+        "languageCode": "it",
+        "value": "Sala di Réveil des géants d’Auvergne con un getto d’acqua proiettato sul grande schermo e spettatori più in basso."
+      },
+      {
+        "languageCode": "es",
+        "value": "Sala de Réveil des géants d’Auvergne con un chorro de agua proyectado en la gran pantalla y espectadores debajo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sala Réveil des géants d’Auvergne z wybuchem wody wyświetlanym na dużym ekranie i widzami poniżej."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Sala de Réveil des géants d’Auvergne com um jato de água projetado no grande ecrã e espetadores em baixo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les murs verts entourent l’écran, où la scène du film montre un jaillissement au milieu d’un plan d’eau."
+      },
+      {
+        "languageCode": "en",
+        "value": "Green walls surround the screen, where a film scene shows water bursting upwards from a lake."
+      },
+      {
+        "languageCode": "de",
+        "value": "Grüne Wände umgeben die Leinwand, auf der eine Filmszene eine aufschießende Wasserfontäne in einem Gewässer zeigt."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Groene wanden omringen het scherm, waarop een filmscène een wateruitbarsting midden in een meer toont."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le pareti verdi circondano lo schermo, dove una scena del film mostra un getto che emerge da uno specchio d’acqua."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las paredes verdes rodean la pantalla, donde una escena de la película muestra un chorro que surge de una masa de agua."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zielone ściany otaczają ekran, na którym scena filmowa pokazuje wodę tryskającą ze zbiornika."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As paredes verdes rodeiam o ecrã, onde uma cena do filme mostra um jato a emergir de uma superfície de água."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T17:45:32.9120798Z",
+    "result": {
+      "id": "66bf435069e443b29f6d87c7ad5764f9",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+      "path": "park_item/66bf435069e443b29f6d87c7ad5764f9",
+      "description": "Les murs verts entourent l’écran, où la scène du film montre un jaillissement au milieu d’un plan d’eau.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 728118,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Reveil-des-geants-dauvergne.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Salle de Réveil des géants d’Auvergne avec un jaillissement d’eau projeté sur le grand écran et des spectateurs en contrebas."
+        },
+        {
+          "languageCode": "en",
+          "value": "Réveil des géants d’Auvergne theatre with a burst of water projected on the large screen and spectators below."
+        },
+        {
+          "languageCode": "de",
+          "value": "Saal von Réveil des géants d’Auvergne mit einer Wasserfontäne auf der großen Leinwand und Zuschauern darunter."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Zaal van Réveil des géants d’Auvergne met een geprojecteerde wateruitbarsting op het grote scherm en toeschouwers eronder."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sala di Réveil des géants d’Auvergne con un getto d’acqua proiettato sul grande schermo e spettatori più in basso."
+        },
+        {
+          "languageCode": "es",
+          "value": "Sala de Réveil des géants d’Auvergne con un chorro de agua proyectado en la gran pantalla y espectadores debajo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sala Réveil des géants d’Auvergne z wybuchem wody wyświetlanym na dużym ekranie i widzami poniżej."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Sala de Réveil des géants d’Auvergne com um jato de água projetado no grande ecrã e espetadores em baixo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les murs verts entourent l’écran, où la scène du film montre un jaillissement au milieu d’un plan d’eau."
+        },
+        {
+          "languageCode": "en",
+          "value": "Green walls surround the screen, where a film scene shows water bursting upwards from a lake."
+        },
+        {
+          "languageCode": "de",
+          "value": "Grüne Wände umgeben die Leinwand, auf der eine Filmszene eine aufschießende Wasserfontäne in einem Gewässer zeigt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groene wanden omringen het scherm, waarop een filmscène een wateruitbarsting midden in een meer toont."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le pareti verdi circondano lo schermo, dove una scena del film mostra un getto che emerge da uno specchio d’acqua."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las paredes verdes rodean la pantalla, donde una escena de la película muestra un chorro que surge de una masa de agua."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielone ściany otaczają ekran, na którym scena filmowa pokazuje wodę tryskającą ze zbiornika."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As paredes verdes rodeiam o ecrã, onde uma cena do filme mostra um jato a emergir de uma superfície de água."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:45:49.308Z",
+      "updatedAt": "2026-11-15T17:45:53.03Z"
+    },
+    "receivedAtUtc": "2026-11-15T17:45:56.1192240Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,289 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-24-terre-fire-screen",
+    "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+    "itemName": "Terre en colère",
+    "current": false,
+    "source": {
+      "key": "terre-3",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-3-600x600.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/terre-en-colere/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/terre-3.jpg",
+      "accessedAtUtc": "2026-11-15T13:54:25.689357+00:00",
+      "http": 200,
+      "bytes": 45022,
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "7aed3d85405032e47dd52f0d8a5433fe7b8a9470a659b031ac8560e9aa070e61",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "recheckedAtUtc": "2026-11-15T17:45:12.581989+00:00",
+      "personalOriginalReview": true
+    },
+    "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+    "captureDate": null,
+    "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+    "localTransformation": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-3-600x600.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/terre-3.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-24-terre-fire-screen-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-24-terre-fire-screen-import-result.json"
+  },
+  "metadata": {
+    "description": "Le feu et la fumée appartiennent à l’image projetée dans la salle obscure.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-3-600x600.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Silhouettes de spectateurs de Terre en colère devant une scène de feu de forêt projetée à l’écran."
+      },
+      {
+        "languageCode": "en",
+        "value": "Silhouettes of Terre en colère spectators watching a forest fire scene projected on screen."
+      },
+      {
+        "languageCode": "de",
+        "value": "Silhouetten von Zuschauern in Terre en colère vor einer auf die Leinwand projizierten Waldbrandszene."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Silhouetten van toeschouwers in Terre en colère voor een geprojecteerde bosbrandscène."
+      },
+      {
+        "languageCode": "it",
+        "value": "Sagome degli spettatori di Terre en colère davanti a una scena di incendio boschivo proiettata sullo schermo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Siluetas de espectadores de Terre en colère ante una escena de incendio forestal proyectada en la pantalla."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Sylwetki widzów Terre en colère przed sceną pożaru lasu wyświetlaną na ekranie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Silhuetas de espetadores de Terre en colère perante uma cena de incêndio florestal projetada no ecrã."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le feu et la fumée appartiennent à l’image projetée dans la salle obscure."
+      },
+      {
+        "languageCode": "en",
+        "value": "The fire and smoke are part of the image projected inside the darkened theatre."
+      },
+      {
+        "languageCode": "de",
+        "value": "Feuer und Rauch gehören zum projizierten Bild im dunklen Kinosaal."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vuur en rook maken deel uit van het geprojecteerde beeld in de donkere zaal."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il fuoco e il fumo fanno parte dell’immagine proiettata nella sala buia."
+      },
+      {
+        "languageCode": "es",
+        "value": "El fuego y el humo forman parte de la imagen proyectada en la sala oscura."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ogień i dym są częścią obrazu wyświetlanego w zaciemnionej sali."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O fogo e o fumo fazem parte da imagem projetada na sala escura."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T17:46:19.3856338Z",
+    "receivedAtUtc": "2026-11-15T17:46:26.8139197Z",
+    "result": {
+      "id": "38d2d552d2b14bac9fc47972904f11c0",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "path": "park_item/38d2d552d2b14bac9fc47972904f11c0",
+      "description": "Le feu et la fumée appartiennent à l’image projetée dans la salle obscure.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 600,
+      "sizeInBytes": 45022,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-3-600x600.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Silhouettes de spectateurs de Terre en colère devant une scène de feu de forêt projetée à l’écran."
+        },
+        {
+          "languageCode": "en",
+          "value": "Silhouettes of Terre en colère spectators watching a forest fire scene projected on screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Silhouetten von Zuschauern in Terre en colère vor einer auf die Leinwand projizierten Waldbrandszene."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Silhouetten van toeschouwers in Terre en colère voor een geprojecteerde bosbrandscène."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sagome degli spettatori di Terre en colère davanti a una scena di incendio boschivo proiettata sullo schermo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Siluetas de espectadores de Terre en colère ante una escena de incendio forestal proyectada en la pantalla."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sylwetki widzów Terre en colère przed sceną pożaru lasu wyświetlaną na ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Silhuetas de espetadores de Terre en colère perante uma cena de incêndio florestal projetada no ecrã."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le feu et la fumée appartiennent à l’image projetée dans la salle obscure."
+        },
+        {
+          "languageCode": "en",
+          "value": "The fire and smoke are part of the image projected inside the darkened theatre."
+        },
+        {
+          "languageCode": "de",
+          "value": "Feuer und Rauch gehören zum projizierten Bild im dunklen Kinosaal."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vuur en rook maken deel uit van het geprojecteerde beeld in de donkere zaal."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il fuoco e il fumo fanno parte dell’immagine proiettata nella sala buia."
+        },
+        {
+          "languageCode": "es",
+          "value": "El fuego y el humo forman parte de la imagen proyectada en la sala oscura."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ogień i dym są częścią obrazu wyświetlanego w zaciemnionej sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O fogo e o fumo fazem parte da imagem projetada na sala escura."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:20.226Z",
+      "updatedAt": "2026-11-15T17:46:23.707Z"
+    },
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

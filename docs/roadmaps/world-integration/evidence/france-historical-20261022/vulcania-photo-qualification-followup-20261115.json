@@ -1,0 +1,267 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "review": {
+    "personalReview": true,
+    "newPhotos": 5,
+    "localizedFields": 120,
+    "excluded": [
+      {
+        "file": "Volcans-sacres.png",
+        "reason": "Same exposure as accepted wide photograph; alternate crop, not another photo."
+      },
+      {
+        "file": "anim-volcans-sacres.png",
+        "reason": "Map label overlay, not a photograph."
+      },
+      {
+        "file": "terre-4.jpg",
+        "reason": "Foreground largely obscures quiz screen; lower value than two accepted distinct scenes."
+      }
+    ],
+    "allNewPhotosPrivate": true
+  },
+  "acceptedManifest": [
+    {
+      "stem": "photo-15-namazu-wide",
+      "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "itemName": "Namazu",
+      "current": true,
+      "source": {
+        "key": "namazu-main",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/03/namazu-3.png",
+        "sourcePage": "https://www.vulcania.com/animation/namazu/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/namazu-main.png",
+        "accessedAtUtc": "2026-11-15T13:54:24.508596+00:00",
+        "http": 200,
+        "bytes": 799220,
+        "dimensions": [
+          2048,
+          751
+        ],
+        "sha256": "d8b575b15d0f19c3c2196ea7f37ad8a79fc0829bdb90a815c653ad64cac44b59",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "verifiedAtUtc": "2026-11-15T17:27:55.136009+00:00"
+      },
+      "rootVisualReview": true,
+      "captureDate": null,
+      "permissionContext": "ExistingownerFrancecampaignmediaauthorization; no openlicense or individualphotographerpermissionclaim.",
+      "qualification": "Distinctrealphotograph. AbysslegacyimageassignedonlytohistoricalAbyss, notcurrentHawaii. Currentconeimagewithpromotionaltext/logoexcluded; no cropping."
+    },
+    {
+      "stem": "photo-16-namazu-close",
+      "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "itemName": "Namazu",
+      "current": false,
+      "source": {
+        "key": "namazu-social",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/03/Namazu-5.png",
+        "sourcePage": "https://www.vulcania.com/animation/namazu/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/namazu-social.png",
+        "accessedAtUtc": "2026-11-15T13:54:24.809556+00:00",
+        "http": 200,
+        "bytes": 461591,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "9b3adef8a0f9d32b7831b3d778b97ef5a1d51701f6c01ef6789140b73011f878",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "verifiedAtUtc": "2026-11-15T17:27:55.418580+00:00"
+      },
+      "rootVisualReview": true,
+      "captureDate": null,
+      "permissionContext": "ExistingownerFrancecampaignmediaauthorization; no openlicense or individualphotographerpermissionclaim.",
+      "qualification": "Distinctrealphotograph. AbysslegacyimageassignedonlytohistoricalAbyss, notcurrentHawaii. Currentconeimagewithpromotionaltext/logoexcluded; no cropping."
+    },
+    {
+      "stem": "photo-17-abyss-cabin",
+      "ownerId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "itemName": "Abyss Explorer",
+      "current": false,
+      "source": {
+        "key": "hawai-social-legacy",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/03/Abyss-explorer.png",
+        "sourcePage": "https://www.vulcania.com/animation/expedition-hawai/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/hawai-social-legacy.png",
+        "accessedAtUtc": "2026-11-15T13:54:24.042722+00:00",
+        "http": 200,
+        "bytes": 370635,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "a43da4ec64f4b3a24fa3554b8df748ba737bdaf62e9b6c0f28219e97bc2ee744",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "verifiedAtUtc": "2026-11-15T17:27:55.663103+00:00"
+      },
+      "rootVisualReview": true,
+      "captureDate": null,
+      "permissionContext": "ExistingownerFrancecampaignmediaauthorization; no openlicense or individualphotographerpermissionclaim.",
+      "qualification": "Distinctrealphotograph. AbysslegacyimageassignedonlytohistoricalAbyss, notcurrentHawaii. Currentconeimagewithpromotionaltext/logoexcluded; no cropping."
+    },
+    {
+      "stem": "photo-21-reveil-screen",
+      "ownerId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+      "itemName": "Réveil des géants d’Auvergne",
+      "current": true,
+      "source": {
+        "key": "reveil-main",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Reveil-des-geants-dauvergne.png",
+        "sourcePage": "https://www.vulcania.com/animation/reveil-des-geants-d-auvergne/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/reveil-main.png",
+        "accessedAtUtc": "2026-11-15T13:54:25.161061+00:00",
+        "http": 200,
+        "bytes": 728118,
+        "dimensions": [
+          2048,
+          751
+        ],
+        "sha256": "83e894c0cbd1a84a83fa1fb99afa130ae1f5d0a2341dbd10f63b081b907c4de6",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "recheckedAtUtc": "2026-11-15T17:45:11.865818+00:00",
+        "personalOriginalReview": true
+      },
+      "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+      "captureDate": null,
+      "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+      "localTransformation": false
+    },
+    {
+      "stem": "photo-22-envol-audience",
+      "ownerId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+      "itemName": "Premier envol",
+      "current": true,
+      "source": {
+        "key": "envol-main",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Premier-envol-1.png",
+        "sourcePage": "https://www.vulcania.com/animation/premier-envol/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/envol-main.png",
+        "accessedAtUtc": "2026-11-15T13:54:25.341545+00:00",
+        "http": 200,
+        "bytes": 446033,
+        "dimensions": [
+          1200,
+          630
+        ],
+        "sha256": "42dd36a9b97ce91d05ced72e6d5f1731f91aaf50a5310365f2b74d84f355b389",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "recheckedAtUtc": "2026-11-15T17:45:12.157203+00:00",
+        "personalOriginalReview": true
+      },
+      "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+      "captureDate": null,
+      "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+      "localTransformation": false
+    },
+    {
+      "stem": "photo-23-terre-blue-room",
+      "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "itemName": "Terre en colère",
+      "current": false,
+      "source": {
+        "key": "terre-2",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-2-600x600.jpg",
+        "sourcePage": "https://www.vulcania.com/animation/terre-en-colere/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/terre-2.jpg",
+        "accessedAtUtc": "2026-11-15T13:54:25.523748+00:00",
+        "http": 200,
+        "bytes": 41827,
+        "dimensions": [
+          600,
+          600
+        ],
+        "sha256": "013bec5b0cbdf07072af714f74493a924965e06080ac76e972f1a21a4ef3cb89",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "recheckedAtUtc": "2026-11-15T17:45:12.368179+00:00",
+        "personalOriginalReview": true
+      },
+      "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+      "captureDate": null,
+      "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+      "localTransformation": false
+    },
+    {
+      "stem": "photo-24-terre-fire-screen",
+      "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "itemName": "Terre en colère",
+      "current": false,
+      "source": {
+        "key": "terre-3",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-3-600x600.jpg",
+        "sourcePage": "https://www.vulcania.com/animation/terre-en-colere/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/terre-3.jpg",
+        "accessedAtUtc": "2026-11-15T13:54:25.689357+00:00",
+        "http": 200,
+        "bytes": 45022,
+        "dimensions": [
+          600,
+          600
+        ],
+        "sha256": "7aed3d85405032e47dd52f0d8a5433fe7b8a9470a659b031ac8560e9aa070e61",
+        "over960KiB": false,
+        "photographer": null,
+        "captureDate": null,
+        "localPixelTransformation": false,
+        "recheckedAtUtc": "2026-11-15T17:45:12.581989+00:00",
+        "personalOriginalReview": true
+      },
+      "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+      "captureDate": null,
+      "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+      "localTransformation": false
+    },
+    {
+      "stem": "photo-25-sacres-scenery",
+      "ownerId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+      "itemName": "Volcans sacrés",
+      "current": true,
+      "source": {
+        "key": "Photo-Volcans-sacres-application-2-1.png",
+        "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Photo-Volcans-sacres-application-2-1.png",
+        "sourcePage": "https://www.vulcania.com/animation/volcans-sacres/",
+        "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/Photo-Volcans-sacres-application-2-1.png",
+        "http": 200,
+        "bytes": 929057,
+        "dimensions": [
+          2048,
+          751
+        ],
+        "sha256": "8a24e8175d05e31759e50c379ea000be1338eb1f5717160b431db3103ce06df9",
+        "accessedAtUtc": "2026-11-15T17:43:04.902846+00:00",
+        "recheckedAtUtc": "2026-11-15T17:45:12.926775+00:00",
+        "personalOriginalReview": true
+      },
+      "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+      "captureDate": null,
+      "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+      "localTransformation": false
+    }
+  ],
+  "realImportIds": [
+    "66bf435069e443b29f6d87c7ad5764f9",
+    "d7146436ae0044dabef88f182dfd2516",
+    "4fa5101fdeb747d5addd92ed6ada6a49",
+    "38d2d552d2b14bac9fc47972904f11c0",
+    "7e73e3872acb49c4b61d3c6961c29658"
+  ],
+  "publicationPerformed": false
+}

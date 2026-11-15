@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T17:41:54.524Z",
+      "lastDataIntegrationAt": "2026-11-15T17:54:51.685Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38378,6 +38378,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-20-four-experiences-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : Terre en colère, Premier envol, Volcans sacrés et Réveil des géants décrits personnellement en huit langues, 32 notices relues et comparées aux réponses officielles. Fiction, risques climatiques et activité géologique distingués ; quatre lieux privés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-66bf435069e443b29f6d87c7ad5764f9",
+          "appliedAt": "2026-11-15T17:45:49.308Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-21-reveil-screen-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Réveil des géants d’Auvergne importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-d7146436ae0044dabef88f182dfd2516",
+          "appliedAt": "2026-11-15T17:46:01.592Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-22-envol-audience-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Premier envol importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-4fa5101fdeb747d5addd92ed6ada6a49",
+          "appliedAt": "2026-11-15T17:46:11.073Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-23-terre-blue-room-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Terre en colère importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-38d2d552d2b14bac9fc47972904f11c0",
+          "appliedAt": "2026-11-15T17:46:20.226Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-24-terre-fire-screen-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Terre en colère importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-7e73e3872acb49c4b61d3c6961c29658",
+          "appliedAt": "2026-11-15T17:46:41.809Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-25-sacres-scenery-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Volcans sacrés importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-17a935d8-acd0-4ef7-879a-a6ab2372fc6a",
+          "appliedAt": "2026-11-15T17:54:51.685Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-history-article-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : article historique privé personnellement rédigé et relu en huit langues, quatre sections et huit paragraphes par langue, photo réelle du chantier de mars2000, huit sources accessibles ; 128champs exactement contrôlés. Aucun audit final ni publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38430,7 +38490,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-82eeb5d6-5d1d-4ced-b7dc-6e5df830cd84 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-17a935d8-acd0-4ef7-879a-a6ab2372fc6a ; conserver les références de découverte."
       }
     },
     {

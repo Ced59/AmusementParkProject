@@ -1,0 +1,289 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-23-terre-blue-room",
+    "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+    "itemName": "Terre en colère",
+    "current": false,
+    "source": {
+      "key": "terre-2",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-2-600x600.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/terre-en-colere/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/terre-2.jpg",
+      "accessedAtUtc": "2026-11-15T13:54:25.523748+00:00",
+      "http": 200,
+      "bytes": 41827,
+      "dimensions": [
+        600,
+        600
+      ],
+      "sha256": "013bec5b0cbdf07072af714f74493a924965e06080ac76e972f1a21a4ef3cb89",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false,
+      "recheckedAtUtc": "2026-11-15T17:45:12.368179+00:00",
+      "personalOriginalReview": true
+    },
+    "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+    "captureDate": null,
+    "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+    "localTransformation": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-2-600x600.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/terre-2.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-23-terre-blue-room-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-23-terre-blue-room-import-result.json"
+  },
+  "metadata": {
+    "description": "Des motifs lumineux se détachent sur les colonnes sombres, sous des moniteurs suspendus.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-2-600x600.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Visiteurs devant des colonnes à écrans dans un espace de Terre en colère éclairé en bleu."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors facing columns with screens in a blue-lit area of Terre en colère."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher vor Säulen mit Bildschirmen in einem blau beleuchteten Bereich von Terre en colère."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers voor zuilen met schermen in een blauw verlichte ruimte van Terre en colère."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori davanti a colonne con schermi in uno spazio di Terre en colère illuminato di blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes ante columnas con pantallas en un espacio de Terre en colère iluminado de azul."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Odwiedzający przed kolumnami z ekranami w oświetlonej na niebiesko przestrzeni Terre en colère."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes diante de colunas com ecrãs num espaço de Terre en colère iluminado a azul."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des motifs lumineux se détachent sur les colonnes sombres, sous des moniteurs suspendus."
+      },
+      {
+        "languageCode": "en",
+        "value": "Luminous patterns stand out on dark columns beneath suspended monitors."
+      },
+      {
+        "languageCode": "de",
+        "value": "Leuchtende Muster heben sich unter hängenden Monitoren von dunklen Säulen ab."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Lichtpatronen steken af tegen donkere zuilen onder hangende beeldschermen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Motivi luminosi risaltano sulle colonne scure, sotto monitor sospesi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los motivos luminosos destacan sobre las columnas oscuras, bajo monitores suspendidos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Świetlne wzory wyróżniają się na ciemnych kolumnach pod zawieszonymi monitorami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Padrões luminosos destacam-se nas colunas escuras, sob monitores suspensos."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T17:46:10.2241310Z",
+    "result": {
+      "id": "4fa5101fdeb747d5addd92ed6ada6a49",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+      "path": "park_item/4fa5101fdeb747d5addd92ed6ada6a49",
+      "description": "Des motifs lumineux se détachent sur les colonnes sombres, sous des moniteurs suspendus.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 600,
+      "height": 600,
+      "sizeInBytes": 41827,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Terre-en-colere-800x800-2-600x600.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs devant des colonnes à écrans dans un espace de Terre en colère éclairé en bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors facing columns with screens in a blue-lit area of Terre en colère."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher vor Säulen mit Bildschirmen in einem blau beleuchteten Bereich von Terre en colère."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers voor zuilen met schermen in een blauw verlichte ruimte van Terre en colère."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori davanti a colonne con schermi in uno spazio di Terre en colère illuminato di blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes ante columnas con pantallas en un espacio de Terre en colère iluminado de azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Odwiedzający przed kolumnami z ekranami w oświetlonej na niebiesko przestrzeni Terre en colère."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes diante de colunas com ecrãs num espaço de Terre en colère iluminado a azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des motifs lumineux se détachent sur les colonnes sombres, sous des moniteurs suspendus."
+        },
+        {
+          "languageCode": "en",
+          "value": "Luminous patterns stand out on dark columns beneath suspended monitors."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtende Muster heben sich unter hängenden Monitoren von dunklen Säulen ab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Lichtpatronen steken af tegen donkere zuilen onder hangende beeldschermen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Motivi luminosi risaltano sulle colonne scure, sotto monitor sospesi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los motivos luminosos destacan sobre las columnas oscuras, bajo monitores suspendidos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Świetlne wzory wyróżniają się na ciemnych kolumnach pod zawieszonymi monitorami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Padrões luminosos destacam-se nas colunas escuras, sob monitores suspensos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:11.073Z",
+      "updatedAt": "2026-11-15T17:46:14.545Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T17:46:17.6577927Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

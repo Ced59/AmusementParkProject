@@ -1,0 +1,285 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-25-sacres-scenery",
+    "ownerId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+    "itemName": "Volcans sacrés",
+    "current": true,
+    "source": {
+      "key": "Photo-Volcans-sacres-application-2-1.png",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/Photo-Volcans-sacres-application-2-1.png",
+      "sourcePage": "https://www.vulcania.com/animation/volcans-sacres/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/Photo-Volcans-sacres-application-2-1.png",
+      "http": 200,
+      "bytes": 929057,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "8a24e8175d05e31759e50c379ea000be1338eb1f5717160b431db3103ce06df9",
+      "accessedAtUtc": "2026-11-15T17:43:04.902846+00:00",
+      "recheckedAtUtc": "2026-11-15T17:45:12.926775+00:00",
+      "personalOriginalReview": true
+    },
+    "copyrightDecision": "Existing explicit owner campaign authorization; credit official Vulcania without asserting open licence or photographer permission.",
+    "captureDate": null,
+    "dateDecision": "Filename upload year does not establish capture date. Terre en colère scene version not dated, therefore non-current.",
+    "localTransformation": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Photo-Volcans-sacres-application-2-1.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/Photo-Volcans-sacres-application-2-1.png",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-25-sacres-scenery-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-25-sacres-scenery-import-result.json"
+  },
+  "metadata": {
+    "description": "Le personnage porte un chapeau conique et tient un bâton devant le paysage de montagne du décor.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Photo-Volcans-sacres-application-2-1.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Visiteurs de Volcans sacrés près d’un personnage vêtu de blanc, de branches fleuries et d’un volcan peint."
+      },
+      {
+        "languageCode": "en",
+        "value": "Volcans sacrés visitors beside a figure dressed in white, flowering branches and a painted volcano."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher von Volcans sacrés neben einer weiß gekleideten Figur, blühenden Zweigen und einem gemalten Vulkan."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers van Volcans sacrés naast een figuur in witte kleding, bloeiende takken en een geschilderde vulkaan."
+      },
+      {
+        "languageCode": "it",
+        "value": "Visitatori di Volcans sacrés accanto a una figura vestita di bianco, rami fioriti e un vulcano dipinto."
+      },
+      {
+        "languageCode": "es",
+        "value": "Visitantes de Volcans sacrés junto a una figura vestida de blanco, ramas floridas y un volcán pintado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Odwiedzający Volcans sacrés obok postaci ubranej na biało, kwitnących gałęzi i namalowanego wulkanu."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Visitantes de Volcans sacrés junto de uma figura vestida de branco, ramos floridos e um vulcão pintado."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le personnage porte un chapeau conique et tient un bâton devant le paysage de montagne du décor."
+      },
+      {
+        "languageCode": "en",
+        "value": "The figure wears a conical hat and holds a staff in front of the mountain scenery."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Figur trägt einen kegelförmigen Hut und hält vor der Bergkulisse einen Stab."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De figuur draagt een kegelvormige hoed en houdt een stok vast voor het bergdecor."
+      },
+      {
+        "languageCode": "it",
+        "value": "La figura indossa un cappello conico e regge un bastone davanti allo scenario montano."
+      },
+      {
+        "languageCode": "es",
+        "value": "La figura lleva un sombrero cónico y sostiene un bastón ante el decorado de montaña."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Postać nosi stożkowaty kapelusz i trzyma laskę na tle górskiej dekoracji."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A figura usa um chapéu cónico e segura um bastão diante do cenário de montanha."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T17:46:28.5535798Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "7e73e3872acb49c4b61d3c6961c29658",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+      "path": "park_item/7e73e3872acb49c4b61d3c6961c29658",
+      "description": "Le personnage porte un chapeau conique et tient un bâton devant le paysage de montagne du décor.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 929057,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/Photo-Volcans-sacres-application-2-1.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Visiteurs de Volcans sacrés près d’un personnage vêtu de blanc, de branches fleuries et d’un volcan peint."
+        },
+        {
+          "languageCode": "en",
+          "value": "Volcans sacrés visitors beside a figure dressed in white, flowering branches and a painted volcano."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher von Volcans sacrés neben einer weiß gekleideten Figur, blühenden Zweigen und einem gemalten Vulkan."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers van Volcans sacrés naast een figuur in witte kleding, bloeiende takken en een geschilderde vulkaan."
+        },
+        {
+          "languageCode": "it",
+          "value": "Visitatori di Volcans sacrés accanto a una figura vestita di bianco, rami fioriti e un vulcano dipinto."
+        },
+        {
+          "languageCode": "es",
+          "value": "Visitantes de Volcans sacrés junto a una figura vestida de blanco, ramas floridas y un volcán pintado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Odwiedzający Volcans sacrés obok postaci ubranej na biało, kwitnących gałęzi i namalowanego wulkanu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Visitantes de Volcans sacrés junto de uma figura vestida de branco, ramos floridos e um vulcão pintado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le personnage porte un chapeau conique et tient un bâton devant le paysage de montagne du décor."
+        },
+        {
+          "languageCode": "en",
+          "value": "The figure wears a conical hat and holds a staff in front of the mountain scenery."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Figur trägt einen kegelförmigen Hut und hält vor der Bergkulisse einen Stab."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De figuur draagt een kegelvormige hoed en houdt een stok vast voor het bergdecor."
+        },
+        {
+          "languageCode": "it",
+          "value": "La figura indossa un cappello conico e regge un bastone davanti allo scenario montano."
+        },
+        {
+          "languageCode": "es",
+          "value": "La figura lleva un sombrero cónico y sostiene un bastón ante el decorado de montaña."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Postać nosi stożkowaty kapelusz i trzyma laskę na tle górskiej dekoracji."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A figura usa um chapéu cónico e segura um bastão diante do cenário de montanha."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:46:41.809Z",
+      "updatedAt": "2026-11-15T17:46:45.35Z"
+    },
+    "receivedAtUtc": "2026-11-15T17:46:48.4756273Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
