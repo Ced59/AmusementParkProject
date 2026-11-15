@@ -1,0 +1,81 @@
+{
+  "entryId": "NP-candidate-discovery-046a38de076000",
+  "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+  "integrationHistory": [
+    {
+      "eventId": "apply-a09c82b8-e61c-4406-b356-1acca3c92d11",
+      "appliedAt": "2026-11-15T12:39:55.022Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+      "evidence": "PARK_DATA_EDITOR:apply:a09c82b8-e61c-4406-b356-1acca3c92d11",
+      "auditEvidence": null,
+      "summary": "Création de la fiche, localisation approximative sur le pont et textes visiteurs dans huit langues."
+    },
+    {
+      "eventId": "image-b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+      "appliedAt": "2026-11-15T12:40:34.418Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+      "evidence": "PARK_DATA_EDITOR:image:b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+      "auditEvidence": null,
+      "summary": "Photo exacte du pont et de la plateforme, huit alt/légendes/crédits ; Bhuwan Bdr. Rokaha, CC0 1.0, 2024."
+    },
+    {
+      "eventId": "image-6c9d2e7016794d3481063e93b6282234",
+      "appliedAt": "2026-11-15T12:41:14.076Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+      "evidence": "PARK_DATA_EDITOR:image:6c9d2e7016794d3481063e93b6282234",
+      "auditEvidence": null,
+      "summary": "Photo exacte du pont et de la plateforme, huit alt/légendes/crédits ; Asmit Gautam, CC BY-SA 4.0, 2019-12-29."
+    },
+    {
+      "eventId": "apply-b89816d5-7f7c-4904-93a9-29cbb200b07d",
+      "appliedAt": "2026-11-15T12:41:58.538Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+      "evidence": "PARK_DATA_EDITOR:apply:b89816d5-7f7c-4904-93a9-29cbb200b07d",
+      "auditEvidence": null,
+      "summary": "Ajout du prix officiel, des conditions d’âge, de poids, de santé et de la note d’horaires dans huit langues."
+    },
+    {
+      "eventId": "apply-748d6639-deed-4848-82ff-66e1034c4ba1",
+      "appliedAt": "2026-11-15T12:42:54.143Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "75cd7b7c-698e-4811-b791-f2c5cfd09a8e",
+      "evidence": "PARK_DATA_EDITOR:apply:748d6639-deed-4848-82ff-66e1034c4ba1",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-np-cliff-kusma-bungy-20261115/audit.json",
+      "summary": "Réécriture des descriptions pour lever le blocage éditorial ; fiche 81/100 sans publicationBlockers."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "32c638d3-c769-4561-b5af-82675265aed5",
+    "appliedAtUtc": "2026-11-15T12:43:24.3730543Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127454395424431",
+    "publishedAtUtc": "2026-11-15T12:44:41.6808488Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "b08db3ca56f141ac8bf1f4ac5ac0dd5b",
+      "uploadedAtUtc": "2026-11-15T12:40:30.664Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:40:34.418Z"
+    },
+    {
+      "kind": "ImportPhoto+Metadata",
+      "imageId": "6c9d2e7016794d3481063e93b6282234",
+      "uploadedAtUtc": "2026-11-15T12:41:10.474Z",
+      "metadataCompletedAtUtc": "2026-11-15T12:41:14.076Z"
+    }
+  ]
+}
