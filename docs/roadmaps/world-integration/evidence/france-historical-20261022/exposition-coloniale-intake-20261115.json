@@ -1,0 +1,268 @@
+{
+  "parkId": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "entryId": "FR-park-1c83e45c-3335-4948-b15f-ce2805bc42e3",
+  "reservedBy": "Conversation France",
+  "observedAtUtc": "2026-11-15T23:55:12.0045721Z",
+  "officialSearch": {
+    "startedAtUtc": "2026-11-15T23:55:10.8084897Z",
+    "result": {
+      "data": [
+        {
+          "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "name": "Exposition Coloniale Internationale",
+          "countryCode": "FR",
+          "type": "AmusementPark",
+          "audienceClassification": "International",
+          "status": "ClosedDefinitively",
+          "openingDate": "1931-05-06T00:00:00Z",
+          "closingDate": "1931-11-15T00:00:00Z",
+          "openingDateText": "1931-05-06",
+          "closingDateText": "1931-11-15",
+          "founderId": null,
+          "operatorId": null,
+          "latitude": 48.829598,
+          "longitude": 2.411919,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une ville d’exposition au bord du lac Daumesnil</h2><p>L’Exposition coloniale internationale se tint à Paris du 6 mai au 15 novembre 1931, à la Porte Dorée et dans le bois de Vincennes. Autour du lac Daumesnil, elle composa une ville temporaire de pavillons, de spectacles et de lieux de loisirs. Son ambition était politique : promouvoir les empires coloniaux, au premier rang desquels l’empire français.</p><p>Les architectures donnaient une présence monumentale à cette mise en scène. Une reconstitution du temple d’Angkor représentait l’Indochine, tandis que le Palais des Colonies, conçu par Albert Laprade dans le style Art déco, présentait les territoires et les ressources de l’empire. Ce dernier bâtiment avait été pensé pour durer après l’événement.</p><h2>Les nuits de lumière et les spectacles d’eau</h2><p>À la tombée du jour, les illuminations transformaient les allées et les façades. Les pylônes tricolores, les fontaines lumineuses et les reflets du lac participaient au spectacle. Sur la pointe de l’île de Reuilly, le Théâtre d’Eau associait des représentations de danse à des gerbes d’eau colorées. Cette féerie affichait aussi une démonstration de modernité et de puissance.</p><h2>Les divertissements et le regard colonial</h2><p>La partie foraine, appelée Parc de la Gravelle, accueillait notamment le Scenic Railway, des montagnes russes en bois. Un petit train de ceinture desservait l’ensemble de l’exposition. Les attractions et les transports participaient à l’organisation d’un grand événement populaire, dont les loisirs accompagnaient la présentation politique des colonies.</p><p>Des personnes venues des territoires colonisés dansaient, travaillaient comme artisans ou tenaient des stands devant le public. Leur présence était inscrite dans des villages et des décors reconstitués. Cette présentation mettait en scène une diversité choisie par les organisateurs, tout en taisant les rapports de domination, l’exploitation et les violences de la colonisation. Les résistances des populations colonisées restaient elles aussi hors du récit. La vie de ces sociétés, leurs transformations culturelles et leurs expériences échappaient à cette image composée pour présenter l’empire au public métropolitain.</p><h2>Les contestations et les traces laissées</h2><p>Des voix anticoloniales s’élevèrent dès avant l’inauguration. Des surréalistes appelèrent à ne pas visiter l’exposition ; à l’automne, une contre-exposition, La Vérité sur les colonies, dénonça le récit officiel. Le succès populaire de la manifestation coexistait ainsi avec des critiques de son projet.</p><p>La clôture de novembre mit fin à cette ville temporaire. Le Palais de la Porte Dorée poursuivit son histoire muséale, avec son aquarium. Les pavillons du Togo et du Cameroun, également préservés, sont devenus la Pagode de Vincennes. Ces traces matérielles gardent la mémoire de l’événement et de son imaginaire colonial.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>An exhibition city beside Lac Daumesnil</h2><p>The International Colonial Exposition took place in Paris from 6 May to 15 November 1931, at the Porte Dorée and in the Bois de Vincennes. Around Lac Daumesnil, it formed a temporary city of pavilions, performances and amusements. Its purpose was political: to promote the colonial empires, with the French empire at the forefront.</p><p>Architecture gave monumental form to that presentation. A reconstruction of Angkor represented Indochina, while the Art Deco Palais des Colonies, designed by Albert Laprade, displayed the empire’s territories and resources. The palace was intended to remain after the event.</p><h2>Illuminated nights and water performances</h2><p>After dark, lighting transformed the avenues and façades. Illuminated columns in the French colours, fountains and reflections on the lake became part of the spectacle. At the tip of the Île de Reuilly, the Théâtre d’Eau combined dance performances with coloured jets of water. This dazzling setting also served as a demonstration of modernity and power.</p><h2>Amusements within a colonial vision</h2><p>The fairground section, known as the Parc de la Gravelle, included the wooden Scenic Railway roller coaster. A small circular railway served the wider exposition. Rides and transport helped organise a large popular event whose amusements accompanied the political presentation of the colonies.</p><p>People brought from colonised territories danced, worked as craftspeople or ran stalls before the public. They appeared within reconstructed villages and settings. The organisers presented a selected image of diversity while leaving out the relationships of domination, exploitation and violence that underpinned colonial rule. The resistance of colonised peoples was also absent from the official account. Their own lives, cultural change and experiences could not be contained in an image composed to display the empire to a metropolitan audience.</p><h2>Opposition and lasting traces</h2><p>Anticolonial voices were raised before the inauguration. Surrealists called on people to boycott the exposition; in the autumn, a counter-exhibition, La Vérité sur les colonies, challenged its official account. Popular success thus coexisted with criticism of the project.</p><p>The November closure ended this temporary city. The Palais de la Porte Dorée continued its museum history, with its aquarium. The preserved Togo and Cameroon pavilions became the Pagode de Vincennes. These material traces retain the memory of the event and its colonial imagery.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Ausstellungsstadt am Lac Daumesnil</h2><p>Die Internationale Kolonialausstellung fand vom 6. Mai bis zum 15. November 1931 in Paris statt, an der Porte Dorée und im Bois de Vincennes. Rund um den Lac Daumesnil entstand eine vorübergehende Stadt aus Pavillons, Aufführungen und Vergnügungen. Ihr Ziel war politisch: Sie sollte die Kolonialreiche darstellen und fördern, allen voran das französische.</p><p>Die Architektur verlieh dieser Inszenierung monumentale Formen. Eine Nachbildung von Angkor repräsentierte Indochina. Der von Albert Laprade entworfene Palais des Colonies im Art-déco-Stil zeigte die Gebiete und Ressourcen des Kolonialreichs. Der Palast war für eine Nutzung über das Ereignis hinaus bestimmt.</p><h2>Lichtnächte und Wasserschauspiele</h2><p>Nach Einbruch der Dunkelheit veränderten Beleuchtungen die Alleen und Fassaden. Lichtsäulen in den französischen Nationalfarben, leuchtende Brunnen und Spiegelungen im See gehörten zum Schauspiel. An der Spitze der Île de Reuilly verband das Théâtre d’Eau Tanzaufführungen mit farbigen Wasserfontänen. Die zauberhafte Wirkung diente zugleich als Demonstration von Modernität und Macht.</p><h2>Vergnügungen im kolonialen Weltbild</h2><p>Zum Vergnügungsteil, dem Parc de la Gravelle, gehörte die Holzachterbahn Scenic Railway. Eine kleine Ringbahn erschloss die Ausstellung. Fahrgeschäfte und Verkehrsmittel prägten die Organisation eines großen Publikumsereignisses, dessen Vergnügungen die politische Darstellung der Kolonien begleiteten.</p><p>Menschen aus kolonisierten Gebieten tanzten, arbeiteten als Handwerker oder betrieben Stände vor dem Publikum. Sie wurden in nachgebauten Dörfern und Kulissen gezeigt. Die Veranstalter präsentierten damit ein ausgewähltes Bild von Vielfalt und verschwiegen zugleich die Herrschaftsverhältnisse, Ausbeutung und Gewalt der Kolonisation. Auch der Widerstand kolonisierter Bevölkerungen blieb außerhalb der offiziellen Erzählung. Ihr eigenes Leben, kultureller Wandel und Erfahrungen fanden keinen Platz in einem Bild, das dem Publikum im Mutterland das Kolonialreich vorführen sollte.</p><h2>Widerspruch und erhaltene Spuren</h2><p>Antikoloniale Stimmen meldeten sich bereits vor der Eröffnung. Surrealisten riefen zum Boykott auf; im Herbst widersprach die Gegenausstellung La Vérité sur les colonies der offiziellen Darstellung. Der große Publikumserfolg bestand somit neben deutlicher Kritik an dem Vorhaben.</p><p>Mit der Schließung im November endete die vorübergehende Stadt. Der Palais de la Porte Dorée setzte seine Museumsgeschichte mit dem Aquarium fort. Die ebenfalls erhaltenen Pavillons von Togo und Kamerun wurden zur Pagode de Vincennes. Diese materiellen Spuren bewahren die Erinnerung an das Ereignis und seine kolonialen Vorstellungen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een tentoonstellingsstad aan het Lac Daumesnil</h2><p>De Internationale Koloniale Tentoonstelling vond van 6 mei tot 15 november 1931 plaats in Parijs, bij de Porte Dorée en in het Bois de Vincennes. Rond het Lac Daumesnil verrees een tijdelijke stad van paviljoens, voorstellingen en vermaak. Het doel was politiek: de koloniale rijken onder de aandacht brengen en bevorderen, met het Franse rijk voorop.</p><p>De architectuur gaf deze presentatie een monumentale vorm. Een reconstructie van Angkor vertegenwoordigde Indochina. Het door Albert Laprade ontworpen Palais des Colonies in art-decostijl toonde de gebieden en grondstoffen van het rijk. Dit paleis was bedoeld om ook na de tentoonstelling te blijven bestaan.</p><h2>Lichtnachten en watervoorstellingen</h2><p>Na het invallen van de duisternis veranderden de verlichte lanen en gevels van karakter. Driekleurige lichtzuilen, verlichte fonteinen en weerspiegelingen op het meer maakten deel uit van het schouwspel. Op de punt van het Île de Reuilly combineerde het Théâtre d’Eau dansvoorstellingen met gekleurde waterstralen. Die betoverende omgeving moest ook moderniteit en macht uitdrukken.</p><h2>Vermaak binnen een koloniaal wereldbeeld</h2><p>Het kermisgedeelte, bekend als het Parc de la Gravelle, omvatte onder meer de houten achtbaan Scenic Railway. Een kleine ringlijn bediende de tentoonstelling. Attracties en vervoer hielpen een groot publieksevenement organiseren, waarin het vermaak de politieke voorstelling van de koloniën begeleidde.</p><p>Mensen uit gekoloniseerde gebieden dansten, werkten als ambachtslieden of bemanden kramen voor het publiek. Zij verschenen in nagebouwde dorpen en decors. Zo presenteerden de organisatoren een geselecteerd beeld van verscheidenheid, terwijl de machtsverhoudingen, uitbuiting en het geweld van de kolonisatie buiten beeld bleven. Ook het verzet van gekoloniseerde bevolkingen bleef buiten het officiële verhaal. Hun eigen leven, culturele veranderingen en ervaringen pasten niet in het beeld dat het rijk aan het publiek in het moederland moest tonen.</p><h2>Verzet en bewaarde sporen</h2><p>Al vóór de opening klonken antikoloniale stemmen. Surrealisten riepen op tot een boycot; in de herfst weersprak de tegententoonstelling La Vérité sur les colonies het officiële verhaal. Het grote publiekssucces ging zo samen met kritiek op het project.</p><p>De sluiting in november maakte een einde aan deze tijdelijke stad. Het Palais de la Porte Dorée zette zijn museumgeschiedenis voort, met het aquarium. De eveneens bewaarde paviljoens van Togo en Kameroen werden de Pagode de Vincennes. Deze tastbare sporen bewaren de herinnering aan het evenement en zijn koloniale denkbeelden.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una città espositiva sul lago Daumesnil</h2><p>L’Esposizione coloniale internazionale si svolse a Parigi dal 6 maggio al 15 novembre 1931, alla porte Dorée e nel bois de Vincennes. Intorno al lago Daumesnil sorse una città temporanea di padiglioni, spettacoli e divertimenti. L’ambizione era politica: promuovere gli imperi coloniali, con quello francese in primo piano.</p><p>Le architetture davano una forma monumentale a questa rappresentazione. Una ricostruzione di Angkor rappresentava l’Indocina, mentre il Palais des Colonies, progettato da Albert Laprade in stile Art déco, presentava i territori e le risorse dell’impero. Il palazzo era stato concepito per durare oltre l’evento.</p><h2>Notti di luce e spettacoli d’acqua</h2><p>Al calare del buio, le illuminazioni trasformavano i viali e le facciate. Colonne luminose nei colori della Francia, fontane luminose e riflessi sul lago componevano lo spettacolo. Sulla punta dell’île de Reuilly, il Théâtre d’Eau associava rappresentazioni di danza a getti d’acqua colorati. Questa atmosfera fiabesca serviva anche a mostrare modernità e potenza.</p><h2>I divertimenti dentro una visione coloniale</h2><p>La parte dedicata alle attrazioni, chiamata Parc de la Gravelle, comprendeva lo Scenic Railway, montagne russe in legno. Un trenino circolare serviva l’intera esposizione. Attrazioni e trasporti contribuivano all’organizzazione di un grande evento popolare, in cui il divertimento accompagnava la presentazione politica delle colonie.</p><p>Persone provenienti dai territori colonizzati danzavano, lavoravano come artigiani o gestivano bancarelle davanti al pubblico. Erano inserite in villaggi e ambientazioni ricostruiti. Gli organizzatori proponevano un’immagine selezionata della diversità, tacendo i rapporti di dominio, lo sfruttamento e le violenze della colonizzazione. Anche le resistenze delle popolazioni colonizzate restavano fuori dal racconto ufficiale. La loro vita, le trasformazioni culturali e le esperienze non trovavano posto in un’immagine costruita per presentare l’impero al pubblico della metropoli.</p><h2>Le contestazioni e le tracce rimaste</h2><p>Voci anticoloniali si levarono prima dell’inaugurazione. I surrealisti invitarono a boicottare l’esposizione; in autunno, la controesposizione La Vérité sur les colonies contestò il racconto ufficiale. Il successo popolare della manifestazione conviveva quindi con critiche al suo progetto.</p><p>La chiusura di novembre mise fine a questa città temporanea. Il Palais de la Porte Dorée proseguì la propria storia museale, con l’acquario. Anche i padiglioni del Togo e del Camerun furono conservati e divennero la Pagode de Vincennes. Queste tracce materiali custodiscono la memoria dell’evento e del suo immaginario coloniale.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una ciudad de exposición junto al lago Daumesnil</h2><p>La Exposición Colonial Internacional se celebró en París del 6 de mayo al 15 de noviembre de 1931, en la porte Dorée y el bois de Vincennes. Alrededor del lago Daumesnil surgió una ciudad temporal de pabellones, espectáculos y diversiones. Su propósito era político: promover los imperios coloniales, con el francés en primer plano.</p><p>Las arquitecturas daban forma monumental a aquella puesta en escena. Una reconstrucción de Angkor representaba a Indochina, mientras que el Palais des Colonies, diseñado por Albert Laprade en estilo art déco, presentaba los territorios y los recursos del imperio. El palacio había sido concebido para permanecer después del evento.</p><h2>Noches de luz y espectáculos de agua</h2><p>Al anochecer, la iluminación transformaba avenidas y fachadas. Las columnas de luz tricolores, las fuentes luminosas y los reflejos del lago formaban parte del espectáculo. En la punta de la île de Reuilly, el Théâtre d’Eau combinaba representaciones de danza con chorros de agua de colores. Aquel ambiente de fantasía también exhibía modernidad y poder.</p><h2>El ocio dentro de una visión colonial</h2><p>La zona de feria, llamada Parc de la Gravelle, incluía el Scenic Railway, una montaña rusa de madera. Un pequeño ferrocarril circular prestaba servicio al conjunto de la exposición. Atracciones y transportes contribuían a organizar un gran evento popular cuyo ocio acompañaba la presentación política de las colonias.</p><p>Personas procedentes de territorios colonizados bailaban, trabajaban como artesanos o atendían puestos ante el público. Aparecían en aldeas y decorados reconstruidos. Los organizadores presentaban una imagen seleccionada de la diversidad, mientras silenciaban las relaciones de dominación, la explotación y las violencias de la colonización. La resistencia de las poblaciones colonizadas también quedaba fuera del relato oficial. Sus propias vidas, cambios culturales y experiencias no tenían cabida en una imagen compuesta para presentar el imperio al público metropolitano.</p><h2>Las protestas y las huellas conservadas</h2><p>Las voces anticoloniales se alzaron antes de la inauguración. Los surrealistas llamaron al boicot; en otoño, la contraexposición La Vérité sur les colonies cuestionó el relato oficial. El éxito popular de la manifestación coexistía así con las críticas a su proyecto.</p><p>La clausura de noviembre puso fin a aquella ciudad temporal. El Palais de la Porte Dorée continuó su historia como museo, con el acuario. Los pabellones de Togo y Camerún, también conservados, se convirtieron en la Pagode de Vincennes. Estos vestigios materiales guardan la memoria del evento y de su imaginario colonial.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Miasto wystawy nad jeziorem Daumesnil</h2><p>Międzynarodowa Wystawa Kolonialna odbywała się w Paryżu od 6 maja do 15 listopada 1931 roku, przy porte Dorée i w bois de Vincennes. Wokół jeziora Daumesnil powstało tymczasowe miasto pawilonów, widowisk i rozrywek. Cel był polityczny: promowanie imperiów kolonialnych, przede wszystkim francuskiego.</p><p>Architektura nadawała tej inscenizacji monumentalny kształt. Rekonstrukcja Angkoru reprezentowała Indochiny, a Palais des Colonies projektu Alberta Laprade’a, utrzymany w stylu art déco, przedstawiał terytoria i zasoby imperium. Pałac zaplanowano jako budynek, który przetrwa zakończenie wystawy.</p><h2>Świetlne noce i wodne widowiska</h2><p>Po zmroku iluminacje odmieniały aleje i fasady. Świetlne kolumny w barwach Francji, podświetlone fontanny i odbicia w jeziorze tworzyły widowisko. Na krańcu île de Reuilly Théâtre d’Eau łączył pokazy tańca z kolorowymi strumieniami wody. Bajkowa oprawa służyła również prezentacji nowoczesności i potęgi.</p><h2>Rozrywka w kolonialnym obrazie świata</h2><p>Część rozrywkowa wystawy, zwana Parc de la Gravelle, obejmowała drewnianą kolejkę Scenic Railway. Mały pociąg kursował wokół wystawy. Atrakcje i transport współtworzyły organizację wielkiego wydarzenia dla szerokiej publiczności, w którym rozrywka towarzyszyła politycznej prezentacji kolonii.</p><p>Ludzie z kolonizowanych terytoriów tańczyli, pracowali jako rzemieślnicy lub prowadzili stoiska na oczach publiczności. Pokazywano ich w odtworzonych wioskach i dekoracjach. Organizatorzy przedstawiali wybrany obraz różnorodności, przemilczając stosunki dominacji, wyzysk i przemoc kolonizacji. Poza oficjalną opowieścią pozostawał również opór kolonizowanych społeczności. Ich własne życie, przemiany kulturowe i doświadczenia nie mieściły się w obrazie podporządkowanym prezentacji imperium przed publicznością metropolii.</p><h2>Sprzeciw i zachowane ślady</h2><p>Głosy antykolonialne rozbrzmiewały przed inauguracją. Surrealiści wzywali do bojkotu, a jesienią kontrwystawa La Vérité sur les colonies podważała oficjalną narrację. Sukcesowi wśród publiczności towarzyszyła więc krytyka całego przedsięwzięcia.</p><p>Listopadowe zamknięcie zakończyło istnienie tego tymczasowego miasta. Palais de la Porte Dorée kontynuował historię muzealną, wraz z akwarium. Zachowane pawilony Togo i Kamerunu stały się Pagode de Vincennes. Te materialne ślady przechowują pamięć o wydarzeniu i jego kolonialnych wyobrażeniach.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma cidade de exposição junto ao lago Daumesnil</h2><p>A Exposição Colonial Internacional decorreu em Paris entre 6 de maio e 15 de novembro de 1931, na porte Dorée e no bois de Vincennes. Em redor do lago Daumesnil formou-se uma cidade temporária de pavilhões, espetáculos e divertimentos. A ambição era política: promover os impérios coloniais, com o francês em primeiro plano.</p><p>As arquiteturas davam uma forma monumental a essa encenação. Uma reconstrução de Angkor representava a Indochina, enquanto o Palais des Colonies, concebido por Albert Laprade em estilo Art Déco, apresentava os territórios e os recursos do império. O palácio fora pensado para permanecer depois do evento.</p><h2>Noites de luz e espetáculos de água</h2><p>Ao cair da noite, a iluminação transformava as alamedas e as fachadas. Colunas luminosas tricolores, fontes iluminadas e reflexos no lago faziam parte do espetáculo. Na ponta da île de Reuilly, o Théâtre d’Eau associava apresentações de dança a jatos de água coloridos. Este ambiente feérico também demonstrava modernidade e poder.</p><h2>O divertimento numa visão colonial</h2><p>A zona de diversões, chamada Parc de la Gravelle, incluía o Scenic Railway, uma montanha-russa de madeira. Um pequeno comboio circular servia o conjunto da exposição. Atrações e transportes contribuíam para organizar um grande evento popular em que o lazer acompanhava a apresentação política das colónias.</p><p>Pessoas oriundas dos territórios colonizados dançavam, trabalhavam como artesãos ou ocupavam bancas perante o público. Surgiam em aldeias e cenários reconstruídos. Os organizadores apresentavam uma imagem selecionada da diversidade, silenciando as relações de domínio, a exploração e as violências da colonização. A resistência das populações colonizadas também ficava fora da narrativa oficial. A sua vida, as transformações culturais e as experiências não cabiam numa imagem composta para apresentar o império ao público da metrópole.</p><h2>As contestações e os vestígios preservados</h2><p>Vozes anticoloniais fizeram-se ouvir antes da inauguração. Os surrealistas apelaram ao boicote; no outono, a contraexposição La Vérité sur les colonies contestou a narrativa oficial. O sucesso popular da manifestação coexistia assim com críticas ao seu projeto.</p><p>O encerramento de novembro pôs fim a esta cidade temporária. O Palais de la Porte Dorée continuou a sua história museológica, com o aquário. Os pavilhões do Togo e dos Camarões, também preservados, tornaram-se a Pagode de Vincennes. Estes vestígios materiais guardam a memória do evento e do seu imaginário colonial.</p>"
+            }
+          ],
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "isFeaturedOnHome": false,
+          "featuredHomeOrder": null,
+          "isFeaturedOnHomeSponsored": false,
+          "webSiteUrl": null,
+          "street": null,
+          "city": "Paris",
+          "postalCode": null,
+          "currentLogoImageId": null,
+          "parkItemsTotalCount": 6,
+          "parkItemsVisibleCount": 0,
+          "openingHours": {
+            "hasOpeningHours": false,
+            "status": "NotConfigured",
+            "timeZoneId": null,
+            "firstDate": null,
+            "lastDate": null,
+            "completeUntilDate": null,
+            "completeForDays": null,
+            "warningThresholdDays": 30,
+            "lastVerifiedAtUtc": null,
+            "updatedAtUtc": null
+          },
+          "dataCompleteness": {
+            "completenessScore": 77,
+            "dataQualityLevel": "Publishable",
+            "applicableMaxPoints": 94,
+            "earnedPoints": 72,
+            "publicationBlockers": [],
+            "formulaicPublicTextIssue": null
+          }
+        }
+      ],
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    "receivedAtUtc": "2026-11-15T23:55:12.0045721Z",
+    "action": "SearchParks"
+  },
+  "gravelleNameSearch": {
+    "receivedAtUtc": "2026-11-15T23:56:03.5106587Z",
+    "startedAtUtc": "2026-11-15T23:56:02.5785363Z",
+    "result": {
+      "data": [
+        {
+          "id": "1c83e45c-3335-4948-b15f-ce2805bc42e3",
+          "name": "Exposition Coloniale Internationale",
+          "countryCode": "FR",
+          "type": "AmusementPark",
+          "audienceClassification": "International",
+          "status": "ClosedDefinitively",
+          "openingDate": "1931-05-06T00:00:00Z",
+          "closingDate": "1931-11-15T00:00:00Z",
+          "openingDateText": "1931-05-06",
+          "closingDateText": "1931-11-15",
+          "founderId": null,
+          "operatorId": null,
+          "latitude": 48.829598,
+          "longitude": 2.411919,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une ville d’exposition au bord du lac Daumesnil</h2><p>L’Exposition coloniale internationale se tint à Paris du 6 mai au 15 novembre 1931, à la Porte Dorée et dans le bois de Vincennes. Autour du lac Daumesnil, elle composa une ville temporaire de pavillons, de spectacles et de lieux de loisirs. Son ambition était politique : promouvoir les empires coloniaux, au premier rang desquels l’empire français.</p><p>Les architectures donnaient une présence monumentale à cette mise en scène. Une reconstitution du temple d’Angkor représentait l’Indochine, tandis que le Palais des Colonies, conçu par Albert Laprade dans le style Art déco, présentait les territoires et les ressources de l’empire. Ce dernier bâtiment avait été pensé pour durer après l’événement.</p><h2>Les nuits de lumière et les spectacles d’eau</h2><p>À la tombée du jour, les illuminations transformaient les allées et les façades. Les pylônes tricolores, les fontaines lumineuses et les reflets du lac participaient au spectacle. Sur la pointe de l’île de Reuilly, le Théâtre d’Eau associait des représentations de danse à des gerbes d’eau colorées. Cette féerie affichait aussi une démonstration de modernité et de puissance.</p><h2>Les divertissements et le regard colonial</h2><p>La partie foraine, appelée Parc de la Gravelle, accueillait notamment le Scenic Railway, des montagnes russes en bois. Un petit train de ceinture desservait l’ensemble de l’exposition. Les attractions et les transports participaient à l’organisation d’un grand événement populaire, dont les loisirs accompagnaient la présentation politique des colonies.</p><p>Des personnes venues des territoires colonisés dansaient, travaillaient comme artisans ou tenaient des stands devant le public. Leur présence était inscrite dans des villages et des décors reconstitués. Cette présentation mettait en scène une diversité choisie par les organisateurs, tout en taisant les rapports de domination, l’exploitation et les violences de la colonisation. Les résistances des populations colonisées restaient elles aussi hors du récit. La vie de ces sociétés, leurs transformations culturelles et leurs expériences échappaient à cette image composée pour présenter l’empire au public métropolitain.</p><h2>Les contestations et les traces laissées</h2><p>Des voix anticoloniales s’élevèrent dès avant l’inauguration. Des surréalistes appelèrent à ne pas visiter l’exposition ; à l’automne, une contre-exposition, La Vérité sur les colonies, dénonça le récit officiel. Le succès populaire de la manifestation coexistait ainsi avec des critiques de son projet.</p><p>La clôture de novembre mit fin à cette ville temporaire. Le Palais de la Porte Dorée poursuivit son histoire muséale, avec son aquarium. Les pavillons du Togo et du Cameroun, également préservés, sont devenus la Pagode de Vincennes. Ces traces matérielles gardent la mémoire de l’événement et de son imaginaire colonial.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>An exhibition city beside Lac Daumesnil</h2><p>The International Colonial Exposition took place in Paris from 6 May to 15 November 1931, at the Porte Dorée and in the Bois de Vincennes. Around Lac Daumesnil, it formed a temporary city of pavilions, performances and amusements. Its purpose was political: to promote the colonial empires, with the French empire at the forefront.</p><p>Architecture gave monumental form to that presentation. A reconstruction of Angkor represented Indochina, while the Art Deco Palais des Colonies, designed by Albert Laprade, displayed the empire’s territories and resources. The palace was intended to remain after the event.</p><h2>Illuminated nights and water performances</h2><p>After dark, lighting transformed the avenues and façades. Illuminated columns in the French colours, fountains and reflections on the lake became part of the spectacle. At the tip of the Île de Reuilly, the Théâtre d’Eau combined dance performances with coloured jets of water. This dazzling setting also served as a demonstration of modernity and power.</p><h2>Amusements within a colonial vision</h2><p>The fairground section, known as the Parc de la Gravelle, included the wooden Scenic Railway roller coaster. A small circular railway served the wider exposition. Rides and transport helped organise a large popular event whose amusements accompanied the political presentation of the colonies.</p><p>People brought from colonised territories danced, worked as craftspeople or ran stalls before the public. They appeared within reconstructed villages and settings. The organisers presented a selected image of diversity while leaving out the relationships of domination, exploitation and violence that underpinned colonial rule. The resistance of colonised peoples was also absent from the official account. Their own lives, cultural change and experiences could not be contained in an image composed to display the empire to a metropolitan audience.</p><h2>Opposition and lasting traces</h2><p>Anticolonial voices were raised before the inauguration. Surrealists called on people to boycott the exposition; in the autumn, a counter-exhibition, La Vérité sur les colonies, challenged its official account. Popular success thus coexisted with criticism of the project.</p><p>The November closure ended this temporary city. The Palais de la Porte Dorée continued its museum history, with its aquarium. The preserved Togo and Cameroon pavilions became the Pagode de Vincennes. These material traces retain the memory of the event and its colonial imagery.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Eine Ausstellungsstadt am Lac Daumesnil</h2><p>Die Internationale Kolonialausstellung fand vom 6. Mai bis zum 15. November 1931 in Paris statt, an der Porte Dorée und im Bois de Vincennes. Rund um den Lac Daumesnil entstand eine vorübergehende Stadt aus Pavillons, Aufführungen und Vergnügungen. Ihr Ziel war politisch: Sie sollte die Kolonialreiche darstellen und fördern, allen voran das französische.</p><p>Die Architektur verlieh dieser Inszenierung monumentale Formen. Eine Nachbildung von Angkor repräsentierte Indochina. Der von Albert Laprade entworfene Palais des Colonies im Art-déco-Stil zeigte die Gebiete und Ressourcen des Kolonialreichs. Der Palast war für eine Nutzung über das Ereignis hinaus bestimmt.</p><h2>Lichtnächte und Wasserschauspiele</h2><p>Nach Einbruch der Dunkelheit veränderten Beleuchtungen die Alleen und Fassaden. Lichtsäulen in den französischen Nationalfarben, leuchtende Brunnen und Spiegelungen im See gehörten zum Schauspiel. An der Spitze der Île de Reuilly verband das Théâtre d’Eau Tanzaufführungen mit farbigen Wasserfontänen. Die zauberhafte Wirkung diente zugleich als Demonstration von Modernität und Macht.</p><h2>Vergnügungen im kolonialen Weltbild</h2><p>Zum Vergnügungsteil, dem Parc de la Gravelle, gehörte die Holzachterbahn Scenic Railway. Eine kleine Ringbahn erschloss die Ausstellung. Fahrgeschäfte und Verkehrsmittel prägten die Organisation eines großen Publikumsereignisses, dessen Vergnügungen die politische Darstellung der Kolonien begleiteten.</p><p>Menschen aus kolonisierten Gebieten tanzten, arbeiteten als Handwerker oder betrieben Stände vor dem Publikum. Sie wurden in nachgebauten Dörfern und Kulissen gezeigt. Die Veranstalter präsentierten damit ein ausgewähltes Bild von Vielfalt und verschwiegen zugleich die Herrschaftsverhältnisse, Ausbeutung und Gewalt der Kolonisation. Auch der Widerstand kolonisierter Bevölkerungen blieb außerhalb der offiziellen Erzählung. Ihr eigenes Leben, kultureller Wandel und Erfahrungen fanden keinen Platz in einem Bild, das dem Publikum im Mutterland das Kolonialreich vorführen sollte.</p><h2>Widerspruch und erhaltene Spuren</h2><p>Antikoloniale Stimmen meldeten sich bereits vor der Eröffnung. Surrealisten riefen zum Boykott auf; im Herbst widersprach die Gegenausstellung La Vérité sur les colonies der offiziellen Darstellung. Der große Publikumserfolg bestand somit neben deutlicher Kritik an dem Vorhaben.</p><p>Mit der Schließung im November endete die vorübergehende Stadt. Der Palais de la Porte Dorée setzte seine Museumsgeschichte mit dem Aquarium fort. Die ebenfalls erhaltenen Pavillons von Togo und Kamerun wurden zur Pagode de Vincennes. Diese materiellen Spuren bewahren die Erinnerung an das Ereignis und seine kolonialen Vorstellungen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een tentoonstellingsstad aan het Lac Daumesnil</h2><p>De Internationale Koloniale Tentoonstelling vond van 6 mei tot 15 november 1931 plaats in Parijs, bij de Porte Dorée en in het Bois de Vincennes. Rond het Lac Daumesnil verrees een tijdelijke stad van paviljoens, voorstellingen en vermaak. Het doel was politiek: de koloniale rijken onder de aandacht brengen en bevorderen, met het Franse rijk voorop.</p><p>De architectuur gaf deze presentatie een monumentale vorm. Een reconstructie van Angkor vertegenwoordigde Indochina. Het door Albert Laprade ontworpen Palais des Colonies in art-decostijl toonde de gebieden en grondstoffen van het rijk. Dit paleis was bedoeld om ook na de tentoonstelling te blijven bestaan.</p><h2>Lichtnachten en watervoorstellingen</h2><p>Na het invallen van de duisternis veranderden de verlichte lanen en gevels van karakter. Driekleurige lichtzuilen, verlichte fonteinen en weerspiegelingen op het meer maakten deel uit van het schouwspel. Op de punt van het Île de Reuilly combineerde het Théâtre d’Eau dansvoorstellingen met gekleurde waterstralen. Die betoverende omgeving moest ook moderniteit en macht uitdrukken.</p><h2>Vermaak binnen een koloniaal wereldbeeld</h2><p>Het kermisgedeelte, bekend als het Parc de la Gravelle, omvatte onder meer de houten achtbaan Scenic Railway. Een kleine ringlijn bediende de tentoonstelling. Attracties en vervoer hielpen een groot publieksevenement organiseren, waarin het vermaak de politieke voorstelling van de koloniën begeleidde.</p><p>Mensen uit gekoloniseerde gebieden dansten, werkten als ambachtslieden of bemanden kramen voor het publiek. Zij verschenen in nagebouwde dorpen en decors. Zo presenteerden de organisatoren een geselecteerd beeld van verscheidenheid, terwijl de machtsverhoudingen, uitbuiting en het geweld van de kolonisatie buiten beeld bleven. Ook het verzet van gekoloniseerde bevolkingen bleef buiten het officiële verhaal. Hun eigen leven, culturele veranderingen en ervaringen pasten niet in het beeld dat het rijk aan het publiek in het moederland moest tonen.</p><h2>Verzet en bewaarde sporen</h2><p>Al vóór de opening klonken antikoloniale stemmen. Surrealisten riepen op tot een boycot; in de herfst weersprak de tegententoonstelling La Vérité sur les colonies het officiële verhaal. Het grote publiekssucces ging zo samen met kritiek op het project.</p><p>De sluiting in november maakte een einde aan deze tijdelijke stad. Het Palais de la Porte Dorée zette zijn museumgeschiedenis voort, met het aquarium. De eveneens bewaarde paviljoens van Togo en Kameroen werden de Pagode de Vincennes. Deze tastbare sporen bewaren de herinnering aan het evenement en zijn koloniale denkbeelden.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Una città espositiva sul lago Daumesnil</h2><p>L’Esposizione coloniale internazionale si svolse a Parigi dal 6 maggio al 15 novembre 1931, alla porte Dorée e nel bois de Vincennes. Intorno al lago Daumesnil sorse una città temporanea di padiglioni, spettacoli e divertimenti. L’ambizione era politica: promuovere gli imperi coloniali, con quello francese in primo piano.</p><p>Le architetture davano una forma monumentale a questa rappresentazione. Una ricostruzione di Angkor rappresentava l’Indocina, mentre il Palais des Colonies, progettato da Albert Laprade in stile Art déco, presentava i territori e le risorse dell’impero. Il palazzo era stato concepito per durare oltre l’evento.</p><h2>Notti di luce e spettacoli d’acqua</h2><p>Al calare del buio, le illuminazioni trasformavano i viali e le facciate. Colonne luminose nei colori della Francia, fontane luminose e riflessi sul lago componevano lo spettacolo. Sulla punta dell’île de Reuilly, il Théâtre d’Eau associava rappresentazioni di danza a getti d’acqua colorati. Questa atmosfera fiabesca serviva anche a mostrare modernità e potenza.</p><h2>I divertimenti dentro una visione coloniale</h2><p>La parte dedicata alle attrazioni, chiamata Parc de la Gravelle, comprendeva lo Scenic Railway, montagne russe in legno. Un trenino circolare serviva l’intera esposizione. Attrazioni e trasporti contribuivano all’organizzazione di un grande evento popolare, in cui il divertimento accompagnava la presentazione politica delle colonie.</p><p>Persone provenienti dai territori colonizzati danzavano, lavoravano come artigiani o gestivano bancarelle davanti al pubblico. Erano inserite in villaggi e ambientazioni ricostruiti. Gli organizzatori proponevano un’immagine selezionata della diversità, tacendo i rapporti di dominio, lo sfruttamento e le violenze della colonizzazione. Anche le resistenze delle popolazioni colonizzate restavano fuori dal racconto ufficiale. La loro vita, le trasformazioni culturali e le esperienze non trovavano posto in un’immagine costruita per presentare l’impero al pubblico della metropoli.</p><h2>Le contestazioni e le tracce rimaste</h2><p>Voci anticoloniali si levarono prima dell’inaugurazione. I surrealisti invitarono a boicottare l’esposizione; in autunno, la controesposizione La Vérité sur les colonies contestò il racconto ufficiale. Il successo popolare della manifestazione conviveva quindi con critiche al suo progetto.</p><p>La chiusura di novembre mise fine a questa città temporanea. Il Palais de la Porte Dorée proseguì la propria storia museale, con l’acquario. Anche i padiglioni del Togo e del Camerun furono conservati e divennero la Pagode de Vincennes. Queste tracce materiali custodiscono la memoria dell’evento e del suo immaginario coloniale.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Una ciudad de exposición junto al lago Daumesnil</h2><p>La Exposición Colonial Internacional se celebró en París del 6 de mayo al 15 de noviembre de 1931, en la porte Dorée y el bois de Vincennes. Alrededor del lago Daumesnil surgió una ciudad temporal de pabellones, espectáculos y diversiones. Su propósito era político: promover los imperios coloniales, con el francés en primer plano.</p><p>Las arquitecturas daban forma monumental a aquella puesta en escena. Una reconstrucción de Angkor representaba a Indochina, mientras que el Palais des Colonies, diseñado por Albert Laprade en estilo art déco, presentaba los territorios y los recursos del imperio. El palacio había sido concebido para permanecer después del evento.</p><h2>Noches de luz y espectáculos de agua</h2><p>Al anochecer, la iluminación transformaba avenidas y fachadas. Las columnas de luz tricolores, las fuentes luminosas y los reflejos del lago formaban parte del espectáculo. En la punta de la île de Reuilly, el Théâtre d’Eau combinaba representaciones de danza con chorros de agua de colores. Aquel ambiente de fantasía también exhibía modernidad y poder.</p><h2>El ocio dentro de una visión colonial</h2><p>La zona de feria, llamada Parc de la Gravelle, incluía el Scenic Railway, una montaña rusa de madera. Un pequeño ferrocarril circular prestaba servicio al conjunto de la exposición. Atracciones y transportes contribuían a organizar un gran evento popular cuyo ocio acompañaba la presentación política de las colonias.</p><p>Personas procedentes de territorios colonizados bailaban, trabajaban como artesanos o atendían puestos ante el público. Aparecían en aldeas y decorados reconstruidos. Los organizadores presentaban una imagen seleccionada de la diversidad, mientras silenciaban las relaciones de dominación, la explotación y las violencias de la colonización. La resistencia de las poblaciones colonizadas también quedaba fuera del relato oficial. Sus propias vidas, cambios culturales y experiencias no tenían cabida en una imagen compuesta para presentar el imperio al público metropolitano.</p><h2>Las protestas y las huellas conservadas</h2><p>Las voces anticoloniales se alzaron antes de la inauguración. Los surrealistas llamaron al boicot; en otoño, la contraexposición La Vérité sur les colonies cuestionó el relato oficial. El éxito popular de la manifestación coexistía así con las críticas a su proyecto.</p><p>La clausura de noviembre puso fin a aquella ciudad temporal. El Palais de la Porte Dorée continuó su historia como museo, con el acuario. Los pabellones de Togo y Camerún, también conservados, se convirtieron en la Pagode de Vincennes. Estos vestigios materiales guardan la memoria del evento y de su imaginario colonial.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Miasto wystawy nad jeziorem Daumesnil</h2><p>Międzynarodowa Wystawa Kolonialna odbywała się w Paryżu od 6 maja do 15 listopada 1931 roku, przy porte Dorée i w bois de Vincennes. Wokół jeziora Daumesnil powstało tymczasowe miasto pawilonów, widowisk i rozrywek. Cel był polityczny: promowanie imperiów kolonialnych, przede wszystkim francuskiego.</p><p>Architektura nadawała tej inscenizacji monumentalny kształt. Rekonstrukcja Angkoru reprezentowała Indochiny, a Palais des Colonies projektu Alberta Laprade’a, utrzymany w stylu art déco, przedstawiał terytoria i zasoby imperium. Pałac zaplanowano jako budynek, który przetrwa zakończenie wystawy.</p><h2>Świetlne noce i wodne widowiska</h2><p>Po zmroku iluminacje odmieniały aleje i fasady. Świetlne kolumny w barwach Francji, podświetlone fontanny i odbicia w jeziorze tworzyły widowisko. Na krańcu île de Reuilly Théâtre d’Eau łączył pokazy tańca z kolorowymi strumieniami wody. Bajkowa oprawa służyła również prezentacji nowoczesności i potęgi.</p><h2>Rozrywka w kolonialnym obrazie świata</h2><p>Część rozrywkowa wystawy, zwana Parc de la Gravelle, obejmowała drewnianą kolejkę Scenic Railway. Mały pociąg kursował wokół wystawy. Atrakcje i transport współtworzyły organizację wielkiego wydarzenia dla szerokiej publiczności, w którym rozrywka towarzyszyła politycznej prezentacji kolonii.</p><p>Ludzie z kolonizowanych terytoriów tańczyli, pracowali jako rzemieślnicy lub prowadzili stoiska na oczach publiczności. Pokazywano ich w odtworzonych wioskach i dekoracjach. Organizatorzy przedstawiali wybrany obraz różnorodności, przemilczając stosunki dominacji, wyzysk i przemoc kolonizacji. Poza oficjalną opowieścią pozostawał również opór kolonizowanych społeczności. Ich własne życie, przemiany kulturowe i doświadczenia nie mieściły się w obrazie podporządkowanym prezentacji imperium przed publicznością metropolii.</p><h2>Sprzeciw i zachowane ślady</h2><p>Głosy antykolonialne rozbrzmiewały przed inauguracją. Surrealiści wzywali do bojkotu, a jesienią kontrwystawa La Vérité sur les colonies podważała oficjalną narrację. Sukcesowi wśród publiczności towarzyszyła więc krytyka całego przedsięwzięcia.</p><p>Listopadowe zamknięcie zakończyło istnienie tego tymczasowego miasta. Palais de la Porte Dorée kontynuował historię muzealną, wraz z akwarium. Zachowane pawilony Togo i Kamerunu stały się Pagode de Vincennes. Te materialne ślady przechowują pamięć o wydarzeniu i jego kolonialnych wyobrażeniach.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma cidade de exposição junto ao lago Daumesnil</h2><p>A Exposição Colonial Internacional decorreu em Paris entre 6 de maio e 15 de novembro de 1931, na porte Dorée e no bois de Vincennes. Em redor do lago Daumesnil formou-se uma cidade temporária de pavilhões, espetáculos e divertimentos. A ambição era política: promover os impérios coloniais, com o francês em primeiro plano.</p><p>As arquiteturas davam uma forma monumental a essa encenação. Uma reconstrução de Angkor representava a Indochina, enquanto o Palais des Colonies, concebido por Albert Laprade em estilo Art Déco, apresentava os territórios e os recursos do império. O palácio fora pensado para permanecer depois do evento.</p><h2>Noites de luz e espetáculos de água</h2><p>Ao cair da noite, a iluminação transformava as alamedas e as fachadas. Colunas luminosas tricolores, fontes iluminadas e reflexos no lago faziam parte do espetáculo. Na ponta da île de Reuilly, o Théâtre d’Eau associava apresentações de dança a jatos de água coloridos. Este ambiente feérico também demonstrava modernidade e poder.</p><h2>O divertimento numa visão colonial</h2><p>A zona de diversões, chamada Parc de la Gravelle, incluía o Scenic Railway, uma montanha-russa de madeira. Um pequeno comboio circular servia o conjunto da exposição. Atrações e transportes contribuíam para organizar um grande evento popular em que o lazer acompanhava a apresentação política das colónias.</p><p>Pessoas oriundas dos territórios colonizados dançavam, trabalhavam como artesãos ou ocupavam bancas perante o público. Surgiam em aldeias e cenários reconstruídos. Os organizadores apresentavam uma imagem selecionada da diversidade, silenciando as relações de domínio, a exploração e as violências da colonização. A resistência das populações colonizadas também ficava fora da narrativa oficial. A sua vida, as transformações culturais e as experiências não cabiam numa imagem composta para apresentar o império ao público da metrópole.</p><h2>As contestações e os vestígios preservados</h2><p>Vozes anticoloniais fizeram-se ouvir antes da inauguração. Os surrealistas apelaram ao boicote; no outono, a contraexposição La Vérité sur les colonies contestou a narrativa oficial. O sucesso popular da manifestação coexistia assim com críticas ao seu projeto.</p><p>O encerramento de novembro pôs fim a esta cidade temporária. O Palais de la Porte Dorée continuou a sua história museológica, com o aquário. Os pavilhões do Togo e dos Camarões, também preservados, tornaram-se a Pagode de Vincennes. Estes vestígios materiais guardam a memória do evento e do seu imaginário colonial.</p>"
+            }
+          ],
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "isFeaturedOnHome": false,
+          "featuredHomeOrder": null,
+          "isFeaturedOnHomeSponsored": false,
+          "webSiteUrl": null,
+          "street": null,
+          "city": "Paris",
+          "postalCode": null,
+          "currentLogoImageId": null,
+          "parkItemsTotalCount": 6,
+          "parkItemsVisibleCount": 0,
+          "openingHours": {
+            "hasOpeningHours": false,
+            "status": "NotConfigured",
+            "timeZoneId": null,
+            "firstDate": null,
+            "lastDate": null,
+            "completeUntilDate": null,
+            "completeForDays": null,
+            "warningThresholdDays": 30,
+            "lastVerifiedAtUtc": null,
+            "updatedAtUtc": null
+          },
+          "dataCompleteness": {
+            "completenessScore": 77,
+            "dataQualityLevel": "Publishable",
+            "applicableMaxPoints": 94,
+            "earnedPoints": 72,
+            "publicationBlockers": [],
+            "formulaicPublicTextIssue": null
+          }
+        }
+      ],
+      "pagination": {
+        "totalItems": 1,
+        "totalPages": 1,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    "action": "SearchParks"
+  },
+  "standaloneSearch": {
+    "receivedAtUtc": "2026-11-15T23:55:44.9343577Z",
+    "result": {
+      "data": [],
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    "startedAtUtc": "2026-11-15T23:55:44.2429140Z",
+    "action": "SearchStandaloneAttractions"
+  },
+  "gravelleStandaloneSearch": {
+    "receivedAtUtc": "2026-11-15T23:56:26.6646246Z",
+    "action": "SearchStandaloneAttractions",
+    "result": {
+      "data": [],
+      "pagination": {
+        "totalItems": 0,
+        "totalPages": 0,
+        "currentPage": 1,
+        "itemsPerPage": 50
+      }
+    },
+    "startedAtUtc": "2026-11-15T23:56:26.1668250Z"
+  },
+  "sourceAccess": [
+    {
+      "key": "rcdb",
+      "url": "https://rcdb.com/19254.htm",
+      "retrievedAtUtc": "2026-11-15T23:54:49.905656+00:00",
+      "status": 200,
+      "finalUrl": "https://rcdb.com/19254.htm",
+      "bytes": 60640,
+      "sha256": "7c15db616bee3f4b3b8a0492e0ed16a4c461f11a503445e78d104f3570f1485e"
+    },
+    {
+      "key": "palais",
+      "url": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+      "retrievedAtUtc": "2026-11-15T23:54:49.906383+00:00",
+      "status": 200,
+      "finalUrl": "https://monument.palais-portedoree.fr/le-contexte-colonial/l-exposition-coloniale-de-1931",
+      "bytes": 90026,
+      "sha256": "3473f529833f370ff1be05646f4f25bc856c67454be4ba5115750a51361d955f"
+    },
+    {
+      "key": "aquarium",
+      "url": "https://monument.palais-portedoree.fr/le-palais-des-colonies/l-aquarium-tropical-et-les-produits-des-eaux-coloniales",
+      "retrievedAtUtc": "2026-11-15T23:54:49.907352+00:00",
+      "status": 200,
+      "finalUrl": "https://monument.palais-portedoree.fr/le-palais-des-colonies/l-aquarium-tropical-et-les-produits-des-eaux-coloniales",
+      "bytes": 87806,
+      "sha256": "7cc0d6751f704599a7410a6456ad5bc8eb7f3e0c8a309712aac26044f22c620b"
+    }
+  ],
+  "intake": {
+    "existingPrivateItems": 6,
+    "existingParkDescriptionLanguages": 8,
+    "initialScore": 77,
+    "initialScoreIsNotAudit": true,
+    "existingEnrichmentDiscovered": true,
+    "recordShouldNotBeTreatedAsEmptyShell": true,
+    "noDataMutationPerformed": true,
+    "priorIntegrationDateUnknown": true,
+    "nextAction": "Targetedexport for6existingitemIDs,media/history/reference dependencies andsourceprovenance; qualify relationship ofParc de la Gravelle/Reuilly amusements and the whole1931exposition before anyedit. RCDB locatesamusementsection, programmeoriginalscan identifiedbutnotyetviewed."
+  }
+}

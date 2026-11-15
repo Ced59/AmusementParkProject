@@ -6139,17 +6139,17 @@
       "legacySiteIds": [],
       "presence": "Hidden",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "ClosedDefinitively",
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
-      "assignedTo": null,
+      "assignedTo": "Conversation France",
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Intégration éditoriale complète : la fiche masquée est une coquille, pas une intégration achevée.",
+      "nextAction": "Targetedexport for6existingitemIDs,media/history/reference dependencies andsourceprovenance; qualify relationship ofParc de la Gravelle/Reuilly amusements and the whole1931exposition before anyedit. RCDB locatesamusementsection, programmeoriginalscan identifiedbutnotyetviewed.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -6163,7 +6163,10 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "qualificationEvidence": [
+        "docs/roadmaps/world-integration/evidence/france-historical-20261022/exposition-coloniale-intake-20261115.json"
+      ]
     },
     {
       "entryId": "FR-park-baf98de1-33de-44b5-8a03-c5c1b76d24ee",
@@ -33077,8 +33080,8 @@
       "locality": null,
       "siteId": "dc876288-7c8b-4684-8150-993908cdcf7a",
       "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:54:49.8768634Z",
       "editorialStatus": "InProgress",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
@@ -34020,7 +34023,7 @@
           "summary": "Pokeyland : publication autorisée du périmètre audité, 58-cross-corpus-correction; note insuffisante acceptée, horaires inconnus conservés; inventaire global partial, Facebook à vérifier séparément."
         }
       ],
-      "nextAction": "Poursuivre l’intégration et l’audit final.",
+      "nextAction": "Périmètre audité publié et contrôlé le15novembre2026; inventaireglobal partiel(23lieuxprivésnonqualifiés). Présencepublique reconfirméeparSearchofficiel; aucune nouvellemutationniannonceFacebook.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -34039,7 +34042,14 @@
         }
       ],
       "countryCodeAtInventory": "FR",
-      "countryResolution": null
+      "countryResolution": null,
+      "visibilityChecks": [
+        {
+          "observedAtUtc": "2026-11-15T23:54:49.8768634Z",
+          "presence": "Published",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-registry-visibility-reconciliation-20261115.json"
+        }
+      ]
     },
     {
       "entryId": "FR-park-8e634a2f-13bd-46c4-9c60-8ee4bae4a852",
