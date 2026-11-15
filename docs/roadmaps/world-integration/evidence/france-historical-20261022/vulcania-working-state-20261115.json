@@ -65,6 +65,139 @@
         "languageCode": "pt",
         "value": "<h2>A Chaîne des Puys, à superfície e debaixo da terra</h2><p>Em Saint-Ours-les-Roches, Vulcania insere-se na paisagem vulcânica da Chaîne des Puys. Os relevos da Auvérnia dão um contexto palpável às perguntas das exposições: como nasce um vulcão, porque treme a terra e que marcas deixa uma erupção na paisagem? As ciências da Terra também são contadas através de aventuras e imagens de grande dimensão.</p><p>A arquitetura de Hans Hollein torna a paisagem parte desta exploração. Grande parte do edifício desenvolve-se no subsolo, enquanto o cone de paredes interiores douradas e a cratera abrem perspetivas para o céu. A rocha escura, as passagens subterrâneas e a luz vinda de cima compõem um ambiente intimamente ligado ao tema vulcânico do parque.</p><h2>Das coleções dos Krafft aos sismos de Namazu</h2><p>As fotografias e as rochas recolhidas por Maurice e Katia Krafft revelam o lado humano do estudo dos vulcões. Em Machine Terre, paisagens, imagens e atividades interativas alargam a narrativa à formação do planeta e à vida que nele existe. Terre de volcans envolve os visitantes em imagens de escoadas de lava e géiseres, com as cores contrastantes das regiões vulcânicas.</p><p>Namazu integra os sismos na história de uma base científica situada sobre uma falha instável. O solo fendido e os edifícios marcados pelos abalos anunciam a movimentada expedição da montanha-russa. Dragões e crenças vulcânicas contam outra história: Forêt des dragons e Volcans sacrés encenam as lendas criadas para explicar estas forças inquietantes.</p><h2>Pequenos investigadores e viagens pelo espaço</h2><p>Premier envol mostra a Auvérnia pelo olhar de uma águia, elevando a perspetiva sobre a paisagem. O Astrodôme alarga a exploração às estrelas e ao Universo. Filmes, sessões acompanhadas e animações científicas apresentam a Terra no seu contexto cósmico, para além dos fenómenos vulcânicos.</p><p>Na Cité des enfants, a água, as sombras, as cores e o movimento tornam-se matéria para experimentar através da brincadeira. Expériences, c’est show ! apresenta a ciência num palco mais agitado: o professor Yapadrisk interrompe os animadores e substitui as suas demonstrações pelas próprias experiências explosivas. Este cientista excêntrico introduz assim a comédia entre as demonstrações científicas.</p>"
       }
+    ],
+    "currentLogoImageId": "2eeb41e9d92a420e8ad3b1fbb98a7741",
+    "officialMaps": [
+      {
+        "key": "vulcania-map-2024-fr",
+        "id": "vulcania-map-2024-fr",
+        "year": 2024,
+        "format": "Pdf",
+        "storageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2024-fr.0aaa5fd361b544e8b8b1645e0570b322.pdf",
+        "originalFileName": "map-2024.pdf",
+        "contentType": "application/pdf",
+        "sizeInBytes": 420693,
+        "sourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+        "languageCode": "fr",
+        "isVisible": false,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Plan de Vulcania — 2024"
+          },
+          {
+            "languageCode": "en",
+            "value": "Vulcania map — 2024"
+          },
+          {
+            "languageCode": "de",
+            "value": "Plan von Vulcania — 2024"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Plattegrond van Vulcania — 2024"
+          },
+          {
+            "languageCode": "it",
+            "value": "Mappa di Vulcania — 2024"
+          },
+          {
+            "languageCode": "es",
+            "value": "Plano de Vulcania — 2024"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Mapa Vulcanii — 2024"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Mapa do Vulcania — 2024"
+          }
+        ],
+        "lastVerifiedAtUtc": "2026-11-15T17:18:10.444370+00:00"
+      },
+      {
+        "key": "vulcania-map-2026-fr",
+        "id": "vulcania-map-2026-fr",
+        "year": 2026,
+        "format": "Image",
+        "storageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2026-fr.7e6718057a064b49baff7588e2bacb5a.jpg",
+        "originalFileName": "map-2026.jpg",
+        "contentType": "image/jpeg",
+        "sizeInBytes": 289392,
+        "sourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+        "languageCode": "fr",
+        "isVisible": false,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Plan de Vulcania — 2026"
+          },
+          {
+            "languageCode": "en",
+            "value": "Vulcania map — 2026"
+          },
+          {
+            "languageCode": "de",
+            "value": "Plan von Vulcania — 2026"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Plattegrond van Vulcania — 2026"
+          },
+          {
+            "languageCode": "it",
+            "value": "Mappa di Vulcania — 2026"
+          },
+          {
+            "languageCode": "es",
+            "value": "Plano de Vulcania — 2026"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Mapa Vulcanii — 2026"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Mapa do Vulcania — 2026"
+          }
+        ],
+        "lastVerifiedAtUtc": "2026-11-15T17:18:10.890841+00:00",
+        "alternativeTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Plan illustré de Vulcania : le cône central, Namazu et l’Astrodôme, avec les attractions et services répartis sur les niveaux A à D."
+          },
+          {
+            "languageCode": "en",
+            "value": "Illustrated Vulcania map showing the central cone, Namazu and the Astrodôme, with attractions and services across levels A to D."
+          },
+          {
+            "languageCode": "de",
+            "value": "Illustrierter Plan von Vulcania mit dem zentralen Kegel, Namazu und dem Astrodôme sowie Attraktionen und Serviceangeboten auf den Ebenen A bis D."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Geïllustreerde plattegrond van Vulcania met de centrale kegel, Namazu en de Astrodôme, en attracties en voorzieningen op de niveaus A tot en met D."
+          },
+          {
+            "languageCode": "it",
+            "value": "Mappa illustrata di Vulcania con il cono centrale, Namazu e l’Astrodôme, e le attrazioni e i servizi distribuiti sui livelli da A a D."
+          },
+          {
+            "languageCode": "es",
+            "value": "Plano ilustrado de Vulcania con el cono central, Namazu y el Astrodôme, y las atracciones y servicios distribuidos entre los niveles A y D."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Ilustrowana mapa Vulcanii z centralnym stożkiem, Namazu i Astrodôme oraz atrakcjami i usługami na poziomach od A do D."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Mapa ilustrado do Vulcania com o cone central, Namazu e o Astrodôme, e as atrações e os serviços distribuídos pelos níveis A a D."
+          }
+        ]
+      }
     ]
   },
   "references": {
@@ -525,7 +658,7 @@
       "adminReviewStatus": "ToReview",
       "attractionDetails": {
         "status": "Operating",
-        "sourceUrl": "https://www.vulcania.com/animation/dragon-ride/",
+        "sourceUrl": "https://www.amak.fr/project/dragon-ride/",
         "accessConditions": [
           {
             "type": "MinHeight",
@@ -534,8 +667,44 @@
             "displayOrder": 1
           }
         ],
-        "durationInSeconds": 360
-      }
+        "durationInSeconds": 360,
+        "openingDate": null,
+        "openingDateText": "2008"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Le cabinet d’Henry de Dragoniac</h2><p>Dragon Ride plonge dans les collections d’un explorateur fictif, Henry de Dragoniac. Ce spécialiste des créatures légendaires a rassemblé des reliques liées aux dragons de Terre, d’Eau, d’Air et de Feu. Sa pièce la plus mystérieuse est un œuf de Phénix brisé, dont les fragments renfermeraient l’esprit de ces dragons.</p><p>Dragoniac espère accéder à la connaissance en réunissant les morceaux. Son expérience libère au contraire les esprits qu’il voulait comprendre. Le Phénix devient alors le compagnon du récit, chargé de retrouver les fragments dispersés.</p><h2>Des légendes sous la surface</h2><p>L’imaginaire des éléments donne son identité à cette aventure de Vulcania. Dragons et Phénix appartiennent au monde des mythes : ils prolongent la fascination pour les forces naturelles à travers des personnages et des objets fantastiques.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Henry de Dragoniac’s collection</h2><p>Dragon Ride enters the collections of a fictional explorer, Henry de Dragoniac. This specialist in legendary creatures has gathered relics linked to the dragons of Earth, Water, Air and Fire. His most mysterious object is a broken Phoenix egg whose fragments are said to contain the dragons’ spirits.</p><p>Dragoniac hopes to gain knowledge by joining the pieces. Instead, his experiment releases the spirits he wanted to understand. The Phoenix then becomes the story’s companion, tasked with finding the scattered fragments.</p><h2>Legends beneath the surface</h2><p>The imaginative world of the elements gives this Vulcania adventure its identity. Dragons and Phoenix belong to myth, extending the fascination with natural forces through fantastical characters and objects.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Henry de Dragoniacs Sammlung</h2><p>Dragon Ride führt in die Sammlung des erfundenen Forschers Henry de Dragoniac. Der Kenner sagenhafter Wesen hat Relikte der Drachen von Erde, Wasser, Luft und Feuer zusammengetragen. Sein geheimnisvollstes Stück ist ein zerbrochenes Phönixei, dessen Fragmente die Geister dieser Drachen enthalten sollen.</p><p>Dragoniac erhofft sich Erkenntnis, indem er die Teile zusammenfügt. Stattdessen setzt sein Experiment die Geister frei, die er verstehen wollte. Der Phönix wird daraufhin zum Begleiter der Geschichte und soll die verstreuten Fragmente wiederfinden.</p><h2>Sagen unter der Oberfläche</h2><p>Die fantastische Welt der Elemente prägt dieses Abenteuer in Vulcania. Drachen und Phönix gehören zur Mythologie und vermitteln die Faszination der Naturkräfte durch erfundene Gestalten und wundersame Gegenstände.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De verzameling van Henry de Dragoniac</h2><p>Dragon Ride voert naar de verzameling van een fictieve ontdekkingsreiziger, Henry de Dragoniac. Deze kenner van legendarische wezens verzamelde relieken van de draken van Aarde, Water, Lucht en Vuur. Zijn raadselachtigste voorwerp is een gebroken feniksei, waarvan de stukken de geesten van die draken zouden bevatten.</p><p>Dragoniac hoopt kennis te verkrijgen door de delen samen te voegen. Zijn experiment bevrijdt juist de geesten die hij wilde begrijpen. De feniks wordt vervolgens de metgezel van het verhaal en moet de verspreide stukken terugvinden.</p><h2>Legenden onder de oppervlakte</h2><p>De fantasiewereld van de elementen bepaalt het karakter van dit avontuur in Vulcania. Draken en feniks horen bij de mythologie en verbeelden de fascinatie voor natuurkrachten met wonderlijke personages en voorwerpen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La collezione di Henry de Dragoniac</h2><p>Dragon Ride entra nelle collezioni di un esploratore immaginario, Henry de Dragoniac. Questo studioso di creature leggendarie ha raccolto reliquie legate ai draghi della Terra, dell’Acqua, dell’Aria e del Fuoco. Il suo oggetto più misterioso è un uovo di Fenice spezzato, i cui frammenti custodirebbero gli spiriti di quei draghi.</p><p>Dragoniac spera di raggiungere la conoscenza riunendo i pezzi. Il suo esperimento libera invece gli spiriti che voleva comprendere. La Fenice diventa allora la compagna del racconto, incaricata di ritrovare i frammenti dispersi.</p><h2>Leggende sotto la superficie</h2><p>L’immaginario degli elementi dà identità a questa avventura di Vulcania. Draghi e Fenice appartengono al mito e traducono il fascino delle forze naturali in personaggi e oggetti fantastici.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La colección de Henry de Dragoniac</h2><p>Dragon Ride se adentra en las colecciones de un explorador ficticio, Henry de Dragoniac. Este especialista en criaturas legendarias ha reunido reliquias de los dragones de Tierra, Agua, Aire y Fuego. Su pieza más misteriosa es un huevo de Fénix roto, cuyos fragmentos encerrarían los espíritus de esos dragones.</p><p>Dragoniac espera alcanzar el conocimiento al reunir las piezas. Su experimento libera, en cambio, los espíritus que pretendía comprender. El Fénix pasa a ser el compañero del relato, encargado de recuperar los fragmentos dispersos.</p><h2>Leyendas bajo la superficie</h2><p>El imaginario de los elementos define esta aventura de Vulcania. Los dragones y el Fénix pertenecen al mito y expresan la fascinación por las fuerzas naturales mediante personajes y objetos fantásticos.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kolekcja Henry’ego de Dragoniaca</h2><p>Dragon Ride wprowadza do zbiorów fikcyjnego odkrywcy, Henry’ego de Dragoniaca. Ten znawca legendarnych stworzeń zgromadził relikwie związane ze smokami Ziemi, Wody, Powietrza i Ognia. Jego najbardziej tajemniczym eksponatem jest rozbite jajo Feniksa, którego fragmenty mają kryć duchy tych smoków.</p><p>Dragoniac liczy, że połączenie części przyniesie mu wiedzę. Eksperyment uwalnia jednak duchy, które chciał poznać. Feniks staje się wówczas towarzyszem opowieści, a jego zadaniem jest odnalezienie rozproszonych fragmentów.</p><h2>Legendy pod powierzchnią</h2><p>Fantastyczny świat żywiołów nadaje charakter tej przygodzie w Vulcanii. Smoki i Feniks należą do mitologii: poprzez niezwykłe postacie i przedmioty ukazują fascynację siłami natury.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A coleção de Henry de Dragoniac</h2><p>Dragon Ride entra nas coleções de um explorador fictício, Henry de Dragoniac. Este especialista em criaturas lendárias reuniu relíquias dos dragões da Terra, da Água, do Ar e do Fogo. A sua peça mais misteriosa é um ovo de Fénix partido, cujos fragmentos conteriam os espíritos desses dragões.</p><p>Dragoniac espera alcançar o conhecimento ao juntar as peças. A experiência liberta, pelo contrário, os espíritos que pretendia compreender. A Fénix torna-se então a companheira da narrativa, encarregada de encontrar os fragmentos dispersos.</p><h2>Lendas sob a superfície</h2><p>O imaginário dos elementos dá identidade a esta aventura do Vulcania. Dragões e Fénix pertencem ao mito e exprimem o fascínio pelas forças naturais através de personagens e objetos fantásticos.</p>"
+        }
+      ]
     },
     {
       "id": "73863436-ae90-414d-8ae8-0e4973a3581c",
@@ -925,6 +1094,120 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/cest-pas-sorcier-les-volcans/",
         "durationInSeconds": 1800
+      }
+    },
+    {
+      "id": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "key": "vulcania-abyss-explorer",
+      "name": "Abyss Explorer",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "ClosedDefinitively",
+        "openingDate": null,
+        "sourceUrl": "https://www.amak.fr/project/abyss-explorer/",
+        "openingDateText": "2016"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La mission du bathyscaphe</h2><p>Abyss Explorer prenait pour décor une dorsale volcanique du Pacifique Sud. Son bathyscaphe fictif portait le numéro 63 : à son bord, les visiteurs endossaient le rôle d’explorateurs d’un monde où le volcanisme se manifeste sous l’océan.</p><p>Le récit associait la découverte des fonds marins à celle de leurs habitants. La faune, la flore et les paysages sous-marins changeaient selon la profondeur, donnant à l’expédition un sujet plus vaste que la seule recherche de lave.</p><h2>Autour des fumeurs noirs</h2><p>Les cheminées hydrothermales formaient un autre temps fort de cette ancienne expérience. Le film d’AmaK et la scénographie de Skertzo réunissaient l’univers du sous-marin et les fumeurs noirs dans un même récit consacré aux volcans cachés sous les eaux.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The bathyscaphe’s mission</h2><p>Abyss Explorer was set on a volcanic ridge in the South Pacific. Its fictional bathyscaphe carried the number 63, casting visitors as explorers of a world where volcanic activity takes place beneath the ocean.</p><p>The story linked the discovery of the seabed with that of its inhabitants. Marine life and underwater landscapes changed with depth, giving the expedition a subject broader than a search for lava alone.</p><h2>Among the black smokers</h2><p>Hydrothermal chimneys were another focus of this former experience. AmaK’s film and Skertzo’s scenography brought the submarine setting and the black smokers together in a story about volcanoes hidden beneath the water.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Mission des Tauchboots</h2><p>Abyss Explorer spielte an einem vulkanischen Rücken im Südpazifik. Das fiktive Tauchboot trug die Nummer 63. Die Besucher übernahmen die Rolle von Forschern in einer Welt, in der sich vulkanische Aktivität unter dem Meer entfaltet.</p><p>Die Geschichte verband die Entdeckung des Meeresbodens mit jener seiner Bewohner. Tiere, Pflanzen und Unterwasserlandschaften veränderten sich mit der Tiefe. Damit behandelte die Expedition mehr als die Suche nach Lava.</p><h2>Bei den Schwarzen Rauchern</h2><p>Hydrothermale Schlote bildeten einen weiteren Schwerpunkt dieser ehemaligen Attraktion. Der Film von AmaK und die Szenografie von Skertzo verknüpften die Tauchbootwelt mit den Schwarzen Rauchern zu einer Erzählung über verborgene Vulkane unter Wasser.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De missie van de bathyscaaf</h2><p>Abyss Explorer speelde zich af op een vulkanische rug in de zuidelijke Stille Oceaan. De fictieve bathyscaaf droeg het nummer 63. Bezoekers kregen de rol van onderzoekers in een wereld waar vulkanische activiteit zich onder de oceaan afspeelt.</p><p>Het verhaal verbond de ontdekking van de zeebodem met die van zijn bewoners. Dieren, planten en onderwaterlandschappen veranderden met de diepte, waardoor de expeditie over meer ging dan alleen het zoeken naar lava.</p><h2>Bij de zwarte rokers</h2><p>Hydrothermale schoorstenen vormden een ander zwaartepunt van deze voormalige ervaring. De film van AmaK en de scenografie van Skertzo brachten de onderzeeër en de zwarte rokers samen in een verhaal over vulkanen die onder water verborgen liggen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La missione del batiscafo</h2><p>Abyss Explorer era ambientato su una dorsale vulcanica del Pacifico meridionale. Il suo batiscafo immaginario portava il numero 63: i visitatori assumevano il ruolo di esploratori di un mondo in cui l’attività vulcanica si manifesta sotto l’oceano.</p><p>Il racconto univa la scoperta dei fondali a quella dei loro abitanti. Fauna, flora e paesaggi sottomarini cambiavano con la profondità, dando alla spedizione un tema più ampio della sola ricerca della lava.</p><h2>Tra i camini neri</h2><p>I camini idrotermali erano un altro fulcro di questa esperienza del passato. Il film di AmaK e la scenografia di Skertzo riunivano l’universo del sommergibile e i camini neri in una storia dedicata ai vulcani nascosti sotto l’acqua.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La misión del batiscafo</h2><p>Abyss Explorer estaba ambientado en una dorsal volcánica del Pacífico Sur. Su batiscafo ficticio llevaba el número 63: los visitantes asumían el papel de exploradores de un mundo donde la actividad volcánica se desarrolla bajo el océano.</p><p>El relato enlazaba el descubrimiento del fondo marino con el de sus habitantes. La fauna, la flora y los paisajes submarinos cambiaban según la profundidad, dando a la expedición un tema más amplio que la mera búsqueda de lava.</p><h2>Entre las fumarolas negras</h2><p>Las chimeneas hidrotermales eran otro punto central de esta antigua experiencia. La película de AmaK y la escenografía de Skertzo unían el universo del submarino y las fumarolas negras en una historia sobre los volcanes ocultos bajo el agua.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Misja batyskafu</h2><p>Akcja Abyss Explorer rozgrywała się na grzbiecie wulkanicznym południowego Pacyfiku. Fikcyjny batyskaf nosił numer 63, a odwiedzający wcielali się w badaczy świata, w którym aktywność wulkaniczna zachodzi pod powierzchnią oceanu.</p><p>Opowieść łączyła poznawanie dna morskiego z odkrywaniem jego mieszkańców. Zwierzęta, rośliny i podwodne krajobrazy zmieniały się wraz z głębokością, dzięki czemu wyprawa dotyczyła czegoś więcej niż samego poszukiwania lawy.</p><h2>Wśród czarnych kominów</h2><p>Kominy hydrotermalne stanowiły kolejny ważny temat tej dawnej atrakcji. Film AmaK i scenografia Skertzo łączyły świat łodzi podwodnej oraz czarne kominy w opowieść o wulkanach ukrytych pod wodą.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A missão do batiscafo</h2><p>Abyss Explorer decorria numa dorsal vulcânica do Pacífico Sul. O seu batiscafo fictício tinha o número 63: os visitantes assumiam o papel de exploradores de um mundo onde a atividade vulcânica se manifesta debaixo do oceano.</p><p>A narrativa ligava a descoberta do fundo do mar à dos seus habitantes. A fauna, a flora e as paisagens submarinas mudavam com a profundidade, dando à expedição um tema mais amplo do que a simples procura de lava.</p><h2>Entre as fumarolas negras</h2><p>As chaminés hidrotermais eram outro ponto central desta antiga experiência. O filme da AmaK e a cenografia da Skertzo reuniam o universo do submarino e as fumarolas negras numa história dedicada aos vulcões escondidos sob a água.</p>"
+        }
+      ]
+    },
+    {
+      "id": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+      "key": "vulcania-magma-explorer",
+      "name": "Magma Explorer III",
+      "category": "Attraction",
+      "type": "Cinema",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "openingDate": null,
+        "sourceUrl": "https://www.amak.fr/project/magma-explorer-iii/",
+        "openingDateText": "2007-03"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les premiers vulcanautes</h2><p>Magma Explorer III confiait aux visiteurs une mission imaginaire : devenir les premiers vulcanautes à explorer une chambre magmatique. L’accueil précédant le film présentait cette aventure souterraine et installait le rôle de l’équipage.</p><p>Le décor du vaisseau faisait de la chambre magmatique le paysage extérieur de l’expédition. Des hublots ouverts sur les images de synthèse donnaient une forme visible à cet espace inaccessible, au cœur du volcan.</p><h2>Le réveil du volcan</h2><p>Le récit basculait lorsque le volcan se réveillait pendant l’exploration. Cette menace constituait le ressort dramatique du film réalisé par François Garnier : une mission de découverte devenait une rencontre avec les forces enfouies de la Terre.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>The first volcano explorers</h2><p>Magma Explorer III gave visitors an imaginary mission: to become the first “volcanauts” to explore a magma chamber. The introduction before the film presented this underground adventure and established the crew’s role.</p><p>The vessel’s setting made the magma chamber the expedition’s surrounding landscape. Portholes opening onto computer-generated imagery gave visible form to this inaccessible space inside the volcano.</p><h2>The volcano awakens</h2><p>The story turned when the volcano awoke during the exploration. This threat supplied the dramatic premise of François Garnier’s film: a mission of discovery became an encounter with the forces buried within the Earth.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die ersten Vulkanonauten</h2><p>Magma Explorer III übertrug den Besuchern eine erfundene Mission: Als erste Vulkanonauten sollten sie eine Magmakammer erkunden. Die Einführung vor dem Film stellte das unterirdische Abenteuer vor und erläuterte die Rolle der Besatzung.</p><p>Die Gestaltung des Forschungsschiffs machte die Magmakammer zur umgebenden Landschaft der Expedition. Bullaugen mit computergenerierten Bildern gaben diesem unzugänglichen Raum im Inneren des Vulkans eine sichtbare Form.</p><h2>Der Vulkan erwacht</h2><p>Die Geschichte nahm eine Wendung, als der Vulkan während der Erkundung erwachte. Diese Bedrohung bildete den dramatischen Kern von François Garniers Film: Aus einer Forschungsmission wurde eine Begegnung mit den Kräften im Erdinneren.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De eerste vulkanauten</h2><p>Magma Explorer III gaf bezoekers een denkbeeldige opdracht: als eerste vulkanauten een magmakamer onderzoeken. De introductie vóór de film presenteerde dit ondergrondse avontuur en verduidelijkte de rol van de bemanning.</p><p>Het decor van het vaartuig maakte de magmakamer tot het omringende landschap van de expeditie. Patrijspoorten met computerbeelden gaven dit ontoegankelijke gebied binnen in de vulkaan een zichtbare vorm.</p><h2>De vulkaan ontwaakt</h2><p>Het verhaal nam een wending wanneer de vulkaan tijdens het onderzoek ontwaakte. Deze dreiging vormde de dramatische kern van de film van François Garnier: een ontdekkingsmissie werd een ontmoeting met de krachten diep in de aarde.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>I primi vulcanauti</h2><p>Magma Explorer III affidava ai visitatori una missione immaginaria: diventare i primi vulcanauti a esplorare una camera magmatica. L’introduzione prima del film presentava questa avventura sotterranea e definiva il ruolo dell’equipaggio.</p><p>La scenografia del veicolo trasformava la camera magmatica nel paesaggio circostante della spedizione. Oblò aperti su immagini di sintesi davano una forma visibile a quello spazio inaccessibile nel cuore del vulcano.</p><h2>Il risveglio del vulcano</h2><p>Il racconto cambiava direzione quando il vulcano si risvegliava durante l’esplorazione. Questa minaccia costituiva il nucleo drammatico del film diretto da François Garnier: una missione di scoperta diventava un incontro con le forze sepolte della Terra.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Los primeros vulcanautas</h2><p>Magma Explorer III confiaba a los visitantes una misión imaginaria: convertirse en los primeros vulcanautas que exploraban una cámara magmática. La introducción previa a la película presentaba esta aventura subterránea y definía el papel de la tripulación.</p><p>El decorado de la nave convertía la cámara magmática en el paisaje que rodeaba la expedición. Los ojos de buey con imágenes digitales daban forma visible a ese espacio inaccesible del interior del volcán.</p><h2>El despertar del volcán</h2><p>El relato cambiaba cuando el volcán despertaba durante la exploración. Esa amenaza era el núcleo dramático de la película de François Garnier: una misión de descubrimiento se convertía en un encuentro con las fuerzas enterradas de la Tierra.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pierwsi wulkanonauci</h2><p>Magma Explorer III powierzał odwiedzającym fikcyjną misję: mieli zostać pierwszymi wulkanonautami badającymi komorę magmową. Wprowadzenie poprzedzające film przedstawiało podziemną przygodę i określało rolę załogi.</p><p>Scenografia pojazdu czyniła komorę magmową krajobrazem otaczającym wyprawę. Iluminatory z obrazami komputerowymi nadawały widzialną postać niedostępnej przestrzeni we wnętrzu wulkanu.</p><h2>Przebudzenie wulkanu</h2><p>Opowieść zmieniała kierunek, gdy podczas badań wulkan budził się do życia. Zagrożenie stanowiło oś dramaturgiczną filmu François Garniera: wyprawa badawcza stawała się spotkaniem z siłami ukrytymi w głębi Ziemi.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Os primeiros vulcanautas</h2><p>Magma Explorer III confiava aos visitantes uma missão imaginária: tornarem-se os primeiros vulcanautas a explorar uma câmara magmática. A introdução anterior ao filme apresentava esta aventura subterrânea e definia o papel da tripulação.</p><p>O cenário do veículo transformava a câmara magmática na paisagem envolvente da expedição. Vigias com imagens digitais davam uma forma visível àquele espaço inacessível no interior do vulcão.</p><h2>O despertar do vulcão</h2><p>A narrativa mudava quando o vulcão despertava durante a exploração. Esta ameaça constituía o centro dramático do filme de François Garnier: uma missão de descoberta tornava-se um encontro com as forças enterradas da Terra.</p>"
+        }
+      ]
+    },
+    {
+      "id": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "key": "vulcania-ballon-puys",
+      "name": "Ballon des Puys",
+      "category": "Attraction",
+      "type": "ObservationRide",
+      "isVisible": false,
+      "adminReviewStatus": "ToReview",
+      "attractionDetails": {
+        "status": "Unknown",
+        "openingDate": null,
+        "sourceUrl": "https://www.aerophile.com/en/clients/vulcania/",
+        "manufacturerId": "c31e7068-44af-404f-b60b-67469d77eca3",
+        "openingDateText": "2014"
       }
     }
   ],
@@ -2202,6 +2485,132 @@
       "updatedAt": "2026-11-15T16:57:15.832Z",
       "key": "8b9479d31a074fc98a5468865e32759e",
       "imageId": "8b9479d31a074fc98a5468865e32759e"
+    },
+    {
+      "id": "2eeb41e9d92a420e8ad3b1fbb98a7741",
+      "category": "Logo",
+      "ownerType": "Park",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "logo/2eeb41e9d92a420e8ad3b1fbb98a7741",
+      "description": "Le volcan ouvert prolonge le V de Vulcania, au-dessus de la signature auvergnate.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 570,
+      "height": 253,
+      "sizeInBytes": 16461,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/logo-vulcania.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Logo Vulcania : nom rouge, volcan stylisé aux projections multicolores et mention « en AUVERGNE » en bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania logo with red lettering, a stylised volcano throwing out colourful shapes and the blue words “en AUVERGNE”."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania-Logo mit rotem Schriftzug, einem stilisierten Vulkan mit bunten Auswürfen und den blauen Worten „en AUVERGNE“."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania-logo met rode letters, een gestileerde vulkaan met kleurrijke uitbarsting en de blauwe woorden “en AUVERGNE”."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo Vulcania con scritta rossa, un vulcano stilizzato con spruzzi multicolori e le parole « en AUVERGNE » in blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo de Vulcania con letras rojas, un volcán estilizado con proyecciones multicolores y las palabras « en AUVERGNE » en azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Logo Vulcanii: czerwony napis, stylizowany wulkan z wielobarwnymi wyrzutami i niebieskie słowa „en AUVERGNE”."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo do Vulcania com letras vermelhas, um vulcão estilizado com projeções multicolores e as palavras « en AUVERGNE » a azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le volcan ouvert prolonge le V de Vulcania, au-dessus de la signature auvergnate."
+        },
+        {
+          "languageCode": "en",
+          "value": "The open volcano extends the V of Vulcania above the reference to Auvergne."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der offene Vulkan verlängert das V von Vulcania über dem Hinweis auf die Auvergne."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De open vulkaan sluit aan op de V van Vulcania, boven de verwijzing naar de Auvergne."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il vulcano aperto prolunga la V di Vulcania sopra il richiamo all’Alvernia."
+        },
+        {
+          "languageCode": "es",
+          "value": "El volcán abierto prolonga la V de Vulcania sobre la referencia a Auvernia."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Otwarty wulkan stanowi przedłużenie litery V w nazwie Vulcania, ponad wzmianką o Owernii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O vulcão aberto prolonga o V de Vulcania, acima da referência à Auvérnia."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:17:18.095Z",
+      "updatedAt": "2026-11-15T17:17:21.782Z",
+      "key": "2eeb41e9d92a420e8ad3b1fbb98a7741",
+      "imageId": "2eeb41e9d92a420e8ad3b1fbb98a7741"
     }
   ],
   "history": {

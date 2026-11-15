@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T16:57:12.36Z",
+  "lastDataIntegrationAt": "2026-11-15T17:22:40.1995488Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,26 +139,29 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 6,
-  "realImportCount": 6,
-  "lastOperationId": null,
+  "realApplyCount": 9,
+  "realImportCount": 7,
+  "lastOperationId": "9c613e7d-bdd2-4b7a-b31b-233ce8bea9af",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-03-current-attractions-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-04-current-offers-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-05-park-description-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-06-first-item-descriptions-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-06-first-item-descriptions-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-11-historical-identities-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-13-map-association-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-14-three-cinema-descriptions-20261115.json"
   ],
   "currentCoverage": {
-    "items": 44,
+    "items": 47,
     "publicItems": 0,
-    "describedItems8Languages": 3,
+    "describedItems8Languages": 6,
     "zones": 0,
-    "ownMedia": 6,
-    "privateOwnMedia": 6
+    "ownMedia": 7,
+    "officialMaps": 2
   },
-  "lastApplyOperationId": "1845e50b-2c2a-4672-aa78-12daa1fa977a",
+  "lastApplyOperationId": "0be325ce-b104-4ece-b4bc-1ef49f0d3229",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -189,6 +192,11 @@
       "imageId": "8b9479d31a074fc98a5468865e32759e",
       "createdAt": "2026-11-15T16:57:12.36Z",
       "proof": "vulcania-photo-commons-08-20261115.json"
+    },
+    {
+      "imageId": "2eeb41e9d92a420e8ad3b1fbb98a7741",
+      "createdAt": "2026-11-15T17:17:18.095Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-logo-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -206,5 +214,31 @@
     "References, history and articles",
     "Qualified positions, pricing and published calendar",
     "Single full audit and authorized publication with recorded score/date/hour exception"
-  ]
+  ],
+  "officialMapCandidates": [
+    2024,
+    2025,
+    2026
+  ],
+  "officialMapsImported": 0,
+  "sourceRightsGap": "Officialcopyrighttermsrecorded; existingownerFrancecampaignmediaauthorizationreconciledfromearlieracceptedmanifest. Noopenlicense orindividualauthorpermissionclaimed. Formerinferredholdonofficiallogo/maps not treatedasnewapprovalrequirement.",
+  "logoProof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-logo-20261115.json",
+  "mapUploads": [
+    {
+      "year": 2024,
+      "receivedAtUtc": "2026-11-15T17:18:30.292Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-map-2024-upload-20261115.json"
+    },
+    {
+      "year": 2026,
+      "receivedAtUtc": "2026-11-15T17:20:54.751Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-map-2026-upload-20261115.json"
+    }
+  ],
+  "lastMapUploadReceiptAtUtc": "2026-11-15T17:20:54.751Z",
+  "mapYears": [
+    2024,
+    2026
+  ],
+  "latestSourceNote": "Own7privateimages (6Commons historicalphotos+officiallogo),2privateofficialmaps2024/2026,6of47itemdescriptions8languages. ExistingownerFrancecampaignmediaauthorizationhonored;noopenlicenseclaimedforofficiallogo/maps. No fullaudit orpublication."
 }

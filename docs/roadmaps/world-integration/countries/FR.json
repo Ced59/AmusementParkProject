@@ -12851,7 +12851,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T01:37:36.592Z",
+      "lastDataIntegrationAt": "2026-11-15T17:07:37.019Z",
       "integrationHistory": [
         {
           "eventId": "apply-021c7c49-3a37-4b11-ac74-160837a53be2",
@@ -13062,9 +13062,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-07-pricing-age-precision-20261115.json",
           "auditEvidence": null,
           "summary": "Tarifs 2026 rapprochés des cinq montants officiels ; seuil adulte inféré retiré, ambiguïté à 18 ans explicitée dans les huit langues. Aucune date ni tarification 2027 inventée, horaires inchangés."
+        },
+        {
+          "eventId": "apply-e003e1b2-2ccc-4276-bfa5-ed270d137f29",
+          "appliedAt": "2026-11-15T17:07:37.019Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-01-coaster-history-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Île aux Géants : le fait public de 2018 décrit désormais le rachat d’Avengers et sa présence antérieure à La Villette, selon le reportage contemporain. Seize textes relus dans huit langues ; ancien événement, date et image conservés, aucun fabricant ou modèle déduit."
         }
       ],
-      "nextAction": "Résoudre les identités visuelles de Manège enchanté et Petit train et rapprocher l’inventaire ancien/actuel ; 19 notices réécrites, 14 Apply et 7 photos privées sauvegardés. Les cinq nouveaux faits restent privés. Aucun audit final ni nouvelle annonce Facebook.",
+      "nextAction": "Poursuivre l’intégration et l’audit final.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -38117,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T16:57:12.360Z",
+      "lastDataIntegrationAt": "2026-11-15T17:22:40.199Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38248,6 +38258,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-commons-08-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : photographie historique importée privée, provenance et licence Commons vérifiées, vingt-quatre métadonnées relues en huit langues. Aucun réimport, recadrage ou instant de prise de vue inventé."
+        },
+        {
+          "eventId": "apply-0be325ce-b104-4ece-b4bc-1ef49f0d3229",
+          "appliedAt": "2026-11-15T17:02:24.024Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-11-historical-identities-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : trois expériences historiques privées rapprochées des créateurs et des documents officiels ; ouverture de Dragon Ride précisée à 2008 sans doubler sa version 2020. Aucun jour de fermeture, GPS ou nouvelle référence inventé."
+        },
+        {
+          "eventId": "import-photo-2eeb41e9d92a420e8ad3b1fbb98a7741",
+          "appliedAt": "2026-11-15T17:17:18.095Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-logo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : logo officiel autonome natif570×253 importé privé et courant,24métadonnées huitlangues rédigées et relues. Provenance conservée, aucune retouche ni date d’adoption supposée."
+        },
+        {
+          "eventId": "upload-official-map-2024-2026-11-15T17:18:30.292Z",
+          "appliedAt": "2026-11-15T17:18:30.292Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-map-2024-upload-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : plan officiel2024 natif contrôlé puis téléversé; reçu horodaté localement, API sansUTCserveur. Association privée encore à appliquer; aucune publication."
+        },
+        {
+          "eventId": "upload-official-map-2026-2026-11-15T17:20:54.751Z",
+          "appliedAt": "2026-11-15T17:20:54.751Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-map-2026-upload-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : plan officiel2026 natif contrôlé puis téléversé; reçu horodaté localement, API sansUTCserveur. Association privée encore à appliquer; aucune publication."
+        },
+        {
+          "eventId": "apply-76708b52-c49f-40e8-a93c-dfd028143fc5",
+          "appliedAt": "2026-11-15T17:22:04.152Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-13-map-association-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : deux éditions officielles privées2024PDF et2026image rattachées avec les clés de stockage réelles et24titres/textes alternatifs relus en huit langues. Millésimes justifiés, aucun fichier réimporté ou extrait."
+        },
+        {
+          "eventId": "apply-9c613e7d-bdd2-4b7a-b31b-233ce8bea9af",
+          "appliedAt": "2026-11-15T17:22:40.199Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-14-three-cinema-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania :24notices personnelles en huit langues pour Abyss Explorer, Magma Explorer III et Dragon Ride, récits relus sur les sources du créateur. Identités, statuts et visibilité privée préservés; aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38300,7 +38370,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-8b9479d31a074fc98a5468865e32759e ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-9c613e7d-bdd2-4b7a-b31b-233ce8bea9af ; conserver les références de découverte."
       }
     },
     {

@@ -1,0 +1,760 @@
+{
+  "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "auditedAtUtc": "2026-11-15T17:15:49.794383+00:00",
+  "outcome": "blocked",
+  "globalOutcome": "partial",
+  "globalCompleted": false,
+  "publicationPerformed": false,
+  "authorization": "Owner score exemption including undocumented hours/opening dates applies to operating and closed parks. This failure is an official publicationBlocker, not insufficient score.",
+  "auditExport": {
+    "exportedAtUtc": "2026-11-15T17:08:32.4909433Z",
+    "sha256": "6f22e52e1f42d789aa31d1453e5fe557d3cc312dd4bbc618af662f977c98910c",
+    "file": "ile-aux-geants-publication-scope-audit-export-20261115.json",
+    "repeatAuditExport": false
+  },
+  "scope": {
+    "images": [
+      "d64a164581614bcc8619a655395e1b7e",
+      "46c343fdef504f7a96232e9a3470943d",
+      "fad0db1c6b684e61ae62d3078f455e33",
+      "d1c04f7ed27f4fc4995e0f541591c566",
+      "c5ea8c26cbd547008c1db3708c3290cf",
+      "af3c8bdb537c4729ba4ef357005aee8f",
+      "99b9852a652f44e598c135404e8f400c"
+    ],
+    "historyEventKeys": [
+      "ile-aux-geants-planning-judgment-2022",
+      "ile-aux-geants-pirate-ship-opening-2024",
+      "ile-aux-geants-reception-fire-20240223",
+      "ile-aux-geants-appeal-judgment-20240710",
+      "ile-aux-geants-seasonal-return-20250529"
+    ],
+    "existingUnqualifiedPublicItems": [
+      {
+        "id": "75eddf51-f6e1-4047-a8a2-2db808586925",
+        "name": "Manège enchanté"
+      },
+      {
+        "id": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+        "name": "Petit train"
+      }
+    ]
+  },
+  "editorialReview": {
+    "languages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "detail": "All8historyevent titles/summaries, the complete article and seven new image metadata sets personally re-read in8languages; seven original image files individually inspected. Existingstate texts fully match canonical audit export; prior19rewritten descriptions retain their earlier personal review. Two legacy generic public descriptions do not meet editorial completion requirements; scope does not certify these.",
+    "newImageFields": 168,
+    "existingHistoryCorrection": "ile-aux-geants-01-coaster-history-correction-20261115.json"
+  },
+  "structuralChecks": {
+    "auditExportedAtUtc": "2026-11-15T17:08:32.4909433Z",
+    "sha256": "6f22e52e1f42d789aa31d1453e5fe557d3cc312dd4bbc618af662f977c98910c",
+    "localizedFields": 1193,
+    "encodingIssues": [],
+    "longSequenceCandidates": [
+      {
+        "language": "pt",
+        "paths": [
+          "graph.images[1].captions[7]",
+          "graph.images[2].captions[7]"
+        ],
+        "sequence": "o cartaz reúne o comboio nos carris cor de rosa as cadeiras"
+      }
+    ],
+    "textReconciliation": [
+      {
+        "section": "park",
+        "stateFields": 8,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "references",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "openingHours",
+        "stateFields": 0,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "pricing",
+        "stateFields": 104,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "be18c211-63cb-4208-812b-2cd1644c776b",
+        "stateFields": 8,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "00d39b64-33fb-4dde-a512-d744f5230df0",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "3c9ff19a-b5f7-4d2c-8b91-439ddfaedb8d",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "9305488c-b270-4c11-8256-1080202ce347",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "638da404-8a4d-4ec6-af68-68dc5d66a576",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "74c8d08e-2382-461e-bade-53609111a1f2",
+        "stateFields": 8,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "75eddf51-f6e1-4047-a8a2-2db808586925",
+        "stateFields": 17,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+        "stateFields": 8,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "6b94675f-34a3-4eb4-b2cf-8d4a4e6ade55",
+        "stateFields": 17,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+        "stateFields": 17,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "4a3b5ae7-6995-431c-b5b5-4d9e955bfae0",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "b344e698-e8b0-4598-9c26-3929e7d1c383",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "85b8602f-ef65-468c-b577-7a6cf73a9ea7",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "06eb4048-eadc-4095-a8a7-74ef63c2dff1",
+        "stateFields": 10,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "items",
+        "id": "e4e66050-5f12-4324-97d8-81586b7b9ab6",
+        "stateFields": 9,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "39f4dbe31e854dc0a0c552e2f96cea38",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "a3ec565c0a334f5db285e05ecebe9cb5",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "73ad5b0ae1c04a4caeca8cb9088dfd7b",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "4f183c91d4834462ae2c31bd38ef346e",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "401a5d56edd542e99f8089d862e1cddf",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "9ad259ed2aaf41c9a112503acc6dd201",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "734f1164cd18439a9bbe6cfc9fa9a43d",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "1bee00dfe8cc44da8c4e0cab255d0b95",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "15382cc4ae5544b7b728a6fb327a5ac1",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "b2b6cb85314d45aea85c7c56e4d13eff",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "4c56d24e2acf4eb9be298a2f419587d3",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "c74966a1f0b64b4faaad471c4c1353fe",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "9a8f42dd0ee04195adc14ac6309a8f90",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "590f9f146fdb424fbcc4eebed49611d9",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "cda036d71e924ce4a468741eb04e7349",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "8c2043fcfcf643bf99cc0498324a48f2",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "67fd211d2c464f5da75fc6d2d33a8bfb",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "761b88f1451a415ebffd89f05484e4ad",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "361e07dd6fb449ae856edf00fb33fe9f",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "c5ea8c26cbd547008c1db3708c3290cf",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "d1c04f7ed27f4fc4995e0f541591c566",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "d64a164581614bcc8619a655395e1b7e",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "af3c8bdb537c4729ba4ef357005aee8f",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "46c343fdef504f7a96232e9a3470943d",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "99b9852a652f44e598c135404e8f400c",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "images",
+        "id": "fad0db1c6b684e61ae62d3078f455e33",
+        "stateFields": 24,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-opening-2013",
+        "stateFields": 104,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-family-coaster-2015",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-thrill-coaster-2018",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-planning-judgment-2022",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-reception-fire-20240223",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-appeal-judgment-20240710",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-seasonal-return-20250529",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      },
+      {
+        "section": "history",
+        "key": "ile-aux-geants-pirate-ship-opening-2024",
+        "stateFields": 16,
+        "missingStateTexts": [],
+        "additionalExportFields": 0
+      }
+    ],
+    "coverage": {
+      "items": 21,
+      "publicItems": 21,
+      "personallyRewrittenItems": 19,
+      "unqualifiedLegacyPublicItems": [
+        {
+          "id": "75eddf51-f6e1-4047-a8a2-2db808586925",
+          "name": "Manège enchanté"
+        },
+        {
+          "id": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+          "name": "Petit train"
+        }
+      ],
+      "attractions": 19,
+      "lifecycle": {
+        "Operating": 19
+      },
+      "itemPhotoCounts": [
+        {
+          "id": "be18c211-63cb-4208-812b-2cd1644c776b",
+          "name": "Aires de pique-nique",
+          "images": 0
+        },
+        {
+          "id": "7bdc6c4e-e0ff-4541-bbd5-02ad4fb04c45",
+          "name": "Bateau du Colorado",
+          "images": 1
+        },
+        {
+          "id": "00d39b64-33fb-4dde-a512-d744f5230df0",
+          "name": "Bateau Pirate",
+          "images": 1
+        },
+        {
+          "id": "af1524b0-b3fb-449c-ab5c-e513722c8741",
+          "name": "Carrousel 1900",
+          "images": 2
+        },
+        {
+          "id": "9f232e4e-d94b-44ed-874b-9d27662fc538",
+          "name": "Grande roue",
+          "images": 2
+        },
+        {
+          "id": "3c9ff19a-b5f7-4d2c-8b91-439ddfaedb8d",
+          "name": "Kangourou",
+          "images": 1
+        },
+        {
+          "id": "9305488c-b270-4c11-8256-1080202ce347",
+          "name": "La Chenille",
+          "images": 1
+        },
+        {
+          "id": "638da404-8a4d-4ec6-af68-68dc5d66a576",
+          "name": "La Randonnée fantastique",
+          "images": 1
+        },
+        {
+          "id": "74c8d08e-2382-461e-bade-53609111a1f2",
+          "name": "Labyrinthes",
+          "images": 1
+        },
+        {
+          "id": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+          "name": "Le Grand 8",
+          "images": 1
+        },
+        {
+          "id": "75eddf51-f6e1-4047-a8a2-2db808586925",
+          "name": "Manège enchanté",
+          "images": 0
+        },
+        {
+          "id": "6cac30d9-2a9c-470d-bda6-8cab93ae86b0",
+          "name": "O'resto d'Iros",
+          "images": 2
+        },
+        {
+          "id": "6b94675f-34a3-4eb4-b2cf-8d4a4e6ade55",
+          "name": "Pataugeoire",
+          "images": 1
+        },
+        {
+          "id": "390c0590-ae97-49f7-a8a8-56e9a1da7c7e",
+          "name": "Petit train",
+          "images": 0
+        },
+        {
+          "id": "689eb8df-0047-4637-8840-25cccfcaa9c9",
+          "name": "Pouss-Pouss",
+          "images": 1
+        },
+        {
+          "id": "4a3b5ae7-6995-431c-b5b5-4d9e955bfae0",
+          "name": "Samba Ballon",
+          "images": 1
+        },
+        {
+          "id": "4b153351-c8b2-4bbc-87c5-10e7c7ab64fd",
+          "name": "Star Flyer",
+          "images": 2
+        },
+        {
+          "id": "b344e698-e8b0-4598-9c26-3929e7d1c383",
+          "name": "Star Tower",
+          "images": 1
+        },
+        {
+          "id": "85b8602f-ef65-468c-b577-7a6cf73a9ea7",
+          "name": "Toboggan des Géants",
+          "images": 1
+        },
+        {
+          "id": "06eb4048-eadc-4095-a8a7-74ef63c2dff1",
+          "name": "Trampolines",
+          "images": 1
+        },
+        {
+          "id": "e4e66050-5f12-4324-97d8-81586b7b9ab6",
+          "name": "Trampolines n° 2",
+          "images": 1
+        }
+      ],
+      "photosWithAtLeastThree": 0,
+      "itemGps": 0,
+      "officialMaps": 0,
+      "images": 26,
+      "privateImagesBefore": 7,
+      "historyEvents": 8,
+      "privateHistoryBefore": 5,
+      "historyWithoutImages": [
+        "ile-aux-geants-planning-judgment-2022",
+        "ile-aux-geants-reception-fire-20240223",
+        "ile-aux-geants-appeal-judgment-20240710",
+        "ile-aux-geants-seasonal-return-20250529"
+      ],
+      "articles": 1
+    }
+  },
+  "officialCompleteness": {
+    "receivedAtUtc": "2026-11-15T17:14:11.3202719Z",
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-15T17:14:10.2267645Z",
+    "result": {
+      "completenessScore": 95,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 102,
+      "earnedPoints": 100,
+      "publicationBlockers": [
+        "public-text.formulaic-content"
+      ],
+      "formulaicPublicTextIssue": {
+        "matchType": "sentence",
+        "languageCode": "fr",
+        "firstDocumentIndex": 178,
+        "secondDocumentIndex": 195,
+        "firstDocumentSha256": "a2e0d29a9e1f29b957fbe2c676cd02b73487e48e65ea517ecb6270a8510b769d",
+        "secondDocumentSha256": "a2e0d29a9e1f29b957fbe2c676cd02b73487e48e65ea517ecb6270a8510b769d",
+        "fingerprintSha256": "e4f6bf2c55f53b2fdfd0b7c6420b05929780eb6a07181bbc330de91caf2a42fb",
+        "firstDocumentPreview": "Montage promotionnel du Grand 8, de Star Tower et de Star Flyer sur fond bleu.",
+        "secondDocumentPreview": "Montage promotionnel du Grand 8, de Star Tower et de Star Flyer sur fond bleu.",
+        "fingerprintPreview": "montage promotionnel du grand 8 de et de sur fond bleu"
+      }
+    }
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T17:14:31.3783774Z",
+    "receivedAtUtc": "2026-11-15T17:14:32.0107953Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+      "parkName": "L'Île aux Géants",
+      "factCount": 16,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 0,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 5
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 3
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 8
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 3,
+        "sourcedFactCount": 3,
+        "majorFactCount": 1,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "duplicateDesignIssue": {
+    "ids": [
+      "39f4dbe31e854dc0a0c552e2f96cea38",
+      "a3ec565c0a334f5db285e05ecebe9cb5"
+    ],
+    "classification": "Two versions of the same promotional montage, not independent photographs; smaller version adds palm fronds. Main larger version caption incorrectly also mentions palms. Identical localized alternate texts and captions trigger public-text.formulaic-content.",
+    "currentFirst": true,
+    "publicBoth": true,
+    "binaryEvidence": [
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/ile-aux-geants-banniere-web-2000x740px-scaled.jpg",
+        "sha256": "cc28d183828294d97ed2b65d3d9ead52403768f838f2c3bdb75f3e97b866069d",
+        "bytes": 323993
+      },
+      {
+        "file": "/workspace/france-historical-20261114/ile-aux-geants/source-images/ile-aux-geants-banniere-web-1700x630px-.jpg",
+        "sha256": "d129bb04bc8884f0cc8fe10350984d03d4db8ab0f74165a1e87848d512e67885",
+        "bytes": 712782
+      }
+    ],
+    "decision": "Do not disguise related/duplicate content through arbitrary wording. No removal, hiding or replacement authorized or executed. No PreviewDeletion, ApplyDeletion or publication call performed. Existing public files preserved."
+  },
+  "remainingGaps": [
+    "Two generic unqualified public item descriptions; unnamed seasonal offers and post-fire shop/arcade inventory remain unresolved.",
+    "Three items have no own photograph; noitem has3distinctphotos; no provenitemGPS orannualmap. Two promotional montagesexcludedfromgeneralphotocount.",
+    "Four newparkfacts lack faithfuleventphotographs afterdocumentedsearch. Le7authorportrait isnotfirephoto.",
+    "Grand8 structured model Zyklon / Galaxi remains inherited and unresolved; public2018summary nowonly sourcedarrivalfacts.",
+    "LeParisien2022freshrequestfailed; previouslyconsultedpartialpublicarticle andLe7PDFcorroboration retained, noaccessbypass."
+  ],
+  "noFacebookPublication": true,
+  "nextStep": "Resolve documented legacy duplicate-design disposition via authorized official workflow, then recheck official blockers and perform distinct publication export. Reuse this uniqueauditexport and recorded corrections, no repeatfullaudit."
+}

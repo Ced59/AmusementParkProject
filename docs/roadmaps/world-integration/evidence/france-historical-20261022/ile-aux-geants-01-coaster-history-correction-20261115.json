@@ -1,0 +1,293 @@
+{
+  "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "entryId": "FR-park-29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "id": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "name": "L'Île aux Géants",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+          "key": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+          "name": "Le Grand 8",
+          "category": "Attraction",
+          "type": "RollerCoaster"
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "ile-aux-geants-thrill-coaster-2018",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+            "parkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+            "parkItemId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+            "itemKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+            "parkItemKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+            "contextParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+            "year": 2018,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Avengers rejoint L’Île aux Géants"
+              },
+              {
+                "languageCode": "en",
+                "value": "Avengers joins L’Île aux Géants"
+              },
+              {
+                "languageCode": "de",
+                "value": "Avengers kommt zu L’Île aux Géants"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Avengers komt naar L’Île aux Géants"
+              },
+              {
+                "languageCode": "it",
+                "value": "Avengers arriva a L’Île aux Géants"
+              },
+              {
+                "languageCode": "es",
+                "value": "Avengers llega a L’Île aux Géants"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Avengers trafia do L’Île aux Géants"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Avengers chega ao L’Île aux Géants"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En 2018, le parc rachète la montagne russe Avengers, précédemment vue à Paris, à la Villette, en décembre 2016. Installée à Dissay aux côtés de La Chenille, elle devient la seconde montagne russe du parc. L’Île aux Géants la présente aujourd’hui sous le nom Le Grand 8."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2018, the park buys the Avengers roller coaster, previously seen at La Villette in Paris in December 2016. Installed in Dissay alongside La Chenille, it becomes the park’s second roller coaster. L’Île aux Géants now presents it as Le Grand 8."
+              },
+              {
+                "languageCode": "de",
+                "value": "2018 kauft der Park die Achterbahn Avengers, die zuvor im Dezember 2016 im Pariser Viertel La Villette zu sehen war. Sie wird in Dissay neben La Chenille aufgestellt und ist damit die zweite Achterbahn des Parks. Heute führt L’Île aux Géants sie unter dem Namen Le Grand 8."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2018 koopt het park de achtbaan Avengers, die eerder in december 2016 in La Villette in Parijs te zien was. De baan wordt in Dissay naast La Chenille opgesteld en is daarmee de tweede achtbaan van het park. L’Île aux Géants presenteert haar nu als Le Grand 8."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2018 il parco acquista la montagna russa Avengers, già vista alla Villette di Parigi nel dicembre 2016. Installata a Dissay accanto a La Chenille, diventa la seconda montagna russa del parco. Oggi L’Île aux Géants la presenta con il nome Le Grand 8."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2018, el parque compra la montaña rusa Avengers, vista anteriormente en La Villette de París en diciembre de 2016. Instalada en Dissay junto a La Chenille, se convierte en la segunda montaña rusa del parque. Hoy L’Île aux Géants la presenta con el nombre Le Grand 8."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2018 roku park kupuje kolejkę Avengers, widzianą wcześniej w paryskiej dzielnicy La Villette w grudniu 2016 roku. Ustawiona w Dissay obok La Chenille staje się drugą kolejką górską w parku. Obecnie L’Île aux Géants przedstawia ją pod nazwą Le Grand 8."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2018, o parque compra a montanha-russa Avengers, anteriormente vista em La Villette, Paris, em dezembro de 2016. Instalada em Dissay ao lado de La Chenille, torna-se a segunda montanha-russa do parque. Hoje, o L’Île aux Géants apresenta-a com o nome Le Grand 8."
+              }
+            ],
+            "mainImageId": "9ad259ed2aaf41c9a112503acc6dd201",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Roller Coaster DataBase — Avengers Roller Coaster",
+                "url": "https://rcdb.com/14491.htm",
+                "accessedAt": "2026-10-03"
+              },
+              {
+                "label": "L'Île aux Géants — attractions",
+                "url": "https://ileauxgeants.fr/attractions/",
+                "accessedAt": "2026-10-03"
+              },
+              {
+                "label": "Coasterrider — Pascal Voisin, visite du 9 juillet 2018, publiée le 10 juillet",
+                "url": "https://coasterrider.fr/parc/l-ile-aux-geants/9-juillet-2018",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — revue avant publication de portée",
+        "notes": "Remove old unqualified Galaxi claim and generic comparison. Contemporary9July2018visit published10July explicitly purchase/arrival2018, priorLaVilletteDecember2016. Existing2018event identity/type/year/publicvisibility/image preserved; no duplicated event, no manufacturer inferred, structured model deliberately unchanged pending separate source reconciliation.16localized fields personally written and reviewed."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "65e45323-fa74-44d4-bb35-fe9cbab9b1dc",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:07:16.3495569Z",
+    "appliedAtUtc": null,
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "entityKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "displayName": "Le Grand 8",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "36b2cad2-3894-4b81-8d22-8b659606e569",
+        "entityKey": "ile-aux-geants-thrill-coaster-2018",
+        "displayName": "Avengers rejoint L’Île aux Géants",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "titles",
+            "oldValue": "de:Eine lebhaftere Achterbahn kommt nach Dissay, en:A livelier roller coaster arrives in Dissay, es:Una montaña rusa más viva llega a Dissay, fr:Une montagne russe plus vive arrive à Dissay, it:Una montagna russa più vivace arriva a Dissay, nl:Een levendigere achtbaan komt naar Dissay, pl:Do Dissay przybywa żywsza kolejka, pt:Uma montanha-russa mais viva chega a Dissay",
+            "newValue": "de:Avengers kommt zu L’Île aux Géants, en:Avengers joins L’Île aux Géants, es:Avengers llega a L’Île aux Géants, fr:Avengers rejoint L’Île aux Géants, it:Avengers arriva a L’Île aux Géants, nl:Avengers komt naar L’Île aux Géants, pl:Avengers trafia do L’Île aux Géants, pt:Avengers chega ao L’Île aux Géants"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:Die 2018 als Avengers Roller Coaster angekommene Galaxi-Strecke wird heute vom Park als Le Grand 8 vorgestellt. Sie bildet den intensiveren Gegenpol zu La Chenille., en:Arriving in 2018 as Avengers Roller Coaster, the Galaxi course is now presented by the park as Le Grand 8. It provides a more intense counterpart to La Chenille., es:El recorrido Galaxi llegó en 2018 como Avengers Roller Coaster y el parque lo presenta hoy como Le Grand 8. Aporta un contrapunto más intenso a La Chenille., fr:Arrivé en 2018 sous lʼidentité Avengers Roller Coaster, le parcours Galaxi est aujourdʼhui présenté par le parc sous le nom Le Grand 8. Il apporte un contrepoint plus intense à La Chenille., it:Arrivato nel 2018 come Avengers Roller Coaster, il percorso Galaxi è oggi presentato dal parco come Le Grand 8. Offre un contrappunto più intenso a La Chenille., nl:Het Galaxi-parcours kwam in 2018 als Avengers Roller Coaster en wordt nu door het park als Le Grand 8 gepresenteerd. Het vormt de intensere tegenhanger van La Chenille., pl:Trasa Galaxi przybyła w 2018 roku jako Avengers Roller Coaster, a dziś park przedstawia ją jako Le Grand 8. Stanowi mocniejszy kontrapunkt dla La Chenille., pt:O percurso Galaxi chegou em 2018 como Avengers Roller Coaster e é hoje apresentado pelo parque como Le Grand 8. Oferece um contraponto mais intenso à La Chenille.",
+            "newValue": "de:2018 kauft der Park die Achterbahn Avengers, die zuvor im Dezember 2016 im Pariser Viertel La Villette zu sehen war. Sie wird in Dissay neben La Chenille aufgestellt und ist damit die zweite Achterbahn des Parks. Heute führt L’Île aux Géants sie unter dem Namen Le Grand 8., en:In 2018, the park buys the Avengers roller coaster, previously seen at La Villette in Paris in December 2016. Installed in Dissay alongside La Chenille, it becomes the park’s second roller coaster. L’Île aux Géants now presents it as Le Grand 8., es:En 2018, el parque compra la montaña rusa Avengers, vista anteriormente en La Villette de París en diciembre de 2016. Instalada en Dissay junto a La Chenille, se convierte en la segunda montaña rusa del parque. Hoy L’Île aux Géants la presenta con el nombre Le Grand 8., fr:En 2018, le parc rachète la montagne russe Avengers, précédemment vue à Paris, à la Villette, en décembre 2016. Installée à Dissay aux côtés de La Chenille, elle devient la seconde montagne russe du parc. L’Île aux Géants la présente aujourd’hui sous le nom Le Grand 8., it:Nel 2018 il parco acquista la montagna russa Avengers, già vista alla Villette di Parigi nel dicembre 2016. Installata a Dissay accanto a La Chenille, diventa la seconda montagna russa del parco. Oggi L’Île aux Géants la presenta con il nome Le Grand 8., nl:In 2018 koopt het park de achtbaan Avengers, die eerder in december 2016 in La Villette in Parijs te zien was. De baan wordt in Dissay naast La Chenille opgesteld en is daarmee de tweede achtbaan van het park. L’Île aux Géants presenteert haar nu als Le Grand 8., pl:W 2018 roku park kupuje kolejkę Avengers, widzianą wcześniej w paryskiej dzielnicy La Villette w grudniu 2016 roku. Ustawiona w Dissay obok La Chenille staje się drugą kolejką górską w parku. Obecnie L’Île aux Géants przedstawia ją pod nazwą Le Grand 8., pt:Em 2018, o parque compra a montanha-russa Avengers, anteriormente vista em La Villette, Paris, em dezembro de 2016. Instalada em Dissay ao lado de La Chenille, torna-se a segunda montanha-russa do parque. Hoje, o L’Île aux Géants apresenta-a com o nome Le Grand 8."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 attractions\",\"Url\":\"https://ileauxgeants.fr/attractions/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"Roller Coaster DataBase \\u2014 Avengers Roller Coaster\",\"Url\":\"https://rcdb.com/14491.htm\",\"AccessedAt\":\"2026-10-03\"}]",
+            "newValue": "[{\"Label\":\"Coasterrider \\u2014 Pascal Voisin, visite du 9 juillet 2018, publi\\u00E9e le 10 juillet\",\"Url\":\"https://coasterrider.fr/parc/l-ile-aux-geants/9-juillet-2018\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 attractions\",\"Url\":\"https://ileauxgeants.fr/attractions/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"Roller Coaster DataBase \\u2014 Avengers Roller Coaster\",\"Url\":\"https://rcdb.com/14491.htm\",\"AccessedAt\":\"2026-10-03\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "e003e1b2-2ccc-4276-bfa5-ed270d137f29",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:07:37.0196086Z",
+    "appliedAtUtc": "2026-11-15T17:07:37.0196092Z",
+    "targetParkId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+    "targetParkName": "L'Île aux Géants",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "29a2498e-9b6c-4c55-a2ac-e521dc6e4586",
+        "entityKey": "park",
+        "displayName": "L'Île aux Géants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "entityKey": "3542dcd3-f2f6-46f6-a5f4-96b28d325a36",
+        "displayName": "Le Grand 8",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "36b2cad2-3894-4b81-8d22-8b659606e569",
+        "entityKey": "ile-aux-geants-thrill-coaster-2018",
+        "displayName": "Avengers rejoint L’Île aux Géants",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "titles",
+            "oldValue": "de:Eine lebhaftere Achterbahn kommt nach Dissay, en:A livelier roller coaster arrives in Dissay, es:Una montaña rusa más viva llega a Dissay, fr:Une montagne russe plus vive arrive à Dissay, it:Una montagna russa più vivace arriva a Dissay, nl:Een levendigere achtbaan komt naar Dissay, pl:Do Dissay przybywa żywsza kolejka, pt:Uma montanha-russa mais viva chega a Dissay",
+            "newValue": "de:Avengers kommt zu L’Île aux Géants, en:Avengers joins L’Île aux Géants, es:Avengers llega a L’Île aux Géants, fr:Avengers rejoint L’Île aux Géants, it:Avengers arriva a L’Île aux Géants, nl:Avengers komt naar L’Île aux Géants, pl:Avengers trafia do L’Île aux Géants, pt:Avengers chega ao L’Île aux Géants"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "de:Die 2018 als Avengers Roller Coaster angekommene Galaxi-Strecke wird heute vom Park als Le Grand 8 vorgestellt. Sie bildet den intensiveren Gegenpol zu La Chenille., en:Arriving in 2018 as Avengers Roller Coaster, the Galaxi course is now presented by the park as Le Grand 8. It provides a more intense counterpart to La Chenille., es:El recorrido Galaxi llegó en 2018 como Avengers Roller Coaster y el parque lo presenta hoy como Le Grand 8. Aporta un contrapunto más intenso a La Chenille., fr:Arrivé en 2018 sous lʼidentité Avengers Roller Coaster, le parcours Galaxi est aujourdʼhui présenté par le parc sous le nom Le Grand 8. Il apporte un contrepoint plus intense à La Chenille., it:Arrivato nel 2018 come Avengers Roller Coaster, il percorso Galaxi è oggi presentato dal parco come Le Grand 8. Offre un contrappunto più intenso a La Chenille., nl:Het Galaxi-parcours kwam in 2018 als Avengers Roller Coaster en wordt nu door het park als Le Grand 8 gepresenteerd. Het vormt de intensere tegenhanger van La Chenille., pl:Trasa Galaxi przybyła w 2018 roku jako Avengers Roller Coaster, a dziś park przedstawia ją jako Le Grand 8. Stanowi mocniejszy kontrapunkt dla La Chenille., pt:O percurso Galaxi chegou em 2018 como Avengers Roller Coaster e é hoje apresentado pelo parque como Le Grand 8. Oferece um contraponto mais intenso à La Chenille.",
+            "newValue": "de:2018 kauft der Park die Achterbahn Avengers, die zuvor im Dezember 2016 im Pariser Viertel La Villette zu sehen war. Sie wird in Dissay neben La Chenille aufgestellt und ist damit die zweite Achterbahn des Parks. Heute führt L’Île aux Géants sie unter dem Namen Le Grand 8., en:In 2018, the park buys the Avengers roller coaster, previously seen at La Villette in Paris in December 2016. Installed in Dissay alongside La Chenille, it becomes the park’s second roller coaster. L’Île aux Géants now presents it as Le Grand 8., es:En 2018, el parque compra la montaña rusa Avengers, vista anteriormente en La Villette de París en diciembre de 2016. Instalada en Dissay junto a La Chenille, se convierte en la segunda montaña rusa del parque. Hoy L’Île aux Géants la presenta con el nombre Le Grand 8., fr:En 2018, le parc rachète la montagne russe Avengers, précédemment vue à Paris, à la Villette, en décembre 2016. Installée à Dissay aux côtés de La Chenille, elle devient la seconde montagne russe du parc. L’Île aux Géants la présente aujourd’hui sous le nom Le Grand 8., it:Nel 2018 il parco acquista la montagna russa Avengers, già vista alla Villette di Parigi nel dicembre 2016. Installata a Dissay accanto a La Chenille, diventa la seconda montagna russa del parco. Oggi L’Île aux Géants la presenta con il nome Le Grand 8., nl:In 2018 koopt het park de achtbaan Avengers, die eerder in december 2016 in La Villette in Parijs te zien was. De baan wordt in Dissay naast La Chenille opgesteld en is daarmee de tweede achtbaan van het park. L’Île aux Géants presenteert haar nu als Le Grand 8., pl:W 2018 roku park kupuje kolejkę Avengers, widzianą wcześniej w paryskiej dzielnicy La Villette w grudniu 2016 roku. Ustawiona w Dissay obok La Chenille staje się drugą kolejką górską w parku. Obecnie L’Île aux Géants przedstawia ją pod nazwą Le Grand 8., pt:Em 2018, o parque compra a montanha-russa Avengers, anteriormente vista em La Villette, Paris, em dezembro de 2016. Instalada em Dissay ao lado de La Chenille, torna-se a segunda montanha-russa do parque. Hoje, o L’Île aux Géants apresenta-a com o nome Le Grand 8."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 attractions\",\"Url\":\"https://ileauxgeants.fr/attractions/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"Roller Coaster DataBase \\u2014 Avengers Roller Coaster\",\"Url\":\"https://rcdb.com/14491.htm\",\"AccessedAt\":\"2026-10-03\"}]",
+            "newValue": "[{\"Label\":\"Coasterrider \\u2014 Pascal Voisin, visite du 9 juillet 2018, publi\\u00E9e le 10 juillet\",\"Url\":\"https://coasterrider.fr/parc/l-ile-aux-geants/9-juillet-2018\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"L\\u0027\\u00CEle aux G\\u00E9ants \\u2014 attractions\",\"Url\":\"https://ileauxgeants.fr/attractions/\",\"AccessedAt\":\"2026-10-03\"},{\"Label\":\"Roller Coaster DataBase \\u2014 Avengers Roller Coaster\",\"Url\":\"https://rcdb.com/14491.htm\",\"AccessedAt\":\"2026-10-03\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Île aux Géants : le fait public de 2018 décrit désormais le rachat d’Avengers et sa présence antérieure à La Villette, selon le reportage contemporain. Seize textes relus dans huit langues ; ancien événement, date et image conservés, aucun fabricant ou modèle déduit.",
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "globalCompleted": false
+}

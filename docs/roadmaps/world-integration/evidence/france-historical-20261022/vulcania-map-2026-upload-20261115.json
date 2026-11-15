@@ -1,0 +1,61 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+    "accessedAtUtc": "2026-11-15T11:12:13.509774+00:00",
+    "file": "/workspace/france-historical-20261114/vulcania-public-research-20261115/map-2026.jpg",
+    "status": 200,
+    "finalUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+    "contentType": "image/jpeg",
+    "bytes": 289392,
+    "sha256": "a693c29506d1107112933b761d37bd4aa674f969318c2b1be5107bcfa9ea20c6",
+    "dimensions": [
+      1455,
+      2048
+    ],
+    "verifiedAtUtc": "2026-11-15T17:18:10.890841+00:00",
+    "year": 2026,
+    "yearEvidence": "Official filename and publishedplanedition; independently inspected wholefile. Year not inferred from downloadtime.",
+    "rootInspected": true,
+    "noTransformation": true
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportOfficialMap",
+      "ParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "OfficialMapId": "vulcania-map-2026-fr",
+      "OfficialMapYear": 2026,
+      "LanguageCode": "fr",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania-public-research-20261115/map-2026.jpg"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/13-map-2026-upload-result.json"
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T17:20:54.7513092Z",
+    "action": "ImportOfficialMap",
+    "result": {
+      "ParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "OfficialMap": {
+        "Key": "vulcania-map-2026-fr",
+        "Id": "vulcania-map-2026-fr",
+        "Year": 2026,
+        "Format": "Image",
+        "StorageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2026-fr.7e6718057a064b49baff7588e2bacb5a.jpg",
+        "OriginalFileName": "map-2026.jpg",
+        "ContentType": "image/jpeg",
+        "SizeInBytes": 289392,
+        "SourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+        "LanguageCode": "fr",
+        "IsVisible": false
+      }
+    },
+    "startedAtUtc": "2026-11-15T17:20:52.6470051Z"
+  },
+  "timestampExplanation": "Upload response has no serverUTC; receivedAtUtc records actual receipt time and is not represented as serverUTC. AssociationApplyserverUTC will be separately recorded.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

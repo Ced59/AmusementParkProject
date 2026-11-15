@@ -1,0 +1,73 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "personalSourceReview": [
+    {
+      "file": "abyss-creator.txt",
+      "sha256": "835d6ba74967e94ffa87f2527b1f76ae4dc9a916736fea5c0bd8c0b53fb0ca26"
+    },
+    {
+      "file": "magma-creator.txt",
+      "sha256": "39d72ae09e341657f90a1031a1dd5b82b5102d947e364098191b836b6cfb8402"
+    },
+    {
+      "file": "aerophile-vulcania.txt",
+      "sha256": "d48fe9821411b687869969491f2af341606404259299a96ef665044db02a1b2f"
+    },
+    {
+      "file": "dragon-original-creator.txt",
+      "sha256": "040409b690865cedf627d7e71b93e91726e593bda6304272b6a1f064b36dfe4e"
+    },
+    {
+      "file": "dragon-2-creator.txt",
+      "sha256": "d670968e3b4c73e5302bd9e8472454905e5fc555f5c84bbd1733e0b71256ccf6"
+    },
+    {
+      "file": "employee-welcome-2026.txt",
+      "sha256": "970f8e9ce179f8a05341668017fa4998e377693c2c94a60e0016579f7c2e392c"
+    },
+    {
+      "file": "map-2024.pdf",
+      "sha256": "51038ef2aff6b4605988c5f099dfe7c317b2db0a25dd9ce615dad3b331dc5e0e"
+    },
+    {
+      "file": "teacher-guide-2025.pdf",
+      "sha256": "73b9db73eb6950678154cbe56e7283dfe21baa4d7b17e5ab2d30b8832d88e4e0"
+    },
+    {
+      "file": "map-2026.jpg",
+      "sha256": "a693c29506d1107112933b761d37bd4aa674f969318c2b1be5107bcfa9ea20c6"
+    }
+  ],
+  "decisions": "Three distinct historical experiences, private drafts. Abyss explicitly former experience replaced by Expédition Hawaï in2026 official staff booklet, so ClosedDefinitively but no invented closing date. Creator first screening16March2016 supports2016 opening only here; no same physical equipment assumed across themes. Magma first screeningMarch2007, statusUnknown, no unsupported link toAbyss. Ballon des Puys listed2014 byAerophile and named inofficial2016orderform; InsidePark not standalone, statusUnknown, no retirement inferred from maps or2019proposal. Existing Aerophile globalID reused from PetitPrince canonicalreference, no newglobalreference or rewrite. DragonRide2008 original andJuly2020 sequel are versions ofoneexistingcurrentexperience, not seconditem. No duration fromfilm alone copied toridecycle, noGPS or day invented. Textualdescriptions/photos still pending.",
+  "maps": {
+    "reviewed": [
+      2024,
+      2025,
+      2026
+    ],
+    "identityExport": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "officialMaps": []
+      },
+      "metadata": {
+        "exportedAtUtc": "2026-11-15T17:00:03.3904709Z"
+      }
+    },
+    "uploaded": false,
+    "2025Source": "Whole teacher guide with map onpage2, personally viewed. No extracted edition created."
+  },
+  "rightsLimit": {
+    "officialLegalSource": "https://www.vulcania.com/mentions-legales/",
+    "localFile": "/workspace/france-historical-20261114/vulcania/namazu-park-photos-followup-1410/official-legal.txt",
+    "decision": "Native current logo andannualmaps found and inspected. Official legal notice expressly requests prior written permission forrepublication; no authorization document found. Not marked imported orcomplete. LicensedCommonsphotos kept distinct."
+  }
+}

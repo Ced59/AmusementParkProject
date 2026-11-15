@@ -1,0 +1,275 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "url": "https://www.vulcania.com/wp-content/uploads/2023/03/logo-vulcania.png",
+    "file": "/workspace/france-historical-20261114/vulcania-public-research-20261115/logo-current.png",
+    "dimensions": [
+      570,
+      253
+    ],
+    "bytes": 16461,
+    "sha256": "289c1059e68db68208375a3e53af75c4dfa3693917d740037f45855751817e11",
+    "status": 200,
+    "verifiedAtUtc": "2026-11-15T17:17:06.976303+00:00",
+    "visuallyInspected": true,
+    "noTransform": true,
+    "permissionContext": "Existing owner authorization for France campaign photos retained in accepted-visitor-photo-manifest.json of ÎleauxGéants; this is not an open-license or third-party written-permission claim. Official copyright terms remain documented.",
+    "identityAdoptionDate": null
+  },
+  "metadata": {
+    "description": "Le volcan ouvert prolonge le V de Vulcania, au-dessus de la signature auvergnate.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/logo-vulcania.png",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Logo Vulcania : nom rouge, volcan stylisé aux projections multicolores et mention « en AUVERGNE » en bleu."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania logo with red lettering, a stylised volcano throwing out colourful shapes and the blue words “en AUVERGNE”."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vulcania-Logo mit rotem Schriftzug, einem stilisierten Vulkan mit bunten Auswürfen und den blauen Worten „en AUVERGNE“."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vulcania-logo met rode letters, een gestileerde vulkaan met kleurrijke uitbarsting en de blauwe woorden “en AUVERGNE”."
+      },
+      {
+        "languageCode": "it",
+        "value": "Logo Vulcania con scritta rossa, un vulcano stilizzato con spruzzi multicolori e le parole « en AUVERGNE » in blu."
+      },
+      {
+        "languageCode": "es",
+        "value": "Logotipo de Vulcania con letras rojas, un volcán estilizado con proyecciones multicolores y las palabras « en AUVERGNE » en azul."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Logo Vulcanii: czerwony napis, stylizowany wulkan z wielobarwnymi wyrzutami i niebieskie słowa „en AUVERGNE”."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Logótipo do Vulcania com letras vermelhas, um vulcão estilizado com projeções multicolores e as palavras « en AUVERGNE » a azul."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le volcan ouvert prolonge le V de Vulcania, au-dessus de la signature auvergnate."
+      },
+      {
+        "languageCode": "en",
+        "value": "The open volcano extends the V of Vulcania above the reference to Auvergne."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der offene Vulkan verlängert das V von Vulcania über dem Hinweis auf die Auvergne."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De open vulkaan sluit aan op de V van Vulcania, boven de verwijzing naar de Auvergne."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il vulcano aperto prolunga la V di Vulcania sopra il richiamo all’Alvernia."
+      },
+      {
+        "languageCode": "es",
+        "value": "El volcán abierto prolonga la V de Vulcania sobre la referencia a Auvernia."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Otwarty wulkan stanowi przedłużenie litery V w nazwie Vulcania, ponad wzmianką o Owernii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O vulcão aberto prolonga o V de Vulcania, acima da referência à Auvérnia."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T17:17:24.8933790Z",
+    "result": {
+      "id": "2eeb41e9d92a420e8ad3b1fbb98a7741",
+      "category": "LOGO",
+      "ownerType": "PARK",
+      "ownerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "path": "logo/2eeb41e9d92a420e8ad3b1fbb98a7741",
+      "description": "Le volcan ouvert prolonge le V de Vulcania, au-dessus de la signature auvergnate.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 570,
+      "height": 253,
+      "sizeInBytes": 16461,
+      "originalFileName": "codex-import.png",
+      "contentType": "image/png",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/logo-vulcania.png",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Logo Vulcania : nom rouge, volcan stylisé aux projections multicolores et mention « en AUVERGNE » en bleu."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania logo with red lettering, a stylised volcano throwing out colourful shapes and the blue words “en AUVERGNE”."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vulcania-Logo mit rotem Schriftzug, einem stilisierten Vulkan mit bunten Auswürfen und den blauen Worten „en AUVERGNE“."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vulcania-logo met rode letters, een gestileerde vulkaan met kleurrijke uitbarsting en de blauwe woorden “en AUVERGNE”."
+        },
+        {
+          "languageCode": "it",
+          "value": "Logo Vulcania con scritta rossa, un vulcano stilizzato con spruzzi multicolori e le parole « en AUVERGNE » in blu."
+        },
+        {
+          "languageCode": "es",
+          "value": "Logotipo de Vulcania con letras rojas, un volcán estilizado con proyecciones multicolores y las palabras « en AUVERGNE » en azul."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Logo Vulcanii: czerwony napis, stylizowany wulkan z wielobarwnymi wyrzutami i niebieskie słowa „en AUVERGNE”."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Logótipo do Vulcania com letras vermelhas, um vulcão estilizado com projeções multicolores e as palavras « en AUVERGNE » a azul."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le volcan ouvert prolonge le V de Vulcania, au-dessus de la signature auvergnate."
+        },
+        {
+          "languageCode": "en",
+          "value": "The open volcano extends the V of Vulcania above the reference to Auvergne."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der offene Vulkan verlängert das V von Vulcania über dem Hinweis auf die Auvergne."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De open vulkaan sluit aan op de V van Vulcania, boven de verwijzing naar de Auvergne."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il vulcano aperto prolunga la V di Vulcania sopra il richiamo all’Alvernia."
+        },
+        {
+          "languageCode": "es",
+          "value": "El volcán abierto prolonga la V de Vulcania sobre la referencia a Auvernia."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Otwarty wulkan stanowi przedłużenie litery V w nazwie Vulcania, ponad wzmianką o Owernii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O vulcão aberto prolonga o V de Vulcania, acima da referência à Auvérnia."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T17:17:18.095Z",
+      "updatedAt": "2026-11-15T17:17:21.782Z"
+    },
+    "startedAtUtc": "2026-11-15T17:17:16.7837752Z"
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/03/logo-vulcania.png",
+      "FilePath": "/workspace/france-historical-20261114/vulcania-public-research-20261115/logo-current.png",
+      "Category": "LOGO",
+      "OwnerType": "PARK",
+      "OwnerId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": true,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/12-logo-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/12-logo-import-result.json"
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "personalReview": "Native570×253officialstandalonelogo visually reviewed;24metadatafields personallywritten/reviewed in8languages;noediting orimaginedidentityadoptiondate."
+}

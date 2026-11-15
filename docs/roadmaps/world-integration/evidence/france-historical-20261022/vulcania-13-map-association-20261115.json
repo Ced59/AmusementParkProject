@@ -1,0 +1,664 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR",
+        "officialMaps": [
+          {
+            "key": "vulcania-map-2024-fr",
+            "id": "vulcania-map-2024-fr",
+            "year": 2024,
+            "format": "Pdf",
+            "storageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2024-fr.0aaa5fd361b544e8b8b1645e0570b322.pdf",
+            "originalFileName": "map-2024.pdf",
+            "contentType": "application/pdf",
+            "sizeInBytes": 420693,
+            "sourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+            "languageCode": "fr",
+            "isVisible": false,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan de Vulcania — 2024"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania map — 2024"
+              },
+              {
+                "languageCode": "de",
+                "value": "Plan von Vulcania — 2024"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Plattegrond van Vulcania — 2024"
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa di Vulcania — 2024"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano de Vulcania — 2024"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Mapa Vulcanii — 2024"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa do Vulcania — 2024"
+              }
+            ],
+            "lastVerifiedAtUtc": "2026-11-15T17:18:10.444370+00:00"
+          },
+          {
+            "key": "vulcania-map-2026-fr",
+            "id": "vulcania-map-2026-fr",
+            "year": 2026,
+            "format": "Image",
+            "storageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2026-fr.7e6718057a064b49baff7588e2bacb5a.jpg",
+            "originalFileName": "map-2026.jpg",
+            "contentType": "image/jpeg",
+            "sizeInBytes": 289392,
+            "sourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+            "languageCode": "fr",
+            "isVisible": false,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan de Vulcania — 2026"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania map — 2026"
+              },
+              {
+                "languageCode": "de",
+                "value": "Plan von Vulcania — 2026"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Plattegrond van Vulcania — 2026"
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa di Vulcania — 2026"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano de Vulcania — 2026"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Mapa Vulcanii — 2026"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa do Vulcania — 2026"
+              }
+            ],
+            "lastVerifiedAtUtc": "2026-11-15T17:18:10.890841+00:00",
+            "alternativeTexts": [
+              {
+                "languageCode": "fr",
+                "value": "Plan illustré de Vulcania : le cône central, Namazu et l’Astrodôme, avec les attractions et services répartis sur les niveaux A à D."
+              },
+              {
+                "languageCode": "en",
+                "value": "Illustrated Vulcania map showing the central cone, Namazu and the Astrodôme, with attractions and services across levels A to D."
+              },
+              {
+                "languageCode": "de",
+                "value": "Illustrierter Plan von Vulcania mit dem zentralen Kegel, Namazu und dem Astrodôme sowie Attraktionen und Serviceangeboten auf den Ebenen A bis D."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Geïllustreerde plattegrond van Vulcania met de centrale kegel, Namazu en de Astrodôme, en attracties en voorzieningen op de niveaus A tot en met D."
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa illustrata di Vulcania con il cono centrale, Namazu e l’Astrodôme, e le attrazioni e i servizi distribuiti sui livelli da A a D."
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano ilustrado de Vulcania con el cono central, Namazu y el Astrodôme, y las atracciones y servicios distribuidos entre los niveles A y D."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ilustrowana mapa Vulcanii z centralnym stożkiem, Namazu i Astrodôme oraz atrakcjami i usługami na poziomach od A do D."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa ilustrado do Vulcania com o cone central, Namazu e o Astrodôme, e as atrações e os serviços distribuídos pelos níveis A a D."
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-official-maps-2024-2026",
+        "notes": "Two whole official nativefiles visually inspected;2024singlepagePDF and2026illustratedJPEG.24maptitles/altfields personallywritten/reviewed8languages.2025teacherbookletcontainsmap but no standaloneannualplanfile proven; not extracted/relabelled.2026sensationsleaflet is supplementary and not generalplanedition. A–D arelevels,notzones. Uploads alreadyrecorded at receiptUTCbecause no serverUTCreturned;associationseparate. Bothnewmapsremainprivate. ExistingownerFrancecampaignmediaauthorizationreconciled;noopenlicenseclaim."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "77abad9c-1027-474d-8d45-30c0389fe097",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:21:42.829593Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2024-fr",
+        "entityKey": "vulcania-map-2024-fr",
+        "displayName": "Carte officielle 2024 (fr, Pdf)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "format",
+            "oldValue": "Image",
+            "newValue": "Pdf"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2024-fr.0aaa5fd361b544e8b8b1645e0570b322.pdf"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "map-2024.pdf"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "application/pdf"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "420693"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Plan von Vulcania — 2024"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Vulcania map — 2024"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano de Vulcania — 2024"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan de Vulcania — 2024"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa di Vulcania — 2024"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Plattegrond van Vulcania — 2024"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Mapa Vulcanii — 2024"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa do Vulcania — 2024"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2026-fr",
+        "entityKey": "vulcania-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Image)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2026-fr.7e6718057a064b49baff7588e2bacb5a.jpg"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "map-2026.jpg"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "image/jpeg"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "289392"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Plan von Vulcania — 2026"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Vulcania map — 2026"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano de Vulcania — 2026"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan de Vulcania — 2026"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa di Vulcania — 2026"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Plattegrond van Vulcania — 2026"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Mapa Vulcanii — 2026"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa do Vulcania — 2026"
+          },
+          {
+            "field": "alternativeTexts.de",
+            "oldValue": null,
+            "newValue": "Illustrierter Plan von Vulcania mit dem zentralen Kegel, Namazu und dem Astrodôme sowie Attraktionen und Serviceangeboten auf den Ebenen A bis D."
+          },
+          {
+            "field": "alternativeTexts.en",
+            "oldValue": null,
+            "newValue": "Illustrated Vulcania map showing the central cone, Namazu and the Astrodôme, with attractions and services across levels A to D."
+          },
+          {
+            "field": "alternativeTexts.es",
+            "oldValue": null,
+            "newValue": "Plano ilustrado de Vulcania con el cono central, Namazu y el Astrodôme, y las atracciones y servicios distribuidos entre los niveles A y D."
+          },
+          {
+            "field": "alternativeTexts.fr",
+            "oldValue": null,
+            "newValue": "Plan illustré de Vulcania : le cône central, Namazu et l’Astrodôme, avec les attractions et services répartis sur les niveaux A à D."
+          },
+          {
+            "field": "alternativeTexts.it",
+            "oldValue": null,
+            "newValue": "Mappa illustrata di Vulcania con il cono centrale, Namazu e l’Astrodôme, e le attrazioni e i servizi distribuiti sui livelli da A a D."
+          },
+          {
+            "field": "alternativeTexts.nl",
+            "oldValue": null,
+            "newValue": "Geïllustreerde plattegrond van Vulcania met de centrale kegel, Namazu en de Astrodôme, en attracties en voorzieningen op de niveaus A tot en met D."
+          },
+          {
+            "field": "alternativeTexts.pl",
+            "oldValue": null,
+            "newValue": "Ilustrowana mapa Vulcanii z centralnym stożkiem, Namazu i Astrodôme oraz atrakcjami i usługami na poziomach od A do D."
+          },
+          {
+            "field": "alternativeTexts.pt",
+            "oldValue": null,
+            "newValue": "Mapa ilustrado do Vulcania com o cone central, Namazu e o Astrodôme, e as atrações e os serviços distribuídos pelos níveis A a D."
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "76708b52-c49f-40e8-a93c-dfd028143fc5",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:22:04.1523466Z",
+    "appliedAtUtc": "2026-11-15T17:22:04.1523472Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2024-fr",
+        "entityKey": "vulcania-map-2024-fr",
+        "displayName": "Carte officielle 2024 (fr, Pdf)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2024"
+          },
+          {
+            "field": "format",
+            "oldValue": "Image",
+            "newValue": "Pdf"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2024-fr.0aaa5fd361b544e8b8b1645e0570b322.pdf"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "map-2024.pdf"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "application/pdf"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "420693"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Plan von Vulcania — 2024"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Vulcania map — 2024"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano de Vulcania — 2024"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan de Vulcania — 2024"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa di Vulcania — 2024"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Plattegrond van Vulcania — 2024"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Mapa Vulcanii — 2024"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa do Vulcania — 2024"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2026-fr",
+        "entityKey": "vulcania-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Image)",
+        "changeType": "Created",
+        "matchedBy": "year+languageCode+format",
+        "fields": [
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "storageKey",
+            "oldValue": null,
+            "newValue": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2026-fr.7e6718057a064b49baff7588e2bacb5a.jpg"
+          },
+          {
+            "field": "originalFileName",
+            "oldValue": null,
+            "newValue": "map-2026.jpg"
+          },
+          {
+            "field": "contentType",
+            "oldValue": null,
+            "newValue": "image/jpeg"
+          },
+          {
+            "field": "sizeInBytes",
+            "oldValue": null,
+            "newValue": "289392"
+          },
+          {
+            "field": "sourcePageUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg"
+          },
+          {
+            "field": "lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15"
+          },
+          {
+            "field": "titles.de",
+            "oldValue": null,
+            "newValue": "Plan von Vulcania — 2026"
+          },
+          {
+            "field": "titles.en",
+            "oldValue": null,
+            "newValue": "Vulcania map — 2026"
+          },
+          {
+            "field": "titles.es",
+            "oldValue": null,
+            "newValue": "Plano de Vulcania — 2026"
+          },
+          {
+            "field": "titles.fr",
+            "oldValue": null,
+            "newValue": "Plan de Vulcania — 2026"
+          },
+          {
+            "field": "titles.it",
+            "oldValue": null,
+            "newValue": "Mappa di Vulcania — 2026"
+          },
+          {
+            "field": "titles.nl",
+            "oldValue": null,
+            "newValue": "Plattegrond van Vulcania — 2026"
+          },
+          {
+            "field": "titles.pl",
+            "oldValue": null,
+            "newValue": "Mapa Vulcanii — 2026"
+          },
+          {
+            "field": "titles.pt",
+            "oldValue": null,
+            "newValue": "Mapa do Vulcania — 2026"
+          },
+          {
+            "field": "alternativeTexts.de",
+            "oldValue": null,
+            "newValue": "Illustrierter Plan von Vulcania mit dem zentralen Kegel, Namazu und dem Astrodôme sowie Attraktionen und Serviceangeboten auf den Ebenen A bis D."
+          },
+          {
+            "field": "alternativeTexts.en",
+            "oldValue": null,
+            "newValue": "Illustrated Vulcania map showing the central cone, Namazu and the Astrodôme, with attractions and services across levels A to D."
+          },
+          {
+            "field": "alternativeTexts.es",
+            "oldValue": null,
+            "newValue": "Plano ilustrado de Vulcania con el cono central, Namazu y el Astrodôme, y las atracciones y servicios distribuidos entre los niveles A y D."
+          },
+          {
+            "field": "alternativeTexts.fr",
+            "oldValue": null,
+            "newValue": "Plan illustré de Vulcania : le cône central, Namazu et l’Astrodôme, avec les attractions et services répartis sur les niveaux A à D."
+          },
+          {
+            "field": "alternativeTexts.it",
+            "oldValue": null,
+            "newValue": "Mappa illustrata di Vulcania con il cono centrale, Namazu e l’Astrodôme, e le attrazioni e i servizi distribuiti sui livelli da A a D."
+          },
+          {
+            "field": "alternativeTexts.nl",
+            "oldValue": null,
+            "newValue": "Geïllustreerde plattegrond van Vulcania met de centrale kegel, Namazu en de Astrodôme, en attracties en voorzieningen op de niveaus A tot en met D."
+          },
+          {
+            "field": "alternativeTexts.pl",
+            "oldValue": null,
+            "newValue": "Ilustrowana mapa Vulcanii z centralnym stożkiem, Namazu i Astrodôme oraz atrakcjami i usługami na poziomach od A do D."
+          },
+          {
+            "field": "alternativeTexts.pt",
+            "oldValue": null,
+            "newValue": "Mapa ilustrado do Vulcania com o cone central, Namazu e o Astrodôme, e as atrações e os serviços distribuídos pelos níveis A a D."
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : deux éditions officielles privées2024PDF et2026image rattachées avec les clés de stockage réelles et24titres/textes alternatifs relus en huit langues. Millésimes justifiés, aucun fichier réimporté ou extrait.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Two whole official nativefiles visually inspected;2024singlepagePDF and2026illustratedJPEG.24maptitles/altfields personallywritten/reviewed8languages.2025teacherbookletcontainsmap but no standaloneannualplanfile proven; not extracted/relabelled.2026sensationsleaflet is supplementary and not generalplanedition. A–D arelevels,notzones. Uploads alreadyrecorded at receiptUTCbecause no serverUTCreturned;associationseparate. Bothnewmapsremainprivate. ExistingownerFrancecampaignmediaauthorizationreconciled;noopenlicenseclaim."
+}

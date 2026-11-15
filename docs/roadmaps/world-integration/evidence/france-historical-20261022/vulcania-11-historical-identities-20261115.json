@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "vulcania-abyss-explorer",
+          "name": "Abyss Explorer",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "ClosedDefinitively",
+            "openingDate": "2016",
+            "sourceUrl": "https://www.amak.fr/project/abyss-explorer/"
+          }
+        },
+        {
+          "key": "vulcania-magma-explorer",
+          "name": "Magma Explorer III",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2007-03",
+            "sourceUrl": "https://www.amak.fr/project/magma-explorer-iii/"
+          }
+        },
+        {
+          "key": "vulcania-ballon-puys",
+          "name": "Ballon des Puys",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2014",
+            "sourceUrl": "https://www.aerophile.com/en/clients/vulcania/",
+            "manufacturerId": "c31e7068-44af-404f-b60b-67469d77eca3"
+          }
+        },
+        {
+          "id": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+          "key": "vulcania-dragon-ride",
+          "name": "Dragon Ride",
+          "category": "Attraction",
+          "type": "Cinema",
+          "attractionDetails": {
+            "openingDate": "2008",
+            "sourceUrl": "https://www.amak.fr/project/dragon-ride/"
+          }
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-historical-identities",
+        "notes": "Three distinct historical experiences, private drafts. Abyss explicitly former experience replaced by Expédition Hawaï in2026 official staff booklet, so ClosedDefinitively but no invented closing date. Creator first screening16March2016 supports2016 opening only here; no same physical equipment assumed across themes. Magma first screeningMarch2007, statusUnknown, no unsupported link toAbyss. Ballon des Puys listed2014 byAerophile and named inofficial2016orderform; InsidePark not standalone, statusUnknown, no retirement inferred from maps or2019proposal. Existing Aerophile globalID reused from PetitPrince canonicalreference, no newglobalreference or rewrite. DragonRide2008 original andJuly2020 sequel are versions ofoneexistingcurrentexperience, not seconditem. No duration fromfilm alone copied toridecycle, noGPS or day invented. Textualdescriptions/photos still pending."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "be3076b3-72ad-4ae6-af0f-8ef590bea660",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:01:47.6226556Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fc8c8e45-0546-4f6c-bacf-b5e2cd5548ff",
+        "entityKey": "vulcania-abyss-explorer",
+        "displayName": "Abyss Explorer",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.amak.fr/project/abyss-explorer/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2016"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "2cf40a46-db25-4744-8e4d-d62757aecc67",
+        "entityKey": "vulcania-magma-explorer",
+        "displayName": "Magma Explorer III",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.amak.fr/project/magma-explorer-iii/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2007-03"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bb95410c-9392-4e0e-bb58-f076e9108df5",
+        "entityKey": "vulcania-ballon-puys",
+        "displayName": "Ballon des Puys",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ObservationRide"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "c31e7068-44af-404f-b60b-67469d77eca3"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.aerophile.com/en/clients/vulcania/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2014"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "entityKey": "vulcania-dragon-ride",
+        "displayName": "Dragon Ride",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.vulcania.com/animation/dragon-ride/",
+            "newValue": "https://www.amak.fr/project/dragon-ride/"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2008"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "0be325ce-b104-4ece-b4bc-1ef49f0d3229",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T17:02:24.0245271Z",
+    "appliedAtUtc": "2026-11-15T17:02:24.0245278Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+        "entityKey": "vulcania-abyss-explorer",
+        "displayName": "Abyss Explorer",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.amak.fr/project/abyss-explorer/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2016"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+        "entityKey": "vulcania-magma-explorer",
+        "displayName": "Magma Explorer III",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Cinema"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.amak.fr/project/magma-explorer-iii/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2007-03"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "vulcania-ballon-puys",
+        "displayName": "Ballon des Puys",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "ObservationRide"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "c31e7068-44af-404f-b60b-67469d77eca3"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.aerophile.com/en/clients/vulcania/"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2014"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "entityKey": "vulcania-dragon-ride",
+        "displayName": "Dragon Ride",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": "https://www.vulcania.com/animation/dragon-ride/",
+            "newValue": "https://www.amak.fr/project/dragon-ride/"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2008"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : trois expériences historiques privées rapprochées des créateurs et des documents officiels ; ouverture de Dragon Ride précisée à 2008 sans doubler sa version 2020. Aucun jour de fermeture, GPS ou nouvelle référence inventé.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Three distinct historical experiences, private drafts. Abyss explicitly former experience replaced by Expédition Hawaï in2026 official staff booklet, so ClosedDefinitively but no invented closing date. Creator first screening16March2016 supports2016 opening only here; no same physical equipment assumed across themes. Magma first screeningMarch2007, statusUnknown, no unsupported link toAbyss. Ballon des Puys listed2014 byAerophile and named inofficial2016orderform; InsidePark not standalone, statusUnknown, no retirement inferred from maps or2019proposal. Existing Aerophile globalID reused from PetitPrince canonicalreference, no newglobalreference or rewrite. DragonRide2008 original andJuly2020 sequel are versions ofoneexistingcurrentexperience, not seconditem. No duration fromfilm alone copied toridecycle, noGPS or day invented. Textualdescriptions/photos still pending."
+}

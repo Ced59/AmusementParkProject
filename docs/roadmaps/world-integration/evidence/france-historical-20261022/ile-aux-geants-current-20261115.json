@@ -263,6 +263,19 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-07-pricing-age-precision-20261115.json"
+    },
+    {
+      "operationId": "e003e1b2-2ccc-4276-bfa5-ed270d137f29",
+      "appliedAtUtc": "2026-11-15T17:07:37.0196092Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-01-coaster-history-correction-20261115.json"
     }
   ],
   "reviewedItems": [
@@ -729,5 +742,13 @@
       "isPublished": false,
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-paddling-pool-2025-20261115.json"
     }
-  ]
+  ],
+  "lastDataIntegrationAt": "2026-11-15T17:07:37.0196092Z",
+  "finalAuditPerformed": true,
+  "auditOutcome": "blocked",
+  "publicationBlockers": [
+    "public-text.formulaic-content"
+  ],
+  "finalAuditProof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-geants-publication-scope-audit-20261115.json",
+  "uniqueAuditExportedAtUtc": "2026-11-15T17:08:32.4909433Z"
 }

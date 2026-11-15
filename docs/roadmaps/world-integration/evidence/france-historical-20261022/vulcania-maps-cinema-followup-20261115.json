@@ -1,0 +1,87 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "mapSources": [
+    {
+      "url": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+      "accessedAtUtc": "2026-11-15T11:12:13.695156+00:00",
+      "file": "/workspace/france-historical-20261114/vulcania-public-research-20261115/map-2024.pdf",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+      "contentType": "application/pdf",
+      "bytes": 420693,
+      "sha256": "51038ef2aff6b4605988c5f099dfe7c317b2db0a25dd9ce615dad3b331dc5e0e",
+      "pageCount": 1,
+      "verifiedAtUtc": "2026-11-15T17:18:10.444370+00:00",
+      "year": 2024,
+      "yearEvidence": "Official filename and publishedplanedition; independently inspected wholefile. Year not inferred from downloadtime.",
+      "rootInspected": true,
+      "noTransformation": true
+    },
+    {
+      "url": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+      "accessedAtUtc": "2026-11-15T11:12:13.509774+00:00",
+      "file": "/workspace/france-historical-20261114/vulcania-public-research-20261115/map-2026.jpg",
+      "status": 200,
+      "finalUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 289392,
+      "sha256": "a693c29506d1107112933b761d37bd4aa674f969318c2b1be5107bcfa9ea20c6",
+      "dimensions": [
+        1455,
+        2048
+      ],
+      "verifiedAtUtc": "2026-11-15T17:18:10.890841+00:00",
+      "year": 2026,
+      "yearEvidence": "Official filename and publishedplanedition; independently inspected wholefile. Year not inferred from downloadtime.",
+      "rootInspected": true,
+      "noTransformation": true
+    }
+  ],
+  "descriptionChecks": {
+    "newItems": 3,
+    "newLocalizedDescriptions": 24,
+    "personalReviewAllEightLanguages": true,
+    "newWordsWithHeadings": {
+      "Abyss Explorer": {
+        "fr": 129,
+        "en": 109,
+        "de": 106,
+        "nl": 117,
+        "it": 120,
+        "es": 123,
+        "pl": 92,
+        "pt": 120
+      },
+      "Magma Explorer III": {
+        "fr": 113,
+        "en": 104,
+        "de": 99,
+        "nl": 101,
+        "it": 108,
+        "es": 116,
+        "pl": 77,
+        "pt": 104
+      },
+      "Dragon Ride": {
+        "fr": 136,
+        "en": 119,
+        "de": 112,
+        "nl": 123,
+        "it": 124,
+        "es": 124,
+        "pl": 100,
+        "pt": 122
+      }
+    },
+    "longRepeatedSequencesAfterHeadingsNamesRemoved": [],
+    "scope": "Six described items together; publicsourceplot/material checked againstcreatorpages; no automachine translation."
+  },
+  "officialMapIds": [
+    "vulcania-map-2024-fr",
+    "vulcania-map-2026-fr"
+  ],
+  "rightsContext": "Earlier accepted campaign ownerauthorization applies; originallegaltermsretained; no newpermissionrequested andnoopenlicenseclaimed.",
+  "fullAuditExportPerformed": false,
+  "publicationPerformed": false
+}
