@@ -1,0 +1,30 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+  "entryId": "DE-standalone-8e2ee4e1-06a5-4805-bfd4-9898a9febd0c",
+  "name": "Rodelbahn Petersberg",
+  "researchAtUtc": "2026-11-15T16:23:22.547Z",
+  "status": "ResearchOnly",
+  "productionDataApplied": false,
+  "facebookPublished": false,
+  "productionPhotoIds": [
+    "7e0ce74a96b54e6ca05e2da3a7b4ce91",
+    "e90a31a0d25b4e39bacf1e5f172b781c",
+    "1fbf14507f2c4e94b84f18beba834a83",
+    "c7dcbc69e6fa40458b36ba0acda86cee",
+    "2a1ff7a3da3f4b5295489fe8b3b89a8b"
+  ],
+  "productionPhotoBinaryStatus": 200,
+  "photosExactVisuallyChecked": true,
+  "sourceFindings": {
+    "operatorFares": "Adult €3 single, child age 3–12 €2.50; per-ride reductions for batches of four or more. No effective date stated.",
+    "hours": "Operator hours page has images but no published text hours; homepage directs visitors to current Google listing. Municipal page says daily 11:00–17:30 without effective date; insufficient for dated production schedule.",
+    "ageAndHeight": "Secondary sources mention passenger from age three and solo from age eight with 135 cm, but operator did not publish these rules on the accessible pages reviewed.",
+    "identity": "Petersberg near Halle, Saxony-Anhalt. Distinct from Freizeitzentrum Peterberg in Saarland."
+  },
+  "nextAction": "Compléter la fiche après confirmation des horaires actuels directement auprès de l’exploitant (la page officielle renvoie au relevé du jour) et des conditions d’âge/taille ; les prix officiels sont publiés, cinq photos exactes sont visibles, mais leurs droits sont à auditer. Ne pas marquer Integrated ni inventer une date d’intégration sur la base de cet examen documentaire.",
+  "sources": [
+    "https://www.freizeitparkapp.de/en/parks/deutschland/rodelbahn-petersberg/",
+    "https://www.gemeinde-petersberg.de/de/sehenswertes/rodelbahn-petersberg.html"
+  ]
+}

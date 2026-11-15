@@ -21700,7 +21700,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "nextAction": "Compléter la fiche après confirmation des horaires actuels directement auprès de l’exploitant (la page officielle renvoie au relevé du jour) et des conditions d’âge/taille ; les prix officiels sont publiés, cinq photos exactes sont visibles, mais leurs droits sont à auditer. Ne pas marquer Integrated ni inventer une date d’intégration sur la base de cet examen documentaire.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -21726,6 +21726,26 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/13177.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Rodelbahn Petersberg — tarifs officiels",
+          "url": "https://rodelbahn.chayns.site/preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Rodelbahn Petersberg — page d’horaires officielle",
+          "url": "https://rodelbahn.chayns.site/%C3%B6ffnungszeiten",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Commune de Petersberg — horaires sans période de validité",
+          "url": "https://www.gemeinde-petersberg.de/de/sehenswertes/rodelbahn-petersberg.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Rodelbahn Petersberg — présentation officielle",
+          "url": "https://rodelbahn.chayns.site/dieRodelbahn",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
