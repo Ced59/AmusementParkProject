@@ -1,0 +1,100 @@
+{
+  "entryId": "HU-park-8c51d749-cdf3-46de-9d73-6d63037eec09",
+  "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+  "integrationHistory": [
+    {
+      "eventId": "apply-271de7f2-d349-4d59-b8a8-93a22a2d4f37",
+      "appliedAt": "2026-11-15T10:34:24.843Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:apply:271de7f2-d349-4d59-b8a8-93a22a2d4f37",
+      "auditEvidence": null,
+      "summary": "Création de la fiche autonome X-Trém Bob, identité vérifiée auprès de l’exploitant, coordonnées, dimensions et huit descriptions."
+    },
+    {
+      "eventId": "apply-6c2648cd-26fc-4a6d-99b0-c97f3d08ecc2",
+      "appliedAt": "2026-11-15T10:35:12.289Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:apply:6c2648cd-26fc-4a6d-99b0-c97f3d08ecc2",
+      "auditEvidence": null,
+      "summary": "Quatre offres tarifaires officielles en forints : trajets seuls et adulte-enfant, à l’unité ou par six."
+    },
+    {
+      "eventId": "apply-058d7dd8-817f-4ce3-af10-6513e9151b00",
+      "appliedAt": "2026-11-15T10:35:50.769Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:apply:058d7dd8-817f-4ce3-af10-6513e9151b00",
+      "auditEvidence": null,
+      "summary": "Règles officielles de l’exploitant pour les enfants et l’accompagnement, rédigées dans les huit langues."
+    },
+    {
+      "eventId": "apply-e36a4bb2-35f5-4ad9-a096-fa2291de38fa",
+      "appliedAt": "2026-11-15T10:36:51.215Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:apply:e36a4bb2-35f5-4ad9-a096-fa2291de38fa",
+      "auditEvidence": null,
+      "summary": "Fermeture hivernale officielle du 15 novembre 2026 au 5 mars 2027, sans présumer la saison suivante."
+    },
+    {
+      "eventId": "image-cf97e67297244f20abab0e1a60be4351",
+      "appliedAt": "2026-11-15T10:37:31.385Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:image:cf97e67297244f20abab0e1a60be4351",
+      "auditEvidence": null,
+      "summary": "Photo exacte du bob et de son rail importée et publiée avec textes alternatifs, légendes et crédits en huit langues ; Szodorai Imre [Hun], CC BY 3.0, 2009."
+    },
+    {
+      "eventId": "apply-a2d89040-3542-464d-b82e-7d080de41bf2",
+      "appliedAt": "2026-11-15T10:38:18.534Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:apply:a2d89040-3542-464d-b82e-7d080de41bf2",
+      "auditEvidence": null,
+      "summary": "Ancien ParkItem masqué reclassé NotRelevant et vérifié ; le Park parent masqué reste ToReview en attente de clôture administrative."
+    },
+    {
+      "eventId": "apply-a805f363-343b-4dee-adb6-4702fa8d2f9a",
+      "appliedAt": "2026-11-15T10:44:07.934Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "bf784c11-f31d-44ea-88c6-69f8c82e2737",
+      "evidence": "PARK_DATA_EDITOR:apply:a805f363-343b-4dee-adb6-4702fa8d2f9a",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-hu-xtrem-bob-20261115/audit.json",
+      "summary": "Huit descriptions publiques réécrites autour du paysage et du vécu de la descente ; intégration éditoriale terminée, contrôle qualité 95/100 sans blocage."
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "c47d91dc-75ca-4888-8232-859d65bf7f98",
+    "appliedAtUtc": "2026-11-15T10:38:41.5990757Z"
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127441165424431",
+    "publishedAtUtc": "2026-11-15T10:39:22.4436073Z"
+  },
+  "legacyMigration": {
+    "parkId": "8c51d749-cdf3-46de-9d73-6d63037eec09",
+    "parkItemId": "af8d32ea-4aa4-4084-8cd2-64914ad0a34f",
+    "parkItemRetiredApplyOperationId": "a2d89040-3542-464d-b82e-7d080de41bf2",
+    "parkRetirementPending": true
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "cf97e67297244f20abab0e1a60be4351",
+      "appliedAtUtc": "2026-11-15T10:37:31.385Z"
+    }
+  ]
+}

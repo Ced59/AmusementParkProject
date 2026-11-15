@@ -48,7 +48,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 1 | 1 |
 | [Grèce](countries/GR.md) | 0 | 12 | 3 | 23 | 45 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 |
-| [Hongrie](countries/HU.md) | 2 | 14 | 12 | 53 | 102 |
+| [Hongrie](countries/HU.md) | 2 | 13 | 12 | 53 | 102 |
 | [Île de Man](countries/IM.md) | 0 | 0 | 0 | 1 | 1 |
 | [Îles Åland](countries/AX.md) | 0 | 0 | 0 | 0 | 0 |
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 |
@@ -106,7 +106,7 @@ Compléments datés du relevé : [créations standalone candidates](CREATIONS-ST
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Grèce](countries/GR.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Hongrie](countries/HU.md) | 4 | 0 | 0 | 0 | 4 | 0 |
+| [Hongrie](countries/HU.md) | 5 | 0 | 0 | 0 | 4 | 0 |
 | [Île de Man](countries/IM.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Îles Åland](countries/AX.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -149,7 +149,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 - Estonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Finlande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - France : 13 intégrations achevées et auditées, dont 0 fiches encore masquées.
-- Hongrie : 4 intégrations achevées et auditées, dont 0 fiches encore masquées.
+- Hongrie : 5 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Islande : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
 - Italie : 2 intégrations achevées et auditées, dont 0 fiches encore masquées.
 - Lettonie : 1 intégration achevée et auditée, dont 0 fiches encore masquées.
@@ -186,7 +186,7 @@ Intégrations achevées avec preuve et audit enregistrés depuis la création du
 | [Gibraltar](countries/GI.md) | 0 | 0 | 0 | 0 |
 | [Grèce](countries/GR.md) | 0 | 0 | 0 | 0 |
 | [Guernesey](countries/GG.md) | 0 | 0 | 0 | 0 |
-| [Hongrie](countries/HU.md) | 6 | 2 | 4 | 0 |
+| [Hongrie](countries/HU.md) | 5 | 2 | 4 | 0 |
 | [Île de Man](countries/IM.md) | 0 | 0 | 0 | 0 |
 | [Îles Åland](countries/AX.md) | 0 | 0 | 0 | 0 |
 | [Îles Féroé](countries/FO.md) | 0 | 0 | 0 | 0 |
