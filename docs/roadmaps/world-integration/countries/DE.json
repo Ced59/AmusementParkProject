@@ -670,20 +670,31 @@
         "f170e4be-d857-40a5-bb8b-8898c5a2ddbd"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:52:38.783Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Novembre 2026 : week-ends ; pause du 1er décembre 2026 au 28 février 2027 inclus.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Allwetterrodelbahn Weißenfels"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:51:15.321Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-4fe26492-a659-4963-b864-2837cbdec71d",
+          "appliedAt": "2026-11-15T15:51:15.321Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "80836e64-0911-4e37-aef1-39cd7499d4aa",
+          "evidence": "PARK_DATA_EDITOR:apply:4fe26492-a659-4963-b864-2837cbdec71d",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-weissenfels-20261115/audit.json",
+          "summary": "Calendrier officiel novembre 2026–février 2027, six tarifs, âge et huit descriptions corrigés ; cinq photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Vérifier les tarifs et le calendrier de mars 2027 auprès de l’exploitant ; auditer les droits des cinq photos existantes et chercher une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -719,6 +730,21 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.allwetterrodelbahn.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Allwetterrodelbahn Weißenfels — attraction",
+          "url": "https://www.allwetterrodelbahn.de/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Allwetterrodelbahn Weißenfels — tarifs affichés",
+          "url": "https://www.allwetterrodelbahn.de/Preise.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Allwetterrodelbahn Weißenfels — calendrier 2026–2027",
+          "url": "https://www.allwetterrodelbahn.de/Oeffnungszeiten.htm",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
