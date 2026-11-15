@@ -1,0 +1,1043 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-item-history-ballon-2014",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+            "itemId": "ce88d195-4890-43e4-8551-8f26d460760b",
+            "parkItemId": "ce88d195-4890-43e4-8551-8f26d460760b",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2014,
+            "month": 6,
+            "day": 5,
+            "datePrecision": "Day",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "358753581b594abdb1a13a726c7c0a46",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le Ballon des Puys ouvre une vue aérienne sur les volcans"
+              },
+              {
+                "languageCode": "en",
+                "value": "The Ballon des Puys opens an aerial view of the volcanoes"
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Ballon des Puys eröffnet den Blick von oben"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De Ballon des Puys opent een uitzicht vanuit de lucht"
+              },
+              {
+                "languageCode": "it",
+                "value": "Il Ballon des Puys apre una prospettiva aerea sui vulcani"
+              },
+              {
+                "languageCode": "es",
+                "value": "El Ballon des Puys abre una vista aérea de los volcanes"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ballon des Puys otwiera widok na wulkany z powietrza"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Ballon des Puys abre uma vista aérea sobre os vulcões"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le Ballon des Puys ouvre au public le 5 juin 2014. Fourni par Aérophile, ce ballon captif permet de découvrir les paysages volcaniques depuis le ciel. Après les récits souterrains des salles de Vulcania, le relief réel de la Chaîne des Puys devient le sujet de l’expérience."
+              },
+              {
+                "languageCode": "en",
+                "value": "The Ballon des Puys opens to visitors on 5 June 2014. Supplied by Aérophile, the tethered balloon reveals the volcanic landscape from the sky. Alongside Vulcania’s indoor underground adventures, the actual contours of the Chaîne des Puys become the subject of the experience."
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Ballon des Puys öffnet am 5. Juni 2014 für Besucher. Der von Aérophile gelieferte Fesselballon erschließt die Vulkanlandschaft aus der Luft. Neben den unterirdischen Abenteuern in Vulcanias Sälen werden damit die tatsächlichen Geländeformen der Chaîne des Puys zum Thema des Erlebnisses."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De Ballon des Puys opent op 5 juni 2014 voor bezoekers. De door Aérophile geleverde kabelballon toont het vulkanische landschap vanuit de lucht. Naast de ondergrondse avonturen in de zalen van Vulcania worden de echte contouren van de Chaîne des Puys het onderwerp van de ervaring."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il Ballon des Puys apre al pubblico il 5 giugno 2014. Fornito da Aérophile, il pallone frenato permette di scoprire dal cielo il paesaggio vulcanico. Accanto ai racconti sotterranei delle sale di Vulcania, il rilievo reale della Chaîne des Puys diventa il soggetto dell’esperienza."
+              },
+              {
+                "languageCode": "es",
+                "value": "El Ballon des Puys abre al público el 5 de junio de 2014. Suministrado por Aérophile, el globo cautivo permite descubrir el paisaje volcánico desde el cielo. Junto a los relatos subterráneos de las salas de Vulcania, el relieve real de la Chaîne des Puys se convierte en protagonista."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ballon des Puys otwiera się dla gości 5 czerwca 2014 roku. Balon na uwięzi dostarczony przez Aérophile pozwala oglądać krajobraz wulkaniczny z nieba. Obok podziemnych przygód w salach Vulcanii tematem doświadczenia staje się rzeczywista rzeźba Chaîne des Puys."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O Ballon des Puys abre ao público a 5 de junho de 2014. Fornecido pela Aérophile, o balão cativo permite descobrir a paisagem vulcânica a partir do céu. A par das narrativas subterrâneas das salas de Vulcania, o relevo real da Chaîne des Puys torna-se o tema da experiência."
+              }
+            ],
+            "sources": [
+              {
+                "label": "EuroAmusement Professional — ouverture du Ballon des Puys",
+                "url": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-item-history-planetarium-2023",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+            "itemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+            "parkItemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2023,
+            "month": 3,
+            "day": 29,
+            "datePrecision": "Day",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "6e2547f3c84c46e7b2bdc195579fe394",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le planétarium accueille ses premiers visiteurs"
+              },
+              {
+                "languageCode": "en",
+                "value": "The planetarium welcomes its first visitors"
+              },
+              {
+                "languageCode": "de",
+                "value": "Das Planetarium empfängt seine ersten Besucher"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het planetarium verwelkomt zijn eerste bezoekers"
+              },
+              {
+                "languageCode": "it",
+                "value": "Il planetario accoglie i primi visitatori"
+              },
+              {
+                "languageCode": "es",
+                "value": "El planetario recibe a sus primeros visitantes"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Planetarium przyjmuje pierwszych gości"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O planetário recebe os primeiros visitantes"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le planétarium ouvre au public le 29 mars 2023. Son ciel projeté et ses animations d’astronomie donnent une nouvelle ampleur à l’univers « La Terre dans l’Espace » de Vulcania, en reliant l’étude de notre planète à celle du Système solaire et des étoiles."
+              },
+              {
+                "languageCode": "en",
+                "value": "The planetarium opens to the public on 29 March 2023. Its projected sky and astronomy presentations give new scope to Vulcania’s Earth in Space theme, connecting the study of our planet with the Solar System and the stars."
+              },
+              {
+                "languageCode": "de",
+                "value": "Das Planetarium öffnet am 29. März 2023 für das Publikum. Sein projizierter Himmel und seine Astronomievorführungen erweitern Vulcanias Themenwelt „Die Erde im Weltraum“ und verbinden die Erforschung unseres Planeten mit dem Sonnensystem und den Sternen."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het planetarium opent op 29 maart 2023 voor het publiek. De geprojecteerde sterrenhemel en astronomische presentaties geven Vulcania’s thema Aarde in de ruimte een nieuwe dimensie en verbinden de studie van onze planeet met het zonnestelsel en de sterren."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il planetario apre al pubblico il 29 marzo 2023. Il cielo proiettato e le animazioni astronomiche ampliano l’universo « La Terra nello spazio » di Vulcania, collegando lo studio del nostro pianeta a quello del Sistema solare e delle stelle."
+              },
+              {
+                "languageCode": "es",
+                "value": "El planetario abre al público el 29 de marzo de 2023. Su cielo proyectado y sus actividades astronómicas amplían el universo « La Tierra en el espacio » de Vulcania, conectando el estudio de nuestro planeta con el del Sistema Solar y las estrellas."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Planetarium otwiera się dla publiczności 29 marca 2023 roku. Projekcje nieba i pokazy astronomiczne poszerzają zakres tematycznego świata „Ziemia w kosmosie” w Vulcanii, łącząc badanie naszej planety z poznawaniem Układu Słonecznego i gwiazd."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O planetário abre ao público a 29 de março de 2023. O céu projetado e as apresentações de astronomia ampliam o universo « A Terra no Espaço » de Vulcania, ligando o estudo do nosso planeta ao do Sistema Solar e das estrelas."
+              }
+            ],
+            "sources": [
+              {
+                "label": "RSA Cosmos — ouverture du planétarium le 29 mars 2023",
+                "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Lyon Capitale — reportage du 30 mars 2023",
+                "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-vulcania-dated-item-openings",
+        "notes": "Balloon public opening5June2014 explicitly reported by EAP3July2014; Aérophile2014 corroborates identity. Planetarium public opening29March2023 confirmed by RSA Cosmos and next-day Lyon Capitale report, separate from later ceremonial inauguration.32titles/summaries personally reviewed eight languages. Balloon photo contemporaneousreport, no exactcaptureday claimed; planetarium photo genuine29Marchpresspresentation. Correct only2existingopeningdates and add2privateitemevents; preserve all statuses and identities."
+      },
+      "items": [
+        {
+          "id": "ce88d195-4890-43e4-8551-8f26d460760b",
+          "key": "vulcania-ballon-puys",
+          "name": "Ballon des Puys",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "openingDate": "2014-06-05"
+          }
+        },
+        {
+          "id": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+          "key": "vulcania-astrodome",
+          "name": "Astrodôme – Planétarium",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "openingDate": "2023-03-29"
+          }
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "ade9d39d-7be6-4cc6-bfd7-7ae17fb2196f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:04:15.6802757Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "vulcania-ballon-puys",
+        "displayName": "Ballon des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": null,
+            "newValue": "2014-06-05"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2014",
+            "newValue": "2014-06-05"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "vulcania-astrodome",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": null,
+            "newValue": "2023-03-29"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2023",
+            "newValue": "2023-03-29"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "aee0d577-96c4-4bbb-8579-8b62ff0e55fb",
+        "entityKey": "vulcania-item-history-ballon-2014",
+        "displayName": "Le Ballon des Puys ouvre une vue aérienne sur les volcans",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-ballon-2014"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ce88d195-4890-43e4-8551-8f26d460760b"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ce88d195-4890-43e4-8551-8f26d460760b"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2014"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "358753581b594abdb1a13a726c7c0a46"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Der Ballon des Puys eröffnet den Blick von oben, en:The Ballon des Puys opens an aerial view of the volcanoes, es:El Ballon des Puys abre una vista aérea de los volcanes, fr:Le Ballon des Puys ouvre une vue aérienne sur les volcans, it:Il Ballon des Puys apre una prospettiva aerea sui vulcani, nl:De Ballon des Puys opent een uitzicht vanuit de lucht, pl:Ballon des Puys otwiera widok na wulkany z powietrza, pt:O Ballon des Puys abre uma vista aérea sobre os vulcões"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Ballon des Puys öffnet am 5. Juni 2014 für Besucher. Der von Aérophile gelieferte Fesselballon erschließt die Vulkanlandschaft aus der Luft. Neben den unterirdischen Abenteuern in Vulcanias Sälen werden damit die tatsächlichen Geländeformen der Chaîne des Puys zum Thema des Erlebnisses., en:The Ballon des Puys opens to visitors on 5 June 2014. Supplied by Aérophile, the tethered balloon reveals the volcanic landscape from the sky. Alongside Vulcania’s indoor underground adventures, the actual contours of the Chaîne des Puys become the subject of the experience., es:El Ballon des Puys abre al público el 5 de junio de 2014. Suministrado por Aérophile, el globo cautivo permite descubrir el paisaje volcánico desde el cielo. Junto a los relatos subterráneos de las salas de Vulcania, el relieve real de la Chaîne des Puys se convierte en protagonista., fr:Le Ballon des Puys ouvre au public le 5 juin 2014. Fourni par Aérophile, ce ballon captif permet de découvrir les paysages volcaniques depuis le ciel. Après les récits souterrains des salles de Vulcania, le relief réel de la Chaîne des Puys devient le sujet de l’expérience., it:Il Ballon des Puys apre al pubblico il 5 giugno 2014. Fornito da Aérophile, il pallone frenato permette di scoprire dal cielo il paesaggio vulcanico. Accanto ai racconti sotterranei delle sale di Vulcania, il rilievo reale della Chaîne des Puys diventa il soggetto dell’esperienza., nl:De Ballon des Puys opent op 5 juni 2014 voor bezoekers. De door Aérophile geleverde kabelballon toont het vulkanische landschap vanuit de lucht. Naast de ondergrondse avonturen in de zalen van Vulcania worden de echte contouren van de Chaîne des Puys het onderwerp van de ervaring., pl:Ballon des Puys otwiera się dla gości 5 czerwca 2014 roku. Balon na uwięzi dostarczony przez Aérophile pozwala oglądać krajobraz wulkaniczny z nieba. Obok podziemnych przygód w salach Vulcanii tematem doświadczenia staje się rzeczywista rzeźba Chaîne des Puys., pt:O Ballon des Puys abre ao público a 5 de junho de 2014. Fornecido pela Aérophile, o balão cativo permite descobrir a paisagem vulcânica a partir do céu. A par das narrativas subterrâneas das salas de Vulcania, o relevo real da Chaîne des Puys torna-se o tema da experiência."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"EuroAmusement Professional \\u2014 ouverture du Ballon des Puys\",\"Url\":\"https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "68fb5650-7751-4cb6-8700-a61ab512e495",
+        "entityKey": "vulcania-item-history-planetarium-2023",
+        "displayName": "Le planétarium accueille ses premiers visiteurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-planetarium-2023"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2023"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "3"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "29"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6e2547f3c84c46e7b2bdc195579fe394"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Das Planetarium empfängt seine ersten Besucher, en:The planetarium welcomes its first visitors, es:El planetario recibe a sus primeros visitantes, fr:Le planétarium accueille ses premiers visiteurs, it:Il planetario accoglie i primi visitatori, nl:Het planetarium verwelkomt zijn eerste bezoekers, pl:Planetarium przyjmuje pierwszych gości, pt:O planetário recebe os primeiros visitantes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Planetarium öffnet am 29. März 2023 für das Publikum. Sein projizierter Himmel und seine Astronomievorführungen erweitern Vulcanias Themenwelt „Die Erde im Weltraum“ und verbinden die Erforschung unseres Planeten mit dem Sonnensystem und den Sternen., en:The planetarium opens to the public on 29 March 2023. Its projected sky and astronomy presentations give new scope to Vulcania’s Earth in Space theme, connecting the study of our planet with the Solar System and the stars., es:El planetario abre al público el 29 de marzo de 2023. Su cielo proyectado y sus actividades astronómicas amplían el universo « La Tierra en el espacio » de Vulcania, conectando el estudio de nuestro planeta con el del Sistema Solar y las estrellas., fr:Le planétarium ouvre au public le 29 mars 2023. Son ciel projeté et ses animations d’astronomie donnent une nouvelle ampleur à l’univers « La Terre dans l’Espace » de Vulcania, en reliant l’étude de notre planète à celle du Système solaire et des étoiles., it:Il planetario apre al pubblico il 29 marzo 2023. Il cielo proiettato e le animazioni astronomiche ampliano l’universo « La Terra nello spazio » di Vulcania, collegando lo studio del nostro pianeta a quello del Sistema solare e delle stelle., nl:Het planetarium opent op 29 maart 2023 voor het publiek. De geprojecteerde sterrenhemel en astronomische presentaties geven Vulcania’s thema Aarde in de ruimte een nieuwe dimensie en verbinden de studie van onze planeet met het zonnestelsel en de sterren., pl:Planetarium otwiera się dla publiczności 29 marca 2023 roku. Projekcje nieba i pokazy astronomiczne poszerzają zakres tematycznego świata „Ziemia w kosmosie” w Vulcanii, łącząc badanie naszej planety z poznawaniem Układu Słonecznego i gwiazd., pt:O planetário abre ao público a 29 de março de 2023. O céu projetado e as apresentações de astronomia ampliam o universo « A Terra no Espaço » de Vulcania, ligando o estudo do nosso planeta ao do Sistema Solar e das estrelas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Lyon Capitale \\u2014 reportage du 30 mars 2023\",\"Url\":\"https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RSA Cosmos \\u2014 ouverture du plan\\u00E9tarium le 29 mars 2023\",\"Url\":\"https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "f360ad07-38de-45d0-808f-b400544ed3db",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:04:26.316731Z",
+    "appliedAtUtc": "2026-11-15T20:04:26.3167318Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "vulcania-ballon-puys",
+        "displayName": "Ballon des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": null,
+            "newValue": "2014-06-05"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2014",
+            "newValue": "2014-06-05"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "vulcania-astrodome",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": null,
+            "newValue": "2023-03-29"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2023",
+            "newValue": "2023-03-29"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "828115a4-f71f-4576-96d1-53c2cc8de496",
+        "entityKey": "vulcania-item-history-ballon-2014",
+        "displayName": "Le Ballon des Puys ouvre une vue aérienne sur les volcans",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-ballon-2014"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ce88d195-4890-43e4-8551-8f26d460760b"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ce88d195-4890-43e4-8551-8f26d460760b"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2014"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "6"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "5"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "358753581b594abdb1a13a726c7c0a46"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Der Ballon des Puys eröffnet den Blick von oben, en:The Ballon des Puys opens an aerial view of the volcanoes, es:El Ballon des Puys abre una vista aérea de los volcanes, fr:Le Ballon des Puys ouvre une vue aérienne sur les volcans, it:Il Ballon des Puys apre una prospettiva aerea sui vulcani, nl:De Ballon des Puys opent een uitzicht vanuit de lucht, pl:Ballon des Puys otwiera widok na wulkany z powietrza, pt:O Ballon des Puys abre uma vista aérea sobre os vulcões"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Ballon des Puys öffnet am 5. Juni 2014 für Besucher. Der von Aérophile gelieferte Fesselballon erschließt die Vulkanlandschaft aus der Luft. Neben den unterirdischen Abenteuern in Vulcanias Sälen werden damit die tatsächlichen Geländeformen der Chaîne des Puys zum Thema des Erlebnisses., en:The Ballon des Puys opens to visitors on 5 June 2014. Supplied by Aérophile, the tethered balloon reveals the volcanic landscape from the sky. Alongside Vulcania’s indoor underground adventures, the actual contours of the Chaîne des Puys become the subject of the experience., es:El Ballon des Puys abre al público el 5 de junio de 2014. Suministrado por Aérophile, el globo cautivo permite descubrir el paisaje volcánico desde el cielo. Junto a los relatos subterráneos de las salas de Vulcania, el relieve real de la Chaîne des Puys se convierte en protagonista., fr:Le Ballon des Puys ouvre au public le 5 juin 2014. Fourni par Aérophile, ce ballon captif permet de découvrir les paysages volcaniques depuis le ciel. Après les récits souterrains des salles de Vulcania, le relief réel de la Chaîne des Puys devient le sujet de l’expérience., it:Il Ballon des Puys apre al pubblico il 5 giugno 2014. Fornito da Aérophile, il pallone frenato permette di scoprire dal cielo il paesaggio vulcanico. Accanto ai racconti sotterranei delle sale di Vulcania, il rilievo reale della Chaîne des Puys diventa il soggetto dell’esperienza., nl:De Ballon des Puys opent op 5 juni 2014 voor bezoekers. De door Aérophile geleverde kabelballon toont het vulkanische landschap vanuit de lucht. Naast de ondergrondse avonturen in de zalen van Vulcania worden de echte contouren van de Chaîne des Puys het onderwerp van de ervaring., pl:Ballon des Puys otwiera się dla gości 5 czerwca 2014 roku. Balon na uwięzi dostarczony przez Aérophile pozwala oglądać krajobraz wulkaniczny z nieba. Obok podziemnych przygód w salach Vulcanii tematem doświadczenia staje się rzeczywista rzeźba Chaîne des Puys., pt:O Ballon des Puys abre ao público a 5 de junho de 2014. Fornecido pela Aérophile, o balão cativo permite descobrir a paisagem vulcânica a partir do céu. A par das narrativas subterrâneas das salas de Vulcania, o relevo real da Chaîne des Puys torna-se o tema da experiência."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"EuroAmusement Professional \\u2014 ouverture du Ballon des Puys\",\"Url\":\"https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ee9b65df-57c1-41b3-a316-3c4c42bc02b2",
+        "entityKey": "vulcania-item-history-planetarium-2023",
+        "displayName": "Le planétarium accueille ses premiers visiteurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-planetarium-2023"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2023"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "3"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "29"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6e2547f3c84c46e7b2bdc195579fe394"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Das Planetarium empfängt seine ersten Besucher, en:The planetarium welcomes its first visitors, es:El planetario recibe a sus primeros visitantes, fr:Le planétarium accueille ses premiers visiteurs, it:Il planetario accoglie i primi visitatori, nl:Het planetarium verwelkomt zijn eerste bezoekers, pl:Planetarium przyjmuje pierwszych gości, pt:O planetário recebe os primeiros visitantes"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Das Planetarium öffnet am 29. März 2023 für das Publikum. Sein projizierter Himmel und seine Astronomievorführungen erweitern Vulcanias Themenwelt „Die Erde im Weltraum“ und verbinden die Erforschung unseres Planeten mit dem Sonnensystem und den Sternen., en:The planetarium opens to the public on 29 March 2023. Its projected sky and astronomy presentations give new scope to Vulcania’s Earth in Space theme, connecting the study of our planet with the Solar System and the stars., es:El planetario abre al público el 29 de marzo de 2023. Su cielo proyectado y sus actividades astronómicas amplían el universo « La Tierra en el espacio » de Vulcania, conectando el estudio de nuestro planeta con el del Sistema Solar y las estrellas., fr:Le planétarium ouvre au public le 29 mars 2023. Son ciel projeté et ses animations d’astronomie donnent une nouvelle ampleur à l’univers « La Terre dans l’Espace » de Vulcania, en reliant l’étude de notre planète à celle du Système solaire et des étoiles., it:Il planetario apre al pubblico il 29 marzo 2023. Il cielo proiettato e le animazioni astronomiche ampliano l’universo « La Terra nello spazio » di Vulcania, collegando lo studio del nostro pianeta a quello del Sistema solare e delle stelle., nl:Het planetarium opent op 29 maart 2023 voor het publiek. De geprojecteerde sterrenhemel en astronomische presentaties geven Vulcania’s thema Aarde in de ruimte een nieuwe dimensie en verbinden de studie van onze planeet met het zonnestelsel en de sterren., pl:Planetarium otwiera się dla publiczności 29 marca 2023 roku. Projekcje nieba i pokazy astronomiczne poszerzają zakres tematycznego świata „Ziemia w kosmosie” w Vulcanii, łącząc badanie naszej planety z poznawaniem Układu Słonecznego i gwiazd., pt:O planetário abre ao público a 29 de março de 2023. O céu projetado e as apresentações de astronomia ampliam o universo « A Terra no Espaço » de Vulcania, ligando o estudo do nosso planeta ao do Sistema Solar e das estrelas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Lyon Capitale \\u2014 reportage du 30 mars 2023\",\"Url\":\"https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RSA Cosmos \\u2014 ouverture du plan\\u00E9tarium le 29 mars 2023\",\"Url\":\"https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-item-history-ballon-2014",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "itemId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "parkItemId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2014,
+      "month": 6,
+      "day": 5,
+      "datePrecision": "Day",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "358753581b594abdb1a13a726c7c0a46",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le Ballon des Puys ouvre une vue aérienne sur les volcans"
+        },
+        {
+          "languageCode": "en",
+          "value": "The Ballon des Puys opens an aerial view of the volcanoes"
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Ballon des Puys eröffnet den Blick von oben"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Ballon des Puys opent een uitzicht vanuit de lucht"
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Ballon des Puys apre una prospettiva aerea sui vulcani"
+        },
+        {
+          "languageCode": "es",
+          "value": "El Ballon des Puys abre una vista aérea de los volcanes"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ballon des Puys otwiera widok na wulkany z powietrza"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Ballon des Puys abre uma vista aérea sobre os vulcões"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le Ballon des Puys ouvre au public le 5 juin 2014. Fourni par Aérophile, ce ballon captif permet de découvrir les paysages volcaniques depuis le ciel. Après les récits souterrains des salles de Vulcania, le relief réel de la Chaîne des Puys devient le sujet de l’expérience."
+        },
+        {
+          "languageCode": "en",
+          "value": "The Ballon des Puys opens to visitors on 5 June 2014. Supplied by Aérophile, the tethered balloon reveals the volcanic landscape from the sky. Alongside Vulcania’s indoor underground adventures, the actual contours of the Chaîne des Puys become the subject of the experience."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Ballon des Puys öffnet am 5. Juni 2014 für Besucher. Der von Aérophile gelieferte Fesselballon erschließt die Vulkanlandschaft aus der Luft. Neben den unterirdischen Abenteuern in Vulcanias Sälen werden damit die tatsächlichen Geländeformen der Chaîne des Puys zum Thema des Erlebnisses."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Ballon des Puys opent op 5 juni 2014 voor bezoekers. De door Aérophile geleverde kabelballon toont het vulkanische landschap vanuit de lucht. Naast de ondergrondse avonturen in de zalen van Vulcania worden de echte contouren van de Chaîne des Puys het onderwerp van de ervaring."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Ballon des Puys apre al pubblico il 5 giugno 2014. Fornito da Aérophile, il pallone frenato permette di scoprire dal cielo il paesaggio vulcanico. Accanto ai racconti sotterranei delle sale di Vulcania, il rilievo reale della Chaîne des Puys diventa il soggetto dell’esperienza."
+        },
+        {
+          "languageCode": "es",
+          "value": "El Ballon des Puys abre al público el 5 de junio de 2014. Suministrado por Aérophile, el globo cautivo permite descubrir el paisaje volcánico desde el cielo. Junto a los relatos subterráneos de las salas de Vulcania, el relieve real de la Chaîne des Puys se convierte en protagonista."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ballon des Puys otwiera się dla gości 5 czerwca 2014 roku. Balon na uwięzi dostarczony przez Aérophile pozwala oglądać krajobraz wulkaniczny z nieba. Obok podziemnych przygód w salach Vulcanii tematem doświadczenia staje się rzeczywista rzeźba Chaîne des Puys."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Ballon des Puys abre ao público a 5 de junho de 2014. Fornecido pela Aérophile, o balão cativo permite descobrir a paisagem vulcânica a partir do céu. A par das narrativas subterrâneas das salas de Vulcania, o relevo real da Chaîne des Puys torna-se o tema da experiência."
+        }
+      ],
+      "sources": [
+        {
+          "label": "EuroAmusement Professional — ouverture du Ballon des Puys",
+          "url": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "828115a4-f71f-4576-96d1-53c2cc8de496"
+    },
+    {
+      "key": "vulcania-item-history-planetarium-2023",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "itemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "parkItemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2023,
+      "month": 3,
+      "day": 29,
+      "datePrecision": "Day",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "6e2547f3c84c46e7b2bdc195579fe394",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Le planétarium accueille ses premiers visiteurs"
+        },
+        {
+          "languageCode": "en",
+          "value": "The planetarium welcomes its first visitors"
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Planetarium empfängt seine ersten Besucher"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het planetarium verwelkomt zijn eerste bezoekers"
+        },
+        {
+          "languageCode": "it",
+          "value": "Il planetario accoglie i primi visitatori"
+        },
+        {
+          "languageCode": "es",
+          "value": "El planetario recibe a sus primeros visitantes"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Planetarium przyjmuje pierwszych gości"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O planetário recebe os primeiros visitantes"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le planétarium ouvre au public le 29 mars 2023. Son ciel projeté et ses animations d’astronomie donnent une nouvelle ampleur à l’univers « La Terre dans l’Espace » de Vulcania, en reliant l’étude de notre planète à celle du Système solaire et des étoiles."
+        },
+        {
+          "languageCode": "en",
+          "value": "The planetarium opens to the public on 29 March 2023. Its projected sky and astronomy presentations give new scope to Vulcania’s Earth in Space theme, connecting the study of our planet with the Solar System and the stars."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das Planetarium öffnet am 29. März 2023 für das Publikum. Sein projizierter Himmel und seine Astronomievorführungen erweitern Vulcanias Themenwelt „Die Erde im Weltraum“ und verbinden die Erforschung unseres Planeten mit dem Sonnensystem und den Sternen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het planetarium opent op 29 maart 2023 voor het publiek. De geprojecteerde sterrenhemel en astronomische presentaties geven Vulcania’s thema Aarde in de ruimte een nieuwe dimensie en verbinden de studie van onze planeet met het zonnestelsel en de sterren."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il planetario apre al pubblico il 29 marzo 2023. Il cielo proiettato e le animazioni astronomiche ampliano l’universo « La Terra nello spazio » di Vulcania, collegando lo studio del nostro pianeta a quello del Sistema solare e delle stelle."
+        },
+        {
+          "languageCode": "es",
+          "value": "El planetario abre al público el 29 de marzo de 2023. Su cielo proyectado y sus actividades astronómicas amplían el universo « La Tierra en el espacio » de Vulcania, conectando el estudio de nuestro planeta con el del Sistema Solar y las estrellas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Planetarium otwiera się dla publiczności 29 marca 2023 roku. Projekcje nieba i pokazy astronomiczne poszerzają zakres tematycznego świata „Ziemia w kosmosie” w Vulcanii, łącząc badanie naszej planety z poznawaniem Układu Słonecznego i gwiazd."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O planetário abre ao público a 29 de março de 2023. O céu projetado e as apresentações de astronomia ampliam o universo « A Terra no Espaço » de Vulcania, ligando o estudo do nosso planeta ao do Sistema Solar e das estrelas."
+        }
+      ],
+      "sources": [
+        {
+          "label": "RSA Cosmos — ouverture du planétarium le 29 mars 2023",
+          "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Lyon Capitale — reportage du 30 mars 2023",
+          "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "ee9b65df-57c1-41b3-a316-3c4c42bc02b2"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "sourceAccess": [
+    {
+      "key": "magma-explorer-iii",
+      "url": "https://www.amak.fr/project/magma-explorer-iii/",
+      "checkedAt": "2026-11-15T19:51:33.501023+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/magma-explorer-iii/",
+      "bytes": 55751
+    },
+    {
+      "key": "dragon-ride",
+      "url": "https://www.amak.fr/project/dragon-ride/",
+      "checkedAt": "2026-11-15T19:51:33.501895+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/dragon-ride/",
+      "bytes": 57501
+    },
+    {
+      "key": "dragon-ride-2",
+      "url": "https://www.amak.fr/project/dragon-ride-2/",
+      "checkedAt": "2026-11-15T19:51:33.502537+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/dragon-ride-2/",
+      "bytes": 60983
+    },
+    {
+      "key": "abyss-explorer",
+      "url": "https://www.amak.fr/project/abyss-explorer/",
+      "checkedAt": "2026-11-15T19:51:33.503181+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/abyss-explorer/",
+      "bytes": 57212
+    },
+    {
+      "key": "ballon",
+      "url": "https://www.aerophile.com/en/clients/vulcania/",
+      "checkedAt": "2026-11-15T19:51:33.504112+00:00",
+      "status": 200,
+      "finalUrl": "https://www.aerophile.com/en/clients/vulcania/",
+      "bytes": 49573
+    },
+    {
+      "key": "ballon-eap",
+      "url": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "checkedAt": "2026-11-15T19:52:21.436269+00:00",
+      "status": 200,
+      "finalUrl": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "bytes": 52532
+    },
+    {
+      "key": "planetarium-maker",
+      "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+      "checkedAt": "2026-11-15T19:52:21.437032+00:00",
+      "status": 200,
+      "finalUrl": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+      "bytes": 67682
+    },
+    {
+      "key": "planetarium-lyon",
+      "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "checkedAt": "2026-11-15T19:52:21.437476+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "bytes": 183977
+    }
+  ],
+  "scopeNotes": "Balloon public opening5June2014 explicitly reported by EAP3July2014; Aérophile2014 corroborates identity. Planetarium public opening29March2023 confirmed by RSA Cosmos and next-day Lyon Capitale report, separate from later ceremonial inauguration.32titles/summaries personally reviewed eight languages. Balloon photo contemporaneousreport, no exactcaptureday claimed; planetarium photo genuine29Marchpresspresentation. Correct only2existingopeningdates and add2privateitemevents; preserve all statuses and identities.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

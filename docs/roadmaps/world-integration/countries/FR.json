@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T19:50:10.107Z",
+      "lastDataIntegrationAt": "2026-11-15T20:11:33.716Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39008,6 +39008,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-84-services-notices-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : 32 textes relus en huit langues pour Piste de Vulcain, aire camping-cars, parking et accueil niveau C ; distinction jour/nuit sourcée, Piste indisponible de statut Unknown, toutes fiches privées."
+        },
+        {
+          "eventId": "apply-d3bff74b-60bd-41d1-a8f3-c528dbcc8522",
+          "appliedAt": "2026-11-15T19:56:02.131Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-85-film-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : quatre faits privés de parkItems ajoutés (Magma mars 2007, Dragon Ride 2008 et nouveau récit juillet 2020, Abyss 2016), 64 titres/résumés relus. Transition HIST StoryChange correctement renseignée ; aucune ouverture dupliquée dans la frise parc."
+        },
+        {
+          "eventId": "import-photo-358753581b594abdb1a13a726c7c0a46",
+          "appliedAt": "2026-11-15T20:03:09.724Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-86-ballon-press-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Ballon des Puys importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-0a10c3fd8bd64c35a61995eeed970f8a",
+          "appliedAt": "2026-11-15T20:03:24.610Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-87-soleil-press-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Astrodôme – Planétarium importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-6e2547f3c84c46e7b2bdc195579fe394",
+          "appliedAt": "2026-11-15T20:03:41.099Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-88-lave-press-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Astrodôme – Planétarium importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-f360ad07-38de-45d0-808f-b400544ed3db",
+          "appliedAt": "2026-11-15T20:04:26.316Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-89-two-dated-openings-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : ouvertures du Ballon des Puys le 5 juin 2014 et du planétarium le 29 mars 2023 qualifiées; deux dates existantes précisées et deux faits privés avec 32 titres et résumés relus en huit langues, photos de reportage contextualisées."
+        },
+        {
+          "eventId": "import-photo-9fbd4d6f8df44a9b800f5b71b056dcc6",
+          "appliedAt": "2026-11-15T20:07:36.061Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-90-planetarium-fire-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Astrodôme – Planétarium importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
+          "appliedAt": "2026-11-15T20:11:33.716Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-91-planetarium-fire-article-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : incendie du chantier du planétarium le 10 février 2022 intégré en fait privé avec article développé en huit langues, trois sections et six paragraphes par langue; 112 champs exactement vérifiés, quatre sources relues et photo réelle de l’intervention. Ouverture effective en 2023 distincte; aucun sinistre attribué au reste du parc."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39060,7 +39130,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-717f82d0-a76d-4a98-b8d0-f9c4ae7df10b ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6 ; conserver les références de découverte."
       }
     },
     {

@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T19:50:10.1072742Z",
+  "lastDataIntegrationAt": "2026-11-15T20:11:33.7169556Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 33,
-  "realImportCount": 52,
-  "lastOperationId": "717f82d0-a76d-4a98-b8d0-f9c4ae7df10b",
+  "realApplyCount": 36,
+  "realImportCount": 56,
+  "lastOperationId": "7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -175,22 +175,25 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-74-workshops-balloon-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-77-remaining-inventory-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-78-landscape-notices-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-84-services-notices-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-84-services-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-85-film-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-89-two-dated-openings-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-91-planetarium-fire-article-20261115.json"
   ],
   "currentCoverage": {
     "items": 56,
     "publicItems": 0,
     "describedItems8Languages": 55,
     "zones": 0,
-    "ownMedia": 52,
-    "historyEvents": 4,
-    "privateHistoryEvents": 4,
+    "ownMedia": 56,
+    "historyEvents": 11,
+    "privateHistoryEvents": 11,
     "officialMaps": 2,
-    "privateOwnMedia": 52,
-    "articles": 1,
-    "privateArticles": 1
+    "privateOwnMedia": 56,
+    "articles": 2,
+    "privateArticles": 2
   },
-  "lastApplyOperationId": "717f82d0-a76d-4a98-b8d0-f9c4ae7df10b",
+  "lastApplyOperationId": "7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -451,6 +454,26 @@
       "imageId": "31b117128a6745529a55c1c7df058ed0",
       "createdAt": "2026-11-15T19:47:10.555Z",
       "proof": "vulcania-photo-83-piste-20261115.json"
+    },
+    {
+      "imageId": "358753581b594abdb1a13a726c7c0a46",
+      "createdAt": "2026-11-15T20:03:09.724Z",
+      "proof": "vulcania-photo-86-ballon-press-20261115.json"
+    },
+    {
+      "imageId": "0a10c3fd8bd64c35a61995eeed970f8a",
+      "createdAt": "2026-11-15T20:03:24.61Z",
+      "proof": "vulcania-photo-87-soleil-press-20261115.json"
+    },
+    {
+      "imageId": "6e2547f3c84c46e7b2bdc195579fe394",
+      "createdAt": "2026-11-15T20:03:41.099Z",
+      "proof": "vulcania-photo-88-lave-press-20261115.json"
+    },
+    {
+      "imageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+      "createdAt": "2026-11-15T20:07:36.061Z",
+      "proof": "vulcania-photo-90-planetarium-fire-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -463,18 +486,17 @@
   "photoRecoveryProof": "vulcania-photo-commons-05-recovery-20261115.json",
   "editorialIdempotenceProof": "vulcania-commons-media-followup-20261115.json",
   "nextSteps": [
-    "Remaining41item descriptions and historical/service inventory",
-    "Current official logo and annual maps",
-    "References, history and articles",
-    "Qualified positions, pricing and published calendar",
-    "Single full audit and authorized publication with recorded score/date/hour exception"
+    "Current attraction milestones includingNamazu2021/Hawaii2026/Primordia",
+    "Historical inventory leads and identity relationships; one exteriorplaygroundnotice unresolved",
+    "Pricing/calendar published horizon and position/photo gaps",
+    "Single fullaudit, scoped authorizedsitepublication andFacebookresolve"
   ],
   "officialMapCandidates": [
     2024,
     2025,
     2026
   ],
-  "officialMapsImported": 0,
+  "officialMapsImported": 2,
   "sourceRightsGap": "Officialcopyrighttermsrecorded; existingownerFrancecampaignmediaauthorizationreconciledfromearlieracceptedmanifest. Noopenlicense orindividualauthorpermissionclaimed. Formerinferredholdonofficiallogo/maps not treatedasnewapprovalrequirement.",
   "logoProof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-logo-20261115.json",
   "mapUploads": [
@@ -494,7 +516,7 @@
     2024,
     2026
   ],
-  "latestSourceNote": "Five food places and seven shows personally described eight languages; ten genuine photos imported privately. Nine remaining notices, no final audit/export or publication yet.",
+  "latestSourceNote": "56privateitems,55personallyreviewednotices,56ownprivatemedia,11privatefacts,2developedarticles. Balloon5June2014 andplanetarium29March2023publicopenings sourced;10Feb2022constructionfire documented with genuinephoto andarticle. No finalaudit/export/publication yet.",
   "articleBodyWordsByLanguage": {
     "fr": 412,
     "en": 361,
@@ -513,6 +535,7 @@
     "vulcania-projection-and-exhibitions-followup-20261115.json",
     "vulcania-child-spaces-followup-20261115.json",
     "vulcania-hawai-and-geology-followup-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-food-and-shows-followup-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-food-and-shows-followup-20261115.json",
+    "vulcania-item-history-and-planetarium-fire-followup-20261115.json"
   ]
 }

@@ -1,0 +1,284 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-88-lave-press",
+    "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+    "itemName": "Astrodôme – Planétarium",
+    "current": false,
+    "source": {
+      "key": "IMG_0925-780x585",
+      "url": "https://www.lyoncapitale.fr/wp-content/uploads/2023/03/IMG_0925-780x585.jpg",
+      "status": 200,
+      "bytes": 43973,
+      "dimensions": [
+        780,
+        585
+      ],
+      "sha256": "27d4fe00c92f119601656341bfeb414f05d53f36ca31a7e9418b8c8a250d4d12",
+      "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/IMG_0925-780x585.jpg",
+      "sourcePage": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "author": "Cheyenne Gabrelle",
+      "publisher": "Lyon Capitale"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; author and publisher credit retained; no open licence or individual author permission claimed.",
+    "qualification": "Unmodified native publisher file. Personally viewed original and reviewed all24metadata fields. Historical 2014balloon report or 2023planetarium projection photographed by reporter; no capturetimestamp inferred. No third-party watermark. Press photo, not official Vulcania photo."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "SourceUrl": "https://www.lyoncapitale.fr/wp-content/uploads/2023/03/IMG_0925-780x585.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/item-history-1956/IMG_0925-780x585.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-88-lave-press-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-88-lave-press-import-result.json"
+  },
+  "metadata": {
+    "description": "L’aventure volcano-sidérale associe un paysage de lave à des lueurs célestes lors de la présentation à la presse du 29 mars 2023.",
+    "sourceUrl": "https://www.lyoncapitale.fr/wp-content/uploads/2023/03/IMG_0925-780x585.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Coulées de lave et lueurs vertes dans une scène projetée au planétarium de Vulcania"
+      },
+      {
+        "languageCode": "en",
+        "value": "Lava flows and green lights in a scene projected at Vulcania’s planetarium"
+      },
+      {
+        "languageCode": "de",
+        "value": "Lavaströme und grüne Lichtschleier in einer Projektion in Vulcanias Planetarium"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Lavastromen en groene lichtsluiers in een projectie in het planetarium van Vulcania"
+      },
+      {
+        "languageCode": "it",
+        "value": "Colate laviche e bagliori verdi in una scena proiettata nel planetario di Vulcania"
+      },
+      {
+        "languageCode": "es",
+        "value": "Coladas de lava y luces verdes en una escena proyectada en el planetario de Vulcania"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Strumienie lawy i zielone smugi światła w scenie wyświetlanej w planetarium Vulcanii"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Escoadas de lava e luzes verdes numa cena projetada no planetário de Vulcania"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "L’aventure volcano-sidérale associe un paysage de lave à des lueurs célestes lors de la présentation à la presse du 29 mars 2023."
+      },
+      {
+        "languageCode": "en",
+        "value": "The volcanic space adventure combines a lava landscape with lights in the sky during the press presentation on 29 March 2023."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das vulkanische Weltraumabenteuer verbindet bei der Pressevorführung am 29. März 2023 eine Lavalandschaft mit Lichtern am Himmel."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het vulkanische ruimteavontuur verbindt een lavalandschap met licht in de hemel tijdens de persvoorstelling van 29 maart 2023."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’avventura tra vulcani e spazio unisce un paesaggio di lava a luci nel cielo durante la presentazione alla stampa del 29 marzo 2023."
+      },
+      {
+        "languageCode": "es",
+        "value": "La aventura entre volcanes y espacio combina un paisaje de lava con luces celestes durante la presentación a la prensa del 29 de marzo de 2023."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wulkaniczna podróż w kosmos łączy krajobraz lawy ze światłami na niebie podczas pokazu dla prasy 29 marca 2023 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A aventura entre vulcões e espaço combina uma paisagem de lava com luzes no céu durante a apresentação à imprensa de 29 de março de 2023."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T20:03:47.6862942Z",
+    "startedAtUtc": "2026-11-15T20:03:40.2817929Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "6e2547f3c84c46e7b2bdc195579fe394",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "path": "park_item/6e2547f3c84c46e7b2bdc195579fe394",
+      "description": "L’aventure volcano-sidérale associe un paysage de lave à des lueurs célestes lors de la présentation à la presse du 29 mars 2023.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 780,
+      "height": 585,
+      "sizeInBytes": 43973,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.lyoncapitale.fr/wp-content/uploads/2023/03/IMG_0925-780x585.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Coulées de lave et lueurs vertes dans une scène projetée au planétarium de Vulcania"
+        },
+        {
+          "languageCode": "en",
+          "value": "Lava flows and green lights in a scene projected at Vulcania’s planetarium"
+        },
+        {
+          "languageCode": "de",
+          "value": "Lavaströme und grüne Lichtschleier in einer Projektion in Vulcanias Planetarium"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Lavastromen en groene lichtsluiers in een projectie in het planetarium van Vulcania"
+        },
+        {
+          "languageCode": "it",
+          "value": "Colate laviche e bagliori verdi in una scena proiettata nel planetario di Vulcania"
+        },
+        {
+          "languageCode": "es",
+          "value": "Coladas de lava y luces verdes en una escena proyectada en el planetario de Vulcania"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Strumienie lawy i zielone smugi światła w scenie wyświetlanej w planetarium Vulcanii"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Escoadas de lava e luzes verdes numa cena projetada no planetário de Vulcania"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "L’aventure volcano-sidérale associe un paysage de lave à des lueurs célestes lors de la présentation à la presse du 29 mars 2023."
+        },
+        {
+          "languageCode": "en",
+          "value": "The volcanic space adventure combines a lava landscape with lights in the sky during the press presentation on 29 March 2023."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das vulkanische Weltraumabenteuer verbindet bei der Pressevorführung am 29. März 2023 eine Lavalandschaft mit Lichtern am Himmel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het vulkanische ruimteavontuur verbindt een lavalandschap met licht in de hemel tijdens de persvoorstelling van 29 maart 2023."
+        },
+        {
+          "languageCode": "it",
+          "value": "L’avventura tra vulcani e spazio unisce un paesaggio di lava a luci nel cielo durante la presentazione alla stampa del 29 marzo 2023."
+        },
+        {
+          "languageCode": "es",
+          "value": "La aventura entre volcanes y espacio combina un paisaje de lava con luces celestes durante la presentación a la prensa del 29 de marzo de 2023."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wulkaniczna podróż w kosmos łączy krajobraz lawy ze światłami na niebie podczas pokazu dla prasy 29 marca 2023 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A aventura entre vulcões e espaço combina uma paisagem de lava com luzes no céu durante a apresentação à imprensa de 29 de março de 2023."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T20:03:41.099Z",
+      "updatedAt": "2026-11-15T20:03:44.575Z"
+    }
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,1461 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T20:12:24.616672+00:00",
+  "outcome": "partial",
+  "coverage": {
+    "items": 56,
+    "publicItems": 0,
+    "describedItems8Languages": 55,
+    "zones": 0,
+    "ownMedia": 56,
+    "historyEvents": 11,
+    "privateHistoryEvents": 11,
+    "officialMaps": 2,
+    "privateOwnMedia": 56,
+    "articles": 2,
+    "privateArticles": 2
+  },
+  "applyReceipts": [
+    {
+      "operationId": "d3bff74b-60bd-41d1-a8f3-c528dbcc8522",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T19:56:02.1310863Z",
+      "appliedAtUtc": "2026-11-15T19:56:02.1310871Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 4,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "49b329de-0627-4a0a-a347-b6ad6c2cc05f",
+          "entityKey": "vulcania-item-history-magma-2007",
+          "displayName": "Magma Explorer III ouvre la voie aux vulcanautes",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-magma-2007"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2007"
+            },
+            {
+              "field": "month",
+              "oldValue": null,
+              "newValue": "3"
+            },
+            {
+              "field": "datePrecision",
+              "oldValue": "Year",
+              "newValue": "Month"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "Opening"
+            },
+            {
+              "field": "isMajor",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Magma Explorer III empfängt die ersten Vulkanauten, en:Magma Explorer III welcomes its first vulcanauts, es:Magma Explorer III recibe a sus primeros vulcanautas, fr:Magma Explorer III ouvre la voie aux vulcanautes, it:Magma Explorer III accoglie i primi vulcanauti, nl:Magma Explorer III ontvangt de eerste vulkanauten, pl:Magma Explorer III przyjmuje pierwszych wulkanautów, pt:Magma Explorer III recebe os primeiros vulcanautas"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Magma Explorer III führt seine ersten Besucher in eine imaginäre Magmakammer. François Garniers Film für AmaK macht wissenschaftliche Erkundung zum Abenteuer: Die Mission der Vulkanauten spielt sich ab, während der Vulkan um sie herum erwacht., en:Magma Explorer III takes its first visitors into an imaginary magma chamber. François Garnier’s film for AmaK turns scientific exploration into an adventure, with the vulcanauts’ mission unfolding as the volcano awakens around them., es:Magma Explorer III lleva a sus primeros visitantes a una cámara magmática imaginaria. La película de François Garnier para AmaK transforma la exploración científica en aventura: la misión de los vulcanautas transcurre mientras el volcán despierta a su alrededor., fr:Magma Explorer III accueille ses premiers voyageurs dans une chambre magmatique imaginaire. Le film de François Garnier pour AmaK transforme l’exploration scientifique en aventure : la mission des vulcanautes se déroule au moment où le volcan se réveille., it:Magma Explorer III accompagna i primi visitatori in una camera magmatica immaginaria. Il film di François Garnier per AmaK trasforma l’esplorazione scientifica in avventura: la missione dei vulcanauti si svolge mentre il vulcano si risveglia intorno a loro., nl:Magma Explorer III brengt zijn eerste bezoekers naar een denkbeeldige magmakamer. De film van François Garnier voor AmaK maakt van wetenschappelijke verkenning een avontuur: de missie van de vulkanauten speelt zich af terwijl de vulkaan om hen heen ontwaakt., pl:Magma Explorer III zabiera pierwszych gości do wyobrażonej komory magmowej. Film François Garniera dla AmaK zmienia naukową eksplorację w przygodę: misja wulkanautów rozgrywa się w chwili, gdy otaczający ich wulkan budzi się do życia., pt:Magma Explorer III leva os primeiros visitantes a uma câmara magmática imaginária. O filme de François Garnier para a AmaK transforma a exploração científica numa aventura: a missão dos vulcanautas decorre enquanto o vulcão desperta à sua volta."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"AmaK \\u2014 magma-explorer-iii\",\"Url\":\"https://www.amak.fr/project/magma-explorer-iii/\",\"AccessedAt\":\"2026-11-15\"}]"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "420d901e-58f9-4455-953d-9bac44522ac5",
+          "entityKey": "vulcania-item-history-dragon-2008",
+          "displayName": "Dragon Ride fait surgir les mythes des profondeurs",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-dragon-2008"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2008"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "Opening"
+            },
+            {
+              "field": "isMajor",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Dragon Ride erweckt die Mythen der Tiefe, en:Dragon Ride brings underground myths to life, es:Dragon Ride hace surgir los mitos de las profundidades, fr:Dragon Ride fait surgir les mythes des profondeurs, it:Dragon Ride fa emergere i miti delle profondità, nl:Dragon Ride brengt mythen uit de diepte tot leven, pl:Dragon Ride ożywia mity głębin, pt:Dragon Ride faz surgir os mitos das profundezas"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Der erste Dragon Ride führt das Publikum in eine Verwerfung der Auvergne mit rätselhafter Aktivität. François Garniers Werk verbindet die unterirdische Reise mit sagenhaften Wesen, die einst Naturerscheinungen erklären sollten. So erhalten Mythen einen Platz in Vulcanias Abenteuern., en:The original Dragon Ride takes audiences into an Auvergne fault stirred by mysterious activity. François Garnier’s creation links the underground journey to legendary creatures once imagined to explain natural phenomena, giving myths a place in Vulcania’s adventures., es:El primer Dragon Ride lleva al público a una falla de Auvernia sacudida por una actividad misteriosa. La creación de François Garnier vincula el viaje subterráneo con las criaturas legendarias imaginadas para explicar fenómenos naturales, dando a los mitos un lugar en las aventuras de Vulcania., fr:Le premier Dragon Ride entraîne le public dans une faille auvergnate en proie à une mystérieuse agitation. Cette création de François Garnier relie le voyage souterrain aux créatures légendaires autrefois imaginées pour expliquer les phénomènes naturels, donnant aux mythes une place dans les aventures de Vulcania., it:Il primo Dragon Ride conduce il pubblico in una faglia dell’Alvernia scossa da una misteriosa attività. La creazione di François Garnier lega il viaggio sotterraneo alle creature leggendarie un tempo immaginate per spiegare i fenomeni naturali, dando spazio ai miti nelle avventure di Vulcania., nl:De oorspronkelijke Dragon Ride voert het publiek naar een breuk in de Auvergne waar mysterieuze activiteit heerst. François Garniers creatie verbindt de ondergrondse reis met legendarische wezens die ooit natuurverschijnselen moesten verklaren en geeft mythen een plaats in de avonturen van Vulcania., pl:Pierwszy Dragon Ride prowadzi widzów w głąb owernijskiego uskoku, w którym pojawia się tajemnicza aktywność. Dzieło François Garniera łączy podziemną podróż z legendarnymi stworzeniami wymyślanymi dawniej do objaśniania zjawisk natury, wprowadzając mity do przygód Vulcanii., pt:O primeiro Dragon Ride conduz o público a uma falha de Auvérnia agitada por uma atividade misteriosa. A criação de François Garnier liga a viagem subterrânea às criaturas lendárias outrora imaginadas para explicar fenómenos naturais, dando aos mitos um lugar nas aventuras de Vulcania."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"AmaK \\u2014 dragon-ride\",\"Url\":\"https://www.amak.fr/project/dragon-ride/\",\"AccessedAt\":\"2026-11-15\"}]"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "e42444c7-3213-4f23-8f06-4b11b5d1991f",
+          "entityKey": "vulcania-item-history-dragon2-2020",
+          "displayName": "Le Phénix prend la tête d’une nouvelle aventure",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-dragon2-2020"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2020"
+            },
+            {
+              "field": "month",
+              "oldValue": null,
+              "newValue": "7"
+            },
+            {
+              "field": "datePrecision",
+              "oldValue": "Year",
+              "newValue": "Month"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "StoryChange"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "previousName",
+              "oldValue": null,
+              "newValue": "Dragon Ride"
+            },
+            {
+              "field": "newName",
+              "oldValue": null,
+              "newValue": "Dragon Ride 2"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Der Phönix führt in ein neues Abenteuer, en:The Phoenix leads a new adventure, es:El Fénix encabeza una nueva aventura, fr:Le Phénix prend la tête d’une nouvelle aventure, it:La Fenice guida una nuova avventura, nl:De Feniks voert een nieuw avontuur aan, pl:Feniks prowadzi nową przygodę, pt:A Fénix conduz uma nova aventura"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Dragon Ride erhält mit Dragon Ride 2 eine neue Geschichte. Henry de Dragoniacs Experiment befreit die Geister der Erd-, Wasser-, Luft- und Feuerdrachen. Das Publikum folgt dem Phönix, um die Teile seines Eis wiederzuvereinen. Diese Suche ersetzt die Erzählung von der unterirdischen Verwerfung., en:Dragon Ride introduces a new story through Dragon Ride 2. Henry de Dragoniac’s experiment releases the spirits of the Earth, Water, Air and Fire dragons, and audiences follow the Phoenix to reunite its egg fragments. This new quest replaces the underground-fault narrative., es:Dragon Ride renueva su relato con Dragon Ride 2. El experimento de Henry de Dragoniac libera los espíritus de los dragones de Tierra, Agua, Aire y Fuego; el público sigue al Fénix para reunir los fragmentos de su huevo. La nueva búsqueda sustituye la historia de la falla subterránea., fr:Dragon Ride renouvelle son récit avec le film Dragon Ride 2. L’expérience d’Henry de Dragoniac libère les esprits des dragons de Terre, d’Eau, d’Air et de Feu ; le public suit le Phénix pour réunir les fragments de son œuf. Cette nouvelle quête remplace l’histoire de la faille souterraine., it:Dragon Ride rinnova il racconto con Dragon Ride 2. L’esperimento di Henry de Dragoniac libera gli spiriti dei draghi di Terra, Acqua, Aria e Fuoco; il pubblico segue la Fenice per riunire i frammenti del suo uovo. La nuova ricerca sostituisce la storia della faglia sotterranea., nl:Dragon Ride krijgt met Dragon Ride 2 een nieuw verhaal. Henry de Dragoniacs experiment bevrijdt de geesten van de draken van Aarde, Water, Lucht en Vuur. Het publiek volgt de Feniks om de delen van zijn ei te herenigen. Deze zoektocht vervangt het verhaal over de ondergrondse breuk., pl:Dragon Ride otrzymuje nową opowieść wraz z filmem Dragon Ride 2. Eksperyment Henry’ego de Dragoniaca uwalnia duchy smoków Ziemi, Wody, Powietrza i Ognia. Widzowie podążają za Feniksem, by połączyć fragmenty jego jaja. Nowa wyprawa zastępuje historię podziemnego uskoku., pt:Dragon Ride renova a narrativa com Dragon Ride 2. A experiência de Henry de Dragoniac liberta os espíritos dos dragões da Terra, Água, Ar e Fogo; o público segue a Fénix para reunir os fragmentos do seu ovo. A nova demanda substitui a história da falha subterrânea."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"AmaK \\u2014 dragon-ride-2\",\"Url\":\"https://www.amak.fr/project/dragon-ride-2/\",\"AccessedAt\":\"2026-11-15\"}]"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "837a7952-42e6-4cbc-bdf6-cede2ae3c429",
+          "entityKey": "vulcania-item-history-abyss-2016",
+          "displayName": "Abyss Explorer emmène l’exploration sous l’océan",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-abyss-2016"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2016"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "Opening"
+            },
+            {
+              "field": "isMajor",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "mainImageId",
+              "oldValue": null,
+              "newValue": "2609d09da2864a06aaff9d0e640db0cd"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Abyss Explorer verlegt die Erkundung unter den Ozean, en:Abyss Explorer takes exploration beneath the ocean, es:Abyss Explorer lleva la exploración bajo el océano, fr:Abyss Explorer emmène l’exploration sous l’océan, it:Abyss Explorer porta l’esplorazione sotto l’oceano, nl:Abyss Explorer verplaatst de verkenning onder de oceaan, pl:Abyss Explorer przenosi eksplorację pod ocean, pt:Abyss Explorer leva a exploração para debaixo do oceano"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Abyss Explorer eröffnet eine imaginäre Reise zum Vulkanismus des Südpazifiks. AmaK gestaltet die Tauchfahrt, auf die eine von Skertzo inszenierte Erkundung des Meeresbodens folgt. Die Attraktion lenkt den Blick von Kratern an Land auf ozeanische Rücken und ihre Hydrothermalquellen., en:Abyss Explorer introduces an imaginary journey into South Pacific volcanism. AmaK creates the bathyscaphe descent, followed by an exploration of the seabed staged by Skertzo. The attraction shifts attention from land-based craters to ocean ridges and their hydrothermal vents., es:Abyss Explorer introduce un viaje imaginario al vulcanismo del Pacífico Sur. AmaK crea el descenso en batiscafo, seguido de una exploración del fondo marino escenificada por Skertzo. La atracción desplaza la mirada de los cráteres terrestres a las dorsales oceánicas y sus fuentes hidrotermales., fr:Abyss Explorer introduit un voyage imaginaire vers le volcanisme du Pacifique Sud. AmaK signe la descente en bathyscaphe, suivie d’une exploration des fonds marins mise en scène par Skertzo. L’attraction déplace le regard des cratères terrestres vers les dorsales océaniques et leurs sources hydrothermales., it:Abyss Explorer introduce un viaggio immaginario nel vulcanismo del Pacifico meridionale. AmaK realizza la discesa in batiscafo, seguita dall’esplorazione dei fondali messa in scena da Skertzo. L’attrazione sposta lo sguardo dai crateri terrestri alle dorsali oceaniche e alle loro sorgenti idrotermali., nl:Abyss Explorer introduceert een denkbeeldige reis naar het vulkanisme van de zuidelijke Stille Oceaan. AmaK verzorgt de afdaling in een bathyscaaf, gevolgd door een zeebodemverkenning van Skertzo. De attractie verschuift de aandacht van kraters op het land naar oceaanruggen en hun hydrothermale bronnen., pl:Abyss Explorer wprowadza wyobrażoną podróż do wulkanicznych głębin południowego Pacyfiku. AmaK tworzy zejście batyskafem, po którym następuje eksploracja dna morskiego zrealizowana przez Skertzo. Atrakcja kieruje uwagę z lądowych kraterów na grzbiety oceaniczne i ich kominy hydrotermalne., pt:Abyss Explorer introduz uma viagem imaginária ao vulcanismo do Pacífico Sul. A AmaK cria a descida em batiscafo, seguida de uma exploração do fundo marinho encenada pela Skertzo. A atração desvia o olhar das crateras terrestres para as dorsais oceânicas e as suas fontes hidrotermais."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"AmaK \\u2014 abyss-explorer\",\"Url\":\"https://www.amak.fr/project/abyss-explorer/\",\"AccessedAt\":\"2026-11-15\"}]"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "f360ad07-38de-45d0-808f-b400544ed3db",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T20:04:26.316731Z",
+      "appliedAtUtc": "2026-11-15T20:04:26.3167318Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 2,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+          "entityKey": "vulcania-ballon-puys",
+          "displayName": "Ballon des Puys",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "attractionDetails.openingDate",
+              "oldValue": null,
+              "newValue": "2014-06-05"
+            },
+            {
+              "field": "attractionDetails.openingDateText",
+              "oldValue": "2014",
+              "newValue": "2014-06-05"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+          "entityKey": "vulcania-astrodome",
+          "displayName": "Astrodôme – Planétarium",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "attractionDetails.openingDate",
+              "oldValue": null,
+              "newValue": "2023-03-29"
+            },
+            {
+              "field": "attractionDetails.openingDateText",
+              "oldValue": "2023",
+              "newValue": "2023-03-29"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "828115a4-f71f-4576-96d1-53c2cc8de496",
+          "entityKey": "vulcania-item-history-ballon-2014",
+          "displayName": "Le Ballon des Puys ouvre une vue aérienne sur les volcans",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-ballon-2014"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "ce88d195-4890-43e4-8551-8f26d460760b"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "ce88d195-4890-43e4-8551-8f26d460760b"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2014"
+            },
+            {
+              "field": "month",
+              "oldValue": null,
+              "newValue": "6"
+            },
+            {
+              "field": "day",
+              "oldValue": null,
+              "newValue": "5"
+            },
+            {
+              "field": "datePrecision",
+              "oldValue": "Year",
+              "newValue": "Day"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "Opening"
+            },
+            {
+              "field": "isMajor",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "mainImageId",
+              "oldValue": null,
+              "newValue": "358753581b594abdb1a13a726c7c0a46"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Der Ballon des Puys eröffnet den Blick von oben, en:The Ballon des Puys opens an aerial view of the volcanoes, es:El Ballon des Puys abre una vista aérea de los volcanes, fr:Le Ballon des Puys ouvre une vue aérienne sur les volcans, it:Il Ballon des Puys apre una prospettiva aerea sui vulcani, nl:De Ballon des Puys opent een uitzicht vanuit de lucht, pl:Ballon des Puys otwiera widok na wulkany z powietrza, pt:O Ballon des Puys abre uma vista aérea sobre os vulcões"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Der Ballon des Puys öffnet am 5. Juni 2014 für Besucher. Der von Aérophile gelieferte Fesselballon erschließt die Vulkanlandschaft aus der Luft. Neben den unterirdischen Abenteuern in Vulcanias Sälen werden damit die tatsächlichen Geländeformen der Chaîne des Puys zum Thema des Erlebnisses., en:The Ballon des Puys opens to visitors on 5 June 2014. Supplied by Aérophile, the tethered balloon reveals the volcanic landscape from the sky. Alongside Vulcania’s indoor underground adventures, the actual contours of the Chaîne des Puys become the subject of the experience., es:El Ballon des Puys abre al público el 5 de junio de 2014. Suministrado por Aérophile, el globo cautivo permite descubrir el paisaje volcánico desde el cielo. Junto a los relatos subterráneos de las salas de Vulcania, el relieve real de la Chaîne des Puys se convierte en protagonista., fr:Le Ballon des Puys ouvre au public le 5 juin 2014. Fourni par Aérophile, ce ballon captif permet de découvrir les paysages volcaniques depuis le ciel. Après les récits souterrains des salles de Vulcania, le relief réel de la Chaîne des Puys devient le sujet de l’expérience., it:Il Ballon des Puys apre al pubblico il 5 giugno 2014. Fornito da Aérophile, il pallone frenato permette di scoprire dal cielo il paesaggio vulcanico. Accanto ai racconti sotterranei delle sale di Vulcania, il rilievo reale della Chaîne des Puys diventa il soggetto dell’esperienza., nl:De Ballon des Puys opent op 5 juni 2014 voor bezoekers. De door Aérophile geleverde kabelballon toont het vulkanische landschap vanuit de lucht. Naast de ondergrondse avonturen in de zalen van Vulcania worden de echte contouren van de Chaîne des Puys het onderwerp van de ervaring., pl:Ballon des Puys otwiera się dla gości 5 czerwca 2014 roku. Balon na uwięzi dostarczony przez Aérophile pozwala oglądać krajobraz wulkaniczny z nieba. Obok podziemnych przygód w salach Vulcanii tematem doświadczenia staje się rzeczywista rzeźba Chaîne des Puys., pt:O Ballon des Puys abre ao público a 5 de junho de 2014. Fornecido pela Aérophile, o balão cativo permite descobrir a paisagem vulcânica a partir do céu. A par das narrativas subterrâneas das salas de Vulcania, o relevo real da Chaîne des Puys torna-se o tema da experiência."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"EuroAmusement Professional \\u2014 ouverture du Ballon des Puys\",\"Url\":\"https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html\",\"AccessedAt\":\"2026-11-15\"}]"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "ee9b65df-57c1-41b3-a316-3c4c42bc02b2",
+          "entityKey": "vulcania-item-history-planetarium-2023",
+          "displayName": "Le planétarium accueille ses premiers visiteurs",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-planetarium-2023"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2023"
+            },
+            {
+              "field": "month",
+              "oldValue": null,
+              "newValue": "3"
+            },
+            {
+              "field": "day",
+              "oldValue": null,
+              "newValue": "29"
+            },
+            {
+              "field": "datePrecision",
+              "oldValue": "Year",
+              "newValue": "Day"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "Opening"
+            },
+            {
+              "field": "isMajor",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "mainImageId",
+              "oldValue": null,
+              "newValue": "6e2547f3c84c46e7b2bdc195579fe394"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Das Planetarium empfängt seine ersten Besucher, en:The planetarium welcomes its first visitors, es:El planetario recibe a sus primeros visitantes, fr:Le planétarium accueille ses premiers visiteurs, it:Il planetario accoglie i primi visitatori, nl:Het planetarium verwelkomt zijn eerste bezoekers, pl:Planetarium przyjmuje pierwszych gości, pt:O planetário recebe os primeiros visitantes"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Das Planetarium öffnet am 29. März 2023 für das Publikum. Sein projizierter Himmel und seine Astronomievorführungen erweitern Vulcanias Themenwelt „Die Erde im Weltraum“ und verbinden die Erforschung unseres Planeten mit dem Sonnensystem und den Sternen., en:The planetarium opens to the public on 29 March 2023. Its projected sky and astronomy presentations give new scope to Vulcania’s Earth in Space theme, connecting the study of our planet with the Solar System and the stars., es:El planetario abre al público el 29 de marzo de 2023. Su cielo proyectado y sus actividades astronómicas amplían el universo « La Tierra en el espacio » de Vulcania, conectando el estudio de nuestro planeta con el del Sistema Solar y las estrellas., fr:Le planétarium ouvre au public le 29 mars 2023. Son ciel projeté et ses animations d’astronomie donnent une nouvelle ampleur à l’univers « La Terre dans l’Espace » de Vulcania, en reliant l’étude de notre planète à celle du Système solaire et des étoiles., it:Il planetario apre al pubblico il 29 marzo 2023. Il cielo proiettato e le animazioni astronomiche ampliano l’universo « La Terra nello spazio » di Vulcania, collegando lo studio del nostro pianeta a quello del Sistema solare e delle stelle., nl:Het planetarium opent op 29 maart 2023 voor het publiek. De geprojecteerde sterrenhemel en astronomische presentaties geven Vulcania’s thema Aarde in de ruimte een nieuwe dimensie en verbinden de studie van onze planeet met het zonnestelsel en de sterren., pl:Planetarium otwiera się dla publiczności 29 marca 2023 roku. Projekcje nieba i pokazy astronomiczne poszerzają zakres tematycznego świata „Ziemia w kosmosie” w Vulcanii, łącząc badanie naszej planety z poznawaniem Układu Słonecznego i gwiazd., pt:O planetário abre ao público a 29 de março de 2023. O céu projetado e as apresentações de astronomia ampliam o universo « A Terra no Espaço » de Vulcania, ligando o estudo do nosso planeta ao do Sistema Solar e das estrelas."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"Lyon Capitale \\u2014 reportage du 30 mars 2023\",\"Url\":\"https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RSA Cosmos \\u2014 ouverture du plan\\u00E9tarium le 29 mars 2023\",\"Url\":\"https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html\",\"AccessedAt\":\"2026-11-15\"}]"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T20:11:33.7169548Z",
+      "appliedAtUtc": "2026-11-15T20:11:33.7169556Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 1,
+        "updated": 0,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "88068879-1dd4-4ebf-b7b2-75f5488cc85b",
+          "entityKey": "vulcania-item-history-planetarium-fire-2022",
+          "displayName": "Un incendie reporte le projet de planétarium",
+          "changeType": "Created",
+          "matchedBy": "key",
+          "fields": [
+            {
+              "field": "key",
+              "oldValue": "",
+              "newValue": "vulcania-item-history-planetarium-fire-2022"
+            },
+            {
+              "field": "entityType",
+              "oldValue": "Park",
+              "newValue": "ParkItem"
+            },
+            {
+              "field": "ownerId",
+              "oldValue": "",
+              "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+            },
+            {
+              "field": "parkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "parkItemId",
+              "oldValue": null,
+              "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+            },
+            {
+              "field": "contextParkId",
+              "oldValue": null,
+              "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+            },
+            {
+              "field": "year",
+              "oldValue": "0",
+              "newValue": "2022"
+            },
+            {
+              "field": "month",
+              "oldValue": null,
+              "newValue": "2"
+            },
+            {
+              "field": "day",
+              "oldValue": null,
+              "newValue": "10"
+            },
+            {
+              "field": "datePrecision",
+              "oldValue": "Year",
+              "newValue": "Day"
+            },
+            {
+              "field": "eventType",
+              "oldValue": "",
+              "newValue": "Fire"
+            },
+            {
+              "field": "isMajor",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "isVisible",
+              "oldValue": "true",
+              "newValue": "false"
+            },
+            {
+              "field": "mainImageId",
+              "oldValue": null,
+              "newValue": "9fbd4d6f8df44a9b800f5b71b056dcc6"
+            },
+            {
+              "field": "titles",
+              "oldValue": "",
+              "newValue": "de:Ein Brand verzögert das Planetarium, en:A fire delays the planetarium project, es:Un incendio retrasa el proyecto del planetario, fr:Un incendie reporte le projet de planétarium, it:Un incendio ritarda il progetto del planetario, nl:Brand vertraagt het planetariumproject, pl:Pożar opóźnia projekt planetarium, pt:Um incêndio atrasa o projeto do planetário"
+            },
+            {
+              "field": "summaries",
+              "oldValue": "",
+              "newValue": "de:Am 10. Februar 2022 beschädigt ein Brand das noch im Bau befindliche Planetarium. Die Arbeiter werden evakuiert; Verletzte werden nicht gemeldet. Die für Mai geplante Eröffnung entfällt, während Vulcania die Saison in den übrigen Bereichen des Parks weiter vorbereitet., en:On 10 February 2022, a fire damages the planetarium while it is still under construction. Workers are evacuated and no injuries are reported. The planned May opening is abandoned, while Vulcania continues preparing the season in the park’s other areas., es:El 10 de febrero de 2022, un incendio daña el planetario todavía en obras. Los trabajadores son evacuados y no se notifican heridos. Se descarta la apertura prevista para mayo, mientras Vulcania sigue preparando la temporada en las demás zonas del parque., fr:Le 10 février 2022, un incendie endommage le planétarium encore en chantier. Les ouvriers sont évacués et aucun blessé n’est signalé. L’ouverture prévue pour mai est abandonnée, tandis que Vulcania maintient la préparation de sa saison dans les autres espaces du parc., it:Il 10 febbraio 2022 un incendio danneggia il planetario ancora in costruzione. Gli operai vengono evacuati e non si segnalano feriti. L’apertura prevista per maggio viene annullata, mentre Vulcania prosegue i preparativi della stagione nelle altre aree del parco., nl:Op 10 februari 2022 beschadigt een brand het planetarium in aanbouw. De werknemers worden geëvacueerd en er worden geen gewonden gemeld. De geplande opening in mei vervalt, terwijl Vulcania het seizoen in de overige delen van het park blijft voorbereiden., pl:10 lutego 2022 roku pożar uszkadza budowane planetarium. Pracownicy zostają ewakuowani i nie ma doniesień o rannych. Planowane na maj otwarcie zostaje odwołane, a Vulcania nadal przygotowuje sezon w pozostałych częściach parku., pt:A 10 de fevereiro de 2022, um incêndio danifica o planetário ainda em construção. Os trabalhadores são evacuados e não há feridos registados. A abertura prevista para maio é abandonada, enquanto Vulcania continua a preparar a temporada nas restantes áreas do parque."
+            },
+            {
+              "field": "sources",
+              "oldValue": "[]",
+              "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 public sur le chantier du plan\\u00E9tarium\",\"Url\":\"https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Radio Scoop \\u2014 incendie ma\\u00EEtris\\u00E9 au futur plan\\u00E9tarium, 10 f\\u00E9vrier 2022\",\"Url\":\"https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274\",\"AccessedAt\":\"2026-11-15\"}]"
+            },
+            {
+              "field": "article",
+              "oldValue": null,
+              "newValue": "{\"Slug\":null,\"Titles\":[{\"LanguageCode\":\"de\",\"Value\":\"Vulcanias Planetarium: vom Baustellenbrand zur Er\\u00F6ffnung\"},{\"LanguageCode\":\"en\",\"Value\":\"Vulcania\\u2019s planetarium: from a construction fire to opening day\"},{\"LanguageCode\":\"es\",\"Value\":\"El planetario de Vulcania, del incendio de las obras a la apertura\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le plan\\u00E9tarium de Vulcania, du chantier incendi\\u00E9 \\u00E0 l\\u2019ouverture\"},{\"LanguageCode\":\"it\",\"Value\":\"Il planetario di Vulcania, dall\\u2019incendio del cantiere all\\u2019apertura\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium van Vulcania: van bouwbrand tot opening\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium Vulcanii: od po\\u017Caru na budowie do otwarcia\"},{\"LanguageCode\":\"pt\",\"Value\":\"O planet\\u00E1rio de Vulcania, do inc\\u00EAndio nas obras \\u00E0 abertura\"}],\"Subtitles\":[{\"LanguageCode\":\"de\",\"Value\":\"Der Brand im Februar 2022 ver\\u00E4ndert den Zeitplan eines Projekts rund um das Weltall.\"},{\"LanguageCode\":\"en\",\"Value\":\"The February 2022 fire changes the timetable for a project devoted to space.\"},{\"LanguageCode\":\"es\",\"Value\":\"El incendio de febrero de 2022 altera el calendario de un proyecto dedicado al espacio.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u2019incendie de f\\u00E9vrier 2022 bouleverse le calendrier d\\u2019un projet consacr\\u00E9 \\u00E0 l\\u2019Espace.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u2019incendio del febbraio 2022 cambia il calendario di un progetto dedicato allo spazio.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De brand van februari 2022 verandert de planning van een project over de ruimte.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Po\\u017Car w lutym 2022 roku zmienia harmonogram projektu po\\u015Bwi\\u0119conego kosmosowi.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O inc\\u00EAndio de fevereiro de 2022 altera o calend\\u00E1rio de um projeto dedicado ao espa\\u00E7o.\"}],\"Summaries\":[{\"LanguageCode\":\"de\",\"Value\":\"Das f\\u00FCr das zwanzigj\\u00E4hrige Parkjubil\\u00E4um vorgesehene Planetarium wird vor seiner Er\\u00F6ffnung von einem Brand getroffen. Im M\\u00E4rz 2023 erh\\u00E4lt die Astronomie schlie\\u00DFlich ihren neuen Platz in Vulcania.\"},{\"LanguageCode\":\"en\",\"Value\":\"Planned as part of the park\\u2019s twentieth anniversary, the planetarium suffers a fire before receiving visitors. Its eventual opening in March 2023 gives astronomy a new place at Vulcania.\"},{\"LanguageCode\":\"es\",\"Value\":\"Previsto entre las novedades del vig\\u00E9simo aniversario del parque, el planetario sufre un incendio antes de recibir visitantes. Su apertura en marzo de 2023 da finalmente un nuevo lugar a la astronom\\u00EDa en Vulcania.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Destin\\u00E9 \\u00E0 rejoindre les nouveaut\\u00E9s du vingti\\u00E8me anniversaire, le plan\\u00E9tarium subit un incendie avant d\\u2019accueillir son public. Son ouverture en mars 2023 donne finalement une place nouvelle \\u00E0 l\\u2019astronomie dans le parc.\"},{\"LanguageCode\":\"it\",\"Value\":\"Pensato per arricchire il ventesimo anniversario del parco, il planetario subisce un incendio prima di accogliere il pubblico. L\\u2019apertura nel marzo 2023 d\\u00E0 infine un nuovo spazio all\\u2019astronomia a Vulcania.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium zou deel uitmaken van de twintigste verjaardag van het park, maar wordt v\\u00F3\\u00F3r de opening getroffen door brand. In maart 2023 krijgt de sterrenkunde uiteindelijk haar nieuwe plek bij Vulcania.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium planowane na dwudziestolecie parku zostaje dotkni\\u0119te po\\u017Carem, zanim przyjmie pierwszych go\\u015Bci. Otwarcie w marcu 2023 roku daje astronomii nowe miejsce w Vulcanii.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Previsto entre as novidades do vig\\u00E9simo anivers\\u00E1rio do parque, o planet\\u00E1rio sofre um inc\\u00EAndio antes de receber visitantes. A abertura em mar\\u00E7o de 2023 d\\u00E1 finalmente um novo lugar \\u00E0 astronomia em Vulcania.\"}],\"MainImageId\":\"9fbd4d6f8df44a9b800f5b71b056dcc6\",\"Blocks\":[{\"Id\":\"db56ae895e574645a74466086a2f4f24\",\"Type\":0,\"SortOrder\":10,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Eine Baustelle f\\u00FCr das Jubil\\u00E4umsjahr\"},{\"LanguageCode\":\"en\",\"Value\":\"An anniversary project under construction\"},{\"LanguageCode\":\"es\",\"Value\":\"Unas obras para el aniversario\"},{\"LanguageCode\":\"fr\",\"Value\":\"Un chantier au c\\u0153ur de l\\u2019anniversaire\"},{\"LanguageCode\":\"it\",\"Value\":\"Un cantiere per l\\u2019anniversario\"},{\"LanguageCode\":\"nl\",\"Value\":\"Een bouwproject voor het jubileum\"},{\"LanguageCode\":\"pl\",\"Value\":\"Budowa na jubileuszowy rok\"},{\"LanguageCode\":\"pt\",\"Value\":\"Uma obra para o anivers\\u00E1rio\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"5d89f105336143eb85e9cc9f56aab37b\",\"Type\":1,\"SortOrder\":20,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Im Jahr 2022 bereitet Vulcania das zwanzigste Jubil\\u00E4um seiner Einweihung vor. Das k\\u00FCnftige Planetarium soll die Besch\\u00E4ftigung mit der Erde um den Blick in das Universum erg\\u00E4nzen. F\\u00FCr die neue Einrichtung ist eine Er\\u00F6ffnung im Mai vorgesehen, w\\u00E4hrend der \\u00FCbrige Park seine Saison bereits am 30. M\\u00E4rz beginnen soll.\"},{\"LanguageCode\":\"en\",\"Value\":\"In 2022, Vulcania is preparing to mark twenty years since its inauguration. The planned planetarium will extend the exploration of Earth into the wider Universe. It is expected to welcome visitors in May, during a season that the rest of the park is scheduled to begin on 30 March.\"},{\"LanguageCode\":\"es\",\"Value\":\"En 2022, Vulcania prepara la celebraci\\u00F3n de los veinte a\\u00F1os de su inauguraci\\u00F3n. El futuro planetario debe ampliar el descubrimiento de la Tierra con una mirada hacia el Universo. Su apertura est\\u00E1 anunciada para mayo, durante una temporada que el resto del parque tiene previsto iniciar ya el 30 de marzo.\"},{\"LanguageCode\":\"fr\",\"Value\":\"En 2022, Vulcania pr\\u00E9pare les vingt ans de son inauguration. Le futur plan\\u00E9tarium doit enrichir la d\\u00E9couverte de la Terre par une ouverture sur l\\u2019Univers. Son arriv\\u00E9e est annonc\\u00E9e pour le mois de mai, au cours d\\u2019une saison que le reste du parc pr\\u00E9voit de commencer d\\u00E8s le 30 mars.\"},{\"LanguageCode\":\"it\",\"Value\":\"Nel 2022 Vulcania prepara il ventesimo anniversario della propria inaugurazione. Il futuro planetario deve ampliare la scoperta della Terra con uno sguardo sull\\u2019Universo. La sua apertura \\u00E8 annunciata per maggio, durante una stagione che il resto del parco prevede di iniziare gi\\u00E0 il 30 marzo, con le altre attrazioni.\"},{\"LanguageCode\":\"nl\",\"Value\":\"In 2022 bereidt Vulcania de viering voor van twintig jaar sinds zijn inauguratie. Het toekomstige planetarium moet de verkenning van de aarde uitbreiden naar het heelal. De opening van de nieuwe voorziening staat gepland voor mei, in een seizoen dat de rest van het park al op 30 maart wil beginnen.\"},{\"LanguageCode\":\"pl\",\"Value\":\"W 2022 roku Vulcania przygotowuje obchody dwudziestej rocznicy swojej inauguracji. Przysz\\u0142e planetarium ma rozszerzy\\u0107 poznawanie Ziemi o spojrzenie na Wszech\\u015Bwiat. Nowy obiekt ma zosta\\u0107 udost\\u0119pniony w maju, podczas sezonu, kt\\u00F3ry pozosta\\u0142a cz\\u0119\\u015B\\u0107 parku planuje rozpocz\\u0105\\u0107 ju\\u017C 30 marca. Planetarium jest wi\\u0119c wa\\u017Cnym elementem programu jubileuszowego, ale nie warunkiem rozpocz\\u0119cia sezonu.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Em 2022, Vulcania prepara a celebra\\u00E7\\u00E3o dos vinte anos da sua inaugura\\u00E7\\u00E3o. O futuro planet\\u00E1rio dever\\u00E1 alargar a descoberta da Terra com um olhar sobre o Universo. A abertura da nova instala\\u00E7\\u00E3o est\\u00E1 anunciada para maio, durante uma temporada que o restante parque prev\\u00EA come\\u00E7ar j\\u00E1 a 30 de mar\\u00E7o.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"e08f181758c944e9b2bcab648034e49e\",\"Type\":1,\"SortOrder\":30,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Am 10. Februar, w\\u00E4hrend der Winterpause ohne Besucher im Park, bricht im noch nicht fertiggestellten Geb\\u00E4ude ein Feuer aus. Die Arbeiter auf der Baustelle werden evakuiert. Vulcania meldet in seiner \\u00F6ffentlichen Mitteilung keine Verletzten. Auch der aktualisierte Bericht von Radio Scoop am Nachmittag nennt einen Einsatz, bei dem niemand verletzt wurde.\"},{\"LanguageCode\":\"en\",\"Value\":\"On 10 February, while the park is closed to visitors for winter, a fire breaks out inside the unfinished building. Workers on the construction site are evacuated. Vulcania\\u2019s public statement reports no injuries, and the update carried by Radio Scoop later that afternoon also records an intervention without injuries.\"},{\"LanguageCode\":\"es\",\"Value\":\"El 10 de febrero, mientras el recinto permanece cerrado al p\\u00FAblico durante el invierno, se declara un incendio en el edificio a\\u00FAn sin terminar. Los trabajadores presentes en las obras son evacuados. El comunicado de Vulcania no informa de heridos; la actualizaci\\u00F3n difundida por Radio Scoop esa misma tarde tampoco registra personas heridas.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le 10 f\\u00E9vrier, alors que le site est ferm\\u00E9 aux visiteurs pour l\\u2019hiver, le feu se d\\u00E9clare dans le b\\u00E2timent encore en construction. Les ouvriers pr\\u00E9sents sur le chantier sont \\u00E9vacu\\u00E9s. Le communiqu\\u00E9 diffus\\u00E9 par Vulcania ne signale aucun bless\\u00E9 ; le bilan relay\\u00E9 dans l\\u2019apr\\u00E8s-midi par Radio Scoop reste lui aussi sans bless\\u00E9.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il 10 febbraio, mentre il parco \\u00E8 chiuso ai visitatori per l\\u2019inverno, scoppia un incendio nell\\u2019edificio ancora incompiuto. Gli operai presenti nel cantiere vengono evacuati. Il comunicato pubblico di Vulcania non segnala feriti; anche l\\u2019aggiornamento diffuso da Radio Scoop nel pomeriggio riferisce che l\\u2019intervento non ha registrato persone ferite.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Op 10 februari, terwijl het park voor de winter gesloten is voor bezoekers, breekt brand uit in het onvoltooide gebouw. De werknemers op de bouwplaats worden ge\\u00EBvacueerd. Vulcania meldt in zijn openbare verklaring geen gewonden. Ook het bijgewerkte verslag dat Radio Scoop later die middag publiceert, vermeldt dat niemand gewond is geraakt.\"},{\"LanguageCode\":\"pl\",\"Value\":\"10 lutego, gdy park jest zamkni\\u0119ty dla odwiedzaj\\u0105cych na zim\\u0119, w niewyko\\u0144czonym budynku wybucha po\\u017Car. Pracownicy znajduj\\u0105cy si\\u0119 na placu budowy zostaj\\u0105 ewakuowani. W publicznym komunikacie Vulcania informuje, \\u017Ce nie ma rannych. Aktualizacja opublikowana przez Radio Scoop p\\u00F3\\u017Aniej tego samego popo\\u0142udnia r\\u00F3wnie\\u017C opisuje akcj\\u0119 bez os\\u00F3b poszkodowanych.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A 10 de fevereiro, enquanto o parque est\\u00E1 encerrado aos visitantes durante o inverno, deflagra um inc\\u00EAndio no edif\\u00EDcio ainda por concluir. Os trabalhadores presentes nas obras s\\u00E3o evacuados. O comunicado p\\u00FAblico de Vulcania n\\u00E3o refere feridos; a atualiza\\u00E7\\u00E3o divulgada pela Radio Scoop nessa mesma tarde tamb\\u00E9m relata uma interven\\u00E7\\u00E3o sem pessoas feridas.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"d050a6e729c345de8319fea5baa82a10\",\"Type\":0,\"SortOrder\":40,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Ein besch\\u00E4digtes Dach ver\\u00E4ndert die Planung\"},{\"LanguageCode\":\"en\",\"Value\":\"A damaged roof and a changed timetable\"},{\"LanguageCode\":\"es\",\"Value\":\"El tejado da\\u00F1ado obliga a cambiar los plazos\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le toit atteint, une saison \\u00E0 r\\u00E9organiser\"},{\"LanguageCode\":\"it\",\"Value\":\"Il tetto danneggiato e un calendario da cambiare\"},{\"LanguageCode\":\"nl\",\"Value\":\"Een beschadigd dak en een andere planning\"},{\"LanguageCode\":\"pl\",\"Value\":\"Uszkodzony dach zmienia plany\"},{\"LanguageCode\":\"pt\",\"Value\":\"O telhado danificado obriga a mudar os prazos\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"85a42834838948159a05366afa9c66dd\",\"Type\":1,\"SortOrder\":50,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Die Flammen erreichen das Dach und schw\\u00E4chen die Geb\\u00E4udestruktur. Wegen der Einsturzgefahr m\\u00FCssen die Feuerwehrleute von au\\u00DFen arbeiten. Auf einem vom Park ver\\u00F6ffentlichten Foto ist ihr Einsatz in einem Hubkorb \\u00FCber dem rauchenden Dach zu sehen. Am Nachmittag ist der Brand unter Kontrolle, doch eine Er\\u00F6ffnung des Planetariums im Jahr 2022 ist nicht mehr m\\u00F6glich.\"},{\"LanguageCode\":\"en\",\"Value\":\"Flames reach the roof and weaken the structure. The risk of collapse requires firefighters to work from outside the building. A photograph released by the park shows the intervention from an elevated platform above the smoking roof. The fire is brought under control that afternoon, but opening the planetarium in 2022 is no longer possible.\"},{\"LanguageCode\":\"es\",\"Value\":\"Las llamas alcanzan el tejado y debilitan la estructura. El riesgo de derrumbe obliga a los bomberos a trabajar desde el exterior del edificio. Una fotograf\\u00EDa publicada por el parque muestra su intervenci\\u00F3n desde una plataforma elevada sobre el tejado humeante. El fuego queda controlado por la tarde, pero el planetario ya no podr\\u00E1 abrir en 2022.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Les flammes gagnent la toiture et fragilisent la structure. Le risque d\\u2019effondrement conduit les pompiers \\u00E0 travailler depuis l\\u2019ext\\u00E9rieur du b\\u00E2timent. Une photographie publi\\u00E9e par le parc montre leur intervention au-dessus du toit fumant, depuis une nacelle \\u00E9lev\\u00E9e. L\\u2019incendie est ma\\u00EEtris\\u00E9 dans l\\u2019apr\\u00E8s-midi, mais l\\u2019ouverture du plan\\u00E9tarium en 2022 n\\u2019est plus envisageable.\"},{\"LanguageCode\":\"it\",\"Value\":\"Le fiamme raggiungono il tetto e indeboliscono la struttura. Il rischio di crollo costringe i vigili del fuoco a intervenire dall\\u2019esterno dell\\u2019edificio. Una fotografia pubblicata dal parco li mostra su una piattaforma aerea sopra il tetto fumante. L\\u2019incendio viene controllato nel pomeriggio, ma l\\u2019apertura del planetario nel 2022 non \\u00E8 pi\\u00F9 possibile.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De vlammen bereiken het dak en verzwakken de constructie. Door het instortingsgevaar moeten brandweerlieden van buiten het gebouw werken. Een door het park gepubliceerde foto toont hun inzet vanuit een hoogwerker boven het rokende dak. De brand is die middag onder controle, maar een opening van het planetarium in 2022 is niet meer mogelijk.\"},{\"LanguageCode\":\"pl\",\"Value\":\"P\\u0142omienie docieraj\\u0105 do dachu i os\\u0142abiaj\\u0105 konstrukcj\\u0119. Ze wzgl\\u0119du na ryzyko zawalenia stra\\u017Cacy musz\\u0105 prowadzi\\u0107 dzia\\u0142ania z zewn\\u0105trz budynku. Na zdj\\u0119ciu udost\\u0119pnionym przez park wida\\u0107 ich prac\\u0119 z kosza podno\\u015Bnika nad dymi\\u0105cym dachem. Po po\\u0142udniu po\\u017Car jest opanowany, ale otwarcie planetarium jeszcze w 2022 roku przestaje by\\u0107 mo\\u017Cliwe.\"},{\"LanguageCode\":\"pt\",\"Value\":\"As chamas atingem o telhado e enfraquecem a estrutura. O risco de desabamento obriga os bombeiros a trabalhar a partir do exterior do edif\\u00EDcio. Uma fotografia publicada pelo parque mostra a interven\\u00E7\\u00E3o numa plataforma elevada sobre o telhado fumegante. O inc\\u00EAndio \\u00E9 dominado durante a tarde, mas a abertura do planet\\u00E1rio em 2022 deixa de ser poss\\u00EDvel.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"834163976560438b98c654314b15e5a1\",\"Type\":1,\"SortOrder\":60,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Betroffen ist die Baustelle einer neuen Einrichtung, kein bereits f\\u00FCr Besucher ge\\u00F6ffnetes Angebot. Vulcania erkl\\u00E4rt, dass die \\u00FCbrigen Anlagen unber\\u00FChrt geblieben sind, und h\\u00E4lt am angek\\u00FCndigten Saisonstart fest. Das Parkjubil\\u00E4um und die Fertigstellung des Planetariums haben nun unterschiedliche Zeitpl\\u00E4ne: Die Vorbereitungen auf die Parksaison gehen weiter, w\\u00E4hrend das neue Geb\\u00E4ude noch auf seine Vollendung wartet.\"},{\"LanguageCode\":\"en\",\"Value\":\"The fire affects a new construction site rather than an attraction already welcoming guests. Vulcania states that the remaining park installations have not been hit and retains its announced seasonal reopening. The anniversary celebrations and completion of the planetarium now follow separate timetables: preparations for the park season continue while the new building remains unfinished.\"},{\"LanguageCode\":\"es\",\"Value\":\"El incendio afecta a las obras de una novedad, no a una atracci\\u00F3n que ya reciba visitantes. Vulcania precisa que las dem\\u00E1s instalaciones no han sufrido da\\u00F1os y mantiene el anuncio de su reapertura estacional. La celebraci\\u00F3n del aniversario y la finalizaci\\u00F3n del planetario pasan a tener calendarios distintos: el parque prepara la temporada y el nuevo edificio sigue pendiente.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Ce sinistre touche le chantier d\\u2019une nouveaut\\u00E9, pas un espace d\\u00E9j\\u00E0 ouvert aux visiteurs. Vulcania pr\\u00E9cise que les autres installations ne sont pas atteintes et maintient l\\u2019annonce de leur r\\u00E9ouverture saisonni\\u00E8re. La c\\u00E9l\\u00E9bration de l\\u2019anniversaire et l\\u2019ach\\u00E8vement du plan\\u00E9tarium suivent d\\u00E9sormais deux calendriers distincts : le parc pr\\u00E9pare sa saison, tandis que le nouveau b\\u00E2timent reste attendu.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il sinistro interessa il cantiere di una novit\\u00E0, non un\\u2019attrazione gi\\u00E0 accessibile al pubblico. Vulcania precisa che le altre installazioni non sono state colpite e conferma la riapertura stagionale annunciata. Le celebrazioni dell\\u2019anniversario e il completamento del planetario seguono ormai due calendari distinti: il parco prepara la stagione, mentre il nuovo edificio resta da terminare.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De brand treft de bouwplaats van een nieuwe voorziening, geen attractie die al bezoekers ontvangt. Vulcania verklaart dat de overige installaties niet zijn geraakt en houdt vast aan de aangekondigde seizoensopening. Het parkjubileum en de voltooiing van het planetarium volgen voortaan verschillende planningen: het park bereidt het seizoen voor, terwijl het nieuwe gebouw nog niet af is.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Ogie\\u0144 dotyka placu budowy nowego obiektu, a nie atrakcji przyjmuj\\u0105cej ju\\u017C go\\u015Bci. Vulcania podkre\\u015Bla, \\u017Ce pozosta\\u0142e instalacje nie zosta\\u0142y uszkodzone, i podtrzymuje zapowied\\u017A sezonowego otwarcia. Jubileusz parku oraz uko\\u0144czenie planetarium maj\\u0105 odt\\u0105d osobne harmonogramy: trwaj\\u0105 przygotowania do sezonu w parku, podczas gdy nowy budynek wci\\u0105\\u017C czeka na zako\\u0144czenie prac.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O inc\\u00EAndio afeta as obras de uma novidade, n\\u00E3o uma atra\\u00E7\\u00E3o que j\\u00E1 receba visitantes. Vulcania esclarece que as restantes instala\\u00E7\\u00F5es n\\u00E3o foram atingidas e mant\\u00E9m o an\\u00FAncio da reabertura sazonal. As celebra\\u00E7\\u00F5es do anivers\\u00E1rio e a conclus\\u00E3o do planet\\u00E1rio passam a seguir calend\\u00E1rios diferentes: o parque prepara a temporada, enquanto o novo edif\\u00EDcio continua por terminar.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"ee103d53dd3d4653b06cfe43a39a0b49\",\"Type\":0,\"SortOrder\":70,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Der Himmel \\u00F6ffnet sich 2023 f\\u00FCr Besucher\"},{\"LanguageCode\":\"en\",\"Value\":\"Opening the dome to visitors in 2023\"},{\"LanguageCode\":\"es\",\"Value\":\"La c\\u00FApula recibe visitantes en 2023\"},{\"LanguageCode\":\"fr\",\"Value\":\"Un ciel accessible au public en 2023\"},{\"LanguageCode\":\"it\",\"Value\":\"La cupola accoglie il pubblico nel 2023\"},{\"LanguageCode\":\"nl\",\"Value\":\"De koepel ontvangt publiek in 2023\"},{\"LanguageCode\":\"pl\",\"Value\":\"Kopu\\u0142a otwarta dla go\\u015Bci w 2023 roku\"},{\"LanguageCode\":\"pt\",\"Value\":\"A c\\u00FApula recebe o p\\u00FAblico em 2023\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"b5edf9b6a20849d4a3cbf35bbb56fc16\",\"Type\":1,\"SortOrder\":80,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Am 29. M\\u00E4rz 2023 empf\\u00E4ngt das Planetarium schlie\\u00DFlich sein Publikum. Eine Mitteilung des Ausstatters RSA Cosmos und der am folgenden Tag erschienene Bericht von Lyon Capitale best\\u00E4tigen diesen Er\\u00F6ffnungstag. Fotos von der Pressevorstellung zeigen bereits Bilder der Sonne und vulkanischer Landschaften, die unter der Kuppel auf die Projektionsfl\\u00E4che geworfen werden.\"},{\"LanguageCode\":\"en\",\"Value\":\"The planetarium finally welcomes the public on 29 March 2023. An announcement by equipment supplier RSA Cosmos and Lyon Capitale\\u2019s report published the next day agree on that opening date. Photographs from the press presentation already show images of the Sun and volcanic landscapes projected inside the dome.\"},{\"LanguageCode\":\"es\",\"Value\":\"El planetario abre finalmente al p\\u00FAblico el 29 de marzo de 2023. El anuncio del proveedor RSA Cosmos y el reportaje de Lyon Capitale publicado al d\\u00EDa siguiente coinciden en esa fecha. Las fotograf\\u00EDas de la presentaci\\u00F3n a la prensa muestran ya im\\u00E1genes del Sol y paisajes volc\\u00E1nicos proyectados bajo la c\\u00FApula.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le plan\\u00E9tarium re\\u00E7oit finalement ses visiteurs le 29 mars 2023. L\\u2019annonce de RSA Cosmos, qui \\u00E9quipe la salle, et le reportage de Lyon Capitale publi\\u00E9 le lendemain situent cette ouverture \\u00E0 la m\\u00EAme date. Les photographies de la pr\\u00E9sentation \\u00E0 la presse montrent d\\u00E9j\\u00E0 des images du Soleil et des paysages volcaniques projet\\u00E9s sous le d\\u00F4me.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il planetario riceve infine i visitatori il 29 marzo 2023. L\\u2019annuncio del fornitore RSA Cosmos e il reportage di Lyon Capitale pubblicato il giorno successivo indicano la stessa data di apertura. Le fotografie della presentazione alla stampa mostrano gi\\u00E0 immagini del Sole e paesaggi vulcanici proiettati all\\u2019interno della cupola.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium opent uiteindelijk op 29 maart 2023 voor bezoekers. Een bericht van leverancier RSA Cosmos en het verslag van Lyon Capitale van de volgende dag bevestigen dezelfde openingsdatum. Foto\\u2019s van de perspresentatie tonen al beelden van de zon en vulkanische landschappen die onder de koepel worden geprojecteerd.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium przyjmuje publiczno\\u015B\\u0107 29 marca 2023 roku. Komunikat dostawcy wyposa\\u017Cenia RSA Cosmos i reporta\\u017C Lyon Capitale z nast\\u0119pnego dnia wskazuj\\u0105 t\\u0119 sam\\u0105 dat\\u0119 otwarcia. Zdj\\u0119cia z prezentacji dla prasy pokazuj\\u0105 ju\\u017C obrazy S\\u0142o\\u0144ca oraz krajobraz\\u00F3w wulkanicznych wy\\u015Bwietlane pod kopu\\u0142\\u0105 nowej sali, kt\\u00F3ra staje si\\u0119 cz\\u0119\\u015Bci\\u0105 oferty parku.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O planet\\u00E1rio acolhe finalmente os visitantes a 29 de mar\\u00E7o de 2023. O an\\u00FAncio do fornecedor RSA Cosmos e a reportagem do Lyon Capitale publicada no dia seguinte indicam a mesma data de abertura. As fotografias da apresenta\\u00E7\\u00E3o \\u00E0 imprensa mostram j\\u00E1 imagens do Sol e paisagens vulc\\u00E2nicas projetadas sob a c\\u00FApula.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"5d2b1ffd49bb41179a97ad6599e8290e\",\"Type\":1,\"SortOrder\":90,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Mit dem neuen Saal wird das Weltall in Vulcania auf andere Weise erfahrbar. Astronomische Vorf\\u00FChrungen und L\\u2019aventure volcano-sid\\u00E9rale verbinden Erscheinungen auf der Erde mit anderen Welten. Das Geb\\u00E4ude, dessen Dach beim Feuerwehreinsatz im Mittelpunkt stand, wird zum Ort f\\u00FCr Projektionen und wissenschaftliche Vermittlung. Besucher k\\u00F6nnen es ein Jahr nach der urspr\\u00FCnglich vorgesehenen Saison betreten.\"},{\"LanguageCode\":\"en\",\"Value\":\"The new venue gives space exploration a different presence at Vulcania. Astronomy presentations and L\\u2019aventure volcano-sid\\u00E9rale connect phenomena on Earth with other worlds. The building whose roof had been the focus of the firefighting operation becomes a setting for projections and science presentations, welcoming visitors a year after the originally planned season.\"},{\"LanguageCode\":\"es\",\"Value\":\"Con esta sala, el espacio adquiere una presencia distinta en Vulcania. Las presentaciones astron\\u00F3micas y L\\u2019aventure volcano-sid\\u00E9rale conectan los fen\\u00F3menos de la Tierra con los de otros mundos. El edificio cuyo tejado hab\\u00EDa concentrado la intervenci\\u00F3n de los bomberos se convierte en un lugar de proyecciones y divulgaci\\u00F3n cient\\u00EDfica, abierto un a\\u00F1o despu\\u00E9s de la temporada inicialmente prevista.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Avec cette salle, l\\u2019Espace prend une forme diff\\u00E9rente dans l\\u2019offre de Vulcania. Les pr\\u00E9sentations astronomiques et L\\u2019aventure volcano-sid\\u00E9rale relient les ph\\u00E9nom\\u00E8nes de notre plan\\u00E8te \\u00E0 ceux d\\u2019autres mondes. Le b\\u00E2timent dont la toiture avait concentr\\u00E9 l\\u2019intervention des secours devient ainsi un lieu de projection et de m\\u00E9diation scientifique, ouvert un an apr\\u00E8s la saison initialement pr\\u00E9vue.\"},{\"LanguageCode\":\"it\",\"Value\":\"Con questa sala, lo spazio assume una presenza diversa nell\\u2019offerta di Vulcania. Le presentazioni astronomiche e L\\u2019aventure volcano-sid\\u00E9rale collegano i fenomeni della Terra a quelli di altri mondi. L\\u2019edificio il cui tetto era stato al centro dell\\u2019intervento dei soccorsi diventa un luogo di proiezioni e divulgazione scientifica, aperto un anno dopo la stagione inizialmente prevista.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Met de nieuwe zaal krijgt de ruimte een andere plaats in Vulcania. Astronomische presentaties en L\\u2019aventure volcano-sid\\u00E9rale verbinden verschijnselen op aarde met andere werelden. Het gebouw waarvan het dak centraal stond bij de brandweerinzet, wordt zo een plek voor projecties en wetenschappelijke uitleg. Het ontvangt bezoekers een jaar na het oorspronkelijk geplande seizoen.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Dzi\\u0119ki temu obiektowi kosmos jest przedstawiany w Vulcanii w nowy spos\\u00F3b. Pokazy astronomiczne i L\\u2019aventure volcano-sid\\u00E9rale wi\\u0105\\u017C\\u0105 zjawiska ziemskie z innymi \\u015Bwiatami. Budynek, kt\\u00F3rego dach znajdowa\\u0142 si\\u0119 w centrum akcji ga\\u015Bniczej, staje si\\u0119 miejscem projekcji i popularyzacji nauki. Go\\u015Bcie mog\\u0105 wej\\u015B\\u0107 do niego rok po pierwotnie planowanym sezonie otwarcia.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Com esta sala, o espa\\u00E7o ganha uma presen\\u00E7a diferente na oferta de Vulcania. As apresenta\\u00E7\\u00F5es de astronomia e L\\u2019aventure volcano-sid\\u00E9rale relacionam os fen\\u00F3menos da Terra com os de outros mundos. O edif\\u00EDcio cujo telhado tinha concentrado a interven\\u00E7\\u00E3o dos bombeiros torna-se um lugar de proje\\u00E7\\u00F5es e divulga\\u00E7\\u00E3o cient\\u00EDfica, aberto um ano depois da temporada inicialmente prevista.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]}],\"Sources\":[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 public sur le chantier du plan\\u00E9tarium\",\"Url\":\"https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Lyon Capitale \\u2014 reportage, 30 mars 2023\",\"Url\":\"https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Radio Scoop \\u2014 incendie ma\\u00EEtris\\u00E9 au futur plan\\u00E9tarium, 10 f\\u00E9vrier 2022\",\"Url\":\"https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RSA Cosmos \\u2014 ouverture au public, 29 mars 2023\",\"Url\":\"https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html\",\"AccessedAt\":\"2026-11-15\"}],\"IsPublished\":false}"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "photoReceipts": [
+    {
+      "startedAtUtc": "2026-11-15T20:03:08.6129835Z",
+      "result": {
+        "id": "358753581b594abdb1a13a726c7c0a46",
+        "category": "PARK_ITEM",
+        "ownerType": "PARK_ITEM",
+        "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "path": "park_item/358753581b594abdb1a13a726c7c0a46",
+        "description": "Le ballon blanc et bleu survole le cône de Vulcania dans le reportage consacré à son ouverture en 2014.",
+        "isCurrent": false,
+        "isPublished": false,
+        "isWatermarked": false,
+        "width": 567,
+        "height": 377,
+        "sizeInBytes": 44400,
+        "originalFileName": "codex-import.jpg",
+        "contentType": "image/jpeg",
+        "sourceUrl": "https://www.eap-magazin.de/medium/3%29-Vulcania-Le-Ballon-des-Puys-low.jpg?m=16310&w=567&h=377&g=0",
+        "geoLocation": null,
+        "exifMetadata": {
+          "cameraMaker": "Canon",
+          "cameraModel": "Canon EOS 5D Mark III",
+          "takenOnUtc": "2014-06-05T19:35:05Z",
+          "orientation": "1",
+          "focalLength": 70,
+          "aperture": 10,
+          "exposureTime": 0.001,
+          "iso": 320
+        },
+        "altTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Le Ballon des Puys dans le ciel, à gauche du cône de pierre de Vulcania"
+          },
+          {
+            "languageCode": "en",
+            "value": "The Ballon des Puys in the sky to the left of Vulcania’s stone cone"
+          },
+          {
+            "languageCode": "de",
+            "value": "Der Ballon des Puys am Himmel links neben Vulcanias Steinkegel"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De Ballon des Puys in de lucht links van de stenen kegel van Vulcania"
+          },
+          {
+            "languageCode": "it",
+            "value": "Il Ballon des Puys nel cielo, a sinistra del cono in pietra di Vulcania"
+          },
+          {
+            "languageCode": "es",
+            "value": "El Ballon des Puys en el cielo, a la izquierda del cono de piedra de Vulcania"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Ballon des Puys na niebie, po lewej stronie kamiennego stożka Vulcanii"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O Ballon des Puys no céu, à esquerda do cone de pedra de Vulcania"
+          }
+        ],
+        "captions": [
+          {
+            "languageCode": "fr",
+            "value": "Le ballon blanc et bleu survole le cône de Vulcania dans le reportage consacré à son ouverture en 2014."
+          },
+          {
+            "languageCode": "en",
+            "value": "The white and blue balloon rises above Vulcania’s cone in the report marking its opening in 2014."
+          },
+          {
+            "languageCode": "de",
+            "value": "Der weiß-blaue Ballon schwebt über Vulcanias Kegel auf dem Foto im Bericht über seine Eröffnung 2014."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De witte en blauwe ballon zweeft boven de kegel van Vulcania in het verslag over de opening in 2014."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il pallone bianco e blu si alza sopra il cono di Vulcania nel reportage dedicato alla sua apertura nel 2014."
+          },
+          {
+            "languageCode": "es",
+            "value": "El globo blanco y azul se eleva sobre el cono de Vulcania en el reportaje dedicado a su apertura en 2014."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Biało-niebieski balon unosi się nad stożkiem Vulcanii na zdjęciu z reportażu poświęconego jego otwarciu w 2014 roku."
+          },
+          {
+            "languageCode": "pt",
+            "value": "O balão branco e azul eleva-se sobre o cone de Vulcania na reportagem dedicada à sua abertura em 2014."
+          }
+        ],
+        "credits": [
+          {
+            "languageCode": "fr",
+            "value": "Photographie : J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "en",
+            "value": "Photograph: J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "de",
+            "value": "Foto: J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Foto: J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "it",
+            "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "es",
+            "value": "Fotografía: J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+          }
+        ],
+        "tagIds": [],
+        "createdAt": "2026-11-15T20:03:09.724Z",
+        "updatedAt": "2026-11-15T20:03:13.454Z"
+      },
+      "receivedAtUtc": "2026-11-15T20:03:16.5546860Z",
+      "action": "ImportPhoto"
+    },
+    {
+      "result": {
+        "id": "0a10c3fd8bd64c35a61995eeed970f8a",
+        "category": "PARK_ITEM",
+        "ownerType": "PARK_ITEM",
+        "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "path": "park_item/0a10c3fd8bd64c35a61995eeed970f8a",
+        "description": "Une représentation du Soleil accompagne le voyage dans l’espace photographié pour le reportage de Lyon Capitale sur l’ouverture du planétarium en mars 2023.",
+        "isCurrent": false,
+        "isPublished": false,
+        "isWatermarked": false,
+        "width": 1080,
+        "height": 675,
+        "sizeInBytes": 91991,
+        "originalFileName": "codex-import.jpg",
+        "contentType": "image/jpeg",
+        "sourceUrl": "https://www.lyoncapitale.fr/wp-content/uploads/2023/03/IMG_0911-2-scaled-e1680168376689.jpg",
+        "geoLocation": null,
+        "exifMetadata": null,
+        "altTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Une fenêtre bleue montrant le Soleil devant un ciel étoilé projeté au planétarium"
+          },
+          {
+            "languageCode": "en",
+            "value": "A blue panel showing the Sun against a starry sky projected in the planetarium"
+          },
+          {
+            "languageCode": "de",
+            "value": "Ein blaues Fenster mit der Sonne vor dem projizierten Sternenhimmel des Planetariums"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een blauw venster met de zon voor een geprojecteerde sterrenhemel in het planetarium"
+          },
+          {
+            "languageCode": "it",
+            "value": "Un riquadro blu con il Sole davanti al cielo stellato proiettato nel planetario"
+          },
+          {
+            "languageCode": "es",
+            "value": "Un recuadro azul con el Sol ante el cielo estrellado proyectado en el planetario"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Niebieskie okno ze Słońcem na tle gwiaździstego nieba wyświetlanego w planetarium"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma janela azul com o Sol diante do céu estrelado projetado no planetário"
+          }
+        ],
+        "captions": [
+          {
+            "languageCode": "fr",
+            "value": "Une représentation du Soleil accompagne le voyage dans l’espace photographié pour le reportage de Lyon Capitale sur l’ouverture du planétarium en mars 2023."
+          },
+          {
+            "languageCode": "en",
+            "value": "An image of the Sun accompanies the journey through space photographed for Lyon Capitale’s report on the planetarium’s opening in March 2023."
+          },
+          {
+            "languageCode": "de",
+            "value": "Eine Darstellung der Sonne begleitet die Weltraumreise auf dem Foto für Lyon Capitales Bericht über die Eröffnung des Planetariums im März 2023."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een afbeelding van de zon begeleidt de ruimtereis die werd gefotografeerd voor het verslag van Lyon Capitale over de opening van het planetarium in maart 2023."
+          },
+          {
+            "languageCode": "it",
+            "value": "Una rappresentazione del Sole accompagna il viaggio nello spazio fotografato per il reportage di Lyon Capitale sull’apertura del planetario nel marzo 2023."
+          },
+          {
+            "languageCode": "es",
+            "value": "Una representación del Sol acompaña el viaje espacial fotografiado para el reportaje de Lyon Capitale sobre la apertura del planetario en marzo de 2023."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Obraz Słońca towarzyszy podróży w kosmos sfotografowanej do reportażu Lyon Capitale o otwarciu planetarium w marcu 2023 roku."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma representação do Sol acompanha a viagem espacial fotografada para a reportagem do Lyon Capitale sobre a abertura do planetário em março de 2023."
+          }
+        ],
+        "credits": [
+          {
+            "languageCode": "fr",
+            "value": "Photographie : Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "en",
+            "value": "Photograph: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "de",
+            "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "it",
+            "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "es",
+            "value": "Fotografía: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+          }
+        ],
+        "tagIds": [],
+        "createdAt": "2026-11-15T20:03:24.61Z",
+        "updatedAt": "2026-11-15T20:03:28.13Z"
+      },
+      "action": "ImportPhoto",
+      "receivedAtUtc": "2026-11-15T20:03:31.2458008Z",
+      "startedAtUtc": "2026-11-15T20:03:23.2916696Z"
+    },
+    {
+      "receivedAtUtc": "2026-11-15T20:03:47.6862942Z",
+      "startedAtUtc": "2026-11-15T20:03:40.2817929Z",
+      "action": "ImportPhoto",
+      "result": {
+        "id": "6e2547f3c84c46e7b2bdc195579fe394",
+        "category": "PARK_ITEM",
+        "ownerType": "PARK_ITEM",
+        "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "path": "park_item/6e2547f3c84c46e7b2bdc195579fe394",
+        "description": "L’aventure volcano-sidérale associe un paysage de lave à des lueurs célestes lors de la présentation à la presse du 29 mars 2023.",
+        "isCurrent": false,
+        "isPublished": false,
+        "isWatermarked": false,
+        "width": 780,
+        "height": 585,
+        "sizeInBytes": 43973,
+        "originalFileName": "codex-import.jpg",
+        "contentType": "image/jpeg",
+        "sourceUrl": "https://www.lyoncapitale.fr/wp-content/uploads/2023/03/IMG_0925-780x585.jpg",
+        "geoLocation": null,
+        "exifMetadata": null,
+        "altTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Coulées de lave et lueurs vertes dans une scène projetée au planétarium de Vulcania"
+          },
+          {
+            "languageCode": "en",
+            "value": "Lava flows and green lights in a scene projected at Vulcania’s planetarium"
+          },
+          {
+            "languageCode": "de",
+            "value": "Lavaströme und grüne Lichtschleier in einer Projektion in Vulcanias Planetarium"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Lavastromen en groene lichtsluiers in een projectie in het planetarium van Vulcania"
+          },
+          {
+            "languageCode": "it",
+            "value": "Colate laviche e bagliori verdi in una scena proiettata nel planetario di Vulcania"
+          },
+          {
+            "languageCode": "es",
+            "value": "Coladas de lava y luces verdes en una escena proyectada en el planetario de Vulcania"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Strumienie lawy i zielone smugi światła w scenie wyświetlanej w planetarium Vulcanii"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Escoadas de lava e luzes verdes numa cena projetada no planetário de Vulcania"
+          }
+        ],
+        "captions": [
+          {
+            "languageCode": "fr",
+            "value": "L’aventure volcano-sidérale associe un paysage de lave à des lueurs célestes lors de la présentation à la presse du 29 mars 2023."
+          },
+          {
+            "languageCode": "en",
+            "value": "The volcanic space adventure combines a lava landscape with lights in the sky during the press presentation on 29 March 2023."
+          },
+          {
+            "languageCode": "de",
+            "value": "Das vulkanische Weltraumabenteuer verbindet bei der Pressevorführung am 29. März 2023 eine Lavalandschaft mit Lichtern am Himmel."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het vulkanische ruimteavontuur verbindt een lavalandschap met licht in de hemel tijdens de persvoorstelling van 29 maart 2023."
+          },
+          {
+            "languageCode": "it",
+            "value": "L’avventura tra vulcani e spazio unisce un paesaggio di lava a luci nel cielo durante la presentazione alla stampa del 29 marzo 2023."
+          },
+          {
+            "languageCode": "es",
+            "value": "La aventura entre volcanes y espacio combina un paisaje de lava con luces celestes durante la presentación a la prensa del 29 de marzo de 2023."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Wulkaniczna podróż w kosmos łączy krajobraz lawy ze światłami na niebie podczas pokazu dla prasy 29 marca 2023 roku."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A aventura entre vulcões e espaço combina uma paisagem de lava com luzes no céu durante a apresentação à imprensa de 29 de março de 2023."
+          }
+        ],
+        "credits": [
+          {
+            "languageCode": "fr",
+            "value": "Photographie : Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "en",
+            "value": "Photograph: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "de",
+            "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Foto: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "it",
+            "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "es",
+            "value": "Fotografía: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Fotografia: Cheyenne Gabrelle — Lyon Capitale."
+          }
+        ],
+        "tagIds": [],
+        "createdAt": "2026-11-15T20:03:41.099Z",
+        "updatedAt": "2026-11-15T20:03:44.575Z"
+      }
+    },
+    {
+      "receivedAtUtc": "2026-11-15T20:07:42.7912061Z",
+      "startedAtUtc": "2026-11-15T20:07:34.4650633Z",
+      "result": {
+        "id": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+        "category": "PARK_ITEM",
+        "ownerType": "PARK_ITEM",
+        "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "path": "park_item/9fbd4d6f8df44a9b800f5b71b056dcc6",
+        "description": "Intervention sur le chantier du planétarium de Vulcania lors de l’incendie du 10 février 2022.",
+        "isCurrent": false,
+        "isPublished": false,
+        "isWatermarked": false,
+        "width": 800,
+        "height": 533,
+        "sizeInBytes": 64574,
+        "originalFileName": "codex-import.jpg",
+        "contentType": "image/jpeg",
+        "sourceUrl": "https://media.licdn.com/dms/image/v2/C4E22AQG4GEU52eunIw/feedshare-shrink_800/feedshare-shrink_800/0/1644501786701?e=2147483647&v=beta&t=zWwHooVJLuGxxZPCN_VLOHuDpftVdwDexkH28FguZ3E",
+        "geoLocation": null,
+        "exifMetadata": null,
+        "altTexts": [
+          {
+            "languageCode": "fr",
+            "value": "Des pompiers dans une nacelle au-dessus du toit fumant du planétarium en construction"
+          },
+          {
+            "languageCode": "en",
+            "value": "Firefighters in an aerial platform above the smoking roof of the planetarium under construction"
+          },
+          {
+            "languageCode": "de",
+            "value": "Feuerwehrleute in einem Hubkorb über dem rauchenden Dach des im Bau befindlichen Planetariums"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Brandweerlieden in een hoogwerker boven het rokende dak van het planetarium in aanbouw"
+          },
+          {
+            "languageCode": "it",
+            "value": "Vigili del fuoco su una piattaforma aerea sopra il tetto fumante del planetario in costruzione"
+          },
+          {
+            "languageCode": "es",
+            "value": "Bomberos en una plataforma aérea sobre el tejado humeante del planetario en construcción"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Strażacy w koszu podnośnika nad dymiącym dachem budowanego planetarium"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Bombeiros numa plataforma aérea sobre o telhado fumegante do planetário em construção"
+          }
+        ],
+        "captions": [
+          {
+            "languageCode": "fr",
+            "value": "Intervention sur le chantier du planétarium de Vulcania lors de l’incendie du 10 février 2022."
+          },
+          {
+            "languageCode": "en",
+            "value": "Firefighters at Vulcania’s planetarium construction site during the fire on 10 February 2022."
+          },
+          {
+            "languageCode": "de",
+            "value": "Feuerwehreinsatz auf der Baustelle von Vulcanias Planetarium während des Brandes am 10. Februar 2022."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Brandweerinzet op de bouwplaats van het planetarium van Vulcania tijdens de brand op 10 februari 2022."
+          },
+          {
+            "languageCode": "it",
+            "value": "Intervento nel cantiere del planetario di Vulcania durante l’incendio del 10 febbraio 2022."
+          },
+          {
+            "languageCode": "es",
+            "value": "Intervención en las obras del planetario de Vulcania durante el incendio del 10 de febrero de 2022."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Akcja straży pożarnej na budowie planetarium Vulcanii podczas pożaru 10 lutego 2022 roku."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Intervenção nas obras do planetário de Vulcania durante o incêndio de 10 de fevereiro de 2022."
+          }
+        ],
+        "credits": [
+          {
+            "languageCode": "fr",
+            "value": "Photographie : Vulcania."
+          },
+          {
+            "languageCode": "en",
+            "value": "Photograph: Vulcania."
+          },
+          {
+            "languageCode": "de",
+            "value": "Foto: Vulcania."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Foto: Vulcania."
+          },
+          {
+            "languageCode": "it",
+            "value": "Fotografia: Vulcania."
+          },
+          {
+            "languageCode": "es",
+            "value": "Fotografía: Vulcania."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Fotografia: Vulcania."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Fotografia: Vulcania."
+          }
+        ],
+        "tagIds": [],
+        "createdAt": "2026-11-15T20:07:36.061Z",
+        "updatedAt": "2026-11-15T20:07:39.69Z"
+      },
+      "action": "ImportPhoto"
+    }
+  ],
+  "personalReview": {
+    "historyTitlesSummaries": 112,
+    "newArticleFields": 96,
+    "photoMetadataFields": 96,
+    "newArticleBodyWords": {
+      "fr": 347,
+      "en": 312,
+      "de": 316,
+      "nl": 318,
+      "it": 327,
+      "es": 333,
+      "pl": 292,
+      "pt": 328
+    },
+    "allNewFieldsPersonallyAuthoredAndReviewed": true,
+    "previewApplyExact": true
+  },
+  "rejectedPhotographs": [
+    {
+      "source": {
+        "key": "planetarium-w1",
+        "url": "https://www.rsacosmos.com/wp-content/uploads/2023/03/vulcania-w1.jpg",
+        "status": 200,
+        "bytes": 1799437,
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "sha256": "76347090844c02361682cac1df41c74899e08769b901b0e8ec5f754dce0f52ba",
+        "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/planetarium-w1.jpg"
+      },
+      "reason": "ThirdpartyEiffagewatermark;alsooverofficialuploadlimit. Noalterationorimport."
+    },
+    {
+      "source": {
+        "key": "planetarium-w2",
+        "url": "https://www.rsacosmos.com/wp-content/uploads/2023/03/vulcania-w2.jpg",
+        "status": 200,
+        "bytes": 1275309,
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "sha256": "12218950d3a220eae8ff011456718cadfdb4a990889a9e7fb52fcaabebd0561d",
+        "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/planetarium-w2.jpg"
+      },
+      "reason": "ThirdpartyEiffagewatermark;alsooverofficialuploadlimit. Noalterationorimport."
+    },
+    {
+      "source": {
+        "key": "planetarium-w3",
+        "url": "https://www.rsacosmos.com/wp-content/uploads/2023/03/vulcania-w3.jpg",
+        "status": 200,
+        "bytes": 1294071,
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "sha256": "dfd7f7d4677deb0a3c52d326c6a6460d98ab9477d95979d3c5b5b11cf8025a81",
+        "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/planetarium-w3.jpg"
+      },
+      "reason": "ThirdpartyEiffagewatermark;alsooverofficialuploadlimit. Noalterationorimport."
+    },
+    {
+      "source": {
+        "key": "planetarium-w4",
+        "url": "https://www.rsacosmos.com/wp-content/uploads/2023/03/vulcania-w4.jpg",
+        "status": 200,
+        "bytes": 1657339,
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "sha256": "aecfd1318ba5711d7100232921e79e71e86ac7f9d98605324179e575e43bfac9",
+        "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/planetarium-w4.jpg"
+      },
+      "reason": "ThirdpartyEiffagewatermark;alsooverofficialuploadlimit. Noalterationorimport."
+    },
+    {
+      "source": {
+        "key": "planetarium-w5",
+        "url": "https://www.rsacosmos.com/wp-content/uploads/2023/03/vulcania-w5.jpg",
+        "status": 200,
+        "bytes": 1663024,
+        "dimensions": [
+          1920,
+          1080
+        ],
+        "sha256": "2258049b0df8ba8347630633db841bc0a30f56e114fea7fcfe55ab303e57627e",
+        "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/planetarium-w5.jpg"
+      },
+      "reason": "ThirdpartyEiffagewatermark;alsooverofficialuploadlimit. Noalterationorimport."
+    }
+  ],
+  "otherPhotoDecisions": [
+    {
+      "file": "IMG_0914-780x585.jpg",
+      "decision": "Notimported:Suncloseupredundantsubjectagainstselectedreportagephoto."
+    },
+    {
+      "file": "IMG_0867-780x585.jpg",
+      "decision": "PhotographshowsSerre,notplanetarium. Correctedpreliminarycaptionassociation beforeanyimport; notimported."
+    },
+    {
+      "file": "fire-scoop.jpg",
+      "decision": "SameexposureasofficialLinkedInphoto;excludedduplicate."
+    }
+  ],
+  "sourceAccess": [
+    {
+      "key": "fire-scoop",
+      "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+      "checkedAt": "2026-11-15T20:05:34.469528+00:00",
+      "status": 200,
+      "finalUrl": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+      "bytes": 70332
+    },
+    {
+      "key": "fire-official",
+      "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "checkedAt": "2026-11-15T20:05:34.470497+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "bytes": 167549
+    },
+    {
+      "key": "regional-2025",
+      "url": "https://edelib.auvergnerhonealpes.fr/webdelibplus/jsp/showFile.jsp?datePub=23%2F12%2F2025&dateRetLega=23%2F12%2F2025&pdf=0cBwlciopEGtjBusVJX4%2F4jb6AOKFJ94tta2qSUXnb5%2FpmMXYOIgYTkOvlqgVv48061itaC5HWJBGjDX9eblIw5ykpexgtaRTrkmxpHEkWynxkfKN%2FGq52BWYn7OfKmEVn3lxXpv3wdvZnkRdLPRsJ1H3MsZQt3r4%2FxZtKtm%2Ba7vlMgMq2nl1YVJpsFcC74f",
+      "checkedAt": "2026-11-15T20:05:34.471066+00:00",
+      "status": 200,
+      "finalUrl": "https://edelib.auvergnerhonealpes.fr/webdelibplus/jsp/showFile.jsp?datePub=23%2F12%2F2025&dateRetLega=23%2F12%2F2025&pdf=0cBwlciopEGtjBusVJX4%2F4jb6AOKFJ94tta2qSUXnb5%2FpmMXYOIgYTkOvlqgVv48061itaC5HWJBGjDX9eblIw5ykpexgtaRTrkmxpHEkWynxkfKN%2FGq52BWYn7OfKmEVn3lxXpv3wdvZnkRdLPRsJ1H3MsZQt3r4%2FxZtKtm%2Ba7vlMgMq2nl1YVJpsFcC74f",
+      "bytes": 44,
+      "usable": false,
+      "reason": "HTTP200 returned44whitespacebytes; noPDForarticle recovered. Indexedexcerpt only, notaccepted asreadsource."
+    },
+    {
+      "key": "reopening-2015",
+      "url": "https://www.radiorva.com/news/locales/6471/vulcania-rouvre-ses-portes-aujourd-hui",
+      "checkedAt": "2026-11-15T20:05:34.471521+00:00",
+      "status": 200,
+      "finalUrl": "https://www.radiorva.com/news/locales/6471/vulcania-rouvre-ses-portes-aujourd-hui",
+      "bytes": 82858
+    }
+  ],
+  "historicalLeadsUnresolved": [
+    "MissionToba/PremierEnvoltransition2015",
+    "MagmaExplorer/Abyssrelationshipindexedregionalreportbut44whitespacebytesresponse,noPDFaccepted",
+    "VolcanBul",
+    "Bouleversements/DeLaveEtDeFeu",
+    "Surlestracesdesdinosaures"
+  ],
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "fullFinalExportPerformed": false,
+  "finalAuditCompleted": false
+}

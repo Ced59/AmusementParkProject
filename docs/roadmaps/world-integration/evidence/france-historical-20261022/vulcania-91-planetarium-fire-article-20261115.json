@@ -1,0 +1,2201 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-item-history-planetarium-fire-2022",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+            "itemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+            "parkItemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2022,
+            "month": 2,
+            "day": 10,
+            "datePrecision": "Day",
+            "eventType": "Fire",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Un incendie reporte le projet de planétarium"
+              },
+              {
+                "languageCode": "en",
+                "value": "A fire delays the planetarium project"
+              },
+              {
+                "languageCode": "de",
+                "value": "Ein Brand verzögert das Planetarium"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Brand vertraagt het planetariumproject"
+              },
+              {
+                "languageCode": "it",
+                "value": "Un incendio ritarda il progetto del planetario"
+              },
+              {
+                "languageCode": "es",
+                "value": "Un incendio retrasa el proyecto del planetario"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Pożar opóźnia projekt planetarium"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Um incêndio atrasa o projeto do planetário"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le 10 février 2022, un incendie endommage le planétarium encore en chantier. Les ouvriers sont évacués et aucun blessé n’est signalé. L’ouverture prévue pour mai est abandonnée, tandis que Vulcania maintient la préparation de sa saison dans les autres espaces du parc."
+              },
+              {
+                "languageCode": "en",
+                "value": "On 10 February 2022, a fire damages the planetarium while it is still under construction. Workers are evacuated and no injuries are reported. The planned May opening is abandoned, while Vulcania continues preparing the season in the park’s other areas."
+              },
+              {
+                "languageCode": "de",
+                "value": "Am 10. Februar 2022 beschädigt ein Brand das noch im Bau befindliche Planetarium. Die Arbeiter werden evakuiert; Verletzte werden nicht gemeldet. Die für Mai geplante Eröffnung entfällt, während Vulcania die Saison in den übrigen Bereichen des Parks weiter vorbereitet."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Op 10 februari 2022 beschadigt een brand het planetarium in aanbouw. De werknemers worden geëvacueerd en er worden geen gewonden gemeld. De geplande opening in mei vervalt, terwijl Vulcania het seizoen in de overige delen van het park blijft voorbereiden."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il 10 febbraio 2022 un incendio danneggia il planetario ancora in costruzione. Gli operai vengono evacuati e non si segnalano feriti. L’apertura prevista per maggio viene annullata, mentre Vulcania prosegue i preparativi della stagione nelle altre aree del parco."
+              },
+              {
+                "languageCode": "es",
+                "value": "El 10 de febrero de 2022, un incendio daña el planetario todavía en obras. Los trabajadores son evacuados y no se notifican heridos. Se descarta la apertura prevista para mayo, mientras Vulcania sigue preparando la temporada en las demás zonas del parque."
+              },
+              {
+                "languageCode": "pl",
+                "value": "10 lutego 2022 roku pożar uszkadza budowane planetarium. Pracownicy zostają ewakuowani i nie ma doniesień o rannych. Planowane na maj otwarcie zostaje odwołane, a Vulcania nadal przygotowuje sezon w pozostałych częściach parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A 10 de fevereiro de 2022, um incêndio danifica o planetário ainda em construção. Os trabalhadores são evacuados e não há feridos registados. A abertura prevista para maio é abandonada, enquanto Vulcania continua a preparar a temporada nas restantes áreas do parque."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Radio Scoop — incendie maîtrisé au futur planétarium, 10 février 2022",
+                "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — communiqué public sur le chantier du planétarium",
+                "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": {
+              "slug": null,
+              "titles": [
+                {
+                  "languageCode": "fr",
+                  "value": "Le planétarium de Vulcania, du chantier incendié à l’ouverture"
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Vulcania’s planetarium: from a construction fire to opening day"
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Vulcanias Planetarium: vom Baustellenbrand zur Eröffnung"
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Het planetarium van Vulcania: van bouwbrand tot opening"
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Il planetario di Vulcania, dall’incendio del cantiere all’apertura"
+                },
+                {
+                  "languageCode": "es",
+                  "value": "El planetario de Vulcania, del incendio de las obras a la apertura"
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Planetarium Vulcanii: od pożaru na budowie do otwarcia"
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "O planetário de Vulcania, do incêndio nas obras à abertura"
+                }
+              ],
+              "subtitles": [
+                {
+                  "languageCode": "fr",
+                  "value": "L’incendie de février 2022 bouleverse le calendrier d’un projet consacré à l’Espace."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "The February 2022 fire changes the timetable for a project devoted to space."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Der Brand im Februar 2022 verändert den Zeitplan eines Projekts rund um das Weltall."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "De brand van februari 2022 verandert de planning van een project over de ruimte."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "L’incendio del febbraio 2022 cambia il calendario di un progetto dedicato allo spazio."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "El incendio de febrero de 2022 altera el calendario de un proyecto dedicado al espacio."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Pożar w lutym 2022 roku zmienia harmonogram projektu poświęconego kosmosowi."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "O incêndio de fevereiro de 2022 altera o calendário de um projeto dedicado ao espaço."
+                }
+              ],
+              "summaries": [
+                {
+                  "languageCode": "fr",
+                  "value": "Destiné à rejoindre les nouveautés du vingtième anniversaire, le planétarium subit un incendie avant d’accueillir son public. Son ouverture en mars 2023 donne finalement une place nouvelle à l’astronomie dans le parc."
+                },
+                {
+                  "languageCode": "en",
+                  "value": "Planned as part of the park’s twentieth anniversary, the planetarium suffers a fire before receiving visitors. Its eventual opening in March 2023 gives astronomy a new place at Vulcania."
+                },
+                {
+                  "languageCode": "de",
+                  "value": "Das für das zwanzigjährige Parkjubiläum vorgesehene Planetarium wird vor seiner Eröffnung von einem Brand getroffen. Im März 2023 erhält die Astronomie schließlich ihren neuen Platz in Vulcania."
+                },
+                {
+                  "languageCode": "nl",
+                  "value": "Het planetarium zou deel uitmaken van de twintigste verjaardag van het park, maar wordt vóór de opening getroffen door brand. In maart 2023 krijgt de sterrenkunde uiteindelijk haar nieuwe plek bij Vulcania."
+                },
+                {
+                  "languageCode": "it",
+                  "value": "Pensato per arricchire il ventesimo anniversario del parco, il planetario subisce un incendio prima di accogliere il pubblico. L’apertura nel marzo 2023 dà infine un nuovo spazio all’astronomia a Vulcania."
+                },
+                {
+                  "languageCode": "es",
+                  "value": "Previsto entre las novedades del vigésimo aniversario del parque, el planetario sufre un incendio antes de recibir visitantes. Su apertura en marzo de 2023 da finalmente un nuevo lugar a la astronomía en Vulcania."
+                },
+                {
+                  "languageCode": "pl",
+                  "value": "Planetarium planowane na dwudziestolecie parku zostaje dotknięte pożarem, zanim przyjmie pierwszych gości. Otwarcie w marcu 2023 roku daje astronomii nowe miejsce w Vulcanii."
+                },
+                {
+                  "languageCode": "pt",
+                  "value": "Previsto entre as novidades do vigésimo aniversário do parque, o planetário sofre um incêndio antes de receber visitantes. A abertura em março de 2023 dá finalmente um novo lugar à astronomia em Vulcania."
+                }
+              ],
+              "mainImageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+              "blocks": [
+                {
+                  "id": "db56ae895e574645a74466086a2f4f24",
+                  "type": "Heading",
+                  "sortOrder": 10,
+                  "headingLevel": 2,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Un chantier au cœur de l’anniversaire"
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "An anniversary project under construction"
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Eine Baustelle für das Jubiläumsjahr"
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "Een bouwproject voor het jubileum"
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Un cantiere per l’anniversario"
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "Unas obras para el aniversario"
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Budowa na jubileuszowy rok"
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "Uma obra para o aniversário"
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "5d89f105336143eb85e9cc9f56aab37b",
+                  "type": "Paragraph",
+                  "sortOrder": 20,
+                  "headingLevel": null,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "En 2022, Vulcania prépare les vingt ans de son inauguration. Le futur planétarium doit enrichir la découverte de la Terre par une ouverture sur l’Univers. Son arrivée est annoncée pour le mois de mai, au cours d’une saison que le reste du parc prévoit de commencer dès le 30 mars."
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "In 2022, Vulcania is preparing to mark twenty years since its inauguration. The planned planetarium will extend the exploration of Earth into the wider Universe. It is expected to welcome visitors in May, during a season that the rest of the park is scheduled to begin on 30 March."
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Im Jahr 2022 bereitet Vulcania das zwanzigste Jubiläum seiner Einweihung vor. Das künftige Planetarium soll die Beschäftigung mit der Erde um den Blick in das Universum ergänzen. Für die neue Einrichtung ist eine Eröffnung im Mai vorgesehen, während der übrige Park seine Saison bereits am 30. März beginnen soll."
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "In 2022 bereidt Vulcania de viering voor van twintig jaar sinds zijn inauguratie. Het toekomstige planetarium moet de verkenning van de aarde uitbreiden naar het heelal. De opening van de nieuwe voorziening staat gepland voor mei, in een seizoen dat de rest van het park al op 30 maart wil beginnen."
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Nel 2022 Vulcania prepara il ventesimo anniversario della propria inaugurazione. Il futuro planetario deve ampliare la scoperta della Terra con uno sguardo sull’Universo. La sua apertura è annunciata per maggio, durante una stagione che il resto del parco prevede di iniziare già il 30 marzo, con le altre attrazioni."
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "En 2022, Vulcania prepara la celebración de los veinte años de su inauguración. El futuro planetario debe ampliar el descubrimiento de la Tierra con una mirada hacia el Universo. Su apertura está anunciada para mayo, durante una temporada que el resto del parque tiene previsto iniciar ya el 30 de marzo."
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "W 2022 roku Vulcania przygotowuje obchody dwudziestej rocznicy swojej inauguracji. Przyszłe planetarium ma rozszerzyć poznawanie Ziemi o spojrzenie na Wszechświat. Nowy obiekt ma zostać udostępniony w maju, podczas sezonu, który pozostała część parku planuje rozpocząć już 30 marca. Planetarium jest więc ważnym elementem programu jubileuszowego, ale nie warunkiem rozpoczęcia sezonu."
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "Em 2022, Vulcania prepara a celebração dos vinte anos da sua inauguração. O futuro planetário deverá alargar a descoberta da Terra com um olhar sobre o Universo. A abertura da nova instalação está anunciada para maio, durante uma temporada que o restante parque prevê começar já a 30 de março."
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "e08f181758c944e9b2bcab648034e49e",
+                  "type": "Paragraph",
+                  "sortOrder": 30,
+                  "headingLevel": null,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Le 10 février, alors que le site est fermé aux visiteurs pour l’hiver, le feu se déclare dans le bâtiment encore en construction. Les ouvriers présents sur le chantier sont évacués. Le communiqué diffusé par Vulcania ne signale aucun blessé ; le bilan relayé dans l’après-midi par Radio Scoop reste lui aussi sans blessé."
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "On 10 February, while the park is closed to visitors for winter, a fire breaks out inside the unfinished building. Workers on the construction site are evacuated. Vulcania’s public statement reports no injuries, and the update carried by Radio Scoop later that afternoon also records an intervention without injuries."
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Am 10. Februar, während der Winterpause ohne Besucher im Park, bricht im noch nicht fertiggestellten Gebäude ein Feuer aus. Die Arbeiter auf der Baustelle werden evakuiert. Vulcania meldet in seiner öffentlichen Mitteilung keine Verletzten. Auch der aktualisierte Bericht von Radio Scoop am Nachmittag nennt einen Einsatz, bei dem niemand verletzt wurde."
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "Op 10 februari, terwijl het park voor de winter gesloten is voor bezoekers, breekt brand uit in het onvoltooide gebouw. De werknemers op de bouwplaats worden geëvacueerd. Vulcania meldt in zijn openbare verklaring geen gewonden. Ook het bijgewerkte verslag dat Radio Scoop later die middag publiceert, vermeldt dat niemand gewond is geraakt."
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Il 10 febbraio, mentre il parco è chiuso ai visitatori per l’inverno, scoppia un incendio nell’edificio ancora incompiuto. Gli operai presenti nel cantiere vengono evacuati. Il comunicato pubblico di Vulcania non segnala feriti; anche l’aggiornamento diffuso da Radio Scoop nel pomeriggio riferisce che l’intervento non ha registrato persone ferite."
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "El 10 de febrero, mientras el recinto permanece cerrado al público durante el invierno, se declara un incendio en el edificio aún sin terminar. Los trabajadores presentes en las obras son evacuados. El comunicado de Vulcania no informa de heridos; la actualización difundida por Radio Scoop esa misma tarde tampoco registra personas heridas."
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "10 lutego, gdy park jest zamknięty dla odwiedzających na zimę, w niewykończonym budynku wybucha pożar. Pracownicy znajdujący się na placu budowy zostają ewakuowani. W publicznym komunikacie Vulcania informuje, że nie ma rannych. Aktualizacja opublikowana przez Radio Scoop później tego samego popołudnia również opisuje akcję bez osób poszkodowanych."
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "A 10 de fevereiro, enquanto o parque está encerrado aos visitantes durante o inverno, deflagra um incêndio no edifício ainda por concluir. Os trabalhadores presentes nas obras são evacuados. O comunicado público de Vulcania não refere feridos; a atualização divulgada pela Radio Scoop nessa mesma tarde também relata uma intervenção sem pessoas feridas."
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "d050a6e729c345de8319fea5baa82a10",
+                  "type": "Heading",
+                  "sortOrder": 40,
+                  "headingLevel": 2,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Le toit atteint, une saison à réorganiser"
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "A damaged roof and a changed timetable"
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Ein beschädigtes Dach verändert die Planung"
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "Een beschadigd dak en een andere planning"
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Il tetto danneggiato e un calendario da cambiare"
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "El tejado dañado obliga a cambiar los plazos"
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Uszkodzony dach zmienia plany"
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "O telhado danificado obriga a mudar os prazos"
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "85a42834838948159a05366afa9c66dd",
+                  "type": "Paragraph",
+                  "sortOrder": 50,
+                  "headingLevel": null,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Les flammes gagnent la toiture et fragilisent la structure. Le risque d’effondrement conduit les pompiers à travailler depuis l’extérieur du bâtiment. Une photographie publiée par le parc montre leur intervention au-dessus du toit fumant, depuis une nacelle élevée. L’incendie est maîtrisé dans l’après-midi, mais l’ouverture du planétarium en 2022 n’est plus envisageable."
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "Flames reach the roof and weaken the structure. The risk of collapse requires firefighters to work from outside the building. A photograph released by the park shows the intervention from an elevated platform above the smoking roof. The fire is brought under control that afternoon, but opening the planetarium in 2022 is no longer possible."
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Die Flammen erreichen das Dach und schwächen die Gebäudestruktur. Wegen der Einsturzgefahr müssen die Feuerwehrleute von außen arbeiten. Auf einem vom Park veröffentlichten Foto ist ihr Einsatz in einem Hubkorb über dem rauchenden Dach zu sehen. Am Nachmittag ist der Brand unter Kontrolle, doch eine Eröffnung des Planetariums im Jahr 2022 ist nicht mehr möglich."
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "De vlammen bereiken het dak en verzwakken de constructie. Door het instortingsgevaar moeten brandweerlieden van buiten het gebouw werken. Een door het park gepubliceerde foto toont hun inzet vanuit een hoogwerker boven het rokende dak. De brand is die middag onder controle, maar een opening van het planetarium in 2022 is niet meer mogelijk."
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Le fiamme raggiungono il tetto e indeboliscono la struttura. Il rischio di crollo costringe i vigili del fuoco a intervenire dall’esterno dell’edificio. Una fotografia pubblicata dal parco li mostra su una piattaforma aerea sopra il tetto fumante. L’incendio viene controllato nel pomeriggio, ma l’apertura del planetario nel 2022 non è più possibile."
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "Las llamas alcanzan el tejado y debilitan la estructura. El riesgo de derrumbe obliga a los bomberos a trabajar desde el exterior del edificio. Una fotografía publicada por el parque muestra su intervención desde una plataforma elevada sobre el tejado humeante. El fuego queda controlado por la tarde, pero el planetario ya no podrá abrir en 2022."
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Płomienie docierają do dachu i osłabiają konstrukcję. Ze względu na ryzyko zawalenia strażacy muszą prowadzić działania z zewnątrz budynku. Na zdjęciu udostępnionym przez park widać ich pracę z kosza podnośnika nad dymiącym dachem. Po południu pożar jest opanowany, ale otwarcie planetarium jeszcze w 2022 roku przestaje być możliwe."
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "As chamas atingem o telhado e enfraquecem a estrutura. O risco de desabamento obriga os bombeiros a trabalhar a partir do exterior do edifício. Uma fotografia publicada pelo parque mostra a intervenção numa plataforma elevada sobre o telhado fumegante. O incêndio é dominado durante a tarde, mas a abertura do planetário em 2022 deixa de ser possível."
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "834163976560438b98c654314b15e5a1",
+                  "type": "Paragraph",
+                  "sortOrder": 60,
+                  "headingLevel": null,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Ce sinistre touche le chantier d’une nouveauté, pas un espace déjà ouvert aux visiteurs. Vulcania précise que les autres installations ne sont pas atteintes et maintient l’annonce de leur réouverture saisonnière. La célébration de l’anniversaire et l’achèvement du planétarium suivent désormais deux calendriers distincts : le parc prépare sa saison, tandis que le nouveau bâtiment reste attendu."
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "The fire affects a new construction site rather than an attraction already welcoming guests. Vulcania states that the remaining park installations have not been hit and retains its announced seasonal reopening. The anniversary celebrations and completion of the planetarium now follow separate timetables: preparations for the park season continue while the new building remains unfinished."
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Betroffen ist die Baustelle einer neuen Einrichtung, kein bereits für Besucher geöffnetes Angebot. Vulcania erklärt, dass die übrigen Anlagen unberührt geblieben sind, und hält am angekündigten Saisonstart fest. Das Parkjubiläum und die Fertigstellung des Planetariums haben nun unterschiedliche Zeitpläne: Die Vorbereitungen auf die Parksaison gehen weiter, während das neue Gebäude noch auf seine Vollendung wartet."
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "De brand treft de bouwplaats van een nieuwe voorziening, geen attractie die al bezoekers ontvangt. Vulcania verklaart dat de overige installaties niet zijn geraakt en houdt vast aan de aangekondigde seizoensopening. Het parkjubileum en de voltooiing van het planetarium volgen voortaan verschillende planningen: het park bereidt het seizoen voor, terwijl het nieuwe gebouw nog niet af is."
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Il sinistro interessa il cantiere di una novità, non un’attrazione già accessibile al pubblico. Vulcania precisa che le altre installazioni non sono state colpite e conferma la riapertura stagionale annunciata. Le celebrazioni dell’anniversario e il completamento del planetario seguono ormai due calendari distinti: il parco prepara la stagione, mentre il nuovo edificio resta da terminare."
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "El incendio afecta a las obras de una novedad, no a una atracción que ya reciba visitantes. Vulcania precisa que las demás instalaciones no han sufrido daños y mantiene el anuncio de su reapertura estacional. La celebración del aniversario y la finalización del planetario pasan a tener calendarios distintos: el parque prepara la temporada y el nuevo edificio sigue pendiente."
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Ogień dotyka placu budowy nowego obiektu, a nie atrakcji przyjmującej już gości. Vulcania podkreśla, że pozostałe instalacje nie zostały uszkodzone, i podtrzymuje zapowiedź sezonowego otwarcia. Jubileusz parku oraz ukończenie planetarium mają odtąd osobne harmonogramy: trwają przygotowania do sezonu w parku, podczas gdy nowy budynek wciąż czeka na zakończenie prac."
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "O incêndio afeta as obras de uma novidade, não uma atração que já receba visitantes. Vulcania esclarece que as restantes instalações não foram atingidas e mantém o anúncio da reabertura sazonal. As celebrações do aniversário e a conclusão do planetário passam a seguir calendários diferentes: o parque prepara a temporada, enquanto o novo edifício continua por terminar."
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "ee103d53dd3d4653b06cfe43a39a0b49",
+                  "type": "Heading",
+                  "sortOrder": 70,
+                  "headingLevel": 2,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Un ciel accessible au public en 2023"
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "Opening the dome to visitors in 2023"
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Der Himmel öffnet sich 2023 für Besucher"
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "De koepel ontvangt publiek in 2023"
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "La cupola accoglie il pubblico nel 2023"
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "La cúpula recibe visitantes en 2023"
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Kopuła otwarta dla gości w 2023 roku"
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "A cúpula recebe o público em 2023"
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "b5edf9b6a20849d4a3cbf35bbb56fc16",
+                  "type": "Paragraph",
+                  "sortOrder": 80,
+                  "headingLevel": null,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Le planétarium reçoit finalement ses visiteurs le 29 mars 2023. L’annonce de RSA Cosmos, qui équipe la salle, et le reportage de Lyon Capitale publié le lendemain situent cette ouverture à la même date. Les photographies de la présentation à la presse montrent déjà des images du Soleil et des paysages volcaniques projetés sous le dôme."
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "The planetarium finally welcomes the public on 29 March 2023. An announcement by equipment supplier RSA Cosmos and Lyon Capitale’s report published the next day agree on that opening date. Photographs from the press presentation already show images of the Sun and volcanic landscapes projected inside the dome."
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Am 29. März 2023 empfängt das Planetarium schließlich sein Publikum. Eine Mitteilung des Ausstatters RSA Cosmos und der am folgenden Tag erschienene Bericht von Lyon Capitale bestätigen diesen Eröffnungstag. Fotos von der Pressevorstellung zeigen bereits Bilder der Sonne und vulkanischer Landschaften, die unter der Kuppel auf die Projektionsfläche geworfen werden."
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "Het planetarium opent uiteindelijk op 29 maart 2023 voor bezoekers. Een bericht van leverancier RSA Cosmos en het verslag van Lyon Capitale van de volgende dag bevestigen dezelfde openingsdatum. Foto’s van de perspresentatie tonen al beelden van de zon en vulkanische landschappen die onder de koepel worden geprojecteerd."
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Il planetario riceve infine i visitatori il 29 marzo 2023. L’annuncio del fornitore RSA Cosmos e il reportage di Lyon Capitale pubblicato il giorno successivo indicano la stessa data di apertura. Le fotografie della presentazione alla stampa mostrano già immagini del Sole e paesaggi vulcanici proiettati all’interno della cupola."
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "El planetario abre finalmente al público el 29 de marzo de 2023. El anuncio del proveedor RSA Cosmos y el reportaje de Lyon Capitale publicado al día siguiente coinciden en esa fecha. Las fotografías de la presentación a la prensa muestran ya imágenes del Sol y paisajes volcánicos proyectados bajo la cúpula."
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Planetarium przyjmuje publiczność 29 marca 2023 roku. Komunikat dostawcy wyposażenia RSA Cosmos i reportaż Lyon Capitale z następnego dnia wskazują tę samą datę otwarcia. Zdjęcia z prezentacji dla prasy pokazują już obrazy Słońca oraz krajobrazów wulkanicznych wyświetlane pod kopułą nowej sali, która staje się częścią oferty parku."
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "O planetário acolhe finalmente os visitantes a 29 de março de 2023. O anúncio do fornecedor RSA Cosmos e a reportagem do Lyon Capitale publicada no dia seguinte indicam a mesma data de abertura. As fotografias da apresentação à imprensa mostram já imagens do Sol e paisagens vulcânicas projetadas sob a cúpula."
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                },
+                {
+                  "id": "5d2b1ffd49bb41179a97ad6599e8290e",
+                  "type": "Paragraph",
+                  "sortOrder": 90,
+                  "headingLevel": null,
+                  "texts": [
+                    {
+                      "languageCode": "fr",
+                      "value": "Avec cette salle, l’Espace prend une forme différente dans l’offre de Vulcania. Les présentations astronomiques et L’aventure volcano-sidérale relient les phénomènes de notre planète à ceux d’autres mondes. Le bâtiment dont la toiture avait concentré l’intervention des secours devient ainsi un lieu de projection et de médiation scientifique, ouvert un an après la saison initialement prévue."
+                    },
+                    {
+                      "languageCode": "en",
+                      "value": "The new venue gives space exploration a different presence at Vulcania. Astronomy presentations and L’aventure volcano-sidérale connect phenomena on Earth with other worlds. The building whose roof had been the focus of the firefighting operation becomes a setting for projections and science presentations, welcoming visitors a year after the originally planned season."
+                    },
+                    {
+                      "languageCode": "de",
+                      "value": "Mit dem neuen Saal wird das Weltall in Vulcania auf andere Weise erfahrbar. Astronomische Vorführungen und L’aventure volcano-sidérale verbinden Erscheinungen auf der Erde mit anderen Welten. Das Gebäude, dessen Dach beim Feuerwehreinsatz im Mittelpunkt stand, wird zum Ort für Projektionen und wissenschaftliche Vermittlung. Besucher können es ein Jahr nach der ursprünglich vorgesehenen Saison betreten."
+                    },
+                    {
+                      "languageCode": "nl",
+                      "value": "Met de nieuwe zaal krijgt de ruimte een andere plaats in Vulcania. Astronomische presentaties en L’aventure volcano-sidérale verbinden verschijnselen op aarde met andere werelden. Het gebouw waarvan het dak centraal stond bij de brandweerinzet, wordt zo een plek voor projecties en wetenschappelijke uitleg. Het ontvangt bezoekers een jaar na het oorspronkelijk geplande seizoen."
+                    },
+                    {
+                      "languageCode": "it",
+                      "value": "Con questa sala, lo spazio assume una presenza diversa nell’offerta di Vulcania. Le presentazioni astronomiche e L’aventure volcano-sidérale collegano i fenomeni della Terra a quelli di altri mondi. L’edificio il cui tetto era stato al centro dell’intervento dei soccorsi diventa un luogo di proiezioni e divulgazione scientifica, aperto un anno dopo la stagione inizialmente prevista."
+                    },
+                    {
+                      "languageCode": "es",
+                      "value": "Con esta sala, el espacio adquiere una presencia distinta en Vulcania. Las presentaciones astronómicas y L’aventure volcano-sidérale conectan los fenómenos de la Tierra con los de otros mundos. El edificio cuyo tejado había concentrado la intervención de los bomberos se convierte en un lugar de proyecciones y divulgación científica, abierto un año después de la temporada inicialmente prevista."
+                    },
+                    {
+                      "languageCode": "pl",
+                      "value": "Dzięki temu obiektowi kosmos jest przedstawiany w Vulcanii w nowy sposób. Pokazy astronomiczne i L’aventure volcano-sidérale wiążą zjawiska ziemskie z innymi światami. Budynek, którego dach znajdował się w centrum akcji gaśniczej, staje się miejscem projekcji i popularyzacji nauki. Goście mogą wejść do niego rok po pierwotnie planowanym sezonie otwarcia."
+                    },
+                    {
+                      "languageCode": "pt",
+                      "value": "Com esta sala, o espaço ganha uma presença diferente na oferta de Vulcania. As apresentações de astronomia e L’aventure volcano-sidérale relacionam os fenómenos da Terra com os de outros mundos. O edifício cujo telhado tinha concentrado a intervenção dos bombeiros torna-se um lugar de projeções e divulgação científica, aberto um ano depois da temporada inicialmente prevista."
+                    }
+                  ],
+                  "imageId": null,
+                  "imageIds": [],
+                  "captions": []
+                }
+              ],
+              "sources": [
+                {
+                  "label": "Radio Scoop — incendie maîtrisé au futur planétarium, 10 février 2022",
+                  "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+                  "accessedAt": "2026-11-15"
+                },
+                {
+                  "label": "Vulcania — communiqué public sur le chantier du planétarium",
+                  "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+                  "accessedAt": "2026-11-15"
+                },
+                {
+                  "label": "RSA Cosmos — ouverture au public, 29 mars 2023",
+                  "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+                  "accessedAt": "2026-11-15"
+                },
+                {
+                  "label": "Lyon Capitale — reportage, 30 mars 2023",
+                  "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+                  "accessedAt": "2026-11-15"
+                }
+              ],
+              "isPublished": false
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-vulcania-planetarium-fire-history",
+        "notes": "Private10February2022construction fire belongs toexistingAstrodomeitem, notduplicatedparkfrise. Officialpublicpost fullyread and RadioScoopdatedupdatedreport corroborateevacuation/noinjuries/firecontrolledafternoon/May2022openingcancelled/remainingparkunaffected. Causeunknown here, no speculativecause or responsibility. Developed article3sections6paragraphs perlanguage personallyauthoredreviewed; four accessible sources, authentic officialphotoofsameevent, noinjuredperson depicted. Publicopening29March2023 notceremony28April. RegionalPDFreturnedonly44whitespacebytes and is excluded asusableevidence."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "9fcb6a64-ad40-4f2a-b4ea-6ada70bc0b70",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:11:14.1147276Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "09104793-7347-4d30-b4e3-650e5542738e",
+        "entityKey": "vulcania-item-history-planetarium-fire-2022",
+        "displayName": "Un incendie reporte le projet de planétarium",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-planetarium-fire-2022"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2022"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Fire"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "9fbd4d6f8df44a9b800f5b71b056dcc6"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein Brand verzögert das Planetarium, en:A fire delays the planetarium project, es:Un incendio retrasa el proyecto del planetario, fr:Un incendie reporte le projet de planétarium, it:Un incendio ritarda il progetto del planetario, nl:Brand vertraagt het planetariumproject, pl:Pożar opóźnia projekt planetarium, pt:Um incêndio atrasa o projeto do planetário"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 10. Februar 2022 beschädigt ein Brand das noch im Bau befindliche Planetarium. Die Arbeiter werden evakuiert; Verletzte werden nicht gemeldet. Die für Mai geplante Eröffnung entfällt, während Vulcania die Saison in den übrigen Bereichen des Parks weiter vorbereitet., en:On 10 February 2022, a fire damages the planetarium while it is still under construction. Workers are evacuated and no injuries are reported. The planned May opening is abandoned, while Vulcania continues preparing the season in the park’s other areas., es:El 10 de febrero de 2022, un incendio daña el planetario todavía en obras. Los trabajadores son evacuados y no se notifican heridos. Se descarta la apertura prevista para mayo, mientras Vulcania sigue preparando la temporada en las demás zonas del parque., fr:Le 10 février 2022, un incendie endommage le planétarium encore en chantier. Les ouvriers sont évacués et aucun blessé n’est signalé. L’ouverture prévue pour mai est abandonnée, tandis que Vulcania maintient la préparation de sa saison dans les autres espaces du parc., it:Il 10 febbraio 2022 un incendio danneggia il planetario ancora in costruzione. Gli operai vengono evacuati e non si segnalano feriti. L’apertura prevista per maggio viene annullata, mentre Vulcania prosegue i preparativi della stagione nelle altre aree del parco., nl:Op 10 februari 2022 beschadigt een brand het planetarium in aanbouw. De werknemers worden geëvacueerd en er worden geen gewonden gemeld. De geplande opening in mei vervalt, terwijl Vulcania het seizoen in de overige delen van het park blijft voorbereiden., pl:10 lutego 2022 roku pożar uszkadza budowane planetarium. Pracownicy zostają ewakuowani i nie ma doniesień o rannych. Planowane na maj otwarcie zostaje odwołane, a Vulcania nadal przygotowuje sezon w pozostałych częściach parku., pt:A 10 de fevereiro de 2022, um incêndio danifica o planetário ainda em construção. Os trabalhadores são evacuados e não há feridos registados. A abertura prevista para maio é abandonada, enquanto Vulcania continua a preparar a temporada nas restantes áreas do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 public sur le chantier du plan\\u00E9tarium\",\"Url\":\"https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Radio Scoop \\u2014 incendie ma\\u00EEtris\\u00E9 au futur plan\\u00E9tarium, 10 f\\u00E9vrier 2022\",\"Url\":\"https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274\",\"AccessedAt\":\"2026-11-15\"}]"
+          },
+          {
+            "field": "article",
+            "oldValue": null,
+            "newValue": "{\"Slug\":null,\"Titles\":[{\"LanguageCode\":\"de\",\"Value\":\"Vulcanias Planetarium: vom Baustellenbrand zur Er\\u00F6ffnung\"},{\"LanguageCode\":\"en\",\"Value\":\"Vulcania\\u2019s planetarium: from a construction fire to opening day\"},{\"LanguageCode\":\"es\",\"Value\":\"El planetario de Vulcania, del incendio de las obras a la apertura\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le plan\\u00E9tarium de Vulcania, du chantier incendi\\u00E9 \\u00E0 l\\u2019ouverture\"},{\"LanguageCode\":\"it\",\"Value\":\"Il planetario di Vulcania, dall\\u2019incendio del cantiere all\\u2019apertura\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium van Vulcania: van bouwbrand tot opening\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium Vulcanii: od po\\u017Caru na budowie do otwarcia\"},{\"LanguageCode\":\"pt\",\"Value\":\"O planet\\u00E1rio de Vulcania, do inc\\u00EAndio nas obras \\u00E0 abertura\"}],\"Subtitles\":[{\"LanguageCode\":\"de\",\"Value\":\"Der Brand im Februar 2022 ver\\u00E4ndert den Zeitplan eines Projekts rund um das Weltall.\"},{\"LanguageCode\":\"en\",\"Value\":\"The February 2022 fire changes the timetable for a project devoted to space.\"},{\"LanguageCode\":\"es\",\"Value\":\"El incendio de febrero de 2022 altera el calendario de un proyecto dedicado al espacio.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u2019incendie de f\\u00E9vrier 2022 bouleverse le calendrier d\\u2019un projet consacr\\u00E9 \\u00E0 l\\u2019Espace.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u2019incendio del febbraio 2022 cambia il calendario di un progetto dedicato allo spazio.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De brand van februari 2022 verandert de planning van een project over de ruimte.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Po\\u017Car w lutym 2022 roku zmienia harmonogram projektu po\\u015Bwi\\u0119conego kosmosowi.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O inc\\u00EAndio de fevereiro de 2022 altera o calend\\u00E1rio de um projeto dedicado ao espa\\u00E7o.\"}],\"Summaries\":[{\"LanguageCode\":\"de\",\"Value\":\"Das f\\u00FCr das zwanzigj\\u00E4hrige Parkjubil\\u00E4um vorgesehene Planetarium wird vor seiner Er\\u00F6ffnung von einem Brand getroffen. Im M\\u00E4rz 2023 erh\\u00E4lt die Astronomie schlie\\u00DFlich ihren neuen Platz in Vulcania.\"},{\"LanguageCode\":\"en\",\"Value\":\"Planned as part of the park\\u2019s twentieth anniversary, the planetarium suffers a fire before receiving visitors. Its eventual opening in March 2023 gives astronomy a new place at Vulcania.\"},{\"LanguageCode\":\"es\",\"Value\":\"Previsto entre las novedades del vig\\u00E9simo aniversario del parque, el planetario sufre un incendio antes de recibir visitantes. Su apertura en marzo de 2023 da finalmente un nuevo lugar a la astronom\\u00EDa en Vulcania.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Destin\\u00E9 \\u00E0 rejoindre les nouveaut\\u00E9s du vingti\\u00E8me anniversaire, le plan\\u00E9tarium subit un incendie avant d\\u2019accueillir son public. Son ouverture en mars 2023 donne finalement une place nouvelle \\u00E0 l\\u2019astronomie dans le parc.\"},{\"LanguageCode\":\"it\",\"Value\":\"Pensato per arricchire il ventesimo anniversario del parco, il planetario subisce un incendio prima di accogliere il pubblico. L\\u2019apertura nel marzo 2023 d\\u00E0 infine un nuovo spazio all\\u2019astronomia a Vulcania.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium zou deel uitmaken van de twintigste verjaardag van het park, maar wordt v\\u00F3\\u00F3r de opening getroffen door brand. In maart 2023 krijgt de sterrenkunde uiteindelijk haar nieuwe plek bij Vulcania.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium planowane na dwudziestolecie parku zostaje dotkni\\u0119te po\\u017Carem, zanim przyjmie pierwszych go\\u015Bci. Otwarcie w marcu 2023 roku daje astronomii nowe miejsce w Vulcanii.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Previsto entre as novidades do vig\\u00E9simo anivers\\u00E1rio do parque, o planet\\u00E1rio sofre um inc\\u00EAndio antes de receber visitantes. A abertura em mar\\u00E7o de 2023 d\\u00E1 finalmente um novo lugar \\u00E0 astronomia em Vulcania.\"}],\"MainImageId\":\"9fbd4d6f8df44a9b800f5b71b056dcc6\",\"Blocks\":[{\"Id\":\"db56ae895e574645a74466086a2f4f24\",\"Type\":0,\"SortOrder\":10,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Eine Baustelle f\\u00FCr das Jubil\\u00E4umsjahr\"},{\"LanguageCode\":\"en\",\"Value\":\"An anniversary project under construction\"},{\"LanguageCode\":\"es\",\"Value\":\"Unas obras para el aniversario\"},{\"LanguageCode\":\"fr\",\"Value\":\"Un chantier au c\\u0153ur de l\\u2019anniversaire\"},{\"LanguageCode\":\"it\",\"Value\":\"Un cantiere per l\\u2019anniversario\"},{\"LanguageCode\":\"nl\",\"Value\":\"Een bouwproject voor het jubileum\"},{\"LanguageCode\":\"pl\",\"Value\":\"Budowa na jubileuszowy rok\"},{\"LanguageCode\":\"pt\",\"Value\":\"Uma obra para o anivers\\u00E1rio\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"5d89f105336143eb85e9cc9f56aab37b\",\"Type\":1,\"SortOrder\":20,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Im Jahr 2022 bereitet Vulcania das zwanzigste Jubil\\u00E4um seiner Einweihung vor. Das k\\u00FCnftige Planetarium soll die Besch\\u00E4ftigung mit der Erde um den Blick in das Universum erg\\u00E4nzen. F\\u00FCr die neue Einrichtung ist eine Er\\u00F6ffnung im Mai vorgesehen, w\\u00E4hrend der \\u00FCbrige Park seine Saison bereits am 30. M\\u00E4rz beginnen soll.\"},{\"LanguageCode\":\"en\",\"Value\":\"In 2022, Vulcania is preparing to mark twenty years since its inauguration. The planned planetarium will extend the exploration of Earth into the wider Universe. It is expected to welcome visitors in May, during a season that the rest of the park is scheduled to begin on 30 March.\"},{\"LanguageCode\":\"es\",\"Value\":\"En 2022, Vulcania prepara la celebraci\\u00F3n de los veinte a\\u00F1os de su inauguraci\\u00F3n. El futuro planetario debe ampliar el descubrimiento de la Tierra con una mirada hacia el Universo. Su apertura est\\u00E1 anunciada para mayo, durante una temporada que el resto del parque tiene previsto iniciar ya el 30 de marzo.\"},{\"LanguageCode\":\"fr\",\"Value\":\"En 2022, Vulcania pr\\u00E9pare les vingt ans de son inauguration. Le futur plan\\u00E9tarium doit enrichir la d\\u00E9couverte de la Terre par une ouverture sur l\\u2019Univers. Son arriv\\u00E9e est annonc\\u00E9e pour le mois de mai, au cours d\\u2019une saison que le reste du parc pr\\u00E9voit de commencer d\\u00E8s le 30 mars.\"},{\"LanguageCode\":\"it\",\"Value\":\"Nel 2022 Vulcania prepara il ventesimo anniversario della propria inaugurazione. Il futuro planetario deve ampliare la scoperta della Terra con uno sguardo sull\\u2019Universo. La sua apertura \\u00E8 annunciata per maggio, durante una stagione che il resto del parco prevede di iniziare gi\\u00E0 il 30 marzo, con le altre attrazioni.\"},{\"LanguageCode\":\"nl\",\"Value\":\"In 2022 bereidt Vulcania de viering voor van twintig jaar sinds zijn inauguratie. Het toekomstige planetarium moet de verkenning van de aarde uitbreiden naar het heelal. De opening van de nieuwe voorziening staat gepland voor mei, in een seizoen dat de rest van het park al op 30 maart wil beginnen.\"},{\"LanguageCode\":\"pl\",\"Value\":\"W 2022 roku Vulcania przygotowuje obchody dwudziestej rocznicy swojej inauguracji. Przysz\\u0142e planetarium ma rozszerzy\\u0107 poznawanie Ziemi o spojrzenie na Wszech\\u015Bwiat. Nowy obiekt ma zosta\\u0107 udost\\u0119pniony w maju, podczas sezonu, kt\\u00F3ry pozosta\\u0142a cz\\u0119\\u015B\\u0107 parku planuje rozpocz\\u0105\\u0107 ju\\u017C 30 marca. Planetarium jest wi\\u0119c wa\\u017Cnym elementem programu jubileuszowego, ale nie warunkiem rozpocz\\u0119cia sezonu.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Em 2022, Vulcania prepara a celebra\\u00E7\\u00E3o dos vinte anos da sua inaugura\\u00E7\\u00E3o. O futuro planet\\u00E1rio dever\\u00E1 alargar a descoberta da Terra com um olhar sobre o Universo. A abertura da nova instala\\u00E7\\u00E3o est\\u00E1 anunciada para maio, durante uma temporada que o restante parque prev\\u00EA come\\u00E7ar j\\u00E1 a 30 de mar\\u00E7o.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"e08f181758c944e9b2bcab648034e49e\",\"Type\":1,\"SortOrder\":30,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Am 10. Februar, w\\u00E4hrend der Winterpause ohne Besucher im Park, bricht im noch nicht fertiggestellten Geb\\u00E4ude ein Feuer aus. Die Arbeiter auf der Baustelle werden evakuiert. Vulcania meldet in seiner \\u00F6ffentlichen Mitteilung keine Verletzten. Auch der aktualisierte Bericht von Radio Scoop am Nachmittag nennt einen Einsatz, bei dem niemand verletzt wurde.\"},{\"LanguageCode\":\"en\",\"Value\":\"On 10 February, while the park is closed to visitors for winter, a fire breaks out inside the unfinished building. Workers on the construction site are evacuated. Vulcania\\u2019s public statement reports no injuries, and the update carried by Radio Scoop later that afternoon also records an intervention without injuries.\"},{\"LanguageCode\":\"es\",\"Value\":\"El 10 de febrero, mientras el recinto permanece cerrado al p\\u00FAblico durante el invierno, se declara un incendio en el edificio a\\u00FAn sin terminar. Los trabajadores presentes en las obras son evacuados. El comunicado de Vulcania no informa de heridos; la actualizaci\\u00F3n difundida por Radio Scoop esa misma tarde tampoco registra personas heridas.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le 10 f\\u00E9vrier, alors que le site est ferm\\u00E9 aux visiteurs pour l\\u2019hiver, le feu se d\\u00E9clare dans le b\\u00E2timent encore en construction. Les ouvriers pr\\u00E9sents sur le chantier sont \\u00E9vacu\\u00E9s. Le communiqu\\u00E9 diffus\\u00E9 par Vulcania ne signale aucun bless\\u00E9 ; le bilan relay\\u00E9 dans l\\u2019apr\\u00E8s-midi par Radio Scoop reste lui aussi sans bless\\u00E9.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il 10 febbraio, mentre il parco \\u00E8 chiuso ai visitatori per l\\u2019inverno, scoppia un incendio nell\\u2019edificio ancora incompiuto. Gli operai presenti nel cantiere vengono evacuati. Il comunicato pubblico di Vulcania non segnala feriti; anche l\\u2019aggiornamento diffuso da Radio Scoop nel pomeriggio riferisce che l\\u2019intervento non ha registrato persone ferite.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Op 10 februari, terwijl het park voor de winter gesloten is voor bezoekers, breekt brand uit in het onvoltooide gebouw. De werknemers op de bouwplaats worden ge\\u00EBvacueerd. Vulcania meldt in zijn openbare verklaring geen gewonden. Ook het bijgewerkte verslag dat Radio Scoop later die middag publiceert, vermeldt dat niemand gewond is geraakt.\"},{\"LanguageCode\":\"pl\",\"Value\":\"10 lutego, gdy park jest zamkni\\u0119ty dla odwiedzaj\\u0105cych na zim\\u0119, w niewyko\\u0144czonym budynku wybucha po\\u017Car. Pracownicy znajduj\\u0105cy si\\u0119 na placu budowy zostaj\\u0105 ewakuowani. W publicznym komunikacie Vulcania informuje, \\u017Ce nie ma rannych. Aktualizacja opublikowana przez Radio Scoop p\\u00F3\\u017Aniej tego samego popo\\u0142udnia r\\u00F3wnie\\u017C opisuje akcj\\u0119 bez os\\u00F3b poszkodowanych.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A 10 de fevereiro, enquanto o parque est\\u00E1 encerrado aos visitantes durante o inverno, deflagra um inc\\u00EAndio no edif\\u00EDcio ainda por concluir. Os trabalhadores presentes nas obras s\\u00E3o evacuados. O comunicado p\\u00FAblico de Vulcania n\\u00E3o refere feridos; a atualiza\\u00E7\\u00E3o divulgada pela Radio Scoop nessa mesma tarde tamb\\u00E9m relata uma interven\\u00E7\\u00E3o sem pessoas feridas.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"d050a6e729c345de8319fea5baa82a10\",\"Type\":0,\"SortOrder\":40,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Ein besch\\u00E4digtes Dach ver\\u00E4ndert die Planung\"},{\"LanguageCode\":\"en\",\"Value\":\"A damaged roof and a changed timetable\"},{\"LanguageCode\":\"es\",\"Value\":\"El tejado da\\u00F1ado obliga a cambiar los plazos\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le toit atteint, une saison \\u00E0 r\\u00E9organiser\"},{\"LanguageCode\":\"it\",\"Value\":\"Il tetto danneggiato e un calendario da cambiare\"},{\"LanguageCode\":\"nl\",\"Value\":\"Een beschadigd dak en een andere planning\"},{\"LanguageCode\":\"pl\",\"Value\":\"Uszkodzony dach zmienia plany\"},{\"LanguageCode\":\"pt\",\"Value\":\"O telhado danificado obriga a mudar os prazos\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"85a42834838948159a05366afa9c66dd\",\"Type\":1,\"SortOrder\":50,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Die Flammen erreichen das Dach und schw\\u00E4chen die Geb\\u00E4udestruktur. Wegen der Einsturzgefahr m\\u00FCssen die Feuerwehrleute von au\\u00DFen arbeiten. Auf einem vom Park ver\\u00F6ffentlichten Foto ist ihr Einsatz in einem Hubkorb \\u00FCber dem rauchenden Dach zu sehen. Am Nachmittag ist der Brand unter Kontrolle, doch eine Er\\u00F6ffnung des Planetariums im Jahr 2022 ist nicht mehr m\\u00F6glich.\"},{\"LanguageCode\":\"en\",\"Value\":\"Flames reach the roof and weaken the structure. The risk of collapse requires firefighters to work from outside the building. A photograph released by the park shows the intervention from an elevated platform above the smoking roof. The fire is brought under control that afternoon, but opening the planetarium in 2022 is no longer possible.\"},{\"LanguageCode\":\"es\",\"Value\":\"Las llamas alcanzan el tejado y debilitan la estructura. El riesgo de derrumbe obliga a los bomberos a trabajar desde el exterior del edificio. Una fotograf\\u00EDa publicada por el parque muestra su intervenci\\u00F3n desde una plataforma elevada sobre el tejado humeante. El fuego queda controlado por la tarde, pero el planetario ya no podr\\u00E1 abrir en 2022.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Les flammes gagnent la toiture et fragilisent la structure. Le risque d\\u2019effondrement conduit les pompiers \\u00E0 travailler depuis l\\u2019ext\\u00E9rieur du b\\u00E2timent. Une photographie publi\\u00E9e par le parc montre leur intervention au-dessus du toit fumant, depuis une nacelle \\u00E9lev\\u00E9e. L\\u2019incendie est ma\\u00EEtris\\u00E9 dans l\\u2019apr\\u00E8s-midi, mais l\\u2019ouverture du plan\\u00E9tarium en 2022 n\\u2019est plus envisageable.\"},{\"LanguageCode\":\"it\",\"Value\":\"Le fiamme raggiungono il tetto e indeboliscono la struttura. Il rischio di crollo costringe i vigili del fuoco a intervenire dall\\u2019esterno dell\\u2019edificio. Una fotografia pubblicata dal parco li mostra su una piattaforma aerea sopra il tetto fumante. L\\u2019incendio viene controllato nel pomeriggio, ma l\\u2019apertura del planetario nel 2022 non \\u00E8 pi\\u00F9 possibile.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De vlammen bereiken het dak en verzwakken de constructie. Door het instortingsgevaar moeten brandweerlieden van buiten het gebouw werken. Een door het park gepubliceerde foto toont hun inzet vanuit een hoogwerker boven het rokende dak. De brand is die middag onder controle, maar een opening van het planetarium in 2022 is niet meer mogelijk.\"},{\"LanguageCode\":\"pl\",\"Value\":\"P\\u0142omienie docieraj\\u0105 do dachu i os\\u0142abiaj\\u0105 konstrukcj\\u0119. Ze wzgl\\u0119du na ryzyko zawalenia stra\\u017Cacy musz\\u0105 prowadzi\\u0107 dzia\\u0142ania z zewn\\u0105trz budynku. Na zdj\\u0119ciu udost\\u0119pnionym przez park wida\\u0107 ich prac\\u0119 z kosza podno\\u015Bnika nad dymi\\u0105cym dachem. Po po\\u0142udniu po\\u017Car jest opanowany, ale otwarcie planetarium jeszcze w 2022 roku przestaje by\\u0107 mo\\u017Cliwe.\"},{\"LanguageCode\":\"pt\",\"Value\":\"As chamas atingem o telhado e enfraquecem a estrutura. O risco de desabamento obriga os bombeiros a trabalhar a partir do exterior do edif\\u00EDcio. Uma fotografia publicada pelo parque mostra a interven\\u00E7\\u00E3o numa plataforma elevada sobre o telhado fumegante. O inc\\u00EAndio \\u00E9 dominado durante a tarde, mas a abertura do planet\\u00E1rio em 2022 deixa de ser poss\\u00EDvel.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"834163976560438b98c654314b15e5a1\",\"Type\":1,\"SortOrder\":60,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Betroffen ist die Baustelle einer neuen Einrichtung, kein bereits f\\u00FCr Besucher ge\\u00F6ffnetes Angebot. Vulcania erkl\\u00E4rt, dass die \\u00FCbrigen Anlagen unber\\u00FChrt geblieben sind, und h\\u00E4lt am angek\\u00FCndigten Saisonstart fest. Das Parkjubil\\u00E4um und die Fertigstellung des Planetariums haben nun unterschiedliche Zeitpl\\u00E4ne: Die Vorbereitungen auf die Parksaison gehen weiter, w\\u00E4hrend das neue Geb\\u00E4ude noch auf seine Vollendung wartet.\"},{\"LanguageCode\":\"en\",\"Value\":\"The fire affects a new construction site rather than an attraction already welcoming guests. Vulcania states that the remaining park installations have not been hit and retains its announced seasonal reopening. The anniversary celebrations and completion of the planetarium now follow separate timetables: preparations for the park season continue while the new building remains unfinished.\"},{\"LanguageCode\":\"es\",\"Value\":\"El incendio afecta a las obras de una novedad, no a una atracci\\u00F3n que ya reciba visitantes. Vulcania precisa que las dem\\u00E1s instalaciones no han sufrido da\\u00F1os y mantiene el anuncio de su reapertura estacional. La celebraci\\u00F3n del aniversario y la finalizaci\\u00F3n del planetario pasan a tener calendarios distintos: el parque prepara la temporada y el nuevo edificio sigue pendiente.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Ce sinistre touche le chantier d\\u2019une nouveaut\\u00E9, pas un espace d\\u00E9j\\u00E0 ouvert aux visiteurs. Vulcania pr\\u00E9cise que les autres installations ne sont pas atteintes et maintient l\\u2019annonce de leur r\\u00E9ouverture saisonni\\u00E8re. La c\\u00E9l\\u00E9bration de l\\u2019anniversaire et l\\u2019ach\\u00E8vement du plan\\u00E9tarium suivent d\\u00E9sormais deux calendriers distincts : le parc pr\\u00E9pare sa saison, tandis que le nouveau b\\u00E2timent reste attendu.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il sinistro interessa il cantiere di una novit\\u00E0, non un\\u2019attrazione gi\\u00E0 accessibile al pubblico. Vulcania precisa che le altre installazioni non sono state colpite e conferma la riapertura stagionale annunciata. Le celebrazioni dell\\u2019anniversario e il completamento del planetario seguono ormai due calendari distinti: il parco prepara la stagione, mentre il nuovo edificio resta da terminare.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De brand treft de bouwplaats van een nieuwe voorziening, geen attractie die al bezoekers ontvangt. Vulcania verklaart dat de overige installaties niet zijn geraakt en houdt vast aan de aangekondigde seizoensopening. Het parkjubileum en de voltooiing van het planetarium volgen voortaan verschillende planningen: het park bereidt het seizoen voor, terwijl het nieuwe gebouw nog niet af is.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Ogie\\u0144 dotyka placu budowy nowego obiektu, a nie atrakcji przyjmuj\\u0105cej ju\\u017C go\\u015Bci. Vulcania podkre\\u015Bla, \\u017Ce pozosta\\u0142e instalacje nie zosta\\u0142y uszkodzone, i podtrzymuje zapowied\\u017A sezonowego otwarcia. Jubileusz parku oraz uko\\u0144czenie planetarium maj\\u0105 odt\\u0105d osobne harmonogramy: trwaj\\u0105 przygotowania do sezonu w parku, podczas gdy nowy budynek wci\\u0105\\u017C czeka na zako\\u0144czenie prac.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O inc\\u00EAndio afeta as obras de uma novidade, n\\u00E3o uma atra\\u00E7\\u00E3o que j\\u00E1 receba visitantes. Vulcania esclarece que as restantes instala\\u00E7\\u00F5es n\\u00E3o foram atingidas e mant\\u00E9m o an\\u00FAncio da reabertura sazonal. As celebra\\u00E7\\u00F5es do anivers\\u00E1rio e a conclus\\u00E3o do planet\\u00E1rio passam a seguir calend\\u00E1rios diferentes: o parque prepara a temporada, enquanto o novo edif\\u00EDcio continua por terminar.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"ee103d53dd3d4653b06cfe43a39a0b49\",\"Type\":0,\"SortOrder\":70,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Der Himmel \\u00F6ffnet sich 2023 f\\u00FCr Besucher\"},{\"LanguageCode\":\"en\",\"Value\":\"Opening the dome to visitors in 2023\"},{\"LanguageCode\":\"es\",\"Value\":\"La c\\u00FApula recibe visitantes en 2023\"},{\"LanguageCode\":\"fr\",\"Value\":\"Un ciel accessible au public en 2023\"},{\"LanguageCode\":\"it\",\"Value\":\"La cupola accoglie il pubblico nel 2023\"},{\"LanguageCode\":\"nl\",\"Value\":\"De koepel ontvangt publiek in 2023\"},{\"LanguageCode\":\"pl\",\"Value\":\"Kopu\\u0142a otwarta dla go\\u015Bci w 2023 roku\"},{\"LanguageCode\":\"pt\",\"Value\":\"A c\\u00FApula recebe o p\\u00FAblico em 2023\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"b5edf9b6a20849d4a3cbf35bbb56fc16\",\"Type\":1,\"SortOrder\":80,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Am 29. M\\u00E4rz 2023 empf\\u00E4ngt das Planetarium schlie\\u00DFlich sein Publikum. Eine Mitteilung des Ausstatters RSA Cosmos und der am folgenden Tag erschienene Bericht von Lyon Capitale best\\u00E4tigen diesen Er\\u00F6ffnungstag. Fotos von der Pressevorstellung zeigen bereits Bilder der Sonne und vulkanischer Landschaften, die unter der Kuppel auf die Projektionsfl\\u00E4che geworfen werden.\"},{\"LanguageCode\":\"en\",\"Value\":\"The planetarium finally welcomes the public on 29 March 2023. An announcement by equipment supplier RSA Cosmos and Lyon Capitale\\u2019s report published the next day agree on that opening date. Photographs from the press presentation already show images of the Sun and volcanic landscapes projected inside the dome.\"},{\"LanguageCode\":\"es\",\"Value\":\"El planetario abre finalmente al p\\u00FAblico el 29 de marzo de 2023. El anuncio del proveedor RSA Cosmos y el reportaje de Lyon Capitale publicado al d\\u00EDa siguiente coinciden en esa fecha. Las fotograf\\u00EDas de la presentaci\\u00F3n a la prensa muestran ya im\\u00E1genes del Sol y paisajes volc\\u00E1nicos proyectados bajo la c\\u00FApula.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le plan\\u00E9tarium re\\u00E7oit finalement ses visiteurs le 29 mars 2023. L\\u2019annonce de RSA Cosmos, qui \\u00E9quipe la salle, et le reportage de Lyon Capitale publi\\u00E9 le lendemain situent cette ouverture \\u00E0 la m\\u00EAme date. Les photographies de la pr\\u00E9sentation \\u00E0 la presse montrent d\\u00E9j\\u00E0 des images du Soleil et des paysages volcaniques projet\\u00E9s sous le d\\u00F4me.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il planetario riceve infine i visitatori il 29 marzo 2023. L\\u2019annuncio del fornitore RSA Cosmos e il reportage di Lyon Capitale pubblicato il giorno successivo indicano la stessa data di apertura. Le fotografie della presentazione alla stampa mostrano gi\\u00E0 immagini del Sole e paesaggi vulcanici proiettati all\\u2019interno della cupola.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium opent uiteindelijk op 29 maart 2023 voor bezoekers. Een bericht van leverancier RSA Cosmos en het verslag van Lyon Capitale van de volgende dag bevestigen dezelfde openingsdatum. Foto\\u2019s van de perspresentatie tonen al beelden van de zon en vulkanische landschappen die onder de koepel worden geprojecteerd.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium przyjmuje publiczno\\u015B\\u0107 29 marca 2023 roku. Komunikat dostawcy wyposa\\u017Cenia RSA Cosmos i reporta\\u017C Lyon Capitale z nast\\u0119pnego dnia wskazuj\\u0105 t\\u0119 sam\\u0105 dat\\u0119 otwarcia. Zdj\\u0119cia z prezentacji dla prasy pokazuj\\u0105 ju\\u017C obrazy S\\u0142o\\u0144ca oraz krajobraz\\u00F3w wulkanicznych wy\\u015Bwietlane pod kopu\\u0142\\u0105 nowej sali, kt\\u00F3ra staje si\\u0119 cz\\u0119\\u015Bci\\u0105 oferty parku.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O planet\\u00E1rio acolhe finalmente os visitantes a 29 de mar\\u00E7o de 2023. O an\\u00FAncio do fornecedor RSA Cosmos e a reportagem do Lyon Capitale publicada no dia seguinte indicam a mesma data de abertura. As fotografias da apresenta\\u00E7\\u00E3o \\u00E0 imprensa mostram j\\u00E1 imagens do Sol e paisagens vulc\\u00E2nicas projetadas sob a c\\u00FApula.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"5d2b1ffd49bb41179a97ad6599e8290e\",\"Type\":1,\"SortOrder\":90,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Mit dem neuen Saal wird das Weltall in Vulcania auf andere Weise erfahrbar. Astronomische Vorf\\u00FChrungen und L\\u2019aventure volcano-sid\\u00E9rale verbinden Erscheinungen auf der Erde mit anderen Welten. Das Geb\\u00E4ude, dessen Dach beim Feuerwehreinsatz im Mittelpunkt stand, wird zum Ort f\\u00FCr Projektionen und wissenschaftliche Vermittlung. Besucher k\\u00F6nnen es ein Jahr nach der urspr\\u00FCnglich vorgesehenen Saison betreten.\"},{\"LanguageCode\":\"en\",\"Value\":\"The new venue gives space exploration a different presence at Vulcania. Astronomy presentations and L\\u2019aventure volcano-sid\\u00E9rale connect phenomena on Earth with other worlds. The building whose roof had been the focus of the firefighting operation becomes a setting for projections and science presentations, welcoming visitors a year after the originally planned season.\"},{\"LanguageCode\":\"es\",\"Value\":\"Con esta sala, el espacio adquiere una presencia distinta en Vulcania. Las presentaciones astron\\u00F3micas y L\\u2019aventure volcano-sid\\u00E9rale conectan los fen\\u00F3menos de la Tierra con los de otros mundos. El edificio cuyo tejado hab\\u00EDa concentrado la intervenci\\u00F3n de los bomberos se convierte en un lugar de proyecciones y divulgaci\\u00F3n cient\\u00EDfica, abierto un a\\u00F1o despu\\u00E9s de la temporada inicialmente prevista.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Avec cette salle, l\\u2019Espace prend une forme diff\\u00E9rente dans l\\u2019offre de Vulcania. Les pr\\u00E9sentations astronomiques et L\\u2019aventure volcano-sid\\u00E9rale relient les ph\\u00E9nom\\u00E8nes de notre plan\\u00E8te \\u00E0 ceux d\\u2019autres mondes. Le b\\u00E2timent dont la toiture avait concentr\\u00E9 l\\u2019intervention des secours devient ainsi un lieu de projection et de m\\u00E9diation scientifique, ouvert un an apr\\u00E8s la saison initialement pr\\u00E9vue.\"},{\"LanguageCode\":\"it\",\"Value\":\"Con questa sala, lo spazio assume una presenza diversa nell\\u2019offerta di Vulcania. Le presentazioni astronomiche e L\\u2019aventure volcano-sid\\u00E9rale collegano i fenomeni della Terra a quelli di altri mondi. L\\u2019edificio il cui tetto era stato al centro dell\\u2019intervento dei soccorsi diventa un luogo di proiezioni e divulgazione scientifica, aperto un anno dopo la stagione inizialmente prevista.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Met de nieuwe zaal krijgt de ruimte een andere plaats in Vulcania. Astronomische presentaties en L\\u2019aventure volcano-sid\\u00E9rale verbinden verschijnselen op aarde met andere werelden. Het gebouw waarvan het dak centraal stond bij de brandweerinzet, wordt zo een plek voor projecties en wetenschappelijke uitleg. Het ontvangt bezoekers een jaar na het oorspronkelijk geplande seizoen.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Dzi\\u0119ki temu obiektowi kosmos jest przedstawiany w Vulcanii w nowy spos\\u00F3b. Pokazy astronomiczne i L\\u2019aventure volcano-sid\\u00E9rale wi\\u0105\\u017C\\u0105 zjawiska ziemskie z innymi \\u015Bwiatami. Budynek, kt\\u00F3rego dach znajdowa\\u0142 si\\u0119 w centrum akcji ga\\u015Bniczej, staje si\\u0119 miejscem projekcji i popularyzacji nauki. Go\\u015Bcie mog\\u0105 wej\\u015B\\u0107 do niego rok po pierwotnie planowanym sezonie otwarcia.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Com esta sala, o espa\\u00E7o ganha uma presen\\u00E7a diferente na oferta de Vulcania. As apresenta\\u00E7\\u00F5es de astronomia e L\\u2019aventure volcano-sid\\u00E9rale relacionam os fen\\u00F3menos da Terra com os de outros mundos. O edif\\u00EDcio cujo telhado tinha concentrado a interven\\u00E7\\u00E3o dos bombeiros torna-se um lugar de proje\\u00E7\\u00F5es e divulga\\u00E7\\u00E3o cient\\u00EDfica, aberto um ano depois da temporada inicialmente prevista.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]}],\"Sources\":[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 public sur le chantier du plan\\u00E9tarium\",\"Url\":\"https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Lyon Capitale \\u2014 reportage, 30 mars 2023\",\"Url\":\"https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Radio Scoop \\u2014 incendie ma\\u00EEtris\\u00E9 au futur plan\\u00E9tarium, 10 f\\u00E9vrier 2022\",\"Url\":\"https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RSA Cosmos \\u2014 ouverture au public, 29 mars 2023\",\"Url\":\"https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html\",\"AccessedAt\":\"2026-11-15\"}],\"IsPublished\":false}"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:11:33.7169548Z",
+    "appliedAtUtc": "2026-11-15T20:11:33.7169556Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "88068879-1dd4-4ebf-b7b2-75f5488cc85b",
+        "entityKey": "vulcania-item-history-planetarium-fire-2022",
+        "displayName": "Un incendie reporte le projet de planétarium",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-planetarium-fire-2022"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "12128369-e7ee-4498-a97a-1bfa2a470b10"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2022"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "2"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Fire"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "9fbd4d6f8df44a9b800f5b71b056dcc6"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Ein Brand verzögert das Planetarium, en:A fire delays the planetarium project, es:Un incendio retrasa el proyecto del planetario, fr:Un incendie reporte le projet de planétarium, it:Un incendio ritarda il progetto del planetario, nl:Brand vertraagt het planetariumproject, pl:Pożar opóźnia projekt planetarium, pt:Um incêndio atrasa o projeto do planetário"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Am 10. Februar 2022 beschädigt ein Brand das noch im Bau befindliche Planetarium. Die Arbeiter werden evakuiert; Verletzte werden nicht gemeldet. Die für Mai geplante Eröffnung entfällt, während Vulcania die Saison in den übrigen Bereichen des Parks weiter vorbereitet., en:On 10 February 2022, a fire damages the planetarium while it is still under construction. Workers are evacuated and no injuries are reported. The planned May opening is abandoned, while Vulcania continues preparing the season in the park’s other areas., es:El 10 de febrero de 2022, un incendio daña el planetario todavía en obras. Los trabajadores son evacuados y no se notifican heridos. Se descarta la apertura prevista para mayo, mientras Vulcania sigue preparando la temporada en las demás zonas del parque., fr:Le 10 février 2022, un incendie endommage le planétarium encore en chantier. Les ouvriers sont évacués et aucun blessé n’est signalé. L’ouverture prévue pour mai est abandonnée, tandis que Vulcania maintient la préparation de sa saison dans les autres espaces du parc., it:Il 10 febbraio 2022 un incendio danneggia il planetario ancora in costruzione. Gli operai vengono evacuati e non si segnalano feriti. L’apertura prevista per maggio viene annullata, mentre Vulcania prosegue i preparativi della stagione nelle altre aree del parco., nl:Op 10 februari 2022 beschadigt een brand het planetarium in aanbouw. De werknemers worden geëvacueerd en er worden geen gewonden gemeld. De geplande opening in mei vervalt, terwijl Vulcania het seizoen in de overige delen van het park blijft voorbereiden., pl:10 lutego 2022 roku pożar uszkadza budowane planetarium. Pracownicy zostają ewakuowani i nie ma doniesień o rannych. Planowane na maj otwarcie zostaje odwołane, a Vulcania nadal przygotowuje sezon w pozostałych częściach parku., pt:A 10 de fevereiro de 2022, um incêndio danifica o planetário ainda em construção. Os trabalhadores são evacuados e não há feridos registados. A abertura prevista para maio é abandonada, enquanto Vulcania continua a preparar a temporada nas restantes áreas do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 public sur le chantier du plan\\u00E9tarium\",\"Url\":\"https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Radio Scoop \\u2014 incendie ma\\u00EEtris\\u00E9 au futur plan\\u00E9tarium, 10 f\\u00E9vrier 2022\",\"Url\":\"https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274\",\"AccessedAt\":\"2026-11-15\"}]"
+          },
+          {
+            "field": "article",
+            "oldValue": null,
+            "newValue": "{\"Slug\":null,\"Titles\":[{\"LanguageCode\":\"de\",\"Value\":\"Vulcanias Planetarium: vom Baustellenbrand zur Er\\u00F6ffnung\"},{\"LanguageCode\":\"en\",\"Value\":\"Vulcania\\u2019s planetarium: from a construction fire to opening day\"},{\"LanguageCode\":\"es\",\"Value\":\"El planetario de Vulcania, del incendio de las obras a la apertura\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le plan\\u00E9tarium de Vulcania, du chantier incendi\\u00E9 \\u00E0 l\\u2019ouverture\"},{\"LanguageCode\":\"it\",\"Value\":\"Il planetario di Vulcania, dall\\u2019incendio del cantiere all\\u2019apertura\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium van Vulcania: van bouwbrand tot opening\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium Vulcanii: od po\\u017Caru na budowie do otwarcia\"},{\"LanguageCode\":\"pt\",\"Value\":\"O planet\\u00E1rio de Vulcania, do inc\\u00EAndio nas obras \\u00E0 abertura\"}],\"Subtitles\":[{\"LanguageCode\":\"de\",\"Value\":\"Der Brand im Februar 2022 ver\\u00E4ndert den Zeitplan eines Projekts rund um das Weltall.\"},{\"LanguageCode\":\"en\",\"Value\":\"The February 2022 fire changes the timetable for a project devoted to space.\"},{\"LanguageCode\":\"es\",\"Value\":\"El incendio de febrero de 2022 altera el calendario de un proyecto dedicado al espacio.\"},{\"LanguageCode\":\"fr\",\"Value\":\"L\\u2019incendie de f\\u00E9vrier 2022 bouleverse le calendrier d\\u2019un projet consacr\\u00E9 \\u00E0 l\\u2019Espace.\"},{\"LanguageCode\":\"it\",\"Value\":\"L\\u2019incendio del febbraio 2022 cambia il calendario di un progetto dedicato allo spazio.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De brand van februari 2022 verandert de planning van een project over de ruimte.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Po\\u017Car w lutym 2022 roku zmienia harmonogram projektu po\\u015Bwi\\u0119conego kosmosowi.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O inc\\u00EAndio de fevereiro de 2022 altera o calend\\u00E1rio de um projeto dedicado ao espa\\u00E7o.\"}],\"Summaries\":[{\"LanguageCode\":\"de\",\"Value\":\"Das f\\u00FCr das zwanzigj\\u00E4hrige Parkjubil\\u00E4um vorgesehene Planetarium wird vor seiner Er\\u00F6ffnung von einem Brand getroffen. Im M\\u00E4rz 2023 erh\\u00E4lt die Astronomie schlie\\u00DFlich ihren neuen Platz in Vulcania.\"},{\"LanguageCode\":\"en\",\"Value\":\"Planned as part of the park\\u2019s twentieth anniversary, the planetarium suffers a fire before receiving visitors. Its eventual opening in March 2023 gives astronomy a new place at Vulcania.\"},{\"LanguageCode\":\"es\",\"Value\":\"Previsto entre las novedades del vig\\u00E9simo aniversario del parque, el planetario sufre un incendio antes de recibir visitantes. Su apertura en marzo de 2023 da finalmente un nuevo lugar a la astronom\\u00EDa en Vulcania.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Destin\\u00E9 \\u00E0 rejoindre les nouveaut\\u00E9s du vingti\\u00E8me anniversaire, le plan\\u00E9tarium subit un incendie avant d\\u2019accueillir son public. Son ouverture en mars 2023 donne finalement une place nouvelle \\u00E0 l\\u2019astronomie dans le parc.\"},{\"LanguageCode\":\"it\",\"Value\":\"Pensato per arricchire il ventesimo anniversario del parco, il planetario subisce un incendio prima di accogliere il pubblico. L\\u2019apertura nel marzo 2023 d\\u00E0 infine un nuovo spazio all\\u2019astronomia a Vulcania.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium zou deel uitmaken van de twintigste verjaardag van het park, maar wordt v\\u00F3\\u00F3r de opening getroffen door brand. In maart 2023 krijgt de sterrenkunde uiteindelijk haar nieuwe plek bij Vulcania.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium planowane na dwudziestolecie parku zostaje dotkni\\u0119te po\\u017Carem, zanim przyjmie pierwszych go\\u015Bci. Otwarcie w marcu 2023 roku daje astronomii nowe miejsce w Vulcanii.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Previsto entre as novidades do vig\\u00E9simo anivers\\u00E1rio do parque, o planet\\u00E1rio sofre um inc\\u00EAndio antes de receber visitantes. A abertura em mar\\u00E7o de 2023 d\\u00E1 finalmente um novo lugar \\u00E0 astronomia em Vulcania.\"}],\"MainImageId\":\"9fbd4d6f8df44a9b800f5b71b056dcc6\",\"Blocks\":[{\"Id\":\"db56ae895e574645a74466086a2f4f24\",\"Type\":0,\"SortOrder\":10,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Eine Baustelle f\\u00FCr das Jubil\\u00E4umsjahr\"},{\"LanguageCode\":\"en\",\"Value\":\"An anniversary project under construction\"},{\"LanguageCode\":\"es\",\"Value\":\"Unas obras para el aniversario\"},{\"LanguageCode\":\"fr\",\"Value\":\"Un chantier au c\\u0153ur de l\\u2019anniversaire\"},{\"LanguageCode\":\"it\",\"Value\":\"Un cantiere per l\\u2019anniversario\"},{\"LanguageCode\":\"nl\",\"Value\":\"Een bouwproject voor het jubileum\"},{\"LanguageCode\":\"pl\",\"Value\":\"Budowa na jubileuszowy rok\"},{\"LanguageCode\":\"pt\",\"Value\":\"Uma obra para o anivers\\u00E1rio\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"5d89f105336143eb85e9cc9f56aab37b\",\"Type\":1,\"SortOrder\":20,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Im Jahr 2022 bereitet Vulcania das zwanzigste Jubil\\u00E4um seiner Einweihung vor. Das k\\u00FCnftige Planetarium soll die Besch\\u00E4ftigung mit der Erde um den Blick in das Universum erg\\u00E4nzen. F\\u00FCr die neue Einrichtung ist eine Er\\u00F6ffnung im Mai vorgesehen, w\\u00E4hrend der \\u00FCbrige Park seine Saison bereits am 30. M\\u00E4rz beginnen soll.\"},{\"LanguageCode\":\"en\",\"Value\":\"In 2022, Vulcania is preparing to mark twenty years since its inauguration. The planned planetarium will extend the exploration of Earth into the wider Universe. It is expected to welcome visitors in May, during a season that the rest of the park is scheduled to begin on 30 March.\"},{\"LanguageCode\":\"es\",\"Value\":\"En 2022, Vulcania prepara la celebraci\\u00F3n de los veinte a\\u00F1os de su inauguraci\\u00F3n. El futuro planetario debe ampliar el descubrimiento de la Tierra con una mirada hacia el Universo. Su apertura est\\u00E1 anunciada para mayo, durante una temporada que el resto del parque tiene previsto iniciar ya el 30 de marzo.\"},{\"LanguageCode\":\"fr\",\"Value\":\"En 2022, Vulcania pr\\u00E9pare les vingt ans de son inauguration. Le futur plan\\u00E9tarium doit enrichir la d\\u00E9couverte de la Terre par une ouverture sur l\\u2019Univers. Son arriv\\u00E9e est annonc\\u00E9e pour le mois de mai, au cours d\\u2019une saison que le reste du parc pr\\u00E9voit de commencer d\\u00E8s le 30 mars.\"},{\"LanguageCode\":\"it\",\"Value\":\"Nel 2022 Vulcania prepara il ventesimo anniversario della propria inaugurazione. Il futuro planetario deve ampliare la scoperta della Terra con uno sguardo sull\\u2019Universo. La sua apertura \\u00E8 annunciata per maggio, durante una stagione che il resto del parco prevede di iniziare gi\\u00E0 il 30 marzo, con le altre attrazioni.\"},{\"LanguageCode\":\"nl\",\"Value\":\"In 2022 bereidt Vulcania de viering voor van twintig jaar sinds zijn inauguratie. Het toekomstige planetarium moet de verkenning van de aarde uitbreiden naar het heelal. De opening van de nieuwe voorziening staat gepland voor mei, in een seizoen dat de rest van het park al op 30 maart wil beginnen.\"},{\"LanguageCode\":\"pl\",\"Value\":\"W 2022 roku Vulcania przygotowuje obchody dwudziestej rocznicy swojej inauguracji. Przysz\\u0142e planetarium ma rozszerzy\\u0107 poznawanie Ziemi o spojrzenie na Wszech\\u015Bwiat. Nowy obiekt ma zosta\\u0107 udost\\u0119pniony w maju, podczas sezonu, kt\\u00F3ry pozosta\\u0142a cz\\u0119\\u015B\\u0107 parku planuje rozpocz\\u0105\\u0107 ju\\u017C 30 marca. Planetarium jest wi\\u0119c wa\\u017Cnym elementem programu jubileuszowego, ale nie warunkiem rozpocz\\u0119cia sezonu.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Em 2022, Vulcania prepara a celebra\\u00E7\\u00E3o dos vinte anos da sua inaugura\\u00E7\\u00E3o. O futuro planet\\u00E1rio dever\\u00E1 alargar a descoberta da Terra com um olhar sobre o Universo. A abertura da nova instala\\u00E7\\u00E3o est\\u00E1 anunciada para maio, durante uma temporada que o restante parque prev\\u00EA come\\u00E7ar j\\u00E1 a 30 de mar\\u00E7o.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"e08f181758c944e9b2bcab648034e49e\",\"Type\":1,\"SortOrder\":30,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Am 10. Februar, w\\u00E4hrend der Winterpause ohne Besucher im Park, bricht im noch nicht fertiggestellten Geb\\u00E4ude ein Feuer aus. Die Arbeiter auf der Baustelle werden evakuiert. Vulcania meldet in seiner \\u00F6ffentlichen Mitteilung keine Verletzten. Auch der aktualisierte Bericht von Radio Scoop am Nachmittag nennt einen Einsatz, bei dem niemand verletzt wurde.\"},{\"LanguageCode\":\"en\",\"Value\":\"On 10 February, while the park is closed to visitors for winter, a fire breaks out inside the unfinished building. Workers on the construction site are evacuated. Vulcania\\u2019s public statement reports no injuries, and the update carried by Radio Scoop later that afternoon also records an intervention without injuries.\"},{\"LanguageCode\":\"es\",\"Value\":\"El 10 de febrero, mientras el recinto permanece cerrado al p\\u00FAblico durante el invierno, se declara un incendio en el edificio a\\u00FAn sin terminar. Los trabajadores presentes en las obras son evacuados. El comunicado de Vulcania no informa de heridos; la actualizaci\\u00F3n difundida por Radio Scoop esa misma tarde tampoco registra personas heridas.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le 10 f\\u00E9vrier, alors que le site est ferm\\u00E9 aux visiteurs pour l\\u2019hiver, le feu se d\\u00E9clare dans le b\\u00E2timent encore en construction. Les ouvriers pr\\u00E9sents sur le chantier sont \\u00E9vacu\\u00E9s. Le communiqu\\u00E9 diffus\\u00E9 par Vulcania ne signale aucun bless\\u00E9 ; le bilan relay\\u00E9 dans l\\u2019apr\\u00E8s-midi par Radio Scoop reste lui aussi sans bless\\u00E9.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il 10 febbraio, mentre il parco \\u00E8 chiuso ai visitatori per l\\u2019inverno, scoppia un incendio nell\\u2019edificio ancora incompiuto. Gli operai presenti nel cantiere vengono evacuati. Il comunicato pubblico di Vulcania non segnala feriti; anche l\\u2019aggiornamento diffuso da Radio Scoop nel pomeriggio riferisce che l\\u2019intervento non ha registrato persone ferite.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Op 10 februari, terwijl het park voor de winter gesloten is voor bezoekers, breekt brand uit in het onvoltooide gebouw. De werknemers op de bouwplaats worden ge\\u00EBvacueerd. Vulcania meldt in zijn openbare verklaring geen gewonden. Ook het bijgewerkte verslag dat Radio Scoop later die middag publiceert, vermeldt dat niemand gewond is geraakt.\"},{\"LanguageCode\":\"pl\",\"Value\":\"10 lutego, gdy park jest zamkni\\u0119ty dla odwiedzaj\\u0105cych na zim\\u0119, w niewyko\\u0144czonym budynku wybucha po\\u017Car. Pracownicy znajduj\\u0105cy si\\u0119 na placu budowy zostaj\\u0105 ewakuowani. W publicznym komunikacie Vulcania informuje, \\u017Ce nie ma rannych. Aktualizacja opublikowana przez Radio Scoop p\\u00F3\\u017Aniej tego samego popo\\u0142udnia r\\u00F3wnie\\u017C opisuje akcj\\u0119 bez os\\u00F3b poszkodowanych.\"},{\"LanguageCode\":\"pt\",\"Value\":\"A 10 de fevereiro, enquanto o parque est\\u00E1 encerrado aos visitantes durante o inverno, deflagra um inc\\u00EAndio no edif\\u00EDcio ainda por concluir. Os trabalhadores presentes nas obras s\\u00E3o evacuados. O comunicado p\\u00FAblico de Vulcania n\\u00E3o refere feridos; a atualiza\\u00E7\\u00E3o divulgada pela Radio Scoop nessa mesma tarde tamb\\u00E9m relata uma interven\\u00E7\\u00E3o sem pessoas feridas.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"d050a6e729c345de8319fea5baa82a10\",\"Type\":0,\"SortOrder\":40,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Ein besch\\u00E4digtes Dach ver\\u00E4ndert die Planung\"},{\"LanguageCode\":\"en\",\"Value\":\"A damaged roof and a changed timetable\"},{\"LanguageCode\":\"es\",\"Value\":\"El tejado da\\u00F1ado obliga a cambiar los plazos\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le toit atteint, une saison \\u00E0 r\\u00E9organiser\"},{\"LanguageCode\":\"it\",\"Value\":\"Il tetto danneggiato e un calendario da cambiare\"},{\"LanguageCode\":\"nl\",\"Value\":\"Een beschadigd dak en een andere planning\"},{\"LanguageCode\":\"pl\",\"Value\":\"Uszkodzony dach zmienia plany\"},{\"LanguageCode\":\"pt\",\"Value\":\"O telhado danificado obriga a mudar os prazos\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"85a42834838948159a05366afa9c66dd\",\"Type\":1,\"SortOrder\":50,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Die Flammen erreichen das Dach und schw\\u00E4chen die Geb\\u00E4udestruktur. Wegen der Einsturzgefahr m\\u00FCssen die Feuerwehrleute von au\\u00DFen arbeiten. Auf einem vom Park ver\\u00F6ffentlichten Foto ist ihr Einsatz in einem Hubkorb \\u00FCber dem rauchenden Dach zu sehen. Am Nachmittag ist der Brand unter Kontrolle, doch eine Er\\u00F6ffnung des Planetariums im Jahr 2022 ist nicht mehr m\\u00F6glich.\"},{\"LanguageCode\":\"en\",\"Value\":\"Flames reach the roof and weaken the structure. The risk of collapse requires firefighters to work from outside the building. A photograph released by the park shows the intervention from an elevated platform above the smoking roof. The fire is brought under control that afternoon, but opening the planetarium in 2022 is no longer possible.\"},{\"LanguageCode\":\"es\",\"Value\":\"Las llamas alcanzan el tejado y debilitan la estructura. El riesgo de derrumbe obliga a los bomberos a trabajar desde el exterior del edificio. Una fotograf\\u00EDa publicada por el parque muestra su intervenci\\u00F3n desde una plataforma elevada sobre el tejado humeante. El fuego queda controlado por la tarde, pero el planetario ya no podr\\u00E1 abrir en 2022.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Les flammes gagnent la toiture et fragilisent la structure. Le risque d\\u2019effondrement conduit les pompiers \\u00E0 travailler depuis l\\u2019ext\\u00E9rieur du b\\u00E2timent. Une photographie publi\\u00E9e par le parc montre leur intervention au-dessus du toit fumant, depuis une nacelle \\u00E9lev\\u00E9e. L\\u2019incendie est ma\\u00EEtris\\u00E9 dans l\\u2019apr\\u00E8s-midi, mais l\\u2019ouverture du plan\\u00E9tarium en 2022 n\\u2019est plus envisageable.\"},{\"LanguageCode\":\"it\",\"Value\":\"Le fiamme raggiungono il tetto e indeboliscono la struttura. Il rischio di crollo costringe i vigili del fuoco a intervenire dall\\u2019esterno dell\\u2019edificio. Una fotografia pubblicata dal parco li mostra su una piattaforma aerea sopra il tetto fumante. L\\u2019incendio viene controllato nel pomeriggio, ma l\\u2019apertura del planetario nel 2022 non \\u00E8 pi\\u00F9 possibile.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De vlammen bereiken het dak en verzwakken de constructie. Door het instortingsgevaar moeten brandweerlieden van buiten het gebouw werken. Een door het park gepubliceerde foto toont hun inzet vanuit een hoogwerker boven het rokende dak. De brand is die middag onder controle, maar een opening van het planetarium in 2022 is niet meer mogelijk.\"},{\"LanguageCode\":\"pl\",\"Value\":\"P\\u0142omienie docieraj\\u0105 do dachu i os\\u0142abiaj\\u0105 konstrukcj\\u0119. Ze wzgl\\u0119du na ryzyko zawalenia stra\\u017Cacy musz\\u0105 prowadzi\\u0107 dzia\\u0142ania z zewn\\u0105trz budynku. Na zdj\\u0119ciu udost\\u0119pnionym przez park wida\\u0107 ich prac\\u0119 z kosza podno\\u015Bnika nad dymi\\u0105cym dachem. Po po\\u0142udniu po\\u017Car jest opanowany, ale otwarcie planetarium jeszcze w 2022 roku przestaje by\\u0107 mo\\u017Cliwe.\"},{\"LanguageCode\":\"pt\",\"Value\":\"As chamas atingem o telhado e enfraquecem a estrutura. O risco de desabamento obriga os bombeiros a trabalhar a partir do exterior do edif\\u00EDcio. Uma fotografia publicada pelo parque mostra a interven\\u00E7\\u00E3o numa plataforma elevada sobre o telhado fumegante. O inc\\u00EAndio \\u00E9 dominado durante a tarde, mas a abertura do planet\\u00E1rio em 2022 deixa de ser poss\\u00EDvel.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"834163976560438b98c654314b15e5a1\",\"Type\":1,\"SortOrder\":60,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Betroffen ist die Baustelle einer neuen Einrichtung, kein bereits f\\u00FCr Besucher ge\\u00F6ffnetes Angebot. Vulcania erkl\\u00E4rt, dass die \\u00FCbrigen Anlagen unber\\u00FChrt geblieben sind, und h\\u00E4lt am angek\\u00FCndigten Saisonstart fest. Das Parkjubil\\u00E4um und die Fertigstellung des Planetariums haben nun unterschiedliche Zeitpl\\u00E4ne: Die Vorbereitungen auf die Parksaison gehen weiter, w\\u00E4hrend das neue Geb\\u00E4ude noch auf seine Vollendung wartet.\"},{\"LanguageCode\":\"en\",\"Value\":\"The fire affects a new construction site rather than an attraction already welcoming guests. Vulcania states that the remaining park installations have not been hit and retains its announced seasonal reopening. The anniversary celebrations and completion of the planetarium now follow separate timetables: preparations for the park season continue while the new building remains unfinished.\"},{\"LanguageCode\":\"es\",\"Value\":\"El incendio afecta a las obras de una novedad, no a una atracci\\u00F3n que ya reciba visitantes. Vulcania precisa que las dem\\u00E1s instalaciones no han sufrido da\\u00F1os y mantiene el anuncio de su reapertura estacional. La celebraci\\u00F3n del aniversario y la finalizaci\\u00F3n del planetario pasan a tener calendarios distintos: el parque prepara la temporada y el nuevo edificio sigue pendiente.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Ce sinistre touche le chantier d\\u2019une nouveaut\\u00E9, pas un espace d\\u00E9j\\u00E0 ouvert aux visiteurs. Vulcania pr\\u00E9cise que les autres installations ne sont pas atteintes et maintient l\\u2019annonce de leur r\\u00E9ouverture saisonni\\u00E8re. La c\\u00E9l\\u00E9bration de l\\u2019anniversaire et l\\u2019ach\\u00E8vement du plan\\u00E9tarium suivent d\\u00E9sormais deux calendriers distincts : le parc pr\\u00E9pare sa saison, tandis que le nouveau b\\u00E2timent reste attendu.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il sinistro interessa il cantiere di una novit\\u00E0, non un\\u2019attrazione gi\\u00E0 accessibile al pubblico. Vulcania precisa che le altre installazioni non sono state colpite e conferma la riapertura stagionale annunciata. Le celebrazioni dell\\u2019anniversario e il completamento del planetario seguono ormai due calendari distinti: il parco prepara la stagione, mentre il nuovo edificio resta da terminare.\"},{\"LanguageCode\":\"nl\",\"Value\":\"De brand treft de bouwplaats van een nieuwe voorziening, geen attractie die al bezoekers ontvangt. Vulcania verklaart dat de overige installaties niet zijn geraakt en houdt vast aan de aangekondigde seizoensopening. Het parkjubileum en de voltooiing van het planetarium volgen voortaan verschillende planningen: het park bereidt het seizoen voor, terwijl het nieuwe gebouw nog niet af is.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Ogie\\u0144 dotyka placu budowy nowego obiektu, a nie atrakcji przyjmuj\\u0105cej ju\\u017C go\\u015Bci. Vulcania podkre\\u015Bla, \\u017Ce pozosta\\u0142e instalacje nie zosta\\u0142y uszkodzone, i podtrzymuje zapowied\\u017A sezonowego otwarcia. Jubileusz parku oraz uko\\u0144czenie planetarium maj\\u0105 odt\\u0105d osobne harmonogramy: trwaj\\u0105 przygotowania do sezonu w parku, podczas gdy nowy budynek wci\\u0105\\u017C czeka na zako\\u0144czenie prac.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O inc\\u00EAndio afeta as obras de uma novidade, n\\u00E3o uma atra\\u00E7\\u00E3o que j\\u00E1 receba visitantes. Vulcania esclarece que as restantes instala\\u00E7\\u00F5es n\\u00E3o foram atingidas e mant\\u00E9m o an\\u00FAncio da reabertura sazonal. As celebra\\u00E7\\u00F5es do anivers\\u00E1rio e a conclus\\u00E3o do planet\\u00E1rio passam a seguir calend\\u00E1rios diferentes: o parque prepara a temporada, enquanto o novo edif\\u00EDcio continua por terminar.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"ee103d53dd3d4653b06cfe43a39a0b49\",\"Type\":0,\"SortOrder\":70,\"HeadingLevel\":2,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Der Himmel \\u00F6ffnet sich 2023 f\\u00FCr Besucher\"},{\"LanguageCode\":\"en\",\"Value\":\"Opening the dome to visitors in 2023\"},{\"LanguageCode\":\"es\",\"Value\":\"La c\\u00FApula recibe visitantes en 2023\"},{\"LanguageCode\":\"fr\",\"Value\":\"Un ciel accessible au public en 2023\"},{\"LanguageCode\":\"it\",\"Value\":\"La cupola accoglie il pubblico nel 2023\"},{\"LanguageCode\":\"nl\",\"Value\":\"De koepel ontvangt publiek in 2023\"},{\"LanguageCode\":\"pl\",\"Value\":\"Kopu\\u0142a otwarta dla go\\u015Bci w 2023 roku\"},{\"LanguageCode\":\"pt\",\"Value\":\"A c\\u00FApula recebe o p\\u00FAblico em 2023\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"b5edf9b6a20849d4a3cbf35bbb56fc16\",\"Type\":1,\"SortOrder\":80,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Am 29. M\\u00E4rz 2023 empf\\u00E4ngt das Planetarium schlie\\u00DFlich sein Publikum. Eine Mitteilung des Ausstatters RSA Cosmos und der am folgenden Tag erschienene Bericht von Lyon Capitale best\\u00E4tigen diesen Er\\u00F6ffnungstag. Fotos von der Pressevorstellung zeigen bereits Bilder der Sonne und vulkanischer Landschaften, die unter der Kuppel auf die Projektionsfl\\u00E4che geworfen werden.\"},{\"LanguageCode\":\"en\",\"Value\":\"The planetarium finally welcomes the public on 29 March 2023. An announcement by equipment supplier RSA Cosmos and Lyon Capitale\\u2019s report published the next day agree on that opening date. Photographs from the press presentation already show images of the Sun and volcanic landscapes projected inside the dome.\"},{\"LanguageCode\":\"es\",\"Value\":\"El planetario abre finalmente al p\\u00FAblico el 29 de marzo de 2023. El anuncio del proveedor RSA Cosmos y el reportaje de Lyon Capitale publicado al d\\u00EDa siguiente coinciden en esa fecha. Las fotograf\\u00EDas de la presentaci\\u00F3n a la prensa muestran ya im\\u00E1genes del Sol y paisajes volc\\u00E1nicos proyectados bajo la c\\u00FApula.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Le plan\\u00E9tarium re\\u00E7oit finalement ses visiteurs le 29 mars 2023. L\\u2019annonce de RSA Cosmos, qui \\u00E9quipe la salle, et le reportage de Lyon Capitale publi\\u00E9 le lendemain situent cette ouverture \\u00E0 la m\\u00EAme date. Les photographies de la pr\\u00E9sentation \\u00E0 la presse montrent d\\u00E9j\\u00E0 des images du Soleil et des paysages volcaniques projet\\u00E9s sous le d\\u00F4me.\"},{\"LanguageCode\":\"it\",\"Value\":\"Il planetario riceve infine i visitatori il 29 marzo 2023. L\\u2019annuncio del fornitore RSA Cosmos e il reportage di Lyon Capitale pubblicato il giorno successivo indicano la stessa data di apertura. Le fotografie della presentazione alla stampa mostrano gi\\u00E0 immagini del Sole e paesaggi vulcanici proiettati all\\u2019interno della cupola.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Het planetarium opent uiteindelijk op 29 maart 2023 voor bezoekers. Een bericht van leverancier RSA Cosmos en het verslag van Lyon Capitale van de volgende dag bevestigen dezelfde openingsdatum. Foto\\u2019s van de perspresentatie tonen al beelden van de zon en vulkanische landschappen die onder de koepel worden geprojecteerd.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Planetarium przyjmuje publiczno\\u015B\\u0107 29 marca 2023 roku. Komunikat dostawcy wyposa\\u017Cenia RSA Cosmos i reporta\\u017C Lyon Capitale z nast\\u0119pnego dnia wskazuj\\u0105 t\\u0119 sam\\u0105 dat\\u0119 otwarcia. Zdj\\u0119cia z prezentacji dla prasy pokazuj\\u0105 ju\\u017C obrazy S\\u0142o\\u0144ca oraz krajobraz\\u00F3w wulkanicznych wy\\u015Bwietlane pod kopu\\u0142\\u0105 nowej sali, kt\\u00F3ra staje si\\u0119 cz\\u0119\\u015Bci\\u0105 oferty parku.\"},{\"LanguageCode\":\"pt\",\"Value\":\"O planet\\u00E1rio acolhe finalmente os visitantes a 29 de mar\\u00E7o de 2023. O an\\u00FAncio do fornecedor RSA Cosmos e a reportagem do Lyon Capitale publicada no dia seguinte indicam a mesma data de abertura. As fotografias da apresenta\\u00E7\\u00E3o \\u00E0 imprensa mostram j\\u00E1 imagens do Sol e paisagens vulc\\u00E2nicas projetadas sob a c\\u00FApula.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]},{\"Id\":\"5d2b1ffd49bb41179a97ad6599e8290e\",\"Type\":1,\"SortOrder\":90,\"HeadingLevel\":null,\"Texts\":[{\"LanguageCode\":\"de\",\"Value\":\"Mit dem neuen Saal wird das Weltall in Vulcania auf andere Weise erfahrbar. Astronomische Vorf\\u00FChrungen und L\\u2019aventure volcano-sid\\u00E9rale verbinden Erscheinungen auf der Erde mit anderen Welten. Das Geb\\u00E4ude, dessen Dach beim Feuerwehreinsatz im Mittelpunkt stand, wird zum Ort f\\u00FCr Projektionen und wissenschaftliche Vermittlung. Besucher k\\u00F6nnen es ein Jahr nach der urspr\\u00FCnglich vorgesehenen Saison betreten.\"},{\"LanguageCode\":\"en\",\"Value\":\"The new venue gives space exploration a different presence at Vulcania. Astronomy presentations and L\\u2019aventure volcano-sid\\u00E9rale connect phenomena on Earth with other worlds. The building whose roof had been the focus of the firefighting operation becomes a setting for projections and science presentations, welcoming visitors a year after the originally planned season.\"},{\"LanguageCode\":\"es\",\"Value\":\"Con esta sala, el espacio adquiere una presencia distinta en Vulcania. Las presentaciones astron\\u00F3micas y L\\u2019aventure volcano-sid\\u00E9rale conectan los fen\\u00F3menos de la Tierra con los de otros mundos. El edificio cuyo tejado hab\\u00EDa concentrado la intervenci\\u00F3n de los bomberos se convierte en un lugar de proyecciones y divulgaci\\u00F3n cient\\u00EDfica, abierto un a\\u00F1o despu\\u00E9s de la temporada inicialmente prevista.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Avec cette salle, l\\u2019Espace prend une forme diff\\u00E9rente dans l\\u2019offre de Vulcania. Les pr\\u00E9sentations astronomiques et L\\u2019aventure volcano-sid\\u00E9rale relient les ph\\u00E9nom\\u00E8nes de notre plan\\u00E8te \\u00E0 ceux d\\u2019autres mondes. Le b\\u00E2timent dont la toiture avait concentr\\u00E9 l\\u2019intervention des secours devient ainsi un lieu de projection et de m\\u00E9diation scientifique, ouvert un an apr\\u00E8s la saison initialement pr\\u00E9vue.\"},{\"LanguageCode\":\"it\",\"Value\":\"Con questa sala, lo spazio assume una presenza diversa nell\\u2019offerta di Vulcania. Le presentazioni astronomiche e L\\u2019aventure volcano-sid\\u00E9rale collegano i fenomeni della Terra a quelli di altri mondi. L\\u2019edificio il cui tetto era stato al centro dell\\u2019intervento dei soccorsi diventa un luogo di proiezioni e divulgazione scientifica, aperto un anno dopo la stagione inizialmente prevista.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Met de nieuwe zaal krijgt de ruimte een andere plaats in Vulcania. Astronomische presentaties en L\\u2019aventure volcano-sid\\u00E9rale verbinden verschijnselen op aarde met andere werelden. Het gebouw waarvan het dak centraal stond bij de brandweerinzet, wordt zo een plek voor projecties en wetenschappelijke uitleg. Het ontvangt bezoekers een jaar na het oorspronkelijk geplande seizoen.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Dzi\\u0119ki temu obiektowi kosmos jest przedstawiany w Vulcanii w nowy spos\\u00F3b. Pokazy astronomiczne i L\\u2019aventure volcano-sid\\u00E9rale wi\\u0105\\u017C\\u0105 zjawiska ziemskie z innymi \\u015Bwiatami. Budynek, kt\\u00F3rego dach znajdowa\\u0142 si\\u0119 w centrum akcji ga\\u015Bniczej, staje si\\u0119 miejscem projekcji i popularyzacji nauki. Go\\u015Bcie mog\\u0105 wej\\u015B\\u0107 do niego rok po pierwotnie planowanym sezonie otwarcia.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Com esta sala, o espa\\u00E7o ganha uma presen\\u00E7a diferente na oferta de Vulcania. As apresenta\\u00E7\\u00F5es de astronomia e L\\u2019aventure volcano-sid\\u00E9rale relacionam os fen\\u00F3menos da Terra com os de outros mundos. O edif\\u00EDcio cujo telhado tinha concentrado a interven\\u00E7\\u00E3o dos bombeiros torna-se um lugar de proje\\u00E7\\u00F5es e divulga\\u00E7\\u00E3o cient\\u00EDfica, aberto um ano depois da temporada inicialmente prevista.\"}],\"ImageId\":null,\"ImageIds\":[],\"Captions\":[]}],\"Sources\":[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 public sur le chantier du plan\\u00E9tarium\",\"Url\":\"https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Lyon Capitale \\u2014 reportage, 30 mars 2023\",\"Url\":\"https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Radio Scoop \\u2014 incendie ma\\u00EEtris\\u00E9 au futur plan\\u00E9tarium, 10 f\\u00E9vrier 2022\",\"Url\":\"https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"RSA Cosmos \\u2014 ouverture au public, 29 mars 2023\",\"Url\":\"https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html\",\"AccessedAt\":\"2026-11-15\"}],\"IsPublished\":false}"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-item-history-planetarium-fire-2022",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "itemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "parkItemId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2022,
+      "month": 2,
+      "day": 10,
+      "datePrecision": "Day",
+      "eventType": "Fire",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Un incendie reporte le projet de planétarium"
+        },
+        {
+          "languageCode": "en",
+          "value": "A fire delays the planetarium project"
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Brand verzögert das Planetarium"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Brand vertraagt het planetariumproject"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un incendio ritarda il progetto del planetario"
+        },
+        {
+          "languageCode": "es",
+          "value": "Un incendio retrasa el proyecto del planetario"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Pożar opóźnia projekt planetarium"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um incêndio atrasa o projeto do planetário"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le 10 février 2022, un incendie endommage le planétarium encore en chantier. Les ouvriers sont évacués et aucun blessé n’est signalé. L’ouverture prévue pour mai est abandonnée, tandis que Vulcania maintient la préparation de sa saison dans les autres espaces du parc."
+        },
+        {
+          "languageCode": "en",
+          "value": "On 10 February 2022, a fire damages the planetarium while it is still under construction. Workers are evacuated and no injuries are reported. The planned May opening is abandoned, while Vulcania continues preparing the season in the park’s other areas."
+        },
+        {
+          "languageCode": "de",
+          "value": "Am 10. Februar 2022 beschädigt ein Brand das noch im Bau befindliche Planetarium. Die Arbeiter werden evakuiert; Verletzte werden nicht gemeldet. Die für Mai geplante Eröffnung entfällt, während Vulcania die Saison in den übrigen Bereichen des Parks weiter vorbereitet."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Op 10 februari 2022 beschadigt een brand het planetarium in aanbouw. De werknemers worden geëvacueerd en er worden geen gewonden gemeld. De geplande opening in mei vervalt, terwijl Vulcania het seizoen in de overige delen van het park blijft voorbereiden."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il 10 febbraio 2022 un incendio danneggia il planetario ancora in costruzione. Gli operai vengono evacuati e non si segnalano feriti. L’apertura prevista per maggio viene annullata, mentre Vulcania prosegue i preparativi della stagione nelle altre aree del parco."
+        },
+        {
+          "languageCode": "es",
+          "value": "El 10 de febrero de 2022, un incendio daña el planetario todavía en obras. Los trabajadores son evacuados y no se notifican heridos. Se descarta la apertura prevista para mayo, mientras Vulcania sigue preparando la temporada en las demás zonas del parque."
+        },
+        {
+          "languageCode": "pl",
+          "value": "10 lutego 2022 roku pożar uszkadza budowane planetarium. Pracownicy zostają ewakuowani i nie ma doniesień o rannych. Planowane na maj otwarcie zostaje odwołane, a Vulcania nadal przygotowuje sezon w pozostałych częściach parku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A 10 de fevereiro de 2022, um incêndio danifica o planetário ainda em construção. Os trabalhadores são evacuados e não há feridos registados. A abertura prevista para maio é abandonada, enquanto Vulcania continua a preparar a temporada nas restantes áreas do parque."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Radio Scoop — incendie maîtrisé au futur planétarium, 10 février 2022",
+          "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — communiqué public sur le chantier du planétarium",
+          "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "article": {
+        "slug": null,
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Le planétarium de Vulcania, du chantier incendié à l’ouverture"
+          },
+          {
+            "languageCode": "en",
+            "value": "Vulcania’s planetarium: from a construction fire to opening day"
+          },
+          {
+            "languageCode": "de",
+            "value": "Vulcanias Planetarium: vom Baustellenbrand zur Eröffnung"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het planetarium van Vulcania: van bouwbrand tot opening"
+          },
+          {
+            "languageCode": "it",
+            "value": "Il planetario di Vulcania, dall’incendio del cantiere all’apertura"
+          },
+          {
+            "languageCode": "es",
+            "value": "El planetario de Vulcania, del incendio de las obras a la apertura"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Planetarium Vulcanii: od pożaru na budowie do otwarcia"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O planetário de Vulcania, do incêndio nas obras à abertura"
+          }
+        ],
+        "subtitles": [
+          {
+            "languageCode": "fr",
+            "value": "L’incendie de février 2022 bouleverse le calendrier d’un projet consacré à l’Espace."
+          },
+          {
+            "languageCode": "en",
+            "value": "The February 2022 fire changes the timetable for a project devoted to space."
+          },
+          {
+            "languageCode": "de",
+            "value": "Der Brand im Februar 2022 verändert den Zeitplan eines Projekts rund um das Weltall."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De brand van februari 2022 verandert de planning van een project over de ruimte."
+          },
+          {
+            "languageCode": "it",
+            "value": "L’incendio del febbraio 2022 cambia il calendario di un progetto dedicato allo spazio."
+          },
+          {
+            "languageCode": "es",
+            "value": "El incendio de febrero de 2022 altera el calendario de un proyecto dedicado al espacio."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Pożar w lutym 2022 roku zmienia harmonogram projektu poświęconego kosmosowi."
+          },
+          {
+            "languageCode": "pt",
+            "value": "O incêndio de fevereiro de 2022 altera o calendário de um projeto dedicado ao espaço."
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Destiné à rejoindre les nouveautés du vingtième anniversaire, le planétarium subit un incendie avant d’accueillir son public. Son ouverture en mars 2023 donne finalement une place nouvelle à l’astronomie dans le parc."
+          },
+          {
+            "languageCode": "en",
+            "value": "Planned as part of the park’s twentieth anniversary, the planetarium suffers a fire before receiving visitors. Its eventual opening in March 2023 gives astronomy a new place at Vulcania."
+          },
+          {
+            "languageCode": "de",
+            "value": "Das für das zwanzigjährige Parkjubiläum vorgesehene Planetarium wird vor seiner Eröffnung von einem Brand getroffen. Im März 2023 erhält die Astronomie schließlich ihren neuen Platz in Vulcania."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het planetarium zou deel uitmaken van de twintigste verjaardag van het park, maar wordt vóór de opening getroffen door brand. In maart 2023 krijgt de sterrenkunde uiteindelijk haar nieuwe plek bij Vulcania."
+          },
+          {
+            "languageCode": "it",
+            "value": "Pensato per arricchire il ventesimo anniversario del parco, il planetario subisce un incendio prima di accogliere il pubblico. L’apertura nel marzo 2023 dà infine un nuovo spazio all’astronomia a Vulcania."
+          },
+          {
+            "languageCode": "es",
+            "value": "Previsto entre las novedades del vigésimo aniversario del parque, el planetario sufre un incendio antes de recibir visitantes. Su apertura en marzo de 2023 da finalmente un nuevo lugar a la astronomía en Vulcania."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Planetarium planowane na dwudziestolecie parku zostaje dotknięte pożarem, zanim przyjmie pierwszych gości. Otwarcie w marcu 2023 roku daje astronomii nowe miejsce w Vulcanii."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Previsto entre as novidades do vigésimo aniversário do parque, o planetário sofre um incêndio antes de receber visitantes. A abertura em março de 2023 dá finalmente um novo lugar à astronomia em Vulcania."
+          }
+        ],
+        "mainImageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+        "blocks": [
+          {
+            "id": "db56ae895e574645a74466086a2f4f24",
+            "type": "Heading",
+            "sortOrder": 10,
+            "headingLevel": 2,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Un chantier au cœur de l’anniversaire"
+              },
+              {
+                "languageCode": "en",
+                "value": "An anniversary project under construction"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine Baustelle für das Jubiläumsjahr"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een bouwproject voor het jubileum"
+              },
+              {
+                "languageCode": "it",
+                "value": "Un cantiere per l’anniversario"
+              },
+              {
+                "languageCode": "es",
+                "value": "Unas obras para el aniversario"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Budowa na jubileuszowy rok"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma obra para o aniversário"
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "5d89f105336143eb85e9cc9f56aab37b",
+            "type": "Paragraph",
+            "sortOrder": 20,
+            "headingLevel": null,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "En 2022, Vulcania prépare les vingt ans de son inauguration. Le futur planétarium doit enrichir la découverte de la Terre par une ouverture sur l’Univers. Son arrivée est annoncée pour le mois de mai, au cours d’une saison que le reste du parc prévoit de commencer dès le 30 mars."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2022, Vulcania is preparing to mark twenty years since its inauguration. The planned planetarium will extend the exploration of Earth into the wider Universe. It is expected to welcome visitors in May, during a season that the rest of the park is scheduled to begin on 30 March."
+              },
+              {
+                "languageCode": "de",
+                "value": "Im Jahr 2022 bereitet Vulcania das zwanzigste Jubiläum seiner Einweihung vor. Das künftige Planetarium soll die Beschäftigung mit der Erde um den Blick in das Universum ergänzen. Für die neue Einrichtung ist eine Eröffnung im Mai vorgesehen, während der übrige Park seine Saison bereits am 30. März beginnen soll."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2022 bereidt Vulcania de viering voor van twintig jaar sinds zijn inauguratie. Het toekomstige planetarium moet de verkenning van de aarde uitbreiden naar het heelal. De opening van de nieuwe voorziening staat gepland voor mei, in een seizoen dat de rest van het park al op 30 maart wil beginnen."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2022 Vulcania prepara il ventesimo anniversario della propria inaugurazione. Il futuro planetario deve ampliare la scoperta della Terra con uno sguardo sull’Universo. La sua apertura è annunciata per maggio, durante una stagione che il resto del parco prevede di iniziare già il 30 marzo, con le altre attrazioni."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2022, Vulcania prepara la celebración de los veinte años de su inauguración. El futuro planetario debe ampliar el descubrimiento de la Tierra con una mirada hacia el Universo. Su apertura está anunciada para mayo, durante una temporada que el resto del parque tiene previsto iniciar ya el 30 de marzo."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2022 roku Vulcania przygotowuje obchody dwudziestej rocznicy swojej inauguracji. Przyszłe planetarium ma rozszerzyć poznawanie Ziemi o spojrzenie na Wszechświat. Nowy obiekt ma zostać udostępniony w maju, podczas sezonu, który pozostała część parku planuje rozpocząć już 30 marca. Planetarium jest więc ważnym elementem programu jubileuszowego, ale nie warunkiem rozpoczęcia sezonu."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2022, Vulcania prepara a celebração dos vinte anos da sua inauguração. O futuro planetário deverá alargar a descoberta da Terra com um olhar sobre o Universo. A abertura da nova instalação está anunciada para maio, durante uma temporada que o restante parque prevê começar já a 30 de março."
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "e08f181758c944e9b2bcab648034e49e",
+            "type": "Paragraph",
+            "sortOrder": 30,
+            "headingLevel": null,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Le 10 février, alors que le site est fermé aux visiteurs pour l’hiver, le feu se déclare dans le bâtiment encore en construction. Les ouvriers présents sur le chantier sont évacués. Le communiqué diffusé par Vulcania ne signale aucun blessé ; le bilan relayé dans l’après-midi par Radio Scoop reste lui aussi sans blessé."
+              },
+              {
+                "languageCode": "en",
+                "value": "On 10 February, while the park is closed to visitors for winter, a fire breaks out inside the unfinished building. Workers on the construction site are evacuated. Vulcania’s public statement reports no injuries, and the update carried by Radio Scoop later that afternoon also records an intervention without injuries."
+              },
+              {
+                "languageCode": "de",
+                "value": "Am 10. Februar, während der Winterpause ohne Besucher im Park, bricht im noch nicht fertiggestellten Gebäude ein Feuer aus. Die Arbeiter auf der Baustelle werden evakuiert. Vulcania meldet in seiner öffentlichen Mitteilung keine Verletzten. Auch der aktualisierte Bericht von Radio Scoop am Nachmittag nennt einen Einsatz, bei dem niemand verletzt wurde."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Op 10 februari, terwijl het park voor de winter gesloten is voor bezoekers, breekt brand uit in het onvoltooide gebouw. De werknemers op de bouwplaats worden geëvacueerd. Vulcania meldt in zijn openbare verklaring geen gewonden. Ook het bijgewerkte verslag dat Radio Scoop later die middag publiceert, vermeldt dat niemand gewond is geraakt."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il 10 febbraio, mentre il parco è chiuso ai visitatori per l’inverno, scoppia un incendio nell’edificio ancora incompiuto. Gli operai presenti nel cantiere vengono evacuati. Il comunicato pubblico di Vulcania non segnala feriti; anche l’aggiornamento diffuso da Radio Scoop nel pomeriggio riferisce che l’intervento non ha registrato persone ferite."
+              },
+              {
+                "languageCode": "es",
+                "value": "El 10 de febrero, mientras el recinto permanece cerrado al público durante el invierno, se declara un incendio en el edificio aún sin terminar. Los trabajadores presentes en las obras son evacuados. El comunicado de Vulcania no informa de heridos; la actualización difundida por Radio Scoop esa misma tarde tampoco registra personas heridas."
+              },
+              {
+                "languageCode": "pl",
+                "value": "10 lutego, gdy park jest zamknięty dla odwiedzających na zimę, w niewykończonym budynku wybucha pożar. Pracownicy znajdujący się na placu budowy zostają ewakuowani. W publicznym komunikacie Vulcania informuje, że nie ma rannych. Aktualizacja opublikowana przez Radio Scoop później tego samego popołudnia również opisuje akcję bez osób poszkodowanych."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A 10 de fevereiro, enquanto o parque está encerrado aos visitantes durante o inverno, deflagra um incêndio no edifício ainda por concluir. Os trabalhadores presentes nas obras são evacuados. O comunicado público de Vulcania não refere feridos; a atualização divulgada pela Radio Scoop nessa mesma tarde também relata uma intervenção sem pessoas feridas."
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "d050a6e729c345de8319fea5baa82a10",
+            "type": "Heading",
+            "sortOrder": 40,
+            "headingLevel": 2,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Le toit atteint, une saison à réorganiser"
+              },
+              {
+                "languageCode": "en",
+                "value": "A damaged roof and a changed timetable"
+              },
+              {
+                "languageCode": "de",
+                "value": "Ein beschädigtes Dach verändert die Planung"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een beschadigd dak en een andere planning"
+              },
+              {
+                "languageCode": "it",
+                "value": "Il tetto danneggiato e un calendario da cambiare"
+              },
+              {
+                "languageCode": "es",
+                "value": "El tejado dañado obliga a cambiar los plazos"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Uszkodzony dach zmienia plany"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O telhado danificado obriga a mudar os prazos"
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "85a42834838948159a05366afa9c66dd",
+            "type": "Paragraph",
+            "sortOrder": 50,
+            "headingLevel": null,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Les flammes gagnent la toiture et fragilisent la structure. Le risque d’effondrement conduit les pompiers à travailler depuis l’extérieur du bâtiment. Une photographie publiée par le parc montre leur intervention au-dessus du toit fumant, depuis une nacelle élevée. L’incendie est maîtrisé dans l’après-midi, mais l’ouverture du planétarium en 2022 n’est plus envisageable."
+              },
+              {
+                "languageCode": "en",
+                "value": "Flames reach the roof and weaken the structure. The risk of collapse requires firefighters to work from outside the building. A photograph released by the park shows the intervention from an elevated platform above the smoking roof. The fire is brought under control that afternoon, but opening the planetarium in 2022 is no longer possible."
+              },
+              {
+                "languageCode": "de",
+                "value": "Die Flammen erreichen das Dach und schwächen die Gebäudestruktur. Wegen der Einsturzgefahr müssen die Feuerwehrleute von außen arbeiten. Auf einem vom Park veröffentlichten Foto ist ihr Einsatz in einem Hubkorb über dem rauchenden Dach zu sehen. Am Nachmittag ist der Brand unter Kontrolle, doch eine Eröffnung des Planetariums im Jahr 2022 ist nicht mehr möglich."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De vlammen bereiken het dak en verzwakken de constructie. Door het instortingsgevaar moeten brandweerlieden van buiten het gebouw werken. Een door het park gepubliceerde foto toont hun inzet vanuit een hoogwerker boven het rokende dak. De brand is die middag onder controle, maar een opening van het planetarium in 2022 is niet meer mogelijk."
+              },
+              {
+                "languageCode": "it",
+                "value": "Le fiamme raggiungono il tetto e indeboliscono la struttura. Il rischio di crollo costringe i vigili del fuoco a intervenire dall’esterno dell’edificio. Una fotografia pubblicata dal parco li mostra su una piattaforma aerea sopra il tetto fumante. L’incendio viene controllato nel pomeriggio, ma l’apertura del planetario nel 2022 non è più possibile."
+              },
+              {
+                "languageCode": "es",
+                "value": "Las llamas alcanzan el tejado y debilitan la estructura. El riesgo de derrumbe obliga a los bomberos a trabajar desde el exterior del edificio. Una fotografía publicada por el parque muestra su intervención desde una plataforma elevada sobre el tejado humeante. El fuego queda controlado por la tarde, pero el planetario ya no podrá abrir en 2022."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Płomienie docierają do dachu i osłabiają konstrukcję. Ze względu na ryzyko zawalenia strażacy muszą prowadzić działania z zewnątrz budynku. Na zdjęciu udostępnionym przez park widać ich pracę z kosza podnośnika nad dymiącym dachem. Po południu pożar jest opanowany, ale otwarcie planetarium jeszcze w 2022 roku przestaje być możliwe."
+              },
+              {
+                "languageCode": "pt",
+                "value": "As chamas atingem o telhado e enfraquecem a estrutura. O risco de desabamento obriga os bombeiros a trabalhar a partir do exterior do edifício. Uma fotografia publicada pelo parque mostra a intervenção numa plataforma elevada sobre o telhado fumegante. O incêndio é dominado durante a tarde, mas a abertura do planetário em 2022 deixa de ser possível."
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "834163976560438b98c654314b15e5a1",
+            "type": "Paragraph",
+            "sortOrder": 60,
+            "headingLevel": null,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Ce sinistre touche le chantier d’une nouveauté, pas un espace déjà ouvert aux visiteurs. Vulcania précise que les autres installations ne sont pas atteintes et maintient l’annonce de leur réouverture saisonnière. La célébration de l’anniversaire et l’achèvement du planétarium suivent désormais deux calendriers distincts : le parc prépare sa saison, tandis que le nouveau bâtiment reste attendu."
+              },
+              {
+                "languageCode": "en",
+                "value": "The fire affects a new construction site rather than an attraction already welcoming guests. Vulcania states that the remaining park installations have not been hit and retains its announced seasonal reopening. The anniversary celebrations and completion of the planetarium now follow separate timetables: preparations for the park season continue while the new building remains unfinished."
+              },
+              {
+                "languageCode": "de",
+                "value": "Betroffen ist die Baustelle einer neuen Einrichtung, kein bereits für Besucher geöffnetes Angebot. Vulcania erklärt, dass die übrigen Anlagen unberührt geblieben sind, und hält am angekündigten Saisonstart fest. Das Parkjubiläum und die Fertigstellung des Planetariums haben nun unterschiedliche Zeitpläne: Die Vorbereitungen auf die Parksaison gehen weiter, während das neue Gebäude noch auf seine Vollendung wartet."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De brand treft de bouwplaats van een nieuwe voorziening, geen attractie die al bezoekers ontvangt. Vulcania verklaart dat de overige installaties niet zijn geraakt en houdt vast aan de aangekondigde seizoensopening. Het parkjubileum en de voltooiing van het planetarium volgen voortaan verschillende planningen: het park bereidt het seizoen voor, terwijl het nieuwe gebouw nog niet af is."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il sinistro interessa il cantiere di una novità, non un’attrazione già accessibile al pubblico. Vulcania precisa che le altre installazioni non sono state colpite e conferma la riapertura stagionale annunciata. Le celebrazioni dell’anniversario e il completamento del planetario seguono ormai due calendari distinti: il parco prepara la stagione, mentre il nuovo edificio resta da terminare."
+              },
+              {
+                "languageCode": "es",
+                "value": "El incendio afecta a las obras de una novedad, no a una atracción que ya reciba visitantes. Vulcania precisa que las demás instalaciones no han sufrido daños y mantiene el anuncio de su reapertura estacional. La celebración del aniversario y la finalización del planetario pasan a tener calendarios distintos: el parque prepara la temporada y el nuevo edificio sigue pendiente."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ogień dotyka placu budowy nowego obiektu, a nie atrakcji przyjmującej już gości. Vulcania podkreśla, że pozostałe instalacje nie zostały uszkodzone, i podtrzymuje zapowiedź sezonowego otwarcia. Jubileusz parku oraz ukończenie planetarium mają odtąd osobne harmonogramy: trwają przygotowania do sezonu w parku, podczas gdy nowy budynek wciąż czeka na zakończenie prac."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O incêndio afeta as obras de uma novidade, não uma atração que já receba visitantes. Vulcania esclarece que as restantes instalações não foram atingidas e mantém o anúncio da reabertura sazonal. As celebrações do aniversário e a conclusão do planetário passam a seguir calendários diferentes: o parque prepara a temporada, enquanto o novo edifício continua por terminar."
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "ee103d53dd3d4653b06cfe43a39a0b49",
+            "type": "Heading",
+            "sortOrder": 70,
+            "headingLevel": 2,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Un ciel accessible au public en 2023"
+              },
+              {
+                "languageCode": "en",
+                "value": "Opening the dome to visitors in 2023"
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Himmel öffnet sich 2023 für Besucher"
+              },
+              {
+                "languageCode": "nl",
+                "value": "De koepel ontvangt publiek in 2023"
+              },
+              {
+                "languageCode": "it",
+                "value": "La cupola accoglie il pubblico nel 2023"
+              },
+              {
+                "languageCode": "es",
+                "value": "La cúpula recibe visitantes en 2023"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Kopuła otwarta dla gości w 2023 roku"
+              },
+              {
+                "languageCode": "pt",
+                "value": "A cúpula recebe o público em 2023"
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "b5edf9b6a20849d4a3cbf35bbb56fc16",
+            "type": "Paragraph",
+            "sortOrder": 80,
+            "headingLevel": null,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Le planétarium reçoit finalement ses visiteurs le 29 mars 2023. L’annonce de RSA Cosmos, qui équipe la salle, et le reportage de Lyon Capitale publié le lendemain situent cette ouverture à la même date. Les photographies de la présentation à la presse montrent déjà des images du Soleil et des paysages volcaniques projetés sous le dôme."
+              },
+              {
+                "languageCode": "en",
+                "value": "The planetarium finally welcomes the public on 29 March 2023. An announcement by equipment supplier RSA Cosmos and Lyon Capitale’s report published the next day agree on that opening date. Photographs from the press presentation already show images of the Sun and volcanic landscapes projected inside the dome."
+              },
+              {
+                "languageCode": "de",
+                "value": "Am 29. März 2023 empfängt das Planetarium schließlich sein Publikum. Eine Mitteilung des Ausstatters RSA Cosmos und der am folgenden Tag erschienene Bericht von Lyon Capitale bestätigen diesen Eröffnungstag. Fotos von der Pressevorstellung zeigen bereits Bilder der Sonne und vulkanischer Landschaften, die unter der Kuppel auf die Projektionsfläche geworfen werden."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het planetarium opent uiteindelijk op 29 maart 2023 voor bezoekers. Een bericht van leverancier RSA Cosmos en het verslag van Lyon Capitale van de volgende dag bevestigen dezelfde openingsdatum. Foto’s van de perspresentatie tonen al beelden van de zon en vulkanische landschappen die onder de koepel worden geprojecteerd."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il planetario riceve infine i visitatori il 29 marzo 2023. L’annuncio del fornitore RSA Cosmos e il reportage di Lyon Capitale pubblicato il giorno successivo indicano la stessa data di apertura. Le fotografie della presentazione alla stampa mostrano già immagini del Sole e paesaggi vulcanici proiettati all’interno della cupola."
+              },
+              {
+                "languageCode": "es",
+                "value": "El planetario abre finalmente al público el 29 de marzo de 2023. El anuncio del proveedor RSA Cosmos y el reportaje de Lyon Capitale publicado al día siguiente coinciden en esa fecha. Las fotografías de la presentación a la prensa muestran ya imágenes del Sol y paisajes volcánicos proyectados bajo la cúpula."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Planetarium przyjmuje publiczność 29 marca 2023 roku. Komunikat dostawcy wyposażenia RSA Cosmos i reportaż Lyon Capitale z następnego dnia wskazują tę samą datę otwarcia. Zdjęcia z prezentacji dla prasy pokazują już obrazy Słońca oraz krajobrazów wulkanicznych wyświetlane pod kopułą nowej sali, która staje się częścią oferty parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O planetário acolhe finalmente os visitantes a 29 de março de 2023. O anúncio do fornecedor RSA Cosmos e a reportagem do Lyon Capitale publicada no dia seguinte indicam a mesma data de abertura. As fotografias da apresentação à imprensa mostram já imagens do Sol e paisagens vulcânicas projetadas sob a cúpula."
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          },
+          {
+            "id": "5d2b1ffd49bb41179a97ad6599e8290e",
+            "type": "Paragraph",
+            "sortOrder": 90,
+            "headingLevel": null,
+            "texts": [
+              {
+                "languageCode": "fr",
+                "value": "Avec cette salle, l’Espace prend une forme différente dans l’offre de Vulcania. Les présentations astronomiques et L’aventure volcano-sidérale relient les phénomènes de notre planète à ceux d’autres mondes. Le bâtiment dont la toiture avait concentré l’intervention des secours devient ainsi un lieu de projection et de médiation scientifique, ouvert un an après la saison initialement prévue."
+              },
+              {
+                "languageCode": "en",
+                "value": "The new venue gives space exploration a different presence at Vulcania. Astronomy presentations and L’aventure volcano-sidérale connect phenomena on Earth with other worlds. The building whose roof had been the focus of the firefighting operation becomes a setting for projections and science presentations, welcoming visitors a year after the originally planned season."
+              },
+              {
+                "languageCode": "de",
+                "value": "Mit dem neuen Saal wird das Weltall in Vulcania auf andere Weise erfahrbar. Astronomische Vorführungen und L’aventure volcano-sidérale verbinden Erscheinungen auf der Erde mit anderen Welten. Das Gebäude, dessen Dach beim Feuerwehreinsatz im Mittelpunkt stand, wird zum Ort für Projektionen und wissenschaftliche Vermittlung. Besucher können es ein Jahr nach der ursprünglich vorgesehenen Saison betreten."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Met de nieuwe zaal krijgt de ruimte een andere plaats in Vulcania. Astronomische presentaties en L’aventure volcano-sidérale verbinden verschijnselen op aarde met andere werelden. Het gebouw waarvan het dak centraal stond bij de brandweerinzet, wordt zo een plek voor projecties en wetenschappelijke uitleg. Het ontvangt bezoekers een jaar na het oorspronkelijk geplande seizoen."
+              },
+              {
+                "languageCode": "it",
+                "value": "Con questa sala, lo spazio assume una presenza diversa nell’offerta di Vulcania. Le presentazioni astronomiche e L’aventure volcano-sidérale collegano i fenomeni della Terra a quelli di altri mondi. L’edificio il cui tetto era stato al centro dell’intervento dei soccorsi diventa un luogo di proiezioni e divulgazione scientifica, aperto un anno dopo la stagione inizialmente prevista."
+              },
+              {
+                "languageCode": "es",
+                "value": "Con esta sala, el espacio adquiere una presencia distinta en Vulcania. Las presentaciones astronómicas y L’aventure volcano-sidérale conectan los fenómenos de la Tierra con los de otros mundos. El edificio cuyo tejado había concentrado la intervención de los bomberos se convierte en un lugar de proyecciones y divulgación científica, abierto un año después de la temporada inicialmente prevista."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Dzięki temu obiektowi kosmos jest przedstawiany w Vulcanii w nowy sposób. Pokazy astronomiczne i L’aventure volcano-sidérale wiążą zjawiska ziemskie z innymi światami. Budynek, którego dach znajdował się w centrum akcji gaśniczej, staje się miejscem projekcji i popularyzacji nauki. Goście mogą wejść do niego rok po pierwotnie planowanym sezonie otwarcia."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Com esta sala, o espaço ganha uma presença diferente na oferta de Vulcania. As apresentações de astronomia e L’aventure volcano-sidérale relacionam os fenómenos da Terra com os de outros mundos. O edifício cujo telhado tinha concentrado a intervenção dos bombeiros torna-se um lugar de projeções e divulgação científica, aberto um ano depois da temporada inicialmente prevista."
+              }
+            ],
+            "imageId": null,
+            "imageIds": [],
+            "captions": []
+          }
+        ],
+        "sources": [
+          {
+            "label": "Radio Scoop — incendie maîtrisé au futur planétarium, 10 février 2022",
+            "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Vulcania — communiqué public sur le chantier du planétarium",
+            "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "RSA Cosmos — ouverture au public, 29 mars 2023",
+            "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Lyon Capitale — reportage, 30 mars 2023",
+            "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "isPublished": false
+      },
+      "id": "88068879-1dd4-4ebf-b7b2-75f5488cc85b"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": {
+    "personallyAuthoredAndReviewed": true,
+    "articleFields": 96,
+    "eventFields": 16,
+    "headings": 3,
+    "paragraphs": 6,
+    "bodyWords": {
+      "fr": 347,
+      "en": 312,
+      "de": 316,
+      "nl": 318,
+      "it": 327,
+      "es": 333,
+      "pl": 292,
+      "pt": 328
+    },
+    "sourceAccess": [
+      {
+        "key": "fire-scoop",
+        "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+        "checkedAt": "2026-11-15T20:05:34.469528+00:00",
+        "status": 200,
+        "finalUrl": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+        "bytes": 70332
+      },
+      {
+        "key": "fire-official",
+        "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+        "checkedAt": "2026-11-15T20:05:34.470497+00:00",
+        "status": 200,
+        "finalUrl": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+        "bytes": 167549
+      },
+      {
+        "key": "planetarium-maker",
+        "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+        "checkedAt": "2026-11-15T19:52:21.437032+00:00",
+        "status": 200,
+        "finalUrl": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+        "bytes": 67682
+      },
+      {
+        "key": "planetarium-lyon",
+        "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+        "checkedAt": "2026-11-15T19:52:21.437476+00:00",
+        "status": 200,
+        "finalUrl": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+        "bytes": 183977
+      }
+    ],
+    "photoImageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+    "noCaptureTimestampInferred": true
+  },
+  "canonicalArticle": {
+    "slug": null,
+    "titles": [
+      {
+        "languageCode": "de",
+        "value": "Vulcanias Planetarium: vom Baustellenbrand zur Eröffnung"
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania’s planetarium: from a construction fire to opening day"
+      },
+      {
+        "languageCode": "es",
+        "value": "El planetario de Vulcania, del incendio de las obras a la apertura"
+      },
+      {
+        "languageCode": "fr",
+        "value": "Le planétarium de Vulcania, du chantier incendié à l’ouverture"
+      },
+      {
+        "languageCode": "it",
+        "value": "Il planetario di Vulcania, dall’incendio del cantiere all’apertura"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het planetarium van Vulcania: van bouwbrand tot opening"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Planetarium Vulcanii: od pożaru na budowie do otwarcia"
+      },
+      {
+        "languageCode": "pt",
+        "value": "O planetário de Vulcania, do incêndio nas obras à abertura"
+      }
+    ],
+    "subtitles": [
+      {
+        "languageCode": "de",
+        "value": "Der Brand im Februar 2022 verändert den Zeitplan eines Projekts rund um das Weltall."
+      },
+      {
+        "languageCode": "en",
+        "value": "The February 2022 fire changes the timetable for a project devoted to space."
+      },
+      {
+        "languageCode": "es",
+        "value": "El incendio de febrero de 2022 altera el calendario de un proyecto dedicado al espacio."
+      },
+      {
+        "languageCode": "fr",
+        "value": "L’incendie de février 2022 bouleverse le calendrier d’un projet consacré à l’Espace."
+      },
+      {
+        "languageCode": "it",
+        "value": "L’incendio del febbraio 2022 cambia il calendario di un progetto dedicato allo spazio."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De brand van februari 2022 verandert de planning van een project over de ruimte."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Pożar w lutym 2022 roku zmienia harmonogram projektu poświęconego kosmosowi."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O incêndio de fevereiro de 2022 altera o calendário de um projeto dedicado ao espaço."
+      }
+    ],
+    "summaries": [
+      {
+        "languageCode": "de",
+        "value": "Das für das zwanzigjährige Parkjubiläum vorgesehene Planetarium wird vor seiner Eröffnung von einem Brand getroffen. Im März 2023 erhält die Astronomie schließlich ihren neuen Platz in Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Planned as part of the park’s twentieth anniversary, the planetarium suffers a fire before receiving visitors. Its eventual opening in March 2023 gives astronomy a new place at Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Previsto entre las novedades del vigésimo aniversario del parque, el planetario sufre un incendio antes de recibir visitantes. Su apertura en marzo de 2023 da finalmente un nuevo lugar a la astronomía en Vulcania."
+      },
+      {
+        "languageCode": "fr",
+        "value": "Destiné à rejoindre les nouveautés du vingtième anniversaire, le planétarium subit un incendie avant d’accueillir son public. Son ouverture en mars 2023 donne finalement une place nouvelle à l’astronomie dans le parc."
+      },
+      {
+        "languageCode": "it",
+        "value": "Pensato per arricchire il ventesimo anniversario del parco, il planetario subisce un incendio prima di accogliere il pubblico. L’apertura nel marzo 2023 dà infine un nuovo spazio all’astronomia a Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het planetarium zou deel uitmaken van de twintigste verjaardag van het park, maar wordt vóór de opening getroffen door brand. In maart 2023 krijgt de sterrenkunde uiteindelijk haar nieuwe plek bij Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Planetarium planowane na dwudziestolecie parku zostaje dotknięte pożarem, zanim przyjmie pierwszych gości. Otwarcie w marcu 2023 roku daje astronomii nowe miejsce w Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Previsto entre as novidades do vigésimo aniversário do parque, o planetário sofre um incêndio antes de receber visitantes. A abertura em março de 2023 dá finalmente um novo lugar à astronomia em Vulcania."
+      }
+    ],
+    "mainImageId": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+    "blocks": [
+      {
+        "id": "db56ae895e574645a74466086a2f4f24",
+        "type": "Heading",
+        "sortOrder": 10,
+        "headingLevel": 2,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Eine Baustelle für das Jubiläumsjahr"
+          },
+          {
+            "languageCode": "en",
+            "value": "An anniversary project under construction"
+          },
+          {
+            "languageCode": "es",
+            "value": "Unas obras para el aniversario"
+          },
+          {
+            "languageCode": "fr",
+            "value": "Un chantier au cœur de l’anniversaire"
+          },
+          {
+            "languageCode": "it",
+            "value": "Un cantiere per l’anniversario"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een bouwproject voor het jubileum"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Budowa na jubileuszowy rok"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Uma obra para o aniversário"
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "5d89f105336143eb85e9cc9f56aab37b",
+        "type": "Paragraph",
+        "sortOrder": 20,
+        "headingLevel": null,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Im Jahr 2022 bereitet Vulcania das zwanzigste Jubiläum seiner Einweihung vor. Das künftige Planetarium soll die Beschäftigung mit der Erde um den Blick in das Universum ergänzen. Für die neue Einrichtung ist eine Eröffnung im Mai vorgesehen, während der übrige Park seine Saison bereits am 30. März beginnen soll."
+          },
+          {
+            "languageCode": "en",
+            "value": "In 2022, Vulcania is preparing to mark twenty years since its inauguration. The planned planetarium will extend the exploration of Earth into the wider Universe. It is expected to welcome visitors in May, during a season that the rest of the park is scheduled to begin on 30 March."
+          },
+          {
+            "languageCode": "es",
+            "value": "En 2022, Vulcania prepara la celebración de los veinte años de su inauguración. El futuro planetario debe ampliar el descubrimiento de la Tierra con una mirada hacia el Universo. Su apertura está anunciada para mayo, durante una temporada que el resto del parque tiene previsto iniciar ya el 30 de marzo."
+          },
+          {
+            "languageCode": "fr",
+            "value": "En 2022, Vulcania prépare les vingt ans de son inauguration. Le futur planétarium doit enrichir la découverte de la Terre par une ouverture sur l’Univers. Son arrivée est annoncée pour le mois de mai, au cours d’une saison que le reste du parc prévoit de commencer dès le 30 mars."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel 2022 Vulcania prepara il ventesimo anniversario della propria inaugurazione. Il futuro planetario deve ampliare la scoperta della Terra con uno sguardo sull’Universo. La sua apertura è annunciata per maggio, durante una stagione che il resto del parco prevede di iniziare già il 30 marzo, con le altre attrazioni."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In 2022 bereidt Vulcania de viering voor van twintig jaar sinds zijn inauguratie. Het toekomstige planetarium moet de verkenning van de aarde uitbreiden naar het heelal. De opening van de nieuwe voorziening staat gepland voor mei, in een seizoen dat de rest van het park al op 30 maart wil beginnen."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W 2022 roku Vulcania przygotowuje obchody dwudziestej rocznicy swojej inauguracji. Przyszłe planetarium ma rozszerzyć poznawanie Ziemi o spojrzenie na Wszechświat. Nowy obiekt ma zostać udostępniony w maju, podczas sezonu, który pozostała część parku planuje rozpocząć już 30 marca. Planetarium jest więc ważnym elementem programu jubileuszowego, ale nie warunkiem rozpoczęcia sezonu."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 2022, Vulcania prepara a celebração dos vinte anos da sua inauguração. O futuro planetário deverá alargar a descoberta da Terra com um olhar sobre o Universo. A abertura da nova instalação está anunciada para maio, durante uma temporada que o restante parque prevê começar já a 30 de março."
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "e08f181758c944e9b2bcab648034e49e",
+        "type": "Paragraph",
+        "sortOrder": 30,
+        "headingLevel": null,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Am 10. Februar, während der Winterpause ohne Besucher im Park, bricht im noch nicht fertiggestellten Gebäude ein Feuer aus. Die Arbeiter auf der Baustelle werden evakuiert. Vulcania meldet in seiner öffentlichen Mitteilung keine Verletzten. Auch der aktualisierte Bericht von Radio Scoop am Nachmittag nennt einen Einsatz, bei dem niemand verletzt wurde."
+          },
+          {
+            "languageCode": "en",
+            "value": "On 10 February, while the park is closed to visitors for winter, a fire breaks out inside the unfinished building. Workers on the construction site are evacuated. Vulcania’s public statement reports no injuries, and the update carried by Radio Scoop later that afternoon also records an intervention without injuries."
+          },
+          {
+            "languageCode": "es",
+            "value": "El 10 de febrero, mientras el recinto permanece cerrado al público durante el invierno, se declara un incendio en el edificio aún sin terminar. Los trabajadores presentes en las obras son evacuados. El comunicado de Vulcania no informa de heridos; la actualización difundida por Radio Scoop esa misma tarde tampoco registra personas heridas."
+          },
+          {
+            "languageCode": "fr",
+            "value": "Le 10 février, alors que le site est fermé aux visiteurs pour l’hiver, le feu se déclare dans le bâtiment encore en construction. Les ouvriers présents sur le chantier sont évacués. Le communiqué diffusé par Vulcania ne signale aucun blessé ; le bilan relayé dans l’après-midi par Radio Scoop reste lui aussi sans blessé."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il 10 febbraio, mentre il parco è chiuso ai visitatori per l’inverno, scoppia un incendio nell’edificio ancora incompiuto. Gli operai presenti nel cantiere vengono evacuati. Il comunicato pubblico di Vulcania non segnala feriti; anche l’aggiornamento diffuso da Radio Scoop nel pomeriggio riferisce che l’intervento non ha registrato persone ferite."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Op 10 februari, terwijl het park voor de winter gesloten is voor bezoekers, breekt brand uit in het onvoltooide gebouw. De werknemers op de bouwplaats worden geëvacueerd. Vulcania meldt in zijn openbare verklaring geen gewonden. Ook het bijgewerkte verslag dat Radio Scoop later die middag publiceert, vermeldt dat niemand gewond is geraakt."
+          },
+          {
+            "languageCode": "pl",
+            "value": "10 lutego, gdy park jest zamknięty dla odwiedzających na zimę, w niewykończonym budynku wybucha pożar. Pracownicy znajdujący się na placu budowy zostają ewakuowani. W publicznym komunikacie Vulcania informuje, że nie ma rannych. Aktualizacja opublikowana przez Radio Scoop później tego samego popołudnia również opisuje akcję bez osób poszkodowanych."
+          },
+          {
+            "languageCode": "pt",
+            "value": "A 10 de fevereiro, enquanto o parque está encerrado aos visitantes durante o inverno, deflagra um incêndio no edifício ainda por concluir. Os trabalhadores presentes nas obras são evacuados. O comunicado público de Vulcania não refere feridos; a atualização divulgada pela Radio Scoop nessa mesma tarde também relata uma intervenção sem pessoas feridas."
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "d050a6e729c345de8319fea5baa82a10",
+        "type": "Heading",
+        "sortOrder": 40,
+        "headingLevel": 2,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Ein beschädigtes Dach verändert die Planung"
+          },
+          {
+            "languageCode": "en",
+            "value": "A damaged roof and a changed timetable"
+          },
+          {
+            "languageCode": "es",
+            "value": "El tejado dañado obliga a cambiar los plazos"
+          },
+          {
+            "languageCode": "fr",
+            "value": "Le toit atteint, une saison à réorganiser"
+          },
+          {
+            "languageCode": "it",
+            "value": "Il tetto danneggiato e un calendario da cambiare"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Een beschadigd dak en een andere planning"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Uszkodzony dach zmienia plany"
+          },
+          {
+            "languageCode": "pt",
+            "value": "O telhado danificado obriga a mudar os prazos"
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "85a42834838948159a05366afa9c66dd",
+        "type": "Paragraph",
+        "sortOrder": 50,
+        "headingLevel": null,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Die Flammen erreichen das Dach und schwächen die Gebäudestruktur. Wegen der Einsturzgefahr müssen die Feuerwehrleute von außen arbeiten. Auf einem vom Park veröffentlichten Foto ist ihr Einsatz in einem Hubkorb über dem rauchenden Dach zu sehen. Am Nachmittag ist der Brand unter Kontrolle, doch eine Eröffnung des Planetariums im Jahr 2022 ist nicht mehr möglich."
+          },
+          {
+            "languageCode": "en",
+            "value": "Flames reach the roof and weaken the structure. The risk of collapse requires firefighters to work from outside the building. A photograph released by the park shows the intervention from an elevated platform above the smoking roof. The fire is brought under control that afternoon, but opening the planetarium in 2022 is no longer possible."
+          },
+          {
+            "languageCode": "es",
+            "value": "Las llamas alcanzan el tejado y debilitan la estructura. El riesgo de derrumbe obliga a los bomberos a trabajar desde el exterior del edificio. Una fotografía publicada por el parque muestra su intervención desde una plataforma elevada sobre el tejado humeante. El fuego queda controlado por la tarde, pero el planetario ya no podrá abrir en 2022."
+          },
+          {
+            "languageCode": "fr",
+            "value": "Les flammes gagnent la toiture et fragilisent la structure. Le risque d’effondrement conduit les pompiers à travailler depuis l’extérieur du bâtiment. Une photographie publiée par le parc montre leur intervention au-dessus du toit fumant, depuis une nacelle élevée. L’incendie est maîtrisé dans l’après-midi, mais l’ouverture du planétarium en 2022 n’est plus envisageable."
+          },
+          {
+            "languageCode": "it",
+            "value": "Le fiamme raggiungono il tetto e indeboliscono la struttura. Il rischio di crollo costringe i vigili del fuoco a intervenire dall’esterno dell’edificio. Una fotografia pubblicata dal parco li mostra su una piattaforma aerea sopra il tetto fumante. L’incendio viene controllato nel pomeriggio, ma l’apertura del planetario nel 2022 non è più possibile."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De vlammen bereiken het dak en verzwakken de constructie. Door het instortingsgevaar moeten brandweerlieden van buiten het gebouw werken. Een door het park gepubliceerde foto toont hun inzet vanuit een hoogwerker boven het rokende dak. De brand is die middag onder controle, maar een opening van het planetarium in 2022 is niet meer mogelijk."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Płomienie docierają do dachu i osłabiają konstrukcję. Ze względu na ryzyko zawalenia strażacy muszą prowadzić działania z zewnątrz budynku. Na zdjęciu udostępnionym przez park widać ich pracę z kosza podnośnika nad dymiącym dachem. Po południu pożar jest opanowany, ale otwarcie planetarium jeszcze w 2022 roku przestaje być możliwe."
+          },
+          {
+            "languageCode": "pt",
+            "value": "As chamas atingem o telhado e enfraquecem a estrutura. O risco de desabamento obriga os bombeiros a trabalhar a partir do exterior do edifício. Uma fotografia publicada pelo parque mostra a intervenção numa plataforma elevada sobre o telhado fumegante. O incêndio é dominado durante a tarde, mas a abertura do planetário em 2022 deixa de ser possível."
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "834163976560438b98c654314b15e5a1",
+        "type": "Paragraph",
+        "sortOrder": 60,
+        "headingLevel": null,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Betroffen ist die Baustelle einer neuen Einrichtung, kein bereits für Besucher geöffnetes Angebot. Vulcania erklärt, dass die übrigen Anlagen unberührt geblieben sind, und hält am angekündigten Saisonstart fest. Das Parkjubiläum und die Fertigstellung des Planetariums haben nun unterschiedliche Zeitpläne: Die Vorbereitungen auf die Parksaison gehen weiter, während das neue Gebäude noch auf seine Vollendung wartet."
+          },
+          {
+            "languageCode": "en",
+            "value": "The fire affects a new construction site rather than an attraction already welcoming guests. Vulcania states that the remaining park installations have not been hit and retains its announced seasonal reopening. The anniversary celebrations and completion of the planetarium now follow separate timetables: preparations for the park season continue while the new building remains unfinished."
+          },
+          {
+            "languageCode": "es",
+            "value": "El incendio afecta a las obras de una novedad, no a una atracción que ya reciba visitantes. Vulcania precisa que las demás instalaciones no han sufrido daños y mantiene el anuncio de su reapertura estacional. La celebración del aniversario y la finalización del planetario pasan a tener calendarios distintos: el parque prepara la temporada y el nuevo edificio sigue pendiente."
+          },
+          {
+            "languageCode": "fr",
+            "value": "Ce sinistre touche le chantier d’une nouveauté, pas un espace déjà ouvert aux visiteurs. Vulcania précise que les autres installations ne sont pas atteintes et maintient l’annonce de leur réouverture saisonnière. La célébration de l’anniversaire et l’achèvement du planétarium suivent désormais deux calendriers distincts : le parc prépare sa saison, tandis que le nouveau bâtiment reste attendu."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il sinistro interessa il cantiere di una novità, non un’attrazione già accessibile al pubblico. Vulcania precisa che le altre installazioni non sono state colpite e conferma la riapertura stagionale annunciata. Le celebrazioni dell’anniversario e il completamento del planetario seguono ormai due calendari distinti: il parco prepara la stagione, mentre il nuovo edificio resta da terminare."
+          },
+          {
+            "languageCode": "nl",
+            "value": "De brand treft de bouwplaats van een nieuwe voorziening, geen attractie die al bezoekers ontvangt. Vulcania verklaart dat de overige installaties niet zijn geraakt en houdt vast aan de aangekondigde seizoensopening. Het parkjubileum en de voltooiing van het planetarium volgen voortaan verschillende planningen: het park bereidt het seizoen voor, terwijl het nieuwe gebouw nog niet af is."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Ogień dotyka placu budowy nowego obiektu, a nie atrakcji przyjmującej już gości. Vulcania podkreśla, że pozostałe instalacje nie zostały uszkodzone, i podtrzymuje zapowiedź sezonowego otwarcia. Jubileusz parku oraz ukończenie planetarium mają odtąd osobne harmonogramy: trwają przygotowania do sezonu w parku, podczas gdy nowy budynek wciąż czeka na zakończenie prac."
+          },
+          {
+            "languageCode": "pt",
+            "value": "O incêndio afeta as obras de uma novidade, não uma atração que já receba visitantes. Vulcania esclarece que as restantes instalações não foram atingidas e mantém o anúncio da reabertura sazonal. As celebrações do aniversário e a conclusão do planetário passam a seguir calendários diferentes: o parque prepara a temporada, enquanto o novo edifício continua por terminar."
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "ee103d53dd3d4653b06cfe43a39a0b49",
+        "type": "Heading",
+        "sortOrder": 70,
+        "headingLevel": 2,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Der Himmel öffnet sich 2023 für Besucher"
+          },
+          {
+            "languageCode": "en",
+            "value": "Opening the dome to visitors in 2023"
+          },
+          {
+            "languageCode": "es",
+            "value": "La cúpula recibe visitantes en 2023"
+          },
+          {
+            "languageCode": "fr",
+            "value": "Un ciel accessible au public en 2023"
+          },
+          {
+            "languageCode": "it",
+            "value": "La cupola accoglie il pubblico nel 2023"
+          },
+          {
+            "languageCode": "nl",
+            "value": "De koepel ontvangt publiek in 2023"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Kopuła otwarta dla gości w 2023 roku"
+          },
+          {
+            "languageCode": "pt",
+            "value": "A cúpula recebe o público em 2023"
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "b5edf9b6a20849d4a3cbf35bbb56fc16",
+        "type": "Paragraph",
+        "sortOrder": 80,
+        "headingLevel": null,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Am 29. März 2023 empfängt das Planetarium schließlich sein Publikum. Eine Mitteilung des Ausstatters RSA Cosmos und der am folgenden Tag erschienene Bericht von Lyon Capitale bestätigen diesen Eröffnungstag. Fotos von der Pressevorstellung zeigen bereits Bilder der Sonne und vulkanischer Landschaften, die unter der Kuppel auf die Projektionsfläche geworfen werden."
+          },
+          {
+            "languageCode": "en",
+            "value": "The planetarium finally welcomes the public on 29 March 2023. An announcement by equipment supplier RSA Cosmos and Lyon Capitale’s report published the next day agree on that opening date. Photographs from the press presentation already show images of the Sun and volcanic landscapes projected inside the dome."
+          },
+          {
+            "languageCode": "es",
+            "value": "El planetario abre finalmente al público el 29 de marzo de 2023. El anuncio del proveedor RSA Cosmos y el reportaje de Lyon Capitale publicado al día siguiente coinciden en esa fecha. Las fotografías de la presentación a la prensa muestran ya imágenes del Sol y paisajes volcánicos proyectados bajo la cúpula."
+          },
+          {
+            "languageCode": "fr",
+            "value": "Le planétarium reçoit finalement ses visiteurs le 29 mars 2023. L’annonce de RSA Cosmos, qui équipe la salle, et le reportage de Lyon Capitale publié le lendemain situent cette ouverture à la même date. Les photographies de la présentation à la presse montrent déjà des images du Soleil et des paysages volcaniques projetés sous le dôme."
+          },
+          {
+            "languageCode": "it",
+            "value": "Il planetario riceve infine i visitatori il 29 marzo 2023. L’annuncio del fornitore RSA Cosmos e il reportage di Lyon Capitale pubblicato il giorno successivo indicano la stessa data di apertura. Le fotografie della presentazione alla stampa mostrano già immagini del Sole e paesaggi vulcanici proiettati all’interno della cupola."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Het planetarium opent uiteindelijk op 29 maart 2023 voor bezoekers. Een bericht van leverancier RSA Cosmos en het verslag van Lyon Capitale van de volgende dag bevestigen dezelfde openingsdatum. Foto’s van de perspresentatie tonen al beelden van de zon en vulkanische landschappen die onder de koepel worden geprojecteerd."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Planetarium przyjmuje publiczność 29 marca 2023 roku. Komunikat dostawcy wyposażenia RSA Cosmos i reportaż Lyon Capitale z następnego dnia wskazują tę samą datę otwarcia. Zdjęcia z prezentacji dla prasy pokazują już obrazy Słońca oraz krajobrazów wulkanicznych wyświetlane pod kopułą nowej sali, która staje się częścią oferty parku."
+          },
+          {
+            "languageCode": "pt",
+            "value": "O planetário acolhe finalmente os visitantes a 29 de março de 2023. O anúncio do fornecedor RSA Cosmos e a reportagem do Lyon Capitale publicada no dia seguinte indicam a mesma data de abertura. As fotografias da apresentação à imprensa mostram já imagens do Sol e paisagens vulcânicas projetadas sob a cúpula."
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      },
+      {
+        "id": "5d2b1ffd49bb41179a97ad6599e8290e",
+        "type": "Paragraph",
+        "sortOrder": 90,
+        "headingLevel": null,
+        "texts": [
+          {
+            "languageCode": "de",
+            "value": "Mit dem neuen Saal wird das Weltall in Vulcania auf andere Weise erfahrbar. Astronomische Vorführungen und L’aventure volcano-sidérale verbinden Erscheinungen auf der Erde mit anderen Welten. Das Gebäude, dessen Dach beim Feuerwehreinsatz im Mittelpunkt stand, wird zum Ort für Projektionen und wissenschaftliche Vermittlung. Besucher können es ein Jahr nach der ursprünglich vorgesehenen Saison betreten."
+          },
+          {
+            "languageCode": "en",
+            "value": "The new venue gives space exploration a different presence at Vulcania. Astronomy presentations and L’aventure volcano-sidérale connect phenomena on Earth with other worlds. The building whose roof had been the focus of the firefighting operation becomes a setting for projections and science presentations, welcoming visitors a year after the originally planned season."
+          },
+          {
+            "languageCode": "es",
+            "value": "Con esta sala, el espacio adquiere una presencia distinta en Vulcania. Las presentaciones astronómicas y L’aventure volcano-sidérale conectan los fenómenos de la Tierra con los de otros mundos. El edificio cuyo tejado había concentrado la intervención de los bomberos se convierte en un lugar de proyecciones y divulgación científica, abierto un año después de la temporada inicialmente prevista."
+          },
+          {
+            "languageCode": "fr",
+            "value": "Avec cette salle, l’Espace prend une forme différente dans l’offre de Vulcania. Les présentations astronomiques et L’aventure volcano-sidérale relient les phénomènes de notre planète à ceux d’autres mondes. Le bâtiment dont la toiture avait concentré l’intervention des secours devient ainsi un lieu de projection et de médiation scientifique, ouvert un an après la saison initialement prévue."
+          },
+          {
+            "languageCode": "it",
+            "value": "Con questa sala, lo spazio assume una presenza diversa nell’offerta di Vulcania. Le presentazioni astronomiche e L’aventure volcano-sidérale collegano i fenomeni della Terra a quelli di altri mondi. L’edificio il cui tetto era stato al centro dell’intervento dei soccorsi diventa un luogo di proiezioni e divulgazione scientifica, aperto un anno dopo la stagione inizialmente prevista."
+          },
+          {
+            "languageCode": "nl",
+            "value": "Met de nieuwe zaal krijgt de ruimte een andere plaats in Vulcania. Astronomische presentaties en L’aventure volcano-sidérale verbinden verschijnselen op aarde met andere werelden. Het gebouw waarvan het dak centraal stond bij de brandweerinzet, wordt zo een plek voor projecties en wetenschappelijke uitleg. Het ontvangt bezoekers een jaar na het oorspronkelijk geplande seizoen."
+          },
+          {
+            "languageCode": "pl",
+            "value": "Dzięki temu obiektowi kosmos jest przedstawiany w Vulcanii w nowy sposób. Pokazy astronomiczne i L’aventure volcano-sidérale wiążą zjawiska ziemskie z innymi światami. Budynek, którego dach znajdował się w centrum akcji gaśniczej, staje się miejscem projekcji i popularyzacji nauki. Goście mogą wejść do niego rok po pierwotnie planowanym sezonie otwarcia."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Com esta sala, o espaço ganha uma presença diferente na oferta de Vulcania. As apresentações de astronomia e L’aventure volcano-sidérale relacionam os fenómenos da Terra com os de outros mundos. O edifício cujo telhado tinha concentrado a intervenção dos bombeiros torna-se um lugar de projeções e divulgação científica, aberto um ano depois da temporada inicialmente prevista."
+          }
+        ],
+        "imageId": null,
+        "imageIds": [],
+        "captions": []
+      }
+    ],
+    "sources": [
+      {
+        "label": "Vulcania — communiqué public sur le chantier du planétarium",
+        "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+        "accessedAt": "2026-11-15"
+      },
+      {
+        "label": "Lyon Capitale — reportage, 30 mars 2023",
+        "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+        "accessedAt": "2026-11-15"
+      },
+      {
+        "label": "Radio Scoop — incendie maîtrisé au futur planétarium, 10 février 2022",
+        "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+        "accessedAt": "2026-11-15"
+      },
+      {
+        "label": "RSA Cosmos — ouverture au public, 29 mars 2023",
+        "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+        "accessedAt": "2026-11-15"
+      }
+    ],
+    "isPublished": false
+  },
+  "sourceAccess": [
+    {
+      "key": "magma-explorer-iii",
+      "url": "https://www.amak.fr/project/magma-explorer-iii/",
+      "checkedAt": "2026-11-15T19:51:33.501023+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/magma-explorer-iii/",
+      "bytes": 55751
+    },
+    {
+      "key": "dragon-ride",
+      "url": "https://www.amak.fr/project/dragon-ride/",
+      "checkedAt": "2026-11-15T19:51:33.501895+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/dragon-ride/",
+      "bytes": 57501
+    },
+    {
+      "key": "dragon-ride-2",
+      "url": "https://www.amak.fr/project/dragon-ride-2/",
+      "checkedAt": "2026-11-15T19:51:33.502537+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/dragon-ride-2/",
+      "bytes": 60983
+    },
+    {
+      "key": "abyss-explorer",
+      "url": "https://www.amak.fr/project/abyss-explorer/",
+      "checkedAt": "2026-11-15T19:51:33.503181+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/abyss-explorer/",
+      "bytes": 57212
+    },
+    {
+      "key": "ballon",
+      "url": "https://www.aerophile.com/en/clients/vulcania/",
+      "checkedAt": "2026-11-15T19:51:33.504112+00:00",
+      "status": 200,
+      "finalUrl": "https://www.aerophile.com/en/clients/vulcania/",
+      "bytes": 49573
+    },
+    {
+      "key": "ballon-eap",
+      "url": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "checkedAt": "2026-11-15T19:52:21.436269+00:00",
+      "status": 200,
+      "finalUrl": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "bytes": 52532
+    },
+    {
+      "key": "planetarium-maker",
+      "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+      "checkedAt": "2026-11-15T19:52:21.437032+00:00",
+      "status": 200,
+      "finalUrl": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+      "bytes": 67682
+    },
+    {
+      "key": "planetarium-lyon",
+      "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "checkedAt": "2026-11-15T19:52:21.437476+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "bytes": 183977
+    },
+    {
+      "key": "fire-scoop",
+      "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+      "checkedAt": "2026-11-15T20:05:34.469528+00:00",
+      "status": 200,
+      "finalUrl": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+      "bytes": 70332
+    },
+    {
+      "key": "fire-official",
+      "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "checkedAt": "2026-11-15T20:05:34.470497+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "bytes": 167549
+    },
+    {
+      "key": "reopening-2015",
+      "url": "https://www.radiorva.com/news/locales/6471/vulcania-rouvre-ses-portes-aujourd-hui",
+      "checkedAt": "2026-11-15T20:05:34.471521+00:00",
+      "status": 200,
+      "finalUrl": "https://www.radiorva.com/news/locales/6471/vulcania-rouvre-ses-portes-aujourd-hui",
+      "bytes": 82858
+    }
+  ],
+  "scopeNotes": "Private10February2022construction fire belongs toexistingAstrodomeitem, notduplicatedparkfrise. Officialpublicpost fullyread and RadioScoopdatedupdatedreport corroborateevacuation/noinjuries/firecontrolledafternoon/May2022openingcancelled/remainingparkunaffected. Causeunknown here, no speculativecause or responsibility. Developed article3sections6paragraphs perlanguage personallyauthoredreviewed; four accessible sources, authentic officialphotoofsameevent, noinjuredperson depicted. Publicopening29March2023 notceremony28April. RegionalPDFreturnedonly44whitespacebytes and is excluded asusableevidence.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

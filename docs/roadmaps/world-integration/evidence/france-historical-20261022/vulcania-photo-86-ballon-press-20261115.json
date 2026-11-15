@@ -1,0 +1,293 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-86-ballon-press",
+    "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+    "itemName": "Ballon des Puys",
+    "current": false,
+    "source": {
+      "key": "ballon-eap",
+      "url": "https://www.eap-magazin.de/medium/3%29-Vulcania-Le-Ballon-des-Puys-low.jpg?m=16310&w=567&h=377&g=0",
+      "status": 200,
+      "bytes": 44400,
+      "dimensions": [
+        567,
+        377
+      ],
+      "sha256": "9608b5b289228f08a14711543c4f20aafc08e664550d6785eaf6569fa1491de6",
+      "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/ballon-eap.jpg",
+      "sourcePage": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "author": "J. Chabanne",
+      "publisher": "EuroAmusement Professional"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; author and publisher credit retained; no open licence or individual author permission claimed.",
+    "qualification": "Unmodified native publisher file. Personally viewed original and reviewed all24metadata fields. Historical 2014balloon report or 2023planetarium projection photographed by reporter; no capturetimestamp inferred. No third-party watermark. Press photo, not official Vulcania photo."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "SourceUrl": "https://www.eap-magazin.de/medium/3%29-Vulcania-Le-Ballon-des-Puys-low.jpg?m=16310&w=567&h=377&g=0",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/item-history-1956/ballon-eap.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-86-ballon-press-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-86-ballon-press-import-result.json"
+  },
+  "metadata": {
+    "description": "Le ballon blanc et bleu survole le cône de Vulcania dans le reportage consacré à son ouverture en 2014.",
+    "sourceUrl": "https://www.eap-magazin.de/medium/3%29-Vulcania-Le-Ballon-des-Puys-low.jpg?m=16310&w=567&h=377&g=0",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Le Ballon des Puys dans le ciel, à gauche du cône de pierre de Vulcania"
+      },
+      {
+        "languageCode": "en",
+        "value": "The Ballon des Puys in the sky to the left of Vulcania’s stone cone"
+      },
+      {
+        "languageCode": "de",
+        "value": "Der Ballon des Puys am Himmel links neben Vulcanias Steinkegel"
+      },
+      {
+        "languageCode": "nl",
+        "value": "De Ballon des Puys in de lucht links van de stenen kegel van Vulcania"
+      },
+      {
+        "languageCode": "it",
+        "value": "Il Ballon des Puys nel cielo, a sinistra del cono in pietra di Vulcania"
+      },
+      {
+        "languageCode": "es",
+        "value": "El Ballon des Puys en el cielo, a la izquierda del cono de piedra de Vulcania"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ballon des Puys na niebie, po lewej stronie kamiennego stożka Vulcanii"
+      },
+      {
+        "languageCode": "pt",
+        "value": "O Ballon des Puys no céu, à esquerda do cone de pedra de Vulcania"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le ballon blanc et bleu survole le cône de Vulcania dans le reportage consacré à son ouverture en 2014."
+      },
+      {
+        "languageCode": "en",
+        "value": "The white and blue balloon rises above Vulcania’s cone in the report marking its opening in 2014."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der weiß-blaue Ballon schwebt über Vulcanias Kegel auf dem Foto im Bericht über seine Eröffnung 2014."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De witte en blauwe ballon zweeft boven de kegel van Vulcania in het verslag over de opening in 2014."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il pallone bianco e blu si alza sopra il cono di Vulcania nel reportage dedicato alla sua apertura nel 2014."
+      },
+      {
+        "languageCode": "es",
+        "value": "El globo blanco y azul se eleva sobre el cono de Vulcania en el reportaje dedicado a su apertura en 2014."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Biało-niebieski balon unosi się nad stożkiem Vulcanii na zdjęciu z reportażu poświęconego jego otwarciu w 2014 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O balão branco e azul eleva-se sobre o cone de Vulcania na reportagem dedicada à sua abertura em 2014."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T20:03:08.6129835Z",
+    "result": {
+      "id": "358753581b594abdb1a13a726c7c0a46",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "ce88d195-4890-43e4-8551-8f26d460760b",
+      "path": "park_item/358753581b594abdb1a13a726c7c0a46",
+      "description": "Le ballon blanc et bleu survole le cône de Vulcania dans le reportage consacré à son ouverture en 2014.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 567,
+      "height": 377,
+      "sizeInBytes": 44400,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.eap-magazin.de/medium/3%29-Vulcania-Le-Ballon-des-Puys-low.jpg?m=16310&w=567&h=377&g=0",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "Canon",
+        "cameraModel": "Canon EOS 5D Mark III",
+        "takenOnUtc": "2014-06-05T19:35:05Z",
+        "orientation": "1",
+        "focalLength": 70,
+        "aperture": 10,
+        "exposureTime": 0.001,
+        "iso": 320
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Le Ballon des Puys dans le ciel, à gauche du cône de pierre de Vulcania"
+        },
+        {
+          "languageCode": "en",
+          "value": "The Ballon des Puys in the sky to the left of Vulcania’s stone cone"
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Ballon des Puys am Himmel links neben Vulcanias Steinkegel"
+        },
+        {
+          "languageCode": "nl",
+          "value": "De Ballon des Puys in de lucht links van de stenen kegel van Vulcania"
+        },
+        {
+          "languageCode": "it",
+          "value": "Il Ballon des Puys nel cielo, a sinistra del cono in pietra di Vulcania"
+        },
+        {
+          "languageCode": "es",
+          "value": "El Ballon des Puys en el cielo, a la izquierda del cono de piedra de Vulcania"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ballon des Puys na niebie, po lewej stronie kamiennego stożka Vulcanii"
+        },
+        {
+          "languageCode": "pt",
+          "value": "O Ballon des Puys no céu, à esquerda do cone de pedra de Vulcania"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le ballon blanc et bleu survole le cône de Vulcania dans le reportage consacré à son ouverture en 2014."
+        },
+        {
+          "languageCode": "en",
+          "value": "The white and blue balloon rises above Vulcania’s cone in the report marking its opening in 2014."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der weiß-blaue Ballon schwebt über Vulcanias Kegel auf dem Foto im Bericht über seine Eröffnung 2014."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De witte en blauwe ballon zweeft boven de kegel van Vulcania in het verslag over de opening in 2014."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il pallone bianco e blu si alza sopra il cono di Vulcania nel reportage dedicato alla sua apertura nel 2014."
+        },
+        {
+          "languageCode": "es",
+          "value": "El globo blanco y azul se eleva sobre el cono de Vulcania en el reportaje dedicado a su apertura en 2014."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Biało-niebieski balon unosi się nad stożkiem Vulcanii na zdjęciu z reportażu poświęconego jego otwarciu w 2014 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O balão branco e azul eleva-se sobre o cone de Vulcania na reportagem dedicada à sua abertura em 2014."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: J. Chabanne — EuroAmusement Professional."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T20:03:09.724Z",
+      "updatedAt": "2026-11-15T20:03:13.454Z"
+    },
+    "receivedAtUtc": "2026-11-15T20:03:16.5546860Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

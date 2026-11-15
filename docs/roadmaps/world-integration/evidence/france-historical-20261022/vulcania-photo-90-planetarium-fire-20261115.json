@@ -1,0 +1,285 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-90-planetarium-fire",
+    "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+    "itemName": "Astrodôme – Planétarium",
+    "current": false,
+    "source": {
+      "key": "fire-official",
+      "url": "https://media.licdn.com/dms/image/v2/C4E22AQG4GEU52eunIw/feedshare-shrink_800/feedshare-shrink_800/0/1644501786701?e=2147483647&v=beta&t=zWwHooVJLuGxxZPCN_VLOHuDpftVdwDexkH28FguZ3E",
+      "checkedAt": "2026-11-15T20:06:33.313662+00:00",
+      "status": 200,
+      "file": "/workspace/france-historical-20261114/vulcania/item-history-1956/fire-official.jpg",
+      "bytes": 64574,
+      "sha256": "78c6afd5d540e8573777a27f65861c8814cbf3afaa2ea1b9980c0771bdba978e",
+      "dimensions": [
+        800,
+        533
+      ],
+      "sourcePage": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "author": "Vulcania",
+      "publisher": "Vulcania — LinkedIn public post"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; official Vulcania photo credit preserved, no open licence claimed.",
+    "qualification": "Genuine10February2022fire intervention photo published by Vulcania, corroborated by same exposure in RadioScoop datedreport. No injured person or gore shown; firefightersworking above roof. Exactcapturetimestamp unknown. Originalnative800x533unchanged, no watermark. RadioScoop820pxsameexposure excluded asduplicate."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "SourceUrl": "https://media.licdn.com/dms/image/v2/C4E22AQG4GEU52eunIw/feedshare-shrink_800/feedshare-shrink_800/0/1644501786701?e=2147483647&v=beta&t=zWwHooVJLuGxxZPCN_VLOHuDpftVdwDexkH28FguZ3E",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/item-history-1956/fire-official.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-90-planetarium-fire-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-90-planetarium-fire-import-result.json"
+  },
+  "metadata": {
+    "description": "Intervention sur le chantier du planétarium de Vulcania lors de l’incendie du 10 février 2022.",
+    "sourceUrl": "https://media.licdn.com/dms/image/v2/C4E22AQG4GEU52eunIw/feedshare-shrink_800/feedshare-shrink_800/0/1644501786701?e=2147483647&v=beta&t=zWwHooVJLuGxxZPCN_VLOHuDpftVdwDexkH28FguZ3E",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Des pompiers dans une nacelle au-dessus du toit fumant du planétarium en construction"
+      },
+      {
+        "languageCode": "en",
+        "value": "Firefighters in an aerial platform above the smoking roof of the planetarium under construction"
+      },
+      {
+        "languageCode": "de",
+        "value": "Feuerwehrleute in einem Hubkorb über dem rauchenden Dach des im Bau befindlichen Planetariums"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Brandweerlieden in een hoogwerker boven het rokende dak van het planetarium in aanbouw"
+      },
+      {
+        "languageCode": "it",
+        "value": "Vigili del fuoco su una piattaforma aerea sopra il tetto fumante del planetario in costruzione"
+      },
+      {
+        "languageCode": "es",
+        "value": "Bomberos en una plataforma aérea sobre el tejado humeante del planetario en construcción"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Strażacy w koszu podnośnika nad dymiącym dachem budowanego planetarium"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Bombeiros numa plataforma aérea sobre o telhado fumegante do planetário em construção"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Intervention sur le chantier du planétarium de Vulcania lors de l’incendie du 10 février 2022."
+      },
+      {
+        "languageCode": "en",
+        "value": "Firefighters at Vulcania’s planetarium construction site during the fire on 10 February 2022."
+      },
+      {
+        "languageCode": "de",
+        "value": "Feuerwehreinsatz auf der Baustelle von Vulcanias Planetarium während des Brandes am 10. Februar 2022."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Brandweerinzet op de bouwplaats van het planetarium van Vulcania tijdens de brand op 10 februari 2022."
+      },
+      {
+        "languageCode": "it",
+        "value": "Intervento nel cantiere del planetario di Vulcania durante l’incendio del 10 febbraio 2022."
+      },
+      {
+        "languageCode": "es",
+        "value": "Intervención en las obras del planetario de Vulcania durante el incendio del 10 de febrero de 2022."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Akcja straży pożarnej na budowie planetarium Vulcanii podczas pożaru 10 lutego 2022 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Intervenção nas obras do planetário de Vulcania durante o incêndio de 10 de fevereiro de 2022."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: Vulcania."
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: Vulcania."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: Vulcania."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: Vulcania."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T20:07:42.7912061Z",
+    "startedAtUtc": "2026-11-15T20:07:34.4650633Z",
+    "result": {
+      "id": "9fbd4d6f8df44a9b800f5b71b056dcc6",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+      "path": "park_item/9fbd4d6f8df44a9b800f5b71b056dcc6",
+      "description": "Intervention sur le chantier du planétarium de Vulcania lors de l’incendie du 10 février 2022.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 800,
+      "height": 533,
+      "sizeInBytes": 64574,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://media.licdn.com/dms/image/v2/C4E22AQG4GEU52eunIw/feedshare-shrink_800/feedshare-shrink_800/0/1644501786701?e=2147483647&v=beta&t=zWwHooVJLuGxxZPCN_VLOHuDpftVdwDexkH28FguZ3E",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Des pompiers dans une nacelle au-dessus du toit fumant du planétarium en construction"
+        },
+        {
+          "languageCode": "en",
+          "value": "Firefighters in an aerial platform above the smoking roof of the planetarium under construction"
+        },
+        {
+          "languageCode": "de",
+          "value": "Feuerwehrleute in einem Hubkorb über dem rauchenden Dach des im Bau befindlichen Planetariums"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Brandweerlieden in een hoogwerker boven het rokende dak van het planetarium in aanbouw"
+        },
+        {
+          "languageCode": "it",
+          "value": "Vigili del fuoco su una piattaforma aerea sopra il tetto fumante del planetario in costruzione"
+        },
+        {
+          "languageCode": "es",
+          "value": "Bomberos en una plataforma aérea sobre el tejado humeante del planetario en construcción"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Strażacy w koszu podnośnika nad dymiącym dachem budowanego planetarium"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Bombeiros numa plataforma aérea sobre o telhado fumegante do planetário em construção"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Intervention sur le chantier du planétarium de Vulcania lors de l’incendie du 10 février 2022."
+        },
+        {
+          "languageCode": "en",
+          "value": "Firefighters at Vulcania’s planetarium construction site during the fire on 10 February 2022."
+        },
+        {
+          "languageCode": "de",
+          "value": "Feuerwehreinsatz auf der Baustelle von Vulcanias Planetarium während des Brandes am 10. Februar 2022."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Brandweerinzet op de bouwplaats van het planetarium van Vulcania tijdens de brand op 10 februari 2022."
+        },
+        {
+          "languageCode": "it",
+          "value": "Intervento nel cantiere del planetario di Vulcania durante l’incendio del 10 febbraio 2022."
+        },
+        {
+          "languageCode": "es",
+          "value": "Intervención en las obras del planetario de Vulcania durante el incendio del 10 de febrero de 2022."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Akcja straży pożarnej na budowie planetarium Vulcanii podczas pożaru 10 lutego 2022 roku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Intervenção nas obras do planetário de Vulcania durante o incêndio de 10 de fevereiro de 2022."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Photographie : Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "Photograph: Vulcania."
+        },
+        {
+          "languageCode": "de",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Foto: Vulcania."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fotografía: Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Fotografia: Vulcania."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fotografia: Vulcania."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T20:07:36.061Z",
+      "updatedAt": "2026-11-15T20:07:39.69Z"
+    },
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
