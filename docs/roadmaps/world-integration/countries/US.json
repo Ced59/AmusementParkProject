@@ -2828,55 +2828,180 @@
     },
     {
       "entryId": "US-candidate-standalone-ad74e1b287c010",
-      "name": "Alpine Coaster Wiegand — Park City Alpine Coaster",
-      "entityKind": "ToQualify",
+      "name": "Park City Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
       "category": "Alpine coaster",
-      "locality": null,
-      "siteId": null,
+      "locality": "Park City Mountain Village, Park City, Utah",
+      "siteId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
       "legacySiteIds": [],
-      "presence": "PossibleExisting",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T19:11:50Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Exploitant actif ; prochaine saison hivernale annoncée du 20 novembre 2026 au 19 avril 2027, sous réserve de météo.",
+      "identityConfidence": "Billet individuel et page propre de l’exploitant ; ancienne référence constructeur reliée, sans homonyme sur le site.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-4a1028e22d6130",
+        "US-candidate-discovery-53834c6432eb545a"
+      ],
       "aliases": [
-        "Park City Alpine Coaster"
+        "Park City Alpine Coaster",
+        "Alpine Coaster — Park City Mountain"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
-      "sources": [
+      "lastDataIntegrationAt": "2026-11-15T19:11:54.904Z",
+      "integrationHistory": [
         {
-          "label": "Wiegand — références constructeur",
-          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
-          "accessedAt": "2026-10-22"
+          "eventId": "apply-fcfb389b-8725-4657-be48-04c18317527f",
+          "appliedAt": "2026-11-15T19:03:26.464Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:apply:fcfb389b-8725-4657-be48-04c18317527f",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées pour le Mountain Coaster."
         },
         {
-          "label": "Opérateur référencé par la source",
-          "url": "https://www.parkcitymountain.com/",
-          "accessedAt": "2026-10-22"
+          "eventId": "photo-86515e8236674f5e91c34267eca00f38",
+          "appliedAt": "2026-11-15T19:04:03.224Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:86515e8236674f5e91c34267eca00f38",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du Mountain Coaster, CC BY 2.0, avec crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-c27c7ccb7fd74c3e9dc59046e3b72a67",
+          "appliedAt": "2026-11-15T19:04:15.435Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:c27c7ccb7fd74c3e9dc59046e3b72a67",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du Mountain Coaster, CC BY 2.0, avec crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "photo-3803ee307e914cb7a00bfcbc8437317b",
+          "appliedAt": "2026-11-15T19:04:27.579Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:3803ee307e914cb7a00bfcbc8437317b",
+          "auditEvidence": null,
+          "summary": "Photographie exacte du Mountain Coaster, CC BY 2.0, avec crédit et textes alternatifs localisés."
+        },
+        {
+          "eventId": "apply-db387a67-d7d2-441f-8297-155872112825",
+          "appliedAt": "2026-11-15T19:05:54.096Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:apply:db387a67-d7d2-441f-8297-155872112825",
+          "auditEvidence": null,
+          "summary": "Horaires officiels de la saison hivernale 2026/27 structurés ; fermeture jusqu’au 20 novembre."
+        },
+        {
+          "eventId": "photo-update-86515e8236674f5e91c34267eca00f38",
+          "appliedAt": "2026-11-15T19:11:54.904Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+          "evidence": "PARK_DATA_EDITOR:photo:86515e8236674f5e91c34267eca00f38",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-mountain-coaster-20261115/audit.json",
+          "summary": "Description de la photo principale corrigée ; huit pages et trois images publiées, audit sans blocage."
+        }
+      ],
+      "nextAction": "Conserver la ligne et les reçus. Vérifier tarifs, restrictions officielles et prochain calendrier avant une nouvelle intégration de données.",
+      "sources": [
+        {
+          "label": "Park City Mountain — Mountain Coaster",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-coaster.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — calendrier hiver 2026/27",
+          "url": "https://www.parkcitymountain.com/explore-the-resort/about-the-resort/hours-of-operation.aspx",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — billet Adventure Park Single Ride",
+          "url": "https://www.parkcitymountain.com/travel-guide/perfect-summer-itinerary",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Park City Mountain — carte été, coaster distinct de la luge",
+          "url": "https://www.parkcitymountain.com/-/aemasset/sitecore/park-city/maps/20250513_PC_summer-trail_map_001.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence Park City Alpine Coaster",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, station 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837817995/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, voyageur 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837723474/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — Jeremy Thompson, rail 2024, CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837370406/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche publique Park City Mountain Coaster",
+          "url": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Park City Alpine Coaster",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-2100",
+            "name": "Park City Mountain Coaster",
+            "source": "Park City Mountain",
+            "url": "https://www.parkcitymountain.com/explore-the-resort/activities/summer-activities/alpine-coaster.aspx",
             "family": "Alpine coaster",
-            "sourceVenueName": "Park City Alpine Coaster",
-            "referenceId": "location-id-2100"
+            "sourceVenueName": "Park City Mountain Adventure Park",
+            "sourceLifecycleSignal": "Hiver 2026/27 annoncé du 20 novembre au 19 avril, météo sous réserve.",
+            "matchingMethod": "Recherche officielle Park et StandaloneAttraction, référence Wiegand, Preview et Apply contrôlés.",
+            "sourceLocality": "Park City, Utah"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Attraction sur rail fixe, billet individuel et identité distincte de l’Alpine Slide du même Adventure Park."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster",
+          "publishedAtUtc": "2026-11-15T19:10:26.6868384Z",
+          "verifiedAtUtc": "2026-11-15T19:11:50Z",
+          "evidence": "PARK_DATA_EDITOR:apply:956ac283-14c4-4e84-90af-73fb50edb3cc"
+        },
+        "facebook": {
+          "id": "1d50ced5643c4597b64ecaec3d271ddd",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T19:11:20.4198627Z",
+          "externalPostId": "1285475681307050_122127498765424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127498765424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:1d50ced5643c4597b64ecaec3d271ddd"
+        }
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-park-city-mountain-coaster-20261115/audit.json",
+        "score": 74,
+        "publicationBlockers": [],
+        "gapCount": 2
       }
     },
     {
@@ -4638,14 +4763,14 @@
       "editorialStatus": "ToQualify",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Nor’Easter Mountain Coaster retiré en 2024 ; ZipRider à requalifier séparément, activité actuelle non confirmée.",
+      "identityConfidence": "Ancien coaster identifié et retiré ; la référence constructeur ZipRider n’établit pas son exploitation actuelle.",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Ne pas créer la fiche Nor’Easter Mountain Coaster : installation retirée en 2024. Requalifier uniquement ZipRider Attitash avec une source d’exploitation actuelle et une photo exacte libre avant toute intégration.",
       "sources": [
         {
           "label": "RCDB",
@@ -4666,11 +4791,21 @@
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/attitash/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "RCDB — Nor’Easter Mountain Coaster retiré",
+          "url": "https://rcdb.com/13359.htm",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Unofficial Networks — démontage du coaster en 2024",
+          "url": "https://unofficialnetworks.com/2024/08/20/attitash-offseason-projects-2024/",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
         "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Nor'Easter Mountain Coaster",
@@ -4678,7 +4813,7 @@
             "url": "https://rcdb.com/13359.htm",
             "family": "Mountain coaster",
             "sourceVenueName": "Attitash Mountain Resort",
-            "sourceLifecycleSignal": "-",
+            "sourceLifecycleSignal": "Retiré en 2024 ; hors file des créations actives.",
             "sourceLocality": "Bartlett , New Hampshire",
             "sourceOpenedYear": "2010"
           },
@@ -4687,10 +4822,11 @@
             "source": "ZipRider — référence constructeur",
             "url": "https://ziprider.com/locations/attitash/",
             "family": "Tyrolienne fixe",
-            "sourceVenueName": "Attitash Mountain Resort"
+            "sourceVenueName": "Attitash Mountain Resort",
+            "sourceLifecycleSignal": "Référence constructeur ancienne ; exploitation actuelle non confirmée."
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
+        "rationale": "Le coaster Nor’Easter a été retiré en 2024 selon RCDB et le reportage de démontage. Le dossier reste ouvert seulement pour la tyrolienne ZipRider, sans présumer de son activité actuelle."
       }
     },
     {
@@ -47419,7 +47555,7 @@
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Dossier source Park City Mountain Resort : Mountain Coaster et Alpine Slide ont chacun une fiche standalone publiée. Vérifier seulement les autres attractions fixes éventuelles ; ne pas recréer un doublon du domaine ou de ces deux attractions.",
       "sources": [
         {
           "label": "RCDB",
@@ -47438,8 +47574,8 @@
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Mountain Coaster",
@@ -47452,8 +47588,12 @@
             "sourceOpenedYear": "2006"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Domaine source contenant deux attractions déjà publiées séparément ; examiner les autres activités avant tout nouveau rattachement."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-discovery-53834c6432eb545a",
+        "US-candidate-standalone-ad74e1b287c010"
+      ]
     },
     {
       "entryId": "US-candidate-8c738dc696fa38",

@@ -1,0 +1,55 @@
+{
+  "entityId": "0fdd60a4-08c0-42b7-84bc-974e2600b90d",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "fcfb389b-8725-4657-be48-04c18317527f",
+      "appliedAtUtc": "2026-11-15T19:03:26.4644385Z"
+    },
+    {
+      "step": "winterHours",
+      "operationId": "db387a67-d7d2-441f-8297-155872112825",
+      "appliedAtUtc": "2026-11-15T19:05:54.0963793Z"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "86515e8236674f5e91c34267eca00f38",
+      "createdAtUtc": "2026-11-15T19:04:03.224Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837817995/",
+      "published": true,
+      "current": true
+    },
+    {
+      "imageId": "c27c7ccb7fd74c3e9dc59046e3b72a67",
+      "createdAtUtc": "2026-11-15T19:04:15.435Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837723474/",
+      "published": true,
+      "current": false
+    },
+    {
+      "imageId": "3803ee307e914cb7a00bfcbc8437317b",
+      "createdAtUtc": "2026-11-15T19:04:27.579Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837370406/",
+      "published": true,
+      "current": false
+    }
+  ],
+  "photoMetadataUpdate": {
+    "imageId": "86515e8236674f5e91c34267eca00f38",
+    "updatedAtUtc": "2026-11-15T19:11:54.904Z",
+    "description": "Park City Mountain Coaster cars at the departure platform, July 2024."
+  },
+  "sitePublication": {
+    "operationId": "956ac283-14c4-4e84-90af-73fb50edb3cc",
+    "appliedAtUtc": "2026-11-15T19:10:26.6868384Z",
+    "url": "https://amusement-parks.fun/fr/attraction/0fdd60a4-08c0-42b7-84bc-974e2600b90d/park-city-mountain-coaster"
+  },
+  "facebookPublication": {
+    "id": "1d50ced5643c4597b64ecaec3d271ddd",
+    "status": "Published",
+    "publishedAtUtc": "2026-11-15T19:11:20.4198627Z",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127498765424431",
+    "externalPostId": "1285475681307050_122127498765424431"
+  }
+}
