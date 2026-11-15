@@ -1,0 +1,287 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-30-story-souvenirs",
+    "ownerId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+    "itemName": "Vulcania Story",
+    "current": true,
+    "source": {
+      "key": "story-hero",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/06/vulcania-story_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/vulcania-story/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/story-hero.jpg",
+      "accessedAtUtc": "2026-11-15T13:54:26.379627+00:00",
+      "http": 200,
+      "bytes": 124477,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "3011b0ad9767a9439650a5754fa739b1b471d0a383f6683551269711d0fa4939",
+      "over960KiB": false,
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Original individually inspected. Real photograph of the identified existing venue, distinct from all accepted files. No image edits or capture date inferred from URL."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/vulcania-story_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/story-hero.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-30-story-souvenirs-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-30-story-souvenirs-import-result.json"
+  },
+  "metadata": {
+    "description": "Un dragon vert et une peluche rouge voisinent avec les objets marqués Vulcania, près d’un panneau sur l’architecture.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/vulcania-story_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vitrine de Vulcania Story contenant des tasses, des peluches et des souvenirs illustrés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Vulcania Story display case containing mugs, soft toys and illustrated souvenirs."
+      },
+      {
+        "languageCode": "de",
+        "value": "Vitrine in Vulcania Story mit Tassen, Plüschfiguren und bebilderten Souvenirs."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Vitrine van Vulcania Story met mokken, knuffels en souvenirs met afbeeldingen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vetrina di Vulcania Story con tazze, peluche e ricordi illustrati."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vitrina de Vulcania Story con tazas, peluches y recuerdos ilustrados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Gablota Vulcania Story z kubkami, pluszowymi zabawkami i ilustrowanymi pamiątkami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vitrina de Vulcania Story com canecas, peluches e recordações ilustradas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Un dragon vert et une peluche rouge voisinent avec les objets marqués Vulcania, près d’un panneau sur l’architecture."
+      },
+      {
+        "languageCode": "en",
+        "value": "A green dragon and a red soft toy sit among Vulcania-branded objects beside an architecture panel."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein grüner Drache und eine rote Plüschfigur liegen zwischen Gegenständen mit Vulcania-Schriftzug neben einer Architekturtafel."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een groene draak en een rode knuffel liggen tussen voorwerpen met de naam Vulcania, naast een paneel over architectuur."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un drago verde e un peluche rosso si trovano tra oggetti con il nome Vulcania, accanto a un pannello sull’architettura."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un dragón verde y un peluche rojo aparecen entre objetos con el nombre Vulcania, junto a un panel sobre arquitectura."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zielony smok i czerwona pluszowa zabawka znajdują się wśród przedmiotów z nazwą Vulcania, obok planszy o architekturze."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um dragão verde e um peluche vermelho estão entre objetos com o nome Vulcania, junto de um painel sobre arquitetura."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "receivedAtUtc": "2026-11-15T18:08:59.3342486Z",
+    "startedAtUtc": "2026-11-15T18:08:51.1011570Z",
+    "result": {
+      "id": "ff71086ebe364f679d022c4ead7235be",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+      "path": "park_item/ff71086ebe364f679d022c4ead7235be",
+      "description": "Un dragon vert et une peluche rouge voisinent avec les objets marqués Vulcania, près d’un panneau sur l’architecture.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 124477,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/vulcania-story_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vitrine de Vulcania Story contenant des tasses, des peluches et des souvenirs illustrés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania Story display case containing mugs, soft toys and illustrated souvenirs."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vitrine in Vulcania Story mit Tassen, Plüschfiguren und bebilderten Souvenirs."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vitrine van Vulcania Story met mokken, knuffels en souvenirs met afbeeldingen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrina di Vulcania Story con tazze, peluche e ricordi illustrati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vitrina de Vulcania Story con tazas, peluches y recuerdos ilustrados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Gablota Vulcania Story z kubkami, pluszowymi zabawkami i ilustrowanymi pamiątkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vitrina de Vulcania Story com canecas, peluches e recordações ilustradas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un dragon vert et une peluche rouge voisinent avec les objets marqués Vulcania, près d’un panneau sur l’architecture."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green dragon and a red soft toy sit among Vulcania-branded objects beside an architecture panel."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grüner Drache und eine rote Plüschfigur liegen zwischen Gegenständen mit Vulcania-Schriftzug neben einer Architekturtafel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groene draak en een rode knuffel liggen tussen voorwerpen met de naam Vulcania, naast een paneel over architectuur."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un drago verde e un peluche rosso si trovano tra oggetti con il nome Vulcania, accanto a un pannello sull’architettura."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un dragón verde y un peluche rojo aparecen entre objetos con el nombre Vulcania, junto a un panel sobre arquitectura."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielony smok i czerwona pluszowa zabawka znajdują się wśród przedmiotów z nazwą Vulcania, obok planszy o architekturze."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um dragão verde e um peluche vermelho estão entre objetos com o nome Vulcania, junto de um painel sobre arquitetura."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:08:52.608Z",
+      "updatedAt": "2026-11-15T18:08:56.168Z"
+    },
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

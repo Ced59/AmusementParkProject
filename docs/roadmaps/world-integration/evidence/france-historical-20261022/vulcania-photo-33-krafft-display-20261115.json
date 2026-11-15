@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-33-krafft-display",
+    "ownerId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+    "itemName": "Maurice et Katia Krafft, histoires de volcanologues",
+    "current": true,
+    "source": {
+      "key": "krafft-display",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/05/expo-krafft_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/maurice-et-katia-krafft/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/krafft-display.jpg",
+      "accessedAtUtc": "2026-11-15T18:09:23.933017+00:00",
+      "http": 200,
+      "bytes": 151584,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "1b8eb3811541e1716896125b8f06fa9ba7ee684b6832043c630bdb62b2eecbb0",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Real photograph personally inspected, exact venue identity; no local transformation or capture date inferred. No specimen locality or visitor identity inferred."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/expo-krafft_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/krafft-display.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-33-krafft-display-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-33-krafft-display-import-result.json"
+  },
+  "metadata": {
+    "description": "Les objets sont disposés sur des socles sombres devant des images de lave et des panneaux explicatifs.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/expo-krafft_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Vitrines éclairées de l’exposition Maurice et Katia Krafft, avec des échantillons et des caisses en bois."
+      },
+      {
+        "languageCode": "en",
+        "value": "Illuminated display cases in the Maurice and Katia Krafft exhibition, with samples and wooden crates."
+      },
+      {
+        "languageCode": "de",
+        "value": "Beleuchtete Vitrinen in der Ausstellung über Maurice und Katia Krafft mit Proben und Holzkisten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Verlichte vitrines in de tentoonstelling over Maurice en Katia Krafft, met monsters en houten kisten."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vetrine illuminate nell’esposizione su Maurice e Katia Krafft, con campioni e casse di legno."
+      },
+      {
+        "languageCode": "es",
+        "value": "Vitrinas iluminadas de la exposición sobre Maurice y Katia Krafft, con muestras y cajas de madera."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Oświetlone gabloty wystawy o Maurice’ie i Katii Krafftach, z próbkami i drewnianymi skrzyniami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Vitrinas iluminadas da exposição sobre Maurice e Katia Krafft, com amostras e caixas de madeira."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les objets sont disposés sur des socles sombres devant des images de lave et des panneaux explicatifs."
+      },
+      {
+        "languageCode": "en",
+        "value": "Objects stand on dark plinths in front of lava imagery and explanatory panels."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die Objekte stehen auf dunklen Sockeln vor Lavabildern und Erklärungstafeln."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De voorwerpen staan op donkere sokkels voor lavabeelden en uitlegpanelen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli oggetti sono esposti su basi scure davanti a immagini di lava e pannelli esplicativi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los objetos se presentan sobre bases oscuras ante imágenes de lava y paneles explicativos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przedmioty stoją na ciemnych podstawach przed obrazami lawy i planszami objaśniającymi."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os objetos estão dispostos sobre bases escuras diante de imagens de lava e painéis explicativos."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "f7028cf39cb34e1dbf40118d487cecfe",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+      "path": "park_item/f7028cf39cb34e1dbf40118d487cecfe",
+      "description": "Les objets sont disposés sur des socles sombres devant des images de lave et des panneaux explicatifs.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 151584,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/expo-krafft_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vitrines éclairées de l’exposition Maurice et Katia Krafft, avec des échantillons et des caisses en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Illuminated display cases in the Maurice and Katia Krafft exhibition, with samples and wooden crates."
+        },
+        {
+          "languageCode": "de",
+          "value": "Beleuchtete Vitrinen in der Ausstellung über Maurice und Katia Krafft mit Proben und Holzkisten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Verlichte vitrines in de tentoonstelling over Maurice en Katia Krafft, met monsters en houten kisten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrine illuminate nell’esposizione su Maurice e Katia Krafft, con campioni e casse di legno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vitrinas iluminadas de la exposición sobre Maurice y Katia Krafft, con muestras y cajas de madera."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlone gabloty wystawy o Maurice’ie i Katii Krafftach, z próbkami i drewnianymi skrzyniami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vitrinas iluminadas da exposição sobre Maurice e Katia Krafft, com amostras e caixas de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les objets sont disposés sur des socles sombres devant des images de lave et des panneaux explicatifs."
+        },
+        {
+          "languageCode": "en",
+          "value": "Objects stand on dark plinths in front of lava imagery and explanatory panels."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Objekte stehen auf dunklen Sockeln vor Lavabildern und Erklärungstafeln."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De voorwerpen staan op donkere sokkels voor lavabeelden en uitlegpanelen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli oggetti sono esposti su basi scure davanti a immagini di lava e pannelli esplicativi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los objetos se presentan sobre bases oscuras ante imágenes de lava y paneles explicativos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przedmioty stoją na ciemnych podstawach przed obrazami lawy i planszami objaśniającymi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os objetos estão dispostos sobre bases escuras diante de imagens de lava e painéis explicativos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:14:26.31Z",
+      "updatedAt": "2026-11-15T18:14:29.895Z"
+    },
+    "receivedAtUtc": "2026-11-15T18:14:33.0016390Z",
+    "startedAtUtc": "2026-11-15T18:14:23.4451818Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

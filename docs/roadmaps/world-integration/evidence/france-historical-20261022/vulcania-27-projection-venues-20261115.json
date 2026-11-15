@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+          "key": "vulcania-cinemax",
+          "name": "CinéMax",
+          "type": "Cinema",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La Terre sur grand écran</h2><p>Le CinéMax est la grande salle consacrée aux images de la Terre à Vulcania. Dans l’obscurité, l’écran donne aux reliefs volcaniques et aux phénomènes naturels une présence qui domine le champ de vision. Les paysages filmés constituent le cœur de cette expérience documentaire.</p><p>Regards sur les volcans conduit vers des volcans en activité à travers le monde. La projection fait découvrir leurs paysages à une échelle qui met en valeur les formes du relief, les panaches et l’environnement des édifices volcaniques.</p><h2>Du volcanisme aux tempêtes</h2><p>La programmation comprend aussi Ouragan, consacré à l’origine et aux conséquences d’un cyclone. Ce second sujet élargit l’exploration aux phénomènes atmosphériques : la même salle accueille ainsi des regards sur les forces qui transforment la surface de notre planète.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Earth on a giant screen</h2><p>CinéMax is Vulcania’s large theatre devoted to images of the Earth. In the darkened auditorium, volcanic landforms and natural phenomena fill the viewer’s field of vision. Filmed landscapes are at the heart of this documentary experience.</p><p>Regards sur les volcans explores active volcanoes around the world. The projection presents their landscapes on a scale that highlights the shapes of the terrain, volcanic plumes and the surroundings of the volcanoes.</p><h2>From volcanoes to storms</h2><p>The programme also includes Ouragan, about the origins and consequences of a hurricane. This second subject extends the exploration to atmospheric phenomena. The same theatre brings together perspectives on forces that transform the surface of our planet.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Erde auf der Großleinwand</h2><p>CinéMax ist Vulcanias großer Kinosaal für Bilder der Erde. Im dunklen Zuschauerraum füllen Vulkanlandschaften und Naturphänomene das Blickfeld. Gefilmte Landschaften stehen im Mittelpunkt dieses dokumentarischen Erlebnisses.</p><p>Regards sur les volcans führt zu aktiven Vulkanen in aller Welt. Die großformatige Projektion betont die Formen des Geländes, aufsteigende Vulkanwolken und die Umgebung der Vulkanberge.</p><h2>Von Vulkanen zu Stürmen</h2><p>Zum Programm gehört außerdem Ouragan, ein Film über die Entstehung und die Folgen eines Hurrikans. Damit erweitert sich die Erkundung auf atmosphärische Phänomene. Derselbe Saal vereint verschiedene Blicke auf Kräfte, die die Oberfläche unseres Planeten verändern.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De aarde op groot scherm</h2><p>CinéMax is de grote filmzaal van Vulcania die aan beelden van de aarde is gewijd. In het donkere auditorium vullen vulkanische landschappen en natuurverschijnselen het blikveld. Gefilmde landschappen staan centraal in deze documentaire ervaring.</p><p>Regards sur les volcans voert langs actieve vulkanen over de hele wereld. De grote projectie benadrukt de vormen van het terrein, vulkanische pluimen en de omgeving van de vulkaanbergen.</p><h2>Van vulkanen naar stormen</h2><p>Het programma omvat ook Ouragan, over het ontstaan en de gevolgen van een orkaan. Daarmee verbreedt de verkenning zich naar atmosferische verschijnselen. Dezelfde zaal brengt verschillende blikken samen op krachten die het oppervlak van onze planeet veranderen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La Terra sul grande schermo</h2><p>CinéMax è la grande sala di Vulcania dedicata alle immagini della Terra. Nel buio, paesaggi vulcanici e fenomeni naturali occupano il campo visivo. I paesaggi filmati sono al centro di questa esperienza documentaristica.</p><p>Regards sur les volcans conduce tra vulcani attivi di tutto il mondo. La proiezione li presenta su una scala che evidenzia le forme del rilievo, i pennacchi e l’ambiente attorno agli edifici vulcanici.</p><h2>Dai vulcani alle tempeste</h2><p>La programmazione comprende anche Ouragan, dedicato all’origine e alle conseguenze di un uragano. Questo secondo tema amplia l’esplorazione ai fenomeni atmosferici. La stessa sala riunisce così sguardi diversi sulle forze che trasformano la superficie del nostro pianeta.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La Tierra en pantalla gigante</h2><p>CinéMax es la gran sala de Vulcania dedicada a las imágenes de la Tierra. En la oscuridad, los paisajes volcánicos y los fenómenos naturales dominan el campo visual. Los paisajes filmados constituyen el centro de esta experiencia documental.</p><p>Regards sur les volcans recorre volcanes activos de todo el mundo. La proyección muestra sus paisajes a una escala que destaca las formas del relieve, las columnas volcánicas y el entorno de los edificios volcánicos.</p><h2>De los volcanes a las tormentas</h2><p>La programación también incluye Ouragan, sobre el origen y las consecuencias de un huracán. Este segundo tema amplía la exploración a los fenómenos atmosféricos. La misma sala reúne así distintas miradas sobre las fuerzas que transforman la superficie del planeta.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Ziemia na wielkim ekranie</h2><p>CinéMax to duża sala kinowa Vulcanii poświęcona obrazom Ziemi. W zaciemnionym wnętrzu wulkaniczne krajobrazy i zjawiska naturalne wypełniają pole widzenia. Filmowane pejzaże stanowią sedno tego dokumentalnego doświadczenia.</p><p>Regards sur les volcans prowadzi wśród czynnych wulkanów na całym świecie. Wielki obraz podkreśla kształty terenu, wulkaniczne pióropusze oraz otoczenie gór wulkanicznych.</p><h2>Od wulkanów po burze</h2><p>W programie znajduje się również Ouragan, opowiadający o powstawaniu i skutkach huraganu. Ten temat poszerza poznawanie świata o zjawiska atmosferyczne. Ta sama sala przedstawia różne spojrzenia na siły zmieniające powierzchnię naszej planety.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A Terra no grande ecrã</h2><p>CinéMax é a grande sala do Vulcania dedicada às imagens da Terra. Na escuridão, as paisagens vulcânicas e os fenómenos naturais dominam o campo de visão. As paisagens filmadas estão no centro desta experiência documental.</p><p>Regards sur les volcans percorre vulcões ativos de todo o mundo. A projeção apresenta as suas paisagens numa escala que destaca as formas do relevo, as plumas vulcânicas e o ambiente em redor dos edifícios vulcânicos.</p><h2>Dos vulcões às tempestades</h2><p>A programação inclui também Ouragan, dedicado à origem e às consequências de um furacão. Este segundo tema alarga a exploração aos fenómenos atmosféricos. A mesma sala reúne diferentes olhares sobre as forças que transformam a superfície do nosso planeta.</p>"
+            }
+          ]
+        },
+        {
+          "id": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+          "key": "vulcania-astrodome",
+          "name": "Astrodôme – Planétarium",
+          "type": "Cinema",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La Terre replacée dans l’Univers</h2><p>L’Astrodôme ouvre les horizons de Vulcania vers les étoiles. Inauguré en 2023, le planétarium rapproche les phénomènes terrestres de ceux d’autres planètes et satellites : volcanisme, eau et saisons deviennent des portes d’entrée pour explorer le Système solaire sous un ciel projeté.</p><p>Les séances accompagnées donnent une place à la parole des médiateurs scientifiques. Ce soir dans le ciel s’intéresse aux merveilles du ciel étoilé, tandis que L’aventure volcano-sidérale propose un voyage imaginaire vers le volcanisme extraterrestre. Ces récits prolongent le thème des volcans jusque dans l’Espace.</p><h2>Des films sous la voûte</h2><p>La programmation de 2026 comprend notamment La grande aventure du Système solaire et Rencontres dans la Voie Lactée. Sous le dôme, ces films élargissent la perspective aux planètes et à l’histoire de notre galaxie. Des ateliers scientifiques disposent également d’espaces dédiés dans le bâtiment.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Placing Earth within the Universe</h2><p>The Astrodôme extends Vulcania’s horizons towards the stars. Inaugurated in 2023, the planetarium connects phenomena on Earth with those of other planets and moons. Volcanism, water and seasons provide starting points for exploring the Solar System beneath a projected sky.</p><p>Guided sessions give scientific presenters a voice in the experience. Ce soir dans le ciel explores the wonders of the starry sky, while L’aventure volcano-sidérale offers an imaginary journey into extraterrestrial volcanism. These stories carry the park’s volcanic theme into space.</p><h2>Films beneath the dome</h2><p>The 2026 programme includes La grande aventure du Système solaire and Rencontres dans la Voie Lactée. Under the dome, these films broaden the perspective to planets and the history of our galaxy. Scientific workshops also have dedicated spaces within the building.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Erde als Teil des Universums</h2><p>Das Astrodôme erweitert Vulcanias Horizont bis zu den Sternen. Das 2023 eingeweihte Planetarium verbindet Erscheinungen auf der Erde mit denen anderer Planeten und Monde. Vulkanismus, Wasser und Jahreszeiten bilden Ausgangspunkte für die Erkundung des Sonnensystems unter einem projizierten Himmel.</p><p>Begleitete Vorstellungen geben den wissenschaftlichen Vermittlern Raum. Ce soir dans le ciel widmet sich den Wundern des Sternenhimmels, während L’aventure volcano-sidérale eine imaginäre Reise zum außerirdischen Vulkanismus anbietet. Diese Geschichten führen das Vulkanthema des Parks ins Weltall weiter.</p><h2>Filme unter der Kuppel</h2><p>Zum Programm 2026 gehören La grande aventure du Système solaire und Rencontres dans la Voie Lactée. Unter der Kuppel erweitern diese Filme den Blick auf Planeten und die Geschichte unserer Galaxie. Für wissenschaftliche Workshops stehen im Gebäude ebenfalls eigene Räume zur Verfügung.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De aarde als deel van het heelal</h2><p>Het Astrodôme verruimt de horizon van Vulcania tot aan de sterren. Het planetarium, geopend in 2023, verbindt verschijnselen op aarde met die van andere planeten en manen. Vulkanisme, water en seizoenen vormen vertrekpunten om het zonnestelsel onder een geprojecteerde hemel te verkennen.</p><p>Bij begeleide voorstellingen krijgen wetenschappelijke publieksbegeleiders het woord. Ce soir dans le ciel verkent de wonderen van de sterrenhemel, terwijl L’aventure volcano-sidérale een denkbeeldige reis naar buitenaards vulkanisme biedt. Zo loopt het vulkaanthema van het park door tot in de ruimte.</p><h2>Films onder de koepel</h2><p>Het programma van 2026 omvat onder meer La grande aventure du Système solaire en Rencontres dans la Voie Lactée. Onder de koepel verbreden deze films de blik naar planeten en de geschiedenis van ons sterrenstelsel. Het gebouw heeft daarnaast eigen ruimten voor wetenschappelijke workshops.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La Terra nell’Universo</h2><p>L’Astrodôme estende gli orizzonti di Vulcania verso le stelle. Inaugurato nel 2023, il planetario collega i fenomeni terrestri a quelli di altri pianeti e satelliti. Vulcanismo, acqua e stagioni diventano punti di partenza per esplorare il Sistema solare sotto un cielo proiettato.</p><p>Le sessioni guidate danno spazio alla voce dei divulgatori scientifici. Ce soir dans le ciel esplora le meraviglie del cielo stellato, mentre L’aventure volcano-sidérale propone un viaggio immaginario nel vulcanismo extraterrestre. Questi racconti prolungano il tema dei vulcani fino allo spazio.</p><h2>Film sotto la cupola</h2><p>La programmazione del 2026 comprende La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sotto la cupola, questi film ampliano la prospettiva ai pianeti e alla storia della nostra galassia. Nel medesimo edificio si trovano anche spazi dedicati ai laboratori scientifici.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La Tierra dentro del Universo</h2><p>El Astrodôme amplía los horizontes de Vulcania hacia las estrellas. Inaugurado en 2023, el planetario relaciona los fenómenos terrestres con los de otros planetas y satélites. El vulcanismo, el agua y las estaciones sirven de puntos de partida para explorar el Sistema Solar bajo un cielo proyectado.</p><p>Las sesiones guiadas dan voz a los divulgadores científicos. Ce soir dans le ciel explora las maravillas del cielo estrellado, mientras L’aventure volcano-sidérale propone un viaje imaginario al vulcanismo extraterrestre. Estos relatos prolongan el tema de los volcanes hasta el espacio.</p><h2>Películas bajo la cúpula</h2><p>La programación de 2026 incluye La grande aventure du Système solaire y Rencontres dans la Voie Lactée. Bajo la cúpula, estas películas amplían la perspectiva hacia los planetas y la historia de nuestra galaxia. El edificio también dispone de espacios dedicados a talleres científicos.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Ziemia jako część Wszechświata</h2><p>Astrodôme poszerza horyzonty Vulcanii w stronę gwiazd. Planetarium zainaugurowane w 2023 roku zestawia zjawiska ziemskie z tymi występującymi na innych planetach i księżycach. Wulkanizm, woda i pory roku stają się punktami wyjścia do poznawania Układu Słonecznego pod wyświetlanym niebem.</p><p>Podczas prowadzonych pokazów głos zabierają popularyzatorzy nauki. Ce soir dans le ciel przybliża cuda rozgwieżdżonego nieba, a L’aventure volcano-sidérale proponuje wyobrażoną podróż do pozaziemskiego wulkanizmu. Opowieści te przenoszą wulkaniczną tematykę parku w przestrzeń kosmiczną.</p><h2>Filmy pod kopułą</h2><p>Program na 2026 rok obejmuje między innymi La grande aventure du Système solaire oraz Rencontres dans la Voie Lactée. Pod kopułą filmy poszerzają perspektywę o planety i historię naszej galaktyki. Budynek mieści również osobne przestrzenie przeznaczone na warsztaty naukowe.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A Terra no Universo</h2><p>O Astrodôme alarga os horizontes do Vulcania até às estrelas. Inaugurado em 2023, o planetário relaciona fenómenos terrestres com os de outros planetas e satélites. Vulcanismo, água e estações do ano tornam-se pontos de partida para explorar o Sistema Solar sob um céu projetado.</p><p>As sessões acompanhadas dão voz aos mediadores científicos. Ce soir dans le ciel explora as maravilhas do céu estrelado, enquanto L’aventure volcano-sidérale propõe uma viagem imaginária pelo vulcanismo extraterrestre. Estas histórias prolongam o tema dos vulcões até ao espaço.</p><h2>Filmes sob a cúpula</h2><p>A programação de 2026 inclui La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sob a cúpula, estes filmes alargam a perspetiva aos planetas e à história da nossa galáxia. O edifício dispõe ainda de espaços dedicados a oficinas científicas.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-projection-venues",
+        "notes": "Sixteen descriptions personally written and reviewed in eight languages. Distinct existing CinéMax and Astrodôme venues preserved; film programmes described in context without duplicate items. Official sources: https://www.vulcania.com/les-films-sur-ecrans-geants/ and https://www.vulcania.com/planetarium/ . Astrodôme inauguration 2023, programme 2026 explicitly bounded; guided sessions and workshop spaces are sourced. No daily-show guarantee or conflicting experience count; no opening-day invention. Two specific headings and three paragraphs per language; documentary depth limited by the sources, no filler."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "fe2db990-9684-4792-971d-18caa2f67b3f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:04:31.4080307Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "entityKey": "vulcania-cinemax",
+        "displayName": "CinéMax",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde auf der Großleinwand</h2><p>CinéMax ist Vulcanias großer Kinosaal für Bilder der Erde. Im dunklen Zuschauerraum füllen Vulkanlandschaften und Naturphänomene das Blickfeld. Gefilmte Landschaften stehen im Mittelpunkt dieses dokumentarischen Erlebnisses.</p><p>Regards sur les volcans führt zu aktiven Vulkanen in aller Welt. Die großformatige Projektion betont die Formen des Geländes, aufsteigende Vulkanwolken und die Umgebung der Vulkanberge.</p><h2>Von Vulkanen zu Stürmen</h2><p>Zum Programm gehört außerdem Ouragan, ein Film über die Entstehung und die Folgen eines Hurrikans. Damit erweitert sich die Erkundung auf atmosphärische Phänomene. Derselbe Saal vereint verschiedene Blicke auf Kräfte, die die Oberfläche unseres Planeten verändern.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Earth on a giant screen</h2><p>CinéMax is Vulcania’s large theatre devoted to images of the Earth. In the darkened auditorium, volcanic landforms and natural phenomena fill the viewer’s field of vision. Filmed landscapes are at the heart of this documentary experience.</p><p>Regards sur les volcans explores active volcanoes around the world. The projection presents their landscapes on a scale that highlights the shapes of the terrain, volcanic plumes and the surroundings of the volcanoes.</p><h2>From volcanoes to storms</h2><p>The programme also includes Ouragan, about the origins and consequences of a hurricane. This second subject extends the exploration to atmospheric phenomena. The same theatre brings together perspectives on forces that transform the surface of our planet.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra en pantalla gigante</h2><p>CinéMax es la gran sala de Vulcania dedicada a las imágenes de la Tierra. En la oscuridad, los paisajes volcánicos y los fenómenos naturales dominan el campo visual. Los paisajes filmados constituyen el centro de esta experiencia documental.</p><p>Regards sur les volcans recorre volcanes activos de todo el mundo. La proyección muestra sus paisajes a una escala que destaca las formas del relieve, las columnas volcánicas y el entorno de los edificios volcánicos.</p><h2>De los volcanes a las tormentas</h2><p>La programación también incluye Ouragan, sobre el origen y las consecuencias de un huracán. Este segundo tema amplía la exploración a los fenómenos atmosféricos. La misma sala reúne así distintas miradas sobre las fuerzas que transforman la superficie del planeta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre sur grand écran</h2><p>Le CinéMax est la grande salle consacrée aux images de la Terre à Vulcania. Dans l’obscurité, l’écran donne aux reliefs volcaniques et aux phénomènes naturels une présence qui domine le champ de vision. Les paysages filmés constituent le cœur de cette expérience documentaire.</p><p>Regards sur les volcans conduit vers des volcans en activité à travers le monde. La projection fait découvrir leurs paysages à une échelle qui met en valeur les formes du relief, les panaches et l’environnement des édifices volcaniques.</p><h2>Du volcanisme aux tempêtes</h2><p>La programmation comprend aussi Ouragan, consacré à l’origine et aux conséquences d’un cyclone. Ce second sujet élargit l’exploration aux phénomènes atmosphériques : la même salle accueille ainsi des regards sur les forces qui transforment la surface de notre planète.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra sul grande schermo</h2><p>CinéMax è la grande sala di Vulcania dedicata alle immagini della Terra. Nel buio, paesaggi vulcanici e fenomeni naturali occupano il campo visivo. I paesaggi filmati sono al centro di questa esperienza documentaristica.</p><p>Regards sur les volcans conduce tra vulcani attivi di tutto il mondo. La proiezione li presenta su una scala che evidenzia le forme del rilievo, i pennacchi e l’ambiente attorno agli edifici vulcanici.</p><h2>Dai vulcani alle tempeste</h2><p>La programmazione comprende anche Ouragan, dedicato all’origine e alle conseguenze di un uragano. Questo secondo tema amplia l’esplorazione ai fenomeni atmosferici. La stessa sala riunisce così sguardi diversi sulle forze che trasformano la superficie del nostro pianeta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde op groot scherm</h2><p>CinéMax is de grote filmzaal van Vulcania die aan beelden van de aarde is gewijd. In het donkere auditorium vullen vulkanische landschappen en natuurverschijnselen het blikveld. Gefilmde landschappen staan centraal in deze documentaire ervaring.</p><p>Regards sur les volcans voert langs actieve vulkanen over de hele wereld. De grote projectie benadrukt de vormen van het terrein, vulkanische pluimen en de omgeving van de vulkaanbergen.</p><h2>Van vulkanen naar stormen</h2><p>Het programma omvat ook Ouragan, over het ontstaan en de gevolgen van een orkaan. Daarmee verbreedt de verkenning zich naar atmosferische verschijnselen. Dezelfde zaal brengt verschillende blikken samen op krachten die het oppervlak van onze planeet veranderen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia na wielkim ekranie</h2><p>CinéMax to duża sala kinowa Vulcanii poświęcona obrazom Ziemi. W zaciemnionym wnętrzu wulkaniczne krajobrazy i zjawiska naturalne wypełniają pole widzenia. Filmowane pejzaże stanowią sedno tego dokumentalnego doświadczenia.</p><p>Regards sur les volcans prowadzi wśród czynnych wulkanów na całym świecie. Wielki obraz podkreśla kształty terenu, wulkaniczne pióropusze oraz otoczenie gór wulkanicznych.</p><h2>Od wulkanów po burze</h2><p>W programie znajduje się również Ouragan, opowiadający o powstawaniu i skutkach huraganu. Ten temat poszerza poznawanie świata o zjawiska atmosferyczne. Ta sama sala przedstawia różne spojrzenia na siły zmieniające powierzchnię naszej planety.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra no grande ecrã</h2><p>CinéMax é a grande sala do Vulcania dedicada às imagens da Terra. Na escuridão, as paisagens vulcânicas e os fenómenos naturais dominam o campo de visão. As paisagens filmadas estão no centro desta experiência documental.</p><p>Regards sur les volcans percorre vulcões ativos de todo o mundo. A projeção apresenta as suas paisagens numa escala que destaca as formas do relevo, as plumas vulcânicas e o ambiente em redor dos edifícios vulcânicos.</p><h2>Dos vulcões às tempestades</h2><p>A programação inclui também Ouragan, dedicado à origem e às consequências de um furacão. Este segundo tema alarga a exploração aos fenómenos atmosféricos. A mesma sala reúne diferentes olhares sobre as forças que transformam a superfície do nosso planeta.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "vulcania-astrodome",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde als Teil des Universums</h2><p>Das Astrodôme erweitert Vulcanias Horizont bis zu den Sternen. Das 2023 eingeweihte Planetarium verbindet Erscheinungen auf der Erde mit denen anderer Planeten und Monde. Vulkanismus, Wasser und Jahreszeiten bilden Ausgangspunkte für die Erkundung des Sonnensystems unter einem projizierten Himmel.</p><p>Begleitete Vorstellungen geben den wissenschaftlichen Vermittlern Raum. Ce soir dans le ciel widmet sich den Wundern des Sternenhimmels, während L’aventure volcano-sidérale eine imaginäre Reise zum außerirdischen Vulkanismus anbietet. Diese Geschichten führen das Vulkanthema des Parks ins Weltall weiter.</p><h2>Filme unter der Kuppel</h2><p>Zum Programm 2026 gehören La grande aventure du Système solaire und Rencontres dans la Voie Lactée. Unter der Kuppel erweitern diese Filme den Blick auf Planeten und die Geschichte unserer Galaxie. Für wissenschaftliche Workshops stehen im Gebäude ebenfalls eigene Räume zur Verfügung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Placing Earth within the Universe</h2><p>The Astrodôme extends Vulcania’s horizons towards the stars. Inaugurated in 2023, the planetarium connects phenomena on Earth with those of other planets and moons. Volcanism, water and seasons provide starting points for exploring the Solar System beneath a projected sky.</p><p>Guided sessions give scientific presenters a voice in the experience. Ce soir dans le ciel explores the wonders of the starry sky, while L’aventure volcano-sidérale offers an imaginary journey into extraterrestrial volcanism. These stories carry the park’s volcanic theme into space.</p><h2>Films beneath the dome</h2><p>The 2026 programme includes La grande aventure du Système solaire and Rencontres dans la Voie Lactée. Under the dome, these films broaden the perspective to planets and the history of our galaxy. Scientific workshops also have dedicated spaces within the building.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra dentro del Universo</h2><p>El Astrodôme amplía los horizontes de Vulcania hacia las estrellas. Inaugurado en 2023, el planetario relaciona los fenómenos terrestres con los de otros planetas y satélites. El vulcanismo, el agua y las estaciones sirven de puntos de partida para explorar el Sistema Solar bajo un cielo proyectado.</p><p>Las sesiones guiadas dan voz a los divulgadores científicos. Ce soir dans le ciel explora las maravillas del cielo estrellado, mientras L’aventure volcano-sidérale propone un viaje imaginario al vulcanismo extraterrestre. Estos relatos prolongan el tema de los volcanes hasta el espacio.</p><h2>Películas bajo la cúpula</h2><p>La programación de 2026 incluye La grande aventure du Système solaire y Rencontres dans la Voie Lactée. Bajo la cúpula, estas películas amplían la perspectiva hacia los planetas y la historia de nuestra galaxia. El edificio también dispone de espacios dedicados a talleres científicos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre replacée dans l’Univers</h2><p>L’Astrodôme ouvre les horizons de Vulcania vers les étoiles. Inauguré en 2023, le planétarium rapproche les phénomènes terrestres de ceux d’autres planètes et satellites : volcanisme, eau et saisons deviennent des portes d’entrée pour explorer le Système solaire sous un ciel projeté.</p><p>Les séances accompagnées donnent une place à la parole des médiateurs scientifiques. Ce soir dans le ciel s’intéresse aux merveilles du ciel étoilé, tandis que L’aventure volcano-sidérale propose un voyage imaginaire vers le volcanisme extraterrestre. Ces récits prolongent le thème des volcans jusque dans l’Espace.</p><h2>Des films sous la voûte</h2><p>La programmation de 2026 comprend notamment La grande aventure du Système solaire et Rencontres dans la Voie Lactée. Sous le dôme, ces films élargissent la perspective aux planètes et à l’histoire de notre galaxie. Des ateliers scientifiques disposent également d’espaces dédiés dans le bâtiment.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra nell’Universo</h2><p>L’Astrodôme estende gli orizzonti di Vulcania verso le stelle. Inaugurato nel 2023, il planetario collega i fenomeni terrestri a quelli di altri pianeti e satelliti. Vulcanismo, acqua e stagioni diventano punti di partenza per esplorare il Sistema solare sotto un cielo proiettato.</p><p>Le sessioni guidate danno spazio alla voce dei divulgatori scientifici. Ce soir dans le ciel esplora le meraviglie del cielo stellato, mentre L’aventure volcano-sidérale propone un viaggio immaginario nel vulcanismo extraterrestre. Questi racconti prolungano il tema dei vulcani fino allo spazio.</p><h2>Film sotto la cupola</h2><p>La programmazione del 2026 comprende La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sotto la cupola, questi film ampliano la prospettiva ai pianeti e alla storia della nostra galassia. Nel medesimo edificio si trovano anche spazi dedicati ai laboratori scientifici.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde als deel van het heelal</h2><p>Het Astrodôme verruimt de horizon van Vulcania tot aan de sterren. Het planetarium, geopend in 2023, verbindt verschijnselen op aarde met die van andere planeten en manen. Vulkanisme, water en seizoenen vormen vertrekpunten om het zonnestelsel onder een geprojecteerde hemel te verkennen.</p><p>Bij begeleide voorstellingen krijgen wetenschappelijke publieksbegeleiders het woord. Ce soir dans le ciel verkent de wonderen van de sterrenhemel, terwijl L’aventure volcano-sidérale een denkbeeldige reis naar buitenaards vulkanisme biedt. Zo loopt het vulkaanthema van het park door tot in de ruimte.</p><h2>Films onder de koepel</h2><p>Het programma van 2026 omvat onder meer La grande aventure du Système solaire en Rencontres dans la Voie Lactée. Onder de koepel verbreden deze films de blik naar planeten en de geschiedenis van ons sterrenstelsel. Het gebouw heeft daarnaast eigen ruimten voor wetenschappelijke workshops.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia jako część Wszechświata</h2><p>Astrodôme poszerza horyzonty Vulcanii w stronę gwiazd. Planetarium zainaugurowane w 2023 roku zestawia zjawiska ziemskie z tymi występującymi na innych planetach i księżycach. Wulkanizm, woda i pory roku stają się punktami wyjścia do poznawania Układu Słonecznego pod wyświetlanym niebem.</p><p>Podczas prowadzonych pokazów głos zabierają popularyzatorzy nauki. Ce soir dans le ciel przybliża cuda rozgwieżdżonego nieba, a L’aventure volcano-sidérale proponuje wyobrażoną podróż do pozaziemskiego wulkanizmu. Opowieści te przenoszą wulkaniczną tematykę parku w przestrzeń kosmiczną.</p><h2>Filmy pod kopułą</h2><p>Program na 2026 rok obejmuje między innymi La grande aventure du Système solaire oraz Rencontres dans la Voie Lactée. Pod kopułą filmy poszerzają perspektywę o planety i historię naszej galaktyki. Budynek mieści również osobne przestrzenie przeznaczone na warsztaty naukowe.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra no Universo</h2><p>O Astrodôme alarga os horizontes do Vulcania até às estrelas. Inaugurado em 2023, o planetário relaciona fenómenos terrestres com os de outros planetas e satélites. Vulcanismo, água e estações do ano tornam-se pontos de partida para explorar o Sistema Solar sob um céu projetado.</p><p>As sessões acompanhadas dão voz aos mediadores científicos. Ce soir dans le ciel explora as maravilhas do céu estrelado, enquanto L’aventure volcano-sidérale propõe uma viagem imaginária pelo vulcanismo extraterrestre. Estas histórias prolongam o tema dos vulcões até ao espaço.</p><h2>Filmes sob a cúpula</h2><p>A programação de 2026 inclui La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sob a cúpula, estes filmes alargam a perspetiva aos planetas e à história da nossa galáxia. O edifício dispõe ainda de espaços dedicados a oficinas científicas.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "68ef5f89-424d-47fa-874f-4cbe28032070",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:04:51.5979553Z",
+    "appliedAtUtc": "2026-11-15T18:04:51.597956Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "entityKey": "vulcania-cinemax",
+        "displayName": "CinéMax",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde auf der Großleinwand</h2><p>CinéMax ist Vulcanias großer Kinosaal für Bilder der Erde. Im dunklen Zuschauerraum füllen Vulkanlandschaften und Naturphänomene das Blickfeld. Gefilmte Landschaften stehen im Mittelpunkt dieses dokumentarischen Erlebnisses.</p><p>Regards sur les volcans führt zu aktiven Vulkanen in aller Welt. Die großformatige Projektion betont die Formen des Geländes, aufsteigende Vulkanwolken und die Umgebung der Vulkanberge.</p><h2>Von Vulkanen zu Stürmen</h2><p>Zum Programm gehört außerdem Ouragan, ein Film über die Entstehung und die Folgen eines Hurrikans. Damit erweitert sich die Erkundung auf atmosphärische Phänomene. Derselbe Saal vereint verschiedene Blicke auf Kräfte, die die Oberfläche unseres Planeten verändern.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Earth on a giant screen</h2><p>CinéMax is Vulcania’s large theatre devoted to images of the Earth. In the darkened auditorium, volcanic landforms and natural phenomena fill the viewer’s field of vision. Filmed landscapes are at the heart of this documentary experience.</p><p>Regards sur les volcans explores active volcanoes around the world. The projection presents their landscapes on a scale that highlights the shapes of the terrain, volcanic plumes and the surroundings of the volcanoes.</p><h2>From volcanoes to storms</h2><p>The programme also includes Ouragan, about the origins and consequences of a hurricane. This second subject extends the exploration to atmospheric phenomena. The same theatre brings together perspectives on forces that transform the surface of our planet.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra en pantalla gigante</h2><p>CinéMax es la gran sala de Vulcania dedicada a las imágenes de la Tierra. En la oscuridad, los paisajes volcánicos y los fenómenos naturales dominan el campo visual. Los paisajes filmados constituyen el centro de esta experiencia documental.</p><p>Regards sur les volcans recorre volcanes activos de todo el mundo. La proyección muestra sus paisajes a una escala que destaca las formas del relieve, las columnas volcánicas y el entorno de los edificios volcánicos.</p><h2>De los volcanes a las tormentas</h2><p>La programación también incluye Ouragan, sobre el origen y las consecuencias de un huracán. Este segundo tema amplía la exploración a los fenómenos atmosféricos. La misma sala reúne así distintas miradas sobre las fuerzas que transforman la superficie del planeta.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre sur grand écran</h2><p>Le CinéMax est la grande salle consacrée aux images de la Terre à Vulcania. Dans l’obscurité, l’écran donne aux reliefs volcaniques et aux phénomènes naturels une présence qui domine le champ de vision. Les paysages filmés constituent le cœur de cette expérience documentaire.</p><p>Regards sur les volcans conduit vers des volcans en activité à travers le monde. La projection fait découvrir leurs paysages à une échelle qui met en valeur les formes du relief, les panaches et l’environnement des édifices volcaniques.</p><h2>Du volcanisme aux tempêtes</h2><p>La programmation comprend aussi Ouragan, consacré à l’origine et aux conséquences d’un cyclone. Ce second sujet élargit l’exploration aux phénomènes atmosphériques : la même salle accueille ainsi des regards sur les forces qui transforment la surface de notre planète.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra sul grande schermo</h2><p>CinéMax è la grande sala di Vulcania dedicata alle immagini della Terra. Nel buio, paesaggi vulcanici e fenomeni naturali occupano il campo visivo. I paesaggi filmati sono al centro di questa esperienza documentaristica.</p><p>Regards sur les volcans conduce tra vulcani attivi di tutto il mondo. La proiezione li presenta su una scala che evidenzia le forme del rilievo, i pennacchi e l’ambiente attorno agli edifici vulcanici.</p><h2>Dai vulcani alle tempeste</h2><p>La programmazione comprende anche Ouragan, dedicato all’origine e alle conseguenze di un uragano. Questo secondo tema amplia l’esplorazione ai fenomeni atmosferici. La stessa sala riunisce così sguardi diversi sulle forze che trasformano la superficie del nostro pianeta.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde op groot scherm</h2><p>CinéMax is de grote filmzaal van Vulcania die aan beelden van de aarde is gewijd. In het donkere auditorium vullen vulkanische landschappen en natuurverschijnselen het blikveld. Gefilmde landschappen staan centraal in deze documentaire ervaring.</p><p>Regards sur les volcans voert langs actieve vulkanen over de hele wereld. De grote projectie benadrukt de vormen van het terrein, vulkanische pluimen en de omgeving van de vulkaanbergen.</p><h2>Van vulkanen naar stormen</h2><p>Het programma omvat ook Ouragan, over het ontstaan en de gevolgen van een orkaan. Daarmee verbreedt de verkenning zich naar atmosferische verschijnselen. Dezelfde zaal brengt verschillende blikken samen op krachten die het oppervlak van onze planeet veranderen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia na wielkim ekranie</h2><p>CinéMax to duża sala kinowa Vulcanii poświęcona obrazom Ziemi. W zaciemnionym wnętrzu wulkaniczne krajobrazy i zjawiska naturalne wypełniają pole widzenia. Filmowane pejzaże stanowią sedno tego dokumentalnego doświadczenia.</p><p>Regards sur les volcans prowadzi wśród czynnych wulkanów na całym świecie. Wielki obraz podkreśla kształty terenu, wulkaniczne pióropusze oraz otoczenie gór wulkanicznych.</p><h2>Od wulkanów po burze</h2><p>W programie znajduje się również Ouragan, opowiadający o powstawaniu i skutkach huraganu. Ten temat poszerza poznawanie świata o zjawiska atmosferyczne. Ta sama sala przedstawia różne spojrzenia na siły zmieniające powierzchnię naszej planety.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra no grande ecrã</h2><p>CinéMax é a grande sala do Vulcania dedicada às imagens da Terra. Na escuridão, as paisagens vulcânicas e os fenómenos naturais dominam o campo de visão. As paisagens filmadas estão no centro desta experiência documental.</p><p>Regards sur les volcans percorre vulcões ativos de todo o mundo. A projeção apresenta as suas paisagens numa escala que destaca as formas do relevo, as plumas vulcânicas e o ambiente em redor dos edifícios vulcânicos.</p><h2>Dos vulcões às tempestades</h2><p>A programação inclui também Ouragan, dedicado à origem e às consequências de um furacão. Este segundo tema alarga a exploração aos fenómenos atmosféricos. A mesma sala reúne diferentes olhares sobre as forças que transformam a superfície do nosso planeta.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "vulcania-astrodome",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde als Teil des Universums</h2><p>Das Astrodôme erweitert Vulcanias Horizont bis zu den Sternen. Das 2023 eingeweihte Planetarium verbindet Erscheinungen auf der Erde mit denen anderer Planeten und Monde. Vulkanismus, Wasser und Jahreszeiten bilden Ausgangspunkte für die Erkundung des Sonnensystems unter einem projizierten Himmel.</p><p>Begleitete Vorstellungen geben den wissenschaftlichen Vermittlern Raum. Ce soir dans le ciel widmet sich den Wundern des Sternenhimmels, während L’aventure volcano-sidérale eine imaginäre Reise zum außerirdischen Vulkanismus anbietet. Diese Geschichten führen das Vulkanthema des Parks ins Weltall weiter.</p><h2>Filme unter der Kuppel</h2><p>Zum Programm 2026 gehören La grande aventure du Système solaire und Rencontres dans la Voie Lactée. Unter der Kuppel erweitern diese Filme den Blick auf Planeten und die Geschichte unserer Galaxie. Für wissenschaftliche Workshops stehen im Gebäude ebenfalls eigene Räume zur Verfügung.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Placing Earth within the Universe</h2><p>The Astrodôme extends Vulcania’s horizons towards the stars. Inaugurated in 2023, the planetarium connects phenomena on Earth with those of other planets and moons. Volcanism, water and seasons provide starting points for exploring the Solar System beneath a projected sky.</p><p>Guided sessions give scientific presenters a voice in the experience. Ce soir dans le ciel explores the wonders of the starry sky, while L’aventure volcano-sidérale offers an imaginary journey into extraterrestrial volcanism. These stories carry the park’s volcanic theme into space.</p><h2>Films beneath the dome</h2><p>The 2026 programme includes La grande aventure du Système solaire and Rencontres dans la Voie Lactée. Under the dome, these films broaden the perspective to planets and the history of our galaxy. Scientific workshops also have dedicated spaces within the building.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra dentro del Universo</h2><p>El Astrodôme amplía los horizontes de Vulcania hacia las estrellas. Inaugurado en 2023, el planetario relaciona los fenómenos terrestres con los de otros planetas y satélites. El vulcanismo, el agua y las estaciones sirven de puntos de partida para explorar el Sistema Solar bajo un cielo proyectado.</p><p>Las sesiones guiadas dan voz a los divulgadores científicos. Ce soir dans le ciel explora las maravillas del cielo estrellado, mientras L’aventure volcano-sidérale propone un viaje imaginario al vulcanismo extraterrestre. Estos relatos prolongan el tema de los volcanes hasta el espacio.</p><h2>Películas bajo la cúpula</h2><p>La programación de 2026 incluye La grande aventure du Système solaire y Rencontres dans la Voie Lactée. Bajo la cúpula, estas películas amplían la perspectiva hacia los planetas y la historia de nuestra galaxia. El edificio también dispone de espacios dedicados a talleres científicos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre replacée dans l’Univers</h2><p>L’Astrodôme ouvre les horizons de Vulcania vers les étoiles. Inauguré en 2023, le planétarium rapproche les phénomènes terrestres de ceux d’autres planètes et satellites : volcanisme, eau et saisons deviennent des portes d’entrée pour explorer le Système solaire sous un ciel projeté.</p><p>Les séances accompagnées donnent une place à la parole des médiateurs scientifiques. Ce soir dans le ciel s’intéresse aux merveilles du ciel étoilé, tandis que L’aventure volcano-sidérale propose un voyage imaginaire vers le volcanisme extraterrestre. Ces récits prolongent le thème des volcans jusque dans l’Espace.</p><h2>Des films sous la voûte</h2><p>La programmation de 2026 comprend notamment La grande aventure du Système solaire et Rencontres dans la Voie Lactée. Sous le dôme, ces films élargissent la perspective aux planètes et à l’histoire de notre galaxie. Des ateliers scientifiques disposent également d’espaces dédiés dans le bâtiment.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra nell’Universo</h2><p>L’Astrodôme estende gli orizzonti di Vulcania verso le stelle. Inaugurato nel 2023, il planetario collega i fenomeni terrestri a quelli di altri pianeti e satelliti. Vulcanismo, acqua e stagioni diventano punti di partenza per esplorare il Sistema solare sotto un cielo proiettato.</p><p>Le sessioni guidate danno spazio alla voce dei divulgatori scientifici. Ce soir dans le ciel esplora le meraviglie del cielo stellato, mentre L’aventure volcano-sidérale propone un viaggio immaginario nel vulcanismo extraterrestre. Questi racconti prolungano il tema dei vulcani fino allo spazio.</p><h2>Film sotto la cupola</h2><p>La programmazione del 2026 comprende La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sotto la cupola, questi film ampliano la prospettiva ai pianeti e alla storia della nostra galassia. Nel medesimo edificio si trovano anche spazi dedicati ai laboratori scientifici.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde als deel van het heelal</h2><p>Het Astrodôme verruimt de horizon van Vulcania tot aan de sterren. Het planetarium, geopend in 2023, verbindt verschijnselen op aarde met die van andere planeten en manen. Vulkanisme, water en seizoenen vormen vertrekpunten om het zonnestelsel onder een geprojecteerde hemel te verkennen.</p><p>Bij begeleide voorstellingen krijgen wetenschappelijke publieksbegeleiders het woord. Ce soir dans le ciel verkent de wonderen van de sterrenhemel, terwijl L’aventure volcano-sidérale een denkbeeldige reis naar buitenaards vulkanisme biedt. Zo loopt het vulkaanthema van het park door tot in de ruimte.</p><h2>Films onder de koepel</h2><p>Het programma van 2026 omvat onder meer La grande aventure du Système solaire en Rencontres dans la Voie Lactée. Onder de koepel verbreden deze films de blik naar planeten en de geschiedenis van ons sterrenstelsel. Het gebouw heeft daarnaast eigen ruimten voor wetenschappelijke workshops.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia jako część Wszechświata</h2><p>Astrodôme poszerza horyzonty Vulcanii w stronę gwiazd. Planetarium zainaugurowane w 2023 roku zestawia zjawiska ziemskie z tymi występującymi na innych planetach i księżycach. Wulkanizm, woda i pory roku stają się punktami wyjścia do poznawania Układu Słonecznego pod wyświetlanym niebem.</p><p>Podczas prowadzonych pokazów głos zabierają popularyzatorzy nauki. Ce soir dans le ciel przybliża cuda rozgwieżdżonego nieba, a L’aventure volcano-sidérale proponuje wyobrażoną podróż do pozaziemskiego wulkanizmu. Opowieści te przenoszą wulkaniczną tematykę parku w przestrzeń kosmiczną.</p><h2>Filmy pod kopułą</h2><p>Program na 2026 rok obejmuje między innymi La grande aventure du Système solaire oraz Rencontres dans la Voie Lactée. Pod kopułą filmy poszerzają perspektywę o planety i historię naszej galaktyki. Budynek mieści również osobne przestrzenie przeznaczone na warsztaty naukowe.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra no Universo</h2><p>O Astrodôme alarga os horizontes do Vulcania até às estrelas. Inaugurado em 2023, o planetário relaciona fenómenos terrestres com os de outros planetas e satélites. Vulcanismo, água e estações do ano tornam-se pontos de partida para explorar o Sistema Solar sob um céu projetado.</p><p>As sessões acompanhadas dão voz aos mediadores científicos. Ce soir dans le ciel explora as maravilhas do céu estrelado, enquanto L’aventure volcano-sidérale propõe uma viagem imaginária pelo vulcanismo extraterrestre. Estas histórias prolongam o tema dos vulcões até ao espaço.</p><h2>Filmes sob a cúpula</h2><p>A programação de 2026 inclui La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sob a cúpula, estes filmes alargam a perspetiva aos planetas e à história da nossa galáxia. O edifício dispõe ainda de espaços dedicados a oficinas científicas.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "CinéMax et Astrodôme : seize descriptions personnelles en huit langues, salles et programmation distinctes, tous contenus privés ; audit final et publication restent à effectuer.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally written and reviewed in eight languages. Distinct existing CinéMax and Astrodôme venues preserved; film programmes described in context without duplicate items. Official sources: https://www.vulcania.com/les-films-sur-ecrans-geants/ and https://www.vulcania.com/planetarium/ . Astrodôme inauguration 2023, programme 2026 explicitly bounded; guided sessions and workshop spaces are sourced. No daily-show guarantee or conflicting experience count; no opening-day invention. Two specific headings and three paragraphs per language; documentary depth limited by the sources, no filler."
+}

@@ -769,7 +769,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/maquettes/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>L’Auvergne vue en relief</h2><p>Les maquettes géantes réunissent les reliefs de la partie centrale de la Chaîne des Puys, des Monts-Dore et du Cantal. Ces paysages à échelle réduite permettent de saisir d’un seul regard l’étendue et les formes de grands ensembles volcaniques qui se découvrent habituellement sur de vastes territoires.</p><p>Le puy de Dôme, le Pariou, le puy Mary et le Sancy deviennent des repères dans ces représentations. Leur place parmi les reliefs voisins aide à distinguer les silhouettes et à retrouver les montagnes emblématiques de l’Auvergne.</p><h2>Lire la surface et l’intérieur</h2><p>Des coupes complètent les formes visibles en surface pour éclairer le fonctionnement des volcans. Le parcours associe ainsi une lecture géographique des massifs à une découverte de leur structure, autour des grands modèles exposés dans le bâtiment.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Auvergne in relief</h2><p>The giant models bring together the landscapes of the central Chaîne des Puys, the Monts-Dore and the Cantal massif. These scaled-down landscapes reveal the extent and shapes of volcanic regions that normally unfold across broad stretches of countryside.</p><p>The puy de Dôme, Pariou, puy Mary and Sancy become landmarks within the representations. Their positions among neighbouring landforms help distinguish their outlines and identify Auvergne’s emblematic mountains.</p><h2>Reading the surface and the interior</h2><p>Cross-sections complement the visible surface forms to explain how volcanoes work. Around the large models displayed inside the building, the exhibition combines an overview of the massifs’ geography with an exploration of their underlying structure.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Auvergne als Relief</h2><p>Die großen Modelle zeigen die Landschaften der zentralen Chaîne des Puys, der Monts-Dore und des Cantal-Massivs. In verkleinertem Maßstab werden Ausdehnung und Formen großer Vulkangebiete überschaubar, die sich sonst über weite Landschaften erstrecken.</p><p>Puy de Dôme, Pariou, Puy Mary und Sancy dienen als Orientierungspunkte in den Darstellungen. Ihre Lage zwischen benachbarten Erhebungen hilft, die Silhouetten zu unterscheiden und die bekannten Berge der Auvergne wiederzufinden.</p><h2>Oberfläche und Innenleben lesen</h2><p>Schnittmodelle ergänzen die sichtbaren Geländeformen und veranschaulichen vulkanische Vorgänge. Rund um die großen Modelle im Gebäude verbindet die Ausstellung damit einen geografischen Überblick über die Gebirge mit Einblicken in ihre innere Struktur.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Auvergne in reliëf</h2><p>De grote maquettes tonen het centrale deel van de Chaîne des Puys, de Monts-Dore en het Cantal-massief. Deze verkleinde landschappen maken de omvang en vormen van uitgestrekte vulkaangebieden in één overzicht zichtbaar.</p><p>De puy de Dôme, Pariou, puy Mary en Sancy vormen herkenningspunten in de modellen. Hun plek tussen de omliggende hoogten helpt de silhouetten te onderscheiden en de bekende bergen van Auvergne terug te vinden.</p><h2>Oppervlak en binnenkant lezen</h2><p>Doorsneden vullen de zichtbare terreinmodellen aan en verduidelijken hoe vulkanen werken. Rond de grote maquettes in het gebouw verbindt de tentoonstelling zo een geografisch overzicht van de massieven met een blik op hun inwendige structuur.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>L’Alvernia in rilievo</h2><p>I grandi plastici riuniscono i paesaggi della parte centrale della Chaîne des Puys, dei Monts-Dore e del massiccio del Cantal. Le rappresentazioni in scala ridotta rendono visibili l’estensione e le forme di complessi vulcanici normalmente distribuiti su territori molto vasti.</p><p>Il puy de Dôme, il Pariou, il puy Mary e il Sancy diventano punti di riferimento nei modelli. La loro posizione tra i rilievi vicini aiuta a distinguere le sagome e a riconoscere le montagne emblematiche dell’Alvernia.</p><h2>Leggere la superficie e l’interno</h2><p>Le sezioni completano le forme visibili in superficie per spiegare il funzionamento dei vulcani. Attorno ai grandi plastici esposti nell’edificio, il percorso associa una lettura geografica dei massicci alla scoperta della loro struttura interna.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Auvernia en relieve</h2><p>Las maquetas gigantes reúnen los paisajes de la parte central de la Chaîne des Puys, los Monts-Dore y el macizo del Cantal. Estas representaciones a escala reducida permiten apreciar la extensión y las formas de conjuntos volcánicos que abarcan territorios muy amplios.</p><p>El puy de Dôme, el Pariou, el puy Mary y el Sancy sirven de referencias en los modelos. Su posición entre los relieves vecinos ayuda a distinguir las siluetas y a reconocer las montañas emblemáticas de Auvernia.</p><h2>Leer la superficie y el interior</h2><p>Las secciones completan las formas visibles en superficie para explicar el funcionamiento de los volcanes. Alrededor de las grandes maquetas expuestas en el edificio, el recorrido combina una lectura geográfica de los macizos con el descubrimiento de su estructura interna.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Owernia w trójwymiarze</h2><p>Wielkie makiety przedstawiają centralną część pasma Chaîne des Puys, Monts-Dore oraz masyw Cantal. Pomniejszone krajobrazy pozwalają objąć wzrokiem zasięg i kształty rozległych obszarów wulkanicznych, które w terenie rozciągają się na dużych przestrzeniach.</p><p>Puy de Dôme, Pariou, puy Mary i Sancy stają się punktami orientacyjnymi modeli. Ich położenie wśród sąsiednich wzniesień pomaga rozróżniać sylwetki i rozpoznawać charakterystyczne góry Owernii.</p><h2>Odczytywanie powierzchni i wnętrza</h2><p>Przekroje uzupełniają widoczne formy powierzchni, objaśniając działanie wulkanów. Wokół wielkich modeli prezentowanych w budynku wystawa łączy geograficzny ogląd masywów z poznawaniem ich wewnętrznej budowy.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A Auvérnia em relevo</h2><p>As grandes maquetas reúnem as paisagens da parte central da Chaîne des Puys, dos Monts-Dore e do maciço do Cantal. Estas representações à escala permitem observar a extensão e as formas de conjuntos vulcânicos espalhados por territórios muito vastos.</p><p>O puy de Dôme, o Pariou, o puy Mary e o Sancy tornam-se referências nos modelos. A sua posição entre os relevos vizinhos ajuda a distinguir silhuetas e a reconhecer as montanhas emblemáticas da Auvérnia.</p><h2>Ler a superfície e o interior</h2><p>Os cortes completam as formas visíveis à superfície para explicar o funcionamento dos vulcões. Em redor das grandes maquetas expostas no edifício, o percurso combina uma leitura geográfica dos maciços com a descoberta da sua estrutura interna.</p>"
+        }
+      ]
     },
     {
       "id": "77e77316-bdd5-4584-b437-068962f32241",
@@ -887,7 +921,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/vulcania-story/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les souvenirs d’un parc volcanique</h2><p>Vulcania Story raconte le parc lui-même. L’exposition revient aux origines du projet puis à son histoire depuis l’ouverture de 2002, à travers des photographies d’archives, des vidéos et des panneaux. Elle montre comment les espaces de découverte et les animations ont évolué au fil des saisons.</p><p>Une vitrine rassemble des souvenirs portant les couleurs de Vulcania : tasses, peluches, brochures et petits objets illustrés. Ces objets rendent visible une autre histoire du parc, celle des images et des personnages emportés chez soi après la visite.</p><h2>Des personnages aux anciennes animations</h2><p>La création des personnages et les changements de communication accompagnent le récit des anciennes attractions. Entre documents et objets, le parcours relie ainsi le projet scientifique initial à l’univers visuel construit autour du nom Vulcania.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Memories of a volcanic park</h2><p>Vulcania Story tells the story of the park itself. Archive photographs, videos and panels trace the origins of the project and its history since the 2002 opening. They show how the discovery spaces and attractions have changed over successive seasons.</p><p>A display case gathers souvenirs in Vulcania’s colours: mugs, soft toys, brochures and small illustrated objects. These pieces reveal another part of the park’s history, through the images and characters that visitors took home after their visit.</p><h2>Characters and former attractions</h2><p>The creation of characters and changes in the park’s communications accompany the account of former attractions. Documents and objects connect the original scientific project with the visual world built around the Vulcania name.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Erinnerungen an einen Vulkanpark</h2><p>Vulcania Story erzählt die Geschichte des Parks selbst. Archivfotos, Videos und Tafeln führen zu den Ursprüngen des Projekts und durch seine Entwicklung seit der Eröffnung 2002. Sie zeigen, wie sich Ausstellungsräume und Attraktionen im Laufe der Jahre verändert haben.</p><p>Eine Vitrine versammelt Souvenirs in den Farben von Vulcania: Tassen, Plüschfiguren, Broschüren und kleine bebilderte Gegenstände. Darin zeigt sich eine weitere Seite der Parkgeschichte: Bilder und Figuren, die Besucher nach ihrem Aufenthalt mit nach Hause nahmen.</p><h2>Figuren und frühere Attraktionen</h2><p>Die Entstehung der Figuren und der Wandel der Kommunikation begleiten die Geschichte früherer Attraktionen. Dokumente und Gegenstände verbinden so das ursprüngliche Wissenschaftsprojekt mit der Bildwelt, die rund um den Namen Vulcania entstand.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Herinneringen aan een vulkaanpark</h2><p>Vulcania Story vertelt het verhaal van het park zelf. Archieffoto’s, video’s en panelen volgen de oorsprong van het project en de geschiedenis sinds de opening in 2002. Ze tonen hoe de ontdekkingsruimten en attracties door de jaren heen zijn veranderd.</p><p>Een vitrine verzamelt souvenirs in de kleuren van Vulcania: mokken, knuffels, brochures en kleine voorwerpen met afbeeldingen. Ze laten een andere kant van de parkgeschiedenis zien, via de beelden en personages die bezoekers na hun bezoek mee naar huis namen.</p><h2>Personages en vroegere attracties</h2><p>De ontwikkeling van de personages en veranderingen in de communicatie begeleiden het verhaal van vroegere attracties. Documenten en voorwerpen verbinden zo het oorspronkelijke wetenschappelijke project met de beeldwereld rond de naam Vulcania.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>I ricordi di un parco vulcanico</h2><p>Vulcania Story racconta il parco stesso. Fotografie d’archivio, video e pannelli ripercorrono le origini del progetto e la sua storia dall’apertura del 2002. Mostrano come gli spazi di scoperta e le attrazioni siano cambiati nel corso degli anni.</p><p>Una vetrina raccoglie ricordi con i colori di Vulcania: tazze, peluche, opuscoli e piccoli oggetti illustrati. Questi oggetti rendono visibile un’altra storia del parco, attraverso le immagini e i personaggi che i visitatori portavano a casa dopo la visita.</p><h2>Personaggi e attrazioni del passato</h2><p>La creazione dei personaggi e i cambiamenti nella comunicazione accompagnano il racconto delle vecchie attrazioni. Documenti e oggetti collegano così l’originario progetto scientifico all’universo visivo costruito attorno al nome Vulcania.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Los recuerdos de un parque volcánico</h2><p>Vulcania Story cuenta la historia del propio parque. Fotografías de archivo, vídeos y paneles recorren los orígenes del proyecto y su evolución desde la apertura de 2002. Muestran cómo los espacios de descubrimiento y las atracciones han cambiado con los años.</p><p>Una vitrina reúne recuerdos con los colores de Vulcania: tazas, peluches, folletos y pequeños objetos ilustrados. Estas piezas muestran otra faceta de su historia, a través de las imágenes y los personajes que los visitantes se llevaban a casa.</p><h2>Personajes y antiguas atracciones</h2><p>La creación de los personajes y los cambios en la comunicación acompañan el relato de las antiguas atracciones. Los documentos y objetos relacionan así el proyecto científico original con el universo visual construido alrededor del nombre Vulcania.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pamiątki z wulkanicznego parku</h2><p>Vulcania Story opowiada dzieje samego parku. Archiwalne fotografie, filmy i plansze przybliżają początki projektu oraz jego historię od otwarcia w 2002 roku. Pokazują, jak z czasem zmieniały się przestrzenie poznawania nauki i atrakcje.</p><p>W gablocie zgromadzono pamiątki w barwach Vulcanii: kubki, pluszowe zabawki, broszury i drobne przedmioty z ilustracjami. Ukazują one inną stronę historii parku, poprzez obrazy i postacie, które odwiedzający zabierali ze sobą do domu.</p><h2>Postacie i dawne atrakcje</h2><p>Powstawanie postaci oraz zmiany sposobu prezentowania parku towarzyszą opowieści o dawnych atrakcjach. Dokumenty i przedmioty łączą pierwotny projekt naukowy ze światem obrazów stworzonym wokół nazwy Vulcania.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>As recordações de um parque vulcânico</h2><p>Vulcania Story conta a história do próprio parque. Fotografias de arquivo, vídeos e painéis percorrem as origens do projeto e a sua evolução desde a abertura em 2002. Mostram como os espaços de descoberta e as atrações foram mudando ao longo dos anos.</p><p>Uma vitrina reúne recordações com as cores do Vulcania: canecas, peluches, folhetos e pequenos objetos ilustrados. Estas peças revelam outra vertente da história do parque, através das imagens e personagens que os visitantes levavam para casa.</p><h2>Personagens e antigas atrações</h2><p>A criação das personagens e as mudanças na comunicação acompanham o relato das antigas atrações. Documentos e objetos ligam assim o projeto científico inicial ao universo visual construído em torno do nome Vulcania.</p>"
+        }
+      ]
     },
     {
       "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
@@ -900,7 +968,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/terre-de-volcans/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Au milieu des paysages volcaniques</h2><p>Terre de volcans est un espace de projections où les paysages occupent le décor autour du visiteur. Des coulées de lave aux geysers, le parcours fait apparaître différentes expressions de l’activité volcanique à une échelle qui donne le sentiment d’entrer dans les images.</p><p>Le spectacle s’attache aussi aux couleurs de ces milieux. Jaunes, oranges, gris, rouges et bleus composent une palette parfois surprenante, qui élargit le regard au-delà des seules images d’éruption et de lave incandescente.</p><h2>Un volcanisme aux multiples visages</h2><p>Le parcours en accès libre rassemble une sélection représentative de paysages volcaniques terrestres. Les projections immersives et interactives accompagnent cette traversée d’ambiances : elles rapprochent les formes et les couleurs d’un volcanisme dont les manifestations ne se limitent pas aux éruptions.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Among volcanic landscapes</h2><p>Terre de volcans is a projection space where landscapes surround the visitor. From lava flows to geysers, the route reveals different expressions of volcanic activity on a scale that creates a sense of stepping into the images.</p><p>The spectacle also explores the colours of these environments. Yellows, oranges, greys, reds and blues form a sometimes surprising palette, broadening the view beyond eruptions and glowing lava alone.</p><h2>The many faces of volcanism</h2><p>This freely accessible route brings together a representative selection of Earth’s volcanic landscapes. Immersive, interactive projections accompany the passage through these settings, drawing attention to the shapes and colours of volcanic activity whose manifestations extend beyond eruptions.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Mitten in Vulkanlandschaften</h2><p>Terre de volcans ist ein Projektionsraum, in dem Landschaften die Besucher umgeben. Von Lavaströmen bis zu Geysiren zeigt der Rundgang unterschiedliche Erscheinungen vulkanischer Aktivität. Die großflächigen Bilder vermitteln den Eindruck, in diese Landschaften einzutreten.</p><p>Auch die Farben dieser Gebiete stehen im Mittelpunkt. Gelb, Orange, Grau, Rot und Blau ergeben eine bisweilen überraschende Palette. Sie erweitert den Blick über die vertrauten Bilder von Ausbrüchen und glühender Lava hinaus.</p><h2>Die vielen Gesichter des Vulkanismus</h2><p>Der frei zugängliche Rundgang versammelt eine repräsentative Auswahl irdischer Vulkanlandschaften. Raumfüllende, interaktive Projektionen begleiten den Weg durch verschiedene Stimmungen und verbinden die Formen und Farben eines Vulkanismus, der sich auf vielfältige Weise zeigt.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Tussen vulkanische landschappen</h2><p>Terre de volcans is een projectieruimte waarin landschappen de bezoeker omringen. Van lavastromen tot geisers toont de route verschillende uitingen van vulkanische activiteit. De grote beelden wekken de indruk dat je deze landschappen binnenstapt.</p><p>Ook de kleuren van deze omgevingen krijgen aandacht. Geel, oranje, grijs, rood en blauw vormen een soms verrassend palet. Zo reikt de blik verder dan de vertrouwde beelden van uitbarstingen en gloeiende lava.</p><h2>De vele gezichten van vulkanisme</h2><p>De vrij toegankelijke route brengt een representatieve selectie vulkanische landschappen op aarde samen. Omringende, interactieve projecties begeleiden de tocht door uiteenlopende sferen. De vormen en kleuren maken zichtbaar hoe veelzijdig vulkanische activiteit zich kan uiten.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Tra i paesaggi vulcanici</h2><p>Terre de volcans è uno spazio di proiezioni in cui i paesaggi circondano il visitatore. Dalle colate di lava ai geyser, il percorso rivela diverse espressioni dell’attività vulcanica. La scala delle immagini dà la sensazione di entrare nei paesaggi rappresentati.</p><p>Lo spettacolo si sofferma anche sui colori di questi ambienti. Gialli, arancioni, grigi, rossi e blu compongono una tavolozza talvolta sorprendente, ampliando lo sguardo oltre le sole immagini di eruzioni e lava incandescente.</p><h2>I molti volti del vulcanismo</h2><p>Il percorso a libero accesso riunisce una selezione rappresentativa dei paesaggi vulcanici terrestri. Proiezioni immersive e interattive accompagnano il passaggio tra atmosfere diverse, accostando forme e colori di un’attività che si manifesta anche al di là delle eruzioni.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Entre paisajes volcánicos</h2><p>Terre de volcans es un espacio de proyecciones en el que los paisajes rodean al visitante. Desde coladas de lava hasta géiseres, el recorrido revela distintas expresiones de la actividad volcánica. La escala de las imágenes transmite la sensación de entrar en los paisajes representados.</p><p>El espectáculo también se detiene en los colores de estos entornos. Amarillos, naranjas, grises, rojos y azules forman una paleta a veces sorprendente, ampliando la mirada más allá de las imágenes de erupciones y lava incandescente.</p><h2>Las múltiples caras del vulcanismo</h2><p>El recorrido de libre acceso reúne una selección representativa de paisajes volcánicos terrestres. Proyecciones inmersivas e interactivas acompañan el paso por distintos ambientes y relacionan formas y colores de una actividad que también se manifiesta fuera de las erupciones.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Pośród wulkanicznych krajobrazów</h2><p>Terre de volcans to przestrzeń projekcji, w której krajobrazy otaczają zwiedzającego. Od strumieni lawy po gejzery, trasa ukazuje różne przejawy aktywności wulkanicznej. Skala obrazów sprawia wrażenie wejścia w przedstawione pejzaże.</p><p>Widowisko poświęca uwagę także barwom tych miejsc. Żółcie, pomarańcze, szarości, czerwienie i błękity tworzą niekiedy zaskakującą paletę. Poszerza ona spojrzenie poza same obrazy erupcji i rozżarzonej lawy.</p><h2>Różne oblicza wulkanizmu</h2><p>Swobodnie dostępna trasa gromadzi reprezentatywny wybór wulkanicznych krajobrazów Ziemi. Otaczające widza, interaktywne projekcje towarzyszą przejściu między różnymi sceneriami. Zestawiają kształty i kolory aktywności wulkanicznej, której przejawy wykraczają poza erupcje.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Entre paisagens vulcânicas</h2><p>Terre de volcans é um espaço de projeções onde as paisagens envolvem o visitante. Das escoadas de lava aos géiseres, o percurso revela diferentes expressões da atividade vulcânica. A escala das imagens transmite a sensação de entrar nas paisagens apresentadas.</p><p>O espetáculo explora também as cores destes ambientes. Amarelos, laranjas, cinzentos, vermelhos e azuis compõem uma paleta por vezes surpreendente, alargando o olhar para além das imagens de erupções e lava incandescente.</p><h2>As várias faces do vulcanismo</h2><p>O percurso de acesso livre reúne uma seleção representativa de paisagens vulcânicas terrestres. Projeções imersivas e interativas acompanham a passagem por diferentes ambientes, aproximando formas e cores de uma atividade cujas manifestações vão além das erupções.</p>"
+        }
+      ]
     },
     {
       "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
@@ -926,7 +1028,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/maurice-et-katia-krafft/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Sur les traces de Maurice et Katia Krafft</h2><p>Cette exposition est consacrée à Maurice et Katia Krafft, les volcanologues français qui ont partagé leurs expéditions à travers des images de volcans. Les photographies d’archives et les panneaux retracent leur parcours, en reliant l’observation sur le terrain à la diffusion des connaissances auprès du public.</p><p>Les collections comprennent des échantillons de roches volcaniques rapportés de leurs voyages. Dans la salle, des vitrines éclairées sur des socles sombres présentent les objets à proximité d’images et de textes ; des caisses en bois évoquent l’univers des expéditions.</p><h2>Des images et de la matière</h2><p>Le rapprochement entre archives et échantillons donne une présence concrète à leur travail. Les paysages photographiés et les roches recueillies racontent deux faces d’une même démarche : approcher les volcans et rendre leurs phénomènes compréhensibles.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Following Maurice and Katia Krafft</h2><p>This exhibition focuses on Maurice and Katia Krafft, the French volcanologists who shared their expeditions through images of volcanoes. Archive photographs and panels trace their careers, linking field observation with the sharing of knowledge with the public.</p><p>The collections include samples of volcanic rock brought back from their travels. Illuminated cases on dark plinths display objects alongside pictures and texts, while wooden crates evoke the setting of an expedition.</p><h2>Images and material evidence</h2><p>Bringing archives and samples together gives their work a tangible presence. Photographed landscapes and collected rocks reveal two sides of the same undertaking: getting close to volcanoes and making their phenomena understandable.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Auf den Spuren von Maurice und Katia Krafft</h2><p>Diese Ausstellung widmet sich Maurice und Katia Krafft, den französischen Vulkanologen, die ihre Expeditionen durch Vulkanbilder bekannt machten. Archivfotos und Tafeln zeichnen ihren Weg nach und verbinden die Beobachtung vor Ort mit der Vermittlung von Wissen an ein breites Publikum.</p><p>Zu den Sammlungen gehören vulkanische Gesteinsproben von ihren Reisen. Beleuchtete Vitrinen auf dunklen Sockeln zeigen die Objekte neben Bildern und Texten. Holzkisten erinnern an die Welt der Expeditionen.</p><h2>Bilder und greifbare Zeugnisse</h2><p>Archive und Gesteinsproben machen ihre Arbeit anschaulich. Fotografierte Landschaften und gesammelte Steine zeigen zwei Seiten desselben Vorhabens: Vulkanen nahe zu kommen und ihre Erscheinungen verständlich zu machen.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>In de voetsporen van Maurice en Katia Krafft</h2><p>Deze tentoonstelling is gewijd aan Maurice en Katia Krafft, de Franse vulkanologen die hun expedities via beelden van vulkanen bekendmaakten. Archieffoto’s en panelen volgen hun loopbaan en verbinden waarnemingen in het veld met het delen van kennis met het publiek.</p><p>De collecties omvatten monsters van vulkanisch gesteente die ze van hun reizen meebrachten. Verlichte vitrines op donkere sokkels tonen de voorwerpen naast beelden en teksten. Houten kisten roepen de wereld van expedities op.</p><h2>Beelden en tastbare sporen</h2><p>Archiefmateriaal en gesteentemonsters maken hun werk tastbaar. Gefotografeerde landschappen en verzamelde stenen tonen twee kanten van dezelfde aanpak: dicht bij vulkanen komen en hun verschijnselen begrijpelijk maken.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Sulle tracce di Maurice e Katia Krafft</h2><p>Questa esposizione è dedicata a Maurice e Katia Krafft, i vulcanologi francesi che hanno condiviso le proprie spedizioni attraverso immagini di vulcani. Fotografie d’archivio e pannelli ne ripercorrono l’attività, collegando l’osservazione sul campo alla divulgazione delle conoscenze.</p><p>Le collezioni comprendono campioni di rocce vulcaniche riportati dai loro viaggi. Vetrine illuminate su basi scure presentano gli oggetti accanto a immagini e testi, mentre casse di legno evocano l’ambiente delle spedizioni.</p><h2>Immagini e testimonianze materiali</h2><p>L’accostamento di archivi e campioni dà concretezza al loro lavoro. Paesaggi fotografati e rocce raccolte raccontano due aspetti dello stesso impegno: avvicinarsi ai vulcani e rendere comprensibili i loro fenomeni.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Tras los pasos de Maurice y Katia Krafft</h2><p>Esta exposición está dedicada a Maurice y Katia Krafft, los vulcanólogos franceses que compartieron sus expediciones mediante imágenes de volcanes. Fotografías de archivo y paneles recorren su trayectoria, relacionando la observación sobre el terreno con la divulgación de conocimientos.</p><p>Las colecciones incluyen muestras de rocas volcánicas traídas de sus viajes. Vitrinas iluminadas sobre bases oscuras presentan los objetos junto a imágenes y textos, mientras las cajas de madera evocan el ambiente de las expediciones.</p><h2>Imágenes y testimonios materiales</h2><p>La unión de archivos y muestras da una presencia tangible a su trabajo. Los paisajes fotografiados y las rocas recogidas cuentan dos facetas de una misma labor: acercarse a los volcanes y hacer comprensibles sus fenómenos.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Śladami Maurice’a i Katii Krafftów</h2><p>Wystawa jest poświęcona Maurice’owi i Katii Krafftom, francuskim wulkanologom, którzy dzielili się odkryciami z wypraw poprzez obrazy wulkanów. Archiwalne fotografie i plansze przedstawiają ich drogę, łącząc obserwacje terenowe z popularyzacją wiedzy.</p><p>Zbiory obejmują próbki skał wulkanicznych przywiezione z podróży. Oświetlone gabloty na ciemnych podstawach pokazują przedmioty obok zdjęć i tekstów. Drewniane skrzynie przywołują świat ekspedycji.</p><h2>Obrazy i materialne świadectwa</h2><p>Zestawienie archiwów z próbkami nadaje ich pracy konkretny wymiar. Fotografowane krajobrazy i zebrane skały ukazują dwie strony tej samej działalności: zbliżanie się do wulkanów oraz wyjaśnianie zachodzących w nich zjawisk.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Nos passos de Maurice e Katia Krafft</h2><p>Esta exposição é dedicada a Maurice e Katia Krafft, os vulcanólogos franceses que partilharam as suas expedições através de imagens de vulcões. Fotografias de arquivo e painéis percorrem a sua trajetória, ligando a observação no terreno à divulgação de conhecimentos.</p><p>As coleções incluem amostras de rochas vulcânicas trazidas das suas viagens. Vitrinas iluminadas sobre bases escuras apresentam os objetos junto de imagens e textos, enquanto caixas de madeira evocam o ambiente das expedições.</p><h2>Imagens e testemunhos materiais</h2><p>A aproximação entre arquivos e amostras dá uma presença concreta ao seu trabalho. Paisagens fotografadas e rochas recolhidas mostram duas faces da mesma atividade: aproximar-se dos vulcões e tornar os seus fenómenos compreensíveis.</p>"
+        }
+      ]
     },
     {
       "id": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
@@ -939,7 +1075,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/carnets-de-voyage/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Les volcans au fil des pages</h2><p>Carnets de voyage présente des dessins et des écrits nés de voyages dans des territoires volcaniques. L’exposition prolonge le Prix Vulcania, créé en 2005 avec l’association Il faut aller voir : tous les deux ans, il récompense un carnet sur le thème de L’Aventure de la Terre et permet à son auteur de préparer un nouveau voyage.</p><p>L’édition présentée de juillet à novembre 2026 met à l’honneur La Rényon, un autre visage, de Juliette Cuenot, lauréate du prix 2025. Son carnet suit La Réunion entre mer et montagnes, dans une approche sensible du territoire.</p><h2>Un regard scolaire en 2026</h2><p>La sélection comprend aussi L’Infatigable Globe Trotter, réalisé par les élèves du dispositif ULIS du collège Henri Pourrat de Ceyrat. Récompensé dans la catégorie Environnement du prix scolaire 2026, ce travail donne une place aux créations des élèves aux côtés des carnets de voyageurs.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Volcanoes through travellers’ pages</h2><p>Carnets de voyage presents drawings and writings created during journeys through volcanic territories. The exhibition extends the Prix Vulcania, founded in 2005 with the association Il faut aller voir. Every two years, the award recognises a travel journal on the theme of L’Aventure de la Terre and enables its author to undertake another journey.</p><p>The July–November 2026 exhibition features La Rényon, un autre visage by Juliette Cuenot, winner of the 2025 award. Her journal explores Réunion between sea and mountains through a personal response to the island.</p><h2>A school contribution in 2026</h2><p>The selection also includes L’Infatigable Globe Trotter, made by pupils in the ULIS programme at Henri Pourrat secondary school in Ceyrat. Winner of the Environment category in the 2026 school award, it places pupils’ creations alongside travellers’ journals.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Vulkane auf Reisetagebuchseiten</h2><p>Carnets de voyage zeigt Zeichnungen und Texte, die auf Reisen durch Vulkanregionen entstanden sind. Die Ausstellung führt den 2005 mit dem Verein Il faut aller voir gegründeten Prix Vulcania weiter. Alle zwei Jahre zeichnet er ein Reisetagebuch zum Thema L’Aventure de la Terre aus und ermöglicht dessen Autor eine weitere Reise.</p><p>Von Juli bis November 2026 steht La Rényon, un autre visage von Juliette Cuenot, der Preisträgerin 2025, im Mittelpunkt. Ihr Tagebuch erkundet Réunion zwischen Meer und Bergen mit einem persönlichen Blick auf die Insel.</p><h2>Ein Schulprojekt im Jahr 2026</h2><p>Zur Auswahl gehört auch L’Infatigable Globe Trotter von Schülern des ULIS-Programms am Collège Henri Pourrat in Ceyrat. Die Arbeit gewann 2026 die Kategorie Umwelt des Schulpreises und gibt Schülerkreationen einen Platz neben den Tagebüchern Reisender.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Vulkanen tussen de reisbladen</h2><p>Carnets de voyage toont tekeningen en teksten die tijdens reizen door vulkanische gebieden zijn ontstaan. De tentoonstelling sluit aan op de Prix Vulcania, in 2005 opgericht met de vereniging Il faut aller voir. Om de twee jaar bekroont die een reisdagboek rond L’Aventure de la Terre en maakt een nieuwe reis voor de maker mogelijk.</p><p>Van juli tot november 2026 staat La Rényon, un autre visage van Juliette Cuenot, winnares van de prijs in 2025, centraal. Haar dagboek verkent Réunion tussen zee en bergen, vanuit een persoonlijke blik op het eiland.</p><h2>Een schoolbijdrage in 2026</h2><p>De selectie omvat ook L’Infatigable Globe Trotter van leerlingen uit het ULIS-programma van het Collège Henri Pourrat in Ceyrat. Het werk won de categorie Milieu van de schoolprijs 2026 en geeft leerlingencreaties een plek naast dagboeken van reizigers.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>I vulcani tra le pagine di viaggio</h2><p>Carnets de voyage presenta disegni e scritti nati durante viaggi in territori vulcanici. L’esposizione prosegue il Prix Vulcania, creato nel 2005 con l’associazione Il faut aller voir. Ogni due anni il premio riconosce un taccuino sul tema L’Aventure de la Terre e permette all’autore di preparare un nuovo viaggio.</p><p>L’edizione da luglio a novembre 2026 presenta La Rényon, un autre visage di Juliette Cuenot, vincitrice del premio 2025. Il suo taccuino esplora La Réunion tra mare e montagne, attraverso uno sguardo personale sull’isola.</p><h2>Un contributo scolastico nel 2026</h2><p>La selezione comprende anche L’Infatigable Globe Trotter, realizzato dagli alunni del programma ULIS del Collège Henri Pourrat di Ceyrat. Premiato nella categoria Ambiente del concorso scolastico 2026, il lavoro affianca le creazioni degli studenti ai taccuini dei viaggiatori.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Los volcanes entre páginas de viaje</h2><p>Carnets de voyage presenta dibujos y escritos nacidos de viajes por territorios volcánicos. La exposición prolonga el Prix Vulcania, creado en 2005 con la asociación Il faut aller voir. Cada dos años premia un cuaderno sobre el tema L’Aventure de la Terre y permite a su autor preparar un nuevo viaje.</p><p>La edición de julio a noviembre de 2026 presenta La Rényon, un autre visage de Juliette Cuenot, ganadora del premio 2025. Su cuaderno explora La Reunión entre mar y montañas desde una mirada personal sobre la isla.</p><h2>Una aportación escolar en 2026</h2><p>La selección también incluye L’Infatigable Globe Trotter, realizado por alumnos del programa ULIS del Collège Henri Pourrat de Ceyrat. Premiado en la categoría Medio Ambiente del concurso escolar 2026, sitúa las creaciones de los estudiantes junto a los cuadernos de viajeros.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Wulkany na kartach podróży</h2><p>Carnets de voyage prezentuje rysunki i teksty powstałe podczas wypraw do wulkanicznych regionów. Wystawa rozwija ideę Prix Vulcania, utworzonego w 2005 roku ze stowarzyszeniem Il faut aller voir. Nagroda przyznawana co dwa lata wyróżnia dziennik pod hasłem L’Aventure de la Terre i umożliwia autorowi kolejną podróż.</p><p>Od lipca do listopada 2026 roku wystawa przedstawia La Rényon, un autre visage Juliette Cuenot, laureatki nagrody z 2025 roku. Jej dziennik odkrywa Reunion między morzem a górami poprzez osobiste spojrzenie na wyspę.</p><h2>Szkolny głos w 2026 roku</h2><p>Wybór obejmuje również L’Infatigable Globe Trotter, przygotowany przez uczniów programu ULIS w Collège Henri Pourrat w Ceyrat. Praca zdobyła nagrodę szkolną 2026 w kategorii Środowisko, zapewniając twórczości uczniów miejsce obok dzienników podróżników.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Os vulcões nas páginas de viagem</h2><p>Carnets de voyage apresenta desenhos e textos nascidos de viagens por territórios vulcânicos. A exposição prolonga o Prix Vulcania, criado em 2005 com a associação Il faut aller voir. De dois em dois anos, o prémio distingue um diário sobre o tema L’Aventure de la Terre e permite ao autor preparar uma nova viagem.</p><p>A edição de julho a novembro de 2026 apresenta La Rényon, un autre visage, de Juliette Cuenot, vencedora do prémio 2025. O seu diário explora a Reunião entre mar e montanhas, através de um olhar pessoal sobre a ilha.</p><h2>Um contributo escolar em 2026</h2><p>A seleção inclui também L’Infatigable Globe Trotter, realizado pelos alunos do programa ULIS do Collège Henri Pourrat de Ceyrat. Premiado na categoria Ambiente do concurso escolar 2026, coloca as criações dos alunos ao lado dos diários de viajantes.</p>"
+        }
+      ]
     },
     {
       "id": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
@@ -968,7 +1138,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/planetarium/",
         "openingDate": "2023"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La Terre replacée dans l’Univers</h2><p>L’Astrodôme ouvre les horizons de Vulcania vers les étoiles. Inauguré en 2023, le planétarium rapproche les phénomènes terrestres de ceux d’autres planètes et satellites : volcanisme, eau et saisons deviennent des portes d’entrée pour explorer le Système solaire sous un ciel projeté.</p><p>Les séances accompagnées donnent une place à la parole des médiateurs scientifiques. Ce soir dans le ciel s’intéresse aux merveilles du ciel étoilé, tandis que L’aventure volcano-sidérale propose un voyage imaginaire vers le volcanisme extraterrestre. Ces récits prolongent le thème des volcans jusque dans l’Espace.</p><h2>Des films sous la voûte</h2><p>La programmation de 2026 comprend notamment La grande aventure du Système solaire et Rencontres dans la Voie Lactée. Sous le dôme, ces films élargissent la perspective aux planètes et à l’histoire de notre galaxie. Des ateliers scientifiques disposent également d’espaces dédiés dans le bâtiment.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Placing Earth within the Universe</h2><p>The Astrodôme extends Vulcania’s horizons towards the stars. Inaugurated in 2023, the planetarium connects phenomena on Earth with those of other planets and moons. Volcanism, water and seasons provide starting points for exploring the Solar System beneath a projected sky.</p><p>Guided sessions give scientific presenters a voice in the experience. Ce soir dans le ciel explores the wonders of the starry sky, while L’aventure volcano-sidérale offers an imaginary journey into extraterrestrial volcanism. These stories carry the park’s volcanic theme into space.</p><h2>Films beneath the dome</h2><p>The 2026 programme includes La grande aventure du Système solaire and Rencontres dans la Voie Lactée. Under the dome, these films broaden the perspective to planets and the history of our galaxy. Scientific workshops also have dedicated spaces within the building.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Erde als Teil des Universums</h2><p>Das Astrodôme erweitert Vulcanias Horizont bis zu den Sternen. Das 2023 eingeweihte Planetarium verbindet Erscheinungen auf der Erde mit denen anderer Planeten und Monde. Vulkanismus, Wasser und Jahreszeiten bilden Ausgangspunkte für die Erkundung des Sonnensystems unter einem projizierten Himmel.</p><p>Begleitete Vorstellungen geben den wissenschaftlichen Vermittlern Raum. Ce soir dans le ciel widmet sich den Wundern des Sternenhimmels, während L’aventure volcano-sidérale eine imaginäre Reise zum außerirdischen Vulkanismus anbietet. Diese Geschichten führen das Vulkanthema des Parks ins Weltall weiter.</p><h2>Filme unter der Kuppel</h2><p>Zum Programm 2026 gehören La grande aventure du Système solaire und Rencontres dans la Voie Lactée. Unter der Kuppel erweitern diese Filme den Blick auf Planeten und die Geschichte unserer Galaxie. Für wissenschaftliche Workshops stehen im Gebäude ebenfalls eigene Räume zur Verfügung.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De aarde als deel van het heelal</h2><p>Het Astrodôme verruimt de horizon van Vulcania tot aan de sterren. Het planetarium, geopend in 2023, verbindt verschijnselen op aarde met die van andere planeten en manen. Vulkanisme, water en seizoenen vormen vertrekpunten om het zonnestelsel onder een geprojecteerde hemel te verkennen.</p><p>Bij begeleide voorstellingen krijgen wetenschappelijke publieksbegeleiders het woord. Ce soir dans le ciel verkent de wonderen van de sterrenhemel, terwijl L’aventure volcano-sidérale een denkbeeldige reis naar buitenaards vulkanisme biedt. Zo loopt het vulkaanthema van het park door tot in de ruimte.</p><h2>Films onder de koepel</h2><p>Het programma van 2026 omvat onder meer La grande aventure du Système solaire en Rencontres dans la Voie Lactée. Onder de koepel verbreden deze films de blik naar planeten en de geschiedenis van ons sterrenstelsel. Het gebouw heeft daarnaast eigen ruimten voor wetenschappelijke workshops.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La Terra nell’Universo</h2><p>L’Astrodôme estende gli orizzonti di Vulcania verso le stelle. Inaugurato nel 2023, il planetario collega i fenomeni terrestri a quelli di altri pianeti e satelliti. Vulcanismo, acqua e stagioni diventano punti di partenza per esplorare il Sistema solare sotto un cielo proiettato.</p><p>Le sessioni guidate danno spazio alla voce dei divulgatori scientifici. Ce soir dans le ciel esplora le meraviglie del cielo stellato, mentre L’aventure volcano-sidérale propone un viaggio immaginario nel vulcanismo extraterrestre. Questi racconti prolungano il tema dei vulcani fino allo spazio.</p><h2>Film sotto la cupola</h2><p>La programmazione del 2026 comprende La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sotto la cupola, questi film ampliano la prospettiva ai pianeti e alla storia della nostra galassia. Nel medesimo edificio si trovano anche spazi dedicati ai laboratori scientifici.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La Tierra dentro del Universo</h2><p>El Astrodôme amplía los horizontes de Vulcania hacia las estrellas. Inaugurado en 2023, el planetario relaciona los fenómenos terrestres con los de otros planetas y satélites. El vulcanismo, el agua y las estaciones sirven de puntos de partida para explorar el Sistema Solar bajo un cielo proyectado.</p><p>Las sesiones guiadas dan voz a los divulgadores científicos. Ce soir dans le ciel explora las maravillas del cielo estrellado, mientras L’aventure volcano-sidérale propone un viaje imaginario al vulcanismo extraterrestre. Estos relatos prolongan el tema de los volcanes hasta el espacio.</p><h2>Películas bajo la cúpula</h2><p>La programación de 2026 incluye La grande aventure du Système solaire y Rencontres dans la Voie Lactée. Bajo la cúpula, estas películas amplían la perspectiva hacia los planetas y la historia de nuestra galaxia. El edificio también dispone de espacios dedicados a talleres científicos.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Ziemia jako część Wszechświata</h2><p>Astrodôme poszerza horyzonty Vulcanii w stronę gwiazd. Planetarium zainaugurowane w 2023 roku zestawia zjawiska ziemskie z tymi występującymi na innych planetach i księżycach. Wulkanizm, woda i pory roku stają się punktami wyjścia do poznawania Układu Słonecznego pod wyświetlanym niebem.</p><p>Podczas prowadzonych pokazów głos zabierają popularyzatorzy nauki. Ce soir dans le ciel przybliża cuda rozgwieżdżonego nieba, a L’aventure volcano-sidérale proponuje wyobrażoną podróż do pozaziemskiego wulkanizmu. Opowieści te przenoszą wulkaniczną tematykę parku w przestrzeń kosmiczną.</p><h2>Filmy pod kopułą</h2><p>Program na 2026 rok obejmuje między innymi La grande aventure du Système solaire oraz Rencontres dans la Voie Lactée. Pod kopułą filmy poszerzają perspektywę o planety i historię naszej galaktyki. Budynek mieści również osobne przestrzenie przeznaczone na warsztaty naukowe.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A Terra no Universo</h2><p>O Astrodôme alarga os horizontes do Vulcania até às estrelas. Inaugurado em 2023, o planetário relaciona fenómenos terrestres com os de outros planetas e satélites. Vulcanismo, água e estações do ano tornam-se pontos de partida para explorar o Sistema Solar sob um céu projetado.</p><p>As sessões acompanhadas dão voz aos mediadores científicos. Ce soir dans le ciel explora as maravilhas do céu estrelado, enquanto L’aventure volcano-sidérale propõe uma viagem imaginária pelo vulcanismo extraterrestre. Estas histórias prolongam o tema dos vulcões até ao espaço.</p><h2>Filmes sob a cúpula</h2><p>A programação de 2026 inclui La grande aventure du Système solaire e Rencontres dans la Voie Lactée. Sob a cúpula, estes filmes alargam a perspetiva aos planetas e à história da nossa galáxia. O edifício dispõe ainda de espaços dedicados a oficinas científicas.</p>"
+        }
+      ]
     },
     {
       "id": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
@@ -981,7 +1185,41 @@
       "attractionDetails": {
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/les-films-sur-ecrans-geants/"
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La Terre sur grand écran</h2><p>Le CinéMax est la grande salle consacrée aux images de la Terre à Vulcania. Dans l’obscurité, l’écran donne aux reliefs volcaniques et aux phénomènes naturels une présence qui domine le champ de vision. Les paysages filmés constituent le cœur de cette expérience documentaire.</p><p>Regards sur les volcans conduit vers des volcans en activité à travers le monde. La projection fait découvrir leurs paysages à une échelle qui met en valeur les formes du relief, les panaches et l’environnement des édifices volcaniques.</p><h2>Du volcanisme aux tempêtes</h2><p>La programmation comprend aussi Ouragan, consacré à l’origine et aux conséquences d’un cyclone. Ce second sujet élargit l’exploration aux phénomènes atmosphériques : la même salle accueille ainsi des regards sur les forces qui transforment la surface de notre planète.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Earth on a giant screen</h2><p>CinéMax is Vulcania’s large theatre devoted to images of the Earth. In the darkened auditorium, volcanic landforms and natural phenomena fill the viewer’s field of vision. Filmed landscapes are at the heart of this documentary experience.</p><p>Regards sur les volcans explores active volcanoes around the world. The projection presents their landscapes on a scale that highlights the shapes of the terrain, volcanic plumes and the surroundings of the volcanoes.</p><h2>From volcanoes to storms</h2><p>The programme also includes Ouragan, about the origins and consequences of a hurricane. This second subject extends the exploration to atmospheric phenomena. The same theatre brings together perspectives on forces that transform the surface of our planet.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Erde auf der Großleinwand</h2><p>CinéMax ist Vulcanias großer Kinosaal für Bilder der Erde. Im dunklen Zuschauerraum füllen Vulkanlandschaften und Naturphänomene das Blickfeld. Gefilmte Landschaften stehen im Mittelpunkt dieses dokumentarischen Erlebnisses.</p><p>Regards sur les volcans führt zu aktiven Vulkanen in aller Welt. Die großformatige Projektion betont die Formen des Geländes, aufsteigende Vulkanwolken und die Umgebung der Vulkanberge.</p><h2>Von Vulkanen zu Stürmen</h2><p>Zum Programm gehört außerdem Ouragan, ein Film über die Entstehung und die Folgen eines Hurrikans. Damit erweitert sich die Erkundung auf atmosphärische Phänomene. Derselbe Saal vereint verschiedene Blicke auf Kräfte, die die Oberfläche unseres Planeten verändern.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De aarde op groot scherm</h2><p>CinéMax is de grote filmzaal van Vulcania die aan beelden van de aarde is gewijd. In het donkere auditorium vullen vulkanische landschappen en natuurverschijnselen het blikveld. Gefilmde landschappen staan centraal in deze documentaire ervaring.</p><p>Regards sur les volcans voert langs actieve vulkanen over de hele wereld. De grote projectie benadrukt de vormen van het terrein, vulkanische pluimen en de omgeving van de vulkaanbergen.</p><h2>Van vulkanen naar stormen</h2><p>Het programma omvat ook Ouragan, over het ontstaan en de gevolgen van een orkaan. Daarmee verbreedt de verkenning zich naar atmosferische verschijnselen. Dezelfde zaal brengt verschillende blikken samen op krachten die het oppervlak van onze planeet veranderen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La Terra sul grande schermo</h2><p>CinéMax è la grande sala di Vulcania dedicata alle immagini della Terra. Nel buio, paesaggi vulcanici e fenomeni naturali occupano il campo visivo. I paesaggi filmati sono al centro di questa esperienza documentaristica.</p><p>Regards sur les volcans conduce tra vulcani attivi di tutto il mondo. La proiezione li presenta su una scala che evidenzia le forme del rilievo, i pennacchi e l’ambiente attorno agli edifici vulcanici.</p><h2>Dai vulcani alle tempeste</h2><p>La programmazione comprende anche Ouragan, dedicato all’origine e alle conseguenze di un uragano. Questo secondo tema amplia l’esplorazione ai fenomeni atmosferici. La stessa sala riunisce così sguardi diversi sulle forze che trasformano la superficie del nostro pianeta.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La Tierra en pantalla gigante</h2><p>CinéMax es la gran sala de Vulcania dedicada a las imágenes de la Tierra. En la oscuridad, los paisajes volcánicos y los fenómenos naturales dominan el campo visual. Los paisajes filmados constituyen el centro de esta experiencia documental.</p><p>Regards sur les volcans recorre volcanes activos de todo el mundo. La proyección muestra sus paisajes a una escala que destaca las formas del relieve, las columnas volcánicas y el entorno de los edificios volcánicos.</p><h2>De los volcanes a las tormentas</h2><p>La programación también incluye Ouragan, sobre el origen y las consecuencias de un huracán. Este segundo tema amplía la exploración a los fenómenos atmosféricos. La misma sala reúne así distintas miradas sobre las fuerzas que transforman la superficie del planeta.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Ziemia na wielkim ekranie</h2><p>CinéMax to duża sala kinowa Vulcanii poświęcona obrazom Ziemi. W zaciemnionym wnętrzu wulkaniczne krajobrazy i zjawiska naturalne wypełniają pole widzenia. Filmowane pejzaże stanowią sedno tego dokumentalnego doświadczenia.</p><p>Regards sur les volcans prowadzi wśród czynnych wulkanów na całym świecie. Wielki obraz podkreśla kształty terenu, wulkaniczne pióropusze oraz otoczenie gór wulkanicznych.</p><h2>Od wulkanów po burze</h2><p>W programie znajduje się również Ouragan, opowiadający o powstawaniu i skutkach huraganu. Ten temat poszerza poznawanie świata o zjawiska atmosferyczne. Ta sama sala przedstawia różne spojrzenia na siły zmieniające powierzchnię naszej planety.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A Terra no grande ecrã</h2><p>CinéMax é a grande sala do Vulcania dedicada às imagens da Terra. Na escuridão, as paisagens vulcânicas e os fenómenos naturais dominam o campo de visão. As paisagens filmadas estão no centro desta experiência documental.</p><p>Regards sur les volcans percorre vulcões ativos de todo o mundo. A projeção apresenta as suas paisagens numa escala que destaca as formas do relevo, as plumas vulcânicas e o ambiente em redor dos edifícios vulcânicos.</p><h2>Dos vulcões às tempestades</h2><p>A programação inclui também Ouragan, dedicado à origem e às consequências de um furacão. Este segundo tema alarga a exploração aos fenómenos atmosféricos. A mesma sala reúne diferentes olhares sobre as forças que transformam a superfície do nosso planeta.</p>"
+        }
+      ]
     },
     {
       "id": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
@@ -1250,7 +1488,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.vulcania.com/animation/planete-devoilee/",
         "durationInSeconds": 1800
-      }
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>La Terre depuis l’Espace</h2><p>Planète dévoilée explore les régions volcaniques terrestres à partir d’images satellites et d’une reconstitution du relief. Dans la salle, les paysages s’affichent sur un grand écran tandis qu’un animateur conduit cette découverte depuis une scène, face au public.</p><p>Le voyage virtuel rapproche la vue d’ensemble de la planète des formes dessinées par les volcans. Les reliefs deviennent le sujet du récit : l’image permet de parcourir des territoires éloignés et d’observer la place du volcanisme dans leurs paysages.</p><h2>Des destinations choisies avec le public</h2><p>La séance repose sur un dialogue direct avec l’animateur. Les visiteurs peuvent proposer une destination et poser des questions ; leurs échanges participent à l’exploration. Le contenu prend ainsi la forme d’un voyage commenté dans la géographie volcanique de la Terre.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Earth viewed from space</h2><p>Planète dévoilée explores Earth’s volcanic regions using satellite images and reconstructed terrain. Landscapes appear on a large screen while a presenter leads the discovery from a stage facing the audience.</p><p>The virtual journey connects a view of the planet as a whole with landforms shaped by volcanoes. Terrain becomes the subject of the story: the images cross distant regions and reveal the place of volcanism within their landscapes.</p><h2>Destinations chosen with the audience</h2><p>The session centres on direct dialogue with the presenter. Visitors can suggest a destination and ask questions, contributing to the exploration through their exchanges. The experience becomes a guided journey through Earth’s volcanic geography.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Die Erde aus dem Weltraum</h2><p>Planète dévoilée erkundet die Vulkanregionen der Erde anhand von Satellitenbildern und nachgebildeten Geländeformen. Landschaften erscheinen auf einer großen Leinwand, während ein wissenschaftlicher Vermittler die Entdeckung von einer Bühne aus begleitet.</p><p>Die virtuelle Reise verbindet den Blick auf den ganzen Planeten mit Formen, die Vulkane geschaffen haben. Das Relief steht im Mittelpunkt: Die Bilder führen durch ferne Gebiete und zeigen, welche Rolle der Vulkanismus in ihren Landschaften spielt.</p><h2>Reiseziele gemeinsam auswählen</h2><p>Die Vorstellung lebt vom direkten Gespräch mit dem Vermittler. Besucher können ein Ziel vorschlagen und Fragen stellen. Ihr Austausch wirkt an der Erkundung mit, die so zu einer kommentierten Reise durch die vulkanische Geografie der Erde wird.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>De aarde vanuit de ruimte</h2><p>Planète dévoilée verkent vulkanische gebieden op aarde met satellietbeelden en nagebootst reliëf. Landschappen verschijnen op een groot scherm, terwijl een publieksbegeleider de ontdekking vanaf een podium toelicht.</p><p>De virtuele reis verbindt het overzicht van de hele planeet met vormen die door vulkanen zijn ontstaan. Het reliëf staat centraal in het verhaal: de beelden voeren door verre gebieden en tonen de plaats van vulkanisme in hun landschappen.</p><h2>Samen bestemmingen kiezen</h2><p>De voorstelling draait om direct contact met de begeleider. Bezoekers kunnen een bestemming voorstellen en vragen stellen. Hun inbreng maakt deel uit van de verkenning, die zo de vorm krijgt van een toegelichte reis door de vulkanische geografie van de aarde.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>La Terra vista dallo spazio</h2><p>Planète dévoilée esplora le regioni vulcaniche terrestri attraverso immagini satellitari e una ricostruzione del rilievo. I paesaggi appaiono su un grande schermo mentre un divulgatore conduce la scoperta da un palco rivolto al pubblico.</p><p>Il viaggio virtuale collega la visione d’insieme del pianeta alle forme create dai vulcani. Il rilievo diventa protagonista del racconto: le immagini attraversano territori lontani e mostrano il ruolo del vulcanismo nei loro paesaggi.</p><h2>Destinazioni scelte con il pubblico</h2><p>La sessione si basa sul dialogo diretto con il divulgatore. I visitatori possono proporre una destinazione e porre domande, partecipando all’esplorazione. L’esperienza assume così la forma di un viaggio commentato nella geografia vulcanica della Terra.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>La Tierra desde el espacio</h2><p>Planète dévoilée explora las regiones volcánicas terrestres mediante imágenes de satélite y una reconstrucción del relieve. Los paisajes aparecen en una gran pantalla mientras un divulgador conduce el descubrimiento desde un escenario frente al público.</p><p>El viaje virtual relaciona la visión general del planeta con las formas creadas por los volcanes. El relieve protagoniza el relato: las imágenes recorren territorios lejanos y muestran el papel del vulcanismo en sus paisajes.</p><h2>Destinos elegidos con el público</h2><p>La sesión se basa en el diálogo directo con el divulgador. Los visitantes pueden proponer un destino y hacer preguntas, participando en la exploración. La experiencia adopta así la forma de un viaje comentado por la geografía volcánica de la Tierra.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Ziemia widziana z kosmosu</h2><p>Planète dévoilée przybliża wulkaniczne regiony Ziemi za pomocą zdjęć satelitarnych i odtworzonej rzeźby terenu. Krajobrazy pojawiają się na wielkim ekranie, a prowadzący towarzyszy odkrywaniu ze sceny zwróconej ku publiczności.</p><p>Wirtualna podróż łączy ogląd całej planety z formami ukształtowanymi przez wulkany. Rzeźba terenu staje się tematem opowieści: obrazy prowadzą przez odległe obszary i pokazują rolę wulkanizmu w ich krajobrazach.</p><h2>Cele podróży wybierane z publicznością</h2><p>Pokaz opiera się na bezpośredniej rozmowie z prowadzącym. Zwiedzający mogą zaproponować kierunek i zadawać pytania, uczestnicząc w odkrywaniu. Doświadczenie przybiera dzięki temu postać komentowanej podróży po wulkanicznej geografii Ziemi.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>A Terra vista do espaço</h2><p>Planète dévoilée explora as regiões vulcânicas terrestres através de imagens de satélite e de uma reconstituição do relevo. As paisagens surgem num grande ecrã enquanto um mediador conduz a descoberta a partir de um palco virado para o público.</p><p>A viagem virtual liga a visão de conjunto do planeta às formas criadas pelos vulcões. O relevo torna-se o tema da narrativa: as imagens percorrem territórios distantes e mostram o lugar do vulcanismo nas suas paisagens.</p><h2>Destinos escolhidos com o público</h2><p>A sessão assenta no diálogo direto com o mediador. Os visitantes podem propor um destino e fazer perguntas, participando na exploração. A experiência assume assim a forma de uma viagem comentada pela geografia vulcânica da Terra.</p>"
+        }
+      ]
     },
     {
       "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
@@ -3797,6 +4069,641 @@
       "key": "7e73e3872acb49c4b61d3c6961c29658",
       "imageId": "7e73e3872acb49c4b61d3c6961c29658",
       "ownerKey": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9"
+    },
+    {
+      "id": "bbd931556fc64c6d8cfb91095871ed14",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+      "path": "park_item/bbd931556fc64c6d8cfb91095871ed14",
+      "description": "Des spectateurs assis regardent Regards sur les volcans dans la salle obscurcie.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1170,
+      "height": 786,
+      "sizeInBytes": 56843,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/Ecran-geant-avec-diffusion-de-regards-sur-les-volcans-et-public-1170x786.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Public du CinéMax devant un paysage de volcans et de nuages projeté sur le grand écran."
+        },
+        {
+          "languageCode": "en",
+          "value": "CinéMax audience facing a landscape of volcanoes and clouds on the giant screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Publikum im CinéMax vor einer auf die Großleinwand projizierten Vulkan- und Wolkenlandschaft."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Publiek in CinéMax voor een landschap met vulkanen en wolken op het grote scherm."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pubblico del CinéMax davanti a un paesaggio di vulcani e nuvole sul grande schermo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Público del CinéMax ante un paisaje de volcanes y nubes proyectado en la pantalla gigante."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Publiczność CinéMax przed wulkanami i chmurami wyświetlanymi na wielkim ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Público do CinéMax diante de uma paisagem de vulcões e nuvens projetada no grande ecrã."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des spectateurs assis regardent Regards sur les volcans dans la salle obscurcie."
+        },
+        {
+          "languageCode": "en",
+          "value": "Seated spectators watch Regards sur les volcans in the darkened theatre."
+        },
+        {
+          "languageCode": "de",
+          "value": "Sitzende Zuschauer sehen Regards sur les volcans im abgedunkelten Kinosaal."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Zittende toeschouwers kijken naar Regards sur les volcans in de verduisterde zaal."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli spettatori seduti guardano Regards sur les volcans nella sala oscurata."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los espectadores sentados ven Regards sur les volcans en la sala a oscuras."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Siedzący widzowie oglądają Regards sur les volcans w zaciemnionej sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os espetadores sentados veem Regards sur les volcans na sala escurecida."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:08:35.68Z",
+      "updatedAt": "2026-11-15T18:08:39.384Z",
+      "key": "bbd931556fc64c6d8cfb91095871ed14",
+      "imageId": "bbd931556fc64c6d8cfb91095871ed14",
+      "ownerKey": "743b40d7-8bd9-4845-ac35-1b18d6f73e82"
+    },
+    {
+      "id": "ff71086ebe364f679d022c4ead7235be",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+      "path": "park_item/ff71086ebe364f679d022c4ead7235be",
+      "description": "Un dragon vert et une peluche rouge voisinent avec les objets marqués Vulcania, près d’un panneau sur l’architecture.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 124477,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/vulcania-story_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vitrine de Vulcania Story contenant des tasses, des peluches et des souvenirs illustrés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Vulcania Story display case containing mugs, soft toys and illustrated souvenirs."
+        },
+        {
+          "languageCode": "de",
+          "value": "Vitrine in Vulcania Story mit Tassen, Plüschfiguren und bebilderten Souvenirs."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Vitrine van Vulcania Story met mokken, knuffels en souvenirs met afbeeldingen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrina di Vulcania Story con tazze, peluche e ricordi illustrati."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vitrina de Vulcania Story con tazas, peluches y recuerdos ilustrados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Gablota Vulcania Story z kubkami, pluszowymi zabawkami i ilustrowanymi pamiątkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vitrina de Vulcania Story com canecas, peluches e recordações ilustradas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Un dragon vert et une peluche rouge voisinent avec les objets marqués Vulcania, près d’un panneau sur l’architecture."
+        },
+        {
+          "languageCode": "en",
+          "value": "A green dragon and a red soft toy sit among Vulcania-branded objects beside an architecture panel."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein grüner Drache und eine rote Plüschfigur liegen zwischen Gegenständen mit Vulcania-Schriftzug neben einer Architekturtafel."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een groene draak en een rode knuffel liggen tussen voorwerpen met de naam Vulcania, naast een paneel over architectuur."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un drago verde e un peluche rosso si trovano tra oggetti con il nome Vulcania, accanto a un pannello sull’architettura."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un dragón verde y un peluche rojo aparecen entre objetos con el nombre Vulcania, junto a un panel sobre arquitectura."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielony smok i czerwona pluszowa zabawka znajdują się wśród przedmiotów z nazwą Vulcania, obok planszy o architekturze."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um dragão verde e um peluche vermelho estão entre objetos com o nome Vulcania, junto de um painel sobre arquitetura."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:08:52.608Z",
+      "updatedAt": "2026-11-15T18:08:56.168Z",
+      "key": "ff71086ebe364f679d022c4ead7235be",
+      "imageId": "ff71086ebe364f679d022c4ead7235be",
+      "ownerKey": "73863436-ae90-414d-8ae8-0e4973a3581c"
+    },
+    {
+      "id": "f7028cf39cb34e1dbf40118d487cecfe",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+      "path": "park_item/f7028cf39cb34e1dbf40118d487cecfe",
+      "description": "Les objets sont disposés sur des socles sombres devant des images de lave et des panneaux explicatifs.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 151584,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/expo-krafft_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Vitrines éclairées de l’exposition Maurice et Katia Krafft, avec des échantillons et des caisses en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Illuminated display cases in the Maurice and Katia Krafft exhibition, with samples and wooden crates."
+        },
+        {
+          "languageCode": "de",
+          "value": "Beleuchtete Vitrinen in der Ausstellung über Maurice und Katia Krafft mit Proben und Holzkisten."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Verlichte vitrines in de tentoonstelling over Maurice en Katia Krafft, met monsters en houten kisten."
+        },
+        {
+          "languageCode": "it",
+          "value": "Vetrine illuminate nell’esposizione su Maurice e Katia Krafft, con campioni e casse di legno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Vitrinas iluminadas de la exposición sobre Maurice y Katia Krafft, con muestras y cajas de madera."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Oświetlone gabloty wystawy o Maurice’ie i Katii Krafftach, z próbkami i drewnianymi skrzyniami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Vitrinas iluminadas da exposição sobre Maurice e Katia Krafft, com amostras e caixas de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les objets sont disposés sur des socles sombres devant des images de lave et des panneaux explicatifs."
+        },
+        {
+          "languageCode": "en",
+          "value": "Objects stand on dark plinths in front of lava imagery and explanatory panels."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die Objekte stehen auf dunklen Sockeln vor Lavabildern und Erklärungstafeln."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De voorwerpen staan op donkere sokkels voor lavabeelden en uitlegpanelen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli oggetti sono esposti su basi scure davanti a immagini di lava e pannelli esplicativi."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los objetos se presentan sobre bases oscuras ante imágenes de lava y paneles explicativos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przedmioty stoją na ciemnych podstawach przed obrazami lawy i planszami objaśniającymi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os objetos estão dispostos sobre bases escuras diante de imagens de lava e painéis explicativos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:14:26.31Z",
+      "updatedAt": "2026-11-15T18:14:29.895Z",
+      "key": "f7028cf39cb34e1dbf40118d487cecfe",
+      "imageId": "f7028cf39cb34e1dbf40118d487cecfe",
+      "ownerKey": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851"
+    },
+    {
+      "id": "8964a6b4964b4d00b3083ecc845e7c24",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+      "path": "park_item/8964a6b4964b4d00b3083ecc845e7c24",
+      "description": "Les visiteurs se tiennent derrière la rambarde, face au paysage miniature ; les panneaux des massifs volcaniques apparaissent au fond.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 182805,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/header-maquettes_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une guide en rouge présente une maquette de relief à un groupe dans l’espace des Maquettes géantes."
+        },
+        {
+          "languageCode": "en",
+          "value": "A guide dressed in red presents a terrain model to a group in the giant-model exhibition."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine rot gekleidete Führerin erklärt einer Gruppe ein Geländemodell in der Ausstellung der großen Modelle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een gids in rode kleding toont een terreinmaquette aan een groep in de tentoonstelling met grote modellen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una guida vestita di rosso presenta un modello del rilievo a un gruppo nell’esposizione dei grandi plastici."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una guía vestida de rojo presenta una maqueta del relieve a un grupo en la exposición de maquetas gigantes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przewodniczka ubrana na czerwono prezentuje grupie model terenu na wystawie wielkich makiet."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma guia vestida de vermelho apresenta uma maqueta do relevo a um grupo na exposição das grandes maquetas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les visiteurs se tiennent derrière la rambarde, face au paysage miniature ; les panneaux des massifs volcaniques apparaissent au fond."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors stand behind the railing facing the miniature landscape, with volcanic-massif panels in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher stehen hinter dem Geländer vor der Miniaturlandschaft; im Hintergrund sind Tafeln zu den Vulkangebirgen zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers staan achter de leuning voor het miniatuurlandschap; op de achtergrond hangen panelen over de vulkanische massieven."
+        },
+        {
+          "languageCode": "it",
+          "value": "I visitatori osservano il paesaggio in miniatura dietro la ringhiera; sullo sfondo compaiono pannelli sui massicci vulcanici."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los visitantes observan el paisaje en miniatura tras la barandilla; al fondo aparecen paneles sobre los macizos volcánicos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający stoją za barierką przed miniaturowym krajobrazem; w tle widać plansze dotyczące masywów wulkanicznych."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os visitantes estão atrás da grade diante da paisagem em miniatura; ao fundo veem-se painéis sobre os maciços vulcânicos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:15:28.219Z",
+      "updatedAt": "2026-11-15T18:15:31.781Z",
+      "key": "8964a6b4964b4d00b3083ecc845e7c24",
+      "imageId": "8964a6b4964b4d00b3083ecc845e7c24",
+      "ownerKey": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd"
+    },
+    {
+      "id": "4fe6f6c0da1f4994af54006f3a04a994",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+      "path": "park_item/4fe6f6c0da1f4994af54006f3a04a994",
+      "description": "À droite de l’image projetée, l’animateur se penche sur son pupitre orange, au bord de la scène.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 111984,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/header-planete-devoilee_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un animateur de Planète dévoilée présente une vue de la Terre sur grand écran devant le public assis."
+        },
+        {
+          "languageCode": "en",
+          "value": "A Planète dévoilée presenter shows a view of Earth on a large screen to a seated audience."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Vermittler von Planète dévoilée zeigt dem sitzenden Publikum eine Erdansicht auf der Großleinwand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een begeleider van Planète dévoilée toont een beeld van de aarde op een groot scherm aan het zittende publiek."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un divulgatore di Planète dévoilée mostra una vista della Terra sul grande schermo al pubblico seduto."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un divulgador de Planète dévoilée muestra una vista de la Tierra en una gran pantalla al público sentado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Prowadzący Planète dévoilée pokazuje siedzącej publiczności obraz Ziemi na wielkim ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um mediador de Planète dévoilée mostra uma vista da Terra no grande ecrã ao público sentado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "À droite de l’image projetée, l’animateur se penche sur son pupitre orange, au bord de la scène."
+        },
+        {
+          "languageCode": "en",
+          "value": "To the right of the projected image, the presenter leans over an orange desk at the edge of the stage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rechts vom projizierten Bild beugt sich der Vermittler über sein orangefarbenes Pult am Bühnenrand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rechts van het geprojecteerde beeld buigt de begeleider zich over een oranje lessenaar aan de rand van het podium."
+        },
+        {
+          "languageCode": "it",
+          "value": "A destra dell’immagine proiettata, il divulgatore si china sulla postazione arancione al bordo del palco."
+        },
+        {
+          "languageCode": "es",
+          "value": "A la derecha de la imagen proyectada, el divulgador se inclina sobre su mesa naranja al borde del escenario."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Po prawej stronie wyświetlanego obrazu prowadzący pochyla się nad pomarańczowym pulpitem przy krawędzi sceny."
+        },
+        {
+          "languageCode": "pt",
+          "value": "À direita da imagem projetada, o mediador inclina-se sobre a mesa laranja na extremidade do palco."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:15:49.992Z",
+      "updatedAt": "2026-11-15T18:15:53.521Z",
+      "key": "4fe6f6c0da1f4994af54006f3a04a994",
+      "imageId": "4fe6f6c0da1f4994af54006f3a04a994",
+      "ownerKey": "9fe653b3-fd97-4d4c-ac43-d06466236fa3"
     }
   ],
   "history": {

@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T17:54:51.685Z",
+      "lastDataIntegrationAt": "2026-11-15T18:15:49.992Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -38438,6 +38438,96 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-history-article-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : article historique privé personnellement rédigé et relu en huit langues, quatre sections et huit paragraphes par langue, photo réelle du chantier de mars2000, huit sources accessibles ; 128champs exactement contrôlés. Aucun audit final ni publication."
+        },
+        {
+          "eventId": "apply-68ef5f89-424d-47fa-874f-4cbe28032070",
+          "appliedAt": "2026-11-15T18:04:51.597Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-27-projection-venues-20261115.json",
+          "auditEvidence": null,
+          "summary": "CinéMax et Astrodôme : seize descriptions personnelles en huit langues, salles et programmation distinctes, tous contenus privés ; audit final et publication restent à effectuer."
+        },
+        {
+          "eventId": "apply-ec51c5a9-d525-4c42-a238-f067cbaa252a",
+          "appliedAt": "2026-11-15T18:07:36.278Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-28-two-exhibitions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania Story et Terre de volcans : seize descriptions personnelles en huit langues, archives et vitrines réelles, paysages projetés identifiés ; deux fiches restent privées avant audit."
+        },
+        {
+          "eventId": "import-photo-bbd931556fc64c6d8cfb91095871ed14",
+          "appliedAt": "2026-11-15T18:08:35.680Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-29-cinemax-audience-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de CinéMax importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-ff71086ebe364f679d022c4ead7235be",
+          "appliedAt": "2026-11-15T18:08:52.608Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-30-story-souvenirs-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Vulcania Story importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-2b30f00c-043c-472c-8a6a-02035ddcd7d8",
+          "appliedAt": "2026-11-15T18:11:21.030Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-31-collections-and-models-20261115.json",
+          "auditEvidence": null,
+          "summary": "Exposition Maurice et Katia Krafft et Maquettes géantes : seize notices personnelles en huit langues, collections et géographie vérifiées par pages et photographies officielles ; deux fiches privées avant audit."
+        },
+        {
+          "eventId": "apply-48dede54-a4f6-417e-bf2d-8d0d1132cfc4",
+          "appliedAt": "2026-11-15T18:13:58.032Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-32-two-journeys-20261115.json",
+          "auditEvidence": null,
+          "summary": "Planète dévoilée et Carnets de voyage : seize notices personnelles en huit langues, voyage animé et programmation 2026 explicitement sourcés ; deux fiches privées avant audit."
+        },
+        {
+          "eventId": "import-photo-f7028cf39cb34e1dbf40118d487cecfe",
+          "appliedAt": "2026-11-15T18:14:26.310Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-33-krafft-display-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Maurice et Katia Krafft, histoires de volcanologues importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-8964a6b4964b4d00b3083ecc845e7c24",
+          "appliedAt": "2026-11-15T18:15:28.219Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-34-maquettes-group-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Les maquettes géantes importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-4fe6f6c0da1f4994af54006f3a04a994",
+          "appliedAt": "2026-11-15T18:15:49.992Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-35-planete-devoilee-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photo officielle de Planète dévoilée importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -38490,7 +38580,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-17a935d8-acd0-4ef7-879a-a6ab2372fc6a ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration import-photo-4fe6f6c0da1f4994af54006f3a04a994 ; conserver les références de découverte."
       }
     },
     {

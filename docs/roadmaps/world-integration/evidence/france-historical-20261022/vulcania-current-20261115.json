@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T17:54:51.6852414Z",
+  "lastDataIntegrationAt": "2026-11-15T18:15:49.992Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": false,
   "sitePublicationPerformed": false,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 13,
-  "realImportCount": 15,
-  "lastOperationId": "17a935d8-acd0-4ef7-879a-a6ab2372fc6a",
+  "realApplyCount": 17,
+  "realImportCount": 20,
+  "lastOperationId": "48dede54-a4f6-417e-bf2d-8d0d1132cfc4",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -155,18 +155,22 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-18-operator-description-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-first-park-history-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-20-four-experiences-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-history-article-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-history-article-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-27-projection-venues-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-28-two-exhibitions-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-31-collections-and-models-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-32-two-journeys-20261115.json"
   ],
   "currentCoverage": {
     "items": 47,
     "publicItems": 0,
-    "describedItems8Languages": 10,
+    "describedItems8Languages": 18,
     "zones": 0,
-    "ownMedia": 15,
+    "ownMedia": 20,
     "historyEvents": 4,
     "privateHistoryEvents": 4,
     "officialMaps": 2,
-    "privateOwnMedia": 15,
+    "privateOwnMedia": 20,
     "articles": 1,
     "privateArticles": 1
   },
@@ -246,6 +250,31 @@
       "imageId": "7e73e3872acb49c4b61d3c6961c29658",
       "createdAt": "2026-11-15T17:46:41.809Z",
       "proof": "vulcania-photo-25-sacres-scenery-20261115.json"
+    },
+    {
+      "imageId": "bbd931556fc64c6d8cfb91095871ed14",
+      "createdAt": "2026-11-15T18:08:35.68Z",
+      "proof": "vulcania-photo-29-cinemax-audience-20261115.json"
+    },
+    {
+      "imageId": "ff71086ebe364f679d022c4ead7235be",
+      "createdAt": "2026-11-15T18:08:52.608Z",
+      "proof": "vulcania-photo-30-story-souvenirs-20261115.json"
+    },
+    {
+      "imageId": "f7028cf39cb34e1dbf40118d487cecfe",
+      "createdAt": "2026-11-15T18:14:26.31Z",
+      "proof": "vulcania-photo-33-krafft-display-20261115.json"
+    },
+    {
+      "imageId": "8964a6b4964b4d00b3083ecc845e7c24",
+      "createdAt": "2026-11-15T18:15:28.219Z",
+      "proof": "vulcania-photo-34-maquettes-group-20261115.json"
+    },
+    {
+      "imageId": "4fe6f6c0da1f4994af54006f3a04a994",
+      "createdAt": "2026-11-15T18:15:49.992Z",
+      "proof": "vulcania-photo-35-planete-devoilee-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -299,5 +328,12 @@
     "es": 401,
     "pl": 332,
     "pt": 388
-  }
+  },
+  "scopeClarification": {
+    "verbatim": "Ha non si ça fait partie de Vulcania c'est bien un parkItem donc on garde.",
+    "decision": "CinéMax remains an eligible internal Vulcania parkItem. Independent cinemas are outside the campaign. No item was deleted, hidden or marked excluded during the clarification."
+  },
+  "followupProofs": [
+    "vulcania-projection-and-exhibitions-followup-20261115.json"
+  ]
 }

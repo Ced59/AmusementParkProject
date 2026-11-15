@@ -1,0 +1,285 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-29-cinemax-audience",
+    "ownerId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+    "itemName": "CinéMax",
+    "current": true,
+    "source": {
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/05/Ecran-geant-avec-diffusion-de-regards-sur-les-volcans-et-public-1170x786.jpg",
+      "sourcePage": "https://www.vulcania.com/les-films-sur-ecrans-geants/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/cinemax-public.jpg",
+      "http": 200,
+      "bytes": 56843,
+      "dimensions": [
+        1170,
+        786
+      ],
+      "sha256": "1da38254919ea498c4cbb2a34f69035c0f2c430863da0ad2811b5389cc9ddef4",
+      "accessedAtUtc": "2026-11-15T17:58:32.169821+00:00",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Original individually inspected. Real photograph of the identified existing venue, distinct from all accepted files. No image edits or capture date inferred from URL."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/Ecran-geant-avec-diffusion-de-regards-sur-les-volcans-et-public-1170x786.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/cinemax-public.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-29-cinemax-audience-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-29-cinemax-audience-import-result.json"
+  },
+  "metadata": {
+    "description": "Des spectateurs assis regardent Regards sur les volcans dans la salle obscurcie.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/Ecran-geant-avec-diffusion-de-regards-sur-les-volcans-et-public-1170x786.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Public du CinéMax devant un paysage de volcans et de nuages projeté sur le grand écran."
+      },
+      {
+        "languageCode": "en",
+        "value": "CinéMax audience facing a landscape of volcanoes and clouds on the giant screen."
+      },
+      {
+        "languageCode": "de",
+        "value": "Publikum im CinéMax vor einer auf die Großleinwand projizierten Vulkan- und Wolkenlandschaft."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Publiek in CinéMax voor een landschap met vulkanen en wolken op het grote scherm."
+      },
+      {
+        "languageCode": "it",
+        "value": "Pubblico del CinéMax davanti a un paesaggio di vulcani e nuvole sul grande schermo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Público del CinéMax ante un paisaje de volcanes y nubes proyectado en la pantalla gigante."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Publiczność CinéMax przed wulkanami i chmurami wyświetlanymi na wielkim ekranie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Público do CinéMax diante de uma paisagem de vulcões e nuvens projetada no grande ecrã."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des spectateurs assis regardent Regards sur les volcans dans la salle obscurcie."
+      },
+      {
+        "languageCode": "en",
+        "value": "Seated spectators watch Regards sur les volcans in the darkened theatre."
+      },
+      {
+        "languageCode": "de",
+        "value": "Sitzende Zuschauer sehen Regards sur les volcans im abgedunkelten Kinosaal."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Zittende toeschouwers kijken naar Regards sur les volcans in de verduisterde zaal."
+      },
+      {
+        "languageCode": "it",
+        "value": "Gli spettatori seduti guardano Regards sur les volcans nella sala oscurata."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los espectadores sentados ven Regards sur les volcans en la sala a oscuras."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Siedzący widzowie oglądają Regards sur les volcans w zaciemnionej sali."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os espetadores sentados veem Regards sur les volcans na sala escurecida."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T18:08:34.2202951Z",
+    "result": {
+      "id": "bbd931556fc64c6d8cfb91095871ed14",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+      "path": "park_item/bbd931556fc64c6d8cfb91095871ed14",
+      "description": "Des spectateurs assis regardent Regards sur les volcans dans la salle obscurcie.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1170,
+      "height": 786,
+      "sizeInBytes": 56843,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/05/Ecran-geant-avec-diffusion-de-regards-sur-les-volcans-et-public-1170x786.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Public du CinéMax devant un paysage de volcans et de nuages projeté sur le grand écran."
+        },
+        {
+          "languageCode": "en",
+          "value": "CinéMax audience facing a landscape of volcanoes and clouds on the giant screen."
+        },
+        {
+          "languageCode": "de",
+          "value": "Publikum im CinéMax vor einer auf die Großleinwand projizierten Vulkan- und Wolkenlandschaft."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Publiek in CinéMax voor een landschap met vulkanen en wolken op het grote scherm."
+        },
+        {
+          "languageCode": "it",
+          "value": "Pubblico del CinéMax davanti a un paesaggio di vulcani e nuvole sul grande schermo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Público del CinéMax ante un paisaje de volcanes y nubes proyectado en la pantalla gigante."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Publiczność CinéMax przed wulkanami i chmurami wyświetlanymi na wielkim ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Público do CinéMax diante de uma paisagem de vulcões e nuvens projetada no grande ecrã."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des spectateurs assis regardent Regards sur les volcans dans la salle obscurcie."
+        },
+        {
+          "languageCode": "en",
+          "value": "Seated spectators watch Regards sur les volcans in the darkened theatre."
+        },
+        {
+          "languageCode": "de",
+          "value": "Sitzende Zuschauer sehen Regards sur les volcans im abgedunkelten Kinosaal."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Zittende toeschouwers kijken naar Regards sur les volcans in de verduisterde zaal."
+        },
+        {
+          "languageCode": "it",
+          "value": "Gli spettatori seduti guardano Regards sur les volcans nella sala oscurata."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los espectadores sentados ven Regards sur les volcans en la sala a oscuras."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Siedzący widzowie oglądają Regards sur les volcans w zaciemnionej sali."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os espetadores sentados veem Regards sur les volcans na sala escurecida."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:08:35.68Z",
+      "updatedAt": "2026-11-15T18:08:39.384Z"
+    },
+    "receivedAtUtc": "2026-11-15T18:08:42.4847139Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

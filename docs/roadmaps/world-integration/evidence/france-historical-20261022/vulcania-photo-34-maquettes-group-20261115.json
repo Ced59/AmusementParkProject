@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-34-maquettes-group",
+    "ownerId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+    "itemName": "Les maquettes géantes",
+    "current": true,
+    "source": {
+      "key": "maquettes-wide",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/06/header-maquettes_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/maquettes/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/maquettes-wide.jpg",
+      "accessedAtUtc": "2026-11-15T18:09:24.335770+00:00",
+      "http": 200,
+      "bytes": 182805,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "6a829a25275e54fe5c593c389dfcfab2422823eae40826f0b8bd1472f2eb0c60",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Real photograph personally inspected, exact venue identity; no local transformation or capture date inferred. No specimen locality or visitor identity inferred."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/header-maquettes_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/maquettes-wide.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-34-maquettes-group-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-34-maquettes-group-import-result.json"
+  },
+  "metadata": {
+    "description": "Les visiteurs se tiennent derrière la rambarde, face au paysage miniature ; les panneaux des massifs volcaniques apparaissent au fond.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/header-maquettes_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une guide en rouge présente une maquette de relief à un groupe dans l’espace des Maquettes géantes."
+      },
+      {
+        "languageCode": "en",
+        "value": "A guide dressed in red presents a terrain model to a group in the giant-model exhibition."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine rot gekleidete Führerin erklärt einer Gruppe ein Geländemodell in der Ausstellung der großen Modelle."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een gids in rode kleding toont een terreinmaquette aan een groep in de tentoonstelling met grote modellen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una guida vestita di rosso presenta un modello del rilievo a un gruppo nell’esposizione dei grandi plastici."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una guía vestida de rojo presenta una maqueta del relieve a un grupo en la exposición de maquetas gigantes."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Przewodniczka ubrana na czerwono prezentuje grupie model terenu na wystawie wielkich makiet."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma guia vestida de vermelho apresenta uma maqueta do relevo a um grupo na exposição das grandes maquetas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les visiteurs se tiennent derrière la rambarde, face au paysage miniature ; les panneaux des massifs volcaniques apparaissent au fond."
+      },
+      {
+        "languageCode": "en",
+        "value": "Visitors stand behind the railing facing the miniature landscape, with volcanic-massif panels in the background."
+      },
+      {
+        "languageCode": "de",
+        "value": "Besucher stehen hinter dem Geländer vor der Miniaturlandschaft; im Hintergrund sind Tafeln zu den Vulkangebirgen zu sehen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bezoekers staan achter de leuning voor het miniatuurlandschap; op de achtergrond hangen panelen over de vulkanische massieven."
+      },
+      {
+        "languageCode": "it",
+        "value": "I visitatori osservano il paesaggio in miniatura dietro la ringhiera; sullo sfondo compaiono pannelli sui massicci vulcanici."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los visitantes observan el paisaje en miniatura tras la barandilla; al fondo aparecen paneles sobre los macizos volcánicos."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zwiedzający stoją za barierką przed miniaturowym krajobrazem; w tle widać plansze dotyczące masywów wulkanicznych."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os visitantes estão atrás da grade diante da paisagem em miniatura; ao fundo veem-se painéis sobre os maciços vulcânicos."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "8964a6b4964b4d00b3083ecc845e7c24",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+      "path": "park_item/8964a6b4964b4d00b3083ecc845e7c24",
+      "description": "Les visiteurs se tiennent derrière la rambarde, face au paysage miniature ; les panneaux des massifs volcaniques apparaissent au fond.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 182805,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/06/header-maquettes_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une guide en rouge présente une maquette de relief à un groupe dans l’espace des Maquettes géantes."
+        },
+        {
+          "languageCode": "en",
+          "value": "A guide dressed in red presents a terrain model to a group in the giant-model exhibition."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine rot gekleidete Führerin erklärt einer Gruppe ein Geländemodell in der Ausstellung der großen Modelle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een gids in rode kleding toont een terreinmaquette aan een groep in de tentoonstelling met grote modellen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una guida vestita di rosso presenta un modello del rilievo a un gruppo nell’esposizione dei grandi plastici."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una guía vestida de rojo presenta una maqueta del relieve a un grupo en la exposición de maquetas gigantes."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przewodniczka ubrana na czerwono prezentuje grupie model terenu na wystawie wielkich makiet."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma guia vestida de vermelho apresenta uma maqueta do relevo a um grupo na exposição das grandes maquetas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les visiteurs se tiennent derrière la rambarde, face au paysage miniature ; les panneaux des massifs volcaniques apparaissent au fond."
+        },
+        {
+          "languageCode": "en",
+          "value": "Visitors stand behind the railing facing the miniature landscape, with volcanic-massif panels in the background."
+        },
+        {
+          "languageCode": "de",
+          "value": "Besucher stehen hinter dem Geländer vor der Miniaturlandschaft; im Hintergrund sind Tafeln zu den Vulkangebirgen zu sehen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bezoekers staan achter de leuning voor het miniatuurlandschap; op de achtergrond hangen panelen over de vulkanische massieven."
+        },
+        {
+          "languageCode": "it",
+          "value": "I visitatori osservano il paesaggio in miniatura dietro la ringhiera; sullo sfondo compaiono pannelli sui massicci vulcanici."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los visitantes observan el paisaje en miniatura tras la barandilla; al fondo aparecen paneles sobre los macizos volcánicos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zwiedzający stoją za barierką przed miniaturowym krajobrazem; w tle widać plansze dotyczące masywów wulkanicznych."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os visitantes estão atrás da grade diante da paisagem em miniatura; ao fundo veem-se painéis sobre os maciços vulcânicos."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:15:28.219Z",
+      "updatedAt": "2026-11-15T18:15:31.781Z"
+    },
+    "receivedAtUtc": "2026-11-15T18:15:34.9088041Z",
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T18:15:26.4720800Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

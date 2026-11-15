@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+          "key": "vulcania-krafft-exposition",
+          "name": "Maurice et Katia Krafft, histoires de volcanologues",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Sur les traces de Maurice et Katia Krafft</h2><p>Cette exposition est consacrée à Maurice et Katia Krafft, les volcanologues français qui ont partagé leurs expéditions à travers des images de volcans. Les photographies d’archives et les panneaux retracent leur parcours, en reliant l’observation sur le terrain à la diffusion des connaissances auprès du public.</p><p>Les collections comprennent des échantillons de roches volcaniques rapportés de leurs voyages. Dans la salle, des vitrines éclairées sur des socles sombres présentent les objets à proximité d’images et de textes ; des caisses en bois évoquent l’univers des expéditions.</p><h2>Des images et de la matière</h2><p>Le rapprochement entre archives et échantillons donne une présence concrète à leur travail. Les paysages photographiés et les roches recueillies racontent deux faces d’une même démarche : approcher les volcans et rendre leurs phénomènes compréhensibles.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Following Maurice and Katia Krafft</h2><p>This exhibition focuses on Maurice and Katia Krafft, the French volcanologists who shared their expeditions through images of volcanoes. Archive photographs and panels trace their careers, linking field observation with the sharing of knowledge with the public.</p><p>The collections include samples of volcanic rock brought back from their travels. Illuminated cases on dark plinths display objects alongside pictures and texts, while wooden crates evoke the setting of an expedition.</p><h2>Images and material evidence</h2><p>Bringing archives and samples together gives their work a tangible presence. Photographed landscapes and collected rocks reveal two sides of the same undertaking: getting close to volcanoes and making their phenomena understandable.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Auf den Spuren von Maurice und Katia Krafft</h2><p>Diese Ausstellung widmet sich Maurice und Katia Krafft, den französischen Vulkanologen, die ihre Expeditionen durch Vulkanbilder bekannt machten. Archivfotos und Tafeln zeichnen ihren Weg nach und verbinden die Beobachtung vor Ort mit der Vermittlung von Wissen an ein breites Publikum.</p><p>Zu den Sammlungen gehören vulkanische Gesteinsproben von ihren Reisen. Beleuchtete Vitrinen auf dunklen Sockeln zeigen die Objekte neben Bildern und Texten. Holzkisten erinnern an die Welt der Expeditionen.</p><h2>Bilder und greifbare Zeugnisse</h2><p>Archive und Gesteinsproben machen ihre Arbeit anschaulich. Fotografierte Landschaften und gesammelte Steine zeigen zwei Seiten desselben Vorhabens: Vulkanen nahe zu kommen und ihre Erscheinungen verständlich zu machen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>In de voetsporen van Maurice en Katia Krafft</h2><p>Deze tentoonstelling is gewijd aan Maurice en Katia Krafft, de Franse vulkanologen die hun expedities via beelden van vulkanen bekendmaakten. Archieffoto’s en panelen volgen hun loopbaan en verbinden waarnemingen in het veld met het delen van kennis met het publiek.</p><p>De collecties omvatten monsters van vulkanisch gesteente die ze van hun reizen meebrachten. Verlichte vitrines op donkere sokkels tonen de voorwerpen naast beelden en teksten. Houten kisten roepen de wereld van expedities op.</p><h2>Beelden en tastbare sporen</h2><p>Archiefmateriaal en gesteentemonsters maken hun werk tastbaar. Gefotografeerde landschappen en verzamelde stenen tonen twee kanten van dezelfde aanpak: dicht bij vulkanen komen en hun verschijnselen begrijpelijk maken.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Sulle tracce di Maurice e Katia Krafft</h2><p>Questa esposizione è dedicata a Maurice e Katia Krafft, i vulcanologi francesi che hanno condiviso le proprie spedizioni attraverso immagini di vulcani. Fotografie d’archivio e pannelli ne ripercorrono l’attività, collegando l’osservazione sul campo alla divulgazione delle conoscenze.</p><p>Le collezioni comprendono campioni di rocce vulcaniche riportati dai loro viaggi. Vetrine illuminate su basi scure presentano gli oggetti accanto a immagini e testi, mentre casse di legno evocano l’ambiente delle spedizioni.</p><h2>Immagini e testimonianze materiali</h2><p>L’accostamento di archivi e campioni dà concretezza al loro lavoro. Paesaggi fotografati e rocce raccolte raccontano due aspetti dello stesso impegno: avvicinarsi ai vulcani e rendere comprensibili i loro fenomeni.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Tras los pasos de Maurice y Katia Krafft</h2><p>Esta exposición está dedicada a Maurice y Katia Krafft, los vulcanólogos franceses que compartieron sus expediciones mediante imágenes de volcanes. Fotografías de archivo y paneles recorren su trayectoria, relacionando la observación sobre el terreno con la divulgación de conocimientos.</p><p>Las colecciones incluyen muestras de rocas volcánicas traídas de sus viajes. Vitrinas iluminadas sobre bases oscuras presentan los objetos junto a imágenes y textos, mientras las cajas de madera evocan el ambiente de las expediciones.</p><h2>Imágenes y testimonios materiales</h2><p>La unión de archivos y muestras da una presencia tangible a su trabajo. Los paisajes fotografiados y las rocas recogidas cuentan dos facetas de una misma labor: acercarse a los volcanes y hacer comprensibles sus fenómenos.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Śladami Maurice’a i Katii Krafftów</h2><p>Wystawa jest poświęcona Maurice’owi i Katii Krafftom, francuskim wulkanologom, którzy dzielili się odkryciami z wypraw poprzez obrazy wulkanów. Archiwalne fotografie i plansze przedstawiają ich drogę, łącząc obserwacje terenowe z popularyzacją wiedzy.</p><p>Zbiory obejmują próbki skał wulkanicznych przywiezione z podróży. Oświetlone gabloty na ciemnych podstawach pokazują przedmioty obok zdjęć i tekstów. Drewniane skrzynie przywołują świat ekspedycji.</p><h2>Obrazy i materialne świadectwa</h2><p>Zestawienie archiwów z próbkami nadaje ich pracy konkretny wymiar. Fotografowane krajobrazy i zebrane skały ukazują dwie strony tej samej działalności: zbliżanie się do wulkanów oraz wyjaśnianie zachodzących w nich zjawisk.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Nos passos de Maurice e Katia Krafft</h2><p>Esta exposição é dedicada a Maurice e Katia Krafft, os vulcanólogos franceses que partilharam as suas expedições através de imagens de vulcões. Fotografias de arquivo e painéis percorrem a sua trajetória, ligando a observação no terreno à divulgação de conhecimentos.</p><p>As coleções incluem amostras de rochas vulcânicas trazidas das suas viagens. Vitrinas iluminadas sobre bases escuras apresentam os objetos junto de imagens e textos, enquanto caixas de madeira evocam o ambiente das expedições.</p><h2>Imagens e testemunhos materiais</h2><p>A aproximação entre arquivos e amostras dá uma presença concreta ao seu trabalho. Paisagens fotografadas e rochas recolhidas mostram duas faces da mesma atividade: aproximar-se dos vulcões e tornar os seus fenómenos compreensíveis.</p>"
+            }
+          ]
+        },
+        {
+          "id": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+          "key": "vulcania-maquettes",
+          "name": "Les maquettes géantes",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>L’Auvergne vue en relief</h2><p>Les maquettes géantes réunissent les reliefs de la partie centrale de la Chaîne des Puys, des Monts-Dore et du Cantal. Ces paysages à échelle réduite permettent de saisir d’un seul regard l’étendue et les formes de grands ensembles volcaniques qui se découvrent habituellement sur de vastes territoires.</p><p>Le puy de Dôme, le Pariou, le puy Mary et le Sancy deviennent des repères dans ces représentations. Leur place parmi les reliefs voisins aide à distinguer les silhouettes et à retrouver les montagnes emblématiques de l’Auvergne.</p><h2>Lire la surface et l’intérieur</h2><p>Des coupes complètent les formes visibles en surface pour éclairer le fonctionnement des volcans. Le parcours associe ainsi une lecture géographique des massifs à une découverte de leur structure, autour des grands modèles exposés dans le bâtiment.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Auvergne in relief</h2><p>The giant models bring together the landscapes of the central Chaîne des Puys, the Monts-Dore and the Cantal massif. These scaled-down landscapes reveal the extent and shapes of volcanic regions that normally unfold across broad stretches of countryside.</p><p>The puy de Dôme, Pariou, puy Mary and Sancy become landmarks within the representations. Their positions among neighbouring landforms help distinguish their outlines and identify Auvergne’s emblematic mountains.</p><h2>Reading the surface and the interior</h2><p>Cross-sections complement the visible surface forms to explain how volcanoes work. Around the large models displayed inside the building, the exhibition combines an overview of the massifs’ geography with an exploration of their underlying structure.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Auvergne als Relief</h2><p>Die großen Modelle zeigen die Landschaften der zentralen Chaîne des Puys, der Monts-Dore und des Cantal-Massivs. In verkleinertem Maßstab werden Ausdehnung und Formen großer Vulkangebiete überschaubar, die sich sonst über weite Landschaften erstrecken.</p><p>Puy de Dôme, Pariou, Puy Mary und Sancy dienen als Orientierungspunkte in den Darstellungen. Ihre Lage zwischen benachbarten Erhebungen hilft, die Silhouetten zu unterscheiden und die bekannten Berge der Auvergne wiederzufinden.</p><h2>Oberfläche und Innenleben lesen</h2><p>Schnittmodelle ergänzen die sichtbaren Geländeformen und veranschaulichen vulkanische Vorgänge. Rund um die großen Modelle im Gebäude verbindet die Ausstellung damit einen geografischen Überblick über die Gebirge mit Einblicken in ihre innere Struktur.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Auvergne in reliëf</h2><p>De grote maquettes tonen het centrale deel van de Chaîne des Puys, de Monts-Dore en het Cantal-massief. Deze verkleinde landschappen maken de omvang en vormen van uitgestrekte vulkaangebieden in één overzicht zichtbaar.</p><p>De puy de Dôme, Pariou, puy Mary en Sancy vormen herkenningspunten in de modellen. Hun plek tussen de omliggende hoogten helpt de silhouetten te onderscheiden en de bekende bergen van Auvergne terug te vinden.</p><h2>Oppervlak en binnenkant lezen</h2><p>Doorsneden vullen de zichtbare terreinmodellen aan en verduidelijken hoe vulkanen werken. Rond de grote maquettes in het gebouw verbindt de tentoonstelling zo een geografisch overzicht van de massieven met een blik op hun inwendige structuur.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>L’Alvernia in rilievo</h2><p>I grandi plastici riuniscono i paesaggi della parte centrale della Chaîne des Puys, dei Monts-Dore e del massiccio del Cantal. Le rappresentazioni in scala ridotta rendono visibili l’estensione e le forme di complessi vulcanici normalmente distribuiti su territori molto vasti.</p><p>Il puy de Dôme, il Pariou, il puy Mary e il Sancy diventano punti di riferimento nei modelli. La loro posizione tra i rilievi vicini aiuta a distinguere le sagome e a riconoscere le montagne emblematiche dell’Alvernia.</p><h2>Leggere la superficie e l’interno</h2><p>Le sezioni completano le forme visibili in superficie per spiegare il funzionamento dei vulcani. Attorno ai grandi plastici esposti nell’edificio, il percorso associa una lettura geografica dei massicci alla scoperta della loro struttura interna.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Auvernia en relieve</h2><p>Las maquetas gigantes reúnen los paisajes de la parte central de la Chaîne des Puys, los Monts-Dore y el macizo del Cantal. Estas representaciones a escala reducida permiten apreciar la extensión y las formas de conjuntos volcánicos que abarcan territorios muy amplios.</p><p>El puy de Dôme, el Pariou, el puy Mary y el Sancy sirven de referencias en los modelos. Su posición entre los relieves vecinos ayuda a distinguir las siluetas y a reconocer las montañas emblemáticas de Auvernia.</p><h2>Leer la superficie y el interior</h2><p>Las secciones completan las formas visibles en superficie para explicar el funcionamiento de los volcanes. Alrededor de las grandes maquetas expuestas en el edificio, el recorrido combina una lectura geográfica de los macizos con el descubrimiento de su estructura interna.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Owernia w trójwymiarze</h2><p>Wielkie makiety przedstawiają centralną część pasma Chaîne des Puys, Monts-Dore oraz masyw Cantal. Pomniejszone krajobrazy pozwalają objąć wzrokiem zasięg i kształty rozległych obszarów wulkanicznych, które w terenie rozciągają się na dużych przestrzeniach.</p><p>Puy de Dôme, Pariou, puy Mary i Sancy stają się punktami orientacyjnymi modeli. Ich położenie wśród sąsiednich wzniesień pomaga rozróżniać sylwetki i rozpoznawać charakterystyczne góry Owernii.</p><h2>Odczytywanie powierzchni i wnętrza</h2><p>Przekroje uzupełniają widoczne formy powierzchni, objaśniając działanie wulkanów. Wokół wielkich modeli prezentowanych w budynku wystawa łączy geograficzny ogląd masywów z poznawaniem ich wewnętrznej budowy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A Auvérnia em relevo</h2><p>As grandes maquetas reúnem as paisagens da parte central da Chaîne des Puys, dos Monts-Dore e do maciço do Cantal. Estas representações à escala permitem observar a extensão e as formas de conjuntos vulcânicos espalhados por territórios muito vastos.</p><p>O puy de Dôme, o Pariou, o puy Mary e o Sancy tornam-se referências nos modelos. A sua posição entre os relevos vizinhos ajuda a distinguir silhuetas e a reconhecer as montanhas emblemáticas da Auvérnia.</p><h2>Ler a superfície e o interior</h2><p>Os cortes completam as formas visíveis à superfície para explicar o funcionamento dos vulcões. Em redor das grandes maquetas expostas no edifício, o percurso combina uma leitura geográfica dos maciços com a descoberta da sua estrutura interna.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-31-collections-and-models",
+        "notes": "Sixteen descriptions personally authored and reviewed in eight languages. Sources read in full: https://www.vulcania.com/animation/maurice-et-katia-krafft/ and official Les maquettes géantes page retained in source-access.json. Three actual official photographs downloaded and individually viewed: Krafft specimen cases and wooden crates, giant models and visitors, Planète dévoilée presentation. No invented specimen origin, collection total, opening day or daily guided-tour promise. Two specific headings and three paragraphs; depth limited by primary source material, no filler."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "f7b892e5-4902-49df-a814-14f9768ffd84",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:11:07.0397801Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "entityKey": "vulcania-krafft-exposition",
+        "displayName": "Maurice et Katia Krafft, histoires de volcanologues",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Auf den Spuren von Maurice und Katia Krafft</h2><p>Diese Ausstellung widmet sich Maurice und Katia Krafft, den französischen Vulkanologen, die ihre Expeditionen durch Vulkanbilder bekannt machten. Archivfotos und Tafeln zeichnen ihren Weg nach und verbinden die Beobachtung vor Ort mit der Vermittlung von Wissen an ein breites Publikum.</p><p>Zu den Sammlungen gehören vulkanische Gesteinsproben von ihren Reisen. Beleuchtete Vitrinen auf dunklen Sockeln zeigen die Objekte neben Bildern und Texten. Holzkisten erinnern an die Welt der Expeditionen.</p><h2>Bilder und greifbare Zeugnisse</h2><p>Archive und Gesteinsproben machen ihre Arbeit anschaulich. Fotografierte Landschaften und gesammelte Steine zeigen zwei Seiten desselben Vorhabens: Vulkanen nahe zu kommen und ihre Erscheinungen verständlich zu machen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Following Maurice and Katia Krafft</h2><p>This exhibition focuses on Maurice and Katia Krafft, the French volcanologists who shared their expeditions through images of volcanoes. Archive photographs and panels trace their careers, linking field observation with the sharing of knowledge with the public.</p><p>The collections include samples of volcanic rock brought back from their travels. Illuminated cases on dark plinths display objects alongside pictures and texts, while wooden crates evoke the setting of an expedition.</p><h2>Images and material evidence</h2><p>Bringing archives and samples together gives their work a tangible presence. Photographed landscapes and collected rocks reveal two sides of the same undertaking: getting close to volcanoes and making their phenomena understandable.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Tras los pasos de Maurice y Katia Krafft</h2><p>Esta exposición está dedicada a Maurice y Katia Krafft, los vulcanólogos franceses que compartieron sus expediciones mediante imágenes de volcanes. Fotografías de archivo y paneles recorren su trayectoria, relacionando la observación sobre el terreno con la divulgación de conocimientos.</p><p>Las colecciones incluyen muestras de rocas volcánicas traídas de sus viajes. Vitrinas iluminadas sobre bases oscuras presentan los objetos junto a imágenes y textos, mientras las cajas de madera evocan el ambiente de las expediciones.</p><h2>Imágenes y testimonios materiales</h2><p>La unión de archivos y muestras da una presencia tangible a su trabajo. Los paisajes fotografiados y las rocas recogidas cuentan dos facetas de una misma labor: acercarse a los volcanes y hacer comprensibles sus fenómenos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sur les traces de Maurice et Katia Krafft</h2><p>Cette exposition est consacrée à Maurice et Katia Krafft, les volcanologues français qui ont partagé leurs expéditions à travers des images de volcans. Les photographies d’archives et les panneaux retracent leur parcours, en reliant l’observation sur le terrain à la diffusion des connaissances auprès du public.</p><p>Les collections comprennent des échantillons de roches volcaniques rapportés de leurs voyages. Dans la salle, des vitrines éclairées sur des socles sombres présentent les objets à proximité d’images et de textes ; des caisses en bois évoquent l’univers des expéditions.</p><h2>Des images et de la matière</h2><p>Le rapprochement entre archives et échantillons donne une présence concrète à leur travail. Les paysages photographiés et les roches recueillies racontent deux faces d’une même démarche : approcher les volcans et rendre leurs phénomènes compréhensibles.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sulle tracce di Maurice e Katia Krafft</h2><p>Questa esposizione è dedicata a Maurice e Katia Krafft, i vulcanologi francesi che hanno condiviso le proprie spedizioni attraverso immagini di vulcani. Fotografie d’archivio e pannelli ne ripercorrono l’attività, collegando l’osservazione sul campo alla divulgazione delle conoscenze.</p><p>Le collezioni comprendono campioni di rocce vulcaniche riportati dai loro viaggi. Vetrine illuminate su basi scure presentano gli oggetti accanto a immagini e testi, mentre casse di legno evocano l’ambiente delle spedizioni.</p><h2>Immagini e testimonianze materiali</h2><p>L’accostamento di archivi e campioni dà concretezza al loro lavoro. Paesaggi fotografati e rocce raccolte raccontano due aspetti dello stesso impegno: avvicinarsi ai vulcani e rendere comprensibili i loro fenomeni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>In de voetsporen van Maurice en Katia Krafft</h2><p>Deze tentoonstelling is gewijd aan Maurice en Katia Krafft, de Franse vulkanologen die hun expedities via beelden van vulkanen bekendmaakten. Archieffoto’s en panelen volgen hun loopbaan en verbinden waarnemingen in het veld met het delen van kennis met het publiek.</p><p>De collecties omvatten monsters van vulkanisch gesteente die ze van hun reizen meebrachten. Verlichte vitrines op donkere sokkels tonen de voorwerpen naast beelden en teksten. Houten kisten roepen de wereld van expedities op.</p><h2>Beelden en tastbare sporen</h2><p>Archiefmateriaal en gesteentemonsters maken hun werk tastbaar. Gefotografeerde landschappen en verzamelde stenen tonen twee kanten van dezelfde aanpak: dicht bij vulkanen komen en hun verschijnselen begrijpelijk maken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Śladami Maurice’a i Katii Krafftów</h2><p>Wystawa jest poświęcona Maurice’owi i Katii Krafftom, francuskim wulkanologom, którzy dzielili się odkryciami z wypraw poprzez obrazy wulkanów. Archiwalne fotografie i plansze przedstawiają ich drogę, łącząc obserwacje terenowe z popularyzacją wiedzy.</p><p>Zbiory obejmują próbki skał wulkanicznych przywiezione z podróży. Oświetlone gabloty na ciemnych podstawach pokazują przedmioty obok zdjęć i tekstów. Drewniane skrzynie przywołują świat ekspedycji.</p><h2>Obrazy i materialne świadectwa</h2><p>Zestawienie archiwów z próbkami nadaje ich pracy konkretny wymiar. Fotografowane krajobrazy i zebrane skały ukazują dwie strony tej samej działalności: zbliżanie się do wulkanów oraz wyjaśnianie zachodzących w nich zjawisk.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Nos passos de Maurice e Katia Krafft</h2><p>Esta exposição é dedicada a Maurice e Katia Krafft, os vulcanólogos franceses que partilharam as suas expedições através de imagens de vulcões. Fotografias de arquivo e painéis percorrem a sua trajetória, ligando a observação no terreno à divulgação de conhecimentos.</p><p>As coleções incluem amostras de rochas vulcânicas trazidas das suas viagens. Vitrinas iluminadas sobre bases escuras apresentam os objetos junto de imagens e textos, enquanto caixas de madeira evocam o ambiente das expedições.</p><h2>Imagens e testemunhos materiais</h2><p>A aproximação entre arquivos e amostras dá uma presença concreta ao seu trabalho. Paisagens fotografadas e rochas recolhidas mostram duas faces da mesma atividade: aproximar-se dos vulcões e tornar os seus fenómenos compreensíveis.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "entityKey": "vulcania-maquettes",
+        "displayName": "Les maquettes géantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Auvergne als Relief</h2><p>Die großen Modelle zeigen die Landschaften der zentralen Chaîne des Puys, der Monts-Dore und des Cantal-Massivs. In verkleinertem Maßstab werden Ausdehnung und Formen großer Vulkangebiete überschaubar, die sich sonst über weite Landschaften erstrecken.</p><p>Puy de Dôme, Pariou, Puy Mary und Sancy dienen als Orientierungspunkte in den Darstellungen. Ihre Lage zwischen benachbarten Erhebungen hilft, die Silhouetten zu unterscheiden und die bekannten Berge der Auvergne wiederzufinden.</p><h2>Oberfläche und Innenleben lesen</h2><p>Schnittmodelle ergänzen die sichtbaren Geländeformen und veranschaulichen vulkanische Vorgänge. Rund um die großen Modelle im Gebäude verbindet die Ausstellung damit einen geografischen Überblick über die Gebirge mit Einblicken in ihre innere Struktur.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne in relief</h2><p>The giant models bring together the landscapes of the central Chaîne des Puys, the Monts-Dore and the Cantal massif. These scaled-down landscapes reveal the extent and shapes of volcanic regions that normally unfold across broad stretches of countryside.</p><p>The puy de Dôme, Pariou, puy Mary and Sancy become landmarks within the representations. Their positions among neighbouring landforms help distinguish their outlines and identify Auvergne’s emblematic mountains.</p><h2>Reading the surface and the interior</h2><p>Cross-sections complement the visible surface forms to explain how volcanoes work. Around the large models displayed inside the building, the exhibition combines an overview of the massifs’ geography with an exploration of their underlying structure.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Auvernia en relieve</h2><p>Las maquetas gigantes reúnen los paisajes de la parte central de la Chaîne des Puys, los Monts-Dore y el macizo del Cantal. Estas representaciones a escala reducida permiten apreciar la extensión y las formas de conjuntos volcánicos que abarcan territorios muy amplios.</p><p>El puy de Dôme, el Pariou, el puy Mary y el Sancy sirven de referencias en los modelos. Su posición entre los relieves vecinos ayuda a distinguir las siluetas y a reconocer las montañas emblemáticas de Auvernia.</p><h2>Leer la superficie y el interior</h2><p>Las secciones completan las formas visibles en superficie para explicar el funcionamiento de los volcanes. Alrededor de las grandes maquetas expuestas en el edificio, el recorrido combina una lectura geográfica de los macizos con el descubrimiento de su estructura interna.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’Auvergne vue en relief</h2><p>Les maquettes géantes réunissent les reliefs de la partie centrale de la Chaîne des Puys, des Monts-Dore et du Cantal. Ces paysages à échelle réduite permettent de saisir d’un seul regard l’étendue et les formes de grands ensembles volcaniques qui se découvrent habituellement sur de vastes territoires.</p><p>Le puy de Dôme, le Pariou, le puy Mary et le Sancy deviennent des repères dans ces représentations. Leur place parmi les reliefs voisins aide à distinguer les silhouettes et à retrouver les montagnes emblématiques de l’Auvergne.</p><h2>Lire la surface et l’intérieur</h2><p>Des coupes complètent les formes visibles en surface pour éclairer le fonctionnement des volcans. Le parcours associe ainsi une lecture géographique des massifs à une découverte de leur structure, autour des grands modèles exposés dans le bâtiment.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>L’Alvernia in rilievo</h2><p>I grandi plastici riuniscono i paesaggi della parte centrale della Chaîne des Puys, dei Monts-Dore e del massiccio del Cantal. Le rappresentazioni in scala ridotta rendono visibili l’estensione e le forme di complessi vulcanici normalmente distribuiti su territori molto vasti.</p><p>Il puy de Dôme, il Pariou, il puy Mary e il Sancy diventano punti di riferimento nei modelli. La loro posizione tra i rilievi vicini aiuta a distinguere le sagome e a riconoscere le montagne emblematiche dell’Alvernia.</p><h2>Leggere la superficie e l’interno</h2><p>Le sezioni completano le forme visibili in superficie per spiegare il funzionamento dei vulcani. Attorno ai grandi plastici esposti nell’edificio, il percorso associa una lettura geografica dei massicci alla scoperta della loro struttura interna.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne in reliëf</h2><p>De grote maquettes tonen het centrale deel van de Chaîne des Puys, de Monts-Dore en het Cantal-massief. Deze verkleinde landschappen maken de omvang en vormen van uitgestrekte vulkaangebieden in één overzicht zichtbaar.</p><p>De puy de Dôme, Pariou, puy Mary en Sancy vormen herkenningspunten in de modellen. Hun plek tussen de omliggende hoogten helpt de silhouetten te onderscheiden en de bekende bergen van Auvergne terug te vinden.</p><h2>Oppervlak en binnenkant lezen</h2><p>Doorsneden vullen de zichtbare terreinmodellen aan en verduidelijken hoe vulkanen werken. Rond de grote maquettes in het gebouw verbindt de tentoonstelling zo een geografisch overzicht van de massieven met een blik op hun inwendige structuur.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Owernia w trójwymiarze</h2><p>Wielkie makiety przedstawiają centralną część pasma Chaîne des Puys, Monts-Dore oraz masyw Cantal. Pomniejszone krajobrazy pozwalają objąć wzrokiem zasięg i kształty rozległych obszarów wulkanicznych, które w terenie rozciągają się na dużych przestrzeniach.</p><p>Puy de Dôme, Pariou, puy Mary i Sancy stają się punktami orientacyjnymi modeli. Ich położenie wśród sąsiednich wzniesień pomaga rozróżniać sylwetki i rozpoznawać charakterystyczne góry Owernii.</p><h2>Odczytywanie powierzchni i wnętrza</h2><p>Przekroje uzupełniają widoczne formy powierzchni, objaśniając działanie wulkanów. Wokół wielkich modeli prezentowanych w budynku wystawa łączy geograficzny ogląd masywów z poznawaniem ich wewnętrznej budowy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Auvérnia em relevo</h2><p>As grandes maquetas reúnem as paisagens da parte central da Chaîne des Puys, dos Monts-Dore e do maciço do Cantal. Estas representações à escala permitem observar a extensão e as formas de conjuntos vulcânicos espalhados por territórios muito vastos.</p><p>O puy de Dôme, o Pariou, o puy Mary e o Sancy tornam-se referências nos modelos. A sua posição entre os relevos vizinhos ajuda a distinguir silhuetas e a reconhecer as montanhas emblemáticas da Auvérnia.</p><h2>Ler a superfície e o interior</h2><p>Os cortes completam as formas visíveis à superfície para explicar o funcionamento dos vulcões. Em redor das grandes maquetas expostas no edifício, o percurso combina uma leitura geográfica dos maciços com a descoberta da sua estrutura interna.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "2b30f00c-043c-472c-8a6a-02035ddcd7d8",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:11:21.0302038Z",
+    "appliedAtUtc": "2026-11-15T18:11:21.0302045Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "entityKey": "vulcania-krafft-exposition",
+        "displayName": "Maurice et Katia Krafft, histoires de volcanologues",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Auf den Spuren von Maurice und Katia Krafft</h2><p>Diese Ausstellung widmet sich Maurice und Katia Krafft, den französischen Vulkanologen, die ihre Expeditionen durch Vulkanbilder bekannt machten. Archivfotos und Tafeln zeichnen ihren Weg nach und verbinden die Beobachtung vor Ort mit der Vermittlung von Wissen an ein breites Publikum.</p><p>Zu den Sammlungen gehören vulkanische Gesteinsproben von ihren Reisen. Beleuchtete Vitrinen auf dunklen Sockeln zeigen die Objekte neben Bildern und Texten. Holzkisten erinnern an die Welt der Expeditionen.</p><h2>Bilder und greifbare Zeugnisse</h2><p>Archive und Gesteinsproben machen ihre Arbeit anschaulich. Fotografierte Landschaften und gesammelte Steine zeigen zwei Seiten desselben Vorhabens: Vulkanen nahe zu kommen und ihre Erscheinungen verständlich zu machen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Following Maurice and Katia Krafft</h2><p>This exhibition focuses on Maurice and Katia Krafft, the French volcanologists who shared their expeditions through images of volcanoes. Archive photographs and panels trace their careers, linking field observation with the sharing of knowledge with the public.</p><p>The collections include samples of volcanic rock brought back from their travels. Illuminated cases on dark plinths display objects alongside pictures and texts, while wooden crates evoke the setting of an expedition.</p><h2>Images and material evidence</h2><p>Bringing archives and samples together gives their work a tangible presence. Photographed landscapes and collected rocks reveal two sides of the same undertaking: getting close to volcanoes and making their phenomena understandable.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Tras los pasos de Maurice y Katia Krafft</h2><p>Esta exposición está dedicada a Maurice y Katia Krafft, los vulcanólogos franceses que compartieron sus expediciones mediante imágenes de volcanes. Fotografías de archivo y paneles recorren su trayectoria, relacionando la observación sobre el terreno con la divulgación de conocimientos.</p><p>Las colecciones incluyen muestras de rocas volcánicas traídas de sus viajes. Vitrinas iluminadas sobre bases oscuras presentan los objetos junto a imágenes y textos, mientras las cajas de madera evocan el ambiente de las expediciones.</p><h2>Imágenes y testimonios materiales</h2><p>La unión de archivos y muestras da una presencia tangible a su trabajo. Los paisajes fotografiados y las rocas recogidas cuentan dos facetas de una misma labor: acercarse a los volcanes y hacer comprensibles sus fenómenos.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Sur les traces de Maurice et Katia Krafft</h2><p>Cette exposition est consacrée à Maurice et Katia Krafft, les volcanologues français qui ont partagé leurs expéditions à travers des images de volcans. Les photographies d’archives et les panneaux retracent leur parcours, en reliant l’observation sur le terrain à la diffusion des connaissances auprès du public.</p><p>Les collections comprennent des échantillons de roches volcaniques rapportés de leurs voyages. Dans la salle, des vitrines éclairées sur des socles sombres présentent les objets à proximité d’images et de textes ; des caisses en bois évoquent l’univers des expéditions.</p><h2>Des images et de la matière</h2><p>Le rapprochement entre archives et échantillons donne une présence concrète à leur travail. Les paysages photographiés et les roches recueillies racontent deux faces d’une même démarche : approcher les volcans et rendre leurs phénomènes compréhensibles.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sulle tracce di Maurice e Katia Krafft</h2><p>Questa esposizione è dedicata a Maurice e Katia Krafft, i vulcanologi francesi che hanno condiviso le proprie spedizioni attraverso immagini di vulcani. Fotografie d’archivio e pannelli ne ripercorrono l’attività, collegando l’osservazione sul campo alla divulgazione delle conoscenze.</p><p>Le collezioni comprendono campioni di rocce vulcaniche riportati dai loro viaggi. Vetrine illuminate su basi scure presentano gli oggetti accanto a immagini e testi, mentre casse di legno evocano l’ambiente delle spedizioni.</p><h2>Immagini e testimonianze materiali</h2><p>L’accostamento di archivi e campioni dà concretezza al loro lavoro. Paesaggi fotografati e rocce raccolte raccontano due aspetti dello stesso impegno: avvicinarsi ai vulcani e rendere comprensibili i loro fenomeni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>In de voetsporen van Maurice en Katia Krafft</h2><p>Deze tentoonstelling is gewijd aan Maurice en Katia Krafft, de Franse vulkanologen die hun expedities via beelden van vulkanen bekendmaakten. Archieffoto’s en panelen volgen hun loopbaan en verbinden waarnemingen in het veld met het delen van kennis met het publiek.</p><p>De collecties omvatten monsters van vulkanisch gesteente die ze van hun reizen meebrachten. Verlichte vitrines op donkere sokkels tonen de voorwerpen naast beelden en teksten. Houten kisten roepen de wereld van expedities op.</p><h2>Beelden en tastbare sporen</h2><p>Archiefmateriaal en gesteentemonsters maken hun werk tastbaar. Gefotografeerde landschappen en verzamelde stenen tonen twee kanten van dezelfde aanpak: dicht bij vulkanen komen en hun verschijnselen begrijpelijk maken.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Śladami Maurice’a i Katii Krafftów</h2><p>Wystawa jest poświęcona Maurice’owi i Katii Krafftom, francuskim wulkanologom, którzy dzielili się odkryciami z wypraw poprzez obrazy wulkanów. Archiwalne fotografie i plansze przedstawiają ich drogę, łącząc obserwacje terenowe z popularyzacją wiedzy.</p><p>Zbiory obejmują próbki skał wulkanicznych przywiezione z podróży. Oświetlone gabloty na ciemnych podstawach pokazują przedmioty obok zdjęć i tekstów. Drewniane skrzynie przywołują świat ekspedycji.</p><h2>Obrazy i materialne świadectwa</h2><p>Zestawienie archiwów z próbkami nadaje ich pracy konkretny wymiar. Fotografowane krajobrazy i zebrane skały ukazują dwie strony tej samej działalności: zbliżanie się do wulkanów oraz wyjaśnianie zachodzących w nich zjawisk.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Nos passos de Maurice e Katia Krafft</h2><p>Esta exposição é dedicada a Maurice e Katia Krafft, os vulcanólogos franceses que partilharam as suas expedições através de imagens de vulcões. Fotografias de arquivo e painéis percorrem a sua trajetória, ligando a observação no terreno à divulgação de conhecimentos.</p><p>As coleções incluem amostras de rochas vulcânicas trazidas das suas viagens. Vitrinas iluminadas sobre bases escuras apresentam os objetos junto de imagens e textos, enquanto caixas de madeira evocam o ambiente das expedições.</p><h2>Imagens e testemunhos materiais</h2><p>A aproximação entre arquivos e amostras dá uma presença concreta ao seu trabalho. Paisagens fotografadas e rochas recolhidas mostram duas faces da mesma atividade: aproximar-se dos vulcões e tornar os seus fenómenos compreensíveis.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "entityKey": "vulcania-maquettes",
+        "displayName": "Les maquettes géantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Auvergne als Relief</h2><p>Die großen Modelle zeigen die Landschaften der zentralen Chaîne des Puys, der Monts-Dore und des Cantal-Massivs. In verkleinertem Maßstab werden Ausdehnung und Formen großer Vulkangebiete überschaubar, die sich sonst über weite Landschaften erstrecken.</p><p>Puy de Dôme, Pariou, Puy Mary und Sancy dienen als Orientierungspunkte in den Darstellungen. Ihre Lage zwischen benachbarten Erhebungen hilft, die Silhouetten zu unterscheiden und die bekannten Berge der Auvergne wiederzufinden.</p><h2>Oberfläche und Innenleben lesen</h2><p>Schnittmodelle ergänzen die sichtbaren Geländeformen und veranschaulichen vulkanische Vorgänge. Rund um die großen Modelle im Gebäude verbindet die Ausstellung damit einen geografischen Überblick über die Gebirge mit Einblicken in ihre innere Struktur.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne in relief</h2><p>The giant models bring together the landscapes of the central Chaîne des Puys, the Monts-Dore and the Cantal massif. These scaled-down landscapes reveal the extent and shapes of volcanic regions that normally unfold across broad stretches of countryside.</p><p>The puy de Dôme, Pariou, puy Mary and Sancy become landmarks within the representations. Their positions among neighbouring landforms help distinguish their outlines and identify Auvergne’s emblematic mountains.</p><h2>Reading the surface and the interior</h2><p>Cross-sections complement the visible surface forms to explain how volcanoes work. Around the large models displayed inside the building, the exhibition combines an overview of the massifs’ geography with an exploration of their underlying structure.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Auvernia en relieve</h2><p>Las maquetas gigantes reúnen los paisajes de la parte central de la Chaîne des Puys, los Monts-Dore y el macizo del Cantal. Estas representaciones a escala reducida permiten apreciar la extensión y las formas de conjuntos volcánicos que abarcan territorios muy amplios.</p><p>El puy de Dôme, el Pariou, el puy Mary y el Sancy sirven de referencias en los modelos. Su posición entre los relieves vecinos ayuda a distinguir las siluetas y a reconocer las montañas emblemáticas de Auvernia.</p><h2>Leer la superficie y el interior</h2><p>Las secciones completan las formas visibles en superficie para explicar el funcionamiento de los volcanes. Alrededor de las grandes maquetas expuestas en el edificio, el recorrido combina una lectura geográfica de los macizos con el descubrimiento de su estructura interna.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>L’Auvergne vue en relief</h2><p>Les maquettes géantes réunissent les reliefs de la partie centrale de la Chaîne des Puys, des Monts-Dore et du Cantal. Ces paysages à échelle réduite permettent de saisir d’un seul regard l’étendue et les formes de grands ensembles volcaniques qui se découvrent habituellement sur de vastes territoires.</p><p>Le puy de Dôme, le Pariou, le puy Mary et le Sancy deviennent des repères dans ces représentations. Leur place parmi les reliefs voisins aide à distinguer les silhouettes et à retrouver les montagnes emblématiques de l’Auvergne.</p><h2>Lire la surface et l’intérieur</h2><p>Des coupes complètent les formes visibles en surface pour éclairer le fonctionnement des volcans. Le parcours associe ainsi une lecture géographique des massifs à une découverte de leur structure, autour des grands modèles exposés dans le bâtiment.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>L’Alvernia in rilievo</h2><p>I grandi plastici riuniscono i paesaggi della parte centrale della Chaîne des Puys, dei Monts-Dore e del massiccio del Cantal. Le rappresentazioni in scala ridotta rendono visibili l’estensione e le forme di complessi vulcanici normalmente distribuiti su territori molto vasti.</p><p>Il puy de Dôme, il Pariou, il puy Mary e il Sancy diventano punti di riferimento nei modelli. La loro posizione tra i rilievi vicini aiuta a distinguere le sagome e a riconoscere le montagne emblematiche dell’Alvernia.</p><h2>Leggere la superficie e l’interno</h2><p>Le sezioni completano le forme visibili in superficie per spiegare il funzionamento dei vulcani. Attorno ai grandi plastici esposti nell’edificio, il percorso associa una lettura geografica dei massicci alla scoperta della loro struttura interna.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Auvergne in reliëf</h2><p>De grote maquettes tonen het centrale deel van de Chaîne des Puys, de Monts-Dore en het Cantal-massief. Deze verkleinde landschappen maken de omvang en vormen van uitgestrekte vulkaangebieden in één overzicht zichtbaar.</p><p>De puy de Dôme, Pariou, puy Mary en Sancy vormen herkenningspunten in de modellen. Hun plek tussen de omliggende hoogten helpt de silhouetten te onderscheiden en de bekende bergen van Auvergne terug te vinden.</p><h2>Oppervlak en binnenkant lezen</h2><p>Doorsneden vullen de zichtbare terreinmodellen aan en verduidelijken hoe vulkanen werken. Rond de grote maquettes in het gebouw verbindt de tentoonstelling zo een geografisch overzicht van de massieven met een blik op hun inwendige structuur.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Owernia w trójwymiarze</h2><p>Wielkie makiety przedstawiają centralną część pasma Chaîne des Puys, Monts-Dore oraz masyw Cantal. Pomniejszone krajobrazy pozwalają objąć wzrokiem zasięg i kształty rozległych obszarów wulkanicznych, które w terenie rozciągają się na dużych przestrzeniach.</p><p>Puy de Dôme, Pariou, puy Mary i Sancy stają się punktami orientacyjnymi modeli. Ich położenie wśród sąsiednich wzniesień pomaga rozróżniać sylwetki i rozpoznawać charakterystyczne góry Owernii.</p><h2>Odczytywanie powierzchni i wnętrza</h2><p>Przekroje uzupełniają widoczne formy powierzchni, objaśniając działanie wulkanów. Wokół wielkich modeli prezentowanych w budynku wystawa łączy geograficzny ogląd masywów z poznawaniem ich wewnętrznej budowy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Auvérnia em relevo</h2><p>As grandes maquetas reúnem as paisagens da parte central da Chaîne des Puys, dos Monts-Dore e do maciço do Cantal. Estas representações à escala permitem observar a extensão e as formas de conjuntos vulcânicos espalhados por territórios muito vastos.</p><p>O puy de Dôme, o Pariou, o puy Mary e o Sancy tornam-se referências nos modelos. A sua posição entre os relevos vizinhos ajuda a distinguir silhuetas e a reconhecer as montanhas emblemáticas da Auvérnia.</p><h2>Ler a superfície e o interior</h2><p>Os cortes completam as formas visíveis à superfície para explicar o funcionamento dos vulcões. Em redor das grandes maquetas expostas no edifício, o percurso combina uma leitura geográfica dos maciços com a descoberta da sua estrutura interna.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Exposition Maurice et Katia Krafft et Maquettes géantes : seize notices personnelles en huit langues, collections et géographie vérifiées par pages et photographies officielles ; deux fiches privées avant audit.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally authored and reviewed in eight languages. Sources read in full: https://www.vulcania.com/animation/maurice-et-katia-krafft/ and official Les maquettes géantes page retained in source-access.json. Three actual official photographs downloaded and individually viewed: Krafft specimen cases and wooden crates, giant models and visitors, Planète dévoilée presentation. No invented specimen origin, collection total, opening day or daily guided-tour promise. Two specific headings and three paragraphs; depth limited by primary source material, no filler."
+}

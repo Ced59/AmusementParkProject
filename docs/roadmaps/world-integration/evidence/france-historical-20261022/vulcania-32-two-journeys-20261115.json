@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+          "key": "vulcania-planete-devoilee",
+          "name": "Planète dévoilée",
+          "type": "InteractiveExperience",
+          "category": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La Terre depuis l’Espace</h2><p>Planète dévoilée explore les régions volcaniques terrestres à partir d’images satellites et d’une reconstitution du relief. Dans la salle, les paysages s’affichent sur un grand écran tandis qu’un animateur conduit cette découverte depuis une scène, face au public.</p><p>Le voyage virtuel rapproche la vue d’ensemble de la planète des formes dessinées par les volcans. Les reliefs deviennent le sujet du récit : l’image permet de parcourir des territoires éloignés et d’observer la place du volcanisme dans leurs paysages.</p><h2>Des destinations choisies avec le public</h2><p>La séance repose sur un dialogue direct avec l’animateur. Les visiteurs peuvent proposer une destination et poser des questions ; leurs échanges participent à l’exploration. Le contenu prend ainsi la forme d’un voyage commenté dans la géographie volcanique de la Terre.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Earth viewed from space</h2><p>Planète dévoilée explores Earth’s volcanic regions using satellite images and reconstructed terrain. Landscapes appear on a large screen while a presenter leads the discovery from a stage facing the audience.</p><p>The virtual journey connects a view of the planet as a whole with landforms shaped by volcanoes. Terrain becomes the subject of the story: the images cross distant regions and reveal the place of volcanism within their landscapes.</p><h2>Destinations chosen with the audience</h2><p>The session centres on direct dialogue with the presenter. Visitors can suggest a destination and ask questions, contributing to the exploration through their exchanges. The experience becomes a guided journey through Earth’s volcanic geography.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Die Erde aus dem Weltraum</h2><p>Planète dévoilée erkundet die Vulkanregionen der Erde anhand von Satellitenbildern und nachgebildeten Geländeformen. Landschaften erscheinen auf einer großen Leinwand, während ein wissenschaftlicher Vermittler die Entdeckung von einer Bühne aus begleitet.</p><p>Die virtuelle Reise verbindet den Blick auf den ganzen Planeten mit Formen, die Vulkane geschaffen haben. Das Relief steht im Mittelpunkt: Die Bilder führen durch ferne Gebiete und zeigen, welche Rolle der Vulkanismus in ihren Landschaften spielt.</p><h2>Reiseziele gemeinsam auswählen</h2><p>Die Vorstellung lebt vom direkten Gespräch mit dem Vermittler. Besucher können ein Ziel vorschlagen und Fragen stellen. Ihr Austausch wirkt an der Erkundung mit, die so zu einer kommentierten Reise durch die vulkanische Geografie der Erde wird.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De aarde vanuit de ruimte</h2><p>Planète dévoilée verkent vulkanische gebieden op aarde met satellietbeelden en nagebootst reliëf. Landschappen verschijnen op een groot scherm, terwijl een publieksbegeleider de ontdekking vanaf een podium toelicht.</p><p>De virtuele reis verbindt het overzicht van de hele planeet met vormen die door vulkanen zijn ontstaan. Het reliëf staat centraal in het verhaal: de beelden voeren door verre gebieden en tonen de plaats van vulkanisme in hun landschappen.</p><h2>Samen bestemmingen kiezen</h2><p>De voorstelling draait om direct contact met de begeleider. Bezoekers kunnen een bestemming voorstellen en vragen stellen. Hun inbreng maakt deel uit van de verkenning, die zo de vorm krijgt van een toegelichte reis door de vulkanische geografie van de aarde.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La Terra vista dallo spazio</h2><p>Planète dévoilée esplora le regioni vulcaniche terrestri attraverso immagini satellitari e una ricostruzione del rilievo. I paesaggi appaiono su un grande schermo mentre un divulgatore conduce la scoperta da un palco rivolto al pubblico.</p><p>Il viaggio virtuale collega la visione d’insieme del pianeta alle forme create dai vulcani. Il rilievo diventa protagonista del racconto: le immagini attraversano territori lontani e mostrano il ruolo del vulcanismo nei loro paesaggi.</p><h2>Destinazioni scelte con il pubblico</h2><p>La sessione si basa sul dialogo diretto con il divulgatore. I visitatori possono proporre una destinazione e porre domande, partecipando all’esplorazione. L’esperienza assume così la forma di un viaggio commentato nella geografia vulcanica della Terra.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La Tierra desde el espacio</h2><p>Planète dévoilée explora las regiones volcánicas terrestres mediante imágenes de satélite y una reconstrucción del relieve. Los paisajes aparecen en una gran pantalla mientras un divulgador conduce el descubrimiento desde un escenario frente al público.</p><p>El viaje virtual relaciona la visión general del planeta con las formas creadas por los volcanes. El relieve protagoniza el relato: las imágenes recorren territorios lejanos y muestran el papel del vulcanismo en sus paisajes.</p><h2>Destinos elegidos con el público</h2><p>La sesión se basa en el diálogo directo con el divulgador. Los visitantes pueden proponer un destino y hacer preguntas, participando en la exploración. La experiencia adopta así la forma de un viaje comentado por la geografía volcánica de la Tierra.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Ziemia widziana z kosmosu</h2><p>Planète dévoilée przybliża wulkaniczne regiony Ziemi za pomocą zdjęć satelitarnych i odtworzonej rzeźby terenu. Krajobrazy pojawiają się na wielkim ekranie, a prowadzący towarzyszy odkrywaniu ze sceny zwróconej ku publiczności.</p><p>Wirtualna podróż łączy ogląd całej planety z formami ukształtowanymi przez wulkany. Rzeźba terenu staje się tematem opowieści: obrazy prowadzą przez odległe obszary i pokazują rolę wulkanizmu w ich krajobrazach.</p><h2>Cele podróży wybierane z publicznością</h2><p>Pokaz opiera się na bezpośredniej rozmowie z prowadzącym. Zwiedzający mogą zaproponować kierunek i zadawać pytania, uczestnicząc w odkrywaniu. Doświadczenie przybiera dzięki temu postać komentowanej podróży po wulkanicznej geografii Ziemi.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A Terra vista do espaço</h2><p>Planète dévoilée explora as regiões vulcânicas terrestres através de imagens de satélite e de uma reconstituição do relevo. As paisagens surgem num grande ecrã enquanto um mediador conduz a descoberta a partir de um palco virado para o público.</p><p>A viagem virtual liga a visão de conjunto do planeta às formas criadas pelos vulcões. O relevo torna-se o tema da narrativa: as imagens percorrem territórios distantes e mostram o lugar do vulcanismo nas suas paisagens.</p><h2>Destinos escolhidos com o público</h2><p>A sessão assenta no diálogo direto com o mediador. Os visitantes podem propor um destino e fazer perguntas, participando na exploração. A experiência assume assim a forma de uma viagem comentada pela geografia vulcânica da Terra.</p>"
+            }
+          ]
+        },
+        {
+          "id": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+          "key": "vulcania-carnets-voyage",
+          "name": "Carnets de voyage",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les volcans au fil des pages</h2><p>Carnets de voyage présente des dessins et des écrits nés de voyages dans des territoires volcaniques. L’exposition prolonge le Prix Vulcania, créé en 2005 avec l’association Il faut aller voir : tous les deux ans, il récompense un carnet sur le thème de L’Aventure de la Terre et permet à son auteur de préparer un nouveau voyage.</p><p>L’édition présentée de juillet à novembre 2026 met à l’honneur La Rényon, un autre visage, de Juliette Cuenot, lauréate du prix 2025. Son carnet suit La Réunion entre mer et montagnes, dans une approche sensible du territoire.</p><h2>Un regard scolaire en 2026</h2><p>La sélection comprend aussi L’Infatigable Globe Trotter, réalisé par les élèves du dispositif ULIS du collège Henri Pourrat de Ceyrat. Récompensé dans la catégorie Environnement du prix scolaire 2026, ce travail donne une place aux créations des élèves aux côtés des carnets de voyageurs.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Volcanoes through travellers’ pages</h2><p>Carnets de voyage presents drawings and writings created during journeys through volcanic territories. The exhibition extends the Prix Vulcania, founded in 2005 with the association Il faut aller voir. Every two years, the award recognises a travel journal on the theme of L’Aventure de la Terre and enables its author to undertake another journey.</p><p>The July–November 2026 exhibition features La Rényon, un autre visage by Juliette Cuenot, winner of the 2025 award. Her journal explores Réunion between sea and mountains through a personal response to the island.</p><h2>A school contribution in 2026</h2><p>The selection also includes L’Infatigable Globe Trotter, made by pupils in the ULIS programme at Henri Pourrat secondary school in Ceyrat. Winner of the Environment category in the 2026 school award, it places pupils’ creations alongside travellers’ journals.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Vulkane auf Reisetagebuchseiten</h2><p>Carnets de voyage zeigt Zeichnungen und Texte, die auf Reisen durch Vulkanregionen entstanden sind. Die Ausstellung führt den 2005 mit dem Verein Il faut aller voir gegründeten Prix Vulcania weiter. Alle zwei Jahre zeichnet er ein Reisetagebuch zum Thema L’Aventure de la Terre aus und ermöglicht dessen Autor eine weitere Reise.</p><p>Von Juli bis November 2026 steht La Rényon, un autre visage von Juliette Cuenot, der Preisträgerin 2025, im Mittelpunkt. Ihr Tagebuch erkundet Réunion zwischen Meer und Bergen mit einem persönlichen Blick auf die Insel.</p><h2>Ein Schulprojekt im Jahr 2026</h2><p>Zur Auswahl gehört auch L’Infatigable Globe Trotter von Schülern des ULIS-Programms am Collège Henri Pourrat in Ceyrat. Die Arbeit gewann 2026 die Kategorie Umwelt des Schulpreises und gibt Schülerkreationen einen Platz neben den Tagebüchern Reisender.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vulkanen tussen de reisbladen</h2><p>Carnets de voyage toont tekeningen en teksten die tijdens reizen door vulkanische gebieden zijn ontstaan. De tentoonstelling sluit aan op de Prix Vulcania, in 2005 opgericht met de vereniging Il faut aller voir. Om de twee jaar bekroont die een reisdagboek rond L’Aventure de la Terre en maakt een nieuwe reis voor de maker mogelijk.</p><p>Van juli tot november 2026 staat La Rényon, un autre visage van Juliette Cuenot, winnares van de prijs in 2025, centraal. Haar dagboek verkent Réunion tussen zee en bergen, vanuit een persoonlijke blik op het eiland.</p><h2>Een schoolbijdrage in 2026</h2><p>De selectie omvat ook L’Infatigable Globe Trotter van leerlingen uit het ULIS-programma van het Collège Henri Pourrat in Ceyrat. Het werk won de categorie Milieu van de schoolprijs 2026 en geeft leerlingencreaties een plek naast dagboeken van reizigers.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I vulcani tra le pagine di viaggio</h2><p>Carnets de voyage presenta disegni e scritti nati durante viaggi in territori vulcanici. L’esposizione prosegue il Prix Vulcania, creato nel 2005 con l’associazione Il faut aller voir. Ogni due anni il premio riconosce un taccuino sul tema L’Aventure de la Terre e permette all’autore di preparare un nuovo viaggio.</p><p>L’edizione da luglio a novembre 2026 presenta La Rényon, un autre visage di Juliette Cuenot, vincitrice del premio 2025. Il suo taccuino esplora La Réunion tra mare e montagne, attraverso uno sguardo personale sull’isola.</p><h2>Un contributo scolastico nel 2026</h2><p>La selezione comprende anche L’Infatigable Globe Trotter, realizzato dagli alunni del programma ULIS del Collège Henri Pourrat di Ceyrat. Premiato nella categoria Ambiente del concorso scolastico 2026, il lavoro affianca le creazioni degli studenti ai taccuini dei viaggiatori.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Los volcanes entre páginas de viaje</h2><p>Carnets de voyage presenta dibujos y escritos nacidos de viajes por territorios volcánicos. La exposición prolonga el Prix Vulcania, creado en 2005 con la asociación Il faut aller voir. Cada dos años premia un cuaderno sobre el tema L’Aventure de la Terre y permite a su autor preparar un nuevo viaje.</p><p>La edición de julio a noviembre de 2026 presenta La Rényon, un autre visage de Juliette Cuenot, ganadora del premio 2025. Su cuaderno explora La Reunión entre mar y montañas desde una mirada personal sobre la isla.</p><h2>Una aportación escolar en 2026</h2><p>La selección también incluye L’Infatigable Globe Trotter, realizado por alumnos del programa ULIS del Collège Henri Pourrat de Ceyrat. Premiado en la categoría Medio Ambiente del concurso escolar 2026, sitúa las creaciones de los estudiantes junto a los cuadernos de viajeros.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wulkany na kartach podróży</h2><p>Carnets de voyage prezentuje rysunki i teksty powstałe podczas wypraw do wulkanicznych regionów. Wystawa rozwija ideę Prix Vulcania, utworzonego w 2005 roku ze stowarzyszeniem Il faut aller voir. Nagroda przyznawana co dwa lata wyróżnia dziennik pod hasłem L’Aventure de la Terre i umożliwia autorowi kolejną podróż.</p><p>Od lipca do listopada 2026 roku wystawa przedstawia La Rényon, un autre visage Juliette Cuenot, laureatki nagrody z 2025 roku. Jej dziennik odkrywa Reunion między morzem a górami poprzez osobiste spojrzenie na wyspę.</p><h2>Szkolny głos w 2026 roku</h2><p>Wybór obejmuje również L’Infatigable Globe Trotter, przygotowany przez uczniów programu ULIS w Collège Henri Pourrat w Ceyrat. Praca zdobyła nagrodę szkolną 2026 w kategorii Środowisko, zapewniając twórczości uczniów miejsce obok dzienników podróżników.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Os vulcões nas páginas de viagem</h2><p>Carnets de voyage apresenta desenhos e textos nascidos de viagens por territórios vulcânicos. A exposição prolonga o Prix Vulcania, criado em 2005 com a associação Il faut aller voir. De dois em dois anos, o prémio distingue um diário sobre o tema L’Aventure de la Terre e permite ao autor preparar uma nova viagem.</p><p>A edição de julho a novembro de 2026 apresenta La Rényon, un autre visage, de Juliette Cuenot, vencedora do prémio 2025. O seu diário explora a Reunião entre mar e montanhas, através de um olhar pessoal sobre a ilha.</p><h2>Um contributo escolar em 2026</h2><p>A seleção inclui também L’Infatigable Globe Trotter, realizado pelos alunos do programa ULIS do Collège Henri Pourrat de Ceyrat. Premiado na categoria Ambiente do concurso escolar 2026, coloca as criações dos alunos ao lado dos diários de viajantes.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-32-two-journeys",
+        "notes": "Sixteen descriptions personally written and reviewed in eight languages. Primary sources read in full: https://www.vulcania.com/animation/planete-devoilee/ and https://www.vulcania.com/animation/carnets-de-voyage/ . Planète dévoilée real stage/photo inspected, destination choice and audience dialogue explicitly sourced. Carnets de voyage: Prix founded 2005, 2025 winner Juliette Cuenot, July-November 2026 Réunion exhibition and Henri Pourrat ULIS school award; all dates limited to this programme, no individual opening date inferred. Two headings/three paragraphs, no borrowed category template."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "ccaf917f-b9c0-43e9-a871-5eb8882c63ea",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:13:10.1920993Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "entityKey": "vulcania-planete-devoilee",
+        "displayName": "Planète dévoilée",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde aus dem Weltraum</h2><p>Planète dévoilée erkundet die Vulkanregionen der Erde anhand von Satellitenbildern und nachgebildeten Geländeformen. Landschaften erscheinen auf einer großen Leinwand, während ein wissenschaftlicher Vermittler die Entdeckung von einer Bühne aus begleitet.</p><p>Die virtuelle Reise verbindet den Blick auf den ganzen Planeten mit Formen, die Vulkane geschaffen haben. Das Relief steht im Mittelpunkt: Die Bilder führen durch ferne Gebiete und zeigen, welche Rolle der Vulkanismus in ihren Landschaften spielt.</p><h2>Reiseziele gemeinsam auswählen</h2><p>Die Vorstellung lebt vom direkten Gespräch mit dem Vermittler. Besucher können ein Ziel vorschlagen und Fragen stellen. Ihr Austausch wirkt an der Erkundung mit, die so zu einer kommentierten Reise durch die vulkanische Geografie der Erde wird.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Earth viewed from space</h2><p>Planète dévoilée explores Earth’s volcanic regions using satellite images and reconstructed terrain. Landscapes appear on a large screen while a presenter leads the discovery from a stage facing the audience.</p><p>The virtual journey connects a view of the planet as a whole with landforms shaped by volcanoes. Terrain becomes the subject of the story: the images cross distant regions and reveal the place of volcanism within their landscapes.</p><h2>Destinations chosen with the audience</h2><p>The session centres on direct dialogue with the presenter. Visitors can suggest a destination and ask questions, contributing to the exploration through their exchanges. The experience becomes a guided journey through Earth’s volcanic geography.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra desde el espacio</h2><p>Planète dévoilée explora las regiones volcánicas terrestres mediante imágenes de satélite y una reconstrucción del relieve. Los paisajes aparecen en una gran pantalla mientras un divulgador conduce el descubrimiento desde un escenario frente al público.</p><p>El viaje virtual relaciona la visión general del planeta con las formas creadas por los volcanes. El relieve protagoniza el relato: las imágenes recorren territorios lejanos y muestran el papel del vulcanismo en sus paisajes.</p><h2>Destinos elegidos con el público</h2><p>La sesión se basa en el diálogo directo con el divulgador. Los visitantes pueden proponer un destino y hacer preguntas, participando en la exploración. La experiencia adopta así la forma de un viaje comentado por la geografía volcánica de la Tierra.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre depuis l’Espace</h2><p>Planète dévoilée explore les régions volcaniques terrestres à partir d’images satellites et d’une reconstitution du relief. Dans la salle, les paysages s’affichent sur un grand écran tandis qu’un animateur conduit cette découverte depuis une scène, face au public.</p><p>Le voyage virtuel rapproche la vue d’ensemble de la planète des formes dessinées par les volcans. Les reliefs deviennent le sujet du récit : l’image permet de parcourir des territoires éloignés et d’observer la place du volcanisme dans leurs paysages.</p><h2>Des destinations choisies avec le public</h2><p>La séance repose sur un dialogue direct avec l’animateur. Les visiteurs peuvent proposer une destination et poser des questions ; leurs échanges participent à l’exploration. Le contenu prend ainsi la forme d’un voyage commenté dans la géographie volcanique de la Terre.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra vista dallo spazio</h2><p>Planète dévoilée esplora le regioni vulcaniche terrestri attraverso immagini satellitari e una ricostruzione del rilievo. I paesaggi appaiono su un grande schermo mentre un divulgatore conduce la scoperta da un palco rivolto al pubblico.</p><p>Il viaggio virtuale collega la visione d’insieme del pianeta alle forme create dai vulcani. Il rilievo diventa protagonista del racconto: le immagini attraversano territori lontani e mostrano il ruolo del vulcanismo nei loro paesaggi.</p><h2>Destinazioni scelte con il pubblico</h2><p>La sessione si basa sul dialogo diretto con il divulgatore. I visitatori possono proporre una destinazione e porre domande, partecipando all’esplorazione. L’esperienza assume così la forma di un viaggio commentato nella geografia vulcanica della Terra.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde vanuit de ruimte</h2><p>Planète dévoilée verkent vulkanische gebieden op aarde met satellietbeelden en nagebootst reliëf. Landschappen verschijnen op een groot scherm, terwijl een publieksbegeleider de ontdekking vanaf een podium toelicht.</p><p>De virtuele reis verbindt het overzicht van de hele planeet met vormen die door vulkanen zijn ontstaan. Het reliëf staat centraal in het verhaal: de beelden voeren door verre gebieden en tonen de plaats van vulkanisme in hun landschappen.</p><h2>Samen bestemmingen kiezen</h2><p>De voorstelling draait om direct contact met de begeleider. Bezoekers kunnen een bestemming voorstellen en vragen stellen. Hun inbreng maakt deel uit van de verkenning, die zo de vorm krijgt van een toegelichte reis door de vulkanische geografie van de aarde.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia widziana z kosmosu</h2><p>Planète dévoilée przybliża wulkaniczne regiony Ziemi za pomocą zdjęć satelitarnych i odtworzonej rzeźby terenu. Krajobrazy pojawiają się na wielkim ekranie, a prowadzący towarzyszy odkrywaniu ze sceny zwróconej ku publiczności.</p><p>Wirtualna podróż łączy ogląd całej planety z formami ukształtowanymi przez wulkany. Rzeźba terenu staje się tematem opowieści: obrazy prowadzą przez odległe obszary i pokazują rolę wulkanizmu w ich krajobrazach.</p><h2>Cele podróży wybierane z publicznością</h2><p>Pokaz opiera się na bezpośredniej rozmowie z prowadzącym. Zwiedzający mogą zaproponować kierunek i zadawać pytania, uczestnicząc w odkrywaniu. Doświadczenie przybiera dzięki temu postać komentowanej podróży po wulkanicznej geografii Ziemi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra vista do espaço</h2><p>Planète dévoilée explora as regiões vulcânicas terrestres através de imagens de satélite e de uma reconstituição do relevo. As paisagens surgem num grande ecrã enquanto um mediador conduz a descoberta a partir de um palco virado para o público.</p><p>A viagem virtual liga a visão de conjunto do planeta às formas criadas pelos vulcões. O relevo torna-se o tema da narrativa: as imagens percorrem territórios distantes e mostram o lugar do vulcanismo nas suas paisagens.</p><h2>Destinos escolhidos com o público</h2><p>A sessão assenta no diálogo direto com o mediador. Os visitantes podem propor um destino e fazer perguntas, participando na exploração. A experiência assume assim a forma de uma viagem comentada pela geografia vulcânica da Terra.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "entityKey": "vulcania-carnets-voyage",
+        "displayName": "Carnets de voyage",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vulkane auf Reisetagebuchseiten</h2><p>Carnets de voyage zeigt Zeichnungen und Texte, die auf Reisen durch Vulkanregionen entstanden sind. Die Ausstellung führt den 2005 mit dem Verein Il faut aller voir gegründeten Prix Vulcania weiter. Alle zwei Jahre zeichnet er ein Reisetagebuch zum Thema L’Aventure de la Terre aus und ermöglicht dessen Autor eine weitere Reise.</p><p>Von Juli bis November 2026 steht La Rényon, un autre visage von Juliette Cuenot, der Preisträgerin 2025, im Mittelpunkt. Ihr Tagebuch erkundet Réunion zwischen Meer und Bergen mit einem persönlichen Blick auf die Insel.</p><h2>Ein Schulprojekt im Jahr 2026</h2><p>Zur Auswahl gehört auch L’Infatigable Globe Trotter von Schülern des ULIS-Programms am Collège Henri Pourrat in Ceyrat. Die Arbeit gewann 2026 die Kategorie Umwelt des Schulpreises und gibt Schülerkreationen einen Platz neben den Tagebüchern Reisender.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Volcanoes through travellers’ pages</h2><p>Carnets de voyage presents drawings and writings created during journeys through volcanic territories. The exhibition extends the Prix Vulcania, founded in 2005 with the association Il faut aller voir. Every two years, the award recognises a travel journal on the theme of L’Aventure de la Terre and enables its author to undertake another journey.</p><p>The July–November 2026 exhibition features La Rényon, un autre visage by Juliette Cuenot, winner of the 2025 award. Her journal explores Réunion between sea and mountains through a personal response to the island.</p><h2>A school contribution in 2026</h2><p>The selection also includes L’Infatigable Globe Trotter, made by pupils in the ULIS programme at Henri Pourrat secondary school in Ceyrat. Winner of the Environment category in the 2026 school award, it places pupils’ creations alongside travellers’ journals.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los volcanes entre páginas de viaje</h2><p>Carnets de voyage presenta dibujos y escritos nacidos de viajes por territorios volcánicos. La exposición prolonga el Prix Vulcania, creado en 2005 con la asociación Il faut aller voir. Cada dos años premia un cuaderno sobre el tema L’Aventure de la Terre y permite a su autor preparar un nuevo viaje.</p><p>La edición de julio a noviembre de 2026 presenta La Rényon, un autre visage de Juliette Cuenot, ganadora del premio 2025. Su cuaderno explora La Reunión entre mar y montañas desde una mirada personal sobre la isla.</p><h2>Una aportación escolar en 2026</h2><p>La selección también incluye L’Infatigable Globe Trotter, realizado por alumnos del programa ULIS del Collège Henri Pourrat de Ceyrat. Premiado en la categoría Medio Ambiente del concurso escolar 2026, sitúa las creaciones de los estudiantes junto a los cuadernos de viajeros.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les volcans au fil des pages</h2><p>Carnets de voyage présente des dessins et des écrits nés de voyages dans des territoires volcaniques. L’exposition prolonge le Prix Vulcania, créé en 2005 avec l’association Il faut aller voir : tous les deux ans, il récompense un carnet sur le thème de L’Aventure de la Terre et permet à son auteur de préparer un nouveau voyage.</p><p>L’édition présentée de juillet à novembre 2026 met à l’honneur La Rényon, un autre visage, de Juliette Cuenot, lauréate du prix 2025. Son carnet suit La Réunion entre mer et montagnes, dans une approche sensible du territoire.</p><h2>Un regard scolaire en 2026</h2><p>La sélection comprend aussi L’Infatigable Globe Trotter, réalisé par les élèves du dispositif ULIS du collège Henri Pourrat de Ceyrat. Récompensé dans la catégorie Environnement du prix scolaire 2026, ce travail donne une place aux créations des élèves aux côtés des carnets de voyageurs.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I vulcani tra le pagine di viaggio</h2><p>Carnets de voyage presenta disegni e scritti nati durante viaggi in territori vulcanici. L’esposizione prosegue il Prix Vulcania, creato nel 2005 con l’associazione Il faut aller voir. Ogni due anni il premio riconosce un taccuino sul tema L’Aventure de la Terre e permette all’autore di preparare un nuovo viaggio.</p><p>L’edizione da luglio a novembre 2026 presenta La Rényon, un autre visage di Juliette Cuenot, vincitrice del premio 2025. Il suo taccuino esplora La Réunion tra mare e montagne, attraverso uno sguardo personale sull’isola.</p><h2>Un contributo scolastico nel 2026</h2><p>La selezione comprende anche L’Infatigable Globe Trotter, realizzato dagli alunni del programma ULIS del Collège Henri Pourrat di Ceyrat. Premiato nella categoria Ambiente del concorso scolastico 2026, il lavoro affianca le creazioni degli studenti ai taccuini dei viaggiatori.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vulkanen tussen de reisbladen</h2><p>Carnets de voyage toont tekeningen en teksten die tijdens reizen door vulkanische gebieden zijn ontstaan. De tentoonstelling sluit aan op de Prix Vulcania, in 2005 opgericht met de vereniging Il faut aller voir. Om de twee jaar bekroont die een reisdagboek rond L’Aventure de la Terre en maakt een nieuwe reis voor de maker mogelijk.</p><p>Van juli tot november 2026 staat La Rényon, un autre visage van Juliette Cuenot, winnares van de prijs in 2025, centraal. Haar dagboek verkent Réunion tussen zee en bergen, vanuit een persoonlijke blik op het eiland.</p><h2>Een schoolbijdrage in 2026</h2><p>De selectie omvat ook L’Infatigable Globe Trotter van leerlingen uit het ULIS-programma van het Collège Henri Pourrat in Ceyrat. Het werk won de categorie Milieu van de schoolprijs 2026 en geeft leerlingencreaties een plek naast dagboeken van reizigers.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wulkany na kartach podróży</h2><p>Carnets de voyage prezentuje rysunki i teksty powstałe podczas wypraw do wulkanicznych regionów. Wystawa rozwija ideę Prix Vulcania, utworzonego w 2005 roku ze stowarzyszeniem Il faut aller voir. Nagroda przyznawana co dwa lata wyróżnia dziennik pod hasłem L’Aventure de la Terre i umożliwia autorowi kolejną podróż.</p><p>Od lipca do listopada 2026 roku wystawa przedstawia La Rényon, un autre visage Juliette Cuenot, laureatki nagrody z 2025 roku. Jej dziennik odkrywa Reunion między morzem a górami poprzez osobiste spojrzenie na wyspę.</p><h2>Szkolny głos w 2026 roku</h2><p>Wybór obejmuje również L’Infatigable Globe Trotter, przygotowany przez uczniów programu ULIS w Collège Henri Pourrat w Ceyrat. Praca zdobyła nagrodę szkolną 2026 w kategorii Środowisko, zapewniając twórczości uczniów miejsce obok dzienników podróżników.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os vulcões nas páginas de viagem</h2><p>Carnets de voyage apresenta desenhos e textos nascidos de viagens por territórios vulcânicos. A exposição prolonga o Prix Vulcania, criado em 2005 com a associação Il faut aller voir. De dois em dois anos, o prémio distingue um diário sobre o tema L’Aventure de la Terre e permite ao autor preparar uma nova viagem.</p><p>A edição de julho a novembro de 2026 apresenta La Rényon, un autre visage, de Juliette Cuenot, vencedora do prémio 2025. O seu diário explora a Reunião entre mar e montanhas, através de um olhar pessoal sobre a ilha.</p><h2>Um contributo escolar em 2026</h2><p>A seleção inclui também L’Infatigable Globe Trotter, realizado pelos alunos do programa ULIS do Collège Henri Pourrat de Ceyrat. Premiado na categoria Ambiente do concurso escolar 2026, coloca as criações dos alunos ao lado dos diários de viajantes.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "48dede54-a4f6-417e-bf2d-8d0d1132cfc4",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:13:58.0324456Z",
+    "appliedAtUtc": "2026-11-15T18:13:58.0324465Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "entityKey": "vulcania-planete-devoilee",
+        "displayName": "Planète dévoilée",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Die Erde aus dem Weltraum</h2><p>Planète dévoilée erkundet die Vulkanregionen der Erde anhand von Satellitenbildern und nachgebildeten Geländeformen. Landschaften erscheinen auf einer großen Leinwand, während ein wissenschaftlicher Vermittler die Entdeckung von einer Bühne aus begleitet.</p><p>Die virtuelle Reise verbindet den Blick auf den ganzen Planeten mit Formen, die Vulkane geschaffen haben. Das Relief steht im Mittelpunkt: Die Bilder führen durch ferne Gebiete und zeigen, welche Rolle der Vulkanismus in ihren Landschaften spielt.</p><h2>Reiseziele gemeinsam auswählen</h2><p>Die Vorstellung lebt vom direkten Gespräch mit dem Vermittler. Besucher können ein Ziel vorschlagen und Fragen stellen. Ihr Austausch wirkt an der Erkundung mit, die so zu einer kommentierten Reise durch die vulkanische Geografie der Erde wird.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Earth viewed from space</h2><p>Planète dévoilée explores Earth’s volcanic regions using satellite images and reconstructed terrain. Landscapes appear on a large screen while a presenter leads the discovery from a stage facing the audience.</p><p>The virtual journey connects a view of the planet as a whole with landforms shaped by volcanoes. Terrain becomes the subject of the story: the images cross distant regions and reveal the place of volcanism within their landscapes.</p><h2>Destinations chosen with the audience</h2><p>The session centres on direct dialogue with the presenter. Visitors can suggest a destination and ask questions, contributing to the exploration through their exchanges. The experience becomes a guided journey through Earth’s volcanic geography.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La Tierra desde el espacio</h2><p>Planète dévoilée explora las regiones volcánicas terrestres mediante imágenes de satélite y una reconstrucción del relieve. Los paisajes aparecen en una gran pantalla mientras un divulgador conduce el descubrimiento desde un escenario frente al público.</p><p>El viaje virtual relaciona la visión general del planeta con las formas creadas por los volcanes. El relieve protagoniza el relato: las imágenes recorren territorios lejanos y muestran el papel del vulcanismo en sus paisajes.</p><h2>Destinos elegidos con el público</h2><p>La sesión se basa en el diálogo directo con el divulgador. Los visitantes pueden proponer un destino y hacer preguntas, participando en la exploración. La experiencia adopta así la forma de un viaje comentado por la geografía volcánica de la Tierra.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La Terre depuis l’Espace</h2><p>Planète dévoilée explore les régions volcaniques terrestres à partir d’images satellites et d’une reconstitution du relief. Dans la salle, les paysages s’affichent sur un grand écran tandis qu’un animateur conduit cette découverte depuis une scène, face au public.</p><p>Le voyage virtuel rapproche la vue d’ensemble de la planète des formes dessinées par les volcans. Les reliefs deviennent le sujet du récit : l’image permet de parcourir des territoires éloignés et d’observer la place du volcanisme dans leurs paysages.</p><h2>Des destinations choisies avec le public</h2><p>La séance repose sur un dialogue direct avec l’animateur. Les visiteurs peuvent proposer une destination et poser des questions ; leurs échanges participent à l’exploration. Le contenu prend ainsi la forme d’un voyage commenté dans la géographie volcanique de la Terre.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La Terra vista dallo spazio</h2><p>Planète dévoilée esplora le regioni vulcaniche terrestri attraverso immagini satellitari e una ricostruzione del rilievo. I paesaggi appaiono su un grande schermo mentre un divulgatore conduce la scoperta da un palco rivolto al pubblico.</p><p>Il viaggio virtuale collega la visione d’insieme del pianeta alle forme create dai vulcani. Il rilievo diventa protagonista del racconto: le immagini attraversano territori lontani e mostrano il ruolo del vulcanismo nei loro paesaggi.</p><h2>Destinazioni scelte con il pubblico</h2><p>La sessione si basa sul dialogo diretto con il divulgatore. I visitatori possono proporre una destinazione e porre domande, partecipando all’esplorazione. L’esperienza assume così la forma di un viaggio commentato nella geografia vulcanica della Terra.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De aarde vanuit de ruimte</h2><p>Planète dévoilée verkent vulkanische gebieden op aarde met satellietbeelden en nagebootst reliëf. Landschappen verschijnen op een groot scherm, terwijl een publieksbegeleider de ontdekking vanaf een podium toelicht.</p><p>De virtuele reis verbindt het overzicht van de hele planeet met vormen die door vulkanen zijn ontstaan. Het reliëf staat centraal in het verhaal: de beelden voeren door verre gebieden en tonen de plaats van vulkanisme in hun landschappen.</p><h2>Samen bestemmingen kiezen</h2><p>De voorstelling draait om direct contact met de begeleider. Bezoekers kunnen een bestemming voorstellen en vragen stellen. Hun inbreng maakt deel uit van de verkenning, die zo de vorm krijgt van een toegelichte reis door de vulkanische geografie van de aarde.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Ziemia widziana z kosmosu</h2><p>Planète dévoilée przybliża wulkaniczne regiony Ziemi za pomocą zdjęć satelitarnych i odtworzonej rzeźby terenu. Krajobrazy pojawiają się na wielkim ekranie, a prowadzący towarzyszy odkrywaniu ze sceny zwróconej ku publiczności.</p><p>Wirtualna podróż łączy ogląd całej planety z formami ukształtowanymi przez wulkany. Rzeźba terenu staje się tematem opowieści: obrazy prowadzą przez odległe obszary i pokazują rolę wulkanizmu w ich krajobrazach.</p><h2>Cele podróży wybierane z publicznością</h2><p>Pokaz opiera się na bezpośredniej rozmowie z prowadzącym. Zwiedzający mogą zaproponować kierunek i zadawać pytania, uczestnicząc w odkrywaniu. Doświadczenie przybiera dzięki temu postać komentowanej podróży po wulkanicznej geografii Ziemi.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A Terra vista do espaço</h2><p>Planète dévoilée explora as regiões vulcânicas terrestres através de imagens de satélite e de uma reconstituição do relevo. As paisagens surgem num grande ecrã enquanto um mediador conduz a descoberta a partir de um palco virado para o público.</p><p>A viagem virtual liga a visão de conjunto do planeta às formas criadas pelos vulcões. O relevo torna-se o tema da narrativa: as imagens percorrem territórios distantes e mostram o lugar do vulcanismo nas suas paisagens.</p><h2>Destinos escolhidos com o público</h2><p>A sessão assenta no diálogo direto com o mediador. Os visitantes podem propor um destino e fazer perguntas, participando na exploração. A experiência assume assim a forma de uma viagem comentada pela geografia vulcânica da Terra.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "entityKey": "vulcania-carnets-voyage",
+        "displayName": "Carnets de voyage",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Vulkane auf Reisetagebuchseiten</h2><p>Carnets de voyage zeigt Zeichnungen und Texte, die auf Reisen durch Vulkanregionen entstanden sind. Die Ausstellung führt den 2005 mit dem Verein Il faut aller voir gegründeten Prix Vulcania weiter. Alle zwei Jahre zeichnet er ein Reisetagebuch zum Thema L’Aventure de la Terre aus und ermöglicht dessen Autor eine weitere Reise.</p><p>Von Juli bis November 2026 steht La Rényon, un autre visage von Juliette Cuenot, der Preisträgerin 2025, im Mittelpunkt. Ihr Tagebuch erkundet Réunion zwischen Meer und Bergen mit einem persönlichen Blick auf die Insel.</p><h2>Ein Schulprojekt im Jahr 2026</h2><p>Zur Auswahl gehört auch L’Infatigable Globe Trotter von Schülern des ULIS-Programms am Collège Henri Pourrat in Ceyrat. Die Arbeit gewann 2026 die Kategorie Umwelt des Schulpreises und gibt Schülerkreationen einen Platz neben den Tagebüchern Reisender.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Volcanoes through travellers’ pages</h2><p>Carnets de voyage presents drawings and writings created during journeys through volcanic territories. The exhibition extends the Prix Vulcania, founded in 2005 with the association Il faut aller voir. Every two years, the award recognises a travel journal on the theme of L’Aventure de la Terre and enables its author to undertake another journey.</p><p>The July–November 2026 exhibition features La Rényon, un autre visage by Juliette Cuenot, winner of the 2025 award. Her journal explores Réunion between sea and mountains through a personal response to the island.</p><h2>A school contribution in 2026</h2><p>The selection also includes L’Infatigable Globe Trotter, made by pupils in the ULIS programme at Henri Pourrat secondary school in Ceyrat. Winner of the Environment category in the 2026 school award, it places pupils’ creations alongside travellers’ journals.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los volcanes entre páginas de viaje</h2><p>Carnets de voyage presenta dibujos y escritos nacidos de viajes por territorios volcánicos. La exposición prolonga el Prix Vulcania, creado en 2005 con la asociación Il faut aller voir. Cada dos años premia un cuaderno sobre el tema L’Aventure de la Terre y permite a su autor preparar un nuevo viaje.</p><p>La edición de julio a noviembre de 2026 presenta La Rényon, un autre visage de Juliette Cuenot, ganadora del premio 2025. Su cuaderno explora La Reunión entre mar y montañas desde una mirada personal sobre la isla.</p><h2>Una aportación escolar en 2026</h2><p>La selección también incluye L’Infatigable Globe Trotter, realizado por alumnos del programa ULIS del Collège Henri Pourrat de Ceyrat. Premiado en la categoría Medio Ambiente del concurso escolar 2026, sitúa las creaciones de los estudiantes junto a los cuadernos de viajeros.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les volcans au fil des pages</h2><p>Carnets de voyage présente des dessins et des écrits nés de voyages dans des territoires volcaniques. L’exposition prolonge le Prix Vulcania, créé en 2005 avec l’association Il faut aller voir : tous les deux ans, il récompense un carnet sur le thème de L’Aventure de la Terre et permet à son auteur de préparer un nouveau voyage.</p><p>L’édition présentée de juillet à novembre 2026 met à l’honneur La Rényon, un autre visage, de Juliette Cuenot, lauréate du prix 2025. Son carnet suit La Réunion entre mer et montagnes, dans une approche sensible du territoire.</p><h2>Un regard scolaire en 2026</h2><p>La sélection comprend aussi L’Infatigable Globe Trotter, réalisé par les élèves du dispositif ULIS du collège Henri Pourrat de Ceyrat. Récompensé dans la catégorie Environnement du prix scolaire 2026, ce travail donne une place aux créations des élèves aux côtés des carnets de voyageurs.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I vulcani tra le pagine di viaggio</h2><p>Carnets de voyage presenta disegni e scritti nati durante viaggi in territori vulcanici. L’esposizione prosegue il Prix Vulcania, creato nel 2005 con l’associazione Il faut aller voir. Ogni due anni il premio riconosce un taccuino sul tema L’Aventure de la Terre e permette all’autore di preparare un nuovo viaggio.</p><p>L’edizione da luglio a novembre 2026 presenta La Rényon, un autre visage di Juliette Cuenot, vincitrice del premio 2025. Il suo taccuino esplora La Réunion tra mare e montagne, attraverso uno sguardo personale sull’isola.</p><h2>Un contributo scolastico nel 2026</h2><p>La selezione comprende anche L’Infatigable Globe Trotter, realizzato dagli alunni del programma ULIS del Collège Henri Pourrat di Ceyrat. Premiato nella categoria Ambiente del concorso scolastico 2026, il lavoro affianca le creazioni degli studenti ai taccuini dei viaggiatori.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vulkanen tussen de reisbladen</h2><p>Carnets de voyage toont tekeningen en teksten die tijdens reizen door vulkanische gebieden zijn ontstaan. De tentoonstelling sluit aan op de Prix Vulcania, in 2005 opgericht met de vereniging Il faut aller voir. Om de twee jaar bekroont die een reisdagboek rond L’Aventure de la Terre en maakt een nieuwe reis voor de maker mogelijk.</p><p>Van juli tot november 2026 staat La Rényon, un autre visage van Juliette Cuenot, winnares van de prijs in 2025, centraal. Haar dagboek verkent Réunion tussen zee en bergen, vanuit een persoonlijke blik op het eiland.</p><h2>Een schoolbijdrage in 2026</h2><p>De selectie omvat ook L’Infatigable Globe Trotter van leerlingen uit het ULIS-programma van het Collège Henri Pourrat in Ceyrat. Het werk won de categorie Milieu van de schoolprijs 2026 en geeft leerlingencreaties een plek naast dagboeken van reizigers.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Wulkany na kartach podróży</h2><p>Carnets de voyage prezentuje rysunki i teksty powstałe podczas wypraw do wulkanicznych regionów. Wystawa rozwija ideę Prix Vulcania, utworzonego w 2005 roku ze stowarzyszeniem Il faut aller voir. Nagroda przyznawana co dwa lata wyróżnia dziennik pod hasłem L’Aventure de la Terre i umożliwia autorowi kolejną podróż.</p><p>Od lipca do listopada 2026 roku wystawa przedstawia La Rényon, un autre visage Juliette Cuenot, laureatki nagrody z 2025 roku. Jej dziennik odkrywa Reunion między morzem a górami poprzez osobiste spojrzenie na wyspę.</p><h2>Szkolny głos w 2026 roku</h2><p>Wybór obejmuje również L’Infatigable Globe Trotter, przygotowany przez uczniów programu ULIS w Collège Henri Pourrat w Ceyrat. Praca zdobyła nagrodę szkolną 2026 w kategorii Środowisko, zapewniając twórczości uczniów miejsce obok dzienników podróżników.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Os vulcões nas páginas de viagem</h2><p>Carnets de voyage apresenta desenhos e textos nascidos de viagens por territórios vulcânicos. A exposição prolonga o Prix Vulcania, criado em 2005 com a associação Il faut aller voir. De dois em dois anos, o prémio distingue um diário sobre o tema L’Aventure de la Terre e permite ao autor preparar uma nova viagem.</p><p>A edição de julho a novembro de 2026 apresenta La Rényon, un autre visage, de Juliette Cuenot, vencedora do prémio 2025. O seu diário explora a Reunião entre mar e montanhas, através de um olhar pessoal sobre a ilha.</p><h2>Um contributo escolar em 2026</h2><p>A seleção inclui também L’Infatigable Globe Trotter, realizado pelos alunos do programa ULIS do Collège Henri Pourrat de Ceyrat. Premiado na categoria Ambiente do concurso escolar 2026, coloca as criações dos alunos ao lado dos diários de viajantes.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Planète dévoilée et Carnets de voyage : seize notices personnelles en huit langues, voyage animé et programmation 2026 explicitement sourcés ; deux fiches privées avant audit.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally written and reviewed in eight languages. Primary sources read in full: https://www.vulcania.com/animation/planete-devoilee/ and https://www.vulcania.com/animation/carnets-de-voyage/ . Planète dévoilée real stage/photo inspected, destination choice and audience dialogue explicitly sourced. Carnets de voyage: Prix founded 2005, 2025 winner Juliette Cuenot, July-November 2026 Réunion exhibition and Henri Pourrat ULIS school award; all dates limited to this programme, no individual opening date inferred. Two headings/three paragraphs, no borrowed category template."
+}

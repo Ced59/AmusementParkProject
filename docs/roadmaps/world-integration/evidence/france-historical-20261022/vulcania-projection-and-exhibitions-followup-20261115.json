@@ -1,0 +1,239 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "recordedAtUtc": "2026-11-15T18:16:24.645936+00:00",
+  "newNotices": 8,
+  "localizedNotices": 64,
+  "personalReviews": [
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 16,
+      "paragraphWordCounts": {
+        "vulcania-cinemax": {
+          "fr": 125,
+          "en": 108,
+          "de": 88,
+          "nl": 100,
+          "it": 106,
+          "es": 113,
+          "pl": 81,
+          "pt": 110
+        },
+        "vulcania-astrodome": {
+          "fr": 139,
+          "en": 126,
+          "de": 121,
+          "nl": 129,
+          "it": 130,
+          "es": 134,
+          "pl": 114,
+          "pt": 129
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Sixteen descriptions personally written and reviewed in eight languages. Distinct existing CinéMax and Astrodôme venues preserved; film programmes described in context without duplicate items. Official sources: https://www.vulcania.com/les-films-sur-ecrans-geants/ and https://www.vulcania.com/planetarium/ . Astrodôme inauguration 2023, programme 2026 explicitly bounded; guided sessions and workshop spaces are sourced. No daily-show guarantee or conflicting experience count; no opening-day invention. Two specific headings and three paragraphs per language; documentary depth limited by the sources, no filler.",
+      "operationId": "68ef5f89-424d-47fa-874f-4cbe28032070",
+      "appliedAtUtc": "2026-11-15T18:04:51.597956Z",
+      "exactAppliedFields": 16
+    },
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 16,
+      "paragraphWordCounts": {
+        "vulcania-vulcania-story": {
+          "fr": 124,
+          "en": 113,
+          "de": 107,
+          "nl": 114,
+          "it": 112,
+          "es": 117,
+          "pl": 92,
+          "pt": 112
+        },
+        "vulcania-terre-volcans": {
+          "fr": 123,
+          "en": 104,
+          "de": 100,
+          "nl": 102,
+          "it": 113,
+          "es": 120,
+          "pl": 86,
+          "pt": 108
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Sixteen descriptions personally written and reviewed in eight languages. Official Vulcania Story and Terre de volcans pages read in full; official Story photograph personally inspected, actual souvenir display case. Sources: https://www.vulcania.com/animation/vulcania-story/ ; https://www.vulcania.com/animation/terre-de-volcans/ ; exact Terre source URL also retained in inventory-qualification-1410 source manifest. Two headings and three paragraphs per language. Source-limited depth recorded; no guessed opening dates, no generic itinerary advice or invented physical effects.",
+      "operationId": "ec51c5a9-d525-4c42-a238-f067cbaa252a",
+      "appliedAtUtc": "2026-11-15T18:07:36.2787176Z",
+      "exactAppliedFields": 16
+    },
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 16,
+      "paragraphWordCounts": {
+        "vulcania-krafft-exposition": {
+          "fr": 124,
+          "en": 101,
+          "de": 95,
+          "nl": 101,
+          "it": 104,
+          "es": 110,
+          "pl": 86,
+          "pt": 107
+        },
+        "vulcania-maquettes": {
+          "fr": 125,
+          "en": 105,
+          "de": 98,
+          "nl": 103,
+          "it": 115,
+          "es": 120,
+          "pl": 83,
+          "pt": 113
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Sixteen descriptions personally authored and reviewed in eight languages. Sources read in full: https://www.vulcania.com/animation/maurice-et-katia-krafft/ and official Les maquettes géantes page retained in source-access.json. Three actual official photographs downloaded and individually viewed: Krafft specimen cases and wooden crates, giant models and visitors, Planète dévoilée presentation. No invented specimen origin, collection total, opening day or daily guided-tour promise. Two specific headings and three paragraphs; depth limited by primary source material, no filler.",
+      "operationId": "2b30f00c-043c-472c-8a6a-02035ddcd7d8",
+      "appliedAtUtc": "2026-11-15T18:11:21.0302045Z",
+      "exactAppliedFields": 16
+    },
+    {
+      "personallyReviewedLanguages": [
+        "fr",
+        "en",
+        "de",
+        "nl",
+        "it",
+        "es",
+        "pl",
+        "pt"
+      ],
+      "newDescriptions": 16,
+      "paragraphWordCounts": {
+        "vulcania-planete-devoilee": {
+          "fr": 127,
+          "en": 104,
+          "de": 104,
+          "nl": 107,
+          "it": 106,
+          "es": 111,
+          "pl": 87,
+          "pt": 112
+        },
+        "vulcania-carnets-voyage": {
+          "fr": 143,
+          "en": 128,
+          "de": 123,
+          "nl": 132,
+          "it": 128,
+          "es": 131,
+          "pl": 113,
+          "pt": 133
+        }
+      },
+      "headingsAndEntityNamesStripped": true,
+      "itemCorpusRepeated12WordSequences": [],
+      "sourceNotes": "Sixteen descriptions personally written and reviewed in eight languages. Primary sources read in full: https://www.vulcania.com/animation/planete-devoilee/ and https://www.vulcania.com/animation/carnets-de-voyage/ . Planète dévoilée real stage/photo inspected, destination choice and audience dialogue explicitly sourced. Carnets de voyage: Prix founded 2005, 2025 winner Juliette Cuenot, July-November 2026 Réunion exhibition and Henri Pourrat ULIS school award; all dates limited to this programme, no individual opening date inferred. Two headings/three paragraphs, no borrowed category template.",
+      "operationId": "48dede54-a4f6-417e-bf2d-8d0d1132cfc4",
+      "appliedAtUtc": "2026-11-15T18:13:58.0324465Z",
+      "exactAppliedFields": 16
+    }
+  ],
+  "newPhotos": [
+    "bbd931556fc64c6d8cfb91095871ed14",
+    "ff71086ebe364f679d022c4ead7235be",
+    "f7028cf39cb34e1dbf40118d487cecfe",
+    "8964a6b4964b4d00b3083ecc845e7c24",
+    "4fe6f6c0da1f4994af54006f3a04a994"
+  ],
+  "photoMetadataFieldsPersonallyReviewed": 120,
+  "sourceManifest": [
+    {
+      "key": "krafft-display",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/05/expo-krafft_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/maurice-et-katia-krafft/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/krafft-display.jpg",
+      "accessedAtUtc": "2026-11-15T18:09:23.933017+00:00",
+      "http": 200,
+      "bytes": 151584,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "1b8eb3811541e1716896125b8f06fa9ba7ee684b6832043c630bdb62b2eecbb0",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    {
+      "key": "maquettes-wide",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/06/header-maquettes_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/maquettes/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/maquettes-wide.jpg",
+      "accessedAtUtc": "2026-11-15T18:09:24.335770+00:00",
+      "http": 200,
+      "bytes": 182805,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "6a829a25275e54fe5c593c389dfcfab2422823eae40826f0b8bd1472f2eb0c60",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    {
+      "key": "planete-devoilee-screen",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/header-planete-devoilee_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/planete-devoilee/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/planete-devoilee-screen.jpg",
+      "accessedAtUtc": "2026-11-15T18:09:24.646179+00:00",
+      "http": 200,
+      "bytes": 111984,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "a0ee3725e6e3ca70501de751cdb23c9ae9619729fa091bb68dc84b39184036ed",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    }
+  ],
+  "finalAuditCompleted": false,
+  "publicationPerformed": false,
+  "ownerScopeClarification": {
+    "verbatim": "Ha non si ça fait partie de Vulcania c'est bien un parkItem donc on garde.",
+    "decision": "CinéMax remains an eligible internal Vulcania parkItem. Independent cinemas are outside the campaign. No item was deleted, hidden or marked excluded during the clarification."
+  }
+}

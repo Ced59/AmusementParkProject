@@ -1,0 +1,286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-35-planete-devoilee",
+    "ownerId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+    "itemName": "Planète dévoilée",
+    "current": true,
+    "source": {
+      "key": "planete-devoilee-screen",
+      "url": "https://www.vulcania.com/wp-content/uploads/2023/04/header-planete-devoilee_3000x1100-scaled.jpg",
+      "sourcePage": "https://www.vulcania.com/animation/planete-devoilee/",
+      "file": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/planete-devoilee-screen.jpg",
+      "accessedAtUtc": "2026-11-15T18:09:24.646179+00:00",
+      "http": 200,
+      "bytes": 111984,
+      "dimensions": [
+        2048,
+        751
+      ],
+      "sha256": "a0ee3725e6e3ca70501de751cdb23c9ae9619729fa091bb68dc84b39184036ed",
+      "photographer": null,
+      "captureDate": null,
+      "localPixelTransformation": false
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; no open licence or individual photographer permission claimed.",
+    "qualification": "Real photograph personally inspected, exact venue identity; no local transformation or capture date inferred. No specimen locality or visitor identity inferred."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+      "SourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/header-planete-devoilee_3000x1100-scaled.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/public-photo-qualification-20261115/planete-devoilee-screen.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": true,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-35-planete-devoilee-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-35-planete-devoilee-import-result.json"
+  },
+  "metadata": {
+    "description": "À droite de l’image projetée, l’animateur se penche sur son pupitre orange, au bord de la scène.",
+    "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/header-planete-devoilee_3000x1100-scaled.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un animateur de Planète dévoilée présente une vue de la Terre sur grand écran devant le public assis."
+      },
+      {
+        "languageCode": "en",
+        "value": "A Planète dévoilée presenter shows a view of Earth on a large screen to a seated audience."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Vermittler von Planète dévoilée zeigt dem sitzenden Publikum eine Erdansicht auf der Großleinwand."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een begeleider van Planète dévoilée toont een beeld van de aarde op een groot scherm aan het zittende publiek."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un divulgatore di Planète dévoilée mostra una vista della Terra sul grande schermo al pubblico seduto."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un divulgador de Planète dévoilée muestra una vista de la Tierra en una gran pantalla al público sentado."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Prowadzący Planète dévoilée pokazuje siedzącej publiczności obraz Ziemi na wielkim ekranie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Um mediador de Planète dévoilée mostra uma vista da Terra no grande ecrã ao público sentado."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "À droite de l’image projetée, l’animateur se penche sur son pupitre orange, au bord de la scène."
+      },
+      {
+        "languageCode": "en",
+        "value": "To the right of the projected image, the presenter leans over an orange desk at the edge of the stage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rechts vom projizierten Bild beugt sich der Vermittler über sein orangefarbenes Pult am Bühnenrand."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rechts van het geprojecteerde beeld buigt de begeleider zich over een oranje lessenaar aan de rand van het podium."
+      },
+      {
+        "languageCode": "it",
+        "value": "A destra dell’immagine proiettata, il divulgatore si china sulla postazione arancione al bordo del palco."
+      },
+      {
+        "languageCode": "es",
+        "value": "A la derecha de la imagen proyectada, el divulgador se inclina sobre su mesa naranja al borde del escenario."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Po prawej stronie wyświetlanego obrazu prowadzący pochyla się nad pomarańczowym pulpitem przy krawędzi sceny."
+      },
+      {
+        "languageCode": "pt",
+        "value": "À direita da imagem projetada, o mediador inclina-se sobre a mesa laranja na extremidade do palco."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Vulcania — photographie du site officiel."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Vulcania — photograph from the official website."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Vulcania — Foto von der offiziellen Website."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Vulcania — foto van de officiële website."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Vulcania — fotografia del sito ufficiale."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Vulcania — fotografía del sitio oficial."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Vulcania — fotografia z oficjalnej strony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Vulcania — fotografia do site oficial."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T18:15:56.6292383Z",
+    "result": {
+      "id": "4fe6f6c0da1f4994af54006f3a04a994",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+      "path": "park_item/4fe6f6c0da1f4994af54006f3a04a994",
+      "description": "À droite de l’image projetée, l’animateur se penche sur son pupitre orange, au bord de la scène.",
+      "isCurrent": true,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 2048,
+      "height": 751,
+      "sizeInBytes": 111984,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.vulcania.com/wp-content/uploads/2023/04/header-planete-devoilee_3000x1100-scaled.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un animateur de Planète dévoilée présente une vue de la Terre sur grand écran devant le public assis."
+        },
+        {
+          "languageCode": "en",
+          "value": "A Planète dévoilée presenter shows a view of Earth on a large screen to a seated audience."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Vermittler von Planète dévoilée zeigt dem sitzenden Publikum eine Erdansicht auf der Großleinwand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een begeleider van Planète dévoilée toont een beeld van de aarde op een groot scherm aan het zittende publiek."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un divulgatore di Planète dévoilée mostra una vista della Terra sul grande schermo al pubblico seduto."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un divulgador de Planète dévoilée muestra una vista de la Tierra en una gran pantalla al público sentado."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Prowadzący Planète dévoilée pokazuje siedzącej publiczności obraz Ziemi na wielkim ekranie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Um mediador de Planète dévoilée mostra uma vista da Terra no grande ecrã ao público sentado."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "À droite de l’image projetée, l’animateur se penche sur son pupitre orange, au bord de la scène."
+        },
+        {
+          "languageCode": "en",
+          "value": "To the right of the projected image, the presenter leans over an orange desk at the edge of the stage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Rechts vom projizierten Bild beugt sich der Vermittler über sein orangefarbenes Pult am Bühnenrand."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Rechts van het geprojecteerde beeld buigt de begeleider zich over een oranje lessenaar aan de rand van het podium."
+        },
+        {
+          "languageCode": "it",
+          "value": "A destra dell’immagine proiettata, il divulgatore si china sulla postazione arancione al bordo del palco."
+        },
+        {
+          "languageCode": "es",
+          "value": "A la derecha de la imagen proyectada, el divulgador se inclina sobre su mesa naranja al borde del escenario."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Po prawej stronie wyświetlanego obrazu prowadzący pochyla się nad pomarańczowym pulpitem przy krawędzi sceny."
+        },
+        {
+          "languageCode": "pt",
+          "value": "À direita da imagem projetada, o mediador inclina-se sobre a mesa laranja na extremidade do palco."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Vulcania — photographie du site officiel."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Vulcania — photograph from the official website."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Vulcania — Foto von der offiziellen Website."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Vulcania — foto van de officiële website."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Vulcania — fotografia del sito ufficiale."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Vulcania — fotografía del sitio oficial."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Vulcania — fotografia z oficjalnej strony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Vulcania — fotografia do site oficial."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T18:15:49.992Z",
+      "updatedAt": "2026-11-15T18:15:53.521Z"
+    },
+    "startedAtUtc": "2026-11-15T18:15:47.1398890Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "73863436-ae90-414d-8ae8-0e4973a3581c",
+          "key": "vulcania-vulcania-story",
+          "name": "Vulcania Story",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Les souvenirs d’un parc volcanique</h2><p>Vulcania Story raconte le parc lui-même. L’exposition revient aux origines du projet puis à son histoire depuis l’ouverture de 2002, à travers des photographies d’archives, des vidéos et des panneaux. Elle montre comment les espaces de découverte et les animations ont évolué au fil des saisons.</p><p>Une vitrine rassemble des souvenirs portant les couleurs de Vulcania : tasses, peluches, brochures et petits objets illustrés. Ces objets rendent visible une autre histoire du parc, celle des images et des personnages emportés chez soi après la visite.</p><h2>Des personnages aux anciennes animations</h2><p>La création des personnages et les changements de communication accompagnent le récit des anciennes attractions. Entre documents et objets, le parcours relie ainsi le projet scientifique initial à l’univers visuel construit autour du nom Vulcania.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Memories of a volcanic park</h2><p>Vulcania Story tells the story of the park itself. Archive photographs, videos and panels trace the origins of the project and its history since the 2002 opening. They show how the discovery spaces and attractions have changed over successive seasons.</p><p>A display case gathers souvenirs in Vulcania’s colours: mugs, soft toys, brochures and small illustrated objects. These pieces reveal another part of the park’s history, through the images and characters that visitors took home after their visit.</p><h2>Characters and former attractions</h2><p>The creation of characters and changes in the park’s communications accompany the account of former attractions. Documents and objects connect the original scientific project with the visual world built around the Vulcania name.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Erinnerungen an einen Vulkanpark</h2><p>Vulcania Story erzählt die Geschichte des Parks selbst. Archivfotos, Videos und Tafeln führen zu den Ursprüngen des Projekts und durch seine Entwicklung seit der Eröffnung 2002. Sie zeigen, wie sich Ausstellungsräume und Attraktionen im Laufe der Jahre verändert haben.</p><p>Eine Vitrine versammelt Souvenirs in den Farben von Vulcania: Tassen, Plüschfiguren, Broschüren und kleine bebilderte Gegenstände. Darin zeigt sich eine weitere Seite der Parkgeschichte: Bilder und Figuren, die Besucher nach ihrem Aufenthalt mit nach Hause nahmen.</p><h2>Figuren und frühere Attraktionen</h2><p>Die Entstehung der Figuren und der Wandel der Kommunikation begleiten die Geschichte früherer Attraktionen. Dokumente und Gegenstände verbinden so das ursprüngliche Wissenschaftsprojekt mit der Bildwelt, die rund um den Namen Vulcania entstand.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Herinneringen aan een vulkaanpark</h2><p>Vulcania Story vertelt het verhaal van het park zelf. Archieffoto’s, video’s en panelen volgen de oorsprong van het project en de geschiedenis sinds de opening in 2002. Ze tonen hoe de ontdekkingsruimten en attracties door de jaren heen zijn veranderd.</p><p>Een vitrine verzamelt souvenirs in de kleuren van Vulcania: mokken, knuffels, brochures en kleine voorwerpen met afbeeldingen. Ze laten een andere kant van de parkgeschiedenis zien, via de beelden en personages die bezoekers na hun bezoek mee naar huis namen.</p><h2>Personages en vroegere attracties</h2><p>De ontwikkeling van de personages en veranderingen in de communicatie begeleiden het verhaal van vroegere attracties. Documenten en voorwerpen verbinden zo het oorspronkelijke wetenschappelijke project met de beeldwereld rond de naam Vulcania.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>I ricordi di un parco vulcanico</h2><p>Vulcania Story racconta il parco stesso. Fotografie d’archivio, video e pannelli ripercorrono le origini del progetto e la sua storia dall’apertura del 2002. Mostrano come gli spazi di scoperta e le attrazioni siano cambiati nel corso degli anni.</p><p>Una vetrina raccoglie ricordi con i colori di Vulcania: tazze, peluche, opuscoli e piccoli oggetti illustrati. Questi oggetti rendono visibile un’altra storia del parco, attraverso le immagini e i personaggi che i visitatori portavano a casa dopo la visita.</p><h2>Personaggi e attrazioni del passato</h2><p>La creazione dei personaggi e i cambiamenti nella comunicazione accompagnano il racconto delle vecchie attrazioni. Documenti e oggetti collegano così l’originario progetto scientifico all’universo visivo costruito attorno al nome Vulcania.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Los recuerdos de un parque volcánico</h2><p>Vulcania Story cuenta la historia del propio parque. Fotografías de archivo, vídeos y paneles recorren los orígenes del proyecto y su evolución desde la apertura de 2002. Muestran cómo los espacios de descubrimiento y las atracciones han cambiado con los años.</p><p>Una vitrina reúne recuerdos con los colores de Vulcania: tazas, peluches, folletos y pequeños objetos ilustrados. Estas piezas muestran otra faceta de su historia, a través de las imágenes y los personajes que los visitantes se llevaban a casa.</p><h2>Personajes y antiguas atracciones</h2><p>La creación de los personajes y los cambios en la comunicación acompañan el relato de las antiguas atracciones. Los documentos y objetos relacionan así el proyecto científico original con el universo visual construido alrededor del nombre Vulcania.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pamiątki z wulkanicznego parku</h2><p>Vulcania Story opowiada dzieje samego parku. Archiwalne fotografie, filmy i plansze przybliżają początki projektu oraz jego historię od otwarcia w 2002 roku. Pokazują, jak z czasem zmieniały się przestrzenie poznawania nauki i atrakcje.</p><p>W gablocie zgromadzono pamiątki w barwach Vulcanii: kubki, pluszowe zabawki, broszury i drobne przedmioty z ilustracjami. Ukazują one inną stronę historii parku, poprzez obrazy i postacie, które odwiedzający zabierali ze sobą do domu.</p><h2>Postacie i dawne atrakcje</h2><p>Powstawanie postaci oraz zmiany sposobu prezentowania parku towarzyszą opowieści o dawnych atrakcjach. Dokumenty i przedmioty łączą pierwotny projekt naukowy ze światem obrazów stworzonym wokół nazwy Vulcania.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>As recordações de um parque vulcânico</h2><p>Vulcania Story conta a história do próprio parque. Fotografias de arquivo, vídeos e painéis percorrem as origens do projeto e a sua evolução desde a abertura em 2002. Mostram como os espaços de descoberta e as atrações foram mudando ao longo dos anos.</p><p>Uma vitrina reúne recordações com as cores do Vulcania: canecas, peluches, folhetos e pequenos objetos ilustrados. Estas peças revelam outra vertente da história do parque, através das imagens e personagens que os visitantes levavam para casa.</p><h2>Personagens e antigas atrações</h2><p>A criação das personagens e as mudanças na comunicação acompanham o relato das antigas atrações. Documentos e objetos ligam assim o projeto científico inicial ao universo visual construído em torno do nome Vulcania.</p>"
+            }
+          ]
+        },
+        {
+          "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+          "key": "vulcania-terre-volcans",
+          "name": "Terre de volcans : l’immersion volcanique",
+          "type": "WalkThrough",
+          "category": "Attraction",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Au milieu des paysages volcaniques</h2><p>Terre de volcans est un espace de projections où les paysages occupent le décor autour du visiteur. Des coulées de lave aux geysers, le parcours fait apparaître différentes expressions de l’activité volcanique à une échelle qui donne le sentiment d’entrer dans les images.</p><p>Le spectacle s’attache aussi aux couleurs de ces milieux. Jaunes, oranges, gris, rouges et bleus composent une palette parfois surprenante, qui élargit le regard au-delà des seules images d’éruption et de lave incandescente.</p><h2>Un volcanisme aux multiples visages</h2><p>Le parcours en accès libre rassemble une sélection représentative de paysages volcaniques terrestres. Les projections immersives et interactives accompagnent cette traversée d’ambiances : elles rapprochent les formes et les couleurs d’un volcanisme dont les manifestations ne se limitent pas aux éruptions.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Among volcanic landscapes</h2><p>Terre de volcans is a projection space where landscapes surround the visitor. From lava flows to geysers, the route reveals different expressions of volcanic activity on a scale that creates a sense of stepping into the images.</p><p>The spectacle also explores the colours of these environments. Yellows, oranges, greys, reds and blues form a sometimes surprising palette, broadening the view beyond eruptions and glowing lava alone.</p><h2>The many faces of volcanism</h2><p>This freely accessible route brings together a representative selection of Earth’s volcanic landscapes. Immersive, interactive projections accompany the passage through these settings, drawing attention to the shapes and colours of volcanic activity whose manifestations extend beyond eruptions.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Mitten in Vulkanlandschaften</h2><p>Terre de volcans ist ein Projektionsraum, in dem Landschaften die Besucher umgeben. Von Lavaströmen bis zu Geysiren zeigt der Rundgang unterschiedliche Erscheinungen vulkanischer Aktivität. Die großflächigen Bilder vermitteln den Eindruck, in diese Landschaften einzutreten.</p><p>Auch die Farben dieser Gebiete stehen im Mittelpunkt. Gelb, Orange, Grau, Rot und Blau ergeben eine bisweilen überraschende Palette. Sie erweitert den Blick über die vertrauten Bilder von Ausbrüchen und glühender Lava hinaus.</p><h2>Die vielen Gesichter des Vulkanismus</h2><p>Der frei zugängliche Rundgang versammelt eine repräsentative Auswahl irdischer Vulkanlandschaften. Raumfüllende, interaktive Projektionen begleiten den Weg durch verschiedene Stimmungen und verbinden die Formen und Farben eines Vulkanismus, der sich auf vielfältige Weise zeigt.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Tussen vulkanische landschappen</h2><p>Terre de volcans is een projectieruimte waarin landschappen de bezoeker omringen. Van lavastromen tot geisers toont de route verschillende uitingen van vulkanische activiteit. De grote beelden wekken de indruk dat je deze landschappen binnenstapt.</p><p>Ook de kleuren van deze omgevingen krijgen aandacht. Geel, oranje, grijs, rood en blauw vormen een soms verrassend palet. Zo reikt de blik verder dan de vertrouwde beelden van uitbarstingen en gloeiende lava.</p><h2>De vele gezichten van vulkanisme</h2><p>De vrij toegankelijke route brengt een representatieve selectie vulkanische landschappen op aarde samen. Omringende, interactieve projecties begeleiden de tocht door uiteenlopende sferen. De vormen en kleuren maken zichtbaar hoe veelzijdig vulkanische activiteit zich kan uiten.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Tra i paesaggi vulcanici</h2><p>Terre de volcans è uno spazio di proiezioni in cui i paesaggi circondano il visitatore. Dalle colate di lava ai geyser, il percorso rivela diverse espressioni dell’attività vulcanica. La scala delle immagini dà la sensazione di entrare nei paesaggi rappresentati.</p><p>Lo spettacolo si sofferma anche sui colori di questi ambienti. Gialli, arancioni, grigi, rossi e blu compongono una tavolozza talvolta sorprendente, ampliando lo sguardo oltre le sole immagini di eruzioni e lava incandescente.</p><h2>I molti volti del vulcanismo</h2><p>Il percorso a libero accesso riunisce una selezione rappresentativa dei paesaggi vulcanici terrestri. Proiezioni immersive e interattive accompagnano il passaggio tra atmosfere diverse, accostando forme e colori di un’attività che si manifesta anche al di là delle eruzioni.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Entre paisajes volcánicos</h2><p>Terre de volcans es un espacio de proyecciones en el que los paisajes rodean al visitante. Desde coladas de lava hasta géiseres, el recorrido revela distintas expresiones de la actividad volcánica. La escala de las imágenes transmite la sensación de entrar en los paisajes representados.</p><p>El espectáculo también se detiene en los colores de estos entornos. Amarillos, naranjas, grises, rojos y azules forman una paleta a veces sorprendente, ampliando la mirada más allá de las imágenes de erupciones y lava incandescente.</p><h2>Las múltiples caras del vulcanismo</h2><p>El recorrido de libre acceso reúne una selección representativa de paisajes volcánicos terrestres. Proyecciones inmersivas e interactivas acompañan el paso por distintos ambientes y relacionan formas y colores de una actividad que también se manifiesta fuera de las erupciones.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Pośród wulkanicznych krajobrazów</h2><p>Terre de volcans to przestrzeń projekcji, w której krajobrazy otaczają zwiedzającego. Od strumieni lawy po gejzery, trasa ukazuje różne przejawy aktywności wulkanicznej. Skala obrazów sprawia wrażenie wejścia w przedstawione pejzaże.</p><p>Widowisko poświęca uwagę także barwom tych miejsc. Żółcie, pomarańcze, szarości, czerwienie i błękity tworzą niekiedy zaskakującą paletę. Poszerza ona spojrzenie poza same obrazy erupcji i rozżarzonej lawy.</p><h2>Różne oblicza wulkanizmu</h2><p>Swobodnie dostępna trasa gromadzi reprezentatywny wybór wulkanicznych krajobrazów Ziemi. Otaczające widza, interaktywne projekcje towarzyszą przejściu między różnymi sceneriami. Zestawiają kształty i kolory aktywności wulkanicznej, której przejawy wykraczają poza erupcje.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Entre paisagens vulcânicas</h2><p>Terre de volcans é um espaço de projeções onde as paisagens envolvem o visitante. Das escoadas de lava aos géiseres, o percurso revela diferentes expressões da atividade vulcânica. A escala das imagens transmite a sensação de entrar nas paisagens apresentadas.</p><p>O espetáculo explora também as cores destes ambientes. Amarelos, laranjas, cinzentos, vermelhos e azuis compõem uma paleta por vezes surpreendente, alargando o olhar para além das imagens de erupções e lava incandescente.</p><h2>As várias faces do vulcanismo</h2><p>O percurso de acesso livre reúne uma seleção representativa de paisagens vulcânicas terrestres. Projeções imersivas e interativas acompanham a passagem por diferentes ambientes, aproximando formas e cores de uma atividade cujas manifestações vão além das erupções.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-28-two-exhibitions",
+        "notes": "Sixteen descriptions personally written and reviewed in eight languages. Official Vulcania Story and Terre de volcans pages read in full; official Story photograph personally inspected, actual souvenir display case. Sources: https://www.vulcania.com/animation/vulcania-story/ ; https://www.vulcania.com/animation/terre-de-volcans/ ; exact Terre source URL also retained in inventory-qualification-1410 source manifest. Two headings and three paragraphs per language. Source-limited depth recorded; no guessed opening dates, no generic itinerary advice or invented physical effects."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "4a9dce60-1965-4199-a14e-9f9cd6472ec9",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:07:17.9658018Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "entityKey": "vulcania-vulcania-story",
+        "displayName": "Vulcania Story",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Erinnerungen an einen Vulkanpark</h2><p>Vulcania Story erzählt die Geschichte des Parks selbst. Archivfotos, Videos und Tafeln führen zu den Ursprüngen des Projekts und durch seine Entwicklung seit der Eröffnung 2002. Sie zeigen, wie sich Ausstellungsräume und Attraktionen im Laufe der Jahre verändert haben.</p><p>Eine Vitrine versammelt Souvenirs in den Farben von Vulcania: Tassen, Plüschfiguren, Broschüren und kleine bebilderte Gegenstände. Darin zeigt sich eine weitere Seite der Parkgeschichte: Bilder und Figuren, die Besucher nach ihrem Aufenthalt mit nach Hause nahmen.</p><h2>Figuren und frühere Attraktionen</h2><p>Die Entstehung der Figuren und der Wandel der Kommunikation begleiten die Geschichte früherer Attraktionen. Dokumente und Gegenstände verbinden so das ursprüngliche Wissenschaftsprojekt mit der Bildwelt, die rund um den Namen Vulcania entstand.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Memories of a volcanic park</h2><p>Vulcania Story tells the story of the park itself. Archive photographs, videos and panels trace the origins of the project and its history since the 2002 opening. They show how the discovery spaces and attractions have changed over successive seasons.</p><p>A display case gathers souvenirs in Vulcania’s colours: mugs, soft toys, brochures and small illustrated objects. These pieces reveal another part of the park’s history, through the images and characters that visitors took home after their visit.</p><h2>Characters and former attractions</h2><p>The creation of characters and changes in the park’s communications accompany the account of former attractions. Documents and objects connect the original scientific project with the visual world built around the Vulcania name.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los recuerdos de un parque volcánico</h2><p>Vulcania Story cuenta la historia del propio parque. Fotografías de archivo, vídeos y paneles recorren los orígenes del proyecto y su evolución desde la apertura de 2002. Muestran cómo los espacios de descubrimiento y las atracciones han cambiado con los años.</p><p>Una vitrina reúne recuerdos con los colores de Vulcania: tazas, peluches, folletos y pequeños objetos ilustrados. Estas piezas muestran otra faceta de su historia, a través de las imágenes y los personajes que los visitantes se llevaban a casa.</p><h2>Personajes y antiguas atracciones</h2><p>La creación de los personajes y los cambios en la comunicación acompañan el relato de las antiguas atracciones. Los documentos y objetos relacionan así el proyecto científico original con el universo visual construido alrededor del nombre Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les souvenirs d’un parc volcanique</h2><p>Vulcania Story raconte le parc lui-même. L’exposition revient aux origines du projet puis à son histoire depuis l’ouverture de 2002, à travers des photographies d’archives, des vidéos et des panneaux. Elle montre comment les espaces de découverte et les animations ont évolué au fil des saisons.</p><p>Une vitrine rassemble des souvenirs portant les couleurs de Vulcania : tasses, peluches, brochures et petits objets illustrés. Ces objets rendent visible une autre histoire du parc, celle des images et des personnages emportés chez soi après la visite.</p><h2>Des personnages aux anciennes animations</h2><p>La création des personnages et les changements de communication accompagnent le récit des anciennes attractions. Entre documents et objets, le parcours relie ainsi le projet scientifique initial à l’univers visuel construit autour du nom Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I ricordi di un parco vulcanico</h2><p>Vulcania Story racconta il parco stesso. Fotografie d’archivio, video e pannelli ripercorrono le origini del progetto e la sua storia dall’apertura del 2002. Mostrano come gli spazi di scoperta e le attrazioni siano cambiati nel corso degli anni.</p><p>Una vetrina raccoglie ricordi con i colori di Vulcania: tazze, peluche, opuscoli e piccoli oggetti illustrati. Questi oggetti rendono visibile un’altra storia del parco, attraverso le immagini e i personaggi che i visitatori portavano a casa dopo la visita.</p><h2>Personaggi e attrazioni del passato</h2><p>La creazione dei personaggi e i cambiamenti nella comunicazione accompagnano il racconto delle vecchie attrazioni. Documenti e oggetti collegano così l’originario progetto scientifico all’universo visivo costruito attorno al nome Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Herinneringen aan een vulkaanpark</h2><p>Vulcania Story vertelt het verhaal van het park zelf. Archieffoto’s, video’s en panelen volgen de oorsprong van het project en de geschiedenis sinds de opening in 2002. Ze tonen hoe de ontdekkingsruimten en attracties door de jaren heen zijn veranderd.</p><p>Een vitrine verzamelt souvenirs in de kleuren van Vulcania: mokken, knuffels, brochures en kleine voorwerpen met afbeeldingen. Ze laten een andere kant van de parkgeschiedenis zien, via de beelden en personages die bezoekers na hun bezoek mee naar huis namen.</p><h2>Personages en vroegere attracties</h2><p>De ontwikkeling van de personages en veranderingen in de communicatie begeleiden het verhaal van vroegere attracties. Documenten en voorwerpen verbinden zo het oorspronkelijke wetenschappelijke project met de beeldwereld rond de naam Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pamiątki z wulkanicznego parku</h2><p>Vulcania Story opowiada dzieje samego parku. Archiwalne fotografie, filmy i plansze przybliżają początki projektu oraz jego historię od otwarcia w 2002 roku. Pokazują, jak z czasem zmieniały się przestrzenie poznawania nauki i atrakcje.</p><p>W gablocie zgromadzono pamiątki w barwach Vulcanii: kubki, pluszowe zabawki, broszury i drobne przedmioty z ilustracjami. Ukazują one inną stronę historii parku, poprzez obrazy i postacie, które odwiedzający zabierali ze sobą do domu.</p><h2>Postacie i dawne atrakcje</h2><p>Powstawanie postaci oraz zmiany sposobu prezentowania parku towarzyszą opowieści o dawnych atrakcjach. Dokumenty i przedmioty łączą pierwotny projekt naukowy ze światem obrazów stworzonym wokół nazwy Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>As recordações de um parque vulcânico</h2><p>Vulcania Story conta a história do próprio parque. Fotografias de arquivo, vídeos e painéis percorrem as origens do projeto e a sua evolução desde a abertura em 2002. Mostram como os espaços de descoberta e as atrações foram mudando ao longo dos anos.</p><p>Uma vitrina reúne recordações com as cores do Vulcania: canecas, peluches, folhetos e pequenos objetos ilustrados. Estas peças revelam outra vertente da história do parque, através das imagens e personagens que os visitantes levavam para casa.</p><h2>Personagens e antigas atrações</h2><p>A criação das personagens e as mudanças na comunicação acompanham o relato das antigas atrações. Documentos e objetos ligam assim o projeto científico inicial ao universo visual construído em torno do nome Vulcania.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "vulcania-terre-volcans",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mitten in Vulkanlandschaften</h2><p>Terre de volcans ist ein Projektionsraum, in dem Landschaften die Besucher umgeben. Von Lavaströmen bis zu Geysiren zeigt der Rundgang unterschiedliche Erscheinungen vulkanischer Aktivität. Die großflächigen Bilder vermitteln den Eindruck, in diese Landschaften einzutreten.</p><p>Auch die Farben dieser Gebiete stehen im Mittelpunkt. Gelb, Orange, Grau, Rot und Blau ergeben eine bisweilen überraschende Palette. Sie erweitert den Blick über die vertrauten Bilder von Ausbrüchen und glühender Lava hinaus.</p><h2>Die vielen Gesichter des Vulkanismus</h2><p>Der frei zugängliche Rundgang versammelt eine repräsentative Auswahl irdischer Vulkanlandschaften. Raumfüllende, interaktive Projektionen begleiten den Weg durch verschiedene Stimmungen und verbinden die Formen und Farben eines Vulkanismus, der sich auf vielfältige Weise zeigt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Among volcanic landscapes</h2><p>Terre de volcans is a projection space where landscapes surround the visitor. From lava flows to geysers, the route reveals different expressions of volcanic activity on a scale that creates a sense of stepping into the images.</p><p>The spectacle also explores the colours of these environments. Yellows, oranges, greys, reds and blues form a sometimes surprising palette, broadening the view beyond eruptions and glowing lava alone.</p><h2>The many faces of volcanism</h2><p>This freely accessible route brings together a representative selection of Earth’s volcanic landscapes. Immersive, interactive projections accompany the passage through these settings, drawing attention to the shapes and colours of volcanic activity whose manifestations extend beyond eruptions.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Entre paisajes volcánicos</h2><p>Terre de volcans es un espacio de proyecciones en el que los paisajes rodean al visitante. Desde coladas de lava hasta géiseres, el recorrido revela distintas expresiones de la actividad volcánica. La escala de las imágenes transmite la sensación de entrar en los paisajes representados.</p><p>El espectáculo también se detiene en los colores de estos entornos. Amarillos, naranjas, grises, rojos y azules forman una paleta a veces sorprendente, ampliando la mirada más allá de las imágenes de erupciones y lava incandescente.</p><h2>Las múltiples caras del vulcanismo</h2><p>El recorrido de libre acceso reúne una selección representativa de paisajes volcánicos terrestres. Proyecciones inmersivas e interactivas acompañan el paso por distintos ambientes y relacionan formas y colores de una actividad que también se manifiesta fuera de las erupciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Au milieu des paysages volcaniques</h2><p>Terre de volcans est un espace de projections où les paysages occupent le décor autour du visiteur. Des coulées de lave aux geysers, le parcours fait apparaître différentes expressions de l’activité volcanique à une échelle qui donne le sentiment d’entrer dans les images.</p><p>Le spectacle s’attache aussi aux couleurs de ces milieux. Jaunes, oranges, gris, rouges et bleus composent une palette parfois surprenante, qui élargit le regard au-delà des seules images d’éruption et de lave incandescente.</p><h2>Un volcanisme aux multiples visages</h2><p>Le parcours en accès libre rassemble une sélection représentative de paysages volcaniques terrestres. Les projections immersives et interactives accompagnent cette traversée d’ambiances : elles rapprochent les formes et les couleurs d’un volcanisme dont les manifestations ne se limitent pas aux éruptions.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Tra i paesaggi vulcanici</h2><p>Terre de volcans è uno spazio di proiezioni in cui i paesaggi circondano il visitatore. Dalle colate di lava ai geyser, il percorso rivela diverse espressioni dell’attività vulcanica. La scala delle immagini dà la sensazione di entrare nei paesaggi rappresentati.</p><p>Lo spettacolo si sofferma anche sui colori di questi ambienti. Gialli, arancioni, grigi, rossi e blu compongono una tavolozza talvolta sorprendente, ampliando lo sguardo oltre le sole immagini di eruzioni e lava incandescente.</p><h2>I molti volti del vulcanismo</h2><p>Il percorso a libero accesso riunisce una selezione rappresentativa dei paesaggi vulcanici terrestri. Proiezioni immersive e interattive accompagnano il passaggio tra atmosfere diverse, accostando forme e colori di un’attività che si manifesta anche al di là delle eruzioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Tussen vulkanische landschappen</h2><p>Terre de volcans is een projectieruimte waarin landschappen de bezoeker omringen. Van lavastromen tot geisers toont de route verschillende uitingen van vulkanische activiteit. De grote beelden wekken de indruk dat je deze landschappen binnenstapt.</p><p>Ook de kleuren van deze omgevingen krijgen aandacht. Geel, oranje, grijs, rood en blauw vormen een soms verrassend palet. Zo reikt de blik verder dan de vertrouwde beelden van uitbarstingen en gloeiende lava.</p><h2>De vele gezichten van vulkanisme</h2><p>De vrij toegankelijke route brengt een representatieve selectie vulkanische landschappen op aarde samen. Omringende, interactieve projecties begeleiden de tocht door uiteenlopende sferen. De vormen en kleuren maken zichtbaar hoe veelzijdig vulkanische activiteit zich kan uiten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pośród wulkanicznych krajobrazów</h2><p>Terre de volcans to przestrzeń projekcji, w której krajobrazy otaczają zwiedzającego. Od strumieni lawy po gejzery, trasa ukazuje różne przejawy aktywności wulkanicznej. Skala obrazów sprawia wrażenie wejścia w przedstawione pejzaże.</p><p>Widowisko poświęca uwagę także barwom tych miejsc. Żółcie, pomarańcze, szarości, czerwienie i błękity tworzą niekiedy zaskakującą paletę. Poszerza ona spojrzenie poza same obrazy erupcji i rozżarzonej lawy.</p><h2>Różne oblicza wulkanizmu</h2><p>Swobodnie dostępna trasa gromadzi reprezentatywny wybór wulkanicznych krajobrazów Ziemi. Otaczające widza, interaktywne projekcje towarzyszą przejściu między różnymi sceneriami. Zestawiają kształty i kolory aktywności wulkanicznej, której przejawy wykraczają poza erupcje.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Entre paisagens vulcânicas</h2><p>Terre de volcans é um espaço de projeções onde as paisagens envolvem o visitante. Das escoadas de lava aos géiseres, o percurso revela diferentes expressões da atividade vulcânica. A escala das imagens transmite a sensação de entrar nas paisagens apresentadas.</p><p>O espetáculo explora também as cores destes ambientes. Amarelos, laranjas, cinzentos, vermelhos e azuis compõem uma paleta por vezes surpreendente, alargando o olhar para além das imagens de erupções e lava incandescente.</p><h2>As várias faces do vulcanismo</h2><p>O percurso de acesso livre reúne uma seleção representativa de paisagens vulcânicas terrestres. Projeções imersivas e interativas acompanham a passagem por diferentes ambientes, aproximando formas e cores de uma atividade cujas manifestações vão além das erupções.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "ec51c5a9-d525-4c42-a238-f067cbaa252a",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T18:07:36.2787166Z",
+    "appliedAtUtc": "2026-11-15T18:07:36.2787176Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "entityKey": "vulcania-vulcania-story",
+        "displayName": "Vulcania Story",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Erinnerungen an einen Vulkanpark</h2><p>Vulcania Story erzählt die Geschichte des Parks selbst. Archivfotos, Videos und Tafeln führen zu den Ursprüngen des Projekts und durch seine Entwicklung seit der Eröffnung 2002. Sie zeigen, wie sich Ausstellungsräume und Attraktionen im Laufe der Jahre verändert haben.</p><p>Eine Vitrine versammelt Souvenirs in den Farben von Vulcania: Tassen, Plüschfiguren, Broschüren und kleine bebilderte Gegenstände. Darin zeigt sich eine weitere Seite der Parkgeschichte: Bilder und Figuren, die Besucher nach ihrem Aufenthalt mit nach Hause nahmen.</p><h2>Figuren und frühere Attraktionen</h2><p>Die Entstehung der Figuren und der Wandel der Kommunikation begleiten die Geschichte früherer Attraktionen. Dokumente und Gegenstände verbinden so das ursprüngliche Wissenschaftsprojekt mit der Bildwelt, die rund um den Namen Vulcania entstand.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Memories of a volcanic park</h2><p>Vulcania Story tells the story of the park itself. Archive photographs, videos and panels trace the origins of the project and its history since the 2002 opening. They show how the discovery spaces and attractions have changed over successive seasons.</p><p>A display case gathers souvenirs in Vulcania’s colours: mugs, soft toys, brochures and small illustrated objects. These pieces reveal another part of the park’s history, through the images and characters that visitors took home after their visit.</p><h2>Characters and former attractions</h2><p>The creation of characters and changes in the park’s communications accompany the account of former attractions. Documents and objects connect the original scientific project with the visual world built around the Vulcania name.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Los recuerdos de un parque volcánico</h2><p>Vulcania Story cuenta la historia del propio parque. Fotografías de archivo, vídeos y paneles recorren los orígenes del proyecto y su evolución desde la apertura de 2002. Muestran cómo los espacios de descubrimiento y las atracciones han cambiado con los años.</p><p>Una vitrina reúne recuerdos con los colores de Vulcania: tazas, peluches, folletos y pequeños objetos ilustrados. Estas piezas muestran otra faceta de su historia, a través de las imágenes y los personajes que los visitantes se llevaban a casa.</p><h2>Personajes y antiguas atracciones</h2><p>La creación de los personajes y los cambios en la comunicación acompañan el relato de las antiguas atracciones. Los documentos y objetos relacionan así el proyecto científico original con el universo visual construido alrededor del nombre Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Les souvenirs d’un parc volcanique</h2><p>Vulcania Story raconte le parc lui-même. L’exposition revient aux origines du projet puis à son histoire depuis l’ouverture de 2002, à travers des photographies d’archives, des vidéos et des panneaux. Elle montre comment les espaces de découverte et les animations ont évolué au fil des saisons.</p><p>Une vitrine rassemble des souvenirs portant les couleurs de Vulcania : tasses, peluches, brochures et petits objets illustrés. Ces objets rendent visible une autre histoire du parc, celle des images et des personnages emportés chez soi après la visite.</p><h2>Des personnages aux anciennes animations</h2><p>La création des personnages et les changements de communication accompagnent le récit des anciennes attractions. Entre documents et objets, le parcours relie ainsi le projet scientifique initial à l’univers visuel construit autour du nom Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>I ricordi di un parco vulcanico</h2><p>Vulcania Story racconta il parco stesso. Fotografie d’archivio, video e pannelli ripercorrono le origini del progetto e la sua storia dall’apertura del 2002. Mostrano come gli spazi di scoperta e le attrazioni siano cambiati nel corso degli anni.</p><p>Una vetrina raccoglie ricordi con i colori di Vulcania: tazze, peluche, opuscoli e piccoli oggetti illustrati. Questi oggetti rendono visibile un’altra storia del parco, attraverso le immagini e i personaggi che i visitatori portavano a casa dopo la visita.</p><h2>Personaggi e attrazioni del passato</h2><p>La creazione dei personaggi e i cambiamenti nella comunicazione accompagnano il racconto delle vecchie attrazioni. Documenti e oggetti collegano così l’originario progetto scientifico all’universo visivo costruito attorno al nome Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Herinneringen aan een vulkaanpark</h2><p>Vulcania Story vertelt het verhaal van het park zelf. Archieffoto’s, video’s en panelen volgen de oorsprong van het project en de geschiedenis sinds de opening in 2002. Ze tonen hoe de ontdekkingsruimten en attracties door de jaren heen zijn veranderd.</p><p>Een vitrine verzamelt souvenirs in de kleuren van Vulcania: mokken, knuffels, brochures en kleine voorwerpen met afbeeldingen. Ze laten een andere kant van de parkgeschiedenis zien, via de beelden en personages die bezoekers na hun bezoek mee naar huis namen.</p><h2>Personages en vroegere attracties</h2><p>De ontwikkeling van de personages en veranderingen in de communicatie begeleiden het verhaal van vroegere attracties. Documenten en voorwerpen verbinden zo het oorspronkelijke wetenschappelijke project met de beeldwereld rond de naam Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pamiątki z wulkanicznego parku</h2><p>Vulcania Story opowiada dzieje samego parku. Archiwalne fotografie, filmy i plansze przybliżają początki projektu oraz jego historię od otwarcia w 2002 roku. Pokazują, jak z czasem zmieniały się przestrzenie poznawania nauki i atrakcje.</p><p>W gablocie zgromadzono pamiątki w barwach Vulcanii: kubki, pluszowe zabawki, broszury i drobne przedmioty z ilustracjami. Ukazują one inną stronę historii parku, poprzez obrazy i postacie, które odwiedzający zabierali ze sobą do domu.</p><h2>Postacie i dawne atrakcje</h2><p>Powstawanie postaci oraz zmiany sposobu prezentowania parku towarzyszą opowieści o dawnych atrakcjach. Dokumenty i przedmioty łączą pierwotny projekt naukowy ze światem obrazów stworzonym wokół nazwy Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>As recordações de um parque vulcânico</h2><p>Vulcania Story conta a história do próprio parque. Fotografias de arquivo, vídeos e painéis percorrem as origens do projeto e a sua evolução desde a abertura em 2002. Mostram como os espaços de descoberta e as atrações foram mudando ao longo dos anos.</p><p>Uma vitrina reúne recordações com as cores do Vulcania: canecas, peluches, folhetos e pequenos objetos ilustrados. Estas peças revelam outra vertente da história do parque, através das imagens e personagens que os visitantes levavam para casa.</p><h2>Personagens e antigas atrações</h2><p>A criação das personagens e as mudanças na comunicação acompanham o relato das antigas atrações. Documentos e objetos ligam assim o projeto científico inicial ao universo visual construído em torno do nome Vulcania.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "vulcania-terre-volcans",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Mitten in Vulkanlandschaften</h2><p>Terre de volcans ist ein Projektionsraum, in dem Landschaften die Besucher umgeben. Von Lavaströmen bis zu Geysiren zeigt der Rundgang unterschiedliche Erscheinungen vulkanischer Aktivität. Die großflächigen Bilder vermitteln den Eindruck, in diese Landschaften einzutreten.</p><p>Auch die Farben dieser Gebiete stehen im Mittelpunkt. Gelb, Orange, Grau, Rot und Blau ergeben eine bisweilen überraschende Palette. Sie erweitert den Blick über die vertrauten Bilder von Ausbrüchen und glühender Lava hinaus.</p><h2>Die vielen Gesichter des Vulkanismus</h2><p>Der frei zugängliche Rundgang versammelt eine repräsentative Auswahl irdischer Vulkanlandschaften. Raumfüllende, interaktive Projektionen begleiten den Weg durch verschiedene Stimmungen und verbinden die Formen und Farben eines Vulkanismus, der sich auf vielfältige Weise zeigt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Among volcanic landscapes</h2><p>Terre de volcans is a projection space where landscapes surround the visitor. From lava flows to geysers, the route reveals different expressions of volcanic activity on a scale that creates a sense of stepping into the images.</p><p>The spectacle also explores the colours of these environments. Yellows, oranges, greys, reds and blues form a sometimes surprising palette, broadening the view beyond eruptions and glowing lava alone.</p><h2>The many faces of volcanism</h2><p>This freely accessible route brings together a representative selection of Earth’s volcanic landscapes. Immersive, interactive projections accompany the passage through these settings, drawing attention to the shapes and colours of volcanic activity whose manifestations extend beyond eruptions.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Entre paisajes volcánicos</h2><p>Terre de volcans es un espacio de proyecciones en el que los paisajes rodean al visitante. Desde coladas de lava hasta géiseres, el recorrido revela distintas expresiones de la actividad volcánica. La escala de las imágenes transmite la sensación de entrar en los paisajes representados.</p><p>El espectáculo también se detiene en los colores de estos entornos. Amarillos, naranjas, grises, rojos y azules forman una paleta a veces sorprendente, ampliando la mirada más allá de las imágenes de erupciones y lava incandescente.</p><h2>Las múltiples caras del vulcanismo</h2><p>El recorrido de libre acceso reúne una selección representativa de paisajes volcánicos terrestres. Proyecciones inmersivas e interactivas acompañan el paso por distintos ambientes y relacionan formas y colores de una actividad que también se manifiesta fuera de las erupciones.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Au milieu des paysages volcaniques</h2><p>Terre de volcans est un espace de projections où les paysages occupent le décor autour du visiteur. Des coulées de lave aux geysers, le parcours fait apparaître différentes expressions de l’activité volcanique à une échelle qui donne le sentiment d’entrer dans les images.</p><p>Le spectacle s’attache aussi aux couleurs de ces milieux. Jaunes, oranges, gris, rouges et bleus composent une palette parfois surprenante, qui élargit le regard au-delà des seules images d’éruption et de lave incandescente.</p><h2>Un volcanisme aux multiples visages</h2><p>Le parcours en accès libre rassemble une sélection représentative de paysages volcaniques terrestres. Les projections immersives et interactives accompagnent cette traversée d’ambiances : elles rapprochent les formes et les couleurs d’un volcanisme dont les manifestations ne se limitent pas aux éruptions.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Tra i paesaggi vulcanici</h2><p>Terre de volcans è uno spazio di proiezioni in cui i paesaggi circondano il visitatore. Dalle colate di lava ai geyser, il percorso rivela diverse espressioni dell’attività vulcanica. La scala delle immagini dà la sensazione di entrare nei paesaggi rappresentati.</p><p>Lo spettacolo si sofferma anche sui colori di questi ambienti. Gialli, arancioni, grigi, rossi e blu compongono una tavolozza talvolta sorprendente, ampliando lo sguardo oltre le sole immagini di eruzioni e lava incandescente.</p><h2>I molti volti del vulcanismo</h2><p>Il percorso a libero accesso riunisce una selezione rappresentativa dei paesaggi vulcanici terrestri. Proiezioni immersive e interattive accompagnano il passaggio tra atmosfere diverse, accostando forme e colori di un’attività che si manifesta anche al di là delle eruzioni.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Tussen vulkanische landschappen</h2><p>Terre de volcans is een projectieruimte waarin landschappen de bezoeker omringen. Van lavastromen tot geisers toont de route verschillende uitingen van vulkanische activiteit. De grote beelden wekken de indruk dat je deze landschappen binnenstapt.</p><p>Ook de kleuren van deze omgevingen krijgen aandacht. Geel, oranje, grijs, rood en blauw vormen een soms verrassend palet. Zo reikt de blik verder dan de vertrouwde beelden van uitbarstingen en gloeiende lava.</p><h2>De vele gezichten van vulkanisme</h2><p>De vrij toegankelijke route brengt een representatieve selectie vulkanische landschappen op aarde samen. Omringende, interactieve projecties begeleiden de tocht door uiteenlopende sferen. De vormen en kleuren maken zichtbaar hoe veelzijdig vulkanische activiteit zich kan uiten.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Pośród wulkanicznych krajobrazów</h2><p>Terre de volcans to przestrzeń projekcji, w której krajobrazy otaczają zwiedzającego. Od strumieni lawy po gejzery, trasa ukazuje różne przejawy aktywności wulkanicznej. Skala obrazów sprawia wrażenie wejścia w przedstawione pejzaże.</p><p>Widowisko poświęca uwagę także barwom tych miejsc. Żółcie, pomarańcze, szarości, czerwienie i błękity tworzą niekiedy zaskakującą paletę. Poszerza ona spojrzenie poza same obrazy erupcji i rozżarzonej lawy.</p><h2>Różne oblicza wulkanizmu</h2><p>Swobodnie dostępna trasa gromadzi reprezentatywny wybór wulkanicznych krajobrazów Ziemi. Otaczające widza, interaktywne projekcje towarzyszą przejściu między różnymi sceneriami. Zestawiają kształty i kolory aktywności wulkanicznej, której przejawy wykraczają poza erupcje.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Entre paisagens vulcânicas</h2><p>Terre de volcans é um espaço de projeções onde as paisagens envolvem o visitante. Das escoadas de lava aos géiseres, o percurso revela diferentes expressões da atividade vulcânica. A escala das imagens transmite a sensação de entrar nas paisagens apresentadas.</p><p>O espetáculo explora também as cores destes ambientes. Amarelos, laranjas, cinzentos, vermelhos e azuis compõem uma paleta por vezes surpreendente, alargando o olhar para além das imagens de erupções e lava incandescente.</p><h2>As várias faces do vulcanismo</h2><p>O percurso de acesso livre reúne uma seleção representativa de paisagens vulcânicas terrestres. Projeções imersivas e interativas acompanham a passagem por diferentes ambientes, aproximando formas e cores de uma atividade cujas manifestações vão além das erupções.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania Story et Terre de volcans : seize descriptions personnelles en huit langues, archives et vitrines réelles, paysages projetés identifiés ; deux fiches restent privées avant audit.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Sixteen descriptions personally written and reviewed in eight languages. Official Vulcania Story and Terre de volcans pages read in full; official Story photograph personally inspected, actual souvenir display case. Sources: https://www.vulcania.com/animation/vulcania-story/ ; https://www.vulcania.com/animation/terre-de-volcans/ ; exact Terre source URL also retained in inventory-qualification-1410 source manifest. Two headings and three paragraphs per language. Source-limited depth recorded; no guessed opening dates, no generic itinerary advice or invented physical effects."
+}
