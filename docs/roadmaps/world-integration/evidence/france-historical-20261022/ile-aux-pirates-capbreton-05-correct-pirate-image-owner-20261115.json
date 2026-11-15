@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "73c4b37cbd5f0e8706375b714bb1bb4b96c12ef7402a43f37d39b0b0445e69bd",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "4ce5679f-5321-48dd-a43c-f73158f4d885",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:36:11.3738583Z",
+    "appliedAtUtc": "2026-11-15T02:36:11.3738593Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "9713a59239f2474c8f54b01670c540c1",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "ownerType",
+            "oldValue": "ParkItem",
+            "newValue": "Park"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "1675eb76-d7eb-4c34-8734-2a67be0a7aa5",
+            "newValue": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018"
+          },
+          {
+            "field": "description",
+            "oldValue": "Parcours gonflable Safari décoré de palmiers et d'animaux.",
+            "newValue": "Le décor pirate jaune et bleu parmi les jeux de L’Île aux Pirates à Capbreton."
+          },
+          {
+            "field": "category",
+            "oldValue": "ParkItem",
+            "newValue": "Park"
+          },
+          {
+            "field": "altTexts.de",
+            "oldValue": "Großer aufblasbarer Parcours Safari mit Tiermotiven.",
+            "newValue": "Piraten-Hüpfburg mit blauem Boden, grünen Palmen, Piratenkopf und grauem Hai vor einer Spielstruktur in Schiffsform."
+          },
+          {
+            "field": "altTexts.en",
+            "oldValue": "Large Parcours Safari inflatable course with animal motifs.",
+            "newValue": "Pirate inflatable with a blue floor, green palms, a pirate’s head and a grey shark, in front of a ship-shaped play structure."
+          },
+          {
+            "field": "altTexts.es",
+            "oldValue": "Gran recorrido hinchable Parcours Safari con motivos de animales.",
+            "newValue": "Hinchable pirata con suelo azul, palmeras verdes, cabeza de pirata y tiburón gris, delante de una estructura de juegos con forma de barco."
+          },
+          {
+            "field": "altTexts.fr",
+            "oldValue": "Grand parcours gonflable du Parcours Safari aux motifs dʼanimaux.",
+            "newValue": "Gonflable pirate à sol bleu, palmiers verts, tête de pirate et requin gris, devant une structure de jeux en forme de navire."
+          },
+          {
+            "field": "altTexts.it",
+            "oldValue": "Grande percorso gonfiabile Parcours Safari con motivi animali.",
+            "newValue": "Gonfiabile piratesco con pavimento blu, palme verdi, testa di pirata e squalo grigio, davanti a una struttura di giochi a forma di nave."
+          },
+          {
+            "field": "altTexts.nl",
+            "oldValue": "Groot opblaasbaar Parcours Safari met dierenmotieven.",
+            "newValue": "Piratenspringkussen met blauwe vloer, groene palmen, een piratenhoofd en een grijze haai, voor een speeltoestel in scheepsvorm."
+          },
+          {
+            "field": "altTexts.pl",
+            "oldValue": "Duży dmuchany Parcours Safari z motywami zwierząt.",
+            "newValue": "Piracki dmuchaniec z niebieską podłogą, zielonymi palmami, głową pirata i szarym rekinem, przed konstrukcją do zabawy w kształcie statku."
+          },
+          {
+            "field": "altTexts.pt",
+            "oldValue": "Grande percurso insuflável Parcours Safari com motivos de animais.",
+            "newValue": "Insuflável pirata com chão azul, palmeiras verdes, cabeça de pirata e tubarão cinzento, diante de uma estrutura de jogos em forma de navio."
+          },
+          {
+            "field": "captions.de",
+            "oldValue": "Palmen und riesige Tiere rahmen die Hindernisse der aufblasbaren Safari ein.",
+            "newValue": "Die gelb-blaue Piratenkulisse zwischen den Spielen von L’Île aux Pirates in Capbreton."
+          },
+          {
+            "field": "captions.en",
+            "oldValue": "Palms and giant animals frame the obstacles of the inflatable safari.",
+            "newValue": "The yellow-and-blue pirate scenery among the games at L’Île aux Pirates in Capbreton."
+          },
+          {
+            "field": "captions.es",
+            "oldValue": "Palmeras y animales gigantes enmarcan los obstáculos del safari hinchable.",
+            "newValue": "El decorado pirata amarillo y azul entre los juegos de L’Île aux Pirates en Capbreton."
+          },
+          {
+            "field": "captions.fr",
+            "oldValue": "Palmiers et animaux géants encadrent les obstacles du safari gonflable.",
+            "newValue": "Le décor pirate jaune et bleu parmi les jeux de L’Île aux Pirates à Capbreton."
+          },
+          {
+            "field": "captions.it",
+            "oldValue": "Palme e animali giganti incorniciano gli ostacoli del safari gonfiabile.",
+            "newValue": "Lo scenario piratesco giallo e blu tra i giochi di L’Île aux Pirates a Capbreton."
+          },
+          {
+            "field": "captions.nl",
+            "oldValue": "Palmbomen en reuzendieren omlijsten de hindernissen van de opblaassafari.",
+            "newValue": "Het geelblauwe piratendecor tussen de spellen van L’Île aux Pirates in Capbreton."
+          },
+          {
+            "field": "captions.pl",
+            "oldValue": "Palmy i ogromne zwierzęta otaczają przeszkody dmuchanego safari.",
+            "newValue": "Żółto-niebieska piracka dekoracja wśród gier L’Île aux Pirates w Capbreton."
+          },
+          {
+            "field": "captions.pt",
+            "oldValue": "Palmeiras e animais gigantes enquadram os obstáculos do safari insuflável.",
+            "newValue": "O cenário pirata amarelo e azul entre os jogos da L’Île aux Pirates em Capbreton."
+          },
+          {
+            "field": "credits.de",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.en",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photograph: Tourisme Landes"
+          },
+          {
+            "field": "credits.es",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografía: Tourisme Landes"
+          },
+          {
+            "field": "credits.fr",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Photographie : Tourisme Landes"
+          },
+          {
+            "field": "credits.it",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.nl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Foto: Tourisme Landes"
+          },
+          {
+            "field": "credits.pl",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "credits.pt",
+            "oldValue": "Tourisme Landes — CC BY-NC-ND 4.0",
+            "newValue": "Fotografia: Tourisme Landes"
+          },
+          {
+            "field": "isCurrent",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

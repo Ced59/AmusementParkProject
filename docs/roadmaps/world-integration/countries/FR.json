@@ -13099,7 +13099,7 @@
         "L’île aux Pirates"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T02:20:19.910Z",
+      "lastDataIntegrationAt": "2026-11-15T02:36:11.373Z",
       "integrationHistory": [
         {
           "eventId": "apply-8416c072-412b-438f-947a-9176ef5d7d73",
@@ -13180,6 +13180,56 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-01-park-history-setting-20261115.json",
           "auditEvidence": null,
           "summary": "Capbreton : description du parc relue dans huit langues et présence documentaire corrigée à août2004 ; ouverture exacte inconnue, audit final non réalisé."
+        },
+        {
+          "eventId": "apply-4385fec2-350a-4b35-9bc3-cfb017295faa",
+          "appliedAt": "2026-11-15T02:29:58.948Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-08-history-article-rewrite-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : article développé2004–2024 réécrit et relu dans huit langues ; jalon municipal2018 corrigé en mention mineure de paysage portuaire, pas fondation. IDs et visibilité existants conservés ; audit final restant."
+        },
+        {
+          "eventId": "apply-809c24e3-5b0b-42c9-ae24-73056cc158e2",
+          "appliedAt": "2026-11-15T02:33:07.634Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-fishing-trampolino-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : pêche aux canards et Trampolino réécrits dans les huit langues, décor2013 qualifié sur originaux contemporains ; deux identités distinctes de l’Accro-bungy et de l’arcade, aucune date actuelle inventée."
+        },
+        {
+          "eventId": "image-5fa25124f0f145039ca0bb00a7ec4d67",
+          "appliedAt": "2026-11-15T02:34:09.454Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-fishing-kiosk-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée fishing-kiosk-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "image-920149595c604b59b2e33792cc7b84ec",
+          "appliedAt": "2026-11-15T02:34:53.101Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-trampolino-2013-20261115.json",
+          "auditEvidence": null,
+          "summary": "Photo privée trampolino-2013, identité et auteur vérifiés, huit langues relues ; aucune publication ni clôture."
+        },
+        {
+          "eventId": "apply-4ce5679f-5321-48dd-a43c-f73158f4d885",
+          "appliedAt": "2026-11-15T02:36:11.373Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-correct-pirate-image-owner-20261115.json",
+          "auditEvidence": null,
+          "summary": "Capbreton : photographie9713a59239f2474c8f54b01670c540c1 rattachée au parc au lieu du Safari ; décor pirate/requin décrit huit langues, visibilité conservée, image principale inchangée, fichier non réimporté. Attribution conservée sans licence/version non prouvée."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

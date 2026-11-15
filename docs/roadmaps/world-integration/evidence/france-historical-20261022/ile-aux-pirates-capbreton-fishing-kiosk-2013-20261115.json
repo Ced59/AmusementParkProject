@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:34:09.454Z",
+  "result": {
+    "id": "5fa25124f0f145039ca0bb00a7ec4d67",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+    "path": "park_item/5fa25124f0f145039ca0bb00a7ec4d67",
+    "description": "La pêche aux canards illuminée le soir à Capbreton, dans la galerie de 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 71434,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130535%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Bassin rond jaune rempli de canards sous un kiosque de bois, avec ballons et poissons gonflables suspendus."
+      },
+      {
+        "languageCode": "en",
+        "value": "Round yellow pool filled with ducks beneath a wooden kiosk, with hanging balloons and inflatable fish."
+      },
+      {
+        "languageCode": "de",
+        "value": "Rundes gelbes Entenbecken unter einem Holzkiosk mit hängenden Ballons und aufblasbaren Fischen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Rond geel bassin met eendjes onder een houten kiosk, met hangende ballonnen en opblaasvissen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Vasca rotonda gialla piena di anatroccoli sotto un chiosco di legno, con palloncini e pesci gonfiabili appesi."
+      },
+      {
+        "languageCode": "es",
+        "value": "Piscina redonda amarilla llena de patitos bajo un quiosco de madera, con globos y peces hinchables colgados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Okrągły żółty basen z kaczuszkami pod drewnianym kioskiem, z wiszącymi balonami i dmuchanymi rybami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Tanque redondo amarelo cheio de patinhos sob um quiosque de madeira, com balões e peixes insufláveis suspensos."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "La pêche aux canards illuminée le soir à Capbreton, dans la galerie de 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "The duck-fishing stall lit up in the evening at Capbreton, from the 2013 gallery."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der abends beleuchtete Entenangelstand in Capbreton, aus der Galerie von 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De ’s avonds verlichte eendjeskraam in Capbreton, uit de galerij van 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "La pesca degli anatroccoli illuminata di sera a Capbreton, dalla galleria del 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "El puesto de pesca de patitos iluminado por la noche en Capbreton, en la galería de 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wieczorne oświetlenie stoiska z łowieniem kaczek w Capbreton, ze zbioru zdjęć z 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A pesca dos patinhos iluminada à noite em Capbreton, na galeria de 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:34:05.581Z",
+    "updatedAt": "2026-11-15T02:34:09.454Z"
+  },
+  "sourceEvidence": {
+    "stem": "fishing-kiosk-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130535%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-38.jpg",
+    "sha256": "21b3721c8055ed63c375ac4ea58bf5fbd920eb8bf8eef89f0e855ce0db73fa25",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Photographie de visiteur, auteur et galerie exacte vérifiés. Autorisation générale du propriétaire pour la campagne ; aucune licence ouverte ni permission personnelle de l’auteur revendiquée.",
+    "review": "Original2013 de800×600 relu intégralement, sans filigrane visible, sans recadrage. Les reportages Turbo Kermis plus récents portent des filigranes et restent exclus : ne pas étendre cette exclusion aux fichiers2013 inspectés."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}

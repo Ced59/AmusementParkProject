@@ -3,7 +3,7 @@
   "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "parkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
   "owner": "Conversation France",
-  "observedAtUtc": "2026-11-15T02:25:13.456277+00:00",
+  "observedAtUtc": "2026-11-15T02:37:15.278835+00:00",
   "outcome": "partial",
   "finalAuditCompleted": false,
   "newSitePublicationPerformed": false,
@@ -56,9 +56,9 @@
   "counts": {
     "items": 12,
     "itemsPublic": 10,
-    "itemDescriptionsRewrittenEightLanguages": 9,
-    "images": 12,
-    "newImages": 4,
+    "itemDescriptionsRewrittenEightLanguages": 11,
+    "images": 14,
+    "newImages": 6,
     "historyEvents": 2
   },
   "acceptedApplies": [
@@ -113,6 +113,45 @@
         "errors": 0
       },
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-01-park-history-setting-20261115.json"
+    },
+    {
+      "operationId": "4385fec2-350a-4b35-9bc3-cfb017295faa",
+      "appliedAtUtc": "2026-11-15T02:29:58.9485953Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-08-history-article-rewrite-20261115.json"
+    },
+    {
+      "operationId": "809c24e3-5b0b-42c9-ae24-73056cc158e2",
+      "appliedAtUtc": "2026-11-15T02:33:07.6342337Z",
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-04-fishing-trampolino-20261115.json"
+    },
+    {
+      "operationId": "4ce5679f-5321-48dd-a43c-f73158f4d885",
+      "appliedAtUtc": "2026-11-15T02:36:11.3738593Z",
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-05-correct-pirate-image-owner-20261115.json"
     }
   ],
   "sources": [
@@ -233,11 +272,11 @@
   ],
   "gaps": {
     "logo": "Le média courant 4bddcef62fb948b7a06bdaa39ba1d9ca est une photographie complète de façade Treasure Club, identique au média 2fe3f6e5d5d743c58820926f0165c5a8. Ce n’est pas un logo autonome. Ne pas valider le logo pour obtenir la note. Source/photo/IDs conservés, aucun retrait ni recadrage.",
-    "wrongImageIdentity": "9713a59239f2474c8f54b01670c540c1 montre un gonflable pirate avec requin, non le safari à girafe/lion visible sur bf9bf846a468422caadfc102a55b7a0e. Rattachement et textes à corriger après qualification de l’inventaire.",
-    "legacyDescriptions": "Trois anciennes notices restent à qualifier : Espace de jeux gratuit, Pêche aux canards et Trampolino. Sept autres notices existantes et deux nouvelles rédigées et relues huit langues. Description du parc corrigée, présence documentaire août2004 ; date exacte inconnue.",
+    "wrongImageIdentity": "Corrigé par Apply4ce5679f-5321-48dd-a43c-f73158f4d885 :9713a59239f2474c8f54b01670c540c1 conservée publique comme photo générale du parc, sans sélection principale. Textes8langues décrivent pirate/requin ; ancienne identitéSafari retirée, attribution TourismeLandes sans licence/version non prouvée. Le Safari reste à illustrer correctement.",
+    "legacyDescriptions": "Une ancienne notice générique reste : Espace de jeux gratuit, attesté séparément de Red’s Club en2004 mais décor non identifié. Neuf autres anciennes notices et deux nouvelles rédigées et relues huit langues. Pêche aux canards et Trampolino décrivent explicitement leurs vues2013.",
     "inventory": "Palais du rire et Treasure Club sont créés en privé sous IDs295a3460-71b5-4453-a3a7-b9266f508dd1 et2439b04e-c66f-4c39-b556-69f70a802d2f. L’espace de jeux gratuit est distinct de l’arcade, attestation officielle2004. Red’s Club ancien n’est pas arbitrairement renommé Treasure Club. Pirates Aventures2009 est un parcours de cordes avec harnais, ne pas confondre avec le palais. Animaux électriques2015, Happy Childhood/petit train2019, anciens gonflables et Aquabuller restent à qualifier précisément.",
-    "history": "Borne documentaire du parc corrigée à août2004. Article et fait2018 toujours à réécrire : mention municipale incidente au débat sur les conteneurs du club de plongée, pas création du parc.",
-    "photos": "Quatre photographies visiteurs avec auteurs et pages exactes vérifiés sont importées privées, sans licence ouverte revendiquée ni jour de prise de vue inventé. Turbo Kermis et Captain Coaster watermarkés consultés seulement pour identification.",
+    "history": "Article2004–2024 entièrement réécrit huit langues, quatre sections/quatre paragraphes développés (281–330 mots de corps par langue), anciens IDs/publication conservés et deux nouveaux blocs. Jalon2018 corrigé : mention mineure dans discussion de paysage portuaire, sans ouverture. Nouveau patrimoine historique/item à qualifier sans dates artificielles.",
+    "photos": "Six nouveaux médias privés. Les deux originaux2013 de fandemanèges/Turbo Kermis (pêche et trampolines) sont sans filigrane visible,800×600 relus intégralement. Ne pas leur appliquer l’exclusion des reportages2015/16/19 watermarkés. Photo pirate corrigée vers propriétaire parc, sans réimport ni changement de visibilité.",
     "officialSite": "www.ileauxpirates.com redirige vers Facebook login. Les cinq images de cette page sont génériques et non utilisables ; aucune connexion ni contournement.",
     "hoursPricing": "À rapprocher de sources actuelles après qualification ; aucun export complet effectué."
   },
@@ -248,7 +287,7 @@
     "url": "https://www.facebook.com/1285475681307050/posts/122121006345424431",
     "newAnnouncementSent": false
   },
-  "workingStateSha256": "6c6d2b82b753c2baa513f4a4555fb34424fcdf5c2ca72a13e97a886a60cea1bc",
+  "workingStateSha256": "4b1b65fee360f24ca6a91964b33f295308aa09e78e9a3fb229d7a3342a601b50",
   "nextAction": "Poursuivre inventaire visuel daté, les six notices restantes, description parc/histoire, logo authentique et photos, puis horaires/tarifs et audit final. Aucun nouveau Facebook tant que l’annonce existante est Published.",
   "newResearch": {
     "official2004": "https://web.archive.org/web/20040825094812id_/http://www.ileauxpirates.com:80/iframe/parc.htm",
@@ -297,6 +336,20 @@
       "ownerId": "ed8d60a6-342a-4010-b4ca-7a41a66eebd4",
       "isPublished": false,
       "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-creperie-counter-2018-20261115.json"
+    },
+    {
+      "imageId": "5fa25124f0f145039ca0bb00a7ec4d67",
+      "serverIntegrationAtUtc": "2026-11-15T02:34:09.454Z",
+      "ownerId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-fishing-kiosk-2013-20261115.json"
+    },
+    {
+      "imageId": "920149595c604b59b2e33792cc7b84ec",
+      "serverIntegrationAtUtc": "2026-11-15T02:34:53.101Z",
+      "ownerId": "c2477c09-955a-4291-86b1-448732547c28",
+      "isPublished": false,
+      "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/ile-aux-pirates-capbreton-trampolino-2013-20261115.json"
     }
   ],
   "researchArchives": [

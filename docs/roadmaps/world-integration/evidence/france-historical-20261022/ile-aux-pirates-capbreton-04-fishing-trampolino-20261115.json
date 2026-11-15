@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "documentSha256": "0fee48f73ed39288e262818b3f8300683e953f1f10439259eed7eeef1970fdc3",
+  "review": "Textes rédigés et relus personnellement dans les huit langues ; sources primaires et photographies confrontées. Changements Preview/Apply identiques, hors IDs serveur de nouveaux blocs. Ordre de tri des traductions normalisé par code langue pour vérifier leur égalité.",
+  "result": {
+    "operationId": "809c24e3-5b0b-42c9-ae24-73056cc158e2",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T02:33:07.6342319Z",
+    "appliedAtUtc": "2026-11-15T02:33:07.6342337Z",
+    "targetParkId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+    "targetParkName": "L'Île aux Pirates",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+        "entityKey": "park",
+        "displayName": "L'Île aux Pirates",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+        "entityKey": "0d5b7f50-2a0b-4585-a26b-5e443ff6d7ff",
+        "displayName": "Pêche aux canards",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Das Becken der kleinen Schätze</h2><p>Pêche aux canards bringt einen Jahrmarktklassiker in die Welt von LʼÎle aux Pirates. Kleine schwimmende Figuren machen das Becken zu einem Schatzlager, in dem Geschick jeden Fang bestimmt.</p><p>Der Ablauf ist einfach, aber präzise: Ziel wählen, seiner Bewegung auf dem Wasser folgen und im richtigen Moment zugreifen. Das kurze Warten macht den Erfolg besonders, wenn die Ente das Becken verlässt.</p><h2>Eine familiäre Jahrmarkttradition</h2><p>Durch Nähe und ruhiges Tempo entsteht ein gemeinsamer Moment zwischen dem angelnden Kind und den Angehörigen, die jeden Versuch verfolgen. Das Spiel verbindet den Hafenpark mit vertrauter Jahrmarktserinnerung.</p>",
+            "newValue": "<h2>Enten unter den Ballons</h2><p>Der 2013 fotografierte Angelstand steht unter einem kleinen Holzkiosk neben den Spielfassaden. In einem runden, mit gelben Ziegeln eingefassten Becken schwimmen bunte Enten; eine große Ente überragt die Mitte. Kleine weiße Zäune stehen auf der grünen Fläche ringsum.</p><p>Disney- und Hello-Kitty-Ballons, aufblasbare Fische und lange Keulen mit Sternenmuster bilden darüber eine Decke aus Spielzeug. Abends hebt die Beckenbeleuchtung diese kleine gelbe Insel vor den dunkleren Parkgassen hervor.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The pool of small treasures</h2><p>Pêche aux canards brings a fairground classic into the world of LʼÎle aux Pirates. Small floating figures turn the pool into a store of treasures where skill guides every catch.</p><p>The gesture is simple but precise: choose a target, follow its movement across the water and close the hook at the right moment. That brief wait gives the success its value when the duck finally leaves the pool.</p><h2>A family fairground tradition</h2><p>Through its close-up setting and calm pace, the game creates a shared moment between the child fishing and relatives following each attempt. It connects the harbour park to the familiar memory of fairgrounds.</p>",
+            "newValue": "<h2>Ducks beneath the balloons</h2><p>The fishing stall photographed in 2013 stands under a small wooden kiosk beside the game façades. A round pool edged with yellow bricks holds a crowd of coloured ducks, with a large duck above its centre. Small white fences mark the green platform around it.</p><p>Overhead, Disney and Hello Kitty balloons, inflatable fish and long star-patterned clubs form a ceiling of toys. At night, the pool’s lighting brings out this little yellow island against the darker lanes.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El estanque de los pequeños tesoros</h2><p>Pêche aux canards lleva un clásico de feria al mundo de LʼÎle aux Pirates. Las pequeñas figuras flotantes convierten el estanque en una reserva de tesoros donde la destreza guía cada captura.</p><p>El gesto es sencillo pero preciso: elegir un objetivo, seguir su movimiento sobre el agua y cerrar el gancho en el momento justo. Esa breve espera da valor al éxito cuando el pato sale por fin del estanque.</p><h2>Una tradición ferial familiar</h2><p>Por su cercanía y ritmo tranquilo, el juego crea un momento compartido entre el niño que pesca y la familia que sigue cada intento. Conecta el parque portuario con la memoria familiar de las ferias.</p>",
+            "newValue": "<h2>Patitos bajo los globos</h2><p>El puesto de pesca fotografiado en 2013 se instala bajo un pequeño quiosco de madera, junto a las fachadas de juegos. Una piscina redonda bordeada de ladrillos amarillos reúne numerosos patitos de colores, con un gran pato en el centro. Pequeñas vallas blancas salpican la plataforma verde que la rodea.</p><p>Encima, globos de Disney y Hello Kitty, peces hinchables y largas mazas con estrellas forman un techo de juguetes. Por la noche, la luz de la piscina destaca esta pequeña isla amarilla frente a los paseos más oscuros.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le bassin des petits trésors</h2><p>La Pêche aux canards reprend un grand classique forain dans lʼunivers de LʼÎle aux Pirates. Les petites silhouettes flottantes transforment le bassin en réserve de trésors, où lʼadresse guide chaque prise.</p><p>Le geste est simple mais précis : choisir une cible, accompagner son mouvement sur lʼeau puis refermer la canne au bon moment. Cette petite attente donne toute sa valeur au succès quand le canard quitte enfin le bassin.</p><h2>Une tradition foraine familiale</h2><p>Par sa proximité et son rythme calme, le jeu crée un moment partagé entre lʼenfant qui pêche et les proches qui suivent chaque tentative. Il relie le parc portuaire à la mémoire familière des fêtes foraines.</p>",
+            "newValue": "<h2>Des canards sous les ballons</h2><p>Le stand de pêche photographié en 2013 prend place sous un petit kiosque de bois, au voisinage des façades de jeux. Un bassin rond bordé de briques jaunes porte une foule de canards colorés ; un grand canard domine son centre. De petites barrières blanches ponctuent le plateau vert qui l’entoure.</p><p>Au-dessus, des ballons Disney et Hello Kitty, des poissons gonflables et de longues quilles étoilées composent un plafond de jouets. Le soir, l’éclairage du bassin fait ressortir ce petit îlot jaune devant les allées plus sombres.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La vasca dei piccoli tesori</h2><p>Pêche aux canards porta un classico da fiera nel mondo di LʼÎle aux Pirates. Piccole figure galleggianti trasformano la vasca in una riserva di tesori, dove lʼabilità guida ogni presa.</p><p>Il gesto è semplice ma preciso: scegliere un bersaglio, seguirne il movimento sullʼacqua e chiudere lʼuncino al momento giusto. La breve attesa rende prezioso il successo quando lʼanatra lascia la vasca.</p><h2>Una tradizione da fiera per famiglie</h2><p>Grazie alla vicinanza e al ritmo tranquillo, il gioco crea un momento condiviso tra il bambino che pesca e i familiari che seguono ogni tentativo. Collega il parco portuale alla memoria familiare delle fiere.</p>",
+            "newValue": "<h2>Anatroccoli sotto i palloncini</h2><p>Il banco della pesca fotografato nel 2013 si trova sotto un piccolo chiosco di legno, vicino alle facciate dei giochi. Una vasca rotonda bordata di mattoni gialli ospita tanti anatroccoli colorati, con una grande anatra al centro. Piccole staccionate bianche punteggiano la piattaforma verde che la circonda.</p><p>In alto, palloncini Disney e Hello Kitty, pesci gonfiabili e lunghe clave a stelle formano un soffitto di giocattoli. Di sera, la luce della vasca fa risaltare questa piccola isola gialla davanti ai viali più bui.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>De vijver met kleine schatten</h2><p>Pêche aux canards brengt een kermisklassieker naar de wereld van LʼÎle aux Pirates. Kleine drijvende figuren maken van de vijver een schatkamer waarin behendigheid iedere vangst stuurt.</p><p>De handeling is eenvoudig maar precies: kies een doel, volg de beweging over het water en sluit op het juiste moment. Dat korte wachten maakt het succes waardevol wanneer de eend uit de vijver komt.</p><h2>Een familiale kermistraditie</h2><p>Door de nabijheid en het rustige tempo ontstaat een gedeeld moment tussen het vissende kind en de familie die elke poging volgt. Het spel verbindt het havenpark met vertrouwde kermisherinneringen.</p>",
+            "newValue": "<h2>Eendjes onder de ballonnen</h2><p>De in 2013 gefotografeerde eendjeskraam staat onder een kleine houten kiosk naast de spelgevels. Een rond bassin met gele bakstenen rand zit vol gekleurde eendjes, met een grote eend boven het midden. Kleine witte hekjes staan op het groene plateau eromheen.</p><p>Disney- en Hello Kitty-ballonnen, opblaasvissen en lange knotsen met sterren vormen erboven een plafond van speelgoed. ’s Avonds laat het licht in het bassin dit kleine gele eiland afsteken tegen de donkere paden.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Basen małych skarbów</h2><p>Pêche aux canards przenosi klasykę lunaparku do świata LʼÎle aux Pirates. Małe pływające figury zmieniają basen w skarbiec, w którym zręczność prowadzi do każdego połowu.</p><p>Ruch jest prosty, lecz precyzyjny: wybrać cel, śledzić go na wodzie i złapać w odpowiedniej chwili. Krótkie oczekiwanie nadaje znaczenie sukcesowi, gdy kaczka opuszcza basen.</p><h2>Rodzinna tradycja lunaparkowa</h2><p>Bliskość i spokojne tempo tworzą wspólną chwilę dziecka łowiącego kaczki oraz bliskich śledzących każdą próbę. Gra łączy portowy park ze znajomym wspomnieniem lunaparków.</p>",
+            "newValue": "<h2>Kaczuszki pod balonami</h2><p>Stoisko z łowieniem kaczek sfotografowane w 2013 roku mieści się pod małym drewnianym kioskiem, obok fasad gier. Okrągły basen z obrzeżem z żółtych cegieł wypełniają kolorowe kaczuszki, a nad środkiem góruje duża kaczka. Na zielonej platformie wokół stoją niewielkie białe płotki.</p><p>Balony Disney i Hello Kitty, dmuchane ryby oraz długie maczugi w gwiazdy tworzą nad stoiskiem sufit z zabawek. Wieczorem światło basenu wyróżnia tę małą żółtą wyspę na tle ciemniejszych alejek.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O tanque dos pequenos tesouros</h2><p>A Pêche aux canards leva um clássico de feira para o mundo da LʼÎle aux Pirates. As pequenas figuras flutuantes transformam o tanque numa reserva de tesouros onde a destreza orienta cada captura.</p><p>O gesto é simples mas preciso: escolher um alvo, acompanhar o seu movimento na água e fechar o gancho no momento certo. Essa breve espera dá valor ao sucesso quando o pato sai finalmente do tanque.</p><h2>Uma tradição de feira familiar</h2><p>Pela proximidade e pelo ritmo tranquilo, o jogo cria um momento partilhado entre a criança que pesca e a família que acompanha cada tentativa. Liga o parque portuário à memória familiar das feiras.</p>",
+            "newValue": "<h2>Patinhos debaixo dos balões</h2><p>A banca de pesca fotografada em 2013 fica sob um pequeno quiosque de madeira, junto às fachadas dos jogos. Um tanque redondo contornado por tijolos amarelos reúne muitos patinhos coloridos, com um grande pato ao centro. Pequenas cercas brancas pontuam a plataforma verde em redor.</p><p>Por cima, balões Disney e Hello Kitty, peixes insufláveis e longas clavas com estrelas formam um teto de brinquedos. À noite, a luz do tanque destaca esta pequena ilha amarela diante das alamedas mais escuras.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c2477c09-955a-4291-86b1-448732547c28",
+        "entityKey": "c2477c09-955a-4291-86b1-448732547c28",
+        "displayName": "Trampolino",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Das Spiel mit dem Sprung</h2><p>Trampolino bietet einen Raum, in dem der Schwung direkt von den Kindern ausgeht. Jeder Sprung macht den federnden Boden zu einem kurzen Flug und unterscheidet sich klar von Fahrgeschäften mit festem Ablauf.</p><p>Der Rhythmus entsteht Sprung für Sprung: Halt finden, das Gleichgewicht anpassen und erneut starten. Der Reiz liegt im Gefühl der Leichtigkeit und in der Freiheit, eine eigene Bewegungsfolge zu erfinden.</p><h2>Eine ganz persönliche Energie</h2><p>Trampolino gibt dem Spielbereich von LʼÎle aux Pirates eine aktive Identität. Höhe ist keine ferne Kulisse, sondern entsteht aus Einsatz, Freude und dem mit jedem Sprung wachsenden Vertrauen.</p>",
+            "newValue": "<h2>Ein Schachbrett in Gelb und Grün</h2><p>Trampolino erscheint in der Galerie von 2013 als quadratischer Trampolinbereich mit leuchtend gelben und apfelgrünen Rändern. Dunkle Flächen bilden Felder zwischen den Farbstreifen. Schwarze Netze und gepolsterte Pfosten umgeben die Anlage neben einer rot-gelben Spielstruktur.</p><p>Diese geometrische Kulisse unterscheidet sich von den hohen Holzmasten des Accro-bungy. Hier bleibt der Blick auf Höhe der Zäune, Chaletdächer und benachbarten Spiele in einer dicht bebauten Ecke des Hafenparks.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>The play of bouncing</h2><p>Trampolino opens a space where momentum comes directly from children. Each bounce turns the flexible surface into a brief flight and gives the game an energy unlike rides with a fixed route.</p><p>The rhythm develops bounce after bounce: regain footing, adjust balance and set off again. The pleasure comes as much from the sense of lightness as from the freedom to invent a personal sequence of movements.</p><h2>A very personal energy</h2><p>Trampolino gives an active identity to the play area at LʼÎle aux Pirates. Height is not a distant backdrop: it grows from effort, smiles and confidence gained through each bounce.</p>",
+            "newValue": "<h2>A yellow-and-green checkerboard</h2><p>Trampolino appears in the 2013 gallery as a square of trampolines edged in bright yellow and apple green. Dark surfaces form squares between the coloured bands. Black nets and padded posts surround the platform beside a red-and-yellow play structure.</p><p>This geometric setting differs from Accro-bungy’s tall wooden masts. Here, the view stays level with the fences, chalet roofs and neighbouring games in a closely packed corner of the harbour park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>El juego del rebote</h2><p>Trampolino abre un espacio donde el impulso nace directamente de los niños. Cada rebote convierte la superficie elástica en un pequeño vuelo y da al juego una energía distinta de las atracciones con recorrido fijo.</p><p>El ritmo se construye rebote tras rebote: recuperar el apoyo, ajustar el equilibrio y volver a empezar. El placer está tanto en la ligereza como en la libertad de inventar una secuencia propia de movimientos.</p><h2>Una energía muy personal</h2><p>Trampolino da una identidad activa a la zona de juegos de LʼÎle aux Pirates. La altura no es un decorado lejano: nace del esfuerzo, la sonrisa y la confianza ganada en cada rebote.</p>",
+            "newValue": "<h2>Un tablero amarillo y verde</h2><p>En la galería de 2013, Trampolino aparece como un cuadrado de camas elásticas con bordes amarillo vivo y verde manzana. Las superficies oscuras forman casillas entre las franjas de colores. Redes negras y postes acolchados rodean la plataforma, junto a una estructura de juegos roja y amarilla.</p><p>Este decorado geométrico se distingue de los altos mástiles de madera del Accro-bungy. Aquí, la vista queda a la altura de las vallas, los tejados de los chalés y los juegos vecinos, en un rincón compacto del parque portuario.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le jeu du rebond</h2><p>Trampolino ouvre un espace où lʼélan vient directement des enfants. Chaque rebond transforme le sol souple en petite envolée et donne au jeu une énergie différente des manèges au parcours fixé.</p><p>Le rythme se construit bond après bond : retrouver son appui, ajuster son équilibre puis repartir. Le plaisir tient autant à la sensation de légèreté quʼà la liberté dʼinventer sa propre suite de mouvements.</p><h2>Une énergie très personnelle</h2><p>Trampolino donne une identité active à la zone de jeux de LʼÎle aux Pirates. La hauteur nʼest pas un décor lointain : elle naît de lʼeffort, du sourire et de la confiance gagnée au fil des rebonds.</p>",
+            "newValue": "<h2>Un damier jaune et vert</h2><p>Le Trampolino apparaît dans la galerie de 2013 comme un carré de trampolines aux bordures jaune vif et vert pomme. Les surfaces sombres forment des cases entre ces bandes colorées. Des filets noirs et des montants rembourrés entourent le plateau, près d’une structure de jeux rouge et jaune.</p><p>Ce décor géométrique se distingue des grands mâts de bois de l’Accro-bungy. Ici, le regard reste au niveau des clôtures, des toits de chalets et des jeux voisins, dans un coin serré du parc portuaire.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Il gioco del rimbalzo</h2><p>Trampolino apre uno spazio in cui lo slancio nasce direttamente dai bambini. Ogni rimbalzo trasforma il piano elastico in un piccolo volo e dà al gioco unʼenergia diversa dalle giostre con percorso stabilito.</p><p>Il ritmo nasce rimbalzo dopo rimbalzo: ritrovare lʼappoggio, regolare lʼequilibrio e ripartire. Il piacere sta nella leggerezza e nella libertà di inventare una sequenza personale di movimenti.</p><h2>Unʼenergia molto personale</h2><p>Trampolino dà unʼidentità attiva alla zona giochi di LʼÎle aux Pirates. Lʼaltezza non è uno sfondo lontano: nasce dallʼimpegno, dal sorriso e dalla fiducia guadagnata a ogni rimbalzo.</p>",
+            "newValue": "<h2>Una scacchiera gialla e verde</h2><p>Nella galleria del 2013, Trampolino appare come un quadrato di trampolini con bordi giallo acceso e verde mela. Le superfici scure formano caselle tra le fasce colorate. Reti nere e pali imbottiti circondano la piattaforma, accanto a una struttura di giochi rossa e gialla.</p><p>Questo scenario geometrico si distingue dagli alti pali di legno dell’Accro-bungy. Qui lo sguardo rimane all’altezza delle recinzioni, dei tetti degli chalet e dei giochi vicini, in un angolo raccolto del parco portuale.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Het spel van de sprong</h2><p>Trampolino biedt een ruimte waar de beweging rechtstreeks van de kinderen komt. Elke sprong maakt van de verende ondergrond een korte vlucht en geeft het spel een andere energie dan attracties met een vast parcours.</p><p>Het ritme groeit sprong na sprong: steun hervinden, het evenwicht aanpassen en opnieuw vertrekken. Het plezier zit zowel in het lichte gevoel als in de vrijheid om een eigen reeks bewegingen te bedenken.</p><h2>Een heel persoonlijke energie</h2><p>Trampolino geeft de speelzone van LʼÎle aux Pirates een actief karakter. Hoogte is geen verre achtergrond maar ontstaat uit inspanning, plezier en vertrouwen dat met elke sprong groeit.</p>",
+            "newValue": "<h2>Een geelgroen dambord</h2><p>Trampolino is in de galerij uit 2013 te zien als een vierkant van trampolines met felgele en appelgroene randen. Donkere vlakken vormen vakken tussen de gekleurde stroken. Zwarte netten en beklede palen omringen het plateau naast een rood-geel speeltoestel.</p><p>Dit geometrische decor verschilt van de hoge houten masten van Accro-bungy. Hier blijft het uitzicht op de hoogte van hekken, chaletdaken en naburige spellen, in een dicht opeengepakte hoek van het havenpark.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zabawa odbiciem</h2><p>Trampolino otwiera przestrzeń, w której pęd pochodzi bezpośrednio od dzieci. Każde odbicie zmienia sprężyste podłoże w krótki lot i nadaje zabawie inną energię niż atrakcjom o ustalonej trasie.</p><p>Rytm powstaje odbicie po odbiciu: odzyskać podparcie, poprawić równowagę i ruszyć ponownie. Przyjemność daje zarówno lekkość, jak i swoboda tworzenia własnej sekwencji ruchów.</p><h2>Bardzo osobista energia</h2><p>Trampolino nadaje aktywną tożsamość strefie zabawy LʼÎle aux Pirates. Wysokość nie jest odległym tłem: rodzi się z wysiłku, uśmiechu i pewności zdobywanej przy kolejnych odbiciach.</p>",
+            "newValue": "<h2>Żółto-zielona szachownica</h2><p>W galerii z 2013 roku Trampolino tworzy kwadrat trampolin o jaskrawożółtych i jabłkowo-zielonych brzegach. Ciemne powierzchnie układają się w pola między kolorowymi pasami. Czarne siatki i miękko osłonięte słupki otaczają platformę obok czerwono-żółtej konstrukcji do zabawy.</p><p>Ta geometryczna sceneria różni się od wysokich drewnianych masztów Accro-bungy. Tutaj widok pozostaje na poziomie ogrodzeń, dachów drewnianych kiosków i sąsiednich gier, w ciasno zabudowanym zakątku portowego parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>O jogo do salto</h2><p>O Trampolino abre um espaço onde o impulso nasce diretamente das crianças. Cada salto transforma a superfície elástica num pequeno voo e dá ao jogo uma energia diferente das diversões de percurso fixo.</p><p>O ritmo constrói-se salto após salto: recuperar o apoio, ajustar o equilíbrio e recomeçar. O prazer está tanto na leveza como na liberdade de inventar uma sequência própria de movimentos.</p><h2>Uma energia muito pessoal</h2><p>O Trampolino dá uma identidade ativa à zona de jogos da LʼÎle aux Pirates. A altura não é um cenário distante: nasce do esforço, do sorriso e da confiança conquistada a cada salto.</p>",
+            "newValue": "<h2>Um tabuleiro amarelo e verde</h2><p>Na galeria de 2013, Trampolino surge como um quadrado de trampolins com rebordos amarelo-vivo e verde-maçã. As superfícies escuras formam casas entre as faixas coloridas. Redes pretas e postes acolchoados rodeiam a plataforma, junto a uma estrutura de jogos vermelha e amarela.</p><p>Este cenário geométrico distingue-se dos altos mastros de madeira do Accro-bungy. Aqui, a vista fica à altura das vedações, dos telhados dos chalés e dos jogos vizinhos, num recanto compacto do parque portuário.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "newSitePublicationPerformed": false,
+  "newFacebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

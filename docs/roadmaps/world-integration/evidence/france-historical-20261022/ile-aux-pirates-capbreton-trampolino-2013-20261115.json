@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "entryId": "FR-park-5e9e6a61-3d74-49cd-9c3a-8ca107edd018",
+  "owner": "Conversation France",
+  "kind": "ImportPhoto",
+  "serverIntegrationAtUtc": "2026-11-15T02:34:53.101Z",
+  "result": {
+    "id": "920149595c604b59b2e33792cc7b84ec",
+    "category": "PARK_ITEM",
+    "ownerType": "PARK_ITEM",
+    "ownerId": "c2477c09-955a-4291-86b1-448732547c28",
+    "path": "park_item/920149595c604b59b2e33792cc7b84ec",
+    "description": "Le plateau jaune et vert du Trampolino à Capbreton en 2013.",
+    "isCurrent": false,
+    "isPublished": false,
+    "isWatermarked": false,
+    "width": 800,
+    "height": 600,
+    "sizeInBytes": 61402,
+    "originalFileName": "codex-import.jpg",
+    "contentType": "image/jpeg",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130368%20%28Copier%29.jpg",
+    "geoLocation": null,
+    "exifMetadata": null,
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Trampolines sombres séparés par des bandes jaunes et vertes, entourés de filets noirs et de montants rembourrés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Dark trampolines divided by yellow and green bands, surrounded by black nets and padded posts."
+      },
+      {
+        "languageCode": "de",
+        "value": "Dunkle Trampoline zwischen gelben und grünen Streifen, umgeben von schwarzen Netzen und gepolsterten Pfosten."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Donkere trampolines tussen gele en groene stroken, omgeven door zwarte netten en beklede palen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Trampolini scuri separati da fasce gialle e verdi, circondati da reti nere e pali imbottiti."
+      },
+      {
+        "languageCode": "es",
+        "value": "Camas elásticas oscuras separadas por franjas amarillas y verdes, rodeadas de redes negras y postes acolchados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Ciemne trampoliny oddzielone żółtymi i zielonymi pasami, otoczone czarnymi siatkami i osłoniętymi słupkami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Trampolins escuros separados por faixas amarelas e verdes, rodeados por redes pretas e postes acolchoados."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le plateau jaune et vert du Trampolino à Capbreton en 2013."
+      },
+      {
+        "languageCode": "en",
+        "value": "Trampolino’s yellow-and-green platform at Capbreton in 2013."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die gelb-grüne Trampolinfläche in Capbreton im Jahr 2013."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het geelgroene plateau van Trampolino in Capbreton in 2013."
+      },
+      {
+        "languageCode": "it",
+        "value": "La piattaforma gialla e verde del Trampolino a Capbreton nel 2013."
+      },
+      {
+        "languageCode": "es",
+        "value": "La plataforma amarilla y verde del Trampolino en Capbreton en 2013."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Żółto-zielona platforma Trampolino w Capbreton w 2013 roku."
+      },
+      {
+        "languageCode": "pt",
+        "value": "A plataforma amarela e verde do Trampolino em Capbreton em 2013."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Photographie : fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "en",
+        "value": "Photograph: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "de",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Foto: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "it",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "es",
+        "value": "Fotografía: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fotografia: fandemanèges / Turbo Kermis"
+      }
+    ],
+    "tagIds": [],
+    "createdAt": "2026-11-15T02:34:49.618Z",
+    "updatedAt": "2026-11-15T02:34:53.101Z"
+  },
+  "sourceEvidence": {
+    "stem": "trampolino-2013",
+    "sourceUrl": "https://www.turbo-kermis.fr/uploads/galleryPhotos/2013/Capbreton%20%2840%29%20-%20L%27ile%20aux%20pirates/P1130368%20%28Copier%29.jpg",
+    "sourcePageUrl": "https://www.turbo-kermis.fr/gallery/137-2013/181-capbreton-40-l-ile-aux-pirates/",
+    "author": "fandemanèges",
+    "visitPeriod": "2013",
+    "captureDay": null,
+    "ownerId": "c2477c09-955a-4291-86b1-448732547c28",
+    "file": "/workspace/france-historical-20261114/ile-aux-pirates-capbreton/source-images/turbo2013-46.jpg",
+    "sha256": "62da3d0402c561f0e80d7efd71b256ecf4e01caa7633778bb9650c3468957207",
+    "watermark": false,
+    "visuallyInspected": true,
+    "rights": "Photographie de visiteur, auteur et galerie exacte vérifiés. Autorisation générale du propriétaire pour la campagne ; aucune licence ouverte ni permission personnelle de l’auteur revendiquée.",
+    "review": "Original2013 de800×600 relu intégralement, sans filigrane visible, sans recadrage. Les reportages Turbo Kermis plus récents portent des filigranes et restent exclus : ne pas étendre cette exclusion aux fichiers2013 inspectés."
+  },
+  "private": true,
+  "finalAuditCompleted": false,
+  "review": "Original inspecté personnellement, attribution vérifiée sur la page source exacte, alt/légende/crédit rédigés et relus dans les huit langues. Aucun recadrage ni image générée."
+}
