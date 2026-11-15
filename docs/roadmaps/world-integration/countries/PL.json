@@ -429,20 +429,22 @@
       "legacySiteIds": [],
       "presence": "PossibleExisting",
       "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "editorialStatus": "Duplicate",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Non vérifié",
-      "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
+      "sourceLifecycleSignal": "Même piste que la fiche autonome publiée sous PL-park-6316cc1b-e42a-4451-823c-26c3b9b23ed7.",
+      "identityConfidence": "Référence Wiegand location-id-1071 et identité Gravity Slide de la fiche legacy correspondent à la piste publiée.",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "PL-park-6316cc1b-e42a-4451-823c-26c3b9b23ed7"
+      ],
       "aliases": [
         "Warszawa"
       ],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Conserver comme doublon documentaire de PL-park-6316cc1b-e42a-4451-823c-26c3b9b23ed7 ; ne pas créer une seconde fiche. Suivre tarifs et horaires sous la ligne migrée.",
       "sources": [
         {
           "label": "Wiegand — références constructeur",
@@ -453,11 +455,21 @@
           "label": "Opérateur référencé par la source",
           "url": "https://sport.um.warszawa.pl/waw/aktywna-warszawa/gorkaszczesliwicka",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Varsovie — même piste",
+          "url": "https://warszawa19115.pl/-/miejskie-obiekty-sportowe",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "RCDB — Gravity Slide",
+          "url": "https://rcdb.com/3832.htm",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "IndependentCandidate",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Warszawa",
@@ -468,8 +480,9 @@
             "referenceId": "location-id-1071"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
-      }
+        "rationale": "La référence Wiegand Varsovie correspond à la piste de la Górka Szczęśliwicka déjà migrée et publiée depuis sa fiche Park masquée."
+      },
+      "duplicateOf": "PL-park-6316cc1b-e42a-4451-823c-26c3b9b23ed7"
     },
     {
       "entryId": "PL-candidate-b632be72cdb88a",
@@ -3323,26 +3336,85 @@
     },
     {
       "entryId": "PL-park-6316cc1b-e42a-4451-823c-26c3b9b23ed7",
-      "name": "Hill Szczęśliwicka",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "6316cc1b-e42a-4451-823c-26c3b9b23ed7",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "Kolejka grawitacyjna Górka Szczęśliwicka",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Drawska 22, 02-202 Warszawa, Mazovie",
+      "siteId": "1649a64c-cf6d-405d-8281-1eee955527c3",
+      "legacySiteIds": [
+        "6316cc1b-e42a-4451-823c-26c3b9b23ed7"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T01:51:17.227Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Ville de Varsovie consultée le 2026-11-15 : la piste fonctionne pendant les travaux des remontées et également en hiver, de 10 h au crépuscule.",
+      "identityConfidence": "Ancienne fiche Park masquée Hill Szczęśliwicka avec un seul parkItem Gravity Slide migrée via les IDs legacy ; la ville confirme une piste d’un domaine sportif public, sans parc d’attractions structuré.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Hill Szczęśliwicka",
+        "Gravity Slide",
+        "Zjeżdżalnia Grawitacyjna",
+        "Górka Szczęśliwicka",
+        "Kolejka grawitacyjna"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T01:49:12.996Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-6d23b63c-5641-4181-bad2-c646d6f3ffac",
+          "appliedAt": "2026-11-15T01:46:53.010Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1649a64c-cf6d-405d-8281-1eee955527c3",
+          "evidence": "PARK_DATA_EDITOR:apply:6d23b63c-5641-4181-bad2-c646d6f3ffac",
+          "auditEvidence": null,
+          "summary": "Création autonome et classement NotRelevant du parc masqué et de son item."
+        },
+        {
+          "eventId": "apply-504d6f00-1471-49aa-a0ac-05bb9c625dd2",
+          "appliedAt": "2026-11-15T01:48:13.366Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1649a64c-cf6d-405d-8281-1eee955527c3",
+          "evidence": "PARK_DATA_EDITOR:apply:504d6f00-1471-49aa-a0ac-05bb9c625dd2",
+          "auditEvidence": null,
+          "summary": "Effacement de la fausse date précise du 1er janvier 1999."
+        },
+        {
+          "eventId": "image-bebe62a9086f41c081bb02a812ce3a98",
+          "appliedAt": "2026-11-15T01:49:09.343Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1649a64c-cf6d-405d-8281-1eee955527c3",
+          "evidence": "PARK_DATA_EDITOR:image:bebe62a9086f41c081bb02a812ce3a98",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2015, CC BY 3.0, importée avec textes en huit langues."
+        },
+        {
+          "eventId": "image-metadata-bebe62a9086f41c081bb02a812ce3a98",
+          "appliedAt": "2026-11-15T01:49:12.996Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1649a64c-cf6d-405d-8281-1eee955527c3",
+          "evidence": "PARK_DATA_EDITOR:image:bebe62a9086f41c081bb02a812ce3a98",
+          "auditEvidence": null,
+          "summary": "Métadonnées et crédits de la photo confirmés."
+        },
+        {
+          "eventId": "closure-bebe62a9086f41c081bb02a812ce3a98",
+          "appliedAt": "2026-11-15T01:49:12.996Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "1649a64c-cf6d-405d-8281-1eee955527c3",
+          "evidence": "PARK_DATA_EDITOR:image:bebe62a9086f41c081bb02a812ce3a98",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-pl-warsaw-szczesliwicka-20261115/audit.json",
+          "summary": "Audit final : huit pages et photo HTTP 200, complétude 72 sans bloqueur, Facebook Published."
+        }
+      ],
+      "nextAction": "Conserver la ligne et sa date réelle. Vérifier le tarif officiel et l’état de service du jour ; l’ancienne fiche Park et son item restent masqués et NotRelevant, sans suppression. Le candidat Wiegand Warszawa est un doublon documentaire conservé.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -3358,26 +3430,44 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/3832.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Ville de Varsovie — exploitation pendant les travaux et en hiver",
+          "url": "https://warszawa19115.pl/-/miejskie-obiekty-sportowe",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Sportowa Warszawa — identification du coaster",
+          "url": "https://sportowa.warszawa.pl/osrodki-sportu/gorka-szczesliwicka/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wiegand — référence Varsovie",
+          "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=243#location-id-1071",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Globe Master - SideEffect, 2015, CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Park-szczesliwicki-rollercoaster-2.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "PL",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Gravity Slide",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/3832.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Hill Szczęśliwicka",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Warsaw , Mazowieckie",
-            "sourceOpenedYear": "1999"
+            "name": "Kolejka grawitacyjna Górka Szczęśliwicka",
+            "source": "Ville de Varsovie",
+            "url": "https://warszawa19115.pl/-/miejskie-obiekty-sportowe",
+            "family": "Alpine coaster",
+            "sourceVenueName": "Górka Szczęśliwicka",
+            "sourceLocality": "Warszawa"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "Une seule attraction mécanique dans un domaine sportif municipal ; l’ancienne fiche de parc était artificielle et masquée. Migration via IDs legacy."
       }
     },
     {
