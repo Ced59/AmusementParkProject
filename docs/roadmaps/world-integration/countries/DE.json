@@ -2403,11 +2403,11 @@
         "e62142f3-4d42-4c3c-98c8-b58d8ce9da3b"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T14:42:55.711Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Coaster en exploitation annuelle selon l’exploitant, mais fermé du 8 novembre au 25 décembre 2026 ; calendrier détaillé publié jusqu’au 31 janvier 2028.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
@@ -2415,9 +2415,50 @@
         "Alpsee-Bergwelt"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T14:40:35.020Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-738cc365-c7d6-4eca-ba20-5972408c30f0",
+          "appliedAt": "2026-11-15T14:39:18.378Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:apply:738cc365-c7d6-4eca-ba20-5972408c30f0",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Tarifs officiels, conditions de conduite sourcées et calendrier complet du 15 novembre 2026 au 31 janvier 2028 intégrés."
+        },
+        {
+          "eventId": "image-df2dd4fe29dc4e6d8bf3e3e9b6ca8cd0",
+          "appliedAt": "2026-11-15T14:40:10.772Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:image:df2dd4fe29dc4e6d8bf3e3e9b6ca8cd0@2026-11-15T14:40:10.772Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Photo exacte de la piste Alpsee Coaster du 2013-07-27, qwesy qwesy, CC BY 3.0, avec textes, légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "image-8365736eb0514b7c84531f83962fcadf",
+          "appliedAt": "2026-11-15T14:40:23.750Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:image:8365736eb0514b7c84531f83962fcadf@2026-11-15T14:40:23.75Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Photo exacte de la piste Alpsee Coaster du 2013-07-27, qwesy qwesy, CC BY 3.0, avec textes, légendes et crédits en huit langues."
+        },
+        {
+          "eventId": "image-3781da25e1634370a3497d480e18ca23",
+          "appliedAt": "2026-11-15T14:40:35.020Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+          "evidence": "PARK_DATA_EDITOR:image:3781da25e1634370a3497d480e18ca23@2026-11-15T14:40:35.02Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+          "summary": "Photo exacte de la piste Alpsee Coaster du 2014-08-09, qwesy qwesy, CC BY 3.0, avec textes, légendes et crédits en huit langues."
+        }
+      ],
+      "nextAction": "Revérifier les adaptations météo et les tarifs au prochain changement officiel ; demander ou vérifier la licence des cinq anciennes photos issues de l’exploitant. Ne pas déduire d’horaires après le 31 janvier 2028.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -2453,6 +2494,36 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.alpsee-bergwelt.de",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Alpsee Bergwelt — coaster et conditions",
+          "url": "https://www.alpsee-bergwelt.de/erleben/alpsee-coaster",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpsee Bergwelt — tarifs",
+          "url": "https://www.alpsee-bergwelt.de/infos/preise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Alpsee Bergwelt — calendrier PDF 2026–2028",
+          "url": "https://www.alpsee-bergwelt.de/images/zmedialib/2026/11/10/alpsee-bergwelt-offnungszeiten-2026_2027.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — qwesy qwesy, CC BY 3.0, 2013-07-27",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlpsee_Coaster_-_Rodelbahn_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — qwesy qwesy, CC BY 3.0, 2013-07-27",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlpsee_Coaster_-_Rodelbahn_-_panoramio_%282%29.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — qwesy qwesy, CC BY 3.0, 2014-08-09",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlpsee-Coaster_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
@@ -2481,6 +2552,26 @@
           }
         ],
         "rationale": "Fiche StandaloneAttraction déjà présente ; conserver son identité et rapprocher les références de l’installation."
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-de-alpsee-coaster-20261115/audit.json",
+        "score": 93,
+        "publicationBlockers": [],
+        "gapCount": 1
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/b593d380-49b9-4c5d-b08c-00cc378182b3/alpsee-coaster",
+          "verifiedAtUtc": "2026-11-15T14:42:55.711Z",
+          "evidence": "PARK_DATA_EDITOR:apply:738cc365-c7d6-4eca-ba20-5972408c30f0"
+        },
+        "facebook": {
+          "id": "ef6e510a888144cb893f3d41f8265451",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-15T14:41:49.625Z",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127465057424431"
+        }
       }
     },
     {
@@ -21173,14 +21264,14 @@
         "site": {
           "status": "Published",
           "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal",
-          "publishedAtUtc": "2026-10-23T03:32:11.6091144Z",
+          "publishedAtUtc": "2026-10-23T03:32:11.609Z",
           "verifiedAtUtc": "2026-10-23T03:41:24.502Z",
           "evidence": "PARK_DATA_EDITOR:apply:60f7a13f-63a0-40c7-b00c-92bc19342729"
         },
         "facebook": {
           "id": "3902d090ce1a446a9680099a216659ce",
           "status": "Published",
-          "publishedAtUtc": "2026-10-23T03:40:32.8619449Z",
+          "publishedAtUtc": "2026-10-23T03:40:32.861Z",
           "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122124235773424431",
           "externalPostId": "1285475681307050_122124235773424431",
           "url": "https://amusement-parks.fun/fr/attraction/6344aa13-1fa4-4df1-a464-42d98b493047/sommerrodelbahn-oberwiesenthal?facebook-image=241ee56f69154638a1c97293e094ca54"
@@ -21307,7 +21398,7 @@
       "siteId": "c3915e57-01bf-486e-a932-db220a0eea66",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-15T09:05:32.8775443Z",
+      "presenceObservedAt": "2026-11-15T09:05:32.877Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
@@ -24401,7 +24492,7 @@
       "siteId": "a49ffd3f-3502-4b8d-985f-105f8a830efb",
       "legacySiteIds": [],
       "presence": "Published",
-      "presenceObservedAt": "2026-11-15T09:17:36.416465Z",
+      "presenceObservedAt": "2026-11-15T09:17:36.416Z",
       "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,

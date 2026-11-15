@@ -1,0 +1,139 @@
+{
+  "entryId": "DE-standalone-b593d380-49b9-4c5d-b08c-00cc378182b3",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "b593d380-49b9-4c5d-b08c-00cc378182b3",
+  "name": "Alpsee Coaster",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T14:42:55.711Z",
+  "qualification": "Attraction autonome déjà publique au sein de la destination de montagne Alpsee Bergwelt ; conserver l’identifiant standalone et l’identité historique.",
+  "officialSources": [
+    "https://www.alpsee-bergwelt.de/erleben/alpsee-coaster",
+    "https://www.alpsee-bergwelt.de/infos/preise",
+    "https://www.alpsee-bergwelt.de/infos/oeffnungszeiten",
+    "https://www.alpsee-bergwelt.de/images/zmedialib/2026/11/10/alpsee-bergwelt-offnungszeiten-2026_2027.pdf",
+    "https://www.alpsee-bergwelt.de/infos/haeufige-fragen"
+  ],
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/b593d380-49b9-4c5d-b08c-00cc378182b3/alpsee-coaster",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "publishedPhotoCount": 8,
+  "newLicensedPhotos": [
+    {
+      "imageId": "df2dd4fe29dc4e6d8bf3e3e9b6ca8cd0",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File%3AAlpsee_Coaster_-_Rodelbahn_-_panoramio.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alpsee_Coaster_-_Rodelbahn_-_panoramio.jpg?width=1200",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2013-07-27",
+      "sourceSha256": "67cb15104c1692c2c375b5e2b7c70abe290a3f2e8865736275a266ff00d51866",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "lastUpdatedAtUtc": "2026-11-15T14:40:10.772Z"
+    },
+    {
+      "imageId": "8365736eb0514b7c84531f83962fcadf",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File%3AAlpsee_Coaster_-_Rodelbahn_-_panoramio_%282%29.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alpsee_Coaster_-_Rodelbahn_-_panoramio_%282%29.jpg?width=1200",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2013-07-27",
+      "sourceSha256": "ee235478064a80bd1c4d5fec3fe7fe908328cc8321915e74277db2e66d5f921f",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "lastUpdatedAtUtc": "2026-11-15T14:40:23.750Z"
+    },
+    {
+      "imageId": "3781da25e1634370a3497d480e18ca23",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File%3AAlpsee-Coaster_-_panoramio.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alpsee-Coaster_-_panoramio.jpg?width=1200",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2014-08-09",
+      "sourceSha256": "7a60a52c6f4e684738eef137640c6163e65a9c926021a3f3268412735270bdfa",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "lastUpdatedAtUtc": "2026-11-15T14:40:35.020Z"
+    }
+  ],
+  "oldImageRightsGap": "Cinq anciennes photos publiques issues de l’exploitant montrent l’attraction, mais leur autorisation de réutilisation autonome n’a pas été retrouvée ; le logo Wiegand exporté n’est pas une photo de l’attraction. Une nouvelle photo CC BY 3.0 est devenue la photo principale.",
+  "calendar": {
+    "startDate": "2026-11-15",
+    "endDate": "2028-01-31",
+    "totalDays": 443,
+    "openDays": 273,
+    "closedDays": 170,
+    "uncoveredDates": [],
+    "overlaps": [],
+    "nightSleddingDates": [
+      "2027-05-15",
+      "2027-05-19",
+      "2027-05-22",
+      "2027-05-26",
+      "2027-05-29",
+      "2027-07-17",
+      "2027-07-21",
+      "2027-07-24",
+      "2027-07-28",
+      "2027-07-31",
+      "2027-08-04",
+      "2027-08-07",
+      "2027-08-11",
+      "2027-08-14",
+      "2027-08-18",
+      "2027-08-21",
+      "2027-08-25",
+      "2027-08-28",
+      "2027-09-01",
+      "2027-09-04",
+      "2027-09-08",
+      "2027-09-11"
+    ],
+    "officialPdf": "https://www.alpsee-bergwelt.de/images/zmedialib/2026/11/10/alpsee-bergwelt-offnungszeiten-2026_2027.pdf"
+  },
+  "pricing": "Tarifs officiels relevés le 15 novembre 2026 : coaster seul 10 €/8,50 €/6,50 € ; montée + descente 18,50 €/15,50 €/11,50 € pour adulte dès 14 ans, enfant 6–13 ans et mini 3–5 ans.",
+  "access": "Accompagné dès 3 ans et 95 cm ; conduite seul dès 8 ans et 140 cm ; conducteur autorisé à prendre un passager dès 14 ans.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable"
+  },
+  "completenessAfter": {
+    "score": 93,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "ef6e510a888144cb893f3d41f8265451",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127465057424431",
+    "publishedAtUtc": "2026-11-15T14:41:49.625Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T14:40:35.020Z",
+  "dataReceipt": {
+    "kind": "Apply",
+    "operationId": "738cc365-c7d6-4eca-ba20-5972408c30f0",
+    "appliedAtUtc": "2026-11-15T14:39:18.378Z",
+    "counts": {
+      "created": 2,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 0,
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "nextAction": "Revérifier les adaptations météo et les tarifs au prochain changement officiel ; demander ou vérifier la licence des cinq anciennes photos issues de l’exploitant. Ne pas déduire d’horaires après le 31 janvier 2028."
+}
