@@ -10,18 +10,18 @@ Le recensement couvre les annuaires et sources décrits dans [la méthode et ses
 
 Compléments datés du relevé : [créations standalone candidates](CREATIONS-STANDALONE.md), [couverture des alpine / mountain coasters](ALPINE-COASTER-COVERAGE.md), [contrôle de la découverte externe](DISCOVERY-COVERAGE.md) et [prompts France / Portugal](PROMPTS-FR-PT.md). Le nombre de créations candidates ne représente pas le nombre mondial d’installations. Les JSON et les compteurs régénérés ci-dessous prévalent après les intégrations ultérieures.
 
-**Pays manquants dans la base :** 275 fiches sont rattachées ici par rapprochement avec des sources, à confirmer pendant leur reprise. Ce classement documentaire ne modifie pas leur pays dans le site. 1 autre(s) fiche(s) ont un code pays renseigné mais corrigé ici sur source, avec leur identifiant stable conservé. Les cas non résolus restent dans [ZZ](countries/ZZ.md). Les compteurs européens corrigent donc la première photographie qui se limitait aux codes pays renseignés.
+**Pays manquants dans la base :** 277 fiches sont rattachées ici par rapprochement avec des sources, à confirmer pendant leur reprise. Ce classement documentaire ne modifie pas leur pays dans le site. 1 autre(s) fiche(s) ont un code pays renseigné mais corrigé ici sur source, avec leur identifiant stable conservé. Les cas non résolus restent dans [ZZ](countries/ZZ.md). Les compteurs européens corrigent donc la première photographie qui se limitait aux codes pays renseignés.
 
 ## Totaux mondiaux
 
 | Type | Publiés¹ | Fiches masquées à intégrer | Candidats sans fiche |
 | --- | ---: | ---: | ---: |
-| Parcs | 324 | 1871 | 7551 |
+| Parcs | 324 | 1871 | 7550 |
 | Standalone | 246 | 1 | 120 |
 
 **Reprise standalone :** en plus des 120 candidates sans correspondance, **210 fiches Park masquées** et **20 fiches Park publiées** contiennent une piste standalone à requalifier ; **559 dossiers sans identifiant du site** demandent encore un rapprochement ou une décision sur leur rattachement à un parc. Les fiches Park sont des sous-ensembles des compteurs Park, les dossiers incertains un sous-ensemble des rapprochements : ne pas les additionner deux fois. **70 dossiers rattachés à un parc structuré** restent hors des créations standalone. [Vérification dédiée, sources et limites](STANDALONE-AUDIT.md).
 
-À part : **767** Park masqués NotRelevant, **72** types à décider, **1273** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
+À part : **767** Park masqués NotRelevant, **72** types à décider, **1270** rapprochements incertains et **18** anciens parcs déjà liés à une standalone. Ces catégories ne sont pas additionnées au nombre de créations certaines.
 
 ## Europe
 
@@ -676,7 +676,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 |
-| [Guatemala](countries/GT.md) | 0 | 1 | 0 | 11 | 16 |
+| [Guatemala](countries/GT.md) | 0 | 3 | 0 | 10 | 16 |
 | [Haïti](countries/HT.md) | 1 | 0 | 0 | 2 | 5 |
 | [Honduras](countries/HN.md) | 0 | 0 | 0 | 4 | 6 |
 | [Îles Caïmans](countries/KY.md) | 0 | 0 | 0 | 0 | 0 |
@@ -701,7 +701,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 1 | 1 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 3 | 4 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 3 | 3 |
-| **Total** | **41** | **265** | **24** | **1770** | **3039** |
+| **Total** | **41** | **267** | **24** | **1769** | **3039** |
 
 ### Attractions standalone et dossiers à trancher
 
@@ -723,7 +723,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Grenade](countries/GD.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Groenland](countries/GL.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Guadeloupe](countries/GP.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| [Guatemala](countries/GT.md) | 0 | 0 | 0 | 0 | 3 | 0 |
+| [Guatemala](countries/GT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Haïti](countries/HT.md) | 0 | 0 | 0 | 0 | 1 | 0 |
 | [Honduras](countries/HN.md) | 0 | 0 | 0 | 0 | 2 | 0 |
 | [Îles Caïmans](countries/KY.md) | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -748,7 +748,7 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 | [Sainte-Lucie](countries/LC.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Salvador](countries/SV.md) | 0 | 0 | 0 | 0 | 0 | 0 |
 | [Trinité-et-Tobago](countries/TT.md) | 0 | 0 | 0 | 0 | 0 | 0 |
-| **Total** | **40** | **0** | **32** | **2** | **206** | **0** |
+| **Total** | **40** | **0** | **32** | **2** | **203** | **0** |
 
 Intégrations achevées avec preuve et audit enregistrés depuis la création du registre : **40**. Fiches créées depuis le relevé dont la visibilité reste à contrôler : **0**.
 
@@ -1017,8 +1017,8 @@ Les deux colonnes de fiches Park sont des sous-ensembles des totaux Park ; la co
 
 | Pays / territoire | Publiés¹ | Masqués à intégrer | Masqués NotRelevant à réexaminer | Sans fiche : candidats parcs | Observations externes |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| [Pays à déterminer](countries/ZZ.md) | 0 | 34 | 37 | 0 | 0 |
-| **Total** | **0** | **34** | **37** | **0** | **0** |
+| [Pays à déterminer](countries/ZZ.md) | 0 | 32 | 37 | 0 | 0 |
+| **Total** | **0** | **32** | **37** | **0** | **0** |
 
 ### Attractions standalone et dossiers à trancher
 
