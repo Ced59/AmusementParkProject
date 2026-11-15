@@ -1,0 +1,341 @@
+{
+  "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "entryId": "FR-park-b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "park": {
+        "id": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "key": "park",
+        "name": "Parc du Petit Prince"
+      },
+      "items": [
+        {
+          "id": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+          "key": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+          "name": "Le Petit Prince VR",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": null,
+            "status": "Unknown",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": "2018",
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": true,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          }
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "petit-prince-history-vr-story-opening-2018",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+            "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+            "parkItemId": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+            "itemKey": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+            "parkItemKey": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+            "contextParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+            "year": 2018,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": false,
+            "isVisible": false,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le Petit Prince VR fait entrer le visiteur dans le récit"
+              },
+              {
+                "languageCode": "en",
+                "value": "Le Petit Prince VR brings visitors into the story"
+              },
+              {
+                "languageCode": "de",
+                "value": "Le Petit Prince VR nimmt Gäste mit in die Geschichte"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Le Petit Prince VR brengt bezoekers in het verhaal"
+              },
+              {
+                "languageCode": "it",
+                "value": "Le Petit Prince VR porta il visitatore nel racconto"
+              },
+              {
+                "languageCode": "es",
+                "value": "Le Petit Prince VR introduce al visitante en el relato"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Le Petit Prince VR wprowadza gościa do opowieści"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Le Petit Prince VR leva o visitante para dentro da história"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le Petit Prince VR ouvre avec un premier épisode où le visiteur aide le héros à préparer son voyage. La Rose, les volcans et les baobabs deviennent des éléments d’une aventure à vivre. Cette adaptation interactive élargit la place du livre au-delà des films projetés dans le parc."
+              },
+              {
+                "languageCode": "en",
+                "value": "Le Petit Prince VR opens with a first episode in which visitors help the hero prepare his journey. The Rose, volcanoes and baobabs become parts of an adventure to experience. This interactive adaptation extends the book’s presence beyond the films screened in the park."
+              },
+              {
+                "languageCode": "de",
+                "value": "Le Petit Prince VR startet mit einer ersten Episode, in der Gäste dem Helden bei der Reisevorbereitung helfen. Rose, Vulkane und Affenbrotbäume werden zu Bestandteilen eines erlebbaren Abenteuers. Die interaktive Adaption erweitert die Präsenz des Buches über die Parkfilme hinaus."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Le Petit Prince VR opent met een eerste aflevering waarin bezoekers de held helpen zijn reis voor te bereiden. De roos, vulkanen en baobabs worden onderdelen van een avontuur om zelf te beleven. Deze interactieve bewerking geeft het boek een plek buiten de films in het park."
+              },
+              {
+                "languageCode": "it",
+                "value": "Le Petit Prince VR apre con un primo episodio in cui il visitatore aiuta il protagonista a preparare il viaggio. La Rosa, i vulcani e i baobab diventano elementi di un’avventura da vivere. L’adattamento interattivo estende la presenza del libro oltre i film proiettati nel parco."
+              },
+              {
+                "languageCode": "es",
+                "value": "Le Petit Prince VR abre con un primer episodio en el que el visitante ayuda al héroe a preparar su viaje. La Rosa, los volcanes y los baobabs forman parte de una aventura para vivir. Esta adaptación interactiva amplía la presencia del libro más allá de las películas del parque."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Le Petit Prince VR otwiera się pierwszym epizodem, w którym gość pomaga bohaterowi przygotować podróż. Róża, wulkany i baobaby stają się częścią przeżywanej przygody. Interaktywna adaptacja rozszerza obecność książki poza filmy wyświetlane w parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Le Petit Prince VR abre com um primeiro episódio em que o visitante ajuda o herói a preparar a viagem. A Rosa, os vulcões e os embondeiros tornam-se elementos de uma aventura para viver. A adaptação interativa alarga a presença do livro para além dos filmes exibidos no parque."
+              }
+            ],
+            "mainImageId": null,
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Succession Saint-Exupéry — lancement du Petit Prince VR en 2018",
+                "url": "https://www.antoinedesaintexupery.org/archives/5eme-saison-du-parc-du-petit-prince/",
+                "accessedAt": "2026-10-20"
+              }
+            ],
+            "article": null
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "70e356f9-cfda-4921-8ca8-da67ea2e9cca",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:21:25.0337254Z",
+    "appliedAtUtc": null,
+    "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+    "targetParkName": "Parc du Petit Prince",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "entityKey": "park",
+        "displayName": "Parc du Petit Prince",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+        "entityKey": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+        "displayName": "Le Petit Prince VR",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2018-03-30",
+            "newValue": null
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2018-03-30",
+            "newValue": "2018"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ad86fb81-e780-4ff6-801a-0d75eb36ff25",
+        "entityKey": "petit-prince-history-vr-story-opening-2018",
+        "displayName": "Le Petit Prince VR fait entrer le visiteur dans le récit",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "month",
+            "oldValue": "3",
+            "newValue": null
+          },
+          {
+            "field": "day",
+            "oldValue": "30",
+            "newValue": null
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Day",
+            "newValue": "Year"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "62d247e6-9583-4b1b-bb9c-c35e58d8f7a9",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:22:07.4313275Z",
+    "appliedAtUtc": "2026-11-15T16:22:07.4313281Z",
+    "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+    "targetParkName": "Parc du Petit Prince",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "entityKey": "park",
+        "displayName": "Parc du Petit Prince",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+        "entityKey": "7c5fb416-7944-4ad5-ae0c-ba66decc788e",
+        "displayName": "Le Petit Prince VR",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "attractionDetails.openingDate",
+            "oldValue": "2018-03-30",
+            "newValue": null
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": "2018-03-30",
+            "newValue": "2018"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "ad86fb81-e780-4ff6-801a-0d75eb36ff25",
+        "entityKey": "petit-prince-history-vr-story-opening-2018",
+        "displayName": "Le Petit Prince VR fait entrer le visiteur dans le récit",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "month",
+            "oldValue": "3",
+            "newValue": null
+          },
+          {
+            "field": "day",
+            "oldValue": "30",
+            "newValue": null
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Day",
+            "newValue": "Year"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "review": {
+    "reviewedAtUtc": "2026-11-15T16:21:23.331885+00:00",
+    "source": "https://www.antoinedesaintexupery.org/archives/5eme-saison-du-parc-du-petit-prince/",
+    "localSource": "../parallel-inventory-20261115/saint-exupery-vr-2018.html",
+    "observed": "La 5ème saison du Parc du Petit Prince a été lancée ce vendredi 30 mars 2018. The same article lists Le Petit Prince VR among2018newfeatures, distinct from360degreecaptiveballoonfilm.",
+    "decision": "Retain2018yearonly forindividualexperience; exactopeningdateunknown. StructureditemopeningDate null/text2018 and correspondinghistoryfactYearprecision. All16eventtitles/summariespersonallyreread unchanged.",
+    "unchanged": "Bothitemandfactprivate; lifecycleUnknown; no location,visibility,alias,manufacturer,description change.",
+    "followup": "Itemdatecorrection alone doesnotconstitute apublicationaudit."
+  },
+  "publicationPerformed": false
+}

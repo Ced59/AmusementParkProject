@@ -2,21 +2,27 @@
   "entryId": "FR-park-b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
   "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
   "owner": "Conversation France",
-  "updatedAtUtc": "2026-11-15T08:40:39.601173Z",
+  "updatedAtUtc": "2026-11-15T16:34:23.117808+00:00",
   "status": "partial",
-  "lastActualIntegrationAtUtc": "2026-11-15T08:38:09.0457699Z",
-  "lastApplyOperationId": "23854087-264f-4dc7-8514-980bb5965001",
+  "lastActualIntegrationAtUtc": "2026-11-15T16:30:24.846526Z",
+  "lastApplyOperationId": "fc154a4f-ba4e-42ae-b463-2f4603cd0ebc",
   "localDirectory": "/workspace/france-historical-20261114/petit-prince",
-  "scope": "Rapprochement de21 Apply antérieurs et ajout privé de l’annonce d’acquisition2025 ; aucun nouvel audit complet/publication.",
+  "scope": "Annonce du rachat par Ptak publiée après audit, article existant vérifié en huit langues ; globalpartial pour treize lieux privés et défaut de frise.",
   "counts": {
     "items": 100,
     "publicItems": 87,
-    "imagesIncludingReferences": 89,
-    "publishedImagesIncludingReferences": 88,
-    "legacyEvents": 39,
-    "publishedFacts": 35,
-    "draftFacts": 4,
-    "retractedRevisions": 102
+    "privateItems": 13,
+    "media": 89,
+    "publicMedia": 88,
+    "publicFacts": 36,
+    "privateFacts": 3,
+    "articles": 6,
+    "maps": [
+      2026,
+      2020,
+      2019,
+      2014
+    ]
   },
   "currentCompleteness": {
     "startedAtUtc": "2026-11-15T08:39:13.8804007Z",
@@ -103,7 +109,15 @@
   "proofs": [
     "petit-prince-prior-operations-recovered-20261115.json",
     "petit-prince-acquisition-2025-20261115.json",
-    "petit-prince-recovered-state-20261115.json"
+    "petit-prince-recovered-state-20261115.json",
+    "petit-prince-vr-opening-precision-20261115.json",
+    "petit-prince-publication-followup-20261115.json",
+    "petit-prince-publication-public-checks-20261115.json",
+    "petit-prince-publication-scope-audit-20261115.json",
+    "petit-prince-publication-scope-audit-export-20261115.json",
+    "petit-prince-publication-export-20261115.json",
+    "petit-prince-02-publish-acquisition-20261115.json",
+    "petit-prince-published-state-20261115.json"
   ],
   "remaining": [
     "Qualifier treize entrées privées au cycle de vie non établi avant clôture ; aucune conversion arbitraire en Removed/Closed.",
@@ -112,6 +126,188 @@
     "Les annonces2027 et les derniers vols du ballon restent des annonces tant que leur réalisation ne peut être confirmée.",
     "Facebook existant Published confirmé ; aucun nouvel envoi."
   ],
-  "fullAuditExportPerformedThisRecovery": false,
-  "newPublicationPerformed": false
+  "fullAuditExportPerformedThisRecovery": true,
+  "newPublicationPerformed": true,
+  "scopeAuditProof": "petit-prince-publication-scope-audit-20261115.json",
+  "publicationOperations": [
+    {
+      "operationId": "fc154a4f-ba4e-42ae-b463-2f4603cd0ebc",
+      "appliedAtUtc": "2026-11-15T16:30:24.846526Z",
+      "proof": "petit-prince-02-publish-acquisition-20261115.json"
+    }
+  ],
+  "publicFollowupEvidence": "petit-prince-publication-followup-20261115.json",
+  "actualCompleteness": {
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 102,
+      "earnedPoints": 102,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T16:31:38.2478325Z",
+    "startedAtUtc": "2026-11-15T16:31:37.0000639Z"
+  },
+  "historyDiagnosticsAfterPublication": {
+    "startedAtUtc": "2026-11-15T16:30:56.1836128Z",
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T16:30:57.0742646Z",
+    "result": {
+      "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+      "parkName": "Parc du Petit Prince",
+      "factCount": 143,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 20,
+          "sourcedResourceCount": 20,
+          "publishedResourceCount": 19,
+          "subjectCount": 15,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 19,
+          "sourcedResourceCount": 19,
+          "publishedResourceCount": 17,
+          "subjectCount": 13,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 3
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 36
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 104
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 36,
+        "sourcedFactCount": 36,
+        "majorFactCount": 22,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "facebookAfterPublication": {
+    "official": {
+      "receivedAtUtc": "2026-11-15T16:32:22.3222140Z",
+      "action": "ResolveFacebookPublication",
+      "result": {
+        "url": "https://amusement-parks.fun/fr/park/b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f/parc-du-petit-prince",
+        "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc du Petit Prince ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc du Petit Prince! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f/parc-du-petit-prince\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+        "targetKind": "Park",
+        "targetName": "Parc du Petit Prince",
+        "imageOwnerType": "Park",
+        "imageOwnerId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "e455afaaa5fe4c07a6adf3e0053ffbbd",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124051249424431",
+        "images": {
+          "data": [
+            {
+              "id": "df9329a7918b4cf08e057edd4d59a057",
+              "label": "Le secteur de l’Observatoire, photographié depuis les airs le 3 juillet 2015.",
+              "isCurrent": false,
+              "width": 960,
+              "height": 720
+            },
+            {
+              "id": "5cca482553424562950542beb5e71f2e",
+              "label": "Le cœur du Parc du Petit Prince pendant sa deuxième saison, en juillet 2015.",
+              "isCurrent": false,
+              "width": 960,
+              "height": 720
+            },
+            {
+              "id": "2ba9fdbbe8484646b841c8e772f3cd98",
+              "label": "Les espaces du cinéma et des jardins, dans le parc de juillet 2015.",
+              "isCurrent": false,
+              "width": 960,
+              "height": 720
+            },
+            {
+              "id": "548eca74a2b34ee6a6870384eadfa375",
+              "label": "Le Parc du Petit Prince le 28 septembre 2014, pendant sa première saison.",
+              "isCurrent": false,
+              "width": 960,
+              "height": 468
+            },
+            {
+              "id": "21a42cc417fc4db6bfd8ca0276aa6261",
+              "label": "Les deux ballons et le paysage alsacien le 1er novembre 2014.",
+              "isCurrent": false,
+              "width": 960,
+              "height": 641
+            },
+            {
+              "id": "6a7d5044f9b5416c958890819bb7131c",
+              "label": "Le centre du Parc du Petit Prince vu depuis les airs le 23 août 2025.",
+              "isCurrent": true,
+              "width": 960,
+              "height": 640
+            }
+          ],
+          "pagination": {
+            "totalItems": 8,
+            "totalPages": 2,
+            "currentPage": 1,
+            "itemsPerPage": 6
+          }
+        }
+      },
+      "startedAtUtc": "2026-11-15T16:32:21.7711912Z"
+    },
+    "newSend": false,
+    "retry": false,
+    "visibilityConfirmed": false,
+    "previousAnonymousEvidence": "france-facebook-reconciliation-20261115.json : ce lien était indisponible anonymement. Le contrôle connecté demandé au propriétaire reste en attente ; aucun renvoi car Published."
+  },
+  "remainingPublicDefects": [
+    {
+      "kind": "historyNarrative",
+      "observed": "Le fait OwnerChange du 3 mars 2025 est présent avec ses trois sources sur la deuxième page normale de la frise dans les huit langues. La réponse publique contient narrative:null ; les titres et résumés localisés ne sont donc pas affichés. L’article antérieur sur Ptak reste intégralement lisible.",
+      "action": "Défaut de projection applicative documenté ; aucun changement artificiel de type, doublon de fait, réimport ou rejeu aveugle."
+    }
+  ],
+  "globalCompletion": false
 }

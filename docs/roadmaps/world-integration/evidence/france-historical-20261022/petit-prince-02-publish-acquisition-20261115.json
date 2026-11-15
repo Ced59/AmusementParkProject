@@ -1,0 +1,244 @@
+{
+  "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "entryId": "FR-park-b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+  "outcome": "partial",
+  "scopeAudit": "petit-prince-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "auditAtUtc": "2026-11-15T16:22:31.9483534Z",
+    "publicationAtUtc": "2026-11-15T16:29:19.4559059Z",
+    "equalExceptMetadata": true,
+    "auditSha256": "75b0a8b0f05607bd15bb87ca4ff1adb8f8b8592bb8b35c910f4f2de8df9229af",
+    "publicationSha256": "6cae53e944ff2bf478c05f757d05014322b5d75786a14dc2e2b0648ddfd06617"
+  },
+  "document": {
+    "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "park": {
+        "id": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "key": "park",
+        "name": "Parc du Petit Prince"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "petit-prince-history-ptak-acquisition-announced-2025",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+            "parkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+            "parkItemId": null,
+            "itemKey": null,
+            "parkItemKey": null,
+            "contextParkId": null,
+            "year": 2025,
+            "month": 3,
+            "day": 3,
+            "datePrecision": "Day",
+            "eventType": "Acquisition",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Le parc annonce son rachat par Ptak"
+              },
+              {
+                "languageCode": "en",
+                "value": "The park announces its acquisition by Ptak"
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Park gibt seine Übernahme durch Ptak bekannt"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Het park maakt de overname door Ptak bekend"
+              },
+              {
+                "languageCode": "it",
+                "value": "Il parco annuncia l’acquisizione da parte di Ptak"
+              },
+              {
+                "languageCode": "es",
+                "value": "El parque anuncia su adquisición por Ptak"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Park ogłasza przejęcie przez grupę Ptak"
+              },
+              {
+                "languageCode": "pt",
+                "value": "O parque anuncia a aquisição pela Ptak"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le 3 mars 2025, le Parc du Petit Prince annonce son rachat par le groupe polonais Ptak, déjà propriétaire de Mandoria. L’équipe fondatrice d’Aérophile passe ainsi le relais après plus de dix ans à Ungersheim. La reprise concerne le parc d’attractions : Les Loges et La Taverne restent sous la gestion d’Opéraprince, tandis que le Symbio demeure propriétaire des terrains."
+              },
+              {
+                "languageCode": "en",
+                "value": "On 3 March 2025, Parc du Petit Prince announces its acquisition by Poland’s Ptak group, already the owner of Mandoria. Aérophile’s founding team hands over after more than ten years at Ungersheim. The takeover concerns the amusement park: Les Loges and La Taverne remain managed by Opéraprince, while Symbio continues to own the land."
+              },
+              {
+                "languageCode": "de",
+                "value": "Am 3. März 2025 gibt der Parc du Petit Prince seine Übernahme durch die polnische Ptak-Gruppe bekannt, der bereits Mandoria gehört. Das Gründerteam von Aérophile übergibt den Park nach mehr als zehn Jahren in Ungersheim. Die Übernahme betrifft den Freizeitpark: Les Loges und La Taverne werden weiterhin von Opéraprince geführt, während das Grundstück im Eigentum des Symbio bleibt."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Op 3 maart 2025 maakt Parc du Petit Prince bekend dat de Poolse Ptak-groep, al eigenaar van Mandoria, het park heeft overgenomen. Het oprichtersteam van Aérophile draagt na ruim tien jaar in Ungersheim het stokje over. De overname betreft het attractiepark: Les Loges en La Taverne blijven onder beheer van Opéraprince, terwijl Symbio eigenaar van de grond blijft."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il 3 marzo 2025 il Parc du Petit Prince annuncia la propria acquisizione da parte del gruppo polacco Ptak, già proprietario di Mandoria. I fondatori di Aérophile passano il testimone dopo oltre dieci anni a Ungersheim. L’operazione riguarda il parco divertimenti: Les Loges e La Taverne restano gestiti da Opéraprince, mentre i terreni rimangono di proprietà del Symbio."
+              },
+              {
+                "languageCode": "es",
+                "value": "El 3 de marzo de 2025, el Parc du Petit Prince anuncia su adquisición por el grupo polaco Ptak, ya propietario de Mandoria. El equipo fundador de Aérophile cede el testigo tras más de diez años en Ungersheim. La operación abarca el parque de atracciones: Les Loges y La Taverne siguen gestionados por Opéraprince, mientras Symbio conserva la propiedad de los terrenos."
+              },
+              {
+                "languageCode": "pl",
+                "value": "3 marca 2025 roku Parc du Petit Prince ogłasza przejęcie przez polską grupę Ptak, będącą już właścicielem Mandorii. Zespół założycieli z Aérophile przekazuje park po ponad dziesięciu latach działalności w Ungersheim. Transakcja obejmuje park rozrywki: Les Loges i La Taverne pozostają pod zarządem Opéraprince, a właścicielem gruntów nadal jest Symbio."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A 3 de março de 2025, o Parc du Petit Prince anuncia a sua aquisição pelo grupo polaco Ptak, já proprietário do Mandoria. A equipa fundadora da Aérophile passa o testemunho após mais de dez anos em Ungersheim. A operação abrange o parque de diversões: Les Loges e La Taverne continuam sob gestão da Opéraprince, enquanto os terrenos permanecem propriedade do Symbio."
+              }
+            ],
+            "mainImageId": "6a7d5044f9b5416c958890819bb7131c",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": "Aérophile",
+            "newOwnerName": "Groupe Ptak",
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Parc du Petit Prince — annonce officielle de la reprise, 3 mars 2025 ; périmètre du rachat et propriété foncière",
+                "url": "https://parcdupetitprince.com/content/medias/PPP/H4OD/original.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "ADN Mulhouse Sud Alsace — reprise par Ptak, 28 mai 2025",
+                "url": "https://adn.mulhouse-alsace.fr/rachat-parc-du-petit-prince-ungersheim-groupe-ptak/",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "m2A le mag — nouvelle saison 2025 et reprise par Ptak",
+                "url": "https://mag.mulhouse-alsace.fr/parc-du-petit-prince-ungersheim-saison-2025/",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "6f53735e-01d5-45ab-9c52-58603eec8c46",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:30:10.0857004Z",
+    "appliedAtUtc": null,
+    "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+    "targetParkName": "Parc du Petit Prince",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "entityKey": "park",
+        "displayName": "Parc du Petit Prince",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "3cfd9064-b0da-4bc0-bd36-fbfbbb0f751c",
+        "entityKey": "petit-prince-history-ptak-acquisition-announced-2025",
+        "displayName": "Le parc annonce son rachat par Ptak",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "fc154a4f-ba4e-42ae-b463-2f4603cd0ebc",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T16:30:24.8465251Z",
+    "appliedAtUtc": "2026-11-15T16:30:24.846526Z",
+    "targetParkId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+    "targetParkName": "Parc du Petit Prince",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+        "entityKey": "park",
+        "displayName": "Parc du Petit Prince",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "3cfd9064-b0da-4bc0-bd36-fbfbbb0f751c",
+        "entityKey": "petit-prince-history-ptak-acquisition-announced-2025",
+        "displayName": "Le parc annonce son rachat par Ptak",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookNewSend": false,
+  "globalCompletion": false
+}

@@ -28206,7 +28206,7 @@
         "Little Prince Park Ungersheim, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T08:38:09.045Z",
+      "lastDataIntegrationAt": "2026-11-15T16:30:24.846Z",
       "integrationHistory": [
         {
           "eventId": "apply-d872844b-ea26-4f8b-9bb7-0fa69e28c813",
@@ -28427,9 +28427,29 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-acquisition-2025-20261115.json",
           "auditEvidence": null,
           "summary": "Annonce de la reprise par Ptak le3mars2025 intégrée en brouillon privé huit langues, ancien/nouveau propriétaires nommés, périmètre parc distinct de l’hôtel/restauration et du foncier. Article Investment et exploitant préservés, aucune publication."
+        },
+        {
+          "eventId": "apply-62d247e6-9583-4b1b-bb9c-c35e58d8f7a9",
+          "appliedAt": "2026-11-15T16:22:07.431Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-vr-opening-precision-20261115.json",
+          "auditEvidence": null,
+          "summary": "Petit Prince VR : précision de première ouverture corrigée en année2018 pour la fiche et son fait privé;30mars date la saison du parc, pas l’expérience individuellement. Textes, IDs et visibilité préservés."
+        },
+        {
+          "eventId": "apply-fc154a4f-ba4e-42ae-b463-2f4603cd0ebc",
+          "appliedAt": "2026-11-15T16:30:24.846Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "b1073fb7-1fa7-4d5b-9e3b-29412c12eb1f",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/petit-prince-02-publish-acquisition-20261115.json",
+          "auditEvidence": null,
+          "summary": "Petit Prince : publication après audit du fait annonçant la reprise par Ptak le 3 mars 2025 ; treize lieux et trois faits historiques restent privés en attente de qualification, état global partial."
         }
       ],
-      "nextAction": "L’annonce du rachat par Ptak le 3 mars 2025 est appliquée en brouillon privé, huit langues, le 15 novembre à 08:38:09 UTC. Auditer et publier ce fait ; qualifier les treize lieux privés au cycle de vie inconnu. Exploitant, article et annonce Facebook existante préservés. Vingt-et-un anciens Apply rapprochés aux vraies dates.",
+      "nextAction": "Qualifier les treize lieux historiques privés et la provenance des positions héritées. Acquisition Ptak publiée et contrôlée, preuve petit-prince-publication-followup-20261115.json ; frise sans titre/résumé à corriger côté application, visibilité Facebook externe à confirmer.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -28495,7 +28515,7 @@
             "referenceId": "aerophile-parc-du-petit-prince"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-23854087-264f-4dc7-8514-980bb5965001 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-fc154a4f-ba4e-42ae-b463-2f4603cd0ebc ; conserver les références de découverte."
       }
     },
     {
