@@ -1,0 +1,3507 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "key": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "name": "Bouleversements",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+          "key": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+          "name": "De lave et de feu",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "key": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "name": "Sur les traces des dinosaures",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-de-lave-et-de-feu-opening-2013",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkItemId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "itemKey": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "parkItemKey": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2013,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une exposition donne à voir les volcans rouges"
+              },
+              {
+                "languageCode": "en",
+                "value": "A new exhibition brings red volcanoes into view"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine neue Ausstellung widmet sich roten Vulkanen"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een nieuwe tentoonstelling belicht rode vulkanen"
+              },
+              {
+                "languageCode": "it",
+                "value": "Una nuova mostra racconta i vulcani rossi"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una nueva exposición acerca los volcanes rojos"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Nowa wystawa przybliża czerwone wulkany"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma nova exposição revela os vulcões vermelhos"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En 2013, Vulcania crée De lave et de feu autour des volcans rouges et des photographies de Katia et Maurice Krafft. Cette exposition ajoute un regard photographique sur les éruptions aux animations immersives du parc et met en lumière le travail de terrain des volcanologues."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2013, Vulcania creates De lave et de feu around red volcanoes and photographs by Katia and Maurice Krafft. The exhibition adds a photographic perspective on eruptions alongside the park’s immersive attractions, highlighting the volcanologists’ work in the field."
+              },
+              {
+                "languageCode": "de",
+                "value": "2013 gestaltet Vulcania De lave et de feu rund um rote Vulkane und Fotografien von Katia und Maurice Krafft. Die Ausstellung ergänzt die immersiven Erlebnisse des Parks um einen fotografischen Blick auf Eruptionen und rückt die Feldarbeit der Vulkanologen in den Mittelpunkt."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2013 maakt Vulcania De lave et de feu over rode vulkanen, met foto’s van Katia en Maurice Krafft. Naast de meeslepende parkattracties biedt de tentoonstelling een fotografische blik op uitbarstingen en brengt ze het veldwerk van de vulkanologen onder de aandacht."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2013 Vulcania realizza De lave et de feu, dedicata ai vulcani rossi e alle fotografie di Katia e Maurice Krafft. La mostra affianca alle attrazioni immersive del parco uno sguardo fotografico sulle eruzioni, valorizzando il lavoro sul campo dei vulcanologi."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2013, Vulcania crea De lave et de feu en torno a los volcanes rojos y las fotografías de Katia y Maurice Krafft. La exposición complementa las atracciones inmersivas del parque con una mirada fotográfica a las erupciones y destaca el trabajo de campo de los vulcanólogos."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2013 roku Vulcania tworzy De lave et de feu, wystawę o czerwonych wulkanach z fotografiami Katii i Maurice’a Krafftów. Uzupełnia ona immersyjne atrakcje parku o fotograficzne spojrzenie na erupcje oraz przybliża terenową pracę wulkanologów."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2013, Vulcania cria De lave et de feu em torno dos vulcões vermelhos e das fotografias de Katia e Maurice Krafft. A exposição complementa as atrações imersivas do parque com um olhar fotográfico sobre as erupções e destaca o trabalho de campo dos vulcanólogos."
+              }
+            ],
+            "mainImageId": null,
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué De lave et de feu, mars 2013, reproduit par ParcPlaza",
+                "url": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null,
+            "itemId": "533717be-96a1-428a-8d19-d4b6b16bfe18"
+          },
+          {
+            "key": "vulcania-bouleversements-opening-2015",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkItemId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "itemKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "parkItemKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2015,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Bouleversements relie les éruptions à leurs conséquences"
+              },
+              {
+                "languageCode": "en",
+                "value": "Bouleversements connects eruptions with their consequences"
+              },
+              {
+                "languageCode": "de",
+                "value": "Bouleversements verbindet Eruptionen mit ihren Folgen"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Bouleversements verbindt uitbarstingen met hun gevolgen"
+              },
+              {
+                "languageCode": "it",
+                "value": "Bouleversements collega le eruzioni alle loro conseguenze"
+              },
+              {
+                "languageCode": "es",
+                "value": "Bouleversements conecta las erupciones con sus consecuencias"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Bouleversements ukazuje następstwa erupcji"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Bouleversements liga as erupções às suas consequências"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Bouleversements rejoint les nouveautés de 2015 avec une exposition organisée autour de six épisodes volcaniques. Les changements de paysages et les effets sur les sociétés humaines déplacent le regard vers les conséquences des éruptions, au-delà du spectacle de la lave et des cendres."
+              },
+              {
+                "languageCode": "en",
+                "value": "Bouleversements joins the 2015 additions with an exhibition built around six volcanic episodes. Changes to landscapes and effects on human societies turn attention towards the consequences of eruptions, looking beyond the spectacle of lava and ash."
+              },
+              {
+                "languageCode": "de",
+                "value": "Bouleversements gehört 2015 zu den Neuheiten und behandelt sechs vulkanische Episoden. Veränderungen der Landschaft und Auswirkungen auf menschliche Gesellschaften lenken den Blick auf die Folgen von Eruptionen und erweitern das Thema über das Schauspiel von Lava und Asche hinaus."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Bouleversements verschijnt in 2015 als een tentoonstelling rond zes vulkanische gebeurtenissen. Veranderingen in het landschap en effecten op menselijke samenlevingen verleggen de aandacht naar de gevolgen van uitbarstingen, voorbij het schouwspel van lava en as."
+              },
+              {
+                "languageCode": "it",
+                "value": "Bouleversements entra tra le novità del 2015 con una mostra dedicata a sei episodi vulcanici. Le trasformazioni del paesaggio e gli effetti sulle società umane spostano l’attenzione sulle conseguenze delle eruzioni, oltre lo spettacolo della lava e delle ceneri."
+              },
+              {
+                "languageCode": "es",
+                "value": "Bouleversements se incorpora a las novedades de 2015 con una exposición sobre seis episodios volcánicos. Los cambios del paisaje y los efectos sobre las sociedades humanas desplazan la atención hacia las consecuencias de las erupciones, más allá del espectáculo de lava y ceniza."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Bouleversements dołącza do nowości z 2015 roku jako wystawa poświęcona sześciu epizodom wulkanicznym. Zmiany krajobrazu i wpływ na ludzkie społeczności kierują uwagę ku następstwom erupcji, poszerzając temat poza widowisko tworzone przez lawę i popiół."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Bouleversements integra as novidades de 2015 com uma exposição dedicada a seis episódios vulcânicos. As alterações da paisagem e os efeitos nas sociedades humanas deslocam a atenção para as consequências das erupções, para além do espetáculo da lava e das cinzas."
+              }
+            ],
+            "mainImageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué des nouveautés 2015, reproduit par ParcPlaza",
+                "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null,
+            "itemId": "35ceac39-66c0-4c8b-bff7-2095f8318332"
+          },
+          {
+            "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkItemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "itemKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkItemKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2015,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Les dinosaures prennent place dans les extérieurs"
+              },
+              {
+                "languageCode": "en",
+                "value": "Dinosaurs take their place in the outdoor grounds"
+              },
+              {
+                "languageCode": "de",
+                "value": "Dinosaurier ziehen in die Außenanlagen ein"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Dinosauriërs krijgen een plek in de buitenruimte"
+              },
+              {
+                "languageCode": "it",
+                "value": "I dinosauri arrivano negli spazi esterni"
+              },
+              {
+                "languageCode": "es",
+                "value": "Los dinosaurios ocupan los espacios exteriores"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Dinozaury pojawiają się na terenach zewnętrznych"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Os dinossauros chegam aos espaços exteriores"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Avec Sur les traces des dinosaures, la saison 2015 introduit un parcours de créatures préhistoriques animé en partenariat avec Paléopolis. Le tyrannosaure et ses voisins peuplent les extérieurs de Vulcania, donnant une présence spectaculaire au thème de la vie ancienne dans un parc consacré à la Terre."
+              },
+              {
+                "languageCode": "en",
+                "value": "Sur les traces des dinosaures brings a trail of animated prehistoric creatures to the 2015 season in partnership with Paléopolis. Tyrannosaurus and its neighbours populate Vulcania’s outdoor grounds, giving ancient life a spectacular presence in a park devoted to the Earth."
+              },
+              {
+                "languageCode": "de",
+                "value": "Mit Sur les traces des dinosaures erhält die Saison 2015 einen Rundgang mit beweglichen Urzeitwesen in Zusammenarbeit mit Paléopolis. Tyrannosaurus und seine Nachbarn bevölkern Vulcanias Außenanlagen und geben dem Thema früheren Lebens einen eindrucksvollen Platz in dem der Erde gewidmeten Park."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Sur les traces des dinosaures brengt in 2015 een route met bewegende prehistorische dieren, in samenwerking met Paléopolis. Tyrannosaurus en zijn buren bevolken de buitenruimte van Vulcania en geven het leven uit de prehistorie een opvallende plaats in dit park over de aarde."
+              },
+              {
+                "languageCode": "it",
+                "value": "Con Sur les traces des dinosaures, la stagione 2015 introduce un percorso di creature preistoriche animate in collaborazione con Paléopolis. Il tirannosauro e i suoi vicini popolano gli spazi esterni di Vulcania, dando una presenza spettacolare alla vita antica in un parco dedicato alla Terra."
+              },
+              {
+                "languageCode": "es",
+                "value": "Sur les traces des dinosaures introduce en la temporada 2015 un recorrido de criaturas prehistóricas animadas en colaboración con Paléopolis. El tiranosaurio y sus vecinos pueblan los exteriores de Vulcania y dan una presencia espectacular a la vida antigua en un parque dedicado a la Tierra."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Sur les traces des dinosaures wprowadza w sezonie 2015 trasę z ruchomymi prehistorycznymi stworzeniami, przygotowaną we współpracy z Paléopolis. Tyranozaur i jego sąsiedzi zamieszkują tereny zewnętrzne Vulcanii, nadając dawnemu życiu widowiskową obecność w parku poświęconym Ziemi."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Com Sur les traces des dinosaures, a temporada de 2015 introduz um percurso de criaturas pré-históricas animadas em parceria com Paléopolis. O tiranossauro e os seus vizinhos povoam os exteriores de Vulcania, dando uma presença espetacular à vida antiga num parque dedicado à Terra."
+              }
+            ],
+            "mainImageId": "b8cc99ade2314af8b567ef80c680c77e",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué des nouveautés 2015, reproduit par ParcPlaza",
+                "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null,
+            "itemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "parkItemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "itemKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkItemKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2017,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "DefinitiveClosure",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une dernière saison conclut le parcours des dinosaures"
+              },
+              {
+                "languageCode": "en",
+                "value": "A final season brings the dinosaur trail to a close"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine letzte Saison beschließt den Dinosaurierpfad"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een laatste seizoen sluit de dinosaurusroute af"
+              },
+              {
+                "languageCode": "it",
+                "value": "Un’ultima stagione conclude il percorso dei dinosauri"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una última temporada cierra el recorrido de dinosaurios"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ostatni sezon zamyka trasę dinozaurów"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma última temporada encerra o percurso dos dinossauros"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le parcours des dinosaures s’achève en 2017 après trois saisons à Vulcania. De nouveaux animaux animés accompagnent cette dernière édition, qui clôt une exposition temporaire prolongée au-delà de son projet initial et renouvelée pour le quinzième anniversaire du parc."
+              },
+              {
+                "languageCode": "en",
+                "value": "The dinosaur trail ends in 2017 after three seasons at Vulcania. New animated creatures accompany this final edition, closing a temporary exhibition that ran beyond its initial plan and was refreshed for the park’s fifteenth anniversary."
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Dinosaurierpfad endet 2017 nach drei Spielzeiten in Vulcania. Neue bewegliche Tiere begleiten diese letzte Ausgabe. Damit schließt eine temporäre Ausstellung, die länger als ursprünglich geplant bestand und zum fünfzehnten Parkgeburtstag noch einmal erneuert wurde."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De dinosaurusroute eindigt in 2017 na drie seizoenen in Vulcania. Nieuwe bewegende dieren vergezellen deze laatste editie. Daarmee sluit een tijdelijke tentoonstelling die langer bleef dan aanvankelijk gepland en voor het vijftienjarig bestaan van het park werd vernieuwd."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il percorso dei dinosauri termina nel 2017 dopo tre stagioni a Vulcania. Nuove creature animate accompagnano l’ultima edizione, chiudendo una mostra temporanea prolungata oltre il progetto iniziale e rinnovata per il quindicesimo anniversario del parco."
+              },
+              {
+                "languageCode": "es",
+                "value": "El recorrido de dinosaurios termina en 2017 tras tres temporadas en Vulcania. Nuevas criaturas animadas acompañan esta última edición, que cierra una exposición temporal prolongada más allá del proyecto inicial y renovada para el decimoquinto aniversario del parque."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Trasa dinozaurów kończy działalność w 2017 roku po trzech sezonach w Vulcanii. Ostatnią odsłonę wzbogacają nowe ruchome zwierzęta. Zamyka ona wystawę czasową, przedłużoną względem pierwotnego planu i odnowioną z okazji piętnastych urodzin parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O percurso dos dinossauros termina em 2017, após três temporadas em Vulcania. Novas criaturas animadas acompanham esta última edição, encerrando uma exposição temporária prolongada para além do projeto inicial e renovada para o décimo quinto aniversário do parque."
+              }
+            ],
+            "mainImageId": "b8cc99ade2314af8b567ef80c680c77e",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": null,
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Clermont Auvergne Métropole — DEL20190215_041, bilan SEM Volcans 2017, pages 4 et 10",
+                "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — communiqué du quinzième anniversaire et dernière saison des dinosaures, reproduit par ParksTrip",
+                "url": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null,
+            "itemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Publish only audited three historical exhibitions, two2015photographs, four sourced facts. Unknown status retained for De lave et de feu and Bouleversements; dinosaur closure2017 year-only confirmed retrospectively. Existing public data preserved; no repeated Facebook send."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "3e037294-02fa-4834-a703-65dfe6ac3541",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:08:32.3918366Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "entityKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "displayName": "Bouleversements",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "entityKey": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "displayName": "De lave et de feu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "entityKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52",
+        "entityKey": "vulcania-de-lave-et-de-feu-opening-2013",
+        "displayName": "Une exposition donne à voir les volcans rouges",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "a629a2e6-105a-4174-b1b4-1438e5fea3a6",
+        "entityKey": "vulcania-bouleversements-opening-2015",
+        "displayName": "Bouleversements relie les éruptions à leurs conséquences",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5c686348-534d-4c4c-ab67-b6650f1d85d9",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+        "displayName": "Les dinosaures prennent place dans les extérieurs",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5100b2b6-3cdb-46f6-be2d-4246f8e24615",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+        "displayName": "Une dernière saison conclut le parcours des dinosaures",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "dc3b4889-0c13-4716-8e7f-6b8e76bc6992",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:08:43.1278511Z",
+    "appliedAtUtc": "2026-11-15T22:08:43.1278518Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 7,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "entityKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "displayName": "Bouleversements",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "entityKey": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "displayName": "De lave et de feu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "entityKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52",
+        "entityKey": "vulcania-de-lave-et-de-feu-opening-2013",
+        "displayName": "Une exposition donne à voir les volcans rouges",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "a629a2e6-105a-4174-b1b4-1438e5fea3a6",
+        "entityKey": "vulcania-bouleversements-opening-2015",
+        "displayName": "Bouleversements relie les éruptions à leurs conséquences",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5c686348-534d-4c4c-ab67-b6650f1d85d9",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+        "displayName": "Les dinosaures prennent place dans les extérieurs",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5100b2b6-3cdb-46f6-be2d-4246f8e24615",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+        "displayName": "Une dernière saison conclut le parcours des dinosaures",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "scopeAudit": "vulcania-three-exhibitions-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "exportedAtUtc": "2026-11-15T22:06:50.1852403Z",
+    "rawSha256": "70fa61b783eb356b553876f763cbe1bbbc2001e46d2d2e179da92c93c6d2df09",
+    "differences": [],
+    "representationAndReceiptOnlyDifferences": [
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.article",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.id",
+        "state-only",
+        "a629a2e6-105a-4174-b1b4-1438e5fea3a6"
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.itemId",
+        "state-only",
+        "35ceac39-66c0-4c8b-bff7-2095f8318332"
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.itemKey",
+        "export-only",
+        "35ceac39-66c0-4c8b-bff7-2095f8318332"
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.locationLabel",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.newLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.newName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.newOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.newOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.parkItemKey",
+        "export-only",
+        "35ceac39-66c0-4c8b-bff7-2095f8318332"
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.previousLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.previousName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.previousOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.previousOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.relatedParkIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.relatedParkItemIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-bouleversements-opening-2015.slug",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.article",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.id",
+        "state-only",
+        "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52"
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.itemId",
+        "state-only",
+        "533717be-96a1-428a-8d19-d4b6b16bfe18"
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.itemKey",
+        "export-only",
+        "533717be-96a1-428a-8d19-d4b6b16bfe18"
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.locationLabel",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.mainImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.newLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.newName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.newOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.newOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.parkItemKey",
+        "export-only",
+        "533717be-96a1-428a-8d19-d4b6b16bfe18"
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.previousLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.previousName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.previousOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.previousOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.relatedParkIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.relatedParkItemIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-de-lave-et-de-feu-opening-2013.slug",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-history-olympus-25-announcement-2026.id",
+        "state-only",
+        "6f9960d8-d5af-4ac4-b42c-c3f38a086d94"
+      ],
+      [
+        ".history.events.vulcania-history-public-opening-2002.id",
+        "state-only",
+        "193478ec-f80a-4507-9929-8530a432808b"
+      ],
+      [
+        ".history.events.vulcania-history-regional-project-1992.id",
+        "state-only",
+        "eca411f5-6231-4319-baf6-8fb0ccd79c16"
+      ],
+      [
+        ".history.events.vulcania-history-renewal-2007.id",
+        "state-only",
+        "57c0341c-a6dc-4a07-ad68-9a0d3d21dae1"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyss-2016.id",
+        "state-only",
+        "837a7952-42e6-4cbc-bdf6-cede2ae3c429"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyss-2016.itemId",
+        "state-only",
+        "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyssreplacement-2026.id",
+        "state-only",
+        "a18a7a31-f3ab-4320-b99b-34a718a516e1"
+      ],
+      [
+        ".history.events.vulcania-item-history-abyssreplacement-2026.itemId",
+        "state-only",
+        "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+      ],
+      [
+        ".history.events.vulcania-item-history-ballon-2014.id",
+        "state-only",
+        "828115a4-f71f-4576-96d1-53c2cc8de496"
+      ],
+      [
+        ".history.events.vulcania-item-history-ballon-2014.itemId",
+        "state-only",
+        "ce88d195-4890-43e4-8551-8f26d460760b"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon-2008.id",
+        "state-only",
+        "420d901e-58f9-4455-953d-9bac44522ac5"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon-2008.itemId",
+        "state-only",
+        "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon2-2020.id",
+        "state-only",
+        "e42444c7-3213-4f23-8f06-4b11b5d1991f"
+      ],
+      [
+        ".history.events.vulcania-item-history-dragon2-2020.itemId",
+        "state-only",
+        "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d"
+      ],
+      [
+        ".history.events.vulcania-item-history-envol-2015.id",
+        "state-only",
+        "c14047d0-01ce-4c56-a33c-44cceef184b6"
+      ],
+      [
+        ".history.events.vulcania-item-history-envol-2015.itemId",
+        "state-only",
+        "d3dbd03d-4665-429e-af89-9738bc1ae24f"
+      ],
+      [
+        ".history.events.vulcania-item-history-hawai-2026.id",
+        "state-only",
+        "02221ae8-9fa5-4424-b9af-7bf48d75d14c"
+      ],
+      [
+        ".history.events.vulcania-item-history-hawai-2026.itemId",
+        "state-only",
+        "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+      ],
+      [
+        ".history.events.vulcania-item-history-magma-2007.id",
+        "state-only",
+        "49b329de-0627-4a0a-a347-b6ad6c2cc05f"
+      ],
+      [
+        ".history.events.vulcania-item-history-magma-2007.itemId",
+        "state-only",
+        "a79eadd4-1aa7-44c9-8b5b-70cc7db55030"
+      ],
+      [
+        ".history.events.vulcania-item-history-namazu-2021.id",
+        "state-only",
+        "570b62cd-50dc-4326-ae82-624086033711"
+      ],
+      [
+        ".history.events.vulcania-item-history-namazu-2021.itemId",
+        "state-only",
+        "8fd86b67-7e42-4eed-89ee-11c9e718d996"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-2023.id",
+        "state-only",
+        "ee9b65df-57c1-41b3-a316-3c4c42bc02b2"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-2023.itemId",
+        "state-only",
+        "12128369-e7ee-4498-a97a-1bfa2a470b10"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-fire-2022.id",
+        "state-only",
+        "88068879-1dd4-4ebf-b7b2-75f5488cc85b"
+      ],
+      [
+        ".history.events.vulcania-item-history-planetarium-fire-2022.itemId",
+        "state-only",
+        "12128369-e7ee-4498-a97a-1bfa2a470b10"
+      ],
+      [
+        ".history.events.vulcania-item-history-primordia-2026.id",
+        "state-only",
+        "85ffcd73-0716-4482-9a84-436a1f3f86de"
+      ],
+      [
+        ".history.events.vulcania-item-history-primordia-2026.itemId",
+        "state-only",
+        "ba34b618-1876-4355-b842-2d10f6975525"
+      ],
+      [
+        ".history.events.vulcania-item-history-toba-2011.id",
+        "state-only",
+        "eb738445-185e-4c60-842c-54744e0f9e8e"
+      ],
+      [
+        ".history.events.vulcania-item-history-toba-2011.itemId",
+        "state-only",
+        "d3dbd03d-4665-429e-af89-9738bc1ae24f"
+      ],
+      [
+        ".history.events.vulcania-item-history-volcanbul-2008.id",
+        "state-only",
+        "53b44b47-243b-4cfa-9718-e848d78df7b5"
+      ],
+      [
+        ".history.events.vulcania-item-history-volcanbul-2008.itemId",
+        "state-only",
+        "8bfb83e9-2044-4483-a599-768f89acebf8"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.article",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.id",
+        "state-only",
+        "5100b2b6-3cdb-46f6-be2d-4246f8e24615"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.itemId",
+        "state-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.itemKey",
+        "export-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.locationLabel",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.newLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.newName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.newOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.newOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.parkItemKey",
+        "export-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.previousLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.previousName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.previousOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.previousOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.relatedParkIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.relatedParkItemIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017.slug",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.article",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.id",
+        "state-only",
+        "5c686348-534d-4c4c-ab67-b6650f1d85d9"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.itemId",
+        "state-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.itemKey",
+        "export-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.locationLabel",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.newLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.newName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.newOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.newOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.parkItemKey",
+        "export-only",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.previousLogoImageId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.previousName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.previousOperatorId",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.previousOwnerName",
+        "export-only",
+        null
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.relatedParkIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.relatedParkItemIds",
+        "export-only",
+        []
+      ],
+      [
+        ".history.events.vulcania-sur-les-traces-des-dinosaures-opening-2015.slug",
+        "export-only",
+        null
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.createdAt",
+        "state-only",
+        "2026-11-15T19:18:39.013Z"
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.path",
+        "state-only",
+        "park_item/03ee8ef93e7045e289706b2885a5a6b4"
+      ],
+      [
+        ".images.03ee8ef93e7045e289706b2885a5a6b4.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:42.48Z"
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.createdAt",
+        "state-only",
+        "2026-11-15T20:03:24.61Z"
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.path",
+        "state-only",
+        "park_item/0a10c3fd8bd64c35a61995eeed970f8a"
+      ],
+      [
+        ".images.0a10c3fd8bd64c35a61995eeed970f8a.updatedAt",
+        "state-only",
+        "2026-11-15T20:03:28.13Z"
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.createdAt",
+        "state-only",
+        "2026-11-15T16:56:53.084Z"
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "Canon",
+          "cameraModel": "Canon EOS 350D DIGITAL",
+          "takenOnUtc": "2010-01-12T22:36:06Z",
+          "orientation": "1",
+          "focalLength": 35,
+          "aperture": 13,
+          "exposureTime": 0.004,
+          "iso": null
+        }
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.path",
+        "state-only",
+        "park/0cd6c65c08224e81be09418fc0da591d"
+      ],
+      [
+        ".images.0cd6c65c08224e81be09418fc0da591d.updatedAt",
+        "state-only",
+        "2026-11-15T16:56:56.633Z"
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.createdAt",
+        "state-only",
+        "2026-11-15T19:04:55.566Z"
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.path",
+        "state-only",
+        "park_item/14b3cda47b7d44ea8e6bb88d9e952842"
+      ],
+      [
+        ".images.14b3cda47b7d44ea8e6bb88d9e952842.updatedAt",
+        "state-only",
+        "2026-11-15T19:04:59.568Z"
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.createdAt",
+        "state-only",
+        "2026-11-15T19:05:12.579Z"
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.path",
+        "state-only",
+        "park_item/17d9beefe541405c8d396bfd116514b1"
+      ],
+      [
+        ".images.17d9beefe541405c8d396bfd116514b1.updatedAt",
+        "state-only",
+        "2026-11-15T19:05:16.276Z"
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.createdAt",
+        "state-only",
+        "2026-11-15T19:27:36.935Z"
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.path",
+        "state-only",
+        "park_item/2499afaf32444bc3b47500322efdf341"
+      ],
+      [
+        ".images.2499afaf32444bc3b47500322efdf341.updatedAt",
+        "state-only",
+        "2026-11-15T19:27:40.522Z"
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.createdAt",
+        "state-only",
+        "2026-11-15T19:46:59.501Z"
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.path",
+        "state-only",
+        "park_item/24eeb68044aa41328d38d948fe415385"
+      ],
+      [
+        ".images.24eeb68044aa41328d38d948fe415385.updatedAt",
+        "state-only",
+        "2026-11-15T19:47:03.112Z"
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.createdAt",
+        "state-only",
+        "2026-11-15T17:29:47.928Z"
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.path",
+        "state-only",
+        "park_item/2609d09da2864a06aaff9d0e640db0cd"
+      ],
+      [
+        ".images.2609d09da2864a06aaff9d0e640db0cd.updatedAt",
+        "state-only",
+        "2026-11-15T17:29:51.43Z"
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.createdAt",
+        "state-only",
+        "2026-11-15T17:17:18.095Z"
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.path",
+        "state-only",
+        "logo/2eeb41e9d92a420e8ad3b1fbb98a7741"
+      ],
+      [
+        ".images.2eeb41e9d92a420e8ad3b1fbb98a7741.updatedAt",
+        "state-only",
+        "2026-11-15T17:17:21.782Z"
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.createdAt",
+        "state-only",
+        "2026-11-15T17:29:24.142Z"
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.path",
+        "state-only",
+        "park_item/305cf7c2f2b64a66ab8c8e1efb7efdc7"
+      ],
+      [
+        ".images.305cf7c2f2b64a66ab8c8e1efb7efdc7.updatedAt",
+        "state-only",
+        "2026-11-15T17:29:27.77Z"
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.createdAt",
+        "state-only",
+        "2026-11-15T19:47:10.555Z"
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.path",
+        "state-only",
+        "park_item/31b117128a6745529a55c1c7df058ed0"
+      ],
+      [
+        ".images.31b117128a6745529a55c1c7df058ed0.updatedAt",
+        "state-only",
+        "2026-11-15T19:47:14.036Z"
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.createdAt",
+        "state-only",
+        "2026-11-15T19:09:09.685Z"
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.path",
+        "state-only",
+        "park_item/339433b5e9974d78ae1d4005d6407f64"
+      ],
+      [
+        ".images.339433b5e9974d78ae1d4005d6407f64.updatedAt",
+        "state-only",
+        "2026-11-15T19:09:13.497Z"
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.createdAt",
+        "state-only",
+        "2026-11-15T18:29:12.199Z"
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.path",
+        "state-only",
+        "park_item/33b66af74c3c4adaa439769785a212d3"
+      ],
+      [
+        ".images.33b66af74c3c4adaa439769785a212d3.updatedAt",
+        "state-only",
+        "2026-11-15T18:29:15.839Z"
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.createdAt",
+        "state-only",
+        "2026-11-15T20:03:09.724Z"
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "Canon",
+          "cameraModel": "Canon EOS 5D Mark III",
+          "takenOnUtc": "2014-06-05T19:35:05Z",
+          "orientation": "1",
+          "focalLength": 70,
+          "aperture": 10,
+          "exposureTime": 0.001,
+          "iso": 320
+        }
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.path",
+        "state-only",
+        "park_item/358753581b594abdb1a13a726c7c0a46"
+      ],
+      [
+        ".images.358753581b594abdb1a13a726c7c0a46.updatedAt",
+        "state-only",
+        "2026-11-15T20:03:13.454Z"
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.createdAt",
+        "state-only",
+        "2026-11-15T16:52:05.512Z"
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.path",
+        "state-only",
+        "park/3656194cc2cf40c8a1f02b9390da5010"
+      ],
+      [
+        ".images.3656194cc2cf40c8a1f02b9390da5010.updatedAt",
+        "state-only",
+        "2026-11-15T16:52:08.979Z"
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.createdAt",
+        "state-only",
+        "2026-11-15T19:46:31.419Z"
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.path",
+        "state-only",
+        "park_item/36fb503df2aa4ade8f31879d995a74ad"
+      ],
+      [
+        ".images.36fb503df2aa4ade8f31879d995a74ad.updatedAt",
+        "state-only",
+        "2026-11-15T19:46:34.964Z"
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.createdAt",
+        "state-only",
+        "2026-11-15T17:46:20.226Z"
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.path",
+        "state-only",
+        "park_item/38d2d552d2b14bac9fc47972904f11c0"
+      ],
+      [
+        ".images.38d2d552d2b14bac9fc47972904f11c0.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:23.707Z"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.createdAt",
+        "state-only",
+        "2026-11-15T21:41:54.419Z"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.key",
+        "state-only",
+        "483f952f1ebe4dcb998ed7bc2e47bdc5"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.path",
+        "state-only",
+        "park_item/483f952f1ebe4dcb998ed7bc2e47bdc5"
+      ],
+      [
+        ".images.483f952f1ebe4dcb998ed7bc2e47bdc5.updatedAt",
+        "state-only",
+        "2026-11-15T21:41:57.965Z"
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.createdAt",
+        "state-only",
+        "2026-11-15T17:46:11.073Z"
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.path",
+        "state-only",
+        "park_item/4fa5101fdeb747d5addd92ed6ada6a49"
+      ],
+      [
+        ".images.4fa5101fdeb747d5addd92ed6ada6a49.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:14.545Z"
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.createdAt",
+        "state-only",
+        "2026-11-15T18:15:49.992Z"
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.path",
+        "state-only",
+        "park_item/4fe6f6c0da1f4994af54006f3a04a994"
+      ],
+      [
+        ".images.4fe6f6c0da1f4994af54006f3a04a994.updatedAt",
+        "state-only",
+        "2026-11-15T18:15:53.521Z"
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.createdAt",
+        "state-only",
+        "2026-11-15T19:09:48.445Z"
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.path",
+        "state-only",
+        "park_item/500e5290f94843918d5326c8b6f56547"
+      ],
+      [
+        ".images.500e5290f94843918d5326c8b6f56547.updatedAt",
+        "state-only",
+        "2026-11-15T19:09:51.955Z"
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.createdAt",
+        "state-only",
+        "2026-11-15T19:31:35.834Z"
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "SONY",
+          "cameraModel": "DSC-S650",
+          "takenOnUtc": "2007-03-20T22:01:15Z",
+          "orientation": "1",
+          "focalLength": 5.8,
+          "aperture": 5.6,
+          "exposureTime": 0.002,
+          "iso": 100
+        }
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.path",
+        "state-only",
+        "park_item/583a2b39fa9f4649a44345bdd310daf4"
+      ],
+      [
+        ".images.583a2b39fa9f4649a44345bdd310daf4.updatedAt",
+        "state-only",
+        "2026-11-15T19:31:39.755Z"
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.createdAt",
+        "state-only",
+        "2026-11-15T19:27:47.762Z"
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.path",
+        "state-only",
+        "park_item/5b8fe460082a41428af86320e46f49fc"
+      ],
+      [
+        ".images.5b8fe460082a41428af86320e46f49fc.updatedAt",
+        "state-only",
+        "2026-11-15T19:27:51.287Z"
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.createdAt",
+        "state-only",
+        "2026-11-15T18:30:04.011Z"
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.path",
+        "state-only",
+        "park_item/5c5c7f0bde5f4bd58eb3ab3ede97d9eb"
+      ],
+      [
+        ".images.5c5c7f0bde5f4bd58eb3ab3ede97d9eb.updatedAt",
+        "state-only",
+        "2026-11-15T18:30:07.522Z"
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.createdAt",
+        "state-only",
+        "2026-11-15T18:29:46.348Z"
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.path",
+        "state-only",
+        "park_item/5ca0ba406e924e5a8792e88852f8e9ed"
+      ],
+      [
+        ".images.5ca0ba406e924e5a8792e88852f8e9ed.updatedAt",
+        "state-only",
+        "2026-11-15T18:29:49.832Z"
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.createdAt",
+        "state-only",
+        "2026-11-15T18:52:11.589Z"
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.path",
+        "state-only",
+        "park_item/5dc45999690d468c956587d4e938f72c"
+      ],
+      [
+        ".images.5dc45999690d468c956587d4e938f72c.updatedAt",
+        "state-only",
+        "2026-11-15T18:52:15.262Z"
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.createdAt",
+        "state-only",
+        "2026-11-15T18:43:21.23Z"
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.path",
+        "state-only",
+        "park_item/659517b47e5f4b5a95c9eb439c0b7263"
+      ],
+      [
+        ".images.659517b47e5f4b5a95c9eb439c0b7263.updatedAt",
+        "state-only",
+        "2026-11-15T18:43:24.833Z"
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.createdAt",
+        "state-only",
+        "2026-11-15T17:45:49.308Z"
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.path",
+        "state-only",
+        "park_item/66bf435069e443b29f6d87c7ad5764f9"
+      ],
+      [
+        ".images.66bf435069e443b29f6d87c7ad5764f9.updatedAt",
+        "state-only",
+        "2026-11-15T17:45:53.03Z"
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.createdAt",
+        "state-only",
+        "2026-11-15T18:38:37.224Z"
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.path",
+        "state-only",
+        "park_item/6a45d27a89084fb690e5caa8bcdda23b"
+      ],
+      [
+        ".images.6a45d27a89084fb690e5caa8bcdda23b.updatedAt",
+        "state-only",
+        "2026-11-15T18:38:40.961Z"
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.createdAt",
+        "state-only",
+        "2026-11-15T19:05:26.253Z"
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.path",
+        "state-only",
+        "park_item/6c530a3938974ba9bab3b7b7abc7d155"
+      ],
+      [
+        ".images.6c530a3938974ba9bab3b7b7abc7d155.updatedAt",
+        "state-only",
+        "2026-11-15T19:05:30.178Z"
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.createdAt",
+        "state-only",
+        "2026-11-15T20:03:41.099Z"
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.path",
+        "state-only",
+        "park_item/6e2547f3c84c46e7b2bdc195579fe394"
+      ],
+      [
+        ".images.6e2547f3c84c46e7b2bdc195579fe394.updatedAt",
+        "state-only",
+        "2026-11-15T20:03:44.575Z"
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.createdAt",
+        "state-only",
+        "2026-11-15T16:51:42.968Z"
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.path",
+        "state-only",
+        "park/7455ffc28d574c158809574ac5c022bd"
+      ],
+      [
+        ".images.7455ffc28d574c158809574ac5c022bd.updatedAt",
+        "state-only",
+        "2026-11-15T16:51:46.632Z"
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.createdAt",
+        "state-only",
+        "2026-11-15T19:46:50.572Z"
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.path",
+        "state-only",
+        "park_item/7c28d1bd539c4a8a9e5b00544152ae09"
+      ],
+      [
+        ".images.7c28d1bd539c4a8a9e5b00544152ae09.updatedAt",
+        "state-only",
+        "2026-11-15T19:46:54.108Z"
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.createdAt",
+        "state-only",
+        "2026-11-15T17:46:41.809Z"
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.path",
+        "state-only",
+        "park_item/7e73e3872acb49c4b61d3c6961c29658"
+      ],
+      [
+        ".images.7e73e3872acb49c4b61d3c6961c29658.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:45.35Z"
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.createdAt",
+        "state-only",
+        "2026-11-15T19:04:44.168Z"
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.path",
+        "state-only",
+        "park_item/8132b8b476bd4ddb90adb2a491a7c734"
+      ],
+      [
+        ".images.8132b8b476bd4ddb90adb2a491a7c734.updatedAt",
+        "state-only",
+        "2026-11-15T19:04:47.851Z"
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.createdAt",
+        "state-only",
+        "2026-11-15T18:15:28.219Z"
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.path",
+        "state-only",
+        "park_item/8964a6b4964b4d00b3083ecc845e7c24"
+      ],
+      [
+        ".images.8964a6b4964b4d00b3083ecc845e7c24.updatedAt",
+        "state-only",
+        "2026-11-15T18:15:31.781Z"
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.createdAt",
+        "state-only",
+        "2026-11-15T16:57:12.36Z"
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": "1",
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.path",
+        "state-only",
+        "park/8b9479d31a074fc98a5468865e32759e"
+      ],
+      [
+        ".images.8b9479d31a074fc98a5468865e32759e.updatedAt",
+        "state-only",
+        "2026-11-15T16:57:15.832Z"
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.createdAt",
+        "state-only",
+        "2026-11-15T18:28:52.634Z"
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.path",
+        "state-only",
+        "park_item/9165d5c6d6574c21bb8d7ca626be26f1"
+      ],
+      [
+        ".images.9165d5c6d6574c21bb8d7ca626be26f1.updatedAt",
+        "state-only",
+        "2026-11-15T18:28:56.357Z"
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.createdAt",
+        "state-only",
+        "2026-11-15T17:29:36.519Z"
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.path",
+        "state-only",
+        "park_item/9222c51f692d4d2bacbdc5ddb83631db"
+      ],
+      [
+        ".images.9222c51f692d4d2bacbdc5ddb83631db.updatedAt",
+        "state-only",
+        "2026-11-15T17:29:40.084Z"
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.createdAt",
+        "state-only",
+        "2026-11-15T18:29:36.397Z"
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.path",
+        "state-only",
+        "park_item/9c77d947e431462291012359d2c1e2b9"
+      ],
+      [
+        ".images.9c77d947e431462291012359d2c1e2b9.updatedAt",
+        "state-only",
+        "2026-11-15T18:29:40.033Z"
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.createdAt",
+        "state-only",
+        "2026-11-15T20:07:36.061Z"
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.path",
+        "state-only",
+        "park_item/9fbd4d6f8df44a9b800f5b71b056dcc6"
+      ],
+      [
+        ".images.9fbd4d6f8df44a9b800f5b71b056dcc6.updatedAt",
+        "state-only",
+        "2026-11-15T20:07:39.69Z"
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.createdAt",
+        "state-only",
+        "2026-11-15T19:18:29.999Z"
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.path",
+        "state-only",
+        "park_item/b5f87cd49bc84c5282dedffb9b80c0f3"
+      ],
+      [
+        ".images.b5f87cd49bc84c5282dedffb9b80c0f3.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:33.506Z"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.createdAt",
+        "state-only",
+        "2026-11-15T22:03:00.639Z"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.internalUrl",
+        "export-only",
+        "/images/b8cc99ade2314af8b567ef80c680c77e"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.key",
+        "state-only",
+        "b8cc99ade2314af8b567ef80c680c77e"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.path",
+        "state-only",
+        "park_item/b8cc99ade2314af8b567ef80c680c77e"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.setAsCurrent",
+        "export-only",
+        false
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.updatedAt",
+        "state-only",
+        "2026-11-15T22:03:04.3Z"
+      ],
+      [
+        ".images.b8cc99ade2314af8b567ef80c680c77e.withWatermark",
+        "export-only",
+        false
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.createdAt",
+        "state-only",
+        "2026-11-15T18:52:46.308Z"
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.path",
+        "state-only",
+        "park_item/b95b190d536f4197ab07873294f982e2"
+      ],
+      [
+        ".images.b95b190d536f4197ab07873294f982e2.updatedAt",
+        "state-only",
+        "2026-11-15T18:52:49.791Z"
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.createdAt",
+        "state-only",
+        "2026-11-15T18:08:35.68Z"
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.path",
+        "state-only",
+        "park_item/bbd931556fc64c6d8cfb91095871ed14"
+      ],
+      [
+        ".images.bbd931556fc64c6d8cfb91095871ed14.updatedAt",
+        "state-only",
+        "2026-11-15T18:08:39.384Z"
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.createdAt",
+        "state-only",
+        "2026-11-15T18:38:49.525Z"
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.path",
+        "state-only",
+        "park_item/bc84977c466245e7827273c42abd2220"
+      ],
+      [
+        ".images.bc84977c466245e7827273c42abd2220.updatedAt",
+        "state-only",
+        "2026-11-15T18:38:53.034Z"
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.createdAt",
+        "state-only",
+        "2026-11-15T16:57:03.161Z"
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.path",
+        "state-only",
+        "park/c196e76eafc343fabd54b180e5457dc8"
+      ],
+      [
+        ".images.c196e76eafc343fabd54b180e5457dc8.updatedAt",
+        "state-only",
+        "2026-11-15T16:57:06.614Z"
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.createdAt",
+        "state-only",
+        "2026-11-15T18:43:31.58Z"
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.path",
+        "state-only",
+        "park_item/d1b3a21b0ac347ca8570153a9b873f32"
+      ],
+      [
+        ".images.d1b3a21b0ac347ca8570153a9b873f32.updatedAt",
+        "state-only",
+        "2026-11-15T18:43:35.202Z"
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.createdAt",
+        "state-only",
+        "2026-11-15T18:38:18.47Z"
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": "1",
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.path",
+        "state-only",
+        "park_item/d6206d2553ad4eccbc08f8b6184be024"
+      ],
+      [
+        ".images.d6206d2553ad4eccbc08f8b6184be024.updatedAt",
+        "state-only",
+        "2026-11-15T18:38:21.995Z"
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.createdAt",
+        "state-only",
+        "2026-11-15T17:46:01.592Z"
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.path",
+        "state-only",
+        "park_item/d7146436ae0044dabef88f182dfd2516"
+      ],
+      [
+        ".images.d7146436ae0044dabef88f182dfd2516.updatedAt",
+        "state-only",
+        "2026-11-15T17:46:05.341Z"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.createdAt",
+        "state-only",
+        "2026-11-15T21:26:36.548Z"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.key",
+        "state-only",
+        "d9db0d23cccc424191093ba08edca1df"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.path",
+        "state-only",
+        "park_item/d9db0d23cccc424191093ba08edca1df"
+      ],
+      [
+        ".images.d9db0d23cccc424191093ba08edca1df.updatedAt",
+        "state-only",
+        "2026-11-15T21:26:40.259Z"
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.createdAt",
+        "state-only",
+        "2026-11-15T16:52:15.335Z"
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.path",
+        "state-only",
+        "park/db289dbe8d05476d8918eb31ddd1f1ad"
+      ],
+      [
+        ".images.db289dbe8d05476d8918eb31ddd1f1ad.updatedAt",
+        "state-only",
+        "2026-11-15T16:56:11.835Z"
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.createdAt",
+        "state-only",
+        "2026-11-15T19:46:41.172Z"
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.path",
+        "state-only",
+        "park_item/e4a759d9bc6f449684777d5ce883ec28"
+      ],
+      [
+        ".images.e4a759d9bc6f449684777d5ce883ec28.updatedAt",
+        "state-only",
+        "2026-11-15T19:46:44.776Z"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.createdAt",
+        "state-only",
+        "2026-11-15T21:13:44.125Z"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.key",
+        "state-only",
+        "e874bad560d54671a56396e44f461203"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.path",
+        "state-only",
+        "park_item/e874bad560d54671a56396e44f461203"
+      ],
+      [
+        ".images.e874bad560d54671a56396e44f461203.updatedAt",
+        "state-only",
+        "2026-11-15T21:13:47.813Z"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.createdAt",
+        "state-only",
+        "2026-11-15T21:59:51.484Z"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": "SAMSUNG",
+          "cameraModel": "GT-I9505",
+          "takenOnUtc": "2015-03-28T12:41:18Z",
+          "orientation": "1",
+          "focalLength": 4.2,
+          "aperture": 2.2,
+          "exposureTime": 0.06666666666666667,
+          "iso": 640
+        }
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.internalUrl",
+        "export-only",
+        "/images/ebd736e70aa6408bb5e8709226b2e8d4"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.key",
+        "state-only",
+        "ebd736e70aa6408bb5e8709226b2e8d4"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.path",
+        "state-only",
+        "park_item/ebd736e70aa6408bb5e8709226b2e8d4"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.setAsCurrent",
+        "export-only",
+        false
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.updatedAt",
+        "state-only",
+        "2026-11-15T21:59:54.973Z"
+      ],
+      [
+        ".images.ebd736e70aa6408bb5e8709226b2e8d4.withWatermark",
+        "export-only",
+        false
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.createdAt",
+        "state-only",
+        "2026-11-15T19:09:58.827Z"
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.path",
+        "state-only",
+        "park_item/f1e809b6aa864d82a3cec643e624c7d9"
+      ],
+      [
+        ".images.f1e809b6aa864d82a3cec643e624c7d9.updatedAt",
+        "state-only",
+        "2026-11-15T19:10:02.506Z"
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.createdAt",
+        "state-only",
+        "2026-11-15T18:14:26.31Z"
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.path",
+        "state-only",
+        "park_item/f7028cf39cb34e1dbf40118d487cecfe"
+      ],
+      [
+        ".images.f7028cf39cb34e1dbf40118d487cecfe.updatedAt",
+        "state-only",
+        "2026-11-15T18:14:29.895Z"
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.createdAt",
+        "state-only",
+        "2026-11-15T19:18:08.948Z"
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.path",
+        "state-only",
+        "park_item/f75398491b044b9b8c2d9fa708b07f90"
+      ],
+      [
+        ".images.f75398491b044b9b8c2d9fa708b07f90.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:12.827Z"
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.createdAt",
+        "state-only",
+        "2026-11-15T19:18:19.784Z"
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.exifMetadata",
+        "state-only",
+        {
+          "cameraMaker": null,
+          "cameraModel": null,
+          "takenOnUtc": null,
+          "orientation": null,
+          "focalLength": null,
+          "aperture": null,
+          "exposureTime": null,
+          "iso": null
+        }
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.path",
+        "state-only",
+        "park_item/fd7b1a3d22b246e0b8839903e7d6c006"
+      ],
+      [
+        ".images.fd7b1a3d22b246e0b8839903e7d6c006.updatedAt",
+        "state-only",
+        "2026-11-15T19:18:23.392Z"
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.createdAt",
+        "state-only",
+        "2026-11-15T18:53:13.742Z"
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.path",
+        "state-only",
+        "park_item/fe86e0aecff547439fcd5469af81b307"
+      ],
+      [
+        ".images.fe86e0aecff547439fcd5469af81b307.updatedAt",
+        "state-only",
+        "2026-11-15T18:53:17.688Z"
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.createdAt",
+        "state-only",
+        "2026-11-15T18:08:52.608Z"
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.exifMetadata",
+        "state-only",
+        null
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.path",
+        "state-only",
+        "park_item/ff71086ebe364f679d022c4ead7235be"
+      ],
+      [
+        ".images.ff71086ebe364f679d022c4ead7235be.updatedAt",
+        "state-only",
+        "2026-11-15T18:08:56.168Z"
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.key",
+        "different",
+        "vulcania-bouleversements",
+        "35ceac39-66c0-4c8b-bff7-2095f8318332"
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.35ceac39-66c0-4c8b-bff7-2095f8318332.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.key",
+        "different",
+        "vulcania-de-lave-et-de-feu",
+        "533717be-96a1-428a-8d19-d4b6b16bfe18"
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.533717be-96a1-428a-8d19-d4b6b16bfe18.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.closingDate",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.closingDateText",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.manufacturerKey",
+        "different",
+        "robosoft",
+        "317727bd-45db-467a-ab4e-9479a99007bb"
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.8bfb83e9-2044-4483-a599-768f89acebf8.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.accessConditions",
+        "export-only",
+        []
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.capacityPerHour",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.carsPerTrain",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.dropInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.dropInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.durationInSeconds",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.externalId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.externalSource",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.hasFastPass",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.hasSingleRider",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.heightInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.heightInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.inversionCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.isAccessibleForReducedMobility",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.isIndoor",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.isLaunched",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.launchType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.lengthInFeet",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.lengthInMeters",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.manufacturerId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.manufacturerKey",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.materialType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.model",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.restraintType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.ridersPerVehicle",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.seatingType",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.speedInKmH",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.speedInMph",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.trainCount",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionDetails.waterExposureLevel",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.attractionLocations",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.key",
+        "different",
+        "vulcania-sur-les-traces-des-dinosaures",
+        "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.latitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.longitude",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.subtype",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.zoneId",
+        "export-only",
+        null
+      ],
+      [
+        ".items.c4640ef4-a2f1-40b3-8946-d1b8f9046d94.zoneKey",
+        "export-only",
+        null
+      ],
+      [
+        ".metadata.exportedAtUtc",
+        "different",
+        "2026-11-15T20:31:22.6672616Z",
+        "2026-11-15T22:06:50.1852403Z"
+      ],
+      [
+        ".park.key",
+        "state-only",
+        "park"
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.closedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.contactDetails",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.foundedYear",
+        "export-only",
+        null
+      ],
+      [
+        ".references.manufacturers.317727bd-45db-467a-ab4e-9479a99007bb.legalName",
+        "export-only",
+        null
+      ]
+    ],
+    "corpusExactAgainstConsolidatedState": true
+  },
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "globalCompletion": false
+}

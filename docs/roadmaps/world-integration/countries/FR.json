@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T21:45:51.551Z",
+      "lastDataIntegrationAt": "2026-11-15T22:08:43.127Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39308,6 +39308,76 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-152-publish-volcanbul-item-history-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 152-publish-volcanbul-item-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-64321f9e-9cad-4233-b02a-4dd322cfc9dc",
+          "appliedAt": "2026-11-15T21:55:35.854Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-156-three-historical-items-20261115.json",
+          "auditEvidence": null,
+          "summary": "Trois lieux historiques privés : De lave et de feu (2013), Bouleversements (2015), parcours des dinosaures (2015–2017). Rapport métropolitain rétrospectif confirme dernière saison 2017 ; deux expositions Unknown. Aucun alias, jour, GPS ou fabricant inventé."
+        },
+        {
+          "eventId": "apply-d7b91bc6-0e69-4221-8820-a577e2117bc7",
+          "appliedAt": "2026-11-15T21:58:27.071Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-157-three-historical-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "24 notices personnelles relues en huit langues pour De lave et de feu, Bouleversements et Sur les traces des dinosaures ; deux intertitres et trois paragraphes, détails visuels sourcés, aucun doublon de douze mots. Trois lieux toujours privés."
+        },
+        {
+          "eventId": "import-photo-ebd736e70aa6408bb5e8709226b2e8d4",
+          "appliedAt": "2026-11-15T21:59:51.484Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-158-bouleversements-panel-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Bouleversements importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "import-photo-b8cc99ade2314af8b567ef80c680c77e",
+          "appliedAt": "2026-11-15T22:03:00.639Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-159-dinosaur-trail-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Sur les traces des dinosaures importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-84e4bc12-e0fb-4262-a42c-d0338469903b",
+          "appliedAt": "2026-11-15T22:05:20.221Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-160-three-exhibitions-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : quatre faits privés en huit langues, ouvertures De lave et de feu 2013, Bouleversements et dinosaures 2015, fermeture dinosaures 2017 rétrospectivement confirmée par le bilan SEM ; précision annuelle conservée."
+        },
+        {
+          "eventId": "apply-457375d5-ce63-4215-8d65-271d2921c564",
+          "appliedAt": "2026-11-15T22:08:07.977Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-164-publish-exhibitions-photos-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 164-publish-exhibitions-photos; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-dc3b4889-0c13-4716-8e7f-6b8e76bc6992",
+          "appliedAt": "2026-11-15T22:08:43.127Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-165-publish-exhibitions-items-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 165-publish-exhibitions-items-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39360,7 +39430,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-9d9b76a5-d571-40e8-836a-c82851a95269 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-dc3b4889-0c13-4716-8e7f-6b8e76bc6992 ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

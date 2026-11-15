@@ -1,0 +1,290 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-159-dinosaur-trail",
+    "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+    "itemName": "Sur les traces des dinosaures",
+    "current": false,
+    "source": {
+      "key": "dinosaures-native770",
+      "url": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/dinosaures_vulcania.jpg?w=770&h=578",
+      "status": 200,
+      "bytes": 129120,
+      "size": [
+        770,
+        577
+      ],
+      "sha256": "1f08ee24d2ac403e856133c64bab9a5fdfee13ca0bedfdd0fd1cd03c144c0159",
+      "checkedAtUtc": "2026-11-15T21:54:48.815941+00:00",
+      "path": "/workspace/france-historical-20261114/vulcania/three-exhibitions-followup-2153/dinosaures-native770.jpg",
+      "publisherNativeVariant": true,
+      "localModification": false,
+      "dimensions": [
+        770,
+        577
+      ],
+      "file": "/workspace/france-historical-20261114/vulcania/three-exhibitions-followup-2153/dinosaures-native770.jpg",
+      "sourcePage": "https://magicorangeplasticbird.com/2015/03/31/a-la-decouverte-des-nouveautes-2015-de-vulcania/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; original publisher credited, no open licence or individual photographer invented.",
+    "qualification": "Real historical March2015report photograph personally viewed intact. Bouleversements: actual curved exhibition wall and projected eruption, not a photograph claimed to capture an eruption in the park. Dinosaurtrail: original2048x1536 image1059591bytes exceeds960KiB; sourceHTML-linked770wide rendition129120bytes retained without local transformation, same complete framing. Date of report is not exact capture timestamp. No photo of De lave room found; natural volcano photographs are not used as installation photos."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "SourceUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/dinosaures_vulcania.jpg?w=770&h=578",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/three-exhibitions-followup-2153/dinosaures-native770.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-159-dinosaur-trail-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-159-dinosaur-trail-import-result.json"
+  },
+  "metadata": {
+    "description": "Le parcours préhistorique occupait les pelouses près de la serre, avec des clôtures basses autour des animaux animés.",
+    "sourceUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/dinosaures_vulcania.jpg?w=770&h=578",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Reproductions d’un tyrannosaure et d’un dinosaure cuirassé devant des visiteurs, avec la serre et le cône de Vulcania derrière eux."
+      },
+      {
+        "languageCode": "en",
+        "value": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them."
+      },
+      {
+        "languageCode": "de",
+        "value": "Nachbildungen eines Tyrannosaurus und eines gepanzerten Dinosauriers vor Besuchern, dahinter das Gewächshaus und der Kegel von Vulcania."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Modellen van een tyrannosaurus en een gepantserde dinosaurus voor bezoekers, met de kas en de kegel van Vulcania op de achtergrond."
+      },
+      {
+        "languageCode": "it",
+        "value": "Riproduzioni di un tirannosauro e di un dinosauro corazzato davanti ai visitatori, con la serra e il cono di Vulcania sullo sfondo."
+      },
+      {
+        "languageCode": "es",
+        "value": "Reproducciones de un tiranosaurio y un dinosaurio acorazado ante los visitantes, con el invernadero y el cono de Vulcania al fondo."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Modele tyranozaura i opancerzonego dinozaura przed grupą gości; w tle szklarnia oraz stożkowy budynek Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Reproduções de um tiranossauro e de um dinossauro couraçado diante dos visitantes, com a estufa e o cone do Vulcania ao fundo."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le parcours préhistorique occupait les pelouses près de la serre, avec des clôtures basses autour des animaux animés."
+      },
+      {
+        "languageCode": "en",
+        "value": "The prehistoric trail occupied the lawns near the greenhouse, with low fences around the animated animals."
+      },
+      {
+        "languageCode": "de",
+        "value": "Der urzeitliche Rundgang verlief über die Rasenflächen am Gewächshaus; niedrige Zäune umgaben die beweglichen Tiere."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het prehistorische parcours lag op de grasvelden bij de kas, met lage hekken rond de bewegende dieren."
+      },
+      {
+        "languageCode": "it",
+        "value": "Il percorso preistorico occupava i prati vicino alla serra, con basse recinzioni attorno agli animali animati."
+      },
+      {
+        "languageCode": "es",
+        "value": "El recorrido prehistórico ocupaba el césped junto al invernadero, con vallas bajas alrededor de los animales animados."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Prehistoryczna trasa zajmowała trawniki przy szklarni, a ruchome zwierzęta otaczały niskie ogrodzenia."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O percurso pré-histórico ocupava os relvados junto à estufa, com vedações baixas em redor dos animais animados."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© The magic orange plastic bird said… — reportage du 31 mars 2015."
+      },
+      {
+        "languageCode": "en",
+        "value": "© The magic orange plastic bird said… — report published on 31 March 2015."
+      },
+      {
+        "languageCode": "de",
+        "value": "© The magic orange plastic bird said… — Bericht vom 31. März 2015."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© The magic orange plastic bird said… — verslag van 31 maart 2015."
+      },
+      {
+        "languageCode": "it",
+        "value": "© The magic orange plastic bird said… — reportage del 31 marzo 2015."
+      },
+      {
+        "languageCode": "es",
+        "value": "© The magic orange plastic bird said… — reportaje del 31 de marzo de 2015."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© The magic orange plastic bird said… — relacja z 31 marca 2015 r."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© The magic orange plastic bird said… — reportagem de 31 de março de 2015."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "b8cc99ade2314af8b567ef80c680c77e",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "path": "park_item/b8cc99ade2314af8b567ef80c680c77e",
+      "description": "Le parcours préhistorique occupait les pelouses près de la serre, avec des clôtures basses autour des animaux animés.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 770,
+      "height": 577,
+      "sizeInBytes": 129120,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/dinosaures_vulcania.jpg?w=770&h=578",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Reproductions d’un tyrannosaure et d’un dinosaure cuirassé devant des visiteurs, avec la serre et le cône de Vulcania derrière eux."
+        },
+        {
+          "languageCode": "en",
+          "value": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them."
+        },
+        {
+          "languageCode": "de",
+          "value": "Nachbildungen eines Tyrannosaurus und eines gepanzerten Dinosauriers vor Besuchern, dahinter das Gewächshaus und der Kegel von Vulcania."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Modellen van een tyrannosaurus en een gepantserde dinosaurus voor bezoekers, met de kas en de kegel van Vulcania op de achtergrond."
+        },
+        {
+          "languageCode": "it",
+          "value": "Riproduzioni di un tirannosauro e di un dinosauro corazzato davanti ai visitatori, con la serra e il cono di Vulcania sullo sfondo."
+        },
+        {
+          "languageCode": "es",
+          "value": "Reproducciones de un tiranosaurio y un dinosaurio acorazado ante los visitantes, con el invernadero y el cono de Vulcania al fondo."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Modele tyranozaura i opancerzonego dinozaura przed grupą gości; w tle szklarnia oraz stożkowy budynek Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Reproduções de um tiranossauro e de um dinossauro couraçado diante dos visitantes, com a estufa e o cone do Vulcania ao fundo."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le parcours préhistorique occupait les pelouses près de la serre, avec des clôtures basses autour des animaux animés."
+        },
+        {
+          "languageCode": "en",
+          "value": "The prehistoric trail occupied the lawns near the greenhouse, with low fences around the animated animals."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der urzeitliche Rundgang verlief über die Rasenflächen am Gewächshaus; niedrige Zäune umgaben die beweglichen Tiere."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het prehistorische parcours lag op de grasvelden bij de kas, met lage hekken rond de bewegende dieren."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il percorso preistorico occupava i prati vicino alla serra, con basse recinzioni attorno agli animali animati."
+        },
+        {
+          "languageCode": "es",
+          "value": "El recorrido prehistórico ocupaba el césped junto al invernadero, con vallas bajas alrededor de los animales animados."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Prehistoryczna trasa zajmowała trawniki przy szklarni, a ruchome zwierzęta otaczały niskie ogrodzenia."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O percurso pré-histórico ocupava os relvados junto à estufa, com vedações baixas em redor dos animais animados."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© The magic orange plastic bird said… — reportage du 31 mars 2015."
+        },
+        {
+          "languageCode": "en",
+          "value": "© The magic orange plastic bird said… — report published on 31 March 2015."
+        },
+        {
+          "languageCode": "de",
+          "value": "© The magic orange plastic bird said… — Bericht vom 31. März 2015."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© The magic orange plastic bird said… — verslag van 31 maart 2015."
+        },
+        {
+          "languageCode": "it",
+          "value": "© The magic orange plastic bird said… — reportage del 31 marzo 2015."
+        },
+        {
+          "languageCode": "es",
+          "value": "© The magic orange plastic bird said… — reportaje del 31 de marzo de 2015."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© The magic orange plastic bird said… — relacja z 31 marca 2015 r."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© The magic orange plastic bird said… — reportagem de 31 de março de 2015."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:03:00.639Z",
+      "updatedAt": "2026-11-15T22:03:04.3Z"
+    },
+    "startedAtUtc": "2026-11-15T22:02:58.6939106Z",
+    "receivedAtUtc": "2026-11-15T22:03:07.4071585Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

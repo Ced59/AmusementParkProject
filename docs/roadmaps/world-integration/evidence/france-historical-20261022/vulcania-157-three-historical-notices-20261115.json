@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+          "key": "vulcania-de-lave-et-de-feu",
+          "name": "De lave et de feu",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La lumière des volcans rouges</h2><p>De lave et de feu consacrait son parcours aux volcans effusifs et aux paysages dessinés par leurs coulées. Les photographies d’éruptions plaçaient la lave incandescente au centre de l’exposition, avec des vues de volcans de différentes régions du monde.</p><p>Des images réalisées par Katia et Maurice Krafft accompagnaient cette rencontre avec les volcans rouges. L’exposition réunissait aussi des panneaux et des maquettes : les paysages photographiés trouvaient ainsi un prolongement dans la représentation de l’édifice volcanique.</p><h2>Au-delà de la coulée</h2><p>La présentation abordait la structure du volcan et la manière dont la lave atteint la surface. Conçue par les équipes scénographiques de Vulcania, elle associait le regard porté sur les éruptions à une lecture de leurs formes, de leur origine souterraine et des reliefs qu’elles construisent.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The glow of red volcanoes</h2><p>De lave et de feu explored effusive volcanoes and the landscapes shaped by their lava flows. Photographs of eruptions placed glowing lava at the heart of the exhibition, with views of volcanoes from different parts of the world.</p><p>Images taken by Katia and Maurice Krafft formed part of this encounter with red volcanoes. Panels and models accompanied the photographs, connecting the landscapes on display with representations of the volcanic structure.</p><h2>Beyond the lava flow</h2><p>The exhibition considered the structure of a volcano and how lava reaches the surface. Created by Vulcania’s exhibition team, it linked the visual impact of eruptions to an exploration of their forms, their underground origins and the landforms they build.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Das Leuchten der roten Vulkane</h2><p>De lave et de feu widmete sich effusiven Vulkanen und den Landschaften, die ihre Lavaströme formen. Aufnahmen von Ausbrüchen rückten die glühende Lava in den Mittelpunkt der Ausstellung und zeigten Vulkane aus verschiedenen Teilen der Welt.</p><p>Auch Bilder von Katia und Maurice Krafft gehörten zu dieser Begegnung mit den roten Vulkanen. Tafeln und Modelle ergänzten die Fotografien und verbanden die abgebildeten Landschaften mit Darstellungen des Vulkangebäudes.</p><h2>Hinter dem Lavastrom</h2><p>Die Ausstellung erklärte den Aufbau eines Vulkans und den Weg der Lava an die Oberfläche. Das Gestaltungsteam von Vulcania verknüpfte den Anblick der Eruptionen mit ihren unterschiedlichen Formen, ihrem Ursprung im Untergrund und den Landschaftsformen, die durch sie entstehen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De gloed van rode vulkanen</h2><p>De lave et de feu draaide om effusieve vulkanen en de landschappen die hun lavastromen vormen. Foto’s van uitbarstingen zetten de gloeiende lava centraal, met beelden van vulkanen uit verschillende delen van de wereld.</p><p>Opnamen van Katia en Maurice Krafft maakten deel uit van deze kennismaking met rode vulkanen. Naast de foto’s stonden informatiepanelen en modellen, die een verband legden tussen de afgebeelde landschappen en de opbouw van een vulkaan.</p><h2>Achter de lavastroom</h2><p>De tentoonstelling behandelde de structuur van de vulkaan en de manier waarop lava het oppervlak bereikt. Het ontwerpteam van Vulcania verbond de aanblik van uitbarstingen met hun uiteenlopende vormen, hun ondergrondse oorsprong en de reliëfs die ze opbouwen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La luce dei vulcani rossi</h2><p>De lave et de feu era dedicata ai vulcani effusivi e ai paesaggi modellati dalle loro colate. Le fotografie delle eruzioni ponevano la lava incandescente al centro dell’esposizione, mostrando vulcani di diverse regioni del mondo.</p><p>Le immagini realizzate da Katia e Maurice Krafft accompagnavano questo incontro con i vulcani rossi. Pannelli e plastici affiancavano le fotografie, collegando i paesaggi rappresentati alla forma e alla struttura dell’edificio vulcanico.</p><h2>Oltre la colata</h2><p>La presentazione affrontava la struttura del vulcano e il modo in cui la lava raggiunge la superficie. Ideata dal gruppo di allestimento di Vulcania, univa l’impatto visivo delle eruzioni alla lettura delle loro forme, delle origini sotterranee e dei rilievi che costruiscono.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La luz de los volcanes rojos</h2><p>De lave et de feu se centraba en los volcanes efusivos y en los paisajes modelados por sus coladas. Las fotografías de erupciones situaban la lava incandescente en el centro de la exposición, con imágenes de volcanes de distintas regiones del mundo.</p><p>Las fotografías de Katia y Maurice Krafft acompañaban este acercamiento a los volcanes rojos. Paneles y maquetas completaban las imágenes, relacionando los paisajes fotografiados con la representación del edificio volcánico.</p><h2>Más allá de la colada</h2><p>La presentación abordaba la estructura del volcán y la forma en que la lava llega a la superficie. Concebida por el equipo de escenografía de Vulcania, vinculaba la contemplación de las erupciones con sus formas, su origen subterráneo y los relieves que construyen.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Blask czerwonych wulkanów</h2><p>De lave et de feu przedstawiała wulkany efuzywne i krajobrazy kształtowane przez potoki lawy. Zdjęcia erupcji stawiały rozżarzoną lawę w centrum wystawy, pokazując wulkany z różnych części świata.</p><p>Wśród prezentowanych fotografii znajdowały się ujęcia wykonane przez Katię i Maurice’a Krafftów. Obok zdjęć umieszczono tablice oraz makiety, które łączyły oglądane krajobrazy z przedstawieniem budowy wulkanu.</p><h2>Co kryje się za potokiem lawy</h2><p>Ekspozycja objaśniała strukturę wulkanu i sposób, w jaki lawa dociera na powierzchnię. Zespół odpowiedzialny za scenografię Vulcanii połączył obrazy erupcji z poznawaniem ich form, podziemnego pochodzenia i rzeźby terenu powstającej w wyniku działalności wulkanicznej.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A luz dos vulcões vermelhos</h2><p>De lave et de feu dedicava-se aos vulcões efusivos e às paisagens moldadas pelas suas escoadas. As fotografias de erupções colocavam a lava incandescente no centro da exposição, com imagens de vulcões de diferentes regiões do mundo.</p><p>Fotografias de Katia e Maurice Krafft acompanhavam este encontro com os vulcões vermelhos. Painéis e maquetas completavam as imagens, relacionando as paisagens fotografadas com a representação do edifício vulcânico.</p><h2>Para lá da escoada</h2><p>A apresentação abordava a estrutura do vulcão e a forma como a lava chega à superfície. Concebida pela equipa de cenografia do Vulcania, associava o impacto visual das erupções à leitura das suas formas, da origem subterrânea e dos relevos que constroem.</p>"
+            }
+          ]
+        },
+        {
+          "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "key": "vulcania-bouleversements",
+          "name": "Bouleversements",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Quand une éruption dépasse le volcan</h2><p>Bouleversements examinait les effets des éruptions sur les sociétés et sur les milieux naturels. L’exposition prenait notamment pour point de départ les perturbations du trafic aérien provoquées par l’Eyjafjallajökull : une montagne islandaise pouvait modifier le quotidien bien au-delà de ses environs.</p><p>Dans la salle, une paroi claire et incurvée réunissait textes, photographies et images d’éruption sur un écran. Cette présentation mettait en regard le volcan devenu célèbre dans les médias et d’autres éruptions, moins connues du grand public, dont les conséquences locales avaient été considérables.</p><h2>Des paysages et des sociétés transformés</h2><p>Conçue par les équipes de Vulcania, l’exposition changeait d’échelle, des populations vivant près des volcans aux bouleversements de l’histoire de la Terre. Les exemples associaient ainsi activité volcanique, évolution des paysages et répercussions humaines, au-delà du seul spectacle de la lave.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>When an eruption reaches beyond the volcano</h2><p>Bouleversements examined the effects of eruptions on societies and the natural world. One starting point was the disruption to air travel caused by Eyjafjallajökull: an Icelandic mountain could alter daily life far beyond its surroundings.</p><p>Inside the exhibition, a pale curved wall brought together texts, photographs and eruption footage on a screen. The display contrasted the volcano made famous by news coverage with other eruptions, less familiar to the public, whose local consequences had been considerable.</p><h2>Changing landscapes and societies</h2><p>Created by Vulcania’s team, the exhibition shifted in scale from communities living close to volcanoes to upheavals in Earth’s history. Its examples connected volcanic activity, changing landscapes and human consequences, extending the story beyond the spectacle of lava alone.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Wenn ein Ausbruch weit über den Vulkan hinauswirkt</h2><p>Bouleversements untersuchte die Folgen von Eruptionen für Gesellschaft und Natur. Ein Ausgangspunkt waren die Störungen des Flugverkehrs durch den Eyjafjallajökull: Ein isländischer Berg konnte den Alltag weit außerhalb seiner unmittelbaren Umgebung verändern.</p><p>Eine helle, geschwungene Wand vereinte Texte, Fotografien und Aufnahmen eines Ausbruchs auf einem Bildschirm. Die Präsentation stellte dem durch die Medien bekannt gewordenen Vulkan andere Eruptionen gegenüber, die weniger Aufmerksamkeit erhielten, vor Ort aber erhebliche Folgen hatten.</p><h2>Landschaften und Gesellschaften im Wandel</h2><p>Das Team von Vulcania wechselte in der Ausstellung den Maßstab: von Menschen in der Nachbarschaft eines Vulkans zu Umbrüchen der Erdgeschichte. Die Beispiele verknüpften vulkanische Aktivität, Landschaftswandel und Auswirkungen auf das menschliche Leben und gingen damit über das Schauspiel der Lava hinaus.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Wanneer een uitbarsting verder reikt dan de vulkaan</h2><p>Bouleversements onderzocht de gevolgen van uitbarstingen voor samenlevingen en de natuur. Een vertrekpunt was het ontregelde vliegverkeer door de Eyjafjallajökull: een IJslandse berg kon het dagelijks leven ver buiten zijn directe omgeving veranderen.</p><p>In de zaal bracht een lichte, gebogen wand teksten, foto’s en beelden van een uitbarsting op een scherm samen. De opstelling plaatste de door het nieuws beroemd geworden vulkaan tegenover andere uitbarstingen, die minder bekend waren maar ter plaatse grote gevolgen hadden.</p><h2>Veranderende landschappen en samenlevingen</h2><p>Het team van Vulcania wisselde in deze tentoonstelling van schaal, van gemeenschappen naast vulkanen tot omwentelingen in de geschiedenis van de aarde. De voorbeelden verbonden vulkanische activiteit met landschapsverandering en menselijke gevolgen, verder dan alleen het schouwspel van lava.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Quando un’eruzione supera i confini del vulcano</h2><p>Bouleversements esaminava gli effetti delle eruzioni sulle società e sugli ambienti naturali. Uno dei punti di partenza erano i disagi al traffico aereo provocati dall’Eyjafjallajökull: una montagna islandese poteva modificare la vita quotidiana ben oltre le proprie vicinanze.</p><p>Nella sala, una parete chiara e curva riuniva testi, fotografie e immagini di un’eruzione su uno schermo. L’allestimento accostava il vulcano reso celebre dai mezzi d’informazione ad altre eruzioni, meno note al pubblico ma dalle conseguenze locali considerevoli.</p><h2>Paesaggi e società trasformati</h2><p>Ideata dal gruppo di Vulcania, l’esposizione cambiava scala, dalle popolazioni vicine ai vulcani agli sconvolgimenti della storia della Terra. Gli esempi collegavano attività vulcanica, evoluzione del paesaggio e ripercussioni sulla vita umana, andando oltre il solo spettacolo della lava.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Cuando una erupción rebasa el volcán</h2><p>Bouleversements examinaba los efectos de las erupciones sobre las sociedades y los entornos naturales. Uno de sus puntos de partida eran las alteraciones del tráfico aéreo provocadas por el Eyjafjallajökull: una montaña islandesa podía cambiar la vida cotidiana mucho más allá de sus alrededores.</p><p>En la sala, una pared clara y curva reunía textos, fotografías e imágenes de una erupción en una pantalla. La presentación contrastaba el volcán popularizado por los medios con otras erupciones menos conocidas, cuyas consecuencias locales habían sido considerables.</p><h2>Paisajes y sociedades transformados</h2><p>Concebida por el equipo de Vulcania, la exposición cambiaba de escala, desde las poblaciones próximas a los volcanes hasta las grandes transformaciones de la historia terrestre. Los ejemplos relacionaban actividad volcánica, evolución del paisaje y repercusiones humanas, más allá del espectáculo de la lava.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Gdy erupcja wykracza poza wulkan</h2><p>Bouleversements przyglądała się skutkom erupcji dla społeczeństw i środowiska naturalnego. Jednym z punktów wyjścia były zakłócenia ruchu lotniczego spowodowane przez Eyjafjallajökull: islandzka góra mogła zmienić codzienne życie daleko poza swoim otoczeniem.</p><p>W sali jasna, zakrzywiona ściana łączyła teksty, fotografie i wyświetlane na ekranie obrazy erupcji. Zestawiono tu wulkan znany z doniesień medialnych z innymi, mniej rozpoznawalnymi wybuchami, których skutki dla okolicznych mieszkańców były bardzo poważne.</p><h2>Przeobrażone krajobrazy i społeczeństwa</h2><p>Wystawa przygotowana przez zespół Vulcanii zmieniała skalę opowieści: od ludności żyjącej w pobliżu wulkanów po wielkie przemiany w dziejach Ziemi. Przykłady łączyły aktywność wulkaniczną, zmiany krajobrazu i konsekwencje dla ludzi, wykraczając poza sam widowiskowy obraz lawy.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Quando uma erupção ultrapassa o vulcão</h2><p>Bouleversements examinava os efeitos das erupções nas sociedades e nos meios naturais. Um dos pontos de partida eram as perturbações do tráfego aéreo provocadas pelo Eyjafjallajökull: uma montanha islandesa podia alterar o quotidiano muito para lá das suas imediações.</p><p>Na sala, uma parede clara e curva reunia textos, fotografias e imagens de uma erupção num ecrã. A apresentação colocava o vulcão tornado célebre pelos meios de comunicação ao lado de outras erupções menos conhecidas, mas com consequências locais consideráveis.</p><h2>Paisagens e sociedades transformadas</h2><p>Concebida pela equipa do Vulcania, a exposição mudava de escala, das populações próximas dos vulcões às grandes transformações da história da Terra. Os exemplos relacionavam atividade vulcânica, evolução da paisagem e repercussões humanas, para lá do espetáculo da lava.</p>"
+            }
+          ]
+        },
+        {
+          "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "key": "vulcania-sur-les-traces-des-dinosaures",
+          "name": "Sur les traces des dinosaures",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des silhouettes préhistoriques dans le parc</h2><p>Sur les traces des dinosaures installait des reproductions animées dans les espaces extérieurs de Vulcania. Les mouvements et les cris accompagnaient la découverte de ces animaux disparus, représentés au milieu de l’herbe, des rochers et des arbres du parc.</p><p>Près de la serre, un grand tyrannosaure dominait le chemin. Des clôtures basses séparaient le public des silhouettes, parmi lesquelles apparaissait un dinosaure au corps cuirassé et couvert de pointes. Le cône et la façade vitrée restaient visibles derrière cette scène préhistorique.</p><h2>Un parcours partagé avec Paléopolis</h2><p>Réalisé en partenariat avec Paléopolis, le parcours faisait écho aux thèmes de l’exposition Bouleversements, consacrée aux grandes transformations de la planète. Les dinosaures furent renouvelés au fil des saisons, jusqu’à une dernière présentation réunissant de nouveaux animatroniques. Cette promenade appartenait aux installations temporaires de Vulcania.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Prehistoric silhouettes in the park</h2><p>Sur les traces des dinosaures placed animated dinosaur models around Vulcania’s outdoor grounds. Movement and calls accompanied encounters with these extinct animals, represented among the park’s grass, rocks and trees.</p><p>A large tyrannosaur towered beside the path near the greenhouse. Low fences separated visitors from the figures, which included an armoured dinosaur covered in spikes. The cone and glazed façade remained visible behind this prehistoric scene.</p><h2>A trail created with Paléopolis</h2><p>Developed in partnership with Paléopolis, the trail echoed themes from Bouleversements, the exhibition about major changes to the planet. Its dinosaurs were renewed over successive seasons, with new animatronics assembled for the final presentation. This walk formed part of Vulcania’s temporary installations.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Urzeitliche Gestalten im Park</h2><p>Sur les traces des dinosaures brachte bewegliche Dinosauriernachbildungen in die Außenbereiche von Vulcania. Bewegungen und Rufe begleiteten die Begegnung mit den ausgestorbenen Tieren zwischen Grasflächen, Felsen und Bäumen des Parks.</p><p>Nahe dem Gewächshaus ragte ein großer Tyrannosaurus neben dem Weg auf. Niedrige Zäune trennten die Besucher von den Figuren, darunter ein gepanzerter Dinosaurier mit zahlreichen Stacheln. Hinter der urzeitlichen Szene blieben der Kegelbau und die Glasfassade sichtbar.</p><h2>Ein Rundgang mit Paléopolis</h2><p>Der gemeinsam mit Paléopolis entwickelte Rundgang griff Themen der Ausstellung Bouleversements über große Veränderungen unseres Planeten auf. Die Dinosaurier wurden über mehrere Saisons hinweg erneuert; für die letzte Präsentation kamen neue Animatronics hinzu. Der Spaziergang gehörte zu den zeitlich begrenzten Installationen von Vulcania.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Prehistorische gestalten in het park</h2><p>Sur les traces des dinosaures plaatste bewegende dinosaurusmodellen in de buitenruimtes van Vulcania. Bewegingen en kreten begeleidden de ontmoeting met deze uitgestorven dieren, tussen het gras, de rotsen en de bomen van het park.</p><p>Bij de kas torende een grote tyrannosaurus boven het pad uit. Lage hekken scheidden bezoekers van de figuren, waaronder een gepantserde dinosaurus met stekels. De kegel en de glazen gevel bleven achter dit prehistorische tafereel zichtbaar.</p><h2>Een parcours samen met Paléopolis</h2><p>Het parcours werd ontwikkeld met Paléopolis en sloot aan op Bouleversements, de tentoonstelling over grote veranderingen op aarde. In opeenvolgende seizoenen werden de dinosaurussen vernieuwd, met nieuwe animatronics voor de laatste presentatie. Deze wandeling hoorde bij de tijdelijke installaties van Vulcania.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Sagome preistoriche nel parco</h2><p>Sur les traces des dinosaures collocava riproduzioni animate negli spazi esterni di Vulcania. Movimenti e versi accompagnavano la scoperta di questi animali estinti, rappresentati fra l’erba, le rocce e gli alberi del parco.</p><p>Vicino alla serra, un grande tirannosauro dominava il sentiero. Basse recinzioni separavano il pubblico dalle figure, tra cui un dinosauro dal corpo corazzato e ricoperto di punte. Il cono e la facciata vetrata restavano visibili dietro questa scena preistorica.</p><h2>Un percorso condiviso con Paléopolis</h2><p>Realizzato in collaborazione con Paléopolis, il percorso riprendeva i temi di Bouleversements, l’esposizione dedicata alle grandi trasformazioni del pianeta. I dinosauri vennero rinnovati nel corso delle stagioni, fino a un’ultima presentazione con nuovi animatronici. La passeggiata faceva parte delle installazioni temporanee di Vulcania.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Siluetas prehistóricas en el parque</h2><p>Sur les traces des dinosaures instalaba reproducciones animadas en los espacios exteriores de Vulcania. Los movimientos y sonidos acompañaban el descubrimiento de estos animales extintos, representados entre la hierba, las rocas y los árboles del parque.</p><p>Cerca del invernadero, un gran tiranosaurio dominaba el sendero. Unas vallas bajas separaban al público de las figuras, entre las que destacaba un dinosaurio acorazado y cubierto de púas. El cono y la fachada acristalada permanecían visibles detrás de esta escena prehistórica.</p><h2>Un recorrido compartido con Paléopolis</h2><p>Creado en colaboración con Paléopolis, el recorrido retomaba temas de Bouleversements, la exposición sobre las grandes transformaciones del planeta. Los dinosaurios se renovaron a lo largo de las temporadas, hasta una última presentación con nuevos animatrónicos. Este paseo formaba parte de las instalaciones temporales de Vulcania.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Prehistoryczne sylwetki w parku</h2><p>Sur les traces des dinosaures wprowadzał ruchome modele dinozaurów na tereny zewnętrzne Vulcanii. Ruchy i odgłosy towarzyszyły poznawaniu wymarłych zwierząt, przedstawionych pośród trawy, skał i parkowych drzew.</p><p>W pobliżu szklarni nad ścieżką górował wielki tyranozaur. Niskie ogrodzenia oddzielały gości od figur, wśród których znajdował się opancerzony dinozaur pokryty kolcami. Za prehistoryczną sceną nadal było widać stożkowy budynek i przeszkloną fasadę.</p><h2>Trasa przygotowana z Paléopolis</h2><p>Szlak powstał we współpracy z Paléopolis i nawiązywał do Bouleversements, wystawy o wielkich przemianach naszej planety. W kolejnych sezonach dinozaury wymieniano, a w ostatniej odsłonie zaprezentowano nowe animatroniki. Spacer należał do czasowych instalacji Vulcanii.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Silhuetas pré-históricas no parque</h2><p>Sur les traces des dinosaures instalava reproduções animadas nos espaços exteriores do Vulcania. Os movimentos e os sons acompanhavam a descoberta destes animais extintos, representados entre a relva, as rochas e as árvores do parque.</p><p>Perto da estufa, um grande tiranossauro dominava o caminho. Vedações baixas separavam o público das figuras, entre as quais surgia um dinossauro couraçado e coberto de espigões. O cone e a fachada envidraçada continuavam visíveis atrás desta cena pré-histórica.</p><h2>Um percurso criado com o Paléopolis</h2><p>Realizado em parceria com o Paléopolis, o percurso retomava temas de Bouleversements, a exposição sobre as grandes transformações do planeta. Os dinossauros foram renovados ao longo das temporadas, até uma última apresentação com novos animatrónicos. Este passeio fazia parte das instalações temporárias do Vulcania.</p>"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-three-historical-notices",
+        "notes": "24 descriptions personally written and reviewed language by language,2h2/3p, historical past tense. De lave: original2013release/Krafftphotos and official2025guide panels/models/effusive volcano structure. Bouleversements:2015release and actual March2015room photograph personally inspected curved pale panel/screen; no Revolution/extinction causal claim. Dinosaurs:2015review actual photograph greenhouse/cone/fences/armoured figure, Paleopolis partnership;2016renewal and retrospective2019municipalreport confirms2017final season. No dimensions, durations, access conditions, dates or exact GPS in copy. Some languages naturally below120words; all factual axes retained, no filler after genuine source search. De lave room photo remains absent after search; generic volcanic naturephotos not falsely attributed to exhibition."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "bf47972d-b06b-4fee-8a0d-888194ee539f",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:58:15.0981864Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "entityKey": "vulcania-de-lave-et-de-feu",
+        "displayName": "De lave et de feu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Leuchten der roten Vulkane</h2><p>De lave et de feu widmete sich effusiven Vulkanen und den Landschaften, die ihre Lavaströme formen. Aufnahmen von Ausbrüchen rückten die glühende Lava in den Mittelpunkt der Ausstellung und zeigten Vulkane aus verschiedenen Teilen der Welt.</p><p>Auch Bilder von Katia und Maurice Krafft gehörten zu dieser Begegnung mit den roten Vulkanen. Tafeln und Modelle ergänzten die Fotografien und verbanden die abgebildeten Landschaften mit Darstellungen des Vulkangebäudes.</p><h2>Hinter dem Lavastrom</h2><p>Die Ausstellung erklärte den Aufbau eines Vulkans und den Weg der Lava an die Oberfläche. Das Gestaltungsteam von Vulcania verknüpfte den Anblick der Eruptionen mit ihren unterschiedlichen Formen, ihrem Ursprung im Untergrund und den Landschaftsformen, die durch sie entstehen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The glow of red volcanoes</h2><p>De lave et de feu explored effusive volcanoes and the landscapes shaped by their lava flows. Photographs of eruptions placed glowing lava at the heart of the exhibition, with views of volcanoes from different parts of the world.</p><p>Images taken by Katia and Maurice Krafft formed part of this encounter with red volcanoes. Panels and models accompanied the photographs, connecting the landscapes on display with representations of the volcanic structure.</p><h2>Beyond the lava flow</h2><p>The exhibition considered the structure of a volcano and how lava reaches the surface. Created by Vulcania’s exhibition team, it linked the visual impact of eruptions to an exploration of their forms, their underground origins and the landforms they build.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La luz de los volcanes rojos</h2><p>De lave et de feu se centraba en los volcanes efusivos y en los paisajes modelados por sus coladas. Las fotografías de erupciones situaban la lava incandescente en el centro de la exposición, con imágenes de volcanes de distintas regiones del mundo.</p><p>Las fotografías de Katia y Maurice Krafft acompañaban este acercamiento a los volcanes rojos. Paneles y maquetas completaban las imágenes, relacionando los paisajes fotografiados con la representación del edificio volcánico.</p><h2>Más allá de la colada</h2><p>La presentación abordaba la estructura del volcán y la forma en que la lava llega a la superficie. Concebida por el equipo de escenografía de Vulcania, vinculaba la contemplación de las erupciones con sus formas, su origen subterráneo y los relieves que construyen.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La lumière des volcans rouges</h2><p>De lave et de feu consacrait son parcours aux volcans effusifs et aux paysages dessinés par leurs coulées. Les photographies d’éruptions plaçaient la lave incandescente au centre de l’exposition, avec des vues de volcans de différentes régions du monde.</p><p>Des images réalisées par Katia et Maurice Krafft accompagnaient cette rencontre avec les volcans rouges. L’exposition réunissait aussi des panneaux et des maquettes : les paysages photographiés trouvaient ainsi un prolongement dans la représentation de l’édifice volcanique.</p><h2>Au-delà de la coulée</h2><p>La présentation abordait la structure du volcan et la manière dont la lave atteint la surface. Conçue par les équipes scénographiques de Vulcania, elle associait le regard porté sur les éruptions à une lecture de leurs formes, de leur origine souterraine et des reliefs qu’elles construisent.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La luce dei vulcani rossi</h2><p>De lave et de feu era dedicata ai vulcani effusivi e ai paesaggi modellati dalle loro colate. Le fotografie delle eruzioni ponevano la lava incandescente al centro dell’esposizione, mostrando vulcani di diverse regioni del mondo.</p><p>Le immagini realizzate da Katia e Maurice Krafft accompagnavano questo incontro con i vulcani rossi. Pannelli e plastici affiancavano le fotografie, collegando i paesaggi rappresentati alla forma e alla struttura dell’edificio vulcanico.</p><h2>Oltre la colata</h2><p>La presentazione affrontava la struttura del vulcano e il modo in cui la lava raggiunge la superficie. Ideata dal gruppo di allestimento di Vulcania, univa l’impatto visivo delle eruzioni alla lettura delle loro forme, delle origini sotterranee e dei rilievi che costruiscono.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De gloed van rode vulkanen</h2><p>De lave et de feu draaide om effusieve vulkanen en de landschappen die hun lavastromen vormen. Foto’s van uitbarstingen zetten de gloeiende lava centraal, met beelden van vulkanen uit verschillende delen van de wereld.</p><p>Opnamen van Katia en Maurice Krafft maakten deel uit van deze kennismaking met rode vulkanen. Naast de foto’s stonden informatiepanelen en modellen, die een verband legden tussen de afgebeelde landschappen en de opbouw van een vulkaan.</p><h2>Achter de lavastroom</h2><p>De tentoonstelling behandelde de structuur van de vulkaan en de manier waarop lava het oppervlak bereikt. Het ontwerpteam van Vulcania verbond de aanblik van uitbarstingen met hun uiteenlopende vormen, hun ondergrondse oorsprong en de reliëfs die ze opbouwen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Blask czerwonych wulkanów</h2><p>De lave et de feu przedstawiała wulkany efuzywne i krajobrazy kształtowane przez potoki lawy. Zdjęcia erupcji stawiały rozżarzoną lawę w centrum wystawy, pokazując wulkany z różnych części świata.</p><p>Wśród prezentowanych fotografii znajdowały się ujęcia wykonane przez Katię i Maurice’a Krafftów. Obok zdjęć umieszczono tablice oraz makiety, które łączyły oglądane krajobrazy z przedstawieniem budowy wulkanu.</p><h2>Co kryje się za potokiem lawy</h2><p>Ekspozycja objaśniała strukturę wulkanu i sposób, w jaki lawa dociera na powierzchnię. Zespół odpowiedzialny za scenografię Vulcanii połączył obrazy erupcji z poznawaniem ich form, podziemnego pochodzenia i rzeźby terenu powstającej w wyniku działalności wulkanicznej.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A luz dos vulcões vermelhos</h2><p>De lave et de feu dedicava-se aos vulcões efusivos e às paisagens moldadas pelas suas escoadas. As fotografias de erupções colocavam a lava incandescente no centro da exposição, com imagens de vulcões de diferentes regiões do mundo.</p><p>Fotografias de Katia e Maurice Krafft acompanhavam este encontro com os vulcões vermelhos. Painéis e maquetas completavam as imagens, relacionando as paisagens fotografadas com a representação do edifício vulcânico.</p><h2>Para lá da escoada</h2><p>A apresentação abordava a estrutura do vulcão e a forma como a lava chega à superfície. Concebida pela equipa de cenografia do Vulcania, associava o impacto visual das erupções à leitura das suas formas, da origem subterrânea e dos relevos que constroem.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "entityKey": "vulcania-bouleversements",
+        "displayName": "Bouleversements",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Wenn ein Ausbruch weit über den Vulkan hinauswirkt</h2><p>Bouleversements untersuchte die Folgen von Eruptionen für Gesellschaft und Natur. Ein Ausgangspunkt waren die Störungen des Flugverkehrs durch den Eyjafjallajökull: Ein isländischer Berg konnte den Alltag weit außerhalb seiner unmittelbaren Umgebung verändern.</p><p>Eine helle, geschwungene Wand vereinte Texte, Fotografien und Aufnahmen eines Ausbruchs auf einem Bildschirm. Die Präsentation stellte dem durch die Medien bekannt gewordenen Vulkan andere Eruptionen gegenüber, die weniger Aufmerksamkeit erhielten, vor Ort aber erhebliche Folgen hatten.</p><h2>Landschaften und Gesellschaften im Wandel</h2><p>Das Team von Vulcania wechselte in der Ausstellung den Maßstab: von Menschen in der Nachbarschaft eines Vulkans zu Umbrüchen der Erdgeschichte. Die Beispiele verknüpften vulkanische Aktivität, Landschaftswandel und Auswirkungen auf das menschliche Leben und gingen damit über das Schauspiel der Lava hinaus.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>When an eruption reaches beyond the volcano</h2><p>Bouleversements examined the effects of eruptions on societies and the natural world. One starting point was the disruption to air travel caused by Eyjafjallajökull: an Icelandic mountain could alter daily life far beyond its surroundings.</p><p>Inside the exhibition, a pale curved wall brought together texts, photographs and eruption footage on a screen. The display contrasted the volcano made famous by news coverage with other eruptions, less familiar to the public, whose local consequences had been considerable.</p><h2>Changing landscapes and societies</h2><p>Created by Vulcania’s team, the exhibition shifted in scale from communities living close to volcanoes to upheavals in Earth’s history. Its examples connected volcanic activity, changing landscapes and human consequences, extending the story beyond the spectacle of lava alone.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cuando una erupción rebasa el volcán</h2><p>Bouleversements examinaba los efectos de las erupciones sobre las sociedades y los entornos naturales. Uno de sus puntos de partida eran las alteraciones del tráfico aéreo provocadas por el Eyjafjallajökull: una montaña islandesa podía cambiar la vida cotidiana mucho más allá de sus alrededores.</p><p>En la sala, una pared clara y curva reunía textos, fotografías e imágenes de una erupción en una pantalla. La presentación contrastaba el volcán popularizado por los medios con otras erupciones menos conocidas, cuyas consecuencias locales habían sido considerables.</p><h2>Paisajes y sociedades transformados</h2><p>Concebida por el equipo de Vulcania, la exposición cambiaba de escala, desde las poblaciones próximas a los volcanes hasta las grandes transformaciones de la historia terrestre. Los ejemplos relacionaban actividad volcánica, evolución del paisaje y repercusiones humanas, más allá del espectáculo de la lava.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Quand une éruption dépasse le volcan</h2><p>Bouleversements examinait les effets des éruptions sur les sociétés et sur les milieux naturels. L’exposition prenait notamment pour point de départ les perturbations du trafic aérien provoquées par l’Eyjafjallajökull : une montagne islandaise pouvait modifier le quotidien bien au-delà de ses environs.</p><p>Dans la salle, une paroi claire et incurvée réunissait textes, photographies et images d’éruption sur un écran. Cette présentation mettait en regard le volcan devenu célèbre dans les médias et d’autres éruptions, moins connues du grand public, dont les conséquences locales avaient été considérables.</p><h2>Des paysages et des sociétés transformés</h2><p>Conçue par les équipes de Vulcania, l’exposition changeait d’échelle, des populations vivant près des volcans aux bouleversements de l’histoire de la Terre. Les exemples associaient ainsi activité volcanique, évolution des paysages et répercussions humaines, au-delà du seul spectacle de la lave.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Quando un’eruzione supera i confini del vulcano</h2><p>Bouleversements esaminava gli effetti delle eruzioni sulle società e sugli ambienti naturali. Uno dei punti di partenza erano i disagi al traffico aereo provocati dall’Eyjafjallajökull: una montagna islandese poteva modificare la vita quotidiana ben oltre le proprie vicinanze.</p><p>Nella sala, una parete chiara e curva riuniva testi, fotografie e immagini di un’eruzione su uno schermo. L’allestimento accostava il vulcano reso celebre dai mezzi d’informazione ad altre eruzioni, meno note al pubblico ma dalle conseguenze locali considerevoli.</p><h2>Paesaggi e società trasformati</h2><p>Ideata dal gruppo di Vulcania, l’esposizione cambiava scala, dalle popolazioni vicine ai vulcani agli sconvolgimenti della storia della Terra. Gli esempi collegavano attività vulcanica, evoluzione del paesaggio e ripercussioni sulla vita umana, andando oltre il solo spettacolo della lava.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Wanneer een uitbarsting verder reikt dan de vulkaan</h2><p>Bouleversements onderzocht de gevolgen van uitbarstingen voor samenlevingen en de natuur. Een vertrekpunt was het ontregelde vliegverkeer door de Eyjafjallajökull: een IJslandse berg kon het dagelijks leven ver buiten zijn directe omgeving veranderen.</p><p>In de zaal bracht een lichte, gebogen wand teksten, foto’s en beelden van een uitbarsting op een scherm samen. De opstelling plaatste de door het nieuws beroemd geworden vulkaan tegenover andere uitbarstingen, die minder bekend waren maar ter plaatse grote gevolgen hadden.</p><h2>Veranderende landschappen en samenlevingen</h2><p>Het team van Vulcania wisselde in deze tentoonstelling van schaal, van gemeenschappen naast vulkanen tot omwentelingen in de geschiedenis van de aarde. De voorbeelden verbonden vulkanische activiteit met landschapsverandering en menselijke gevolgen, verder dan alleen het schouwspel van lava.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Gdy erupcja wykracza poza wulkan</h2><p>Bouleversements przyglądała się skutkom erupcji dla społeczeństw i środowiska naturalnego. Jednym z punktów wyjścia były zakłócenia ruchu lotniczego spowodowane przez Eyjafjallajökull: islandzka góra mogła zmienić codzienne życie daleko poza swoim otoczeniem.</p><p>W sali jasna, zakrzywiona ściana łączyła teksty, fotografie i wyświetlane na ekranie obrazy erupcji. Zestawiono tu wulkan znany z doniesień medialnych z innymi, mniej rozpoznawalnymi wybuchami, których skutki dla okolicznych mieszkańców były bardzo poważne.</p><h2>Przeobrażone krajobrazy i społeczeństwa</h2><p>Wystawa przygotowana przez zespół Vulcanii zmieniała skalę opowieści: od ludności żyjącej w pobliżu wulkanów po wielkie przemiany w dziejach Ziemi. Przykłady łączyły aktywność wulkaniczną, zmiany krajobrazu i konsekwencje dla ludzi, wykraczając poza sam widowiskowy obraz lawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Quando uma erupção ultrapassa o vulcão</h2><p>Bouleversements examinava os efeitos das erupções nas sociedades e nos meios naturais. Um dos pontos de partida eram as perturbações do tráfego aéreo provocadas pelo Eyjafjallajökull: uma montanha islandesa podia alterar o quotidiano muito para lá das suas imediações.</p><p>Na sala, uma parede clara e curva reunia textos, fotografias e imagens de uma erupção num ecrã. A apresentação colocava o vulcão tornado célebre pelos meios de comunicação ao lado de outras erupções menos conhecidas, mas com consequências locais consideráveis.</p><h2>Paisagens e sociedades transformadas</h2><p>Concebida pela equipa do Vulcania, a exposição mudava de escala, das populações próximas dos vulcões às grandes transformações da história da Terra. Os exemplos relacionavam atividade vulcânica, evolução da paisagem e repercussões humanas, para lá do espetáculo da lava.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Urzeitliche Gestalten im Park</h2><p>Sur les traces des dinosaures brachte bewegliche Dinosauriernachbildungen in die Außenbereiche von Vulcania. Bewegungen und Rufe begleiteten die Begegnung mit den ausgestorbenen Tieren zwischen Grasflächen, Felsen und Bäumen des Parks.</p><p>Nahe dem Gewächshaus ragte ein großer Tyrannosaurus neben dem Weg auf. Niedrige Zäune trennten die Besucher von den Figuren, darunter ein gepanzerter Dinosaurier mit zahlreichen Stacheln. Hinter der urzeitlichen Szene blieben der Kegelbau und die Glasfassade sichtbar.</p><h2>Ein Rundgang mit Paléopolis</h2><p>Der gemeinsam mit Paléopolis entwickelte Rundgang griff Themen der Ausstellung Bouleversements über große Veränderungen unseres Planeten auf. Die Dinosaurier wurden über mehrere Saisons hinweg erneuert; für die letzte Präsentation kamen neue Animatronics hinzu. Der Spaziergang gehörte zu den zeitlich begrenzten Installationen von Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Prehistoric silhouettes in the park</h2><p>Sur les traces des dinosaures placed animated dinosaur models around Vulcania’s outdoor grounds. Movement and calls accompanied encounters with these extinct animals, represented among the park’s grass, rocks and trees.</p><p>A large tyrannosaur towered beside the path near the greenhouse. Low fences separated visitors from the figures, which included an armoured dinosaur covered in spikes. The cone and glazed façade remained visible behind this prehistoric scene.</p><h2>A trail created with Paléopolis</h2><p>Developed in partnership with Paléopolis, the trail echoed themes from Bouleversements, the exhibition about major changes to the planet. Its dinosaurs were renewed over successive seasons, with new animatronics assembled for the final presentation. This walk formed part of Vulcania’s temporary installations.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Siluetas prehistóricas en el parque</h2><p>Sur les traces des dinosaures instalaba reproducciones animadas en los espacios exteriores de Vulcania. Los movimientos y sonidos acompañaban el descubrimiento de estos animales extintos, representados entre la hierba, las rocas y los árboles del parque.</p><p>Cerca del invernadero, un gran tiranosaurio dominaba el sendero. Unas vallas bajas separaban al público de las figuras, entre las que destacaba un dinosaurio acorazado y cubierto de púas. El cono y la fachada acristalada permanecían visibles detrás de esta escena prehistórica.</p><h2>Un recorrido compartido con Paléopolis</h2><p>Creado en colaboración con Paléopolis, el recorrido retomaba temas de Bouleversements, la exposición sobre las grandes transformaciones del planeta. Los dinosaurios se renovaron a lo largo de las temporadas, hasta una última presentación con nuevos animatrónicos. Este paseo formaba parte de las instalaciones temporales de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des silhouettes préhistoriques dans le parc</h2><p>Sur les traces des dinosaures installait des reproductions animées dans les espaces extérieurs de Vulcania. Les mouvements et les cris accompagnaient la découverte de ces animaux disparus, représentés au milieu de l’herbe, des rochers et des arbres du parc.</p><p>Près de la serre, un grand tyrannosaure dominait le chemin. Des clôtures basses séparaient le public des silhouettes, parmi lesquelles apparaissait un dinosaure au corps cuirassé et couvert de pointes. Le cône et la façade vitrée restaient visibles derrière cette scène préhistorique.</p><h2>Un parcours partagé avec Paléopolis</h2><p>Réalisé en partenariat avec Paléopolis, le parcours faisait écho aux thèmes de l’exposition Bouleversements, consacrée aux grandes transformations de la planète. Les dinosaures furent renouvelés au fil des saisons, jusqu’à une dernière présentation réunissant de nouveaux animatroniques. Cette promenade appartenait aux installations temporaires de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sagome preistoriche nel parco</h2><p>Sur les traces des dinosaures collocava riproduzioni animate negli spazi esterni di Vulcania. Movimenti e versi accompagnavano la scoperta di questi animali estinti, rappresentati fra l’erba, le rocce e gli alberi del parco.</p><p>Vicino alla serra, un grande tirannosauro dominava il sentiero. Basse recinzioni separavano il pubblico dalle figure, tra cui un dinosauro dal corpo corazzato e ricoperto di punte. Il cono e la facciata vetrata restavano visibili dietro questa scena preistorica.</p><h2>Un percorso condiviso con Paléopolis</h2><p>Realizzato in collaborazione con Paléopolis, il percorso riprendeva i temi di Bouleversements, l’esposizione dedicata alle grandi trasformazioni del pianeta. I dinosauri vennero rinnovati nel corso delle stagioni, fino a un’ultima presentazione con nuovi animatronici. La passeggiata faceva parte delle installazioni temporanee di Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Prehistorische gestalten in het park</h2><p>Sur les traces des dinosaures plaatste bewegende dinosaurusmodellen in de buitenruimtes van Vulcania. Bewegingen en kreten begeleidden de ontmoeting met deze uitgestorven dieren, tussen het gras, de rotsen en de bomen van het park.</p><p>Bij de kas torende een grote tyrannosaurus boven het pad uit. Lage hekken scheidden bezoekers van de figuren, waaronder een gepantserde dinosaurus met stekels. De kegel en de glazen gevel bleven achter dit prehistorische tafereel zichtbaar.</p><h2>Een parcours samen met Paléopolis</h2><p>Het parcours werd ontwikkeld met Paléopolis en sloot aan op Bouleversements, de tentoonstelling over grote veranderingen op aarde. In opeenvolgende seizoenen werden de dinosaurussen vernieuwd, met nieuwe animatronics voor de laatste presentatie. Deze wandeling hoorde bij de tijdelijke installaties van Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Prehistoryczne sylwetki w parku</h2><p>Sur les traces des dinosaures wprowadzał ruchome modele dinozaurów na tereny zewnętrzne Vulcanii. Ruchy i odgłosy towarzyszyły poznawaniu wymarłych zwierząt, przedstawionych pośród trawy, skał i parkowych drzew.</p><p>W pobliżu szklarni nad ścieżką górował wielki tyranozaur. Niskie ogrodzenia oddzielały gości od figur, wśród których znajdował się opancerzony dinozaur pokryty kolcami. Za prehistoryczną sceną nadal było widać stożkowy budynek i przeszkloną fasadę.</p><h2>Trasa przygotowana z Paléopolis</h2><p>Szlak powstał we współpracy z Paléopolis i nawiązywał do Bouleversements, wystawy o wielkich przemianach naszej planety. W kolejnych sezonach dinozaury wymieniano, a w ostatniej odsłonie zaprezentowano nowe animatroniki. Spacer należał do czasowych instalacji Vulcanii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Silhuetas pré-históricas no parque</h2><p>Sur les traces des dinosaures instalava reproduções animadas nos espaços exteriores do Vulcania. Os movimentos e os sons acompanhavam a descoberta destes animais extintos, representados entre a relva, as rochas e as árvores do parque.</p><p>Perto da estufa, um grande tiranossauro dominava o caminho. Vedações baixas separavam o público das figuras, entre as quais surgia um dinossauro couraçado e coberto de espigões. O cone e a fachada envidraçada continuavam visíveis atrás desta cena pré-histórica.</p><h2>Um percurso criado com o Paléopolis</h2><p>Realizado em parceria com o Paléopolis, o percurso retomava temas de Bouleversements, a exposição sobre as grandes transformações do planeta. Os dinossauros foram renovados ao longo das temporadas, até uma última apresentação com novos animatrónicos. Este passeio fazia parte das instalações temporárias do Vulcania.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "d7b91bc6-0e69-4221-8820-a577e2117bc7",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:58:27.0717959Z",
+    "appliedAtUtc": "2026-11-15T21:58:27.0717966Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 3,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "entityKey": "vulcania-de-lave-et-de-feu",
+        "displayName": "De lave et de feu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Das Leuchten der roten Vulkane</h2><p>De lave et de feu widmete sich effusiven Vulkanen und den Landschaften, die ihre Lavaströme formen. Aufnahmen von Ausbrüchen rückten die glühende Lava in den Mittelpunkt der Ausstellung und zeigten Vulkane aus verschiedenen Teilen der Welt.</p><p>Auch Bilder von Katia und Maurice Krafft gehörten zu dieser Begegnung mit den roten Vulkanen. Tafeln und Modelle ergänzten die Fotografien und verbanden die abgebildeten Landschaften mit Darstellungen des Vulkangebäudes.</p><h2>Hinter dem Lavastrom</h2><p>Die Ausstellung erklärte den Aufbau eines Vulkans und den Weg der Lava an die Oberfläche. Das Gestaltungsteam von Vulcania verknüpfte den Anblick der Eruptionen mit ihren unterschiedlichen Formen, ihrem Ursprung im Untergrund und den Landschaftsformen, die durch sie entstehen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>The glow of red volcanoes</h2><p>De lave et de feu explored effusive volcanoes and the landscapes shaped by their lava flows. Photographs of eruptions placed glowing lava at the heart of the exhibition, with views of volcanoes from different parts of the world.</p><p>Images taken by Katia and Maurice Krafft formed part of this encounter with red volcanoes. Panels and models accompanied the photographs, connecting the landscapes on display with representations of the volcanic structure.</p><h2>Beyond the lava flow</h2><p>The exhibition considered the structure of a volcano and how lava reaches the surface. Created by Vulcania’s exhibition team, it linked the visual impact of eruptions to an exploration of their forms, their underground origins and the landforms they build.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>La luz de los volcanes rojos</h2><p>De lave et de feu se centraba en los volcanes efusivos y en los paisajes modelados por sus coladas. Las fotografías de erupciones situaban la lava incandescente en el centro de la exposición, con imágenes de volcanes de distintas regiones del mundo.</p><p>Las fotografías de Katia y Maurice Krafft acompañaban este acercamiento a los volcanes rojos. Paneles y maquetas completaban las imágenes, relacionando los paisajes fotografiados con la representación del edificio volcánico.</p><h2>Más allá de la colada</h2><p>La presentación abordaba la estructura del volcán y la forma en que la lava llega a la superficie. Concebida por el equipo de escenografía de Vulcania, vinculaba la contemplación de las erupciones con sus formas, su origen subterráneo y los relieves que construyen.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>La lumière des volcans rouges</h2><p>De lave et de feu consacrait son parcours aux volcans effusifs et aux paysages dessinés par leurs coulées. Les photographies d’éruptions plaçaient la lave incandescente au centre de l’exposition, avec des vues de volcans de différentes régions du monde.</p><p>Des images réalisées par Katia et Maurice Krafft accompagnaient cette rencontre avec les volcans rouges. L’exposition réunissait aussi des panneaux et des maquettes : les paysages photographiés trouvaient ainsi un prolongement dans la représentation de l’édifice volcanique.</p><h2>Au-delà de la coulée</h2><p>La présentation abordait la structure du volcan et la manière dont la lave atteint la surface. Conçue par les équipes scénographiques de Vulcania, elle associait le regard porté sur les éruptions à une lecture de leurs formes, de leur origine souterraine et des reliefs qu’elles construisent.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>La luce dei vulcani rossi</h2><p>De lave et de feu era dedicata ai vulcani effusivi e ai paesaggi modellati dalle loro colate. Le fotografie delle eruzioni ponevano la lava incandescente al centro dell’esposizione, mostrando vulcani di diverse regioni del mondo.</p><p>Le immagini realizzate da Katia e Maurice Krafft accompagnavano questo incontro con i vulcani rossi. Pannelli e plastici affiancavano le fotografie, collegando i paesaggi rappresentati alla forma e alla struttura dell’edificio vulcanico.</p><h2>Oltre la colata</h2><p>La presentazione affrontava la struttura del vulcano e il modo in cui la lava raggiunge la superficie. Ideata dal gruppo di allestimento di Vulcania, univa l’impatto visivo delle eruzioni alla lettura delle loro forme, delle origini sotterranee e dei rilievi che costruiscono.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>De gloed van rode vulkanen</h2><p>De lave et de feu draaide om effusieve vulkanen en de landschappen die hun lavastromen vormen. Foto’s van uitbarstingen zetten de gloeiende lava centraal, met beelden van vulkanen uit verschillende delen van de wereld.</p><p>Opnamen van Katia en Maurice Krafft maakten deel uit van deze kennismaking met rode vulkanen. Naast de foto’s stonden informatiepanelen en modellen, die een verband legden tussen de afgebeelde landschappen en de opbouw van een vulkaan.</p><h2>Achter de lavastroom</h2><p>De tentoonstelling behandelde de structuur van de vulkaan en de manier waarop lava het oppervlak bereikt. Het ontwerpteam van Vulcania verbond de aanblik van uitbarstingen met hun uiteenlopende vormen, hun ondergrondse oorsprong en de reliëfs die ze opbouwen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Blask czerwonych wulkanów</h2><p>De lave et de feu przedstawiała wulkany efuzywne i krajobrazy kształtowane przez potoki lawy. Zdjęcia erupcji stawiały rozżarzoną lawę w centrum wystawy, pokazując wulkany z różnych części świata.</p><p>Wśród prezentowanych fotografii znajdowały się ujęcia wykonane przez Katię i Maurice’a Krafftów. Obok zdjęć umieszczono tablice oraz makiety, które łączyły oglądane krajobrazy z przedstawieniem budowy wulkanu.</p><h2>Co kryje się za potokiem lawy</h2><p>Ekspozycja objaśniała strukturę wulkanu i sposób, w jaki lawa dociera na powierzchnię. Zespół odpowiedzialny za scenografię Vulcanii połączył obrazy erupcji z poznawaniem ich form, podziemnego pochodzenia i rzeźby terenu powstającej w wyniku działalności wulkanicznej.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>A luz dos vulcões vermelhos</h2><p>De lave et de feu dedicava-se aos vulcões efusivos e às paisagens moldadas pelas suas escoadas. As fotografias de erupções colocavam a lava incandescente no centro da exposição, com imagens de vulcões de diferentes regiões do mundo.</p><p>Fotografias de Katia e Maurice Krafft acompanhavam este encontro com os vulcões vermelhos. Painéis e maquetas completavam as imagens, relacionando as paisagens fotografadas com a representação do edifício vulcânico.</p><h2>Para lá da escoada</h2><p>A apresentação abordava a estrutura do vulcão e a forma como a lava chega à superfície. Concebida pela equipa de cenografia do Vulcania, associava o impacto visual das erupções à leitura das suas formas, da origem subterrânea e dos relevos que constroem.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "entityKey": "vulcania-bouleversements",
+        "displayName": "Bouleversements",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Wenn ein Ausbruch weit über den Vulkan hinauswirkt</h2><p>Bouleversements untersuchte die Folgen von Eruptionen für Gesellschaft und Natur. Ein Ausgangspunkt waren die Störungen des Flugverkehrs durch den Eyjafjallajökull: Ein isländischer Berg konnte den Alltag weit außerhalb seiner unmittelbaren Umgebung verändern.</p><p>Eine helle, geschwungene Wand vereinte Texte, Fotografien und Aufnahmen eines Ausbruchs auf einem Bildschirm. Die Präsentation stellte dem durch die Medien bekannt gewordenen Vulkan andere Eruptionen gegenüber, die weniger Aufmerksamkeit erhielten, vor Ort aber erhebliche Folgen hatten.</p><h2>Landschaften und Gesellschaften im Wandel</h2><p>Das Team von Vulcania wechselte in der Ausstellung den Maßstab: von Menschen in der Nachbarschaft eines Vulkans zu Umbrüchen der Erdgeschichte. Die Beispiele verknüpften vulkanische Aktivität, Landschaftswandel und Auswirkungen auf das menschliche Leben und gingen damit über das Schauspiel der Lava hinaus.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>When an eruption reaches beyond the volcano</h2><p>Bouleversements examined the effects of eruptions on societies and the natural world. One starting point was the disruption to air travel caused by Eyjafjallajökull: an Icelandic mountain could alter daily life far beyond its surroundings.</p><p>Inside the exhibition, a pale curved wall brought together texts, photographs and eruption footage on a screen. The display contrasted the volcano made famous by news coverage with other eruptions, less familiar to the public, whose local consequences had been considerable.</p><h2>Changing landscapes and societies</h2><p>Created by Vulcania’s team, the exhibition shifted in scale from communities living close to volcanoes to upheavals in Earth’s history. Its examples connected volcanic activity, changing landscapes and human consequences, extending the story beyond the spectacle of lava alone.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Cuando una erupción rebasa el volcán</h2><p>Bouleversements examinaba los efectos de las erupciones sobre las sociedades y los entornos naturales. Uno de sus puntos de partida eran las alteraciones del tráfico aéreo provocadas por el Eyjafjallajökull: una montaña islandesa podía cambiar la vida cotidiana mucho más allá de sus alrededores.</p><p>En la sala, una pared clara y curva reunía textos, fotografías e imágenes de una erupción en una pantalla. La presentación contrastaba el volcán popularizado por los medios con otras erupciones menos conocidas, cuyas consecuencias locales habían sido considerables.</p><h2>Paisajes y sociedades transformados</h2><p>Concebida por el equipo de Vulcania, la exposición cambiaba de escala, desde las poblaciones próximas a los volcanes hasta las grandes transformaciones de la historia terrestre. Los ejemplos relacionaban actividad volcánica, evolución del paisaje y repercusiones humanas, más allá del espectáculo de la lava.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Quand une éruption dépasse le volcan</h2><p>Bouleversements examinait les effets des éruptions sur les sociétés et sur les milieux naturels. L’exposition prenait notamment pour point de départ les perturbations du trafic aérien provoquées par l’Eyjafjallajökull : une montagne islandaise pouvait modifier le quotidien bien au-delà de ses environs.</p><p>Dans la salle, une paroi claire et incurvée réunissait textes, photographies et images d’éruption sur un écran. Cette présentation mettait en regard le volcan devenu célèbre dans les médias et d’autres éruptions, moins connues du grand public, dont les conséquences locales avaient été considérables.</p><h2>Des paysages et des sociétés transformés</h2><p>Conçue par les équipes de Vulcania, l’exposition changeait d’échelle, des populations vivant près des volcans aux bouleversements de l’histoire de la Terre. Les exemples associaient ainsi activité volcanique, évolution des paysages et répercussions humaines, au-delà du seul spectacle de la lave.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Quando un’eruzione supera i confini del vulcano</h2><p>Bouleversements esaminava gli effetti delle eruzioni sulle società e sugli ambienti naturali. Uno dei punti di partenza erano i disagi al traffico aereo provocati dall’Eyjafjallajökull: una montagna islandese poteva modificare la vita quotidiana ben oltre le proprie vicinanze.</p><p>Nella sala, una parete chiara e curva riuniva testi, fotografie e immagini di un’eruzione su uno schermo. L’allestimento accostava il vulcano reso celebre dai mezzi d’informazione ad altre eruzioni, meno note al pubblico ma dalle conseguenze locali considerevoli.</p><h2>Paesaggi e società trasformati</h2><p>Ideata dal gruppo di Vulcania, l’esposizione cambiava scala, dalle popolazioni vicine ai vulcani agli sconvolgimenti della storia della Terra. Gli esempi collegavano attività vulcanica, evoluzione del paesaggio e ripercussioni sulla vita umana, andando oltre il solo spettacolo della lava.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Wanneer een uitbarsting verder reikt dan de vulkaan</h2><p>Bouleversements onderzocht de gevolgen van uitbarstingen voor samenlevingen en de natuur. Een vertrekpunt was het ontregelde vliegverkeer door de Eyjafjallajökull: een IJslandse berg kon het dagelijks leven ver buiten zijn directe omgeving veranderen.</p><p>In de zaal bracht een lichte, gebogen wand teksten, foto’s en beelden van een uitbarsting op een scherm samen. De opstelling plaatste de door het nieuws beroemd geworden vulkaan tegenover andere uitbarstingen, die minder bekend waren maar ter plaatse grote gevolgen hadden.</p><h2>Veranderende landschappen en samenlevingen</h2><p>Het team van Vulcania wisselde in deze tentoonstelling van schaal, van gemeenschappen naast vulkanen tot omwentelingen in de geschiedenis van de aarde. De voorbeelden verbonden vulkanische activiteit met landschapsverandering en menselijke gevolgen, verder dan alleen het schouwspel van lava.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Gdy erupcja wykracza poza wulkan</h2><p>Bouleversements przyglądała się skutkom erupcji dla społeczeństw i środowiska naturalnego. Jednym z punktów wyjścia były zakłócenia ruchu lotniczego spowodowane przez Eyjafjallajökull: islandzka góra mogła zmienić codzienne życie daleko poza swoim otoczeniem.</p><p>W sali jasna, zakrzywiona ściana łączyła teksty, fotografie i wyświetlane na ekranie obrazy erupcji. Zestawiono tu wulkan znany z doniesień medialnych z innymi, mniej rozpoznawalnymi wybuchami, których skutki dla okolicznych mieszkańców były bardzo poważne.</p><h2>Przeobrażone krajobrazy i społeczeństwa</h2><p>Wystawa przygotowana przez zespół Vulcanii zmieniała skalę opowieści: od ludności żyjącej w pobliżu wulkanów po wielkie przemiany w dziejach Ziemi. Przykłady łączyły aktywność wulkaniczną, zmiany krajobrazu i konsekwencje dla ludzi, wykraczając poza sam widowiskowy obraz lawy.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Quando uma erupção ultrapassa o vulcão</h2><p>Bouleversements examinava os efeitos das erupções nas sociedades e nos meios naturais. Um dos pontos de partida eram as perturbações do tráfego aéreo provocadas pelo Eyjafjallajökull: uma montanha islandesa podia alterar o quotidiano muito para lá das suas imediações.</p><p>Na sala, uma parede clara e curva reunia textos, fotografias e imagens de uma erupção num ecrã. A apresentação colocava o vulcão tornado célebre pelos meios de comunicação ao lado de outras erupções menos conhecidas, mas com consequências locais consideráveis.</p><h2>Paisagens e sociedades transformadas</h2><p>Concebida pela equipa do Vulcania, a exposição mudava de escala, das populações próximas dos vulcões às grandes transformações da história da Terra. Os exemplos relacionavam atividade vulcânica, evolução da paisagem e repercussões humanas, para lá do espetáculo da lava.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Urzeitliche Gestalten im Park</h2><p>Sur les traces des dinosaures brachte bewegliche Dinosauriernachbildungen in die Außenbereiche von Vulcania. Bewegungen und Rufe begleiteten die Begegnung mit den ausgestorbenen Tieren zwischen Grasflächen, Felsen und Bäumen des Parks.</p><p>Nahe dem Gewächshaus ragte ein großer Tyrannosaurus neben dem Weg auf. Niedrige Zäune trennten die Besucher von den Figuren, darunter ein gepanzerter Dinosaurier mit zahlreichen Stacheln. Hinter der urzeitlichen Szene blieben der Kegelbau und die Glasfassade sichtbar.</p><h2>Ein Rundgang mit Paléopolis</h2><p>Der gemeinsam mit Paléopolis entwickelte Rundgang griff Themen der Ausstellung Bouleversements über große Veränderungen unseres Planeten auf. Die Dinosaurier wurden über mehrere Saisons hinweg erneuert; für die letzte Präsentation kamen neue Animatronics hinzu. Der Spaziergang gehörte zu den zeitlich begrenzten Installationen von Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Prehistoric silhouettes in the park</h2><p>Sur les traces des dinosaures placed animated dinosaur models around Vulcania’s outdoor grounds. Movement and calls accompanied encounters with these extinct animals, represented among the park’s grass, rocks and trees.</p><p>A large tyrannosaur towered beside the path near the greenhouse. Low fences separated visitors from the figures, which included an armoured dinosaur covered in spikes. The cone and glazed façade remained visible behind this prehistoric scene.</p><h2>A trail created with Paléopolis</h2><p>Developed in partnership with Paléopolis, the trail echoed themes from Bouleversements, the exhibition about major changes to the planet. Its dinosaurs were renewed over successive seasons, with new animatronics assembled for the final presentation. This walk formed part of Vulcania’s temporary installations.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Siluetas prehistóricas en el parque</h2><p>Sur les traces des dinosaures instalaba reproducciones animadas en los espacios exteriores de Vulcania. Los movimientos y sonidos acompañaban el descubrimiento de estos animales extintos, representados entre la hierba, las rocas y los árboles del parque.</p><p>Cerca del invernadero, un gran tiranosaurio dominaba el sendero. Unas vallas bajas separaban al público de las figuras, entre las que destacaba un dinosaurio acorazado y cubierto de púas. El cono y la fachada acristalada permanecían visibles detrás de esta escena prehistórica.</p><h2>Un recorrido compartido con Paléopolis</h2><p>Creado en colaboración con Paléopolis, el recorrido retomaba temas de Bouleversements, la exposición sobre las grandes transformaciones del planeta. Los dinosaurios se renovaron a lo largo de las temporadas, hasta una última presentación con nuevos animatrónicos. Este paseo formaba parte de las instalaciones temporales de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des silhouettes préhistoriques dans le parc</h2><p>Sur les traces des dinosaures installait des reproductions animées dans les espaces extérieurs de Vulcania. Les mouvements et les cris accompagnaient la découverte de ces animaux disparus, représentés au milieu de l’herbe, des rochers et des arbres du parc.</p><p>Près de la serre, un grand tyrannosaure dominait le chemin. Des clôtures basses séparaient le public des silhouettes, parmi lesquelles apparaissait un dinosaure au corps cuirassé et couvert de pointes. Le cône et la façade vitrée restaient visibles derrière cette scène préhistorique.</p><h2>Un parcours partagé avec Paléopolis</h2><p>Réalisé en partenariat avec Paléopolis, le parcours faisait écho aux thèmes de l’exposition Bouleversements, consacrée aux grandes transformations de la planète. Les dinosaures furent renouvelés au fil des saisons, jusqu’à une dernière présentation réunissant de nouveaux animatroniques. Cette promenade appartenait aux installations temporaires de Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Sagome preistoriche nel parco</h2><p>Sur les traces des dinosaures collocava riproduzioni animate negli spazi esterni di Vulcania. Movimenti e versi accompagnavano la scoperta di questi animali estinti, rappresentati fra l’erba, le rocce e gli alberi del parco.</p><p>Vicino alla serra, un grande tirannosauro dominava il sentiero. Basse recinzioni separavano il pubblico dalle figure, tra cui un dinosauro dal corpo corazzato e ricoperto di punte. Il cono e la facciata vetrata restavano visibili dietro questa scena preistorica.</p><h2>Un percorso condiviso con Paléopolis</h2><p>Realizzato in collaborazione con Paléopolis, il percorso riprendeva i temi di Bouleversements, l’esposizione dedicata alle grandi trasformazioni del pianeta. I dinosauri vennero rinnovati nel corso delle stagioni, fino a un’ultima presentazione con nuovi animatronici. La passeggiata faceva parte delle installazioni temporanee di Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Prehistorische gestalten in het park</h2><p>Sur les traces des dinosaures plaatste bewegende dinosaurusmodellen in de buitenruimtes van Vulcania. Bewegingen en kreten begeleidden de ontmoeting met deze uitgestorven dieren, tussen het gras, de rotsen en de bomen van het park.</p><p>Bij de kas torende een grote tyrannosaurus boven het pad uit. Lage hekken scheidden bezoekers van de figuren, waaronder een gepantserde dinosaurus met stekels. De kegel en de glazen gevel bleven achter dit prehistorische tafereel zichtbaar.</p><h2>Een parcours samen met Paléopolis</h2><p>Het parcours werd ontwikkeld met Paléopolis en sloot aan op Bouleversements, de tentoonstelling over grote veranderingen op aarde. In opeenvolgende seizoenen werden de dinosaurussen vernieuwd, met nieuwe animatronics voor de laatste presentatie. Deze wandeling hoorde bij de tijdelijke installaties van Vulcania.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Prehistoryczne sylwetki w parku</h2><p>Sur les traces des dinosaures wprowadzał ruchome modele dinozaurów na tereny zewnętrzne Vulcanii. Ruchy i odgłosy towarzyszyły poznawaniu wymarłych zwierząt, przedstawionych pośród trawy, skał i parkowych drzew.</p><p>W pobliżu szklarni nad ścieżką górował wielki tyranozaur. Niskie ogrodzenia oddzielały gości od figur, wśród których znajdował się opancerzony dinozaur pokryty kolcami. Za prehistoryczną sceną nadal było widać stożkowy budynek i przeszkloną fasadę.</p><h2>Trasa przygotowana z Paléopolis</h2><p>Szlak powstał we współpracy z Paléopolis i nawiązywał do Bouleversements, wystawy o wielkich przemianach naszej planety. W kolejnych sezonach dinozaury wymieniano, a w ostatniej odsłonie zaprezentowano nowe animatroniki. Spacer należał do czasowych instalacji Vulcanii.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Silhuetas pré-históricas no parque</h2><p>Sur les traces des dinosaures instalava reproduções animadas nos espaços exteriores do Vulcania. Os movimentos e os sons acompanhavam a descoberta destes animais extintos, representados entre a relva, as rochas e as árvores do parque.</p><p>Perto da estufa, um grande tiranossauro dominava o caminho. Vedações baixas separavam o público das figuras, entre as quais surgia um dinossauro couraçado e coberto de espigões. O cone e a fachada envidraçada continuavam visíveis atrás desta cena pré-histórica.</p><h2>Um percurso criado com o Paléopolis</h2><p>Realizado em parceria com o Paléopolis, o percurso retomava temas de Bouleversements, a exposição sobre as grandes transformações do planeta. Os dinossauros foram renovados ao longo das temporadas, até uma última apresentação com novos animatrónicos. Este passeio fazia parte das instalações temporárias do Vulcania.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "24 notices personnelles relues en huit langues pour De lave et de feu, Bouleversements et Sur les traces des dinosaures ; deux intertitres et trois paragraphes, détails visuels sourcés, aucun doublon de douze mots. Trois lieux toujours privés.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "24 descriptions personally written and reviewed language by language,2h2/3p, historical past tense. De lave: original2013release/Krafftphotos and official2025guide panels/models/effusive volcano structure. Bouleversements:2015release and actual March2015room photograph personally inspected curved pale panel/screen; no Revolution/extinction causal claim. Dinosaurs:2015review actual photograph greenhouse/cone/fences/armoured figure, Paleopolis partnership;2016renewal and retrospective2019municipalreport confirms2017final season. No dimensions, durations, access conditions, dates or exact GPS in copy. Some languages naturally below120words; all factual axes retained, no filler after genuine source search. De lave room photo remains absent after search; generic volcanic naturephotos not falsely attributed to exhibition."
+}

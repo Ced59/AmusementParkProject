@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "vulcania-de-lave-et-de-feu",
+          "name": "De lave et de feu",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2013",
+            "sourceUrl": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html"
+          }
+        },
+        {
+          "key": "vulcania-bouleversements",
+          "name": "Bouleversements",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2015",
+            "sourceUrl": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html"
+          }
+        },
+        {
+          "key": "vulcania-sur-les-traces-des-dinosaures",
+          "name": "Sur les traces des dinosaures",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "ClosedDefinitively",
+            "openingDate": "2015",
+            "sourceUrl": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+            "closingDate": "2017"
+          }
+        }
+      ],
+      "metadata": {
+        "source": "codex-france-vulcania-historical-exhibitions",
+        "notes": "Three historically distinct WalkThrough experiences, no independent cinema. De lave et de feu is an exhibition, introduced2013 official release reprinted Parcplaza19March2013 and Tourmag20March; still named with panels/photos/models in official teacher2025 guide, therefore alleged2015closure/replacement not accepted. Bouleversements2015 is an exhibition about consequences of eruptions, not a screen venue; no claimed causal certainty linking eruption to French Revolution or dinosaur extinction. Sur les traces des dinosaures2015 is outdoor animatronic trail with Paleopolis, not later similarly named workshop; RJFM2016 confirms renewed trail, official2017 release reprintedParksTrip1April2017 announces last season but execution/date of removal not verified. All current lifecycle Unknown after current2026inventory and historicalsource comparison; no closing date invented, year-only opening. No established exact GPS, current access conditions or manufacturer. Locations described as interior level/exterior route not fabricated coordinates. Existing57items checked; no alias/venue merge without evidence. New items private ToReview pending text/media audit; existing public data preserved. SUBSEQUENT PRIMARY EVIDENCE BEFORE APPLY: Clermont Auvergne Metropole DEL20190215_041 original PDF downloaded200 and personally read pp4 and10 retrospectively confirms actual2017third and last season with new animatronics. Therefore dinosaurtrail ClosedDefinitively, closingYear2017 only. No removal date or exact final operating day inferred. This supersedes preliminary Unknown only for dinosaurtrail; both exhibitions remain Unknown."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "89d74748-974a-4ee2-816b-8eb9f1a74957",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:55:06.4251691Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "857dc3f7-5f71-4b60-920a-3afebcac639a",
+        "entityKey": "vulcania-de-lave-et-de-feu",
+        "displayName": "De lave et de feu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2013"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b25bace1-6ac5-4d30-bbce-194077855d8e",
+        "entityKey": "vulcania-bouleversements",
+        "displayName": "Bouleversements",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2015"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0ee1f041-8248-411c-8f05-a07e1cdf15e5",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2015"
+          },
+          {
+            "field": "attractionDetails.closingDateText",
+            "oldValue": null,
+            "newValue": "2017"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "64321f9e-9cad-4233-b02a-4dd322cfc9dc",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T21:55:35.854141Z",
+    "appliedAtUtc": "2026-11-15T21:55:35.8541417Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 3,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "entityKey": "vulcania-de-lave-et-de-feu",
+        "displayName": "De lave et de feu",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2013"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "entityKey": "vulcania-bouleversements",
+        "displayName": "Bouleversements",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2015"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "WalkThrough"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "ClosedDefinitively"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2015"
+          },
+          {
+            "field": "attractionDetails.closingDateText",
+            "oldValue": null,
+            "newValue": "2017"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Trois lieux historiques privés : De lave et de feu (2013), Bouleversements (2015), parcours des dinosaures (2015–2017). Rapport métropolitain rétrospectif confirme dernière saison 2017 ; deux expositions Unknown. Aucun alias, jour, GPS ou fabricant inventé.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Three historically distinct WalkThrough experiences, no independent cinema. De lave et de feu is an exhibition, introduced2013 official release reprinted Parcplaza19March2013 and Tourmag20March; still named with panels/photos/models in official teacher2025 guide, therefore alleged2015closure/replacement not accepted. Bouleversements2015 is an exhibition about consequences of eruptions, not a screen venue; no claimed causal certainty linking eruption to French Revolution or dinosaur extinction. Sur les traces des dinosaures2015 is outdoor animatronic trail with Paleopolis, not later similarly named workshop; RJFM2016 confirms renewed trail, official2017 release reprintedParksTrip1April2017 announces last season but execution/date of removal not verified. All current lifecycle Unknown after current2026inventory and historicalsource comparison; no closing date invented, year-only opening. No established exact GPS, current access conditions or manufacturer. Locations described as interior level/exterior route not fabricated coordinates. Existing57items checked; no alias/venue merge without evidence. New items private ToReview pending text/media audit; existing public data preserved. SUBSEQUENT PRIMARY EVIDENCE BEFORE APPLY: Clermont Auvergne Metropole DEL20190215_041 original PDF downloaded200 and personally read pp4 and10 retrospectively confirms actual2017third and last season with new animatronics. Therefore dinosaurtrail ClosedDefinitively, closingYear2017 only. No removal date or exact final operating day inferred. This supersedes preliminary Unknown only for dinosaurtrail; both exhibitions remain Unknown."
+}

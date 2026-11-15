@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T21:45:51.5511148Z",
+  "lastDataIntegrationAt": "2026-11-15T22:08:43.1278518Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 56,
-  "realImportCount": 59,
-  "lastOperationId": "9d9b76a5-d571-40e8-836a-c82851a95269",
+  "realApplyCount": 61,
+  "realImportCount": 61,
+  "lastOperationId": "dc3b4889-0c13-4716-8e7f-6b8e76bc6992",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -198,15 +198,20 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-145-volcanbul-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-147-volcanbul-opening-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-151-publish-volcanbul-photo-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-152-publish-volcanbul-item-history-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-152-publish-volcanbul-item-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-156-three-historical-items-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-157-three-historical-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-160-three-exhibitions-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-164-publish-exhibitions-photos-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-165-publish-exhibitions-items-history-20261115.json"
   ],
   "currentCoverage": {
-    "items": 57,
-    "publicItems": 57,
-    "describedItems8Languages": 57,
+    "items": 60,
+    "publicItems": 60,
+    "describedItems8Languages": 60,
     "zones": 0,
-    "ownMedia": 59,
-    "historyEvents": 18,
+    "ownMedia": 61,
+    "historyEvents": 22,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
@@ -214,12 +219,12 @@
     "privateArticles": 0,
     "privateItems": 0,
     "sharedMedia": 5,
-    "publicOwnMedia": 59,
-    "publicHistoryEvents": 18,
+    "publicOwnMedia": 61,
+    "publicHistoryEvents": 22,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "9d9b76a5-d571-40e8-836a-c82851a95269",
+  "lastApplyOperationId": "dc3b4889-0c13-4716-8e7f-6b8e76bc6992",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -515,6 +520,16 @@
       "imageId": "483f952f1ebe4dcb998ed7bc2e47bdc5",
       "createdAt": "2026-11-15T21:41:54.419Z",
       "proof": "vulcania-photo-146-volcanbul-boarding-20261115.json"
+    },
+    {
+      "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+      "createdAt": "2026-11-15T21:59:51.484Z",
+      "proof": "vulcania-photo-158-bouleversements-panel-20261115.json"
+    },
+    {
+      "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+      "createdAt": "2026-11-15T22:03:00.639Z",
+      "proof": "vulcania-photo-159-dinosaur-trail-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -588,7 +603,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Continue historical inventory qualification: De lave et de feu, Bouleversements, Sur les traces des dinosaures and further guidebook locations. Current 57 identified items are described and public; global inventory remains partial.",
+  "nextAction": "Continue qualification of historical exhibitions, including Nature grand format2018; all60 identified places are described and public, overall inventory and photographic/GPScoverage remain partial.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -654,6 +669,16 @@
       "operationId": "9d9b76a5-d571-40e8-836a-c82851a95269",
       "appliedAtUtc": "2026-11-15T21:45:51.5511148Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-152-publish-volcanbul-item-history-20261115.json"
+    },
+    {
+      "operationId": "457375d5-ce63-4215-8d65-271d2921c564",
+      "appliedAtUtc": "2026-11-15T22:08:07.9770135Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-164-publish-exhibitions-photos-20261115.json"
+    },
+    {
+      "operationId": "dc3b4889-0c13-4716-8e7f-6b8e76bc6992",
+      "appliedAtUtc": "2026-11-15T22:08:43.1278518Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-165-publish-exhibitions-items-history-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -675,5 +700,5 @@
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
   "facebookAnonymousVisibilityConfirmed": false,
-  "lastPublicFollowupProof": "vulcania-volcanbul-publication-followup-20261115.json"
+  "lastPublicFollowupProof": "vulcania-three-exhibitions-publication-followup-20261115.json"
 }

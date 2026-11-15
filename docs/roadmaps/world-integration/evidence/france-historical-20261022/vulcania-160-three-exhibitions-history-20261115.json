@@ -1,0 +1,1570 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-de-lave-et-de-feu-opening-2013",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "itemId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "parkItemId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2013,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une exposition donne à voir les volcans rouges"
+              },
+              {
+                "languageCode": "en",
+                "value": "A new exhibition brings red volcanoes into view"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine neue Ausstellung widmet sich roten Vulkanen"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een nieuwe tentoonstelling belicht rode vulkanen"
+              },
+              {
+                "languageCode": "it",
+                "value": "Una nuova mostra racconta i vulcani rossi"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una nueva exposición acerca los volcanes rojos"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Nowa wystawa przybliża czerwone wulkany"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma nova exposição revela os vulcões vermelhos"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "En 2013, Vulcania crée De lave et de feu autour des volcans rouges et des photographies de Katia et Maurice Krafft. Cette exposition ajoute un regard photographique sur les éruptions aux animations immersives du parc et met en lumière le travail de terrain des volcanologues."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2013, Vulcania creates De lave et de feu around red volcanoes and photographs by Katia and Maurice Krafft. The exhibition adds a photographic perspective on eruptions alongside the park’s immersive attractions, highlighting the volcanologists’ work in the field."
+              },
+              {
+                "languageCode": "de",
+                "value": "2013 gestaltet Vulcania De lave et de feu rund um rote Vulkane und Fotografien von Katia und Maurice Krafft. Die Ausstellung ergänzt die immersiven Erlebnisse des Parks um einen fotografischen Blick auf Eruptionen und rückt die Feldarbeit der Vulkanologen in den Mittelpunkt."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2013 maakt Vulcania De lave et de feu over rode vulkanen, met foto’s van Katia en Maurice Krafft. Naast de meeslepende parkattracties biedt de tentoonstelling een fotografische blik op uitbarstingen en brengt ze het veldwerk van de vulkanologen onder de aandacht."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2013 Vulcania realizza De lave et de feu, dedicata ai vulcani rossi e alle fotografie di Katia e Maurice Krafft. La mostra affianca alle attrazioni immersive del parco uno sguardo fotografico sulle eruzioni, valorizzando il lavoro sul campo dei vulcanologi."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2013, Vulcania crea De lave et de feu en torno a los volcanes rojos y las fotografías de Katia y Maurice Krafft. La exposición complementa las atracciones inmersivas del parque con una mirada fotográfica a las erupciones y destaca el trabajo de campo de los vulcanólogos."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2013 roku Vulcania tworzy De lave et de feu, wystawę o czerwonych wulkanach z fotografiami Katii i Maurice’a Krafftów. Uzupełnia ona immersyjne atrakcje parku o fotograficzne spojrzenie na erupcje oraz przybliża terenową pracę wulkanologów."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2013, Vulcania cria De lave et de feu em torno dos vulcões vermelhos e das fotografias de Katia e Maurice Krafft. A exposição complementa as atrações imersivas do parque com um olhar fotográfico sobre as erupções e destaca o trabalho de campo dos vulcanólogos."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué De lave et de feu, mars 2013, reproduit par ParcPlaza",
+                "url": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-bouleversements-opening-2015",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "itemId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "parkItemId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2015,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Bouleversements relie les éruptions à leurs conséquences"
+              },
+              {
+                "languageCode": "en",
+                "value": "Bouleversements connects eruptions with their consequences"
+              },
+              {
+                "languageCode": "de",
+                "value": "Bouleversements verbindet Eruptionen mit ihren Folgen"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Bouleversements verbindt uitbarstingen met hun gevolgen"
+              },
+              {
+                "languageCode": "it",
+                "value": "Bouleversements collega le eruzioni alle loro conseguenze"
+              },
+              {
+                "languageCode": "es",
+                "value": "Bouleversements conecta las erupciones con sus consecuencias"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Bouleversements ukazuje następstwa erupcji"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Bouleversements liga as erupções às suas consequências"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Bouleversements rejoint les nouveautés de 2015 avec une exposition organisée autour de six épisodes volcaniques. Les changements de paysages et les effets sur les sociétés humaines déplacent le regard vers les conséquences des éruptions, au-delà du spectacle de la lave et des cendres."
+              },
+              {
+                "languageCode": "en",
+                "value": "Bouleversements joins the 2015 additions with an exhibition built around six volcanic episodes. Changes to landscapes and effects on human societies turn attention towards the consequences of eruptions, looking beyond the spectacle of lava and ash."
+              },
+              {
+                "languageCode": "de",
+                "value": "Bouleversements gehört 2015 zu den Neuheiten und behandelt sechs vulkanische Episoden. Veränderungen der Landschaft und Auswirkungen auf menschliche Gesellschaften lenken den Blick auf die Folgen von Eruptionen und erweitern das Thema über das Schauspiel von Lava und Asche hinaus."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Bouleversements verschijnt in 2015 als een tentoonstelling rond zes vulkanische gebeurtenissen. Veranderingen in het landschap en effecten op menselijke samenlevingen verleggen de aandacht naar de gevolgen van uitbarstingen, voorbij het schouwspel van lava en as."
+              },
+              {
+                "languageCode": "it",
+                "value": "Bouleversements entra tra le novità del 2015 con una mostra dedicata a sei episodi vulcanici. Le trasformazioni del paesaggio e gli effetti sulle società umane spostano l’attenzione sulle conseguenze delle eruzioni, oltre lo spettacolo della lava e delle ceneri."
+              },
+              {
+                "languageCode": "es",
+                "value": "Bouleversements se incorpora a las novedades de 2015 con una exposición sobre seis episodios volcánicos. Los cambios del paisaje y los efectos sobre las sociedades humanas desplazan la atención hacia las consecuencias de las erupciones, más allá del espectáculo de lava y ceniza."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Bouleversements dołącza do nowości z 2015 roku jako wystawa poświęcona sześciu epizodom wulkanicznym. Zmiany krajobrazu i wpływ na ludzkie społeczności kierują uwagę ku następstwom erupcji, poszerzając temat poza widowisko tworzone przez lawę i popiół."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Bouleversements integra as novidades de 2015 com uma exposição dedicada a seis episódios vulcânicos. As alterações da paisagem e os efeitos nas sociedades humanas deslocam a atenção para as consequências das erupções, para além do espetáculo da lava e das cinzas."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué des nouveautés 2015, reproduit par ParcPlaza",
+                "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "mainImageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+          },
+          {
+            "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "itemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkItemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2015,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Les dinosaures prennent place dans les extérieurs"
+              },
+              {
+                "languageCode": "en",
+                "value": "Dinosaurs take their place in the outdoor grounds"
+              },
+              {
+                "languageCode": "de",
+                "value": "Dinosaurier ziehen in die Außenanlagen ein"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Dinosauriërs krijgen een plek in de buitenruimte"
+              },
+              {
+                "languageCode": "it",
+                "value": "I dinosauri arrivano negli spazi esterni"
+              },
+              {
+                "languageCode": "es",
+                "value": "Los dinosaurios ocupan los espacios exteriores"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Dinozaury pojawiają się na terenach zewnętrznych"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Os dinossauros chegam aos espaços exteriores"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Avec Sur les traces des dinosaures, la saison 2015 introduit un parcours de créatures préhistoriques animé en partenariat avec Paléopolis. Le tyrannosaure et ses voisins peuplent les extérieurs de Vulcania, donnant une présence spectaculaire au thème de la vie ancienne dans un parc consacré à la Terre."
+              },
+              {
+                "languageCode": "en",
+                "value": "Sur les traces des dinosaures brings a trail of animated prehistoric creatures to the 2015 season in partnership with Paléopolis. Tyrannosaurus and its neighbours populate Vulcania’s outdoor grounds, giving ancient life a spectacular presence in a park devoted to the Earth."
+              },
+              {
+                "languageCode": "de",
+                "value": "Mit Sur les traces des dinosaures erhält die Saison 2015 einen Rundgang mit beweglichen Urzeitwesen in Zusammenarbeit mit Paléopolis. Tyrannosaurus und seine Nachbarn bevölkern Vulcanias Außenanlagen und geben dem Thema früheren Lebens einen eindrucksvollen Platz in dem der Erde gewidmeten Park."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Sur les traces des dinosaures brengt in 2015 een route met bewegende prehistorische dieren, in samenwerking met Paléopolis. Tyrannosaurus en zijn buren bevolken de buitenruimte van Vulcania en geven het leven uit de prehistorie een opvallende plaats in dit park over de aarde."
+              },
+              {
+                "languageCode": "it",
+                "value": "Con Sur les traces des dinosaures, la stagione 2015 introduce un percorso di creature preistoriche animate in collaborazione con Paléopolis. Il tirannosauro e i suoi vicini popolano gli spazi esterni di Vulcania, dando una presenza spettacolare alla vita antica in un parco dedicato alla Terra."
+              },
+              {
+                "languageCode": "es",
+                "value": "Sur les traces des dinosaures introduce en la temporada 2015 un recorrido de criaturas prehistóricas animadas en colaboración con Paléopolis. El tiranosaurio y sus vecinos pueblan los exteriores de Vulcania y dan una presencia espectacular a la vida antigua en un parque dedicado a la Tierra."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Sur les traces des dinosaures wprowadza w sezonie 2015 trasę z ruchomymi prehistorycznymi stworzeniami, przygotowaną we współpracy z Paléopolis. Tyranozaur i jego sąsiedzi zamieszkują tereny zewnętrzne Vulcanii, nadając dawnemu życiu widowiskową obecność w parku poświęconym Ziemi."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Com Sur les traces des dinosaures, a temporada de 2015 introduz um percurso de criaturas pré-históricas animadas em parceria com Paléopolis. O tiranossauro e os seus vizinhos povoam os exteriores de Vulcania, dando uma presença espetacular à vida antiga num parque dedicado à Terra."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué des nouveautés 2015, reproduit par ParcPlaza",
+                "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "mainImageId": "b8cc99ade2314af8b567ef80c680c77e"
+          },
+          {
+            "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "itemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkItemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2017,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "DefinitiveClosure",
+            "isVisible": false,
+            "isMajor": true,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Une dernière saison conclut le parcours des dinosaures"
+              },
+              {
+                "languageCode": "en",
+                "value": "A final season brings the dinosaur trail to a close"
+              },
+              {
+                "languageCode": "de",
+                "value": "Eine letzte Saison beschließt den Dinosaurierpfad"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Een laatste seizoen sluit de dinosaurusroute af"
+              },
+              {
+                "languageCode": "it",
+                "value": "Un’ultima stagione conclude il percorso dei dinosauri"
+              },
+              {
+                "languageCode": "es",
+                "value": "Una última temporada cierra el recorrido de dinosaurios"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ostatni sezon zamyka trasę dinozaurów"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Uma última temporada encerra o percurso dos dinossauros"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le parcours des dinosaures s’achève en 2017 après trois saisons à Vulcania. De nouveaux animaux animés accompagnent cette dernière édition, qui clôt une exposition temporaire prolongée au-delà de son projet initial et renouvelée pour le quinzième anniversaire du parc."
+              },
+              {
+                "languageCode": "en",
+                "value": "The dinosaur trail ends in 2017 after three seasons at Vulcania. New animated creatures accompany this final edition, closing a temporary exhibition that ran beyond its initial plan and was refreshed for the park’s fifteenth anniversary."
+              },
+              {
+                "languageCode": "de",
+                "value": "Der Dinosaurierpfad endet 2017 nach drei Spielzeiten in Vulcania. Neue bewegliche Tiere begleiten diese letzte Ausgabe. Damit schließt eine temporäre Ausstellung, die länger als ursprünglich geplant bestand und zum fünfzehnten Parkgeburtstag noch einmal erneuert wurde."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De dinosaurusroute eindigt in 2017 na drie seizoenen in Vulcania. Nieuwe bewegende dieren vergezellen deze laatste editie. Daarmee sluit een tijdelijke tentoonstelling die langer bleef dan aanvankelijk gepland en voor het vijftienjarig bestaan van het park werd vernieuwd."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il percorso dei dinosauri termina nel 2017 dopo tre stagioni a Vulcania. Nuove creature animate accompagnano l’ultima edizione, chiudendo una mostra temporanea prolungata oltre il progetto iniziale e rinnovata per il quindicesimo anniversario del parco."
+              },
+              {
+                "languageCode": "es",
+                "value": "El recorrido de dinosaurios termina en 2017 tras tres temporadas en Vulcania. Nuevas criaturas animadas acompañan esta última edición, que cierra una exposición temporal prolongada más allá del proyecto inicial y renovada para el decimoquinto aniversario del parque."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Trasa dinozaurów kończy działalność w 2017 roku po trzech sezonach w Vulcanii. Ostatnią odsłonę wzbogacają nowe ruchome zwierzęta. Zamyka ona wystawę czasową, przedłużoną względem pierwotnego planu i odnowioną z okazji piętnastych urodzin parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O percurso dos dinossauros termina em 2017, após três temporadas em Vulcania. Novas criaturas animadas acompanham esta última edição, encerrando uma exposição temporária prolongada para além do projeto inicial e renovada para o décimo quinto aniversário do parque."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Clermont Auvergne Métropole — DEL20190215_041, bilan SEM Volcans 2017, pages 4 et 10",
+                "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — communiqué du quinzième anniversaire et dernière saison des dinosaures, reproduit par ParksTrip",
+                "url": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "mainImageId": "b8cc99ade2314af8b567ef80c680c77e"
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-france-vulcania-three-exhibitions-history",
+        "notes": "Four private facts only on the three qualified items; year precision, no season-start day inferred. Dinosaur closure2017 retrospectively confirmed by municipal SEM2017 report pp4/10, not merely projected. De lave is exhibition, no invented2015 closure or merger with Bouleversements. 2015 photographs contextual for opening/closure, not claimed closure-day images. No usable faithful De lave exhibition photograph found after official/press/blog searches; no generic eruption substituted. All64localized fields personally authored and reviewed in eight languages; no claims of volcanic causation of French Revolution/dinosaur extinction. Existing audited public scope preserved."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "435bb0bf-69f3-4ee9-a716-22534abaed95",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:04:59.2523106Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "fab37d9a-5e25-4766-920f-491bba8fcbec",
+        "entityKey": "vulcania-de-lave-et-de-feu-opening-2013",
+        "displayName": "Une exposition donne à voir les volcans rouges",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-de-lave-et-de-feu-opening-2013"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "533717be-96a1-428a-8d19-d4b6b16bfe18"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "533717be-96a1-428a-8d19-d4b6b16bfe18"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2013"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine neue Ausstellung widmet sich roten Vulkanen, en:A new exhibition brings red volcanoes into view, es:Una nueva exposición acerca los volcanes rojos, fr:Une exposition donne à voir les volcans rouges, it:Una nuova mostra racconta i vulcani rossi, nl:Een nieuwe tentoonstelling belicht rode vulkanen, pl:Nowa wystawa przybliża czerwone wulkany, pt:Uma nova exposição revela os vulcões vermelhos"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2013 gestaltet Vulcania De lave et de feu rund um rote Vulkane und Fotografien von Katia und Maurice Krafft. Die Ausstellung ergänzt die immersiven Erlebnisse des Parks um einen fotografischen Blick auf Eruptionen und rückt die Feldarbeit der Vulkanologen in den Mittelpunkt., en:In 2013, Vulcania creates De lave et de feu around red volcanoes and photographs by Katia and Maurice Krafft. The exhibition adds a photographic perspective on eruptions alongside the park’s immersive attractions, highlighting the volcanologists’ work in the field., es:En 2013, Vulcania crea De lave et de feu en torno a los volcanes rojos y las fotografías de Katia y Maurice Krafft. La exposición complementa las atracciones inmersivas del parque con una mirada fotográfica a las erupciones y destaca el trabajo de campo de los vulcanólogos., fr:En 2013, Vulcania crée De lave et de feu autour des volcans rouges et des photographies de Katia et Maurice Krafft. Cette exposition ajoute un regard photographique sur les éruptions aux animations immersives du parc et met en lumière le travail de terrain des volcanologues., it:Nel 2013 Vulcania realizza De lave et de feu, dedicata ai vulcani rossi e alle fotografie di Katia e Maurice Krafft. La mostra affianca alle attrazioni immersive del parco uno sguardo fotografico sulle eruzioni, valorizzando il lavoro sul campo dei vulcanologi., nl:In 2013 maakt Vulcania De lave et de feu over rode vulkanen, met foto’s van Katia en Maurice Krafft. Naast de meeslepende parkattracties biedt de tentoonstelling een fotografische blik op uitbarstingen en brengt ze het veldwerk van de vulkanologen onder de aandacht., pl:W 2013 roku Vulcania tworzy De lave et de feu, wystawę o czerwonych wulkanach z fotografiami Katii i Maurice’a Krafftów. Uzupełnia ona immersyjne atrakcje parku o fotograficzne spojrzenie na erupcje oraz przybliża terenową pracę wulkanologów., pt:Em 2013, Vulcania cria De lave et de feu em torno dos vulcões vermelhos e das fotografias de Katia e Maurice Krafft. A exposição complementa as atrações imersivas do parque com um olhar fotográfico sobre as erupções e destaca o trabalho de campo dos vulcanólogos."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 De lave et de feu, mars 2013, reproduit par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "42ae6141-3145-43b5-abe3-76a68dc337a3",
+        "entityKey": "vulcania-bouleversements-opening-2015",
+        "displayName": "Bouleversements relie les éruptions à leurs conséquences",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-bouleversements-opening-2015"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "35ceac39-66c0-4c8b-bff7-2095f8318332"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "35ceac39-66c0-4c8b-bff7-2095f8318332"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "ebd736e70aa6408bb5e8709226b2e8d4"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Bouleversements verbindet Eruptionen mit ihren Folgen, en:Bouleversements connects eruptions with their consequences, es:Bouleversements conecta las erupciones con sus consecuencias, fr:Bouleversements relie les éruptions à leurs conséquences, it:Bouleversements collega le eruzioni alle loro conseguenze, nl:Bouleversements verbindt uitbarstingen met hun gevolgen, pl:Bouleversements ukazuje następstwa erupcji, pt:Bouleversements liga as erupções às suas consequências"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Bouleversements gehört 2015 zu den Neuheiten und behandelt sechs vulkanische Episoden. Veränderungen der Landschaft und Auswirkungen auf menschliche Gesellschaften lenken den Blick auf die Folgen von Eruptionen und erweitern das Thema über das Schauspiel von Lava und Asche hinaus., en:Bouleversements joins the 2015 additions with an exhibition built around six volcanic episodes. Changes to landscapes and effects on human societies turn attention towards the consequences of eruptions, looking beyond the spectacle of lava and ash., es:Bouleversements se incorpora a las novedades de 2015 con una exposición sobre seis episodios volcánicos. Los cambios del paisaje y los efectos sobre las sociedades humanas desplazan la atención hacia las consecuencias de las erupciones, más allá del espectáculo de lava y ceniza., fr:Bouleversements rejoint les nouveautés de 2015 avec une exposition organisée autour de six épisodes volcaniques. Les changements de paysages et les effets sur les sociétés humaines déplacent le regard vers les conséquences des éruptions, au-delà du spectacle de la lave et des cendres., it:Bouleversements entra tra le novità del 2015 con una mostra dedicata a sei episodi vulcanici. Le trasformazioni del paesaggio e gli effetti sulle società umane spostano l’attenzione sulle conseguenze delle eruzioni, oltre lo spettacolo della lava e delle ceneri., nl:Bouleversements verschijnt in 2015 als een tentoonstelling rond zes vulkanische gebeurtenissen. Veranderingen in het landschap en effecten op menselijke samenlevingen verleggen de aandacht naar de gevolgen van uitbarstingen, voorbij het schouwspel van lava en as., pl:Bouleversements dołącza do nowości z 2015 roku jako wystawa poświęcona sześciu epizodom wulkanicznym. Zmiany krajobrazu i wpływ na ludzkie społeczności kierują uwagę ku następstwom erupcji, poszerzając temat poza widowisko tworzone przez lawę i popiół., pt:Bouleversements integra as novidades de 2015 com uma exposição dedicada a seis episódios vulcânicos. As alterações da paisagem e os efeitos nas sociedades humanas deslocam a atenção para as consequências das erupções, para além do espetáculo da lava e das cinzas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 des nouveaut\\u00E9s 2015, reproduit par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "3e663544-c28c-42d1-9a24-3e480f1ef917",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+        "displayName": "Les dinosaures prennent place dans les extérieurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-sur-les-traces-des-dinosaures-opening-2015"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "b8cc99ade2314af8b567ef80c680c77e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Dinosaurier ziehen in die Außenanlagen ein, en:Dinosaurs take their place in the outdoor grounds, es:Los dinosaurios ocupan los espacios exteriores, fr:Les dinosaures prennent place dans les extérieurs, it:I dinosauri arrivano negli spazi esterni, nl:Dinosauriërs krijgen een plek in de buitenruimte, pl:Dinozaury pojawiają się na terenach zewnętrznych, pt:Os dinossauros chegam aos espaços exteriores"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Mit Sur les traces des dinosaures erhält die Saison 2015 einen Rundgang mit beweglichen Urzeitwesen in Zusammenarbeit mit Paléopolis. Tyrannosaurus und seine Nachbarn bevölkern Vulcanias Außenanlagen und geben dem Thema früheren Lebens einen eindrucksvollen Platz in dem der Erde gewidmeten Park., en:Sur les traces des dinosaures brings a trail of animated prehistoric creatures to the 2015 season in partnership with Paléopolis. Tyrannosaurus and its neighbours populate Vulcania’s outdoor grounds, giving ancient life a spectacular presence in a park devoted to the Earth., es:Sur les traces des dinosaures introduce en la temporada 2015 un recorrido de criaturas prehistóricas animadas en colaboración con Paléopolis. El tiranosaurio y sus vecinos pueblan los exteriores de Vulcania y dan una presencia espectacular a la vida antigua en un parque dedicado a la Tierra., fr:Avec Sur les traces des dinosaures, la saison 2015 introduit un parcours de créatures préhistoriques animé en partenariat avec Paléopolis. Le tyrannosaure et ses voisins peuplent les extérieurs de Vulcania, donnant une présence spectaculaire au thème de la vie ancienne dans un parc consacré à la Terre., it:Con Sur les traces des dinosaures, la stagione 2015 introduce un percorso di creature preistoriche animate in collaborazione con Paléopolis. Il tirannosauro e i suoi vicini popolano gli spazi esterni di Vulcania, dando una presenza spettacolare alla vita antica in un parco dedicato alla Terra., nl:Sur les traces des dinosaures brengt in 2015 een route met bewegende prehistorische dieren, in samenwerking met Paléopolis. Tyrannosaurus en zijn buren bevolken de buitenruimte van Vulcania en geven het leven uit de prehistorie een opvallende plaats in dit park over de aarde., pl:Sur les traces des dinosaures wprowadza w sezonie 2015 trasę z ruchomymi prehistorycznymi stworzeniami, przygotowaną we współpracy z Paléopolis. Tyranozaur i jego sąsiedzi zamieszkują tereny zewnętrzne Vulcanii, nadając dawnemu życiu widowiskową obecność w parku poświęconym Ziemi., pt:Com Sur les traces des dinosaures, a temporada de 2015 introduz um percurso de criaturas pré-históricas animadas em parceria com Paléopolis. O tiranossauro e os seus vizinhos povoam os exteriores de Vulcania, dando uma presença espetacular à vida antiga num parque dedicado à Terra."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 des nouveaut\\u00E9s 2015, reproduit par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "cc0eb379-29c6-4402-b2fc-0194d2098146",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+        "displayName": "Une dernière saison conclut le parcours des dinosaures",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "DefinitiveClosure"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "b8cc99ade2314af8b567ef80c680c77e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine letzte Saison beschließt den Dinosaurierpfad, en:A final season brings the dinosaur trail to a close, es:Una última temporada cierra el recorrido de dinosaurios, fr:Une dernière saison conclut le parcours des dinosaures, it:Un’ultima stagione conclude il percorso dei dinosauri, nl:Een laatste seizoen sluit de dinosaurusroute af, pl:Ostatni sezon zamyka trasę dinozaurów, pt:Uma última temporada encerra o percurso dos dinossauros"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Dinosaurierpfad endet 2017 nach drei Spielzeiten in Vulcania. Neue bewegliche Tiere begleiten diese letzte Ausgabe. Damit schließt eine temporäre Ausstellung, die länger als ursprünglich geplant bestand und zum fünfzehnten Parkgeburtstag noch einmal erneuert wurde., en:The dinosaur trail ends in 2017 after three seasons at Vulcania. New animated creatures accompany this final edition, closing a temporary exhibition that ran beyond its initial plan and was refreshed for the park’s fifteenth anniversary., es:El recorrido de dinosaurios termina en 2017 tras tres temporadas en Vulcania. Nuevas criaturas animadas acompañan esta última edición, que cierra una exposición temporal prolongada más allá del proyecto inicial y renovada para el decimoquinto aniversario del parque., fr:Le parcours des dinosaures s’achève en 2017 après trois saisons à Vulcania. De nouveaux animaux animés accompagnent cette dernière édition, qui clôt une exposition temporaire prolongée au-delà de son projet initial et renouvelée pour le quinzième anniversaire du parc., it:Il percorso dei dinosauri termina nel 2017 dopo tre stagioni a Vulcania. Nuove creature animate accompagnano l’ultima edizione, chiudendo una mostra temporanea prolungata oltre il progetto iniziale e rinnovata per il quindicesimo anniversario del parco., nl:De dinosaurusroute eindigt in 2017 na drie seizoenen in Vulcania. Nieuwe bewegende dieren vergezellen deze laatste editie. Daarmee sluit een tijdelijke tentoonstelling die langer bleef dan aanvankelijk gepland en voor het vijftienjarig bestaan van het park werd vernieuwd., pl:Trasa dinozaurów kończy działalność w 2017 roku po trzech sezonach w Vulcanii. Ostatnią odsłonę wzbogacają nowe ruchome zwierzęta. Zamyka ona wystawę czasową, przedłużoną względem pierwotnego planu i odnowioną z okazji piętnastych urodzin parku., pt:O percurso dos dinossauros termina em 2017, após três temporadas em Vulcania. Novas criaturas animadas acompanham esta última edição, encerrando uma exposição temporária prolongada para além do projeto inicial e renovada para o décimo quinto aniversário do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 DEL20190215_041, bilan SEM Volcans 2017, pages 4 et 10\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 du quinzi\\u00E8me anniversaire et derni\\u00E8re saison des dinosaures, reproduit par ParksTrip\",\"Url\":\"https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "84e4bc12-e0fb-4262-a42c-d0338469903b",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:05:20.2218856Z",
+    "appliedAtUtc": "2026-11-15T22:05:20.2218862Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52",
+        "entityKey": "vulcania-de-lave-et-de-feu-opening-2013",
+        "displayName": "Une exposition donne à voir les volcans rouges",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-de-lave-et-de-feu-opening-2013"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "533717be-96a1-428a-8d19-d4b6b16bfe18"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "533717be-96a1-428a-8d19-d4b6b16bfe18"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2013"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine neue Ausstellung widmet sich roten Vulkanen, en:A new exhibition brings red volcanoes into view, es:Una nueva exposición acerca los volcanes rojos, fr:Une exposition donne à voir les volcans rouges, it:Una nuova mostra racconta i vulcani rossi, nl:Een nieuwe tentoonstelling belicht rode vulkanen, pl:Nowa wystawa przybliża czerwone wulkany, pt:Uma nova exposição revela os vulcões vermelhos"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2013 gestaltet Vulcania De lave et de feu rund um rote Vulkane und Fotografien von Katia und Maurice Krafft. Die Ausstellung ergänzt die immersiven Erlebnisse des Parks um einen fotografischen Blick auf Eruptionen und rückt die Feldarbeit der Vulkanologen in den Mittelpunkt., en:In 2013, Vulcania creates De lave et de feu around red volcanoes and photographs by Katia and Maurice Krafft. The exhibition adds a photographic perspective on eruptions alongside the park’s immersive attractions, highlighting the volcanologists’ work in the field., es:En 2013, Vulcania crea De lave et de feu en torno a los volcanes rojos y las fotografías de Katia y Maurice Krafft. La exposición complementa las atracciones inmersivas del parque con una mirada fotográfica a las erupciones y destaca el trabajo de campo de los vulcanólogos., fr:En 2013, Vulcania crée De lave et de feu autour des volcans rouges et des photographies de Katia et Maurice Krafft. Cette exposition ajoute un regard photographique sur les éruptions aux animations immersives du parc et met en lumière le travail de terrain des volcanologues., it:Nel 2013 Vulcania realizza De lave et de feu, dedicata ai vulcani rossi e alle fotografie di Katia e Maurice Krafft. La mostra affianca alle attrazioni immersive del parco uno sguardo fotografico sulle eruzioni, valorizzando il lavoro sul campo dei vulcanologi., nl:In 2013 maakt Vulcania De lave et de feu over rode vulkanen, met foto’s van Katia en Maurice Krafft. Naast de meeslepende parkattracties biedt de tentoonstelling een fotografische blik op uitbarstingen en brengt ze het veldwerk van de vulkanologen onder de aandacht., pl:W 2013 roku Vulcania tworzy De lave et de feu, wystawę o czerwonych wulkanach z fotografiami Katii i Maurice’a Krafftów. Uzupełnia ona immersyjne atrakcje parku o fotograficzne spojrzenie na erupcje oraz przybliża terenową pracę wulkanologów., pt:Em 2013, Vulcania cria De lave et de feu em torno dos vulcões vermelhos e das fotografias de Katia e Maurice Krafft. A exposição complementa as atrações imersivas do parque com um olhar fotográfico sobre as erupções e destaca o trabalho de campo dos vulcanólogos."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 De lave et de feu, mars 2013, reproduit par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "a629a2e6-105a-4174-b1b4-1438e5fea3a6",
+        "entityKey": "vulcania-bouleversements-opening-2015",
+        "displayName": "Bouleversements relie les éruptions à leurs conséquences",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-bouleversements-opening-2015"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "35ceac39-66c0-4c8b-bff7-2095f8318332"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "35ceac39-66c0-4c8b-bff7-2095f8318332"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "ebd736e70aa6408bb5e8709226b2e8d4"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Bouleversements verbindet Eruptionen mit ihren Folgen, en:Bouleversements connects eruptions with their consequences, es:Bouleversements conecta las erupciones con sus consecuencias, fr:Bouleversements relie les éruptions à leurs conséquences, it:Bouleversements collega le eruzioni alle loro conseguenze, nl:Bouleversements verbindt uitbarstingen met hun gevolgen, pl:Bouleversements ukazuje następstwa erupcji, pt:Bouleversements liga as erupções às suas consequências"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Bouleversements gehört 2015 zu den Neuheiten und behandelt sechs vulkanische Episoden. Veränderungen der Landschaft und Auswirkungen auf menschliche Gesellschaften lenken den Blick auf die Folgen von Eruptionen und erweitern das Thema über das Schauspiel von Lava und Asche hinaus., en:Bouleversements joins the 2015 additions with an exhibition built around six volcanic episodes. Changes to landscapes and effects on human societies turn attention towards the consequences of eruptions, looking beyond the spectacle of lava and ash., es:Bouleversements se incorpora a las novedades de 2015 con una exposición sobre seis episodios volcánicos. Los cambios del paisaje y los efectos sobre las sociedades humanas desplazan la atención hacia las consecuencias de las erupciones, más allá del espectáculo de lava y ceniza., fr:Bouleversements rejoint les nouveautés de 2015 avec une exposition organisée autour de six épisodes volcaniques. Les changements de paysages et les effets sur les sociétés humaines déplacent le regard vers les conséquences des éruptions, au-delà du spectacle de la lave et des cendres., it:Bouleversements entra tra le novità del 2015 con una mostra dedicata a sei episodi vulcanici. Le trasformazioni del paesaggio e gli effetti sulle società umane spostano l’attenzione sulle conseguenze delle eruzioni, oltre lo spettacolo della lava e delle ceneri., nl:Bouleversements verschijnt in 2015 als een tentoonstelling rond zes vulkanische gebeurtenissen. Veranderingen in het landschap en effecten op menselijke samenlevingen verleggen de aandacht naar de gevolgen van uitbarstingen, voorbij het schouwspel van lava en as., pl:Bouleversements dołącza do nowości z 2015 roku jako wystawa poświęcona sześciu epizodom wulkanicznym. Zmiany krajobrazu i wpływ na ludzkie społeczności kierują uwagę ku następstwom erupcji, poszerzając temat poza widowisko tworzone przez lawę i popiół., pt:Bouleversements integra as novidades de 2015 com uma exposição dedicada a seis episódios vulcânicos. As alterações da paisagem e os efeitos nas sociedades humanas deslocam a atenção para as consequências das erupções, para além do espetáculo da lava e das cinzas."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 des nouveaut\\u00E9s 2015, reproduit par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5c686348-534d-4c4c-ab67-b6650f1d85d9",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+        "displayName": "Les dinosaures prennent place dans les extérieurs",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-sur-les-traces-des-dinosaures-opening-2015"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2015"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "b8cc99ade2314af8b567ef80c680c77e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Dinosaurier ziehen in die Außenanlagen ein, en:Dinosaurs take their place in the outdoor grounds, es:Los dinosaurios ocupan los espacios exteriores, fr:Les dinosaures prennent place dans les extérieurs, it:I dinosauri arrivano negli spazi esterni, nl:Dinosauriërs krijgen een plek in de buitenruimte, pl:Dinozaury pojawiają się na terenach zewnętrznych, pt:Os dinossauros chegam aos espaços exteriores"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Mit Sur les traces des dinosaures erhält die Saison 2015 einen Rundgang mit beweglichen Urzeitwesen in Zusammenarbeit mit Paléopolis. Tyrannosaurus und seine Nachbarn bevölkern Vulcanias Außenanlagen und geben dem Thema früheren Lebens einen eindrucksvollen Platz in dem der Erde gewidmeten Park., en:Sur les traces des dinosaures brings a trail of animated prehistoric creatures to the 2015 season in partnership with Paléopolis. Tyrannosaurus and its neighbours populate Vulcania’s outdoor grounds, giving ancient life a spectacular presence in a park devoted to the Earth., es:Sur les traces des dinosaures introduce en la temporada 2015 un recorrido de criaturas prehistóricas animadas en colaboración con Paléopolis. El tiranosaurio y sus vecinos pueblan los exteriores de Vulcania y dan una presencia espectacular a la vida antigua en un parque dedicado a la Tierra., fr:Avec Sur les traces des dinosaures, la saison 2015 introduit un parcours de créatures préhistoriques animé en partenariat avec Paléopolis. Le tyrannosaure et ses voisins peuplent les extérieurs de Vulcania, donnant une présence spectaculaire au thème de la vie ancienne dans un parc consacré à la Terre., it:Con Sur les traces des dinosaures, la stagione 2015 introduce un percorso di creature preistoriche animate in collaborazione con Paléopolis. Il tirannosauro e i suoi vicini popolano gli spazi esterni di Vulcania, dando una presenza spettacolare alla vita antica in un parco dedicato alla Terra., nl:Sur les traces des dinosaures brengt in 2015 een route met bewegende prehistorische dieren, in samenwerking met Paléopolis. Tyrannosaurus en zijn buren bevolken de buitenruimte van Vulcania en geven het leven uit de prehistorie een opvallende plaats in dit park over de aarde., pl:Sur les traces des dinosaures wprowadza w sezonie 2015 trasę z ruchomymi prehistorycznymi stworzeniami, przygotowaną we współpracy z Paléopolis. Tyranozaur i jego sąsiedzi zamieszkują tereny zewnętrzne Vulcanii, nadając dawnemu życiu widowiskową obecność w parku poświęconym Ziemi., pt:Com Sur les traces des dinosaures, a temporada de 2015 introduz um percurso de criaturas pré-históricas animadas em parceria com Paléopolis. O tiranossauro e os seus vizinhos povoam os exteriores de Vulcania, dando uma presença espetacular à vida antiga num parque dedicado à Terra."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 des nouveaut\\u00E9s 2015, reproduit par ParcPlaza\",\"Url\":\"https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5100b2b6-3cdb-46f6-be2d-4246f8e24615",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+        "displayName": "Une dernière saison conclut le parcours des dinosaures",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2017"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "DefinitiveClosure"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "b8cc99ade2314af8b567ef80c680c77e"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Eine letzte Saison beschließt den Dinosaurierpfad, en:A final season brings the dinosaur trail to a close, es:Una última temporada cierra el recorrido de dinosaurios, fr:Une dernière saison conclut le parcours des dinosaures, it:Un’ultima stagione conclude il percorso dei dinosauri, nl:Een laatste seizoen sluit de dinosaurusroute af, pl:Ostatni sezon zamyka trasę dinozaurów, pt:Uma última temporada encerra o percurso dos dinossauros"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Der Dinosaurierpfad endet 2017 nach drei Spielzeiten in Vulcania. Neue bewegliche Tiere begleiten diese letzte Ausgabe. Damit schließt eine temporäre Ausstellung, die länger als ursprünglich geplant bestand und zum fünfzehnten Parkgeburtstag noch einmal erneuert wurde., en:The dinosaur trail ends in 2017 after three seasons at Vulcania. New animated creatures accompany this final edition, closing a temporary exhibition that ran beyond its initial plan and was refreshed for the park’s fifteenth anniversary., es:El recorrido de dinosaurios termina en 2017 tras tres temporadas en Vulcania. Nuevas criaturas animadas acompañan esta última edición, que cierra una exposición temporal prolongada más allá del proyecto inicial y renovada para el decimoquinto aniversario del parque., fr:Le parcours des dinosaures s’achève en 2017 après trois saisons à Vulcania. De nouveaux animaux animés accompagnent cette dernière édition, qui clôt une exposition temporaire prolongée au-delà de son projet initial et renouvelée pour le quinzième anniversaire du parc., it:Il percorso dei dinosauri termina nel 2017 dopo tre stagioni a Vulcania. Nuove creature animate accompagnano l’ultima edizione, chiudendo una mostra temporanea prolungata oltre il progetto iniziale e rinnovata per il quindicesimo anniversario del parco., nl:De dinosaurusroute eindigt in 2017 na drie seizoenen in Vulcania. Nieuwe bewegende dieren vergezellen deze laatste editie. Daarmee sluit een tijdelijke tentoonstelling die langer bleef dan aanvankelijk gepland en voor het vijftienjarig bestaan van het park werd vernieuwd., pl:Trasa dinozaurów kończy działalność w 2017 roku po trzech sezonach w Vulcanii. Ostatnią odsłonę wzbogacają nowe ruchome zwierzęta. Zamyka ona wystawę czasową, przedłużoną względem pierwotnego planu i odnowioną z okazji piętnastych urodzin parku., pt:O percurso dos dinossauros termina em 2017, após três temporadas em Vulcania. Novas criaturas animadas acompanham esta última edição, encerrando uma exposição temporária prolongada para além do projeto inicial e renovada para o décimo quinto aniversário do parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 DEL20190215_041, bilan SEM Volcans 2017, pages 4 et 10\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 du quinzi\\u00E8me anniversaire et derni\\u00E8re saison des dinosaures, reproduit par ParksTrip\",\"Url\":\"https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-de-lave-et-de-feu-opening-2013",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+      "itemId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+      "parkItemId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2013,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Une exposition donne à voir les volcans rouges"
+        },
+        {
+          "languageCode": "en",
+          "value": "A new exhibition brings red volcanoes into view"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine neue Ausstellung widmet sich roten Vulkanen"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een nieuwe tentoonstelling belicht rode vulkanen"
+        },
+        {
+          "languageCode": "it",
+          "value": "Una nuova mostra racconta i vulcani rossi"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una nueva exposición acerca los volcanes rojos"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Nowa wystawa przybliża czerwone wulkany"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma nova exposição revela os vulcões vermelhos"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "En 2013, Vulcania crée De lave et de feu autour des volcans rouges et des photographies de Katia et Maurice Krafft. Cette exposition ajoute un regard photographique sur les éruptions aux animations immersives du parc et met en lumière le travail de terrain des volcanologues."
+        },
+        {
+          "languageCode": "en",
+          "value": "In 2013, Vulcania creates De lave et de feu around red volcanoes and photographs by Katia and Maurice Krafft. The exhibition adds a photographic perspective on eruptions alongside the park’s immersive attractions, highlighting the volcanologists’ work in the field."
+        },
+        {
+          "languageCode": "de",
+          "value": "2013 gestaltet Vulcania De lave et de feu rund um rote Vulkane und Fotografien von Katia und Maurice Krafft. Die Ausstellung ergänzt die immersiven Erlebnisse des Parks um einen fotografischen Blick auf Eruptionen und rückt die Feldarbeit der Vulkanologen in den Mittelpunkt."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In 2013 maakt Vulcania De lave et de feu over rode vulkanen, met foto’s van Katia en Maurice Krafft. Naast de meeslepende parkattracties biedt de tentoonstelling een fotografische blik op uitbarstingen en brengt ze het veldwerk van de vulkanologen onder de aandacht."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel 2013 Vulcania realizza De lave et de feu, dedicata ai vulcani rossi e alle fotografie di Katia e Maurice Krafft. La mostra affianca alle attrazioni immersive del parco uno sguardo fotografico sulle eruzioni, valorizzando il lavoro sul campo dei vulcanologi."
+        },
+        {
+          "languageCode": "es",
+          "value": "En 2013, Vulcania crea De lave et de feu en torno a los volcanes rojos y las fotografías de Katia y Maurice Krafft. La exposición complementa las atracciones inmersivas del parque con una mirada fotográfica a las erupciones y destaca el trabajo de campo de los vulcanólogos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W 2013 roku Vulcania tworzy De lave et de feu, wystawę o czerwonych wulkanach z fotografiami Katii i Maurice’a Krafftów. Uzupełnia ona immersyjne atrakcje parku o fotograficzne spojrzenie na erupcje oraz przybliża terenową pracę wulkanologów."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em 2013, Vulcania cria De lave et de feu em torno dos vulcões vermelhos e das fotografias de Katia e Maurice Krafft. A exposição complementa as atrações imersivas do parque com um olhar fotográfico sobre as erupções e destaca o trabalho de campo dos vulcanólogos."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — communiqué De lave et de feu, mars 2013, reproduit par ParcPlaza",
+          "url": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52"
+    },
+    {
+      "key": "vulcania-bouleversements-opening-2015",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+      "itemId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+      "parkItemId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2015,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Bouleversements relie les éruptions à leurs conséquences"
+        },
+        {
+          "languageCode": "en",
+          "value": "Bouleversements connects eruptions with their consequences"
+        },
+        {
+          "languageCode": "de",
+          "value": "Bouleversements verbindet Eruptionen mit ihren Folgen"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bouleversements verbindt uitbarstingen met hun gevolgen"
+        },
+        {
+          "languageCode": "it",
+          "value": "Bouleversements collega le eruzioni alle loro conseguenze"
+        },
+        {
+          "languageCode": "es",
+          "value": "Bouleversements conecta las erupciones con sus consecuencias"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Bouleversements ukazuje następstwa erupcji"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Bouleversements liga as erupções às suas consequências"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Bouleversements rejoint les nouveautés de 2015 avec une exposition organisée autour de six épisodes volcaniques. Les changements de paysages et les effets sur les sociétés humaines déplacent le regard vers les conséquences des éruptions, au-delà du spectacle de la lave et des cendres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Bouleversements joins the 2015 additions with an exhibition built around six volcanic episodes. Changes to landscapes and effects on human societies turn attention towards the consequences of eruptions, looking beyond the spectacle of lava and ash."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bouleversements gehört 2015 zu den Neuheiten und behandelt sechs vulkanische Episoden. Veränderungen der Landschaft und Auswirkungen auf menschliche Gesellschaften lenken den Blick auf die Folgen von Eruptionen und erweitern das Thema über das Schauspiel von Lava und Asche hinaus."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bouleversements verschijnt in 2015 als een tentoonstelling rond zes vulkanische gebeurtenissen. Veranderingen in het landschap en effecten op menselijke samenlevingen verleggen de aandacht naar de gevolgen van uitbarstingen, voorbij het schouwspel van lava en as."
+        },
+        {
+          "languageCode": "it",
+          "value": "Bouleversements entra tra le novità del 2015 con una mostra dedicata a sei episodi vulcanici. Le trasformazioni del paesaggio e gli effetti sulle società umane spostano l’attenzione sulle conseguenze delle eruzioni, oltre lo spettacolo della lava e delle ceneri."
+        },
+        {
+          "languageCode": "es",
+          "value": "Bouleversements se incorpora a las novedades de 2015 con una exposición sobre seis episodios volcánicos. Los cambios del paisaje y los efectos sobre las sociedades humanas desplazan la atención hacia las consecuencias de las erupciones, más allá del espectáculo de lava y ceniza."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Bouleversements dołącza do nowości z 2015 roku jako wystawa poświęcona sześciu epizodom wulkanicznym. Zmiany krajobrazu i wpływ na ludzkie społeczności kierują uwagę ku następstwom erupcji, poszerzając temat poza widowisko tworzone przez lawę i popiół."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Bouleversements integra as novidades de 2015 com uma exposição dedicada a seis episódios vulcânicos. As alterações da paisagem e os efeitos nas sociedades humanas deslocam a atenção para as consequências das erupções, para além do espetáculo da lava e das cinzas."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — communiqué des nouveautés 2015, reproduit par ParcPlaza",
+          "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "mainImageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+      "id": "a629a2e6-105a-4174-b1b4-1438e5fea3a6"
+    },
+    {
+      "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "itemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "parkItemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2015,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Les dinosaures prennent place dans les extérieurs"
+        },
+        {
+          "languageCode": "en",
+          "value": "Dinosaurs take their place in the outdoor grounds"
+        },
+        {
+          "languageCode": "de",
+          "value": "Dinosaurier ziehen in die Außenanlagen ein"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Dinosauriërs krijgen een plek in de buitenruimte"
+        },
+        {
+          "languageCode": "it",
+          "value": "I dinosauri arrivano negli spazi esterni"
+        },
+        {
+          "languageCode": "es",
+          "value": "Los dinosaurios ocupan los espacios exteriores"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dinozaury pojawiają się na terenach zewnętrznych"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os dinossauros chegam aos espaços exteriores"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Avec Sur les traces des dinosaures, la saison 2015 introduit un parcours de créatures préhistoriques animé en partenariat avec Paléopolis. Le tyrannosaure et ses voisins peuplent les extérieurs de Vulcania, donnant une présence spectaculaire au thème de la vie ancienne dans un parc consacré à la Terre."
+        },
+        {
+          "languageCode": "en",
+          "value": "Sur les traces des dinosaures brings a trail of animated prehistoric creatures to the 2015 season in partnership with Paléopolis. Tyrannosaurus and its neighbours populate Vulcania’s outdoor grounds, giving ancient life a spectacular presence in a park devoted to the Earth."
+        },
+        {
+          "languageCode": "de",
+          "value": "Mit Sur les traces des dinosaures erhält die Saison 2015 einen Rundgang mit beweglichen Urzeitwesen in Zusammenarbeit mit Paléopolis. Tyrannosaurus und seine Nachbarn bevölkern Vulcanias Außenanlagen und geben dem Thema früheren Lebens einen eindrucksvollen Platz in dem der Erde gewidmeten Park."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Sur les traces des dinosaures brengt in 2015 een route met bewegende prehistorische dieren, in samenwerking met Paléopolis. Tyrannosaurus en zijn buren bevolken de buitenruimte van Vulcania en geven het leven uit de prehistorie een opvallende plaats in dit park over de aarde."
+        },
+        {
+          "languageCode": "it",
+          "value": "Con Sur les traces des dinosaures, la stagione 2015 introduce un percorso di creature preistoriche animate in collaborazione con Paléopolis. Il tirannosauro e i suoi vicini popolano gli spazi esterni di Vulcania, dando una presenza spettacolare alla vita antica in un parco dedicato alla Terra."
+        },
+        {
+          "languageCode": "es",
+          "value": "Sur les traces des dinosaures introduce en la temporada 2015 un recorrido de criaturas prehistóricas animadas en colaboración con Paléopolis. El tiranosaurio y sus vecinos pueblan los exteriores de Vulcania y dan una presencia espectacular a la vida antigua en un parque dedicado a la Tierra."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Sur les traces des dinosaures wprowadza w sezonie 2015 trasę z ruchomymi prehistorycznymi stworzeniami, przygotowaną we współpracy z Paléopolis. Tyranozaur i jego sąsiedzi zamieszkują tereny zewnętrzne Vulcanii, nadając dawnemu życiu widowiskową obecność w parku poświęconym Ziemi."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Com Sur les traces des dinosaures, a temporada de 2015 introduz um percurso de criaturas pré-históricas animadas em parceria com Paléopolis. O tiranossauro e os seus vizinhos povoam os exteriores de Vulcania, dando uma presença espetacular à vida antiga num parque dedicado à Terra."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — communiqué des nouveautés 2015, reproduit par ParcPlaza",
+          "url": "https://www.parcplaza.net/2015/03/vulcania-debutera-la-saison-2015-avec-3.html",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "mainImageId": "b8cc99ade2314af8b567ef80c680c77e",
+      "id": "5c686348-534d-4c4c-ab67-b6650f1d85d9"
+    },
+    {
+      "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "itemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "parkItemId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2017,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "DefinitiveClosure",
+      "isVisible": false,
+      "isMajor": true,
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Une dernière saison conclut le parcours des dinosaures"
+        },
+        {
+          "languageCode": "en",
+          "value": "A final season brings the dinosaur trail to a close"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine letzte Saison beschließt den Dinosaurierpfad"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een laatste seizoen sluit de dinosaurusroute af"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un’ultima stagione conclude il percorso dei dinosauri"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una última temporada cierra el recorrido de dinosaurios"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Ostatni sezon zamyka trasę dinozaurów"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma última temporada encerra o percurso dos dinossauros"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Le parcours des dinosaures s’achève en 2017 après trois saisons à Vulcania. De nouveaux animaux animés accompagnent cette dernière édition, qui clôt une exposition temporaire prolongée au-delà de son projet initial et renouvelée pour le quinzième anniversaire du parc."
+        },
+        {
+          "languageCode": "en",
+          "value": "The dinosaur trail ends in 2017 after three seasons at Vulcania. New animated creatures accompany this final edition, closing a temporary exhibition that ran beyond its initial plan and was refreshed for the park’s fifteenth anniversary."
+        },
+        {
+          "languageCode": "de",
+          "value": "Der Dinosaurierpfad endet 2017 nach drei Spielzeiten in Vulcania. Neue bewegliche Tiere begleiten diese letzte Ausgabe. Damit schließt eine temporäre Ausstellung, die länger als ursprünglich geplant bestand und zum fünfzehnten Parkgeburtstag noch einmal erneuert wurde."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De dinosaurusroute eindigt in 2017 na drie seizoenen in Vulcania. Nieuwe bewegende dieren vergezellen deze laatste editie. Daarmee sluit een tijdelijke tentoonstelling die langer bleef dan aanvankelijk gepland en voor het vijftienjarig bestaan van het park werd vernieuwd."
+        },
+        {
+          "languageCode": "it",
+          "value": "Il percorso dei dinosauri termina nel 2017 dopo tre stagioni a Vulcania. Nuove creature animate accompagnano l’ultima edizione, chiudendo una mostra temporanea prolungata oltre il progetto iniziale e rinnovata per il quindicesimo anniversario del parco."
+        },
+        {
+          "languageCode": "es",
+          "value": "El recorrido de dinosaurios termina en 2017 tras tres temporadas en Vulcania. Nuevas criaturas animadas acompañan esta última edición, que cierra una exposición temporal prolongada más allá del proyecto inicial y renovada para el decimoquinto aniversario del parque."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Trasa dinozaurów kończy działalność w 2017 roku po trzech sezonach w Vulcanii. Ostatnią odsłonę wzbogacają nowe ruchome zwierzęta. Zamyka ona wystawę czasową, przedłużoną względem pierwotnego planu i odnowioną z okazji piętnastych urodzin parku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O percurso dos dinossauros termina em 2017, após três temporadas em Vulcania. Novas criaturas animadas acompanham esta última edição, encerrando uma exposição temporária prolongada para além do projeto inicial e renovada para o décimo quinto aniversário do parque."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Clermont Auvergne Métropole — DEL20190215_041, bilan SEM Volcans 2017, pages 4 et 10",
+          "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — communiqué du quinzième anniversaire et dernière saison des dinosaures, reproduit par ParksTrip",
+          "url": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "mainImageId": "b8cc99ade2314af8b567ef80c680c77e",
+      "id": "5100b2b6-3cdb-46f6-be2d-4246f8e24615"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "lave-press2013",
+      "url": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+      "checkedAtUtc": "2026-11-15T21:52:55.325360+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+      "bytes": 132832,
+      "sha256": "e3616e5c6513710571592439a1e58ee76086e36e29e398c80b4f1d4678c6bb97"
+    },
+    {
+      "key": "lave-review2014",
+      "url": "https://magicorangeplasticbird.com/2014/11/05/journee-en-famille-au-parc-vulcania/",
+      "checkedAtUtc": "2026-11-15T21:52:55.326036+00:00",
+      "status": 200,
+      "finalUrl": "https://magicorangeplasticbird.com/2014/11/05/journee-en-famille-au-parc-vulcania/",
+      "bytes": 261628,
+      "sha256": "8baf5c4071d0bed76b364cea2766aa5d861d811c58c2299d38777352abcbced2"
+    },
+    {
+      "key": "dinos-last2017",
+      "url": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+      "checkedAtUtc": "2026-11-15T21:52:55.326735+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+      "bytes": 218058,
+      "sha256": "cb001ea2d120e466b2ccb2e654d09f940a2e9c7fd45ebb54029ec9ad05f9ca7f"
+    },
+    {
+      "key": "dinos-2016",
+      "url": "https://www.rjfm.net/news/le-parc-vulcania-rouvre-demain-323",
+      "checkedAtUtc": "2026-11-15T21:52:55.327404+00:00",
+      "status": 200,
+      "finalUrl": "https://www.rjfm.net/news/le-parc-vulcania-rouvre-demain-323",
+      "bytes": 116550,
+      "sha256": "e7e9e4c9930669dfc278974fe7e13074e841aab6ba90d20537f5cdb3d9fb7e9f"
+    },
+    {
+      "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+      "status": 200,
+      "bytes": 1272745,
+      "sha256": "51b29d7d4877b42228671d5c97623b71379a5c9847cb488b72372be5fc0b1a74",
+      "checkedAtUtc": "2026-11-15T21:54:32.974084+00:00"
+    },
+    {
+      "key": "toba-project",
+      "url": "https://www.lescrayons.com/mission-toba-vulcania.html",
+      "checkedAtUtc": "2026-11-15T21:08:42.871193+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lescrayons.com/mission-toba-vulcania.html",
+      "bytes": 9820,
+      "contentType": "text/html",
+      "sha256": "78884af7e09686f4f29d1e05f9e9fdd672cd8c748869aa9dd7b4df0aad9f9307"
+    },
+    {
+      "key": "toba-tourmag",
+      "url": "https://www.tourmag.com/Vulcania-sejour-enfant-offert-jusqu-au-9-mai_a43279.html",
+      "checkedAtUtc": "2026-11-15T21:08:42.871785+00:00",
+      "status": 200,
+      "finalUrl": "https://www.tourmag.com/Vulcania-sejour-enfant-offert-jusqu-au-9-mai_a43279.html",
+      "bytes": 142705,
+      "contentType": "text/html; charset=UTF-8",
+      "sha256": "bae732593ac2251244ba5fdf4ff5cb09650d7339d15aa883a2ce02dd3fe03e12"
+    },
+    {
+      "key": "envol-parktrips",
+      "url": "https://www.parktrips.fr/vulcania/article-2497.html",
+      "checkedAtUtc": "2026-11-15T21:08:42.872416+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parktrips.fr/vulcania/article-2497.html",
+      "bytes": 52985,
+      "contentType": "text/html; charset=utf-8",
+      "sha256": "24dd2e11003d1a9eb441743b42661ff4b4e93643371a924005f6d81de5f5e9b4"
+    }
+  ],
+  "scopeNotes": "Four private facts only on the three qualified items; year precision, no season-start day inferred. Dinosaur closure2017 retrospectively confirmed by municipal SEM2017 report pp4/10, not merely projected. De lave is exhibition, no invented2015 closure or merger with Bouleversements. 2015 photographs contextual for opening/closure, not claimed closure-day images. No usable faithful De lave exhibition photograph found after official/press/blog searches; no generic eruption substituted. All64localized fields personally authored and reviewed in eight languages; no claims of volcanic causation of French Revolution/dinosaur extinction. Existing audited public scope preserved.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

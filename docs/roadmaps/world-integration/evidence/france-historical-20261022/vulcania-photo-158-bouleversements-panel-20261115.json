@@ -1,0 +1,298 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-158-bouleversements-panel",
+    "ownerId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+    "itemName": "Bouleversements",
+    "current": false,
+    "source": {
+      "key": "bouleversements",
+      "url": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/bouleversements.jpg",
+      "checkedAtUtc": "2026-11-15T21:54:17.610435+00:00",
+      "status": 200,
+      "finalUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/bouleversements.jpg",
+      "bytes": 412316,
+      "size": [
+        1969,
+        1108
+      ],
+      "sha256": "06639ca7d6f42861f0e5734672488bcd4453a7045b802f5acf04cda71eda2cea",
+      "path": "/workspace/france-historical-20261114/vulcania/three-exhibitions-followup-2153/bouleversements.jpg",
+      "dimensions": [
+        1969,
+        1108
+      ],
+      "file": "/workspace/france-historical-20261114/vulcania/three-exhibitions-followup-2153/bouleversements.jpg",
+      "sourcePage": "https://magicorangeplasticbird.com/2015/03/31/a-la-decouverte-des-nouveautes-2015-de-vulcania/"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner France campaign media authorization; original publisher credited, no open licence or individual photographer invented.",
+    "qualification": "Real historical March2015report photograph personally viewed intact. Bouleversements: actual curved exhibition wall and projected eruption, not a photograph claimed to capture an eruption in the park. Dinosaurtrail: original2048x1536 image1059591bytes exceeds960KiB; sourceHTML-linked770wide rendition129120bytes retained without local transformation, same complete framing. Date of report is not exact capture timestamp. No photo of De lave room found; natural volcano photographs are not used as installation photos."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+      "SourceUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/bouleversements.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/three-exhibitions-followup-2153/bouleversements.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-158-bouleversements-panel-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-158-bouleversements-panel-import-result.json"
+  },
+  "metadata": {
+    "description": "Dans l’exposition, des images d’une éruption islandaise côtoient des récits des conséquences de volcans moins médiatisés.",
+    "sourceUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/bouleversements.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Paroi courbe de Bouleversements avec un écran consacré à l’Eyjafjallajökull et des panneaux sur d’autres éruptions."
+      },
+      {
+        "languageCode": "en",
+        "value": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions."
+      },
+      {
+        "languageCode": "de",
+        "value": "Geschwungene Wand in Bouleversements mit einem Bildschirm zum Eyjafjallajökull und Tafeln über weitere Eruptionen."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Gebogen wand in Bouleversements met een scherm over de Eyjafjallajökull en panelen over andere uitbarstingen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Parete curva di Bouleversements con uno schermo dedicato all’Eyjafjallajökull e pannelli su altre eruzioni."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pared curva de Bouleversements con una pantalla sobre el Eyjafjallajökull y paneles dedicados a otras erupciones."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zakrzywiona ściana wystawy Bouleversements z ekranem poświęconym Eyjafjallajökull i tablicami o innych erupcjach."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Parede curva de Bouleversements com um ecrã dedicado ao Eyjafjallajökull e painéis sobre outras erupções."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Dans l’exposition, des images d’une éruption islandaise côtoient des récits des conséquences de volcans moins médiatisés."
+      },
+      {
+        "languageCode": "en",
+        "value": "Images of an Icelandic eruption sit alongside accounts of the consequences of volcanoes that received less news coverage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bilder eines isländischen Ausbruchs stehen neben Berichten über die Folgen weniger beachteter Vulkanausbrüche."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Beelden van een IJslandse uitbarsting staan naast verhalen over de gevolgen van vulkanen die minder in het nieuws kwamen."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le immagini di un’eruzione islandese affiancano racconti sulle conseguenze di vulcani meno presenti nei mezzi d’informazione."
+      },
+      {
+        "languageCode": "es",
+        "value": "Las imágenes de una erupción islandesa acompañan relatos sobre las consecuencias de volcanes con menor presencia mediática."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zdjęciom islandzkiej erupcji towarzyszą opisy skutków działalności wulkanów rzadziej obecnych w mediach."
+      },
+      {
+        "languageCode": "pt",
+        "value": "As imagens de uma erupção islandesa acompanham relatos sobre as consequências de vulcões com menor destaque nos meios de comunicação."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© The magic orange plastic bird said… — reportage du 31 mars 2015."
+      },
+      {
+        "languageCode": "en",
+        "value": "© The magic orange plastic bird said… — report published on 31 March 2015."
+      },
+      {
+        "languageCode": "de",
+        "value": "© The magic orange plastic bird said… — Bericht vom 31. März 2015."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© The magic orange plastic bird said… — verslag van 31 maart 2015."
+      },
+      {
+        "languageCode": "it",
+        "value": "© The magic orange plastic bird said… — reportage del 31 marzo 2015."
+      },
+      {
+        "languageCode": "es",
+        "value": "© The magic orange plastic bird said… — reportaje del 31 de marzo de 2015."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© The magic orange plastic bird said… — relacja z 31 marca 2015 r."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© The magic orange plastic bird said… — reportagem de 31 de março de 2015."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T21:59:48.9694007Z",
+    "receivedAtUtc": "2026-11-15T21:59:58.0782272Z",
+    "result": {
+      "id": "ebd736e70aa6408bb5e8709226b2e8d4",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+      "path": "park_item/ebd736e70aa6408bb5e8709226b2e8d4",
+      "description": "Dans l’exposition, des images d’une éruption islandaise côtoient des récits des conséquences de volcans moins médiatisés.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1969,
+      "height": 1108,
+      "sizeInBytes": 412316,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://magicorangeplasticbird.com/wp-content/uploads/2015/03/bouleversements.jpg",
+      "geoLocation": null,
+      "exifMetadata": {
+        "cameraMaker": "SAMSUNG",
+        "cameraModel": "GT-I9505",
+        "takenOnUtc": "2015-03-28T12:41:18Z",
+        "orientation": "1",
+        "focalLength": 4.2,
+        "aperture": 2.2,
+        "exposureTime": 0.06666666666666667,
+        "iso": 640
+      },
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Paroi courbe de Bouleversements avec un écran consacré à l’Eyjafjallajökull et des panneaux sur d’autres éruptions."
+        },
+        {
+          "languageCode": "en",
+          "value": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions."
+        },
+        {
+          "languageCode": "de",
+          "value": "Geschwungene Wand in Bouleversements mit einem Bildschirm zum Eyjafjallajökull und Tafeln über weitere Eruptionen."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Gebogen wand in Bouleversements met een scherm over de Eyjafjallajökull en panelen over andere uitbarstingen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Parete curva di Bouleversements con uno schermo dedicato all’Eyjafjallajökull e pannelli su altre eruzioni."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pared curva de Bouleversements con una pantalla sobre el Eyjafjallajökull y paneles dedicados a otras erupciones."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zakrzywiona ściana wystawy Bouleversements z ekranem poświęconym Eyjafjallajökull i tablicami o innych erupcjach."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Parede curva de Bouleversements com um ecrã dedicado ao Eyjafjallajökull e painéis sobre outras erupções."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Dans l’exposition, des images d’une éruption islandaise côtoient des récits des conséquences de volcans moins médiatisés."
+        },
+        {
+          "languageCode": "en",
+          "value": "Images of an Icelandic eruption sit alongside accounts of the consequences of volcanoes that received less news coverage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bilder eines isländischen Ausbruchs stehen neben Berichten über die Folgen weniger beachteter Vulkanausbrüche."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Beelden van een IJslandse uitbarsting staan naast verhalen over de gevolgen van vulkanen die minder in het nieuws kwamen."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le immagini di un’eruzione islandese affiancano racconti sulle conseguenze di vulcani meno presenti nei mezzi d’informazione."
+        },
+        {
+          "languageCode": "es",
+          "value": "Las imágenes de una erupción islandesa acompañan relatos sobre las consecuencias de volcanes con menor presencia mediática."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zdjęciom islandzkiej erupcji towarzyszą opisy skutków działalności wulkanów rzadziej obecnych w mediach."
+        },
+        {
+          "languageCode": "pt",
+          "value": "As imagens de uma erupção islandesa acompanham relatos sobre as consequências de vulcões com menor destaque nos meios de comunicação."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© The magic orange plastic bird said… — reportage du 31 mars 2015."
+        },
+        {
+          "languageCode": "en",
+          "value": "© The magic orange plastic bird said… — report published on 31 March 2015."
+        },
+        {
+          "languageCode": "de",
+          "value": "© The magic orange plastic bird said… — Bericht vom 31. März 2015."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© The magic orange plastic bird said… — verslag van 31 maart 2015."
+        },
+        {
+          "languageCode": "it",
+          "value": "© The magic orange plastic bird said… — reportage del 31 marzo 2015."
+        },
+        {
+          "languageCode": "es",
+          "value": "© The magic orange plastic bird said… — reportaje del 31 de marzo de 2015."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© The magic orange plastic bird said… — relacja z 31 marca 2015 r."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© The magic orange plastic bird said… — reportagem de 31 de março de 2015."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T21:59:51.484Z",
+      "updatedAt": "2026-11-15T21:59:54.973Z"
+    },
+    "action": "ImportPhoto"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

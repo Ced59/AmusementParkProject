@@ -1,0 +1,2286 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T22:13:15.270989+00:00",
+  "scopeAudit": "vulcania-three-exhibitions-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-three-exhibitions-publication-export-20261115.json",
+  "realPublicationApplies": [
+    {
+      "operationId": "457375d5-ce63-4215-8d65-271d2921c564",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:08:07.9770127Z",
+      "appliedAtUtc": "2026-11-15T22:08:07.9770135Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 2,
+        "deleted": 0,
+        "unchanged": 3,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "entityKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "displayName": "Bouleversements",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "entityKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "displayName": "Sur les traces des dinosaures",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "ebd736e70aa6408bb5e8709226b2e8d4",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "Image",
+          "entityId": "b8cc99ade2314af8b567ef80c680c77e",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "dc3b4889-0c13-4716-8e7f-6b8e76bc6992",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:08:43.1278511Z",
+      "appliedAtUtc": "2026-11-15T22:08:43.1278518Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 7,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "entityKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+          "displayName": "Bouleversements",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+          "entityKey": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+          "displayName": "De lave et de feu",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "entityKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+          "displayName": "Sur les traces des dinosaures",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52",
+          "entityKey": "vulcania-de-lave-et-de-feu-opening-2013",
+          "displayName": "Une exposition donne à voir les volcans rouges",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "a629a2e6-105a-4174-b1b4-1438e5fea3a6",
+          "entityKey": "vulcania-bouleversements-opening-2015",
+          "displayName": "Bouleversements relie les éruptions à leurs conséquences",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5c686348-534d-4c4c-ab67-b6650f1d85d9",
+          "entityKey": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+          "displayName": "Les dinosaures prennent place dans les extérieurs",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "5100b2b6-3cdb-46f6-be2d-4246f8e24615",
+          "entityKey": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+          "displayName": "Une dernière saison conclut le parcours des dinosaures",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "publicChecks": {
+    "languageCount": 8,
+    "renderedItemAndTimelinePages": 48,
+    "normalCatalogueSearchItemNavigations": 24,
+    "normalItemHistoryNavigations": 24,
+    "descriptionsExact": 24,
+    "historyTitlesExact": 32,
+    "historySummariesExact": 32,
+    "photoItemLanguagePairsRendered": 16,
+    "photoTimelineLanguagePairsRendered": 16,
+    "photoBinary200Pairs": 16,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshots": [
+      {
+        "path": "public-checks/0-fr-description.png",
+        "sha256": "f2eb3908792025ddc1bccc36e31e2d1bf155b3b2fd813f78bead6740a29ab2a3"
+      },
+      {
+        "path": "public-checks/0-fr-history.png",
+        "sha256": "21588a045e980d949292f381869c6e871372e067ae8ab5975ec73b2181d134f5"
+      },
+      {
+        "path": "public-checks/1-fr-description.png",
+        "sha256": "cfadcaaa3c7ba7ba8502e4336de985a6373e8aaa216754dd65e178c4589bb8b8"
+      },
+      {
+        "path": "public-checks/1-fr-history.png",
+        "sha256": "a2ca9e507dcfb90295bfc37b741606832f7c64dbf725e1059c99dbf145c52845"
+      },
+      {
+        "path": "public-checks/2-fr-description.png",
+        "sha256": "70f3b14d561511fa50aca73c281e06bad8601e2add44bbd1eb52b93ab9c53090"
+      },
+      {
+        "path": "public-checks/2-fr-history.png",
+        "sha256": "213d73bf7702c6071abd7a43586060b99018e833eccfc5222827744e1e45f4aa"
+      },
+      {
+        "path": "public-checks/2-fr-closure.png",
+        "sha256": "34066ef30897e943375fda2fe1832b8e2a5854da380170db9cbdda060f4d6184"
+      }
+    ],
+    "results": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T22:10:38.965669+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Paroi courbe de Bouleversements avec un écran consacré à l’Eyjafjallajökull et des panneaux sur d’autres éruptions.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements relie les éruptions à leurs conséquences",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Reproductions d’un tyrannosaure et d’un dinosaure cuirassé devant des visiteurs, avec la serre et le cône de Vulcania derrière eux.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Les dinosaures prennent place dans les extérieurs",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Une dernière saison conclut le parcours des dinosaures",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T22:10:38.967462+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 1439,
+                    "height": 810
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 1439,
+                    "height": 810
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements connects eruptions with their consequences",
+                    "width": 1559,
+                    "height": 877
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 577,
+                    "height": 432
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 577,
+                    "height": 432
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Dinosaurs take their place in the outdoor grounds",
+                    "width": 625,
+                    "height": 468
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "A final season brings the dinosaur trail to a close",
+                    "width": 625,
+                    "height": 468
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T22:10:39.053080+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Geschwungene Wand in Bouleversements mit einem Bildschirm zum Eyjafjallajökull und Tafeln über weitere Eruptionen.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements verbindet Eruptionen mit ihren Folgen",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Nachbildungen eines Tyrannosaurus und eines gepanzerten Dinosauriers vor Besuchern, dahinter das Gewächshaus und der Kegel von Vulcania.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Dinosaurier ziehen in die Außenanlagen ein",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Eine letzte Saison beschließt den Dinosaurierpfad",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T22:11:15.234840+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Gebogen wand in Bouleversements met een scherm over de Eyjafjallajökull en panelen over andere uitbarstingen.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements verbindt uitbarstingen met hun gevolgen",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Modellen van een tyrannosaurus en een gepantserde dinosaurus voor bezoekers, met de kas en de kegel van Vulcania op de achtergrond.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Dinosauriërs krijgen een plek in de buitenruimte",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Een laatste seizoen sluit de dinosaurusroute af",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T22:11:15.406775+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Parete curva di Bouleversements con uno schermo dedicato all’Eyjafjallajökull e pannelli su altre eruzioni.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements collega le eruzioni alle loro conseguenze",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Riproduzioni di un tirannosauro e di un dinosauro corazzato davanti ai visitatori, con la serra e il cono di Vulcania sullo sfondo.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "I dinosauri arrivano negli spazi esterni",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Un’ultima stagione conclude il percorso dei dinosauri",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T22:11:17.361676+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Pared curva de Bouleversements con una pantalla sobre el Eyjafjallajökull y paneles dedicados a otras erupciones.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements conecta las erupciones con sus consecuencias",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Reproducciones de un tiranosaurio y un dinosaurio acorazado ante los visitantes, con el invernadero y el cono de Vulcania al fondo.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Los dinosaurios ocupan los espacios exteriores",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Una última temporada cierra el recorrido de dinosaurios",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T22:11:48.920699+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Zakrzywiona ściana wystawy Bouleversements z ekranem poświęconym Eyjafjallajökull i tablicami o innych erupcjach.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements ukazuje następstwa erupcji",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Modele tyranozaura i opancerzonego dinozaura przed grupą gości; w tle szklarnia oraz stożkowy budynek Vulcanii.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Dinozaury pojawiają się na terenach zewnętrznych",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Ostatni sezon zamyka trasę dinozaurów",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T22:11:50.116114+00:00",
+        "items": [
+          {
+            "id": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+            "name": "De lave et de feu",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/533717be-96a1-428a-8d19-d4b6b16bfe18/de-lave-et-de-feu",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-de-lave-et-de-feu-opening-2013",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": []
+          },
+          {
+            "id": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+            "name": "Bouleversements",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/35ceac39-66c0-4c8b-bff7-2095f8318332/bouleversements",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "expectedAlt": "Parede curva de Bouleversements com um ecrã dedicado ao Eyjafjallajökull e painéis sobre outras erupções.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Curved wall in Bouleversements with an Eyjafjallajökull screen and panels about other eruptions.",
+                    "width": 360,
+                    "height": 202
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-bouleversements-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "ebd736e70aa6408bb5e8709226b2e8d4",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+                    "alt": "Bouleversements liga as erupções às suas consequências",
+                    "width": 389,
+                    "height": 219
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+            "name": "Sur les traces des dinosaures",
+            "pages": [
+              {
+                "kind": "item",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              },
+              {
+                "kind": "history",
+                "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures/history",
+                "overflow": 0,
+                "brokenImages": [],
+                "guidLeaks": []
+              }
+            ],
+            "closedIncluded": true,
+            "discoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/c4640ef4-a2f1-40b3-8946-d1b8f9046d94/sur-les-traces-des-dinosaures",
+            "descriptionExact": true,
+            "normalCatalogueSearchItemNavigation": true,
+            "itemPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "expectedAlt": "Reproduções de um tiranossauro e de um dinossauro couraçado diante dos visitantes, com a estufa e o cone do Vulcania ao fundo.",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Models of a tyrannosaur and an armoured dinosaur facing visitors, with Vulcania’s greenhouse and cone behind them.",
+                    "width": 360,
+                    "height": 270
+                  }
+                ]
+              }
+            ],
+            "normalItemHistoryNavigation": true,
+            "events": [
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+                "titleExact": true,
+                "summaryExact": true
+              },
+              {
+                "key": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+                "titleExact": true,
+                "summaryExact": true
+              }
+            ],
+            "historyPhotos": [
+              {
+                "imageId": "b8cc99ade2314af8b567ef80c680c77e",
+                "rendered": [
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Os dinossauros chegam aos espaços exteriores",
+                    "width": 389,
+                    "height": 292
+                  },
+                  {
+                    "src": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+                    "alt": "Uma última temporada encerra o percurso dos dinossauros",
+                    "width": 389,
+                    "height": 292
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "responses": [
+          {
+            "url": "https://amusement-parks.fun/fr/home",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/ebd736e70aa6408bb5e8709226b2e8d4?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/items",
+            "status": 200
+          },
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/b8cc99ade2314af8b567ef80c680c77e?width=480&v=2",
+            "status": 200
+          }
+        ]
+      }
+    ],
+    "precheckTimingNote": "First filter-options read returned an empty list before the catalogue finished rendering; repeated normal navigation with an explicit select visibility wait succeeded. This was not treated as a data or application failure."
+  },
+  "applicationIssue": {
+    "mainPhotoAltFallsBackToEnglish": [
+      {
+        "language": "fr",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "fr",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      },
+      {
+        "language": "de",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "de",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      },
+      {
+        "language": "nl",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "nl",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      },
+      {
+        "language": "it",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "it",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      },
+      {
+        "language": "es",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "es",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      },
+      {
+        "language": "pl",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "pl",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      },
+      {
+        "language": "pt",
+        "imageId": "ebd736e70aa6408bb5e8709226b2e8d4"
+      },
+      {
+        "language": "pt",
+        "imageId": "b8cc99ade2314af8b567ef80c680c77e"
+      }
+    ],
+    "timelinePhotoAltUsesLocalizedEventTitle": true,
+    "storedEightLanguageMetadataPreserved": true,
+    "noBlindDataCorrection": true
+  },
+  "completeness": {
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-15T22:09:37.2393948Z",
+    "receivedAtUtc": "2026-11-15T22:09:38.1444886Z"
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T22:09:13.7374720Z",
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T22:09:14.7492976Z",
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 62,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 8,
+          "sourcedResourceCount": 8,
+          "publishedResourceCount": 8,
+          "subjectCount": 6,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 8,
+          "sourcedResourceCount": 8,
+          "publishedResourceCount": 8,
+          "subjectCount": 7,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 22
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 40
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 22,
+        "sourcedFactCount": 22,
+        "majorFactCount": 19,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "idempotence": {
+    "operationId": "1d473a9d-5a60-4d17-abb3-413d87c8e5f6",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:09:54.1480867Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 10,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "entityKey": "35ceac39-66c0-4c8b-bff7-2095f8318332",
+        "displayName": "Bouleversements",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "entityKey": "533717be-96a1-428a-8d19-d4b6b16bfe18",
+        "displayName": "De lave et de feu",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "entityKey": "c4640ef4-a2f1-40b3-8946-d1b8f9046d94",
+        "displayName": "Sur les traces des dinosaures",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "ebd736e70aa6408bb5e8709226b2e8d4",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "b8cc99ade2314af8b567ef80c680c77e",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "1ce08a24-36f5-4e7c-a6f1-a9b012e33b52",
+        "entityKey": "vulcania-de-lave-et-de-feu-opening-2013",
+        "displayName": "Une exposition donne à voir les volcans rouges",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "a629a2e6-105a-4174-b1b4-1438e5fea3a6",
+        "entityKey": "vulcania-bouleversements-opening-2015",
+        "displayName": "Bouleversements relie les éruptions à leurs conséquences",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5c686348-534d-4c4c-ab67-b6650f1d85d9",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-opening-2015",
+        "displayName": "Les dinosaures prennent place dans les extérieurs",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "5100b2b6-3cdb-46f6-be2d-4246f8e24615",
+        "entityKey": "vulcania-sur-les-traces-des-dinosaures-definitiveclosure-2017",
+        "displayName": "Une dernière saison conclut le parcours des dinosaures",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 60,
+    "publicItems": 60,
+    "descriptions8Languages": 60,
+    "ownMedia": 61,
+    "publicOwnMedia": 61,
+    "sharedMedia": 5,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 22,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "Other historical exhibitions including Nature grand format2018 remain to qualify against the current inventory",
+    "One own photograph each for Bouleversements and dinosaurs, none qualified for De lave et de feu",
+    "Precise item coordinates and photographic coverage remain incomplete",
+    "No complete general calendar or price table for2027found in previously reviewed official pages"
+  ],
+  "earlierApplicationIssuesUnchanged": "vulcania-publication-followup-20261115.json",
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  }
+}

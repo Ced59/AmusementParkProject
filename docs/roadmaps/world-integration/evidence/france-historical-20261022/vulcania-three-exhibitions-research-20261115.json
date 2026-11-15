@@ -1,0 +1,82 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T21:53:37.991524+00:00",
+  "sourceAccess": [
+    {
+      "key": "lave-press2013",
+      "url": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+      "checkedAtUtc": "2026-11-15T21:52:55.325360+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2013/03/deux-nouveautes-supplementaires.html",
+      "bytes": 132832,
+      "sha256": "e3616e5c6513710571592439a1e58ee76086e36e29e398c80b4f1d4678c6bb97"
+    },
+    {
+      "key": "lave-review2014",
+      "url": "https://magicorangeplasticbird.com/2014/11/05/journee-en-famille-au-parc-vulcania/",
+      "checkedAtUtc": "2026-11-15T21:52:55.326036+00:00",
+      "status": 200,
+      "finalUrl": "https://magicorangeplasticbird.com/2014/11/05/journee-en-famille-au-parc-vulcania/",
+      "bytes": 261628,
+      "sha256": "8baf5c4071d0bed76b364cea2766aa5d861d811c58c2299d38777352abcbced2"
+    },
+    {
+      "key": "dinos-last2017",
+      "url": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+      "checkedAtUtc": "2026-11-15T21:52:55.326735+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parkstrip.fr/2017/04/vulcania-fete-ses-15-ans-avec-un.html",
+      "bytes": 218058,
+      "sha256": "cb001ea2d120e466b2ccb2e654d09f940a2e9c7fd45ebb54029ec9ad05f9ca7f"
+    },
+    {
+      "key": "dinos-2016",
+      "url": "https://www.rjfm.net/news/le-parc-vulcania-rouvre-demain-323",
+      "checkedAtUtc": "2026-11-15T21:52:55.327404+00:00",
+      "status": 200,
+      "finalUrl": "https://www.rjfm.net/news/le-parc-vulcania-rouvre-demain-323",
+      "bytes": 116550,
+      "sha256": "e7e9e4c9930669dfc278974fe7e13074e841aab6ba90d20537f5cdb3d9fb7e9f"
+    }
+  ],
+  "sourcesAlsoRead": [
+    "../historical-followup-2110/new2013.txt",
+    "../historical-followup-2110/new2015.txt",
+    "../historical-followup-2110/envol2015.txt",
+    "../../vulcania-public-research-20261115/teacher-guide-2025.txt",
+    "../volcanbul-followup-2134/teacher2017.txt"
+  ],
+  "decisions": "Three historically distinct WalkThrough experiences, no independent cinema. De lave et de feu is an exhibition, introduced2013 official release reprinted Parcplaza19March2013 and Tourmag20March; still named with panels/photos/models in official teacher2025 guide, therefore alleged2015closure/replacement not accepted. Bouleversements2015 is an exhibition about consequences of eruptions, not a screen venue; no claimed causal certainty linking eruption to French Revolution or dinosaur extinction. Sur les traces des dinosaures2015 is outdoor animatronic trail with Paleopolis, not later similarly named workshop; RJFM2016 confirms renewed trail, official2017 release reprintedParksTrip1April2017 announces last season but execution/date of removal not verified. All current lifecycle Unknown after current2026inventory and historicalsource comparison; no closing date invented, year-only opening. No established exact GPS, current access conditions or manufacturer. Locations described as interior level/exterior route not fabricated coordinates. Existing57items checked; no alias/venue merge without evidence. New items private ToReview pending text/media audit; existing public data preserved.",
+  "identifiedBefore": 57,
+  "newHistoricalIdentities": [
+    "De lave et de feu",
+    "Bouleversements",
+    "Sur les traces des dinosaures"
+  ],
+  "openingYearOnly": {
+    "De lave et de feu": 2013,
+    "Bouleversements": 2015,
+    "Sur les traces des dinosaures": 2015
+  },
+  "currentLifecycleAll": null,
+  "noClosureInferred": true,
+  "inventoriesClosed": false,
+  "finalLifecycles": {
+    "De lave et de feu": "Unknown",
+    "Bouleversements": "Unknown",
+    "Sur les traces des dinosaures": "ClosedDefinitively"
+  },
+  "dinosaurClosureYear": 2017,
+  "closurePrimaryEvidence": {
+    "url": "https://api-politique.pappers.fr/territoire/document/3f13a154fb3b2c2aab389f17da95075c/pdf",
+    "status": 200,
+    "bytes": 1272745,
+    "sha256": "51b29d7d4877b42228671d5c97623b71379a5c9847cb488b72372be5fc0b1a74",
+    "checkedAtUtc": "2026-11-15T21:54:32.974084+00:00"
+  },
+  "closureEvidencePages": [
+    4,
+    10
+  ],
+  "decisionUpdate": "Post-season municipal2019 report confirms completed2017third and last season. Preliminary Unknown superseded before Apply; no exact closing day or removal asserted."
+}
