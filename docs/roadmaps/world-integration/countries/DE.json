@@ -7079,20 +7079,71 @@
         "0a9940bb-88ea-4d19-bc90-899e0c290784"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:04:50.183Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Saison 2026 terminée le 2 novembre ; date d’ouverture 2027 non annoncée.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Erlebnis-Arena-Ruhla"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:03:46.883Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-77b56913-1110-453f-88a7-0d6526c38b63",
+          "appliedAt": "2026-11-15T14:59:35.298Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:apply:77b56913-1110-453f-88a7-0d6526c38b63",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Huit descriptions, tarifs officiels et fermeture de fin de saison 2026 intégrés."
+        },
+        {
+          "eventId": "image-2091ddf5773944a082748e4310dc7346",
+          "appliedAt": "2026-11-15T15:00:50.931Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:image:2091ddf5773944a082748e4310dc7346@2026-11-15T15:00:50.931Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Photo exacte de la piste ou du véhicule, Kosmo, CC BY-SA 3.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "image-8dd9fcd15ad645fb92f065840ec8fb99",
+          "appliedAt": "2026-11-15T15:01:06.335Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:image:8dd9fcd15ad645fb92f065840ec8fb99@2026-11-15T15:01:06.335Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Photo exacte de la piste ou du véhicule, Metilsteiner, CC BY 3.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "image-f1ec9e696711459dba25fc72c12ef546",
+          "appliedAt": "2026-11-15T15:01:23.227Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:image:f1ec9e696711459dba25fc72c12ef546@2026-11-15T15:01:23.227Z",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Photo exacte de la piste ou du véhicule, Metilsteiner, CC BY 3.0, avec huit textes alternatifs, légendes et crédits."
+        },
+        {
+          "eventId": "apply-d6678a2f-d630-4387-8954-9c501e3f46ca",
+          "appliedAt": "2026-11-15T15:03:46.883Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+          "evidence": "PARK_DATA_EDITOR:apply:d6678a2f-d630-4387-8954-9c501e3f46ca",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-ruhla-20261115/audit.json",
+          "summary": "Correction de la mention historique non sourcée et contrôle final à 95/100."
+        }
+      ],
+      "nextAction": "Suivre l’annonce de la saison 2027 et revérifier les prix ; vérifier les droits des cinq anciennes photos publiées.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -7118,6 +7169,31 @@
           "label": "RCDB — Mountain Coaster",
           "url": "https://rcdb.com/12990.htm",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — tarifs",
+          "url": "https://www.sommerrodelbahn-ruhla.de/preise-zeiten/preise/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — horaires",
+          "url": "https://www.sommerrodelbahn-ruhla.de/preise-zeiten/oeffnungszeiten/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photographie exacte CC BY-SA 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File%3AAlexanderturmbahn_Ruhla.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photographie exacte CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File%3AWAK_RUHLA_Alexanderturmbahn.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photographie exacte CC BY 3.0",
+          "url": "https://commons.wikimedia.org/wiki/File%3AWAK_RUHLA_Lappengrund_Alexanderturmbahn.JPG",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",

@@ -1,0 +1,102 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+  "entryId": "DE-standalone-02a41616-64b5-4c8c-9c76-869b1fbb3dfa",
+  "name": "Erlebnis-Rodelbahn Ruhla",
+  "countryCode": "DE",
+  "auditAtUtc": "2026-11-15T15:04:50.183Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/02a41616-64b5-4c8c-9c76-869b1fbb3dfa/erlebnis-rodelbahn-ruhla",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "officialSources": [
+    "https://www.sommerrodelbahn-ruhla.de/",
+    "https://www.sommerrodelbahn-ruhla.de/preise-zeiten/preise/",
+    "https://www.sommerrodelbahn-ruhla.de/preise-zeiten/oeffnungszeiten/"
+  ],
+  "identitySource": "https://rcdb.com/12990.htm",
+  "identityNote": "Alexanderturmbahn is an alternate name for the same attraction; a hidden Erlebnis-Arena-Ruhla park record is a duplicate, not a new standalone.",
+  "calendar": {
+    "startDate": "2026-11-15",
+    "endDate": "2026-12-31",
+    "closedDays": 47,
+    "nuance": "Official 2026 season ended 2 November. All remaining 2026 dates are closed; no 2027 opening is asserted because the operator has not announced one. Rain or damp rails can stop operations in season."
+  },
+  "pricing": "Operator fares published as valid from 1 January 2026: adult 16+ €5/€13/€21 for 1/3/5 rides; child 8–15 €4/€10/€16; child 4–7 accompanied by adult over 18 €1; family card €22. Reverify in 2027.",
+  "photos": [
+    {
+      "imageId": "2091ddf5773944a082748e4310dc7346",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File%3AAlexanderturmbahn_Ruhla.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexanderturmbahn_Ruhla.jpg?width=1200",
+      "creator": "Kosmo",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "photographedAt": "2009-05-10",
+      "sourceSha256": "3a2820c4620ca6f73063eaafb55f62ae50ee5b9eb4834f788230dac5de83a777",
+      "isCurrent": true,
+      "isPublished": true,
+      "altCaptionCreditLocaleCount": 8,
+      "importedAtUtc": "2026-11-15T15:00:50.931Z",
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "8dd9fcd15ad645fb92f065840ec8fb99",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File%3AWAK_RUHLA_Alexanderturmbahn.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/WAK_RUHLA_Alexanderturmbahn.JPG?width=1200",
+      "creator": "Metilsteiner",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2011-09-02",
+      "sourceSha256": "e86a9362c5d1908a1c864bbf0b79d8cf7fc14eac1a2e6f3969c5c0100dd22511",
+      "isCurrent": false,
+      "isPublished": true,
+      "altCaptionCreditLocaleCount": 8,
+      "importedAtUtc": "2026-11-15T15:01:06.335Z",
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "f1ec9e696711459dba25fc72c12ef546",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File%3AWAK_RUHLA_Lappengrund_Alexanderturmbahn.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/Special:Redirect/file/WAK_RUHLA_Lappengrund_Alexanderturmbahn.JPG?width=1200",
+      "creator": "Metilsteiner",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "photographedAt": "2011-09-02",
+      "sourceSha256": "a2337281a9748158ae15bc3a3bf8ed5cb1b595efc75cc021e6f555080d3aab4c",
+      "isCurrent": false,
+      "isPublished": true,
+      "altCaptionCreditLocaleCount": 8,
+      "importedAtUtc": "2026-11-15T15:01:23.227Z",
+      "binaryHttpStatus": 200
+    }
+  ],
+  "photoCountPublished": 8,
+  "oldImageRightsGap": "Five older operator images remain public; independent reuse rights have not been verified.",
+  "completenessBefore": {
+    "score": 73,
+    "level": "Publishable",
+    "publicationBlockers": [
+      "public-text.forbidden-editorial-language"
+    ]
+  },
+  "completenessAfter": {
+    "score": 95,
+    "level": "Excellent",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "id": "84e5b6a12b6a4ed58cd67b06646a9423",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127467037424431",
+    "publishedAtUtc": "2026-11-15T15:02:51.7514682Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T15:03:46.883Z",
+  "nextAction": "Suivre l’annonce de la saison 2027 et revérifier les prix ; vérifier les droits des cinq anciennes photos publiées."
+}
