@@ -951,28 +951,113 @@
     },
     {
       "entryId": "CH-park-7f6fb9df-5502-4d6a-959e-dbaa568544d6",
-      "name": "Flumserberg",
-      "entityKind": "Park",
-      "proposedEntityKind": "Park",
-      "category": null,
-      "locality": null,
-      "siteId": "7f6fb9df-5502-4d6a-959e-dbaa568544d6",
-      "legacySiteIds": [],
-      "presence": "Hidden",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToIntegrate",
+      "name": "FLOOMZER Flumserberg",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine coaster",
+      "locality": "Tannenboden, Flumserberg, Saint-Gall",
+      "siteId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+      "legacySiteIds": [
+        "7f6fb9df-5502-4d6a-959e-dbaa568544d6"
+      ],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T10:26:51.598Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "ToReview",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Identifiant du site",
+      "sourceLifecycleSignal": "Saison estivale 2026 terminée ; l’exploitant annonce la fermeture actuelle des installations et demande de vérifier la prochaine ouverture.",
+      "identityConfidence": "Park masqué à un seul ParkItem FLOOMZER exporté via le client officiel ; luge à billet propre confirmée par l’exploitant, trois photos exactes et publiées sous CC BY 3.0.",
       "possibleMatches": [],
       "aliases": [
-        "Flumser Berg"
+        "Flumser Berg",
+        "Rodelbahn Floomzer",
+        "Floomzer toboggan run"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine. Fiche Park existante : vérifier une migration vers StandaloneAttraction plutôt que créer un doublon. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T10:26:07.518Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-03da50ba-ea2a-4665-8ce5-7f6e8475df94",
+          "appliedAt": "2026-11-15T10:18:36.398Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:apply:03da50ba-ea2a-4665-8ce5-7f6e8475df94",
+          "auditEvidence": null,
+          "summary": "Création de la fiche autonome FLOOMZER et migration des identifiants legacy ; huit descriptions et données techniques officielles."
+        },
+        {
+          "eventId": "apply-48b4c915-4d05-402e-bbb9-7ac663df3e96",
+          "appliedAt": "2026-11-15T10:19:49.321Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:apply:48b4c915-4d05-402e-bbb9-7ac663df3e96",
+          "auditEvidence": null,
+          "summary": "Neuf tarifs officiels de l’été 2026, distinguant piste seule, petit circuit avec remontée et forfait trois descentes."
+        },
+        {
+          "eventId": "apply-b8292a8c-7acc-4851-ac7d-6acd7caa7c1c",
+          "appliedAt": "2026-11-15T10:20:32.351Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:apply:b8292a8c-7acc-4851-ac7d-6acd7caa7c1c",
+          "auditEvidence": null,
+          "summary": "Conditions officielles de taille, âge et accompagnement dans les huit langues."
+        },
+        {
+          "eventId": "image-e9f3c2dadd1843e7b934b7bce796b6a3",
+          "appliedAt": "2026-11-15T10:23:47.195Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:image:e9f3c2dadd1843e7b934b7bce796b6a3",
+          "auditEvidence": null,
+          "summary": "Photo exacte FLOOMZER (sled at lower section) importée, publiée et légendée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+        },
+        {
+          "eventId": "image-f86c3814371646fc9c2977d397e8be8f",
+          "appliedAt": "2026-11-15T10:23:52.973Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:image:f86c3814371646fc9c2977d397e8be8f",
+          "auditEvidence": null,
+          "summary": "Photo exacte FLOOMZER (track curve and gondola) importée, publiée et légendée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+        },
+        {
+          "eventId": "image-1563b6a920c449409e875caaba2c4889",
+          "appliedAt": "2026-11-15T10:23:58.581Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:image:1563b6a920c449409e875caaba2c4889",
+          "auditEvidence": null,
+          "summary": "Photo exacte FLOOMZER (wooded track curve) importée, publiée et légendée ; qwesy qwesy, CC BY 3.0, prise en 2015."
+        },
+        {
+          "eventId": "apply-16dedeec-e0b2-426c-a039-acb2d35d6be1",
+          "appliedAt": "2026-11-15T10:25:34.840Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:apply:16dedeec-e0b2-426c-a039-acb2d35d6be1",
+          "auditEvidence": null,
+          "summary": "Descriptions et conditions d’accès reformulées pour la lecture publique ; contrôle qualité 87/100 sans blocage."
+        },
+        {
+          "eventId": "apply-b37ba4ea-6bac-4a60-b084-fed6fb5f2efe",
+          "appliedAt": "2026-11-15T10:26:07.518Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+          "evidence": "PARK_DATA_EDITOR:apply:b37ba4ea-6bac-4a60-b084-fed6fb5f2efe",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-ch-floomzer-20261115/audit.json",
+          "summary": "Ancien ParkItem masqué reclassé NotRelevant ; intégration éditoriale et médias de la fiche autonome terminés."
+        }
+      ],
+      "nextAction": "Conserver cette ligne, les identifiants legacy et les reçus. Vérifier l’ouverture et les tarifs 2027 à leur publication ; les prix structurés sont ceux de l’été 2026. Régler le statut du Park masqué encore ToReview sans relancer la migration Park bloquante ; son ParkItem est déjà NotRelevant. Qualifier séparément les autres activités du Flumserberg avant toute éventuelle fiche Park.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -998,13 +1083,48 @@
           "label": "Opérateur référencé par la source",
           "url": "http://www.flumserberg.ch",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Exploitant — tracé et conditions d’utilisation",
+          "url": "https://www.flumserberg.ch/rodelberg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — tarifs de l’été 2026",
+          "url": "https://www.flumserberg.ch/en/information/Tickets-rates/FLOOMZER-toboggan-run",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — état et prochaines ouvertures",
+          "url": "https://www.flumserberg.ch/Operating-hours",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Cartographie du point d’arrivée FLOOMZER",
+          "url": "https://www.openstreetmap.org/node/11414239360",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — FLOOMZER, qwesy qwesy, CC BY 3.0 (sled at lower section)",
+          "url": "https://commons.wikimedia.org/wiki/File:Rodelbahn_Floomzer_in_Flumserberg_-_panoramio.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — FLOOMZER, qwesy qwesy, CC BY 3.0 (track curve and gondola)",
+          "url": "https://commons.wikimedia.org/wiki/File:Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_(3).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — FLOOMZER, qwesy qwesy, CC BY 3.0 (wooded track curve)",
+          "url": "https://commons.wikimedia.org/wiki/File:Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_(6).jpg",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "CH",
       "countryResolution": null,
       "standaloneAssessment": {
-        "relation": "ParentToResolve",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
             "name": "Rodelbahn Floomzer",
@@ -1025,7 +1145,7 @@
             "referenceId": "location-id-1097"
           }
         ],
-        "rationale": "Installation fixe documentée ; identité exacte, appartenance à un vrai parc ou autonomie encore à résoudre. Ne pas compter comme création standalone certaine."
+        "rationale": "L’export officiel montre un seul ParkItem, FLOOMZER. L’exploitant vend la descente séparément des autres activités du domaine ; la piste est intégrée comme attraction autonome. Le Park masqué reste en attente de décision administrative pour les autres activités."
       }
     },
     {
