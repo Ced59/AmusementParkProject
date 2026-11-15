@@ -1,0 +1,28 @@
+{
+  "entryId": "DE-standalone-3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+  "entityId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+  "integrationHistory": [
+    {
+      "eventId": "apply-1fcbc85e-3836-44f6-9940-507496005959",
+      "appliedAt": "2026-11-15T16:19:16.561Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+      "evidence": "PARK_DATA_EDITOR:apply:1fcbc85e-3836-44f6-9940-507496005959",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-leitner-berlin-20261115/audit.json",
+      "summary": "Huit descriptions, cinq tarifs, accès et calendrier jusqu’au 30 avril 2027 corrigés ; quatre photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+    }
+  ],
+  "facebook": {
+    "id": "ebfbd074723c4638abf7e0ed401c4403",
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127474345424431",
+    "publishedAtUtc": "2026-11-15T16:20:08.0330346Z"
+  },
+  "productionPhotoIds": [
+    "250bd46b182f4f3a947af8b331798088",
+    "e9894ef185ec40e59de4916d935ed038",
+    "83af06552a6c4303a42a8282e2529f21",
+    "b63a30e2deb14ff5b87497b53a2703e5"
+  ]
+}

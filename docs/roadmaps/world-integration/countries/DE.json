@@ -14618,20 +14618,31 @@
         "c6e1941b-c7c7-4112-8f9c-7d2a99fb992a"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T16:20:56.458Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermeture hivernale ; reprise annoncée le 20 mars 2027.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [
         "Kienbergpark"
       ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T16:19:16.561Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-1fcbc85e-3836-44f6-9940-507496005959",
+          "appliedAt": "2026-11-15T16:19:16.561Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3bc3d9b1-b0bc-4b3d-a3ae-353411c6ec73",
+          "evidence": "PARK_DATA_EDITOR:apply:1fcbc85e-3836-44f6-9940-507496005959",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-leitner-berlin-20261115/audit.json",
+          "summary": "Huit descriptions, cinq tarifs, accès et calendrier jusqu’au 30 avril 2027 corrigés ; quatre photos exactes existantes contrôlées ; 93/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Confirmer les tarifs et horaires 2027 avant réouverture ; auditer les droits des quatre photos existantes créditées à Ole Bader et trouver une image supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
