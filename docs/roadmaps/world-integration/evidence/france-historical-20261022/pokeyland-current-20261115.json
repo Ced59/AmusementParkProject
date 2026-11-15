@@ -4,7 +4,7 @@
   "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
   "owner": "Conversation France",
   "observedAtUtc": "2026-11-15T10:46:00.767500+00:00",
-  "status": "integration-in-progress",
+  "status": "published-scope-global-partial",
   "search": {
     "result": {
       "data": [
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Finish anonymous8language public checks; resolve Facebook and publish only if absent; keep global partial.",
+  "nextAction": "Keep global partial; resolve remaining item/source gaps and track public timeline/alt application defects. No repeat export, Apply or Facebook announcement.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -574,7 +574,7 @@
       "createdAtUtc": "2026-11-15T13:45:19.248Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T15:04:30.373494+00:00",
+  "updatedAtUtc": "2026-11-15T15:24:41.124358+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -1487,12 +1487,7 @@
   },
   "latestActualIntegrationAt": "2026-11-15T15:03:34.7706402Z",
   "latestOperationId": "4a369cdb-c487-4dc2-b9d9-23d65b4c7e64",
-  "auditInProgress": {
-    "uniqueExport": "42-publication-scope-audit-export.json",
-    "correctionProof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-43-audit-editorial-polish-20261115.json",
-    "scorePolicy": "france-publication-score-policy-20261115.json",
-    "completed": true
-  },
+  "auditInProgress": false,
   "finalScopeAudit": {
     "proof": "pokeyland-publication-scope-audit-20261115.json",
     "ready": true,
@@ -2894,5 +2889,9 @@
     "warnings": [],
     "errors": []
   },
-  "publicationProgressProof": "pokeyland-publication-progress-20261115.json"
+  "publicationProgressProof": "pokeyland-publication-progress-20261115.json",
+  "publicationFollowupProof": "pokeyland-publication-followup-20261115.json",
+  "facebookResolved": true,
+  "facebookExternalVisibilityVerified": false,
+  "facebookAnnouncementId": "8345f3ce026c4862a1400d1c4288c25d"
 }

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "observedAtUtc": "2026-11-15T15:24:41.124358+00:00",
+  "outcome": "partial",
+  "siteVisible": true,
+  "globalCompletion": false,
+  "lastActualIntegrationAtUtc": "2026-11-15T15:03:34.7706402Z",
+  "apiMutationPerformedByThisFollowup": false,
+  "scopeAudit": "pokeyland-publication-scope-audit-20261115.json",
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "completeness": {
+    "result": {
+      "completenessScore": 95,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 104,
+      "earnedPoints": 99,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness",
+    "receivedAtUtc": "2026-11-15T15:04:43.3189668Z",
+    "startedAtUtc": "2026-11-15T15:04:41.8541477Z"
+  },
+  "historyDiagnostics": {
+    "receivedAtUtc": "2026-11-15T15:00:33.7670555Z",
+    "startedAtUtc": "2026-11-15T15:00:32.7964028Z",
+    "action": "HistoryDiagnostics",
+    "result": {
+      "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+      "parkName": "Pokeyland",
+      "factCount": 31,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 2010,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 10
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 21
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 10,
+        "sourcedFactCount": 10,
+        "majorFactCount": 3,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "counts": {
+    "items": 75,
+    "publicItems": 52,
+    "privateItems": 23,
+    "itemsDescribedEightLanguages": 52,
+    "media": 53,
+    "publicMedia": 43,
+    "privateMedia": 10,
+    "publicZones": 3,
+    "publicMaps": 1,
+    "publishedFacts": 10,
+    "publicArticles": 1
+  },
+  "publicVerification": {
+    "initialPages": 496,
+    "itemDescriptionsExactAfterTargetedRecheck": 416,
+    "articleBlocksExact": 96,
+    "mapsPresentLanguages": 8,
+    "itemTimelinePages": 48,
+    "normalNavigationVerified": true,
+    "overflowObserved": 0,
+    "brokenImagesObserved": 0,
+    "initialFalsePositives": "29 occurrences of English UNKNOWN were the translated lifecycle badge on recommended historical items, not untranslated technical enums. Two initial park loads were cookie/navigation races, resolved by normal navigation. French Pokeyshow initially returned503; the final known canonical route returned200 with exact text. Earlier textContent-based assertions concatenated headings and paragraphs; raw reports remain preserved.",
+    "parkTimelineEditorialResult": "FAILED: all eight park timelines render events, types, dates and sources, but omit authored localized titles and summaries. Observed public response narrative=null; item timelines and article do render authored text. No claim of full public validation."
+  },
+  "applicationFollowups": [
+    {
+      "issue": "Park timeline canonical narrative absent despite correct legacy graph and10Published diagnostics",
+      "evidence": "publicTimelineResponses and normalNavigationResponses in pokeyland-publication-public-checks-20261115.json",
+      "action": "Inspect canonical narrative projection/legacy bridge in a separately scoped application fix; do not repeat unchanged Apply or re-export audit."
+    },
+    {
+      "issue": "Public Pomme image uses English alt in seven non-English locales despite correct eight-language media metadata",
+      "evidence": "imageAltCheck in pokeyland-publication-public-checks-20261115.json",
+      "action": "Inspect public gallery locale selection separately; preserve correct stored translations."
+    }
+  ],
+  "facebook": {
+    "official": {
+      "result": {
+        "url": "https://amusement-parks.fun/fr/park/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland",
+        "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Pokeyland ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Pokeyland! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/dc876288-7c8b-4684-8150-993908cdcf7a/pokeyland\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+        "targetKind": "Park",
+        "targetName": "Pokeyland",
+        "imageOwnerType": "Park",
+        "imageOwnerId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "8345f3ce026c4862a1400d1c4288c25d",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122127466323424431",
+        "images": {
+          "data": [
+            {
+              "id": "a30bcfef2e414aca8898b45ee212d46e",
+              "label": "Les chalets, la terrasse et l’aire de gyropodes vus depuis une allée boisée de Pokeyland.",
+              "isCurrent": false,
+              "width": 1350,
+              "height": 900
+            },
+            {
+              "id": "452fd5f698e549c3922711177b0984e9",
+              "label": "La fontaine et la passerelle au milieu de l’étang, bordé de saules et de végétation.",
+              "isCurrent": false,
+              "width": 1350,
+              "height": 900
+            }
+          ],
+          "pagination": {
+            "totalItems": 2,
+            "totalPages": 1,
+            "currentPage": 1,
+            "itemsPerPage": 6
+          }
+        }
+      },
+      "receivedAtUtc": "2026-11-15T15:11:59.3705919Z",
+      "startedAtUtc": "2026-11-15T15:11:58.7980160Z",
+      "action": "ResolveFacebookPublication"
+    },
+    "anonymous": {
+      "checkedAtUtc": "2026-11-15T15:16:21.875810+00:00",
+      "requestedUrl": "https://www.facebook.com/1285475681307050/posts/122127466323424431",
+      "finalUrl": "https://www.facebook.com/61592732938801/posts/122127466323424431/",
+      "status": 200,
+      "body": "Log In\nForgot Account?\nThis content isn't available right now\nWhen this happens, it's usually because the owner only shared it with a small group of people, changed who can see it or it's been deleted.\nGo to Feed\nGo back\nVisit Help Center",
+      "title": "Facebook",
+      "loggedIn": false,
+      "optionalCookiesDeclined": true
+    },
+    "newPublishFacebookCalls": 0,
+    "retryCalls": 0,
+    "externalVisibilityVerified": false,
+    "decision": "Existing Published announcement retained. Anonymous link unavailable; cause undetermined. Existing owner-connected verification question remains pending. No duplicate publication."
+  },
+  "remainingGaps": [
+    "23 private items without qualified descriptions remain excluded.",
+    "10 third-party media remain private pending reuse qualification.",
+    "Park timeline editorial display and localized media alt defects remain.",
+    "Facebook anonymous visibility unverified.",
+    "Only10/75 item positions established; no invented coordinates.",
+    "Two park photographs available versus target five; item photographic coverage gaps retained.",
+    "No documented future2027 calendar; no fabricated dates or hours. Expired2026 season-pass dates remain explicit."
+  ],
+  "rawEvidence": "pokeyland-publication-public-checks-20261115.json"
+}

@@ -1614,5 +1614,7 @@
   "publicVerification": "in progress; not yet marked fully verified",
   "facebookStatus": "not yet resolved after current publication, no send performed",
   "lastActualIntegrationAtUtc": "2026-11-15T15:03:34.7706402Z",
-  "lastOperationId": "4a369cdb-c487-4dc2-b9d9-23d65b4c7e64"
+  "lastOperationId": "4a369cdb-c487-4dc2-b9d9-23d65b4c7e64",
+  "subsequentVerificationProof": "pokeyland-publication-followup-20261115.json",
+  "subsequentVerificationAtUtc": "2026-11-15T15:24:41.124358+00:00"
 }
