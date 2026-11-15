@@ -416,6 +416,47 @@
             "value": "<p>A Robosoft concebeu os veículos robuRIDE utilizados pelo VolcanBUL em Vulcania, cujo percurso paisagístico abriu em março de 2008. O projeto dava continuidade ao trabalho da empresa no transporte automatizado de visitantes, já presente no forte de Simserhof desde 2002.</p>"
           }
         ]
+      },
+      {
+        "id": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "key": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "name": "Dronisos",
+        "isVisible": true,
+        "adminReviewStatus": "Validated",
+        "biography": [
+          {
+            "languageCode": "fr",
+            "value": "<p>Dronisos est une entreprise française spécialisée dans les spectacles de drones, avec des équipes à Bordeaux et à Orlando. Elle réunit création artistique, développement de ses propres logiciels et réalisation des spectacles. À Vulcania, elle a participé à Volcano Drones, présenté en 2019 avec le Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "languageCode": "en",
+            "value": "<p>Dronisos is a French drone-show company with teams in Bordeaux and Orlando. Its work combines artistic creation, development of its own software and show delivery. At Vulcania, it contributed to Volcano Drones, introduced in 2019 with the Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "languageCode": "de",
+            "value": "<p>Dronisos ist ein französisches Unternehmen für Drohnenshows mit Teams in Bordeaux und Orlando. Es verbindet künstlerische Gestaltung, die Entwicklung eigener Software und die Durchführung von Shows. In Vulcania wirkte es an Volcano Drones mit, das 2019 gemeinsam mit dem Laboratoire Magmas et Volcans vorgestellt wurde.</p>"
+          },
+          {
+            "languageCode": "nl",
+            "value": "<p>Dronisos is een Frans bedrijf voor droneshows met teams in Bordeaux en Orlando. Het combineert artistieke creatie, ontwikkeling van eigen software en uitvoering van voorstellingen. In Vulcania werkte het mee aan Volcano Drones, dat in 2019 samen met Laboratoire Magmas et Volcans werd gepresenteerd.</p>"
+          },
+          {
+            "languageCode": "it",
+            "value": "<p>Dronisos è un’azienda francese specializzata in spettacoli di droni, con squadre a Bordeaux e Orlando. Riunisce creazione artistica, sviluppo di software propri e realizzazione degli spettacoli. A Vulcania ha collaborato a Volcano Drones, presentato nel 2019 insieme al Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "languageCode": "es",
+            "value": "<p>Dronisos es una empresa francesa especializada en espectáculos de drones, con equipos en Burdeos y Orlando. Combina creación artística, desarrollo de programas propios y realización de espectáculos. En Vulcania colaboró en Volcano Drones, presentado en 2019 junto al Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "languageCode": "pl",
+            "value": "<p>Dronisos to francuska firma specjalizująca się w pokazach dronów, z zespołami w Bordeaux i Orlando. Łączy twórczość artystyczną, rozwój własnego oprogramowania i realizację widowisk. W Vulcanii współtworzyła Volcano Drones, zaprezentowany w 2019 roku wraz z Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "languageCode": "pt",
+            "value": "<p>A Dronisos é uma empresa francesa especializada em espetáculos de drones, com equipas em Bordéus e Orlando. Combina criação artística, desenvolvimento de programas próprios e realização dos espetáculos. Em Vulcania, colaborou em Volcano Drones, apresentado em 2019 com o Laboratoire Magmas et Volcans.</p>"
+          }
+        ]
       }
     ]
   },
@@ -5597,6 +5638,57 @@
         {
           "languageCode": "pt",
           "value": "<h2>Paisagens suspensas entre as árvores</h2><p>Nature grand format levava as imagens da Ushuaïa TV ao bosque de Vulcania. Fotografias de desertos, vulcões e outros ambientes naturais surgiam em grandes telas estendidas junto ao caminho. A floresta de Auvergne envolvia assim paisagens de regiões distantes.</p><p>Um painel intitulado « Volcan » mostrava lava incandescente sob uma crosta escura. Os troncos, a folhagem e os toros de madeira ao pé da imagem tornavam percetível a escala desta fotografia ao ar livre. Textos de acompanhamento explicavam as transformações das paisagens representadas.</p><h2>O olhar da Ushuaïa sobre a Terra</h2><p>O percurso ligava a beleza dos lugares à sua fragilidade. Entre eles encontravam-se paisagens inscritas no património mundial da Unesco, cujas imagens alargavam a descoberta para além dos vulcões de Auvergne, até aos grandes ambientes naturais do planeta.</p>"
+        }
+      ]
+    },
+    {
+      "id": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "key": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "name": "Volcano Drones",
+      "category": "Show",
+      "type": "Show",
+      "isVisible": true,
+      "adminReviewStatus": "Validated",
+      "attractionDetails": {
+        "status": "Unknown",
+        "openingDate": null,
+        "manufacturerKey": "dronisos",
+        "sourceUrl": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes",
+        "manufacturerId": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "openingDateText": "2019"
+      },
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des assistants volants face aux volcans</h2><p>Volcano Drones mettait en scène les professeurs Caldera et Magmatus, incarnés par les animateurs scientifiques de Vulcania. Devant les images d’un volcan projetées sur grand écran, de véritables drones rejoignaient la présentation. Le travail des volcanologues quittait ainsi les seuls récits de terrain pour prendre place sur scène.</p><p>Le spectacle expliquait comment observer les zones difficiles d’accès et recueillir des informations sans exposer les chercheurs au danger. Les images thermiques et la surveillance des éruptions donnaient un sens concret à la présence de ces petits assistants au-dessus du plateau.</p><h2>La démonstration devient ballet</h2><p>Le scénario se tournait aussi vers les usages futurs des drones, avant de laisser place à une chorégraphie aérienne lumineuse. Créé avec le Laboratoire Magmas et Volcans et Dronisos, ce rendez-vous associait la médiation scientifique de Vulcania au mouvement des points colorés devant l’écran.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Flying assistants face the volcanoes</h2><p>Volcano Drones featured Professors Caldera and Magmatus, played by Vulcania’s science presenters. Real drones joined the demonstration in front of volcanic imagery projected onto a large screen. The work of volcanologists moved from accounts of field research onto the stage.</p><p>The show explored how to observe hard-to-reach areas and gather information without exposing researchers to danger. Thermal imagery and monitoring eruptions gave a concrete purpose to the small flying assistants above the stage.</p><h2>From demonstration to aerial ballet</h2><p>The story also looked towards future uses of drones before giving way to a luminous aerial choreography. Created with the Laboratoire Magmas et Volcans and Dronisos, the show brought Vulcania’s science communication together with coloured lights moving before the screen.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Fliegende Helfer vor den Vulkanen</h2><p>In Volcano Drones traten die Professoren Caldera und Magmatus auf, gespielt von Vulcanias Wissenschaftsvermittlern. Vor den auf eine große Leinwand projizierten Vulkanbildern erschienen echte Drohnen. Die Arbeit der Vulkanologen wurde so aus den Berichten über die Feldforschung auf die Bühne geholt.</p><p>Die Vorführung erklärte, wie schwer zugängliche Gebiete beobachtet und Informationen gesammelt werden können, ohne Forschende in Gefahr zu bringen. Wärmebilder und die Überwachung von Eruptionen machten den Einsatz der kleinen fliegenden Helfer über der Bühne anschaulich.</p><h2>Aus der Vorführung wird ein Ballett</h2><p>Die Handlung blickte auch auf künftige Einsatzmöglichkeiten der Drohnen, bevor eine leuchtende Luftchoreografie folgte. Gemeinsam mit dem Laboratoire Magmas et Volcans und Dronisos entwickelt, verband die Show Vulcanias Wissenschaftsvermittlung mit farbigen Lichtpunkten vor der Leinwand.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Vliegende helpers tegenover de vulkanen</h2><p>Volcano Drones voerde de professoren Caldera en Magmatus op, gespeeld door de wetenschapsmedewerkers van Vulcania. Voor vulkaanbeelden op een groot scherm verschenen echte drones. Het werk van vulkanologen kwam zo vanuit verhalen over veldonderzoek op het toneel terecht.</p><p>De voorstelling liet zien hoe moeilijk bereikbare gebieden kunnen worden geobserveerd en gegevens verzameld zonder onderzoekers aan gevaar bloot te stellen. Warmtebeelden en het volgen van uitbarstingen gaven een concrete betekenis aan de kleine vliegende helpers boven het podium.</p><h2>De demonstratie wordt een luchtballet</h2><p>Het verhaal keek ook naar toekomstige toepassingen van drones, waarna een lichtgevende luchtchoreografie volgde. De samenwerking met Laboratoire Magmas et Volcans en Dronisos verbond Vulcania’s wetenschapsvoorlichting met gekleurde lichtpunten die voor het scherm bewogen.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Assistenti volanti davanti ai vulcani</h2><p>Volcano Drones portava in scena i professori Caldera e Magmatus, interpretati dagli animatori scientifici di Vulcania. Veri droni partecipavano alla dimostrazione davanti alle immagini di un vulcano proiettate su un grande schermo. Il lavoro dei vulcanologi passava così dai racconti della ricerca sul campo al palcoscenico.</p><p>Lo spettacolo spiegava come osservare zone difficili da raggiungere e raccogliere informazioni senza esporre i ricercatori al pericolo. Le immagini termiche e il monitoraggio delle eruzioni davano un significato concreto ai piccoli assistenti volanti sopra la scena.</p><h2>La dimostrazione diventa un balletto</h2><p>La storia immaginava anche gli impieghi futuri dei droni, prima di lasciare spazio a una coreografia aerea luminosa. Realizzato con il Laboratoire Magmas et Volcans e Dronisos, lo spettacolo univa la divulgazione scientifica di Vulcania al movimento dei punti colorati davanti allo schermo.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Asistentes voladores frente a los volcanes</h2><p>Volcano Drones llevaba a escena a los profesores Caldera y Magmatus, interpretados por los divulgadores científicos de Vulcania. Drones reales participaban en la presentación ante imágenes de un volcán proyectadas en una gran pantalla. El trabajo de los vulcanólogos pasaba así de los relatos de investigación sobre el terreno al escenario.</p><p>El espectáculo explicaba cómo observar zonas de difícil acceso y recoger información sin exponer a los investigadores al peligro. Las imágenes térmicas y la vigilancia de las erupciones daban un sentido concreto a esos pequeños asistentes que volaban sobre el escenario.</p><h2>La demostración se convierte en ballet</h2><p>La historia también miraba hacia los futuros usos de los drones antes de dar paso a una coreografía aérea luminosa. Creado con el Laboratoire Magmas et Volcans y Dronisos, el espectáculo combinaba la divulgación científica de Vulcania con puntos de colores que se movían delante de la pantalla.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Latający pomocnicy przed wulkanami</h2><p>W Volcano Drones występowali profesorowie Caldera i Magmatus, grani przez popularyzatorów nauki z Vulcanii. Przed wielkim ekranem z obrazami wulkanu pojawiały się prawdziwe drony. Praca wulkanologów trafiała w ten sposób z opowieści o badaniach terenowych na scenę.</p><p>Przedstawienie wyjaśniało, jak obserwować trudno dostępne miejsca i zbierać informacje bez narażania badaczy na niebezpieczeństwo. Obrazy termiczne i monitorowanie erupcji nadawały konkretny sens obecności niewielkich latających pomocników nad sceną.</p><h2>Pokaz zmienia się w powietrzny balet</h2><p>Opowieść sięgała także ku przyszłym zastosowaniom dronów, po czym ustępowała miejsca świetlnej choreografii w powietrzu. Spektakl stworzony z Laboratoire Magmas et Volcans i Dronisos łączył popularyzację nauki w Vulcanii z ruchem kolorowych punktów przed ekranem.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Assistentes voadores diante dos vulcões</h2><p>Volcano Drones levava ao palco os professores Caldera e Magmatus, interpretados pelos animadores científicos de Vulcania. Drones reais participavam na apresentação diante de imagens de um vulcão projetadas num grande ecrã. O trabalho dos vulcanólogos passava assim dos relatos da investigação no terreno para o palco.</p><p>O espetáculo explicava como observar zonas de difícil acesso e recolher informações sem expor os investigadores ao perigo. As imagens térmicas e a vigilância das erupções davam um sentido concreto aos pequenos assistentes voadores sobre o palco.</p><h2>A demonstração transforma-se em bailado</h2><p>A história olhava também para os usos futuros dos drones, antes de dar lugar a uma coreografia aérea luminosa. Criado com o Laboratoire Magmas et Volcans e a Dronisos, o espetáculo associava a divulgação científica de Vulcania ao movimento dos pontos coloridos diante do ecrã.</p>"
         }
       ]
     }
@@ -14504,6 +14596,136 @@
       "setAsCurrent": false,
       "withWatermark": false,
       "internalUrl": "/images/212b74dbb2af4190b02311f2f960f002"
+    },
+    {
+      "id": "6a9dc082901745ea992bbc3dbf04c3f4",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "path": "park_item/6a9dc082901745ea992bbc3dbf04c3f4",
+      "description": "Sur la scène de Volcano Drones, une animatrice accompagne un drone devant l’image d’un volcan en éruption. Photographie publiée lors du lancement de la saison 2019 de Vulcania.",
+      "isCurrent": false,
+      "isPublished": true,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 500,
+      "sizeInBytes": 33310,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une animatrice et un drone devant un volcan projeté dans Volcano Drones"
+        },
+        {
+          "languageCode": "en",
+          "value": "A presenter and a drone in front of a projected volcano in Volcano Drones"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Moderatorin und eine Drohne vor einem projizierten Vulkan in Volcano Drones"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een presentatrice en een drone voor een geprojecteerde vulkaan in Volcano Drones"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un’animatrice e un drone davanti a un vulcano proiettato in Volcano Drones"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una presentadora y un dron ante un volcán proyectado en Volcano Drones"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Animatorka i dron na tle projekcji wulkanu w Volcano Drones"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma animadora e um drone diante de um vulcão projetado em Volcano Drones"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Sur la scène de Volcano Drones, une animatrice accompagne un drone devant l’image d’un volcan en éruption. Photographie publiée lors du lancement de la saison 2019 de Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "On the Volcano Drones stage, a presenter accompanies a drone in front of an image of an erupting volcano. Photograph published for the launch of Vulcania’s 2019 season."
+        },
+        {
+          "languageCode": "de",
+          "value": "Auf der Bühne von Volcano Drones begleitet eine Moderatorin eine Drohne vor dem Bild eines ausbrechenden Vulkans. Das Foto wurde zum Start der Vulcania-Saison 2019 veröffentlicht."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Op het podium van Volcano Drones begeleidt een presentatrice een drone voor een beeld van een uitbarstende vulkaan. Foto gepubliceerd bij de start van Vulcania’s seizoen 2019."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sul palco di Volcano Drones, un’animatrice accompagna un drone davanti all’immagine di un vulcano in eruzione. Fotografia pubblicata per il lancio della stagione 2019 di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "En el escenario de Volcano Drones, una presentadora acompaña a un dron ante la imagen de un volcán en erupción. Fotografía publicada con motivo del inicio de la temporada 2019 de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Na scenie Volcano Drones animatorka towarzyszy dronowi na tle obrazu wybuchającego wulkanu. Zdjęcie opublikowano z okazji rozpoczęcia sezonu 2019 w Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "No palco de Volcano Drones, uma animadora acompanha um drone diante da imagem de um vulcão em erupção. Fotografia publicada por ocasião do início da temporada de 2019 de Vulcania."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:40:02.667Z",
+      "updatedAt": "2026-11-15T22:40:08.992Z",
+      "key": "6a9dc082901745ea992bbc3dbf04c3f4",
+      "imageId": "6a9dc082901745ea992bbc3dbf04c3f4",
+      "ownerKey": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "setAsCurrent": false,
+      "withWatermark": false,
+      "internalUrl": "/images/6a9dc082901745ea992bbc3dbf04c3f4"
     }
   ],
   "openingHours": null,
@@ -18507,6 +18729,125 @@
         "id": "18b5ac86-f00e-45fd-9eea-42a6c75c7b20",
         "itemKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
         "parkItemKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "slug": null,
+        "previousName": null,
+        "newName": null,
+        "previousLogoImageId": null,
+        "newLogoImageId": null,
+        "previousOperatorId": null,
+        "newOperatorId": null,
+        "previousOwnerName": null,
+        "newOwnerName": null,
+        "locationLabel": null,
+        "relatedParkIds": [],
+        "relatedParkItemIds": [],
+        "article": null
+      },
+      {
+        "key": "vulcania-volcano-drones-opening-2019",
+        "entityType": "ParkItem",
+        "owner": "parkItem",
+        "ownerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "itemId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "parkItemId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "year": 2019,
+        "month": null,
+        "day": null,
+        "datePrecision": "Year",
+        "eventType": "Opening",
+        "isVisible": true,
+        "isMajor": true,
+        "mainImageId": "6a9dc082901745ea992bbc3dbf04c3f4",
+        "sources": [
+          {
+            "label": "Vulcania — communiqué de la saison 2019 publié par le SNELAC le 20 mars 2019",
+            "url": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Clermont Auvergne Métropole — bilan SEM, délibération du 14 février 2020, p. 5 et 12",
+            "url": "https://api-politique.pappers.fr/territoire/document/ffafe34ac70824fc9758269059d3c40a/pdf",
+            "accessedAt": "2026-11-15"
+          },
+          {
+            "label": "Le Progrès — lancement de la saison 2019, Geneviève Colonna d’Istria, 21 mars 2019",
+            "url": "https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet",
+            "accessedAt": "2026-11-15"
+          }
+        ],
+        "titles": [
+          {
+            "languageCode": "fr",
+            "value": "Les drones entrent dans la médiation scientifique de Vulcania"
+          },
+          {
+            "languageCode": "en",
+            "value": "Drones join Vulcania’s science storytelling"
+          },
+          {
+            "languageCode": "de",
+            "value": "Drohnen ergänzen Vulcanias Wissenschaftsvermittlung"
+          },
+          {
+            "languageCode": "nl",
+            "value": "Drones krijgen een rol in Vulcania’s wetenschapsverhalen"
+          },
+          {
+            "languageCode": "it",
+            "value": "I droni entrano nella divulgazione scientifica di Vulcania"
+          },
+          {
+            "languageCode": "es",
+            "value": "Los drones se suman a la divulgación científica de Vulcania"
+          },
+          {
+            "languageCode": "pl",
+            "value": "Drony dołączają do naukowych opowieści Vulcanii"
+          },
+          {
+            "languageCode": "pt",
+            "value": "Os drones juntam-se à divulgação científica de Vulcania"
+          }
+        ],
+        "summaries": [
+          {
+            "languageCode": "fr",
+            "value": "Vulcania lance en 2019 un spectacle consacré aux nouveaux outils des volcanologues. Avec Volcano Drones, l’observation des éruptions est racontée par des personnages de scientifiques, tandis que les drones deviennent des partenaires de jeu sur scène. L’innovation de terrain nourrit ainsi une nouvelle forme de médiation au parc."
+          },
+          {
+            "languageCode": "en",
+            "value": "In 2019, Vulcania launches a show about the new tools used by volcanologists. Volcano Drones presents eruption monitoring through scientist characters, with drones becoming their partners on stage. Innovations from field research inspire a new form of science storytelling at the park."
+          },
+          {
+            "languageCode": "de",
+            "value": "2019 führt Vulcania eine Show über neue Werkzeuge der Vulkanologen ein. In Volcano Drones erzählen Wissenschaftlerfiguren von der Beobachtung von Eruptionen, während Drohnen zu ihren Bühnenpartnern werden. Neuerungen aus der Feldforschung geben damit den Anstoß zu einer neuen Form der Wissensvermittlung im Park."
+          },
+          {
+            "languageCode": "nl",
+            "value": "In 2019 introduceert Vulcania een voorstelling over nieuwe hulpmiddelen voor vulkanologen. In Volcano Drones vertellen wetenschapperspersonages over het volgen van uitbarstingen, terwijl drones hun tegenspelers op het podium worden. Vernieuwing uit het veldonderzoek inspireert zo een nieuwe vorm van wetenschapsvoorlichting in het park."
+          },
+          {
+            "languageCode": "it",
+            "value": "Nel 2019 Vulcania lancia uno spettacolo dedicato ai nuovi strumenti dei vulcanologi. In Volcano Drones, personaggi di scienziati raccontano l’osservazione delle eruzioni mentre i droni diventano loro compagni di scena. Le innovazioni della ricerca sul campo ispirano così una nuova forma di divulgazione nel parco."
+          },
+          {
+            "languageCode": "es",
+            "value": "En 2019, Vulcania estrena un espectáculo sobre las nuevas herramientas de los vulcanólogos. En Volcano Drones, personajes de científicos cuentan cómo se observan las erupciones mientras los drones se convierten en sus compañeros de escena. Las innovaciones de la investigación sobre el terreno inspiran una nueva forma de divulgación en el parque."
+          },
+          {
+            "languageCode": "pl",
+            "value": "W 2019 roku Vulcania wprowadza widowisko poświęcone nowym narzędziom wulkanologów. W Volcano Drones postacie naukowców opowiadają o obserwacji erupcji, a drony stają się ich scenicznymi partnerami. Innowacje z badań terenowych inspirują w ten sposób nową formę popularyzacji nauki w parku."
+          },
+          {
+            "languageCode": "pt",
+            "value": "Em 2019, Vulcania estreia um espetáculo dedicado às novas ferramentas dos vulcanólogos. Em Volcano Drones, personagens de cientistas contam como se observam as erupções, enquanto os drones se tornam seus parceiros em palco. As inovações da investigação no terreno inspiram uma nova forma de divulgação no parque."
+          }
+        ],
+        "id": "43d5f3a9-634e-4306-8af2-e4ab8a8d9e61",
+        "itemKey": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "parkItemKey": "6550ac7c-87c8-4076-85ba-b877d293052d",
         "slug": null,
         "previousName": null,
         "newName": null,

@@ -1,0 +1,608 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-volcano-drones-opening-2019",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+            "itemId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+            "parkItemId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2019,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "6a9dc082901745ea992bbc3dbf04c3f4",
+            "sources": [
+              {
+                "label": "Vulcania — communiqué de la saison 2019 publié par le SNELAC le 20 mars 2019",
+                "url": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Clermont Auvergne Métropole — bilan SEM, délibération du 14 février 2020, p. 5 et 12",
+                "url": "https://api-politique.pappers.fr/territoire/document/ffafe34ac70824fc9758269059d3c40a/pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Le Progrès — lancement de la saison 2019, Geneviève Colonna d’Istria, 21 mars 2019",
+                "url": "https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Les drones entrent dans la médiation scientifique de Vulcania"
+              },
+              {
+                "languageCode": "en",
+                "value": "Drones join Vulcania’s science storytelling"
+              },
+              {
+                "languageCode": "de",
+                "value": "Drohnen ergänzen Vulcanias Wissenschaftsvermittlung"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Drones krijgen een rol in Vulcania’s wetenschapsverhalen"
+              },
+              {
+                "languageCode": "it",
+                "value": "I droni entrano nella divulgazione scientifica di Vulcania"
+              },
+              {
+                "languageCode": "es",
+                "value": "Los drones se suman a la divulgación científica de Vulcania"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Drony dołączają do naukowych opowieści Vulcanii"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Os drones juntam-se à divulgação científica de Vulcania"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Vulcania lance en 2019 un spectacle consacré aux nouveaux outils des volcanologues. Avec Volcano Drones, l’observation des éruptions est racontée par des personnages de scientifiques, tandis que les drones deviennent des partenaires de jeu sur scène. L’innovation de terrain nourrit ainsi une nouvelle forme de médiation au parc."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 2019, Vulcania launches a show about the new tools used by volcanologists. Volcano Drones presents eruption monitoring through scientist characters, with drones becoming their partners on stage. Innovations from field research inspire a new form of science storytelling at the park."
+              },
+              {
+                "languageCode": "de",
+                "value": "2019 führt Vulcania eine Show über neue Werkzeuge der Vulkanologen ein. In Volcano Drones erzählen Wissenschaftlerfiguren von der Beobachtung von Eruptionen, während Drohnen zu ihren Bühnenpartnern werden. Neuerungen aus der Feldforschung geben damit den Anstoß zu einer neuen Form der Wissensvermittlung im Park."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 2019 introduceert Vulcania een voorstelling over nieuwe hulpmiddelen voor vulkanologen. In Volcano Drones vertellen wetenschapperspersonages over het volgen van uitbarstingen, terwijl drones hun tegenspelers op het podium worden. Vernieuwing uit het veldonderzoek inspireert zo een nieuwe vorm van wetenschapsvoorlichting in het park."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 2019 Vulcania lancia uno spettacolo dedicato ai nuovi strumenti dei vulcanologi. In Volcano Drones, personaggi di scienziati raccontano l’osservazione delle eruzioni mentre i droni diventano loro compagni di scena. Le innovazioni della ricerca sul campo ispirano così una nuova forma di divulgazione nel parco."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 2019, Vulcania estrena un espectáculo sobre las nuevas herramientas de los vulcanólogos. En Volcano Drones, personajes de científicos cuentan cómo se observan las erupciones mientras los drones se convierten en sus compañeros de escena. Las innovaciones de la investigación sobre el terreno inspiran una nueva forma de divulgación en el parque."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 2019 roku Vulcania wprowadza widowisko poświęcone nowym narzędziom wulkanologów. W Volcano Drones postacie naukowców opowiadają o obserwacji erupcji, a drony stają się ich scenicznymi partnerami. Innowacje z badań terenowych inspirują w ten sposób nową formę popularyzacji nauki w parku."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 2019, Vulcania estreia um espetáculo dedicado às novas ferramentas dos vulcanólogos. Em Volcano Drones, personagens de cientistas contam como se observam as erupções, enquanto os drones se tornam seus parceiros em palco. As inovações da investigação no terreno inspiram uma nova forma de divulgação no parque."
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Private year-only Opening2019 for historical show Volcano Drones. Primary press release and municipal retrospective report confirm. No season-opening day transposed, noclosure inferred; actual2019launch-report photograph attached.16localized titles/summaries personally authored reviewed, scientificmediation asdurable significance."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "15297b18-631f-494f-b9bb-7f5947882178",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:40:58.5164408Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "7c745bd8-a133-4d58-9ae7-4b0858f09bbc",
+        "entityKey": "vulcania-volcano-drones-opening-2019",
+        "displayName": "Les drones entrent dans la médiation scientifique de Vulcania",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-volcano-drones-opening-2019"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "6550ac7c-87c8-4076-85ba-b877d293052d"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "6550ac7c-87c8-4076-85ba-b877d293052d"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2019"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6a9dc082901745ea992bbc3dbf04c3f4"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Drohnen ergänzen Vulcanias Wissenschaftsvermittlung, en:Drones join Vulcania’s science storytelling, es:Los drones se suman a la divulgación científica de Vulcania, fr:Les drones entrent dans la médiation scientifique de Vulcania, it:I droni entrano nella divulgazione scientifica di Vulcania, nl:Drones krijgen een rol in Vulcania’s wetenschapsverhalen, pl:Drony dołączają do naukowych opowieści Vulcanii, pt:Os drones juntam-se à divulgação científica de Vulcania"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2019 führt Vulcania eine Show über neue Werkzeuge der Vulkanologen ein. In Volcano Drones erzählen Wissenschaftlerfiguren von der Beobachtung von Eruptionen, während Drohnen zu ihren Bühnenpartnern werden. Neuerungen aus der Feldforschung geben damit den Anstoß zu einer neuen Form der Wissensvermittlung im Park., en:In 2019, Vulcania launches a show about the new tools used by volcanologists. Volcano Drones presents eruption monitoring through scientist characters, with drones becoming their partners on stage. Innovations from field research inspire a new form of science storytelling at the park., es:En 2019, Vulcania estrena un espectáculo sobre las nuevas herramientas de los vulcanólogos. En Volcano Drones, personajes de científicos cuentan cómo se observan las erupciones mientras los drones se convierten en sus compañeros de escena. Las innovaciones de la investigación sobre el terreno inspiran una nueva forma de divulgación en el parque., fr:Vulcania lance en 2019 un spectacle consacré aux nouveaux outils des volcanologues. Avec Volcano Drones, l’observation des éruptions est racontée par des personnages de scientifiques, tandis que les drones deviennent des partenaires de jeu sur scène. L’innovation de terrain nourrit ainsi une nouvelle forme de médiation au parc., it:Nel 2019 Vulcania lancia uno spettacolo dedicato ai nuovi strumenti dei vulcanologi. In Volcano Drones, personaggi di scienziati raccontano l’osservazione delle eruzioni mentre i droni diventano loro compagni di scena. Le innovazioni della ricerca sul campo ispirano così una nuova forma di divulgazione nel parco., nl:In 2019 introduceert Vulcania een voorstelling over nieuwe hulpmiddelen voor vulkanologen. In Volcano Drones vertellen wetenschapperspersonages over het volgen van uitbarstingen, terwijl drones hun tegenspelers op het podium worden. Vernieuwing uit het veldonderzoek inspireert zo een nieuwe vorm van wetenschapsvoorlichting in het park., pl:W 2019 roku Vulcania wprowadza widowisko poświęcone nowym narzędziom wulkanologów. W Volcano Drones postacie naukowców opowiadają o obserwacji erupcji, a drony stają się ich scenicznymi partnerami. Innowacje z badań terenowych inspirują w ten sposób nową formę popularyzacji nauki w parku., pt:Em 2019, Vulcania estreia um espetáculo dedicado às novas ferramentas dos vulcanólogos. Em Volcano Drones, personagens de cientistas contam como se observam as erupções, enquanto os drones se tornam seus parceiros em palco. As inovações da investigação no terreno inspiram uma nova forma de divulgação no parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 bilan SEM, d\\u00E9lib\\u00E9ration du 14 f\\u00E9vrier 2020, p. 5 et 12\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/ffafe34ac70824fc9758269059d3c40a/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Le Progr\\u00E8s \\u2014 lancement de la saison 2019, Genevi\\u00E8ve Colonna d\\u2019Istria, 21 mars 2019\",\"Url\":\"https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 de la saison 2019 publi\\u00E9 par le SNELAC le 20 mars 2019\",\"Url\":\"https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "06f5cbbb-6970-421d-8be7-9ca9d79989c6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:41:17.1918207Z",
+    "appliedAtUtc": "2026-11-15T22:41:17.1918214Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "43d5f3a9-634e-4306-8af2-e4ab8a8d9e61",
+        "entityKey": "vulcania-volcano-drones-opening-2019",
+        "displayName": "Les drones entrent dans la médiation scientifique de Vulcania",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-volcano-drones-opening-2019"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "6550ac7c-87c8-4076-85ba-b877d293052d"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "6550ac7c-87c8-4076-85ba-b877d293052d"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2019"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6a9dc082901745ea992bbc3dbf04c3f4"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Drohnen ergänzen Vulcanias Wissenschaftsvermittlung, en:Drones join Vulcania’s science storytelling, es:Los drones se suman a la divulgación científica de Vulcania, fr:Les drones entrent dans la médiation scientifique de Vulcania, it:I droni entrano nella divulgazione scientifica di Vulcania, nl:Drones krijgen een rol in Vulcania’s wetenschapsverhalen, pl:Drony dołączają do naukowych opowieści Vulcanii, pt:Os drones juntam-se à divulgação científica de Vulcania"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:2019 führt Vulcania eine Show über neue Werkzeuge der Vulkanologen ein. In Volcano Drones erzählen Wissenschaftlerfiguren von der Beobachtung von Eruptionen, während Drohnen zu ihren Bühnenpartnern werden. Neuerungen aus der Feldforschung geben damit den Anstoß zu einer neuen Form der Wissensvermittlung im Park., en:In 2019, Vulcania launches a show about the new tools used by volcanologists. Volcano Drones presents eruption monitoring through scientist characters, with drones becoming their partners on stage. Innovations from field research inspire a new form of science storytelling at the park., es:En 2019, Vulcania estrena un espectáculo sobre las nuevas herramientas de los vulcanólogos. En Volcano Drones, personajes de científicos cuentan cómo se observan las erupciones mientras los drones se convierten en sus compañeros de escena. Las innovaciones de la investigación sobre el terreno inspiran una nueva forma de divulgación en el parque., fr:Vulcania lance en 2019 un spectacle consacré aux nouveaux outils des volcanologues. Avec Volcano Drones, l’observation des éruptions est racontée par des personnages de scientifiques, tandis que les drones deviennent des partenaires de jeu sur scène. L’innovation de terrain nourrit ainsi une nouvelle forme de médiation au parc., it:Nel 2019 Vulcania lancia uno spettacolo dedicato ai nuovi strumenti dei vulcanologi. In Volcano Drones, personaggi di scienziati raccontano l’osservazione delle eruzioni mentre i droni diventano loro compagni di scena. Le innovazioni della ricerca sul campo ispirano così una nuova forma di divulgazione nel parco., nl:In 2019 introduceert Vulcania een voorstelling over nieuwe hulpmiddelen voor vulkanologen. In Volcano Drones vertellen wetenschapperspersonages over het volgen van uitbarstingen, terwijl drones hun tegenspelers op het podium worden. Vernieuwing uit het veldonderzoek inspireert zo een nieuwe vorm van wetenschapsvoorlichting in het park., pl:W 2019 roku Vulcania wprowadza widowisko poświęcone nowym narzędziom wulkanologów. W Volcano Drones postacie naukowców opowiadają o obserwacji erupcji, a drony stają się ich scenicznymi partnerami. Innowacje z badań terenowych inspirują w ten sposób nową formę popularyzacji nauki w parku., pt:Em 2019, Vulcania estreia um espetáculo dedicado às novas ferramentas dos vulcanólogos. Em Volcano Drones, personagens de cientistas contam como se observam as erupções, enquanto os drones se tornam seus parceiros em palco. As inovações da investigação no terreno inspiram uma nova forma de divulgação no parque."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Clermont Auvergne M\\u00E9tropole \\u2014 bilan SEM, d\\u00E9lib\\u00E9ration du 14 f\\u00E9vrier 2020, p. 5 et 12\",\"Url\":\"https://api-politique.pappers.fr/territoire/document/ffafe34ac70824fc9758269059d3c40a/pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Le Progr\\u00E8s \\u2014 lancement de la saison 2019, Genevi\\u00E8ve Colonna d\\u2019Istria, 21 mars 2019\",\"Url\":\"https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 de la saison 2019 publi\\u00E9 par le SNELAC le 20 mars 2019\",\"Url\":\"https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-volcano-drones-opening-2019",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "itemId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "parkItemId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2019,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "6a9dc082901745ea992bbc3dbf04c3f4",
+      "sources": [
+        {
+          "label": "Vulcania — communiqué de la saison 2019 publié par le SNELAC le 20 mars 2019",
+          "url": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Clermont Auvergne Métropole — bilan SEM, délibération du 14 février 2020, p. 5 et 12",
+          "url": "https://api-politique.pappers.fr/territoire/document/ffafe34ac70824fc9758269059d3c40a/pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Le Progrès — lancement de la saison 2019, Geneviève Colonna d’Istria, 21 mars 2019",
+          "url": "https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Les drones entrent dans la médiation scientifique de Vulcania"
+        },
+        {
+          "languageCode": "en",
+          "value": "Drones join Vulcania’s science storytelling"
+        },
+        {
+          "languageCode": "de",
+          "value": "Drohnen ergänzen Vulcanias Wissenschaftsvermittlung"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Drones krijgen een rol in Vulcania’s wetenschapsverhalen"
+        },
+        {
+          "languageCode": "it",
+          "value": "I droni entrano nella divulgazione scientifica di Vulcania"
+        },
+        {
+          "languageCode": "es",
+          "value": "Los drones se suman a la divulgación científica de Vulcania"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Drony dołączają do naukowych opowieści Vulcanii"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os drones juntam-se à divulgação científica de Vulcania"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Vulcania lance en 2019 un spectacle consacré aux nouveaux outils des volcanologues. Avec Volcano Drones, l’observation des éruptions est racontée par des personnages de scientifiques, tandis que les drones deviennent des partenaires de jeu sur scène. L’innovation de terrain nourrit ainsi une nouvelle forme de médiation au parc."
+        },
+        {
+          "languageCode": "en",
+          "value": "In 2019, Vulcania launches a show about the new tools used by volcanologists. Volcano Drones presents eruption monitoring through scientist characters, with drones becoming their partners on stage. Innovations from field research inspire a new form of science storytelling at the park."
+        },
+        {
+          "languageCode": "de",
+          "value": "2019 führt Vulcania eine Show über neue Werkzeuge der Vulkanologen ein. In Volcano Drones erzählen Wissenschaftlerfiguren von der Beobachtung von Eruptionen, während Drohnen zu ihren Bühnenpartnern werden. Neuerungen aus der Feldforschung geben damit den Anstoß zu einer neuen Form der Wissensvermittlung im Park."
+        },
+        {
+          "languageCode": "nl",
+          "value": "In 2019 introduceert Vulcania een voorstelling over nieuwe hulpmiddelen voor vulkanologen. In Volcano Drones vertellen wetenschapperspersonages over het volgen van uitbarstingen, terwijl drones hun tegenspelers op het podium worden. Vernieuwing uit het veldonderzoek inspireert zo een nieuwe vorm van wetenschapsvoorlichting in het park."
+        },
+        {
+          "languageCode": "it",
+          "value": "Nel 2019 Vulcania lancia uno spettacolo dedicato ai nuovi strumenti dei vulcanologi. In Volcano Drones, personaggi di scienziati raccontano l’osservazione delle eruzioni mentre i droni diventano loro compagni di scena. Le innovazioni della ricerca sul campo ispirano così una nuova forma di divulgazione nel parco."
+        },
+        {
+          "languageCode": "es",
+          "value": "En 2019, Vulcania estrena un espectáculo sobre las nuevas herramientas de los vulcanólogos. En Volcano Drones, personajes de científicos cuentan cómo se observan las erupciones mientras los drones se convierten en sus compañeros de escena. Las innovaciones de la investigación sobre el terreno inspiran una nueva forma de divulgación en el parque."
+        },
+        {
+          "languageCode": "pl",
+          "value": "W 2019 roku Vulcania wprowadza widowisko poświęcone nowym narzędziom wulkanologów. W Volcano Drones postacie naukowców opowiadają o obserwacji erupcji, a drony stają się ich scenicznymi partnerami. Innowacje z badań terenowych inspirują w ten sposób nową formę popularyzacji nauki w parku."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Em 2019, Vulcania estreia um espetáculo dedicado às novas ferramentas dos vulcanólogos. Em Volcano Drones, personagens de cientistas contam como se observam as erupções, enquanto os drones se tornam seus parceiros em palco. As inovações da investigação no terreno inspiram uma nova forma de divulgação no parque."
+        }
+      ],
+      "id": "43d5f3a9-634e-4306-8af2-e4ab8a8d9e61"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "snelac2019",
+      "url": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes",
+      "checkedAtUtc": "2026-11-15T22:34:35.315074+00:00",
+      "status": 200,
+      "finalUrl": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 826158,
+      "sha256": "dc25dc003a2db502c9040b4712171a9142fe147eace02c3fc013e9fbbdaef5e4"
+    },
+    {
+      "key": "press2019",
+      "url": "https://www.parcplaza.net/2019/03/vulcania-inaugure-une-saison-2019-riche.html",
+      "checkedAtUtc": "2026-11-15T22:34:35.315789+00:00",
+      "status": 200,
+      "finalUrl": "https://www.parcplaza.net/2019/03/vulcania-inaugure-une-saison-2019-riche.html",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 134011,
+      "sha256": "754cb6e85ea9cbb4344693b0225f8f13494f7027af653a44e8bd7d07b5c7ffc5"
+    },
+    {
+      "key": "aprr2022",
+      "url": "https://voyage.aprr.fr/autoroute-info/la-mediation-scientifique-vulcania",
+      "checkedAtUtc": "2026-11-15T22:34:35.316675+00:00",
+      "status": 200,
+      "finalUrl": "https://voyage.aprr.fr/autoroute-info/la-mediation-scientifique-vulcania",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 41318,
+      "sha256": "4c744b6f53213ed5815c1198a31eb5ba1407631c831dee6213c4fe56a2ba2d05"
+    },
+    {
+      "key": "coaster2021",
+      "url": "https://coasterrider.fr/parc/vulcania/14-juillet-2021",
+      "checkedAtUtc": "2026-11-15T22:34:36.117177+00:00",
+      "status": 200,
+      "finalUrl": "https://coasterrider.fr/parc/vulcania/14-juillet-2021",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 326974,
+      "sha256": "3125b8834e488f069634c093a72fee50bf439b10eac6471b7073e3e350cea21b"
+    },
+    {
+      "key": "pappers2020",
+      "url": "https://politique.pappers.fr/commune/document/ffafe34ac70824fc9758269059d3c40a",
+      "checkedAtUtc": "2026-11-15T22:34:37.131241+00:00",
+      "status": 200,
+      "finalUrl": "https://politique.pappers.fr/commune/document/ffafe34ac70824fc9758269059d3c40a",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 107485,
+      "sha256": "e2cad0c2ce5f06eff96b15ad07b8b1184825a3b1b5186c2fb06b095411cddc35"
+    },
+    {
+      "key": "progres2019",
+      "url": "https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet",
+      "checkedAtUtc": "2026-11-15T22:34:37.570767+00:00",
+      "status": 200,
+      "finalUrl": "https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 544661,
+      "sha256": "8b111f5d4f6d2719984bbca80706b58391cbd42b0b411e2c8c6c138a88da17a2"
+    },
+    {
+      "file": "progres-drone.jpg",
+      "url": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+      "checkedAtUtc": "2026-11-15T22:35:20.837505+00:00",
+      "status": 200,
+      "bytes": 33310,
+      "contentType": "image/jpeg",
+      "sha256": "fb4198a23740a077a2f73d98ef4e047b6757bcd10ab10b68ca27cdf60590d086",
+      "size": [
+        1000,
+        500
+      ]
+    },
+    {
+      "file": "coaster-drone.jpg",
+      "url": "https://coasterrider.fr/content/medias/1626213602/source/P1022669.jpg",
+      "checkedAtUtc": "2026-11-15T22:35:22.150318+00:00",
+      "status": 200,
+      "bytes": 1002418,
+      "contentType": "image/jpeg",
+      "sha256": "96f7000709d908180a9e449cf674afe5ee1b97b6ef7bf6007cb98916d7d1f50a",
+      "size": [
+        4096,
+        2731
+      ]
+    },
+    {
+      "file": "metropole2020.pdf",
+      "url": "https://api-politique.pappers.fr/territoire/document/ffafe34ac70824fc9758269059d3c40a/pdf",
+      "checkedAtUtc": "2026-11-15T22:35:24.174381+00:00",
+      "status": 200,
+      "bytes": 886265,
+      "contentType": null,
+      "sha256": "f39f49b46e33a3fdf414b443569f9c0cb31cb621d7399ac6ba8c97e4c2f70adf"
+    },
+    {
+      "file": "press2023.pdf",
+      "url": "https://tarifs.org/docs/vulcania/dossier-de-presse-vulcania.pdf",
+      "checkedAtUtc": "2026-11-15T22:36:06.763779+00:00",
+      "status": 200,
+      "bytes": 44262446,
+      "sha256": "d81d210893dd91c328ee1d23b454693815788c211023f75341c758ea8c83f055",
+      "contentType": "application/pdf"
+    },
+    {
+      "file": "dronisos-about.html",
+      "url": "https://www.dronisos.com/about-us",
+      "checkedAtUtc": "2026-11-15T22:36:20.280396+00:00",
+      "status": 200,
+      "bytes": 49540,
+      "sha256": "3fb797448330e12b5713ae32de9729547ea4831be8d54799985d93e5b208261f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "file": "dronisos-2018.html",
+      "url": "https://www.dronisos.com/post/dronisos-raises-2meu-to-accelerate-growth-french",
+      "checkedAtUtc": "2026-11-15T22:36:20.650047+00:00",
+      "status": 200,
+      "bytes": 50399,
+      "sha256": "ad7958c62f2d18594acbb904eb1df6e5141efd11d2af7e67d1e8ea440b26368f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "file": "dronisos-vulcania.html",
+      "url": "https://fr.dronisos.com/post/dronisos-to-manage-drone-fleet-at-puy-du-fou",
+      "checkedAtUtc": "2026-11-15T22:36:21.101760+00:00",
+      "status": 200,
+      "bytes": 58919,
+      "sha256": "424ca314124418ca42e791265fd480ba147c68e3e0b6527ac14dcf9c0e1f5518",
+      "contentType": "text/html; charset=utf-8"
+    }
+  ],
+  "scopeNotes": "Private year-only Opening2019 for historical show Volcano Drones. Primary press release and municipal retrospective report confirm. No season-opening day transposed, noclosure inferred; actual2019launch-report photograph attached.16localized titles/summaries personally authored reviewed, scientificmediation asdurable significance.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

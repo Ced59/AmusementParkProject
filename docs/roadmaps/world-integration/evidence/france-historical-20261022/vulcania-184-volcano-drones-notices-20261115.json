@@ -1,0 +1,380 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania"
+      },
+      "items": [
+        {
+          "id": "6550ac7c-87c8-4076-85ba-b877d293052d",
+          "key": "vulcania-volcano-drones",
+          "name": "Volcano Drones",
+          "category": "Show",
+          "type": "Show",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Des assistants volants face aux volcans</h2><p>Volcano Drones mettait en scène les professeurs Caldera et Magmatus, incarnés par les animateurs scientifiques de Vulcania. Devant les images d’un volcan projetées sur grand écran, de véritables drones rejoignaient la présentation. Le travail des volcanologues quittait ainsi les seuls récits de terrain pour prendre place sur scène.</p><p>Le spectacle expliquait comment observer les zones difficiles d’accès et recueillir des informations sans exposer les chercheurs au danger. Les images thermiques et la surveillance des éruptions donnaient un sens concret à la présence de ces petits assistants au-dessus du plateau.</p><h2>La démonstration devient ballet</h2><p>Le scénario se tournait aussi vers les usages futurs des drones, avant de laisser place à une chorégraphie aérienne lumineuse. Créé avec le Laboratoire Magmas et Volcans et Dronisos, ce rendez-vous associait la médiation scientifique de Vulcania au mouvement des points colorés devant l’écran.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Flying assistants face the volcanoes</h2><p>Volcano Drones featured Professors Caldera and Magmatus, played by Vulcania’s science presenters. Real drones joined the demonstration in front of volcanic imagery projected onto a large screen. The work of volcanologists moved from accounts of field research onto the stage.</p><p>The show explored how to observe hard-to-reach areas and gather information without exposing researchers to danger. Thermal imagery and monitoring eruptions gave a concrete purpose to the small flying assistants above the stage.</p><h2>From demonstration to aerial ballet</h2><p>The story also looked towards future uses of drones before giving way to a luminous aerial choreography. Created with the Laboratoire Magmas et Volcans and Dronisos, the show brought Vulcania’s science communication together with coloured lights moving before the screen.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Fliegende Helfer vor den Vulkanen</h2><p>In Volcano Drones traten die Professoren Caldera und Magmatus auf, gespielt von Vulcanias Wissenschaftsvermittlern. Vor den auf eine große Leinwand projizierten Vulkanbildern erschienen echte Drohnen. Die Arbeit der Vulkanologen wurde so aus den Berichten über die Feldforschung auf die Bühne geholt.</p><p>Die Vorführung erklärte, wie schwer zugängliche Gebiete beobachtet und Informationen gesammelt werden können, ohne Forschende in Gefahr zu bringen. Wärmebilder und die Überwachung von Eruptionen machten den Einsatz der kleinen fliegenden Helfer über der Bühne anschaulich.</p><h2>Aus der Vorführung wird ein Ballett</h2><p>Die Handlung blickte auch auf künftige Einsatzmöglichkeiten der Drohnen, bevor eine leuchtende Luftchoreografie folgte. Gemeinsam mit dem Laboratoire Magmas et Volcans und Dronisos entwickelt, verband die Show Vulcanias Wissenschaftsvermittlung mit farbigen Lichtpunkten vor der Leinwand.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Vliegende helpers tegenover de vulkanen</h2><p>Volcano Drones voerde de professoren Caldera en Magmatus op, gespeeld door de wetenschapsmedewerkers van Vulcania. Voor vulkaanbeelden op een groot scherm verschenen echte drones. Het werk van vulkanologen kwam zo vanuit verhalen over veldonderzoek op het toneel terecht.</p><p>De voorstelling liet zien hoe moeilijk bereikbare gebieden kunnen worden geobserveerd en gegevens verzameld zonder onderzoekers aan gevaar bloot te stellen. Warmtebeelden en het volgen van uitbarstingen gaven een concrete betekenis aan de kleine vliegende helpers boven het podium.</p><h2>De demonstratie wordt een luchtballet</h2><p>Het verhaal keek ook naar toekomstige toepassingen van drones, waarna een lichtgevende luchtchoreografie volgde. De samenwerking met Laboratoire Magmas et Volcans en Dronisos verbond Vulcania’s wetenschapsvoorlichting met gekleurde lichtpunten die voor het scherm bewogen.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Assistenti volanti davanti ai vulcani</h2><p>Volcano Drones portava in scena i professori Caldera e Magmatus, interpretati dagli animatori scientifici di Vulcania. Veri droni partecipavano alla dimostrazione davanti alle immagini di un vulcano proiettate su un grande schermo. Il lavoro dei vulcanologi passava così dai racconti della ricerca sul campo al palcoscenico.</p><p>Lo spettacolo spiegava come osservare zone difficili da raggiungere e raccogliere informazioni senza esporre i ricercatori al pericolo. Le immagini termiche e il monitoraggio delle eruzioni davano un significato concreto ai piccoli assistenti volanti sopra la scena.</p><h2>La dimostrazione diventa un balletto</h2><p>La storia immaginava anche gli impieghi futuri dei droni, prima di lasciare spazio a una coreografia aerea luminosa. Realizzato con il Laboratoire Magmas et Volcans e Dronisos, lo spettacolo univa la divulgazione scientifica di Vulcania al movimento dei punti colorati davanti allo schermo.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Asistentes voladores frente a los volcanes</h2><p>Volcano Drones llevaba a escena a los profesores Caldera y Magmatus, interpretados por los divulgadores científicos de Vulcania. Drones reales participaban en la presentación ante imágenes de un volcán proyectadas en una gran pantalla. El trabajo de los vulcanólogos pasaba así de los relatos de investigación sobre el terreno al escenario.</p><p>El espectáculo explicaba cómo observar zonas de difícil acceso y recoger información sin exponer a los investigadores al peligro. Las imágenes térmicas y la vigilancia de las erupciones daban un sentido concreto a esos pequeños asistentes que volaban sobre el escenario.</p><h2>La demostración se convierte en ballet</h2><p>La historia también miraba hacia los futuros usos de los drones antes de dar paso a una coreografía aérea luminosa. Creado con el Laboratoire Magmas et Volcans y Dronisos, el espectáculo combinaba la divulgación científica de Vulcania con puntos de colores que se movían delante de la pantalla.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Latający pomocnicy przed wulkanami</h2><p>W Volcano Drones występowali profesorowie Caldera i Magmatus, grani przez popularyzatorów nauki z Vulcanii. Przed wielkim ekranem z obrazami wulkanu pojawiały się prawdziwe drony. Praca wulkanologów trafiała w ten sposób z opowieści o badaniach terenowych na scenę.</p><p>Przedstawienie wyjaśniało, jak obserwować trudno dostępne miejsca i zbierać informacje bez narażania badaczy na niebezpieczeństwo. Obrazy termiczne i monitorowanie erupcji nadawały konkretny sens obecności niewielkich latających pomocników nad sceną.</p><h2>Pokaz zmienia się w powietrzny balet</h2><p>Opowieść sięgała także ku przyszłym zastosowaniom dronów, po czym ustępowała miejsca świetlnej choreografii w powietrzu. Spektakl stworzony z Laboratoire Magmas et Volcans i Dronisos łączył popularyzację nauki w Vulcanii z ruchem kolorowych punktów przed ekranem.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Assistentes voadores diante dos vulcões</h2><p>Volcano Drones levava ao palco os professores Caldera e Magmatus, interpretados pelos animadores científicos de Vulcania. Drones reais participavam na apresentação diante de imagens de um vulcão projetadas num grande ecrã. O trabalho dos vulcanólogos passava assim dos relatos da investigação no terreno para o palco.</p><p>O espetáculo explicava como observar zonas de difícil acesso e recolher informações sem expor os investigadores ao perigo. As imagens térmicas e a vigilância das erupções davam um sentido concreto aos pequenos assistentes voadores sobre o palco.</p><h2>A demonstração transforma-se em bailado</h2><p>A história olhava também para os usos futuros dos drones, antes de dar lugar a uma coreografia aérea luminosa. Criado com o Laboratoire Magmas et Volcans e a Dronisos, o espetáculo associava a divulgação científica de Vulcania ao movimento dos pontos coloridos diante do ecrã.</p>"
+            }
+          ]
+        }
+      ],
+      "references": {
+        "manufacturers": [
+          {
+            "id": "b907bfbb-6429-42df-931a-c13b71e150b3",
+            "key": "dronisos",
+            "name": "Dronisos",
+            "biography": [
+              {
+                "languageCode": "fr",
+                "value": "<p>Dronisos est une entreprise française spécialisée dans les spectacles de drones, avec des équipes à Bordeaux et à Orlando. Elle réunit création artistique, développement de ses propres logiciels et réalisation des spectacles. À Vulcania, elle a participé à Volcano Drones, présenté en 2019 avec le Laboratoire Magmas et Volcans.</p>"
+              },
+              {
+                "languageCode": "en",
+                "value": "<p>Dronisos is a French drone-show company with teams in Bordeaux and Orlando. Its work combines artistic creation, development of its own software and show delivery. At Vulcania, it contributed to Volcano Drones, introduced in 2019 with the Laboratoire Magmas et Volcans.</p>"
+              },
+              {
+                "languageCode": "de",
+                "value": "<p>Dronisos ist ein französisches Unternehmen für Drohnenshows mit Teams in Bordeaux und Orlando. Es verbindet künstlerische Gestaltung, die Entwicklung eigener Software und die Durchführung von Shows. In Vulcania wirkte es an Volcano Drones mit, das 2019 gemeinsam mit dem Laboratoire Magmas et Volcans vorgestellt wurde.</p>"
+              },
+              {
+                "languageCode": "nl",
+                "value": "<p>Dronisos is een Frans bedrijf voor droneshows met teams in Bordeaux en Orlando. Het combineert artistieke creatie, ontwikkeling van eigen software en uitvoering van voorstellingen. In Vulcania werkte het mee aan Volcano Drones, dat in 2019 samen met Laboratoire Magmas et Volcans werd gepresenteerd.</p>"
+              },
+              {
+                "languageCode": "it",
+                "value": "<p>Dronisos è un’azienda francese specializzata in spettacoli di droni, con squadre a Bordeaux e Orlando. Riunisce creazione artistica, sviluppo di software propri e realizzazione degli spettacoli. A Vulcania ha collaborato a Volcano Drones, presentato nel 2019 insieme al Laboratoire Magmas et Volcans.</p>"
+              },
+              {
+                "languageCode": "es",
+                "value": "<p>Dronisos es una empresa francesa especializada en espectáculos de drones, con equipos en Burdeos y Orlando. Combina creación artística, desarrollo de programas propios y realización de espectáculos. En Vulcania colaboró en Volcano Drones, presentado en 2019 junto al Laboratoire Magmas et Volcans.</p>"
+              },
+              {
+                "languageCode": "pl",
+                "value": "<p>Dronisos to francuska firma specjalizująca się w pokazach dronów, z zespołami w Bordeaux i Orlando. Łączy twórczość artystyczną, rozwój własnego oprogramowania i realizację widowisk. W Vulcanii współtworzyła Volcano Drones, zaprezentowany w 2019 roku wraz z Laboratoire Magmas et Volcans.</p>"
+              },
+              {
+                "languageCode": "pt",
+                "value": "<p>A Dronisos é uma empresa francesa especializada em espetáculos de drones, com equipas em Bordéus e Orlando. Combina criação artística, desenvolvimento de programas próprios e realização dos espetáculos. Em Vulcania, colaborou em Volcano Drones, apresentado em 2019 com o Laboratoire Magmas et Volcans.</p>"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "notes": "Eight show descriptions and eight biographies personally authored/reviewed against Vulcania2019pressrelease, APRR2022eyewitness, Coasterrider2021visit and Dronisos officialpages. ShowUnknown; no mechanical operation instructions or unqualified room/date. OfficialAbout2014 conflicts2018pressreleaseNovember2016founding: foundingdate omitted, no legalidentity merger. Dronisos reference newlycreated in183, no existing shared biography overwritten."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "bb62cc5d-8bf8-4c04-a8b9-677716885327",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:38:38.5838595Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "entityKey": "dronisos",
+        "displayName": "Dronisos",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<p>Dronisos ist ein französisches Unternehmen für Drohnenshows mit Teams in Bordeaux und Orlando. Es verbindet künstlerische Gestaltung, die Entwicklung eigener Software und die Durchführung von Shows. In Vulcania wirkte es an Volcano Drones mit, das 2019 gemeinsam mit dem Laboratoire Magmas et Volcans vorgestellt wurde.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<p>Dronisos is a French drone-show company with teams in Bordeaux and Orlando. Its work combines artistic creation, development of its own software and show delivery. At Vulcania, it contributed to Volcano Drones, introduced in 2019 with the Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<p>Dronisos es una empresa francesa especializada en espectáculos de drones, con equipos en Burdeos y Orlando. Combina creación artística, desarrollo de programas propios y realización de espectáculos. En Vulcania colaboró en Volcano Drones, presentado en 2019 junto al Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<p>Dronisos est une entreprise française spécialisée dans les spectacles de drones, avec des équipes à Bordeaux et à Orlando. Elle réunit création artistique, développement de ses propres logiciels et réalisation des spectacles. À Vulcania, elle a participé à Volcano Drones, présenté en 2019 avec le Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<p>Dronisos è un’azienda francese specializzata in spettacoli di droni, con squadre a Bordeaux e Orlando. Riunisce creazione artistica, sviluppo di software propri e realizzazione degli spettacoli. A Vulcania ha collaborato a Volcano Drones, presentato nel 2019 insieme al Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<p>Dronisos is een Frans bedrijf voor droneshows met teams in Bordeaux en Orlando. Het combineert artistieke creatie, ontwikkeling van eigen software en uitvoering van voorstellingen. In Vulcania werkte het mee aan Volcano Drones, dat in 2019 samen met Laboratoire Magmas et Volcans werd gepresenteerd.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<p>Dronisos to francuska firma specjalizująca się w pokazach dronów, z zespołami w Bordeaux i Orlando. Łączy twórczość artystyczną, rozwój własnego oprogramowania i realizację widowisk. W Vulcanii współtworzyła Volcano Drones, zaprezentowany w 2019 roku wraz z Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<p>A Dronisos é uma empresa francesa especializada em espetáculos de drones, com equipas em Bordéus e Orlando. Combina criação artística, desenvolvimento de programas próprios e realização dos espetáculos. Em Vulcania, colaborou em Volcano Drones, apresentado em 2019 com o Laboratoire Magmas et Volcans.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "entityKey": "vulcania-volcano-drones",
+        "displayName": "Volcano Drones",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Fliegende Helfer vor den Vulkanen</h2><p>In Volcano Drones traten die Professoren Caldera und Magmatus auf, gespielt von Vulcanias Wissenschaftsvermittlern. Vor den auf eine große Leinwand projizierten Vulkanbildern erschienen echte Drohnen. Die Arbeit der Vulkanologen wurde so aus den Berichten über die Feldforschung auf die Bühne geholt.</p><p>Die Vorführung erklärte, wie schwer zugängliche Gebiete beobachtet und Informationen gesammelt werden können, ohne Forschende in Gefahr zu bringen. Wärmebilder und die Überwachung von Eruptionen machten den Einsatz der kleinen fliegenden Helfer über der Bühne anschaulich.</p><h2>Aus der Vorführung wird ein Ballett</h2><p>Die Handlung blickte auch auf künftige Einsatzmöglichkeiten der Drohnen, bevor eine leuchtende Luftchoreografie folgte. Gemeinsam mit dem Laboratoire Magmas et Volcans und Dronisos entwickelt, verband die Show Vulcanias Wissenschaftsvermittlung mit farbigen Lichtpunkten vor der Leinwand.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Flying assistants face the volcanoes</h2><p>Volcano Drones featured Professors Caldera and Magmatus, played by Vulcania’s science presenters. Real drones joined the demonstration in front of volcanic imagery projected onto a large screen. The work of volcanologists moved from accounts of field research onto the stage.</p><p>The show explored how to observe hard-to-reach areas and gather information without exposing researchers to danger. Thermal imagery and monitoring eruptions gave a concrete purpose to the small flying assistants above the stage.</p><h2>From demonstration to aerial ballet</h2><p>The story also looked towards future uses of drones before giving way to a luminous aerial choreography. Created with the Laboratoire Magmas et Volcans and Dronisos, the show brought Vulcania’s science communication together with coloured lights moving before the screen.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Asistentes voladores frente a los volcanes</h2><p>Volcano Drones llevaba a escena a los profesores Caldera y Magmatus, interpretados por los divulgadores científicos de Vulcania. Drones reales participaban en la presentación ante imágenes de un volcán proyectadas en una gran pantalla. El trabajo de los vulcanólogos pasaba así de los relatos de investigación sobre el terreno al escenario.</p><p>El espectáculo explicaba cómo observar zonas de difícil acceso y recoger información sin exponer a los investigadores al peligro. Las imágenes térmicas y la vigilancia de las erupciones daban un sentido concreto a esos pequeños asistentes que volaban sobre el escenario.</p><h2>La demostración se convierte en ballet</h2><p>La historia también miraba hacia los futuros usos de los drones antes de dar paso a una coreografía aérea luminosa. Creado con el Laboratoire Magmas et Volcans y Dronisos, el espectáculo combinaba la divulgación científica de Vulcania con puntos de colores que se movían delante de la pantalla.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des assistants volants face aux volcans</h2><p>Volcano Drones mettait en scène les professeurs Caldera et Magmatus, incarnés par les animateurs scientifiques de Vulcania. Devant les images d’un volcan projetées sur grand écran, de véritables drones rejoignaient la présentation. Le travail des volcanologues quittait ainsi les seuls récits de terrain pour prendre place sur scène.</p><p>Le spectacle expliquait comment observer les zones difficiles d’accès et recueillir des informations sans exposer les chercheurs au danger. Les images thermiques et la surveillance des éruptions donnaient un sens concret à la présence de ces petits assistants au-dessus du plateau.</p><h2>La démonstration devient ballet</h2><p>Le scénario se tournait aussi vers les usages futurs des drones, avant de laisser place à une chorégraphie aérienne lumineuse. Créé avec le Laboratoire Magmas et Volcans et Dronisos, ce rendez-vous associait la médiation scientifique de Vulcania au mouvement des points colorés devant l’écran.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Assistenti volanti davanti ai vulcani</h2><p>Volcano Drones portava in scena i professori Caldera e Magmatus, interpretati dagli animatori scientifici di Vulcania. Veri droni partecipavano alla dimostrazione davanti alle immagini di un vulcano proiettate su un grande schermo. Il lavoro dei vulcanologi passava così dai racconti della ricerca sul campo al palcoscenico.</p><p>Lo spettacolo spiegava come osservare zone difficili da raggiungere e raccogliere informazioni senza esporre i ricercatori al pericolo. Le immagini termiche e il monitoraggio delle eruzioni davano un significato concreto ai piccoli assistenti volanti sopra la scena.</p><h2>La dimostrazione diventa un balletto</h2><p>La storia immaginava anche gli impieghi futuri dei droni, prima di lasciare spazio a una coreografia aerea luminosa. Realizzato con il Laboratoire Magmas et Volcans e Dronisos, lo spettacolo univa la divulgazione scientifica di Vulcania al movimento dei punti colorati davanti allo schermo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vliegende helpers tegenover de vulkanen</h2><p>Volcano Drones voerde de professoren Caldera en Magmatus op, gespeeld door de wetenschapsmedewerkers van Vulcania. Voor vulkaanbeelden op een groot scherm verschenen echte drones. Het werk van vulkanologen kwam zo vanuit verhalen over veldonderzoek op het toneel terecht.</p><p>De voorstelling liet zien hoe moeilijk bereikbare gebieden kunnen worden geobserveerd en gegevens verzameld zonder onderzoekers aan gevaar bloot te stellen. Warmtebeelden en het volgen van uitbarstingen gaven een concrete betekenis aan de kleine vliegende helpers boven het podium.</p><h2>De demonstratie wordt een luchtballet</h2><p>Het verhaal keek ook naar toekomstige toepassingen van drones, waarna een lichtgevende luchtchoreografie volgde. De samenwerking met Laboratoire Magmas et Volcans en Dronisos verbond Vulcania’s wetenschapsvoorlichting met gekleurde lichtpunten die voor het scherm bewogen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Latający pomocnicy przed wulkanami</h2><p>W Volcano Drones występowali profesorowie Caldera i Magmatus, grani przez popularyzatorów nauki z Vulcanii. Przed wielkim ekranem z obrazami wulkanu pojawiały się prawdziwe drony. Praca wulkanologów trafiała w ten sposób z opowieści o badaniach terenowych na scenę.</p><p>Przedstawienie wyjaśniało, jak obserwować trudno dostępne miejsca i zbierać informacje bez narażania badaczy na niebezpieczeństwo. Obrazy termiczne i monitorowanie erupcji nadawały konkretny sens obecności niewielkich latających pomocników nad sceną.</p><h2>Pokaz zmienia się w powietrzny balet</h2><p>Opowieść sięgała także ku przyszłym zastosowaniom dronów, po czym ustępowała miejsca świetlnej choreografii w powietrzu. Spektakl stworzony z Laboratoire Magmas et Volcans i Dronisos łączył popularyzację nauki w Vulcanii z ruchem kolorowych punktów przed ekranem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Assistentes voadores diante dos vulcões</h2><p>Volcano Drones levava ao palco os professores Caldera e Magmatus, interpretados pelos animadores científicos de Vulcania. Drones reais participavam na apresentação diante de imagens de um vulcão projetadas num grande ecrã. O trabalho dos vulcanólogos passava assim dos relatos da investigação no terreno para o palco.</p><p>O espetáculo explicava como observar zonas de difícil acesso e recolher informações sem expor os investigadores ao perigo. As imagens térmicas e a vigilância das erupções davam um sentido concreto aos pequenos assistentes voadores sobre o palco.</p><h2>A demonstração transforma-se em bailado</h2><p>A história olhava também para os usos futuros dos drones, antes de dar lugar a uma coreografia aérea luminosa. Criado com o Laboratoire Magmas et Volcans e a Dronisos, o espetáculo associava a divulgação científica de Vulcania ao movimento dos pontos coloridos diante do ecrã.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "11418c69-67fd-40ce-a915-a79f9daf2020",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:39:12.4367611Z",
+    "appliedAtUtc": "2026-11-15T22:39:12.4367622Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "entityKey": "dronisos",
+        "displayName": "Dronisos",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "biography.de",
+            "oldValue": null,
+            "newValue": "<p>Dronisos ist ein französisches Unternehmen für Drohnenshows mit Teams in Bordeaux und Orlando. Es verbindet künstlerische Gestaltung, die Entwicklung eigener Software und die Durchführung von Shows. In Vulcania wirkte es an Volcano Drones mit, das 2019 gemeinsam mit dem Laboratoire Magmas et Volcans vorgestellt wurde.</p>"
+          },
+          {
+            "field": "biography.en",
+            "oldValue": null,
+            "newValue": "<p>Dronisos is a French drone-show company with teams in Bordeaux and Orlando. Its work combines artistic creation, development of its own software and show delivery. At Vulcania, it contributed to Volcano Drones, introduced in 2019 with the Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.es",
+            "oldValue": null,
+            "newValue": "<p>Dronisos es una empresa francesa especializada en espectáculos de drones, con equipos en Burdeos y Orlando. Combina creación artística, desarrollo de programas propios y realización de espectáculos. En Vulcania colaboró en Volcano Drones, presentado en 2019 junto al Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.fr",
+            "oldValue": null,
+            "newValue": "<p>Dronisos est une entreprise française spécialisée dans les spectacles de drones, avec des équipes à Bordeaux et à Orlando. Elle réunit création artistique, développement de ses propres logiciels et réalisation des spectacles. À Vulcania, elle a participé à Volcano Drones, présenté en 2019 avec le Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.it",
+            "oldValue": null,
+            "newValue": "<p>Dronisos è un’azienda francese specializzata in spettacoli di droni, con squadre a Bordeaux e Orlando. Riunisce creazione artistica, sviluppo di software propri e realizzazione degli spettacoli. A Vulcania ha collaborato a Volcano Drones, presentato nel 2019 insieme al Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.nl",
+            "oldValue": null,
+            "newValue": "<p>Dronisos is een Frans bedrijf voor droneshows met teams in Bordeaux en Orlando. Het combineert artistieke creatie, ontwikkeling van eigen software en uitvoering van voorstellingen. In Vulcania werkte het mee aan Volcano Drones, dat in 2019 samen met Laboratoire Magmas et Volcans werd gepresenteerd.</p>"
+          },
+          {
+            "field": "biography.pl",
+            "oldValue": null,
+            "newValue": "<p>Dronisos to francuska firma specjalizująca się w pokazach dronów, z zespołami w Bordeaux i Orlando. Łączy twórczość artystyczną, rozwój własnego oprogramowania i realizację widowisk. W Vulcanii współtworzyła Volcano Drones, zaprezentowany w 2019 roku wraz z Laboratoire Magmas et Volcans.</p>"
+          },
+          {
+            "field": "biography.pt",
+            "oldValue": null,
+            "newValue": "<p>A Dronisos é uma empresa francesa especializada em espetáculos de drones, com equipas em Bordéus e Orlando. Combina criação artística, desenvolvimento de programas próprios e realização dos espetáculos. Em Vulcania, colaborou em Volcano Drones, apresentado em 2019 com o Laboratoire Magmas et Volcans.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "entityKey": "vulcania-volcano-drones",
+        "displayName": "Volcano Drones",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": null,
+            "newValue": "<h2>Fliegende Helfer vor den Vulkanen</h2><p>In Volcano Drones traten die Professoren Caldera und Magmatus auf, gespielt von Vulcanias Wissenschaftsvermittlern. Vor den auf eine große Leinwand projizierten Vulkanbildern erschienen echte Drohnen. Die Arbeit der Vulkanologen wurde so aus den Berichten über die Feldforschung auf die Bühne geholt.</p><p>Die Vorführung erklärte, wie schwer zugängliche Gebiete beobachtet und Informationen gesammelt werden können, ohne Forschende in Gefahr zu bringen. Wärmebilder und die Überwachung von Eruptionen machten den Einsatz der kleinen fliegenden Helfer über der Bühne anschaulich.</p><h2>Aus der Vorführung wird ein Ballett</h2><p>Die Handlung blickte auch auf künftige Einsatzmöglichkeiten der Drohnen, bevor eine leuchtende Luftchoreografie folgte. Gemeinsam mit dem Laboratoire Magmas et Volcans und Dronisos entwickelt, verband die Show Vulcanias Wissenschaftsvermittlung mit farbigen Lichtpunkten vor der Leinwand.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": null,
+            "newValue": "<h2>Flying assistants face the volcanoes</h2><p>Volcano Drones featured Professors Caldera and Magmatus, played by Vulcania’s science presenters. Real drones joined the demonstration in front of volcanic imagery projected onto a large screen. The work of volcanologists moved from accounts of field research onto the stage.</p><p>The show explored how to observe hard-to-reach areas and gather information without exposing researchers to danger. Thermal imagery and monitoring eruptions gave a concrete purpose to the small flying assistants above the stage.</p><h2>From demonstration to aerial ballet</h2><p>The story also looked towards future uses of drones before giving way to a luminous aerial choreography. Created with the Laboratoire Magmas et Volcans and Dronisos, the show brought Vulcania’s science communication together with coloured lights moving before the screen.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": null,
+            "newValue": "<h2>Asistentes voladores frente a los volcanes</h2><p>Volcano Drones llevaba a escena a los profesores Caldera y Magmatus, interpretados por los divulgadores científicos de Vulcania. Drones reales participaban en la presentación ante imágenes de un volcán proyectadas en una gran pantalla. El trabajo de los vulcanólogos pasaba así de los relatos de investigación sobre el terreno al escenario.</p><p>El espectáculo explicaba cómo observar zonas de difícil acceso y recoger información sin exponer a los investigadores al peligro. Las imágenes térmicas y la vigilancia de las erupciones daban un sentido concreto a esos pequeños asistentes que volaban sobre el escenario.</p><h2>La demostración se convierte en ballet</h2><p>La historia también miraba hacia los futuros usos de los drones antes de dar paso a una coreografía aérea luminosa. Creado con el Laboratoire Magmas et Volcans y Dronisos, el espectáculo combinaba la divulgación científica de Vulcania con puntos de colores que se movían delante de la pantalla.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": null,
+            "newValue": "<h2>Des assistants volants face aux volcans</h2><p>Volcano Drones mettait en scène les professeurs Caldera et Magmatus, incarnés par les animateurs scientifiques de Vulcania. Devant les images d’un volcan projetées sur grand écran, de véritables drones rejoignaient la présentation. Le travail des volcanologues quittait ainsi les seuls récits de terrain pour prendre place sur scène.</p><p>Le spectacle expliquait comment observer les zones difficiles d’accès et recueillir des informations sans exposer les chercheurs au danger. Les images thermiques et la surveillance des éruptions donnaient un sens concret à la présence de ces petits assistants au-dessus du plateau.</p><h2>La démonstration devient ballet</h2><p>Le scénario se tournait aussi vers les usages futurs des drones, avant de laisser place à une chorégraphie aérienne lumineuse. Créé avec le Laboratoire Magmas et Volcans et Dronisos, ce rendez-vous associait la médiation scientifique de Vulcania au mouvement des points colorés devant l’écran.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": null,
+            "newValue": "<h2>Assistenti volanti davanti ai vulcani</h2><p>Volcano Drones portava in scena i professori Caldera e Magmatus, interpretati dagli animatori scientifici di Vulcania. Veri droni partecipavano alla dimostrazione davanti alle immagini di un vulcano proiettate su un grande schermo. Il lavoro dei vulcanologi passava così dai racconti della ricerca sul campo al palcoscenico.</p><p>Lo spettacolo spiegava come osservare zone difficili da raggiungere e raccogliere informazioni senza esporre i ricercatori al pericolo. Le immagini termiche e il monitoraggio delle eruzioni davano un significato concreto ai piccoli assistenti volanti sopra la scena.</p><h2>La dimostrazione diventa un balletto</h2><p>La storia immaginava anche gli impieghi futuri dei droni, prima di lasciare spazio a una coreografia aerea luminosa. Realizzato con il Laboratoire Magmas et Volcans e Dronisos, lo spettacolo univa la divulgazione scientifica di Vulcania al movimento dei punti colorati davanti allo schermo.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": null,
+            "newValue": "<h2>Vliegende helpers tegenover de vulkanen</h2><p>Volcano Drones voerde de professoren Caldera en Magmatus op, gespeeld door de wetenschapsmedewerkers van Vulcania. Voor vulkaanbeelden op een groot scherm verschenen echte drones. Het werk van vulkanologen kwam zo vanuit verhalen over veldonderzoek op het toneel terecht.</p><p>De voorstelling liet zien hoe moeilijk bereikbare gebieden kunnen worden geobserveerd en gegevens verzameld zonder onderzoekers aan gevaar bloot te stellen. Warmtebeelden en het volgen van uitbarstingen gaven een concrete betekenis aan de kleine vliegende helpers boven het podium.</p><h2>De demonstratie wordt een luchtballet</h2><p>Het verhaal keek ook naar toekomstige toepassingen van drones, waarna een lichtgevende luchtchoreografie volgde. De samenwerking met Laboratoire Magmas et Volcans en Dronisos verbond Vulcania’s wetenschapsvoorlichting met gekleurde lichtpunten die voor het scherm bewogen.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": null,
+            "newValue": "<h2>Latający pomocnicy przed wulkanami</h2><p>W Volcano Drones występowali profesorowie Caldera i Magmatus, grani przez popularyzatorów nauki z Vulcanii. Przed wielkim ekranem z obrazami wulkanu pojawiały się prawdziwe drony. Praca wulkanologów trafiała w ten sposób z opowieści o badaniach terenowych na scenę.</p><p>Przedstawienie wyjaśniało, jak obserwować trudno dostępne miejsca i zbierać informacje bez narażania badaczy na niebezpieczeństwo. Obrazy termiczne i monitorowanie erupcji nadawały konkretny sens obecności niewielkich latających pomocników nad sceną.</p><h2>Pokaz zmienia się w powietrzny balet</h2><p>Opowieść sięgała także ku przyszłym zastosowaniom dronów, po czym ustępowała miejsca świetlnej choreografii w powietrzu. Spektakl stworzony z Laboratoire Magmas et Volcans i Dronisos łączył popularyzację nauki w Vulcanii z ruchem kolorowych punktów przed ekranem.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": null,
+            "newValue": "<h2>Assistentes voadores diante dos vulcões</h2><p>Volcano Drones levava ao palco os professores Caldera e Magmatus, interpretados pelos animadores científicos de Vulcania. Drones reais participavam na apresentação diante de imagens de um vulcão projetadas num grande ecrã. O trabalho dos vulcanólogos passava assim dos relatos da investigação no terreno para o palco.</p><p>O espetáculo explicava como observar zonas de difícil acesso e recolher informações sem expor os investigadores ao perigo. As imagens térmicas e a vigilância das erupções davam um sentido concreto aos pequenos assistentes voadores sobre o palco.</p><h2>A demonstração transforma-se em bailado</h2><p>A história olhava também para os usos futuros dos drones, antes de dar lugar a uma coreografia aérea luminosa. Criado com o Laboratoire Magmas et Volcans e a Dronisos, o espetáculo associava a divulgação científica de Vulcania ao movimento dos pontos coloridos diante do ecrã.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : huit notices privées Volcano Drones et huit biographies Dronisos personnellement rédigées, relues et comparées aux reçus ; fondation contradictoire omise, statut Unknown préservé.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Eight show descriptions and eight biographies personally authored/reviewed against Vulcania2019pressrelease, APRR2022eyewitness, Coasterrider2021visit and Dronisos officialpages. ShowUnknown; no mechanical operation instructions or unqualified room/date. OfficialAbout2014 conflicts2018pressreleaseNovember2016founding: foundingdate omitted, no legalidentity merger. Dronisos reference newlycreated in183, no existing shared biography overwritten."
+}

@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T22:29:51.523Z",
+      "lastDataIntegrationAt": "2026-11-15T22:46:38.964Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39448,6 +39448,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-178-publish-nature-history-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : publication autorisée du périmètre audité, 178-publish-nature-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-53a97820-1937-421e-a520-a5ae2f7ff72f",
+          "appliedAt": "2026-11-15T22:37:04.794Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-183-volcano-drones-inventory-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : ajout privé du spectacle historique Volcano Drones, ouverture 2019 et statut Unknown ; nouvelle référence Dronisos rapprochée par Preview, aucune modification de référence partagée existante."
+        },
+        {
+          "eventId": "apply-11418c69-67fd-40ce-a915-a79f9daf2020",
+          "appliedAt": "2026-11-15T22:39:12.436Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-184-volcano-drones-notices-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : huit notices privées Volcano Drones et huit biographies Dronisos personnellement rédigées, relues et comparées aux reçus ; fondation contradictoire omise, statut Unknown préservé."
+        },
+        {
+          "eventId": "import-photo-6a9dc082901745ea992bbc3dbf04c3f4",
+          "appliedAt": "2026-11-15T22:40:02.667Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-photo-185-volcano-drones-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : photographie de Volcano Drones importée privée, identité et original vérifiés,24métadonnées relues en huit langues; aucune retouche ou date de prise de vue inventée."
+        },
+        {
+          "eventId": "apply-06f5cbbb-6970-421d-8be7-9ca9d79989c6",
+          "appliedAt": "2026-11-15T22:41:17.191Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-186-volcano-drones-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : fait privé d’ouverture de Volcano Drones en 2019, seize titres et résumés relus en huit langues ; photographie de presse du lancement associée, année seule conservée."
+        },
+        {
+          "eventId": "apply-79eaadd5-a9c4-410a-b2b8-cc3e46947b7d",
+          "appliedAt": "2026-11-15T22:46:13.995Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-190-publish-drones-photo-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 190-publish-drones-photo; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-a13ad752-1193-4fe3-b621-4f590023b938",
+          "appliedAt": "2026-11-15T22:46:38.964Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-191-publish-drones-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 191-publish-drones-history; note réelle94 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39500,7 +39560,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-eba72d89-2a7a-4ca6-b060-c1892d2b806a ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-a13ad752-1193-4fe3-b621-4f590023b938 ; conserver les références de découverte."
       },
       "publicationEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-visibility-20261115.json",
       "publicChecksEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-publication-public-checks-20261115.json",

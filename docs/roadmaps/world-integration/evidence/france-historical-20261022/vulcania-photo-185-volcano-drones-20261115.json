@@ -1,0 +1,290 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "source": {
+    "stem": "photo-185-volcano-drones",
+    "ownerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+    "itemName": "Volcano Drones",
+    "current": false,
+    "source": {
+      "file": "/workspace/france-historical-20261114/vulcania/drones-followup-2236/progres-drone.jpg",
+      "url": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+      "checkedAtUtc": "2026-11-15T22:35:20.837505+00:00",
+      "status": 200,
+      "bytes": 33310,
+      "contentType": "image/jpeg",
+      "sha256": "fb4198a23740a077a2f73d98ef4e047b6757bcd10ab10b68ca27cdf60590d086",
+      "size": [
+        1000,
+        500
+      ],
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+      "width": 1000,
+      "height": 500,
+      "dimensions": [
+        1000,
+        500
+      ],
+      "sourcePage": "https://www.leprogres.fr/sortir/2019/03/21/vulcania-mise-sur-les-drones-et-thomas-pesquet"
+    },
+    "rootVisualReview": true,
+    "captureDate": null,
+    "permissionContext": "Existing owner Francepress/contributorphotoauthorization retained. LeProgres/GenevieveColonna dIstria explicitlycredited inarticle. Noopenlicence invented.",
+    "qualification": "Actual presenter/drone onstagebefore projectedvolcano, nativepublisher1000x500 withoriginalwhitesidemargins unchanged. No watermarkoverlay. Screen2033date belongsfictionalscenario,NOTcapture/eventdate. Historical2019reportphoto noncurrent. Coasterrider2021 alternative excluded becausevisiblethirdpartywatermark and1002418B>960KiB;no crop/recompression."
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "SourceUrl": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+      "FilePath": "/workspace/france-historical-20261114/vulcania/drones-followup-2236/progres-drone.jpg",
+      "IsPublished": false,
+      "SetAsCurrent": false,
+      "WithWatermark": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/vulcania/photo-185-volcano-drones-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/vulcania/photo-185-volcano-drones-import-result.json"
+  },
+  "metadata": {
+    "description": "Sur la scène de Volcano Drones, une animatrice accompagne un drone devant l’image d’un volcan en éruption. Photographie publiée lors du lancement de la saison 2019 de Vulcania.",
+    "sourceUrl": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Une animatrice et un drone devant un volcan projeté dans Volcano Drones"
+      },
+      {
+        "languageCode": "en",
+        "value": "A presenter and a drone in front of a projected volcano in Volcano Drones"
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Moderatorin und eine Drohne vor einem projizierten Vulkan in Volcano Drones"
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een presentatrice en een drone voor een geprojecteerde vulkaan in Volcano Drones"
+      },
+      {
+        "languageCode": "it",
+        "value": "Un’animatrice e un drone davanti a un vulcano proiettato in Volcano Drones"
+      },
+      {
+        "languageCode": "es",
+        "value": "Una presentadora y un dron ante un volcán proyectado en Volcano Drones"
+      },
+      {
+        "languageCode": "pl",
+        "value": "Animatorka i dron na tle projekcji wulkanu w Volcano Drones"
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma animadora e um drone diante de um vulcão projetado em Volcano Drones"
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Sur la scène de Volcano Drones, une animatrice accompagne un drone devant l’image d’un volcan en éruption. Photographie publiée lors du lancement de la saison 2019 de Vulcania."
+      },
+      {
+        "languageCode": "en",
+        "value": "On the Volcano Drones stage, a presenter accompanies a drone in front of an image of an erupting volcano. Photograph published for the launch of Vulcania’s 2019 season."
+      },
+      {
+        "languageCode": "de",
+        "value": "Auf der Bühne von Volcano Drones begleitet eine Moderatorin eine Drohne vor dem Bild eines ausbrechenden Vulkans. Das Foto wurde zum Start der Vulcania-Saison 2019 veröffentlicht."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Op het podium van Volcano Drones begeleidt een presentatrice een drone voor een beeld van een uitbarstende vulkaan. Foto gepubliceerd bij de start van Vulcania’s seizoen 2019."
+      },
+      {
+        "languageCode": "it",
+        "value": "Sul palco di Volcano Drones, un’animatrice accompagna un drone davanti all’immagine di un vulcano in eruzione. Fotografia pubblicata per il lancio della stagione 2019 di Vulcania."
+      },
+      {
+        "languageCode": "es",
+        "value": "En el escenario de Volcano Drones, una presentadora acompaña a un dron ante la imagen de un volcán en erupción. Fotografía publicada con motivo del inicio de la temporada 2019 de Vulcania."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Na scenie Volcano Drones animatorka towarzyszy dronowi na tle obrazu wybuchającego wulkanu. Zdjęcie opublikowano z okazji rozpoczęcia sezonu 2019 w Vulcanii."
+      },
+      {
+        "languageCode": "pt",
+        "value": "No palco de Volcano Drones, uma animadora acompanha um drone diante da imagem de um vulcão em erupção. Fotografia publicada por ocasião do início da temporada de 2019 de Vulcania."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "en",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "de",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "nl",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "it",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "es",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "pl",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      },
+      {
+        "languageCode": "pt",
+        "value": "© Le Progrès / Geneviève Colonna d’Istria."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "result": {
+      "id": "6a9dc082901745ea992bbc3dbf04c3f4",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+      "path": "park_item/6a9dc082901745ea992bbc3dbf04c3f4",
+      "description": "Sur la scène de Volcano Drones, une animatrice accompagne un drone devant l’image d’un volcan en éruption. Photographie publiée lors du lancement de la saison 2019 de Vulcania.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1000,
+      "height": 500,
+      "sizeInBytes": 33310,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://cdn-s-www.leprogres.fr/images/E4C99E91-4D9B-4441-9B86-99F3D28A81A0/NW_detail/volcano-drones-le-nouveau-spectacle-scientifique-avec-des-drones-explique-le-travail-des-vulcanologues-sur-le-terrain-photo-le-progres-genevieve-colonna-d-istria-1553115155.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Une animatrice et un drone devant un volcan projeté dans Volcano Drones"
+        },
+        {
+          "languageCode": "en",
+          "value": "A presenter and a drone in front of a projected volcano in Volcano Drones"
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Moderatorin und eine Drohne vor einem projizierten Vulkan in Volcano Drones"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een presentatrice en een drone voor een geprojecteerde vulkaan in Volcano Drones"
+        },
+        {
+          "languageCode": "it",
+          "value": "Un’animatrice e un drone davanti a un vulcano proiettato in Volcano Drones"
+        },
+        {
+          "languageCode": "es",
+          "value": "Una presentadora y un dron ante un volcán proyectado en Volcano Drones"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Animatorka i dron na tle projekcji wulkanu w Volcano Drones"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma animadora e um drone diante de um vulcão projetado em Volcano Drones"
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Sur la scène de Volcano Drones, une animatrice accompagne un drone devant l’image d’un volcan en éruption. Photographie publiée lors du lancement de la saison 2019 de Vulcania."
+        },
+        {
+          "languageCode": "en",
+          "value": "On the Volcano Drones stage, a presenter accompanies a drone in front of an image of an erupting volcano. Photograph published for the launch of Vulcania’s 2019 season."
+        },
+        {
+          "languageCode": "de",
+          "value": "Auf der Bühne von Volcano Drones begleitet eine Moderatorin eine Drohne vor dem Bild eines ausbrechenden Vulkans. Das Foto wurde zum Start der Vulcania-Saison 2019 veröffentlicht."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Op het podium van Volcano Drones begeleidt een presentatrice een drone voor een beeld van een uitbarstende vulkaan. Foto gepubliceerd bij de start van Vulcania’s seizoen 2019."
+        },
+        {
+          "languageCode": "it",
+          "value": "Sul palco di Volcano Drones, un’animatrice accompagna un drone davanti all’immagine di un vulcano in eruzione. Fotografia pubblicata per il lancio della stagione 2019 di Vulcania."
+        },
+        {
+          "languageCode": "es",
+          "value": "En el escenario de Volcano Drones, una presentadora acompaña a un dron ante la imagen de un volcán en erupción. Fotografía publicada con motivo del inicio de la temporada 2019 de Vulcania."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Na scenie Volcano Drones animatorka towarzyszy dronowi na tle obrazu wybuchającego wulkanu. Zdjęcie opublikowano z okazji rozpoczęcia sezonu 2019 w Vulcanii."
+        },
+        {
+          "languageCode": "pt",
+          "value": "No palco de Volcano Drones, uma animadora acompanha um drone diante da imagem de um vulcão em erupção. Fotografia publicada por ocasião do início da temporada de 2019 de Vulcania."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "en",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "de",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "nl",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "it",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "es",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "pl",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        },
+        {
+          "languageCode": "pt",
+          "value": "© Le Progrès / Geneviève Colonna d’Istria."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T22:40:02.667Z",
+      "updatedAt": "2026-11-15T22:40:08.992Z"
+    },
+    "receivedAtUtc": "2026-11-15T22:40:12.2082007Z",
+    "startedAtUtc": "2026-11-15T22:40:00.3047608Z"
+  },
+  "personalReview": "Originalindividuallyviewed;24localizedfields personallyauthored/reviewed; no transformation/capturedateinvention.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

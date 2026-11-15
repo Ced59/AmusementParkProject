@@ -1,0 +1,939 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "checkedAtUtc": "2026-11-15T22:49:19.783872+00:00",
+  "scopeAudit": "vulcania-drones-publication-scope-audit-20261115.json",
+  "publicationExport": "vulcania-drones-publication-export-20261115.json",
+  "realPublicationApplies": [
+    {
+      "operationId": "79eaadd5-a9c4-410a-b2b8-cc3e46947b7d",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:46:13.9959964Z",
+      "appliedAtUtc": "2026-11-15T22:46:13.9959972Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 1,
+        "deleted": 0,
+        "unchanged": 2,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+          "entityKey": "6550ac7c-87c8-4076-85ba-b877d293052d",
+          "displayName": "Volcano Drones",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "Image",
+          "entityId": "6a9dc082901745ea992bbc3dbf04c3f4",
+          "entityKey": null,
+          "displayName": "codex-import.jpg",
+          "changeType": "Updated",
+          "matchedBy": "imageId",
+          "fields": [
+            {
+              "field": "isPublished",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "operationId": "a13ad752-1193-4fe3-b621-4f590023b938",
+      "mode": "merge",
+      "isApplied": true,
+      "canApply": true,
+      "previewedAtUtc": "2026-11-15T22:46:38.9646455Z",
+      "appliedAtUtc": "2026-11-15T22:46:38.964646Z",
+      "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "targetParkName": "Vulcania",
+      "targetStandaloneAttractionId": null,
+      "targetStandaloneAttractionName": null,
+      "counts": {
+        "created": 0,
+        "updated": 3,
+        "deleted": 0,
+        "unchanged": 1,
+        "warnings": 0,
+        "errors": 0
+      },
+      "changes": [
+        {
+          "entityType": "AttractionManufacturer",
+          "entityId": "b907bfbb-6429-42df-931a-c13b71e150b3",
+          "entityKey": "b907bfbb-6429-42df-931a-c13b71e150b3",
+          "displayName": "Dronisos",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "entityKey": "park",
+          "displayName": "Vulcania",
+          "changeType": "Unchanged",
+          "matchedBy": "id",
+          "fields": []
+        },
+        {
+          "entityType": "ParkItem",
+          "entityId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+          "entityKey": "6550ac7c-87c8-4076-85ba-b877d293052d",
+          "displayName": "Volcano Drones",
+          "changeType": "Updated",
+          "matchedBy": "id",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            },
+            {
+              "field": "adminReviewStatus",
+              "oldValue": "ToReview",
+              "newValue": "Validated"
+            }
+          ]
+        },
+        {
+          "entityType": "HistoryEvent",
+          "entityId": "43d5f3a9-634e-4306-8af2-e4ab8a8d9e61",
+          "entityKey": "vulcania-volcano-drones-opening-2019",
+          "displayName": "Les drones entrent dans la médiation scientifique de Vulcania",
+          "changeType": "Updated",
+          "matchedBy": "ownerKey",
+          "fields": [
+            {
+              "field": "isVisible",
+              "oldValue": "false",
+              "newValue": "true"
+            }
+          ]
+        }
+      ],
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "publicChecks": {
+    "languageCount": 8,
+    "renderedPages": 24,
+    "itemPages": 8,
+    "manufacturerPages": 8,
+    "timelinePages": 8,
+    "normalParkCatalogueSearchItemNavigations": 8,
+    "normalManufacturerLinkNavigations": 8,
+    "normalItemHistoryNavigations": 8,
+    "descriptionsExact": 8,
+    "manufacturerBiographiesExact": 8,
+    "historyTitlesExact": 8,
+    "historySummariesExact": 8,
+    "photoItemLanguagePairsRendered": 8,
+    "photoTimelineLanguagePairsRendered": 8,
+    "distinctPhotoLanguagePairsWithBinary200": 8,
+    "brokenImages": 0,
+    "horizontalOverflow": 0,
+    "guidLeaks": 0,
+    "rootReviewedScreenshots": [
+      {
+        "path": "public-checks/drones-fr-description.png",
+        "sha256": "dc839584815669e88049e6f1ff40123960a246e1a94c970e545d5aa61af4c44e"
+      },
+      {
+        "path": "public-checks/drones-fr-history.png",
+        "sha256": "f252c02654c72e5c0f4dd6b503063ecaf9ea692ddf047d331fd0d2f8c29deb16"
+      },
+      {
+        "path": "public-checks/drones-fr.png",
+        "sha256": "3319f2ec429ec5865d746eebf3343ebc63ad6c775bce64e282fb4d9337fb5af3"
+      }
+    ],
+    "results": [
+      {
+        "language": "fr",
+        "checkedAtUtc": "2026-11-15T22:47:19.930717+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/fr/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/fr/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Une animatrice et un drone devant un volcan projeté dans Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/fr/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Les drones entrent dans la médiation scientifique de Vulcania",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "checkedAtUtc": "2026-11-15T22:47:19.934772+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/en/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/en/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/en/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Drones join Vulcania’s science storytelling",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "checkedAtUtc": "2026-11-15T22:47:19.944325+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/de/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/de/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Eine Moderatorin und eine Drohne vor einem projizierten Vulkan in Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/de/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Drohnen ergänzen Vulcanias Wissenschaftsvermittlung",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "checkedAtUtc": "2026-11-15T22:47:41.483945+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/nl/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/nl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Een presentatrice en een drone voor een geprojecteerde vulkaan in Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/nl/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Drones krijgen een rol in Vulcania’s wetenschapsverhalen",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "checkedAtUtc": "2026-11-15T22:47:41.654405+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/it/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/it/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Un’animatrice e un drone davanti a un vulcano proiettato in Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/it/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "I droni entrano nella divulgazione scientifica di Vulcania",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "checkedAtUtc": "2026-11-15T22:47:41.894198+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/es/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/es/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Una presentadora y un dron ante un volcán proyectado en Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/es/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Los drones se suman a la divulgación científica de Vulcania",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "checkedAtUtc": "2026-11-15T22:48:04.581310+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/pl/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/pl/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Animatorka i dron na tle projekcji wulkanu w Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/pl/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Drony dołączają do naukowych opowieści Vulcanii",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "checkedAtUtc": "2026-11-15T22:48:04.913401+00:00",
+        "pages": [
+          {
+            "kind": "item",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "manufacturer",
+            "url": "https://amusement-parks.fun/pt/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          },
+          {
+            "kind": "history",
+            "url": "https://amusement-parks.fun/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones/history",
+            "overflow": 0,
+            "brokenImages": [],
+            "guidLeaks": []
+          }
+        ],
+        "parkStatus": 200,
+        "itemDiscoveredHref": "/pt/park/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania/item/6550ac7c-87c8-4076-85ba-b877d293052d/volcano-drones",
+        "descriptionExact": true,
+        "normalParkItemsSearchItemNavigation": true,
+        "mainImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          },
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "A presenter and a drone in front of a projected volcano in Volcano Drones",
+            "width": 360,
+            "height": 180
+          }
+        ],
+        "expectedAlt": "Uma animadora e um drone diante de um vulcão projetado em Volcano Drones",
+        "manufacturerLinkCount": 1,
+        "manufacturerDiscoveredHref": "/pt/park-manufacturer/b907bfbb-6429-42df-931a-c13b71e150b3/dronisos",
+        "manufacturerBiographyExact": true,
+        "historyLinkCount": 1,
+        "titleExact": true,
+        "summaryExact": true,
+        "normalItemHistoryNavigation": true,
+        "historyImages": [
+          {
+            "src": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "alt": "Os drones juntam-se à divulgação científica de Vulcania",
+            "width": 389,
+            "height": 194
+          }
+        ],
+        "photoResponses": [
+          {
+            "url": "https://amusement-parks.fun/api/images/binary/6a9dc082901745ea992bbc3dbf04c3f4?width=480&v=2",
+            "status": 200
+          }
+        ]
+      }
+    ]
+  },
+  "applicationIssue": {
+    "mainPhotoAltFallsBackToEnglishLanguages": [
+      "fr",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "timelinePhotoAltUsesLocalizedEventTitle": true,
+    "storedEightLanguageMetadataPreserved": true,
+    "noBlindDataCorrection": true
+  },
+  "completeness": {
+    "result": {
+      "completenessScore": 94,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 106,
+      "earnedPoints": 100,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "receivedAtUtc": "2026-11-15T22:47:01.2481853Z",
+    "action": "Completeness",
+    "startedAtUtc": "2026-11-15T22:47:00.3234906Z"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "parkName": "Vulcania",
+      "factCount": 68,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1990,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 5,
+          "sourcedResourceCount": 5,
+          "publishedResourceCount": 5,
+          "subjectCount": 4,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 11,
+          "sourcedResourceCount": 11,
+          "publishedResourceCount": 11,
+          "subjectCount": 9,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 8,
+          "sourcedResourceCount": 8,
+          "publishedResourceCount": 8,
+          "subjectCount": 7,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 25
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 43
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 25,
+        "sourcedFactCount": 25,
+        "majorFactCount": 22,
+        "indexableKeyYears": []
+      }
+    },
+    "receivedAtUtc": "2026-11-15T22:46:55.5181765Z",
+    "startedAtUtc": "2026-11-15T22:46:54.7288712Z",
+    "action": "HistoryDiagnostics"
+  },
+  "idempotence": {
+    "operationId": "f8cc1af0-a790-4d54-8c59-7ca6396c8a36",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:47:15.7249953Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "entityKey": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "displayName": "Dronisos",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "entityKey": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "displayName": "Volcano Drones",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "6a9dc082901745ea992bbc3dbf04c3f4",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "43d5f3a9-634e-4306-8af2-e4ab8a8d9e61",
+        "entityKey": "vulcania-volcano-drones-opening-2019",
+        "displayName": "Les drones entrent dans la médiation scientifique de Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "coverage": {
+    "items": 62,
+    "publicItems": 62,
+    "descriptions8Languages": 62,
+    "ownMedia": 64,
+    "publicOwnMedia": 64,
+    "sharedMedia": 5,
+    "publicMaps": 2,
+    "publishedHistoryFacts": 25,
+    "publicArticles": 2
+  },
+  "globalOutcome": "partial",
+  "remainingResearch": [
+    "Historical show Dragon Time to qualify separately from Dragon Ride and Primordia",
+    "Volcano Drones current operation or closure remains unknown; no date invented",
+    "Precise item coordinates and distinct photographic coverage remain incomplete",
+    "No complete general calendar or price table for 2027 found in previously reviewed official pages"
+  ],
+  "earlierApplicationIssuesUnchanged": "vulcania-publication-followup-20261115.json",
+  "facebook": {
+    "existingPublishedAnnouncementId": "d77df105d04d4601a9a543d41d3ce25c",
+    "newSendPerformed": false,
+    "anonymousVisibilityNotConfirmed": true
+  }
+}

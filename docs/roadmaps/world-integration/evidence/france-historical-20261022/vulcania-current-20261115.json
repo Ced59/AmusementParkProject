@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T22:29:51.5238645Z",
+  "lastDataIntegrationAt": "2026-11-15T22:46:38.964646Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -139,9 +139,9 @@
   "fullFinalExportPerformed": true,
   "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 66,
-  "realImportCount": 63,
-  "lastOperationId": "eba72d89-2a7a-4ca6-b060-c1892d2b806a",
+  "realApplyCount": 71,
+  "realImportCount": 64,
+  "lastOperationId": "a13ad752-1193-4fe3-b621-4f590023b938",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -208,15 +208,20 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-170-nature-grand-format-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-173-nature-and-seismes-history-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-177-publish-nature-photos-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-178-publish-nature-history-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-178-publish-nature-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-183-volcano-drones-inventory-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-184-volcano-drones-notices-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-186-volcano-drones-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-190-publish-drones-photo-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-191-publish-drones-history-20261115.json"
   ],
   "currentCoverage": {
-    "items": 61,
-    "publicItems": 61,
-    "describedItems8Languages": 61,
+    "items": 62,
+    "publicItems": 62,
+    "describedItems8Languages": 62,
     "zones": 0,
-    "ownMedia": 63,
-    "historyEvents": 24,
+    "ownMedia": 64,
+    "historyEvents": 25,
     "privateHistoryEvents": 0,
     "officialMaps": 2,
     "privateOwnMedia": 0,
@@ -224,12 +229,12 @@
     "privateArticles": 0,
     "privateItems": 0,
     "sharedMedia": 5,
-    "publicOwnMedia": 63,
-    "publicHistoryEvents": 24,
+    "publicOwnMedia": 64,
+    "publicHistoryEvents": 25,
     "publicOfficialMaps": 2,
     "publicArticles": 2
   },
-  "lastApplyOperationId": "eba72d89-2a7a-4ca6-b060-c1892d2b806a",
+  "lastApplyOperationId": "a13ad752-1193-4fe3-b621-4f590023b938",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -545,6 +550,11 @@
       "imageId": "212b74dbb2af4190b02311f2f960f002",
       "createdAt": "2026-11-15T22:24:49.987Z",
       "proof": "vulcania-photo-172-nature-entrance-20261115.json"
+    },
+    {
+      "imageId": "6a9dc082901745ea992bbc3dbf04c3f4",
+      "createdAt": "2026-11-15T22:40:02.667Z",
+      "proof": "vulcania-photo-185-volcano-drones-20261115.json"
     }
   ],
   "photoMetadataUpdates": [
@@ -618,7 +628,7 @@
     "initialPrePublicationScore": 84,
     "postPublicationProof": "vulcania-publication-followup-20261115.json"
   },
-  "nextAction": "Continue historical show qualification, including Volcano Drones; all61identified places are described and public. Global inventory, GPS, photographic and2027practical coverage remain partial.",
+  "nextAction": "Continue historical show qualification, including Dragon Time. All 62 identified places are described and public; global inventory, GPS, photographic and 2027 practical coverage remain partial.",
   "publicationOperations": [
     {
       "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
@@ -704,6 +714,16 @@
       "operationId": "eba72d89-2a7a-4ca6-b060-c1892d2b806a",
       "appliedAtUtc": "2026-11-15T22:29:51.5238645Z",
       "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-178-publish-nature-history-20261115.json"
+    },
+    {
+      "operationId": "79eaadd5-a9c4-410a-b2b8-cc3e46947b7d",
+      "appliedAtUtc": "2026-11-15T22:46:13.9959972Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-190-publish-drones-photo-20261115.json"
+    },
+    {
+      "operationId": "a13ad752-1193-4fe3-b621-4f590023b938",
+      "appliedAtUtc": "2026-11-15T22:46:38.964646Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-191-publish-drones-history-20261115.json"
     }
   ],
   "currentCompleteness": {
@@ -725,5 +745,5 @@
   "facebookAnnouncementPublished": true,
   "newFacebookSendPerformed": false,
   "facebookAnonymousVisibilityConfirmed": false,
-  "lastPublicFollowupProof": "vulcania-nature-publication-followup-20261115.json"
+  "lastPublicFollowupProof": "vulcania-drones-publication-followup-20261115.json"
 }

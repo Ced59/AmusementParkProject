@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "references": {
+        "manufacturers": [
+          {
+            "key": "dronisos",
+            "name": "Dronisos",
+            "isVisible": false,
+            "adminReviewStatus": "ToReview"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "vulcania-volcano-drones",
+          "name": "Volcano Drones",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": false,
+          "adminReviewStatus": "ToReview",
+          "attractionDetails": {
+            "status": "Unknown",
+            "openingDate": "2019",
+            "manufacturerKey": "dronisos",
+            "sourceUrl": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes"
+          }
+        }
+      ],
+      "metadata": {
+        "notes": "Historical live scientific show opened2019 per Vulcania press release20March2019 and SEM2019retrospective report. Distinct from films in CineMax and current shows in inventory. APRR2022eyewitness describes Caldera/Magmatus and Dronisos programming. Current status Unknown: no executed closure or2026continuity proven. No specificopeningday,manufacturerdronehardware,capacity,GPS,roomalias inferred. Dronisos is show technology provider; Laboratory Magmas et Volcans is scientific partner, not manufacturer. Minimal reference name must be reconciled via Preview; never hide or rewrite an existing shared reference."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "49c2dd3c-fc04-483e-a6ce-bc59ccc56b97",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:36:41.1678059Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "335c406c-2d02-4396-8a5d-74685defd52d",
+        "entityKey": "dronisos",
+        "displayName": "Dronisos",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a27c1ebd-40d4-4fa9-ab2c-18f76c322069",
+        "entityKey": "vulcania-volcano-drones",
+        "displayName": "Volcano Drones",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "335c406c-2d02-4396-8a5d-74685defd52d"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2019"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "53a97820-1937-421e-a520-a5ae2f7ff72f",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T22:37:04.7944433Z",
+    "appliedAtUtc": "2026-11-15T22:37:04.7944441Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 2,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "b907bfbb-6429-42df-931a-c13b71e150b3",
+        "entityKey": "dronisos",
+        "displayName": "Dronisos",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6550ac7c-87c8-4076-85ba-b877d293052d",
+        "entityKey": "vulcania-volcano-drones",
+        "displayName": "Volcano Drones",
+        "changeType": "Created",
+        "matchedBy": "name",
+        "fields": [
+          {
+            "field": "category",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "type",
+            "oldValue": "Attraction",
+            "newValue": "Show"
+          },
+          {
+            "field": "attractionDetails.manufacturerId",
+            "oldValue": null,
+            "newValue": "b907bfbb-6429-42df-931a-c13b71e150b3"
+          },
+          {
+            "field": "attractionDetails.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.snelac.com/post/2019/03/20/vulcania-inaugure-une-saison-2019-riche-en-emotions-et-en-decouvertes"
+          },
+          {
+            "field": "attractionDetails.status",
+            "oldValue": null,
+            "newValue": "Unknown"
+          },
+          {
+            "field": "attractionDetails.openingDateText",
+            "oldValue": null,
+            "newValue": "2019"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : ajout privé du spectacle historique Volcano Drones, ouverture 2019 et statut Unknown ; nouvelle référence Dronisos rapprochée par Preview, aucune modification de référence partagée existante.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Historical live scientific show opened2019 per Vulcania press release20March2019 and SEM2019retrospective report. Distinct from films in CineMax and current shows in inventory. APRR2022eyewitness describes Caldera/Magmatus and Dronisos programming. Current status Unknown: no executed closure or2026continuity proven. No specificopeningday,manufacturerdronehardware,capacity,GPS,roomalias inferred. Dronisos is show technology provider; Laboratory Magmas et Volcans is scientific partner, not manufacturer. Minimal reference name must be reconciled via Preview; never hide or rewrite an existing shared reference."
+}
