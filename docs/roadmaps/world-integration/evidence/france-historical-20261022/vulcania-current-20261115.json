@@ -6,7 +6,7 @@
   "checkedAtUtc": "2026-11-15T14:10:32.352530+00:00",
   "assignedTo": "Conversation France",
   "status": "InProgress",
-  "lastDataIntegrationAt": "2026-11-15T20:11:33.7169556Z",
+  "lastDataIntegrationAt": "2026-11-15T20:47:21.2138604Z",
   "scopeDecision": "Major operating scientific theme park; Aerophile balloon is InsidePark, no standalone creation.",
   "search": {
     "action": "SearchParks",
@@ -137,11 +137,11 @@
   ],
   "finalAuditCompleted": false,
   "fullFinalExportPerformed": false,
-  "sitePublicationPerformed": false,
+  "sitePublicationPerformed": true,
   "facebookPublicationPerformed": false,
-  "realApplyCount": 36,
+  "realApplyCount": 45,
   "realImportCount": 56,
-  "lastOperationId": "7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
+  "lastOperationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
   "applyProofs": [
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-01-core-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-02-namazu-date-20261115.json",
@@ -178,22 +178,36 @@
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-84-services-notices-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-85-film-history-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-89-two-dated-openings-20261115.json",
-    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-91-planetarium-fire-article-20261115.json"
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-91-planetarium-fire-article-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-92-recent-item-milestones-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-97-audit-parking-correction-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-102-publish-images-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-103-publish-items-maps-reference-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-104-publish-history-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-105-publish-park-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-110-canonical-history-recovery-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-114-opening-summary-correction-20261115.json",
+    "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json"
   ],
   "currentCoverage": {
     "items": 56,
-    "publicItems": 0,
+    "publicItems": 55,
     "describedItems8Languages": 55,
     "zones": 0,
     "ownMedia": 56,
-    "historyEvents": 11,
-    "privateHistoryEvents": 11,
+    "historyEvents": 15,
+    "privateHistoryEvents": 0,
     "officialMaps": 2,
-    "privateOwnMedia": 56,
+    "privateOwnMedia": 0,
     "articles": 2,
-    "privateArticles": 2
+    "privateArticles": 2,
+    "privateItems": 1,
+    "sharedMedia": 5,
+    "publicOwnMedia": 56,
+    "publicHistoryEvents": 15,
+    "publicOfficialMaps": 2
   },
-  "lastApplyOperationId": "7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6",
+  "lastApplyOperationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
   "photoImports": [
     {
       "imageId": "7455ffc28d574c158809574ac5c022bd",
@@ -516,7 +530,7 @@
     2024,
     2026
   ],
-  "latestSourceNote": "56privateitems,55personallyreviewednotices,56ownprivatemedia,11privatefacts,2developedarticles. Balloon5June2014 andplanetarium29March2023publicopenings sourced;10Feb2022constructionfire documented with genuinephoto andarticle. No finalaudit/export/publication yet.",
+  "latestSourceNote": "15qualifiedprivatefacts,2articles,55notices;oneprivateunqualifieditem andhistoricalresearchgaps remain.",
   "articleBodyWordsByLanguage": {
     "fr": 412,
     "en": 361,
@@ -537,5 +551,61 @@
     "vulcania-hawai-and-geology-followup-20261115.json",
     "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-food-and-shows-followup-20261115.json",
     "vulcania-item-history-and-planetarium-fire-followup-20261115.json"
-  ]
+  ],
+  "fullAuditExportPerformed": true,
+  "finalScopeAudit": {
+    "ready": true,
+    "globalCompletion": false,
+    "proof": "vulcania-publication-scope-audit-20261115.json",
+    "score": 84
+  },
+  "nextAction": "Complete eight-language rendered public checks, normal navigation and anonymous Facebook observation; global integration remains partial.",
+  "publicationOperations": [
+    {
+      "operationId": "332b1ef6-66a9-4617-a3f5-ff931aa12197",
+      "appliedAtUtc": "2026-11-15T20:32:59.451445Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-102-publish-images-20261115.json"
+    },
+    {
+      "operationId": "4d8e0058-3006-40ca-94d8-35d2baf95801",
+      "appliedAtUtc": "2026-11-15T20:33:20.9852597Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-103-publish-items-maps-reference-20261115.json"
+    },
+    {
+      "operationId": "59f7ba84-4eb1-4447-955d-87dcea3c1d92",
+      "appliedAtUtc": "2026-11-15T20:34:13.3420279Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-104-publish-history-20261115.json"
+    },
+    {
+      "operationId": "6970a58c-33dd-4a8d-bfad-c3f510b61f8f",
+      "appliedAtUtc": "2026-11-15T20:34:39.3556646Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-105-publish-park-20261115.json"
+    },
+    {
+      "operationId": "863f752b-799d-4a8c-b516-e07f646a9cf2",
+      "appliedAtUtc": "2026-11-15T20:38:16.9794328Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-110-canonical-history-recovery-20261115.json"
+    },
+    {
+      "operationId": "2246e022-bc44-4b5b-bd60-cd8af841ad40",
+      "appliedAtUtc": "2026-11-15T20:41:44.2600392Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-114-opening-summary-correction-20261115.json"
+    },
+    {
+      "operationId": "1005a47f-d1f4-4fdf-8b23-8859e4737385",
+      "appliedAtUtc": "2026-11-15T20:47:21.2138604Z",
+      "proof": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json"
+    }
+  ],
+  "currentCompleteness": {
+    "completenessScore": 94,
+    "dataQualityLevel": "Good",
+    "applicableMaxPoints": 106,
+    "earnedPoints": 100,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  },
+  "publicationFollowup": "vulcania-publication-followup-20261115.json",
+  "facebookPublication": "d77df105d04d4601a9a543d41d3ce25c",
+  "facebookStatus": "Published"
 }

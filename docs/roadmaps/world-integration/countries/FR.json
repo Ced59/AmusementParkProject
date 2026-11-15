@@ -38127,7 +38127,7 @@
         "Vulcania Saint-Ours-les-Roches, France"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T20:11:33.716Z",
+      "lastDataIntegrationAt": "2026-11-15T20:47:21.213Z",
       "integrationHistory": [
         {
           "eventId": "apply-c1232224-ed9a-4c70-8b54-baa5e85c579b",
@@ -39078,6 +39078,96 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-91-planetarium-fire-article-20261115.json",
           "auditEvidence": null,
           "summary": "Vulcania : incendie du chantier du planétarium le 10 février 2022 intégré en fait privé avec article développé en huit langues, trois sections et six paragraphes par langue; 112 champs exactement vérifiés, quatre sources relues et photo réelle de l’intervention. Ouverture effective en 2023 distincte; aucun sinistre attribué au reste du parc."
+        },
+        {
+          "eventId": "apply-cab570f8-f603-4900-bda2-3d91045e1871",
+          "appliedAt": "2026-11-15T20:17:31.675Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-92-recent-item-milestones-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : quatre jalons privés pour Namazu, Expédition Hawaï, le remplacement d’Abyss et Primordia; 64 titres/résumés relus huit langues, quatre photos existantes contextualisées, aucune date individuelle déduite des annonces saisonnières."
+        },
+        {
+          "eventId": "apply-e1d87756-7139-42d1-87b1-6d05536d1592",
+          "appliedAt": "2026-11-15T20:26:49.153Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-97-audit-parking-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : reprise audit,16notices stationnement corrigées dans8langues; gratuité du parking de jour intégrée dans pricing EUR0 au guichet avec8conditions distinctes du séjour nocturne. Billets/pass2027 nonannoncés,aucune grille2026 présentée actuelle. Toutes données privées, audit en cours."
+        },
+        {
+          "eventId": "apply-332b1ef6-66a9-4617-a3f5-ff931aa12197",
+          "appliedAt": "2026-11-15T20:32:59.451Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-102-publish-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 102-publish-images; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-4d8e0058-3006-40ca-94d8-35d2baf95801",
+          "appliedAt": "2026-11-15T20:33:20.985Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-103-publish-items-maps-reference-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 103-publish-items-maps-reference; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-59f7ba84-4eb1-4447-955d-87dcea3c1d92",
+          "appliedAt": "2026-11-15T20:34:13.342Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-104-publish-history-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 104-publish-history; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-6970a58c-33dd-4a8d-bfad-c3f510b61f8f",
+          "appliedAt": "2026-11-15T20:34:39.355Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-105-publish-park-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 105-publish-park; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-863f752b-799d-4a8c-b516-e07f646a9cf2",
+          "appliedAt": "2026-11-15T20:38:16.979Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-110-canonical-history-recovery-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 110-canonical-history-recovery; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-2246e022-bc44-4b5b-bd60-cd8af841ad40",
+          "appliedAt": "2026-11-15T20:41:44.260Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-114-opening-summary-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 114-opening-summary-correction; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
+        },
+        {
+          "eventId": "apply-1005a47f-d1f4-4fdf-8b23-8859e4737385",
+          "appliedAt": "2026-11-15T20:47:21.213Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/vulcania-117-editorial-wording-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Vulcania : publication autorisée du périmètre audité, 117-editorial-wording-correction; note réelle84 avantpublication sansbloqueur, dérogation propriétaire. Inventaire global partial, contrôlepublic/Facebook distinct."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",
@@ -39130,7 +39220,7 @@
             "referenceId": "aerophile-vulcania"
           }
         ],
-        "rationale": "Type Park confirmé par le reçu d’intégration apply-7281918f-b7e4-4ad4-98ea-ec69bd7ad7b6 ; conserver les références de découverte."
+        "rationale": "Type Park confirmé par le reçu d’intégration apply-1005a47f-d1f4-4fdf-8b23-8859e4737385 ; conserver les références de découverte."
       }
     },
     {

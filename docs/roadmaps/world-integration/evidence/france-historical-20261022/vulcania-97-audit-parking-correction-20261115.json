@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+          "key": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+          "name": "Parking",
+          "category": "Service",
+          "type": "Parking",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Des places sont notamment prévues pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Spaces are also provided for motorhomes.</p><p>School groups also have coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Auch Stellflächen für Wohnmobile sind vorhanden.</p><p>Schulgruppen können Reisebusse ebenfalls abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Er zijn ook plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Sono previsti anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. También hay plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Dostępne są również miejsca dla kamperów.</p><p>Grupy szkolne mają także parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Existem também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente.</p>"
+            }
+          ]
+        },
+        {
+          "id": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+          "key": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+          "name": "Aire de camping-cars",
+          "category": "Service",
+          "type": "Service",
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles dans le parking du parc pendant la journée.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available in the park’s daytime car park.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem Tagesparkplatz des Parks getrennt.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag beschikbaar zijn.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili durante il giorno nel parcheggio del parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles durante el día en el aparcamiento del parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych w ciągu dnia na zwykłym parkingu parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis durante o dia no estacionamento do parque.</p>"
+            }
+          ]
+        }
+      ],
+      "pricing": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "currencyCode": "EUR",
+        "sourceUrl": "https://www.vulcania.com/reglement-interieur/",
+        "lastVerifiedAtUtc": "2026-11-15T19:35:26.695016Z",
+        "admissionOffers": [],
+        "annualPasses": [],
+        "parkingOffers": [
+          {
+            "code": "visitor-day-parking",
+            "labels": [
+              {
+                "languageCode": "fr",
+                "value": "Parking de jour"
+              },
+              {
+                "languageCode": "en",
+                "value": "Daytime parking"
+              },
+              {
+                "languageCode": "de",
+                "value": "Tagesparkplatz"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Parkeren overdag"
+              },
+              {
+                "languageCode": "it",
+                "value": "Parcheggio diurno"
+              },
+              {
+                "languageCode": "es",
+                "value": "Aparcamiento diurno"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Parking dzienny"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Estacionamento diurno"
+              }
+            ],
+            "gatePrice": {
+              "mode": "Fixed",
+              "amount": 0
+            },
+            "conditions": [
+              {
+                "languageCode": "fr",
+                "value": "Stationnement des visiteurs pendant la journée. L’aire de séjour nocturne pour camping-cars fait l’objet d’une offre séparée."
+              },
+              {
+                "languageCode": "en",
+                "value": "Visitor parking during the day. Overnight stays in the motorhome area are a separate offer."
+              },
+              {
+                "languageCode": "de",
+                "value": "Parken für Besucher während des Tages. Übernachtungen auf dem Wohnmobilstellplatz werden gesondert angeboten."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Parkeren voor bezoekers overdag. Overnachten op de camperplaats valt onder een apart aanbod."
+              },
+              {
+                "languageCode": "it",
+                "value": "Sosta dei visitatori durante il giorno. Il pernottamento nell’area camper è proposto separatamente."
+              },
+              {
+                "languageCode": "es",
+                "value": "Estacionamiento para visitantes durante el día. La pernoctación en el área de autocaravanas se ofrece por separado."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Postój dla odwiedzających w ciągu dnia. Noclegi w strefie kamperów są odrębną ofertą."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Estacionamento dos visitantes durante o dia. A pernoita na área de autocaravanas é uma oferta separada."
+              }
+            ],
+            "sortOrder": 1
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — reprise ciblée étapes4/7 pendant audit",
+        "notes": "Règlement officiel actuel article13 stationnement gratuit; page officielle airecampingcars confirme distinction jour/nuit. Aucun billet/pass2027 annoncé; aucune transposition des tarifs2026 expirés.16notices amendées et16libellés/conditions personnellement relus. Deux services courts conservés après recherche réelle, sans remplissage."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "3041dd99-4d78-43d5-ba59-8e4a2f64c02d",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:26:32.5567836Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "pricing",
+        "displayName": "Vulcania pricing",
+        "changeType": "Created",
+        "matchedBy": "pricing",
+        "fields": [
+          {
+            "field": "pricing.currencyCode",
+            "oldValue": null,
+            "newValue": "EUR"
+          },
+          {
+            "field": "pricing.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/reglement-interieur/"
+          },
+          {
+            "field": "pricing.lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15T19:35:26.695016Z"
+          },
+          {
+            "field": "pricing.parkingOffers",
+            "oldValue": "",
+            "newValue": "[{\"Id\":\"061b273dd4604911b57a1a211e2687d3\",\"Code\":\"visitor-day-parking\",\"Labels\":[{\"LanguageCode\":\"de\",\"Value\":\"Tagesparkplatz\"},{\"LanguageCode\":\"en\",\"Value\":\"Daytime parking\"},{\"LanguageCode\":\"es\",\"Value\":\"Aparcamiento diurno\"},{\"LanguageCode\":\"fr\",\"Value\":\"Parking de jour\"},{\"LanguageCode\":\"it\",\"Value\":\"Parcheggio diurno\"},{\"LanguageCode\":\"nl\",\"Value\":\"Parkeren overdag\"},{\"LanguageCode\":\"pl\",\"Value\":\"Parking dzienny\"},{\"LanguageCode\":\"pt\",\"Value\":\"Estacionamento diurno\"}],\"OnlinePrice\":null,\"GatePrice\":{\"Mode\":0,\"Amount\":0,\"MinimumAmount\":null,\"MaximumAmount\":null},\"ValidFrom\":null,\"ValidTo\":null,\"PurchaseUrl\":null,\"Conditions\":[{\"LanguageCode\":\"de\",\"Value\":\"Parken f\\u00FCr Besucher w\\u00E4hrend des Tages. \\u00DCbernachtungen auf dem Wohnmobilstellplatz werden gesondert angeboten.\"},{\"LanguageCode\":\"en\",\"Value\":\"Visitor parking during the day. Overnight stays in the motorhome area are a separate offer.\"},{\"LanguageCode\":\"es\",\"Value\":\"Estacionamiento para visitantes durante el d\\u00EDa. La pernoctaci\\u00F3n en el \\u00E1rea de autocaravanas se ofrece por separado.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Stationnement des visiteurs pendant la journ\\u00E9e. L\\u2019aire de s\\u00E9jour nocturne pour camping-cars fait l\\u2019objet d\\u2019une offre s\\u00E9par\\u00E9e.\"},{\"LanguageCode\":\"it\",\"Value\":\"Sosta dei visitatori durante il giorno. Il pernottamento nell\\u2019area camper \\u00E8 proposto separatamente.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Parkeren voor bezoekers overdag. Overnachten op de camperplaats valt onder een apart aanbod.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Post\\u00F3j dla odwiedzaj\\u0105cych w ci\\u0105gu dnia. Noclegi w strefie kamper\\u00F3w s\\u0105 odr\\u0119bn\\u0105 ofert\\u0105.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Estacionamento dos visitantes durante o dia. A pernoita na \\u00E1rea de autocaravanas \\u00E9 uma oferta separada.\"}],\"SortOrder\":1}]"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Vulcania gibt das Parken als kostenlos an und bietet auch Stellflächen für Wohnmobile.</p><p>Schulgruppen können Reisebusse ebenfalls kostenlos abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen. Tagesparkplatz und Übernachtungsbereich erfüllen somit unterschiedliche Zwecke.</p>",
+            "newValue": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Auch Stellflächen für Wohnmobile sind vorhanden.</p><p>Schulgruppen können Reisebusse ebenfalls abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Vulcania advertises this parking as free and provides spaces for motorhomes as well.</p><p>School groups also have free coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer. Daytime parking and this overnight area therefore serve different purposes.</p>",
+            "newValue": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Spaces are also provided for motorhomes.</p><p>School groups also have coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. Vulcania anuncia este estacionamiento como gratuito y dispone también de plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento gratuito para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado. El aparcamiento diurno y esa área de estancia cumplen, por tanto, funciones diferentes.</p>",
+            "newValue": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. También hay plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Vulcania annonce ce stationnement comme gratuit et prévoit notamment des places pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement gratuit pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément. Le parking de jour et cette aire de séjour ont donc des usages différents.</p>",
+            "newValue": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Des places sont notamment prévues pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Vulcania indica la sosta come gratuita e prevede anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio gratuito per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente. Il parcheggio diurno e quest’area di soggiorno hanno quindi funzioni differenti.</p>",
+            "newValue": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Sono previsti anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Vulcania vermeldt dat dit parkeren gratis is en voorziet ook in plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over gratis parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod. De dagparkeerplaats en dit verblijfsterrein hebben dus verschillende functies.</p>",
+            "newValue": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Er zijn ook plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Vulcania podaje, że postój jest bezpłatny, i zapewnia również miejsca dla kamperów.</p><p>Grupy szkolne mają także bezpłatny parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie. Parking dzienny i teren noclegowy pełnią zatem różne funkcje.</p>",
+            "newValue": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Dostępne są również miejsca dla kamperów.</p><p>Grupy szkolne mają także parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Vulcania anuncia este estacionamento como gratuito e disponibiliza também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento gratuito para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente. O estacionamento diurno e essa área de estadia têm, por isso, funções diferentes.</p>",
+            "newValue": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Existem também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem tagsüber kostenlosen Parkplatz des Parks getrennt.</p>",
+            "newValue": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem Tagesparkplatz des Parks getrennt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available free of charge in the park’s daytime car park.</p>",
+            "newValue": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available in the park’s daytime car park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles gratuitamente durante el día en el aparcamiento del parque.</p>",
+            "newValue": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles durante el día en el aparcamiento del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles gratuitement dans le parking du parc pendant la journée.</p>",
+            "newValue": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles dans le parking du parc pendant la journée.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili gratuitamente durante il giorno nel parcheggio del parco.</p>",
+            "newValue": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili durante il giorno nel parcheggio del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag gratis beschikbaar zijn.</p>",
+            "newValue": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag beschikbaar zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych bezpłatnie w ciągu dnia na zwykłym parkingu parku.</p>",
+            "newValue": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych w ciągu dnia na zwykłym parkingu parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis gratuitamente durante o dia no estacionamento do parque.</p>",
+            "newValue": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis durante o dia no estacionamento do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "e1d87756-7139-42d1-87b1-6d05536d1592",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:26:49.1530116Z",
+    "appliedAtUtc": "2026-11-15T20:26:49.1530124Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 1,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkPricing",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "pricing",
+        "displayName": "Vulcania pricing",
+        "changeType": "Created",
+        "matchedBy": "pricing",
+        "fields": [
+          {
+            "field": "pricing.currencyCode",
+            "oldValue": null,
+            "newValue": "EUR"
+          },
+          {
+            "field": "pricing.sourceUrl",
+            "oldValue": null,
+            "newValue": "https://www.vulcania.com/reglement-interieur/"
+          },
+          {
+            "field": "pricing.lastVerifiedAtUtc",
+            "oldValue": null,
+            "newValue": "2026-11-15T19:35:26.695016Z"
+          },
+          {
+            "field": "pricing.parkingOffers",
+            "oldValue": "",
+            "newValue": "[{\"Id\":\"89bc0e61409a47bea86ba44ca74fd9fb\",\"Code\":\"visitor-day-parking\",\"Labels\":[{\"LanguageCode\":\"de\",\"Value\":\"Tagesparkplatz\"},{\"LanguageCode\":\"en\",\"Value\":\"Daytime parking\"},{\"LanguageCode\":\"es\",\"Value\":\"Aparcamiento diurno\"},{\"LanguageCode\":\"fr\",\"Value\":\"Parking de jour\"},{\"LanguageCode\":\"it\",\"Value\":\"Parcheggio diurno\"},{\"LanguageCode\":\"nl\",\"Value\":\"Parkeren overdag\"},{\"LanguageCode\":\"pl\",\"Value\":\"Parking dzienny\"},{\"LanguageCode\":\"pt\",\"Value\":\"Estacionamento diurno\"}],\"OnlinePrice\":null,\"GatePrice\":{\"Mode\":0,\"Amount\":0,\"MinimumAmount\":null,\"MaximumAmount\":null},\"ValidFrom\":null,\"ValidTo\":null,\"PurchaseUrl\":null,\"Conditions\":[{\"LanguageCode\":\"de\",\"Value\":\"Parken f\\u00FCr Besucher w\\u00E4hrend des Tages. \\u00DCbernachtungen auf dem Wohnmobilstellplatz werden gesondert angeboten.\"},{\"LanguageCode\":\"en\",\"Value\":\"Visitor parking during the day. Overnight stays in the motorhome area are a separate offer.\"},{\"LanguageCode\":\"es\",\"Value\":\"Estacionamiento para visitantes durante el d\\u00EDa. La pernoctaci\\u00F3n en el \\u00E1rea de autocaravanas se ofrece por separado.\"},{\"LanguageCode\":\"fr\",\"Value\":\"Stationnement des visiteurs pendant la journ\\u00E9e. L\\u2019aire de s\\u00E9jour nocturne pour camping-cars fait l\\u2019objet d\\u2019une offre s\\u00E9par\\u00E9e.\"},{\"LanguageCode\":\"it\",\"Value\":\"Sosta dei visitatori durante il giorno. Il pernottamento nell\\u2019area camper \\u00E8 proposto separatamente.\"},{\"LanguageCode\":\"nl\",\"Value\":\"Parkeren voor bezoekers overdag. Overnachten op de camperplaats valt onder een apart aanbod.\"},{\"LanguageCode\":\"pl\",\"Value\":\"Post\\u00F3j dla odwiedzaj\\u0105cych w ci\\u0105gu dnia. Noclegi w strefie kamper\\u00F3w s\\u0105 odr\\u0119bn\\u0105 ofert\\u0105.\"},{\"LanguageCode\":\"pt\",\"Value\":\"Estacionamento dos visitantes durante o dia. A pernoita na \\u00E1rea de autocaravanas \\u00E9 uma oferta separada.\"}],\"SortOrder\":1}]"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Vulcania gibt das Parken als kostenlos an und bietet auch Stellflächen für Wohnmobile.</p><p>Schulgruppen können Reisebusse ebenfalls kostenlos abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen. Tagesparkplatz und Übernachtungsbereich erfüllen somit unterschiedliche Zwecke.</p>",
+            "newValue": "<h2>Tagsüber bei Vulcania parken</h2><p>Der Parkplatz nimmt tagsüber die Fahrzeuge der Parkgäste auf. Auch Stellflächen für Wohnmobile sind vorhanden.</p><p>Schulgruppen können Reisebusse ebenfalls abstellen. Jenseits der Parkflächen führen ausgewiesene Fußwege in die Besucherbereiche.</p><h2>Ein eigener Bereich für die Nacht</h2><p>Für Wohnmobilübernachtungen besteht ein gesondertes Angebot auf dem dafür eingerichteten Stellplatz nahe dem Eingang. Dieser verfügt über eigene Serviceeinrichtungen.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Vulcania advertises this parking as free and provides spaces for motorhomes as well.</p><p>School groups also have free coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer. Daytime parking and this overnight area therefore serve different purposes.</p>",
+            "newValue": "<h2>Daytime parking at Vulcania</h2><p>The park’s car park accommodates visitors’ vehicles during the day. Spaces are also provided for motorhomes.</p><p>School groups also have coach parking. Beyond the parking areas, visitors use the designated pedestrian paths.</p><h2>A separate overnight area</h2><p>Overnight motorhome stays are handled by the dedicated area near the entrance, with its own services and separate offer.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. Vulcania anuncia este estacionamiento como gratuito y dispone también de plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento gratuito para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado. El aparcamiento diurno y esa área de estancia cumplen, por tanto, funciones diferentes.</p>",
+            "newValue": "<h2>Estacionamiento diurno en Vulcania</h2><p>El aparcamiento del parque recibe los vehículos de los visitantes durante el día. También hay plazas para autocaravanas.</p><p>Los grupos escolares cuentan igualmente con aparcamiento para autocares. Más allá de las zonas de estacionamiento, los visitantes utilizan los caminos reservados a peatones.</p><h2>Un área distinta para la noche</h2><p>La pernoctación en autocaravana corresponde al área específica cercana a la entrada, dotada de servicios y ofrecida por separado.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Vulcania annonce ce stationnement comme gratuit et prévoit notamment des places pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement gratuit pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément. Le parking de jour et cette aire de séjour ont donc des usages différents.</p>",
+            "newValue": "<h2>Le stationnement de jour à Vulcania</h2><p>Le parking du parc accueille les véhicules des visiteurs pendant la journée. Des places sont notamment prévues pour les camping-cars.</p><p>Les groupes scolaires disposent également d’un stationnement pour les autocars. Au-delà des aires de stationnement, la circulation des visiteurs rejoint les cheminements réservés aux piétons.</p><h2>Une aire distincte pour la nuit</h2><p>Le séjour nocturne en camping-car relève de l’aire dédiée près de l’entrée, équipée de services et proposée séparément.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Vulcania indica la sosta come gratuita e prevede anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio gratuito per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente. Il parcheggio diurno e quest’area di soggiorno hanno quindi funzioni differenti.</p>",
+            "newValue": "<h2>La sosta diurna a Vulcania</h2><p>Il parcheggio del parco accoglie i veicoli dei visitatori durante la giornata. Sono previsti anche posti per i camper.</p><p>I gruppi scolastici dispongono inoltre di parcheggio per gli autobus. Oltre le aree di sosta, i visitatori proseguono lungo i percorsi riservati ai pedoni.</p><h2>Un’area separata per la notte</h2><p>Il pernottamento in camper riguarda l’area dedicata vicino all’ingresso, dotata di servizi e proposta separatamente.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Vulcania vermeldt dat dit parkeren gratis is en voorziet ook in plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over gratis parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod. De dagparkeerplaats en dit verblijfsterrein hebben dus verschillende functies.</p>",
+            "newValue": "<h2>Overdag parkeren bij Vulcania</h2><p>De parkeerplaats biedt overdag ruimte aan voertuigen van parkbezoekers. Er zijn ook plaatsen voor campers.</p><p>Schoolgroepen beschikken eveneens over parkeergelegenheid voor touringcars. Buiten de parkeerterreinen gebruiken bezoekers de daarvoor bestemde voetpaden.</p><h2>Een aparte plek voor de nacht</h2><p>Overnachten met een camper valt onder het afzonderlijke terrein bij de ingang, met eigen voorzieningen en een apart aanbod.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Vulcania podaje, że postój jest bezpłatny, i zapewnia również miejsca dla kamperów.</p><p>Grupy szkolne mają także bezpłatny parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie. Parking dzienny i teren noclegowy pełnią zatem różne funkcje.</p>",
+            "newValue": "<h2>Parkowanie w ciągu dnia w Vulcanii</h2><p>Parking przyjmuje pojazdy odwiedzających park w ciągu dnia. Dostępne są również miejsca dla kamperów.</p><p>Grupy szkolne mają także parking dla autokarów. Poza strefami postoju goście poruszają się wyznaczonymi drogami dla pieszych.</p><h2>Osobna strefa na noc</h2><p>Nocleg w kamperze odbywa się w przeznaczonej do tego strefie blisko wejścia, wyposażonej w punkty obsługi i oferowanej oddzielnie.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Vulcania anuncia este estacionamento como gratuito e disponibiliza também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento gratuito para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente. O estacionamento diurno e essa área de estadia têm, por isso, funções diferentes.</p>",
+            "newValue": "<h2>Estacionamento diurno em Vulcania</h2><p>O estacionamento do parque recebe os veículos dos visitantes durante o dia. Existem também lugares para autocaravanas.</p><p>Os grupos escolares dispõem igualmente de estacionamento para autocarros. Para lá das zonas de estacionamento, os visitantes utilizam os caminhos reservados a peões.</p><h2>Uma área distinta para a noite</h2><p>A pernoita em autocaravana pertence à área dedicada perto da entrada, equipada com serviços e disponibilizada separadamente.</p>"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "descriptions.de",
+            "oldValue": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem tagsüber kostenlosen Parkplatz des Parks getrennt.</p>",
+            "newValue": "<h2>Ein begrünter Stellplatz nahe dem Eingang</h2><p>Vulcanias Wohnmobilstellplatz liegt in einem eingefriedeten, landschaftlich gestalteten Bereich nahe dem Parkeingang. Die Stellflächen sind in die Umgebung der Chaîne des Puys eingebettet. Tafeln des regionalen Vulkan-Naturparks stellen Wandermöglichkeiten in der Gegend vor.</p><p>Eine Servicestation bietet Wasser und Entsorgung; ein Teil der Plätze verfügt über Stromanschlüsse. Das Gelände ist für Wohnmobile vorgesehen, Wohnwagen werden nicht angenommen.</p><h2>Übernachten am Park</h2><p>Hier sind Übernachtungen möglich; für Reservierungen verweist Vulcania auf CampingCar Park. Dieser Bereich ist von den Wohnmobilplätzen auf dem Tagesparkplatz des Parks getrennt.</p>"
+          },
+          {
+            "field": "descriptions.en",
+            "oldValue": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available free of charge in the park’s daytime car park.</p>",
+            "newValue": "<h2>A landscaped area near the entrance</h2><p>Vulcania’s motorhome area occupies an enclosed, landscaped space close to the park entrance. Its pitches sit within the Chaîne des Puys setting; panels supplied by the regional volcanoes natural park introduce walking opportunities in the surrounding area.</p><p>A service point provides water and waste disposal, while some pitches have electricity connections. The area welcomes motorhomes but does not accept caravans.</p><h2>Overnight parking</h2><p>This area accommodates overnight stays, with Vulcania directing reservations to CampingCar Park. It is separate from the motorhome spaces available in the park’s daytime car park.</p>"
+          },
+          {
+            "field": "descriptions.es",
+            "oldValue": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles gratuitamente durante el día en el aparcamiento del parque.</p>",
+            "newValue": "<h2>Un área arbolada cerca de la entrada</h2><p>El área de autocaravanas de Vulcania ocupa un espacio cerrado y ajardinado cerca de la entrada del parque. Las parcelas se integran en el entorno de la Chaîne des Puys; paneles del parque natural regional de los volcanes de Auvernia presentan las posibilidades de senderismo del territorio.</p><p>Un punto de servicio reúne el suministro de agua y el vaciado, mientras algunas parcelas cuentan con conexión eléctrica. El área recibe autocaravanas, pero no admite caravanas.</p><h2>Estacionamiento nocturno</h2><p>Esta área permite pernoctar y Vulcania remite las reservas a CampingCar Park. Es distinta de las plazas para autocaravanas disponibles durante el día en el aparcamiento del parque.</p>"
+          },
+          {
+            "field": "descriptions.fr",
+            "oldValue": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles gratuitement dans le parking du parc pendant la journée.</p>",
+            "newValue": "<h2>Une aire arborée près de l’entrée</h2><p>L’aire de camping-cars de Vulcania occupe un espace clos et paysager à proximité de l’entrée du parc. Les emplacements s’inscrivent dans le cadre de la Chaîne des Puys ; des panneaux fournis par le Parc naturel régional des Volcans d’Auvergne présentent les possibilités de randonnée du territoire.</p><p>Un point de service rassemble la distribution d’eau et la vidange, tandis qu’une partie des emplacements dispose d’un raccordement électrique. Le site accueille les camping-cars, mais n’accepte pas les caravanes.</p><h2>Le stationnement pour la nuit</h2><p>Cette aire propose le séjour nocturne, avec une réservation renvoyée par Vulcania vers CampingCar Park. Elle se distingue des places pour camping-cars disponibles dans le parking du parc pendant la journée.</p>"
+          },
+          {
+            "field": "descriptions.it",
+            "oldValue": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili gratuitamente durante il giorno nel parcheggio del parco.</p>",
+            "newValue": "<h2>Un’area alberata vicino all’ingresso</h2><p>L’area camper di Vulcania occupa uno spazio recintato e sistemato a verde vicino all’ingresso del parco. Le piazzole si inseriscono nel contesto della Chaîne des Puys; pannelli del parco naturale regionale dei vulcani d’Alvernia presentano le possibilità escursionistiche del territorio.</p><p>Un punto di servizio riunisce approvvigionamento idrico e scarico, mentre alcune piazzole dispongono di allacciamento elettrico. L’area accoglie i camper, ma non ammette le roulotte.</p><h2>La sosta notturna</h2><p>L’area consente il pernottamento, con prenotazioni indirizzate da Vulcania a CampingCar Park. È distinta dai posti per camper disponibili durante il giorno nel parcheggio del parco.</p>"
+          },
+          {
+            "field": "descriptions.nl",
+            "oldValue": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag gratis beschikbaar zijn.</p>",
+            "newValue": "<h2>Een groene camperplaats bij de ingang</h2><p>De camperplaats van Vulcania ligt op een afgesloten, landschappelijk ingericht terrein dicht bij de parkingang. De plaatsen liggen in de omgeving van de Chaîne des Puys. Informatieborden van het regionale vulkanenpark tonen wandelmogelijkheden in de streek.</p><p>Een servicepunt biedt water en afvalwaterafvoer; een deel van de plaatsen heeft een elektriciteitsaansluiting. Het terrein ontvangt campers, maar accepteert geen caravans.</p><h2>Overnachten bij het park</h2><p>Dit terrein biedt overnachtingen, waarvoor Vulcania doorverwijst naar CampingCar Park. Het staat los van de camperplaatsen op de gewone parkeerplaats, die overdag beschikbaar zijn.</p>"
+          },
+          {
+            "field": "descriptions.pl",
+            "oldValue": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych bezpłatnie w ciągu dnia na zwykłym parkingu parku.</p>",
+            "newValue": "<h2>Zielony teren przy wejściu</h2><p>Strefa kamperów Vulcanii zajmuje ogrodzony, zagospodarowany zielenią teren blisko wejścia do parku. Miejsca postojowe wpisują się w otoczenie Chaîne des Puys. Tablice regionalnego parku przyrodniczego wulkanów Owernii przedstawiają możliwości pieszych wędrówek po okolicy.</p><p>Punkt obsługi zapewnia wodę i opróżnianie zbiorników, a część stanowisk ma przyłącza elektryczne. Strefa przyjmuje kampery, lecz nie przyczepy kempingowe.</p><h2>Postój na noc</h2><p>Możliwy jest tu nocleg, którego rezerwację Vulcania kieruje do CampingCar Park. To odrębny teren od miejsc dla kamperów dostępnych w ciągu dnia na zwykłym parkingu parku.</p>"
+          },
+          {
+            "field": "descriptions.pt",
+            "oldValue": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis gratuitamente durante o dia no estacionamento do parque.</p>",
+            "newValue": "<h2>Uma área arborizada perto da entrada</h2><p>A área de autocaravanas de Vulcania ocupa um espaço fechado e ajardinado junto à entrada do parque. Os lugares inserem-se na paisagem da Chaîne des Puys; painéis do parque natural regional dos vulcões de Auvérnia apresentam possibilidades de caminhadas no território.</p><p>Um ponto de serviço reúne abastecimento de água e descarga, enquanto alguns lugares dispõem de ligação elétrica. A área recebe autocaravanas, mas não aceita caravanas.</p><h2>Estacionamento noturno</h2><p>Este espaço permite pernoitar, com reservas encaminhadas por Vulcania para CampingCar Park. Distingue-se dos lugares para autocaravanas disponíveis durante o dia no estacionamento do parque.</p>"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "summary": "Vulcania : reprise audit,16notices stationnement corrigées dans8langues; gratuité du parking de jour intégrée dans pricing EUR0 au guichet avec8conditions distinctes du séjour nocturne. Billets/pass2027 nonannoncés,aucune grille2026 présentée actuelle. Toutes données privées, audit en cours.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false,
+  "sourceNotes": "Règlement officiel actuel article13 stationnement gratuit; page officielle airecampingcars confirme distinction jour/nuit. Aucun billet/pass2027 annoncé; aucune transposition des tarifs2026 expirés.16notices amendées et16libellés/conditions personnellement relus. Deux services courts conservés après recherche réelle, sans remplissage."
+}

@@ -1,0 +1,3084 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "id": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+          "key": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+          "name": "100% volcans",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+          "key": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+          "name": "Abyss Explorer",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+          "key": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+          "name": "Accueil",
+          "category": "Service",
+          "type": "Information",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+          "key": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+          "name": "Aire de camping-cars",
+          "category": "Service",
+          "type": "Service",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+          "key": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+          "name": "Astrodôme – Planétarium",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+          "key": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+          "name": "Ateliers des volcans",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+          "key": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+          "name": "Ateliers du Planétarium",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ce88d195-4890-43e4-8551-8f26d460760b",
+          "key": "ce88d195-4890-43e4-8551-8f26d460760b",
+          "name": "Ballon des Puys",
+          "category": "Attraction",
+          "type": "ObservationRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+          "key": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+          "name": "Carnets de voyage",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+          "key": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+          "name": "CinéMax",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "bce899da-5c92-4077-bf35-97a6e004db61",
+          "key": "bce899da-5c92-4077-bf35-97a6e004db61",
+          "name": "Cité des enfants",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+          "key": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+          "name": "Contes et légendes volcaniques",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+          "key": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+          "name": "Corner Espace du Planétarium",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+          "key": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+          "name": "Cratère",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+          "key": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+          "name": "C’est pas sorcier les volcans !",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+          "key": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+          "name": "Danse de Pitoufeu",
+          "category": "Show",
+          "type": "MeetAndGreet",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+          "key": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+          "name": "Dragon Ride",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+          "key": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+          "name": "Draisiennes de Tambora",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+          "key": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+          "name": "Expédition Hawaï",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+          "key": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+          "name": "Expériences, c’est show !",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "bec6f046-3be4-4245-8681-1650e706a6e7",
+          "key": "bec6f046-3be4-4245-8681-1650e706a6e7",
+          "name": "Forêt des dragons",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "162784ea-824c-4a01-93de-81d0de53ae4c",
+          "key": "162784ea-824c-4a01-93de-81d0de53ae4c",
+          "name": "Galerie Pitoufeu",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+          "key": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+          "name": "Geyser",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "26f977fb-834f-41df-9705-60846988a756",
+          "key": "26f977fb-834f-41df-9705-60846988a756",
+          "name": "La Cafétéria des Puys",
+          "category": "Restaurant",
+          "type": "Restaurant",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "f3f72017-45be-4f59-9e45-424d951d29cf",
+          "key": "f3f72017-45be-4f59-9e45-424d951d29cf",
+          "name": "La Piste de Vulcain",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+          "key": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+          "name": "Le Comptoir du cratère",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+          "key": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+          "name": "Le cratère s’anime !",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+          "key": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+          "name": "Le Kiosque Namazu",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+          "key": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+          "name": "Le Magma café",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "1f3ce41f-f763-4389-b823-eb4a13816111",
+          "key": "1f3ce41f-f763-4389-b823-eb4a13816111",
+          "name": "Le Snack du Planétarium",
+          "category": "Restaurant",
+          "type": "Snack",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+          "key": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+          "name": "Les maquettes géantes",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "77e77316-bdd5-4584-b437-068962f32241",
+          "key": "77e77316-bdd5-4584-b437-068962f32241",
+          "name": "Machine Terre",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+          "key": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+          "name": "Magma Explorer III",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+          "key": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+          "name": "Maison Pitoufeu",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+          "key": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+          "name": "Maurice et Katia Krafft, histoires de volcanologues",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "key": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+          "name": "Namazu",
+          "category": "Attraction",
+          "type": "RollerCoaster",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+          "key": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+          "name": "Parking",
+          "category": "Service",
+          "type": "Parking",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "52885720-2ed0-4d51-b940-33e955b2df3f",
+          "key": "52885720-2ed0-4d51-b940-33e955b2df3f",
+          "name": "Planète Auvergne",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+          "key": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+          "name": "Planète dévoilée",
+          "category": "Show",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+          "key": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+          "name": "Planète Sciences",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+          "key": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+          "name": "Planète Vulcania",
+          "category": "Shop",
+          "type": "Shop",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+          "key": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+          "name": "Premier envol",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "ba34b618-1876-4355-b842-2d10f6975525",
+          "key": "ba34b618-1876-4355-b842-2d10f6975525",
+          "name": "Primordia, la naissance du monde",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "6c8ed372-384b-4dab-8395-696f62e48db8",
+          "key": "6c8ed372-384b-4dab-8395-696f62e48db8",
+          "name": "Rapaces en vol libre",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+          "key": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+          "name": "Rivière des minéraux",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+          "key": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+          "name": "Réveil des géants d’Auvergne",
+          "category": "Attraction",
+          "type": "Cinema",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+          "key": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+          "name": "Sentiers de découverte",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+          "key": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+          "name": "Serre",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+          "key": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+          "name": "Séismes, quand la Terre tremble",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "af286486-47e8-4fe4-bdd1-1031453b409c",
+          "key": "af286486-47e8-4fe4-bdd1-1031453b409c",
+          "name": "Terre de volcans : l’immersion volcanique",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+          "key": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+          "name": "Terre en colère",
+          "category": "Attraction",
+          "type": "InteractiveExperience",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "69045c46-360e-4fed-890b-f4c64b39c415",
+          "key": "69045c46-360e-4fed-890b-f4c64b39c415",
+          "name": "Volcans d’Auvergne",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+          "key": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+          "name": "Volcans sacrés",
+          "category": "Attraction",
+          "type": "DarkRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "73863436-ae90-414d-8ae8-0e4973a3581c",
+          "key": "73863436-ae90-414d-8ae8-0e4973a3581c",
+          "name": "Vulcania Story",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "id": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+          "key": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+          "name": "Yapadrisk et la flamme des volcans",
+          "category": "Show",
+          "type": "Show",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        }
+      ],
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "officialMaps": [
+          {
+            "key": "vulcania-map-2026-fr",
+            "id": "vulcania-map-2026-fr",
+            "year": 2026,
+            "format": "Image",
+            "documentUrl": null,
+            "storageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2026-fr.7e6718057a064b49baff7588e2bacb5a.jpg",
+            "originalFileName": "map-2026.jpg",
+            "contentType": "image/jpeg",
+            "sizeInBytes": 289392,
+            "previewImageUrl": null,
+            "sourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2026/04/plan-du-parc-2026-scaled.jpg",
+            "languageCode": "fr",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan de Vulcania — 2026"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania map — 2026"
+              },
+              {
+                "languageCode": "de",
+                "value": "Plan von Vulcania — 2026"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Plattegrond van Vulcania — 2026"
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa di Vulcania — 2026"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano de Vulcania — 2026"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Mapa Vulcanii — 2026"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa do Vulcania — 2026"
+              }
+            ],
+            "alternativeTexts": [
+              {
+                "languageCode": "fr",
+                "value": "Plan illustré de Vulcania : le cône central, Namazu et l’Astrodôme, avec les attractions et services répartis sur les niveaux A à D."
+              },
+              {
+                "languageCode": "en",
+                "value": "Illustrated Vulcania map showing the central cone, Namazu and the Astrodôme, with attractions and services across levels A to D."
+              },
+              {
+                "languageCode": "de",
+                "value": "Illustrierter Plan von Vulcania mit dem zentralen Kegel, Namazu und dem Astrodôme sowie Attraktionen und Serviceangeboten auf den Ebenen A bis D."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Geïllustreerde plattegrond van Vulcania met de centrale kegel, Namazu en de Astrodôme, en attracties en voorzieningen op de niveaus A tot en met D."
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa illustrata di Vulcania con il cono centrale, Namazu e l’Astrodôme, e le attrazioni e i servizi distribuiti sui livelli da A a D."
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano ilustrado de Vulcania con el cono central, Namazu y el Astrodôme, y las atracciones y servicios distribuidos entre los niveles A y D."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Ilustrowana mapa Vulcanii z centralnym stożkiem, Namazu i Astrodôme oraz atrakcjami i usługami na poziomach od A do D."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa ilustrado do Vulcania com o cone central, Namazu e o Astrodôme, e as atrações e os serviços distribuídos pelos níveis A a D."
+              }
+            ],
+            "isVisible": true,
+            "lastVerifiedAtUtc": "2026-11-15T17:18:10.89Z"
+          },
+          {
+            "key": "vulcania-map-2024-fr",
+            "id": "vulcania-map-2024-fr",
+            "year": 2024,
+            "format": "Pdf",
+            "documentUrl": null,
+            "storageKey": "official-maps/fb62b6ae-6802-4a92-9d54-6315bb15d1da/vulcania-map-2024-fr.0aaa5fd361b544e8b8b1645e0570b322.pdf",
+            "originalFileName": "map-2024.pdf",
+            "contentType": "application/pdf",
+            "sizeInBytes": 420693,
+            "previewImageUrl": null,
+            "sourcePageUrl": "https://www.vulcania.com/wp-content/uploads/2024/05/2024-Vulcania-Plan-de-visite.pdf",
+            "languageCode": "fr",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Plan de Vulcania — 2024"
+              },
+              {
+                "languageCode": "en",
+                "value": "Vulcania map — 2024"
+              },
+              {
+                "languageCode": "de",
+                "value": "Plan von Vulcania — 2024"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Plattegrond van Vulcania — 2024"
+              },
+              {
+                "languageCode": "it",
+                "value": "Mappa di Vulcania — 2024"
+              },
+              {
+                "languageCode": "es",
+                "value": "Plano de Vulcania — 2024"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Mapa Vulcanii — 2024"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Mapa do Vulcania — 2024"
+              }
+            ],
+            "alternativeTexts": [],
+            "isVisible": true,
+            "lastVerifiedAtUtc": "2026-11-15T17:18:10.444Z"
+          }
+        ]
+      },
+      "references": {
+        "manufacturers": [
+          {
+            "id": "c31e7068-44af-404f-b60b-67469d77eca3",
+            "key": "c31e7068-44af-404f-b60b-67469d77eca3",
+            "name": "Aerophile",
+            "isVisible": true,
+            "adminReviewStatus": "Validated"
+          }
+        ],
+        "operators": [
+          {
+            "id": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+            "key": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+            "name": "SEM Volcans",
+            "adminReviewStatus": "Validated"
+          }
+        ]
+      },
+      "metadata": {
+        "source": "Conversation France — publication du périmètre audité, dérogation propriétaire sur la note, horaires et dates inconnus; inventaire global partial."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "1c8d0f67-9834-485d-b9a7-7fd9d0309b90",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:33:10.4942979Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 59,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "entityKey": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "displayName": "SEM Volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "c31e7068-44af-404f-b60b-67469d77eca3",
+        "entityKey": "c31e7068-44af-404f-b60b-67469d77eca3",
+        "displayName": "Aerophile",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2026-fr",
+        "entityKey": "vulcania-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Image)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2024-fr",
+        "entityKey": "vulcania-map-2024-fr",
+        "displayName": "Carte officielle 2024 (fr, Pdf)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "entityKey": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "displayName": "100% volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+        "entityKey": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+        "displayName": "Abyss Explorer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "entityKey": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "displayName": "Accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "entityKey": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "displayName": "Ateliers des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "entityKey": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "displayName": "Ateliers du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "displayName": "Ballon des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "entityKey": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "displayName": "Carnets de voyage",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "entityKey": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "displayName": "CinéMax",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "entityKey": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "displayName": "Cité des enfants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "entityKey": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "displayName": "Contes et légendes volcaniques",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+        "entityKey": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+        "displayName": "Corner Espace du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "entityKey": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "displayName": "Cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "entityKey": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "displayName": "Danse de Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "entityKey": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "displayName": "Dragon Ride",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+        "entityKey": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+        "displayName": "Draisiennes de Tambora",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "entityKey": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "displayName": "Expédition Hawaï",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "entityKey": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "displayName": "Expériences, c’est show !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bec6f046-3be4-4245-8681-1650e706a6e7",
+        "entityKey": "bec6f046-3be4-4245-8681-1650e706a6e7",
+        "displayName": "Forêt des dragons",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "162784ea-824c-4a01-93de-81d0de53ae4c",
+        "entityKey": "162784ea-824c-4a01-93de-81d0de53ae4c",
+        "displayName": "Galerie Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "entityKey": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "displayName": "Geyser",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "26f977fb-834f-41df-9705-60846988a756",
+        "entityKey": "26f977fb-834f-41df-9705-60846988a756",
+        "displayName": "La Cafétéria des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "entityKey": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "displayName": "La Piste de Vulcain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "entityKey": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "displayName": "Le Comptoir du cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "entityKey": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "displayName": "Le cratère s’anime !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "entityKey": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "displayName": "Le Kiosque Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "entityKey": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "displayName": "Le Magma café",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "entityKey": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "displayName": "Le Snack du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "entityKey": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "displayName": "Les maquettes géantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e77316-bdd5-4584-b437-068962f32241",
+        "entityKey": "77e77316-bdd5-4584-b437-068962f32241",
+        "displayName": "Machine Terre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+        "entityKey": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+        "displayName": "Magma Explorer III",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "entityKey": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "displayName": "Maison Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "entityKey": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "displayName": "Maurice et Katia Krafft, histoires de volcanologues",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "entityKey": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "displayName": "Planète Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "entityKey": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "displayName": "Planète dévoilée",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "entityKey": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "displayName": "Planète Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "entityKey": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "displayName": "Planète Vulcania",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "entityKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "displayName": "Premier envol",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+        "entityKey": "ba34b618-1876-4355-b842-2d10f6975525",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "entityKey": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "displayName": "Rapaces en vol libre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "entityKey": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "displayName": "Rivière des minéraux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "entityKey": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "displayName": "Réveil des géants d’Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "entityKey": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "displayName": "Sentiers de découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "entityKey": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "displayName": "Serre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "entityKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "displayName": "Séismes, quand la Terre tremble",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "displayName": "Terre en colère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "69045c46-360e-4fed-890b-f4c64b39c415",
+        "entityKey": "69045c46-360e-4fed-890b-f4c64b39c415",
+        "displayName": "Volcans d’Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "entityKey": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "displayName": "Volcans sacrés",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "entityKey": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "displayName": "Vulcania Story",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "4d8e0058-3006-40ca-94d8-35d2baf95801",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:33:20.9852592Z",
+    "appliedAtUtc": "2026-11-15T20:33:20.9852597Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 59,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "ParkOperator",
+        "entityId": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "entityKey": "37e01605-a5f2-4ced-bcb5-b16fb752a4e3",
+        "displayName": "SEM Volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "AttractionManufacturer",
+        "entityId": "c31e7068-44af-404f-b60b-67469d77eca3",
+        "entityKey": "c31e7068-44af-404f-b60b-67469d77eca3",
+        "displayName": "Aerophile",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2026-fr",
+        "entityKey": "vulcania-map-2026-fr",
+        "displayName": "Carte officielle 2026 (fr, Image)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkOfficialMap",
+        "entityId": "vulcania-map-2024-fr",
+        "entityKey": "vulcania-map-2024-fr",
+        "displayName": "Carte officielle 2024 (fr, Pdf)",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "entityKey": "4eeb9ce7-76a9-49f9-8585-084028fcfce1",
+        "displayName": "100% volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+        "entityKey": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+        "displayName": "Abyss Explorer",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "entityKey": "58f66a77-0fb9-4d03-87c5-d0e7ad92353b",
+        "displayName": "Accueil",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "entityKey": "77b2bbbd-c7e8-4be8-a961-7ef71b8cd22d",
+        "displayName": "Aire de camping-cars",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "entityKey": "12128369-e7ee-4498-a97a-1bfa2a470b10",
+        "displayName": "Astrodôme – Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "entityKey": "d1c3a8d1-3423-490d-8418-5f42fd0e1baa",
+        "displayName": "Ateliers des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "entityKey": "b825cd29-76ac-4a8a-a51d-d723d1086f91",
+        "displayName": "Ateliers du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "entityKey": "ce88d195-4890-43e4-8551-8f26d460760b",
+        "displayName": "Ballon des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "entityKey": "f5dd4987-a43b-4bd2-b575-e0f87fbcb1fe",
+        "displayName": "Carnets de voyage",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "entityKey": "743b40d7-8bd9-4845-ac35-1b18d6f73e82",
+        "displayName": "CinéMax",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "entityKey": "bce899da-5c92-4077-bf35-97a6e004db61",
+        "displayName": "Cité des enfants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "entityKey": "0799945b-d574-4ce7-89ff-8541d2fbdcd3",
+        "displayName": "Contes et légendes volcaniques",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+        "entityKey": "be3b7d26-6691-4adc-b46b-b082e8cd86d3",
+        "displayName": "Corner Espace du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "entityKey": "554b6bd4-3a78-43c7-8cfc-a5d6539cde94",
+        "displayName": "Cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "entityKey": "52a14370-17ac-48e8-bfa6-aacdd324804e",
+        "displayName": "C’est pas sorcier les volcans !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "entityKey": "ddcfa7db-b249-4238-87b0-acb5cff83717",
+        "displayName": "Danse de Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "entityKey": "04eb4b3c-6de2-42f0-8e7e-3fcb89deed2d",
+        "displayName": "Dragon Ride",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+        "entityKey": "41eeed22-c7c7-416a-9123-61feb691bcc4",
+        "displayName": "Draisiennes de Tambora",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "entityKey": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+        "displayName": "Expédition Hawaï",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "entityKey": "87e798b4-9f08-4ecb-b43d-d22c0dd67a4d",
+        "displayName": "Expériences, c’est show !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bec6f046-3be4-4245-8681-1650e706a6e7",
+        "entityKey": "bec6f046-3be4-4245-8681-1650e706a6e7",
+        "displayName": "Forêt des dragons",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "162784ea-824c-4a01-93de-81d0de53ae4c",
+        "entityKey": "162784ea-824c-4a01-93de-81d0de53ae4c",
+        "displayName": "Galerie Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "entityKey": "4fbdddac-0414-4692-8d49-3470d0ea0bbd",
+        "displayName": "Geyser",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "26f977fb-834f-41df-9705-60846988a756",
+        "entityKey": "26f977fb-834f-41df-9705-60846988a756",
+        "displayName": "La Cafétéria des Puys",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "entityKey": "f3f72017-45be-4f59-9e45-424d951d29cf",
+        "displayName": "La Piste de Vulcain",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "entityKey": "d9127878-f927-4d9f-86d8-66bfce47d8ab",
+        "displayName": "Le Comptoir du cratère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "entityKey": "c3c7f895-f665-4eac-aaed-48bad53bce03",
+        "displayName": "Le cratère s’anime !",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "entityKey": "82d11591-adbe-4427-8ce5-bb0d2d238545",
+        "displayName": "Le Kiosque Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "entityKey": "9e3735ff-9cb8-4298-a3f4-80d74009a486",
+        "displayName": "Le Magma café",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "entityKey": "1f3ce41f-f763-4389-b823-eb4a13816111",
+        "displayName": "Le Snack du Planétarium",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "entityKey": "bc6f78a1-c2ff-4c3c-99fe-886b4bbe80bd",
+        "displayName": "Les maquettes géantes",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "77e77316-bdd5-4584-b437-068962f32241",
+        "entityKey": "77e77316-bdd5-4584-b437-068962f32241",
+        "displayName": "Machine Terre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+        "entityKey": "a79eadd4-1aa7-44c9-8b5b-70cc7db55030",
+        "displayName": "Magma Explorer III",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "entityKey": "00af79dd-c205-41f0-b789-ef489f8b70f7",
+        "displayName": "Maison Pitoufeu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "entityKey": "65ccb63e-dc6d-4c9f-84fd-b09cd340a851",
+        "displayName": "Maurice et Katia Krafft, histoires de volcanologues",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "entityKey": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+        "displayName": "Namazu",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "entityKey": "ee73fc70-cb57-4e70-9e82-09b6bd3eb5b2",
+        "displayName": "Parking",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "entityKey": "52885720-2ed0-4d51-b940-33e955b2df3f",
+        "displayName": "Planète Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "entityKey": "9fe653b3-fd97-4d4c-ac43-d06466236fa3",
+        "displayName": "Planète dévoilée",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "entityKey": "9325f395-5987-45ec-bd6e-e30bbcab9f6c",
+        "displayName": "Planète Sciences",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "entityKey": "9235b0e6-70a4-4656-b3fe-a91f22e73ab0",
+        "displayName": "Planète Vulcania",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "entityKey": "d3dbd03d-4665-429e-af89-9738bc1ae24f",
+        "displayName": "Premier envol",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "ba34b618-1876-4355-b842-2d10f6975525",
+        "entityKey": "ba34b618-1876-4355-b842-2d10f6975525",
+        "displayName": "Primordia, la naissance du monde",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "entityKey": "6c8ed372-384b-4dab-8395-696f62e48db8",
+        "displayName": "Rapaces en vol libre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "entityKey": "fa38fb69-eaa8-4266-8375-2bb024480e5a",
+        "displayName": "Rivière des minéraux",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "entityKey": "84fe09e2-0e91-42f6-b53a-716264aaf638",
+        "displayName": "Réveil des géants d’Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "entityKey": "e86df04e-1840-431f-bb7b-52c29850ef9d",
+        "displayName": "Sentiers de découverte",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "entityKey": "7c92e0eb-4f37-4706-a3ba-9c58b40baff9",
+        "displayName": "Serre",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "entityKey": "06bb9bc9-cca5-4345-8376-6567c6ea2e4a",
+        "displayName": "Séismes, quand la Terre tremble",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "entityKey": "af286486-47e8-4fe4-bdd1-1031453b409c",
+        "displayName": "Terre de volcans : l’immersion volcanique",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "entityKey": "f3c31103-3f0b-4aa8-b064-dc97dd785379",
+        "displayName": "Terre en colère",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "69045c46-360e-4fed-890b-f4c64b39c415",
+        "entityKey": "69045c46-360e-4fed-890b-f4c64b39c415",
+        "displayName": "Volcans d’Auvergne",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "entityKey": "99f10b02-379e-4d38-8f91-bb55d6ddb1c9",
+        "displayName": "Volcans sacrés",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "entityKey": "73863436-ae90-414d-8ae8-0e4973a3581c",
+        "displayName": "Vulcania Story",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "entityKey": "f56ed878-6c20-4b11-a9ad-aa954468dad2",
+        "displayName": "Yapadrisk et la flamme des volcans",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "scopeAudit": "vulcania-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "exportedAtUtc": "2026-11-15T20:31:22.6672616Z",
+    "differences": [],
+    "normalization": "Collection order bystableidentity;null/emptyoptionalfields equivalent;metadata excluded."
+  },
+  "scorePolicy": "france-publication-score-policy-20261115.json",
+  "globalCompletion": false
+}

@@ -1,0 +1,1691 @@
+{
+  "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "entryId": "FR-park-fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+  "outcome": "partial",
+  "document": {
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "name": "Vulcania",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "key": "park",
+        "name": "Vulcania"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "vulcania-item-history-namazu-2021",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+            "itemId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+            "parkItemId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2021,
+            "month": 7,
+            "day": 10,
+            "datePrecision": "Day",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "305cf7c2f2b64a66ab8c8e1efb7efdc7",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Namazu devient la première montagne russe de Vulcania"
+              },
+              {
+                "languageCode": "en",
+                "value": "Namazu becomes Vulcania’s first roller coaster"
+              },
+              {
+                "languageCode": "de",
+                "value": "Namazu wird Vulcanias erste Achterbahn"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Namazu wordt de eerste achtbaan van Vulcania"
+              },
+              {
+                "languageCode": "it",
+                "value": "Namazu diventa la prima montagna russa di Vulcania"
+              },
+              {
+                "languageCode": "es",
+                "value": "Namazu se convierte en la primera montaña rusa de Vulcania"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Namazu zostaje pierwszą kolejką górską Vulcanii"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Namazu torna-se a primeira montanha-russa de Vulcania"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Namazu accueille ses premiers visiteurs le 10 juillet 2021. Cette création d’Intamin introduit la montagne russe dans le parc scientifique, avec une aventure autour d’une équipe de sismologues. Le paysage volcanique extérieur prend part au récit de leur expédition mouvementée."
+              },
+              {
+                "languageCode": "en",
+                "value": "Namazu welcomes its first visitors on 10 July 2021. Intamin’s creation introduces roller coasters to the science park through an adventure centred on a team of seismologists. The outdoor volcanic landscape becomes part of the story of their eventful expedition."
+              },
+              {
+                "languageCode": "de",
+                "value": "Namazu empfängt am 10. Juli 2021 seine ersten Besucher. Die Anlage von Intamin bringt die Achterbahn in den Wissenschaftspark und erzählt ein Abenteuer um ein Team von Seismologen. Die Vulkanlandschaft im Freien wird Teil ihrer ereignisreichen Expedition."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Namazu ontvangt op 10 juli 2021 zijn eerste bezoekers. Met deze creatie brengt Intamin de achtbaan naar het wetenschapspark, in een avontuur rond een team seismologen. Het vulkanische buitenlandschap wordt onderdeel van hun bewogen expeditie."
+              },
+              {
+                "languageCode": "it",
+                "value": "Namazu accoglie i primi visitatori il 10 luglio 2021. La creazione di Intamin introduce la montagna russa nel parco scientifico con un’avventura dedicata a una squadra di sismologi. Il paesaggio vulcanico esterno entra nel racconto della loro movimentata spedizione."
+              },
+              {
+                "languageCode": "es",
+                "value": "Namazu recibe a sus primeros visitantes el 10 de julio de 2021. La creación de Intamin introduce la montaña rusa en el parque científico mediante una aventura centrada en un equipo de sismólogos. El paisaje volcánico exterior forma parte de su expedición llena de sobresaltos."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Namazu przyjmuje pierwszych gości 10 lipca 2021 roku. Projekt Intamin wprowadza kolejkę górską do parku naukowego poprzez przygodę zespołu sejsmologów. Wulkaniczny krajobraz na zewnątrz staje się częścią opowieści o ich pełnej niespodzianek wyprawie."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Namazu recebe os primeiros visitantes a 10 de julho de 2021. A criação da Intamin introduz a montanha-russa no parque científico através de uma aventura centrada numa equipa de sismólogos. A paisagem vulcânica exterior integra o relato da sua atribulada expedição."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Intamin — ouverture de Namazu, 14 juillet 2021",
+                "url": "https://www.intamin.com/2021/07/14/opening-of-namazu/",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-item-history-hawai-2026",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+            "itemId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+            "parkItemId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2026,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "d6206d2553ad4eccbc08f8b6184be024",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Expédition Hawaï emmène Vulcania vers le Kilauea"
+              },
+              {
+                "languageCode": "en",
+                "value": "Expédition Hawaï takes Vulcania towards Kilauea"
+              },
+              {
+                "languageCode": "de",
+                "value": "Expédition Hawaï führt Vulcania zum Kilauea"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Expédition Hawaï brengt Vulcania naar de Kilauea"
+              },
+              {
+                "languageCode": "it",
+                "value": "Expédition Hawaï conduce Vulcania verso il Kilauea"
+              },
+              {
+                "languageCode": "es",
+                "value": "Expédition Hawaï lleva a Vulcania hacia el Kilauea"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Expédition Hawaï zabiera Vulcanię ku Kīlauei"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Expédition Hawaï leva Vulcania até ao Kilauea"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Expédition Hawaï rejoint Vulcania en 2026 et fait l’objet d’une inauguration le 1er juillet. Guidée par la volcanologue Lila, cette aventure explore un volcan hawaïen et ses paysages de lave. Elle renouvelle l’offre immersive du parc autour d’une destination volcanique réelle."
+              },
+              {
+                "languageCode": "en",
+                "value": "Expédition Hawaï joins Vulcania in 2026, with an inauguration held on 1 July. Led by volcanologist Lila, the adventure explores a Hawaiian volcano and its lava landscapes. It renews the park’s immersive offering around a real volcanic destination."
+              },
+              {
+                "languageCode": "de",
+                "value": "Expédition Hawaï ergänzt Vulcania 2026; die Einweihung findet am 1. Juli statt. Unter Führung der Vulkanologin Lila erkundet das Abenteuer einen hawaiianischen Vulkan und seine Lavalandschaften. Eine reale Vulkanregion bildet das Thema des neuen immersiven Angebots."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Expédition Hawaï wordt in 2026 aan Vulcania toegevoegd en op 1 juli feestelijk ingewijd. Onder leiding van vulkanologe Lila verkent het avontuur een Hawaïaanse vulkaan en zijn lavalandschappen. Een echte vulkanische bestemming staat centraal in deze vernieuwing van het meeslepende aanbod."
+              },
+              {
+                "languageCode": "it",
+                "value": "Expédition Hawaï si aggiunge a Vulcania nel 2026 e viene inaugurata il 1º luglio. Guidata dalla vulcanologa Lila, l’avventura esplora un vulcano hawaiano e i suoi paesaggi lavici. Rinnova l’offerta immersiva del parco intorno a una destinazione vulcanica reale."
+              },
+              {
+                "languageCode": "es",
+                "value": "Expédition Hawaï se incorpora a Vulcania en 2026 y se inaugura el 1 de julio. Guiada por la vulcanóloga Lila, la aventura explora un volcán hawaiano y sus paisajes de lava. Renueva la oferta inmersiva del parque en torno a un destino volcánico real."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Expédition Hawaï dołącza do oferty Vulcanii w 2026 roku, a uroczysta inauguracja odbywa się 1 lipca. Przygoda prowadzona przez wulkanolożkę Lilę przybliża hawajski wulkan i krajobrazy lawy. Nowa atrakcja immersyjna opiera się na rzeczywistym regionie wulkanicznym."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Expédition Hawaï junta-se a Vulcania em 2026 e é inaugurada a 1 de julho. Guiada pela vulcanóloga Lila, a aventura explora um vulcão havaiano e as suas paisagens de lava. Renova a oferta imersiva do parque em torno de um destino vulcânico real."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué estival du 1er juillet 2026",
+                "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          },
+          {
+            "key": "vulcania-item-history-abyssreplacement-2026",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+            "itemId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+            "parkItemId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2026,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Replacement",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "2609d09da2864a06aaff9d0e640db0cd",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Abyss Explorer laisse place à Expédition Hawaï"
+              },
+              {
+                "languageCode": "en",
+                "value": "Abyss Explorer gives way to Expédition Hawaï"
+              },
+              {
+                "languageCode": "de",
+                "value": "Abyss Explorer weicht Expédition Hawaï"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Abyss Explorer maakt plaats voor Expédition Hawaï"
+              },
+              {
+                "languageCode": "it",
+                "value": "Abyss Explorer lascia spazio a Expédition Hawaï"
+              },
+              {
+                "languageCode": "es",
+                "value": "Abyss Explorer deja paso a Expédition Hawaï"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Abyss Explorer ustępuje miejsca Expédition Hawaï"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Abyss Explorer dá lugar a Expédition Hawaï"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "La transformation présentée pour la saison 2026 remplace Abyss Explorer par Expédition Hawaï. Au voyage dans les profondeurs océaniques succède un récit consacré aux volcans hawaïens."
+              },
+              {
+                "languageCode": "en",
+                "value": "The transformation presented for the 2026 season replaces Abyss Explorer with Expédition Hawaï. A story about Hawaiian volcanoes succeeds the journey into the ocean depths."
+              },
+              {
+                "languageCode": "de",
+                "value": "Die für die Saison 2026 vorgestellte Umgestaltung ersetzt Abyss Explorer durch Expédition Hawaï. Auf die Reise in die Tiefen des Ozeans folgt eine Geschichte über hawaiianische Vulkane."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De voor het seizoen 2026 gepresenteerde verandering vervangt Abyss Explorer door Expédition Hawaï. Een verhaal over Hawaïaanse vulkanen volgt de reis naar de oceaandiepten op."
+              },
+              {
+                "languageCode": "it",
+                "value": "La trasformazione presentata per la stagione 2026 sostituisce Abyss Explorer con Expédition Hawaï. Al viaggio nelle profondità oceaniche subentra un racconto dedicato ai vulcani hawaiani."
+              },
+              {
+                "languageCode": "es",
+                "value": "La transformación presentada para la temporada 2026 sustituye Abyss Explorer por Expédition Hawaï. Un relato sobre los volcanes hawaianos sucede al viaje a las profundidades oceánicas."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Przebudowa przedstawiona na sezon 2026 zastępuje Abyss Explorer atrakcją Expédition Hawaï. Opowieść o hawajskich wulkanach zajmuje miejsce podróży w głębiny oceanu."
+              },
+              {
+                "languageCode": "pt",
+                "value": "A transformação apresentada para a temporada de 2026 substitui Abyss Explorer por Expédition Hawaï. Uma narrativa sobre os vulcões havaianos sucede à viagem às profundezas oceânicas."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — livret public 2026, page 2",
+                "url": "https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Vulcania — communiqué estival du 1er juillet 2026",
+                "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "relatedParkItemIds": [
+              "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+            ],
+            "previousName": "Abyss Explorer",
+            "newName": "Expédition Hawaï"
+          },
+          {
+            "key": "vulcania-item-history-primordia-2026",
+            "entityType": "ParkItem",
+            "owner": "parkItem",
+            "ownerId": "ba34b618-1876-4355-b842-2d10f6975525",
+            "itemId": "ba34b618-1876-4355-b842-2d10f6975525",
+            "parkItemId": "ba34b618-1876-4355-b842-2d10f6975525",
+            "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+            "year": 2026,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "Opening",
+            "isVisible": false,
+            "isMajor": true,
+            "mainImageId": "6c530a3938974ba9bab3b7b7abc7d155",
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Primordia raconte la naissance du monde pendant les nocturnes"
+              },
+              {
+                "languageCode": "en",
+                "value": "Primordia tells the story of the world’s birth after dark"
+              },
+              {
+                "languageCode": "de",
+                "value": "Primordia erzählt abends von der Entstehung der Welt"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Primordia verbeeldt het ontstaan van de wereld tijdens de avondopeningen"
+              },
+              {
+                "languageCode": "it",
+                "value": "Primordia racconta la nascita del mondo nelle serate estive"
+              },
+              {
+                "languageCode": "es",
+                "value": "Primordia cuenta el nacimiento del mundo en las noches de verano"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Primordia opowiada o narodzinach świata podczas letnich wieczorów"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Primordia conta o nascimento do mundo nas noites de verão"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Primordia, la naissance du monde rejoint les Soirées estivales de 2026. Musique, lumières et pyrotechnie donnent au Cône, à la Serre et à la Vallée le rôle de décor d’un récit des origines. Le paysage architectural du parc devient la scène de ce nouveau final nocturne."
+              },
+              {
+                "languageCode": "en",
+                "value": "Primordia, la naissance du monde joins the 2026 summer evenings. Music, lighting and pyrotechnics turn the Cone, the Greenhouse and the Valley into the setting for a story of origins. The park’s architectural landscape becomes the stage for this new evening finale."
+              },
+              {
+                "languageCode": "de",
+                "value": "Primordia, la naissance du monde ergänzt die Sommerabende 2026. Musik, Licht und Pyrotechnik machen den Kegel, das Gewächshaus und das Tal zur Kulisse einer Ursprungsgeschichte. Die architektonische Landschaft des Parks wird zur Bühne dieses neuen abendlichen Abschlusses."
+              },
+              {
+                "languageCode": "nl",
+                "value": "Primordia, la naissance du monde voegt zich bij de zomeravonden van 2026. Muziek, licht en pyrotechniek maken van de Kegel, de Serre en de Vallei het decor van een oorsprongsverhaal. Het architecturale landschap van het park wordt het toneel van deze nieuwe avondfinale."
+              },
+              {
+                "languageCode": "it",
+                "value": "Primordia, la naissance du monde entra nel programma delle serate estive del 2026. Musica, luci e pirotecnica trasformano il Cono, la Serra e la Valle nello scenario di un racconto delle origini. Il paesaggio architettonico del parco diventa il palcoscenico del nuovo finale notturno."
+              },
+              {
+                "languageCode": "es",
+                "value": "Primordia, la naissance du monde se incorpora a las veladas estivales de 2026. Música, luces y pirotecnia convierten el Cono, el Invernadero y el Valle en el escenario de un relato de los orígenes. El paisaje arquitectónico del parque protagoniza este nuevo final nocturno."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Primordia, la naissance du monde dołącza do letnich wieczorów w 2026 roku. Muzyka, światło i pirotechnika zmieniają Stożek, Szklarnię i Dolinę w scenerię opowieści o początkach świata. Architektoniczny krajobraz parku staje się sceną nowego wieczornego finału."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Primordia, la naissance du monde integra as noites de verão de 2026. Música, luz e pirotecnia transformam o Cone, a Estufa e o Vale no cenário de uma narrativa das origens. A paisagem arquitetónica do parque torna-se o palco deste novo final noturno."
+              }
+            ],
+            "sources": [
+              {
+                "label": "Vulcania — communiqué estival du 1er juillet 2026",
+                "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ]
+          }
+        ]
+      },
+      "metadata": {
+        "source": "codex-vulcania-recent-attraction-milestones",
+        "notes": "FourprivateparkItemfacts,64titles/summaries personallyauthored/reviewed. Namazuexactpublicopening10July2021verifiedIntamin. Hawaiiopening2026yearonly,1Julyisinaugurationnotinferredfirstpublicday. AbyssReplacement2026explicitformerAbyssinpublicbookletandHawaii2026press;noexactlastperformancedateorremoval asserted, separateIDs preserved/related. Primordia2026yearonly,8Julyannouncedfirstsummernightnotassumedfirstperformeddate. Reuse4existingimagesascontext;noopeningceremonyclaim, noimport. No duplicateparkfrise."
+      }
+    }
+  },
+  "preview": {
+    "operationId": "0d962109-54a1-45cb-94cd-545d95c2d352",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:16:55.7282534Z",
+    "appliedAtUtc": null,
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "6df714cf-f91e-4b0f-8b1d-66816e471a0e",
+        "entityKey": "vulcania-item-history-namazu-2021",
+        "displayName": "Namazu devient la première montagne russe de Vulcania",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-namazu-2021"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "8fd86b67-7e42-4eed-89ee-11c9e718d996"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "8fd86b67-7e42-4eed-89ee-11c9e718d996"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2021"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "7"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "305cf7c2f2b64a66ab8c8e1efb7efdc7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Namazu wird Vulcanias erste Achterbahn, en:Namazu becomes Vulcania’s first roller coaster, es:Namazu se convierte en la primera montaña rusa de Vulcania, fr:Namazu devient la première montagne russe de Vulcania, it:Namazu diventa la prima montagna russa di Vulcania, nl:Namazu wordt de eerste achtbaan van Vulcania, pl:Namazu zostaje pierwszą kolejką górską Vulcanii, pt:Namazu torna-se a primeira montanha-russa de Vulcania"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Namazu empfängt am 10. Juli 2021 seine ersten Besucher. Die Anlage von Intamin bringt die Achterbahn in den Wissenschaftspark und erzählt ein Abenteuer um ein Team von Seismologen. Die Vulkanlandschaft im Freien wird Teil ihrer ereignisreichen Expedition., en:Namazu welcomes its first visitors on 10 July 2021. Intamin’s creation introduces roller coasters to the science park through an adventure centred on a team of seismologists. The outdoor volcanic landscape becomes part of the story of their eventful expedition., es:Namazu recibe a sus primeros visitantes el 10 de julio de 2021. La creación de Intamin introduce la montaña rusa en el parque científico mediante una aventura centrada en un equipo de sismólogos. El paisaje volcánico exterior forma parte de su expedición llena de sobresaltos., fr:Namazu accueille ses premiers visiteurs le 10 juillet 2021. Cette création d’Intamin introduit la montagne russe dans le parc scientifique, avec une aventure autour d’une équipe de sismologues. Le paysage volcanique extérieur prend part au récit de leur expédition mouvementée., it:Namazu accoglie i primi visitatori il 10 luglio 2021. La creazione di Intamin introduce la montagna russa nel parco scientifico con un’avventura dedicata a una squadra di sismologi. Il paesaggio vulcanico esterno entra nel racconto della loro movimentata spedizione., nl:Namazu ontvangt op 10 juli 2021 zijn eerste bezoekers. Met deze creatie brengt Intamin de achtbaan naar het wetenschapspark, in een avontuur rond een team seismologen. Het vulkanische buitenlandschap wordt onderdeel van hun bewogen expeditie., pl:Namazu przyjmuje pierwszych gości 10 lipca 2021 roku. Projekt Intamin wprowadza kolejkę górską do parku naukowego poprzez przygodę zespołu sejsmologów. Wulkaniczny krajobraz na zewnątrz staje się częścią opowieści o ich pełnej niespodzianek wyprawie., pt:Namazu recebe os primeiros visitantes a 10 de julho de 2021. A criação da Intamin introduz a montanha-russa no parque científico através de uma aventura centrada numa equipa de sismólogos. A paisagem vulcânica exterior integra o relato da sua atribulada expedição."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Intamin \\u2014 ouverture de Namazu, 14 juillet 2021\",\"Url\":\"https://www.intamin.com/2021/07/14/opening-of-namazu/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "641cfcf2-671a-4b4e-9794-afbf0b6809d9",
+        "entityKey": "vulcania-item-history-hawai-2026",
+        "displayName": "Expédition Hawaï emmène Vulcania vers le Kilauea",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-hawai-2026"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "d6206d2553ad4eccbc08f8b6184be024"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Expédition Hawaï führt Vulcania zum Kilauea, en:Expédition Hawaï takes Vulcania towards Kilauea, es:Expédition Hawaï lleva a Vulcania hacia el Kilauea, fr:Expédition Hawaï emmène Vulcania vers le Kilauea, it:Expédition Hawaï conduce Vulcania verso il Kilauea, nl:Expédition Hawaï brengt Vulcania naar de Kilauea, pl:Expédition Hawaï zabiera Vulcanię ku Kīlauei, pt:Expédition Hawaï leva Vulcania até ao Kilauea"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Expédition Hawaï ergänzt Vulcania 2026; die Einweihung findet am 1. Juli statt. Unter Führung der Vulkanologin Lila erkundet das Abenteuer einen hawaiianischen Vulkan und seine Lavalandschaften. Eine reale Vulkanregion bildet das Thema des neuen immersiven Angebots., en:Expédition Hawaï joins Vulcania in 2026, with an inauguration held on 1 July. Led by volcanologist Lila, the adventure explores a Hawaiian volcano and its lava landscapes. It renews the park’s immersive offering around a real volcanic destination., es:Expédition Hawaï se incorpora a Vulcania en 2026 y se inaugura el 1 de julio. Guiada por la vulcanóloga Lila, la aventura explora un volcán hawaiano y sus paisajes de lava. Renueva la oferta inmersiva del parque en torno a un destino volcánico real., fr:Expédition Hawaï rejoint Vulcania en 2026 et fait l’objet d’une inauguration le 1er juillet. Guidée par la volcanologue Lila, cette aventure explore un volcan hawaïen et ses paysages de lave. Elle renouvelle l’offre immersive du parc autour d’une destination volcanique réelle., it:Expédition Hawaï si aggiunge a Vulcania nel 2026 e viene inaugurata il 1º luglio. Guidata dalla vulcanologa Lila, l’avventura esplora un vulcano hawaiano e i suoi paesaggi lavici. Rinnova l’offerta immersiva del parco intorno a una destinazione vulcanica reale., nl:Expédition Hawaï wordt in 2026 aan Vulcania toegevoegd en op 1 juli feestelijk ingewijd. Onder leiding van vulkanologe Lila verkent het avontuur een Hawaïaanse vulkaan en zijn lavalandschappen. Een echte vulkanische bestemming staat centraal in deze vernieuwing van het meeslepende aanbod., pl:Expédition Hawaï dołącza do oferty Vulcanii w 2026 roku, a uroczysta inauguracja odbywa się 1 lipca. Przygoda prowadzona przez wulkanolożkę Lilę przybliża hawajski wulkan i krajobrazy lawy. Nowa atrakcja immersyjna opiera się na rzeczywistym regionie wulkanicznym., pt:Expédition Hawaï junta-se a Vulcania em 2026 e é inaugurada a 1 de julho. Guiada pela vulcanóloga Lila, a aventura explora um vulcão havaiano e as suas paisagens de lava. Renova a oferta imersiva do parque em torno de um destino vulcânico real."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 1er juillet 2026\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "422108f6-6ae0-4bf9-b553-2e7ef43ba630",
+        "entityKey": "vulcania-item-history-abyssreplacement-2026",
+        "displayName": "Abyss Explorer laisse place à Expédition Hawaï",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-abyssreplacement-2026"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Replacement"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "2609d09da2864a06aaff9d0e640db0cd"
+          },
+          {
+            "field": "previousName",
+            "oldValue": null,
+            "newValue": "Abyss Explorer"
+          },
+          {
+            "field": "newName",
+            "oldValue": null,
+            "newValue": "Expédition Hawaï"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Abyss Explorer weicht Expédition Hawaï, en:Abyss Explorer gives way to Expédition Hawaï, es:Abyss Explorer deja paso a Expédition Hawaï, fr:Abyss Explorer laisse place à Expédition Hawaï, it:Abyss Explorer lascia spazio a Expédition Hawaï, nl:Abyss Explorer maakt plaats voor Expédition Hawaï, pl:Abyss Explorer ustępuje miejsca Expédition Hawaï, pt:Abyss Explorer dá lugar a Expédition Hawaï"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Die für die Saison 2026 vorgestellte Umgestaltung ersetzt Abyss Explorer durch Expédition Hawaï. Auf die Reise in die Tiefen des Ozeans folgt eine Geschichte über hawaiianische Vulkane., en:The transformation presented for the 2026 season replaces Abyss Explorer with Expédition Hawaï. A story about Hawaiian volcanoes succeeds the journey into the ocean depths., es:La transformación presentada para la temporada 2026 sustituye Abyss Explorer por Expédition Hawaï. Un relato sobre los volcanes hawaianos sucede al viaje a las profundidades oceánicas., fr:La transformation présentée pour la saison 2026 remplace Abyss Explorer par Expédition Hawaï. Au voyage dans les profondeurs océaniques succède un récit consacré aux volcans hawaïens., it:La trasformazione presentata per la stagione 2026 sostituisce Abyss Explorer con Expédition Hawaï. Al viaggio nelle profondità oceaniche subentra un racconto dedicato ai vulcani hawaiani., nl:De voor het seizoen 2026 gepresenteerde verandering vervangt Abyss Explorer door Expédition Hawaï. Een verhaal over Hawaïaanse vulkanen volgt de reis naar de oceaandiepten op., pl:Przebudowa przedstawiona na sezon 2026 zastępuje Abyss Explorer atrakcją Expédition Hawaï. Opowieść o hawajskich wulkanach zajmuje miejsce podróży w głębiny oceanu., pt:A transformação apresentada para a temporada de 2026 substitui Abyss Explorer por Expédition Hawaï. Uma narrativa sobre os vulcões havaianos sucede à viagem às profundezas oceânicas."
+          },
+          {
+            "field": "relatedParkItemIds",
+            "oldValue": "",
+            "newValue": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 livret public 2026, page 2\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 1er juillet 2026\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "a96a3f84-fa9b-4b99-820e-671f87682f4d",
+        "entityKey": "vulcania-item-history-primordia-2026",
+        "displayName": "Primordia raconte la naissance du monde pendant les nocturnes",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-primordia-2026"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ba34b618-1876-4355-b842-2d10f6975525"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ba34b618-1876-4355-b842-2d10f6975525"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6c530a3938974ba9bab3b7b7abc7d155"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Primordia erzählt abends von der Entstehung der Welt, en:Primordia tells the story of the world’s birth after dark, es:Primordia cuenta el nacimiento del mundo en las noches de verano, fr:Primordia raconte la naissance du monde pendant les nocturnes, it:Primordia racconta la nascita del mondo nelle serate estive, nl:Primordia verbeeldt het ontstaan van de wereld tijdens de avondopeningen, pl:Primordia opowiada o narodzinach świata podczas letnich wieczorów, pt:Primordia conta o nascimento do mundo nas noites de verão"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Primordia, la naissance du monde ergänzt die Sommerabende 2026. Musik, Licht und Pyrotechnik machen den Kegel, das Gewächshaus und das Tal zur Kulisse einer Ursprungsgeschichte. Die architektonische Landschaft des Parks wird zur Bühne dieses neuen abendlichen Abschlusses., en:Primordia, la naissance du monde joins the 2026 summer evenings. Music, lighting and pyrotechnics turn the Cone, the Greenhouse and the Valley into the setting for a story of origins. The park’s architectural landscape becomes the stage for this new evening finale., es:Primordia, la naissance du monde se incorpora a las veladas estivales de 2026. Música, luces y pirotecnia convierten el Cono, el Invernadero y el Valle en el escenario de un relato de los orígenes. El paisaje arquitectónico del parque protagoniza este nuevo final nocturno., fr:Primordia, la naissance du monde rejoint les Soirées estivales de 2026. Musique, lumières et pyrotechnie donnent au Cône, à la Serre et à la Vallée le rôle de décor d’un récit des origines. Le paysage architectural du parc devient la scène de ce nouveau final nocturne., it:Primordia, la naissance du monde entra nel programma delle serate estive del 2026. Musica, luci e pirotecnica trasformano il Cono, la Serra e la Valle nello scenario di un racconto delle origini. Il paesaggio architettonico del parco diventa il palcoscenico del nuovo finale notturno., nl:Primordia, la naissance du monde voegt zich bij de zomeravonden van 2026. Muziek, licht en pyrotechniek maken van de Kegel, de Serre en de Vallei het decor van een oorsprongsverhaal. Het architecturale landschap van het park wordt het toneel van deze nieuwe avondfinale., pl:Primordia, la naissance du monde dołącza do letnich wieczorów w 2026 roku. Muzyka, światło i pirotechnika zmieniają Stożek, Szklarnię i Dolinę w scenerię opowieści o początkach świata. Architektoniczny krajobraz parku staje się sceną nowego wieczornego finału., pt:Primordia, la naissance du monde integra as noites de verão de 2026. Música, luz e pirotecnia transformam o Cone, a Estufa e o Vale no cenário de uma narrativa das origens. A paisagem arquitetónica do parque torna-se o palco deste novo final noturno."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 1er juillet 2026\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "cab570f8-f603-4900-bda2-3d91045e1871",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T20:17:31.6755346Z",
+    "appliedAtUtc": "2026-11-15T20:17:31.6755355Z",
+    "targetParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+    "targetParkName": "Vulcania",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 4,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+        "entityKey": "park",
+        "displayName": "Vulcania",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "570b62cd-50dc-4326-ae82-624086033711",
+        "entityKey": "vulcania-item-history-namazu-2021",
+        "displayName": "Namazu devient la première montagne russe de Vulcania",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-namazu-2021"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "8fd86b67-7e42-4eed-89ee-11c9e718d996"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "8fd86b67-7e42-4eed-89ee-11c9e718d996"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2021"
+          },
+          {
+            "field": "month",
+            "oldValue": null,
+            "newValue": "7"
+          },
+          {
+            "field": "day",
+            "oldValue": null,
+            "newValue": "10"
+          },
+          {
+            "field": "datePrecision",
+            "oldValue": "Year",
+            "newValue": "Day"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "305cf7c2f2b64a66ab8c8e1efb7efdc7"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Namazu wird Vulcanias erste Achterbahn, en:Namazu becomes Vulcania’s first roller coaster, es:Namazu se convierte en la primera montaña rusa de Vulcania, fr:Namazu devient la première montagne russe de Vulcania, it:Namazu diventa la prima montagna russa di Vulcania, nl:Namazu wordt de eerste achtbaan van Vulcania, pl:Namazu zostaje pierwszą kolejką górską Vulcanii, pt:Namazu torna-se a primeira montanha-russa de Vulcania"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Namazu empfängt am 10. Juli 2021 seine ersten Besucher. Die Anlage von Intamin bringt die Achterbahn in den Wissenschaftspark und erzählt ein Abenteuer um ein Team von Seismologen. Die Vulkanlandschaft im Freien wird Teil ihrer ereignisreichen Expedition., en:Namazu welcomes its first visitors on 10 July 2021. Intamin’s creation introduces roller coasters to the science park through an adventure centred on a team of seismologists. The outdoor volcanic landscape becomes part of the story of their eventful expedition., es:Namazu recibe a sus primeros visitantes el 10 de julio de 2021. La creación de Intamin introduce la montaña rusa en el parque científico mediante una aventura centrada en un equipo de sismólogos. El paisaje volcánico exterior forma parte de su expedición llena de sobresaltos., fr:Namazu accueille ses premiers visiteurs le 10 juillet 2021. Cette création d’Intamin introduit la montagne russe dans le parc scientifique, avec une aventure autour d’une équipe de sismologues. Le paysage volcanique extérieur prend part au récit de leur expédition mouvementée., it:Namazu accoglie i primi visitatori il 10 luglio 2021. La creazione di Intamin introduce la montagna russa nel parco scientifico con un’avventura dedicata a una squadra di sismologi. Il paesaggio vulcanico esterno entra nel racconto della loro movimentata spedizione., nl:Namazu ontvangt op 10 juli 2021 zijn eerste bezoekers. Met deze creatie brengt Intamin de achtbaan naar het wetenschapspark, in een avontuur rond een team seismologen. Het vulkanische buitenlandschap wordt onderdeel van hun bewogen expeditie., pl:Namazu przyjmuje pierwszych gości 10 lipca 2021 roku. Projekt Intamin wprowadza kolejkę górską do parku naukowego poprzez przygodę zespołu sejsmologów. Wulkaniczny krajobraz na zewnątrz staje się częścią opowieści o ich pełnej niespodzianek wyprawie., pt:Namazu recebe os primeiros visitantes a 10 de julho de 2021. A criação da Intamin introduz a montanha-russa no parque científico através de uma aventura centrada numa equipa de sismólogos. A paisagem vulcânica exterior integra o relato da sua atribulada expedição."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Intamin \\u2014 ouverture de Namazu, 14 juillet 2021\",\"Url\":\"https://www.intamin.com/2021/07/14/opening-of-namazu/\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "02221ae8-9fa5-4424-b9af-7bf48d75d14c",
+        "entityKey": "vulcania-item-history-hawai-2026",
+        "displayName": "Expédition Hawaï emmène Vulcania vers le Kilauea",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-hawai-2026"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "d6206d2553ad4eccbc08f8b6184be024"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Expédition Hawaï führt Vulcania zum Kilauea, en:Expédition Hawaï takes Vulcania towards Kilauea, es:Expédition Hawaï lleva a Vulcania hacia el Kilauea, fr:Expédition Hawaï emmène Vulcania vers le Kilauea, it:Expédition Hawaï conduce Vulcania verso il Kilauea, nl:Expédition Hawaï brengt Vulcania naar de Kilauea, pl:Expédition Hawaï zabiera Vulcanię ku Kīlauei, pt:Expédition Hawaï leva Vulcania até ao Kilauea"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Expédition Hawaï ergänzt Vulcania 2026; die Einweihung findet am 1. Juli statt. Unter Führung der Vulkanologin Lila erkundet das Abenteuer einen hawaiianischen Vulkan und seine Lavalandschaften. Eine reale Vulkanregion bildet das Thema des neuen immersiven Angebots., en:Expédition Hawaï joins Vulcania in 2026, with an inauguration held on 1 July. Led by volcanologist Lila, the adventure explores a Hawaiian volcano and its lava landscapes. It renews the park’s immersive offering around a real volcanic destination., es:Expédition Hawaï se incorpora a Vulcania en 2026 y se inaugura el 1 de julio. Guiada por la vulcanóloga Lila, la aventura explora un volcán hawaiano y sus paisajes de lava. Renueva la oferta inmersiva del parque en torno a un destino volcánico real., fr:Expédition Hawaï rejoint Vulcania en 2026 et fait l’objet d’une inauguration le 1er juillet. Guidée par la volcanologue Lila, cette aventure explore un volcan hawaïen et ses paysages de lave. Elle renouvelle l’offre immersive du parc autour d’une destination volcanique réelle., it:Expédition Hawaï si aggiunge a Vulcania nel 2026 e viene inaugurata il 1º luglio. Guidata dalla vulcanologa Lila, l’avventura esplora un vulcano hawaiano e i suoi paesaggi lavici. Rinnova l’offerta immersiva del parco intorno a una destinazione vulcanica reale., nl:Expédition Hawaï wordt in 2026 aan Vulcania toegevoegd en op 1 juli feestelijk ingewijd. Onder leiding van vulkanologe Lila verkent het avontuur een Hawaïaanse vulkaan en zijn lavalandschappen. Een echte vulkanische bestemming staat centraal in deze vernieuwing van het meeslepende aanbod., pl:Expédition Hawaï dołącza do oferty Vulcanii w 2026 roku, a uroczysta inauguracja odbywa się 1 lipca. Przygoda prowadzona przez wulkanolożkę Lilę przybliża hawajski wulkan i krajobrazy lawy. Nowa atrakcja immersyjna opiera się na rzeczywistym regionie wulkanicznym., pt:Expédition Hawaï junta-se a Vulcania em 2026 e é inaugurada a 1 de julho. Guiada pela vulcanóloga Lila, a aventura explora um vulcão havaiano e as suas paisagens de lava. Renova a oferta imersiva do parque em torno de um destino vulcânico real."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 1er juillet 2026\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "a18a7a31-f3ab-4320-b99b-34a718a516e1",
+        "entityKey": "vulcania-item-history-abyssreplacement-2026",
+        "displayName": "Abyss Explorer laisse place à Expédition Hawaï",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-abyssreplacement-2026"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "e5c57f99-0eaa-419d-98d8-622a0f0f173c"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Replacement"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "2609d09da2864a06aaff9d0e640db0cd"
+          },
+          {
+            "field": "previousName",
+            "oldValue": null,
+            "newValue": "Abyss Explorer"
+          },
+          {
+            "field": "newName",
+            "oldValue": null,
+            "newValue": "Expédition Hawaï"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Abyss Explorer weicht Expédition Hawaï, en:Abyss Explorer gives way to Expédition Hawaï, es:Abyss Explorer deja paso a Expédition Hawaï, fr:Abyss Explorer laisse place à Expédition Hawaï, it:Abyss Explorer lascia spazio a Expédition Hawaï, nl:Abyss Explorer maakt plaats voor Expédition Hawaï, pl:Abyss Explorer ustępuje miejsca Expédition Hawaï, pt:Abyss Explorer dá lugar a Expédition Hawaï"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Die für die Saison 2026 vorgestellte Umgestaltung ersetzt Abyss Explorer durch Expédition Hawaï. Auf die Reise in die Tiefen des Ozeans folgt eine Geschichte über hawaiianische Vulkane., en:The transformation presented for the 2026 season replaces Abyss Explorer with Expédition Hawaï. A story about Hawaiian volcanoes succeeds the journey into the ocean depths., es:La transformación presentada para la temporada 2026 sustituye Abyss Explorer por Expédition Hawaï. Un relato sobre los volcanes hawaianos sucede al viaje a las profundidades oceánicas., fr:La transformation présentée pour la saison 2026 remplace Abyss Explorer par Expédition Hawaï. Au voyage dans les profondeurs océaniques succède un récit consacré aux volcans hawaïens., it:La trasformazione presentata per la stagione 2026 sostituisce Abyss Explorer con Expédition Hawaï. Al viaggio nelle profondità oceaniche subentra un racconto dedicato ai vulcani hawaiani., nl:De voor het seizoen 2026 gepresenteerde verandering vervangt Abyss Explorer door Expédition Hawaï. Een verhaal over Hawaïaanse vulkanen volgt de reis naar de oceaandiepten op., pl:Przebudowa przedstawiona na sezon 2026 zastępuje Abyss Explorer atrakcją Expédition Hawaï. Opowieść o hawajskich wulkanach zajmuje miejsce podróży w głębiny oceanu., pt:A transformação apresentada para a temporada de 2026 substitui Abyss Explorer por Expédition Hawaï. Uma narrativa sobre os vulcões havaianos sucede à viagem às profundezas oceânicas."
+          },
+          {
+            "field": "relatedParkItemIds",
+            "oldValue": "",
+            "newValue": "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 livret public 2026, page 2\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf\",\"AccessedAt\":\"2026-11-15\"},{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 1er juillet 2026\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "85ffcd73-0716-4482-9a84-436a1f3f86de",
+        "entityKey": "vulcania-item-history-primordia-2026",
+        "displayName": "Primordia raconte la naissance du monde pendant les nocturnes",
+        "changeType": "Created",
+        "matchedBy": "key",
+        "fields": [
+          {
+            "field": "key",
+            "oldValue": "",
+            "newValue": "vulcania-item-history-primordia-2026"
+          },
+          {
+            "field": "entityType",
+            "oldValue": "Park",
+            "newValue": "ParkItem"
+          },
+          {
+            "field": "ownerId",
+            "oldValue": "",
+            "newValue": "ba34b618-1876-4355-b842-2d10f6975525"
+          },
+          {
+            "field": "parkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "parkItemId",
+            "oldValue": null,
+            "newValue": "ba34b618-1876-4355-b842-2d10f6975525"
+          },
+          {
+            "field": "contextParkId",
+            "oldValue": null,
+            "newValue": "fb62b6ae-6802-4a92-9d54-6315bb15d1da"
+          },
+          {
+            "field": "year",
+            "oldValue": "0",
+            "newValue": "2026"
+          },
+          {
+            "field": "eventType",
+            "oldValue": "",
+            "newValue": "Opening"
+          },
+          {
+            "field": "isMajor",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "isVisible",
+            "oldValue": "true",
+            "newValue": "false"
+          },
+          {
+            "field": "mainImageId",
+            "oldValue": null,
+            "newValue": "6c530a3938974ba9bab3b7b7abc7d155"
+          },
+          {
+            "field": "titles",
+            "oldValue": "",
+            "newValue": "de:Primordia erzählt abends von der Entstehung der Welt, en:Primordia tells the story of the world’s birth after dark, es:Primordia cuenta el nacimiento del mundo en las noches de verano, fr:Primordia raconte la naissance du monde pendant les nocturnes, it:Primordia racconta la nascita del mondo nelle serate estive, nl:Primordia verbeeldt het ontstaan van de wereld tijdens de avondopeningen, pl:Primordia opowiada o narodzinach świata podczas letnich wieczorów, pt:Primordia conta o nascimento do mundo nas noites de verão"
+          },
+          {
+            "field": "summaries",
+            "oldValue": "",
+            "newValue": "de:Primordia, la naissance du monde ergänzt die Sommerabende 2026. Musik, Licht und Pyrotechnik machen den Kegel, das Gewächshaus und das Tal zur Kulisse einer Ursprungsgeschichte. Die architektonische Landschaft des Parks wird zur Bühne dieses neuen abendlichen Abschlusses., en:Primordia, la naissance du monde joins the 2026 summer evenings. Music, lighting and pyrotechnics turn the Cone, the Greenhouse and the Valley into the setting for a story of origins. The park’s architectural landscape becomes the stage for this new evening finale., es:Primordia, la naissance du monde se incorpora a las veladas estivales de 2026. Música, luces y pirotecnia convierten el Cono, el Invernadero y el Valle en el escenario de un relato de los orígenes. El paisaje arquitectónico del parque protagoniza este nuevo final nocturno., fr:Primordia, la naissance du monde rejoint les Soirées estivales de 2026. Musique, lumières et pyrotechnie donnent au Cône, à la Serre et à la Vallée le rôle de décor d’un récit des origines. Le paysage architectural du parc devient la scène de ce nouveau final nocturne., it:Primordia, la naissance du monde entra nel programma delle serate estive del 2026. Musica, luci e pirotecnica trasformano il Cono, la Serra e la Valle nello scenario di un racconto delle origini. Il paesaggio architettonico del parco diventa il palcoscenico del nuovo finale notturno., nl:Primordia, la naissance du monde voegt zich bij de zomeravonden van 2026. Muziek, licht en pyrotechniek maken van de Kegel, de Serre en de Vallei het decor van een oorsprongsverhaal. Het architecturale landschap van het park wordt het toneel van deze nieuwe avondfinale., pl:Primordia, la naissance du monde dołącza do letnich wieczorów w 2026 roku. Muzyka, światło i pirotechnika zmieniają Stożek, Szklarnię i Dolinę w scenerię opowieści o początkach świata. Architektoniczny krajobraz parku staje się sceną nowego wieczornego finału., pt:Primordia, la naissance du monde integra as noites de verão de 2026. Música, luz e pirotecnia transformam o Cone, a Estufa e o Vale no cenário de uma narrativa das origens. A paisagem arquitetónica do parque torna-se o palco deste novo final noturno."
+          },
+          {
+            "field": "sources",
+            "oldValue": "[]",
+            "newValue": "[{\"Label\":\"Vulcania \\u2014 communiqu\\u00E9 estival du 1er juillet 2026\",\"Url\":\"https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf\",\"AccessedAt\":\"2026-11-15\"}]"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "appliedEvents": [
+    {
+      "key": "vulcania-item-history-namazu-2021",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "itemId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "parkItemId": "8fd86b67-7e42-4eed-89ee-11c9e718d996",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2021,
+      "month": 7,
+      "day": 10,
+      "datePrecision": "Day",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "305cf7c2f2b64a66ab8c8e1efb7efdc7",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Namazu devient la première montagne russe de Vulcania"
+        },
+        {
+          "languageCode": "en",
+          "value": "Namazu becomes Vulcania’s first roller coaster"
+        },
+        {
+          "languageCode": "de",
+          "value": "Namazu wird Vulcanias erste Achterbahn"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Namazu wordt de eerste achtbaan van Vulcania"
+        },
+        {
+          "languageCode": "it",
+          "value": "Namazu diventa la prima montagna russa di Vulcania"
+        },
+        {
+          "languageCode": "es",
+          "value": "Namazu se convierte en la primera montaña rusa de Vulcania"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Namazu zostaje pierwszą kolejką górską Vulcanii"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Namazu torna-se a primeira montanha-russa de Vulcania"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Namazu accueille ses premiers visiteurs le 10 juillet 2021. Cette création d’Intamin introduit la montagne russe dans le parc scientifique, avec une aventure autour d’une équipe de sismologues. Le paysage volcanique extérieur prend part au récit de leur expédition mouvementée."
+        },
+        {
+          "languageCode": "en",
+          "value": "Namazu welcomes its first visitors on 10 July 2021. Intamin’s creation introduces roller coasters to the science park through an adventure centred on a team of seismologists. The outdoor volcanic landscape becomes part of the story of their eventful expedition."
+        },
+        {
+          "languageCode": "de",
+          "value": "Namazu empfängt am 10. Juli 2021 seine ersten Besucher. Die Anlage von Intamin bringt die Achterbahn in den Wissenschaftspark und erzählt ein Abenteuer um ein Team von Seismologen. Die Vulkanlandschaft im Freien wird Teil ihrer ereignisreichen Expedition."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Namazu ontvangt op 10 juli 2021 zijn eerste bezoekers. Met deze creatie brengt Intamin de achtbaan naar het wetenschapspark, in een avontuur rond een team seismologen. Het vulkanische buitenlandschap wordt onderdeel van hun bewogen expeditie."
+        },
+        {
+          "languageCode": "it",
+          "value": "Namazu accoglie i primi visitatori il 10 luglio 2021. La creazione di Intamin introduce la montagna russa nel parco scientifico con un’avventura dedicata a una squadra di sismologi. Il paesaggio vulcanico esterno entra nel racconto della loro movimentata spedizione."
+        },
+        {
+          "languageCode": "es",
+          "value": "Namazu recibe a sus primeros visitantes el 10 de julio de 2021. La creación de Intamin introduce la montaña rusa en el parque científico mediante una aventura centrada en un equipo de sismólogos. El paisaje volcánico exterior forma parte de su expedición llena de sobresaltos."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Namazu przyjmuje pierwszych gości 10 lipca 2021 roku. Projekt Intamin wprowadza kolejkę górską do parku naukowego poprzez przygodę zespołu sejsmologów. Wulkaniczny krajobraz na zewnątrz staje się częścią opowieści o ich pełnej niespodzianek wyprawie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Namazu recebe os primeiros visitantes a 10 de julho de 2021. A criação da Intamin introduz a montanha-russa no parque científico através de uma aventura centrada numa equipa de sismólogos. A paisagem vulcânica exterior integra o relato da sua atribulada expedição."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Intamin — ouverture de Namazu, 14 juillet 2021",
+          "url": "https://www.intamin.com/2021/07/14/opening-of-namazu/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "570b62cd-50dc-4326-ae82-624086033711"
+    },
+    {
+      "key": "vulcania-item-history-hawai-2026",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "itemId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "parkItemId": "df896e20-7e90-4920-a5fb-ef81bee11c8e",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2026,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "d6206d2553ad4eccbc08f8b6184be024",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Expédition Hawaï emmène Vulcania vers le Kilauea"
+        },
+        {
+          "languageCode": "en",
+          "value": "Expédition Hawaï takes Vulcania towards Kilauea"
+        },
+        {
+          "languageCode": "de",
+          "value": "Expédition Hawaï führt Vulcania zum Kilauea"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Expédition Hawaï brengt Vulcania naar de Kilauea"
+        },
+        {
+          "languageCode": "it",
+          "value": "Expédition Hawaï conduce Vulcania verso il Kilauea"
+        },
+        {
+          "languageCode": "es",
+          "value": "Expédition Hawaï lleva a Vulcania hacia el Kilauea"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Expédition Hawaï zabiera Vulcanię ku Kīlauei"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Expédition Hawaï leva Vulcania até ao Kilauea"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Expédition Hawaï rejoint Vulcania en 2026 et fait l’objet d’une inauguration le 1er juillet. Guidée par la volcanologue Lila, cette aventure explore un volcan hawaïen et ses paysages de lave. Elle renouvelle l’offre immersive du parc autour d’une destination volcanique réelle."
+        },
+        {
+          "languageCode": "en",
+          "value": "Expédition Hawaï joins Vulcania in 2026, with an inauguration held on 1 July. Led by volcanologist Lila, the adventure explores a Hawaiian volcano and its lava landscapes. It renews the park’s immersive offering around a real volcanic destination."
+        },
+        {
+          "languageCode": "de",
+          "value": "Expédition Hawaï ergänzt Vulcania 2026; die Einweihung findet am 1. Juli statt. Unter Führung der Vulkanologin Lila erkundet das Abenteuer einen hawaiianischen Vulkan und seine Lavalandschaften. Eine reale Vulkanregion bildet das Thema des neuen immersiven Angebots."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Expédition Hawaï wordt in 2026 aan Vulcania toegevoegd en op 1 juli feestelijk ingewijd. Onder leiding van vulkanologe Lila verkent het avontuur een Hawaïaanse vulkaan en zijn lavalandschappen. Een echte vulkanische bestemming staat centraal in deze vernieuwing van het meeslepende aanbod."
+        },
+        {
+          "languageCode": "it",
+          "value": "Expédition Hawaï si aggiunge a Vulcania nel 2026 e viene inaugurata il 1º luglio. Guidata dalla vulcanologa Lila, l’avventura esplora un vulcano hawaiano e i suoi paesaggi lavici. Rinnova l’offerta immersiva del parco intorno a una destinazione vulcanica reale."
+        },
+        {
+          "languageCode": "es",
+          "value": "Expédition Hawaï se incorpora a Vulcania en 2026 y se inaugura el 1 de julio. Guiada por la vulcanóloga Lila, la aventura explora un volcán hawaiano y sus paisajes de lava. Renueva la oferta inmersiva del parque en torno a un destino volcánico real."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Expédition Hawaï dołącza do oferty Vulcanii w 2026 roku, a uroczysta inauguracja odbywa się 1 lipca. Przygoda prowadzona przez wulkanolożkę Lilę przybliża hawajski wulkan i krajobrazy lawy. Nowa atrakcja immersyjna opiera się na rzeczywistym regionie wulkanicznym."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Expédition Hawaï junta-se a Vulcania em 2026 e é inaugurada a 1 de julho. Guiada pela vulcanóloga Lila, a aventura explora um vulcão havaiano e as suas paisagens de lava. Renova a oferta imersiva do parque em torno de um destino vulcânico real."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — communiqué estival du 1er juillet 2026",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "02221ae8-9fa5-4424-b9af-7bf48d75d14c"
+    },
+    {
+      "key": "vulcania-item-history-abyssreplacement-2026",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "itemId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "parkItemId": "e5c57f99-0eaa-419d-98d8-622a0f0f173c",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2026,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Replacement",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "2609d09da2864a06aaff9d0e640db0cd",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Abyss Explorer laisse place à Expédition Hawaï"
+        },
+        {
+          "languageCode": "en",
+          "value": "Abyss Explorer gives way to Expédition Hawaï"
+        },
+        {
+          "languageCode": "de",
+          "value": "Abyss Explorer weicht Expédition Hawaï"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Abyss Explorer maakt plaats voor Expédition Hawaï"
+        },
+        {
+          "languageCode": "it",
+          "value": "Abyss Explorer lascia spazio a Expédition Hawaï"
+        },
+        {
+          "languageCode": "es",
+          "value": "Abyss Explorer deja paso a Expédition Hawaï"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Abyss Explorer ustępuje miejsca Expédition Hawaï"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Abyss Explorer dá lugar a Expédition Hawaï"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "La transformation présentée pour la saison 2026 remplace Abyss Explorer par Expédition Hawaï. Au voyage dans les profondeurs océaniques succède un récit consacré aux volcans hawaïens."
+        },
+        {
+          "languageCode": "en",
+          "value": "The transformation presented for the 2026 season replaces Abyss Explorer with Expédition Hawaï. A story about Hawaiian volcanoes succeeds the journey into the ocean depths."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die für die Saison 2026 vorgestellte Umgestaltung ersetzt Abyss Explorer durch Expédition Hawaï. Auf die Reise in die Tiefen des Ozeans folgt eine Geschichte über hawaiianische Vulkane."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De voor het seizoen 2026 gepresenteerde verandering vervangt Abyss Explorer door Expédition Hawaï. Een verhaal over Hawaïaanse vulkanen volgt de reis naar de oceaandiepten op."
+        },
+        {
+          "languageCode": "it",
+          "value": "La trasformazione presentata per la stagione 2026 sostituisce Abyss Explorer con Expédition Hawaï. Al viaggio nelle profondità oceaniche subentra un racconto dedicato ai vulcani hawaiani."
+        },
+        {
+          "languageCode": "es",
+          "value": "La transformación presentada para la temporada 2026 sustituye Abyss Explorer por Expédition Hawaï. Un relato sobre los volcanes hawaianos sucede al viaje a las profundidades oceánicas."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Przebudowa przedstawiona na sezon 2026 zastępuje Abyss Explorer atrakcją Expédition Hawaï. Opowieść o hawajskich wulkanach zajmuje miejsce podróży w głębiny oceanu."
+        },
+        {
+          "languageCode": "pt",
+          "value": "A transformação apresentada para a temporada de 2026 substitui Abyss Explorer por Expédition Hawaï. Uma narrativa sobre os vulcões havaianos sucede à viagem às profundezas oceânicas."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — livret public 2026, page 2",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Vulcania — communiqué estival du 1er juillet 2026",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "relatedParkItemIds": [
+        "df896e20-7e90-4920-a5fb-ef81bee11c8e"
+      ],
+      "previousName": "Abyss Explorer",
+      "newName": "Expédition Hawaï",
+      "id": "a18a7a31-f3ab-4320-b99b-34a718a516e1"
+    },
+    {
+      "key": "vulcania-item-history-primordia-2026",
+      "entityType": "ParkItem",
+      "owner": "parkItem",
+      "ownerId": "ba34b618-1876-4355-b842-2d10f6975525",
+      "itemId": "ba34b618-1876-4355-b842-2d10f6975525",
+      "parkItemId": "ba34b618-1876-4355-b842-2d10f6975525",
+      "parkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "contextParkId": "fb62b6ae-6802-4a92-9d54-6315bb15d1da",
+      "year": 2026,
+      "month": null,
+      "day": null,
+      "datePrecision": "Year",
+      "eventType": "Opening",
+      "isVisible": false,
+      "isMajor": true,
+      "mainImageId": "6c530a3938974ba9bab3b7b7abc7d155",
+      "titles": [
+        {
+          "languageCode": "fr",
+          "value": "Primordia raconte la naissance du monde pendant les nocturnes"
+        },
+        {
+          "languageCode": "en",
+          "value": "Primordia tells the story of the world’s birth after dark"
+        },
+        {
+          "languageCode": "de",
+          "value": "Primordia erzählt abends von der Entstehung der Welt"
+        },
+        {
+          "languageCode": "nl",
+          "value": "Primordia verbeeldt het ontstaan van de wereld tijdens de avondopeningen"
+        },
+        {
+          "languageCode": "it",
+          "value": "Primordia racconta la nascita del mondo nelle serate estive"
+        },
+        {
+          "languageCode": "es",
+          "value": "Primordia cuenta el nacimiento del mundo en las noches de verano"
+        },
+        {
+          "languageCode": "pl",
+          "value": "Primordia opowiada o narodzinach świata podczas letnich wieczorów"
+        },
+        {
+          "languageCode": "pt",
+          "value": "Primordia conta o nascimento do mundo nas noites de verão"
+        }
+      ],
+      "summaries": [
+        {
+          "languageCode": "fr",
+          "value": "Primordia, la naissance du monde rejoint les Soirées estivales de 2026. Musique, lumières et pyrotechnie donnent au Cône, à la Serre et à la Vallée le rôle de décor d’un récit des origines. Le paysage architectural du parc devient la scène de ce nouveau final nocturne."
+        },
+        {
+          "languageCode": "en",
+          "value": "Primordia, la naissance du monde joins the 2026 summer evenings. Music, lighting and pyrotechnics turn the Cone, the Greenhouse and the Valley into the setting for a story of origins. The park’s architectural landscape becomes the stage for this new evening finale."
+        },
+        {
+          "languageCode": "de",
+          "value": "Primordia, la naissance du monde ergänzt die Sommerabende 2026. Musik, Licht und Pyrotechnik machen den Kegel, das Gewächshaus und das Tal zur Kulisse einer Ursprungsgeschichte. Die architektonische Landschaft des Parks wird zur Bühne dieses neuen abendlichen Abschlusses."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Primordia, la naissance du monde voegt zich bij de zomeravonden van 2026. Muziek, licht en pyrotechniek maken van de Kegel, de Serre en de Vallei het decor van een oorsprongsverhaal. Het architecturale landschap van het park wordt het toneel van deze nieuwe avondfinale."
+        },
+        {
+          "languageCode": "it",
+          "value": "Primordia, la naissance du monde entra nel programma delle serate estive del 2026. Musica, luci e pirotecnica trasformano il Cono, la Serra e la Valle nello scenario di un racconto delle origini. Il paesaggio architettonico del parco diventa il palcoscenico del nuovo finale notturno."
+        },
+        {
+          "languageCode": "es",
+          "value": "Primordia, la naissance du monde se incorpora a las veladas estivales de 2026. Música, luces y pirotecnia convierten el Cono, el Invernadero y el Valle en el escenario de un relato de los orígenes. El paisaje arquitectónico del parque protagoniza este nuevo final nocturno."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Primordia, la naissance du monde dołącza do letnich wieczorów w 2026 roku. Muzyka, światło i pirotechnika zmieniają Stożek, Szklarnię i Dolinę w scenerię opowieści o początkach świata. Architektoniczny krajobraz parku staje się sceną nowego wieczornego finału."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Primordia, la naissance du monde integra as noites de verão de 2026. Música, luz e pirotecnia transformam o Cone, a Estufa e o Vale no cenário de uma narrativa das origens. A paisagem arquitetónica do parque torna-se o palco deste novo final noturno."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vulcania — communiqué estival du 1er juillet 2026",
+          "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "id": "85ffcd73-0716-4482-9a84-436a1f3f86de"
+    }
+  ],
+  "personalEightLanguageReview": true,
+  "articleReview": null,
+  "canonicalArticle": null,
+  "sourceAccess": [
+    {
+      "key": "magma-explorer-iii",
+      "url": "https://www.amak.fr/project/magma-explorer-iii/",
+      "checkedAt": "2026-11-15T19:51:33.501023+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/magma-explorer-iii/",
+      "bytes": 55751
+    },
+    {
+      "key": "dragon-ride",
+      "url": "https://www.amak.fr/project/dragon-ride/",
+      "checkedAt": "2026-11-15T19:51:33.501895+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/dragon-ride/",
+      "bytes": 57501
+    },
+    {
+      "key": "dragon-ride-2",
+      "url": "https://www.amak.fr/project/dragon-ride-2/",
+      "checkedAt": "2026-11-15T19:51:33.502537+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/dragon-ride-2/",
+      "bytes": 60983
+    },
+    {
+      "key": "abyss-explorer",
+      "url": "https://www.amak.fr/project/abyss-explorer/",
+      "checkedAt": "2026-11-15T19:51:33.503181+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amak.fr/project/abyss-explorer/",
+      "bytes": 57212
+    },
+    {
+      "key": "ballon",
+      "url": "https://www.aerophile.com/en/clients/vulcania/",
+      "checkedAt": "2026-11-15T19:51:33.504112+00:00",
+      "status": 200,
+      "finalUrl": "https://www.aerophile.com/en/clients/vulcania/",
+      "bytes": 49573
+    },
+    {
+      "key": "ballon-eap",
+      "url": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "checkedAt": "2026-11-15T19:52:21.436269+00:00",
+      "status": 200,
+      "finalUrl": "https://www.eap-magazin.de/Article/Auvergne-France%3A-Vulcania-Opens-New-Attraction-%E2%80%93-Le-Ballon-des-Puys.html",
+      "bytes": 52532
+    },
+    {
+      "key": "planetarium-maker",
+      "url": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+      "checkedAt": "2026-11-15T19:52:21.437032+00:00",
+      "status": 200,
+      "finalUrl": "https://www.rsacosmos.com/news-en/the-biggest-planetarium-in-france-powered-by-rsa-cosmos-konica-minolta-sony.html",
+      "bytes": 67682
+    },
+    {
+      "key": "planetarium-lyon",
+      "url": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "checkedAt": "2026-11-15T19:52:21.437476+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lyoncapitale.fr/actualite/le-plus-grand-planetarium-de-france-a-ouvert-ses-portes-a-vulcania-en-auvergne-rhone-alpes",
+      "bytes": 183977
+    },
+    {
+      "key": "namazu",
+      "url": "https://www.intamin.com/2021/07/14/opening-of-namazu/",
+      "verifiedAt": "2026-11-15T20:14:47.286864+00:00",
+      "status": 200,
+      "bytes": 250907,
+      "sha256": "bc51e376239184075a3f0cc2c429f4b6bc20ded499f44be11a78f2e42956a121"
+    },
+    {
+      "key": "summer2026",
+      "url": "https://www.vulcania.com/wp-content/uploads/2026/07/CP-PROGRAMMATION-ESTIVALE-2026-V2.pdf",
+      "verifiedAt": "2026-11-15T20:14:47.287559+00:00",
+      "status": 200,
+      "bytes": 664221,
+      "sha256": "2a9ac74d6311195c2d60894c9e88d0b41e61954b877ce649775363262474f866"
+    },
+    {
+      "key": "welcome2026",
+      "url": "https://www.vulcania.com/wp-content/uploads/2026/02/2026-VERSION-WEB-Livret-accueil-nouveaux-arrivants-_compressed.pdf",
+      "verifiedAt": "2026-11-15T20:14:47.288197+00:00",
+      "status": 200,
+      "bytes": 2030242,
+      "sha256": "765ba6a7a44aa1b64552de9e2a512e60926105bc34abecfbf474636e64d3812a"
+    },
+    {
+      "key": "fire-scoop",
+      "url": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+      "checkedAt": "2026-11-15T20:05:34.469528+00:00",
+      "status": 200,
+      "finalUrl": "https://www.radioscoop.com/infos/maj-puy-de-dome-incendie-maitrise-au-futur-planetarium-de-vulcania_237274",
+      "bytes": 70332
+    },
+    {
+      "key": "fire-official",
+      "url": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "checkedAt": "2026-11-15T20:05:34.470497+00:00",
+      "status": 200,
+      "finalUrl": "https://fr.linkedin.com/posts/parcvulcania_ce-matin-incendie-sur-le-b%C3%A2timent-en-cours-activity-6897540427239501824-3Cew",
+      "bytes": 167549
+    },
+    {
+      "key": "reopening-2015",
+      "url": "https://www.radiorva.com/news/locales/6471/vulcania-rouvre-ses-portes-aujourd-hui",
+      "checkedAt": "2026-11-15T20:05:34.471521+00:00",
+      "status": 200,
+      "finalUrl": "https://www.radiorva.com/news/locales/6471/vulcania-rouvre-ses-portes-aujourd-hui",
+      "bytes": 82858
+    }
+  ],
+  "scopeNotes": "FourprivateparkItemfacts,64titles/summaries personallyauthored/reviewed. Namazuexactpublicopening10July2021verifiedIntamin. Hawaiiopening2026yearonly,1Julyisinaugurationnotinferredfirstpublicday. AbyssReplacement2026explicitformerAbyssinpublicbookletandHawaii2026press;noexactlastperformancedateorremoval asserted, separateIDs preserved/related. Primordia2026yearonly,8Julyannouncedfirstsummernightnotassumedfirstperformeddate. Reuse4existingimagesascontext;noopeningceremonyclaim, noimport. No duplicateparkfrise.",
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
