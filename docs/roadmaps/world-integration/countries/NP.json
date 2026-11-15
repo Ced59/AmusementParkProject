@@ -50,6 +50,207 @@
       ]
     },
     {
+      "entryId": "NP-candidate-discovery-6fb59a2e521b2a",
+      "name": "Bungy Nepal — The Last Resort",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Saut à l’élastique",
+      "locality": "Bhotekoshi-05, Sindhupalchok, Bagmati",
+      "siteId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T12:20:10.780Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitant : saut et réservation officiels disponibles en 2026 ; jours de saut et prix affichés, transport collectif actuellement le samedi.",
+      "identityConfidence": "Offre, billet, poids, conditions et horaires de saut hebdomadaires confirmés par l’exploitant ; trois photos exactes mais anciennes et réutilisables ; aucune fiche site préexistante dans la recherche officielle.",
+      "possibleMatches": [],
+      "aliases": [
+        "The Last Resort Bungy",
+        "Bungy Nepal",
+        "Bhote Koshi Bungy"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T12:19:23.528Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-adc3175b-16b0-4dd4-96e0-7cd35e1dcf34",
+          "appliedAt": "2026-11-15T12:14:39.636Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+          "evidence": "PARK_DATA_EDITOR:apply:adc3175b-16b0-4dd4-96e0-7cd35e1dcf34",
+          "auditEvidence": null,
+          "summary": "Création du saut sur le pont du Last Resort, point OSM du resort voisin et descriptions éditoriales dans huit langues."
+        },
+        {
+          "eventId": "apply-f035d29c-c9b9-4fcd-8fa2-25b952de3837",
+          "appliedAt": "2026-11-15T12:15:47.598Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+          "evidence": "PARK_DATA_EDITOR:apply:f035d29c-c9b9-4fcd-8fa2-25b952de3837",
+          "auditEvidence": null,
+          "summary": "Tarifs officiels avec et sans transport, jours de saut sans horaires inventés, poids, âge, santé et transport dans huit langues."
+        },
+        {
+          "eventId": "image-6f9e0e4020034786931f11f545315974",
+          "appliedAt": "2026-11-15T12:18:06.648Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+          "evidence": "PARK_DATA_EDITOR:image:6f9e0e4020034786931f11f545315974",
+          "auditEvidence": null,
+          "summary": "Photo exacte historique de la plateforme ou du pont, avec huit alt, légendes et crédits ; Pujan, Public domain, 2008."
+        },
+        {
+          "eventId": "image-786e150f133041209194d511d1d1e68b",
+          "appliedAt": "2026-11-15T12:18:31.272Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+          "evidence": "PARK_DATA_EDITOR:image:786e150f133041209194d511d1d1e68b",
+          "auditEvidence": null,
+          "summary": "Photo exacte historique de la plateforme ou du pont, avec huit alt, légendes et crédits ; No Lands Too Foreign, CC BY 2.0, 2010."
+        },
+        {
+          "eventId": "image-78e8b46ca58d4563abdc7ae2a64be212",
+          "appliedAt": "2026-11-15T12:18:49.208Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+          "evidence": "PARK_DATA_EDITOR:image:78e8b46ca58d4563abdc7ae2a64be212",
+          "auditEvidence": null,
+          "summary": "Photo exacte historique de la plateforme ou du pont, avec huit alt, légendes et crédits ; sluj78 from Bangkok, Thailand, CC BY-SA 2.0, 2005."
+        },
+        {
+          "eventId": "apply-421df1f6-7af7-404f-a8a8-af927fc53c6c",
+          "appliedAt": "2026-11-15T12:19:23.528Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "0283c6f1-038d-4693-8019-c30c086a4a39",
+          "evidence": "PARK_DATA_EDITOR:apply:421df1f6-7af7-404f-a8a8-af927fc53c6c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-np-last-resort-bungy-20261115/audit.json",
+          "summary": "Condition officielle de prépaiement et confirmation du tarif selon la nationalité ajoutée dans huit langues."
+        }
+      ],
+      "nextAction": "Conserver la ligne. Recontrôler tarif selon la nationalité, jours de saut, bus et conditions sous 90 jours. Trouver des horaires sur place et des photos plus récentes exactes sous licence réutilisable ; les photos actuelles datent de 2005–2010. Ne pas inférer l’année d’ouverture. Qualifier Canyon Swing séparément avec une photo exacte. Ne pas republier Facebook pour une simple actualisation.",
+      "sources": [
+        {
+          "label": "Exploitant — saut et présentation",
+          "url": "https://www.thelastresort.com.np/bungy-nepal/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — FAQ, poids et santé",
+          "url": "https://www.thelastresort.com.np/faq/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — saut sans transport et jours",
+          "url": "https://www.thelastresort.com.np/bookings/bungy-only/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — excursion avec transport",
+          "url": "https://www.thelastresort.com.np/bookings/bungy-jump-day-trip/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — Canyon Swing distinct",
+          "url": "https://www.thelastresort.com.np/canyon-swing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — position du resort",
+          "url": "https://www.openstreetmap.org/node/14316048001",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte historique, Pujan, Public domain",
+          "url": "https://commons.wikimedia.org/wiki/File:Last_resort_nepal_bridge.JPG",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte historique, No Lands Too Foreign, CC BY 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:Bungee_Jump,_The_Last_Resort,_Nepal2.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo exacte historique, sluj78 from Bangkok, Thailand, CC BY-SA 2.0",
+          "url": "https://commons.wikimedia.org/wiki/File:To_jump_or....jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Bungy Nepal — The Last Resort",
+            "source": "Exploitant — saut et présentation",
+            "url": "https://www.thelastresort.com.np/bungy-nepal/",
+            "family": "Bungy jump",
+            "sourceVenueName": "The Last Resort",
+            "sourceLifecycleSignal": "Operating",
+            "sourceLocality": "Bhotekoshi-05, Sindhupalchok"
+          }
+        ],
+        "rationale": "Saut vendu séparément du Canyon Swing et des hébergements du resort. Fiche autonome créée après recherche de doublons."
+      }
+    },
+    {
+      "entryId": "NP-candidate-discovery-c62bb33eb57561",
+      "name": "Canyon Swing — The Last Resort",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Balançoire de canyon",
+      "locality": "The Last Resort, Bhotekoshi-05, Sindhupalchok",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Canyon Swing vendu séparément dans la boutique officielle, consultée le 15 novembre 2026.",
+      "identityConfidence": "Activité distincte du saut à l’élastique ; photo exacte réutilisable, règles et prix à vérifier avant publication.",
+      "possibleMatches": [],
+      "aliases": [
+        "Last Resort Canyon Swing"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Rechercher à nouveau Park et StandaloneAttraction, confirmer tarif, accès, jours et cycle de vie ; trouver au moins une photographie libre montrant précisément le Canyon Swing. Ne pas utiliser les photos du Bungy.",
+      "sources": [
+        {
+          "label": "Exploitant — Canyon Swing",
+          "url": "https://www.thelastresort.com.np/canyon-swing/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Exploitant — boutique Canyon Swing",
+          "url": "https://www.thelastresort.com.np/bookings/canyon-swing-only/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "countryCodeAtInventory": "NP",
+      "countryResolution": null,
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [],
+        "rationale": "Activité distincte du Bungy sur le même site ; photo exacte et qualification de fiche propre à compléter."
+      },
+      "possibleBacklogEntries": [
+        "NP-candidate-discovery-6fb59a2e521b2a"
+      ]
+    },
+    {
       "entryId": "NP-candidate-3efef93f5e9d9d",
       "name": "Central Zoo",
       "entityKind": "Park",
