@@ -1,0 +1,81 @@
+{
+  "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+  "operations": [
+    {
+      "step": "core",
+      "operationId": "d423bf0b-0541-4672-816c-ffc8a8577889",
+      "appliedAtUtc": "2026-11-15T23:00:14.2490277Z",
+      "evidence": "PARK_DATA_EDITOR:apply:d423bf0b-0541-4672-816c-ffc8a8577889"
+    },
+    {
+      "step": "spec",
+      "operationId": "9bbd5e7e-f9a4-4ea6-9a20-ca1d85f4f824",
+      "appliedAtUtc": "2026-11-15T23:00:57.8168188Z",
+      "evidence": "PARK_DATA_EDITOR:apply:9bbd5e7e-f9a4-4ea6-9a20-ca1d85f4f824"
+    },
+    {
+      "step": "access",
+      "operationId": "8f3c69ba-96e6-4a2a-ba9a-baf506c0e4bd",
+      "appliedAtUtc": "2026-11-15T23:01:19.8231845Z",
+      "evidence": "PARK_DATA_EDITOR:apply:8f3c69ba-96e6-4a2a-ba9a-baf506c0e4bd"
+    },
+    {
+      "step": "publish",
+      "operationId": "957a9bbb-a813-4826-9f67-fd28f509fcd0",
+      "appliedAtUtc": "2026-11-15T23:05:01.5991214Z",
+      "evidence": "PARK_DATA_EDITOR:apply:957a9bbb-a813-4826-9f67-fd28f509fcd0"
+    }
+  ],
+  "images": [
+    {
+      "imageId": "3f1373862d994e05a879a438ecba108b",
+      "createdAtUtc": "2026-11-15T23:01:37.608Z",
+      "metadataUpdatedAtUtc": "2026-11-15T23:03:56.67Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837372203/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-06-30",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "6767bff7eabe4e7c8071f1cb2718a691",
+      "createdAtUtc": "2026-11-15T23:01:50.999Z",
+      "metadataUpdatedAtUtc": "2026-11-15T23:04:07.746Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837115641/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-06-30",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "738de3ed68f7403dbcae3a2e92d0bbbd",
+      "createdAtUtc": "2026-11-15T23:02:06.357Z",
+      "metadataUpdatedAtUtc": "2026-11-15T23:04:18.5Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53836224522/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-06-30",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "facebook": {
+    "id": "42c9b7e60dbc41979c1c2816ff708649",
+    "status": "Published",
+    "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122127519567424431",
+    "publishedAtUtc": "2026-11-15T23:06:01.3662657Z"
+  },
+  "finalCompleteness": {
+    "completenessScore": 74,
+    "dataQualityLevel": "Publishable",
+    "applicableMaxPoints": 76,
+    "earnedPoints": 56,
+    "publicationBlockers": [],
+    "formulaicPublicTextIssue": null
+  }
+}

@@ -59985,26 +59985,120 @@
     },
     {
       "entryId": "US-candidate-089bfcd986d055",
-      "name": "Snowbird",
-      "entityKind": "ToQualify",
+      "name": "Snowbird Mountain Coaster",
+      "entityKind": "StandaloneAttraction",
       "proposedEntityKind": "StandaloneAttraction",
-      "category": "Attractions (RCDB) / Attractions",
-      "locality": "Sandy , Utah",
-      "siteId": null,
+      "category": "Alpine coaster",
+      "locality": "9385 Snowbird Center Drive, Snowbird, Utah 84092",
+      "siteId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
       "legacySiteIds": [],
-      "presence": "NotFound",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "ToQualify",
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:06:01.366Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": null,
       "lifecycleAtInventory": null,
-      "sourceLifecycleSignal": "Operating",
-      "identityConfidence": "Dossier de découverte sourcé — identité à confirmer",
+      "sourceLifecycleSignal": "Exploitation estivale confirmée ; activités d’été actuellement fermées pour la saison.",
+      "identityConfidence": "Billet individuel confirmé par Snowbird ; RCDB confirme Wiegand et ouverture 2012 ; aucune fiche homonyme trouvée via PDE avant création.",
       "possibleMatches": [],
-      "aliases": [],
+      "aliases": [
+        "Mountain Coaster — Snowbird",
+        "Snowbird Alpine Coaster"
+      ],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "lastDataIntegrationAt": "2026-11-15T23:04:18.500Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-d423bf0b-0541-4672-816c-ffc8a8577889",
+          "appliedAt": "2026-11-15T23:00:14.249Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:apply:d423bf0b-0541-4672-816c-ffc8a8577889",
+          "auditEvidence": null,
+          "summary": "Fiche masquée et huit descriptions créées."
+        },
+        {
+          "eventId": "apply-9bbd5e7e-f9a4-4ea6-9a20-ca1d85f4f824",
+          "appliedAt": "2026-11-15T23:00:57.816Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:apply:9bbd5e7e-f9a4-4ea6-9a20-ca1d85f4f824",
+          "auditEvidence": null,
+          "summary": "Constructeur Wiegand et année 2012 intégrés."
+        },
+        {
+          "eventId": "apply-8f3c69ba-96e6-4a2a-ba9a-baf506c0e4bd",
+          "appliedAt": "2026-11-15T23:01:19.823Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:apply:8f3c69ba-96e6-4a2a-ba9a-baf506c0e4bd",
+          "auditEvidence": null,
+          "summary": "Trois règles d’accès officielles intégrées."
+        },
+        {
+          "eventId": "photo-3f1373862d994e05a879a438ecba108b",
+          "appliedAt": "2026-11-15T23:01:37.608Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo:3f1373862d994e05a879a438ecba108b",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2024 du coaster importée et publiée sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-6767bff7eabe4e7c8071f1cb2718a691",
+          "appliedAt": "2026-11-15T23:01:50.999Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo:6767bff7eabe4e7c8071f1cb2718a691",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2024 du coaster importée et publiée sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-738de3ed68f7403dbcae3a2e92d0bbbd",
+          "appliedAt": "2026-11-15T23:02:06.357Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo:738de3ed68f7403dbcae3a2e92d0bbbd",
+          "auditEvidence": null,
+          "summary": "Photo exacte 2024 du coaster importée et publiée sous CC BY 2.0."
+        },
+        {
+          "eventId": "photo-metadata-3f1373862d994e05a879a438ecba108b",
+          "appliedAt": "2026-11-15T23:03:56.670Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:3f1373862d994e05a879a438ecba108b",
+          "auditEvidence": null,
+          "summary": "Crédit, légende et texte alternatif de la photo vérifiés dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-6767bff7eabe4e7c8071f1cb2718a691",
+          "appliedAt": "2026-11-15T23:04:07.746Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:6767bff7eabe4e7c8071f1cb2718a691",
+          "auditEvidence": null,
+          "summary": "Crédit, légende et texte alternatif de la photo vérifiés dans les huit langues."
+        },
+        {
+          "eventId": "photo-metadata-738de3ed68f7403dbcae3a2e92d0bbbd",
+          "appliedAt": "2026-11-15T23:04:18.500Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:738de3ed68f7403dbcae3a2e92d0bbbd",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-snowbird-mountain-coaster-20261115/audit.json",
+          "summary": "Crédit, légende et texte alternatif de la photo vérifiés dans les huit langues."
+        }
+      ],
+      "nextAction": "Conserver cette ligne et les preuves. Contrôler les nouveaux horaires et tarifs avant la prochaine saison ; suivre séparément le ZipWhipper sous US-candidate-snowbird-zipwhipper-20261115.",
       "sources": [
         {
           "label": "RCDB",
@@ -60035,40 +60129,43 @@
           "label": "ZipRider — référence constructeur",
           "url": "https://ziprider.com/locations/snowbird/",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Snowbird — billet et conditions",
+          "url": "https://www.snowbird.com/activities-events/summer-activities/mountain-coaster/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Flickr — photo 2024 CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53837372203/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/7956920c-44fd-481f-9a10-6a3c9c6c7e07/snowbird-mountain-coaster",
+          "accessedAt": "2026-11-15"
         }
       ],
       "standaloneAssessment": {
-        "relation": "IndependentCandidate",
-        "reviewedAt": "2026-10-22",
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
         "attractions": [
           {
-            "name": "Mountain Coaster",
-            "source": "RCDB — Mountain Coaster",
-            "url": "https://rcdb.com/13324.htm",
-            "family": "Mountain coaster",
-            "sourceVenueName": "Snowbird",
-            "sourceLifecycleSignal": "Operating",
-            "sourceLocality": "Sandy , Utah",
-            "sourceOpenedYear": "2012"
-          },
-          {
-            "name": "Snowbird",
-            "source": "Wiegand — références constructeur",
-            "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=198#location-id-1105",
+            "name": "Snowbird Mountain Coaster",
+            "source": "Exploitant Snowbird — Mountain Coaster",
+            "url": "https://www.snowbird.com/activities-events/summer-activities/mountain-coaster/",
             "family": "Alpine coaster",
             "sourceVenueName": "Snowbird",
-            "referenceId": "location-id-1105"
-          },
-          {
-            "name": "ZipRider — Snowbird",
-            "source": "ZipRider — référence constructeur",
-            "url": "https://ziprider.com/locations/snowbird/",
-            "family": "Tyrolienne fixe",
-            "sourceVenueName": "Snowbird"
+            "sourceLifecycleSignal": "Summer season closed",
+            "sourceLocality": "Snowbird, Utah",
+            "sourceOpenedYear": "2012"
           }
         ],
-        "rationale": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique."
-      }
+        "rationale": "Billet individuel officiel ; la référence Wiegand est la même piste. ZipWhipper maintenu séparément à qualifier."
+      },
+      "possibleBacklogEntries": [
+        "US-candidate-snowbird-zipwhipper-20261115"
+      ]
     },
     {
       "entryId": "US-candidate-2239e682c78a42",
@@ -76439,6 +76536,52 @@
         "score": 84,
         "publicationBlockers": [],
         "gapCount": 2
+      }
+    },
+    {
+      "entryId": "US-candidate-snowbird-zipwhipper-20261115",
+      "name": "Snowbird ZipWhipper",
+      "entityKind": "ToQualify",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Tour de chute / mur d’escalade",
+      "locality": "Snowbird, Utah",
+      "siteId": null,
+      "legacySiteIds": [],
+      "presence": "NotFound",
+      "presenceObservedAt": "2026-11-15",
+      "editorialStatus": "ToQualify",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Référence du fabricant à revalider auprès de Snowbird ; produit ZipWhipper, et non tyrolienne ZipRider.",
+      "identityConfidence": "Le fabricant décrit un mur de 60 pieds avec chute contrôlée, ajouté au pass activités ; vente autonome non confirmée.",
+      "possibleMatches": [],
+      "aliases": [
+        "ZipWhipper — Snowbird"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": null,
+      "integrationHistory": [],
+      "nextAction": "Vérifier auprès de Snowbird si ZipWhipper est encore exploité et si un billet séparé existe ; ne pas créer de fiche ni annoncer sur Facebook avant qualification.",
+      "sources": [
+        {
+          "label": "Fabricant ZipRider — ZipWhipper de Snowbird",
+          "url": "https://ziprider.com/locations/snowbird/",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "ParentToResolve",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "ZipWhipper — Snowbird",
+            "source": "ZipRider — installation Snowbird",
+            "url": "https://ziprider.com/locations/snowbird/",
+            "family": "Mur d’escalade avec chute contrôlée",
+            "sourceVenueName": "Snowbird"
+          }
+        ],
+        "rationale": "Source constructeur évoquant une option ajoutée au pass ; autonomie de billetterie et exploitation actuelle à confirmer."
       }
     }
   ]

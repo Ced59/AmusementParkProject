@@ -1,0 +1,112 @@
+{
+  "work": "Snowbird Mountain Coaster intégré comme piste alpine à billet individuel : huit descriptions, trois photos exactes 2024 CC BY 2.0, règles d’accès, huit pages publiques et annonce Facebook.",
+  "qualification": "Le site officiel vend une descente individuelle séparément du pass activités. Recherche du client officiel Park et StandaloneAttraction sur Snowbird et Peruvian sans correspondance avant création. La piste constructeur Wiegand correspond au même coaster. Le signal ZipRider historique décrit en réalité un ZipWhipper, transféré vers un dossier distinct à qualifier.",
+  "sources": {
+    "Exploitant — identité, billet, fermeture et conditions": "https://www.snowbird.com/activities-events/summer-activities/mountain-coaster/",
+    "Exploitant — adresse": "https://www.snowbird.com/",
+    "RCDB — ouverture 2012 et Wiegand": "https://rcdb.com/13324.htm",
+    "Flickr — photo montée": "https://www.flickr.com/photos/rollercoasterphilosophy/53837372203/",
+    "Flickr — photo virages": "https://www.flickr.com/photos/rollercoasterphilosophy/53837115641/",
+    "Flickr — photo lodge": "https://www.flickr.com/photos/rollercoasterphilosophy/53836224522/",
+    "Licence CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+    "ZipRider — décrit ZipWhipper à Snowbird": "https://ziprider.com/locations/snowbird/",
+    "Fiche publique Snowbird Mountain Coaster": "https://amusement-parks.fun/fr/attraction/7956920c-44fd-481f-9a10-6a3c9c6c7e07/snowbird-mountain-coaster"
+  },
+  "entity": {
+    "id": "7956920c-44fd-481f-9a10-6a3c9c6c7e07",
+    "name": "Snowbird Mountain Coaster",
+    "countryCode": "US",
+    "kind": "StandaloneAttraction",
+    "published": true
+  },
+  "photographs": [
+    {
+      "imageId": "3f1373862d994e05a879a438ecba108b",
+      "createdAtUtc": "2026-11-15T23:01:37.608Z",
+      "metadataUpdatedAtUtc": "2026-11-15T23:03:56.67Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837372203/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-06-30",
+      "published": true,
+      "current": true,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "6767bff7eabe4e7c8071f1cb2718a691",
+      "createdAtUtc": "2026-11-15T23:01:50.999Z",
+      "metadataUpdatedAtUtc": "2026-11-15T23:04:07.746Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53837115641/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-06-30",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    },
+    {
+      "imageId": "738de3ed68f7403dbcae3a2e92d0bbbd",
+      "createdAtUtc": "2026-11-15T23:02:06.357Z",
+      "metadataUpdatedAtUtc": "2026-11-15T23:04:18.5Z",
+      "sourceUrl": "https://www.flickr.com/photos/rollercoasterphilosophy/53836224522/",
+      "author": "Jeremy Thompson",
+      "license": "CC BY 2.0",
+      "takenAt": "2024-06-30",
+      "published": true,
+      "current": false,
+      "publicBinaryHttpStatus": 200
+    }
+  ],
+  "visitorInformation": {
+    "type": "RollerCoaster",
+    "subtype": "Alpine coaster",
+    "manufacturer": "Wiegand",
+    "model": "Alpine Coaster / Gen 1",
+    "openedYear": "2012",
+    "operatorCourseLengthMeters": 951,
+    "ridersPerVehicle": 2,
+    "individualTicketConfirmed": true,
+    "currentSeasonStatus": "Summer activities closed for season on 2026-11-15",
+    "nextSeasonHoursConfirmed": false,
+    "nextSeasonPricesConfirmed": false,
+    "structuredAccessConditions": 3,
+    "address": "9385 Snowbird Center Drive, Snowbird, Utah 84092",
+    "coordinates": null
+  },
+  "audit": {
+    "completenessScore": 74,
+    "dataQualityLevel": "Publishable",
+    "publicationBlockers": [],
+    "descriptionLanguages": 8,
+    "publishedExactAttractionImages": 3,
+    "publicPagesHttpStatus": {
+      "fr": 200,
+      "en": 200,
+      "de": 200,
+      "nl": 200,
+      "it": 200,
+      "es": 200,
+      "pl": 200,
+      "pt": 200
+    },
+    "publicPhotoBinariesHttpStatus": [
+      200,
+      200,
+      200
+    ]
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/7956920c-44fd-481f-9a10-6a3c9c6c7e07/snowbird-mountain-coaster",
+    "sitePublishedAtUtc": "2026-11-15T23:05:01.5991214Z",
+    "siteEvidence": "PARK_DATA_EDITOR:apply:957a9bbb-a813-4826-9f67-fd28f509fcd0",
+    "facebookStatus": "Published",
+    "facebookId": "42c9b7e60dbc41979c1c2816ff708649",
+    "facebookPostUrl": "https://www.facebook.com/1285475681307050/posts/122127519567424431",
+    "facebookPublishedAtUtc": "2026-11-15T23:06:01.3662657Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T23:04:18.500Z",
+  "remainingGaps": [
+    "Les activités estivales sont fermées au 15 novembre 2026 : confirmer calendrier et tarifs de la prochaine saison auprès de Snowbird avant de les intégrer.",
+    "Point précis de la station non confirmé ; seule l’adresse du complexe est indiquée."
+  ]
+}
