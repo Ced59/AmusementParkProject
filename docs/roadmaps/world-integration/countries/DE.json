@@ -5607,18 +5607,29 @@
         "8b80e3bd-5d19-4cfa-826a-de0ff64b4f39"
       ],
       "presence": "Published",
-      "presenceObservedAt": "2026-10-22",
-      "editorialStatus": "PublishedDateUnknown",
+      "presenceObservedAt": "2026-11-15T15:43:29.643Z",
+      "editorialStatus": "Integrated",
       "siteReviewStatusAtInventory": "Validated",
       "lifecycleAtInventory": "Operating",
-      "sourceLifecycleSignal": "Operating",
+      "sourceLifecycleSignal": "Fermé du 9 novembre au 18 décembre 2026 inclus ; début de saison hivernale annoncé le 19 décembre.",
       "identityConfidence": "Identifiant du site",
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": null,
-      "integrationHistory": [],
-      "nextAction": "Relever la prochaine intégration réelle ; audit éditorial historique non recalculé lors de ce recensement.",
+      "lastDataIntegrationAt": "2026-11-15T15:41:44.444Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-bbd38a2c-e97c-48c0-b620-5e9eafc0b9b8",
+          "appliedAt": "2026-11-15T15:41:44.444Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "79535465-11be-4817-9e09-ca8fe376eb1f",
+          "evidence": "PARK_DATA_EDITOR:apply:bbd38a2c-e97c-48c0-b620-5e9eafc0b9b8",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-de-chiemgau-20261115/audit.json",
+          "summary": "Fermeture saisonnière et reprise annoncée, tarifs datés, conditions de conduite, huit textes corrigés et cinq photos existantes contrôlées ; qualité 95/100 sans bloqueur."
+        }
+      ],
+      "nextAction": "Relever les nouveaux tarifs hiver 2026–2027 et l’ouverture quotidienne à partir du 19 décembre ; auditer les droits des cinq photos existantes et chercher une photo supplémentaire exacte avec licence vérifiable.",
       "sources": [
         {
           "label": "Relevé du site — méthode",
@@ -5649,6 +5660,21 @@
           "label": "Wiegand — références constructeur",
           "url": "https://www.wiegandslide.com/en/products/alpine-coaster/references.html?wgrls=316#location-id-2035",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Chiemgau Coaster — tarifs et conditions",
+          "url": "https://www.chiemgau-coaster.de/preise-zeiten",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Chiemgau Coaster — règles de conduite",
+          "url": "https://www.chiemgau-coaster.de/impressum/benutzungshinweise",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Chiemgau Coaster — tarifs affichés jusqu’en novembre 2026",
+          "url": "https://www.chiemgau-coaster.de/application/files/3017/6510/6819/Plakat_PreiseInfos2026-A0_englisch_30112025.pdf",
+          "accessedAt": "2026-11-15"
         }
       ],
       "countryCodeAtInventory": "DE",
