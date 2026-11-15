@@ -75768,6 +75768,195 @@
       },
       "countryCodeAtInventory": "US",
       "countryResolution": null
+    },
+    {
+      "entryId": "US-candidate-discovery-7fac0d5ef73c96",
+      "name": "Cave of the Winds — Niagara Falls",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Passerelles et plateformes au pied des chutes",
+      "locality": "10 Goat Island Loop Road, Niagara Falls, New York",
+      "siteId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T14:02:06.068Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Exploitation à l’année ; horaire officiel daté jusqu’au 31 mars 2027, accès extérieur variable selon la saison.",
+      "identityConfidence": "Billet individuel propre, adresse et opérateur vérifiés, aucune fiche PDE homonyme, quatre photos exactes.",
+      "possibleMatches": [],
+      "aliases": [
+        "Cave of the Winds Niagara",
+        "Hurricane Deck"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T14:02:06.068Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-71856095-38b6-4343-8665-c6806974e638",
+          "appliedAt": "2026-11-15T14:00:27.269Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:apply:71856095-38b6-4343-8665-c6806974e638",
+          "auditEvidence": null,
+          "summary": "Création de la fiche américaine autonome et rédaction de huit descriptions sourcées."
+        },
+        {
+          "eventId": "apply-207f4aa5-c83f-4313-b386-a891371b716a",
+          "appliedAt": "2026-11-15T14:00:39.233Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:apply:207f4aa5-c83f-4313-b386-a891371b716a",
+          "auditEvidence": null,
+          "summary": "Billets sur place, tarifs datés, fermetures fériées et accessibilité partielle intégrés."
+        },
+        {
+          "eventId": "image-f2c2529c8f5d4dbd8fc738c5e121bdb8",
+          "appliedAt": "2026-11-15T14:01:25.210Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:f2c2529c8f5d4dbd8fc738c5e121bdb8@2026-11-15T14:01:25.210Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2024 avec huit textes alternatifs, légendes et crédits : Dough4872, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-c278af43a84645e4a09988cbd52ce950",
+          "appliedAt": "2026-11-15T14:01:33.162Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:c278af43a84645e4a09988cbd52ce950@2026-11-15T14:01:33.162Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2024 avec huit textes alternatifs, légendes et crédits : Dough4872, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "image-2c4fc948cce645b18f7e5e52b75a033b",
+          "appliedAt": "2026-11-15T14:01:41.195Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:2c4fc948cce645b18f7e5e52b75a033b@2026-11-15T14:01:41.195Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2015 avec huit textes alternatifs, légendes et crédits : Larry Koester, CC BY 2.0."
+        },
+        {
+          "eventId": "image-30e89069d15c4a0193ba8b257cb3a91d",
+          "appliedAt": "2026-11-15T14:01:49.062Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:image:30e89069d15c4a0193ba8b257cb3a91d@2026-11-15T14:01:49.062Z",
+          "auditEvidence": null,
+          "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Nheyob, CC BY-SA 4.0."
+        },
+        {
+          "eventId": "apply-3667d004-1790-403a-a47a-dba09ec56695",
+          "appliedAt": "2026-11-15T14:02:06.068Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+          "evidence": "PARK_DATA_EDITOR:apply:3667d004-1790-403a-a47a-dba09ec56695",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-cave-of-the-winds-20261115/audit.json",
+          "summary": "Fiche rendue publique après quatre photos exactes et contrôle éditorial final."
+        }
+      ],
+      "nextAction": "Conserver l’historique et le post Facebook. Recontrôler les tarifs au-delà du 31 mars 2027, les créneaux de dernière vente, la fermeture des jours fériés et l’accès saisonnier au Hurricane Deck. Ne pas extrapoler le programme d’hiver à une année entière.",
+      "sources": [
+        {
+          "label": "Niagara Falls State Park — Cave of the Winds, horaires et tarifs",
+          "url": "https://www.niagarafallsstatepark.com/attractions/cave-of-the-winds/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Falls State Park — accessibilité",
+          "url": "https://www.niagarafallsstatepark.com/park-information/faqs/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Niagara Falls State Park — accès saisonnier",
+          "url": "https://www.niagarafallsstatepark.com/attractions/double-the-wonder-bundle/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "OpenStreetMap — entrée approximative",
+          "url": "https://www.openstreetmap.org/search?query=Cave%20of%20the%20Winds%20Goat%20Island",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Dough4872, CC BY-SA 4.0, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:American_Falls_and_Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Dough4872, CC BY-SA 4.0, 2024",
+          "url": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_from_Cave_of_the_Winds_July_2024.jpeg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Larry Koester, CC BY 2.0, 2015",
+          "url": "https://commons.wikimedia.org/wiki/File:Cave_of_the_Winds_walk_ways_and_decks_(21482471173).jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — Nheyob, CC BY-SA 4.0, 2026",
+          "url": "https://commons.wikimedia.org/wiki/File:Bridal_Veil_Falls_(Niagara_Falls_State_Park,_NY)_-_view_of_icy_falls_from_the_Cave_of_the_Winds_observation_deck.jpg",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Cave of the Winds — Niagara Falls",
+            "source": "Niagara Falls State Park",
+            "url": "https://www.niagarafallsstatepark.com/attractions/cave-of-the-winds/",
+            "family": "Waterfall walkways",
+            "sourceVenueName": "Goat Island",
+            "sourceLifecycleSignal": "Operating year-round",
+            "sourceLocality": "Niagara Falls, New York"
+          }
+        ],
+        "rationale": "Billet à créneau propre au sein du parc public, distinct de Maid of the Mist et de Cave of the Winds au Colorado."
+      },
+      "publication": {
+        "site": {
+          "status": "Published",
+          "url": "https://amusement-parks.fun/fr/attraction/3e968ae6-1ab4-436d-a16c-9ed19cef3b47/skyview-atlanta",
+          "publishedAtUtc": "2026-11-01T13:07:19.238Z",
+          "verifiedAtUtc": "2026-11-01T13:09:25.995Z",
+          "evidence": "PARK_DATA_EDITOR:apply:079cbd6f-a946-4425-b3fe-908de9c8a08d"
+        },
+        "facebook": {
+          "id": "001657245ec0455bab16889677f7d077",
+          "status": "Published",
+          "publishedAtUtc": "2026-11-01T13:08:04.081Z",
+          "externalPostId": "1285475681307050_122125608873424431",
+          "externalPostUrl": "https://www.facebook.com/1285475681307050/posts/122125608873424431",
+          "evidence": "PARK_DATA_EDITOR:facebook:001657245ec0455bab16889677f7d077"
+        }
+      },
+      "mediaEvidence": {
+        "photoIds": [
+          "7ed4a60ce7564f08a075e6a5ea4485a9",
+          "945e85d496ec4a468325e918a6c3b735"
+        ],
+        "photosPublishedAtUtc": "2026-11-01T13:06:46.235Z",
+        "photoPublicationReceipt": "PARK_DATA_EDITOR:apply:c742e24a-6cc8-432b-a142-a703428eb654",
+        "auditPath": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json"
+      },
+      "lastEditorialAudit": {
+        "evidence": "docs/roadmaps/world-integration/evidence/standalone-us-skyview-atlanta-20261101/audit.json",
+        "score": 91,
+        "publicationBlockers": [],
+        "gapCount": 1
+      },
+      "countryCodeAtInventory": "US",
+      "countryResolution": null
     }
   ]
 }

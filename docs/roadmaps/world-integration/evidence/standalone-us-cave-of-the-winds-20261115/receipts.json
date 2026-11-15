@@ -1,0 +1,103 @@
+{
+  "entryId": "US-candidate-discovery-7fac0d5ef73c96",
+  "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+  "integrationHistory": [
+    {
+      "eventId": "apply-71856095-38b6-4343-8665-c6806974e638",
+      "appliedAt": "2026-11-15T14:00:27.269Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:apply:71856095-38b6-4343-8665-c6806974e638",
+      "auditEvidence": null,
+      "summary": "Création de la fiche américaine autonome et rédaction de huit descriptions sourcées."
+    },
+    {
+      "eventId": "apply-207f4aa5-c83f-4313-b386-a891371b716a",
+      "appliedAt": "2026-11-15T14:00:39.233Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:apply:207f4aa5-c83f-4313-b386-a891371b716a",
+      "auditEvidence": null,
+      "summary": "Billets sur place, tarifs datés, fermetures fériées et accessibilité partielle intégrés."
+    },
+    {
+      "eventId": "image-f2c2529c8f5d4dbd8fc738c5e121bdb8",
+      "appliedAt": "2026-11-15T14:01:25.210Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:image:f2c2529c8f5d4dbd8fc738c5e121bdb8@2026-11-15T14:01:25.210Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2024 avec huit textes alternatifs, légendes et crédits : Dough4872, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-c278af43a84645e4a09988cbd52ce950",
+      "appliedAt": "2026-11-15T14:01:33.162Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:image:c278af43a84645e4a09988cbd52ce950@2026-11-15T14:01:33.162Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2024 avec huit textes alternatifs, légendes et crédits : Dough4872, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "image-2c4fc948cce645b18f7e5e52b75a033b",
+      "appliedAt": "2026-11-15T14:01:41.195Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:image:2c4fc948cce645b18f7e5e52b75a033b@2026-11-15T14:01:41.195Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2015 avec huit textes alternatifs, légendes et crédits : Larry Koester, CC BY 2.0."
+    },
+    {
+      "eventId": "image-30e89069d15c4a0193ba8b257cb3a91d",
+      "appliedAt": "2026-11-15T14:01:49.062Z",
+      "outcome": "partial",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:image:30e89069d15c4a0193ba8b257cb3a91d@2026-11-15T14:01:49.062Z",
+      "auditEvidence": null,
+      "summary": "Photo exacte de 2026 avec huit textes alternatifs, légendes et crédits : Nheyob, CC BY-SA 4.0."
+    },
+    {
+      "eventId": "apply-3667d004-1790-403a-a47a-dba09ec56695",
+      "appliedAt": "2026-11-15T14:02:06.068Z",
+      "outcome": "completed",
+      "entityKind": "StandaloneAttraction",
+      "entityId": "3a4c8166-5edd-405b-93d5-25b036b88964",
+      "evidence": "PARK_DATA_EDITOR:apply:3667d004-1790-403a-a47a-dba09ec56695",
+      "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-cave-of-the-winds-20261115/audit.json",
+      "summary": "Fiche rendue publique après quatre photos exactes et contrôle éditorial final."
+    }
+  ],
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127460833424431",
+    "publishedAtUtc": "2026-11-15T14:02:56.4268503Z"
+  },
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "f2c2529c8f5d4dbd8fc738c5e121bdb8",
+      "uploadedAtUtc": "2026-11-15T14:01:21.81Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "c278af43a84645e4a09988cbd52ce950",
+      "uploadedAtUtc": "2026-11-15T14:01:29.748Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "2c4fc948cce645b18f7e5e52b75a033b",
+      "uploadedAtUtc": "2026-11-15T14:01:37.792Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "30e89069d15c4a0193ba8b257cb3a91d",
+      "uploadedAtUtc": "2026-11-15T14:01:45.667Z"
+    }
+  ]
+}
