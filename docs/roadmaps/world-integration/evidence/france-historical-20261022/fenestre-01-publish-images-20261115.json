@@ -1,0 +1,474 @@
+{
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "outcome": "partial",
+  "scopeAudit": "fenestre-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "identicalExceptMetadata": true,
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:31:16.8678121Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:38:17.5868354Z"
+    }
+  },
+  "document": {
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-fenestre-audited-scope-publication",
+        "notes": "Only3personallyreviewed8languageitems,2existingofficialphotos and1972OwnershipChange. Existingpubliccorpus preserved;Guignol andParcoursbotanique private. Unknown lifecycleTapis/gonflables preserved. Auditexport15:31:16.8678121Z and explicit ownerpublication/scorewaiver. Existing2020parkphoto is contextual for1972,not a photograph oftransfer."
+      },
+      "park": {
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "0f5f6630-8784-431e-b123-46dda636f359",
+          "id": "0f5f6630-8784-431e-b123-46dda636f359",
+          "name": "Les Tapis Volants",
+          "category": "Attraction",
+          "type": "FlatRide"
+        },
+        {
+          "key": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "id": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "name": "Rencontre avec Cacahuète",
+          "category": "Show",
+          "type": "MeetAndGreet"
+        }
+      ],
+      "images": [
+        {
+          "imageId": "822bb5768eb7442ca737386adb185775",
+          "id": "822bb5768eb7442ca737386adb185775",
+          "ownerType": "ParkItem",
+          "ownerId": "0f5f6630-8784-431e-b123-46dda636f359",
+          "ownerKey": "0f5f6630-8784-431e-b123-46dda636f359",
+          "category": "ParkItem",
+          "isPublished": true,
+          "isCurrent": false,
+          "setAsCurrent": false,
+          "withWatermark": false,
+          "isWatermarked": false,
+          "sourceUrl": "https://www.parcfenestre.com/images/gallery/bagallery/gallery-3/thumbnail/category-1/IMG_1666.JPG?1636038413",
+          "internalUrl": "/images/822bb5768eb7442ca737386adb185775",
+          "description": "En 2021, les tapis rouges passent entre les bras jaunes du manège, devant les conifères de Fenestre.",
+          "altTexts": [
+            {
+              "languageCode": "fr",
+              "value": "Les Tapis Volants et leurs génies colorés à Fenestre, avec Fenes Tower à l’arrière-plan."
+            },
+            {
+              "languageCode": "en",
+              "value": "Les Tapis Volants and their colourful genies at Fenestre, with Fenes Tower in the background."
+            },
+            {
+              "languageCode": "de",
+              "value": "Les Tapis Volants mit ihren bunten Flaschengeistern in Fenestre; im Hintergrund steht Fenes Tower."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Les Tapis Volants met hun kleurrijke geesten in Fenestre, met Fenes Tower op de achtergrond."
+            },
+            {
+              "languageCode": "it",
+              "value": "Les Tapis Volants e i loro geni colorati a Fenestre, con Fenes Tower sullo sfondo."
+            },
+            {
+              "languageCode": "es",
+              "value": "Les Tapis Volants y sus genios de colores en Fenestre, con Fenes Tower al fondo."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Les Tapis Volants z kolorowymi dżinami w Fenestre, z Fenes Tower w tle."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Les Tapis Volants e os seus génios coloridos em Fenestre, com a Fenes Tower ao fundo."
+            }
+          ],
+          "captions": [
+            {
+              "languageCode": "fr",
+              "value": "En 2021, les tapis rouges passent entre les bras jaunes du manège, devant les conifères de Fenestre."
+            },
+            {
+              "languageCode": "en",
+              "value": "In 2021, the red carpets pass between the ride’s yellow arms in front of Fenestre’s conifers."
+            },
+            {
+              "languageCode": "de",
+              "value": "2021 ziehen die roten Teppiche zwischen den gelben Armen des Fahrgeschäfts vor Fenestres Nadelbäumen vorbei."
+            },
+            {
+              "languageCode": "nl",
+              "value": "In 2021 passeren de rode tapijten de gele armen van de attractie, voor de naaldbomen van Fenestre."
+            },
+            {
+              "languageCode": "it",
+              "value": "Nel 2021 i tappeti rossi passano tra i bracci gialli della giostra, davanti alle conifere di Fenestre."
+            },
+            {
+              "languageCode": "es",
+              "value": "En 2021, las alfombras rojas pasan entre los brazos amarillos de la atracción, ante las coníferas de Fenestre."
+            },
+            {
+              "languageCode": "pl",
+              "value": "W 2021 roku czerwone dywany przesuwają się między żółtymi ramionami karuzeli na tle drzew iglastych Fenestre."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Em 2021, os tapetes vermelhos passam entre os braços amarelos da atração, diante das coníferas de Fenestre."
+            }
+          ],
+          "credits": [
+            {
+              "languageCode": "fr",
+              "value": "Parc Fenestre — site officiel"
+            },
+            {
+              "languageCode": "en",
+              "value": "Parc Fenestre — official website"
+            },
+            {
+              "languageCode": "de",
+              "value": "Parc Fenestre — offizielle Website"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Parc Fenestre — officiële website"
+            },
+            {
+              "languageCode": "it",
+              "value": "Parc Fenestre — sito ufficiale"
+            },
+            {
+              "languageCode": "es",
+              "value": "Parc Fenestre — sitio oficial"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Parc Fenestre — oficjalna strona"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Parc Fenestre — sítio oficial"
+            }
+          ],
+          "tagIds": [],
+          "geoLocation": null,
+          "originalFileName": "codex-import.jpg",
+          "contentType": "image/jpeg",
+          "width": 900,
+          "height": 600,
+          "sizeInBytes": 804383
+        },
+        {
+          "imageId": "e5b0242ce14848efaf8dd9a4d7a338cb",
+          "id": "e5b0242ce14848efaf8dd9a4d7a338cb",
+          "ownerType": "ParkItem",
+          "ownerId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "ownerKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "category": "ParkItem",
+          "isPublished": true,
+          "isCurrent": false,
+          "setAsCurrent": false,
+          "withWatermark": false,
+          "isWatermarked": false,
+          "sourceUrl": "https://www.parcfenestre.com/images/groupe/anniversaire.jpg",
+          "internalUrl": "/images/e5b0242ce14848efaf8dd9a4d7a338cb",
+          "description": "Cacahuète dans le décor des goûters d’anniversaire de Fenestre.",
+          "altTexts": [
+            {
+              "languageCode": "fr",
+              "value": "La mascotte Cacahuète, un âne gris costumé, auprès d’une table rose garnie de ballons sur la terrasse du snack de Fenestre."
+            },
+            {
+              "languageCode": "en",
+              "value": "Cacahuète, a costumed grey donkey, beside a pink table decorated with balloons on Fenestre’s snack bar terrace."
+            },
+            {
+              "languageCode": "de",
+              "value": "Maskottchen Cacahuète im grauen Eselskostüm neben einem rosa Tisch mit Luftballons auf Fenestres Imbissterrasse."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Mascotte Cacahuète in een grijs ezelkostuum naast een roze tafel met ballonnen op het terras van de snackbar in Fenestre."
+            },
+            {
+              "languageCode": "it",
+              "value": "La mascotte Cacahuète, un asino grigio in costume, accanto a un tavolo rosa decorato con palloncini sulla terrazza dello snack di Fenestre."
+            },
+            {
+              "languageCode": "es",
+              "value": "La mascota Cacahuète, un burro gris disfrazado, junto a una mesa rosa adornada con globos en la terraza del bar de Fenestre."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Maskotka Cacahuète w kostiumie szarego osła przy różowym stole ozdobionym balonami na tarasie baru w Fenestre."
+            },
+            {
+              "languageCode": "pt",
+              "value": "A mascote Cacahuète, um burro cinzento em fato, junto a uma mesa cor-de-rosa decorada com balões na esplanada do snack-bar de Fenestre."
+            }
+          ],
+          "captions": [
+            {
+              "languageCode": "fr",
+              "value": "Cacahuète dans le décor des goûters d’anniversaire de Fenestre."
+            },
+            {
+              "languageCode": "en",
+              "value": "Cacahuète in Fenestre’s birthday party setting."
+            },
+            {
+              "languageCode": "de",
+              "value": "Cacahuète in der Kulisse der Geburtstagsfeiern von Fenestre."
+            },
+            {
+              "languageCode": "nl",
+              "value": "Cacahuète in het decor van de verjaardagsfeestjes in Fenestre."
+            },
+            {
+              "languageCode": "it",
+              "value": "Cacahuète nello scenario delle feste di compleanno di Fenestre."
+            },
+            {
+              "languageCode": "es",
+              "value": "Cacahuète en el escenario de los cumpleaños de Fenestre."
+            },
+            {
+              "languageCode": "pl",
+              "value": "Cacahuète w scenerii przyjęć urodzinowych w Fenestre."
+            },
+            {
+              "languageCode": "pt",
+              "value": "Cacahuète no cenário das festas de aniversário de Fenestre."
+            }
+          ],
+          "credits": [
+            {
+              "languageCode": "fr",
+              "value": "Parc Fenestre — site officiel"
+            },
+            {
+              "languageCode": "en",
+              "value": "Parc Fenestre — official website"
+            },
+            {
+              "languageCode": "de",
+              "value": "Parc Fenestre — offizielle Website"
+            },
+            {
+              "languageCode": "nl",
+              "value": "Parc Fenestre — officiële website"
+            },
+            {
+              "languageCode": "it",
+              "value": "Parc Fenestre — sito ufficiale"
+            },
+            {
+              "languageCode": "es",
+              "value": "Parc Fenestre — sitio oficial"
+            },
+            {
+              "languageCode": "pl",
+              "value": "Parc Fenestre — oficjalna strona"
+            },
+            {
+              "languageCode": "pt",
+              "value": "Parc Fenestre — sítio oficial"
+            }
+          ],
+          "tagIds": [],
+          "geoLocation": null,
+          "originalFileName": "codex-import.jpg",
+          "contentType": "image/jpeg",
+          "width": 720,
+          "height": 960,
+          "sizeInBytes": 116655
+        }
+      ]
+    }
+  },
+  "preview": {
+    "operationId": "f20941ba-531c-4861-86a8-2c36ca2e3615",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:39:00.3629058Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "822bb5768eb7442ca737386adb185775",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e5b0242ce14848efaf8dd9a4d7a338cb",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "846a5a36-1614-454c-bf9c-cd5cf90f7041",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:39:39.4953266Z",
+    "appliedAtUtc": "2026-11-15T15:39:39.4953272Z",
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 2,
+      "deleted": 0,
+      "unchanged": 3,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "822bb5768eb7442ca737386adb185775",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e5b0242ce14848efaf8dd9a4d7a338cb",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookNewSend": false,
+  "globalCompletion": false
+}

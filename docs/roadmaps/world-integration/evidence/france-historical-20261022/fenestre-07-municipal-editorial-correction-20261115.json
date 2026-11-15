@@ -1,0 +1,243 @@
+{
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "outcome": "partial",
+  "scopeAudit": "fenestre-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "identicalExceptMetadata": true,
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:31:16.8678121Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:38:17.5868354Z"
+    }
+  },
+  "document": {
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "park": {
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "key": "park",
+        "name": "Parc Fenestre"
+      },
+      "history": {
+        "events": [
+          {
+            "key": "fenestre-history-municipal-1972",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+            "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+            "parkItemId": null,
+            "itemKey": null,
+            "parkItemKey": null,
+            "contextParkId": null,
+            "year": 1972,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "OwnershipChange",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Fenestre devient un parc municipal"
+              },
+              {
+                "languageCode": "en",
+                "value": "Fenestre becomes a municipal park"
+              },
+              {
+                "languageCode": "de",
+                "value": "Fenestre wird zum städtischen Park"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Fenestre wordt een gemeentepark"
+              },
+              {
+                "languageCode": "it",
+                "value": "Fenestre diventa un parco comunale"
+              },
+              {
+                "languageCode": "es",
+                "value": "Fenestre se convierte en parque municipal"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Fenestre staje się parkiem miejskim"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Fenestre torna-se um parque municipal"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "Le jardin thermal, dont l’aménagement remonte à 1874, est repris par La Bourboule en 1972. La municipalisation s’accompagne d’un réaménagement de Fenestre."
+              },
+              {
+                "languageCode": "en",
+                "value": "In 1972, La Bourboule takes over the garden originally laid out in 1874 for the spa town. The transfer to municipal ownership brings a new phase of landscaping at Fenestre."
+              },
+              {
+                "languageCode": "de",
+                "value": "La Bourboule übernimmt 1972 den Garten, dessen Anlage für den Kurort 1874 begann. Mit dem Übergang in städtisches Eigentum wird Fenestre neu gestaltet."
+              },
+              {
+                "languageCode": "nl",
+                "value": "In 1972 neemt La Bourboule de tuin over die vanaf 1874 voor het kuuroord werd aangelegd. De eigendomsoverdracht aan de gemeente gaat samen met een herinrichting van Fenestre."
+              },
+              {
+                "languageCode": "it",
+                "value": "Nel 1972 La Bourboule acquisisce il giardino termale, la cui realizzazione era iniziata nel 1874. Il passaggio alla proprietà comunale si accompagna a nuovi interventi di sistemazione di Fenestre."
+              },
+              {
+                "languageCode": "es",
+                "value": "En 1972 La Bourboule adquiere el jardín termal que había comenzado a trazarse en 1874. La incorporación al patrimonio municipal va acompañada de una remodelación de Fenestre."
+              },
+              {
+                "languageCode": "pl",
+                "value": "W 1972 roku La Bourboule przejmuje ogród uzdrowiskowy, którego zakładanie rozpoczęto w 1874 roku. Wraz ze zmianą właściciela następuje ponowne zagospodarowanie Fenestre."
+              },
+              {
+                "languageCode": "pt",
+                "value": "Em 1972, La Bourboule adquire o jardim termal cuja criação começara em 1874. A passagem para a propriedade municipal é acompanhada por uma remodelação de Fenestre."
+              }
+            ],
+            "mainImageId": "142c9a0de23e41f8961aa13a08be845e",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": "Commune de La Bourboule",
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Inventaire général du patrimoine — municipalisation et réaménagement en 1972",
+                "url": "https://pop.culture.gouv.fr/notice/merimee/IA63000689",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Route des Villes d’Eaux du Massif Central — patrimoine de La Bourboule, 2014–2015, p.17",
+                "url": "https://www.villesdeaux.com/wp-content/uploads/2023/06/2014-2015-patrimoine-la-bourboule.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "cc387940-3f13-464b-af4e-6625b48e447c",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:46:50.7033302Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8996e208-0832-4a0c-aff4-e577c587c02b",
+        "entityKey": "fenestre-history-municipal-1972",
+        "displayName": "Fenestre devient un parc municipal",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Die Gemeinde übernimmt den Parc Fenestre und beginnt mit seiner Neugestaltung. Damit wird der Garten dauerhaft Teil der öffentlichen Freiräume La Bourboules. Die von der Kurstadt geprägte Baumlandschaft und ihre Spazierwege bleiben dabei erhalten., en:The municipality takes ownership of Parc Fenestre and begins redeveloping it. This change establishes the garden as a lasting part of La Bourboule’s public spaces, while retaining the wooded landscape and walking areas inherited from the spa town., es:El municipio pasa a ser propietario del Parc Fenestre e inicia su remodelación. El cambio integra de forma duradera el jardín en los espacios públicos de La Bourboule, conservando el paisaje arbolado y los paseos heredados de la ciudad termal., fr:La commune devient propriétaire du parc Fenestre et engage son réaménagement. Ce changement inscrit durablement le jardin dans les espaces publics de La Bourboule, tout en conservant le paysage arboré et les lieux de promenade hérités de la station thermale., it:Il comune diventa proprietario del Parc Fenestre e ne avvia la sistemazione. Il cambiamento inserisce stabilmente il giardino negli spazi pubblici di La Bourboule, conservando il paesaggio alberato e i luoghi di passeggio ereditati dalla tradizione termale., nl:De gemeente wordt eigenaar van Parc Fenestre en begint met de herinrichting. Daardoor krijgt de tuin een blijvende plaats tussen de openbare ruimten van La Bourboule, met behoud van het boomrijke landschap en de wandelgebieden uit de kuurtraditie., pl:Gmina przejmuje Parc Fenestre i rozpoczyna jego przebudowę. Ogród na stałe wchodzi do przestrzeni publicznych La Bourboule, zachowując zadrzewiony krajobraz oraz miejsca spacerów związane z uzdrowiskową przeszłością miasta., pt:O município torna-se proprietário do Parc Fenestre e inicia a sua remodelação. A mudança integra duradouramente o jardim nos espaços públicos de La Bourboule, preservando a paisagem arborizada e os passeios herdados da tradição termal.",
+            "newValue": "de:La Bourboule übernimmt 1972 den Garten, dessen Anlage für den Kurort 1874 begann. Mit dem Übergang in städtisches Eigentum wird Fenestre neu gestaltet., en:In 1972, La Bourboule takes over the garden originally laid out in 1874 for the spa town. The transfer to municipal ownership brings a new phase of landscaping at Fenestre., es:En 1972 La Bourboule adquiere el jardín termal que había comenzado a trazarse en 1874. La incorporación al patrimonio municipal va acompañada de una remodelación de Fenestre., fr:Le jardin thermal, dont l’aménagement remonte à 1874, est repris par La Bourboule en 1972. La municipalisation s’accompagne d’un réaménagement de Fenestre., it:Nel 1972 La Bourboule acquisisce il giardino termale, la cui realizzazione era iniziata nel 1874. Il passaggio alla proprietà comunale si accompagna a nuovi interventi di sistemazione di Fenestre., nl:In 1972 neemt La Bourboule de tuin over die vanaf 1874 voor het kuuroord werd aangelegd. De eigendomsoverdracht aan de gemeente gaat samen met een herinrichting van Fenestre., pl:W 1972 roku La Bourboule przejmuje ogród uzdrowiskowy, którego zakładanie rozpoczęto w 1874 roku. Wraz ze zmianą właściciela następuje ponowne zagospodarowanie Fenestre., pt:Em 1972, La Bourboule adquire o jardim termal cuja criação começara em 1874. A passagem para a propriedade municipal é acompanhada por uma remodelação de Fenestre."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "607791e2-4f27-4710-9a72-0218b6d42a64",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:47:16.8447499Z",
+    "appliedAtUtc": "2026-11-15T15:47:16.8447506Z",
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8996e208-0832-4a0c-aff4-e577c587c02b",
+        "entityKey": "fenestre-history-municipal-1972",
+        "displayName": "Fenestre devient un parc municipal",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "summaries",
+            "oldValue": "de:Die Gemeinde übernimmt den Parc Fenestre und beginnt mit seiner Neugestaltung. Damit wird der Garten dauerhaft Teil der öffentlichen Freiräume La Bourboules. Die von der Kurstadt geprägte Baumlandschaft und ihre Spazierwege bleiben dabei erhalten., en:The municipality takes ownership of Parc Fenestre and begins redeveloping it. This change establishes the garden as a lasting part of La Bourboule’s public spaces, while retaining the wooded landscape and walking areas inherited from the spa town., es:El municipio pasa a ser propietario del Parc Fenestre e inicia su remodelación. El cambio integra de forma duradera el jardín en los espacios públicos de La Bourboule, conservando el paisaje arbolado y los paseos heredados de la ciudad termal., fr:La commune devient propriétaire du parc Fenestre et engage son réaménagement. Ce changement inscrit durablement le jardin dans les espaces publics de La Bourboule, tout en conservant le paysage arboré et les lieux de promenade hérités de la station thermale., it:Il comune diventa proprietario del Parc Fenestre e ne avvia la sistemazione. Il cambiamento inserisce stabilmente il giardino negli spazi pubblici di La Bourboule, conservando il paesaggio alberato e i luoghi di passeggio ereditati dalla tradizione termale., nl:De gemeente wordt eigenaar van Parc Fenestre en begint met de herinrichting. Daardoor krijgt de tuin een blijvende plaats tussen de openbare ruimten van La Bourboule, met behoud van het boomrijke landschap en de wandelgebieden uit de kuurtraditie., pl:Gmina przejmuje Parc Fenestre i rozpoczyna jego przebudowę. Ogród na stałe wchodzi do przestrzeni publicznych La Bourboule, zachowując zadrzewiony krajobraz oraz miejsca spacerów związane z uzdrowiskową przeszłością miasta., pt:O município torna-se proprietário do Parc Fenestre e inicia a sua remodelação. A mudança integra duradouramente o jardim nos espaços públicos de La Bourboule, preservando a paisagem arborizada e os passeios herdados da tradição termal.",
+            "newValue": "de:La Bourboule übernimmt 1972 den Garten, dessen Anlage für den Kurort 1874 begann. Mit dem Übergang in städtisches Eigentum wird Fenestre neu gestaltet., en:In 1972, La Bourboule takes over the garden originally laid out in 1874 for the spa town. The transfer to municipal ownership brings a new phase of landscaping at Fenestre., es:En 1972 La Bourboule adquiere el jardín termal que había comenzado a trazarse en 1874. La incorporación al patrimonio municipal va acompañada de una remodelación de Fenestre., fr:Le jardin thermal, dont l’aménagement remonte à 1874, est repris par La Bourboule en 1972. La municipalisation s’accompagne d’un réaménagement de Fenestre., it:Nel 1972 La Bourboule acquisisce il giardino termale, la cui realizzazione era iniziata nel 1874. Il passaggio alla proprietà comunale si accompagna a nuovi interventi di sistemazione di Fenestre., nl:In 1972 neemt La Bourboule de tuin over die vanaf 1874 voor het kuuroord werd aangelegd. De eigendomsoverdracht aan de gemeente gaat samen met een herinrichting van Fenestre., pl:W 1972 roku La Bourboule przejmuje ogród uzdrowiskowy, którego zakładanie rozpoczęto w 1874 roku. Wraz ze zmianą właściciela następuje ponowne zagospodarowanie Fenestre., pt:Em 1972, La Bourboule adquire o jardim termal cuja criação começara em 1874. A passagem para a propriedade municipal é acompanhada por uma remodelação de Fenestre."
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookNewSend": false,
+  "globalCompletion": false
+}

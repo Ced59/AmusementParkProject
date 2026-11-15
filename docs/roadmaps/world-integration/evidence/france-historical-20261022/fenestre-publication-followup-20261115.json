@@ -1,0 +1,460 @@
+{
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "checkedAtUtc": "2026-11-15T15:52:48.598826+00:00",
+  "globalOutcome": "partial",
+  "publicationScope": "Three existing item records, two existing official photographs and sourced municipal ownership event1972.",
+  "lastActualIntegrationAtUtc": "2026-11-15T15:47:16.8447506Z",
+  "operations": [
+    {
+      "operationId": "846a5a36-1614-454c-bf9c-cd5cf90f7041",
+      "appliedAtUtc": "2026-11-15T15:39:39.4953272Z",
+      "proof": "fenestre-01-publish-images-20261115.json"
+    },
+    {
+      "operationId": "2e31d9ac-eebb-4b50-ab4c-b4b56f9ba821",
+      "appliedAtUtc": "2026-11-15T15:43:51.8909341Z",
+      "proof": "fenestre-02-publish-items-fact-20261115.json"
+    },
+    {
+      "operationId": "607791e2-4f27-4710-9a72-0218b6d42a64",
+      "appliedAtUtc": "2026-11-15T15:47:16.8447506Z",
+      "proof": "fenestre-07-municipal-editorial-correction-20261115.json"
+    }
+  ],
+  "counts": {
+    "items": 56,
+    "publicItems": 54,
+    "privateItems": 2,
+    "ownedMedia": 77,
+    "publicOwnedMedia": 77,
+    "sharedReferenceMedia": 3,
+    "publishedFacts": 13,
+    "articles": 3,
+    "publicMapYears": [
+      2023,
+      2024,
+      2026
+    ]
+  },
+  "auditEvidence": "fenestre-publication-scope-audit-20261115.json",
+  "auditExportAtUtc": "2026-11-15T15:31:16.8678121Z",
+  "publicationExportAtUtc": "2026-11-15T15:38:17.5868354Z",
+  "publicationExportComparison": {
+    "identicalExceptMetadata": true,
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:31:16.8678121Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:38:17.5868354Z"
+    }
+  },
+  "completeness": {
+    "action": "Completeness",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 101,
+      "earnedPoints": 101,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "startedAtUtc": "2026-11-15T15:47:56.1094973Z",
+    "receivedAtUtc": "2026-11-15T15:47:57.4855178Z"
+  },
+  "historyDiagnostics": {
+    "startedAtUtc": "2026-11-15T15:48:35.2542085Z",
+    "action": "HistoryDiagnostics",
+    "receivedAtUtc": "2026-11-15T15:48:36.3650081Z",
+    "result": {
+      "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+      "parkName": "Parc Fenestre",
+      "factCount": 44,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1870,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1920,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1930,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1970,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 0
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 13
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 31
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 13,
+        "sourcedFactCount": 13,
+        "majorFactCount": 9,
+        "indexableKeyYears": []
+      }
+    }
+  },
+  "idempotence": {
+    "operationId": "4ed28f88-18d6-470f-8f64-f2d29c4c9c6e",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:48:16.5712758Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "822bb5768eb7442ca737386adb185775",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e5b0242ce14848efaf8dd9a4d7a338cb",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Unchanged",
+        "matchedBy": "imageId",
+        "fields": []
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8996e208-0832-4a0c-aff4-e577c587c02b",
+        "entityKey": "fenestre-history-municipal-1972",
+        "displayName": "Fenestre devient un parc municipal",
+        "changeType": "Unchanged",
+        "matchedBy": "ownerKey",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "editorialCorrection": {
+    "personallyAuthoredAndReviewedLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "reason": "New 1972 summary repeated the existing historical article; rewrite focuses on the dated ownership transition and landscaping, with no copied passage.",
+    "sourceFacts": "1874 garden creation, 1972 municipal ownership and redevelopment, already sourced POP and Villes d’Eaux.",
+    "fieldsChanged": "Eight summaries only; dates, types, visibility, sources, contextual photo and article unchanged.",
+    "priorCompleteness": {
+      "result": {
+        "completenessScore": 95,
+        "dataQualityLevel": "Excellent",
+        "applicableMaxPoints": 101,
+        "earnedPoints": 101,
+        "publicationBlockers": [
+          "public-text.formulaic-content"
+        ],
+        "formulaicPublicTextIssue": {
+          "matchType": "long-sequence",
+          "languageCode": "nl",
+          "firstDocumentIndex": 1833,
+          "secondDocumentIndex": 1937,
+          "firstDocumentSha256": "1b89a3beeb63f4e0abb81c41d755e6cbfa9846b32728a35b817ad6122962af4f",
+          "secondDocumentSha256": "5b2e7b1202eddc1d32ba7c6aecf62bdec4735835eb733b48bd7e379471bc2933",
+          "fingerprintSha256": "056ccd1a24315dbd9208237ac9c9ffebd6d0cb550619042b97d02f0485271416",
+          "firstDocumentPreview": "Fenestre wordt in 1972 gemeentelijk eigendom en krijgt een herinrichting. De tuin verwerft daarmee een blijvende plaats tussen de openbare ruimten van La Bourboule. Het landschap bestaat uit gazons, bloemperken, boomgroepen en een vijver; s…",
+          "secondDocumentPreview": "De gemeente wordt eigenaar van Parc Fenestre en begint met de herinrichting. Daardoor krijgt de tuin een blijvende plaats tussen de openbare ruimten van La Bourboule, met behoud van het boomrijke landschap en de wandelgebieden uit de kuurtr…",
+          "fingerprintPreview": "een blijvende plaats tussen de openbare ruimten van la"
+        }
+      },
+      "startedAtUtc": "2026-11-15T15:44:57.7061662Z",
+      "receivedAtUtc": "2026-11-15T15:44:59.0349151Z",
+      "action": "Completeness"
+    }
+  },
+  "publicChecks": {
+    "evidence": "fenestre-publication-public-checks-20261115.json",
+    "pages200": 72,
+    "parkDescriptionsExact": 8,
+    "newItemDescriptionsExact": 24,
+    "articlePages": 24,
+    "articleBlocksExact": 208,
+    "newImageBinaries200": 2,
+    "brokenImages": 0,
+    "overflow": 0,
+    "rawTechnicalWords": 0,
+    "normalItemNavigations": 3,
+    "normalArticleNavigations": 3,
+    "normalHistoryNavigations": 8,
+    "officialMapCatalogue": {
+      "2023": 8,
+      "2024": 8,
+      "2026": 8
+    },
+    "note": "Initial map text check inspected the interactive map tab and footer year, not the official-map catalogue; all three year options subsequently verified in the official maps tab in eight languages."
+  },
+  "remainingPublicDefects": [
+    {
+      "kind": "historyNarrative",
+      "scope": "All eight park timeline routes",
+      "observed": "1972 OwnerChange/year/two sources visible, but authored title/summary absent; normal page navigation receives narrative:null for this fact. Existing article text displays correctly.",
+      "action": "Application history projection needs a separate correction; no speculative data rewrite, no raw enum/type substitution."
+    },
+    {
+      "kind": "imageAlternativeTextLocale",
+      "scope": "Two new images, seven non-English locales",
+      "observed": "Both images render correctly but always use their English alt despite eight correct localized metadata records.",
+      "action": "Application image locale selection needs a separate correction; no reimport or misleading metadata rewrite."
+    }
+  ],
+  "facebook": {
+    "official": {
+      "receivedAtUtc": "2026-11-15T15:45:52.0232005Z",
+      "startedAtUtc": "2026-11-15T15:45:51.5563009Z",
+      "action": "ResolveFacebookPublication",
+      "result": {
+        "url": "https://amusement-parks.fun/fr/park/4af8f8f8-2be7-4438-a02f-0054b36cb25e/parc-fenestre",
+        "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc Fenestre ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc Fenestre! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/4af8f8f8-2be7-4438-a02f-0054b36cb25e/parc-fenestre\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+        "targetKind": "Park",
+        "targetName": "Parc Fenestre",
+        "imageOwnerType": "Park",
+        "imageOwnerId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "hasPublishedParkAnnouncement": true,
+        "parkAnnouncementId": "e5c5a346e8b1477f8bea798646ff0530",
+        "parkAnnouncementStatus": "Published",
+        "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122124038499424431",
+        "images": {
+          "data": [
+            {
+              "id": "6b3a893346794328a9a54e8598db5e31",
+              "label": "L’entrée arborée de Fenestre, à La Bourboule, en août 2020.",
+              "isCurrent": true,
+              "width": 1280,
+              "height": 1920
+            },
+            {
+              "id": "d34f6b31e1ec450188ddbc9fa1bbc804",
+              "label": "Le bassin et ses rives plantées, en septembre 2014.",
+              "isCurrent": false,
+              "width": 1280,
+              "height": 960
+            },
+            {
+              "id": "6f33ccc9f3bf433fae440c4c155d8c5d",
+              "label": "Les pelouses et les équipements de plein air du jardin, en août 2020.",
+              "isCurrent": false,
+              "width": 1280,
+              "height": 853
+            },
+            {
+              "id": "142c9a0de23e41f8961aa13a08be845e",
+              "label": "Le paysage ouvert des grandes pelouses de Fenestre en août 2020.",
+              "isCurrent": false,
+              "width": 1280,
+              "height": 853
+            },
+            {
+              "id": "fc06fbac9f2c4a82be34c9e6fa9a14ad",
+              "label": "L’entrée du Jardin des vivaces, dans le parc de Fenestre en août 2020.",
+              "isCurrent": false,
+              "width": 1280,
+              "height": 853
+            },
+            {
+              "id": "a83e52a462d1452d936599d2a8379f27",
+              "label": "Le lac de Fenestre sur une carte postale ancienne conservée par l’Inventaire du patrimoine.",
+              "isCurrent": false,
+              "width": 751,
+              "height": 600
+            }
+          ],
+          "pagination": {
+            "totalItems": 7,
+            "totalPages": 2,
+            "currentPage": 1,
+            "itemsPerPage": 6
+          }
+        }
+      }
+    },
+    "anonymous": {
+      "url": "https://www.facebook.com/1285475681307050/posts/122124038499424431",
+      "mode": "Anonymous public Chromium; optional cookies declined when offered; no login, no publication.",
+      "optionalCookiesDeclined": true,
+      "httpStatus": 200,
+      "finalUrl": "https://www.facebook.com/61592732938801/posts/122124038499424431/",
+      "body": "Log in\nForgotten account?\nThis content isn't available at the moment\nWhen this happens, it's usually because the owner only shared it with a small group of people or changed who can see it, or it's been deleted.\nGo to Feed\nGo back\nVisit Help Centre",
+      "bodySha256": "90df80c47e6be14eeef0018eec3d5875a96adcd2e397bcd3d40f137c62f63f2e",
+      "checkedAtUtc": "2026-11-15T15:50:27.987491+00:00"
+    },
+    "newSend": false,
+    "retry": false,
+    "visibilityConfirmed": false,
+    "explanation": "Official Published is retained; anonymous link returns unavailable. Existing connected-owner question remains pending, no duplicate."
+  },
+  "remainingInventory": [
+    {
+      "id": "253af2e3-2583-49e0-97de-441cb056157f",
+      "name": "Parcours botanique",
+      "isVisible": false
+    },
+    {
+      "id": "ac0ff701-b2a1-40ac-bacb-1295cc90cb55",
+      "name": "Théâtre de Guignol",
+      "isVisible": false
+    }
+  ],
+  "protocolIncidents": [
+    {
+      "observedAtUtc": "2026-11-15T15:38:52.738529+00:00",
+      "issue": "A local prepare/check was attempted before export session34671 had exited; publication-export.json was absent. The subsequent Preview wrapper failed locally at Get-Content RequestPath line4 because no prepared request existed, before officialclient orHTTP.",
+      "exportSubsequentlyCompleted": true,
+      "secondPdeRequestSent": false,
+      "mutationPerformed": false,
+      "action": "Waited for actualexit0 on34671, then exactcomparison succeeded. Keep subsequent PDEcalls in separate toolsteps and inspect session_id before dependencies."
+    },
+    {
+      "kind": "public-browser-local-assertion",
+      "observation": "Initial item click raced the search debounce and stayed on items?search. After waiting for the ordinary search URL and network idle, all three normal navigations passed. No data mutation/retry caused by the browser assertion."
+    }
+  ],
+  "noAdditionalFullExport": true,
+  "globalCompletion": false
+}

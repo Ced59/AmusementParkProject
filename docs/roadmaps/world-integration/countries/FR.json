@@ -29261,7 +29261,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T10:14:39.766Z",
+      "lastDataIntegrationAt": "2026-11-15T15:47:16.844Z",
       "integrationHistory": [
         {
           "eventId": "apply-be93f3de-28f8-478f-a238-be12fb6cebab",
@@ -29522,9 +29522,39 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-tapis-photo-20261115.json",
           "auditEvidence": null,
           "summary": "Les Tapis Volants : photographie officielle tapis importée privée, localisation Fenestre vérifiée, année2021issueEXIF et huitlangues relues. Aucun horodatageUTCcapturé inventé, ni publication/Facebook nouveau."
+        },
+        {
+          "eventId": "apply-846a5a36-1614-454c-bf9c-cd5cf90f7041",
+          "appliedAt": "2026-11-15T15:39:39.495Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-01-publish-images-20261115.json",
+          "auditEvidence": null,
+          "summary": "Fenestre : publication ciblée de deux photos officielles existantes, sans réimport, après audit."
+        },
+        {
+          "eventId": "apply-2e31d9ac-eebb-4b50-ab4c-b4b56f9ba821",
+          "appliedAt": "2026-11-15T15:43:51.890Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-02-publish-items-fact-20261115.json",
+          "auditEvidence": null,
+          "summary": "Fenestre : trois notices8langues et fait municipal1972 publiés après audit; deux autreslieux nonqualifiés restent privés,globalpartial."
+        },
+        {
+          "eventId": "apply-607791e2-4f27-4710-9a72-0218b6d42a64",
+          "appliedAt": "2026-11-15T15:47:16.844Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/fenestre-07-municipal-editorial-correction-20261115.json",
+          "auditEvidence": null,
+          "summary": "Fenestre : résumé municipal1972 réécrit personnellement dans8langues après détection répétition avec article ; visibilité et fait conservés."
         }
       ],
-      "nextAction": "Tapis Volants qualifiés année2019 et8notices réécrites, photoFenestre2021privée importée15nov10:14:39UTC;56lieux51publics77médias. Parcoursbotanique/Guignol/statutsprivés et auditfinal restent;preuves fenestre-tapis-followup-20261115.json. Aucun site/Facebook nouveau.",
+      "nextAction": "Qualifier Parcours botanique et Théâtre de Guignol; corriger affichage frise et langue des alt côté application; visibilité Facebook externe à confirmer. Périmètre prêt publié, preuves fenestre-publication-followup-20261115.json.",
       "sources": [
         {
           "label": "Relevé du site — méthode",

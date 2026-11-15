@@ -1,0 +1,2384 @@
+{
+  "schemaVersion": 1,
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "auditedAtUtc": "2026-11-15T15:38:00.050685+00:00",
+  "outcome": "ready-for-targeted-publication",
+  "globalOutcome": "partial",
+  "globalCompletion": false,
+  "authorization": "User requested site+Facebook, then publication despite insufficient score including undocumented hours/opening dates; france-publication-score-policy-20261115.json. This park currently scores100; no waiver needed to evade any API blocker.",
+  "scope": {
+    "items": [
+      "0f5f6630-8784-431e-b123-46dda636f359",
+      "37504a5c-325c-47a9-992e-03279b2fa2df",
+      "20b4967b-6985-4f32-b590-ac194c4a96ef"
+    ],
+    "images": [
+      "e5b0242ce14848efaf8dd9a4d7a338cb",
+      "822bb5768eb7442ca737386adb185775"
+    ],
+    "historyEventKey": "fenestre-history-municipal-1972",
+    "excludedPrivateItems": [
+      {
+        "id": "253af2e3-2583-49e0-97de-441cb056157f",
+        "name": "Parcours botanique"
+      },
+      {
+        "id": "ac0ff701-b2a1-40ac-bacb-1295cc90cb55",
+        "name": "Théâtre de Guignol"
+      }
+    ],
+    "existingArticlesPreserved": 3
+  },
+  "export": {
+    "exportedAtUtc": "2026-11-15T15:31:16.8678121Z",
+    "sha256": "9d1248bceb4b541d6ba899207a0259ea34ea39c688173dbe1d0e31d14eab1556",
+    "proof": "fenestre-publication-scope-audit-export-20261115.json",
+    "repeatAuditExport": false
+  },
+  "editorialReview": {
+    "newScopePersonallyReviewedLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "newScopeLocalizedFields": 88,
+    "detail": "24 item descriptions,16 event titles/summaries,48 image alt/caption/credit fields personally re-read. Both original photographs re-inspected. Park descriptions also personally re-read in8languages. Existing51public item descriptions match historicalsuccessfulApplyexactly in8languages; existing75park/itemmedia,12events/3articles andreferences reconcile to prior final step9Preview. No claim that all4280unchangedlocalizedfields were manually re-read in thisfollowup.",
+    "baselineProof": "fenestre-prior-operations-recovered-20261115.json",
+    "priorCorpusReconciliation": {
+      "publicItemsExactToHistoricalApply": [
+        "Agrès de sport",
+        "Aire de pique-nique de la gare du bas",
+        "Ancien kiosque à musique",
+        "Ancien rouleau compresseur",
+        "Bar-terrasse de la gare du bas",
+        "Billetterie de la gare du bas",
+        "Billetterie des attractions",
+        "Cacahuète Express",
+        "Carrousel 1900",
+        "Chalet Sancy Sports Nature",
+        "Chenille Fantastique",
+        "Fenestre Équilibre",
+        "Fenes’Tower",
+        "Gare du bas",
+        "Gare du haut",
+        "Grandes Pelouses",
+        "Hey ma boule",
+        "Hôtel à insectes",
+        "Jardin des vivaces",
+        "Jeux des plus petits",
+        "La Tyrolienne",
+        "Le Bassin",
+        "Le Rodéo",
+        "Le Ruisseau",
+        "Le Train du Far West",
+        "Les Balançoires",
+        "Les Fenesteries",
+        "Les Siestes musicales",
+        "Les Toboggans",
+        "Les Tourniquets",
+        "Les Tournitasses",
+        "Les Ânes du Parc Fenestre",
+        "Lucky’s Garage",
+        "L’Araignée",
+        "L’Envol de Fenestine",
+        "Maël’Jump",
+        "Mini-Golf",
+        "Niouk Pearl",
+        "Parking Agis-Ledru — entrée latérale",
+        "Parking Agis-Ledru — gare du bas",
+        "Pavillon des Enfants",
+        "Pêche aux canards",
+        "Snack-Bar-Terrasse",
+        "Station de lavage et de gonflage des vélos",
+        "Séquoias géants",
+        "Toboggans Géants",
+        "Toilettes des aires de jeux",
+        "Toilettes des attractions",
+        "Toilettes du bas du parc",
+        "Téléphérique de Charlannes",
+        "T’es à Bord"
+      ],
+      "notFoundInRecent50Window": [],
+      "differentFromLastHistoricalDescriptionApply": [],
+      "recentOperationMetadata": [
+        {
+          "createdAt": "2026-10-20T12:07:41.221Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-major-02",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 5,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:08:29.143Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-major-02",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 5,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:12:57.926Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-major-03",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 5,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:13:38.605Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-major-03",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 5,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:19:37.986Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-playgrounds",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:20:59.661Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-playgrounds",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:29:54.949Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-garden",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:31:06.155Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-garden",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:36:26.841Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-historical",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:37:34.918Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-historical",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:42:32.932Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-services-01",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:46:59.4Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-services-01",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 8,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:54:48.333Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-services-02",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 9,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T12:55:14.272Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "04-services-02",
+            "notes": "Eight languages personally authored and reviewed by Codex from official Fenestre pages, 2024/2026 plans, personally inspected official photographs, public heritage records, contemporary tourism sources and the source ledger. Only descriptions change. Existing IDs, lifecycle states and visibility are preserved. No pricing, schedules, access restrictions or technical sequences in narratives. Original editorial text; language parity and source-limited shorter exceptions are recorded locally. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 9,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:07:48.56Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "05-references",
+            "notes": "Eight personally authored/reviewed languages for the two minimal references created during this park workflow. Current INSEE situation report dated 2026-10-20 establishes Saby founded 1990, seat Le Petit Orcet 63670 Orcet and Fermyland trading name; supersedes stale Aubiere address in Fenestre website legal page. First-person Saby family account supports 1975/next generations distinct from garden1874. Weber: municipal Besse anniversary book p34 confirms Perdrix1974; original Charlannes specialist record confirms1975. Unknown Weber legal dates/contact/portrait not fabricated. Existing shared Soquet, SBF and Technical Park biographies/visibility preserved. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 2,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:08:47.355Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "05-references",
+            "notes": "Eight personally authored/reviewed languages for the two minimal references created during this park workflow. Current INSEE situation report dated 2026-10-20 establishes Saby founded 1990, seat Le Petit Orcet 63670 Orcet and Fermyland trading name; supersedes stale Aubiere address in Fenestre website legal page. First-person Saby family account supports 1975/next generations distinct from garden1874. Weber: municipal Besse anniversary book p34 confirms Perdrix1974; original Charlannes specialist record confirms1975. Unknown Weber legal dates/contact/portrait not fabricated. Existing shared Soquet, SBF and Technical Park biographies/visibility preserved. No full export."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 2,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:13:07.763Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "06-opening-hours",
+            "notes": "Official2027 image personally read, hand-transcribed and all183 cells independently checked. Entire published2027April1–September30 horizon, including closures. Paid rides only; municipal garden remains open. No unpublished2026October–2027March schedule inferred. 2027September19 is open according to the dedicated calendar even though the ticketing event header endsSeptember18; calendar is the authoritative schedule. April26 initially misread in commentary but color cell and subsequent personal review confirm open14–18. No named seasonal event invented; labels/reasons empty."
+          },
+          "resultCounts": {
+            "created": 1,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:15:55.077Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "06-opening-hours",
+            "notes": "Official2027 image personally read, hand-transcribed and all183 cells independently checked. Entire published2027April1–September30 horizon, including closures. Paid rides only; municipal garden remains open. No unpublished2026October–2027March schedule inferred. 2027September19 is open according to the dedicated calendar even though the ticketing event header endsSeptember18; calendar is the authoritative schedule. April26 initially misread in commentary but color cell and subsequent personal review confirm open14–18. No named seasonal event invented; labels/reasons empty."
+          },
+          "resultCounts": {
+            "created": 1,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:22:57.188Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "07-pricing",
+            "notes": "Current Billetweb linked by official site explicitly titled2027 despite URL20261. All14 displayed online products transcribed, including exact totals68/85/102/119/136/153/170 for4–10people. Current official visit page corroborates gate19/17/18,Tribu17perperson,freegarden/freeparking and disabilitycard>80%; lower PMR gatecriterion conflicts with online95–120, so gateprice omitted for that product. Pass2027online85 independently confirmed; stale2025page pass retained only in2025snapshot85gate. Group2027forms15unlimited and two distinct discovery bundles5tokens10regular /4tokens10outside; grouptrain4 is a returnride, not a token. Ordinary individualtokenprice not established on currentofficialsource, no invented4eurotoken. Group payment is offline order/collection, represented gatePrice with explicit preorder conditions. No precise validitydates inferred from conflicting Sept18ticketheader/Sept19calendar. 2023/2024printedleaflets:17.5/15.5 andTribu15/13.5/13;2025/2026datedgroupforms13/14. No sale or reservation submitted. All8language public strings personally authored/reviewed."
+          },
+          "resultCounts": {
+            "created": 1,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:28:22.088Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-france-completion",
+            "step": "07-pricing",
+            "notes": "Current Billetweb linked by official site explicitly titled2027 despite URL20261. All14 displayed online products transcribed, including exact totals68/85/102/119/136/153/170 for4–10people. Current official visit page corroborates gate19/17/18,Tribu17perperson,freegarden/freeparking and disabilitycard>80%; lower PMR gatecriterion conflicts with online95–120, so gateprice omitted for that product. Pass2027online85 independently confirmed; stale2025page pass retained only in2025snapshot85gate. Group2027forms15unlimited and two distinct discovery bundles5tokens10regular /4tokens10outside; grouptrain4 is a returnride, not a token. Ordinary individualtokenprice not established on currentofficialsource, no invented4eurotoken. Group payment is offline order/collection, represented gatePrice with explicit preorder conditions. No precise validitydates inferred from conflicting Sept18ticketheader/Sept19calendar. 2023/2024printedleaflets:17.5/15.5 andTribu15/13.5/13;2025/2026datedgroupforms13/14. No sale or reservation submitted. All8language public strings personally authored/reviewed."
+          },
+          "resultCounts": {
+            "created": 1,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:31:02.966Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three distinct park-scale milestones. Creation begins1874, no invented inaugurationday. Municipalownership1972, no Saby ownershipclaim. FernandSaby firstinstallation1975 is a familymilestone, not foundingyear of garden or1990legalentity. No guessed identity of first ride. Later garden photos show actual retained setting, not alleged1874/1972 photographs. Exact family successionyears unavailable; no fabricated1990day. No suitable licensed portrait for1975. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 2,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 1
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:33:11.863Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three distinct park-scale milestones. Creation begins1874, no invented inaugurationday. Municipalownership1972, no Saby ownershipclaim. FernandSaby firstinstallation1975 is a familymilestone, not foundingyear of garden or1990legalentity. No guessed identity of first ride. Later garden photos show actual retained setting, not alleged1874/1972 photographs. Exact family successionyears unavailable; no fabricated1990day. No suitable licensed portrait for1975. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 2,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:35:25.588Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three distinct park-scale milestones. Creation begins1874, no invented inaugurationday. Municipalownership1972, no Saby ownershipclaim. FernandSaby firstinstallation1975 is a familymilestone, not foundingyear of garden or1990legalentity. No guessed identity of first ride. Later garden photos show actual retained setting, not alleged1874/1972 photographs. Exact family successionyears unavailable; no fabricated1990day. No suitable licensed portrait for1975. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 2,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:35:57.914Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Four item-only heritage milestones. Kiosk moved to SquareMaréchalJoffre outside this park; Month precision and no guessed historical footprint. Pavilion1931 construction, not invented openingday. Cableway openingYear1975 distinct from known inaugurationJuly13 quoted in summary. ClosureMonthSeptember2012 from institutional inventory; conflicting exactdates2Sept/30Sept/31Oct excluded. Stationscurrentpresence established by Sancy hiking sources in inventory. Contemporary reporter describes2012 financial/maintenancecontext; no disputed monetary amount. No suitable reusable photographs of these four actual subjects; not replaced by unrelated garden imagery. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 4,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 1
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:38:44.475Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Four item-only heritage milestones. Kiosk moved to SquareMaréchalJoffre outside this park; Month precision and no guessed historical footprint. Pavilion1931 construction, not invented openingday. Cableway openingYear1975 distinct from known inaugurationJuly13 quoted in summary. ClosureMonthSeptember2012 from institutional inventory; conflicting exactdates2Sept/30Sept/31Oct excluded. Stationscurrentpresence established by Sancy hiking sources in inventory. Contemporary reporter describes2012 financial/maintenancecontext; no disputed monetary amount. No suitable reusable photographs of these four actual subjects; not replaced by unrelated garden imagery. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 4,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:41:08.205Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Four item-only heritage milestones. Kiosk moved to SquareMaréchalJoffre outside this park; Month precision and no guessed historical footprint. Pavilion1931 construction, not invented openingday. Cableway openingYear1975 distinct from known inaugurationJuly13 quoted in summary. ClosureMonthSeptember2012 from institutional inventory; conflicting exactdates2Sept/30Sept/31Oct excluded. Stationscurrentpresence established by Sancy hiking sources in inventory. Contemporary reporter describes2012 financial/maintenancecontext; no disputed monetary amount. No suitable reusable photographs of these four actual subjects; not replaced by unrelated garden imagery. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 4,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:43:38.588Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Six item-only facts. RCDB datetimeattributes personallyread: LePal1981–2003, FenestreChenille2004–2015, Cacahuete2016-06-25. Wrong firstevercoaster claim in Parkerlebnis explicitly rejected; only Juneopening andreplacement corroboration retained. HeyMaBoule July2024 planneddate not treated as actualmonth. Equilibre documentednewlook only, no unsourcedtechnical scope. Envol remainsPlanned; currentpage plannedSummer2026 does not establish announcementdate or actualopening, so datedevent remainsgap. No acceptable licensed images for these exactrideowners; RCDBphotographerpermission andofficialpriorwrittenauthorization unavailable. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 6,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:46:04.652Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Six item-only facts. RCDB datetimeattributes personallyread: LePal1981–2003, FenestreChenille2004–2015, Cacahuete2016-06-25. Wrong firstevercoaster claim in Parkerlebnis explicitly rejected; only Juneopening andreplacement corroboration retained. HeyMaBoule July2024 planneddate not treated as actualmonth. Equilibre documentednewlook only, no unsourcedtechnical scope. Envol remainsPlanned; currentpage plannedSummer2026 does not establish announcementdate or actualopening, so datedevent remainsgap. No acceptable licensed images for these exactrideowners; RCDBphotographerpermission andofficialpriorwrittenauthorization unavailable. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 6,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:46:38.384Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Seven original narrative sections in all eight languages, with equalblockdepth. Sources crosschecked, no rideengineering or fabricateddates.1972 municipalownership remains factualarticlecontent while its specifictimelineevent is blocked by canonicalmapper; not disguised as another event. Two personallyviewed existingCommonsphotos from2014 and2020cover, honestdatesincaptions; no portrayal as archival1874photography. ExistingfoundationeventIDpreserved. All content private. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 1,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:49:52.093Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Seven original narrative sections in all eight languages, with equalblockdepth. Sources crosschecked, no rideengineering or fabricateddates.1972 municipalownership remains factualarticlecontent while its specifictimelineevent is blocked by canonicalmapper; not disguised as another event. Two personallyviewed existingCommonsphotos from2014 and2020cover, honestdatesincaptions; no portrayal as archival1874photography. ExistingfoundationeventIDpreserved. All content private. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 1,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:51:08.555Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three originalsections eightlanguages withmatchingfacts. Article distinguishes oldfunicular offsite fromcableway startingFenestre; no duplicateparkitem for offsitefunicular. InaugurationJuly13exact, lastservicemonthSeptember2012 only; no invented councildecisionday, economicfigures, laterdemolition or reopening. Hikingtourismreferencechecked in step03 andagain beforearticleimport. Licensedactualcablewayphotograph notfound, no generictrainimage or counterfeithistoricalphoto. ExistingclosureeventIDpreserved, private. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 1,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:51:52.371Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three originalsections eightlanguages withmatchingfacts. Article distinguishes oldfunicular offsite fromcableway startingFenestre; no duplicateparkitem for offsitefunicular. InaugurationJuly13exact, lastservicemonthSeptember2012 only; no invented councildecisionday, economicfigures, laterdemolition or reopening. Hikingtourismreferencechecked in step03 andagain beforearticleimport. Licensedactualcablewayphotograph notfound, no generictrainimage or counterfeithistoricalphoto. ExistingclosureeventIDpreserved, private. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 1,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:53:30.639Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three original narrative sections eightlanguages, samefacts, photo2011visualdescriptionpersonallyverifiedexactthreeRCDBfiles earlierstep04. No copying copyrighted image, noreusepermissionclaimed. Distinct2004arrival and2016newride, no firstevercoasterclaim or unsupported reuseofoldtrack. ClosurearticleownedChenille, successor explained without duplicatingeventatparklevel. No licensedridephotoavailable; no unrelatedTrainFarWestillustration. ExistingclosureeventIDpreserved,private. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 1,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T13:54:43.133Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-history",
+            "step": "08",
+            "notes": "Three original narrative sections eightlanguages, samefacts, photo2011visualdescriptionpersonallyverifiedexactthreeRCDBfiles earlierstep04. No copying copyrighted image, noreusepermissionclaimed. Distinct2004arrival and2016newride, no firstevercoasterclaim or unsupported reuseofoldtrack. ClosurearticleownedChenille, successor explained without duplicatingeventatparklevel. No licensedridephotoavailable; no unrelatedTrainFarWestillustration. ExistingclosureeventIDpreserved,private. All facts and articles remain private drafts. Contextual image IDs checked against successful imports."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 1,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T14:00:03.223Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-audit-idempotence",
+            "step": "09",
+            "notes": "Read-only Preview from the single freshfull export. No Apply and no publication."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 2,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-20T14:00:54.849Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-audit-idempotence",
+            "step": "09",
+            "notes": "Read-only Preview from the single freshfull export. No Apply and no publication."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 13,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:09:13.339Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "05-authorized-official-maps",
+            "notes": "User instruction21Oct covers media imports and publication. Official2023/2024complete2pagePDFs and2026map image personally inspected; source bytes reverified. 2021truncated archive rejected,2022/2025unproved. 2026drawing does not establish actual opening of Envol de Fenestine."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 0,
+            "warnings": 0,
+            "errors": 1
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:11:50.27Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "05-authorized-official-maps",
+            "notes": "User instruction21Oct covers media imports and publication. Official2023/2024complete2pagePDFs and2026map image personally inspected; source bytes reverified. 2021truncated archive rejected,2022/2025unproved. 2026drawing does not establish actual opening of Envol de Fenestine."
+          },
+          "resultCounts": {
+            "created": 3,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:13:29.904Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "05-authorized-official-maps",
+            "notes": "User instruction21Oct covers media imports and publication. Official2023/2024complete2pagePDFs and2026map image personally inspected; source bytes reverified. 2021truncated archive rejected,2022/2025unproved. 2026drawing does not establish actual opening of Envol de Fenestine."
+          },
+          "resultCounts": {
+            "created": 3,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:42:45.011Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "08-authorized-history-illustrations",
+            "notes": "ActualhistoricalChenillephotographsdated4Aug2011(MartinValt) andCharlannescablecarphotographs(daphnis) illustrate exactinstallations. No exactopeningorclosureevent imageclaimed; no bodilyinjury event. Officialcurrentphotos illustrateCacahuete,T’esàBord,Heymaboule ascontext, notassertedopeningday. UndatedFenestreÉquilibrephoto notusedfor2024refurbishment. Heritage lakepostcardprovideshistoricalcontextforoverviewwithoutclaiming1874date; pavilionpostcardillustratesexactbuildingwithoutclaimingconstructionday. Text,facts,dates,visibility unchanged; Acquisition1972excludedunsupportedcanonicalmodel."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 9,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:43:35.807Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "08-authorized-history-illustrations",
+            "notes": "ActualhistoricalChenillephotographsdated4Aug2011(MartinValt) andCharlannescablecarphotographs(daphnis) illustrate exactinstallations. No exactopeningorclosureevent imageclaimed; no bodilyinjury event. Officialcurrentphotos illustrateCacahuete,T’esàBord,Heymaboule ascontext, notassertedopeningday. UndatedFenestreÉquilibrephoto notusedfor2024refurbishment. Heritage lakepostcardprovideshistoricalcontextforoverviewwithoutclaiming1874date; pavilionpostcardillustratesexactbuildingwithoutclaimingconstructionday. Text,facts,dates,visibility unchanged; Acquisition1972excludedunsupportedcanonicalmodel."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 9,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:45:22.585Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-authorized-publication",
+            "notes": "Explicit user authorization includesblockedparksandmedia21Oct. Publishverifiedpark,51items(includingPlannedEnvolwithstatusunchanged),12sourcedevents,3articles,verifiedpark/itemimages.5Unknownitemsremainprivate; nodates/statusesfabricated.1972Acquisitionrejectedcanonicalmodelnotbypassed; knownfactretainedinsourcedarticle. Official2023/2024/2026mapsalreadyattached. Audit recordsremainingphoto/geolocation/sourceavailability gaps."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 139,
+            "deleted": 0,
+            "unchanged": 5,
+            "warnings": 5,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:46:07.48Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-authorized-publication",
+            "notes": "Explicit user authorization includesblockedparksandmedia21Oct. Publishverifiedpark,51items(includingPlannedEnvolwithstatusunchanged),12sourcedevents,3articles,verifiedpark/itemimages.5Unknownitemsremainprivate; nodates/statusesfabricated.1972Acquisitionrejectedcanonicalmodelnotbypassed; knownfactretainedinsourcedarticle. Official2023/2024/2026mapsalreadyattached. Audit recordsremainingphoto/geolocation/sourceavailability gaps."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 139,
+            "deleted": 0,
+            "unchanged": 10,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:47:30.319Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-authorized-publication",
+            "notes": "Explicit user authorization includesblockedparksandmedia21Oct. Publishverifiedpark,51items(includingPlannedEnvolwithstatusunchanged),12sourcedevents,3articles,verifiedpark/itemimages.5Unknownitemsremainprivate; nodates/statusesfabricated.1972Acquisitionrejectedcanonicalmodelnotbypassed; knownfactretainedinsourcedarticle. Official2023/2024/2026mapsalreadyattached. Audit recordsremainingphoto/geolocation/sourceavailability gaps."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 139,
+            "deleted": 0,
+            "unchanged": 10,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:50:05.394Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-shared-photo-context",
+            "notes": "Fourexistingphotosattachedto2correctownersretained. Reauthor8alts/captionsforthespecificitemcontext:pondreflections,gardenflowerbed,shadedlawn,stationbuilding. All4actualphotographspersonallyreviewedagain. Noasset/source/credit/date/ownership/visibilitychanges. Addresscross-ownertextrepetitiondetectedonlyafteritempublication."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 4,
+            "deleted": 0,
+            "unchanged": 5,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:50:51.859Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-shared-photo-context",
+            "notes": "Fourexistingphotosattachedto2correctownersretained. Reauthor8alts/captionsforthespecificitemcontext:pondreflections,gardenflowerbed,shadedlawn,stationbuilding. All4actualphotographspersonallyreviewedagain. Noasset/source/credit/date/ownership/visibilitychanges. Addresscross-ownertextrepetitiondetectedonlyafteritempublication."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 4,
+            "deleted": 0,
+            "unchanged": 5,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:51:42.434Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-authorized-publication",
+            "notes": "Explicit user authorization includesblockedparksandmedia21Oct. Publishverifiedpark,51items(includingPlannedEnvolwithstatusunchanged),12sourcedevents,3articles,verifiedpark/itemimages.5Unknownitemsremainprivate; nodates/statusesfabricated.1972Acquisitionrejectedcanonicalmodelnotbypassed; knownfactretainedinsourcedarticle. Official2023/2024/2026mapsalreadyattached. Audit recordsremainingphoto/geolocation/sourceavailability gaps."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 149,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:55:11.196Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-history-editorial-distinction",
+            "notes": "Differentiate4timeline summariesandtheoverviewarchitecturalparagraphfromrelatedarticles/itemcopy, all8languages. TinyItalian/PortuguesestationdescriptionandSpanishChenillecorrections; PortugueseCharlannesarticlesummaryrephrased. Exacthistoricalfacts/dates/credits/visibilityunchanged. Naturalindividualwordingratherthancross-entity9wordreuse. No dataremoved."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 7,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:55:54.551Z",
+          "kind": "apply",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-history-editorial-distinction",
+            "notes": "Differentiate4timeline summariesandtheoverviewarchitecturalparagraphfromrelatedarticles/itemcopy, all8languages. TinyItalian/PortuguesestationdescriptionandSpanishChenillecorrections; PortugueseCharlannesarticlesummaryrephrased. Exacthistoricalfacts/dates/credits/visibilityunchanged. Naturalindividualwordingratherthancross-entity9wordreuse. No dataremoved."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 7,
+            "deleted": 0,
+            "unchanged": 1,
+            "warnings": 0,
+            "errors": 0
+          }
+        },
+        {
+          "createdAt": "2026-10-21T20:56:51.97Z",
+          "kind": "preview",
+          "metadata": {
+            "source": "codex-park-data-editor",
+            "step": "09-authorized-publication",
+            "notes": "Explicit user authorization includesblockedparksandmedia21Oct. Publishverifiedpark,51items(includingPlannedEnvolwithstatusunchanged),12sourcedevents,3articles,verifiedpark/itemimages.5Unknownitemsremainprivate; nodates/statusesfabricated.1972Acquisitionrejectedcanonicalmodelnotbypassed; knownfactretainedinsourcedarticle. Official2023/2024/2026mapsalreadyattached. Audit recordsremainingphoto/geolocation/sourceavailability gaps."
+          },
+          "resultCounts": {
+            "created": 0,
+            "updated": 0,
+            "deleted": 0,
+            "unchanged": 149,
+            "warnings": 0,
+            "errors": 0
+          }
+        }
+      ]
+    },
+    "priorFinalPreviewReconciliation": {
+      "baselineHistoryRecordId": "30ef33b5-6085-4f8c-8479-772a65ee4aa3",
+      "baselineCreatedAtUtc": "2026-10-21T20:56:51.97Z",
+      "baselinePreviewResult": {
+        "operationId": "ffa0f6de-98a7-482b-bd14-e620b1d87cc5",
+        "mode": "merge",
+        "isApplied": false,
+        "canApply": true,
+        "previewedAtUtc": "2026-10-21T20:56:51.3721246Z",
+        "appliedAtUtc": null,
+        "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "targetParkName": "Parc Fenestre",
+        "targetStandaloneAttractionId": null,
+        "targetStandaloneAttractionName": null,
+        "counts": {
+          "created": 0,
+          "updated": 0,
+          "deleted": 0,
+          "unchanged": 149,
+          "warnings": 0,
+          "errors": 0
+        },
+        "changes": [],
+        "warnings": [],
+        "errors": []
+      },
+      "entities": [
+        {
+          "section": "items",
+          "id": "442272aa-7eed-42da-8063-9f4c59836891",
+          "name": "Agrès de sport",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "dc162df4-b7ee-46b9-abc6-7879a9a6de73",
+          "name": "Aire de pique-nique de la gare du bas",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "5cd07328-d48a-42cb-a41a-1d1726c97fc2",
+          "name": "Ancien kiosque à musique",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "e1b2172b-a5a7-4836-a944-4ac7feac71b8",
+          "name": "Ancien rouleau compresseur",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "07f6169c-0f30-42dc-88be-e6a5d5c0da6c",
+          "name": "Bar-terrasse de la gare du bas",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "695b09a6-7e05-4d29-bbb4-7356754bfe9d",
+          "name": "Billetterie de la gare du bas",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "0040fa41-c12f-4bde-9475-7e00b08b01ab",
+          "name": "Billetterie des attractions",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "391635d1-ab4a-4c19-93d4-f01a1e7ae399",
+          "name": "Cacahuète Express",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "db8a759c-fab4-4e86-a929-265c0c8a9331",
+          "name": "Carrousel 1900",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "32a98b42-7483-4879-a38f-4354f2683636",
+          "name": "Chalet Sancy Sports Nature",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "dbd6c07e-11ea-4a79-8ba0-72106755e15b",
+          "name": "Chenille Fantastique",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "71034544-b696-4032-b7c5-2def7c6346b1",
+          "name": "Fenestre Équilibre",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "837e4c92-62de-4fd0-9eaa-5a9f3d1db9a6",
+          "name": "Fenes’Tower",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "ce4a7fcc-cdf7-4a29-b10d-025fd9ec8bcb",
+          "name": "Gare du bas",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "78b5673f-cce7-46e6-b67f-b224fed1bf4a",
+          "name": "Gare du haut",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "35c16996-cc26-419f-93b7-5bca56036097",
+          "name": "Grandes Pelouses",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "a036e54d-f5da-4d9a-892b-870ca06ec964",
+          "name": "Hey ma boule",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "371bae2a-9885-4a5c-811b-2bf392f250e8",
+          "name": "Hôtel à insectes",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "074fa73b-b9dc-414e-a96f-41b8ced8712e",
+          "name": "Jardin des vivaces",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "c76d4ef8-4c2a-4938-b257-55c73e2042fc",
+          "name": "Jeux des plus petits",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "d0f2923d-43a8-4d05-9e25-a21a46731552",
+          "name": "La Tyrolienne",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "25282e8f-25f7-420a-96f6-8e680c11a720",
+          "name": "Le Bassin",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "8677ab46-48e6-42b8-a176-d86ebcfb6cd9",
+          "name": "Le Rodéo",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "daf7f7af-ff51-43f2-83fb-3cf42f8e0f07",
+          "name": "Le Ruisseau",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "f9092a0a-18d5-4bf9-8f48-7fda87a88af3",
+          "name": "Le Train du Far West",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "db3d885c-f9eb-471b-aa5b-78e3930e83ad",
+          "name": "Les Balançoires",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "459d0071-176b-4b09-ab3f-e53e53defc2f",
+          "name": "Les Fenesteries",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "fce7dabc-4793-45d2-8f90-c2cdac5cb050",
+          "name": "Les Siestes musicales",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "0f5f6630-8784-431e-b123-46dda636f359",
+          "name": "Les Tapis Volants",
+          "oldFound": true,
+          "localizedSame": false
+        },
+        {
+          "section": "items",
+          "id": "ecf4d44f-a7cb-4057-9030-26e2950ef000",
+          "name": "Les Toboggans",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "693ced54-f4e5-4f22-b85d-0063da8b62de",
+          "name": "Les Tourniquets",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "edd3c5ff-ba07-4a88-922e-9a92a5aeb1b3",
+          "name": "Les Tournitasses",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "1bc1a882-36dc-40e5-b7ac-75b59227ea61",
+          "name": "Les Ânes du Parc Fenestre",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "21b4d8c1-2a10-48ab-b994-25473bceb16f",
+          "name": "Lucky’s Garage",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "76b5f700-77fb-4f7e-8e2b-e014e285ea27",
+          "name": "L’Araignée",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "0366baa8-0a34-4a73-ac77-b52d108d86b1",
+          "name": "L’Envol de Fenestine",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "249854f8-e70b-4127-a970-12f9408f0355",
+          "name": "Maël’Jump",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "72827070-f1e3-4e43-9f70-416b410e56ec",
+          "name": "Mini-Golf",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "870f8635-b72d-46d5-8d31-87cbcb325fdb",
+          "name": "Niouk Pearl",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "253af2e3-2583-49e0-97de-441cb056157f",
+          "name": "Parcours botanique",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "29bbf305-a85e-46aa-8ffa-9f613754927e",
+          "name": "Parking Agis-Ledru — entrée latérale",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "2826bcc0-f041-4e45-a6a6-84cedc423c54",
+          "name": "Parking Agis-Ledru — gare du bas",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "4c6ef7a7-a862-4638-908f-9c5981119d2b",
+          "name": "Pavillon des Enfants",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "b5ae15d9-2966-422a-962d-280ded75dcd6",
+          "name": "Pêche aux canards",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "name": "Rencontre avec Cacahuète",
+          "oldFound": true,
+          "localizedSame": false
+        },
+        {
+          "section": "items",
+          "id": "acdf04d8-1b7a-448c-ae29-c0aa8b15f804",
+          "name": "Snack-Bar-Terrasse",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "30108d21-376f-4e3e-9b6a-031d7ae121f7",
+          "name": "Station de lavage et de gonflage des vélos",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+          "name": "Structures gonflables",
+          "oldFound": true,
+          "localizedSame": false
+        },
+        {
+          "section": "items",
+          "id": "6be0cb7b-6233-48a6-ab26-46223c76dd1a",
+          "name": "Séquoias géants",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "ac0ff701-b2a1-40ac-bacb-1295cc90cb55",
+          "name": "Théâtre de Guignol",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "ebe03020-8e9e-4ad3-a208-0c052c282550",
+          "name": "Toboggans Géants",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "3bd5883b-d7be-4865-bf09-993b136207d3",
+          "name": "Toilettes des aires de jeux",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "f5c3afd2-df80-41c3-884e-d3d8b6fcf79a",
+          "name": "Toilettes des attractions",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "7231d1b2-6ff6-4e4b-afee-7ab165759d21",
+          "name": "Toilettes du bas du parc",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "b52005d5-9492-407f-b5e5-c1c009d1b20d",
+          "name": "Téléphérique de Charlannes",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "items",
+          "id": "bada33fb-6784-452b-8e2e-106bba8c588c",
+          "name": "T’es à Bord",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "53e5af7b054945b6a668c4e5f23e3336",
+          "name": "Le petit train rouge et blanc traverse le décor rocheux et boisé de cette réalisation Soquet.",
+          "oldFound": false,
+          "localizedSame": false
+        },
+        {
+          "section": "images",
+          "id": "f3c66b6cdc224c65874e9d54f0607983",
+          "name": "Une arche de rochers, des branchages et une chute d’eau entourent la promenade en bûche de cette attraction Soquet.",
+          "oldFound": false,
+          "localizedSame": false
+        },
+        {
+          "section": "images",
+          "id": "5d4e6d4e54784e1684ee01ec2826070d",
+          "name": "Logo de Soquet",
+          "oldFound": false,
+          "localizedSame": false
+        },
+        {
+          "section": "images",
+          "id": "160a89c36e454bb5bf6838c8d5032714",
+          "name": "Carte postale verticale montrant un bras d’eau entre les arbres.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "a83e52a462d1452d936599d2a8379f27",
+          "name": "Carte postale en noir et blanc du lac entouré d’arbres.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "fc06fbac9f2c4a82be34c9e6fa9a14ad",
+          "name": "L’entrée du Jardin des vivaces, dans le parc de Fenestre en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "142c9a0de23e41f8961aa13a08be845e",
+          "name": "Le paysage ouvert des grandes pelouses de Fenestre en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "6f33ccc9f3bf433fae440c4c155d8c5d",
+          "name": "Les pelouses et les équipements de plein air du jardin, en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "d34f6b31e1ec450188ddbc9fa1bbc804",
+          "name": "Le bassin et ses rives plantées, en septembre 2014.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "6b3a893346794328a9a54e8598db5e31",
+          "name": "L’entrée arborée de Fenestre, à La Bourboule, en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "a9096d368b954d4fb84fb77ea8181097",
+          "name": "Âne bleu en salopette devant un tracé orange et le nom Parc Fenestre.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "4b4e62ea71a944249b27f3e862ce532e",
+          "name": "Portillon noir à gauche d’un massif de fleurs blanches et violettes.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "d66f4b1c84c247a99fbd0fef40bec56c",
+          "name": "Les plantations du Jardin des vivaces en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "822bb5768eb7442ca737386adb185775",
+          "name": "En 2021, les tapis rouges passent entre les bras jaunes du manège, devant les conifères de Fenestre.",
+          "oldFound": false,
+          "localizedSame": false
+        },
+        {
+          "section": "images",
+          "id": "098211942ac94106932efa47dd357eac",
+          "name": "Trois ânes se reposent dans une prairie clôturée.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "716c2005bc3140889cb17285da085007",
+          "name": "Enfant en chapeau de paille près d’un âne derrière la clôture.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "e6ada1e5f6b442b0bc9a5e65c552922b",
+          "name": "Petit âne clair debout contre un âne sombre couché.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "d7b4ae2da6604470a9f43f36c6b8b245",
+          "name": "Garçon la tête en bas dans son harnais, sous les nuages.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "5765fb6065a041b1b03c8ed2c37dc763",
+          "name": "Enfant suspendu aux élastiques près d’un pirate sculpté.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "2a79ad23dfe447f9895f4e00d7ab9e3a",
+          "name": "Eau sombre bordée de pierres où se reflètent les hautes cimes.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "408af9f0f7e14f9d823ed174c3177fb9",
+          "name": "Petit arbuste sur une pelouse partagée entre soleil et ombre.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "e5b0242ce14848efaf8dd9a4d7a338cb",
+          "name": "Cacahuète dans le décor des goûters d’anniversaire de Fenestre.",
+          "oldFound": false,
+          "localizedSame": false
+        },
+        {
+          "section": "images",
+          "id": "652e7a98c13e4a48a79d340213d0600a",
+          "name": "Nez d’âne et wagons bruns vus en plongée.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "7cdf93206cfd4f7eb86b8396af9661ed",
+          "name": "Train brun et jaune au-dessus de la pelouse, montagne en arrière-plan.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "1308985f6a3f4929b69db3bbb6eb4398",
+          "name": "Train à tête d’âne incliné vers l’avant, bras levés à bord.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "6a659af05d1a4020b5941d0e47f69f28",
+          "name": "Pavillon blanc à large toit de tuiles et pignon vitré devant une pelouse.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "e0cc135a15964dac9895270a5fe71e1a",
+          "name": "Carte postale du pavillon à pignon triangulaire avec un groupe devant la façade.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "cda9c4f1f5c945d3a40cfd54d1217afe",
+          "name": "Deux enfants suspendus aux bras rouges d’un grand tourniquet.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "51609bf9625742d8a00fca839559b258",
+          "name": "Les racines des séquoias de Fenestre, en août 2014.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "0731b65fc8b64aaeb7c1d18315f81cad",
+          "name": "Un séquoia isolé parmi les plantations de Fenestre en août 2014.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "beb6e968f35d4fa1adc5855a64429a39",
+          "name": "Les séquoias géants du jardin photographiés en août 2014.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "66cd98b1cdd24873a803d1c5d0827857",
+          "name": "Fillette sur une poutre entre des filets rouges et blancs.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "2061976ad11747468404a1b90229d3a9",
+          "name": "Deux enfants près d’une balle rouge sur une piste rectangulaire.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "bb5b10836256480b942886ad0698dda8",
+          "name": "Enfant avec un club près d’une vache décorative noire et blanche.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "a3a67519d48842108d34ed303adae4d8",
+          "name": "Piste verte avec un obstacle orange en forme de boucle.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "b68608f3cb944719951a6ddd71e4ec2a",
+          "name": "Silhouettes des sièges en hauteur sur fond de ciel bleu.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "61181455c28c48fe83362086900898bf",
+          "name": "Visiteurs assis sous une toile violette autour de la colonne orange.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "85421e6264964bdd92166aed806fcc68",
+          "name": "Mât orange dressé derrière sa plateforme violette et les barrières.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "ff175d59c5f64e92a6090f1b69179710",
+          "name": "Cheval de manège brun devant des ânes qui broutent.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "c795bb4f413a4f21b857598bf89400d9",
+          "name": "Garçon sur un cheval noir, crinière colorée et arbres au fond.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "757b1a4fedb9486eab0e40bf88c1b616",
+          "name": "Petite cavalière sur un cheval blanc près d’une roue décorative.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "51c5c62be3c647c2a02fa385849dcc7a",
+          "name": "Pirate sculpté, tonneau et tête de mort devant le bateau.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "d09b9572f31248acb478acf968a9ae78",
+          "name": "Coque inclinée au-dessus des tonneaux et de la clôture.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "b5e1cad7a37348869c9766cc1ae65058",
+          "name": "Bateau rouge et jaune entre de hauts supports jaunes.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "69d458d306f045f2ae2498a858b1e676",
+          "name": "Petites balles multicolores sur un filet au milieu des arbres.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "4978ded3fb1042ebb59c0d39b17ec34e",
+          "name": "Grande sphère rouge translucide tenue par une enfant.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "7dfbdabb1467487f877cecdcf3da9ca9",
+          "name": "Fillette parmi de gros ballons rouges et bleus sur un filet.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "081d57cab8774abc91d83489fcb24869",
+          "name": "Cabine jaune et vitres sombres suspendues sous les câbles.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "7d3d51080599441a94c9efec062eab6e",
+          "name": "Cabine jaune dans une baie blanche, derrière une barrière métallique.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "0d639cedbef0463abdc9d4cc48ab9d49",
+          "name": "Allée rouge entre des barrières vertes menant à une station blanche.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "d9bacefadc7142ec86d7e33691aafa68",
+          "name": "Deux pentes d’eau vues de face sous le ciel bleu.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "897df260835146399eec2be8b7572ae9",
+          "name": "Gerbe d’eau blanche devant la rampe et les palissades.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "bf2d1e3a9e2b42dea653ee90f0018404",
+          "name": "Bateau brun dans la descente bordée de bois.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "4e2ae28d6bbd4b70bab23ec53483d69a",
+          "name": "Cabane rouge sur pilotis avec un petit toboggan près d’un banc.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "6286a18f743d466e86d3ab0ab6452283",
+          "name": "Petit jeu à ressort rouge et blanc près de la pelouse.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "1c6373f561ef46d1b8f25728526473a4",
+          "name": "Bâtiment à rambarde verte derrière des rosiers et les wagons bleus.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "d0a869756b764ec8b0307b04a9599a39",
+          "name": "Balançoires vides devant les bancs et le versant boisé.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "68eb93791d244170b5757c0b9725c04e",
+          "name": "Trois enfants allongés dans une grande balançoire ronde tressée.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "99c8f98064de463d93f11bfd1125e309",
+          "name": "Chevaux blancs et éléphant gris sous le toit du carrousel.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "e15d592da0ac4e1b9c0fc9e55a4030dc",
+          "name": "Petite voiture blanche à côté d’un cheval noir de manège.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "a52a29ea748149bdac82e42d11566ebb",
+          "name": "Deux enfants dans une nacelle crème devant des panneaux dorés.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "4dcf2b4ed19943baa25b9021b31ab6d6",
+          "name": "Tête jaune aux grands yeux bleus près d’ânes qui broutent.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "1b2055f73b1b42bab5823618006ed270",
+          "name": "Parcours bas et brun entourant une prairie et un abri vert.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "2e16ecbeb83e49e598aa0cf7734d4316",
+          "name": "Wagons jaunes aux sièges noirs et aux côtés décorés d’ânes.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "2e4d81b3f39445f89009ce9c22d50470",
+          "name": "Ancien rouleau vert avec un toit plat et de grandes roues métalliques.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "2cc3f06e35f54e07bdb316d82bfc284a",
+          "name": "Le rouleau compresseur conservé dans le jardin de Fenestre, en août 2018.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "e4639ebeff6d4d6eb4db648eee46c07f",
+          "name": "Enfant à la sortie sombre du grand toboggan, entouré d’adultes.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "9d783215f0824778add261d27a13ae39",
+          "name": "Longue glissière jaune et descente orange au-dessus du sable.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "415e350df0544dfdbc313cc1eda22ccf",
+          "name": "Grandes glissières rose et orange autour d’une tour argentée.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "bb6a4c2883884e148fb29823e651bb63",
+          "name": "Petites tours bleues et blanches reliées par des ponts de jeu.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "334a7b8af1f74b4492b25199bf0dbe70",
+          "name": "Tunnel argenté à pois colorés entre des plateformes et des filets.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "0e2fe4b839e04ebdadfd609e375ad8b0",
+          "name": "Tasse jaune au premier plan, théière et arbres derrière.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "71e249d05ecb475cb9340370c4be1371",
+          "name": "Mascotte grise assise dans une tasse à coulures rouges.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "a2a68a13b37142e792c879d7b3de856a",
+          "name": "Tasses roses et jaunes autour d’une théière fleurie.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "626d0fd7dbd74f21a6ac981e25d7003a",
+          "name": "Avant noir de la locomotive et chasse-pierres rouge sous les branches.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "3b0abe99bc52409cb663d28d1e13e049",
+          "name": "Locomotive verte au toit rouge sortant du feuillage.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "4005f95198d74a579006be3d4d223200",
+          "name": "Mascotte grise près de la locomotive verte sous les arbres.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "a26155ae17b44f1d895fca10a54e5c6f",
+          "name": "Le passage du Train du Far West sous la passerelle, en août 2014.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "3a086b37d80947bc9b096a0eb4c569b4",
+          "name": "Le Train du Far West à la gare du bas en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "images",
+          "id": "129bf071f9bc4e158127d337f3590452",
+          "name": "Le Train du Far West dans les jardins de Fenestre en août 2020.",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "operators",
+          "id": "80e4c03a-47cd-4f33-b304-2b436b26f4d6",
+          "name": "Saby Attractions Animations Loisirs",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "manufacturers",
+          "id": "075b9c98-9d1f-4948-bc1c-a74b91e16e48",
+          "name": "Weber",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "manufacturers",
+          "id": "154ef699-491f-4e8f-927f-117485ddde8c",
+          "name": "Soquet",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "manufacturers",
+          "id": "9223f6ba-7546-45e0-8ebf-c5e9baeb7dea",
+          "name": "SBF Visa Group",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "manufacturers",
+          "id": "fdd289d7-6bb0-4660-a537-b205f4e15ca7",
+          "name": "Technical Park",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-garden-1874",
+          "name": "1874",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-bandstand-departure-1920",
+          "name": "1920",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-pavilion-1931",
+          "name": "1931",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-municipal-1972",
+          "name": "1972",
+          "oldFound": false,
+          "localizedSame": false
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-charlannes-opening-1975",
+          "name": "1975",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-saby-1975",
+          "name": "1975",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-chenille-arrival-2004",
+          "name": "2004",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-charlannes-closure-2012",
+          "name": "2012",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-chenille-closure-2015",
+          "name": "2015",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-cacahuete-opening-2016",
+          "name": "2016",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-tes-a-bord-2021",
+          "name": "2021",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-equilibre-renewal-2024",
+          "name": "2024",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "history",
+          "id": "fenestre-history-hey-ma-boule-2024",
+          "name": "2024",
+          "oldFound": true,
+          "localizedSame": true
+        },
+        {
+          "section": "park",
+          "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+          "oldFound": true,
+          "localizedSame": false
+        }
+      ]
+    },
+    "shortDescriptionGap": "Birthday/gonflable source material is limited to officialoffer/photo; two factualparagraphs retained rather than padding. Unknown lifecycleTapis/gonflable retained. UnqualifiedGuignol/botanical excluded."
+  },
+  "corpusScan": {
+    "auditExportedAtUtc": "2026-11-15T15:31:16.8678121Z",
+    "sha256": "9d1248bceb4b541d6ba899207a0259ea34ea39c688173dbe1d0e31d14eab1556",
+    "localizedFields": 4280,
+    "encodingIssues": [],
+    "longSequenceCandidates": [],
+    "counts": {
+      "items": 56,
+      "visibleItems": 51,
+      "images": 80,
+      "facts": 13
+    }
+  },
+  "corpusScanInterpretation": "Full graph localized fields4280,0encoding; headings/entitynamesremoved before12wordsequence comparison of narrative fields including media. Repeated factualconditions in pricing/snapshots and attribution/source labels excluded from narrativecomparison, not rewritten into artificial variants.",
+  "sourceProofs": [
+    "fenestre-birthday-qualification-20261115.json",
+    "fenestre-cacahuete-birthday-20261115.json",
+    "fenestre-tapis-identity-20261115.json",
+    "fenestre-tapis-photo-20261115.json",
+    "fenestre-municipal-1972-20261115.json"
+  ],
+  "photographs": {
+    "personallyInspected": [
+      "/workspace/france-historical-20261114/fenestre/parallel-inventory-research/official-birthday-image.jpg",
+      "/workspace/france-historical-20261114/fenestre/parallel-two-items-20261115/tapis-thumbnail-IMG_1666.JPG"
+    ],
+    "noReimport": true,
+    "noLocalRetouch": true,
+    "tapisHistoricalLocation": "FenestreconfirmedbyFenesTower; excludedBocassepretransferphotos; EXIF2021noinventedUTCday.",
+    "municipal1972Image": "Existing2020generalparkphoto is contextual; no1972transferphotograph identified, not mislabelled."
+  },
+  "referenceMediaDifference": "Export includes3alreadypublicsharedSoquetmedia omitted from olderpark-onlybaseline; they are not newFenestremedia and are not modified/publishedbythisscope.",
+  "calendar": "Existing2027calendar183dates109open74closed previouslyverifiedinfenestre-calendar-verification-20261115.json.3officialmaps2023/24/26alreadypublic preserved.",
+  "completeness": {
+    "startedAtUtc": "2026-11-15T15:35:02.6637630Z",
+    "receivedAtUtc": "2026-11-15T15:35:04.5080418Z",
+    "result": {
+      "completenessScore": 100,
+      "dataQualityLevel": "Excellent",
+      "applicableMaxPoints": 101,
+      "earnedPoints": 101,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "action": "Completeness"
+  },
+  "historyDiagnostics": {
+    "result": {
+      "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+      "parkName": "Parc Fenestre",
+      "factCount": 42,
+      "relationCount": 0,
+      "blockingIssueCount": 0,
+      "issues": [],
+      "decadeCoverage": [
+        {
+          "decade": 1870,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1920,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1930,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 1970,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 2,
+          "subjectCount": 2,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2000,
+          "resourceCount": 1,
+          "sourcedResourceCount": 1,
+          "publishedResourceCount": 1,
+          "subjectCount": 1,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2010,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        },
+        {
+          "decade": 2020,
+          "resourceCount": 3,
+          "sourcedResourceCount": 3,
+          "publishedResourceCount": 3,
+          "subjectCount": 3,
+          "sourceCoveragePercentage": 100
+        }
+      ],
+      "workflow": [
+        {
+          "stage": "Draft",
+          "resourceCount": 1
+        },
+        {
+          "stage": "SourcesAttached",
+          "resourceCount": 0
+        },
+        {
+          "stage": "EditorialReview",
+          "resourceCount": 0
+        },
+        {
+          "stage": "StructuredValidation",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Published",
+          "resourceCount": 12
+        },
+        {
+          "stage": "Corrected",
+          "resourceCount": 0
+        },
+        {
+          "stage": "Retracted",
+          "resourceCount": 29
+        }
+      ],
+      "visits": {
+        "potentiallyInconsistentVisitCount": 0,
+        "confirmedConflictVisitCount": 0,
+        "unverifiedVisitCount": 0
+      },
+      "rolloutGate": {
+        "isOpen": false,
+        "hasEnoughStructuredFacts": true,
+        "hasCompleteSourceCoverage": true,
+        "hasMajorMilestone": true,
+        "hasIndexableKeyYear": false,
+        "publishedFactCount": 12,
+        "sourcedFactCount": 12,
+        "majorFactCount": 8,
+        "indexableKeyYears": []
+      }
+    },
+    "startedAtUtc": "2026-11-15T15:35:31.9834823Z",
+    "receivedAtUtc": "2026-11-15T15:35:32.7055550Z",
+    "action": "HistoryDiagnostics"
+  },
+  "publicationPreview": {
+    "operationId": "878371b0-5322-4ddb-8284-cf94424f512d",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:35:13.0890731Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 6,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "822bb5768eb7442ca737386adb185775",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "Image",
+        "entityId": "e5b0242ce14848efaf8dd9a4d7a338cb",
+        "entityKey": null,
+        "displayName": "codex-import.jpg",
+        "changeType": "Updated",
+        "matchedBy": "imageId",
+        "fields": [
+          {
+            "field": "isPublished",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8996e208-0832-4a0c-aff4-e577c587c02b",
+        "entityKey": "fenestre-history-municipal-1972",
+        "displayName": "Fenestre devient un parc municipal",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "remainingGaps": [
+    "Guignol identity and Parcoursbotanique qualification remain unresolved/private.",
+    "Unknown currentlifecycles Tapis/gonflable retained and explained.",
+    "Global photographic/geographic gaps retained from prior integration; scope publication is not inventorycompletion.",
+    "Facebook current externalvisibility remainsseparate from officialPublished."
+  ]
+}

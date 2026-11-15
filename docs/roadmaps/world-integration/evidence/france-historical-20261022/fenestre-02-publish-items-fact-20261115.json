@@ -1,0 +1,405 @@
+{
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "entryId": "FR-park-4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "outcome": "partial",
+  "scopeAudit": "fenestre-publication-scope-audit-20261115.json",
+  "publicationExportComparison": {
+    "identicalExceptMetadata": true,
+    "auditMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:31:16.8678121Z"
+    },
+    "publicationMetadata": {
+      "source": "admin-bulk-park-graph-export",
+      "exportedAtUtc": "2026-11-15T15:38:17.5868354Z"
+    }
+  },
+  "document": {
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre",
+        "countryCode": "FR"
+      },
+      "metadata": {
+        "source": "codex-france-fenestre-audited-scope-publication",
+        "notes": "Only3personallyreviewed8languageitems,2existingofficialphotos and1972OwnershipChange. Existingpubliccorpus preserved;Guignol andParcoursbotanique private. Unknown lifecycleTapis/gonflables preserved. Auditexport15:31:16.8678121Z and explicit ownerpublication/scorewaiver. Existing2020parkphoto is contextual for1972,not a photograph oftransfer."
+      },
+      "park": {
+        "id": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "name": "Parc Fenestre",
+        "countryCode": "FR"
+      },
+      "items": [
+        {
+          "key": "0f5f6630-8784-431e-b123-46dda636f359",
+          "id": "0f5f6630-8784-431e-b123-46dda636f359",
+          "name": "Les Tapis Volants",
+          "category": "Attraction",
+          "type": "FlatRide",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "key": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "id": "37504a5c-325c-47a9-992e-03279b2fa2df",
+          "name": "Rencontre avec Cacahuète",
+          "category": "Show",
+          "type": "MeetAndGreet",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        },
+        {
+          "key": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+          "id": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+          "name": "Structures gonflables",
+          "category": "Attraction",
+          "type": "Playground",
+          "isVisible": true,
+          "adminReviewStatus": "Validated"
+        }
+      ],
+      "history": {
+        "events": [
+          {
+            "key": "fenestre-history-municipal-1972",
+            "entityType": "Park",
+            "owner": "park",
+            "ownerId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+            "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+            "parkItemId": null,
+            "itemKey": null,
+            "parkItemKey": null,
+            "contextParkId": null,
+            "year": 1972,
+            "month": null,
+            "day": null,
+            "datePrecision": "Year",
+            "eventType": "OwnershipChange",
+            "isMajor": true,
+            "isVisible": true,
+            "slug": null,
+            "titles": [
+              {
+                "languageCode": "fr",
+                "value": "Fenestre devient un parc municipal"
+              },
+              {
+                "languageCode": "en",
+                "value": "Fenestre becomes a municipal park"
+              },
+              {
+                "languageCode": "de",
+                "value": "Fenestre wird zum städtischen Park"
+              },
+              {
+                "languageCode": "nl",
+                "value": "Fenestre wordt een gemeentepark"
+              },
+              {
+                "languageCode": "it",
+                "value": "Fenestre diventa un parco comunale"
+              },
+              {
+                "languageCode": "es",
+                "value": "Fenestre se convierte en parque municipal"
+              },
+              {
+                "languageCode": "pl",
+                "value": "Fenestre staje się parkiem miejskim"
+              },
+              {
+                "languageCode": "pt",
+                "value": "Fenestre torna-se um parque municipal"
+              }
+            ],
+            "summaries": [
+              {
+                "languageCode": "fr",
+                "value": "La commune devient propriétaire du parc Fenestre et engage son réaménagement. Ce changement inscrit durablement le jardin dans les espaces publics de La Bourboule, tout en conservant le paysage arboré et les lieux de promenade hérités de la station thermale."
+              },
+              {
+                "languageCode": "en",
+                "value": "The municipality takes ownership of Parc Fenestre and begins redeveloping it. This change establishes the garden as a lasting part of La Bourboule’s public spaces, while retaining the wooded landscape and walking areas inherited from the spa town."
+              },
+              {
+                "languageCode": "de",
+                "value": "Die Gemeinde übernimmt den Parc Fenestre und beginnt mit seiner Neugestaltung. Damit wird der Garten dauerhaft Teil der öffentlichen Freiräume La Bourboules. Die von der Kurstadt geprägte Baumlandschaft und ihre Spazierwege bleiben dabei erhalten."
+              },
+              {
+                "languageCode": "nl",
+                "value": "De gemeente wordt eigenaar van Parc Fenestre en begint met de herinrichting. Daardoor krijgt de tuin een blijvende plaats tussen de openbare ruimten van La Bourboule, met behoud van het boomrijke landschap en de wandelgebieden uit de kuurtraditie."
+              },
+              {
+                "languageCode": "it",
+                "value": "Il comune diventa proprietario del Parc Fenestre e ne avvia la sistemazione. Il cambiamento inserisce stabilmente il giardino negli spazi pubblici di La Bourboule, conservando il paesaggio alberato e i luoghi di passeggio ereditati dalla tradizione termale."
+              },
+              {
+                "languageCode": "es",
+                "value": "El municipio pasa a ser propietario del Parc Fenestre e inicia su remodelación. El cambio integra de forma duradera el jardín en los espacios públicos de La Bourboule, conservando el paisaje arbolado y los paseos heredados de la ciudad termal."
+              },
+              {
+                "languageCode": "pl",
+                "value": "Gmina przejmuje Parc Fenestre i rozpoczyna jego przebudowę. Ogród na stałe wchodzi do przestrzeni publicznych La Bourboule, zachowując zadrzewiony krajobraz oraz miejsca spacerów związane z uzdrowiskową przeszłością miasta."
+              },
+              {
+                "languageCode": "pt",
+                "value": "O município torna-se proprietário do Parc Fenestre e inicia a sua remodelação. A mudança integra duradouramente o jardim nos espaços públicos de La Bourboule, preservando a paisagem arborizada e os passeios herdados da tradição termal."
+              }
+            ],
+            "mainImageId": "142c9a0de23e41f8961aa13a08be845e",
+            "previousName": null,
+            "newName": null,
+            "previousLogoImageId": null,
+            "newLogoImageId": null,
+            "previousOperatorId": null,
+            "newOperatorId": null,
+            "previousOwnerName": null,
+            "newOwnerName": "Commune de La Bourboule",
+            "locationLabel": null,
+            "relatedParkIds": [],
+            "relatedParkItemIds": [],
+            "sources": [
+              {
+                "label": "Inventaire général du patrimoine — municipalisation et réaménagement en 1972",
+                "url": "https://pop.culture.gouv.fr/notice/merimee/IA63000689",
+                "accessedAt": "2026-11-15"
+              },
+              {
+                "label": "Route des Villes d’Eaux du Massif Central — patrimoine de La Bourboule, 2014–2015, p.17",
+                "url": "https://www.villesdeaux.com/wp-content/uploads/2023/06/2014-2015-patrimoine-la-bourboule.pdf",
+                "accessedAt": "2026-11-15"
+              }
+            ],
+            "article": null
+          }
+        ]
+      }
+    }
+  },
+  "preview": {
+    "operationId": "bc8c72c4-d05a-4638-ad79-76146c68b2b2",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:39:59.4249286Z",
+    "appliedAtUtc": null,
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8996e208-0832-4a0c-aff4-e577c587c02b",
+        "entityKey": "fenestre-history-municipal-1972",
+        "displayName": "Fenestre devient un parc municipal",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "2e31d9ac-eebb-4b50-ab4c-b4b56f9ba821",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T15:43:51.8909331Z",
+    "appliedAtUtc": "2026-11-15T15:43:51.8909341Z",
+    "targetParkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+    "targetParkName": "Parc Fenestre",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 4,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+        "entityKey": "park",
+        "displayName": "Parc Fenestre",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "0f5f6630-8784-431e-b123-46dda636f359",
+        "entityKey": "0f5f6630-8784-431e-b123-46dda636f359",
+        "displayName": "Les Tapis Volants",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "entityKey": "37504a5c-325c-47a9-992e-03279b2fa2df",
+        "displayName": "Rencontre avec Cacahuète",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "entityKey": "20b4967b-6985-4f32-b590-ac194c4a96ef",
+        "displayName": "Structures gonflables",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      },
+      {
+        "entityType": "HistoryEvent",
+        "entityId": "8996e208-0832-4a0c-aff4-e577c587c02b",
+        "entityKey": "fenestre-history-municipal-1972",
+        "displayName": "Fenestre devient un parc municipal",
+        "changeType": "Updated",
+        "matchedBy": "ownerKey",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookNewSend": false,
+  "globalCompletion": false
+}
