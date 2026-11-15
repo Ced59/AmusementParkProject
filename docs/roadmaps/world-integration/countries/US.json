@@ -73947,12 +73947,14 @@
       "sourceLifecycleSignal": "Non vérifié",
       "identityConfidence": "Installation documentée ; autonomie et identité finale à qualifier",
       "possibleMatches": [],
-      "possibleBacklogEntries": [],
+      "possibleBacklogEntries": [
+        "US-candidate-bromley-alpine-slide-20261115"
+      ],
       "aliases": [],
       "assignedTo": null,
       "lastDataIntegrationAt": null,
       "integrationHistory": [],
-      "nextAction": "Piste d’attraction autonome dans un domaine touristique ou sur un site dédié. Proposition à confirmer avec l’exploitant et la recherche des anciennes identités ; aucune migration automatique. Rechercher noms, adresse et coordonnées dans Park et StandaloneAttraction via le client officiel avant toute décision.",
+      "nextAction": "Qualifier le ZipRider de Bromley auprès de l’exploitant et chercher une photographie exacte autorisée avant création. Le Bromley Alpine Slide est une installation distincte déjà publiée sous US-candidate-bromley-alpine-slide-20261115.",
       "sources": [
         {
           "label": "ZipRider — référence constructeur",
@@ -76784,6 +76786,150 @@
           }
         ],
         "rationale": "Installation et billet individuel distincts de l’Extreme Zipline ; image propre manquante."
+      }
+    },
+    {
+      "entryId": "US-candidate-bromley-alpine-slide-20261115",
+      "name": "Bromley Alpine Slide",
+      "entityKind": "StandaloneAttraction",
+      "proposedEntityKind": "StandaloneAttraction",
+      "category": "Alpine slide",
+      "locality": "3984 VT Route 11, Peru, Vermont 05152",
+      "siteId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+      "legacySiteIds": [],
+      "presence": "Published",
+      "presenceObservedAt": "2026-11-15T23:57:21.231Z",
+      "editorialStatus": "Integrated",
+      "siteReviewStatusAtInventory": null,
+      "lifecycleAtInventory": null,
+      "sourceLifecycleSignal": "Saison estivale 2026 terminée le 12 octobre ; prochaines dates non confirmées.",
+      "identityConfidence": "Glissade fixe exacte, ticket individuel vendu par Bromley, histoire 1976 et photos exactes géolocalisées ; aucun doublon PDE trouvé avant création.",
+      "possibleMatches": [],
+      "possibleBacklogEntries": [
+        "US-candidate-standalone-08b188b03e3925"
+      ],
+      "aliases": [
+        "Alpine Slide — Bromley Mountain",
+        "Bromley Mountain Alpine Slide"
+      ],
+      "assignedTo": null,
+      "lastDataIntegrationAt": "2026-11-15T23:55:33.300Z",
+      "integrationHistory": [
+        {
+          "eventId": "apply-c4e2193d-40a2-4aad-9aab-d2cfca37f7c7",
+          "appliedAt": "2026-11-15T23:48:46.052Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:c4e2193d-40a2-4aad-9aab-d2cfca37f7c7",
+          "auditEvidence": null,
+          "summary": "Fiche masquée créée avec huit descriptions propres à Bromley."
+        },
+        {
+          "eventId": "apply-77039176-144e-4133-82b2-a92861920947",
+          "appliedAt": "2026-11-15T23:49:39.133Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:77039176-144e-4133-82b2-a92861920947",
+          "auditEvidence": null,
+          "summary": "Point de la piste relevé sur les photos géolocalisées de l’installation."
+        },
+        {
+          "eventId": "apply-c8c39869-3d3d-4f6e-9d6a-279a4e851084",
+          "appliedAt": "2026-11-15T23:50:03.013Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:c8c39869-3d3d-4f6e-9d6a-279a4e851084",
+          "auditEvidence": null,
+          "summary": "Deux conditions de taille et d’accompagnement officielles intégrées."
+        },
+        {
+          "eventId": "photo-fb1aa9219cf24d2e9eac12d1686a32dc",
+          "appliedAt": "2026-11-15T23:50:37.375Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:photo:fb1aa9219cf24d2e9eac12d1686a32dc",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de la piste, prise en 2006, importée et publiée sous CC BY-SA 2.0."
+        },
+        {
+          "eventId": "photo-c50622696fc64af3bd22cb2add170964",
+          "appliedAt": "2026-11-15T23:50:50.810Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:photo:c50622696fc64af3bd22cb2add170964",
+          "auditEvidence": null,
+          "summary": "Photographie exacte de la piste, prise en 2006, importée et publiée sous CC BY-SA 2.0."
+        },
+        {
+          "eventId": "apply-f1ab83f6-63e7-44b1-b4c2-5bda4a82c4da",
+          "appliedAt": "2026-11-15T23:54:40.000Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:f1ab83f6-63e7-44b1-b4c2-5bda4a82c4da",
+          "auditEvidence": null,
+          "summary": "Ouverture du 3 juillet 1976 ajoutée avec contexte historique sourcé."
+        },
+        {
+          "eventId": "apply-8661bbff-9b16-4c1a-ba94-a861b66e7f4c",
+          "appliedAt": "2026-11-15T23:55:33.300Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4",
+          "evidence": "PARK_DATA_EDITOR:apply:8661bbff-9b16-4c1a-ba94-a861b66e7f4c",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-bromley-alpine-slide-20261115/audit.json",
+          "summary": "Descriptions historiques, date d’ouverture et longueur mesurée intégrées ; contrôle final sans bloqueur."
+        }
+      ],
+      "nextAction": "Conserver la fiche et les reçus. Vérifier calendrier et tarifs de la prochaine saison ; rechercher une photo récente sous licence compatible. Le ZipRider de Bromley est une installation distincte encore à qualifier.",
+      "sources": [
+        {
+          "label": "Bromley — billet individuel, calendrier et météo",
+          "url": "https://www.bromley.com/mountain-adventure-park/alpine-slide/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Bromley — guide des conditions de taille",
+          "url": "https://www.bromley.com/ride-guide/",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Ski Vermont — ouverture, première installation et longueur",
+          "url": "https://skivermont.com/50-years-of-smiles-bromley-mountain-celebrates-the-alpine-slides-golden-anniversary",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Wikimedia Commons — photo 2006, piste et géolocalisation",
+          "url": "https://commons.wikimedia.org/wiki/File:Bromley_Mountain_071506_020.jpg",
+          "accessedAt": "2026-11-15"
+        },
+        {
+          "label": "Fiche autonome publiée",
+          "url": "https://amusement-parks.fun/fr/attraction/39ef8fde-f6f0-4fe7-995e-16d2fc6c58c4/bromley-alpine-slide",
+          "accessedAt": "2026-11-15"
+        }
+      ],
+      "standaloneAssessment": {
+        "relation": "AlreadyStandalone",
+        "reviewedAt": "2026-11-15",
+        "attractions": [
+          {
+            "name": "Bromley Alpine Slide",
+            "source": "Bromley — Mountain Adventure Park",
+            "url": "https://www.bromley.com/mountain-adventure-park/alpine-slide/",
+            "family": "Alpine slide",
+            "sourceVenueName": "Bromley Mountain",
+            "sourceLifecycleSignal": "2026 summer season ended",
+            "sourceLocality": "Peru, Vermont",
+            "sourceOpenedYear": "1976"
+          }
+        ],
+        "rationale": "Glissade fixe exploitée avec billet à la descente indépendant du pass journée ; fiche autonome publiée, distincte du ZipRider et des autres activités du Mountain Adventure Park."
       }
     }
   ]
