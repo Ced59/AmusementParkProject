@@ -1,0 +1,572 @@
+{
+  "evidenceType": "Public-source historical miniature catalogue reconciliation; research only",
+  "observedAtUtc": "2026-11-15T09:07:24.121515Z",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "scope": "Resolve named miniatures and chronology, without API calls, Git, repository edits, inventory creation or publication.",
+  "conclusion": {
+    "newNamedMiniaturesFoundBeyondExisting50": 0,
+    "oldOfficialCatalogueNamedMiniatures": 49,
+    "successorOfficialCatalogueNamedMiniatures": 49,
+    "successorMapLinks": 50,
+    "nonMiniatureMapLink": "jeansagnere.html presents the real host village, not a fiftieth named model.",
+    "knownAdditionalSchoolSourceModel": "Theatre of Roanne, already identified and integrated separately from the old 49; witnessed June 2013, not proven to have been present in 2007.",
+    "unresolvedDiscrepancy": "Official operator pages state 50 in 2006, December 2008 and January 2012; Loire Magazine 62 states 53 for the 2007 season. Neither set provides new names to complete a 53-model roster. The same successor regional catalogue carries 49 named models and the real village. This is an unresolved source/count divergence, not proof of four namable missing entities.",
+    "noUnsupportedCorrection": "Do not replace 53 with 50 as a proven correction, declare all models coexistent in a particular year, fabricate missing names, split composite models or count services/play equipment to reach the claimed total."
+  },
+  "chronology": [
+    {
+      "period": "Historical old-domain catalogue (archive 2000)",
+      "source": "https://web.archive.org/web/20000925141513id_/http://www.parc-de-la-drosera.fr:80/carte.html",
+      "countType": "49 explicitly named miniature links",
+      "count": 49,
+      "scope": "Named historical catalogue; not an exhaustive count of all later seasons."
+    },
+    {
+      "period": "Operator snapshot 2006-11-23",
+      "source": "https://web.archive.org/web/20061123195554id_/http://www.ladrosera.fr/parc.html",
+      "exactCountPhrase": "la présentation à l’aide de 50 maquettes des monuments du Forez",
+      "count": 50,
+      "localFile": "official-2006-parc.html"
+    },
+    {
+      "period": "Operator successor regional map 2006-11-23",
+      "source": "https://web.archive.org/web/20061123195444id_/http://www.ladrosera.fr/carte/carte.html",
+      "countPhrase": "plus de 50",
+      "namedMiniatures": 49,
+      "nonModelLinks": 1,
+      "localFile": "official-2006-map.html"
+    },
+    {
+      "period": "Season 2007-03-27 to 2007-10-31",
+      "source": "https://www.loire.fr/upload/docs/application/pdf/lm62.pdf",
+      "alternateOfficialUrl": "https://www.loire.fr/upload/docs/application/pdf/lm_62_2007_02_16__10_19_57_337.pdf",
+      "publisher": "Conseil général de la Loire, Loire Magazine 62, March/April 2007",
+      "count": 53,
+      "note": "Departmental season listing provides aggregate total, no additional miniature names; source was already recorded in campaign evidence and re-found in the public search index."
+    },
+    {
+      "period": "Operator snapshot 2008-12-09",
+      "source": "https://web.archive.org/web/20081209080535id_/http://www.ladrosera.fr:80/parc.html",
+      "count": 50,
+      "localFile": "official-parc-2008.html"
+    },
+    {
+      "period": "Operator snapshot 2012-01-14",
+      "source": "https://web.archive.org/web/20120114093544id_/http://www.ladrosera.fr:80/parc.html",
+      "count": 50,
+      "localFile": "official-parc-2012.html",
+      "editorialChangeEvidence": "Other values were updated: 6 to 3 annual jobs, 15,000 to 10,000 visitors, 50 to 35 clubs; pool and seminar room removed. Count remains 50. This supports continued official use of 50, but not proof that a rounded number is an exact audited inventory."
+    },
+    {
+      "period": "School visit 2013-06-10, article 2013-06-14",
+      "source": "https://classedespetits.blogspot.com/2013/06/notre-voyage-scolaire.html",
+      "additionalAlreadyKnownModel": "Théâtre de Roanne",
+      "note": "Distinct existing fiftieth named model; no evidence of its installation date or simultaneous presence of every older model."
+    }
+  ],
+  "catalogueCrosswalk": [
+    {
+      "existingHistoricalLabel": "Sauvain - Maquette de la croix monolithe",
+      "oldOfficialPage": "sauvain.html",
+      "successorOfficialPage": "sauvain.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Pouilly les Feurs - Maquette de l'Eglise",
+      "oldOfficialPage": "pouilly.html",
+      "successorOfficialPage": "pouilly.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Violay - Maquette de la tour Matagrin",
+      "oldOfficialPage": "violay.html",
+      "successorOfficialPage": "violay.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Chamond - Maquette de la Maison des Chanoines",
+      "oldOfficialPage": "schamond.html",
+      "successorOfficialPage": "chamond.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Cleppé - Maquette de la tour",
+      "oldOfficialPage": "cleppe.html",
+      "successorOfficialPage": "cleppe.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St georges en Couzan - Maquette du Pont de Vaux",
+      "oldOfficialPage": "sgeorges.html",
+      "successorOfficialPage": "georgesencouzan.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Etienne - Maquette de l'hôtel de ville",
+      "oldOfficialPage": "setienne.html",
+      "successorOfficialPage": "etienne.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Ours - Maquette du Volcan à ciel ouvert",
+      "oldOfficialPage": "sours.html",
+      "successorOfficialPage": "ours.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Priest la Roche - Maquette du château de la Roche",
+      "oldOfficialPage": "spriest.html",
+      "successorOfficialPage": "priestroche.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Unieux - Maquette du pont du Pertuiset",
+      "oldOfficialPage": "unieux.html",
+      "successorOfficialPage": "unieux.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Romain le Puy - Maquette du prieuré",
+      "oldOfficialPage": "sromain.html",
+      "successorOfficialPage": "romain.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Marcel de Félines - Maquette du château",
+      "oldOfficialPage": "smarcel.html",
+      "successorOfficialPage": "marcel.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Montrond les Bains - Maquette du château",
+      "oldOfficialPage": "montrond.html",
+      "successorOfficialPage": "montrond.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Trelins - Maquette de la cave des Vignerons Foréziens",
+      "oldOfficialPage": "trelins.html",
+      "successorOfficialPage": "trelins.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Champdieu - Maquette du prieuré",
+      "oldOfficialPage": "champdieu.html",
+      "successorOfficialPage": "champdieu.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Usson en Forez - Maquette du musée",
+      "oldOfficialPage": "usson.html",
+      "successorOfficialPage": "usson.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Vichy - Maquette du hall des sources",
+      "oldOfficialPage": "vichy.html",
+      "successorOfficialPage": "vichy.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Bonnet le Courreau - Maquette de la croix",
+      "oldOfficialPage": "sbonnet.html",
+      "successorOfficialPage": "bonnetcourreau.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Doizieux - Maquette de la tour",
+      "oldOfficialPage": "doizieux.html",
+      "successorOfficialPage": "doizieux.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Rive de Gier - Maquette de la cheminée Marrel",
+      "oldOfficialPage": "rive.html",
+      "successorOfficialPage": "rivegier.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Clermont Ferrand - Maquette de la cathédrale",
+      "oldOfficialPage": "clermont.html",
+      "successorOfficialPage": "clermont.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Etienne le Molard - Maquette de la Bâtie d'Urfé",
+      "oldOfficialPage": "labatie.html",
+      "successorOfficialPage": "batie.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Ambert - Maquette de l'hôtel de ville",
+      "oldOfficialPage": "ambert.html",
+      "successorOfficialPage": "ambert.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Cottance - Maquette de l'église",
+      "oldOfficialPage": "cottance.html",
+      "successorOfficialPage": "cottance.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Chalmazel - Maquette du château",
+      "oldOfficialPage": "chalmaz.html",
+      "successorOfficialPage": "chalmazel.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Olliergues - Maquette du château",
+      "oldOfficialPage": "ollierg.html",
+      "successorOfficialPage": "olliergues.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Boen - Maquette du château",
+      "oldOfficialPage": "boen.html",
+      "successorOfficialPage": "boen.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Marcoux - Maquette du château de Goutelas",
+      "oldOfficialPage": "marcoux.html",
+      "successorOfficialPage": "marcoux.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "La Benisson Dieu - Maquette du l'abbaye",
+      "oldOfficialPage": "labenis.html",
+      "successorOfficialPage": "benisson.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Sixte - Maquette de l'église",
+      "oldOfficialPage": "ssixte.html",
+      "successorOfficialPage": "sixte.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Just en Bas - Maquette de la croix de Chazeau",
+      "oldOfficialPage": "sjust.html",
+      "successorOfficialPage": "justenbas.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Chambost-Longessaigne - Maquette de la chapelle",
+      "oldOfficialPage": "chambost.html",
+      "successorOfficialPage": "longessaigne.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "La Pacaudière - Maquette du petit Louvre",
+      "oldOfficialPage": "pacaud.html",
+      "successorOfficialPage": "pacaudiere.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Thiers - Maquette du château du Pirou",
+      "oldOfficialPage": "thiers.html",
+      "successorOfficialPage": "thiers.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Feurs - Maquette de la chapelle des Martyrs",
+      "oldOfficialPage": "feurs.html",
+      "successorOfficialPage": "feurs.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Lezigneux - Maquette de la chapelle de Vidrieux",
+      "oldOfficialPage": "lezigneux.html",
+      "successorOfficialPage": "lezigneux.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Bonnet le Château - Maquette de la collégiale",
+      "oldOfficialPage": "sbonchat.html",
+      "successorOfficialPage": "bonnetchateau.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Just St Rambert - Maquette de l'île et du barrage de Grangent",
+      "oldOfficialPage": "rambert.html",
+      "successorOfficialPage": "justrambert.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Chambles - Maquette du château d'Essalois",
+      "oldOfficialPage": "chambles.html",
+      "successorOfficialPage": "chambles.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Marcily le Châtel - Maquette du château",
+      "oldOfficialPage": "marcil.html",
+      "successorOfficialPage": "marcilly.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Sauvain - Maquette de la vachère",
+      "oldOfficialPage": "vachere.html",
+      "successorOfficialPage": "vachere.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Saint Etienne - Maquette du puits Couriot",
+      "oldOfficialPage": "scouriot.html",
+      "successorOfficialPage": "courriot.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "St Jean-St Maurice - Maquette du donjon de l'ancien château",
+      "oldOfficialPage": "sjean.html",
+      "successorOfficialPage": "jeanmaurice.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Moingt - Maquette de la tour",
+      "oldOfficialPage": "moingt.html",
+      "successorOfficialPage": "moingt.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Sail sous Couzan - Maquette du château",
+      "oldOfficialPage": "sail.html",
+      "successorOfficialPage": "sail.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Sury le Comtal - Maquette del'église et du château",
+      "oldOfficialPage": "sury.html",
+      "successorOfficialPage": "sury.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Montbrison - Maquette de l'hôtel de ville",
+      "oldOfficialPage": "montbri.html",
+      "successorOfficialPage": "montbrisonmairie.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Montbrison - Maquette de la Collégiale Notre Dame",
+      "oldOfficialPage": "montbricol.html",
+      "successorOfficialPage": "montbrisoncollegiale.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    },
+    {
+      "existingHistoricalLabel": "Feurs - Maquette de l'église",
+      "oldOfficialPage": "feursegl.html",
+      "successorOfficialPage": "feurseglise.html",
+      "identityMatchBasis": "Same named monument and locality in the two official regional catalogues; filename spelling changes are not new models."
+    }
+  ],
+  "archiveSearchCoverage": {
+    "uniqueHtmlPathsReturned": 219,
+    "uniqueImagePathsReturned": 330,
+    "imageReview": "All 15 official workshop/manufacturing essay images were personally viewed at native resolution; named/captioned cases are already covered by the existing catalogue. No confidently identifiable additional named miniature emerged. No inference from the small unnamed workshop building or unrelated real-building backgrounds.",
+    "newsReview": "Public snapshots from November 2006, October 2007, December 2008, February 2009, January 2012 and September 2013 were read. New-year events and later chalet sales provide no new miniature names. An invitation to supply access codes for party pictures was not followed.",
+    "limits": "CDX returned archived public coverage, not proof of complete capture. An absent archived URL is not evidence that a miniature never existed."
+  },
+  "workshopSources": {
+    "source": "https://web.archive.org/web/20061123200639id_/http://www.ladrosera.fr/parc_maquettes.html",
+    "namedInProse": [
+      "Chapelle des Martyrs de Feurs",
+      "Tour de Saint-Jean-Saint-Maurice",
+      "Château d’Olliergues",
+      "Tour de Doizieux (spelled Donzieux in source)",
+      "Cathédrale de Clermont-Ferrand"
+    ],
+    "namedInAlts": [
+      "Vidrieux survey",
+      "Réception à Pouilly-lès-Feurs",
+      "Cheminée de Rive-de-Gier",
+      "Saint-Jean-Saint-Maurice",
+      "Hôtel de ville de Saint-Étienne"
+    ],
+    "allAlreadyRepresented": true,
+    "notModelOpeningDates": "Workshop duration and archive dates must not be converted into installation dates."
+  },
+  "recommendationsForRoot": [
+    "Record the newly checked official 50-versus-53 divergence as a precise unresolved catalogue-count limitation.",
+    "Retain 49 old catalogue models plus the already-known Roanne theatre as the named cross-period inventory; do not claim a fully reconciled 2007 roster.",
+    "The recovered Tour de Moingt photo and private existing item remain covered by the earlier findings file and the root-owned integration task.",
+    "Keep ropes/play equipment research separate from missing miniature names. It cannot explain a miniature total by being counted as a model.",
+    "No new API mutation is justified solely by this follow-up research."
+  ],
+  "files": [
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-2006-parc.html",
+      "bytes": 13903,
+      "sha256": "1c5ca60b17baf263a145bf308b0508955c9f216ed947428a3981dbc47f99dd7b"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-2006-map.html",
+      "bytes": 15641,
+      "sha256": "338db61289e75c6bb9bbcb1ad311eb46248bda3b2b39ad7269088bef55f63e42"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-parc-2008.html",
+      "bytes": 14147,
+      "sha256": "8128ffc508ea787280c0da3d6b341bf172a5b6b44a35bb833b5bf3ff007c85e6"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-parc-2012.html",
+      "bytes": 13985,
+      "sha256": "47aa104b6fe8faf1c1b701ad9365117c9585b290681d992404bc606735e1bf62"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-jeansagniere-2006.html",
+      "bytes": 4312,
+      "sha256": "7d2bbb4d0662715e0eac5c4a760c59d9b33223841c97633ae83e29d63426b77f"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-2006-maquettes.html",
+      "bytes": 5892,
+      "sha256": "e38c8b61d608d533eda61b1999b5e4a5d374d7ad23a8def7f6c5b15d2ba8f77a"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-followup-all-html-cdx.json",
+      "bytes": 18306,
+      "sha256": "7ce00a6c4a2e04f398ee1370a732f5fa36038b49c477c768f4ea0e819e6a4920"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-all-images-cdx.json",
+      "bytes": 28170,
+      "sha256": "a2d4fad69195c2105aebd63f986fbc7ec510e2b6705ea3257a28e73ff049e450"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-news-snapshots.json",
+      "bytes": 766,
+      "sha256": "9470a6516bef5765387c2fcabb4e254d55e0da44dc617a982fac4260ca79d674"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-map-snapshots.json",
+      "bytes": 192,
+      "sha256": "da220560ee663b5a9b50969c8f5ddedd795704b774f17bde3fbbca9ba028dd06"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-park-snapshots.json",
+      "bytes": 539,
+      "sha256": "d1aa9d8b690bcbe78eba07be9e2ddcebf440bd088f629f3e8da9592f71aa6a69"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-2008-2012-comparison-metadata.json",
+      "bytes": 967,
+      "sha256": "a531740e55d40cd6b4ebb31f6c63ffee99f24b59793de63c20425e04ecae4784"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/catalogue-workshop-photo-metadata.json",
+      "bytes": 4788,
+      "sha256": "e178ed3380d8e0df75648e0fed42d44e1f4cb15b2ef37e9ab3f8fedaf922a288"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-news-20061123195732.html",
+      "bytes": 9956,
+      "sha256": "8cdd083b33c23f2be8ed46b73f75d36173817a7966560c57156f7783b441302c"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-news-20071005135706.html",
+      "bytes": 11265,
+      "sha256": "127b561dc732ba893c770f16279495584c672dd3047cd3a181205f5dd95b56e6"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-news-20081209080527.html",
+      "bytes": 11323,
+      "sha256": "c9e99cb69093d1e186bea9ca0d88f02b6cc675c4b59fdd0695dc507db841541b"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-news-20090217180002.html",
+      "bytes": 11262,
+      "sha256": "c08be4f705f23a4f84a3b50379e3437d1436244b94a7940e7b41c38bb275c4a9"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-news-20120113110636.html",
+      "bytes": 9963,
+      "sha256": "fd5dfed6fad88fb013b4b36c3eb572fcdf3751fbf8a07199604a506ea07f7166"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/official-news-20130916015111.html",
+      "bytes": 8315,
+      "sha256": "384b054d8a292dd43dc27dd70bd4e4138a0528821c6dc6822b93360e7a7e2c92"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq11.jpg",
+      "bytes": 8487,
+      "sha256": "7270d590681e4fca9323a68feafc4cd8cb18d9ad3d171c91385caf242023bdd6"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq21.jpg",
+      "bytes": 6945,
+      "sha256": "3dbc52aee6cab5ae22efe5451c817008e3ccda1407f494093b867e2670ec53a3"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq22.jpg",
+      "bytes": 7008,
+      "sha256": "8bb31a59648b2fa44738f7f19cdd13f8e2cc662bd865f71df8729a8a9e705aef"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq23.jpg",
+      "bytes": 9723,
+      "sha256": "164e4fb921c4c06d6f630b7e7556461351b8244d4dceb882d95e90ca2dd15be0"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq24.jpg",
+      "bytes": 8341,
+      "sha256": "f4d2c5000d2ca716862e6c65748dd2a8ebab1553ba8eb4f5c52392331055d75a"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq31.jpg",
+      "bytes": 7529,
+      "sha256": "9aaab8d696949dc3833832f5e8d14d3ca609f508d8014de7d1a90cb7007bcb6f"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq41.jpg",
+      "bytes": 9622,
+      "sha256": "6882c0dfc58ea8bdcb0d8e8d068e8d964586f190e62a899ac85c23632ad548c2"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq42.jpg",
+      "bytes": 5340,
+      "sha256": "4db55823a843010762a44ae8482da71f51792a6447e650e6c1cac485c06cc591"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq43.jpg",
+      "bytes": 6815,
+      "sha256": "40cf0cc1632a8fd05960ad4d248c299adcbf03f6f473a4835bd96a2dda946fd7"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq51.jpg",
+      "bytes": 8975,
+      "sha256": "d220c8e95a49d35c201778bf2cb0fd157fcfaa372f7c37dfd334fd36baceb45a"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq52.jpg",
+      "bytes": 8679,
+      "sha256": "2c81133d4687d8a618de5999bff9380713095707e46dff6078ed9f792a6df281"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq54.jpg",
+      "bytes": 4466,
+      "sha256": "60209543dca3b039a617148b11109f45ce0239edd8cfda7eeacb1425d81ffdb2"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq55.jpg",
+      "bytes": 9889,
+      "sha256": "900b1621f6d3fdff711226387b9b73b51032968e423acc62f5c201d88d6639fe"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq56.jpg",
+      "bytes": 10020,
+      "sha256": "393442ac6247e8a9fc86a4c11f001a825a04c37612b3d256c2983931a347537f"
+    },
+    {
+      "path": "/workspace/france-historical-20261114/drosera-parallel-research/workshop-maq57.jpg",
+      "bytes": 8337,
+      "sha256": "685d37994ec9b5d01f08ccc0584da5c87af413ab0270c19c40e8c3068e2df7ee"
+    }
+  ],
+  "externalWritesPerformed": false,
+  "gitOperationsPerformed": false,
+  "parkDataEditorCallsPerformed": false
+}

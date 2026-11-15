@@ -35950,7 +35950,7 @@
         "Forez Miniature"
       ],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T09:01:22.884Z",
+      "lastDataIntegrationAt": "2026-11-15T09:10:51.404Z",
       "integrationHistory": [
         {
           "eventId": "apply-8f4b2dee-6769-4a2f-a0a0-a9792f199189",
@@ -36861,9 +36861,19 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-moingt-followup-20261115.json",
           "auditEvidence": null,
           "summary": "Tour de Moingt : huit notices privées rédigées et relues à partir de la photographie officielle retrouvée. Identité existante préservée, dates individuelles inconnues, image155×225 non importée. Aucun nouvel audit global ni publication."
+        },
+        {
+          "eventId": "apply-797c694b-797b-414b-b20d-dca8ce94c7c6",
+          "appliedAt": "2026-11-15T09:10:51.404Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-moingt-publication-followup-20261115.json",
+          "auditEvidence": null,
+          "summary": "Publication ciblée de la Tour de Moingt, notice huit langues auditée et export de publication rapproché. Tolérance parc fermé88/100 documentée ; autre fiche privée préservée, aucun réimport ou doublon Facebook. Contrôles publics en cours, parc toujours partial."
         }
       ],
-      "nextAction": "Tour de Moingt décrite privée8langues le15novembre09:01:22.8849172UTC depuis photo officielle retrouvée. Auditer/publier ce périmètre ; aire de pique-nique encore sans matière sur ses aménagements et53maquettes2007 à rapprocher des50identifiées selon périodes. Score88 toléré, aucune clôture sur la seule note. Facebook existant Published confirmé.",
+      "nextAction": "Tour de Moingt publiée après audit de portée le15novembre09:10:51.404862UTC ;32pages et huit notices publiques vérifiées,88/100 toléré sansbloqueur. Parc partial : pique-nique privé sans aménagement sourcé, jeux en cordes à qualifier et divergence50/53maquettes conservée. Facebook existant Published, aucun doublon ; visibilité externe séparée.",
       "sources": [
         {
           "label": "Backlog national existant",

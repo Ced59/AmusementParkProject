@@ -2,14 +2,14 @@
   "entryId": "FR-candidate-2944bd4fd46f53",
   "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
   "owner": "Conversation France",
-  "updatedAtUtc": "2026-11-15T09:03:26.869692Z",
+  "updatedAtUtc": "2026-11-15T09:15:05.729455Z",
   "status": "partial",
   "localDirectory": "/workspace/france-historical-20261114/drosera/recovery-20261115",
-  "lastActualIntegrationAtUtc": "2026-11-15T09:01:22.8849172Z",
-  "lastApplyOperationId": "3df5cda3-0096-45d3-8e70-13376ce9c4a7",
+  "lastActualIntegrationAtUtc": "2026-11-15T09:10:51.404862Z",
+  "lastApplyOperationId": "797c694b-797b-414b-b20d-dca8ce94c7c6",
   "counts": {
     "items": 53,
-    "publicItems": 51,
+    "publicItems": 52,
     "describedItems": 52,
     "media": 61,
     "historyEvents": 2
@@ -29,32 +29,72 @@
   },
   "closedParkScoreToleranceAuthorized": true,
   "facebookExisting": {
-    "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
-    "entryId": "FR-candidate-2944bd4fd46f53",
-    "name": "Village de la Droséra - Forez Miniature",
-    "publicUrl": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
-    "hasPublishedParkAnnouncement": true,
-    "facebookPublicationId": "218045e9e02741c4bf5859bc8cd97a43",
-    "status": "Published",
-    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122125808271424431",
-    "verifiedAtUtc": "2026-11-15T08:50:21.0607802Z",
-    "receiptFile": "/workspace/france-historical-20261114/facebook-recheck-20261115/official/7879f5dc-db40-4fcf-a637-86c58754040d-result.json",
-    "previousEvidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/drosera-forez-publication-audit-20261103.json",
-    "newPublicationPerformed": false
+    "receivedAtUtc": "2026-11-15T09:12:51.2133613Z",
+    "startedAtUtc": "2026-11-15T09:12:50.6399869Z",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc de la Droséra – Forez Miniature ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc de la Droséra – Forez Miniature! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Parc de la Droséra – Forez Miniature",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "218045e9e02741c4bf5859bc8cd97a43",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125808271424431",
+      "images": {
+        "data": [
+          {
+            "id": "d116533f50f74d079fe8ba491e9434e8",
+            "label": "L’eau, les rochers et les maquettes réunis dans le paysage de la Droséra, pendant l’été 2001.",
+            "isCurrent": true,
+            "width": 800,
+            "height": 600
+          },
+          {
+            "id": "3bbb996e788540bcacf2e848b3944d82",
+            "label": "Le donjon de Saint-Maurice, le château de la Roche et le bassin boisé de la Droséra, le 10 juin 2013.",
+            "isCurrent": false,
+            "width": 1600,
+            "height": 1200
+          }
+        ],
+        "pagination": {
+          "totalItems": 2,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "action": "ResolveFacebookPublication"
   },
   "proofs": [
     "drosera-moingt-followup-20261115.json",
     "drosera-recovered-state-20261115.json",
-    "drosera-forez-publication-audit-20261103.json"
+    "drosera-forez-publication-audit-20261103.json",
+    "drosera-moingt-publication-scope-audit-20261115.json",
+    "drosera-moingt-scope-audit-export-20261115.json",
+    "drosera-moingt-publication-followup-20261115.json",
+    "drosera-published-state-20261115.json",
+    "drosera-catalogue-count-followup-20261115.json"
   ],
   "remaining": [
-    "Auditer et publier la notice Moingt encore privée ; son seul original155×225 sert à la qualification, pas à un import agrandi.",
-    "Aire de pique-nique existante toujours privée sans description des aménagements, même si présence et usage2013 confirmés.",
-    "49 maquettes nommées plus théâtre de Roanne=50 selon les périodes ; annonce53 maquettes2007 reste à rapprocher. Les53items actuels incluent des services et ne prouvent pas53maquettes.",
-    "Jeux en cordes sur brochure officielle : qualification séparée, pas alias de pique-nique ni maquette manquante.",
-    "Tolérance88/100 acquise pour ce parc fermé ; elle ne clôt pas un inventaire encore en recherche.",
-    "Facebook existant Published ; visibilité externe à distinguer selon la preuve globale."
+    "Aire de pique-nique privée, sans aménagement précis sourcé ; présence/usage confirmés mais pas de texte générique pour clôturer.",
+    "50identités de maquettes selon périodes ; total53départemental2007 divergent des50officiels2006/2008/2012. Divergence documentée, aucune création artificielle.",
+    "Photo Moingt155×225 non importée ; positions et plans annuels inconnus.",
+    "Jeux en cordes à qualifier séparément.",
+    "Facebook existant Published reconfirmé, visibilité externe non déduite du seul statut."
   ],
-  "fullAuditExportPerformedThisRecovery": false,
-  "newPublicationPerformed": false
+  "fullAuditExportPerformedThisRecovery": true,
+  "newPublicationPerformed": true,
+  "scopePublicationPerformed": true,
+  "completed": false,
+  "uniqueScopeAuditExportAtUtc": "2026-11-15T09:07:00.7153635Z",
+  "distinctPublicationExportAtUtc": "2026-11-15T09:10:09.7422087Z",
+  "publicChecks": {
+    "pages": 32,
+    "newNoticeLanguages": 8,
+    "issues": 0
+  }
 }

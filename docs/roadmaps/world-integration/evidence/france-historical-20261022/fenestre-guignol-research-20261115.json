@@ -1,0 +1,148 @@
+{
+  "researchedAtUtc": "2026-11-15T09:04:20.127053+00:00",
+  "scope": "Public sources and local research only. No PDE, Git, repository/state/helper changes; no human contact.",
+  "parkId": "4af8f8f8-2be7-4438-a02f-0054b36cb25e",
+  "existingItem": {
+    "id": "ac0ff701-b2a1-40ac-bacb-1295cc90cb55",
+    "name": "Théâtre de Guignol",
+    "currentKnownStatus": "Unknown",
+    "currentKnownVisibility": false
+  },
+  "result": "Historical puppet programming at Fenestre is established, but the exact alias between Teatro di Papa Tino and the existing Théâtre de Guignol item is NOT established. Do not merge or rewrite Guignol as Papa Tino on this evidence.",
+  "guignolDirectEvidence": [
+    {
+      "source": "hotel-geneve2015.html",
+      "url": "https://www.hotel-geneve-bourboule.fr/phasellus-eleifend-mi-sit-amet-laoreet-semper-dolor-est-ultrices-mi-3/",
+      "publicationDateDisplayed": "2015-01-30",
+      "fact": "The accommodation page explicitly lists a théâtre de Guignol among Fenestre amenities and credits the Massif du Sancy tourist office as source. It names no company, repertoire, building, year of operation or date of opening/closure. Its illustrations were uploaded later; their upload paths are not capture dates."
+    },
+    {
+      "source": "event20260731.html",
+      "url": "https://pommesdelune.fr/event/2026/7/31/23720-guignol-au-cur-de-la-ville",
+      "fact": "A dated 31 July 2026 Guignol au cœur de la ville event is attributed to the Burattini family at Square Joffre, NOT Fenestre. The 1892 and 1968 tradition dates refer to the town/casino/company context, not proven Fenestre-item opening dates."
+    }
+  ],
+  "separateHistoricalProgrammingCandidate": {
+    "name": "Teatro di Papa Tino",
+    "company": "L’Illustre Famille Burattini",
+    "parkLocationConfirmed": "Parc Fenestre, La Bourboule",
+    "sourceUrl": "https://www.burattini-theatreforain.com/archives-cr%C3%A9ations-burattini/archives-tourn%C3%A9es/",
+    "series2017": [
+      {
+        "from": "2017-07-10",
+        "through": "2017-07-13",
+        "timeLocal": "16:30"
+      },
+      {
+        "from": "2017-07-17",
+        "through": "2017-07-20",
+        "timeLocal": "16:30"
+      },
+      {
+        "from": "2017-08-01",
+        "through": "2017-08-12",
+        "timeLocal": "16:30"
+      },
+      {
+        "from": "2017-08-14",
+        "through": "2017-08-27",
+        "timeLocal": "16:30"
+      }
+    ],
+    "basis": [
+      "burattini-archives.html",
+      "burattini-company.html"
+    ],
+    "qualifiedFacts": [
+      "The company has a touring repertoire and recorded recurring seasonal series at Fenestre in summer 2017.",
+      "The company presentation describes recurring summer puppet performances at Fenestre but is not a dated municipal programme for 2026.",
+      "A separate 11 August 2018 Teatro di Papa Tino entry names only La Bourboule, not Fenestre; park attribution must not be inferred."
+    ],
+    "notProven": [
+      "Alias with the existing Théâtre de Guignol item",
+      "Permanent building or fixed castelet",
+      "Position, dimensions, material, capacity, manufacturer",
+      "First or last year of operation",
+      "Current operation at Fenestre"
+    ],
+    "action": "Keep as separate identity/reconciliation lead. Do not create or merge automatically."
+  },
+  "municipalProgramme2024": {
+    "url": "https://www.calameo.com/read/000534765a997dcc6c7c4",
+    "title": "Guide estival 2024 - Ville de La Bourboule",
+    "publisher": "prog bourboule",
+    "publishedAtDisplayed": "2024-06-25",
+    "pages": 56,
+    "access": "Ordinary public Calameo reader, cookies declined, standard search/page navigation; no account or download bypass.",
+    "searches": {
+      "Guignol": {
+        "matchingPages": 0
+      },
+      "Fenestre": {
+        "matchingPages": 13
+      },
+      "Burattini": {
+        "matchingPages": 1,
+        "page": 38
+      }
+    },
+    "page38Verified": "14 August 2024, 21:00, centre-ville: L’Illustre Famille Burattini, Le Petit Musée des Contes de Fées. This is a distinct street-theatre production; it is not a Guignol-at-Fenestre programme.",
+    "photoDisposition": "Page 38 has a real photo of the different production; its venue/capture date and individual photographer are not established. Not accepted as a Guignol/Fenestre image.",
+    "evidence": [
+      "municipal2024-calameo.html",
+      "municipal2024-reader.html",
+      "municipal2024-guignol-search.txt",
+      "municipal2024-fenestre-search.txt",
+      "municipal2024-burattini-search.txt",
+      "municipal2024-burattini-verified.png"
+    ],
+    "limit": "No result in one programme does not prove the absence or closure of other seasonal shows.",
+    "excludedArtifact": "municipal2024-page38.png contains a temporary viewer page-number/content mismatch (input 38, visible printed pages 6–7). It is NOT page-38 evidence; use municipal2024-burattini-verified.png."
+  },
+  "imageReview": [
+    {
+      "file": "hotel-old-map.jpg",
+      "finding": "Native illustrated Fenestre map, no Guignol or Papa Tino labelled. Undated edition. No theatre position inferred."
+    },
+    {
+      "file": "hotel-animation.jpg",
+      "finding": "Small real view of children playing on lawn near playground; no puppet theatre. Rejected for this item."
+    },
+    {
+      "file": "municipal2024-burattini-verified.png",
+      "finding": "Page 38 photo depicts a different production promoted for centre-ville. Screenshot is source proof, not an import candidate."
+    },
+    {
+      "source": "burattini-papatino.html",
+      "finding": "Main body is lorem ipsum placeholder. Shared/sidebar photos do not establish a Fenestre Guignol venue. Exclude as editorial evidence."
+    }
+  ],
+  "proposedExistingItemFields": {
+    "id": "ac0ff701-b2a1-40ac-bacb-1295cc90cb55",
+    "name": "Théâtre de Guignol",
+    "category": "Show",
+    "type": "Show",
+    "attractionDetails.status": "Unknown",
+    "attractionDetails.openingDate": null,
+    "attractionDetails.closingDate": null,
+    "attractionLocations": null,
+    "latitude": null,
+    "longitude": null,
+    "isVisible": false,
+    "newSupportedAlias": null,
+    "newSupportedManufacturer": null,
+    "acceptedNewImage": null,
+    "rewriteDecision": "No mutation recommended from these findings until the nominal identity link is established."
+  },
+  "sourceAccessFailures": [
+    {
+      "source": "municipal-guide2025.pdf",
+      "finding": "Official Apidae-hosted 2025 programme indexed by search but direct fetch 404 and subsequent find also 404; not treated as an available full primary source."
+    },
+    {
+      "source": "tourism-guignol2026",
+      "finding": "Official Puy-de-Dôme tourism event appears in search cache, but direct fetch 410. The saved public mirror independently states Square Joffre; no false 200 recorded."
+    }
+  ],
+  "manifest": "sources.json"
+}

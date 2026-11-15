@@ -1,0 +1,957 @@
+{
+  "entryId": "FR-candidate-2944bd4fd46f53",
+  "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+  "owner": "Conversation France",
+  "outcome": "partial",
+  "scopeAudit": "drosera-moingt-publication-scope-audit-20261115.json",
+  "publicationExportReconciliation": {
+    "auditExportedAtUtc": "2026-11-15T09:07:00.7153635Z",
+    "publicationExportedAtUtc": "2026-11-15T09:10:09.7422087Z",
+    "equalExceptExportMetadata": true
+  },
+  "preview": {
+    "operationId": "6b140c46-7a07-431d-8a6e-53fa7a1809de",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:10:21.6239828Z",
+    "appliedAtUtc": null,
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "targetParkName": "Parc de la Droséra – Forez Miniature",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "entityKey": "park",
+        "displayName": "Parc de la Droséra – Forez Miniature",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "entityKey": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "displayName": "Tour de Moingt",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "apply": {
+    "operationId": "797c694b-797b-414b-b20d-dca8ce94c7c6",
+    "mode": "merge",
+    "isApplied": true,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:10:51.4048606Z",
+    "appliedAtUtc": "2026-11-15T09:10:51.404862Z",
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "targetParkName": "Parc de la Droséra – Forez Miniature",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 1,
+      "deleted": 0,
+      "unchanged": 1,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "entityKey": "park",
+        "displayName": "Parc de la Droséra – Forez Miniature",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "entityKey": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "displayName": "Tour de Moingt",
+        "changeType": "Updated",
+        "matchedBy": "id",
+        "fields": [
+          {
+            "field": "isVisible",
+            "oldValue": "false",
+            "newValue": "true"
+          },
+          {
+            "field": "adminReviewStatus",
+            "oldValue": "ToReview",
+            "newValue": "Validated"
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "document": {
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "createIfMissing": false,
+    "replaceCollections": false,
+    "document": {
+      "documentType": "AmusementParkParkGraphUpsert",
+      "schemaVersion": "2026-09-05",
+      "mode": "merge",
+      "identity": {
+        "parkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "id": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "name": "Parc de la Droséra – Forez Miniature",
+        "countryCode": "FR"
+      },
+      "park": {
+        "id": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "key": "park",
+        "name": "Parc de la Droséra – Forez Miniature"
+      },
+      "items": [
+        {
+          "key": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+          "id": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+          "name": "Tour de Moingt",
+          "category": "Attraction",
+          "type": "WalkThrough",
+          "subtype": null,
+          "zoneId": null,
+          "zoneKey": null,
+          "descriptions": [
+            {
+              "languageCode": "fr",
+              "value": "<h2>La tour et sa petite porte</h2><p>À la Droséra, la maquette de Moingt dressait une tour ronde et claire au-dessus d’une enceinte basse. Deux cadrans d’horloge se détachaient près du sommet, sous un petit toit brun-rouge. Quelques ouvertures étroites ponctuaient le fût de la tour, tandis qu’une porte en arc s’ouvrait dans le mur voisin.</p><p>Le pied de l’ensemble se mêlait aux pierres et à la végétation du décor miniature. Le modèle évoquait la vieille tour conservée à Moingt, près de Montbrison, vestige du château médiéval : une silhouette locale reconnaissable parmi les monuments du Forez réunis dans le parc.</p>"
+            },
+            {
+              "languageCode": "en",
+              "value": "<h2>The tower and its little gateway</h2><p>At La Droséra, the Moingt model featured a pale round tower rising above a low enclosure. Two clock faces stood out near the top, beneath a small reddish-brown roof. Narrow openings punctuated the tower, while an arched doorway opened through the adjoining wall.</p><p>Stones and vegetation surrounded the base in the miniature landscape. The model recalled the old tower surviving at Moingt, near Montbrison, a remnant of the medieval castle: a distinctive local outline among the monuments of Forez brought together in the park.</p>"
+            },
+            {
+              "languageCode": "de",
+              "value": "<h2>Der Turm und sein kleines Tor</h2><p>Das Modell von Moingt in La Droséra zeigte einen hellen Rundturm über einer niedrigen Umfassungsmauer. Nahe der Spitze hoben sich zwei Zifferblätter unter einem kleinen rotbraunen Dach ab. Schmale Öffnungen gliederten den Turm, während ein Torbogen durch die angrenzende Mauer führte.</p><p>Steine und Pflanzen umgaben den Fuß des Bauwerks in der Miniaturlandschaft. Das Modell erinnerte an den alten Turm von Moingt bei Montbrison, einen Überrest der mittelalterlichen Burg: eine markante örtliche Silhouette unter den im Park versammelten Baudenkmälern des Forez.</p>"
+            },
+            {
+              "languageCode": "nl",
+              "value": "<h2>De toren en zijn kleine poort</h2><p>De maquette van Moingt in La Droséra toonde een lichte ronde toren boven een lage ommuring. Vlak onder een klein roodbruin dak vielen twee wijzerplaten op. Smalle openingen onderbraken de torenwand en een boogpoort gaf toegang door de aangrenzende muur.</p><p>Stenen en planten omringden de voet van het bouwwerk in het miniatuurlandschap. Het model verwees naar de oude toren van Moingt bij Montbrison, een overblijfsel van het middeleeuwse kasteel: een herkenbaar plaatselijk silhouet tussen de monumenten van de Forez die in het park waren samengebracht.</p>"
+            },
+            {
+              "languageCode": "it",
+              "value": "<h2>La torre e la piccola porta</h2><p>Alla Droséra, il modellino di Moingt mostrava una torre rotonda e chiara sopra una bassa cinta muraria. Due quadranti d’orologio risaltavano vicino alla sommità, sotto un piccolo tetto bruno-rossastro. Strette aperture punteggiavano la torre, mentre una porta ad arco si apriva nel muro adiacente.</p><p>Pietre e vegetazione circondavano la base nel paesaggio in miniatura. Il modello richiamava l’antica torre conservata a Moingt, vicino a Montbrison, resto del castello medievale: una sagoma locale riconoscibile tra i monumenti del Forez riuniti nel parco.</p>"
+            },
+            {
+              "languageCode": "es",
+              "value": "<h2>La torre y su pequeña puerta</h2><p>En La Droséra, la maqueta de Moingt levantaba una torre redonda y clara sobre un recinto de muros bajos. Dos esferas de reloj destacaban cerca de la cima, bajo un pequeño tejado marrón rojizo. Estrechas aberturas salpicaban la torre, mientras una puerta de arco se abría en el muro contiguo.</p><p>Piedras y vegetación rodeaban la base dentro del paisaje en miniatura. El modelo evocaba la antigua torre conservada en Moingt, cerca de Montbrison, vestigio del castillo medieval: una silueta local reconocible entre los monumentos del Forez reunidos en el parque.</p>"
+            },
+            {
+              "languageCode": "pl",
+              "value": "<h2>Wieża i niewielka brama</h2><p>Makieta Moingt w La Droséra przedstawiała jasną okrągłą wieżę górującą nad niskim murem. Blisko szczytu, pod małym czerwonobrązowym dachem, wyróżniały się dwie tarcze zegarowe. Wieżę zdobiły wąskie otwory, a w przylegającym murze znajdowała się łukowa brama.</p><p>Podstawę budowli otaczały kamienie i rośliny miniaturowego krajobrazu. Model nawiązywał do starej wieży zachowanej w Moingt koło Montbrison, pozostałości średniowiecznego zamku: rozpoznawalnej lokalnej sylwetki wśród zabytków Forez zgromadzonych w parku.</p>"
+            },
+            {
+              "languageCode": "pt",
+              "value": "<h2>A torre e a pequena porta</h2><p>Na Droséra, a maquete de Moingt apresentava uma torre redonda e clara acima de uma cerca baixa. Dois mostradores de relógio destacavam-se perto do topo, sob um pequeno telhado castanho-avermelhado. Aberturas estreitas marcavam a torre, enquanto uma porta em arco se abria no muro contíguo.</p><p>Pedras e vegetação rodeavam a base na paisagem em miniatura. O modelo evocava a antiga torre conservada em Moingt, perto de Montbrison, vestígio do castelo medieval: uma silhueta local reconhecível entre os monumentos do Forez reunidos no parque.</p>"
+            }
+          ],
+          "attractionDetails": {
+            "manufacturerId": null,
+            "manufacturerKey": null,
+            "model": null,
+            "externalSource": null,
+            "externalId": null,
+            "sourceUrl": "https://web.archive.org/web/20061123205004id_/http://www.ladrosera.fr/carte/moingt.html",
+            "status": "ClosedDefinitively",
+            "materialType": null,
+            "seatingType": null,
+            "launchType": null,
+            "restraintType": null,
+            "isLaunched": null,
+            "openingDate": null,
+            "closingDate": null,
+            "openingDateText": null,
+            "closingDateText": null,
+            "durationInSeconds": null,
+            "capacityPerHour": null,
+            "heightInFeet": null,
+            "heightInMeters": null,
+            "lengthInFeet": null,
+            "lengthInMeters": null,
+            "speedInMph": null,
+            "speedInKmH": null,
+            "dropInFeet": null,
+            "dropInMeters": null,
+            "inversionCount": null,
+            "trainCount": null,
+            "carsPerTrain": null,
+            "ridersPerVehicle": null,
+            "hasSingleRider": null,
+            "hasFastPass": null,
+            "isAccessibleForReducedMobility": null,
+            "isIndoor": null,
+            "waterExposureLevel": null,
+            "accessConditions": []
+          },
+          "attractionLocations": {
+            "entrance": null,
+            "exit": null,
+            "fastPassEntrance": null,
+            "reducedMobilityEntrance": null
+          },
+          "isVisible": true,
+          "adminReviewStatus": "Validated",
+          "latitude": null,
+          "longitude": null
+        }
+      ]
+    }
+  },
+  "actualIntegrationDateField": "apply.appliedAtUtc",
+  "scoreToleranceForClosedParkPreviouslyAuthorized": true,
+  "newFacebookPublicationPerformed": false,
+  "publicVerificationPending": false,
+  "completed": false,
+  "publicChecks": [
+    {
+      "checkedAtUtc": "2026-11-15T09:13:16.991321Z",
+      "language": "fr",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 5077,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "b8acbc19c50bb64c63b627113463940fe8a35d62d67c3673c5f80db66bad44b5"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:18.338131Z",
+      "language": "fr",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "L'histoire de Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1733,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "4f43eea6c905761b522bac4b824377c15b20192ad9999b698bcf907075ef036a"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:20.222834Z",
+      "language": "fr",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "La Droséra : un portrait du Forez en maquettes"
+      ],
+      "bodyCharacters": 4790,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "5f05afa35ae26d265284fc20cf8ca94a3565d75911cec572fca6a0c6dfd1ed91"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:22.337614Z",
+      "language": "fr",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2480,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "2c4aa20bd9c1d7dc62dfc058ed22d4e3a2fa251c6ca4eca7442888c932538cdd"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:24.784013Z",
+      "language": "en",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/en/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4612,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "529285af5369d9573c22c0eee9539e1441ed17e5d7542baa149fdc4343b1fc1e"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:26.011278Z",
+      "language": "en",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/en/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "The history of Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1547,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "edba8e5ab470035df0c2a9303cd5cd32b1ec33f1fe2a6ff77647cb57d90de909"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:27.513713Z",
+      "language": "en",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/en/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "Droséra: a portrait of the Forez in miniature"
+      ],
+      "bodyCharacters": 4359,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "401f1fc5902fc1b5d54d6ab380bde30d743ef9a3bbcedc92ee00f7b7c0511fbd"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:29.418224Z",
+      "language": "en",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/en/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2260,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "0ea827023a80e745c8c76950fadaaddc29db27785c03c2215c3957a29c33569f"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:31.409531Z",
+      "language": "de",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/de/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4948,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "152edfbd70e7009ee55f2dc4c69e30958365ea06f8dfd31bc0c8ebb3a5c693bc"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:32.798940Z",
+      "language": "de",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/de/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "Die Geschichte von Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1716,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "17f3073827f6f6cd15dd3b79a0eadae56b4cf418a9a99c8728d64d17c0978813"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:34.419577Z",
+      "language": "de",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/de/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "Droséra: ein Porträt des Forez in Miniaturen"
+      ],
+      "bodyCharacters": 4587,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "d6c944fce6d23483a1b81dc0300254f145d776769762c6d286a783bd9e6d424f"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:36.542875Z",
+      "language": "de",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/de/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2481,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "2c6b2097f19a0ee03842b62fb8dd8952ff952af7b3f0873e7c6b556b43ed263a"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:38.379790Z",
+      "language": "nl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/nl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4792,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "62a4ef972dd5111abee42d74ad497e57c33a3d9b3fd46a475638ff774bb801e9"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:39.762164Z",
+      "language": "nl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/nl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "De geschiedenis van Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1690,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "3a181cb166e40fff87a848cc0c1e0ec15d7e7627d771558dcc87d6955f15f8f4"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:41.279821Z",
+      "language": "nl",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/nl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "Droséra: een portret van de Forez in miniaturen"
+      ],
+      "bodyCharacters": 4495,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "249ba9d4fd99c8587fc886374fa341c7059f5c9fd58c5eca90baef8cfe8baa1e"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:43.348426Z",
+      "language": "nl",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/nl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2398,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "ae1859036ed0fe0bab1994827d9b63afc60a6d0bd9be86e0de6a674dccda9eb0"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:46.362546Z",
+      "language": "it",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/it/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4927,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "ca263a227c132f32876d3988b11386595d076bf4d490883a609aeb7fc6d08f71"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:47.938960Z",
+      "language": "it",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/it/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "La storia di Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1680,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "d25b6b5e3345eab01fb2101b21ed972a8009dfa6c808573cb68eaf21181e8ee3"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:49.466761Z",
+      "language": "it",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/it/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "La Droséra: un ritratto del Forez in miniatura"
+      ],
+      "bodyCharacters": 4678,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "1cd0ee1c03e97ff1d8a17bfd28289e32e90f47d8ce1a079194827106af590621"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:51.585483Z",
+      "language": "it",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/it/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2457,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "0854dcabac3d2e7e38a5b4c0985db544250394ab2504bbaff29b6f840e9d5e62"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:53.710285Z",
+      "language": "es",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/es/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4984,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "dcee17659883d616fba0cacd72216323dd9708f9a8f01e9a6dfecc6fe64bf95f"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:55.094815Z",
+      "language": "es",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/es/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "La historia de Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1685,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "cd80b9f1d46fff2d7c945fb561ae9a888837be839490e9ebc830abf65bdd905f"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:56.623462Z",
+      "language": "es",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/es/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "La Droséra: un retrato del Forez en miniatura"
+      ],
+      "bodyCharacters": 4643,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "f0c8e71c4349cb200420cfa251920b72476a7730f1e86a8237f8752007c18acf"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:13:58.695045Z",
+      "language": "es",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/es/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2495,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "d3aa68144f535094970a71c3c221a7833a4cd9551d44f66e7f69aab64b4465c6"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:00.776388Z",
+      "language": "pl",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4675,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "43d4b7f3f2afae9e6bb6d714e79d86b487798020eb5dc2d9ffbf3b86ffab4d64"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:02.546323Z",
+      "language": "pl",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "Historia Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1649,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "c2601a0025c1d5f533486530f67890cd77344402247e3ad2e8514865f30bebb1"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:04.215431Z",
+      "language": "pl",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/pl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "Droséra: portret Forez w miniaturze"
+      ],
+      "bodyCharacters": 4482,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "d4cd93283efc8facb29c3411a4148dbd79ba4e55fc90245485c437488d9b5c94"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:07.019107Z",
+      "language": "pl",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/pl/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2254,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "d92a7bece564a1b41bb9db6564c09e18ffce010603e92d05f3099405e88d8c04"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:08.620800Z",
+      "language": "pt",
+      "kind": "park",
+      "url": "https://amusement-parks.fun/pt/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "httpStatus": 200,
+      "h1": [
+        "Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 4868,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "9fa45e0499c5f0f420ddc26ad3e5f2854031fef719ef559ca42f9727fe8da942"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:10.249467Z",
+      "language": "pt",
+      "kind": "history",
+      "url": "https://amusement-parks.fun/pt/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history",
+      "httpStatus": 200,
+      "h1": [
+        "A história de Parc de la Droséra – Forez Miniature"
+      ],
+      "bodyCharacters": 1677,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "0481c41c592daca43a4fabe9e20c5c36b6bcaf23a1abe1f29d3b9df6d64b7e60"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:11.800725Z",
+      "language": "pt",
+      "kind": "article",
+      "url": "https://amusement-parks.fun/pt/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/history/8cbb953b-b8ba-4a6a-9cef-a8422993c9cd/drosera-forez-miniature-patrimoine-photos",
+      "httpStatus": 200,
+      "h1": [
+        "A Droséra: um retrato do Forez em miniatura"
+      ],
+      "bodyCharacters": 4497,
+      "exactPublishedNoticePresent": null,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "4c47219cc782b80515cf2d0f2de9de20121eacf165b6b52dcfab9f44fbec2069"
+    },
+    {
+      "checkedAtUtc": "2026-11-15T09:14:13.661421Z",
+      "language": "pt",
+      "kind": "moingt",
+      "url": "https://amusement-parks.fun/pt/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+      "httpStatus": 200,
+      "h1": [
+        "Tour de Moingt"
+      ],
+      "bodyCharacters": 2420,
+      "exactPublishedNoticePresent": true,
+      "layout": {
+        "viewport": 390,
+        "width": 390
+      },
+      "technicalMatches": [],
+      "brokenImages": [],
+      "bodySha256": "5d45871815c0401322f9d334969addc717ed0a64aa7c629d67aecc0ccfcdb607"
+    }
+  ],
+  "publicNavigation": {
+    "method": "Normal park page > places list > search Tour de Moingt > actual returned link clicked; URL awaited before checking. No cache purge, custom endpoint, or fake visibility change.",
+    "itemUrl": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature/item/64cba6f2-1368-4048-9699-6d7dd07d0118/tour-de-moingt",
+    "initialTestObservation": "First browser probe asserted before SPA navigation completed; corrected by waiting for the actual target URL. No data retry."
+  },
+  "visualReview": {
+    "frScreenshot": "moingt-fr-public.png",
+    "sha256": "9ae301636e3fb149b6f1eddb9e8cd91d3fc7a258f6724d6109ef0a8500bcafde",
+    "rootPersonallyViewed": true,
+    "observed": "Notice lisible, statut fermé, géolocalisation absente explicitée ; aucune photographie faible présentée. Bannière cookies nécessaire affichée."
+  },
+  "actualCompleteness": {
+    "result": {
+      "completenessScore": 88,
+      "dataQualityLevel": "Good",
+      "applicableMaxPoints": 102,
+      "earnedPoints": 90,
+      "publicationBlockers": [],
+      "formulaicPublicTextIssue": null
+    },
+    "receivedAtUtc": "2026-11-15T09:11:25.7910764Z",
+    "startedAtUtc": "2026-11-15T09:11:24.4817165Z",
+    "action": "Completeness"
+  },
+  "idempotence": {
+    "operationId": "47edf012-559e-4a7c-a972-c8f5b32c73b2",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T09:11:24.0925158Z",
+    "appliedAtUtc": null,
+    "targetParkId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+    "targetParkName": "Parc de la Droséra – Forez Miniature",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 2,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+        "entityKey": "park",
+        "displayName": "Parc de la Droséra – Forez Miniature",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "entityKey": "64cba6f2-1368-4048-9699-6d7dd07d0118",
+        "displayName": "Tour de Moingt",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "facebookExisting": {
+    "receivedAtUtc": "2026-11-15T09:12:51.2133613Z",
+    "startedAtUtc": "2026-11-15T09:12:50.6399869Z",
+    "result": {
+      "url": "https://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature",
+      "defaultMessage": "🌍 Nouveau parc ajouté sur Amusement-Parks.Fun : Parc de la Droséra – Forez Miniature ! 🎢\n\nTu connais ce parc ? Tu l’as déjà visité ? Qu’en as-tu pensé ? Dis-le-nous en commentaire ! 😊\n\n🇬🇧 New park added to Amusement-Parks.Fun: Parc de la Droséra – Forez Miniature! 🎢\n\nDo you know this park? Have you visited it? What did you think? Tell us in the comments! 😊\n\n🔗 Découvre le parc ici / Discover the park here:\nhttps://amusement-parks.fun/fr/park/7879f5dc-db40-4fcf-a637-86c58754040d/parc-de-la-drosera-forez-miniature\n\n#AmusementParks #ParcAttractions #MontagnesRusses #PassionParcs #Tourisme #ThemeParks #RollerCoasters #Travel",
+      "targetKind": "Park",
+      "targetName": "Parc de la Droséra – Forez Miniature",
+      "imageOwnerType": "Park",
+      "imageOwnerId": "7879f5dc-db40-4fcf-a637-86c58754040d",
+      "hasPublishedParkAnnouncement": true,
+      "parkAnnouncementId": "218045e9e02741c4bf5859bc8cd97a43",
+      "parkAnnouncementStatus": "Published",
+      "parkAnnouncementExternalUrl": "https://www.facebook.com/1285475681307050/posts/122125808271424431",
+      "images": {
+        "data": [
+          {
+            "id": "d116533f50f74d079fe8ba491e9434e8",
+            "label": "L’eau, les rochers et les maquettes réunis dans le paysage de la Droséra, pendant l’été 2001.",
+            "isCurrent": true,
+            "width": 800,
+            "height": 600
+          },
+          {
+            "id": "3bbb996e788540bcacf2e848b3944d82",
+            "label": "Le donjon de Saint-Maurice, le château de la Roche et le bassin boisé de la Droséra, le 10 juin 2013.",
+            "isCurrent": false,
+            "width": 1600,
+            "height": 1200
+          }
+        ],
+        "pagination": {
+          "totalItems": 2,
+          "totalPages": 1,
+          "currentPage": 1,
+          "itemsPerPage": 6
+        }
+      }
+    },
+    "action": "ResolveFacebookPublication"
+  },
+  "facebookPublicVisibilityCaution": "Le statut serveur Published ne prouve pas la visibilité de la publication sur Facebook ; contrôle anonyme global et réponse propriétaire encore distincts. Aucun nouvel envoi.",
+  "catalogueResearch": "drosera-catalogue-count-followup-20261115.json"
+}
