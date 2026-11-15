@@ -1,0 +1,161 @@
+{
+  "entryId": "CH-park-7f6fb9df-5502-4d6a-959e-dbaa568544d6",
+  "entityKind": "StandaloneAttraction",
+  "entityId": "fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5",
+  "name": "FLOOMZER Flumserberg",
+  "countryCode": "CH",
+  "auditAtUtc": "2026-11-15T10:40:26.756Z",
+  "operatorSources": [
+    "https://www.flumserberg.ch/rodelberg",
+    "https://www.flumserberg.ch/en/information/Tickets-rates/FLOOMZER-toboggan-run",
+    "https://www.flumserberg.ch/Operating-hours"
+  ],
+  "legacyParkId": "7f6fb9df-5502-4d6a-959e-dbaa568544d6",
+  "legacyParkItemId": "da469f69-5875-4753-b513-73edf32ecaaf",
+  "legacyParkStatus": "Hidden ToReview; parent administrative retirement pending because Park graph retirement currently times out",
+  "legacyParkItemStatus": "Hidden NotRelevant, verified after successful official apply",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/fa0b181b-b7e8-46ab-9cb7-2ddf2fe863d5/floomzer-flumserberg",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "photoCount": 3,
+  "photos": [
+    {
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rodelbahn_Floomzer_in_Flumserberg_-_panoramio.jpg",
+      "role": "sled at lower section",
+      "isCurrent": true,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Rodelbahn_Floomzer_in_Flumserberg_-_panoramio.jpg/960px-Rodelbahn_Floomzer_in_Flumserberg_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "photographedAt": "2015-12-29",
+      "importedAtUtc": "2026-11-15T10:22:04.32Z",
+      "metadataUpdatedAtUtc": "2026-11-15T10:23:47.195Z",
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_(3).jpg",
+      "role": "track curve and gondola",
+      "isCurrent": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_%283%29.jpg/960px-Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "photographedAt": "2015-12-29",
+      "importedAtUtc": "2026-11-15T10:22:12.374Z",
+      "metadataUpdatedAtUtc": "2026-11-15T10:23:52.973Z",
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    },
+    {
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_(6).jpg",
+      "role": "wooded track curve",
+      "isCurrent": false,
+      "sourceUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_%286%29.jpg/960px-Rodelbahn_Floomzer_in_Flumserberg_-_panoramio_%286%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "creator": "qwesy qwesy",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "photographedAt": "2015-12-29",
+      "importedAtUtc": "2026-11-15T10:22:19.838Z",
+      "metadataUpdatedAtUtc": "2026-11-15T10:23:58.581Z",
+      "isPublished": true,
+      "binaryHttpStatus": 200
+    }
+  ],
+  "pricing": "Nine operator normal fares from summer 2026; ride only, short loop with lift, and three-ride package by three age categories. Next-season fares unknown.",
+  "openingHoursAssessment": "Summer 2026 ended; live operating status currently closed; no speculative 2027 schedule imported.",
+  "lengthAssessment": "Operator explicitly states 2,000m downhill track and 250m altitude difference.",
+  "completeness": {
+    "score": 87,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "facebook": {
+    "status": "Published",
+    "postUrl": "https://www.facebook.com/1285475681307050/posts/122127440115424431",
+    "publishedAtUtc": "2026-11-15T10:27:51.1339924Z"
+  },
+  "lastDataIntegrationAt": "2026-11-15T10:26:07.518Z",
+  "dataReceipts": [
+    {
+      "kind": "Apply",
+      "stage": "core",
+      "operationId": "03da50ba-ea2a-4665-8ce5-7f6e8475df94",
+      "appliedAtUtc": "2026-11-15T10:18:36.39814Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "pricing",
+      "operationId": "48b4c915-4d05-402e-bbb9-7ac663df3e96",
+      "appliedAtUtc": "2026-11-15T10:19:49.3216042Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "access",
+      "operationId": "b8292a8c-7acc-4851-ac7d-6acd7caa7c1c",
+      "appliedAtUtc": "2026-11-15T10:20:32.3516649Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "textfix",
+      "operationId": "16dedeec-e0b2-426c-a039-acb2d35d6be1",
+      "appliedAtUtc": "2026-11-15T10:25:34.840603Z"
+    },
+    {
+      "kind": "Apply",
+      "stage": "retire-item",
+      "operationId": "b37ba4ea-6bac-4a60-b084-fed6fb5f2efe",
+      "appliedAtUtc": "2026-11-15T10:26:07.5188431Z"
+    }
+  ],
+  "publicationReceipt": {
+    "kind": "Apply",
+    "stage": "publish",
+    "operationId": "0c8b1362-d23c-4a63-8bfd-256b1d9aff66",
+    "appliedAtUtc": "2026-11-15T10:26:51.5980215Z"
+  },
+  "migrationNote": "Core create used retireLegacyPark=false and retireLegacyParkItem=false to avoid the known parent retirement hang. The ParkItem was then retired in a separate successful apply; the hidden parent Park was not changed.",
+  "mediaReceipts": [
+    {
+      "kind": "ImportPhoto",
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAtUtc": "2026-11-15T10:22:04.32Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "appliedAtUtc": "2026-11-15T10:22:12.374Z"
+    },
+    {
+      "kind": "ImportPhoto",
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "appliedAtUtc": "2026-11-15T10:22:19.838Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "e9f3c2dadd1843e7b934b7bce796b6a3",
+      "appliedAtUtc": "2026-11-15T10:23:47.195Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "f86c3814371646fc9c2977d397e8be8f",
+      "appliedAtUtc": "2026-11-15T10:23:52.973Z"
+    },
+    {
+      "kind": "UpdatePhotoMetadata",
+      "imageId": "1563b6a920c449409e875caaba2c4889",
+      "appliedAtUtc": "2026-11-15T10:23:58.581Z"
+    }
+  ]
+}
