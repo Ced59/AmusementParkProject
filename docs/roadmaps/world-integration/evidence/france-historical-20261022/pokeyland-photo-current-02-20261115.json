@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 2,
+    "activityName": "Les as du ciel",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/parc/bubble-race/",
+      "accessedAtUtc": "2026-11-15T10:37:43.434215+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/parc/bubble-race/",
+      "sha256": "07a068708c7d6165b7de5cbc89b850d5fbbd0acb8dfbe756f6cde90c03e01268",
+      "bytes": 83687,
+      "file": "activity-bubble-race.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-013-1350x900.jpg",
+    "file": "02-bubble-race.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-013-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:17.867295+00:00",
+    "bytes": 244306,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "f9a359ad7b4fef2c2cd57b5f1c318941487dbbfaf4978d553886bd2191a3971d",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "02-bubble-race.jpg",
+    "visualDescriptionFr": "Nacelles rondes vertes, jaunes/orangées et violettes, avec garde-corps métalliques et ampoules, suspendues à un manège aérien.",
+    "identityAndCaptionLimitsFr": "Correspond à Les as du ciel. Le cliché ne montre pas l’ensemble des montgolfières ni leur nombre ; ne pas déduire capacité, hauteur ou fabricant.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-013-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/02-bubble-race.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-02-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-02-import-result.json"
+  },
+  "metadata": {
+    "description": "Des montgolfières miniatures aux couleurs vives sous le feuillage de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-013-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Les paniers et ballons multicolores des As du ciel, avec le mât jaune et les bras roses et blancs, entre les arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "The colourful baskets and balloons of Les as du ciel, with a yellow mast and pink and white arms, among the trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Bunte Körbe und Ballons von Les as du ciel mit gelbem Mast und rosa-weißen Armen zwischen den Bäumen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Cestas y globos multicolores de Les as du ciel, con mástil amarillo y brazos rosas y blancos, entre los árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "Cestelli e palloni multicolori di Les as du ciel, con albero giallo e bracci rosa e bianchi, tra gli alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Veelkleurige manden en ballonnen van Les as du ciel, met een gele mast en roze-witte armen, tussen de bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Wielobarwne kosze i balony Les as du ciel, z żółtym masztem oraz różowo-białymi ramionami, wśród drzew."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Cestos e balões multicolores de Les as du ciel, com mastro amarelo e braços rosa e brancos, entre as árvores."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Des montgolfières miniatures aux couleurs vives sous le feuillage de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "Brightly coloured miniature balloons beneath Pokeyland’s foliage."
+      },
+      {
+        "languageCode": "de",
+        "value": "Leuchtend bunte Miniaturballons unter dem Laub von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Globos en miniatura de vivos colores bajo el follaje de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Mongolfiere in miniatura dai colori vivaci sotto il fogliame di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Felgekleurde miniatuurluchtballonnen onder het bladerdak van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Miniaturowe balony w żywych kolorach pod liśćmi drzew Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Balões em miniatura de cores vivas sob a folhagem de Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "ea0ce74a58b540a6bd7cae56c439591f",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+      "path": "park_item/ea0ce74a58b540a6bd7cae56c439591f",
+      "description": "Des montgolfières miniatures aux couleurs vives sous le feuillage de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 244306,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-013-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Les paniers et ballons multicolores des As du ciel, avec le mât jaune et les bras roses et blancs, entre les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The colourful baskets and balloons of Les as du ciel, with a yellow mast and pink and white arms, among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bunte Körbe und Ballons von Les as du ciel mit gelbem Mast und rosa-weißen Armen zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cestas y globos multicolores de Les as du ciel, con mástil amarillo y brazos rosas y blancos, entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cestelli e palloni multicolori di Les as du ciel, con albero giallo e bracci rosa e bianchi, tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Veelkleurige manden en ballonnen van Les as du ciel, met een gele mast en roze-witte armen, tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielobarwne kosze i balony Les as du ciel, z żółtym masztem oraz różowo-białymi ramionami, wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cestos e balões multicolores de Les as du ciel, com mastro amarelo e braços rosa e brancos, entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des montgolfières miniatures aux couleurs vives sous le feuillage de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Brightly coloured miniature balloons beneath Pokeyland’s foliage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtend bunte Miniaturballons unter dem Laub von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Globos en miniatura de vivos colores bajo el follaje de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Mongolfiere in miniatura dai colori vivaci sotto il fogliame di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Felgekleurde miniatuurluchtballonnen onder het bladerdak van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Miniaturowe balony w żywych kolorach pod liśćmi drzew Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Balões em miniatura de cores vivas sob a folhagem de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:36:56.672Z",
+      "updatedAt": "2026-11-15T11:37:00.333Z"
+    },
+    "action": "ImportPhoto",
+    "receivedAtUtc": "2026-11-15T11:37:03.4867028Z",
+    "startedAtUtc": "2026-11-15T11:36:53.7778201Z"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

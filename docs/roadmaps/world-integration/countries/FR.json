@@ -33007,7 +33007,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": "Conversation France",
-      "lastDataIntegrationAt": "2026-11-15T11:27:10.806Z",
+      "lastDataIntegrationAt": "2026-11-15T11:37:18.130Z",
       "integrationHistory": [
         {
           "eventId": "apply-16955ed7-e691-46c8-a765-af5d62c33c67",
@@ -33108,6 +33108,66 @@
           "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-08-historical-inventory-20261115.json",
           "auditEvidence": null,
           "summary": "Pokeyland : 17 offres historiques distinctes créées privées, état actuel Unknown après rapprochement des plans et reportages. Aucun alias, fermeture, jour ou constructeur inventé. Total 74 lieux ; qualification résiduelle, notices, médias et audit à poursuivre."
+        },
+        {
+          "eventId": "apply-9f3cfa31-4e6b-4c19-acaa-6685c4be69db",
+          "appliedAt": "2026-11-15T11:34:14.515Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-10-item-descriptions-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland privé : six notices La Pomme, Crazy Kart, Ejector, Escalade, Kid’s Swing et La Roue rédigées et relues dans huit langues, soit 48 textes. Sources officielles et photos natives relues ; formats courts documentés, aucune publication."
+        },
+        {
+          "eventId": "import-photo-02f8fe904d61402db8e69951510ece12",
+          "appliedAt": "2026-11-15T11:36:34.013Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-00-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Aire de jeux importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-1ca0f5afafbd466db3e529f0f7c9210b",
+          "appliedAt": "2026-11-15T11:36:45.266Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-01-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Bazooka ball importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-ea0ce74a58b540a6bd7cae56c439591f",
+          "appliedAt": "2026-11-15T11:36:56.672Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-02-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Les as du ciel importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-5dd3bb456db74c25b11142c570398f5b",
+          "appliedAt": "2026-11-15T11:37:08.038Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-03-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Bumper Boat importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
+        },
+        {
+          "eventId": "import-photo-854a573d1b84444d9257cb9626b0360b",
+          "appliedAt": "2026-11-15T11:37:18.130Z",
+          "outcome": "partial",
+          "entityKind": "Park",
+          "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+          "evidence": "docs/roadmaps/world-integration/evidence/france-historical-20261022/pokeyland-photo-current-04-20261115.json",
+          "auditEvidence": null,
+          "summary": "Pokeyland : photo officielle réelle de Les as du volant importée privée après examen visuel personnel et relecture des 24 métadonnées huit langues. Source native intacte ; capture inconnue ; aucune publication."
         }
       ],
       "nextAction": "Poursuivre l’intégration et l’audit final.",

@@ -1,0 +1,674 @@
+{
+  "reportType": "public-research-only-map-addendum",
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "createdAtUtc": "2026-11-15T11:34:40.002272+00:00",
+  "scope": "Additional identities on the operator plan photographed in 2017, reconciled against the parent’s latest local state. No PARK_DATA_EDITOR calls, no Git, no registry/working-state edits, no import or publication.",
+  "priorReports": [
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-inventory-followup-20261115.json",
+    "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/historical-inventory-residual-five-20261115.json"
+  ],
+  "readOnlySnapshot": {
+    "file": "/workspace/france-historical-20261114/pokeyland/working-state.json",
+    "readAtUtc": "2026-11-15T11:34:40.002272+00:00",
+    "sha256": "e815fe01bdfd39d777dbc850b4f930dd0b2aab15207290effba6b472549859de",
+    "itemCount": 74,
+    "note": "Parent continues work concurrently. This is a read-only comparison snapshot, not an assertion of the live server state or campaign completion."
+  },
+  "generalLimits": [
+    "A label on a contemporaneously photographed map establishes documented presence, not an exact first opening or last operation.",
+    "Absence from the current catalogue is not proof of closure.",
+    "No prices, height restrictions or historic operating hours are transferred to current records.",
+    "No source displayed an open licence; no rights statement has been invented.",
+    "All new research is in this child directory. No repeated 429 replay or access-control circumvention was used."
+  ],
+  "sources": {
+    "plan_gallery_2017": {
+      "url": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "accessedAtUtc": "2026-11-15T11:17:45.185777+00:00",
+      "status": 200,
+      "finalUrl": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 617393,
+      "sha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+      "file": "estrepublicain-visit-2017.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-visit-2017.html",
+      "verifiedBytes": 617393,
+      "verifiedSha256": "30439c222d634f7c2f0d5c0153b5148f993dbaff99f866d899a723cc651363b6",
+      "dateInterpretation": {
+        "displayedPublicationDate": "2017-08-11",
+        "displayedPublicationTimeLocal": "18:00",
+        "displayedUpdateTimeLocal": "18:08",
+        "urlDate": "2017-08-07",
+        "photoTakenAt": null,
+        "note": "Use displayed article date; the URL and CDN timestamp do not establish the photo capture date. The photographed plan has no confirmed printed year."
+      }
+    },
+    "plan_photo_2017": {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/304959DC-8C74-48BD-9E56-7EC69EF6C6D8/NW_raw/title-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:21:12.406977+00:00",
+      "status": 200,
+      "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/304959DC-8C74-48BD-9E56-7EC69EF6C6D8/NW_raw/title-1500630058.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 610309,
+      "sha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c",
+      "file": "estrepublicain-gallery-16-2017.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-gallery-16-2017.jpg",
+      "verifiedBytes": 610309,
+      "verifiedSha256": "77ebcbe8107f76bc0504342255fa48d47ab3ae47db5a9bd3a2639e61c425173c"
+    },
+    "nocturne_july_2017": {
+      "url": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+      "accessedAtUtc": "2026-11-15T11:27:00.690475+00:00",
+      "status": 200,
+      "finalUrl": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 171675,
+      "sha256": "5ad3860755cf28237e153a2eee462f13b4f29a44beeb8bbbb781d2431324f833",
+      "file": "nocturne-le-lorrain-2017.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-le-lorrain-2017.html",
+      "verifiedBytes": 171675,
+      "verifiedSha256": "5ad3860755cf28237e153a2eee462f13b4f29a44beeb8bbbb781d2431324f833"
+    },
+    "nocturne_august_2017": {
+      "url": "https://www.ousortiren.com/sortir-en-lorraine/1862-nocturne-festive-au-parc-de-loisirs-pokeyland-a-fey",
+      "accessedAtUtc": "2026-11-15T11:27:01.862605+00:00",
+      "status": 200,
+      "finalUrl": "https://www.ousortiren.com/sortir-en-lorraine/1862-nocturne-festive-au-parc-de-loisirs-pokeyland-a-fey",
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 59670,
+      "sha256": "4ef234a5afe0ed3c4cda7c869c11160ac580b5c7ad0d36453fb5425461a7e864",
+      "file": "nocturne-ousortiren-2017.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-ousortiren-2017.html",
+      "verifiedBytes": 59670,
+      "verifiedSha256": "4ef234a5afe0ed3c4cda7c869c11160ac580b5c7ad0d36453fb5425461a7e864"
+    },
+    "nocturne_2019": {
+      "url": "https://www.lagazettefrance.fr/article/pokeyland-organise-bientot-sa-mega-nocturne-festive",
+      "accessedAtUtc": "2026-11-15T11:27:04.815237+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lagazettefrance.fr/article/pokeyland-organise-bientot-sa-mega-nocturne-festive",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 92742,
+      "sha256": "8dbc2f01cab7d4bf525ce7293bd9c7c7b3a316e370c48744b77e04621ab3081c",
+      "file": "nocturne-gazette-2019.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/nocturne-gazette-2019.html",
+      "verifiedBytes": 92742,
+      "verifiedSha256": "8dbc2f01cab7d4bf525ce7293bd9c7c7b3a316e370c48744b77e04621ab3081c"
+    },
+    "current_cabanes": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+      "accessedAtUtc": "2026-11-15T10:31:27.072888+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/cabanes-de-pokey/",
+      "bytes": 90288,
+      "sha256": "db328dcbb8d3298a3ddc0833e4a74a6ff5713c7676fe2f6941cc6d19b4a45437",
+      "file": "pokeyland-cabanes.html",
+      "reusedFrom": "/workspace/france-historical-20261114/new-france-candidates-sources-20261115/pokeyland-cabanes.html",
+      "localCopiedAtUtc": "2026-11-15T10:36:42.278580+00:00",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/pokeyland-cabanes.html",
+      "verifiedBytes": 90288,
+      "verifiedSha256": "db328dcbb8d3298a3ddc0833e4a74a6ff5713c7676fe2f6941cc6d19b4a45437"
+    },
+    "current_food": {
+      "url": "https://www.pokeyland.com/restauration/",
+      "accessedAtUtc": "2026-11-15T10:37:45.706394+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/restauration/",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97919,
+      "sha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d",
+      "file": "official-restauration.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/official-restauration.html",
+      "verifiedBytes": 97919,
+      "verifiedSha256": "e66380686b2e78d5de6bd6d21594d83739af744e773e7eb450d438f55ca2c12d"
+    },
+    "constructor_2018": {
+      "url": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/36-et-si-c-etait-le-moment-d-agrandir-votre-parc",
+      "accessedAtUtc": "2026-11-15T11:27:36.997272+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/36-et-si-c-etait-le-moment-d-agrandir-votre-parc",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 131196,
+      "sha256": "a402aeeddb08f5e8480a7bbd8ef44a500013bdfe42836a94de99f83f1dd9d934",
+      "file": "amazone-adventure-extension-2018.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-adventure-extension-2018.html",
+      "verifiedBytes": 131196,
+      "verifiedSha256": "a402aeeddb08f5e8480a7bbd8ef44a500013bdfe42836a94de99f83f1dd9d934",
+      "displayedPublicationDate": "2018-05-23"
+    },
+    "constructor_2017": {
+      "url": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "accessedAtUtc": "2026-11-15T11:29:01.891773+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 126149,
+      "sha256": "f5fa2552d03a153ade166d47a41156a8c7999f950266e9b3df8a3439d997c517",
+      "file": "amazone-extension-pokeyland-2017.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-extension-pokeyland-2017.html",
+      "verifiedBytes": 126149,
+      "verifiedSha256": "f5fa2552d03a153ade166d47a41156a8c7999f950266e9b3df8a3439d997c517",
+      "displayedPublicationDate": "2017-06-02"
+    },
+    "constructor_maintenance_2018": {
+      "url": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/34-une-intervention-sur-mesure",
+      "accessedAtUtc": "2026-11-15T11:28:42.718387+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/34-une-intervention-sur-mesure",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 128282,
+      "sha256": "0a7316d0c5fb31641f675663b8c93db40a29b3dbf5f0b15989ff1faaa5622f84",
+      "file": "amazone-audit-2018.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-audit-2018.html",
+      "verifiedBytes": 128282,
+      "verifiedSha256": "0a7316d0c5fb31641f675663b8c93db40a29b3dbf5f0b15989ff1faaa5622f84",
+      "displayedPublicationDate": "2018-04-06"
+    },
+    "season_2020": {
+      "url": "https://www.lorraineaucoeur.com/evt-31222/parc-de-loisirs-pokeyland-saison-2020-et-nouveautes/moselle-fey/promo-sortie",
+      "accessedAtUtc": "2026-11-15T10:57:42.177905+00:00",
+      "status": 200,
+      "finalUrl": "https://www.lorraineaucoeur.com/evt-31222/parc-de-loisirs-pokeyland-saison-2020-et-nouveautes/moselle-fey/promo-sortie",
+      "contentType": "text/html; charset=ISO-8859-1",
+      "bytes": 138577,
+      "sha256": "cbf16ebd12caa225611071712ed7fa3658f9d75666e2cd88137d282e59cd2b0b",
+      "file": "lorraine-season-2020.html",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/lorraine-season-2020.html",
+      "verifiedBytes": 138577,
+      "verifiedSha256": "cbf16ebd12caa225611071712ed7fa3658f9d75666e2cd88137d282e59cd2b0b"
+    }
+  },
+  "findings": [
+    {
+      "name": "Buvette « Sur le Pouce »",
+      "planNumber": 23,
+      "evidence": [
+        "plan_photo_2017",
+        "nocturne_july_2017",
+        "nocturne_august_2017",
+        "nocturne_2019"
+      ],
+      "finding": "The exact plan legend is BUVETTE “SUR LE POUCE”. July and August 2017 nocturne announcements list Sur le Pouce among the food outlets. The 2019 announcement lists Sur le Pouce and the new L’Escale in the same list.",
+      "supportedPresenceYears": [
+        2017,
+        2019
+      ],
+      "openingDate": null,
+      "currentStatus": null,
+      "existingCandidates": [
+        {
+          "name": "L’Escale",
+          "id": "698bf2fb-d43e-4a13-988c-f25ecee12095"
+        },
+        {
+          "name": "Le Petit Creux",
+          "id": "e267af4d-a394-4ddb-9cb5-597582e077da"
+        },
+        {
+          "name": "Pokey Beach",
+          "id": "8c4cf821-1b28-4ad9-ad26-bf48382ffc32"
+        }
+      ],
+      "aliasDecision": "Do not alias to L’Escale: explicit coexistence in the 2019 announcement. No documented rename to another current outlet.",
+      "descriptionEvidenceSufficient": false,
+      "missing": [
+        "Building/counter appearance and an attributable nominal photograph",
+        "Exact opening/last operation",
+        "Current identity or documented replacement"
+      ],
+      "safeNextStep": "Retain a named historical service candidate; source supports name/function only, not a detailed physical notice or arbitrary current alias."
+    },
+    {
+      "name": "O’Chalet — barbecue géant",
+      "planNumber": 28,
+      "evidence": [
+        "plan_photo_2017",
+        "nocturne_july_2017",
+        "nocturne_august_2017",
+        "nocturne_2019",
+        "current_food"
+      ],
+      "finding": "A second close reading of the original plan establishes O’CHALET (BARBECUE GÉANT), not an unnamed Chalet. Announcements in 2017 call O’Chalet a new restaurant and 2019 still lists it. The current Le Grill offers barbecue, but no source explicitly identifies it as renamed O’Chalet.",
+      "supportedPresenceYears": [
+        2017,
+        2019
+      ],
+      "openingDate": null,
+      "noveltyAnnouncementYear": 2017,
+      "currentStatus": null,
+      "existingCandidates": [
+        {
+          "name": "Le Grill",
+          "id": "538a604f-6fe1-4460-9740-7b0c576b0214"
+        }
+      ],
+      "aliasDecision": "O’Chalet and the plan’s barbecue géant are one proven label. O’Chalet → Le Grill remains unproven.",
+      "descriptionEvidenceSufficient": false,
+      "missing": [
+        "Nominal view of the actual outlet",
+        "Any explicit rename/replacement link",
+        "Actual opening date beyond novelty wording"
+      ],
+      "safeNextStep": "Use a single historical O’Chalet candidate if qualification continues. Do not create separate O’Chalet and Chalet barbecue entries or copy Le Grill’s current menu into 2017."
+    },
+    {
+      "name": "Balade en calèche",
+      "planNumber": 29,
+      "evidence": [
+        "plan_photo_2017",
+        "nocturne_july_2017"
+      ],
+      "finding": "The official plan photographed in 2017 lists a Balade en calèche. The article illustration whose filename contains balade shows a pedal Rosalie, not a carriage.",
+      "supportedPresenceYears": [
+        2017
+      ],
+      "openingDate": null,
+      "currentStatus": null,
+      "existingCandidates": [
+        {
+          "name": "Poney",
+          "id": "90c00f80-deb0-4b63-9451-ed8cc255461c"
+        },
+        {
+          "name": "Les p’tits chevaux",
+          "id": "e4952e01-1404-4f8f-8f53-e8f0336d4d51"
+        }
+      ],
+      "aliasDecision": "No link to Poney, Les p’tits chevaux or Rosalie is demonstrated. These are not interchangeable attraction types.",
+      "descriptionEvidenceSufficient": false,
+      "missing": [
+        "Nominal carriage photograph",
+        "Horse count, vehicle appearance and route",
+        "Opening and closure or successor identity"
+      ],
+      "safeNextStep": "Keep name-only historical lead and separate the Rosalie photographic lead. Do not infer operating condition today from the old map."
+    },
+    {
+      "name": "Pokey’bonbone / bonbons et granitas (reading to confirm)",
+      "planNumber": 31,
+      "evidence": [
+        "plan_photo_2017",
+        "current_food"
+      ],
+      "finding": "The legend clearly identifies a branded sweet/granita point at number 31. The photographed small text appears to read POKEY’BONBONE & GRANITAS; do not normalize the exact branded spelling without a clearer original. Number 32 separately lists churros/crêpes/gaufres. Current Le Gourmand offers some overlapping products, which does not prove identity.",
+      "supportedPresenceYears": [
+        2017
+      ],
+      "openingDate": null,
+      "currentStatus": null,
+      "existingCandidates": [
+        {
+          "name": "Le Gourmand",
+          "id": "731d71c3-50aa-4898-8a78-de37c0b1437c"
+        }
+      ],
+      "aliasDecision": "No explicit old/new name link; overlap in products is insufficient.",
+      "descriptionEvidenceSufficient": false,
+      "missing": [
+        "Exact branded orthography at full original print quality",
+        "Nominal counter photograph",
+        "Continuity with current food outlet"
+      ],
+      "safeNextStep": "Retain unresolved historical sweet-service label; avoid duplicate creation or current-menu extrapolation."
+    },
+    {
+      "name": "Churros / crêpes / gaufres",
+      "planNumber": 32,
+      "evidence": [
+        "plan_photo_2017",
+        "current_food"
+      ],
+      "finding": "A distinct 2017 plan marker lists these three products. Current Le Gourmand is a plausible comparison but no explicit renaming or same-location proof was located.",
+      "supportedPresenceYears": [
+        2017
+      ],
+      "openingDate": null,
+      "currentStatus": null,
+      "existingCandidates": [
+        {
+          "name": "Le Gourmand",
+          "id": "731d71c3-50aa-4898-8a78-de37c0b1437c"
+        }
+      ],
+      "aliasDecision": "Do not automatically merge with number 31 or alias to Le Gourmand.",
+      "descriptionEvidenceSufficient": false,
+      "missing": [
+        "Outlet name if any",
+        "Nominal physical illustration",
+        "Operational continuity or replacement record"
+      ],
+      "safeNextStep": "Keep a separate plan observation rather than adding two unqualified generic food venues."
+    },
+    {
+      "name": "Mer de filet",
+      "planNumber": 12,
+      "evidence": [
+        "plan_photo_2017",
+        "plan_gallery_2017",
+        "constructor_2018",
+        "current_cabanes"
+      ],
+      "finding": "The 2017 plan and nominal gallery photo establish the Mer de filet. Amazone Adventure captions its 2018 photo “Mer de filet et village de cabanes — Pokeyland”. The current official Cabanes de Pokey page explicitly describes a giant mer de filet plus protected passages from cabin to cabin.",
+      "supportedPresenceYears": [
+        2017,
+        2018
+      ],
+      "openingDate": null,
+      "currentStatus": "The current Cabanes page describes this kind of net component, but continuity of the exact historical installation is not explicitly dated.",
+      "existingCandidates": [
+        {
+          "name": "Cabanes de Pokey",
+          "id": "60089a60-4ba5-4c81-a9f9-5f1ed4aa41f4"
+        }
+      ],
+      "aliasDecision": "Strong evidence for net/cabins as one combined ensemble or constituent relationship; insufficient for a dated formal rename. Do not blindly create a second modern attraction.",
+      "descriptionEvidenceSufficient": true,
+      "supportedPhysicalDetails": [
+        "Raised net floor between trees",
+        "High net sides",
+        "Adjacent raised cabins connected by mesh-protected passages"
+      ],
+      "missing": [
+        "Exact opening year",
+        "Documented continuity or alterations from 2017 to current layout"
+      ],
+      "safeNextStep": "Review the existing Cabanes identity and media; a historical component note and nominal photo may be safer than a new entity. Do not infer construction in 2018 merely because the supplier article that year mentions an extension."
+    },
+    {
+      "name": "Archery Games / Archery Tag",
+      "planNumber": null,
+      "evidence": [
+        "plan_photo_2017",
+        "season_2020"
+      ],
+      "finding": "The bottom plan legend names ARCHERY GAMES with a novelty mark in the photographed 2017 version. A season-2020 promotional page announces Archery Tag as new and describes two teams, five target spots on the opposing target, and opponents to hit. The same page still includes Archey games in its general activity list, so the page does not itself explain a rename or succession.",
+      "supportedPresenceYears": [
+        2017,
+        2020
+      ],
+      "openingDate": null,
+      "currentStatus": null,
+      "existingCandidates": [
+        {
+          "name": "Tir à l’arc",
+          "id": "3866ee9e-cd56-4f95-83c3-ce6ffb4a7bd9"
+        },
+        {
+          "name": "Le Petit Robin",
+          "id": "6c658164-104c-41a1-a470-f50d7f0c956d"
+        },
+        {
+          "name": "Bazooka ball",
+          "id": "798894e0-5efa-45b0-953c-baad70dab44a"
+        }
+      ],
+      "aliasDecision": "Games ↔ Tag is plausible but unproven. Archery Games was separately named from Tir à l’arc and Le Petit Robin on the 2017 plan. No link to Bazooka ball is established.",
+      "descriptionEvidenceSufficient": false,
+      "missing": [
+        "Primary nominal field photograph",
+        "Explicit Games/Tag identity or format history",
+        "Verified equipment, precise location, operation dates"
+      ],
+      "safeNextStep": "Keep as one unresolved linked research cluster; do not create two speculative duplicates or alias to target archery."
+    },
+    {
+      "name": "Old rope-course labels and the 2017 extension",
+      "evidence": [
+        "plan_photo_2017",
+        "constructor_2017",
+        "constructor_2018",
+        "constructor_maintenance_2018"
+      ],
+      "finding": "The plan names Parcours aventure, sportif, famille, découverte, enfant and Pokey Pitchoune. Current items already include same-family labels and numbered courses. The supplier’s 2 June 2017 article says it built the park in 2015 and returned for an extension with a new Pitchoun course of 12 workshops and a third initiation course. It does not map these to current Pitchoune 1/2/3 or Aventure 1/2.",
+      "existingCandidates": [
+        {
+          "name": "Parcours Pitchoune 1",
+          "id": "09ed3d9f-bcf0-4751-b69a-6abd6ab5c4ca"
+        },
+        {
+          "name": "Parcours Pitchoune 2",
+          "id": "9a40ce59-ca74-455f-8ba0-185b560055a1"
+        },
+        {
+          "name": "Parcours Pitchoune 3",
+          "id": "20067de5-b801-4e24-90d3-4ba5ffc711f6"
+        },
+        {
+          "name": "Parcours découverte",
+          "id": "d1249160-5d7d-4250-9fc4-9d5b8ef426da"
+        },
+        {
+          "name": "Parcours famille",
+          "id": "dc94d1e6-5141-4370-8bbd-c2fdf89fd509"
+        },
+        {
+          "name": "Parcours aventure 1",
+          "id": "fa6e99c1-f258-408e-8628-8c95312f2c18"
+        },
+        {
+          "name": "Parcours aventure 2",
+          "id": "496b6b3b-d182-45bf-b2b7-6199dd24c91a"
+        },
+        {
+          "name": "Parcours sportif",
+          "id": "7bf7d562-7cbe-49b7-8057-be7f392a5e57"
+        },
+        {
+          "name": "Parcours tyrolienne",
+          "id": "ae8be798-c96c-4075-8968-1bf55a5a2786"
+        }
+      ],
+      "supportedConstructionYears": [
+        2015,
+        2017,
+        2018
+      ],
+      "openingDate": null,
+      "aliasDecision": "Reuse/qualify existing course families; no blind extra Parcours enfant or duplicate aventure entity. Specific numbered identity remains unproved.",
+      "safeNextStep": "Supplier context supports a park-level historical construction/extension narrative after root review. Avoid applying 2017 opening dates to specific current numbered courses. All four 2017 supplier images are watermarked and excluded from import.",
+      "caveats": [
+        "The article’s 2015 construction statement comes from the adventure-course supplier and must not be generalized to manufacture of every later park attraction.",
+        "The 2018 article mentions Pokeyland among extensions but does not identify precisely which current course was added.",
+        "The April 2018 maintenance/audit article is not an opening event or a present-day safety guarantee."
+      ]
+    }
+  ],
+  "media": [
+    {
+      "url": "https://cdn-s-www.estrepublicain.fr/images/89C82B26-C0BA-4D93-BE73-6523E29D7878/NW_raw/la-mer-de-filet-pour-sauter-en-toute-securite-1500630058.jpg",
+      "accessedAtUtc": "2026-11-15T11:27:39.521458+00:00",
+      "status": 200,
+      "finalUrl": "https://cdn-s-www.estrepublicain.fr/images/89C82B26-C0BA-4D93-BE73-6523E29D7878/NW_raw/la-mer-de-filet-pour-sauter-en-toute-securite-1500630058.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 730467,
+      "sha256": "db30ea8fb180893d3f205a719c13e4c87e683ce4ed276ff33a89d8bdd2121114",
+      "file": "estrepublicain-mer-filet-2017.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/estrepublicain-mer-filet-2017.jpg",
+      "verifiedBytes": 730467,
+      "verifiedSha256": "db30ea8fb180893d3f205a719c13e4c87e683ce4ed276ff33a89d8bdd2121114",
+      "sourcePage": "https://www.estrepublicain.fr/edition-de-pont-a-mousson/2017/08/07/une-journee-a-pokeyland",
+      "captionOrContext": "La mer de filet, pour sauter en toute sécurité !",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Rectangular suspended net floor between trees, high net sides, roofed cabins and a green mesh passage at the side. Not an isolated visual proof of the exact modern item identity.",
+      "visibleWatermark": false,
+      "researchCandidateOnly": true,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Source association verified; root must personally review and reconcile existing media before any potential import. No open licence asserted."
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/157/1000/mer-de-filet-et-village-de-cabanes.jpeg",
+      "accessedAtUtc": "2026-11-15T11:28:03.459535+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/upload/miniatures/157/1000/mer-de-filet-et-village-de-cabanes.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 313260,
+      "sha256": "f554843a5a8f982f3dea604d1a345435823a4fa881d980de8ca7bea8d1ebd03a",
+      "file": "amazone-mer-filet-cabanes-2018.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-mer-filet-cabanes-2018.jpeg",
+      "verifiedBytes": 313260,
+      "verifiedSha256": "f554843a5a8f982f3dea604d1a345435823a4fa881d980de8ca7bea8d1ebd03a",
+      "sourcePage": "https://www.amazone-adventure.com/presentation/qui-sommes-nous/actualites/36-et-si-c-etait-le-moment-d-agrandir-votre-parc",
+      "captionOrContext": "Mer de filet et village de cabanes — Pokeyland",
+      "dimensions": [
+        1000,
+        667
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Large raised light-coloured net floor, net sides, visitors, orange play ball, roofed cabins and adjoining green mesh passage. The primary supplier caption explicitly places the net and cabins together at Pokeyland.",
+      "visibleWatermark": false,
+      "researchCandidateOnly": true,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Source association verified; root must personally review and reconcile existing media before any potential import. No open licence asserted."
+    },
+    {
+      "url": "https://www.le-lorrain.fr/files/uploads/2017/07/balade-pockeland.jpg",
+      "accessedAtUtc": "2026-11-15T11:27:38.864465+00:00",
+      "status": 200,
+      "finalUrl": "https://www.le-lorrain.fr/files/uploads/2017/07/balade-pockeland.jpg",
+      "contentType": "image/jpeg",
+      "bytes": 114737,
+      "sha256": "096b2fc0ef27063d0cfafdc4994e6f217ae20642066e1405791e91ddc50d689f",
+      "file": "le-lorrain-balade-2017.jpg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/le-lorrain-balade-2017.jpg",
+      "verifiedBytes": 114737,
+      "verifiedSha256": "096b2fc0ef27063d0cfafdc4994e6f217ae20642066e1405791e91ddc50d689f",
+      "sourcePage": "https://www.le-lorrain.fr/blog/2017/07/12/moselle-nocturne-parc-pokeyland-22-juillet/",
+      "captionOrContext": "Uncaptioned article illustration; filename balade-pockeland.jpg",
+      "dimensions": [
+        960,
+        640
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Four-person orange and black pedal vehicle with a visible BERG badge. It is not a horse-drawn carriage.",
+      "visibleWatermark": false,
+      "researchCandidateOnly": false,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Do not attach to Balade en calèche. May support a separate Rosalie research lead only; manufacturer badge is specific to the photographed vehicle and does not establish a park-wide supplier."
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/525/1000/chemin-arc-en-ciel.jpeg",
+      "accessedAtUtc": "2026-11-15T11:29:46.413072+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/upload/miniatures/525/1000/chemin-arc-en-ciel.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 470938,
+      "sha256": "4238a687566c6cf3097f391e55db5c6e2755d42ec0e6febf10f1817407b89d6e",
+      "file": "amazone-pitchoun-arc-en-ciel-2017.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-pitchoun-arc-en-ciel-2017.jpeg",
+      "verifiedBytes": 470938,
+      "verifiedSha256": "4238a687566c6cf3097f391e55db5c6e2755d42ec0e6febf10f1817407b89d6e",
+      "sourcePage": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "captionOrContext": "Chemin Arc en ciel — Pokeyland, France",
+      "dimensions": [
+        1000,
+        750
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Suspended stepping/log bridge with red, yellow and blue hanging supports.",
+      "visibleWatermark": true,
+      "researchCandidateOnly": false,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Large visible Amazone Adventure watermark: exclude from campaign imports; keep only as identity/construction research evidence. Do not crop or remove watermark."
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/527/1000/filet-triangle.jpeg",
+      "accessedAtUtc": "2026-11-15T11:29:48.018889+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/upload/miniatures/527/1000/filet-triangle.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 522263,
+      "sha256": "bb30fe53209759fd167c74cf0b456b8c0a50c0d144ebe8708e7983a878466eeb",
+      "file": "amazone-pitchoun-filet-triangle-2017.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-pitchoun-filet-triangle-2017.jpeg",
+      "verifiedBytes": 522263,
+      "verifiedSha256": "bb30fe53209759fd167c74cf0b456b8c0a50c0d144ebe8708e7983a878466eeb",
+      "sourcePage": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "captionOrContext": "Filet triangle — Pokeyland, France",
+      "dimensions": [
+        1000,
+        750
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Red mesh triangular passage between trees.",
+      "visibleWatermark": true,
+      "researchCandidateOnly": false,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Large visible Amazone Adventure watermark: exclude from campaign imports; keep only as identity/construction research evidence. Do not crop or remove watermark."
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/528/1000/avion.jpeg",
+      "accessedAtUtc": "2026-11-15T11:29:49.351515+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/upload/miniatures/528/1000/avion.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 464793,
+      "sha256": "26a992f96b1bf8f2bd1600ba87b5a6d6115342579b8cabed2510b483e2284d0e",
+      "file": "amazone-pitchoun-avion-2017.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-pitchoun-avion-2017.jpeg",
+      "verifiedBytes": 464793,
+      "verifiedSha256": "26a992f96b1bf8f2bd1600ba87b5a6d6115342579b8cabed2510b483e2284d0e",
+      "sourcePage": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "captionOrContext": "Avion — Pokeyland, France",
+      "dimensions": [
+        1000,
+        694
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Low suspended wooden plane-shaped course element on cables.",
+      "visibleWatermark": true,
+      "researchCandidateOnly": false,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Large visible Amazone Adventure watermark: exclude from campaign imports; keep only as identity/construction research evidence. Do not crop or remove watermark."
+    },
+    {
+      "url": "https://www.amazone-adventure.com/upload/miniatures/531/1000/passerelle-alphabet.jpeg",
+      "accessedAtUtc": "2026-11-15T11:29:50.068438+00:00",
+      "status": 200,
+      "finalUrl": "https://www.amazone-adventure.com/upload/miniatures/531/1000/passerelle-alphabet.jpeg",
+      "contentType": "image/jpeg",
+      "bytes": 436994,
+      "sha256": "1da65c76a5da06b0a95811bff59183a55b9dca48b28e342339f9e5cdd20685bd",
+      "file": "amazone-pitchoun-alphabet-2017.jpeg",
+      "localPath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/historical-inventory-followup/amazone-pitchoun-alphabet-2017.jpeg",
+      "verifiedBytes": 436994,
+      "verifiedSha256": "1da65c76a5da06b0a95811bff59183a55b9dca48b28e342339f9e5cdd20685bd",
+      "sourcePage": "https://www.amazone-adventure.com/annexes/nouvel-alias/12-extension-du-parc-pokeyland",
+      "captionOrContext": "Passerelle Alphabet — Pokeyland, France",
+      "dimensions": [
+        1000,
+        562
+      ],
+      "personallyInspected": true,
+      "visualObservations": "Suspended wooden letters spelling Pokeyland and a mascot-shaped panel.",
+      "visibleWatermark": true,
+      "researchCandidateOnly": false,
+      "importPerformed": false,
+      "dateTaken": null,
+      "photographerIndividual": null,
+      "restriction": "Large visible Amazone Adventure watermark: exclude from campaign imports; keep only as identity/construction research evidence. Do not crop or remove watermark."
+    }
+  ],
+  "concreteConclusions": [
+    "Plan #23 is Buvette “Sur le Pouce”. It coexisted with L’Escale in 2019.",
+    "Plan #28 explicitly says O’Chalet (barbecue géant), proving that pair of labels. A rename to Le Grill remains unproved.",
+    "Mer de filet belongs to a documented combined net/cabin ensemble; examine current Cabanes de Pokey before adding any historical entity.",
+    "Construction/extension articles are stronger primary evidence than promotional lists, but do not map old courses to current numbered course IDs.",
+    "The carriage is not the pedal Rosalie in the article illustration; Games/Tag and old/current food labels still require explicit identity evidence."
+  ]
+}

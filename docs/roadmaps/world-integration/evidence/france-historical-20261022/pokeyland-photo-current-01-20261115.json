@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 1,
+    "activityName": "Bazooka ball",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/",
+      "accessedAtUtc": "2026-11-15T10:37:41.156432+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/bazooka-ball/",
+      "sha256": "c8a8960e91243a45f527aa942dd1399f8beced895ec0015bbc83878c081a542a",
+      "bytes": 88761,
+      "file": "activity-bazooka-ball.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A8163-1350x900.jpg",
+    "file": "01-bazooka-ball.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A8163-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:17.628192+00:00",
+    "bytes": 104728,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "c088372f8160763c14a96bc3954adde01f1cc4c789dd5477f190643c7494ef61",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "01-bazooka-ball.jpg",
+    "visualDescriptionFr": "Trois enfants portant des lunettes de protection tiennent des lanceurs dont les embouts verts contiennent des balles jaunes en mousse.",
+    "identityAndCaptionLimitsFr": "Portrait de participants et équipement, pas vue de l’ensemble du terrain. La photo ne montre pas des masques intégraux ; ne pas décrire ceux-ci dans sa légende.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A8163-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/01-bazooka-ball.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "798894e0-5efa-45b0-953c-baad70dab44a",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-01-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-01-import-result.json"
+  },
+  "metadata": {
+    "description": "Une partie de Bazooka ball au milieu de la végétation de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A8163-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Trois enfants avec des lunettes de protection tiennent des lanceurs de Bazooka ball noirs aux embouts verts, chargés de balles jaunes."
+      },
+      {
+        "languageCode": "en",
+        "value": "Three children wearing protective glasses hold black Bazooka ball launchers with green muzzles and yellow balls."
+      },
+      {
+        "languageCode": "de",
+        "value": "Drei Kinder mit Schutzbrillen halten schwarze Bazooka-ball-Werfer mit grünen Mündungen und gelben Bällen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Tres niños con gafas de protección sostienen lanzadores negros de Bazooka ball con bocas verdes y bolas amarillas."
+      },
+      {
+        "languageCode": "it",
+        "value": "Tre bambini con occhiali protettivi tengono lanciatori neri di Bazooka ball con estremità verdi e palline gialle."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Drie kinderen met veiligheidsbrillen houden zwarte Bazooka ball-lanceerders met groene uiteinden en gele ballen vast."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Troje dzieci w okularach ochronnych trzyma czarne wyrzutnie Bazooka ball z zielonymi wylotami i żółtymi piłkami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Três crianças com óculos de proteção seguram lançadores pretos de Bazooka ball com bocas verdes e bolas amarelas."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Une partie de Bazooka ball au milieu de la végétation de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "A game of Bazooka ball amid Pokeyland’s vegetation."
+      },
+      {
+        "languageCode": "de",
+        "value": "Eine Partie Bazooka ball inmitten der Vegetation von Pokeyland."
+      },
+      {
+        "languageCode": "es",
+        "value": "Una partida de Bazooka ball entre la vegetación de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "Una partita di Bazooka ball tra la vegetazione di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een spel Bazooka ball tussen het groen van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Rozgrywka Bazooka ball pośród roślinności Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma partida de Bazooka ball entre a vegetação de Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T11:36:42.3129479Z",
+    "receivedAtUtc": "2026-11-15T11:36:51.9394548Z",
+    "result": {
+      "id": "1ca0f5afafbd466db3e529f0f7c9210b",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "798894e0-5efa-45b0-953c-baad70dab44a",
+      "path": "park_item/1ca0f5afafbd466db3e529f0f7c9210b",
+      "description": "Une partie de Bazooka ball au milieu de la végétation de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 104728,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A8163-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Trois enfants avec des lunettes de protection tiennent des lanceurs de Bazooka ball noirs aux embouts verts, chargés de balles jaunes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Three children wearing protective glasses hold black Bazooka ball launchers with green muzzles and yellow balls."
+        },
+        {
+          "languageCode": "de",
+          "value": "Drei Kinder mit Schutzbrillen halten schwarze Bazooka-ball-Werfer mit grünen Mündungen und gelben Bällen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tres niños con gafas de protección sostienen lanzadores negros de Bazooka ball con bocas verdes y bolas amarillas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tre bambini con occhiali protettivi tengono lanciatori neri di Bazooka ball con estremità verdi e palline gialle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Drie kinderen met veiligheidsbrillen houden zwarte Bazooka ball-lanceerders met groene uiteinden en gele ballen vast."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Troje dzieci w okularach ochronnych trzyma czarne wyrzutnie Bazooka ball z zielonymi wylotami i żółtymi piłkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Três crianças com óculos de proteção seguram lançadores pretos de Bazooka ball com bocas verdes e bolas amarelas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une partie de Bazooka ball au milieu de la végétation de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "A game of Bazooka ball amid Pokeyland’s vegetation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Partie Bazooka ball inmitten der Vegetation von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una partida de Bazooka ball entre la vegetación de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una partita di Bazooka ball tra la vegetazione di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een spel Bazooka ball tussen het groen van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rozgrywka Bazooka ball pośród roślinności Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma partida de Bazooka ball entre a vegetação de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:36:45.266Z",
+      "updatedAt": "2026-11-15T11:36:48.809Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

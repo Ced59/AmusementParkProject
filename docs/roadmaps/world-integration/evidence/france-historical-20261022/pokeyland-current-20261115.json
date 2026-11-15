@@ -112,7 +112,7 @@
     "historyEvents": 0,
     "descriptions": 0
   },
-  "lastActualIntegrationAtUtc": "2026-11-15T11:27:10.806703Z",
+  "lastActualIntegrationAtUtc": "2026-11-15T11:37:18.13Z",
   "newApplyPerformed": true,
   "newPhotoImported": true,
   "fullAuditExportPerformed": false,
@@ -120,7 +120,7 @@
   "facebookPublicationPerformed": false,
   "localDirectory": "/workspace/france-historical-20261114/pokeyland",
   "sourceResearchDirectory": "/workspace/france-historical-20261114/pokeyland/public-research-20261115",
-  "nextAction": "Continue historical residual identities from 2017 sign (calèche, mer de filet, old food names, Archery Games) with sources before creation/alias. Complete 69 remaining item descriptions, three zones, actual photos, maps, 2026 calendar, prices, history/article. Geolocation report has 11 named OSM point candidates from 2021–24, not automatically verified current positions. Full final audit not yet performed. Root only sequential official API. Do not rerun already applied prepare/record helpers. Initial historical Preview zone warning corrected by redeclaring existing zone; final 24-entity Preview unchanged.",
+  "nextAction": "Continue historical residual identities from 2017 sign (calèche, mer de filet, old food names, Archery Games) with sources before creation/alias. Complete 63 remaining item descriptions, three zones, actual photos, maps, 2026 calendar, prices, history/article. Geolocation report has 11 named OSM point candidates from 2021–24, not automatically verified current positions. Full final audit not yet performed. Root only sequential official API. Do not rerun already applied prepare/record helpers. Initial historical Preview zone warning corrected by redeclaring existing zone; final 24-entity Preview unchanged.",
   "operations": [
     {
       "proof": "pokeyland-01-core-20261115.json",
@@ -161,16 +161,21 @@
       "proof": "pokeyland-08-historical-inventory-20261115.json",
       "operationId": "e49b214a-d8f0-408c-8374-64ef84616278",
       "appliedAtUtc": "2026-11-15T11:27:10.806703Z"
+    },
+    {
+      "proof": "pokeyland-10-item-descriptions-20261115.json",
+      "operationId": "9f3cfa31-4e6b-4c19-acaa-6685c4be69db",
+      "appliedAtUtc": "2026-11-15T11:34:14.5150887Z"
     }
   ],
   "currentCounts": {
     "items": 74,
     "publicItems": 0,
     "zones": 3,
-    "media": 2,
+    "media": 7,
     "privateLogo": true,
     "parkDescribedLanguages": 8,
-    "itemsDescribed": 5,
+    "itemsDescribed": 11,
     "referenceLocalizedTexts": 16,
     "historicalUnknownItems": 17
   },
@@ -184,9 +189,34 @@
       "proof": "pokeyland-pomme-photo-20261115.json",
       "imageId": "017581c2b60b4763a6f2e8e4d9c8a1a6",
       "createdAtUtc": "2026-11-15T11:23:40.652Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-00-20261115.json",
+      "imageId": "02f8fe904d61402db8e69951510ece12",
+      "createdAtUtc": "2026-11-15T11:36:34.013Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-01-20261115.json",
+      "imageId": "1ca0f5afafbd466db3e529f0f7c9210b",
+      "createdAtUtc": "2026-11-15T11:36:45.266Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-02-20261115.json",
+      "imageId": "ea0ce74a58b540a6bd7cae56c439591f",
+      "createdAtUtc": "2026-11-15T11:36:56.672Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-03-20261115.json",
+      "imageId": "5dd3bb456db74c25b11142c570398f5b",
+      "createdAtUtc": "2026-11-15T11:37:08.038Z"
+    },
+    {
+      "proof": "pokeyland-photo-current-04-20261115.json",
+      "imageId": "854a573d1b84444d9257cb9626b0360b",
+      "createdAtUtc": "2026-11-15T11:37:18.13Z"
     }
   ],
-  "updatedAtUtc": "2026-11-15T11:28:36.106551+00:00",
+  "updatedAtUtc": "2026-11-15T11:38:57.908925+00:00",
   "idempotence": {
     "proof": "pokeyland-idempotence-followup-20261115.json",
     "counts": {
@@ -197,5 +227,93 @@
       "warnings": 0,
       "errors": 0
     }
-  }
+  },
+  "latestDescriptionIdempotence": {
+    "operationId": "50b8e488-87e4-4869-b41e-b784fb9518ef",
+    "mode": "merge",
+    "isApplied": false,
+    "canApply": true,
+    "previewedAtUtc": "2026-11-15T11:38:29.3116753Z",
+    "appliedAtUtc": null,
+    "targetParkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+    "targetParkName": "Pokeyland",
+    "targetStandaloneAttractionId": null,
+    "targetStandaloneAttractionName": null,
+    "counts": {
+      "created": 0,
+      "updated": 0,
+      "deleted": 0,
+      "unchanged": 7,
+      "warnings": 0,
+      "errors": 0
+    },
+    "changes": [
+      {
+        "entityType": "Park",
+        "entityId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+        "entityKey": "park",
+        "displayName": "Pokeyland",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "entityKey": "3a8bc13f-2bd7-4cd8-9bd5-04af5cf47cef",
+        "displayName": "La Pomme",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+        "entityKey": "pokeyland-crazy-kart",
+        "displayName": "Crazy Kart",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "11978677-6ea2-457a-af26-cfc2fda129df",
+        "entityKey": "pokeyland-ejector",
+        "displayName": "Ejector",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+        "entityKey": "pokeyland-escalade",
+        "displayName": "Escalade",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "53432ace-37a0-4149-9153-a418b86da889",
+        "entityKey": "pokeyland-kids-swing",
+        "displayName": "Kid’s Swing",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      },
+      {
+        "entityType": "ParkItem",
+        "entityId": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+        "entityKey": "pokeyland-la-roue",
+        "displayName": "La Roue",
+        "changeType": "Unchanged",
+        "matchedBy": "id",
+        "fields": []
+      }
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "latestPhotoRecordingNote": "As du volant API createdAt 2026-11-15T11:37:18.13Z was normalized to identical instant .130Z for registry ISO parser; original receipt preserved. Initial local record rejected two-digit fraction before mutation; only record rerun, no reimport."
 }

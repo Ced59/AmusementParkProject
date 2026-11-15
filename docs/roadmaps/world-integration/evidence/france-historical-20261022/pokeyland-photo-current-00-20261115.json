@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 0,
+    "activityName": "Aire de jeux",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/",
+      "accessedAtUtc": "2026-11-15T10:37:40.682219+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/bonus/aire-de-jeux/",
+      "sha256": "c0d01e21f2f081455adca134e9d81df1c1ddb89182f8d54a7798b220437f4a2e",
+      "bytes": 87958,
+      "file": "activity-aire-de-jeux.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7352-1350x900.jpg",
+    "file": "00-aire-de-jeux.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7352-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:17.745261+00:00",
+    "bytes": 294170,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "f99721c97a075ca9697729658e08e7f83f2a7f084dd6e7b85ef651482e866b3f",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "00-aire-de-jeux.jpg",
+    "visualDescriptionFr": "Aire de jeux avec balançoire à sièges suspendus, grand jeu sur ressorts et structure à grimper/toboggan, sur copeaux de bois ; tables de pique-nique au premier plan.",
+    "identityAndCaptionLimitsFr": "Les plusieurs jeux visibles appartiennent au même espace photographié. Ne pas transformer les tables en attraction ni nommer chaque structure sans source.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7352-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/00-aire-de-jeux.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-00-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-00-import-result.json"
+  },
+  "metadata": {
+    "description": "Les jeux verts et jaunes occupent une clairière entourée de clôtures en bois et d’arbres.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7352-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Aire de jeux de Pokeyland : bateau à ressorts vert et jaune, balançoires et toboggan sur des copeaux, avec des tables devant."
+      },
+      {
+        "languageCode": "en",
+        "value": "Pokeyland playground with a green and yellow spring boat, swings and slide on woodchips, with tables in front."
+      },
+      {
+        "languageCode": "de",
+        "value": "Spielplatz von Pokeyland mit grün-gelbem Federspielboot, Schaukeln und Rutsche auf Holzschnitzeln sowie Tischen davor."
+      },
+      {
+        "languageCode": "es",
+        "value": "Zona de juegos de Pokeyland con barco de muelles verde y amarillo, columpios y tobogán sobre virutas de madera, con mesas delante."
+      },
+      {
+        "languageCode": "it",
+        "value": "Area giochi di Pokeyland con barca a molle verde e gialla, altalene e scivolo su trucioli di legno, con tavoli davanti."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Speeltuin van Pokeyland met groen-gele wipboot, schommels en glijbaan op houtsnippers, met tafels ervoor."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Plac zabaw Pokeyland z zielono-żółtą łódką na sprężynach, huśtawkami i zjeżdżalnią na zrębkach oraz stołami na pierwszym planie."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Área de jogos de Pokeyland com barco de molas verde e amarelo, baloiços e escorrega sobre aparas de madeira, com mesas à frente."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les jeux verts et jaunes occupent une clairière entourée de clôtures en bois et d’arbres."
+      },
+      {
+        "languageCode": "en",
+        "value": "Green and yellow play equipment fills a clearing surrounded by wooden fences and trees."
+      },
+      {
+        "languageCode": "de",
+        "value": "Grüne und gelbe Spielgeräte stehen auf einer von Holzzäunen und Bäumen umgebenen Lichtung."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los juegos verdes y amarillos ocupan un claro rodeado de vallas de madera y árboles."
+      },
+      {
+        "languageCode": "it",
+        "value": "I giochi verdi e gialli occupano una radura circondata da recinzioni di legno e alberi."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Groene en gele speeltoestellen staan op een open plek tussen houten hekken en bomen."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Zielone i żółte urządzenia stoją na polanie otoczonej drewnianym ogrodzeniem i drzewami."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os brinquedos verdes e amarelos ocupam uma clareira rodeada de vedações de madeira e árvores."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "startedAtUtc": "2026-11-15T11:36:31.5905225Z",
+    "receivedAtUtc": "2026-11-15T11:36:40.6957061Z",
+    "action": "ImportPhoto",
+    "result": {
+      "id": "02f8fe904d61402db8e69951510ece12",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+      "path": "park_item/02f8fe904d61402db8e69951510ece12",
+      "description": "Les jeux verts et jaunes occupent une clairière entourée de clôtures en bois et d’arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 294170,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7352-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Aire de jeux de Pokeyland : bateau à ressorts vert et jaune, balançoires et toboggan sur des copeaux, avec des tables devant."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland playground with a green and yellow spring boat, swings and slide on woodchips, with tables in front."
+        },
+        {
+          "languageCode": "de",
+          "value": "Spielplatz von Pokeyland mit grün-gelbem Federspielboot, Schaukeln und Rutsche auf Holzschnitzeln sowie Tischen davor."
+        },
+        {
+          "languageCode": "es",
+          "value": "Zona de juegos de Pokeyland con barco de muelles verde y amarillo, columpios y tobogán sobre virutas de madera, con mesas delante."
+        },
+        {
+          "languageCode": "it",
+          "value": "Area giochi di Pokeyland con barca a molle verde e gialla, altalene e scivolo su trucioli di legno, con tavoli davanti."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Speeltuin van Pokeyland met groen-gele wipboot, schommels en glijbaan op houtsnippers, met tafels ervoor."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plac zabaw Pokeyland z zielono-żółtą łódką na sprężynach, huśtawkami i zjeżdżalnią na zrębkach oraz stołami na pierwszym planie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Área de jogos de Pokeyland com barco de molas verde e amarelo, baloiços e escorrega sobre aparas de madeira, com mesas à frente."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les jeux verts et jaunes occupent une clairière entourée de clôtures en bois et d’arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Green and yellow play equipment fills a clearing surrounded by wooden fences and trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Grüne und gelbe Spielgeräte stehen auf einer von Holzzäunen und Bäumen umgebenen Lichtung."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los juegos verdes y amarillos ocupan un claro rodeado de vallas de madera y árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "I giochi verdi e gialli occupano una radura circondata da recinzioni di legno e alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groene en gele speeltoestellen staan op een open plek tussen houten hekken en bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielone i żółte urządzenia stoją na polanie otoczonej drewnianym ogrodzeniem i drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os brinquedos verdes e amarelos ocupam uma clareira rodeada de vedações de madeira e árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:36:34.013Z",
+      "updatedAt": "2026-11-15T11:36:37.556Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

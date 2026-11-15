@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 4,
+    "activityName": "Les as du volant",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+      "accessedAtUtc": "2026-11-15T10:37:43.604522+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/baroudeurs/bumper-car/",
+      "sha256": "004b3ae50ecfbba79ad357085fcd281fba034595b7b27491c55662376036569f",
+      "bytes": 81786,
+      "file": "activity-bumper-car.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-078-1350x900.jpg",
+    "file": "04-bumper-car.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-078-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:17.869000+00:00",
+    "bytes": 107529,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "289021e5e2655f9b4784075b58920aeea2f13faf437c84f80c25ea7e8277f612",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "04-bumper-car.jpg",
+    "visualDescriptionFr": "Enfant au volant d’une petite auto tamponneuse bleue à liserés verts, sur une piste sous abri ; autres autos autour.",
+    "identityAndCaptionLimitsFr": "Les as du volant correspond ici à des autos tamponneuses, pas au circuit de karts à pédales de Crazy Kart. Le slug bumper-car est cohérent avec cette photo, sans prouver un ancien nom.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-078-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/04-bumper-car.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-04-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-04-import-result.json"
+  },
+  "metadata": {
+    "description": "Les voitures colorées occupent une piste bordée de bois, ouverte sur l’extérieur.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-078-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Petites voitures bleues aux motifs verts et calandres orange des As du volant, sous un abri en bois."
+      },
+      {
+        "languageCode": "en",
+        "value": "Small blue cars with green patterns and orange grilles at Les as du volant, beneath a wooden shelter."
+      },
+      {
+        "languageCode": "de",
+        "value": "Kleine blaue Autos mit grünen Mustern und orangefarbenen Kühlergrills bei Les as du volant unter einem Holzunterstand."
+      },
+      {
+        "languageCode": "es",
+        "value": "Pequeños coches azules con motivos verdes y parrillas naranjas de Les as du volant, bajo un cobertizo de madera."
+      },
+      {
+        "languageCode": "it",
+        "value": "Piccole auto blu con motivi verdi e griglie arancioni di Les as du volant, sotto una tettoia di legno."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Kleine blauwe auto’s met groene patronen en oranje grilles van Les as du volant, onder een houten afdak."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Małe niebieskie samochody z zielonymi wzorami i pomarańczowymi grillami w Les as du volant, pod drewnianą wiatą."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Pequenos carros azuis com motivos verdes e grelhas laranja de Les as du volant, sob um abrigo de madeira."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Les voitures colorées occupent une piste bordée de bois, ouverte sur l’extérieur."
+      },
+      {
+        "languageCode": "en",
+        "value": "The colourful cars occupy a timber-edged track open to the outdoors."
+      },
+      {
+        "languageCode": "de",
+        "value": "Die bunten Autos stehen auf einer holzgesäumten Fahrfläche mit Blick nach draußen."
+      },
+      {
+        "languageCode": "es",
+        "value": "Los coches de colores ocupan una pista bordeada de madera y abierta al exterior."
+      },
+      {
+        "languageCode": "it",
+        "value": "Le auto colorate occupano una pista delimitata dal legno e aperta verso l’esterno."
+      },
+      {
+        "languageCode": "nl",
+        "value": "De kleurrijke auto’s staan op een baan met houten afscherming en zicht naar buiten."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Kolorowe samochody stoją na torze otoczonym drewnem i otwartym na zewnątrz."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Os carros coloridos ocupam uma pista ladeada de madeira e aberta para o exterior."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "action": "ImportPhoto",
+    "startedAtUtc": "2026-11-15T11:37:16.3729652Z",
+    "receivedAtUtc": "2026-11-15T11:37:24.7995097Z",
+    "result": {
+      "id": "854a573d1b84444d9257cb9626b0360b",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+      "path": "park_item/854a573d1b84444d9257cb9626b0360b",
+      "description": "Les voitures colorées occupent une piste bordée de bois, ouverte sur l’extérieur.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 107529,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-078-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Petites voitures bleues aux motifs verts et calandres orange des As du volant, sous un abri en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Small blue cars with green patterns and orange grilles at Les as du volant, beneath a wooden shelter."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kleine blaue Autos mit grünen Mustern und orangefarbenen Kühlergrills bei Les as du volant unter einem Holzunterstand."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pequeños coches azules con motivos verdes y parrillas naranjas de Les as du volant, bajo un cobertizo de madera."
+        },
+        {
+          "languageCode": "it",
+          "value": "Piccole auto blu con motivi verdi e griglie arancioni di Les as du volant, sotto una tettoia di legno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kleine blauwe auto’s met groene patronen en oranje grilles van Les as du volant, onder een houten afdak."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Małe niebieskie samochody z zielonymi wzorami i pomarańczowymi grillami w Les as du volant, pod drewnianą wiatą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pequenos carros azuis com motivos verdes e grelhas laranja de Les as du volant, sob um abrigo de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les voitures colorées occupent une piste bordée de bois, ouverte sur l’extérieur."
+        },
+        {
+          "languageCode": "en",
+          "value": "The colourful cars occupy a timber-edged track open to the outdoors."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die bunten Autos stehen auf einer holzgesäumten Fahrfläche mit Blick nach draußen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los coches de colores ocupan una pista bordeada de madera y abierta al exterior."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le auto colorate occupano una pista delimitata dal legno e aperta verso l’esterno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kleurrijke auto’s staan op een baan met houten afscherming en zicht naar buiten."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolorowe samochody stoją na torze otoczonym drewnem i otwartym na zewnątrz."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os carros coloridos ocupam uma pista ladeada de madeira e aberta para o exterior."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:37:18.13Z",
+      "updatedAt": "2026-11-15T11:37:21.658Z"
+    }
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}

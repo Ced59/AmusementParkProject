@@ -243,7 +243,40 @@
       "subtype": null,
       "zoneId": null,
       "zoneKey": null,
-      "descriptions": [],
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une chenille à grand sourire</h2><p>La Pomme donne le premier rôle à une chenille orange, jaune et verte. Son énorme nez bleu, ses joues rouges et sa bouche ouverte composent une tête de personnage de dessin animé, bien visible au-dessus de la barrière en bois.</p><p>Des taches, des spirales et des reflets peints couvrent le reste du petit train. La fantaisie du décor se poursuit jusque sur ses flancs multicolores.</p><h2>Du jaune entre les troncs</h2><p>La voie jaune se détache au milieu des arbres. Dans ce cadre boisé, le visage exubérant de la chenille et les couleurs du train donnent à ces petites montagnes russes l’allure d’un jouet agrandi.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A caterpillar with a broad grin</h2><p>La Pomme gives the starring role to an orange, yellow and green caterpillar. Its huge blue nose, red cheeks and open mouth form a cartoon face, clearly visible above the wooden railing.</p><p>Spots, spirals and painted highlights cover the rest of the little train. The playful decoration continues along its multicoloured sides.</p><h2>Yellow among the tree trunks</h2><p>The yellow track stands out among the trees. In this wooded setting, the caterpillar’s exuberant face and colourful train give the small roller coaster the appearance of an oversized toy.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Eine Raupe mit breitem Grinsen</h2><p>Bei La Pomme spielt eine orange-gelb-grüne Raupe die Hauptrolle. Ihre riesige blaue Nase, roten Wangen und ihr offener Mund bilden ein Zeichentrickgesicht, das über dem Holzgeländer deutlich zu sehen ist.</p><p>Punkte, Spiralen und aufgemalte Glanzlichter bedecken den übrigen kleinen Zug. Die verspielte Gestaltung setzt sich an seinen bunten Seiten fort.</p><h2>Gelb zwischen den Baumstämmen</h2><p>Die gelbe Schiene hebt sich zwischen den Bäumen ab. In dieser Waldkulisse verleihen das ausgelassene Raupengesicht und der bunte Zug der kleinen Achterbahn das Aussehen eines vergrößerten Spielzeugs.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una oruga de gran sonrisa</h2><p>La Pomme da el protagonismo a una oruga naranja, amarilla y verde. Su enorme nariz azul, sus mejillas rojas y su boca abierta forman un rostro de dibujos animados, bien visible por encima de la barandilla de madera.</p><p>Manchas, espirales y brillos pintados cubren el resto del pequeño tren. La decoración fantástica continúa por sus costados multicolores.</p><h2>Amarillo entre los troncos</h2><p>La vía amarilla destaca entre los árboles. En este entorno boscoso, el rostro exuberante de la oruga y los colores del tren dan a la pequeña montaña rusa el aspecto de un juguete gigante.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un bruco dal grande sorriso</h2><p>La Pomme affida il ruolo principale a un bruco arancione, giallo e verde. Il suo enorme naso blu, le guance rosse e la bocca aperta compongono un volto da cartone animato, ben visibile sopra la ringhiera di legno.</p><p>Macchie, spirali e riflessi dipinti ricoprono il resto del trenino. La fantasia della decorazione prosegue lungo i fianchi multicolori.</p><h2>Giallo tra i tronchi</h2><p>Il binario giallo risalta tra gli alberi. In questo ambiente boschivo, il volto esuberante del bruco e i colori del treno danno alle piccole montagne russe l’aspetto di un giocattolo ingrandito.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een rups met een brede grijns</h2><p>La Pomme geeft de hoofdrol aan een oranje, gele en groene rups. De enorme blauwe neus, rode wangen en open mond vormen een tekenfilmgezicht dat duidelijk boven het houten hek uitsteekt.</p><p>Stippen, spiralen en geschilderde glansaccenten bedekken de rest van het treintje. De speelse versiering loopt door over de veelkleurige zijkanten.</p><h2>Geel tussen de boomstammen</h2><p>De gele baan valt op tussen de bomen. In deze bosrijke omgeving geven het uitbundige rupsenhoofd en de kleurrijke trein de kleine achtbaan het uiterlijk van uitvergroot speelgoed.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Gąsienica z szerokim uśmiechem</h2><p>Główną rolę w La Pomme gra pomarańczowo-żółto-zielona gąsienica. Ogromny niebieski nos, czerwone policzki i otwarta buzia tworzą kreskówkową twarz, dobrze widoczną ponad drewnianą barierką.</p><p>Plamki, spirale i namalowane refleksy pokrywają resztę małego pociągu. Fantazyjna dekoracja ciągnie się wzdłuż jego wielobarwnych boków.</p><h2>Żółć między pniami</h2><p>Żółty tor wyróżnia się pośród drzew. W tej leśnej scenerii wyrazista twarz gąsienicy i kolory pociągu nadają małej kolejce górskiej wygląd powiększonej zabawki.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma lagarta de sorriso rasgado</h2><p>La Pomme dá o protagonismo a uma lagarta laranja, amarela e verde. O enorme nariz azul, as faces vermelhas e a boca aberta formam um rosto de desenhos animados, bem visível acima da vedação de madeira.</p><p>Manchas, espirais e reflexos pintados cobrem o resto do pequeno comboio. A fantasia da decoração prolonga-se pelos seus flancos multicolores.</p><h2>Amarelo entre os troncos</h2><p>A via amarela destaca-se entre as árvores. Neste ambiente arborizado, o rosto exuberante da lagarta e as cores do comboio dão à pequena montanha-russa o aspeto de um brinquedo ampliado.</p>"
+        }
+      ],
       "attractionDetails": {
         "manufacturerId": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
         "manufacturerKey": "cd008e63-7db3-4d5f-bb22-1578fbab5f0b",
@@ -563,7 +596,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/crazy-kart/"
       },
-      "id": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff"
+      "id": "53175bb7-e1a0-4386-a3cd-b8342c3e94ff",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Une course au bord des bois</h2><p>Crazy Kart installe ses karts à pédales sur une piste extérieure bordée d’herbe et d’arbres. Les modèles jaunes et noirs, de formats différents, évoquent une petite course familiale dans les bois.</p><p>Le plaisir vient du défi entre les participants, chacun avançant à la force des jambes. Sur la photographie du parc, un grand kart jaune partage la piste avec un modèle plus petit aux roues jaunes.</p><h2>Un circuit dans la verdure</h2><p>Des fleurs basses et les troncs longent le revêtement de la piste. Une clôture en bois apparaît derrière le feuillage, loin du décor de stands et de garages d’un circuit automobile.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A race beside the woods</h2><p>Crazy Kart places its pedal karts on an outdoor track edged with grass and trees. The yellow and black models, in different sizes, suggest a small family race in the woods.</p><p>The fun comes from challenging fellow riders, each relying on leg power. In the park’s photograph, a large yellow kart shares the track with a smaller model with yellow wheels.</p><h2>A circuit surrounded by greenery</h2><p>Low flowers and tree trunks border the track’s paved surface. A wooden fence appears behind the foliage, far removed from the pits and garages of a motor-racing circuit.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Rennen am Waldrand</h2><p>Die Tretkarts von Crazy Kart sind auf einer Außenbahn unterwegs, die von Gras und Bäumen gesäumt wird. Die gelb-schwarzen Modelle in unterschiedlichen Größen erinnern an ein kleines Familienrennen im Wald.</p><p>Der Reiz liegt im Wettstreit der Fahrer, die mit eigener Beinkraft vorankommen. Auf dem Parkfoto teilt sich ein großes gelbes Kart die Bahn mit einem kleineren Modell mit gelben Rädern.</p><h2>Eine Strecke im Grünen</h2><p>Niedrige Blumen und Baumstämme säumen die befestigte Fahrbahn. Hinter dem Laub zeigt sich ein Holzzaun, fern von den Boxen und Garagen einer Autorennstrecke.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una carrera junto al bosque</h2><p>Crazy Kart sitúa sus karts de pedales en una pista exterior rodeada de hierba y árboles. Los modelos amarillos y negros, de distintos tamaños, evocan una pequeña carrera familiar en el bosque.</p><p>La diversión nace del desafío entre los participantes, que avanzan con la fuerza de las piernas. En la fotografía del parque, un gran kart amarillo comparte la pista con un modelo más pequeño de ruedas amarillas.</p><h2>Un circuito entre la vegetación</h2><p>Flores bajas y troncos bordean el pavimento de la pista. Una valla de madera aparece tras el follaje, lejos de los boxes y garajes de un circuito automovilístico.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Una corsa accanto al bosco</h2><p>Crazy Kart porta i suoi kart a pedali su una pista all’aperto bordata di erba e alberi. I modelli gialli e neri, di misure diverse, evocano una piccola gara in famiglia nel bosco.</p><p>Il divertimento nasce dalla sfida tra i partecipanti, ciascuno spinto dalla forza delle proprie gambe. Nella fotografia del parco, un grande kart giallo condivide la pista con un modello più piccolo dalle ruote gialle.</p><h2>Un circuito nel verde</h2><p>Fiori bassi e tronchi costeggiano la superficie della pista. Dietro il fogliame compare una recinzione di legno, lontana dall’ambiente di box e garage di un circuito automobilistico.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een race langs het bos</h2><p>Crazy Kart heeft zijn skelters op een buitenbaan langs gras en bomen. De gele en zwarte modellen in verschillende maten geven het geheel de sfeer van een kleine familierace in het bos.</p><p>Het plezier zit in de onderlinge uitdaging, waarbij iedereen op eigen beenkracht vooruitkomt. Op de parkfoto deelt een grote gele skelter de baan met een kleiner model met gele wielen.</p><h2>Een circuit in het groen</h2><p>Lage bloemen en boomstammen staan langs het verharde wegdek. Achter het gebladerte verschijnt een houten hek, ver van de pitboxen en garages van een autoracecircuit.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Wyścig na skraju lasu</h2><p>Gokarty na pedały Crazy Kart jeżdżą po odkrytym torze otoczonym trawą i drzewami. Żółto-czarne modele różnej wielkości przywodzą na myśl mały rodzinny wyścig w lesie.</p><p>Zabawa polega na rywalizacji uczestników, którzy polegają na sile własnych nóg. Na zdjęciu parku duży żółty gokart dzieli tor z mniejszym modelem o żółtych kołach.</p><h2>Tor wśród zieleni</h2><p>Niskie kwiaty i pnie drzew otaczają utwardzoną nawierzchnię. Za liśćmi widać drewniane ogrodzenie, dalekie od boksów i garaży samochodowego toru wyścigowego.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Uma corrida junto ao bosque</h2><p>Crazy Kart coloca os seus karts a pedais numa pista ao ar livre ladeada de relva e árvores. Os modelos amarelos e pretos, de tamanhos diferentes, evocam uma pequena corrida em família no bosque.</p><p>A diversão nasce do desafio entre os participantes, que avançam com a força das pernas. Na fotografia do parque, um grande kart amarelo partilha a pista com um modelo mais pequeno de rodas amarelas.</p><h2>Um circuito no meio do verde</h2><p>Flores baixas e troncos acompanham o pavimento da pista. Uma vedação de madeira surge atrás da folhagem, longe das boxes e garagens de um circuito automóvel.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-ejector",
@@ -576,7 +643,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/baroudeurs/ejector/"
       },
-      "id": "11978677-6ea2-457a-af26-cfc2fda129df"
+      "id": "11978677-6ea2-457a-af26-cfc2fda129df",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un bond devant les feuillages</h2><p>Ejector propose une envolée à l’air libre, avec les arbres de Pokeyland pour toile de fond. Sur la photographie officielle, la participante semble suspendue devant une masse de feuilles éclairées par le soleil.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A leap against the foliage</h2><p>Ejector offers an open-air leap with Pokeyland’s trees as the backdrop. In the official photograph, the participant appears suspended in front of a mass of sunlit leaves.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein Sprung vor dem Blätterdach</h2><p>Ejector bietet einen Sprung unter freiem Himmel, mit den Bäumen von Pokeyland als Kulisse. Auf dem offiziellen Foto scheint die Teilnehmerin vor einer Fülle sonnenbeschienener Blätter zu schweben.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Un salto ante el follaje</h2><p>Ejector ofrece un salto al aire libre con los árboles de Pokeyland como fondo. En la fotografía oficial, la participante parece suspendida ante una masa de hojas iluminadas por el sol.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un salto davanti al fogliame</h2><p>Ejector propone un salto all’aperto, con gli alberi di Pokeyland sullo sfondo. Nella fotografia ufficiale, la partecipante sembra sospesa davanti a una massa di foglie illuminate dal sole.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een sprong voor het bladerdak</h2><p>Ejector biedt een sprong in de buitenlucht, met de bomen van Pokeyland als achtergrond. Op de officiële foto lijkt de deelnemer te zweven voor een massa door de zon verlichte bladeren.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Skok na tle liści</h2><p>Ejector oferuje skok na świeżym powietrzu, z drzewami Pokeyland w tle. Na oficjalnym zdjęciu uczestniczka zdaje się zawieszona przed gęstwiną liści oświetlonych słońcem.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um salto diante da folhagem</h2><p>Ejector propõe um salto ao ar livre, com as árvores de Pokeyland como pano de fundo. Na fotografia oficial, a participante parece suspensa diante de uma massa de folhas iluminadas pelo sol.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-escalade",
@@ -589,7 +690,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/explorateurs/escalade/"
       },
-      "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177"
+      "id": "e8fdc963-3297-4d2f-b7ef-6e4a10755177",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des prises de couleur sur un mur clair</h2><p>L’Escalade de Pokeyland oppose le fond clair de ses murs aux prises vertes, bleues, rouges et brunes. La photographie du parc saisit un jeune grimpeur au milieu de ces touches de couleur, la main tendue vers la prise suivante.</p><p>Au sommet, une cloche marque le but à atteindre. Les murs proposent plusieurs difficultés : la concentration se porte sur les prises et sur ce signal sonore qui couronne l’ascension.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Coloured holds on a pale wall</h2><p>Pokeyland’s climbing attraction sets green, blue, red and brown holds against pale walls. The park photograph captures a young climber among these splashes of colour, reaching for the next hold.</p><p>A bell at the top marks the goal. The walls offer different levels of difficulty, focusing attention on the holds and on the ringing sound that crowns the climb.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Bunte Griffe auf einer hellen Wand</h2><p>Bei der Kletterattraktion von Pokeyland heben sich grüne, blaue, rote und braune Griffe von hellen Wänden ab. Das Parkfoto zeigt einen jungen Kletterer zwischen diesen Farbtupfern, die Hand zum nächsten Griff ausgestreckt.</p><p>Oben markiert eine Glocke das Ziel. Die Wände bieten unterschiedliche Schwierigkeitsgrade: Die Aufmerksamkeit gilt den Griffen und dem Glockenton, der den Aufstieg krönt.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Presas de colores sobre una pared clara</h2><p>La atracción de escalada de Pokeyland contrapone el fondo claro de sus paredes a las presas verdes, azules, rojas y marrones. La fotografía del parque muestra a un joven escalador entre esas pinceladas de color, alargando la mano hacia la siguiente presa.</p><p>Una campana en lo alto marca la meta. Las paredes ofrecen diferentes dificultades: la atención se centra en las presas y en el sonido que corona la ascensión.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Prese colorate su una parete chiara</h2><p>L’arrampicata di Pokeyland contrappone il fondo chiaro delle pareti alle prese verdi, blu, rosse e marroni. La fotografia del parco coglie un giovane arrampicatore tra queste macchie di colore, con la mano tesa verso la presa successiva.</p><p>Una campana in cima segna il traguardo. Le pareti offrono diversi livelli di difficoltà: l’attenzione si concentra sulle prese e sul suono che conclude la salita.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Gekleurde grepen op een lichte wand</h2><p>Bij de klimwand van Pokeyland steken groene, blauwe, rode en bruine grepen af tegen een lichte achtergrond. De parkfoto toont een jonge klimmer tussen die kleurvlekken, reikend naar de volgende greep.</p><p>Bovenaan markeert een bel het doel. De wanden bieden verschillende moeilijkheidsgraden: de aandacht gaat naar de grepen en naar het belsignaal dat de beklimming bekroont.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kolorowe chwyty na jasnej ścianie</h2><p>Na ściance wspinaczkowej Pokeyland zielone, niebieskie, czerwone i brązowe chwyty odcinają się od jasnego tła. Zdjęcie parku pokazuje młodego wspinacza pośród tych plam koloru, z ręką wyciągniętą do następnego chwytu.</p><p>Dzwonek na szczycie wyznacza cel. Ściany oferują różne poziomy trudności: uwaga skupia się na chwytach i na dźwięku, który wieńczy wspinaczkę.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Presas coloridas numa parede clara</h2><p>A escalada de Pokeyland contrapõe o fundo claro das paredes às presas verdes, azuis, vermelhas e castanhas. A fotografia do parque mostra um jovem escalador entre estas manchas de cor, com a mão estendida para a presa seguinte.</p><p>Uma campainha no topo assinala a meta. As paredes oferecem diferentes dificuldades: a atenção centra-se nas presas e no som que remata a subida.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-kids-swing",
@@ -616,7 +751,41 @@
           }
         ]
       },
-      "id": "53432ace-37a0-4149-9153-a418b86da889"
+      "id": "53432ace-37a0-4149-9153-a418b86da889",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Un champignon rouge dans les bois</h2><p>Kid’s Swing se reconnaît à son immense champignon rouge à pois blancs. Sous son chapeau, les petites chaises colorées donnent une allure de conte à ce coin boisé de Pokeyland.</p><p>La photographie officielle rapproche le rouge éclatant du manège des troncs, du feuillage et du toit de tuiles d’un chalet. Des filets blancs bordent l’espace des chaises ; le décor de champignon domine largement ce petit paysage de bois.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>A red mushroom in the woods</h2><p>Kid’s Swing is recognisable by its huge red mushroom with white spots. Beneath the cap, small coloured chairs give this wooded corner of Pokeyland a storybook appearance.</p><p>The official photograph sets the ride’s vivid red against tree trunks, foliage and a chalet’s tiled roof. White netting borders the chairs’ area, while the mushroom decoration towers over this small woodland scene.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Ein roter Pilz im Wald</h2><p>Kid’s Swing ist an seinem riesigen roten Pilz mit weißen Punkten zu erkennen. Unter dem Hut verleihen kleine bunte Schaukelsitze dieser bewaldeten Ecke von Pokeyland ein märchenhaftes Aussehen.</p><p>Das offizielle Foto zeigt das leuchtende Rot neben Baumstämmen, Laub und dem Ziegeldach eines Holzhauses. Weiße Netze begrenzen den Bereich der Schaukelsitze; der Pilz überragt diese kleine Waldszene deutlich.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Una seta roja en el bosque</h2><p>Kid’s Swing se reconoce por su enorme seta roja con lunares blancos. Bajo el sombrero, las pequeñas sillas de colores dan un aire de cuento a este rincón arbolado de Pokeyland.</p><p>La fotografía oficial contrasta el rojo intenso de la atracción con los troncos, el follaje y el tejado de tejas de una cabaña. Unas redes blancas delimitan la zona de las sillas; la seta domina esta pequeña escena de bosque.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Un fungo rosso nel bosco</h2><p>Kid’s Swing si riconosce dal suo enorme fungo rosso a pois bianchi. Sotto il cappello, le piccole sedie colorate danno un aspetto fiabesco a questo angolo alberato di Pokeyland.</p><p>La fotografia ufficiale accosta il rosso acceso della giostra ai tronchi, al fogliame e al tetto di tegole di uno chalet. Reti bianche delimitano lo spazio delle sedie; il fungo domina questa piccola scena boschiva.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Een rode paddenstoel in het bos</h2><p>Kid’s Swing is herkenbaar aan de enorme rode paddenstoel met witte stippen. Onder de hoed geven kleine gekleurde stoeltjes deze bosrijke hoek van Pokeyland een sprookjesachtige uitstraling.</p><p>De officiële foto zet het felle rood naast boomstammen, gebladerte en het pannendak van een chalet. Witte netten begrenzen de ruimte rond de stoeltjes; de paddenstoel steekt hoog boven dit kleine bostafereel uit.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Czerwony grzyb w lesie</h2><p>Kid’s Swing wyróżnia się ogromnym czerwonym grzybem w białe kropki. Pod kapeluszem małe kolorowe krzesełka nadają temu zadrzewionemu zakątkowi Pokeyland bajkowy wygląd.</p><p>Oficjalne zdjęcie zestawia jaskrawą czerwień karuzeli z pniami, liśćmi i krytym dachówką dachem drewnianego domku. Białe siatki otaczają przestrzeń krzesełek; dekoracyjny grzyb zdecydowanie góruje nad tą małą leśną sceną.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Um cogumelo vermelho no bosque</h2><p>Kid’s Swing reconhece-se pelo enorme cogumelo vermelho com pintas brancas. Sob o chapéu, as pequenas cadeiras coloridas dão um aspeto de conto de fadas a este recanto arborizado de Pokeyland.</p><p>A fotografia oficial aproxima o vermelho vivo da atração dos troncos, da folhagem e do telhado de telha de um chalé. Redes brancas delimitam a área das cadeiras; o cogumelo domina esta pequena cena de bosque.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-la-roue",
@@ -629,7 +798,41 @@
         "status": "Operating",
         "sourceUrl": "https://www.pokeyland.com/activites/parc/la-roue/"
       },
-      "id": "1fcff91d-fc5e-480c-aab0-b7d288736e2e"
+      "id": "1fcff91d-fc5e-480c-aab0-b7d288736e2e",
+      "descriptions": [
+        {
+          "languageCode": "fr",
+          "value": "<h2>Des paniers aux couleurs de fête</h2><p>Les nacelles de La Roue ressemblent à de grands paniers au décor imitation bois. Leurs coiffes rouges, jaunes, vertes et violettes dessinent une couronne colorée au-dessus des arbres et des passerelles de Pokeyland.</p><p>Au centre, une créature souriante aux oreilles pointues apparaît parmi des feuilles. Les tons bruns du décor relient ce personnage aux paniers et à l’environnement boisé.</p><h2>Un regard au-dessus des allées</h2><p>Depuis les nacelles, la vue s’élève sur le parc. L’illustration officielle montre les branches toutes proches et une passerelle derrière la roue, inscrivant ce point de vue dans le paysage forestier.</p>"
+        },
+        {
+          "languageCode": "en",
+          "value": "<h2>Baskets in fairground colours</h2><p>La Roue’s gondolas resemble large baskets decorated to look like wood. Their red, yellow, green and purple tops form a colourful crown above Pokeyland’s trees and walkways.</p><p>At the centre, a smiling creature with pointed ears appears among leaves. The brown tones of the decoration connect this character with the baskets and the wooded surroundings.</p><h2>A view above the paths</h2><p>The gondolas provide an elevated view over the park. The official photograph shows nearby branches and a walkway behind the wheel, placing this viewpoint within the woodland landscape.</p>"
+        },
+        {
+          "languageCode": "de",
+          "value": "<h2>Körbe in Jahrmarktfarben</h2><p>Die Gondeln von La Roue erinnern an große Körbe mit Holzoptik. Ihre roten, gelben, grünen und violetten Dächer bilden eine bunte Krone über den Bäumen und Stegen von Pokeyland.</p><p>In der Mitte erscheint ein lächelndes Wesen mit spitzen Ohren zwischen Blättern. Die Brauntöne verbinden diese Figur mit den Körben und der bewaldeten Umgebung.</p><h2>Ein Blick über die Wege</h2><p>Aus den Gondeln öffnet sich ein erhöhter Blick auf den Park. Das offizielle Foto zeigt nahe Äste und einen Steg hinter dem Rad und bettet diesen Aussichtspunkt in die Waldlandschaft ein.</p>"
+        },
+        {
+          "languageCode": "es",
+          "value": "<h2>Cestas con colores de feria</h2><p>Las góndolas de La Roue parecen grandes cestas decoradas con imitación de madera. Sus cubiertas rojas, amarillas, verdes y violetas forman una corona de colores sobre los árboles y las pasarelas de Pokeyland.</p><p>En el centro aparece una criatura sonriente de orejas puntiagudas entre las hojas. Los tonos marrones de la decoración enlazan al personaje con las cestas y el entorno boscoso.</p><h2>Una mirada por encima de los caminos</h2><p>Desde las góndolas, la vista se eleva sobre el parque. La fotografía oficial muestra las ramas cercanas y una pasarela detrás de la rueda, situando este mirador dentro del paisaje forestal.</p>"
+        },
+        {
+          "languageCode": "it",
+          "value": "<h2>Cestelli dai colori di luna park</h2><p>Le cabine di La Roue ricordano grandi cestelli decorati a effetto legno. Le coperture rosse, gialle, verdi e viola formano una corona colorata sopra gli alberi e le passerelle di Pokeyland.</p><p>Al centro, una creatura sorridente dalle orecchie appuntite appare tra le foglie. I toni marroni della decorazione collegano il personaggio ai cestelli e all’ambiente boschivo.</p><h2>Uno sguardo sopra i vialetti</h2><p>Dalle cabine la vista si alza sul parco. La fotografia ufficiale mostra i rami vicini e una passerella dietro la ruota, inserendo questo punto panoramico nel paesaggio forestale.</p>"
+        },
+        {
+          "languageCode": "nl",
+          "value": "<h2>Manden in kermiskleuren</h2><p>De gondels van La Roue lijken op grote manden met een houtdecor. Hun rode, gele, groene en paarse kappen vormen een kleurrijke kroon boven de bomen en loopbruggen van Pokeyland.</p><p>In het midden verschijnt tussen de bladeren een lachend wezen met puntige oren. De bruine decoratietinten verbinden dit figuurtje met de manden en de bosrijke omgeving.</p><h2>Een blik boven de paden</h2><p>Vanuit de gondels kijken bezoekers van bovenaf over het park. De officiële foto toont nabije takken en een loopbrug achter het rad, waardoor dit uitzichtpunt deel uitmaakt van het boslandschap.</p>"
+        },
+        {
+          "languageCode": "pl",
+          "value": "<h2>Kosze w lunaparkowych kolorach</h2><p>Gondole La Roue przypominają wielkie kosze z dekoracją imitującą drewno. Ich czerwone, żółte, zielone i fioletowe daszki tworzą kolorową koronę ponad drzewami i kładkami Pokeyland.</p><p>W centrum, wśród liści, pojawia się uśmiechnięta istota o spiczastych uszach. Brązowe odcienie dekoracji łączą tę postać z koszami i leśnym otoczeniem.</p><h2>Spojrzenie ponad alejkami</h2><p>Z gondoli rozciąga się widok na park z góry. Oficjalne zdjęcie pokazuje pobliskie gałęzie i kładkę za kołem, wpisując ten punkt widokowy w leśny krajobraz.</p>"
+        },
+        {
+          "languageCode": "pt",
+          "value": "<h2>Cestos com cores de feira</h2><p>As cabinas de La Roue lembram grandes cestos decorados com imitação de madeira. As coberturas vermelhas, amarelas, verdes e roxas desenham uma coroa colorida acima das árvores e das passarelas de Pokeyland.</p><p>No centro surge, entre as folhas, uma criatura sorridente de orelhas pontiagudas. Os tons castanhos da decoração ligam a personagem aos cestos e ao ambiente arborizado.</p><h2>Um olhar acima dos caminhos</h2><p>Das cabinas, a vista eleva-se sobre o parque. A fotografia oficial mostra os ramos próximos e uma passarela atrás da roda, inserindo este miradouro na paisagem florestal.</p>"
+        }
+      ]
     },
     {
       "key": "pokeyland-laser-game",
@@ -1977,6 +2180,636 @@
       "updatedAt": "2026-11-15T11:23:44.116Z",
       "key": "017581c2b60b4763a6f2e8e4d9c8a1a6",
       "imageId": "017581c2b60b4763a6f2e8e4d9c8a1a6"
+    },
+    {
+      "id": "02f8fe904d61402db8e69951510ece12",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "b17dd2ba-7470-4821-86be-1ec6423c1a3f",
+      "path": "park_item/02f8fe904d61402db8e69951510ece12",
+      "description": "Les jeux verts et jaunes occupent une clairière entourée de clôtures en bois et d’arbres.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 294170,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/IMG_7352-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Aire de jeux de Pokeyland : bateau à ressorts vert et jaune, balançoires et toboggan sur des copeaux, avec des tables devant."
+        },
+        {
+          "languageCode": "en",
+          "value": "Pokeyland playground with a green and yellow spring boat, swings and slide on woodchips, with tables in front."
+        },
+        {
+          "languageCode": "de",
+          "value": "Spielplatz von Pokeyland mit grün-gelbem Federspielboot, Schaukeln und Rutsche auf Holzschnitzeln sowie Tischen davor."
+        },
+        {
+          "languageCode": "es",
+          "value": "Zona de juegos de Pokeyland con barco de muelles verde y amarillo, columpios y tobogán sobre virutas de madera, con mesas delante."
+        },
+        {
+          "languageCode": "it",
+          "value": "Area giochi di Pokeyland con barca a molle verde e gialla, altalene e scivolo su trucioli di legno, con tavoli davanti."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Speeltuin van Pokeyland met groen-gele wipboot, schommels en glijbaan op houtsnippers, met tafels ervoor."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Plac zabaw Pokeyland z zielono-żółtą łódką na sprężynach, huśtawkami i zjeżdżalnią na zrębkach oraz stołami na pierwszym planie."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Área de jogos de Pokeyland com barco de molas verde e amarelo, baloiços e escorrega sobre aparas de madeira, com mesas à frente."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les jeux verts et jaunes occupent une clairière entourée de clôtures en bois et d’arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "Green and yellow play equipment fills a clearing surrounded by wooden fences and trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Grüne und gelbe Spielgeräte stehen auf einer von Holzzäunen und Bäumen umgebenen Lichtung."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los juegos verdes y amarillos ocupan un claro rodeado de vallas de madera y árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "I giochi verdi e gialli occupano una radura circondata da recinzioni di legno e alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Groene en gele speeltoestellen staan op een open plek tussen houten hekken en bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Zielone i żółte urządzenia stoją na polanie otoczonej drewnianym ogrodzeniem i drzewami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os brinquedos verdes e amarelos ocupam uma clareira rodeada de vedações de madeira e árvores."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:36:34.013Z",
+      "updatedAt": "2026-11-15T11:36:37.556Z",
+      "key": "02f8fe904d61402db8e69951510ece12",
+      "imageId": "02f8fe904d61402db8e69951510ece12"
+    },
+    {
+      "id": "1ca0f5afafbd466db3e529f0f7c9210b",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "798894e0-5efa-45b0-953c-baad70dab44a",
+      "path": "park_item/1ca0f5afafbd466db3e529f0f7c9210b",
+      "description": "Une partie de Bazooka ball au milieu de la végétation de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 104728,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A8163-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Trois enfants avec des lunettes de protection tiennent des lanceurs de Bazooka ball noirs aux embouts verts, chargés de balles jaunes."
+        },
+        {
+          "languageCode": "en",
+          "value": "Three children wearing protective glasses hold black Bazooka ball launchers with green muzzles and yellow balls."
+        },
+        {
+          "languageCode": "de",
+          "value": "Drei Kinder mit Schutzbrillen halten schwarze Bazooka-ball-Werfer mit grünen Mündungen und gelben Bällen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Tres niños con gafas de protección sostienen lanzadores negros de Bazooka ball con bocas verdes y bolas amarillas."
+        },
+        {
+          "languageCode": "it",
+          "value": "Tre bambini con occhiali protettivi tengono lanciatori neri di Bazooka ball con estremità verdi e palline gialle."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Drie kinderen met veiligheidsbrillen houden zwarte Bazooka ball-lanceerders met groene uiteinden en gele ballen vast."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Troje dzieci w okularach ochronnych trzyma czarne wyrzutnie Bazooka ball z zielonymi wylotami i żółtymi piłkami."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Três crianças com óculos de proteção seguram lançadores pretos de Bazooka ball com bocas verdes e bolas amarelas."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Une partie de Bazooka ball au milieu de la végétation de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "A game of Bazooka ball amid Pokeyland’s vegetation."
+        },
+        {
+          "languageCode": "de",
+          "value": "Eine Partie Bazooka ball inmitten der Vegetation von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Una partida de Bazooka ball entre la vegetación de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Una partita di Bazooka ball tra la vegetazione di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een spel Bazooka ball tussen het groen van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Rozgrywka Bazooka ball pośród roślinności Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma partida de Bazooka ball entre a vegetação de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:36:45.266Z",
+      "updatedAt": "2026-11-15T11:36:48.809Z",
+      "key": "1ca0f5afafbd466db3e529f0f7c9210b",
+      "imageId": "1ca0f5afafbd466db3e529f0f7c9210b"
+    },
+    {
+      "id": "ea0ce74a58b540a6bd7cae56c439591f",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "d5c3c9cc-d8f4-4589-af94-6d3d459534fa",
+      "path": "park_item/ea0ce74a58b540a6bd7cae56c439591f",
+      "description": "Des montgolfières miniatures aux couleurs vives sous le feuillage de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 244306,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-013-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Les paniers et ballons multicolores des As du ciel, avec le mât jaune et les bras roses et blancs, entre les arbres."
+        },
+        {
+          "languageCode": "en",
+          "value": "The colourful baskets and balloons of Les as du ciel, with a yellow mast and pink and white arms, among the trees."
+        },
+        {
+          "languageCode": "de",
+          "value": "Bunte Körbe und Ballons von Les as du ciel mit gelbem Mast und rosa-weißen Armen zwischen den Bäumen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Cestas y globos multicolores de Les as du ciel, con mástil amarillo y brazos rosas y blancos, entre los árboles."
+        },
+        {
+          "languageCode": "it",
+          "value": "Cestelli e palloni multicolori di Les as du ciel, con albero giallo e bracci rosa e bianchi, tra gli alberi."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Veelkleurige manden en ballonnen van Les as du ciel, met een gele mast en roze-witte armen, tussen de bomen."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Wielobarwne kosze i balony Les as du ciel, z żółtym masztem oraz różowo-białymi ramionami, wśród drzew."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Cestos e balões multicolores de Les as du ciel, com mastro amarelo e braços rosa e brancos, entre as árvores."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Des montgolfières miniatures aux couleurs vives sous le feuillage de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "Brightly coloured miniature balloons beneath Pokeyland’s foliage."
+        },
+        {
+          "languageCode": "de",
+          "value": "Leuchtend bunte Miniaturballons unter dem Laub von Pokeyland."
+        },
+        {
+          "languageCode": "es",
+          "value": "Globos en miniatura de vivos colores bajo el follaje de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "Mongolfiere in miniatura dai colori vivaci sotto il fogliame di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Felgekleurde miniatuurluchtballonnen onder het bladerdak van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Miniaturowe balony w żywych kolorach pod liśćmi drzew Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Balões em miniatura de cores vivas sob a folhagem de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:36:56.672Z",
+      "updatedAt": "2026-11-15T11:37:00.333Z",
+      "key": "ea0ce74a58b540a6bd7cae56c439591f",
+      "imageId": "ea0ce74a58b540a6bd7cae56c439591f"
+    },
+    {
+      "id": "5dd3bb456db74c25b11142c570398f5b",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+      "path": "park_item/5dd3bb456db74c25b11142c570398f5b",
+      "description": "Le bateau rond se détache sur l’eau verte et les berges boisées de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 99871,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7849-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant en gilet de sauvetage conduit un bateau orange à bord noir de Bumper Boat ; un jet d’eau part de l’avant."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child in a life jacket steers an orange Bumper Boat with a black rim as water sprays from the front."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind mit Schwimmweste steuert ein orangefarbenes Bumper Boat mit schwarzem Rand; vorne spritzt Wasser heraus."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño con chaleco salvavidas conduce un Bumper Boat naranja de borde negro mientras un chorro de agua sale por delante."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino con giubbotto salvagente guida un Bumper Boat arancione dal bordo nero, mentre un getto d’acqua parte dalla prua."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind met reddingsvest bestuurt een oranje Bumper Boat met zwarte rand, terwijl aan de voorkant water spuit."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w kamizelce ratunkowej prowadzi pomarańczową łódkę Bumper Boat z czarnym obrzeżem; z przodu tryska woda."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança com colete salva-vidas conduz um Bumper Boat laranja de rebordo preto, enquanto um jato de água sai da frente."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le bateau rond se détache sur l’eau verte et les berges boisées de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The round boat stands out against green water and Pokeyland’s wooded banks."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das runde Boot hebt sich vom grünen Wasser und den bewaldeten Ufern von Pokeyland ab."
+        },
+        {
+          "languageCode": "es",
+          "value": "La embarcación redonda destaca sobre el agua verde y las orillas arboladas de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La barca rotonda risalta sull’acqua verde e sulle sponde alberate di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het ronde bootje valt op tegen het groene water en de beboste oevers van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Okrągła łódka wyróżnia się na tle zielonej wody i zadrzewionych brzegów Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O barco redondo destaca-se na água verde e nas margens arborizadas de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:37:08.038Z",
+      "updatedAt": "2026-11-15T11:37:11.53Z",
+      "key": "5dd3bb456db74c25b11142c570398f5b",
+      "imageId": "5dd3bb456db74c25b11142c570398f5b"
+    },
+    {
+      "id": "854a573d1b84444d9257cb9626b0360b",
+      "category": "ParkItem",
+      "ownerType": "ParkItem",
+      "ownerId": "1f5a5a6f-407c-40ae-aca4-cb1c15d07cf9",
+      "path": "park_item/854a573d1b84444d9257cb9626b0360b",
+      "description": "Les voitures colorées occupent une piste bordée de bois, ouverte sur l’extérieur.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 107529,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2024/03/POKEY-078-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Petites voitures bleues aux motifs verts et calandres orange des As du volant, sous un abri en bois."
+        },
+        {
+          "languageCode": "en",
+          "value": "Small blue cars with green patterns and orange grilles at Les as du volant, beneath a wooden shelter."
+        },
+        {
+          "languageCode": "de",
+          "value": "Kleine blaue Autos mit grünen Mustern und orangefarbenen Kühlergrills bei Les as du volant unter einem Holzunterstand."
+        },
+        {
+          "languageCode": "es",
+          "value": "Pequeños coches azules con motivos verdes y parrillas naranjas de Les as du volant, bajo un cobertizo de madera."
+        },
+        {
+          "languageCode": "it",
+          "value": "Piccole auto blu con motivi verdi e griglie arancioni di Les as du volant, sotto una tettoia di legno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Kleine blauwe auto’s met groene patronen en oranje grilles van Les as du volant, onder een houten afdak."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Małe niebieskie samochody z zielonymi wzorami i pomarańczowymi grillami w Les as du volant, pod drewnianą wiatą."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Pequenos carros azuis com motivos verdes e grelhas laranja de Les as du volant, sob um abrigo de madeira."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Les voitures colorées occupent une piste bordée de bois, ouverte sur l’extérieur."
+        },
+        {
+          "languageCode": "en",
+          "value": "The colourful cars occupy a timber-edged track open to the outdoors."
+        },
+        {
+          "languageCode": "de",
+          "value": "Die bunten Autos stehen auf einer holzgesäumten Fahrfläche mit Blick nach draußen."
+        },
+        {
+          "languageCode": "es",
+          "value": "Los coches de colores ocupan una pista bordeada de madera y abierta al exterior."
+        },
+        {
+          "languageCode": "it",
+          "value": "Le auto colorate occupano una pista delimitata dal legno e aperta verso l’esterno."
+        },
+        {
+          "languageCode": "nl",
+          "value": "De kleurrijke auto’s staan op een baan met houten afscherming en zicht naar buiten."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Kolorowe samochody stoją na torze otoczonym drewnem i otwartym na zewnątrz."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Os carros coloridos ocupam uma pista ladeada de madeira e aberta para o exterior."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:37:18.13Z",
+      "updatedAt": "2026-11-15T11:37:21.658Z",
+      "key": "854a573d1b84444d9257cb9626b0360b",
+      "imageId": "854a573d1b84444d9257cb9626b0360b"
     }
   ],
   "history": {

@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "parkId": "dc876288-7c8b-4684-8150-993908cdcf7a",
+  "entryId": "FR-park-dc876288-7c8b-4684-8150-993908cdcf7a",
+  "outcome": "partial",
+  "source": {
+    "catalogIndex": 3,
+    "activityName": "Bumper Boat",
+    "sourcePage": {
+      "url": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+      "accessedAtUtc": "2026-11-15T10:37:41.331365+00:00",
+      "status": 200,
+      "finalUrl": "https://www.pokeyland.com/activites/explorateurs/bumper-boat/",
+      "sha256": "738580b6a258b28ed29e530d4654ab167c4e858a3df653061412749c3074d786",
+      "bytes": 90117,
+      "file": "activity-bumper-boat.html"
+    },
+    "url": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7849-1350x900.jpg",
+    "file": "03-bumper-boat.jpg",
+    "binaryUnmodified": true,
+    "sourceType": "Exact official hosted image URL observed in activity page; publisher rendition, no locally generated rendition",
+    "photographer": null,
+    "license": null,
+    "captureDate": null,
+    "inspectionPending": false,
+    "status": 200,
+    "finalUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7849-1350x900.jpg",
+    "accessedAtUtc": "2026-11-15T10:54:20.213147+00:00",
+    "bytes": 99871,
+    "dimensions": [
+      1350,
+      900
+    ],
+    "mimeType": "image/jpeg",
+    "format": "JPEG",
+    "sha256": "e8aad6d43779a2ad505b396e2d200fa0828f36e1d4a80fa6a67d1f57b57c9623",
+    "exceeds960KiB": false,
+    "GPSExifPresent": false,
+    "GPS": null,
+    "personallyInspectedAtUtc": "2026-11-15T10:57:41.026299+00:00",
+    "personallyInspectedFile": "03-bumper-boat.jpg",
+    "visualDescriptionFr": "Un enfant avec gilet orange pilote un bateau tamponneur orange entouré d’un large boudin ; un jet d’eau sort du bateau.",
+    "identityAndCaptionLimitsFr": "Correspond à Bumper Boat, pas à des pédalos. Le logo sur la carrosserie appartient à l’objet photographié, pas à un filigrane ajouté.",
+    "isTruePhotograph": true,
+    "visibleWatermark": false,
+    "visibleCollageOrPromotionalRendering": false,
+    "candidateDecision": "Eligible for root personal review and existing-media reconciliation; no import performed",
+    "captureDateCaution": "The upload path year is not a shooting date; no known capture date is assigned.",
+    "gpsRecommendation": null,
+    "proposedCredit": "Pokeyland (source officielle ; photographe individuel non identifié)",
+    "openLicenseClaim": false
+  },
+  "request": {
+    "arguments": {
+      "Action": "ImportPhoto",
+      "SourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7849-1350x900.jpg",
+      "FilePath": "/workspace/france-historical-20261114/pokeyland/public-research-20261115/activity-photo-candidates/03-bumper-boat.jpg",
+      "Category": "PARK_ITEM",
+      "OwnerType": "PARK_ITEM",
+      "OwnerId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+      "IsPublished": false,
+      "WithWatermark": false,
+      "SetAsCurrent": false,
+      "MetadataJsonPath": "/workspace/france-historical-20261114/pokeyland/photo-current-03-metadata.json"
+    },
+    "resultPath": "/workspace/france-historical-20261114/pokeyland/photo-current-03-import-result.json"
+  },
+  "metadata": {
+    "description": "Le bateau rond se détache sur l’eau verte et les berges boisées de Pokeyland.",
+    "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7849-1350x900.jpg",
+    "altTexts": [
+      {
+        "languageCode": "fr",
+        "value": "Un enfant en gilet de sauvetage conduit un bateau orange à bord noir de Bumper Boat ; un jet d’eau part de l’avant."
+      },
+      {
+        "languageCode": "en",
+        "value": "A child in a life jacket steers an orange Bumper Boat with a black rim as water sprays from the front."
+      },
+      {
+        "languageCode": "de",
+        "value": "Ein Kind mit Schwimmweste steuert ein orangefarbenes Bumper Boat mit schwarzem Rand; vorne spritzt Wasser heraus."
+      },
+      {
+        "languageCode": "es",
+        "value": "Un niño con chaleco salvavidas conduce un Bumper Boat naranja de borde negro mientras un chorro de agua sale por delante."
+      },
+      {
+        "languageCode": "it",
+        "value": "Un bambino con giubbotto salvagente guida un Bumper Boat arancione dal bordo nero, mentre un getto d’acqua parte dalla prua."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Een kind met reddingsvest bestuurt een oranje Bumper Boat met zwarte rand, terwijl aan de voorkant water spuit."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Dziecko w kamizelce ratunkowej prowadzi pomarańczową łódkę Bumper Boat z czarnym obrzeżem; z przodu tryska woda."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Uma criança com colete salva-vidas conduz um Bumper Boat laranja de rebordo preto, enquanto um jato de água sai da frente."
+      }
+    ],
+    "captions": [
+      {
+        "languageCode": "fr",
+        "value": "Le bateau rond se détache sur l’eau verte et les berges boisées de Pokeyland."
+      },
+      {
+        "languageCode": "en",
+        "value": "The round boat stands out against green water and Pokeyland’s wooded banks."
+      },
+      {
+        "languageCode": "de",
+        "value": "Das runde Boot hebt sich vom grünen Wasser und den bewaldeten Ufern von Pokeyland ab."
+      },
+      {
+        "languageCode": "es",
+        "value": "La embarcación redonda destaca sobre el agua verde y las orillas arboladas de Pokeyland."
+      },
+      {
+        "languageCode": "it",
+        "value": "La barca rotonda risalta sull’acqua verde e sulle sponde alberate di Pokeyland."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Het ronde bootje valt op tegen het groene water en de beboste oevers van Pokeyland."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Okrągła łódka wyróżnia się na tle zielonej wody i zadrzewionych brzegów Pokeyland."
+      },
+      {
+        "languageCode": "pt",
+        "value": "O barco redondo destaca-se na água verde e nas margens arborizadas de Pokeyland."
+      }
+    ],
+    "credits": [
+      {
+        "languageCode": "fr",
+        "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+      },
+      {
+        "languageCode": "en",
+        "value": "Source: Pokeyland official website. Photographer not identified."
+      },
+      {
+        "languageCode": "de",
+        "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+      },
+      {
+        "languageCode": "es",
+        "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+      },
+      {
+        "languageCode": "it",
+        "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+      },
+      {
+        "languageCode": "nl",
+        "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+      },
+      {
+        "languageCode": "pl",
+        "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+      },
+      {
+        "languageCode": "pt",
+        "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+      }
+    ]
+  },
+  "receipt": {
+    "result": {
+      "id": "5dd3bb456db74c25b11142c570398f5b",
+      "category": "PARK_ITEM",
+      "ownerType": "PARK_ITEM",
+      "ownerId": "a82dabf5-da88-4717-85f9-d22234c0654c",
+      "path": "park_item/5dd3bb456db74c25b11142c570398f5b",
+      "description": "Le bateau rond se détache sur l’eau verte et les berges boisées de Pokeyland.",
+      "isCurrent": false,
+      "isPublished": false,
+      "isWatermarked": false,
+      "width": 1350,
+      "height": 900,
+      "sizeInBytes": 99871,
+      "originalFileName": "codex-import.jpg",
+      "contentType": "image/jpeg",
+      "sourceUrl": "https://www.pokeyland.com/wp-content/uploads/2022/03/6K6A7849-1350x900.jpg",
+      "geoLocation": null,
+      "exifMetadata": null,
+      "altTexts": [
+        {
+          "languageCode": "fr",
+          "value": "Un enfant en gilet de sauvetage conduit un bateau orange à bord noir de Bumper Boat ; un jet d’eau part de l’avant."
+        },
+        {
+          "languageCode": "en",
+          "value": "A child in a life jacket steers an orange Bumper Boat with a black rim as water sprays from the front."
+        },
+        {
+          "languageCode": "de",
+          "value": "Ein Kind mit Schwimmweste steuert ein orangefarbenes Bumper Boat mit schwarzem Rand; vorne spritzt Wasser heraus."
+        },
+        {
+          "languageCode": "es",
+          "value": "Un niño con chaleco salvavidas conduce un Bumper Boat naranja de borde negro mientras un chorro de agua sale por delante."
+        },
+        {
+          "languageCode": "it",
+          "value": "Un bambino con giubbotto salvagente guida un Bumper Boat arancione dal bordo nero, mentre un getto d’acqua parte dalla prua."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Een kind met reddingsvest bestuurt een oranje Bumper Boat met zwarte rand, terwijl aan de voorkant water spuit."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Dziecko w kamizelce ratunkowej prowadzi pomarańczową łódkę Bumper Boat z czarnym obrzeżem; z przodu tryska woda."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Uma criança com colete salva-vidas conduz um Bumper Boat laranja de rebordo preto, enquanto um jato de água sai da frente."
+        }
+      ],
+      "captions": [
+        {
+          "languageCode": "fr",
+          "value": "Le bateau rond se détache sur l’eau verte et les berges boisées de Pokeyland."
+        },
+        {
+          "languageCode": "en",
+          "value": "The round boat stands out against green water and Pokeyland’s wooded banks."
+        },
+        {
+          "languageCode": "de",
+          "value": "Das runde Boot hebt sich vom grünen Wasser und den bewaldeten Ufern von Pokeyland ab."
+        },
+        {
+          "languageCode": "es",
+          "value": "La embarcación redonda destaca sobre el agua verde y las orillas arboladas de Pokeyland."
+        },
+        {
+          "languageCode": "it",
+          "value": "La barca rotonda risalta sull’acqua verde e sulle sponde alberate di Pokeyland."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Het ronde bootje valt op tegen het groene water en de beboste oevers van Pokeyland."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Okrągła łódka wyróżnia się na tle zielonej wody i zadrzewionych brzegów Pokeyland."
+        },
+        {
+          "languageCode": "pt",
+          "value": "O barco redondo destaca-se na água verde e nas margens arborizadas de Pokeyland."
+        }
+      ],
+      "credits": [
+        {
+          "languageCode": "fr",
+          "value": "Source : Pokeyland, site officiel. Photographe non identifié."
+        },
+        {
+          "languageCode": "en",
+          "value": "Source: Pokeyland official website. Photographer not identified."
+        },
+        {
+          "languageCode": "de",
+          "value": "Quelle: offizielle Website von Pokeyland. Fotograf nicht angegeben."
+        },
+        {
+          "languageCode": "es",
+          "value": "Fuente: sitio web oficial de Pokeyland. Fotógrafo no identificado."
+        },
+        {
+          "languageCode": "it",
+          "value": "Fonte: sito ufficiale di Pokeyland. Fotografo non identificato."
+        },
+        {
+          "languageCode": "nl",
+          "value": "Bron: officiële website van Pokeyland. Fotograaf niet vermeld."
+        },
+        {
+          "languageCode": "pl",
+          "value": "Źródło: oficjalna strona Pokeyland. Fotograf nieustalony."
+        },
+        {
+          "languageCode": "pt",
+          "value": "Fonte: site oficial de Pokeyland. Fotógrafo não identificado."
+        }
+      ],
+      "tagIds": [],
+      "createdAt": "2026-11-15T11:37:08.038Z",
+      "updatedAt": "2026-11-15T11:37:11.53Z"
+    },
+    "startedAtUtc": "2026-11-15T11:37:05.2244546Z",
+    "receivedAtUtc": "2026-11-15T11:37:14.6543383Z",
+    "action": "ImportPhoto"
+  },
+  "personalReview": {
+    "rootViewedNativeImage": true,
+    "24LocalizedTextsWrittenAndReviewed": true,
+    "noCropRecreationOrUpscale": true,
+    "captureDateUnknown": true,
+    "uploadDirectoryNotCaptureDate": true,
+    "noOpenLicenseClaim": true
+  },
+  "sitePublicationPerformed": false,
+  "facebookPublicationPerformed": false,
+  "finalAuditCompleted": false
+}
