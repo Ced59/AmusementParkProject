@@ -1,0 +1,56 @@
+{
+  "entityKind": "StandaloneAttraction",
+  "entityId": "9ffa1230-094b-4f87-b8fd-1f59fcef9391",
+  "name": "SkyHelix Sentosa",
+  "countryCode": "SG",
+  "auditAtUtc": "2026-11-15T03:00:12.584Z",
+  "siteUrl": "https://amusement-parks.fun/fr/attraction/9ffa1230-094b-4f87-b8fd-1f59fcef9391/skyhelix-sentosa",
+  "siteLocalesHttp200": [
+    "fr",
+    "en",
+    "de",
+    "nl",
+    "it",
+    "es",
+    "pl",
+    "pt"
+  ],
+  "existingFacebookPublication": "https://www.facebook.com/1285475681307050/posts/122124296721424431",
+  "photoCountBefore": 0,
+  "photoCountAfter": 2,
+  "photos": [
+    {
+      "imageId": "3680f7983c2b4876aa1d74faed5a8173",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sentosa_12-11-2023(28).jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Sentosa_12-11-2023%2828%29.jpg",
+      "creator": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "capturedAt": "2023-11-12",
+      "isCurrent": true,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T02:57:54.865Z"
+    },
+    {
+      "imageId": "ebeac47b1f294e7085e62c611f991e7c",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sentosa_12-11-2023(60).jpg",
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Sentosa_12-11-2023%2860%29.jpg",
+      "creator": "LN9267",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "capturedAt": "2023-11-12",
+      "isCurrent": false,
+      "isPublished": true,
+      "binaryHttpStatus": 200,
+      "importedAtUtc": "2026-11-15T02:58:22.400Z"
+    }
+  ],
+  "completenessAfter": {
+    "score": 90,
+    "level": "Good",
+    "publicationBlockers": []
+  },
+  "lastDataIntegrationAt": "2026-11-15T02:58:22.400Z",
+  "note": "Photo repair of an already published standalone; the historic Facebook post is preserved and was not reposted."
+}
