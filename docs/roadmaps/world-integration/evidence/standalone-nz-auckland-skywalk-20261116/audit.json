@@ -1,0 +1,76 @@
+{
+  "entryId": "NZ-candidate-discovery-09292beb69cf01",
+  "attractionId": "1fc78bde-004c-448c-9641-1dc102a81e29",
+  "identity": "Auckland SkyWalk, Sky Tower, Auckland, New Zealand",
+  "qualification": "Separately sold and booked by AJ Hackett Bungy New Zealand; distinct from SkyJump and SkyRide. PDE search for SkyWalk/Sky Tower found no matching standalone or Park page before creation.",
+  "sources": {
+    "operatorProduct": "https://www.bungy.co.nz/auckland/sky-tower/skywalk/",
+    "operatorVenue": "https://www.bungy.co.nz/auckland/sky-tower/",
+    "photo": "https://www.flickr.com/photos/jasonpratt/5356964365/",
+    "photoLicense": "https://creativecommons.org/licenses/by/2.0/",
+    "photoAuthor": "Jason Pratt",
+    "photoTakenAt": "2009-10-26"
+  },
+  "data": {
+    "descriptionsLanguages": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "openingHours": "Daily 09:30-16:00 from operator page, weather caveat",
+    "pricing": "Adult from NZD 215; child from NZD 175; dynamic minimum prices",
+    "access": "Minimum age 10; under 18 consent; under 15 adult on site; 30-127 kg, windy minimum 45 kg; flat lace-up shoes, breath alcohol test, 90 minute allowance",
+    "photoId": "cf4b3ce43b1b4dc08a1c4e4783304c1f",
+    "duplicatePhotoIdHidden": "0e817597010f4d868fdace2780578f7f"
+  },
+  "audit": {
+    "score": 94,
+    "dataQualityLevel": "Good",
+    "publicationBlockers": [],
+    "verifiedAtUtc": "2026-11-16T01:25:00Z"
+  },
+  "publication": {
+    "siteUrl": "https://amusement-parks.fun/fr/attraction/1fc78bde-004c-448c-9641-1dc102a81e29/auckland-skywalk",
+    "siteLocalesHttp200": [
+      "fr",
+      "en",
+      "de",
+      "nl",
+      "it",
+      "es",
+      "pl",
+      "pt"
+    ],
+    "photoBinaryHttp200": true,
+    "facebookStatus": "Published",
+    "facebookUrl": "https://www.facebook.com/1285475681307050/posts/122127529887424431",
+    "facebookPublishedAtUtc": "2026-11-16T01:25:42.6873691Z"
+  },
+  "applies": [
+    {
+      "operationId": "9fc92bcf-2933-4fa0-ae1e-b4fd5996899a",
+      "appliedAtUtc": "2026-11-16T01:16:47.5699338Z"
+    },
+    {
+      "operationId": "dec05436-5e30-4970-8ef9-765075e42e02",
+      "appliedAtUtc": "2026-11-16T01:18:42.3347411Z"
+    },
+    {
+      "operationId": "cafbfa03-3fc5-4ab5-8fa6-9940a6c102df",
+      "appliedAtUtc": "2026-11-16T01:19:47.3377942Z"
+    },
+    {
+      "operationId": "9f90dabe-c00e-4fcf-8ec0-610105069975",
+      "appliedAtUtc": "2026-11-16T01:24:14.9494979Z"
+    },
+    {
+      "operationId": "9770cdd0-8ab2-4373-99c8-ab6228dd6212",
+      "appliedAtUtc": "2026-11-16T01:24:41.5185328Z"
+    }
+  ]
+}
