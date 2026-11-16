@@ -60077,7 +60077,7 @@
       "possibleMatches": [],
       "aliases": [],
       "assignedTo": null,
-      "lastDataIntegrationAt": "2026-10-22T20:56:38.577Z",
+      "lastDataIntegrationAt": "2026-11-16T00:44:49.631Z",
       "integrationHistory": [
         {
           "eventId": "apply-d6a155bf-c0c2-4f39-ba52-35233484b6cf",
@@ -60158,9 +60158,69 @@
           "evidence": "PARK_DATA_EDITOR:apply:ee40a995-91fd-43a7-bcd2-604e64ec4998",
           "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-20261022/smoky-audit.json",
           "summary": "Audit final, fiche publique et annonce Facebook vérifiés. Score 91/100 ; lacunes factuelles explicites dans l’audit. Date conservée : dernière intégration de données réelle."
+        },
+        {
+          "eventId": "photo-512b0b0e90f44eb7a3a7866f291aa82a",
+          "appliedAt": "2026-11-16T00:42:32.066Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo:512b0b0e90f44eb7a3a7866f291aa82a",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Smoky Mountain Alpine Coaster, prise en 2023 sous CC BY 2.0, importée et publiée."
+        },
+        {
+          "eventId": "photo-bbb16e1ed61f40498860cd02bbbc669b",
+          "appliedAt": "2026-11-16T00:42:44.948Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo:bbb16e1ed61f40498860cd02bbbc669b",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Smoky Mountain Alpine Coaster, prise en 2023 sous CC BY 2.0, importée et publiée."
+        },
+        {
+          "eventId": "photo-221a320cccd24015bd8108c56cc1a254",
+          "appliedAt": "2026-11-16T00:42:57.614Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo:221a320cccd24015bd8108c56cc1a254",
+          "auditEvidence": null,
+          "summary": "Photo exacte de Smoky Mountain Alpine Coaster, prise en 2023 sous CC BY 2.0, importée et publiée."
+        },
+        {
+          "eventId": "photo-metadata-08b63464c9404e2aa4ae7b9c52601595-20261116",
+          "appliedAt": "2026-11-16T00:43:23.594Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:08b63464c9404e2aa4ae7b9c52601595",
+          "auditEvidence": null,
+          "summary": "Ancienne photo officielle sans licence de réutilisation établie masquée et conservée dans l’historique."
+        },
+        {
+          "eventId": "photo-metadata-fbba7d31225e49189cf3df9421569f6d-20261116",
+          "appliedAt": "2026-11-16T00:43:34.399Z",
+          "outcome": "partial",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:photo-metadata:fbba7d31225e49189cf3df9421569f6d",
+          "auditEvidence": null,
+          "summary": "Ancienne photo officielle sans licence de réutilisation établie masquée et conservée dans l’historique."
+        },
+        {
+          "eventId": "apply-a4840bbb-c5a2-41cc-b589-7c4fcd0dc09f",
+          "appliedAt": "2026-11-16T00:44:49.631Z",
+          "outcome": "completed",
+          "entityKind": "StandaloneAttraction",
+          "entityId": "54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4",
+          "evidence": "PARK_DATA_EDITOR:apply:a4840bbb-c5a2-41cc-b589-7c4fcd0dc09f",
+          "auditEvidence": "docs/roadmaps/world-integration/evidence/standalone-us-smoky-mountain-alpine-coaster-photo-repair-20261116/audit.json",
+          "summary": "Références historiques aux deux images masquées retirées ; trois photos exactes CC BY 2.0 publiques, huit pages et trois binaires vérifiés. Audit réel 91/100 sans bloqueur."
         }
       ],
-      "nextAction": "Conserver la ligne et les preuves ; revoir les lacunes de l’audit lors d’une prochaine mise à jour, sans republier la même annonce Facebook.",
+      "nextAction": "Conserver la fiche et son historique. Trois photos exactes CC BY 2.0 sont publiques ; les deux anciennes vues officielles restent masquées faute de licence vérifiée. Les tarifs actuels et le calendrier futur restent à rechercher auprès de l’exploitant ; ne pas republier l’annonce Facebook existante.",
       "sources": [
         {
           "label": "RCDB",
@@ -60226,6 +60286,21 @@
           "label": "Source vérifiée — intégration standalone",
           "url": "https://amusement-parks.fun/fr/attraction/54ad5095-bb99-4fdc-b54e-b52fd0d3dbc4/smoky-mountain-alpine-coaster",
           "accessedAt": "2026-10-22"
+        },
+        {
+          "label": "Flickr — Smoky Mountain Alpine Coaster, photo exacte CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53005707212/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — Smoky Mountain Alpine Coaster, photo exacte CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006678745/",
+          "accessedAt": "2026-11-16"
+        },
+        {
+          "label": "Flickr — Smoky Mountain Alpine Coaster, photo exacte CC BY 2.0",
+          "url": "https://www.flickr.com/photos/rollercoasterphilosophy/53006677500/",
+          "accessedAt": "2026-11-16"
         }
       ],
       "standaloneAssessment": {
